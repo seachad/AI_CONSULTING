@@ -172,7 +172,7 @@ def vista_sin_javascript(ruta, data, aviso, titulo):
     open(ruta, "w", encoding="utf-8").write(page)
     return True
 
-# ---- Conector en el navegador (D101) ----
+# ---- Conector en el navegador (D103) ----
 # El panel lleva incrustado el conector T01 -> panel en JavaScript (t01_a_panel.js, la misma correspondencia que este script) y un
 # arranque que, sin Python: (1) si en este navegador hay un registro T01 propio (mismo origen, clave de localStorage de T01), lo
 # convierte y lo muestra; (2) si no, servido por http, lee el fichero de la carpeta de datos de la copia de la compañia

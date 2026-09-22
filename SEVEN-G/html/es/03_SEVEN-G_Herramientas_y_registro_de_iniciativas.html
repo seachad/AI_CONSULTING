@@ -511,6 +511,11 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td><strong>&quot;Sin dato&quot; no es cero</strong></td>
 <td>Un valor ausente se muestra como ausente y nunca se sustituye por una estimación no declarada.</td>
 </tr>
+<tr>
+<td>8</td>
+<td><strong>Todo código citado es navegable</strong></td>
+<td>Cuando una herramienta o un panel nombra un documento, una plantilla, otra herramienta, una puerta o un criterio (<a href="40_SEVEN-G_Reglas_de_medicion_del_valor.html" title="Documento 40 &#183; Reglas de medici&#243;n del valor">documento 40</a>, <a href="plantillas/P12_SEVEN-G_Matriz_y_registro_de_riesgos.html" title="Plantilla P12 &#183; Matriz y registro de riesgos">P12</a>, <a href="../../herramientas/T01_registro_iniciativas/registro.html#/riesgos" title="Herramienta T06 &#183; Matriz y registro de riesgos">T06</a>, G3.05…), ese código es un enlace a donde se explica, con su tooltip, y la barra de navegación ofrece «Ir a código» y «Citados aquí», la lista de todo lo que esa página o vista nombra. Lo hace el índice de códigos del sitio (<code>codigos.js</code>), común a documentos, herramientas y paneles; en el panel del consejo se activa con <code>navegacion.codigos</code>.</td>
+</tr>
 </tbody>
 </table></div>
 <h3 id="2-1-donde-viven-los-datos-de-las-herramientas">2.1 Dónde viven los datos de las herramientas</h3>
@@ -1071,7 +1076,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </table></div>
 <hr />
 <h2 id="modelo-de-datos-comun"><span class="antetitulo">04</span>Modelo de datos común</h2>
-<p>El modelo es la base de todas las herramientas. Su especificación completa (campos, tipos, listas y reglas de validación) se publicará como esquema junto con la primera versión del registro.</p>
+<p>El modelo es la base de todas las herramientas. Su especificación completa (campos, tipos, listas cerradas y reglas de validación) es el esquema JSON del registro, <code>herramientas/T01_registro_iniciativas/esquema_registro.schema.json</code> (versión 0.6), que se publica con la herramienta <a href="../../herramientas/T01_registro_iniciativas/registro.html" title="Herramienta T01 &#183; Registro de iniciativas">T01</a> y que cada versión amplía solo con campos opcionales: un fichero de una versión anterior sigue siendo válido.</p>
 <div class="tabla"><table>
 <thead>
 <tr>
@@ -1151,8 +1156,58 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>Decisión del consejo o de su comisión (DEC-AAAA-NNN) con órgano, tipo, asunto, resultado, límite de inversión por etapa, decisión de etapa, esferas con Transformar como objetivo y vínculos (62 §10); esquema 0.5. Es la fuente de la señal 8 y de la condición IT-D1 del índice.</td>
 <td>Iniciativas, recomendaciones</td>
 </tr>
+<tr>
+<td><strong>Diagnóstico de madurez</strong></td>
+<td>Resumen de cada diagnóstico de madurez (EM-AAAA-MM; <a href="11_SEVEN-G_Modelo_de_madurez.html" title="Documento 11 &#183; Modelo de madurez">documento 11</a>): fecha de corte, modalidad, versión del cuestionario, nivel global, media ponderada, límite por D1 o D6 y nivel, avance y criterios bloqueantes de cada dimensión. Lo escribe <a href="../../herramientas/T15_diagnostico_madurez/madurez.html" title="Herramienta T15 &#183; Diagn&#243;stico de madurez">T15</a> (las respuestas y las evidencias se quedan en <a href="../../herramientas/T15_diagnostico_madurez/madurez.html" title="Herramienta T15 &#183; Diagn&#243;stico de madurez">T15</a>) y lo muestra el panel del consejo; esquema 0.6.</td>
+<td>Compañía</td>
+</tr>
 </tbody>
 </table></div>
+<h3 id="4-1-que-lee-y-que-escribe-cada-herramienta">4.1 Qué lee y qué escribe cada herramienta</h3>
+<p>El registro <a href="../../herramientas/T01_registro_iniciativas/registro.html" title="Herramienta T01 &#183; Registro de iniciativas">T01</a> es la <strong>fuente de verdad</strong> de la compañía: las demás herramientas derivan de él, muestran de dónde viene cada dato y permiten corregirlo en local sin que la corrección se pierda al volver a leer el registro. Nada se estima: lo que el registro no contiene queda «sin dato» y se completa a mano. Servidas desde el mismo sitio, las herramientas comparten el almacenamiento local del navegador, así que <a href="../../herramientas/T11_calculadora_valor/calculadora.html" title="Herramienta T11 &#183; Lienzo y calculadora de hip&#243;tesis de valor">T11</a>, <a href="../../herramientas/T14_indice_transformacion/indice.html" title="Herramienta T14 &#183; Calculadora del &#237;ndice de transformaci&#243;n">T14</a> y <a href="../../herramientas/T15_diagnostico_madurez/madurez.html" title="Herramienta T15 &#183; Diagn&#243;stico de madurez">T15</a> encuentran el registro por sí solas y le devuelven sus resultados; abiertas como ficheros sueltos, el intercambio se hace con los ficheros JSON que cada una exporta e importa. El detalle campo a campo está en <code>herramientas/mapa_datos.json</code>, que las pruebas de coherencia contrastan con el esquema.</p>
+<div class="tabla"><table>
+<thead>
+<tr>
+<th>Herramienta</th>
+<th>Lee de <a href="../../herramientas/T01_registro_iniciativas/registro.html" title="Herramienta T01 &#183; Registro de iniciativas">T01</a></th>
+<th>Devuelve a <a href="../../herramientas/T01_registro_iniciativas/registro.html" title="Herramienta T01 &#183; Registro de iniciativas">T01</a></th>
+<th>Propio de la herramienta</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong><a href="../../herramientas/T11_calculadora_valor/calculadora.html" title="Herramienta T11 &#183; Lienzo y calculadora de hip&#243;tesis de valor">T11</a></strong> (con <a href="../../herramientas/T11_calculadora_valor/calculadora.html#/costes" title="Herramienta T13 &#183; Calculadora de costes por caso">T13</a>)</td>
+<td>Iniciativa (nombre, ambición, intensidad, fase, inversión realizada y pendiente) e importes esperados registrados. Un caso creado desde el registro se <strong>actualiza</strong> al volver a leerlo: se renuevan la identificación, los importes que siguen «desde <a href="../../herramientas/T01_registro_iniciativas/registro.html" title="Herramienta T01 &#183; Registro de iniciativas">T01</a>» y los nuevos; una línea corregida a mano o descompuesta en unidades × valor unitario se conserva.</td>
+<td>Los importes esperados del caso (eficiencias, retorno, capacidad liberada, coste recurrente e inversión), como esperados con fuente <a href="../../herramientas/T11_calculadora_valor/calculadora.html" title="Herramienta T11 &#183; Lienzo y calculadora de hip&#243;tesis de valor">T11</a>, y un evento de edición.</td>
+<td>Parámetros (horizonte, tasa, coste horario), líneas de valor descompuestas, rampa, criterios de parada, etapas, costes por caso y conciliación.</td>
+</tr>
+<tr id="cod-t14">
+<td><strong><a href="../../herramientas/T14_indice_transformacion/indice.html" title="Herramienta T14 &#183; Calculadora del &#237;ndice de transformaci&#243;n">T14</a></strong></td>
+<td>Cartera (fases, estados, ambición, esferas, <em>gates</em>), importes realizados y validados, inversión, evidencia del índice de cada iniciativa, datos de la compañía (ingresos, IT-D3) y decisiones del consejo. Un cálculo hecho desde el registro se <strong>actualiza</strong> al volver a leerlo: solo se renuevan los datos que siguen marcados «desde <a href="../../herramientas/T01_registro_iniciativas/registro.html" title="Herramienta T01 &#183; Registro de iniciativas">T01</a>».</td>
+<td>Nada. Su resultado va al panel del consejo (<a href="../../herramientas/T17_panel_consejo/index.html" title="Herramienta T17 &#183; Panel de IA para el consejo">T17</a>) y deja el perfil del último cálculo para la lectura cruzada de <a href="../../herramientas/T15_diagnostico_madurez/madurez.html" title="Herramienta T15 &#183; Diagn&#243;stico de madurez">T15</a>.</td>
+<td>Versiones de umbrales, cálculos con la marca de origen de cada dato, notas y acciones.</td>
+</tr>
+<tr id="cod-t15">
+<td><strong><a href="../../herramientas/T15_diagnostico_madurez/madurez.html" title="Herramienta T15 &#183; Diagn&#243;stico de madurez">T15</a></strong></td>
+<td>Compañía y muestra estratificada de iniciativas (Enterprise, en producción, Aumentar o Transformar, terceros, IA generativa o agentes; 11 §4.6). De <a href="../../herramientas/T14_indice_transformacion/indice.html" title="Herramienta T14 &#183; Calculadora del &#237;ndice de transformaci&#243;n">T14</a>, el perfil del último cálculo.</td>
+<td>El resumen de cada diagnóstico (<code>madurez[]</code>): nivel global, media, límite por D1 o D6 y nivel por dimensión; nunca las respuestas.</td>
+<td>Respuestas, evidencias, verificación, entrevistas, muestras, pesos, objetivos, mensajes y plan de mejora.</td>
+</tr>
+<tr>
+<td><strong><a href="../../herramientas/T17_panel_consejo/index.html" title="Herramienta T17 &#183; Panel de IA para el consejo">T17</a></strong> (generador)</td>
+<td>El JSON completo del registro: iniciativas, ciclo de vida, importes, incidentes, recomendaciones y el diagnóstico de madurez más reciente; de <a href="../../herramientas/T14_indice_transformacion/indice.html" title="Herramienta T14 &#183; Calculadora del &#237;ndice de transformaci&#243;n">T14</a>, el índice exportado.</td>
+<td>Nada.</td>
+<td>Configuración del panel (umbrales, ciclo de vida, navegación) y los paneles generados.</td>
+</tr>
+<tr>
+<td><strong><a href="../../herramientas/T01_registro_iniciativas/registro.html#/riesgos" title="Herramienta T06 &#183; Matriz y registro de riesgos">T06</a></strong>, <strong><a href="../../herramientas/T01_registro_iniciativas/registro.html#/consejo" title="Herramienta T18 &#183; Registro de recomendaciones del consejo">T18</a></strong></td>
+<td>Son vistas del propio registro.</td>
+<td>—</td>
+<td>—</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>Por qué importa.</strong> Sin una fuente de verdad, cada herramienta acaba con su propia versión de la compañía: el índice de transformación calculado con una cartera, el panel del consejo con otra y la madurez de una tercera. Fijar que todo deriva de <a href="../../herramientas/T01_registro_iniciativas/registro.html" title="Herramienta T01 &#183; Registro de iniciativas">T01</a>, que cada dato lleva su procedencia y que lo corregido a mano no se pisa hace que el consejo, la Oficina de IA y el consultor lean la misma compañía en todas las herramientas.</p>
 <hr />
 <h2 id="catalogo-de-herramientas"><span class="antetitulo">05</span>Catálogo de herramientas</h2>
 <p><strong>Prioridad:</strong> 1 = núcleo, se construye primero · 2 = necesaria para el gobierno completo · 3 = complemento.
@@ -1336,7 +1391,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>3</td>
 <td>Disponible v0.1</td>
 </tr>
-<tr id="cod-t14">
+<tr id="cod-t14-2">
 <td><strong><a href="../../herramientas/T14_indice_transformacion/indice.html" title="Herramienta T14 &#183; Calculadora del &#237;ndice de transformaci&#243;n">T14</a></strong></td>
 <td>Calculadora del índice de transformación</td>
 <td>Condiciones de base, ocho señales, perfil de la compañía, alertas, cobertura y evolución, con versión de umbrales; parte del JSON del registro <a href="../../herramientas/T01_registro_iniciativas/registro.html" title="Herramienta T01 &#183; Registro de iniciativas">T01</a>, del que calcula las ocho señales cuando trae la evidencia del esquema 0.5, y su resultado alimenta la tarjeta del índice del panel del consejo (<a href="../../herramientas/T17_panel_consejo/index.html" title="Herramienta T17 &#183; Panel de IA para el consejo">T17</a>).</td>
@@ -1363,7 +1418,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 </thead>
 <tbody>
-<tr id="cod-t15">
+<tr id="cod-t15-2">
 <td><strong><a href="../../herramientas/T15_diagnostico_madurez/madurez.html" title="Herramienta T15 &#183; Diagn&#243;stico de madurez">T15</a></strong></td>
 <td>Diagnóstico de madurez</td>
 <td>Cuestionario de 84 preguntas con evidencia y verificación; nivel por dimensión y global con el límite de D1 y D6; comparación entre evaluaciones e informe para el consejo. Plantilla <a href="plantillas/P34_SEVEN-G_Cuestionario_e_informe_de_madurez.html" title="Plantilla P34 &#183; Cuestionario e informe de madurez">P34</a>.</td>

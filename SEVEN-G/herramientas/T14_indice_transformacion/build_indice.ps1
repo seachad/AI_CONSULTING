@@ -68,7 +68,7 @@ if ($errores.Count) { throw "Datos de T14 incoherentes:`n  " + ($errores -join "
 $html = [IO.File]::ReadAllText($plantilla)
 if (([regex]::Matches($html, '__DATOS_DEMO__')).Count -ne 1) { throw 'La plantilla debe contener una sola vez la marca __DATOS_DEMO__' }
 $html = $html.Replace('__DATOS_DEMO__', (Compactar $Datos))
-# módulo común de datos locales (D101): se incrusta para que la herramienta siga siendo un solo fichero
+# módulo común de datos locales (D103): se incrusta para que la herramienta siga siendo un solo fichero
 $comun = Join-Path $aqui '..\_comun\datos_locales.js'
 if (-not (Test-Path $comun)) { throw "No se encuentra $comun" }
 if (([regex]::Matches($html, '__DATOS_LOCALES__')).Count -ne 1) { throw 'La plantilla debe contener una sola vez la marca __DATOS_LOCALES__' }
@@ -88,7 +88,7 @@ if ($DesdeT01) {
   $js = @'
 setTimeout(function(){ try{
   const reg=JSON.parse(document.getElementById('t01-cli').textContent), m=reg.meta||{}, f=m.fecha_referencia||hoy(), d=desdeT01(reg,f);
-  const c={id:'IDX-'+f.slice(0,7), fecha_corte:f, tipo:'seguimiento', version_umbrales:D.umbrales[D.umbrales.length-1].version, origen:'t01', entradas:d.entradas, de_t01:d.de_t01, notas:t('t01_nota',{f:fF(f)}), acciones:''};
+  const c={id:'IDX-'+f.slice(0,7), fecha_corte:f, tipo:'seguimiento', version_umbrales:D.umbrales[D.umbrales.length-1].version, origen:'t01', entradas:d.entradas, de_t01:d.de_t01, t01:{organizacion:m.organizacion||null, fecha:f, iniciativas:reg.iniciativas.length}, notas:t('t01_nota',{f:fF(f)}), acciones:''};
   c.resultado=resultadoExport(c);
   const out={version_esquema:VERSION_ESQUEMA, herramienta:'T14', meta:{organizacion:m.organizacion||null, moneda:m.moneda||'EUR', datos_ilustrativos:!!m.datos_ilustrativos, origen:'Calculado con build_indice.ps1 desde el registro T01 (esquema '+reg.version_esquema+')', aviso_legal:TX.es.legal_txt}, umbrales:[umbral(c.version_umbrales)], calculos:[c]};
   fetch('/resultado',{method:'POST',body:JSON.stringify(out,null,1)});

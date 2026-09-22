@@ -211,11 +211,18 @@ function render(){ document.getElementById("tl").innerHTML = D.sesiones.map(s=>{
      <dl><dt>Destinatario</dt><dd>${esc(r.destinatario)}</dd><dt>Fecha comprometida</dt><dd>${r.fecha}</dd><dt>Evidencia presentada</dt><dd>${esc(r.evidencia)}</dd><dt>Valoración del consejo asesor</dt><dd>${esc(r.valoracion)}</dd></dl>
      ${p?`<a class="go" href="__SLUG___Panel_IA_demo.html#${p[0]}">↗ Ver en el panel: ${p[1]}</a>`:""}</article>`;}).join("")}</div></div>`; }).join(""); }
 summary(); chips(); render();
+// códigos citados (D99): con D.codigos (ruta al índice de códigos del sitio, codigos.js), los códigos escritos en el registro pasan a ser
+// enlaces a donde se explican y la cabecera ofrece «Ir a código» y «Citados aquí». Se carga sin medición de visitas. Sin la clave, nada cambia.
+if (D.codigos){ document.body.setAttribute("data-enlazar-codigos", "");
+  const t = document.querySelector(".top"); if (t){ const h = document.createElement("div"); h.setAttribute("data-ir-codigo", ""); h.className = "ir-codigo-panel"; t.appendChild(h); }
+  const s = document.createElement("script"); s.src = D.codigos; s.defer = true; s.setAttribute("data-sin-medicion", ""); document.head.appendChild(s); }
 """
 CSS_REG_EXTRA = r"""
 .top{padding:26px 34px 10px;border-bottom:1px solid var(--line);background:var(--panel)}
 .top h1{font-size:30px;margin:0 0 4px}
 .top .lead{color:var(--ink2);max-width:110ch;margin:0 0 16px}
+/* control «Ir a código» y lista de citados (codigos.js, D99) con los colores del tema del registro */
+.ir-codigo-panel{margin-top:14px}.ir-codigo-panel,.ir-codigo-lista{--papel:var(--panel);--papel-2:var(--panel2);--tinta:var(--ink);--tinta-2:var(--ink2);--regla:var(--line);--regla-2:var(--line);--claret:var(--link);--oxford:var(--link);--negro:var(--ink);--sans:inherit}
 .sum{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:12px;max-width:900px}
 .filters{display:flex;flex-wrap:wrap;gap:6px;align-items:center;padding:12px 34px;border-bottom:1px solid var(--line)}
 .filters .lbl{color:var(--mute);font-size:10.5px;text-transform:uppercase;letter-spacing:.06em;margin:0 4px 0 10px}

@@ -39,6 +39,8 @@ header .in{max-width:520px;margin:0 auto}
 h1{font-size:18px;margin:0;font-weight:700;line-height:1.2;font-family:var(--headfont)}
 .sub{font-size:12px;color:var(--muted);margin-top:2px}
 .ctrls{display:flex;gap:8px;margin-top:10px}
+/* control «Ir a código» y lista de citados (codigos.js, D99) con los colores del tema del panel */
+.ir-codigo-panel{margin-top:8px}.ir-codigo-panel,.ir-codigo-lista{--papel:var(--surface);--papel-2:var(--grid);--tinta:var(--ink);--tinta-2:var(--ink2);--regla:var(--grid);--regla-2:var(--grid);--claret:var(--accent);--oxford:var(--accent);--negro:var(--ink);--sans:inherit}
 .seg{display:inline-flex;border:1px solid var(--grid);border-radius:10px;overflow:hidden;flex:0 0 auto}
 .seg button{border:0;background:var(--surface);color:var(--ink2);padding:9px 12px;font-size:14px;min-height:40px}
 .seg button.on{background:var(--accent);color:var(--accent-ink);font-weight:600}
@@ -204,6 +206,21 @@ function render(){
       return `<div class="row" data-id="${c.id}"><div style="flex:1;min-width:0"><div class="n">${esc(c.nombre)}</div><div class="m">${esc(c.tags.alcance||"")} · neto ${fmt(R(c)[k("neto")])}</div>${us}</div></div>`; }).join("");
   }
 
+  // madurez de la compañía (bloque «madurez», opcional; documento 11 de SEVEN-G, diagnóstico T15): nivel global, fecha,
+  // modalidad y las siete dimensiones; el motor solo lee el bloque, no recalcula nada. Sin bloque, la sección no se muestra.
+  const md = DATA.madurez, msec = $("madurez-sec"), mdims = md && Array.isArray(md.dimensiones) ? md.dimensiones : [];
+  msec.hidden = !mdims.length;
+  if (mdims.length){
+    const NIV = ["Inexistente", "Inicial", "En desarrollo", "Definido", "Gestionado", "Optimizado"], MOD = {autodiagnostico:"autodiagnóstico", verificada:"verificada", independiente:"valoración independiente"};
+    const ng = md.nivel_global, ant = md.anterior || null;
+    const cab = [`datos a ${fES(md.fecha_corte)}`, MOD[md.modalidad] || esc(md.modalidad || ""), md.tope_aplicado ? `limitado por ${(md.limitante||[]).map(esc).join(", ")}` : "", ant && ant.nivel_global != null ? `anterior (${fES(ant.fecha_corte)}): nivel ${ant.nivel_global}` : ""].filter(Boolean).join(" · ");
+    const aviso = md.modalidad === "autodiagnostico" ? `<div class="alert bad" style="margin-top:8px">Autoevaluación no verificada: no vale para el consejo (11 §4.1).</div>` : md.validez === "pend" ? `<div class="alert" style="margin-top:8px">Verificación incompleta.</div>` : "";
+    const fil = d => `<div class="row" style="cursor:default"><div style="flex:1;min-width:0"><div class="n">${esc(d.dimension||"")} · ${esc(d.nombre||"")}</div>${(d.bloqueantes||[]).length ? `<div class="m">bloqueantes: ${d.bloqueantes.map(esc).join(", ")}</div>` : ""}</div><div class="r"><b>${d.nivel == null ? "—" : d.nivel}</b><div class="m">${d.nivel == null ? "sin dato" : NIV[d.nivel] || ""}</div></div></div>`;
+    $("madurez").innerHTML = `<div class="hero" style="margin-top:0"><div class="k">Nivel global de madurez (0–5)</div><div class="v">${ng == null ? "—" : ng} <span style="font-size:16px;font-weight:600">${ng == null ? `sin dato${md.nivel_minimo != null ? ` · mínimo ${md.nivel_minimo}` : ""}` : NIV[ng] || ""}</span></div><div class="d">${cab}</div>${aviso}</div>
+     <div class="list" style="margin-top:10px">${mdims.map(fil).join("")}</div>
+     <div class="d" style="font-size:12px;color:var(--muted);margin-top:6px">Declaración de aplicación de SEVEN-G: ${md.declaracion_posible ? "posible" : "no procede todavía"} (11 §7.3). El nivel global se limita a min(D1, D6) + 1.</div>`;
+  }
+
   const sec = $("novedades-sec");
   if (f){
     const fx = f.casos||{}, ids = new Set(nuevos.map(c=>c.id));
@@ -235,6 +252,12 @@ function ficha(c){
       return `<div class="sub" style="margin-top:10px">Recorrido: ${h.tramos.map(t=>`${esc(t.estado)} ${t.dias==null?"":t.dias+" d"}`).join(" → ")}${p.limite?` · <span class="badge ${p.nivel}">${p.dias} de ${p.limite} d</span>`:""}</div>`; })()}`;
   $("sheet").classList.add("open");
 }
+// códigos citados (D99): con meta.navegacion.codigos (ruta al índice de códigos del sitio, codigos.js), los códigos escritos en el panel pasan
+// a ser enlaces a donde se explican y la cabecera ofrece «Ir a código» y «Citados aquí». Se carga sin medición de visitas. Sin la clave, nada cambia.
+(()=>{ const nv = (DATA.meta||{}).navegacion || {}; if (!nv.codigos) return;
+  document.body.setAttribute("data-enlazar-codigos", "");
+  const c = document.querySelector("header .ctrls"); if (c){ const h = document.createElement("div"); h.setAttribute("data-ir-codigo", ""); h.className = "ir-codigo-panel"; c.after(h); }
+  const s = document.createElement("script"); s.src = nv.codigos; s.defer = true; s.setAttribute("data-sin-medicion", ""); document.head.appendChild(s); })();
 // casos de una etapa del embudo, ordenados por días en la etapa, con su desviación frente a la mediana
 function etapa(e){
   const cs = CASES.filter(c=>c.estado===e).map(c=>({c, p: plazoDe(c)})).sort((a,b)=>(b.p.dias??-1)-(a.p.dias??-1)), t = tiemposEstado(CASES, e).todas;
@@ -269,6 +292,7 @@ HTML = """<!DOCTYPE html>
  <h2>Casos que más aportan</h2><div class="list" id="top"></div>
  <h2>Dónde rinde más el siguiente euro</h2><div class="list" id="rinde"></div>
  <section id="transv-sec" hidden><h2>Transversales y plataformas, por unidad</h2><div class="list" id="transv"></div></section>
+ <section id="madurez-sec" hidden><h2>Madurez de la compañía (D1–D7)</h2><div id="madurez"></div></section>
  <section id="novedades-sec" hidden><h2 id="novedades-t">Novedades</h2><div class="list" id="novedades"></div></section>
  __GLOSARIO__
  <div class="foot" id="pie"></div>

@@ -173,7 +173,7 @@ dialog::backdrop{background:rgba(26,24,23,.45)}
   <nav class="nav" id="nav" aria-label="Vistas"></nav>
 </header>
 <div class="aviso-demo" id="aviso-demo"></div>
-<main id="principal" tabindex="-1"></main>
+<main id="principal" tabindex="-1" data-enlazar-codigos></main>
 <footer class="pie" id="pie"></footer>
 <dialog id="dlg-legal" aria-labelledby="legal-t"></dialog>
 <div id="toast" role="status" aria-live="polite"></div>
@@ -190,9 +190,14 @@ dialog::backdrop{background:rgba(26,24,23,.45)}
 const DEMO_TXT = document.getElementById('datos-demo').textContent;
 const VERSION_ESQUEMA = '0.1';
 const LS_DATOS = 'seveng-t14-datos-v1', LS_UI = 'seveng-t14-ui-v1';
+/* D100: el registro T01 es la fuente de verdad. Servidas desde el mismo sitio, las herramientas comparten el almacenamiento local del
+   navegador: T14 lee el registro que guarda T01 (clave «seveng-t01-datos-v1») y deja un resumen de su último cálculo («seveng-t14-resumen-v1»)
+   para T15. Abiertas como ficheros sueltos (file://) no se comparte nada y se sigue cargando por fichero. */
+const LS_T01 = 'seveng-t01-datos-v1', LS_RESUMEN = 'seveng-t14-resumen-v1';
 function lsGet(k){ try{ return localStorage.getItem(k); }catch(e){ return null; } }
 function lsSet(k,v){ try{ localStorage.setItem(k,v); return true; }catch(e){ return false; } }
 function lsDel(k){ try{ localStorage.removeItem(k); }catch(e){} }
+function registroT01Local(){ try{ const r = JSON.parse(lsGet(LS_T01)||'null'); return (r && typeof r==='object' && r.meta && Array.isArray(r.iniciativas) && Array.isArray(r.valores) && Array.isArray(r.decisiones_gate)) ? r : null; }catch(e){ return null; } }
 
 /* ---------------- i18n ---------------- */
 const TX = {
@@ -200,7 +205,12 @@ es:{
  app:'T14 · Índice de transformación', saltar:'Saltar al contenido', idioma:'Idioma', tema:'Tema', t_auto:'Auto', t_claro:'Claro', t_oscuro:'Oscuro', vistas:'Vistas',
  doc12:'Documento 12', reg_t01:'Registro T01', doc12_href:'../../html/es/12_SEVEN-G_Indice_de_transformacion.html',
  v_calculo:'Cálculo', v_evolucion:'Evolución', v_umbrales:'Umbrales', v_datos:'Datos',
- demo:'Datos ilustrativos y ficticios. El cálculo de junio de 2026 reproduce el ejemplo del documento 12, sección 9.',
+ demo:'Datos ilustrativos y ficticios. El cálculo de septiembre de 2026 está calculado desde el registro de demostración de T01 (el mismo que alimenta el panel del consejo); el de junio de 2026 reproduce el ejemplo del documento 12, sección 9.',
+ t01_local:'Registro T01 en este navegador: «{o}», {n} iniciativas, a fecha {f}.', t01_local_no:'No hay ningún registro T01 en este navegador: abra el registro de iniciativas y vuelva, o cargue un fichero exportado por T01.',
+ t01_nuevo_local:'Nuevo cálculo desde este registro', t01_actualizar:'Actualizar este cálculo desde el registro', t01_fichero:'Cargar un fichero de T01…',
+ t01_auto:'Cálculo creado automáticamente desde el registro T01 de este navegador. Corrija lo que haga falta: lo corregido a mano no se pisa al actualizar.',
+ ok_actualizar:'Cálculo actualizado desde el registro T01 «{o}»: {n} datos renovados. Los corregidos a mano se conservan.',
+ or_t01_de:'Desde el registro T01 «{o}» ({n} iniciativas, leído el {f})',
  pie_lic:'Código MIT · Contenidos CC BY 4.0 · © 2026 Fernando García Varela · Metodología SEVEN-G', pie_priv:'Los datos se guardan solo en este navegador o, si así se elige, en un fichero de su equipo. No se envía nada a terceros.',
  legal_tit:'Aviso legal y exención de responsabilidad', legal_link:'Aviso legal', legal_ok:'Entendido',
  legal_txt:'SEVEN-G y esta herramienta se ofrecen «tal cual» y con fines exclusivamente informativos. No constituyen asesoramiento jurídico, regulatorio, financiero ni profesional, ni garantizan el cumplimiento de ninguna norma. Los umbrales del índice son iniciales, no proceden de estudios de mercado y deben calibrarse con los datos de cada compañía. Cada organización que use la herramienta es la única responsable de sus datos, de las decisiones que adopte con ellos, de identificar la normativa que le aplica y de certificar su propio cumplimiento regulatorio. El autor no asume responsabilidad alguna por el uso de la herramienta. Los datos de demostración son ficticios.',
@@ -240,7 +250,7 @@ es:{
  m_s3_sd:'Medir la capacidad liberada y convertir en menor coste real o reasignar el {u} % o más (señal 3 ≥ 2).', m_tactica:'Al menos una iniciativa en producción con valor medido.',
  m_resp:'Añada en «Acciones» el responsable y el plazo de cada condición (documento 12, sección 10).',
  decl_titulo:'Contraste con la declaración', d1:'IT-D1 · La tesis de IA aprobada en C2 fija Transformar como ambición objetivo en al menos una esfera', d2:'IT-D2 · Transformar confirmada supone el {u} % o más del coste de la cartera (hoy {v})', d3:'IT-D3 · Plan estratégico, informes al consejo u otras comunicaciones presentan la IA como transformación del negocio',
- entradas:'Datos del cálculo', entradas_sub:'Importes en euros. Deje vacío lo que no se mide: cuenta como «sin dato». Las señales de valor usan solo importes validados. Etiqueta verde: dato calculado desde el registro T01 (se puede corregir).',
+ entradas:'Datos del cálculo', entradas_sub:'Importes en euros. Deje vacío lo que no se mide: cuenta como «sin dato». Las señales de valor usan solo importes validados. Etiqueta verde: dato calculado desde el registro T01 (se puede corregir; un dato corregido a mano deja de venir de T01 y no se pisa al actualizar).',
  del_t01:'desde T01', manual:'manual',
  notas:'Notas del cálculo', acciones:'Acciones: qué movería el perfil y plan de datos (responsable y plazo)',
  e_base:'Condiciones de base', e_s1:'Señal 1 · Coste de la cartera en la ventana', e_s2:'Señal 2 · Valor validado', e_s3:'Señal 3 · Capacidad liberada', e_s4:'Señal 4 · Procesos de extremo a extremo', e_s5:'Señal 5 · Modelo operativo', e_s6:'Señal 6 · Ingresos habilitados por IA', e_s7:'Señal 7 · Paso a producción (24 meses)', e_s8:'Señal 8 · Decisión del consejo (12 meses)', e_decl:'Declaración de transformación', e_sobre:'Sobredeclaración de ambición (24 meses)',
@@ -249,8 +259,8 @@ es:{
  tit_umb:'Versiones de umbrales', sub_umb:'La compañía puede ajustar los umbrales, pero no la estructura de las señales ni las reglas de asignación de perfiles. Los umbrales no se cambian dentro del ciclo anual: una versión usada por algún cálculo ya no se edita. Cada ajuste se aprueba en C5 y se declara como desviación respecto al documento 12.',
  version:'Versión', fecha:'Fecha', origen:'Origen', aprobado_por:'Aprobada por', nota:'Nota', usada:'Usada por {n} cálculos', no_usada:'Sin cálculos: editable', nueva_version:'Nueva versión a partir de esta', nombre_version:'Nombre de la nueva versión (por ejemplo, 2027)', ya_existe:'Ya existe esa versión.', ok_version:'Versión {v} creada.', recalcular:'Recalcular el cálculo seleccionado con esta versión',
  parametro:'Parámetro', valor:'Valor',
- tit_datos:'Datos', sub_datos:'Importe o exporte el fichero completo de T14 (umbrales y cálculos, con sus resultados). Para empezar un cálculo desde el registro de iniciativas, exporte su JSON completo en T01 («Datos» → «JSON completo») y cárguelo aquí.',
- exportar:'Exportar JSON de T14', importar:'Importar JSON de T14 (sustituye)', cargar_t01:'Nuevo cálculo desde un registro T01', restaurar:'Restaurar los datos de ejemplo', vaciar:'Vaciar (sin cálculos)',
+ tit_datos:'Datos', sub_datos:'Importe o exporte el fichero completo de T14 (umbrales y cálculos, con sus resultados). El registro de iniciativas (T01) es la fuente de verdad: si está en este navegador, la calculadora lo lee sola; si no, exporte su JSON completo en T01 («Datos» → «JSON completo») y cárguelo aquí.',
+ exportar:'Exportar JSON de T14', importar:'Importar JSON de T14 (sustituye)', cargar_t01:'Nuevo cálculo desde el registro T01', restaurar:'Restaurar los datos de ejemplo', vaciar:'Vaciar (sin cálculos)',
  conf_importar:'Se sustituirán los datos actuales de T14. ¿Continuar?', conf_restaurar:'Se sustituirán los datos actuales por los de ejemplo. ¿Continuar?', conf_vaciar:'Se borrarán todos los cálculos (se conservan los umbrales). ¿Continuar?',
  ok_import:'Datos importados.', ok_export:'Fichero exportado.', err_json:'El fichero no es un JSON válido de T14.', err_t01:'El fichero no es un registro completo de T01.', ok_t01:'Cálculo creado desde el registro T01 «{o}» a fecha {f}. Complete los datos que el registro no contiene.',
  t01_pide_fecha:'Fecha de corte (AAAA-MM-DD). Por defecto, la fecha de referencia del registro:',
@@ -262,7 +272,12 @@ en:{
  app:'T14 · Transformation index', saltar:'Skip to content', idioma:'Language', tema:'Theme', t_auto:'Auto', t_claro:'Light', t_oscuro:'Dark', vistas:'Views',
  doc12:'Document 12', reg_t01:'T01 register', doc12_href:'../../html/en/12_SEVEN-G_Indice_de_transformacion.html',
  v_calculo:'Calculation', v_evolucion:'Evolution', v_umbrales:'Thresholds', v_datos:'Data',
- demo:'Illustrative and fictitious data. The June 2026 calculation reproduces the example in document 12, section 9.',
+ demo:'Illustrative and fictitious data. The September 2026 calculation is computed from the T01 demonstration register (the same one that feeds the board dashboard); the June 2026 one reproduces the example in document 12, section 9.',
+ t01_local:'T01 register in this browser: "{o}", {n} initiatives, as at {f}.', t01_local_no:'There is no T01 register in this browser: open the initiative register and come back, or load a file exported by T01.',
+ t01_nuevo_local:'New calculation from this register', t01_actualizar:'Refresh this calculation from the register', t01_fichero:'Load a T01 file…',
+ t01_auto:'Calculation created automatically from the T01 register in this browser. Correct whatever is needed: manual corrections are not overwritten on refresh.',
+ ok_actualizar:'Calculation refreshed from the T01 register "{o}": {n} figures renewed. Manual corrections are kept.',
+ or_t01_de:'From the T01 register "{o}" ({n} initiatives, read on {f})',
  pie_lic:'MIT code · CC BY 4.0 content · © 2026 Fernando García Varela · SEVEN-G methodology', pie_priv:'Data is stored only in this browser or, if you choose so, in a file on your computer. Nothing is sent to third parties.',
  legal_tit:'Legal notice and disclaimer', legal_link:'Legal notice', legal_ok:'Understood',
  legal_txt:'SEVEN-G and this tool are provided "as is" and for information purposes only. They do not constitute legal, regulatory, financial or professional advice, nor do they guarantee compliance with any regulation. The index thresholds are initial values, do not come from market studies and must be calibrated with each company\'s data. Each organisation using the tool is solely responsible for its data, for the decisions it takes with it, for identifying the regulations that apply to it and for certifying its own regulatory compliance. The author accepts no liability for the use of the tool. Demonstration data is fictitious.',
@@ -302,7 +317,7 @@ en:{
  m_s3_sd:'Measure released capacity and convert {u}% or more into lower actual cost or reassign it (signal 3 ≥ 2).', m_tactica:'At least one initiative in production with measured value.',
  m_resp:'Add the owner and time limit of each condition under "Actions" (document 12, section 10).',
  decl_titulo:'Cross-check against the declaration', d1:'IT-D1 · The AI thesis approved in C2 sets Transform as the target ambition in at least one sphere', d2:'IT-D2 · Confirmed Transform accounts for {u}% or more of the portfolio cost (today {v})', d3:'IT-D3 · The strategic plan, reports to the board or other communications present AI as business transformation',
- entradas:'Calculation data', entradas_sub:'Amounts in euros. Leave empty whatever is not measured: it counts as "no data". Value signals use validated amounts only. Green label: figure calculated from the T01 register (it can be corrected).',
+ entradas:'Calculation data', entradas_sub:'Amounts in euros. Leave empty whatever is not measured: it counts as "no data". Value signals use validated amounts only. Green label: figure calculated from the T01 register (it can be corrected; a manually corrected figure no longer comes from T01 and is not overwritten on refresh).',
  del_t01:'from T01', manual:'manual',
  notas:'Calculation notes', acciones:'Actions: what would move the profile and data plan (owner and time limit)',
  e_base:'Baseline conditions', e_s1:'Signal 1 · Portfolio cost in the window', e_s2:'Signal 2 · Validated value', e_s3:'Signal 3 · Released capacity', e_s4:'Signal 4 · End-to-end processes', e_s5:'Signal 5 · Operating model', e_s6:'Signal 6 · AI-enabled revenue', e_s7:'Signal 7 · Progression to production (24 months)', e_s8:'Signal 8 · Board decision (12 months)', e_decl:'Transformation declaration', e_sobre:'Ambition overstatement (24 months)',
@@ -311,8 +326,8 @@ en:{
  tit_umb:'Threshold versions', sub_umb:'The company may adjust the thresholds, but not the structure of the signals or the profile assignment rules. Thresholds are not changed within the annual cycle: a version used by any calculation can no longer be edited. Each adjustment is approved in C5 and declared as a deviation from document 12.',
  version:'Version', fecha:'Date', origen:'Source', aprobado_por:'Approved by', nota:'Note', usada:'Used by {n} calculations', no_usada:'No calculations: editable', nueva_version:'New version based on this one', nombre_version:'Name of the new version (for example, 2027)', ya_existe:'That version already exists.', ok_version:'Version {v} created.', recalcular:'Recalculate the selected calculation with this version',
  parametro:'Parameter', valor:'Value',
- tit_datos:'Data', sub_datos:'Import or export the complete T14 file (thresholds and calculations, with their results). To start a calculation from the initiative register, export its full JSON in T01 ("Data" → "Full JSON") and load it here.',
- exportar:'Export T14 JSON', importar:'Import T14 JSON (replaces)', cargar_t01:'New calculation from a T01 register', restaurar:'Restore the example data', vaciar:'Clear (no calculations)',
+ tit_datos:'Data', sub_datos:'Import or export the complete T14 file (thresholds and calculations, with their results). The initiative register (T01) is the source of truth: if it is in this browser, the calculator reads it by itself; otherwise export its full JSON in T01 ("Data" → "Full JSON") and load it here.',
+ exportar:'Export T14 JSON', importar:'Import T14 JSON (replaces)', cargar_t01:'New calculation from the T01 register', restaurar:'Restore the example data', vaciar:'Clear (no calculations)',
  conf_importar:'The current T14 data will be replaced. Continue?', conf_restaurar:'The current data will be replaced by the example data. Continue?', conf_vaciar:'All calculations will be deleted (thresholds are kept). Continue?',
  ok_import:'Data imported.', ok_export:'File exported.', err_json:'The file is not a valid T14 JSON.', err_t01:'The file is not a complete T01 register.', ok_t01:'Calculation created from the T01 register "{o}" as at {f}. Complete the data the register does not contain.',
  t01_pide_fecha:'Cut-off date (YYYY-MM-DD). By default, the reference date of the register:',
@@ -358,7 +373,10 @@ function t(k, v){ let s = (TX[lang] && TX[lang][k]) ?? TX.es[k] ?? k; if(v) for(
 function esc(s){ return String(s ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c])); }
 function clon(o){ return JSON.parse(JSON.stringify(o)); }
 function toast(m){ const e=document.getElementById('toast'); e.textContent=m; e.classList.add('ver'); clearTimeout(toast._t); toast._t=setTimeout(()=>e.classList.remove('ver'),3200); }
-function guardar(){ if(!lsSet(LS_DATOS, JSON.stringify(D))) toast(t('no_guardado')); lsSet(LS_UI, JSON.stringify(UI)); if(window.SevengDatos) SevengDatos.guardado(); }
+function guardar(){ if(!lsSet(LS_DATOS, JSON.stringify(D))) toast(t('no_guardado')); lsSet(LS_UI, JSON.stringify(UI)); guardarResumen(); if(window.SevengDatos) SevengDatos.guardado(); }
+/* resumen del último cálculo para las demás herramientas del sitio (T15 lo usa en la lectura cruzada del 11 §7.2) */
+function guardarResumen(){ try{ const c = ordenados().slice(-1)[0]; if(!c){ lsDel(LS_RESUMEN); return; } const r = calcular(c.entradas, umbral(c.version_umbrales).parametros);
+  lsSet(LS_RESUMEN, JSON.stringify({herramienta:'T14', id:c.id, fecha_corte:c.fecha_corte, tipo:c.tipo, perfil_asignado:r.asignado, perfil_evidenciado:r.evidenciado, perfil_subyacente:r.subyacente||null, suma:r.suma, cobertura:r.cobertura, organizacion:(D.meta||{}).organizacion||null, datos_ilustrativos:!!(D.meta||{}).datos_ilustrativos})); }catch(e){} }
 function cargarDemo(){ return JSON.parse(DEMO_TXT); }
 function valido(x){ return x && typeof x==='object' && Array.isArray(x.umbrales) && Array.isArray(x.calculos) && x.umbrales.length; }
 
@@ -572,6 +590,34 @@ function desdeT01(reg, fecha){
   marca('s3', s3); marca('s4', s4); marca('s5', s5); marca('s6', E.s6); marca('s8', s8); marca('declaracion', {d1, d3:E.declaracion.d3});
   return {entradas:E, de_t01:deT01};
 }
+/* ---- D100: T01 es la fuente de verdad; T14 deriva de él y permite corregir en local ---- */
+function metaDesdeT01(reg){ const m = reg.meta||{}; D.meta = Object.assign({}, D.meta, {organizacion:m.organizacion||(D.meta||{}).organizacion||null, moneda:m.moneda||'EUR', datos_ilustrativos:!!m.datos_ilustrativos}); }
+function crearDesdeT01(reg, fecha, silencioso){
+  const def = (reg.meta||{}).fecha_referencia || hoy(); let f = fecha;
+  if(!f){ f = silencioso ? def : prompt(t('t01_pide_fecha'), def); if(f===null) return null; f = /^\d{4}-\d{2}-\d{2}$/.test(String(f).trim()) ? String(f).trim() : def; }
+  // un T14 recién abierto (datos de ejemplo o sin cálculos) toma la compañía del registro; con un registro real se retiran los cálculos de ejemplo
+  if((D.meta||{}).datos_ilustrativos || !D.calculos.length){ if(!(reg.meta||{}).datos_ilustrativos) D.calculos = []; metaDesdeT01(reg); }
+  const d = desdeT01(reg, f), x = {id:nuevoId(f), fecha_corte:f, tipo:'seguimiento', version_umbrales:D.umbrales[D.umbrales.length-1].version, origen:'t01', entradas:d.entradas, de_t01:d.de_t01,
+    t01:{organizacion:(reg.meta||{}).organizacion||null, fecha:f, iniciativas:reg.iniciativas.length, leido:hoy()}, notas:t('t01_nota',{f:fF(f)}), acciones:''};
+  D.calculos.push(x); UI.sel = x.id; guardar(); location.hash = '#/calculo'; render(); toast(silencioso ? t('t01_auto') : t('ok_t01',{o:(reg.meta||{}).organizacion||'', f:fF(f)})); return x;
+}
+/* vuelve a leer el registro y renueva solo los datos que siguen marcados «desde T01» (o que estaban sin dato); lo corregido a mano se conserva */
+function actualizarDesdeT01(c, reg){
+  const d = desdeT01(reg, c.fecha_corte); let n = 0; c.de_t01 = c.de_t01 || {}; c.entradas = c.entradas || {};
+  for(const [g] of GRUPOS){ const nuevo = d.entradas[g]||{}, act = c.entradas[g] = c.entradas[g]||{}, marcas = new Set(c.de_t01[g]||[]);
+    for(const f of CAMPOS[g]){ const k = f[0]; if(f[1]==='txt') continue; const v = nuevo[k] ?? null, viene = (d.de_t01[g]||[]).includes(k);
+      if(marcas.has(k)){ if(JSON.stringify(act[k] ?? null)!==JSON.stringify(v)) n++; act[k] = v; if(!viene) marcas.delete(k); }
+      else if(act[k]==null && viene && v!=null){ act[k] = v; marcas.add(k); n++; } }
+    c.de_t01[g] = [...marcas]; }
+  c.origen = 't01'; c.t01 = Object.assign({}, c.t01, {organizacion:(reg.meta||{}).organizacion||null, iniciativas:reg.iniciativas.length, leido:hoy()});
+  guardar(); render(); toast(t('ok_actualizar',{o:(reg.meta||{}).organizacion||'', n}));
+}
+function avisoT01Local(c){
+  const reg = registroT01Local();
+  return '<p class="aviso '+(reg?'info':'')+' sin-imprimir" id="t01-local" data-registro="'+(reg?'si':'no')+'">'+(reg
+    ? esc(t('t01_local',{o:(reg.meta||{}).organizacion||'', n:reg.iniciativas.length, f:fF((reg.meta||{}).fecha_referencia||'')}))+' <button type="button" data-acc="desde-t01">'+esc(t('t01_nuevo_local'))+'</button>'+(c && c.origen==='t01' ? ' <button type="button" data-acc="actualizar-t01">'+esc(t('t01_actualizar'))+'</button>' : '')
+    : esc(t('t01_local_no')))+' <button type="button" data-acc="desde-t01-fichero">'+esc(t('t01_fichero'))+'</button></p>';
+}
 
 /* ---------------- utilidades de datos ---------------- */
 function calcSel(){ return D.calculos.find(c=>c.id===UI.sel) || ordenados().slice(-1)[0] || null; }
@@ -592,13 +638,14 @@ function vistaCalculo(){
   const c = calcSel();
   let h = '<h1>'+esc(t('tit_calculo'))+'</h1><p class="ayuda">'+esc(t('sub_calculo'))+'</p>';
   h += '<div class="fila sin-imprimir"><button type="button" class="primario" data-acc="nuevo">'+esc(t('nuevo'))+'</button><button type="button" data-acc="desde-t01">'+esc(t('desde_t01'))+'</button>'+(c?'<button type="button" data-acc="duplicar">'+esc(t('duplicar'))+'</button><button type="button" data-acc="imprimir">'+esc(t('imprimir'))+'</button><button type="button" class="peligro" data-acc="eliminar">'+esc(t('eliminar'))+'</button>':'')+'</div>';
+  h += avisoT01Local(c);
   if(!c) return h+'<p class="aviso info">'+esc(t('ninguno'))+'</p>';
   const usada = umbral(c.version_umbrales);
   h += '<div class="cab-calc"><div class="campo"><label for="c-sel">'+esc(t('calculo'))+'</label><select id="c-sel" data-cab="sel">'+ordenados().map(x=>'<option value="'+esc(x.id)+'"'+(x.id===c.id?' selected':'')+'>'+esc(fF(x.fecha_corte)+' · '+t('tp_'+x.tipo))+'</option>').join('')+'</select></div>'+
     '<div class="campo"><label for="c-fecha">'+esc(t('fecha_corte'))+'</label><input type="date" id="c-fecha" data-cab="fecha_corte" value="'+esc(c.fecha_corte)+'"></div>'+
     '<div class="campo"><label for="c-tipo">'+esc(t('tipo'))+'</label><select id="c-tipo" data-cab="tipo">'+['formal','seguimiento','extraordinario'].map(x=>'<option value="'+x+'"'+(x===c.tipo?' selected':'')+'>'+esc(t('tp_'+x))+'</option>').join('')+'</select></div>'+
     '<div class="campo"><label for="c-umb">'+esc(t('version_umbrales'))+'</label><select id="c-umb" data-cab="version_umbrales">'+D.umbrales.map(u=>'<option value="'+esc(u.version)+'"'+(u.version===usada.version?' selected':'')+'>v'+esc(u.version)+'</option>').join('')+'</select></div>'+
-    '<div class="campo"><span class="ayuda">'+esc(t('origen_calc'))+': '+esc(t(c.origen==='t01'?'or_t01':'or_manual'))+'</span></div></div>';
+    '<div class="campo"><span class="ayuda">'+esc(t('origen_calc'))+': '+esc(c.origen==='t01' ? (c.t01 ? t('or_t01_de',{o:c.t01.organizacion||'', n:c.t01.iniciativas??'', f:fF(c.t01.leido||c.t01.fecha||'')}) : t('or_t01')) : t('or_manual'))+'</span></div></div>';
   h += '<div id="res">'+resultadoHTML(c)+'</div>';
   h += entradasHTML(c);
   return h;
@@ -687,7 +734,8 @@ function vistaUmbrales(){
 function vistaDatos(){
   return '<h1>'+esc(t('tit_datos'))+'</h1><p class="ayuda">'+esc(t('sub_datos'))+'</p><div class="fila">'+
     '<button type="button" class="primario" data-acc="exportar">'+esc(t('exportar'))+'</button><button type="button" data-acc="importar">'+esc(t('importar'))+'</button>'+
-    '<button type="button" data-acc="desde-t01">'+esc(t('cargar_t01'))+'</button><button type="button" data-acc="restaurar">'+esc(t('restaurar'))+'</button><button type="button" class="peligro" data-acc="vaciar">'+esc(t('vaciar'))+'</button></div>'+
+    '<button type="button" data-acc="desde-t01">'+esc(t('cargar_t01'))+'</button><button type="button" data-acc="desde-t01-fichero">'+esc(t('t01_fichero'))+'</button><button type="button" data-acc="restaurar">'+esc(t('restaurar'))+'</button><button type="button" class="peligro" data-acc="vaciar">'+esc(t('vaciar'))+'</button></div>'+
+    avisoT01Local(calcSel())+
     '<p class="ayuda" style="margin-top:12px">'+esc(t('pie_priv'))+'</p>';
 }
 
@@ -746,7 +794,9 @@ document.addEventListener('click', ev => {
   if(a==='eliminar' && c){ if(!confirm(t('conf_eliminar',{f:fF(c.fecha_corte)}))) return; D.calculos=D.calculos.filter(x=>x!==c); UI.sel=null; guardar(); render(); toast(t('ok_eliminado')); return; }
   if(a==='imprimir'){ window.print(); return; }
   if(a==='ver'){ UI.sel=b.dataset.id; guardar(); location.hash='#/calculo'; render(); return; }
-  if(a==='desde-t01'){ document.getElementById('f-t01').click(); return; }
+  if(a==='desde-t01'){ const reg = registroT01Local(); if(reg) crearDesdeT01(reg, null, false); else { toast(t('t01_local_no')); document.getElementById('f-t01').click(); } return; }
+  if(a==='desde-t01-fichero'){ document.getElementById('f-t01').click(); return; }
+  if(a==='actualizar-t01' && c){ const reg = registroT01Local(); if(!reg){ toast(t('t01_local_no')); return; } actualizarDesdeT01(c, reg); return; }
   if(a==='importar'){ document.getElementById('f-t14').click(); return; }
   if(a==='exportar'){ const blob=new Blob([JSON.stringify(datosExportables(),null,2)],{type:'application/json'}), u=URL.createObjectURL(blob), l=document.createElement('a'); l.href=u; l.download='t14_indice_transformacion_'+hoy()+'.json'; document.body.appendChild(l); l.click(); l.remove(); setTimeout(()=>URL.revokeObjectURL(u),1000); toast(t('ok_export')); return; }
   if(a==='restaurar'){ if(!confirm(t('conf_restaurar'))) return; D=cargarDemo(); SevengDatos.reiniciar('demo'); UI.sel=null; UI.umb=null; guardar(); render(); return; }
@@ -755,7 +805,7 @@ document.addEventListener('click', ev => {
     const base = D.umbrales.find(x=>x.version===UI.umb) || D.umbrales[D.umbrales.length-1]; D.umbrales.push({version:nom, fecha:hoy(), origen:'v'+base.version, aprobado_por:null, nota:'', parametros:clon(base.parametros)}); UI.umb=nom; guardar(); render(); toast(t('ok_version',{v:nom})); return; }
   if(a==='recalcular' && c){ c.version_umbrales = UI.umb || D.umbrales[D.umbrales.length-1].version; guardar(); location.hash='#/calculo'; render(); return; }
 });
-/* el JSON completo de la calculadora, con los resultados calculados: lo que descarga «Exportar» y lo que se escribe en el fichero del equipo (D101) */
+/* el JSON completo de la calculadora, con los resultados calculados: lo que descarga «Exportar» y lo que se escribe en el fichero del equipo (D103) */
 function datosExportables(){ const x=clon(D); x.version_esquema=VERSION_ESQUEMA; x.herramienta='T14'; x.meta=Object.assign({}, x.meta, {exportado:hoy(), aviso_legal:TX.es.legal_txt}); x.calculos.forEach((cc,i)=>{ cc.resultado = resultadoExport(D.calculos[i]); }); return x; }
 function leerFichero(inp, fn){ const f=inp.files[0]; if(!f) return; const rd=new FileReader(); rd.onload=()=>{ let x=null; try{ x=JSON.parse(rd.result); }catch(e){} inp.value=''; fn(x); }; rd.readAsText(f); }
 document.getElementById('f-t14').addEventListener('change', ev => leerFichero(ev.target, x => {
@@ -763,9 +813,7 @@ document.getElementById('f-t14').addEventListener('change', ev => leerFichero(ev
   x.calculos.forEach(c=>{ delete c.resultado; }); D=x; UI.sel=null; UI.umb=null; guardar(); render(); toast(t('ok_import')); }));
 document.getElementById('f-t01').addEventListener('change', ev => leerFichero(ev.target, reg => {
   if(!reg || !Array.isArray(reg.iniciativas) || !Array.isArray(reg.valores) || !Array.isArray(reg.decisiones_gate)){ toast(t('err_t01')); return; }
-  const def = (reg.meta||{}).fecha_referencia || hoy(); let f = prompt(t('t01_pide_fecha'), def); if(f===null) return; f = /^\d{4}-\d{2}-\d{2}$/.test(f.trim()) ? f.trim() : def;
-  const d = desdeT01(reg, f), x = {id:nuevoId(f), fecha_corte:f, tipo:'seguimiento', version_umbrales:D.umbrales[D.umbrales.length-1].version, origen:'t01', entradas:d.entradas, de_t01:d.de_t01, notas:t('t01_nota',{f:fF(f)}), acciones:''};
-  D.calculos.push(x); UI.sel=x.id; guardar(); location.hash='#/calculo'; render(); toast(t('ok_t01',{o:(reg.meta||{}).organizacion||'', f:fF(f)})); }));
+  crearDesdeT01(reg, null, false); }));
 // ---- integración en el sitio: barra de navegación y tema general compartido (clave «seveng-tema»: salmon, claro o noche) ----
 const LS_TEMA_SITIO = 'seveng-tema', LS_TEMA_AUTO = 'seveng-herramientas-tema-auto';
 let TEMA_SITIO_LEIDO = false;
@@ -801,11 +849,20 @@ window.addEventListener('hashchange', render);
   else if(!lsGet(LS_UI) && /^en\b/i.test(navigator.language||'')) UI.lang = 'en';
   lang = UI.lang==='en' ? 'en' : 'es';
   aplicarTema(); render();
-  /* D101: dónde viven los datos (este navegador, un fichero del equipo o la carpeta de datos de la copia de la compañía) */
+  /* D103: dónde viven los datos (este navegador, un fichero del equipo o la carpeta de datos de la copia de la compañía) */
   SevengDatos.iniciar({codigo:'T14', ficheroServidor:'../datos/T14_indice.json', cargadoDeDemo:CARGA_DEMO,
     obtener:()=>D, exportar:datosExportables, aplicar:d=>{ d.calculos.forEach(c=>{ delete c.resultado; }); D=d; UI.sel=null; UI.umb=null; guardar(); render(); }, validar:valido,
     esDemo:()=>!!(D.meta||{}).datos_ilustrativos, idioma:()=>lang, aviso:toast, nombreFichero:()=>'t14_indice_transformacion_'+hoy()+'.json',
     ayudaHref:()=>'../../html/'+lang+'/03_SEVEN-G_Herramientas_y_registro_de_iniciativas.html#'+(lang==='en'?'2-1-where-the-data-of-the-tools-lives':'2-1-donde-viven-los-datos-de-las-herramientas')});
+  // D100: carga automática desde el registro T01 de este navegador. Con «?desde=t01» (enlace del registro) se crea el cálculo a la fecha de
+  // referencia del registro o, si ya existe uno de ese origen y fecha, se actualiza; sin parámetro, un T14 recién abierto crea el cálculo
+  // solo si el registro es real (con el registro de demostración, los datos de ejemplo ya lo contienen).
+  const regLocal = registroT01Local();
+  if(regLocal){
+    const fRef = (regLocal.meta||{}).fecha_referencia || hoy(), existente = D.calculos.filter(c => c.origen==='t01' && c.fecha_corte===fRef).pop();
+    if(q.get('desde')==='t01'){ if(existente){ UI.sel = existente.id; actualizarDesdeT01(existente, regLocal); } else crearDesdeT01(regLocal, fRef, true); try{ history.replaceState(null, '', location.pathname + (location.hash||'#/calculo')); }catch(e){} }
+    else if(!lsGet(LS_DATOS) && !(regLocal.meta||{}).datos_ilustrativos) crearDesdeT01(regLocal, fRef, true);
+  }
 })();
 </script>
 </body>

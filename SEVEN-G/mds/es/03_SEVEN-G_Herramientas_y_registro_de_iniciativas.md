@@ -38,6 +38,7 @@ Este documento cumple dos funciones:
 | 5 | **Portabilidad** | Las herramientas de referencia funcionan sin servidor, en HTML con datos en JSON, y exportan a hoja de cálculo. El modelo de datos puede implantarse en el CRM, la herramienta de gestión de riesgos o la plataforma de gestión de proyectos que ya use la compañía. |
 | 6 | **Los datos son de la compañía** | Las herramientas no envían datos a terceros. Las demostraciones usan siempre datos ficticios. |
 | 7 | **"Sin dato" no es cero** | Un valor ausente se muestra como ausente y nunca se sustituye por una estimación no declarada. |
+| 8 | **Todo código citado es navegable** | Cuando una herramienta o un panel nombra un documento, una plantilla, otra herramienta, una puerta o un criterio (documento 40, P12, T06, G3.05…), ese código es un enlace a donde se explica, con su tooltip, y la barra de navegación ofrece «Ir a código» y «Citados aquí», la lista de todo lo que esa página o vista nombra. Lo hace el índice de códigos del sitio (`codigos.js`), común a documentos, herramientas y paneles; en el panel del consejo se activa con `navegacion.codigos`. |
 
 ### 2.1 Dónde viven los datos de las herramientas
 
@@ -216,7 +217,7 @@ La fase 6 no tiene plazo; se controla con la periodicidad de la revisión de con
 
 ## 4. Modelo de datos común
 
-El modelo es la base de todas las herramientas. Su especificación completa (campos, tipos, listas y reglas de validación) se publicará como esquema junto con la primera versión del registro.
+El modelo es la base de todas las herramientas. Su especificación completa (campos, tipos, listas cerradas y reglas de validación) es el esquema JSON del registro, `herramientas/T01_registro_iniciativas/esquema_registro.schema.json` (versión 0.6), que se publica con la herramienta T01 y que cada versión amplía solo con campos opcionales: un fichero de una versión anterior sigue siendo válido.
 
 | Entidad | Qué representa | Se relaciona con |
 |---|---|---|
@@ -234,6 +235,21 @@ El modelo es la base de todas las herramientas. Su especificación completa (cam
 | **Proveedor** | Tercero, servicios, criticidad, contrato, evaluación. | Sistemas, iniciativas |
 | **Recomendación** | Recomendación del consejo con identificador persistente, destinatario, estado y evidencia. | Iniciativas, sistemas |
 | **Decisión del consejo** | Decisión del consejo o de su comisión (DEC-AAAA-NNN) con órgano, tipo, asunto, resultado, límite de inversión por etapa, decisión de etapa, esferas con Transformar como objetivo y vínculos (62 §10); esquema 0.5. Es la fuente de la señal 8 y de la condición IT-D1 del índice. | Iniciativas, recomendaciones |
+| **Diagnóstico de madurez** | Resumen de cada diagnóstico de madurez (EM-AAAA-MM; documento 11): fecha de corte, modalidad, versión del cuestionario, nivel global, media ponderada, límite por D1 o D6 y nivel, avance y criterios bloqueantes de cada dimensión. Lo escribe T15 (las respuestas y las evidencias se quedan en T15) y lo muestra el panel del consejo; esquema 0.6. | Compañía |
+
+### 4.1 Qué lee y qué escribe cada herramienta
+
+El registro T01 es la **fuente de verdad** de la compañía: las demás herramientas derivan de él, muestran de dónde viene cada dato y permiten corregirlo en local sin que la corrección se pierda al volver a leer el registro. Nada se estima: lo que el registro no contiene queda «sin dato» y se completa a mano. Servidas desde el mismo sitio, las herramientas comparten el almacenamiento local del navegador, así que T11, T14 y T15 encuentran el registro por sí solas y le devuelven sus resultados; abiertas como ficheros sueltos, el intercambio se hace con los ficheros JSON que cada una exporta e importa. El detalle campo a campo está en `herramientas/mapa_datos.json`, que las pruebas de coherencia contrastan con el esquema.
+
+| Herramienta | Lee de T01 | Devuelve a T01 | Propio de la herramienta |
+|---|---|---|---|
+| **T11** (con T13) | Iniciativa (nombre, ambición, intensidad, fase, inversión realizada y pendiente) e importes esperados registrados. Un caso creado desde el registro se **actualiza** al volver a leerlo: se renuevan la identificación, los importes que siguen «desde T01» y los nuevos; una línea corregida a mano o descompuesta en unidades × valor unitario se conserva. | Los importes esperados del caso (eficiencias, retorno, capacidad liberada, coste recurrente e inversión), como esperados con fuente T11, y un evento de edición. | Parámetros (horizonte, tasa, coste horario), líneas de valor descompuestas, rampa, criterios de parada, etapas, costes por caso y conciliación. |
+| **T14** | Cartera (fases, estados, ambición, esferas, *gates*), importes realizados y validados, inversión, evidencia del índice de cada iniciativa, datos de la compañía (ingresos, IT-D3) y decisiones del consejo. Un cálculo hecho desde el registro se **actualiza** al volver a leerlo: solo se renuevan los datos que siguen marcados «desde T01». | Nada. Su resultado va al panel del consejo (T17) y deja el perfil del último cálculo para la lectura cruzada de T15. | Versiones de umbrales, cálculos con la marca de origen de cada dato, notas y acciones. |
+| **T15** | Compañía y muestra estratificada de iniciativas (Enterprise, en producción, Aumentar o Transformar, terceros, IA generativa o agentes; 11 §4.6). De T14, el perfil del último cálculo. | El resumen de cada diagnóstico (`madurez[]`): nivel global, media, límite por D1 o D6 y nivel por dimensión; nunca las respuestas. | Respuestas, evidencias, verificación, entrevistas, muestras, pesos, objetivos, mensajes y plan de mejora. |
+| **T17** (generador) | El JSON completo del registro: iniciativas, ciclo de vida, importes, incidentes, recomendaciones y el diagnóstico de madurez más reciente; de T14, el índice exportado. | Nada. | Configuración del panel (umbrales, ciclo de vida, navegación) y los paneles generados. |
+| **T06**, **T18** | Son vistas del propio registro. | — | — |
+
+**Por qué importa.** Sin una fuente de verdad, cada herramienta acaba con su propia versión de la compañía: el índice de transformación calculado con una cartera, el panel del consejo con otra y la madurez de una tercera. Fijar que todo deriva de T01, que cada dato lleva su procedencia y que lo corregido a mano no se pisa hace que el consejo, la Oficina de IA y el consultor lean la misma compañía en todas las herramientas.
 
 ---
 
