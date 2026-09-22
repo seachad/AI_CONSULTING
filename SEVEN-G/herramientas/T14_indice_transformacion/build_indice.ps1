@@ -78,7 +78,7 @@ if ($DesdeT01) {
   if (-not $Exportar) { throw 'Con -DesdeT01 hace falta -Exportar <fichero.json>' }
   if (-not (Test-Path $DesdeT01)) { throw "No se encuentra $DesdeT01" }
   $null = Get-Content $DesdeT01 -Raw -Encoding utf8 | ConvertFrom-Json -Depth 64
-  $edge = @("${env:ProgramFiles(x86)}\Microsoft\Edge\Application\msedge.exe", "$env:ProgramFiles\Microsoft\Edge\Application\msedge.exe") | Where-Object { Test-Path $_ } | Select-Object -First 1
+  $edge = @("${env:ProgramFiles(x86)}\Microsoft\Edge\Application\msedge.exe", "$env:ProgramFiles\Microsoft\Edge\Application\msedge.exe", (Get-Command microsoft-edge, google-chrome, chromium-browser, chromium -ErrorAction SilentlyContinue | Select-Object -First 1 -ExpandProperty Source), '/opt/pw-browsers/chromium') | Where-Object { $_ -and (Test-Path $_) } | Select-Object -First 1
   if (-not $edge) { throw 'Hace falta Microsoft Edge para calcular desde T01' }
   $js = @'
 setTimeout(function(){ try{
@@ -93,7 +93,10 @@ setTimeout(function(){ try{
   $perfil = Join-Path ([IO.Path]::GetTempPath()) ('t14_edge_' + [Guid]::NewGuid().ToString('N').Substring(0, 8))
   $puerto = Get-Random -Minimum 20000 -Maximum 40000
   $http = [System.Net.HttpListener]::new(); $http.Prefixes.Add("http://localhost:$puerto/"); $http.Start()
-  $proc = Start-Process -FilePath $edge -ArgumentList '--headless=new', '--disable-gpu', '--no-first-run', "--user-data-dir=$perfil", '--virtual-time-budget=6000', "http://localhost:$puerto/?lang=es" -PassThru -WindowStyle Hidden
+  $argsEdge = @('--headless=new', '--disable-gpu', '--no-first-run', "--user-data-dir=$perfil", '--virtual-time-budget=6000', "http://localhost:$puerto/?lang=es")
+  if (-not $IsWindows) { $argsEdge = @('--no-sandbox', '--ignore-certificate-errors') + $argsEdge }
+  $proc = if ($IsWindows) { Start-Process -FilePath $edge -ArgumentList $argsEdge -PassThru -WindowStyle Hidden }
+          else { Start-Process -FilePath $edge -ArgumentList $argsEdge -PassThru }
   $res = $null; $limite = (Get-Date).AddSeconds(45)
   try {
     while (-not $res -and (Get-Date) -lt $limite) {

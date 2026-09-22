@@ -25,8 +25,8 @@ if (-not $Datos)  { $Datos  = Join-Path $aqui 'datos_demo.json' }
 if (-not $Salida) { $Salida = Join-Path $aqui 'madurez.html' }
 $plantilla = Join-Path $aqui '_fuentes/madurez.plantilla.html'
 $rutaCuest = Join-Path $aqui 'cuestionario.json'
-$mds = Join-Path $aqui '..\..\mds'
-$doc = @{ es = (Join-Path $mds 'es\11_SEVEN-G_Modelo_de_madurez.md'); en = (Join-Path $mds 'en\11_SEVEN-G_Modelo_de_madurez.md') }
+$mds = Join-Path $aqui '../../mds'
+$doc = @{ es = (Join-Path $mds 'es/11_SEVEN-G_Modelo_de_madurez.md'); en = (Join-Path $mds 'en/11_SEVEN-G_Modelo_de_madurez.md') }
 
 # JSON compacto sin reinterpretar números ni escapar acentos; "</" se escapa para que no cierre el <script> que lo contiene
 function Compactar([string]$ruta) {
