@@ -56,10 +56,11 @@ param(
 
 $ErrorActionPreference = 'Stop'
 $repo     = Split-Path -Parent (Split-Path -Parent $PSScriptRoot)
+$tempBase = if ($env:TEMP) { $env:TEMP } else { [IO.Path]::GetTempPath().TrimEnd('/', '\') }
 $template = Get-Content (Join-Path $PSScriptRoot 'plantilla.html') -Raw -Encoding utf8
 $css      = Get-Content (Join-Path $PSScriptRoot 'estilo.css') -Raw -Encoding utf8
 $todos    = @('es', 'en')
-$herrRaiz = Join-Path $repo 'SEVEN-G\herramientas'
+$herrRaiz = Join-Path $repo 'SEVEN-G/herramientas'
 
 # ---- Configuración de cada metodología ----
 # bloques: bloques del índice y del panel de documentos; Bloque: bloque de un documento (ruta relativa) o $null si no entra en el índice.
@@ -166,8 +167,13 @@ $textos = @{
 $browser = @(
   "${env:ProgramFiles(x86)}\Microsoft\Edge\Application\msedge.exe",
   "$env:ProgramFiles\Microsoft\Edge\Application\msedge.exe",
-  "$env:ProgramFiles\Google\Chrome\Application\chrome.exe"
-) | Where-Object { Test-Path $_ } | Select-Object -First 1
+  "$env:ProgramFiles\Google\Chrome\Application\chrome.exe",
+  '/opt/pw-browsers/chromium',
+  (Get-Command microsoft-edge -ErrorAction SilentlyContinue).Source,
+  (Get-Command google-chrome -ErrorAction SilentlyContinue).Source,
+  (Get-Command chromium-browser -ErrorAction SilentlyContinue).Source,
+  (Get-Command chromium -ErrorAction SilentlyContinue).Source
+) | Where-Object { $_ -and (Test-Path $_) } | Select-Object -First 1
 if (-not $SinPdf -and -not $browser) { throw 'No se encuentra Edge ni Chrome para generar PDF.' }
 
 $mermaidScript = @'
@@ -233,7 +239,7 @@ function BloqueNavegacion([string]$rel) {
 # Un componente puede escribir {{N_DOCUMENTOS}}, {{N_PLANTILLAS}} y {{N_HERRAMIENTAS}}: se sustituyen por los mismos recuentos
 # que muestra el índice, para que no queden desfasados al añadir un documento, una plantilla o una herramienta.
 function Recuentos-Biblioteca([string]$lang) {
-  $dir = Join-Path $root "mds\$lang"
+  $dir = Join-Path $root "mds/$lang"
   $nDocs = 0; $nPlant = 0; $nHerr = 0
   foreach ($d in (Get-ChildItem $dir -Recurse -File -Filter '*.md' | Where-Object { $_.FullName -notmatch '[\\/]_trabajo[\\/]' })) {
     $b = & $cfg.Bloque ([IO.Path]::GetRelativePath($dir, $d.FullName) -replace '\\', '/')
@@ -252,7 +258,7 @@ function Recuentos-Biblioteca([string]$lang) {
 # Se genera como Markdown temporal y pasa por el mismo proceso que el resto: html/<idioma>/index.html (sin PDF).
 function Nuevo-Indice([string]$lang) {
   $en = $lang -eq 'en'
-  $dir = Join-Path $root "mds\$lang"
+  $dir = Join-Path $root "mds/$lang"
   $grupos = [ordered]@{}; foreach ($k in $bloquesIndice[$lang].Keys) { $grupos[$k] = [Collections.Generic.List[string]]::new() }
   $nDocs = 0; $nPlant = 0; $nHerr = 0
   foreach ($d in (Get-ChildItem $dir -Recurse -File -Filter '*.md' | Where-Object { $_.FullName -notmatch '[\\/]_trabajo[\\/]' } | Sort-Object FullName)) {
@@ -273,7 +279,7 @@ function Nuevo-Indice([string]$lang) {
       $readme = Join-Path $h.FullName $(if ($en -and (Test-Path (Join-Path $h.FullName 'README_en.md'))) { 'README_en.md' } else { 'README.md' })
       $tit = $h.Name
       if (Test-Path $readme) { $l = Select-String -Path $readme -Pattern '^#\s+(.+)$' -List -Encoding utf8; if ($l) { $tit = $l.Matches[0].Groups[1].Value.Trim() } }
-      $hrefApp = [IO.Path]::GetRelativePath((Join-Path $root "html\$lang"), $app.FullName).Replace('\', '/')
+      $hrefApp = [IO.Path]::GetRelativePath((Join-Path $root "html/$lang"), $app.FullName).Replace('\', '/')
       $grupos['I'].Add("| $(($h.Name -split '_')[0]) | [$tit]($hrefApp) | HTML |")
       $nHerr++
     }
@@ -312,7 +318,7 @@ function Nuevo-Indice([string]$lang) {
     [void]$sb.AppendLine()
   }
   # carpeta propia de cada proceso: dos generaciones simultáneas no deben leer el índice de la otra
-  $tmp = Join-Path $env:TEMP "seveng-indice-$PID\$($cfg.marca)\$lang\index.md"
+  $tmp = Join-Path $tempBase "seveng-indice-$PID/$($cfg.marca)/$lang/index.md"
   New-Item -ItemType Directory -Force (Split-Path $tmp) | Out-Null
   Set-Content -Path $tmp -Value $sb.ToString() -Encoding utf8
   $tmp
@@ -320,7 +326,7 @@ function Nuevo-Indice([string]$lang) {
 
 function ObtenerMapaReferencias([string]$lang) {
   $map = @{}
-  $dir = Join-Path $root "mds\$lang"
+  $dir = Join-Path $root "mds/$lang"
   foreach ($f in (Get-ChildItem $dir -Recurse -File -Filter '*.md' | Where-Object { $_.FullName -notmatch '[\\/]_trabajo[\\/]'})) {
     $rel = [IO.Path]::GetRelativePath($dir, $f.FullName).Replace('\', '/')
     $base = [IO.Path]::GetFileNameWithoutExtension($rel)
@@ -333,21 +339,21 @@ function ObtenerMapaReferencias([string]$lang) {
     foreach ($h in (Get-ChildItem $herrRaiz -Directory | Sort-Object Name)) {
       $app = Get-ChildItem $h.FullName -File -Filter '*.html' | Where-Object Name -notlike '_*' | Select-Object -First 1
       if (-not $app) { continue }
-      $map[$h.Name.Split('_')[0]] = [IO.Path]::GetRelativePath((Join-Path $root "html\$lang"), $app.FullName).Replace('\', '/')
+      $map[$h.Name.Split('_')[0]] = [IO.Path]::GetRelativePath((Join-Path $root "html/$lang"), $app.FullName).Replace('\', '/')
     }
   }
 
   # Ninguna herramienta citada queda sin enlace (D64). Los módulos de T01 enlazan a su vista del registro; el registro de
   # recomendaciones (T18) a la vista «Consejo» del registro (D71) o, sin registro, al documento 62, que lo define; y cada herramienta sin aplicación propia, al procedimiento con el que
   # «Se aplica» según la columna «Estado» del catálogo del documento 03 (la primera plantilla o documento que cita).
-  $htmlSevenG = Join-Path $repo "SEVEN-G\html\$lang"
-  $mdsSevenG = Join-Path $repo "SEVEN-G\mds\es"
+  $htmlSevenG = Join-Path $repo "SEVEN-G/html/$lang"
+  $mdsSevenG = Join-Path $repo "SEVEN-G/mds/es"
   $destinoSevenG = {
     param([string]$clave)
     $f = Get-ChildItem $mdsSevenG -Recurse -File -Filter "${clave}_*.md" | Where-Object { $_.FullName -notmatch '[\\/]_trabajo[\\/]' } | Select-Object -First 1
     if (-not $f) { return $null }
     $relHtml = [IO.Path]::ChangeExtension([IO.Path]::GetRelativePath($mdsSevenG, $f.FullName), '.html')
-    return [IO.Path]::GetRelativePath((Join-Path $root "html\$lang"), (Join-Path $htmlSevenG $relHtml)).Replace('\', '/')
+    return [IO.Path]::GetRelativePath((Join-Path $root "html/$lang"), (Join-Path $htmlSevenG $relHtml)).Replace('\', '/')
   }
   if ($map['T01']) {
     foreach ($par in @(@('T02', '#/inventario'), @('T03', '#/gates'), @('T04', ''), @('T05', ''), @('T06', '#/riesgos'), @('T18', '#/consejo'))) {
@@ -506,10 +512,10 @@ if ($metodologia -eq 'SEVEN-G') { & (Join-Path $PSScriptRoot 'docx.ps1') -Idioma
 foreach ($lang in $Idiomas) {
   $t       = $textos[$lang].Clone()
   foreach ($k in @('T_TT_INICIO', 'T_METODOLOGIA')) { $t[$k] = $cfg[$lang][$k] }
-  $mdsDir  = Join-Path $root "mds\$lang"
-  $htmlDir = Join-Path $root "html\$lang"
-  $pdfDir  = Join-Path $root "pdf\$lang"
-  $compDirs = @((Join-Path $root "build\componentes\$lang"), (Join-Path $PSScriptRoot "componentes\$lang")) | Select-Object -Unique
+  $mdsDir  = Join-Path $root "mds/$lang"
+  $htmlDir = Join-Path $root "html/$lang"
+  $pdfDir  = Join-Path $root "pdf/$lang"
+  $compDirs = @((Join-Path $root "build/componentes/$lang"), (Join-Path $PSScriptRoot "componentes/$lang")) | Select-Object -Unique
   if (-not (Test-Path $mdsDir)) { Write-Warning "No existe $mdsDir"; continue }
 
   $files = @(Get-ChildItem $mdsDir -Recurse -File -Filter $Filter | Where-Object Extension -eq '.md')
@@ -570,8 +576,8 @@ foreach ($lang in $Idiomas) {
     $pdfOtroHref = $null
     $otroLang = if ($lang -eq 'es') { 'en' } else { 'es' }
     $otroRel = if ($esIndice) { 'index.md' } else { $rel }
-    $otroHtml = Join-Path $root "html\$otroLang\$([IO.Path]::ChangeExtension($otroRel, '.html'))"
-    $otroPdf = Join-Path $root "pdf\$otroLang\$([IO.Path]::ChangeExtension($otroRel, '.pdf'))"
+    $otroHtml = Join-Path $root "html/$otroLang/$([IO.Path]::ChangeExtension($otroRel, '.html'))"
+    $otroPdf = Join-Path $root "pdf/$otroLang/$([IO.Path]::ChangeExtension($otroRel, '.pdf'))"
     if (Test-Path $otroPdf) { $pdfOtroHref = [IO.Path]::GetRelativePath((Split-Path $htmlOut), $otroPdf).Replace('\\', '/').Replace('\', '/') }
 
     $md   = Get-Content $f.FullName -Raw -Encoding utf8
@@ -692,11 +698,11 @@ foreach ($lang in $Idiomas) {
       $etq = $_.ToUpperInvariant()
       if ($_ -eq $lang) { "<span class=""activo"" aria-current=""true"">$etq</span>" }
       else {
-        $otroMd = Join-Path $root "mds\$_\$rel"
+        $otroMd = Join-Path $root "mds/$_/$rel"
         if ($esIndice) {
           "<a href=""../$_/index.html"" hreflang=""$_"" lang=""$_"">$etq</a>"
         } elseif (Test-Path $otroMd) {
-          $destino = Join-Path $root "html\$_\$relBase.html"
+          $destino = Join-Path $root "html/$_/$relBase.html"
           $href = [IO.Path]::GetRelativePath((Split-Path $htmlOut), $destino).Replace('\', '/')
           "<a href=""$href"" hreflang=""$_"" lang=""$_"">$etq</a>"
         } else {
@@ -709,7 +715,7 @@ foreach ($lang in $Idiomas) {
     $homeHtml = Join-Path $htmlDir "$($cfg.inicio).html"
     $homeHref = [IO.Path]::GetRelativePath((Split-Path $htmlOut), $homeHtml).Replace('\\', '/').Replace('\', '/')
     # ⌂ lleva a la portada general del sitio (todas las metodologías), en el idioma del documento; la marca, al documento 00
-    $portadaHtml = Join-Path $repo $(if ($lang -eq 'en') { 'en\index.html' } else { 'index.html' })
+    $portadaHtml = Join-Path $repo $(if ($lang -eq 'en') { 'en/index.html' } else { 'index.html' })
     $portadaHref = [IO.Path]::GetRelativePath((Split-Path $htmlOut), $portadaHtml).Replace('\', '/')
 
     # ---- Zona de descargas y herramientas (visible bajo la portada y en el panel) ----
@@ -722,7 +728,7 @@ foreach ($lang in $Idiomas) {
       $enlacesDoc.Add("<a class=""dz-item"" href=""$pdfSameHref"" target=""_blank"" rel=""noopener""><span class=""dz-tipo"">PDF</span><b>$pdfLabel</b></a>")
       if ($pdfOtroHref) { $enlacesDoc.Add("<a class=""dz-item"" href=""$pdfOtroHref"" target=""_blank"" rel=""noopener""><span class=""dz-tipo"">PDF</span><b>$otroLabel</b></a>") }
       # plantilla editable en Word, del mismo idioma (D67)
-      $docxOut = Join-Path $root "docx\$lang\$relBase.docx"
+      $docxOut = Join-Path $root "docx/$lang/$relBase.docx"
       if (Test-Path $docxOut) {
         $docxHref = [IO.Path]::GetRelativePath((Split-Path $htmlOut), $docxOut).Replace('\', '/')
         $docxLabel = if ($en) { 'Editable template (Word)' } else { 'Plantilla editable (Word)' }
@@ -790,15 +796,22 @@ foreach ($lang in $Idiomas) {
 
     if (-not $SinPdf -and -not $esIndice) {
       New-Item -ItemType Directory -Force (Split-Path $pdfOut) | Out-Null
-      $perfil = Join-Path $env:TEMP "seveng-pdf-$PID"
-      $uri = ([Uri]$htmlOut).AbsoluteUri
+      $perfil = Join-Path $tempBase "seveng-pdf-$PID"
+      $uriPath = $htmlOut -replace '\\', '/'
+      if ($uriPath -notmatch '^/') { $uriPath = "/$uriPath" }
+      $uri = ([Uri]"file://$uriPath").AbsoluteUri
+      $argUserData = if ($IsWindows) { "--user-data-dir=`"$perfil`"" } else { "--user-data-dir=$perfil" }
+      $argPrintPdf = if ($IsWindows) { "--print-to-pdf=`"$pdfOut`"" } else { "--print-to-pdf=$pdfOut" }
       $argumentos = @('--headless=new', '--disable-gpu', '--no-first-run', '--no-pdf-header-footer',
-                      '--virtual-time-budget=20000', "--user-data-dir=`"$perfil`"", "--print-to-pdf=`"$pdfOut`"", $uri)
-      Start-Process -FilePath $browser -ArgumentList $argumentos -Wait -WindowStyle Hidden
+                      '--virtual-time-budget=20000', $argUserData, $argPrintPdf, $uri)
+      if (-not $IsWindows) { $argumentos = @('--no-sandbox', '--ignore-certificate-errors') + $argumentos }
+      Remove-Item -Force $pdfOut -ErrorAction SilentlyContinue
+      if ($IsWindows) { Start-Process -FilePath $browser -ArgumentList $argumentos -Wait -WindowStyle Hidden }
+      else { Start-Process -FilePath $browser -ArgumentList $argumentos -Wait }
       if (Test-Path $pdfOut) { Write-Host "PDF   [$lang] $rel" } else { Write-Warning "No se generó $pdfOut" }
     }
   }
 }
 }
 # índices temporales de este proceso
-Remove-Item -Recurse -Force (Join-Path $env:TEMP "seveng-indice-$PID") -ErrorAction SilentlyContinue
+Remove-Item -Recurse -Force (Join-Path $tempBase "seveng-indice-$PID") -ErrorAction SilentlyContinue

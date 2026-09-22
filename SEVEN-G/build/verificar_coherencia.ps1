@@ -30,6 +30,7 @@
 param([switch]$SinNavegador)
 $ErrorActionPreference = 'Stop'
 $repo = Split-Path -Parent (Split-Path -Parent $PSScriptRoot)
+$homeUsuario = if ($env:USERPROFILE) { $env:USERPROFILE } else { $HOME }
 $errores = [Collections.Generic.List[string]]::new(); $avisos = [Collections.Generic.List[string]]::new()
 function Ok([string]$m) { Write-Host "  ok   $m" }
 function Mal([string]$m) { $script:errores.Add($m); Write-Host "  MAL  $m" -ForegroundColor Red }
@@ -41,7 +42,7 @@ try {
   # ---- 1. paridad ES/EN y salidas
   Write-Host '1. Paridad ES/EN y salidas HTML/PDF'
   foreach ($met in 'SEVEN-G', 'SPHERES', 'SPAD') {
-    $mds = Join-Path $repo "$met\mds"; if (-not (Test-Path $mds)) { continue }
+    $mds = Join-Path $repo "$met/mds"; if (-not (Test-Path $mds)) { continue }
     $rel = @{}
     foreach ($lang in 'es', 'en') {
       $base = Join-Path $mds $lang
@@ -55,7 +56,7 @@ try {
     foreach ($lang in 'es', 'en') {
       foreach ($x in ($rel[$lang] | Where-Object { $_ -notlike '_*' -and $_ -notlike '*/_*' })) {
         $b = $x.Substring(0, $x.Length - 3)
-        foreach ($s in @("html\$lang\$b.html", "pdf\$lang\$b.pdf")) { if (-not (Test-Path (Join-Path $repo "$met\$s"))) { Mal "$met`: falta $s"; $faltan++ } }
+        foreach ($s in @("html/$lang/$b.html", "pdf/$lang/$b.pdf")) { if (-not (Test-Path (Join-Path $repo "$met/$s"))) { Mal "$met`: falta $s"; $faltan++ } }
       }
     }
     if (-not $soloEs -and -not $soloEn -and -not $faltan) { Ok "$met`: $($rel.es.Count) documentos ES y $($rel.en.Count) EN, con HTML y PDF" }
@@ -64,7 +65,7 @@ try {
   # Markdown: una línea «---» o «===» pegada a un párrafo o a una tabla convierte ese texto en un título (y estropea el índice del
   # documento y el PDF). Se exige una línea en blanco antes del separador; los bloques de código no cuentan.
   Write-Host '1b. Separadores del Markdown'
-  $pegados = foreach ($f in (Get-ChildItem (Join-Path $repo 'SEVEN-G\mds'), (Join-Path $repo 'SPHERES\mds'), (Join-Path $repo 'SPAD\mds') -Recurse -File -Filter *.md)) {
+  $pegados = foreach ($f in (Get-ChildItem (Join-Path $repo 'SEVEN-G/mds'), (Join-Path $repo 'SPHERES/mds'), (Join-Path $repo 'SPAD/mds') -Recurse -File -Filter *.md)) {
     $l = [IO.File]::ReadAllLines($f.FullName); $enCodigo = $false
     for ($i = 0; $i -lt $l.Count; $i++) {
       if ($l[$i] -match '^\s*(```|~~~)') { $enCodigo = -not $enCodigo; continue }
@@ -72,7 +73,7 @@ try {
     }
   }
   foreach ($x in $pegados) { Mal "separador pegado al texto anterior (falta una línea en blanco): $x" }
-  $titulosRotos = Get-ChildItem (Join-Path $repo 'SEVEN-G\html'), (Join-Path $repo 'SPHERES\html'), (Join-Path $repo 'SPAD\html') -Recurse -File -Filter *.html | Select-String -Pattern '<h[23][^>]*>(<span[^>]*>[^<]*</span>)?\s*\|' -List
+  $titulosRotos = Get-ChildItem (Join-Path $repo 'SEVEN-G/html'), (Join-Path $repo 'SPHERES/html'), (Join-Path $repo 'SPAD/html') -Recurse -File -Filter *.html | Select-String -Pattern '<h[23][^>]*>(<span[^>]*>[^<]*</span>)?\s*\|' -List
   foreach ($x in $titulosRotos) { Mal "título generado a partir de una tabla: $([IO.Path]::GetRelativePath($repo, $x.Path))" }
   if (-not $pegados -and -not $titulosRotos) { Ok 'sin separadores pegados ni títulos generados a partir de tablas' }
 
@@ -80,7 +81,7 @@ try {
   # se escriben \<CAT\>; dentro de código (`…`) van tal cual
   Write-Host '1d. Marcadores entre < > sin escapar'
   $etiquetasHtml = 'br|b|i|u|em|strong|sub|sup|span|div|a|p|small|code|kbd|details|summary|figure|figcaption|img|table|thead|tbody|tr|td|th|ul|ol|li|svg|path|g|rect|text|line|circle|polygon|defs|marker|tspan'
-  $sinEscapar = foreach ($f in (Get-ChildItem (Join-Path $repo 'SEVEN-G\mds'), (Join-Path $repo 'SPHERES\mds'), (Join-Path $repo 'SPAD\mds') -Recurse -File -Filter *.md | Where-Object { $_.FullName -notmatch '[\\/]_trabajo[\\/]' })) {
+  $sinEscapar = foreach ($f in (Get-ChildItem (Join-Path $repo 'SEVEN-G/mds'), (Join-Path $repo 'SPHERES/mds'), (Join-Path $repo 'SPAD/mds') -Recurse -File -Filter *.md | Where-Object { $_.FullName -notmatch '[\\/]_trabajo[\\/]' })) {
     $enCodigo = $false; $i = 0
     foreach ($l in [IO.File]::ReadAllLines($f.FullName)) {
       $i++; if ($l -match '^\s*(```|~~~)') { $enCodigo = -not $enCodigo; continue }; if ($enCodigo) { continue }
@@ -94,7 +95,7 @@ try {
   # enlaces locales de los HTML generados: cada href o src relativo debe existir en disco, y cada ancla interna, en la página
   Write-Host '1c. Enlaces locales de los HTML generados'
   $rotos = [Collections.Generic.List[string]]::new(); $nEnlaces = 0
-  foreach ($f in (Get-ChildItem (Join-Path $repo 'SEVEN-G\html'), (Join-Path $repo 'SPHERES\html'), (Join-Path $repo 'SPAD\html') -Recurse -File -Filter *.html | Where-Object { $_.FullName -notmatch '[\\/]_trabajo[\\/]' })) {
+  foreach ($f in (Get-ChildItem (Join-Path $repo 'SEVEN-G/html'), (Join-Path $repo 'SPHERES/html'), (Join-Path $repo 'SPAD/html') -Recurse -File -Filter *.html | Where-Object { $_.FullName -notmatch '[\\/]_trabajo[\\/]' })) {
     $html = [IO.File]::ReadAllText($f.FullName); $sinScript = [regex]::Replace($html, '(?s)<script\b.*?</script>', '')
     foreach ($a in [regex]::Matches($sinScript, '\s(?:href|src)="([^"]+)"')) {
       $u = $a.Groups[1].Value
@@ -114,7 +115,7 @@ try {
   # diagramas (salen de un comentario «grafico:» y no admiten enlaces).
   Write-Host '1e. Herramientas citadas sin enlace'
   $sinEnlace = [Collections.Generic.List[string]]::new()
-  foreach ($f in (Get-ChildItem (Join-Path $repo 'SEVEN-G\html'), (Join-Path $repo 'SPHERES\html'), (Join-Path $repo 'SPAD\html') -Recurse -File -Filter *.html -ErrorAction SilentlyContinue | Where-Object { $_.FullName -notmatch '[\\/]_trabajo[\\/]' })) {
+  foreach ($f in (Get-ChildItem (Join-Path $repo 'SEVEN-G/html'), (Join-Path $repo 'SPHERES/html'), (Join-Path $repo 'SPAD/html') -Recurse -File -Filter *.html -ErrorAction SilentlyContinue | Where-Object { $_.FullName -notmatch '[\\/]_trabajo[\\/]' })) {
     $txt = [regex]::Replace([IO.File]::ReadAllText($f.FullName), '(?s)<head\b.*?</head>|<script\b.*?</script>|<style\b.*?</style>|<a\b.*?</a>|<code\b.*?</code>|<div class="g-(?:titulo|sub)">.*?</div>|<pre class="mermaid">.*?</pre>', ' ')
     $txt = [regex]::Replace($txt, '<[^>]+>', ' ')
     $cods = @([regex]::Matches($txt, '(?<![\w/\-])T(0[1-9]|1\d|2[0-2])(?![\w])') | ForEach-Object Value | Select-Object -Unique)
@@ -127,10 +128,10 @@ try {
   # SEVEN-G 0.1 es operativa (D40): sus documentos no dicen que otros documentos o herramientas estén en redacción o pendientes.
   # Y la adaptación a organizaciones pequeñas no rebaja lo que 01 §9.3 exige a las iniciativas Enterprise (D66).
   Write-Host '1f. SEVEN-G operativa y alcance Lite coherente con 01'
-  $provisional = Get-ChildItem (Join-Path $repo 'SEVEN-G\mds') -Recurse -File -Filter *.md | Where-Object { $_.FullName -notmatch '[\\/]_trabajo[\\/]' } |
+  $provisional = Get-ChildItem (Join-Path $repo 'SEVEN-G/mds') -Recurse -File -Filter *.md | Where-Object { $_.FullName -notmatch '[\\/]_trabajo[\\/]' } |
     Select-String -Pattern 'en redacción|mientras no est[ée]n? (publicad|disponib|construid)|no esté construida|being drafted|until they are published|has not been built|while they are not available'
   foreach ($x in $provisional) { Mal "texto provisional en SEVEN-G (D40): $([IO.Path]::GetRelativePath($repo, $x.Path)):$($x.LineNumber)" }
-  $liteRebajado = Get-ChildItem (Join-Path $repo 'SEVEN-G\mds') -Recurse -File -Filter '30_*.md' | Select-String -Pattern 'al menos en G3 y G5|at least at G3 and G5|mensual o bimestral|monthly or bimonthly'
+  $liteRebajado = Get-ChildItem (Join-Path $repo 'SEVEN-G/mds') -Recurse -File -Filter '30_*.md' | Select-String -Pattern 'al menos en G3 y G5|at least at G3 and G5|mensual o bimestral|monthly or bimonthly'
   foreach ($x in $liteRebajado) { Mal "30 §11 contradice 01 §5.2 o §9.3 (D66): $([IO.Path]::GetRelativePath($repo, $x.Path)):$($x.LineNumber)" }
   if (-not $provisional -and -not $liteRebajado) { Ok 'sin textos provisionales y con la adaptación Lite alineada con 01' }
 
@@ -140,7 +141,7 @@ try {
   $navCortos = [Collections.Generic.List[string]]::new()
   foreach ($met in 'SEVEN-G', 'SPHERES', 'SPAD') {
     foreach ($lang in 'es', 'en') {
-      $mdsL = Join-Path $repo "$met\mds\$lang"; $htmlL = Join-Path $repo "$met\html\$lang"
+      $mdsL = Join-Path $repo "$met/mds/$lang"; $htmlL = Join-Path $repo "$met/html/$lang"
       if (-not (Test-Path $mdsL) -or -not (Test-Path $htmlL)) { continue }
       $esperado = @(Get-ChildItem $mdsL -Recurse -File -Filter *.md | Where-Object { $_.FullName -notmatch '[\\/]_trabajo[\\/]' }).Count + 1
       foreach ($f in (Get-ChildItem $htmlL -Recurse -File -Filter *.html)) {
@@ -160,7 +161,7 @@ try {
   Write-Host '1h. Mapa de uso del documento 00'
   $mapaMal = 0
   foreach ($lang in 'es', 'en') {
-    $f = Join-Path $repo "SEVEN-G\html\$lang\00_SEVEN-G_Que_es_y_para_que_sirve.html"
+    $f = Join-Path $repo "SEVEN-G/html/$lang/00_SEVEN-G_Que_es_y_para_que_sirve.html"
     if (-not (Test-Path $f)) { continue }
     # D73: antes del mapa, el diagrama conceptual del flujo (puertas, iterar, pivotar, parar y bucle de operación)
     $html00 = [IO.File]::ReadAllText($f)
@@ -185,7 +186,7 @@ try {
   Write-Host '1i. Inicio rápido del documento 00'
   $inicioMal = 0
   foreach ($lang in 'es', 'en') {
-    $f = Join-Path $repo "SEVEN-G\html\$lang\00_SEVEN-G_Que_es_y_para_que_sirve.html"
+    $f = Join-Path $repo "SEVEN-G/html/$lang/00_SEVEN-G_Que_es_y_para_que_sirve.html"
     if (-not (Test-Path $f)) { continue }
     $html00 = [IO.File]::ReadAllText($f)
     $idInicio = if ($lang -eq 'es') { 'inicio-rapido-quick-start' } else { 'quick-start' }
@@ -207,7 +208,7 @@ try {
   Write-Host '1j. Recuadro «Lo esencial», matriz de obligatoriedad y curso'
   $capasMal = 0
   $rotuloNivel = @{ siempre = 'Siempre'; enterprise = 'Enterprise'; condicional = 'Condicional'; recomendado = 'Recomendado'; consulta = 'Consulta' }
-  $mdsEs = Join-Path $repo 'SEVEN-G\mds\es'; $mdsEn = Join-Path $repo 'SEVEN-G\mds\en'
+  $mdsEs = Join-Path $repo 'SEVEN-G/mds/es'; $mdsEn = Join-Path $repo 'SEVEN-G/mds/en'
   $f94 = Get-ChildItem $mdsEs -File -Filter '94_*.md' | Select-Object -First 1
   $matriz = @{}
   if ($f94) { foreach ($m in [regex]::Matches([IO.File]::ReadAllText($f94.FullName), '(?m)^\|\s*(\d{2})\s*\|\s*\[[^\]]+\]\([^)]+\)\s*\|\s*\*\*(\w+)\*\*')) { $matriz[$m.Groups[1].Value] = $m.Groups[2].Value } }
@@ -220,7 +221,7 @@ try {
       $dirs = [regex]::Matches([IO.File]::ReadAllText($par[1]), '<!--\s*esencial:\s*(\w+)\s*\|')
       if ($dirs.Count -ne 1) { Mal "$num [$($par[0])]: se espera una directiva «esencial» y hay $($dirs.Count)"; $capasMal++; continue }
       $niveles[$par[0]] = $dirs[0].Groups[1].Value.ToLowerInvariant()
-      $html = Join-Path $repo "SEVEN-G\html\$($par[0])\$($d.BaseName).html"
+      $html = Join-Path $repo "SEVEN-G/html/$($par[0])/$($d.BaseName).html"
       if ((Test-Path $html) -and [IO.File]::ReadAllText($html) -notmatch '<aside class="esencial" data-capa="') { Mal "$num [$($par[0])]: el HTML no muestra el recuadro «Lo esencial» (regenerar)"; $capasMal++ }
     }
     if ($niveles.es -and -not $rotuloNivel.ContainsKey($niveles.es)) { Mal "$num`: nivel de «esencial» desconocido: $($niveles.es)"; $capasMal++; continue }
@@ -231,35 +232,35 @@ try {
     }
   }
   foreach ($lang in 'es', 'en') {
-    $cursoDir = Join-Path $repo "SEVEN-G\mds\$lang\curso"
+    $cursoDir = Join-Path $repo "SEVEN-G/mds/$lang/curso"
     $mods = @(Get-ChildItem $cursoDir -File -Filter 'M*.md' -ErrorAction SilentlyContinue)
     if ($mods.Count -lt 10) { Mal "curso [$lang]: se esperan la guía y nueve módulos y hay $($mods.Count) ficheros"; $capasMal++; continue }
     $guia = [IO.File]::ReadAllText((Join-Path $cursoDir 'M00_SEVEN-G_Curso_Guia_del_curso.md'))
     foreach ($mod in ($mods | Where-Object Name -ne 'M00_SEVEN-G_Curso_Guia_del_curso.md')) { if (-not $guia.Contains("$($mod.BaseName).html")) { Mal "curso [$lang]: la guía no enlaza $($mod.BaseName)"; $capasMal++ } }
     foreach ($n in '00', '94') {
-      $doc = Get-ChildItem (Join-Path $repo "SEVEN-G\mds\$lang") -File -Filter "${n}_*.md" | Select-Object -First 1
+      $doc = Get-ChildItem (Join-Path $repo "SEVEN-G/mds/$lang") -File -Filter "${n}_*.md" | Select-Object -First 1
       if ($doc -and -not [IO.File]::ReadAllText($doc.FullName).Contains('curso/M00_SEVEN-G_Curso_Guia_del_curso.html')) { Mal "$n [$lang]: no enlaza el curso"; $capasMal++ }
     }
     # el curso es una de las formas de empezar del inicio rápido del documento 00 (entre «30 minutos» y «90 días»)
-    $html00c = Join-Path $repo "SEVEN-G\html\$lang\00_SEVEN-G_Que_es_y_para_que_sirve.html"
+    $html00c = Join-Path $repo "SEVEN-G/html/$lang/00_SEVEN-G_Que_es_y_para_que_sirve.html"
     if (Test-Path $html00c) {
       $pasos = [regex]::Match([IO.File]::ReadAllText($html00c), '(?s)<div class="ir-pasos">.*?</div>\s*</div>').Value
       if ([regex]::Matches($pasos, '<div class="ir-paso"><b>').Count -ne 4 -or -not $pasos.Contains('curso/M00_SEVEN-G_Curso_Guia_del_curso.html')) { Mal "00 [$lang]: el inicio rápido no ofrece el curso entre sus cuatro formas de empezar"; $capasMal++ }
     }
-    $portada = Join-Path $repo $(if ($lang -eq 'en') { 'en\index.html' } else { 'index.html' })
+    $portada = Join-Path $repo $(if ($lang -eq 'en') { 'en/index.html' } else { 'index.html' })
     if (-not [IO.File]::ReadAllText($portada).Contains("html/$lang/curso/M00_SEVEN-G_Curso_Guia_del_curso.html")) { Mal "portada [$lang]: no enlaza el curso"; $capasMal++ }
   }
   if (-not $capasMal) { Ok "«Lo esencial» en $($matriz.Count) documentos, coherente con la matriz (94) en ES y EN; curso completo y enlazado" }
 
   # ---- 2 y 3. textos internos o de clientes, y aviso legal
   Write-Host '2. Textos internos o de clientes en lo publicable'
-  $publicables = @(Get-Item (Join-Path $repo 'index.html'), (Join-Path $repo 'en\index.html'))
-  foreach ($c in 'SEVEN-G\html', 'SEVEN-G\herramientas', 'SPHERES\html', 'SPAD\html') {
+  $publicables = @(Get-Item (Join-Path $repo 'index.html'), (Join-Path $repo 'en/index.html'))
+  foreach ($c in 'SEVEN-G/html', 'SEVEN-G/herramientas', 'SPHERES/html', 'SPAD/html') {
     $d = Join-Path $repo $c
     if (Test-Path $d) { $publicables += Get-ChildItem $d -Recurse -File -Include *.html, *.md, *.json, *.py | Where-Object { $_.FullName -notmatch '[\\/](_[^\\/]*|__pycache__)[\\/]' } }
   }
   $patrones = @('_trabajo', 'notas_internas', 'C:\\SEACHAD', 'OneDrive')
-  $lista = Join-Path $env:USERPROFILE '.seveng\terminos_prohibidos.txt'
+  $lista = Join-Path $homeUsuario '.seveng/terminos_prohibidos.txt'
   # un término por línea, buscado como texto literal sin distinguir mayúsculas; una línea «re:<expresión>» es una expresión regular
   # (p. ej., re:\bSIGLA\b(?!_) para una sigla que también forma parte de palabras corrientes o de claves de datos)
   if (Test-Path $lista) { $patrones += Get-Content $lista -Encoding utf8 | Where-Object { $_.Trim() -and -not $_.StartsWith('#') } | ForEach-Object { $x = $_.Trim(); if ($x.StartsWith('re:')) { $x.Substring(3) } else { [regex]::Escape($x) } } }
@@ -277,21 +278,21 @@ try {
   }
 
   Write-Host '3. Aviso legal en herramientas y paneles'
-  $conAviso = @('index.html', 'en\index.html', 'SEVEN-G\herramientas\T01_registro_iniciativas\registro.html', 'SEVEN-G\herramientas\T14_indice_transformacion\indice.html', 'SEVEN-G\herramientas\T11_calculadora_valor\calculadora.html', 'SEVEN-G\herramientas\T15_diagnostico_madurez\madurez.html','SEVEN-G\herramientas\T17_panel_consejo\index.html', 'SEVEN-G\herramientas\comunidad\index.html') +
-    @(Get-ChildItem (Join-Path $repo 'SEVEN-G\herramientas\T17_panel_consejo\ejemplo\salida') -Filter *.html | ForEach-Object { [IO.Path]::GetRelativePath($repo, $_.FullName) })
+  $conAviso = @('index.html', 'en/index.html', 'SEVEN-G/herramientas/T01_registro_iniciativas/registro.html', 'SEVEN-G/herramientas/T14_indice_transformacion/indice.html', 'SEVEN-G/herramientas/T11_calculadora_valor/calculadora.html', 'SEVEN-G/herramientas/T15_diagnostico_madurez/madurez.html','SEVEN-G/herramientas/T17_panel_consejo/index.html', 'SEVEN-G/herramientas/comunidad/index.html') +
+    @(Get-ChildItem (Join-Path $repo 'SEVEN-G/herramientas/T17_panel_consejo/ejemplo/salida') -Filter *.html | ForEach-Object { [IO.Path]::GetRelativePath($repo, $_.FullName) })
   $sin = $conAviso | Where-Object { -not (Select-String -Path (Join-Path $repo $_) -Pattern 'Aviso legal|Legal notice' -Quiet) }
   foreach ($x in $sin) { Mal "sin aviso legal: $x" }
   if (-not $sin) { Ok "$($conAviso.Count) páginas con aviso legal" }
 
   # aviso de versión en revisión (D58) en las páginas principales mientras el marco esté en la versión 0.x; se retira al pasar a la 1.x
-  $principales = @('index.html', 'en\index.html') + @(foreach ($met in 'SEVEN-G', 'SPHERES', 'SPAD') { foreach ($lang in 'es', 'en') { "$met\html\$lang\index.html"; "$met\html\$lang\00_${met}_Que_es_y_para_que_sirve.html" } })
+  $principales = @('index.html', 'en/index.html') + @(foreach ($met in 'SEVEN-G', 'SPHERES', 'SPAD') { foreach ($lang in 'es', 'en') { "$met/html/$lang/index.html"; "$met/html/$lang/00_${met}_Que_es_y_para_que_sirve.html" } })
   $sinRev = $principales | Where-Object { (Test-Path (Join-Path $repo $_)) -and -not (Select-String -Path (Join-Path $repo $_) -Pattern 'Versión en revisión|Version under review' -Quiet) }
   foreach ($x in $sinRev) { Mal "sin aviso de versión en revisión: $x" }
   if (-not $sinRev) { Ok "$($principales.Count) páginas principales con el aviso de versión en revisión" }
 
   # ---- 4. portada
   Write-Host '4. Portada: orden de botones y enlaces'
-  foreach ($p in 'index.html', 'en\index.html') {
+  foreach ($p in 'index.html', 'en/index.html') {
     $ruta = Join-Path $repo $p; $html = [IO.File]::ReadAllText($ruta); $bien = $true
     foreach ($m in [regex]::Matches($html, '(?s)<div class="acciones">(.*?)</div>')) {
       $primero = [regex]::Match($m.Groups[1].Value, '(?s)<a [^>]*>(.*?)</a>').Groups[1].Value
@@ -306,7 +307,7 @@ try {
 
   # ---- 5. T01 generado desde sus fuentes
   Write-Host '5. T01: registro.html generado desde los JSON'
-  $t01 = Join-Path $repo 'SEVEN-G\herramientas\T01_registro_iniciativas'
+  $t01 = Join-Path $repo 'SEVEN-G/herramientas/T01_registro_iniciativas'
   $salida = Join-Path $tmp 'registro.html'
   & pwsh -NoProfile -File (Join-Path $t01 'build_registro.ps1') -Salida $salida | Out-Null
   # se compara el texto sin depender de los finales de línea, que git puede cambiar al extraer el fichero
@@ -315,7 +316,7 @@ try {
   else { Ok 'registro.html coincide con datos_demo.json, catalogo_criterios.json y la plantilla' }
 
   # T14 generado desde sus fuentes (D64)
-  $t14 = Join-Path $repo 'SEVEN-G\herramientas\T14_indice_transformacion'
+  $t14 = Join-Path $repo 'SEVEN-G/herramientas/T14_indice_transformacion'
   $salida14 = Join-Path $tmp 'indice.html'
   & pwsh -NoProfile -File (Join-Path $t14 'build_indice.ps1') -Salida $salida14 | Out-Null
   if ($LASTEXITCODE) { Mal 'build_indice.ps1 ha fallado' }
@@ -323,8 +324,8 @@ try {
   else { Ok 'T14: indice.html coincide con datos_demo.json y la plantilla' }
 
   # T11 (con T13) y T15 generados desde sus fuentes (D68)
-  $t11 = Join-Path $repo 'SEVEN-G\herramientas\T11_calculadora_valor'
-  $t15 = Join-Path $repo 'SEVEN-G\herramientas\T15_diagnostico_madurez'
+  $t11 = Join-Path $repo 'SEVEN-G/herramientas/T11_calculadora_valor'
+  $t15 = Join-Path $repo 'SEVEN-G/herramientas/T15_diagnostico_madurez'
   foreach ($h in @(@{ dir = $t11; script = 'build_calculadora.ps1'; html = 'calculadora.html'; que = 'T11' }, @{ dir = $t15; script = 'build_madurez.ps1'; html = 'madurez.html'; que = 'T15' })) {
     $salidaH = Join-Path $tmp "$($h.que)_$($h.html)"
     & pwsh -NoProfile -File (Join-Path $h.dir $h.script) -Salida $salidaH | Out-Null
@@ -350,9 +351,9 @@ try {
   Add-Type -AssemblyName System.IO.Compression
   $malDocx = @(); $nDocx = 0
   foreach ($lang in 'es', 'en') {
-    foreach ($p in (Get-ChildItem (Join-Path $repo "SEVEN-G\mds\$lang\plantillas") -File -Filter '*.md')) {
+    foreach ($p in (Get-ChildItem (Join-Path $repo "SEVEN-G/mds/$lang/plantillas") -File -Filter '*.md')) {
       $nDocx++
-      $dx = Join-Path $repo "SEVEN-G\docx\$lang\plantillas\$($p.BaseName).docx"
+      $dx = Join-Path $repo "SEVEN-G/docx/$lang/plantillas/$($p.BaseName).docx"
       if (-not (Test-Path $dx)) { $malDocx += "falta $lang/$($p.BaseName).docx"; continue }
       $huella = [Convert]::ToHexString([Security.Cryptography.SHA256]::HashData([Text.Encoding]::UTF8.GetBytes(([IO.File]::ReadAllText($p.FullName) -replace "`r`n", "`n")))).ToLowerInvariant()
       $zip = [IO.Compression.ZipFile]::OpenRead($dx)
@@ -364,17 +365,17 @@ try {
 
   # ---- 6. T17: panel de ejemplo al día
   Write-Host '6. T17: panel de ejemplo generado desde los datos de demostración'
-  $t17 = Join-Path $repo 'SEVEN-G\herramientas\T17_panel_consejo'
+  $t17 = Join-Path $repo 'SEVEN-G/herramientas/T17_panel_consejo'
   if (Get-Command uv -ErrorAction SilentlyContinue) {
     $sal17 = Join-Path $tmp 'panel'
     Push-Location $t17
-    $argIx = if (Test-Path (Join-Path $t17 'ejemplo\t14_indice.json')) { @('--indice', (Join-Path $t17 'ejemplo\t14_indice.json')) } else { @() }  # D71: el ejemplo lleva el índice de T14
+    $argIx = if (Test-Path (Join-Path $t17 'ejemplo/t14_indice.json')) { @('--indice', (Join-Path $t17 'ejemplo/t14_indice.json')) } else { @() }  # D71: el ejemplo lleva el índice de T14
     try { & uv run python t01_a_panel.py --salida $sal17 @argIx 2>&1 | Out-Null; $cod = $LASTEXITCODE } finally { Pop-Location }
     if ($cod) { Mal 'el conector t01_a_panel.py ha fallado' }
     else {
       # los pies del ejemplo publicado llevan enlaces que solo se ponen en la carpeta por defecto: se comparan los datos, que son la fuente de todo
       $a = Get-Content (Join-Path $sal17 't01_dashboard_data.json') -Raw | ConvertFrom-Json -Depth 64
-      $b = Get-Content (Join-Path $t17 'ejemplo\salida\t01_dashboard_data.json') -Raw | ConvertFrom-Json -Depth 64
+      $b = Get-Content (Join-Path $t17 'ejemplo/salida/t01_dashboard_data.json') -Raw | ConvertFrom-Json -Depth 64
       $a.meta.textos.pie = $null; $b.meta.textos.pie = $null
       if (($a | ConvertTo-Json -Depth 64 -Compress) -ne ($b | ConvertTo-Json -Depth 64 -Compress)) { Mal 'el panel de ejemplo está desfasado: ejecutar uv run python t01_a_panel.py en T17_panel_consejo' }
       else { Ok "panel de ejemplo al día ($($a.casos.Count) casos)" }
@@ -383,14 +384,14 @@ try {
       if (-not $trans.Count) { Mal 'D63: el panel de ejemplo no tiene ninguna iniciativa transversal con desglose por unidad (casos[].alcance)' }
       elseif (-not @($trans[0].alcance.unidades | Where-Object { $_.unidad }).Count) { Mal 'D63: la iniciativa transversal del ejemplo no trae unidades de negocio' }
       else { Ok "D63: iniciativa transversal medida por unidad ($(@($trans[0].alcance.unidades | Where-Object { $_.unidad }).Count) unidades)" }
-      $plantilla = [IO.File]::ReadAllText((Join-Path $t01 '_fuentes\registro.plantilla.html'))
+      $plantilla = [IO.File]::ReadAllText((Join-Path $t01 '_fuentes/registro.plantilla.html'))
       if ($plantilla -match "const PANEL_DEMO = '([^']+)'" -and -not (Test-Path (Join-Path $t01 $Matches[1]))) { Mal "el registro enlaza a un panel de ejemplo que no existe: $($Matches[1])" }
     }
   } else { Aviso 'uv no está instalado: no se comprueba el panel de ejemplo' }
 
   # D71: el índice de transformación del panel de ejemplo es el que calcula T14 desde los mismos datos de T01 (requiere Edge)
-  $ixEj = Join-Path $t17 'ejemplo\t14_indice.json'
-  $edgeIx = @("${env:ProgramFiles(x86)}\Microsoft\Edge\Application\msedge.exe", "$env:ProgramFiles\Microsoft\Edge\Application\msedge.exe") | Where-Object { Test-Path $_ } | Select-Object -First 1
+  $ixEj = Join-Path $t17 'ejemplo/t14_indice.json'
+  $edgeIx = @("${env:ProgramFiles(x86)}\Microsoft\Edge\Application\msedge.exe", "$env:ProgramFiles\Microsoft\Edge\Application\msedge.exe", (Get-Command microsoft-edge, google-chrome, chromium-browser, chromium -ErrorAction SilentlyContinue | Select-Object -First 1 -ExpandProperty Source), '/opt/pw-browsers/chromium') | Where-Object { $_ -and (Test-Path $_) } | Select-Object -First 1
   if (-not (Test-Path $ixEj)) { Mal 'D71: falta el índice de ejemplo del panel (T17_panel_consejo/ejemplo/t14_indice.json)' }
   elseif ($SinNavegador -or -not $edgeIx) { Aviso 'sin navegador: no se comprueba el índice de ejemplo del panel' }
   else {
@@ -405,10 +406,10 @@ try {
   # Edge sin ventana abre cada página servida por un servidor local de un solo uso; la página lleva inyectado un informe que devuelve al
   # servidor los errores de JavaScript y si existen los elementos que debe haber dibujado. No se toca ningún fichero del repositorio.
   Write-Host '7. Prueba de humo en Edge sin ventana'
-  $edge = @("${env:ProgramFiles(x86)}\Microsoft\Edge\Application\msedge.exe", "$env:ProgramFiles\Microsoft\Edge\Application\msedge.exe") | Where-Object { Test-Path $_ } | Select-Object -First 1
+  $edge = @("${env:ProgramFiles(x86)}\Microsoft\Edge\Application\msedge.exe", "$env:ProgramFiles\Microsoft\Edge\Application\msedge.exe", (Get-Command microsoft-edge, google-chrome, chromium-browser, chromium -ErrorAction SilentlyContinue | Select-Object -First 1 -ExpandProperty Source), '/opt/pw-browsers/chromium') | Where-Object { $_ -and (Test-Path $_) } | Select-Object -First 1
   if ($SinNavegador -or -not $edge) { Aviso 'sin navegador: no se hace la prueba de humo' }
   else {
-    $salidaEj = Join-Path $t17 'ejemplo\salida'
+    $salidaEj = Join-Path $t17 'ejemplo/salida'
     $pruebas = @(
       @{ f = (Join-Path $t01 'registro.html'); debe = @('#nav a[href="#/embudo"]', '#nav a[href="#/riesgos"]', '#nav a[href="#/consejo"]', '#lnk-panel', '#principal table'); que = 'registro T01' }
       # el cálculo que se abre es el del documento 12 §9: suma 12, perfil subyacente Eficiencia a escala y asignado Transformación declarada, no evidenciada
@@ -418,7 +419,7 @@ try {
       @{ f = (Join-Path $t15 'madurez.html'); debe = @('#nivel-global[data-nivel="2"][data-tope="2"][data-tope-aplicado="1"]', 'tr[data-dim="D6"][data-nivel="1"]', 'tr[data-dim="D3"][data-nivel="2"]'); que = 'diagnóstico T15 (ejemplo EM-2026-06)' }
       @{ f = (Get-ChildItem $salidaEj -Filter 't01_Dashboard_Casos_Uso_IA_v*.html' | Select-Object -First 1).FullName; debe = @('#indice tbody tr', '#kpis [data-kpi]', '#embudo .fun2-mid', '#embudo .fun-card.gan', '#embudo .fun-card li .pq', '#fbar #fopen, #filters .fgroup', '#transv table tbody tr'); que = 'panel completo' }
       # comunidad (D80): la página se dibuja aunque no haya intermediario configurado ni red (el texto lo pone el JavaScript)
-      @{ f = (Join-Path $repo 'SEVEN-G\herramientas\comunidad\index.html'); debe = @('h1[data-i18n]:not(:empty)', '#form-envio', '#lista[data-estado]', '#btn-identidad:not(:empty)'); que = 'página de comunidad' }
+      @{ f = (Join-Path $repo 'SEVEN-G/herramientas/comunidad/index.html'); debe = @('h1[data-i18n]:not(:empty)', '#form-envio', '#lista[data-estado]', '#btn-identidad:not(:empty)'); que = 'página de comunidad' }
       @{ f = (Get-ChildItem $salidaEj -Filter 't01_Dashboard_Movil_IA_v*.html' | Select-Object -First 1).FullName; debe = @('#embudo .row.fun', '#embudo .row.fun.gan', '#transv .row'); que = 'panel móvil' }
     )
     foreach ($p in $pruebas) {
@@ -430,7 +431,10 @@ try {
       $informe = "<script>setTimeout(function(){var f=[$sel].filter(function(s){return !document.querySelector(s)});fetch('/resultado',{method:'POST',body:JSON.stringify({errores:window.__errs,faltan:f})});},1200);</script>"
       $pagina = $pagina -replace '(?i)</body>', ($informe.Replace('$', '$$') + '</body>')
       $perfil = Join-Path $tmp ('edge_' + [Guid]::NewGuid().ToString('N').Substring(0, 6))
-      $proc = Start-Process -FilePath $edge -ArgumentList '--headless=new', '--disable-gpu', '--no-first-run', "--user-data-dir=$perfil", '--window-size=1400,1000', "--screenshot=$tmp\humo.png", '--virtual-time-budget=8000', "http://localhost:$puerto/" -PassThru -WindowStyle Hidden
+      $argsHumo = @('--headless=new', '--disable-gpu', '--no-first-run', "--user-data-dir=$perfil", '--window-size=1400,1000', "--screenshot=$tmp/humo.png", '--virtual-time-budget=8000', "http://localhost:$puerto/")
+      if (-not $IsWindows) { $argsHumo = @('--no-sandbox', '--ignore-certificate-errors') + $argsHumo }
+      $proc = if ($IsWindows) { Start-Process -FilePath $edge -ArgumentList $argsHumo -PassThru -WindowStyle Hidden }
+              else { Start-Process -FilePath $edge -ArgumentList $argsHumo -PassThru }
       $resultado = $null; $limite = (Get-Date).AddSeconds(40)
       while (-not $resultado -and (Get-Date) -lt $limite) {
         $tarea = $http.GetContextAsync()
@@ -451,7 +455,7 @@ try {
 
   # ---- 8. registro de decisiones
   Write-Host '8. Registro de decisiones'
-  $nums = [regex]::Matches([IO.File]::ReadAllText((Join-Path $repo '.claude\seveng_decisiones.md')), '(?m)^\| D(\d+) \|') | ForEach-Object { [int]$_.Groups[1].Value }
+  $nums = [regex]::Matches([IO.File]::ReadAllText((Join-Path $repo '.claude/seveng_decisiones.md')), '(?m)^\| D(\d+) \|') | ForEach-Object { [int]$_.Groups[1].Value }
   $rep = $nums | Group-Object | Where-Object Count -gt 1
   if ($rep) { Mal "decisiones repetidas: D$($rep.Name -join ', D')" }
   elseif (Compare-Object $nums (1..$nums.Count)) { Mal 'la numeración de las decisiones no es correlativa' }
@@ -465,7 +469,7 @@ try {
 
   # ---- 10. comunidad (D80): la página cumple lo que promete
   Write-Host '10. Comunidad: sin datos de contacto, sin terceros y sin tokens'
-  $com = Join-Path $repo 'SEVEN-G\herramientas\comunidad'; $malCom = 0
+  $com = Join-Path $repo 'SEVEN-G/herramientas/comunidad'; $malCom = 0
   $pag = [IO.File]::ReadAllText((Join-Path $com 'index.html'))
   foreach ($c in @(
       @{ re = '(?i)type="(email|tel)"|name="(e-?mail|correo|telefono|phone)"|autocomplete="(email|tel|name)"'; que = 'pide correo u otro dato de contacto' }
@@ -476,7 +480,7 @@ try {
   foreach ($frase in 'número relevante de votos', 'relevant number of community votes', 'seveng-comunidad-usuario') { if (-not $pag.Contains($frase)) { Mal "comunidad: falta en la página «$frase»"; $malCom++ } }
   $conToken = Get-ChildItem $com -Recurse -File | Select-String -Pattern 'gh[pousr]_[A-Za-z0-9]{20,}|github_pat_[A-Za-z0-9_]{20,}' -List
   foreach ($x in $conToken) { Mal "comunidad: hay un token de GitHub en $([IO.Path]::GetRelativePath($repo, $x.Path)): revocarlo y quitarlo"; $malCom++ }
-  foreach ($p in 'index.html', 'en\index.html') { if (-not [IO.File]::ReadAllText((Join-Path $repo $p)).Contains('SEVEN-G/herramientas/comunidad/index.html')) { Mal "$p`: no enlaza la página de comunidad"; $malCom++ } }
+  foreach ($p in 'index.html', 'en/index.html') { if (-not [IO.File]::ReadAllText((Join-Path $repo $p)).Contains('SEVEN-G/herramientas/comunidad/index.html')) { Mal "$p`: no enlaza la página de comunidad"; $malCom++ } }
   if (-not $malCom) { Ok 'página de comunidad sin datos de contacto, recursos de terceros, cookies ni tokens, con la regla de los votos y enlazada desde la portada' }
 }
 finally { Remove-Item $tmp -Recurse -Force -Confirm:$false -ErrorAction SilentlyContinue }

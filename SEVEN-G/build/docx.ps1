@@ -170,7 +170,7 @@ function Escribir([string]$destino, [hashtable]$partes) {
 
 $n = 0; $cambiados = 0
 foreach ($lang in $Idiomas) {
-  $dir = Join-Path $repo "SEVEN-G\mds\$lang\plantillas"
+  $dir = Join-Path $repo "SEVEN-G/mds/$lang/plantillas"
   if (-not (Test-Path $dir)) { continue }
   foreach ($f in (Get-ChildItem $dir -File -Filter $Filter | Where-Object Extension -eq '.md' | Sort-Object Name)) {
     $md = [IO.File]::ReadAllText($f.FullName, [Text.Encoding]::UTF8)
@@ -185,7 +185,7 @@ foreach ($lang in $Idiomas) {
       '[Content_Types].xml' = $tipos; '_rels/.rels' = $relsRaiz; 'docProps/core.xml' = $core; 'docProps/app.xml' = $app
       'word/_rels/document.xml.rels' = $relsDoc; 'word/document.xml' = $doc; 'word/styles.xml' = $estilos.Replace('{{LANG}}', $(if ($lang -eq 'en') { 'en-GB' } else { 'es-ES' })); 'word/footer1.xml' = $pie
     }
-    $destino = Join-Path $repo "SEVEN-G\docx\$lang\plantillas\$($f.BaseName).docx"
+    $destino = Join-Path $repo "SEVEN-G/docx/$lang/plantillas/$($f.BaseName).docx"
     if (Escribir $destino $partes) { $cambiados++ }
     $n++
   }
