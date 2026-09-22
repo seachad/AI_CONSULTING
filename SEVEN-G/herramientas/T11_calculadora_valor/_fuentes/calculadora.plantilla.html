@@ -278,6 +278,7 @@ es:{
  ok_csv:'CSV exportado.', ok_caso_json:'Resultado del caso exportado.',
  t01_local:'Registro T01 en este navegador: «{o}», {n} iniciativas, a fecha {f}.', t01_local_no:'No hay ningún registro T01 en este navegador: abra el registro de iniciativas y vuelva, o cargue un fichero exportado por T01.',
  t01_fichero:'Cargar un fichero de T01…', t01_guardar:'Guardar los importes esperados de este caso en el registro T01', t01_de:'Iniciativa {i} del registro T01',
+ t01_actualizar:'Actualizar este caso desde el registro', t01_retirado:'ya no está en T01', ok_actualizar:'Caso actualizado desde la iniciativa {i} del registro T01: {n} datos renovados; {k} importes corregidos a mano se conservan (T01 tiene otro valor).',
  ok_t01_guardar:'{n} importes esperados guardados en la iniciativa {i} del registro T01 «{o}». El registro los muestra en la pestaña Valor con fuente T11.', err_t01_ini:'La iniciativa {i} no está en el registro T01 de este navegador.',
  t01_regla:'El registro de iniciativas (T01) es la fuente de verdad: si está en este navegador, la calculadora toma de él la iniciativa y sus importes, y devuelve a la iniciativa los importes esperados del caso (eficiencias, retorno, capacidad liberada, coste recurrente e inversión), siempre como esperados, nunca validados.'
 },
@@ -367,6 +368,7 @@ en:{
  ok_csv:'CSV exported.', ok_caso_json:'Use case result exported.',
  t01_local:'T01 register in this browser: "{o}", {n} initiatives, as at {f}.', t01_local_no:'There is no T01 register in this browser: open the initiative register and come back, or load a file exported by T01.',
  t01_fichero:'Load a T01 file…', t01_guardar:'Save the expected amounts of this use case into the T01 register', t01_de:'Initiative {i} of the T01 register',
+ t01_actualizar:'Refresh this use case from the register', t01_retirado:'no longer in T01', ok_actualizar:'Use case refreshed from initiative {i} of the T01 register: {n} figures renewed; {k} manually corrected amounts are kept (T01 holds a different value).',
  ok_t01_guardar:'{n} expected amounts saved into initiative {i} of the T01 register "{o}". The register shows them in the Value tab with source T11.', err_t01_ini:'Initiative {i} is not in the T01 register of this browser.',
  t01_regla:'The initiative register (T01) is the source of truth: if it is in this browser, the calculator takes the initiative and its amounts from it and returns to the initiative the expected amounts of the use case (efficiencies, return, released capacity, recurring cost and investment), always as expected, never validated.'
 }};
@@ -931,20 +933,48 @@ function casoDesdeT01(reg, id){
   const cl = I.clasificacion||{}, c = casoVacio(nuevoId(I.id));
   Object.assign(c, {nombre:I.nombre||'', descripcion:I.descripcion||'', ambicion:cl.ambicion_confirmada||cl.ambicion_propuesta||null, intensidad:cl.intensidad||null, fase:(I.ciclo||{}).fase??null, origen:'t01', iniciativa_t01:I.id, t01:{organizacion:(reg.meta||{}).organizacion||null, leido:hoy()}});
   const vals = (reg.valores||[]).filter(v=>v.iniciativa===I.id && v.momento==='esperado');
-  for(const v of vals){
-    const base = {concepto:v.formula||v.tipo, importe:n(v.importe), fuente:'T01 '+(v.id||'')+(v.fuente?' · '+v.fuente:'')};
-    if(['eficiencias','retorno','capacidad_liberada','riesgo_evitado','cumplimiento'].includes(v.tipo)) c.lineas.push(Object.assign(FILAS.lineas(), base, {tipo:v.tipo, estado:v.estado||null, supuestos:v.formula||''}));
-    else if(v.tipo==='coste_recurrente') c.costes.lineas.push(Object.assign(FILAS['costes.lineas'](), base, {componente:'recurrente'}));
-    else if(v.tipo==='inversion') c.costes.lineas.push(Object.assign(FILAS['costes.lineas'](), base, {componente:'construccion'}));
-  }
+  for(const v of vals) anadirLineaT01(c, v);
   const inv = I.inversion||{};
-  if(!vals.some(v=>v.tipo==='inversion') && (inv.realizada!=null || inv.pendiente!=null)){
-    const ok = inv.realizada!=null && inv.pendiente!=null;
-    c.costes.lineas.push(Object.assign(FILAS['costes.lineas'](), {componente:'construccion', concepto:ok?t('t01_inv'):t('t01_inv_sd'), importe: ok ? n(inv.realizada)+n(inv.pendiente) : null, fuente:'T01'}));
-  }
+  if(!vals.some(v=>v.tipo==='inversion') && (inv.realizada!=null || inv.pendiente!=null)) anadirInversionT01(c, inv);
   if(inv.realizada!=null) c.costes.parada.gastado = n(inv.realizada);
   c.notas = t('t01_nota',{o:(reg.meta||{}).organizacion||'', f:fF(hoy())});
   return c;
+}
+/* cada línea que viene de T01 recuerda su importe de origen (l.t01): si el importe del caso sigue igual y la línea no se ha descompuesto, se renueva al actualizar; si no, es una corrección manual y se conserva (D102) */
+function anadirLineaT01(c, v){
+  const base = {concepto:v.formula||v.tipo, importe:n(v.importe), fuente:'T01 '+(v.id||'')+(v.fuente?' · '+v.fuente:''), t01:{id:v.id||null, importe:n(v.importe)}};
+  if(['eficiencias','retorno','capacidad_liberada','riesgo_evitado','cumplimiento'].includes(v.tipo)) c.lineas.push(Object.assign(FILAS.lineas(), base, {tipo:v.tipo, estado:v.estado||null, supuestos:v.formula||''}));
+  else if(v.tipo==='coste_recurrente') c.costes.lineas.push(Object.assign(FILAS['costes.lineas'](), base, {componente:'recurrente'}));
+  else if(v.tipo==='inversion') c.costes.lineas.push(Object.assign(FILAS['costes.lineas'](), base, {componente:'construccion'}));
+  else return false;
+  return true;
+}
+function importeInversionT01(inv){ return (inv.realizada!=null && inv.pendiente!=null) ? n(inv.realizada)+n(inv.pendiente) : null; }
+function anadirInversionT01(c, inv){ const imp = importeInversionT01(inv); c.costes.lineas.push(Object.assign(FILAS['costes.lineas'](), {componente:'construccion', concepto:imp!=null?t('t01_inv'):t('t01_inv_sd'), importe:imp, fuente:'T01', t01:{id:'inversion', importe:imp}})); }
+/* D102: vuelve a leer el registro y renueva identificación, importes que siguen «desde T01» e importes nuevos; lo corregido a mano (importe cambiado o línea descompuesta) se conserva */
+function actualizarDesdeT01(c, reg){
+  const I = reg.iniciativas.find(x=>x.id===iniT01(c)); if(!I){ toast(t('err_t01_ini',{i:iniT01(c)})); return; }
+  const cl = I.clasificacion||{}, mismo = (a,b) => JSON.stringify(a??null)===JSON.stringify(b??null); let n_ = 0, k = 0;
+  const ident = {nombre:I.nombre||'', ambicion:cl.ambicion_confirmada||cl.ambicion_propuesta||null, intensidad:cl.intensidad||null, fase:(I.ciclo||{}).fase??null};
+  for(const key in ident){ if(!mismo(c[key], ident[key])){ c[key] = ident[key]; n_++; } }
+  const vals = (reg.valores||[]).filter(v=>v.iniciativa===I.id && v.momento==='esperado'), vistos = new Set(), inv = I.inversion||{};
+  c.lineas = c.lineas||[]; c.costes = c.costes||{}; c.costes.lineas = c.costes.lineas||[]; c.costes.parada = c.costes.parada||{};
+  for(const l of [...c.lineas, ...c.costes.lineas]){
+    const ref = l.t01; if(!ref || !ref.id) continue; vistos.add(ref.id);
+    const v = ref.id==='inversion' ? null : vals.find(x=>x.id===ref.id);
+    if(ref.id!=='inversion' && !v){ if(!String(l.fuente||'').includes(t('t01_retirado'))){ l.fuente = (l.fuente||'')+' · '+t('t01_retirado'); n_++; } continue; }
+    const nuevo = v ? n(v.importe) : importeInversionT01(inv);
+    const manual = l.unidades!=null || l.valor_unitario!=null || !mismo(n(l.importe), ref.importe);
+    if(manual){ if(!mismo(ref.importe, nuevo)) k++; ref.importe = nuevo; continue; }
+    if(!mismo(n(l.importe), nuevo)){ l.importe = nuevo; n_++; }
+    if(v && 'estado' in l && v.estado && l.estado!==v.estado){ l.estado = v.estado; n_++; }
+    ref.importe = nuevo;
+  }
+  for(const v of vals){ if(!vistos.has(v.id) && anadirLineaT01(c, v)) n_++; }
+  if(!vals.some(v=>v.tipo==='inversion') && !vistos.has('inversion') && (inv.realizada!=null || inv.pendiente!=null)){ anadirInversionT01(c, inv); n_++; }
+  if(inv.realizada!=null && !mismo(c.costes.parada.gastado, n(inv.realizada))){ c.costes.parada.gastado = n(inv.realizada); n_++; }
+  c.origen = 't01'; c.iniciativa_t01 = I.id; c.t01 = Object.assign({}, c.t01, {organizacion:(reg.meta||{}).organizacion||null, leido:hoy()});
+  guardar(); render(); toast(t('ok_actualizar',{n:n_, k, i:I.id}));
 }
 function abrirDlgT01(reg, pre){
   T01_PEND = reg; const d = document.getElementById('dlg-t01');
@@ -968,7 +998,7 @@ function guardarEnT01(c){
 function avisoT01Local(c){
   const reg = registroT01Local();
   return '<p class="aviso '+(reg?'info':'')+' sin-imprimir" id="t01-local" data-registro="'+(reg?'si':'no')+'">'+(reg
-    ? esc(t('t01_local',{o:(reg.meta||{}).organizacion||'', n:reg.iniciativas.length, f:fF((reg.meta||{}).fecha_referencia||'')}))+' <button type="button" data-acc="desde-t01">'+esc(t('desde_t01'))+'</button>'+(c ? ' <button type="button" data-acc="guardar-t01">'+esc(t('t01_guardar'))+'</button>' : '')
+    ? esc(t('t01_local',{o:(reg.meta||{}).organizacion||'', n:reg.iniciativas.length, f:fF((reg.meta||{}).fecha_referencia||'')}))+' <button type="button" data-acc="desde-t01">'+esc(t('desde_t01'))+'</button>'+(c && c.iniciativa_t01 ? ' <button type="button" data-acc="actualizar-t01">'+esc(t('t01_actualizar'))+'</button>' : '')+(c ? ' <button type="button" data-acc="guardar-t01">'+esc(t('t01_guardar'))+'</button>' : '')
     : esc(t('t01_local_no')))+' <button type="button" data-acc="desde-t01-fichero">'+esc(t('t01_fichero'))+'</button></p>';
 }
 
@@ -1007,6 +1037,7 @@ document.addEventListener('click', ev => {
   if(a==='desde-t01'){ const reg = registroT01Local(); if(reg) abrirDlgT01(reg, c && c.iniciativa_t01); else { toast(t('t01_local_no')); document.getElementById('f-t01').click(); } return; }
   if(a==='desde-t01-fichero'){ document.getElementById('f-t01').click(); return; }
   if(a==='guardar-t01' && c){ guardarEnT01(c); return; }
+  if(a==='actualizar-t01' && c){ const reg = registroT01Local(); if(!reg){ toast(t('t01_local_no')); return; } actualizarDesdeT01(c, reg); return; }
   if(a==='importar'){ document.getElementById('f-t11').click(); return; }
   if(a==='exportar'){ const x=clon(D); x.version_esquema=VERSION_ESQUEMA; x.herramienta='T11'; x.meta=Object.assign({}, x.meta, {exportado:hoy(), aviso_legal:TX.es.legal_txt}); x.casos.forEach((cc,i)=>{ cc.resultado = resultadoExport(D.casos[i]); });
     descargar('t11_calculadora_valor_'+hoy()+'.json', JSON.stringify(x,null,2), 'application/json'); toast(t('ok_export')); return; }
@@ -1070,7 +1101,7 @@ window.addEventListener('hashchange', render);
   aplicarTema(); render();
   if(regLocal && q.get('desde')==='t01'){
     const id = q.get('iniciativa'), ya = id && D.casos.find(x=>x.iniciativa_t01===id || x.id===id);
-    if(ya){ UI.sel = ya.id; guardar(); location.hash = '#/hipotesis'; render(); }
+    if(ya){ UI.sel = ya.id; location.hash = '#/hipotesis'; if(ya.iniciativa_t01) actualizarDesdeT01(ya, regLocal); else { guardar(); render(); } }
     else if(id && regLocal.iniciativas.some(I=>I.id===id)) crearDesdeT01Local(regLocal, id);
     else abrirDlgT01(regLocal, id);
     try{ history.replaceState(null, '', location.pathname + (location.hash||'#/hipotesis')); }catch(e){}
