@@ -124,6 +124,8 @@ Salida en el JSON exportado del panel, para el paquete del consejo: `seguimiento
 
 ## 6. Madurez D1–D7 (11 §2 y §5, T15) · `madurez`
 
+> **Resuelto el 22-09-2026 (D100)** con un bloque más sencillo: el conector pasa `madurez` (ver `motor/ESQUEMA.md`) desde el registro T01 (esquema 0.6, escrito por T15) y el motor muestra la tarjeta en «Cartera y valor» y un bloque en el móvil. La propuesta original se conserva como referencia.
+
 ```json
 "madurez": {
   "fecha_corte": "2026-06-30", "modalidad": "verificada", "version_cuestionario": "1.0",

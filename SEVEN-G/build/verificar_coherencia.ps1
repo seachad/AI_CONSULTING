@@ -26,6 +26,13 @@
     8. Registro de decisiones: numeración única y correlativa.
     10. Comunidad (D80): la página de incidencias y peticiones no pide correo ni datos de contacto, no carga recursos de terceros, no usa
         cookies, muestra la regla de los votos, está enlazada desde la portada (ES/EN) y en su carpeta no hay ningún token.
+    17. Códigos citados en cualquier panel (D99): codigos.js enlaza los códigos escritos y ofrece «Citados aquí»; las herramientas, el
+        motor de T17 (completo, móvil y recomendaciones), su ejemplo, la comunidad y la página de T17 lo cargan; los que prometen no
+        medir visitas lo cargan con data-sin-medicion. La prueba de humo (7) sirve cada página con su ruta real para que codigos.js
+        se cargue y comprueba que aparecen el control y los enlaces.
+    18. Mapa de datos entre herramientas (D100): mapa_datos.json con todas sus rutas en el esquema de T01 (0.6); T11, T14 y T15 leen el
+        registro del navegador (misma clave) y atienden ?desde=t01; T01 incorpora sus resultados; las demostraciones de T11, T14, T15 y T17
+        son de la misma compañía que T01 y derivan de él (cálculo del índice y madurez de T15); documento 03 §4.1 (ES/EN).
 #>
 param([switch]$SinNavegador)
 $ErrorActionPreference = 'Stop'
@@ -428,41 +435,57 @@ try {
   # ---- 7. prueba de humo en el navegador
   # Edge sin ventana abre cada página servida por un servidor local de un solo uso; la página lleva inyectado un informe que devuelve al
   # servidor los errores de JavaScript y si existen los elementos que debe haber dibujado. No se toca ningún fichero del repositorio.
+  # Cada página se sirve con su ruta real dentro del repositorio (y el resto de ficheros, tal cual), para que sus rutas relativas
+  # —codigos.js (D99), imágenes— resuelvan como en el sitio publicado.
   Write-Host '7. Prueba de humo en Edge sin ventana'
   $edge = @("${env:ProgramFiles(x86)}\Microsoft\Edge\Application\msedge.exe", "$env:ProgramFiles\Microsoft\Edge\Application\msedge.exe") | Where-Object { Test-Path $_ } | Select-Object -First 1
   if ($SinNavegador -or -not $edge) { Aviso 'sin navegador: no se hace la prueba de humo' }
   else {
     $salidaEj = Join-Path $t17 'ejemplo\salida'
+    # D99: en cada página, el control «Ir a código» montado por codigos.js (input) y, donde el contenido nombra códigos, sus enlaces
+    $ctl = '[data-ir-codigo] input[type="search"]'
     $pruebas = @(
-      @{ f = (Join-Path $t01 'registro.html'); debe = @('#nav a[href="#/embudo"]', '#nav a[href="#/riesgos"]', '#nav a[href="#/consejo"]', '#lnk-panel', '#principal table'); que = 'registro T01' }
+      @{ f = (Join-Path $t01 'registro.html'); debe = @('#nav a[href="#/embudo"]', '#nav a[href="#/riesgos"]', '#nav a[href="#/consejo"]', '#lnk-panel', '#principal table', "#sitio-nav $ctl", '#principal a.cod-enlace[title]'); que = 'registro T01' }
       # el cálculo que se abre es el del documento 12 §9: suma 12, perfil subyacente Eficiencia a escala y asignado Transformación declarada, no evidenciada
-      @{ f = (Join-Path $t14 'indice.html'); debe = @('#perfil[data-perfil="declarada"][data-evidenciado="escala"][data-suma="12"][data-cobertura="8"]', 'tr[data-senal="8"][data-punt="2"]', '#nav a[href="#/umbrales"]'); que = 'calculadora T14 (ejemplo del documento 12)' }
+      # D100: el cálculo que se abre es el de septiembre de 2026, calculado desde el registro de demostración de T01 (perfil asignado «declarada», subyacente «táctica», suma 12, cobertura 8); el de junio (documento 12 §9) queda en la evolución
+      @{ f = (Join-Path $t14 'indice.html'); debe = @('#perfil[data-perfil="declarada"][data-evidenciado="tactica"][data-suma="12"][data-cobertura="8"]', 'tr[data-senal="8"][data-punt="1"]', '#nav a[href="#/umbrales"]', '#t01-local[data-registro]', "#sitio-nav $ctl", '#principal a.cod-enlace[title]'); que = 'calculadora T14 (cálculo desde el registro T01 de demostración)' }
       # T11: el caso de ejemplo IA-2026-001 da VAN 1.826.542 €, ROI 217,7 % y plazo 1,44 años (40 §8); T15: nivel global 2 limitado por D6 (11 §5)
-      @{ f = (Join-Path $t11 'calculadora.html'); debe = @('#resultado[data-van="1826542"][data-roi="217.7"][data-payback="1.44"]', '#nav a[href="#/costes"]'); que = 'calculadora T11/T13 (ejemplo IA-2026-001)' }
-      @{ f = (Join-Path $t15 'madurez.html'); debe = @('#nivel-global[data-nivel="2"][data-tope="2"][data-tope-aplicado="1"]', 'tr[data-dim="D6"][data-nivel="1"]', 'tr[data-dim="D3"][data-nivel="2"]'); que = 'diagnóstico T15 (ejemplo EM-2026-06)' }
-      @{ f = (Get-ChildItem $salidaEj -Filter 't01_Dashboard_Casos_Uso_IA_v*.html' | Select-Object -First 1).FullName; debe = @('#indice tbody tr', '#kpis [data-kpi]', '#embudo .fun2-mid', '#embudo .fun-card.gan', '#embudo .fun-card li .pq', '#fbar #fopen, #filters .fgroup', '#transv table tbody tr'); que = 'panel completo' }
+      @{ f = (Join-Path $t11 'calculadora.html'); debe = @('#resultado[data-van="1826542"][data-roi="217.7"][data-payback="1.44"]', '#nav a[href="#/costes"]', '#t01-local[data-registro]', "#sitio-nav $ctl", '#principal a.cod-enlace[title]'); que = 'calculadora T11/T13 (ejemplo IA-2026-001)' }
+      @{ f = (Join-Path $t15 'madurez.html'); debe = @('#nivel-global[data-nivel="2"][data-tope="2"][data-tope-aplicado="1"]', 'tr[data-dim="D6"][data-nivel="1"]', 'tr[data-dim="D3"][data-nivel="2"]', '#t01-local[data-registro]', "#sitio-nav $ctl", '#principal a.cod-enlace[title]'); que = 'diagnóstico T15 (ejemplo EM-2026-06)' }
+      # D100: la tarjeta de madurez (bloque «madurez» del panel, escrito por T15 en el registro) se dibuja con sus siete dimensiones
+      @{ f = (Get-ChildItem $salidaEj -Filter 't01_Dashboard_Casos_Uso_IA_v*.html' | Select-Object -First 1).FullName; debe = @('#indice tbody tr', '#kpis [data-kpi]', '#embudo .fun2-mid', '#embudo .fun-card.gan', '#embudo .fun-card li .pq', '#fbar #fopen, #filters .fgroup', '#transv table tbody tr', '#madurez table tbody tr', "#barra .toolbar $ctl", 'main a.cod-enlace[title]'); que = 'panel completo' }
       # comunidad (D80): la página se dibuja aunque no haya intermediario configurado ni red (el texto lo pone el JavaScript)
-      @{ f = (Join-Path $repo 'SEVEN-G\herramientas\comunidad\index.html'); debe = @('h1[data-i18n]:not(:empty)', '#form-envio', '#lista[data-estado]', '#btn-identidad:not(:empty)'); que = 'página de comunidad' }
-      @{ f = (Get-ChildItem $salidaEj -Filter 't01_Dashboard_Movil_IA_v*.html' | Select-Object -First 1).FullName; debe = @('#embudo .row.fun', '#embudo .row.fun.gan', '#transv .row'); que = 'panel móvil' }
+      @{ f = (Join-Path $repo 'SEVEN-G\herramientas\comunidad\index.html'); debe = @('h1[data-i18n]:not(:empty)', '#form-envio', '#lista[data-estado]', '#btn-identidad:not(:empty)', ".barra $ctl"); que = 'página de comunidad' }
+      @{ f = (Get-ChildItem $salidaEj -Filter 't01_Dashboard_Movil_IA_v*.html' | Select-Object -First 1).FullName; debe = @('#embudo .row.fun', '#embudo .row.fun.gan', '#transv .row', '#madurez-sec:not([hidden]) #madurez *', "header $ctl", 'body a.cod-enlace[title]'); que = 'panel móvil' }
+      @{ f = (Join-Path $salidaEj 't01_Registro_Recomendaciones.html'); debe = @('#tl article.rec', ".top $ctl", 'body a.cod-enlace[title]'); que = 'registro de recomendaciones' }
+      @{ f = (Join-Path $t17 'index.html'); debe = @('p.que-es', "header $ctl", '#es a.cod-enlace[title]'); que = 'página de T17' }
     )
+    $tipos = @{ '.html' = 'text/html; charset=utf-8'; '.js' = 'application/javascript; charset=utf-8'; '.css' = 'text/css; charset=utf-8'; '.json' = 'application/json; charset=utf-8'; '.png' = 'image/png'; '.jpg' = 'image/jpeg'; '.svg' = 'image/svg+xml'; '.pdf' = 'application/pdf'; '.woff2' = 'font/woff2' }
     foreach ($p in $pruebas) {
       $puerto = Get-Random -Minimum 20000 -Maximum 40000
       $http = [System.Net.HttpListener]::new(); $http.Prefixes.Add("http://localhost:$puerto/"); $http.Start()
       $sel = ($p.debe | ForEach-Object { "'" + $_.Replace("'", "\'") + "'" }) -join ','
       $pagina = [IO.File]::ReadAllText($p.f)
       $pagina = $pagina -replace '(?i)<head>', '<head><script>window.__errs=[];window.addEventListener("error",function(e){__errs.push(e.message)});</script>'
-      $informe = "<script>setTimeout(function(){var f=[$sel].filter(function(s){return !document.querySelector(s)});fetch('/resultado',{method:'POST',body:JSON.stringify({errores:window.__errs,faltan:f})});},1200);</script>"
+      $informe = "<script>setTimeout(function(){var f=[$sel].filter(function(s){return !document.querySelector(s)});fetch('/resultado',{method:'POST',body:JSON.stringify({errores:window.__errs,faltan:f})});},2500);</script>"
       $pagina = $pagina -replace '(?i)</body>', ($informe.Replace('$', '$$') + '</body>')
+      $rutaPag = '/' + [IO.Path]::GetRelativePath($repo, $p.f).Replace('\', '/')
       $perfil = Join-Path $tmp ('edge_' + [Guid]::NewGuid().ToString('N').Substring(0, 6))
-      $proc = Start-Process -FilePath $edge -ArgumentList '--headless=new', '--disable-gpu', '--no-first-run', "--user-data-dir=$perfil", '--window-size=1400,1000', "--screenshot=$tmp\humo.png", '--virtual-time-budget=8000', "http://localhost:$puerto/" -PassThru -WindowStyle Hidden
+      $proc = Start-Process -FilePath $edge -ArgumentList '--headless=new', '--disable-gpu', '--no-first-run', "--user-data-dir=$perfil", '--window-size=1400,1000', "--screenshot=$tmp\humo.png", '--virtual-time-budget=10000', "http://localhost:$puerto$rutaPag" -PassThru -WindowStyle Hidden
       $resultado = $null; $limite = (Get-Date).AddSeconds(40)
       while (-not $resultado -and (Get-Date) -lt $limite) {
         $tarea = $http.GetContextAsync()
         if (-not $tarea.Wait(1000)) { if ($proc.HasExited -and -not $tarea.Wait(1500)) { break }; if (-not $tarea.IsCompleted) { continue } }
         $ctx = $tarea.Result
+        $ruta = [Uri]::UnescapeDataString($ctx.Request.Url.AbsolutePath)
         if ($ctx.Request.HttpMethod -eq 'POST') { $resultado = [IO.StreamReader]::new($ctx.Request.InputStream).ReadToEnd() | ConvertFrom-Json; $bytes = [byte[]]@() }
-        elseif ($ctx.Request.Url.AbsolutePath -eq '/') { $bytes = [Text.Encoding]::UTF8.GetBytes($pagina); $ctx.Response.ContentType = 'text/html; charset=utf-8' }
-        else { $ctx.Response.StatusCode = 404; $bytes = [byte[]]@() }
+        elseif ($ruta -eq $rutaPag) { $bytes = [Text.Encoding]::UTF8.GetBytes($pagina); $ctx.Response.ContentType = 'text/html; charset=utf-8' }
+        else {
+          # cualquier otro fichero del repositorio, tal cual (codigos.js, imágenes, JSON): solo dentro del repositorio
+          $fich = [IO.Path]::GetFullPath((Join-Path $repo $ruta.TrimStart('/').Replace('/', '\')))
+          if ($fich.StartsWith($repo, [StringComparison]::OrdinalIgnoreCase) -and (Test-Path $fich -PathType Leaf)) { $bytes = [IO.File]::ReadAllBytes($fich); $ctx.Response.ContentType = $tipos[[IO.Path]::GetExtension($fich).ToLowerInvariant()] ?? 'application/octet-stream' }
+          else { $ctx.Response.StatusCode = 404; $bytes = [byte[]]@() }
+        }
         $ctx.Response.ContentLength64 = $bytes.Length; if ($bytes.Length) { $ctx.Response.OutputStream.Write($bytes, 0, $bytes.Length) }; $ctx.Response.Close()
       }
       $http.Stop(); if (-not $proc.HasExited) { try { $proc.Kill() } catch {} }
@@ -549,7 +572,8 @@ try {
     $d04 = Get-ChildItem (Join-Path $repo "SEVEN-G\mds\$lang") -Filter '04_*.md' | Select-Object -First 1
     if (-not [IO.File]::ReadAllText($d04.FullName).Contains('umami.is')) { Mal "documento 04 [$lang]: no declara la medición de visitas"; $malUm++ }
   }
-  if ($pag -match '(?i)umami|codigos\.js') { Mal 'comunidad: la página no debe medirse'; $malUm++ }
+  if ($pag -match '(?i)umami') { Mal 'comunidad: la página no debe medirse'; $malUm++ }
+  if ($pag -match 'codigos\.js' -and $pag -notmatch 'data-sin-medicion') { Mal 'comunidad: carga codigos.js sin data-sin-medicion (se mediría, D80/D90)'; $malUm++ }
   if (-not $malUm) { Ok "medición de visitas configurada$(if (-not $cfgUm.websiteId) { ' (sin websiteId: desactivada)' }), declarada en el documento 04 y fuera de la página de comunidad" }
   # ---- 13. entrada ligera «Qué es SEVEN-G» (D91): en ES y EN, copia exacta de su fuente, enlazada desde la portada como primer
   # botón, y con paso al documento 00 (el detalle), al registro y a los dos paneles (completo y móvil); imágenes SEVEN-G_<lámina>.png
@@ -617,6 +641,133 @@ try {
   if (-not [IO.File]::ReadAllText((Join-Path $sal 't01_Dashboard_Movil_IA_v8.html')).Contains('?completo=1')) { Mal 'panel móvil: no enlaza el panel completo con ?completo'; $malMov++ }
   if (-not ((Get-Content (Join-Path $repo 'SEVEN-G\herramientas\T17_panel_consejo\config_panel.json') -Raw | ConvertFrom-Json).navegacion.redirigir_movil)) { Mal 'config_panel.json: navegacion.redirigir_movil debe ser true en el ejemplo'; $malMov++ }
   if (-not $malMov) { Ok 'barras ajustadas al móvil, panel completo con paso al móvil y vista estática sin JavaScript en los dos paneles' }
+
+  # ---- 17. códigos citados en cualquier panel (D99): codigos.js enlaza y lista los citados; todas las herramientas y paneles lo cargan
+  Write-Host '17. Códigos citados en los paneles'
+  $malCit = 0
+  foreach ($lang in 'es', 'en') {
+    $tCod = [IO.File]::ReadAllText((Join-Path $repo "SEVEN-G\html\$lang\codigos.js"))
+    foreach ($req in 'data-enlazar-codigos', 'ir-codigo-citados', 'data-sin-medicion', 'enlazar: enlazar', 'MutationObserver', 'a.cod-enlace') { if (-not $tCod.Contains($req)) { Mal "codigos.js [$lang]: falta «$req» (pwsh -File SEVEN-G/build/codigos.ps1)"; $malCit++ } }
+  }
+  # herramientas: su contenido (plantilla y HTML generado) se enlaza
+  foreach ($h in (Get-ChildItem (Join-Path $repo 'SEVEN-G\herramientas') -Recurse -File -Filter *.plantilla.html) + @((Join-Path $t01 'registro.html'), (Join-Path $t11 'calculadora.html'), (Join-Path $t14 'indice.html'), (Join-Path $t15 'madurez.html') | ForEach-Object { Get-Item $_ })) {
+    if (-not [IO.File]::ReadAllText($h.FullName).Contains('data-enlazar-codigos')) { Mal "herramienta sin enlace de códigos en su contenido (data-enlazar-codigos): $($h.Name)"; $malCit++ }
+  }
+  # motor de T17: los tres generadores admiten navegacion.codigos y cargan el índice sin medición
+  foreach ($m in @(@{ f = 'motor\build_dashboard.py'; k = 'NAV.codigos' }, @{ f = 'motor\panel_movil.py'; k = 'nv.codigos' }, @{ f = 'motor\demo_lib.py'; k = 'D.codigos' })) {
+    $tm = [IO.File]::ReadAllText((Join-Path $t17 $m.f))
+    if (-not ($tm.Contains($m.k) -and $tm.Contains('data-sin-medicion') -and $tm.Contains('data-enlazar-codigos') -and $tm.Contains('data-ir-codigo'))) { Mal "T17 $($m.f): no admite navegacion.codigos (D99)"; $malCit++ }
+  }
+  if (-not [IO.File]::ReadAllText((Join-Path $t17 't01_a_panel.py')).Contains('p["codigos"]')) { Mal 'T17 t01_a_panel.py: no pasa navegacion.codigos al registro de recomendaciones'; $malCit++ }
+  # ejemplo: la configuración apunta a un codigos.js que existe y los tres HTML generados lo cargan sin medición
+  $navCfg = (Get-Content (Join-Path $t17 'config_panel.json') -Raw | ConvertFrom-Json).navegacion
+  if (-not $navCfg.codigos) { Mal 'config_panel.json: falta navegacion.codigos en el ejemplo'; $malCit++ }
+  elseif (-not (Test-Path ([IO.Path]::GetFullPath((Join-Path $t17 "ejemplo\salida\$($navCfg.codigos.Replace('/', '\'))"))))) { Mal "config_panel.json: navegacion.codigos apunta a un fichero inexistente ($($navCfg.codigos))"; $malCit++ }
+  foreach ($f in (Get-ChildItem (Join-Path $t17 'ejemplo\salida') -Filter *.html)) { if (-not [IO.File]::ReadAllText($f.FullName).Contains('data-sin-medicion')) { Mal "panel de ejemplo sin carga del índice de códigos: $($f.Name)"; $malCit++ } }
+  # comunidad y página de T17: control en su navegación y contenido enlazado
+  $tCom = [IO.File]::ReadAllText((Join-Path $repo 'SEVEN-G\herramientas\comunidad\index.html'))
+  if (-not ($tCom.Contains('data-ir-codigo') -and $tCom.Contains('data-enlazar-codigos') -and $tCom.Contains('codigos.js') -and $tCom.Contains('data-sin-medicion'))) { Mal 'comunidad: falta el control «Ir a código» o el enlace de códigos (con data-sin-medicion)'; $malCit++ }
+  $tT17 = [IO.File]::ReadAllText((Join-Path $t17 'index.html'))
+  if (-not ($tT17.Contains('data-ir-codigo') -and $tT17.Contains('data-enlazar-codigos') -and $tT17.Contains('codigos.js'))) { Mal 'T17 index.html: falta el control «Ir a código» o el enlace de códigos'; $malCit++ }
+  # documentación: principio 8 del documento 03 y módulo M01 (ES/EN)
+  foreach ($lang in 'es', 'en') {
+    $d03 = Get-ChildItem (Join-Path $repo "SEVEN-G\mds\$lang") -Filter '03_*.md' | Select-Object -First 1
+    if ([IO.File]::ReadAllText($d03.FullName) -notmatch '(?m)^\| 8 \|') { Mal "documento 03 [$lang]: falta el principio 8 (códigos navegables, D99)"; $malCit++ }
+    $m01 = Get-ChildItem (Join-Path $repo "SEVEN-G\mds\$lang\curso") -Filter 'M01_*.md' | Select-Object -First 1
+    if ([IO.File]::ReadAllText($m01.FullName) -notmatch 'Citados aquí|Cited here') { Mal "M01 [$lang]: no explica «Citados aquí» (D99)"; $malCit++ }
+  }
+  if (-not $malCit) { Ok 'códigos citados navegables: índice con enlaces y «Citados aquí», herramientas, motor y ejemplo de T17, comunidad y página de T17' }
+
+  # ---- 18. mapa de datos entre herramientas (D100): T01 es la fuente de verdad; cada ruta del mapa existe en el esquema; las demostraciones
+  # de T11, T14, T15 y T17 son de la misma compañía que el registro y derivan de él; las herramientas comparten la clave del registro
+  Write-Host '18. Mapa de datos entre herramientas'
+  $malMapa = 0
+  $mapaRuta = Join-Path $repo 'SEVEN-G\herramientas\mapa_datos.json'
+  if (-not (Test-Path $mapaRuta)) { Mal 'falta SEVEN-G/herramientas/mapa_datos.json (D100)'; $malMapa++ }
+  else {
+    $mapa = Get-Content $mapaRuta -Raw -Encoding utf8 | ConvertFrom-Json -AsHashtable
+    $esq = Get-Content (Join-Path $t01 'esquema_registro.schema.json') -Raw -Encoding utf8 | ConvertFrom-Json -AsHashtable
+    # sigue los $ref y, en un oneOf/anyOf (por ejemplo «objeto o nulo»), toma la rama que es un objeto con propiedades o una lista
+    function Resolver-Esquema($nodo) {
+      for ($i = 0; $i -lt 10 -and $nodo -is [hashtable]; $i++) {
+        if ($nodo.ContainsKey('$ref')) { $n = $esq; foreach ($x in (($nodo['$ref'] -replace '^#/', '') -split '/')) { $n = $n[$x] }; $nodo = $n; continue }
+        if ($nodo.ContainsKey('properties') -or $nodo.ContainsKey('items')) { break }   # un anyOf de solo «required» (evento) no sustituye a las propiedades
+        $ramas = if ($nodo.ContainsKey('oneOf')) { $nodo['oneOf'] } elseif ($nodo.ContainsKey('anyOf')) { $nodo['anyOf'] } else { $null }
+        if ($ramas) { $nodo = @($ramas | Where-Object { $r = Resolver-Esquema $_; $r -is [hashtable] -and ($r.ContainsKey('properties') -or $r.ContainsKey('items')) } | Select-Object -First 1)[0]; continue }
+        break
+      }
+      return $nodo
+    }
+    function Existe-Ruta([string]$ruta) {
+      $n = $esq
+      foreach ($seg in ($ruta -split '\.')) {
+        $lista = $seg.EndsWith('[]'); $nombre = $seg -replace '\[\]$', ''
+        $n = Resolver-Esquema $n; if (-not ($n -is [hashtable]) -or -not $n.ContainsKey('properties') -or -not $n['properties'].ContainsKey($nombre)) { return $false }
+        $n = Resolver-Esquema $n['properties'][$nombre]
+        if ($lista) { if (-not ($n -is [hashtable]) -or -not $n.ContainsKey('items')) { return $false }; $n = Resolver-Esquema $n['items'] }
+      }
+      return $true
+    }
+    $rutasMal = @(); $nRutas = 0
+    foreach ($h in $mapa.herramientas.Keys) { foreach ($k in 'lee_de_t01', 'escribe_en_t01') { foreach ($r in @($mapa.herramientas[$h][$k])) { if (-not $r) { continue }; $nRutas++; if (-not (Existe-Ruta $r)) { $rutasMal += "$h $k $r" } } } }
+    if ($rutasMal) { Mal "mapa_datos.json: rutas que no existen en esquema_registro.schema.json: $($rutasMal -join ' · ')"; $malMapa++ } else { Ok "mapa_datos.json: $nRutas rutas leídas o escritas por las herramientas, todas en el esquema de T01 (versión $($esq.properties.version_esquema.enum[-1]))" }
+    # clave del registro compartida: la que guarda T01 es la que leen T11, T14 y T15, y el mapa la declara
+    $claveT01 = [regex]::Match([IO.File]::ReadAllText((Join-Path $t01 '_fuentes\registro.plantilla.html')), "const LS_DATOS = '([^']+)'").Groups[1].Value
+    if ($claveT01 -ne $mapa.herramientas.T01.almacenamiento) { Mal "mapa_datos.json: la clave del registro ($($mapa.herramientas.T01.almacenamiento)) no es la que usa T01 ($claveT01)"; $malMapa++ }
+    foreach ($h in @(@{ c = 'T11'; f = (Join-Path $t11 '_fuentes\calculadora.plantilla.html') }, @{ c = 'T14'; f = (Join-Path $t14 '_fuentes\indice.plantilla.html') }, @{ c = 'T15'; f = (Join-Path $t15 '_fuentes\madurez.plantilla.html') })) {
+      $tp = [IO.File]::ReadAllText($h.f)
+      if (-not $tp.Contains("LS_T01 = '$claveT01'")) { Mal "$($h.c): no lee el registro T01 del navegador (clave $claveT01)"; $malMapa++ }
+      if (-not $tp.Contains("q.get('desde')==='t01'")) { Mal "$($h.c): no atiende el enlace del registro (?desde=t01)"; $malMapa++ }
+      $claveH = [regex]::Match($tp, "const LS_DATOS = '([^']+)'").Groups[1].Value
+      if ($claveH -ne $mapa.herramientas[$h.c].almacenamiento) { Mal "mapa_datos.json: almacenamiento de $($h.c) ($($mapa.herramientas[$h.c].almacenamiento)) distinto del real ($claveH)"; $malMapa++ }
+    }
+    $tT01 = [IO.File]::ReadAllText((Join-Path $t01 '_fuentes\registro.plantilla.html'))
+    foreach ($e in "calculadora.html'", "indice.html'", "madurez.html'") { if (-not $tT01.Contains($e)) { Mal "T01: no enlaza la herramienta $e con el registro cargado"; $malMapa++ } }
+    if (-not ($tT01.Contains("?desde=t01") -and $tT01.Contains('data-ir=') -and $tT01.Contains('function incorporarResultado'))) { Mal 'T01: faltan los enlaces ?desde=t01 (con guardado previo) o la incorporación de resultados de T11 y T15'; $malMapa++ }
+    # esquema 0.6 admitido en el esquema JSON, en el registro y en el conector
+    if ($esq.properties.version_esquema.enum -notcontains '0.6' -or -not $esq.properties.ContainsKey('madurez')) { Mal 'esquema_registro.schema.json: falta la versión 0.6 con la lista madurez[]'; $malMapa++ }
+    if (-not $tT01.Contains("'0.6'")) { Mal 'T01: la validación no admite el esquema 0.6'; $malMapa++ }
+    if (-not [IO.File]::ReadAllText((Join-Path $t17 't01_a_panel.py')).Contains('"0.6"')) { Mal 'T17 t01_a_panel.py: no admite el esquema 0.6'; $malMapa++ }
+    # demostraciones: una sola compañía ficticia
+    $orgT01 = (Get-Content (Join-Path $t01 'datos_demo.json') -Raw -Encoding utf8 | ConvertFrom-Json -Depth 64).meta.organizacion
+    foreach ($h in @(@{ c = 'T11'; d = $t11 }, @{ c = 'T14'; d = $t14 }, @{ c = 'T15'; d = $t15 })) {
+      $o = (Get-Content (Join-Path $h.d 'datos_demo.json') -Raw -Encoding utf8 | ConvertFrom-Json -Depth 32).meta.organizacion
+      if ($o -cne $orgT01) { Mal "$($h.c): los datos de demostración son de otra compañía («$o», y T01 es «$orgT01»)"; $malMapa++ }
+    }
+    # T14: su demostración contiene el cálculo hecho desde el registro T01, idéntico al que usa el panel (ejemplo/t14_indice.json)
+    $d14 = Get-Content (Join-Path $t14 'datos_demo.json') -Raw -Encoding utf8 | ConvertFrom-Json -Depth 32
+    $c14 = @($d14.calculos | Where-Object { $_.origen -eq 't01' })
+    $cIx = (Get-Content (Join-Path $t17 'ejemplo\t14_indice.json') -Raw -Encoding utf8 | ConvertFrom-Json -Depth 32).calculos[0]
+    if (-not $c14.Count) { Mal 'T14: los datos de demostración no incluyen ningún cálculo desde el registro T01'; $malMapa++ }
+    elseif (($c14[-1].entradas | ConvertTo-Json -Depth 16 -Compress) -ne ($cIx.entradas | ConvertTo-Json -Depth 16 -Compress) -or $c14[-1].fecha_corte -ne $cIx.fecha_corte) { Mal 'T14: el cálculo desde T01 de su demostración no coincide con el del panel (ejemplo/t14_indice.json): regenerar ambos desde datos_demo.json de T01'; $malMapa++ }
+    # T15 -> T01 -> T17: el registro de demostración lleva el resumen de madurez que exporta T15 y el panel de ejemplo lo muestra
+    $mT01 = (Get-Content (Join-Path $t01 'datos_demo.json') -Raw -Encoding utf8 | ConvertFrom-Json -Depth 64).madurez
+    if (-not $mT01 -or -not $mT01.Count) { Mal 'T01: los datos de demostración no llevan la lista madurez[] (T15)'; $malMapa++ }
+    else {
+      $edgeMad = @("${env:ProgramFiles(x86)}\Microsoft\Edge\Application\msedge.exe", "$env:ProgramFiles\Microsoft\Edge\Application\msedge.exe") | Where-Object { Test-Path $_ } | Select-Object -First 1
+      if ($SinNavegador -or -not $edgeMad) { Aviso 'sin navegador: no se comprueba que la madurez del registro de demostración sea la que exporta T15' }
+      else {
+        $resTmp = Join-Path $tmp 't15_resumen.json'
+        & pwsh -NoProfile -File (Join-Path $t15 'build_madurez.ps1') -Salida (Join-Path $tmp 'madurez_res.html') -Resumen $resTmp | Out-Null
+        if ($LASTEXITCODE -or -not (Test-Path $resTmp)) { Mal 'build_madurez.ps1 -Resumen ha fallado'; $malMapa++ }
+        else {
+          $mT15 = (Get-Content $resTmp -Raw -Encoding utf8 | ConvertFrom-Json -Depth 32).madurez_t01
+          if (($mT01 | ConvertTo-Json -Depth 16 -Compress) -ne ($mT15 | ConvertTo-Json -Depth 16 -Compress)) { Mal 'T01: madurez[] de la demostración no coincide con lo que exporta T15 (build_madurez.ps1 -Resumen): actualizar datos_demo.json de T01 y regenerar el registro y el panel'; $malMapa++ }
+          else { Ok "madurez del registro de demostración al día ($($mT01.Count) diagnósticos de T15; último $($mT01[-1].id), nivel global $($mT01[-1].nivel_global))" }
+        }
+      }
+      $dPanel = Get-Content (Join-Path $t17 'ejemplo\salida\t01_dashboard_data.json') -Raw -Encoding utf8 | ConvertFrom-Json -Depth 64
+      if (-not $dPanel.madurez -or $dPanel.madurez.id -ne $mT01[-1].id) { Mal 'T17: el panel de ejemplo no lleva el bloque madurez del último diagnóstico del registro'; $malMapa++ }
+    }
+    # documento 03 §4.1 (ES/EN): explica el mapa y nombra cada herramienta que lee del registro
+    foreach ($lang in 'es', 'en') {
+      $d03 = [IO.File]::ReadAllText((Get-ChildItem (Join-Path $repo "SEVEN-G\mds\$lang") -Filter '03_*.md' | Select-Object -First 1).FullName)
+      $sec = [regex]::Match($d03, '(?s)### 4\.1 .*?(?=\n## )').Value
+      if (-not $sec -or -not $sec.Contains('mapa_datos.json')) { Mal "documento 03 [$lang]: falta la sección 4.1 con el mapa de datos (D100)"; $malMapa++ }
+      else { foreach ($h in ($mapa.herramientas.Keys | Where-Object { $mapa.herramientas[$_].lee_de_t01 })) { if ($sec -notmatch "\*\*$h\*\*") { Mal "documento 03 [$lang] §4.1: no describe qué lee $h"; $malMapa++ } } }
+    }
+    if (-not $malMapa) { Ok 'herramientas enlazadas con el registro T01 como fuente de verdad: clave compartida, enlaces ?desde=t01, esquema 0.6, demostraciones de una sola compañía y documento 03 §4.1' }
+  }
 }
 finally { Remove-Item $tmp -Recurse -Force -Confirm:$false -ErrorAction SilentlyContinue }
 

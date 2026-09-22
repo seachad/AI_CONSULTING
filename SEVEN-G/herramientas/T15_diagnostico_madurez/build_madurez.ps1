@@ -17,8 +17,14 @@
 param(
   [string]$Datos,
   [string]$Salida,
-  [switch]$ActualizarCuestionario
+  [switch]$ActualizarCuestionario,
+  [string]$Resumen
 )
+<#
+  -Resumen <fichero.json>  (D100): además de construir la página, la abre en Edge sin ventana y escribe el resumen de todas las evaluaciones
+  del fichero de datos en el formato madurez[] del esquema 0.6 de T01 (el mismo fichero que exporta el botón «Exportar resumen para T01»,
+  sin fecha de exportación para que sea reproducible). Es lo que el registro de demostración de T01 lleva en su lista madurez[].
+#>
 $ErrorActionPreference = 'Stop'
 $aqui = $PSScriptRoot
 if (-not $Datos)  { $Datos  = Join-Path $aqui 'datos_demo.json' }
@@ -166,3 +172,37 @@ $html = $html.Replace('<!doctype html>', "<!doctype html>`n<!-- GENERADO por bui
 "madurez:      $Salida ($([math]::Round((Get-Item $Salida).Length / 1KB)) KB)"
 "cuestionario: v$($c.version_cuestionario) · $($c.dimensiones.Count) dimensiones · $(($c.dimensiones | ForEach-Object { @($_.preguntas).Count } | Measure-Object -Sum).Sum) preguntas"
 "datos:        $(Split-Path $Datos -Leaf) · $($d.evaluaciones.Count) evaluaciones"
+
+# ---- resumen para T01 con la propia herramienta (Edge sin ventana y un servidor local de un solo uso), D100
+if ($Resumen) {
+  $edge = @("${env:ProgramFiles(x86)}\Microsoft\Edge\Application\msedge.exe", "$env:ProgramFiles\Microsoft\Edge\Application\msedge.exe") | Where-Object { Test-Path $_ } | Select-Object -First 1
+  if (-not $edge) { throw 'Hace falta Microsoft Edge para exportar el resumen' }
+  $js = @'
+setTimeout(function(){ try{
+  const out={herramienta:'T15', version_esquema:VERSION_ESQUEMA, exportado:null, datos_ilustrativos:!!(D.meta||{}).datos_ilustrativos, organizacion:(D.meta||{}).organizacion||null,
+    origen:'Resumen escrito por build_madurez.ps1 -Resumen desde '+'__DATOS__', madurez_t01:ordenadas().map(function(ev){ return resumenParaT01(ev, null); })};
+  fetch('/resultado',{method:'POST',body:JSON.stringify(out,null,1)});
+}catch(e){ fetch('/resultado',{method:'POST',body:'ERROR '+e.message}); } }, 300);
+'@
+  $js = $js.Replace('__DATOS__', (Split-Path $Datos -Leaf))
+  $pagina = $html.Replace('</body>', "<script>$js</script></body>")
+  $perfil = Join-Path ([IO.Path]::GetTempPath()) ('t15_edge_' + [Guid]::NewGuid().ToString('N').Substring(0, 8))
+  $puerto = Get-Random -Minimum 20000 -Maximum 40000
+  $http = [System.Net.HttpListener]::new(); $http.Prefixes.Add("http://localhost:$puerto/"); $http.Start()
+  $proc = Start-Process -FilePath $edge -ArgumentList '--headless=new', '--disable-gpu', '--no-first-run', "--user-data-dir=$perfil", '--virtual-time-budget=6000', "http://localhost:$puerto/?lang=es" -PassThru -WindowStyle Hidden
+  $res = $null; $limite = (Get-Date).AddSeconds(45)
+  try {
+    while (-not $res -and (Get-Date) -lt $limite) {
+      $tarea = $http.GetContextAsync(); if (-not $tarea.Wait(1000)) { continue }; $ctx = $tarea.Result
+      if ($ctx.Request.HttpMethod -eq 'POST') { $res = [IO.StreamReader]::new($ctx.Request.InputStream, [Text.Encoding]::UTF8).ReadToEnd(); $b = [byte[]]@() }
+      elseif ($ctx.Request.Url.AbsolutePath -eq '/') { $b = [Text.Encoding]::UTF8.GetBytes($pagina); $ctx.Response.ContentType = 'text/html; charset=utf-8' }
+      else { $ctx.Response.StatusCode = 404; $b = [byte[]]@() }
+      $ctx.Response.ContentLength64 = $b.Length; if ($b.Length) { $ctx.Response.OutputStream.Write($b, 0, $b.Length) }; $ctx.Response.Close()
+    }
+  } finally { $http.Stop(); if (-not $proc.HasExited) { try { $proc.Kill() } catch {} }; Remove-Item $perfil -Recurse -Force -ErrorAction SilentlyContinue }
+  if (-not $res) { throw 'El navegador no ha devuelto el resumen' }
+  if ($res.StartsWith('ERROR')) { throw "Error en la herramienta: $res" }
+  [IO.File]::WriteAllText($Resumen, $res.Replace("`r`n", "`n") + "`n", [Text.UTF8Encoding]::new($false))
+  $m = ($res | ConvertFrom-Json).madurez_t01
+  "resumen:      $Resumen · $(@($m).Count) evaluaciones · última: $($m[-1].id) nivel global $($m[-1].nivel_global)"
+}

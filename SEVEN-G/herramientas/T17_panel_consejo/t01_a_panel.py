@@ -79,7 +79,7 @@ def cargar_motor(panel=None):
 
 
 VERSION_CONECTOR = "2.1"
-ESQUEMAS_T01 = ("0.1", "0.2", "0.3", "0.4", "0.5")
+ESQUEMAS_T01 = ("0.1", "0.2", "0.3", "0.4", "0.5", "0.6")   # 0.6 (D100): lista opcional madurez[] escrita por T15 -> bloque «madurez» del panel
 FUENTE_T01 = "Registro de iniciativas T01"
 
 # ---------------------------------------------------------------- listas cerradas de T01 y su etiqueta en el panel
@@ -622,6 +622,36 @@ def bloque_indice(t14):
     return b
 
 
+# ---------------------------------------------------------------- madurez de la compania (T15, documento 11; esquema 0.6 de T01, D100)
+def bloque_madurez(t01):
+    """t01.madurez[] (resumen de cada diagnostico, escrito por T15) -> bloque opcional «madurez» del panel (motor/ESQUEMA.md). Toma el
+    diagnostico mas reciente y, si lo hay, el anterior para la tendencia. El conector no recalcula nada: lo lee tal cual de T01."""
+    lista = t01.get("madurez") or []
+    if not isinstance(lista, list) or not lista:
+        return None
+    validos = sorted((m for m in lista if isinstance(m, dict) and m.get("id") and m.get("fecha_corte") and isinstance(m.get("dimensiones"), list)),
+                     key=lambda m: (m.get("fecha_corte") or "", m.get("id") or ""))
+    if not validos:
+        print("aviso: madurez[] de T01 no trae ningún diagnóstico con identificador, fecha de corte y dimensiones", file=sys.stderr)
+        return None
+    def uno(m):
+        return {"id": m.get("id"), "fecha_corte": m.get("fecha_corte"), "ciclo": m.get("ciclo"), "modalidad": m.get("modalidad"),
+                "version_cuestionario": m.get("version_cuestionario"), "verificador": m.get("verificador"), "organo_aprobacion": m.get("organo_aprobacion"),
+                "nivel_global": m.get("nivel_global"), "nivel_minimo": m.get("nivel_minimo"), "media": m.get("media"), "tope": m.get("tope"),
+                "tope_aplicado": bool(m.get("tope_aplicado")), "limitante": m.get("limitante") or [], "validez": m.get("validez"),
+                "declaracion_posible": m.get("declaracion_posible"),
+                "dimensiones": [{"dimension": d.get("dimension"), "nombre": d.get("nombre"), "nivel": d.get("nivel"), "avance": d.get("avance"),
+                                 "bloqueantes": d.get("bloqueantes") or []} for d in m.get("dimensiones") or [] if isinstance(d, dict)]}
+    b = uno(validos[-1])
+    if len(validos) > 1:
+        a = uno(validos[-2])
+        b["anterior"] = {"id": a["id"], "fecha_corte": a["fecha_corte"], "modalidad": a["modalidad"], "nivel_global": a["nivel_global"],
+                         "dimensiones": [{"dimension": d["dimension"], "nivel": d["nivel"]} for d in a["dimensiones"]]}
+    else:
+        b["anterior"] = None
+    return b
+
+
 # ---------------------------------------------------------------- registro de recomendaciones (T18)
 def datos_registro(t01, panel_data, slug):
     """Recomendaciones de T01 -> datos de la plantilla del registro. Sin recomendaciones devuelve None."""
@@ -665,6 +695,9 @@ def generar_desde_t01(t01, salida, sigla=None, organizacion=None, prefijo="t01_"
     indice = bloque_indice(t14) if t14 else None
     if indice:
         data["indice"] = indice   # clave opcional (D53): sin ella el motor no muestra la tarjeta del índice
+    madurez = bloque_madurez(t01)
+    if madurez:
+        data["madurez"] = madurez   # clave opcional (D53, D100): la escribe T15 en el registro (esquema 0.6); sin ella no hay tarjeta de madurez
     os.makedirs(salida, exist_ok=True)
     completo, movil, huella = BD.generar(data, salida, verbose=False)
     ficticio = data["meta"]["demo"]
@@ -677,6 +710,8 @@ def generar_desde_t01(t01, salida, sigla=None, organizacion=None, prefijo="t01_"
     ruta_reg, nrecs = None, 0
     p = datos_registro(t01, data, prefijo.rstrip("_") or "t01")
     if p:
+        # códigos citados (D99): la misma ruta al índice del sitio que el panel (navegacion.codigos); sin ella, el registro no cambia
+        p["codigos"] = (data["meta"].get("navegacion") or {}).get("codigos") or None
         aviso = PUB.AVISO_LEGAL if ficticio else PUB.AVISO_LEGAL_DATOS_PROPIOS
         pie = (f"Registro de recomendaciones generado desde el registro de iniciativas T01 de SEVEN-G · {p['grupo']}"
                + (" y sus personas son ficticios" if ficticio else "") + f' · <a href="{os.path.basename(completo)}">ver el panel de IA del Consejo</a>'
