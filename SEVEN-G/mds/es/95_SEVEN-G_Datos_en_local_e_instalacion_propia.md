@@ -45,7 +45,8 @@ El sitio es un **conjunto de ficheros estáticos**: páginas HTML, PDF, plantill
 | Generador del panel del consejo (T17) | Un programa en Python que lee el JSON exportado por T01 y **genera** el panel completo, el panel móvil y el registro de recomendaciones como ficheros HTML. | En el ordenador de quien lo ejecuta, con Python. No es una aplicación web. | Los ficheros que genera, en la carpeta que se le indique. Esos ficheros **contienen los datos**. |
 | Paneles del consejo generados | Ficheros HTML con los datos incrustados, pensados para enviarse o alojarse. | En el navegador; sin servidor. | Nada nuevo: muestran lo que llevan dentro. |
 | Página de comunidad | Incidencias y peticiones de mejora del marco, con votos. | En el navegador; **es la única página que envía algo**: el texto que usted escribe, a un repositorio público de GitHub a través de un intermediario. | El identificador que elige, en su navegador. Lo enviado queda público en GitHub (sección 3.3). |
-| Índice de códigos («Ir a código», «Citados aquí») | Un fichero JavaScript generado con los destinos de todos los códigos del marco. | En el navegador. | Nada. |
+| Índice de códigos («Buscador de documentos», «Citados aquí») | Un fichero JavaScript generado con los destinos de todos los códigos del marco. | En el navegador. | Nada. |
+| Índice de búsqueda de términos («Todo el sitio» en el buscador de la barra) | Un fichero JSON generado con el texto de todas las páginas publicadas, que el navegador descarga solo la primera vez que se elige buscar en todo el sitio. | En el navegador: la búsqueda se hace ahí. | Nada. |
 
 <!-- grafico: Flujo de los datos | Todo lo que se introduce se queda en el navegador o en ficheros que controla la organización -->
 ```mermaid

@@ -16,7 +16,8 @@ try {
     if (-not $ruta) { $ruta = 'index.html' }
     $fichero = [IO.Path]::GetFullPath((Join-Path $raiz $ruta))
     if ((Test-Path $fichero -PathType Container) -and (Test-Path (Join-Path $fichero 'index.html'))) { $fichero = Join-Path $fichero 'index.html' }
-    if (-not $fichero.StartsWith($raiz) -or $fichero -match '[\\/](\.git|\.claude)([\\/]|$)') {
+    # fuera de la raíz, o .git y .claude *de la raíz servida* (la raíz puede estar dentro de un worktree bajo .claude): no se sirve
+    if (-not $fichero.StartsWith($raiz) -or $fichero.Substring($raiz.Length) -match '^[\\/](\.git|\.claude)([\\/]|$)') {
       $ctx.Response.StatusCode = 404; $bytes = [Text.Encoding]::UTF8.GetBytes('No encontrado')
     } elseif ((Test-Path $fichero -PathType Container)) {
       $lista = Get-ChildItem $fichero -Recurse -File -Filter *.html | ForEach-Object { $r = [IO.Path]::GetRelativePath($raiz, $_.FullName).Replace('\', '/'); "<li><a href=""/$r"">$r</a></li>" }

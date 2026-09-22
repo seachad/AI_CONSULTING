@@ -193,7 +193,7 @@ tbody tr:hover td { background: color-mix(in srgb, var(--papel-2) 60%, transpare
 /* ---------- Barra de herramientas ---------- */
 .oculto { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
 .barra { position: sticky; top: 0; z-index: 50; background: color-mix(in srgb, var(--papel) 94%, transparent); backdrop-filter: blur(6px); border-bottom: 1px solid var(--regla); }
-.barra-in { position: relative; max-width: 1120px; margin: 0 auto; padding: 8px 16px; display: flex; flex-wrap: nowrap; align-items: center; gap: 6px; font: 500 14px/1.2 var(--sans); white-space: nowrap; overflow-x: auto; }
+.barra-in { position: relative; max-width: 1120px; margin: 0 auto; padding: 8px 16px; display: flex; flex-wrap: nowrap; align-items: center; gap: 4px; font: 500 14px/1.2 var(--sans); white-space: nowrap; overflow-x: auto; }
 .barra-marca { display: flex; align-items: center; gap: 7px; font: 800 17px/1 var(--serif); letter-spacing: .04em; color: var(--negro); text-decoration: none; }
 .barra-marca i { width: 9px; height: 9px; background: var(--claret); }
 .barra-seccion { flex: 1 1 160px; min-width: 0; color: var(--tinta-2); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
@@ -208,8 +208,26 @@ tbody tr:hover td { background: color-mix(in srgb, var(--papel-2) 60%, transpare
 .btn:focus-visible, .barra select:focus-visible, .barra input:focus-visible, .panel-indice input:focus-visible, .idioma a:focus-visible { outline: 2px solid var(--oxford); outline-offset: 1px; }
 .btn-icono { width: 32px; padding: 0; }
 .buscar { display: flex; align-items: center; gap: 4px; }
-.barra input[type=search] { width: 150px; font-weight: 500; }
-.buscar-cuenta { min-width: 44px; font-size: 12px; color: var(--tinta-2); text-align: right; }
+.barra input[type=search] { width: 120px; font-weight: 500; }
+.buscar-cuenta { min-width: 36px; font-size: 12px; color: var(--tinta-2); text-align: right; }
+/* buscador de términos en esta página o en todo el sitio (D104): selector de ámbito y lista de resultados del sitio; el «Buscador de
+   documentos» (control de códigos, codigos.js) toma el ancho justo de su rótulo para que la barra quepa a 1120 px sin desplazamiento */
+.barra .ir-codigo input { width: 176px; padding: 6px 6px; }
+.barra .ir-codigo { gap: 4px; }
+.buscar-ambito { display: inline-flex; }
+.buscar-ambito select { max-width: 11em; padding-left: 6px; padding-right: 6px; }
+.buscar [hidden] { display: none; }
+.buscar-lista { position: fixed; z-index: 1000; box-sizing: border-box; width: min(36em, calc(100vw - 16px)); max-height: 70vh; overflow-y: auto; background: var(--papel); border: 1px solid var(--negro); box-shadow: 0 8px 24px rgba(0, 0, 0, .25); font: 500 14px/1.25 var(--sans); white-space: normal; text-align: left; }
+.buscar-lista[hidden] { display: none; }
+.buscar-lista a { display: block; padding: 8px 10px; color: var(--tinta); text-decoration: none; border-bottom: 1px solid var(--regla-2); }
+.buscar-lista a b { display: block; color: var(--claret); font-weight: 700; }
+.buscar-lista a i { display: block; font-style: normal; font-size: 12.5px; color: var(--tinta-2); }
+.buscar-lista a span { display: block; margin-top: 2px; font-size: 12.5px; line-height: 1.4; color: var(--tinta-2); }
+.buscar-lista a span mark { background: var(--resaltado); color: var(--tinta); padding: 0 1px; border-radius: 2px; }
+.buscar-lista a.activo, .buscar-lista a:hover { background: var(--papel-2); }
+.buscar-lista p { margin: 0; padding: 8px 10px; font-size: 12.5px; line-height: 1.4; color: var(--tinta-2); }
+.buscar-lista p.grupo { padding: 5px 10px; font-size: 11.5px; font-weight: 700; letter-spacing: .05em; text-transform: uppercase; color: var(--claret); background: var(--papel-2); border-bottom: 1px solid var(--regla-2); }
+@media print { .buscar-lista { display: none !important; } }
 .idioma { display: flex; border: 1px solid var(--regla); border-radius: 2px; overflow: hidden; }
 .idioma a, .idioma span { font: 700 12px/30px var(--sans); padding: 0 9px; color: var(--tinta-2); text-decoration: none; letter-spacing: .05em; }
 .idioma .activo { background: var(--negro); color: var(--papel); }
@@ -218,6 +236,7 @@ tbody tr:hover td { background: color-mix(in srgb, var(--papel-2) 60%, transpare
   .barra-seccion { display: none; }
   .barra input[type=search] { width: 112px; }
   .buscar-cuenta { min-width: 30px; }
+  .buscar-ambito select { max-width: 8.5em; }
   .idioma a, .idioma span { padding: 0 6px; }
 }
 mark.hallazgo { background: var(--resaltado); color: inherit; padding: 0 1px; border-radius: 2px; }
@@ -389,7 +408,13 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
     <span class="barra-seccion" id="barra-seccion"></span>
     <span class="ir-codigo" data-ir-codigo></span>
     <div class="buscar" role="search">
-      <input type="search" id="buscar" placeholder="Search this document" aria-label="Search this document" autocomplete="off">
+      <label class="buscar-ambito" title="Where to search: on this page or across every page of the site (documents, templates, course, SPHERES and SPAD)"><span class="oculto">Where to search</span>
+        <select id="buscar-ambito" aria-label="Where to search">
+          <option value="pagina">This page</option>
+          <option value="todas">Whole site</option>
+        </select>
+      </label>
+      <input type="search" id="buscar" placeholder="Search terms" aria-label="Search terms" title="Search for a word or a phrase on this page or across every page of the site, as chosen in the selector on the left. Enter jumps to the next result or opens the first one in the list." autocomplete="off">
       <span class="buscar-cuenta" id="buscar-cuenta" aria-live="polite"></span>
       <button class="btn btn-icono" id="buscar-ant" type="button" aria-label="Previous result" title="Previous result">↑</button>
       <button class="btn btn-icono" id="buscar-sig" type="button" aria-label="Next result" title="Next result">↓</button>
@@ -1249,15 +1274,23 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
   window.addEventListener('scroll', function () { if (!pendiente) { pendiente = true; setTimeout(seccionActual, 100); } }, { passive: true });
   seccionActual();
 
-  /* ---------- Búsqueda ---------- */
+  /* ---------- Búsqueda de términos: en esta página o en todo el sitio (D104) ---------- */
   var entrada = document.getElementById('buscar');
   var cuenta = document.getElementById('buscar-cuenta');
+  var ambito = document.getElementById('buscar-ambito');
+  var botonAnt = document.getElementById('buscar-ant'), botonSig = document.getElementById('buscar-sig');
+  var ambitoKey = 'seveng-buscar-ambito';   // el ámbito elegido se recuerda en este navegador
+  try { var ambGuardado = localStorage.getItem(ambitoKey); if (ambGuardado === 'todas' || ambGuardado === 'pagina') ambito.value = ambGuardado; } catch (e) {}
   var marcas = []; var indice = -1; var espera = null;
+  // los textos de la barra llegan codificados como HTML (build.ps1); para textContent hay que decodificarlos («p&#225;ginas» -> «páginas»)
+  function tx(s) { var t = document.createElement('textarea'); t.innerHTML = s; return t.value; }
+  function botones() { var v = ambito.value === 'pagina' || marcas.length > 0; botonAnt.hidden = !v; botonSig.hidden = !v; }
   function limpiar() {
     marcas.forEach(function (m) { var p = m.parentNode; if (!p) return; p.replaceChild(document.createTextNode(m.textContent), m); p.normalize(); });
-    marcas = []; indice = -1; cuenta.textContent = '';
+    marcas = []; indice = -1; cuenta.textContent = ''; botones();
   }
-  function buscar() {
+  // en esta página: resalta cada coincidencia y salta a la primera (o, al llegar desde la búsqueda en todas las páginas, a la primera desde la sección elegida)
+  function buscarEnPagina(desdeId) {
     limpiar();
     var q = norm(entrada.value.trim());
     if (q.length < 2) return;
@@ -1281,8 +1314,10 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
       }
     });
     marcas.sort(function (a, b) { return a.compareDocumentPosition(b) & Node.DOCUMENT_POSITION_FOLLOWING ? -1 : 1; });
-    if (!marcas.length) { cuenta.textContent = 'No results'; return; }
-    ir(0);
+    if (!marcas.length) { cuenta.textContent = tx('No results'); return; }
+    var ini = 0, objetivo = desdeId ? document.getElementById(desdeId) : null;
+    if (objetivo) { for (var k = 0; k < marcas.length; k++) { if (objetivo.compareDocumentPosition(marcas[k]) & Node.DOCUMENT_POSITION_FOLLOWING) { ini = k; break; } } }
+    ir(ini);
   }
   function ir(i) {
     if (!marcas.length) return;
@@ -1290,15 +1325,120 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
     indice = (i + marcas.length) % marcas.length;
     marcas[indice].classList.add('actual');
     marcas[indice].scrollIntoView({ block: 'center', behavior: 'smooth' });
-    cuenta.textContent = (indice + 1) + ' / ' + marcas.length;
+    cuenta.textContent = (indice + 1) + ' / ' + marcas.length; botones();
   }
-  entrada.addEventListener('input', function () { clearTimeout(espera); espera = setTimeout(buscar, 250); });
-  entrada.addEventListener('keydown', function (e) {
-    if (e.key === 'Enter') { e.preventDefault(); if (!marcas.length) buscar(); else ir(indice + (e.shiftKey ? -1 : 1)); }
-    if (e.key === 'Escape') { entrada.value = ''; limpiar(); }
+
+  /* en todas las páginas: índice de texto del sitio (busqueda.json, generado por busqueda.ps1 junto a codigos.js), descargado la primera vez que se usa.
+     La búsqueda se hace en el navegador; cada resultado lleva a su página y sección con ?q=término, y la página de destino resalta el término. */
+  var scriptCodigos = document.querySelector('script[src$="codigos.js"]');
+  var urlIndice = new URL((scriptCodigos ? scriptCodigos.getAttribute('src') : 'codigos.js').replace(/codigos\.js$/, 'busqueda.json'), location.href).href;
+  var INDICE = null, cargaIndice = null, resSitio = [], actSitio = 0;
+  var listaSitio = document.createElement('div'); listaSitio.className = 'buscar-lista'; listaSitio.setAttribute('role', 'listbox'); listaSitio.hidden = true; document.body.appendChild(listaSitio);
+  // normaliza conservando la posición de cada carácter (para recortar el fragmento del texto original); si no es posible, carácter a carácter
+  function normUno(s) { s = String(s || ''); var n = norm(s); if (n.length === s.length) return n; var r = ''; for (var i = 0; i < s.length; i++) { var c = norm(s[i]); r += c.length === 1 ? c : (c.charAt(0) || s[i]); } return r; }
+  function cargarIndice() {
+    if (INDICE) return Promise.resolve(INDICE);
+    if (!cargaIndice) {
+      cuenta.textContent = tx('Loading…');
+      cargaIndice = fetch(urlIndice).then(function (r) { if (!r.ok) throw new Error(String(r.status)); return r.json(); }).then(function (d) {
+        d.paginas.forEach(function (p) { p.tn = normUno(p.t); p.s.forEach(function (s) { s.hn = normUno(s.h); s.xn = normUno(s.x); }); });
+        INDICE = d; return d;
+      }).catch(function (e) { cargaIndice = null; throw e; });
+    }
+    return cargaIndice;
+  }
+  // la lista cuelga de <body> con posición fija: dentro de la barra la recortaría su desbordamiento horizontal
+  function colocarLista() {
+    var r = entrada.getBoundingClientRect(), ancho = Math.min(36 * 14, window.innerWidth - 16);
+    listaSitio.style.top = Math.round(r.bottom + 4) + 'px';
+    listaSitio.style.left = Math.max(8, Math.min(Math.round(r.left), window.innerWidth - ancho - 8)) + 'px';
+  }
+  function cerrarLista() { listaSitio.hidden = true; listaSitio.innerHTML = ''; resSitio = []; }
+  function marcarActivo() { Array.prototype.forEach.call(listaSitio.querySelectorAll('a[role=option]'), function (a, i) { a.classList.toggle('activo', i === actSitio); }); }
+  function fragmento(span, r, q) {
+    var x = r.s.x || '', i = r.i;
+    if (i < 0) { span.textContent = x.slice(0, 160) + (x.length > 160 ? '…' : ''); return; }
+    var a = Math.max(0, i - 60), b = Math.min(x.length, i + q.length + 100);
+    span.appendChild(document.createTextNode((a > 0 ? '…' : '') + x.slice(a, i)));
+    var m = document.createElement('mark'); m.textContent = x.slice(i, i + q.length); span.appendChild(m);
+    span.appendChild(document.createTextNode(x.slice(i + q.length, b) + (b < x.length ? '…' : '')));
+  }
+  function destinoSitio(r) {
+    var u = new URL(r.p.h, urlIndice);
+    u.search = '?q=' + encodeURIComponent(entrada.value.trim());
+    u.hash = r.s.id ? '#' + r.s.id : '';
+    return u.href;
+  }
+  function buscarEnSitio() {
+    limpiar();
+    var q = norm(entrada.value.trim());
+    if (q.length < 2) { cerrarLista(); return; }
+    cargarIndice().then(function (d) {
+      if (norm(entrada.value.trim()) !== q) return;   // el término cambió mientras se cargaba
+      var res = [], nPag = 0;
+      d.paginas.forEach(function (p) {
+        var enTitulo = p.tn.indexOf(q) >= 0, secs = [];
+        p.s.forEach(function (s) {
+          var i = s.xn.indexOf(q), j = s.hn.indexOf(q);
+          if (i < 0 && j < 0) return;
+          var n = 0, k = i; while (k >= 0 && n < 50) { n++; k = s.xn.indexOf(q, k + q.length); }
+          secs.push({ p: p, s: s, i: i, n: n, sc: (j >= 0 ? 30 : 0) + Math.min(n, 20) + (enTitulo ? 10 : 0) });
+        });
+        if (!secs.length && enTitulo) secs.push({ p: p, s: p.s[0] || { id: '', h: '', x: '' }, i: -1, n: 0, sc: 100 });
+        if (secs.length) { nPag++; res = res.concat(secs); }
+      });
+      res.sort(function (a, b) { return b.sc - a.sc; });
+      resSitio = res.slice(0, 40); actSitio = 0; listaSitio.innerHTML = '';
+      if (!res.length) {
+        cuenta.textContent = tx('No results');
+        var p0 = document.createElement('p'); p0.textContent = tx('No results'); listaSitio.appendChild(p0);
+      } else {
+        cuenta.textContent = String(res.length);
+        var pg = document.createElement('p'); pg.className = 'grupo'; pg.textContent = tx('{n} matches on {p} pages').replace('{n}', res.length).replace('{p}', nPag); listaSitio.appendChild(pg);
+        resSitio.forEach(function (r, k) {
+          var a = document.createElement('a'); a.href = destinoSitio(r); a.setAttribute('role', 'option'); if (k === 0) a.className = 'activo';
+          var b = document.createElement('b'); b.textContent = r.p.t; a.appendChild(b);
+          if (r.s.h) { var i = document.createElement('i'); i.textContent = r.s.h; a.appendChild(i); }
+          var s = document.createElement('span'); fragmento(s, r, q); a.appendChild(s);
+          listaSitio.appendChild(a);
+        });
+        if (res.length > resSitio.length) { var p1 = document.createElement('p'); p1.textContent = tx('Showing the first {n}; refine the term to see the rest.').replace('{n}', resSitio.length); listaSitio.appendChild(p1); }
+      }
+      colocarLista(); listaSitio.hidden = false;
+    }).catch(function () {
+      cuenta.textContent = ''; listaSitio.innerHTML = '';
+      var p2 = document.createElement('p'); p2.textContent = tx('The search index could not be loaded. Open the published site or serve it over http: a file opened by double-click cannot download it.'); listaSitio.appendChild(p2); colocarLista(); listaSitio.hidden = false;
+    });
+  }
+  function buscarSegunAmbito() { if (ambito.value === 'todas') buscarEnSitio(); else { cerrarLista(); buscarEnPagina(); } }
+  ambito.addEventListener('change', function () {
+    try { localStorage.setItem(ambitoKey, ambito.value); } catch (e) {}
+    limpiar(); cerrarLista(); if (entrada.value.trim()) buscarSegunAmbito();
   });
-  document.getElementById('buscar-sig').addEventListener('click', function () { ir(indice + 1); });
-  document.getElementById('buscar-ant').addEventListener('click', function () { ir(indice - 1); });
+  entrada.addEventListener('input', function () { clearTimeout(espera); espera = setTimeout(buscarSegunAmbito, 250); });
+  entrada.addEventListener('focus', function () { if (ambito.value === 'todas' && resSitio.length) { colocarLista(); listaSitio.hidden = false; } });
+  entrada.addEventListener('keydown', function (e) {
+    if (ambito.value === 'todas' && !listaSitio.hidden) {
+      if (e.key === 'ArrowDown' && resSitio.length) { actSitio = (actSitio + 1) % resSitio.length; marcarActivo(); e.preventDefault(); return; }
+      if (e.key === 'ArrowUp' && resSitio.length) { actSitio = (actSitio - 1 + resSitio.length) % resSitio.length; marcarActivo(); e.preventDefault(); return; }
+      if (e.key === 'Enter') { e.preventDefault(); if (resSitio.length) location.href = destinoSitio(resSitio[actSitio]); return; }
+      if (e.key === 'Escape') { cerrarLista(); return; }
+    }
+    if (e.key === 'Enter') { e.preventDefault(); if (ambito.value === 'todas') buscarEnSitio(); else if (!marcas.length) buscarEnPagina(); else ir(indice + (e.shiftKey ? -1 : 1)); }
+    if (e.key === 'Escape') { entrada.value = ''; limpiar(); cerrarLista(); }
+  });
+  botonSig.addEventListener('click', function () { ir(indice + 1); });
+  botonAnt.addEventListener('click', function () { ir(indice - 1); });
+  document.addEventListener('click', function (e) { if (!listaSitio.contains(e.target) && e.target !== entrada) cerrarLista(); });
+  window.addEventListener('resize', function () { if (!listaSitio.hidden) colocarLista(); });
+  botones();
+  // llegada desde la búsqueda en todas las páginas (?q=término y, si la hay, #sección): se resalta el término en esta página desde esa sección
+  var llegada = /[?&]q=([^&#]+)/.exec(location.search);
+  if (llegada) {
+    try { entrada.value = decodeURIComponent(llegada[1].replace(/\+/g, ' ')); } catch (e) { entrada.value = ''; }
+    if (entrada.value.trim()) buscarEnPagina(location.hash.slice(1));
+    try { history.replaceState(null, '', location.pathname + location.hash); } catch (e) {}
+  }
   document.addEventListener('keydown', function (e) {
     var escribiendo = /INPUT|TEXTAREA|SELECT/.test(document.activeElement.tagName);
     if (e.key === '/' && !escribiendo) { e.preventDefault(); entrada.focus(); }
