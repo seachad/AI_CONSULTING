@@ -522,6 +522,7 @@ The **information sheet for workers' representatives** (section 7.3) and the reg
 | **40, 41 and 43 · Measurement, indicators and benefits** | Released capacity and PER indicators. |
 | **51 · Data and knowledge** | Knowledge dependent on a few people; employee data. |
 | **52 · AI operations manual** | Logs, changes and rollback. |
+| **54 · How a company organises itself for AI** | Functions and roles in the real organisation chart, and roles anticipated once AI is embedded. |
 
 ---
 

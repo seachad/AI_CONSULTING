@@ -522,6 +522,7 @@ La **ficha informativa para la representación** (sección 7.3) y el registro de
 | **40, 41 y 43 · Medición, indicadores y beneficios** | Capacidad liberada e indicadores PER. |
 | **51 · Datos y conocimiento** | Conocimiento dependiente de pocas personas; datos de empleados. |
 | **52 · Manual de operación de IA** | Registros, cambios y reversión. |
+| **54 · Cómo se organiza una compañía para la IA** | Funciones y cargos del organigrama real, y roles que se anticipan con la IA implantada. |
 
 ---
 

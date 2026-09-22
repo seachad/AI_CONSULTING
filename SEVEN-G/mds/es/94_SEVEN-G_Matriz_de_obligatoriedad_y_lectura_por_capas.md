@@ -166,6 +166,7 @@ Cada documento muestra este mismo nivel en su recuadro «Lo esencial», con la p
 | 51 | [Datos y conocimiento para IA](51_SEVEN-G_Datos_y_conocimiento.html) | **Condicional** | Datos, protección de datos |
 | 52 | [Manual de operación de IA](52_SEVEN-G_Manual_de_operacion_de_IA.html) | **Siempre** | Responsables de operación |
 | 53 | [Construcción de soluciones con IA](53_SEVEN-G_Construccion_de_soluciones_con_IA.html) | **Condicional** | Responsables técnicos |
+| 54 | [Cómo se organiza una compañía para la IA](54_SEVEN-G_Organizacion_de_la_compania_para_la_IA.html) | **Consulta** | Consejo, alta dirección, oficina de IA |
 | 60 | [Paquete para el consejo](60_SEVEN-G_Paquete_para_el_consejo.html) | **Siempre** | Secretaría del consejo, oficina de IA |
 | 61 | [Guía de conversación con el consejo](61_SEVEN-G_Guia_de_conversacion_con_el_consejo.html) | **Recomendado** | Consejeros, dirección |
 | 62 | [Registro de recomendaciones y decisiones](62_SEVEN-G_Registro_de_recomendaciones_y_decisiones.html) | **Siempre** | Secretaría del consejo, oficina de IA |
