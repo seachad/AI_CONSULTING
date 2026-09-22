@@ -99,7 +99,22 @@
       "propio": ["config_panel.json (umbrales, ciclo de vida, navegación)", "JSON del panel (motor/ESQUEMA.md), panel completo, móvil y registro de recomendaciones"],
       "nota": "No lee riesgos[] (usa el riesgo residual principal de cada iniciativa) ni la evidencia del índice de las iniciativas (esa la calcula T14)."
     },
-    "T06": { "nombre": "Matriz y registro de riesgos", "modulo_de": "T01", "propio": "riesgos[] del registro" },
+    "T06": {
+      "nombre": "Matriz y registro de riesgos",
+      "modulo_de": "T01",
+      "propio": "riesgos[] del registro",
+      "lee_de_t01": [
+        "meta.organizacion", "meta.fecha_referencia", "meta.datos_ilustrativos",
+        "iniciativas[].id", "iniciativas[].nombre", "iniciativas[].area", "iniciativas[].responsables", "iniciativas[].riesgo_residual_principal",
+        "iniciativas[].ciclo.fase", "iniciativas[].ciclo.estado",
+        "iniciativas[].clasificacion.esfera_principal", "iniciativas[].clasificacion.tecnologia", "iniciativas[].clasificacion.exposicion", "iniciativas[].clasificacion.autonomia", "iniciativas[].clasificacion.regulatoria", "iniciativas[].clasificacion.ambicion_confirmada", "iniciativas[].clasificacion.ambicion_propuesta", "iniciativas[].clasificacion.intensidad", "iniciativas[].clasificacion.proveedores",
+        "iniciativas[].evaluaciones_impacto[].tipo", "iniciativas[].evaluaciones_impacto[].estado", "iniciativas[].sistemas",
+        "sistemas[].tipo", "sistemas[].proveedores", "riesgos[]"
+      ],
+      "escribe_en_t01": [],
+      "genera": "Excel del caso (.xlsx, D106): portada con código, fecha y hora de generación y resumen; matriz 5 × 5; registro; plan de mitigación y plan de contingencia propuestos por riesgo; riesgos tipo aplicables no registrados; escalas. Fichero descargado, no vuelve al registro.",
+      "catalogo": "T01_registro_iniciativas/catalogo_riesgos.json (reglas de aplicabilidad, tipo de control y propuestas por código RT) + documento 33 §9 (título, descripción, causas, controles tipo y fase, leídos al generar registro.html)"
+    },
     "T18": { "nombre": "Registro de recomendaciones y decisiones del consejo", "modulo_de": "T01", "propio": "recomendaciones[] y decisiones_consejo[] del registro" }
   }
 }

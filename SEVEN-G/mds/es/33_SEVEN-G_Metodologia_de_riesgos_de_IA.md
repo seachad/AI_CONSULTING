@@ -296,7 +296,7 @@ El verificador comprueba, como mínimo: que todos los riesgos Medio o superiores
 
 ## 9. Catálogo de riesgos tipo
 
-El catálogo es una lista de partida, no exhaustiva. En la fase 3, el equipo **debe** revisar al menos los riesgos tipo de las categorías que aplican a su tecnología y exposición, y registrar los descartados con motivo. Cada compañía **puede** ampliar el catálogo con códigos correlativos y **debe** declarar los que añade.
+El catálogo es una lista de partida, no exhaustiva. En la fase 3, el equipo **debe** revisar al menos los riesgos tipo de las categorías que aplican a su tecnología y exposición, y registrar los descartados con motivo. Cada compañía **puede** ampliar el catálogo con códigos correlativos y **debe** declarar los que añade. Para hacer esa revisión, el Excel del caso que genera T06 lista los riesgos tipo que aplican al perfil de la iniciativa (tecnología, exposición, autonomía, clasificación regulatoria, ambición y terceros) y no tienen un riesgo registrado con su código, con una propuesta de mitigación y de contingencia por cada uno y columnas para incluirlo o descartarlo con motivo.
 
 La columna *Fase* indica dónde se identifica y dónde se trata principalmente; los controles con código SEG o AG se describen en el documento 35.
 
@@ -509,7 +509,7 @@ El informe al consejo usa lenguaje de negocio: qué puede pasar, a quién afecta
 | **P12** | Matriz y registro de riesgos | Registro con los campos de la sección 8, mapa de calor inherente y residual. Fases 3, 5 y 6. |
 | **P13** | Plan de mitigación y contingencia | Acciones de tratamiento, residual objetivo, contingencias y disparadores (secciones 5–7). Fase 3. |
 | **P42** | Informe trimestral de segunda línea | Información trimestral de riesgos de la cartera a la comisión delegada (secciones 10–12). |
-| **T06** | Matriz y registro de riesgos | Cálculo de niveles con la regla de impacto extremo, matriz 5 × 5 inherente y residual de cada iniciativa y de la cartera, eficacia de controles, aceptación por el órgano de su nivel, observaciones de las secciones 4 a 8 (residual Crítico sin aprobación, Alto sin contingencia, aceptación caducada o insuficiente, revisión vencida) y exportación CSV. Vista «Riesgos» del registro T01. La concentración y la correlación de la cartera (sección 10) se analizan con P12 §7. |
+| **T06** | Matriz y registro de riesgos | Cálculo de niveles con la regla de impacto extremo, matriz 5 × 5 inherente y residual de cada iniciativa y de la cartera, eficacia de controles, aceptación por el órgano de su nivel, observaciones de las secciones 4 a 8 (residual Crítico sin aprobación, Alto sin contingencia, aceptación caducada o insuficiente, revisión vencida), exportación CSV y **Excel del caso**: matriz, registro, plan de mitigación (P13 §4) y plan de contingencia (P13 §6) propuestos para cada riesgo a partir del catálogo de la sección 9 según su riesgo tipo, y los riesgos tipo que aplican al perfil de la iniciativa y no están registrados, para incluirlos o descartarlos con motivo (sección 8.2); las propuestas son un punto de partida, no sustituyen la decisión del órgano competente. Vista «Riesgos» del registro T01. La concentración y la correlación de la cartera (sección 10) se analizan con P12 §7. |
 | T01 · T02 · T08 · T09 · T17 | Registro de iniciativas, inventario, incidentes, proveedores y panel del consejo | Fuentes y destinos de datos de riesgo. |
 
 ---

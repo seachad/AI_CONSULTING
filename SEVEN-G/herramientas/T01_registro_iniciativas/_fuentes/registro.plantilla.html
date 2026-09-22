@@ -266,6 +266,7 @@ p.nota-clas{margin:4px 0 10px}
 <div id="toast" role="status" aria-live="polite"></div>
 <script type="application/json" id="catalogo-criterios">__CATALOGO_CRITERIOS__</script>
 <script type="application/json" id="datos-demo">__DATOS_DEMO__</script>
+<script type="application/json" id="catalogo-riesgos">__CATALOGO_RIESGOS__</script>
 <script>__DATOS_LOCALES__</script>
 <script type="application/json" id="config-panel">__CONFIG_PANEL__</script>
 <script>__CONECTOR_T17__</script>
@@ -1682,7 +1683,9 @@ Object.assign(LB.es,{
   tipo_residual:{objetivo:'Objetivo (controles previstos)',verificado:'Verificado (eficacia probada)'},
   estado_riesgo:{identificado:'Identificado',en_tratamiento:'En tratamiento',aceptado:'Aceptado',materializado:'Materializado',cerrado:'Cerrado'},
   tendencia:{sube:'Sube',estable:'Estable',baja:'Baja'},
-  organo_acepta:{producto:'Responsable de producto de IA',patrocinador:'Patrocinador de IA',comite_ia:'Comité de IA',consejo:'Consejo o comisión delegada'}
+  organo_acepta:{producto:'Responsable de producto de IA',patrocinador:'Patrocinador de IA',comite_ia:'Comité de IA',consejo:'Consejo o comisión delegada'},
+  tipo_control:{preventivo:'Preventivo',detectivo:'Detectivo',correctivo:'Correctivo o de contención',transferencia:'Transferencia'},
+  reduce:{probabilidad:'Probabilidad',impacto:'Impacto',ambos:'Ambos'}
 });
 Object.assign(LB.en,{
   cat_riesgo:{EST:'EST · Strategic',TEC:'TEC · Technical',DAT:'DAT · Data',ECO:'ECO · Economic',LEG:'LEG · Legal and compliance',ORG:'ORG · Organisational',REP:'REP · Reputational',GEN:'GEN · Generative AI and agents',SEG:'SEG · Security and offensive AI',TER:'TER · Third parties'},
@@ -1694,7 +1697,9 @@ Object.assign(LB.en,{
   tipo_residual:{objetivo:'Target (planned controls)',verificado:'Verified (effectiveness tested)'},
   estado_riesgo:{identificado:'Identified',en_tratamiento:'Under treatment',aceptado:'Accepted',materializado:'Materialised',cerrado:'Closed'},
   tendencia:{sube:'Rising',estable:'Stable',baja:'Falling'},
-  organo_acepta:{producto:'AI Product Owner',patrocinador:'AI Sponsor',comite_ia:'AI Committee',consejo:'Board or board committee'}
+  organo_acepta:{producto:'AI Product Owner',patrocinador:'AI Sponsor',comite_ia:'AI Committee',consejo:'Board or board committee'},
+  tipo_control:{preventivo:'Preventive',detectivo:'Detective',correctivo:'Corrective or containment',transferencia:'Transfer'},
+  reduce:{probabilidad:'Likelihood',impacto:'Impact',ambos:'Both'}
 });
 Object.assign(TX.es,{
  v_riesgos:'Riesgos (T06)', r_riesgos:'Riesgos (T06)', at_riesgos:'Matriz de riesgos',
@@ -1727,7 +1732,25 @@ Object.assign(TX.es,{
  ro_sin_aceptacion:'Residual sin aceptación registrada por el órgano de su nivel (G3.12).', ro_sin_registro:'En fase 3 o posterior sin matriz y registro de riesgos (G3.11).',
  ro_principal:'El riesgo residual principal de la ficha ({a}) no coincide con el mayor residual del registro ({b}).',
  rs_sin_valorar:'Sin valorar', rs_sin_residual:'Sin residual', rs_sin_responsable:'Sin responsable', rs_sin_respuesta:'Sin respuesta', rs_critico:'Crítico sin consejo', rs_contingencia:'Sin contingencia', rs_organo:'Órgano insuficiente', rs_caducada:'Aceptación caducada',
- rs_constructor:'Acepta quien construye', rs_revision:'Revisión vencida', rs_ineficaz:'Control ineficaz', rs_reduccion:'Reducción excesiva', rs_extremo:'Impacto extremo', rs_sin_aceptacion:'Sin aceptación', rs_sin_registro:'Sin registro', rs_principal:'Nivel principal distinto'
+ rs_constructor:'Acepta quien construye', rs_revision:'Revisión vencida', rs_ineficaz:'Control ineficaz', rs_reduccion:'Reducción excesiva', rs_extremo:'Impacto extremo', rs_sin_aceptacion:'Sin aceptación', rs_sin_registro:'Sin registro', rs_principal:'Nivel principal distinto',
+ /* Excel del caso (D106): matriz, registro, plan de mitigación y contingencia con propuestas del catálogo del documento 33 §9 */
+ xl_boton:'Excel del caso: matriz y planes', xl_boton_ayuda:'Descarga un libro de Excel con la matriz, el registro, el plan de mitigación y de contingencia propuestos y los riesgos tipo a considerar de esta iniciativa.', xl_boton_cartera:'Excel de un caso…',
+ xl_dlg:'Excel de la matriz de riesgos de un caso', xl_dlg_ayuda:'Genera un libro de Excel (.xlsx) con la matriz 5 × 5, el registro de riesgos, un plan de mitigación y un plan de contingencia propuestos para cada riesgo y los riesgos tipo del documento 33 §9 que aplican al caso y aún no están registrados. Las propuestas son un punto de partida para P13; las decide el equipo y el órgano competente.', xl_descargar:'Descargar Excel', xl_ok:'Excel generado: {f}',
+ xl_titulo:'SEVEN-G · T06 · Matriz de riesgos y planes de mitigación y contingencia del caso', xl_nombre:'Nombre', xl_organizacion:'Organización', xl_fase:'Fase', xl_ambicion:'Ambición', xl_intensidad:'Intensidad', xl_autonomia:'Autonomía', xl_tecnologia:'Tecnología', xl_exposicion:'Exposición', xl_regulatoria:'Clasificación regulatoria', xl_esfera:'Esfera principal', xl_responsables:'Responsables',
+ xl_generado:'Generado el', xl_generado_por:'Generado por', xl_generador:'SEVEN-G · T06 Matriz y registro de riesgos (registro T01, esquema {v})', xl_fecha_ref:'Fecha de referencia del registro', xl_idioma:'Idioma', xl_fichero:'Fichero', xl_resumen:'Resumen', xl_n_riesgos:'Riesgos registrados (abiertos · cerrados)', xl_mayor_res:'Mayor nivel residual abierto', xl_principal:'Riesgo residual principal de la ficha', xl_obs:'Observaciones que exigen acción', xl_a_considerar:'Riesgos tipo aplicables no registrados',
+ xl_hojas:'Hojas de este libro', xl_h_portada:'Portada', xl_h_matriz:'Matriz', xl_h_registro:'Registro', xl_h_mitigacion:'Plan de mitigación', xl_h_contingencia:'Plan de contingencia', xl_h_considerar:'Riesgos a considerar', xl_h_escalas:'Escalas',
+ xl_d_portada:'Identificación del caso, fecha y hora de generación y resumen.', xl_d_matriz:'Matriz 5 × 5 residual e inherente con el número de riesgos por celda; resumen por nivel y por categoría.', xl_d_registro:'Todos los riesgos del caso con los campos de P12 y 33 §8.1, niveles calculados y observaciones.', xl_d_mitigacion:'Acciones de mitigación propuestas por riesgo (P13 §4), con columnas a completar por el equipo.', xl_d_contingencia:'Plan de contingencia por riesgo (P13 §6): disparador, acciones y responsable propuestos; obligatorio en Alto, Crítico e impacto 5.', xl_d_considerar:'Riesgos tipo del documento 33 §9 que aplican al perfil del caso y no están registrados: incluir o descartar con motivo (33 §8.2).', xl_d_escalas:'Escalas, niveles, aceptación por nivel, eficacia de controles, respuestas y frecuencia de revisión (documento 33).',
+ xl_leyenda:'Colores: blanco, datos del registro T01 · azul, propuesta del catálogo (documento 33 §9), a validar · amarillo, a completar por el equipo.', xl_nota_prop:'Las propuestas de mitigación y de contingencia salen del catálogo de riesgos tipo del documento 33 §9 según el código RT de cada riesgo y el perfil de la iniciativa (tecnología, exposición, autonomía, clasificación regulatoria, ambición y terceros). Son un punto de partida para la plantilla P13: no sustituyen la decisión del equipo ni del órgano que acepta el riesgo, y nada se estima.', xl_ilustrativo:'Datos ilustrativos y ficticios (registro de demostración).',
+ xl_res_matriz:'Matriz residual (nivel con los controles)', xl_inh_matriz:'Matriz inherente (sin controles)', xl_pi:'P \\ I', xl_nivel:'Nivel', xl_inherente:'Inherente', xl_residual:'Residual', xl_categoria:'Categoría', xl_total:'Total', xl_sin_dato:'Sin dato',
+ xl_c_n:'Nº', xl_c_riesgo:'Riesgo (causa → evento → consecuencia)', xl_c_rt:'Riesgo tipo', xl_c_cat:'Categoría', xl_c_sis:'Sistema', xl_c_resp:'Responsable', xl_c_alta:'Fecha de alta', xl_c_p:'Probabilidad', xl_c_i:'Impacto', xl_c_punt:'Puntuación', xl_c_ninh:'Nivel inherente', xl_c_eje:'Eje del impacto', xl_c_ctl:'Controles', xl_c_efi:'Eficacia', xl_c_pr:'Probabilidad residual', xl_c_ir:'Impacto residual', xl_c_puntr:'Puntuación residual', xl_c_nres:'Nivel residual', xl_c_tres:'Tipo de residual', xl_c_nac:'Nivel a efectos de aceptación', xl_c_org:'Órgano requerido', xl_c_rsp:'Respuesta', xl_c_cont:'Plan de contingencia registrado', xl_c_est:'Estado', xl_c_ten:'Tendencia', xl_c_rev:'Próxima revisión', xl_c_aorg:'Aceptado por (órgano)', xl_c_aper:'Aceptado por (persona)', xl_c_afec:'Fecha de aceptación', xl_c_avig:'Vigente hasta', xl_c_aref:'Acta o registro', xl_c_obs:'Observaciones',
+ xl_m_req:'Requiere acciones', xl_m_acc:'Acciones propuestas', xl_m_tc:'Tipo de control', xl_m_red:'Reduce', xl_m_origen:'Origen de la propuesta', xl_m_resp:'Responsable de la acción', xl_m_fecha:'Fecha límite', xl_m_coste:'Coste estimado y categoría', xl_m_evid:'Evidencia de eficacia prevista', xl_m_estado:'Estado de la acción', xl_m_estado_v:'No iniciada · En curso · Implantada · Eficacia verificada', xl_m_si:'Sí (Medio o superior)', xl_m_opc:'Opcional (Bajo)', xl_m_evitar:'Respuesta Evitar: cambiar alcance, diseño, datos, proveedor o autonomía, o Parar en el gate.', xl_m_sin_rt:'Sin riesgo tipo: el equipo propone las acciones con 33 §5.2.', xl_m_rt_desc:'Riesgo tipo {c} no está en el catálogo del documento 33 §9.', xl_m_origen_v:'{c} · documento 33 §9',
+ xl_k_req:'Contingencia requerida', xl_k_esc:'Escenario', xl_k_reg:'Plan registrado en T01', xl_k_dis:'Disparador propuesto', xl_k_acc:'Acciones inmediatas propuestas', xl_k_rev:'Uso del plan de reversión (P19)', xl_k_resp:'Responsable de activar el plan', xl_k_tiempo:'Tiempo máximo de reacción', xl_k_com:'Comunicación', xl_k_not:'Notificaciones regulatorias', xl_k_rec:'Recuperación', xl_k_si:'Sí (Alto, Crítico o impacto 5)', xl_k_rec_v:'Recomendada', xl_k_no:'No', xl_k_falta:'Falta: el registro no tiene plan de contingencia y es obligatorio (G3.13).',
+ xl_k_rev_agente:'Incluye la activación del interruptor de parada y la reversión (AG-07, P19): el sistema actúa (autonomía {a}).', xl_k_rev_txt:'Según P19, si el proceso anterior sigue disponible; comprobar que la reversión se ha ensayado.', xl_k_com_base:'Comité de IA y patrocinador; responsable de riesgos de IA', xl_k_com_dpd:'delegado de protección de datos', xl_k_com_cli:'clientes o personas externas afectadas', xl_k_com_emp:'personas empleadas afectadas y su representación', xl_k_not_si:'Si puede ser un incidente grave, una violación de datos personales o un incidente DORA o NIS2, seguir P26 y P51 con sus plazos.', xl_k_not_no:'Según P26; valorar con jurídico si hay que notificar.',
+ xl_a_por:'Por qué aplica', xl_a_dec:'Decisión (Incluir · Descartar)', xl_a_motivo:'Motivo del descarte', xl_a_quien:'Quién activaría la contingencia', xl_a_fase:'Fase', xl_a_desc:'Descripción', xl_a_causas:'Causas típicas', xl_a_ctl:'Controles tipo (33 §9)', xl_a_mit:'Mitigación propuesta', xl_a_dis:'Contingencia propuesta: disparador', xl_a_acc:'Contingencia propuesta: acciones', xl_a_nota:'Documento 33 §9: en la fase 3 el equipo debe revisar al menos los riesgos tipo de las categorías que aplican a su tecnología y exposición y registrar los descartados con motivo (33 §8.2). Esta hoja lista los que aplican al perfil del caso y no tienen un riesgo registrado con su código.', xl_a_cartera:'Riesgos de cartera, que no se registran por caso (33 §10): {c}.', xl_a_ninguno:'Todos los riesgos tipo aplicables al perfil del caso tienen un riesgo registrado.', xl_a_reg:'Riesgos tipo ya registrados en el caso: {c}.',
+ xl_por_aprende:'sistema que aprende de datos', xl_por_personas:'efecto sobre personas (exposición no interna)', xl_por_datos:'datos personales o alto riesgo', xl_por_terceros:'proveedor externo o IA embebida',
+ xl_e_prob:'Probabilidad (33 §4.1)', xl_e_imp:'Impacto (33 §4.2): el mayor de cinco ejes', xl_e_ejes:'Ejes', xl_e_nivel:'Nivel = probabilidad × impacto (33 §4.3)', xl_e_rango:'Rango', xl_e_acepta:'Acepta el residual (33 §7.1)', xl_e_extremo:'Regla de impacto extremo: impacto 5 en personas y derechos o regulatorio se acepta como Alto como mínimo (33 §4.3).', xl_e_efi:'Eficacia de los controles (33 §5.3)', xl_e_efi_red:'Reducción máxima admitida (niveles)', xl_e_rsp:'Respuestas al riesgo (33 §6)', xl_e_rev:'Frecuencia de revisión (33 §7.3)', xl_e_rev_dev:'En desarrollo (fases 0–5)', xl_e_rev_prod:'En producción (fase 6)',
+ xl_e_rev_critico:'Continua, con informe en cada comité|Mensual y en cada sesión trimestral del consejo', xl_e_rev_alto:'En cada gate y, como mínimo, mensual|Trimestral, con R6 Enterprise', xl_e_rev_medio:'En cada gate|Semestral o en cada R6', xl_e_rev_bajo:'En G3 y G5|Anual o en R6',
+ xl_e_tc:'Tipos de control (33 §5.2)', xl_e_tc_txt:'Preventivo: probabilidad · Detectivo: impacto, al acortar la detección · Correctivo o de contención: impacto · Transferencia: solo el impacto económico.'
 });
 Object.assign(TX.en,{
  v_riesgos:'Risks (T06)', r_riesgos:'Risks (T06)', at_riesgos:'Risk matrix',
@@ -1760,7 +1783,24 @@ Object.assign(TX.en,{
  ro_sin_aceptacion:'Residual without an acceptance recorded by the body for its level (G3.12).', ro_sin_registro:'In phase 3 or later without a risk matrix and register (G3.11).',
  ro_principal:'The main residual risk in the record ({a}) does not match the highest residual in the register ({b}).',
  rs_sin_valorar:'Not assessed', rs_sin_residual:'No residual', rs_sin_responsable:'No owner', rs_sin_respuesta:'No response', rs_critico:'Critical without board', rs_contingencia:'No contingency', rs_organo:'Body too low', rs_caducada:'Acceptance expired',
- rs_constructor:'Accepted by a builder', rs_revision:'Review overdue', rs_ineficaz:'Ineffective control', rs_reduccion:'Excessive reduction', rs_extremo:'Extreme impact', rs_sin_aceptacion:'Not accepted', rs_sin_registro:'No register', rs_principal:'Main level differs'
+ rs_constructor:'Accepted by a builder', rs_revision:'Review overdue', rs_ineficaz:'Ineffective control', rs_reduccion:'Excessive reduction', rs_extremo:'Extreme impact', rs_sin_aceptacion:'Not accepted', rs_sin_registro:'No register', rs_principal:'Main level differs',
+ xl_boton:'Excel of the use case: matrix and plans', xl_boton_ayuda:'Downloads an Excel workbook with the matrix, the register, the proposed mitigation and contingency plans and the typical risks to consider for this initiative.', xl_boton_cartera:'Excel of a use case…',
+ xl_dlg:'Excel of the risk matrix of a use case', xl_dlg_ayuda:'Generates an Excel workbook (.xlsx) with the 5 × 5 matrix, the risk register, a proposed mitigation plan and contingency plan for each risk and the typical risks of document 33 §9 that apply to the case and are not yet registered. The proposals are a starting point for P13; the team and the competent body decide.', xl_descargar:'Download Excel', xl_ok:'Excel generated: {f}',
+ xl_titulo:'SEVEN-G · T06 · Risk matrix and mitigation and contingency plans of the use case', xl_nombre:'Name', xl_organizacion:'Organisation', xl_fase:'Phase', xl_ambicion:'Ambition', xl_intensidad:'Intensity', xl_autonomia:'Autonomy', xl_tecnologia:'Technology', xl_exposicion:'Exposure', xl_regulatoria:'Regulatory classification', xl_esfera:'Main sphere', xl_responsables:'Owners',
+ xl_generado:'Generated on', xl_generado_por:'Generated by', xl_generador:'SEVEN-G · T06 Risk matrix and register (T01 register, schema {v})', xl_fecha_ref:'Reference date of the register', xl_idioma:'Language', xl_fichero:'File', xl_resumen:'Summary', xl_n_riesgos:'Registered risks (open · closed)', xl_mayor_res:'Highest open residual level', xl_principal:'Main residual risk in the record', xl_obs:'Observations requiring action', xl_a_considerar:'Applicable typical risks not registered',
+ xl_hojas:'Sheets in this workbook', xl_h_portada:'Cover', xl_h_matriz:'Matrix', xl_h_registro:'Register', xl_h_mitigacion:'Mitigation plan', xl_h_contingencia:'Contingency plan', xl_h_considerar:'Risks to consider', xl_h_escalas:'Scales',
+ xl_d_portada:'Identification of the case, generation date and time and summary.', xl_d_matriz:'Residual and inherent 5 × 5 matrix with the number of risks per cell; summary by level and by category.', xl_d_registro:'All the risks of the case with the fields of P12 and 33 §8.1, calculated levels and observations.', xl_d_mitigacion:'Proposed mitigation actions per risk (P13 §4), with columns for the team to complete.', xl_d_contingencia:'Contingency plan per risk (P13 §6): proposed trigger, actions and owner; mandatory for High, Critical and impact 5.', xl_d_considerar:'Typical risks of document 33 §9 that apply to the profile of the case and are not registered: include or discard with a reason (33 §8.2).', xl_d_escalas:'Scales, levels, acceptance by level, control effectiveness, responses and review frequency (document 33).',
+ xl_leyenda:'Colours: white, data from the T01 register · blue, proposal from the catalogue (document 33 §9), to be validated · yellow, to be completed by the team.', xl_nota_prop:'The mitigation and contingency proposals come from the catalogue of typical risks in document 33 §9 according to the RT code of each risk and the profile of the initiative (technology, exposure, autonomy, regulatory classification, ambition and third parties). They are a starting point for template P13: they do not replace the decision of the team or of the body that accepts the risk, and nothing is estimated.', xl_ilustrativo:'Illustrative and fictitious data (demonstration register).',
+ xl_res_matriz:'Residual matrix (level with controls)', xl_inh_matriz:'Inherent matrix (without controls)', xl_pi:'L \\ I', xl_nivel:'Level', xl_inherente:'Inherent', xl_residual:'Residual', xl_categoria:'Category', xl_total:'Total', xl_sin_dato:'No data',
+ xl_c_n:'No.', xl_c_riesgo:'Risk (cause → event → consequence)', xl_c_rt:'Typical risk', xl_c_cat:'Category', xl_c_sis:'System', xl_c_resp:'Owner', xl_c_alta:'Date identified', xl_c_p:'Likelihood', xl_c_i:'Impact', xl_c_punt:'Score', xl_c_ninh:'Inherent level', xl_c_eje:'Impact axis', xl_c_ctl:'Controls', xl_c_efi:'Effectiveness', xl_c_pr:'Residual likelihood', xl_c_ir:'Residual impact', xl_c_puntr:'Residual score', xl_c_nres:'Residual level', xl_c_tres:'Residual type', xl_c_nac:'Level for acceptance purposes', xl_c_org:'Required body', xl_c_rsp:'Response', xl_c_cont:'Registered contingency plan', xl_c_est:'Status', xl_c_ten:'Trend', xl_c_rev:'Next review', xl_c_aorg:'Accepted by (body)', xl_c_aper:'Accepted by (person)', xl_c_afec:'Acceptance date', xl_c_avig:'Valid until', xl_c_aref:'Minutes or record', xl_c_obs:'Observations',
+ xl_m_req:'Actions required', xl_m_acc:'Proposed actions', xl_m_tc:'Control type', xl_m_red:'Reduces', xl_m_origen:'Origin of the proposal', xl_m_resp:'Action owner', xl_m_fecha:'Deadline', xl_m_coste:'Estimated cost and category', xl_m_evid:'Expected evidence of effectiveness', xl_m_estado:'Action status', xl_m_estado_v:'Not started · In progress · Implemented · Effectiveness verified', xl_m_si:'Yes (Medium or higher)', xl_m_opc:'Optional (Low)', xl_m_evitar:'Response Avoid: change scope, design, data, provider or autonomy, or Stop at the gate.', xl_m_sin_rt:'No typical risk: the team proposes the actions with 33 §5.2.', xl_m_rt_desc:'Typical risk {c} is not in the catalogue of document 33 §9.', xl_m_origen_v:'{c} · document 33 §9',
+ xl_k_req:'Contingency required', xl_k_esc:'Scenario', xl_k_reg:'Plan registered in T01', xl_k_dis:'Proposed trigger', xl_k_acc:'Proposed immediate actions', xl_k_rev:'Use of the rollback plan (P19)', xl_k_resp:'Owner who activates the plan', xl_k_tiempo:'Maximum reaction time', xl_k_com:'Communication', xl_k_not:'Regulatory notifications', xl_k_rec:'Recovery', xl_k_si:'Yes (High, Critical or impact 5)', xl_k_rec_v:'Recommended', xl_k_no:'No', xl_k_falta:'Missing: the register has no contingency plan and it is mandatory (G3.13).',
+ xl_k_rev_agente:'Includes activating the kill switch and the rollback (AG-07, P19): the system acts (autonomy {a}).', xl_k_rev_txt:'As per P19, if the previous process is still available; check that the rollback has been rehearsed.', xl_k_com_base:'AI Committee and sponsor; AI Risk Owner', xl_k_com_dpd:'data protection officer', xl_k_com_cli:'affected customers or external persons', xl_k_com_emp:'affected employees and their representatives', xl_k_not_si:'If it may be a serious incident, a personal data breach or a DORA or NIS2 incident, follow P26 and P51 with their deadlines.', xl_k_not_no:'As per P26; assess with legal whether notification is required.',
+ xl_a_por:'Why it applies', xl_a_dec:'Decision (Include · Discard)', xl_a_motivo:'Reason for discarding', xl_a_quien:'Who would activate the contingency', xl_a_fase:'Phase', xl_a_desc:'Description', xl_a_causas:'Typical causes', xl_a_ctl:'Typical controls (33 §9)', xl_a_mit:'Proposed mitigation', xl_a_dis:'Proposed contingency: trigger', xl_a_acc:'Proposed contingency: actions', xl_a_nota:'Document 33 §9: in phase 3 the team must review at least the typical risks of the categories that apply to its technology and exposure and record those discarded with a reason (33 §8.2). This sheet lists those that apply to the profile of the case and have no registered risk with their code.', xl_a_cartera:'Portfolio risks, not registered per case (33 §10): {c}.', xl_a_ninguno:'Every typical risk applicable to the profile of the case has a registered risk.', xl_a_reg:'Typical risks already registered in the case: {c}.',
+ xl_por_aprende:'system that learns from data', xl_por_personas:'effect on people (non-internal exposure)', xl_por_datos:'personal data or high risk', xl_por_terceros:'external provider or embedded AI',
+ xl_e_prob:'Likelihood (33 §4.1)', xl_e_imp:'Impact (33 §4.2): the highest of five axes', xl_e_ejes:'Axes', xl_e_nivel:'Level = likelihood × impact (33 §4.3)', xl_e_rango:'Range', xl_e_acepta:'Accepts the residual (33 §7.1)', xl_e_extremo:'Extreme impact rule: impact 5 on people and rights or regulatory is accepted as at least High (33 §4.3).', xl_e_efi:'Control effectiveness (33 §5.3)', xl_e_efi_red:'Maximum reduction allowed (levels)', xl_e_rsp:'Risk responses (33 §6)', xl_e_rev:'Review frequency (33 §7.3)', xl_e_rev_dev:'In development (phases 0–5)', xl_e_rev_prod:'In production (phase 6)',
+ xl_e_rev_critico:'Continuous, with a report at every committee|Monthly and at every quarterly board session', xl_e_rev_alto:'At every gate and at least monthly|Quarterly, with the Enterprise R6', xl_e_rev_medio:'At every gate|Half-yearly or at every R6', xl_e_rev_bajo:'At G3 and G5|Yearly or at R6',
+ xl_e_tc:'Control types (33 §5.2)', xl_e_tc_txt:'Preventive: likelihood · Detective: impact, by shortening detection · Corrective or containment: impact · Transfer: economic impact only.'
 });
 
 const NIVELES = ['bajo','medio','alto','critico'];
@@ -1875,12 +1915,12 @@ function bloqueMatriz(todos, inis, I){
 }
 function vistaRiesgos(){
   const lista=filtrar(); const ids=new Set(lista.map(i=>i.id));
-  let h='<div class="cab-ficha"><h1>'+esc(t('rg_titulo'))+'</h1><div class="fila"><button type="button" data-acc="rg-csv">'+esc(t('rg_csv'))+'</button><button type="button" class="primario" data-acc="rg-nuevo">'+esc(t('rg_nuevo'))+'</button></div></div>';
+  let h='<div class="cab-ficha"><h1>'+esc(t('rg_titulo'))+'</h1><div class="fila"><button type="button" data-acc="rg-csv">'+esc(t('rg_csv'))+'</button><button type="button" data-acc="rg-xlsx-elegir">'+esc(t('xl_boton_cartera'))+'</button><button type="button" class="primario" data-acc="rg-nuevo">'+esc(t('rg_nuevo'))+'</button></div></div>';
   h+='<p class="ayuda">'+esc(t('rg_sub'))+' '+docsRiesgo()+'</p>'+filtrosHTML();
   return h+bloqueMatriz(DB.riesgos.filter(r=>ids.has(r.iniciativa)), lista, null);
 }
 function fichaRiesgos(I){
-  let h='<div class="fila" style="justify-content:space-between;align-items:flex-start"><p class="ayuda" style="flex:1 1 320px">'+esc(t('rg_ficha_sub'))+' '+docsRiesgo()+'</p><button type="button" class="primario" data-acc="rg-nuevo" data-id="'+esc(I.id)+'">'+esc(t('rg_nuevo'))+'</button></div>';
+  let h='<div class="fila" style="justify-content:space-between;align-items:flex-start"><p class="ayuda" style="flex:1 1 320px">'+esc(t('rg_ficha_sub'))+' '+docsRiesgo()+'</p><div class="fila"><button type="button" data-acc="rg-xlsx" data-id="'+esc(I.id)+'" title="'+esc(t('xl_boton_ayuda'))+'">'+esc(t('xl_boton'))+'</button><button type="button" class="primario" data-acc="rg-nuevo" data-id="'+esc(I.id)+'">'+esc(t('rg_nuevo'))+'</button></div></div>';
   const p=obsIniRiesgos(I).find(o=>o.k==='principal'); if(p) h+='<div class="aviso info">'+esc(p.txt)+' <button type="button" data-acc="rg-principal" data-id="'+esc(I.id)+'">'+esc(t('rg_sync'))+'</button></div>';
   return h+bloqueMatriz(riesgosDe(I), [I], I);
 }
@@ -1964,6 +2004,8 @@ function onAccionRiesgos(acc, b){
     case 'rg-limpiar': UI.rg=null; rgUI(); render(); return true;
     case 'rg-csv': exportarRiesgosCSV(); return true;
     case 'rg-principal': { const I=M.ini.get(b.dataset.id); if(I) abrirPrincipal(I); return true; }
+    case 'rg-xlsx': { const I=M.ini.get(b.dataset.id); if(I) descargarXlsxCaso(I); return true; }
+    case 'rg-xlsx-elegir': elegirXlsxCaso(); return true;
   }
   return false;
 }
@@ -1989,6 +2031,199 @@ function validarRiesgos(d, ini, err, A, x, FL, FNV){
       else { if(a.organo!=null && !LB.es.organo_acepta[a.organo]) err(w+'aceptacion.organo'+FL); ['fecha','vigencia'].forEach(k=>{ if(a[k]!=null && !esFecha(a[k])) err(w+'aceptacion.'+k+FNV); }); } }
   });
 }
+
+/* ---------------- T06 · Excel del caso: matriz, registro, plan de mitigación y contingencia (D106) ----------------
+   Un libro .xlsx por iniciativa, escrito aquí mismo (OOXML dentro de un ZIP sin comprimir; sin dependencias, D27). Las propuestas
+   de mitigación y contingencia salen del catálogo de riesgos tipo del documento 33 §9 (catalogo_riesgos.json, que build_registro.ps1
+   completa con el texto del documento): se marcan como propuesta y nada se estima. */
+const CATALOGO_RIESGOS = JSON.parse(document.getElementById('catalogo-riesgos').textContent);
+const RT_MAP = new Map(CATALOGO_RIESGOS.map(r=>[r.c,r]));
+const XLSX = (()=>{
+  const TBL=(()=>{ const t=new Uint32Array(256); for(let n=0;n<256;n++){ let c=n; for(let k=0;k<8;k++) c=(c&1)? (0xEDB88320^(c>>>1)) : (c>>>1); t[n]=c>>>0; } return t; })();
+  function crc32(u){ let c=0xFFFFFFFF; for(let i=0;i<u.length;i++) c=TBL[(c^u[i])&0xFF]^(c>>>8); return (c^0xFFFFFFFF)>>>0; }
+  const enc=new TextEncoder();
+  /* ZIP «almacenado» (método 0): cabeceras locales, directorio central y registro final */
+  function zip(entries, d){
+    const time=((d.getHours()<<11)|(d.getMinutes()<<5)|(d.getSeconds()>>1))&0xFFFF, date=(((d.getFullYear()-1980)<<9)|((d.getMonth()+1)<<5)|d.getDate())&0xFFFF;
+    const locales=[], centrales=[]; let off=0;
+    entries.forEach(e=>{ const n=enc.encode(e.name), b=(e.data instanceof Uint8Array)? e.data : enc.encode(e.data), c=crc32(b);
+      const h=new DataView(new ArrayBuffer(30)); h.setUint32(0,0x04034b50,true); h.setUint16(4,20,true); h.setUint16(6,0x0800,true); h.setUint16(8,0,true); h.setUint16(10,time,true); h.setUint16(12,date,true); h.setUint32(14,c,true); h.setUint32(18,b.length,true); h.setUint32(22,b.length,true); h.setUint16(26,n.length,true); h.setUint16(28,0,true);
+      locales.push(new Uint8Array(h.buffer), n, b);
+      const k=new DataView(new ArrayBuffer(46)); k.setUint32(0,0x02014b50,true); k.setUint16(4,20,true); k.setUint16(6,20,true); k.setUint16(8,0x0800,true); k.setUint16(10,0,true); k.setUint16(12,time,true); k.setUint16(14,date,true); k.setUint32(16,c,true); k.setUint32(20,b.length,true); k.setUint32(24,b.length,true); k.setUint16(28,n.length,true); k.setUint16(30,0,true); k.setUint16(32,0,true); k.setUint16(34,0,true); k.setUint16(36,0,true); k.setUint32(38,0,true); k.setUint32(42,off,true);
+      centrales.push(new Uint8Array(k.buffer), n); off+=30+n.length+b.length; });
+    const cd=centrales.reduce((a,x)=>a+x.length,0);
+    const e=new DataView(new ArrayBuffer(22)); e.setUint32(0,0x06054b50,true); e.setUint16(4,0,true); e.setUint16(6,0,true); e.setUint16(8,entries.length,true); e.setUint16(10,entries.length,true); e.setUint32(12,cd,true); e.setUint32(16,off,true); e.setUint16(20,0,true);
+    const out=new Uint8Array(off+cd+22); let p=0; [...locales,...centrales,new Uint8Array(e.buffer)].forEach(x=>{ out.set(x,p); p+=x.length; }); return out;
+  }
+  const xml=s=>String(s??'').replace(/[^\P{Cc}\t\n\r]/gu,'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+  function col(n){ let s=''; n++; while(n>0){ const m=(n-1)%26; s=String.fromCharCode(65+m)+s; n=Math.floor((n-1)/26); } return s; }
+  /* estilos (índice en cellXfs): 0 normal · 1 cabecera · 2 texto con borde · 3 número con borde · 4 título · 5 nota · 6 rótulo · 7 bajo · 8 medio · 9 alto · 10 crítico · 11 propuesta · 12 a rellenar · 13 texto sin borde · 14 nota sin ajustar · 15 rótulo sin ajustar */
+  const S={norm:0,cab:1,txt:2,num:3,tit:4,nota:5,rot:6,nv:{bajo:7,medio:8,alto:9,critico:10},prop:11,rell:12,libre:13,notaL:14,rotL:15};
+  const ESTILOS='<?xml version="1.0" encoding="UTF-8" standalone="yes"?><styleSheet xmlns="http://schemas.openxmlformats.org/spreadsheetml/2006/main">'+
+    '<fonts count="4"><font><sz val="10"/><name val="Calibri"/></font><font><b/><sz val="10"/><name val="Calibri"/></font><font><b/><sz val="14"/><color rgb="FF990F3D"/><name val="Calibri"/></font><font><i/><sz val="9"/><color rgb="FF66605C"/><name val="Calibri"/></font></fonts>'+
+    '<fills count="9"><fill><patternFill patternType="none"/></fill><fill><patternFill patternType="gray125"/></fill>'+['FFF2DFCE','FFD9EAD3','FFFFF2CC','FFF9CB9C','FFEA9999','FFE8F0FA','FFFFF9DB'].map(c=>'<fill><patternFill patternType="solid"><fgColor rgb="'+c+'"/><bgColor indexed="64"/></patternFill></fill>').join('')+'</fills>'+
+    '<borders count="2"><border><left/><right/><top/><bottom/><diagonal/></border><border><left style="thin"><color rgb="FFBFB8B0"/></left><right style="thin"><color rgb="FFBFB8B0"/></right><top style="thin"><color rgb="FFBFB8B0"/></top><bottom style="thin"><color rgb="FFBFB8B0"/></bottom><diagonal/></border></borders>'+
+    '<cellStyleXfs count="1"><xf numFmtId="0" fontId="0" fillId="0" borderId="0"/></cellStyleXfs><cellXfs count="16">'+
+    '<xf numFmtId="0" fontId="0" fillId="0" borderId="0" xfId="0"/>'+
+    '<xf numFmtId="0" fontId="1" fillId="2" borderId="1" xfId="0" applyFont="1" applyFill="1" applyBorder="1" applyAlignment="1"><alignment vertical="top" wrapText="1"/></xf>'+
+    '<xf numFmtId="0" fontId="0" fillId="0" borderId="1" xfId="0" applyBorder="1" applyAlignment="1"><alignment vertical="top" wrapText="1"/></xf>'+
+    '<xf numFmtId="0" fontId="0" fillId="0" borderId="1" xfId="0" applyBorder="1" applyAlignment="1"><alignment vertical="top" horizontal="center"/></xf>'+
+    '<xf numFmtId="0" fontId="2" fillId="0" borderId="0" xfId="0" applyFont="1"/>'+
+    '<xf numFmtId="0" fontId="3" fillId="0" borderId="0" xfId="0" applyFont="1" applyAlignment="1"><alignment vertical="top" wrapText="1"/></xf>'+
+    '<xf numFmtId="0" fontId="1" fillId="0" borderId="0" xfId="0" applyFont="1" applyAlignment="1"><alignment vertical="top" wrapText="1"/></xf>'+
+    [3,4,5,6].map(f=>'<xf numFmtId="0" fontId="1" fillId="'+f+'" borderId="1" xfId="0" applyFont="1" applyFill="1" applyBorder="1" applyAlignment="1"><alignment vertical="top" horizontal="center" wrapText="1"/></xf>').join('')+
+    '<xf numFmtId="0" fontId="0" fillId="7" borderId="1" xfId="0" applyFill="1" applyBorder="1" applyAlignment="1"><alignment vertical="top" wrapText="1"/></xf>'+
+    '<xf numFmtId="0" fontId="0" fillId="8" borderId="1" xfId="0" applyFill="1" applyBorder="1" applyAlignment="1"><alignment vertical="top" wrapText="1"/></xf>'+
+    '<xf numFmtId="0" fontId="0" fillId="0" borderId="0" xfId="0" applyAlignment="1"><alignment vertical="top" wrapText="1"/></xf>'+
+    '<xf numFmtId="0" fontId="3" fillId="0" borderId="0" xfId="0" applyFont="1"/><xf numFmtId="0" fontId="1" fillId="0" borderId="0" xfId="0" applyFont="1"/>'+
+    '</cellXfs><cellStyles count="1"><cellStyle name="Normal" xfId="0" builtinId="0"/></cellStyles></styleSheet>';
+  /* una hoja: filas = lista de filas; cada celda es null, texto, número o {v, s}; opt: anchos[], fijar (filas fijas), filtro (rango), activa */
+  function hoja(filas, opt){
+    opt=opt||{}; let sd='';
+    filas.forEach((f,ri)=>{ if(!f||!f.length) return; let cells='';
+      f.forEach((c,ci)=>{ if(c==null) return; let v=c, s=null; if(typeof c==='object'){ v=c.v; s=c.s; } const ref=col(ci)+(ri+1);
+        if(v==null||v===''){ if(s!=null) cells+='<c r="'+ref+'" s="'+s+'"/>'; return; }
+        if(typeof v==='number' && isFinite(v)) cells+='<c r="'+ref+'" s="'+(s??S.num)+'"><v>'+v+'</v></c>';
+        else cells+='<c r="'+ref+'" t="inlineStr"'+(s!=null?' s="'+s+'"':'')+'><is><t xml:space="preserve">'+xml(v)+'</t></is></c>'; });
+      if(cells) sd+='<row r="'+(ri+1)+'">'+cells+'</row>'; });
+    let x='<?xml version="1.0" encoding="UTF-8" standalone="yes"?><worksheet xmlns="http://schemas.openxmlformats.org/spreadsheetml/2006/main" xmlns:r="http://schemas.openxmlformats.org/officeDocument/2006/relationships"><sheetPr><pageSetUpPr fitToPage="1"/></sheetPr>';
+    x+='<sheetViews><sheetView workbookViewId="0"'+(opt.activa?' tabSelected="1"':'')+'>'+(opt.fijar? '<pane ySplit="'+opt.fijar+'" topLeftCell="A'+(opt.fijar+1)+'" activePane="bottomLeft" state="frozen"/>' : '')+'</sheetView></sheetViews><sheetFormatPr defaultRowHeight="15"/>';
+    if(opt.anchos) x+='<cols>'+opt.anchos.map((w,i)=>'<col min="'+(i+1)+'" max="'+(i+1)+'" width="'+w+'" customWidth="1"/>').join('')+'</cols>';
+    x+='<sheetData>'+sd+'</sheetData>'+(opt.filtro? '<autoFilter ref="'+opt.filtro+'"/>' : '')+'<pageMargins left="0.4" right="0.4" top="0.5" bottom="0.5" header="0.3" footer="0.3"/><pageSetup paperSize="9" orientation="landscape" fitToWidth="1" fitToHeight="0"/></worksheet>';
+    return {xml:x, filtro:opt.filtro||null};
+  }
+  /* el libro: hojas = [{nombre, xml, filtro}], props = {titulo, asunto, autor, descripcion, fecha} */
+  function libro(hojas, props){
+    const ns='http://schemas.openxmlformats.org/spreadsheetml/2006/main', rns='http://schemas.openxmlformats.org/officeDocument/2006/relationships';
+    const nombres=hojas.map(h=>h.nombre.replace(/[\[\]:*?\/\\]/g,' ').slice(0,31));
+    const defs=hojas.map((h,i)=>h.filtro? '<definedName name="_xlnm._FilterDatabase" localSheetId="'+i+'" hidden="1">\''+xml(nombres[i].replace(/'/g,"''"))+'\'!'+h.filtro.replace(/([A-Z]+)(\d+)/g,'$$$1$$$2')+'</definedName>' : '').join('');
+    const wb='<?xml version="1.0" encoding="UTF-8" standalone="yes"?><workbook xmlns="'+ns+'" xmlns:r="'+rns+'"><workbookPr/><bookViews><workbookView xWindow="0" yWindow="0" windowWidth="24000" windowHeight="12000"/></bookViews><sheets>'+hojas.map((h,i)=>'<sheet name="'+xml(nombres[i])+'" sheetId="'+(i+1)+'" r:id="rId'+(i+1)+'"/>').join('')+'</sheets>'+(defs?'<definedNames>'+defs+'</definedNames>':'')+'<calcPr calcId="0"/></workbook>';
+    const rels='<?xml version="1.0" encoding="UTF-8" standalone="yes"?><Relationships xmlns="http://schemas.openxmlformats.org/package/2006/relationships">'+hojas.map((h,i)=>'<Relationship Id="rId'+(i+1)+'" Type="http://schemas.openxmlformats.org/officeDocument/2006/relationships/worksheet" Target="worksheets/sheet'+(i+1)+'.xml"/>').join('')+'<Relationship Id="rId'+(hojas.length+1)+'" Type="http://schemas.openxmlformats.org/officeDocument/2006/relationships/styles" Target="styles.xml"/></Relationships>';
+    const ct='<?xml version="1.0" encoding="UTF-8" standalone="yes"?><Types xmlns="http://schemas.openxmlformats.org/package/2006/content-types"><Default Extension="rels" ContentType="application/vnd.openxmlformats-package.relationships+xml"/><Default Extension="xml" ContentType="application/xml"/><Override PartName="/xl/workbook.xml" ContentType="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet.main+xml"/><Override PartName="/xl/styles.xml" ContentType="application/vnd.openxmlformats-officedocument.spreadsheetml.styles+xml"/>'+hojas.map((h,i)=>'<Override PartName="/xl/worksheets/sheet'+(i+1)+'.xml" ContentType="application/vnd.openxmlformats-officedocument.spreadsheetml.worksheet+xml"/>').join('')+'<Override PartName="/docProps/core.xml" ContentType="application/vnd.openxmlformats-package.core-properties+xml"/><Override PartName="/docProps/app.xml" ContentType="application/vnd.openxmlformats-officedocument.extended-properties+xml"/></Types>';
+    const raiz='<?xml version="1.0" encoding="UTF-8" standalone="yes"?><Relationships xmlns="http://schemas.openxmlformats.org/package/2006/relationships"><Relationship Id="rId1" Type="http://schemas.openxmlformats.org/officeDocument/2006/relationships/officeDocument" Target="xl/workbook.xml"/><Relationship Id="rId2" Type="http://schemas.openxmlformats.org/package/2006/relationships/metadata/core-properties" Target="docProps/core.xml"/><Relationship Id="rId3" Type="http://schemas.openxmlformats.org/officeDocument/2006/relationships/extended-properties" Target="docProps/app.xml"/></Relationships>';
+    const isoT=props.fecha.toISOString().replace(/\.\d{3}Z$/,'Z');
+    const core='<?xml version="1.0" encoding="UTF-8" standalone="yes"?><cp:coreProperties xmlns:cp="http://schemas.openxmlformats.org/package/2006/metadata/core-properties" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:dcmitype="http://purl.org/dc/dcmitype/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><dc:title>'+xml(props.titulo)+'</dc:title><dc:subject>'+xml(props.asunto)+'</dc:subject><dc:creator>'+xml(props.autor)+'</dc:creator><cp:lastModifiedBy>'+xml(props.autor)+'</cp:lastModifiedBy><dc:description>'+xml(props.descripcion)+'</dc:description><dcterms:created xsi:type="dcterms:W3CDTF">'+isoT+'</dcterms:created><dcterms:modified xsi:type="dcterms:W3CDTF">'+isoT+'</dcterms:modified></cp:coreProperties>';
+    const app='<?xml version="1.0" encoding="UTF-8" standalone="yes"?><Properties xmlns="http://schemas.openxmlformats.org/officeDocument/2006/extended-properties" xmlns:vt="http://schemas.openxmlformats.org/officeDocument/2006/docPropsVTypes"><Application>SEVEN-G T01 · T06</Application></Properties>';
+    const entries=[{name:'[Content_Types].xml',data:ct},{name:'_rels/.rels',data:raiz},{name:'docProps/core.xml',data:core},{name:'docProps/app.xml',data:app},{name:'xl/workbook.xml',data:wb},{name:'xl/_rels/workbook.xml.rels',data:rels},{name:'xl/styles.xml',data:ESTILOS}];
+    hojas.forEach((h,i)=>entries.push({name:'xl/worksheets/sheet'+(i+1)+'.xml',data:h.xml}));
+    return zip(entries, props.fecha);
+  }
+  return {hoja, libro, col, S};
+})();
+
+/* perfil de riesgo de la iniciativa: lo que decide qué riesgos tipo del catálogo aplican (33 §9: «las categorías que aplican a su tecnología y exposición») */
+function perfilRiesgoIni(I){
+  const c=I.clasificacion||{}; const tec=[].concat(c.tecnologia||[]); const sis=(I.sistemas||[]).map(id=>M.sis.get(id)).filter(Boolean);
+  const terceros=(c.proveedores||[]).length>0 || tec.includes('ia_terceros_embebida') || sis.some(s=>s.tipo==='tercero' || (s.proveedores||[]).length>0);
+  const personas=!!c.exposicion && c.exposicion!=='interna';
+  const datos_personales=(I.evaluaciones_impacto||[]).some(e=>e.tipo==='eipd' && e.estado!=='no_aplica') || c.regulatoria==='alto_riesgo' || ['empleados','clientes_directa'].includes(c.exposicion);
+  const aprende=tec.some(x=>['ml_predictivo','ia_generativa','vision','lenguaje_documentos','agente'].includes(x));
+  return {tecnologia:tec, exposicion:c.exposicion||null, autonomia:c.autonomia||null, regulatoria:c.regulatoria||null, ambicion:c.ambicion_confirmada||c.ambicion_propuesta||null, intensidad:c.intensidad||null, terceros, personas, datos_personales, aprende};
+}
+/* ¿aplica un riesgo tipo al perfil? «aplica»: true (siempre), 'cartera' (no por caso) o lista de alternativas; cada alternativa exige todas sus condiciones */
+function rtAplica(rt, P){
+  if(rt.aplica===true) return {ok:true, por:[]};
+  if(!Array.isArray(rt.aplica)) return {ok:false, por:[]};
+  for(const cond of rt.aplica){ const por=[]; let ok=true;
+    for(const k of Object.keys(cond)){ const v=cond[k];
+      if(typeof v==='boolean'){ if(!!P[k]!==v){ ok=false; break; } por.push(t('xl_por_'+({aprende:'aprende',personas:'personas',datos_personales:'datos',terceros:'terceros'})[k])); }
+      else { const mio=[].concat(P[k]==null?[]:P[k]); const hit=mio.filter(x=>v.includes(String(x))); if(!hit.length){ ok=false; break; } por.push(hit.map(x=>L(k,x)).join(' · ')); } }
+    if(ok) return {ok:true, por}; }
+  return {ok:false, por:[]};
+}
+function rtTxt(rt, k){ const v=rt[k]; return v? (v[UI.lang]??v.es??'') : ''; }
+function xlsxCaso(I){
+  const S=XLSX.S, lang=UI.lang==='en'?'en':'es', ahora=new Date(), z=n=>String(n).padStart(2,'0');
+  const sello=iso(ahora)+' '+z(ahora.getHours())+':'+z(ahora.getMinutes())+':'+z(ahora.getSeconds());
+  const nombre='SEVEN-G_T06_'+I.id.replace(/[^\w-]/g,'')+'_'+iso(ahora).replace(/-/g,'')+'-'+z(ahora.getHours())+z(ahora.getMinutes())+z(ahora.getSeconds())+'.xlsx';
+  const rs=riesgosDe(I), abiertos=rs.filter(rgAbierto), P=perfilRiesgoIni(I), c=I.clasificacion||{};
+  const nom=id=>id?(persona(id)?persona(id).nombre:id):''; const pt=(p,i)=>Number.isInteger(p)&&Number.isInteger(i)? p*i : null;
+  const nvC=n=>n? {v:L('riesgo',n), s:S.nv[n]} : {v:t('xl_sin_dato'), s:S.txt};
+  const orden=r=>-(NIVELES.indexOf(rgRes(r))*10+NIVELES.indexOf(rgInh(r))); const lst=[...rs].sort((a,b)=>orden(a)-orden(b) || (a.id<b.id?-1:1));
+  const mx=abiertos.reduce((a,r)=>maxNivel(a,rgRes(r)),null); const obs=obsTodas(I).filter(o=>o.sev!=='info');
+  const cartera=CATALOGO_RIESGOS.filter(r=>r.aplica==='cartera').map(r=>r.c); const registrados=new Set(rs.map(r=>r.riesgo_tipo).filter(Boolean));
+  const considerar=CATALOGO_RIESGOS.filter(r=>r.aplica!=='cartera' && !registrados.has(r.c)).map(r=>Object.assign({ap:rtAplica(r,P)},r)).filter(x=>x.ap.ok);
+  const rolNombre=k=>{ const id=I.responsables&&I.responsables[k]; return id? nom(id) : ''; };
+  const activa=(r,rt)=> (r&&r.responsable? nom(r.responsable) : '') || (rt&&rt.act? (rolNombre(rt.act)||L('rol',rt.act)) : '') || rolNombre('operacion') || rolNombre('producto');
+  const esAgente=P.tecnologia.includes('agente') || ['A2','A3'].includes(P.autonomia);
+  /* 1. portada */
+  const hojasDesc=[['portada','matriz','registro','mitigacion','contingencia','considerar','escalas'].map(k=>[t('xl_h_'+k), t('xl_d_'+k)])][0];
+  const fila=(k,v)=>[{v:k,s:S.rot},{v:v==null||v===''? t('xl_sin_dato') : v, s:S.libre}];
+  const portada=[[{v:t('xl_titulo'),s:S.tit}],[{v:I.id+' · '+I.nombre,s:S.rotL}],[],
+    fila(t('codigo'),I.id), fila(t('xl_nombre'),I.nombre), fila(t('xl_organizacion'),DB.meta.organizacion), fila(t('area'),I.area), fila(t('xl_fase'),faseTxt(I.ciclo.fase)), fila(t('estado'),L('estado',I.ciclo.estado)),
+    fila(t('xl_ambicion'),L('ambicion',P.ambicion)), fila(t('xl_intensidad'),L('intensidad',P.intensidad)), fila(t('xl_autonomia'),L('autonomia',P.autonomia)), fila(t('xl_tecnologia'),P.tecnologia.map(x=>L('tecnologia',x)).join(' · ')), fila(t('xl_exposicion'),L('exposicion',P.exposicion)), fila(t('xl_regulatoria'),L('regulatoria',P.regulatoria)), fila(t('xl_esfera'),L('esfera',c.esfera_principal)),
+    ...['patrocinador','producto','tecnico','operacion','riesgos','auditor'].map(k=>fila(L('rol',k), rolNombre(k))), [],
+    fila(t('xl_generado'),sello), fila(t('xl_generado_por'),t('xl_generador',{v:DB.version_esquema||''})), fila(t('xl_fecha_ref'),DB.meta.fecha_referencia||''), fila(t('xl_idioma'),lang), fila(t('xl_fichero'),nombre), [],
+    [{v:t('xl_resumen'),s:S.rotL}], fila(t('xl_n_riesgos'),abiertos.length+' · '+(rs.length-abiertos.length)), fila(t('xl_mayor_res'),mx?L('riesgo',mx):''), fila(t('xl_principal'),I.riesgo_residual_principal?L('riesgo',I.riesgo_residual_principal):''), fila(t('xl_obs'),String(obs.length)), fila(t('xl_a_considerar'),String(considerar.length)), [],
+    [{v:t('xl_hojas'),s:S.rotL}], ...hojasDesc.map(([a,b])=>[{v:a,s:S.rot},{v:b,s:S.libre}]), [],
+    [null,{v:t('xl_leyenda'),s:S.nota}], [null,{v:t('xl_nota_prop'),s:S.nota}], DB.meta.datos_ilustrativos? [null,{v:t('xl_ilustrativo'),s:S.nota}] : [], [null,{v:avisoLegalTxt(lang),s:S.nota}]];
+  /* 2. matriz */
+  const matriz=(vista)=>{ const cnt={}; abiertos.forEach(r=>{ const [p,i]=posRiesgo(r,vista); if(Number.isInteger(p)&&Number.isInteger(i)) cnt[p+'-'+i]=(cnt[p+'-'+i]||0)+1; });
+    const f=[[{v:t(vista==='residual'?'xl_res_matriz':'xl_inh_matriz'),s:S.rotL}],[{v:t('xl_pi'),s:S.cab},...[1,2,3,4,5].map(i=>({v:L('imp',i),s:S.cab}))]];
+    for(let p=5;p>=1;p--) f.push([{v:L('prob',p),s:S.cab},...[1,2,3,4,5].map(i=>({v:cnt[p+'-'+i]||0,s:S.nv[nivelPI(p,i)]}))]);
+    return f; };
+  const cats=CATS_RIESGO.filter(k=>abiertos.some(r=>r.categoria===k));
+  const hMatriz=[[{v:t('rg_titulo')+' · '+I.id,s:S.tit}],[{v:t('xl_generado')+' '+sello,s:S.notaL}],[], ...matriz('residual'), [], ...matriz('inherente'), [],
+    [{v:t('rg_resumen'),s:S.rotL}], [{v:t('xl_nivel'),s:S.cab},{v:t('xl_inherente'),s:S.cab},{v:t('xl_residual'),s:S.cab}],
+    ...[...NIVELES].reverse().map(n=>[{v:L('riesgo',n),s:S.nv[n]},abiertos.filter(r=>rgInh(r)===n).length,abiertos.filter(r=>rgRes(r)===n).length]),
+    [{v:t('xl_sin_dato'),s:S.txt},abiertos.filter(r=>!rgInh(r)).length,abiertos.filter(r=>!rgRes(r)).length],[{v:t('xl_total'),s:S.cab},abiertos.length,abiertos.length],[],
+    [{v:t('rg_por_cat'),s:S.rotL}], [{v:t('xl_categoria'),s:S.cab},...[...NIVELES].reverse().map(n=>({v:L('riesgo',n),s:S.cab})),{v:t('xl_total'),s:S.cab}],
+    ...cats.map(k=>{ const x=abiertos.filter(r=>r.categoria===k); return [{v:L('cat_riesgo',k),s:S.txt},...[...NIVELES].reverse().map(n=>x.filter(r=>rgRes(r)===n).length),x.length]; })];
+  /* 3. registro */
+  const cabR=['xl_c_n','xl_c_riesgo','xl_c_rt','xl_c_cat','xl_c_sis','xl_c_resp','xl_c_alta','xl_c_p','xl_c_i','xl_c_punt','xl_c_ninh','xl_c_eje','xl_c_ctl','xl_c_efi','xl_c_pr','xl_c_ir','xl_c_puntr','xl_c_nres','xl_c_tres','xl_c_nac','xl_c_org','xl_c_rsp','xl_c_cont','xl_c_est','xl_c_ten','xl_c_rev','xl_c_aorg','xl_c_aper','xl_c_afec','xl_c_avig','xl_c_aref','xl_c_obs'].map(k=>({v:t(k),s:S.cab}));
+  const T=v=>({v:v==null?'':String(v),s:S.txt});
+  const hRegistro=[[{v:t('rg_lista')+' · '+I.id,s:S.tit}],[{v:t('xl_generado')+' '+sello,s:S.notaL}],cabR,
+    ...lst.map(r=>{ const A=r.aceptacion||{}, ac=rgAcept(r); return [T(r.id.split(' · ').pop()),T(r.descripcion),T(r.riesgo_tipo),T(r.categoria?L('cat_riesgo',r.categoria):''),T(r.sistema),T(nom(r.responsable)),T(r.fecha_alta),r.probabilidad??T(''),r.impacto??T(''),pt(r.probabilidad,r.impacto)??T(''),nvC(rgInh(r)),T(r.eje_impacto?L('eje',r.eje_impacto):''),T(r.controles),T(r.eficacia_controles?L('eficacia',r.eficacia_controles):''),r.probabilidad_residual??T(''),r.impacto_residual??T(''),pt(r.probabilidad_residual,r.impacto_residual)??T(''),nvC(rgRes(r)),T(r.tipo_residual?L('tipo_residual',r.tipo_residual):''),nvC(ac),T(ac?L('organo_acepta',ORGANO_NIVEL[ac]):''),T(r.respuesta?L('respuesta',r.respuesta):''),T(r.contingencia),T(r.estado?L('estado_riesgo',r.estado):''),T(r.tendencia?L('tendencia',r.tendencia):''),T(r.proxima_revision),T(A.organo?L('organo_acepta',A.organo):''),T(nom(A.persona)),T(A.fecha),T(A.vigencia),T(A.referencia),T(obsRiesgo(r,I).map(o=>t('rs_'+o.k)).join(' · '))]; })];
+  /* 4. plan de mitigación (P13 §3–§4): acciones propuestas por riesgo, columnas a completar */
+  const cabM=['xl_c_n','xl_c_riesgo','xl_c_rt','xl_c_ninh','xl_c_rsp','xl_c_nres','xl_c_ctl','xl_c_efi','xl_m_req','xl_m_acc','xl_m_tc','xl_m_red','xl_m_origen','xl_m_resp','xl_m_fecha','xl_m_coste','xl_m_evid','xl_m_estado'].map(k=>({v:t(k),s:S.cab}));
+  const propM=(r)=>{ const rt=r.riesgo_tipo? RT_MAP.get(r.riesgo_tipo) : null; if(r.respuesta==='evitar') return {acc:t('xl_m_evitar'),tc:'',red:'',ori:''};
+    if(rt) return {acc:rtTxt(rt,'mit')+(rtTxt(rt,'ct')? '\n'+t('xl_a_ctl')+': '+rtTxt(rt,'ct') : ''), tc:L('tipo_control',rt.tc), red:L('reduce',rt.red), ori:t('xl_m_origen_v',{c:rt.c})};
+    return {acc:r.riesgo_tipo? t('xl_m_rt_desc',{c:r.riesgo_tipo}) : t('xl_m_sin_rt'), tc:'', red:'', ori:''}; };
+  const hMitig=[[{v:t('xl_h_mitigacion')+' · '+I.id+' · P13',s:S.tit}],[{v:t('xl_generado')+' '+sello+' · '+t('xl_leyenda'),s:S.notaL}],cabM,
+    ...lst.filter(rgAbierto).map(r=>{ const ac=rgAcept(r), p=propM(r), req=ac&&ac!=='bajo'; return [T(r.id.split(' · ').pop()),T(r.descripcion),T(r.riesgo_tipo),nvC(rgInh(r)),T(r.respuesta?L('respuesta',r.respuesta):''),nvC(rgRes(r)),T(r.controles),T(r.eficacia_controles?L('eficacia',r.eficacia_controles):''),T(req?t('xl_m_si'):t('xl_m_opc')),{v:p.acc,s:S.prop},{v:p.tc,s:S.prop},{v:p.red,s:S.prop},{v:p.ori,s:S.prop},{v:nom(r.responsable),s:S.rell},{v:'',s:S.rell},{v:'',s:S.rell},{v:'',s:S.rell},{v:'',s:S.rell}]; }),
+    [],[{v:t('xl_m_estado')+': '+t('xl_m_estado_v'),s:S.notaL}]];
+  /* 5. plan de contingencia (P13 §6): obligatorio en Alto, Crítico e impacto 5 */
+  const cabK=['xl_c_n','xl_c_riesgo','xl_c_nres','xl_k_req','xl_k_esc','xl_k_reg','xl_k_dis','xl_k_acc','xl_k_rev','xl_k_resp','xl_k_tiempo','xl_k_com','xl_k_not','xl_k_rec'].map(k=>({v:t(k),s:S.cab}));
+  const com=[t('xl_k_com_base')]; if(P.datos_personales) com.push(t('xl_k_com_dpd')); if(['clientes_directa','clientes_indirecta'].includes(P.exposicion)) com.push(t('xl_k_com_cli')); if(P.exposicion==='empleados') com.push(t('xl_k_com_emp'));
+  const notif=(P.datos_personales||P.regulatoria==='alto_riesgo'||P.intensidad==='enterprise')? t('xl_k_not_si') : t('xl_k_not_no');
+  const hCont=[[{v:t('xl_h_contingencia')+' · '+I.id+' · P13',s:S.tit}],[{v:t('xl_generado')+' '+sello+' · '+t('xl_leyenda'),s:S.notaL}],cabK,
+    ...lst.filter(rgAbierto).map(r=>{ const ac=rgAcept(r); const imp=Number.isInteger(r.impacto_residual)?r.impacto_residual:r.impacto; const req=(ac==='alto'||ac==='critico'||imp===5) && r.respuesta!=='evitar'; const rt=r.riesgo_tipo? RT_MAP.get(r.riesgo_tipo) : null; const K=rt? (rt.cont[lang]||rt.cont.es) : null;
+      return [T(r.id.split(' · ').pop()),T(r.descripcion),nvC(rgRes(r)),T(req? t('xl_k_si') : (ac==='medio'? t('xl_k_rec_v') : t('xl_k_no'))),T(r.descripcion),(r.contingencia||'').trim()? T(r.contingencia) : {v:req?t('xl_k_falta'):'',s:S.rell},{v:K?K.dis:'',s:S.prop},{v:K?K.acc:'',s:S.prop},{v:esAgente? t('xl_k_rev_agente',{a:P.autonomia||'A2'}) : t('xl_k_rev_txt'),s:S.prop},{v:activa(r,rt),s:S.prop},{v:'',s:S.rell},{v:com.join(' · '),s:S.prop},{v:notif,s:S.prop},{v:'',s:S.rell}]; })];
+  /* 6. riesgos tipo a considerar (33 §9, §8.2) */
+  const cabA=['xl_c_rt','xl_c_cat','xl_c_riesgo','xl_a_desc','xl_a_causas','xl_a_ctl','xl_a_mit','xl_m_tc','xl_m_red','xl_a_dis','xl_a_acc','xl_a_quien','xl_a_fase','xl_a_por','xl_a_dec','xl_a_motivo'].map(k=>({v:t(k),s:S.cab}));
+  const hCons=[[{v:t('xl_h_considerar')+' · '+I.id,s:S.tit}],[{v:t('xl_a_nota'),s:S.notaL}],cabA,
+    ...considerar.map(rt=>{ const K=rt.cont[lang]||rt.cont.es; return [T(rt.c),T(L('cat_riesgo',rt.cat)),T(rtTxt(rt,'t')),T(rtTxt(rt,'d')),T(rtTxt(rt,'ca')),T(rtTxt(rt,'ct')),{v:rtTxt(rt,'mit'),s:S.prop},{v:L('tipo_control',rt.tc),s:S.prop},{v:L('reduce',rt.red),s:S.prop},{v:K.dis,s:S.prop},{v:K.acc,s:S.prop},{v:activa(null,rt),s:S.prop},T(rt.f),{v:rt.ap.por.join(' · ')||'—',s:S.prop},{v:'',s:S.rell},{v:'',s:S.rell}]; }),
+    considerar.length? [] : [{v:t('xl_a_ninguno'),s:S.notaL}], [], [{v:t('xl_a_reg',{c:[...registrados].sort().join(', ')||'—'}),s:S.notaL}], [{v:t('xl_a_cartera',{c:cartera.join(', ')}),s:S.notaL}]];
+  /* 7. escalas */
+  const hEsc=[[{v:t('xl_h_escalas')+' · '+t('rg_doc33'),s:S.tit}],[],
+    [{v:t('xl_e_prob'),s:S.rotL}], ...[1,2,3,4,5].map(p=>[p,T(L('prob',p))]), [],
+    [{v:t('xl_e_imp'),s:S.rotL}], ...[1,2,3,4,5].map(i=>[i,T(L('imp',i))]), [T(t('xl_e_ejes')),T(Object.keys(LB.es.eje).map(k=>L('eje',k)).join(' · '))], [],
+    [{v:t('xl_e_nivel'),s:S.rotL}], [{v:t('xl_nivel'),s:S.cab},{v:t('xl_e_rango'),s:S.cab},{v:t('xl_e_acepta'),s:S.cab}],
+    ...NIVELES.map(n=>[{v:L('riesgo',n),s:S.nv[n]},T({bajo:'1–4',medio:'5–9',alto:'10–15',critico:'16–25'}[n]),T(L('organo_acepta',ORGANO_NIVEL[n]))]), [{v:t('xl_e_extremo'),s:S.notaL}], [],
+    [{v:t('xl_e_efi'),s:S.rotL}], [{v:t('xl_c_efi'),s:S.cab},{v:t('xl_e_efi_red'),s:S.cab}], ...Object.keys(LB.es.eficacia).map(k=>[T(L('eficacia',k)),REDUCCION_MAX[k]??0]), [],
+    [{v:t('xl_e_tc'),s:S.rotL}], [{v:t('xl_e_tc_txt'),s:S.notaL}], [],
+    [{v:t('xl_e_rsp'),s:S.rotL}], [T(Object.keys(LB.es.respuesta).map(k=>L('respuesta',k)).join(' · '))], [],
+    [{v:t('xl_e_rev'),s:S.rotL}], [{v:t('xl_nivel'),s:S.cab},{v:t('xl_e_rev_dev'),s:S.cab},{v:t('xl_e_rev_prod'),s:S.cab}], ...[...NIVELES].reverse().map(n=>{ const [a,b]=t('xl_e_rev_'+n).split('|'); return [{v:L('riesgo',n),s:S.nv[n]},T(a),T(b)]; })];
+  const H=XLSX.hoja, ultima=(f,ncol)=>XLSX.col(ncol-1)+f.length;
+  const hojas=[
+    Object.assign({nombre:t('xl_h_portada')}, H(portada,{anchos:[34,120],activa:true})),
+    Object.assign({nombre:t('xl_h_matriz')}, H(hMatriz,{anchos:[26,16,16,16,16,16]})),
+    Object.assign({nombre:t('xl_h_registro')}, H(hRegistro,{anchos:[6,60,12,22,14,22,12,11,9,10,12,16,50,14,11,11,10,12,20,14,22,11,50,14,10,12,22,22,12,12,20,40],fijar:3,filtro:'A3:'+ultima(hRegistro,32)})),
+    Object.assign({nombre:t('xl_h_mitigacion')}, H(hMitig,{anchos:[6,55,12,12,12,12,45,14,16,70,18,12,22,22,12,22,30,18],fijar:3,filtro:'A3:'+XLSX.col(17)+(3+lst.filter(rgAbierto).length)})),
+    Object.assign({nombre:t('xl_h_contingencia')}, H(hCont,{anchos:[6,50,12,18,40,45,45,60,40,24,14,40,40,24],fijar:3,filtro:'A3:'+XLSX.col(13)+(3+lst.filter(rgAbierto).length)})),
+    Object.assign({nombre:t('xl_h_considerar')}, H(hCons,{anchos:[12,24,32,55,40,45,60,18,12,45,60,24,8,36,18,36],fijar:3,filtro:'A3:'+XLSX.col(15)+(3+considerar.length)})),
+    Object.assign({nombre:t('xl_h_escalas')}, H(hEsc,{anchos:[30,40,40]}))];
+  const bytes=XLSX.libro(hojas,{titulo:t('xl_titulo'), asunto:I.id+' · '+I.nombre, autor:'SEVEN-G · T06 · T01', descripcion:t('xl_generado')+' '+sello+' · '+I.id+(DB.meta.datos_ilustrativos? ' · '+t('xl_ilustrativo') : ''), fecha:ahora});
+  return {nombre, bytes, sello, hojas:hojas.length, considerar:considerar.length};
+}
+function descargarXlsxCaso(I){ const x=xlsxCaso(I); descargar(x.nombre, x.bytes, 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'); toast(t('xl_ok',{f:x.nombre})); }
+function elegirXlsxCaso(){
+  const lista=filtrar(); const r=ruta(); const sel=(r.vista==='ficha'? r.id : '') || (lista[0]&&lista[0].id) || '';
+  abrirDialogo(t('xl_dlg'), campo('xl-ini',t('iniciativa'),'<select id="xl-ini" name="xl-ini">'+lista.map(x=>'<option value="'+esc(x.id)+'"'+(x.id===sel?' selected':'')+'>'+esc(x.id+' · '+x.nombre+' · '+t('rg_k_total').toLowerCase()+': '+riesgosDe(x).filter(rgAbierto).length)+'</option>').join('')+'</select>')+'<p class="ayuda">'+esc(t('xl_dlg_ayuda'))+'</p>',
+    f=>{ const I=M.ini.get(f['xl-ini'].value); if(!I) return [t('rg_e_ini')]; descargarXlsxCaso(I); return []; }, t('xl_descargar'));
+}
+/* para la prueba de humo (verificar_coherencia.ps1): el libro de un caso en base64, sin descargarlo */
+window.T06_XLSX={ base64:(id)=>{ const I=M.ini.get(id); if(!I) return null; const x=xlsxCaso(I); let s=''; for(let i=0;i<x.bytes.length;i+=0x8000) s+=String.fromCharCode.apply(null,x.bytes.subarray(i,i+0x8000)); return {nombre:x.nombre, hojas:x.hojas, considerar:x.considerar, b64:btoa(s)}; } };
 
 /* ---------------- validación de importación ---------------- */
 const ENUM = {

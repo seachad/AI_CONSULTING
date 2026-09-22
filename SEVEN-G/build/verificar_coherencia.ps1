@@ -38,6 +38,12 @@
         explica la copia de la compañía y los README de las cuatro herramientas la citan.
     19b. Conector del panel en el navegador (D103): t01_a_panel.js va incrustado en los dos paneles de ejemplo y en el registro T01,
         config_panel.json tiene navegacion.datos_t01 y el conector en JavaScript produce el mismo JSON que t01_a_panel.py (requiere Edge).
+    21. Excel del caso de T06 (D106): catalogo_riesgos.json tiene exactamente los códigos RT del documento 33 §9 (ES y EN) con reglas,
+        tipo de control y propuestas de mitigación y contingencia en ambos idiomas; la plantilla de T01 lleva el generador y sus botones;
+        README de T01, documentos 03 (§4.1 y catálogo) y 33 (§9 y §13), P12, P13 y mapa_datos.json lo describen (ES/EN). La prueba de
+        humo (7) genera el libro de IA-2026-001 en el navegador (clave «eval») y comprueba que es un .xlsx válido con sus siete hojas,
+        el código del caso y la fecha y hora de generación.
+    22. Datos en local e instalación propia (D104): documento 95 (ES/EN), enlaces desde la portada, la entrada, el README y el 03, y cifras.
 #>
 param([switch]$SinNavegador)
 $ErrorActionPreference = 'Stop'
@@ -451,7 +457,26 @@ try {
     $ctl = '[data-ir-codigo] input[type="search"]'
     $pruebas = @(
       # D103: el botón «Datos: …» del módulo de datos locales se dibuja en las cuatro herramientas
-      @{ f = (Join-Path $t01 'registro.html'); debe = @('#nav a[href="#/embudo"]', '#nav a[href="#/riesgos"]', '#nav a[href="#/consejo"]', '#lnk-panel', '#principal table', "#sitio-nav $ctl", '#principal a.cod-enlace[title]', '#btn-datos[data-estado="demo"]'); que = 'registro T01' }
+      # D106: además de dibujarse, el registro genera en el navegador el Excel del caso IA-2026-001 (clave «eval»), que se valida en «comprobar»
+      @{ f = (Join-Path $t01 'registro.html'); debe = @('#nav a[href="#/embudo"]', '#nav a[href="#/riesgos"]', '#nav a[href="#/consejo"]', '#lnk-panel', '#principal table', "#sitio-nav $ctl", '#principal a.cod-enlace[title]', '#btn-datos[data-estado="demo"]'); que = 'registro T01'
+         eval = "window.T06_XLSX.base64('IA-2026-001')"; comprobar = {
+           param($r)
+           if (-not $r) { return 'el Excel del caso (T06_XLSX) no ha devuelto nada' }
+           if ($r -is [string]) { return "el Excel del caso ha fallado: $r" }
+           if ($r.nombre -notmatch '^SEVEN-G_T06_IA-2026-001_\d{8}-\d{6}\.xlsx$') { return "nombre del Excel inesperado: $($r.nombre)" }
+           $x = Join-Path $tmp $r.nombre; [IO.File]::WriteAllBytes($x, [Convert]::FromBase64String($r.b64))
+           $zip = [IO.Compression.ZipFile]::OpenRead($x); $hojas = 0; $textos = @{}
+           try {
+             foreach ($e in $zip.Entries) { $txt = [IO.StreamReader]::new($e.Open(), [Text.Encoding]::UTF8).ReadToEnd(); try { [void]([xml]$txt) } catch { return "$($e.FullName) no es XML válido" }; if ($e.FullName -like 'xl/worksheets/sheet*.xml') { $hojas++; $textos[$e.FullName] = $txt } }
+             $wbx = [IO.StreamReader]::new($zip.GetEntry('xl/workbook.xml').Open()).ReadToEnd()
+           } finally { $zip.Dispose() }
+           if ($hojas -ne 7 -or $r.hojas -ne 7) { return "el Excel debe tener 7 hojas y tiene $hojas" }
+           if (([regex]::Matches($wbx, '<sheet ')).Count -ne 7) { return 'workbook.xml no declara las 7 hojas' }
+           $portada = $textos['xl/worksheets/sheet1.xml']
+           if (-not $portada.Contains('IA-2026-001') -or $portada -notmatch '\d{4}-\d{2}-\d{2} \d{2}:\d{2}:\d{2}') { return 'la portada del Excel no lleva el código del caso o la fecha y hora de generación' }
+           if (-not $textos['xl/worksheets/sheet6.xml'].Contains('RT-')) { return 'la hoja de riesgos a considerar no lista ningún riesgo tipo' }
+           if (-not $textos['xl/worksheets/sheet4.xml'].Contains('RT-GEN-') -or -not $textos['xl/worksheets/sheet5.xml'].Contains('AG-07')) { return 'los planes de mitigación o contingencia no llevan las propuestas del catálogo' }
+           return $null } }
       # el cálculo que se abre es el del documento 12 §9: suma 12, perfil subyacente Eficiencia a escala y asignado Transformación declarada, no evidenciada
       # D100: el cálculo que se abre es el de septiembre de 2026, calculado desde el registro de demostración de T01 (perfil asignado «declarada», subyacente «táctica», suma 12, cobertura 8); el de junio (documento 12 §9) queda en la evolución
       @{ f = (Join-Path $t14 'indice.html'); debe = @('#perfil[data-perfil="declarada"][data-evidenciado="tactica"][data-suma="12"][data-cobertura="8"]', 'tr[data-senal="8"][data-punt="1"]', '#nav a[href="#/umbrales"]', '#t01-local[data-registro]', "#sitio-nav $ctl", '#principal a.cod-enlace[title]', '#btn-datos[data-estado="demo"]'); que = 'calculadora T14 (cálculo desde el registro T01 de demostración)' }
@@ -473,7 +498,9 @@ try {
       $sel = ($p.debe | ForEach-Object { "'" + $_.Replace("'", "\'") + "'" }) -join ','
       $pagina = [IO.File]::ReadAllText($p.f)
       $pagina = $pagina -replace '(?i)<head>', '<head><script>window.__errs=[];window.addEventListener("error",function(e){__errs.push(e.message)});</script>'
-      $informe = "<script>setTimeout(function(){var f=[$sel].filter(function(s){return !document.querySelector(s)});fetch('/resultado',{method:'POST',body:JSON.stringify({errores:window.__errs,faltan:f})});},2500);</script>"
+      # clave opcional «eval»: expresión de JavaScript que se evalúa en la página y cuyo resultado se devuelve con el informe (lo valida «comprobar»)
+      $evalJs = if ($p.eval) { "(function(){try{return $($p.eval)}catch(e){return 'ERR: '+String(e&&e.stack||e)}})()" } else { 'null' }
+      $informe = "<script>setTimeout(function(){var f=[$sel].filter(function(s){return !document.querySelector(s)});fetch('/resultado',{method:'POST',body:JSON.stringify({errores:window.__errs,faltan:f,eval:$evalJs})});},2500);</script>"
       $pagina = $pagina -replace '(?i)</body>', ($informe.Replace('$', '$$') + '</body>')
       $rutaPag = '/' + [IO.Path]::GetRelativePath($repo, $p.f).Replace('\', '/')
       $perfil = Join-Path $tmp ('edge_' + [Guid]::NewGuid().ToString('N').Substring(0, 6))
@@ -498,7 +525,8 @@ try {
       if (-not $resultado) { Aviso "$($p.que): el navegador no ha respondido; prueba no concluyente" }
       elseif ($resultado.errores.Count) { Mal "$($p.que): error de JavaScript: $($resultado.errores -join ' · ')" }
       elseif ($resultado.faltan.Count) { Mal "$($p.que): no se dibuja (falta $($resultado.faltan -join ', '))" }
-      else { Ok "$($p.que) se dibuja sin errores de JavaScript" }
+      elseif ($p.comprobar -and ($fallo = & $p.comprobar $resultado.eval)) { Mal "$($p.que): $fallo" }
+      else { Ok "$($p.que) se dibuja sin errores de JavaScript$(if ($p.eval) { ' y ' + $p.eval + ' da un resultado válido' })" }
     }
   }
 
@@ -852,6 +880,53 @@ try {
     }
   }
   if (-not $malCon) { Ok 'conector T17 en el navegador incrustado en los dos paneles y en el registro T01, con la ruta del registro de la compañía configurada' }
+
+  # ---- 21. Excel del caso de T06 (D106): catálogo de riesgos tipo alineado con el documento 33 §9 en ES y EN, generador y botones en la
+  # plantilla de T01 y descripción en README, documentos 03 y 33, P12, P13 y mapa de datos. El libro generado se valida en la prueba de humo (7).
+  # (La sección 20 la ocupa el buscador de documentos; los números de sección no se reutilizan.)
+  Write-Host '21. Excel del caso de T06: catálogo de riesgos tipo, generador y documentación'
+  $malXl = 0
+  $catR = Join-Path $t01 'catalogo_riesgos.json'
+  if (-not (Test-Path $catR)) { Mal 'falta T01_registro_iniciativas/catalogo_riesgos.json'; $malXl++ }
+  else {
+    $cr = Get-Content $catR -Raw -Encoding utf8 | ConvertFrom-Json -Depth 16
+    $cod33 = @{}
+    foreach ($lang in 'es', 'en') {
+      $t33 = [IO.File]::ReadAllText((Join-Path $repo "SEVEN-G\mds\$lang\33_SEVEN-G_Metodologia_de_riesgos_de_IA.md"))
+      $cod33[$lang] = @([regex]::Matches($t33, '(?m)^\| \*\*(RT-[A-Z]{3}-\d{2})\*\* \| \*\*') | ForEach-Object { $_.Groups[1].Value } | Sort-Object)
+      if (-not $t33.Contains($(if ($lang -eq 'es') { 'Excel del caso' } else { 'Excel of the use case' }))) { Mal "documento 33 [$lang]: no describe el Excel del caso de T06 (§9 y §13)"; $malXl++ }
+    }
+    $codCat = @($cr.riesgos.c | Sort-Object)
+    if (Compare-Object $cod33.es $cod33.en) { Mal 'documento 33: los códigos RT del catálogo §9 no coinciden entre ES y EN'; $malXl++ }
+    if (Compare-Object $cod33.es $codCat) { Mal "catalogo_riesgos.json: sus códigos no coinciden con el documento 33 §9: $((Compare-Object $cod33.es $codCat | ForEach-Object { "$($_.InputObject) $($_.SideIndicator)" }) -join ', ')"; $malXl++ }
+    $malEnt = @()
+    foreach ($r in $cr.riesgos) {
+      $ap = $r.aplica
+      if (-not (($ap -is [bool] -and $ap) -or ($ap -is [string] -and $ap -eq 'cartera') -or ($ap -is [array]))) { $malEnt += "$($r.c) aplica" }
+      if ($r.tc -notin 'preventivo', 'detectivo', 'correctivo', 'transferencia') { $malEnt += "$($r.c) tc" }
+      if ($r.red -notin 'probabilidad', 'impacto', 'ambos') { $malEnt += "$($r.c) red" }
+      if ($r.act -notin 'patrocinador', 'producto', 'tecnico', 'operacion', 'riesgos', 'auditor') { $malEnt += "$($r.c) act" }
+      foreach ($l in 'es', 'en') { if (-not $r.mit.$l -or -not $r.cont.$l.dis -or -not $r.cont.$l.acc) { $malEnt += "$($r.c) $l" } }
+    }
+    if ($malEnt) { Mal "catalogo_riesgos.json: entradas incompletas o no válidas: $($malEnt -join ' · ')"; $malXl++ }
+    $plT01 = [IO.File]::ReadAllText((Join-Path $t01 '_fuentes\registro.plantilla.html'))
+    foreach ($req in '__CATALOGO_RIESGOS__', 'data-acc="rg-xlsx"', 'data-acc="rg-xlsx-elegir"', 'function xlsxCaso(', 'window.T06_XLSX', 'function perfilRiesgoIni(', 'function rtAplica(') { if (-not $plT01.Contains($req)) { Mal "T01: la plantilla no lleva «$req» (Excel del caso)"; $malXl++ } }
+    $genT01 = [IO.File]::ReadAllText((Join-Path $t01 'registro.html'))
+    if ($genT01.Contains('__CATALOGO_RIESGOS__') -or -not $genT01.Contains('id="catalogo-riesgos"')) { Mal 'T01: registro.html no lleva el catálogo de riesgos tipo incrustado (regenerar con build_registro.ps1)'; $malXl++ }
+    foreach ($par in @(@('README.md', 'Excel del caso'), @('README_en.md', 'Excel of the use case'))) { if (-not [IO.File]::ReadAllText((Join-Path $t01 $par[0])).Contains($par[1])) { Mal "T01/$($par[0]): no describe el Excel del caso"; $malXl++ } }
+    foreach ($lang in 'es', 'en') {
+      $frase = if ($lang -eq 'es') { 'Excel del caso' } else { 'Excel of the use case' }
+      $d03 = [IO.File]::ReadAllText((Get-ChildItem (Join-Path $repo "SEVEN-G\mds\$lang") -Filter '03_*.md' | Select-Object -First 1).FullName)
+      $sec41 = [regex]::Match($d03, '(?s)### 4\.1 .*?(?=\n## )').Value
+      if ($sec41 -notmatch '(?m)^\| \*\*T06\*\* \|.*catalogo_riesgos\.json') { Mal "documento 03 [$lang] §4.1: la fila de T06 no describe qué lee para el Excel del caso ni su catálogo"; $malXl++ }
+      if ($d03 -notmatch "(?m)^\| \*\*T06\*\* \| [^|]+ \| [^|]*$([regex]::Escape($frase))") { Mal "documento 03 [$lang]: la fila de T06 del catálogo no menciona el Excel del caso"; $malXl++ }
+      foreach ($p in 'P12_SEVEN-G_Matriz_y_registro_de_riesgos.md', 'P13_SEVEN-G_Plan_de_mitigacion_y_contingencia.md') { if (-not [IO.File]::ReadAllText((Join-Path $repo "SEVEN-G\mds\$lang\plantillas\$p")).Contains($frase)) { Mal "$p [$lang]: no remite al Excel del caso de T06"; $malXl++ } }
+    }
+    $mapaX = Get-Content (Join-Path $repo 'SEVEN-G\herramientas\mapa_datos.json') -Raw -Encoding utf8 | ConvertFrom-Json -Depth 16
+    if (-not $mapaX.herramientas.T06.lee_de_t01 -or -not $mapaX.herramientas.T06.genera -or -not $mapaX.herramientas.T06.catalogo) { Mal 'mapa_datos.json: T06 debe declarar lee_de_t01, genera y catalogo (Excel del caso)'; $malXl++ }
+    if (-not $malXl) { Ok "Excel del caso de T06: catálogo de $($cr.riesgos.Count) riesgos tipo alineado con el documento 33 §9 (ES/EN), generador en T01 y documentación al día" }
+  }
+
   # ---- 22. datos en local e instalación propia (D104): el documento 95 existe en ES y EN, apunta al repositorio público y a su ZIP, y lo enlazan
   # la portada, la entrada, el README y el principio 6 del documento 03; los recuentos de documentos escritos a mano coinciden con la biblioteca
   Write-Host '22. Datos en local e instalación propia'
