@@ -434,6 +434,22 @@ function bloqueIndice(t14) {
   b.anterior = calcs.length > 1 ? uno(calcs[calcs.length - 2]) : null;
   return b;
 }
+// ---------------------------------------------------------------- madurez de la compañía (T15, documento 11; esquema 0.6 de T01, D100)
+function bloqueMadurez(t01) {
+  const lista = get(t01, "madurez") || [];
+  if (!Array.isArray(lista) || !lista.length) return null;
+  const validos = ordenar(lista.filter(m => m && typeof m === "object" && get(m, "id") && get(m, "fecha_corte") && Array.isArray(get(m, "dimensiones"))), m => [get(m, "fecha_corte") || "", get(m, "id") || ""]);
+  if (!validos.length) return null;
+  const uno = m => ({id: get(m, "id"), fecha_corte: get(m, "fecha_corte"), ciclo: get(m, "ciclo"), modalidad: get(m, "modalidad"),
+    version_cuestionario: get(m, "version_cuestionario"), verificador: get(m, "verificador"), organo_aprobacion: get(m, "organo_aprobacion"),
+    nivel_global: get(m, "nivel_global"), nivel_minimo: get(m, "nivel_minimo"), media: get(m, "media"), tope: get(m, "tope"),
+    tope_aplicado: !!get(m, "tope_aplicado"), limitante: get(m, "limitante") || [], validez: get(m, "validez"), declaracion_posible: get(m, "declaracion_posible"),
+    dimensiones: (get(m, "dimensiones") || []).filter(d => d && typeof d === "object").map(d => ({dimension: get(d, "dimension"), nombre: get(d, "nombre"), nivel: get(d, "nivel"), avance: get(d, "avance"), bloqueantes: get(d, "bloqueantes") || []}))});
+  const b = uno(validos[validos.length - 1]);
+  if (validos.length > 1) { const a = uno(validos[validos.length - 2]); b.anterior = {id: a.id, fecha_corte: a.fecha_corte, modalidad: a.modalidad, nivel_global: a.nivel_global, dimensiones: a.dimensiones.map(d => ({dimension: d.dimension, nivel: d.nivel}))}; }
+  else b.anterior = null;
+  return b;
+}
 const esRegistroT01 = d => !!d && typeof d === "object" && Array.isArray(d.iniciativas) && !!d.meta && !Array.isArray(d.casos);
-raiz.SevengT17 = {convertir, bloqueIndice, esRegistroT01, VERSION_CONECTOR, AVISO_LEGAL, AVISO_LEGAL_DATOS_PROPIOS};
+raiz.SevengT17 = {convertir, bloqueIndice, bloqueMadurez, esRegistroT01, VERSION_CONECTOR, AVISO_LEGAL, AVISO_LEGAL_DATOS_PROPIOS};
 })(typeof window !== "undefined" ? window : globalThis);

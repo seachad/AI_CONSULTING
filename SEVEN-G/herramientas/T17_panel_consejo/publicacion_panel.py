@@ -209,6 +209,7 @@ JS_ARRANQUE_CONECTOR = r"""
   function aplicar(t01, etiqueta){
     var d = SevengT17.convertir(t01, {config: CFG});
     try { var t14 = JSON.parse(ls(LS_T14) || "null"); var b = t14 && SevengT17.bloqueIndice(t14); if (b) d.indice = b; } catch (e) {}
+    try { var md = SevengT17.bloqueMadurez && SevengT17.bloqueMadurez(t01); if (md) d.madurez = md; } catch (e) {}
     if (MOVIL) { DATA = normalize(d); DATA.meta.version_panel = DATA.meta.version_panel || V; DATA.meta.panel_completo = DATA.meta.panel_completo || COMPLETO; CASES = DATA.casos; RES = new WeakMap(); HIS = new WeakMap(); fillCompara(); render(); }
     else if (setDataOriginal) setDataOriginal(d, "datos: " + etiqueta);
     textos(d); nota(etiqueta, d);

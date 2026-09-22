@@ -674,7 +674,7 @@ try {
     if (-not $tp.Contains('<script data-conector-t17>') -or -not $tp.Contains('data-conector-t17-arranque') -or -not $tp.Contains('SevengT17.convertir')) { Mal "$f`: no lleva el conector en el navegador (regenerar con t01_a_panel.py)"; $malCon++ }
   }
   $reg01 = [IO.File]::ReadAllText((Join-Path $t01 'registro.html'))
-  if (-not $reg01.Contains('window.SevengT17') -or -not $reg01.Contains('id="config-panel"') -or $reg01.Contains('__CONECTOR_T17__')) { Mal 'T01: registro.html no lleva el conector T17 en JavaScript ni la configuración del panel (regenerar)'; $malCon++ }
+  if (-not $reg01.Contains('SevengT17 = {convertir') -or -not $reg01.Contains('id="config-panel"') -or $reg01.Contains('__CONECTOR_T17__')) { Mal 'T01: registro.html no lleva el conector T17 en JavaScript ni la configuración del panel (regenerar)'; $malCon++ }
   if (-not [IO.File]::ReadAllText((Join-Path $t17dir 'index.html')).Contains('sin Python')) { Mal 'T17: su página debe explicar que el panel se regenera en el navegador sin Python'; $malCon++ }
   $edgeCon = @("${env:ProgramFiles(x86)}\Microsoft\Edge\Application\msedge.exe", "$env:ProgramFiles\Microsoft\Edge\Application\msedge.exe") | Where-Object { Test-Path $_ } | Select-Object -First 1
   if ($SinNavegador -or -not $edgeCon) { Aviso 'sin navegador: no se comprueba la paridad del conector en JavaScript con el de Python' }
@@ -694,7 +694,7 @@ try {
       $py = Get-Content (Join-Path $t17dir 'ejemplo\salida\t01_dashboard_data.json') -Raw -Encoding utf8 | ConvertFrom-Json -Depth 64
       $js = Get-Content $jsOut -Raw -Encoding utf8 | ConvertFrom-Json -Depth 64
       # lo que difiere por construcción: el bloque del índice (lo añade --indice), el pie (nombra al conector) y las claves que añade el motor al generar
-      foreach ($d in $py, $js) { $d.PSObject.Properties.Remove('indice'); $d.meta.textos.pie = $null; $d.meta.origen.conector = $null; foreach ($k in 'version_panel', 'panel_completo', 'panel_movil') { $d.meta.PSObject.Properties.Remove($k) } }
+      foreach ($d in $py, $js) { $d.PSObject.Properties.Remove('indice'); $d.PSObject.Properties.Remove('madurez'); $d.meta.textos.pie = $null; $d.meta.origen.conector = $null; foreach ($k in 'version_panel', 'panel_completo', 'panel_movil') { $d.meta.PSObject.Properties.Remove($k) } }
       if ((CanonJson $py) -cne (CanonJson $js)) { Mal 'el conector en JavaScript (t01_a_panel.js) no produce el mismo JSON del panel que t01_a_panel.py con los datos de demostración'; $malCon++ }
       else { Ok "conector en JavaScript idéntico al de Python con los datos de demostración ($($js.casos.Count) casos)" }
     }
