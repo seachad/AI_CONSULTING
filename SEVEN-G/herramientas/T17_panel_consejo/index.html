@@ -72,13 +72,15 @@
     </ul>
     <p style="margin-top:12px;font-size:15px">Compañía, personas y proveedores son ficticios; cualquier parecido con una organización o persona real es casual. Los HTML generados nunca se editan a mano: se regeneran con el conector.</p>
 
-    <h2>Cómo se usa</h2>
+    <h2>Cómo se usa: el panel se regenera solo, sin Python</h2>
+    <p>El panel lleva incrustado el conector en JavaScript (<code>t01_a_panel.js</code>, la misma correspondencia T01 → panel que el generador) y se regenera en el navegador. No hay que instalar ni ejecutar nada:</p>
     <ol>
-      <li>Requisitos: solo Python 3.11 o superior con <code>uv</code>. El motor del panel está incluido en <code>motor/</code>.</li>
-      <li>En T01: <strong>Datos → Exportar JSON completo</strong>. Si el registro está repartido en varios JSON, se fusionan antes en T01 (<strong>Datos → Validar y fusionar</strong>).</li>
-      <li>Desde esta carpeta: <pre><code>uv run python t01_a_panel.py --t01 export_t01.json --salida carpeta</code></pre>Sin argumentos genera este ejemplo en <code>ejemplo/salida/</code>. Opcionalmente, <code>--panel ruta</code> usa otro motor (un checkout de <em>AI en el Consejo</em>).</li>
-      <li>Ajuste <code>config_panel.json</code> (umbrales, etapas y límites de días) y regenere. Al cierre de cada sesión del consejo, guarde una foto con <code>motor/snapshot.py</code> para ver la tendencia.</li>
+      <li><strong>Con el registro de este navegador.</strong> Trabaje en el <a href="../T01_registro_iniciativas/registro.html">registro T01</a> y pulse «Panel del consejo (con este registro)»: el panel lee el registro guardado en este navegador (mismo sitio) y lo muestra. Mientras el registro sea el de ejemplo, se ve el panel de ejemplo.</li>
+      <li><strong>En la copia del sitio de la compañía</strong> (documento 03 §2.1): deje el JSON exportado por T01 en <code>SEVEN-G/herramientas/datos/T01_registro.json</code>; servido por http, el panel lo lee y lo muestra a toda la compañía. La ruta se configura en <code>config_panel.json</code> (<code>navegacion.datos_t01</code>).</li>
+      <li><strong>Con un fichero.</strong> «Cargar JSON» en el panel admite tanto un <code>dashboard_data.json</code> como el JSON completo de T01, que convierte al vuelo. En T01, «Descargar el JSON del panel» produce el <code>dashboard_data.json</code> con la misma correspondencia.</li>
+      <li>Ajuste <code>config_panel.json</code> (umbrales, etapas y límites de días); la copia de la compañía debe regenerar los paneles de ejemplo (paso opcional siguiente) para que lleven su configuración incrustada.</li>
     </ol>
+    <p><strong>Opcional, con Python 3.11 y <code>uv</code>:</strong> el generador <code>t01_a_panel.py</code> escribe los paneles como ficheros estáticos (para enviarlos por correo o mensajería, con la vista sin JavaScript y el registro de recomendaciones): <pre><code>uv run python t01_a_panel.py --t01 export_t01.json --salida carpeta</code></pre>Sin argumentos genera este ejemplo en <code>ejemplo/salida/</code>. Sin Python, <code>pwsh -File conector_js.ps1 -T01 registro.json -Salida dashboard_data.json</code> produce el JSON del panel con Edge. Al cierre de cada sesión del consejo, <code>motor/snapshot.py</code> guarda una foto para ver la tendencia.</p>
 
     <h2>Documentación</h2>
     <ul class="enlaces">
@@ -118,13 +120,15 @@
     </ul>
     <p style="margin-top:12px;font-size:15px">Company, people and suppliers are fictitious; any resemblance to a real organisation or person is coincidental. Generated HTML files are never edited by hand: they are regenerated with the connector.</p>
 
-    <h2>How to use it</h2>
+    <h2>How to use it: the dashboard regenerates itself, without Python</h2>
+    <p>The dashboard embeds the connector in JavaScript (<code>t01_a_panel.js</code>, the same T01 → dashboard mapping as the generator) and regenerates itself in the browser. Nothing to install or run:</p>
     <ol>
-      <li>Requirements: only Python 3.11 or later with <code>uv</code>. The dashboard engine is included in <code>motor/</code>.</li>
-      <li>In T01: <strong>Datos → Exportar JSON completo</strong> (Data → Export full JSON). If the register is spread over several JSON files, merge them first in T01 (<strong>Data → Validate and merge</strong>).</li>
-      <li>From this folder: <pre><code>uv run python t01_a_panel.py --t01 export_t01.json --salida folder</code></pre>With no arguments it builds this example in <code>ejemplo/salida/</code>. Optionally, <code>--panel path</code> uses another engine (a checkout of <em>AI en el Consejo</em>).</li>
-      <li>Adjust <code>config_panel.json</code> (thresholds, stages and day limits) and regenerate. At the end of each board session, save a snapshot with <code>motor/snapshot.py</code> to see the trend.</li>
+      <li><strong>With the register in this browser.</strong> Work in the <a href="../T01_registro_iniciativas/registro.html">T01 register</a> and click "Board dashboard (with this register)": the dashboard reads the register saved in this browser (same site) and shows it. While the register is the sample one, the sample dashboard is shown.</li>
+      <li><strong>In the company's copy of the site</strong> (document 03 §2.1): leave the JSON exported by T01 in <code>SEVEN-G/herramientas/datos/T01_registro.json</code>; served over http, the dashboard reads it and shows it to the whole company. The path is configured in <code>config_panel.json</code> (<code>navegacion.datos_t01</code>).</li>
+      <li><strong>With a file.</strong> "Cargar JSON" in the dashboard accepts either a <code>dashboard_data.json</code> or the full T01 JSON, which it converts on the fly. In T01, "Download the dashboard JSON" produces the <code>dashboard_data.json</code> with the same mapping.</li>
+      <li>Adjust <code>config_panel.json</code> (thresholds, stages and day limits); the company copy should regenerate the example dashboards (optional step below) so that they embed its configuration.</li>
     </ol>
+    <p><strong>Optional, with Python 3.11 and <code>uv</code>:</strong> the <code>t01_a_panel.py</code> generator writes the dashboards as static files (to send them by e-mail or messaging, with the no-JavaScript view and the recommendations log): <pre><code>uv run python t01_a_panel.py --t01 export_t01.json --salida folder</code></pre>With no arguments it builds this example in <code>ejemplo/salida/</code>. Without Python, <code>pwsh -File conector_js.ps1 -T01 register.json -Salida dashboard_data.json</code> produces the dashboard JSON with Edge. At the end of each board session, <code>motor/snapshot.py</code> saves a snapshot to see the trend.</p>
 
     <h2>Documentation</h2>
     <ul class="enlaces">

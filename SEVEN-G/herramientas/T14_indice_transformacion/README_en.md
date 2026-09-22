@@ -13,7 +13,7 @@ Applies **document 12** (Transformation index): it calculates baseline condition
 4. Under "Actions", record the owner and time limit of each condition in "What would move the profile" and the data plan (document 12, section 10). "Print report" produces the sheet for the board.
 5. "Data" → "Export T14 JSON" saves thresholds and calculations, with their results, to keep or share them.
 
-Data is stored only in the browser used (local storage). Nothing is sent to third parties.
+Data is stored only in the browser used (local storage). Nothing is sent to third parties. The **"Data: …"** button in the bar says where it is (sample, this browser, a file on the computer or the company's server) and opens the "Where my data is" dialog (document 03 §2.1): automatic saving to a **JSON file on the computer** (Edge or Chrome; the same one "Export" downloads) or, in a copy of the site served over http within the company, the file `herramientas/datos/T14_indice.json`, which replaces the sample data.
 
 ## What is calculated from T01 and what is completed manually
 

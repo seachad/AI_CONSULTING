@@ -125,7 +125,7 @@ $configuracion = @{
 $textos = @{
   es = @{
     T_BARRA = 'Herramientas del documento'; T_BUSCAR = 'Buscar términos'; T_ANTERIOR = 'Resultado anterior'; T_SIGUIENTE = 'Resultado siguiente'
-    # buscador de términos en esta página o en todas las páginas (D104)
+    # buscador de términos en esta página o en todas las páginas (D105)
     T_TT_BUSCAR = 'Busque una palabra o una frase en esta página o en todas las páginas del sitio, según el selector de la izquierda. Intro salta al resultado siguiente o abre el primero de la lista.'
     T_AMBITO = 'Dónde buscar'; T_TT_AMBITO = 'Dónde buscar: en esta página o en todas las páginas del sitio (documentos, plantillas, curso, SPHERES y SPAD)'
     T_AMBITO_PAGINA = 'Esta página'; T_AMBITO_TODAS = 'Todo el sitio'; T_CARGANDO = 'Cargando…'
@@ -150,7 +150,7 @@ $textos = @{
   }
   en = @{
     T_BARRA = 'Document tools'; T_BUSCAR = 'Search terms'; T_ANTERIOR = 'Previous result'; T_SIGUIENTE = 'Next result'
-    # term search on this page or across all pages (D104)
+    # term search on this page or across all pages (D105)
     T_TT_BUSCAR = 'Search for a word or a phrase on this page or across every page of the site, as chosen in the selector on the left. Enter jumps to the next result or opens the first one in the list.'
     T_AMBITO = 'Where to search'; T_TT_AMBITO = 'Where to search: on this page or across every page of the site (documents, templates, course, SPHERES and SPAD)'
     T_AMBITO_PAGINA = 'This page'; T_AMBITO_TODAS = 'Whole site'; T_CARGANDO = 'Loading…'
@@ -944,9 +944,9 @@ if ($Metodologias -contains 'SEVEN-G' -and -not $env:SEVENG_BUILD_CURSO_PASE2) {
   }
 }
 
-# índice de códigos del control «Buscador de documentos» (D88, D104): se rehace siempre, leyendo los HTML ya generados
+# índice de códigos del control «Buscador de documentos» (D88, D105): se rehace siempre, leyendo los HTML ya generados
 & (Join-Path $PSScriptRoot 'codigos.ps1') -Idiomas $todos
-# índice de texto del buscador de términos en todas las páginas (D104): también desde los HTML ya generados
+# índice de texto del buscador de términos en todas las páginas (D105): también desde los HTML ya generados
 & (Join-Path $PSScriptRoot 'busqueda.ps1') -Idiomas $todos
 
 # índices temporales de este proceso

@@ -33,9 +33,20 @@
     18. Mapa de datos entre herramientas (D100): mapa_datos.json con todas sus rutas en el esquema de T01 (0.6); T11, T14 y T15 leen el
         registro del navegador (misma clave) y atienden ?desde=t01; T01 incorpora sus resultados; las demostraciones de T11, T14, T15 y T17
         son de la misma compañía que T01 y derivan de él (cálculo del índice y madurez de T15); documento 03 §4.1 (ES/EN).
-    20. Buscador de términos en todas las páginas (D104): busqueda.json (ES/EN) generado por busqueda.ps1 cubre todas las páginas publicadas
+    19. Datos por usuario o compañía (D103): el módulo herramientas/_comun/datos_locales.js está incrustado en T01, T11, T14 y T15 (botón
+        «Datos: …» y diálogo «Dónde están mis datos»), la carpeta herramientas/datos no contiene ningún JSON, el documento 03 §2.1 (ES/EN)
+        explica la copia de la compañía y los README de las cuatro herramientas la citan.
+    19b. Conector del panel en el navegador (D103): t01_a_panel.js va incrustado en los dos paneles de ejemplo y en el registro T01,
+        config_panel.json tiene navegacion.datos_t01 y el conector en JavaScript produce el mismo JSON que t01_a_panel.py (requiere Edge).
+    20. Buscador de términos en todo el sitio (D105): busqueda.json (ES/EN) generado por busqueda.ps1 cubre todas las páginas publicadas
         y sus anclas existen; cada página generada lleva el selector de ámbito; el control de códigos se rotula «Buscador de documentos»;
-        M01 lo explica. La prueba de humo (7) busca «embudo» en todas las páginas desde el documento 00 y comprueba que aparece la lista.
+        M01 lo explica. La prueba de humo (7) busca «embudo» en todo el sitio desde el documento 00 y comprueba que aparece la lista.
+    21. Excel del caso de T06 (D106): catalogo_riesgos.json tiene exactamente los códigos RT del documento 33 §9 (ES y EN) con reglas,
+        tipo de control y propuestas de mitigación y contingencia en ambos idiomas; la plantilla de T01 lleva el generador y sus botones;
+        README de T01, documentos 03 (§4.1 y catálogo) y 33 (§9 y §13), P12, P13 y mapa_datos.json lo describen (ES/EN). La prueba de
+        humo (7) genera el libro de IA-2026-001 en el navegador (clave «eval») y comprueba que es un .xlsx válido con sus siete hojas,
+        el código del caso y la fecha y hora de generación.
+    22. Datos en local e instalación propia (D104): documento 95 (ES/EN), enlaces desde la portada, la entrada, el README y el 03, y cifras.
 #>
 param([switch]$SinNavegador)
 $ErrorActionPreference = 'Stop'
@@ -448,13 +459,33 @@ try {
     # D99: en cada página, el control «Ir a código» montado por codigos.js (input) y, donde el contenido nombra códigos, sus enlaces
     $ctl = '[data-ir-codigo] input[type="search"]'
     $pruebas = @(
-      @{ f = (Join-Path $t01 'registro.html'); debe = @('#nav a[href="#/embudo"]', '#nav a[href="#/riesgos"]', '#nav a[href="#/consejo"]', '#lnk-panel', '#principal table', "#sitio-nav $ctl", '#principal a.cod-enlace[title]'); que = 'registro T01' }
+      # D103: el botón «Datos: …» del módulo de datos locales se dibuja en las cuatro herramientas
+      # D106: además de dibujarse, el registro genera en el navegador el Excel del caso IA-2026-001 (clave «eval»), que se valida en «comprobar»
+      @{ f = (Join-Path $t01 'registro.html'); debe = @('#nav a[href="#/embudo"]', '#nav a[href="#/riesgos"]', '#nav a[href="#/consejo"]', '#lnk-panel', '#principal table', "#sitio-nav $ctl", '#principal a.cod-enlace[title]', '#btn-datos[data-estado="demo"]'); que = 'registro T01'
+         eval = "window.T06_XLSX.base64('IA-2026-001')"; comprobar = {
+           param($r)
+           if (-not $r) { return 'el Excel del caso (T06_XLSX) no ha devuelto nada' }
+           if ($r -is [string]) { return "el Excel del caso ha fallado: $r" }
+           if ($r.nombre -notmatch '^SEVEN-G_T06_IA-2026-001_\d{8}-\d{6}\.xlsx$') { return "nombre del Excel inesperado: $($r.nombre)" }
+           $x = Join-Path $tmp $r.nombre; [IO.File]::WriteAllBytes($x, [Convert]::FromBase64String($r.b64))
+           $zip = [IO.Compression.ZipFile]::OpenRead($x); $hojas = 0; $textos = @{}
+           try {
+             foreach ($e in $zip.Entries) { $txt = [IO.StreamReader]::new($e.Open(), [Text.Encoding]::UTF8).ReadToEnd(); try { [void]([xml]$txt) } catch { return "$($e.FullName) no es XML válido" }; if ($e.FullName -like 'xl/worksheets/sheet*.xml') { $hojas++; $textos[$e.FullName] = $txt } }
+             $wbx = [IO.StreamReader]::new($zip.GetEntry('xl/workbook.xml').Open()).ReadToEnd()
+           } finally { $zip.Dispose() }
+           if ($hojas -ne 7 -or $r.hojas -ne 7) { return "el Excel debe tener 7 hojas y tiene $hojas" }
+           if (([regex]::Matches($wbx, '<sheet ')).Count -ne 7) { return 'workbook.xml no declara las 7 hojas' }
+           $portada = $textos['xl/worksheets/sheet1.xml']
+           if (-not $portada.Contains('IA-2026-001') -or $portada -notmatch '\d{4}-\d{2}-\d{2} \d{2}:\d{2}:\d{2}') { return 'la portada del Excel no lleva el código del caso o la fecha y hora de generación' }
+           if (-not $textos['xl/worksheets/sheet6.xml'].Contains('RT-')) { return 'la hoja de riesgos a considerar no lista ningún riesgo tipo' }
+           if (-not $textos['xl/worksheets/sheet4.xml'].Contains('RT-GEN-') -or -not $textos['xl/worksheets/sheet5.xml'].Contains('AG-07')) { return 'los planes de mitigación o contingencia no llevan las propuestas del catálogo' }
+           return $null } }
       # el cálculo que se abre es el del documento 12 §9: suma 12, perfil subyacente Eficiencia a escala y asignado Transformación declarada, no evidenciada
       # D100: el cálculo que se abre es el de septiembre de 2026, calculado desde el registro de demostración de T01 (perfil asignado «declarada», subyacente «táctica», suma 12, cobertura 8); el de junio (documento 12 §9) queda en la evolución
-      @{ f = (Join-Path $t14 'indice.html'); debe = @('#perfil[data-perfil="declarada"][data-evidenciado="tactica"][data-suma="12"][data-cobertura="8"]', 'tr[data-senal="8"][data-punt="1"]', '#nav a[href="#/umbrales"]', '#t01-local[data-registro]', "#sitio-nav $ctl", '#principal a.cod-enlace[title]'); que = 'calculadora T14 (cálculo desde el registro T01 de demostración)' }
+      @{ f = (Join-Path $t14 'indice.html'); debe = @('#perfil[data-perfil="declarada"][data-evidenciado="tactica"][data-suma="12"][data-cobertura="8"]', 'tr[data-senal="8"][data-punt="1"]', '#nav a[href="#/umbrales"]', '#t01-local[data-registro]', "#sitio-nav $ctl", '#principal a.cod-enlace[title]', '#btn-datos[data-estado="demo"]'); que = 'calculadora T14 (cálculo desde el registro T01 de demostración)' }
       # T11: el caso de ejemplo IA-2026-001 da VAN 1.826.542 €, ROI 217,7 % y plazo 1,44 años (40 §8); T15: nivel global 2 limitado por D6 (11 §5)
-      @{ f = (Join-Path $t11 'calculadora.html'); debe = @('#resultado[data-van="1826542"][data-roi="217.7"][data-payback="1.44"]', '#nav a[href="#/costes"]', '#t01-local[data-registro]', "#sitio-nav $ctl", '#principal a.cod-enlace[title]'); que = 'calculadora T11/T13 (ejemplo IA-2026-001)' }
-      @{ f = (Join-Path $t15 'madurez.html'); debe = @('#nivel-global[data-nivel="2"][data-tope="2"][data-tope-aplicado="1"]', 'tr[data-dim="D6"][data-nivel="1"]', 'tr[data-dim="D3"][data-nivel="2"]', '#t01-local[data-registro]', "#sitio-nav $ctl", '#principal a.cod-enlace[title]'); que = 'diagnóstico T15 (ejemplo EM-2026-06)' }
+      @{ f = (Join-Path $t11 'calculadora.html'); debe = @('#resultado[data-van="1826542"][data-roi="217.7"][data-payback="1.44"]', '#nav a[href="#/costes"]', '#t01-local[data-registro]', "#sitio-nav $ctl", '#principal a.cod-enlace[title]', '#btn-datos[data-estado="demo"]'); que = 'calculadora T11/T13 (ejemplo IA-2026-001)' }
+      @{ f = (Join-Path $t15 'madurez.html'); debe = @('#nivel-global[data-nivel="2"][data-tope="2"][data-tope-aplicado="1"]', 'tr[data-dim="D6"][data-nivel="1"]', 'tr[data-dim="D3"][data-nivel="2"]', '#t01-local[data-registro]', "#sitio-nav $ctl", '#principal a.cod-enlace[title]', '#btn-datos[data-estado="demo"]'); que = 'diagnóstico T15 (ejemplo EM-2026-06)' }
       # D100: la tarjeta de madurez (bloque «madurez» del panel, escrito por T15 en el registro) se dibuja con sus siete dimensiones
       @{ f = (Get-ChildItem $salidaEj -Filter 't01_Dashboard_Casos_Uso_IA_v*.html' | Select-Object -First 1).FullName; debe = @('#indice tbody tr', '#kpis [data-kpi]', '#embudo .fun2-mid', '#embudo .fun-card.gan', '#embudo .fun-card li .pq', '#fbar #fopen, #filters .fgroup', '#transv table tbody tr', '#madurez table tbody tr', "#barra .toolbar $ctl", 'main a.cod-enlace[title]'); que = 'panel completo' }
       # comunidad (D80): la página se dibuja aunque no haya intermediario configurado ni red (el texto lo pone el JavaScript)
@@ -462,10 +493,9 @@ try {
       @{ f = (Get-ChildItem $salidaEj -Filter 't01_Dashboard_Movil_IA_v*.html' | Select-Object -First 1).FullName; debe = @('#embudo .row.fun', '#embudo .row.fun.gan', '#transv .row', '#madurez-sec:not([hidden]) #madurez *', "header $ctl", 'body a.cod-enlace[title]'); que = 'panel móvil' }
       @{ f = (Join-Path $salidaEj 't01_Registro_Recomendaciones.html'); debe = @('#tl article.rec', ".top $ctl", 'body a.cod-enlace[title]'); que = 'registro de recomendaciones' }
       @{ f = (Join-Path $t17 'index.html'); debe = @('p.que-es', "header $ctl", '#es a.cod-enlace[title]'); que = 'página de T17' }
-      # D104: buscador de términos con selector de ámbito; en «Todas las páginas» la lista de resultados llega de busqueda.json (servido por http).
-      # «antes»: script opcional que se ejecuta en la página antes de comprobar los selectores
+      # D105: buscador de términos con selector de ámbito; en «Todo el sitio» la lista de resultados llega de busqueda.json (servido por http)
       @{ f = (Join-Path $repo 'SEVEN-G\html\es\00_SEVEN-G_Que_es_y_para_que_sirve.html'); antes = "setTimeout(function(){var s=document.getElementById('buscar-ambito');s.value='todas';s.dispatchEvent(new Event('change'));var i=document.getElementById('buscar');i.value='embudo';i.dispatchEvent(new Event('input'));},200);"
-         debe = @('#buscar-ambito option[value="todas"]', ".barra $ctl", '.buscar-lista:not([hidden]) a[role="option"][href*="?q=embudo"]'); que = 'documento 00 con búsqueda de «embudo» en todas las páginas' }
+         debe = @('#buscar-ambito option[value="todas"]', ".barra $ctl", '.buscar-lista:not([hidden]) a[role="option"][href*="?q=embudo"]'); que = 'documento 00 con búsqueda de «embudo» en todo el sitio' }
     )
     $tipos = @{ '.html' = 'text/html; charset=utf-8'; '.js' = 'application/javascript; charset=utf-8'; '.css' = 'text/css; charset=utf-8'; '.json' = 'application/json; charset=utf-8'; '.png' = 'image/png'; '.jpg' = 'image/jpeg'; '.svg' = 'image/svg+xml'; '.pdf' = 'application/pdf'; '.woff2' = 'font/woff2' }
     foreach ($p in $pruebas) {
@@ -474,7 +504,10 @@ try {
       $sel = ($p.debe | ForEach-Object { "'" + $_.Replace("'", "\'") + "'" }) -join ','
       $pagina = [IO.File]::ReadAllText($p.f)
       $pagina = $pagina -replace '(?i)<head>', '<head><script>window.__errs=[];window.addEventListener("error",function(e){__errs.push(e.message)});</script>'
-      $informe = "<script>setTimeout(function(){var f=[$sel].filter(function(s){return !document.querySelector(s)});fetch('/resultado',{method:'POST',body:JSON.stringify({errores:window.__errs,faltan:f})});},2500);</script>"
+      # clave opcional «eval»: expresión de JavaScript que se evalúa en la página y cuyo resultado se devuelve con el informe (lo valida «comprobar»)
+      $evalJs = if ($p.eval) { "(function(){try{return $($p.eval)}catch(e){return 'ERR: '+String(e&&e.stack||e)}})()" } else { 'null' }
+      $informe = "<script>setTimeout(function(){var f=[$sel].filter(function(s){return !document.querySelector(s)});fetch('/resultado',{method:'POST',body:JSON.stringify({errores:window.__errs,faltan:f,eval:$evalJs})});},2500);</script>"
+      # clave opcional «antes»: script que se ejecuta en la página antes de comprobar los selectores (por ejemplo, cambiar el ámbito del buscador)
       $antes = if ($p.antes) { "<script>$($p.antes)</script>" } else { '' }
       $pagina = $pagina -replace '(?i)</body>', (($antes + $informe).Replace('$', '$$') + '</body>')
       $rutaPag = '/' + [IO.Path]::GetRelativePath($repo, $p.f).Replace('\', '/')
@@ -500,7 +533,8 @@ try {
       if (-not $resultado) { Aviso "$($p.que): el navegador no ha respondido; prueba no concluyente" }
       elseif ($resultado.errores.Count) { Mal "$($p.que): error de JavaScript: $($resultado.errores -join ' · ')" }
       elseif ($resultado.faltan.Count) { Mal "$($p.que): no se dibuja (falta $($resultado.faltan -join ', '))" }
-      else { Ok "$($p.que) se dibuja sin errores de JavaScript" }
+      elseif ($p.comprobar -and ($fallo = & $p.comprobar $resultado.eval)) { Mal "$($p.que): $fallo" }
+      else { Ok "$($p.que) se dibuja sin errores de JavaScript$(if ($p.eval) { ' y ' + $p.eval + ' da un resultado válido' })" }
     }
   }
 
@@ -778,14 +812,166 @@ try {
     if (-not $malMapa) { Ok 'herramientas enlazadas con el registro T01 como fuente de verdad: clave compartida, enlaces ?desde=t01, esquema 0.6, demostraciones de una sola compañía y documento 03 §4.1' }
   }
 
-  # ---- 19. datos en local e instalación propia (D103): el documento 95 existe en ES y EN, apunta al repositorio público y a su ZIP, y lo enlazan
+  # ---- 19. datos por usuario o compañía (D103): módulo común incrustado en las cuatro herramientas, diálogo «Dónde están mis datos»,
+  # carpeta de datos de la copia de la compañía sin ningún JSON en el sitio público, procedimiento en el documento 03 §2.1 y README
+  Write-Host '19. Datos por usuario o compañía'
+  $malDat = 0
+  $modulo = Join-Path $repo 'SEVEN-G\herramientas\_comun\datos_locales.js'
+  if (-not (Test-Path $modulo)) { Mal 'falta el módulo común SEVEN-G/herramientas/_comun/datos_locales.js'; $malDat++ }
+  else {
+    $mj = [IO.File]::ReadAllText($modulo)
+    foreach ($req in 'window.SevengDatos', 'showSaveFilePicker', 'indexedDB', "'btn-datos'", "'dlg-datos'", 'herramientas/datos/', 'btn_demo:', 'op3_t:', 'ficheroServidor') { if (-not $mj.Contains($req)) { Mal "datos_locales.js: falta «$req»"; $malDat++ } }
+    if ($mj -match 'https?://') { Mal 'datos_locales.js: no debe cargar ni llamar a ninguna dirección externa'; $malDat++ }
+    if ($mj.Contains('</script')) { Mal 'datos_locales.js: contiene «</script», que rompería el HTML en el que se incrusta'; $malDat++ }
+  }
+  foreach ($h in @(@{ dir = 'T01_registro_iniciativas'; pl = '_fuentes\registro.plantilla.html'; html = 'registro.html'; f = 'T01_registro.json' }, @{ dir = 'T11_calculadora_valor'; pl = '_fuentes\calculadora.plantilla.html'; html = 'calculadora.html'; f = 'T11_calculadora.json' },
+                    @{ dir = 'T14_indice_transformacion'; pl = '_fuentes\indice.plantilla.html'; html = 'indice.html'; f = 'T14_indice.json' }, @{ dir = 'T15_diagnostico_madurez'; pl = '_fuentes\madurez.plantilla.html'; html = 'madurez.html'; f = 'T15_madurez.json' })) {
+    $pl = [IO.File]::ReadAllText((Join-Path $repo "SEVEN-G\herramientas\$($h.dir)\$($h.pl)"))
+    if (-not $pl.Contains('<script>__DATOS_LOCALES__</script>')) { Mal "$($h.dir): la plantilla no incrusta el módulo (marca __DATOS_LOCALES__)"; $malDat++ }
+    if (-not $pl.Contains('SevengDatos.iniciar({') -or -not $pl.Contains("ficheroServidor:'../datos/$($h.f)'")) { Mal "$($h.dir): la plantilla no inicia el módulo con ../datos/$($h.f)"; $malDat++ }
+    if (-not $pl.Contains('SevengDatos.guardado()') -or -not $pl.Contains('SevengDatos.refrescar()') -or -not $pl.Contains("SevengDatos.reiniciar('demo')")) { Mal "$($h.dir): faltan los ganchos guardado/refrescar/reiniciar del módulo"; $malDat++ }
+    $gen = [IO.File]::ReadAllText((Join-Path $repo "SEVEN-G\herramientas\$($h.dir)\$($h.html)"))
+    if ($gen.Contains('<script>__DATOS_LOCALES__</script>') -or -not $gen.Contains('window.SevengDatos')) { Mal "$($h.dir): $($h.html) no lleva el módulo incrustado (regenerar)"; $malDat++ }
+    foreach ($rd in 'README.md', 'README_en.md') { if (-not [IO.File]::ReadAllText((Join-Path $repo "SEVEN-G\herramientas\$($h.dir)\$rd")).Contains("herramientas/datos/$($h.f)")) { Mal "$($h.dir)/$rd`: no explica la carpeta de datos de la copia de la compañía"; $malDat++ } }
+  }
+  $carpetaDatos = Join-Path $repo 'SEVEN-G\herramientas\datos'
+  if (-not (Test-Path (Join-Path $carpetaDatos 'README.md'))) { Mal 'falta SEVEN-G/herramientas/datos/README.md'; $malDat++ }
+  $jsonDatos = @(Get-ChildItem $carpetaDatos -File -Filter *.json -ErrorAction SilentlyContinue) + @(& git -C $repo ls-files 'SEVEN-G/herramientas/datos/*.json')
+  if ($jsonDatos.Count) { Mal "SEVEN-G/herramientas/datos no puede contener ningún JSON en el sitio público: $(($jsonDatos | ForEach-Object { if ($_ -is [IO.FileInfo]) { $_.Name } else { $_ } }) -join ', ')"; $malDat++ }
+  foreach ($lang in 'es', 'en') {
+    $md03 = Join-Path $repo "SEVEN-G\mds\$lang\03_SEVEN-G_Herramientas_y_registro_de_iniciativas.md"
+    $tit = if ($lang -eq 'es') { '### 2.1 Dónde viven los datos de las herramientas' } else { '### 2.1 Where the data of the tools lives' }
+    $t03 = [IO.File]::ReadAllText($md03)
+    if (-not $t03.Contains($tit) -or -not $t03.Contains('herramientas/datos/') -or -not $t03.Contains('T01_registro.json')) { Mal "documento 03 ($lang): falta la sección 2.1 con el procedimiento de la copia de la compañía"; $malDat++ }
+    $ancla = if ($lang -eq 'es') { 'id="2-1-donde-viven-los-datos-de-las-herramientas"' } else { 'id="2-1-where-the-data-of-the-tools-lives"' }
+    $h03 = Join-Path $repo "SEVEN-G\html\$lang\03_SEVEN-G_Herramientas_y_registro_de_iniciativas.html"
+    if (-not (Test-Path $h03) -or -not [IO.File]::ReadAllText($h03).Contains($ancla)) { Mal "documento 03 ($lang): el HTML no tiene el ancla de la sección 2.1 a la que enlaza el diálogo de las herramientas (regenerar)"; $malDat++ }
+  }
+  if (-not $malDat) { Ok 'módulo de datos locales incrustado en T01, T11, T14 y T15, carpeta de datos sin JSON, documento 03 §2.1 y README al día' }
+
+  # conector T01 → panel en JavaScript (D103): incrustado en los dos paneles y en el registro T01, con la ruta del registro de la
+  # compañía en config_panel.json, y produce el mismo JSON que el conector en Python con los datos de demostración (única correspondencia, D43)
+  Write-Host '19b. Conector del panel en el navegador'
+  $malCon = 0
+  $t17dir = Join-Path $repo 'SEVEN-G\herramientas\T17_panel_consejo'
+  if (-not (Test-Path (Join-Path $t17dir 't01_a_panel.js'))) { Mal 'falta T17_panel_consejo/t01_a_panel.js'; $malCon++ }
+  if (-not (Test-Path (Join-Path $t17dir 'conector_js.ps1'))) { Mal 'falta T17_panel_consejo/conector_js.ps1'; $malCon++ }
+  if (-not ((Get-Content (Join-Path $t17dir 'config_panel.json') -Raw | ConvertFrom-Json).navegacion.datos_t01)) { Mal 'config_panel.json: falta navegacion.datos_t01 (ruta del registro T01 de la copia de la compañía)'; $malCon++ }
+  foreach ($f in 't01_Dashboard_Casos_Uso_IA_v8.html', 't01_Dashboard_Movil_IA_v8.html') {
+    $tp = [IO.File]::ReadAllText((Join-Path $t17dir "ejemplo\salida\$f"))
+    if (-not $tp.Contains('<script data-conector-t17>') -or -not $tp.Contains('data-conector-t17-arranque') -or -not $tp.Contains('SevengT17.convertir')) { Mal "$f`: no lleva el conector en el navegador (regenerar con t01_a_panel.py)"; $malCon++ }
+  }
+  $reg01 = [IO.File]::ReadAllText((Join-Path $t01 'registro.html'))
+  if (-not $reg01.Contains('SevengT17 = {convertir') -or -not $reg01.Contains('id="config-panel"') -or $reg01.Contains('__CONECTOR_T17__')) { Mal 'T01: registro.html no lleva el conector T17 en JavaScript ni la configuración del panel (regenerar)'; $malCon++ }
+  if (-not [IO.File]::ReadAllText((Join-Path $t17dir 'index.html')).Contains('sin Python')) { Mal 'T17: su página debe explicar que el panel se regenera en el navegador sin Python'; $malCon++ }
+  $edgeCon = @("${env:ProgramFiles(x86)}\Microsoft\Edge\Application\msedge.exe", "$env:ProgramFiles\Microsoft\Edge\Application\msedge.exe") | Where-Object { Test-Path $_ } | Select-Object -First 1
+  if ($SinNavegador -or -not $edgeCon) { Aviso 'sin navegador: no se comprueba la paridad del conector en JavaScript con el de Python' }
+  else {
+    function CanonJson($o) {
+      if ($null -eq $o) { return 'null' }
+      if ($o -is [string]) { return '"' + $o.Replace('\', '\\').Replace('"', '\"') + '"' }
+      if ($o -is [bool]) { return $o.ToString().ToLower() }
+      if ($o -is [ValueType]) { return ([double]$o).ToString('R', [Globalization.CultureInfo]::InvariantCulture) }
+      if ($o -is [Array] -or $o -is [Collections.IList]) { return '[' + (($o | ForEach-Object { CanonJson $_ }) -join ',') + ']' }
+      return '{' + ((@($o.PSObject.Properties.Name | Sort-Object) | ForEach-Object { '"' + $_ + '":' + (CanonJson $o.$_) }) -join ',') + '}'
+    }
+    $jsOut = Join-Path $tmp 't17_conector_js.json'
+    & pwsh -NoProfile -File (Join-Path $t17dir 'conector_js.ps1') -T01 (Join-Path $t01 'datos_demo.json') -Salida $jsOut | Out-Null
+    if ($LASTEXITCODE -or -not (Test-Path $jsOut)) { Mal 'conector_js.ps1 ha fallado (conector en JavaScript)'; $malCon++ }
+    else {
+      $py = Get-Content (Join-Path $t17dir 'ejemplo\salida\t01_dashboard_data.json') -Raw -Encoding utf8 | ConvertFrom-Json -Depth 64
+      $js = Get-Content $jsOut -Raw -Encoding utf8 | ConvertFrom-Json -Depth 64
+      # lo que difiere por construcción: el bloque del índice (lo añade --indice), el pie (nombra al conector) y las claves que añade el motor al generar
+      foreach ($d in $py, $js) { $d.PSObject.Properties.Remove('indice'); $d.PSObject.Properties.Remove('madurez'); $d.meta.textos.pie = $null; $d.meta.origen.conector = $null; foreach ($k in 'version_panel', 'panel_completo', 'panel_movil') { $d.meta.PSObject.Properties.Remove($k) } }
+      if ((CanonJson $py) -cne (CanonJson $js)) { Mal 'el conector en JavaScript (t01_a_panel.js) no produce el mismo JSON del panel que t01_a_panel.py con los datos de demostración'; $malCon++ }
+      else { Ok "conector en JavaScript idéntico al de Python con los datos de demostración ($($js.casos.Count) casos)" }
+    }
+  }
+  if (-not $malCon) { Ok 'conector T17 en el navegador incrustado en los dos paneles y en el registro T01, con la ruta del registro de la compañía configurada' }
+
+  # ---- 20. buscador de términos en la página o en todo el sitio (D105): índice de texto generado (ES/EN) que cubre todas las páginas
+  # publicadas con sus secciones y anclas; selector de ámbito en cada página generada; el control de códigos se rotula «Buscador de documentos»
+  Write-Host '20. Buscador de términos en todo el sitio'
+  $malBus = 0
+  foreach ($lang in 'es', 'en') {
+    $dirB = Join-Path $repo "SEVEN-G\html\$lang"; $fB = Join-Path $dirB 'busqueda.json'
+    if (-not (Test-Path $fB)) { Mal "falta SEVEN-G/html/$lang/busqueda.json (pwsh -File SEVEN-G/build/busqueda.ps1)"; $malBus++; continue }
+    $idxB = Get-Content $fB -Raw -Encoding utf8 | ConvertFrom-Json
+    $enIndice = @{}; foreach ($pg in $idxB.paginas) { $enIndice[$pg.h] = $pg }
+    foreach ($met in 'SEVEN-G', 'SPHERES', 'SPAD') {
+      $dirMet = Join-Path $repo "$met\html\$lang"
+      foreach ($f in (Get-ChildItem $dirMet -Recurse -File -Filter *.html | Where-Object { $_.FullName -notmatch '[\\/]_' })) {
+        $t = [IO.File]::ReadAllText($f.FullName)
+        if (-not $t.Contains('<main class="contenido"')) { continue }    # páginas sin la barra de los documentos (entrada ligera)
+        $relB = [IO.Path]::GetRelativePath($dirB, $f.FullName).Replace('\', '/')
+        if (-not ($t.Contains('id="buscar-ambito"') -and $t.Contains('value="todas"') -and $t.Contains('busqueda.json'))) { Mal "sin selector de ámbito del buscador: $([IO.Path]::GetRelativePath($repo, $f.FullName))"; $malBus++ }
+        if (-not $enIndice.ContainsKey($relB)) { Mal "busqueda.json [$lang]: no indexa $met/html/$lang/$([IO.Path]::GetRelativePath($dirMet, $f.FullName).Replace('\', '/'))"; $malBus++; continue }
+        foreach ($sec in $enIndice[$relB].s) { if ($sec.id -and -not $t.Contains("id=""$($sec.id)""")) { Mal "busqueda.json [$lang]: ancla inexistente $relB#$($sec.id)"; $malBus++ } }
+        $enIndice.Remove($relB)
+      }
+    }
+    foreach ($h in @($enIndice.Keys)) { Mal "busqueda.json [$lang]: indexa una página inexistente o no publicable: $h"; $malBus++ }
+    $tCodB = [IO.File]::ReadAllText((Join-Path $dirB 'codigos.js'))
+    if (-not $tCodB.Contains($(if ($lang -eq 'en') { 'Document finder' } else { 'Buscador de documentos' }))) { Mal "codigos.js [$lang]: el control de códigos no se rotula «Buscador de documentos» (D105; pwsh -File SEVEN-G/build/codigos.ps1)"; $malBus++ }
+    $m01B = [IO.File]::ReadAllText((Get-ChildItem (Join-Path $repo "SEVEN-G\mds\$lang\curso") -Filter 'M01_*.md' | Select-Object -First 1).FullName)
+    foreach ($req in $(if ($lang -eq 'en') { @('Document finder', 'Whole site') } else { @('Buscador de documentos', 'Todo el sitio') })) { if (-not $m01B.Contains($req)) { Mal "M01 [$lang]: no explica «$req» (D105)"; $malBus++ } }
+  }
+  if (-not $malBus) { Ok 'índice de búsqueda (ES/EN) con todas las páginas publicadas y sus anclas, selector de ámbito en cada página, control «Buscador de documentos» y M01 al día' }
+
+  # ---- 21. Excel del caso de T06 (D106): catálogo de riesgos tipo alineado con el documento 33 §9 en ES y EN, generador y botones en la
+  # plantilla de T01 y descripción en README, documentos 03 y 33, P12, P13 y mapa de datos. El libro generado se valida en la prueba de humo (7).
+  # (La sección 20 la ocupa el buscador de documentos; los números de sección no se reutilizan.)
+  Write-Host '21. Excel del caso de T06: catálogo de riesgos tipo, generador y documentación'
+  $malXl = 0
+  $catR = Join-Path $t01 'catalogo_riesgos.json'
+  if (-not (Test-Path $catR)) { Mal 'falta T01_registro_iniciativas/catalogo_riesgos.json'; $malXl++ }
+  else {
+    $cr = Get-Content $catR -Raw -Encoding utf8 | ConvertFrom-Json -Depth 16
+    $cod33 = @{}
+    foreach ($lang in 'es', 'en') {
+      $t33 = [IO.File]::ReadAllText((Join-Path $repo "SEVEN-G\mds\$lang\33_SEVEN-G_Metodologia_de_riesgos_de_IA.md"))
+      $cod33[$lang] = @([regex]::Matches($t33, '(?m)^\| \*\*(RT-[A-Z]{3}-\d{2})\*\* \| \*\*') | ForEach-Object { $_.Groups[1].Value } | Sort-Object)
+      if (-not $t33.Contains($(if ($lang -eq 'es') { 'Excel del caso' } else { 'Excel of the use case' }))) { Mal "documento 33 [$lang]: no describe el Excel del caso de T06 (§9 y §13)"; $malXl++ }
+    }
+    $codCat = @($cr.riesgos.c | Sort-Object)
+    if (Compare-Object $cod33.es $cod33.en) { Mal 'documento 33: los códigos RT del catálogo §9 no coinciden entre ES y EN'; $malXl++ }
+    if (Compare-Object $cod33.es $codCat) { Mal "catalogo_riesgos.json: sus códigos no coinciden con el documento 33 §9: $((Compare-Object $cod33.es $codCat | ForEach-Object { "$($_.InputObject) $($_.SideIndicator)" }) -join ', ')"; $malXl++ }
+    $malEnt = @()
+    foreach ($r in $cr.riesgos) {
+      $ap = $r.aplica
+      if (-not (($ap -is [bool] -and $ap) -or ($ap -is [string] -and $ap -eq 'cartera') -or ($ap -is [array]))) { $malEnt += "$($r.c) aplica" }
+      if ($r.tc -notin 'preventivo', 'detectivo', 'correctivo', 'transferencia') { $malEnt += "$($r.c) tc" }
+      if ($r.red -notin 'probabilidad', 'impacto', 'ambos') { $malEnt += "$($r.c) red" }
+      if ($r.act -notin 'patrocinador', 'producto', 'tecnico', 'operacion', 'riesgos', 'auditor') { $malEnt += "$($r.c) act" }
+      foreach ($l in 'es', 'en') { if (-not $r.mit.$l -or -not $r.cont.$l.dis -or -not $r.cont.$l.acc) { $malEnt += "$($r.c) $l" } }
+    }
+    if ($malEnt) { Mal "catalogo_riesgos.json: entradas incompletas o no válidas: $($malEnt -join ' · ')"; $malXl++ }
+    $plT01 = [IO.File]::ReadAllText((Join-Path $t01 '_fuentes\registro.plantilla.html'))
+    foreach ($req in '__CATALOGO_RIESGOS__', 'data-acc="rg-xlsx"', 'data-acc="rg-xlsx-elegir"', 'function xlsxCaso(', 'window.T06_XLSX', 'function perfilRiesgoIni(', 'function rtAplica(') { if (-not $plT01.Contains($req)) { Mal "T01: la plantilla no lleva «$req» (Excel del caso)"; $malXl++ } }
+    $genT01 = [IO.File]::ReadAllText((Join-Path $t01 'registro.html'))
+    if ($genT01.Contains('__CATALOGO_RIESGOS__') -or -not $genT01.Contains('id="catalogo-riesgos"')) { Mal 'T01: registro.html no lleva el catálogo de riesgos tipo incrustado (regenerar con build_registro.ps1)'; $malXl++ }
+    foreach ($par in @(@('README.md', 'Excel del caso'), @('README_en.md', 'Excel of the use case'))) { if (-not [IO.File]::ReadAllText((Join-Path $t01 $par[0])).Contains($par[1])) { Mal "T01/$($par[0]): no describe el Excel del caso"; $malXl++ } }
+    foreach ($lang in 'es', 'en') {
+      $frase = if ($lang -eq 'es') { 'Excel del caso' } else { 'Excel of the use case' }
+      $d03 = [IO.File]::ReadAllText((Get-ChildItem (Join-Path $repo "SEVEN-G\mds\$lang") -Filter '03_*.md' | Select-Object -First 1).FullName)
+      $sec41 = [regex]::Match($d03, '(?s)### 4\.1 .*?(?=\n## )').Value
+      if ($sec41 -notmatch '(?m)^\| \*\*T06\*\* \|.*catalogo_riesgos\.json') { Mal "documento 03 [$lang] §4.1: la fila de T06 no describe qué lee para el Excel del caso ni su catálogo"; $malXl++ }
+      if ($d03 -notmatch "(?m)^\| \*\*T06\*\* \| [^|]+ \| [^|]*$([regex]::Escape($frase))") { Mal "documento 03 [$lang]: la fila de T06 del catálogo no menciona el Excel del caso"; $malXl++ }
+      foreach ($p in 'P12_SEVEN-G_Matriz_y_registro_de_riesgos.md', 'P13_SEVEN-G_Plan_de_mitigacion_y_contingencia.md') { if (-not [IO.File]::ReadAllText((Join-Path $repo "SEVEN-G\mds\$lang\plantillas\$p")).Contains($frase)) { Mal "$p [$lang]: no remite al Excel del caso de T06"; $malXl++ } }
+    }
+    $mapaX = Get-Content (Join-Path $repo 'SEVEN-G\herramientas\mapa_datos.json') -Raw -Encoding utf8 | ConvertFrom-Json -Depth 16
+    if (-not $mapaX.herramientas.T06.lee_de_t01 -or -not $mapaX.herramientas.T06.genera -or -not $mapaX.herramientas.T06.catalogo) { Mal 'mapa_datos.json: T06 debe declarar lee_de_t01, genera y catalogo (Excel del caso)'; $malXl++ }
+    if (-not $malXl) { Ok "Excel del caso de T06: catálogo de $($cr.riesgos.Count) riesgos tipo alineado con el documento 33 §9 (ES/EN), generador en T01 y documentación al día" }
+  }
+
+  # ---- 22. datos en local e instalación propia (D104): el documento 95 existe en ES y EN, apunta al repositorio público y a su ZIP, y lo enlazan
   # la portada, la entrada, el README y el principio 6 del documento 03; los recuentos de documentos escritos a mano coinciden con la biblioteca
-  Write-Host '19. Datos en local e instalación propia'
+  Write-Host '22. Datos en local e instalación propia'
   $malInst = 0
   $repoUrl = 'https://github.com/seachad/AI_CONSULTING'
   foreach ($lang in 'es', 'en') {
     $d95 = Get-ChildItem (Join-Path $repo "SEVEN-G\mds\$lang") -Filter '95_*.md' | Select-Object -First 1
-    if (-not $d95) { Mal "falta el documento 95 [$lang] (D103)"; $malInst++; continue }
+    if (-not $d95) { Mal "falta el documento 95 [$lang] (D104)"; $malInst++; continue }
     $t95 = [IO.File]::ReadAllText($d95.FullName)
     foreach ($req in $repoUrl, "$repoUrl/archive/refs/heads/main.zip", 'https://seachad.github.io/AI_CONSULTING/', 'seveng-t01-datos-v1', 'publicar.ps1', 'build_registro.ps1', 't01_a_panel.py', 'pages.yml', 'analitica.json') {
       if (-not $t95.Contains($req)) { Mal "documento 95 [$lang]: falta «$req»"; $malInst++ }
@@ -809,35 +995,6 @@ try {
   if (-not ($readme.Contains('95_SEVEN-G_Datos_en_local_e_instalacion_propia.html') -and $readme.Contains("$repoUrl/archive/refs/heads/main.zip"))) { Mal 'README.md: no enlaza el documento 95 ni la descarga del repositorio'; $malInst++ }
   if ($readme -match '(?i)repositorio es privado') { Mal 'README.md: sigue diciendo que el repositorio es privado'; $malInst++ }
   if (-not $malInst) { Ok "documento 95 (ES/EN) con el repositorio y su ZIP, enlazado desde la portada, la entrada, el README y el documento 03; $nDocs documentos en las cifras de portada y entrada" }
-
-  # ---- 20. buscador de términos en la página o en todas las páginas (D104): índice de texto generado (ES/EN) que cubre todas las páginas
-  # publicadas con sus secciones y anclas; selector de ámbito en cada página generada; el control de códigos se rotula «Buscador de documentos»
-  Write-Host '20. Buscador de términos en todas las páginas'
-  $malBus = 0
-  foreach ($lang in 'es', 'en') {
-    $dirB = Join-Path $repo "SEVEN-G\html\$lang"; $fB = Join-Path $dirB 'busqueda.json'
-    if (-not (Test-Path $fB)) { Mal "falta SEVEN-G/html/$lang/busqueda.json (pwsh -File SEVEN-G/build/busqueda.ps1)"; $malBus++; continue }
-    $idxB = Get-Content $fB -Raw -Encoding utf8 | ConvertFrom-Json
-    $enIndice = @{}; foreach ($pg in $idxB.paginas) { $enIndice[$pg.h] = $pg }
-    foreach ($met in 'SEVEN-G', 'SPHERES', 'SPAD') {
-      $dirMet = Join-Path $repo "$met\html\$lang"
-      foreach ($f in (Get-ChildItem $dirMet -Recurse -File -Filter *.html | Where-Object { $_.FullName -notmatch '[\\/]_' })) {
-        $t = [IO.File]::ReadAllText($f.FullName)
-        if (-not $t.Contains('<main class="contenido"')) { continue }    # páginas sin la barra de los documentos (entrada ligera)
-        $relB = [IO.Path]::GetRelativePath($dirB, $f.FullName).Replace('\', '/')
-        if (-not ($t.Contains('id="buscar-ambito"') -and $t.Contains('value="todas"') -and $t.Contains('busqueda.json'))) { Mal "sin selector de ámbito del buscador: $([IO.Path]::GetRelativePath($repo, $f.FullName))"; $malBus++ }
-        if (-not $enIndice.ContainsKey($relB)) { Mal "busqueda.json [$lang]: no indexa $met/html/$lang/$([IO.Path]::GetRelativePath($dirMet, $f.FullName).Replace('\', '/'))"; $malBus++; continue }
-        foreach ($sec in $enIndice[$relB].s) { if ($sec.id -and -not $t.Contains("id=""$($sec.id)""")) { Mal "busqueda.json [$lang]: ancla inexistente $relB#$($sec.id)"; $malBus++ } }
-        $enIndice.Remove($relB)
-      }
-    }
-    foreach ($h in @($enIndice.Keys)) { Mal "busqueda.json [$lang]: indexa una página inexistente o no publicable: $h"; $malBus++ }
-    $tCodB = [IO.File]::ReadAllText((Join-Path $dirB 'codigos.js'))
-    if (-not $tCodB.Contains($(if ($lang -eq 'en') { 'Document finder' } else { 'Buscador de documentos' }))) { Mal "codigos.js [$lang]: el control de códigos no se rotula «Buscador de documentos» (D104; pwsh -File SEVEN-G/build/codigos.ps1)"; $malBus++ }
-    $m01B = [IO.File]::ReadAllText((Get-ChildItem (Join-Path $repo "SEVEN-G\mds\$lang\curso") -Filter 'M01_*.md' | Select-Object -First 1).FullName)
-    foreach ($req in $(if ($lang -eq 'en') { @('Document finder', 'Whole site') } else { @('Buscador de documentos', 'Todo el sitio') })) { if (-not $m01B.Contains($req)) { Mal "M01 [$lang]: no explica «$req» (D104)"; $malBus++ } }
-  }
-  if (-not $malBus) { Ok 'índice de búsqueda (ES/EN) con todas las páginas publicadas y sus anclas, selector de ámbito en cada página, control «Buscador de documentos» y M01 al día' }
 }
 finally { Remove-Item $tmp -Recurse -Force -Confirm:$false -ErrorAction SilentlyContinue }
 

@@ -41,9 +41,8 @@ The site is a **set of static files**: HTML pages, PDFs, Word templates and pres
 | Part | What it is | Where it runs | What it stores and where |
 |---|---|---|---|
 | Documents, templates and course | HTML pages generated from Markdown, with their PDF; templates also in Word. | In the browser; PDFs and Word files are downloaded. | Nothing. Only reading preferences (theme, text size, history of pages visited) in the browser's local storage. |
-| Tools T01, T11, T14 and T15 | **A single HTML file** each, with the complete application and some fictitious demonstration data embedded. | Entirely in the browser. They need no server: they also work when the file is opened from disk. | **The data you enter, in your browser's local storage** (section 3). They export and import JSON and CSV. |
-| Board dashboard generator (T17) | A Python program that reads the JSON exported by T01 and **generates** the full dashboard, the mobile dashboard and the recommendations register as HTML files. | On the computer of whoever runs it, with Python. It is not a web application. | The files it generates, in the folder you indicate. Those files **contain the data**. |
-| Generated board dashboards | HTML files with the data embedded, meant to be sent or hosted. | In the browser; no server. | Nothing new: they show what they carry inside. |
+| Tools T01, T11, T14 and T15 | **A single HTML file** each, with the complete application and some fictitious demonstration data embedded. | Entirely in the browser. They need no server: they also work when the file is opened from disk. | **The data you enter, wherever you choose with the "Datos: …" button in their bar**: only in your browser (default), in a JSON file on your computer or, in a copy of the site on the company's server, in the `herramientas/datos/` folder (section 3). They export and import JSON and CSV. |
+| Board dashboard (T17) | The full dashboard, the mobile dashboard and the recommendations register, generated from the T01 register. They carry the connector embedded in JavaScript and **regenerate themselves in the browser** from the register stored in it or from `herramientas/datos/T01_registro.json` in the company's copy. The Python generator (`t01_a_panel.py`) is optional: it produces the same dashboards as static files to send. | In the browser; the Python generator, on the computer of whoever runs it. | Nothing new in the browser. The files generated with Python **contain the data**. |
 | Community page | Issues and improvement requests for the framework, with votes. | In the browser; **it is the only page that sends anything**: the text you write, to a public GitHub repository through an intermediary. | The identifier you choose, in your browser. What is sent becomes public on GitHub (section 3.3). |
 | Code index ("Document finder", "Cited here") | A generated JavaScript file with the destinations of every code in the framework. | In the browser. | Nothing. |
 | Term search index ("Whole site" in the bar's search box) | A generated JSON file with the text of every published page, which the browser downloads only the first time you choose to search across the whole site. | In the browser: the search runs there. | Nothing. |
@@ -56,12 +55,14 @@ flowchart LR
   L --> N
   N -->|Export| J["JSON / CSV<br>in the folder you choose"]
   J -->|Import| N
-  J --> T["T17 (Python, on your computer)"]
-  T --> P["HTML dashboards<br>with the data inside"]
+  J --> D["herramientas/datos/<br>in the company's copy<br>(internal server)"]
+  D --> N
+  J --> T["T17 in Python (optional,<br>on your computer)"]
+  T --> P["Static HTML dashboards<br>with the data inside"]
   N -. nothing .-> S
   classDef fuera fill:#0d7680,stroke:#0d7680,color:#ffffff
   classDef local fill:#f2dfce,stroke:#807973,color:#1a1817
-  class L,J,P local
+  class L,J,D,P local
 ```
 
 > **Why it matters.** A tool that works without a server cannot lose data on the server, requires no subscription and does not force the company to trust a third party with the custody of its initiative portfolio. In exchange, custody is yours: if the data is only in a browser, the backup is made by whoever enters it (section 3.4).
@@ -72,7 +73,17 @@ flowchart LR
 
 ### 3.1 In the browser, not on the server
 
-When you open a tool for the first time, the browser copies the demonstration data into its **local storage** (*localStorage*), an area each browser reserves per site on the computer itself. From then on, every change you make —a new initiative, a gate decision, a risk, a calculation— is saved there, instantly and without anything travelling over the network. Each tool uses its own key:
+When you open a tool for the first time, the browser copies the demonstration data into its **local storage** (*localStorage*), an area each browser reserves per site on the computer itself. From then on, every change you make —a new initiative, a gate decision, a risk, a calculation— is saved there, instantly and without anything travelling over the network.
+
+That is the first of three possible places. The **"Datos: …"** button in the bar of each tool says which one is in use and opens the **"Dónde están mis datos"** (Where is my data) dialog to change it (document 03 §2.1):
+
+| Where | What for | What to know |
+|---|---|---|
+| **Only in the browser** (default) | Trying it out with your own data without installing anything. | What this section describes: one browser, one computer; lost when the browser is cleared. |
+| **A JSON file on your computer** | Serious work by one person or a small team. | The tool rewrites the file on every change and reads it again when opened (Microsoft Edge or Google Chrome). Same format as "Export"; it can live in a synchronised folder of the company. |
+| **The copy of the site on the company's server** | So that the whole company sees the same version of the portfolio. | The copy carries the `herramientas/datos/` folder with each tool's file, loaded instead of the demonstration data (section 4.3). Changes are still saved in each browser or in a file; publishing a new version means replacing the file. |
+
+In the browser, each tool uses its own key:
 
 | Tool | Local storage key |
 |---|---|
@@ -89,7 +100,7 @@ The server hosting the site has no way of receiving that data: there is no entry
 
 | Consequence | Explanation |
 |---|---|
-| **The data belongs to one browser and one computer.** | What you enter in Edge is not seen by Chrome, and what you enter on your laptop does not appear on another computer. There is no synchronisation, because there is no server to synchronise. To take the register to another computer, export and import it (section 3.4). |
+| **The data belongs to one browser and one computer.** | What you enter in Edge is not seen by Chrome, and what you enter on your laptop does not appear on another computer. There is no synchronisation, because there is no server to synchronise. To take the register to another computer, export and import it (section 3.4), keep it in a file on your computer or use the company's copy (section 3.1). |
 | **It depends on the web origin.** | Local storage is separated by *origin* (protocol, domain and port). The register saved at `https://seachad.github.io` is different from the one saved in your own installation, and a file opened from disk (`file://`) has its own isolated storage. That is why each client needs its own origin (section 4.5). |
 | **Clearing browser data deletes it.** | If you clear history and site data, or use a private window, the data disappears. The only durable copy is the exported JSON. |
 | **Several people, several browsers.** | The tools are single-user per browser. A team working on the same register does so in turns with the JSON: one person exports, another imports; T01 can import several files and **merge them by code** (for example, one register per area). |
@@ -110,6 +121,8 @@ So that the statement above can be verified, this is the complete list of what t
 Nothing else. There are no accounts, contact forms, newsletters or tracking pixels, and the site never contacts anyone on its own initiative (document 04 §6.2).
 
 ### 3.4 Backup and moving between computers
+
+The most convenient way, in Microsoft Edge or Google Chrome, is to choose **"A JSON file on your computer"** in the "Where is my data" dialog: the tool saves every change to that file and reads it again when opened, so the backup makes itself and the file can live in a synchronised folder of the company. In any browser, and to take the data to another computer:
 
 1. In the tool, go to **Data → Export → Full JSON** (in T01) or the equivalent export button (T11, T14, T15). A JSON file with all the content is downloaded.
 2. Save it where the company keeps its documents: it is the backup, the means to share it and the input of the dashboard generator (T17).
@@ -173,6 +186,7 @@ This is the option for those who want the site on their server without changing 
 3. Serve it with any static file server: IIS, nginx, Apache, static storage in the cloud, the corporate intranet or GitHub Pages of a fork (section 4.7). It requires no module, database or special configuration; the `.html`, `.js`, `.json`, `.pdf`, `.docx` and `.pptx` files should be served with their usual content types.
 4. **Serve it over `http` or `https`, not as loose files.** Opening the HTML files by double-clicking works, but the browser isolates the local storage of each file: the theme is not shared, T11/T14/T15 do not see the T01 register, the full dashboard does not hand over to the mobile one and the code index does not load. For a local test, `pwsh -File SEVEN-G/build/servidor.ps1` and open `http://localhost:8765/`.
 5. Check the home page, a document, the T01 register and the example dashboard. Links are relative: the site can live at the root of the domain or in a subfolder.
+6. So that the whole company sees the same portfolio, create in the copy the folder `SEVEN-G/herramientas/datos/` with the JSON files exported by the tools you use: `T01_registro.json`, `T11_calculadora.json`, `T14_indice.json` and `T15_madurez.json`. Served over http, the tools load them instead of the demonstration data and **the board dashboard regenerates itself in the browser** from `T01_registro.json` (`datos_t01` key of `config_panel.json`, already set in the example). Publishing a new version of the portfolio means replacing the file (document 03 §2.1).
 
 What happens with your own installation compared with the public site:
 
@@ -189,7 +203,7 @@ To change texts, add the consultancy's branding, translate or adapt templates, y
 | Documents, templates, course, library index and code index (HTML, PDF, Word) | PowerShell 7 and Microsoft Edge. | `pwsh -File SEVEN-G/build/build.ps1` (everything) · `-Metodologias SEVEN-G` · `-Filter '03_*.md'` (one document) · `-SinPdf` |
 | Courses as presentations (PPTX) and their PDF | PowerShell 7; PowerPoint only to export the PDF (optional). | Run by `build.ps1`. |
 | Tools T01, T11, T14 and T15 | PowerShell 7 (Edge for the T14 and T15 calculations from T01). | `pwsh -File SEVEN-G/herramientas/T01_registro_iniciativas/build_registro.ps1` and the equivalent `build_*.ps1` scripts. |
-| Dashboard generator (T17) | Python 3.11 or later with `uv`. | `uv run python t01_a_panel.py --t01 <register.json> --salida <folder>` from `SEVEN-G/herramientas/T17_panel_consejo`. |
+| Dashboard generator (T17), only to publish the dashboard as static files (for example, to send them): on the site, the dashboard regenerates itself in the browser. | Python 3.11 or later with `uv` (optional). | `uv run python t01_a_panel.py --t01 <register.json> --salida <folder>` from `SEVEN-G/herramientas/T17_panel_consejo`. |
 | Coherence checks before publishing | PowerShell 7, Edge; `uv` to check the dashboard. | `pwsh -File SEVEN-G/build/verificar_coherencia.ps1` |
 
 Generator rules worth knowing: the Markdown is the source of truth and the HTML, PDF and Word files are never edited by hand; every document exists in Spanish and English; the Markdown conventions (cover, figures, Mermaid, "The essentials" box) are in the header of `build.ps1`; and every derivative work must indicate the changes and keep the legal notice (document 93 §8 and §11.9).
@@ -203,8 +217,8 @@ Checklist per client:
 | Step | What to do | Where |
 |---|---|---|
 | 1 | One origin per client: its own subdomain, domain or port. | Web server. |
-| 2 | A register that starts with the client's data and not with the demonstration: build `registro.html` from the client's JSON. With `meta.datos_ilustrativos` absent or `false`, the "example initiatives" band disappears. | `pwsh -File build_registro.ps1 -Datos <client.json> -Salida <registro.html>` in `SEVEN-G/herramientas/T01_registro_iniciativas`. |
-| 3 | The client's board dashboard: generate it with T17 from the exported JSON, with the client's name and acronym and its own copy of `config_panel.json` (thresholds, lifecycle, links back to the site, `codigos`). | `uv run python t01_a_panel.py --t01 <client.json> --salida <folder> --organizacion "<Client>" --sigla <CA>` |
+| 2 | A register that starts with the client's data and not with the demonstration: in the client's copy, the folder `SEVEN-G/herramientas/datos/` with its exported `T01_registro.json` (and, if used, `T11_calculadora.json`, `T14_indice.json` and `T15_madurez.json`); the tools load them instead of the demonstration. Alternative without a data folder: build `registro.html` from the client's JSON; with `meta.datos_ilustrativos` absent or `false` the "example initiatives" band disappears. | `datos/` folder of the copy, or `pwsh -File build_registro.ps1 -Datos <client.json> -Salida <registro.html>` in `SEVEN-G/herramientas/T01_registro_iniciativas`. |
+| 3 | The client's board dashboard regenerates itself in the browser from that `T01_registro.json` (`datos_t01` key of `config_panel.json`) or from the register stored in the browser. Only if you want to publish it as static files to send, generate it with T17 in Python, with the client's name and acronym and its own copy of `config_panel.json` (thresholds, lifecycle, links back to the site, `codigos`). | `uv run python t01_a_panel.py --t01 <client.json> --salida <folder> --organizacion "<Client>" --sigla <CA>` |
 | 4 | The client's data, outside the repository and the published folder: the exported JSON files and the generated dashboards are kept in the client's or the consultancy's document repository, with its access control. | Document management. |
 | 5 | Community and measurement: decide whether the community page keeps pointing to the public project (recommended) and do not activate any measurement of the client's users without their consent (section 4.3). | `comunidad/index.html`, `analitica.json`. |
 | 6 | Branding and credit: you may add the consultancy's branding and its adaptation, indicating the changes and keeping the authorship and the legal notice (document 93 §4 and §8); you may not present the installation as certified or as an "official partner" (document 91 §6.2). | Home page and adapted documents. |
@@ -237,7 +251,7 @@ A partner wanting to publish its adapted version can fork the repository on GitH
 | What about GitHub, which hosts the public site? | GitHub delivers the site's files and logs requests like any web server; it does not receive the content of the tools, which never leaves the browser. |
 | Is the data encrypted in the browser? | Local storage is kept in the browser profile, with the operating system's protections (disk encryption, user session). It adds no encryption of its own; that is why the backup and access control to the computer are yours. |
 | Can I use the tools offline? | Yes. Once the HTML file is downloaded it works without a network. Served from a local server (`servidor.ps1`) as well. |
-| How does a team work on the same register? | With the JSON: export, share through the company's usual channel and import (replace or merge by code). There is no simultaneous editing. |
+| How does a team work on the same register? | With the JSON: a file on your computer in a synchronised folder (every change is saved to it), the `herramientas/datos/` folder of the company's copy, which everyone sees, or export and import (replace or merge by code). There is no simultaneous editing. |
 | Can I put the site on an intranet with no internet connection? | Yes, with option A. Only the external fonts will stop loading (there are fallback fonts) and the community page will not be able to send or read issues. |
 | What happens if the author stops publishing the site? | What you downloaded keeps working and remains under the same licences: published versions cannot be revoked (document 93 §10). |
 
@@ -249,7 +263,7 @@ A partner wanting to publish its adapted version can fork the repository on GitH
 |---|---|---|
 | T01 | Initiative register | Stores the data in the browser; exports and imports the full JSON; build with your own data (`build_registro.ps1 -Datos`). |
 | T11, T14, T15 | Value calculator, transformation index and maturity diagnosis | Same operation; they read the T01 register of the same browser. |
-| T17 | AI dashboard for the board | Local generator in Python; its files contain the data. |
+| T17 | AI dashboard for the board | Regenerates itself in the browser from the T01 register; the Python generator is optional and its files contain the data. |
 | P70 | Proposal and engagement letter | Where a consultancy records where the client's installation and data are hosted. |
 
 ---
@@ -258,7 +272,7 @@ A partner wanting to publish its adapted version can fork the repository on GitH
 
 | Document | Relationship |
 |---|---|
-| **03 · Tools and initiative register** | Tool design principles (§2: no server, the company's data, navigable codes) and data map between tools (§4.1). |
+| **03 · Tools and initiative register** | Tool design principles (§2: no server, the company's data, navigable codes), where the tools' data lives and how to set up the company's copy (§2.1) and data map between tools (§4.1). |
 | **04 · Where SEVEN-G comes from and why it is open** | What the site does and does not do with those who visit it (§6.2) and the framework's version history (§2.3). |
 | **90 · Implementation guide** | Prerequisites and a company's 90-day plan. |
 | **91 · Guide for consultants** | Use of the framework by third parties, independence and use of the name. |

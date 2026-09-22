@@ -173,6 +173,7 @@ dialog::backdrop{background:rgba(26,24,23,.45)}
 <input type="file" id="f-t11" accept=".json,application/json" class="oculto" tabindex="-1" aria-hidden="true">
 <input type="file" id="f-t01" accept=".json,application/json" class="oculto" tabindex="-1" aria-hidden="true">
 <script type="application/json" id="datos-demo">__DATOS_DEMO__</script>
+<script>__DATOS_LOCALES__</script>
 <script>
 'use strict';
 /* =========================================================
@@ -198,7 +199,7 @@ es:{
  doc40_href:'../../html/es/40_SEVEN-G_Reglas_de_medicion_del_valor.html', doc42_href:'../../html/es/42_SEVEN-G_Costes_de_IA.html',
  v_hipotesis:'Hipótesis de valor (T11)', v_costes:'Costes por caso (T13)', v_decision:'Hoja de decisión', v_parametros:'Parámetros', v_datos:'Datos',
  demo:'Datos ilustrativos y ficticios, coherentes con el registro de demostración de T01.',
- pie_lic:'Código MIT · Contenidos CC BY 4.0 · © 2026 Fernando García Varela · Metodología SEVEN-G', pie_priv:'Los datos se guardan solo en este navegador. No se envía nada a terceros.',
+ pie_lic:'Código MIT · Contenidos CC BY 4.0 · © 2026 Fernando García Varela · Metodología SEVEN-G', pie_priv:'Los datos se guardan solo en este navegador o, si así se elige, en un fichero de su equipo. No se envía nada a terceros.',
  legal_tit:'Aviso legal y exención de responsabilidad', legal_link:'Aviso legal', legal_ok:'Entendido',
  legal_txt:'SEVEN-G y esta herramienta se ofrecen «tal cual» y con fines exclusivamente informativos. No constituyen asesoramiento jurídico, regulatorio, financiero, contable ni profesional, ni garantizan el cumplimiento de ninguna norma. La calculadora aplica las fórmulas del marco a los datos que se introducen; no decide: el criterio económico, el horizonte y la tasa los fija y los aplica la propia compañía. Cada organización que use la herramienta es la única responsable de sus datos, de las decisiones que adopte con ellos, de identificar la normativa que le aplica y de certificar su propio cumplimiento regulatorio. El autor no asume responsabilidad alguna por el uso de la herramienta. Los datos de demostración son ficticios.',
  caso:'Caso', nuevo:'Nuevo caso', duplicar:'Duplicar', eliminar:'Eliminar', imprimir:'Imprimir hoja de decisión', desde_t01:'Nuevo desde un registro T01…',
@@ -288,7 +289,7 @@ en:{
  doc40_href:'../../html/en/40_SEVEN-G_Reglas_de_medicion_del_valor.html', doc42_href:'../../html/en/42_SEVEN-G_Costes_de_IA.html',
  v_hipotesis:'Value hypothesis (T11)', v_costes:'Cost per use case (T13)', v_decision:'Decision sheet', v_parametros:'Parameters', v_datos:'Data',
  demo:'Illustrative and fictitious data, consistent with the T01 demonstration register.',
- pie_lic:'MIT code · CC BY 4.0 content · © 2026 Fernando García Varela · SEVEN-G methodology', pie_priv:'Data is stored only in this browser. Nothing is sent to third parties.',
+ pie_lic:'MIT code · CC BY 4.0 content · © 2026 Fernando García Varela · SEVEN-G methodology', pie_priv:'Data is stored only in this browser or, if you choose so, in a file on your computer. Nothing is sent to third parties.',
  legal_tit:'Legal notice and disclaimer', legal_link:'Legal notice', legal_ok:'Understood',
  legal_txt:'SEVEN-G and this tool are provided "as is" and for information purposes only. They do not constitute legal, regulatory, financial, accounting or professional advice, nor do they guarantee compliance with any regulation. The calculator applies the framework formulas to the data entered; it does not decide: the economic criterion, the horizon and the rate are set and applied by the company itself. Each organisation using the tool is solely responsible for its data, for the decisions it takes with it, for identifying the regulations that apply to it and for certifying its own regulatory compliance. The author accepts no liability for the use of the tool. Demonstration data is fictitious.',
  caso:'Use case', nuevo:'New use case', duplicar:'Duplicate', eliminar:'Delete', imprimir:'Print decision sheet', desde_t01:'New from a T01 register…',
@@ -395,12 +396,12 @@ const PARAMS = [
 ];
 
 /* ---------------- estado y utilidades ---------------- */
-let D = null, UI = { lang:'es', tema:'auto', sel:null, par:null }, lang = 'es', T01_PEND = null;
+let D = null, UI = { lang:'es', tema:'auto', sel:null, par:null }, lang = 'es', T01_PEND = null, CARGA_DEMO = false;
 function t(k, v){ let s = (TX[lang] && TX[lang][k]) ?? TX.es[k] ?? k; if(v) for(const x in v) s = s.split('{'+x+'}').join(v[x]); return s; }
 function esc(s){ return String(s ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c])); }
 function clon(o){ return JSON.parse(JSON.stringify(o)); }
 function toast(m){ const e=document.getElementById('toast'); e.textContent=m; e.classList.add('ver'); clearTimeout(toast._t); toast._t=setTimeout(()=>e.classList.remove('ver'),3200); }
-function guardar(){ if(!lsSet(LS_DATOS, JSON.stringify(D))) toast(t('no_guardado')); lsSet(LS_UI, JSON.stringify(UI)); }
+function guardar(){ if(!lsSet(LS_DATOS, JSON.stringify(D))) toast(t('no_guardado')); lsSet(LS_UI, JSON.stringify(UI)); if(window.SevengDatos) SevengDatos.guardado(); }
 function cargarDemo(){ return JSON.parse(DEMO_TXT); }
 function valido(x){ return x && typeof x==='object' && Array.isArray(x.parametros) && x.parametros.length && Array.isArray(x.casos); }
 function n(v){ return (v===null||v===undefined||v==='') ? null : (isFinite(Number(v)) ? Number(v) : null); }
@@ -869,6 +870,7 @@ function render(){
   const m = document.getElementById('principal');
   m.innerHTML = v==='costes' ? vistaCostes() : v==='decision' ? vistaDecision() : v==='parametros' ? vistaParametros() : v==='datos' ? vistaDatos() : vistaHipotesis();
   document.getElementById('pie').innerHTML = '<p class="pie-legal"><b>'+esc(t('legal_tit'))+'.</b> '+esc(t('legal_txt'))+'</p><span>'+esc(t('pie_lic'))+'</span><span>'+esc(t('pie_priv'))+'</span>';
+  if(window.SevengDatos) SevengDatos.refrescar();
   refrescarCeldas();
   if(foco){ const e = document.getElementById(foco); if(e && e!==document.body) try{ e.focus({preventScroll:true}); }catch(x){} }
 }
@@ -1039,17 +1041,18 @@ document.addEventListener('click', ev => {
   if(a==='guardar-t01' && c){ guardarEnT01(c); return; }
   if(a==='actualizar-t01' && c){ const reg = registroT01Local(); if(!reg){ toast(t('t01_local_no')); return; } actualizarDesdeT01(c, reg); return; }
   if(a==='importar'){ document.getElementById('f-t11').click(); return; }
-  if(a==='exportar'){ const x=clon(D); x.version_esquema=VERSION_ESQUEMA; x.herramienta='T11'; x.meta=Object.assign({}, x.meta, {exportado:hoy(), aviso_legal:TX.es.legal_txt}); x.casos.forEach((cc,i)=>{ cc.resultado = resultadoExport(D.casos[i]); });
-    descargar('t11_calculadora_valor_'+hoy()+'.json', JSON.stringify(x,null,2), 'application/json'); toast(t('ok_export')); return; }
+  if(a==='exportar'){ descargar('t11_calculadora_valor_'+hoy()+'.json', JSON.stringify(datosExportables(),null,2), 'application/json'); toast(t('ok_export')); return; }
   if(a==='exp-caso' && c){ const x = {herramienta:'T11', version_esquema:VERSION_ESQUEMA, exportado:hoy(), aviso_legal:TX.es.legal_txt, datos_ilustrativos:!!(D.meta||{}).datos_ilustrativos, caso:c.id, iniciativa:{id:iniT01(c), nombre:c.nombre, ambicion:c.ambicion, intensidad:c.intensidad, fase:c.fase}, resultado:resultadoExport(c),
       valores_t01:valoresT01(c), nota_valores_t01:'Importes esperados en el formato de valores[] de T01, sin código VAL: T01 lo asigna al darlos de alta. El valor esperado nunca se marca como validado.'};
     descargar('t11_resultado_'+c.id+'_'+hoy()+'.json', JSON.stringify(x,null,2), 'application/json'); toast(t('ok_caso_json')); return; }
   if(a==='exp-csv' && c){ descargar('t11_t13_'+c.id+'_'+hoy()+'.csv', csvCaso(c), 'text/csv;charset=utf-8'); toast(t('ok_csv')); return; }
-  if(a==='restaurar'){ if(!confirm(t('conf_restaurar'))) return; D=cargarDemo(); UI.sel=null; UI.par=null; guardar(); render(); return; }
+  if(a==='restaurar'){ if(!confirm(t('conf_restaurar'))) return; D=cargarDemo(); SevengDatos.reiniciar('demo'); UI.sel=null; UI.par=null; guardar(); render(); return; }
   if(a==='vaciar'){ if(!confirm(t('conf_vaciar'))) return; D.casos=[]; D.meta=Object.assign({}, D.meta, {datos_ilustrativos:false}); UI.sel=null; guardar(); render(); return; }
   if(a==='nueva-version'){ const nom=(document.getElementById('p-nueva').value||'').trim(); if(!nom){ document.getElementById('p-nueva').focus(); return; } if(D.parametros.some(x=>x.version===nom)){ toast(t('ya_existe')); return; }
     const base = parSel(), x = clon(base); Object.assign(x, {version:nom, fecha:hoy(), origen:'v'+base.version, aprobado_por:null, nota:''}); D.parametros.push(x); UI.par=nom; guardar(); render(); toast(t('ok_version',{v:nom})); return; }
 });
+/* el JSON completo de la calculadora, con los resultados calculados: lo que descarga «Exportar» y lo que se escribe en el fichero del equipo (D103) */
+function datosExportables(){ const x=clon(D); x.version_esquema=VERSION_ESQUEMA; x.herramienta='T11'; x.meta=Object.assign({}, x.meta, {exportado:hoy(), aviso_legal:TX.es.legal_txt}); x.casos.forEach((cc,i)=>{ cc.resultado = resultadoExport(D.casos[i]); }); return x; }
 function leerFichero(inp, fn){ const f=inp.files[0]; if(!f) return; const rd=new FileReader(); rd.onload=()=>{ let x=null; try{ x=JSON.parse(rd.result); }catch(e){} inp.value=''; fn(x); }; rd.readAsText(f); }
 document.getElementById('f-t11').addEventListener('change', ev => leerFichero(ev.target, x => {
   if(!valido(x)){ toast(t('err_json')); return; } if(!confirm(t('conf_importar'))) return;
@@ -1086,7 +1089,7 @@ window.addEventListener('hashchange', render);
 (function(){
   try{ const u = JSON.parse(lsGet(LS_UI)||'null'); if(u) UI = Object.assign(UI, u); }catch(e){}
   try{ const d = JSON.parse(lsGet(LS_DATOS)||'null'); if(valido(d)) D = d; }catch(e){}
-  if(!D) D = cargarDemo();
+  if(!D){ D = cargarDemo(); CARGA_DEMO = true; }
   const q = new URLSearchParams(location.search);
   if(q.get('lang')==='en' || q.get('lang')==='es') UI.lang = q.get('lang');
   else if(!lsGet(LS_UI) && /^en\b/i.test(navigator.language||'')) UI.lang = 'en';
@@ -1099,6 +1102,11 @@ window.addEventListener('hashchange', render);
     D = cargarDemo(); D.casos = []; D.meta = Object.assign({}, D.meta, {organizacion:(regLocal.meta||{}).organizacion||null, moneda:(regLocal.meta||{}).moneda||'EUR', datos_ilustrativos:false, nota:null}); UI.sel = null; guardar();
   }
   aplicarTema(); render();
+  /* D103: dónde viven los datos (este navegador, un fichero del equipo o la carpeta de datos de la copia de la compañía) */
+  SevengDatos.iniciar({codigo:'T11', ficheroServidor:'../datos/T11_calculadora.json', cargadoDeDemo:CARGA_DEMO,
+    obtener:()=>D, exportar:datosExportables, aplicar:d=>{ d.casos.forEach(c=>{ delete c.resultado; }); D=d; UI.sel=null; UI.par=null; guardar(); render(); }, validar:valido,
+    esDemo:()=>!!(D.meta||{}).datos_ilustrativos, idioma:()=>lang, aviso:toast, nombreFichero:()=>'t11_calculadora_valor_'+hoy()+'.json',
+    ayudaHref:()=>'../../html/'+lang+'/03_SEVEN-G_Herramientas_y_registro_de_iniciativas.html#'+(lang==='en'?'2-1-where-the-data-of-the-tools-lives':'2-1-donde-viven-los-datos-de-las-herramientas')});
   if(regLocal && q.get('desde')==='t01'){
     const id = q.get('iniciativa'), ya = id && D.casos.find(x=>x.iniciativa_t01===id || x.id===id);
     if(ya){ UI.sel = ya.id; location.hash = '#/hipotesis'; if(ya.iniciativa_t01) actualizarDesdeT01(ya, regLocal); else { guardar(); render(); } }

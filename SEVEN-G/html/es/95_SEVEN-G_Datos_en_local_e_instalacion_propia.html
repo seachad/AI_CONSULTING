@@ -210,7 +210,7 @@ tbody tr:hover td { background: color-mix(in srgb, var(--papel-2) 60%, transpare
 .buscar { display: flex; align-items: center; gap: 4px; }
 .barra input[type=search] { width: 120px; font-weight: 500; }
 .buscar-cuenta { min-width: 36px; font-size: 12px; color: var(--tinta-2); text-align: right; }
-/* buscador de términos en esta página o en todo el sitio (D104): selector de ámbito y lista de resultados del sitio; el «Buscador de
+/* buscador de términos en esta página o en todo el sitio (D105): selector de ámbito y lista de resultados del sitio; el «Buscador de
    documentos» (control de códigos, codigos.js) toma el ancho justo de su rótulo para que la barra quepa a 1120 px sin desplazamiento */
 .barra .ir-codigo input { width: 176px; padding: 6px 6px; }
 .barra .ir-codigo { gap: 4px; }
@@ -519,19 +519,13 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>Herramientas <a href="../../herramientas/T01_registro_iniciativas/registro.html" title="Herramienta T01 &#183; Registro de iniciativas">T01</a>, <a href="../../herramientas/T11_calculadora_valor/calculadora.html" title="Herramienta T11 &#183; Lienzo y calculadora de hip&#243;tesis de valor">T11</a>, <a href="../../herramientas/T14_indice_transformacion/indice.html" title="Herramienta T14 &#183; Calculadora del &#237;ndice de transformaci&#243;n">T14</a> y <a href="../../herramientas/T15_diagnostico_madurez/madurez.html" title="Herramienta T15 &#183; Diagn&#243;stico de madurez">T15</a></td>
 <td><strong>Un solo fichero HTML</strong> cada una, con la aplicación completa y unos datos de demostración ficticios incrustados.</td>
 <td>Íntegramente en el navegador. No necesitan servidor: funcionan también abriendo el fichero desde el disco.</td>
-<td><strong>Los datos que introduce, en el almacenamiento local de su navegador</strong> (sección 3). Exportan e importan JSON y CSV.</td>
+<td><strong>Los datos que introduce, donde usted elija con el botón «Datos: …» de su barra</strong>: solo en su navegador (por defecto), en un fichero JSON de su equipo o, en una copia del sitio en el servidor de la compañía, en la carpeta <code>herramientas/datos/</code> (sección 3). Exportan e importan JSON y CSV.</td>
 </tr>
 <tr>
-<td>Generador del panel del consejo (<a href="../../herramientas/T17_panel_consejo/index.html" title="Herramienta T17 &#183; Panel de IA para el consejo">T17</a>)</td>
-<td>Un programa en Python que lee el JSON exportado por <a href="../../herramientas/T01_registro_iniciativas/registro.html" title="Herramienta T01 &#183; Registro de iniciativas">T01</a> y <strong>genera</strong> el panel completo, el panel móvil y el registro de recomendaciones como ficheros HTML.</td>
-<td>En el ordenador de quien lo ejecuta, con Python. No es una aplicación web.</td>
-<td>Los ficheros que genera, en la carpeta que se le indique. Esos ficheros <strong>contienen los datos</strong>.</td>
-</tr>
-<tr>
-<td>Paneles del consejo generados</td>
-<td>Ficheros HTML con los datos incrustados, pensados para enviarse o alojarse.</td>
-<td>En el navegador; sin servidor.</td>
-<td>Nada nuevo: muestran lo que llevan dentro.</td>
+<td>Panel del consejo (<a href="../../herramientas/T17_panel_consejo/index.html" title="Herramienta T17 &#183; Panel de IA para el consejo">T17</a>)</td>
+<td>El panel completo, el panel móvil y el registro de recomendaciones, generados a partir del registro <a href="../../herramientas/T01_registro_iniciativas/registro.html" title="Herramienta T01 &#183; Registro de iniciativas">T01</a>. Llevan incrustado el conector en JavaScript y <strong>se regeneran solos en el navegador</strong> con el registro guardado en él o con <code>herramientas/datos/T01_registro.json</code> de la copia de la compañía. El generador en Python (<code>t01_a_panel.py</code>) es opcional: produce los mismos paneles como ficheros estáticos para enviarlos.</td>
+<td>En el navegador; el generador en Python, en el ordenador de quien lo ejecuta.</td>
+<td>Nada nuevo en el navegador. Los ficheros generados con Python <strong>contienen los datos</strong>.</td>
 </tr>
 <tr>
 <td>Página de comunidad</td>
@@ -559,12 +553,14 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
   L --> N
   N -->|Exportar| J["JSON / CSV&lt;br>en la carpeta que elija"]
   J -->|Importar| N
-  J --> T["T17 (Python, en su equipo)"]
-  T --> P["Paneles HTML&lt;br>con los datos dentro"]
+  J --> D["herramientas/datos/&lt;br>en la copia de la compañía&lt;br>(servidor interno)"]
+  D --> N
+  J --> T["T17 en Python (opcional,&lt;br>en su equipo)"]
+  T --> P["Paneles HTML estáticos&lt;br>con los datos dentro"]
   N -. nada .-> S
   classDef fuera fill:#0d7680,stroke:#0d7680,color:#ffffff
   classDef local fill:#f2dfce,stroke:#807973,color:#1a1817
-  class L,J,P local
+  class L,J,D,P local
 </pre></div><div class="g-fuente">Fuente: SEVEN-G</div></figure>
 <blockquote>
 <p><strong>Por qué importa.</strong> Una herramienta que funciona sin servidor no puede perder datos en el servidor, no exige contratar nada y no obliga a la compañía a fiarse de un tercero para custodiar su cartera de iniciativas. A cambio, la custodia es suya: si los datos solo están en un navegador, la copia de seguridad la hace quien los introduce (sección 3.4).</p>
@@ -572,7 +568,35 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <hr />
 <h2 id="donde-estan-los-datos-que-se-introducen"><span class="antetitulo">03</span>Dónde están los datos que se introducen</h2>
 <h3 id="3-1-en-el-navegador-no-en-el-servidor">3.1 En el navegador, no en el servidor</h3>
-<p>Cuando abre una herramienta por primera vez, el navegador copia los datos de demostración a su <strong>almacenamiento local</strong> (<em>localStorage</em>), una zona que cada navegador reserva por sitio en el propio equipo. Desde ese momento, cada cambio que hace —una iniciativa nueva, una decisión de puerta, un riesgo, un cálculo— se guarda ahí, al instante y sin que nada viaje por la red. Cada herramienta usa su propia clave:</p>
+<p>Cuando abre una herramienta por primera vez, el navegador copia los datos de demostración a su <strong>almacenamiento local</strong> (<em>localStorage</em>), una zona que cada navegador reserva por sitio en el propio equipo. Desde ese momento, cada cambio que hace —una iniciativa nueva, una decisión de puerta, un riesgo, un cálculo— se guarda ahí, al instante y sin que nada viaje por la red.</p>
+<p>Ese es el primero de los tres lugares posibles. El botón <strong>«Datos: …»</strong> de la barra de cada herramienta dice cuál está en uso y abre el diálogo <strong>«Dónde están mis datos»</strong> para cambiarlo (<a href="03_SEVEN-G_Herramientas_y_registro_de_iniciativas.html" title="Documento 03 &#183; Herramientas de SEVEN-G y registro de iniciativas">documento 03</a> §2.1):</p>
+<div class="tabla"><table>
+<thead>
+<tr>
+<th>Dónde</th>
+<th>Para qué</th>
+<th>Qué hay que saber</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Solo en el navegador</strong> (por defecto)</td>
+<td>Probar con datos propios sin instalar nada.</td>
+<td>Es lo que describe esta sección: un navegador, un equipo; se pierde al limpiar el navegador.</td>
+</tr>
+<tr>
+<td><strong>Un fichero JSON del equipo</strong></td>
+<td>Trabajar en serio una persona o un equipo pequeño.</td>
+<td>La herramienta reescribe el fichero con cada cambio y lo vuelve a leer al abrirla (Microsoft Edge o Google Chrome). Es el mismo formato que «Exportar»; puede estar en una carpeta sincronizada de la compañía.</td>
+</tr>
+<tr>
+<td><strong>La copia del sitio en el servidor de la compañía</strong></td>
+<td>Que toda la compañía vea la misma versión de la cartera.</td>
+<td>La copia lleva la carpeta <code>herramientas/datos/</code> con el fichero de cada herramienta, que se carga en lugar de los datos de ejemplo (sección 4.3). Los cambios se siguen guardando en cada navegador o en un fichero; publicar una versión nueva es sustituir el fichero.</td>
+</tr>
+</tbody>
+</table></div>
+<p>En el navegador, cada herramienta usa su propia clave:</p>
 <div class="tabla"><table>
 <thead>
 <tr>
@@ -612,7 +636,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tbody>
 <tr>
 <td><strong>Los datos son de un navegador y de un equipo.</strong></td>
-<td>Lo que introduce en Edge no lo ve Chrome, y lo que introduce en su portátil no aparece en otro ordenador. No hay sincronización, porque no hay servidor que sincronice. Para llevar el registro a otro equipo, expórtelo e impórtelo (sección 3.4).</td>
+<td>Lo que introduce en Edge no lo ve Chrome, y lo que introduce en su portátil no aparece en otro ordenador. No hay sincronización, porque no hay servidor que sincronice. Para llevar el registro a otro equipo, expórtelo e impórtelo (sección 3.4), guárdelo en un fichero del equipo o use la copia de la compañía (sección 3.1).</td>
 </tr>
 <tr>
 <td><strong>Dependen del origen web.</strong></td>
@@ -676,6 +700,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </table></div>
 <p>Nada más. No hay cuentas, formularios de contacto, boletines ni píxeles de seguimiento, y el sitio no contacta a nadie por iniciativa propia (<a href="04_SEVEN-G_Origenes_diferencias_y_por_que_es_abierto.html" title="Documento 04 &#183; De d&#243;nde viene SEVEN-G, en qu&#233; se diferencia y por qu&#233; es abierto">documento 04</a> §6.2).</p>
 <h3 id="3-4-copia-de-seguridad-y-traslado-entre-equipos">3.4 Copia de seguridad y traslado entre equipos</h3>
+<p>La forma más cómoda, en Microsoft Edge o Google Chrome, es elegir <strong>«Un fichero JSON del equipo»</strong> en el diálogo «Dónde están mis datos»: la herramienta guarda cada cambio en ese fichero y lo vuelve a leer al abrirla, de modo que la copia de seguridad se hace sola y el fichero puede vivir en una carpeta sincronizada de la compañía. En cualquier navegador, y para llevar los datos a otro equipo:</p>
 <ol>
 <li>En la herramienta, vaya a <strong>Datos → Exportar → JSON completo</strong> (en <a href="../../herramientas/T01_registro_iniciativas/registro.html" title="Herramienta T01 &#183; Registro de iniciativas">T01</a>) o al botón equivalente de exportación (<a href="../../herramientas/T11_calculadora_valor/calculadora.html" title="Herramienta T11 &#183; Lienzo y calculadora de hip&#243;tesis de valor">T11</a>, <a href="../../herramientas/T14_indice_transformacion/indice.html" title="Herramienta T14 &#183; Calculadora del &#237;ndice de transformaci&#243;n">T14</a>, <a href="../../herramientas/T15_diagnostico_madurez/madurez.html" title="Herramienta T15 &#183; Diagn&#243;stico de madurez">T15</a>). Se descarga un fichero JSON con todo el contenido.</li>
 <li>Guárdelo donde la compañía guarda sus documentos: es la copia de seguridad, el medio para compartirlo y la entrada del generador del panel (<a href="../../herramientas/T17_panel_consejo/index.html" title="Herramienta T17 &#183; Panel de IA para el consejo">T17</a>).</li>
@@ -782,6 +807,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <li>Sírvalo con cualquier servidor de ficheros estáticos: IIS, nginx, Apache, un almacenamiento estático en la nube, la intranet corporativa o GitHub Pages de un <em>fork</em> (sección 4.7). No requiere ningún módulo, base de datos ni configuración especial; conviene que los ficheros <code>.html</code>, <code>.js</code>, <code>.json</code>, <code>.pdf</code>, <code>.docx</code> y <code>.pptx</code> se sirvan con su tipo de contenido habitual.</li>
 <li><strong>Sírvalo por <code>http</code> o <code>https</code>, no como ficheros sueltos.</strong> Abrir los HTML con doble clic funciona, pero el navegador aísla el almacenamiento local de cada fichero: el tema no se comparte, <a href="../../herramientas/T11_calculadora_valor/calculadora.html" title="Herramienta T11 &#183; Lienzo y calculadora de hip&#243;tesis de valor">T11</a>/T14/T15 no ven el registro de <a href="../../herramientas/T01_registro_iniciativas/registro.html" title="Herramienta T01 &#183; Registro de iniciativas">T01</a>, el panel completo no cede el paso al móvil y el índice de códigos no se carga. Para probar en local basta <code>pwsh -File SEVEN-G/build/servidor.ps1</code> y abrir <code>http://localhost:8765/</code>.</li>
 <li>Compruebe la portada, un documento, el registro <a href="../../herramientas/T01_registro_iniciativas/registro.html" title="Herramienta T01 &#183; Registro de iniciativas">T01</a> y el panel de ejemplo. Los enlaces son relativos: el sitio puede vivir en la raíz del dominio o en una subcarpeta.</li>
+<li>Para que toda la compañía vea la misma cartera, cree en la copia la carpeta <code>SEVEN-G/herramientas/datos/</code> con los JSON exportados por las herramientas que use: <code>T01_registro.json</code>, <code>T11_calculadora.json</code>, <code>T14_indice.json</code> y <code>T15_madurez.json</code>. Servidas por http, las herramientas los cargan en lugar de los datos de ejemplo y <strong>el panel del consejo se regenera solo en el navegador</strong> con <code>T01_registro.json</code> (clave <code>datos_t01</code> de <code>config_panel.json</code>, ya puesta en el ejemplo). Publicar una versión nueva de la cartera es sustituir el fichero (<a href="03_SEVEN-G_Herramientas_y_registro_de_iniciativas.html" title="Documento 03 &#183; Herramientas de SEVEN-G y registro de iniciativas">documento 03</a> §2.1).</li>
 </ol>
 <p>Lo que ocurre con la instalación propia respecto al sitio público:</p>
 <ul>
@@ -816,8 +842,8 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td><code>pwsh -File SEVEN-G/herramientas/T01_registro_iniciativas/build_registro.ps1</code> y los <code>build_*.ps1</code> equivalentes.</td>
 </tr>
 <tr>
-<td>Generador del panel (<a href="../../herramientas/T17_panel_consejo/index.html" title="Herramienta T17 &#183; Panel de IA para el consejo">T17</a>)</td>
-<td>Python 3.11 o superior con <code>uv</code>.</td>
+<td>Generador del panel (<a href="../../herramientas/T17_panel_consejo/index.html" title="Herramienta T17 &#183; Panel de IA para el consejo">T17</a>), solo para publicar el panel como ficheros estáticos (por ejemplo, para enviarlos): en el sitio, el panel se regenera solo en el navegador.</td>
+<td>Python 3.11 o superior con <code>uv</code> (opcional).</td>
 <td><code>uv run python t01_a_panel.py --t01 &lt;registro.json&gt; --salida &lt;carpeta&gt;</code> desde <code>SEVEN-G/herramientas/T17_panel_consejo</code>.</td>
 </tr>
 <tr>
@@ -847,12 +873,12 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 <tr>
 <td>2</td>
-<td>Un registro que arranque con los datos del cliente y no con la demostración: construir <code>registro.html</code> a partir del JSON del cliente. Con <code>meta.datos_ilustrativos</code> ausente o <code>false</code>, desaparece la banda de «iniciativas de ejemplo».</td>
-<td><code>pwsh -File build_registro.ps1 -Datos &lt;cliente.json&gt; -Salida &lt;registro.html&gt;</code> en <code>SEVEN-G/herramientas/T01_registro_iniciativas</code>.</td>
+<td>Un registro que arranque con los datos del cliente y no con la demostración: en la copia del cliente, la carpeta <code>SEVEN-G/herramientas/datos/</code> con su <code>T01_registro.json</code> exportado (y, si los usa, <code>T11_calculadora.json</code>, <code>T14_indice.json</code> y <code>T15_madurez.json</code>); las herramientas los cargan en lugar de la demostración. Alternativa sin carpeta de datos: construir <code>registro.html</code> a partir del JSON del cliente; con <code>meta.datos_ilustrativos</code> ausente o <code>false</code> desaparece la banda de «iniciativas de ejemplo».</td>
+<td>Carpeta <code>datos/</code> de la copia, o <code>pwsh -File build_registro.ps1 -Datos &lt;cliente.json&gt; -Salida &lt;registro.html&gt;</code> en <code>SEVEN-G/herramientas/T01_registro_iniciativas</code>.</td>
 </tr>
 <tr>
 <td>3</td>
-<td>El panel del consejo del cliente: generarlo con <a href="../../herramientas/T17_panel_consejo/index.html" title="Herramienta T17 &#183; Panel de IA para el consejo">T17</a> desde el JSON exportado, con el nombre y las siglas del cliente y una copia propia de <code>config_panel.json</code> (umbrales, ciclo de vida, enlaces de vuelta al sitio, <code>codigos</code>).</td>
+<td>El panel del consejo del cliente se regenera solo en el navegador desde ese <code>T01_registro.json</code> (clave <code>datos_t01</code> de <code>config_panel.json</code>) o desde el registro guardado en el navegador. Solo si quiere publicarlo como ficheros estáticos para enviarlos, genérelo con <a href="../../herramientas/T17_panel_consejo/index.html" title="Herramienta T17 &#183; Panel de IA para el consejo">T17</a> en Python, con el nombre y las siglas del cliente y una copia propia de <code>config_panel.json</code> (umbrales, ciclo de vida, enlaces de vuelta al sitio, <code>codigos</code>).</td>
 <td><code>uv run python t01_a_panel.py --t01 &lt;cliente.json&gt; --salida &lt;carpeta&gt; --organizacion &quot;&lt;Cliente&gt;&quot; --sigla &lt;CA&gt;</code></td>
 </tr>
 <tr>
@@ -919,7 +945,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 <tr>
 <td>¿Cómo trabaja un equipo sobre el mismo registro?</td>
-<td>Con el JSON: exportar, compartir por el canal habitual de la compañía e importar (sustituir o fusionar por código). No hay edición simultánea.</td>
+<td>Con el JSON: un fichero del equipo en una carpeta sincronizada (cada cambio se guarda en él), la carpeta <code>herramientas/datos/</code> de la copia de la compañía, que todos ven, o exportar e importar (sustituir o fusionar por código). No hay edición simultánea.</td>
 </tr>
 <tr>
 <td>¿Puedo poner el sitio en la intranet sin conexión a internet?</td>
@@ -955,7 +981,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tr>
 <td><a href="../../herramientas/T17_panel_consejo/index.html" title="Herramienta T17 &#183; Panel de IA para el consejo">T17</a></td>
 <td>Panel de IA para el consejo</td>
-<td>Generador local en Python; sus ficheros contienen los datos.</td>
+<td>Se regenera en el navegador desde el registro <a href="../../herramientas/T01_registro_iniciativas/registro.html" title="Herramienta T01 &#183; Registro de iniciativas">T01</a>; el generador en Python es opcional y sus ficheros contienen los datos.</td>
 </tr>
 <tr>
 <td><a href="plantillas/P70_SEVEN-G_Propuesta_y_carta_de_encargo.html" title="Plantilla P70 &#183; Propuesta y carta de encargo">P70</a></td>
@@ -976,7 +1002,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tbody>
 <tr>
 <td><strong>03 · Herramientas y registro de iniciativas</strong></td>
-<td>Principios de diseño de las herramientas (§2: sin servidor, datos de la compañía, códigos navegables) y mapa de datos entre herramientas (§4.1).</td>
+<td>Principios de diseño de las herramientas (§2: sin servidor, datos de la compañía, códigos navegables), dónde viven los datos de las herramientas y cómo montar la copia de la compañía (§2.1) y mapa de datos entre herramientas (§4.1).</td>
 </tr>
 <tr>
 <td><strong>04 · De dónde viene SEVEN-G y por qué es abierto</strong></td>
@@ -1197,7 +1223,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
   window.addEventListener('scroll', function () { if (!pendiente) { pendiente = true; setTimeout(seccionActual, 100); } }, { passive: true });
   seccionActual();
 
-  /* ---------- Búsqueda de términos: en esta página o en todo el sitio (D104) ---------- */
+  /* ---------- Búsqueda de términos: en esta página o en todo el sitio (D105) ---------- */
   var entrada = document.getElementById('buscar');
   var cuenta = document.getElementById('buscar-cuenta');
   var ambito = document.getElementById('buscar-ambito');

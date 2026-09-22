@@ -40,8 +40,10 @@ flowchart LR
 
 | Fichero | Contenido |
 |---|---|
-| `t01_a_panel.py` | El conector: mapeo T01 → esquema del panel y generación con el motor. Solo biblioteca estándar. |
-| `config_panel.json` | Configuración general del panel: `navegacion` (sin página «Todo», página inicial, tarjetas desplegadas al entrar, filtros en diálogo modal con la consulta aplicada en píldoras y, para un panel alojado dentro de un sitio, `tema_sitio` —clave de `localStorage` con el tema general del sitio, que el panel sigue y actualiza— y `sitio` —enlaces de vuelta al sitio en el menú lateral, con rutas relativas a la carpeta de salida— y `codigos` —ruta al índice de códigos del sitio, `codigos.js`: con ella, los códigos escritos en el panel completo, en el móvil y en el registro de recomendaciones (documento 40, T01, P12, G3.05…) pasan a ser enlaces a donde se explican y su barra ofrece «Buscador de documentos» y «Citados aquí» (D99, D104), sin medición de visitas; un panel generado fuera del sitio quita esas claves—), `umbrales_kpi` y `ciclo_vida` (embudo, salidas, límites de días y etapa de cada fase de SEVEN-G). Valores de partida, a calibrar por cada organización. |
+| `t01_a_panel.py` | El conector: mapeo T01 → esquema del panel y generación con el motor. Solo biblioteca estándar. `--solo-json <fichero>` escribe solo el JSON del panel. |
+| `t01_a_panel.js` | El mismo mapeo en JavaScript (D103): incrustado en los paneles generados (se regeneran en el navegador) y en el registro T01. |
+| `conector_js.ps1` | Ejecuta `t01_a_panel.js` con Edge sin ventana: JSON del panel sin Python; lo usa la prueba de paridad de `verificar_coherencia.ps1`. |
+| `config_panel.json` | Configuración general del panel: `navegacion` (sin página «Todo», página inicial, tarjetas desplegadas al entrar, filtros en diálogo modal con la consulta aplicada en píldoras y, para un panel alojado dentro de un sitio, `tema_sitio` —clave de `localStorage` con el tema general del sitio, que el panel sigue y actualiza— y `sitio` —enlaces de vuelta al sitio en el menú lateral, con rutas relativas a la carpeta de salida— y `codigos` —ruta al índice de códigos del sitio, `codigos.js`: con ella, los códigos escritos en el panel completo, en el móvil y en el registro de recomendaciones (documento 40, T01, P12, G3.05…) pasan a ser enlaces a donde se explican y su barra ofrece «Buscador de documentos» y «Citados aquí» (D99, D105), sin medición de visitas; un panel generado fuera del sitio quita esas claves—), `umbrales_kpi` y `ciclo_vida` (embudo, salidas, límites de días y etapa de cada fase de SEVEN-G). Valores de partida, a calibrar por cada organización. `datos_t01`: ruta del registro T01 de la copia de la compañía que el panel convierte en el navegador (D103). |
 | `motor/` | El motor del panel, **versión 8** (embudo y ciclo de vida, umbrales configurables): `build_dashboard.py` (panel completo), `panel_movil.py`, `panel_core.py` (núcleo JavaScript común), `economia.py`, `glosario.py`, `snapshot.py`, `ESQUEMA.md` (esquema del JSON) y `demo_lib.py` (plantilla del registro de recomendaciones). Copia mantenida en AI_CONSULTING; origen: `AI_en_el_consejo/motor` (MIT, mismo autor). |
 | `publicacion_panel.py` | Aviso legal, pie de autoría, inserción del aviso en el panel móvil y página del registro de recomendaciones. Lo importa el conector desde esta carpeta. |
 | `index.html` | Página del conector (ES/EN, sin servidor ni recursos externos) con los enlaces a la demo y el aviso legal. |
@@ -49,9 +51,13 @@ flowchart LR
 | `PROPUESTA_MOTOR.md` | Documento de trabajo: cambios propuestos al motor del panel para leer los datos de SEVEN-G. Para el proyecto de origen del motor; no se aplica en la copia pública. |
 | `README.md` · `README_en.md` | Este documento, en español e inglés. |
 
-## Requisitos
+## Sin Python: el panel se regenera en el navegador (D103)
 
-- **Python 3.11 o superior** con [`uv`](https://docs.astral.sh/uv/). Solo biblioteca estándar; no instala paquetes.
+Los dos paneles llevan incrustado el conector en JavaScript, `t01_a_panel.js` (la misma correspondencia que `t01_a_panel.py`; `verificar_coherencia.ps1` comprueba que ambos producen el mismo JSON con los datos de demostración). Al abrirse, el panel: (1) si en ese navegador hay un registro T01 propio (mismo sitio; clave de `localStorage` de T01 con origen distinto de «ejemplo»), lo convierte y lo muestra; (2) si no, servido por http, lee `navegacion.datos_t01` de `config_panel.json` (por defecto `../../../datos/T01_registro.json`, la carpeta de datos de la copia de la compañía) y lo muestra; (3) «Cargar JSON» admite también el JSON completo de T01. Una banda bajo la cabecera dice de dónde salen los datos. La vista sin JavaScript y la huella siguen siendo las de los datos incrustados al generar. `conector_js.ps1 -T01 <registro> -Salida <dashboard_data.json>` produce el JSON del panel con Edge, sin Python. El registro T01 incrusta el mismo conector («Descargar el JSON del panel»).
+
+## Requisitos (solo para generar los paneles como ficheros estáticos)
+
+- **Python 3.11 o superior** con [`uv`](https://docs.astral.sh/uv/). Solo biblioteca estándar; no instala paquetes. Opcional: sin Python, el panel se regenera en el navegador (sección anterior).
 - Nada más: el **motor del panel está incluido** en `motor/` y no hace falta ningún otro repositorio. El conector añade a `sys.path` esta carpeta y `./motor`.
 - Opcional: `--panel <ruta>` usa otro motor, indicando un checkout del repositorio [AI en el Consejo](https://github.com/Seachad-TEAM/AI_en_el_consejo) (`<ruta>/motor` y `<ruta>/demos/fuente`). Si falta algo, el conector se detiene con un mensaje claro.
 

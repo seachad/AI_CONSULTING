@@ -180,6 +180,7 @@ dialog::backdrop{background:rgba(26,24,23,.45)}
 <input type="file" id="f-t14" accept=".json,application/json" class="oculto" tabindex="-1" aria-hidden="true">
 <input type="file" id="f-t01" accept=".json,application/json" class="oculto" tabindex="-1" aria-hidden="true">
 <script type="application/json" id="datos-demo">__DATOS_DEMO__</script>
+<script>__DATOS_LOCALES__</script>
 <script>
 'use strict';
 /* =========================================================
@@ -210,7 +211,7 @@ es:{
  t01_auto:'Cálculo creado automáticamente desde el registro T01 de este navegador. Corrija lo que haga falta: lo corregido a mano no se pisa al actualizar.',
  ok_actualizar:'Cálculo actualizado desde el registro T01 «{o}»: {n} datos renovados. Los corregidos a mano se conservan.',
  or_t01_de:'Desde el registro T01 «{o}» ({n} iniciativas, leído el {f})',
- pie_lic:'Código MIT · Contenidos CC BY 4.0 · © 2026 Fernando García Varela · Metodología SEVEN-G', pie_priv:'Los datos se guardan solo en este navegador. No se envía nada a terceros.',
+ pie_lic:'Código MIT · Contenidos CC BY 4.0 · © 2026 Fernando García Varela · Metodología SEVEN-G', pie_priv:'Los datos se guardan solo en este navegador o, si así se elige, en un fichero de su equipo. No se envía nada a terceros.',
  legal_tit:'Aviso legal y exención de responsabilidad', legal_link:'Aviso legal', legal_ok:'Entendido',
  legal_txt:'SEVEN-G y esta herramienta se ofrecen «tal cual» y con fines exclusivamente informativos. No constituyen asesoramiento jurídico, regulatorio, financiero ni profesional, ni garantizan el cumplimiento de ninguna norma. Los umbrales del índice son iniciales, no proceden de estudios de mercado y deben calibrarse con los datos de cada compañía. Cada organización que use la herramienta es la única responsable de sus datos, de las decisiones que adopte con ellos, de identificar la normativa que le aplica y de certificar su propio cumplimiento regulatorio. El autor no asume responsabilidad alguna por el uso de la herramienta. Los datos de demostración son ficticios.',
  tit_calculo:'Índice de transformación de la compañía', sub_calculo:'Condiciones de base, ocho señales y perfil, con las reglas del documento 12. «Sin dato» nunca es cero medido ni estimación.',
@@ -277,7 +278,7 @@ en:{
  t01_auto:'Calculation created automatically from the T01 register in this browser. Correct whatever is needed: manual corrections are not overwritten on refresh.',
  ok_actualizar:'Calculation refreshed from the T01 register "{o}": {n} figures renewed. Manual corrections are kept.',
  or_t01_de:'From the T01 register "{o}" ({n} initiatives, read on {f})',
- pie_lic:'MIT code · CC BY 4.0 content · © 2026 Fernando García Varela · SEVEN-G methodology', pie_priv:'Data is stored only in this browser. Nothing is sent to third parties.',
+ pie_lic:'MIT code · CC BY 4.0 content · © 2026 Fernando García Varela · SEVEN-G methodology', pie_priv:'Data is stored only in this browser or, if you choose so, in a file on your computer. Nothing is sent to third parties.',
  legal_tit:'Legal notice and disclaimer', legal_link:'Legal notice', legal_ok:'Understood',
  legal_txt:'SEVEN-G and this tool are provided "as is" and for information purposes only. They do not constitute legal, regulatory, financial or professional advice, nor do they guarantee compliance with any regulation. The index thresholds are initial values, do not come from market studies and must be calibrated with each company\'s data. Each organisation using the tool is solely responsible for its data, for the decisions it takes with it, for identifying the regulations that apply to it and for certifying its own regulatory compliance. The author accepts no liability for the use of the tool. Demonstration data is fictitious.',
  tit_calculo:'Company transformation index', sub_calculo:'Baseline conditions, eight signals and profile, with the rules of document 12. "No data" is never a measured zero or an estimate.',
@@ -366,13 +367,13 @@ const PARAMS = [
 ];
 
 /* ---------------- estado ---------------- */
-let D = null, UI = { lang:'es', tema:'auto', sel:null, umb:null };
+let D = null, UI = { lang:'es', tema:'auto', sel:null, umb:null }, CARGA_DEMO = false;
 let lang = 'es';
 function t(k, v){ let s = (TX[lang] && TX[lang][k]) ?? TX.es[k] ?? k; if(v) for(const x in v) s = s.split('{'+x+'}').join(v[x]); return s; }
 function esc(s){ return String(s ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c])); }
 function clon(o){ return JSON.parse(JSON.stringify(o)); }
 function toast(m){ const e=document.getElementById('toast'); e.textContent=m; e.classList.add('ver'); clearTimeout(toast._t); toast._t=setTimeout(()=>e.classList.remove('ver'),3200); }
-function guardar(){ if(!lsSet(LS_DATOS, JSON.stringify(D))) toast(t('no_guardado')); lsSet(LS_UI, JSON.stringify(UI)); guardarResumen(); }
+function guardar(){ if(!lsSet(LS_DATOS, JSON.stringify(D))) toast(t('no_guardado')); lsSet(LS_UI, JSON.stringify(UI)); guardarResumen(); if(window.SevengDatos) SevengDatos.guardado(); }
 /* resumen del último cálculo para las demás herramientas del sitio (T15 lo usa en la lectura cruzada del 11 §7.2) */
 function guardarResumen(){ try{ const c = ordenados().slice(-1)[0]; if(!c){ lsDel(LS_RESUMEN); return; } const r = calcular(c.entradas, umbral(c.version_umbrales).parametros);
   lsSet(LS_RESUMEN, JSON.stringify({herramienta:'T14', id:c.id, fecha_corte:c.fecha_corte, tipo:c.tipo, perfil_asignado:r.asignado, perfil_evidenciado:r.evidenciado, perfil_subyacente:r.subyacente||null, suma:r.suma, cobertura:r.cobertura, organizacion:(D.meta||{}).organizacion||null, datos_ilustrativos:!!(D.meta||{}).datos_ilustrativos})); }catch(e){} }
@@ -758,6 +759,7 @@ function render(){
   const m = document.getElementById('principal');
   m.innerHTML = v==='evolucion' ? vistaEvolucion() : v==='umbrales' ? vistaUmbrales() : v==='datos' ? vistaDatos() : vistaCalculo();
   document.getElementById('pie').innerHTML = '<p class="pie-legal"><b>'+esc(t('legal_tit'))+'.</b> '+esc(t('legal_txt'))+'</p><span>'+esc(t('pie_lic'))+'</span><span>'+esc(t('pie_priv'))+'</span>';
+  if(window.SevengDatos) SevengDatos.refrescar();
 }
 function refrescarResultado(){ const c = calcSel(), e = document.getElementById('res'); if(c && e) e.innerHTML = resultadoHTML(c); }
 
@@ -796,15 +798,15 @@ document.addEventListener('click', ev => {
   if(a==='desde-t01-fichero'){ document.getElementById('f-t01').click(); return; }
   if(a==='actualizar-t01' && c){ const reg = registroT01Local(); if(!reg){ toast(t('t01_local_no')); return; } actualizarDesdeT01(c, reg); return; }
   if(a==='importar'){ document.getElementById('f-t14').click(); return; }
-  if(a==='exportar'){ const x=clon(D); x.version_esquema=VERSION_ESQUEMA; x.herramienta='T14'; x.meta=Object.assign({}, x.meta, {exportado:hoy(), aviso_legal:TX.es.legal_txt});
-    x.calculos.forEach((cc,i)=>{ cc.resultado = resultadoExport(D.calculos[i]); });
-    const blob=new Blob([JSON.stringify(x,null,2)],{type:'application/json'}), u=URL.createObjectURL(blob), l=document.createElement('a'); l.href=u; l.download='t14_indice_transformacion_'+hoy()+'.json'; document.body.appendChild(l); l.click(); l.remove(); setTimeout(()=>URL.revokeObjectURL(u),1000); toast(t('ok_export')); return; }
-  if(a==='restaurar'){ if(!confirm(t('conf_restaurar'))) return; D=cargarDemo(); UI.sel=null; UI.umb=null; guardar(); render(); return; }
+  if(a==='exportar'){ const blob=new Blob([JSON.stringify(datosExportables(),null,2)],{type:'application/json'}), u=URL.createObjectURL(blob), l=document.createElement('a'); l.href=u; l.download='t14_indice_transformacion_'+hoy()+'.json'; document.body.appendChild(l); l.click(); l.remove(); setTimeout(()=>URL.revokeObjectURL(u),1000); toast(t('ok_export')); return; }
+  if(a==='restaurar'){ if(!confirm(t('conf_restaurar'))) return; D=cargarDemo(); SevengDatos.reiniciar('demo'); UI.sel=null; UI.umb=null; guardar(); render(); return; }
   if(a==='vaciar'){ if(!confirm(t('conf_vaciar'))) return; D.calculos=[]; D.meta=Object.assign({}, D.meta, {datos_ilustrativos:false}); UI.sel=null; guardar(); render(); return; }
   if(a==='nueva-version'){ const nom=(document.getElementById('u-nueva').value||'').trim(); if(!nom){ document.getElementById('u-nueva').focus(); return; } if(D.umbrales.some(x=>x.version===nom)){ toast(t('ya_existe')); return; }
     const base = D.umbrales.find(x=>x.version===UI.umb) || D.umbrales[D.umbrales.length-1]; D.umbrales.push({version:nom, fecha:hoy(), origen:'v'+base.version, aprobado_por:null, nota:'', parametros:clon(base.parametros)}); UI.umb=nom; guardar(); render(); toast(t('ok_version',{v:nom})); return; }
   if(a==='recalcular' && c){ c.version_umbrales = UI.umb || D.umbrales[D.umbrales.length-1].version; guardar(); location.hash='#/calculo'; render(); return; }
 });
+/* el JSON completo de la calculadora, con los resultados calculados: lo que descarga «Exportar» y lo que se escribe en el fichero del equipo (D103) */
+function datosExportables(){ const x=clon(D); x.version_esquema=VERSION_ESQUEMA; x.herramienta='T14'; x.meta=Object.assign({}, x.meta, {exportado:hoy(), aviso_legal:TX.es.legal_txt}); x.calculos.forEach((cc,i)=>{ cc.resultado = resultadoExport(D.calculos[i]); }); return x; }
 function leerFichero(inp, fn){ const f=inp.files[0]; if(!f) return; const rd=new FileReader(); rd.onload=()=>{ let x=null; try{ x=JSON.parse(rd.result); }catch(e){} inp.value=''; fn(x); }; rd.readAsText(f); }
 document.getElementById('f-t14').addEventListener('change', ev => leerFichero(ev.target, x => {
   if(!valido(x)){ toast(t('err_json')); return; } if(!confirm(t('conf_importar'))) return;
@@ -841,12 +843,17 @@ window.addEventListener('hashchange', render);
 (function(){
   try{ const u = JSON.parse(lsGet(LS_UI)||'null'); if(u) UI = Object.assign(UI, u); }catch(e){}
   try{ const d = JSON.parse(lsGet(LS_DATOS)||'null'); if(valido(d)) D = d; }catch(e){}
-  if(!D) D = cargarDemo();
+  if(!D){ D = cargarDemo(); CARGA_DEMO = true; }
   const q = new URLSearchParams(location.search);
   if(q.get('lang')==='en' || q.get('lang')==='es') UI.lang = q.get('lang');
   else if(!lsGet(LS_UI) && /^en\b/i.test(navigator.language||'')) UI.lang = 'en';
   lang = UI.lang==='en' ? 'en' : 'es';
   aplicarTema(); render();
+  /* D103: dónde viven los datos (este navegador, un fichero del equipo o la carpeta de datos de la copia de la compañía) */
+  SevengDatos.iniciar({codigo:'T14', ficheroServidor:'../datos/T14_indice.json', cargadoDeDemo:CARGA_DEMO,
+    obtener:()=>D, exportar:datosExportables, aplicar:d=>{ d.calculos.forEach(c=>{ delete c.resultado; }); D=d; UI.sel=null; UI.umb=null; guardar(); render(); }, validar:valido,
+    esDemo:()=>!!(D.meta||{}).datos_ilustrativos, idioma:()=>lang, aviso:toast, nombreFichero:()=>'t14_indice_transformacion_'+hoy()+'.json',
+    ayudaHref:()=>'../../html/'+lang+'/03_SEVEN-G_Herramientas_y_registro_de_iniciativas.html#'+(lang==='en'?'2-1-where-the-data-of-the-tools-lives':'2-1-donde-viven-los-datos-de-las-herramientas')});
   // D100: carga automática desde el registro T01 de este navegador. Con «?desde=t01» (enlace del registro) se crea el cálculo a la fecha de
   // referencia del registro o, si ya existe uno de ese origen y fecha, se actualiza; sin parámetro, un T14 recién abierto crea el cálculo
   // solo si el registro es real (con el registro de demostración, los datos de ejemplo ya lo contienen).
