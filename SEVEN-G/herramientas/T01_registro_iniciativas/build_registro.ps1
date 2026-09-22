@@ -5,6 +5,8 @@
 
   Fuentes:      _fuentes/registro.plantilla.html   aplicación (HTML, CSS y JavaScript) sin datos; es lo único que se edita a mano
                 catalogo_criterios.json            catálogo de criterios de gate del documento 21 (ES/EN), un criterio por línea
+                catalogo_riesgos.json              reglas de aplicabilidad y propuestas de mitigación y contingencia por riesgo tipo (D106);
+                                                   el texto de cada RT se lee del documento 33 §9 (mds/es|en) al generar
                 datos_demo.json                    registro de demostración (ficticio) con el que se abre la herramienta
   Salida:       registro.html                      un solo fichero, sin servidor ni dependencias. NUNCA se edita a mano.
 
@@ -28,8 +30,9 @@ $catalogo  = Join-Path $aqui 'catalogo_criterios.json'
 foreach ($f in $plantilla, $catalogo, $Datos) { if (-not (Test-Path $f)) { throw "No se encuentra $f" } }
 
 # JSON compacto sin reinterpretar números ni escapar acentos; "</" se escapa para que no cierre el <script> que lo contiene
-function Compactar([string]$ruta) {
-  $doc = [System.Text.Json.JsonDocument]::Parse([IO.File]::ReadAllText($ruta))
+function Compactar([string]$ruta) { return CompactarTexto ([IO.File]::ReadAllText($ruta)) }
+function CompactarTexto([string]$texto) {
+  $doc = [System.Text.Json.JsonDocument]::Parse($texto)
   $ms = [IO.MemoryStream]::new()
   $op = [System.Text.Json.JsonWriterOptions]::new()
   $op.Indented = $false
@@ -69,9 +72,48 @@ foreach ($d in @($reg.decisiones_consejo)) {
 foreach ($i in $reg.iniciativas) { foreach ($k in 'itp2', 'itp3') { $v = $i.indice.$k; if ($v -and $v.verificador -and -not $pers[$v.verificador]) { $errores.Add("$($i.id): indice.$k.verificador $($v.verificador) inexistente") } } }
 if ($errores.Count) { throw "Registro incoherente:`n  " + (($errores | Select-Object -First 20) -join "`n  ") }
 
+# ---- catálogo de riesgos tipo para el Excel del caso (D106): las reglas de aplicabilidad y las propuestas de mitigación y contingencia
+# viven en catalogo_riesgos.json; el título, la descripción, las causas, los controles tipo y la fase de cada código RT se leen del
+# documento 33 §9 (ES/EN) para que nunca diverjan del documento. Se exige que los tres tengan exactamente los mismos códigos.
+$catRiesgos = Join-Path $aqui 'catalogo_riesgos.json'
+if (-not (Test-Path $catRiesgos)) { throw "No se encuentra $catRiesgos" }
+$cr = Get-Content $catRiesgos -Raw -Encoding utf8 | ConvertFrom-Json -Depth 16
+function LimpiarMd([string]$s) { return (($s -replace '\*\*', '') -replace '(?<!\w)\*([^*]+)\*(?!\w)', '$1' -replace '`', '').Trim() }
+$doc33 = @{}
+foreach ($lang in 'es', 'en') {
+  $f33 = Join-Path $aqui "..\..\mds\$lang\33_SEVEN-G_Metodologia_de_riesgos_de_IA.md"
+  if (-not (Test-Path $f33)) { throw "No se encuentra $f33" }
+  $filas = @{}
+  foreach ($m in [regex]::Matches([IO.File]::ReadAllText($f33), '(?m)^\| \*\*(RT-[A-Z]{3}-\d{2})\*\* \| \*\*(.+?)\*\* ?(.*?) \| (.*?) \| (.*?) \| (.*?) \|\s*$')) {
+    $filas[$m.Groups[1].Value] = @{ t = (LimpiarMd $m.Groups[2].Value).TrimEnd('.'); d = LimpiarMd $m.Groups[3].Value; ca = LimpiarMd $m.Groups[4].Value; ct = LimpiarMd $m.Groups[5].Value; f = LimpiarMd $m.Groups[6].Value }
+  }
+  if (-not $filas.Count) { throw "documento 33 [$lang]: no se ha encontrado ninguna fila RT-XXX-NN en el catálogo de la sección 9" }
+  $doc33[$lang] = $filas
+}
+$codEs = @($doc33.es.Keys | Sort-Object); $codEn = @($doc33.en.Keys | Sort-Object); $codCat = @($cr.riesgos.c | Sort-Object)
+if (Compare-Object $codEs $codEn) { throw "documento 33: los códigos RT del catálogo no coinciden entre ES y EN: $((Compare-Object $codEs $codEn | ForEach-Object { $_.InputObject }) -join ', ')" }
+if (Compare-Object $codEs $codCat) { throw "catalogo_riesgos.json: sus códigos no coinciden con el documento 33 §9: $((Compare-Object $codEs $codCat | ForEach-Object { "$($_.InputObject) $($_.SideIndicator)" }) -join ', ')" }
+$condValidas = 'tecnologia', 'exposicion', 'autonomia', 'regulatoria', 'ambicion', 'intensidad', 'aprende', 'personas', 'datos_personales', 'terceros'
+foreach ($r in $cr.riesgos) {
+  $ap = $r.aplica
+  if (-not (($ap -is [bool] -and $ap) -or ($ap -is [string] -and $ap -eq 'cartera') -or ($ap -is [array]))) { throw "catalogo_riesgos.json $($r.c): «aplica» debe ser true, 'cartera' o una lista de condiciones" }
+  if ($ap -is [array]) { foreach ($cond in $ap) { foreach ($k in $cond.PSObject.Properties.Name) { if ($k -notin $condValidas) { throw "catalogo_riesgos.json $($r.c): condición desconocida «$k»" } } } }
+  if ($r.tc -notin 'preventivo', 'detectivo', 'correctivo', 'transferencia') { throw "catalogo_riesgos.json $($r.c): tipo de control «$($r.tc)» no válido" }
+  if ($r.red -notin 'probabilidad', 'impacto', 'ambos') { throw "catalogo_riesgos.json $($r.c): «red» debe ser probabilidad, impacto o ambos" }
+  if ($r.act -notin 'patrocinador', 'producto', 'tecnico', 'operacion', 'riesgos', 'auditor') { throw "catalogo_riesgos.json $($r.c): «act» debe ser un rol de la iniciativa" }
+  foreach ($l in 'es', 'en') { if (-not $r.mit.$l -or -not $r.cont.$l.dis -or -not $r.cont.$l.acc) { throw "catalogo_riesgos.json $($r.c): faltan la mitigación o la contingencia (dis, acc) en $l" } }
+}
+$catalogoRiesgos = @(foreach ($r in $cr.riesgos) {
+  [ordered]@{ c = $r.c; cat = $r.c.Substring(3, 3); f = $doc33.es[$r.c].f
+    t = [ordered]@{ es = $doc33.es[$r.c].t; en = $doc33.en[$r.c].t }; d = [ordered]@{ es = $doc33.es[$r.c].d; en = $doc33.en[$r.c].d }
+    ca = [ordered]@{ es = $doc33.es[$r.c].ca; en = $doc33.en[$r.c].ca }; ct = [ordered]@{ es = $doc33.es[$r.c].ct; en = $doc33.en[$r.c].ct }
+    aplica = $r.aplica; tc = $r.tc; red = $r.red; act = $r.act; mit = $r.mit; cont = $r.cont }
+})
+$jsonCatalogoRiesgos = CompactarTexto ($catalogoRiesgos | ConvertTo-Json -Depth 8 -Compress)
+
 # ---- construcción
 $html = [IO.File]::ReadAllText($plantilla)
-foreach ($marca in '__CATALOGO_CRITERIOS__', '__DATOS_DEMO__') {
+foreach ($marca in '__CATALOGO_CRITERIOS__', '__DATOS_DEMO__', '__CATALOGO_RIESGOS__') {
   if (([regex]::Matches($html, [regex]::Escape($marca))).Count -ne 1) { throw "La plantilla debe contener una sola vez la marca $marca" }
 }
 # el registro enlaza al panel del consejo de ejemplo (T17): si el motor cambia de versión, el nombre del fichero cambia con él
@@ -79,7 +121,7 @@ if ($html -match "const PANEL_DEMO = '([^']+)'") {
   $panelDemo = Join-Path $aqui $Matches[1]
   if (-not (Test-Path $panelDemo)) { Write-Warning "El panel de ejemplo enlazado no existe: $($Matches[1]). Regenerarlo (uv run python t01_a_panel.py en T17_panel_consejo) o actualizar PANEL_DEMO en la plantilla." }
 } else { throw 'La plantilla no define PANEL_DEMO' }
-$html = $html.Replace('__CATALOGO_CRITERIOS__', (Compactar $catalogo)).Replace('__DATOS_DEMO__', (Compactar $Datos))
+$html = $html.Replace('__CATALOGO_CRITERIOS__', (Compactar $catalogo)).Replace('__DATOS_DEMO__', (Compactar $Datos)).Replace('__CATALOGO_RIESGOS__', $jsonCatalogoRiesgos)
 # módulo común de datos locales y conector T01 → panel en JavaScript (D103): se incrustan para que la herramienta siga siendo un solo fichero
 $comun = Join-Path $aqui '..\_comun\datos_locales.js'
 $conector = Join-Path $aqui '..\T17_panel_consejo\t01_a_panel.js'
@@ -91,4 +133,4 @@ $html = $html.Replace('<!doctype html>', "<!doctype html>`n<!-- GENERADO por bui
 [IO.File]::WriteAllText($Salida, $html, [Text.UTF8Encoding]::new($false))
 "registro:   $Salida ($([math]::Round((Get-Item $Salida).Length / 1KB)) KB)"
 "datos:      $(Split-Path $Datos -Leaf) · $($reg.iniciativas.Count) iniciativas · $($reg.eventos.Count) eventos · $($reg.decisiones_gate.Count) decisiones de gate · esquema $($reg.version_esquema)"
-"catálogo:   $($cat.Count) criterios"
+"catálogo:   $($cat.Count) criterios · $($catalogoRiesgos.Count) riesgos tipo (documento 33 §9 + catalogo_riesgos.json)"

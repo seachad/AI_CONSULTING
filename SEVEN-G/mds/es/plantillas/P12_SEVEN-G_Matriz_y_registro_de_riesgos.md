@@ -23,7 +23,7 @@
 | **Quién la verifica** | Lite: responsable de riesgos en G3 y G5; si él ha elaborado el registro, verifica la oficina de IA o el auditor de IA. Enterprise: auditor de IA. |
 | **Quién decide** | La aceptación del riesgo residual la decide el órgano de la sección 6 según el nivel. El *gate* lo decide el órgano de 01 §7.5. |
 | **Gate en que se revisa** | G3 · Viabilidad, G5 · Puesta en producción y R6 · Revisión de continuidad. |
-| **Herramienta** | T06 · Matriz y registro de riesgos: vista «Riesgos» y pestaña «Riesgos» de la ficha del registro T01, con los mismos campos, escalas, matriz de calor y reglas de aceptación que esta plantilla, y exportación CSV. |
+| **Herramienta** | T06 · Matriz y registro de riesgos: vista «Riesgos» y pestaña «Riesgos» de la ficha del registro T01, con los mismos campos, escalas, matriz de calor y reglas de aceptación que esta plantilla, exportación CSV y Excel del caso (matriz, registro, planes de mitigación y contingencia propuestos para P13 y riesgos tipo a considerar). |
 | **Lite frente a Enterprise** | Lite puede omitir las columnas y bloques marcados **(Enterprise)**. Las escalas, los niveles inherente y residual, la respuesta y la aceptación son obligatorios en ambas. |
 
 Reglas de cumplimentación:
