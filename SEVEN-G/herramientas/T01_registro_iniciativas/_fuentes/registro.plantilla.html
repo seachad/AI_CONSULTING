@@ -266,6 +266,7 @@ p.nota-clas{margin:4px 0 10px}
 <div id="toast" role="status" aria-live="polite"></div>
 <script type="application/json" id="catalogo-criterios">__CATALOGO_CRITERIOS__</script>
 <script type="application/json" id="datos-demo">__DATOS_DEMO__</script>
+<script>__DATOS_LOCALES__</script>
 <script>
 'use strict';
 /* =========================================================
@@ -290,7 +291,7 @@ es:{
  v_embudo:'Embudo', v_tablero:'Tablero', v_gates:'Gates pendientes', v_alertas:'Alertas', v_analisis:'Análisis', v_inventario:'Inventario (T02)', v_datos:'Datos', v_ficha:'Ficha',
  emb_clic:'Pulse la barra para ver en la tabla solo las iniciativas de esta fase; vuelva a pulsar para quitar el filtro.', emb_filtro:'· solo', emb_de:'de {n} con los filtros de arriba', emb_todas:'Mostrar todas',
  demo_tit:'Iniciativas de ejemplo.', demo_panel:'Ver el panel del consejo generado con estas iniciativas', lnk_panel_demo:'Panel del consejo (ejemplo)', lnk_panel:'Panel del consejo',
- demo:'Datos ilustrativos y ficticios. Fecha de referencia: {f}.', sin_dato:'Sin dato', pie_lic:'Código MIT · Contenidos CC BY 4.0 · © 2026 Fernando García Varela · Metodología SEVEN-G', pie_priv:'Los datos se guardan solo en este navegador. No se envía nada a terceros.',
+ demo:'Datos ilustrativos y ficticios. Fecha de referencia: {f}.', sin_dato:'Sin dato', pie_lic:'Código MIT · Contenidos CC BY 4.0 · © 2026 Fernando García Varela · Metodología SEVEN-G', pie_priv:'Los datos se guardan solo en este navegador o, si así se elige, en un fichero de su equipo. No se envía nada a terceros.',
  legal_tit:'Aviso legal y exención de responsabilidad', legal_link:'Aviso legal', legal_ok:'Entendido', legal_otro:'English',
  legal_txt:'SEVEN-G y esta herramienta se ofrecen «tal cual» y con fines exclusivamente informativos. No constituyen asesoramiento jurídico, regulatorio, financiero ni profesional, ni garantizan el cumplimiento de ninguna norma. Los criterios, clasificaciones y referencias a regulación general (Reglamento Europeo de IA, RGPD, DORA, NIS2…) o sectorial pueden ser incompletos, no aplicar a un caso concreto o quedar desactualizados por cambios normativos. Cada organización que use la herramienta es la única responsable de identificar la normativa que le aplica, verificar su vigencia y certificar su propio cumplimiento regulatorio, con el asesoramiento cualificado que corresponda. El autor no asume responsabilidad alguna por el uso de la herramienta ni por las decisiones adoptadas con ella. Los datos de demostración son ficticios.',
  nota_clas:'Clasificación orientativa; la clasificación regulatoria debe realizarla la organización con criterio jurídico cualificado.', anual:'Anual', lectura:'error de lectura',
@@ -310,7 +311,7 @@ en:{
  v_embudo:'Funnel', v_tablero:'Kanban board', v_gates:'Pending gates', v_alertas:'Alerts', v_analisis:'Analysis', v_inventario:'Inventory (T02)', v_datos:'Data', v_ficha:'Record',
  emb_clic:'Click the bar to show only the initiatives in this phase in the table; click again to remove the filter.', emb_filtro:'· only', emb_de:'of {n} with the filters above', emb_todas:'Show all',
  demo_tit:'Example initiatives.', demo_panel:'See the board dashboard generated from these initiatives', lnk_panel_demo:'Board dashboard (example)', lnk_panel:'Board dashboard',
- demo:'Illustrative, fictitious data. Reference date: {f}.', sin_dato:'No data', pie_lic:'Code MIT · Content CC BY 4.0 · © 2026 Fernando García Varela · SEVEN-G Methodology', pie_priv:'Data is stored only in this browser. Nothing is sent to third parties.',
+ demo:'Illustrative, fictitious data. Reference date: {f}.', sin_dato:'No data', pie_lic:'Code MIT · Content CC BY 4.0 · © 2026 Fernando García Varela · SEVEN-G Methodology', pie_priv:'Data is stored only in this browser or, if you choose so, in a file on your computer. Nothing is sent to third parties.',
  legal_tit:'Legal notice and disclaimer', legal_link:'Legal notice', legal_ok:'I understand', legal_otro:'Español',
  legal_txt:'SEVEN-G and this tool are provided “as is” and for information purposes only. They do not constitute legal, regulatory, financial or professional advice, nor do they guarantee compliance with any regulation. The criteria, classifications and references to general regulation (EU AI Act, GDPR, DORA, NIS2…) or sector-specific regulation may be incomplete, may not apply to a specific case or may become outdated as a result of regulatory changes. Each organisation that uses the tool is solely responsible for identifying the regulation that applies to it, verifying that it is current and certifying its own regulatory compliance, with the appropriate qualified advice. The author accepts no liability whatsoever for the use of the tool or for decisions taken with it. The demo data is fictitious.',
  nota_clas:'Indicative classification; the regulatory classification must be carried out by the organisation with qualified legal judgement.', anual:'Annual', lectura:'read error',
@@ -441,16 +442,16 @@ function opts(grupo, sel, vacio){ const g=(LB[UI.lang]||LB.es)[grupo]; let h = v
 function descargar(nombre, contenido, tipo){ const blob=new Blob([contenido],{type:tipo}); const url=URL.createObjectURL(blob); const a=document.createElement('a'); a.href=url; a.download=nombre; document.body.appendChild(a); a.click(); setTimeout(()=>{ URL.revokeObjectURL(url); a.remove(); },500); }
 
 /* ---------------- datos y persistencia ---------------- */
-let DB = null, M = null, GUARDADO = true;
+let DB = null, M = null, GUARDADO = true, CARGA_DEMO = false;
 const OPCIONALES = ['sistemas','riesgos','no_conformidades','incidentes','proveedores','recomendaciones','decisiones_consejo'];
 function normalizar(d){ d.version_esquema=VERSION_ESQUEMA; /* 0.2, 0.3 y 0.4 solo añaden campos opcionales a 0.1 (0.2: bloque «panel» y concepto de los importes; 0.3: alcance de la iniciativa y unidad de cada importe; 0.4: valoración residual, controles, tratamiento y aceptación de cada riesgo, T06; 0.5: evidencia del índice de transformación por iniciativa, oferta habilitada por IA y decisiones del consejo, T14 y T18) */ OPCIONALES.forEach(k=>{ if(!Array.isArray(d[k])) d[k]=[]; }); ['personas','iniciativas','eventos','decisiones_gate','condiciones','evidencias','valores'].forEach(k=>{ if(!Array.isArray(d[k])) d[k]=[]; }); return d; }
 function cargar(){
   const u = lsGet(LS_UI); if(u){ try{ Object.assign(UI, JSON.parse(u)); }catch(e){} }
   const s = lsGet(LS_DATOS);
   if(s){ try{ const d=JSON.parse(s); const v=(typeof validar==='function')? validar(d) : {errores:[]}; if(!v.errores.length){ DB=normalizar(d); return; } }catch(e){} }
-  DB = normalizar(JSON.parse(DEMO_TXT));
+  DB = normalizar(JSON.parse(DEMO_TXT)); CARGA_DEMO = true;
 }
-function guardar(){ GUARDADO = lsSet(LS_DATOS, JSON.stringify(DB)); if(!GUARDADO) toast(t('no_guardado')); }
+function guardar(){ GUARDADO = lsSet(LS_DATOS, JSON.stringify(DB)); if(!GUARDADO) toast(t('no_guardado')); if(window.SevengDatos) SevengDatos.guardado(); }
 function guardarUI(){ lsSet(LS_UI, JSON.stringify({lang:UI.lang,tema:UI.tema,autor:UI.autor,filtros:UI.filtros,filtrosAbiertos:UI.filtrosAbiertos,orden:UI.orden,fichaTab:UI.fichaTab})); }
 function indexar(){
   M = { per:new Map(DB.personas.map(p=>[p.id,p])), ini:new Map(DB.iniciativas.map(i=>[i.id,i])),
@@ -2124,8 +2125,8 @@ function onAccionExtra(acc, b){
         const v=validar(d); if(v.errores.length){ out.innerHTML='<div class="aviso ko"><b>'+esc(t('dt_imp_err'))+'</b><ul>'+v.errores.map(x=>'<li>'+esc(x)+'</li>').join('')+'</ul></div>'; return; }
         abrirDialogo(t(acc==='fusionar'?'dt_fusionar':'dt_importar'), '<p>'+esc(t(acc==='fusionar'?'dt_fus_conf':'dt_imp_conf',{a:DB.iniciativas.length,b:d.iniciativas.length,n:fs.length}))+'</p>'+(v.avisos.length?'<p><b>'+esc(t('dt_imp_avisos'))+'</b></p><ul>'+v.avisos.map(x=>'<li>'+esc(x)+'</li>').join('')+'</ul>':''), ()=>{ DB=normalizar(d); indexar(); toast(t('dt_imp_ok',{n:d.iniciativas.length})); return []; }, t('confirmar'));
       }).catch(err=>ko(err.message||t('dt_json_mal',{e:t('lectura')}))); return; }
-    case 'restaurar': abrirDialogo(t('dt_restaurar'), '<p>'+esc(t('dt_conf_rest'))+'</p>', ()=>{ DB=normalizar(JSON.parse(DEMO_TXT)); indexar(); toast(t('dt_ok_rest')); return []; }, t('confirmar')); return;
-    case 'borrar-local': abrirDialogo(t('dt_borrar'), '<p>'+esc(t('dt_conf_rest'))+'</p>', ()=>{ lsDel(LS_DATOS); DB=normalizar(JSON.parse(DEMO_TXT)); indexar(); toast(t('dt_ok_rest')); setTimeout(()=>lsDel(LS_DATOS),0); return []; }, t('confirmar')); return;
+    case 'restaurar': abrirDialogo(t('dt_restaurar'), '<p>'+esc(t('dt_conf_rest'))+'</p>', ()=>{ DB=normalizar(JSON.parse(DEMO_TXT)); indexar(); SevengDatos.reiniciar('demo'); toast(t('dt_ok_rest')); return []; }, t('confirmar')); return;
+    case 'borrar-local': abrirDialogo(t('dt_borrar'), '<p>'+esc(t('dt_conf_rest'))+'</p>', ()=>{ lsDel(LS_DATOS); DB=normalizar(JSON.parse(DEMO_TXT)); indexar(); SevengDatos.reiniciar('demo'); toast(t('dt_ok_rest')); setTimeout(()=>lsDel(LS_DATOS),0); return []; }, t('confirmar')); return;
     case 'persona': abrirDialogo(t('dlg_persona'), '<div class="rejilla">'+campo('pe-nom',t('nombre'),'<input type="text" id="pe-nom" name="pe-nom">')+campo('pe-car',t('cargo'),'<input type="text" id="pe-car" name="pe-car">')+campo('pe-area',t('area'),'<input type="text" id="pe-area" name="pe-area">')+campo('pe-org',t('organo_p'),'<select id="pe-org" name="pe-org">'+opts('organo_p','','—')+'</select>')+'</div>', f=>{ const n=f['pe-nom'].value.trim(); if(n.length<2) return [t('e_nombre')]; DB.personas.push({id:nextId(DB.personas,'PER-',2), nombre:n, cargo:f['pe-car'].value.trim(), area:f['pe-area'].value.trim(), organo:f['pe-org'].value||null}); return []; }); return;
     case 'proveedor': abrirDialogo(t('dlg_prov'), '<div class="rejilla">'+campo('pv-nom',t('nombre'),'<input type="text" id="pv-nom" name="pv-nom">')+campo('pv-ser',t('servicios'),'<input type="text" id="pv-ser" name="pv-ser">')+campo('pv-exi',t('exigencia'),'<select id="pv-exi" name="pv-exi"><option>N1</option><option selected>N2</option><option>N3</option></select>')+'</div>', f=>{ const n=f['pv-nom'].value.trim(); if(n.length<2) return [t('e_nombre')]; DB.proveedores.push({id:nextId(DB.proveedores,'PRV-',3), nombre:n, servicios:f['pv-ser'].value.trim(), exigencia:f['pv-exi'].value, contrato:null, fecha_evaluacion:null, resultado_evaluacion:'pendiente'}); return []; }); return;
   }
@@ -2352,6 +2353,7 @@ function cabecera(r){
   const lp=$('#lnk-panel'); lp.textContent=t(demo?'lnk_panel_demo':'lnk_panel'); lp.href=demo?PANEL_DEMO:PANEL_T17;
   $('#btn-legal').textContent=t('legal_link');
   $('#pie').innerHTML='<p class="pie-legal"><b>'+esc(t('legal_tit'))+'.</b> '+esc(t('legal_txt'))+' <button type="button" class="enlace-btn" data-acc="aviso-legal" aria-haspopup="dialog">'+esc(t('legal_link'))+'</button></p><span>'+esc(t('pie_lic'))+'</span><span>'+esc(t('pie_priv'))+'</span>';
+  if(window.SevengDatos) SevengDatos.refrescar();
 }
 function render(enfocar){
   const activo=document.activeElement && document.activeElement.id;
@@ -2395,6 +2397,12 @@ document.addEventListener('click', e=>{
 });
 window.addEventListener('hashchange', ()=>render(true));
 cargar(); aplicarTema(); render();
+/* D101: dónde viven los datos (este navegador, un fichero del equipo o la carpeta de datos de la copia de la compañía) */
+SevengDatos.iniciar({codigo:'T01', ficheroServidor:'../datos/T01_registro.json', cargadoDeDemo:CARGA_DEMO,
+  obtener:()=>DB, exportar:()=>conAvisoLegal(DB), aplicar:d=>{ DB=normalizar(d); indexar(); guardar(); render(); },
+  validar:d=>{ try{ return !!d && typeof d==='object' && Array.isArray(d.iniciativas) && !validar(d).errores.length; }catch(e){ return false; } },
+  esDemo:()=>!!(DB.meta&&DB.meta.datos_ilustrativos), idioma:()=>UI.lang, aviso:toast, nombreFichero:()=>'T01_registro_'+hoy()+'.json',
+  ayudaHref:()=>'../../html/'+(UI.lang==='en'?'en':'es')+'/03_SEVEN-G_Herramientas_y_registro_de_iniciativas.html#'+(UI.lang==='en'?'2-1-where-the-data-of-the-tools-lives':'2-1-donde-viven-los-datos-de-las-herramientas')});
 if(lsGet(LS_LEGAL)!=='1') abrirLegal();
 </script>
 </body>

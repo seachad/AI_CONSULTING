@@ -513,6 +513,43 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 </tbody>
 </table></div>
+<h3 id="2-1-donde-viven-los-datos-de-las-herramientas">2.1 Dónde viven los datos de las herramientas</h3>
+<p>Las aplicaciones de referencia (<a href="../../herramientas/T01_registro_iniciativas/registro.html" title="Herramienta T01 &#183; Registro de iniciativas">T01</a>, <a href="../../herramientas/T11_calculadora_valor/calculadora.html" title="Herramienta T11 &#183; Lienzo y calculadora de hip&#243;tesis de valor">T11</a> con <a href="../../herramientas/T11_calculadora_valor/calculadora.html#/costes" title="Herramienta T13 &#183; Calculadora de costes por caso">T13</a>, <a href="../../herramientas/T14_indice_transformacion/indice.html" title="Herramienta T14 &#183; Calculadora del &#237;ndice de transformaci&#243;n">T14</a> y <a href="../../herramientas/T15_diagnostico_madurez/madurez.html" title="Herramienta T15 &#183; Diagn&#243;stico de madurez">T15</a>) se publican con <strong>datos de ejemplo ficticios que nadie puede cambiar en el sitio</strong>: el sitio es estático y no tiene servidor de aplicaciones ni base de datos. Lo que cada persona introduce se guarda en uno de tres lugares, y el botón <strong>«Datos: …»</strong> de la barra de cada herramienta dice en cuál está y abre el diálogo «Dónde están mis datos» para cambiarlo:</p>
+<div class="tabla"><table>
+<thead>
+<tr>
+<th>Dónde</th>
+<th>Para qué sirve</th>
+<th>Qué hay que saber</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Solo en el navegador</strong> (por defecto)</td>
+<td>Probar la herramienta con datos propios sin instalar nada.</td>
+<td>Cada cambio se guarda en el almacenamiento local de ese navegador y ese equipo; nadie más lo ve. Se pierde si se limpia el navegador y no está disponible desde otro equipo. La primera vez que se cambia algo, la herramienta lo avisa.</td>
+</tr>
+<tr>
+<td><strong>Un fichero JSON del equipo</strong></td>
+<td>Trabajar en serio una persona o un equipo pequeño.</td>
+<td>La herramienta reescribe el fichero con cada cambio y lo vuelve a leer al abrirla (Microsoft Edge o Google Chrome; en otros navegadores, exportar e importar a mano). El fichero es el mismo que descarga «Exportar»: se puede copiar, compartir, importar en otra herramienta o usar para regenerar el panel del consejo (<a href="../../herramientas/T17_panel_consejo/index.html" title="Herramienta T17 &#183; Panel de IA para el consejo">T17</a>). Puede estar en una carpeta sincronizada de la compañía.</td>
+</tr>
+<tr>
+<td><strong>Una copia del sitio en el servidor de la compañía</strong></td>
+<td>Que toda la compañía vea la misma versión de la cartera.</td>
+<td>El sitio entero (documentos, plantillas y herramientas) se copia a un servidor interno. Si en esa copia existe la carpeta <code>herramientas/datos/</code> con el fichero de una herramienta, esta lo carga en lugar de los datos de ejemplo. Los cambios se siguen guardando en cada navegador o en un fichero; publicar una versión nueva es sustituir el fichero de la carpeta.</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>Por qué importa.</strong> Sin esta regla, quien entra al sitio público podría creer que edita una cartera compartida, o temer que sus datos se quedan en el sitio. Ninguna de las dos cosas ocurre: nada de lo que se introduce sale del equipo de quien lo introduce, y lo único que puede compartirse es un fichero JSON que la compañía custodia donde decida. El principio 6 (los datos son de la compañía) se cumple por construcción.</p>
+<p><strong>Cómo montar la copia de la compañía.</strong></p>
+<ol>
+<li>Descargue el sitio completo (el repositorio publicado o su carpeta generada) y sírvalo <strong>por http</strong> desde un servidor interno: cualquier servidor de ficheros estáticos vale; no hace falta base de datos ni servidor de aplicaciones. Los HTML abiertos como ficheros sueltos (doble clic) funcionan, pero no consultan la carpeta de datos.</li>
+<li>Cree la carpeta <code>SEVEN-G/herramientas/datos/</code> y ponga en ella los JSON exportados por las herramientas que use: <code>T01_registro.json</code> (registro de iniciativas), <code>T11_calculadora.json</code> (hipótesis de valor y costes), <code>T14_indice.json</code> (índice de transformación) y <code>T15_madurez.json</code> (diagnóstico de madurez).</li>
+<li>Regenere el panel del consejo con la herramienta <a href="../../herramientas/T17_panel_consejo/index.html" title="Herramienta T17 &#183; Panel de IA para el consejo">T17</a> (<code>t01_a_panel.py</code>, Python 3.11 y <code>uv</code>) a partir de <code>T01_registro.json</code> y publique su salida en la carpeta a la que enlazan el registro y la portada de la copia; hasta entonces se ve el panel de ejemplo, con su aviso de datos ficticios.</li>
+<li>En cada sesión de trabajo: exportar desde la herramienta y sustituir el fichero de la carpeta. Quien tenga cambios en su navegador o en su fichero los conserva; el diálogo «Dónde están mis datos» le muestra que en el servidor hay una versión y le permite cargarla.</li>
+<li>Ningún dato sale de la compañía: la copia no envía nada a terceros. La medición agregada de visitas (<a href="04_SEVEN-G_Origenes_diferencias_y_por_que_es_abierto.html" title="Documento 04 &#183; De d&#243;nde viene SEVEN-G, en qu&#233; se diferencia y por qu&#233; es abierto">documento 04</a> §6.2) solo actúa en los dominios del sitio público, nunca en un dominio interno.</li>
+</ol>
 <hr />
 <h2 id="el-registro-de-iniciativas"><span class="antetitulo">03</span>El registro de iniciativas</h2>
 <h3 id="3-1-la-analogia-con-un-crm">3.1 La analogía con un CRM</h3>

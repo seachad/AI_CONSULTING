@@ -47,6 +47,7 @@ flowchart LR
 2. The first time, the demo data is loaded: a banner states that the **initiatives are examples** and links, as the header does, to the **board dashboard generated from those same initiatives** (T17). With your own data, the link leads to the connector page. From then on, every change is saved automatically in the browser’s local storage (`localStorage`), tied to that browser and that file path.
 3. Language (ES/EN) and theme (auto, light or dark) are selected at the top right. The preference is remembered.
 4. In **Data**, set the *reference date* (cut-off date for days and alerts). The demo data sets it to 16-09-2026; empty means “today”.
+5. The **"Data: …"** button in the bar says where the data is (sample, this browser, a file on the computer or the company's server) and opens the "Where my data is" dialog with the three ways to keep it (document 03 §2.1): only in this browser (default; the first time something is changed, a banner says so); in a **JSON file on the computer** that the tool rewrites with every change and reads again when opened (Edge or Chrome; the file is the same one "Export" downloads); or, in a copy of the site served over http within the company, the file `herramientas/datos/T01_registro.json`, which replaces the sample data for the whole company. On the public site that folder does not exist.
 
 The application does not send data to third parties or load external resources (it uses system fonts; Google Fonts is not linked so that no browsing data is shared).
 
