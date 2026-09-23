@@ -485,6 +485,7 @@ Failing to declare a conflict that has affected a *gate* decision is a **major n
 | Document | Relationship |
 |---|---|
 | **01 · Foundational methodology** | Normative source for roles, bodies, incompatibilities, *gates* and nonconformities. |
+| **54 · How a company organises itself for AI** | How these bodies are assigned in a real organisation chart and which patterns are seen in the market. |
 | **03 · Tools and initiative register** | Decision register, reference time limits and stalled initiatives. |
 | **13 · AI thesis, ambition and risk appetite** | Thresholds for the delegation matrix. |
 | **21 · *Gate* and audit criteria** | What is verified and decided at each *gate*. |
