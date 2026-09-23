@@ -1,0 +1,1909 @@
+<!DOCTYPE html>
+<html lang="es" data-theme="salmon">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>C&#243;mo se organiza una compa&#241;&#237;a para la IA</title>
+<script>
+  try { var t = localStorage.getItem('seveng-tema'); if (t) document.documentElement.setAttribute('data-theme', t); } catch (e) {}
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;0,8..60,700;0,8..60,800;1,8..60,400&family=Libre+Franklin:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+/* SEVEN-G · Estilo de periódico económico en tonos salmón
+   Temas: salmon (por defecto), claro (salmón claro), noche. El PDF usa siempre "salmon". */
+:root, :root[data-theme="salmon"] {
+  --papel: #fbe2cd;
+  --papel-2: #f3cfb2;
+  --papel-3: #eabd9a;
+  --tinta: #2f2b28;
+  --tinta-2: #564d47;
+  --tinta-3: #71645b;
+  --negro: #1a1817;
+  --regla: #c9a78d;
+  --regla-2: #e7c6ab;
+  --claret: #990f3d;
+  --oxford: #0f5499;
+  --teal: #0d7680;
+  --velvet: #593380;
+  --resaltado: #ffc35c;
+  --escala-texto: 1;
+  --serif: "Source Serif 4", Georgia, "Times New Roman", serif;
+  --sans: "Libre Franklin", "Segoe UI", Arial, sans-serif;
+  color-scheme: light;
+}
+:root[data-theme="claro"] {
+  --papel: #fff1e5; --papel-2: #f2dfce; --papel-3: #ead2bd;
+  --tinta: #33302e; --tinta-2: #5f5955; --tinta-3: #766d66; --negro: #1a1817;
+  --regla: #ccc1b7; --regla-2: #e3d3c4; --resaltado: #ffd27a;
+}
+:root[data-theme="noche"] {
+  --papel: #262a33; --papel-2: #30353f; --papel-3: #3a404b;
+  --tinta: #f2e6dc; --tinta-2: #cdbfb3; --tinta-3: #a3978d; --negro: #fff1e5;
+  --regla: #4c525d; --regla-2: #393e48;
+  --claret: #ff7a9e; --oxford: #6ea8ee; --teal: #4fc6c1; --velvet: #bb94e6; --resaltado: #a8741f;
+  color-scheme: dark;
+}
+* { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; background: var(--papel); }
+body {
+  margin: 0;
+  background: var(--papel);
+  color: var(--tinta);
+  font-family: var(--serif);
+  font-size: calc(18px * var(--escala-texto));
+  line-height: 1.62;
+}
+a { color: var(--oxford); text-decoration-thickness: 1px; text-underline-offset: 3px; }
+
+/* ---------- Portada ---------- */
+.portada { max-width: 1120px; margin: 0 auto; padding: 0 16px; }
+.cabecera {
+  display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-end; gap: 8px 24px;
+  padding: 22px 0 12px; border-bottom: 4px solid var(--negro); position: relative;
+}
+.cabecera:after { content: ""; position: absolute; left: 0; right: 0; bottom: -8px; border-bottom: 1px solid var(--negro); }
+.marca { font: 800 30px/1 var(--serif); letter-spacing: .04em; color: var(--negro); display: flex; align-items: center; gap: 10px; }
+.marca i { width: 12px; height: 12px; background: var(--claret); display: inline-block; }
+.cabecera-dato { font: 500 13px/1.3 var(--sans); color: var(--tinta-2); text-align: right; }
+.portada-cuerpo { padding: 56px 0 40px; }
+.antetitulo { font: 700 13px/1.3 var(--sans); letter-spacing: .09em; text-transform: uppercase; color: var(--claret); margin: 0 0 16px; }
+.portada h1 { font: 600 clamp(38px, 6.4vw, 78px)/1.02 var(--serif); letter-spacing: -.015em; color: var(--negro); margin: 0 0 22px; max-width: 980px; }
+.entradilla { font: 400 clamp(19px, 2.2vw, 24px)/1.45 var(--sans); color: var(--tinta-2); max-width: 820px; margin: 0 0 26px; }
+.firma { font: 400 14px/1.5 var(--sans); color: var(--tinta-2); display: flex; flex-wrap: wrap; gap: 4px 18px; padding-top: 14px; border-top: 1px solid var(--regla); max-width: 820px; }
+.firma b { color: var(--negro); font-weight: 700; }
+.cifras { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); margin: 44px 0 0; border-top: 1px solid var(--negro); }
+.cifra { padding: 16px 18px 6px 0; }
+.cifra + .cifra { padding-left: 18px; border-left: 1px solid var(--regla); }
+.cifra b { display: block; font: 600 clamp(44px, 5vw, 60px)/1 var(--serif); color: var(--claret); }
+.cifra:nth-child(2) b { color: var(--oxford); }
+.cifra:nth-child(3) b { color: var(--teal); }
+.cifra:nth-child(4) b { color: var(--velvet); }
+.cifra span { display: block; font: 500 14px/1.35 var(--sans); color: var(--tinta-2); margin-top: 8px; }
+@media (max-width: 560px) { .cifra + .cifra { padding-left: 0; border-left: 0; border-top: 1px solid var(--regla); } }
+
+/* ---------- Índice ---------- */
+.indice { max-width: 1120px; margin: 8px auto 0; padding: 0 16px; }
+.indice-in { border-top: 4px solid var(--negro); padding-top: 12px; }
+.indice h2 { all: unset; display: block; font: 700 13px/1 var(--sans); letter-spacing: .09em; text-transform: uppercase; color: var(--tinta-2); margin-bottom: 12px; }
+.indice ol { list-style: none; margin: 0; padding: 0; columns: 2 300px; column-gap: 40px; }
+.indice li { break-inside: avoid; border-bottom: 1px solid var(--regla-2); }
+.indice a { display: grid; grid-template-columns: 34px 1fr; padding: 8px 0; color: var(--tinta); text-decoration: none; font: 500 16px/1.35 var(--sans); }
+.indice a span { font: 600 17px/1.2 var(--serif); color: var(--claret); }
+.indice a:hover { color: var(--oxford); }
+
+/* ---------- Cuerpo ---------- */
+.contenido { display: grid; grid-template-columns: 1fr min(760px, calc(100% - 32px)) 1fr; padding-bottom: 72px; }
+.contenido > * { grid-column: 2; }
+.contenido > .tabla, .contenido > .grafico, .contenido > pre {
+  grid-column: 1 / -1; width: calc(100% - 32px); max-width: 1080px; justify-self: center;
+}
+h2 {
+  font: 600 clamp(28px, 3.4vw, 38px)/1.15 var(--serif); color: var(--negro); letter-spacing: -.01em;
+  margin: 72px 0 18px; padding-top: 14px; border-top: 4px solid var(--negro); scroll-margin-top: 16px;
+}
+h2 .antetitulo { display: block; font-size: 13px; margin: 0 0 10px; }
+h3 { font: 600 24px/1.25 var(--serif); color: var(--negro); margin: 40px 0 10px; }
+h4 { font: 700 15px/1.3 var(--sans); letter-spacing: .06em; text-transform: uppercase; color: var(--tinta-2); margin: 30px 0 8px; }
+p { margin: 0 0 16px; }
+ul, ol { margin: 0 0 18px; padding-left: 24px; }
+li { margin-bottom: 6px; }
+li::marker { color: var(--claret); }
+strong { font-weight: 700; color: var(--negro); }
+hr { display: none; }
+
+blockquote { margin: 28px 0 32px; padding: 4px 0 4px 26px; border-left: 4px solid var(--claret); }
+blockquote p {
+  font: 400 clamp(23px, 2.8vw, 31px)/1.28 var(--serif);
+  color: var(--negro);
+  margin: 0;
+}
+blockquote p strong {
+  font-weight: 700;
+  color: var(--negro);
+}
+
+code { font: 500 .85em/1 Consolas, "Cascadia Mono", monospace; background: var(--papel-2); padding: 2px 5px; }
+/* en pantallas estrechas, una URL o una fórmula larga se parte en vez de salirse de la página */
+main a, :not(pre) > code { overflow-wrap: anywhere; }
+:not(pre) > code { line-height: 1.5; }
+pre { background: var(--papel-2); padding: 16px 18px; overflow-x: auto; font-size: 14px; line-height: 1.4; border-top: 1px solid var(--negro); }
+pre code { background: none; padding: 0; }
+
+/* Tablas */
+.tabla { overflow-x: auto; margin: 22px 0 30px; }
+table { border-collapse: collapse; width: 100%; font: 400 15.5px/1.45 var(--sans); }
+thead th {
+  text-align: left; vertical-align: bottom; font: 700 13px/1.3 var(--sans); color: var(--tinta-2);
+  padding: 10px 14px 8px 0; border-bottom: 2px solid var(--negro);
+}
+td { padding: 11px 14px 11px 0; border-bottom: 1px solid var(--regla); vertical-align: top; }
+tr:has(td:nth-child(3)) td:first-child { font-weight: 700; color: var(--negro); }
+tbody tr:hover td { background: color-mix(in srgb, var(--papel-2) 60%, transparent); }
+
+/* ---------- Gráficos ---------- */
+.grafico { margin: 34px 0 40px; border-top: 1px solid var(--negro); padding-top: 12px; }
+.g-titulo { font: 700 19px/1.3 var(--sans); color: var(--negro); margin: 0 0 2px; }
+.g-sub { font: 400 15px/1.4 var(--sans); color: var(--tinta-2); margin: 0 0 18px; }
+.g-fuente { font: 400 13px/1.4 var(--sans); color: var(--tinta-3); margin-top: 12px; }
+.g-lienzo { overflow-x: auto; }
+.g-lienzo svg { display: block; width: 100%; height: auto; }
+.g-lienzo.ancho svg { min-width: 720px; }
+.g-lienzo pre.mermaid { background: none; border: 0; padding: 0; display: flex; justify-content: center; min-width: 620px; margin: 0; }
+.g-lienzo pre.mermaid svg { width: auto; height: auto; max-width: 100%; max-height: 620px; }
+
+/* Clases para textos y trazos de SVG que dependen del tema */
+.sv-t { fill: var(--tinta); font-family: var(--sans); }
+.sv-t2 { fill: var(--tinta-2); font-family: var(--sans); }
+.sv-t3 { fill: var(--tinta-3); font-family: var(--sans); }
+.sv-serif { font-family: var(--serif); }
+.sv-panel { fill: var(--papel-2); }
+.sv-caja { fill: var(--papel); stroke: var(--oxford); }
+.sv-regla { stroke: var(--tinta-3); fill: none; }
+.sv-flecha { fill: var(--tinta-2); }
+.sv-blanco { fill: #fff; font-family: var(--sans); }
+
+/* Esferas: diagrama + leyenda */
+.dos { display: grid; grid-template-columns: 1fr; gap: 26px; align-items: center; }
+@media (min-width: 860px) { .dos { grid-template-columns: 1.1fr 1fr; } }
+.leyenda { display: grid; gap: 14px; font-family: var(--sans); }
+.leyenda div { display: grid; grid-template-columns: 16px 1fr; gap: 12px; padding-bottom: 12px; border-bottom: 1px solid var(--regla-2); }
+.leyenda i { width: 16px; height: 16px; margin-top: 3px; }
+.leyenda b { display: block; font-size: 16px; color: var(--negro); }
+.leyenda span { font-size: 14.5px; color: var(--tinta-2); line-height: 1.45; }
+
+/* Espectro */
+.espectro { font-family: var(--sans); }
+.espectro-in { min-width: 640px; }
+.eje { display: flex; justify-content: space-between; font: 700 12px/1 var(--sans); letter-spacing: .09em; text-transform: uppercase; color: var(--tinta-2); }
+.pista { height: 8px; margin: 40px 0 0; background: linear-gradient(90deg, #9bb5cf, var(--oxford) 28%, var(--teal) 60%, var(--velvet)); }
+.perfiles { position: relative; height: 110px; }
+.perfil { position: absolute; top: -16px; transform: translateX(-50%); width: 150px; text-align: center; }
+.perfil i { display: block; width: 24px; height: 24px; margin: 0 auto 10px; border-radius: 50%; background: var(--papel); border: 5px solid var(--c); }
+.perfil b { display: block; font-size: 14.5px; line-height: 1.25; color: var(--negro); }
+.perfil span { font-size: 13px; color: var(--tinta-3); }
+.falsa { margin-top: 10px; border-top: 2px solid var(--claret); background: color-mix(in srgb, var(--claret) 7%, transparent); padding: 14px 16px; display: grid; grid-template-columns: 34px 1fr; gap: 12px; }
+.falsa .ic { width: 34px; height: 34px; background: var(--claret); color: #fff; display: grid; place-items: center; font: 800 18px/1 var(--serif); }
+.falsa b { color: var(--claret); font-size: 16px; }
+.falsa p { margin: 2px 0 0; font: 400 15px/1.45 var(--sans); color: var(--tinta-2); }
+:root[data-theme="noche"] .falsa .ic { color: #1a1817; }
+
+
+/* ---------- Barra de herramientas ---------- */
+.oculto { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+.barra { position: sticky; top: 0; z-index: 50; background: color-mix(in srgb, var(--papel) 94%, transparent); backdrop-filter: blur(6px); border-bottom: 1px solid var(--regla); }
+.barra-in { position: relative; max-width: 1120px; margin: 0 auto; padding: 8px 16px; display: flex; flex-wrap: nowrap; align-items: center; gap: 4px; font: 500 14px/1.2 var(--sans); white-space: nowrap; overflow-x: auto; }
+.barra-marca { display: flex; align-items: center; gap: 7px; font: 800 17px/1 var(--serif); letter-spacing: .04em; color: var(--negro); text-decoration: none; }
+.barra-marca i { width: 9px; height: 9px; background: var(--claret); }
+.barra-seccion { flex: 1 1 160px; min-width: 0; color: var(--tinta-2); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.btn, .barra select, .barra input[type=search], .panel-indice input {
+  font: 600 13px/1 var(--sans); color: var(--tinta); background: var(--papel); border: 1px solid var(--regla); border-radius: 2px; padding: 7px 10px; height: 32px;
+}
+.btn { cursor: pointer; }
+.btn-enlace { text-decoration: none; display: inline-flex; align-items: center; }
+.btn-nav { width: 32px; min-width: 32px; padding: 0; display: inline-grid; place-items: center; font-size: 15px; color: var(--tinta); }
+.btn-nav:disabled { opacity: .4; cursor: default; }
+.btn:hover, .barra select:hover { border-color: var(--tinta-2); }
+.btn:focus-visible, .barra select:focus-visible, .barra input:focus-visible, .panel-indice input:focus-visible, .idioma a:focus-visible { outline: 2px solid var(--oxford); outline-offset: 1px; }
+.btn-icono { width: 32px; padding: 0; }
+.buscar { display: flex; align-items: center; gap: 4px; }
+.barra input[type=search] { width: 120px; font-weight: 500; }
+.buscar-cuenta { min-width: 36px; font-size: 12px; color: var(--tinta-2); text-align: right; }
+/* buscador de términos en esta página o en todo el sitio (D105): selector de ámbito y lista de resultados del sitio; el «Buscador de
+   documentos» (control de códigos, codigos.js) toma el ancho justo de su rótulo para que la barra quepa a 1120 px sin desplazamiento */
+.barra .ir-codigo input { width: 176px; padding: 6px 6px; }
+.barra .ir-codigo { gap: 4px; }
+.buscar-ambito { display: inline-flex; }
+.buscar-ambito select { max-width: 11em; padding-left: 6px; padding-right: 6px; }
+.buscar [hidden] { display: none; }
+.buscar-lista { position: fixed; z-index: 1000; box-sizing: border-box; width: min(36em, calc(100vw - 16px)); max-height: 70vh; overflow-y: auto; background: var(--papel); border: 1px solid var(--negro); box-shadow: 0 8px 24px rgba(0, 0, 0, .25); font: 500 14px/1.25 var(--sans); white-space: normal; text-align: left; }
+.buscar-lista[hidden] { display: none; }
+.buscar-lista a { display: block; padding: 8px 10px; color: var(--tinta); text-decoration: none; border-bottom: 1px solid var(--regla-2); }
+.buscar-lista a b { display: block; color: var(--claret); font-weight: 700; }
+.buscar-lista a i { display: block; font-style: normal; font-size: 12.5px; color: var(--tinta-2); }
+.buscar-lista a span { display: block; margin-top: 2px; font-size: 12.5px; line-height: 1.4; color: var(--tinta-2); }
+.buscar-lista a span mark { background: var(--resaltado); color: var(--tinta); padding: 0 1px; border-radius: 2px; }
+.buscar-lista a.activo, .buscar-lista a:hover { background: var(--papel-2); }
+.buscar-lista p { margin: 0; padding: 8px 10px; font-size: 12.5px; line-height: 1.4; color: var(--tinta-2); }
+.buscar-lista p.grupo { padding: 5px 10px; font-size: 11.5px; font-weight: 700; letter-spacing: .05em; text-transform: uppercase; color: var(--claret); background: var(--papel-2); border-bottom: 1px solid var(--regla-2); }
+@media print { .buscar-lista { display: none !important; } }
+.idioma { display: flex; border: 1px solid var(--regla); border-radius: 2px; overflow: hidden; }
+.idioma a, .idioma span { font: 700 12px/30px var(--sans); padding: 0 9px; color: var(--tinta-2); text-decoration: none; letter-spacing: .05em; }
+.idioma .activo { background: var(--negro); color: var(--papel); }
+.idioma span.no-disponible { opacity: .45; }
+@media (max-width: 760px) {
+  .barra-seccion { display: none; }
+  .barra input[type=search] { width: 112px; }
+  .buscar-cuenta { min-width: 30px; }
+  .buscar-ambito select { max-width: 8.5em; }
+  .idioma a, .idioma span { padding: 0 6px; }
+}
+mark.hallazgo { background: var(--resaltado); color: inherit; padding: 0 1px; border-radius: 2px; }
+mark.hallazgo.actual { background: var(--claret); color: #fff; }
+:root[data-theme="noche"] mark.hallazgo.actual { color: #1a1817; }
+
+/* ---------- Índice rápido ---------- */
+.velo { position: fixed; inset: 0; background: rgba(26, 24, 23, .35); z-index: 59; }
+/* los paneles laterales esperan fuera de la pantalla: sin este recorte ensanchan la página en el móvil y dejan un desplazamiento horizontal vacío.
+   «clip» (y no «hidden») para no anular la barra fija ni el desplazamiento vertical */
+html { overflow-x: clip; }
+.panel-indice { position: fixed; top: 0; right: 0; bottom: 0; width: min(400px, 92vw); z-index: 60; background: var(--papel); border-left: 4px solid var(--negro);
+  transform: translateX(105%); transition: transform .2s ease; display: flex; flex-direction: column; font-family: var(--sans); visibility: hidden; }
+.panel-indice.abierto { transform: none; visibility: visible; }
+.panel-cab { display: flex; justify-content: space-between; align-items: center; padding: 14px 16px 10px; font-size: 13px; letter-spacing: .09em; text-transform: uppercase; }
+.panel-indice input { margin: 0 16px 10px; font-weight: 500; }
+.panel-indice ol { list-style: none; margin: 0; padding: 0 16px 24px; overflow-y: auto; }
+.panel-indice li a { display: grid; grid-template-columns: 30px 1fr; gap: 4px; padding: 7px 0; color: var(--tinta); text-decoration: none; border-bottom: 1px solid var(--regla-2); font-size: 15px; line-height: 1.3; }
+.panel-indice li a span { font: 600 15px/1.3 var(--serif); color: var(--claret); }
+.panel-indice li.n2 a { font-weight: 700; }
+.panel-indice li.n3 a { padding-left: 30px; grid-template-columns: 1fr; font-size: 14px; color: var(--tinta-2); }
+.panel-indice li.grupo { margin-top: 12px; padding: 7px 0; border-bottom: 1px solid var(--negro); font: 700 11px/1.2 var(--sans); letter-spacing: .08em; text-transform: uppercase; color: var(--tinta-2); }
+.panel-indice li.vacio { font: 500 14px/1.4 var(--sans); color: var(--tinta-2); padding: 12px 0; }
+.panel-indice li small { display: block; margin: 4px 0 10px 34px; font: 500 12px/1.3 var(--sans); color: var(--tinta-3); }
+.panel-indice li a:hover, .panel-indice li a.actual { color: var(--oxford); }
+.panel-indice li a.actual { box-shadow: inset 3px 0 0 var(--oxford); padding-left: 8px; }
+.panel-indice li.n3 a.actual { padding-left: 38px; }
+.descargas-lista { padding: 14px 16px 20px; display: grid; gap: 10px; }
+.descarga-item { display: block; padding: 10px 12px; background: var(--papel-2); border: 1px solid var(--regla); text-decoration: none; color: var(--negro); font: 600 14px/1.35 var(--sans); }
+.descarga-item:hover { border-color: var(--oxford); color: var(--oxford); }
+.descarga-item span { display: block; font-size: 12px; text-transform: uppercase; letter-spacing: .08em; color: var(--tinta-2); margin-bottom: 4px; }
+h2[id], h3[id] { scroll-margin-top: 64px; }
+/* fila de una tabla de códigos a la que lleva el control «Ir a código» (D88) */
+tr[id^="cod-"] { scroll-margin-top: 110px; }
+tr[id^="cod-"]:target > td { background: color-mix(in srgb, var(--oxford) 14%, transparent); box-shadow: inset 0 2px 0 var(--oxford), inset 0 -2px 0 var(--oxford); }
+h2[id]:target, h3[id]:target { box-shadow: -14px 0 0 -8px var(--claret); }
+/* ---------- Pie ---------- */
+.pie { max-width: 1120px; margin: 0 auto; padding: 0 16px 36px; }
+.pie div { border-top: 4px solid var(--negro); padding-top: 12px; font: 400 13px/1.5 var(--sans); color: var(--tinta-3); display: flex; flex-wrap: wrap; justify-content: space-between; gap: 6px 20px; }
+.pie-ia { margin: 10px 0 0; font: 500 12px/1.45 var(--sans); color: var(--tinta-3); }
+
+/* ---------- Impresión (coherente con pantalla) ---------- */
+@page {
+  size: A4; margin: 16mm 15mm 18mm; background: #fbe2cd;
+  @bottom-right { content: counter(page) " / " counter(pages); font: 8.5pt "Libre Franklin", "Segoe UI", sans-serif; color: #71645b; }
+}
+@page :first { @bottom-left { content: none; } @bottom-right { content: none; } }
+@media print {
+  :root, :root[data-theme] {
+    --papel: #fbe2cd; --papel-2: #f3cfb2; --papel-3: #eabd9a; --tinta: #2f2b28; --tinta-2: #564d47; --tinta-3: #71645b;
+    --negro: #1a1817; --regla: #c9a78d; --regla-2: #e7c6ab; --claret: #990f3d; --oxford: #0f5499; --teal: #0d7680; --velvet: #593380;
+  }
+  html, body { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  body { font-size: 10.5pt; }
+  .portada, .indice, .pie { padding: 0; max-width: none; }
+  .portada { min-height: 262mm; display: flex; flex-direction: column; break-after: page; }
+  .portada-cuerpo { flex: 1; display: flex; flex-direction: column; justify-content: center; padding: 0; }
+  .portada h1 { font-size: 46pt; }
+  .cifras { grid-template-columns: repeat(4, 1fr); }
+  .cifra b { font-size: 34pt; }
+  .indice { margin: 0 0 4mm; }
+  .contenido { display: block; padding: 0; }
+  .contenido > .tabla, .contenido > .grafico, .contenido > pre { width: 100%; }
+  h2 { font-size: 22pt; margin-top: 12mm; break-after: avoid; break-inside: avoid; }
+  h3 { font-size: 14pt; break-after: avoid; }
+  h4, p:has(> strong:only-child) { break-after: avoid; }
+  blockquote p { font-size: 17pt; }
+  table { font-size: 9pt; }
+  thead { display: table-header-group; }
+  tr, .grafico, blockquote, .falsa, .leyenda div { break-inside: avoid; }
+  .g-lienzo.ancho svg, .espectro-in, .g-lienzo pre.mermaid { min-width: 0; }
+  .g-lienzo pre.mermaid svg { max-height: 120mm; }
+  .dos { grid-template-columns: 1.1fr 1fr; }
+  .pie, .barra, .panel-indice, .velo { display: none !important; }
+  mark.hallazgo { background: none; color: inherit; }
+  a { color: inherit; text-decoration: none; }
+}
+
+/* Aviso legal y exención de responsabilidad (primer bloque de cada documento) */
+blockquote.aviso-legal { margin: 8px 0 36px; padding: 12px 16px; border-left: 4px solid var(--claret); background: color-mix(in srgb, var(--claret) 6%, transparent); }
+blockquote.aviso-legal p { font: 400 14.5px/1.55 var(--sans); color: var(--tinta-2); margin: 0; }
+blockquote.aviso-legal strong { color: var(--negro); }
+@media print { blockquote.aviso-legal p { font-size: 8.5pt; } blockquote.aviso-legal { break-inside: avoid; } }
+/* Avisos plegados en pantalla (D93): una línea con su título; al pulsar se despliegan. En el PDF (print) van siempre completos. */
+@media screen {
+  blockquote.aviso-legal { cursor: pointer; position: relative; padding-right: 40px; }
+  blockquote.aviso-legal::after { content: "▾"; position: absolute; right: 14px; top: 10px; font: 700 15px/1.4 var(--sans); color: var(--claret); }
+  blockquote.aviso-legal.plegado::after { content: "▸"; }
+  blockquote.aviso-legal.plegado { margin-bottom: 10px; padding-top: 8px; padding-bottom: 8px; }
+  blockquote.aviso-legal.plegado + :not(blockquote.aviso-legal) { margin-top: 28px; }
+  blockquote.aviso-legal.plegado p { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  blockquote.aviso-legal.plegado p:not(:first-child) { display: none; }
+  blockquote.aviso-legal:focus-visible { outline: 2px solid var(--oxford); outline-offset: 2px; }
+}
+
+/* ---------- Recuadro «Lo esencial» (D75): qué es obligatorio del documento, tras el aviso legal ---------- */
+.esencial { margin: 8px 0 40px; padding: 16px 20px 14px; border: 1px solid var(--regla); border-top: 4px solid var(--teal); background: var(--papel-2); }
+.esencial[data-capa="enterprise"] { border-top-color: var(--velvet); }
+.esencial[data-capa="condicional"] { border-top-color: var(--oxford); }
+.esencial[data-capa="recomendado"], .esencial[data-capa="consulta"] { border-top-color: var(--tinta-2); }
+.es-cab { display: flex; flex-wrap: wrap; align-items: baseline; gap: 6px 14px; margin: 0 0 8px; }
+.es-rotulo { font: 800 13px/1.2 var(--sans); letter-spacing: .09em; text-transform: uppercase; color: var(--negro); }
+.es-nivel { font: 700 12px/1 var(--sans); letter-spacing: .04em; color: #fff; background: var(--teal); padding: 5px 8px; }
+.esencial[data-capa="enterprise"] .es-nivel { background: var(--velvet); }
+.esencial[data-capa="condicional"] .es-nivel { background: var(--oxford); }
+.esencial[data-capa="recomendado"] .es-nivel, .esencial[data-capa="consulta"] .es-nivel { background: var(--tinta-2); }
+:root[data-theme="noche"] .es-nivel { color: #1a1817; }
+.esencial p { font: 400 16px/1.55 var(--sans); color: var(--tinta); margin: 0; }
+.esencial p.es-pie { margin-top: 10px; font-size: 13.5px; }
+@media print { .esencial { break-inside: avoid; margin-bottom: 18pt; } .esencial p { font-size: 9.5pt; } .esencial p.es-pie { font-size: 8pt; } .es-nivel { print-color-adjust: exact; -webkit-print-color-adjust: exact; } }
+
+/* ---------- Zona de descargas y herramientas (bajo la portada) ---------- */
+.descargas-zona { max-width: 1120px; margin: 6px auto 30px; padding: 0 16px; }
+.dz-in { border-top: 4px solid var(--negro); border-bottom: 1px solid var(--regla); padding: 14px 0 16px; display: grid; gap: 14px 40px; grid-template-columns: 1fr; }
+@media (min-width: 900px) { .dz-in { grid-template-columns: auto 1fr; } }
+.dz-titulo { font: 700 13px/1.2 var(--sans); letter-spacing: .09em; text-transform: uppercase; color: var(--tinta-2); margin: 0 0 10px; }
+.dz-enlaces { display: flex; flex-wrap: wrap; gap: 8px; }
+.dz-item { display: inline-flex; align-items: center; gap: 10px; padding: 8px 14px 8px 8px; background: var(--papel-2); border: 1px solid var(--regla); color: var(--negro); text-decoration: none; font: 600 14px/1.25 var(--sans); }
+.dz-item:hover, .dz-item:focus-visible { border-color: var(--oxford); color: var(--oxford); outline: none; }
+.dz-tipo { font: 800 11px/1 var(--sans); letter-spacing: .06em; color: #fff; background: var(--claret); padding: 5px 6px; min-width: 34px; text-align: center; }
+.dz-tipo.html { background: var(--oxford); }
+.dz-tipo.tool { background: var(--teal); }
+:root[data-theme="noche"] .dz-tipo { color: #1a1817; }
+/* descargas agrupadas en tarjetas, una por perfil (D97): guía del curso */
+@media (min-width: 900px) { .dz-agrupada .dz-in { grid-template-columns: 1fr; } }
+.dz-cards { display: grid; gap: 12px; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); }
+/* en pantalla ancha: los tres perfiles en una fila y, debajo, lo común a todos (nueve módulos y la propia guía) */
+@media (min-width: 900px) { .dz-cards { grid-template-columns: repeat(6, 1fr); } .dz-card { grid-column: span 2; } .dz-card[data-grupo="modulos"], .dz-card[data-grupo="guia"] { grid-column: span 3; } }
+.dz-card { display: flex; flex-direction: column; border: 1px solid var(--regla); border-top: 3px solid var(--claret); background: var(--papel-2); padding: 12px 14px 14px; }
+.dz-card[data-grupo="modulos"] { border-top-color: var(--oxford); }
+.dz-card[data-grupo="guia"] { border-top-color: var(--tinta-2); }
+.dz-card-rotulo { font: 700 11px/1.2 var(--sans); letter-spacing: .09em; text-transform: uppercase; color: var(--claret); margin: 0 0 4px; }
+.dz-card[data-grupo="modulos"] .dz-card-rotulo { color: var(--oxford); }
+.dz-card[data-grupo="guia"] .dz-card-rotulo { color: var(--tinta-2); }
+.dz-card-titulo { font: 700 19px/1.2 var(--serif); color: var(--negro); margin: 0 0 6px; }
+.dz-card-texto { font: 400 13.5px/1.4 var(--sans); color: var(--tinta-2); margin: 0 0 12px; flex: 1; }
+.dz-card .dz-item { background: var(--papel); }
+.dz-grupo { font: 700 12px/1.2 var(--sans); letter-spacing: .08em; text-transform: uppercase; color: var(--tinta-2); margin: 8px 0 -2px; padding-top: 10px; border-top: 1px solid var(--regla); }
+.dz-grupo:first-child { margin-top: 0; padding-top: 0; border-top: 0; }
+@media print { .descargas-zona { display: none !important; } }
+
+/* ---------- Enlaces a fuentes externas (D41) ---------- */
+a.ref-ext { color: inherit; text-decoration: underline; text-decoration-style: dotted; text-decoration-color: var(--oxford); text-underline-offset: 3px; }
+a.ref-ext::after { content: "↗"; font: 700 .7em/1 var(--sans); color: var(--oxford); margin-left: 2px; vertical-align: super; }
+a.ref-ext:hover { color: var(--oxford); text-decoration-style: solid; }
+.fuentes-nota { font: 400 14px/1.5 var(--sans); color: var(--tinta-2); }
+ul.fuentes-externas { list-style: none; padding: 0; margin: 12px 0 24px; font: 400 15px/1.45 var(--sans); }
+ul.fuentes-externas li { padding: 9px 0; border-bottom: 1px solid var(--regla-2); }
+ul.fuentes-externas li a { color: var(--negro); font-weight: 600; text-decoration-color: var(--oxford); }
+ul.fuentes-externas li span { color: var(--tinta-2); }
+@media print { a.ref-ext::after { content: ""; } ul.fuentes-externas li a::after { content: " · " attr(href); font-weight: 400; color: var(--tinta-2); word-break: break-all; } }
+
+/* Ilustraciones en imagen (p. ej., SPAD): ocupan el ancho del lienzo y conservan su proporción */
+.g-lienzo img { display: block; width: 100%; height: auto; border: 1px solid var(--regla-2); }
+.ilustracion .g-lienzo img[src*="ilusion_de_velocidad"] { max-width: 560px; margin: 0 auto; }
+@page { @bottom-left { content: "SEVEN-G · Cómo se organiza una compañía para la IA"; font: 8.5pt "Libre Franklin", "Segoe UI", sans-serif; color: #74675e; } }
+</style>
+</head>
+<body>
+<div class="barra" role="toolbar" aria-label="Herramientas del documento">
+  <div class="barra-in">
+    <a class="btn btn-icono btn-enlace btn-nav" href="../../../index.html" title="Ir a la portada de AI Consulting (todas las metodolog&#237;as)" aria-label="Ir a la portada de AI Consulting (todas las metodolog&#237;as)"><span aria-hidden="true">⌂</span><span class="oculto">Portada</span></a>
+    <a class="barra-marca" href="00_SEVEN-G_Que_es_y_para_que_sirve.html" title="Ir al documento 00: Qu&#233; es SEVEN-G y para qu&#233; sirve"><i></i>SEVEN-G</a>
+    <button class="btn btn-icono btn-nav" id="abrir-biblioteca" type="button" aria-controls="panel-biblioteca" aria-expanded="false" title="Abrir biblioteca de documentos del idioma actual" aria-label="Abrir biblioteca de documentos del idioma actual"><span aria-hidden="true">≣</span><span class="oculto">Biblioteca</span></button>
+    <button class="btn btn-icono btn-nav" id="abrir-descargas" type="button" aria-controls="panel-descargas" aria-expanded="false" title="Descargas" aria-label="Descargas"><span aria-hidden="true">↓</span><span class="oculto">Descargas</span></button>
+    <button class="btn btn-icono btn-nav" id="abrir-historial" type="button" aria-controls="panel-historial" aria-expanded="false" title="Ver historial de navegaci&#243;n de este idioma" aria-label="Ver historial de navegaci&#243;n de este idioma"><span aria-hidden="true">↺</span><span class="oculto">Historial</span></button>
+    <button class="btn btn-icono btn-nav" id="texto-menos" type="button" title="Reducir tama&#241;o del texto" aria-label="Reducir tama&#241;o del texto"><span aria-hidden="true">A−</span></button>
+    <button class="btn btn-icono btn-nav" id="texto-mas" type="button" title="Aumentar tama&#241;o del texto" aria-label="Aumentar tama&#241;o del texto"><span aria-hidden="true">A+</span></button>
+    <span class="barra-seccion" id="barra-seccion"></span>
+    <span class="ir-codigo" data-ir-codigo></span>
+    <div class="buscar" role="search">
+      <label class="buscar-ambito" title="D&#243;nde buscar: en esta p&#225;gina o en todas las p&#225;ginas del sitio (documentos, plantillas, curso, SPHERES y SPAD)"><span class="oculto">D&#243;nde buscar</span>
+        <select id="buscar-ambito" aria-label="D&#243;nde buscar">
+          <option value="pagina">Esta p&#225;gina</option>
+          <option value="todas">Todo el sitio</option>
+        </select>
+      </label>
+      <input type="search" id="buscar" placeholder="Buscar t&#233;rminos" aria-label="Buscar t&#233;rminos" title="Busque una palabra o una frase en esta p&#225;gina o en todas las p&#225;ginas del sitio, seg&#250;n el selector de la izquierda. Intro salta al resultado siguiente o abre el primero de la lista." autocomplete="off">
+      <span class="buscar-cuenta" id="buscar-cuenta" aria-live="polite"></span>
+      <button class="btn btn-icono" id="buscar-ant" type="button" aria-label="Resultado anterior" title="Resultado anterior">↑</button>
+      <button class="btn btn-icono" id="buscar-sig" type="button" aria-label="Resultado siguiente" title="Resultado siguiente">↓</button>
+    </div>
+    <button class="btn btn-icono btn-nav" id="abrir-indice" type="button" aria-controls="panel-indice" aria-expanded="false" title="Abrir &#237;ndice de secciones del documento actual" aria-label="Abrir &#237;ndice de secciones del documento actual"><span aria-hidden="true">☰</span><span class="oculto">&#205;ndice</span></button>
+    <label class="tema"><span class="oculto">Tema</span>
+      <select id="tema" aria-label="Tema">
+        <option value="salmon">Salm&#243;n</option>
+        <option value="claro">Salm&#243;n claro</option>
+        <option value="noche">Noche</option>
+      </select>
+    </label>
+    <nav class="idioma" aria-label="Idioma"><span class="activo" aria-current="true">ES</span><a href="../en/54_SEVEN-G_Organizacion_de_la_compania_para_la_IA.html" hreflang="en" lang="en">EN</a></nav>
+  </div>
+</div>
+
+<div class="velo" id="velo" hidden></div>
+<aside class="panel-indice" id="panel-indice" aria-label="&#205;ndice" aria-hidden="true">
+  <div class="panel-cab">
+    <strong>&#205;ndice</strong>
+    <button class="btn btn-icono" id="cerrar-indice" type="button" aria-label="Cerrar">✕</button>
+  </div>
+  <input type="search" id="filtro-indice" placeholder="Filtrar secciones" aria-label="Filtrar secciones" autocomplete="off">
+  <ol id="lista-indice"></ol>
+</aside>
+
+<aside class="panel-indice" id="panel-biblioteca" aria-label="Documentos" aria-hidden="true">
+  <div class="panel-cab">
+    <strong>Documentos</strong>
+    <button class="btn btn-icono" id="cerrar-biblioteca" type="button" aria-label="Cerrar panel">✕</button>
+  </div>
+  <input type="search" id="filtro-biblioteca" placeholder="Filtrar documentos" aria-label="Filtrar documentos" autocomplete="off">
+  <ol id="lista-biblioteca"></ol>
+</aside>
+
+<aside class="panel-indice" id="panel-historial" aria-label="Historial de navegaci&#243;n" aria-hidden="true">
+  <div class="panel-cab">
+    <strong>Historial de navegaci&#243;n</strong>
+    <button class="btn btn-icono" id="cerrar-historial" type="button" aria-label="Cerrar panel">✕</button>
+  </div>
+  <ol id="lista-historial"></ol>
+</aside>
+
+<aside class="panel-indice panel-descargas" id="panel-descargas" aria-label="Descargas" aria-hidden="true">
+  <div class="panel-cab">
+    <strong>Descargas</strong>
+    <button class="btn btn-icono" id="cerrar-descargas" type="button" aria-label="Cerrar panel">✕</button>
+  </div>
+  <div class="descargas-lista"><a class="dz-item" href="../../pdf/es/54_SEVEN-G_Organizacion_de_la_compania_para_la_IA.pdf" target="_blank" rel="noopener"><span class="dz-tipo">PDF</span><b>Este documento · español</b></a><a class="dz-item" href="../../pdf/en/54_SEVEN-G_Organizacion_de_la_compania_para_la_IA.pdf" target="_blank" rel="noopener"><span class="dz-tipo">PDF</span><b>Versión en inglés</b></a><a class="dz-item" href="../en/54_SEVEN-G_Organizacion_de_la_compania_para_la_IA.html" hreflang="en"><span class="dz-tipo html">HTML</span><b>Versión en inglés</b></a><a class="dz-item" href="../../herramientas/T01_registro_iniciativas/registro.html" target="_blank" rel="noopener"><span class="dz-tipo tool">T01</span><b>Registro de iniciativas</b></a><a class="dz-item" href="../../herramientas/T11_calculadora_valor/calculadora.html" target="_blank" rel="noopener"><span class="dz-tipo tool">T11</span><b>Calculadora de hip&#243;tesis de valor y costes por caso</b></a><a class="dz-item" href="../../herramientas/T14_indice_transformacion/indice.html" target="_blank" rel="noopener"><span class="dz-tipo tool">T14</span><b>Calculadora del &#237;ndice de transformaci&#243;n</b></a><a class="dz-item" href="../../herramientas/T15_diagnostico_madurez/madurez.html" target="_blank" rel="noopener"><span class="dz-tipo tool">T15</span><b>Diagn&#243;stico de madurez</b></a><a class="dz-item" href="../../herramientas/T17_panel_consejo/index.html" target="_blank" rel="noopener"><span class="dz-tipo tool">T17</span><b>Regenerar el panel del consejo</b></a></div>
+</aside>
+
+<div id="top"></div>
+<header class="portada">
+  <div class="cabecera"><div class="marca"><i></i>SEVEN-G</div><div class="cabecera-dato">Documento 54 · 22-09-2026</div></div>
+  <div class="portada-cuerpo">
+    <p class="antetitulo">Documento 54 &#183; Organizaci&#243;n de la compa&#241;&#237;a para la IA</p>
+    <h1>C&#243;mo se organiza una compa&#241;&#237;a para la IA</h1>
+    <p class="entradilla">Qui&#233;n hace qu&#233; en las organizaciones reales, d&#243;nde debe colgar el gobierno de la IA, de d&#243;nde nacen los casos de uso, c&#243;mo se gobiernan hasta producci&#243;n y c&#243;mo llega la informaci&#243;n al consejo; y qu&#233; organizaci&#243;n se anticipa cuando la IA est&#233; implantada</p>
+    <div class="firma"><span><b>Fernando Garc&#237;a Varela</b></span><span>Versión 0.1 (borrador de trabajo)</span><span>22-09-2026</span><span>Borrador para revisi&#243;n</span></div>
+    <div class="cifras"><div class="cifra"><b>6</b><span>funciones que alguien tiene que ejercer</span></div><div class="cifra"><b>4</b><span>patrones de organizaci&#243;n observados</span></div><div class="cifra"><b>8</b><span>fuentes de las que nacen los casos de uso</span></div><div class="cifra"><b>4</b><span>escenarios de organizaci&#243;n a cinco a&#241;os</span></div></div>
+  </div>
+</header>
+<section class="descargas-zona" aria-label="Descargas y herramientas"><div class="dz-in"><div class="dz-bloque"><p class="dz-titulo">Descargas</p><div class="dz-enlaces"><a class="dz-item" href="../../pdf/es/54_SEVEN-G_Organizacion_de_la_compania_para_la_IA.pdf" target="_blank" rel="noopener"><span class="dz-tipo">PDF</span><b>Este documento · español</b></a><a class="dz-item" href="../../pdf/en/54_SEVEN-G_Organizacion_de_la_compania_para_la_IA.pdf" target="_blank" rel="noopener"><span class="dz-tipo">PDF</span><b>Versión en inglés</b></a><a class="dz-item" href="../en/54_SEVEN-G_Organizacion_de_la_compania_para_la_IA.html" hreflang="en"><span class="dz-tipo html">HTML</span><b>Versión en inglés</b></a></div></div><div class="dz-bloque"><p class="dz-titulo">Herramientas relacionadas</p><div class="dz-enlaces"><a class="dz-item" href="../../herramientas/T01_registro_iniciativas/registro.html" target="_blank" rel="noopener"><span class="dz-tipo tool">T01</span><b>Registro de iniciativas</b></a><a class="dz-item" href="../../herramientas/T11_calculadora_valor/calculadora.html" target="_blank" rel="noopener"><span class="dz-tipo tool">T11</span><b>Calculadora de hip&#243;tesis de valor y costes por caso</b></a><a class="dz-item" href="../../herramientas/T14_indice_transformacion/indice.html" target="_blank" rel="noopener"><span class="dz-tipo tool">T14</span><b>Calculadora del &#237;ndice de transformaci&#243;n</b></a><a class="dz-item" href="../../herramientas/T15_diagnostico_madurez/madurez.html" target="_blank" rel="noopener"><span class="dz-tipo tool">T15</span><b>Diagn&#243;stico de madurez</b></a><a class="dz-item" href="../../herramientas/T17_panel_consejo/index.html" target="_blank" rel="noopener"><span class="dz-tipo tool">T17</span><b>Regenerar el panel del consejo</b></a></div></div></div></section>
+<nav class="indice"><div class="indice-in"><h2>En este documento</h2><ol><li><a href="#objeto-y-alcance"><span>01</span>Objeto y alcance</a></li><li><a href="#las-seis-funciones-que-alguien-tiene-que-ejercer"><span>02</span>Las seis funciones que alguien tiene que ejercer</a></li><li><a href="#lo-que-suele-verse-en-el-mercado"><span>03</span>Lo que suele verse en el mercado</a></li><li><a href="#del-organigrama-real-a-los-organos-de-seven-g"><span>04</span>Del organigrama real a los órganos de SEVEN-G</a></li><li><a href="#de-donde-vienen-los-casos-de-uso"><span>05</span>De dónde vienen los casos de uso</a></li><li><a href="#como-se-gobierna-lo-que-ha-entrado"><span>06</span>Cómo se gobierna lo que ha entrado</a></li><li><a href="#como-se-monitoriza-y-como-llega-la-informacion-al-consejo"><span>07</span>Cómo se monitoriza y cómo llega la información al consejo</a></li><li><a href="#que-organizacion-viene-despues-hipotesis-del-autor"><span>08</span>Qué organización viene después: hipótesis del autor</a></li><li><a href="#preguntas-para-una-conversacion-util"><span>09</span>Preguntas para una conversación útil</a></li><li><a href="#como-se-monta-en-la-practica"><span>10</span>Cómo se monta en la práctica</a></li><li><a href="#herramientas-y-plantillas-asociadas"><span>11</span>Herramientas y plantillas asociadas</a></li><li><a href="#documentos-relacionados"><span>12</span>Documentos relacionados</a></li><li><a href="#control-de-versiones"><span>13</span>Control de versiones</a></li></ol></div></nav>
+<main class="contenido" id="contenido">
+<blockquote class="aviso-legal plegado">
+<p><strong>Aviso legal y exención de responsabilidad.</strong> SEVEN-G es un marco metodológico de referencia que se ofrece «tal cual» y con fines exclusivamente informativos. No constituye asesoramiento jurídico, regulatorio, financiero ni profesional, ni garantiza el cumplimiento de ninguna norma. Las referencias a regulación general (como el Reglamento Europeo de IA, el RGPD, DORA o NIS2), a normas técnicas y a regulación específica de cada sector o jurisdicción pueden ser incompletas, no aplicar a un caso concreto o quedar desactualizadas por cambios normativos, interpretaciones o criterios de las autoridades posteriores a su fecha de consulta. <strong>Cada organización que use SEVEN-G es la única responsable de identificar la normativa que le aplica, verificar su vigencia y certificar su propio cumplimiento regulatorio</strong>, con el asesoramiento cualificado que corresponda. El autor no asume responsabilidad alguna por el uso que se haga de este contenido ni por las decisiones que se adopten con él. Los datos, cifras, compañías y casos de los ejemplos son ficticios o ilustrativos.</p>
+</blockquote>
+<aside class="esencial" data-capa="consulta"><div class="es-cab"><span class="es-rotulo">Lo esencial</span><span class="es-nivel">Consulta</span></div><p>Documento explicativo. Sirve para situar el marco en el organigrama real de una compa&#241;&#237;a: qu&#233; funciones tiene que ejercer alguien, qu&#233; cargos suelen asumirlas hoy, d&#243;nde conviene colgar el gobierno de la IA, de d&#243;nde vienen los casos de uso y c&#243;mo se gobiernan y se informan hasta el consejo. La secci&#243;n 8 es prospectiva y est&#225; marcada como hip&#243;tesis del autor. No crea reglas ni evidencias: si discrepa de los documentos 01, 14, 30 o 60, prevalecen estos.</p><p class="es-pie"><a href="94_SEVEN-G_Matriz_de_obligatoriedad_y_lectura_por_capas.html">Matriz de obligatoriedad y lectura por capas (documento 94)</a></p></aside>
+<h2 id="objeto-y-alcance"><span class="antetitulo">01</span>Objeto y alcance</h2>
+<h3 id="1-1-que-responde-este-documento">1.1 Qué responde este documento</h3>
+<p>Cuando una compañía decide usar la IA en serio aparece siempre la misma conversación: <em>¿de quién depende esto?</em> Sistemas tiene su dirección, seguridad la suya, datos la suya; hay una dirección de transformación, a veces una dirección de IA, y el consejo pide información que nadie sabe muy bien quién debe preparar. Este documento ordena esa conversación en cinco preguntas:</p>
+<ol>
+<li>¿Qué <strong>funciones</strong> tiene que ejercer alguien, se llame como se llame en el organigrama? (sección 2)</li>
+<li>¿Qué se ve <strong>hoy en el mercado</strong> y qué patrones de organización funcionan y cuáles fallan? (sección 3)</li>
+<li>¿Dónde debe colgar el <strong>gobierno de la IA</strong>: de la dirección de IA, de transformación, de riesgos, del consejo? (sección 3.4)</li>
+<li>¿De dónde vienen los <strong>casos de uso</strong>, cómo se gobiernan y cómo se <strong>informa al consejo</strong>? (secciones 5, 6 y 7)</li>
+<li>¿Qué organización viene después, cuando la IA esté implantada y los <strong>silos funcionales</strong> dejen de ser la forma natural de dividir el trabajo? (sección 8)</li>
+</ol>
+<h3 id="1-2-que-no-es">1.2 Qué no es</h3>
+<ul>
+<li><strong>No es un organigrama obligatorio.</strong> SEVEN-G no exige crear ninguna dirección nueva. Exige que las funciones de la sección 2 tengan nombre y titular, y que las que deben estar separadas lo estén (<a href="01_SEVEN-G_Metodologia_fundacional.html" title="Documento 01 &#183; Metodolog&#237;a fundacional de SEVEN-G">documento 01</a>, sección 8.2; <a href="30_SEVEN-G_Modelo_de_gobierno.html" title="Documento 30 &#183; Modelo de gobierno">documento 30</a>, sección 5).</li>
+<li><strong>No sustituye al <a href="30_SEVEN-G_Modelo_de_gobierno.html" title="Documento 30 &#183; Modelo de gobierno">documento 30</a></strong>, que define los órganos, sus mandatos, la matriz de delegación y el escalado. Aquí se explica cómo encajan esos órganos en un organigrama que ya existe.</li>
+<li><strong>No es un estudio de mercado.</strong> Lo que la sección 3 describe son patrones observados en la práctica profesional del autor, expresados de forma cualitativa. No lleva porcentajes ni cuotas porque no procederían de una fuente verificable (<a href="04_SEVEN-G_Origenes_diferencias_y_por_que_es_abierto.html" title="Documento 04 &#183; De d&#243;nde viene SEVEN-G, en qu&#233; se diferencia y por qu&#233; es abierto">documento 04</a>, sección 6).</li>
+<li><strong>La sección 8 es una hipótesis razonada</strong>, no una previsión. Se marca como tal y se acompaña de las señales que permitirían comprobar si se cumple.</li>
+</ul>
+<blockquote>
+<p><strong>Por qué importa.</strong> La mayoría de los bloqueos que se atribuyen a la tecnología son en realidad de asignación: dos áreas creen tener la misma competencia, o ninguna la tiene. Un marco de gobierno que no se traduce al organigrama real se queda en documento.</p>
+</blockquote>
+<hr />
+<h2 id="las-seis-funciones-que-alguien-tiene-que-ejercer"><span class="antetitulo">02</span>Las seis funciones que alguien tiene que ejercer</h2>
+<p>Con independencia del tamaño, del sector y de los cargos existentes, la IA obliga a que <strong>seis funciones</strong> tengan titular. Pueden concentrarse en pocas personas (en una compañía pequeña, una persona puede ejercer tres), pero ninguna puede quedar vacía y dos parejas no pueden recaer en el mismo titular.</p>
+<figure class="grafico"><div class="g-titulo">Las seis funciones de la IA en una compa&#241;&#237;a</div><div class="g-sub">Qui&#233;n fija la direcci&#243;n, qui&#233;n propone, qui&#233;n coordina, qui&#233;n construye, qui&#233;n controla y qui&#233;n verifica</div><div class="g-lienzo"><pre class="mermaid">flowchart TB
+  F1["1 · Dirección&lt;br>tesis, ambición y límites"]
+  F2["2 · Demanda y patrocinio&lt;br>propone casos y responde del beneficio"]
+  F3["3 · Coordinación y método&lt;br>cartera, inventario, medición e información"]
+  F4["4 · Construcción y operación&lt;br>hace el sistema y lo mantiene vivo"]
+  F5["5 · Control&lt;br>riesgo, cumplimiento, seguridad y datos"]
+  F6["6 · Verificación independiente&lt;br>auditoría interna y de IA"]
+  F1 -->|"tesis, apetito y presupuesto"| F3
+  F2 -->|"casos con patrocinador"| F3
+  F3 -->|"cartera priorizada y método"| F4
+  F5 -->|"conformidad y firma"| F4
+  F6 -.->|"verifica sin construir"| F4
+  F4 -->|"resultados en producción"| F3
+  F3 -->|"cifras, riesgos y alertas"| F1
+  F5 -.->|"informa con independencia"| F1
+  F6 -.->|"informa con independencia"| F1
+  classDef dir fill:#f2dfce,stroke:#0f5499,color:#1a1817
+  classDef ejec fill:#fdf3e8,stroke:#593380,color:#1a1817
+  classDef ctl fill:#d9ebe0,stroke:#0d7680,color:#1a1817
+  classDef aud fill:#f3d3da,stroke:#990f3d,color:#1a1817
+  class F1 dir
+  class F2,F3,F4 ejec
+  class F5 ctl
+  class F6 aud
+</pre></div><div class="g-fuente">Fuente: SEVEN-G</div></figure>
+<div class="tabla"><table>
+<thead>
+<tr>
+<th>#</th>
+<th>Función</th>
+<th>Qué decide o firma</th>
+<th>Quién suele ejercerla</th>
+<th>Dónde está en SEVEN-G</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td><strong>Dirección</strong></td>
+<td>Tesis de IA, ambición por esfera, apetito de riesgo, presupuesto marco, aprobación de las apuestas de Transformar.</td>
+<td>Consejo y alta dirección.</td>
+<td><a href="13_SEVEN-G_Tesis_de_IA_ambicion_y_apetito_de_riesgo.html" title="Documento 13 &#183; Tesis de IA, ambici&#243;n y apetito de riesgo">documento 13</a>; <a href="30_SEVEN-G_Modelo_de_gobierno.html" title="Documento 30 &#183; Modelo de gobierno">documento 30</a>, sección 3.1</td>
+</tr>
+<tr>
+<td>2</td>
+<td><strong>Demanda y patrocinio</strong></td>
+<td>Qué problema se resuelve, quién responde del beneficio y quién asume el cambio en su área.</td>
+<td>Direcciones de negocio y de operaciones.</td>
+<td><a href="01_SEVEN-G_Metodologia_fundacional.html" title="Documento 01 &#183; Metodolog&#237;a fundacional de SEVEN-G">documento 01</a>, sección 8; <a href="43_SEVEN-G_Realizacion_de_beneficios.html" title="Documento 43 &#183; Realizaci&#243;n de beneficios">documento 43</a></td>
+</tr>
+<tr>
+<td>3</td>
+<td><strong>Coordinación y método</strong></td>
+<td>Cartera, inventario, aplicación del método, medición homogénea, preparación de la información a los órganos.</td>
+<td>Oficina de IA (o la función que haga sus veces).</td>
+<td><a href="30_SEVEN-G_Modelo_de_gobierno.html" title="Documento 30 &#183; Modelo de gobierno">documento 30</a>, sección 3.4; <a href="14_SEVEN-G_Gestion_de_cartera.html" title="Documento 14 &#183; Gesti&#243;n de cartera">documento 14</a></td>
+</tr>
+<tr>
+<td>4</td>
+<td><strong>Construcción y operación</strong></td>
+<td>Arquitectura, datos, desarrollo, proveedores, puesta en producción y operación continuada.</td>
+<td>Tecnología, datos y las áreas que operan el sistema.</td>
+<td><a href="52_SEVEN-G_Manual_de_operacion_de_IA.html" title="Documento 52 &#183; Manual de operaci&#243;n de IA">documento 52</a>; <a href="53_SEVEN-G_Construccion_de_soluciones_con_IA.html" title="Documento 53 &#183; Construcci&#243;n de soluciones con IA">documento 53</a>; <a href="51_SEVEN-G_Datos_y_conocimiento.html" title="Documento 51 &#183; Datos y conocimiento para IA">documento 51</a></td>
+</tr>
+<tr>
+<td>5</td>
+<td><strong>Control</strong></td>
+<td>Evaluación de riesgos, conformidad regulatoria, seguridad, protección de datos y firma de la puesta en producción Enterprise.</td>
+<td>Riesgos, cumplimiento, seguridad y protección de datos (segunda línea).</td>
+<td><a href="30_SEVEN-G_Modelo_de_gobierno.html" title="Documento 30 &#183; Modelo de gobierno">documento 30</a>, sección 9; <a href="33_SEVEN-G_Metodologia_de_riesgos_de_IA.html" title="Documento 33 &#183; Metodolog&#237;a de riesgos de IA">documento 33</a>; <a href="35_SEVEN-G_Seguridad_de_IA_y_agentes.html" title="Documento 35 &#183; Seguridad de IA y agentes">documento 35</a></td>
+</tr>
+<tr>
+<td>6</td>
+<td><strong>Verificación independiente</strong></td>
+<td>Verificación de que el marco se cumple y de que las evidencias son reales.</td>
+<td>Auditoría interna y auditores de IA (tercera línea).</td>
+<td><a href="38_SEVEN-G_Marco_de_auditoria_de_IA.html" title="Documento 38 &#183; Marco de auditor&#237;a de IA">documento 38</a></td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>Las tres separaciones que no se negocian</strong> (<a href="01_SEVEN-G_Metodologia_fundacional.html" title="Documento 01 &#183; Metodolog&#237;a fundacional de SEVEN-G">documento 01</a>, sección 8.2, y <a href="30_SEVEN-G_Modelo_de_gobierno.html" title="Documento 30 &#183; Modelo de gobierno">documento 30</a>, sección 5):</p>
+<ul>
+<li>quien <strong>construye</strong> no verifica su propia evidencia;</li>
+<li>quien <strong>propone y patrocina</strong> no firma la conformidad de riesgo o de cumplimiento;</li>
+<li>quien <strong>audita</strong> no participa en la construcción ni en la decisión de <em>gate</em>.</li>
+</ul>
+<blockquote>
+<p><strong>Por qué importa.</strong> Casi todas las organizaciones que «no consiguen pasar de los pilotos» tienen las funciones 1, 2 y 4 bien cubiertas y las 3, 5 y 6 sin titular. Sin coordinación no hay cartera; sin control no hay puesta en producción defendible; sin verificación, las cifras de valor no resisten una pregunta del consejo.</p>
+</blockquote>
+<hr />
+<h2 id="lo-que-suele-verse-en-el-mercado"><span class="antetitulo">03</span>Lo que suele verse en el mercado</h2>
+<p>Esta sección describe <strong>patrones observados</strong> en la práctica. No es un estudio con muestra ni una estadística: es una ordenación cualitativa, útil para situarse y para que cada compañía reconozca su caso. Cuando se citan obligaciones regulatorias, se remite a la fuente oficial y al <a href="34_SEVEN-G_Mapeo_regulatorio.html" title="Documento 34 &#183; Mapeo regulatorio">documento 34</a>.</p>
+<h3 id="3-1-que-trozo-de-ia-se-queda-cada-cargo-existente">3.1 Qué trozo de IA se queda cada cargo existente</h3>
+<div class="tabla"><table>
+<thead>
+<tr>
+<th>Cargo habitual</th>
+<th>Qué parte de la IA suele asumir</th>
+<th>Dónde suele quedarse corto</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Dirección de sistemas o de tecnología</strong> (CIO, CTO)</td>
+<td>Plataformas, modelos, integración, seguridad técnica, proveedores, coste de infraestructura. Es quien más rápido puede construir.</td>
+<td>La hipótesis de valor y la adopción: entrega sistemas que funcionan y nadie usa; mide actividad, no beneficio.</td>
+</tr>
+<tr>
+<td><strong>Dirección de seguridad</strong> (CISO, CSO)</td>
+<td>Seguridad del modelo y del dato, identidades, accesos, ataques con IA y contra la IA, incidentes.</td>
+<td>Se incorpora tarde, cuando la solución ya está elegida; sin criterios previos solo puede vetar.</td>
+</tr>
+<tr>
+<td><strong>Dirección de datos</strong> (CDO)</td>
+<td>Calidad, linaje, permisos de uso, gobierno del dato, a veces analítica avanzada.</td>
+<td>Confunde el gobierno del dato con el gobierno de la IA: son distintos y complementarios (<a href="51_SEVEN-G_Datos_y_conocimiento.html" title="Documento 51 &#183; Datos y conocimiento para IA">documento 51</a>).</td>
+</tr>
+<tr>
+<td><strong>Dirección de transformación o de digital</strong></td>
+<td>Cartera de iniciativas, gestión del cambio, relación con el negocio, medición de beneficios.</td>
+<td>Rara vez tiene autoridad sobre tecnología ni sobre control; depende de convencer.</td>
+</tr>
+<tr>
+<td><strong>Dirección de IA</strong> (CAIO), cuando existe</td>
+<td>Estrategia de IA, oficina de IA, casos de uso, relación con proveedores de modelos.</td>
+<td>Si además construye y además controla, rompe la separación de funciones; si no tiene presupuesto, es un rol de evangelización.</td>
+</tr>
+<tr>
+<td><strong>Dirección financiera</strong> (CFO)</td>
+<td>Presupuesto, inversión, medición del retorno, control de gestión, coste recurrente.</td>
+<td>Aplica criterios de retorno de proyecto a apuestas de transformación y las bloquea (<a href="14_SEVEN-G_Gestion_de_cartera.html" title="Documento 14 &#183; Gesti&#243;n de cartera">documento 14</a>, sección 4.4).</td>
+</tr>
+<tr>
+<td><strong>Asesoría jurídica, cumplimiento y protección de datos</strong></td>
+<td>Clasificación regulatoria, evaluaciones de impacto, contratos con proveedores, transparencia.</td>
+<td>Llega a la última fase; sin clasificación temprana, el rediseño es caro (<a href="32_SEVEN-G_Inventario_y_clasificacion_regulatoria.html" title="Documento 32 &#183; Inventario de sistemas de IA y clasificaci&#243;n regulatoria">documento 32</a>).</td>
+</tr>
+<tr>
+<td><strong>Dirección de personas</strong></td>
+<td>Alfabetización, efecto sobre el trabajo, relaciones laborales, uso de IA en decisiones sobre personas.</td>
+<td>Trata la IA como formación y no como rediseño del trabajo (<a href="50_SEVEN-G_Personas_y_organizacion.html" title="Documento 50 &#183; Personas y organizaci&#243;n">documento 50</a>).</td>
+</tr>
+<tr>
+<td><strong>Operaciones y unidades de negocio</strong></td>
+<td>El problema, el proceso, los datos reales, la adopción y el beneficio.</td>
+<td>Proponen soluciones ya elegidas («queremos un copiloto») en lugar de problemas medibles.</td>
+</tr>
+<tr>
+<td><strong>Auditoría interna</strong></td>
+<td>Verificación del marco, planes anuales, seguimiento de recomendaciones.</td>
+<td>Sin criterios publicados, audita percepciones; necesita que el marco exista antes (<a href="38_SEVEN-G_Marco_de_auditoria_de_IA.html" title="Documento 38 &#183; Marco de auditor&#237;a de IA">documento 38</a>).</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="3-2-cuatro-patrones-de-organizacion">3.2 Cuatro patrones de organización</h3>
+<div class="tabla"><table>
+<thead>
+<tr>
+<th>Patrón</th>
+<th>Cómo se reconoce</th>
+<th>Funciona cuando</th>
+<th>Falla cuando</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>A · Tecnología lidera</strong></td>
+<td>La IA es un programa de la dirección de sistemas; el negocio aporta casos y valida.</td>
+<td>La madurez técnica es baja y hay que construir la base: plataforma, datos, seguridad.</td>
+<td>Se mide en modelos desplegados; el beneficio no tiene dueño y la adopción no ocurre.</td>
+</tr>
+<tr>
+<td><strong>B · Transformación lidera</strong></td>
+<td>La IA es una línea de la agenda de transformación, con cartera y gestión del cambio.</td>
+<td>Hay una cartera transversal y el problema principal es priorizar y hacer que se adopte.</td>
+<td>No hay autoridad técnica ni de control: la cartera avanza en papel y se atasca en producción.</td>
+</tr>
+<tr>
+<td><strong>C · Oficina de IA, con o sin dirección de IA</strong></td>
+<td>Existe una función central de método, inventario, medición y apoyo; el negocio patrocina y tecnología construye.</td>
+<td>Hay suficientes iniciativas para que el método rinda y la función central tiene presupuesto y acceso a los órganos.</td>
+<td>La oficina también construye y también controla: se queda sin independencia y se convierte en un cuello de botella.</td>
+</tr>
+<tr>
+<td><strong>D · Federado de hecho</strong></td>
+<td>Cada área compra y prueba por su cuenta; hay decenas de usos y ningún inventario.</td>
+<td>Nunca de forma estable; sirve para descubrir demanda real durante unos meses.</td>
+<td>Aparece el primer incidente, la primera auditoría o la primera factura de consumo: nadie sabe cuántos sistemas hay ni qué datos tocan.</td>
+</tr>
+</tbody>
+</table></div>
+<p>En la práctica, la mayoría de las compañías se reconocen en una mezcla: un patrón oficial y el patrón D como realidad de fondo. El primer trabajo de implantación suele ser <strong>hacer visible lo que ya existe</strong> (censo e inventario, <a href="32_SEVEN-G_Inventario_y_clasificacion_regulatoria.html" title="Documento 32 &#183; Inventario de sistemas de IA y clasificaci&#243;n regulatoria">documento 32</a> y <a href="14_SEVEN-G_Gestion_de_cartera.html" title="Documento 14 &#183; Gesti&#243;n de cartera">documento 14</a>, sección 11) antes de decidir estructura.</p>
+<h3 id="3-3-hace-falta-una-direccion-de-ia">3.3 ¿Hace falta una dirección de IA?</h3>
+<p>Cuatro preguntas ayudan a decidirlo mejor que el debate sobre la moda del cargo:</p>
+<ol>
+<li>¿Hay <strong>más iniciativas de las que un comité puede seguir</strong> una vez al mes sin perder el detalle?</li>
+<li>¿Hay <strong>más de una unidad</strong> que compite por la misma capacidad técnica o por el mismo presupuesto?</li>
+<li>¿La compañía tiene o tendrá <strong>sistemas de alto riesgo, agentes con autonomía o exposición directa</strong> a clientes?</li>
+<li>¿Alguien puede hoy responder en una semana <strong>cuántos sistemas de IA hay, qué datos usan y cuánto cuestan</strong>?</li>
+</ol>
+<p>Con dos o más respuestas incómodas, la función central (patrón C) se paga sola. Que se llame dirección de IA, oficina de IA o coordinación de IA es menos importante que tres condiciones:</p>
+<ul>
+<li><strong>presupuesto propio</strong> para descubrimiento y método, aunque sea pequeño;</li>
+<li><strong>acceso directo</strong> al comité de dirección y al órgano del consejo que supervisa la IA;</li>
+<li><strong>no ser quien construye</strong> los sistemas cuya evidencia después verifica.</li>
+</ul>
+<p>Una dirección de IA fracasa, casi siempre, de una de estas tres formas: se convierte en una fábrica de pilotos sin dueño de beneficio; se convierte en un comité de aprobación sin capacidad de ejecutar; o acumula las funciones 3, 4 y 5 de la sección 2 y deja a la compañía sin control independiente.</p>
+<h3 id="3-4-donde-debe-colgar-el-gobierno-de-la-ia">3.4 Dónde debe colgar el gobierno de la IA</h3>
+<p>Es la pregunta más frecuente y tiene una respuesta de principio: <strong>el gobierno no puede depender de quien ejecuta</strong>. La función 5 (control) y la función 6 (verificación) informan al consejo o a su comisión delegada, no al responsable de la cartera. Dicho eso, hay tres ubicaciones razonables y una que no lo es.</p>
+<div class="tabla"><table>
+<thead>
+<tr>
+<th>Opción</th>
+<th>En qué consiste</th>
+<th>Ventaja</th>
+<th>Riesgo</th>
+<th>Condición para que funcione</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>1 · Gobierno en la segunda línea</strong> (riesgos o cumplimiento), con secretaría técnica en la oficina de IA</td>
+<td>La política, el apetito y la conformidad viven en riesgos; el método y el inventario, en la oficina de IA.</td>
+<td>Independencia clara; encaja con el modelo de tres líneas y con la supervisión del consejo.</td>
+<td>Distancia con el negocio: el control llega tarde si no se integra en las fases.</td>
+<td>Riesgos participa desde la fase 0, no en la puerta final.</td>
+</tr>
+<tr>
+<td><strong>2 · Gobierno en la dirección de IA, con conformidad separada</strong></td>
+<td>La dirección de IA lleva método, cartera e inventario; la firma de riesgo y cumplimiento la mantiene la segunda línea.</td>
+<td>Un solo interlocutor para el negocio; rapidez.</td>
+<td>Concentración: si además construye, se pierde la separación.</td>
+<td>La dirección de IA no construye los sistemas o, si lo hace, no verifica su evidencia.</td>
+</tr>
+<tr>
+<td><strong>3 · Comité de IA como órgano de gobierno</strong>, sin dirección específica</td>
+<td>Un comité con dirección, tecnología, riesgos, datos y personas decide; la secretaría la lleva quien coordine.</td>
+<td>Barato y suficiente en compañías medianas; reparte la responsabilidad.</td>
+<td>Sin secretaría con dedicación, el comité no prepara ni sigue nada.</td>
+<td>Alguien tiene dedicación real a preparar decisiones y a seguir acuerdos.</td>
+</tr>
+<tr>
+<td><strong>4 · Gobierno dentro de la dirección que construye</strong></td>
+<td>La misma área propone, construye, aprueba y declara el valor.</td>
+<td>Ninguna que resista una revisión.</td>
+<td>Juez y parte: la evidencia no es defendible ante auditoría ni ante el consejo.</td>
+<td>No es una opción aceptable en SEVEN-G.</td>
+</tr>
+</tbody>
+</table></div>
+<p>En las tres primeras opciones, el consejo conserva lo que no puede delegar: aprobar la tesis y el apetito de riesgo, aprobar las apuestas de Transformar y supervisar los resultados (<a href="30_SEVEN-G_Modelo_de_gobierno.html" title="Documento 30 &#183; Modelo de gobierno">documento 30</a>, sección 3.1). La regulación refuerza esta idea en los sectores donde ya existe una responsabilidad expresa del órgano de administración sobre riesgos tecnológicos y de resiliencia, como en el <a class="ref-ext" href="https://eur-lex.europa.eu/eli/reg/2022/2554/oj/spa" target="_blank" rel="noopener" title="Reglamento (UE) 2022/2554 del Parlamento Europeo y del Consejo, de 14 de diciembre de 2022, sobre la resiliencia operativa digital del sector financiero (DORA)">Reglamento (UE) 2022/2554 (DORA)</a> o en la <a class="ref-ext" href="https://eur-lex.europa.eu/eli/dir/2022/2555/oj/spa" target="_blank" rel="noopener" title="Directiva (UE) 2022/2555 del Parlamento Europeo y del Consejo, de 14 de diciembre de 2022, relativa a las medidas destinadas a garantizar un elevado nivel com&#250;n de ciberseguridad en toda la Uni&#243;n (Directiva SRI 2 / NIS2)">Directiva (UE) 2022/2555 (NIS2)</a>, y en las expectativas supervisoras sobre gobierno de la IA, como el <a class="ref-ext" href="https://www.eiopa.europa.eu/publications/opinion-artificial-intelligence-governance-and-risk-management_en" target="_blank" rel="noopener" title="Dictamen de EIOPA sobre gobierno y gesti&#243;n del riesgo de la inteligencia artificial (EIOPA-BoS-25-360), de 6 de agosto de 2025">Dictamen de EIOPA sobre gobierno y gestión del riesgo de la IA</a> (<a href="34_SEVEN-G_Mapeo_regulatorio.html" title="Documento 34 &#183; Mapeo regulatorio">documento 34</a>).</p>
+<blockquote>
+<p><strong>Por qué importa.</strong> La ubicación del gobierno determina qué ocurre el día que una iniciativa importante no supera una puerta. Si el que decide parar depende del que tiene que entregar, no se para nunca.</p>
+</blockquote>
+<h3 id="3-5-seis-senales-de-que-la-organizacion-esta-mal-montada">3.5 Seis señales de que la organización está mal montada</h3>
+<ol>
+<li>Nadie puede decir en una semana cuántos sistemas de IA hay en producción.</li>
+<li>Las cifras de ahorro que se presentan al comité no las ha comprobado nadie fuera del equipo que las produce.</li>
+<li>La segunda línea solo aparece al final, y entonces solo puede aprobar o vetar.</li>
+<li>Ninguna iniciativa se ha parado nunca por criterio; solo por falta de presupuesto o de gente.</li>
+<li>El consejo ve demostraciones de producto y no ve cartera, riesgos ni valor validado.</li>
+<li>La misma persona propone, aprueba y declara el beneficio.</li>
+</ol>
+<hr />
+<h2 id="del-organigrama-real-a-los-organos-de-seven-g"><span class="antetitulo">04</span>Del organigrama real a los órganos de SEVEN-G</h2>
+<p>SEVEN-G no pide cambiar el organigrama: pide <strong>asignar</strong> sus órganos y roles a personas que ya existen y dejarlo escrito (<a href="plantillas/P38_SEVEN-G_Reglamento_de_los_organos_de_gobierno_de_IA.html" title="Plantilla P38 &#183; Reglamento de los &#243;rganos de gobierno de IA">P38</a>, con el reglamento de los órganos y el nombramiento del responsable de IA).</p>
+<div class="tabla"><table>
+<thead>
+<tr>
+<th>Órgano o rol de SEVEN-G</th>
+<th>Quién lo ejerce normalmente</th>
+<th>Qué se necesita para que valga</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Consejo de administración</strong></td>
+<td>El propio consejo, con un punto monográfico anual y un punto trimestral.</td>
+<td>Que reciba el paquete del <a href="60_SEVEN-G_Paquete_para_el_consejo.html" title="Documento 60 &#183; Paquete para el consejo">documento 60</a>, no una demostración.</td>
+</tr>
+<tr>
+<td><strong>Comisión delegada</strong></td>
+<td>Comisión de auditoría, de riesgos o de tecnología, la que ya exista.</td>
+<td>Mandato escrito que incluya la IA (<a href="plantillas/P38_SEVEN-G_Reglamento_de_los_organos_de_gobierno_de_IA.html" title="Plantilla P38 &#183; Reglamento de los &#243;rganos de gobierno de IA">P38</a>).</td>
+</tr>
+<tr>
+<td><strong>Comité de IA</strong></td>
+<td>Comité de dirección ampliado, o un comité propio con negocio, tecnología, riesgos, datos y personas.</td>
+<td>Periodicidad mensual y capacidad real de decidir <em>gates</em> y retiradas.</td>
+</tr>
+<tr>
+<td><strong>Oficina de IA</strong></td>
+<td>Transformación, tecnología, la dirección de IA o control de gestión, según la compañía.</td>
+<td>Dedicación, método y acceso a los órganos; no construir lo que verifica.</td>
+</tr>
+<tr>
+<td><strong>Patrocinador de negocio</strong></td>
+<td>Director de la unidad que se beneficia.</td>
+<td>Responde del beneficio en la revisión de realización (<a href="43_SEVEN-G_Realizacion_de_beneficios.html" title="Documento 43 &#183; Realizaci&#243;n de beneficios">documento 43</a>).</td>
+</tr>
+<tr>
+<td><strong>Responsable de producto</strong></td>
+<td>Mando de la unidad usuaria o gestor de producto.</td>
+<td>Autoridad sobre el alcance y sobre la adopción.</td>
+</tr>
+<tr>
+<td><strong>Responsable técnico</strong></td>
+<td>Tecnología, datos o el proveedor, con un interlocutor interno.</td>
+<td>Nunca es también el verificador.</td>
+</tr>
+<tr>
+<td><strong>Responsable de riesgos y de conformidad</strong></td>
+<td>Riesgos, cumplimiento, seguridad y protección de datos.</td>
+<td>Participa desde la fase 0 y firma en G5 en Enterprise.</td>
+</tr>
+<tr>
+<td><strong>Auditor de IA</strong></td>
+<td>Auditoría interna, con apoyo externo si hace falta.</td>
+<td>Independencia declarada (<a href="plantillas/P41_SEVEN-G_Declaraciones_de_independencia_y_conflictos_de_interes.html" title="Plantilla P41 &#183; Declaraciones de independencia y conflictos de inter&#233;s">P41</a>).</td>
+</tr>
+<tr>
+<td><strong>Supervisor humano designado</strong></td>
+<td>Persona del área usuaria que valida o interrumpe el sistema.</td>
+<td>Competencia, formación y <strong>autoridad real para discrepar</strong> (<a href="50_SEVEN-G_Personas_y_organizacion.html" title="Documento 50 &#183; Personas y organizaci&#243;n">documento 50</a>, sección 4.2).</td>
+</tr>
+</tbody>
+</table></div>
+<p>En compañías pequeñas, el <a href="30_SEVEN-G_Modelo_de_gobierno.html" title="Documento 30 &#183; Modelo de gobierno">documento 30</a>, sección 11, y el <a href="90_SEVEN-G_Guia_de_implantacion.html" title="Documento 90 &#183; Gu&#237;a de implantaci&#243;n de SEVEN-G">documento 90</a>, sección 2.4, explican cómo agrupar órganos sin perder las separaciones obligatorias.</p>
+<hr />
+<h2 id="de-donde-vienen-los-casos-de-uso"><span class="antetitulo">05</span>De dónde vienen los casos de uso</h2>
+<h3 id="5-1-ocho-fuentes">5.1 Ocho fuentes</h3>
+<p>La demanda de IA no nace en un solo sitio. Reconocer la fuente ayuda a anticipar su sesgo y a pedir lo que le falta antes de que entre en la cartera.</p>
+<div class="tabla"><table>
+<thead>
+<tr>
+<th>#</th>
+<th>Fuente</th>
+<th>Qué suele traer</th>
+<th>Sesgo típico</th>
+<th>Qué le falta casi siempre</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td><strong>Unidades de negocio y operaciones</strong></td>
+<td>Problemas reales, con proceso y datos propios.</td>
+<td>Trae la solución ya elegida, no el problema.</td>
+<td>Línea base y método de atribución (<a href="40_SEVEN-G_Reglas_de_medicion_del_valor.html" title="Documento 40 &#183; Reglas de medici&#243;n del valor">documento 40</a>).</td>
+</tr>
+<tr>
+<td>2</td>
+<td><strong>Tecnología y datos</strong></td>
+<td>Capacidades nuevas que ahora son posibles y baratas.</td>
+<td>Busca dónde aplicar lo que ya sabe hacer.</td>
+<td>Patrocinador de negocio que responda del beneficio.</td>
+</tr>
+<tr>
+<td>3</td>
+<td><strong>El mercado de producto</strong></td>
+<td>Funciones de IA que aparecen dentro del software que la compañía ya usa.</td>
+<td>Se activan solas, sin decisión ni inventario.</td>
+<td>Alta en inventario, clasificación regulatoria y decisión consciente de activarlas.</td>
+</tr>
+<tr>
+<td>4</td>
+<td><strong>Empleados</strong></td>
+<td>Uso individual de herramientas generales; los mejores casos pequeños salen de aquí.</td>
+<td>Ocurre fuera de control (uso no autorizado).</td>
+<td>Canal de propuesta, política de uso aceptable y alfabetización (<a href="31_SEVEN-G_Politica_corporativa_y_uso_aceptable.html" title="Documento 31 &#183; Pol&#237;tica corporativa de IA y pol&#237;tica de uso aceptable">documento 31</a>).</td>
+</tr>
+<tr>
+<td>5</td>
+<td><strong>Clientes y canal</strong></td>
+<td>Peticiones explícitas y fricciones observadas.</td>
+<td>Se confunde una petición puntual con demanda agregada.</td>
+<td>Tamaño del segmento y disposición a pagar.</td>
+</tr>
+<tr>
+<td>6</td>
+<td><strong>Regulación, auditoría e incidentes</strong></td>
+<td>Obligaciones, hallazgos y no conformidades que exigen cambios.</td>
+<td>Se tratan como coste y se hacen con mínimos.</td>
+<td>Encaje con la cartera; a veces habilitan valor, no solo control.</td>
+</tr>
+<tr>
+<td>7</td>
+<td><strong>Consejo y alta dirección</strong></td>
+<td>Retos de ambición, comparaciones con el sector, operaciones corporativas.</td>
+<td>Llegan con nombre de tecnología y sin problema definido.</td>
+<td>Traducción a hipótesis falsable y a esfera y ambición (<a href="10_SEVEN-G_Mapa_de_esferas_y_niveles_de_ambicion.html" title="Documento 10 &#183; Mapa de esferas y niveles de ambici&#243;n">documento 10</a>).</td>
+</tr>
+<tr>
+<td>8</td>
+<td><strong>Ecosistema de innovación</strong></td>
+<td>Propuestas de proveedores, startups, capital riesgo, universidades y programas de innovación.</td>
+<td>Prueba de concepto gratuita sin dueño interno ni coste de salida.</td>
+<td>Patrocinador interno, datos que se pueden ceder y plan de salida (<a href="36_SEVEN-G_Terceros_y_proveedores_de_IA.html" title="Documento 36 &#183; Terceros y proveedores de IA">documento 36</a>).</td>
+</tr>
+</tbody>
+</table></div>
+<figure class="grafico"><div class="g-titulo">De d&#243;nde vienen los casos de uso y por d&#243;nde entran</div><div class="g-sub">Ocho fuentes, una sola puerta de entrada al registro y a la cartera</div><div class="g-lienzo"><pre class="mermaid">flowchart LR
+  S1["1 · Negocio y operaciones"]
+  S2["2 · Tecnología y datos"]
+  S3["3 · Producto del proveedor&lt;br>IA que ya viene incluida"]
+  S4["4 · Empleados&lt;br>uso individual y propuestas"]
+  S5["5 · Clientes y canal"]
+  S6["6 · Regulación, auditoría&lt;br>e incidentes"]
+  S7["7 · Consejo y alta dirección"]
+  S8["8 · Ecosistema&lt;br>proveedores, startups y capital riesgo"]
+  P["Puerta de entrada única&lt;br>ficha mínima + patrocinador de negocio&lt;br>documento 14, sección 3.2"]
+  FIL{"Filtros previos&lt;br>prohibido, duplicado,&lt;br>no necesita IA,&lt;br>fuera de apetito"}
+  REG["Registro de iniciativas T01&lt;br>estado: Registrada"]
+  CAR["Cartera priorizada&lt;br>comité de IA, etapa C3"]
+  NO["No entra&lt;br>se registra con motivo"]
+  S1 --> P
+  S2 --> P
+  S3 --> P
+  S4 --> P
+  S5 --> P
+  S6 --> P
+  S7 --> P
+  S8 --> P
+  P --> FIL
+  FIL -->|"pasa"| REG
+  FIL -->|"no pasa"| NO
+  REG --> CAR
+  classDef fuente fill:#fdf3e8,stroke:#593380,color:#1a1817
+  classDef puerta fill:#f2dfce,stroke:#0f5499,color:#1a1817
+  classDef fin fill:#f3d3da,stroke:#990f3d,color:#1a1817
+  class S1,S2,S3,S4,S5,S6,S7,S8 fuente
+  class P,FIL,REG,CAR puerta
+  class NO fin
+</pre></div><div class="g-fuente">Fuente: SEVEN-G</div></figure>
+<h3 id="5-2-la-puerta-de-entrada-es-una-sola">5.2 La puerta de entrada es una sola</h3>
+<p>Venga de donde venga, una iniciativa entra por el mismo sitio: la <strong>ficha mínima de entrada</strong> del <a href="14_SEVEN-G_Gestion_de_cartera.html" title="Documento 14 &#183; Gesti&#243;n de cartera">documento 14</a>, sección 3.2 (descripción comprensible, patrocinador y responsable de producto, esfera y ambición propuestas, orden de magnitud del valor, inversión hasta G3, encaje con la tesis y criterios Enterprise previsibles), los <strong>filtros previos</strong> de la sección 3.3 y las <strong>ventanas de entrada</strong> de la sección 3.4. Lo que no entra se registra con su motivo: un «no» sin registro se vuelve a proponer tres meses después.</p>
+<p><strong>Regla del patrocinador.</strong> Toda iniciativa necesita un patrocinador de negocio. Una propuesta de un proveedor, del ecosistema o del área técnica <strong>sin patrocinador interno no entra</strong>, por buena que parezca.</p>
+<h3 id="5-3-las-tres-fuentes-que-mas-problemas-dan">5.3 Las tres fuentes que más problemas dan</h3>
+<div class="tabla"><table>
+<thead>
+<tr>
+<th>Fuente</th>
+<th>Problema</th>
+<th>Cómo se trata</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>La IA que ya viene incluida</strong> en un producto contratado</td>
+<td>Se activa por defecto, sin decisión, sin inventario y a veces con datos que no deberían salir del perímetro.</td>
+<td>Revisión periódica de novedades de los proveedores; alta en inventario y clasificación antes de activar; cláusulas del <a href="36_SEVEN-G_Terceros_y_proveedores_de_IA.html" title="Documento 36 &#183; Terceros y proveedores de IA">documento 36</a>. Es una decisión, no una actualización.</td>
+</tr>
+<tr>
+<td><strong>Uso no autorizado</strong> (IA en la sombra)</td>
+<td>Ocurre igualmente; prohibirlo sin alternativa lo esconde.</td>
+<td>Alternativa corporativa utilizable, política de uso aceptable y canal de amnistía para aflorar usos: regularización del <a href="14_SEVEN-G_Gestion_de_cartera.html" title="Documento 14 &#183; Gesti&#243;n de cartera">documento 14</a>, sección 11, y <a href="31_SEVEN-G_Politica_corporativa_y_uso_aceptable.html" title="Documento 31 &#183; Pol&#237;tica corporativa de IA y pol&#237;tica de uso aceptable">documento 31</a>.</td>
+</tr>
+<tr>
+<td><strong>La prueba de concepto regalada</strong></td>
+<td>Sin coste aparente, consume datos, tiempo y credibilidad, y crea dependencia.</td>
+<td>Patrocinador, criterios de éxito y de parada por escrito antes de empezar, datos acotados y coste de salida estimado desde el primer día.</td>
+</tr>
+</tbody>
+</table></div>
+<blockquote>
+<p><strong>Por qué importa.</strong> Las tres fuentes anteriores comparten una característica: <strong>entran sin pasar por la puerta</strong>. La mayor parte del riesgo regulatorio y de seguridad de una compañía no está en las iniciativas de su cartera, sino en lo que nunca llegó a ella.</p>
+</blockquote>
+<hr />
+<h2 id="como-se-gobierna-lo-que-ha-entrado"><span class="antetitulo">06</span>Cómo se gobierna lo que ha entrado</h2>
+<p>El recorrido es el del marco: la cartera se gestiona como un embudo y cada iniciativa atraviesa fases con puertas de decisión. Lo que aquí se añade es <strong>quién decide en cada punto</strong> y con qué grado de delegación.</p>
+<figure class="grafico"><div class="g-titulo">Circuito de gobierno de una iniciativa</div><div class="g-sub">De la propuesta a la operaci&#243;n, con qui&#233;n decide en cada puerta</div><div class="g-lienzo"><pre class="mermaid">flowchart TB
+  E["Entrada: ficha mínima y patrocinador"]
+  C3["Cartera C3: prioriza el comité de IA"]
+  F01["Fases 0 y 1 · Contexto y descubrimiento"]
+  G0["G0 y G1"]
+  F2["Fase 2 · Hipótesis de valor"]
+  G2{"G2 · decide el comité de IA&lt;br>Transformar lo aprueba el consejo"}
+  F3["Fase 3 · Diseño, riesgos y viabilidad"]
+  G3{"G3 · principal puerta de parada&lt;br>riesgos y cumplimiento con voz"}
+  F45["Fases 4 y 5 · Construcción y validación"]
+  G5{"G5 · puesta en producción&lt;br>firma multinivel en Enterprise"}
+  OP["Fases 6 y 7 · Operación y revisión&lt;br>monitorización continua y R6"]
+  G7{"G7 · escalar, iterar o retirar"}
+  SAL["Salidas registradas con motivo&lt;br>no aprobado, descartado o desenganchado"]
+  E --> C3 --> F01 --> G0 --> F2 --> G2
+  G2 -->|"continuar"| F3
+  G2 -->|"parar o pivotar"| SAL
+  F3 --> G3
+  G3 -->|"continuar"| F45
+  G3 -->|"parar"| SAL
+  F45 --> G5
+  G5 -->|"producción"| OP
+  G5 -->|"iterar"| F45
+  OP --> G7
+  G7 -->|"escalar"| C3
+  G7 -->|"retirar"| SAL
+  classDef fase fill:#fdf3e8,stroke:#593380,color:#1a1817
+  classDef gate fill:#f2dfce,stroke:#0f5499,color:#1a1817
+  classDef fin fill:#f3d3da,stroke:#990f3d,color:#1a1817
+  class E,C3,F01,F2,F3,F45,OP fase
+  class G0,G2,G3,G5,G7 gate
+  class SAL fin
+</pre></div><div class="g-fuente">Fuente: SEVEN-G</div></figure>
+<div class="tabla"><table>
+<thead>
+<tr>
+<th>Decisión</th>
+<th>Quién decide (referencia)</th>
+<th>Qué no puede delegarse</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Entrada y prioridad en la cartera</td>
+<td>Comité de IA, en su revisión mensual (<a href="14_SEVEN-G_Gestion_de_cartera.html" title="Documento 14 &#183; Gesti&#243;n de cartera">documento 14</a>, sección 7.1).</td>
+<td>—</td>
+</tr>
+<tr>
+<td><em>Gates</em> de iniciativas Lite</td>
+<td>Según la matriz de delegación del <a href="30_SEVEN-G_Modelo_de_gobierno.html" title="Documento 30 &#183; Modelo de gobierno">documento 30</a>, sección 7.</td>
+<td>La verificación la hace alguien distinto de quien construye.</td>
+</tr>
+<tr>
+<td><em>Gates</em> de iniciativas Enterprise</td>
+<td>Comité de IA, con la segunda línea presente.</td>
+<td>La conformidad de riesgo y cumplimiento.</td>
+</tr>
+<tr>
+<td>Aprobación de Transformar en G2 y del escalado en G7</td>
+<td>Consejo (<a href="30_SEVEN-G_Modelo_de_gobierno.html" title="Documento 30 &#183; Modelo de gobierno">documento 30</a>, sección 3.1).</td>
+<td>No se delega.</td>
+</tr>
+<tr>
+<td>Aceptación de riesgo residual</td>
+<td>El órgano que corresponde al nivel del riesgo (<a href="33_SEVEN-G_Metodologia_de_riesgos_de_IA.html" title="Documento 33 &#183; Metodolog&#237;a de riesgos de IA">documento 33</a>).</td>
+<td>Nunca quien construye la iniciativa.</td>
+</tr>
+<tr>
+<td>Puesta en producción Enterprise</td>
+<td>Firma multinivel en G5, con la segunda línea.</td>
+<td>La firma de control.</td>
+</tr>
+<tr>
+<td>Parada, pivote y retirada</td>
+<td>Comité de IA; el consejo en las de Transformar (<a href="14_SEVEN-G_Gestion_de_cartera.html" title="Documento 14 &#183; Gesti&#243;n de cartera">documento 14</a>, sección 10).</td>
+<td>El motivo se registra siempre.</td>
+</tr>
+<tr>
+<td>Excepciones a la política</td>
+<td>Órgano previsto en <a href="plantillas/P40_SEVEN-G_Solicitud_y_registro_de_excepciones.html" title="Plantilla P40 &#183; Solicitud y registro de excepciones">P40</a>, con caducidad.</td>
+<td>Una excepción sin fecha de fin no es una excepción.</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>El papel de la oficina de IA</strong> en este circuito es el de motor, no el de decisor: prepara las decisiones, comprueba que la evidencia existe antes de convocar la puerta, mantiene el registro y avisa de lo que se ha quedado atascado (iniciativas estancadas, condiciones vencidas, <a href="14_SEVEN-G_Gestion_de_cartera.html" title="Documento 14 &#183; Gesti&#243;n de cartera">documento 14</a>, sección 8).</p>
+<hr />
+<h2 id="como-se-monitoriza-y-como-llega-la-informacion-al-consejo"><span class="antetitulo">07</span>Cómo se monitoriza y cómo llega la información al consejo</h2>
+<h3 id="7-1-la-cadena-de-informacion">7.1 La cadena de información</h3>
+<p>Cada nivel recibe menos detalle y más consecuencia. Lo que no cambia en ningún nivel es el <strong>estado de cada cifra</strong>: validada, declarada o estimada (<a href="40_SEVEN-G_Reglas_de_medicion_del_valor.html" title="Documento 40 &#183; Reglas de medici&#243;n del valor">documento 40</a>).</p>
+<figure class="grafico"><div class="g-titulo">C&#243;mo llega al consejo la informaci&#243;n de la IA</div><div class="g-sub">Qu&#233; ve cada nivel, con qu&#233; frecuencia y con qu&#233; herramienta</div><div class="g-lienzo"><pre class="mermaid">flowchart BT
+  EQ["Equipos de iniciativa&lt;br>evidencias y eventos en T01&lt;br>continuo"]
+  OF["Oficina de IA&lt;br>consolida cartera, riesgos,&lt;br>coste y valor · continuo"]
+  CIA["Comité de IA&lt;br>cartera, gates, alertas&lt;br>mensual"]
+  CD["Comisión delegada&lt;br>riesgos, incidentes, auditoría&lt;br>trimestral"]
+  CA["Consejo de administración&lt;br>panel, índice, madurez y tesis&lt;br>trimestral y anual"]
+  ALE["Vía rápida&lt;br>incidentes S1 y S2, riesgo fuera de apetito,&lt;br>no conformidad crítica"]
+  EQ --> OF --> CIA --> CD --> CA
+  ALE -.->|"sube sin esperar al calendario"| CD
+  ALE -.->|"sube sin esperar al calendario"| CA
+  classDef base fill:#fdf3e8,stroke:#593380,color:#1a1817
+  classDef org fill:#f2dfce,stroke:#0f5499,color:#1a1817
+  classDef ale fill:#f3d3da,stroke:#990f3d,color:#1a1817
+  class EQ,OF base
+  class CIA,CD,CA org
+  class ALE ale
+</pre></div><div class="g-fuente">Fuente: SEVEN-G</div></figure>
+<h3 id="7-2-que-ve-cada-nivel">7.2 Qué ve cada nivel</h3>
+<div class="tabla"><table>
+<thead>
+<tr>
+<th>Nivel</th>
+<th>Qué recibe</th>
+<th>Cada cuánto</th>
+<th>Con qué</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Equipo de iniciativa</strong></td>
+<td>Sus evidencias, criterios de la puerta siguiente, riesgos abiertos y cifras propias.</td>
+<td>Continuo</td>
+<td><a href="../../herramientas/T01_registro_iniciativas/registro.html" title="Herramienta T01 &#183; Registro de iniciativas">T01</a>, <a href="../../herramientas/T01_registro_iniciativas/registro.html#/gates" title="Herramienta T03 &#183; Gestor de gates">T03</a>, <a href="../../herramientas/T01_registro_iniciativas/registro.html#/riesgos" title="Herramienta T06 &#183; Matriz y registro de riesgos">T06</a></td>
+</tr>
+<tr>
+<td><strong>Oficina de IA</strong></td>
+<td>Cartera completa, tiempos por fase, evidencias que faltan, coste y consumo, alertas.</td>
+<td>Continuo</td>
+<td><a href="../../herramientas/T01_registro_iniciativas/registro.html" title="Herramienta T01 &#183; Registro de iniciativas">T01</a>, <a href="../../herramientas/T11_calculadora_valor/calculadora.html" title="Herramienta T11 &#183; Lienzo y calculadora de hip&#243;tesis de valor">T11</a>, <a href="../../herramientas/T11_calculadora_valor/calculadora.html#/costes" title="Herramienta T13 &#183; Calculadora de costes por caso">T13</a></td>
+</tr>
+<tr>
+<td><strong>Comité de IA</strong></td>
+<td>Cartera priorizada, decisiones de puerta pendientes, iniciativas estancadas, riesgos Altos, retiradas.</td>
+<td>Mensual</td>
+<td><a href="../../herramientas/T01_registro_iniciativas/registro.html" title="Herramienta T01 &#183; Registro de iniciativas">T01</a>, <a href="../../herramientas/T01_registro_iniciativas/registro.html#/riesgos" title="Herramienta T06 &#183; Matriz y registro de riesgos">T06</a>, <a href="plantillas/P36_SEVEN-G_Plan_de_cartera_C3.html" title="Plantilla P36 &#183; Plan de cartera C3">P36</a></td>
+</tr>
+<tr>
+<td><strong>Comisión delegada</strong></td>
+<td>Riesgos fuera de apetito, incidentes, no conformidades mayores y críticas, resultados de auditoría, excepciones vigentes.</td>
+<td>Trimestral</td>
+<td><a href="plantillas/P42_SEVEN-G_Informe_trimestral_de_segunda_linea.html" title="Plantilla P42 &#183; Informe trimestral de segunda l&#237;nea">P42</a>, <a href="37_SEVEN-G_No_conformidades_e_incidentes.html" title="Documento 37 &#183; No conformidades, incidentes de IA y remediaci&#243;n">documento 37</a>, <a href="38_SEVEN-G_Marco_de_auditoria_de_IA.html" title="Documento 38 &#183; Marco de auditor&#237;a de IA">documento 38</a></td>
+</tr>
+<tr>
+<td><strong>Consejo</strong></td>
+<td>Embudo de la cartera, valor validado frente a declarado, madurez, índice de transformación, apuestas de Transformar y recomendaciones abiertas.</td>
+<td>Trimestral y anual</td>
+<td>Panel <a href="../../herramientas/T17_panel_consejo/index.html" title="Herramienta T17 &#183; Panel de IA para el consejo">T17</a>, <a href="../../herramientas/T14_indice_transformacion/indice.html" title="Herramienta T14 &#183; Calculadora del &#237;ndice de transformaci&#243;n">T14</a>, <a href="../../herramientas/T15_diagnostico_madurez/madurez.html" title="Herramienta T15 &#183; Diagn&#243;stico de madurez">T15</a>, <a href="../../herramientas/T01_registro_iniciativas/registro.html#/consejo" title="Herramienta T18 &#183; Registro de recomendaciones del consejo">T18</a>, paquete <a href="plantillas/P67_SEVEN-G_Paquete_trimestral_para_el_consejo.html" title="Plantilla P67 &#183; Paquete trimestral para el consejo">P67</a> y <a href="60_SEVEN-G_Paquete_para_el_consejo.html" title="Documento 60 &#183; Paquete para el consejo">documento 60</a></td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="7-3-tres-reglas-de-la-informacion-al-consejo">7.3 Tres reglas de la información al consejo</h3>
+<ol>
+<li><strong>Ninguna cifra sin estado ni fórmula.</strong> Un ahorro declarado y uno validado no se suman en la misma línea (<a href="40_SEVEN-G_Reglas_de_medicion_del_valor.html" title="Documento 40 &#183; Reglas de medici&#243;n del valor">documento 40</a>).</li>
+<li><strong>El consejo ve el embudo completo, no solo lo que va bien</strong>: las iniciativas que no superaron cada etapa y por qué, y las que se han desenganchado después de estar en uso. Es la parte que más enseña.</li>
+<li><strong>Las alertas no esperan al calendario.</strong> Los incidentes graves, los riesgos fuera de apetito y las no conformidades críticas suben cuando ocurren (<a href="37_SEVEN-G_No_conformidades_e_incidentes.html" title="Documento 37 &#183; No conformidades, incidentes de IA y remediaci&#243;n">documento 37</a>).</li>
+</ol>
+<blockquote>
+<p><strong>Por qué importa.</strong> Un consejo que solo ve demostraciones no puede ejercer su responsabilidad de supervisión: no sabe cuánto cuesta la cartera, qué riesgos ha aceptado la compañía ni qué parte del valor anunciado se ha materializado.</p>
+</blockquote>
+<hr />
+<h2 id="que-organizacion-viene-despues-hipotesis-del-autor"><span class="antetitulo">08</span>Qué organización viene después: hipótesis del autor</h2>
+<blockquote>
+<p><strong>Esto es una hipótesis razonada, no una previsión.</strong> Nada de esta sección está demostrado, ni procede de un estudio de mercado. Se ofrece para sostener una conversación de dirección y de consejo, y cada afirmación va acompañada de la señal que permitiría comprobar si se está cumpliendo. Las reglas del marco no dependen de que esta sección acierte.</p>
+</blockquote>
+<h3 id="8-1-cinco-fuerzas-que-empujan-el-cambio-organizativo">8.1 Cinco fuerzas que empujan el cambio organizativo</h3>
+<div class="tabla"><table>
+<thead>
+<tr>
+<th>Fuerza</th>
+<th>Qué cambia</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>El coste del trabajo cognitivo rutinario baja</strong></td>
+<td>La ventaja deja de estar en tener más manos y pasa a estar en definir bien el resultado y en controlar la calidad.</td>
+</tr>
+<tr>
+<td><strong>La unidad de gestión pasa de la función al proceso</strong></td>
+<td>Si una cadena extremo a extremo puede ejecutarse con pocas intervenciones humanas, dividirla entre cuatro direcciones deja de tener sentido.</td>
+</tr>
+<tr>
+<td><strong>Aparecen trabajadores que no son personas</strong></td>
+<td>Los agentes necesitan identidad, permisos, responsable, evaluación de desempeño y baja: es gestión, no solo tecnología (<a href="35_SEVEN-G_Seguridad_de_IA_y_agentes.html" title="Documento 35 &#183; Seguridad de IA y agentes">documento 35</a>).</td>
+</tr>
+<tr>
+<td><strong>El conocimiento se vuelve activo operativo</strong></td>
+<td>Quien mantiene actualizado lo que la IA lee determina la calidad de las respuestas: el contenido interno pasa de archivo a infraestructura (<a href="51_SEVEN-G_Datos_y_conocimiento.html" title="Documento 51 &#183; Datos y conocimiento para IA">documento 51</a>).</td>
+</tr>
+<tr>
+<td><strong>La regulación exige rastro humano</strong></td>
+<td>Cuanto más automatiza una compañía, más explícita tiene que ser la responsabilidad humana: supervisión, trazabilidad y capacidad de intervenir (<a href="34_SEVEN-G_Mapeo_regulatorio.html" title="Documento 34 &#183; Mapeo regulatorio">documento 34</a>).</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="8-2-que-le-pasa-a-cada-silo">8.2 Qué le pasa a cada silo</h3>
+<div class="tabla"><table>
+<thead>
+<tr>
+<th>Área</th>
+<th>Hipótesis a tres o cinco años</th>
+<th>Señal temprana de que está ocurriendo</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Unidades de negocio</strong></td>
+<td>Dejan de pedir sistemas y pasan a responder de resultados de proceso; el patrocinio se profesionaliza.</td>
+<td>Objetivos de la dirección ligados al beneficio de la cartera de IA, no al número de pilotos.</td>
+</tr>
+<tr>
+<td><strong>Finanzas</strong></td>
+<td>Del cierre periódico al control continuo; el controller diseña controles automáticos y vigila el coste por unidad de servicio.</td>
+<td>Aparece el coste de consumo de IA como línea de gestión, repartida por caso (<a href="42_SEVEN-G_Costes_de_IA.html" title="Documento 42 &#183; Costes de IA y reparto por caso">documento 42</a>).</td>
+</tr>
+<tr>
+<td><strong>Personas</strong></td>
+<td>Gestiona una plantilla mixta: dotación por capacidad, no por puestos; rediseño del trabajo y supervisión como competencia.</td>
+<td>El plan de plantilla incluye capacidad liberada y su destino (<a href="50_SEVEN-G_Personas_y_organizacion.html" title="Documento 50 &#183; Personas y organizaci&#243;n">documento 50</a>, sección 6).</td>
+</tr>
+<tr>
+<td><strong>Servicios generales y <em>back office</em></strong></td>
+<td>Se contraen como ejecutores y se convierten en operadores de plataformas y de excepciones.</td>
+<td>El volumen de tareas rutinarias cae y sube el de casos excepcionales atendidos por personas expertas.</td>
+</tr>
+<tr>
+<td><strong>Tecnología</strong></td>
+<td>De construir aplicaciones a operar plataformas, datos, agentes y control de calidad del comportamiento.</td>
+<td>Existe un catálogo interno de componentes y agentes reutilizables con dueño.</td>
+</tr>
+<tr>
+<td><strong>Compras</strong></td>
+<td>Contrata capacidades y resultados, no licencias; la dependencia de proveedor se gestiona como riesgo de concentración.</td>
+<td>Las cláusulas del <a href="36_SEVEN-G_Terceros_y_proveedores_de_IA.html" title="Documento 36 &#183; Terceros y proveedores de IA">documento 36</a> y el plan de salida son condición de compra.</td>
+</tr>
+<tr>
+<td><strong>Riesgos y auditoría</strong></td>
+<td>Auditan comportamiento de sistemas, no solo procesos y controles documentales.</td>
+<td>Existe un plan anual de auditoría de IA con pruebas sobre sistemas reales (<a href="38_SEVEN-G_Marco_de_auditoria_de_IA.html" title="Documento 38 &#183; Marco de auditor&#237;a de IA">documento 38</a>).</td>
+</tr>
+<tr>
+<td><strong>Atención al cliente y marketing</strong></td>
+<td>Primer punto de contacto mayoritariamente automatizado, con personas en la excepción y en la relación de valor.</td>
+<td>Se mide la deriva de uso y el sesgo por segmento, no solo el tiempo de respuesta (<a href="52_SEVEN-G_Manual_de_operacion_de_IA.html" title="Documento 52 &#183; Manual de operaci&#243;n de IA">documento 52</a>).</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="8-3-roles-que-anticipo-que-se-consolidaran">8.3 Roles que anticipo que se consolidarán</h3>
+<div class="tabla"><table>
+<thead>
+<tr>
+<th>Rol</th>
+<th>Qué haría</th>
+<th>De dónde saldría</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Dueño de proceso extremo a extremo</strong></td>
+<td>Responde del resultado completo de una cadena, con personas y sistemas a su cargo.</td>
+<td>Direcciones de operaciones y de negocio.</td>
+</tr>
+<tr>
+<td><strong>Ingeniero o gestor de agentes</strong></td>
+<td>Diseña, prueba, despliega y retira agentes; mantiene su catálogo y sus límites.</td>
+<td>Tecnología y automatización.</td>
+</tr>
+<tr>
+<td><strong>Gestor de identidades no humanas</strong></td>
+<td>Alta, permisos, rotación de credenciales y baja de cada agente y servicio.</td>
+<td>Seguridad e identidades.</td>
+</tr>
+<tr>
+<td><strong>Controller de consumo y de coste por caso</strong></td>
+<td>Presupuesto de consumo, conciliación y coste por unidad de servicio.</td>
+<td>Control de gestión.</td>
+</tr>
+<tr>
+<td><strong>Curador de conocimiento</strong></td>
+<td>Calidad, vigencia y permisos de las fuentes que la IA usa.</td>
+<td>Documentación, calidad y las propias áreas.</td>
+</tr>
+<tr>
+<td><strong>Supervisor humano profesionalizado</strong></td>
+<td>Valida, corrige e interrumpe decisiones del sistema, con autoridad y sin incentivos a aceptarlas.</td>
+<td>Áreas usuarias, con formación específica.</td>
+</tr>
+<tr>
+<td><strong>Auditor de IA</strong></td>
+<td>Verifica evidencias, comportamiento y cumplimiento del marco.</td>
+<td>Auditoría interna, con apoyo externo.</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="8-4-cuatro-escenarios-a-cinco-anos">8.4 Cuatro escenarios a cinco años</h3>
+<div class="tabla"><table>
+<thead>
+<tr>
+<th>Escenario</th>
+<th>En qué consiste</th>
+<th>Cuándo es probable</th>
+<th>Señal de que va por ahí</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>1 · Silos reforzados</strong></td>
+<td>Cada función usa IA dentro de su perímetro y las fronteras no se mueven.</td>
+<td>Sectores muy regulados o con procesos muy separados.</td>
+<td>Muchas iniciativas, ninguna entre áreas.</td>
+</tr>
+<tr>
+<td><strong>2 · Capa central de IA</strong></td>
+<td>Una plataforma y un equipo centrales sirven a todas las áreas; el organigrama no cambia.</td>
+<td>Compañías con fuerte cultura corporativa y necesidad de control.</td>
+<td>El catálogo de componentes compartidos crece y las áreas dejan de contratar por su cuenta.</td>
+</tr>
+<tr>
+<td><strong>3 · Organización por procesos con equipos mixtos</strong></td>
+<td>El trabajo se organiza en cadenas extremo a extremo, con personas y agentes, y dueños de resultado.</td>
+<td>Cuando el coste de coordinación entre silos supera al de reorganizar.</td>
+<td>Aparecen dueños de proceso con presupuesto y con objetivos de resultado.</td>
+</tr>
+<tr>
+<td><strong>4 · Red gobernada de agentes</strong></td>
+<td>Buena parte de la ejecución la realizan agentes coordinados; las personas fijan objetivos, excepciones y control.</td>
+<td>Solo tras madurez alta en datos, seguridad y control.</td>
+<td>Existe inventario de agentes con responsable, límites y baja, igual que un registro de empleados.</td>
+</tr>
+</tbody>
+</table></div>
+<p>La hipótesis del autor es que la mayoría de las grandes compañías europeas recorrerán el <strong>escenario 2</strong> y que el <strong>3</strong> llegará por procesos concretos, no por reorganizaciones generales: primero una cadena (siniestros, admisión, soporte, facturación), después otra.</p>
+<h3 id="8-5-lo-que-no-va-a-cambiar">8.5 Lo que no va a cambiar</h3>
+<ol>
+<li>La <strong>responsabilidad jurídica</strong> sigue siendo de personas y de órganos, no de sistemas.</li>
+<li>La <strong>separación entre construir y controlar</strong> se vuelve más importante, no menos.</li>
+<li>Seguirá haciendo falta <strong>poder parar</strong>: cuanto más automatizada la cadena, más valor tiene el interruptor.</li>
+<li>El valor solo se demuestra <strong>en producción y con línea base</strong>; ninguna organización nueva ahorra esa prueba.</li>
+<li>Alguien tendrá que <strong>explicárselo al consejo</strong> en lenguaje de negocio.</li>
+</ol>
+<h3 id="8-6-que-haria-hoy-una-compania-que-crea-en-esta-hipotesis">8.6 Qué haría hoy una compañía que crea en esta hipótesis</h3>
+<p>Cuatro movimientos que no se lamentan aunque el futuro sea otro: <strong>inventario vivo</strong> de sistemas y agentes; <strong>medición homogénea</strong> del valor y del coste por caso; <strong>supervisión humana con autoridad</strong> en lo que decide sobre personas o dinero; y <strong>un dueño de proceso</strong> designado en la cadena donde más duele la coordinación entre áreas.</p>
+<hr />
+<h2 id="preguntas-para-una-conversacion-util"><span class="antetitulo">09</span>Preguntas para una conversación útil</h2>
+<p>Para el consejo, el comité de dirección o una sesión de trabajo. No tienen respuesta correcta; tienen respuesta o no la tienen, y eso ya es información.</p>
+<p><strong>Sobre quién hace qué</strong></p>
+<ol>
+<li>¿Quién ejerce hoy cada una de las seis funciones de la sección 2 y cuáles están vacías?</li>
+<li>¿Hay alguien que ejerza a la vez construcción y control? ¿Desde cuándo?</li>
+<li>Si mañana hay que parar una iniciativa importante, ¿quién firma esa decisión?</li>
+</ol>
+<p><strong>Sobre la demanda</strong></p>
+<ol start="4">
+<li>¿De cuál de las ocho fuentes vienen las iniciativas que tenemos en curso? ¿Hay alguna fuente que no aparezca nunca?</li>
+<li>¿Cuántos sistemas de IA se han activado en productos que ya teníamos contratados, sin decisión expresa?</li>
+<li>¿Qué hacemos hoy con el uso de IA que los empleados ya practican por su cuenta?</li>
+</ol>
+<p><strong>Sobre el gobierno</strong></p>
+<ol start="7">
+<li>¿Cuántas iniciativas se han parado por criterio en los últimos doce meses? Si ninguna, ¿por qué?</li>
+<li>¿La segunda línea participa desde la fase 0 o aparece en la puerta final?</li>
+<li>¿Qué excepciones a la política están vigentes y cuándo caducan?</li>
+</ol>
+<p><strong>Sobre la información</strong></p>
+<ol start="10">
+<li>¿Qué parte del valor que presentamos está validado, qué parte declarado y qué parte estimado?</li>
+<li>¿El consejo ve las iniciativas que no salieron y por qué?</li>
+<li>¿Cuánto cuesta al año la cartera de IA, incluido el consumo y el coste recurrente?</li>
+</ol>
+<p><strong>Sobre el futuro</strong></p>
+<ol start="13">
+<li>¿En cuál de los cuatro escenarios de la sección 8.4 estamos y en cuál queremos estar?</li>
+<li>¿Qué cadena de trabajo extremo a extremo sufre más por la separación entre áreas?</li>
+<li>Si dentro de tres años una parte del trabajo la hacen agentes, ¿quién los da de alta, quién responde de ellos y quién los da de baja?</li>
+</ol>
+<hr />
+<h2 id="como-se-monta-en-la-practica"><span class="antetitulo">10</span>Cómo se monta en la práctica</h2>
+<p>La secuencia de implantación está en el <a href="90_SEVEN-G_Guia_de_implantacion.html" title="Documento 90 &#183; Gu&#237;a de implantaci&#243;n de SEVEN-G">documento 90</a>. En términos de organización, el orden que evita la mayor parte de los bloqueos es:</p>
+<ol>
+<li><strong>Censo e inventario</strong> de lo que ya existe, incluido lo que entró sin pasar por la puerta (<a href="32_SEVEN-G_Inventario_y_clasificacion_regulatoria.html" title="Documento 32 &#183; Inventario de sistemas de IA y clasificaci&#243;n regulatoria">documento 32</a>; <a href="14_SEVEN-G_Gestion_de_cartera.html" title="Documento 14 &#183; Gesti&#243;n de cartera">documento 14</a>, sección 11).</li>
+<li><strong>Asignar las seis funciones</strong> con nombre y apellidos, aunque se concentren en pocas personas (<a href="plantillas/P38_SEVEN-G_Reglamento_de_los_organos_de_gobierno_de_IA.html" title="Plantilla P38 &#183; Reglamento de los &#243;rganos de gobierno de IA">P38</a>).</li>
+<li><strong>Abrir la puerta de entrada única</strong> y publicar la ficha mínima, para que la demanda deje de entrar por los lados (<a href="14_SEVEN-G_Gestion_de_cartera.html" title="Documento 14 &#183; Gesti&#243;n de cartera">documento 14</a>, sección 3).</li>
+<li><strong>Fijar la información al consejo</strong> antes de tener muchas iniciativas: es más fácil empezar a medir con cinco que con cincuenta (<a href="60_SEVEN-G_Paquete_para_el_consejo.html" title="Documento 60 &#183; Paquete para el consejo">documento 60</a>).</li>
+<li><strong>Revisar la estructura a los seis meses</strong> con datos propios: cuántas iniciativas, de qué fuentes, cuántas paradas, cuánto coste. La estructura se decide mejor con esa información que con una comparación de organigramas ajenos.</li>
+</ol>
+<hr />
+<h2 id="herramientas-y-plantillas-asociadas"><span class="antetitulo">11</span>Herramientas y plantillas asociadas</h2>
+<div class="tabla"><table>
+<thead>
+<tr>
+<th>Código</th>
+<th>Nombre</th>
+<th>Uso en este documento</th>
+</tr>
+</thead>
+<tbody>
+<tr id="cod-t01">
+<td><strong><a href="../../herramientas/T01_registro_iniciativas/registro.html" title="Herramienta T01 &#183; Registro de iniciativas">T01</a></strong></td>
+<td>Registro de iniciativas</td>
+<td>Puerta de entrada única, estado de cada iniciativa y origen de toda la información posterior.</td>
+</tr>
+<tr id="cod-t02">
+<td><strong><a href="../../herramientas/T01_registro_iniciativas/registro.html#/inventario" title="Herramienta T02 &#183; Inventario de sistemas de IA">T02</a></strong></td>
+<td>Inventario de sistemas de IA</td>
+<td>Censo de lo que ya existe, incluida la IA incorporada a productos contratados.</td>
+</tr>
+<tr id="cod-t06">
+<td><strong><a href="../../herramientas/T01_registro_iniciativas/registro.html#/riesgos" title="Herramienta T06 &#183; Matriz y registro de riesgos">T06</a></strong></td>
+<td>Matriz y registro de riesgos</td>
+<td>Riesgos por iniciativa y su aceptación por el órgano que corresponde.</td>
+</tr>
+<tr>
+<td><strong><a href="../../herramientas/T14_indice_transformacion/indice.html" title="Herramienta T14 &#183; Calculadora del &#237;ndice de transformaci&#243;n">T14</a> · <a href="../../herramientas/T15_diagnostico_madurez/madurez.html" title="Herramienta T15 &#183; Diagn&#243;stico de madurez">T15</a></strong></td>
+<td>Índice de transformación y diagnóstico de madurez</td>
+<td>Lectura de conjunto para el consejo y para la revisión anual.</td>
+</tr>
+<tr>
+<td><strong><a href="../../herramientas/T17_panel_consejo/index.html" title="Herramienta T17 &#183; Panel de IA para el consejo">T17</a> · <a href="../../herramientas/T01_registro_iniciativas/registro.html#/consejo" title="Herramienta T18 &#183; Registro de recomendaciones del consejo">T18</a></strong></td>
+<td>Panel del consejo y registro de recomendaciones</td>
+<td>Información periódica al consejo y seguimiento de sus acuerdos.</td>
+</tr>
+<tr id="cod-p38">
+<td><strong><a href="plantillas/P38_SEVEN-G_Reglamento_de_los_organos_de_gobierno_de_IA.html" title="Plantilla P38 &#183; Reglamento de los &#243;rganos de gobierno de IA">P38</a></strong></td>
+<td>Reglamento de los órganos y nombramiento del responsable de IA</td>
+<td>Asignación escrita de órganos y funciones.</td>
+</tr>
+<tr id="cod-p39">
+<td><strong><a href="plantillas/P39_SEVEN-G_Orden_del_dia_y_acta_de_organo_de_gobierno.html" title="Plantilla P39 &#183; Orden del d&#237;a y acta de &#243;rgano de gobierno">P39</a></strong></td>
+<td>Orden del día y acta</td>
+<td>Funcionamiento del comité de IA y de la comisión delegada.</td>
+</tr>
+<tr id="cod-p40">
+<td><strong><a href="plantillas/P40_SEVEN-G_Solicitud_y_registro_de_excepciones.html" title="Plantilla P40 &#183; Solicitud y registro de excepciones">P40</a></strong></td>
+<td>Excepciones</td>
+<td>Excepciones con órgano, motivo y caducidad.</td>
+</tr>
+<tr id="cod-p41">
+<td><strong><a href="plantillas/P41_SEVEN-G_Declaraciones_de_independencia_y_conflictos_de_interes.html" title="Plantilla P41 &#183; Declaraciones de independencia y conflictos de inter&#233;s">P41</a></strong></td>
+<td>Declaraciones de independencia y conflictos</td>
+<td>Separación de funciones y auditoría.</td>
+</tr>
+<tr id="cod-p42">
+<td><strong><a href="plantillas/P42_SEVEN-G_Informe_trimestral_de_segunda_linea.html" title="Plantilla P42 &#183; Informe trimestral de segunda l&#237;nea">P42</a></strong></td>
+<td>Informe trimestral de segunda línea</td>
+<td>Información de riesgo y cumplimiento a la comisión delegada.</td>
+</tr>
+<tr id="cod-p36">
+<td><strong><a href="plantillas/P36_SEVEN-G_Plan_de_cartera_C3.html" title="Plantilla P36 &#183; Plan de cartera C3">P36</a></strong></td>
+<td>Plan de cartera</td>
+<td>Priorización, semáforo y regularización.</td>
+</tr>
+<tr id="cod-p67">
+<td><strong><a href="plantillas/P67_SEVEN-G_Paquete_trimestral_para_el_consejo.html" title="Plantilla P67 &#183; Paquete trimestral para el consejo">P67</a></strong></td>
+<td>Paquete trimestral para el consejo</td>
+<td>Contenido de la sesión trimestral.</td>
+</tr>
+</tbody>
+</table></div>
+<hr />
+<h2 id="documentos-relacionados"><span class="antetitulo">12</span>Documentos relacionados</h2>
+<div class="tabla"><table>
+<thead>
+<tr>
+<th>Documento</th>
+<th>Relación</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>01 · Metodología fundacional</strong></td>
+<td>Roles de la iniciativa, separación de funciones, fases, puertas e intensidad.</td>
+</tr>
+<tr>
+<td><strong>13 · Tesis de IA, ambición y apetito de riesgo</strong></td>
+<td>Lo que el consejo aprueba y que da contenido a la función de dirección.</td>
+</tr>
+<tr>
+<td><strong>14 · Gestión de cartera</strong></td>
+<td>Canales de entrada, ficha mínima, filtros, priorización y retirada.</td>
+</tr>
+<tr>
+<td><strong>20 y 21 · Fases y criterios de <em>gate</em></strong></td>
+<td>Qué se hace en cada fase y qué se verifica en cada puerta.</td>
+</tr>
+<tr>
+<td><strong>30 · Modelo de gobierno</strong></td>
+<td>Órganos, mandatos, matriz de delegación, escalado y tres líneas. Documento de referencia de este.</td>
+</tr>
+<tr>
+<td><strong>32, 33 y 34 · Inventario, riesgos y regulación</strong></td>
+<td>Clasificación, riesgos y obligaciones que determinan el control.</td>
+</tr>
+<tr>
+<td><strong>38 · Marco de auditoría de IA</strong></td>
+<td>Función de verificación independiente.</td>
+</tr>
+<tr>
+<td><strong>40 y 42 · Medición del valor y costes</strong></td>
+<td>Estado de las cifras y coste por caso que se informan al consejo.</td>
+</tr>
+<tr>
+<td><strong>50 · Personas y organización</strong></td>
+<td>Efecto sobre el trabajo, roles nuevos, supervisión humana y capacidad liberada.</td>
+</tr>
+<tr>
+<td><strong>60, 61 y 62 · Consejo</strong></td>
+<td>Paquete, conversación y registro de decisiones y recomendaciones.</td>
+</tr>
+<tr>
+<td><strong>90 · Guía de implantación</strong></td>
+<td>Secuencia de puesta en marcha y ruta mínima en alcance Lite.</td>
+</tr>
+<tr>
+<td><strong>94 · Matriz de obligatoriedad</strong></td>
+<td>Nivel de cada documento y lectura por capas.</td>
+</tr>
+</tbody>
+</table></div>
+<hr />
+<h2 id="control-de-versiones"><span class="antetitulo">13</span>Control de versiones</h2>
+<div class="tabla"><table>
+<thead>
+<tr>
+<th>Versión</th>
+<th>Fecha</th>
+<th>Cambios</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0.1</td>
+<td>22-09-2026</td>
+<td>Primera versión. Seis funciones que alguien debe ejercer y sus separaciones; patrones de organización observados en el mercado y dónde colgar el gobierno de la IA; correspondencia entre el organigrama real y los órganos del <a href="30_SEVEN-G_Modelo_de_gobierno.html" title="Documento 30 &#183; Modelo de gobierno">documento 30</a>; ocho fuentes de casos de uso con su sesgo y su puerta de entrada única; circuito de gobierno con quién decide en cada puerta; cadena de información al consejo; sección prospectiva marcada como hipótesis, con cuatro escenarios y sus señales; quince preguntas para una conversación de dirección o de consejo. Documento explicativo: no añade reglas ni evidencias.</td>
+</tr>
+</tbody>
+</table></div>
+<h2 id="fuentes-externas">Fuentes externas citadas</h2><p class="fuentes-nota">Enlaces a la fuente oficial o primaria, comprobados antes de publicar. Verifique siempre la versión vigente en la fecha de uso.</p><ul class="fuentes-externas"><li><a href="https://eur-lex.europa.eu/eli/dir/2022/2555/oj/spa" target="_blank" rel="noopener">Directiva (UE) 2022/2555 del Parlamento Europeo y del Consejo, de 14 de diciembre de 2022, relativa a las medidas destinadas a garantizar un elevado nivel com&#250;n de ciberseguridad en toda la Uni&#243;n (Directiva SRI 2 / NIS2)</a><span> · Parlamento Europeo y Consejo de la UE · 14-12-2022</span></li><li><a href="https://eur-lex.europa.eu/eli/reg/2022/2554/oj/spa" target="_blank" rel="noopener">Reglamento (UE) 2022/2554 del Parlamento Europeo y del Consejo, de 14 de diciembre de 2022, sobre la resiliencia operativa digital del sector financiero (DORA)</a><span> · Parlamento Europeo y Consejo de la UE · 14-12-2022</span></li><li><a href="https://www.eiopa.europa.eu/publications/opinion-artificial-intelligence-governance-and-risk-management_en" target="_blank" rel="noopener">Dictamen de EIOPA sobre gobierno y gesti&#243;n del riesgo de la inteligencia artificial (EIOPA-BoS-25-360), de 6 de agosto de 2025</a><span> · Autoridad Europea de Seguros y Pensiones de Jubilaci&#243;n (EIOPA) · 06-08-2025</span></li></ul>
+</main>
+<footer class="pie"><div><span>© 2026 Fernando García Varela · Metodolog&#237;a SEVEN-G</span><span>Generado el 23-09-2026</span></div><p class="pie-ia">Contenido generado y maquetado con apoyo de IA bajo supervisi&#243;n editorial del autor.</p></footer>
+<script src="codigos.js" defer></script>
+
+<script>
+(function () {
+  var raiz = document.documentElement;
+  var contenido = document.getElementById('contenido');
+  var navItems = [{"href":"00_SEVEN-G_Que_es_y_para_que_sirve.html","title":"Qué es SEVEN-G y para qué sirve","blockCode":"A","blockLabel":"A · Fundamentos","active":false},{"href":"01_SEVEN-G_Metodologia_fundacional.html","title":"Metodología fundacional de SEVEN-G","blockCode":"A","blockLabel":"A · Fundamentos","active":false},{"href":"02_SEVEN-G_Glosario_y_convenciones.html","title":"Glosario y convenciones de SEVEN-G","blockCode":"A","blockLabel":"A · Fundamentos","active":false},{"href":"03_SEVEN-G_Herramientas_y_registro_de_iniciativas.html","title":"Herramientas de SEVEN-G y registro de iniciativas","blockCode":"A","blockLabel":"A · Fundamentos","active":false},{"href":"04_SEVEN-G_Origenes_diferencias_y_por_que_es_abierto.html","title":"De dónde viene SEVEN-G, en qué se diferencia y por qué es abierto","blockCode":"A","blockLabel":"A · Fundamentos","active":false},{"href":"10_SEVEN-G_Mapa_de_esferas_y_niveles_de_ambicion.html","title":"Mapa de esferas y niveles de ambición","blockCode":"B","blockLabel":"B · Estrategia y cartera","active":false},{"href":"11_SEVEN-G_Modelo_de_madurez.html","title":"Modelo de madurez","blockCode":"B","blockLabel":"B · Estrategia y cartera","active":false},{"href":"12_SEVEN-G_Indice_de_transformacion.html","title":"Índice de transformación","blockCode":"B","blockLabel":"B · Estrategia y cartera","active":false},{"href":"13_SEVEN-G_Tesis_de_IA_ambicion_y_apetito_de_riesgo.html","title":"Tesis de IA, ambición y apetito de riesgo","blockCode":"B","blockLabel":"B · Estrategia y cartera","active":false},{"href":"14_SEVEN-G_Gestion_de_cartera.html","title":"Gestión de cartera","blockCode":"B","blockLabel":"B · Estrategia y cartera","active":false},{"href":"20_SEVEN-G_Manuales_de_fase.html","title":"Manuales de fase","blockCode":"C","blockLabel":"C · Ciclo de vida de la iniciativa","active":false},{"href":"21_SEVEN-G_Criterios_de_gate_y_auditoria.html","title":"Criterios de gate y de auditoría","blockCode":"C","blockLabel":"C · Ciclo de vida de la iniciativa","active":false},{"href":"22_SEVEN-G_Listas_de_verificacion_por_gate.html","title":"Listas de verificación por gate","blockCode":"C","blockLabel":"C · Ciclo de vida de la iniciativa","active":false},{"href":"23_SEVEN-G_Adopcion_y_cambio.html","title":"Adopción y cambio en la iniciativa","blockCode":"C","blockLabel":"C · Ciclo de vida de la iniciativa","active":false},{"href":"30_SEVEN-G_Modelo_de_gobierno.html","title":"Modelo de gobierno","blockCode":"D","blockLabel":"D · Gobierno, riesgo y cumplimiento","active":false},{"href":"31_SEVEN-G_Politica_corporativa_y_uso_aceptable.html","title":"Política corporativa de IA y política de uso aceptable","blockCode":"D","blockLabel":"D · Gobierno, riesgo y cumplimiento","active":false},{"href":"32_SEVEN-G_Inventario_y_clasificacion_regulatoria.html","title":"Inventario de sistemas de IA y clasificación regulatoria","blockCode":"D","blockLabel":"D · Gobierno, riesgo y cumplimiento","active":false},{"href":"33_SEVEN-G_Metodologia_de_riesgos_de_IA.html","title":"Metodología de riesgos de IA","blockCode":"D","blockLabel":"D · Gobierno, riesgo y cumplimiento","active":false},{"href":"34_SEVEN-G_Mapeo_regulatorio.html","title":"Mapeo regulatorio","blockCode":"D","blockLabel":"D · Gobierno, riesgo y cumplimiento","active":false},{"href":"35_SEVEN-G_Seguridad_de_IA_y_agentes.html","title":"Seguridad de IA y agentes","blockCode":"D","blockLabel":"D · Gobierno, riesgo y cumplimiento","active":false},{"href":"36_SEVEN-G_Terceros_y_proveedores_de_IA.html","title":"Terceros y proveedores de IA","blockCode":"D","blockLabel":"D · Gobierno, riesgo y cumplimiento","active":false},{"href":"37_SEVEN-G_No_conformidades_e_incidentes.html","title":"No conformidades, incidentes de IA y remediación","blockCode":"D","blockLabel":"D · Gobierno, riesgo y cumplimiento","active":false},{"href":"38_SEVEN-G_Marco_de_auditoria_de_IA.html","title":"Marco de auditoría de IA","blockCode":"D","blockLabel":"D · Gobierno, riesgo y cumplimiento","active":false},{"href":"40_SEVEN-G_Reglas_de_medicion_del_valor.html","title":"Reglas de medición del valor","blockCode":"E","blockLabel":"E · Medición y valor","active":false},{"href":"41_SEVEN-G_Catalogo_de_indicadores.html","title":"Catálogo de indicadores","blockCode":"E","blockLabel":"E · Medición y valor","active":false},{"href":"42_SEVEN-G_Costes_de_IA.html","title":"Costes de IA y reparto por caso","blockCode":"E","blockLabel":"E · Medición y valor","active":false},{"href":"43_SEVEN-G_Realizacion_de_beneficios.html","title":"Realización de beneficios","blockCode":"E","blockLabel":"E · Medición y valor","active":false},{"href":"50_SEVEN-G_Personas_y_organizacion.html","title":"Personas y organización","blockCode":"F","blockLabel":"F · Personas, datos y operación","active":false},{"href":"51_SEVEN-G_Datos_y_conocimiento.html","title":"Datos y conocimiento para IA","blockCode":"F","blockLabel":"F · Personas, datos y operación","active":false},{"href":"52_SEVEN-G_Manual_de_operacion_de_IA.html","title":"Manual de operación de IA","blockCode":"F","blockLabel":"F · Personas, datos y operación","active":false},{"href":"53_SEVEN-G_Construccion_de_soluciones_con_IA.html","title":"Construcción de soluciones con IA","blockCode":"F","blockLabel":"F · Personas, datos y operación","active":false},{"href":"54_SEVEN-G_Organizacion_de_la_compania_para_la_IA.html","title":"Cómo se organiza una compañía para la IA","blockCode":"F","blockLabel":"F · Personas, datos y operación","active":true},{"href":"60_SEVEN-G_Paquete_para_el_consejo.html","title":"Paquete para el consejo","blockCode":"G","blockLabel":"G · Consejo","active":false},{"href":"61_SEVEN-G_Guia_de_conversacion_con_el_consejo.html","title":"Guía de conversación con el consejo","blockCode":"G","blockLabel":"G · Consejo","active":false},{"href":"62_SEVEN-G_Registro_de_recomendaciones_y_decisiones.html","title":"Registro de recomendaciones y decisiones","blockCode":"G","blockLabel":"G · Consejo","active":false},{"href":"90_SEVEN-G_Guia_de_implantacion.html","title":"Guía de implantación de SEVEN-G","blockCode":"J","blockLabel":"J · Adopción del marco","active":false},{"href":"91_SEVEN-G_Guia_para_consultores.html","title":"Guía para consultores y modelos de acompañamiento","blockCode":"J","blockLabel":"J · Adopción del marco","active":false},{"href":"92_SEVEN-G_Casos_de_aplicacion.html","title":"Casos de aplicación","blockCode":"J","blockLabel":"J · Adopción del marco","active":false},{"href":"93_SEVEN-G_Licencia_uso_y_citacion.html","title":"Licencia, uso por terceros y citación","blockCode":"J","blockLabel":"J · Adopción del marco","active":false},{"href":"94_SEVEN-G_Matriz_de_obligatoriedad_y_lectura_por_capas.html","title":"Matriz de obligatoriedad y lectura por capas","blockCode":"J","blockLabel":"J · Adopción del marco","active":false},{"href":"95_SEVEN-G_Datos_en_local_e_instalacion_propia.html","title":"Dónde están sus datos y cómo instalar SEVEN-G en un servidor propio","blockCode":"J","blockLabel":"J · Adopción del marco","active":false},{"href":"curso/M00_SEVEN-G_Curso_Guia_del_curso.html","title":"Curso de SEVEN-G · Guía del curso","blockCode":"K","blockLabel":"K · Curso","active":false},{"href":"curso/M01_SEVEN-G_Curso_Navegar_por_el_sitio.html","title":"Módulo 01 · Navegar por el sitio","blockCode":"K","blockLabel":"K · Curso","active":false},{"href":"curso/M02_SEVEN-G_Curso_Que_es_y_que_resuelve.html","title":"Módulo 02 · Qué es SEVEN-G y qué problema resuelve","blockCode":"K","blockLabel":"K · Curso","active":false},{"href":"curso/M03_SEVEN-G_Curso_Esferas_y_ambicion.html","title":"Módulo 03 · Esferas y niveles de ambición","blockCode":"K","blockLabel":"K · Curso","active":false},{"href":"curso/M04_SEVEN-G_Curso_Ciclo_de_vida_puertas_y_embudo.html","title":"Módulo 04 · Ciclo de vida, puertas y embudo","blockCode":"K","blockLabel":"K · Curso","active":false},{"href":"curso/M05_SEVEN-G_Curso_Gobierno_y_riesgo.html","title":"Módulo 05 · Gobierno y riesgo","blockCode":"K","blockLabel":"K · Curso","active":false},{"href":"curso/M06_SEVEN-G_Curso_Medir_el_valor.html","title":"Módulo 06 · Medir el valor","blockCode":"K","blockLabel":"K · Curso","active":false},{"href":"curso/M07_SEVEN-G_Curso_Transformacion_o_eficiencia.html","title":"Módulo 07 · Transformación o eficiencia","blockCode":"K","blockLabel":"K · Curso","active":false},{"href":"curso/M08_SEVEN-G_Curso_El_consejo.html","title":"Módulo 08 · El consejo","blockCode":"K","blockLabel":"K · Curso","active":false},{"href":"curso/M09_SEVEN-G_Curso_Implantar_por_capas.html","title":"Módulo 09 · Implantar por capas","blockCode":"K","blockLabel":"K · Curso","active":false},{"href":"index.html","title":"Biblioteca SEVEN-G","blockCode":"A","blockLabel":"A · Fundamentos","active":false},{"href":"plantillas/P01_SEVEN-G_Carta_de_la_iniciativa.html","title":"Carta de la iniciativa","blockCode":"H","blockLabel":"H · Plantillas","active":false},{"href":"plantillas/P02_SEVEN-G_Declaracion_de_contexto_y_restricciones.html","title":"Declaración de contexto y restricciones","blockCode":"H","blockLabel":"H · Plantillas","active":false},{"href":"plantillas/P03_SEVEN-G_Registro_de_asignacion_de_roles.html","title":"Registro de asignación de roles","blockCode":"H","blockLabel":"H · Plantillas","active":false},{"href":"plantillas/P04_SEVEN-G_Determinacion_de_intensidad.html","title":"Determinación de intensidad","blockCode":"H","blockLabel":"H · Plantillas","active":false},{"href":"plantillas/P05_SEVEN-G_Ficha_de_inventario_del_sistema_de_IA.html","title":"Ficha de inventario del sistema de IA","blockCode":"H","blockLabel":"H · Plantillas","active":false},{"href":"plantillas/P06_SEVEN-G_Cartera_de_oportunidades_y_notas_de_filtrado.html","title":"Cartera de oportunidades y notas de filtrado","blockCode":"H","blockLabel":"H · Plantillas","active":false},{"href":"plantillas/P07_SEVEN-G_Clasificacion_de_esfera_y_ambicion.html","title":"Clasificación de esfera y ambición","blockCode":"H","blockLabel":"H · Plantillas","active":false},{"href":"plantillas/P08_SEVEN-G_Lienzo_de_hipotesis_de_valor.html","title":"Lienzo de hipótesis de valor","blockCode":"H","blockLabel":"H · Plantillas","active":false},{"href":"plantillas/P09_SEVEN-G_Linea_base.html","title":"Línea base","blockCode":"H","blockLabel":"H · Plantillas","active":false},{"href":"plantillas/P10_SEVEN-G_Evaluacion_de_viabilidad.html","title":"Evaluación de viabilidad","blockCode":"H","blockLabel":"H · Plantillas","active":false},{"href":"plantillas/P11_SEVEN-G_Clasificacion_regulatoria_y_evaluaciones_de_impacto.html","title":"Clasificación regulatoria y evaluaciones de impacto","blockCode":"H","blockLabel":"H · Plantillas","active":false},{"href":"plantillas/P12_SEVEN-G_Matriz_y_registro_de_riesgos.html","title":"Matriz y registro de riesgos","blockCode":"H","blockLabel":"H · Plantillas","active":false},{"href":"plantillas/P13_SEVEN-G_Plan_de_mitigacion_y_contingencia.html","title":"Plan de mitigación y contingencia","blockCode":"H","blockLabel":"H · Plantillas","active":false},{"href":"plantillas/P14_SEVEN-G_Evaluacion_de_proveedor_de_IA.html","title":"Evaluación de proveedor de IA","blockCode":"H","blockLabel":"H · Plantillas","active":false},{"href":"plantillas/P15_SEVEN-G_Registro_de_arquitectura.html","title":"Registro de arquitectura","blockCode":"H","blockLabel":"H · Plantillas","active":false},{"href":"plantillas/P16_SEVEN-G_Linaje_de_datos_y_modelos.html","title":"Linaje de datos y modelos","blockCode":"H","blockLabel":"H · Plantillas","active":false},{"href":"plantillas/P17_SEVEN-G_Diseno_de_gobierno_y_supervision_humana.html","title":"Diseño de gobierno y supervisión humana","blockCode":"H","blockLabel":"H · Plantillas","active":false},{"href":"plantillas/P18_SEVEN-G_Diseno_de_seguridad.html","title":"Diseño de seguridad (incluye agentes)","blockCode":"H","blockLabel":"H · Plantillas","active":false},{"href":"plantillas/P19_SEVEN-G_Plan_de_reversion_y_prueba.html","title":"Plan de reversión y prueba","blockCode":"H","blockLabel":"H · Plantillas","active":false},{"href":"plantillas/P20_SEVEN-G_Plan_de_adopcion_y_capacidad.html","title":"Plan de adopción y capacidad","blockCode":"H","blockLabel":"H · Plantillas","active":false},{"href":"plantillas/P21_SEVEN-G_Informe_de_entrega.html","title":"Informe de entrega","blockCode":"H","blockLabel":"H · Plantillas","active":false},{"href":"plantillas/P22_SEVEN-G_Resultados_de_validacion_y_del_piloto.html","title":"Resultados de validación y del piloto","blockCode":"H","blockLabel":"H · Plantillas","active":false},{"href":"plantillas/P23_SEVEN-G_Firma_de_puesta_en_produccion.html","title":"Firma de puesta en producción","blockCode":"H","blockLabel":"H · Plantillas","active":false},{"href":"plantillas/P24_SEVEN-G_Manual_de_operacion.html","title":"Manual de operación","blockCode":"H","blockLabel":"H · Plantillas","active":false},{"href":"plantillas/P25_SEVEN-G_Configuracion_de_monitorizacion_y_alertas.html","title":"Configuración de monitorización y alertas","blockCode":"H","blockLabel":"H · Plantillas","active":false},{"href":"plantillas/P26_SEVEN-G_Plan_de_respuesta_a_incidentes.html","title":"Plan de respuesta a incidentes","blockCode":"H","blockLabel":"H · Plantillas","active":false},{"href":"plantillas/P27_SEVEN-G_Registro_de_incidentes_y_cambios.html","title":"Registro de incidentes y cambios","blockCode":"H","blockLabel":"H · Plantillas","active":false},{"href":"plantillas/P28_SEVEN-G_Seguimiento_de_realizacion_de_valor.html","title":"Seguimiento de realización de valor","blockCode":"H","blockLabel":"H · Plantillas","active":false},{"href":"plantillas/P29_SEVEN-G_Registro_de_decision_de_gate.html","title":"Registro de decisión de *gate*","blockCode":"H","blockLabel":"H · Plantillas","active":false},{"href":"plantillas/P30_SEVEN-G_Decision_de_escalado_o_retirada.html","title":"Decisión de escalado o retirada","blockCode":"H","blockLabel":"H · Plantillas","active":false},{"href":"plantillas/P31_SEVEN-G_Ficha_de_caso_de_uso.html","title":"Ficha de caso de uso","blockCode":"H","blockLabel":"H · Plantillas","active":false},{"href":"plantillas/P32_SEVEN-G_Mandato_de_implantacion.html","title":"Mandato de implantación de SEVEN-G","blockCode":"H","blockLabel":"H · Plantillas","active":false},{"href":"plantillas/P33_SEVEN-G_Informe_de_diagnostico_C1.html","title":"Informe de diagnóstico C1","blockCode":"H","blockLabel":"H · Plantillas","active":false},{"href":"plantillas/P34_SEVEN-G_Cuestionario_e_informe_de_madurez.html","title":"Cuestionario e informe de madurez","blockCode":"H","blockLabel":"H · Plantillas","active":false},{"href":"plantillas/P35_SEVEN-G_Tesis_de_IA_y_apetito_de_riesgo.html","title":"Tesis de IA y apetito de riesgo","blockCode":"H","blockLabel":"H · Plantillas","active":false},{"href":"plantillas/P36_SEVEN-G_Plan_de_cartera_C3.html","title":"Plan de cartera C3","blockCode":"H","blockLabel":"H · Plantillas","active":false},{"href":"plantillas/P37_SEVEN-G_Revision_anual_C5.html","title":"Revisión anual C5","blockCode":"H","blockLabel":"H · Plantillas","active":false},{"href":"plantillas/P38_SEVEN-G_Reglamento_de_los_organos_de_gobierno_de_IA.html","title":"Reglamento de los órganos de gobierno de IA","blockCode":"H","blockLabel":"H · Plantillas","active":false},{"href":"plantillas/P39_SEVEN-G_Orden_del_dia_y_acta_de_organo_de_gobierno.html","title":"Orden del día y acta de órgano de gobierno","blockCode":"H","blockLabel":"H · Plantillas","active":false},{"href":"plantillas/P40_SEVEN-G_Solicitud_y_registro_de_excepciones.html","title":"Solicitud y registro de excepciones","blockCode":"H","blockLabel":"H · Plantillas","active":false},{"href":"plantillas/P41_SEVEN-G_Declaraciones_de_independencia_y_conflictos_de_interes.html","title":"Declaraciones de independencia y conflictos de interés","blockCode":"H","blockLabel":"H · Plantillas","active":false},{"href":"plantillas/P42_SEVEN-G_Informe_trimestral_de_segunda_linea.html","title":"Informe trimestral de segunda línea","blockCode":"H","blockLabel":"H · Plantillas","active":false},{"href":"plantillas/P43_SEVEN-G_Catalogo_de_herramientas_autorizadas_y_solicitudes.html","title":"Catálogo de herramientas autorizadas y solicitudes","blockCode":"H","blockLabel":"H · Plantillas","active":false},{"href":"plantillas/P44_SEVEN-G_Encuesta_de_uso_y_percepcion_de_la_IA.html","title":"Encuesta de uso y percepción de la IA","blockCode":"H","blockLabel":"H · Plantillas","active":false},{"href":"plantillas/P45_SEVEN-G_Plan_y_registro_de_alfabetizacion_y_formacion.html","title":"Plan y registro de alfabetización y formación","blockCode":"H","blockLabel":"H · Plantillas","active":false},{"href":"plantillas/P46_SEVEN-G_Informacion_a_los_trabajadores_y_a_su_representacion.html","title":"Información a los trabajadores y a su representación","blockCode":"H","blockLabel":"H · Plantillas","active":false},{"href":"plantillas/P47_SEVEN-G_Evaluacion_de_impacto_en_proteccion_de_datos.html","title":"Evaluación de impacto en protección de datos","blockCode":"H","blockLabel":"H · Plantillas","active":false},{"href":"plantillas/P48_SEVEN-G_Evaluacion_de_impacto_en_derechos_fundamentales.html","title":"Evaluación de impacto en derechos fundamentales","blockCode":"H","blockLabel":"H · Plantillas","active":false},{"href":"plantillas/P49_SEVEN-G_Avisos_de_transparencia_e_instrucciones_de_uso.html","title":"Avisos de transparencia e instrucciones de uso","blockCode":"H","blockLabel":"H · Plantillas","active":false},{"href":"plantillas/P50_SEVEN-G_Registro_de_no_conformidades.html","title":"Registro de no conformidades","blockCode":"H","blockLabel":"H · Plantillas","active":false},{"href":"plantillas/P51_SEVEN-G_Notificaciones_y_comunicaciones_de_incidentes.html","title":"Notificaciones y comunicaciones de incidentes","blockCode":"H","blockLabel":"H · Plantillas","active":false},{"href":"plantillas/P52_SEVEN-G_Analisis_de_causa_raiz_y_plan_de_accion_correctiva.html","title":"Análisis de causa raíz y plan de acción correctiva","blockCode":"H","blockLabel":"H · Plantillas","active":false},{"href":"plantillas/P53_SEVEN-G_Plan_e_informe_de_pruebas_adversarias.html","title":"Plan e informe de pruebas adversarias","blockCode":"H","blockLabel":"H · Plantillas","active":false},{"href":"plantillas/P54_SEVEN-G_Inventario_de_identidades_no_humanas_y_componentes.html","title":"Inventario de identidades no humanas y componentes","blockCode":"H","blockLabel":"H · Plantillas","active":false},{"href":"plantillas/P55_SEVEN-G_Cuestionario_de_diligencia_debida_a_proveedores_de_IA.html","title":"Cuestionario de diligencia debida a proveedores de IA","blockCode":"H","blockLabel":"H · Plantillas","active":false},{"href":"plantillas/P56_SEVEN-G_Clausulas_contractuales_tipo_de_IA.html","title":"Cláusulas contractuales tipo de IA","blockCode":"H","blockLabel":"H · Plantillas","active":false},{"href":"plantillas/P57_SEVEN-G_Registro_de_proveedores_y_plan_de_salida.html","title":"Registro de proveedores y plan de salida","blockCode":"H","blockLabel":"H · Plantillas","active":false},{"href":"plantillas/P58_SEVEN-G_Plan_anual_de_auditoria_de_IA.html","title":"Plan anual de auditoría de IA","blockCode":"H","blockLabel":"H · Plantillas","active":false},{"href":"plantillas/P59_SEVEN-G_Papeles_de_auditoria.html","title":"Papeles de trabajo de auditoría","blockCode":"H","blockLabel":"H · Plantillas","active":false},{"href":"plantillas/P60_SEVEN-G_Informe_de_auditoria_y_fichas_de_hallazgo.html","title":"Informe de auditoría y fichas de hallazgo","blockCode":"H","blockLabel":"H · Plantillas","active":false},{"href":"plantillas/P61_SEVEN-G_Declaracion_de_aplicacion_de_SEVEN-G.html","title":"Declaración de aplicación de SEVEN-G","blockCode":"H","blockLabel":"H · Plantillas","active":false},{"href":"plantillas/P62_SEVEN-G_Plan_de_realizacion_de_beneficios.html","title":"Plan de realización de beneficios","blockCode":"H","blockLabel":"H · Plantillas","active":false},{"href":"plantillas/P63_SEVEN-G_Presupuesto_de_consumo_y_conciliacion_de_costes.html","title":"Presupuesto de consumo y conciliación de costes","blockCode":"H","blockLabel":"H · Plantillas","active":false},{"href":"plantillas/P64_SEVEN-G_Ficha_de_conjunto_de_datos_e_inventario_de_fuentes_de_conocimiento.html","title":"Ficha de conjunto de datos e inventario de fuentes de conocimiento","blockCode":"H","blockLabel":"H · Plantillas","active":false},{"href":"plantillas/P65_SEVEN-G_Paquete_de_revision_de_continuidad_R6.html","title":"Paquete de revisión de continuidad R6","blockCode":"H","blockLabel":"H · Plantillas","active":false},{"href":"plantillas/P66_SEVEN-G_Anexos_de_construccion_con_SPAD.html","title":"Anexos de construcción con SPAD","blockCode":"H","blockLabel":"H · Plantillas","active":false},{"href":"plantillas/P67_SEVEN-G_Paquete_trimestral_para_el_consejo.html","title":"Paquete trimestral para el consejo","blockCode":"H","blockLabel":"H · Plantillas","active":false},{"href":"plantillas/P68_SEVEN-G_Nota_previa_y_nota_de_conclusiones_de_la_sesion_del_consejo.html","title":"Nota previa y nota de conclusiones de la sesión del consejo","blockCode":"H","blockLabel":"H · Plantillas","active":false},{"href":"plantillas/P69_SEVEN-G_Registro_de_decisiones_del_consejo.html","title":"Registro de decisiones del consejo","blockCode":"H","blockLabel":"H · Plantillas","active":false},{"href":"plantillas/P70_SEVEN-G_Propuesta_y_carta_de_encargo.html","title":"Propuesta y carta de encargo","blockCode":"H","blockLabel":"H · Plantillas","active":false},{"href":"plantillas/P71_SEVEN-G_Plan_de_transferencia_y_nota_de_salida.html","title":"Plan de transferencia y nota de salida","blockCode":"H","blockLabel":"H · Plantillas","active":false}];
+
+  function norm(s) { return (s || '').normalize('NFD').replace(/[̀-ͯ]/g, '').toLowerCase(); }
+  function asArray(v) { return Array.isArray(v) ? v : []; }
+
+  /* ---------- Tamaño de texto ---------- */
+  var escalaMin = 0.9;
+  var escalaMax = 1.2;
+  var escalaPaso = 0.05;
+  var escalaKey = 'seveng-text-scale';
+  var botonTextoMenos = document.getElementById('texto-menos');
+  var botonTextoMas = document.getElementById('texto-mas');
+  function leerEscala() {
+    var n = parseFloat(localStorage.getItem(escalaKey) || '1');
+    if (!isFinite(n)) return 1;
+    return Math.max(escalaMin, Math.min(escalaMax, n));
+  }
+  function aplicarEscala(v) {
+    var valor = Math.round(v * 100) / 100;
+    raiz.style.setProperty('--escala-texto', String(valor));
+    botonTextoMenos.disabled = valor <= escalaMin;
+    botonTextoMas.disabled = valor >= escalaMax;
+    try { localStorage.setItem(escalaKey, String(valor)); } catch (e) {}
+  }
+  aplicarEscala(leerEscala());
+  botonTextoMenos.addEventListener('click', function () { aplicarEscala(leerEscala() - escalaPaso); });
+  botonTextoMas.addEventListener('click', function () { aplicarEscala(leerEscala() + escalaPaso); });
+
+  /* ---------- Navegacion global ---------- */
+  var panelBiblioteca = document.getElementById('panel-biblioteca');
+  var listaBiblioteca = document.getElementById('lista-biblioteca');
+  var filtroBiblioteca = document.getElementById('filtro-biblioteca');
+  var botonBiblioteca = document.getElementById('abrir-biblioteca');
+  var panelDescargas = document.getElementById('panel-descargas');
+  var botonDescargas = document.getElementById('abrir-descargas');
+  var actualBloque = '';
+
+  function pintarBiblioteca() {
+    var q = norm(filtroBiblioteca.value.trim());
+    var html = '';
+    var bloque = '';
+    navItems.forEach(function (item) {
+      if (q && norm(item.title + ' ' + item.blockLabel).indexOf(q) === -1) return;
+      if (item.blockLabel !== bloque) {
+        bloque = item.blockLabel;
+        html += '<li class="grupo">' + bloque + '</li>';
+      }
+      html += '<li class="n2"><a href="' + item.href + '"' + (item.active ? ' class="actual" aria-current="page"' : '') + '><span>' + item.blockCode + '</span>' + item.title + '</a></li>';
+      if (item.active) actualBloque = item.blockLabel;
+    });
+    listaBiblioteca.innerHTML = html;
+  }
+  pintarBiblioteca();
+  filtroBiblioteca.addEventListener('input', pintarBiblioteca);
+
+  /* ---------- Historial de paginas ---------- */
+  var panelHistorial = document.getElementById('panel-historial');
+  var listaHistorial = document.getElementById('lista-historial');
+  var botonHistorial = document.getElementById('abrir-historial');
+  var historialKey = 'seveng-nav-history-' + (document.documentElement.lang || 'es');
+  var selfPath = location.pathname.replace(/\\/g, '/');
+
+  function leerHistorial() {
+    try { return asArray(JSON.parse(localStorage.getItem(historialKey) || '[]')); } catch (e) { return []; }
+  }
+  function guardarHistorial(items) {
+    try { localStorage.setItem(historialKey, JSON.stringify(items.slice(-80))); } catch (e) {}
+  }
+  function registrarPaginaActual() {
+    var now = new Date().toISOString();
+    var titulo = document.title || 'SEVEN-G';
+    var href = location.href.split('#')[0];
+    var items = leerHistorial().filter(function (x) { return x && x.href; });
+    if (items.length && items[items.length - 1].href === href) return;
+    items = items.filter(function (x) { return x.href !== href; });
+    items.push({ href: href, title: titulo, when: now });
+    guardarHistorial(items);
+  }
+  function pintarHistorial() {
+    var items = leerHistorial();
+    if (!items.length) {
+      listaHistorial.innerHTML = '<li class="n2 vacio">Todav&#237;a no hay navegaci&#243;n registrada.</li>';
+      return;
+    }
+    var html = '';
+    items.slice().reverse().forEach(function (item) {
+      var t = item.when ? new Date(item.when).toLocaleString() : '';
+      var u = item.href || '#';
+      var mismo = (u.indexOf(selfPath) !== -1);
+      html += '<li class="n2"><a href="' + u + '"' + (mismo ? ' class="actual"' : '') + '><span>•</span>' + (item.title || u) + '</a>' + (t ? '<small>Hora: ' + t + '</small>' : '') + '</li>';
+    });
+    listaHistorial.innerHTML = html;
+  }
+  registrarPaginaActual();
+  pintarHistorial();
+
+  /* ---------- Tema ---------- */
+  var selTema = document.getElementById('tema');
+  selTema.value = raiz.getAttribute('data-theme') || 'salmon';
+  selTema.addEventListener('change', function () {
+    raiz.setAttribute('data-theme', selTema.value);
+    try { localStorage.setItem('seveng-tema', selTema.value); } catch (e) {}
+    if (window.sevengDiagramas) window.sevengDiagramas();
+  });
+
+  /* ---------- Índice rápido ---------- */
+  var panel = document.getElementById('panel-indice');
+  var velo = document.getElementById('velo');
+  var botonIndice = document.getElementById('abrir-indice');
+  var lista = document.getElementById('lista-indice');
+  var filtro = document.getElementById('filtro-indice');
+  var titulos = Array.prototype.slice.call(contenido.querySelectorAll('h2[id], h3[id]'));
+  function textoTitulo(h) {
+    var c = h.cloneNode(true); var a = c.querySelector('.antetitulo'); if (a) a.remove(); return c.textContent.trim();
+  }
+  titulos.forEach(function (h) {
+    var li = document.createElement('li'); li.className = h.tagName === 'H2' ? 'n2' : 'n3';
+    var a = document.createElement('a'); a.href = '#' + h.id;
+    var ante = h.querySelector('.antetitulo');
+    if (ante) { var s = document.createElement('span'); s.textContent = ante.textContent; a.appendChild(s); }
+    a.appendChild(document.createTextNode(textoTitulo(h)));
+    li.appendChild(a); lista.appendChild(li);
+    a.addEventListener('click', function () { cerrarIndice(); });
+  });
+  function cerrarTodosPaneles() {
+    [panel, panelBiblioteca, panelHistorial, panelDescargas].forEach(function (p) {
+      if (p) {
+        p.classList.remove('abierto');
+        p.setAttribute('aria-hidden', 'true');
+      }
+    });
+    [botonIndice, botonBiblioteca, botonHistorial, botonDescargas].forEach(function (b) {
+      if (b) b.setAttribute('aria-expanded', 'false');
+    });
+    velo.hidden = true;
+  }
+  function abrirPanel(panelObj, botonObj, focusObj) {
+    cerrarTodosPaneles();
+    panelObj.classList.add('abierto');
+    panelObj.setAttribute('aria-hidden', 'false');
+    botonObj.setAttribute('aria-expanded', 'true');
+    velo.hidden = false;
+    if (focusObj) focusObj.focus();
+  }
+  function abrirIndice() { abrirPanel(panel, botonIndice, filtro); }
+  function cerrarIndice() { cerrarTodosPaneles(); }
+  botonIndice.addEventListener('click', function () { panel.classList.contains('abierto') ? cerrarIndice() : abrirIndice(); });
+  document.getElementById('cerrar-indice').addEventListener('click', cerrarIndice);
+  botonBiblioteca.addEventListener('click', function () { panelBiblioteca.classList.contains('abierto') ? cerrarTodosPaneles() : abrirPanel(panelBiblioteca, botonBiblioteca, filtroBiblioteca); });
+  botonDescargas.addEventListener('click', function () { panelDescargas.classList.contains('abierto') ? cerrarTodosPaneles() : abrirPanel(panelDescargas, botonDescargas); });
+  botonHistorial.addEventListener('click', function () { pintarHistorial(); panelHistorial.classList.contains('abierto') ? cerrarTodosPaneles() : abrirPanel(panelHistorial, botonHistorial); });
+  document.getElementById('cerrar-biblioteca').addEventListener('click', cerrarTodosPaneles);
+  document.getElementById('cerrar-historial').addEventListener('click', cerrarTodosPaneles);
+  document.getElementById('cerrar-descargas').addEventListener('click', cerrarTodosPaneles);
+  velo.addEventListener('click', cerrarTodosPaneles);
+  filtro.addEventListener('input', function () {
+    var q = norm(filtro.value.trim());
+    Array.prototype.forEach.call(lista.children, function (li) { li.hidden = q && norm(li.textContent).indexOf(q) === -1; });
+  });
+
+  /* Sección actual en la barra */
+  var etiqueta = document.getElementById('barra-seccion');
+  var enlaces = lista.querySelectorAll('a');
+  var pendiente = false;
+  function seccionActual() {
+    var actual = null;
+    for (var i = 0; i < titulos.length; i++) { if (titulos[i].getBoundingClientRect().top < 90) actual = titulos[i]; else break; }
+    etiqueta.textContent = actual ? textoTitulo(actual) : '';
+    Array.prototype.forEach.call(enlaces, function (a) { a.classList.toggle('actual', !!actual && a.getAttribute('href') === '#' + actual.id); });
+    pendiente = false;
+  }
+  window.addEventListener('scroll', function () { if (!pendiente) { pendiente = true; setTimeout(seccionActual, 100); } }, { passive: true });
+  seccionActual();
+
+  /* ---------- Búsqueda de términos: en esta página o en todo el sitio (D105) ---------- */
+  var entrada = document.getElementById('buscar');
+  var cuenta = document.getElementById('buscar-cuenta');
+  var ambito = document.getElementById('buscar-ambito');
+  var botonAnt = document.getElementById('buscar-ant'), botonSig = document.getElementById('buscar-sig');
+  var ambitoKey = 'seveng-buscar-ambito';   // el ámbito elegido se recuerda en este navegador
+  try { var ambGuardado = localStorage.getItem(ambitoKey); if (ambGuardado === 'todas' || ambGuardado === 'pagina') ambito.value = ambGuardado; } catch (e) {}
+  var marcas = []; var indice = -1; var espera = null;
+  // los textos de la barra llegan codificados como HTML (build.ps1); para textContent hay que decodificarlos («p&#225;ginas» -> «páginas»)
+  function tx(s) { var t = document.createElement('textarea'); t.innerHTML = s; return t.value; }
+  function botones() { var v = ambito.value === 'pagina' || marcas.length > 0; botonAnt.hidden = !v; botonSig.hidden = !v; }
+  function limpiar() {
+    marcas.forEach(function (m) { var p = m.parentNode; if (!p) return; p.replaceChild(document.createTextNode(m.textContent), m); p.normalize(); });
+    marcas = []; indice = -1; cuenta.textContent = ''; botones();
+  }
+  // en esta página: resalta cada coincidencia y salta a la primera (o, al llegar desde la búsqueda en todas las páginas, a la primera desde la sección elegida)
+  function buscarEnPagina(desdeId) {
+    limpiar();
+    var q = norm(entrada.value.trim());
+    if (q.length < 2) return;
+    var recorrido = document.createTreeWalker(contenido, NodeFilter.SHOW_TEXT, {
+      acceptNode: function (n) {
+        if (!n.nodeValue.trim()) return NodeFilter.FILTER_REJECT;
+        var p = n.parentElement;
+        if (!p || p.closest('svg, script, style, pre.mermaid')) return NodeFilter.FILTER_REJECT;
+        return NodeFilter.FILTER_ACCEPT;
+      }
+    });
+    var nodos = []; while (recorrido.nextNode()) nodos.push(recorrido.currentNode);
+    nodos.forEach(function (nodo) {
+      var texto = nodo.nodeValue, n = '', mapa = [];
+      for (var i = 0; i < texto.length; i++) { var c = norm(texto[i]); for (var k = 0; k < c.length; k++) { n += c[k]; mapa.push(i); } }
+      var pos = [], desde = 0, j;
+      while ((j = n.indexOf(q, desde)) !== -1) { pos.push([mapa[j], mapa[j + q.length - 1] + 1]); desde = j + q.length; }
+      for (var p = pos.length - 1; p >= 0; p--) {
+        var r = document.createRange(); r.setStart(nodo, pos[p][0]); r.setEnd(nodo, pos[p][1]);
+        var m = document.createElement('mark'); m.className = 'hallazgo'; r.surroundContents(m); marcas.unshift(m);
+      }
+    });
+    marcas.sort(function (a, b) { return a.compareDocumentPosition(b) & Node.DOCUMENT_POSITION_FOLLOWING ? -1 : 1; });
+    if (!marcas.length) { cuenta.textContent = tx('Sin resultados'); return; }
+    var ini = 0, objetivo = desdeId ? document.getElementById(desdeId) : null;
+    if (objetivo) { for (var k = 0; k < marcas.length; k++) { if (objetivo.compareDocumentPosition(marcas[k]) & Node.DOCUMENT_POSITION_FOLLOWING) { ini = k; break; } } }
+    ir(ini);
+  }
+  function ir(i) {
+    if (!marcas.length) return;
+    if (indice >= 0 && marcas[indice]) marcas[indice].classList.remove('actual');
+    indice = (i + marcas.length) % marcas.length;
+    marcas[indice].classList.add('actual');
+    marcas[indice].scrollIntoView({ block: 'center', behavior: 'smooth' });
+    cuenta.textContent = (indice + 1) + ' / ' + marcas.length; botones();
+  }
+
+  /* en todas las páginas: índice de texto del sitio (busqueda.json, generado por busqueda.ps1 junto a codigos.js), descargado la primera vez que se usa.
+     La búsqueda se hace en el navegador; cada resultado lleva a su página y sección con ?q=término, y la página de destino resalta el término. */
+  var scriptCodigos = document.querySelector('script[src$="codigos.js"]');
+  var urlIndice = new URL((scriptCodigos ? scriptCodigos.getAttribute('src') : 'codigos.js').replace(/codigos\.js$/, 'busqueda.json'), location.href).href;
+  var INDICE = null, cargaIndice = null, resSitio = [], actSitio = 0;
+  var listaSitio = document.createElement('div'); listaSitio.className = 'buscar-lista'; listaSitio.setAttribute('role', 'listbox'); listaSitio.hidden = true; document.body.appendChild(listaSitio);
+  // normaliza conservando la posición de cada carácter (para recortar el fragmento del texto original); si no es posible, carácter a carácter
+  function normUno(s) { s = String(s || ''); var n = norm(s); if (n.length === s.length) return n; var r = ''; for (var i = 0; i < s.length; i++) { var c = norm(s[i]); r += c.length === 1 ? c : (c.charAt(0) || s[i]); } return r; }
+  function cargarIndice() {
+    if (INDICE) return Promise.resolve(INDICE);
+    if (!cargaIndice) {
+      cuenta.textContent = tx('Cargando…');
+      cargaIndice = fetch(urlIndice).then(function (r) { if (!r.ok) throw new Error(String(r.status)); return r.json(); }).then(function (d) {
+        d.paginas.forEach(function (p) { p.tn = normUno(p.t); p.s.forEach(function (s) { s.hn = normUno(s.h); s.xn = normUno(s.x); }); });
+        INDICE = d; return d;
+      }).catch(function (e) { cargaIndice = null; throw e; });
+    }
+    return cargaIndice;
+  }
+  // la lista cuelga de <body> con posición fija: dentro de la barra la recortaría su desbordamiento horizontal
+  function colocarLista() {
+    var r = entrada.getBoundingClientRect(), ancho = Math.min(36 * 14, window.innerWidth - 16);
+    listaSitio.style.top = Math.round(r.bottom + 4) + 'px';
+    listaSitio.style.left = Math.max(8, Math.min(Math.round(r.left), window.innerWidth - ancho - 8)) + 'px';
+  }
+  function cerrarLista() { listaSitio.hidden = true; listaSitio.innerHTML = ''; resSitio = []; }
+  function marcarActivo() { Array.prototype.forEach.call(listaSitio.querySelectorAll('a[role=option]'), function (a, i) { a.classList.toggle('activo', i === actSitio); }); }
+  function fragmento(span, r, q) {
+    var x = r.s.x || '', i = r.i;
+    if (i < 0) { span.textContent = x.slice(0, 160) + (x.length > 160 ? '…' : ''); return; }
+    var a = Math.max(0, i - 60), b = Math.min(x.length, i + q.length + 100);
+    span.appendChild(document.createTextNode((a > 0 ? '…' : '') + x.slice(a, i)));
+    var m = document.createElement('mark'); m.textContent = x.slice(i, i + q.length); span.appendChild(m);
+    span.appendChild(document.createTextNode(x.slice(i + q.length, b) + (b < x.length ? '…' : '')));
+  }
+  function destinoSitio(r) {
+    var u = new URL(r.p.h, urlIndice);
+    u.search = '?q=' + encodeURIComponent(entrada.value.trim());
+    u.hash = r.s.id ? '#' + r.s.id : '';
+    return u.href;
+  }
+  function buscarEnSitio() {
+    limpiar();
+    var q = norm(entrada.value.trim());
+    if (q.length < 2) { cerrarLista(); return; }
+    cargarIndice().then(function (d) {
+      if (norm(entrada.value.trim()) !== q) return;   // el término cambió mientras se cargaba
+      var res = [], nPag = 0;
+      d.paginas.forEach(function (p) {
+        var enTitulo = p.tn.indexOf(q) >= 0, secs = [];
+        p.s.forEach(function (s) {
+          var i = s.xn.indexOf(q), j = s.hn.indexOf(q);
+          if (i < 0 && j < 0) return;
+          var n = 0, k = i; while (k >= 0 && n < 50) { n++; k = s.xn.indexOf(q, k + q.length); }
+          secs.push({ p: p, s: s, i: i, n: n, sc: (j >= 0 ? 30 : 0) + Math.min(n, 20) + (enTitulo ? 10 : 0) });
+        });
+        if (!secs.length && enTitulo) secs.push({ p: p, s: p.s[0] || { id: '', h: '', x: '' }, i: -1, n: 0, sc: 100 });
+        if (secs.length) { nPag++; res = res.concat(secs); }
+      });
+      res.sort(function (a, b) { return b.sc - a.sc; });
+      resSitio = res.slice(0, 40); actSitio = 0; listaSitio.innerHTML = '';
+      if (!res.length) {
+        cuenta.textContent = tx('Sin resultados');
+        var p0 = document.createElement('p'); p0.textContent = tx('Sin resultados'); listaSitio.appendChild(p0);
+      } else {
+        cuenta.textContent = String(res.length);
+        var pg = document.createElement('p'); pg.className = 'grupo'; pg.textContent = tx('{n} coincidencias en {p} p&#225;ginas').replace('{n}', res.length).replace('{p}', nPag); listaSitio.appendChild(pg);
+        resSitio.forEach(function (r, k) {
+          var a = document.createElement('a'); a.href = destinoSitio(r); a.setAttribute('role', 'option'); if (k === 0) a.className = 'activo';
+          var b = document.createElement('b'); b.textContent = r.p.t; a.appendChild(b);
+          if (r.s.h) { var i = document.createElement('i'); i.textContent = r.s.h; a.appendChild(i); }
+          var s = document.createElement('span'); fragmento(s, r, q); a.appendChild(s);
+          listaSitio.appendChild(a);
+        });
+        if (res.length > resSitio.length) { var p1 = document.createElement('p'); p1.textContent = tx('Se muestran las {n} primeras; afine el t&#233;rmino para ver el resto.').replace('{n}', resSitio.length); listaSitio.appendChild(p1); }
+      }
+      colocarLista(); listaSitio.hidden = false;
+    }).catch(function () {
+      cuenta.textContent = ''; listaSitio.innerHTML = '';
+      var p2 = document.createElement('p'); p2.textContent = tx('No se pudo cargar el &#237;ndice de b&#250;squeda. Abra el sitio publicado o s&#237;rvalo por http: un fichero abierto con doble clic no puede descargarlo.'); listaSitio.appendChild(p2); colocarLista(); listaSitio.hidden = false;
+    });
+  }
+  function buscarSegunAmbito() { if (ambito.value === 'todas') buscarEnSitio(); else { cerrarLista(); buscarEnPagina(); } }
+  ambito.addEventListener('change', function () {
+    try { localStorage.setItem(ambitoKey, ambito.value); } catch (e) {}
+    limpiar(); cerrarLista(); if (entrada.value.trim()) buscarSegunAmbito();
+  });
+  entrada.addEventListener('input', function () { clearTimeout(espera); espera = setTimeout(buscarSegunAmbito, 250); });
+  entrada.addEventListener('focus', function () { if (ambito.value === 'todas' && resSitio.length) { colocarLista(); listaSitio.hidden = false; } });
+  entrada.addEventListener('keydown', function (e) {
+    if (ambito.value === 'todas' && !listaSitio.hidden) {
+      if (e.key === 'ArrowDown' && resSitio.length) { actSitio = (actSitio + 1) % resSitio.length; marcarActivo(); e.preventDefault(); return; }
+      if (e.key === 'ArrowUp' && resSitio.length) { actSitio = (actSitio - 1 + resSitio.length) % resSitio.length; marcarActivo(); e.preventDefault(); return; }
+      if (e.key === 'Enter') { e.preventDefault(); if (resSitio.length) location.href = destinoSitio(resSitio[actSitio]); return; }
+      if (e.key === 'Escape') { cerrarLista(); return; }
+    }
+    if (e.key === 'Enter') { e.preventDefault(); if (ambito.value === 'todas') buscarEnSitio(); else if (!marcas.length) buscarEnPagina(); else ir(indice + (e.shiftKey ? -1 : 1)); }
+    if (e.key === 'Escape') { entrada.value = ''; limpiar(); cerrarLista(); }
+  });
+  botonSig.addEventListener('click', function () { ir(indice + 1); });
+  botonAnt.addEventListener('click', function () { ir(indice - 1); });
+  document.addEventListener('click', function (e) { if (!listaSitio.contains(e.target) && e.target !== entrada) cerrarLista(); });
+  window.addEventListener('resize', function () { if (!listaSitio.hidden) colocarLista(); });
+  botones();
+  // llegada desde la búsqueda en todas las páginas (?q=término y, si la hay, #sección): se resalta el término en esta página desde esa sección
+  var llegada = /[?&]q=([^&#]+)/.exec(location.search);
+  if (llegada) {
+    try { entrada.value = decodeURIComponent(llegada[1].replace(/\+/g, ' ')); } catch (e) { entrada.value = ''; }
+    if (entrada.value.trim()) buscarEnPagina(location.hash.slice(1));
+    try { history.replaceState(null, '', location.pathname + location.hash); } catch (e) {}
+  }
+  document.addEventListener('keydown', function (e) {
+    var escribiendo = /INPUT|TEXTAREA|SELECT/.test(document.activeElement.tagName);
+    if (e.key === '/' && !escribiendo) { e.preventDefault(); entrada.focus(); }
+    if (e.key === 'Escape') cerrarTodosPaneles();
+  });
+})();
+// Avisos plegados en pantalla (D93): se ve su título en una línea y se despliegan al pulsar. En el PDF van completos.
+(function () {
+  document.querySelectorAll('blockquote.aviso-legal').forEach(function (b) {
+    b.classList.add('plegado'); b.tabIndex = 0; b.setAttribute('role', 'button'); b.setAttribute('aria-expanded', 'false');
+    function alternar() { var plegado = b.classList.toggle('plegado'); b.setAttribute('aria-expanded', String(!plegado)); }
+    b.addEventListener('click', function (e) { if (e.target.closest('a') || String(window.getSelection())) return; alternar(); });
+    b.addEventListener('keydown', function (e) { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); alternar(); } });
+  });
+})();
+</script>
+<script type="module">
+import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.esm.min.mjs';
+const bloques = [...document.querySelectorAll('pre.mermaid')];
+bloques.forEach(b => { b.dataset.fuente = b.textContent; });
+let ronda = 0;
+async function dibujar() {
+  const v = n => getComputedStyle(document.documentElement).getPropertyValue(n).trim();
+  mermaid.initialize({
+    startOnLoad: false, securityLevel: 'strict', theme: 'base',
+    flowchart: { curve: 'basis', padding: 14, nodeSpacing: 36, rankSpacing: 46 },
+    themeVariables: {
+      fontFamily: '"Libre Franklin","Segoe UI",sans-serif', fontSize: '15px',
+      background: v('--papel'), primaryColor: v('--papel-2'), primaryBorderColor: v('--oxford'), primaryTextColor: v('--tinta'),
+      secondaryColor: v('--papel-3'), tertiaryColor: v('--papel'), lineColor: v('--tinta-2'), textColor: v('--tinta'),
+      clusterBkg: v('--papel-2'), clusterBorder: v('--regla'), edgeLabelBackground: v('--papel'),
+      cScale0: v('--oxford'), cScaleLabel0: '#ffffff', cScale1: v('--teal'), cScaleLabel1: '#ffffff',
+      cScale2: v('--velvet'), cScaleLabel2: '#ffffff', cScale3: v('--claret'), cScaleLabel3: '#ffffff'
+    }
+  });
+  ronda++;
+  for (let i = 0; i < bloques.length; i++) {
+    const { svg } = await mermaid.render('diagrama-' + ronda + '-' + i, bloques[i].dataset.fuente);
+    bloques[i].innerHTML = svg;
+  }
+  document.body.dataset.diagramas = 'listos';
+}
+window.sevengDiagramas = dibujar;
+await dibujar();
+</script>
+</body>
+</html>
