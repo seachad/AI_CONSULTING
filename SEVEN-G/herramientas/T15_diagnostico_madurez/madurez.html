@@ -410,6 +410,416 @@ function reiniciar(origen){ if(!C) return; if(HANDLE){ handleDel(); HANDLE = nul
 return { iniciar, guardado, refrescar, reiniciar, abrir, estado:() => E ? Object.assign({}, E, {datos:undefined}) : null };
 })();
 </script>
+<script>const AYUDA_HERR = {
+ "_leeme": "Textos de ayuda de la herramienta (D111), en español e inglés. Los usa el módulo común herramientas/_comun/ayuda.js, que el build_*.ps1 incrusta en el HTML. 'vistas': una entrada por vista (ruta #/<vista>, o <vista>/<pestaña> según 'subvistas'). 'claves': explicación de cada columna o dato por su clave de traducción (TX). 'textos': explicación de rótulos que no salen de TX, por su texto en cada idioma. Una columna nueva de la herramienta necesita aquí su clave, en los dos idiomas (verificar_coherencia.ps1, sección 24).",
+ "inicial": "evaluacion",
+ "vistas": {
+  "evaluacion": {
+   "es": {
+    "titulo": "Evaluación de madurez",
+    "que": "La evaluación seleccionada: nivel global y por dimensión, avance al nivel siguiente, criterio bloqueante principal, pesos, objetivos, comparación con la anterior, entrevistas, muestras de evidencias, declaración de aplicación, lectura cruzada con el índice de transformación, mensajes para el consejo y acciones de mejora.",
+    "porque": "Dice si la compañía tiene la capacidad de gobernar la IA que quiere desplegar. El nivel global queda limitado por gobierno (D1) y riesgo (D6): no se puede presentar más madurez que control.",
+    "leer": "Niveles: 0 Inexistente, 1 Inicial, 2 En desarrollo, 3 Definido, 4 Gestionado, 5 Optimizado. Un nivel se alcanza cuando se cumplen todas sus preguntas (acumulativo). Nivel global: media ponderada redondeada hacia abajo, nunca más de uno por encima de D1 o D6. «Parcial» cuenta como no cumplido; una pregunta sin responder es «sin dato».",
+    "donde": "documento 11 (modelo de madurez) §5"
+   },
+   "en": {
+    "titulo": "Maturity assessment",
+    "que": "The selected assessment: overall and per-dimension level, progress to the next level, main blocking criterion, weights, targets, comparison with the previous one, interviews, evidence samples, statement of application, cross-reading with the transformation index, messages for the board and improvement actions.",
+    "porque": "It shows whether the company has the capability to govern the AI it wants to deploy. The overall level is capped by governance (D1) and risk (D6): no more maturity can be presented than control.",
+    "leer": "Levels: 0 Non-existent, 1 Initial, 2 Developing, 3 Defined, 4 Managed, 5 Optimised. A level is reached when all its questions are met (cumulative). Overall level: weighted average rounded down, never more than one above D1 or D6. «Partial» counts as not met; an unanswered question is «no data».",
+    "donde": "document 11 (maturity model) §5"
+   }
+  },
+  "cuestionario": {
+   "es": {
+    "titulo": "Cuestionario",
+    "que": "Las doce preguntas de cada dimensión, con su nivel, criterios observables, evidencias exigidas, la respuesta (Sí, Parcial, No o No aplica), la evidencia aportada y su verificación.",
+    "porque": "Cada respuesta necesita evidencia: sin ella, la madurez es una opinión. Responder con las reglas del documento 11 hace el diagnóstico comparable y auditable.",
+    "leer": "«Sí» solo con evidencia válida; «Parcial» computa como no cumplido; «No aplica» solo en las preguntas marcadas y con justificación.",
+    "donde": "documento 11 §4.5"
+   },
+   "en": {
+    "titulo": "Questionnaire",
+    "que": "The twelve questions of each dimension, with level, observable criteria, required evidence, the answer (Yes, Partial, No or Not applicable), the evidence provided and its verification.",
+    "porque": "Each answer needs evidence: without it, maturity is an opinion. Answering with the rules of document 11 makes the assessment comparable and auditable.",
+    "leer": "«Yes» only with valid evidence; «Partial» counts as not met; «Not applicable» only on flagged questions and with justification.",
+    "donde": "document 11 §4.5"
+   }
+  },
+  "informe": {
+   "es": {
+    "titulo": "Informe de madurez",
+    "que": "El informe con la estructura del documento 11 §6: resumen para el consejo, alcance y método, resultados por dimensión, lectura cruzada, comparación, objetivos y plan de mejora y anexos. Se imprime o se guarda como PDF desde el navegador.",
+    "porque": "Es lo que se presenta al consejo: un resultado verificable con su método, no una nota.",
+    "donde": "documento 11 §6 y P34"
+   },
+   "en": {
+    "titulo": "Maturity report",
+    "que": "The report with the structure of document 11 §6: summary for the board, scope and method, results by dimension, cross-reading, comparison, targets and improvement plan and annexes. It is printed or saved as PDF from the browser.",
+    "porque": "It is what is presented to the board: a verifiable result with its method, not a grade.",
+    "donde": "document 11 §6 and P34"
+   }
+  },
+  "evolucion": {
+   "es": {
+    "titulo": "Evolución de la madurez",
+    "que": "Todas las evaluaciones guardadas, con su fecha de corte, modalidad, versión del cuestionario, media ponderada, límite por D1 o D6, nivel global y nivel de cada dimensión.",
+    "porque": "Muestra si la compañía progresa. Solo se comparan evaluaciones verificadas con la misma versión del cuestionario y los mismos pesos.",
+    "donde": "documento 11 §1.2"
+   },
+   "en": {
+    "titulo": "Maturity evolution",
+    "que": "All saved assessments, with cut-off date, mode, questionnaire version, weighted average, D1 or D6 cap, overall level and the level of each dimension.",
+    "porque": "It shows whether the company is progressing. Only verified assessments with the same questionnaire version and weights are compared.",
+    "donde": "document 11 §1.2"
+   }
+  },
+  "guia": {
+   "es": {
+    "titulo": "Guía de entrevistas y de evidencias",
+    "que": "El método del documento 11: a quién entrevistar, qué evidencias valen y qué respuesta corresponde, cómo calcular el tamaño de la muestra y qué se pregunta en cada dimensión.",
+    "porque": "Un diagnóstico hecho con el mismo método es comparable entre compañías y entre años.",
+    "donde": "documento 11 §4.4 a §4.6"
+   },
+   "en": {
+    "titulo": "Interview and evidence guide",
+    "que": "The method of document 11: whom to interview, which evidence is valid and which answer it supports, how to calculate the sample size and what is asked in each dimension.",
+    "porque": "An assessment carried out with the same method is comparable across companies and years.",
+    "donde": "document 11 §4.4 to §4.6"
+   }
+  },
+  "datos": {
+   "es": {
+    "titulo": "Datos",
+    "que": "Importar y exportar el fichero completo del diagnóstico y guardar el resumen de madurez en el registro de iniciativas (T01), del que lo lee el panel del consejo.",
+    "porque": "El registro T01 es la fuente de verdad: guarda el resumen (no las respuestas) para que el consejo lo vea en su panel.",
+    "donde": "documento 03 §4.1"
+   },
+   "en": {
+    "titulo": "Data",
+    "que": "Import and export the assessment's full file and save the maturity summary in the initiative register (T01), from which the board dashboard reads it.",
+    "porque": "The T01 register is the source of truth: it stores the summary (not the answers) so the board sees it on its dashboard.",
+    "donde": "document 03 §4.1"
+   }
+  }
+ },
+ "claves": {
+  "dimension": {
+   "es": "Una de las siete dimensiones: D1 Estrategia y gobierno, D2 Valor y cartera, D3 Datos y conocimiento, D4 Tecnología y operación, D5 Personas y adopción, D6 Riesgo, seguridad y cumplimiento, D7 Medición y evidencia.",
+   "en": "One of the seven dimensions: D1 Strategy and governance, D2 Value and portfolio, D3 Data and knowledge, D4 Technology and operations, D5 People and adoption, D6 Risk, security and compliance, D7 Measurement and evidence."
+  },
+  "nivel": {
+   "es": "Nivel de 0 a 5: 0 Inexistente, 1 Inicial, 2 En desarrollo, 3 Definido, 4 Gestionado, 5 Optimizado. En una pregunta, el nivel al que pertenece.",
+   "en": "Level from 0 to 5: 0 Non-existent, 1 Initial, 2 Developing, 3 Defined, 4 Managed, 5 Optimised. For a question, the level it belongs to."
+  },
+  "avance": {
+   "es": "Porcentaje de las preguntas del nivel siguiente que ya se cumplen.",
+   "en": "Share of the next level's questions already met."
+  },
+  "bloqueante": {
+   "es": "La pregunta no cumplida que impide subir de nivel: por ahí empieza el plan de mejora.",
+   "en": "The unmet question that prevents moving up a level: the improvement plan starts there."
+  },
+  "peso": {
+   "es": "Peso de la dimensión en la media ponderada (recomendado entre el 10 % y el 25 %; se fija en C2).",
+   "en": "Weight of the dimension in the weighted average (recommended between 10% and 25%; set at C2)."
+  },
+  "objetivo": {
+   "es": "Nivel objetivo fijado en C2.",
+   "en": "Target level set at C2."
+  },
+  "tendencia": {
+   "es": "Cambio frente a la evaluación anterior.",
+   "en": "Change against the previous assessment."
+  },
+  "codigo": {
+   "es": "Código de la pregunta (dimensión.número, por ejemplo D1.09).",
+   "en": "Question code (dimension.number, for example D1.09)."
+  },
+  "pregunta": {
+   "es": "Qué se pregunta.",
+   "en": "What is asked."
+  },
+  "respuesta": {
+   "es": "Sí (con evidencia válida), Parcial (cuenta como no), No o No aplica (con justificación).",
+   "en": "Yes (with valid evidence), Partial (counts as no), No or Not applicable (with justification)."
+  },
+  "rol": {
+   "es": "Rol de la persona entrevistada (las respuestas se anonimizan por rol).",
+   "en": "Role of the person interviewed (answers are anonymised by role)."
+  },
+  "dims": {
+   "es": "Dimensiones sobre las que se le preguntó.",
+   "en": "Dimensions they were asked about."
+  },
+  "fecha": {
+   "es": "Fecha.",
+   "en": "Date."
+  },
+  "preguntas": {
+   "es": "Preguntas que se comprueban con la muestra.",
+   "en": "Questions checked with the sample."
+  },
+  "poblacion": {
+   "es": "Número de elementos (iniciativas, contratos…) de los que se toma la muestra.",
+   "en": "Number of items (initiatives, contracts…) the sample is drawn from."
+  },
+  "tamano": {
+   "es": "Tamaño de la muestra.",
+   "en": "Sample size."
+  },
+  "seleccion": {
+   "es": "Cómo se eligieron los elementos y por qué estratos.",
+   "en": "How the items were chosen and by which strata."
+  },
+  "id": {
+   "es": "Identificador de la acción.",
+   "en": "Identifier of the action."
+  },
+  "accion": {
+   "es": "Acción de mejora.",
+   "en": "Improvement action."
+  },
+  "responsable": {
+   "es": "Responsable de la acción.",
+   "en": "Owner of the action."
+  },
+  "plazo": {
+   "es": "Fecha límite.",
+   "en": "Deadline."
+  },
+  "criterio_cierre": {
+   "es": "Qué debe comprobarse para dar la acción por cerrada.",
+   "en": "What must be checked to consider the action closed."
+  },
+  "t18": {
+   "es": "Si se sigue como recomendación del consejo (T18).",
+   "en": "Whether it is tracked as a board recommendation (T18)."
+  },
+  "estado": {
+   "es": "Estado de la acción.",
+   "en": "Status of the action."
+  },
+  "criterios": {
+   "es": "Qué tiene que verse para responder «Sí».",
+   "en": "What must be observed to answer «Yes»."
+  },
+  "evidencias": {
+   "es": "Documentos o registros que prueban la respuesta.",
+   "en": "Documents or records that prove the answer."
+  },
+  "evidencia": {
+   "es": "Enlace o referencia a la evidencia aportada.",
+   "en": "Link or reference to the evidence provided."
+  },
+  "verificacion": {
+   "es": "Si un tercero ha comprobado la evidencia.",
+   "en": "Whether a third party has checked the evidence."
+  },
+  "anterior": {
+   "es": "Valor en la evaluación anterior.",
+   "en": "Value in the previous assessment."
+  },
+  "actual": {
+   "es": "Valor en esta evaluación.",
+   "en": "Value in this assessment."
+  },
+  "cambio": {
+   "es": "Diferencia entre ambas.",
+   "en": "Difference between them."
+  },
+  "obj_brecha": {
+   "es": "Niveles que faltan para el objetivo.",
+   "en": "Levels missing to reach the target."
+  },
+  "v_evaluacion": {
+   "es": "Código de la evaluación (EM-AAAA-MM).",
+   "en": "Assessment code (EM-YYYY-MM)."
+  },
+  "evaluacion": {
+   "es": "Evaluación.",
+   "en": "Assessment."
+  },
+  "fecha_corte": {
+   "es": "Fecha a la que se refieren las respuestas.",
+   "en": "Date the answers refer to."
+  },
+  "modalidad": {
+   "es": "Autodiagnóstico, verificada o valoración independiente; solo las verificadas valen para el consejo.",
+   "en": "Self-assessment, verified or independent assessment; only verified ones are valid for the board."
+  },
+  "version_cuest": {
+   "es": "Versión del cuestionario usada; solo se comparan evaluaciones con la misma.",
+   "en": "Questionnaire version used; only assessments with the same one are compared."
+  },
+  "media": {
+   "es": "Media ponderada de los niveles de las dimensiones.",
+   "en": "Weighted average of the dimension levels."
+  },
+  "tope": {
+   "es": "Nivel máximo permitido: nivel de D1 o D6 más uno.",
+   "en": "Maximum level allowed: level of D1 or D6 plus one."
+  },
+  "nivel_global": {
+   "es": "Media ponderada redondeada hacia abajo y limitada por D1 o D6.",
+   "en": "Weighted average rounded down and capped by D1 or D6."
+  },
+  "g_pob": {
+   "es": "Elementos en el perímetro evaluado.",
+   "en": "Items within the assessed scope."
+  },
+  "g_calc": {
+   "es": "Muestra mínima que exige el documento 11 §4.6.",
+   "en": "Minimum sample required by document 11 §4.6."
+  },
+  "ev_req": {
+   "es": "Evidencia que exige la pregunta.",
+   "en": "Evidence required by the question."
+  }
+ },
+ "textos": {
+  "es": {
+   "D1": "Nivel (0 a 5) de la dimensión D1 · Estrategia y gobierno.",
+   "D2": "Nivel (0 a 5) de la dimensión D2 · Valor y cartera.",
+   "D3": "Nivel (0 a 5) de la dimensión D3 · Datos y conocimiento.",
+   "D4": "Nivel (0 a 5) de la dimensión D4 · Tecnología y operación.",
+   "D5": "Nivel (0 a 5) de la dimensión D5 · Personas y adopción.",
+   "D6": "Nivel (0 a 5) de la dimensión D6 · Riesgo, seguridad y cumplimiento.",
+   "D7": "Nivel (0 a 5) de la dimensión D7 · Medición y evidencia."
+  },
+  "en": {
+   "D1": "Level (0 to 5) of dimension D1 · Strategy and governance.",
+   "D2": "Level (0 to 5) of dimension D2 · Value and portfolio.",
+   "D3": "Level (0 to 5) of dimension D3 · Data and knowledge.",
+   "D4": "Level (0 to 5) of dimension D4 · Technology and operations.",
+   "D5": "Level (0 to 5) of dimension D5 · People and adoption.",
+   "D6": "Level (0 to 5) of dimension D6 · Risk, security and compliance.",
+   "D7": "Level (0 to 5) of dimension D7 · Measurement and evidence."
+  }
+ }
+};
+/* Ayuda de las herramientas de SEVEN-G (D111): módulo común que cada build_*.ps1 incrusta en su HTML (marca __AYUDA__), junto con
+   los textos de la herramienta (_fuentes/ayuda.json, constante AYUDA_HERR). Hace dos cosas, en el idioma activo de la herramienta
+   (document.documentElement.lang), sin tocar su código:
+   1) Junto al título (h1) de cada vista pone un botón «?» que abre qué muestra la vista, cómo leerla, qué significa cada columna o
+      dato que aparece en ella, por qué importa y dónde se explica en SEVEN-G.
+   2) Cada encabezado de tabla (th), cada rótulo de una lista de datos (dt) y cada rótulo de las cifras de cabecera lleva como tooltip lo
+      que significa. Los códigos citados en la ayuda (documento 40, P12…) son enlaces si la página carga el índice de códigos (D99).
+   Los rótulos se reconocen por su clave de traducción (TX de la herramienta), así la misma explicación vale en español y en inglés;
+   para los que no salen de TX está el diccionario literal «textos»; un rótulo compuesto «A · B» se explica por sus partes.
+   Sin AYUDA_HERR no hace nada (D53). Todo es HTML de confianza (viene del repositorio, no de los datos del usuario). */
+(function(){
+  if (typeof AYUDA_HERR === 'undefined' || !AYUDA_HERR) return;
+  var A = AYUDA_HERR;
+  var UI_TXT = {
+    es: { boton: 'Qué muestra esta vista y cómo leerla', que: 'Qué muestra', leer: 'Cómo leerla', cols: 'Qué significa cada columna o dato de esta vista', col: 'Columna o dato', sig: 'Qué significa', porque: 'Por qué importa', donde: 'Dónde se explica', cerrar: 'Cerrar', nota: 'Pase el ratón por un encabezado de tabla o por un rótulo para ver su explicación.' },
+    en: { boton: 'What this view shows and how to read it', que: 'What it shows', leer: 'How to read it', cols: 'What each column or figure in this view means', col: 'Column or figure', sig: 'What it means', porque: 'Why it matters', donde: 'Where it is explained', cerrar: 'Close', nota: 'Hover over a table header or a label to see its explanation.' }
+  };
+  function idioma(){ return /^en/i.test(document.documentElement.lang || '') ? 'en' : 'es'; }
+  function norm(s){ return String(s || '').replace(/[▲▼↑↓⇅]/g, '').replace(/\s+/g, ' ').trim(); }
+  function esc(s){ return String(s == null ? '' : s).replace(/[&<>"]/g, function(c){ return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]; }); }
+  function plano(s){ return String(s || '').replace(/<[^>]+>/g, '').replace(/&amp;/g, '&').replace(/&lt;/g, '<').replace(/&gt;/g, '>'); }
+  // índice inverso por idioma: texto del rótulo en TX → clave explicada
+  var inv = {};
+  function indice(l){
+    if (inv[l]) return inv[l];
+    var m = {}, tx = (typeof TX !== 'undefined' && TX) ? (TX[l] || TX.es || {}) : {};
+    Object.keys(A.claves || {}).forEach(function(k){ var v = tx[k]; if (typeof v === 'string') { var n = norm(v); if (!(n in m)) m[n] = k; } });
+    return (inv[l] = m);
+  }
+  function explicacion(rot, l){
+    rot = norm(rot); if (!rot) return null;
+    var k = indice(l)[rot];
+    if (k && A.claves[k] && A.claves[k][l]) return A.claves[k][l];
+    var lit = (A.textos || {})[l] || {};
+    if (lit[rot]) return lit[rot];
+    // añadidos que no cambian el significado: un recuento final («… · 10/13») o un parámetro entre paréntesis («… (3 años)»)
+    var sin = rot.replace(/ · [\d.,/ %]+$/, '').replace(/ \([^()]*\d[^()]*\)$/, '');
+    if (sin !== rot) return explicacion(sin, l);
+    // rótulo compuesto «A · B»: se explica cada parte
+    if (rot.indexOf(' · ') > 0) {
+      var partes = rot.split(' · '), ex = partes.map(function(p){ return explicacion(p, l); });
+      if (ex.every(Boolean)) return partes.map(function(p, i){ return '<b>' + esc(p) + '</b>: ' + ex[i]; }).join(' ');
+    }
+    return null;
+  }
+  function vistaActual(){
+    var s = (location.hash || '').replace(/^#\/?/, '').split('/'), v = s[0] || A.inicial;
+    var sv = (A.subvistas || {})[v];
+    if (sv) { var sub = v + '/' + (s[sv.indice] || sv.defecto); if ((A.vistas || {})[sub]) return sub; }
+    return (A.vistas || {})[v] ? v : ((A.vistas || {})[A.inicial] ? A.inicial : null);
+  }
+  function principal(){ return document.getElementById('principal'); }
+  function dialogo(){
+    var d = document.getElementById('dlg-ayuda-herr'); if (d) return d;
+    d = document.createElement('dialog'); d.id = 'dlg-ayuda-herr'; d.setAttribute('aria-labelledby', 'dlg-ayuda-herr-t'); d.setAttribute('data-enlazar-codigos', '');
+    d.addEventListener('click', function(e){ if (e.target === d || (e.target.closest && e.target.closest('[data-ay="cerrar"]'))) d.close(); });
+    document.body.appendChild(d); return d;
+  }
+  function abrir(){
+    var l = idioma(), T = UI_TXT[l], v = vistaActual(), a = v && A.vistas[v] && (A.vistas[v][l] || A.vistas[v].es);
+    if (!a) return;
+    // columnas y datos que se ven ahora en la vista, con su explicación
+    var vistos = {}, filas = '';
+    var main = principal();
+    if (main) Array.prototype.forEach.call(main.querySelectorAll('.kpi > span, .kpis > div > span, th, dt'), function(el){
+      var r = norm(el.textContent); if (!r || vistos[r]) return; vistos[r] = 1;
+      var x = explicacion(r, l); if (x) filas += '<tr><td>' + esc(r) + '</td><td>' + x + '</td></tr>';
+    });
+    var h = '<div class="dlg-cab"><h2 id="dlg-ayuda-herr-t">' + esc(a.titulo) + '</h2><button type="button" data-ay="cerrar" aria-label="' + esc(T.cerrar) + '">×</button></div><div class="dlg-cuerpo ay-cuerpo">'
+      + '<h3>' + T.que + '</h3><p>' + (a.que || '') + '</p>'
+      + (a.leer ? '<h3>' + T.leer + '</h3><p>' + a.leer + '</p>' : '')
+      + (filas ? '<h3>' + T.cols + '</h3><div class="tblx"><table class="ay-cols"><thead><tr><th>' + T.col + '</th><th>' + T.sig + '</th></tr></thead><tbody>' + filas + '</tbody></table></div><p class="ay-nota">' + T.nota + '</p>' : '')
+      + '<h3>' + T.porque + '</h3><p>' + (a.porque || '') + '</p>'
+      + (a.donde ? '<p class="ay-donde">' + T.donde + ': ' + a.donde + '</p>' : '') + '</div>';
+    var d = dialogo(); d.innerHTML = h;
+    // los códigos citados (documento 40, P12…) pasan a ser enlaces con el índice de códigos del sitio, si la página lo carga (D99)
+    try { if (window.sevengIrCodigo && window.sevengIrCodigo.enlazar) window.sevengIrCodigo.enlazar(d.querySelector('.ay-cuerpo')); } catch (e) {}
+    if (!d.open) { if (d.showModal) d.showModal(); else d.setAttribute('open', ''); }
+  }
+  function estilos(){
+    if (document.getElementById('ay-estilos')) return;
+    var s = document.createElement('style'); s.id = 'ay-estilos';
+    s.textContent = '.ay-btn{display:inline-flex;align-items:center;justify-content:center;width:22px;height:22px;margin:0 0 0 10px;padding:0;border:1px solid currentColor;border-radius:50%;background:transparent;color:var(--tinta-2,#564d47);font:700 13px/1 system-ui,-apple-system,"Segoe UI",sans-serif;cursor:pointer;vertical-align:middle}'
+      + '.ay-btn:hover,.ay-btn:focus-visible{background:var(--tinta,#2f2b28);color:var(--papel,#fbe2cd);outline:none}'
+      + '@media (pointer:coarse){.ay-btn{width:28px;height:28px;font-size:15px}}'
+      + '#dlg-ayuda-herr{max-width:min(760px,94vw)}#dlg-ayuda-herr::backdrop{background:rgba(0,0,0,.45)}'
+      + '.ay-cuerpo{padding:4px 16px 16px}.ay-cuerpo h3{margin:14px 0 4px;font-size:15px}.ay-cuerpo p{margin:0 0 6px;line-height:1.5}'
+      + '.ay-cols{width:100%;border-collapse:collapse;font-size:13.5px}.ay-cols th,.ay-cols td{text-align:left;vertical-align:top;padding:5px 6px;border-bottom:1px solid var(--regla,#c9a78d)}'
+      + '.ay-cols td:first-child{font-weight:650;width:32%}.ay-nota,.ay-donde{font-size:12.5px;color:var(--tinta-2,#564d47)}'
+      + '.ay-col{cursor:help;text-decoration:underline dotted;text-underline-offset:3px}'
+      + '@media print{.ay-btn,#dlg-ayuda-herr{display:none!important}}';
+    document.head.appendChild(s);
+  }
+  function poner(){
+    var main = principal(); if (!main) return;
+    var l = idioma(), v = vistaActual();
+    var h1 = main.querySelector('h1');
+    if (h1 && v && !h1.querySelector('.ay-btn')) {
+      var b = document.createElement('button'); b.type = 'button'; b.className = 'ay-btn'; b.textContent = '?';
+      b.title = UI_TXT[l].boton; b.setAttribute('aria-label', UI_TXT[l].boton); b.setAttribute('aria-haspopup', 'dialog');
+      b.addEventListener('click', function(e){ e.preventDefault(); e.stopPropagation(); abrir(); });
+      h1.appendChild(b);
+    }
+    Array.prototype.forEach.call(document.querySelectorAll('#principal th, #principal dt, #principal .kpi > span, #principal .kpis > div > span, dialog:not(#dlg-ayuda-herr) th, dialog:not(#dlg-ayuda-herr) dt'), function(el){
+      var r = norm(el.textContent); if (!r) return;
+      var marca = r + '|' + l; if (el.getAttribute('data-ay') === marca) return;
+      el.setAttribute('data-ay', marca);
+      var x = explicacion(r, l);
+      if (x) { el.title = plano(x); el.classList.add('ay-col'); } else if (el.classList.contains('ay-col')) { el.removeAttribute('title'); el.classList.remove('ay-col'); }
+    });
+  }
+  function iniciar(){
+    estilos(); poner();
+    var pend = false;
+    new MutationObserver(function(){ if (pend) return; pend = true; requestAnimationFrame(function(){ pend = false; poner(); }); })
+      .observe(document.body, { childList: true, subtree: true, attributes: true, attributeFilter: ['lang'] });
+    new MutationObserver(function(){ inv = {}; poner(); }).observe(document.documentElement, { attributes: true, attributeFilter: ['lang'] });
+  }
+  window.SevengAyuda = { explicacion: explicacion, vista: vistaActual, abrir: abrir };
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', iniciar); else iniciar();
+})();
+</script>
 <script>
 'use strict';
 /* =========================================================

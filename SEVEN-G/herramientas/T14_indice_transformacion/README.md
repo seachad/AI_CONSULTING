@@ -44,6 +44,10 @@ Abre la calculadora en Edge sin ventana, crea el cálculo a la fecha de referenc
 
 La versión **0.1** son los umbrales iniciales del documento 12 (sección 4.5), **a calibrar**. En «Umbrales» se crea una versión nueva a partir de otra; una versión que ya usa algún cálculo no se puede editar (los umbrales no cambian dentro del ciclo anual). La compañía puede ajustar umbrales, no la estructura de las señales ni las reglas de asignación de perfiles, y declara el ajuste como desviación.
 
+## Ayuda en pantalla
+
+Cada vista lleva junto a su título un botón **«?»** que explica, en el idioma activo (español o inglés), qué muestra la vista, cómo leerla, qué significa cada columna, rótulo o cifra que aparece en ella, por qué importa y dónde se explica en SEVEN-G. Además, cada encabezado de tabla, cada rótulo de ficha y cada cifra de cabecera lleva su explicación como tooltip (D111). Los textos están en `_fuentes/ayuda.json` (vistas y explicación de cada columna por su clave de traducción, en los dos idiomas); el módulo común `../_comun/ayuda.js` los muestra y `build_indice.ps1` los incrusta al generar. Una vista o columna nueva necesita su entrada en `ayuda.json` en los dos idiomas (`verificar_coherencia.ps1`, sección 24).
+
 ## Ficheros
 
 | Fichero | Qué es |

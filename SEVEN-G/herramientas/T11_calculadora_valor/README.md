@@ -51,6 +51,10 @@ Reglas que la calculadora hace cumplir o señala: «sin dato» no es cero (un im
 
 La versión **2026** contiene los valores de ejemplo: horizonte de 3 años y tasa del 8 % (los mismos del ejemplo del documento 40 §8.4), tolerancia del 5 % de consumo sin etiquetar, umbrales de alerta de consumo del 50, 80 y 100 % (orientativos del documento 42 §8.2), multiplicadores de los escenarios y coste horario completo por perfil. La compañía fija los suyos en C2. Una versión que ya usa algún caso no se edita: se crea una nueva a partir de ella.
 
+## Ayuda en pantalla
+
+Cada vista lleva junto a su título un botón **«?»** que explica, en el idioma activo (español o inglés), qué muestra la vista, cómo leerla, qué significa cada columna, rótulo o cifra que aparece en ella, por qué importa y dónde se explica en SEVEN-G. Además, cada encabezado de tabla, cada rótulo de ficha y cada cifra de cabecera lleva su explicación como tooltip (D111). Los textos están en `_fuentes/ayuda.json` (vistas y explicación de cada columna por su clave de traducción, en los dos idiomas); el módulo común `../_comun/ayuda.js` los muestra y `build_calculadora.ps1` los incrusta al generar. Una vista o columna nueva necesita su entrada en `ayuda.json` en los dos idiomas (`verificar_coherencia.ps1`, sección 24).
+
 ## Ficheros
 
 | Fichero | Qué es |

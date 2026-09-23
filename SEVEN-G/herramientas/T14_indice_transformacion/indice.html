@@ -396,6 +396,268 @@ function reiniciar(origen){ if(!C) return; if(HANDLE){ handleDel(); HANDLE = nul
 return { iniciar, guardado, refrescar, reiniciar, abrir, estado:() => E ? Object.assign({}, E, {datos:undefined}) : null };
 })();
 </script>
+<script>const AYUDA_HERR = {
+ "_leeme": "Textos de ayuda de la herramienta (D111), en español e inglés. Los usa el módulo común herramientas/_comun/ayuda.js, que el build_*.ps1 incrusta en el HTML. 'vistas': una entrada por vista (ruta #/<vista>, o <vista>/<pestaña> según 'subvistas'). 'claves': explicación de cada columna o dato por su clave de traducción (TX). 'textos': explicación de rótulos que no salen de TX, por su texto en cada idioma. Una columna nueva de la herramienta necesita aquí su clave, en los dos idiomas (verificar_coherencia.ps1, sección 24).",
+ "inicial": "calculo",
+ "vistas": {
+  "calculo": {
+   "es": {
+    "titulo": "Índice de transformación de la compañía",
+    "que": "El cálculo seleccionado: perfil asignado, condiciones de base B1–B3, las ocho señales con su valor medido, puntuación, lectura y tendencia, el contraste con la transformación declarada, las alertas complementarias, qué movería el perfil y los datos del cálculo (fecha de corte, tipo, versión de umbrales, cobertura).",
+    "porque": "Responde con evidencias si la compañía se está transformando con la IA o solo gana eficiencia. Señala la transformación declarada que los datos no respaldan y dice qué haría falta para subir de perfil.",
+    "leer": "Cada señal se puntúa de 0 (exploración o sin medir) a 3 (transformación) con los umbrales del documento 12. El perfil no sale de la suma: lo deciden las condiciones de base y las señales clave. Con menos señales medidas que el mínimo, el resultado es provisional. «Sin dato» nunca es cero.",
+    "donde": "documento 12 (índice de transformación)"
+   },
+   "en": {
+    "titulo": "Company transformation index",
+    "que": "The selected calculation: assigned profile, base conditions B1–B3, the eight signals with measured value, score, reading and trend, the contrast with the declared transformation, complementary alerts, what would move the profile and calculation data (cut-off date, type, threshold version, coverage).",
+    "porque": "It answers with evidence whether the company is transforming with AI or only gaining efficiency. It flags declared transformation that the data do not support and says what would be needed to move up a profile.",
+    "leer": "Each signal is scored from 0 (exploration or not measured) to 3 (transformation) with the thresholds of document 12. The profile does not come from the sum: base conditions and key signals decide it. With fewer measured signals than the minimum, the result is provisional. «No data» is never zero.",
+    "donde": "document 12 (transformation index)"
+   }
+  },
+  "evolucion": {
+   "es": {
+    "titulo": "Evolución del índice",
+    "que": "Todos los cálculos guardados, del más antiguo al más reciente, con su fecha de corte, tipo (formal o trimestral), versión de umbrales, suma, cobertura, perfil asignado y la puntuación de cada señal S1–S8.",
+    "porque": "Muestra si la compañía avanza hacia la transformación. El perfil oficial es el del cálculo formal anual; los trimestrales se leen como tendencia.",
+    "donde": "documento 12 §8"
+   },
+   "en": {
+    "titulo": "Index evolution",
+    "que": "All saved calculations, from oldest to newest, with cut-off date, type (formal or quarterly), threshold version, sum, coverage, assigned profile and the score of each signal S1–S8.",
+    "porque": "It shows whether the company is moving towards transformation. The official profile is the one from the formal annual calculation; quarterly ones are read as a trend.",
+    "donde": "document 12 §8"
+   }
+  },
+  "umbrales": {
+   "es": {
+    "titulo": "Versiones de umbrales",
+    "que": "Los umbrales de cada señal en cada versión aprobada.",
+    "porque": "La compañía puede ajustar los umbrales, pero no la estructura de las señales ni las reglas de perfil; una versión usada por algún cálculo ya no se edita, para que los resultados sigan siendo comparables.",
+    "donde": "documento 12 §4.5"
+   },
+   "en": {
+    "titulo": "Threshold versions",
+    "que": "The thresholds of each signal in each approved version.",
+    "porque": "The company may adjust thresholds, but not the structure of the signals or the profile rules; a version used by any calculation is no longer edited, so results remain comparable.",
+    "donde": "document 12 §4.5"
+   }
+  },
+  "datos": {
+   "es": {
+    "titulo": "Datos",
+    "que": "Importar y exportar el fichero completo de la calculadora y calcular desde el registro de iniciativas (T01).",
+    "porque": "El registro T01 es la fuente de verdad: la calculadora toma de él las señales y marca lo que falta.",
+    "donde": "documento 03 §4.1"
+   },
+   "en": {
+    "titulo": "Data",
+    "que": "Import and export the calculator's full file and calculate from the initiative register (T01).",
+    "porque": "The T01 register is the source of truth: the calculator takes the signals from it and flags what is missing.",
+    "donde": "document 03 §4.1"
+   }
+  }
+ },
+ "claves": {
+  "senal": {
+   "es": "Cada una de las ocho señales: 1 composición de la inversión (peso de Aumentar y Transformar en el coste de la cartera); 2 composición del valor (retorno validado frente a eficiencias validadas); 3 materialización (capacidad liberada convertida en menor coste real o reasignada de forma explícita); 4 profundidad del cambio (iniciativas en producción que rediseñan el proceso de extremo a extremo, verificado); 5 modelo operativo (cambios verificados en roles, estructura y reparto de decisiones, con supervisión humana definida); 6 ingresos habilitados por IA (ingresos validados de oferta que no existiría sin IA sobre los ingresos totales); 7 paso a producción (si las apuestas de Aumentar y Transformar llegan a producción en proporción y tiempo comparables al resto); 8 decisión del consejo (apuestas de Transformar aprobadas en 12 meses, con límite por etapa, revisiones y decisiones de etapa).",
+   "en": "Each of the eight signals: 1 investment mix (share of Augment and Transform in portfolio cost); 2 value mix (validated return against validated efficiencies); 3 materialisation (freed capacity turned into lower actual cost or explicitly reassigned); 4 depth of change (initiatives in production that redesign the process end to end, verified); 5 operating model (verified changes in roles, structure and split of decisions, with defined human oversight); 6 AI-enabled revenue (validated revenue from offerings that would not exist without AI over total revenue); 7 move to production (whether Augment and Transform bets reach production at a rate and speed comparable to the rest); 8 board decision (Transform bets approved in 12 months, with a cap per stage, reviews and stage decisions)."
+  },
+  "valor_medido": {
+   "es": "La cifra con la que se puntúa la señal (porcentaje, cociente o recuento).",
+   "en": "The figure used to score the signal (percentage, ratio or count)."
+  },
+  "puntuacion": {
+   "es": "0 exploración o sin medir, 1 eficiencia, 2 intermedia, 3 transformación.",
+   "en": "0 exploration or not measured, 1 efficiency, 2 intermediate, 3 transformation."
+  },
+  "lectura": {
+   "es": "La puntuación dicha en palabras.",
+   "en": "The score in words."
+  },
+  "tendencia": {
+   "es": "Cambio frente al cálculo anterior: ▲ sube, ▼ baja, = igual.",
+   "en": "Change against the previous calculation: ▲ up, ▼ down, = same."
+  },
+  "fecha_corte": {
+   "es": "Fecha a la que se refieren los datos del cálculo.",
+   "en": "Date the calculation data refer to."
+  },
+  "tipo": {
+   "es": "Formal (anual, en C5, el oficial) o trimestral (seguimiento).",
+   "en": "Formal (annual, at C5, the official one) or quarterly (monitoring)."
+  },
+  "version": {
+   "es": "Versión de umbrales usada.",
+   "en": "Threshold version used."
+  },
+  "suma": {
+   "es": "Suma de las puntuaciones de las ocho señales (0 a 24); da contexto, no decide el perfil.",
+   "en": "Sum of the eight signal scores (0 to 24); gives context, does not decide the profile."
+  },
+  "cobertura": {
+   "es": "Señales medidas de las ocho; por debajo del mínimo, el perfil es provisional.",
+   "en": "Signals measured out of eight; below the minimum, the profile is provisional."
+  },
+  "perfil_asignado": {
+   "es": "Perfil resultante: exploración dispersa, eficiencia táctica, eficiencia a escala, transformación en curso o transformación declarada no evidenciada.",
+   "en": "Resulting profile: scattered exploration, tactical efficiency, efficiency at scale, transformation under way or transformation declared but not evidenced."
+  },
+  "parametro": {
+   "es": "Umbral de una señal.",
+   "en": "Threshold of a signal."
+  },
+  "valor": {
+   "es": "Valor del umbral en esa versión.",
+   "en": "Value of the threshold in that version."
+  }
+ },
+ "textos": {
+  "es": {
+   "S1": "Puntuación (0 a 3) de la señal 1: composición de la inversión (peso de Aumentar y Transformar en el coste de la cartera).",
+   "S2": "Puntuación (0 a 3) de la señal 2: composición del valor (retorno validado frente a eficiencias validadas).",
+   "S3": "Puntuación (0 a 3) de la señal 3: materialización (capacidad liberada convertida en menor coste real o reasignada de forma explícita).",
+   "S4": "Puntuación (0 a 3) de la señal 4: profundidad del cambio (iniciativas en producción que rediseñan el proceso de extremo a extremo, verificado).",
+   "S5": "Puntuación (0 a 3) de la señal 5: modelo operativo (cambios verificados en roles, estructura y reparto de decisiones, con supervisión humana definida).",
+   "S6": "Puntuación (0 a 3) de la señal 6: ingresos habilitados por IA (ingresos validados de oferta que no existiría sin IA sobre los ingresos totales).",
+   "S7": "Puntuación (0 a 3) de la señal 7: paso a producción (si las apuestas de Aumentar y Transformar llegan a producción en proporción y tiempo comparables al resto).",
+   "S8": "Puntuación (0 a 3) de la señal 8: decisión del consejo (apuestas de Transformar aprobadas en 12 meses, con límite por etapa, revisiones y decisiones de etapa)."
+  },
+  "en": {
+   "S1": "Score (0 to 3) of signal 1: investment mix (share of Augment and Transform in portfolio cost).",
+   "S2": "Score (0 to 3) of signal 2: value mix (validated return against validated efficiencies).",
+   "S3": "Score (0 to 3) of signal 3: materialisation (freed capacity turned into lower actual cost or explicitly reassigned).",
+   "S4": "Score (0 to 3) of signal 4: depth of change (initiatives in production that redesign the process end to end, verified).",
+   "S5": "Score (0 to 3) of signal 5: operating model (verified changes in roles, structure and split of decisions, with defined human oversight).",
+   "S6": "Score (0 to 3) of signal 6: AI-enabled revenue (validated revenue from offerings that would not exist without AI over total revenue).",
+   "S7": "Score (0 to 3) of signal 7: move to production (whether Augment and Transform bets reach production at a rate and speed comparable to the rest).",
+   "S8": "Score (0 to 3) of signal 8: board decision (Transform bets approved in 12 months, with a cap per stage, reviews and stage decisions)."
+  }
+ }
+};
+/* Ayuda de las herramientas de SEVEN-G (D111): módulo común que cada build_*.ps1 incrusta en su HTML (marca __AYUDA__), junto con
+   los textos de la herramienta (_fuentes/ayuda.json, constante AYUDA_HERR). Hace dos cosas, en el idioma activo de la herramienta
+   (document.documentElement.lang), sin tocar su código:
+   1) Junto al título (h1) de cada vista pone un botón «?» que abre qué muestra la vista, cómo leerla, qué significa cada columna o
+      dato que aparece en ella, por qué importa y dónde se explica en SEVEN-G.
+   2) Cada encabezado de tabla (th), cada rótulo de una lista de datos (dt) y cada rótulo de las cifras de cabecera lleva como tooltip lo
+      que significa. Los códigos citados en la ayuda (documento 40, P12…) son enlaces si la página carga el índice de códigos (D99).
+   Los rótulos se reconocen por su clave de traducción (TX de la herramienta), así la misma explicación vale en español y en inglés;
+   para los que no salen de TX está el diccionario literal «textos»; un rótulo compuesto «A · B» se explica por sus partes.
+   Sin AYUDA_HERR no hace nada (D53). Todo es HTML de confianza (viene del repositorio, no de los datos del usuario). */
+(function(){
+  if (typeof AYUDA_HERR === 'undefined' || !AYUDA_HERR) return;
+  var A = AYUDA_HERR;
+  var UI_TXT = {
+    es: { boton: 'Qué muestra esta vista y cómo leerla', que: 'Qué muestra', leer: 'Cómo leerla', cols: 'Qué significa cada columna o dato de esta vista', col: 'Columna o dato', sig: 'Qué significa', porque: 'Por qué importa', donde: 'Dónde se explica', cerrar: 'Cerrar', nota: 'Pase el ratón por un encabezado de tabla o por un rótulo para ver su explicación.' },
+    en: { boton: 'What this view shows and how to read it', que: 'What it shows', leer: 'How to read it', cols: 'What each column or figure in this view means', col: 'Column or figure', sig: 'What it means', porque: 'Why it matters', donde: 'Where it is explained', cerrar: 'Close', nota: 'Hover over a table header or a label to see its explanation.' }
+  };
+  function idioma(){ return /^en/i.test(document.documentElement.lang || '') ? 'en' : 'es'; }
+  function norm(s){ return String(s || '').replace(/[▲▼↑↓⇅]/g, '').replace(/\s+/g, ' ').trim(); }
+  function esc(s){ return String(s == null ? '' : s).replace(/[&<>"]/g, function(c){ return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]; }); }
+  function plano(s){ return String(s || '').replace(/<[^>]+>/g, '').replace(/&amp;/g, '&').replace(/&lt;/g, '<').replace(/&gt;/g, '>'); }
+  // índice inverso por idioma: texto del rótulo en TX → clave explicada
+  var inv = {};
+  function indice(l){
+    if (inv[l]) return inv[l];
+    var m = {}, tx = (typeof TX !== 'undefined' && TX) ? (TX[l] || TX.es || {}) : {};
+    Object.keys(A.claves || {}).forEach(function(k){ var v = tx[k]; if (typeof v === 'string') { var n = norm(v); if (!(n in m)) m[n] = k; } });
+    return (inv[l] = m);
+  }
+  function explicacion(rot, l){
+    rot = norm(rot); if (!rot) return null;
+    var k = indice(l)[rot];
+    if (k && A.claves[k] && A.claves[k][l]) return A.claves[k][l];
+    var lit = (A.textos || {})[l] || {};
+    if (lit[rot]) return lit[rot];
+    // añadidos que no cambian el significado: un recuento final («… · 10/13») o un parámetro entre paréntesis («… (3 años)»)
+    var sin = rot.replace(/ · [\d.,/ %]+$/, '').replace(/ \([^()]*\d[^()]*\)$/, '');
+    if (sin !== rot) return explicacion(sin, l);
+    // rótulo compuesto «A · B»: se explica cada parte
+    if (rot.indexOf(' · ') > 0) {
+      var partes = rot.split(' · '), ex = partes.map(function(p){ return explicacion(p, l); });
+      if (ex.every(Boolean)) return partes.map(function(p, i){ return '<b>' + esc(p) + '</b>: ' + ex[i]; }).join(' ');
+    }
+    return null;
+  }
+  function vistaActual(){
+    var s = (location.hash || '').replace(/^#\/?/, '').split('/'), v = s[0] || A.inicial;
+    var sv = (A.subvistas || {})[v];
+    if (sv) { var sub = v + '/' + (s[sv.indice] || sv.defecto); if ((A.vistas || {})[sub]) return sub; }
+    return (A.vistas || {})[v] ? v : ((A.vistas || {})[A.inicial] ? A.inicial : null);
+  }
+  function principal(){ return document.getElementById('principal'); }
+  function dialogo(){
+    var d = document.getElementById('dlg-ayuda-herr'); if (d) return d;
+    d = document.createElement('dialog'); d.id = 'dlg-ayuda-herr'; d.setAttribute('aria-labelledby', 'dlg-ayuda-herr-t'); d.setAttribute('data-enlazar-codigos', '');
+    d.addEventListener('click', function(e){ if (e.target === d || (e.target.closest && e.target.closest('[data-ay="cerrar"]'))) d.close(); });
+    document.body.appendChild(d); return d;
+  }
+  function abrir(){
+    var l = idioma(), T = UI_TXT[l], v = vistaActual(), a = v && A.vistas[v] && (A.vistas[v][l] || A.vistas[v].es);
+    if (!a) return;
+    // columnas y datos que se ven ahora en la vista, con su explicación
+    var vistos = {}, filas = '';
+    var main = principal();
+    if (main) Array.prototype.forEach.call(main.querySelectorAll('.kpi > span, .kpis > div > span, th, dt'), function(el){
+      var r = norm(el.textContent); if (!r || vistos[r]) return; vistos[r] = 1;
+      var x = explicacion(r, l); if (x) filas += '<tr><td>' + esc(r) + '</td><td>' + x + '</td></tr>';
+    });
+    var h = '<div class="dlg-cab"><h2 id="dlg-ayuda-herr-t">' + esc(a.titulo) + '</h2><button type="button" data-ay="cerrar" aria-label="' + esc(T.cerrar) + '">×</button></div><div class="dlg-cuerpo ay-cuerpo">'
+      + '<h3>' + T.que + '</h3><p>' + (a.que || '') + '</p>'
+      + (a.leer ? '<h3>' + T.leer + '</h3><p>' + a.leer + '</p>' : '')
+      + (filas ? '<h3>' + T.cols + '</h3><div class="tblx"><table class="ay-cols"><thead><tr><th>' + T.col + '</th><th>' + T.sig + '</th></tr></thead><tbody>' + filas + '</tbody></table></div><p class="ay-nota">' + T.nota + '</p>' : '')
+      + '<h3>' + T.porque + '</h3><p>' + (a.porque || '') + '</p>'
+      + (a.donde ? '<p class="ay-donde">' + T.donde + ': ' + a.donde + '</p>' : '') + '</div>';
+    var d = dialogo(); d.innerHTML = h;
+    // los códigos citados (documento 40, P12…) pasan a ser enlaces con el índice de códigos del sitio, si la página lo carga (D99)
+    try { if (window.sevengIrCodigo && window.sevengIrCodigo.enlazar) window.sevengIrCodigo.enlazar(d.querySelector('.ay-cuerpo')); } catch (e) {}
+    if (!d.open) { if (d.showModal) d.showModal(); else d.setAttribute('open', ''); }
+  }
+  function estilos(){
+    if (document.getElementById('ay-estilos')) return;
+    var s = document.createElement('style'); s.id = 'ay-estilos';
+    s.textContent = '.ay-btn{display:inline-flex;align-items:center;justify-content:center;width:22px;height:22px;margin:0 0 0 10px;padding:0;border:1px solid currentColor;border-radius:50%;background:transparent;color:var(--tinta-2,#564d47);font:700 13px/1 system-ui,-apple-system,"Segoe UI",sans-serif;cursor:pointer;vertical-align:middle}'
+      + '.ay-btn:hover,.ay-btn:focus-visible{background:var(--tinta,#2f2b28);color:var(--papel,#fbe2cd);outline:none}'
+      + '@media (pointer:coarse){.ay-btn{width:28px;height:28px;font-size:15px}}'
+      + '#dlg-ayuda-herr{max-width:min(760px,94vw)}#dlg-ayuda-herr::backdrop{background:rgba(0,0,0,.45)}'
+      + '.ay-cuerpo{padding:4px 16px 16px}.ay-cuerpo h3{margin:14px 0 4px;font-size:15px}.ay-cuerpo p{margin:0 0 6px;line-height:1.5}'
+      + '.ay-cols{width:100%;border-collapse:collapse;font-size:13.5px}.ay-cols th,.ay-cols td{text-align:left;vertical-align:top;padding:5px 6px;border-bottom:1px solid var(--regla,#c9a78d)}'
+      + '.ay-cols td:first-child{font-weight:650;width:32%}.ay-nota,.ay-donde{font-size:12.5px;color:var(--tinta-2,#564d47)}'
+      + '.ay-col{cursor:help;text-decoration:underline dotted;text-underline-offset:3px}'
+      + '@media print{.ay-btn,#dlg-ayuda-herr{display:none!important}}';
+    document.head.appendChild(s);
+  }
+  function poner(){
+    var main = principal(); if (!main) return;
+    var l = idioma(), v = vistaActual();
+    var h1 = main.querySelector('h1');
+    if (h1 && v && !h1.querySelector('.ay-btn')) {
+      var b = document.createElement('button'); b.type = 'button'; b.className = 'ay-btn'; b.textContent = '?';
+      b.title = UI_TXT[l].boton; b.setAttribute('aria-label', UI_TXT[l].boton); b.setAttribute('aria-haspopup', 'dialog');
+      b.addEventListener('click', function(e){ e.preventDefault(); e.stopPropagation(); abrir(); });
+      h1.appendChild(b);
+    }
+    Array.prototype.forEach.call(document.querySelectorAll('#principal th, #principal dt, #principal .kpi > span, #principal .kpis > div > span, dialog:not(#dlg-ayuda-herr) th, dialog:not(#dlg-ayuda-herr) dt'), function(el){
+      var r = norm(el.textContent); if (!r) return;
+      var marca = r + '|' + l; if (el.getAttribute('data-ay') === marca) return;
+      el.setAttribute('data-ay', marca);
+      var x = explicacion(r, l);
+      if (x) { el.title = plano(x); el.classList.add('ay-col'); } else if (el.classList.contains('ay-col')) { el.removeAttribute('title'); el.classList.remove('ay-col'); }
+    });
+  }
+  function iniciar(){
+    estilos(); poner();
+    var pend = false;
+    new MutationObserver(function(){ if (pend) return; pend = true; requestAnimationFrame(function(){ pend = false; poner(); }); })
+      .observe(document.body, { childList: true, subtree: true, attributes: true, attributeFilter: ['lang'] });
+    new MutationObserver(function(){ inv = {}; poner(); }).observe(document.documentElement, { attributes: true, attributeFilter: ['lang'] });
+  }
+  window.SevengAyuda = { explicacion: explicacion, vista: vistaActual, abrir: abrir };
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', iniciar); else iniciar();
+})();
+</script>
 <script>
 'use strict';
 /* =========================================================

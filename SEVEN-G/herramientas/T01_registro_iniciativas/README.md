@@ -10,6 +10,10 @@ Herramienta de referencia de **SEVEN-G** (ola 1 · núcleo) para gestionar la ca
 
 Especificación: documento 03 (§3 y §4), documento 01 (§6–§9), documento 00 (§5.2 y §6) y documento 21 (criterios de *gate*).
 
+## Ayuda en pantalla
+
+Cada vista lleva junto a su título un botón **«?»** que explica, en el idioma activo (español o inglés), qué muestra la vista, cómo leerla, qué significa cada columna, rótulo o cifra que aparece en ella, por qué importa y dónde se explica en SEVEN-G. Además, cada encabezado de tabla, cada rótulo de ficha y cada cifra de cabecera lleva su explicación como tooltip (D111). Los textos están en `_fuentes/ayuda.json` (vistas y explicación de cada columna por su clave de traducción, en los dos idiomas); el módulo común `../_comun/ayuda.js` los muestra y `build_registro.ps1` los incrusta al generar. Una vista o columna nueva necesita su entrada en `ayuda.json` en los dos idiomas (`verificar_coherencia.ps1`, sección 24).
+
 ## Ficheros
 
 | Fichero | Contenido |
