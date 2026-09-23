@@ -448,7 +448,9 @@ function setP(o,p,v){ const ks=p.split('.'); let a=o; for(let i=0;i<ks.length-1;
 
 /* ---------------- controles ligados a una ruta del caso ---------------- */
 function pid(p){ return 'f-'+p.replace(/\./g,'-'); }
-function cNum(p, v, lbl, ph){ return '<input type="text" inputmode="decimal" autocomplete="off" class="numero" id="'+pid(p)+'" data-p="'+p+'" data-tp="num" value="'+esc(fmtIn(v))+'" placeholder="'+esc(ph??t('sd_opt'))+'"'+(lbl?' aria-label="'+esc(lbl)+'"':'')+'>'; }
+/* Campos que admiten negativos: teclado completo, porque el numérico de iOS («decimal») no tiene signo menos */
+const NUM_NEGATIVOS = ['neto_actual'];
+function cNum(p, v, lbl, ph){ return '<input type="text" inputmode="'+(NUM_NEGATIVOS.includes(p)?'text':'decimal')+'" autocomplete="off" class="numero" id="'+pid(p)+'" data-p="'+p+'" data-tp="num" value="'+esc(fmtIn(v))+'" placeholder="'+esc(ph??t('sd_opt'))+'"'+(lbl?' aria-label="'+esc(lbl)+'"':'')+'>'; }
 function cTxt(p, v, lbl){ return '<input type="text" id="'+pid(p)+'" data-p="'+p+'" data-tp="txt" value="'+esc(v??'')+'"'+(lbl?' aria-label="'+esc(lbl)+'"':'')+'>'; }
 function cArea(p, v){ return '<textarea id="'+pid(p)+'" data-p="'+p+'" data-tp="txt">'+esc(v??'')+'</textarea>'; }
 function cSel(p, v, list, lbl, vacio){ return '<select id="'+pid(p)+'" data-p="'+p+'" data-tp="sel"'+(lbl?' aria-label="'+esc(lbl)+'"':'')+'>'+opts(list, v, vacio)+'</select>'; }

@@ -938,7 +938,9 @@ function lineChart(el, labels, series){
 function renderCharts(rows){
   const pot = P(), units = [...new Set(rows.map(c=>c.compania+" · "+c.unidad))];
   const items = units.map(u=>{ const rs = rows.filter(c=>c.compania+" · "+c.unidad===u); const g = k => sum(rs.map(c=>R(c)[pot?k+"_pot":k]||0));
-    return {label:u, segs:[g("eficiencias"), g("retorno"), g("capacidad")], coste:g("recurrente"), extra:`${rs.length} casos · neto anual ${fmt(sum(rs.map(netoDe)))}`}; })
+    // con una sola compañía, la etiqueta es la unidad (el nombre de la compañía, largo, se cortaba y todas las filas parecían iguales); la compañía va en el tooltip
+    const unaCompania = new Set(rows.map(c=>c.compania)).size === 1;
+    return {label: unaCompania ? rs[0].unidad : u, segs:[g("eficiencias"), g("retorno"), g("capacidad")], coste:g("recurrente"), extra:`${unaCompania ? esc(rs[0].compania)+"<br>" : ""}${nf(rs.length)} casos · neto anual ${fmt(sum(rs.map(netoDe)))}`}; })
     .sort((a,b)=>(b.segs[0]+b.segs[1])-(a.segs[0]+a.segs[1]));
   stackCostChart(document.getElementById("c1"), items, {left:230});
   const cand = rows.filter(c=>R(c).adicional && R(c).neto_adicional > 0).sort((a,b)=>R(b).rendimiento_adicional - R(a).rendimiento_adicional).slice(0,15);
@@ -1041,7 +1043,8 @@ function renderIndice(){
     `Calculado con la calculadora T14 de SEVEN-G (documento 12) a ${fES(x.fecha_corte)} · umbrales v${esc(x.version_umbrales || "")}, iniciales y a calibrar · no depende de los filtros · el perfil no se asigna por la suma, y no es una nota ni se compara con otras compañías`,
     insight,
     `<div style="display:flex;flex-wrap:wrap;gap:6px;margin:4px 0 10px">${cond("B1","cartera gobernada")}${cond("B2","valor validado")}${cond("B3","escala en producción")}</div>` +
-    `<div class="tblx"><table class="mini"><thead><tr><th>Señal</th><th class="n">Valor medido</th><th>Puntuación (0–3)</th><th>Lectura</th><th>Tendencia</th></tr></thead><tbody>${filas}</tbody></table></div>` + alertas + mover);
+    `<div class="tblx"><table class="mini"><thead><tr><th>Señal</th><th class="n">Valor medido</th><th>Puntuación (0–3)</th><th>Lectura</th><th>Tendencia</th></tr></thead><tbody>${filas}</tbody></table></div>` +
+    `<div class="note" style="margin-top:6px">Cómo leer la tabla: <b>valor medido</b>, la cifra que da la fórmula de la señal a la fecha de corte; <b>puntuación</b>, de 0 a 3 según el tramo de los umbrales (0, no medida o exploración; 1, eficiencia; 2, intermedia; 3, transformación; en el límite, el tramo superior); <b>lectura</b>, la puntuación en palabras; <b>tendencia</b>, el cambio frente al cálculo anterior. La cuenta de cada señal, sus tramos y por qué ha salido esa puntuación están en «Cómo se calcula» de la calculadora T14, y las fórmulas en el documento 12 §4.4.</div>` + alertas + mover);
 }
 
 // ---- madurez de la compañía (bloque «madurez», opcional; documento 11 de SEVEN-G, diagnóstico T15)
