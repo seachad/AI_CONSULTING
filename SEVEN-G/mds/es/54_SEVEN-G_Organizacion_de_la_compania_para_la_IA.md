@@ -64,11 +64,11 @@ flowchart TB
   F5 -.->|"informa con independencia"| F1
   F6 -.->|"informa con independencia"| F1
   classDef dir fill:#f2dfce,stroke:#0f5499,color:#1a1817
-  classDef eje fill:#fdf3e8,stroke:#593380,color:#1a1817
+  classDef ejec fill:#fdf3e8,stroke:#593380,color:#1a1817
   classDef ctl fill:#d9ebe0,stroke:#0d7680,color:#1a1817
   classDef aud fill:#f3d3da,stroke:#990f3d,color:#1a1817
   class F1 dir
-  class F2,F3,F4 eje
+  class F2,F3,F4 ejec
   class F5 ctl
   class F6 aud
 ```
