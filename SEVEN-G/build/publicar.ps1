@@ -12,6 +12,7 @@
     SEVEN-G/html/<idioma>/...       documentos e índice de la biblioteca SEVEN-G
     SEVEN-G/pdf/<idioma>/...        PDF de SEVEN-G
 SEVEN-G/docx/<idioma>/...       plantillas editables en Word (D67)
+    SEVEN-G/xlsx/<idioma>/...       plantillas editables en Excel: registros, cuestionarios y carteras (D83)
     SEVEN-G/herramientas/...        herramientas sin servidor (T01…)
     SPHERES/html/<idioma>/...       documentos e índice de la biblioteca SPHERES
     SPHERES/pdf/<idioma>/...        PDF de SPHERES
@@ -75,7 +76,7 @@ foreach ($f in @('index.html', 'en\index.html', 'LICENSE', 'LICENCIA_CONTENIDOS.
   $o = Join-Path $raiz $f
   if (Test-Path $o) { Copiar $o $f } else { Write-Warning "No existe $f" }
 }
-$publicables = @{ 'SEVEN-G' = @('html', 'pdf', 'docx', 'herramientas'); 'SPHERES' = @('html', 'pdf'); 'SPAD' = @('html', 'pdf') }
+$publicables = @{ 'SEVEN-G' = @('html', 'pdf', 'docx', 'xlsx', 'herramientas'); 'SPHERES' = @('html', 'pdf'); 'SPAD' = @('html', 'pdf') }
 foreach ($metodologia in $publicables.Keys) {
   $carpetas = $publicables[$metodologia]; if ($ConFuentes) { $carpetas += 'mds' }
   foreach ($c in $carpetas) {
