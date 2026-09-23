@@ -130,12 +130,34 @@ label{font-weight:600;font-size:13px;color:var(--tinta-2)}
 .tend{font-weight:700;font-size:13px}
 .tend.sube{color:var(--teal)}.tend.baja{color:var(--claret)}.tend.igual{color:var(--tinta-3)}
 .mover li{margin:0 0 6px}
+/* Explicación de las señales */
+.leyenda{border:1px solid var(--regla);background:var(--tarjeta);padding:6px 12px;margin:4px 0 10px;font-size:13.5px}
+.leyenda summary{cursor:pointer;font-weight:700;padding:3px 0}
+.leyenda dl{display:grid;grid-template-columns:max-content 1fr;gap:4px 14px;margin:6px 0}
+.leyenda dt{font-weight:700}.leyenda dd{margin:0;color:var(--tinta-2)}
+@media (max-width:760px){.leyenda dl{grid-template-columns:1fr}.leyenda dd{margin-bottom:6px}}
+.tabla.senales td:nth-child(2){min-width:260px}
+details.calc{margin-top:4px;font-size:13px}
+details.calc summary{cursor:pointer;color:var(--oxford);font-weight:600;font-size:12.5px}
+.calc-in{border-left:3px solid var(--oxford);background:var(--info-bg);padding:6px 10px;margin:4px 0 2px}
+.calc-in p{margin:0 0 6px}
+.tramos{list-style:none;padding:0;margin:0 0 6px}
+.tramos li{padding:2px 6px;color:var(--tinta-2)}
+.tramos li b{display:inline-block;width:1.2em}
+.tramos li.act{background:var(--tarjeta);color:var(--negro);font-weight:600;outline:1px solid var(--oxford)}
+.calc-pie{font-size:12.5px;color:var(--tinta-3)}
+@media print{details.calc{display:none}}
 /* Entradas */
 .entradas details{border:1px solid var(--regla);background:var(--tarjeta);padding:6px 12px;margin:8px 0}
 .entradas summary{cursor:pointer;font-weight:700;padding:4px 0}
 .entradas summary .et{margin-left:6px}
 .origen{font-size:11.5px;font-weight:600;color:var(--tinta-3)}
 .origen.t01{color:var(--teal)}
+/* Cajas alineadas en cada fila aunque la etiqueta ocupe una o dos líneas */
+.entradas .rejilla .campo label{flex:1 0 auto;display:flex;align-items:flex-end}
+.entradas .rejilla .campo .origen{min-height:1.35em}
+.num-in{text-align:right;font-variant-numeric:tabular-nums}
+.num-in[aria-invalid="true"]{border-color:var(--claret);outline:1px solid var(--claret)}
 .cab-calc{display:flex;flex-wrap:wrap;gap:8px 12px;align-items:end;margin:6px 0 4px}
 .cab-calc .campo{min-width:170px}
 dialog{border:0;border-top:4px solid var(--claret);background:var(--papel);color:var(--tinta);padding:0;width:min(760px,calc(100vw - 16px));max-height:calc(100vh - 24px)}
@@ -441,7 +463,13 @@ es:{
  declaracion:'Declaración de transformación', d_si:'Sí', d_no:'No',
  p_curso:'Transformación en curso', p_escala:'Eficiencia a escala', p_tactica:'Eficiencia táctica', p_exploracion:'Exploración dispersa', p_declarada:'Transformación declarada, no evidenciada',
  base:'Condiciones de base', b1:'B1 · Cartera gobernada', b2:'B2 · Proporción de valor validado', b3:'B3 · Escala en producción', cumple:'Cumple', no_cumple:'No cumple',
- senales:'Señales', senal:'Señal', valor_medido:'Valor medido', puntuacion:'Puntuación', tendencia:'Tendencia', lectura:'Lectura',
+ senales:'Señales', senal:'Señal', valor_medido:'Valor medido', puntuacion:'Puntuación (0–3)', tendencia:'Tendencia', lectura:'Lectura',
+ col_tit:'Cómo leer esta tabla', col_doc:'Documento 12 §4.4 · Las ocho señales, sus fórmulas y umbrales ↗',
+ col_senal:'Qué aspecto de la compañía se observa. Son las ocho señales del documento 12; cada una responde a una pregunta sobre si la IA transforma la compañía o solo la hace más eficiente.',
+ col_valor:'La cifra que da la fórmula de la señal con los datos de la fecha de corte, con su numerador y denominador. «Cómo se calcula», en cada fila, muestra la cuenta completa, los tramos y por qué ha salido esa puntuación.',
+ col_punt:'De 0 a 3, según el tramo en que cae el valor con los umbrales de la versión usada (v{v}): 0, sin dato o exploración; 1, eficiencia; 2, intermedia; 3, transformación. Un valor en el límite puntúa en el tramo superior y un 0 % medido puntúa 1, no 0.',
+ col_lectura:'La puntuación dicha con palabras. No es una nota ni se compara con otras compañías: el perfil no se asigna por la suma, sino con las reglas del documento 12 §5.',
+ col_tend:'Cambio de puntuación frente al cálculo anterior, cuya fecha de corte va debajo: ▲ sube, ▼ baja, = igual; «—» si no hay cálculo anterior.',
  s1:'1 · Composición de la inversión', s2:'2 · Composición del valor', s3:'3 · Materialización', s4:'4 · Profundidad del cambio', s5:'5 · Modelo operativo', s6:'6 · Ingresos habilitados por IA', s7:'7 · Paso a producción', s8:'8 · Decisión del consejo',
  l0:'Sin dato o exploración', l1:'Lectura de eficiencia', l2:'Lectura intermedia', l3:'Lectura de transformación', sin_dato:'Sin dato', exploracion:'Exploración',
  alertas:'Alertas complementarias', sin_alertas:'No se activa ninguna alerta.',
@@ -508,7 +536,13 @@ en:{
  declaracion:'Transformation declaration', d_si:'Yes', d_no:'No',
  p_curso:'Transformation under way', p_escala:'Efficiency at scale', p_tactica:'Tactical efficiency', p_exploracion:'Scattered exploration', p_declarada:'Declared but unevidenced transformation',
  base:'Baseline conditions', b1:'B1 · Governed portfolio', b2:'B2 · Proportion of validated value', b3:'B3 · Scale in production', cumple:'Met', no_cumple:'Not met',
- senales:'Signals', senal:'Signal', valor_medido:'Measured value', puntuacion:'Score', tendencia:'Trend', lectura:'Reading',
+ senales:'Signals', senal:'Signal', valor_medido:'Measured value', puntuacion:'Score (0–3)', tendencia:'Trend', lectura:'Reading',
+ col_tit:'How to read this table', col_doc:'Document 12 §4.4 · The eight signals, their formulas and thresholds ↗',
+ col_senal:'Which aspect of the company is observed. These are the eight signals of document 12; each answers a question about whether AI is transforming the company or only making it more efficient.',
+ col_valor:'The figure given by the signal formula with the data at the cut-off date, with its numerator and denominator. «How it is calculated», in each row, shows the full calculation, the bands and why that score came out.',
+ col_punt:'From 0 to 3, depending on the band the value falls into with the thresholds of the version used (v{v}): 0, no data or exploration; 1, efficiency; 2, intermediate; 3, transformation. A value on the boundary scores in the higher band and a measured 0% scores 1, not 0.',
+ col_lectura:'The score in words. It is not a grade and is not compared with other companies: the profile is not assigned by the sum but by the rules of document 12 §5.',
+ col_tend:'Change in score against the previous calculation, whose cut-off date is shown below: ▲ up, ▼ down, = unchanged; «—» if there is no previous calculation.',
  s1:'1 · Investment mix', s2:'2 · Value mix', s3:'3 · Materialisation', s4:'4 · Depth of change', s5:'5 · Operating model', s6:'6 · AI-enabled revenue', s7:'7 · Progression to production', s8:'8 · Board decision',
  l0:'No data or exploration', l1:'Efficiency reading', l2:'Intermediate reading', l3:'Transformation reading', sin_dato:'No data', exploracion:'Exploration',
  alertas:'Complementary alerts', sin_alertas:'No alert is triggered.',
@@ -596,7 +630,17 @@ function cargarDemo(){ return JSON.parse(DEMO_TXT); }
 function valido(x){ return x && typeof x==='object' && Array.isArray(x.umbrales) && Array.isArray(x.calculos) && x.umbrales.length; }
 
 /* ---------------- formato ---------------- */
-function nf(x, dec){ return new Intl.NumberFormat(lang==='en'?'en-GB':'es-ES',{maximumFractionDigits:dec??0, minimumFractionDigits:dec??0}).format(x); }
+function nf(x, dec){ return new Intl.NumberFormat(lang==='en'?'en-GB':'es-ES',{maximumFractionDigits:dec??0, minimumFractionDigits:dec??0, useGrouping:'always'}).format(x); }
+/* Campos numéricos: se muestran con separador de miles y se leen en ES (1.234,5) o EN (1,234.5); también sin separadores */
+function fmtIn(v){ return v==null||v===''||!isFinite(v) ? '' : new Intl.NumberFormat(lang==='en'?'en-GB':'es-ES',{maximumFractionDigits:6, useGrouping:'always'}).format(v); }
+function parseNum(txt){
+  let s = String(txt).replace(/[\s\u00a0\u202f€%h]/g,''); if(s==='') return null;
+  const mil = lang==='en' ? ',' : '.', dec = lang==='en' ? '.' : ',';
+  const agrupado = new RegExp('^-?\\d{1,3}(\\'+mil+'\\d{3})+(\\'+dec+'\\d+)?$');
+  if(agrupado.test(s)) s = s.split(mil).join('');
+  else if(s.includes(mil) && !s.includes(dec)) s = s.replace(mil, dec);   // «2.5» en ES o «2,5» en EN: decimal
+  const v = Number(s.replace(dec,'.')); return isFinite(v) ? v : NaN;
+}
 function pct(x, dec){ return x==null||!isFinite(x) ? t('sin_dato') : nf(x, dec??1)+(lang==='en'?'%':' %'); }
 function eur(x){ if(x==null||!isFinite(x)) return t('sin_dato'); const a=Math.abs(x); if(a>=1e6) return nf(x/1e6,2)+' M€'; if(a>=1e3) return nf(x/1e3,0)+' k€'; return nf(x,0)+' €'; }
 function fF(s){ if(!s) return ''; const [y,m,d]=s.split('-'); return lang==='en' ? d+'/'+m+'/'+y : d+'-'+m+'-'+y; }
@@ -621,54 +665,54 @@ function calcular(E, P){
     else if(tot===0) S(1,{punt:0, texto:t('exploracion')});
     else { const at=ratio((n(e.coste_aumentar)||0)+(n(e.coste_transformar)||0), tot), tr=ratio(n(e.coste_transformar)||0, tot), sc=ratio(n(e.coste_sin_clasificar)||0, tot);
       let pu; if(sc>p.sin_clasificar_max) pu=0; else if(at>=p.t3 && tr>=p.transformar_min) pu=3; else if(at>=p.t2) pu=2; else pu=1;
-      S(1,{punt:pu, valor:at, texto:pct(at)+(lang==='en'?' · Transform ':' · Transformar ')+pct(tr)+(sc>0?' · '+(lang==='en'?'unclassified ':'sin clasificar ')+pct(sc):''), tr}); } }
+      S(1,{punt:pu, valor:at, texto:(lang==='en'?pct(at)+' in Augment + Transform · Transform alone: '+pct(tr):pct(at)+' en Aumentar + Transformar · Transformar solo: '+pct(tr))+(sc>0?' · '+(lang==='en'?'unclassified: ':'sin clasificar: ')+pct(sc):''), tr}); } }
   // Señal 2 · Composición del valor
   { const e=E.s2||{}, p=P.s2, ef=n(e.eficiencias_validadas), re=n(e.retorno_validado);
     if(ef==null && re==null) S(2,{sd:true});
     else { const tot=(ef||0)+(re||0); if(tot===0) S(2,{punt:0, texto:t('exploracion')});
       else { const v=(re||0)/tot*100, ni=n(e.iniciativas_con_retorno)||0; let pu; if(v>=p.t3 && ni>=p.iniciativas_min) pu=3; else if(v>=p.t2) pu=2; else pu=1;
-        S(2,{punt:pu, valor:v, texto:pct(v)+' · '+eur(re||0)+' / '+eur(tot)}); } } }
+        S(2,{punt:pu, valor:v, texto:(lang==='en'?pct(v)+' of validated value is return · '+eur(re||0)+' of '+eur(tot):pct(v)+' del valor validado es retorno · '+eur(re||0)+' de '+eur(tot))}); } } }
   // Señal 3 · Materialización
   { const e=E.s3||{}, p=P.s3, lib=n(e.horas_liberadas);
     if(lib==null || lib===0) S(3,{sd:true});
     else { const ma=n(e.horas_materializadas)||0, re=n(e.horas_reasignadas)||0, conv=ma+re, v=conv/lib*100; let pu;
       if(v>=p.t3 && conv>0 && re/conv*100>=p.reasignada_min) pu=3; else if(v>=p.t2) pu=2; else pu=1;
-      S(3,{punt:pu, valor:v, texto:pct(v)+' · '+nf(conv)+' h / '+nf(lib)+' h'}); } }
+      S(3,{punt:pu, valor:v, texto:(lang==='en'?pct(v)+' converted · '+nf(conv)+' h of '+nf(lib)+' h released':pct(v)+' convertida · '+nf(conv)+' h de '+nf(lib)+' h liberadas')}); } }
   // Señal 4 · Profundidad del cambio
   { const e=E.s4||{}, p=P.s4, k=n(e.itp2_verificada);
     if(prod==null || k==null) S(4,{sd:true});
     else if(prod===0) S(4,{punt:0, texto:t('exploracion')});
     else if((n(e.sin_verificacion)||0)/prod*100>p.sin_verificacion_max) S(4,{sd:true, texto:t('sin_dato')+' (IT-P2 '+pct((n(e.sin_verificacion)||0)/prod*100,0)+')'});
-    else { const v=k/prod*100; S(4,{punt: v>=p.t3?3:(v>=p.t2?2:1), valor:v, texto:pct(v)+' · '+k+' / '+prod}); } }
+    else { const v=k/prod*100; S(4,{punt: v>=p.t3?3:(v>=p.t2?2:1), valor:v, texto:(lang==='en'?pct(v)+' · '+nf(k)+' of '+nf(prod)+' in production with IT-P2 verified':pct(v)+' · '+nf(k)+' de '+nf(prod)+' en producción con IT-P2 verificada')}); } }
   // Señal 5 · Modelo operativo
   { const e=E.s5||{}, p=P.s5, k=n(e.itp3_supervision);
     if(prod==null || k==null) S(5,{sd:true});
     else if(prod===0) S(5,{punt:0, texto:t('exploracion')});
-    else { const v=k/prod*100, u=n(e.unidades_completas)||0; S(5,{punt: (v>=p.t3 && u>=p.unidades_min)?3:(v>=p.t2?2:1), valor:v, texto:pct(v)+' · '+k+' / '+prod}); } }
+    else { const v=k/prod*100, u=n(e.unidades_completas)||0; S(5,{punt: (v>=p.t3 && u>=p.unidades_min)?3:(v>=p.t2?2:1), valor:v, texto:(lang==='en'?pct(v)+' · '+nf(k)+' of '+nf(prod)+' in production with IT-P3 and oversight verified':pct(v)+' · '+nf(k)+' de '+nf(prod)+' en producción con IT-P3 y supervisión verificadas')}); } }
   // Señal 6 · Ingresos habilitados por IA
   { const e=E.s6||{}, p=P.s6, h=n(e.ingresos_habilitados), tot=n(e.ingresos_totales);
     if(h==null || !tot) S(6,{sd:true});
-    else { const v=h/tot*100; S(6,{punt: v>=p.t3?3:(v>=p.t2?2:1), valor:v, texto:pct(v,2)+' · '+eur(h)}); } }
+    else { const v=h/tot*100; S(6,{punt: v>=p.t3?3:(v>=p.t2?2:1), valor:v, texto:(lang==='en'?pct(v,2)+' of revenue · '+eur(h)+' AI-enabled':pct(v,2)+' de los ingresos · '+eur(h)+' habilitados por IA')}); } }
   // Señal 7 · Paso a producción
   { const e=E.s7||{}, p=P.s7;
     if(e.hay_gates==null) S(7,{sd:true});
     else if(e.hay_gates===false) S(7,{punt:0, texto:t('exploracion')});
     else { const sup=n(e.at_superaron_g2), res=n(e.at_con_resultado)||0, pr=n(e.at_en_produccion)||0, ores=n(e.opt_con_resultado)||0, opr=n(e.opt_en_produccion)||0;
-      if(sup===0) S(7,{punt:1, texto:'0 G2'});
+      if(sup===0) S(7,{punt:1, texto:lang==='en'?'No bet passed G2':'Ninguna apuesta supera G2'});
       else if(sup==null && res===0) S(7,{sd:true});
       else { let cr=null, tr=null; const tasa = res>0 ? pr/res : null;
         if(tasa!=null){ if(ores>0 && opr>0) cr = tasa/(opr/ores); else cr = tasa/p.tasa_referencia; }
         const ma=n(e.mediana_at), mo=n(e.mediana_opt), pl=n(e.plazos_ref);
         if(ma!=null){ if(ores>0 && mo) tr = ma/mo; else if(pl) tr = ma/pl; }
         let pu; if(cr==null) pu=2; else if(cr<p.cr2) pu=1; else if(cr>=p.cr3 && tr!=null && tr<=p.tr3_max && res>=p.resultado_min) pu=3; else pu=2;
-        S(7,{punt:pu, valor:cr, texto:t('cr')+' '+(cr==null?t('sin_dato'):nf(cr,2))+' · '+t('tr')+' '+(tr==null?t('sin_dato'):nf(tr,1)), cr, tr}); } } }
+        S(7,{punt:pu, valor:cr, texto:(lang==='en'?'Relative conversion (CR) ':'Conversión relativa (CR) ')+(cr==null?t('sin_dato'):nf(cr,2))+' · '+(lang==='en'?'relative time (TR) ':'tiempo relativo (TR) ')+(tr==null?t('sin_dato'):nf(tr,1)), cr, tr}); } } }
   // Señal 8 · Decisión del consejo
   { const e=E.s8||{}, p=P.s8;
     if(e.tesis_aprobada==null) S(8,{sd:true});
     else if(e.tesis_aprobada===false) S(8,{punt:0, texto:lang==='en'?'No thesis':'Sin tesis'});
     else { const a=n(e.apuestas_transformar)||0, rv=n(e.revisiones)||0, de=n(e.decisiones_etapa)||0; let pu;
       if(a===0) pu=1; else if(e.con_limite_etapa===true && rv>=p.revisiones_min && de>=p.decisiones_min) pu=3; else pu=2;
-      S(8,{punt:pu, valor:a, texto:(lang==='en'?'Bets ':'Apuestas ')+a+' · '+(lang==='en'?'reviews ':'revisiones ')+rv+' · '+(lang==='en'?'stage decisions ':'decisiones de etapa ')+de}); } }
+      S(8,{punt:pu, valor:a, texto:(lang==='en'?'Transform bets ':'Apuestas de Transformar ')+nf(a)+' · '+(lang==='en'?'reviews ':'revisiones ')+nf(rv)+' · '+(lang==='en'?'stage decisions ':'decisiones de etapa ')+nf(de)}); } }
 
   const sc = i => r.s[i-1].punt;
   r.suma = r.s.reduce((a,x)=>a+x.punt,0);
@@ -865,6 +909,125 @@ function vistaCalculo(){
   h += entradasHTML(c);
   return h;
 }
+/* ---------------- explicación de cada señal (documento 12 §4.4) ----------------
+   Para cada señal: qué mide, la fórmula, la cuenta con los datos de este cálculo, los tramos con los umbrales de la versión usada
+   y por qué ha salido esa puntuación. Solo explica: el cálculo es el de calcular(). */
+const CALC_ABIERTO = new Set();   // qué explicaciones están abiertas, para no cerrarlas al recalcular mientras se editan los datos
+document.addEventListener('toggle', ev => { const d = ev.target; if(d.matches && d.matches('details.calc')) { const k = Number(d.dataset.calc); d.open ? CALC_ABIERTO.add(k) : CALC_ABIERTO.delete(k); } }, true);
+const ANCLA_SENAL = {
+  es:['senal-1-composicion-de-la-inversion','senal-2-composicion-del-valor','senal-3-materializacion','senal-4-profundidad-del-cambio','senal-5-modelo-operativo','senal-6-ingresos-habilitados-por-ia','senal-7-paso-a-produccion','senal-8-decision-del-consejo'],
+  en:['signal-1-investment-mix','signal-2-value-mix','signal-3-materialisation','signal-4-depth-of-change','signal-5-operating-model','signal-6-ai-enabled-revenue','signal-7-progression-to-production','signal-8-board-decision']
+};
+function explicarSenal(s, E, P){
+  const L = (es, en) => lang==='en' ? en : es;
+  const pp = x => nf(x, Number.isInteger(Number(x)) ? 0 : 1)+(lang==='en'?'%':' %');       // umbral en %
+  const hh = x => nf(x)+' h', sn = b => b ? L('sí','yes') : L('no','no');
+  const b = E.base||{}, prod = n(b.en_produccion), nn = s.n;
+  let mide='', formula='', cuenta='', tramos=[], porque='';
+  if(nn===1){ const e=E.s1||{}, p=P.s1, tot=n(e.coste_total), au=n(e.coste_aumentar)||0, tr=n(e.coste_transformar)||0, sc=n(e.coste_sin_clasificar)||0;
+    mide = L('Qué parte del coste de la cartera de IA (construcción ejecutada más coste recurrente, últimos 12 meses) va a apuestas de Aumentar y Transformar, frente a Optimizar.','What share of the AI portfolio cost (executed build plus recurring cost, last 12 months) goes to Augment and Transform bets, as opposed to Optimise.');
+    formula = L('(coste en Aumentar + coste en Transformar) ÷ coste total × 100. Aparte se informa el peso de Transformar solo: coste en Transformar ÷ coste total × 100.','(cost in Augment + cost in Transform) ÷ total cost × 100. The weight of Transform alone is reported separately: cost in Transform ÷ total cost × 100.');
+    if(tot) cuenta = '('+eur(au)+' + '+eur(tr)+') ÷ '+eur(tot)+' = '+pct((au+tr)/tot*100)+'. '+L('Transformar solo: ','Transform alone: ')+eur(tr)+' ÷ '+eur(tot)+' = '+pct(tr/tot*100)+'.'+(sc?' '+L('Sin clasificar: ','Unclassified: ')+eur(sc)+' ÷ '+eur(tot)+' = '+pct(sc/tot*100)+'.':'');
+    tramos = [L('Sin cartera, o más del '+pp(p.sin_clasificar_max)+' del coste sin clasificar','No portfolio, or more than '+pp(p.sin_clasificar_max)+' of the cost unclassified'), L('Menos del '+pp(p.t2),'Below '+pp(p.t2)), L('Del '+pp(p.t2)+' al '+pp(p.t3)+', o '+pp(p.t3)+' o más con Transformar por debajo del '+pp(p.transformar_min),'From '+pp(p.t2)+' to '+pp(p.t3)+', or '+pp(p.t3)+' or more with Transform below '+pp(p.transformar_min)), L(pp(p.t3)+' o más, con Transformar en el '+pp(p.transformar_min)+' o más',pp(p.t3)+' or more, with Transform at '+pp(p.transformar_min)+' or more')];
+    const at = tot ? (au+tr)/tot*100 : null, trp = tot ? tr/tot*100 : null, scp = tot ? sc/tot*100 : null;
+    if(tot==null) porque = L('Falta el coste total de la cartera.','The total portfolio cost is missing.');
+    else if(tot===0) porque = L('No hay coste de cartera registrado: situación de exploración.','No portfolio cost is recorded: exploration.');
+    else if(scp>p.sin_clasificar_max) porque = L('El '+pct(scp)+' del coste está sin clasificar (iniciativas con solo ambición propuesta), por encima del '+pp(p.sin_clasificar_max)+': la señal no se puede leer.','Unclassified cost is '+pct(scp)+' (initiatives with only a proposed ambition), above '+pp(p.sin_clasificar_max)+': the signal cannot be read.');
+    else if(s.punt===3) porque = L('Aumentar y Transformar suman el '+pct(at)+' (umbral: '+pp(p.t3)+') y Transformar solo el '+pct(trp)+' (umbral: '+pp(p.transformar_min)+').','Augment and Transform add up to '+pct(at)+' (threshold: '+pp(p.t3)+') and Transform alone to '+pct(trp)+' (threshold: '+pp(p.transformar_min)+').');
+    else if(s.punt===2 && at>=p.t3) porque = L('Aumentar y Transformar suman el '+pct(at)+' del coste, por encima del '+pp(p.t3)+', pero Transformar solo es el '+pct(trp)+', por debajo del '+pp(p.transformar_min)+' que exige el 3: casi toda la apuesta es Aumentar (mejorar lo que ya se hace), no Transformar.','Augment and Transform add up to '+pct(at)+' of the cost, above '+pp(p.t3)+', but Transform alone is '+pct(trp)+', below the '+pp(p.transformar_min)+' required for a 3: almost all of the bet is Augment (improving what is already done), not Transform.');
+    else if(s.punt===2) porque = L('Aumentar y Transformar suman el '+pct(at)+' del coste: entre el '+pp(p.t2)+' y el '+pp(p.t3)+'.','Augment and Transform add up to '+pct(at)+' of the cost: between '+pp(p.t2)+' and '+pp(p.t3)+'.');
+    else porque = L('Aumentar y Transformar suman solo el '+pct(at)+' del coste, por debajo del '+pp(p.t2)+': la mayor parte se gasta en Optimizar (eficiencia).','Augment and Transform add up to only '+pct(at)+' of the cost, below '+pp(p.t2)+': most of the spend goes to Optimise (efficiency).');
+  }
+  else if(nn===2){ const e=E.s2||{}, p=P.s2, ef=n(e.eficiencias_validadas), re=n(e.retorno_validado), ni=n(e.iniciativas_con_retorno)||0, tot=(ef||0)+(re||0), v = tot ? (re||0)/tot*100 : null;
+    mide = L('De dónde viene el valor validado: retorno (ingresos, margen o retención nuevos) frente a eficiencias (ahorro). La capacidad liberada no suma.','Where the validated value comes from: return (new revenue, margin or retention) as opposed to efficiencies (savings). Released capacity does not count.');
+    formula = L('retorno validado ÷ (eficiencias validadas materializadas + retorno validado) × 100.','validated return ÷ (validated materialised efficiencies + validated return) × 100.');
+    if(ef!=null || re!=null) cuenta = eur(re||0)+' ÷ ('+eur(ef||0)+' + '+eur(re||0)+') = '+(tot?pct(v):t('sin_dato'))+'. '+L('Iniciativas que aportan retorno validado: ','Initiatives contributing validated return: ')+nf(ni)+'.';
+    tramos = [L('No hay valor validado','No validated value'), L('Menos del '+pp(p.t2),'Below '+pp(p.t2)), L('Del '+pp(p.t2)+' al '+pp(p.t3)+', o más con menos de '+nf(p.iniciativas_min)+' iniciativas','From '+pp(p.t2)+' to '+pp(p.t3)+', or more with fewer than '+nf(p.iniciativas_min)+' initiatives'), L(pp(p.t3)+' o más, de al menos '+nf(p.iniciativas_min)+' iniciativas',pp(p.t3)+' or more, from at least '+nf(p.iniciativas_min)+' initiatives')];
+    if(ef==null && re==null) porque = L('No hay importes validados de eficiencias ni de retorno.','There are no validated amounts of efficiencies or return.');
+    else if(!tot) porque = L('El valor validado es 0: exploración.','Validated value is 0: exploration.');
+    else if(s.punt===3) porque = L('El retorno es el '+pct(v)+' del valor validado y procede de '+nf(ni)+' iniciativas.','Return is '+pct(v)+' of validated value and comes from '+nf(ni)+' initiatives.');
+    else if(s.punt===2 && v>=p.t3) porque = L('El retorno es el '+pct(v)+' del valor validado, pero procede de '+nf(ni)+' iniciativa(s); el 3 exige al menos '+nf(p.iniciativas_min)+'.','Return is '+pct(v)+' of validated value, but comes from '+nf(ni)+' initiative(s); a 3 requires at least '+nf(p.iniciativas_min)+'.');
+    else if(s.punt===2) porque = L('El retorno es el '+pct(v)+' del valor validado: entre el '+pp(p.t2)+' y el '+pp(p.t3)+'.','Return is '+pct(v)+' of validated value: between '+pp(p.t2)+' and '+pp(p.t3)+'.');
+    else porque = L('El retorno es solo el '+pct(v)+' del valor validado, por debajo del '+pp(p.t2)+': el valor que se puede demostrar viene casi todo de eficiencias (ahorro).','Return is only '+pct(v)+' of validated value, below '+pp(p.t2)+': the value that can be proven comes almost entirely from efficiencies (savings).');
+  }
+  else if(nn===3){ const e=E.s3||{}, p=P.s3, lib=n(e.horas_liberadas), ma=n(e.horas_materializadas)||0, re=n(e.horas_reasignadas)||0, conv=ma+re, v = lib ? conv/lib*100 : null, ra = conv ? re/conv*100 : null;
+    mide = L('Cuánta de la capacidad liberada por la IA (horas) se ha convertido de verdad: en menor coste real o reasignada a otra actividad con destino definido.','How much of the capacity released by AI (hours) has really been converted: into lower actual cost or reassigned to another activity with a defined destination.');
+    formula = L('(horas materializadas + horas reasignadas) ÷ horas de capacidad liberada medidas × 100. Aparte, la proporción reasignada: horas reasignadas ÷ horas convertidas.','(materialised hours + reassigned hours) ÷ measured released capacity hours × 100. Separately, the reassigned share: reassigned hours ÷ converted hours.');
+    if(lib) cuenta = '('+hh(ma)+' + '+hh(re)+') ÷ '+hh(lib)+' = '+pct(v)+'. '+L('Reasignadas sobre convertidas: ','Reassigned over converted: ')+(conv?hh(re)+' ÷ '+hh(conv)+' = '+pct(ra):t('sin_dato'))+'.';
+    tramos = [L('No se mide la capacidad liberada','Released capacity is not measured'), L('Menos del '+pp(p.t2),'Below '+pp(p.t2)), L(pp(p.t2)+' o más, sin cumplir el 3',pp(p.t2)+' or more, without meeting 3'), L(pp(p.t3)+' o más, con las reasignadas en el '+pp(p.reasignada_min)+' o más de las convertidas',pp(p.t3)+' or more, with reassigned hours at '+pp(p.reasignada_min)+' or more of converted')];
+    if(!lib) porque = L('No se miden las horas de capacidad liberada.','Released capacity hours are not measured.');
+    else if(s.punt===3) porque = L('Se ha convertido el '+pct(v)+' y las reasignadas son el '+pct(ra)+' de lo convertido.','Converted '+pct(v)+' and reassigned hours are '+pct(ra)+' of converted.');
+    else if(s.punt===2 && v>=p.t3) porque = L('Se ha convertido el '+pct(v)+', pero las reasignadas son el '+pct(ra)+' de lo convertido, por debajo del '+pp(p.reasignada_min)+' que exige el 3: la capacidad se ahorra más de lo que se dedica a actividad nueva.','Converted '+pct(v)+', but reassigned hours are '+pct(ra)+' of converted, below the '+pp(p.reasignada_min)+' required for a 3: capacity is saved more than it is put into new activity.');
+    else if(s.punt===2) porque = L('Se ha convertido el '+pct(v)+' de la capacidad liberada: '+pp(p.t2)+' o más, por debajo del '+pp(p.t3)+'.','Converted '+pct(v)+' of released capacity: '+pp(p.t2)+' or more, below '+pp(p.t3)+'.');
+    else porque = L('Solo se ha convertido el '+pct(v)+', por debajo del '+pp(p.t2)+': la mayor parte de las horas liberadas no se traduce en menor coste ni en otra actividad.','Only '+pct(v)+' has been converted, below '+pp(p.t2)+': most released hours turn into neither lower cost nor other activity.');
+  }
+  else if(nn===4 || nn===5){ const e = nn===4 ? (E.s4||{}) : (E.s5||{}), p = nn===4 ? P.s4 : P.s5, k = n(nn===4 ? e.itp2_verificada : e.itp3_supervision), sv = n(e.sin_verificacion)||0, u = n(e.unidades_completas)||0, v = (prod && k!=null) ? k/prod*100 : null;
+    mide = nn===4 ? L('Qué parte de las iniciativas en producción rediseña un proceso de extremo a extremo (IT-P2 = sí, verificada en G5 o G7), frente a automatizar tareas sueltas.','What share of the initiatives in production redesigns an end-to-end process (IT-P2 = yes, verified at G5 or G7), as opposed to automating individual tasks.')
+                  : L('Qué parte de las iniciativas en producción cambia roles, estructura o reparto de decisiones entre personas y sistemas (IT-P3 = sí), con supervisión humana verificada (P17).','What share of the initiatives in production changes roles, structure or the split of decisions between people and systems (IT-P3 = yes), with verified human oversight (P17).');
+    formula = nn===4 ? L('iniciativas en producción con IT-P2 = sí verificada ÷ iniciativas en producción × 100.','initiatives in production with IT-P2 = yes verified ÷ initiatives in production × 100.')
+                     : L('iniciativas en producción con IT-P3 = sí y supervisión humana verificadas ÷ iniciativas en producción × 100.','initiatives in production with IT-P3 = yes and human oversight verified ÷ initiatives in production × 100.');
+    if(prod && k!=null) cuenta = nf(k)+' ÷ '+nf(prod)+' '+L('en producción','in production')+' = '+pct(v)+'.'+(nn===4 ? ' '+L('Sin verificación de IT-P2: ','Without IT-P2 verification: ')+nf(sv)+' ('+pct(sv/prod*100,0)+').' : ' '+L('Unidades organizativas completas rediseñadas: ','Entire organisational units redesigned: ')+nf(u)+'.');
+    tramos = nn===4 ? [L('Sin producción, o sin verificar IT-P2 en más del '+pp(p.sin_verificacion_max),'No production, or IT-P2 unverified in more than '+pp(p.sin_verificacion_max)), L('Menos del '+pp(p.t2),'Below '+pp(p.t2)), L('Del '+pp(p.t2)+' al '+pp(p.t3),'From '+pp(p.t2)+' to '+pp(p.t3)), L(pp(p.t3)+' o más',pp(p.t3)+' or more')]
+                    : [L('Sin producción','No production'), L('Menos del '+pp(p.t2),'Below '+pp(p.t2)), L('Del '+pp(p.t2)+' al '+pp(p.t3)+', o más sin ninguna unidad completa rediseñada','From '+pp(p.t2)+' to '+pp(p.t3)+', or more without any entire unit redesigned'), L(pp(p.t3)+' o más, con al menos '+nf(p.unidades_min)+' unidad completa rediseñada',pp(p.t3)+' or more, with at least '+nf(p.unidades_min)+' entire unit redesigned')];
+    if(prod==null || k==null) porque = L('Falta el número de iniciativas en producción o el de las que cumplen la condición.','The number of initiatives in production, or of those meeting the condition, is missing.');
+    else if(prod===0) porque = L('No hay iniciativas en producción: exploración.','There are no initiatives in production: exploration.');
+    else if(nn===4 && sv/prod*100>p.sin_verificacion_max) porque = L('Falta la verificación de IT-P2 en el '+pct(sv/prod*100,0)+' de las iniciativas en producción (máximo '+pp(p.sin_verificacion_max)+'): no se puede leer.','IT-P2 verification is missing in '+pct(sv/prod*100,0)+' of the initiatives in production (maximum '+pp(p.sin_verificacion_max)+'): the signal cannot be read.');
+    else if(s.punt===3) porque = L('El '+pct(v)+' de las iniciativas en producción cumple la condición (umbral: '+pp(p.t3)+').',pct(v)+' of the initiatives in production meet the condition (threshold: '+pp(p.t3)+').');
+    else if(s.punt===2 && nn===5 && v>=p.t3) porque = L('El '+pct(v)+' cumple la condición, pero no hay ninguna unidad organizativa completa rediseñada, que exige el 3.',pct(v)+' meet the condition, but no entire organisational unit has been redesigned, which a 3 requires.');
+    else if(s.punt===2) porque = L('El '+pct(v)+' de las iniciativas en producción ('+nf(k)+' de '+nf(prod)+') cumple la condición: entre el '+pp(p.t2)+' y el '+pp(p.t3)+'.',pct(v)+' of the initiatives in production ('+nf(k)+' of '+nf(prod)+') meet the condition: between '+pp(p.t2)+' and '+pp(p.t3)+'.');
+    else porque = L('Solo el '+pct(v)+' de las iniciativas en producción cumple la condición, por debajo del '+pp(p.t2)+'.','Only '+pct(v)+' of the initiatives in production meet the condition, below '+pp(p.t2)+'.');
+  }
+  else if(nn===6){ const e=E.s6||{}, p=P.s6, h=n(e.ingresos_habilitados), tot=n(e.ingresos_totales), v = (h!=null && tot) ? h/tot*100 : null;
+    mide = L('Peso en los ingresos de la compañía de productos, servicios o canales que no existirían sin IA (prueba contrafactual). Mejorar la conversión de la oferta existente no cuenta aquí (cuenta en la señal 2).','Weight in company revenue of products, services or channels that would not exist without AI (counterfactual test). Improving conversion of the existing offering does not count here (it counts in signal 2).');
+    formula = L('ingresos validados de oferta habilitada por IA ÷ ingresos totales de la compañía en la ventana × 100.','validated revenue from AI-enabled offering ÷ total company revenue in the window × 100.');
+    if(v!=null) cuenta = eur(h)+' ÷ '+eur(tot)+' = '+pct(v,2)+'.';
+    tramos = [L('No se mide','Not measured'), L('Menos del '+pp(p.t2),'Below '+pp(p.t2)), L('Del '+pp(p.t2)+' al '+pp(p.t3),'From '+pp(p.t2)+' to '+pp(p.t3)), L(pp(p.t3)+' o más',pp(p.t3)+' or more')];
+    if(v==null) porque = L('Faltan los ingresos habilitados por IA o los ingresos totales de la compañía.','AI-enabled revenue or total company revenue is missing.');
+    else if(s.punt===1) porque = L('Los ingresos habilitados por IA son el '+pct(v,2)+' del total, por debajo del '+pp(p.t2)+'. Un 0 % medido puntúa 1, no 0: está medido y su lectura es de eficiencia.','AI-enabled revenue is '+pct(v,2)+' of the total, below '+pp(p.t2)+'. A measured 0% scores 1, not 0: it is measured and reads as efficiency.');
+    else porque = L('Los ingresos habilitados por IA son el '+pct(v,2)+' del total.','AI-enabled revenue is '+pct(v,2)+' of the total.');
+  }
+  else if(nn===7){ const e=E.s7||{}, p=P.s7, sup=n(e.at_superaron_g2), res=n(e.at_con_resultado)||0, pr=n(e.at_en_produccion)||0, ores=n(e.opt_con_resultado)||0, opr=n(e.opt_en_produccion)||0, ma=n(e.mediana_at), mo=n(e.mediana_opt), pl=n(e.plazos_ref);
+    mide = L('Si las apuestas de Aumentar y Transformar llegan a producción (G5) en proporción y tiempo comparables a las de Optimizar. Ventana de 24 meses.','Whether Augment and Transform bets reach production (G5) in a proportion and time comparable to Optimise ones. 24-month window.');
+    formula = L('Tasa de llegada = iniciativas que alcanzaron G5 ÷ iniciativas con resultado (G5, parada o estancada). CR (conversión relativa) = tasa de Aumentar y Transformar ÷ tasa de Optimizar. TR (tiempo relativo) = mediana de días de G2 a G5 en Aumentar y Transformar ÷ misma mediana en Optimizar. Sin base de Optimizar, CR = tasa ÷ '+nf(p.tasa_referencia,1)+' y TR = mediana ÷ plazos de referencia de las fases 3 a 5.','Arrival rate = initiatives that reached G5 ÷ initiatives with an outcome (G5, stopped or stalled). CR (relative conversion) = Augment and Transform rate ÷ Optimise rate. TR (relative time) = median days from G2 to G5 in Augment and Transform ÷ the same median in Optimise. Without an Optimise base, CR = rate ÷ '+nf(p.tasa_referencia,1)+' and TR = median ÷ reference times of phases 3 to 5.');
+    const tasa = res>0 ? pr/res : null; let cr=null, trr=null, c1='', c2='';
+    if(tasa!=null){ c1 = L('Aumentar y Transformar: ','Augment and Transform: ')+nf(pr)+' ÷ '+nf(res)+' = '+nf(tasa,2);
+      if(ores>0 && opr>0){ cr = tasa/(opr/ores); c1 += '; '+L('Optimizar: ','Optimise: ')+nf(opr)+' ÷ '+nf(ores)+' = '+nf(opr/ores,2)+'; CR = '+nf(tasa,2)+' ÷ '+nf(opr/ores,2)+' = '+nf(cr,2); }
+      else { cr = tasa/p.tasa_referencia; c1 += '; '+L('sin base de Optimizar: ','no Optimise base: ')+'CR = '+nf(tasa,2)+' ÷ '+nf(p.tasa_referencia,1)+' = '+nf(cr,2); } }
+    if(ma!=null){ if(ores>0 && mo){ trr = ma/mo; c2 = 'TR = '+nf(ma)+L(' días',' days')+' ÷ '+nf(mo)+L(' días',' days')+' = '+nf(trr,1); } else if(pl){ trr = ma/pl; c2 = 'TR = '+nf(ma)+L(' días',' days')+' ÷ '+nf(pl)+L(' días',' days')+' = '+nf(trr,1); } }
+    if(e.hay_gates) cuenta = L('Superaron G2: ','Passed G2: ')+(sup==null?t('sin_dato'):nf(sup))+'. '+(c1?c1+'. ':'')+(c2?c2+'.':'');
+    tramos = [L('No hay gates registrados en la ventana','No gates recorded in the window'), L('Ninguna apuesta supera G2, o CR por debajo de '+nf(p.cr2,1),'No bet passes G2, or CR below '+nf(p.cr2,1)), L('CR de '+nf(p.cr2,1)+' o más sin cumplir el 3','CR of '+nf(p.cr2,1)+' or more without meeting 3'), L('CR de '+nf(p.cr3,1)+' o más, TR de '+nf(p.tr3_max,1)+' o menos y al menos '+nf(p.resultado_min)+' apuestas con resultado','CR of '+nf(p.cr3,1)+' or more, TR of '+nf(p.tr3_max,1)+' or less and at least '+nf(p.resultado_min)+' bets with an outcome')];
+    if(e.hay_gates==null) porque = L('No consta si hay gates registrados en la ventana.','It is not recorded whether there are gates in the window.');
+    else if(e.hay_gates===false) porque = L('No hay gates registrados en la ventana: exploración.','No gates recorded in the window: exploration.');
+    else if(sup===0) porque = L('Ninguna apuesta de Aumentar o Transformar ha superado G2 en la ventana.','No Augment or Transform bet has passed G2 in the window.');
+    else if(cr==null) porque = L('Todavía no hay apuestas con resultado para calcular la CR: se lee como intermedia.','There are no bets with an outcome yet to compute CR: it reads as intermediate.');
+    else if(s.punt===1) porque = L('CR = '+nf(cr,2)+', por debajo de '+nf(p.cr2,1)+': las apuestas de Aumentar y Transformar llegan a producción en mucha menor proporción que las de eficiencia.','CR = '+nf(cr,2)+', below '+nf(p.cr2,1)+': Augment and Transform bets reach production in a much lower proportion than efficiency ones.');
+    else if(s.punt===3) porque = L('CR = '+nf(cr,2)+', TR = '+nf(trr,1)+' y '+nf(res)+' apuestas con resultado.','CR = '+nf(cr,2)+', TR = '+nf(trr,1)+' and '+nf(res)+' bets with an outcome.');
+    else { const f=[]; if(cr<p.cr3) f.push(L('CR '+nf(cr,2)+' < '+nf(p.cr3,1),'CR '+nf(cr,2)+' < '+nf(p.cr3,1))); if(trr==null) f.push(L('TR sin dato','TR not available')); else if(trr>p.tr3_max) f.push('TR '+nf(trr,1)+' > '+nf(p.tr3_max,1)); if(res<p.resultado_min) f.push(L(nf(res)+' apuestas con resultado (mínimo '+nf(p.resultado_min)+')',nf(res)+' bets with an outcome (minimum '+nf(p.resultado_min)+')'));
+      porque = L('CR = '+nf(cr,2)+' ('+nf(p.cr2,1)+' o más); no llega al 3 por: ','CR = '+nf(cr,2)+' ('+nf(p.cr2,1)+' or more); it does not reach 3 because of: ')+f.join('; ')+'.'; }
+  }
+  else if(nn===8){ const e=E.s8||{}, p=P.s8, a=n(e.apuestas_transformar)||0, rv=n(e.revisiones)||0, de=n(e.decisiones_etapa)||0;
+    mide = L('Si el consejo decide, financia y supervisa apuestas de Transformar de forma explícita y trazable (últimos 12 meses).','Whether the board decides, funds and oversees Transform bets explicitly and traceably (last 12 months).');
+    formula = L('Recuento de apuestas de Transformar aprobadas por el consejo, con límite de inversión por etapa, revisiones registradas y decisiones de etapa.','Count of Transform bets approved by the board, with an investment cap per stage, recorded reviews and stage decisions.');
+    if(e.tesis_aprobada!=null) cuenta = L('Tesis de IA aprobada: ','Approved AI thesis: ')+sn(e.tesis_aprobada)+'. '+L('Apuestas de Transformar: ','Transform bets: ')+nf(a)+'. '+L('Con límite por etapa: ','With a cap per stage: ')+(e.con_limite_etapa==null?t('sin_dato'):sn(e.con_limite_etapa))+'. '+L('Revisiones del consejo: ','Board reviews: ')+nf(rv)+'. '+L('Decisiones de etapa: ','Stage decisions: ')+nf(de)+'.';
+    tramos = [L('No hay tesis de IA aprobada por el consejo','No AI thesis approved by the board'), L('Tesis aprobada, sin apuestas de Transformar','Approved thesis, no Transform bets'), L('Al menos una apuesta de Transformar aprobada y registrada','At least one Transform bet approved and recorded'), L('Una apuesta con límite por etapa, '+nf(p.revisiones_min)+' o más revisiones y '+nf(p.decisiones_min)+' o más decisiones de etapa','A bet with a cap per stage, '+nf(p.revisiones_min)+' or more reviews and '+nf(p.decisiones_min)+' or more stage decisions')];
+    if(e.tesis_aprobada==null) porque = L('No consta si hay tesis de IA aprobada.','It is not recorded whether there is an approved AI thesis.');
+    else if(e.tesis_aprobada===false) porque = L('No hay tesis de IA aprobada por el consejo.','There is no AI thesis approved by the board.');
+    else if(a===0) porque = L('Hay tesis aprobada, pero el consejo no ha aprobado ninguna apuesta de Transformar en la ventana.','There is an approved thesis, but the board has not approved any Transform bet in the window.');
+    else if(s.punt===3) porque = L('Hay apuestas aprobadas con límite por etapa, revisiones y decisiones de etapa.','There are approved bets with a cap per stage, reviews and stage decisions.');
+    else { const f=[]; if(e.con_limite_etapa!==true) f.push(L('ninguna con límite de inversión por etapa','none with an investment cap per stage')); if(rv<p.revisiones_min) f.push(L(nf(rv)+' revisiones (mínimo '+nf(p.revisiones_min)+')',nf(rv)+' reviews (minimum '+nf(p.revisiones_min)+')')); if(de<p.decisiones_min) f.push(L(nf(de)+' decisiones de etapa (mínimo '+nf(p.decisiones_min)+')',nf(de)+' stage decisions (minimum '+nf(p.decisiones_min)+')'));
+      porque = L('Hay '+nf(a)+' apuesta(s) aprobada(s); no llega al 3 por: ','There are '+nf(a)+' approved bet(s); it does not reach 3 because of: ')+f.join('; ')+'.'; }
+  }
+  const href = t('doc12_href')+'#'+ANCLA_SENAL[lang==='en'?'en':'es'][nn-1];
+  return '<details class="calc" data-calc="'+nn+'"'+(CALC_ABIERTO.has(nn)?' open':'')+'><summary>'+esc(L('Cómo se calcula','How it is calculated'))+'</summary><div class="calc-in">'+
+    '<p><b>'+esc(L('Qué mide','What it measures'))+'.</b> '+esc(mide)+'</p>'+
+    '<p><b>'+esc(L('Fórmula','Formula'))+'.</b> '+esc(formula)+'</p>'+
+    (cuenta?'<p><b>'+esc(L('Con los datos de este cálculo','With the data of this calculation'))+'.</b> '+esc(cuenta)+'</p>':'')+
+    '<p><b>'+esc(L('Tramos','Bands'))+'</b> <small>('+esc(L('umbrales de la versión usada; un valor en el límite puntúa en el tramo superior','thresholds of the version used; a value on the boundary scores in the higher band'))+')</small></p>'+
+    '<ol class="tramos" start="0">'+tramos.map((x,i)=>'<li'+(i===s.punt?' class="act"':'')+'><b>'+i+'</b> '+esc(x)+'</li>').join('')+'</ol>'+
+    '<p class="porque"><b>'+esc(L('Por qué '+s.punt,'Why '+s.punt))+'.</b> '+esc(porque)+'</p>'+
+    '<p class="calc-pie">'+esc(L('Datos: apartado «Datos del cálculo», señal '+nn+', más abajo.','Data: «Calculation data» section, signal '+nn+', below.'))+' <a href="'+esc(href)+'" target="_blank" rel="noopener">'+esc(L('Documento 12 · señal '+nn+' ↗','Document 12 · signal '+nn+' ↗'))+'</a></p>'+
+    '</div></details>';
+}
 function resultadoHTML(c){
   const P = umbral(c.version_umbrales).parametros, r = calcular(c.entradas, P), ant = anterior(c), ra = ant ? calcular(ant.entradas, umbral(ant.version_umbrales).parametros) : null;
   const orden = ['exploracion','tactica','escala','curso'];
@@ -877,11 +1040,14 @@ function resultadoHTML(c){
     '<div><b>'+esc(r.D?t('d_si'):t('d_no'))+'</b><span>'+esc(t('declaracion'))+'</span></div><div><b>v'+esc(c.version_umbrales)+'</b><span>'+esc(t('version_umbrales'))+'</span></div></div></section>'+
     '<p class="ayuda">'+esc(t('suma_nota'))+'</p>';
   // señales
-  h += '<h2>'+esc(t('senales'))+'</h2><div class="tblx"><table class="tabla resp"><thead><tr><th>'+esc(t('senal'))+'</th><th>'+esc(t('valor_medido'))+'</th><th>'+esc(t('puntuacion'))+'</th><th>'+esc(t('lectura'))+'</th><th>'+esc(t('tendencia'))+'</th></tr></thead><tbody>';
+  const cols = [['senal','col_senal'],['valor_medido','col_valor'],['puntuacion','col_punt'],['lectura','col_lectura'],['tendencia','col_tend']];
+  h += '<h2>'+esc(t('senales'))+'</h2><details class="leyenda" open><summary>'+esc(t('col_tit'))+'</summary><dl>'+cols.map(x=>'<dt>'+esc(t(x[0]))+'</dt><dd>'+esc(t(x[1],{v:c.version_umbrales}))+'</dd>').join('')+'</dl>'+
+    '<p class="calc-pie"><a href="'+esc(t('doc12_href'))+'#'+(lang==='en'?'4-4-the-eight-signals':'4-4-las-ocho-senales')+'" target="_blank" rel="noopener">'+esc(t('col_doc'))+'</a></p></details>';
+  h += '<div class="tblx"><table class="tabla resp senales"><thead><tr>'+cols.map(x=>'<th title="'+esc(t(x[1],{v:c.version_umbrales}))+'">'+esc(t(x[0]))+'</th>').join('')+'</tr></thead><tbody>';
   for(const s of r.s){
     const pa = ra ? ra.s[s.n-1] : null; let td='—';
     if(pa){ const d = s.punt-pa.punt; td = '<span class="tend '+(d>0?'sube':d<0?'baja':'igual')+'">'+(d>0?'▲ +'+d:d<0?'▼ '+d:'=')+'</span>'+(pa.sd?' <small>('+esc(t('sin_dato'))+')</small>':''); }
-    h += '<tr data-senal="'+s.n+'" data-punt="'+s.punt+'"><td data-l="'+esc(t('senal'))+'"><b>'+esc(t('s'+s.n))+'</b></td><td data-l="'+esc(t('valor_medido'))+'">'+(s.sd?'<span class="sd">'+esc(s.texto||t('sin_dato'))+'</span>':esc(s.texto))+'</td>'+
+    h += '<tr data-senal="'+s.n+'" data-punt="'+s.punt+'"><td data-l="'+esc(t('senal'))+'"><b>'+esc(t('s'+s.n))+'</b></td><td data-l="'+esc(t('valor_medido'))+'">'+(s.sd?'<span class="sd">'+esc(s.texto||t('sin_dato'))+'</span>':esc(s.texto))+explicarSenal(s, c.entradas, P)+'</td>'+
       '<td data-l="'+esc(t('puntuacion'))+'"><span class="puntos p'+s.punt+'" role="img" aria-label="'+s.punt+' / 3">'+[1,2,3].map(i=>'<i class="'+(i<=s.punt?'on':'')+'"></i>').join('')+'</span> <b>'+s.punt+'</b></td>'+
       '<td data-l="'+esc(t('lectura'))+'">'+esc(s.sd?t('sin_dato'):t('l'+s.punt))+'</td><td data-l="'+esc(t('tendencia'))+'">'+td+(ant?'<small>'+esc(fF(ant.fecha_corte))+'</small>':'')+'</td></tr>';
   }
@@ -913,8 +1079,8 @@ function entradasHTML(c){
       let ctl;
       if(tp==='bool') ctl = '<select id="'+id+'" data-g="'+g+'" data-k="'+k+'" data-tp="bool"><option value=""'+(v==null?' selected':'')+'>'+esc(t('sd_opt'))+'</option><option value="1"'+(v===true?' selected':'')+'>'+esc(t('si'))+'</option><option value="0"'+(v===false?' selected':'')+'>'+esc(t('no'))+'</option></select>';
       else if(tp==='txt') ctl = '<textarea id="'+id+'" data-g="'+g+'" data-k="'+k+'" data-tp="txt">'+esc(v||'')+'</textarea>';
-      else ctl = '<input type="number" inputmode="decimal" min="0" step="any" id="'+id+'" data-g="'+g+'" data-k="'+k+'" data-tp="num" value="'+(v==null?'':esc(v))+'" placeholder="'+esc(t('sin_dato'))+'">';
-      h += '<div class="campo"'+(tp==='txt'?' style="grid-column:1/-1"':'')+'><label for="'+id+'">'+esc(lab)+(tp==='eur'?' (€)':tp==='h'?' (h)':tp==='dias'?(lang==='en'?' (days)':' (días)'):'')+'</label>'+ctl+(orig?'<span class="origen t01">● '+esc(t('del_t01'))+'</span>':'')+'</div>';
+      else ctl = '<input type="text" inputmode="decimal" autocomplete="off" class="num-in" id="'+id+'" data-g="'+g+'" data-k="'+k+'" data-tp="num" value="'+esc(fmtIn(v))+'" placeholder="'+esc(t('sin_dato'))+'">';
+      h += '<div class="campo"'+(tp==='txt'?' style="grid-column:1/-1"':'')+'><label for="'+id+'">'+esc(lab)+(tp==='eur'?' (€)':tp==='h'?' (h)':tp==='dias'?(lang==='en'?' (days)':' (días)'):'')+'</label>'+ctl+(orig?'<span class="origen t01">● '+esc(t('del_t01'))+'</span>':(tp==='txt'?'':'<span class="origen"></span>'))+'</div>';
     }
     h += '</div></details>';
   }
@@ -942,7 +1108,7 @@ function vistaUmbrales(){
     '<div class="campo" style="grid-column:1/-1"><label for="u-orig">'+esc(t('origen'))+'</label><input type="text" id="u-orig" data-umeta="origen" value="'+esc(u.origen||'')+'"'+(edit?'':' disabled')+'></div>'+
     '<div class="campo" style="grid-column:1/-1"><label for="u-nota">'+esc(t('nota'))+'</label><textarea id="u-nota" data-umeta="nota"'+(edit?'':' disabled')+'>'+esc(u.nota||'')+'</textarea></div></div>';
   h += '<div class="tblx"><table class="tabla resp"><thead><tr><th>'+esc(t('parametro'))+'</th><th>'+esc(t('valor'))+'</th></tr></thead><tbody>'+
-    PARAMS.map(p=>'<tr><td data-l="'+esc(t('parametro'))+'"><label for="p-'+p[0]+'-'+p[1]+'">'+esc(lang==='en'?p[3]:p[2])+'</label></td><td data-l="'+esc(t('valor'))+'"><input type="number" step="any" min="0" id="p-'+p[0]+'-'+p[1]+'" data-pg="'+p[0]+'" data-pk="'+p[1]+'" value="'+esc(u.parametros[p[0]][p[1]])+'"'+(edit?'':' disabled')+'></td></tr>').join('')+'</tbody></table></div>';
+    PARAMS.map(p=>'<tr><td data-l="'+esc(t('parametro'))+'"><label for="p-'+p[0]+'-'+p[1]+'">'+esc(lang==='en'?p[3]:p[2])+'</label></td><td data-l="'+esc(t('valor'))+'"><input type="text" inputmode="decimal" autocomplete="off" class="num-in" id="p-'+p[0]+'-'+p[1]+'" data-pg="'+p[0]+'" data-pk="'+p[1]+'" value="'+esc(fmtIn(u.parametros[p[0]][p[1]]))+'"'+(edit?'':' disabled')+'></td></tr>').join('')+'</tbody></table></div>';
   if(edit && D.calculos.length) h += '<button type="button" data-acc="recalcular">'+esc(t('recalcular'))+'</button>';
   return h;
 }
@@ -983,16 +1149,17 @@ document.addEventListener('input', ev => {
   const el = ev.target, c = calcSel();
   if(el.dataset.g && c){
     const g = el.dataset.g, k = el.dataset.k; c.entradas[g] = c.entradas[g] || {};
-    let v; if(el.dataset.tp==='bool') v = el.value==='' ? null : el.value==='1'; else if(el.dataset.tp==='txt') v = el.value; else v = el.value==='' ? null : Number(el.value);
+    let v; if(el.dataset.tp==='bool') v = el.value==='' ? null : el.value==='1'; else if(el.dataset.tp==='txt') v = el.value; else { v = parseNum(el.value); if(Number.isNaN(v)){ el.setAttribute('aria-invalid','true'); return; } el.removeAttribute('aria-invalid'); }
     c.entradas[g][k] = v; if(c.de_t01 && c.de_t01[g]) c.de_t01[g] = c.de_t01[g].filter(x=>x!==k);
     guardar(); refrescarResultado(); return;
   }
   if(el.dataset.cab && c && ['notas','acciones'].includes(el.dataset.cab)){ c[el.dataset.cab] = el.value; guardar(); refrescarResultado(); return; }
-  if(el.dataset.pg){ const u = D.umbrales.find(x=>x.version===UI.umb) || D.umbrales[D.umbrales.length-1]; if(el.value!=='') { u.parametros[el.dataset.pg][el.dataset.pk] = Number(el.value); guardar(); } return; }
+  if(el.dataset.pg){ const u = D.umbrales.find(x=>x.version===UI.umb) || D.umbrales[D.umbrales.length-1]; const v = parseNum(el.value); if(v!=null && !Number.isNaN(v)) { el.removeAttribute('aria-invalid'); u.parametros[el.dataset.pg][el.dataset.pk] = v; guardar(); } else if(Number.isNaN(v)) el.setAttribute('aria-invalid','true'); return; }
   if(el.dataset.umeta){ const u = D.umbrales.find(x=>x.version===UI.umb) || D.umbrales[D.umbrales.length-1]; u[el.dataset.umeta] = el.value || null; guardar(); }
 });
 document.addEventListener('change', ev => {
   const el = ev.target, c = calcSel();
+  if(el.classList && el.classList.contains('num-in')){ const v = parseNum(el.value); if(v!=null && !Number.isNaN(v)) el.value = fmtIn(v); return; }
   if(el.id==='sel-lang'){ lang = UI.lang = el.value; guardar(); render(); return; }
   if(el.id==='sel-tema'){ UI.tema = el.value; temaSitioGuardar(el.value); aplicarTema(); guardar(); return; }
   if(el.dataset.cab==='sel'){ UI.sel = el.value; guardar(); render(); return; }

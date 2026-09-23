@@ -47,6 +47,9 @@
         humo (7) genera el libro de IA-2026-001 en el navegador (clave «eval») y comprueba que es un .xlsx válido con sus siete hojas,
         el código del caso y la fecha y hora de generación.
     22. Datos en local e instalación propia (D104): documento 95 (ES/EN), enlaces desde la portada, la entrada, el README y el 03, y cifras.
+    23. Números con separador de miles y señales explicadas (D108): los formateadores de T01, T11, T14, T15 y del motor de T17 agrupan
+        siempre (useGrouping 'always'; es-ES no agrupa las 4 cifras por defecto), sus campos numéricos no son type="number" (no admite
+        separadores) y T14 explica cada señal con enlace a su sección del documento 12 (ES/EN).
 #>
 param([switch]$SinNavegador)
 $ErrorActionPreference = 'Stop'
@@ -996,6 +999,32 @@ try {
   if ($readme -match '(?i)repositorio es privado') { Mal 'README.md: sigue diciendo que el repositorio es privado'; $malInst++ }
   if (-not $malInst) { Ok "documento 95 (ES/EN) con el repositorio y su ZIP, enlazado desde la portada, la entrada, el README y el documento 03; $nDocs documentos en las cifras de portada y entrada" }
 }
+
+  # ---- 23. separadores de miles en todo lo que muestran las herramientas y los paneles, y explicación de las señales de T14 (D108)
+  Write-Host '23. Separadores de miles y explicación de las señales del índice'
+  $malMil = 0
+  $hMil = Join-Path $repo 'SEVEN-G\herramientas'
+  $fMil = @(Get-ChildItem $hMil -Recurse -File -Filter '*.plantilla.html') + @(Get-ChildItem (Join-Path $hMil 'T17_panel_consejo\motor') -File -Filter '*.py') + @(Get-Item (Join-Path $hMil 'T17_panel_consejo\t01_a_panel.js'))
+  foreach ($f in $fMil) {
+    $txt = [IO.File]::ReadAllText($f.FullName)
+    foreach ($m in [regex]::Matches($txt, '(?:Intl\.NumberFormat|toLocaleString)\(([^()]*(?:\([^()]*\)[^()]*)*)\)')) {
+      $args1 = $m.Groups[1].Value
+      # opciones escritas en la llamada: deben llevar useGrouping; opciones en una variable: el fichero debe fijar useGrouping:'always'
+      $sinAgrupar = if ($args1 -match '\{') { $args1 -notmatch 'useGrouping' } elseif ($args1 -match ',\s*[A-Za-z_]\w*\s*$') { $txt -notmatch "useGrouping\s*:\s*['""]always" } else { $args1 -match 'es-ES|en-GB' }
+      if ($sinAgrupar) { Mal "$($f.Name): formateo de números sin separador de miles garantizado (falta useGrouping:'always'): $($m.Value.Substring(0, [Math]::Min(90, $m.Value.Length)))"; $malMil++ }
+    }
+    if ($f.Name -like '*.plantilla.html' -and $txt -match 'type="number"') { Mal "$($f.Name): campo type=`"number`" (no muestra separador de miles; usar texto con parseNum)"; $malMil++ }
+  }
+  $pl14 = [IO.File]::ReadAllText((Join-Path $hMil 'T14_indice_transformacion\_fuentes\indice.plantilla.html'))
+  if (-not ($pl14.Contains('function explicarSenal(') -and $pl14.Contains('col_senal') -and $pl14.Contains('col_tend'))) { Mal 'T14: falta la explicación de las columnas o de cada señal'; $malMil++ }
+  foreach ($lang in 'es', 'en') {
+    $h12 = Get-ChildItem (Join-Path $repo "SEVEN-G\html\$lang") -Filter '12_*.html' | Select-Object -First 1
+    $m12 = [regex]::Match($pl14, "(?s)ANCLA_SENAL = \{.*?$($lang):\[([^\]]+)\]")
+    if (-not $h12 -or -not $m12.Success) { Mal "T14 [$lang]: no se encuentran el documento 12 o las anclas de las señales"; $malMil++; continue }
+    $t12 = [IO.File]::ReadAllText($h12.FullName)
+    foreach ($a in ($m12.Groups[1].Value -split ',' | ForEach-Object { $_.Trim().Trim("'") })) { if (-not $t12.Contains("id=`"$a`"")) { Mal "T14 [$lang]: la señal enlaza #$a, que no existe en el documento 12"; $malMil++ } }
+  }
+  if (-not $malMil) { Ok 'formateadores con separador de miles en T01, T11, T14, T15 y el panel T17, sin campos type="number"; T14 explica columnas y señales con enlace al documento 12 (ES/EN)' }
 finally { Remove-Item $tmp -Recurse -Force -Confirm:$false -ErrorAction SilentlyContinue }
 
 Write-Host ''

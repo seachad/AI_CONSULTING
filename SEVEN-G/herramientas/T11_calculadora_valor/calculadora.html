@@ -79,6 +79,16 @@ input:disabled,select:disabled,textarea:disabled{opacity:.7}
 textarea{width:100%;min-height:64px}
 label{font-weight:600;font-size:13px;color:var(--tinta-2)}
 .campo{display:flex;flex-direction:column;gap:3px;min-width:0}
+/* rejillas de campos: en cada fila, las cajas a la misma altura aunque una etiqueta ocupe dos líneas o un campo lleve nota debajo */
+.rejilla>.campo>label{flex:1 0 auto;display:flex;align-items:flex-end}
+@supports (grid-template-rows:subgrid){
+  .rejilla>.campo{display:grid;grid-row:span 3;grid-template-rows:subgrid;row-gap:0;align-content:start}
+  .rejilla>.campo>label{align-self:end;margin-bottom:3px}
+  .rejilla>.campo>:nth-child(2){align-self:start}
+  .rejilla>.campo>:nth-child(3){margin-top:3px}
+}
+input.numero{text-align:right;font-variant-numeric:tabular-nums}
+input[aria-invalid="true"]{border-color:var(--claret);background:var(--ko-bg)}
 .campo input,.campo select,.campo textarea{width:100%}
 .rejilla{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:10px 14px}
 .fila{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
@@ -620,7 +630,27 @@ function guardar(){ if(!lsSet(LS_DATOS, JSON.stringify(D))) toast(t('no_guardado
 function cargarDemo(){ return JSON.parse(DEMO_TXT); }
 function valido(x){ return x && typeof x==='object' && Array.isArray(x.parametros) && x.parametros.length && Array.isArray(x.casos); }
 function n(v){ return (v===null||v===undefined||v==='') ? null : (isFinite(Number(v)) ? Number(v) : null); }
-function nf(x, dec){ return new Intl.NumberFormat(lang==='en'?'en-GB':'es-ES',{maximumFractionDigits:dec??0, minimumFractionDigits:dec??0}).format(x); }
+/* Números (petición del autor): todo número en pantalla lleva separador de miles, también los de cuatro cifras (Intl no agrupa «8000» en
+   es-ES sin useGrouping:'always'); los campos numéricos son de texto con el número formateado y se leen con parseNum. Los ficheros
+   exportados (JSON y CSV) y los atributos data-* llevan el número puro. */
+const NF_CACHE = {};
+function nfFmt(min, max){ const loc = lang==='en'?'en-GB':'es-ES', k = loc+'|'+min+'|'+max; if(!NF_CACHE[k]){ const o = {minimumFractionDigits:min, maximumFractionDigits:max}; try{ NF_CACHE[k] = new Intl.NumberFormat(loc, Object.assign({useGrouping:'always'}, o)); }catch(e){ NF_CACHE[k] = new Intl.NumberFormat(loc, o); } } return NF_CACHE[k]; }
+function agrupar(s){ const m = lang==='en'?',':'.'; return String(s).replace(/^([^\d]*)(\d{4,})/, (x, p, d) => p+d.replace(/\B(?=(\d{3})+$)/g, m)); }
+function nf(x, dec){ return agrupar(nfFmt(dec??0, dec??0).format(x)); }
+/* valor de un campo numérico: número del JSON (puro) → texto con separadores del idioma */
+function fmtIn(v){ if(v===null || v===undefined || v==='') return ''; const x = Number(v); return isFinite(x) ? agrupar(nfFmt(0, 10).format(x)) : String(v); }
+/* texto escrito → número. ES: «.» miles y «,» decimal; EN: «,» miles y «.» decimal; admite también el número sin separadores, espacios,
+   «€» o «%». Un único separador del otro tipo cuenta como decimal salvo que forme grupos de tres cifras («12.5» = 12,5 en ES; «1.500» = 1500). */
+function parseNum(s){
+  if(s===null || s===undefined) return null; if(typeof s==='number') return isFinite(s) ? s : null;
+  s = String(s).replace(/[\s  €%]/g, '').replace(/[−–]/g, '-'); if(s==='') return null;
+  const dec = lang==='en'?'.':',', mil = lang==='en'?',':'.', grupos = new RegExp('^[-+]?\\d{1,3}(\\'+mil+'\\d{3})+$');
+  if(s.includes(dec) && s.includes(mil)){ if(s.lastIndexOf(mil) > s.lastIndexOf(dec)) return null; s = s.split(mil).join('').replace(dec, '.'); }
+  else if(s.includes(mil)){ s = grupos.test(s) ? s.split(mil).join('') : (s.split(mil).length===2 ? s.replace(mil, '.') : null); if(s===null) return null; }
+  else if(s.includes(dec)){ if(s.split(dec).length>2) return null; s = s.replace(dec, '.'); }
+  if(!/^[-+]?(\d+\.?\d*|\.\d+)$/.test(s)) return null;
+  const x = Number(s); return isFinite(x) ? x : null;
+}
 function eurF(x, dec){ if(x==null||!isFinite(x)) return t('sd_opt'); return lang==='en' ? (x<0?'−€':'€')+nf(Math.abs(x),dec??0) : (x<0?'−':'')+nf(Math.abs(x),dec??0)+' €'; }
 function pct(x, dec){ return x==null||!isFinite(x) ? t('sd_opt') : nf(x, dec??1)+(lang==='en'?'%':' %'); }
 function sdH(x, f){ return x==null||!isFinite(x) ? '<span class="sd">'+esc(t('sd_opt'))+'</span>' : esc(f(x)); }
@@ -633,7 +663,7 @@ function setP(o,p,v){ const ks=p.split('.'); let a=o; for(let i=0;i<ks.length-1;
 
 /* ---------------- controles ligados a una ruta del caso ---------------- */
 function pid(p){ return 'f-'+p.replace(/\./g,'-'); }
-function cNum(p, v, lbl, ph){ return '<input type="number" step="any" id="'+pid(p)+'" data-p="'+p+'" data-tp="num" value="'+(v==null?'':esc(v))+'" placeholder="'+esc(ph??t('sd_opt'))+'"'+(lbl?' aria-label="'+esc(lbl)+'"':'')+'>'; }
+function cNum(p, v, lbl, ph){ return '<input type="text" inputmode="decimal" autocomplete="off" class="numero" id="'+pid(p)+'" data-p="'+p+'" data-tp="num" value="'+esc(fmtIn(v))+'" placeholder="'+esc(ph??t('sd_opt'))+'"'+(lbl?' aria-label="'+esc(lbl)+'"':'')+'>'; }
 function cTxt(p, v, lbl){ return '<input type="text" id="'+pid(p)+'" data-p="'+p+'" data-tp="txt" value="'+esc(v??'')+'"'+(lbl?' aria-label="'+esc(lbl)+'"':'')+'>'; }
 function cArea(p, v){ return '<textarea id="'+pid(p)+'" data-p="'+p+'" data-tp="txt">'+esc(v??'')+'</textarea>'; }
 function cSel(p, v, list, lbl, vacio){ return '<select id="'+pid(p)+'" data-p="'+p+'" data-tp="sel"'+(lbl?' aria-label="'+esc(lbl)+'"':'')+'>'+opts(list, v, vacio)+'</select>'; }
@@ -1045,9 +1075,9 @@ function vistaParametros(){
     '<div class="campo" style="grid-column:1/-1"><label for="pm-orig">'+esc(t('origen'))+'</label><input type="text" id="pm-orig" data-pp="origen" data-tp="txt" value="'+esc(p.origen||'')+'"'+dis+'></div>'+
     '<div class="campo" style="grid-column:1/-1"><label for="pm-nota">'+esc(t('nota'))+'</label><textarea id="pm-nota" data-pp="nota" data-tp="txt"'+dis+'>'+esc(p.nota||'')+'</textarea></div></div>';
   h += '<div class="tblx"><table class="tabla resp"><thead><tr><th>'+esc(t('parametro'))+'</th><th>'+esc(t('valor'))+'</th></tr></thead><tbody>'+
-    PARAMS.map(x=>{ const id='pp-'+x[0].replace(/\./g,'-'); return '<tr><td data-l="'+esc(t('parametro'))+'"><label for="'+id+'">'+esc(lang==='en'?x[2]:x[1])+'</label></td><td data-l="'+esc(t('valor'))+'"><input type="number" step="any" min="0" id="'+id+'" data-pp="'+x[0]+'" data-tp="num" value="'+esc(getP(p,x[0])??'')+'"'+dis+'></td></tr>'; }).join('')+'</tbody></table></div>';
+    PARAMS.map(x=>{ const id='pp-'+x[0].replace(/\./g,'-'); return '<tr><td data-l="'+esc(t('parametro'))+'"><label for="'+id+'">'+esc(lang==='en'?x[2]:x[1])+'</label></td><td data-l="'+esc(t('valor'))+'"><input type="text" inputmode="decimal" autocomplete="off" class="numero" id="'+id+'" data-pp="'+x[0]+'" data-tp="num" value="'+esc(fmtIn(getP(p,x[0])))+'"'+dis+'></td></tr>'; }).join('')+'</tbody></table></div>';
   h += '<h3>'+esc(t('coste_horario'))+'</h3><div class="tblx"><table class="tabla ed"><thead><tr><th>'+esc(t('perfil'))+'</th><th>'+esc(t('importe_h'))+'</th></tr></thead><tbody>'+
-    (p.coste_horario||[]).map((x,i)=>'<tr><td><input type="text" id="pp-ch-'+i+'-p" data-pp="coste_horario.'+i+'.perfil" data-tp="txt" value="'+esc(x.perfil||'')+'" aria-label="'+esc(t('perfil'))+'"'+dis+'></td><td><input type="number" step="any" id="pp-ch-'+i+'-i" data-pp="coste_horario.'+i+'.importe" data-tp="num" value="'+esc(x.importe??'')+'" aria-label="'+esc(t('importe_h'))+'"'+dis+'></td></tr>').join('')+'</tbody></table></div>';
+    (p.coste_horario||[]).map((x,i)=>'<tr><td><input type="text" id="pp-ch-'+i+'-p" data-pp="coste_horario.'+i+'.perfil" data-tp="txt" value="'+esc(x.perfil||'')+'" aria-label="'+esc(t('perfil'))+'"'+dis+'></td><td><input type="text" inputmode="decimal" autocomplete="off" class="numero" id="pp-ch-'+i+'-i" data-pp="coste_horario.'+i+'.importe" data-tp="num" value="'+esc(fmtIn(x.importe))+'" aria-label="'+esc(t('importe_h'))+'"'+dis+'></td></tr>').join('')+'</tbody></table></div>';
   if(edit) h += '<button type="button" class="mini" data-acc="anadir-ch">+ '+esc(t('anadir'))+'</button>';
   else h += '<p class="ayuda">'+esc(t('bloqueado'))+'</p>';
   return h;
@@ -1195,7 +1225,7 @@ function actualizarDesdeT01(c, reg){
 }
 function abrirDlgT01(reg, pre){
   T01_PEND = reg; const d = document.getElementById('dlg-t01');
-  d.innerHTML = '<div class="dlg-cab"><h2 id="t01-t">'+esc(t('t01_tit'))+'</h2><button type="button" data-acc="cerrar-t01">'+esc(t('t01_cancelar'))+'</button></div><div class="dlg-cuerpo"><p class="ayuda">'+esc(t('t01_ayuda'))+'</p><p class="ayuda">'+esc(t('t01_local',{o:(reg.meta||{}).organizacion||'', n:reg.iniciativas.length, f:fF((reg.meta||{}).fecha_referencia||'')}))+'</p><div class="campo"><label for="t01-ini">'+esc(t('t01_elegir'))+'</label><select id="t01-ini">'+
+  d.innerHTML = '<div class="dlg-cab"><h2 id="t01-t">'+esc(t('t01_tit'))+'</h2><button type="button" data-acc="cerrar-t01">'+esc(t('t01_cancelar'))+'</button></div><div class="dlg-cuerpo"><p class="ayuda">'+esc(t('t01_ayuda'))+'</p><p class="ayuda">'+esc(t('t01_local',{o:(reg.meta||{}).organizacion||'', n:nf(reg.iniciativas.length), f:fF((reg.meta||{}).fecha_referencia||'')}))+'</p><div class="campo"><label for="t01-ini">'+esc(t('t01_elegir'))+'</label><select id="t01-ini">'+
     reg.iniciativas.map(I=>'<option value="'+esc(I.id)+'"'+(I.id===pre?' selected':'')+'>'+esc(I.id+' · '+(I.nombre||''))+'</option>').join('')+'</select></div><p style="margin-top:12px"><button type="button" class="primario" data-acc="crear-t01">'+esc(t('t01_crear'))+'</button></p></div>';
   d.showModal();
 }
@@ -1215,12 +1245,12 @@ function guardarEnT01(c){
 function avisoT01Local(c){
   const reg = registroT01Local();
   return '<p class="aviso '+(reg?'info':'')+' sin-imprimir" id="t01-local" data-registro="'+(reg?'si':'no')+'">'+(reg
-    ? esc(t('t01_local',{o:(reg.meta||{}).organizacion||'', n:reg.iniciativas.length, f:fF((reg.meta||{}).fecha_referencia||'')}))+' <button type="button" data-acc="desde-t01">'+esc(t('desde_t01'))+'</button>'+(c && c.iniciativa_t01 ? ' <button type="button" data-acc="actualizar-t01">'+esc(t('t01_actualizar'))+'</button>' : '')+(c ? ' <button type="button" data-acc="guardar-t01">'+esc(t('t01_guardar'))+'</button>' : '')
+    ? esc(t('t01_local',{o:(reg.meta||{}).organizacion||'', n:nf(reg.iniciativas.length), f:fF((reg.meta||{}).fecha_referencia||'')}))+' <button type="button" data-acc="desde-t01">'+esc(t('desde_t01'))+'</button>'+(c && c.iniciativa_t01 ? ' <button type="button" data-acc="actualizar-t01">'+esc(t('t01_actualizar'))+'</button>' : '')+(c ? ' <button type="button" data-acc="guardar-t01">'+esc(t('t01_guardar'))+'</button>' : '')
     : esc(t('t01_local_no')))+' <button type="button" data-acc="desde-t01-fichero">'+esc(t('t01_fichero'))+'</button></p>';
 }
 
 /* ---------------- eventos ---------------- */
-function leer(el){ const tp = el.dataset.tp; if(tp==='num') return el.value==='' ? null : Number(el.value); if(tp==='bool') return el.value==='' ? null : el.value==='1'; if(tp==='sel') return el.value==='' ? null : el.value; return el.value; }
+function leer(el){ const tp = el.dataset.tp; if(tp==='num') return parseNum(el.value); if(tp==='bool') return el.value==='' ? null : el.value==='1'; if(tp==='sel') return el.value==='' ? null : el.value; return el.value; }
 function parSel(){ return D.parametros.find(x=>x.version===UI.par) || D.parametros[D.parametros.length-1]; }
 function parEditable(p){ return !D.casos.some(c=>params(c.version_parametros).version===p.version); }
 document.addEventListener('input', ev => {
@@ -1230,6 +1260,7 @@ document.addEventListener('input', ev => {
 });
 document.addEventListener('change', ev => {
   const el = ev.target;
+  if(el.tagName==='INPUT' && el.dataset.tp==='num'){ const x = parseNum(el.value); if(x!=null) el.value = fmtIn(x); el.setAttribute('aria-invalid', (x==null && el.value.trim()!=='') ? 'true' : 'false'); }
   if(el.id==='sel-lang'){ lang = UI.lang = el.value; guardar(); render(); return; }
   if(el.id==='sel-tema'){ UI.tema = el.value; temaSitioGuardar(el.value); aplicarTema(); guardar(); return; }
   if(el.dataset.cab==='sel'){ UI.sel = el.value; guardar(); render(); return; }
