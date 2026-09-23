@@ -363,6 +363,16 @@ try {
   }
   if ($malDocx) { Mal "plantillas en Word: $($malDocx -join ' · '). Ejecutar pwsh -File SEVEN-G/build/docx.ps1" } else { Ok "$nDocx plantillas con su versión editable en Word al día" }
 
+  # plantillas en Excel (D83): solo las que son un registro, un cuestionario o una cartera; regenerar no debe producir cambios
+  $salidaXlsx = & pwsh -NoProfile -File (Join-Path $repo 'SEVEN-G/build/xlsx.ps1') 2>&1
+  if ($LASTEXITCODE) { Mal 'xlsx.ps1 ha fallado' }
+  else {
+    $m = [regex]::Match(($salidaXlsx -join "`n"), 'xlsx: (\d+) plantillas \((\d+) actualizadas\)')
+    if (-not $m.Success) { Mal 'xlsx.ps1 no ha devuelto el resumen esperado' }
+    elseif ([int]$m.Groups[2].Value -gt 0) { Mal "$($m.Groups[2].Value) plantillas en Excel desfasadas de xlsx.ps1: ejecutar pwsh -File SEVEN-G/build/xlsx.ps1 y comprobar los cambios" }
+    else { Ok "$($m.Groups[1].Value) plantillas con su versión en Excel al día" }
+  }
+
   # ---- 6. T17: panel de ejemplo al día
   Write-Host '6. T17: panel de ejemplo generado desde los datos de demostración'
   $t17 = Join-Path $repo 'SEVEN-G/herramientas/T17_panel_consejo'

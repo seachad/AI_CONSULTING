@@ -506,8 +506,12 @@ $cfg           = $configuracion[$metodologia]
 $root          = Join-Path $repo $metodologia
 $bloquesIndice = $cfg.bloques
 Write-Host "== $metodologia =="
-# versión editable en Word de las plantillas (D67), antes de los HTML para que la zona de descargas la enlace
-if ($metodologia -eq 'SEVEN-G') { & (Join-Path $PSScriptRoot 'docx.ps1') -Idiomas $Idiomas }
+# versión editable en Word de las plantillas (D67) y, para las que son un registro o cuestionario, en Excel (D83),
+# antes de los HTML para que la zona de descargas las enlace
+if ($metodologia -eq 'SEVEN-G') {
+  & (Join-Path $PSScriptRoot 'docx.ps1') -Idiomas $Idiomas
+  & (Join-Path $PSScriptRoot 'xlsx.ps1') -Idiomas $Idiomas
+}
 
 foreach ($lang in $Idiomas) {
   $t       = $textos[$lang].Clone()
@@ -733,6 +737,13 @@ foreach ($lang in $Idiomas) {
         $docxHref = [IO.Path]::GetRelativePath((Split-Path $htmlOut), $docxOut).Replace('\', '/')
         $docxLabel = if ($en) { 'Editable template (Word)' } else { 'Plantilla editable (Word)' }
         $enlacesDoc.Insert(1, "<a class=""dz-item"" href=""$docxHref"" download><span class=""dz-tipo"">DOCX</span><b>$docxLabel</b></a>")
+      }
+      # versión en Excel, solo para las plantillas que son un registro, un cuestionario o una cartera (D83)
+      $xlsxOut = Join-Path $root "xlsx/$lang/$relBase.xlsx"
+      if (Test-Path $xlsxOut) {
+        $xlsxHref = [IO.Path]::GetRelativePath((Split-Path $htmlOut), $xlsxOut).Replace('\', '/')
+        $xlsxLabel = if ($en) { 'Editable register (Excel)' } else { 'Registro editable (Excel)' }
+        $enlacesDoc.Insert(2, "<a class=""dz-item"" href=""$xlsxHref"" download><span class=""dz-tipo"">XLSX</span><b>$xlsxLabel</b></a>")
       }
     }
     if ($otroHtmlHref) { $enlacesDoc.Add("<a class=""dz-item"" href=""$otroHtmlHref"" hreflang=""$otroLang""><span class=""dz-tipo html"">HTML</span><b>$otroLabel</b></a>") }
