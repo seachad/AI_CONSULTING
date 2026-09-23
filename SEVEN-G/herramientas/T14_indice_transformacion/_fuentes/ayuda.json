@@ -1,0 +1,140 @@
+{
+ "_leeme": "Textos de ayuda de la herramienta (D111), en español e inglés. Los usa el módulo común herramientas/_comun/ayuda.js, que el build_*.ps1 incrusta en el HTML. 'vistas': una entrada por vista (ruta #/<vista>, o <vista>/<pestaña> según 'subvistas'). 'claves': explicación de cada columna o dato por su clave de traducción (TX). 'textos': explicación de rótulos que no salen de TX, por su texto en cada idioma. Una columna nueva de la herramienta necesita aquí su clave, en los dos idiomas (verificar_coherencia.ps1, sección 24).",
+ "inicial": "calculo",
+ "vistas": {
+  "calculo": {
+   "es": {
+    "titulo": "Índice de transformación de la compañía",
+    "que": "El cálculo seleccionado: perfil asignado, condiciones de base B1–B3, las ocho señales con su valor medido, puntuación, lectura y tendencia, el contraste con la transformación declarada, las alertas complementarias, qué movería el perfil y los datos del cálculo (fecha de corte, tipo, versión de umbrales, cobertura).",
+    "porque": "Responde con evidencias si la compañía se está transformando con la IA o solo gana eficiencia. Señala la transformación declarada que los datos no respaldan y dice qué haría falta para subir de perfil.",
+    "leer": "Cada señal se puntúa de 0 (exploración o sin medir) a 3 (transformación) con los umbrales del documento 12. El perfil no sale de la suma: lo deciden las condiciones de base y las señales clave. Con menos señales medidas que el mínimo, el resultado es provisional. «Sin dato» nunca es cero.",
+    "donde": "documento 12 (índice de transformación)"
+   },
+   "en": {
+    "titulo": "Company transformation index",
+    "que": "The selected calculation: assigned profile, base conditions B1–B3, the eight signals with measured value, score, reading and trend, the contrast with the declared transformation, complementary alerts, what would move the profile and calculation data (cut-off date, type, threshold version, coverage).",
+    "porque": "It answers with evidence whether the company is transforming with AI or only gaining efficiency. It flags declared transformation that the data do not support and says what would be needed to move up a profile.",
+    "leer": "Each signal is scored from 0 (exploration or not measured) to 3 (transformation) with the thresholds of document 12. The profile does not come from the sum: base conditions and key signals decide it. With fewer measured signals than the minimum, the result is provisional. «No data» is never zero.",
+    "donde": "document 12 (transformation index)"
+   }
+  },
+  "evolucion": {
+   "es": {
+    "titulo": "Evolución del índice",
+    "que": "Todos los cálculos guardados, del más antiguo al más reciente, con su fecha de corte, tipo (formal o trimestral), versión de umbrales, suma, cobertura, perfil asignado y la puntuación de cada señal S1–S8.",
+    "porque": "Muestra si la compañía avanza hacia la transformación. El perfil oficial es el del cálculo formal anual; los trimestrales se leen como tendencia.",
+    "donde": "documento 12 §8"
+   },
+   "en": {
+    "titulo": "Index evolution",
+    "que": "All saved calculations, from oldest to newest, with cut-off date, type (formal or quarterly), threshold version, sum, coverage, assigned profile and the score of each signal S1–S8.",
+    "porque": "It shows whether the company is moving towards transformation. The official profile is the one from the formal annual calculation; quarterly ones are read as a trend.",
+    "donde": "document 12 §8"
+   }
+  },
+  "umbrales": {
+   "es": {
+    "titulo": "Versiones de umbrales",
+    "que": "Los umbrales de cada señal en cada versión aprobada.",
+    "porque": "La compañía puede ajustar los umbrales, pero no la estructura de las señales ni las reglas de perfil; una versión usada por algún cálculo ya no se edita, para que los resultados sigan siendo comparables.",
+    "donde": "documento 12 §4.5"
+   },
+   "en": {
+    "titulo": "Threshold versions",
+    "que": "The thresholds of each signal in each approved version.",
+    "porque": "The company may adjust thresholds, but not the structure of the signals or the profile rules; a version used by any calculation is no longer edited, so results remain comparable.",
+    "donde": "document 12 §4.5"
+   }
+  },
+  "datos": {
+   "es": {
+    "titulo": "Datos",
+    "que": "Importar y exportar el fichero completo de la calculadora y calcular desde el registro de iniciativas (T01).",
+    "porque": "El registro T01 es la fuente de verdad: la calculadora toma de él las señales y marca lo que falta.",
+    "donde": "documento 03 §4.1"
+   },
+   "en": {
+    "titulo": "Data",
+    "que": "Import and export the calculator's full file and calculate from the initiative register (T01).",
+    "porque": "The T01 register is the source of truth: the calculator takes the signals from it and flags what is missing.",
+    "donde": "document 03 §4.1"
+   }
+  }
+ },
+ "claves": {
+  "senal": {
+   "es": "Cada una de las ocho señales: 1 composición de la inversión (peso de Aumentar y Transformar en el coste de la cartera); 2 composición del valor (retorno validado frente a eficiencias validadas); 3 materialización (capacidad liberada convertida en menor coste real o reasignada de forma explícita); 4 profundidad del cambio (iniciativas en producción que rediseñan el proceso de extremo a extremo, verificado); 5 modelo operativo (cambios verificados en roles, estructura y reparto de decisiones, con supervisión humana definida); 6 ingresos habilitados por IA (ingresos validados de oferta que no existiría sin IA sobre los ingresos totales); 7 paso a producción (si las apuestas de Aumentar y Transformar llegan a producción en proporción y tiempo comparables al resto); 8 decisión del consejo (apuestas de Transformar aprobadas en 12 meses, con límite por etapa, revisiones y decisiones de etapa).",
+   "en": "Each of the eight signals: 1 investment mix (share of Augment and Transform in portfolio cost); 2 value mix (validated return against validated efficiencies); 3 materialisation (freed capacity turned into lower actual cost or explicitly reassigned); 4 depth of change (initiatives in production that redesign the process end to end, verified); 5 operating model (verified changes in roles, structure and split of decisions, with defined human oversight); 6 AI-enabled revenue (validated revenue from offerings that would not exist without AI over total revenue); 7 move to production (whether Augment and Transform bets reach production at a rate and speed comparable to the rest); 8 board decision (Transform bets approved in 12 months, with a cap per stage, reviews and stage decisions)."
+  },
+  "valor_medido": {
+   "es": "La cifra con la que se puntúa la señal (porcentaje, cociente o recuento).",
+   "en": "The figure used to score the signal (percentage, ratio or count)."
+  },
+  "puntuacion": {
+   "es": "0 exploración o sin medir, 1 eficiencia, 2 intermedia, 3 transformación.",
+   "en": "0 exploration or not measured, 1 efficiency, 2 intermediate, 3 transformation."
+  },
+  "lectura": {
+   "es": "La puntuación dicha en palabras.",
+   "en": "The score in words."
+  },
+  "tendencia": {
+   "es": "Cambio frente al cálculo anterior: ▲ sube, ▼ baja, = igual.",
+   "en": "Change against the previous calculation: ▲ up, ▼ down, = same."
+  },
+  "fecha_corte": {
+   "es": "Fecha a la que se refieren los datos del cálculo.",
+   "en": "Date the calculation data refer to."
+  },
+  "tipo": {
+   "es": "Formal (anual, en C5, el oficial) o trimestral (seguimiento).",
+   "en": "Formal (annual, at C5, the official one) or quarterly (monitoring)."
+  },
+  "version": {
+   "es": "Versión de umbrales usada.",
+   "en": "Threshold version used."
+  },
+  "suma": {
+   "es": "Suma de las puntuaciones de las ocho señales (0 a 24); da contexto, no decide el perfil.",
+   "en": "Sum of the eight signal scores (0 to 24); gives context, does not decide the profile."
+  },
+  "cobertura": {
+   "es": "Señales medidas de las ocho; por debajo del mínimo, el perfil es provisional.",
+   "en": "Signals measured out of eight; below the minimum, the profile is provisional."
+  },
+  "perfil_asignado": {
+   "es": "Perfil resultante: exploración dispersa, eficiencia táctica, eficiencia a escala, transformación en curso o transformación declarada no evidenciada.",
+   "en": "Resulting profile: scattered exploration, tactical efficiency, efficiency at scale, transformation under way or transformation declared but not evidenced."
+  },
+  "parametro": {
+   "es": "Umbral de una señal.",
+   "en": "Threshold of a signal."
+  },
+  "valor": {
+   "es": "Valor del umbral en esa versión.",
+   "en": "Value of the threshold in that version."
+  }
+ },
+ "textos": {
+  "es": {
+   "S1": "Puntuación (0 a 3) de la señal 1: composición de la inversión (peso de Aumentar y Transformar en el coste de la cartera).",
+   "S2": "Puntuación (0 a 3) de la señal 2: composición del valor (retorno validado frente a eficiencias validadas).",
+   "S3": "Puntuación (0 a 3) de la señal 3: materialización (capacidad liberada convertida en menor coste real o reasignada de forma explícita).",
+   "S4": "Puntuación (0 a 3) de la señal 4: profundidad del cambio (iniciativas en producción que rediseñan el proceso de extremo a extremo, verificado).",
+   "S5": "Puntuación (0 a 3) de la señal 5: modelo operativo (cambios verificados en roles, estructura y reparto de decisiones, con supervisión humana definida).",
+   "S6": "Puntuación (0 a 3) de la señal 6: ingresos habilitados por IA (ingresos validados de oferta que no existiría sin IA sobre los ingresos totales).",
+   "S7": "Puntuación (0 a 3) de la señal 7: paso a producción (si las apuestas de Aumentar y Transformar llegan a producción en proporción y tiempo comparables al resto).",
+   "S8": "Puntuación (0 a 3) de la señal 8: decisión del consejo (apuestas de Transformar aprobadas en 12 meses, con límite por etapa, revisiones y decisiones de etapa)."
+  },
+  "en": {
+   "S1": "Score (0 to 3) of signal 1: investment mix (share of Augment and Transform in portfolio cost).",
+   "S2": "Score (0 to 3) of signal 2: value mix (validated return against validated efficiencies).",
+   "S3": "Score (0 to 3) of signal 3: materialisation (freed capacity turned into lower actual cost or explicitly reassigned).",
+   "S4": "Score (0 to 3) of signal 4: depth of change (initiatives in production that redesign the process end to end, verified).",
+   "S5": "Score (0 to 3) of signal 5: operating model (verified changes in roles, structure and split of decisions, with defined human oversight).",
+   "S6": "Score (0 to 3) of signal 6: AI-enabled revenue (validated revenue from offerings that would not exist without AI over total revenue).",
+   "S7": "Score (0 to 3) of signal 7: move to production (whether Augment and Transform bets reach production at a rate and speed comparable to the rest).",
+   "S8": "Score (0 to 3) of signal 8: board decision (Transform bets approved in 12 months, with a cap per stage, reviews and stage decisions)."
+  }
+ }
+}

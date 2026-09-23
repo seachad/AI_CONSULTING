@@ -1,0 +1,1210 @@
+{
+ "_leeme": "Textos de ayuda de la herramienta (D111), en español e inglés. Los usa el módulo común herramientas/_comun/ayuda.js, que el build_*.ps1 incrusta en el HTML. 'vistas': una entrada por vista (ruta #/<vista>, o <vista>/<pestaña> según 'subvistas'). 'claves': explicación de cada columna o dato por su clave de traducción (TX). 'textos': explicación de rótulos que no salen de TX, por su texto en cada idioma. Una columna nueva de la herramienta necesita aquí su clave, en los dos idiomas (verificar_coherencia.ps1, sección 24).",
+ "inicial": "embudo",
+ "subvistas": {
+  "ficha": {
+   "indice": 2,
+   "defecto": "resumen"
+  }
+ },
+ "vistas": {
+  "embudo": {
+   "es": {
+    "titulo": "Embudo de la cartera",
+    "que": "Todas las iniciativas del registro, contadas por fase del ciclo de vida (0 a 7) y, aparte, las cerradas; debajo, la tabla de iniciativas con su fase, estado, días en fase frente a su plazo, valor neto anual esperado y alertas. Los filtros de arriba y un clic en una barra de fase acotan la tabla.",
+    "porque": "Es la vista de la cartera como embudo comercial: dónde se acumulan las iniciativas, cuáles se atascan y cuánto valor esperan aportar. Permite al comité de IA priorizar y pedir decisiones donde hacen falta.",
+    "leer": "Cada barra es una fase; su longitud, las iniciativas que están en ella. En la tabla, los días en fase en amarillo o rojo indican que se acerca o supera el plazo de referencia de la fase (Lite o Enterprise).",
+    "donde": "documento 03 (registro de iniciativas) y documento 14 (gestión de cartera)"
+   },
+   "en": {
+    "titulo": "Portfolio funnel",
+    "que": "All initiatives in the register, counted by lifecycle phase (0 to 7) and, separately, the closed ones; below, the table of initiatives with phase, status, days in phase against its limit, expected annual net value and alerts. The filters above and a click on a phase bar narrow the table.",
+    "porque": "It is the portfolio seen as a sales funnel: where initiatives pile up, which get stuck and how much value they expect to bring. It lets the AI committee prioritise and ask for decisions where they are needed.",
+    "leer": "Each bar is a phase; its length, the initiatives in it. In the table, days in phase in amber or red mean the phase's reference time limit (Lite or Enterprise) is close or exceeded.",
+    "donde": "document 03 (initiative register) and document 14 (portfolio management)"
+   }
+  },
+  "tablero": {
+   "es": {
+    "titulo": "Tablero",
+    "que": "Las iniciativas activas como tarjetas en columnas, una por fase (0 a 7), con su código, nombre, estado y avisos.",
+    "porque": "Da de un vistazo el trabajo en curso por fase, como un tablero kanban: sirve para las reuniones de seguimiento del comité.",
+    "leer": "El número entre paréntesis junto a cada fase es el número de iniciativas en ella. Pulse una tarjeta para abrir su ficha.",
+    "donde": "documento 20 (manuales de fase)"
+   },
+   "en": {
+    "titulo": "Kanban board",
+    "que": "Active initiatives as cards in columns, one per phase (0 to 7), with their code, name, status and warnings.",
+    "porque": "It gives the work in progress by phase at a glance, like a kanban board: useful for the committee's follow-up meetings.",
+    "leer": "The number in brackets next to each phase is the number of initiatives in it. Click a card to open its record.",
+    "donde": "document 20 (phase manuals)"
+   }
+  },
+  "gates": {
+   "es": {
+    "titulo": "Gates pendientes (T03)",
+    "que": "Las iniciativas que esperan una decisión de gate: qué gate, desde cuándo se solicitó, cuántos días hábiles lleva frente al plazo, cuántos criterios bloquean y el acceso para gestionarlo; debajo, las revisiones de continuidad (R6) próximas o caducadas.",
+    "porque": "Una decisión de gate que no llega bloquea la iniciativa y consume recursos. Esta vista es la agenda del órgano que decide: qué hay que decidir y qué falta para poder hacerlo.",
+    "leer": "«Bloqueantes» son criterios obligatorios aún no cumplidos: con alguno pendiente, el resultado no puede ser Continuar.",
+    "donde": "documento 21 (criterios de gate) y documento 22 (listas de verificación)"
+   },
+   "en": {
+    "titulo": "Pending gates (T03)",
+    "que": "Initiatives waiting for a gate decision: which gate, when it was requested, how many working days it has been waiting against the limit, how many criteria are blocking and access to manage it; below, upcoming or overdue continuity reviews (R6).",
+    "porque": "A gate decision that does not arrive blocks the initiative and consumes resources. This view is the deciding body's agenda: what must be decided and what is missing to decide it.",
+    "leer": "«Blocking» are mandatory criteria not yet met: with any of them pending, the outcome cannot be Proceed.",
+    "donde": "document 21 (gate criteria) and document 22 (checklists)"
+   }
+  },
+  "alertas": {
+   "es": {
+    "titulo": "Alertas",
+    "que": "Todas las alertas del registro agrupadas por tipo: iniciativas estancadas, decisiones fuera de plazo, condiciones vencidas, revisiones caducadas, evidencias sin verificar, observaciones de la matriz de riesgos, elevaciones, reanudaciones vencidas y adopción baja; cada una con su severidad y motivo.",
+    "porque": "Resume lo que requiere acción: cada alerta es algo que el marco exige y no se está cumpliendo. Revisarlas antes de cada comité evita que los problemas se descubran tarde.",
+    "leer": "Severidad alta en rojo, media en ámbar, informativa en azul. El número entre paréntesis es cuántas alertas hay de ese tipo.",
+    "donde": "documento 03 y documento 20"
+   },
+   "en": {
+    "titulo": "Alerts",
+    "que": "All register alerts grouped by type: stalled initiatives, overdue decisions, expired conditions, overdue reviews, unverified evidence, risk matrix observations, escalations, overdue resumptions and low adoption; each with its severity and reason.",
+    "porque": "It summarises what needs action: each alert is something the framework requires and is not being met. Reviewing them before each committee prevents problems from being found late.",
+    "leer": "High severity in red, medium in amber, informational in blue. The number in brackets is how many alerts of that type there are.",
+    "donde": "document 03 and document 20"
+   }
+  },
+  "riesgos": {
+   "es": {
+    "titulo": "Matriz y registro de riesgos (T06)",
+    "que": "La matriz 5 × 5 de probabilidad por impacto con el número de riesgos en cada celda (residual o inherente), el resumen por nivel y por categoría, las observaciones del registro y la tabla de todos los riesgos con su valoración, controles, respuesta, aceptación y estado.",
+    "porque": "Es la herramienta del documento 33: permite ver si los riesgos de la cartera están valorados, controlados y aceptados por el órgano que corresponde a su nivel, y descargar para cada caso un Excel con los planes de mitigación y contingencia.",
+    "leer": "Puntuación = probabilidad (1 rara a 5 casi segura) × impacto (1 insignificante a 5 crítico). Niveles: Bajo 1–4, Medio 5–9, Alto 10–15, Crítico 16–25. Inherente: antes de controles; residual: después. Pulse una celda para filtrar la tabla.",
+    "donde": "documento 33 (metodología de riesgos), P12 y P13"
+   },
+   "en": {
+    "titulo": "Risk matrix and register (T06)",
+    "que": "The 5 × 5 probability-by-impact matrix with the number of risks in each cell (residual or inherent), the summary by level and category, the register's observations and the table of all risks with their rating, controls, response, acceptance and status.",
+    "porque": "It is the tool of document 33: it shows whether portfolio risks are rated, controlled and accepted by the body that corresponds to their level, and downloads for each case an Excel with mitigation and contingency plans.",
+    "leer": "Score = probability (1 rare to 5 almost certain) × impact (1 negligible to 5 critical). Levels: Low 1–4, Medium 5–9, High 10–15, Critical 16–25. Inherent: before controls; residual: after. Click a cell to filter the table.",
+    "donde": "document 33 (risk methodology), P12 and P13"
+   }
+  },
+  "consejo": {
+   "es": {
+    "titulo": "Consejo: decisiones y recomendaciones (T18)",
+    "que": "Las decisiones del consejo (DEC) y las recomendaciones y encargos (REC) con su fecha, asunto, resultado, texto, destinatario y estado; la lectura de la señal 8 del índice de transformación; los datos de la compañía para el índice; y el último diagnóstico de madurez (T15).",
+    "porque": "Deja trazado lo que decide y recomienda el consejo y si se cumple. Sin ese registro no se puede comprobar que las apuestas de Transformar se aprueban y revisan como exige el marco.",
+    "donde": "documento 62 (registro de recomendaciones y decisiones) y documento 12 (índice de transformación)"
+   },
+   "en": {
+    "titulo": "Board: decisions and recommendations (T18)",
+    "que": "Board decisions (DEC) and recommendations and assignments (REC) with date, subject, outcome, text, addressee and status; the reading of signal 8 of the transformation index; company data for the index; and the latest maturity assessment (T15).",
+    "porque": "It traces what the board decides and recommends and whether it is carried out. Without that record it cannot be checked that Transform bets are approved and reviewed as the framework requires.",
+    "donde": "document 62 (recommendations and decisions register) and document 12 (transformation index)"
+   }
+  },
+  "analisis": {
+   "es": {
+    "titulo": "Análisis del embudo",
+    "que": "Estadísticas del ciclo de vida: tiempo en cada fase, tiempo de decisión de los gates, tiempo hasta producción, conversión e iteraciones por gate, grado de cumplimiento, iniciativas estancadas, esperas, motivos de parada y retirada, condiciones vencidas, mezcla de ambición, valor por fase (y ponderado por probabilidad) y cohortes por trimestre.",
+    "porque": "Convierte el registro en aprendizaje: dónde se pierde tiempo, qué gates filtran de verdad, por qué se paran las iniciativas y cuánto valor es realista esperar. Es la base para recalibrar plazos y criterios en C5.",
+    "leer": "Mediana: el valor central (la mitad tarda menos). Percentil 80: el 80 % tarda menos; sirve para fijar plazos realistas. «Intervalos cerrados» son estancias ya terminadas; las que siguen «en curso» se cuentan aparte.",
+    "donde": "documento 14 y documento 21"
+   },
+   "en": {
+    "titulo": "Funnel analysis",
+    "que": "Lifecycle statistics: time in each phase, gate decision time, time to production, conversion and iterations per gate, degree of compliance, stalled initiatives, holds, stop and retirement reasons, expired conditions, ambition mix, value by phase (and probability-weighted) and cohorts by quarter.",
+    "porque": "It turns the register into learning: where time is lost, which gates really filter, why initiatives are stopped and how much value it is realistic to expect. It is the basis for recalibrating time limits and criteria at C5.",
+    "leer": "Median: the middle value (half take less). 80th percentile: 80% take less; useful to set realistic time limits. «Closed intervals» are stays already finished; those still «in progress» are counted separately.",
+    "donde": "document 14 and document 21"
+   }
+  },
+  "inventario": {
+   "es": {
+    "titulo": "Inventario de sistemas de IA (T02)",
+    "que": "Los sistemas de IA de la compañía (modelos, plataformas, servicios) con su código, nombre, tipo, proveedor, clasificación y las iniciativas que los usan, y la comprobación de coherencia con el registro.",
+    "porque": "El inventario es obligatorio para saber qué IA se usa, con qué proveedores y bajo qué obligaciones regulatorias. Sin él no se puede clasificar ni supervisar lo que ya está en producción.",
+    "donde": "documento 32 (inventario y clasificación regulatoria)"
+   },
+   "en": {
+    "titulo": "AI system inventory (T02)",
+    "que": "The company's AI systems (models, platforms, services) with their code, name, type, supplier, classification and the initiatives that use them, and the consistency check with the register.",
+    "porque": "The inventory is mandatory to know which AI is used, with which suppliers and under which regulatory obligations. Without it, what is already in production cannot be classified or supervised.",
+    "donde": "document 32 (inventory and regulatory classification)"
+   }
+  },
+  "datos": {
+   "es": {
+    "titulo": "Datos, importación y exportación",
+    "que": "Dónde se guardan los datos, cómo exportar e importar el registro (JSON completo o CSV), el acceso al panel del consejo generado con este registro, los plazos de referencia por fase, las personas, los órganos, los proveedores de IA, el contenido del registro y qué otras herramientas lo leen.",
+    "porque": "El registro es la fuente de verdad de todas las herramientas: aquí se guarda, se comparte y se configura. Los plazos de referencia son los que usan las alertas y el embudo.",
+    "donde": "documento 03 §2.1 y §4 y documento 95 (datos en local)"
+   },
+   "en": {
+    "titulo": "Data, import and export",
+    "que": "Where the data are stored, how to export and import the register (full JSON or CSV), access to the board dashboard generated from this register, reference time limits by phase, people, bodies, AI suppliers, the register's contents and which other tools read it.",
+    "porque": "The register is the source of truth for every tool: it is saved, shared and configured here. The reference time limits are the ones used by alerts and the funnel.",
+    "donde": "document 03 §2.1 and §4 and document 95 (local data)"
+   }
+  },
+  "ficha/resumen": {
+   "es": {
+    "titulo": "Ficha · Resumen",
+    "que": "Toda la información de la iniciativa: identificación, responsables, clasificación (intensidad, ambición, regulatoria, tecnología, autonomía, exposición), ciclo de vida (fase, días, plazo, esperas), valor esperado y realizado, riesgo y cumplimiento, datos para el panel del consejo y evidencia del índice de transformación.",
+    "porque": "Es el expediente único de la iniciativa: cualquiera que la revise (comité, auditor, consejo) encuentra aquí qué es, quién responde, en qué fase está y qué valor y riesgo tiene.",
+    "leer": "Pase el ratón por cada rótulo para ver qué significa. Las etiquetas de colores bajo el título resumen estado, fase, intensidad y ambición.",
+    "donde": "documento 03 §4 (modelo de datos) y documento 01"
+   },
+   "en": {
+    "titulo": "Record · Summary",
+    "que": "All information about the initiative: identification, owners, classification (intensity, ambition, regulatory, technology, autonomy, exposure), lifecycle (phase, days, limit, holds), expected and realised value, risk and compliance, data for the board dashboard and transformation index evidence.",
+    "porque": "It is the initiative's single file: anyone reviewing it (committee, auditor, board) finds here what it is, who is accountable, which phase it is in and what value and risk it carries.",
+    "leer": "Hover over each label to see what it means. The coloured tags below the title summarise status, phase, intensity and ambition.",
+    "donde": "document 03 §4 (data model) and document 01"
+   }
+  },
+  "ficha/gate": {
+   "es": {
+    "titulo": "Ficha · Gate",
+    "que": "El gate que toca a la iniciativa: sus criterios con el estado de cada uno y su justificación, las evidencias (plantillas) aportadas con su versión, autor y verificación, quién verifica y quién decide, el grado de cumplimiento, el resumen de la matriz de riesgos y el registro de la decisión.",
+    "porque": "Un gate solo se decide con evidencia verificada. Esta pestaña muestra si la iniciativa está lista para decidir y qué falta; es lo que revisa el auditor de IA.",
+    "leer": "Criterios obligatorios: sin ellos no se puede continuar. Condicionables: pueden quedar como condición con plazo. Recomendados: su omisión se justifica.",
+    "donde": "documento 21 (criterios de gate) y documento 22 (listas de verificación)"
+   },
+   "en": {
+    "titulo": "Record · Gate",
+    "que": "The gate the initiative faces: its criteria with each one's status and justification, the evidence (templates) provided with version, author and verification, who verifies and who decides, the degree of compliance, the risk matrix summary and the decision record.",
+    "porque": "A gate is only decided with verified evidence. This tab shows whether the initiative is ready for a decision and what is missing; it is what the AI auditor reviews.",
+    "leer": "Mandatory criteria: without them it cannot proceed. Conditionable: they may remain as a condition with a deadline. Recommended: omitting them must be justified.",
+    "donde": "document 21 (gate criteria) and document 22 (checklists)"
+   }
+  },
+  "ficha/condiciones": {
+   "es": {
+    "titulo": "Ficha · Condiciones",
+    "que": "Las condiciones impuestas en decisiones de gate («Continuar con condiciones»): qué se exige, plazo, responsable y estado (abierta, cumplida o vencida).",
+    "porque": "Una condición vencida convierte el resultado del gate en Iterar: seguir las condiciones evita que una iniciativa avance sin cumplir lo que se le pidió.",
+    "donde": "documento 20 §11 y documento 21"
+   },
+   "en": {
+    "titulo": "Record · Conditions",
+    "que": "Conditions imposed in gate decisions («Proceed with conditions»): what is required, deadline, owner and status (open, met or expired).",
+    "porque": "An expired condition turns the gate outcome into Iterate: tracking conditions prevents an initiative from moving on without doing what was asked.",
+    "donde": "document 20 §11 and document 21"
+   }
+  },
+  "ficha/valor": {
+   "es": {
+    "titulo": "Ficha · Valor",
+    "que": "Los importes de la iniciativa: esperados y realizados, de eficiencias, retorno, capacidad liberada, coste recurrente e inversión, con su fórmula, estado (declarado, estimado o validado) y fuente; en iniciativas transversales, el reparto por unidad de negocio; y el acceso a la calculadora T11.",
+    "porque": "El valor de la IA solo cuenta si está medido con reglas y, a ser posible, validado por alguien independiente. Aquí se ve qué es promesa y qué es realidad.",
+    "leer": "«Esperado» es la hipótesis; «realizado», lo medido. Solo las eficiencias materializadas y el retorno suman en el neto; la capacidad liberada no suma hasta que se materializa.",
+    "donde": "documento 40 (reglas de medición del valor) y documento 42 (costes)"
+   },
+   "en": {
+    "titulo": "Record · Value",
+    "que": "The initiative's amounts: expected and realised, for efficiencies, return, freed capacity, recurring cost and investment, with formula, status (declared, estimated or validated) and source; for cross-cutting initiatives, the split by business unit; and access to the T11 calculator.",
+    "porque": "AI value only counts if it is measured with rules and, ideally, validated by someone independent. Here you see what is a promise and what is reality.",
+    "leer": "«Expected» is the hypothesis; «realised», what was measured. Only materialised efficiencies and return add to the net; freed capacity does not add until it materialises.",
+    "donde": "document 40 (value measurement rules) and document 42 (costs)"
+   }
+  },
+  "ficha/riesgos": {
+   "es": {
+    "titulo": "Ficha · Riesgos",
+    "que": "La matriz y el registro de riesgos de esta iniciativa, con sus observaciones, y el botón para descargar el Excel del caso con la matriz y los planes de mitigación y contingencia propuestos.",
+    "porque": "Desde la fase 3 la iniciativa debe tener sus riesgos registrados, valorados y aceptados por el órgano de su nivel; esta pestaña lo muestra y avisa de lo que falta.",
+    "leer": "Puntuación = probabilidad × impacto (1 a 25): Bajo 1–4, Medio 5–9, Alto 10–15, Crítico 16–25.",
+    "donde": "documento 33, P12 y P13"
+   },
+   "en": {
+    "titulo": "Record · Risks",
+    "que": "This initiative's risk matrix and register, with its observations, and the button to download the case Excel with the matrix and proposed mitigation and contingency plans.",
+    "porque": "From phase 3 the initiative must have its risks registered, rated and accepted by the body of their level; this tab shows it and flags what is missing.",
+    "leer": "Score = probability × impact (1 to 25): Low 1–4, Medium 5–9, High 10–15, Critical 16–25.",
+    "donde": "document 33, P12 and P13"
+   }
+  },
+  "ficha/linea": {
+   "es": {
+    "titulo": "Ficha · Línea de tiempo",
+    "que": "Todos los eventos de la iniciativa en orden: alta, entradas en fase, gates, esperas, condiciones, cambios de valor y cierre, con las cifras de cada momento.",
+    "porque": "Es la trazabilidad completa: permite reconstruir qué se decidió, cuándo y con qué información, que es lo que pide una auditoría.",
+    "donde": "documento 38 (auditoría) y documento 03"
+   },
+   "en": {
+    "titulo": "Record · Timeline",
+    "que": "All the initiative's events in order: registration, phase entries, gates, holds, conditions, value changes and closure, with the figures at each moment.",
+    "porque": "It is complete traceability: it lets you reconstruct what was decided, when and with what information, which is what an audit asks for.",
+    "donde": "document 38 (audit) and document 03"
+   }
+  },
+  "ficha/historial": {
+   "es": {
+    "titulo": "Ficha · Historial de gates",
+    "que": "Cada decisión de gate de la iniciativa (código DG-), con la solicitud, la verificación, el grado de cumplimiento, el resultado, las condiciones, el motivo y el tiempo que tardó la decisión.",
+    "porque": "Muestra cómo ha pasado la iniciativa por sus puertas y cuántas veces ha tenido que iterar: más de dos iteraciones en un mismo gate obligan a elevar la decisión.",
+    "donde": "documento 21 y documento 01 §7.3"
+   },
+   "en": {
+    "titulo": "Record · Gate history",
+    "que": "Each gate decision for the initiative (DG- code), with the request, verification, degree of compliance, outcome, conditions, reason and how long the decision took.",
+    "porque": "It shows how the initiative has gone through its gates and how many times it had to iterate: more than two iterations at the same gate require escalating the decision.",
+    "donde": "document 21 and document 01 §7.3"
+   }
+  }
+ },
+ "claves": {
+  "codigo": {
+   "es": "Código único del elemento (iniciativa IA-AAAA-NNN, decisión DEC-, sistema, persona…).",
+   "en": "Unique code of the item (initiative IA-YYYY-NNN, decision DEC-, system, person…)."
+  },
+  "c_codigo": {
+   "es": "Código del criterio o de la condición.",
+   "en": "Code of the criterion or condition."
+  },
+  "c_id": {
+   "es": "Condición impuesta en un gate, con su código.",
+   "en": "Condition imposed at a gate, with its code."
+  },
+  "iniciativa": {
+   "es": "Iniciativa (código y nombre). Pulse para abrir su ficha.",
+   "en": "Initiative (code and name). Click to open its record."
+  },
+  "iniciativas": {
+   "es": "Número de iniciativas.",
+   "en": "Number of initiatives."
+  },
+  "nombre": {
+   "es": "Nombre descriptivo.",
+   "en": "Descriptive name."
+  },
+  "f_fase": {
+   "es": "Fase del ciclo de vida: 0 contexto, 1 oportunidad, 2 hipótesis de valor, 3 viabilidad y riesgo, 4 diseño, 5 entrega y validación, 6 operación, 7 evolución o retirada.",
+   "en": "Lifecycle phase: 0 context, 1 opportunity, 2 value hypothesis, 3 feasibility and risk, 4 design, 5 delivery and validation, 6 operation, 7 evolution or retirement."
+  },
+  "fase": {
+   "es": "Fase del ciclo de vida (0 a 7).",
+   "en": "Lifecycle phase (0 to 7)."
+  },
+  "f_estado": {
+   "es": "Situación de la iniciativa: registrada, en fase, pendiente de gate, en espera, parada, retirada, etc.",
+   "en": "Status of the initiative: registered, in phase, pending gate, on hold, stopped, retired, etc."
+  },
+  "estado": {
+   "es": "Situación actual del elemento.",
+   "en": "Current status of the item."
+  },
+  "c_estado": {
+   "es": "Estado de la condición: abierta, cumplida o vencida.",
+   "en": "Status of the condition: open, met or expired."
+  },
+  "dias_fase": {
+   "es": "Días hábiles que lleva la iniciativa en su fase frente al plazo de referencia de esa fase (Lite o Enterprise). Amarillo: cerca del plazo; rojo: superado.",
+   "en": "Working days the initiative has spent in its phase against that phase's reference limit (Lite or Enterprise). Amber: close to the limit; red: exceeded."
+  },
+  "valor_esp": {
+   "es": "Valor neto anual que se espera: eficiencias + retorno − coste recurrente, según las hipótesis registradas.",
+   "en": "Expected annual net value: efficiencies + return − recurring cost, according to the recorded hypotheses."
+  },
+  "v_alertas": {
+   "es": "Número y tipo de alertas activas de la iniciativa.",
+   "en": "Number and type of active alerts for the initiative."
+  },
+  "alertas": {
+   "es": "Alertas activas.",
+   "en": "Active alerts."
+  },
+  "gestionar_gate": {
+   "es": "Gate afectado (G0 a G5, R6 o G7).",
+   "en": "Gate concerned (G0 to G5, R6 or G7)."
+  },
+  "solicitud": {
+   "es": "Fecha en que se solicitó la decisión del gate.",
+   "en": "Date the gate decision was requested."
+  },
+  "gp_fase": {
+   "es": "Situación del gate o de la revisión: pendiente de verificación, pendiente de decisión, próxima o caducada.",
+   "en": "Status of the gate or review: pending verification, pending decision, upcoming or overdue."
+  },
+  "gp_dias": {
+   "es": "Días hábiles desde la solicitud frente al plazo máximo para decidir.",
+   "en": "Working days since the request against the maximum time to decide."
+  },
+  "bloqueantes": {
+   "es": "Criterios obligatorios aún no cumplidos: mientras haya alguno, no se puede decidir Continuar.",
+   "en": "Mandatory criteria not yet met: while any remain, Proceed cannot be decided."
+  },
+  "gestionar": {
+   "es": "Acceso para abrir el gate y registrar la verificación o la decisión.",
+   "en": "Access to open the gate and record verification or decision."
+  },
+  "editar": {
+   "es": "Botón para modificar el elemento (queda registrado como evento).",
+   "en": "Button to modify the item (recorded as an event)."
+  },
+  "severidad": {
+   "es": "Gravedad: alta (actuar ya), media o informativa.",
+   "en": "Severity: high (act now), medium or informational."
+  },
+  "motivo": {
+   "es": "Por qué se produce la alerta, la observación o la decisión.",
+   "en": "Why the alert, observation or decision arises."
+  },
+  "rg_inherente": {
+   "es": "Nivel del riesgo antes de aplicar controles (probabilidad × impacto).",
+   "en": "Risk level before applying controls (probability × impact)."
+  },
+  "rg_residual": {
+   "es": "Nivel del riesgo después de los controles; es el que se acepta. Puede ser objetivo (previsto) o verificado.",
+   "en": "Risk level after controls; it is the one that is accepted. It can be a target (planned) or verified."
+  },
+  "rg_categoria": {
+   "es": "Categoría del documento 33: estratégico, técnico, datos, económico, legal y cumplimiento, organizativo, reputacional, IA generativa y agentes, seguridad e IA ofensiva, o terceros.",
+   "en": "Category from document 33: strategic, technical, data, economic, legal and compliance, organisational, reputational, generative AI and agents, security and offensive AI, or third parties."
+  },
+  "rg_total": {
+   "es": "Número total de riesgos.",
+   "en": "Total number of risks."
+  },
+  "rg_dlg": {
+   "es": "Riesgo: código (RT- del catálogo si es un riesgo tipo) y descripción.",
+   "en": "Risk: code (RT- from the catalogue if it is a standard risk) and description."
+  },
+  "rg_c_riesgo": {
+   "es": "Riesgo: código y descripción.",
+   "en": "Risk: code and description."
+  },
+  "rg_controles": {
+   "es": "Controles que reducen el riesgo y su eficacia (eficaz, parcial, ineficaz o sin evaluar).",
+   "en": "Controls that reduce the risk and their effectiveness (effective, partial, ineffective or not assessed)."
+  },
+  "rg_c_resp": {
+   "es": "Respuesta elegida (mitigar, transferir, evitar o aceptar) y persona responsable del riesgo.",
+   "en": "Chosen response (mitigate, transfer, avoid or accept) and person accountable for the risk."
+  },
+  "rg_c_acept": {
+   "es": "Quién aceptó el riesgo residual y cuándo; debe ser el órgano que corresponde a su nivel (el consejo en Crítico).",
+   "en": "Who accepted the residual risk and when; it must be the body corresponding to its level (the board for Critical)."
+  },
+  "rg_c_est": {
+   "es": "Estado del riesgo (abierto, en tratamiento, cerrado) y fecha de la próxima revisión; en rojo si está vencida.",
+   "en": "Risk status (open, in treatment, closed) and next review date; red if overdue."
+  },
+  "rg_c_obs": {
+   "es": "Observaciones automáticas: lo que falta según las reglas del documento 33 (contingencia, respuesta, aceptación…).",
+   "en": "Automatic observations: what is missing under document 33 rules (contingency, response, acceptance…)."
+  },
+  "fecha": {
+   "es": "Fecha del hecho.",
+   "en": "Date of the event."
+  },
+  "dc_asunto": {
+   "es": "Asunto de la decisión del consejo.",
+   "en": "Subject of the board decision."
+  },
+  "resultado": {
+   "es": "Resultado de la decisión (aprobado, rechazado, Continuar, Iterar, Parar…).",
+   "en": "Outcome of the decision (approved, rejected, Proceed, Iterate, Stop…)."
+  },
+  "dc_texto": {
+   "es": "Texto literal de la decisión.",
+   "en": "Literal text of the decision."
+  },
+  "rc_texto": {
+   "es": "Recomendación redactada de forma que se pueda comprobar si se ha cumplido.",
+   "en": "Recommendation worded so that it can be checked whether it has been carried out."
+  },
+  "rc_dest": {
+   "es": "A quién va dirigida la recomendación o el encargo.",
+   "en": "Who the recommendation or assignment is addressed to."
+  },
+  "cj_tesis": {
+   "es": "Si el consejo ha aprobado la tesis de IA de la compañía (decisión C2).",
+   "en": "Whether the board has approved the company's AI thesis (C2 decision)."
+  },
+  "cj_esferas_t": {
+   "es": "Esferas de valor en las que la tesis fija Transformar como ambición (condición IT-D1 del índice).",
+   "en": "Value spheres in which the thesis sets Transform as the ambition (index condition IT-D1)."
+  },
+  "cj_apuestas": {
+   "es": "Apuestas de Transformar que el consejo ha aprobado.",
+   "en": "Transform bets approved by the board."
+  },
+  "cj_limite": {
+   "es": "Cuántas de esas apuestas tienen un límite de inversión por etapa.",
+   "en": "How many of those bets have an investment cap per stage."
+  },
+  "cj_revisiones": {
+   "es": "Revisiones de las apuestas registradas por el consejo.",
+   "en": "Reviews of the bets recorded by the board."
+  },
+  "cj_etapas": {
+   "es": "Decisiones de continuar a la siguiente etapa tomadas con hitos medibles.",
+   "en": "Decisions to move to the next stage taken on measurable milestones."
+  },
+  "cj_ingresos": {
+   "es": "Ingresos totales de la compañía en doce meses; denominador de la señal 6 del índice (ingresos habilitados por IA).",
+   "en": "Company total revenue over twelve months; denominator of index signal 6 (AI-enabled revenue)."
+  },
+  "cj_ingresos_fecha": {
+   "es": "Periodo o fecha de corte de esos ingresos.",
+   "en": "Period or cut-off date of that revenue."
+  },
+  "cj_d3": {
+   "es": "Condición IT-D3: si la compañía presenta la IA como transformación del negocio en su plan estratégico o sus comunicaciones.",
+   "en": "Condition IT-D3: whether the company presents AI as business transformation in its strategic plan or communications."
+  },
+  "cj_d3_ev": {
+   "es": "Documentos y fechas que prueban IT-D3.",
+   "en": "Documents and dates that evidence IT-D3."
+  },
+  "cj_mad_nivel": {
+   "es": "Nivel global de madurez del último diagnóstico T15 (0 a 5).",
+   "en": "Overall maturity level of the latest T15 assessment (0 to 5)."
+  },
+  "cj_mad_fecha": {
+   "es": "Código y fecha de corte del diagnóstico.",
+   "en": "Code and cut-off date of the assessment."
+  },
+  "cj_mad_modalidad": {
+   "es": "Autodiagnóstico, verificada o valoración independiente; solo las verificadas valen para el consejo.",
+   "en": "Self-assessment, verified or independent assessment; only verified ones are valid for the board."
+  },
+  "cj_mad_tope": {
+   "es": "Si el nivel global está limitado por el nivel de D1 (estrategia y gobierno) o D6 (riesgo) más uno.",
+   "en": "Whether the overall level is capped at the level of D1 (strategy and governance) or D6 (risk) plus one."
+  },
+  "cj_mad_dims": {
+   "es": "Nivel de cada dimensión D1 a D7.",
+   "en": "Level of each dimension D1 to D7."
+  },
+  "n_cerr": {
+   "es": "Estancias ya terminadas que se han medido.",
+   "en": "Stays already finished that have been measured."
+  },
+  "mediana": {
+   "es": "Valor central: la mitad de los casos tarda menos y la mitad más.",
+   "en": "Middle value: half of the cases take less and half more."
+  },
+  "p80": {
+   "es": "El 80 % de los casos tarda menos que este valor; sirve para fijar plazos realistas.",
+   "en": "80% of cases take less than this value; useful to set realistic limits."
+  },
+  "n_curso": {
+   "es": "Estancias que siguen abiertas (no se incluyen en la mediana).",
+   "en": "Stays still open (not included in the median)."
+  },
+  "n_dec": {
+   "es": "Decisiones de gate tomadas.",
+   "en": "Gate decisions taken."
+  },
+  "n_pend": {
+   "es": "Decisiones pendientes.",
+   "en": "Pending decisions."
+  },
+  "tramo": {
+   "es": "Tramo del ciclo que se mide (por ejemplo, registro → G3 o G3 → producción).",
+   "en": "Lifecycle segment measured (for example registration → G3 or G3 → production)."
+  },
+  "continuan": {
+   "es": "Porcentaje de decisiones que fueron Continuar o Continuar con condiciones.",
+   "en": "Share of decisions that were Proceed or Proceed with conditions."
+  },
+  "n_finales": {
+   "es": "Decisiones con resultado final (no iteraciones).",
+   "en": "Decisions with a final outcome (not iterations)."
+  },
+  "sev_media": {
+   "es": "Número medio.",
+   "en": "Average number."
+  },
+  "maximo": {
+   "es": "Valor más alto observado.",
+   "en": "Highest value observed."
+  },
+  "grado": {
+   "es": "Porcentaje de criterios aplicables cumplidos en el gate.",
+   "en": "Share of applicable criteria met at the gate."
+  },
+  "top_bloq": {
+   "es": "Criterios que con más frecuencia impiden continuar.",
+   "en": "Criteria that most often prevent proceeding."
+  },
+  "veces": {
+   "es": "Número de veces.",
+   "en": "Number of times."
+  },
+  "motivo_espera": {
+   "es": "Causa externa que puso la iniciativa en espera (proveedor, regulación, presupuesto…).",
+   "en": "External cause that put the initiative on hold (supplier, regulation, budget…)."
+  },
+  "episodios": {
+   "es": "Número de esperas.",
+   "en": "Number of holds."
+  },
+  "dias_total": {
+   "es": "Días acumulados.",
+   "en": "Cumulative days."
+  },
+  "motivo_cierre": {
+   "es": "Motivo codificado por el que se paró o retiró la iniciativa.",
+   "en": "Coded reason why the initiative was stopped or retired."
+  },
+  "sin_dato": {
+   "es": "Iniciativas sin ese dato.",
+   "en": "Initiatives without that figure."
+  },
+  "con_dato": {
+   "es": "Iniciativas con ese dato.",
+   "en": "Initiatives with that figure."
+  },
+  "r_valor": {
+   "es": "Valor neto anual esperado de las iniciativas de la fase.",
+   "en": "Expected annual net value of the phase's initiatives."
+  },
+  "prob": {
+   "es": "Porcentaje de iniciativas que, históricamente, llegan a producción desde esa fase.",
+   "en": "Share of initiatives that have historically reached production from that phase."
+  },
+  "m_ponderado": {
+   "es": "Valor esperado × probabilidad histórica: lo que es realista esperar de la fase.",
+   "en": "Expected value × historical probability: what it is realistic to expect from the phase."
+  },
+  "trimestre": {
+   "es": "Trimestre de registro de las iniciativas (cohorte).",
+   "en": "Quarter in which the initiatives were registered (cohort)."
+  },
+  "registradas": {
+   "es": "Iniciativas registradas en el trimestre.",
+   "en": "Initiatives registered in the quarter."
+  },
+  "llegan_g3": {
+   "es": "Cuántas de ellas han superado G3 (viabilidad y riesgo).",
+   "en": "How many of them passed G3 (feasibility and risk)."
+  },
+  "llegan_prod": {
+   "es": "Cuántas han llegado a producción.",
+   "en": "How many reached production."
+  },
+  "cerradas_sin": {
+   "es": "Cuántas se cerraron sin llegar a producción.",
+   "en": "How many were closed without reaching production."
+  },
+  "med_prod": {
+   "es": "Mediana de días desde el registro hasta la puesta en producción.",
+   "en": "Median days from registration to go-live."
+  },
+  "proveedores": {
+   "es": "Proveedores de IA implicados.",
+   "en": "AI suppliers involved."
+  },
+  "cargo": {
+   "es": "Puesto de la persona.",
+   "en": "Position of the person."
+  },
+  "f_area": {
+   "es": "Área o unidad de negocio.",
+   "en": "Area or business unit."
+  },
+  "organo": {
+   "es": "Órgano de gobierno (consejo, comité de IA, oficina de IA…).",
+   "en": "Governance body (board, AI committee, AI office…)."
+  },
+  "servicios": {
+   "es": "Servicios de IA que presta el proveedor.",
+   "en": "AI services provided by the supplier."
+  },
+  "exigencia": {
+   "es": "Nivel de exigencia al proveedor: N1 básico, N2 reforzado, N3 máximo (documento 36).",
+   "en": "Requirement level for the supplier: N1 basic, N2 enhanced, N3 maximum (document 36)."
+  },
+  "entidad": {
+   "es": "Tipo de dato del registro (iniciativas, eventos, decisiones, riesgos…).",
+   "en": "Type of register data (initiatives, events, decisions, risks…)."
+  },
+  "registros": {
+   "es": "Número de registros de ese tipo.",
+   "en": "Number of records of that type."
+  },
+  "descripcion": {
+   "es": "Descripción de la iniciativa en lenguaje de negocio.",
+   "en": "Description of the initiative in business language."
+  },
+  "f_alcance": {
+   "es": "Alcance: caso único, iniciativa transversal (varias unidades) o plataforma habilitadora.",
+   "en": "Scope: single case, cross-cutting initiative (several units) or enabling platform."
+  },
+  "fecha_registro": {
+   "es": "Fecha de alta en el registro.",
+   "en": "Date of registration."
+  },
+  "etiquetas": {
+   "es": "Etiquetas libres para buscar y agrupar.",
+   "en": "Free tags to search and group."
+  },
+  "sistemas": {
+   "es": "Sistemas de IA del inventario (T02) que usa.",
+   "en": "AI systems from the inventory (T02) it uses."
+  },
+  "auditor": {
+   "es": "Auditor de IA que verifica las evidencias de los gates (obligatorio en Enterprise).",
+   "en": "AI auditor who verifies gate evidence (mandatory in Enterprise)."
+  },
+  "esfera_p": {
+   "es": "Esfera del mapa de impacto donde genera valor principalmente (documento 10).",
+   "en": "Impact-map sphere where it mainly creates value (document 10)."
+  },
+  "esfera_s": {
+   "es": "Otra esfera en la que también influye.",
+   "en": "Another sphere it also affects."
+  },
+  "amb_prop": {
+   "es": "Ambición que propone el equipo: Optimizar, Aumentar o Transformar.",
+   "en": "Ambition proposed by the team: Optimise, Augment or Transform."
+  },
+  "amb_conf": {
+   "es": "Ambición confirmada en G2 con el clasificador T05.",
+   "en": "Ambition confirmed at G2 with the T05 classifier."
+  },
+  "amb_real": {
+   "es": "Ambición que muestran los resultados en operación; si difiere de la confirmada, se señala.",
+   "en": "Ambition shown by results in operation; flagged if it differs from the confirmed one."
+  },
+  "ambicion": {
+   "es": "Nivel de ambición: Optimizar, Aumentar o Transformar.",
+   "en": "Ambition level: Optimise, Augment or Transform."
+  },
+  "f_intensidad": {
+   "es": "Intensidad de gobierno: Lite o Enterprise (basta un criterio Enterprise, documento 01 §9).",
+   "en": "Governance intensity: Lite or Enterprise (one Enterprise criterion is enough, document 01 §9)."
+  },
+  "det_int": {
+   "es": "Resultado del determinador de intensidad (T04) y criterios que se cumplen.",
+   "en": "Result of the intensity determiner (T04) and the criteria met."
+  },
+  "det_amb": {
+   "es": "Resultado del clasificador de ambición (T05).",
+   "en": "Result of the ambition classifier (T05)."
+  },
+  "f_regulatoria": {
+   "es": "Clasificación según el Reglamento de IA: prohibido, alto riesgo, transparencia, riesgo mínimo o pendiente.",
+   "en": "Classification under the AI Act: prohibited, high risk, transparency, minimal risk or pending."
+  },
+  "regulatoria": {
+   "es": "Clasificación según el Reglamento de IA.",
+   "en": "Classification under the AI Act."
+  },
+  "f_tecnologia": {
+   "es": "Tipo de IA: predictiva, generativa, agéntica, visión, etc.",
+   "en": "Type of AI: predictive, generative, agentic, vision, etc."
+  },
+  "tecnologia": {
+   "es": "Tipo de IA.",
+   "en": "Type of AI."
+  },
+  "autonomia": {
+   "es": "Autonomía A0 (sin acción) a A3 (actúa sin validación humana); A2 y A3 con efecto sobre terceros exigen Enterprise.",
+   "en": "Autonomy A0 (no action) to A3 (acts without human validation); A2 and A3 affecting third parties require Enterprise."
+  },
+  "f_exposicion": {
+   "es": "Quién ve o recibe los resultados: interna, clientes o público.",
+   "en": "Who sees or receives the outputs: internal, customers or public."
+  },
+  "f_tipo_valor": {
+   "es": "Tipo de valor: eficiencia, retorno, capacidad liberada, riesgo evitado, cumplimiento o estratégico.",
+   "en": "Type of value: efficiency, return, freed capacity, risk avoided, compliance or strategic."
+  },
+  "entrada_fase": {
+   "es": "Fecha de entrada en la fase actual.",
+   "en": "Date of entry into the current phase."
+  },
+  "dias_sin_espera": {
+   "es": "Días en la fase descontando las esperas por causa externa.",
+   "en": "Days in phase excluding holds for external causes."
+  },
+  "plazo_ref": {
+   "es": "Plazo de referencia de la fase (según intensidad), aprobado en C2.",
+   "en": "Reference time limit of the phase (by intensity), approved at C2."
+  },
+  "iteracion": {
+   "es": "Número de veces que se ha repetido ese gate; más de dos obliga a elevar.",
+   "en": "Number of times that gate has been repeated; more than two requires escalation."
+  },
+  "espera": {
+   "es": "Si está en espera y por qué.",
+   "en": "Whether it is on hold and why."
+  },
+  "reanudacion": {
+   "es": "Fecha prevista para reanudar tras la espera.",
+   "en": "Planned date to resume after the hold."
+  },
+  "prox_rev": {
+   "es": "Fecha de la próxima revisión de continuidad (R6) en operación.",
+   "en": "Date of the next continuity review (R6) in operation."
+  },
+  "cierre": {
+   "es": "Fecha y tipo de cierre (parada o retirada).",
+   "en": "Date and type of closure (stop or retirement)."
+  },
+  "v_realizado": {
+   "es": "Valor neto anual medido en operación.",
+   "en": "Annual net value measured in operation."
+  },
+  "v_pct": {
+   "es": "Qué parte del valor realizado ha validado Control de Gestión.",
+   "en": "Share of realised value validated by Management Control."
+  },
+  "inv_real": {
+   "es": "Inversión ya gastada.",
+   "en": "Investment already spent."
+  },
+  "inv_pend": {
+   "es": "Inversión aprobada que falta por gastar.",
+   "en": "Approved investment still to be spent."
+  },
+  "riesgo_res": {
+   "es": "Nivel residual del riesgo más alto de la iniciativa.",
+   "en": "Residual level of the initiative's highest risk."
+  },
+  "evaluaciones": {
+   "es": "Evaluaciones de impacto exigidas (derechos fundamentales, protección de datos) y su estado.",
+   "en": "Required impact assessments (fundamental rights, data protection) and their status."
+  },
+  "cond_abiertas": {
+   "es": "Condiciones de gate abiertas y cuántas han vencido.",
+   "en": "Open gate conditions and how many have expired."
+  },
+  "nc_abiertas": {
+   "es": "No conformidades abiertas (incumplimientos del marco detectados).",
+   "en": "Open nonconformities (framework breaches detected)."
+  },
+  "incidentes": {
+   "es": "Incidentes de IA registrados.",
+   "en": "AI incidents recorded."
+  },
+  "riesgos_reg": {
+   "es": "Riesgos en el registro de riesgos de la iniciativa.",
+   "en": "Risks in the initiative's risk register."
+  },
+  "p_complejidad": {
+   "es": "Complejidad para el panel: baja, media o alta; fija el límite de días en desarrollo.",
+   "en": "Complexity for the dashboard: low, medium or high; sets the day limit in development."
+  },
+  "p_prioridad": {
+   "es": "Prioridad asignada por el comité.",
+   "en": "Priority assigned by the committee."
+  },
+  "p_plazo": {
+   "es": "Cuándo se espera que el valor se materialice.",
+   "en": "When the value is expected to materialise."
+  },
+  "p_ctrl_seg": {
+   "es": "Estado de la revisión de seguridad.",
+   "en": "Status of the security review."
+  },
+  "p_ctrl_muc": {
+   "es": "Estado del manual de uso y control (instrucciones, supervisión humana, límites).",
+   "en": "Status of the use and control manual (instructions, human oversight, limits)."
+  },
+  "p_ctrl_iao": {
+   "es": "Estado del análisis del riesgo de ataques con IA.",
+   "en": "Status of the AI-attack risk analysis."
+  },
+  "p_obs": {
+   "es": "Comentarios del consejo asesor para el panel.",
+   "en": "Advisory board comments for the dashboard."
+  },
+  "c_criterio": {
+   "es": "Criterio del gate (código G<n>.<nn>) y su tipo: obligatorio, condicionable o recomendado.",
+   "en": "Gate criterion (code G<n>.<nn>) and its type: mandatory, conditionable or recommended."
+  },
+  "c_just": {
+   "es": "Justificación del cumplimiento, o motivo si no aplica o se omite.",
+   "en": "Justification of compliance, or reason if not applicable or omitted."
+  },
+  "plantilla": {
+   "es": "Plantilla del marco que sirve de evidencia (P01–P71).",
+   "en": "Framework template used as evidence (P01–P71)."
+  },
+  "titulo": {
+   "es": "Título del documento aportado.",
+   "en": "Title of the document provided."
+  },
+  "version": {
+   "es": "Versión del documento.",
+   "en": "Version of the document."
+  },
+  "autor": {
+   "es": "Quién lo elaboró.",
+   "en": "Who prepared it."
+  },
+  "verificacion": {
+   "es": "Si la evidencia está verificada, por quién y cuándo.",
+   "en": "Whether the evidence is verified, by whom and when."
+  },
+  "g_verifica": {
+   "es": "Quién verifica las evidencias del gate.",
+   "en": "Who verifies the gate evidence."
+  },
+  "g_decide": {
+   "es": "Órgano que decide el gate.",
+   "en": "Body that decides the gate."
+  },
+  "aplicables": {
+   "es": "Criterios que aplican a esta iniciativa.",
+   "en": "Criteria applicable to this initiative."
+  },
+  "cumplen": {
+   "es": "Criterios aplicables cumplidos.",
+   "en": "Applicable criteria met."
+  },
+  "cond_ab": {
+   "es": "Criterios condicionables aún abiertos (pueden quedar como condición).",
+   "en": "Conditionable criteria still open (may remain as a condition)."
+  },
+  "rec_omit": {
+   "es": "Criterios recomendados que se omiten (con justificación).",
+   "en": "Recommended criteria omitted (with justification)."
+  },
+  "momento": {
+   "es": "Esperado (hipótesis) o realizado (medido).",
+   "en": "Expected (hypothesis) or realised (measured)."
+  },
+  "tipo": {
+   "es": "Tipo de importe o de elemento.",
+   "en": "Type of amount or item."
+  },
+  "tipo_sis": {
+   "es": "Tipo de sistema: modelo, plataforma, servicio, agente…",
+   "en": "Type of system: model, platform, service, agent…"
+  },
+  "importe": {
+   "es": "Cantidad en euros (al año si es recurrente).",
+   "en": "Amount in euros (per year if recurring)."
+  },
+  "formula": {
+   "es": "Cómo se calcula el importe (unidades × valor unitario, atribución, supuestos).",
+   "en": "How the amount is calculated (units × unit value, attribution, assumptions)."
+  },
+  "decision": {
+   "es": "Resultado del gate: Continuar, Continuar con condiciones, Iterar, Pivotar o Parar (en G7: Escalar, Iterar o Retirar).",
+   "en": "Gate outcome: Proceed, Proceed with conditions, Iterate, Pivot or Stop (at G7: Scale, Iterate or Retire)."
+  },
+  "dias_decision": {
+   "es": "Días hábiles desde la solicitud hasta la decisión.",
+   "en": "Working days from request to decision."
+  },
+  "r_condiciones": {
+   "es": "Condiciones impuestas en la decisión.",
+   "en": "Conditions imposed in the decision."
+  },
+  "periodo": {
+   "es": "Periodo al que se refiere el dato.",
+   "en": "Period the figure refers to."
+  },
+  "plazo_c": {
+   "es": "Fecha límite para cumplir la condición.",
+   "en": "Deadline to meet the condition."
+  },
+  "responsable": {
+   "es": "Persona responsable.",
+   "en": "Person accountable."
+  },
+  "media": {
+   "es": "Valor medio.",
+   "en": "Average value."
+  },
+  "at_estancada": {
+   "es": "Iniciativas que llevan en su fase más que el plazo de referencia.",
+   "en": "Initiatives that have been in their phase longer than the reference limit."
+  },
+  "at_decision": {
+   "es": "Gates cuya decisión supera el plazo máximo desde la solicitud.",
+   "en": "Gates whose decision exceeds the maximum time since the request."
+  },
+  "at_elevar": {
+   "es": "Gates con más de dos iteraciones: la decisión debe subir al órgano superior.",
+   "en": "Gates with more than two iterations: the decision must go up to the higher body."
+  },
+  "at_condicion": {
+   "es": "Condiciones de gate no cumplidas en plazo: el resultado pasa a Iterar.",
+   "en": "Gate conditions not met on time: the outcome becomes Iterate."
+  },
+  "at_revision": {
+   "es": "Revisiones de continuidad (R6) de sistemas en operación que han pasado su fecha.",
+   "en": "Continuity reviews (R6) of systems in operation past their date."
+  },
+  "at_espera": {
+   "es": "Iniciativas en espera cuya fecha prevista de reanudación ya ha pasado.",
+   "en": "Initiatives on hold whose planned resumption date has passed."
+  },
+  "at_evidencias": {
+   "es": "Evidencias de gate aportadas pero no verificadas: sin verificación no hay decisión.",
+   "en": "Gate evidence provided but not verified: without verification there is no decision."
+  },
+  "at_roles": {
+   "es": "Una misma persona ocupa roles que deben estar separados (por ejemplo, construir y auditar).",
+   "en": "The same person holds roles that must be separate (for example building and auditing)."
+  },
+  "at_nc": {
+   "es": "No conformidades abiertas que han superado su plazo de corrección.",
+   "en": "Open nonconformities past their correction deadline."
+  },
+  "at_adopcion": {
+   "es": "Iniciativas transversales con adopción por debajo del umbral en alguna unidad.",
+   "en": "Cross-cutting initiatives with adoption below the threshold in some unit."
+  },
+  "at_riesgos": {
+   "es": "Observaciones de la matriz de riesgos que bloquean o exigen acción.",
+   "en": "Risk matrix observations that block or require action."
+  },
+  "excluido": {
+   "es": "Valor esperado de fases sin historial suficiente para calcular su probabilidad; no se pondera.",
+   "en": "Expected value of phases without enough history to calculate their probability; not weighted."
+  },
+  "k_activas": {
+   "es": "Iniciativas no cerradas (ni paradas ni retiradas).",
+   "en": "Initiatives not closed (neither stopped nor retired)."
+  },
+  "k_estancadas": {
+   "es": "Iniciativas que superan el plazo de referencia de su fase.",
+   "en": "Initiatives past the reference time limit of their phase."
+  },
+  "k_gates": {
+   "es": "Decisiones de gate solicitadas y aún no tomadas.",
+   "en": "Gate decisions requested and not yet taken."
+  },
+  "k_prod": {
+   "es": "Iniciativas en operación (fases 6 y 7).",
+   "en": "Initiatives in operation (phases 6 and 7)."
+  },
+  "k_valor": {
+   "es": "Suma del valor neto anual esperado de las iniciativas activas; entre paréntesis, cuántas tienen dato.",
+   "en": "Sum of the expected annual net value of active initiatives; in brackets, how many have the figure."
+  },
+  "k_vencidas": {
+   "es": "Condiciones de gate que han pasado su plazo sin cumplirse.",
+   "en": "Gate conditions past their deadline without being met."
+  },
+  "rg_k_alto": {
+   "es": "Riesgos con nivel residual Alto (10–15).",
+   "en": "Risks with High residual level (10–15)."
+  },
+  "rg_k_crit": {
+   "es": "Riesgos con nivel residual Crítico (16–25): requieren aprobación del consejo.",
+   "en": "Risks with Critical residual level (16–25): require board approval."
+  },
+  "rg_k_obs": {
+   "es": "Observaciones que impiden decidir un gate o exigen actuar.",
+   "en": "Observations that block a gate decision or require action."
+  },
+  "rg_k_sin": {
+   "es": "Iniciativas que ya deberían tener registro de riesgos (desde la fase 3) y no lo tienen.",
+   "en": "Initiatives that should already have a risk register (from phase 3) and do not."
+  },
+  "rg_k_total": {
+   "es": "Riesgos no cerrados.",
+   "en": "Risks not closed."
+  },
+  "sis_alto": {
+   "es": "Sistemas clasificados de alto riesgo o todavía sin clasificar.",
+   "en": "Systems classified as high risk or not yet classified."
+  },
+  "sis_sin_ini": {
+   "es": "Sistemas que no pertenecen a ninguna iniciativa (uso corporativo u otros): también deben estar inventariados.",
+   "en": "Systems not belonging to any initiative (corporate use or other): they must be inventoried too."
+  },
+  "sis_total": {
+   "es": "Sistemas de IA inventariados.",
+   "en": "AI systems inventoried."
+  },
+  "total_suficiente": {
+   "es": "Suma de las fases cuya probabilidad se puede calcular con el historial.",
+   "en": "Sum of the phases whose probability can be calculated from history."
+  },
+  "v_esperado": {
+   "es": "Valor neto anual esperado según la hipótesis.",
+   "en": "Expected annual net value according to the hypothesis."
+  },
+  "rp_unidad": {
+   "es": "Unidad de negocio que usa la iniciativa transversal; «Común» recoge el coste que no se reparte.",
+   "en": "Business unit using the cross-cutting initiative; «Common» holds the cost that is not allocated."
+  },
+  "rp_despliegue": {
+   "es": "Situación en la unidad: previsto, piloto, en uso o retirado.",
+   "en": "Status in the unit: planned, pilot, in use or retired."
+  },
+  "rp_licencias": {
+   "es": "Licencias usadas de verdad sobre las pagadas; en rojo por debajo del umbral de adopción.",
+   "en": "Licences actually used over those paid for; red below the adoption threshold."
+  },
+  "rp_usuarios": {
+   "es": "Personas que usan la herramienta al menos una vez por semana.",
+   "en": "People using the tool at least once a week."
+  },
+  "rp_horas": {
+   "es": "Horas que la unidad declara ahorrar cada mes (declaración, no ahorro validado).",
+   "en": "Hours the unit declares it saves each month (a declaration, not a validated saving)."
+  },
+  "rp_coste": {
+   "es": "Coste anual imputado a la unidad desde el primer día.",
+   "en": "Annual cost charged to the unit from day one."
+  },
+  "rp_valor": {
+   "es": "Valor ya convertido en menor coste o en capacidad reasignada con destino: lo único que suma en el neto.",
+   "en": "Value already turned into lower cost or capacity reassigned to a purpose: the only part that adds to the net."
+  },
+  "ix_itp2": {
+   "es": "Si la iniciativa rediseña el proceso de extremo a extremo (no solo automatiza tareas), verificado en un gate; alimenta la señal 4 del índice.",
+   "en": "Whether the initiative redesigns the process end to end (not just automating tasks), verified at a gate; feeds index signal 4."
+  },
+  "ix_itp3": {
+   "es": "Si cambia roles o quién decide (personas y sistemas), verificado; alimenta la señal 5 del índice.",
+   "en": "Whether it changes roles or who decides (people and systems), verified; feeds index signal 5."
+  },
+  "ix_sup": {
+   "es": "Si el diseño de supervisión humana (P17) está verificado; necesario para contar en la señal 5.",
+   "en": "Whether the human oversight design (P17) is verified; needed to count in signal 5."
+  },
+  "ix_unidad": {
+   "es": "Si rediseña una unidad organizativa completa, no solo un proceso.",
+   "en": "Whether it redesigns an entire organisational unit, not just a process."
+  },
+  "ix_lib": {
+   "es": "Horas de capacidad liberada medidas en el año.",
+   "en": "Hours of freed capacity measured in the year."
+  },
+  "ix_mat": {
+   "es": "De ellas, las que ya se han convertido en menor coste real.",
+   "en": "Of those, the ones already turned into lower actual cost."
+  },
+  "ix_reas": {
+   "es": "De ellas, las reasignadas de forma explícita a otra actividad.",
+   "en": "Of those, the ones explicitly reassigned to another activity."
+  },
+  "ix_dest": {
+   "es": "A qué actividad se han reasignado esas horas.",
+   "en": "Which activity those hours were reassigned to."
+  },
+  "ix_roles": {
+   "es": "Roles que han cambiado con la iniciativa.",
+   "en": "Roles that have changed with the initiative."
+  },
+  "ix_cap_fecha": {
+   "es": "Fecha de la medición de la capacidad.",
+   "en": "Date capacity was measured."
+  }
+ },
+ "textos": {
+  "es": {
+   "Crítico": "Nivel de riesgo 16–25: lo acepta el consejo; bloquea G3 y G5 sin esa aprobación.",
+   "Alto": "Nivel de riesgo 10–15: requiere plan de contingencia y aceptación del comité de IA.",
+   "Medio": "Nivel de riesgo 5–9: requiere respuesta registrada.",
+   "Bajo": "Nivel de riesgo 1–4: se acepta en el nivel operativo.",
+   "Probabilidad \\ ImpactoP \\ I": "Filas: probabilidad (1 rara a 5 casi segura); columnas: impacto (1 insignificante a 5 crítico). Cada celda cuenta los riesgos con esa valoración.",
+   "1 · InsignificanteI 1": "Impacto 1: efecto despreciable.",
+   "2 · MenorI 2": "Impacto 2: efecto menor, fácil de corregir.",
+   "3 · ModeradoI 3": "Impacto 3: efecto apreciable en coste, servicio o personas.",
+   "4 · GraveI 4": "Impacto 4: daño serio a clientes, personas, finanzas o cumplimiento.",
+   "5 · CríticoI 5": "Impacto 5: daño extremo; la regla de impacto extremo exige tratamiento aunque la probabilidad sea baja.",
+   "5 · Casi seguraP 5": "Probabilidad 5: se espera que ocurra.",
+   "4 · ProbableP 4": "Probabilidad 4: es probable que ocurra.",
+   "3 · PosibleP 3": "Probabilidad 3: podría ocurrir.",
+   "2 · ImprobableP 2": "Probabilidad 2: poco probable.",
+   "1 · RaraP 1": "Probabilidad 1: solo en circunstancias excepcionales.",
+   "Plazo de referencia (Lite / Enterprise)": "Días hábiles de referencia para la fase en intensidad Lite y en Enterprise; los fija C2 y se recalibran en C5.",
+   "n": "Número de casos.",
+   "Continuar": "Resultado de gate: la iniciativa pasa a la siguiente fase.",
+   "Continuar con condiciones": "Pasa a la siguiente fase con condiciones que deben cumplirse en plazo.",
+   "Continuar la operación": "Resultado de R6: el sistema sigue en operación.",
+   "Escalar": "Resultado de G7: se amplía a más unidades o usos (nueva fase 0).",
+   "Iterar": "Se repite la fase para corregir lo que falta; tras dos iteraciones se eleva la decisión.",
+   "Pivotar": "Se replantea la hipótesis y se vuelve a la fase 2.",
+   "Adelantar G7": "Resultado de R6: una desviación obliga a decidir antes la evolución o retirada.",
+   "Parar": "Se detiene la iniciativa antes de producción.",
+   "Retirar": "Resultado de G7: se retira el sistema de operación.",
+   "Parada": "Iniciativa detenida antes de producción.",
+   "Retirada": "Sistema retirado de operación.",
+   "Optimizar": "Ambición: hacer mejor lo mismo (eficiencia).",
+   "Aumentar": "Ambición: ampliar capacidades o ingresos del negocio actual.",
+   "Transformar": "Ambición: cambiar el modelo de negocio u operativo; la aprueba el consejo en G2 y G7.",
+   "Lite": "Intensidad de gobierno reducida para iniciativas sin ningún criterio Enterprise.",
+   "Enterprise": "Intensidad completa: basta un criterio (alto riesgo, decisiones sobre personas, exposición directa, agentes que actúan, datos protegidos, función crítica, Transformar o inversión alta).",
+   "Patrocinador de IA": "Directivo que responde del valor de la iniciativa y la defiende ante los órganos.",
+   "Responsable de producto de IA": "Persona que dirige la iniciativa en el día a día.",
+   "Responsable técnico de IA": "Responsable de la construcción técnica.",
+   "Responsable de operación de IA": "Responsable de operar y monitorizar el sistema en producción.",
+   "Responsable de riesgos de IA": "Segunda línea: revisa riesgos y cumplimiento de la iniciativa.",
+   "Ambición": "Nivel de ambición: Optimizar, Aumentar o Transformar.",
+   "Intensidad": "Intensidad de gobierno: Lite o Enterprise.",
+   "Verifica": "Quién verifica las evidencias.",
+   "Decide": "Órgano que decide.",
+   "Tipo": "Tipo de elemento.",
+   "Estado": "Situación actual.",
+   "Clasificación regulatoria": "Clasificación según el Reglamento de IA.",
+   "Tecnología": "Tipo de IA.",
+   "Autonomía": "Nivel de autonomía A0 a A3.",
+   "Responsable": "Persona responsable.",
+   "Próxima revisión de continuidad": "Fecha de la próxima revisión R6.",
+   "Periodo": "Periodo del dato.",
+   "Fuente": "De dónde sale el dato."
+  },
+  "en": {
+   "AI Technical Owner": "Person accountable for the technical build.",
+   "AI Operations Owner": "Person accountable for operating and monitoring the system in production.",
+   "AI Risk Owner": "Second line: reviews the initiative's risks and compliance.",
+   "Reference time limit (Lite / Enterprise)": "Reference working days for the phase at Lite and Enterprise intensity; set at C2 and recalibrated at C5.",
+   "Likelihood \\ ImpactP \\ I": "Rows: likelihood (1 rare to 5 almost certain); columns: impact (1 negligible to 5 critical). Each cell counts the risks with that rating.",
+   "1 · NegligibleI 1": "Impact 1: negligible effect.",
+   "2 · MinorI 2": "Impact 2: minor effect, easy to correct.",
+   "3 · ModerateI 3": "Impact 3: noticeable effect on cost, service or people.",
+   "4 · MajorI 4": "Impact 4: serious harm to customers, people, finances or compliance.",
+   "5 · CriticalI 5": "Impact 5: extreme harm; the extreme-impact rule requires treatment even if likelihood is low.",
+   "5 · Almost certainP 5": "Likelihood 5: expected to occur.",
+   "4 · LikelyP 4": "Likelihood 4: likely to occur.",
+   "3 · PossibleP 3": "Likelihood 3: could occur.",
+   "2 · UnlikelyP 2": "Likelihood 2: unlikely.",
+   "1 · RareP 1": "Likelihood 1: only in exceptional circumstances.",
+   "Critical": "Risk level 16–25: accepted by the board; blocks G3 and G5 without that approval.",
+   "High": "Risk level 10–15: requires a contingency plan and acceptance by the AI committee.",
+   "Medium": "Risk level 5–9: requires a recorded response.",
+   "Low": "Risk level 1–4: accepted at operational level.",
+   "Proceed": "Gate outcome: the initiative moves to the next phase.",
+   "Proceed with conditions": "Moves to the next phase with conditions that must be met on time.",
+   "Continue operation": "R6 outcome: the system stays in operation.",
+   "Scale": "G7 outcome: extended to more units or uses (new phase 0).",
+   "Iterate": "The phase is repeated to fix what is missing; after two iterations the decision is escalated.",
+   "Pivot": "The hypothesis is reframed and it returns to phase 2.",
+   "Bring G7 forward": "R6 outcome: a deviation requires deciding evolution or retirement earlier.",
+   "Stop": "The initiative is stopped before production.",
+   "Retire": "G7 outcome: the system is withdrawn from operation.",
+   "Stopped": "Initiative stopped before production.",
+   "Retired": "System withdrawn from operation.",
+   "Optimise": "Ambition: do the same better (efficiency).",
+   "Augment": "Ambition: extend capabilities or revenue of the current business.",
+   "Transform": "Ambition: change the business or operating model; approved by the board at G2 and G7.",
+   "Lite": "Reduced governance intensity for initiatives meeting no Enterprise criterion.",
+   "Enterprise": "Full intensity: one criterion is enough (high risk, decisions about people, direct exposure, acting agents, protected data, critical function, Transform or high investment).",
+   "AI Sponsor": "Executive accountable for the initiative's value who champions it before the bodies.",
+   "AI Product Owner": "Person leading the initiative day to day.",
+   "AI Technical Lead": "Person accountable for the technical build.",
+   "AI Operations Lead": "Person accountable for operating and monitoring the system in production.",
+   "AI Risk Lead": "Second line: reviews the initiative's risks and compliance.",
+   "Ambition": "Ambition level: Optimise, Augment or Transform.",
+   "Intensity": "Governance intensity: Lite or Enterprise.",
+   "Verifies": "Who verifies the evidence.",
+   "Decides": "Body that decides.",
+   "Type": "Type of item.",
+   "Status": "Current status.",
+   "Regulatory classification": "Classification under the AI Act.",
+   "Technology": "Type of AI.",
+   "Autonomy": "Autonomy level A0 to A3.",
+   "Owner": "Person accountable.",
+   "Next continuity review": "Date of the next R6 review.",
+   "Period": "Period of the figure.",
+   "Source": "Where the figure comes from.",
+   "n": "Number of cases.",
+   "Reference limit (Lite / Enterprise)": "Reference working days for the phase at Lite and Enterprise intensity; set at C2 and recalibrated at C5."
+  }
+ }
+}

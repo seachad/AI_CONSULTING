@@ -29,6 +29,10 @@ Data is stored only in the browser used (local storage). Nothing is sent to thir
 
 Result of the C5 example (EM-2026-06, equal weights): D1 = 3, D2 = 4, D3 = 2, D4 = 4, D5 = 3, D6 = 1, D7 = 4; average 3.00 → 3; cap min (3, 1) + 1 = 2; **overall level 2 with the cap applied because of D6**. The C1 assessment (EM-2025-09) gives an overall level of 1.
 
+## On-screen help
+
+Each view has a **“?”** button next to its title that explains, in the active language (Spanish or English), what the view shows, how to read it, what each column, label or figure in it means, why it matters and where it is explained in SEVEN-G. In addition, every table header, record label and header figure shows its explanation as a tooltip (D111). The texts live in `_fuentes/ayuda.json` (views and the explanation of each column by its translation key, in both languages); the shared module `../_comun/ayuda.js` displays them and `build_madurez.ps1` embeds them when generating. A new view or column needs its entry in `ayuda.json` in both languages (`verificar_coherencia.ps1`, section 24).
+
 ## Files
 
 | File | What it is |

@@ -53,6 +53,10 @@
         todo rótulo de recuadro que escribe el motor tiene su explicación (ES/EN); los documentos citados existen; config_panel.json la
         activa, los paneles de ejemplo la llevan y el README de T17 (ES/EN) la explica. La prueba de humo (7) comprueba que aparecen los
         «?» en un indicador, en una tarjeta plegable, en el embudo y en el móvil, y que los encabezados de la madurez llevan su explicación.
+    24. Ayuda de las herramientas (D111): el módulo común herramientas/_comun/ayuda.js va incrustado en T01, T11, T14 y T15; cada vista
+        tiene su ayuda en español e inglés (_fuentes/ayuda.json) y toda columna, rótulo de ficha o cifra de cabecera que escribe la plantilla
+        tiene su explicación en los dos idiomas; los documentos citados existen y los README lo explican. La prueba de humo (7) comprueba
+        el «?» del título de cada herramienta.
 #>
 param([switch]$SinNavegador)
 $ErrorActionPreference = 'Stop'
@@ -486,7 +490,7 @@ try {
     $pruebas = @(
       # D103: el botón «Datos: …» del módulo de datos locales se dibuja en las cuatro herramientas
       # D106: además de dibujarse, el registro genera en el navegador el Excel del caso IA-2026-001 (clave «eval»), que se valida en «comprobar»
-      @{ f = (Join-Path $t01 'registro.html'); debe = @('#nav a[href="#/embudo"]', '#nav a[href="#/riesgos"]', '#nav a[href="#/consejo"]', '#lnk-panel', '#principal table', "#sitio-nav $ctl", '#principal a.cod-enlace[title]', '#btn-datos[data-estado="demo"]'); que = 'registro T01'
+      @{ f = (Join-Path $t01 'registro.html'); debe = @('#nav a[href="#/embudo"]', '#nav a[href="#/riesgos"]', '#nav a[href="#/consejo"]', '#lnk-panel', '#principal table', "#sitio-nav $ctl", '#principal a.cod-enlace[title]', '#btn-datos[data-estado="demo"]', '#principal h1 .ay-btn'); que = 'registro T01'
          eval = "window.T06_XLSX.base64('IA-2026-001')"; comprobar = {
            param($r)
            if (-not $r) { return 'el Excel del caso (T06_XLSX) no ha devuelto nada' }
@@ -507,10 +511,10 @@ try {
            return $null } }
       # el cálculo que se abre es el del documento 12 §9: suma 12, perfil subyacente Eficiencia a escala y asignado Transformación declarada, no evidenciada
       # D100: el cálculo que se abre es el de septiembre de 2026, calculado desde el registro de demostración de T01 (perfil asignado «declarada», subyacente «táctica», suma 12, cobertura 8); el de junio (documento 12 §9) queda en la evolución
-      @{ f = (Join-Path $t14 'indice.html'); debe = @('#perfil[data-perfil="declarada"][data-evidenciado="tactica"][data-suma="12"][data-cobertura="8"]', 'tr[data-senal="8"][data-punt="1"]', '#nav a[href="#/umbrales"]', '#t01-local[data-registro]', "#sitio-nav $ctl", '#principal a.cod-enlace[title]', '#btn-datos[data-estado="demo"]'); que = 'calculadora T14 (cálculo desde el registro T01 de demostración)' }
+      @{ f = (Join-Path $t14 'indice.html'); debe = @('#perfil[data-perfil="declarada"][data-evidenciado="tactica"][data-suma="12"][data-cobertura="8"]', 'tr[data-senal="8"][data-punt="1"]', '#nav a[href="#/umbrales"]', '#t01-local[data-registro]', "#sitio-nav $ctl", '#principal a.cod-enlace[title]', '#btn-datos[data-estado="demo"]', '#principal h1 .ay-btn'); que = 'calculadora T14 (cálculo desde el registro T01 de demostración)' }
       # T11: el caso de ejemplo IA-2026-001 da VAN 1.826.542 €, ROI 217,7 % y plazo 1,44 años (40 §8); T15: nivel global 2 limitado por D6 (11 §5)
-      @{ f = (Join-Path $t11 'calculadora.html'); debe = @('#resultado[data-van="1826542"][data-roi="217.7"][data-payback="1.44"]', '#nav a[href="#/costes"]', '#t01-local[data-registro]', "#sitio-nav $ctl", '#principal a.cod-enlace[title]', '#btn-datos[data-estado="demo"]'); que = 'calculadora T11/T13 (ejemplo IA-2026-001)' }
-      @{ f = (Join-Path $t15 'madurez.html'); debe = @('#nivel-global[data-nivel="2"][data-tope="2"][data-tope-aplicado="1"]', 'tr[data-dim="D6"][data-nivel="1"]', 'tr[data-dim="D3"][data-nivel="2"]', '#t01-local[data-registro]', "#sitio-nav $ctl", '#principal a.cod-enlace[title]', '#btn-datos[data-estado="demo"]'); que = 'diagnóstico T15 (ejemplo EM-2026-06)' }
+      @{ f = (Join-Path $t11 'calculadora.html'); debe = @('#resultado[data-van="1826542"][data-roi="217.7"][data-payback="1.44"]', '#nav a[href="#/costes"]', '#t01-local[data-registro]', "#sitio-nav $ctl", '#principal a.cod-enlace[title]', '#btn-datos[data-estado="demo"]', '#principal h1 .ay-btn'); que = 'calculadora T11/T13 (ejemplo IA-2026-001)' }
+      @{ f = (Join-Path $t15 'madurez.html'); debe = @('#nivel-global[data-nivel="2"][data-tope="2"][data-tope-aplicado="1"]', 'tr[data-dim="D6"][data-nivel="1"]', 'tr[data-dim="D3"][data-nivel="2"]', '#t01-local[data-registro]', "#sitio-nav $ctl", '#principal a.cod-enlace[title]', '#btn-datos[data-estado="demo"]', '#principal h1 .ay-btn'); que = 'diagnóstico T15 (ejemplo EM-2026-06)' }
       # D100: la tarjeta de madurez (bloque «madurez» del panel, escrito por T15 en el registro) se dibuja con sus siete dimensiones
       @{ f = (Get-ChildItem $salidaEj -Filter 't01_Dashboard_Casos_Uso_IA_v*.html' | Select-Object -First 1).FullName; debe = @('#indice tbody tr', '#kpis [data-kpi]', '#embudo .fun2-mid', '#embudo .fun-card.gan', '#embudo .fun-card li .pq', '#fbar #fopen, #filters .fgroup', '#transv table tbody tr', '#madurez table tbody tr', "#barra .toolbar $ctl", 'main a.cod-enlace[title]', '#kpis [data-ayuda="kpi-neto"] .ayuda-btn', '#indice > summary .ayuda-btn', '[data-ayuda="embudo"] h3 .ayuda-btn', '#madurez th.col-explicada[title]'); que = 'panel completo' }
       # comunidad (D80): la página se dibuja aunque no haya intermediario configurado ni red (el texto lo pone el JavaScript)
@@ -1060,6 +1064,42 @@ try {
   foreach ($f in (Get-ChildItem (Join-Path $t17 'ejemplo\salida') -Filter 't01_Dashboard_*.html')) { $tf = [IO.File]::ReadAllText($f.FullName); if (-not ($tf.Contains('AYUDA_COLUMNAS') -and $tf.Contains('data-ayuda='))) { Mal "panel de ejemplo sin la ayuda de las tarjetas: $($f.Name) (regenerar con t01_a_panel.py)"; $malAy++ } }
   foreach ($r in 'README.md', 'README_en.md') { $tr = [IO.File]::ReadAllText((Join-Path $t17 $r)); if (-not ($tr.Contains('ayuda_tarjetas') -and $tr.Contains('ayuda_textos.py'))) { Mal "T17 ${r}: no explica navegacion.ayuda_tarjetas ni ayuda_textos.py (D110)"; $malAy++ } }
   if (-not $malAy) { Ok "$($tarj.Count) tarjetas con su «?» en español e inglés y $($cols.Count) columnas y recuadros explicados (todas las que escribe el motor), activado en el ejemplo y explicado en el README (ES/EN)" }
+  # ---- 24. ayuda de las herramientas (D111): el módulo común _comun/ayuda.js va incrustado en T01, T11, T14 y T15 con sus textos
+  # (_fuentes/ayuda.json); cada vista de la herramienta tiene su ayuda en español e inglés (título, qué muestra y por qué importa); toda
+  # columna, rótulo de ficha o cifra de cabecera que escribe la plantilla con t('clave') tiene su explicación en los dos idiomas; los
+  # documentos citados existen; y los README (ES/EN) lo explican
+  Write-Host '24. Ayuda de las herramientas (vistas y columnas)'
+  $malAh = 0; $nVis = 0; $nCla = 0
+  $ayudaComun = Join-Path $repo 'SEVEN-G\herramientas\_comun\ayuda.js'
+  if (-not (Test-Path $ayudaComun)) { Mal 'falta SEVEN-G/herramientas/_comun/ayuda.js (D111)'; $malAh++ }
+  $herrAy = @(@{ d = $t01; p = 'registro.plantilla.html'; h = 'registro.html'; b = 'build_registro.ps1' }, @{ d = $t11; p = 'calculadora.plantilla.html'; h = 'calculadora.html'; b = 'build_calculadora.ps1' }, @{ d = $t14; p = 'indice.plantilla.html'; h = 'indice.html'; b = 'build_indice.ps1' }, @{ d = $t15; p = 'madurez.plantilla.html'; h = 'madurez.html'; b = 'build_madurez.ps1' })
+  foreach ($x in $herrAy) {
+    $nom = Split-Path $x.d -Leaf
+    $pl = [IO.File]::ReadAllText((Join-Path $x.d "_fuentes\$($x.p)"))
+    $js = Join-Path $x.d '_fuentes\ayuda.json'
+    if (([regex]::Matches($pl, '__AYUDA__')).Count -ne 1) { Mal "${nom}: la plantilla debe llevar una vez la marca __AYUDA__"; $malAh++ }
+    $ht = [IO.File]::ReadAllText((Join-Path $x.d $x.h))
+    if (-not ($ht.Contains('const AYUDA_HERR = ') -and $ht.Contains('SevengAyuda')) -or $ht.Contains('<script>__AYUDA__</script>')) { Mal "${nom}: $($x.h) no lleva la ayuda (ejecutar $($x.b))"; $malAh++ }
+    if (-not (Test-Path $js)) { Mal "${nom}: falta _fuentes/ayuda.json"; $malAh++; continue }
+    try { $a = [IO.File]::ReadAllText($js) | ConvertFrom-Json -AsHashtable } catch { Mal "${nom}: _fuentes/ayuda.json no es un JSON válido"; $malAh++; continue }
+    # vistas: las rutas que declara la plantilla (y las pestañas de la ficha en T01)
+    $rutas = @()
+    $mR = [regex]::Match($pl, 'const (?:VISTAS|RUTAS) = \[([^\]]*)\]'); if (-not $mR.Success) { $mR = [regex]::Match($pl, 'function ruta\(\)[^\n]*?\[([^\]]*)\]\.includes') }
+    if ($mR.Success) { $rutas += @([regex]::Matches($mR.Groups[1].Value, "'([a-z_]+)'") | ForEach-Object { $_.Groups[1].Value }) }
+    $mT = [regex]::Match($pl, "const tab = \[([^\]]*)\]\.includes"); if ($mT.Success) { $rutas = @($rutas | Where-Object { $_ -ne 'ficha' }) + @([regex]::Matches($mT.Groups[1].Value, "'([a-z_]+)'") | ForEach-Object { 'ficha/' + $_.Groups[1].Value }) }
+    if (-not $rutas.Count) { Mal "${nom}: no se encuentran las rutas de la plantilla"; $malAh++ }
+    foreach ($r in $rutas) { if (-not $a.vistas.ContainsKey($r)) { Mal "${nom}: la vista «$r» no tiene ayuda en _fuentes/ayuda.json"; $malAh++ } }
+    foreach ($r in $a.vistas.Keys) { foreach ($l in 'es', 'en') { foreach ($c in 'titulo', 'que', 'porque') { if (-not $a.vistas[$r][$l] -or ([string]$a.vistas[$r][$l][$c]).Length -lt 3) { Mal "${nom}: ayuda de la vista «$r» sin «$c» en $l"; $malAh++ } } } }
+    foreach ($k in $a.claves.Keys) { if (-not $a.claves[$k].es -or -not $a.claves[$k].en) { Mal "${nom}: la clave «$k» no tiene explicación en los dos idiomas"; $malAh++ } }
+    # columnas, rótulos de ficha y cifras de cabecera escritos con t('clave')
+    $usadas = @()
+    foreach ($pat in "<th[^>]*>'\s*\+\s*esc\(\s*t\(\s*'(\w+)'", "<dt>'\s*\+\s*esc\(\s*t\(\s*'(\w+)'", "class=""kpi""><b>[^<]*</b><span>'\s*\+\s*esc\(\s*t\(\s*'(\w+)'", "\bk\(t\('(\w+)'") { $usadas += @([regex]::Matches($pl, $pat) | ForEach-Object { $_.Groups[1].Value }) }
+    foreach ($k in @($usadas | Where-Object { -not $_.EndsWith('_') } | Sort-Object -Unique)) { if (-not $a.claves.ContainsKey($k)) { Mal "${nom}: la columna o rótulo t('$k') no tiene explicación en _fuentes/ayuda.json"; $malAh++ } }
+    foreach ($m in [regex]::Matches([IO.File]::ReadAllText($js), '(?:documento|document) (\d{2})\b')) { if (-not (Get-ChildItem (Join-Path $repo 'SEVEN-G\mds\es') -Filter "$($m.Groups[1].Value)_*.md")) { Mal "${nom}: la ayuda cita el documento $($m.Groups[1].Value), que no existe"; $malAh++ } }
+    foreach ($rd in 'README.md', 'README_en.md') { $f = Join-Path $x.d $rd; if ((Test-Path $f) -and -not [IO.File]::ReadAllText($f).Contains('ayuda.json')) { Mal "${nom} ${rd}: no explica la ayuda de la herramienta (D111)"; $malAh++ } }
+    $nVis += $a.vistas.Count; $nCla += $a.claves.Count
+  }
+  if (-not $malAh) { Ok "$nVis vistas con su «?» y $nCla columnas y rótulos explicados, en español e inglés, en T01, T11, T14 y T15" }
 }
 finally { Remove-Item $tmp -Recurse -Force -Confirm:$false -ErrorAction SilentlyContinue }
 

@@ -44,6 +44,10 @@ It opens the calculator in headless Edge, creates the calculation at the registe
 
 Version **0.1** holds the initial thresholds of document 12 (section 4.5), **to be calibrated**. Under "Thresholds", a new version is created from another; a version already used by any calculation cannot be edited (thresholds do not change within the annual cycle). The company may adjust thresholds, not the structure of the signals or the profile assignment rules, and declares the adjustment as a deviation.
 
+## On-screen help
+
+Each view has a **“?”** button next to its title that explains, in the active language (Spanish or English), what the view shows, how to read it, what each column, label or figure in it means, why it matters and where it is explained in SEVEN-G. In addition, every table header, record label and header figure shows its explanation as a tooltip (D111). The texts live in `_fuentes/ayuda.json` (views and the explanation of each column by its translation key, in both languages); the shared module `../_comun/ayuda.js` displays them and `build_indice.ps1` embeds them when generating. A new view or column needs its entry in `ayuda.json` in both languages (`verificar_coherencia.ps1`, section 24).
+
 ## Files
 
 | File | What it is |

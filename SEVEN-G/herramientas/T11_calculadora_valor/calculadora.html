@@ -389,6 +389,478 @@ function reiniciar(origen){ if(!C) return; if(HANDLE){ handleDel(); HANDLE = nul
 return { iniciar, guardado, refrescar, reiniciar, abrir, estado:() => E ? Object.assign({}, E, {datos:undefined}) : null };
 })();
 </script>
+<script>const AYUDA_HERR = {
+ "_leeme": "Textos de ayuda de la herramienta (D111), en español e inglés. Los usa el módulo común herramientas/_comun/ayuda.js, que el build_*.ps1 incrusta en el HTML. 'vistas': una entrada por vista (ruta #/<vista>, o <vista>/<pestaña> según 'subvistas'). 'claves': explicación de cada columna o dato por su clave de traducción (TX). 'textos': explicación de rótulos que no salen de TX, por su texto en cada idioma. Una columna nueva de la herramienta necesita aquí su clave, en los dos idiomas (verificar_coherencia.ps1, sección 24).",
+ "inicial": "hipotesis",
+ "vistas": {
+  "hipotesis": {
+   "es": {
+    "titulo": "Hipótesis de valor",
+    "que": "El caso de negocio de la iniciativa con las fórmulas oficiales del documento 40: líneas de valor (unidades incrementales × valor unitario), costes, inversión, rampa de adopción por año, flujo anual descontado, VAN, ROI y plazo de recuperación, escenarios, criterio económico de C2, criterios de parada y validaciones.",
+    "porque": "Convierte una idea en una hipótesis de valor comprobable antes de invertir. Las cifras vacías quedan «sin dato» y nunca se estiman: así se ve qué falta para poder decidir.",
+    "leer": "Valor neto anual = eficiencias + retorno − coste recurrente (F2). VAN: suma de los flujos anuales descontados a la tasa r menos la inversión (F7). El criterio de viabilidad es VAN ≥ 0; el ROI (F8) y el plazo de recuperación (F9) son informativos. La rampa reduce el valor de los primeros años; el coste recurrente cuenta completo desde el primero.",
+    "donde": "documento 40 (reglas de medición del valor) §8"
+   },
+   "en": {
+    "titulo": "Value hypothesis",
+    "que": "The initiative's business case with the official formulas of document 40: value lines (incremental units × unit value), costs, investment, adoption ramp-up by year, discounted annual flow, NPV, ROI and payback, scenarios, the C2 economic criterion, stop criteria and validations.",
+    "porque": "It turns an idea into a testable value hypothesis before investing. Empty figures stay «no data» and are never estimated: this shows what is missing before a decision can be made.",
+    "leer": "Annual net value = efficiencies + return − recurring cost (F2). NPV: sum of annual flows discounted at rate r minus the investment (F7). The viability criterion is NPV ≥ 0; ROI (F8) and payback (F9) are informative. The ramp-up reduces value in the first years; recurring cost counts in full from the first.",
+    "donde": "document 40 (value measurement rules) §8"
+   }
+  },
+  "costes": {
+   "es": {
+    "titulo": "Costes por caso (T13)",
+    "que": "El coste completo del caso en las nueve categorías del documento 42: construcción, adopción inicial, recurrente y retirada; el reparto de los costes compartidos con su clave; el consumo frente al presupuesto; el coste por unidad de resultado; el coste de parar; y la conciliación entre lo previsto y lo real.",
+    "porque": "El coste de la IA casi siempre se subestima (consumo, personas, plataformas compartidas). Con el coste completo el valor neto es creíble y se detectan desviaciones a tiempo.",
+    "leer": "Un coste compartido se reparte con una clave (consumo medido, inductor o ponderado) aprobada por control de gestión; la parte de estructura corporativa no se reparte. En la conciliación, la ejecución es real ÷ previsto.",
+    "donde": "documento 42 (costes de IA)"
+   },
+   "en": {
+    "titulo": "Cost per use case (T13)",
+    "que": "The case's full cost in the nine categories of document 42: build, initial adoption, recurring and retirement; the allocation of shared costs with its key; consumption against budget; cost per unit of output; the cost of stopping; and reconciliation between planned and actual.",
+    "porque": "AI cost is almost always underestimated (consumption, people, shared platforms). With the full cost the net value is credible and deviations are caught in time.",
+    "leer": "A shared cost is allocated with a key (measured consumption, driver or weighted) approved by management control; the corporate overhead part is not allocated. In reconciliation, execution is actual ÷ planned.",
+    "donde": "document 42 (AI costs)"
+   }
+  },
+  "decision": {
+   "es": {
+    "titulo": "Hoja de decisión",
+    "que": "Resumen del caso para el órgano que decide el gate: enunciado de la hipótesis, resultado económico, criterio de C2, flujo por año, escenarios, costes y coste de parar, con una propuesta de respuesta.",
+    "porque": "Da al órgano la información económica en una sola hoja. La calculadora informa; no decide: la decisión es del órgano con todos los criterios del gate.",
+    "donde": "documento 40 y documento 21"
+   },
+   "en": {
+    "titulo": "Decision sheet",
+    "que": "Summary of the case for the body deciding the gate: hypothesis statement, economic result, C2 criterion, flow by year, scenarios, costs and cost of stopping, with a proposed answer.",
+    "porque": "It gives the body the economic information on one sheet. The calculator informs; it does not decide: the decision rests with the body using all the gate criteria.",
+    "donde": "document 40 and document 21"
+   }
+  },
+  "parametros": {
+   "es": {
+    "titulo": "Parámetros por ejercicio",
+    "que": "Los parámetros aprobados en C2 para cada ejercicio: horizonte H y tasa de descuento r, tolerancia de consumo sin etiquetar, umbrales de alerta de consumo, multiplicadores de escenarios y coste horario completo por perfil.",
+    "porque": "Todos los casos se calculan con los mismos parámetros, así son comparables. Una versión usada por algún caso ya no se edita: se crea otra.",
+    "donde": "documento 40 §8.2 y documento 42"
+   },
+   "en": {
+    "titulo": "Parameters by financial year",
+    "que": "Parameters approved at C2 for each financial year: horizon H and discount rate r, untagged consumption tolerance, consumption alert thresholds, scenario multipliers and full hourly cost by profile.",
+    "porque": "All cases are calculated with the same parameters, so they are comparable. A version used by any case is no longer edited: a new one is created.",
+    "donde": "document 40 §8.2 and document 42"
+   }
+  },
+  "datos": {
+   "es": {
+    "titulo": "Datos",
+    "que": "Importar y exportar el fichero completo de la calculadora, crear un caso desde el registro de iniciativas (T01) y exportar el resultado para T01 o en CSV.",
+    "porque": "El registro T01 es la fuente de verdad: la calculadora toma de él las iniciativas y le devuelve los importes esperados del caso.",
+    "donde": "documento 03 §4.1 y documento 95"
+   },
+   "en": {
+    "titulo": "Data",
+    "que": "Import and export the calculator's full file, create a case from the initiative register (T01) and export the result for T01 or as CSV.",
+    "porque": "The T01 register is the source of truth: the calculator takes initiatives from it and returns the case's expected amounts to it.",
+    "donde": "document 03 §4.1 and document 95"
+   }
+  }
+ },
+ "claves": {
+  "anio": {
+   "es": "Año del horizonte del caso (1 = primer año en uso).",
+   "en": "Year of the case horizon (1 = first year in use)."
+  },
+  "rampa": {
+   "es": "Porcentaje del valor en régimen que se alcanza ese año (curva de adopción).",
+   "en": "Share of steady-state value reached that year (adoption curve)."
+  },
+  "valor_bruto": {
+   "es": "Eficiencias + retorno del año, ya aplicada la rampa.",
+   "en": "Efficiencies + return for the year, with the ramp-up applied."
+  },
+  "coste_rec": {
+   "es": "Coste recurrente del año (completo desde el primer año).",
+   "en": "Recurring cost for the year (in full from the first year)."
+  },
+  "retirada": {
+   "es": "Coste de retirar el sistema, en el año en que se prevé.",
+   "en": "Cost of retiring the system, in the year it is planned."
+  },
+  "neto": {
+   "es": "Valor bruto − coste recurrente − retirada del año.",
+   "en": "Gross value − recurring cost − retirement for the year."
+  },
+  "factor": {
+   "es": "Factor de descuento 1 / (1 + r)^año: pasa el euro futuro a euro de hoy.",
+   "en": "Discount factor 1 / (1 + r)^year: converts a future euro into today's euro."
+  },
+  "va": {
+   "es": "Neto del año × factor de descuento.",
+   "en": "Net for the year × discount factor."
+  },
+  "acumulado": {
+   "es": "Suma de los netos hasta ese año menos la inversión, sin descontar; cuando pasa a positivo se ha recuperado la inversión.",
+   "en": "Sum of net values up to that year minus the investment, undiscounted; when it turns positive the investment has been recovered."
+  },
+  "multiplicadores": {
+   "es": "Cómo cambia cada escenario el valor, el coste recurrente y la inversión respecto al central (por ejemplo, pesimista 0,7 · 1,2 · 1,2).",
+   "en": "How each scenario changes value, recurring cost and investment against the base case (for example pessimistic 0.7 · 1.2 · 1.2)."
+  },
+  "neto_anual": {
+   "es": "Valor neto anual en régimen (F2): eficiencias + retorno − coste recurrente.",
+   "en": "Steady-state annual net value (F2): efficiencies + return − recurring cost."
+  },
+  "inv_ini": {
+   "es": "Inversión inicial: construcción + adopción inicial.",
+   "en": "Initial investment: build + initial adoption."
+  },
+  "van": {
+   "es": "Valor actual neto (F7): suma de los netos anuales descontados a la tasa r menos la inversión. Es el único criterio económico de viabilidad: VAN ≥ 0 con el horizonte y la tasa aprobados en C2.",
+   "en": "Net present value (F7): sum of annual net values discounted at rate r minus the investment. It is the only economic viability criterion: NPV ≥ 0 with the horizon and rate approved at C2."
+  },
+  "roi": {
+   "es": "Retorno de la inversión (F8): (suma de los netos anuales del horizonte − inversión) ÷ inversión. Es informativo, sin umbral propio.",
+   "en": "Return on investment (F8): (sum of annual net values over the horizon − investment) ÷ investment. Informative, with no threshold of its own."
+  },
+  "payback": {
+   "es": "Plazo de recuperación (F9): primer año en que el neto acumulado cubre la inversión, interpolado dentro del año. Informativo.",
+   "en": "Payback period (F9): first year in which the cumulative net covers the investment, interpolated within the year. Informative."
+  },
+  "tipo": {
+   "es": "Tipo de línea: eficiencia, retorno, capacidad liberada, riesgo evitado o cumplimiento; o tipo de escenario.",
+   "en": "Type of line: efficiency, return, freed capacity, risk avoided or compliance; or type of scenario."
+  },
+  "concepto": {
+   "es": "Qué se mide en la línea (por ejemplo, horas de conciliación ahorradas).",
+   "en": "What the line measures (for example reconciliation hours saved)."
+  },
+  "unidades": {
+   "es": "Unidades adicionales gracias a la IA (horas, operaciones, clientes…).",
+   "en": "Additional units thanks to AI (hours, transactions, customers…)."
+  },
+  "unidad": {
+   "es": "Unidad de medida.",
+   "en": "Unit of measure."
+  },
+  "valor_unitario": {
+   "es": "Euros por unidad.",
+   "en": "Euros per unit."
+  },
+  "importe_directo": {
+   "es": "Importe sin descomponer (solo para importes importados de T01); si hay fórmula se deja vacío.",
+   "en": "Amount without breakdown (only for amounts imported from T01); left empty if there is a formula."
+  },
+  "importe": {
+   "es": "Importe en euros (unidades × valor unitario o directo).",
+   "en": "Amount in euros (units × unit value or direct)."
+  },
+  "estado": {
+   "es": "Estado del dato: declarado, estimado o validado.",
+   "en": "Status of the figure: declared, estimated or validated."
+  },
+  "base": {
+   "es": "En qué se materializa el retorno (ingresos, margen, pérdida evitada).",
+   "en": "What the return materialises in (revenue, margin, loss avoided)."
+  },
+  "fuente": {
+   "es": "De dónde sale el dato (T01, informe, estimación…).",
+   "en": "Where the figure comes from (T01, report, estimate…)."
+  },
+  "supuestos": {
+   "es": "Hipótesis en las que se apoya la línea.",
+   "en": "Hypotheses the line relies on."
+  },
+  "criterio_p": {
+   "es": "Criterio de parada o de éxito que se compromete.",
+   "en": "Stop or success criterion committed to."
+  },
+  "umbral": {
+   "es": "Indicador que se mide y umbral que activa la decisión.",
+   "en": "Indicator measured and threshold that triggers the decision."
+  },
+  "momento": {
+   "es": "Cuándo se evalúa (gate o fecha).",
+   "en": "When it is assessed (gate or date)."
+  },
+  "decision": {
+   "es": "Qué se hace si se alcanza el umbral (parar, iterar, revisar).",
+   "en": "What is done if the threshold is reached (stop, iterate, review)."
+  },
+  "quien": {
+   "es": "Quién evalúa el criterio.",
+   "en": "Who assesses the criterion."
+  },
+  "categoria": {
+   "es": "Categoría de coste del documento 42.",
+   "en": "Cost category from document 42."
+  },
+  "construccion_t": {
+   "es": "Coste único de construir el sistema.",
+   "en": "One-off cost of building the system."
+  },
+  "adopcion_t": {
+   "es": "Coste de formar, cambiar procesos y desplegar entre los usuarios.",
+   "en": "Cost of training, changing processes and rolling out to users."
+  },
+  "retirada_t": {
+   "es": "Coste previsto de retirar el sistema al final de su vida.",
+   "en": "Planned cost of retiring the system at the end of its life."
+  },
+  "componente": {
+   "es": "Elemento concreto de coste (licencia, consumo de modelos, nube, personas…).",
+   "en": "Specific cost item (licence, model consumption, cloud, people…)."
+  },
+  "incremental": {
+   "es": "Si el coste existe solo por la iniciativa (sí) o existiría igualmente (no).",
+   "en": "Whether the cost exists only because of the initiative (yes) or would exist anyway (no)."
+  },
+  "nombre": {
+   "es": "Nombre del coste compartido.",
+   "en": "Name of the shared cost."
+  },
+  "coste_total": {
+   "es": "Coste anual total del recurso compartido.",
+   "en": "Total annual cost of the shared resource."
+  },
+  "metodo_rep": {
+   "es": "Método de reparto: consumo medido, inductor o ponderado.",
+   "en": "Allocation method: measured consumption, driver or weighted."
+  },
+  "clave_caso": {
+   "es": "Parte de la clave que corresponde al caso (consumo en % o unidades del inductor).",
+   "en": "Share of the key belonging to the case (consumption in % or driver units)."
+  },
+  "clave_total": {
+   "es": "Total de la clave entre todos los casos.",
+   "en": "Total of the key across all cases."
+  },
+  "sin_etiquetar": {
+   "es": "Consumo no atribuido a ningún caso; solo se reparte dentro de la tolerancia aprobada.",
+   "en": "Consumption not attributed to any case; only allocated within the approved tolerance."
+  },
+  "estructura": {
+   "es": "Parte del coste que es estructura corporativa y no se reparte.",
+   "en": "Share of the cost that is corporate overhead and is not allocated."
+  },
+  "clave_aprobada": {
+   "es": "Si control de gestión ha aprobado la clave de reparto.",
+   "en": "Whether management control has approved the allocation key."
+  },
+  "imputado": {
+   "es": "Coste que se imputa al caso con esa clave.",
+   "en": "Cost charged to the case with that key."
+  },
+  "previsto": {
+   "es": "Importe previsto (inversión aprobada).",
+   "en": "Planned amount (approved investment)."
+  },
+  "real": {
+   "es": "Importe real gastado hasta la fecha.",
+   "en": "Actual amount spent to date."
+  },
+  "ejecucion": {
+   "es": "Real ÷ previsto; por encima del 100 % hay sobrecoste.",
+   "en": "Actual ÷ planned; above 100% there is a cost overrun."
+  },
+  "parametro": {
+   "es": "Parámetro aprobado.",
+   "en": "Approved parameter."
+  },
+  "valor": {
+   "es": "Valor del parámetro.",
+   "en": "Value of the parameter."
+  },
+  "perfil": {
+   "es": "Perfil profesional.",
+   "en": "Professional profile."
+  },
+  "importe_h": {
+   "es": "Coste horario completo del perfil (salario, cargas y estructura).",
+   "en": "Full hourly cost of the profile (salary, social charges and overhead)."
+  },
+  "etapa": {
+   "es": "Etapa de la apuesta de Transformar.",
+   "en": "Stage of the Transform bet."
+  },
+  "evidencia": {
+   "es": "Evidencia que se espera al final de la etapa.",
+   "en": "Evidence expected at the end of the stage."
+  },
+  "fecha": {
+   "es": "Fecha prevista.",
+   "en": "Planned date."
+  },
+  "inv_acum": {
+   "es": "Inversión acumulada máxima autorizada hasta esa etapa.",
+   "en": "Maximum cumulative investment authorised up to that stage."
+  },
+  "inv_max": {
+   "es": "Inversión máxima de la etapa.",
+   "en": "Maximum investment for the stage."
+  },
+  "organo": {
+   "es": "Órgano que decide pasar de etapa.",
+   "en": "Body that decides moving to the next stage."
+  },
+  "f3": {
+   "es": "Neto adicional por euro (F3): (neto anual potencial − neto anual actual) ÷ inversión adicional. Euros de neto anual por euro invertido; sirve para priorizar dónde poner el siguiente euro.",
+   "en": "Additional net per euro (F3): (potential annual net − current annual net) ÷ additional investment. Euros of annual net per euro invested; useful to prioritise where to put the next euro."
+  },
+  "recurrente_inc": {
+   "es": "Coste recurrente que existe solo por la iniciativa.",
+   "en": "Recurring cost that exists only because of the initiative."
+  },
+  "recurrente_t": {
+   "es": "Coste recurrente completo, incluida la parte imputada de costes compartidos.",
+   "en": "Full recurring cost, including the allocated share of shared costs."
+  },
+  "tco": {
+   "es": "Coste total de propiedad: todo lo que cuesta el caso en el horizonte (construcción, adopción, coste recurrente de cada año y retirada).",
+   "en": "Total cost of ownership: everything the case costs over the horizon (build, adoption, recurring cost for each year and retirement)."
+  },
+  "pregunta": {
+   "es": "Qué se quiere aprender en la etapa.",
+   "en": "What the stage aims to learn."
+  }
+ },
+ "textos": {
+  "es": {
+   "Coste total de propiedad": "Todo lo que cuesta el caso en el horizonte indicado: construcción, adopción, coste recurrente de cada año y retirada.",
+   "Recurrente anual": "Coste que se repite cada año (licencias, consumo, soporte, personas).",
+   "Real a la fecha (€)": "Importe real gastado hasta hoy."
+  },
+  "en": {
+   "Total cost of ownership": "Everything the case costs over the stated horizon: build, adoption, recurring cost for each year and retirement.",
+   "Annual recurring": "Cost that recurs every year (licences, consumption, support, people).",
+   "Actual to date (€)": "Actual amount spent to date."
+  }
+ }
+};
+/* Ayuda de las herramientas de SEVEN-G (D111): módulo común que cada build_*.ps1 incrusta en su HTML (marca __AYUDA__), junto con
+   los textos de la herramienta (_fuentes/ayuda.json, constante AYUDA_HERR). Hace dos cosas, en el idioma activo de la herramienta
+   (document.documentElement.lang), sin tocar su código:
+   1) Junto al título (h1) de cada vista pone un botón «?» que abre qué muestra la vista, cómo leerla, qué significa cada columna o
+      dato que aparece en ella, por qué importa y dónde se explica en SEVEN-G.
+   2) Cada encabezado de tabla (th), cada rótulo de una lista de datos (dt) y cada rótulo de las cifras de cabecera lleva como tooltip lo
+      que significa. Los códigos citados en la ayuda (documento 40, P12…) son enlaces si la página carga el índice de códigos (D99).
+   Los rótulos se reconocen por su clave de traducción (TX de la herramienta), así la misma explicación vale en español y en inglés;
+   para los que no salen de TX está el diccionario literal «textos»; un rótulo compuesto «A · B» se explica por sus partes.
+   Sin AYUDA_HERR no hace nada (D53). Todo es HTML de confianza (viene del repositorio, no de los datos del usuario). */
+(function(){
+  if (typeof AYUDA_HERR === 'undefined' || !AYUDA_HERR) return;
+  var A = AYUDA_HERR;
+  var UI_TXT = {
+    es: { boton: 'Qué muestra esta vista y cómo leerla', que: 'Qué muestra', leer: 'Cómo leerla', cols: 'Qué significa cada columna o dato de esta vista', col: 'Columna o dato', sig: 'Qué significa', porque: 'Por qué importa', donde: 'Dónde se explica', cerrar: 'Cerrar', nota: 'Pase el ratón por un encabezado de tabla o por un rótulo para ver su explicación.' },
+    en: { boton: 'What this view shows and how to read it', que: 'What it shows', leer: 'How to read it', cols: 'What each column or figure in this view means', col: 'Column or figure', sig: 'What it means', porque: 'Why it matters', donde: 'Where it is explained', cerrar: 'Close', nota: 'Hover over a table header or a label to see its explanation.' }
+  };
+  function idioma(){ return /^en/i.test(document.documentElement.lang || '') ? 'en' : 'es'; }
+  function norm(s){ return String(s || '').replace(/[▲▼↑↓⇅]/g, '').replace(/\s+/g, ' ').trim(); }
+  function esc(s){ return String(s == null ? '' : s).replace(/[&<>"]/g, function(c){ return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]; }); }
+  function plano(s){ return String(s || '').replace(/<[^>]+>/g, '').replace(/&amp;/g, '&').replace(/&lt;/g, '<').replace(/&gt;/g, '>'); }
+  // índice inverso por idioma: texto del rótulo en TX → clave explicada
+  var inv = {};
+  function indice(l){
+    if (inv[l]) return inv[l];
+    var m = {}, tx = (typeof TX !== 'undefined' && TX) ? (TX[l] || TX.es || {}) : {};
+    Object.keys(A.claves || {}).forEach(function(k){ var v = tx[k]; if (typeof v === 'string') { var n = norm(v); if (!(n in m)) m[n] = k; } });
+    return (inv[l] = m);
+  }
+  function explicacion(rot, l){
+    rot = norm(rot); if (!rot) return null;
+    var k = indice(l)[rot];
+    if (k && A.claves[k] && A.claves[k][l]) return A.claves[k][l];
+    var lit = (A.textos || {})[l] || {};
+    if (lit[rot]) return lit[rot];
+    // añadidos que no cambian el significado: un recuento final («… · 10/13») o un parámetro entre paréntesis («… (3 años)»)
+    var sin = rot.replace(/ · [\d.,/ %]+$/, '').replace(/ \([^()]*\d[^()]*\)$/, '');
+    if (sin !== rot) return explicacion(sin, l);
+    // rótulo compuesto «A · B»: se explica cada parte
+    if (rot.indexOf(' · ') > 0) {
+      var partes = rot.split(' · '), ex = partes.map(function(p){ return explicacion(p, l); });
+      if (ex.every(Boolean)) return partes.map(function(p, i){ return '<b>' + esc(p) + '</b>: ' + ex[i]; }).join(' ');
+    }
+    return null;
+  }
+  function vistaActual(){
+    var s = (location.hash || '').replace(/^#\/?/, '').split('/'), v = s[0] || A.inicial;
+    var sv = (A.subvistas || {})[v];
+    if (sv) { var sub = v + '/' + (s[sv.indice] || sv.defecto); if ((A.vistas || {})[sub]) return sub; }
+    return (A.vistas || {})[v] ? v : ((A.vistas || {})[A.inicial] ? A.inicial : null);
+  }
+  function principal(){ return document.getElementById('principal'); }
+  function dialogo(){
+    var d = document.getElementById('dlg-ayuda-herr'); if (d) return d;
+    d = document.createElement('dialog'); d.id = 'dlg-ayuda-herr'; d.setAttribute('aria-labelledby', 'dlg-ayuda-herr-t'); d.setAttribute('data-enlazar-codigos', '');
+    d.addEventListener('click', function(e){ if (e.target === d || (e.target.closest && e.target.closest('[data-ay="cerrar"]'))) d.close(); });
+    document.body.appendChild(d); return d;
+  }
+  function abrir(){
+    var l = idioma(), T = UI_TXT[l], v = vistaActual(), a = v && A.vistas[v] && (A.vistas[v][l] || A.vistas[v].es);
+    if (!a) return;
+    // columnas y datos que se ven ahora en la vista, con su explicación
+    var vistos = {}, filas = '';
+    var main = principal();
+    if (main) Array.prototype.forEach.call(main.querySelectorAll('.kpi > span, .kpis > div > span, th, dt'), function(el){
+      var r = norm(el.textContent); if (!r || vistos[r]) return; vistos[r] = 1;
+      var x = explicacion(r, l); if (x) filas += '<tr><td>' + esc(r) + '</td><td>' + x + '</td></tr>';
+    });
+    var h = '<div class="dlg-cab"><h2 id="dlg-ayuda-herr-t">' + esc(a.titulo) + '</h2><button type="button" data-ay="cerrar" aria-label="' + esc(T.cerrar) + '">×</button></div><div class="dlg-cuerpo ay-cuerpo">'
+      + '<h3>' + T.que + '</h3><p>' + (a.que || '') + '</p>'
+      + (a.leer ? '<h3>' + T.leer + '</h3><p>' + a.leer + '</p>' : '')
+      + (filas ? '<h3>' + T.cols + '</h3><div class="tblx"><table class="ay-cols"><thead><tr><th>' + T.col + '</th><th>' + T.sig + '</th></tr></thead><tbody>' + filas + '</tbody></table></div><p class="ay-nota">' + T.nota + '</p>' : '')
+      + '<h3>' + T.porque + '</h3><p>' + (a.porque || '') + '</p>'
+      + (a.donde ? '<p class="ay-donde">' + T.donde + ': ' + a.donde + '</p>' : '') + '</div>';
+    var d = dialogo(); d.innerHTML = h;
+    // los códigos citados (documento 40, P12…) pasan a ser enlaces con el índice de códigos del sitio, si la página lo carga (D99)
+    try { if (window.sevengIrCodigo && window.sevengIrCodigo.enlazar) window.sevengIrCodigo.enlazar(d.querySelector('.ay-cuerpo')); } catch (e) {}
+    if (!d.open) { if (d.showModal) d.showModal(); else d.setAttribute('open', ''); }
+  }
+  function estilos(){
+    if (document.getElementById('ay-estilos')) return;
+    var s = document.createElement('style'); s.id = 'ay-estilos';
+    s.textContent = '.ay-btn{display:inline-flex;align-items:center;justify-content:center;width:22px;height:22px;margin:0 0 0 10px;padding:0;border:1px solid currentColor;border-radius:50%;background:transparent;color:var(--tinta-2,#564d47);font:700 13px/1 system-ui,-apple-system,"Segoe UI",sans-serif;cursor:pointer;vertical-align:middle}'
+      + '.ay-btn:hover,.ay-btn:focus-visible{background:var(--tinta,#2f2b28);color:var(--papel,#fbe2cd);outline:none}'
+      + '@media (pointer:coarse){.ay-btn{width:28px;height:28px;font-size:15px}}'
+      + '#dlg-ayuda-herr{max-width:min(760px,94vw)}#dlg-ayuda-herr::backdrop{background:rgba(0,0,0,.45)}'
+      + '.ay-cuerpo{padding:4px 16px 16px}.ay-cuerpo h3{margin:14px 0 4px;font-size:15px}.ay-cuerpo p{margin:0 0 6px;line-height:1.5}'
+      + '.ay-cols{width:100%;border-collapse:collapse;font-size:13.5px}.ay-cols th,.ay-cols td{text-align:left;vertical-align:top;padding:5px 6px;border-bottom:1px solid var(--regla,#c9a78d)}'
+      + '.ay-cols td:first-child{font-weight:650;width:32%}.ay-nota,.ay-donde{font-size:12.5px;color:var(--tinta-2,#564d47)}'
+      + '.ay-col{cursor:help;text-decoration:underline dotted;text-underline-offset:3px}'
+      + '@media print{.ay-btn,#dlg-ayuda-herr{display:none!important}}';
+    document.head.appendChild(s);
+  }
+  function poner(){
+    var main = principal(); if (!main) return;
+    var l = idioma(), v = vistaActual();
+    var h1 = main.querySelector('h1');
+    if (h1 && v && !h1.querySelector('.ay-btn')) {
+      var b = document.createElement('button'); b.type = 'button'; b.className = 'ay-btn'; b.textContent = '?';
+      b.title = UI_TXT[l].boton; b.setAttribute('aria-label', UI_TXT[l].boton); b.setAttribute('aria-haspopup', 'dialog');
+      b.addEventListener('click', function(e){ e.preventDefault(); e.stopPropagation(); abrir(); });
+      h1.appendChild(b);
+    }
+    Array.prototype.forEach.call(document.querySelectorAll('#principal th, #principal dt, #principal .kpi > span, #principal .kpis > div > span, dialog:not(#dlg-ayuda-herr) th, dialog:not(#dlg-ayuda-herr) dt'), function(el){
+      var r = norm(el.textContent); if (!r) return;
+      var marca = r + '|' + l; if (el.getAttribute('data-ay') === marca) return;
+      el.setAttribute('data-ay', marca);
+      var x = explicacion(r, l);
+      if (x) { el.title = plano(x); el.classList.add('ay-col'); } else if (el.classList.contains('ay-col')) { el.removeAttribute('title'); el.classList.remove('ay-col'); }
+    });
+  }
+  function iniciar(){
+    estilos(); poner();
+    var pend = false;
+    new MutationObserver(function(){ if (pend) return; pend = true; requestAnimationFrame(function(){ pend = false; poner(); }); })
+      .observe(document.body, { childList: true, subtree: true, attributes: true, attributeFilter: ['lang'] });
+    new MutationObserver(function(){ inv = {}; poner(); }).observe(document.documentElement, { attributes: true, attributeFilter: ['lang'] });
+  }
+  window.SevengAyuda = { explicacion: explicacion, vista: vistaActual, abrir: abrir };
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', iniciar); else iniciar();
+})();
+</script>
 <script>
 'use strict';
 /* =========================================================

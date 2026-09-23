@@ -51,6 +51,10 @@ Rules the calculator enforces or flags: "no data" is not zero (an empty amount l
 
 Version **2026** holds the example values: a 3-year horizon and an 8% rate (the same as in the example in document 40 §8.4), a 5% tolerance for untagged consumption, consumption alert thresholds of 50, 80 and 100% (indicative values of document 42 §8.2), scenario multipliers and fully loaded hourly cost by profile. The company sets its own in C2. A version already used by any use case is not edited: a new one is created from it.
 
+## On-screen help
+
+Each view has a **“?”** button next to its title that explains, in the active language (Spanish or English), what the view shows, how to read it, what each column, label or figure in it means, why it matters and where it is explained in SEVEN-G. In addition, every table header, record label and header figure shows its explanation as a tooltip (D111). The texts live in `_fuentes/ayuda.json` (views and the explanation of each column by its translation key, in both languages); the shared module `../_comun/ayuda.js` displays them and `build_calculadora.ps1` embeds them when generating. A new view or column needs its entry in `ayuda.json` in both languages (`verificar_coherencia.ps1`, section 24).
+
 ## Files
 
 | File | What it is |
