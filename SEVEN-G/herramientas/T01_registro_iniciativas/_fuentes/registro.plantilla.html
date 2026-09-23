@@ -78,7 +78,18 @@ textarea{width:100%;min-height:64px}
 label{font-weight:600;font-size:13px;color:var(--tinta-2)}
 .campo{display:flex;flex-direction:column;gap:3px;min-width:0}
 .campo input,.campo select,.campo textarea{width:100%}
+input[data-num]{font-variant-numeric:tabular-nums}
 .rejilla{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:10px 14px}
+/* Alineación: en una fila de la rejilla todas las cajas quedan a la misma altura aunque la etiqueta ocupe una o dos líneas
+   o haya una nota debajo. Cada campo ocupa tres filas (etiqueta, caja, nota) que comparte con sus vecinos (subgrid);
+   sin subgrid, la etiqueta crece y se alinea abajo. */
+.rejilla>.campo>label{flex:1 0 auto;display:flex;align-items:flex-end}
+@supports (grid-template-rows:subgrid){
+  .rejilla{align-items:start}
+  .rejilla>*{grid-row:span 3}
+  .rejilla>.campo{display:grid;grid-template-rows:subgrid;row-gap:3px;align-items:start}
+  .rejilla>.campo>label{align-self:end}
+}
 .fila{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
 .fila-fin{display:flex;flex-wrap:wrap;gap:8px;justify-content:flex-end;margin-top:12px}
 fieldset{border:1px solid var(--regla);padding:8px 12px 12px;margin:10px 0;min-width:0}
@@ -110,7 +121,7 @@ legend{font-weight:700;padding:0 4px;color:var(--negro)}
 dialog:has(.reparto-ed){width:min(1120px,calc(100vw - 16px))}
 .reparto-ed td{padding-right:6px}
 .reparto-ed input,.reparto-ed select{width:auto;max-width:10em;font-size:13px}
-.reparto-ed input[type=number]{width:6.5em}
+.reparto-ed input[type=number],.reparto-ed input[data-num]{width:7.5em}
 @media (max-width:760px){
   .tabla.resp thead{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
   .tabla.resp,.tabla.resp tbody,.tabla.resp tr,.tabla.resp td{display:block;width:100%}
@@ -440,8 +451,32 @@ function habiles(a,b){ if(!a||!b||b<=a) return 0; let n=0; let d=ms(a); const fi
 function esFecha(s){ return typeof s==='string' && /^\d{4}-(0[1-9]|1[0-2])-(0[1-9]|[12]\d|3[01])$/.test(s); }
 function sd(){ return '<span class="sd">'+esc(t('sin_dato'))+'</span>'; }
 function fF(s){ return s? s.slice(8,10)+'-'+s.slice(5,7)+'-'+s.slice(0,4) : sd(); }
-function fE(n){ if(n==null||isNaN(n)) return sd(); try{ return new Intl.NumberFormat(UI.lang==='es'?'es-ES':'en-GB',{style:'currency',currency:(DB.meta.moneda||'EUR'),maximumFractionDigits:0}).format(n); }catch(e){ return Math.round(n)+' '+(DB.meta.moneda||''); } }
-function fN(n,dec){ if(n==null||isNaN(n)) return sd(); return new Intl.NumberFormat(UI.lang==='es'?'es-ES':'en-GB',{maximumFractionDigits:dec??1,minimumFractionDigits:0}).format(n); }
+/* Todo número que se muestra en pantalla lleva separador de miles, también los de cuatro cifras
+   (useGrouping:'always': es-ES no agrupa por defecto «8000»). Los ficheros exportados (JSON, CSV, Excel) guardan el número puro. */
+function locNum(){ return UI.lang==='es'?'es-ES':'en-GB'; }
+function fmtNum(n,opc){ const o=Object.assign({useGrouping:'always'},opc||{}); try{ return new Intl.NumberFormat(locNum(),o).format(n); }catch(e){ o.useGrouping=true; return new Intl.NumberFormat(locNum(),o).format(n); } }
+function fE(n){ if(n==null||isNaN(n)) return sd(); try{ return fmtNum(n,{style:'currency',currency:(DB.meta.moneda||'EUR'),maximumFractionDigits:0}); }catch(e){ return fmtNum(Math.round(n),{maximumFractionDigits:0})+' '+(DB.meta.moneda||''); } }
+function fN(n,dec){ if(n==null||isNaN(n)) return sd(); return fmtNum(n,{maximumFractionDigits:dec??1,minimumFractionDigits:0}); }
+function fI(n){ return n==null||isNaN(n)? sd() : fmtNum(Math.round(n),{maximumFractionDigits:0}); }
+/* Campos numéricos: texto con separador de miles (el tipo «number» de HTML no los admite). Se leen siempre con pNum:
+   ES «.» miles y «,» decimal; EN «,» miles y «.» decimal; admite también el número sin separadores. Vacío = null; texto no numérico = NaN. */
+function vNum(v){ return v==null||v===''||isNaN(v)? '' : fmtNum(Number(v),{maximumFractionDigits:6}); }
+function pNum(v){
+  if(v==null) return null; if(typeof v==='number') return isNaN(v)? NaN : v;
+  let s=String(v).replace(/[\s  '’]/g,''); if(s==='') return null;
+  const dec = UI.lang==='es'? ',' : '.', nP=(s.match(/\./g)||[]).length, nC=(s.match(/,/g)||[]).length;
+  if(nP && nC){ const d = s.lastIndexOf('.')>s.lastIndexOf(',')? '.' : ','; s=s.split(d==='.'?',':'.').join(''); if(d===',') s=s.replace(',','.'); }
+  else if(nP||nC){ const c=nP?'.':',', n=nP||nC, grupos=new RegExp('^[-+]?\\d{1,3}(\\'+c+'\\d{3})+$').test(s);
+    if(n>1 && !grupos) return NaN; if(n>1 || (c!==dec && grupos)) s=s.split(c).join(''); else if(c===',') s=s.replace(',','.'); }
+  return /^[-+]?(\d+\.?\d*|\.\d+)$/.test(s)? Number(s) : NaN;
+}
+function inNum(id, v, extra){ return '<input type="text"'+(/inputmode=/.test(extra||'')?'':' inputmode="decimal"')+' autocomplete="off" data-num="1"'+(id?' id="'+id+'"':'')+' name="'+(id||'')+'" value="'+esc(vNum(v))+'"'+(extra||'')+'>'; }
+function leerNumCampo(el){ const n=pNum(el.value); return (n==null||isNaN(n))? null : n; }
+function erroresNum(form){ const errs=[]; $$('input[data-num]',form).forEach(el=>{ const n=pNum(el.value); if(n==null) return;
+    const lab=(el.id && form.querySelector('label[for="'+el.id+'"]'))? form.querySelector('label[for="'+el.id+'"]').textContent.trim() : (el.getAttribute('aria-label')||el.name);
+    if(isNaN(n)) errs.push(t('e_num',{c:lab})); else if(el.dataset.min!=null && n<Number(el.dataset.min)) errs.push(t('e_num_min',{c:lab,m:fN(Number(el.dataset.min),6)})); else if(el.dataset.max!=null && n>Number(el.dataset.max)) errs.push(t('e_num_max',{c:lab,m:fN(Number(el.dataset.max),6)})); });
+  return errs; }
+document.addEventListener('focusout', e=>{ const el=e.target; if(!el || !el.matches || !el.matches('input[data-num]')) return; const n=pNum(el.value); if(n!=null && !isNaN(n)) el.value=vNum(n); });
 function fP(n){ return n==null||isNaN(n)? sd() : fN(n,0)+' %'; }
 function sum(a){ return a.reduce((x,y)=>x+y,0); }
 function percentil(arr,p){ if(!arr.length) return null; const s=[...arr].sort((a,b)=>a-b); const pos=(s.length-1)*p; const lo=Math.floor(pos), hi=Math.ceil(pos); return s[lo]+(s[hi]-s[lo])*(pos-lo); }
@@ -532,8 +567,8 @@ function valorDe(I){
 }
 function alertasDe(I, s){
   const A=[]; const h=hoy(); const add=(tipo,sev,texto)=>A.push({tipo,sev,texto,ini:I.id});
-  if(s.estancada) add('estancada','alta', t('al_estancada',{d:s.diasFase,f:I.ciclo.fase,p:s.plazo}));
-  if(s.dg && s.dg.fecha_solicitud){ const hb=habiles(s.dg.fecha_solicitud,h), pl=plazoDecision(I.clasificacion.intensidad); if(hb>pl) add('decision','alta', t('al_decision',{g:s.dg.gate,d:hb,p:pl})); }
+  if(s.estancada) add('estancada','alta', t('al_estancada',{d:fI(s.diasFase),f:I.ciclo.fase,p:fI(s.plazo)}));
+  if(s.dg && s.dg.fecha_solicitud){ const hb=habiles(s.dg.fecha_solicitud,h), pl=plazoDecision(I.clasificacion.intensidad); if(hb>pl) add('decision','alta', t('al_decision',{g:s.dg.gate,d:fI(hb),p:fI(pl)})); }
   if(s.dg && s.dg.iteracion>=3) add('elevar', s.dg.elevada?'info':'alta', t(s.dg.elevada?'al_elevada':'al_elevar',{g:s.dg.gate,n:s.dg.iteracion}));
   condicionesDe(I).forEach(c=>{ if(estadoCond(c)==='vencida') add('condicion','alta', t('al_condicion',{id:c.id,c:c.criterio||'',f:fF(c.plazo)})); });
   if(I.ciclo.estado==='en_produccion' && I.ciclo.proxima_revision && I.ciclo.proxima_revision<h) add('revision','alta', t('al_revision',{f:fF(I.ciclo.proxima_revision)}));
@@ -603,8 +638,8 @@ function filtrosHTML(){
 /* ---------------- piezas comunes ---------------- */
 function estadoEt(I){ const e=I.ciclo.estado; const cls={en_produccion:'ok',pendiente_gate:'info',pendiente_g7:'vel',en_espera:'med',parada:'ko',retirada:'ko',registrada:'',en_fase:''}[e]; return et(L('estado',e),cls); }
 function diasTxt(I){ const s=sit(I); if(cerrada(I)) return fF(I.cierre&&I.cierre.fecha); if(s.diasFase==null) return sd();
-  const p = s.plazo==null? esc(t('sin_plazo')) : esc(t('plazo'))+' '+s.plazo;
-  return '<span class="'+(s.estancada?'errores':'')+'">'+s.diasFase+' '+esc(t('dias'))+'</span> <span class="ayuda">/ '+p+'</span>'; }
+  const p = s.plazo==null? esc(t('sin_plazo')) : esc(t('plazo'))+' '+fI(s.plazo);
+  return '<span class="'+(s.estancada?'errores':'')+'">'+fI(s.diasFase)+' '+esc(t('dias'))+'</span> <span class="ayuda">/ '+p+'</span>'; }
 function alertasEt(I){ const a=sit(I).alertas; if(!a.length) return '<span class="ayuda">'+esc(t('ninguna'))+'</span>'; return a.map(x=>et(t('at_'+x.tipo), x.sev==='alta'?'ko':(x.sev==='info'?'info':'med'))).join(' '); }
 function enlaceIni(I){ return '<a href="#/ficha/'+esc(I.id)+'">'+esc(I.nombre)+'</a>'; }
 
@@ -616,19 +651,19 @@ function vistaEmbudo(){
   const gates=act.filter(i=>sit(i).dg).length; const venc=lista.flatMap(i=>condicionesDe(i)).filter(c=>estadoCond(c)==='vencida').length;
   let h='<div class="cab-ficha"><h1>'+esc(t('emb_titulo'))+'</h1><button type="button" class="primario" data-acc="nueva">'+esc(t('nueva'))+'</button></div>';
   h+=filtrosHTML();
-  h+='<div class="kpis"><div class="kpi"><b>'+act.length+'</b><span>'+esc(t('k_activas'))+'</span></div><div class="kpi"><b>'+prod+'</b><span>'+esc(t('k_prod'))+'</span></div><div class="kpi"><b>'+gates+'</b><span>'+esc(t('k_gates'))+'</span></div><div class="kpi"><b>'+est+'</b><span>'+esc(t('k_estancadas'))+'</span></div><div class="kpi"><b>'+venc+'</b><span>'+esc(t('k_vencidas'))+'</span></div><div class="kpi"><b>'+(valAct.length?fE(sum(valAct)):sd())+'</b><span>'+esc(t('k_valor'))+' · '+valAct.length+'/'+act.length+'</span></div></div>';
+  h+='<div class="kpis"><div class="kpi"><b>'+fI(act.length)+'</b><span>'+esc(t('k_activas'))+'</span></div><div class="kpi"><b>'+fI(prod)+'</b><span>'+esc(t('k_prod'))+'</span></div><div class="kpi"><b>'+fI(gates)+'</b><span>'+esc(t('k_gates'))+'</span></div><div class="kpi"><b>'+fI(est)+'</b><span>'+esc(t('k_estancadas'))+'</span></div><div class="kpi"><b>'+fI(venc)+'</b><span>'+esc(t('k_vencidas'))+'</span></div><div class="kpi"><b>'+(valAct.length?fE(sum(valAct)):sd())+'</b><span>'+esc(t('k_valor'))+' · '+valAct.length+'/'+act.length+'</span></div></div>';
   h+='<p class="ayuda">'+esc(t('emb_sub'))+'</p><ol class="embudo" aria-label="'+esc(t('emb_titulo'))+'">';
   const max=Math.max(1,...[0,1,2,3,4,5,6,7].map(f=>act.filter(i=>i.ciclo.fase===f).length));
   for(let f=0; f<8; f++){
     const en=act.filter(i=>i.ciclo.fase===f); const porEst=agrupar(en,i=>i.ciclo.estado);
     const e=en.filter(i=>sit(i).estancada).length; const vals=en.map(i=>sit(i).valor.esperado); const conV=vals.filter(v=>v!=null);
     h+='<li><div class="et-fase">'+esc(t('fase'))+' '+f+'<small>'+esc(L('fase',f))+' · '+esc(GATE_DE_FASE[f])+'</small></div>'+
-      '<button type="button" class="barra-emb'+(String(UI.embFase)===String(f)?' sel':'')+'" data-acc="emb-fase" data-fase="'+f+'" aria-pressed="'+(String(UI.embFase)===String(f))+'" title="'+esc(t('emb_clic'))+'"><i class="'+(en.length?'':'cero')+'" style="width:'+(en.length/max*70)+'%"></i><b>'+en.length+'</b></button>'+
+      '<button type="button" class="barra-emb'+(String(UI.embFase)===String(f)?' sel':'')+'" data-acc="emb-fase" data-fase="'+f+'" aria-pressed="'+(String(UI.embFase)===String(f))+'" title="'+esc(t('emb_clic'))+'"><i class="'+(en.length?'':'cero')+'" style="width:'+(en.length/max*70)+'%"></i><b>'+fI(en.length)+'</b></button>'+
       '<div class="emb-det">'+[...porEst.entries()].map(([k,v])=>esc(v.length+' '+L('estado',k).toLowerCase())).join(' · ')+
       (e?' '+et(t('estancadas_n',{n:e}),'ko'):'')+(conV.length?' <span>'+t('valor_fase',{v:fE(sum(conV))})+'</span>':'')+(vals.length-conV.length?' <span class="sd">'+esc(t('sin_valor_n',{n:vals.length-conV.length}))+'</span>':'')+'</div></li>';
   }
   const cer=lista.filter(cerrada);
-  h+='<li><div class="et-fase">'+esc(t('cerradas'))+'<small>'+esc(L('estado','parada')+' · '+L('estado','retirada'))+'</small></div><button type="button" class="barra-emb'+(UI.embFase==='cerradas'?' sel':'')+'" data-acc="emb-fase" data-fase="cerradas" aria-pressed="'+(UI.embFase==='cerradas')+'" title="'+esc(t('emb_clic'))+'"><i class="cero" style="width:'+(cer.length/max*70)+'%"></i><b>'+cer.length+'</b></button>'+
+  h+='<li><div class="et-fase">'+esc(t('cerradas'))+'<small>'+esc(L('estado','parada')+' · '+L('estado','retirada'))+'</small></div><button type="button" class="barra-emb'+(UI.embFase==='cerradas'?' sel':'')+'" data-acc="emb-fase" data-fase="cerradas" aria-pressed="'+(UI.embFase==='cerradas')+'" title="'+esc(t('emb_clic'))+'"><i class="cero" style="width:'+(cer.length/max*70)+'%"></i><b>'+fI(cer.length)+'</b></button>'+
     '<div class="emb-det">'+cer.map(i=>esc(i.id)+': '+esc(L('estado',i.ciclo.estado))+' · '+esc(i.cierre?L('motivo',i.cierre.motivo):'')).join(' · ')+'</div></li></ol>';
   /* subfiltro por fase (clic en una barra del embudo): se aplica sobre lo que ya dejan pasar los filtros de arriba; «Mostrar todas» lo quita */
   const sub = UI.embFase==null? null : (UI.embFase==='cerradas'? lista.filter(cerrada) : act.filter(i=>String(i.ciclo.fase)===String(UI.embFase)));
@@ -651,7 +686,7 @@ function vistaTablero(){
   const cols=[0,1,2,3,4,5,6,7].map(f=>({tit:t('fase')+' '+f, sub:L('fase',f), items:lista.filter(i=>!cerrada(i)&&i.ciclo.fase===f)}));
   cols.push({tit:t('cerradas'), sub:L('estado','parada')+' · '+L('estado','retirada'), items:lista.filter(cerrada)});
   cols.forEach((c,ci)=>{
-    h+='<section class="col" aria-labelledby="col-'+ci+'"><h3 id="col-'+ci+'">'+esc(c.tit)+' ('+c.items.length+')<small>'+esc(c.sub)+'</small></h3>';
+    h+='<section class="col" aria-labelledby="col-'+ci+'"><h3 id="col-'+ci+'">'+esc(c.tit)+' ('+fI(c.items.length)+')<small>'+esc(c.sub)+'</small></h3>';
     if(!c.items.length) h+='<p class="ayuda">'+esc(t('sin_iniciativas'))+'</p>';
     c.items.forEach(I=>{ const s=sit(I); const al=s.alertas.filter(a=>a.sev!=='info');
       const cls = cerrada(I)?'fin':(al.length?'alerta':(I.ciclo.fase>=6?'prod':''));
@@ -698,7 +733,7 @@ Object.assign(TX.es,{
  c_id:'Condición', marcar_cumplida:'Marcar cumplida', anular:'Anular', registrar_venc:'Registrar vencimiento', sin_condiciones:'Sin condiciones.', cond_regla:'Las condiciones solo se imponen sobre criterios condicionables, con plazo y responsable, y se verifican como tarde en el siguiente gate. Una condición vencida convierte el resultado en Iterar.',
  anadir_valor:'Añadir importe', v_t11:'Calcular la hipótesis de valor con esta iniciativa (T11)', momento:'Momento', tipo:'Tipo', importe:'Importe', formula:'Fórmula', periodo:'Periodo', fuente:'Fuente', valor_reglas:'Todo importe tiene fórmula y estado (validado, declarado o estimado). La capacidad liberada no suma en el neto. Un importe vacío es «sin dato», nunca cero. Valor neto anual = eficiencias + retorno − coste recurrente.', importe_vacio:'Déjelo vacío si no hay dato.', sin_valores:'Sin importes registrados.',
  sin_eventos:'Sin eventos.', sin_decisiones:'Sin decisiones de gate.', ver_criterios:'Ver criterios', dias_decision:'Tiempo de decisión', pendiente:'Pendiente', solicitud:'Solicitud',
- dlg_alta:'Nueva iniciativa', dlg_editar:'Editar {id}', sin_asignar:'Sin asignar', e_nombre:'El nombre debe tener al menos 3 caracteres.', e_desc:'Describa qué es y para qué se usa (regla 10 de medición).', e_area:'Indique el área.', e_tec:'Seleccione al menos una tecnología.', e_roles:'Incompatibilidad de roles: {r}', inv_nota:'Importes en {m}; vacío = sin dato.', etiquetas_ayuda:'Separadas por comas.', intensidad_ayuda:'Use T04 para determinarla con los ocho criterios.', ok_alta:'Iniciativa {id} registrada.',
+ dlg_alta:'Nueva iniciativa', dlg_editar:'Editar {id}', sin_asignar:'Sin asignar', e_nombre:'El nombre debe tener al menos 3 caracteres.', e_desc:'Describa qué es y para qué se usa (regla 10 de medición).', e_area:'Indique el área.', e_tec:'Seleccione al menos una tecnología.', e_num:'«{c}»: escriba un número válido (p. ej. 2.650.000 o 12,5).', e_num_min:'«{c}»: el valor no puede ser menor que {m}.', e_num_max:'«{c}»: el valor no puede ser mayor que {m}.', e_roles:'Incompatibilidad de roles: {r}', inv_nota:'Importes en {m}; vacío = sin dato.', etiquetas_ayuda:'Separadas por comas.', intensidad_ayuda:'Use T04 para determinarla con los ocho criterios.', ok_alta:'Iniciativa {id} registrada.',
  dlg_t04:'Determinación de intensidad (T04)', t04_intro:'Basta con que se cumpla un criterio Enterprise para aplicar esa intensidad (01 §9.1). Se determina en la fase 0 y se revisa en G3 y en cada revisión de continuidad.', si:'Sí', no:'No', resultado_t:'Resultado', t04_prov:'Lite provisional: hay criterios sin dato.',
  c_alto_riesgo:'Alto riesgo regulatorio', d_alto_riesgo:'El sistema está clasificado como de alto riesgo según la regulación aplicable.',
  c_decisiones_personas:'Decisiones sobre personas', d_decisiones_personas:'El resultado influye de forma significativa en decisiones que afectan a personas (empleo, crédito, seguros, acceso a servicios, entre otras).',
@@ -749,7 +784,7 @@ Object.assign(TX.en,{
  c_id:'Condition', marcar_cumplida:'Mark as met', anular:'Cancel', registrar_venc:'Record expiry', sin_condiciones:'No conditions.', cond_regla:'Conditions are only attached to conditionable criteria, with a deadline and an owner, and are verified at the latest at the next gate. An expired condition turns the outcome into Iterate.',
  anadir_valor:'Add amount', v_t11:'Calculate the value hypothesis with this initiative (T11)', momento:'Timing', tipo:'Type', importe:'Amount', formula:'Formula', periodo:'Period', fuente:'Source', valor_reglas:'Every amount has a formula and a status (validated, declared or estimated). Released capacity does not add to net value. An empty amount means “no data”, never zero. Annual net value = efficiencies + return − recurring cost.', importe_vacio:'Leave empty if there is no data.', sin_valores:'No amounts recorded.',
  sin_eventos:'No events.', sin_decisiones:'No gate decisions.', ver_criterios:'Show criteria', dias_decision:'Decision time', pendiente:'Pending', solicitud:'Request',
- dlg_alta:'New initiative', dlg_editar:'Edit {id}', sin_asignar:'Unassigned', e_nombre:'The name must have at least 3 characters.', e_desc:'Describe what it is and what it is used for (measurement rule 10).', e_area:'Enter the area.', e_tec:'Select at least one technology.', e_roles:'Role incompatibility: {r}', inv_nota:'Amounts in {m}; empty = no data.', etiquetas_ayuda:'Comma-separated.', intensidad_ayuda:'Use T04 to determine it with the eight criteria.', ok_alta:'Initiative {id} registered.',
+ dlg_alta:'New initiative', dlg_editar:'Edit {id}', sin_asignar:'Unassigned', e_nombre:'The name must have at least 3 characters.', e_desc:'Describe what it is and what it is used for (measurement rule 10).', e_area:'Enter the area.', e_tec:'Select at least one technology.', e_num:'"{c}": enter a valid number (e.g. 2,650,000 or 12.5).', e_num_min:'"{c}": the value cannot be less than {m}.', e_num_max:'"{c}": the value cannot be greater than {m}.', e_roles:'Role incompatibility: {r}', inv_nota:'Amounts in {m}; empty = no data.', etiquetas_ayuda:'Comma-separated.', intensidad_ayuda:'Use T04 to determine it with the eight criteria.', ok_alta:'Initiative {id} registered.',
  dlg_t04:'Intensity determination (T04)', t04_intro:'Meeting a single Enterprise criterion is enough to apply that intensity (01 §9.1). It is determined in phase 0 and reviewed at G3 and at every continuity review.', si:'Yes', no:'No', resultado_t:'Outcome', t04_prov:'Provisional Lite: some criteria have no data.',
  c_alto_riesgo:'High regulatory risk', d_alto_riesgo:'The system is classified as high-risk under applicable regulation.',
  c_decisiones_personas:'Decisions about people', d_decisiones_personas:'The output significantly influences decisions that affect people (employment, credit, insurance, access to services, among others).',
@@ -854,7 +889,7 @@ function abrirDialogo(titulo, cuerpo, onOk, txtOk){
 function cerrarDialogo(){ const d=$('#dlg'); if(d.open){ try{ d.close(); }catch(e){ d.removeAttribute('open'); } } d.innerHTML=''; DLG_OK=null; }
 document.addEventListener('submit', e=>{
   if(e.target.id!=='dlg-form') return; e.preventDefault();
-  const errs = DLG_OK? DLG_OK(e.target) : [];
+  const errN = erroresNum(e.target); const errs = errN.length? errN : (DLG_OK? DLG_OK(e.target) : []);
   if(errs && errs.length){ $('#dlg-err').innerHTML='<ul>'+errs.map(x=>'<li>'+esc(x)+'</li>').join('')+'</ul>'; $('#dlg-err').focus && $('#dlg-err').setAttribute('tabindex','-1'); $('#dlg-err').focus(); return; }
   cerrarDialogo(); guardar(); render();
 });
@@ -905,11 +940,11 @@ function fichaResumen(I,s){
   h+='<section class="bloque"><h3>'+esc(t('b_clas'))+'</h3>'+dl([[t('esfera_p'),esc(L('esfera',c.esfera_principal))],[t('esfera_s'),c.esfera_secundaria?esc(L('esfera',c.esfera_secundaria)):null],[t('amb_prop'),c.ambicion_propuesta?esc(L('ambicion',c.ambicion_propuesta)):null],[t('amb_conf'),c.ambicion_confirmada?esc(L('ambicion',c.ambicion_confirmada)):null],[t('amb_real'),c.ambicion_real?esc(L('ambicion',c.ambicion_real)):null],
     [t('intensidad'),esc(L('intensidad',c.intensidad))],[t('det_int'),di?fF(di.fecha)+' · '+esc(L('intensidad',di.resultado))+' · '+CRITERIOS_T04.filter(k=>di.criterios[k]===true).map(k=>esc(t('c_'+k))).join(', '):null],[t('det_amb'),da?fF(da.fecha)+' · '+esc(L('ambicion',da.resultado)):null],
     [t('regulatoria'),esc(L('regulatoria',c.regulatoria))+'<span class="nota-clas">'+esc(t('nota_clas'))+'</span>'],[t('tecnologia'),(c.tecnologia||[]).map(x=>esc(L('tecnologia',x))).join(', ')],[t('autonomia'),c.autonomia?esc(L('autonomia',c.autonomia)):null],[t('exposicion'),esc(L('exposicion',c.exposicion))],[t('tipo_valor'),(c.tipo_valor||[]).map(x=>esc(L('tipo_valor',x))).join(', ')],[t('proveedores'),(c.proveedores||[]).map(id=>esc(M.prv.get(id)?M.prv.get(id).nombre:id)).join('<br>')]])+'</section>';
-  h+='<section class="bloque"><h3>'+esc(t('b_ciclo'))+'</h3>'+dl([[t('fase'),esc(faseTxt(I.ciclo.fase))],[t('estado'),estadoEt(I)],[t('entrada_fase'),I.ciclo.fecha_entrada_fase?fF(I.ciclo.fecha_entrada_fase):null],[t('dias_sin_espera'),s.diasFase!=null?String(s.diasFase):null],[t('plazo_ref'),s.plazo!=null?s.plazo+' '+esc(t('dias')):esc(t('sin_plazo'))],[t('iteracion'),String(I.ciclo.iteracion)],
+  h+='<section class="bloque"><h3>'+esc(t('b_ciclo'))+'</h3>'+dl([[t('fase'),esc(faseTxt(I.ciclo.fase))],[t('estado'),estadoEt(I)],[t('entrada_fase'),I.ciclo.fecha_entrada_fase?fF(I.ciclo.fecha_entrada_fase):null],[t('dias_sin_espera'),s.diasFase!=null?fI(s.diasFase):null],[t('plazo_ref'),s.plazo!=null?fI(s.plazo)+' '+esc(t('dias')):esc(t('sin_plazo'))],[t('iteracion'),fI(I.ciclo.iteracion)],
     [t('espera'),I.ciclo.espera?esc(L('espera',I.ciclo.espera.motivo))+' · '+fF(I.ciclo.espera.desde)+' · '+esc(I.ciclo.espera.comentario||''):esc(t('ninguna'))],[t('reanudacion'),I.ciclo.espera?fF(I.ciclo.espera.reanudacion_prevista):esc('—')],[t('prox_rev'),I.ciclo.fase===6?(I.ciclo.proxima_revision?fF(I.ciclo.proxima_revision):null):esc('—')],
     [t('cierre'),I.cierre?esc(L('estado',I.cierre.tipo))+' · '+fF(I.cierre.fecha)+' · '+esc(I.cierre.organo||''):esc('—')],[t('motivo_cierre'),I.cierre?esc(L('motivo',I.cierre.motivo))+(I.cierre.comentario?'<br><span class="ayuda">'+esc(I.cierre.comentario)+'</span>':''):esc('—')]])+'</section>';
   h+='<section class="bloque"><h3>'+esc(t('b_valor'))+'</h3>'+dl([[t('v_esperado'),fE(v.esperado)],[t('v_realizado'),fE(v.realizado)],[t('v_pct'),fP(v.pctValidado)],[t('inv_real'),fE(I.inversion&&I.inversion.realizada)],[t('inv_pend'),fE(I.inversion&&I.inversion.pendiente)]])+'<p class="ayuda" style="margin-top:6px"><a href="#/ficha/'+esc(I.id)+'/valor">'+esc(t('r_valor'))+' →</a></p></section>';
-  h+='<section class="bloque"><h3>'+esc(t('b_riesgo'))+'</h3>'+dl([[t('riesgo_res'),I.riesgo_residual_principal?esc(L('riesgo',I.riesgo_residual_principal)):null],[t('evaluaciones'),(I.evaluaciones_impacto||[]).length?(I.evaluaciones_impacto.map(x=>esc(L('eval',x.tipo)+': '+L('eval_estado',x.estado))).join('<br>')):null],[t('cond_abiertas'),ab+' / '+ve],[t('nc_abiertas'),nc.length?nc.map(n=>esc(n.id+' ('+L('nc_tipo',n.tipo)+')')).join(', '):esc(t('ninguna'))],[t('incidentes'),inci.length?inci.map(n=>esc(n.id+' '+n.severidad)).join(', '):esc(t('ninguno'))],[t('riesgos_reg'),String(riesgosDe(I).length)+' · <a href="#/ficha/'+esc(I.id)+'/riesgos">'+esc(t('rg_ver'))+' →</a>']])+'</section>';
+  h+='<section class="bloque"><h3>'+esc(t('b_riesgo'))+'</h3>'+dl([[t('riesgo_res'),I.riesgo_residual_principal?esc(L('riesgo',I.riesgo_residual_principal)):null],[t('evaluaciones'),(I.evaluaciones_impacto||[]).length?(I.evaluaciones_impacto.map(x=>esc(L('eval',x.tipo)+': '+L('eval_estado',x.estado))).join('<br>')):null],[t('cond_abiertas'),ab+' / '+ve],[t('nc_abiertas'),nc.length?nc.map(n=>esc(n.id+' ('+L('nc_tipo',n.tipo)+')')).join(', '):esc(t('ninguna'))],[t('incidentes'),inci.length?inci.map(n=>esc(n.id+' '+n.severidad)).join(', '):esc(t('ninguno'))],[t('riesgos_reg'),fI(riesgosDe(I).length)+' · <a href="#/ficha/'+esc(I.id)+'/riesgos">'+esc(t('rg_ver'))+' →</a>']])+'</section>';
   const P=panelCanon(I.panel)||PANEL_VACIO, ctl=k=>P.controles[k]?esc(L('control',P.controles[k])):null;
   h+='<section class="bloque"><h3>'+esc(t('b_panel'))+'</h3>'+dl([[t('p_complejidad'),P.complejidad?esc(L('complejidad',P.complejidad)):null],[t('p_prioridad'),P.prioridad?esc(L('prioridad',P.prioridad)):null],[t('p_plazo'),P.plazo_potencial?esc(P.plazo_potencial):null],[t('p_ctrl_seg'),ctl('seguridad')],[t('p_ctrl_muc'),ctl('muc')],[t('p_ctrl_iao'),ctl('ia_ofensiva')],[t('p_obs'),P.observaciones_consejo?esc(P.observaciones_consejo):null]])+'<p class="ayuda" style="margin-top:6px"><a href="'+(DB.meta.datos_ilustrativos?PANEL_DEMO:PANEL_T17)+'">'+esc(t(DB.meta.datos_ilustrativos?'lnk_panel_demo':'lnk_panel'))+' →</a></p></section>';
   h+=bloqueIndice(I);
@@ -920,7 +955,7 @@ function fichaGate(I,s){
   if(I.ciclo.estado==='registrada') return '<div class="aviso info">'+esc(t('g_registrada'))+'</div><button type="button" class="primario" data-acc="iniciar-f0" data-id="'+esc(I.id)+'">'+esc(t('iniciar_f0'))+'</button>';
   const gate=GATE_DE_FASE[I.ciclo.fase]; const q=quienGate(gate,I); const dg=s.dg;
   let h='<h2>'+esc(gateTxt(gate))+'</h2>';
-  h+='<div class="bloques"><section class="bloque">'+dl([[t('intensidad'),esc(L('intensidad',I.clasificacion.intensidad))],[t('g_verifica'),esc(q.verifica)],[t('g_decide'),esc(L('organo',q.organo))],[t('iteracion'),String(dg?dg.iteracion:I.ciclo.iteracion)]])+(q.notaTransf?'<p class="aviso info">'+esc(q.notaTransf)+'</p>':'')+(gate==='R6'?'<p class="ayuda">'+esc(t('r6_nota'))+'</p>':'')+(gate==='G7'?'<p class="ayuda">'+esc(t('g7_nota'))+'</p>':'')+'</section>';
+  h+='<div class="bloques"><section class="bloque">'+dl([[t('intensidad'),esc(L('intensidad',I.clasificacion.intensidad))],[t('g_verifica'),esc(q.verifica)],[t('g_decide'),esc(L('organo',q.organo))],[t('iteracion'),fI(dg?dg.iteracion:I.ciclo.iteracion)]])+(q.notaTransf?'<p class="aviso info">'+esc(q.notaTransf)+'</p>':'')+(gate==='R6'?'<p class="ayuda">'+esc(t('r6_nota'))+'</p>':'')+(gate==='G7'?'<p class="ayuda">'+esc(t('g7_nota'))+'</p>':'')+'</section>';
   if(['G3','G4','G5','R6','G7'].includes(gate)) h+=bloqueRiesgoGate(I);
   if(!dg){
     const ultG7 = decisionesDe(I).filter(d=>d.gate==='G7' && d.fecha_decision).pop();
@@ -930,8 +965,8 @@ function fichaGate(I,s){
   }
   const hb=habiles(dg.fecha_solicitud,hoy()), pl=plazoDecision(I.clasificacion.intensidad);
   const P=permitidos(dg,I); const ev=P.ev;
-  h+='<section class="bloque"><h3>'+esc(t('g_resumen'))+'</h3><p>'+t('g_solicitado',{f:fF(dg.fecha_solicitud),d:'<b class="'+(hb>pl?'errores':'')+'">'+hb+'</b>',p:pl})+'</p>'+
-    dl([[t('aplicables'),String(ev.aplicables)],[t('cumplen'),String(ev.cumple)],[t('grado'),ev.grado==null?null:'<div class="fila"><span class="barra-h" style="width:120px"><i style="width:'+ev.grado+'%"></i></span> '+fP(ev.grado)+'</div>'],[t('bloqueantes'),ev.bloq.length?'<span class="errores">'+esc(ev.bloq.join(', '))+'</span>':'0'],[t('cond_ab'),ev.cond.length?esc(ev.cond.join(', ')):'0'],[t('rec_omit'),ev.rec.length?esc(ev.rec.join(', ')):'0']])+
+  h+='<section class="bloque"><h3>'+esc(t('g_resumen'))+'</h3><p>'+t('g_solicitado',{f:fF(dg.fecha_solicitud),d:'<b class="'+(hb>pl?'errores':'')+'">'+fI(hb)+'</b>',p:fI(pl)})+'</p>'+
+    dl([[t('aplicables'),fI(ev.aplicables)],[t('cumplen'),fI(ev.cumple)],[t('grado'),ev.grado==null?null:'<div class="fila"><span class="barra-h" style="width:120px"><i style="width:'+ev.grado+'%"></i></span> '+fP(ev.grado)+'</div>'],[t('bloqueantes'),ev.bloq.length?'<span class="errores">'+esc(ev.bloq.join(', '))+'</span>':'0'],[t('cond_ab'),ev.cond.length?esc(ev.cond.join(', ')):'0'],[t('rec_omit'),ev.rec.length?esc(ev.rec.join(', ')):'0']])+
     '<div class="aviso '+(ev.bloq.length?'ko':(ev.cond.length?'':'ok'))+'" style="margin-top:8px">'+esc(ev.bloq.length?t('g_no_continuar',{c:ev.bloq.join(', ')}):(ev.cond.length?t('g_max_cc',{c:ev.cond.join(', ')}):t('g_ok')))+'</div><p class="ayuda">'+esc(t('g_informativo'))+'</p></section></div>';
   if(I.ciclo.estado==='en_espera') h+='<div class="aviso">'+esc(t('g_espera'))+'</div>';
   // criterios
@@ -1225,7 +1260,7 @@ function fichaAlcance(I){
 function abrirReparto(I){
   const a=alcanceDe(I); if(!a) return;
   const rep=a.reparto||[]; const areas=[...new Set([...rep.map(u=>u.area), ...(DB.meta.areas||[])])];
-  const num=(n,v,step,lab)=>'<input type="number" min="0" step="'+(step||'1')+'" name="'+n+'" value="'+(v!=null?v:'')+'" aria-label="'+esc(lab)+'">';
+  const num=(n,v,step,lab)=>'<input type="text" inputmode="'+(step==='any'?'decimal':'numeric')+'" autocomplete="off" data-num="1" data-min="0" name="'+n+'" value="'+esc(vNum(v))+'" aria-label="'+esc(lab)+'">';
   let b='<p class="ayuda">'+esc(t('rp_dlg_nota'))+'</p><div class="tblx"><table class="tabla reparto-ed"><thead><tr>'+[t('rp_unidad'),t('rp_despliegue'),t('desde'),t('rp_asig'),t('rp_act'),t('rp_usuarios'),t('rp_horas'),t('fuente'),t('rp_fecha_dato')].map(x=>'<th scope="col">'+esc(x)+'</th>').join('')+'</tr></thead><tbody>';
   areas.forEach((ar,i)=>{ const u=rep.find(x=>x.area===ar)||{}, lab=k=>t(k)+' · '+ar;
     b+='<tr><td>'+esc(ar)+'<input type="hidden" name="rp-area-'+i+'" value="'+esc(ar)+'"></td><td><select name="rp-est-'+i+'" aria-label="'+esc(lab('rp_despliegue'))+'">'+opts('despliegue',u.estado||'','—')+'</select></td>'+
@@ -1233,7 +1268,7 @@ function abrirReparto(I){
       '<td>'+num('rp-sem-'+i,u.usuarios_activos_semanales,'1',lab('rp_usuarios'))+'</td><td>'+num('rp-hor-'+i,u.horas_liberadas_mes,'any',lab('rp_horas'))+'</td><td><input type="text" name="rp-fue-'+i+'" value="'+esc(u.fuente||'')+'" aria-label="'+esc(lab('fuente'))+'"></td><td><input type="date" name="rp-fd-'+i+'" value="'+esc(u.fecha_dato||'')+'" aria-label="'+esc(lab('rp_fecha_dato'))+'"></td></tr>'; });
   b+='</tbody></table></div>'+trio();
   abrirDialogo(t('dlg_reparto'), b, f=>{ const errs=[]; const tr=leerTrio(f,errs); if(errs.length) return errs;
-    const n=v=>v===''?null:Number(v), ent=v=>v===''?null:Math.round(Number(v));
+    const n=v=>{ const x=pNum(v); return x==null||isNaN(x)? null : x; }, ent=v=>{ const x=n(v); return x==null? null : Math.round(x); };
     const nuevo=areas.map((ar,i)=>({area:ar, estado:f['rp-est-'+i].value, desde:f['rp-desde-'+i].value||null, licencias_asignadas:ent(f['rp-asig-'+i].value), licencias_activas:ent(f['rp-act-'+i].value),
       usuarios_activos_semanales:ent(f['rp-sem-'+i].value), horas_liberadas_mes:n(f['rp-hor-'+i].value), fuente:f['rp-fue-'+i].value.trim()||null, fecha_dato:f['rp-fd-'+i].value||null})).filter(u=>u.estado);
     if(nuevo.some(u=>u.licencias_activas!=null && u.licencias_asignadas!=null && u.licencias_activas>u.licencias_asignadas)) return [t('e_licencias')];
@@ -1300,7 +1335,7 @@ function abrirIniciativa(I, base){
     '<p><b>'+esc(t('tecnologia'))+'</b></p>'+chk('tecnologia','tecnologia',c.tecnologia||[])+'<p><b>'+esc(t('tipo_valor'))+'</b></p>'+chk('tipo_valor','tipo_valor',c.tipo_valor||[])+
     '<p><b>'+esc(t('proveedores'))+'</b></p><div class="checks">'+DB.proveedores.map(p=>'<label><input type="checkbox" name="proveedores" value="'+esc(p.id)+'"'+((c.proveedores||[]).includes(p.id)?' checked':'')+'> '+esc(p.nombre)+'</label>').join('')+'</div>'+
     '<p><b>'+esc(t('sistemas'))+'</b></p><div class="checks">'+DB.sistemas.map(s=>'<label><input type="checkbox" name="sistemas" value="'+esc(s.id)+'"'+((X.sistemas||[]).includes(s.id)?' checked':'')+'> '+esc(s.id+' '+s.nombre)+'</label>').join('')+'</div></fieldset>';
-  b+='<fieldset><legend>'+esc(t('b_valor'))+'</legend><p class="ayuda">'+esc(t('inv_nota',{m:DB.meta.moneda}))+'</p><div class="rejilla">'+campo('in-inv1',t('inv_real'),'<input type="number" step="any" id="in-inv1" name="in-inv1" value="'+(X.inversion&&X.inversion.realizada!=null?X.inversion.realizada:'')+'">')+campo('in-inv2',t('inv_pend'),'<input type="number" step="any" id="in-inv2" name="in-inv2" value="'+(X.inversion&&X.inversion.pendiente!=null?X.inversion.pendiente:'')+'">')+'</div></fieldset>';
+  b+='<fieldset><legend>'+esc(t('b_valor'))+'</legend><p class="ayuda">'+esc(t('inv_nota',{m:DB.meta.moneda}))+'</p><div class="rejilla">'+campo('in-inv1',t('inv_real'),inNum('in-inv1',X.inversion?X.inversion.realizada:null))+campo('in-inv2',t('inv_pend'),inNum('in-inv2',X.inversion?X.inversion.pendiente:null))+'</div></fieldset>';
   const P=panelCanon(X.panel)||PANEL_VACIO, selP=(id,grupo,val)=>'<select id="'+id+'" name="'+id+'">'+opts(grupo,val||'','—')+'</select>';
   b+='<fieldset><legend>'+esc(t('b_panel'))+'</legend><p class="ayuda">'+esc(t('panel_nota'))+'</p><div class="rejilla">'+campo('in-p-comp',t('p_complejidad'),selP('in-p-comp','complejidad',P.complejidad),t('p_complejidad_ayuda'))+campo('in-p-prio',t('p_prioridad'),selP('in-p-prio','prioridad',P.prioridad))+
     campo('in-p-plazo',t('p_plazo'),'<input type="month" id="in-p-plazo" name="in-p-plazo" value="'+esc(P.plazo_potencial||'')+'">',t('p_plazo_ayuda'))+
@@ -1308,12 +1343,12 @@ function abrirIniciativa(I, base){
     campo('in-p-obs',t('p_obs'),'<textarea id="in-p-obs" name="in-p-obs">'+esc(P.observaciones_consejo||'')+'</textarea>',t('p_obs_ayuda'))+'</fieldset>';
   const A0=alcanceCanon(X.alcance)||{tipo:'unidad', habilita:[], umbral_adopcion_pct:null, reparto:[]};
   b+='<fieldset><legend>'+esc(t('b_alcance'))+'</legend><p class="ayuda">'+esc(t('alcance_nota'))+'</p><div class="rejilla">'+campo('in-alc',t('alcance'),'<select id="in-alc" name="in-alc">'+opts('alcance',A0.tipo)+'</select>')+
-    campo('in-umb',t('umbral_adop'),'<input type="number" min="0" max="100" step="any" id="in-umb" name="in-umb" value="'+(A0.umbral_adopcion_pct!=null?A0.umbral_adopcion_pct:'')+'">',t('umbral_adop_ayuda'))+'</div>'+
+    campo('in-umb',t('umbral_adop'),inNum('in-umb',A0.umbral_adopcion_pct,' data-min="0" data-max="100"'),t('umbral_adop_ayuda'))+'</div>'+
     '<p><b>'+esc(t('habilita'))+'</b> <span class="ayuda">'+esc(t('habilita_ayuda'))+'</span></p><div class="checks">'+DB.iniciativas.filter(J=>!I || J.id!==I.id).map(J=>'<label><input type="checkbox" name="habilita" value="'+esc(J.id)+'"'+(A0.habilita.includes(J.id)?' checked':'')+'> '+esc(J.id+' '+J.nombre)+'</label>').join('')+'</div></fieldset>';
   b+=trio(nuevo?hoy():hoy());
   abrirDialogo(nuevo? t('dlg_alta') : t('dlg_editar',{id:I.id}), b, f=>{
     const errs=[]; const tr=leerTrio(f,errs);
-    const num=v=>v===''?null:Number(v);
+    const num=v=>{ const x=pNum(v); return x==null||isNaN(x)? null : x; };
     const Y={nombre:f['in-nombre'].value.trim(), area:f['in-area'].value.trim(), descripcion:f['in-desc'].value.trim(), etiquetas_libres:f['in-etq'].value.split(',').map(x=>x.trim()).filter(Boolean),
       responsables:{}, clasificacion:{esfera_principal:f['in-esf1'].value, esfera_secundaria:f['in-esf2'].value||null, ambicion_propuesta:f['in-amb1'].value||null, ambicion_confirmada:f['in-amb2'].value||null, ambicion_real:f['in-amb3'].value||null, intensidad:f['in-int'].value, regulatoria:f['in-reg'].value,
         tecnologia:$$('input[name="tecnologia"]:checked',f).map(x=>x.value), autonomia:f['in-aut'].value||null, exposicion:f['in-exp'].value, tipo_valor:$$('input[name="tipo_valor"]:checked',f).map(x=>x.value), proveedores:$$('input[name="proveedores"]:checked',f).map(x=>x.value)},
@@ -1431,11 +1466,11 @@ function onAccion(acc, b){
       return;
     case 'reparto': if(I) abrirReparto(I); return;
     case 'valor': if(I){ const V = b.dataset.val? DB.valores.find(v=>v.id===b.dataset.val) : null;
-      const bq='<div class="rejilla">'+campo('va-mom',t('momento'),'<select id="va-mom" name="va-mom">'+opts('momento',V?V.momento:'esperado')+'</select>')+campo('va-tip',t('tipo'),'<select id="va-tip" name="va-tip">'+opts('tipo_imp',V?V.tipo:'eficiencias')+'</select>')+campo('va-imp',t('importe'),'<input type="number" step="any" id="va-imp" name="va-imp" value="'+(V&&V.importe!=null?V.importe:'')+'">',t('importe_vacio'))+campo('va-est',t('estado'),'<select id="va-est" name="va-est">'+opts('importe',V?V.estado:'estimado')+'</select>')+campo('va-per',t('periodo'),'<input type="text" id="va-per" name="va-per" value="'+esc(V?V.periodo||'':t('anual'))+'">')+campo('va-fue',t('fuente'),'<input type="text" id="va-fue" name="va-fue" value="'+esc(V?V.fuente||'':'')+'">')+
+      const bq='<div class="rejilla">'+campo('va-mom',t('momento'),'<select id="va-mom" name="va-mom">'+opts('momento',V?V.momento:'esperado')+'</select>')+campo('va-tip',t('tipo'),'<select id="va-tip" name="va-tip">'+opts('tipo_imp',V?V.tipo:'eficiencias')+'</select>')+campo('va-imp',t('importe'),inNum('va-imp',V?V.importe:null),t('importe_vacio'))+campo('va-est',t('estado'),'<select id="va-est" name="va-est">'+opts('importe',V?V.estado:'estimado')+'</select>')+campo('va-per',t('periodo'),'<input type="text" id="va-per" name="va-per" value="'+esc(V?V.periodo||'':t('anual'))+'">')+campo('va-fue',t('fuente'),'<input type="text" id="va-fue" name="va-fue" value="'+esc(V?V.fuente||'':'')+'">')+
         campo('va-ofe',t('va_oferta'),selSiNo('va-ofe',V?V.oferta_habilitada_ia:null),t('va_oferta_ayuda'))+campo('va-con',t('v_concepto'),'<select id="va-con" name="va-con"><option value="">—</option>'+['eficiencias','retorno'].map(g=>'<optgroup label="'+esc(L('tipo_imp',g))+'">'+opts('concepto_'+g,V&&V.tipo===g?V.concepto||'':'')+'</optgroup>').join('')+'</select>',t('v_concepto_ayuda'))+
         (alcanceDe(I) || (V&&V.area)? campo('va-area',t('v_area'),'<select id="va-area" name="va-area"><option value="">'+esc(t('v_area_toda'))+'</option>'+[...new Set([...((alcanceDe(I)||{}).reparto||[]).map(u=>u.area), ...(DB.meta.areas||[]), ...(V&&V.area?[V.area]:[])])].map(a=>'<option value="'+esc(a)+'"'+(V&&V.area===a?' selected':'')+'>'+esc(a)+'</option>').join('')+'</select>',t('v_area_ayuda')) : '')+'</div>'+campo('va-for',t('formula'),'<input type="text" id="va-for" name="va-for" value="'+esc(V?V.formula||'':'')+'">')+trio();
       abrirDialogo(t('dlg_valor'), bq, f=>{ const errs=[]; const tr=leerTrio(f,errs); if(errs.length) return errs;
-        const nv={momento:f['va-mom'].value, tipo:f['va-tip'].value, importe:f['va-imp'].value===''?null:Number(f['va-imp'].value), formula:f['va-for'].value.trim()||null, estado:f['va-est'].value, periodo:f['va-per'].value.trim()||null, fecha:tr.fecha, fuente:f['va-fue'].value.trim()||null, concepto:f['va-con'].value||null};
+        const nv={momento:f['va-mom'].value, tipo:f['va-tip'].value, importe:leerNumCampo(f['va-imp']), formula:f['va-for'].value.trim()||null, estado:f['va-est'].value, periodo:f['va-per'].value.trim()||null, fecha:tr.fecha, fuente:f['va-fue'].value.trim()||null, concepto:f['va-con'].value||null};
         if(f['va-area']) nv.area=f['va-area'].value||null;
         { const of=leerSiNo(f,'va-ofe'); if(of!=null) nv.oferta_habilitada_ia=of; else if(V) delete V.oferta_habilitada_ia; }
         if(nv.concepto && !((LB.es['concepto_'+nv.tipo]||{})[nv.concepto])) return [t('e_concepto')];
@@ -1530,7 +1565,7 @@ function vistaGates(){
       const evp=(M.evi.get(I.id)||[]).filter(e=>e.gate===dg.gate&&!e.verificada).length;
       const situ = !dg.resultado_verificacion? t('gp_ver_pend') : (dg.resultado_verificacion==='no_conforme'? t('gp_ver_nc') : t('gp_dec_pend'));
       h+='<tr><td data-l="Gate"><b>'+esc(gateTxt(dg.gate))+'</b><br><span class="ayuda">'+esc(t('iteracion'))+' '+dg.iteracion+(dg.elevada?' · '+esc(t('at_elevar')):'')+' · <span class="mono">'+esc(dg.id)+'</span></span></td><td data-l="'+esc(t('iniciativa'))+'"><span class="mono">'+esc(I.id)+'</span><br>'+enlaceIni(I)+'</td><td data-l="'+esc(t('solicitud'))+'">'+fF(dg.fecha_solicitud)+'</td><td data-l="'+esc(t('gp_fase'))+'">'+et(situ,dg.resultado_verificacion==='no_conforme'?'ko':'info')+'</td>'+
-        '<td data-l="'+esc(t('gp_dias'))+'" class="num"><span class="'+(hb>pl?'errores':'')+'">'+hb+'</span> / '+pl+'</td><td data-l="'+esc(t('g_verifica'))+'">'+(dg.verificador?pNombre(dg.verificador):esc(q.verifica))+'<br><span class="ayuda">'+esc(dg.iteracion>=3?L('organo','organo_superior'):L('organo',q.organo))+'</span></td>'+
+        '<td data-l="'+esc(t('gp_dias'))+'" class="num"><span class="'+(hb>pl?'errores':'')+'">'+fI(hb)+'</span> / '+fI(pl)+'</td><td data-l="'+esc(t('g_verifica'))+'">'+(dg.verificador?pNombre(dg.verificador):esc(q.verifica))+'<br><span class="ayuda">'+esc(dg.iteracion>=3?L('organo','organo_superior'):L('organo',q.organo))+'</span></td>'+
         '<td data-l="'+esc(t('bloqueantes'))+'">'+(ev.bloq.length?'<span class="errores">'+ev.bloq.length+'</span>':'0')+' · '+esc(t('grado'))+' '+fP(ev.grado)+(evp?'<br>'+et(t('gp_evid')+': '+evp,'med'):'')+'</td><td data-l=""><a class="btn" href="#/ficha/'+esc(I.id)+'/gate">'+esc(t('gestionar'))+'</a></td></tr>'; });
     h+='</tbody></table>'; }
   const lim=sumarDias(hoy(),30);
@@ -1548,7 +1583,7 @@ function vistaAlertas(){
   if(!A.length) return h+'<p>'+esc(t('al_ninguna'))+'</p>';
   const orden=['estancada','decision','condicion','revision','evidencias','riesgos','elevar','espera','roles','nc','adopcion'];
   const g=agrupar(A,a=>a.tipo);
-  h+='<div class="kpis">'+orden.filter(k=>g.has(k)).map(k=>'<div class="kpi"><b>'+g.get(k).length+'</b><span>'+esc(t('at_'+k))+'</span></div>').join('')+'</div>';
+  h+='<div class="kpis">'+orden.filter(k=>g.has(k)).map(k=>'<div class="kpi"><b>'+fI(g.get(k).length)+'</b><span>'+esc(t('at_'+k))+'</span></div>').join('')+'</div>';
   orden.filter(k=>g.has(k)).forEach(k=>{
     h+='<h2>'+esc(t('at_'+k))+' ('+g.get(k).length+')</h2><table class="tabla resp"><thead><tr><th scope="col">'+esc(t('iniciativa'))+'</th><th scope="col">'+esc(t('severidad'))+'</th><th scope="col">'+esc(t('motivo'))+'</th></tr></thead><tbody>';
     g.get(k).forEach(a=>{ const I=M.ini.get(a.ini); h+='<tr><td data-l="'+esc(t('iniciativa'))+'"><span class="mono">'+esc(I.id)+'</span><br>'+enlaceIni(I)+'</td><td data-l="'+esc(t('severidad'))+'">'+et(t('sev_'+a.sev),a.sev==='alta'?'ko':(a.sev==='info'?'info':'med'))+'</td><td data-l="'+esc(t('motivo'))+'">'+esc(a.texto)+'</td></tr>'; });
@@ -1574,56 +1609,56 @@ function vistaAnalisis(){
   // tiempo en fase
   h+='<h2>'+esc(t('m_tiempo_fase'))+'</h2><p class="ayuda">'+esc(t('m_tf_sub'))+'</p>';
   const filasTF=[]; for(let f=0; f<8; f++){ const cerr=[], cur=[]; lista.forEach(I=>sit(I).iv.intervalos.filter(x=>x.fase===f).forEach(x=>(x.hasta?cerr:cur).push(x.dias)));
-    const pl=DB.meta.configuracion.plazos_fase; filasTF.push([esc(faseTxt(f)), String(cerr.length), nd(mediana(cerr)), nd(percentil(cerr,.8)), String(cur.length), f===6?esc(t('sin_plazo')):esc(pl.lite[f]+' / '+pl.enterprise[f])]); }
+    const pl=DB.meta.configuracion.plazos_fase; filasTF.push([esc(faseTxt(f)), fI(cerr.length), nd(mediana(cerr)), nd(percentil(cerr,.8)), fI(cur.length), f===6?esc(t('sin_plazo')):esc(pl.lite[f]+' / '+pl.enterprise[f])]); }
   h+=tablaSimple([t('fase'),t('n_cerr'),t('mediana'),t('p80'),t('n_curso'),t('plazo_ref')+' (Lite / Enterprise)'], filasTF, [1,2,3,4]);
   // tiempo de decisión
   const dgs=DB.decisiones_gate.filter(d=>ids.has(d.iniciativa));
   h+='<h2>'+esc(t('m_tiempo_dec'))+'</h2><p class="ayuda">'+esc(t('m_td_sub'))+'</p>';
-  h+=tablaSimple([ 'Gate', t('n_dec'), t('mediana'), t('p80'), t('n_pend'), t('plazo_ref')+' (Lite / Enterprise)' ], GATE_DE_FASE.map(g=>{ const d=dgs.filter(x=>x.gate===g && x.fecha_decision).map(x=>habiles(x.fecha_solicitud,x.fecha_decision)); const p=dgs.filter(x=>x.gate===g && !x.fecha_decision).length; return [esc(gateTxt(g)), String(d.length), nd(mediana(d)), nd(percentil(d,.8)), String(p), esc(DB.meta.configuracion.plazo_decision_dias_habiles.lite+' / '+DB.meta.configuracion.plazo_decision_dias_habiles.enterprise)]; }), [1,2,3,4]);
+  h+=tablaSimple([ 'Gate', t('n_dec'), t('mediana'), t('p80'), t('n_pend'), t('plazo_ref')+' (Lite / Enterprise)' ], GATE_DE_FASE.map(g=>{ const d=dgs.filter(x=>x.gate===g && x.fecha_decision).map(x=>habiles(x.fecha_solicitud,x.fecha_decision)); const p=dgs.filter(x=>x.gate===g && !x.fecha_decision).length; return [esc(gateTxt(g)), fI(d.length), nd(mediana(d)), nd(percentil(d,.8)), fI(p), esc(DB.meta.configuracion.plazo_decision_dias_habiles.lite+' / '+DB.meta.configuracion.plazo_decision_dias_habiles.enterprise)]; }), [1,2,3,4]);
   // hasta producción
   const tp={a:[],b:[],c:[]}; lista.forEach(I=>{ const p6=primeraEntrada(I,6); const g3=decisionesDe(I).find(d=>d.gate==='G3'&&['continuar','continuar_condiciones'].includes(d.resultado)); if(g3) tp.a.push(dias(I.fecha_registro,g3.fecha_decision)); if(p6){ tp.c.push(dias(I.fecha_registro,p6)); if(g3) tp.b.push(dias(g3.fecha_decision,p6)); } });
-  h+='<h2>'+esc(t('m_hasta_prod'))+'</h2><p class="ayuda">'+esc(t('m_hp_sub'))+'</p>'+tablaSimple([t('tramo'),'n',t('mediana'),t('p80')], [[esc(t('t_reg_g3')),String(tp.a.length),nd(mediana(tp.a)),nd(percentil(tp.a,.8))],[esc(t('t_g3_g5')),String(tp.b.length),nd(mediana(tp.b)),nd(percentil(tp.b,.8))],[esc(t('t_total')),String(tp.c.length),nd(mediana(tp.c)),nd(percentil(tp.c,.8))]], [1,2,3]);
+  h+='<h2>'+esc(t('m_hasta_prod'))+'</h2><p class="ayuda">'+esc(t('m_hp_sub'))+'</p>'+tablaSimple([t('tramo'),'n',t('mediana'),t('p80')], [[esc(t('t_reg_g3')),fI(tp.a.length),nd(mediana(tp.a)),nd(percentil(tp.a,.8))],[esc(t('t_g3_g5')),fI(tp.b.length),nd(mediana(tp.b)),nd(percentil(tp.b,.8))],[esc(t('t_total')),fI(tp.c.length),nd(mediana(tp.c)),nd(percentil(tp.c,.8))]], [1,2,3]);
   // conversión
   const RES=['continuar','continuar_condiciones','continuar_operacion','escalar','iterar','pivotar','adelantar_g7','parar','retirar'];
   h+='<h2>'+esc(t('m_conversion'))+'</h2><p class="ayuda">'+esc(t('m_cv_sub'))+'</p>';
-  h+=tablaSimple(['Gate',t('n_dec'),...RES.map(r=>L('resultado',r)),t('continuan')], GATE_DE_FASE.map(g=>{ const d=dgs.filter(x=>x.gate===g&&x.resultado); const c=d.filter(x=>['continuar','continuar_condiciones','continuar_operacion','escalar'].includes(x.resultado)).length; return [esc(g),String(d.length),...RES.map(r=>{ const n=d.filter(x=>x.resultado===r).length; return RESULTADOS[g].includes(r)?String(n):'—'; }), d.length?fP(c/d.length*100):sd()]; }), [1,2,3,4,5,6,7,8,9,10,11]);
+  h+=tablaSimple(['Gate',t('n_dec'),...RES.map(r=>L('resultado',r)),t('continuan')], GATE_DE_FASE.map(g=>{ const d=dgs.filter(x=>x.gate===g&&x.resultado); const c=d.filter(x=>['continuar','continuar_condiciones','continuar_operacion','escalar'].includes(x.resultado)).length; return [esc(g),fI(d.length),...RES.map(r=>{ const n=d.filter(x=>x.resultado===r).length; return RESULTADOS[g].includes(r)?fI(n):'—'; }), d.length?fP(c/d.length*100):sd()]; }), [1,2,3,4,5,6,7,8,9,10,11]);
   // iteraciones
   h+='<h2>'+esc(t('m_iter'))+'</h2><p class="ayuda">'+esc(t('m_it_sub'))+'</p>';
-  h+=tablaSimple(['Gate',t('n_finales'),t('media'),t('maximo')], GATE_DE_FASE.map(g=>{ const fin=dgs.filter(x=>x.gate===g&&x.resultado&&x.resultado!=='iterar').map(x=>(x.iteracion||1)-1); return [esc(g),String(fin.length),fin.length?fN(sum(fin)/fin.length,2):sd(),fin.length?String(Math.max(...fin)):sd()]; }), [1,2,3]);
+  h+=tablaSimple(['Gate',t('n_finales'),t('media'),t('maximo')], GATE_DE_FASE.map(g=>{ const fin=dgs.filter(x=>x.gate===g&&x.resultado&&x.resultado!=='iterar').map(x=>(x.iteracion||1)-1); return [esc(g),fI(fin.length),fin.length?fN(sum(fin)/fin.length,2):sd(),fin.length?fI(Math.max(...fin)):sd()]; }), [1,2,3]);
   // cumplimiento
   const bloq=new Map(); const grados={};
   dgs.forEach(d=>{ const I=M.ini.get(d.iniciativa); if(!I) return; const ev=evaluar(d,I); if(d.resultado && ev.grado!=null) (grados[d.gate]=grados[d.gate]||[]).push(ev.grado); ev.bloq.forEach(c=>bloq.set(c,(bloq.get(c)||0)+1)); });
-  h+='<h2>'+esc(t('m_cumpl'))+'</h2><p class="ayuda">'+esc(t('m_cu_sub'))+'</p><div class="bloques"><div>'+tablaSimple(['Gate',t('n_dec'),t('grado')], GATE_DE_FASE.map(g=>{ const a=grados[g]||[]; return [esc(g),String(a.length),a.length?fP(sum(a)/a.length):sd()]; }), [1,2])+'</div><div>';
+  h+='<h2>'+esc(t('m_cumpl'))+'</h2><p class="ayuda">'+esc(t('m_cu_sub'))+'</p><div class="bloques"><div>'+tablaSimple(['Gate',t('n_dec'),t('grado')], GATE_DE_FASE.map(g=>{ const a=grados[g]||[]; return [esc(g),fI(a.length),a.length?fP(sum(a)/a.length):sd()]; }), [1,2])+'</div><div>';
   const top=[...bloq.entries()].sort((a,b)=>b[1]-a[1]).slice(0,8);
-  h+= top.length? tablaSimple([t('top_bloq'),t('veces')], top.map(([c,n])=>['<b class="mono">'+esc(c)+'</b> <span class="ayuda">'+esc(critT(CAT.find(x=>x.c===c)))+'</span>',String(n)]), [1]) : '<p>'+esc(t('ninguno'))+'</p>';
+  h+= top.length? tablaSimple([t('top_bloq'),t('veces')], top.map(([c,n])=>['<b class="mono">'+esc(c)+'</b> <span class="ayuda">'+esc(critT(CAT.find(x=>x.c===c)))+'</span>',fI(n)]), [1]) : '<p>'+esc(t('ninguno'))+'</p>';
   h+='</div></div>';
   // estancadas, espera, motivos, vencidas
   const est=act.filter(I=>sit(I).estancada);
-  h+='<h2>'+esc(t('m_estancadas'))+' ('+est.length+')</h2>'+(est.length?'<ul>'+est.map(I=>'<li><span class="mono">'+esc(I.id)+'</span> '+enlaceIni(I)+' · '+esc(faseTxt(I.ciclo.fase))+' · '+sit(I).diasFase+' / '+sit(I).plazo+' '+esc(t('dias'))+'</li>').join('')+'</ul>':'<p>'+esc(t('ninguna'))+'</p>');
+  h+='<h2>'+esc(t('m_estancadas'))+' ('+fI(est.length)+')</h2>'+(est.length?'<ul>'+est.map(I=>'<li><span class="mono">'+esc(I.id)+'</span> '+enlaceIni(I)+' · '+esc(faseTxt(I.ciclo.fase))+' · '+fI(sit(I).diasFase)+' / '+fI(sit(I).plazo)+' '+esc(t('dias'))+'</li>').join('')+'</ul>':'<p>'+esc(t('ninguna'))+'</p>');
   const esp=lista.flatMap(I=>sit(I).iv.esperas); const gE=agrupar(esp,x=>x.motivo||'otro');
-  h+='<h2>'+esc(t('m_espera'))+'</h2><p class="ayuda">'+esc(t('m_es_sub'))+'</p>'+(esp.length?tablaSimple([t('motivo_espera'),t('episodios'),t('dias_total')], [...gE.entries()].map(([k,v])=>[esc(L('espera',k)),String(v.length),String(sum(v.map(x=>x.dias)))]).concat([['<b>Total</b>',String(esp.length),String(sum(esp.map(x=>x.dias)))]]), [1,2]):'<p>'+esc(t('ninguno'))+'</p>');
+  h+='<h2>'+esc(t('m_espera'))+'</h2><p class="ayuda">'+esc(t('m_es_sub'))+'</p>'+(esp.length?tablaSimple([t('motivo_espera'),t('episodios'),t('dias_total')], [...gE.entries()].map(([k,v])=>[esc(L('espera',k)),fI(v.length),fI(sum(v.map(x=>x.dias)))]).concat([['<b>Total</b>',fI(esp.length),fI(sum(esp.map(x=>x.dias)))]]), [1,2]):'<p>'+esc(t('ninguno'))+'</p>');
   const cer=lista.filter(cerrada); const gM=agrupar(cer,I=>I.cierre?I.cierre.motivo:'');
-  h+='<h2>'+esc(t('m_motivos'))+'</h2>'+(cer.length?tablaSimple([t('motivo_cierre'),L('estado','parada'),L('estado','retirada')], [...gM.entries()].map(([k,v])=>[esc(k?L('motivo',k):t('sin_dato')),String(v.filter(i=>i.ciclo.estado==='parada').length),String(v.filter(i=>i.ciclo.estado==='retirada').length)]), [1,2]):'<p>'+esc(t('ninguna'))+'</p>');
+  h+='<h2>'+esc(t('m_motivos'))+'</h2>'+(cer.length?tablaSimple([t('motivo_cierre'),L('estado','parada'),L('estado','retirada')], [...gM.entries()].map(([k,v])=>[esc(k?L('motivo',k):t('sin_dato')),fI(v.filter(i=>i.ciclo.estado==='parada').length),fI(v.filter(i=>i.ciclo.estado==='retirada').length)]), [1,2]):'<p>'+esc(t('ninguna'))+'</p>');
   const venc=lista.flatMap(I=>condicionesDe(I).map(c=>({c,I}))).filter(x=>estadoCond(x.c)==='vencida');
   h+='<h2>'+esc(t('m_vencidas'))+' ('+venc.length+')</h2>'+(venc.length?'<ul>'+venc.map(x=>'<li><span class="mono">'+esc(x.c.id)+'</span> · '+enlaceIni(x.I)+' · '+esc(x.c.criterio||'')+' · '+esc(t('plazo_c'))+' '+fF(x.c.plazo)+'</li>').join('')+'</ul>':'<p>'+esc(t('ninguna'))+'</p>');
   // mezcla de ambición
   const colA={optimizar:'var(--oxford)',aumentar:'var(--teal)',transformar:'var(--velvet)',sd:'var(--regla)'};
   h+='<h2>'+esc(t('m_mezcla'))+'</h2><p class="ayuda">'+esc(t('m_mz_sub'))+'</p><p class="leyenda">'+['optimizar','aumentar','transformar'].map(a=>'<span><i style="background:'+colA[a]+'"></i>'+esc(L('ambicion',a))+'</span>').join('')+'<span><i style="background:'+colA.sd+'"></i>'+esc(t('sin_dato'))+'</span></p>';
   h+=tablaSimple([t('fase'),L('ambicion','optimizar'),L('ambicion','aumentar'),L('ambicion','transformar'),t('sin_dato'),''], [0,1,2,3,4,5,6,7].map(f=>{ const en=act.filter(i=>i.ciclo.fase===f); const n=k=>en.filter(i=>(ambicionDe(i)||'sd')===k).length; const tot=en.length||1;
-    return [esc(faseTxt(f)),String(n('optimizar')),String(n('aumentar')),String(n('transformar')),String(n('sd')), en.length?'<span class="apilada" aria-hidden="true">'+['optimizar','aumentar','transformar','sd'].map(k=>'<i style="width:'+(n(k)/tot*100)+'%;background:'+colA[k]+'"></i>').join('')+'</span>':'']; }), [1,2,3,4]);
+    return [esc(faseTxt(f)),fI(n('optimizar')),fI(n('aumentar')),fI(n('transformar')),fI(n('sd')), en.length?'<span class="apilada" aria-hidden="true">'+['optimizar','aumentar','transformar','sd'].map(k=>'<i style="width:'+(n(k)/tot*100)+'%;background:'+colA[k]+'"></i>').join('')+'</span>':'']; }), [1,2,3,4]);
   // valor por fase y ponderado
   const P=probHistorica(); let totPond=0, excl=0, hayPond=false;
   const filasV=[0,1,2,3,4,5,6,7].map(f=>{ const en=act.filter(i=>i.ciclo.fase===f); const vals=en.map(i=>sit(i).valor.esperado); const con=vals.filter(v=>v!=null); const s=con.length?sum(con):null;
     let prob='—', pond='—';
     if(f<6){ const pf=P[f]; if(pf.suficiente && pf.p!=null){ prob=fP(pf.p*100)+' <span class="ayuda">(n='+pf.n+')</span>'; if(s!=null){ pond=fE(s*pf.p); totPond+=s*pf.p; hayPond=true; } else pond=sd(); } else { prob='<span class="sd">'+esc(t('historial_insuf',{n:pf.n,m:pf.min}))+'</span>'; pond='<span class="sd">—</span>'; if(s!=null) excl+=s; } }
-    return [esc(faseTxt(f)), String(en.length), String(con.length), s==null?sd():fE(s), prob, pond]; });
+    return [esc(faseTxt(f)), fI(en.length), fI(con.length), s==null?sd():fE(s), prob, pond]; });
   h+='<h2>'+esc(t('m_valor_fase'))+' · '+esc(t('m_ponderado'))+'</h2><p class="ayuda">'+esc(t('m_vf_sub'))+' '+esc(t('m_vp_sub',{n:DB.meta.configuracion.historial_minimo_ponderado}))+'</p>';
   h+=tablaSimple([t('fase'),t('iniciativas'),t('con_dato'),t('valor'),t('prob'),t('ponderado')], filasV, [1,2,3,5]);
   h+='<div class="kpis"><div class="kpi"><b>'+(hayPond?fE(totPond):sd())+'</b><span>'+esc(t('total_suficiente'))+'</span></div><div class="kpi"><b>'+fE(excl)+'</b><span>'+esc(t('excluido'))+'</span></div></div>';
   // cohortes
   const gC=agrupar(lista,I=>trimestre(I.fecha_registro)); const claves=[...gC.keys()].sort();
   h+='<h2>'+esc(t('m_cohortes'))+'</h2>'+tablaSimple([t('trimestre'),t('registradas'),t('llegan_g3'),t('llegan_prod'),t('cerradas_sin'),t('med_prod')], claves.map(k=>{ const v=gC.get(k); const g3=v.filter(I=>decisionesDe(I).some(d=>d.gate==='G3'&&['continuar','continuar_condiciones'].includes(d.resultado))).length; const pr=v.filter(I=>primeraEntrada(I,6)); const cs=v.filter(I=>cerrada(I)&&!primeraEntrada(I,6)).length;
-    return [esc(k),String(v.length),String(g3),String(pr.length),String(cs),nd(mediana(pr.map(I=>dias(I.fecha_registro,primeraEntrada(I,6)))))]; }), [1,2,3,4,5]);
+    return [esc(k),fI(v.length),fI(g3),fI(pr.length),fI(cs),nd(mediana(pr.map(I=>dias(I.fecha_registro,primeraEntrada(I,6)))))]; }), [1,2,3,4,5]);
   return h;
 }
 
@@ -1631,7 +1666,7 @@ function vistaAnalisis(){
 function vistaInventario(){
   const S=DB.sistemas; const h0=hoy();
   let h='<div class="cab-ficha"><h1>'+esc(t('inv_titulo'))+'</h1><button type="button" class="primario" data-acc="sistema">'+esc(t('nuevo_sistema'))+'</button></div><p class="ayuda">'+esc(t('inv_sub'))+'</p><p class="nota-clas">'+esc(t('nota_clas'))+'</p>';
-  h+='<div class="kpis"><div class="kpi"><b>'+S.length+'</b><span>'+esc(t('sis_total'))+'</span></div><div class="kpi"><b>'+S.filter(s=>s.estado==='en_produccion').length+'</b><span>'+esc(L('sis_estado','en_produccion'))+'</span></div><div class="kpi"><b>'+S.filter(s=>!(s.iniciativas||[]).length).length+'</b><span>'+esc(t('sis_sin_ini'))+'</span></div><div class="kpi"><b>'+S.filter(s=>['alto_riesgo','pendiente','prohibido'].includes(s.regulatoria)).length+'</b><span>'+esc(t('sis_alto'))+'</span></div><div class="kpi"><b>'+S.filter(s=>s.estado==='en_produccion'&&s.proxima_revision&&s.proxima_revision<h0).length+'</b><span>'+esc(t('sis_rev'))+'</span></div></div>';
+  h+='<div class="kpis"><div class="kpi"><b>'+fI(S.length)+'</b><span>'+esc(t('sis_total'))+'</span></div><div class="kpi"><b>'+fI(S.filter(s=>s.estado==='en_produccion').length)+'</b><span>'+esc(L('sis_estado','en_produccion'))+'</span></div><div class="kpi"><b>'+fI(S.filter(s=>!(s.iniciativas||[]).length).length)+'</b><span>'+esc(t('sis_sin_ini'))+'</span></div><div class="kpi"><b>'+fI(S.filter(s=>['alto_riesgo','pendiente','prohibido'].includes(s.regulatoria)).length)+'</b><span>'+esc(t('sis_alto'))+'</span></div><div class="kpi"><b>'+fI(S.filter(s=>s.estado==='en_produccion'&&s.proxima_revision&&s.proxima_revision<h0).length)+'</b><span>'+esc(t('sis_rev'))+'</span></div></div>';
   h+='<table class="tabla resp"><thead><tr><th scope="col">'+esc(t('codigo'))+'</th><th scope="col">'+esc(t('nombre'))+'</th><th scope="col">'+esc(t('tipo_sis'))+' · '+esc(t('estado_sis'))+'</th><th scope="col">'+esc(t('iniciativas'))+'</th><th scope="col">'+esc(t('regulatoria'))+' · '+esc(t('intensidad'))+'</th><th scope="col">'+esc(t('tecnologia'))+' · '+esc(t('autonomia'))+'</th><th scope="col">'+esc(t('proveedores'))+'</th><th scope="col">'+esc(t('responsable'))+' · '+esc(t('prox_rev'))+'</th><th scope="col"><span class="oculto">'+esc(t('editar'))+'</span></th></tr></thead><tbody>';
   S.forEach(s=>{ h+='<tr><td data-l="'+esc(t('codigo'))+'" class="mono">'+esc(s.id)+'</td><td data-l="'+esc(t('nombre'))+'"><b>'+esc(s.nombre)+'</b>'+(s.descripcion?'<br><span class="ayuda">'+esc(s.descripcion)+'</span>':'')+'</td><td data-l="'+esc(t('tipo_sis'))+'">'+esc(L('sis_tipo',s.tipo))+'<br>'+et(L('sis_estado',s.estado),s.estado==='en_produccion'?'ok':(s.estado==='retirado'?'':'info'))+'</td>'+
     '<td data-l="'+esc(t('iniciativas'))+'">'+((s.iniciativas||[]).length?(s.iniciativas.map(id=>'<a href="#/ficha/'+esc(id)+'">'+esc(id)+'</a>').join('<br>')):'<span class="ayuda">—</span>')+'</td><td data-l="'+esc(t('regulatoria'))+'">'+esc(L('regulatoria',s.regulatoria))+'<br>'+esc(L('intensidad',s.intensidad))+'</td><td data-l="'+esc(t('tecnologia'))+'">'+(s.tecnologia||[]).map(x=>esc(L('tecnologia',x))).join(', ')+(s.autonomia?'<br>'+esc(L('autonomia',s.autonomia)):'')+'</td>'+
@@ -1883,11 +1918,11 @@ function bloqueMatriz(todos, inis, I){
     '<div class="campo"><span class="ayuda">'+esc(t('rg_matriz'))+'</span><div class="fila" role="group" aria-label="'+esc(t('rg_matriz'))+'">'+['residual','inherente'].map(v=>'<button type="button" data-acc="rg-vista" data-v="'+v+'" aria-pressed="'+(F.vista===v)+'"'+(F.vista===v?' class="primario"':'')+'>'+esc(t('rg_'+v))+'</button>').join('')+'</div></div></div>'+
     '<div class="fila"><label class="checks"><input type="checkbox" id="rg-f-cerrados" data-rg="cerrados"'+(F.cerrados?' checked':'')+'> '+esc(t('rg_cerrados'))+'</label>'+((F.cat||F.nivel||F.estado||F.cerrados||F.celda)?'<button type="button" data-acc="rg-limpiar">'+esc(t('rg_limpiar'))+'</button>':'')+'</div>';
   const nObs=obs.filter(o=>o.sev==='alta').length; const sinReg=inis.filter(x=>obsIniRiesgos(x).some(o=>o.k==='sin_registro')).length;
-  h+='<div class="kpis"><div class="kpi"><b>'+abiertos.length+'</b><span>'+esc(t('rg_k_total'))+'</span></div><div class="kpi"><b>'+abiertos.filter(r=>rgAcept(r)==='critico').length+'</b><span>'+esc(t('rg_k_crit'))+'</span></div><div class="kpi"><b>'+abiertos.filter(r=>rgAcept(r)==='alto').length+'</b><span>'+esc(t('rg_k_alto'))+'</span></div><div class="kpi"><b>'+nObs+'</b><span>'+esc(t('rg_k_obs'))+'</span></div>'+(I?'':'<div class="kpi"><b>'+sinReg+'</b><span>'+esc(t('rg_k_sin'))+'</span></div>')+'</div>';
+  h+='<div class="kpis"><div class="kpi"><b>'+fI(abiertos.length)+'</b><span>'+esc(t('rg_k_total'))+'</span></div><div class="kpi"><b>'+fI(abiertos.filter(r=>rgAcept(r)==='critico').length)+'</b><span>'+esc(t('rg_k_crit'))+'</span></div><div class="kpi"><b>'+fI(abiertos.filter(r=>rgAcept(r)==='alto').length)+'</b><span>'+esc(t('rg_k_alto'))+'</span></div><div class="kpi"><b>'+fI(nObs)+'</b><span>'+esc(t('rg_k_obs'))+'</span></div>'+(I?'':'<div class="kpi"><b>'+fI(sinReg)+'</b><span>'+esc(t('rg_k_sin'))+'</span></div>')+'</div>';
   h+='<div class="bloques rg-bloques"><section>'+matrizHTML(rs,F.vista)+'</section><section>';
-  h+='<h3>'+esc(t('rg_resumen'))+'</h3>'+tablaSimple(['',t('rg_inherente'),t('rg_residual')], [...NIVELES].reverse().map(n=>[nivelEt(n),String(rs.filter(r=>rgInh(r)===n).length),String(rs.filter(r=>rgRes(r)===n).length)]).concat([[esc(t('sin_dato')),String(rs.filter(r=>!rgInh(r)).length),String(rs.filter(r=>!rgRes(r)).length)],['<b>'+esc(t('rg_total'))+'</b>',String(rs.length),String(rs.length)]]), [1,2]);
+  h+='<h3>'+esc(t('rg_resumen'))+'</h3>'+tablaSimple(['',t('rg_inherente'),t('rg_residual')], [...NIVELES].reverse().map(n=>[nivelEt(n),fI(rs.filter(r=>rgInh(r)===n).length),fI(rs.filter(r=>rgRes(r)===n).length)]).concat([[esc(t('sin_dato')),fI(rs.filter(r=>!rgInh(r)).length),fI(rs.filter(r=>!rgRes(r)).length)],['<b>'+esc(t('rg_total'))+'</b>',fI(rs.length),fI(rs.length)]]), [1,2]);
   const cats=CATS_RIESGO.filter(c=>!I || rs.some(r=>r.categoria===c));
-  h+='<h3>'+esc(t('rg_por_cat'))+'</h3>'+tablaSimple([t('rg_categoria'),...[...NIVELES].reverse().map(n=>L('riesgo',n)),t('rg_total')], cats.map(c=>{ const x=rs.filter(r=>r.categoria===c); return [esc(L('cat_riesgo',c)),...[...NIVELES].reverse().map(n=>String(x.filter(r=>rgRes(r)===n).length)),'<b>'+x.length+'</b>']; }), [1,2,3,4,5]);
+  h+='<h3>'+esc(t('rg_por_cat'))+'</h3>'+tablaSimple([t('rg_categoria'),...[...NIVELES].reverse().map(n=>L('riesgo',n)),t('rg_total')], cats.map(c=>{ const x=rs.filter(r=>r.categoria===c); return [esc(L('cat_riesgo',c)),...[...NIVELES].reverse().map(n=>fI(x.filter(r=>rgRes(r)===n).length)),'<b>'+fI(x.length)+'</b>']; }), [1,2,3,4,5]);
   h+='</section></div>';
   // observaciones
   h+='<h2>'+esc(t('rg_obs'))+' ('+obs.filter(o=>o.sev!=='info').length+')</h2><p class="ayuda">'+esc(t('rg_obs_sub'))+'</p>';
@@ -1899,7 +1934,7 @@ function bloqueMatriz(todos, inis, I){
   const orden=r=>-(NIVELES.indexOf(rgRes(r))*10+NIVELES.indexOf(rgInh(r)));
   const lst=[...vis].sort((a,b)=>orden(a)-orden(b) || (a.id<b.id?-1:1));
   const [cp,ci]=(F.celda||'').split('-');
-  h+='<h2 id="rg-lista">'+esc(t('rg_lista'))+' ('+lst.length+')'+(F.celda?' <span class="sub-fase">'+esc(t('rg_celda_sel',{p:cp,i:ci}))+' <button type="button" data-acc="rg-celda" data-celda="'+esc(F.celda)+'">'+esc(t('rg_quitar'))+'</button></span>':'')+'</h2>';
+  h+='<h2 id="rg-lista">'+esc(t('rg_lista'))+' ('+fI(lst.length)+')'+(F.celda?' <span class="sub-fase">'+esc(t('rg_celda_sel',{p:cp,i:ci}))+' <button type="button" data-acc="rg-celda" data-celda="'+esc(F.celda)+'">'+esc(t('rg_quitar'))+'</button></span>':'')+'</h2>';
   if(!lst.length) return h+'<p>'+esc(t('rg_ninguno'))+'</p>';
   const C=['rg_c_riesgo','rg_c_inh','rg_c_ctl','rg_c_res','rg_c_resp','rg_c_acept','rg_c_est','rg_c_obs'].map(k=>t(k));
   h+='<table class="tabla resp rg-tabla"><thead><tr>'+C.map(c=>'<th scope="col">'+esc(c)+'</th>').join('')+'<th scope="col"><span class="oculto">'+esc(t('editar'))+'</span></th></tr></thead><tbody>';
@@ -2369,20 +2404,20 @@ function vistaDatos(){
   h+='<h2>'+esc(t('dt_importar'))+'</h2><p class="ayuda">'+esc(t('dt_imp_ayuda'))+'</p><div class="fila"><label class="oculto" for="dt-fichero">'+esc(t('dt_importar'))+'</label><input type="file" id="dt-fichero" accept="application/json,.json" multiple><button type="button" data-acc="importar">'+esc(t('dt_imp_btn'))+'</button><button type="button" data-acc="fusionar">'+esc(t('dt_fus_btn'))+'</button></div><div id="dt-imp-res" role="status" aria-live="polite"></div>';
   h+='<div class="fila" style="margin-top:14px"><button type="button" class="peligro" data-acc="restaurar">'+esc(t('dt_restaurar'))+'</button><button type="button" class="peligro" data-acc="borrar-local">'+esc(t('dt_borrar'))+'</button></div>';
   h+='<h2>'+esc(t('dt_config'))+'</h2><p class="ayuda">'+esc(t('dt_config_ayuda'))+'</p><form data-form-datos="config" novalidate><table class="tabla resp"><thead><tr><th scope="col">'+esc(t('fase'))+'</th><th scope="col">Lite</th><th scope="col">Enterprise</th></tr></thead><tbody>'+
-    ['0','1','2','3','4','5','7'].map(f=>'<tr><td data-l="'+esc(t('fase'))+'">'+esc(faseTxt(+f))+'</td><td data-l="Lite"><label class="oculto" for="pl-l-'+f+'">Lite '+f+'</label><input type="number" min="1" id="pl-l-'+f+'" name="pl-l-'+f+'" value="'+cf.plazos_fase.lite[f]+'"></td><td data-l="Enterprise"><label class="oculto" for="pl-e-'+f+'">Enterprise '+f+'</label><input type="number" min="1" id="pl-e-'+f+'" name="pl-e-'+f+'" value="'+cf.plazos_fase.enterprise[f]+'"></td></tr>').join('')+
-    '<tr><td data-l="">'+esc(t('dt_pl_dec'))+'</td><td data-l="Lite"><label class="oculto" for="pd-l">Lite</label><input type="number" min="1" id="pd-l" name="pd-l" value="'+cf.plazo_decision_dias_habiles.lite+'"></td><td data-l="Enterprise"><label class="oculto" for="pd-e">Enterprise</label><input type="number" min="1" id="pd-e" name="pd-e" value="'+cf.plazo_decision_dias_habiles.enterprise+'"></td></tr>'+
-    '<tr><td data-l="">'+esc(t('dt_pl_rev'))+'</td><td data-l="Lite"><label class="oculto" for="pr-l">Lite</label><input type="number" min="1" id="pr-l" name="pr-l" value="'+cf.revision_continuidad_dias.lite+'"></td><td data-l="Enterprise"><label class="oculto" for="pr-e">Enterprise</label><input type="number" min="1" id="pr-e" name="pr-e" value="'+cf.revision_continuidad_dias.enterprise+'"></td></tr></tbody></table>'+
-    campo('pl-hist',t('dt_hist'),'<input type="number" min="1" id="pl-hist" name="pl-hist" value="'+(cf.historial_minimo_ponderado||5)+'" style="max-width:120px">')+'<div class="fila-fin"><button type="submit">'+esc(t('dt_guardar_conf'))+'</button></div></form>';
+    ['0','1','2','3','4','5','7'].map(f=>'<tr><td data-l="'+esc(t('fase'))+'">'+esc(faseTxt(+f))+'</td><td data-l="Lite"><label class="oculto" for="pl-l-'+f+'">Lite '+f+'</label>'+inNum('pl-l-'+f+'',cf.plazos_fase.lite[f],' data-min="1" inputmode="numeric"')+'</td><td data-l="Enterprise"><label class="oculto" for="pl-e-'+f+'">Enterprise '+f+'</label>'+inNum('pl-e-'+f+'',cf.plazos_fase.enterprise[f],' data-min="1" inputmode="numeric"')+'</td></tr>').join('')+
+    '<tr><td data-l="">'+esc(t('dt_pl_dec'))+'</td><td data-l="Lite"><label class="oculto" for="pd-l">Lite</label>'+inNum('pd-l',cf.plazo_decision_dias_habiles.lite,' data-min="1" inputmode="numeric"')+'</td><td data-l="Enterprise"><label class="oculto" for="pd-e">Enterprise</label>'+inNum('pd-e',cf.plazo_decision_dias_habiles.enterprise,' data-min="1" inputmode="numeric"')+'</td></tr>'+
+    '<tr><td data-l="">'+esc(t('dt_pl_rev'))+'</td><td data-l="Lite"><label class="oculto" for="pr-l">Lite</label>'+inNum('pr-l',cf.revision_continuidad_dias.lite,' data-min="1" inputmode="numeric"')+'</td><td data-l="Enterprise"><label class="oculto" for="pr-e">Enterprise</label>'+inNum('pr-e',cf.revision_continuidad_dias.enterprise,' data-min="1" inputmode="numeric"')+'</td></tr></tbody></table>'+
+    campo('pl-hist',t('dt_hist'),inNum('pl-hist',cf.historial_minimo_ponderado||5,' data-min="1" inputmode="numeric" style="max-width:120px"'))+'<div class="fila-fin"><button type="submit">'+esc(t('dt_guardar_conf'))+'</button></div></form>';
   h+='<h2>'+esc(t('dt_personas'))+'</h2><div class="fila"><button type="button" data-acc="persona">'+esc(t('nueva_persona'))+'</button></div>'+tablaSimple([t('codigo'),t('nombre'),t('cargo'),t('area'),t('organo_p')], DB.personas.map(p=>['<span class="mono">'+esc(p.id)+'</span>',esc(p.nombre),esc(p.cargo||''),esc(p.area||''),p.organo?esc(L('organo_p',p.organo)):'—']));
   h+='<h2>'+esc(t('dt_proveedores'))+'</h2><div class="fila"><button type="button" data-acc="proveedor">'+esc(t('nuevo_prov'))+'</button></div>'+tablaSimple([t('codigo'),t('nombre'),t('servicios'),t('exigencia')], DB.proveedores.map(p=>['<span class="mono">'+esc(p.id)+'</span>',esc(p.nombre),esc(p.servicios||''),esc(p.exigencia)]));
-  h+='<h2>'+esc(t('dt_modelo'))+'</h2>'+tablaSimple([t('entidad'),t('registros')], LISTAS_REGISTRO.map(k=>['<span class="mono">'+k+'</span>',String((DB[k]||[]).length)]), [1]);
+  h+='<h2>'+esc(t('dt_modelo'))+'</h2>'+tablaSimple([t('entidad'),t('registros')], LISTAS_REGISTRO.map(k=>['<span class="mono">'+k+'</span>',fI((DB[k]||[]).length)]), [1]);
   h+='<h2>'+esc(t('dt_her'))+'</h2><p class="ayuda">'+esc(t('dt_her_ayuda'))+'</p><div class="fila"><a class="enlace-btn" data-ir="t11" href="'+T11_CALC+'?desde=t01">'+esc(t('dt_her_t11_ir'))+' →</a><a class="enlace-btn" data-ir="t14" href="'+T14_INDICE+'?desde=t01">'+esc(t('ix_t14'))+' →</a><a class="enlace-btn" data-ir="t15" href="'+T15_MADUREZ+'?desde=t01">'+esc(t('cj_t15'))+' →</a></div>';
   return h;
 }
 document.addEventListener('submit', e=>{
   const f=e.target; const tipo=f.dataset && f.dataset.formDatos; if(!tipo) return; e.preventDefault();
   if(tipo==='pref'){ const r=f['dt-ref'].value; DB.meta.fecha_referencia = esFecha(r)? r : null; UI.autor=f['dt-autor'].value.trim(); guardarUI(); guardar(); render(); toast(t('dt_ok_conf')); }
-  if(tipo==='config'){ const cf=DB.meta.configuracion; const n=(k,def)=>{ const v=parseInt(f[k].value,10); return v>0? v : def; };
+  if(tipo==='config'){ const cf=DB.meta.configuracion; const n=(k,def)=>{ const x=pNum(f[k].value), v=(x==null||isNaN(x))? NaN : Math.round(x); return v>0? v : def; };
     ['0','1','2','3','4','5','7'].forEach(x=>{ cf.plazos_fase.lite[x]=n('pl-l-'+x,cf.plazos_fase.lite[x]); cf.plazos_fase.enterprise[x]=n('pl-e-'+x,cf.plazos_fase.enterprise[x]); });
     cf.plazo_decision_dias_habiles.lite=n('pd-l',5); cf.plazo_decision_dias_habiles.enterprise=n('pd-e',10); cf.revision_continuidad_dias.lite=n('pr-l',182); cf.revision_continuidad_dias.enterprise=n('pr-e',91); cf.historial_minimo_ponderado=n('pl-hist',5);
     guardar(); render(); toast(t('dt_ok_conf')); }
@@ -2492,12 +2527,11 @@ Object.assign(LB.en,{
 
 function indiceDe(I){ return (I.indice && typeof I.indice==='object')? I.indice : null; }
 function verTxt(v){ if(!v || !v.estado) return null; return esc(L('ver_it',v.estado))+(v.gate?' · '+esc(v.gate):'')+(v.fecha?' · '+fF(v.fecha):'')+(v.verificador?' · '+pNombre(v.verificador):'')+(v.evidencia?'<br><span class="ayuda">'+esc(v.evidencia)+'</span>':''); }
-function fH(x){ return x==null? null : esc(fN(x))+' h'; }
-function fN(x){ return new Intl.NumberFormat(UI.lang==='en'?'en-GB':'es-ES',{maximumFractionDigits:0}).format(x); }
+function fH(x){ return x==null? null : esc(fN(x,0))+' h'; }
 function bloqueIndice(I){
   const X=indiceDe(I), c=(X&&X.capacidad)||{};
   const cuerpo = X? dl([[t('ix_itp2'),verTxt(X.itp2)],[t('ix_itp3'),verTxt(X.itp3)],[t('ix_sup'),X.itp3&&X.itp3.supervision_p17!=null?esc(X.itp3.supervision_p17?t('si'):t('no')):null],[t('ix_unidad'),X.unidad_completa!=null?esc(X.unidad_completa?t('si'):t('no')):null],
-      [t('ix_lib'),fH(c.horas_liberadas)],[t('ix_mat'),fH(c.horas_materializadas)],[t('ix_reas'),fH(c.horas_reasignadas)],[t('ix_dest'),c.actividad_destino?esc(c.actividad_destino):null],[t('ix_roles'),c.roles_redisenados!=null?String(c.roles_redisenados):null],[t('ix_cap_fecha'),c.fecha?fF(c.fecha):null]])
+      [t('ix_lib'),fH(c.horas_liberadas)],[t('ix_mat'),fH(c.horas_materializadas)],[t('ix_reas'),fH(c.horas_reasignadas)],[t('ix_dest'),c.actividad_destino?esc(c.actividad_destino):null],[t('ix_roles'),c.roles_redisenados!=null?fI(c.roles_redisenados):null],[t('ix_cap_fecha'),c.fecha?fF(c.fecha):null]])
     : '<p class="ayuda">'+esc(t('ix_sin'))+'</p>';
   return '<section class="bloque"><h3>'+esc(t('b_indice'))+'</h3>'+cuerpo+'<p class="ayuda" style="margin-top:6px">'+esc(t('ix_ayuda'))+'</p>'+(cerrada(I)?'':'<button type="button" data-acc="ix-editar" data-id="'+esc(I.id)+'">'+esc(t('ix_editar'))+'</button>')+'</section>';
 }
@@ -2505,11 +2539,11 @@ function selVer(id, v){ return '<select id="'+id+'" name="'+id+'"><option value=
 function selGate(id, v){ return '<select id="'+id+'" name="'+id+'"><option value="">—</option>'+['G2','G5','R6','G7'].map(g=>'<option value="'+g+'"'+(v===g?' selected':'')+'>'+g+'</option>').join('')+'</select>'; }
 function selSiNo(id, v){ return '<select id="'+id+'" name="'+id+'"><option value="">'+esc(t('sin_dato'))+'</option><option value="1"'+(v===true?' selected':'')+'>'+esc(t('si'))+'</option><option value="0"'+(v===false?' selected':'')+'>'+esc(t('no'))+'</option></select>'; }
 function leerSiNo(f, k){ const v=f[k].value; return v===''? null : v==='1'; }
-function leerNum(f, k){ const v=f[k].value; return v===''? null : Number(v); }
+function leerNum(f, k){ return leerNumCampo(f[k]); }
 function abrirIndice(I){
   const X=indiceDe(I)||{}, a=X.itp2||{}, b3=X.itp3||{}, c=X.capacidad||{};
   const ver=(p,v)=>'<div class="rejilla">'+campo(p+'-est',t('ix_estado'),selVer(p+'-est',v.estado))+campo(p+'-gate',t('ix_gate'),selGate(p+'-gate',v.gate))+campo(p+'-fecha',t('ix_fecha'),'<input type="date" id="'+p+'-fecha" name="'+p+'-fecha" value="'+esc(v.fecha||'')+'">')+campo(p+'-ver',t('ix_verificador'),selPersonas(p+'-ver',v.verificador||''))+'</div>'+campo(p+'-evi',t('ix_evidencia'),'<input type="text" id="'+p+'-evi" name="'+p+'-evi" value="'+esc(v.evidencia||'')+'">');
-  const num=(id,lab,v)=>campo(id,lab,'<input type="number" min="0" step="any" id="'+id+'" name="'+id+'" value="'+(v==null?'':esc(v))+'">');
+  const num=(id,lab,v)=>campo(id,lab,inNum(id,v,' data-min="0"'));
   const bq='<p class="ayuda">'+esc(t('ix_ayuda'))+'</p><fieldset><legend>'+esc(t('ix_itp2'))+'</legend>'+ver('i2',a)+'</fieldset><fieldset><legend>'+esc(t('ix_itp3'))+'</legend>'+ver('i3',b3)+'<div class="rejilla">'+campo('i3-sup',t('ix_sup'),selSiNo('i3-sup',b3.supervision_p17))+campo('ix-uni',t('ix_unidad'),selSiNo('ix-uni',X.unidad_completa))+'</div></fieldset>'+
     '<fieldset><legend>'+esc(t('ix_cap'))+'</legend><div class="rejilla">'+num('cp-lib',t('ix_lib'),c.horas_liberadas)+num('cp-mat',t('ix_mat'),c.horas_materializadas)+num('cp-rea',t('ix_reas'),c.horas_reasignadas)+num('cp-rol',t('ix_roles'),c.roles_redisenados)+campo('cp-fec',t('ix_cap_fecha'),'<input type="date" id="cp-fec" name="cp-fec" value="'+esc(c.fecha||'')+'">')+'</div>'+campo('cp-des',t('ix_dest'),'<input type="text" id="cp-des" name="cp-des" value="'+esc(c.actividad_destino||'')+'">')+'</fieldset>'+trio();
   abrirDialogo(t('dlg_ix')+' · '+I.id, bq, f=>{ const errs=[]; const tr=leerTrio(f,errs);
@@ -2538,7 +2572,7 @@ function listaIds(txt){ return (txt||'').split(/[,;\s]+/).map(x=>x.trim()).filte
 function vistaConsejo(){
   const Lc=lecturaConsejo(), mi=DB.meta.indice||{};
   let h='<div class="cab-ficha"><h1>'+esc(t('cj_titulo'))+'</h1><div class="fila"><button type="button" data-acc="cj-rec">'+esc(t('cj_nueva_rec'))+'</button><button type="button" class="primario" data-acc="cj-dec">'+esc(t('cj_nueva_dec'))+'</button></div></div><p class="ayuda">'+esc(t('cj_sub'))+'</p>';
-  h+='<div class="bloques"><section class="bloque"><h3>'+esc(t('cj_senal8'))+'</h3>'+dl([[t('cj_tesis'),Lc.tesis?'<span class="mono">'+esc(Lc.tesis.id)+'</span> · '+fF(Lc.tesis.fecha):(Lc.hayDecisiones?esc(t('no')):null)],[t('cj_esferas_t'),Lc.esferas.length?Lc.esferas.map(e=>esc(L('esfera',e))).join('<br>'):(Lc.tesis?esc(t('ninguna')):null)],[t('cj_apuestas'),String(Lc.apuestas)],[t('cj_limite'),esc(Lc.conLimite?t('si'):t('no'))],[t('cj_revisiones'),String(Lc.revisiones)],[t('cj_etapas'),String(Lc.etapas)]])+'<p class="ayuda" style="margin-top:6px"><a data-ir="t14" href="'+T14_INDICE+'?desde=t01">'+esc(t('ix_t14'))+' →</a></p></section>';
+  h+='<div class="bloques"><section class="bloque"><h3>'+esc(t('cj_senal8'))+'</h3>'+dl([[t('cj_tesis'),Lc.tesis?'<span class="mono">'+esc(Lc.tesis.id)+'</span> · '+fF(Lc.tesis.fecha):(Lc.hayDecisiones?esc(t('no')):null)],[t('cj_esferas_t'),Lc.esferas.length?Lc.esferas.map(e=>esc(L('esfera',e))).join('<br>'):(Lc.tesis?esc(t('ninguna')):null)],[t('cj_apuestas'),fI(Lc.apuestas)],[t('cj_limite'),esc(Lc.conLimite?t('si'):t('no'))],[t('cj_revisiones'),fI(Lc.revisiones)],[t('cj_etapas'),fI(Lc.etapas)]])+'<p class="ayuda" style="margin-top:6px"><a data-ir="t14" href="'+T14_INDICE+'?desde=t01">'+esc(t('ix_t14'))+' →</a></p></section>';
   h+='<section class="bloque"><h3>'+esc(t('cj_compania'))+'</h3>'+dl([[t('cj_ingresos'),mi.ingresos_totales!=null?fE(mi.ingresos_totales):null],[t('cj_ingresos_fecha'),mi.periodo_ingresos?esc(mi.periodo_ingresos):null],[t('cj_d3'),mi.it_d3!=null?esc(mi.it_d3?t('si'):t('no')):null],[t('cj_d3_ev'),mi.it_d3_evidencia?esc(mi.it_d3_evidencia):null]])+'<button type="button" data-acc="cj-comp">'+esc(t('cj_editar_comp'))+'</button></section>';
   const md=madurezUltima();
   h+='<section class="bloque" id="cj-madurez" data-madurez="'+(md?esc(md.id):'')+'"><h3>'+esc(t('cj_madurez'))+'</h3>'+(md
@@ -2557,7 +2591,7 @@ function abrirDecision(D){
     campo('dc-asu',t('dc_asunto'),sel('dc-asu','dec_asunto',X.asunto))+campo('dc-tip',t('dc_tipo'),sel('dc-tip','dec_tipo',X.tipo))+campo('dc-res',t('dc_resultado'),sel('dc-res','dec_resultado',X.resultado,'—'))+'</div>'+
     campo('dc-txt',t('dc_texto'),'<textarea id="dc-txt" name="dc-txt">'+esc(X.texto||'')+'</textarea>')+
     '<div class="rejilla">'+campo('dc-ini',t('dc_ini'),'<input type="text" id="dc-ini" name="dc-ini" value="'+esc((X.iniciativas||[]).join(', '))+'">')+campo('dc-esf',t('dc_esferas'),'<input type="text" id="dc-esf" name="dc-esf" value="'+esc((X.esferas_transformar||[]).join(', '))+'">')+
-    campo('dc-lim',t('dc_limite'),'<input type="number" min="0" step="any" id="dc-lim" name="dc-lim" value="'+(X.limite_inversion_etapa==null?'':X.limite_inversion_etapa)+'">')+campo('dc-eta',t('dc_etapa'),'<input type="text" id="dc-eta" name="dc-eta" value="'+esc(X.etapa||'')+'">')+
+    campo('dc-lim',t('dc_limite'),inNum('dc-lim',X.limite_inversion_etapa,' data-min="0"'))+campo('dc-eta',t('dc_etapa'),'<input type="text" id="dc-eta" name="dc-eta" value="'+esc(X.etapa||'')+'">')+
     campo('dc-dle',t('dc_decision_etapa'),sel('dc-dle','dec_etapa',X.decision_etapa,'—'))+campo('dc-vig',t('dc_vigencia'),'<input type="date" id="dc-vig" name="dc-vig" value="'+esc(X.vigencia||'')+'">')+campo('dc-rsp',t('dc_responsable'),selPersonas('dc-rsp',X.responsable||''))+campo('dc-rec',t('dc_recs'),'<input type="text" id="dc-rec" name="dc-rec" value="'+esc((X.recomendaciones||[]).join(', '))+'">')+'</div>';
   abrirDialogo(t('dlg_dec')+(X.id?' · '+X.id:''), bq, f=>{ const errs=[];
     const n={fecha:f['dc-fecha'].value, organo:f['dc-org'].value, acta:f['dc-acta'].value.trim()||null, asunto:f['dc-asu'].value, tipo:f['dc-tip'].value, resultado:f['dc-res'].value||null, texto:f['dc-txt'].value.trim(),
@@ -2581,7 +2615,7 @@ function abrirRecomendacion(R){
 }
 function abrirCompania(){
   const mi=DB.meta.indice||{};
-  const bq='<div class="rejilla">'+campo('cm-ing',t('cj_ingresos'),'<input type="number" min="0" step="any" id="cm-ing" name="cm-ing" value="'+(mi.ingresos_totales==null?'':mi.ingresos_totales)+'">')+campo('cm-per',t('cj_ingresos_fecha'),'<input type="text" id="cm-per" name="cm-per" value="'+esc(mi.periodo_ingresos||'')+'">')+campo('cm-d3',t('cj_d3'),selSiNo('cm-d3',mi.it_d3))+'</div>'+campo('cm-ev',t('cj_d3_ev'),'<textarea id="cm-ev" name="cm-ev">'+esc(mi.it_d3_evidencia||'')+'</textarea>');
+  const bq='<div class="rejilla">'+campo('cm-ing',t('cj_ingresos'),inNum('cm-ing',mi.ingresos_totales,' data-min="0"'))+campo('cm-per',t('cj_ingresos_fecha'),'<input type="text" id="cm-per" name="cm-per" value="'+esc(mi.periodo_ingresos||'')+'">')+campo('cm-d3',t('cj_d3'),selSiNo('cm-d3',mi.it_d3))+'</div>'+campo('cm-ev',t('cj_d3_ev'),'<textarea id="cm-ev" name="cm-ev">'+esc(mi.it_d3_evidencia||'')+'</textarea>');
   abrirDialogo(t('dlg_comp'), bq, f=>{ const n={ingresos_totales:leerNum(f,'cm-ing'), periodo_ingresos:f['cm-per'].value.trim()||null, it_d3:leerSiNo(f,'cm-d3'), it_d3_evidencia:f['cm-ev'].value.trim()||null};
     if(Object.values(n).some(v=>v!=null)) DB.meta.indice=n; else delete DB.meta.indice; return []; });
 }
