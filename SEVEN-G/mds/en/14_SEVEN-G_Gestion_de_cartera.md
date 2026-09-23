@@ -79,7 +79,7 @@ This document does not constitute legal advice.
 
 ### 3.1 Channels
 
-Initiatives may come from business areas, from challenges set by the board or management, from the AI Office or from supplier proposals. **Every initiative needs a business sponsor**: a supplier proposal without an internal sponsor does not enter.
+Initiatives may come from business areas, from challenges set by the board or management, from the AI Office or from supplier proposals. **Every initiative needs a business sponsor**: a supplier proposal without an internal sponsor does not enter. Document 54, section 5, sets out the eight sources use cases come from, the typical bias of each and what each lacks before entering.
 
 ### 3.2 Minimum entry record
 

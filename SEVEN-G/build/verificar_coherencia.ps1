@@ -16,6 +16,7 @@
     1h. El documento 00 (ES/EN) lleva el mapa de uso navegable con sus fases, puertas y listas enlazadas y anclas existentes (D72).
     1j. Cada documento numerado de SEVEN-G lleva su recuadro «Lo esencial» con el mismo nivel en ES y EN y en la matriz del documento 94 (D75),
         y el curso tiene su guía y sus nueve módulos, enlazados desde la guía, el documento 00, el 94 y la portada (D79).
+    1k. Ningún classDef de un diagrama Mermaid usa un nombre de clase de estilo.css: el nodo heredaría ese estilo (D109).
     5. T01: registro.html coincide con lo que genera build_registro.ps1 (no se ha editado a mano ni está desfasado, D43).
        T14: indice.html coincide con lo que genera build_indice.ps1 (D64).
        T06: los riesgos de demostración tienen niveles coherentes con probabilidad × impacto y aceptaciones del órgano de su nivel (D65).
@@ -293,6 +294,25 @@ try {
   if ((Test-Path $pagesYml) -and [IO.File]::ReadAllText($pagesYml) -notmatch 'for c in [^;]*\bpptx\b') { Mal 'pages.yml no publica SEVEN-G/pptx (los PPT de los cursos darían 404 en el sitio)'; $capasMal++ }
   if ([IO.File]::ReadAllText((Join-Path $repo 'SEVEN-G\build\publicar.ps1')) -notmatch "'pptx'") { Mal 'publicar.ps1 no publica SEVEN-G/pptx'; $capasMal++ }
   if (-not $capasMal) { Ok "«Lo esencial» en $($matriz.Count) documentos, coherente con la matriz (94) en ES y EN; curso completo, enlazado y descargable en PPT y PDF" }
+
+  # ---- 1k. nombres de clase de los diagramas Mermaid (D109)
+  # Mermaid escribe el nombre de cada classDef como clase CSS del nodo: si coincide con una clase de estilo.css,
+  # la hoja del sitio se aplica al diagrama (p. ej. «eje» lo ponía en mayúsculas y negrita en el HTML y en el PDF).
+  Write-Host '1k. Clases de los diagramas Mermaid'
+  $cssTexto = [IO.File]::ReadAllText((Join-Path $repo 'SEVEN-G\build\estilo.css'))
+  $clasesCss = @{}
+  foreach ($m in [regex]::Matches($cssTexto, '\.([A-Za-z][\w-]*)')) { $clasesCss[$m.Groups[1].Value] = $true }
+  $malClases = 0; $nClassDef = 0
+  foreach ($md in (Get-ChildItem (Join-Path $repo 'SEVEN-G\mds'), (Join-Path $repo 'SPHERES\mds'), (Join-Path $repo 'SPAD\mds') -Recurse -File -Filter '*.md')) {
+    foreach ($m in [regex]::Matches([IO.File]::ReadAllText($md.FullName), '(?m)^\s*classDef\s+([A-Za-z][\w-]*)')) {
+      $nClassDef++
+      if ($clasesCss.ContainsKey($m.Groups[1].Value)) {
+        Mal "$([IO.Path]::GetRelativePath($repo, $md.FullName)): el classDef «$($m.Groups[1].Value)» coincide con una clase de estilo.css y el diagrama heredaría ese estilo"
+        $malClases++
+      }
+    }
+  }
+  if (-not $malClases) { Ok "$nClassDef clases de diagrama sin colisión con estilo.css" }
 
   # ---- 2 y 3. textos internos o de clientes, y aviso legal
   Write-Host '2. Textos internos o de clientes en lo publicable'

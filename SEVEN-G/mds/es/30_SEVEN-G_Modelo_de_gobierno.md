@@ -485,6 +485,7 @@ No declarar un conflicto que haya afectado a una decisión de *gate* es **no con
 | Documento | Relación |
 |---|---|
 | **01 · Metodología fundacional** | Fuente normativa de roles, órganos, incompatibilidades, *gates* y no conformidades. |
+| **54 · Cómo se organiza una compañía para la IA** | Cómo se asignan estos órganos en un organigrama real y qué patrones se ven en el mercado. |
 | **03 · Herramientas y registro de iniciativas** | Registro de decisiones, plazos de referencia e iniciativas estancadas. |
 | **13 · Tesis de IA, ambición y apetito de riesgo** | Umbrales de la matriz de delegación. |
 | **21 · Criterios de *gate* y auditoría** | Lo que se verifica y decide en cada *gate*. |
