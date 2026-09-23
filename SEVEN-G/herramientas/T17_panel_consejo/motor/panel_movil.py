@@ -11,6 +11,8 @@ Regla: cualquier cambio en un panel se analiza por si debe reflejarse en el otro
 vive en el codigo: sale de meta en el JSON.
 """
 
+import ayuda_tarjetas
+
 TERMINOS_MOVIL = {"VNB", "Neto anual", "Eficiencias", "Retorno", "Capacidad liberada", "Potencial",
                   "Neto adicional por euro invertido", "Estado del dato", "Foto (histórico)", "Puesta en producción",
                   "Inversión", "Consejo asesor", "IA", "Brecha de datos personales", "AEPD",
@@ -268,6 +270,8 @@ function etapa(e){
   document.querySelectorAll("#sheetbox .row[data-id]").forEach(r=>r.onclick=()=>ficha(CASES.find(c=>c.id===r.dataset.id)));
 }
 function cerrar(){ $("sheet").classList.remove("open"); }
+// «?» de cada sección: qué muestra y por qué importa (meta.navegacion.ayuda_tarjetas, D108); se abre en la misma hoja inferior que las fichas
+if (((DATA.meta||{}).navegacion||{}).ayuda_tarjetas) vigilarAyudas(document.querySelector(".wrap"), html=>{ $("sheetbox").innerHTML = `<button class="close" onclick="cerrar()">Cerrar</button>` + html; $("sheet").classList.add("open"); });
 $("sheet").onclick = e=>{ if (e.target === $("sheet")) cerrar(); };
 
 function fillCompara(){ const s = $("compara"), H = HIST(); s.innerHTML = `<option value="">Sin comparar</option>` + [...H].reverse().map(h=>`<option value="${h.fecha}">Frente a ${fES(h.fecha)}</option>`).join(""); s.value = state.compara; s.disabled = !H.length; }
@@ -286,14 +290,14 @@ HTML = """<!DOCTYPE html>
 <header><div class="in"><h1>IA · Panel móvil del Consejo</h1><div class="sub">__ORG__ · __CONSEJO__ · versión __VERSION__ · datos del __FECHA__</div>
  <div class="ctrls"><div class="seg" id="lado"><button class="on" data-l="actual">Actual</button><button data-l="potencial">Potencial</button></div><select id="compara" aria-label="Comparar con una foto guardada"></select></div></div></header>
 <div class="wrap">
- <div id="resumen"></div>
- <h2>Alertas</h2><div id="alertas"></div>
- <h2>Embudo de casos</h2><div class="list" id="embudo"></div>
- <h2>Casos que más aportan</h2><div class="list" id="top"></div>
- <h2>Dónde rinde más el siguiente euro</h2><div class="list" id="rinde"></div>
- <section id="transv-sec" hidden><h2>Transversales y plataformas, por unidad</h2><div class="list" id="transv"></div></section>
- <section id="madurez-sec" hidden><h2>Madurez de la compañía (D1–D7)</h2><div id="madurez"></div></section>
- <section id="novedades-sec" hidden><h2 id="novedades-t">Novedades</h2><div class="list" id="novedades"></div></section>
+ <div id="resumen" data-ayuda="m-resumen"></div>
+ <h2 data-ayuda="m-alertas">Alertas</h2><div id="alertas"></div>
+ <h2 data-ayuda="m-embudo">Embudo de casos</h2><div class="list" id="embudo"></div>
+ <h2 data-ayuda="m-top">Casos que más aportan</h2><div class="list" id="top"></div>
+ <h2 data-ayuda="m-rinde">Dónde rinde más el siguiente euro</h2><div class="list" id="rinde"></div>
+ <section id="transv-sec" hidden><h2 data-ayuda="transv">Transversales y plataformas, por unidad</h2><div class="list" id="transv"></div></section>
+ <section id="madurez-sec" hidden><h2 data-ayuda="madurez">Madurez de la compañía (D1–D7)</h2><div id="madurez"></div></section>
+ <section id="novedades-sec" hidden><h2 id="novedades-t" data-ayuda="m-novedades">Novedades</h2><div class="list" id="novedades"></div></section>
  __GLOSARIO__
  <div class="foot" id="pie"></div>
 </div>
@@ -306,7 +310,7 @@ def build(data_json, core_js, version, fecha, completo, glosario_html, glosario_
     js = (JS.replace("__CORE__", core_js).replace("__VERSION__", str(version)).replace("__COMPLETO__", completo)
             .replace("__DATA__", data_json))
     terminos = set(TERMINOS_MOVIL) | {x[1] for x in (glosario_extra or []) if len(x) > 4 and x[4]}
-    return (HTML.replace("__CSS__", CSS + glosario_css).replace("__GLOSARIO__", glosario_html(terminos, extra=glosario_extra))
+    return (HTML.replace("__CSS__", CSS + glosario_css + ayuda_tarjetas.CSS).replace("__GLOSARIO__", glosario_html(terminos, extra=glosario_extra))
                 .replace("__ORG__", org).replace("__CONSEJO__", consejo)
                 .replace("__VERSION__", str(version)).replace("__FECHA__", fecha).replace("__HASH__", hash_datos)
                 .replace("__JS__", js))

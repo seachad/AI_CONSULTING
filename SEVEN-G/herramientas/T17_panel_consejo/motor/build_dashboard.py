@@ -23,6 +23,7 @@ BASE = os.path.dirname(os.path.abspath(__file__))
 sys.path.insert(0, BASE)
 from glosario import glosario_html, GLOSARIO_CSS
 from panel_core import CORE_JS
+import ayuda_tarjetas
 # version comun de los dos paneles (completo y movil): se generan siempre juntos y con el mismo numero
 VERSION = 8
 
@@ -524,7 +525,7 @@ function applyFontScale(scale){
 const PAGINAS = {todo:"Todo", cartera:"Cartera y valor", embudo:"Embudo y ciclo de vida", historico:"Histórico y adopción", riesgo:"Riesgo y cumplimiento", inventario:"Inventario", glosario:"Glosario"};
 // navegación configurable (meta.navegacion, JSON general de configuración): pagina_todo (si es false, no existe la página "Todo"),
 // pagina_inicial (página que se abre al entrar) y desplegar_todo (al entrar en una página, todas sus tarjetas se muestran desplegadas)
-const NAV = Object.assign({pagina_todo: true, pagina_inicial: "todo", desplegar_todo: false, filtros_modal: false, sitio: null, sitio_titulo: "Sitio", tema_sitio: null, codigos: null}, META().navegacion || {});
+const NAV = Object.assign({pagina_todo: true, pagina_inicial: "todo", desplegar_todo: false, filtros_modal: false, sitio: null, sitio_titulo: "Sitio", tema_sitio: null, codigos: null, ayuda_tarjetas: false}, META().navegacion || {});
 // integración opcional en un sitio: tema_sitio = clave de localStorage con el tema general del sitio (salmon, claro o noche), que el panel
 // sigue y actualiza; sitio = [{texto, href}], enlaces de vuelta al sitio que se añaden al menú lateral. Sin esas claves, nada cambia.
 const TEMA_SITIO = NAV.tema_sitio || null;
@@ -625,12 +626,12 @@ function renderEmbudo(rows){
   const conv = perdAntes && llegaron + perdAntes ? Math.round(100*llegaron/(llegaron+perdAntes)) : null;
   const nivAtasco = rojos ? "rojo" : amar ? "amarillo" : conFechas ? "ok" : "";
   document.getElementById("embudo-kpis").innerHTML = `
-   <div class="kpi"><div class="v">${rows.length}</div><div class="l">Entradas en el embudo</div><div class="d">${conFechas?`<b>${entr12}</b> en los últimos 12 meses (con fecha)`:"sin fechas de entrada"}</div></div>
-   <div class="kpi"><div class="v">${enCurso.length}</div><div class="l">En curso</div><div class="d">${emb.filter(e=>!esGanado(e)).map(e=>`${esc(e)} <b>${ahora(e).length}</b>`).join(" · ")}</div></div>
-   <div class="kpi"><div class="v">${ahora(cfg.ganado).length}</div><div class="l">Ganados: ${esc(cfg.ganado.toLowerCase())}</div><div class="d">Llegaron a producción <b>${llegaron}</b> (incluye los que se desengancharon después)</div></div>
-   <div class="kpi"><div class="v">${perdidos}</div><div class="l">Perdidos</div><div class="d">${sal.map(s=>`${esc(s)} <b>${ahora(s).length}</b>`).join(" · ")}</div></div>
-   <div class="kpi"><div class="v">${conv==null?"—":conv+" %"}</div><div class="l">Conversión a producción</div><div class="d">${conv==null?"No medible: los datos no incluyen casos no aprobados ni descartados":"Llegaron a producción / (llegaron + perdidos antes de producción)"}</div></div>
-   <div class="kpi sem ${nivAtasco}"><div class="v">${rojos} <span class="de">+ ${amar}</span></div><div class="l">Casos atascados</div><div class="d">Superan el límite de días de su estado (${rojos}) o están a partir del ${cfg.aviso_pct_limite??80} % (${amar})</div><div class="kst ${nivAtasco}">${conFechas?`con fechas ${conFechas} de ${rows.length} casos`:"sin fechas: no se puede medir"}</div></div>`;
+   <div data-ayuda="emb-entradas" class="kpi"><div class="v">${rows.length}</div><div class="l">Entradas en el embudo</div><div class="d">${conFechas?`<b>${entr12}</b> en los últimos 12 meses (con fecha)`:"sin fechas de entrada"}</div></div>
+   <div data-ayuda="emb-encurso" class="kpi"><div class="v">${enCurso.length}</div><div class="l">En curso</div><div class="d">${emb.filter(e=>!esGanado(e)).map(e=>`${esc(e)} <b>${ahora(e).length}</b>`).join(" · ")}</div></div>
+   <div data-ayuda="emb-ganados" class="kpi"><div class="v">${ahora(cfg.ganado).length}</div><div class="l">Ganados: ${esc(cfg.ganado.toLowerCase())}</div><div class="d">Llegaron a producción <b>${llegaron}</b> (incluye los que se desengancharon después)</div></div>
+   <div data-ayuda="emb-perdidos" class="kpi"><div class="v">${perdidos}</div><div class="l">Perdidos</div><div class="d">${sal.map(s=>`${esc(s)} <b>${ahora(s).length}</b>`).join(" · ")}</div></div>
+   <div data-ayuda="emb-conversion" class="kpi"><div class="v">${conv==null?"—":conv+" %"}</div><div class="l">Conversión a producción</div><div class="d">${conv==null?"No medible: los datos no incluyen casos no aprobados ni descartados":"Llegaron a producción / (llegaron + perdidos antes de producción)"}</div></div>
+   <div data-ayuda="emb-atascados" class="kpi sem ${nivAtasco}"><div class="v">${rojos} <span class="de">+ ${amar}</span></div><div class="l">Casos atascados</div><div class="d">Superan el límite de días de su estado (${rojos}) o están a partir del ${cfg.aviso_pct_limite??80} % (${amar})</div><div class="kst ${nivAtasco}">${conFechas?`con fechas ${conFechas} de ${rows.length} casos`:"sin fechas: no se puede medir"}</div></div>`;
   document.getElementById("embudo-nota").innerHTML = `Anchura de cada etapa: casos que la alcanzaron (sin historial, se deduce del estado actual) · número dentro: casos que están ahora en ella · el embudo contiene solo los casos al vuelo: a la derecha de cada etapa, los que no la superaron; debajo, los que ya lo atravesaron (en uso y desenganchados) · tiempos: estancias cerradas y en curso hasta el ${fES(FECHA_PANEL())} · límites en días del JSON general de configuración${conFechas<rows.length?` · <b>${rows.length-conFechas}</b> de ${rows.length} casos sin fechas de estado: sus tiempos no cuentan`:""}`;
   // --- diagrama: el embudo solo contiene los casos al vuelo (las etapas anteriores a la ganada). A la derecha de cada etapa, las tarjetas de
   // los casos que no la superaron; al final, las tarjetas de los que ya atravesaron el embudo: en uso (verde) y desenganchados tras estar en uso.
@@ -816,13 +817,13 @@ function renderKPIs(rows){
   // indicador con umbral: color de semáforo y etiqueta con el umbral configurado (meta.umbrales_kpi)
   const semaf = (x, clave) => `<div class="kst ${x.nivel}" title="Umbrales: ${umbralTxt(clave)}">${x.pct==null?"sin dato":NIVEL_TXT[x.nivel]} · ${umbralTxt(clave)}</div>`;
   document.getElementById("kpis").innerHTML = `
-   <div class="kpi"><div class="v">${rows.length}</div><div class="l">Casos seleccionados</div><div class="d">${byE.map(([e,n])=>`${e}: <b>${n}</b>`).join(" · ")}${rows.filter(c=>!c.que_es).length?` · <b>${rows.filter(c=>!c.que_es).length}</b> sin descripción`:""}${f?` · <b>${nuevos}</b> nuevos o puestos en producción desde la foto del ${fES(f.fecha)}`:""}</div></div>
-   <div class="kpi link eco-c" data-kpi="costes" role="button" tabindex="0"><div class="v">${fmt(coste)}</div><div class="l">Costes: coste anual${pot?" en régimen":""}</div><div class="d">Inversión de construcción <b>${fmt(cons)}</b>${pot?` · inversión adicional para el potencial <b>${fmt(adic)}</b>`:""} · ${est} de ${rows.length} casos con coste estimado por el ${CONSEJO()} ${dl(coste, SF(k("recurrente")), true)}</div>${mas}</div>
-   <div class="kpi link eco-r" data-kpi="retorno" role="button" tabindex="0"><div class="v">${fmt(total)}</div><div class="l">Retorno total${pot?" potencial":""}</div><div class="d">Eficiencias <b>${fmt(ef)}</b> + retorno <b>${fmt(ret)}</b>${S(k("capacidad"))?` · capacidad liberada no materializada ${fmt(S(k("capacidad")))} (no suma)`:""} ${dl(total, f?SF(k("eficiencias"))+SF(k("retorno")):null)}</div>${mas}</div>
-   <div class="kpi link eco-n ${neto<0?'warn':''}" data-kpi="neto" role="button" tabindex="0"><div class="v">${fmt(neto)}</div><div class="l">Neto anual${pot?" potencial":""}</div><div class="d">Retorno total ${fmt(total)} − costes ${fmt(coste)}${pot?` · ${fmt(S("neto_pot")-S("neto"))} más que hoy, con ${fmt(adic)} de inversión adicional`:pbTxt} ${dl(neto, SF(k("neto")))}</div>${mas}</div>
-   <div class="kpi sem ${ind.validado.nivel}"><div class="v">${ind.validado.pct==null?"—":Math.round(ind.validado.pct)+" %"}</div><div class="l">Valor actual validado por Control de Gestión</div><div class="d">Declarado por la compañía ${fmt(pe.declarado)} · estimado por el ${CONSEJO()} ${fmt(pe.estimado_cati)} · validado ${fmt(pe.validado)}</div>${semaf(ind.validado, "valor_validado_pct")}</div>
-   <div class="kpi sem ${ind.clasificados.nivel}"><div class="v">${ind.clas} <span class="de">de ${rows.length}</span></div><div class="l">Clasificados por la compañía (Reglamento de IA)</div><div class="d">Con criterio jurídico; el resto solo tiene la estimación del ${CONSEJO()}</div>${semaf(ind.clasificados, "clasificados_compania_pct")}</div>
-   <div class="kpi sem ${ind.controles.nivel}"><div class="v">${ind.ctrl} <span class="de">de ${rows.length}</span></div><div class="l">Casos con controles completos</div><div class="d">RIA, FRIA, DPIA, Seguridad, MUC y riesgo de IA ofensiva hechos o no aplicables</div>${semaf(ind.controles, "controles_completos_pct")}</div>`;
+   <div data-ayuda="kpi-casos" class="kpi"><div class="v">${rows.length}</div><div class="l">Casos seleccionados</div><div class="d">${byE.map(([e,n])=>`${e}: <b>${n}</b>`).join(" · ")}${rows.filter(c=>!c.que_es).length?` · <b>${rows.filter(c=>!c.que_es).length}</b> sin descripción`:""}${f?` · <b>${nuevos}</b> nuevos o puestos en producción desde la foto del ${fES(f.fecha)}`:""}</div></div>
+   <div data-ayuda="kpi-costes" class="kpi link eco-c" data-kpi="costes" role="button" tabindex="0"><div class="v">${fmt(coste)}</div><div class="l">Costes: coste anual${pot?" en régimen":""}</div><div class="d">Inversión de construcción <b>${fmt(cons)}</b>${pot?` · inversión adicional para el potencial <b>${fmt(adic)}</b>`:""} · ${est} de ${rows.length} casos con coste estimado por el ${CONSEJO()} ${dl(coste, SF(k("recurrente")), true)}</div>${mas}</div>
+   <div data-ayuda="kpi-retorno" class="kpi link eco-r" data-kpi="retorno" role="button" tabindex="0"><div class="v">${fmt(total)}</div><div class="l">Retorno total${pot?" potencial":""}</div><div class="d">Eficiencias <b>${fmt(ef)}</b> + retorno <b>${fmt(ret)}</b>${S(k("capacidad"))?` · capacidad liberada no materializada ${fmt(S(k("capacidad")))} (no suma)`:""} ${dl(total, f?SF(k("eficiencias"))+SF(k("retorno")):null)}</div>${mas}</div>
+   <div data-ayuda="kpi-neto" class="kpi link eco-n ${neto<0?'warn':''}" data-kpi="neto" role="button" tabindex="0"><div class="v">${fmt(neto)}</div><div class="l">Neto anual${pot?" potencial":""}</div><div class="d">Retorno total ${fmt(total)} − costes ${fmt(coste)}${pot?` · ${fmt(S("neto_pot")-S("neto"))} más que hoy, con ${fmt(adic)} de inversión adicional`:pbTxt} ${dl(neto, SF(k("neto")))}</div>${mas}</div>
+   <div data-ayuda="kpi-validado" class="kpi sem ${ind.validado.nivel}"><div class="v">${ind.validado.pct==null?"—":Math.round(ind.validado.pct)+" %"}</div><div class="l">Valor actual validado por Control de Gestión</div><div class="d">Declarado por la compañía ${fmt(pe.declarado)} · estimado por el ${CONSEJO()} ${fmt(pe.estimado_cati)} · validado ${fmt(pe.validado)}</div>${semaf(ind.validado, "valor_validado_pct")}</div>
+   <div data-ayuda="kpi-clasificados" class="kpi sem ${ind.clasificados.nivel}"><div class="v">${ind.clas} <span class="de">de ${rows.length}</span></div><div class="l">Clasificados por la compañía (Reglamento de IA)</div><div class="d">Con criterio jurídico; el resto solo tiene la estimación del ${CONSEJO()}</div>${semaf(ind.clasificados, "clasificados_compania_pct")}</div>
+   <div data-ayuda="kpi-controles" class="kpi sem ${ind.controles.nivel}"><div class="v">${ind.ctrl} <span class="de">de ${rows.length}</span></div><div class="l">Casos con controles completos</div><div class="d">RIA, FRIA, DPIA, Seguridad, MUC y riesgo de IA ofensiva hechos o no aplicables</div>${semaf(ind.controles, "controles_completos_pct")}</div>`;
   document.querySelectorAll("#kpis [data-kpi]").forEach(el=>{ const go = ()=>openKpi(el.dataset.kpi, rows); el.onclick = go; el.onkeydown = e=>{ if (e.key==="Enter"||e.key===" "){ e.preventDefault(); go(); } }; });
 }
 // ---- desglose de los KPI económicos (costes, retorno total y neto) de los casos seleccionados
@@ -1453,6 +1454,8 @@ document.getElementById("sort").onchange = e=>{ state.sort = e.target.value; ren
 // el botón vive dentro del <summary> de los filtros: se evita que su clic pliegue o despliegue el panel
 document.getElementById("reset").onclick = e=>{ e.preventDefault(); e.stopPropagation(); state.q=""; document.getElementById("q").value=""; DIMS.forEach(([k])=>state.filters[k].clear()); render(); };
 document.getElementById("collapse").onclick = ()=>{ const all=[...document.querySelectorAll("details.comp, details.unit, details.cdet")]; const anyOpen = all.some(d=>d.open); all.forEach(d=>d.open=!anyOpen); };
+// «?» de cada tarjeta: qué muestra y por qué importa (navegacion.ayuda_tarjetas, D108); se abre en la misma ventana modal que las fichas
+if (NAV.ayuda_tarjetas) vigilarAyudas(document.querySelector("main"), open);
 // desde un teléfono, el panel completo cede el paso al móvil (navegacion.redirigir_movil); «?completo» lo evita. Solo por http: un fichero suelto no tiene al lado el panel móvil
 (()=>{ try { const nv = META().navegacion || {}, mv = META().panel_movil; if (nv.redirigir_movil && mv && location.protocol.startsWith("http") && !/[?&]completo\b/.test(location.search) && Math.min(screen.width || 9999, innerWidth) <= 760) location.replace(mv); } catch (e) {} })();
 const storedTheme = (()=>{ try { return localStorage.getItem('dashboard-theme'); } catch (e) { return null; } })();
@@ -1520,33 +1523,33 @@ HTML = """<!DOCTYPE html>
  <div class="sec"><h2>Cartera y valor</h2><div class="sub">Bloques 1 y 2 del panel trimestral · las tarjetas plegadas muestran su lectura en cabecera; haz clic para ver el detalle. Compromisos, decisiones GO/NO-GO y riesgos abiertos se siguen en el registro de recomendaciones, no aquí.</div></div>
  <div class="kpis" id="kpis"></div>
  <div class="grid2">
-  <div class="card"><h3>Eficiencias, retorno y coste por compañía y unidad de negocio</h3><div class="note">Actual o potencial según el selector · euros al año · la capacidad liberada no materializada se muestra aparte y no suma en el neto</div><div class="legend"><span><i style="background:var(--s3)"></i>Eficiencias</span><span><i style="background:var(--s1)"></i>Retorno</span><span><i style="background:var(--seq250)"></i>Capacidad no materializada</span><span><i style="background:var(--s2)"></i>Coste recurrente</span></div><div id="c1"></div></div>
-  <div class="card"><h3 id="c2t"></h3><div class="note">Haz clic en una barra para ver la inversión, las eficiencias y el retorno del caso</div><div class="legend"><span><i style="background:var(--seq450)"></i>Neto anual adicional</span><span><i style="background:var(--s2)"></i>Inversión adicional</span></div><div id="c2"></div></div>
+  <div class="card" data-ayuda="c1"><h3>Eficiencias, retorno y coste por compañía y unidad de negocio</h3><div class="note">Actual o potencial según el selector · euros al año · la capacidad liberada no materializada se muestra aparte y no suma en el neto</div><div class="legend"><span><i style="background:var(--s3)"></i>Eficiencias</span><span><i style="background:var(--s1)"></i>Retorno</span><span><i style="background:var(--seq250)"></i>Capacidad no materializada</span><span><i style="background:var(--s2)"></i>Coste recurrente</span></div><div id="c1"></div></div>
+  <div class="card" data-ayuda="c2"><h3 id="c2t"></h3><div class="note">Haz clic en una barra para ver la inversión, las eficiencias y el retorno del caso</div><div class="legend"><span><i style="background:var(--seq450)"></i>Neto anual adicional</span><span><i style="background:var(--s2)"></i>Inversión adicional</span></div><div id="c2"></div></div>
  </div>
- <details class="card cdet" id="cdm" style="margin-bottom:14px"></details>
- <details class="card cdet" id="indice" style="margin-bottom:14px"></details>
- <details class="card cdet" id="madurez" style="margin-bottom:14px"></details>
- <details class="card cdet" id="transv" style="margin-bottom:14px"></details>
- <div class="grid2"><details class="card cdet" id="cart1"></details><details class="card cdet" id="cart2"></details></div>
+ <details class="card cdet" id="cdm" data-ayuda="cdm" style="margin-bottom:14px"></details>
+ <details class="card cdet" id="indice" data-ayuda="indice" style="margin-bottom:14px"></details>
+ <details class="card cdet" id="madurez" data-ayuda="madurez" style="margin-bottom:14px"></details>
+ <details class="card cdet" id="transv" data-ayuda="transv" style="margin-bottom:14px"></details>
+ <div class="grid2"><details class="card cdet" id="cart1" data-ayuda="cart1"></details><details class="card cdet" id="cart2" data-ayuda="cart2"></details></div>
  </section>
  <section class="page" data-page="embudo" id="secc-embudo">
  <div class="sec"><h2>Embudo y ciclo de vida</h2><div class="sub">Como en un CRM: entradas, casos en cada estado, ganados (en producción) y perdidos (no aprobados, descartados y desenganchados), con el tiempo en cada estado frente a su límite. Pulsa una etapa o una salida para ver sus casos; los filtros eligen el tipo de caso.</div></div>
  <div class="kpis" id="embudo-kpis"></div>
- <div class="card"><h3>Embudo de casos de uso</h3><div class="note" id="embudo-nota"></div><div id="embudo"></div></div>
- <div class="card" id="embudo-det" style="margin-top:14px"></div>
- <div class="card" id="embudo-preg" style="margin-top:14px"></div>
+ <div class="card" data-ayuda="embudo"><h3>Embudo de casos de uso</h3><div class="note" id="embudo-nota"></div><div id="embudo"></div></div>
+ <div class="card" id="embudo-det" data-ayuda="embudo-det" style="margin-top:14px"></div>
+ <div class="card" id="embudo-preg" data-ayuda="embudo-preg" style="margin-top:14px"></div>
  </section>
  <section class="page" data-page="historico" id="secc-historico">
  <div class="sec"><h2>Histórico y adopción</h2><div class="sub">Tendencia entre las fotos guardadas al cierre de cada sesión y adopción de los casos</div></div>
- <div class="grid2"><details class="card cdet" id="hist"></details><details class="card cdet" id="adop"></details></div>
+ <div class="grid2"><details class="card cdet" id="hist" data-ayuda="hist"></details><details class="card cdet" id="adop" data-ayuda="adop"></details></div>
  </section>
  <section class="page" data-page="riesgo" id="secc-riesgo">
  <div class="sec"><h2>Riesgo y cumplimiento</h2><div class="sub">Bloque 3 del panel trimestral · tarjetas plegadas con su lectura en cabecera; haz clic para ver el detalle</div></div>
- <div class="grid3"><details class="card cdet" id="rie1"></details><details class="card cdet" id="rie2"></details><details class="card cdet" id="rie3"></details></div>
- <div class="grid2"><details class="card cdet" id="iaof"></details><details class="card cdet" id="agt"></details></div>
+ <div class="grid3"><details class="card cdet" id="rie1" data-ayuda="rie1"></details><details class="card cdet" id="rie2" data-ayuda="rie2"></details><details class="card cdet" id="rie3" data-ayuda="rie3"></details></div>
+ <div class="grid2"><details class="card cdet" id="iaof" data-ayuda="iaof"></details><details class="card cdet" id="agt" data-ayuda="agt"></details></div>
  </section>
  <section class="page" data-page="inventario" id="secc-inventario">
- <div class="sec"><h2>Inventario por compañía y unidad</h2><div class="sub">Plegado por defecto con sus totales; haz clic en una fila para desplegar. El botón "Plegar / desplegar todo" abre o cierra todos los niveles.</div></div>
+ <div class="sec" data-ayuda="inventario"><h2>Inventario por compañía y unidad</h2><div class="sub">Plegado por defecto con sus totales; haz clic en una fila para desplegar. El botón "Plegar / desplegar todo" abre o cierra todos los niveles.</div></div>
  <div id="cards"></div>
  <div id="table" class="hidden"></div>
  </section>
@@ -1580,15 +1583,15 @@ def generar(data, out_dir, version=VERSION, prefijo=None, verbose=True):
     aviso_previo = tx.get("aviso_previo", "")
     pie = tx.get("pie", f"Panel elaborado por el {consejo} a partir de dashboard_data.json. El estado \"Desenganchado\" y las secciones de seguimiento se rellenan cuando la compañía aporte los datos.")
     extra = meta.get("glosario_extra")
-    page = (HTML.replace("__CSS__", CSS + GLOSARIO_CSS).replace("__GLOSARIO__", glosario_html(extra=extra))
+    page = (HTML.replace("__CSS__", CSS + GLOSARIO_CSS + ayuda_tarjetas.CSS).replace("__GLOSARIO__", glosario_html(extra=extra))
             .replace("__AVISO_VALOR__", aviso_valor).replace("__AVISO_PREVIO__", aviso_previo).replace("__PIE__", pie)            .replace("__ORG__", org).replace("__CONSEJO__", consejo)
             .replace("__VERSION__", str(version)).replace("__MOVIL__", movil_nombre).replace("__HASH__", huella)
-            .replace("__JS__", JS.replace("__CORE__", CORE_JS).replace("__DATA__", data_json)))
+            .replace("__JS__", JS.replace("__CORE__", CORE_JS + ayuda_tarjetas.js()).replace("__DATA__", data_json)))
     os.makedirs(out_dir, exist_ok=True)
     path = os.path.join(out_dir, completo)
     open(path, "w", encoding="utf-8").write(page)
     fecha = "-".join(reversed(str(meta.get("generado", "")).split("-")))
-    movil = panel_movil.build(data_json, CORE_JS, version, fecha, completo, glosario_html, GLOSARIO_CSS, huella, org, consejo, extra)
+    movil = panel_movil.build(data_json, CORE_JS + ayuda_tarjetas.js(), version, fecha, completo, glosario_html, GLOSARIO_CSS, huella, org, consejo, extra)
     path_m = os.path.join(out_dir, movil_nombre)
     open(path_m, "w", encoding="utf-8").write(movil)
     # comprobacion de sincronia: los dos paneles llevan la misma huella de datos y la misma version
