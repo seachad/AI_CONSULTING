@@ -148,7 +148,7 @@ def html_sin_javascript(data, aviso, titulo):
             f"<dt>Inversión de construcción</dt><dd>{_eur(r['construccion'])}</dd><dt>Coste recurrente anual</dt><dd>{_eur(r['recurrente'])}</dd>"
             f"<dt>Eficiencias</dt><dd>{_eur(r['eficiencias'])}</dd><dt>Retorno</dt><dd>{_eur(r['retorno'])}</dd>"
             f"<dt>Capacidad liberada no materializada (no suma)</dt><dd>{_eur(r['capacidad'])}</dd>"
-            f"<dt>Neto anual</dt><dd>{_eur(neto(r))}</dd><dt>Neto anual potencial</dt><dd>{_eur(neto(r, "neto_pot"))}</dd></dl></details>")
+            f"<dt>Neto anual</dt><dd>{_eur(neto(r))}</dd><dt>Neto anual potencial</dt><dd>{_eur(neto(r, 'neto_pot'))}</dd></dl></details>")
     return (f'<noscript {MARCA_SIN_JS}><div class="sj"><h1>{_esc(titulo)}</h1>'
             f'<p class="sub">{_esc(meta.get("organizacion"))} · {_esc(periodo)}</p>'
             '<p class="nota"><b>Vista estática.</b> Este visor no ejecuta JavaScript, así que se muestra un resumen con las mismas cifras. '
