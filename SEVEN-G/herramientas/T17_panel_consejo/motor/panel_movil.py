@@ -270,7 +270,7 @@ function etapa(e){
   document.querySelectorAll("#sheetbox .row[data-id]").forEach(r=>r.onclick=()=>ficha(CASES.find(c=>c.id===r.dataset.id)));
 }
 function cerrar(){ $("sheet").classList.remove("open"); }
-// «?» de cada sección: qué muestra y por qué importa (meta.navegacion.ayuda_tarjetas, D108); se abre en la misma hoja inferior que las fichas
+// «?» de cada sección: qué muestra y por qué importa (meta.navegacion.ayuda_tarjetas, D110); se abre en la misma hoja inferior que las fichas
 if (((DATA.meta||{}).navegacion||{}).ayuda_tarjetas) vigilarAyudas(document.querySelector(".wrap"), html=>{ $("sheetbox").innerHTML = `<button class="close" onclick="cerrar()">Cerrar</button>` + html; $("sheet").classList.add("open"); });
 $("sheet").onclick = e=>{ if (e.target === $("sheet")) cerrar(); };
 
