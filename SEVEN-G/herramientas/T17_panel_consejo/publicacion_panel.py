@@ -13,7 +13,7 @@ muestra esos textos, asi que el aviso se anade al HTML ya generado, justo antes 
 (demo_lib.py) esta en ./motor; si t01_a_panel.py ha cargado otro motor con --panel, demo_lib se toma de ese sys.path.
 """
 import html
-import datetime, json, os, re, sys
+import datetime, json, math, os, re, sys
 
 try:
     import demo_lib as DL   # plantilla del registro de recomendaciones
@@ -99,17 +99,26 @@ CSS_SIN_JS = ("<noscript><style>body>*:not(noscript){display:none!important}"
               "</style></noscript>")
 
 
+def _num(v, dec=0):
+    """Número en formato español: «.» de miles (también con 4 cifras: 1.200) y «,» decimal; los decimales finales a cero se quitan
+    (como toLocaleString con maximumFractionDigits en el panel)."""
+    t = f"{v:,.{dec}f}"
+    if dec:
+        t = t.rstrip("0").rstrip(".")
+    return t.replace(",", "\x00").replace(".", ",").replace("\x00", ".")
+
+
 def _eur(v):
     """Importe en formato del panel; None = sin dato (nunca cero)."""
     if v is None:
         return "sin dato"
     a = abs(v)
     if a >= 1e6:
-        t = f"{v / 1e6:.1f}".replace(".", ",") + " M€"
+        t = _num(v / 1e6, 1) + " M€"
     elif a >= 1e3:
-        t = f"{v / 1e3:.0f} k€"
+        t = _num(math.floor(v / 1e3 + 0.5)) + " k€"  # Math.round del panel (medio hacia arriba)
     else:
-        t = f"{v:.0f} €"
+        t = _num(math.floor(v + 0.5)) + " €"
     return t.replace("-", "−")
 
 
@@ -125,7 +134,7 @@ def html_sin_javascript(data, aviso, titulo):
     tot = ECO.totales([r for _c, r in res])
     retorno_total = tot["eficiencias"] + tot["retorno"]
     validado = (tot.get("valor_por_estado") or {}).get("validado", 0)
-    pct_val = f"{round(100 * validado / retorno_total)} %" if retorno_total else "sin dato"
+    pct_val = f"{_num(round(100 * validado / retorno_total))} %" if retorno_total else "sin dato"
     ciclo = meta.get("ciclo_vida") or {}
     orden = list(ciclo.get("embudo") or []) + [x for x in [ciclo.get("ganado")] if x] + list(ciclo.get("salidas") or [])
     orden = [o if isinstance(o, str) else (o.get("estado") or o.get("nombre") or "") for o in orden]
@@ -137,9 +146,9 @@ def html_sin_javascript(data, aviso, titulo):
     periodo = (periodo.get("etiqueta") or "") if isinstance(periodo, dict) else periodo
     # sin dato nunca es cero: el neto de un caso sin eficiencias, retorno ni coste recurrente no se muestra como 0
     neto = lambda r, k="neto": r[k] if any(r[x] is not None for x in ("eficiencias", "retorno", "recurrente", "eficiencias_pot", "retorno_pot")) else None
-    kpis = [(len(casos), "casos de uso"), (_eur(tot["recurrente"]), "coste anual"), (_eur(retorno_total), "retorno total: eficiencias + retorno"),
+    kpis = [(_num(len(casos)), "casos de uso"), (_eur(tot["recurrente"]), "coste anual"), (_eur(retorno_total), "retorno total: eficiencias + retorno"),
             (_eur(tot["neto"]), "neto anual"), (pct_val, "del valor actual, validado"), (_eur(tot["neto_pot"]), "neto anual potencial")]
-    filas_estado = "".join(f"<tr><td>{_esc(e)}</td><td class=n>{estados[e]}</td></tr>" for e in orden)
+    filas_estado = "".join(f"<tr><td>{_esc(e)}</td><td class=n>{_num(estados[e])}</td></tr>" for e in orden)
     fichas = []
     for c, r in sorted(res, key=lambda x: -(x[1]["neto"] or 0)):
         fichas.append(
@@ -148,7 +157,7 @@ def html_sin_javascript(data, aviso, titulo):
             f"<dt>Inversión de construcción</dt><dd>{_eur(r['construccion'])}</dd><dt>Coste recurrente anual</dt><dd>{_eur(r['recurrente'])}</dd>"
             f"<dt>Eficiencias</dt><dd>{_eur(r['eficiencias'])}</dd><dt>Retorno</dt><dd>{_eur(r['retorno'])}</dd>"
             f"<dt>Capacidad liberada no materializada (no suma)</dt><dd>{_eur(r['capacidad'])}</dd>"
-            f"<dt>Neto anual</dt><dd>{_eur(neto(r))}</dd><dt>Neto anual potencial</dt><dd>{_eur(neto(r, "neto_pot"))}</dd></dl></details>")
+            f"<dt>Neto anual</dt><dd>{_eur(neto(r))}</dd><dt>Neto anual potencial</dt><dd>{_eur(neto(r, 'neto_pot'))}</dd></dl></details>")
     return (f'<noscript {MARCA_SIN_JS}><div class="sj"><h1>{_esc(titulo)}</h1>'
             f'<p class="sub">{_esc(meta.get("organizacion"))} · {_esc(periodo)}</p>'
             '<p class="nota"><b>Vista estática.</b> Este visor no ejecuta JavaScript, así que se muestra un resumen con las mismas cifras. '

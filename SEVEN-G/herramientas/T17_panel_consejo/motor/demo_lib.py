@@ -89,7 +89,7 @@ def prepare(ind):
          "con_rt": sum(1 for c in agentes if c["operacion"].get("red_teaming_fecha")),
          "retiradas": sum(1 for m in ind["movimientos"] if m["tipo"] == "retirada"), "incidentes": len(ind["incidentes"])}
     ad = ind["adopcion"]
-    fmt_vars = dict(k, amb_n=len(casos), ctrl_sh={1: "Uno", 2: "Dos", 3: "Tres"}.get(ind["adopcion"]["controles_activos"], "Ninguno"), valor_m=f"{k['valor']/1e6:.1f} M€".replace(".", ","), lic_act=f"{ad['copilot']['activas']:,}".replace(",", "."), lic_asig=f"{ad['copilot']['asignadas']:,}".replace(",", "."), semanales=ad["copilot"]["semanales"])
+    fmt_vars = dict(k, amb_n=len(casos), ctrl_sh={1: "Uno", 2: "Dos", 3: "Tres"}.get(ind["adopcion"]["controles_activos"], "Ninguno"), valor_m=f"{k['valor']/1e6:.1f} M€".replace(".", ","), lic_act=f"{ad['copilot']['activas']:,}".replace(",", "."), lic_asig=f"{ad['copilot']['asignadas']:,}".replace(",", "."), semanales=f"{ad['copilot']['semanales']:,}".replace(",", "."))
     recs = []
     for r in ind["recs"]:
         d = dict(zip(["id", "sesion", "ambito", "texto", "destinatario", "estado", "fecha", "evidencia", "valoracion", "panel"], r))
@@ -198,14 +198,15 @@ footer{padding:22px 34px;color:var(--mute);font-size:11.5px;border-top:1px solid
 
 JS_REG = r"""
 const D = __DATA__; const esc = s => String(s??"").replace(/&/g,"&amp;").replace(/</g,"&lt;");
+const nf = v => Number(v??0).toLocaleString("es-ES",{useGrouping:"always",maximumFractionDigits:0});
 const RE = {cumplida:["ok","Cumplida","✓"],en_curso:["mid","En curso","◑"],pendiente:["ko","Pendiente","○"],descartada:["na","Descartada","✕"]};
 const AMB = [...new Set(D.recs.map(r=>r.ambito))]; const state = {estado:"", ambito:""};
 const PAN = {agilidad:["agilidad","Agilidad por riesgo, potencial y ambición"],ambicion:["ambicion","Dónde invierte la compañía"],valor:["valor","Valor frente a potencial"],movimientos:["movimientos","Movimientos e incidentes"],guardarrailes:["operacion","Asistentes en producción"],semaforo:["riesgo","Riesgo y cumplimiento"],adopcion:["tendencia","Tendencia y adopción"],incidentes:["movimientos","Movimientos e incidentes"],inventario:["inventario","Inventario"]};
-function summary(){ const k=D.kpi.recs, n=D.recs.length; document.getElementById("sum").innerHTML = Object.keys(RE).map(e=>`<div class="tile"><div class="n">${k[e]}</div><div class="l">${RE[e][1]}${e==="descartada"||e==="en_curso"?"":"s"}</div><div class="meter"><i style="width:${100*k[e]/n}%;background:${e==="cumplida"?"var(--good)":e==="en_curso"?"var(--warn)":e==="pendiente"?"var(--critical)":"var(--mute)"}"></i></div></div>`).join(""); }
+function summary(){ const k=D.kpi.recs, n=D.recs.length; document.getElementById("sum").innerHTML = Object.keys(RE).map(e=>`<div class="tile"><div class="n">${nf(k[e])}</div><div class="l">${RE[e][1]}${e==="descartada"||e==="en_curso"?"":"s"}</div><div class="meter"><i style="width:${100*k[e]/n}%;background:${e==="cumplida"?"var(--good)":e==="en_curso"?"var(--warn)":e==="pendiente"?"var(--critical)":"var(--mute)"}"></i></div></div>`).join(""); }
 function chips(){ document.getElementById("chips").innerHTML = `<span class="lbl">Estado</span>`+Object.keys(RE).map(e=>`<button class="chip${state.estado===e?" on":""}" data-k="estado" data-v="${e}">${RE[e][1]}</button>`).join("")+`<span class="lbl">Ámbito</span>`+AMB.map(a=>`<button class="chip${state.ambito===a?" on":""}" data-k="ambito" data-v="${a}">${a}</button>`).join("");
   document.querySelectorAll("#chips .chip").forEach(b=>b.onclick=()=>{ const k=b.dataset.k, v=b.dataset.v; state[k]=state[k]===v?"":v; chips(); render(); }); }
 function render(){ document.getElementById("tl").innerHTML = D.sesiones.map(s=>{ const rs=D.recs.filter(r=>r.sesion===s.id&&(!state.estado||r.estado===state.estado)&&(!state.ambito||r.ambito===state.ambito)); if(!rs.length) return "";
-  return `<div class="ses"><div class="dot"></div><div class="shead"><h2>${s.id} · ${esc(s.nombre)}</h2><div class="sub">${s.fecha} · ${esc(s.tema)} · ${rs.length} recomendaciones</div></div>
+  return `<div class="ses"><div class="dot"></div><div class="shead"><h2>${s.id} · ${esc(s.nombre)}</h2><div class="sub">${s.fecha} · ${esc(s.tema)} · ${nf(rs.length)} recomendaciones</div></div>
    <div class="cards">${rs.map(r=>{const st=RE[r.estado]; const p=r.panel?PAN[r.panel]:null; return `<article class="rec"><header><span class="id">${r.id}</span><span class="pill na">${r.ambito}</span><span class="pill ${st[0]}" title="Estado declarado por la compañía">${st[2]} ${st[1]}</span></header>
      <p class="txt">${esc(r.texto)}</p>
      <dl><dt>Destinatario</dt><dd>${esc(r.destinatario)}</dd><dt>Fecha comprometida</dt><dd>${r.fecha}</dd><dt>Evidencia presentada</dt><dd>${esc(r.evidencia)}</dd><dt>Valoración del consejo asesor</dt><dd>${esc(r.valoracion)}</dd></dl>

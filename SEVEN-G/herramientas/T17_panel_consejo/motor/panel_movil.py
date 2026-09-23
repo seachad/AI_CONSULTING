@@ -104,7 +104,7 @@ const state = { lado: "actual", compara: "" };
 const rc = c => c.reporte_compania || {};
 const $ = id => document.getElementById(id);
 const netoCls = v => v < 0 ? "neg" : "pos";
-const rend = v => v == null ? "—" : v.toLocaleString("es-ES",{maximumFractionDigits:1}) + " €/€";
+const rend = v => v == null ? "—" : v.toLocaleString("es-ES",{useGrouping:"always",maximumFractionDigits:1}) + " €/€";
 
 function spark(vals, labels){
   if (vals.length < 2) return `<div class="d">La tendencia aparece con la segunda foto guardada.</div>`;
@@ -181,7 +181,7 @@ function render(){
     const ef = s("eficiencias","eficiencias_pot"), rt = s("retorno","retorno_pot"), co = s("recurrente","recurrente_pot"), pv = cs.some(c=>R(c).eficiencias == null && R(c).retorno == null);
     const p = [ef!=null?`efic. ${fmt(ef)}`:"", rt!=null?`ret. ${fmt(rt)}`:"", co!=null?`coste ${fmt(co)}/año`:""].filter(Boolean); return p.length ? p.join(" · ") + (pv?" (previsto)":"") : ""; };
   $("embudo").innerHTML = embE.map((e,i)=>{ if (esGanado(e)) return ""; const ahora = CASES.filter(c=>c.estado===e), alc = CASES.filter(c=>etapaAlcanzada(c) >= i).length, t = tiemposEstado(CASES, e).todas, pls = ahora.map(plazoDe), r = pls.filter(p=>p.nivel==="rojo").length, a = pls.filter(p=>p.nivel==="amarillo").length;
-      return `<div class="row fun" data-etapa="${esc(e)}"><div style="flex:1;min-width:0"><div class="n">${esc(e)} <span class="m">· ${ahora.length} ahora</span></div><div class="funbar"><i style="width:${Math.round(100*alc/base)}%"></i></div><div class="m">alcanzaron ${alc} · ${t?`mediana ${t.mediana} d · media ${t.media} d`:"sin fechas"}</div>${cifM(ahora)?`<div class="m">${cifM(ahora)}</div>`:""}</div><div class="r">${r?`<span class="badge rojo">${r} fuera</span>`:""}${a?`<span class="badge amarillo">${a} cerca</span>`:""}</div></div>`; }).join("")
+      return `<div class="row fun" data-etapa="${esc(e)}"><div style="flex:1;min-width:0"><div class="n">${esc(e)} <span class="m">· ${ahora.length} ahora</span></div><div class="funbar"><i style="width:${Math.round(100*alc/base)}%"></i></div><div class="m">alcanzaron ${nf(alc)} · ${t?`mediana ${nf(t.mediana)} d · media ${nf(t.media)} d`:"sin fechas"}</div>${cifM(ahora)?`<div class="m">${cifM(ahora)}</div>`:""}</div><div class="r">${r?`<span class="badge rojo">${r} fuera</span>`:""}${a?`<span class="badge amarillo">${a} cerca</span>`:""}</div></div>`; }).join("")
     + `<div class="row fun gan" data-etapa="${esc(ganE)}"><div><div class="n">${esc(ganE)} <span class="m">· ${nGan} ahora</span></div><div class="m">ya atravesaron el embudo · llegaron a producción ${llegaronE}</div><div class="m">${cifM(CASES.filter(c=>c.estado===ganE))}</div></div></div>`
     + `<div class="row"><div><div class="n">No pasaron o se desengancharon</div><div class="m">${SALIDAS().map(s=>`${esc(s)} ${CASES.filter(c=>c.estado===s).length}`).join(" · ")}</div>`
       // de cada caso perdido o desenganchado, lo esencial: por qué salió (si no consta, se dice)
@@ -199,7 +199,7 @@ function render(){
   if (ts.length){
     const DSP = {previsto:"prevista", piloto:"piloto", en_uso:"en uso", retirado:"retirada"};
     const netoSin = sum(CASES.filter(c=>!alcanceDe(c)).map(c=>R(c)[k("neto")]||0));
-    $("transv").innerHTML = `<div class="m" style="padding:0 2px 6px">Neto anual${pot?" potencial":""} de la cartera sin ${ts.length === 1 ? "ella" : "ellas"}: <b>${fmt(netoSin)}</b></div>` + ts.map(c=>{ const a = c.alcance;
+    $("transv").innerHTML = `<div class="m" style="padding:10px 12px;font-size:13px">Neto anual${pot?" potencial":""} de la cartera sin ${ts.length === 1 ? "ella" : "ellas"}: <b>${fmt(netoSin)}</b></div>` + ts.map(c=>{ const a = c.alcance;
       const us = a.tipo === "plataforma" ? `<div class="m">la usan: ${(a.habilita||[]).map(h=>esc(h.id)).join(", ") || "ningún caso"}</div>`
         : (a.unidades||[]).filter(u=>u.unidad != null).map(u=>{ const p = adopcionPct(u), bajo = a.umbral_adopcion_pct != null && u.estado === "en_uso" && p != null && p < a.umbral_adopcion_pct;
             return `<div class="m">${esc(u.unidad)} · ${DSP[u.estado]||esc(u.estado||"")}${p!=null?` · <span class="${bajo?"badge rojo":""}">${Math.round(p)} % licencias</span>`:""}${u.coste_anual!=null?` · coste ${fmt(u.coste_anual)}`:""}${u.valor_materializado!=null?` · materializado ${fmt(u.valor_materializado)}`:""}</div>`; }).join("");
@@ -249,7 +249,7 @@ function ficha(c){
    <div class="sub" style="margin-top:10px">${r.capacidad?`Capacidad liberada no materializada: ${fmt(r.capacidad)}. `:""}Inversión adicional ${fmt(r.adicional)} · ${rend(r.rendimiento_adicional)} · plazo ${esc(e.plazo_potencial||"sin fijar")}${fc?` · neto frente a la foto ${dl(r.neto, fc.neto)}`:""}</div>
    ${e.hipotesis_potencial?`<p style="font-size:13.5px;color:var(--ink2);margin:10px 0 0">${esc(e.hipotesis_potencial)}</p>`:""}
    ${(()=>{ const h = historial(c), p = plazoDe(c); if (!h.tramos.length) return `<div class="sub" style="margin-top:10px">Recorrido por estados: sin fechas reportadas.</div>`;
-      return `<div class="sub" style="margin-top:10px">Recorrido: ${h.tramos.map(t=>`${esc(t.estado)} ${t.dias==null?"":t.dias+" d"}`).join(" → ")}${p.limite?` · <span class="badge ${p.nivel}">${p.dias} de ${p.limite} d</span>`:""}</div>`; })()}`;
+      return `<div class="sub" style="margin-top:10px">Recorrido: ${h.tramos.map(t=>`${esc(t.estado)} ${t.dias==null?"":nf(t.dias)+" d"}`).join(" → ")}${p.limite?` · <span class="badge ${p.nivel}">${nf(p.dias)} de ${nf(p.limite)} d</span>`:""}</div>`; })()}`;
   $("sheet").classList.add("open");
 }
 // códigos citados (D99): con meta.navegacion.codigos (ruta al índice de códigos del sitio, codigos.js), los códigos escritos en el panel pasan
@@ -263,7 +263,7 @@ function etapa(e){
   const cs = CASES.filter(c=>c.estado===e).map(c=>({c, p: plazoDe(c)})).sort((a,b)=>(b.p.dias??-1)-(a.p.dias??-1)), t = tiemposEstado(CASES, e).todas;
   $("sheetbox").innerHTML = `<button class="close" onclick="cerrar()">Cerrar</button><h3>${esc(e)}: ${cs.length} casos</h3>
    <div class="sub">${t?`mediana ${t.mediana} d · media ${t.media} d (${t.n} estancias)`:"sin fechas de cambio de estado"}</div>
-   <div class="list" style="margin-top:10px">${cs.map(({c,p})=>`<div class="row" data-id="${c.id}"><div><div class="n">${esc(c.nombre)}</div><div class="m">${p.desde?`desde ${fES(p.desde)}`:"sin fechas"}${p.limite?` · límite ${p.limite} d`:""}</div></div><div class="r"><b>${p.dias==null?"—":p.dias+" d"}</b>${p.dias!=null&&t?`<div class="m">${p.dias-t.mediana>0?"+":""}${p.dias-t.mediana} d vs mediana</div>`:""}${p.nivel==="rojo"||p.nivel==="amarillo"?`<div><span class="badge ${p.nivel}">${p.nivel==="rojo"?"fuera de plazo":"cerca del límite"}</span></div>`:""}</div></div>`).join("")||`<div class="empty">Ningún caso.</div>`}</div>`;
+   <div class="list" style="margin-top:10px">${cs.map(({c,p})=>`<div class="row" data-id="${c.id}"><div><div class="n">${esc(c.nombre)}</div><div class="m">${p.desde?`desde ${fES(p.desde)}`:"sin fechas"}${p.limite?` · límite ${nf(p.limite)} d`:""}</div></div><div class="r"><b>${p.dias==null?"—":nf(p.dias)+" d"}</b>${p.dias!=null&&t?`<div class="m">${p.dias-t.mediana>0?"+":""}${nf(p.dias-t.mediana)} d vs mediana</div>`:""}${p.nivel==="rojo"||p.nivel==="amarillo"?`<div><span class="badge ${p.nivel}">${p.nivel==="rojo"?"fuera de plazo":"cerca del límite"}</span></div>`:""}</div></div>`).join("")||`<div class="empty">Ningún caso.</div>`}</div>`;
   $("sheet").classList.add("open");
   document.querySelectorAll("#sheetbox .row[data-id]").forEach(r=>r.onclick=()=>ficha(CASES.find(c=>c.id===r.dataset.id)));
 }
