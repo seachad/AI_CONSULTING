@@ -27,14 +27,16 @@ function limpiaRefs(h){
     .replace(/(?:\s*[,;·]\s*){2,}/g, " · ").replace(/\s*·\s*(?=<\/div>|<\/span>|<\/dd>|$)/g, "").replace(/\s+\)/g, ")");
 }
 
-const fmt = v => { if (v == null || isNaN(v)) return "—"; const a = Math.abs(v); if (a >= 1e6) return (v/1e6).toLocaleString("es-ES",{maximumFractionDigits:1}) + " M€"; if (a >= 1e3) return Math.round(v/1e3).toLocaleString("es-ES") + " k€"; return Math.round(v).toLocaleString("es-ES") + " €"; };
-const pct = v => (v*100).toLocaleString("es-ES",{maximumFractionDigits:0}) + " %";
+const fmt = v => { if (v == null || isNaN(v)) return "—"; const a = Math.abs(v); if (a >= 1e6) return (v/1e6).toLocaleString("es-ES",{useGrouping:"always",maximumFractionDigits:1}) + " M€"; if (a >= 1e3) return Math.round(v/1e3).toLocaleString("es-ES",{useGrouping:"always"}) + " k€"; return Math.round(v).toLocaleString("es-ES",{useGrouping:"always"}) + " €"; };
+const pct = v => (v*100).toLocaleString("es-ES",{useGrouping:"always",maximumFractionDigits:0}) + " %";
 const sum = a => a.reduce((x,y)=>x+y,0);
 const esc = s => String(s ?? "").replace(/&/g,"&amp;").replace(/</g,"&lt;");
 const ND = '<span class="nd">sin dato</span>';
 const nd = (v, f) => (v == null || v === "") ? ND : (f ? f(v) : esc(v));
-const npct = v => v == null ? ND : v.toLocaleString("es-ES",{maximumFractionDigits:1}) + " %";
-const nnum = v => v == null ? ND : Number(v).toLocaleString("es-ES");
+const npct = v => v == null ? ND : v.toLocaleString("es-ES",{useGrouping:"always",maximumFractionDigits:1}) + " %";
+const nnum = v => v == null ? ND : Number(v).toLocaleString("es-ES",{useGrouping:"always"});
+// entero (o con d decimales) con separador de miles siempre, también en 4 cifras: «1.200», no «1200»
+const nf = (v, d=0) => (v == null || v === "" || isNaN(v)) ? "—" : Number(v).toLocaleString("es-ES",{useGrouping:"always",maximumFractionDigits:d});
 
 // ---- magnitudes de valor: se muestran por separado y no se suman entre sí
 const MAGS = [["vnb","VNB","Valor de Nuevo Negocio (VNB)"],["fraude","Fraude evitado","Fraude y sobrecoste evitados"],["eficiencia","Eficiencias","Eficiencias (horas valoradas en euros)"]];

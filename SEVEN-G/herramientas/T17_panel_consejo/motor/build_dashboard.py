@@ -230,7 +230,7 @@ details.cdet>summary{list-style:none;cursor:pointer;padding:12px 16px;user-selec
 details.cdet>summary::-webkit-details-marker{display:none}
 details.cdet>summary:before{content:"▸";color:var(--muted);font-size:13px;flex:0 0 12px}
 details.cdet[open]>summary:before{content:"▾"}
-details.cdet>summary h3{margin:0;flex:1 1 auto}
+details.cdet>summary h3{margin:0;flex:1 1 0;min-width:0}
 details.cdet>summary .ins{flex-basis:100%;padding-left:22px;font-size:12.5px;color:var(--ink);line-height:1.4}
 details.cdet>.body{padding:0 16px 14px}
 .card svg{display:block;max-width:100%;height:auto}
@@ -246,12 +246,15 @@ svg text{font-family:inherit;fill:var(--ink2);font-size:11px}
 .tile .k{font-size:10.5px;color:var(--muted);text-transform:uppercase;letter-spacing:.03em}
 .tile .v{font-size:18px;font-weight:650;line-height:1.15}
 .tile .d{font-size:11px;color:var(--ink2)}
+.tile .v .d{display:block;font-weight:600}
 .mini{border-collapse:collapse;width:100%;font-size:12px}
 .mini th,.mini td{padding:4px 7px;border-bottom:1px solid var(--grid);text-align:left;vertical-align:top}
 .mini th{font-size:10.5px;color:var(--muted);text-transform:uppercase;letter-spacing:.03em;font-weight:600}
 .mini td.n,.mini th.n{text-align:right;font-variant-numeric:tabular-nums;white-space:nowrap}
+.mini td.fecha{white-space:nowrap;font-variant-numeric:tabular-nums}
 .ctl{margin:6px 0}
-.ctl .k{font-size:11.5px;color:var(--ink2);display:flex;justify-content:space-between}
+.ctl .k{font-size:11.5px;color:var(--ink2);display:flex;justify-content:space-between;align-items:baseline;column-gap:4px}
+.ctl .k span:last-child{text-align:right;font-variant-numeric:tabular-nums}
 .ctl .bar{display:flex;height:10px;border-radius:3px;overflow:hidden;gap:2px;background:var(--grid);margin-top:3px}
 .ctl .bar i{display:block;height:100%}
 .comp{margin-top:14px}
@@ -299,7 +302,10 @@ svg text{font-family:inherit;fill:var(--ink2);font-size:11px}
 .badge.st-uso,.badge.ok{background:var(--okbg);color:var(--okink);border-color:var(--okbd)}.badge.st-dev,.badge.mid,.badge.r-cand{background:var(--midbg);color:var(--midink);border-color:var(--midbd)}
 .badge.st-poc,.badge.r-t50{background:var(--infbg);color:var(--infink);border-color:var(--infbd)}.badge.st-off{background:var(--offbg);color:var(--offink);border-color:var(--offbd)}
 .badge.r-alto,.badge.ko{background:var(--kobg);color:var(--koink);border-color:var(--kobd)}
-.nums{display:grid;grid-template-columns:1fr 1fr 1fr;gap:6px;margin-top:8px}
+.nums{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:6px;margin-top:8px}
+/* rótulo, cifra y nota de las tres cifras en la misma fila aunque un rótulo ocupe dos líneas; las cifras de todas las tarjetas, al pie */
+@supports (grid-template-rows:subgrid){.nums{grid-template-rows:auto auto auto;row-gap:0}.num{display:grid;grid-row:span 3;grid-template-rows:subgrid;align-content:start}.num .k{align-self:end}}
+.case{display:flex;flex-direction:column}.case>.nums{margin-top:auto;padding-top:8px}
 .num{border-top:1px solid var(--grid);padding-top:5px}
 .num .k{font-size:10.5px;color:var(--muted);text-transform:uppercase;letter-spacing:.03em}
 .num .v{font-size:14px;font-weight:650;font-variant-numeric:tabular-nums}
@@ -308,7 +314,7 @@ svg text{font-family:inherit;fill:var(--ink2);font-size:11px}
 .pot{margin-top:8px;cursor:pointer}
 .pot .bar{height:6px;background:var(--grid);border-radius:3px;overflow:hidden;margin-top:3px}
 .pot .bar i{display:block;height:100%;background:var(--s1);border-radius:3px}
-.pot .k{font-size:10.5px;color:var(--muted);text-transform:uppercase;letter-spacing:.03em;display:flex;justify-content:space-between}
+.pot .k{font-size:10.5px;color:var(--muted);text-transform:uppercase;letter-spacing:.03em;display:flex;justify-content:space-between;align-items:flex-start;gap:8px;line-height:1.3;min-height:2.6em}.pot .k>span:last-child{white-space:nowrap}
 .pot .k b{color:var(--s1);text-transform:none;letter-spacing:0}
 .tblwrap{overflow:auto;border:1px solid var(--grid);border-radius:10px;background:var(--surface)}
 table.big{border-collapse:collapse;width:100%;font-size:12.5px}
@@ -318,6 +324,8 @@ table.big td.n,table.big th.n{text-align:right;font-variant-numeric:tabular-nums
 table.big tr:hover td{background:var(--page)}
 .modal{position:fixed;inset:0;background:rgba(0,0,0,.45);display:none;align-items:center;justify-content:center;z-index:40;padding:20px}
 .modal.open{display:flex}
+/* en la ficha y en los desgloses, las cifras de las tarjetas quedan a la misma altura aunque un rótulo ocupe dos líneas */
+#box .tiles>.tile>.k{min-height:2.6em;line-height:1.3;display:flex;align-items:flex-end}
 .box{background:var(--surface);color:var(--ink);border-radius:12px;max-width:860px;width:100%;max-height:90vh;overflow:auto;padding:20px 24px;box-shadow:0 12px 40px rgba(0,0,0,.35)}
 .box h2{margin:0 0 4px;font-size:18px}
 .box h3{margin:14px 0 4px;font-size:14px}
@@ -360,7 +368,7 @@ footer{padding:20px 24px;color:var(--muted);font-size:11.5px;border-top:1px soli
 .fun2-fin{grid-column:1/-1;margin-top:10px;border-top:2px solid var(--ink);padding-top:10px}
 .fun2-fin>.tit{font-weight:700;font-size:13px;color:var(--ink);margin-bottom:8px}
 .fun2-fin>.tit span{font-weight:400;color:var(--ink2)}
-.fun2-fin>.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:12px;align-items:start}
+.fun2-fin>.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:12px;align-items:stretch}
 .fun-card.gan{background:color-mix(in srgb,#2e7d32 13%,transparent);border:2px solid #2e7d32;color:var(--ink)}
 .fun-card.gan>.h{color:#fff;background:#2e7d32;margin:-6px -10px 4px;padding:7px 10px;border-radius:5px 5px 0 0}
 .fun-card.gan li{border-top-color:color-mix(in srgb,#2e7d32 40%,transparent)}
@@ -581,7 +589,7 @@ function bindPages(){
 }
 // ---- embudo y ciclo de vida (como en un CRM): etapas, salidas, tiempos por estado, casos atascados y preguntas de análisis
 const COL_ETAPA = ["var(--s4)","var(--s1)","var(--s2)","var(--seq450)","var(--s3)","var(--s1)","var(--s2)"];
-const dTxt = v => v == null ? "—" : `${v.toLocaleString("es-ES")} d`;
+const dTxt = v => v == null ? "—" : `${v.toLocaleString("es-ES",{useGrouping:"always"})} d`;
 const pill = (nivel, txt) => `<span class="pill ${nivel}">${txt || PLAZO_TXT[nivel] || nivel}</span>`;
 const casoLink = c => `<a href="#" onclick="openFicha(CASES.find(x=>x.id==='${c.id}'));return false">${esc(c.nombre)}</a>`;
 // línea de la tarjeta: tiempo en el estado actual frente a su límite
@@ -589,7 +597,7 @@ function cicloLinea(c){
   const p = plazoDe(c);
   if (p.dias == null) return esEnCurso(c.estado) ? `<div class="ciclo sin_fechas">En «${esc(c.estado)}»: sin fechas de cambio de estado</div>` : "";
   if (p.nivel === "sin_limite" && c.estado === "En uso") return "";
-  return `<div class="ciclo ${p.nivel}">En «${esc(c.estado)}» desde ${fES(p.desde)} · <b>${p.dias} días</b>${p.limite?` de ${p.limite} (${Math.round(p.pct)} %)`:""}</div>`;
+  return `<div class="ciclo ${p.nivel}">En «${esc(c.estado)}» desde ${fES(p.desde)} · <b>${nf(p.dias)} días</b>${p.limite?` de ${nf(p.limite)} (${nf(p.pct)} %)`:""}</div>`;
 }
 // ficha: recorrido del caso por los estados, con días, límite y fuente de cada tramo
 function cicloFicha(c){
@@ -659,21 +667,21 @@ function renderEmbudo(rows){
   etapas.forEach(e=>{
     const i = emb.indexOf(e), wt = pctDe(i), wb = pctDe(i+1), sel = E.sel===e, t = tiemposEstado(rows, e).todas, lim = (cfg.dias_limite||{})[e];
     const lv = lim != null && typeof lim === "object" ? Object.values(lim).filter(v=>typeof v === "number") : [];
-    const limTxt = lim == null ? "sin límite" : typeof lim === "number" ? `límite ${lim} d` : `límite ${Math.min(...lv)}–${Math.max(...lv)} d por complejidad`;
+    const limTxt = lim == null ? "sin límite" : typeof lim === "number" ? `límite ${nf(lim)} d` : `límite ${nf(Math.min(...lv))}–${nf(Math.max(...lv))} d por complejidad`;
     const atas = ahora(e).map(plazoDe), r = atas.filter(p=>p.nivel==="rojo").length, a = atas.filter(p=>p.nivel==="amarillo").length;
     // salidas previstas desde esta etapa (aunque no tengan casos) y cualquier otra con casos que salieron desde ella
     const sals = sal.filter(s=>(cfg.salidas[s]||[]).includes(e) || (grupos[s][e]||[]).length);
     html += `<div class="fun2-lbl${sel?" fun-sel":""}" data-sel="${esc(e)}" tabindex="0" role="button" aria-label="${esc(e)}: ${ahora(e).length} casos">
-        <div class="t">${esc(e)}</div><div class="d">alcanzaron ${alcanzan[i]} (${alcanzan[0]?Math.round(100*alcanzan[i]/alcanzan[0]):0} %)</div>
-        <div class="d">${t?`media ${t.media} d · mediana ${t.mediana} d (${t.n})`:"tiempos: sin fechas"}</div><div class="d${r?" rojo":a?" amb":""}">${limTxt}${r||a?` · ${r} fuera, ${a} cerca`:""}</div><div class="d cif">${ahora(e).length?cifTxt(cifrasSuma(ahora(e))):""}</div></div>
+        <div class="t">${esc(e)}</div><div class="d">alcanzaron ${nf(alcanzan[i])} (${alcanzan[0]?nf(100*alcanzan[i]/alcanzan[0]):0} %)</div>
+        <div class="d">${t?`media ${nf(t.media)} d · mediana ${nf(t.mediana)} d (${nf(t.n)})`:"tiempos: sin fechas"}</div><div class="d${r?" rojo":a?" amb":""}">${limTxt}${r||a?` · ${r} fuera, ${a} cerca`:""}</div><div class="d cif">${ahora(e).length?cifTxt(cifrasSuma(ahora(e))):""}</div></div>
       <div class="fun2-mid${sel?" fun-sel":""}" data-sel="${esc(e)}" tabindex="-1"><div class="fun2-trap" style="background:${COL_ETAPA[i%COL_ETAPA.length]};clip-path:polygon(${(100-wt)/2}% 0,${100-(100-wt)/2}% 0,${100-(100-wb)/2}% 100%,${(100-wb)/2}% 100%)">${ahora(e).length}</div></div>
       <div class="fun2-out">${sals.map(s=>{ const l = grupos[s][e]||[]; return tarjeta(s, `${esc(s)} <span class="k">· no pasó de ${esc(e)}</span> · ${l.length}`, l, lineaPerdido); }).join("")}</div>`;
   });
   // los que ya atravesaron el embudo: en uso y, de estos, los que se desengancharon después
   const enUso = ahora(cfg.ganado), tsUso = estad(enUso.map(c=>diasEmbudo(c, entradaGan(c))));
   const salFin = sal.filter(s=>(cfg.salidas[s]||[]).includes(cfg.ganado) || (grupos[s][cfg.ganado]||[]).length);
-  html += `<div class="fun2-fin"><div class="tit">Ya han atravesado el embudo <span>· llegaron a producción ${llegaron} de ${alcanzan[0]} casos${conv==null?"":` · conversión ${conv} %`}</span></div><div class="cards">
-    ${tarjeta(cfg.ganado, `${esc(cfg.ganado)} · ${enUso.length}${tsUso?` <span class="k">· mediana ${tsUso.mediana} d desde la entrada en el embudo hasta el uso</span>`:""}${enUso.length?`<span class="k cifh">${cifTxt(cifrasSuma(enUso))}</span>`:""}`, enUso, lineaUso, " gan")}
+  html += `<div class="fun2-fin"><div class="tit">Ya han atravesado el embudo <span>· llegaron a producción ${nf(llegaron)} de ${nf(alcanzan[0])} casos${conv==null?"":` · conversión ${nf(conv)} %`}</span></div><div class="cards">
+    ${tarjeta(cfg.ganado, `${esc(cfg.ganado)} · ${enUso.length}${tsUso?` <span class="k">· mediana ${nf(tsUso.mediana)} d desde la entrada en el embudo hasta el uso</span>`:""}${enUso.length?`<span class="k cifh">${cifTxt(cifrasSuma(enUso))}</span>`:""}`, enUso, lineaUso, " gan")}
     ${salFin.map(s=>{ const l = grupos[s][cfg.ganado]||[]; return tarjeta(s, `${esc(s)} <span class="k">tras haber estado en uso</span> · ${l.length}`, l, lineaDeseng); }).join("")}
    </div></div>`;
   el.innerHTML = `<div class="fun2" role="group" aria-label="Embudo de casos de uso">${html}</div>`;
@@ -693,11 +701,11 @@ function renderEmbudoDetalle(rows){
   } else {
     const t = tiemposEstado(rows, E.sel), ref = t.todas ? t.todas[E.ref] : null, lim = (cfg.dias_limite||{})[E.sel];
     const filas = cs.map(c=>{ const p = plazoDe(c), dv = p.dias!=null && ref!=null ? p.dias - ref : null, dp = dv!=null && ref ? Math.round(100*dv/ref) : null;
-      return {c, p, dv, html:`<tr class="${p.nivel==="rojo"||p.nivel==="amarillo"?p.nivel:""}"><td>${casoLink(c)} <span class="nd">${esc(c.id)}</span></td><td>${esc(c.compania)}</td><td>${esc(c.tags.tecnologia)}</td>${typeof lim==="object"&&lim?`<td>${nd(complejidadDe(c))}</td>`:""}<td class="n">${p.desde?fES(p.desde):"—"}</td><td class="n">${dTxt(p.dias)}</td><td class="n">${p.limite==null?"—":dTxt(p.limite)}</td><td class="n">${p.pct==null?"—":Math.round(p.pct)+" %"}</td>${CIF.map(([a])=>`<td class="n">${cifCelda(cifrasCaso(c)[a])}</td>`).join("")}<td class="n">${dv==null?"—":`<b class="${dv>0?"desv-mas":"desv-menos"}">${dv>0?"+":""}${dv} d</b>${dp!=null?` (${dp>0?"+":""}${dp} %)`:""}`}</td><td>${pill(p.nivel)}</td></tr>`}; })
+      return {c, p, dv, html:`<tr class="${p.nivel==="rojo"||p.nivel==="amarillo"?p.nivel:""}"><td>${casoLink(c)} <span class="nd">${esc(c.id)}</span></td><td>${esc(c.compania)}</td><td>${esc(c.tags.tecnologia)}</td>${typeof lim==="object"&&lim?`<td>${nd(complejidadDe(c))}</td>`:""}<td class="n">${p.desde?fES(p.desde):"—"}</td><td class="n">${dTxt(p.dias)}</td><td class="n">${p.limite==null?"—":dTxt(p.limite)}</td><td class="n">${p.pct==null?"—":nf(p.pct)+" %"}</td>${CIF.map(([a])=>`<td class="n">${cifCelda(cifrasCaso(c)[a])}</td>`).join("")}<td class="n">${dv==null?"—":`<b class="${dv>0?"desv-mas":"desv-menos"}">${dv>0?"+":""}${nf(dv)} d</b>${dp!=null?` (${dp>0?"+":""}${nf(dp)} %)`:""}`}</td><td>${pill(p.nivel)}</td></tr>`}; })
       .sort((a,b)=> (b.dv??-1e9) - (a.dv??-1e9));
     const sinF = cs.filter(c=>plazoDe(c).dias==null).length;
     h = `<h3>${esc(E.sel)}: ${cs.length} casos ahora en la etapa</h3>
-     <div class="preg-ctrl"><span class="sub">Desviación frente a la</span>${refBtn}<span class="sub">del estado: ${t.todas?`media <b>${t.todas.media} d</b> · mediana <b>${t.todas.mediana} d</b> · ${t.todas.n} estancias (${t.cerradas?t.cerradas.n:0} cerradas, ${t.en_curso?t.en_curso.n:0} en curso)${t.cerradas?` · solo cerradas: media ${t.cerradas.media} d, mediana ${t.cerradas.mediana} d`:""}`:"sin fechas: no hay tiempos"}</span></div>
+     <div class="preg-ctrl"><span class="sub">Desviación frente a la</span>${refBtn}<span class="sub">del estado: ${t.todas?`media <b>${nf(t.todas.media)} d</b> · mediana <b>${nf(t.todas.mediana)} d</b> · ${nf(t.todas.n)} estancias (${t.cerradas?t.cerradas.n:0} cerradas, ${t.en_curso?t.en_curso.n:0} en curso)${t.cerradas?` · solo cerradas: media ${nf(t.cerradas.media)} d, mediana ${nf(t.cerradas.mediana)} d`:""}`:"sin fechas: no hay tiempos"}</span></div>
      ${cs.length?`<div class="tblx"><table class="mini"><thead><tr><th>Caso</th><th>Compañía</th><th>Tecnología</th>${typeof lim==="object"&&lim?"<th>Complejidad</th>":""}<th class="n">En la etapa desde</th><th class="n">Días</th><th class="n">Límite</th><th class="n">% del límite</th><th class="n">Eficiencias</th><th class="n">Retorno</th><th class="n">Coste anual</th><th class="n">Inversión</th><th class="n">Desviación (${E.ref})</th><th>Plazo</th></tr></thead><tbody>${filas.map(x=>x.html).join("")}</tbody></table></div>`:`<div class="nd">Ningún caso en esta etapa con los filtros actuales.</div>`}
      ${sinF?`<div class="nd" style="margin-top:6px">${sinF} de ${cs.length} casos sin fechas de cambio de estado: no se puede medir si están atascados.</div>`:""}`;
   }
@@ -723,12 +731,12 @@ function renderEmbudoPreguntas(rows){
   } else if (E.q==="ab"){
     const vals = rows.map(c=>({c, d: diasDeA(c, E.a, E.b)})).filter(x=>x.d!=null).sort((a,b)=>b.d-a.d), s = estad(vals.map(x=>x.d));
     r = `<div class="sub" style="margin-bottom:6px">${s?`De «${esc(E.a)}» a «${esc(E.b)}»: <b>${s.n}</b> casos · media <b>${dTxt(s.media)}</b> · mediana <b>${dTxt(s.mediana)}</b> · P25–P75 ${dTxt(s.p25)} – ${dTxt(s.p75)} · mín–máx ${dTxt(s.min)} – ${dTxt(s.max)}`:`Ningún caso con fechas de «${esc(E.a)}» y de «${esc(E.b)}».`}</div>` +
-      (vals.length ? tabla(["Caso","Compañía","Tecnología","Días","Frente a la mediana"], vals.slice(0,25).map(x=>`<tr>${td(casoLink(x.c))}${td(esc(x.c.compania))}${td(esc(x.c.tags.tecnologia))}${td(dTxt(x.d), true)}${td(`${x.d-s.mediana>0?"+":""}${x.d-s.mediana} d`, true)}</tr>`), [3,4]) : "");
+      (vals.length ? tabla(["Caso","Compañía","Tecnología","Días","Frente a la mediana"], vals.slice(0,25).map(x=>`<tr>${td(casoLink(x.c))}${td(esc(x.c.compania))}${td(esc(x.c.tags.tecnologia))}${td(dTxt(x.d), true)}${td(`${x.d-s.mediana>0?"+":""}${nf(x.d-s.mediana)} d`, true)}</tr>`), [3,4]) : "");
   } else if (E.q==="dim"){
     const dim = DIMS.find(([k])=>k===E.dim) || DIMS[0], total = estad(rows.map(c=>diasDeA(c, E.a, E.b)));
     const grupos = [...new Set(rows.map(dim[2]))].sort((a,b)=>String(a).localeCompare(String(b),"es")).map(g=>({g, s: estad(rows.filter(c=>dim[2](c)===g).map(c=>diasDeA(c, E.a, E.b))), n: rows.filter(c=>dim[2](c)===g).length}));
     r = `<div class="sub" style="margin-bottom:6px">De «${esc(E.a)}» a «${esc(E.b)}» según ${esc(dim[1].toLowerCase())} · total: ${total?`mediana <b>${dTxt(total.mediana)}</b> (${total.n} casos)`:"sin fechas"}</div>` +
-      tabla(["Grupo","Casos","Con fechas","Media","Mediana","P25 – P75","Frente a la mediana total"], grupos.map(x=>`<tr>${td(esc(x.g))}${td(x.n, true)}${td(x.s?x.s.n:0, true)}${td(x.s?dTxt(x.s.media):"—", true)}${td(x.s?dTxt(x.s.mediana):"—", true)}${td(x.s?`${dTxt(x.s.p25)} – ${dTxt(x.s.p75)}`:"—", true)}${td(x.s&&total?`${x.s.mediana-total.mediana>0?"+":""}${x.s.mediana-total.mediana} d`:"—", true)}</tr>`), [1,2,3,4,5,6]);
+      tabla(["Grupo","Casos","Con fechas","Media","Mediana","P25 – P75","Frente a la mediana total"], grupos.map(x=>`<tr>${td(esc(x.g))}${td(x.n, true)}${td(x.s?x.s.n:0, true)}${td(x.s?dTxt(x.s.media):"—", true)}${td(x.s?dTxt(x.s.mediana):"—", true)}${td(x.s?`${dTxt(x.s.p25)} – ${dTxt(x.s.p75)}`:"—", true)}${td(x.s&&total?`${x.s.mediana-total.mediana>0?"+":""}${nf(x.s.mediana-total.mediana)} d`:"—", true)}</tr>`), [1,2,3,4,5,6]);
   } else if (E.q==="atascados"){
     const lista = rows.map(c=>({c, p: plazoDe(c)})).filter(x=>x.p.nivel==="rojo"||x.p.nivel==="amarillo").sort((a,b)=>b.p.pct-a.p.pct);
     r = tabla(["Caso","Compañía","Estado","Desde","Días","Límite","% del límite","Plazo"], lista.map(x=>`<tr class="${x.p.nivel}">${td(casoLink(x.c))}${td(esc(x.c.compania))}${td(esc(x.c.estado))}${td(fES(x.p.desde), true)}${td(dTxt(x.p.dias), true)}${td(dTxt(x.p.limite), true)}${td(Math.round(x.p.pct)+" %", true)}${td(pill(x.p.nivel))}</tr>`), [3,4,5,6]) +
@@ -831,7 +839,7 @@ function porConcepto(rows, campo, lado){ const acc = {}; rows.forEach(c=>(eco(c)
 function openKpi(tipo, rows){
   const pot = P(), k = n => pot ? n+"_pot" : n, S = (rs, n) => sum(rs.map(c=>R(c)[n]||0)), lado = pot ? "potencial" : "actual";
   const tile = (t, v, d) => `<div class="tile"><div class="k">${t}</div><div class="v">${v}</div><div class="d">${d}</div></div>`;
-  const pctDe = (v, tot) => tot ? Math.round(100*v/tot) + " %" : "—";
+  const pctDe = (v, tot) => tot ? nf(100*v/tot) + " %" : "—";
   const tabla = (cab, filas) => `<div class="tblx"><table class="mini"><thead><tr>${cab.map((h,i)=>`<th class="${i?"n":""}">${h}</th>`).join("")}</tr></thead><tbody>${filas.join("")}</tbody></table></div>`;
   const fila = (celdas, extra) => `<tr${extra||""}>${celdas.map((x,i)=>`<td class="${i?"n":""}">${x}</td>`).join("")}</tr>`;
   const casoFila = (c, celdas) => fila([`<a href="#" onclick="openEco(CASES.find(x=>x.id==='${c.id}'));return false">${esc(c.nombre)}</a> <span class="nd">${esc(c.compania)}</span>`, ...celdas]);
@@ -936,7 +944,7 @@ function renderCharts(rows){
   const cand = rows.filter(c=>R(c).adicional && R(c).neto_adicional > 0).sort((a,b)=>R(b).rendimiento_adicional - R(a).rendimiento_adicional).slice(0,15);
   const el2 = document.getElementById("c2");
   if (!cand.length){ el2.innerHTML = placeholder("Ningún caso seleccionado tiene estimada la inversión adicional para alcanzar su potencial.", "casos[].economia.inversion.adicional_potencial"); }
-  else barChart(el2, cand.map(c=>({label:c.nombre, values:[R(c).neto_adicional, R(c).adicional], extra:`${R(c).rendimiento_adicional.toLocaleString("es-ES",{maximumFractionDigits:1})} € de neto anual adicional por euro invertido · plazo ${eco(c).plazo_potencial||"sin fijar"}`, onclick:()=>openEco(c)})),
+  else barChart(el2, cand.map(c=>({label:c.nombre, values:[R(c).neto_adicional, R(c).adicional], extra:`${R(c).rendimiento_adicional.toLocaleString("es-ES",{useGrouping:"always",maximumFractionDigits:1})} € de neto anual adicional por euro invertido · plazo ${eco(c).plazo_potencial||"sin fijar"}`, onclick:()=>openEco(c)})),
     [{name:"Neto anual adicional", color:"var(--seq450)"},{name:"Inversión adicional", color:"var(--s2)"}], {left:230});
   document.getElementById("c2t").textContent = `Dónde rinde más la inversión adicional: ${cand.length} casos ordenados por neto anual adicional por euro invertido`;
 }
@@ -952,7 +960,7 @@ function renderCdm(){
   const fecha = String(d.fecha_datos||"").split("-").reverse().join("-");
   const insight = `El cuadro de mando de la compañía (datos a ${esc(fecha)}) cubre <b>${ids.length}</b> casos, el <b>${val2025?Math.round(100*vnb2025/val2025):"—"} %</b> del valor 2025 declarado: VNB acumulado <b>${fmt(d.vnb_acum)}</b> con un coste declarado de <b>${fmt(d.coste_acum)}</b>${ratio?` (${ratio} veces)`:""}. Eficiencias sin dato, sin grupo de control visible y sin indicadores de gobierno.`;
   const filas = cs.map(c=>{ const x = d.casos[c.id], ex = (c.valor.acum_extrapolado_cati||{}).vnb||0, dif = ex? Math.round(100*(ex - x.vnb_acum)/x.vnb_acum) : null;
-    return `<tr><td><span class="id">${c.id}</span> ${esc(c.nombre)}<div class="nd" style="font-style:normal">en el CdM: ${esc(x.nombre_cdm)}</div></td><td class="n">${fmt(x.vnb_acum)}</td><td class="n">${fmt(ex)}</td><td class="n">${dif==null?"—":(dif>0?"+":"")+dif+" %"}</td><td class="n">${fmt(x.pta_acum)}</td><td class="n">${x.pta_acum?(x.vnb_acum/x.pta_acum).toLocaleString("es-ES",{maximumFractionDigits:2}):"—"}</td></tr>`; }).join("");
+    return `<tr><td><span class="id">${c.id}</span> ${esc(c.nombre)}<div class="nd" style="font-style:normal">en el CdM: ${esc(x.nombre_cdm)}</div></td><td class="n">${fmt(x.vnb_acum)}</td><td class="n">${fmt(ex)}</td><td class="n">${dif==null?"—":(dif>0?"+":"")+nf(dif)+" %"}</td><td class="n">${fmt(x.pta_acum)}</td><td class="n">${x.pta_acum?(x.vnb_acum/x.pta_acum).toLocaleString("es-ES",{useGrouping:"always",maximumFractionDigits:2}):"—"}</td></tr>`; }).join("");
   const t50 = d.titulares_p50||{}, t51 = d.detalle_p51_52||{};
   const fila50 = (lab,a,b) => `<tr><td>${lab}</td><td class="n">${fmt(a)}</td><td class="n">${fmt(b)}</td><td class="n">${a!=null&&b!=null?(a-b>0?"+":"")+fmt(a-b):"—"}</td></tr>`;
   setCard("cdm", "Cuadro de mando de valor de la compañía frente a este panel", `${esc(d.fuente)}. Los importes por caso se han leído de los gráficos circulares (redondeados al millón); los totales son exactos.`, insight, `
@@ -1015,7 +1023,7 @@ const ALERTA_IX = {a_fragil:"Transformación frágil", a_nomat:"Eficiencia no ma
 function valorIx(s){
   if (s.sin_dato) return `<span class="nd">sin medir</span>`;
   if (s.valor == null) return "—";
-  const n = v => v.toLocaleString("es-ES", {maximumFractionDigits: 2});
+  const n = v => v.toLocaleString("es-ES", {useGrouping:"always", maximumFractionDigits: 2});
   return s.senal === 7 ? `CR ${n(s.valor)}` : s.senal === 8 ? `${n(s.valor)} apuestas` : `${n(s.valor)} %`;
 }
 function renderIndice(){
@@ -1047,11 +1055,11 @@ function renderMadurez(){
   const ant = x.anterior || null, prev = d => ant ? (ant.dimensiones||[]).find(a=>a.dimension===d) : null;
   const nombreNivel = n => NIVEL_MD[n] || "";
   const puntos = n => n == null ? '<span class="nd">sin dato</span>' : `<span style="letter-spacing:2px;color:var(--${n>=4?"s3":n>=2?"s1":"muted"})">${"●".repeat(n)}${"○".repeat(Math.max(0, 5-n))}</span> <b>${n}</b> <span class="nd">${nombreNivel(n)}</span>`;
-  const avance = p => p == null ? "—" : `<div style="display:flex;align-items:center;gap:6px"><div style="flex:1;min-width:70px;height:6px;background:var(--grid);border-radius:3px;overflow:hidden"><i style="display:block;height:100%;width:${Math.max(0, Math.min(100, p))}%;background:var(--s1)"></i></div><span class="nd" style="font-style:normal">${Math.round(p)} %</span></div>`;
+  const avance = p => p == null ? "—" : `<div style="display:flex;align-items:center;gap:6px"><div style="flex:1;min-width:70px;height:6px;background:var(--grid);border-radius:3px;overflow:hidden"><i style="display:block;height:100%;width:${Math.max(0, Math.min(100, p))}%;background:var(--s1)"></i></div><span class="nd" style="font-style:normal;min-width:3.2em;text-align:right;font-variant-numeric:tabular-nums">${nf(p)} %</span></div>`;
   const flecha = (n, a) => (n == null || a == null) ? "—" : n - a > 0 ? `<b style="color:var(--s3)">▲ +${n - a}</b>` : n - a < 0 ? `<b style="color:var(--critical)">▼ ${n - a}</b>` : "=";
   const tend = d => { const a = prev(d.dimension); return a ? flecha(d.nivel, a.nivel) : "—"; };
   const filas = x.dimensiones.map(d=>`<tr><td><b>${esc(d.dimension||"")}</b> · ${esc(d.nombre||"")}</td><td>${puntos(d.nivel)}</td><td>${avance(d.avance)}</td><td>${(d.bloqueantes||[]).length ? d.bloqueantes.map(esc).join(", ") : "—"}</td><td>${tend(d)}</td></tr>`).join("");
-  const media = x.media == null ? "" : ` (media ponderada ${Number(x.media).toLocaleString("es-ES", {minimumFractionDigits: 1, maximumFractionDigits: 2})})`;
+  const media = x.media == null ? "" : ` (media ponderada ${Number(x.media).toLocaleString("es-ES", {useGrouping:"always", minimumFractionDigits: 1, maximumFractionDigits: 2})})`;
   const global = x.nivel_global == null
     ? `Nivel global <b>sin dato</b>: hay preguntas sin responder que bloquean el cálculo${x.nivel_minimo != null ? ` · mínimo garantizado <b>${x.nivel_minimo} · ${nombreNivel(x.nivel_minimo)}</b>` : ""}`
     : `Nivel global <b>${x.nivel_global} · ${nombreNivel(x.nivel_global)}</b>${media}`;
@@ -1075,7 +1083,7 @@ function renderCartera(rows){
   const tipos = ["alta","retirada","reevaluacion"].map(t=>[t, mov.filter(m=>m.tipo===t).length]);
   setCard("cart1", "Movimientos del periodo", "Altas, retiradas (sunset) y reevaluaciones desde la sesión anterior",
     mov.length ? `${lista([pl(tipos[0][1],"alta"), pl(tipos[1][1],"retirada"), pl(tipos[2][1],"reevaluación","reevaluaciones")])} en el periodo${tipos[1][1]===0?"; ninguna retirada registrada":""}.` : TX("movimientos_vacio", "Sin movimientos reportados: no constan altas, retiradas ni reevaluaciones con fecha, motivo y decisor."),
-    mov.length ? miniTable([["Fecha",r=>nd(r.fecha)],["Tipo",r=>esc(r.tipo)],["Caso",r=>nd(r.caso)],["Motivo",r=>nd(r.motivo)],["Decisor",r=>nd(r.decisor)],["Sustituto",r=>nd(r.sustituto)]], mov) : placeholder("Cada retirada con fecha, motivo, decisor y sustituto; cada alta con fecha y órgano que la aprobó.", "seguimiento.movimientos[]"));
+    mov.length ? miniTable([["Fecha",r=>nd(r.fecha),"fecha"],["Tipo",r=>esc(r.tipo)],["Caso",r=>nd(r.caso)],["Motivo",r=>nd(r.motivo)],["Decisor",r=>nd(r.decisor)],["Sustituto",r=>nd(r.sustituto)]], mov) : placeholder("Cada retirada con fecha, motivo, decisor y sustituto; cada alta con fecha y órgano que la aprobó.", "seguimiento.movimientos[]"));
   // dos tramos por tier, calculados de las fechas por caso (mediana); si no hay fechas, lo que declare la compañía en agilidad
   //   idea → aprobación (agilidad para arrancar un caso)  y  aprobación → producción (agilidad para entregarlo)
   const tiers = ["bajo","medio","alto"];
@@ -1086,19 +1094,19 @@ function renderCartera(rows){
   const val = (calc, decl, t) => { const c = calc.find(x=>x.t===t); return c.med!=null ? {v:c.med, src:`${c.n} caso${c.n===1?"":"s"} con fechas`} : (decl[t]!=null ? {v:decl[t], src:"declarado por la compañía"} : {v:null, src:""}); };
   const tiles = tiers.map(t=>{ const a = val(cTia, tiaDecl, t), p = val(cTtp, ttpDecl, t); const tot = (a.v!=null && p.v!=null) ? a.v + p.v : null;
     return `<div class="tile"><div class="k">Riesgo ${t}</div>
-      <div class="v">${a.v==null?ND:a.v+" días"} <span class="d">idea → aprobación</span></div><div class="d">${a.src||"sin fecha de idea y aprobación"}</div>
-      <div class="v" style="margin-top:4px">${p.v==null?ND:p.v+" días"} <span class="d">aprobación → producción</span></div><div class="d">${p.src||"sin fecha de aprobación y producción"}${sla[t]!=null?` · SLA ${sla[t]} días`:""}</div>
-      ${tot!=null?`<div class="d" style="margin-top:4px">ciclo completo <b>${tot} días</b></div>`:""}</div>`; });
+      <div class="v">${a.v==null?ND:nf(a.v)+" días"} <span class="d">idea → aprobación</span></div><div class="d">${a.src||"sin fecha de idea y aprobación"}</div>
+      <div class="v" style="margin-top:4px">${p.v==null?ND:nf(p.v)+" días"} <span class="d">aprobación → producción</span></div><div class="d">${p.src||"sin fecha de aprobación y producción"}${sla[t]!=null?` · SLA ${nf(sla[t])} días`:""}</div>
+      ${tot!=null?`<div class="d" style="margin-top:4px">ciclo completo <b>${nf(tot)} días</b></div>`:""}</div>`; });
   const conTia = tiers.filter(t=>val(cTia,tiaDecl,t).v!=null), conTtp = tiers.filter(t=>val(cTtp,ttpDecl,t).v!=null);
   const sobreSla = tiers.filter(t=>{ const p = val(cTtp,ttpDecl,t).v; return p!=null && sla[t]!=null && p>sla[t]; });
   const partes = [];
-  if (conTia.length) partes.push(`de la idea a la aprobación: ${conTia.map(t=>`<b>${val(cTia,tiaDecl,t).v} días</b> (riesgo ${t})`).join(", ")}`);
-  if (conTtp.length) partes.push(`de la aprobación a producción: ${conTtp.map(t=>`<b>${val(cTtp,ttpDecl,t).v} días</b> (riesgo ${t})`).join(", ")}${sobreSla.length?`, por encima del SLA en riesgo ${lista(sobreSla)}`:""}`);
+  if (conTia.length) partes.push(`de la idea a la aprobación: ${conTia.map(t=>`<b>${nf(val(cTia,tiaDecl,t).v)} días</b> (riesgo ${t})`).join(", ")}`);
+  if (conTtp.length) partes.push(`de la aprobación a producción: ${conTtp.map(t=>`<b>${nf(val(cTtp,ttpDecl,t).v)} días</b> (riesgo ${t})`).join(", ")}${sobreSla.length?`, por encima del SLA en riesgo ${lista(sobreSla)}`:""}`);
   if (ag.backlog_sin_analisis!=null) partes.push(`backlog sin análisis de riesgo: <b>${nnum(ag.backlog_sin_analisis)}</b> casos`);
   const insightTtp = partes.length ? partes.join("; ") + "." : TX("agilidad_sin_fechas", "Sin fechas de idea, aprobación y producción por caso: no se puede medir ni la agilidad para arrancar casos ni la de entregarlos.");
   setCard("cart2", "Agilidad: idea → aprobación → producción por nivel de riesgo", `Mediana de días de cada tramo, un valor por tier (no un único KPI global). El primer tramo mide la capacidad de la compañía para arrancar casos; el segundo, para entregarlos${sinTier>0?` · ${sinTier} casos con fechas pero sin tier`:""}`, insightTtp,
    `<div class="tiles">${tiles.join("")}</div>
-   <div class="tiles" style="margin-top:10px"><div class="tile"><div class="k">Vía rápida</div><div class="v">${npct(ag.fast_track_pct)}</div><div class="d">iniciativas por fast-track</div></div><div class="tile"><div class="k">Aprobación a la primera</div><div class="v">${npct(ag.aprobacion_primera_pct)}</div><div class="d">sin devolución del comité</div></div><div class="tile"><div class="k">Ciclo del comité</div><div class="v">${ag.ciclo_comite_dias==null?ND:ag.ciclo_comite_dias+" días"}</div><div class="d">tiempo medio de decisión</div></div><div class="tile"><div class="k">Backlog sin análisis</div><div class="v">${nnum(ag.backlog_sin_analisis)}</div><div class="d">${ag.aging_backlog_dias==null?TX("backlog_sin_dato", "casos en producción sin análisis de riesgo"):"aging medio "+ag.aging_backlog_dias+" días"}</div></div></div>`);
+   <div class="tiles" style="margin-top:10px"><div class="tile"><div class="k">Vía rápida</div><div class="v">${npct(ag.fast_track_pct)}</div><div class="d">iniciativas por fast-track</div></div><div class="tile"><div class="k">Aprobación a la primera</div><div class="v">${npct(ag.aprobacion_primera_pct)}</div><div class="d">sin devolución del comité</div></div><div class="tile"><div class="k">Ciclo del comité</div><div class="v">${ag.ciclo_comite_dias==null?ND:nf(ag.ciclo_comite_dias)+" días"}</div><div class="d">tiempo medio de decisión</div></div><div class="tile"><div class="k">Backlog sin análisis</div><div class="v">${nnum(ag.backlog_sin_analisis)}</div><div class="d">${ag.aging_backlog_dias==null?TX("backlog_sin_dato", "casos en producción sin análisis de riesgo"):"aging medio "+nf(ag.aging_backlog_dias)+" días"}</div></div></div>`);
 }
 
 // ---- bloque 3: riesgo y cumplimiento
@@ -1129,7 +1137,7 @@ function renderRiesgo(rows){
   const conIA = inc.filter(x=>x.origen==="agente_atacante_externo"||x.origen==="agente_propio_manipulado").length;
   setCard("rie2", "Incidentes de IA y brechas de datos del periodo", "Deriva, errores, caídas y seguridad; origen (agente atacante, agente propio manipulado, proveedor); horas hasta detectar, contener y resolver; brechas de datos personales y notificación a la AEPD en 72 h (art. 33 RGPD) y DORA (" + REF("C-01") + ", " + REF("C-02") + ", " + REF("R-26") + ")",
     inc.length ? `${pl(inc.length,"incidente")} en el periodo (${lista(tiposInc.map(x=>TIPO_INC[x]||x))}); ${pl(conIA,"con un agente de IA como origen","con un agente de IA como origen")}; ${pl(brechas.length,"brecha de datos personales","brechas de datos personales")}${brechas.length?`, ${fuera72} sin notificar a la AEPD en 72 h`:""}; ${pl(fueraRto,"resuelto fuera del RTO comprometido","resueltos fuera del RTO comprometido")}.` : "Sin incidentes reportados: o no los hubo o no se registran. Tampoco consta si alguno fue una brecha de datos personales, si se notificó a la AEPD en 72 h ni si intervino un agente de IA. La AEPD recibió el 14-09-2026 la primera notificación de una brecha causada por un ataque ejecutado con un agente de IA.",
-    inc.length ? miniTable([["Fecha",r=>nd(r.fecha)],["Caso",r=>nd(r.caso)],["Tipo",r=>esc(r.tipo)],["Origen",r=>nd(r.origen, v=>esc(String(v).replace(/_/g," ")))],["Descripción",r=>nd(r.descripcion)+(r.vector?`<div class="nd" style="font-style:normal">vector: ${esc(r.vector)}</div>`:"")],["Detectar / contener / resolver",r=>`${fh(r.horas_detectar)} / ${fh(r.horas_contener)} / ${fh(r.resolucion_horas)}${r.rto_horas!=null?` (RTO ${r.rto_horas} h)`:""}`],["Brecha de datos",r=>r.brecha_datos_personales==null?ND:r.brecha_datos_personales?`<span class="badge ko">sí${r.afectados!=null?" · "+nnum(r.afectados)+" afectados":""}</span>`:"no"],["AEPD (72 h)",r=>!r.brecha_datos_personales?"—":r.notificacion_aepd_horas==null?'<span class="badge ko">sin notificar</span>':`<span class="badge ${r.notificacion_aepd_horas<=72?"ok":"ko"}">${r.notificacion_aepd_horas} h</span>`],["DORA",r=>r.notificacion_dora==null?ND:r.notificacion_dora?"notificado":"no"]], inc, 12) : placeholder("Fecha, caso, tipo, origen y vector; horas hasta detectar, contener y resolver frente al RTO; si hubo brecha de datos personales, afectados, horas hasta notificar a la AEPD y notificación DORA.", "seguimiento.incidentes[]"));
+    inc.length ? miniTable([["Fecha",r=>nd(r.fecha),"fecha"],["Caso",r=>nd(r.caso)],["Tipo",r=>esc(r.tipo)],["Origen",r=>nd(r.origen, v=>esc(String(v).replace(/_/g," ")))],["Descripción",r=>nd(r.descripcion)+(r.vector?`<div class="nd" style="font-style:normal">vector: ${esc(r.vector)}</div>`:"")],["Detectar / contener / resolver",r=>`${fh(r.horas_detectar)} / ${fh(r.horas_contener)} / ${fh(r.resolucion_horas)}${r.rto_horas!=null?` (RTO ${nf(r.rto_horas)} h)`:""}`],["Brecha de datos",r=>r.brecha_datos_personales==null?ND:r.brecha_datos_personales?`<span class="badge ko">sí${r.afectados!=null?" · "+nnum(r.afectados)+" afectados":""}</span>`:"no"],["AEPD (72 h)",r=>!r.brecha_datos_personales?"—":r.notificacion_aepd_horas==null?'<span class="badge ko">sin notificar</span>':`<span class="badge ${r.notificacion_aepd_horas<=72?"ok":"ko"}">${nf(r.notificacion_aepd_horas)} h</span>`],["DORA",r=>r.notificacion_dora==null?ND:r.notificacion_dora?"notificado":"no"]], inc, 12) : placeholder("Fecha, caso, tipo, origen y vector; horas hasta detectar, contener y resolver frente al RTO; si hubo brecha de datos personales, afectados, horas hasta notificar a la AEPD y notificación DORA.", "seguimiento.incidentes[]"));
   const agent = rows.filter(c=>/Agéntico|GenAI/.test(c.tags.tecnologia));
   const conMet = agent.filter(c=>(rc(c).operacion||{}).contencion_pct!=null), contMedia = conMet.length ? Math.round(sum(conMet.map(c=>rc(c).operacion.contencion_pct))/conMet.length) : null;
   const sinRT = agent.filter(c=>c.estado==="En uso" && !(rc(c).operacion||{}).red_teaming_fecha).length;
@@ -1140,7 +1148,7 @@ function renderRiesgo(rows){
 
 // ---- bloque 3 (cont.): exposición a ataques con IA e identidad de los agentes (R-07, R-26)
 const yn = v => v==null ? ND : (v ? "sí" : "no");
-const fh = v => v==null ? "—" : Number(v).toLocaleString("es-ES",{maximumFractionDigits:1}) + " h";
+const fh = v => v==null ? "—" : Number(v).toLocaleString("es-ES",{useGrouping:"always",maximumFractionDigits:1}) + " h";
 function medianF(a){ if(!a.length) return null; const s=[...a].sort((x,y)=>x-y); const m=Math.floor(s.length/2); return s.length%2?s[m]:(s[m-1]+s[m])/2; }
 const ratioN = (x,y)=> (x==null||y==null||!y) ? ND : `${nnum(x)} <span style="font-size:12px;color:var(--muted)">de ${nnum(y)}</span>`;
 function renderIaOfensiva(rows){
@@ -1198,7 +1206,7 @@ function renderAgentes(rows){
     : `Ninguno de los <b>${ag.length}</b> agentes y asistentes generativos tiene ficha de identidad y permisos${META().mostrar_refs===false ? "" : ` (${REF("R-07")} sigue sin evidencia)`}. Según el inventario, <b>${estW.length}</b> escriben en sistemas o gestionan pagos (${estW.map(c=>c.id).join(", ")||"ninguno"}): son los primeros a los que exigir mínimo privilegio, control de intención y validación humana.`;
   const acc = c => A(c).acciones!=null ? esc(A(c).acciones) : (c.detalle.acciones_estimadas_cati ? `<span class="nd">${esc(c.detalle.acciones_estimadas_cati)} (estimación ${CONSEJO()})</span>` : ND);
   setCard("agt", "Identidad, permisos e intención de los agentes", "Por agente: qué puede hacer, con qué credenciales y permisos, si un control externo al modelo autoriza cada acción (IBAC), si hay validación humana, botón de parada, trazabilidad y prueba de inyección de instrucciones (" + REF("R-07") + ", " + REF("G-01") + ", " + REF("G-04") + ", " + REF("G-06") + ", " + REF("P-08") + ")", insight,
-    miniTable([["Caso",r=>`<span class="id">${r.id}</span> ${esc(r.nombre)}`],["Estado",r=>badgeEstado(r.estado)],["Acciones",acc],["Identidades · credenciales",r=>`${nnum(A(r).identidades)}${A(r).tipo_credenciales?" · "+esc(A(r).tipo_credenciales):""}`],["Mínimo privilegio",r=>nd(A(r).minimo_privilegio)],["Rotación",r=>A(r).rotacion_secretos_dias==null?ND:A(r).rotacion_secretos_dias+" días"],["Control de intención",r=>nd(A(r).control_intencion)],["Validación humana",r=>yn(A(r).validacion_humana_escrituras)],["Parada",r=>yn(A(r).kill_switch)],["Registro de acciones",r=>npct(A(r).logging_acciones_pct),"n"],["Prueba de inyección",r=>nd(A(r).prueba_prompt_injection_fecha)],["Proveedor DORA",r=>P(r).criticidad==null&&P(r).en_registro==null?ND:`${yn(P(r).en_registro)}${P(r).criticidad?" · "+esc(P(r).criticidad):""}`]], [...estW, ...ag.filter(c=>!estW.includes(c))], 20));
+    miniTable([["Caso",r=>`<span class="id">${r.id}</span> ${esc(r.nombre)}`],["Estado",r=>badgeEstado(r.estado)],["Acciones",acc],["Identidades · credenciales",r=>`${nnum(A(r).identidades)}${A(r).tipo_credenciales?" · "+esc(A(r).tipo_credenciales):""}`],["Mínimo privilegio",r=>nd(A(r).minimo_privilegio)],["Rotación",r=>A(r).rotacion_secretos_dias==null?ND:nf(A(r).rotacion_secretos_dias)+" días"],["Control de intención",r=>nd(A(r).control_intencion)],["Validación humana",r=>yn(A(r).validacion_humana_escrituras)],["Parada",r=>yn(A(r).kill_switch)],["Registro de acciones",r=>npct(A(r).logging_acciones_pct),"n"],["Prueba de inyección",r=>nd(A(r).prueba_prompt_injection_fecha)],["Proveedor DORA",r=>P(r).criticidad==null&&P(r).en_registro==null?ND:`${yn(P(r).en_registro)}${P(r).criticidad?" · "+esc(P(r).criticidad):""}`]], [...estW, ...ag.filter(c=>!estW.includes(c))], 20));
 }
 
 // ---- bloque 4: adopción y capacidad
@@ -1238,7 +1246,7 @@ function renderHistorico(rows){
   // puestas en producción por año (fecha real de la compañía o año estimado por el consejo asesor)
   const porAnio = {}; rows.filter(c=>c.estado==="En uso"||c.estado==="Desenganchado").forEach(c=>{ const p = fechaProd(c); if (!p.f) return; const y = String(p.f).slice(0,4); porAnio[y] = porAnio[y] || {real:0, est:0}; porAnio[y][p.est?"est":"real"]++; });
   const anios = Object.keys(porAnio).sort(), maxA = Math.max(1, ...anios.map(y=>porAnio[y].real+porAnio[y].est));
-  const barras = anios.map(y=>`<div class="ybar"><span style="width:38px">${y}</span><i style="width:${Math.round(220*porAnio[y].real/maxA)}px"></i><i class="est" style="width:${Math.round(220*porAnio[y].est/maxA)}px"></i><span>${porAnio[y].real+porAnio[y].est}${porAnio[y].est?` <span class="nd">(${porAnio[y].est} con año estimado)</span>`:""}</span></div>`).join("");
+  const barras = anios.map(y=>`<div class="ybar"><span style="width:38px">${y}</span><i style="width:${Math.round(220*porAnio[y].real/maxA)}px"></i><i class="est" style="width:${Math.round(220*porAnio[y].est/maxA)}px"></i><span>${nf(porAnio[y].real+porAnio[y].est)}${porAnio[y].est?` <span class="nd">(${nf(porAnio[y].est)} con año estimado)</span>`:""}</span></div>`).join("");
   let comp = "", insight;
   if (f){
     const fx = f.casos||{};
@@ -1284,7 +1292,7 @@ function card(c){
       <div class="num link" data-act="coste"><div class="k">Coste anual</div><div class="v">${fmt(cost)}</div><div class="est">${pot&&r.adicional?`+ ${fmt(r.adicional)} de inversión adicional`:costeEsEstimado(c)?"estimado":"dato de la compañía"}</div></div>
       <div class="num"><div class="k">Neto anual</div><div class="v" style="color:${n<0?'var(--critical)':'var(--neto)'}">${fmt(n)}</div><div class="est">${fc?dl(n, pot?fc.neto_pot:fc.neto):""}</div></div>
     </div>
-    <div class="pot" data-act="pot"><div class="k"><span>Neto potencial <b>${fmt(r.neto_pot)}</b>${r.rendimiento_adicional!=null?` · ${r.rendimiento_adicional.toLocaleString("es-ES",{maximumFractionDigits:1})} € por € adicional`:""}</span><span>capturado ${ptot?pct(cap):"—"}</span></div><div class="bar"><i style="width:${cap*100}%"></i></div></div>
+    <div class="pot" data-act="pot"><div class="k"><span>Neto potencial <b>${fmt(r.neto_pot)}</b>${r.rendimiento_adicional!=null?` · ${r.rendimiento_adicional.toLocaleString("es-ES",{useGrouping:"always",maximumFractionDigits:1})} € por € adicional`:""}</span><span>capturado ${ptot?pct(cap):"—"}</span></div><div class="bar"><i style="width:${cap*100}%"></i></div></div>
   </div>`;
 }
 const openState = { comps: new Set(), units: new Set() };
@@ -1340,7 +1348,7 @@ const compOrden = (a,b)=> a===META().compania_principal?-1 : b===META().compania
 // ---- tabla
 let tsort = {k:"neto", d:-1};
 function renderTable(rows){
-  const f = fotoComp(), num = v => (v===""||v==null) ? "" : Number(v).toLocaleString("es-ES",{maximumFractionDigits:1});
+  const f = fotoComp(), num = v => (v===""||v==null) ? "" : Number(v).toLocaleString("es-ES",{useGrouping:"always",maximumFractionDigits:1});
   const cols = [["id","ID",c=>c.id],["nombre","Caso",c=>c.nombre],["que_es","Qué es y para qué se usa",c=>c.que_es||""],["compania","Compañía",c=>c.compania],["unidad","Unidad",c=>c.unidad],["estado","Estado",c=>c.estado],
     ["prod","Puesta en producción",c=>{ const p = fechaProd(c); return p.f ? (p.est ? p.f+" (año est.)" : p.f) : ""; }],["tecnologia","Tecnología",c=>c.tags.tecnologia],["riesgo","Reglamento IA (" + CONSEJO() + ")",c=>c.tags.riesgo],
     ["ctrl","Controles",c=>controlesCompletos(c)?"completos":"incompletos o sin dato"],
@@ -1383,14 +1391,14 @@ function openEco(c){
   const e = eco(c), inv = e.inversion||{}, r = R(c), H = HIST(), des = inv.desglose_recurrente||{}, vv = rc(c).valor_validado||{}, fp = fechaProd(c);
   const itRow = (lab, it) => `<tr><td>${lab}</td><td class="n">${nd(imp(it),fmt)}</td><td>${it?`${esc(ESTL(it.estado))} · ${esc(it.formula||"")}${it.hipotesis?` <span class="nd">· ${esc(it.hipotesis)}</span>`:""}`:ND}</td></tr>`;
   const tile = (k, v, d) => `<div class="tile"><div class="k">${k}</div><div class="v">${v}</div><div class="d">${d}</div></div>`;
-  const pb = r.payback_anios==null ? ND : (r.payback_anios < 1 ? Math.max(1, Math.round(r.payback_anios*12)) + " meses" : r.payback_anios.toLocaleString("es-ES",{maximumFractionDigits:1}) + " años");
+  const pb = r.payback_anios==null ? ND : (r.payback_anios < 1 ? Math.max(1, Math.round(r.payback_anios*12)) + " meses" : r.payback_anios.toLocaleString("es-ES",{useGrouping:"always",maximumFractionDigits:1}) + " años");
   const especial = e.nota_caso ? `<p><b>Matiz de este caso.</b> ${esc(e.nota_caso)}</p>` : "";
   const histRows = H.map(h=>{ const x = (h.casos||{})[c.id]; return `<tr><td>${fES(h.fecha)} <span class="nd">${esc(h.etiqueta||"")}</span></td><td>${x?esc(x.estado):"no existía"}</td><td class="n">${x?fmt(x.eficiencias):"—"}</td><td class="n">${x?fmt(x.retorno):"—"}</td><td class="n">${x?fmt(x.recurrente):"—"}</td><td class="n">${x?fmt(x.neto):"—"}</td><td class="n">${x?fmt(x.neto_pot):"—"}</td></tr>`; }).join("");
   open(`<h2>${esc(c.nombre)} · inversión, eficiencias y retorno</h2><div class="sub">${esc(c.compania)} · ${esc(c.unidad)} · ${badgeEstado(c.estado)} · puesta en producción ${fp.f?(fp.est?fp.f+" (año estimado)":fES(fp.f)):"—"}</div>
    ${c.que_es?`<p style="margin:8px 0 0">${esc(c.que_es)}</p>`:""}   <div class="tiles" style="margin-top:10px">
     ${tile("Neto anual actual", `<span style="color:${r.neto<0?'var(--critical)':'var(--neto)'}">${fmt(r.neto)}</span>`, "eficiencias materializadas + retorno − coste recurrente")}
     ${tile("Neto anual potencial", fmt(r.neto_pot), `plazo ${esc(e.plazo_potencial||"sin fijar")}`)}
-    ${tile("Inversión adicional", nd(r.adicional,fmt), r.rendimiento_adicional!=null?`${r.rendimiento_adicional.toLocaleString("es-ES",{maximumFractionDigits:1})} € de neto anual adicional por euro`:"sin estimar")}
+    ${tile("Inversión adicional", nd(r.adicional,fmt), r.rendimiento_adicional!=null?`${r.rendimiento_adicional.toLocaleString("es-ES",{useGrouping:"always",maximumFractionDigits:1})} € de neto anual adicional por euro`:"sin estimar")}
     ${tile("Construcción recuperada en", pb, "construcción / neto anual actual")}
     ${tile("Inversión acumulada estimada", fmt(invAcumEst(c)), "construcción + coste recurrente × años en uso")}
    </div>
@@ -1427,7 +1435,7 @@ function openFicha(c){
    <dt>Tier de riesgo</dt><dd>${nd(r.tier_riesgo)}</dd><dt>Clasificación Reglamento de IA</dt><dd>${nd(r.clasificacion_ria)}</dd><dt>Controles</dt><dd>${ctl}</dd>
    <dt>Valor validado</dt><dd>base ${nd(vv.base,fmt)} · objetivo ${nd(vv.objetivo,fmt)} · actual ${nd(vv.actual,fmt)} · atribución ${nd(vv.metodo_atribucion)} · validado por ${nd(vv.validado_por)} ${vv.fecha_validacion?"("+esc(vv.fecha_validacion)+")":""}</dd>
    <dt>Operación</dt><dd>contención ${npct(op.contencion_pct)} · derivación ${npct(op.derivacion_pct)} · guardarraíl ${npct(op.activaciones_guardarrail_pct)} · QA humano ${npct(op.qa_humano_pct)} · STP ${npct(op.stp_pct)} · precisión ${npct(op.precision_pct)} · AUC ${nd(op.auc)} · PSI ${nd(op.psi)} · evals ${nd(op.evals_fecha)} · red teaming ${nd(op.red_teaming_fecha)} · incidentes 12 m ${nd(op.incidentes_12m)}</dd>
-   <dt>Agente: identidad y permisos</dt><dd>acciones ${nd((r.agente||{}).acciones)}${d.acciones_estimadas_cati?` (estimación ${CONSEJO()}: ${esc(d.acciones_estimadas_cati)})`:""} · identidades ${nnum((r.agente||{}).identidades)} · credenciales ${nd((r.agente||{}).tipo_credenciales)} · mínimo privilegio ${nd((r.agente||{}).minimo_privilegio)} · rotación ${(r.agente||{}).rotacion_secretos_dias==null?ND:(r.agente||{}).rotacion_secretos_dias+" días"} · control de intención (IBAC) ${nd((r.agente||{}).control_intencion)} · validación humana de escrituras ${yn((r.agente||{}).validacion_humana_escrituras)} · botón de parada ${yn((r.agente||{}).kill_switch)} · acciones registradas ${npct((r.agente||{}).logging_acciones_pct)} · prueba de inyección ${nd((r.agente||{}).prueba_prompt_injection_fecha)}</dd>
+   <dt>Agente: identidad y permisos</dt><dd>acciones ${nd((r.agente||{}).acciones)}${d.acciones_estimadas_cati?` (estimación ${CONSEJO()}: ${esc(d.acciones_estimadas_cati)})`:""} · identidades ${nnum((r.agente||{}).identidades)} · credenciales ${nd((r.agente||{}).tipo_credenciales)} · mínimo privilegio ${nd((r.agente||{}).minimo_privilegio)} · rotación ${(r.agente||{}).rotacion_secretos_dias==null?ND:nf((r.agente||{}).rotacion_secretos_dias)+" días"} · control de intención (IBAC) ${nd((r.agente||{}).control_intencion)} · validación humana de escrituras ${yn((r.agente||{}).validacion_humana_escrituras)} · botón de parada ${yn((r.agente||{}).kill_switch)} · acciones registradas ${npct((r.agente||{}).logging_acciones_pct)} · prueba de inyección ${nd((r.agente||{}).prueba_prompt_injection_fecha)}</dd>
    <dt>Proveedor en el registro DORA</dt><dd>en el registro ${yn((r.proveedor_dora||{}).en_registro)} · criticidad ${nd((r.proveedor_dora||{}).criticidad)} · estrategia de salida ${nd((r.proveedor_dora||{}).estrategia_salida)} · incidentes del proveedor 12 m ${nd((r.proveedor_dora||{}).incidentes_proveedor_12m)}</dd></dl>
    <h3>Observaciones del ${CONSEJO()}</h3><p style="margin:0">${esc(c.descripcion)}</p>`);
 }
