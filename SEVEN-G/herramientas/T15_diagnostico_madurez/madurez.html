@@ -78,6 +78,16 @@ select,input[type=text],input[type=date],input[type=number],textarea{background:
 textarea{width:100%;min-height:56px}
 label{font-weight:600;font-size:13px;color:var(--tinta-2)}
 .campo{display:flex;flex-direction:column;gap:3px;min-width:0}
+/* rejillas de campos: en cada fila, las cajas a la misma altura aunque una etiqueta ocupe dos líneas o un campo lleve nota debajo */
+.rejilla>.campo>label{flex:1 0 auto;display:flex;align-items:flex-end}
+@supports (grid-template-rows:subgrid){
+  .rejilla>.campo{display:grid;grid-row:span 3;grid-template-rows:subgrid;row-gap:0;align-content:start}
+  .rejilla>.campo>label{align-self:end;margin-bottom:3px}
+  .rejilla>.campo>:nth-child(2){align-self:start}
+  .rejilla>.campo>:nth-child(3){margin-top:3px}
+}
+input.numero{text-align:right;font-variant-numeric:tabular-nums}
+input[aria-invalid="true"]{border-color:var(--claret);background:var(--ko-bg)}
 .campo input,.campo select,.campo textarea{width:100%}
 .rejilla{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:10px 14px}
 .fila{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
@@ -593,7 +603,27 @@ function toast(m){ const e=document.getElementById('toast'); e.textContent=m; e.
 function guardar(){ if(!lsSet(LS_DATOS, JSON.stringify(D))) toast(t('no_guardado')); lsSet(LS_UI, JSON.stringify(UI)); if(window.SevengDatos) SevengDatos.guardado(); }
 function cargarDemo(){ return JSON.parse(DEMO_TXT); }
 function valido(x){ return x && typeof x==='object' && Array.isArray(x.evaluaciones); }
-function nf(x, dec){ return new Intl.NumberFormat(lang==='en'?'en-GB':'es-ES',{maximumFractionDigits:dec??0, minimumFractionDigits:dec??0}).format(x); }
+/* Números (petición del autor): todo número en pantalla lleva separador de miles, también los de cuatro cifras (Intl no agrupa «8000» en
+   es-ES sin useGrouping:'always'); los campos numéricos son de texto con el número formateado y se leen con parseNum. Los ficheros
+   exportados (JSON y CSV) y los atributos data-* llevan el número puro. */
+const NF_CACHE = {};
+function nfFmt(min, max){ const loc = lang==='en'?'en-GB':'es-ES', k = loc+'|'+min+'|'+max; if(!NF_CACHE[k]){ const o = {minimumFractionDigits:min, maximumFractionDigits:max}; try{ NF_CACHE[k] = new Intl.NumberFormat(loc, Object.assign({useGrouping:'always'}, o)); }catch(e){ NF_CACHE[k] = new Intl.NumberFormat(loc, o); } } return NF_CACHE[k]; }
+function agrupar(s){ const m = lang==='en'?',':'.'; return String(s).replace(/^([^\d]*)(\d{4,})/, (x, p, d) => p+d.replace(/\B(?=(\d{3})+$)/g, m)); }
+function nf(x, dec){ return agrupar(nfFmt(dec??0, dec??0).format(x)); }
+/* valor de un campo numérico: número del JSON (puro) → texto con separadores del idioma */
+function fmtIn(v){ if(v===null || v===undefined || v==='') return ''; const x = Number(v); return isFinite(x) ? agrupar(nfFmt(0, 10).format(x)) : String(v); }
+/* texto escrito → número. ES: «.» miles y «,» decimal; EN: «,» miles y «.» decimal; admite también el número sin separadores, espacios,
+   «€» o «%». Un único separador del otro tipo cuenta como decimal salvo que forme grupos de tres cifras («12.5» = 12,5 en ES; «1.500» = 1500). */
+function parseNum(s){
+  if(s===null || s===undefined) return null; if(typeof s==='number') return isFinite(s) ? s : null;
+  s = String(s).replace(/[\s  €%]/g, '').replace(/[−–]/g, '-'); if(s==='') return null;
+  const dec = lang==='en'?'.':',', mil = lang==='en'?',':'.', grupos = new RegExp('^[-+]?\\d{1,3}(\\'+mil+'\\d{3})+$');
+  if(s.includes(dec) && s.includes(mil)){ if(s.lastIndexOf(mil) > s.lastIndexOf(dec)) return null; s = s.split(mil).join('').replace(dec, '.'); }
+  else if(s.includes(mil)){ s = grupos.test(s) ? s.split(mil).join('') : (s.split(mil).length===2 ? s.replace(mil, '.') : null); if(s===null) return null; }
+  else if(s.includes(dec)){ if(s.split(dec).length>2) return null; s = s.replace(dec, '.'); }
+  if(!/^[-+]?(\d+\.?\d*|\.\d+)$/.test(s)) return null;
+  const x = Number(s); return isFinite(x) ? x : null;
+}
 function pct(x, dec){ return x==null||!isFinite(x) ? t('sin_dato') : nf(x, dec??0)+(lang==='en'?'%':' %'); }
 function fF(s){ if(!s) return ''; const [y,m,d]=String(s).split('-'); return lang==='en' ? d+'/'+m+'/'+y : d+'-'+m+'-'+y; }
 function hoy(){ return new Date().toISOString().slice(0,10); }
@@ -706,7 +736,7 @@ function muestraDesdeT01(ev){
   for(const I of act){ if(ids.length>=mn) break; if(!ids.includes(I.id)) ids.push(I.id); }
   const resto = ids.filter(id=>!estratos.some(x=>x.id===id));
   ev.muestras = ev.muestras||[]; ev.muestras.push({preguntas:'', poblacion:act.length, tamano:ids.length, seleccion:t('muestra_t01',{o:(reg.meta||{}).organizacion||'', f:fF((reg.meta||{}).fecha_referencia||'')})+' '+estratos.map(x=>x.id+' ('+x.et+')').join(', ')+(resto.length?' + '+resto.join(', '):'')});
-  guardar(); rerender(); toast(t('ok_muestra',{n:ids.length, p:act.length}));
+  guardar(); rerender(); toast(t('ok_muestra',{n:nf(ids.length), p:nf(act.length)}));
 }
 function avisoT01Local(ev){
   const reg = registroT01Local(), r14 = resumenT14Local();
@@ -813,7 +843,7 @@ function bloquesEdicion(ev){
     campo('m-per','perimetro','perimetro',ev.perimetro,'area',1)+campo('m-pro','promotor','promotor',ev.promotor)+campo('m-eva','evaluador','evaluador_principal',ev.evaluador_principal)+
     campo('m-equ','equipo','equipo',ev.equipo)+campo('m-ver','verificador','verificador',ev.verificador)+campo('m-org','organo','organo_aprobacion',ev.organo_aprobacion)+campo('m-fap','fecha_apr','fecha_aprobacion',ev.fecha_aprobacion,'date')+
     campo('m-lim','limitaciones','limitaciones',ev.limitaciones,'area',1)+'</div></details>';
-  h += '<details><summary>'+esc(t('b_pesos'))+'</summary><p class="ayuda">'+esc(t('pesos_ayuda'))+'</p><div class="rejilla">'+DIMS.map(d=>'<div class="campo"><label for="w-'+d.codigo+'">'+esc(dimNombre(d.codigo))+' · '+esc(t('cuota'))+' '+pct(r.cuotas[d.codigo],1)+'</label><input type="number" min="0" step="any" id="w-'+d.codigo+'" data-peso="'+d.codigo+'" value="'+esc((ev.pesos||{})[d.codigo]??1)+'"></div>').join('')+'</div><p><button type="button" data-acc="pesos-iguales">'+esc(t('pesos_iguales'))+'</button></p></details>';
+  h += '<details><summary>'+esc(t('b_pesos'))+'</summary><p class="ayuda">'+esc(t('pesos_ayuda'))+'</p><div class="rejilla">'+DIMS.map(d=>'<div class="campo"><label for="w-'+d.codigo+'">'+esc(dimNombre(d.codigo))+' · '+esc(t('cuota'))+' '+pct(r.cuotas[d.codigo],1)+'</label><input type="text" inputmode="decimal" autocomplete="off" class="numero" id="w-'+d.codigo+'" data-peso="'+d.codigo+'" data-tp="num" value="'+esc(fmtIn((ev.pesos||{})[d.codigo]??1))+'"></div>').join('')+'</div><p><button type="button" data-acc="pesos-iguales">'+esc(t('pesos_iguales'))+'</button></p></details>';
   // entrevistas
   const cob = {}; for(const d of DIMS) cob[d.codigo]=0; for(const e of ev.entrevistas||[]) for(const c of String(e.dimensiones||'').match(/D[1-7]/g)||[]) cob[c]++;
   const pocas = DIMS.filter(d=>cob[d.codigo]<2).map(d=>d.codigo);
@@ -843,7 +873,7 @@ function tablaArr(ev, arr, cols, extra){
       else if(tp==='bool') c = '<select '+at+' data-tp="bool"><option value="0"'+(f[k]?'':' selected')+'>'+esc(t('no'))+'</option><option value="1"'+(f[k]?' selected':'')+'>'+esc(t('si'))+'</option></select>';
       else if(tp==='dim') c = '<select '+at+'>'+DIMS.map(d=>'<option value="'+d.codigo+'"'+(f[k]===d.codigo?' selected':'')+'>'+d.codigo+'</option>').join('')+'</select>';
       else if(tp==='estado') c = '<select '+at+'>'+['abierta','en_curso','cerrada'].map(x=>'<option value="'+x+'"'+(f[k]===x?' selected':'')+'>'+esc(t('e_'+x))+'</option>').join('')+'</select>';
-      else c = '<input type="'+tp+'" '+at+(tp==='number'?' min="0" data-tp="num"':'')+' value="'+esc(f[k]??'')+'">';
+      else c = tp==='number' ? '<input type="text" inputmode="decimal" autocomplete="off" class="numero" '+at+' data-tp="num" value="'+esc(fmtIn(f[k]))+'">' : '<input type="'+tp+'" '+at+' value="'+esc(f[k]??'')+'">';
       return '<td data-l="'+esc(t(et))+'">'+c+(k==='tamano' && extra ? extra(f) : '')+'</td>'; }).join('')+
       '<td><button type="button" data-acc="quitar" data-arr="'+arr+'" data-i="'+i+'">'+esc(t('quitar'))+'</button></td></tr>';
   });
@@ -930,7 +960,7 @@ function vistaInforme(){
 }
 function tablaSimple(filas, cols){
   filas = filas||[]; if(!filas.length) return '<p class="ayuda">'+esc(t('ninguno'))+'</p>';
-  return '<div class="tblx"><table class="tabla"><thead><tr>'+cols.map(c=>'<th>'+esc(t(c[1]))+'</th>').join('')+'</tr></thead><tbody>'+filas.map(f=>'<tr>'+cols.map(([k,,fn])=>'<td>'+esc(fn?fn(f[k]):(f[k]??''))+'</td>').join('')+'</tr>').join('')+'</tbody></table></div>';
+  return '<div class="tblx"><table class="tabla"><thead><tr>'+cols.map(c=>'<th>'+esc(t(c[1]))+'</th>').join('')+'</tr></thead><tbody>'+filas.map(f=>'<tr>'+cols.map(([k,,fn])=>'<td>'+esc(fn?fn(f[k]):(typeof f[k]==='number'?nf(f[k],Number.isInteger(f[k])?0:2):(f[k]??'')))+'</td>').join('')+'</tr>').join('')+'</tbody></table></div>';
 }
 function comparacionHTML(ev){
   const ant = anteriorVerificada(ev);
@@ -962,7 +992,7 @@ function vistaGuia(){
   h += '<h2>'+esc(t('g_entrev'))+'</h2><ul>'+G.entrev.map(x=>'<li>'+x+'</li>').join('')+'</ul>';
   h += '<h2>'+esc(t('g_evid'))+'</h2><p>'+G.valida+'</p><div class="tblx"><table class="tabla resp"><thead><tr><th>'+esc(t('respuesta'))+'</th><th></th></tr></thead><tbody>'+G.resp.map(r=>'<tr><td data-l="'+esc(t('respuesta'))+'"><b>'+esc(r[0])+'</b></td><td data-l="">'+esc(r[1])+'</td></tr>').join('')+'</tbody></table></div>';
   h += '<h2>'+esc(t('g_muestras'))+'</h2><p>'+G.muestras+'</p><div class="tblx"><table class="tabla" style="max-width:420px"><thead><tr><th>'+esc(t('g_pob'))+'</th><th class="num">'+esc(t('g_calc'))+'</th></tr></thead><tbody>'+G.tam.map(r=>'<tr><td>'+esc(r[0])+'</td><td class="num">'+esc(r[1])+'</td></tr>').join('')+'</tbody></table></div><p>'+G.verif+'</p>';
-  h += '<div class="fila sin-imprimir"><label for="g-pob">'+esc(t('g_pob'))+'</label><input type="number" min="1" id="g-pob" data-ui="pob" style="width:120px"><output id="g-out" for="g-pob" class="et info"></output></div>';
+  h += '<div class="fila sin-imprimir"><label for="g-pob">'+esc(t('g_pob'))+'</label><input type="text" inputmode="numeric" autocomplete="off" class="numero" id="g-pob" data-ui="pob" data-tp="num" style="width:120px"><output id="g-out" for="g-pob" class="et info"></output></div>';
   h += '<h2>'+esc(t('g_dims'))+'</h2>';
   for(const d of DIMS){
     h += '<details><summary>'+esc(dimNombre(d.codigo))+'</summary><p><i>'+esc(L(d.pregunta))+'</i></p><p><b>'+esc(t('alcance'))+'.</b> '+esc(L(d.alcance))+'</p><p><b>'+esc(t('entrevistados'))+':</b> '+esc(L(d.entrevistados))+'</p>'+
@@ -1023,12 +1053,13 @@ document.addEventListener('input', ev => {
   if(el.dataset.q && el.tagName==='TEXTAREA'){ setResp(e, el.dataset.q, el.dataset.f, el.value); guardar(); return; }
   if(el.dataset.ev && !el.dataset.re){ e[el.dataset.ev] = el.value; guardar(); refrescarResultado(); return; }
   if(el.dataset.msg){ e.mensajes = e.mensajes || []; e.mensajes[Number(el.dataset.msg)] = el.value; guardar(); return; }
-  if(el.dataset.arr && el.tagName!=='SELECT'){ const f = e[el.dataset.arr][Number(el.dataset.i)]; f[el.dataset.k] = el.dataset.tp==='num' ? (el.value===''?null:Number(el.value)) : el.value; guardar(); return; }
+  if(el.dataset.arr && el.tagName!=='SELECT'){ const f = e[el.dataset.arr][Number(el.dataset.i)]; f[el.dataset.k] = el.dataset.tp==='num' ? parseNum(el.value) : el.value; guardar(); return; }
   if(el.dataset.lect==='referencia_indice'){ e.lectura = e.lectura||{}; e.lectura.referencia_indice = el.value; guardar(); refrescarResultado(); return; }
-  if(el.dataset.peso){ e.pesos = Object.assign(pesosIguales(), e.pesos||{}); e.pesos[el.dataset.peso] = el.value==='' ? 0 : Number(el.value); guardar(); refrescarResultado(); return; }
-  if(el.dataset.ui==='pob'){ const n = tamMinimo(el.value); document.getElementById('g-out').textContent = n==null ? '' : t('g_res',{n: Number(el.value)<=5 ? t('todas')+' ('+n+')' : n}); return; }
+  if(el.dataset.peso){ e.pesos = Object.assign(pesosIguales(), e.pesos||{}); e.pesos[el.dataset.peso] = parseNum(el.value) ?? 0; guardar(); refrescarResultado(); return; }
+  if(el.dataset.ui==='pob'){ const pob = parseNum(el.value), n = tamMinimo(pob); document.getElementById('g-out').textContent = n==null ? '' : t('g_res',{n: pob<=5 ? t('todas')+' ('+nf(n)+')' : nf(n)}); return; }
 });
 document.addEventListener('change', ev => {
+  if(ev.target.tagName==='INPUT' && ev.target.dataset.tp==='num'){ const el0 = ev.target, x = parseNum(el0.value); if(x!=null) el0.value = fmtIn(x); el0.setAttribute('aria-invalid', (x==null && el0.value.trim()!=='') ? 'true' : 'false'); }
   const el = ev.target, e = evSel();
   if(el.id==='sel-lang'){ lang = UI.lang = el.value; guardar(); render(); return; }
   if(el.id==='sel-tema'){ UI.tema = el.value; temaSitioGuardar(el.value); aplicarTema(); guardar(); return; }

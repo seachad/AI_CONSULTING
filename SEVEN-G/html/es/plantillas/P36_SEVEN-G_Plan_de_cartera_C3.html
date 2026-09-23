@@ -1606,13 +1606,15 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
     if (objetivo) { for (var k = 0; k < marcas.length; k++) { if (objetivo.compareDocumentPosition(marcas[k]) & Node.DOCUMENT_POSITION_FOLLOWING) { ini = k; break; } } }
     ir(ini);
   }
+  // cifras con separador de miles en todo el sitio, también en 4 cifras (es: 1.234; en: 1,234); toLocaleString('es') no agrupa las de 4 cifras
+  function fmtN(n) { return String(n).replace(/\B(?=(\d{3})+(?!\d))/g, document.documentElement.lang === 'en' ? ',' : '.'); }
   function ir(i) {
     if (!marcas.length) return;
     if (indice >= 0 && marcas[indice]) marcas[indice].classList.remove('actual');
     indice = (i + marcas.length) % marcas.length;
     marcas[indice].classList.add('actual');
     marcas[indice].scrollIntoView({ block: 'center', behavior: 'smooth' });
-    cuenta.textContent = (indice + 1) + ' / ' + marcas.length; botones();
+    cuenta.textContent = fmtN(indice + 1) + ' / ' + fmtN(marcas.length); botones();
   }
 
   /* en todas las páginas: índice de texto del sitio (busqueda.json, generado por busqueda.ps1 junto a codigos.js), descargado la primera vez que se usa.
@@ -1680,8 +1682,8 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
         cuenta.textContent = tx('Sin resultados');
         var p0 = document.createElement('p'); p0.textContent = tx('Sin resultados'); listaSitio.appendChild(p0);
       } else {
-        cuenta.textContent = String(res.length);
-        var pg = document.createElement('p'); pg.className = 'grupo'; pg.textContent = tx('{n} coincidencias en {p} p&#225;ginas').replace('{n}', res.length).replace('{p}', nPag); listaSitio.appendChild(pg);
+        cuenta.textContent = fmtN(res.length);
+        var pg = document.createElement('p'); pg.className = 'grupo'; pg.textContent = tx('{n} coincidencias en {p} p&#225;ginas').replace('{n}', fmtN(res.length)).replace('{p}', fmtN(nPag)); listaSitio.appendChild(pg);
         resSitio.forEach(function (r, k) {
           var a = document.createElement('a'); a.href = destinoSitio(r); a.setAttribute('role', 'option'); if (k === 0) a.className = 'activo';
           var b = document.createElement('b'); b.textContent = r.p.t; a.appendChild(b);
@@ -1689,7 +1691,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
           var s = document.createElement('span'); fragmento(s, r, q); a.appendChild(s);
           listaSitio.appendChild(a);
         });
-        if (res.length > resSitio.length) { var p1 = document.createElement('p'); p1.textContent = tx('Se muestran las {n} primeras; afine el t&#233;rmino para ver el resto.').replace('{n}', resSitio.length); listaSitio.appendChild(p1); }
+        if (res.length > resSitio.length) { var p1 = document.createElement('p'); p1.textContent = tx('Se muestran las {n} primeras; afine el t&#233;rmino para ver el resto.').replace('{n}', fmtN(resSitio.length)); listaSitio.appendChild(p1); }
       }
       colocarLista(); listaSitio.hidden = false;
     }).catch(function () {
