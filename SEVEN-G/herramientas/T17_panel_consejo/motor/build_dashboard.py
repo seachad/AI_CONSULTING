@@ -1454,7 +1454,7 @@ document.getElementById("sort").onchange = e=>{ state.sort = e.target.value; ren
 // el botón vive dentro del <summary> de los filtros: se evita que su clic pliegue o despliegue el panel
 document.getElementById("reset").onclick = e=>{ e.preventDefault(); e.stopPropagation(); state.q=""; document.getElementById("q").value=""; DIMS.forEach(([k])=>state.filters[k].clear()); render(); };
 document.getElementById("collapse").onclick = ()=>{ const all=[...document.querySelectorAll("details.comp, details.unit, details.cdet")]; const anyOpen = all.some(d=>d.open); all.forEach(d=>d.open=!anyOpen); };
-// «?» de cada tarjeta: qué muestra y por qué importa (navegacion.ayuda_tarjetas, D108); se abre en la misma ventana modal que las fichas
+// «?» de cada tarjeta: qué muestra y por qué importa (navegacion.ayuda_tarjetas, D110); se abre en la misma ventana modal que las fichas
 if (NAV.ayuda_tarjetas) vigilarAyudas(document.querySelector("main"), open);
 // desde un teléfono, el panel completo cede el paso al móvil (navegacion.redirigir_movil); «?completo» lo evita. Solo por http: un fichero suelto no tiene al lado el panel móvil
 (()=>{ try { const nv = META().navegacion || {}, mv = META().panel_movil; if (nv.redirigir_movil && mv && location.protocol.startsWith("http") && !/[?&]completo\b/.test(location.search) && Math.min(screen.width || 9999, innerWidth) <= 760) location.replace(mv); } catch (e) {} })();
