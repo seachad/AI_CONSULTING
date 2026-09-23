@@ -636,8 +636,17 @@ try {
     }
     $port = [IO.File]::ReadAllText((Join-Path $repo $(if ($lang -eq 'es') { 'index.html' } else { 'en\index.html' })))
     if ($port -notmatch "<a class=""boton primario"" href=""[^""]*SEVEN-G/html/$lang/entrada/index\.html""") { Mal "portada [$lang]: el botón «Qué es SEVEN-G» no lleva a la entrada ligera"; $malEnt++ }
+    # D108: tarjetas pequeñas con «?» e inventario reducido de casos, con los mismos casos (y etapas) que el panel de ejemplo
+    if ([regex]::Matches($tEnt, '<details class="ayuda">').Count -lt 4) { Mal "entrada [$lang]: el panel del consejo no lleva las tarjetas con «?» (D108)"; $malEnt++ }
+    $casosPanel = (Get-Content (Join-Path $repo 'SEVEN-G\herramientas\T17_panel_consejo\ejemplo\salida\t01_dashboard_data.json') -Raw -Encoding utf8 | ConvertFrom-Json -Depth 64).casos
+    $filasInv = [regex]::Matches($tEnt, '<tr data-caso="([^"]+)">.*?<span class="etapa [^"]*">([^<]+)</span>')
+    $idsInv = @($filasInv | ForEach-Object { $_.Groups[1].Value } | Sort-Object)
+    if (($idsInv -join ',') -ne (@($casosPanel.id | Sort-Object) -join ',')) { Mal "entrada [$lang]: el inventario de casos no coincide con los casos del panel de ejemplo (actualizar la tabla de #panel, D108)"; $malEnt++ }
+    elseif ($lang -eq 'es') {
+      foreach ($f in $filasInv) { $c = $casosPanel | Where-Object id -eq $f.Groups[1].Value; if ($c.estado -ne $f.Groups[2].Value) { Mal "entrada [es]: $($c.id) figura como «$($f.Groups[2].Value)» y en el panel está «$($c.estado)» (D108)"; $malEnt++ } }
+    }
   }
-  if (-not $malEnt) { Ok 'entrada ligera en ES y EN, igual a su fuente, enlazada desde la portada y con paso al documento 00, al registro y a los paneles' }
+  if (-not $malEnt) { Ok 'entrada ligera en ES y EN, igual a su fuente, enlazada desde la portada y con paso al documento 00, al registro y a los paneles; inventario de casos igual al panel de ejemplo' }
 
   # ---- 14. avisos plegados por defecto (D93): en los documentos (plegados en pantalla, completos en el PDF), la portada y los paneles
   Write-Host '14. Avisos plegados por defecto'
