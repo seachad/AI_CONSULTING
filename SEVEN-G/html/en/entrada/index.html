@@ -99,11 +99,57 @@
     <div class="vitrina">
       <div class="desliza"><img class="captura" src="../../entrada/SEVEN-G_panel.png" width="1920" height="1050" alt="Board dashboard (screenshot in Spanish): 15 cases, 2.4 million annual cost, 7.3 total return, 4.8 annual net and 36% validated value"></div>
       <p class="pie solo-movil-b">Swipe the image to see all of it.</p>
-      <ul class="tres">
-        <li><b>Annual net of the portfolio</b>Costs, efficiencies and return, with and without cross-cutting platforms.</li>
-        <li><b>Traffic lights nobody can dress up</b>Validated value, regulatory classification and complete controls.</li>
-        <li><b>On your phone too</b>A pocket version to take into the board session.</li>
+      <ul class="tres mini">
+        <li><b>Annual net of the portfolio</b>Costs, efficiencies and return, with and without cross-cutting platforms.
+          <details class="ayuda"><summary title="More: what it shows and what the board can decide" aria-label="More information">?</summary>
+            <p><b>What it shows.</b> Investment, recurring costs, efficiencies and return for each case and the annual net that remains; what is already being obtained versus what could be, and where additional investment would pay off most. Also agility: days from idea to approval and from approval to production, by risk level.</p>
+            <p><b>What the board can decide.</b> Reinforce what contributes most, rethink or retire negative nets with no strategic reason and steer the budget towards the units with the highest return; unblock stalled cases and see whether the bottleneck is approving (governance) or delivering (capacity).</p>
+          </details></li>
+        <li><b>Traffic lights nobody can dress up</b>Validated value, regulatory classification and complete controls.
+          <details class="ayuda"><summary title="More: what it shows and what the board can decide" aria-label="More information">?</summary>
+            <p><b>How far to trust the figures.</b> How much of the value is validated by management control and how much released capacity has not yet become real savings. The board does not accept unvalidated benefits and asks for a plan to realise that capacity.</p>
+            <p><b>What risk is being taken.</b> Each case's classification under the AI Act (the company's view versus the advisory board's), incidents and breaches with their response times and notifications, controls over agents and assistants, and exposure to AI-enabled attacks. The board requires pending classifications, puts conditions on high-risk cases and sets its risk appetite.</p>
+            <p><b>Whether the information is enough.</b> The data-quality light flags what the company does not yet report, so it can be requested with a deadline.</p>
+          </details></li>
+        <li><b>On your phone too</b>A pocket version to take into the board session.
+          <details class="ayuda"><summary title="More: how to move around the dashboard" aria-label="More information">?</summary>
+            <p><b>Six views.</b> Portfolio and value, Funnel and life cycle, History and adoption, Risk and compliance, Inventory and Glossary; everything can be filtered by company, unit, status or type of case, and each block shows the conclusion first and the detail on a click.</p>
+            <p><b>From one session to the next.</b> A snapshot of the dashboard is saved at the close of each session: it compares how value, costs and cases evolve and measures whether what was launched is really used. The board reinforces training where use is low, retires what is not used and checks that commitments move forward.</p>
+          </details></li>
       </ul>
+      <div class="inventario">
+        <div class="inv-cab">
+          <h3>The portfolio, case by case</h3>
+          <details class="ayuda"><summary title="More: how to read the inventory and what the board can decide" aria-label="More information">?</summary>
+            <p><b>How to read it.</b> Every case, ungrouped. In use: actual annual cost and net and the share of its value validated by management control; in progress: the forecast ("fcst."), which does not add to the net; "no data" is never zero. In the dashboard, the inventory is grouped by company and unit with totals, and each case has a card: what it is, what it is for, its status and its figures.</p>
+            <p><b>What the board can decide.</b> Spot duplicates that could be merged, check the balance between cost savings, growth and service, and choose which cases are rolled out across the organisation.</p>
+            <p><b>In short.</b> The board moves from receiving reports to asking questions with data: how much does it contribute?, how much is validated?, what has stalled and why?, what risk are we taking?, what has changed since the last session? What it decides is kept in the recommendations register, to follow it up.</p>
+          </details>
+        </div>
+        <div class="inv-tabla">
+        <table>
+          <thead><tr><th>Case</th><th>Unit</th><th>Stage</th><th>Ambition</th><th>AI Act</th><th class="num">Annual cost</th><th class="num">Annual net</th><th class="num">Validated</th></tr></thead>
+          <tbody>
+          <tr data-caso="IA-2025-002"><td><small>IA-2025-002</small>Customer service conversational assistant</td><td>Customer service</td><td><span class="etapa uso">In use</span></td><td>Augment</td><td>Transparency (Art. 50)</td><td class="num">€920k</td><td class="num"><b>€3.53M</b></td><td class="num neg">0%</td></tr>
+          <tr data-caso="IA-2025-001"><td><small>IA-2025-001</small>Supplier invoice classification and validation</td><td>Finance</td><td><span class="etapa uso">In use</span></td><td>Optimise</td><td>Minimal risk</td><td class="num">€131k</td><td class="num"><b>€1.02M</b></td><td class="num">100%</td></tr>
+          <tr data-caso="IA-2025-003"><td><small>IA-2025-003</small>Demand forecasting for warehouse replenishment</td><td>Logistics</td><td><span class="etapa uso">In use</span></td><td>Optimise</td><td>Minimal risk</td><td class="num">€228k</td><td class="num"><b>€732k</b></td><td class="num">100%</td></tr>
+          <tr data-caso="IA-2025-007"><td><small>IA-2025-007</small>Generative assistant in the corporate office suite</td><td>Several units (cross-cutting)</td><td><span class="etapa uso">In use</span></td><td>Optimise</td><td>Minimal risk</td><td class="num">€1.16M</td><td class="num neg"><b>−€440k</b></td><td class="num">75%</td></tr>
+          <tr data-caso="IA-2026-004"><td><small>IA-2026-004</small>Visual quality control on the packaging line</td><td>Operations</td><td><span class="etapa curso">In development</span></td><td>Optimise</td><td>Minimal risk</td><td class="num">€140k <small>fcst.</small></td><td class="num"><b>€1.24M</b> <small>fcst.</small></td><td class="num nd">estimate</td></tr>
+          <tr data-caso="IA-2025-006"><td><small>IA-2025-006</small>Fraud detection in reimbursement claims</td><td>Finance</td><td><span class="etapa curso">In development</span></td><td>Augment</td><td>Minimal risk</td><td class="num">€380k <small>fcst.</small></td><td class="num"><b>€820k</b> <small>fcst.</small></td><td class="num nd">estimate</td></tr>
+          <tr data-caso="IA-2026-003"><td><small>IA-2026-003</small>Assisted summary of complaint files</td><td>Customer service</td><td><span class="etapa curso">In development</span></td><td>Optimise</td><td>Minimal risk</td><td class="num">€95k <small>fcst.</small></td><td class="num neg"><b>−€95k</b> <small>fcst.</small></td><td class="num nd">estimate</td></tr>
+          <tr data-caso="IA-2026-001"><td><small>IA-2026-001</small>Bank reconciliation agent that posts journal entries</td><td>Finance</td><td><span class="etapa curso">POC</span></td><td>Optimise</td><td>Minimal risk</td><td class="num">€260k <small>fcst.</small></td><td class="num"><b>€1.64M</b> <small>fcst.</small></td><td class="num nd">estimate</td></tr>
+          <tr data-caso="IA-2026-002"><td><small>IA-2026-002</small>Predictive maintenance as a service for industrial clients</td><td>Industrial services</td><td><span class="etapa curso">Value hypothesis</span></td><td>Transform</td><td>Minimal risk</td><td class="num">€1.4M <small>fcst.</small></td><td class="num"><b>€8.1M</b> <small>fcst.</small></td><td class="num nd">estimate</td></tr>
+          <tr data-caso="IA-2026-005"><td><small>IA-2026-005</small>Drafting copilot for commercial proposals</td><td>Sales</td><td><span class="etapa curso">Value hypothesis</span></td><td>Augment</td><td>Transparency (Art. 50)</td><td class="num">€190k <small>fcst.</small></td><td class="num"><b>€2.61M</b> <small>fcst.</small></td><td class="num nd">estimate</td></tr>
+          <tr data-caso="IA-2026-006"><td><small>IA-2026-006</small>Review of regulatory clauses in supplier contracts</td><td>Legal</td><td><span class="etapa curso">Proposed</span></td><td>Optimise</td><td>Minimal risk</td><td class="num">€60k <small>fcst.</small></td><td class="num"><b>€320k</b> <small>fcst.</small></td><td class="num nd">estimate</td></tr>
+          <tr data-caso="IA-2026-007"><td><small>IA-2026-007</small>Contact centre shift planning</td><td>Customer service</td><td><span class="etapa curso">Proposed</span></td><td>Optimise</td><td>To be confirmed</td><td class="num nd">no data</td><td class="num nd">no data</td><td class="num nd">—</td></tr>
+          <tr data-caso="IA-2026-008"><td><small>IA-2026-008</small>Customer returns management agent</td><td>Customer service</td><td><span class="etapa curso">Proposed</span></td><td>Transform</td><td>To be confirmed</td><td class="num nd">no data</td><td class="num nd">no data</td><td class="num nd">—</td></tr>
+          <tr data-caso="IA-2025-004"><td><small>IA-2025-004</small>Screening of job applications in recruitment</td><td>People</td><td><span class="etapa fuera">Discarded</span></td><td>Augment</td><td>High risk</td><td class="num nd">—</td><td class="num sal">Stopped at G3: unacceptable risk</td><td class="num nd">—</td></tr>
+          <tr data-caso="IA-2025-005"><td><small>IA-2025-005</small>Internal assistant for HR policy queries</td><td>People</td><td><span class="etapa fuera">Disengaged</span></td><td>Optimise</td><td>Transparency (Art. 50)</td><td class="num nd">—</td><td class="num sal">Retired at G7: replaced</td><td class="num nd">—</td></tr>
+          </tbody>
+        </table>
+        </div>
+        <p class="pie">"fcst.": forecast for a case not yet producing; it does not add to the net. "Validated": share of current value validated by management control.</p>
+      </div>
       <div class="fila">
         <p class="cita" style="margin:0">"No data" is never zero. And estimates are never dressed up as validated.</p>
         <span class="dos-enlaces">
