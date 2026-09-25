@@ -1101,7 +1101,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </table></div>
 <hr />
 <h2 id="common-data-model"><span class="antetitulo">04</span>Common data model</h2>
-<p>The model is the foundation of all the tools. Its full specification (fields, types, closed lists and validation rules) is the JSON schema of the register, <code>herramientas/T01_registro_iniciativas/esquema_registro.schema.json</code> (version 0.6), published with tool <a href="../../herramientas/T01_registro_iniciativas/registro.html" title="Tool T01 &#183; Initiative register">T01</a>; each version extends it with optional fields only, so a file from an earlier version remains valid.</p>
+<p>The model is the foundation of all the tools. Its full specification (fields, types, closed lists and validation rules) is the JSON schema of the register, <code>herramientas/T01_registro_iniciativas/esquema_registro.schema.json</code> (version 0.7), published with tool <a href="../../herramientas/T01_registro_iniciativas/registro.html" title="Tool T01 &#183; Initiative register">T01</a>; each version extends it with optional fields only, so a file from an earlier version remains valid.</p>
 <div class="tabla"><table>
 <thead>
 <tr>
@@ -1183,7 +1183,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 <tr>
 <td><strong>Maturity assessment</strong></td>
-<td>Summary of each maturity assessment (EM-YYYY-MM; <a href="11_SEVEN-G_Modelo_de_madurez.html" title="Document 11 &#183; Maturity model">document 11</a>): cut-off date, mode, questionnaire version, overall level, weighted average, cap by D1 or D6 and level, progress and blocking criteria of each dimension. <a href="../../herramientas/T15_diagnostico_madurez/madurez.html" title="Tool T15 &#183; Maturity diagnosis">T15</a> writes it (answers and evidence stay in <a href="../../herramientas/T15_diagnostico_madurez/madurez.html" title="Tool T15 &#183; Maturity diagnosis">T15</a>) and the board dashboard shows it; schema 0.6.</td>
+<td>Summary of each maturity assessment (EM-YYYY-MM; <a href="11_SEVEN-G_Modelo_de_madurez.html" title="Document 11 &#183; Maturity model">document 11</a>): cut-off date, mode, questionnaire version, overall level, weighted average, cap by D1 or D6 and level, progress and blocking criteria of each dimension. Since schema 0.7, also the summary of the NIST profiles derived from the questionnaire (AI RMF and <a class="ref-ext" href="https://csrc.nist.gov/pubs/cswp/29/the-nist-cybersecurity-framework-csf-20/final" target="_blank" rel="noopener" title="The NIST Cybersecurity Framework (CSF) 2.0, NIST CSWP 29">CSF 2.0</a>: minimum level, subcategories with a level, with a target and with a gap, by function and, for the CSF, by area; 11 §7.5). <a href="../../herramientas/T15_diagnostico_madurez/madurez.html" title="Tool T15 &#183; Maturity diagnosis">T15</a> writes it (answers and evidence stay in <a href="../../herramientas/T15_diagnostico_madurez/madurez.html" title="Tool T15 &#183; Maturity diagnosis">T15</a>) and the board dashboard shows it; schemas 0.6 and 0.7.</td>
 <td>Company</td>
 </tr>
 </tbody>
@@ -1215,8 +1215,8 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tr id="cod-t15">
 <td><strong><a href="../../herramientas/T15_diagnostico_madurez/madurez.html" title="Tool T15 &#183; Maturity diagnosis">T15</a></strong></td>
 <td>Company and a stratified sample of initiatives (Enterprise, in production, Augment or Transform, third party, generative AI or agents; 11 §4.6). From <a href="../../herramientas/T14_indice_transformacion/indice.html" title="Tool T14 &#183; Transformation index calculator">T14</a>, the profile of the latest calculation.</td>
-<td>The summary of each assessment (<code>madurez[]</code>): overall level, average, cap by D1 or D6 and level by dimension; never the answers.</td>
-<td>Answers, evidence, verification, interviews, samples, weights, targets, messages and improvement plan.</td>
+<td>The summary of each assessment (<code>madurez[]</code>): overall level, average, cap by D1 or D6, level by dimension and summary of the NIST profiles (<code>madurez[].perfiles</code>); never the answers.</td>
+<td>Answers, evidence, verification, interviews, samples, weights, targets, messages, improvement plan and the target and own levels of the NIST profiles.</td>
 </tr>
 <tr>
 <td><strong><a href="../../herramientas/T17_panel_consejo/index.html" title="Tool T17 &#183; Board AI dashboard">T17</a></strong> (generator)</td>
@@ -1640,7 +1640,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 </tbody>
 </table></div>
-<h2 id="external-sources">External sources cited</h2><p class="fuentes-nota">Links to the official or primary source, checked before publication. Always verify the version in force on the date of use.</p><ul class="fuentes-externas"><li><a href="https://eur-lex.europa.eu/eli/reg/2024/1689/oj/eng" target="_blank" rel="noopener">Regulation (EU) 2024/1689 of the European Parliament and of the Council of 13 June 2024 laying down harmonised rules on artificial intelligence (Artificial Intelligence Act)</a><span> · Parlamento Europeo y Consejo de la UE · 13-06-2024</span></li></ul>
+<h2 id="external-sources">External sources cited</h2><p class="fuentes-nota">Links to the official or primary source, checked before publication. Always verify the version in force on the date of use.</p><ul class="fuentes-externas"><li><a href="https://eur-lex.europa.eu/eli/reg/2024/1689/oj/eng" target="_blank" rel="noopener">Regulation (EU) 2024/1689 of the European Parliament and of the Council of 13 June 2024 laying down harmonised rules on artificial intelligence (Artificial Intelligence Act)</a><span> · Parlamento Europeo y Consejo de la UE · 13-06-2024</span></li><li><a href="https://csrc.nist.gov/pubs/cswp/29/the-nist-cybersecurity-framework-csf-20/final" target="_blank" rel="noopener">The NIST Cybersecurity Framework (CSF) 2.0, NIST CSWP 29</a><span> · National Institute of Standards and Technology (NIST), Departamento de Comercio de EE. UU. · 26-02-2024</span></li></ul>
 </main>
 <footer class="pie"><div><span>© 2026 Fernando García Varela · SEVEN-G methodology</span><span>Generated on 25-09-2026</span></div><p class="pie-ia">Content generated and typeset with AI support under the author&#39;s editorial supervision.</p></footer>
 <script src="codigos.js" defer></script>

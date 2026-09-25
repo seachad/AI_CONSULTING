@@ -25,7 +25,7 @@
 | **Quién la verifica** | El verificador independiente de la evaluación de madurez (11 §4.2), que revisa además todas las subcategorías «Propia» con nivel 3 o superior. |
 | **Quién decide o aprueba** | El comité de IA aprueba el perfil y la propuesta de niveles objetivo; el consejo o su comisión delegada aprueba los niveles objetivo en C2. |
 | **Etapa del ciclo corporativo** | C1 y C5 (perfil actual), C2 (perfil objetivo), C4 (seguimiento de las acciones). |
-| **Herramienta** | T15 · Diagnóstico de madurez aporta las respuestas y el nivel de cada dimensión; en la versión 0.x, el perfil se completa en esta plantilla o en su versión Word. |
+| **Herramienta** | T15 · Diagnóstico de madurez calcula este perfil en su vista «Perfil AI RMF»: nivel derivado del cuestionario, niveles propios, objetivos, brecha, *tier* equivalente y exportación CSV, y guarda su resumen en el registro T01. Esta plantilla es su equivalente en papel o en Word. |
 | **Documento de referencia** | Documento 34 §5.4 (subcategorías, cobertura en SEVEN-G y preguntas asociadas); documento 11 §2.2 (niveles y equivalencia con los *tiers*) y §7.5 (regla de derivación). |
 | **Lite frente a Enterprise** | En alcance Lite la compañía puede seleccionar solo las subcategorías de GOVERN y las que corresponden a sus iniciativas Enterprise, y dejar las demás fuera del perfil con motivo. |
 

@@ -496,7 +496,7 @@ The board should not approve Transform bets at G2 with D1 or D6 below 2 unless t
 | T14 | Cross-reading with the transformation index. |
 | T17, T18 | Publication of the result and tracking of the actions requested by the board. |
 | P03, P05, P07–P09, P11, P12, P14, P16, P18–P20, P24, P25, P28–P30 | Usual evidence. The answer sheet, the calculation and the report have their own template, P34, which T15 calculates and generates. |
-| P72, P73 | AI security profile (CSF 2.0 / Cyber AI Profile) and AI governance profile (NIST AI RMF), with the level of each subcategory derived from the questionnaire (section 7.5). |
+| P72, P73 | AI security profile (CSF 2.0 / Cyber AI Profile) and AI governance profile (NIST AI RMF), with the level of each subcategory derived from the questionnaire (section 7.5). T15 calculates them in its "CSF profile" and "AI RMF profile" views and saves their summary into the T01 register. |
 
 ---
 

@@ -496,7 +496,7 @@ El consejo no debería aprobar apuestas de Transformar en G2 con D1 o D6 inferio
 | T14 | Lectura cruzada con el índice de transformación. |
 | T17, T18 | Publicación del resultado y seguimiento de las acciones pedidas por el consejo. |
 | P03, P05, P07–P09, P11, P12, P14, P16, P18–P20, P24, P25, P28–P30 | Evidencias habituales. La hoja de respuestas, el cálculo y el informe tienen plantilla propia, P34, que T15 calcula y genera. |
-| P72, P73 | Perfil de seguridad de IA (CSF 2.0 / Cyber AI Profile) y perfil de gobierno de IA (NIST AI RMF), con el nivel de cada subcategoría derivado del cuestionario (sección 7.5). |
+| P72, P73 | Perfil de seguridad de IA (CSF 2.0 / Cyber AI Profile) y perfil de gobierno de IA (NIST AI RMF), con el nivel de cada subcategoría derivado del cuestionario (sección 7.5). T15 los calcula en sus vistas «Perfil CSF» y «Perfil AI RMF» y guarda su resumen en el registro T01. |
 
 ---
 
