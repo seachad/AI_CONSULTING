@@ -1153,7 +1153,10 @@ try {
     $idsReg = @($regs | ForEach-Object id)
     foreach ($p in $vig.prioritarias) {
       if ($idsReg -notcontains $p.id) { Mal "vigilancia_fuentes.json: la referencia $($p.id) no está en el registro (D117)"; $malVig++ }
-      if (-not $p.pregunta -or $p.donde -notmatch '^https://') { Mal "vigilancia_fuentes.json: $($p.id) sin pregunta o sin enlace https (D117)"; $malVig++ }
+      $regP = $regs | Where-Object id -eq $p.id | Select-Object -First 1
+      $dondeP = if ($p.donde) { $p.donde } elseif ($regP) { if ($regP.url_es) { $regP.url_es } else { $regP.url_en } }
+      if (-not $p.pregunta -or $dondeP -notmatch '^https://') { Mal "vigilancia_fuentes.json: $($p.id) sin pregunta o sin enlace https propio ni en el registro (D117, D118)"; $malVig++ }
+      if ($p.donde_comprobado -and $p.donde_comprobado -notmatch '^\d{2}-\d{2}-\d{4}$') { Mal "vigilancia_fuentes.json: $($p.id) «donde_comprobado» no es DD-MM-AAAA (D118)"; $malVig++ }
     }
     foreach ($r in $regs | Where-Object { $_.situacion -and $_.situacion -ne 'final' }) { if (@($vig.prioritarias | ForEach-Object id) -notcontains $r.id) { Mal "referencia $($r.id) en $($r.situacion) y fuera de la vigilancia mensual (D117)"; $malVig++ } }
   }
