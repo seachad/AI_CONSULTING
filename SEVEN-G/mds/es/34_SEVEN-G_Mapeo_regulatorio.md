@@ -26,7 +26,7 @@
 
 SEVEN-G no reproduce la regulación dentro de sus fases. Vincula cada obligación a **una fase o etapa, un rol responsable, una evidencia y una herramienta**. Cuando una norma cambia, se actualiza la fila afectada de este documento y la herramienta T07, sin rehacer el ciclo de vida, los *gates* ni las plantillas.
 
-Este documento desarrolla la sección 13 del documento 01 y cubre: el Reglamento (UE) 2024/1689 (Reglamento Europeo de IA) modificado por el Reglamento (UE) 2026/1744 (sección 3); ISO/IEC 42001:2023 (sección 4); NIST AI RMF 1.0 y NIST AI 600-1 (secciones 5.1 y 5.2); el marco de ciberseguridad NIST CSF 2.0 y su perfil para la IA, el Cyber AI Profile, que a fecha de consulta es un borrador (sección 5.3); el RGPD y las guías del CEPD (sección 6); DORA y NIS2 cuando apliquen (sección 7); la normativa española y AESIA (sección 8); y, de forma orientativa, otras jurisdicciones y sectores (secciones 11 y 12).
+Este documento desarrolla la sección 13 del documento 01 y cubre: el Reglamento (UE) 2024/1689 (Reglamento Europeo de IA) modificado por el Reglamento (UE) 2026/1744 (sección 3); ISO/IEC 42001:2023 (sección 4); NIST AI RMF 1.0 y NIST AI 600-1 (secciones 5.1 y 5.2); el marco de ciberseguridad NIST CSF 2.0 y su perfil para la IA, el Cyber AI Profile, que a fecha de consulta es un borrador (sección 5.3); los desgloses por subcategoría del AI RMF y del CSF para construir perfiles (secciones 5.4 y 5.5); el RGPD y las guías del CEPD (sección 6); DORA y NIS2 cuando apliquen (sección 7); la normativa española y AESIA (sección 8); y, de forma orientativa, otras jurisdicciones y sectores (secciones 11 y 12).
 
 ### 1.2 Qué no hace este documento
 
@@ -443,7 +443,7 @@ El **Cyber AI Profile** (NIST IR 8596) es el perfil comunitario del CSF 2.0 para
 | Detectar y analizar eventos adversos con monitorización continua de entradas, salidas, acciones y comportamiento | DE (DE.CM, DE.AE) | Ídem | Fase 6; C4 | Responsable de operación; seguridad de la información | P25; SEG-12, AG-17; documento 52 | T10, T08 |
 | Gestionar, analizar, comunicar y mitigar los incidentes de IA | RS (RS.MA, RS.AN, RS.CO, RS.MI) | Ídem | Fase 6 (severidades S1–S4) | Responsable de operación; seguridad de la información | P26, P27, P52; SEG-14, AG-09; documento 37 | T08 |
 | Ejecutar la recuperación y comunicarla: proceso alternativo, reversión y vuelta a la operación | RC (RC.RP, RC.CO) | Ídem | Fase 6; G7 si procede | Responsable de operación | P19, P24, P26; AG-19 | T08 |
-| Describir los perfiles actual y objetivo de ciberseguridad de la IA y su brecha | CSF 2.0, sección 3 (perfiles de organización) | Ídem | C1 (actual), C2 (objetivo), C5 (revisión) | Oficina de IA; seguridad de la información | Documento 11; P34 | T15 |
+| Describir los perfiles actual y objetivo de ciberseguridad de la IA y su brecha | CSF 2.0, sección 3 (perfiles de organización) | Ídem | C1 (actual), C2 (objetivo), C5 (revisión) | Oficina de IA; seguridad de la información | Sección 5.5; 11 §7.5; P34 | T15 |
 
 **Cyber AI Profile por áreas (borrador)**
 
@@ -454,6 +454,140 @@ El **Cyber AI Profile** (NIST IR 8596) es el perfil comunitario del CSF 2.0 para
 | **Thwart** | Frustrar los ataques que usan IA: suplantación sintética, *phishing* generado, explotación acelerada. | 35 §9 | SEG-15 a SEG-19; SEG-13 | Cubierta |
 
 La columna «Función CSF» de los catálogos SEG y AG (35 §6 y §7) indica a qué función y categoría del CSF contribuye cada control.
+
+### 5.4 Perfil del AI RMF por subcategoría
+
+La sección 5.1 mapea las 19 categorías del AI RMF. Un perfil actual u objetivo, en cambio, se construye sobre sus **72 subcategorías** (GOVERN 1.1 a MANAGE 4.3; número comprobado en la publicación NIST AI 100-1). La tabla indica, para cada una, qué pide en términos propios, dónde la cubre SEVEN-G y **de dónde sale su nivel**: la dimensión y las preguntas del cuestionario del documento 11 que lo acreditan, o «Propia» cuando ninguna pregunta la cubre y hay que evaluarla aparte. La regla de derivación está en 11 §7.5: una evaluación, dos lecturas, sin doble captura. El nivel se expresa en la escala 0–5 del documento 11; la equivalencia orientativa con los *tiers* del CSF está en 11 §2.2. Las descripciones son un resumen propio, no una traducción del texto del NIST.
+
+| Subcategoría | Qué pide (resumen propio) | Dónde lo cubre SEVEN-G | Nivel desde el documento 11 |
+|---|---|---|---|
+| GOVERN 1.1 | Conocer, gestionar y documentar los requisitos legales y regulatorios que afectan a la IA. | Documento 34; 01 §13; P11 | D6 · D6.05, D6.12 |
+| GOVERN 1.2 | Integrar las características de una IA fiable en políticas, procesos y prácticas. | Documento 31; 01 §3 | D1 · D1.04 |
+| GOVERN 1.3 | Proporcionar el nivel de gestión del riesgo a la tolerancia al riesgo de la organización. | Documento 13 (apetito); 01 §9 (intensidad); P04 | D1 · D1.05, D1.06 |
+| GOVERN 1.4 | Establecer el proceso de gestión del riesgo y sus resultados con políticas y controles transparentes. | Documento 33; P12, P13 | D6 · D6.04, D6.06 |
+| GOVERN 1.5 | Planificar el seguimiento continuo y la revisión periódica del proceso de riesgos, con roles y frecuencia. | 33 §11; documento 30; R6 | D6 · D6.09 |
+| GOVERN 1.6 | Inventariar los sistemas de IA y dotarlos de recursos según las prioridades de riesgo. | Documento 32; P05 | D6 · D6.03, D6.05 |
+| GOVERN 1.7 | Retirar sistemas de IA de forma segura, sin aumentar el riesgo. | Documento 14 (retiradas); G7; P30 | D2 · D2.10 |
+| GOVERN 2.1 | Documentar roles, responsabilidades y líneas de comunicación sobre el riesgo de IA. | 01 §8; documento 30; P03 | D1 · D1.07, D1.08 |
+| GOVERN 2.2 | Formar al personal y a los socios en gestión del riesgo de IA según su función. | Documento 50; P45 | D5 · D5.05, D5.06 |
+| GOVERN 2.3 | Que la alta dirección asuma las decisiones sobre los riesgos de la IA que desarrolla o despliega. | Documentos 13 y 30; 01 §8.3 | D1 · D1.05, D1.09 |
+| GOVERN 3.1 | Tomar las decisiones de riesgo con equipos diversos en disciplinas, experiencia y perfiles. | Documentos 30 y 50; P03 | Propia (D5) |
+| GOVERN 3.2 | Definir los roles de la configuración persona–IA y de la supervisión de los sistemas. | P17; 35 §5; 01 §8 | D6 · D6.08 |
+| GOVERN 4.1 | Fomentar el pensamiento crítico y la seguridad primero en el diseño y el uso de la IA. | Documento 31; 01 §3 | Propia (D1) |
+| GOVERN 4.2 | Que los equipos documenten los riesgos e impactos de la IA y los comuniquen. | P11, P12; documento 33 | D6 · D6.06 |
+| GOVERN 4.3 | Permitir las pruebas de la IA, la identificación de incidentes y el intercambio de información. | Documento 37; 35 §8; P26, P53 | D6 · D6.07, D6.10 |
+| GOVERN 5.1 | Recoger y tener en cuenta la opinión externa sobre los impactos individuales y sociales. | P11, P46, P48 | Propia (D6) |
+| GOVERN 5.2 | Incorporar al diseño la retroalimentación ya valorada de los actores relevantes. | Documento 20; P27 | Propia (D2) |
+| GOVERN 6.1 | Tratar los riesgos de terceros, incluida la infracción de propiedad intelectual u otros derechos. | Documento 36; P14, P55, P56 | D6 · D6.08 |
+| GOVERN 6.2 | Tener contingencias ante fallos o incidentes de datos o sistemas de terceros de alto riesgo. | Documento 36; P19, P57 | D6 · D6.08 |
+| MAP 1.1 | Documentar la finalidad, los usos, las normas aplicables y el entorno de despliegue. | P01, P02 | D2 · D2.05 |
+| MAP 1.2 | Contar con actores interdisciplinares y diversos al fijar el contexto. | P03; documento 30 | Propia (D5) |
+| MAP 1.3 | Conocer y documentar la misión y los objetivos de la organización para la IA. | Documento 13 (tesis) | D1 · D1.05 |
+| MAP 1.4 | Definir, o reevaluar en sistemas existentes, el valor de negocio. | P07, P08; documento 40 | D2 · D2.08 |
+| MAP 1.5 | Determinar y documentar las tolerancias al riesgo. | Documento 13 (apetito); P35 | D1 · D1.05, D1.06 |
+| MAP 1.6 | Recoger los requisitos del sistema teniendo en cuenta sus implicaciones sociotécnicas. | P15, P17 | Propia (D4) |
+| MAP 2.1 | Definir las tareas y los métodos del sistema (clasificador, generativo, recomendador…). | P05, P15 | D6 · D6.05 |
+| MAP 2.2 | Documentar los límites de conocimiento del sistema y cómo se usan y supervisan sus salidas. | P17, P49 | Propia (D6) |
+| MAP 2.3 | Documentar la integridad científica y las pruebas: diseño, selección de datos, validez. | P09, P16, P22; documento 51 | D3 · D3.04, D3.07 |
+| MAP 3.1 | Examinar y documentar los beneficios esperados. | P08; documento 40 | D2 · D2.08 |
+| MAP 3.2 | Examinar los costes, también no monetarios, de los errores del sistema. | P10, P12; documento 42 | D6 · D6.06 |
+| MAP 3.3 | Delimitar el alcance de la aplicación según su capacidad, contexto y categoría. | P01, P02, P15 | D2 · D2.05 |
+| MAP 3.4 | Definir y evaluar la competencia de operadores y profesionales. | Documento 50; P20, P45 | D5 · D5.05, D5.06 |
+| MAP 3.5 | Definir y documentar la supervisión humana. | P17; 35 §4.6 | D4 · D4.06 |
+| MAP 4.1 | Identificar los riesgos tecnológicos y legales de los componentes, incluidos los de terceros. | P11, P14; documento 36 | D6 · D6.08 |
+| MAP 4.2 | Documentar los controles internos sobre los componentes, incluidos los de terceros. | P13, P18; SEG-09 | D6 · D6.08 |
+| MAP 5.1 | Estimar la probabilidad y la magnitud de cada impacto identificado. | P11, P12; documento 33 | D6 · D6.06 |
+| MAP 5.2 | Mantener la relación con los actores relevantes e integrar su opinión sobre los impactos. | P25, P28; documento 52 | Propia (D6) |
+| MEASURE 1.1 | Elegir métodos y métricas para los riesgos más significativos y documentar lo que no se mide. | P09, P22; documento 41 | D7 · D7.03 |
+| MEASURE 1.2 | Revisar la idoneidad de las métricas y la eficacia de los controles. | Documento 41; R6; P28 | D7 · D7.09; D6 · D6.11 |
+| MEASURE 1.3 | Implicar a evaluadores internos no participantes o externos en las evaluaciones. | Documento 38; 01 §8.2 | D6 · D6.10 |
+| MEASURE 2.1 | Documentar conjuntos de prueba, métricas y herramientas de evaluación. | P22; documento 53 | D4 · D4.08 |
+| MEASURE 2.2 | Que las evaluaciones con personas cumplan sus requisitos y sean representativas. | P22 | Propia (D6) |
+| MEASURE 2.3 | Medir el rendimiento en condiciones parecidas a las de uso real. | P09, P22 | D4 · D4.08 |
+| MEASURE 2.4 | Monitorizar el funcionamiento del sistema en producción. | P25; documento 52 | D4 · D4.05, D4.09 |
+| MEASURE 2.5 | Demostrar la validez y fiabilidad, y documentar los límites de generalización. | P22; G5 | D4 · D4.08 |
+| MEASURE 2.6 | Evaluar la seguridad del sistema frente a daños y su capacidad de fallar de forma segura. | P19, P22; AG-09 | D4 · D4.06 |
+| MEASURE 2.7 | Evaluar y documentar la seguridad frente a ataques y la resiliencia. | P18, P53; 35 §8 | D6 · D6.10 |
+| MEASURE 2.8 | Examinar los riesgos de transparencia y de rendición de cuentas. | P17, P49; P03 | Propia (D6) |
+| MEASURE 2.9 | Explicar el modelo e interpretar sus salidas en su contexto. | P17, P21 | Propia (D4) |
+| MEASURE 2.10 | Examinar y documentar el riesgo para la privacidad. | P11, P47; documento 51 | D3 · D3.06 |
+| MEASURE 2.11 | Evaluar la equidad y el sesgo y documentar los resultados. | P22; 52 §4.2.7 | Propia (D6) |
+| MEASURE 2.12 | Evaluar el impacto ambiental del entrenamiento y la operación. | Documento 42; P10 | Propia (D4) |
+| MEASURE 2.13 | Evaluar la eficacia de las propias métricas y procesos de prueba. | Documento 41; C5 | Propia (D7) |
+| MEASURE 3.1 | Identificar y seguir los riesgos existentes, imprevistos y emergentes. | 33 §11; P12; R6 | D6 · D6.09 |
+| MEASURE 3.2 | Seguir los riesgos que aún no pueden medirse con las técnicas disponibles. | Documento 33; P12 | Propia (D6) |
+| MEASURE 3.3 | Dar a usuarios y afectados un cauce para comunicar problemas y recurrir resultados. | P17, P24, P49; documento 37 | Propia (D6) |
+| MEASURE 4.1 | Conectar la medición al contexto de uso con la opinión de expertos y usuarios. | P09, P22 | Propia (D7) |
+| MEASURE 4.2 | Validar con expertos y actores relevantes los resultados sobre la fiabilidad en uso. | P28; R6 | D7 · D7.09 |
+| MEASURE 4.3 | Identificar mejoras o empeoramientos medibles del rendimiento y la fiabilidad. | P28; documento 41 | D2 · D2.10; D7 · D7.09 |
+| MANAGE 1.1 | Decidir si el sistema cumple su finalidad y si su desarrollo o despliegue debe continuar. | Documento 21; P29 | D2 · D2.06 |
+| MANAGE 1.2 | Priorizar el tratamiento de los riesgos por impacto, probabilidad y recursos. | P13; 33 §7 | D6 · D6.06 |
+| MANAGE 1.3 | Planificar la respuesta a los riesgos altos: mitigar, transferir, evitar o aceptar. | P13; 33 §7 | D6 · D6.06 |
+| MANAGE 1.4 | Documentar los riesgos residuales para usuarios y adquirentes. | P12, P13 | D6 · D6.06 |
+| MANAGE 2.1 | Considerar los recursos necesarios y las alternativas sin IA. | P06, P10; 01 §6.3 | D2 · D2.08 |
+| MANAGE 2.2 | Mantener el valor de los sistemas desplegados. | R6; P28; documento 43 | D2 · D2.10 |
+| MANAGE 2.3 | Responder y recuperarse cuando aparece un riesgo desconocido. | Documento 37; P26 | D6 · D6.07 |
+| MANAGE 2.4 | Poder sustituir, desenganchar o desactivar un sistema que se aparta de su uso previsto. | P19; AG-09; T22 | D4 · D4.06 |
+| MANAGE 3.1 | Seguir los riesgos y beneficios de los recursos de terceros. | Documento 36; P57 | D6 · D6.08 |
+| MANAGE 3.2 | Seguir los modelos preentrenados como parte de la monitorización. | P25, P54; SEG-09 | D4 · D4.08 |
+| MANAGE 4.1 | Aplicar planes de seguimiento tras el despliegue: opinión de usuarios, recurso, anulación, retirada, incidentes y cambios. | P24, P25, P27; documento 52 | D4 · D4.05, D4.07 |
+| MANAGE 4.2 | Integrar la mejora continua en las actualizaciones del sistema. | P28; R6; C5 | D4 · D4.12 |
+| MANAGE 4.3 | Comunicar y gestionar los incidentes y errores, también a las comunidades afectadas. | Documento 37; P26, P27, P51 | D6 · D6.07 |
+
+### 5.5 Perfil de seguridad de la IA: subcategorías del CSF 2.0
+
+El perfil de seguridad de la IA se construye sobre las subcategorías del CSF 2.0. La tabla recoge las **48** a las que el Cyber AI Profile propone **prioridad alta (1)** en al menos una de sus tres áreas, con la prioridad que propone en cada una (**S** Secure · **D** Defend · **T** Thwart; 1 alta, 2 moderada, 3 fundamental). **La selección es provisional** mientras el perfil sea un borrador (sección 5.3) y se revisará cuando el NIST publique una versión posterior. Las demás subcategorías del CSF pueden añadirse al perfil de la compañía si su contexto lo pide. Como en la sección 5.4, el nivel se deriva del documento 11 (11 §7.5) y las descripciones son un resumen propio.
+
+| Subcategoría | Qué pide (resumen propio) | Prioridad S · D · T | Dónde lo cubre SEVEN-G | Nivel desde el documento 11 |
+|---|---|---|---|---|
+| GV.OC-03 | Conocer y gestionar los requisitos legales, regulatorios y contractuales de ciberseguridad, incluida la privacidad. | 3 · 1 · 3 | Documento 34; P11, P56 | D6 · D6.05, D6.12 |
+| GV.OC-04 | Conocer y comunicar los objetivos y servicios críticos de los que dependen terceros. | 1 · 1 · 3 | P02; 01 §9.2 (función crítica); P49 | Propia (D4) |
+| GV.OC-05 | Conocer y comunicar los resultados y servicios de los que depende la organización, incluidos los que aporta la IA. | 1 · 2 · 3 | P02, P15; documento 36 | Propia (D4) |
+| GV.RM-02 | Fijar, comunicar y mantener el apetito y la tolerancia al riesgo. | 2 · 2 · 1 | Documento 13; P35 | D1 · D1.05 |
+| GV.RM-07 | Incluir las oportunidades estratégicas en las conversaciones sobre el riesgo. | 3 · 1 · 3 | Documentos 13 y 14; P06 | D2 · D2.07 |
+| GV.RR-01 | Que la dirección responda del riesgo y promueva una cultura consciente del riesgo. | 3 · 1 · 2 | Documentos 13 y 30; P38 | D1 · D1.01, D1.09 |
+| GV.RR-02 | Establecer y hacer cumplir roles, responsabilidades y autoridades de gestión del riesgo. | 3 · 1 · 2 | 01 §8; documento 30; P03 | D1 · D1.07, D1.08 |
+| GV.RR-03 | Asignar recursos proporcionados a la estrategia de riesgo. | 2 · 2 · 1 | Documentos 13 y 14; P36 | Propia (D1) |
+| GV.RR-04 | Incluir la ciberseguridad en las prácticas de recursos humanos. | 1 · 3 · 1 | Documento 50; P45, P46 | Propia (D5) |
+| GV.PO-01 | Establecer, comunicar y hacer cumplir la política de gestión del riesgo. | 3 · 1 · 3 | Documentos 31 y 35 | D1 · D1.04 |
+| GV.PO-02 | Revisar y actualizar la política ante cambios de requisitos, amenazas o tecnología. | 1 · 1 · 2 | Documento 31; C5; P37 | D6 · D6.12 |
+| GV.SC-03 | Integrar el riesgo de la cadena de suministro en la gestión del riesgo. | 1 · 2 · 3 | Documentos 33 y 36 | D6 · D6.08 |
+| GV.SC-07 | Conocer, evaluar y seguir el riesgo de cada proveedor durante toda la relación. | 1 · 1 · 3 | Documento 36; P14, P55, P57 | D6 · D6.08 |
+| ID.AM-03 | Mantener la representación de las comunicaciones y los flujos de datos autorizados. | 1 · 2 · 2 | P15, P16 | D3 · D3.07 |
+| ID.AM-07 | Mantener inventarios de datos y de sus metadatos. | 1 · 1 · 3 | P64; documento 51 | D3 · D3.03, D3.05 |
+| ID.AM-08 | Gestionar sistemas, software, servicios y datos durante todo su ciclo de vida. | 1 · 3 · 2 | Documento 20; P05, P54 | D6 · D6.05 |
+| ID.RA-01 | Identificar, validar y registrar las vulnerabilidades de los activos. | 1 · 1 · 1 | SEG-11, SEG-13, SEG-19; P53 | D6 · D6.10 |
+| ID.RA-03 | Identificar y registrar las amenazas internas y externas. | 1 · 1 · 1 | SEG-01; P18; 35 §3 y §9 | D6 · D6.08 |
+| ID.RA-04 | Estimar el impacto y la probabilidad de que una amenaza explote una vulnerabilidad. | 1 · 1 · 1 | P12; documento 33 | D6 · D6.06 |
+| ID.RA-06 | Elegir, priorizar, planificar, seguir y comunicar las respuestas al riesgo. | 3 · 2 · 1 | P13; 33 §7 | D6 · D6.06 |
+| ID.RA-07 | Gestionar y registrar los cambios y excepciones, evaluando su efecto en el riesgo. | 2 · 1 · 1 | P27, P40; documento 52 | D4 · D4.04 |
+| ID.RA-08 | Recibir, analizar y responder a las divulgaciones de vulnerabilidades. | 3 · 3 · 1 | SEG-13; documento 37 | Propia (D6) |
+| PR.AA-01 | Gestionar las identidades y credenciales de usuarios, servicios y agentes. | 1 · 2 · 1 | AG-01, AG-03; P54 | D6 · D6.08 |
+| PR.AA-05 | Definir y revisar los permisos con mínimo privilegio y separación de funciones. | 1 · 2 · 1 | AG-02, AG-20; SEG-06 | D6 · D6.08 |
+| PR.AT-01 | Concienciar y formar al personal para trabajar teniendo en cuenta el riesgo. | 1 · 1 · 1 | Documento 50; SEG-17; P45 | D5 · D5.05 |
+| PR.AT-02 | Formar a quienes ocupan roles especializados. | 2 · 1 · 1 | Documento 50; P45 | D5 · D5.06 |
+| PR.DS-01 | Proteger la confidencialidad, integridad y disponibilidad de los datos almacenados. | 1 · 1 · 2 | SEG-07, SEG-08; P16, P18 | D3 · D3.05 |
+| PR.DS-10 | Proteger los datos en uso (contexto, instrucciones, memoria). | 1 · 1 · 3 | SEG-05, SEG-06, SEG-07; AG-14 | Propia (D6) |
+| PR.PS-01 | Establecer y aplicar la gestión de la configuración. | 1 · 1 · 3 | P15, P27; documento 52 | D4 · D4.04 |
+| PR.PS-02 | Mantener, sustituir y retirar el software según el riesgo. | 3 · 3 · 1 | SEG-09, SEG-13; P54 | Propia (D4) |
+| PR.PS-03 | Mantener, sustituir y retirar el hardware según el riesgo. | 3 · 2 · 1 | Documento 52 | Propia (D4) |
+| PR.PS-04 | Generar registros disponibles para la monitorización continua. | 1 · 1 · 1 | AG-10, SEG-12; P25 | D4 · D4.08 |
+| PR.PS-05 | Impedir la instalación y ejecución de software no autorizado, también de IA. | 2 · 2 · 1 | SEG-20, AG-13; documento 31; T21 | D6 · D6.09 |
+| PR.IR-01 | Proteger redes y entornos frente a accesos y usos no autorizados. | 2 · 2 · 1 | AG-11; P15 | D4 · D4.03 |
+| PR.IR-03 | Aplicar mecanismos de resiliencia en situaciones normales y adversas. | 2 · 1 · 2 | P19; AG-16; documento 52 | D4 · D4.06, D4.12 |
+| DE.CM-01 | Monitorizar redes y servicios de red para detectar eventos adversos. | 2 · 1 · 1 | SEG-12 | Propia (D4) |
+| DE.CM-06 | Monitorizar la actividad de los proveedores de servicios externos. | 1 · 2 · 2 | Documento 36; P57 | D6 · D6.08 |
+| DE.CM-09 | Monitorizar hardware, software, entornos de ejecución y datos. | 1 · 1 · 2 | SEG-12, AG-17; P25 | D4 · D4.05 |
+| DE.AE-03 | Correlacionar información de varias fuentes. | 3 · 1 · 2 | SEG-12 | Propia (D4) |
+| DE.AE-04 | Entender el impacto y el alcance estimados de los eventos adversos. | 3 · 1 · 2 | Documento 37; P27 | D6 · D6.07 |
+| DE.AE-06 | Hacer llegar la información de eventos adversos a las personas y herramientas autorizadas. | 3 · 2 · 1 | P24, P25 | D4 · D4.05 |
+| DE.AE-07 | Integrar la inteligencia de amenazas en el análisis. | 3 · 2 · 1 | 35 §9; SEG-19 | Propia (D6) |
+| RS.MA-02 | Clasificar y validar las notificaciones de incidentes. | 2 · 1 · 2 | Documento 37; P27 | D6 · D6.07 |
+| RS.MA-03 | Categorizar y priorizar los incidentes. | 2 · 1 · 1 | Documento 37 (S1–S4); P27 | D6 · D6.07 |
+| RS.AN-03 | Analizar lo ocurrido en un incidente y su causa raíz. | 1 · 1 · 1 | P52; documento 37 | D6 · D6.07 |
+| RS.AN-06 | Registrar las acciones de la investigación preservando su integridad y procedencia. | 3 · 3 · 1 | P27, P52 | D6 · D6.07 |
+| RS.AN-07 | Recoger los datos del incidente preservando su integridad y procedencia. | 1 · 2 · 2 | AG-10; P27 | D4 · D4.08 |
+| RC.RP-02 | Seleccionar, delimitar, priorizar y ejecutar las acciones de recuperación. | 3 · 1 · 3 | P19, P24, P26; AG-19 | D4 · D4.06 |
 
 ---
 
@@ -695,4 +829,4 @@ Fecha de consulta: 16-09-2026, salvo las fuentes de la sección 5.3, la correspo
 | Versión | Fecha | Cambios |
 |---|---|---|
 | 0.1 | 16-09-2026 | Primera versión. Mapea el Reglamento Europeo de IA con las modificaciones del Reglamento (UE) 2026/1744 (calendario verificado a 16-09-2026), ISO/IEC 42001:2023, NIST AI RMF 1.0 y NIST AI 600-1, RGPD y guías del CEPD, DORA, NIS2 y normativa española; añade matriz resumen, procedimiento de mantenimiento y anexos orientativos de otras jurisdicciones y sectores. Aviso legal y responsabilidad del usuario sobre el cumplimiento regulatorio. |
-| 0.2 | 25-09-2026 | Añade la sección 5.3, NIST CSF 2.0 y Cyber AI Profile: funciones del CSF aplicadas a los sistemas de IA, áreas Secure, Defend y Thwart del perfil (en borrador) y advertencia de que los *tiers* no son niveles de madurez por subcategoría; el estado «Borrador» en la sección 1.4; la columna del CSF en la matriz resumen; la correspondencia AI RMF ↔ ISO/IEC 42001 del AIRC en la sección 4.3; y las fuentes nuevas en la sección 13. Corrige el estado de ISO/IEC 42001: publicada (etapa 60.60), sin revisión en curso. |
+| 0.2 | 25-09-2026 | Añade la sección 5.3, NIST CSF 2.0 y Cyber AI Profile: funciones del CSF aplicadas a los sistemas de IA, áreas Secure, Defend y Thwart del perfil (en borrador) y advertencia de que los *tiers* no son niveles de madurez por subcategoría; el estado «Borrador» en la sección 1.4; la columna del CSF en la matriz resumen; la correspondencia AI RMF ↔ ISO/IEC 42001 del AIRC en la sección 4.3; las fuentes nuevas en la sección 13; y las secciones 5.4 (las 72 subcategorías del AI RMF) y 5.5 (las 48 subcategorías del CSF 2.0 con prioridad alta en el Cyber AI Profile, selección provisional), con su cobertura en SEVEN-G y la pregunta del documento 11 que da su nivel. Corrige el estado de ISO/IEC 42001: publicada (etapa 60.60), sin revisión en curso. |

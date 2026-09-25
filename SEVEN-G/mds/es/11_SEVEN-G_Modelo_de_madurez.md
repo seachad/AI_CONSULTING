@@ -5,8 +5,8 @@
 | | |
 |---|---|
 | Documento | Documento 11 · Modelo de madurez |
-| Versión | 0.1 (borrador de trabajo) |
-| Fecha | 16-09-2026 |
+| Versión | 0.2 (borrador de trabajo) |
+| Fecha | 25-09-2026 |
 | Autor | Fernando García Varela |
 | Estado | Borrador para revisión. Desarrolla la decisión D10. Los tamaños de muestra, los pesos y los objetivos de referencia son iniciales y se calibrarán con la aplicación práctica. |
 
@@ -72,6 +72,15 @@ El modelo no es una certificación. Un resultado de madurez no sustituye a la au
 | **5** | **Optimizado** | La práctica mejora de forma continua con datos propios. | Al menos **un ciclo C5 completo** con cambios decididos a partir de evidencia y ya aplicados. |
 
 El nivel 0 no tiene criterios propios. Los requisitos temporales de los niveles 4 y 5 evitan que una práctica recién implantada se presente como gestionada.
+
+**Equivalencia orientativa con los *tiers* del NIST CSF.** Quien viene del NIST CSF puede leer los niveles de SEVEN-G con esta tabla. Es **orientativa**: los *tiers* caracterizan el rigor de las prácticas de toda la organización y no exigen los dos trimestres de evidencia del nivel 4 ni el ciclo C5 completo del nivel 5. **No es una segunda escala**: el *tier* equivalente es una vista calculada desde el nivel 0–5, nunca un dato que se capture aparte (34 §5.3).
+
+| Nivel SEVEN-G | *Tier* equivalente (NIST CSF 2.0) | Motivo |
+|---|---|---|
+| 0 Inexistente · 1 Inicial | *Tier* 1 · Parcial | Práctica *ad hoc* y reactiva. |
+| 2 En desarrollo | *Tier* 2 · Informado sobre el riesgo | Aprobada, pero no aplicada en toda la organización. |
+| 3 Definido | *Tier* 3 · Repetible | Política formal aplicada a todo el perímetro. |
+| 4 Gestionado · 5 Optimizado | *Tier* 4 · Adaptativo | Se mide, se ajusta y mejora con datos propios. |
 
 ### 2.3 Reglas del modelo
 
@@ -427,6 +436,19 @@ Las diez preguntas **(§14)** acreditan las siete condiciones de 01 §14. Una co
 
 El nivel global y por dimensión se publican en el panel del consejo (T17) tras cada C1 o C5, con la modalidad y la fecha de corte. El comité de IA revisa trimestralmente el avance de las acciones de mejora.
 
+### 7.5 Con los perfiles NIST (AI RMF y CSF)
+
+El documento 34 baja el NIST AI RMF a sus 72 subcategorías (34 §5.4) y selecciona las subcategorías del NIST CSF 2.0 relevantes para la IA según el Cyber AI Profile, hoy en borrador (34 §5.5). Con ellas, la compañía que usa esos marcos puede describir su **perfil actual** y su **perfil objetivo** sin hacer otra evaluación: **una evaluación, dos lecturas**.
+
+1. **Nivel actual derivado del cuestionario.** Cada subcategoría tiene una dimensión de referencia y, cuando existen, preguntas asociadas de la sección 3 (columna «Nivel desde el documento 11» de 34 §5.4 y §5.5). Su nivel actual es el nivel de esa dimensión (sección 5.1), **rebajado al nivel anterior al de la pregunta asociada de menor nivel que no esté en «Sí» o «No aplica»**. Ejemplo: con D6 en nivel 3 y la pregunta D6.08 (nivel 3) en «Parcial», la subcategoría queda en 2.
+2. **Pregunta propia.** Si la subcategoría no tiene preguntas asociadas («Propia»), se evalúa aparte con los niveles de la sección 2.2, la regla de acumulación y las evidencias válidas de la sección 4.5, y nunca puede quedar por encima del nivel de su dimensión de referencia. **Sin evidencia verificada no se acredita ningún nivel** (sección 1.2): la subcategoría queda en 0 si se evaluó sin evidencia y «sin dato» si no se evaluó; «sin dato» no es 0.
+3. **Nivel objetivo.** Lo fija la compañía en C2 para cada subcategoría seleccionada, con la misma proporcionalidad que los objetivos por ambición de la sección 8, y queda registrado quién lo fija.
+4. **Brecha y plan.** Brecha = nivel objetivo − nivel actual. Las brechas se priorizan y se convierten en acciones con responsable y plazo en el plan de mejora del informe (sección 6, apartado 6); no se abre un plan paralelo.
+5. ***Tier* equivalente.** Se calcula con la tabla de la sección 2.2, solo como vista para quien lee en términos del CSF.
+6. **Fuentes en borrador.** Mientras el Cyber AI Profile sea un borrador, la selección de subcategorías de 34 §5.5 y sus prioridades son provisionales y no fundamentan criterios de *gate* (34 §5.3).
+
+> **Por qué importa.** La compañía que ya informa a su comité de riesgos con el AI RMF o con el CSF no necesita una segunda evaluación ni un segundo número. El mismo cuestionario verificado da el nivel de madurez y los perfiles, de modo que el consejo ve una sola escala y la brecha frente al objetivo sale de evidencia, no de una autoevaluación aparte.
+
 ---
 
 ## 8. Objetivos de madurez por ambición
@@ -498,3 +520,4 @@ El consejo no debería aprobar apuestas de Transformar en G2 con D1 o D6 inferio
 | Versión | Fecha | Cambios |
 |---|---|---|
 | 0.1 | 16-09-2026 | Primera versión. Confirma las siete dimensiones y los seis niveles (D10); define rúbricas, cuestionario de 84 preguntas, modalidades, muestreo, cálculo con límite por D1 y D6, informe, vínculos con el índice de transformación y con 01 §14, y objetivos de referencia por ambición. |
+| 0.2 | 25-09-2026 | Añade la equivalencia orientativa de los niveles 0–5 con los *tiers* del NIST CSF 2.0 (sección 2.2), que es una vista calculada y no una segunda escala, y el vínculo 7.5 con los perfiles NIST: nivel actual de cada subcategoría del AI RMF y del CSF derivado del cuestionario, preguntas propias, nivel objetivo en C2, brecha y *tier* equivalente (34 §5.4 y §5.5). |
