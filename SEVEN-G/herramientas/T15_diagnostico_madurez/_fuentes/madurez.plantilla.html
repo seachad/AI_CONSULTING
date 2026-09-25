@@ -193,6 +193,7 @@ dialog::backdrop{background:rgba(26,24,23,.45)}
 <div id="toast" role="status" aria-live="polite"></div>
 <input type="file" id="f-t15" accept=".json,application/json" class="oculto" tabindex="-1" aria-hidden="true">
 <script type="application/json" id="cuestionario">__CUESTIONARIO__</script>
+<script type="application/json" id="perfiles">__PERFILES__</script>
 <script type="application/json" id="datos-demo">__DATOS_DEMO__</script>
 <script>__DATOS_LOCALES__</script>
 <script>
@@ -207,11 +208,13 @@ const VERSION_ESQUEMA = '0.1';
 const LS_DATOS = 'seveng-t15-datos-v1', LS_UI = 'seveng-t15-ui-v1';
 const DIMS = Q.dimensiones, PREG = {};
 for(const d of DIMS) for(const p of d.preguntas) PREG[p.codigo] = Object.assign({dim:d.codigo}, p);
+/* D115: subcategorías del NIST AI RMF (34 §5.4) y del CSF 2.0 (34 §5.5) con su dimensión de referencia y sus preguntas; build_madurez.ps1 las extrae del documento 34 */
+const PERF = JSON.parse(document.getElementById('perfiles').textContent);
 function lsGet(k){ try{ return localStorage.getItem(k); }catch(e){ return null; } }
 function lsSet(k,v){ try{ localStorage.setItem(k,v); return true; }catch(e){ return false; } }
 /* D100: el registro T01 es la fuente de verdad y las herramientas del sitio comparten el almacenamiento local del navegador. T15 lee el registro
    (compañía, muestra estratificada de iniciativas), toma el perfil del último cálculo de T14 para la lectura cruzada y devuelve al registro el
-   resumen de cada diagnóstico (lista madurez[] del esquema 0.6), que el panel del consejo muestra. Abierta como fichero suelto no se comparte nada. */
+   resumen de cada diagnóstico (lista madurez[] del esquema 0.7, con el resumen de los perfiles NIST), que el panel del consejo muestra. Abierta como fichero suelto no se comparte nada. */
 const LS_T01 = 'seveng-t01-datos-v1', LS_T14_RESUMEN = 'seveng-t14-resumen-v1';
 function registroT01Local(){ try{ const r = JSON.parse(lsGet(LS_T01)||'null'); return (r && typeof r==='object' && r.meta && Array.isArray(r.iniciativas)) ? r : null; }catch(e){ return null; } }
 function resumenT14Local(){ try{ const r = JSON.parse(lsGet(LS_T14_RESUMEN)||'null'); return (r && r.herramienta==='T14' && r.perfil_asignado) ? r : null; }catch(e){ return null; } }
@@ -221,7 +224,16 @@ const TX = {
 es:{
  app:'T15 · Diagnóstico de madurez', saltar:'Saltar al contenido', idioma:'Idioma', tema:'Tema', t_auto:'Auto', t_claro:'Claro', t_oscuro:'Oscuro', vistas:'Vistas',
  doc11:'Documento 11', doc11_href:'../../html/es/11_SEVEN-G_Modelo_de_madurez.html', p34:'Plantilla P34', p34_href:'../../html/es/plantillas/P34_SEVEN-G_Cuestionario_e_informe_de_madurez.html', t14:'Índice T14',
- v_evaluacion:'Evaluación', v_cuestionario:'Cuestionario', v_informe:'Informe', v_evolucion:'Evolución', v_guia:'Guía de entrevistas', v_datos:'Datos',
+ v_evaluacion:'Evaluación', v_cuestionario:'Cuestionario', v_informe:'Informe', v_evolucion:'Evolución', v_guia:'Guía de entrevistas', v_datos:'Datos', v_perfil_rmf:'Perfil AI RMF', v_perfil_csf:'Perfil CSF',
+ tit_prmf:'Perfil de gobierno de IA (NIST AI RMF)', sub_prmf:'Las 72 subcategorías del NIST AI RMF con el nivel actual derivado de este diagnóstico, el nivel objetivo, la brecha y el tier equivalente (documento 34 §5.4 y plantilla P73).',
+ tit_pcsf:'Perfil de seguridad de IA (NIST CSF 2.0 / Cyber AI Profile)', sub_pcsf:'Las 48 subcategorías del CSF 2.0 con prioridad alta en el Cyber AI Profile, con el nivel actual derivado de este diagnóstico, el nivel objetivo, la brecha y el tier equivalente (documento 34 §5.5 y plantilla P72).',
+ p_regla:'Una evaluación, dos lecturas (11 §7.5): el nivel actual es el de la dimensión de referencia, rebajado al nivel anterior al de la pregunta asociada de menor nivel que no está en Sí o No aplica. Las subcategorías «Propia» se evalúan aparte y nunca superan su dimensión. Sin evidencia no hay nivel: «s/d» no es 0. El tier es solo una vista (0–1 → 1; 2 → 2; 3 → 3; 4–5 → 4).',
+ p_borrador:'El Cyber AI Profile es un borrador del NIST (diciembre de 2025): la selección de subcategorías y sus prioridades son provisionales y no fundamentan criterios de gate (34 §5.3).',
+ p_resumen:'Resumen', p_funcion:'Función o área', p_subcats:'Subcategorías', p_con_nivel:'Con nivel', p_minimo:'Nivel mínimo', p_frecuente:'Más frecuente', p_con_obj:'Con objetivo', p_con_brecha:'Con brecha',
+ p_area_S:'Área Secure (prioridad 1)', p_area_D:'Área Defend (prioridad 1)', p_area_T:'Área Thwart (prioridad 1)', p_total:'Total', p_csv:'Exportar este perfil (CSV)', p_detalle:'Detalle por subcategoría',
+ p_subcat:'Subcategoría', p_prioridad:'Prioridad S · D · T', p_desde11:'Nivel desde el documento 11', p_actual:'Nivel actual', p_objetivo:'Nivel objetivo (C2)', p_brecha:'Brecha', p_tier:'Tier equiv.',
+ p_propia:'Propia ({d})', p_nivel_propio:'Nivel propio', p_evidencia:'Evidencia (autor, fecha y versión)', p_rebaja:'Rebajan el nivel: {q}',
+ p_m_sd_dim:'Sin dato: la dimensión de referencia no tiene nivel.', p_m_sd_preg:'Sin dato: hay una pregunta asociada sin responder.', p_m_sd_propia:'Sin dato: subcategoría «Propia» sin evaluar.',
  demo:'Datos ilustrativos y ficticios: dos evaluaciones verificadas de la misma compañía ficticia que el registro de demostración de T01 y el panel del consejo de ejemplo. Las referencias de evidencia son inventadas.',
  t01_local:'Registro T01 en este navegador: «{o}», {n} iniciativas, a fecha {f}.', t01_local_no:'No hay ningún registro T01 en este navegador: abra el registro de iniciativas y vuelva.',
  t01_muestra:'Proponer una muestra estratificada desde el registro', t01_guardar:'Guardar el resumen de madurez en el registro T01', exp_t01:'Exportar resumen para T01 (JSON)',
@@ -286,7 +298,16 @@ es:{
 en:{
  app:'T15 · Maturity assessment', saltar:'Skip to content', idioma:'Language', tema:'Theme', t_auto:'Auto', t_claro:'Light', t_oscuro:'Dark', vistas:'Views',
  doc11:'Document 11', doc11_href:'../../html/en/11_SEVEN-G_Modelo_de_madurez.html', p34:'Template P34', p34_href:'../../html/en/plantillas/P34_SEVEN-G_Cuestionario_e_informe_de_madurez.html', t14:'T14 index',
- v_evaluacion:'Assessment', v_cuestionario:'Questionnaire', v_informe:'Report', v_evolucion:'Evolution', v_guia:'Interview guide', v_datos:'Data',
+ v_evaluacion:'Assessment', v_cuestionario:'Questionnaire', v_informe:'Report', v_evolucion:'Evolution', v_guia:'Interview guide', v_datos:'Data', v_perfil_rmf:'AI RMF profile', v_perfil_csf:'CSF profile',
+ tit_prmf:'AI governance profile (NIST AI RMF)', sub_prmf:'The 72 NIST AI RMF subcategories with the current level derived from this assessment, the target level, the gap and the equivalent tier (document 34 §5.4 and template P73).',
+ tit_pcsf:'AI security profile (NIST CSF 2.0 / Cyber AI Profile)', sub_pcsf:'The 48 CSF 2.0 subcategories with high priority in the Cyber AI Profile, with the current level derived from this assessment, the target level, the gap and the equivalent tier (document 34 §5.5 and template P72).',
+ p_regla:'One assessment, two readings (11 §7.5): the current level is that of the reference dimension, lowered to the level below that of the lowest-level associated question that is not at Yes or Not applicable. \u201cOwn\u201d subcategories are assessed separately and never exceed their dimension. No evidence, no level: \u201cn/d\u201d is not 0. The tier is only a view (0–1 → 1; 2 → 2; 3 → 3; 4–5 → 4).',
+ p_borrador:'The Cyber AI Profile is a NIST draft (December 2025): the selection of subcategories and their priorities are provisional and do not underpin gate criteria (34 §5.3).',
+ p_resumen:'Summary', p_funcion:'Function or area', p_subcats:'Subcategories', p_con_nivel:'With level', p_minimo:'Minimum level', p_frecuente:'Most frequent', p_con_obj:'With target', p_con_brecha:'With gap',
+ p_area_S:'Secure area (priority 1)', p_area_D:'Defend area (priority 1)', p_area_T:'Thwart area (priority 1)', p_total:'Total', p_csv:'Export this profile (CSV)', p_detalle:'Detail by subcategory',
+ p_subcat:'Subcategory', p_prioridad:'Priority S · D · T', p_desde11:'Level from document 11', p_actual:'Current level', p_objetivo:'Target level (C2)', p_brecha:'Gap', p_tier:'Equiv. tier',
+ p_propia:'Own ({d})', p_nivel_propio:'Own level', p_evidencia:'Evidence (author, date and version)', p_rebaja:'Lowered by: {q}',
+ p_m_sd_dim:'No data: the reference dimension has no level.', p_m_sd_preg:'No data: an associated question is unanswered.', p_m_sd_propia:'No data: \u201cOwn\u201d subcategory not assessed.',
  demo:'Illustrative and fictitious data: two verified assessments of the same fictitious company as the T01 demonstration register and the example board dashboard. The evidence references are invented.',
  t01_local:'T01 register in this browser: "{o}", {n} initiatives, as at {f}.', t01_local_no:'There is no T01 register in this browser: open the initiative register and come back.',
  t01_muestra:'Propose a stratified sample from the register', t01_guardar:'Save the maturity summary into the T01 register', exp_t01:'Export summary for T01 (JSON)',
@@ -457,26 +478,54 @@ function calcular(ev){
   r.validez = ev.modalidad==='autodiagnostico' ? 'auto' : r.verif.ok ? 'ok' : 'pend';
   return r;
 }
+/* ---- D115: perfiles NIST derivados del cuestionario (11 §7.5): una evaluación, dos lecturas ---- */
+function tierDe(n){ return n==null ? null : n<=1 ? 1 : n===2 ? 2 : n===3 ? 3 : 4; }
+function nivelSub(ev, s, r){
+  const dn = r.por[s.dimension] ? r.por[s.dimension].nivel : null;
+  if(s.propia){ const p = ((ev.perfiles||{}).propios||{})[s.id];
+    if(!p || p.nivel==null || p.nivel==='') return {nivel:null, motivo:'sd_propia'};
+    if(dn==null) return {nivel:null, motivo:'sd_dim'};
+    return {nivel:Math.min(Number(p.nivel), dn), motivo:'', evidencia:p.evidencia||''}; }
+  if(dn==null) return {nivel:null, motivo:'sd_dim'};
+  let n = dn; const falla = [];
+  for(const c of s.preguntas){ const q = PREG[c]; if(!q) continue; const a = resp(ev, c); if(cumple(q, a)) continue;
+    if(!contestada(a)){ if(q.nivel<=n) return {nivel:null, motivo:'sd_preg', falla:[c]}; continue; }
+    if(q.nivel-1 < n){ n = q.nivel-1; falla.push(c); } }   // solo se anotan las preguntas que de verdad rebajan el nivel
+  return {nivel:Math.max(0, n), motivo:'', falla};
+}
+function perfilFilas(ev, marco, r){ r = r || calcular(ev); const obj = (ev.perfiles||{}).objetivos||{};
+  return PERF[marco].map(s=>{ const x = nivelSub(ev, s, r), o = obj[s.id], objetivo = (o==null || o==='') ? null : Number(o);
+    return Object.assign({s, objetivo, tier:tierDe(x.nivel), brecha:(x.nivel!=null && objetivo!=null) ? Math.max(0, objetivo-x.nivel) : null}, x); }); }
+function moda(ns){ if(!ns.length) return null; const c = {}; ns.forEach(n=>c[n]=(c[n]||0)+1); return Number(Object.keys(c).sort((a,b)=>c[b]-c[a] || a-b)[0]); }
+function resumenGrupo(fs){ const ns = fs.map(f=>f.nivel).filter(n=>n!=null);
+  return {subcategorias:fs.length, con_nivel:ns.length, minimo:ns.length ? Math.min(...ns) : null, frecuente:moda(ns), con_objetivo:fs.filter(f=>f.objetivo!=null).length, con_brecha:fs.filter(f=>f.brecha>0).length}; }
+function resumenPerfil(filas, marco){
+  const orden = [...new Set(filas.map(f=>f.s.funcion))];
+  const out = {funciones: orden.map(g=>Object.assign({funcion:g}, resumenGrupo(filas.filter(f=>f.s.funcion===g))))};
+  if(marco==='csf') out.areas = ['S','D','T'].map(a=>Object.assign({area:a}, resumenGrupo(filas.filter(f=>f.s.prioridad && f.s.prioridad[a]===1))));
+  out.total = resumenGrupo(filas); return out; }
+function perfilesResumen(ev, r){ return {ai_rmf:resumenPerfil(perfilFilas(ev, 'ai_rmf', r), 'ai_rmf'), csf:resumenPerfil(perfilFilas(ev, 'csf', r), 'csf')}; }
 function tamMinimo(p){ p = Number(p); if(!p || p<1) return null; return p<=5 ? p : p<=20 ? 5 : p<=60 ? 8 : 12; }
 
 /* ---- D100: intercambio con el registro T01 y con T14 ---- */
-/* resumen de un diagnóstico en el formato madurez[] del esquema 0.6 de T01 (nivel global, media, límite y nivel por dimensión; nunca las respuestas) */
+/* resumen de un diagnóstico en el formato madurez[] del esquema 0.7 de T01 (nivel global, media, límite, nivel por dimensión y resumen de los perfiles NIST por función; nunca las respuestas) */
 function resumenParaT01(ev, fechaExport){
   const r = calcular(ev), nombre = c => L((DIMS.find(x=>x.codigo===c)||{}).nombre) || null;
   return {id:ev.id, fecha_corte:ev.fecha_corte, ciclo:ev.ciclo||null, modalidad:ev.modalidad||null, version_cuestionario:ev.version_cuestionario||null, verificador:ev.verificador||null, organo_aprobacion:ev.organo_aprobacion||null, fecha_aprobacion:ev.fecha_aprobacion||null,
     nivel_global:r.nivel==null?null:r.nivel, nivel_minimo:r.minimo==null?null:r.minimo, media:r.media==null?null:r.media, tope:r.tope==null?null:r.tope, tope_aplicado:!!r.tope_aplicado, limitante:r.limitante||[], validez:r.validez, declaracion_posible:!!r.declara,
     dimensiones:r.dims.map(d=>({dimension:d.codigo, nombre:nombre(d.codigo), nivel:d.nivel==null?null:d.nivel, nivel_minimo:d.minimo==null?null:d.minimo, avance:d.avance==null?null:Math.round(d.avance*10)/10, bloqueantes:d.bloqueantes.map(q=>q.codigo)})),
+    perfiles:perfilesResumen(ev, r),
     fuente:'T15', exportado:fechaExport===undefined ? hoy() : fechaExport};
 }
 function ficheroParaT01(){ return {herramienta:'T15', version_esquema:VERSION_ESQUEMA, exportado:hoy(), aviso_legal:TX.es.legal_txt, datos_ilustrativos:!!(D.meta||{}).datos_ilustrativos, organizacion:(D.meta||{}).organizacion||null,
-  nota:'Resumen de los diagnósticos en el formato madurez[] del esquema 0.6 de T01 (documento 11 §5). Se incorpora en T01 («Datos» → «Validar y fusionar») o desde T15 si el registro está en el mismo navegador.', madurez_t01:ordenadas().map(ev=>resumenParaT01(ev))}; }
-/* guarda el resumen de todas las evaluaciones en el registro T01 de este navegador (se une por identificador; el registro pasa al esquema 0.6) */
+  nota:'Resumen de los diagnósticos en el formato madurez[] del esquema 0.7 de T01 (documento 11 §5). Se incorpora en T01 («Datos» → «Validar y fusionar») o desde T15 si el registro está en el mismo navegador.', madurez_t01:ordenadas().map(ev=>resumenParaT01(ev))}; }
+/* guarda el resumen de todas las evaluaciones en el registro T01 de este navegador (se une por identificador; el registro pasa al esquema 0.7) */
 function guardarEnT01(){
   const reg = registroT01Local(); if(!reg){ toast(t('t01_local_no')); return; }
   reg.madurez = Array.isArray(reg.madurez) ? reg.madurez : []; let n = 0;
   for(const ev of ordenadas()){ const m = Object.assign(resumenParaT01(ev), {incorporado:hoy()}); const k = reg.madurez.findIndex(y=>y && y.id===m.id); if(k>=0) reg.madurez[k]=m; else reg.madurez.push(m); n++; }
   reg.madurez.sort((a,b)=>String(a.fecha_corte)<String(b.fecha_corte)?-1:1);
-  if(['0.1','0.2','0.3','0.4','0.5'].includes(reg.version_esquema)) reg.version_esquema = '0.6';
+  if(['0.1','0.2','0.3','0.4','0.5','0.6'].includes(reg.version_esquema)) reg.version_esquema = '0.7';
   if(!lsSet(LS_T01, JSON.stringify(reg))){ toast(t('no_guardado')); return; }
   toast(t('ok_t01',{n, o:(reg.meta||{}).organizacion||''})); rerender();
 }
@@ -505,7 +554,7 @@ function ordenadas(){ return [...D.evaluaciones].sort((a,b)=>String(a.fecha_cort
 function evSel(){ return D.evaluaciones.find(e=>e.id===UI.sel) || ordenadas().slice(-1)[0] || null; }
 function anteriorVerificada(ev){ return ordenadas().filter(x=>x!==ev && String(x.fecha_corte)<String(ev.fecha_corte) && x.modalidad!=='autodiagnostico').slice(-1)[0] || null; }
 function nuevoId(fecha){ let base='EM-'+(fecha||'').slice(0,7), id=base, k=2; while(D.evaluaciones.some(e=>e.id===id)) id=base+'-'+(k++); return id; }
-function evVacia(){ const f=hoy(); return {id:nuevoId(f), fecha_corte:f, ciclo:'seguimiento', modalidad:'autodiagnostico', version_cuestionario:Q.version_cuestionario, perimetro:'', promotor:'', evaluador_principal:'', equipo:'', verificador:'', organo_aprobacion:'', fecha_aprobacion:'', limitaciones:'', pesos:pesosIguales(), respuestas:{}, entrevistas:[], muestras:[], lectura:{perfil_indice:'', referencia_indice:'', apuestas_transformar:null}, objetivos:{}, horizonte_objetivos:'', mensajes:[], acciones:[], notas:''}; }
+function evVacia(){ const f=hoy(); return {id:nuevoId(f), fecha_corte:f, ciclo:'seguimiento', modalidad:'autodiagnostico', version_cuestionario:Q.version_cuestionario, perimetro:'', promotor:'', evaluador_principal:'', equipo:'', verificador:'', organo_aprobacion:'', fecha_aprobacion:'', limitaciones:'', pesos:pesosIguales(), respuestas:{}, entrevistas:[], muestras:[], lectura:{perfil_indice:'', referencia_indice:'', apuestas_transformar:null}, objetivos:{}, horizonte_objetivos:'', mensajes:[], acciones:[], perfiles:{objetivos:{}, propios:{}}, notas:''}; }
 function mismosPesos(a, b){ const ra = calcular(a).cuotas, rb = calcular(b).cuotas; return DIMS.every(d=>Math.abs(ra[d.codigo]-rb[d.codigo])<0.01); }
 function nivelTxt(n){ return n==null ? t('sin_dato') : String(n); }
 function barras(n, obj){ return '<span class="barras" aria-hidden="true">'+[1,2,3,4,5].map(i=>'<i class="'+(n!=null && i<=n?'on':'')+(obj===i?' obj':'')+'"></i>').join('')+'</span>'; }
@@ -741,6 +790,30 @@ function vistaEvolucion(){
       r.dims.map(x=>'<td class="num">'+(x.nivel==null?'<span class="sd">s/d</span>':x.nivel)+'</td>').join('')+'<td class="num">'+(r.media==null?'—':nf(r.media,2))+'</td><td class="num">'+(r.tope==null?'—':r.tope+(r.tope_aplicado?' ●':''))+'</td><td class="num"><b>'+nivelTxt(r.nivel)+'</b></td><td><button type="button" data-acc="ver" data-id="'+esc(ev.id)+'">'+esc(t('ver'))+'</button></td></tr>'; }
   return h+'</tbody></table></div>';
 }
+function vistaPerfil(marco){
+  const ev = evSel(), rm = marco==='ai_rmf', k = rm ? 'rmf' : 'csf';
+  let h = '<h1>'+esc(t('tit_p'+k))+'</h1><p class="ayuda">'+esc(t('sub_p'+k))+'</p>';
+  if(!ev) return h+'<p class="aviso info">'+esc(t('ninguna'))+'</p>';
+  const r = calcular(ev), filas = perfilFilas(ev, marco, r), res = resumenPerfil(filas, marco);
+  h += '<p class="ayuda">'+esc(t('p_regla'))+'</p>'+(rm ? '' : '<p class="aviso info">'+esc(t('p_borrador'))+'</p>');
+  const fila = (et, g) => '<tr><td>'+esc(et)+'</td><td class="num">'+g.subcategorias+'</td><td class="num">'+g.con_nivel+'</td><td class="num">'+(g.minimo==null ? '<span class="sd">s/d</span>' : g.minimo)+'</td><td class="num">'+(g.frecuente==null ? '—' : g.frecuente)+'</td><td class="num">'+g.con_objetivo+'</td><td class="num">'+g.con_brecha+'</td></tr>';
+  h += '<h2>'+esc(t('p_resumen'))+' · '+esc(ev.id)+'</h2><div class="tblx"><table class="tabla" id="perfil-resumen" data-marco="'+marco+'" data-minimo="'+(res.total.minimo==null ? '' : res.total.minimo)+'" data-con-brecha="'+res.total.con_brecha+'"><thead><tr><th>'+esc(t('p_funcion'))+'</th><th class="num">'+esc(t('p_subcats'))+'</th><th class="num">'+esc(t('p_con_nivel'))+'</th><th class="num">'+esc(t('p_minimo'))+'</th><th class="num">'+esc(t('p_frecuente'))+'</th><th class="num">'+esc(t('p_con_obj'))+'</th><th class="num">'+esc(t('p_con_brecha'))+'</th></tr></thead><tbody>'+
+    res.funciones.map(g=>fila(g.funcion, g)).join('')+(res.areas ? res.areas.map(g=>fila(t('p_area_'+g.area), g)).join('') : '')+fila(t('p_total'), res.total)+'</tbody></table></div>';
+  h += '<div class="fila sin-imprimir"><button type="button" data-acc="csv-perfil" data-marco="'+marco+'">'+esc(t('p_csv'))+'</button></div>';
+  const opts = v => '<option value=""'+(v==null ? ' selected' : '')+'>—</option>'+[0,1,2,3,4,5].map(n=>'<option value="'+n+'"'+(v===n ? ' selected' : '')+'>'+n+'</option>').join('');
+  h += '<h2>'+esc(t('p_detalle'))+'</h2><div class="tblx"><table class="tabla resp" id="tabla-perfil"><thead><tr><th>'+esc(t('p_subcat'))+'</th>'+(rm ? '' : '<th>'+esc(t('p_prioridad'))+'</th>')+'<th>'+esc(t('p_desde11'))+'</th><th class="num">'+esc(t('p_actual'))+'</th><th>'+esc(t('p_objetivo'))+'</th><th class="num">'+esc(t('p_brecha'))+'</th><th class="num">'+esc(t('p_tier'))+'</th></tr></thead><tbody>';
+  for(const f of filas){ const s = f.s, pr = ((ev.perfiles||{}).propios||{})[s.id] || {};
+    const desde = s.propia ? t('p_propia', {d:s.dimension}) : s.dimension+' · '+s.preguntas.join(', ');
+    const actual = f.nivel==null ? '<span class="sd" title="'+esc(t('p_m_'+(f.motivo||'sd_dim')))+'">s/d</span>' : String(f.nivel);
+    const extra = s.propia ? '<div class="sin-imprimir"><label>'+esc(t('p_nivel_propio'))+' <select data-pprop="'+esc(s.id)+'">'+opts(pr.nivel==null || pr.nivel==='' ? null : Number(pr.nivel))+'</select></label> <input type="text" data-pevi="'+esc(s.id)+'" value="'+esc(pr.evidencia||'')+'" placeholder="'+esc(t('p_evidencia'))+'"></div>'
+      : (f.falla && f.falla.length ? '<small>'+esc(t('p_rebaja', {q:f.falla.join(', ')}))+'</small>' : '');
+    h += '<tr data-sub="'+esc(s.id)+'" data-nivel="'+(f.nivel==null ? '' : f.nivel)+'"><td data-l="'+esc(t('p_subcat'))+'"><b>'+esc(s.id)+'</b><br><small>'+esc(L(s.descripcion))+'</small></td>'+
+      (rm ? '' : '<td data-l="'+esc(t('p_prioridad'))+'">'+s.prioridad.S+' · '+s.prioridad.D+' · '+s.prioridad.T+'</td>')+
+      '<td data-l="'+esc(t('p_desde11'))+'">'+esc(desde)+'<br><small>'+esc(L(s.cobertura))+'</small></td><td data-l="'+esc(t('p_actual'))+'" class="num">'+actual+extra+'</td>'+
+      '<td data-l="'+esc(t('p_objetivo'))+'"><select data-pobj="'+esc(s.id)+'" aria-label="'+esc(t('p_objetivo')+' '+s.id)+'">'+opts(f.objetivo)+'</select></td>'+
+      '<td data-l="'+esc(t('p_brecha'))+'" class="num">'+(f.brecha==null ? '—' : f.brecha)+'</td><td data-l="'+esc(t('p_tier'))+'" class="num">'+(f.tier==null ? '—' : f.tier)+'</td></tr>'; }
+  return h+'</tbody></table></div>';
+}
 function vistaGuia(){
   const G = GUIA[lang] || GUIA.es;
   let h = '<h1>'+esc(t('tit_guia'))+'</h1><p class="ayuda">'+esc(t('sub_guia'))+'</p>';
@@ -765,7 +838,7 @@ function vistaDatos(){
 }
 
 /* ---------------- render ---------------- */
-const VISTAS = ['evaluacion','cuestionario','informe','evolucion','guia','datos'];
+const VISTAS = ['evaluacion','cuestionario','informe','perfil_rmf','perfil_csf','evolucion','guia','datos'];
 function ruta(){ const v=(location.hash||'#/evaluacion').replace(/^#\/?/,'').split('/')[0]; return VISTAS.includes(v)?v:'evaluacion'; }
 function render(){
   const foco = document.activeElement && document.activeElement.id, y = window.scrollY;
@@ -785,7 +858,7 @@ function render(){
   document.getElementById('nav').innerHTML = VISTAS.map(x=>'<a href="#/'+x+'"'+(x===v?' aria-current="page"':'')+'>'+esc(t('v_'+x))+'</a>').join('');
   document.getElementById('aviso-demo').innerHTML = (D.meta||{}).datos_ilustrativos ? '<div>'+esc(t('demo'))+'</div>' : '';
   const m = document.getElementById('principal');
-  m.innerHTML = v==='cuestionario' ? vistaCuestionario() : v==='informe' ? vistaInforme() : v==='evolucion' ? vistaEvolucion() : v==='guia' ? vistaGuia() : v==='datos' ? vistaDatos() : vistaEvaluacion();
+  m.innerHTML = v==='cuestionario' ? vistaCuestionario() : v==='informe' ? vistaInforme() : v==='perfil_rmf' ? vistaPerfil('ai_rmf') : v==='perfil_csf' ? vistaPerfil('csf') : v==='evolucion' ? vistaEvolucion() : v==='guia' ? vistaGuia() : v==='datos' ? vistaDatos() : vistaEvaluacion();
   document.getElementById('pie').innerHTML = '<p class="pie-legal"><b>'+esc(t('legal_tit'))+'.</b> '+esc(t('legal_txt'))+'</p><span>'+esc(t('pie_lic'))+'</span><span>'+esc(t('pie_priv'))+'</span>';
   if(window.SevengDatos) SevengDatos.refrescar();
   if(foco && render._mantener){ const e = document.getElementById(foco); if(e){ e.focus({preventScroll:true}); window.scrollTo(0, y); } }
@@ -807,6 +880,7 @@ document.addEventListener('input', ev => {
   const el = ev.target, e = evSel(); if(!e) return;
   if(el.dataset.q && el.tagName==='TEXTAREA'){ setResp(e, el.dataset.q, el.dataset.f, el.value); guardar(); return; }
   if(el.dataset.ev && !el.dataset.re){ e[el.dataset.ev] = el.value; guardar(); refrescarResultado(); return; }
+  if(el.dataset.pevi){ e.perfiles = e.perfiles||{}; e.perfiles.propios = e.perfiles.propios||{}; const p = e.perfiles.propios[el.dataset.pevi] = e.perfiles.propios[el.dataset.pevi]||{nivel:null}; p.evidencia = el.value; guardar(); return; }
   if(el.dataset.msg){ e.mensajes = e.mensajes || []; e.mensajes[Number(el.dataset.msg)] = el.value; guardar(); return; }
   if(el.dataset.arr && el.tagName!=='SELECT'){ const f = e[el.dataset.arr][Number(el.dataset.i)]; f[el.dataset.k] = el.dataset.tp==='num' ? (el.value===''?null:Number(el.value)) : el.value; guardar(); return; }
   if(el.dataset.lect==='referencia_indice'){ e.lectura = e.lectura||{}; e.lectura.referencia_indice = el.value; guardar(); refrescarResultado(); return; }
@@ -820,6 +894,8 @@ document.addEventListener('change', ev => {
   if(el.dataset.cab==='sel'){ UI.sel = el.value; guardar(); render(); return; }
   if(el.dataset.ui==='filtro'){ UI.filtro = el.value; guardar(); rerender(); return; }
   if(!e) return;
+  if(el.dataset.pobj){ e.perfiles = e.perfiles||{}; e.perfiles.objetivos = e.perfiles.objetivos||{}; if(el.value==='') delete e.perfiles.objetivos[el.dataset.pobj]; else e.perfiles.objetivos[el.dataset.pobj] = Number(el.value); guardar(); rerender(); return; }
+  if(el.dataset.pprop){ e.perfiles = e.perfiles||{}; e.perfiles.propios = e.perfiles.propios||{}; const p = e.perfiles.propios[el.dataset.pprop] = e.perfiles.propios[el.dataset.pprop]||{}; p.nivel = el.value==='' ? null : Number(el.value); if(p.nivel==null && !String(p.evidencia||'').trim()) delete e.perfiles.propios[el.dataset.pprop]; guardar(); rerender(); return; }
   if(el.dataset.q && el.tagName==='SELECT'){ setResp(e, el.dataset.q, el.dataset.f, el.value); guardar(); rerender(); return; }
   if(el.dataset.ev && el.dataset.re){ e[el.dataset.ev] = el.value; guardar(); rerender(); return; }
   if(el.dataset.ev && el.type==='date'){ e[el.dataset.ev] = el.value; guardar(); return; }
@@ -832,7 +908,7 @@ function descargar(nombre, txt, tipo){ const blob=new Blob([txt],{type:tipo}), u
 /* el JSON completo del diagnóstico, con los resultados calculados: lo que descarga «Exportar» y lo que se escribe en el fichero del equipo (D103) */
 function datosExportables(){ const x=clon(D); x.version_esquema=VERSION_ESQUEMA; x.herramienta='T15'; x.meta=Object.assign({}, x.meta, {exportado:hoy(), aviso_legal:TX.es.legal_txt});
   x.evaluaciones.forEach((cc,i)=>{ const r=calcular(D.evaluaciones[i]); cc.resultado={nivel_global:r.nivel, nivel_minimo:r.minimo, media:r.media, tope:r.tope, tope_aplicado:r.tope_aplicado, limitante:r.limitante, validez:r.validez, declaracion_posible:r.declara, s14_no_si:r.s14_fallan,
-    dimensiones:r.dims.map(d=>({dimension:d.codigo, nivel:d.nivel, nivel_minimo:d.minimo, avance:d.avance==null?null:Math.round(d.avance*10)/10, bloqueantes:d.bloqueantes.map(q=>q.codigo), adelantados:d.adelantados.map(q=>q.codigo), sin_dato:d.sd})), lecturas:r.lecturas}; });
+    dimensiones:r.dims.map(d=>({dimension:d.codigo, nivel:d.nivel, nivel_minimo:d.minimo, avance:d.avance==null?null:Math.round(d.avance*10)/10, bloqueantes:d.bloqueantes.map(q=>q.codigo), adelantados:d.adelantados.map(q=>q.codigo), sin_dato:d.sd})), lecturas:r.lecturas, perfiles:perfilesResumen(D.evaluaciones[i], r)}; });
   return x; }
 function csvCelda(v){ if(v==null) return ''; const s=String(v); return /[;"\r\n]/.test(s) ? '"'+s.replace(/"/g,'""')+'"' : s; }
 document.addEventListener('click', ev => {
@@ -860,6 +936,11 @@ document.addEventListener('click', ev => {
   if(a==='csv' && e){ const cab=['evaluacion','fecha_corte','modalidad','version_cuestionario','dimension','codigo','nivel_pregunta','s14','si_aplica','pregunta','respuesta','tipo_no','evidencia','justificacion_no_aplica','verificacion','respuesta_original','nota_verificador'];
     const filas = Object.values(PREG).map(q=>{ const r=resp(e,q.codigo); return [e.id,e.fecha_corte,e.modalidad,e.version_cuestionario,q.dim,q.codigo,q.nivel,q.s14?1:0,q.si_aplica?1:0,L(q.texto),r.r||'',r.no_tipo||'',r.evidencia||'',r.na_just||'',r.verif||'sin_verificar',r.original||'',r.verif_nota||''].map(csvCelda).join(';'); });
     descargar('T15_respuestas_'+e.id+'_'+hoy()+'.csv', '﻿'+cab.join(';')+'\r\n'+filas.join('\r\n')+'\r\n', 'text/csv;charset=utf-8'); toast(t('ok_export')); return; }
+  if(a==='csv-perfil' && e){ const marco = b.dataset.marco, filas = perfilFilas(e, marco);
+    const cab = ['evaluacion','fecha_corte','marco','subcategoria','funcion','prioridad_secure','prioridad_defend','prioridad_thwart','dimension','preguntas','propia','nivel_actual','tier_equivalente','nivel_objetivo','brecha','preguntas_que_rebajan','evidencia_propia','descripcion'];
+    const pr = f => f.s.prioridad || {};
+    const rows = filas.map(f=>[e.id, e.fecha_corte, marco, f.s.id, f.s.funcion, pr(f).S, pr(f).D, pr(f).T, f.s.dimension, f.s.preguntas.join(' '), f.s.propia?1:0, f.nivel, f.tier, f.objetivo, f.brecha, (f.falla||[]).join(' '), f.evidencia||'', L(f.s.descripcion)].map(csvCelda).join(';'));
+    descargar('T15_perfil_'+(marco==='csf'?'CSF':'AI_RMF')+'_'+e.id+'_'+hoy()+'.csv', '\uFEFF'+cab.join(';')+'\r\n'+rows.join('\r\n')+'\r\n', 'text/csv;charset=utf-8'); toast(t('ok_export')); return; }
   if(a==='restaurar'){ if(!confirm(t('conf_restaurar'))) return; D=cargarDemo(); SevengDatos.reiniciar('demo'); UI.sel=null; guardar(); render(); return; }
   if(a==='vaciar'){ if(!confirm(t('conf_vaciar'))) return; D.evaluaciones=[]; D.meta=Object.assign({}, D.meta, {datos_ilustrativos:false}); UI.sel=null; guardar(); render(); return; }
 });

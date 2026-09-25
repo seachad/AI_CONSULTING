@@ -25,7 +25,7 @@
 | **Who verifies it** | The independent verifier of the maturity assessment (11 §4.2), who also reviews all "Own" subcategories at level 3 or above. |
 | **Who decides or approves** | The AI Committee approves the profile and the proposed target levels; the board or its board committee approves the target levels in C2. |
 | **Stage of the corporate cycle** | C1 and C5 (current profile), C2 (target profile), C4 (monitoring of actions). |
-| **Tool** | T15 · Maturity assessment provides the answers and the level of each dimension; in version 0.x, the profile is completed in this template or in its Word version. |
+| **Tool** | T15 · Maturity assessment calculates this profile in its "AI RMF profile" view: level derived from the questionnaire, own levels, targets, gap, equivalent *tier* and CSV export, and saves its summary into the T01 register. This template is its paper or Word equivalent. |
 | **Reference document** | Document 34 §5.4 (subcategories, coverage in SEVEN-G and associated questions); document 11 §2.2 (levels and equivalence with *tiers*) and §7.5 (derivation rule). |
 | **Lite versus Enterprise** | In Lite scope the company may select only the GOVERN subcategories and those that correspond to its Enterprise initiatives, and leave the others out of the profile with a reason. |
 

@@ -25,7 +25,7 @@
 | **Quién la verifica** | El verificador independiente de la evaluación de madurez (11 §4.2), con apoyo de seguridad de la información para las subcategorías «Propia». |
 | **Quién decide o aprueba** | El comité de IA aprueba el perfil; los niveles objetivo los aprueba el consejo o su comisión delegada en C2, junto con el apetito de riesgo. |
 | **Etapa del ciclo corporativo** | C1 y C5 (perfil actual), C2 (perfil objetivo), C4 (seguimiento de las acciones y de la exposición a la IA ofensiva). |
-| **Herramienta** | T15 · Diagnóstico de madurez aporta las respuestas; T10 aporta el estado de los controles SEG y AG. En la versión 0.x, el perfil se completa en esta plantilla o en su versión Word. |
+| **Herramienta** | T15 · Diagnóstico de madurez calcula este perfil en su vista «Perfil CSF» (nivel derivado del cuestionario, niveles propios, objetivos, brecha, *tier* equivalente, resúmenes por función y área y CSV) y guarda su resumen en el registro T01; T10 aporta el estado de los controles SEG y AG. Esta plantilla es su equivalente en papel o en Word. |
 | **Documento de referencia** | Documento 34 §5.3 (CSF 2.0 y Cyber AI Profile, este en borrador) y §5.5 (subcategorías, prioridades, cobertura y preguntas); documento 35 (controles SEG y AG con su función CSF); documento 11 §2.2 y §7.5. |
 | **Lite frente a Enterprise** | En alcance Lite la compañía puede limitar el perfil a las subcategorías con prioridad 1 en Secure y Thwart, y dejar las demás fuera con motivo. |
 

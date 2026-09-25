@@ -8,7 +8,7 @@ Everything the connector generates (full dashboard, mobile dashboard and recomme
 
 ---
 
-Converts the **full JSON** exported by the SEVEN-G **T01** initiative register (schema `esquema_registro.schema.json`, versions `0.1` to `0.6`; 0.4 adds risk fields and 0.5 the index evidence and board decisions, which the connector does not read; 0.6 the `madurez[]` list written by T15, which the connector takes to the optional `madurez` block of the dashboard: the "Company maturity (D1–D7)" card in "Portfolio and value" and a block in the mobile dashboard, D100) into the dashboard JSON (`motor/ESQUEMA.md`) and, using the dashboard engine included in `motor/`, generates:
+Converts the **full JSON** exported by the SEVEN-G **T01** initiative register (schema `esquema_registro.schema.json`, versions `0.1` to `0.7`; 0.7 adds to each assessment the summary of the NIST profiles, which the maturity card shows in its own table, D115; 0.4 adds risk fields and 0.5 the index evidence and board decisions, which the connector does not read; 0.6 the `madurez[]` list written by T15, which the connector takes to the optional `madurez` block of the dashboard: the "Company maturity (D1–D7)" card in "Portfolio and value" and a block in the mobile dashboard, D100) into the dashboard JSON (`motor/ESQUEMA.md`) and, using the dashboard engine included in `motor/`, generates:
 
 - the **full dashboard** and the **mobile dashboard** (T17), in sync (same data fingerprint);
 - the **dashboard JSON**, to inspect it or save it as a snapshot with `motor/snapshot.py`;

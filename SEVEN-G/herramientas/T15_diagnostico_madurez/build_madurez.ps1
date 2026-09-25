@@ -18,11 +18,16 @@ param(
   [string]$Datos,
   [string]$Salida,
   [switch]$ActualizarCuestionario,
-  [string]$Resumen
+  [string]$Resumen,
+  [switch]$ActualizarPerfiles
 )
 <#
+  -ActualizarPerfiles (D115): regenera perfiles_nist.json desde el documento 34 §5.4 y §5.5 (ES/EN). En cada construcción se comprueba que coincide
+  con el documento: si cambia una subcategoría, su dimensión o sus preguntas, la construcción falla hasta regenerarlo.
+#>
+<#
   -Resumen <fichero.json>  (D100): además de construir la página, la abre en Edge sin ventana y escribe el resumen de todas las evaluaciones
-  del fichero de datos en el formato madurez[] del esquema 0.6 de T01 (el mismo fichero que exporta el botón «Exportar resumen para T01»,
+  del fichero de datos en el formato madurez[] del esquema 0.7 de T01 (con el resumen de los perfiles NIST) (el mismo fichero que exporta el botón «Exportar resumen para T01»,
   sin fecha de exportación para que sea reproducible). Es lo que el registro de demostración de T01 lleva en su lista madurez[].
 #>
 $ErrorActionPreference = 'Stop'
@@ -120,6 +125,49 @@ function Comprobar-Cuestionario($c) {
   return $e
 }
 
+# ---- perfiles NIST (D115): subcategorías del AI RMF y del CSF 2.0 con su dimensión y sus preguntas, extraídas del documento 34 §5.4 y §5.5
+$rutaPerf = Join-Path $aqui 'perfiles_nist.json'
+$doc34 = @{ es = (Join-Path $mds 'es\34_SEVEN-G_Mapeo_regulatorio.md'); en = (Join-Path $mds 'en\34_SEVEN-G_Mapeo_regulatorio.md') }
+function Nivel-Desde([string]$celda) {
+  # «D6 · D6.05, D6.12», «D7 · D7.09; D6 · D6.11», «Propia (D5)» / «Own (D5)»
+  if ($celda -match '^(?:Propia|Own) \((D[1-7])\)$') { return [ordered]@{ dimension = $Matches[1]; preguntas = @(); propia = $true } }
+  $dims = @([regex]::Matches($celda, '(D[1-7]) · ') | ForEach-Object { $_.Groups[1].Value })
+  if (-not $dims.Count) { throw "celda de nivel no reconocida en el documento 34: «$celda»" }
+  return [ordered]@{ dimension = $dims[0]; preguntas = @([regex]::Matches($celda, '\bD[1-7]\.\d\d\b') | ForEach-Object { $_.Value }); propia = $false }
+}
+function Leer-Perfiles([string]$ruta) {
+  $t = [IO.File]::ReadAllText($ruta)
+  $s54 = [regex]::Match($t, '(?ms)^### 5\.4 .*?(?=^### 5\.5 )').Value; $s55 = [regex]::Match($t, '(?ms)^### 5\.5 .*?(?=^## )').Value
+  if (-not $s54 -or -not $s55) { throw "El documento 34 no tiene las secciones 5.4 y 5.5: $ruta" }
+  $rmf = foreach ($m in [regex]::Matches($s54, '(?m)^\| ((GOVERN|MAP|MEASURE|MANAGE) \d+\.\d+) \| (.+?) \| (.+?) \| (.+?) \|\r?$')) { [ordered]@{ id = $m.Groups[1].Value; funcion = $m.Groups[2].Value; descripcion = $m.Groups[3].Value.Trim(); cobertura = $m.Groups[4].Value.Trim(); nivel = (Nivel-Desde $m.Groups[5].Value.Trim()) } }
+  $csf = foreach ($m in [regex]::Matches($s55, '(?m)^\| (((GV|ID|PR|DE|RS|RC))\.[A-Z]{2}-\d\d) \| (.+?) \| ([123]) · ([123]) · ([123]) \| (.+?) \| (.+?) \|\r?$')) { [ordered]@{ id = $m.Groups[1].Value; funcion = $m.Groups[2].Value; descripcion = $m.Groups[4].Value.Trim(); prioridad = [ordered]@{ S = [int]$m.Groups[5].Value; D = [int]$m.Groups[6].Value; T = [int]$m.Groups[7].Value }; cobertura = $m.Groups[8].Value.Trim(); nivel = (Nivel-Desde $m.Groups[9].Value.Trim()) } }
+  return [ordered]@{ rmf = @($rmf); csf = @($csf) }
+}
+function Perfiles-DesdeDocumento {
+  $es = Leer-Perfiles $doc34.es; $en = Leer-Perfiles $doc34.en
+  $bi = { param($a, $b) [ordered]@{ es = $a; en = $b } }
+  $unir = { param($LA, $LB, $conPrioridad)
+    if ($LA.Count -ne $LB.Count) { throw "documento 34: distinto número de subcategorías en ES ($($LA.Count)) y EN ($($LB.Count))" }
+    for ($i = 0; $i -lt $LA.Count; $i++) {
+      $a = $LA[$i]; $b = $LB[$i]
+      if ($a.id -ne $b.id -or $a.nivel.dimension -ne $b.nivel.dimension -or (($a.nivel.preguntas) -join ',') -ne (($b.nivel.preguntas) -join ',') -or $a.nivel.propia -ne $b.nivel.propia) { throw "documento 34: la subcategoría $($a.id) no coincide en ES y EN (código, dimensión o preguntas)" }
+      $o = [ordered]@{ id = $a.id; funcion = $a.funcion; dimension = $a.nivel.dimension; preguntas = @($a.nivel.preguntas); propia = [bool]$a.nivel.propia }
+      if ($conPrioridad) { if (($a.prioridad | ConvertTo-Json -Compress) -ne ($b.prioridad | ConvertTo-Json -Compress)) { throw "documento 34: prioridades distintas en ES y EN para $($a.id)" }; $o.prioridad = $a.prioridad }
+      $o.descripcion = (& $bi $a.descripcion $b.descripcion); $o.cobertura = (& $bi $a.cobertura $b.cobertura)
+      $o } }
+  return [ordered]@{
+    origen = 'Documento 34 · Mapeo regulatorio, §5.4 (NIST AI RMF, 72 subcategorías) y §5.5 (NIST CSF 2.0, 48 subcategorías con prioridad alta en el Cyber AI Profile, en borrador). Extraído con build_madurez.ps1 -ActualizarPerfiles; no se edita a mano.'
+    ai_rmf = @(& $unir $es.rmf $en.rmf $false)
+    csf = @(& $unir $es.csf $en.csf $true)
+  }
+}
+
+if ($ActualizarPerfiles) {
+  $p = Perfiles-DesdeDocumento
+  [IO.File]::WriteAllText($rutaPerf, ($p | ConvertTo-Json -Depth 20) + "`n", [Text.UTF8Encoding]::new($false))
+  "perfiles: $rutaPerf actualizado desde el documento 34 ($($p.ai_rmf.Count) subcategorías del AI RMF y $($p.csf.Count) del CSF)"
+}
+
 if ($ActualizarCuestionario) {
   $nuevo = Cuestionario-DesdeDocumento
   $err = Comprobar-Cuestionario ($nuevo | ConvertTo-Json -Depth 20 | ConvertFrom-Json -Depth 20)
@@ -129,7 +177,7 @@ if ($ActualizarCuestionario) {
   "cuestionario: $rutaCuest actualizado desde el documento 11 (versión $($nuevo.version_cuestionario); si han cambiado preguntas o niveles, suba la versión)"
 }
 
-foreach ($f in $plantilla, $Datos, $rutaCuest) { if (-not (Test-Path $f)) { throw "No se encuentra $f" } }
+foreach ($f in $plantilla, $Datos, $rutaCuest, $rutaPerf) { if (-not (Test-Path $f)) { throw "No se encuentra $f (perfiles_nist.json se crea con -ActualizarPerfiles)" } }
 $c = Get-Content $rutaCuest -Raw -Encoding utf8 | ConvertFrom-Json -Depth 20
 $errores = [Collections.Generic.List[string]]::new()
 foreach ($x in (Comprobar-Cuestionario $c)) { $errores.Add("cuestionario: $x") }
@@ -142,6 +190,19 @@ if ((Test-Path $doc.es) -and (Test-Path $doc.en)) {
     $errores.Add('cuestionario.json no coincide con el documento 11 (ES/EN): ejecute build_madurez.ps1 -ActualizarCuestionario y revise si procede subir la versión del cuestionario')
   }
 }
+
+# ---- los perfiles NIST deben coincidir con el documento 34 (ES/EN) y citar preguntas que existen (D115)
+$perf = Get-Content $rutaPerf -Raw -Encoding utf8 | ConvertFrom-Json -Depth 20
+if ((Test-Path $doc34.es) -and (Test-Path $doc34.en)) {
+  $delDoc34 = (Perfiles-DesdeDocumento) | ConvertTo-Json -Depth 20 | ConvertFrom-Json -Depth 20
+  if (($delDoc34 | ConvertTo-Json -Depth 20 -Compress) -cne ($perf | ConvertTo-Json -Depth 20 -Compress)) { $errores.Add('perfiles_nist.json no coincide con el documento 34 §5.4 y §5.5 (ES/EN): ejecute build_madurez.ps1 -ActualizarPerfiles') }
+}
+if (@($perf.ai_rmf).Count -ne 72) { $errores.Add("perfiles_nist.json: $(@($perf.ai_rmf).Count) subcategorías del AI RMF (deben ser 72)") }
+if (@($perf.csf).Count -ne 48) { $errores.Add("perfiles_nist.json: $(@($perf.csf).Count) subcategorías del CSF (deben ser 48)") }
+$idsPerf = @{}; $codDims = @($c.dimensiones | ForEach-Object codigo); $codPreg = @{}; foreach ($dd in $c.dimensiones) { foreach ($p in $dd.preguntas) { $codPreg[$p.codigo] = $true } }
+foreach ($s in @($perf.ai_rmf) + @($perf.csf)) { $idsPerf[$s.id] = $s
+  if ($s.dimension -notin $codDims) { $errores.Add("perfil $($s.id): dimensión $($s.dimension) inexistente") }
+  foreach ($q in @($s.preguntas)) { if (-not $codPreg[$q]) { $errores.Add("perfil $($s.id): pregunta $q inexistente en el cuestionario") } } }
 
 # ---- comprobaciones de los datos
 $d = Get-Content $Datos -Raw -Encoding utf8 | ConvertFrom-Json -Depth 32
@@ -160,13 +221,23 @@ foreach ($ev in $d.evaluaciones) {
     if ($null -ne $v.r -and $v.r -notin 'si', 'parcial', 'no', 'na') { $errores.Add("evaluación $($ev.id) $($pr.Name): respuesta no válida ($($v.r))") }
     if ($v.r -eq 'na' -and -not $q.si_aplica) { $errores.Add("evaluación $($ev.id) $($pr.Name): «No aplica» en una pregunta que no lo admite") }
   }
+  foreach ($grupo in 'objetivos', 'propios') {
+    if (-not $ev.perfiles -or -not $ev.perfiles.$grupo) { continue }
+    foreach ($pr in $ev.perfiles.$grupo.PSObject.Properties) {
+      $s = $idsPerf[$pr.Name]
+      if (-not $s) { $errores.Add("evaluación $($ev.id): perfiles.$grupo cita una subcategoría inexistente ($($pr.Name))"); continue }
+      $n = if ($grupo -eq 'propios') { $pr.Value.nivel } else { $pr.Value }
+      if ($null -ne $n -and ($n -lt 0 -or $n -gt 5)) { $errores.Add("evaluación $($ev.id): perfiles.$grupo.$($pr.Name) fuera de la escala 0–5") }
+      if ($grupo -eq 'propios' -and -not $s.propia) { $errores.Add("evaluación $($ev.id): $($pr.Name) no es una subcategoría «Propia»; su nivel se deriva del cuestionario") }
+    }
+  }
 }
 if ($errores.Count) { throw "Fuentes de T15 incoherentes:`n  " + ($errores -join "`n  ") }
 
 # ---- construcción
 $html = [IO.File]::ReadAllText($plantilla)
-foreach ($m in '__CUESTIONARIO__', '__DATOS_DEMO__') { if (([regex]::Matches($html, $m)).Count -ne 1) { throw "La plantilla debe contener una sola vez la marca $m" } }
-$html = $html.Replace('__CUESTIONARIO__', (Compactar $rutaCuest)).Replace('__DATOS_DEMO__', (Compactar $Datos))
+foreach ($m in '__CUESTIONARIO__', '__DATOS_DEMO__', '__PERFILES__') { if (([regex]::Matches($html, $m)).Count -ne 1) { throw "La plantilla debe contener una sola vez la marca $m" } }
+$html = $html.Replace('__CUESTIONARIO__', (Compactar $rutaCuest)).Replace('__DATOS_DEMO__', (Compactar $Datos)).Replace('__PERFILES__', (Compactar $rutaPerf))
 # módulo común de datos locales (D103): se incrusta para que la herramienta siga siendo un solo fichero
 $comun = Join-Path $aqui '..\_comun\datos_locales.js'
 if (-not (Test-Path $comun)) { throw "No se encuentra $comun" }

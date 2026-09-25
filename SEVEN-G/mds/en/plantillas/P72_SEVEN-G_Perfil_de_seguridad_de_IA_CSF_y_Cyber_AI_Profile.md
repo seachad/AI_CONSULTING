@@ -25,7 +25,7 @@
 | **Who verifies it** | The independent verifier of the maturity assessment (11 §4.2), supported by information security for the "Own" subcategories. |
 | **Who decides or approves** | The AI Committee approves the profile; the target levels are approved by the board or its board committee in C2, together with the risk appetite. |
 | **Stage of the corporate cycle** | C1 and C5 (current profile), C2 (target profile), C4 (monitoring of actions and of exposure to offensive AI). |
-| **Tool** | T15 · Maturity assessment provides the answers; T10 provides the status of the SEG and AG controls. In version 0.x, the profile is completed in this template or in its Word version. |
+| **Tool** | T15 · Maturity assessment calculates this profile in its "CSF profile" view (level derived from the questionnaire, own levels, targets, gap, equivalent *tier*, summaries by function and area and CSV) and saves its summary into the T01 register; T10 provides the status of the SEG and AG controls. This template is its paper or Word equivalent. |
 | **Reference document** | Document 34 §5.3 (CSF 2.0 and Cyber AI Profile, the latter in draft) and §5.5 (subcategories, priorities, coverage and questions); document 35 (SEG and AG controls with their CSF function); document 11 §2.2 and §7.5. |
 | **Lite versus Enterprise** | In Lite scope the company may limit the profile to the subcategories with priority 1 in Secure and Thwart, and leave the others out with a reason. |
 

@@ -1,6 +1,6 @@
 {
   "$schema": "./esquema_registro.schema.json",
-  "version_esquema": "0.6",
+  "version_esquema": "0.7",
   "aviso_legal": "Aviso legal y exención de responsabilidad. SEVEN-G y esta herramienta se ofrecen «tal cual» y con fines exclusivamente informativos. No constituyen asesoramiento jurídico, regulatorio, financiero ni profesional, ni garantizan el cumplimiento de ninguna norma. Los criterios, clasificaciones y referencias a regulación general (Reglamento Europeo de IA, RGPD, DORA, NIS2…) o sectorial pueden ser incompletos, no aplicar a un caso concreto o quedar desactualizados por cambios normativos. Cada organización que use la herramienta es la única responsable de identificar la normativa que le aplica, verificar su vigencia y certificar su propio cumplimiento regulatorio, con el asesoramiento cualificado que corresponda. Esta metodología es una ayuda genérica y gratuita, compartida con la comunidad para que nadie tenga que empezar desde cero; cada persona u organización puede y debe adaptarla a su propio uso. No debe entenderse que sus partes jurídicamente sensibles hayan sido revisadas por una asesoría jurídica: esas revisiones, para cada empresa o sector, son responsabilidad última de la empresa, el consultor o la organización que la use. Aunque se procura mantenerla al día, alguna norma puede haber cambiado sin que se recoja aquí. En la máxima medida permitida por la ley, el autor no asume responsabilidad alguna por los efectos de su aplicación en ninguna organización ni por su aplicabilidad completa. La metodología no otorga certificación de ningún tipo. El autor no asume responsabilidad alguna por el uso de la herramienta ni por las decisiones adoptadas con ella. Los datos de demostración son ficticios.",
   "meta": {
     "organizacion": "Compañía Ejemplo Industrial, S.A. (ficticia)",
@@ -25735,209 +25735,499 @@
     }
   ],
   "madurez": [
-    {
-      "id": "EM-2025-09",
-      "fecha_corte": "2025-09-30",
-      "ciclo": "C1",
-      "modalidad": "verificada",
-      "version_cuestionario": "0.1",
-      "verificador": "Auditoría interna",
-      "organo_aprobacion": "Comité de IA; presentado a la comisión delegada del consejo",
-      "fecha_aprobacion": "2025-10-28",
-      "nivel_global": 1,
-      "nivel_minimo": 1,
-      "media": 1.57,
-      "tope": 2,
-      "tope_aplicado": false,
-      "limitante": [
-        "D6"
-      ],
-      "validez": "ok",
-      "declaracion_posible": false,
-      "dimensiones": [
-        {
-          "dimension": "D1",
-          "nombre": "Estrategia y gobierno",
-          "nivel": 2,
-          "nivel_minimo": 2,
-          "avance": 12.5,
-          "bloqueantes": [
-            "D1.05",
-            "D1.06",
-            "D1.07",
-            "D1.08"
-          ]
-        },
-        {
-          "dimension": "D2",
-          "nombre": "Valor y cartera",
-          "nivel": 2,
-          "nivel_minimo": 2,
-          "avance": 50,
-          "bloqueantes": [
-            "D2.05",
-            "D2.06",
-            "D2.07"
-          ]
-        },
-        {
-          "dimension": "D3",
-          "nombre": "Datos y conocimiento",
-          "nivel": 1,
-          "nivel_minimo": 1,
-          "avance": 25,
-          "bloqueantes": [
-            "D3.03",
-            "D3.04"
-          ]
-        },
-        {
-          "dimension": "D4",
-          "nombre": "Tecnología y operación",
-          "nivel": 2,
-          "nivel_minimo": 2,
-          "avance": 16.7,
-          "bloqueantes": [
-            "D4.05",
-            "D4.06",
-            "D4.07"
-          ]
-        },
-        {
-          "dimension": "D5",
-          "nombre": "Personas y adopción",
-          "nivel": 1,
-          "nivel_minimo": 1,
-          "avance": 50,
-          "bloqueantes": [
-            "D5.03"
-          ]
-        },
-        {
-          "dimension": "D6",
-          "nombre": "Riesgo, seguridad y cumplimiento",
-          "nivel": 1,
-          "nivel_minimo": 1,
-          "avance": 25,
-          "bloqueantes": [
-            "D6.03",
-            "D6.04"
-          ]
-        },
-        {
-          "dimension": "D7",
-          "nombre": "Medición y evidencia",
-          "nivel": 2,
-          "nivel_minimo": 2,
-          "avance": 12.5,
-          "bloqueantes": [
-            "D7.05",
-            "D7.06",
-            "D7.07",
-            "D7.08"
-          ]
+  {
+    "id": "EM-2025-09",
+    "fecha_corte": "2025-09-30",
+    "ciclo": "C1",
+    "modalidad": "verificada",
+    "version_cuestionario": "0.1",
+    "verificador": "Auditoría interna",
+    "organo_aprobacion": "Comité de IA; presentado a la comisión delegada del consejo",
+    "fecha_aprobacion": "2025-10-28",
+    "nivel_global": 1,
+    "nivel_minimo": 1,
+    "media": 1.57,
+    "tope": 2,
+    "tope_aplicado": false,
+    "limitante": [
+      "D6"
+    ],
+    "validez": "ok",
+    "declaracion_posible": false,
+    "dimensiones": [
+      {
+        "dimension": "D1",
+        "nombre": "Estrategia y gobierno",
+        "nivel": 2,
+        "nivel_minimo": 2,
+        "avance": 12.5,
+        "bloqueantes": [
+          "D1.05",
+          "D1.06",
+          "D1.07",
+          "D1.08"
+        ]
+      },
+      {
+        "dimension": "D2",
+        "nombre": "Valor y cartera",
+        "nivel": 2,
+        "nivel_minimo": 2,
+        "avance": 50,
+        "bloqueantes": [
+          "D2.05",
+          "D2.06",
+          "D2.07"
+        ]
+      },
+      {
+        "dimension": "D3",
+        "nombre": "Datos y conocimiento",
+        "nivel": 1,
+        "nivel_minimo": 1,
+        "avance": 25,
+        "bloqueantes": [
+          "D3.03",
+          "D3.04"
+        ]
+      },
+      {
+        "dimension": "D4",
+        "nombre": "Tecnología y operación",
+        "nivel": 2,
+        "nivel_minimo": 2,
+        "avance": 16.7,
+        "bloqueantes": [
+          "D4.05",
+          "D4.06",
+          "D4.07"
+        ]
+      },
+      {
+        "dimension": "D5",
+        "nombre": "Personas y adopción",
+        "nivel": 1,
+        "nivel_minimo": 1,
+        "avance": 50,
+        "bloqueantes": [
+          "D5.03"
+        ]
+      },
+      {
+        "dimension": "D6",
+        "nombre": "Riesgo, seguridad y cumplimiento",
+        "nivel": 1,
+        "nivel_minimo": 1,
+        "avance": 25,
+        "bloqueantes": [
+          "D6.03",
+          "D6.04"
+        ]
+      },
+      {
+        "dimension": "D7",
+        "nombre": "Medición y evidencia",
+        "nivel": 2,
+        "nivel_minimo": 2,
+        "avance": 12.5,
+        "bloqueantes": [
+          "D7.05",
+          "D7.06",
+          "D7.07",
+          "D7.08"
+        ]
+      }
+    ],
+    "perfiles": {
+      "ai_rmf": {
+        "funciones": [
+          {
+            "funcion": "GOVERN",
+            "subcategorias": 19,
+            "con_nivel": 15,
+            "minimo": 1,
+            "frecuente": 1,
+            "con_objetivo": 0,
+            "con_brecha": 0
+          },
+          {
+            "funcion": "MAP",
+            "subcategorias": 18,
+            "con_nivel": 14,
+            "minimo": 1,
+            "frecuente": 1,
+            "con_objetivo": 0,
+            "con_brecha": 0
+          },
+          {
+            "funcion": "MEASURE",
+            "subcategorias": 22,
+            "con_nivel": 13,
+            "minimo": 1,
+            "frecuente": 2,
+            "con_objetivo": 0,
+            "con_brecha": 0
+          },
+          {
+            "funcion": "MANAGE",
+            "subcategorias": 13,
+            "con_nivel": 13,
+            "minimo": 1,
+            "frecuente": 2,
+            "con_objetivo": 0,
+            "con_brecha": 0
+          }
+        ],
+        "total": {
+          "subcategorias": 72,
+          "con_nivel": 55,
+          "minimo": 1,
+          "frecuente": 2,
+          "con_objetivo": 0,
+          "con_brecha": 0
         }
-      ],
-      "fuente": "T15",
-      "exportado": null
+      },
+      "csf": {
+        "funciones": [
+          {
+            "funcion": "GV",
+            "subcategorias": 13,
+            "con_nivel": 9,
+            "minimo": 1,
+            "frecuente": 2,
+            "con_objetivo": 0,
+            "con_brecha": 0
+          },
+          {
+            "funcion": "ID",
+            "subcategorias": 9,
+            "con_nivel": 8,
+            "minimo": 1,
+            "frecuente": 1,
+            "con_objetivo": 0,
+            "con_brecha": 0
+          },
+          {
+            "funcion": "PR",
+            "subcategorias": 13,
+            "con_nivel": 10,
+            "minimo": 1,
+            "frecuente": 1,
+            "con_objetivo": 0,
+            "con_brecha": 0
+          },
+          {
+            "funcion": "DE",
+            "subcategorias": 7,
+            "con_nivel": 4,
+            "minimo": 1,
+            "frecuente": 1,
+            "con_objetivo": 0,
+            "con_brecha": 0
+          },
+          {
+            "funcion": "RS",
+            "subcategorias": 5,
+            "con_nivel": 5,
+            "minimo": 1,
+            "frecuente": 1,
+            "con_objetivo": 0,
+            "con_brecha": 0
+          },
+          {
+            "funcion": "RC",
+            "subcategorias": 1,
+            "con_nivel": 1,
+            "minimo": 2,
+            "frecuente": 2,
+            "con_objetivo": 0,
+            "con_brecha": 0
+          }
+        ],
+        "areas": [
+          {
+            "area": "S",
+            "subcategorias": 23,
+            "con_nivel": 19,
+            "minimo": 1,
+            "frecuente": 1,
+            "con_objetivo": 0,
+            "con_brecha": 0
+          },
+          {
+            "area": "D",
+            "subcategorias": 28,
+            "con_nivel": 24,
+            "minimo": 1,
+            "frecuente": 1,
+            "con_objetivo": 0,
+            "con_brecha": 0
+          },
+          {
+            "area": "T",
+            "subcategorias": 24,
+            "con_nivel": 17,
+            "minimo": 1,
+            "frecuente": 1,
+            "con_objetivo": 0,
+            "con_brecha": 0
+          }
+        ],
+        "total": {
+          "subcategorias": 48,
+          "con_nivel": 37,
+          "minimo": 1,
+          "frecuente": 1,
+          "con_objetivo": 0,
+          "con_brecha": 0
+        }
+      }
     },
-    {
-      "id": "EM-2026-06",
-      "fecha_corte": "2026-06-30",
-      "ciclo": "C5",
-      "modalidad": "verificada",
-      "version_cuestionario": "0.1",
-      "verificador": "Auditoría interna",
-      "organo_aprobacion": "Comité de IA; presentado a la comisión delegada del consejo",
-      "fecha_aprobacion": "2026-07-21",
-      "nivel_global": 2,
-      "nivel_minimo": 2,
-      "media": 3,
-      "tope": 2,
-      "tope_aplicado": true,
-      "limitante": [
-        "D6"
-      ],
-      "validez": "ok",
-      "declaracion_posible": false,
-      "dimensiones": [
-        {
-          "dimension": "D1",
-          "nombre": "Estrategia y gobierno",
-          "nivel": 3,
-          "nivel_minimo": 3,
-          "avance": 25,
-          "bloqueantes": [
-            "D1.09",
-            "D1.10"
-          ]
-        },
-        {
-          "dimension": "D2",
-          "nombre": "Valor y cartera",
-          "nivel": 4,
-          "nivel_minimo": 4,
-          "avance": 25,
-          "bloqueantes": [
-            "D2.11",
-            "D2.12"
-          ]
-        },
-        {
-          "dimension": "D3",
-          "nombre": "Datos y conocimiento",
-          "nivel": 2,
-          "nivel_minimo": 2,
-          "avance": 87.5,
-          "bloqueantes": [
-            "D3.07"
-          ]
-        },
-        {
-          "dimension": "D4",
-          "nombre": "Tecnología y operación",
-          "nivel": 4,
-          "nivel_minimo": 4,
-          "avance": 25,
-          "bloqueantes": [
-            "D4.11",
-            "D4.12"
-          ]
-        },
-        {
-          "dimension": "D5",
-          "nombre": "Personas y adopción",
-          "nivel": 3,
-          "nivel_minimo": 3,
-          "avance": 50,
-          "bloqueantes": [
-            "D5.10"
-          ]
-        },
-        {
-          "dimension": "D6",
-          "nombre": "Riesgo, seguridad y cumplimiento",
-          "nivel": 1,
-          "nivel_minimo": 1,
-          "avance": 75,
-          "bloqueantes": [
-            "D6.03"
-          ]
-        },
-        {
-          "dimension": "D7",
-          "nombre": "Medición y evidencia",
-          "nivel": 4,
-          "nivel_minimo": 4,
-          "avance": 0,
-          "bloqueantes": [
-            "D7.11",
-            "D7.12"
-          ]
+    "fuente": "T15",
+    "exportado": null
+  },
+  {
+    "id": "EM-2026-06",
+    "fecha_corte": "2026-06-30",
+    "ciclo": "C5",
+    "modalidad": "verificada",
+    "version_cuestionario": "0.1",
+    "verificador": "Auditoría interna",
+    "organo_aprobacion": "Comité de IA; presentado a la comisión delegada del consejo",
+    "fecha_aprobacion": "2026-07-21",
+    "nivel_global": 2,
+    "nivel_minimo": 2,
+    "media": 3,
+    "tope": 2,
+    "tope_aplicado": true,
+    "limitante": [
+      "D6"
+    ],
+    "validez": "ok",
+    "declaracion_posible": false,
+    "dimensiones": [
+      {
+        "dimension": "D1",
+        "nombre": "Estrategia y gobierno",
+        "nivel": 3,
+        "nivel_minimo": 3,
+        "avance": 25,
+        "bloqueantes": [
+          "D1.09",
+          "D1.10"
+        ]
+      },
+      {
+        "dimension": "D2",
+        "nombre": "Valor y cartera",
+        "nivel": 4,
+        "nivel_minimo": 4,
+        "avance": 25,
+        "bloqueantes": [
+          "D2.11",
+          "D2.12"
+        ]
+      },
+      {
+        "dimension": "D3",
+        "nombre": "Datos y conocimiento",
+        "nivel": 2,
+        "nivel_minimo": 2,
+        "avance": 87.5,
+        "bloqueantes": [
+          "D3.07"
+        ]
+      },
+      {
+        "dimension": "D4",
+        "nombre": "Tecnología y operación",
+        "nivel": 4,
+        "nivel_minimo": 4,
+        "avance": 25,
+        "bloqueantes": [
+          "D4.11",
+          "D4.12"
+        ]
+      },
+      {
+        "dimension": "D5",
+        "nombre": "Personas y adopción",
+        "nivel": 3,
+        "nivel_minimo": 3,
+        "avance": 50,
+        "bloqueantes": [
+          "D5.10"
+        ]
+      },
+      {
+        "dimension": "D6",
+        "nombre": "Riesgo, seguridad y cumplimiento",
+        "nivel": 1,
+        "nivel_minimo": 1,
+        "avance": 75,
+        "bloqueantes": [
+          "D6.03"
+        ]
+      },
+      {
+        "dimension": "D7",
+        "nombre": "Medición y evidencia",
+        "nivel": 4,
+        "nivel_minimo": 4,
+        "avance": 0,
+        "bloqueantes": [
+          "D7.11",
+          "D7.12"
+        ]
+      }
+    ],
+    "perfiles": {
+      "ai_rmf": {
+        "funciones": [
+          {
+            "funcion": "GOVERN",
+            "subcategorias": 19,
+            "con_nivel": 15,
+            "minimo": 1,
+            "frecuente": 1,
+            "con_objetivo": 4,
+            "con_brecha": 3
+          },
+          {
+            "funcion": "MAP",
+            "subcategorias": 18,
+            "con_nivel": 14,
+            "minimo": 1,
+            "frecuente": 1,
+            "con_objetivo": 2,
+            "con_brecha": 0
+          },
+          {
+            "funcion": "MEASURE",
+            "subcategorias": 22,
+            "con_nivel": 14,
+            "minimo": 1,
+            "frecuente": 4,
+            "con_objetivo": 2,
+            "con_brecha": 2
+          },
+          {
+            "funcion": "MANAGE",
+            "subcategorias": 13,
+            "con_nivel": 13,
+            "minimo": 1,
+            "frecuente": 4,
+            "con_objetivo": 2,
+            "con_brecha": 1
+          }
+        ],
+        "total": {
+          "subcategorias": 72,
+          "con_nivel": 56,
+          "minimo": 1,
+          "frecuente": 1,
+          "con_objetivo": 10,
+          "con_brecha": 6
         }
-      ],
-      "fuente": "T15",
-      "exportado": null
-    }
-  ]
+      },
+      "csf": {
+        "funciones": [
+          {
+            "funcion": "GV",
+            "subcategorias": 13,
+            "con_nivel": 10,
+            "minimo": 1,
+            "frecuente": 1,
+            "con_objetivo": 1,
+            "con_brecha": 1
+          },
+          {
+            "funcion": "ID",
+            "subcategorias": 9,
+            "con_nivel": 8,
+            "minimo": 1,
+            "frecuente": 1,
+            "con_objetivo": 2,
+            "con_brecha": 2
+          },
+          {
+            "funcion": "PR",
+            "subcategorias": 13,
+            "con_nivel": 10,
+            "minimo": 1,
+            "frecuente": 4,
+            "con_objetivo": 3,
+            "con_brecha": 2
+          },
+          {
+            "funcion": "DE",
+            "subcategorias": 7,
+            "con_nivel": 4,
+            "minimo": 1,
+            "frecuente": 1,
+            "con_objetivo": 1,
+            "con_brecha": 0
+          },
+          {
+            "funcion": "RS",
+            "subcategorias": 5,
+            "con_nivel": 5,
+            "minimo": 1,
+            "frecuente": 1,
+            "con_objetivo": 1,
+            "con_brecha": 1
+          },
+          {
+            "funcion": "RC",
+            "subcategorias": 1,
+            "con_nivel": 1,
+            "minimo": 4,
+            "frecuente": 4,
+            "con_objetivo": 0,
+            "con_brecha": 0
+          }
+        ],
+        "areas": [
+          {
+            "area": "S",
+            "subcategorias": 23,
+            "con_nivel": 20,
+            "minimo": 1,
+            "frecuente": 1,
+            "con_objetivo": 8,
+            "con_brecha": 6
+          },
+          {
+            "area": "D",
+            "subcategorias": 28,
+            "con_nivel": 24,
+            "minimo": 1,
+            "frecuente": 1,
+            "con_objetivo": 6,
+            "con_brecha": 4
+          },
+          {
+            "area": "T",
+            "subcategorias": 24,
+            "con_nivel": 18,
+            "minimo": 1,
+            "frecuente": 1,
+            "con_objetivo": 6,
+            "con_brecha": 5
+          }
+        ],
+        "total": {
+          "subcategorias": 48,
+          "con_nivel": 38,
+          "minimo": 1,
+          "frecuente": 1,
+          "con_objetivo": 8,
+          "con_brecha": 6
+        }
+      }
+    },
+    "fuente": "T15",
+    "exportado": null
+  }
+]
 }

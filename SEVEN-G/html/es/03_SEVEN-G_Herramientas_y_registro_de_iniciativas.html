@@ -1101,7 +1101,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </table></div>
 <hr />
 <h2 id="modelo-de-datos-comun"><span class="antetitulo">04</span>Modelo de datos común</h2>
-<p>El modelo es la base de todas las herramientas. Su especificación completa (campos, tipos, listas cerradas y reglas de validación) es el esquema JSON del registro, <code>herramientas/T01_registro_iniciativas/esquema_registro.schema.json</code> (versión 0.6), que se publica con la herramienta <a href="../../herramientas/T01_registro_iniciativas/registro.html" title="Herramienta T01 &#183; Registro de iniciativas">T01</a> y que cada versión amplía solo con campos opcionales: un fichero de una versión anterior sigue siendo válido.</p>
+<p>El modelo es la base de todas las herramientas. Su especificación completa (campos, tipos, listas cerradas y reglas de validación) es el esquema JSON del registro, <code>herramientas/T01_registro_iniciativas/esquema_registro.schema.json</code> (versión 0.7), que se publica con la herramienta <a href="../../herramientas/T01_registro_iniciativas/registro.html" title="Herramienta T01 &#183; Registro de iniciativas">T01</a> y que cada versión amplía solo con campos opcionales: un fichero de una versión anterior sigue siendo válido.</p>
 <div class="tabla"><table>
 <thead>
 <tr>
@@ -1183,7 +1183,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 <tr>
 <td><strong>Diagnóstico de madurez</strong></td>
-<td>Resumen de cada diagnóstico de madurez (EM-AAAA-MM; <a href="11_SEVEN-G_Modelo_de_madurez.html" title="Documento 11 &#183; Modelo de madurez">documento 11</a>): fecha de corte, modalidad, versión del cuestionario, nivel global, media ponderada, límite por D1 o D6 y nivel, avance y criterios bloqueantes de cada dimensión. Lo escribe <a href="../../herramientas/T15_diagnostico_madurez/madurez.html" title="Herramienta T15 &#183; Diagn&#243;stico de madurez">T15</a> (las respuestas y las evidencias se quedan en <a href="../../herramientas/T15_diagnostico_madurez/madurez.html" title="Herramienta T15 &#183; Diagn&#243;stico de madurez">T15</a>) y lo muestra el panel del consejo; esquema 0.6.</td>
+<td>Resumen de cada diagnóstico de madurez (EM-AAAA-MM; <a href="11_SEVEN-G_Modelo_de_madurez.html" title="Documento 11 &#183; Modelo de madurez">documento 11</a>): fecha de corte, modalidad, versión del cuestionario, nivel global, media ponderada, límite por D1 o D6 y nivel, avance y criterios bloqueantes de cada dimensión. Desde el esquema 0.7, también el resumen de los perfiles NIST derivados del cuestionario (AI RMF y <a class="ref-ext" href="https://doi.org/10.6028/NIST.CSWP.29.spa" target="_blank" rel="noopener" title="Marco de ciberseguridad del NIST, versi&#243;n 2.0 (The NIST Cybersecurity Framework (CSF) 2.0), NIST CSWP 29">CSF 2.0</a>: nivel mínimo, subcategorías con nivel, con objetivo y con brecha, por función y, en el CSF, por área; 11 §7.5). Lo escribe <a href="../../herramientas/T15_diagnostico_madurez/madurez.html" title="Herramienta T15 &#183; Diagn&#243;stico de madurez">T15</a> (las respuestas y las evidencias se quedan en <a href="../../herramientas/T15_diagnostico_madurez/madurez.html" title="Herramienta T15 &#183; Diagn&#243;stico de madurez">T15</a>) y lo muestra el panel del consejo; esquemas 0.6 y 0.7.</td>
 <td>Compañía</td>
 </tr>
 </tbody>
@@ -1215,8 +1215,8 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tr id="cod-t15">
 <td><strong><a href="../../herramientas/T15_diagnostico_madurez/madurez.html" title="Herramienta T15 &#183; Diagn&#243;stico de madurez">T15</a></strong></td>
 <td>Compañía y muestra estratificada de iniciativas (Enterprise, en producción, Aumentar o Transformar, terceros, IA generativa o agentes; 11 §4.6). De <a href="../../herramientas/T14_indice_transformacion/indice.html" title="Herramienta T14 &#183; Calculadora del &#237;ndice de transformaci&#243;n">T14</a>, el perfil del último cálculo.</td>
-<td>El resumen de cada diagnóstico (<code>madurez[]</code>): nivel global, media, límite por D1 o D6 y nivel por dimensión; nunca las respuestas.</td>
-<td>Respuestas, evidencias, verificación, entrevistas, muestras, pesos, objetivos, mensajes y plan de mejora.</td>
+<td>El resumen de cada diagnóstico (<code>madurez[]</code>): nivel global, media, límite por D1 o D6, nivel por dimensión y resumen de los perfiles NIST (<code>madurez[].perfiles</code>); nunca las respuestas.</td>
+<td>Respuestas, evidencias, verificación, entrevistas, muestras, pesos, objetivos, mensajes, plan de mejora y los niveles objetivo y propios de los perfiles NIST.</td>
 </tr>
 <tr>
 <td><strong><a href="../../herramientas/T17_panel_consejo/index.html" title="Herramienta T17 &#183; Panel de IA para el consejo">T17</a></strong> (generador)</td>
@@ -1640,7 +1640,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 </tbody>
 </table></div>
-<h2 id="fuentes-externas">Fuentes externas citadas</h2><p class="fuentes-nota">Enlaces a la fuente oficial o primaria, comprobados antes de publicar. Verifique siempre la versión vigente en la fecha de uso.</p><ul class="fuentes-externas"><li><a href="https://eur-lex.europa.eu/eli/reg/2024/1689/oj/spa" target="_blank" rel="noopener">Reglamento (UE) 2024/1689 del Parlamento Europeo y del Consejo, de 13 de junio de 2024, por el que se establecen normas armonizadas en materia de inteligencia artificial (Reglamento de Inteligencia Artificial)</a><span> · Parlamento Europeo y Consejo de la UE · 13-06-2024</span></li></ul>
+<h2 id="fuentes-externas">Fuentes externas citadas</h2><p class="fuentes-nota">Enlaces a la fuente oficial o primaria, comprobados antes de publicar. Verifique siempre la versión vigente en la fecha de uso.</p><ul class="fuentes-externas"><li><a href="https://eur-lex.europa.eu/eli/reg/2024/1689/oj/spa" target="_blank" rel="noopener">Reglamento (UE) 2024/1689 del Parlamento Europeo y del Consejo, de 13 de junio de 2024, por el que se establecen normas armonizadas en materia de inteligencia artificial (Reglamento de Inteligencia Artificial)</a><span> · Parlamento Europeo y Consejo de la UE · 13-06-2024</span></li><li><a href="https://doi.org/10.6028/NIST.CSWP.29.spa" target="_blank" rel="noopener">Marco de ciberseguridad del NIST, versi&#243;n 2.0 (The NIST Cybersecurity Framework (CSF) 2.0), NIST CSWP 29</a><span> · National Institute of Standards and Technology (NIST), Departamento de Comercio de EE. UU. · 26-02-2024</span></li></ul>
 </main>
 <footer class="pie"><div><span>© 2026 Fernando García Varela · Metodolog&#237;a SEVEN-G</span><span>Generado el 25-09-2026</span></div><p class="pie-ia">Contenido generado y maquetado con apoyo de IA bajo supervisi&#243;n editorial del autor.</p></footer>
 <script src="codigos.js" defer></script>

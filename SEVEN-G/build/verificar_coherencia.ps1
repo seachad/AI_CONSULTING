@@ -517,6 +517,7 @@ try {
       # T11: el caso de ejemplo IA-2026-001 da VAN 1.826.542 €, ROI 217,7 % y plazo 1,44 años (40 §8); T15: nivel global 2 limitado por D6 (11 §5)
       @{ f = (Join-Path $t11 'calculadora.html'); debe = @('#resultado[data-van="1826542"][data-roi="217.7"][data-payback="1.44"]', '#nav a[href="#/costes"]', '#t01-local[data-registro]', "#sitio-nav $ctl", '#principal a.cod-enlace[title]', '#btn-datos[data-estado="demo"]'); que = 'calculadora T11/T13 (ejemplo IA-2026-001)' }
       @{ f = (Join-Path $t15 'madurez.html'); debe = @('#nivel-global[data-nivel="2"][data-tope="2"][data-tope-aplicado="1"]', 'tr[data-dim="D6"][data-nivel="1"]', 'tr[data-dim="D3"][data-nivel="2"]', '#t01-local[data-registro]', "#sitio-nav $ctl", '#principal a.cod-enlace[title]', '#btn-datos[data-estado="demo"]'); que = 'diagnóstico T15 (ejemplo EM-2026-06)' }
+      @{ f = (Join-Path $t15 'madurez.html'); antes = "location.hash='#/perfil_csf'"; debe = @('#perfil-resumen[data-marco="csf"][data-con-brecha]', '#tabla-perfil tr[data-sub="ID.RA-01"]', '#tabla-perfil tr[data-sub="GV.OC-04"] select[data-pprop]'); que = 'diagnóstico T15, vista «Perfil CSF» (D115)' },
       # D100: la tarjeta de madurez (bloque «madurez» del panel, escrito por T15 en el registro) se dibuja con sus siete dimensiones
       @{ f = (Get-ChildItem $salidaEj -Filter 't01_Dashboard_Casos_Uso_IA_v*.html' | Select-Object -First 1).FullName; debe = @('#indice tbody tr', '#kpis [data-kpi]', '#embudo .fun2-mid', '#embudo .fun-card.gan', '#embudo .fun-card li .pq', '#fbar #fopen, #filters .fgroup', '#transv table tbody tr', '#madurez table tbody tr', "#barra .toolbar $ctl", 'main a.cod-enlace[title]'); que = 'panel completo' }
       # comunidad (D80): la página se dibuja aunque no haya intermediario configurado ni red (el texto lo pone el JavaScript)
@@ -799,9 +800,9 @@ try {
     foreach ($e in "calculadora.html'", "indice.html'", "madurez.html'") { if (-not $tT01.Contains($e)) { Mal "T01: no enlaza la herramienta $e con el registro cargado"; $malMapa++ } }
     if (-not ($tT01.Contains("?desde=t01") -and $tT01.Contains('data-ir=') -and $tT01.Contains('function incorporarResultado'))) { Mal 'T01: faltan los enlaces ?desde=t01 (con guardado previo) o la incorporación de resultados de T11 y T15'; $malMapa++ }
     # esquema 0.6 admitido en el esquema JSON, en el registro y en el conector
-    if ($esq.properties.version_esquema.enum -notcontains '0.6' -or -not $esq.properties.ContainsKey('madurez')) { Mal 'esquema_registro.schema.json: falta la versión 0.6 con la lista madurez[]'; $malMapa++ }
-    if (-not $tT01.Contains("'0.6'")) { Mal 'T01: la validación no admite el esquema 0.6'; $malMapa++ }
-    if (-not [IO.File]::ReadAllText((Join-Path $t17 't01_a_panel.py')).Contains('"0.6"')) { Mal 'T17 t01_a_panel.py: no admite el esquema 0.6'; $malMapa++ }
+    if ($esq.properties.version_esquema.enum -notcontains '0.7' -or -not $esq.properties.ContainsKey('madurez')) { Mal 'esquema_registro.schema.json: falta la versión 0.6 con la lista madurez[]'; $malMapa++ }
+    if (-not $tT01.Contains("'0.7'")) { Mal 'T01: la validación no admite el esquema 0.7'; $malMapa++ }
+    if (-not [IO.File]::ReadAllText((Join-Path $t17 't01_a_panel.py')).Contains('"0.7"')) { Mal 'T17 t01_a_panel.py: no admite el esquema 0.7'; $malMapa++ }
     # demostraciones: una sola compañía ficticia
     $orgT01 = (Get-Content (Join-Path $t01 'datos_demo.json') -Raw -Encoding utf8 | ConvertFrom-Json -Depth 64).meta.organizacion
     foreach ($h in @(@{ c = 'T11'; d = $t11 }, @{ c = 'T14'; d = $t14 }, @{ c = 'T15'; d = $t15 })) {
