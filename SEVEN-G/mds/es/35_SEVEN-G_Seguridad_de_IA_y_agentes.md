@@ -10,7 +10,7 @@
 | Autor | Fernando García Varela |
 | Estado | Borrador para revisión. Define los niveles de autonomía A0–A3 y los catálogos de controles SEG y AG que usan T10, P18 y la lista LV-AG del documento 22. |
 
-<!-- cifras: 4 | niveles de autonomía ; 20 | controles de seguridad de IA (SEG) ; 20 | controles de agentes (AG) ; 9 | requisitos esenciales de un agente -->
+<!-- cifras: 4 | niveles de autonomía ; 25 | controles de seguridad de IA (SEG) ; 20 | controles de agentes (AG) ; 9 | requisitos esenciales de un agente -->
 
 ---
 
@@ -28,7 +28,7 @@ Este documento establece cómo se protege un sistema de IA frente a ataques y us
 |---|---|
 | Sistemas de IA propios y de terceros integrados en procesos, incluidos asistentes, sistemas de recuperación de información y agentes. | La seguridad de la información general de la compañía, que se rige por su propio sistema de gestión; este documento la complementa para la IA. |
 | Uso corporativo de IA de propósito general en lo que afecta a fuga de información. | La política de uso aceptable (documento 31). |
-| Exposición corporativa a la IA ofensiva: suplantación, fraude, explotación acelerada. | La gestión de incidentes, que se desarrolla en el documento 37. |
+| Exposición corporativa a la IA ofensiva: suplantación, fraude, explotación acelerada; y uso de la IA en la ciberdefensa de la compañía (sección 9.3). | La gestión de incidentes, que se desarrolla en el documento 37. |
 
 ### 1.2 Referencias
 
@@ -272,6 +272,11 @@ En A2 y A3 son **controles críticos** AG-01, AG-02, AG-03, AG-05, AG-08, AG-09,
 | **SEG-18** | Protocolos frente a contenido sintético | Palabras de verificación o preguntas acordadas en canales de voz y vídeo; herramientas de detección como apoyo, no como única barrera. | Procedimiento publicado. | CORP | C4 | PR (PR.AA) · DE (DE.AE) |
 | **SEG-19** | Pruebas continuas de la superficie expuesta | Descubrimiento de activos expuestos y pruebas de intrusión recurrentes que incluyan técnicas automatizadas con IA. | Resultados y plazos de corrección. | CORP | C4, 6 | ID (ID.AM, ID.RA) |
 | **SEG-20** | Control del uso corporativo de IA | Herramientas aprobadas, bloqueo o supervisión de las no autorizadas, prevención de fuga hacia servicios externos. | Monitor de uso (T21). | CORP | C4 | GV (GV.PO) · PR (PR.DS) |
+| **SEG-21** | Autonomía de la respuesta automatizada | Nivel A0–A3 fijado por tipo de acción de contención; A2 o A3 solo con procedimiento aprobado, límites, reversión probada e interruptor de parada (sección 9.3). | Matriz de acciones y niveles (P18); pruebas de reversión (P19). | CORP | 4–6 | RS (RS.MI) |
+| **SEG-22** | Validación humana de la contención | Validación informada antes de contener con efecto en producción, en clientes o sobre personas; revisión a posteriori de esas acciones en A2 y A3. | Registro de validaciones y revisiones; tasa de rechazo. | CORP | 6 | RS (RS.MA) |
+| **SEG-23** | Calidad de la detección con IA | Falsos positivos y negativos, tiempo de detección y de respuesta frente a una línea base sin IA, con umbrales; análisis de cada falso negativo en un incidente real. | Indicadores y umbrales (P25); análisis de falsos negativos. | CORP | 5, 6 | DE (DE.AE) |
+| **SEG-24** | Dependencia del proveedor de ciberdefensa con IA | Evaluación del proveedor, control de la telemetría que sale de la compañía, plan de salida y operación degradada sin IA. | P14, P55, P57; prueba de operación degradada. | CORP | 3, 6 | GV (GV.SC) |
+| **SEG-25** | Pruebas adversarias del sistema defensivo | Evasión, envenenamiento de la telemetría o del entrenamiento e inyección de instrucciones en alertas, tickets o registros que lee el sistema. | Plan e informe de pruebas adversarias (P53). | CORP | 5, 6 | ID (ID.IM) |
 
 ---
 
@@ -320,7 +325,7 @@ Las evaluaciones adversarias automatizadas se versionan y se ejecutan antes de c
 
 ---
 
-## 9. Exposición a la IA ofensiva
+## 9. Exposición a la IA ofensiva y uso de la IA en la ciberdefensa
 
 La IA no crea tipos de ataque nuevos en su mayoría, pero reduce su coste, aumenta su verosimilitud y acorta los tiempos. La guía CCN-CERT BP/36 insiste en esta idea: el tiempo entre la existencia de una vulnerabilidad y su explotación se reduce, y las revisiones de seguridad puntuales llegan tarde. La exposición se gestiona como riesgo corporativo (C4), con responsable en seguridad de la información e información al consejo.
 
@@ -344,6 +349,21 @@ La IA no crea tipos de ataque nuevos en su mayoría, pero reduce su coste, aumen
 - **Procesos de pago** revisados para que ninguna orden dependa solo del reconocimiento de voz, imagen o estilo de escritura.
 - **Plazos de corrección** de vulnerabilidades en sistemas expuestos revisados y aprobados, con seguimiento de su cumplimiento.
 
+### 9.3 Uso de la IA en la ciberdefensa de la compañía (Defend)
+
+La compañía también puede usar la IA para defenderse: correlación y triaje de alertas, caza de amenazas, análisis de código malicioso y respuesta automatizada. El Cyber AI Profile del NIST, en borrador, lo trata como un área propia, **Defend** (34 §5.3). En SEVEN-G es un **caso de uso** más: se registra como iniciativa, recorre el ciclo de vida con sus puertas y su autonomía se fija con la escala A0–A3 (sección 5). Lo específico es que un error del sistema defensivo puede dejar pasar un ataque (falso negativo) o interrumpir la operación al contener lo que no es un ataque (falso positivo), y que el propio sistema defensivo es un objetivo para el atacante.
+
+| Aspecto | Regla |
+|---|---|
+| **Autonomía de la respuesta** | Cada tipo de acción de contención (aislar un equipo, bloquear una cuenta, cortar tráfico, revocar credenciales, retirar un mensaje) tiene su nivel A0–A3. Las acciones con efecto en producción o sobre personas son A1, con validación humana previa, salvo que un procedimiento aprobado, con límites, reversión probada e interruptor de parada, permita A2 o A3 (SEG-21). |
+| **Supervisión humana** | Antes de una contención con efecto en producción, en clientes o sobre la cuenta de una persona, la valida una persona de seguridad que ve por qué se propone; en A2 y A3, esas acciones se revisan a posteriori (SEG-22). |
+| **Calidad de la detección** | Falsos positivos y falsos negativos, tiempo de detección y tiempo de respuesta, medidos frente a una línea base sin IA y con umbrales en P25 (SEG-23). Un falso negativo en un incidente real se analiza como hallazgo (documento 37). |
+| **Dependencia del proveedor** | Evaluación del proveedor de ciberdefensa con IA (P14, P55), control de la telemetría que sale de la compañía y de dónde se trata, plan de salida (P57) y operación degradada sin la IA (SEG-24). |
+| **Pruebas del propio sistema defensivo** | Pruebas adversarias de evasión, de envenenamiento de la telemetría o de los datos de entrenamiento y de inyección de instrucciones en alertas, tickets o registros que el sistema lee (SEG-25, P53). |
+| **Riesgo tipo** | RT-SEG-08 (documento 33 §9.9). |
+
+> **Por qué importa.** Usar IA en la ciberdefensa acelera la detección y la respuesta, pero traslada a un sistema automático decisiones que pueden parar la operación o dejar pasar un ataque. Tratarla como un caso de uso más, con autonomía fijada por tipo de acción, supervisión humana en lo que no se puede deshacer y métricas de acierto frente a una línea base, evita que la defensa se convierta en una nueva fuente de incidentes.
+
 ---
 
 ## 10. Indicadores para el consejo
@@ -362,6 +382,7 @@ La IA no crea tipos de ataque nuevos en su mayoría, pero reduce su coste, aumen
 | Vulnerabilidades críticas expuestas fuera de plazo | Número y antigüedad. | Cero. |
 | Simulacros de suplantación | Resultado del último simulacro de fraude con contenido sintético. | Porcentaje que aplica la verificación fuera de banda. |
 | Uso no autorizado de IA | Casos detectados y regularizados. | Tendencia a la baja. |
+| Calidad de la ciberdefensa con IA | Falsos positivos y negativos, tiempo de detección y de respuesta y contenciones automáticas revertidas (sección 9.3). | Mejora frente a la línea base sin IA; cada contención revertida se explica. |
 
 ---
 
@@ -414,3 +435,4 @@ El responsable técnico de IA diseña e implanta los controles; seguridad de la 
 |---|---|---|
 | 0.1 | 16-09-2026 | Primera versión. Define las amenazas a sistemas de IA con referencias a OWASP (LLM 2025 y aplicaciones agénticas), MITRE ATLAS y NIST AI 600-1; los nueve requisitos esenciales de un agente; los niveles de autonomía A0–A3 con controles mínimos y frecuencias; los catálogos SEG-01 a SEG-20 y AG-01 a AG-20; las pruebas por fase; la exposición a la IA ofensiva y los indicadores para el consejo. |
 | 0.2 | 25-09-2026 | Añade el NIST CSF 2.0 y el Cyber AI Profile (en borrador) a las referencias (sección 1.2) y la columna «Función CSF» a los catálogos SEG y AG (secciones 6 y 7), con la función y la categoría del CSF a las que contribuye cada control (34 §5.3), y la plantilla P72 en la sección 12. |
+| 0.3 | 25-09-2026 | Añade la sección 9.3 sobre el uso de la IA en la ciberdefensa de la compañía (área Defend del Cyber AI Profile): autonomía de la respuesta, supervisión humana de la contención, calidad de la detección, dependencia del proveedor y pruebas del propio sistema defensivo; los controles SEG-21 a SEG-25; un indicador para el consejo y el riesgo tipo RT-SEG-08. |

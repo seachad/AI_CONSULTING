@@ -10,7 +10,7 @@
 | Author | Fernando García Varela |
 | Status | Draft for review. It defines the autonomy levels A0–A3 and the SEG and AG control catalogues used by T10, P18 and the LV-AG checklist in document 22. |
 
-<!-- cifras: 4 | autonomy levels ; 20 | AI security controls (SEG) ; 20 | agent controls (AG) ; 9 | essential requirements for an agent -->
+<!-- cifras: 4 | autonomy levels ; 25 | AI security controls (SEG) ; 20 | agent controls (AG) ; 9 | essential requirements for an agent -->
 
 ---
 
@@ -28,7 +28,7 @@ This document establishes how an AI system is protected against attacks and misu
 |---|---|
 | In-house and third-party AI systems integrated into processes, including assistants, information retrieval systems and agents. | The company's general information security, which is governed by its own management system; this document complements it for AI. |
 | Corporate use of general-purpose AI insofar as it affects information leakage. | The acceptable use policy (document 31). |
-| Corporate exposure to offensive AI: impersonation, fraud, accelerated exploitation. | Incident management, which is developed in document 37. |
+| Corporate exposure to offensive AI: impersonation, fraud, accelerated exploitation; and use of AI in the company's cyber defence (section 9.3). | Incident management, which is developed in document 37. |
 
 ### 1.2 References
 
@@ -272,6 +272,11 @@ In A2 and A3, the **critical controls** are AG-01, AG-02, AG-03, AG-05, AG-08, A
 | **SEG-18** | Protocols against synthetic content | Agreed verification words or questions on voice and video channels; detection tools as support, not as the only barrier. | Published procedure. | CORP | C4 | PR (PR.AA) · DE (DE.AE) |
 | **SEG-19** | Continuous testing of the exposed surface | Discovery of exposed assets and recurring penetration testing that includes AI-automated techniques. | Results and remediation deadlines. | CORP | C4, 6 | ID (ID.AM, ID.RA) |
 | **SEG-20** | Control of corporate AI use | Approved tools, blocking or monitoring of unauthorised ones, prevention of leakage to external services. | Usage monitor (T21). | CORP | C4 | GV (GV.PO) · PR (PR.DS) |
+| **SEG-21** | Autonomy of the automated response | A0–A3 level set by type of containment action; A2 or A3 only with an approved procedure, limits, tested rollback and a kill switch (section 9.3). | Matrix of actions and levels (P18); rollback tests (P19). | CORP | 4–6 | RS (RS.MI) |
+| **SEG-22** | Human validation of containment | Informed validation before containing with an effect on production, on customers or on people; after-the-fact review of those actions at A2 and A3. | Record of validations and reviews; rejection rate. | CORP | 6 | RS (RS.MA) |
+| **SEG-23** | Quality of AI detection | False positives and negatives, detection and response time against a baseline without AI, with thresholds; analysis of each false negative in a real incident. | Indicators and thresholds (P25); analysis of false negatives. | CORP | 5, 6 | DE (DE.AE) |
+| **SEG-24** | Dependency on the AI cyber defence supplier | Supplier assessment, control of the telemetry that leaves the company, exit plan and degraded operation without AI. | P14, P55, P57; degraded operation test. | CORP | 3, 6 | GV (GV.SC) |
+| **SEG-25** | Adversarial testing of the defensive system | Evasion, poisoning of telemetry or training and instruction injection in alerts, tickets or logs read by the system. | Adversarial testing plan and report (P53). | CORP | 5, 6 | ID (ID.IM) |
 
 ---
 
@@ -320,7 +325,7 @@ Automated adversarial evaluations are versioned and run before every relevant ch
 
 ---
 
-## 9. Exposure to offensive AI
+## 9. Exposure to offensive AI and use of AI in cyber defence
 
 For the most part, AI does not create new types of attack, but it lowers their cost, increases their credibility and shortens timescales. The CCN-CERT BP/36 guide stresses this idea: the time between the existence of a vulnerability and its exploitation is shrinking, and one-off security reviews arrive too late. Exposure is managed as a corporate risk (C4), with an owner in information security and reporting to the board.
 
@@ -344,6 +349,21 @@ For the most part, AI does not create new types of attack, but it lowers their c
 - **Payment processes** reviewed so that no order depends solely on recognition of voice, image or writing style.
 - **Remediation deadlines** for vulnerabilities in exposed systems reviewed and approved, with monitoring of compliance.
 
+### 9.3 Use of AI in the company's cyber defence (Defend)
+
+The company can also use AI to defend itself: alert correlation and triage, threat hunting, malicious code analysis and automated response. The NIST Cyber AI Profile, in draft, treats this as an area of its own, **Defend** (34 §5.3). In SEVEN-G it is one more **use case**: it is registered as an initiative, goes through the lifecycle with its gates and its autonomy is set with the A0–A3 scale (section 5). What is specific is that an error of the defensive system can let an attack through (false negative) or interrupt operations by containing something that is not an attack (false positive), and that the defensive system itself is a target for the attacker.
+
+| Aspect | Rule |
+|---|---|
+| **Autonomy of the response** | Each type of containment action (isolating a device, blocking an account, cutting traffic, revoking credentials, removing a message) has its A0–A3 level. Actions with an effect on production or on people are A1, with prior human validation, unless an approved procedure, with limits, tested rollback and a kill switch, allows A2 or A3 (SEG-21). |
+| **Human oversight** | Before a containment with an effect on production, on customers or on a person's account, a security person who sees why it is proposed validates it; at A2 and A3, those actions are reviewed afterwards (SEG-22). |
+| **Detection quality** | False positives and false negatives, detection time and response time, measured against a baseline without AI and with thresholds in P25 (SEG-23). A false negative in a real incident is analysed as a finding (document 37). |
+| **Supplier dependency** | Assessment of the AI cyber defence supplier (P14, P55), control of the telemetry that leaves the company and where it is processed, exit plan (P57) and degraded operation without the AI (SEG-24). |
+| **Testing of the defensive system itself** | Adversarial testing of evasion, of poisoning of telemetry or training data and of instruction injection in alerts, tickets or logs that the system reads (SEG-25, P53). |
+| **Typical risk** | RT-SEG-08 (document 33 §9.9). |
+
+> **Why it matters.** Using AI in cyber defence speeds up detection and response, but it hands over to an automated system decisions that can stop operations or let an attack through. Treating it as one more use case, with autonomy set by type of action, human oversight of what cannot be undone and accuracy metrics against a baseline, prevents defence from becoming a new source of incidents.
+
 ---
 
 ## 10. Indicators for the board
@@ -362,6 +382,7 @@ For the most part, AI does not create new types of attack, but it lowers their c
 | Exposed critical vulnerabilities past deadline | Number and age. | Zero. |
 | Impersonation exercises | Result of the last fraud exercise with synthetic content. | Percentage that applies out-of-band verification. |
 | Unauthorised use of AI | Cases detected and regularised. | Downward trend. |
+| Quality of AI cyber defence | False positives and negatives, detection and response time and automated containments reversed (section 9.3). | Improvement against the baseline without AI; every reversed containment is explained. |
 
 ---
 
@@ -414,3 +435,4 @@ The AI Technical Owner designs and implements the controls; information security
 |---|---|---|
 | 0.1 | 16-09-2026 | First version. Defines the threats to AI systems with references to OWASP (LLM 2025 and agentic applications), MITRE ATLAS and NIST AI 600-1; the nine essential requirements for an agent; autonomy levels A0–A3 with minimum controls and frequencies; the SEG-01 to SEG-20 and AG-01 to AG-20 catalogues; testing by phase; exposure to offensive AI and the indicators for the board. |
 | 0.2 | 25-09-2026 | Adds the NIST CSF 2.0 and the Cyber AI Profile (in draft) to the references (section 1.2) and the "CSF function" column to the SEG and AG catalogues (sections 6 and 7), with the CSF function and category to which each control contributes (34 §5.3), and template P72 in section 12. |
+| 0.3 | 25-09-2026 | Adds section 9.3 on the use of AI in the company's cyber defence (Defend area of the Cyber AI Profile): autonomy of the response, human oversight of containment, detection quality, supplier dependency and testing of the defensive system itself; controls SEG-21 to SEG-25; an indicator for the board and typical risk RT-SEG-08. |

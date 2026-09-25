@@ -1045,7 +1045,8 @@ try {
     $colCsf = if ($lang -eq 'en') { 'CSF function' } else { 'Función CSF' }
     foreach ($pref in 'SEG', 'AG') {
       $filas = [regex]::Matches($md35, "(?m)^\| \*\*$pref-\d\d\*\* \|.*$")
-      if ($filas.Count -ne 20) { Mal "documento 35 [$lang]: el catálogo $pref tiene $($filas.Count) controles (se esperaban 20)"; $malNist++ }
+      $esperados = if ($pref -eq 'SEG') { 25 } else { 20 }   # SEG-21 a SEG-25: uso de la IA en la ciberdefensa (D116)
+      if ($filas.Count -ne $esperados) { Mal "documento 35 [$lang]: el catálogo $pref tiene $($filas.Count) controles (se esperaban $esperados)"; $malNist++ }
       foreach ($fi in $filas) {
         $celdas = $fi.Value.Trim().Trim('|').Split('|')
         if ($celdas[-1].Trim() -notmatch '^(GV|ID|PR|DE|RS|RC) \((GV|ID|PR|DE|RS|RC)\.[A-Z]{2}') { Mal "documento 35 [$lang]: $($celdas[0].Trim()) sin «$colCsf» válida"; $malNist++ }
