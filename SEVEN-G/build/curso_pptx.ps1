@@ -216,12 +216,13 @@ function Diapositiva-Ejemplo([string]$titulo, [string]$caso, [string[]]$bullets,
   $v = Shape-Caja 609600 5600000 10972800 900000 $veredicto $colorVeredicto $BLANCO 2100
   Slide-Xml ((Cabecera $titulo) + $c + $b + $v)
 }
-function Diapositiva-Cierre([string]$titulo, [string]$linea1, [string]$linea2, [string]$url) {
+function Diapositiva-Cierre([string]$titulo, [string]$linea1, [string]$linea2, [string]$url, [string]$aviso = '') {
   $t1 = Shape-Texto 609600 2300000 10972800 900000 (Parrafo $titulo $NEGRO 4400 $true 'ctr')
   $t2 = Shape-Texto 609600 3350000 10972800 900000 (Parrafo $linea1 $TINTA 1900 $false 'ctr')
   $t3 = Shape-Texto 609600 4350000 10972800 500000 (Parrafo $linea2 $TINTA2 1600 $false 'ctr')
   $t4 = Shape-Texto 609600 4950000 10972800 500000 (Parrafo $url $OXFORD 1700 $false 'ctr')
-  Slide-Xml ($t1 + $t2 + $t3 + $t4)
+  $t5 = if ($aviso) { Shape-Texto 609600 5550000 10972800 1000000 (Parrafo $aviso $TINTA2 1000 $false 'ctr') } else { '' }   # exención de responsabilidad (D113)
+  Slide-Xml ($t1 + $t2 + $t3 + $t4 + $t5)
 }
 
 # ---------- paquete pptx ----------
@@ -651,7 +652,7 @@ foreach ($lang in $Idiomas) {
     foreach ($s in (Bloque-Proceso)) { $slides.Add($s) }
     foreach ($s in (Bloque-Ejemplos)) { $slides.Add($s) }
     foreach ($s in (& $curso.bloque)) { $slides.Add($s) }
-    $slides.Add((Diapositiva-Cierre (L 'Gracias' 'Thank you') (L 'SEVEN-G es gratuito: se usa, se descarga y se adapta sin registrarse, y el sitio nunca le escribirá. Si quiere hablar con el autor, la iniciativa es suya.' 'SEVEN-G is free: it is used, downloaded and adapted without registering, and the site will never write to you. If you want to talk to the author, the initiative is yours.') (L 'SEVEN-G es una marca registrada de Fernando García Varela · CC BY 4.0 (contenidos) · MIT (código)' 'SEVEN-G is a registered trademark of Fernando García Varela · CC BY 4.0 (content) · MIT (code)') 'https://www.linkedin.com/in/fernandogarciavarela/'))
+    $slides.Add((Diapositiva-Cierre (L 'Gracias' 'Thank you') (L 'SEVEN-G es gratuito: se usa, se descarga y se adapta sin registrarse, y el sitio nunca le escribirá. Si quiere hablar con el autor, la iniciativa es suya.' 'SEVEN-G is free: it is used, downloaded and adapted without registering, and the site will never write to you. If you want to talk to the author, the initiative is yours.') (L 'SEVEN-G es una marca registrada de Fernando García Varela · CC BY 4.0 (contenidos) · MIT (código)' 'SEVEN-G is a registered trademark of Fernando García Varela · CC BY 4.0 (content) · MIT (code)') 'https://www.linkedin.com/in/fernandogarciavarela/' (L 'Aviso legal: ayuda metodológica genérica y gratuita, «tal cual» y con fines informativos; no es asesoramiento jurídico ni está revisada jurídicamente para ningún caso. Cada organización la adapta y es responsable de su revisión legal y de su cumplimiento regulatorio; puede no recoger cambios normativos recientes. En la máxima medida permitida por la ley, el autor no asume responsabilidad alguna por los efectos de su aplicación. No otorga certificación de ningún tipo. Detalle en el documento 93.' 'Legal notice: a generic, free methodological aid provided "as is" for information purposes; it is not legal advice and has not been legally reviewed for any case. Each organisation adapts it and is responsible for its legal review and its regulatory compliance; it may not reflect recent regulatory changes. To the fullest extent permitted by law, the author accepts no liability whatsoever for the effects of its application. It does not grant certification of any kind. Details in document 93.')))
 
     $salida = Join-Path $repo "SEVEN-G\pptx\$lang\SEVEN-G_Curso_$($curso.clave).pptx"
     $pdf = Join-Path $repo "SEVEN-G\pdf\$lang\curso\SEVEN-G_Curso_$($curso.clave).pdf"

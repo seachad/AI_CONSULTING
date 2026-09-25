@@ -14,7 +14,7 @@
 
 ---
 
-> **Aviso legal y exención de responsabilidad.** SEVEN-G es un marco metodológico de referencia que se ofrece «tal cual» y con fines exclusivamente informativos. No constituye asesoramiento jurídico, regulatorio, financiero ni profesional, ni garantiza el cumplimiento de ninguna norma. Las referencias a regulación general (como el Reglamento Europeo de IA, el RGPD, DORA o NIS2), a normas técnicas y a regulación específica de cada sector o jurisdicción pueden ser incompletas, no aplicar a un caso concreto o quedar desactualizadas por cambios normativos, interpretaciones o criterios de las autoridades posteriores a su fecha de consulta. **Cada organización que use SEVEN-G es la única responsable de identificar la normativa que le aplica, verificar su vigencia y certificar su propio cumplimiento regulatorio**, con el asesoramiento cualificado que corresponda. El autor no asume responsabilidad alguna por el uso que se haga de este contenido ni por las decisiones que se adopten con él. Los datos, cifras, compañías y casos de los ejemplos son ficticios o ilustrativos.
+> **Aviso legal y exención de responsabilidad.** SEVEN-G es un marco metodológico de referencia que se ofrece «tal cual» y con fines exclusivamente informativos. No constituye asesoramiento jurídico, regulatorio, financiero ni profesional, ni garantiza el cumplimiento de ninguna norma. Las referencias a regulación general (como el Reglamento Europeo de IA, el RGPD, DORA o NIS2), a normas técnicas y a regulación específica de cada sector o jurisdicción pueden ser incompletas, no aplicar a un caso concreto o quedar desactualizadas por cambios normativos, interpretaciones o criterios de las autoridades posteriores a su fecha de consulta. **Cada organización que use SEVEN-G es la única responsable de identificar la normativa que le aplica, verificar su vigencia y certificar su propio cumplimiento regulatorio**, con el asesoramiento cualificado que corresponda. Esta metodología es una ayuda genérica y gratuita, compartida con la comunidad para que nadie tenga que empezar desde cero; cada persona u organización puede y debe adaptarla a su propio uso. No debe entenderse que sus partes jurídicamente sensibles hayan sido revisadas por una asesoría jurídica: esas revisiones, para cada empresa o sector, son responsabilidad última de la empresa, el consultor o la organización que la use. Aunque se procura mantenerla al día, alguna norma puede haber cambiado sin que se recoja aquí. En la máxima medida permitida por la ley, el autor no asume responsabilidad alguna por los efectos de su aplicación en ninguna organización ni por su aplicabilidad completa. La metodología no otorga certificación de ningún tipo. El autor no asume responsabilidad alguna por el uso que se haga de este contenido ni por las decisiones que se adopten con él. Los datos, cifras, compañías y casos de los ejemplos son ficticios o ilustrativos.
 
 <!-- esencial: condicional | Disparador: IA generativa, agentes (autonomía A1 a A3) o exposición directa a personas externas. El diseño de seguridad (P18) es evidencia de toda iniciativa; los controles de agentes, las pruebas adversarias y los mínimos por nivel de autonomía aplican según el disparador. -->
 
@@ -34,13 +34,14 @@ Este documento establece cómo se protege un sistema de IA frente a ataques y us
 
 Las referencias se han consultado en septiembre de 2026 y deben verificarse en su versión vigente:
 
-- **OWASP Top 10 for LLM Applications**, versión 2025 (riesgos LLM01 a LLM10).
+- **OWASP Top 10 for LLM Applications**, versión 2025 (riesgos LLM01 a LLM10). El OWASP GenAI Security Project publicó la edición 2026 el 3 de agosto de 2026, con otra numeración: los códigos LLM01 a LLM10 de este documento son los de la edición 2025.
 - **OWASP Top 10 for Agentic Applications** (OWASP GenAI Security Project, publicado el 9 de diciembre de 2025; riesgos ASI01 a ASI10) y la guía **Agentic AI – Threats and Mitigations** del mismo proyecto.
 - **MITRE ATLAS**, base de conocimiento de tácticas y técnicas adversarias contra sistemas de IA, que se actualiza periódicamente.
 - **NIST AI 600-1**, perfil de IA generativa del NIST AI RMF (julio de 2024), en particular los riesgos de seguridad de la información, privacidad de datos e integración de la cadena de valor.
 - **NIST CSF 2.0** (NIST CSWP 29, febrero de 2024), para expresar los controles con sus seis funciones (gobernar, identificar, proteger, detectar, responder y recuperar), y su perfil para la IA, el **Cyber AI Profile** (NIST IR 8596), que a fecha de consulta es un **borrador** preliminar (diciembre de 2025) y se usa solo como orientación (34 §5.3).
 - **ISO/IEC 42001** e **ISO/IEC 23894** para el encaje en el sistema de gestión y en la gestión de riesgos.
 - **Reglamento (UE) 2024/1689**, que exige a los sistemas de alto riesgo un nivel adecuado de precisión, solidez y ciberseguridad, incluida la resistencia a la manipulación de datos y de modelos y a entradas diseñadas para inducir errores.
+- **Reglamento (UE) 2024/2847 de ciberresiliencia**, para quien fabrica productos con elementos digitales que incorporan IA: notificación de vulnerabilidades explotadas activamente e incidentes graves desde el 11-09-2026 (art. 14) y obligaciones principales desde el 11-12-2027; se integra con SEG-13, SEG-14 y el documento 37 (34 §7.2).
 - **CCN-CERT BP/36**, guía de buenas prácticas frente a la IA ofensiva del Centro Criptológico Nacional (junio de 2026).
 
 Este documento no constituye asesoramiento jurídico.
@@ -77,7 +78,7 @@ Este documento no constituye asesoramiento jurídico.
 | **Tratamiento inseguro de salidas** | La salida se ejecuta o se inserta en otros sistemas sin validar (código, consultas, enlaces). | OWASP LLM05; ASI05 | RT-GEN-06 | SEG-04, AG-11 |
 | **Abuso de herramientas** | El sistema usa herramientas legítimas de forma dañina por manipulación o por exceso de permisos. | OWASP LLM06; ASI02, ASI03 | RT-GEN-03, RT-GEN-04 | AG-02, AG-05, AG-07, AG-08 |
 | **Cadena de suministro de modelos** | Modelos, pesos, bibliotecas, conectores o servidores de herramientas manipulados o vulnerables. | OWASP LLM03; ASI04; NIST AI 600-1 | RT-SEG-07 | SEG-09, AG-13 |
-| **Consumo sin límite** | Uso masivo que agota recursos o dispara costes. | OWASP LLM10; ASI08 | RT-GEN-08, RT-ECO-02 | SEG-10, AG-16 |
+| **Consumo sin límite** | Uso masivo que agota recursos o dispara costes. | OWASP LLM10 | RT-GEN-08, RT-ECO-02 | SEG-10, AG-16 |
 | **Desinformación del propio sistema** | Contenidos falsos presentados como ciertos que llevan a decisiones erróneas. | OWASP LLM09; NIST AI 600-1 | RT-TEC-04 | SEG-11; controles de fuentes (33) |
 
 ### 3.2 Amenazas específicas de agentes

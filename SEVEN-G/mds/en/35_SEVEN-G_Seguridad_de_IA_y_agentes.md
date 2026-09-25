@@ -14,7 +14,7 @@
 
 ---
 
-> **Legal notice and disclaimer.** SEVEN-G is a reference methodological framework provided "as is" and for information purposes only. It does not constitute legal, regulatory, financial or professional advice, nor does it guarantee compliance with any law or standard. References to general regulation (such as the EU AI Act, the GDPR, DORA or NIS2), to technical standards and to regulation specific to each sector or jurisdiction may be incomplete, may not apply to a particular case or may become out of date as a result of regulatory changes, interpretations or supervisory positions after their consultation date. **Each organisation that uses SEVEN-G is solely responsible for identifying the regulation that applies to it, verifying that it is current and certifying its own regulatory compliance**, with the appropriate qualified advice. The author accepts no liability for any use made of this content or for any decisions taken on the basis of it. The data, figures, companies and cases in the examples are fictitious or illustrative.
+> **Legal notice and disclaimer.** SEVEN-G is a reference methodological framework provided "as is" and for information purposes only. It does not constitute legal, regulatory, financial or professional advice, nor does it guarantee compliance with any law or standard. References to general regulation (such as the EU AI Act, the GDPR, DORA or NIS2), to technical standards and to regulation specific to each sector or jurisdiction may be incomplete, may not apply to a particular case or may become out of date as a result of regulatory changes, interpretations or supervisory positions after their consultation date. **Each organisation that uses SEVEN-G is solely responsible for identifying the regulation that applies to it, verifying that it is current and certifying its own regulatory compliance**, with the appropriate qualified advice. This methodology is a generic, free aid shared with the community so that nobody has to start from scratch; each person or organisation can and should adapt it to its own use. It must not be inferred that its legally sensitive parts have been reviewed by legal counsel: those reviews, for each company or sector, are the ultimate responsibility of the company, consultant or organisation that uses it. Although every effort is made to keep it up to date, some regulation may have changed without being reflected here. To the fullest extent permitted by law, the author accepts no responsibility whatsoever for the effects of its application in any organisation or for its full applicability. The methodology does not grant certification of any kind. The author accepts no liability for any use made of this content or for any decisions taken on the basis of it. The data, figures, companies and cases in the examples are fictitious or illustrative.
 
 <!-- esencial: condicional | Trigger: generative AI, agents (autonomy A1 to A3) or direct exposure to external people. The security design (P18) is evidence for every initiative; agent controls, adversarial testing and the minimums per autonomy level apply depending on the trigger. -->
 
@@ -34,13 +34,14 @@ This document establishes how an AI system is protected against attacks and misu
 
 The references were consulted in September 2026 and must be checked against their current version:
 
-- **OWASP Top 10 for LLM Applications**, 2025 version (risks LLM01 to LLM10).
+- **OWASP Top 10 for LLM Applications**, 2025 version (risks LLM01 to LLM10). The OWASP GenAI Security Project published the 2026 edition on 3 August 2026, with a different numbering: codes LLM01 to LLM10 in this document are those of the 2025 edition.
 - **OWASP Top 10 for Agentic Applications** (OWASP GenAI Security Project, published on 9 December 2025; risks ASI01 to ASI10) and the **Agentic AI – Threats and Mitigations** guide from the same project.
 - **MITRE ATLAS**, the knowledge base of adversary tactics and techniques against AI systems, which is updated periodically.
 - **NIST AI 600-1**, the generative AI profile of the NIST AI RMF (July 2024), in particular the information security, data privacy and value chain and component integration risks.
 - **NIST CSF 2.0** (NIST CSWP 29, February 2024), to express the controls with its six functions (govern, identify, protect, detect, respond and recover), and its AI profile, the **Cyber AI Profile** (NIST IR 8596), which as at the consultation date is a preliminary **draft** (December 2025) and is used for guidance only (34 §5.3).
 - **ISO/IEC 42001** and **ISO/IEC 23894** for the fit with the management system and with risk management.
 - **Regulation (EU) 2024/1689**, which requires high-risk systems to achieve an appropriate level of accuracy, robustness and cybersecurity, including resilience against the manipulation of data and models and against inputs designed to cause errors.
+- **Regulation (EU) 2024/2847 on cyber resilience**, for manufacturers of products with digital elements that incorporate AI: reporting of actively exploited vulnerabilities and severe incidents from 11-09-2026 (Art. 14) and main obligations from 11-12-2027; integrated with SEG-13, SEG-14 and document 37 (34 §7.2).
 - **CCN-CERT BP/36**, the good practice guide against offensive AI from the Spanish National Cryptologic Centre (Centro Criptológico Nacional) (June 2026).
 
 This document does not constitute legal advice.
@@ -77,7 +78,7 @@ This document does not constitute legal advice.
 | **Improper output handling** | The output is executed or inserted into other systems without validation (code, queries, links). | OWASP LLM05; ASI05 | RT-GEN-06 | SEG-04, AG-11 |
 | **Tool misuse** | The system uses legitimate tools in a harmful way through manipulation or excessive permissions. | OWASP LLM06; ASI02, ASI03 | RT-GEN-03, RT-GEN-04 | AG-02, AG-05, AG-07, AG-08 |
 | **Model supply chain** | Manipulated or vulnerable models, weights, libraries, connectors or tool servers. | OWASP LLM03; ASI04; NIST AI 600-1 | RT-SEG-07 | SEG-09, AG-13 |
-| **Unbounded consumption** | Mass usage that exhausts resources or causes costs to soar. | OWASP LLM10; ASI08 | RT-GEN-08, RT-ECO-02 | SEG-10, AG-16 |
+| **Unbounded consumption** | Mass usage that exhausts resources or causes costs to soar. | OWASP LLM10 | RT-GEN-08, RT-ECO-02 | SEG-10, AG-16 |
 | **Misinformation from the system itself** | False content presented as true that leads to wrong decisions. | OWASP LLM09; NIST AI 600-1 | RT-TEC-04 | SEG-11; source controls (33) |
 
 ### 3.2 Agent-specific threats
