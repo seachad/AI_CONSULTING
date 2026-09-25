@@ -5,8 +5,8 @@
 | | |
 |---|---|
 | Document | Document 11 · Maturity model |
-| Version | 0.1 (working draft) |
-| Date | 16-09-2026 |
+| Version | 0.2 (working draft) |
+| Date | 25-09-2026 |
 | Author | Fernando García Varela |
 | Status | Draft for review. Develops decision D10. Sample sizes, weights and reference targets are initial and will be calibrated through practical application. |
 
@@ -72,6 +72,15 @@ The model is not a certification. A maturity result does not replace the framewo
 | **5** | **Optimised** | The practice improves continuously using the company's own data. | At least **one complete C5 cycle** with changes decided on the basis of evidence and already applied. |
 
 Level 0 has no criteria of its own. The time requirements of levels 4 and 5 prevent a newly implemented practice from being presented as managed.
+
+**Indicative equivalence with the NIST CSF *tiers*.** Readers who come from the NIST CSF can read the SEVEN-G levels with this table. It is **indicative**: *tiers* characterise the rigour of the practices of the whole organisation and do not require the two quarters of evidence of level 4 or the complete C5 cycle of level 5. **It is not a second scale**: the equivalent *tier* is a view calculated from the 0–5 level, never a data item captured separately (34 §5.3).
+
+| SEVEN-G level | Equivalent *tier* (NIST CSF 2.0) | Reason |
+|---|---|---|
+| 0 Non-existent · 1 Initial | *Tier* 1 · Partial | Ad hoc and reactive practice. |
+| 2 Developing | *Tier* 2 · Risk Informed | Approved, but not applied across the whole organisation. |
+| 3 Defined | *Tier* 3 · Repeatable | Formal policy applied to the whole perimeter. |
+| 4 Managed · 5 Optimised | *Tier* 4 · Adaptive | Measured, adjusted and improved with the company's own data. |
 
 ### 2.3 Model rules
 
@@ -427,6 +436,19 @@ The ten **(§14)** questions substantiate the seven conditions in 01 §14. A com
 
 The overall level and the level by dimension are published in the board dashboard (T17) after each C1 or C5, with the assessment type and the cut-off date. The AI Committee reviews progress on the improvement actions quarterly.
 
+### 7.5 With the NIST profiles (AI RMF and CSF)
+
+Document 34 breaks the NIST AI RMF down into its 72 subcategories (34 §5.4) and selects the NIST CSF 2.0 subcategories that are relevant to AI according to the Cyber AI Profile, currently a draft (34 §5.5). With them, a company that uses those frameworks can describe its **current profile** and its **target profile** without carrying out another assessment: **one assessment, two readings**.
+
+1. **Current level derived from the questionnaire.** Each subcategory has a reference dimension and, where they exist, associated questions from section 3 ("Level from document 11" column of 34 §5.4 and §5.5). Its current level is the level of that dimension (section 5.1), **lowered to the level below that of the lowest-level associated question that is not at "Yes" or "Not applicable"**. Example: with D6 at level 3 and question D6.08 (level 3) at "Partial", the subcategory stays at 2.
+2. **Own question.** If the subcategory has no associated questions ("Own"), it is assessed separately with the levels in section 2.2, the accumulation rule and the valid evidence of section 4.5, and it can never be above the level of its reference dimension. **Without verified evidence, no level is evidenced** (section 1.2): the subcategory stays at 0 if it was assessed without evidence and "no data" if it was not assessed; "no data" is not 0.
+3. **Target level.** The company sets it in C2 for each selected subcategory, with the same proportionality as the targets by ambition in section 8, and who sets it is recorded.
+4. **Gap and plan.** Gap = target level − current level. Gaps are prioritised and turned into actions with an owner and a deadline in the improvement plan of the report (section 6, part 6); no parallel plan is opened.
+5. **Equivalent *tier*.** It is calculated with the table in section 2.2, only as a view for readers who think in CSF terms.
+6. **Draft sources.** While the Cyber AI Profile remains a draft, the selection of subcategories in 34 §5.5 and its priorities are provisional and do not underpin *gate* criteria (34 §5.3).
+
+> **Why it matters.** A company that already reports to its risk committee with the AI RMF or the CSF does not need a second assessment or a second number. The same verified questionnaire gives the maturity level and the profiles, so the board sees a single scale and the gap against the target comes from evidence, not from a separate self-assessment.
+
 ---
 
 ## 8. Maturity targets by ambition
@@ -498,3 +520,4 @@ The board should not approve Transform bets at G2 with D1 or D6 below 2 unless t
 | Version | Date | Changes |
 |---|---|---|
 | 0.1 | 16-09-2026 | First version. Confirms the seven dimensions and the six levels (D10); defines rubrics, an 84-question questionnaire, assessment types, sampling, calculation with a cap based on D1 and D6, report, links with the transformation index and with 01 §14, and reference targets by ambition. |
+| 0.2 | 25-09-2026 | Adds the indicative equivalence of levels 0–5 with the NIST CSF 2.0 *tiers* (section 2.2), which is a calculated view and not a second scale, and link 7.5 with the NIST profiles: current level of each AI RMF and CSF subcategory derived from the questionnaire, own questions, target level in C2, gap and equivalent *tier* (34 §5.4 and §5.5). |

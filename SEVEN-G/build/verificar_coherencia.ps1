@@ -50,7 +50,9 @@
     22. Datos en local e instalación propia (D104): documento 95 (ES/EN), enlaces desde la portada, la entrada, el README y el 03, y cifras.
     23. NIST CSF 2.0 y Cyber AI Profile (D110): el documento 34 (ES/EN) tiene la sección 5.3 con las seis funciones GV, ID, PR, DE, RS, RC y
         las áreas Secure, Defend y Thwart; los catálogos SEG y AG del 35 llevan la columna «Función CSF» sin celdas vacías; ninguna página
-        publicada cita como definitiva una fuente que el registro de referencias marca como borrador (campo «situacion»).
+        publicada cita como definitiva una fuente que el registro de referencias marca como borrador (campo «situacion»). Perfiles (D111):
+        34 §5.4 con las 72 subcategorías del AI RMF en su orden y §5.5 con 48 del CSF con prioridad S · D · T y una de ellas 1; toda
+        pregunta citada existe en el 11; 11 §7.5 existe y la equivalencia 0–5 ↔ tiers de 11 §2.2 es 0–1→1, 2→2, 3→3, 4–5→4 en ES y EN.
 #>
 param([switch]$SinNavegador)
 $ErrorActionPreference = 'Stop'
@@ -1045,6 +1047,31 @@ try {
     }
     if (([regex]::Matches($md35, "(?m)^\| (Código|Code) \|.*\| $colCsf \|\r?$")).Count -ne 2) { Mal "documento 35 [$lang]: los catálogos SEG y AG no llevan la columna «$colCsf»"; $malNist++ }
   }
+  # entrega 2: perfiles por subcategoría (34 §5.4 y §5.5), equivalencia 0–5 ↔ tiers (11 §2.2) y regla de derivación (11 §7.5)
+  $rmfOficial = [Collections.Generic.List[string]]::new()
+  foreach ($fc in @(@('GOVERN', @(7, 3, 2, 3, 2, 2)), @('MAP', @(6, 3, 5, 2, 2)), @('MEASURE', @(3, 13, 3, 3)), @('MANAGE', @(4, 4, 2, 3)))) {
+    for ($c = 1; $c -le $fc[1].Count; $c++) { for ($s = 1; $s -le $fc[1][$c - 1]; $s++) { $rmfOficial.Add("$($fc[0]) $c.$s") } }
+  }   # 72 subcategorías del NIST AI RMF 1.0 (NIST AI 100-1, tablas 1 a 4)
+  $equiv = @{}
+  foreach ($lang in 'es', 'en') {
+    $md34 = [IO.File]::ReadAllText((Get-ChildItem (Join-Path $repo "SEVEN-G\mds\$lang") -Filter '34_*.md' | Select-Object -First 1).FullName)
+    $md11 = [IO.File]::ReadAllText((Get-ChildItem (Join-Path $repo "SEVEN-G\mds\$lang") -Filter '11_*.md' | Select-Object -First 1).FullName)
+    $preguntas = @([regex]::Matches($md11, '(?m)^\| (D[1-7]\.\d\d) \|') | ForEach-Object { $_.Groups[1].Value })
+    $s54 = [regex]::Match($md34, '(?ms)^### 5\.4 .*?(?=^### 5\.5 )').Value
+    $s55 = [regex]::Match($md34, '(?ms)^### 5\.5 .*?(?=^## )').Value
+    $ids54 = @([regex]::Matches($s54, '(?m)^\| ((GOVERN|MAP|MEASURE|MANAGE) \d+\.\d+) \|') | ForEach-Object { $_.Groups[1].Value })
+    if (-not $s54) { Mal "documento 34 [$lang]: falta la sección 5.4 (perfil del AI RMF por subcategoría)"; $malNist++ }
+    elseif (($ids54 -join '|') -ne ($rmfOficial -join '|')) { Mal "documento 34 [$lang] §5.4: las subcategorías no son las 72 del AI RMF en su orden ($($ids54.Count) filas)"; $malNist++ }
+    $filas55 = @([regex]::Matches($s55, '(?m)^\| ((GV|ID|PR|DE|RS|RC)\.[A-Z]{2}-\d\d) \|[^|\n]*\| ([123]) · ([123]) · ([123]) \|'))
+    if ($filas55.Count -ne 48) { Mal "documento 34 [$lang] §5.5: $($filas55.Count) subcategorías del CSF con prioridad S · D · T válida (se esperaban 48)"; $malNist++ }
+    foreach ($fi in $filas55) { if (-not ($fi.Groups[3].Value -eq '1' -or $fi.Groups[4].Value -eq '1' -or $fi.Groups[5].Value -eq '1')) { Mal "documento 34 [$lang] §5.5: $($fi.Groups[1].Value) no tiene prioridad 1 en ningún área"; $malNist++ } }
+    if ($s55 -notmatch '(?i)provisional') { Mal "documento 34 [$lang] §5.5: no dice que la selección es provisional mientras el Cyber AI Profile sea borrador"; $malNist++ }
+    foreach ($q in [regex]::Matches($s54 + $s55, '\bD[1-7]\.\d\d\b')) { if ($preguntas -notcontains $q.Value) { Mal "documento 34 [$lang]: cita la pregunta $($q.Value), que no existe en el documento 11"; $malNist++ } }
+    if ($md11 -notmatch '(?m)^### 7\.5 ') { Mal "documento 11 [$lang]: falta el vínculo 7.5 con los perfiles NIST"; $malNist++ }
+    $s22 = [regex]::Match($md11, '(?ms)^### 2\.2 .*?(?=^### 2\.3 )').Value
+    $equiv[$lang] = (@([regex]::Matches($s22, '(?m)^\| ([0-5])[^|]*?(?: · ([0-5])[^|]*)? \| \*Tier\* ([1-4]) ') | ForEach-Object { "$($_.Groups[1].Value)$($_.Groups[2].Value)>$($_.Groups[3].Value)" }) -join ',')
+  }
+  if ($equiv.es -ne '01>1,2>2,3>3,45>4' -or $equiv.en -ne $equiv.es) { Mal "documento 11 §2.2: la tabla de equivalencia 0–5 ↔ tiers no es 0–1→1, 2→2, 3→3, 4–5→4 o difiere entre ES ($($equiv.es)) y EN ($($equiv.en))"; $malNist++ }
   $borradores = @(Get-ChildItem (Join-Path $repo 'SEVEN-G\build\referencias') -Filter '*.json' | ForEach-Object { Get-Content $_.FullName -Raw -Encoding utf8 | ConvertFrom-Json } | Where-Object { $_.situacion -and $_.situacion -ne 'final' })
   $paginas = @(foreach ($m in 'SEVEN-G', 'SPHERES', 'SPAD') { Get-ChildItem (Join-Path $repo "$m\html") -Recurse -Filter '*.html' -ErrorAction SilentlyContinue | Where-Object { $_.FullName -notmatch '\\_trabajo\\' } }) + @(Get-Item (Join-Path $repo 'index.html'), (Join-Path $repo 'en\index.html'))   # _trabajo no se publica
   $nMenc = 0
@@ -1061,7 +1088,7 @@ try {
       }
     }
   }
-  if (-not $malNist) { Ok "documento 34 §5.3 (ES/EN) con GV, ID, PR, DE, RS, RC y las áreas Secure, Defend y Thwart; catálogos SEG y AG del 35 con «Función CSF» completa; $nMenc menciones de fuentes en borrador ($(($borradores | ForEach-Object id) -join ', ')), todas marcadas como borrador" }
+  if (-not $malNist) { Ok "documento 34 §5.3 (ES/EN) con GV, ID, PR, DE, RS, RC y las áreas Secure, Defend y Thwart; catálogos SEG y AG del 35 con «Función CSF» completa; 34 §5.4 (72) y §5.5 (48) con preguntas del 11 existentes; equivalencia 0–5 ↔ tiers igual en ES y EN; $nMenc menciones de fuentes en borrador ($(($borradores | ForEach-Object id) -join ', ')), todas marcadas como borrador" }
 }
 finally { Remove-Item $tmp -Recurse -Force -Confirm:$false -ErrorAction SilentlyContinue }
 
