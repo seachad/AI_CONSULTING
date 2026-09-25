@@ -13,7 +13,7 @@ Uso interno del generador. Todas las traducciones al inglés deben seguir esta g
    - `<!-- grafico: Título | Subtítulo -->` conserva `grafico:`; traduce título y subtítulo.
 5. **Bloques Mermaid.** Traduce solo los textos entre comillas de nodos y aristas. No cambies identificadores, `classDef`, `class`, flechas ni sintaxis.
 6. **Referencias.** Los números de documento (00, 01, 03, 40…), códigos (C1–C5, G0–G7, R6, T01–T22, IA-AAAA-NNN) y rutas de ficheros no se traducen. Los nombres de fichero y rutas entre comillas invertidas se mantienen.
-7. **No traduzcas** SEVEN-G, Fernando García Varela, Lite, Enterprise, ISO/IEC 42001, NIST AI RMF, DORA, NIS2, CC BY 4.0, MIT.
+7. **No traduzcas** SEVEN-G, Fernando García Varela, Lite, Enterprise, ISO/IEC 42001, NIST AI RMF, NIST CSF, Cyber AI Profile, DORA, NIS2, CC BY 4.0, MIT.
 8. **Moneda y cifras** se mantienen (€, porcentajes). Usa punto decimal si aparece coma decimal.
 9. Escribe el fichero completo con codificación UTF-8.
 
@@ -80,6 +80,11 @@ Uso interno del generador. Todas las traducciones al inglés deben seguir esta g
 | evaluación de impacto en derechos fundamentales | fundamental rights impact assessment |
 | alfabetización en IA | AI literacy |
 | madurez | maturity |
+| *tier* (CSF): no se traduce · perfil actual · perfil objetivo · brecha | *tier* (CSF) · current profile · target profile · gap |
+| 1 Parcial · 2 Informado sobre el riesgo · 3 Repetible · 4 Adaptativo (*tiers* del CSF) | 1 Partial · 2 Risk Informed · 3 Repeatable · 4 Adaptive |
+| Función CSF · área de enfoque (Secure, Defend, Thwart: no se traducen) | CSF function · focus area (Secure, Defend, Thwart) |
+| declaración de aplicabilidad | statement of applicability |
+| Borrador (estado de una fuente) | Draft (source status) |
 | plazo de referencia · estancada | reference time limit · stalled |
 | Registrada · En fase · Pendiente de gate · En espera · En producción · Pendiente de G7 · Parada · Retirada | Registered · In phase · Awaiting gate · On hold · In production · Awaiting G7 · Stopped · Retired |
 | Cumple · No cumple · No aplica · Pendiente | Met · Not met · Not applicable · Pending |

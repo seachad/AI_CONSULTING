@@ -5,8 +5,8 @@
 | | |
 |---|---|
 | Document | Document 34 · Regulatory mapping |
-| Version | 0.1 (working draft) |
-| Date | 16-09-2026 |
+| Version | 0.2 (working draft) |
+| Date | 25-09-2026 |
 | Author | Fernando García Varela |
 | Status | Draft for review. Date sources were consulted: 16-09-2026. Requires qualified legal review before use. |
 
@@ -26,7 +26,7 @@
 
 SEVEN-G does not reproduce regulation within its phases. It links each obligation to **a phase or stage, an accountable role, an evidence item and a tool**. When a regulation changes, the affected row of this document and tool T07 are updated, without redoing the lifecycle, the *gates* or the templates.
 
-This document develops section 13 of document 01 and covers: Regulation (EU) 2024/1689 (EU AI Act) as amended by Regulation (EU) 2026/1744 (section 3); ISO/IEC 42001:2023 (section 4); NIST AI RMF 1.0 and NIST AI 600-1 (section 5); the GDPR and the EDPB guidelines (section 6); DORA and NIS2 where applicable (section 7); Spanish legislation and AESIA (Spanish Agency for the Supervision of Artificial Intelligence) (section 8); and, for guidance purposes, other jurisdictions and sectors (sections 11 and 12).
+This document develops section 13 of document 01 and covers: Regulation (EU) 2024/1689 (EU AI Act) as amended by Regulation (EU) 2026/1744 (section 3); ISO/IEC 42001:2023 (section 4); NIST AI RMF 1.0 and NIST AI 600-1 (sections 5.1 and 5.2); the NIST CSF 2.0 cybersecurity framework and its AI profile, the Cyber AI Profile, which is a draft as at the consultation date (section 5.3); the GDPR and the EDPB guidelines (section 6); DORA and NIS2 where applicable (section 7); Spanish legislation and AESIA (Spanish Agency for the Supervision of Artificial Intelligence) (section 8); and, for guidance purposes, other jurisdictions and sectors (sections 11 and 12).
 
 ### 1.2 What this document does not do
 
@@ -57,6 +57,7 @@ Every statement about dates or recent changes implicitly carries one of these st
 | **Verified (official)** | Confirmed in an official source: EUR-Lex, European Commission, European Parliament, BOE (Official State Gazette), Congreso de los Diputados (Congress of Deputies), AESIA, ISO, NIST or EDPB. |
 | **Verified (secondary)** | Confirmed in official sources in essence and detailed with published legal analyses; pending literal comparison with the text published in the Official Journal. |
 | **Pending confirmation** | Could not be confirmed as at the consultation date. Must not be used without prior verification. |
+| **Draft** | Document that the issuer has officially published as a draft for comment (for example, the NIST Cyber AI Profile). It is cited for guidance and may change; it **never underpins a *gate* criterion** or a SEVEN-G obligation. |
 
 ---
 
@@ -317,7 +318,7 @@ The Spanish penalties regime is in the legislative process (section 8). Penaltie
 
 ## 4. ISO/IEC 42001:2023
 
-ISO/IEC 42001:2023 (published in December 2023; under systematic review according to ISO as at the consultation date) specifies the requirements for an AI management system. In SEVEN-G, **the C1–C5 corporate cycle acts as the management system** and the 0–7 lifecycle as the operational process (01 §13). Certification is not part of SEVEN-G, but a company applying the framework should be able to provide the evidence in this section.
+ISO/IEC 42001:2023 (published in December 2023; as at the consultation date, 25-09-2026, ISO keeps it published, at stage 60.60, with no revision under way) specifies the requirements for an AI management system. In SEVEN-G, **the C1–C5 corporate cycle acts as the management system** and the 0–7 lifecycle as the operational process (01 §13). Certification is not part of SEVEN-G, but a company applying the framework should be able to provide the evidence in this section.
 
 ### 4.1 Clauses 4 to 10
 
@@ -371,11 +372,13 @@ Annex A groups the reference controls into nine groups. The table states the obj
 
 ISO/IEC 42005:2025 (AI system impact assessment) is the methodological reference for P11; ISO/IEC 23894:2023 (AI risk management), for document 33; and ISO/IEC 42006:2025 (audit and certification bodies), for document 38.
 
+**Crosswalk with the NIST AI RMF.** The NIST AI RMF resource centre (AIRC) hosts an AIRC crosswalk between the AI RMF and ISO/IEC 42001 contributed by a third party (Microsoft) and prepared in 2023 on the final draft (FDIS) of the standard, before its publication. NIST states that hosting it does not imply endorsement. It serves as guidance for relating the AI RMF subcategories to the clauses and Annex A controls, but it must be checked against the published standard. The AI RMF is not certifiable: what can be certified is a management system conforming to ISO/IEC 42001, by an accredited certification body (document 38 §12). SEVEN-G does not certify.
+
 ---
 
 ## 5. NIST AI RMF 1.0 and NIST AI 600-1 generative AI profile
 
-The NIST AI RMF 1.0 (January 2023) is a voluntary framework. As at the consultation date, NIST indicates that it is under revision; the NIST AI 600-1 profile was published on 26 July 2024. SEVEN-G uses them as a good practice reference, not as an obligation.
+The NIST AI RMF 1.0 (January 2023) is a voluntary framework. As at the consultation date, NIST indicates that it is under revision; the NIST AI 600-1 profile was published on 26 July 2024. SEVEN-G uses them as a good practice reference, not as an obligation. Section 5.3 adds the NIST cybersecurity framework (CSF 2.0) and its AI profile.
 
 ### 5.1 AI RMF functions and categories
 
@@ -419,6 +422,38 @@ The profile describes risks that are unique to or exacerbated by generative AI a
 | Intellectual property | Risk "Intellectual property" | Voluntary | Phases 3–5 | AI Risk Owner; legal counsel | P14; document 53 | T09 |
 | Obscene, degrading or abusive content | Risk "Obscene, degrading and/or abusive content" | Voluntary | Phases 3–5 (related to the new Art. 5 prohibitions) | AI Technical Owner | P11, P22 | T07, T10 |
 | Value chain and component integration | Risk "Value chain and component integration" | Voluntary | Phases 3–4 | AI Risk Owner | P14, P16 | T09 |
+
+### 5.3 NIST CSF 2.0 and Cyber AI Profile
+
+The **NIST CSF 2.0** (NIST CSWP 29, published in its final version on 26 February 2024) is a **voluntary** framework for managing cybersecurity risk. Its core is a taxonomy of outcomes organised into six functions —**GV** govern, **ID** identify, **PR** protect, **DE** detect, **RS** respond and **RC** recover—, 22 categories and 106 subcategories. Each organisation uses **profiles** to describe the outcomes it achieves today (**current profile**) and those it wants to achieve (**target profile**); the difference is the gap that becomes a prioritised action plan.
+
+The **Cyber AI Profile** (NIST IR 8596) is the CSF 2.0 community profile for AI. As at the consultation date (25-09-2026), only its **initial preliminary draft** exists, published on 16 December 2025, with comments closed on 30 January 2026; the NIST project page states that the comments are being reviewed. It organises the CSF subcategories into three focus areas: **Secure**, protecting the components of AI systems; **Defend**, using AI in the organisation's cyber defence; and **Thwart**, thwarting attacks that use AI. For each subcategory and area it proposes a priority (high, moderate or foundational). Status: **Draft** (section 1.4). While it remains a draft, SEVEN-G uses it for guidance and **bases no *gate* criterion** or obligation on it.
+
+> **Warning about *tiers*.** The CSF *tiers* (1 Partial, 2 Risk Informed, 3 Repeatable, 4 Adaptive) characterise the rigour of the cybersecurity risk governance and management practices **of the whole organisation** or of a unit. **They are not a maturity level for each subcategory**, and the NIST AI RMF has neither *tiers* nor a maturity scale. Scoring each subcategory from 1 to 4 would be a convention of one's own that must not be presented as a "CSF *tier*". SEVEN-G does not create a second scale: the degree of each outcome is expressed with the 0–5 maturity scale of document 11.
+
+> **Why it matters.** Many companies already manage their cybersecurity with the CSF, and their risk committee reads results in its six functions. Placing SEVEN-G's controls in those functions allows AI security to enter the same scorecard and the same action plan as the rest of cybersecurity, without inventing a parallel vocabulary. Distinguishing a draft from a final standard avoids deciding a gate on a text that may still change.
+
+**CSF 2.0 functions applied to AI systems**
+
+| Obligation / requirement | Article or clause | Applies to | SEVEN-G phase or stage | Accountable role | Evidence (P-code or document) | Tool |
+|---|---|---|---|---|---|---|
+| Establish, communicate and monitor the cybersecurity risk strategy, expectations, roles and policy, including AI systems, their corporate use and their supply chain | GV (GV.OC, GV.RM, GV.RR, GV.PO, GV.OV, GV.SC) | Organisations that adopt it (voluntary) | C2 (policy and appetite), C4 (oversight); phase 3 (suppliers) | Board; senior management; information security | Documents 13, 31 and 36; 35 §9.2; P14 | T19, T09, T17 |
+| Identify AI assets (models, data, connectors, non-human identities), their vulnerabilities and threats, and the improvements arising from tests and incidents | ID (ID.AM, ID.RA, ID.IM) | Same | Phase 0 (inventory), phase 3 (risks and threats), C5 (improvement) | AI Technical Owner; AI Risk Owner; information security | P05, P12, P18 (threat model, SEG-01), P54 | T02, T06 |
+| Protect identities and access, train staff and protect the data, platforms and infrastructure of AI systems | PR (PR.AA, PR.AT, PR.DS, PR.PS, PR.IR) | Same | Phase 4 (design), phase 5 (testing); C4 (corporate controls) | AI Technical Owner; information security | P16, P18, P54; SEG and AG controls of document 35 | T10 |
+| Detect and analyse adverse events with continuous monitoring of inputs, outputs, actions and behaviour | DE (DE.CM, DE.AE) | Same | Phase 6; C4 | AI Operations Owner; information security | P25; SEG-12, AG-17; document 52 | T10, T08 |
+| Manage, analyse, communicate and mitigate AI incidents | RS (RS.MA, RS.AN, RS.CO, RS.MI) | Same | Phase 6 (severities S1–S4) | AI Operations Owner; information security | P26, P27, P52; SEG-14, AG-09; document 37 | T08 |
+| Execute recovery and communicate it: fallback process, rollback and return to operation | RC (RC.RP, RC.CO) | Same | Phase 6; G7 where applicable | AI Operations Owner | P19, P24, P26; AG-19 | T08 |
+| Describe the current and target AI cybersecurity profiles and their gap | CSF 2.0, section 3 (organisational profiles) | Same | C1 (current), C2 (target), C5 (review) | AI Office; information security | Document 11; P34 | T15 |
+
+**Cyber AI Profile by focus area (draft)**
+
+| Area | What it covers | Where SEVEN-G covers it | Controls | Coverage in version 0.x |
+|---|---|---|---|---|
+| **Secure** | Protecting the components of AI systems: models, data, instructions, agents, connectors and supply chain. | 35 §3–§8; typical risks RT-GEN and RT-SEG in document 33; document 36 | SEG-01 to SEG-14; AG-01 to AG-20 | Covered |
+| **Defend** | Using AI in the company's cyber defence: assisted detection and response. | No specific coverage in version 0.x; treated as a use case, with the autonomy levels and controls of 35 §5. | A0–A3; AG- | No specific coverage |
+| **Thwart** | Thwarting attacks that use AI: synthetic impersonation, generated phishing, accelerated exploitation. | 35 §9 | SEG-15 to SEG-19; SEG-13 | Covered |
+
+The "CSF function" column of the SEG and AG catalogues (35 §6 and §7) indicates which CSF function and category each control contributes to.
 
 ---
 
@@ -519,21 +554,21 @@ According to the text of the bill sent to the Cortes Generales and the published
 
 How to read it: what each reference requires at each stage of the corporate cycle and in each phase of the lifecycle. "—" indicates that there is no main obligation at that point.
 
-| Stage or phase | AI Act | ISO/IEC 42001 | NIST AI RMF / 600-1 | GDPR | DORA / NIS2 (if applicable) | Spanish legislation |
+| Stage or phase | AI Act | ISO/IEC 42001 | NIST AI RMF / 600-1 · CSF 2.0 | GDPR | DORA / NIS2 (if applicable) | Spanish legislation |
 |---|---|---|---|---|---|---|
-| **C1 · Diagnosis** | Inventory and role per system (Arts. 3, 25) | 4.1, 4.2 | MAP 1 | Existing records of processing activities (Art. 30) | ICT inventory and third-party register (DORA Art. 28) | Competent authorities identified |
-| **C2 · Direction** | AI literacy (Art. 4); policy on prohibited practices | 4.3, 5.1–5.3, 6.1–6.2, A.2, A.3 | GOVERN 1–4 | Accountability (Art. 5(2)) | Responsibility of the management body (DORA Art. 5; NIS2 Art. 20) | — |
-| **C3 · Portfolio** | High-risk signals in the portfolio | 6.3, 7.1–7.2 | GOVERN 2, 6 | — | Concentration risk (DORA Art. 29) | — |
-| **C4 · Oversight** | Serious incidents and aggregated monitoring | 9.1, 9.2 | MEASURE 3–4 | Personal data breaches (Arts. 33–34) | Major incidents (DORA Arts. 17–19; NIS2 Art. 23) | Monitoring of the organic law |
-| **C5 · Review** | Review of the mapping and of classifications | 9.3, 10.1, 10.2 | MEASURE 4; MANAGE 4 | — | Learning (DORA Art. 13) | — |
-| **0 · Context** | Scope, role and provisional classification | 5.3, 8.1 | MAP 1 | Identify whether there are personal data | Identify whether it supports a critical function | Possible sandbox |
+| **C1 · Diagnosis** | Inventory and role per system (Arts. 3, 25) | 4.1, 4.2 | MAP 1 · ID.AM, GV.OC; current profile | Existing records of processing activities (Art. 30) | ICT inventory and third-party register (DORA Art. 28) | Competent authorities identified |
+| **C2 · Direction** | AI literacy (Art. 4); policy on prohibited practices | 4.3, 5.1–5.3, 6.1–6.2, A.2, A.3 | GOVERN 1–4 · GV.RM, GV.RR, GV.PO; target profile | Accountability (Art. 5(2)) | Responsibility of the management body (DORA Art. 5; NIS2 Art. 20) | — |
+| **C3 · Portfolio** | High-risk signals in the portfolio | 6.3, 7.1–7.2 | GOVERN 2, 6 · GV.SC | — | Concentration risk (DORA Art. 29) | — |
+| **C4 · Oversight** | Serious incidents and aggregated monitoring | 9.1, 9.2 | MEASURE 3–4 · GV.OV, DE.CM | Personal data breaches (Arts. 33–34) | Major incidents (DORA Arts. 17–19; NIS2 Art. 23) | Monitoring of the organic law |
+| **C5 · Review** | Review of the mapping and of classifications | 9.3, 10.1, 10.2 | MEASURE 4; MANAGE 4 · ID.IM; profile review | — | Learning (DORA Art. 13) | — |
+| **0 · Context** | Scope, role and provisional classification | 5.3, 8.1 | MAP 1 · ID.AM | Identify whether there are personal data | Identify whether it supports a critical function | Possible sandbox |
 | **1 · Discovery** | Screening for prohibited practices and Annex III signals | A.9 | MAP 1, MAP 3 | — | — | — |
 | **2 · Hypothesis** | — | 6.2 | MAP 3; MEASURE 1 | Minimisation and purpose (Art. 5) | — | — |
-| **3 · Feasibility and risk** | Classification (Arts. 5, 6, 50); risk management (Art. 9); fundamental rights impact assessment (Art. 27); general-purpose AI models (Art. 53) | 6.1.2–6.1.4, 8.2–8.4, A.5, A.7, A.10 | MAP 2–5; GOVERN 6; 600-1 risks | Legal basis (Arts. 6, 9); impact assessment (Art. 35); Art. 22 | Third-party risk and contracts (DORA Arts. 28–30; NIS2 Art. 21) | Competent authority; AESIA guides |
-| **4 · Design** | Data (Art. 10), documentation (Art. 11), logs (Art. 12), instructions (Art. 13), human oversight (Art. 14), cybersecurity (Art. 15), transparency (Art. 50) | 8.1, A.4, A.6, A.7, A.8 | MANAGE 2; 600-1 controls | Data protection by design (Art. 25); information (Arts. 13–14) | Protection and detection (DORA Arts. 8–10) | AESIA guides |
-| **5 · Delivery and validation** | Testing (Arts. 9, 15), conformity, declaration and CE marking (Arts. 43, 47, 48), registration (Art. 49), information to workers (Art. 26(7)), notification of the impact assessment (Art. 27(3)) | A.6, A.8 | MEASURE 1–2 | Updated records of processing activities (Art. 30) | Resilience testing (DORA Arts. 24–27) | Notifications to the competent authority |
-| **6 · Operation** | Deployer obligations (Art. 26), post-market monitoring (Art. 72), serious incidents (Art. 73), explanation (Art. 86) | 8.2–8.4, 9.1, A.6, A.8 | MEASURE 3; MANAGE 1, 4 | Rights (Arts. 15, 22); breaches (Arts. 33–34) | Incidents and recovery (DORA Arts. 11, 17–19; NIS2 Art. 23) | Notifications and requests |
-| **7 · Evolution or retirement** | Corrective actions and withdrawal (Art. 20); retention of documentation (Art. 18); update of registration (Art. 49) | 10.1, 10.2 | MANAGE 2, 4 | Retention and erasure of data (Art. 5(1)(e)) | Supplier exit strategy (DORA Art. 28) | — |
+| **3 · Feasibility and risk** | Classification (Arts. 5, 6, 50); risk management (Art. 9); fundamental rights impact assessment (Art. 27); general-purpose AI models (Art. 53) | 6.1.2–6.1.4, 8.2–8.4, A.5, A.7, A.10 | MAP 2–5; GOVERN 6; 600-1 risks · ID.RA, GV.SC | Legal basis (Arts. 6, 9); impact assessment (Art. 35); Art. 22 | Third-party risk and contracts (DORA Arts. 28–30; NIS2 Art. 21) | Competent authority; AESIA guides |
+| **4 · Design** | Data (Art. 10), documentation (Art. 11), logs (Art. 12), instructions (Art. 13), human oversight (Art. 14), cybersecurity (Art. 15), transparency (Art. 50) | 8.1, A.4, A.6, A.7, A.8 | MANAGE 2; 600-1 controls · PR.AA, PR.DS, PR.PS | Data protection by design (Art. 25); information (Arts. 13–14) | Protection and detection (DORA Arts. 8–10) | AESIA guides |
+| **5 · Delivery and validation** | Testing (Arts. 9, 15), conformity, declaration and CE marking (Arts. 43, 47, 48), registration (Art. 49), information to workers (Art. 26(7)), notification of the impact assessment (Art. 27(3)) | A.6, A.8 | MEASURE 1–2 · ID.IM (testing) | Updated records of processing activities (Art. 30) | Resilience testing (DORA Arts. 24–27) | Notifications to the competent authority |
+| **6 · Operation** | Deployer obligations (Art. 26), post-market monitoring (Art. 72), serious incidents (Art. 73), explanation (Art. 86) | 8.2–8.4, 9.1, A.6, A.8 | MEASURE 3; MANAGE 1, 4 · DE, RS, RC | Rights (Arts. 15, 22); breaches (Arts. 33–34) | Incidents and recovery (DORA Arts. 11, 17–19; NIS2 Art. 23) | Notifications and requests |
+| **7 · Evolution or retirement** | Corrective actions and withdrawal (Art. 20); retention of documentation (Art. 18); update of registration (Art. 49) | 10.1, 10.2 | MANAGE 2, 4 · RC.RP; PR.AA (revocation) | Retention and erasure of data (Art. 5(1)(e)) | Supplier exit strategy (DORA Art. 28) | — |
 
 ---
 
@@ -603,7 +638,7 @@ It does not assert sector-specific requirements; it points out interactions that
 
 ## 13. Annex C · Sources consulted and verification status
 
-Consultation date for all sources: 16-09-2026.
+Consultation date: 16-09-2026, except for the sources in section 5.3, the crosswalk in section 4.3 and the ISO/IEC 42001 record, consulted on 25-09-2026.
 
 | Topic | Source | Status |
 |---|---|---|
@@ -611,6 +646,9 @@ Consultation date for all sources: 16-09-2026.
 | Text of Regulation (EU) 2026/1744 and details of Arts. 4, 10, 49 and 3(14) and small mid-cap enterprise thresholds | EUR-Lex (the text could not be read automatically) and published legal analyses | Verified (secondary): check against EUR-Lex |
 | Commission guidelines and codes | European Commission | Verified (official); final versions on high risk and serious incidents pending |
 | ISO/IEC 42001, 42005 and 42006; NIST AI RMF and AI 600-1; EDPB | iso.org; nist.gov; edpb.europa.eu | Verified (official) |
+| NIST CSF 2.0 (NIST CSWP 29, final version of 26-02-2024) | csrc.nist.gov; nist.gov/cyberframework (official Spanish translation) | Verified (official) |
+| Cyber AI Profile (NIST IR 8596, initial preliminary draft of 16-12-2025) | csrc.nist.gov; nccoe.nist.gov (the project is reviewing comments) | Verified (official); **Draft** |
+| AI RMF ↔ ISO/IEC 42001 crosswalk (contributed by Microsoft on the 2023 FDIS) | airc.nist.gov | Verified (official) as to its existence and authorship; for guidance, not issued by NIST |
 | Part of the omnibus amending the GDPR | European Parliament and published analyses | In the legislative process; pending confirmation |
 | RD 729/2023, RD 817/2023, AESIA guides, draft organic law | boe.es; aesia.digital.gob.es; La Moncloa; congreso.es | Verified (official); status after 16-09-2026 pending |
 | NIS2 transposition in Spain; United Kingdom; United States; European Health Data Space | Secondary sources | Pending confirmation; for guidance |
@@ -657,3 +695,4 @@ Consultation date for all sources: 16-09-2026.
 | Version | Date | Changes |
 |---|---|---|
 | 0.1 | 16-09-2026 | First version. Maps the EU AI Act as amended by Regulation (EU) 2026/1744 (timeline verified as at 16-09-2026), ISO/IEC 42001:2023, NIST AI RMF 1.0 and NIST AI 600-1, the GDPR and EDPB guidelines, DORA, NIS2 and Spanish legislation; adds a summary matrix, a maintenance procedure and indicative annexes on other jurisdictions and sectors. Legal notice and user responsibility for regulatory compliance. |
+| 0.2 | 25-09-2026 | Adds section 5.3, NIST CSF 2.0 and Cyber AI Profile: CSF functions applied to AI systems, the Secure, Defend and Thwart areas of the profile (in draft) and a warning that *tiers* are not maturity levels per subcategory; the "Draft" status in section 1.4; the CSF column in the summary matrix; the AIRC crosswalk between the AI RMF and ISO/IEC 42001 in section 4.3; and the new sources in section 13. Corrects the status of ISO/IEC 42001: published (stage 60.60), with no revision under way. |
