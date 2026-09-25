@@ -6,7 +6,9 @@
   Lee el registro de referencias (build/referencias/*.json) y la lista de vigilancia (build/vigilancia_fuentes.json) y escribe
   SEVEN-G/mds/es/_trabajo/vigilancia_fuentes/AAAA-MM_Vigilancia_de_fuentes.md con:
     1. el resultado de la comprobación de enlaces (verificar_referencias.ps1), salvo con -SinEnlaces;
-    2. las fuentes prioritarias, con la pregunta que hay que responder, dónde mirar y los documentos afectados;
+    2. las fuentes prioritarias, con la pregunta que hay que responder, dónde mirar (su «donde» o, si no lo tiene, la URL verificada
+       del registro), si ese enlace responde y los documentos afectados; y las referencias del registro que pueden cambiar
+       (borrador, no verificable, proyecto, consulta) y aún no están vigiladas, para darlas de alta (D118);
     3. las referencias cuya última comprobación tiene más de «antiguedad_max_meses» meses;
     4. dónde buscar fuentes nuevas.
   Las columnas «Resultado» y «Propuesta» quedan en blanco: las rellena la tarea programada o quien revise, consultando la fuente
@@ -62,12 +64,32 @@ else {
 
 [void]$sb.AppendLine('## 2. Fuentes prioritarias (pueden cambiar en cualquier momento)')
 [void]$sb.AppendLine()
-[void]$sb.AppendLine('| Referencia | Situación | Qué comprobar | Dónde mirar | Documentos afectados | Resultado | Propuesta |')
-[void]$sb.AppendLine('|---|---|---|---|---|---|---|')
+[void]$sb.AppendLine('«Enlace»: respuesta HTTP de «Dónde mirar» (OK; «a mano» si el sitio rechaza a los programas; FALLO si no existe). Si el enlace falla o no lleva a la información, se busca la página oficial del emisor y se corrige «donde» en `vigilancia_fuentes.json` (D118).')
+[void]$sb.AppendLine()
+[void]$sb.AppendLine('| Referencia | Situación | Qué comprobar | Dónde mirar | Enlace | Documentos afectados | Resultado | Propuesta |')
+[void]$sb.AppendLine('|---|---|---|---|---|---|---|---|')
+$cab = @{ 'User-Agent' = 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) SEVEN-G-verificador' }
 foreach ($p in $cfg.prioritarias) {
   $r = $porId[$p.id]; $sit = if ($r.situacion) { $r.situacion } else { $r.estado }
-  [void]$sb.AppendLine("| **$($p.id)** | $sit | $(Celda $p.pregunta) | $($p.donde) | $(Docs $r) | | |")
+  $donde = if ($p.donde) { $p.donde } elseif ($r.url_es) { $r.url_es } else { $r.url_en }
+  $origen = if ($p.donde) { '' } else { ' (registro)' }
+  $enl = if (-not $donde) { 'sin enlace' } elseif ($SinEnlaces) { '-' } else {
+    $c = 0; try { $c = [int](Invoke-WebRequest -Uri $donde -Headers $cab -TimeoutSec 30 -SkipHttpErrorCheck -MaximumRedirection 10).StatusCode } catch { $c = -1 }
+    if ($c -ge 200 -and $c -lt 400) { 'OK' } elseif ($c -in 401, 403, 405, 429) { "a mano ($c)" } else { "FALLO ($c)" }
+  }
+  [void]$sb.AppendLine("| **$($p.id)** | $sit | $(Celda $p.pregunta) | $donde$origen | $enl | $(Docs $r) | | |")
 }
+[void]$sb.AppendLine()
+[void]$sb.AppendLine('### 2.1 Referencias que pueden cambiar y no están vigiladas')
+[void]$sb.AppendLine()
+$vigiladas = @($cfg.prioritarias | ForEach-Object id)
+$patronCambio = '(?i)\b(proyecto|anteproyecto|propuesta|borrador|consulta p[uú]blica|draft|proposal|public consultation)\b'
+$sinVig = @($regs | Where-Object { $vigiladas -notcontains $_.id -and (($_.situacion -and $_.situacion -ne 'final') -or $_.estado -ne 'verificado' -or ("$($_.titulo_es) $($_.titulo_en)" -match $patronCambio)) })
+if ($sinVig.Count) {
+  [void]$sb.AppendLine('Darlas de alta en `vigilancia_fuentes.json` con su pregunta (D118), o anotar por qué no hace falta:')
+  [void]$sb.AppendLine(); [void]$sb.AppendLine('| Referencia | Estado · situación | Título | Alta propuesta |'); [void]$sb.AppendLine('|---|---|---|---|')
+  foreach ($r in $sinVig) { [void]$sb.AppendLine("| **$($r.id)** | $($r.estado)$(if ($r.situacion) { ' · ' + $r.situacion }) | $(Celda $r.titulo_es) | |") }
+} else { [void]$sb.AppendLine('Ninguna: todas las referencias que pueden cambiar están vigiladas.') }
 [void]$sb.AppendLine()
 
 [void]$sb.AppendLine("## 3. Referencias con la última comprobación de hace más de $($cfg.antiguedad_max_meses) meses")
