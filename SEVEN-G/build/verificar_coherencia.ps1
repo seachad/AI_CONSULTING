@@ -55,6 +55,9 @@
         pregunta citada existe en el 11; 11 §7.5 existe y la equivalencia 0–5 ↔ tiers de 11 §2.2 es 0–1→1, 2→2, 3→3, 4–5→4 en ES y EN.
         Plantillas (D112): P72, P73 y P74 en ES y EN con HTML, PDF y Word y «Por qué importa»; nivel en la matriz del 94 §7.2; P74 con los
         38 controles del anexo A y la advertencia de que la certificación la emite una entidad acreditada (38 §12).
+    24. Exención de responsabilidad y rigor de las fuentes (D113, D114): todo aviso legal publicado incluye la exención por los efectos de la
+        aplicación; 93 §11 lleva la exención completa; ninguna referencia del registro queda por corregir y ningún documento se apoya en
+        fuentes secundarias.
 #>
 param([switch]$SinNavegador)
 $ErrorActionPreference = 'Stop'
@@ -1109,6 +1112,34 @@ try {
     }
   }
   if (-not $malNist) { Ok "documento 34 §5.3 (ES/EN) con GV, ID, PR, DE, RS, RC y las áreas Secure, Defend y Thwart; catálogos SEG y AG del 35 con «Función CSF» completa; 34 §5.4 (72) y §5.5 (48) con preguntas del 11 existentes; equivalencia 0–5 ↔ tiers igual en ES y EN; P72–P74 completas y en la matriz del 94; $nMenc menciones de fuentes en borrador ($(($borradores | ForEach-Object id) -join ', ')), todas marcadas como borrador" }
+  # ---- 24. exención de responsabilidad y rigor de las fuentes (D113, D114): todo aviso legal publicado dice que la metodología es una
+  # ayuda genérica y gratuita, sin revisión jurídica para ningún caso, sin responsabilidad por los efectos de su aplicación y sin
+  # certificación; el documento 93 §11 lleva la exención completa; el registro de referencias no tiene entradas por corregir y ningún
+  # documento publicado se apoya en fuentes secundarias
+  Write-Host '24. Exención de responsabilidad y rigor de las fuentes'
+  $malEx = 0
+  $claveEs = 'el autor no asume responsabilidad alguna por los efectos de su aplicación en ninguna organización'
+  $claveEn = 'the author accepts no responsibility whatsoever for the effects of its application in any organisation'
+  $nAv = 0
+  foreach ($md in Get-ChildItem (Join-Path $repo 'SEVEN-G\mds'), (Join-Path $repo 'SPHERES\mds'), (Join-Path $repo 'SPAD\mds') -Recurse -Filter '*.md') {
+    foreach ($lin in [IO.File]::ReadAllLines($md.FullName)) {
+      if ($lin -match '^> \*\*Aviso legal y exención') { $nAv++; if (-not $lin.Contains($claveEs)) { Mal "$($md.Name): el aviso legal no incluye la exención por los efectos de la aplicación (D113)"; $malEx++ } }
+      elseif ($lin -match '^> \*\*Legal notice and disclaimer') { $nAv++; if (-not $lin.Contains($claveEn)) { Mal "$($md.Name): the legal notice lacks the disclaimer for the effects of application (D113)"; $malEx++ } }
+    }
+  }
+  $fuentesAviso = @('index.html', 'SEVEN-G\build\entrada\es\index.html', 'SEVEN-G\build\build.ps1', 'SEVEN-G\herramientas\T01_registro_iniciativas\_fuentes\registro.plantilla.html', 'SEVEN-G\herramientas\T11_calculadora_valor\_fuentes\calculadora.plantilla.html', 'SEVEN-G\herramientas\T14_indice_transformacion\_fuentes\indice.plantilla.html', 'SEVEN-G\herramientas\T15_diagnostico_madurez\_fuentes\madurez.plantilla.html', 'SEVEN-G\herramientas\T17_panel_consejo\index.html', 'SEVEN-G\herramientas\T17_panel_consejo\publicacion_panel.py', 'SEVEN-G\herramientas\T17_panel_consejo\t01_a_panel.js', 'SEVEN-G\herramientas\comunidad\index.html', 'LICENCIA_CONTENIDOS.md')
+  foreach ($fa in $fuentesAviso) { if (-not ([IO.File]::ReadAllText((Join-Path $repo $fa))).Contains($claveEs)) { Mal "${fa}: el aviso no incluye la exención por los efectos de la aplicación (D113)"; $malEx++ } }
+  foreach ($fa in 'en\index.html', 'SEVEN-G\build\entrada\en\index.html', 'SEVEN-G\build\build.ps1') { if (-not ([IO.File]::ReadAllText((Join-Path $repo $fa))).Contains($claveEn)) { Mal "${fa}: the notice lacks the disclaimer for the effects of application (D113)"; $malEx++ } }
+  foreach ($par in @(@('es', 'Exención completa de responsabilidad'), @('en', 'Full disclaimer of liability'))) {
+    $d93 = [IO.File]::ReadAllText((Get-ChildItem (Join-Path $repo "SEVEN-G\mds\$($par[0])") -Filter '93_*.md' | Select-Object -First 1).FullName)
+    if (-not $d93.Contains($par[1])) { Mal "documento 93 [$($par[0])] §11: falta la exención completa (D113)"; $malEx++ }
+  }
+  $regs = @(Get-ChildItem (Join-Path $repo 'SEVEN-G\build\referencias') -Filter '*.json' | ForEach-Object { Get-Content $_.FullName -Raw -Encoding utf8 | ConvertFrom-Json })
+  foreach ($r in $regs | Where-Object { $_.estado -notin 'verificado', 'no-verificable' }) { Mal "referencia $($r.id): estado «$($r.estado)»; corregir el documento y verificarla (D41, D114)"; $malEx++ }
+  foreach ($md in Get-ChildItem (Join-Path $repo 'SEVEN-G\mds'), (Join-Path $repo 'SPHERES\mds'), (Join-Path $repo 'SPAD\mds') -Recurse -Filter '*.md' | Where-Object { $_.FullName -notmatch '\\_trabajo\\' }) {
+    if ([IO.File]::ReadAllText($md.FullName) -match '(?i)verificado \(secundaria\)|verified \(secondary\)|fuentes secundarias|secondary sources|análisis jurídicos publicados|published legal analyses') { Mal "$($md.Name): se apoya en fuentes secundarias (D114)"; $malEx++ }
+  }
+  if (-not $malEx) { Ok "exención completa en $nAv avisos de la biblioteca, portada, entrada, herramientas, paneles y licencia, y en 93 §11; $(@($regs).Count) referencias verificadas o marcadas no verificables, ninguna por corregir; sin fuentes secundarias" }
 }
 finally { Remove-Item $tmp -Recurse -Force -Confirm:$false -ErrorAction SilentlyContinue }
 
