@@ -51,7 +51,7 @@ By the end you will be able to find any document, template or tool, search for a
 | Code | What it is | Where it is defined |
 |---|---|---|
 | **00 to 94** | Documents. The first digit indicates the block. | Index |
-| **P01–P71** | Templates. P01–P31 are the evidence for each phase; P32–P71, those for the company, board, compliance, third parties, audit and implementation. | Block H |
+| **P01–P74** | Templates. P01–P31 are the evidence for each phase; P32–P71, those for the company, board, compliance, third parties, audit and implementation; P72–P74, the NIST profiles and the ISO/IEC 42001 statement of applicability. | Block H |
 | **T01–T22** | Tools. Those without their own application link to the procedure with which they are applied. | document 03 |
 | **C1–C5** | Stages of the corporate cycle: diagnosis, direction, portfolio, oversight and review. | document 01 |
 | **Phases 0–7 · G0–G5, R6, G7** | Phases of an initiative and their decision gates. | document 01 |

@@ -302,7 +302,7 @@ Los objetivos son orientativos y los fija la compañía en su plan.
 | **Mes 1** | T01, T02, T04 (inventario y registro); T15 (madurez); T14 (índice); T16 (mapa de esferas); T12 (valor actual). | P32, P33, P34, P05 |
 | **Mes 2** | T06 (riesgos); T07 (clasificación regulatoria); T05 (ambición); T19 (tesis y apetito). | P35, P43, P06, P07, P11, P12, P31 |
 | **Mes 3** | T03 (*gates*); T08 (no conformidades); T17 (panel); T18 (recomendaciones); T01 y T16 (cartera). | P36, P38, P39, P40, P41, P03, P04, P28, P29 |
-| **Meses 4–18** | Todas las anteriores; T09, T10, T11, T13, T20, T21, T22 según avance la cartera. | P01–P31 según la fase de cada iniciativa; P42 y P67 cada trimestre; P37 en C5; el resto de P32–P71 cuando aplique |
+| **Meses 4–18** | Todas las anteriores; T09, T10, T11, T13, T20, T21, T22 según avance la cartera. | P01–P31 según la fase de cada iniciativa; P42 y P67 cada trimestre; P37 en C5; el resto de P32–P74 cuando aplique |
 
 Las herramientas sin aplicación propia se aplican con la plantilla o el documento que indica el catálogo de 03. Una compañía que prefiera no usar T01 puede llevar el registro en una hoja de cálculo con los campos del modelo de datos de 03 §4.
 

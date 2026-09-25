@@ -388,7 +388,7 @@ Alphabetical order by English term. The full scales are in section 4 and the cod
 
 | Term | Definition in SEVEN-G | Reference document | Spanish term |
 |---|---|---|---|
-| **Template** | Standard Block H document: P01–P31 for preparing the initiative's mandatory evidence and P32–P71 for the registers, reports and decisions of the company, the board, compliance, third parties, audit and framework implementation. Each has an editable Word version. | 01 §6.10; 03 §5 | Plantilla |
+| **Template** | Standard Block H document: P01–P31 for preparing the initiative's mandatory evidence P32–P71 for the registers, reports and decisions of the company, the board, compliance, third parties, audit and framework implementation, and P72–P74 for the NIST profiles and the ISO/IEC 42001 statement of applicability. Each has an editable Word version. | 01 §6.10; 03 §5 | Plantilla |
 | **Third-party AI embedded in processes** | Supplier software with AI features that take part in decisions, operations or customer relations. It goes through the full lifecycle, with the design and delivery phases focused on the selection, integration, contract and controls of the supplier. | 01 §1.2; 32 §2.1 | IA de terceros integrada en procesos |
 | **Third-party requirement level** | Degree of due diligence, contract, monitoring and exit required for each relationship between a supplier and a service: N1 Standard, N2 Enhanced or N3 Critical, determined by the highest factor among criticality, data, autonomy and substitutability. | 36 §4 | Nivel de exigencia a terceros |
 | ***Tier* (CSF)** | NIST CSF degree that characterises the rigour of the cybersecurity risk governance and management practices of the whole organisation or of a unit: 1 Partial, 2 Risk Informed, 3 Repeatable and 4 Adaptive. It is not a maturity level for each subcategory and does not exist in the NIST AI RMF. Not translated. | 34 §5.3 | tier (CSF) |
@@ -792,7 +792,7 @@ Spanish equivalents of the taxonomy values:
 | **LV-G\<n\> · LV-R6 · LV-EV · LV-AG** | LV + hyphen + scope | Checklists by gate, for evidence validation and for agents. | 22 §1 | LV-G5 |
 | **EV.01–EV.14** | EV + point + two digits | Valid evidence rules. | 21 §4.1; 22 §11 | EV.05 |
 | **T01–T22** | T + two digits | Framework tools. | 03 §5 | T01 |
-| **P01–P71** | P + two digits | Block H templates: P01–P31 per initiative (01 §6.10); P32–P71 for the company, board, compliance, third parties, audit and implementation. | Block H; 01 §6.10 | P29 |
+| **P01–P74** | P + two digits | Block H templates: P01–P31 per initiative (01 §6.10); P32–P71 for the company, board, compliance, third parties, audit and implementation; P72–P74, NIST profiles and ISO/IEC 42001 statement of applicability (34 §4–§5). | Block H; 01 §6.10 | P29 |
 | **D1–D7** | D + number | Maturity dimensions. | 11 §2.1 | D6 |
 | **Maturity levels 0–5** | Whole number | Maturity levels. | 11 §2.2 | level 3 |
 | **S1–S4** | S + number | AI incident severity. | 37 §4.2 | S1 |
@@ -836,11 +836,11 @@ The former local numbering in documents 12 and 50 (P1–P5, S1–S8 and D1–D3 
 
 | Code or numbering | Meaning | Document | How it is cited elsewhere | Not to be confused with |
 |---|---|---|---|---|
-| IT-P1–IT-P5 | Five ambition classification questions (formerly P1–P5) | 12 §3.1 | "IT-P4" or "question IT-P4 of document 12" | P01–P71 (templates) |
+| IT-P1–IT-P5 | Five ambition classification questions (formerly P1–P5) | 12 §3.1 | "IT-P4" or "question IT-P4 of document 12" | P01–P74 (templates) |
 | IT-S1–IT-S8 | Eight signals of the transformation index (formerly S1–S8) | 12 §4.4 | "IT-S7" or "signal 7 of the index" | S1–S4 (severity) |
 | IT-D1–IT-D3 | Conditions of the transformation declaration (formerly D1–D3) | 12 §5.1 | "condition IT-D1" | D1–D7 (maturity) |
 | PER-D1–PER-D5 | Destinations of released capacity (formerly D1–D5) | 50 §6.2; 23 §10.5 | "destination PER-D1 (Materialise)" | D1–D7 (maturity); PER-NN (indicators) |
-| PER-PA–PER-PF | AI literacy profiles (formerly P-A–P-F) | 50 §5.2 | "profile PER-PD" | P01–P71 (templates); PER-NN (indicators) |
+| PER-PA–PER-PF | AI literacy profiles (formerly P-A–P-F) | 50 §5.2 | "profile PER-PD" | P01–P74 (templates); PER-NN (indicators) |
 | PER-NN · DAT-NN · CNC-NN · OPE-NN | Provisional people, data, knowledge (CNC, formerly CON) and operations indicators | 50, 51, 52 | By their IND- code according to the mapping table in 41 §21 | IND-\<FAM\>-NN; CNC-NN is not to be confused with IND-CON-NN (board) |
 | CI-n · I-n | Conflicts of interest and incompatibilities in the governance model | 30 §5, §12 | "conflict CI-2 of document 30" | — |
 | SP, BO, PO, TO, OO, RO, AUD, AIO, MC, AIC… (Spanish version: PAT, RN, RP, RT, RO, RR, AUD, OIA, CG, CIA…) | Abbreviations for owners in columns | 41 §3 | Full name of the role | RT-\<CAT\>-NN (typical risks) |
@@ -862,7 +862,7 @@ In new versions, documents **should** replace the numbering that remains local w
 | **E** | Measurement and value | 40–43 | Measurement rules, indicators, costs, benefits realisation. |
 | **F** | People, data and operations | 50–53 | People, data and knowledge, operations, building with AI. |
 | **G** | Board | 60–62 | Board pack and conversation guide, recommendations and decisions register. |
-| **H** | Templates | P01–P71 | Evidence for each phase of the lifecycle (P01–P31) and registers, reports and decisions of the company, the board, compliance, third parties, audit and implementation (P32–P71). |
+| **H** | Templates | P01–P74 | Evidence for each phase of the lifecycle (P01–P31); registers, reports and decisions of the company, the board, compliance, third parties, audit and implementation (P32–P71); NIST profiles and ISO/IEC 42001 statement of applicability (P72–P74). |
 | **I** | Tools | T01–T22 | Catalogue in document 03; HTML tools with JSON data. |
 | **J** | Framework adoption | 90–93 | Implementation, guide for consultants, application cases, licence. |
 
@@ -978,7 +978,7 @@ Framework abbreviations that are not general acronyms: **€k** thousands of eur
 | **T04** | Intensity determination | Uses the Enterprise criteria and the scale in section 4.6. |
 | **T05** | Ambition classifier | Uses the ambition levels and statuses in section 4.5. |
 | **T06–T22** | Other tools | Use the risk, appetite, maturity, severity, nonconformity, third-party, index and value scales in section 4. |
-| **P01–P71** | Block H templates | Use the terms in section 3 and the codes in section 6. No template defines terms of its own. |
+| **P01–P74** | Block H templates | Use the terms in section 3 and the codes in section 6. No template defines terms of its own. |
 
 Tools display the values of closed lists in Spanish and English using the equivalents in this document.
 

@@ -333,7 +333,7 @@ ISO/IEC 42001:2023 (published in December 2023; as at the consultation date, 25-
 | Roles, responsibilities and authorities | 5.3 | Top management | C2; phase 0 | AI Committee | Document 30; P03 | T01 |
 | Actions to address risks and opportunities | 6.1.1 | Organisation | C2, C3 | AI Committee | Documents 13 and 14 | T06 |
 | AI risk assessment | 6.1.2 | Organisation | C2 (criteria), phase 3 (assessment) | AI Risk Owner | Document 33; P12 | T06 |
-| AI risk treatment and statement of applicability of controls | 6.1.3 | Organisation | C2 (statement), phases 3–4 | AI Office; AI Risk Owner | P13; section 4.2 as the basis for the statement | T06 |
+| AI risk treatment and statement of applicability of controls | 6.1.3 | Organisation | C2 (statement), phases 3–4 | AI Office; AI Risk Owner | P13; P74 (statement of applicability), with section 4.2 as the basis | T06 |
 | AI system impact assessment | 6.1.4 | Organisation | Phase 3 | AI Risk Owner | P11 | T07 |
 | AI objectives and planning to achieve them | 6.2 | Organisation | C2, C3; phase 2 | Senior management; AI Product Owner | Documents 13 and 14; P08 | T11, T19 |
 | Planning of changes | 6.3 | Organisation | C3, C5 | AI Committee | Document 14; P27 | T01 |
@@ -354,7 +354,7 @@ ISO/IEC 42001:2023 (published in December 2023; as at the consultation date, 25-
 
 ### 4.2 Annex A: controls by group
 
-Annex A groups the reference controls into nine groups. The table states the objective of each group in our own words and where SEVEN-G covers it. The company's statement of applicability must be checked against the purchased text of the standard.
+Annex A groups the reference controls into nine groups. The table states the objective of each group in our own words and where SEVEN-G covers it. The company's statement of applicability is prepared with template P74, control by control, and must be checked against the purchased text of the standard.
 
 | Obligation / requirement | Article or clause | Applies to | SEVEN-G phase or stage | Accountable role | Evidence (P-code or document) | Tool |
 |---|---|---|---|---|---|---|
@@ -443,7 +443,7 @@ The **Cyber AI Profile** (NIST IR 8596) is the CSF 2.0 community profile for AI.
 | Detect and analyse adverse events with continuous monitoring of inputs, outputs, actions and behaviour | DE (DE.CM, DE.AE) | Same | Phase 6; C4 | AI Operations Owner; information security | P25; SEG-12, AG-17; document 52 | T10, T08 |
 | Manage, analyse, communicate and mitigate AI incidents | RS (RS.MA, RS.AN, RS.CO, RS.MI) | Same | Phase 6 (severities S1–S4) | AI Operations Owner; information security | P26, P27, P52; SEG-14, AG-09; document 37 | T08 |
 | Execute recovery and communicate it: fallback process, rollback and return to operation | RC (RC.RP, RC.CO) | Same | Phase 6; G7 where applicable | AI Operations Owner | P19, P24, P26; AG-19 | T08 |
-| Describe the current and target AI cybersecurity profiles and their gap | CSF 2.0, section 3 (organisational profiles) | Same | C1 (current), C2 (target), C5 (review) | AI Office; information security | Section 5.5; 11 §7.5; P34 | T15 |
+| Describe the current and target AI cybersecurity profiles and their gap | CSF 2.0, section 3 (organisational profiles) | Same | C1 (current), C2 (target), C5 (review) | AI Office; information security | P72; section 5.5; 11 §7.5; P34 | T15 |
 
 **Cyber AI Profile by focus area (draft)**
 
@@ -457,7 +457,7 @@ The "CSF function" column of the SEG and AG catalogues (35 §6 and §7) indicate
 
 ### 5.4 AI RMF profile by subcategory
 
-Section 5.1 maps the 19 categories of the AI RMF. A current or target profile, however, is built on its **72 subcategories** (GOVERN 1.1 to MANAGE 4.3; number checked in publication NIST AI 100-1). For each one, the table states what it asks for in our own terms, where SEVEN-G covers it and **where its level comes from**: the dimension and questions of the document 11 questionnaire that evidence it, or "Own" when no question covers it and it has to be assessed separately. The derivation rule is in 11 §7.5: one assessment, two readings, with no double data entry. The level is expressed on the 0–5 scale of document 11; the indicative equivalence with the CSF *tiers* is in 11 §2.2. The descriptions are our own summary, not a translation of the NIST text.
+Section 5.1 maps the 19 categories of the AI RMF. A current or target profile, however, is built on its **72 subcategories** (GOVERN 1.1 to MANAGE 4.3; number checked in publication NIST AI 100-1). For each one, the table states what it asks for in our own terms, where SEVEN-G covers it and **where its level comes from**: the dimension and questions of the document 11 questionnaire that evidence it, or "Own" when no question covers it and it has to be assessed separately. The derivation rule is in 11 §7.5: one assessment, two readings, with no double data entry. The level is expressed on the 0–5 scale of document 11; the indicative equivalence with the CSF *tiers* is in 11 §2.2. The descriptions are our own summary, not a translation of the NIST text. The profile is documented with template P73.
 
 | Subcategory | What it asks for (own summary) | Where SEVEN-G covers it | Level from document 11 |
 |---|---|---|---|
@@ -536,7 +536,7 @@ Section 5.1 maps the 19 categories of the AI RMF. A current or target profile, h
 
 ### 5.5 AI security profile: CSF 2.0 subcategories
 
-The AI security profile is built on the CSF 2.0 subcategories. The table lists the **48** to which the Cyber AI Profile proposes **high priority (1)** in at least one of its three areas, with the priority it proposes in each one (**S** Secure · **D** Defend · **T** Thwart; 1 high, 2 moderate, 3 foundational). **The selection is provisional** while the profile remains a draft (section 5.3) and will be reviewed when NIST publishes a later version. The other CSF subcategories can be added to the company's profile if its context calls for them. As in section 5.4, the level is derived from document 11 (11 §7.5) and the descriptions are our own summary.
+The AI security profile is built on the CSF 2.0 subcategories. The table lists the **48** to which the Cyber AI Profile proposes **high priority (1)** in at least one of its three areas, with the priority it proposes in each one (**S** Secure · **D** Defend · **T** Thwart; 1 high, 2 moderate, 3 foundational). **The selection is provisional** while the profile remains a draft (section 5.3) and will be reviewed when NIST publishes a later version. The other CSF subcategories can be added to the company's profile if its context calls for them. As in section 5.4, the level is derived from document 11 (11 §7.5) and the descriptions are our own summary. The profile is documented with template P72.
 
 | Subcategory | What it asks for (own summary) | Priority S · D · T | Where SEVEN-G covers it | Level from document 11 |
 |---|---|---|---|---|
@@ -801,6 +801,9 @@ Consultation date: 16-09-2026, except for the sources in section 5.3, the crossw
 | **P47 · Data protection impact assessment** | Evidence for GDPR Arts. 35 and 36 (section 6.1). |
 | **P48 · Fundamental rights impact assessment** | Evidence for Art. 27 and its notification (section 3.10). |
 | **P49 · Transparency notices and instructions for use** | Evidence for Art. 50 (section 3.11). |
+| **P72 · AI security profile (CSF 2.0 / Cyber AI Profile)** | Current and target profile of the subcategories in section 5.5 (sections 5.3 and 5.5). |
+| **P73 · AI governance profile (NIST AI RMF)** | Current and target profile of the 72 subcategories in section 5.4. |
+| **P74 · ISO/IEC 42001 statement of applicability** | Applicable Annex A controls, justification, coverage and evidence (sections 4.1, clause 6.1.3, and 4.2). |
 | P02, P05 · P12–P18 · P21–P27 · P29 | Provisional classification · design requirements · conformity, operation and incidents · decisions and mapping changes. |
 
 ---
@@ -829,4 +832,4 @@ Consultation date: 16-09-2026, except for the sources in section 5.3, the crossw
 | Version | Date | Changes |
 |---|---|---|
 | 0.1 | 16-09-2026 | First version. Maps the EU AI Act as amended by Regulation (EU) 2026/1744 (timeline verified as at 16-09-2026), ISO/IEC 42001:2023, NIST AI RMF 1.0 and NIST AI 600-1, the GDPR and EDPB guidelines, DORA, NIS2 and Spanish legislation; adds a summary matrix, a maintenance procedure and indicative annexes on other jurisdictions and sectors. Legal notice and user responsibility for regulatory compliance. |
-| 0.2 | 25-09-2026 | Adds section 5.3, NIST CSF 2.0 and Cyber AI Profile: CSF functions applied to AI systems, the Secure, Defend and Thwart areas of the profile (in draft) and a warning that *tiers* are not maturity levels per subcategory; the "Draft" status in section 1.4; the CSF column in the summary matrix; the AIRC crosswalk between the AI RMF and ISO/IEC 42001 in section 4.3; the new sources in section 13; and sections 5.4 (the 72 AI RMF subcategories) and 5.5 (the 48 CSF 2.0 subcategories with high priority in the Cyber AI Profile, a provisional selection), with their coverage in SEVEN-G and the document 11 question that gives their level. Corrects the status of ISO/IEC 42001: published (stage 60.60), with no revision under way. |
+| 0.2 | 25-09-2026 | Adds section 5.3, NIST CSF 2.0 and Cyber AI Profile: CSF functions applied to AI systems, the Secure, Defend and Thwart areas of the profile (in draft) and a warning that *tiers* are not maturity levels per subcategory; the "Draft" status in section 1.4; the CSF column in the summary matrix; the AIRC crosswalk between the AI RMF and ISO/IEC 42001 in section 4.3; the new sources in section 13; and sections 5.4 (the 72 AI RMF subcategories) and 5.5 (the 48 CSF 2.0 subcategories with high priority in the Cyber AI Profile, a provisional selection), with their coverage in SEVEN-G and the document 11 question that gives their level. Corrects the status of ISO/IEC 42001: published (stage 60.60), with no revision under way. Links templates P72 (AI security profile), P73 (AI governance profile) and P74 (ISO/IEC 42001 statement of applicability). |

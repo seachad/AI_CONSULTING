@@ -257,7 +257,7 @@ No es necesario pedir permiso para ningún uso que cumpla la licencia. Contactar
 |---|---|---|
 | T17 | Panel de IA para el consejo | Contenidos CC BY 4.0 y código MIT en el repositorio de demostraciones. |
 | T18 | Registro de recomendaciones del consejo | Contenidos CC BY 4.0 y código MIT en el repositorio de demostraciones. |
-| P01–P71 | Plantillas del bloque H | Contenidos CC BY 4.0; las plantillas cumplimentadas por una compañía son de la compañía. |
+| P01–P74 | Plantillas del bloque H | Contenidos CC BY 4.0; las plantillas cumplimentadas por una compañía son de la compañía. |
 
 ---
 

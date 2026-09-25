@@ -386,6 +386,7 @@ The AI Technical Owner designs and implements the controls; information security
 | **T10** | Agent security assessment | Based on the autonomy level, generates the required SEG and AG controls, records their status (met, not met, not applicable, pending) with evidence and blocks G4 or G5 if a critical control has not been designed or tested. Checklist in T03. |
 | **P53** | Adversarial testing plan and report | Scope, rules of engagement, scenarios and results of *red teaming* campaigns (section 8). Phases 4 to 6. |
 | **P54** | Non-human identity and component inventory | Agent identities with their human owner (section 4) and components with version and provenance (SEG-09). Phase 4; reviewed during operation. |
+| **P72** | AI security profile (CSF 2.0 / Cyber AI Profile) | Current and target profile of AI security with the CSF functions, based on the "CSF function" column of sections 6 and 7 and on the document 11 questionnaire (34 §5.5). C1, C2 and C5. |
 | P17 · P24 · P26 | Human oversight design · Operations manual · Incident response plan | Sensitive actions and validation; kill switch procedure; AI incident response. |
 | T02 · T06 · T08 · T17 · T21 | Inventory · Risks · Incidents · Board dashboard · Corporate usage monitor | Autonomy level, risks, incidents, indicators and unauthorised use. |
 
@@ -411,4 +412,4 @@ The AI Technical Owner designs and implements the controls; information security
 | Version | Date | Changes |
 |---|---|---|
 | 0.1 | 16-09-2026 | First version. Defines the threats to AI systems with references to OWASP (LLM 2025 and agentic applications), MITRE ATLAS and NIST AI 600-1; the nine essential requirements for an agent; autonomy levels A0–A3 with minimum controls and frequencies; the SEG-01 to SEG-20 and AG-01 to AG-20 catalogues; testing by phase; exposure to offensive AI and the indicators for the board. |
-| 0.2 | 25-09-2026 | Adds the NIST CSF 2.0 and the Cyber AI Profile (in draft) to the references (section 1.2) and the "CSF function" column to the SEG and AG catalogues (sections 6 and 7), with the CSF function and category to which each control contributes (34 §5.3). |
+| 0.2 | 25-09-2026 | Adds the NIST CSF 2.0 and the Cyber AI Profile (in draft) to the references (section 1.2) and the "CSF function" column to the SEG and AG catalogues (sections 6 and 7), with the CSF function and category to which each control contributes (34 §5.3), and template P72 in section 12. |

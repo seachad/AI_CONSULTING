@@ -333,7 +333,7 @@ ISO/IEC 42001:2023 (publicada en diciembre de 2023; a fecha de consulta, 25-09-2
 | Roles, responsabilidades y autoridades | 5.3 | Alta dirección | C2; fase 0 | Comité de IA | Documento 30; P03 | T01 |
 | Acciones para abordar riesgos y oportunidades | 6.1.1 | Organización | C2, C3 | Comité de IA | Documentos 13 y 14 | T06 |
 | Evaluación de riesgos de IA | 6.1.2 | Organización | C2 (criterios), fase 3 (evaluación) | Responsable de riesgos | Documento 33; P12 | T06 |
-| Tratamiento de riesgos de IA y declaración de aplicabilidad de los controles | 6.1.3 | Organización | C2 (declaración), fases 3–4 | Oficina de IA; Responsable de riesgos | P13; sección 4.2 como base de la declaración | T06 |
+| Tratamiento de riesgos de IA y declaración de aplicabilidad de los controles | 6.1.3 | Organización | C2 (declaración), fases 3–4 | Oficina de IA; Responsable de riesgos | P13; P74 (declaración de aplicabilidad), con la sección 4.2 como base | T06 |
 | Evaluación de impacto de los sistemas de IA | 6.1.4 | Organización | Fase 3 | Responsable de riesgos | P11 | T07 |
 | Objetivos de IA y planificación para lograrlos | 6.2 | Organización | C2, C3; fase 2 | Alta dirección; Responsable de producto | Documentos 13 y 14; P08 | T11, T19 |
 | Planificación de los cambios | 6.3 | Organización | C3, C5 | Comité de IA | Documento 14; P27 | T01 |
@@ -354,7 +354,7 @@ ISO/IEC 42001:2023 (publicada en diciembre de 2023; a fecha de consulta, 25-09-2
 
 ### 4.2 Anexo A: controles por grupo
 
-El anexo A agrupa los controles de referencia en nueve grupos. La tabla indica el objetivo de cada grupo en términos propios y dónde lo cubre SEVEN-G. La declaración de aplicabilidad de la compañía debe cotejarse con el texto adquirido de la norma.
+El anexo A agrupa los controles de referencia en nueve grupos. La tabla indica el objetivo de cada grupo en términos propios y dónde lo cubre SEVEN-G. La declaración de aplicabilidad de la compañía se prepara con la plantilla P74, control a control, y debe cotejarse con el texto adquirido de la norma.
 
 | Obligación / requisito | Artículo o cláusula | A quién aplica | Fase o etapa SEVEN-G | Rol responsable | Evidencia (P-código o documento) | Herramienta |
 |---|---|---|---|---|---|---|
@@ -443,7 +443,7 @@ El **Cyber AI Profile** (NIST IR 8596) es el perfil comunitario del CSF 2.0 para
 | Detectar y analizar eventos adversos con monitorización continua de entradas, salidas, acciones y comportamiento | DE (DE.CM, DE.AE) | Ídem | Fase 6; C4 | Responsable de operación; seguridad de la información | P25; SEG-12, AG-17; documento 52 | T10, T08 |
 | Gestionar, analizar, comunicar y mitigar los incidentes de IA | RS (RS.MA, RS.AN, RS.CO, RS.MI) | Ídem | Fase 6 (severidades S1–S4) | Responsable de operación; seguridad de la información | P26, P27, P52; SEG-14, AG-09; documento 37 | T08 |
 | Ejecutar la recuperación y comunicarla: proceso alternativo, reversión y vuelta a la operación | RC (RC.RP, RC.CO) | Ídem | Fase 6; G7 si procede | Responsable de operación | P19, P24, P26; AG-19 | T08 |
-| Describir los perfiles actual y objetivo de ciberseguridad de la IA y su brecha | CSF 2.0, sección 3 (perfiles de organización) | Ídem | C1 (actual), C2 (objetivo), C5 (revisión) | Oficina de IA; seguridad de la información | Sección 5.5; 11 §7.5; P34 | T15 |
+| Describir los perfiles actual y objetivo de ciberseguridad de la IA y su brecha | CSF 2.0, sección 3 (perfiles de organización) | Ídem | C1 (actual), C2 (objetivo), C5 (revisión) | Oficina de IA; seguridad de la información | P72; sección 5.5; 11 §7.5; P34 | T15 |
 
 **Cyber AI Profile por áreas (borrador)**
 
@@ -457,7 +457,7 @@ La columna «Función CSF» de los catálogos SEG y AG (35 §6 y §7) indica a q
 
 ### 5.4 Perfil del AI RMF por subcategoría
 
-La sección 5.1 mapea las 19 categorías del AI RMF. Un perfil actual u objetivo, en cambio, se construye sobre sus **72 subcategorías** (GOVERN 1.1 a MANAGE 4.3; número comprobado en la publicación NIST AI 100-1). La tabla indica, para cada una, qué pide en términos propios, dónde la cubre SEVEN-G y **de dónde sale su nivel**: la dimensión y las preguntas del cuestionario del documento 11 que lo acreditan, o «Propia» cuando ninguna pregunta la cubre y hay que evaluarla aparte. La regla de derivación está en 11 §7.5: una evaluación, dos lecturas, sin doble captura. El nivel se expresa en la escala 0–5 del documento 11; la equivalencia orientativa con los *tiers* del CSF está en 11 §2.2. Las descripciones son un resumen propio, no una traducción del texto del NIST.
+La sección 5.1 mapea las 19 categorías del AI RMF. Un perfil actual u objetivo, en cambio, se construye sobre sus **72 subcategorías** (GOVERN 1.1 a MANAGE 4.3; número comprobado en la publicación NIST AI 100-1). La tabla indica, para cada una, qué pide en términos propios, dónde la cubre SEVEN-G y **de dónde sale su nivel**: la dimensión y las preguntas del cuestionario del documento 11 que lo acreditan, o «Propia» cuando ninguna pregunta la cubre y hay que evaluarla aparte. La regla de derivación está en 11 §7.5: una evaluación, dos lecturas, sin doble captura. El nivel se expresa en la escala 0–5 del documento 11; la equivalencia orientativa con los *tiers* del CSF está en 11 §2.2. Las descripciones son un resumen propio, no una traducción del texto del NIST. El perfil se documenta con la plantilla P73.
 
 | Subcategoría | Qué pide (resumen propio) | Dónde lo cubre SEVEN-G | Nivel desde el documento 11 |
 |---|---|---|---|
@@ -536,7 +536,7 @@ La sección 5.1 mapea las 19 categorías del AI RMF. Un perfil actual u objetivo
 
 ### 5.5 Perfil de seguridad de la IA: subcategorías del CSF 2.0
 
-El perfil de seguridad de la IA se construye sobre las subcategorías del CSF 2.0. La tabla recoge las **48** a las que el Cyber AI Profile propone **prioridad alta (1)** en al menos una de sus tres áreas, con la prioridad que propone en cada una (**S** Secure · **D** Defend · **T** Thwart; 1 alta, 2 moderada, 3 fundamental). **La selección es provisional** mientras el perfil sea un borrador (sección 5.3) y se revisará cuando el NIST publique una versión posterior. Las demás subcategorías del CSF pueden añadirse al perfil de la compañía si su contexto lo pide. Como en la sección 5.4, el nivel se deriva del documento 11 (11 §7.5) y las descripciones son un resumen propio.
+El perfil de seguridad de la IA se construye sobre las subcategorías del CSF 2.0. La tabla recoge las **48** a las que el Cyber AI Profile propone **prioridad alta (1)** en al menos una de sus tres áreas, con la prioridad que propone en cada una (**S** Secure · **D** Defend · **T** Thwart; 1 alta, 2 moderada, 3 fundamental). **La selección es provisional** mientras el perfil sea un borrador (sección 5.3) y se revisará cuando el NIST publique una versión posterior. Las demás subcategorías del CSF pueden añadirse al perfil de la compañía si su contexto lo pide. Como en la sección 5.4, el nivel se deriva del documento 11 (11 §7.5) y las descripciones son un resumen propio. El perfil se documenta con la plantilla P72.
 
 | Subcategoría | Qué pide (resumen propio) | Prioridad S · D · T | Dónde lo cubre SEVEN-G | Nivel desde el documento 11 |
 |---|---|---|---|---|
@@ -801,6 +801,9 @@ Fecha de consulta: 16-09-2026, salvo las fuentes de la sección 5.3, la correspo
 | **P47 · Evaluación de impacto en protección de datos** | Evidencia de RGPD arts. 35 y 36 (sección 6.1). |
 | **P48 · Evaluación de impacto en derechos fundamentales** | Evidencia del art. 27 y de su notificación (sección 3.10). |
 | **P49 · Avisos de transparencia e instrucciones de uso** | Evidencia del art. 50 (sección 3.11). |
+| **P72 · Perfil de seguridad de IA (CSF 2.0 / Cyber AI Profile)** | Perfil actual y objetivo de las subcategorías de la sección 5.5 (secciones 5.3 y 5.5). |
+| **P73 · Perfil de gobierno de IA (NIST AI RMF)** | Perfil actual y objetivo de las 72 subcategorías de la sección 5.4. |
+| **P74 · Declaración de aplicabilidad de ISO/IEC 42001** | Controles del anexo A aplicables, justificación, cobertura y evidencia (secciones 4.1, cláusula 6.1.3, y 4.2). |
 | P02, P05 · P12–P18 · P21–P27 · P29 | Clasificación provisional · requisitos de diseño · conformidad, operación e incidentes · decisiones y cambios del mapeo. |
 
 ---
@@ -829,4 +832,4 @@ Fecha de consulta: 16-09-2026, salvo las fuentes de la sección 5.3, la correspo
 | Versión | Fecha | Cambios |
 |---|---|---|
 | 0.1 | 16-09-2026 | Primera versión. Mapea el Reglamento Europeo de IA con las modificaciones del Reglamento (UE) 2026/1744 (calendario verificado a 16-09-2026), ISO/IEC 42001:2023, NIST AI RMF 1.0 y NIST AI 600-1, RGPD y guías del CEPD, DORA, NIS2 y normativa española; añade matriz resumen, procedimiento de mantenimiento y anexos orientativos de otras jurisdicciones y sectores. Aviso legal y responsabilidad del usuario sobre el cumplimiento regulatorio. |
-| 0.2 | 25-09-2026 | Añade la sección 5.3, NIST CSF 2.0 y Cyber AI Profile: funciones del CSF aplicadas a los sistemas de IA, áreas Secure, Defend y Thwart del perfil (en borrador) y advertencia de que los *tiers* no son niveles de madurez por subcategoría; el estado «Borrador» en la sección 1.4; la columna del CSF en la matriz resumen; la correspondencia AI RMF ↔ ISO/IEC 42001 del AIRC en la sección 4.3; las fuentes nuevas en la sección 13; y las secciones 5.4 (las 72 subcategorías del AI RMF) y 5.5 (las 48 subcategorías del CSF 2.0 con prioridad alta en el Cyber AI Profile, selección provisional), con su cobertura en SEVEN-G y la pregunta del documento 11 que da su nivel. Corrige el estado de ISO/IEC 42001: publicada (etapa 60.60), sin revisión en curso. |
+| 0.2 | 25-09-2026 | Añade la sección 5.3, NIST CSF 2.0 y Cyber AI Profile: funciones del CSF aplicadas a los sistemas de IA, áreas Secure, Defend y Thwart del perfil (en borrador) y advertencia de que los *tiers* no son niveles de madurez por subcategoría; el estado «Borrador» en la sección 1.4; la columna del CSF en la matriz resumen; la correspondencia AI RMF ↔ ISO/IEC 42001 del AIRC en la sección 4.3; las fuentes nuevas en la sección 13; y las secciones 5.4 (las 72 subcategorías del AI RMF) y 5.5 (las 48 subcategorías del CSF 2.0 con prioridad alta en el Cyber AI Profile, selección provisional), con su cobertura en SEVEN-G y la pregunta del documento 11 que da su nivel. Corrige el estado de ISO/IEC 42001: publicada (etapa 60.60), sin revisión en curso. Enlaza las plantillas P72 (perfil de seguridad de IA), P73 (perfil de gobierno de IA) y P74 (declaración de aplicabilidad de ISO/IEC 42001). |

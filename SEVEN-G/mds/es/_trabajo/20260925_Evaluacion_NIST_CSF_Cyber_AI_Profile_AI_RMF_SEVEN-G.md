@@ -1,6 +1,8 @@
 # Evaluación · NIST CSF 2.0 (Cyber AI Profile), NIST AI RMF por perfiles e ISO/IEC 42001 en SEVEN-G
 
-Documento de trabajo (no publicable). 25-09-2026. Pendiente de decisión del autor: no se ha cambiado ningún documento vigente.
+Documento de trabajo (no publicable). 25-09-2026.
+
+> **Estado de ejecución (25-09-2026).** Las cuatro decisiones de la sección 7 se han aplicado con las recomendaciones (escala 0–5 con equivalencia a los *tiers*; entregas 1 a 3; el Cyber AI Profile se cita como borrador; plantilla P74). **Hechas:** entrega 1, mapeo del CSF 2.0 y del Cyber AI Profile en 34 §5.3 y columna «Función CSF» en el 35 (D110); entrega 2, perfiles por subcategoría en 34 §5.4–§5.5 y equivalencia en 11 §2.2 y §7.5 (D111); entrega 3, plantillas P72, P73 y P74 (D112). Verificado en csrc.nist.gov el 25-09-2026: el Cyber AI Profile sigue en borrador preliminar (iprd, 16-12-2025). **Sin hacer, a la espera del autor:** entrega 4 (vistas de perfil en T15, esquema 0.7 de T01 y brecha en T17) y entrega 5 (contenido «Defend» en el 35).
 
 ## 1. Propuesta evaluada
 

@@ -488,7 +488,7 @@ ISO/IEC 42001:2023 establece requisitos para un sistema de gestión de la IA. Su
 
 **Diferencias que hay que tener presentes**
 
-- Una compañía que quiera **certificarse** en ISO/IEC 42001 debe cumplir todos los requisitos de la norma, incluidos los controles del anexo A que declare aplicables. Aplicar SEVEN-G facilita la certificación, pero no la garantiza.
+- Una compañía que quiera **certificarse** en ISO/IEC 42001 debe cumplir todos los requisitos de la norma, incluidos los controles del anexo A que declare aplicables. Aplicar SEVEN-G facilita la certificación, pero no la garantiza. La declaración de aplicabilidad se prepara con la plantilla P74, que remite cada control a la evidencia de SEVEN-G y debe cotejarse con el texto adquirido de la norma; SEVEN-G no certifica.
 - La auditoría de certificación la realiza una entidad de certificación conforme a ISO/IEC 17021-1 e ISO/IEC 42006. Las auditorías de SEVEN-G son auditorías internas de primera parte o, si se contratan, de segunda parte.
 - Para la conducción de auditorías de sistemas de gestión, ISO 19011 ofrece directrices que son compatibles con este marco.
 
