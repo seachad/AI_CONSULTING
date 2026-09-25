@@ -48,6 +48,9 @@
         humo (7) genera el libro de IA-2026-001 en el navegador (clave «eval») y comprueba que es un .xlsx válido con sus siete hojas,
         el código del caso y la fecha y hora de generación.
     22. Datos en local e instalación propia (D104): documento 95 (ES/EN), enlaces desde la portada, la entrada, el README y el 03, y cifras.
+    23. NIST CSF 2.0 y Cyber AI Profile (D110): el documento 34 (ES/EN) tiene la sección 5.3 con las seis funciones GV, ID, PR, DE, RS, RC y
+        las áreas Secure, Defend y Thwart; los catálogos SEG y AG del 35 llevan la columna «Función CSF» sin celdas vacías; ninguna página
+        publicada cita como definitiva una fuente que el registro de referencias marca como borrador (campo «situacion»).
 #>
 param([switch]$SinNavegador)
 $ErrorActionPreference = 'Stop'
@@ -460,7 +463,8 @@ try {
   elseif ($SinNavegador -or -not $edgeIx) { Aviso 'sin navegador: no se comprueba el índice de ejemplo del panel' }
   else {
     $ixTmp = Join-Path $tmp 't14_indice.json'
-    & pwsh -NoProfile -File (Join-Path $t14 'build_indice.ps1') -Salida (Join-Path $tmp 'indice_ix.html') -DesdeT01 (Join-Path $t01 'datos_demo.json') -Exportar $ixTmp | Out-Null
+    # un reintento: el primer Edge sin ventana de la ejecución puede tardar más de lo que espera el script (arranque en frío)
+    foreach ($intento in 1, 2) { & pwsh -NoProfile -File (Join-Path $t14 'build_indice.ps1') -Salida (Join-Path $tmp 'indice_ix.html') -DesdeT01 (Join-Path $t01 'datos_demo.json') -Exportar $ixTmp *> $null; if (-not $LASTEXITCODE -and (Test-Path $ixTmp)) { break } }
     if ($LASTEXITCODE -or -not (Test-Path $ixTmp)) { Mal 'D71: build_indice.ps1 -DesdeT01 ha fallado' }
     elseif (([IO.File]::ReadAllText($ixTmp) -replace "`r`n", "`n") -cne ([IO.File]::ReadAllText($ixEj) -replace "`r`n", "`n")) { Mal 'D71: el índice de ejemplo del panel está desfasado: ejecutar build_indice.ps1 -DesdeT01 ../T01_registro_iniciativas/datos_demo.json -Exportar ../T17_panel_consejo/ejemplo/t14_indice.json y regenerar el panel' }
     else { $rIx = (Get-Content $ixTmp -Raw | ConvertFrom-Json).calculos[0].resultado; Ok "D71: índice de ejemplo del panel al día ($($rIx.perfil_asignado), suma $($rIx.suma), cobertura $($rIx.cobertura)/8)" }
@@ -811,7 +815,7 @@ try {
       if ($SinNavegador -or -not $edgeMad) { Aviso 'sin navegador: no se comprueba que la madurez del registro de demostración sea la que exporta T15' }
       else {
         $resTmp = Join-Path $tmp 't15_resumen.json'
-        & pwsh -NoProfile -File (Join-Path $t15 'build_madurez.ps1') -Salida (Join-Path $tmp 'madurez_res.html') -Resumen $resTmp | Out-Null
+        foreach ($intento in 1, 2) { & pwsh -NoProfile -File (Join-Path $t15 'build_madurez.ps1') -Salida (Join-Path $tmp 'madurez_res.html') -Resumen $resTmp *> $null; if (-not $LASTEXITCODE -and (Test-Path $resTmp)) { break } }   # un reintento (arranque en frío de Edge)
         if ($LASTEXITCODE -or -not (Test-Path $resTmp)) { Mal 'build_madurez.ps1 -Resumen ha fallado'; $malMapa++ }
         else {
           $mT15 = (Get-Content $resTmp -Raw -Encoding utf8 | ConvertFrom-Json -Depth 32).madurez_t01
@@ -1015,6 +1019,49 @@ try {
   if (-not ($readme.Contains('95_SEVEN-G_Datos_en_local_e_instalacion_propia.html') -and $readme.Contains("$repoUrl/archive/refs/heads/main.zip"))) { Mal 'README.md: no enlaza el documento 95 ni la descarga del repositorio'; $malInst++ }
   if ($readme -match '(?i)repositorio es privado') { Mal 'README.md: sigue diciendo que el repositorio es privado'; $malInst++ }
   if (-not $malInst) { Ok "documento 95 (ES/EN) con el repositorio y su ZIP, enlazado desde la portada, la entrada, el README y el documento 03; $nDocs documentos en las cifras de portada y entrada" }
+
+  # ---- 23. NIST CSF 2.0, Cyber AI Profile, perfiles del AI RMF e ISO/IEC 42001 (D110): el 34 (ES/EN) tiene la sección del CSF con las
+  # seis funciones en su tabla; los catálogos SEG y AG del 35 llevan la columna «Función CSF» sin celdas vacías; y ninguna página
+  # publicada presenta como definitiva una fuente que el registro de referencias marca como borrador (campo «situacion»)
+  Write-Host '23. NIST CSF, Cyber AI Profile, perfiles NIST e ISO/IEC 42001'
+  $malNist = 0
+  foreach ($lang in 'es', 'en') {
+    $md34 = [IO.File]::ReadAllText((Get-ChildItem (Join-Path $repo "SEVEN-G\mds\$lang") -Filter '34_*.md' | Select-Object -First 1).FullName)
+    $sec53 = [regex]::Match($md34, '(?ms)^### 5\.3 NIST CSF 2\.0.*?(?=^## )')
+    if (-not $sec53.Success) { Mal "documento 34 [$lang]: falta la sección 5.3 «NIST CSF 2.0 y Cyber AI Profile»"; $malNist++ }
+    else {
+      foreach ($fn in 'GV', 'ID', 'PR', 'DE', 'RS', 'RC') { if ($sec53.Value -notmatch "(?m)^\|[^|\n]+\| $fn \($fn\.") { Mal "documento 34 [$lang] §5.3: la tabla de funciones no tiene la fila de $fn"; $malNist++ } }
+      foreach ($area in 'Secure', 'Defend', 'Thwart') { if ($sec53.Value -notmatch "(?m)^\| \*\*$area\*\* \|") { Mal "documento 34 [$lang] §5.3: falta el área $area del Cyber AI Profile"; $malNist++ } }
+    }
+    $md35 = [IO.File]::ReadAllText((Get-ChildItem (Join-Path $repo "SEVEN-G\mds\$lang") -Filter '35_*.md' | Select-Object -First 1).FullName)
+    $colCsf = if ($lang -eq 'en') { 'CSF function' } else { 'Función CSF' }
+    foreach ($pref in 'SEG', 'AG') {
+      $filas = [regex]::Matches($md35, "(?m)^\| \*\*$pref-\d\d\*\* \|.*$")
+      if ($filas.Count -ne 20) { Mal "documento 35 [$lang]: el catálogo $pref tiene $($filas.Count) controles (se esperaban 20)"; $malNist++ }
+      foreach ($fi in $filas) {
+        $celdas = $fi.Value.Trim().Trim('|').Split('|')
+        if ($celdas[-1].Trim() -notmatch '^(GV|ID|PR|DE|RS|RC) \((GV|ID|PR|DE|RS|RC)\.[A-Z]{2}') { Mal "documento 35 [$lang]: $($celdas[0].Trim()) sin «$colCsf» válida"; $malNist++ }
+      }
+    }
+    if (([regex]::Matches($md35, "(?m)^\| (Código|Code) \|.*\| $colCsf \|\r?$")).Count -ne 2) { Mal "documento 35 [$lang]: los catálogos SEG y AG no llevan la columna «$colCsf»"; $malNist++ }
+  }
+  $borradores = @(Get-ChildItem (Join-Path $repo 'SEVEN-G\build\referencias') -Filter '*.json' | ForEach-Object { Get-Content $_.FullName -Raw -Encoding utf8 | ConvertFrom-Json } | Where-Object { $_.situacion -and $_.situacion -ne 'final' })
+  $paginas = @(foreach ($m in 'SEVEN-G', 'SPHERES', 'SPAD') { Get-ChildItem (Join-Path $repo "$m\html") -Recurse -Filter '*.html' -ErrorAction SilentlyContinue | Where-Object { $_.FullName -notmatch '\\_trabajo\\' } }) + @(Get-Item (Join-Path $repo 'index.html'), (Join-Path $repo 'en\index.html'))   # _trabajo no se publica
+  $nMenc = 0
+  foreach ($pg in $paginas) {
+    $txt = [Net.WebUtility]::HtmlDecode(([regex]::Replace([IO.File]::ReadAllText($pg.FullName), '(?s)<script.*?</script>|<style.*?</style>|<nav\b.*?</nav>|<h[1-6]\b.*?</h[1-6]>|<[^>]+>', ' ') -replace '\s+', ' '))   # los títulos y la navegación no califican: lo hace el texto de la sección
+    foreach ($b in $borradores) {
+      foreach ($pat in @($b.patrones_es) + @($b.patrones_en) | Select-Object -Unique) {
+        foreach ($m in [regex]::Matches($txt, [regex]::Escape($pat))) {
+          $nMenc++
+          $ctx = $txt.Substring([Math]::Max(0, $m.Index - 400), [Math]::Min($txt.Length - [Math]::Max(0, $m.Index - 400), 800 + $pat.Length))
+          if ($ctx -notmatch '(?i)borrador|draft') { Mal "$($pg.Name): cita «$pat» sin decir que es un borrador ($($b.id), situación «$($b.situacion)»)"; $malNist++; break }
+          if ($txt.Substring($m.Index, [Math]::Min(120, $txt.Length - $m.Index)) -match '(?i)^[^.]{0,100}\b(versión final|definitiv|final version|definitive)') { Mal "$($pg.Name): presenta «$pat» como definitivo y el registro lo marca como $($b.situacion)"; $malNist++; break }
+        }
+      }
+    }
+  }
+  if (-not $malNist) { Ok "documento 34 §5.3 (ES/EN) con GV, ID, PR, DE, RS, RC y las áreas Secure, Defend y Thwart; catálogos SEG y AG del 35 con «Función CSF» completa; $nMenc menciones de fuentes en borrador ($(($borradores | ForEach-Object id) -join ', ')), todas marcadas como borrador" }
 }
 finally { Remove-Item $tmp -Recurse -Force -Confirm:$false -ErrorAction SilentlyContinue }
 
