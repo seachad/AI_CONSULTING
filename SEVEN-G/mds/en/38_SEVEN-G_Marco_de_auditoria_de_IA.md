@@ -488,7 +488,7 @@ ISO/IEC 42001:2023 sets out requirements for an AI management system. Its **clau
 
 **Differences to bear in mind**
 
-- A company that wishes to be **certified** against ISO/IEC 42001 must meet all the requirements of the standard, including the Annex A controls it declares applicable. Applying SEVEN-G facilitates certification but does not guarantee it.
+- A company that wishes to be **certified** against ISO/IEC 42001 must meet all the requirements of the standard, including the Annex A controls it declares applicable. Applying SEVEN-G facilitates certification but does not guarantee it. The statement of applicability is prepared with template P74, which links each control to the SEVEN-G evidence and must be checked against the purchased text of the standard; SEVEN-G does not certify.
 - The certification audit is carried out by a certification body in accordance with ISO/IEC 17021-1 and ISO/IEC 42006. SEVEN-G audits are first-party internal audits or, if contracted, second-party audits.
 - For conducting management system audits, ISO 19011 provides guidelines that are compatible with this framework.
 

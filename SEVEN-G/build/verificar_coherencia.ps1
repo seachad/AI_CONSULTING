@@ -53,6 +53,8 @@
         publicada cita como definitiva una fuente que el registro de referencias marca como borrador (campo «situacion»). Perfiles (D111):
         34 §5.4 con las 72 subcategorías del AI RMF en su orden y §5.5 con 48 del CSF con prioridad S · D · T y una de ellas 1; toda
         pregunta citada existe en el 11; 11 §7.5 existe y la equivalencia 0–5 ↔ tiers de 11 §2.2 es 0–1→1, 2→2, 3→3, 4–5→4 en ES y EN.
+        Plantillas (D112): P72, P73 y P74 en ES y EN con HTML, PDF y Word y «Por qué importa»; nivel en la matriz del 94 §7.2; P74 con los
+        38 controles del anexo A y la advertencia de que la certificación la emite una entidad acreditada (38 §12).
 #>
 param([switch]$SinNavegador)
 $ErrorActionPreference = 'Stop'
@@ -1072,6 +1074,23 @@ try {
     $equiv[$lang] = (@([regex]::Matches($s22, '(?m)^\| ([0-5])[^|]*?(?: · ([0-5])[^|]*)? \| \*Tier\* ([1-4]) ') | ForEach-Object { "$($_.Groups[1].Value)$($_.Groups[2].Value)>$($_.Groups[3].Value)" }) -join ',')
   }
   if ($equiv.es -ne '01>1,2>2,3>3,45>4' -or $equiv.en -ne $equiv.es) { Mal "documento 11 §2.2: la tabla de equivalencia 0–5 ↔ tiers no es 0–1→1, 2→2, 3→3, 4–5→4 o difiere entre ES ($($equiv.es)) y EN ($($equiv.en))"; $malNist++ }
+  # entrega 3: plantillas P72 (perfil de seguridad), P73 (perfil de gobierno) y P74 (declaración de aplicabilidad de 42001) en ES y EN,
+  # con HTML, PDF y Word, y con nivel en la matriz del documento 94
+  foreach ($lang in 'es', 'en') {
+    foreach ($pc in 'P72', 'P73', 'P74') {
+      $mdP = Get-ChildItem (Join-Path $repo "SEVEN-G\mds\$lang\plantillas") -Filter "$($pc)_*.md" | Select-Object -First 1
+      if (-not $mdP) { Mal "falta la plantilla $pc [$lang]"; $malNist++; continue }
+      $base = $mdP.BaseName
+      foreach ($sal in @("SEVEN-G\html\$lang\plantillas\$base.html", "SEVEN-G\pdf\$lang\plantillas\$base.pdf", "SEVEN-G\docx\$lang\plantillas\$base.docx")) { if (-not (Test-Path (Join-Path $repo $sal))) { Mal "$pc [$lang]: falta $sal"; $malNist++ } }
+      $tP = [IO.File]::ReadAllText($mdP.FullName)
+      if ($tP -notmatch $(if ($lang -eq 'en') { 'Why it matters' } else { 'Por qué importa' })) { Mal "$pc [$lang]: falta «Por qué importa»"; $malNist++ }
+    }
+    $md94 = [IO.File]::ReadAllText((Get-ChildItem (Join-Path $repo "SEVEN-G\mds\$lang") -Filter '94_*.md' | Select-Object -First 1).FullName)
+    if ($md94 -notmatch '(?m)^\| P72 .*P73 .*P74 .*\| \*\*(Condicional|Conditional)\*\* \|') { Mal "documento 94 [$lang] §7.2: P72, P73 y P74 no tienen nivel en la matriz"; $malNist++ }
+    $p74 = [IO.File]::ReadAllText((Get-ChildItem (Join-Path $repo "SEVEN-G\mds\$lang\plantillas") -Filter 'P74_*.md' | Select-Object -First 1).FullName)
+    if (([regex]::Matches($p74, '(?m)^\| A\.\d+\.\d+(\.\d+)? \|')).Count -ne 38) { Mal "P74 [$lang]: no declara los 38 controles del anexo A"; $malNist++ }
+    if ($p74 -notmatch '38 §12') { Mal "P74 [$lang]: no advierte de que la certificación la emite una entidad acreditada (38 §12)"; $malNist++ }
+  }
   $borradores = @(Get-ChildItem (Join-Path $repo 'SEVEN-G\build\referencias') -Filter '*.json' | ForEach-Object { Get-Content $_.FullName -Raw -Encoding utf8 | ConvertFrom-Json } | Where-Object { $_.situacion -and $_.situacion -ne 'final' })
   $paginas = @(foreach ($m in 'SEVEN-G', 'SPHERES', 'SPAD') { Get-ChildItem (Join-Path $repo "$m\html") -Recurse -Filter '*.html' -ErrorAction SilentlyContinue | Where-Object { $_.FullName -notmatch '\\_trabajo\\' } }) + @(Get-Item (Join-Path $repo 'index.html'), (Join-Path $repo 'en\index.html'))   # _trabajo no se publica
   $nMenc = 0
@@ -1080,6 +1099,7 @@ try {
     foreach ($b in $borradores) {
       foreach ($pat in @($b.patrones_es) + @($b.patrones_en) | Select-Object -Unique) {
         foreach ($m in [regex]::Matches($txt, [regex]::Escape($pat))) {
+          if ($m.Index -ge 10 -and $txt.Substring($m.Index - 10, 10) -eq 'CSF 2.0 / ') { continue }   # nombre de la plantilla P72, no una afirmación sobre la fuente
           $nMenc++
           $ctx = $txt.Substring([Math]::Max(0, $m.Index - 400), [Math]::Min($txt.Length - [Math]::Max(0, $m.Index - 400), 800 + $pat.Length))
           if ($ctx -notmatch '(?i)borrador|draft') { Mal "$($pg.Name): cita «$pat» sin decir que es un borrador ($($b.id), situación «$($b.situacion)»)"; $malNist++; break }
@@ -1088,7 +1108,7 @@ try {
       }
     }
   }
-  if (-not $malNist) { Ok "documento 34 §5.3 (ES/EN) con GV, ID, PR, DE, RS, RC y las áreas Secure, Defend y Thwart; catálogos SEG y AG del 35 con «Función CSF» completa; 34 §5.4 (72) y §5.5 (48) con preguntas del 11 existentes; equivalencia 0–5 ↔ tiers igual en ES y EN; $nMenc menciones de fuentes en borrador ($(($borradores | ForEach-Object id) -join ', ')), todas marcadas como borrador" }
+  if (-not $malNist) { Ok "documento 34 §5.3 (ES/EN) con GV, ID, PR, DE, RS, RC y las áreas Secure, Defend y Thwart; catálogos SEG y AG del 35 con «Función CSF» completa; 34 §5.4 (72) y §5.5 (48) con preguntas del 11 existentes; equivalencia 0–5 ↔ tiers igual en ES y EN; P72–P74 completas y en la matriz del 94; $nMenc menciones de fuentes en borrador ($(($borradores | ForEach-Object id) -join ', ')), todas marcadas como borrador" }
 }
 finally { Remove-Item $tmp -Recurse -Force -Confirm:$false -ErrorAction SilentlyContinue }
 

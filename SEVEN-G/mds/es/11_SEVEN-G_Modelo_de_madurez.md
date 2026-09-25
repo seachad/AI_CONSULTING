@@ -444,7 +444,7 @@ El documento 34 baja el NIST AI RMF a sus 72 subcategorías (34 §5.4) y selecci
 2. **Pregunta propia.** Si la subcategoría no tiene preguntas asociadas («Propia»), se evalúa aparte con los niveles de la sección 2.2, la regla de acumulación y las evidencias válidas de la sección 4.5, y nunca puede quedar por encima del nivel de su dimensión de referencia. **Sin evidencia verificada no se acredita ningún nivel** (sección 1.2): la subcategoría queda en 0 si se evaluó sin evidencia y «sin dato» si no se evaluó; «sin dato» no es 0.
 3. **Nivel objetivo.** Lo fija la compañía en C2 para cada subcategoría seleccionada, con la misma proporcionalidad que los objetivos por ambición de la sección 8, y queda registrado quién lo fija.
 4. **Brecha y plan.** Brecha = nivel objetivo − nivel actual. Las brechas se priorizan y se convierten en acciones con responsable y plazo en el plan de mejora del informe (sección 6, apartado 6); no se abre un plan paralelo.
-5. ***Tier* equivalente.** Se calcula con la tabla de la sección 2.2, solo como vista para quien lee en términos del CSF.
+5. ***Tier* equivalente.** Se calcula con la tabla de la sección 2.2, solo como vista para quien lee en términos del CSF. Los perfiles se documentan con P73 (AI RMF) y P72 (CSF y Cyber AI Profile).
 6. **Fuentes en borrador.** Mientras el Cyber AI Profile sea un borrador, la selección de subcategorías de 34 §5.5 y sus prioridades son provisionales y no fundamentan criterios de *gate* (34 §5.3).
 
 > **Por qué importa.** La compañía que ya informa a su comité de riesgos con el AI RMF o con el CSF no necesita una segunda evaluación ni un segundo número. El mismo cuestionario verificado da el nivel de madurez y los perfiles, de modo que el consejo ve una sola escala y la brecha frente al objetivo sale de evidencia, no de una autoevaluación aparte.
@@ -496,6 +496,7 @@ El consejo no debería aprobar apuestas de Transformar en G2 con D1 o D6 inferio
 | T14 | Lectura cruzada con el índice de transformación. |
 | T17, T18 | Publicación del resultado y seguimiento de las acciones pedidas por el consejo. |
 | P03, P05, P07–P09, P11, P12, P14, P16, P18–P20, P24, P25, P28–P30 | Evidencias habituales. La hoja de respuestas, el cálculo y el informe tienen plantilla propia, P34, que T15 calcula y genera. |
+| P72, P73 | Perfil de seguridad de IA (CSF 2.0 / Cyber AI Profile) y perfil de gobierno de IA (NIST AI RMF), con el nivel de cada subcategoría derivado del cuestionario (sección 7.5). |
 
 ---
 
@@ -520,4 +521,4 @@ El consejo no debería aprobar apuestas de Transformar en G2 con D1 o D6 inferio
 | Versión | Fecha | Cambios |
 |---|---|---|
 | 0.1 | 16-09-2026 | Primera versión. Confirma las siete dimensiones y los seis niveles (D10); define rúbricas, cuestionario de 84 preguntas, modalidades, muestreo, cálculo con límite por D1 y D6, informe, vínculos con el índice de transformación y con 01 §14, y objetivos de referencia por ambición. |
-| 0.2 | 25-09-2026 | Añade la equivalencia orientativa de los niveles 0–5 con los *tiers* del NIST CSF 2.0 (sección 2.2), que es una vista calculada y no una segunda escala, y el vínculo 7.5 con los perfiles NIST: nivel actual de cada subcategoría del AI RMF y del CSF derivado del cuestionario, preguntas propias, nivel objetivo en C2, brecha y *tier* equivalente (34 §5.4 y §5.5). |
+| 0.2 | 25-09-2026 | Añade la equivalencia orientativa de los niveles 0–5 con los *tiers* del NIST CSF 2.0 (sección 2.2), que es una vista calculada y no una segunda escala, y el vínculo 7.5 con los perfiles NIST: nivel actual de cada subcategoría del AI RMF y del CSF derivado del cuestionario, preguntas propias, nivel objetivo en C2, brecha y *tier* equivalente (34 §5.4 y §5.5). Plantillas P72 y P73 en la sección 10. |

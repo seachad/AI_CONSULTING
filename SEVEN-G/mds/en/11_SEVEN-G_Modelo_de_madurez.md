@@ -444,7 +444,7 @@ Document 34 breaks the NIST AI RMF down into its 72 subcategories (34 §5.4) and
 2. **Own question.** If the subcategory has no associated questions ("Own"), it is assessed separately with the levels in section 2.2, the accumulation rule and the valid evidence of section 4.5, and it can never be above the level of its reference dimension. **Without verified evidence, no level is evidenced** (section 1.2): the subcategory stays at 0 if it was assessed without evidence and "no data" if it was not assessed; "no data" is not 0.
 3. **Target level.** The company sets it in C2 for each selected subcategory, with the same proportionality as the targets by ambition in section 8, and who sets it is recorded.
 4. **Gap and plan.** Gap = target level − current level. Gaps are prioritised and turned into actions with an owner and a deadline in the improvement plan of the report (section 6, part 6); no parallel plan is opened.
-5. **Equivalent *tier*.** It is calculated with the table in section 2.2, only as a view for readers who think in CSF terms.
+5. **Equivalent *tier*.** It is calculated with the table in section 2.2, only as a view for readers who think in CSF terms. The profiles are documented with P73 (AI RMF) and P72 (CSF and Cyber AI Profile).
 6. **Draft sources.** While the Cyber AI Profile remains a draft, the selection of subcategories in 34 §5.5 and its priorities are provisional and do not underpin *gate* criteria (34 §5.3).
 
 > **Why it matters.** A company that already reports to its risk committee with the AI RMF or the CSF does not need a second assessment or a second number. The same verified questionnaire gives the maturity level and the profiles, so the board sees a single scale and the gap against the target comes from evidence, not from a separate self-assessment.
@@ -496,6 +496,7 @@ The board should not approve Transform bets at G2 with D1 or D6 below 2 unless t
 | T14 | Cross-reading with the transformation index. |
 | T17, T18 | Publication of the result and tracking of the actions requested by the board. |
 | P03, P05, P07–P09, P11, P12, P14, P16, P18–P20, P24, P25, P28–P30 | Usual evidence. The answer sheet, the calculation and the report have their own template, P34, which T15 calculates and generates. |
+| P72, P73 | AI security profile (CSF 2.0 / Cyber AI Profile) and AI governance profile (NIST AI RMF), with the level of each subcategory derived from the questionnaire (section 7.5). |
 
 ---
 
@@ -520,4 +521,4 @@ The board should not approve Transform bets at G2 with D1 or D6 below 2 unless t
 | Version | Date | Changes |
 |---|---|---|
 | 0.1 | 16-09-2026 | First version. Confirms the seven dimensions and the six levels (D10); defines rubrics, an 84-question questionnaire, assessment types, sampling, calculation with a cap based on D1 and D6, report, links with the transformation index and with 01 §14, and reference targets by ambition. |
-| 0.2 | 25-09-2026 | Adds the indicative equivalence of levels 0–5 with the NIST CSF 2.0 *tiers* (section 2.2), which is a calculated view and not a second scale, and link 7.5 with the NIST profiles: current level of each AI RMF and CSF subcategory derived from the questionnaire, own questions, target level in C2, gap and equivalent *tier* (34 §5.4 and §5.5). |
+| 0.2 | 25-09-2026 | Adds the indicative equivalence of levels 0–5 with the NIST CSF 2.0 *tiers* (section 2.2), which is a calculated view and not a second scale, and link 7.5 with the NIST profiles: current level of each AI RMF and CSF subcategory derived from the questionnaire, own questions, target level in C2, gap and equivalent *tier* (34 §5.4 and §5.5). Templates P72 and P73 in section 10. |

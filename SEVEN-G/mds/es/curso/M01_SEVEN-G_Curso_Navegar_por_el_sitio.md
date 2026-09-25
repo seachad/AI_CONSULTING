@@ -51,7 +51,7 @@ Al terminar sabrá encontrar cualquier documento, plantilla o herramienta, busca
 | Código | Qué es | Dónde se define |
 |---|---|---|
 | **00 a 94** | Documentos. La primera cifra indica el bloque. | Índice |
-| **P01–P71** | Plantillas. P01–P31 son las evidencias de cada fase; P32–P71, las de compañía, consejo, cumplimiento, terceros, auditoría e implantación. | Bloque H |
+| **P01–P74** | Plantillas. P01–P31 son las evidencias de cada fase; P32–P71, las de compañía, consejo, cumplimiento, terceros, auditoría e implantación; P72–P74, los perfiles NIST y la declaración de aplicabilidad de ISO/IEC 42001. | Bloque H |
 | **T01–T22** | Herramientas. Las que no tienen aplicación propia enlazan al procedimiento con el que se aplican. | documento 03 |
 | **C1–C5** | Etapas del ciclo corporativo: diagnóstico, dirección, cartera, supervisión y revisión. | documento 01 |
 | **Fases 0–7 · G0–G5, R6, G7** | Fases de una iniciativa y sus puertas de decisión. | documento 01 |

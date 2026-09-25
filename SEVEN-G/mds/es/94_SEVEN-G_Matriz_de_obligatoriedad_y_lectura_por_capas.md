@@ -199,7 +199,7 @@ Que un documento sea *Siempre* no obliga a leerlo entero: diecinueve documentos 
 | P29 (todas las puertas) · P31 (ficha del caso) | **Siempre** | — |
 | P30 (fase 7) | **Siempre** | Cuando se convoca G7. |
 
-### 7.2 Compañía, consejo, cumplimiento, terceros, auditoría e implantación (P32–P71)
+### 7.2 Compañía, consejo, cumplimiento, terceros, auditoría e implantación (P32–P74)
 
 | Plantillas | Nivel | Disparador o nota |
 |---|---|---|
@@ -223,6 +223,7 @@ Que un documento sea *Siempre* no obliga a leerlo entero: diecinueve documentos 
 | P63 (presupuesto de consumo) · P64 (conjuntos de datos y fuentes) · P66 (anexos de SPAD) | **Condicional** | Disparador 9 · datos o conocimiento propios · disparador 14. |
 | P67 (paquete trimestral del consejo) · P69 (registro de decisiones del consejo) | **Siempre** | Agregado en alcance Lite. |
 | P70, P71 (consultoría) | **Condicional** | Acompañamiento externo. |
+| P72 (perfil de seguridad de IA) · P73 (perfil de gobierno de IA) · P74 (declaración de aplicabilidad de ISO/IEC 42001) | **Condicional** | Solo si la compañía usa el NIST CSF o el NIST AI RMF, o aspira a ISO/IEC 42001 (34 §4–§5). |
 
 ---
 

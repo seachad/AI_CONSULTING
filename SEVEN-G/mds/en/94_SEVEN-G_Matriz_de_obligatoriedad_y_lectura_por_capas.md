@@ -199,7 +199,7 @@ The fact that a document is *Always* does not mean it must be read in full: nine
 | P29 (all gates) · P31 (use case sheet) | **Always** | — |
 | P30 (phase 7) | **Always** | When G7 is convened. |
 
-### 7.2 Company, board, compliance, third parties, audit and implementation (P32–P71)
+### 7.2 Company, board, compliance, third parties, audit and implementation (P32–P74)
 
 | Templates | Level | Trigger or note |
 |---|---|---|
@@ -223,6 +223,7 @@ The fact that a document is *Always* does not mean it must be read in full: nine
 | P63 (consumption budget) · P64 (datasets and sources) · P66 (SPAD annexes) | **Conditional** | Trigger 9 · own data or knowledge · trigger 14. |
 | P67 (quarterly board pack) · P69 (register of board decisions) | **Always** | Aggregated in Lite scope. |
 | P70, P71 (consultancy) | **Conditional** | External support. |
+| P72 (AI security profile) · P73 (AI governance profile) · P74 (ISO/IEC 42001 statement of applicability) | **Conditional** | Only if the company uses the NIST CSF or the NIST AI RMF, or aims for ISO/IEC 42001 (34 §4–§5). |
 
 ---
 

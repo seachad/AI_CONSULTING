@@ -21,7 +21,7 @@ Marco de valor, gobierno y transformación con IA. Proyecto vivo.
 
 | Carpeta | Contenido |
 |---|---|
-| `SEVEN-G/mds/es/` · `SEVEN-G/mds/en/` | Fuentes Markdown en español (redacción) e inglés (traducción): documentos 00–95, plantillas P01–P71 y curso M00–M09 |
+| `SEVEN-G/mds/es/` · `SEVEN-G/mds/en/` | Fuentes Markdown en español (redacción) e inglés (traducción): documentos 00–95, plantillas P01–P74 y curso M00–M09 |
 | `SEVEN-G/html/` · `SEVEN-G/pdf/` | Documentos generados en HTML (con índice de la biblioteca por idioma y el índice de códigos `codigos.js`) y en PDF |
 | `SEVEN-G/docx/` · `SEVEN-G/pptx/` | Plantillas editables en Word y cursos en presentación |
 | `SEVEN-G/herramientas/` | Herramientas sin servidor: T01 registro de iniciativas (con T02–T06 y T18 como vistas), T11 calculadora de valor (con T13), T14 índice de transformación, T15 diagnóstico de madurez, T17 generador del panel del consejo (Python) y la página de comunidad |
