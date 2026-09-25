@@ -1142,7 +1142,22 @@ try {
     if ([IO.File]::ReadAllText($md.FullName) -match '(?i)verificado \(secundaria\)|verified \(secondary\)|fuentes secundarias|secondary sources|análisis jurídicos publicados|published legal analyses') { Mal "$($md.Name): se apoya en fuentes secundarias (D114)"; $malEx++ }
   }
   if (-not $malEx) { Ok "exención completa en $nAv avisos de la biblioteca, portada, entrada, herramientas, paneles y licencia, y en 93 §11; $(@($regs).Count) referencias verificadas o marcadas no verificables, ninguna por corregir; sin fuentes secundarias" }
-}
+  # ---- 25. vigilancia mensual de fuentes (D117): la lista de vigilancia solo cita referencias del registro y el script que prepara
+  # el informe existe; los informes viven en _trabajo (no se publican)
+  Write-Host '25. Vigilancia mensual de fuentes'
+  $malVig = 0
+  $vigCfg = Join-Path $repo 'SEVEN-G\build\vigilancia_fuentes.json'
+  if (-not (Test-Path $vigCfg) -or -not (Test-Path (Join-Path $repo 'SEVEN-G\build\vigilar_fuentes.ps1'))) { Mal 'falta vigilancia_fuentes.json o vigilar_fuentes.ps1 (D117)'; $malVig++ }
+  else {
+    $vig = Get-Content $vigCfg -Raw -Encoding utf8 | ConvertFrom-Json
+    $idsReg = @($regs | ForEach-Object id)
+    foreach ($p in $vig.prioritarias) {
+      if ($idsReg -notcontains $p.id) { Mal "vigilancia_fuentes.json: la referencia $($p.id) no está en el registro (D117)"; $malVig++ }
+      if (-not $p.pregunta -or $p.donde -notmatch '^https://') { Mal "vigilancia_fuentes.json: $($p.id) sin pregunta o sin enlace https (D117)"; $malVig++ }
+    }
+    foreach ($r in $regs | Where-Object { $_.situacion -and $_.situacion -ne 'final' }) { if (@($vig.prioritarias | ForEach-Object id) -notcontains $r.id) { Mal "referencia $($r.id) en $($r.situacion) y fuera de la vigilancia mensual (D117)"; $malVig++ } }
+  }
+  if (-not $malVig) { Ok "vigilancia mensual: $(@($vig.prioritarias).Count) fuentes prioritarias, todas en el registro; toda fuente en borrador está vigilada" }}
 finally { Remove-Item $tmp -Recurse -Force -Confirm:$false -ErrorAction SilentlyContinue }
 
 Write-Host ''
