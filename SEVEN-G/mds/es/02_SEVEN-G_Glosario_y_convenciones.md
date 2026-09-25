@@ -186,7 +186,7 @@ Orden alfabético. Las escalas completas están en la sección 4 y los códigos 
 | **Continuar la operación** | Resultado de R6: la iniciativa sigue aportando valor bajo control y continúa en producción hasta la siguiente revisión. | 01 §7.3; 21 §5.3 | Continue operation † |
 | **Control crítico** | Control de seguridad, cumplimiento legal o supervisión humana que no admite Continuar con condiciones: los criterios *Sí ◆* del documento 21 y los controles de agentes críticos por nivel de autonomía del documento 35. No diseñado bloquea G4; no probado bloquea G5; desactivado en producción es no conformidad crítica. | 01 §7.3; 21 §2.2; 35 §5.4 | critical control † |
 | **Control de intención** | Mecanismo que garantiza que cada acción de un agente es trazable a una intención autorizada: mandato con objetivo, herramientas, datos y límites; punto de decisión externo al modelo que comprueba cada acción; permiso efímero limitado a esa acción; y registro de la acción con el identificador de la intención. | 35 §4.4 | intent-based access control |
-| **Control de seguridad de IA (SEG) · control de agentes (AG)** | Catálogos de controles codificados: SEG-01 a SEG-20 para sistemas de IA y AG-01 a AG-20 para agentes, con mínimos obligatorios por nivel de autonomía. | 35 §5–7 | AI security control · agent control † |
+| **Control de seguridad de IA (SEG) · control de agentes (AG)** | Catálogos de controles codificados: SEG-01 a SEG-25 para sistemas de IA (SEG-21 a SEG-25, uso de la IA en la ciberdefensa) y AG-01 a AG-20 para agentes, con mínimos obligatorios por nivel de autonomía. | 35 §5–7 | AI security control · agent control † |
 | **Coste recurrente** | Coste anual completo para operar un caso, directo y compartido repartido, en las nueve categorías de coste. Se resta siempre completo, con independencia de su estado. | 00 regla 6; 40 §5.1; 42 §4 | recurring cost |
 | **Criterio de *gate*** | Condición verificable que se comprueba en una puerta, con código `G<n>.<nn>` o `R6.<nn>`, obligatoriedad (Sí, Sí ◆, Condicionable, Recomendado), aplicabilidad por intensidad y variación por nivel de ambición. | 21 §2 | gate criterion † |
 | **Criterio de salida** | Condición que debe cumplirse al final de una fase para solicitar su *gate*. | 01 §6.2–6.9 | exit criterion |
@@ -801,7 +801,7 @@ Equivalentes en inglés de los valores de la taxonomía:
 | **B1–B3** | B + número | Condiciones de base del índice de transformación. | 12 §4.3 | B2 |
 | **F1–F10 · F2v** | F + número | Fórmulas oficiales de medición. | 40 §6 | F7 |
 | **RT-\<CAT\>-NN** | RT + categoría de tres letras + dos cifras | Riesgos tipo del catálogo (70 en la versión 0.1): EST 6 · TEC 8 · DAT 6 · ECO 5 · LEG 8 · ORG 9 · REP 5 · GEN 9 · SEG 7 · TER 7. | 33 §9 | RT-GEN-01 |
-| **SEG-01–SEG-20** | SEG + guion + dos cifras | Controles de seguridad de IA. | 35 §6 | SEG-02 |
+| **SEG-01–SEG-25** | SEG + guion + dos cifras | Controles de seguridad de IA. | 35 §6 | SEG-02 |
 | **AG-01–AG-20** | AG + guion + dos cifras | Controles de agentes. | 35 §7 | AG-09 |
 | **IND-\<FAM\>-NN** | IND + familia de tres letras + dos cifras | Indicadores del catálogo (159 en 13 familias): VAL, COS, EMB, AGI, RIE, OPE, ADO, DAT, CLI, TRA, MAD, CON (consejo) y PRO (procesos y decisión). Un código no se reutiliza. | 41 §2 y §4 | IND-VAL-05 |
 | **IE\<esfera\>.\<nn\>** | IE + esfera de dos cifras + punto + dos cifras | Indicadores por esfera, provisionales hasta su consolidación en el documento 41. | 10 §5–7 | IE01.04 |

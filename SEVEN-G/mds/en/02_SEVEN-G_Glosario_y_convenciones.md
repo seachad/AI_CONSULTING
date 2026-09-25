@@ -150,7 +150,7 @@ Alphabetical order by English term. The full scales are in section 4 and the cod
 | **AI Product Owner** | Building role: accountable for the value hypothesis, actual use and adoption. It cannot verify evidence or decide *gates* of its initiative. | 01 §8.1 | Responsable de producto de IA |
 | **AI reviewer** | AI tool that reviews plans, code, tests or security within the building team (SEVEN-G name for the SPAD *AI Auditor* role). It approves nothing and is not the AI Auditor. | 53 §5 | IA revisora |
 | **AI Risk Owner** | Control role: accountable for the assessment and monitoring of risks and compliance, and issues risk clearance. It cannot be part of the team that builds the initiative. | 01 §8.1 | Responsable de riesgos de IA |
-| **AI security control (SEG) · agent control (AG)** | Catalogues of coded controls: SEG-01 to SEG-20 for AI systems and AG-01 to AG-20 for agents, with mandatory minimums by autonomy level. | 35 §5–7 | Control de seguridad de IA (SEG) · control de agentes (AG) |
+| **AI security control (SEG) · agent control (AG)** | Catalogues of coded controls: SEG-01 to SEG-25 for AI systems (SEG-21 to SEG-25, use of AI in cyber defence) and AG-01 to AG-20 for agents, with mandatory minimums by autonomy level. | 35 §5–7 | Control de seguridad de IA (SEG) · control de agentes (AG) |
 | **AI Sponsor** | Deciding role: accountable for value and investment, and champions the initiative before the bodies. It cannot verify evidence or act as risk owner or auditor of its initiative. | 01 §8.1 | Patrocinador de IA |
 | **AI supplier (third party)** | Third party that supplies models, platforms, software with AI features or services that use them, managed with requirement levels N1–N3. | 36 | Proveedor de IA (tercero) |
 | **AI system** | Machine-based system that, with varying levels of autonomy, infers from the input it receives how to generate outputs—predictions, content, recommendations or decisions—that can influence physical or virtual environments. It is aligned with the EU AI Act definition and is identified in the inventory with the code SIA-AAAA-NNN. | 01 §4; 32 §2 | Sistema de IA |
@@ -801,7 +801,7 @@ Spanish equivalents of the taxonomy values:
 | **B1–B3** | B + number | Baseline conditions of the transformation index. | 12 §4.3 | B2 |
 | **F1–F10 · F2v** | F + number | Official measurement formulas. | 40 §6 | F7 |
 | **RT-\<CAT\>-NN** | RT + three-letter category + two digits | Typical risks in the catalogue (70 in version 0.1): EST 6 · TEC 8 · DAT 6 · ECO 5 · LEG 8 · ORG 9 · REP 5 · GEN 9 · SEG 7 · TER 7. | 33 §9 | RT-GEN-01 |
-| **SEG-01–SEG-20** | SEG + hyphen + two digits | AI security controls. | 35 §6 | SEG-02 |
+| **SEG-01–SEG-25** | SEG + hyphen + two digits | AI security controls. | 35 §6 | SEG-02 |
 | **AG-01–AG-20** | AG + hyphen + two digits | Agent controls. | 35 §7 | AG-09 |
 | **IND-\<FAM\>-NN** | IND + three-letter family + two digits | Catalogue indicators (159 in 13 families): VAL, COS, EMB, AGI, RIE, OPE, ADO, DAT, CLI, TRA, MAD, CON (board) and PRO (processes and decision-making). A code is not reused. | 41 §2 and §4 | IND-VAL-05 |
 | **IE\<sphere\>.\<nn\>** | IE + two-digit sphere + point + two digits | Indicators by sphere, provisional until they are consolidated in document 41. | 10 §5–7 | IE01.04 |
