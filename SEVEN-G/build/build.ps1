@@ -241,6 +241,8 @@ function BloqueNavegacion([string]$rel) {
   return $claves[-1]
 }
 
+. (Join-Path $PSScriptRoot 'entrada_datos.ps1')
+
 # ---- Recuentos de la biblioteca para los componentes ----
 # Un componente puede escribir {{N_DOCUMENTOS}}, {{N_PLANTILLAS}} y {{N_HERRAMIENTAS}}: se sustituyen por los mismos recuentos
 # que muestra el índice, para que no queden desfasados al añadir un documento, una plantilla o una herramienta.
@@ -561,7 +563,11 @@ foreach ($lang in $Idiomas) {
   if (Test-Path (Join-Path $entSrc "$lang\index.html")) {
     $entDst = Join-Path $htmlDir 'entrada'; $entCom = Join-Path $root 'html\entrada'
     New-Item -ItemType Directory -Force $entDst, $entCom | Out-Null
-    Copy-Item (Join-Path $entSrc "$lang\index.html") $entDst -Force
+    # la fuente no lleva cifras escritas a mano: los recuentos y el inventario de casos se toman al generar de la biblioteca
+    # y del JSON del panel de ejemplo (entrada_datos.ps1, D121)
+    $entHtml = Get-Content (Join-Path $entSrc "$lang\index.html") -Raw -Encoding utf8
+    $entHtml = Expandir-Entrada $entHtml $lang $repo (Recuentos-Biblioteca $lang)
+    [IO.File]::WriteAllText((Join-Path $entDst 'index.html'), $entHtml, [Text.UTF8Encoding]::new($false))
     Get-ChildItem $entSrc -File | Copy-Item -Destination $entCom -Force
   }
 
