@@ -16,6 +16,10 @@ Aplica el **documento 96** (Puntos de partida y recorrido de implantación): un 
 
 Los datos se guardan solo en el navegador que se usa (almacenamiento local, clave `seveng-t23-datos-v1`). No se envía nada a terceros. El botón **«Datos: …»** de la barra dice dónde están (ejemplo, este navegador, un fichero del equipo o el servidor de la compañía) y abre el diálogo «Dónde están mis datos» (documento 03 §2.1): guardado automático en un **fichero JSON del equipo** (Edge o Chrome; el mismo que descarga «Exportar») o, en una copia del sitio servida por http en la compañía, el fichero `herramientas/datos/T23_recorrido.json`, que sustituye a los datos de ejemplo.
 
+## Ayuda de cada vista
+
+Cada vista lleva junto a su título un botón **«?»** que explica, en el idioma activo (español o inglés), qué muestra la vista, cómo leerla, qué significa cada columna o cifra, por qué importa y dónde se explica en SEVEN-G. Cada encabezado de tabla y cada cifra de cabecera lleva además su explicación como texto emergente. Los textos están en `_fuentes/ayuda.json` y los incrusta `build_recorrido.ps1` con el módulo común `_comun/ayuda.js` (D123): una columna nueva necesita allí su explicación en los dos idiomas.
+
 ## Correspondencia de T01 con Q01
 
 | `clasificacion.tecnologia` de una iniciativa en uso | Respuesta de Q01 |

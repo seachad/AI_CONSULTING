@@ -236,6 +236,7 @@ dialog::backdrop{background:rgba(26,24,23,.45)}
 <script type="application/json" id="datos-demo">__DATOS_DEMO__</script>
 <script type="application/json" id="ejemplo-b">__EJEMPLO_B__</script>
 <script>__DATOS_LOCALES__</script>
+<script>__AYUDA__</script>
 <script>
 'use strict';
 /* =========================================================
@@ -618,7 +619,7 @@ function filaHito(h, C){
 function resumenHTML(C){
   const hs = R.hitos, n = hs.length, hechos = hs.filter(h=>hecho(C.est[h.codigo])).length, curso = hs.filter(h=>C.est[h.codigo].estado==='en_curso').length, ya = hs.filter(h=>C.pr[h.codigo].prioridad==='1' && !hecho(C.est[h.codigo])).length;
   return '<div class="global" id="resumen" data-total="'+n+'" data-hechos="'+hechos+'" data-p1="'+ya+'" style="grid-template-columns:repeat(4,minmax(0,1fr))">'+
-    [[t('r_total'), n],[t('r_ya'), ya],[t('r_curso'), curso],[t('r_hechos'), hechos]].map(x=>'<div class="cifras" style="grid-template-columns:1fr"><div><b>'+x[1]+'</b><span>'+esc(x[0])+'</span></div></div>').join('')+'</div>';
+    [[t('r_total'), n],[t('r_ya'), ya],[t('r_curso'), curso],[t('r_hechos'), hechos]].map(x=>'<div class="cifras kpis" style="grid-template-columns:1fr"><div><b>'+x[1]+'</b><span>'+esc(x[0])+'</span></div></div>').join('')+'</div>';
 }
 function vistaRecorrido(C){
   let h = '<h1>'+esc(t('tit_recorrido'))+'</h1><p>'+esc(t('sub_recorrido'))+'</p>';

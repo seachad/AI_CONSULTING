@@ -2574,7 +2574,7 @@ function abrirDecision(D){
   abrirDialogo(t('dlg_dec')+(X.id?' · '+X.id:''), bq, f=>{ const errs=[];
     const n={fecha:f['dc-fecha'].value, organo:f['dc-org'].value, acta:f['dc-acta'].value.trim()||null, asunto:f['dc-asu'].value, tipo:f['dc-tip'].value, resultado:f['dc-res'].value||null, texto:f['dc-txt'].value.trim(),
       iniciativas:listaIds(f['dc-ini'].value), esferas_transformar:listaIds(f['dc-esf'].value).map(e=>e.padStart(2,'0')), limite_inversion_etapa:leerNum(f,'dc-lim'), etapa:f['dc-eta'].value.trim()||null, decision_etapa:f['dc-dle'].value||null, vigencia:f['dc-vig'].value||null, responsable:f['dc-rsp'].value||null, recomendaciones:listaIds(f['dc-rec'].value)};
-    // ambición objetivo por esfera (tesis de C2, D130): solo las esferas con valor; las de Transformar se suman a esferas_transformar (IT-D1)
+    // ambición objetivo por esfera (tesis de C2, D131): solo las esferas con valor; las de Transformar se suman a esferas_transformar (IT-D1)
     const ao={}; ['01','02','03','04','05','06','07'].forEach(e=>{ const v=f['dc-ao-'+e].value; if(v) ao[e]=v; });
     if(Object.keys(ao).length){ n.ambicion_objetivo=ao; Object.keys(ao).filter(e=>ao[e]==='transformar').forEach(e=>{ if(!n.esferas_transformar.includes(e)) n.esferas_transformar.push(e); }); n.esferas_transformar.sort(); } else if(D) delete D.ambicion_objetivo;
     if(!esFecha(n.fecha)) errs.push(t('e_fecha')); if(!n.texto) errs.push(t('e_dec_texto'));
