@@ -6,7 +6,7 @@
 .DESCRIPTION
   Salidas:  SEVEN-G/pptx/<idioma>/SEVEN-G_Curso_<Empresa|Consultor|Partner>.pptx
             SEVEN-G/pdf/<idioma>/curso/SEVEN-G_Curso_<Empresa|Consultor|Partner>.pdf
-  Imágenes: SEVEN-G/build/img_curso/ (embudo de la cartera ES/EN, registro de iniciativas T01 y panel del consejo T17,
+  Imágenes: SEVEN-G/build/img_curso/ (embudo de la cartera ES/EN, registro de iniciativas T01, panel del consejo T17 y su mapa de impacto T16,
             capturadas con Edge sin ventana de los propios componentes y herramientas del sitio, con datos ficticios).
 
   Los tres cursos comparten un tronco (qué es SEVEN-G, las fases, qué se rellena en cada fase, cómo eso llena el embudo
@@ -398,14 +398,21 @@ function Bloque-Proceso() {
       (L 'No se busca convertir más: parar en G3 una iniciativa inviable es un buen resultado. Un 100 % de conversión indicaría puertas blandas.' 'The goal is not to convert more: stopping an unviable initiative at G3 is a good outcome. 100% conversion would point to soft gates.')
     ) 7500000),
 
-    (Diapositiva-Imagen (L 'El panel del consejo (T17): cómo se lee' 'The board dashboard (T17): how to read it') (L 'Se genera del mismo registro, sin volver a teclear nada. Datos ficticios' 'It is generated from the same register, with nothing typed twice. Fictitious data') 'panel' (L 'Panel del consejo con las tarjetas de cartera y valor' 'Board dashboard with the portfolio and value cards') @(
-      (L '15 casos: cuántos hay en uso, en desarrollo, en prueba de concepto, propuestos y fuera.' '15 cases: how many are in use, in development, in proof of concept, proposed and out.'),
-      (L 'Costes 2,4 M€ al año y retorno total 7,3 M€ (eficiencias más retorno): el neto anual es 4,8 M€.' 'Costs of €2.4M a year and total return of €7.3M (efficiencies plus return): annual net is €4.8M.'),
-      (L 'La tarjeta amarilla es la importante: solo el 36 % del valor está validado por control de gestión. El resto es declarado o estimado.' 'The yellow card is the one that matters: only 36% of the value is validated by finance. The rest is declared or estimated.'),
-      (L 'La capacidad liberada que no se materializa aparece aparte y no suma.' 'Released capacity that has not been materialised is shown separately and does not add up.'),
-      (L 'En rojo: solo 3 de 15 casos tienen todos los controles (evaluaciones de impacto, seguridad, manual de uso).' 'In red: only 3 of 15 cases have all the controls (impact assessments, security, user manual).'),
-      (L 'Otras páginas: embudo y ciclo de vida, histórico y adopción, riesgo y cumplimiento, inventario.' 'Other pages: funnel and lifecycle, history and adoption, risk and compliance, inventory.')
-    ) 6700000 (L 'Si una cifra del panel no gusta, no se retoca el panel: se corrige la evidencia en el registro y se vuelve a generar.' 'If a figure on the dashboard looks wrong, the dashboard is not touched: the evidence is fixed in the register and it is generated again.'))
+    (Diapositiva-Imagen (L 'El panel del consejo (T17): cómo se lee' 'The board dashboard (T17): how to read it') (L 'Se genera del mismo registro, sin volver a teclear nada. Datos ficticios' 'It is generated from the same register, with nothing typed twice. Fictitious data') 'panel' (L 'Panel del consejo: tarjetas de cartera y valor y la lectura «Qué frena el escalado»' 'Board dashboard: portfolio and value cards and the «What holds back scaling» reading') @(
+      (L 'Arriba, las cifras: 15 casos, costes 2,4 M€ al año, retorno total 7,3 M€ y neto anual 4,8 M€. Cada cifra se pulsa y abre sus casos.' 'At the top, the figures: 15 cases, costs of €2.4M a year, total return of €7.3M and annual net of €4.8M. Each figure can be clicked to open its cases.'),
+      (L 'La tarjeta amarilla es la importante: solo el 36 % del valor está validado por control de gestión. En rojo: solo 3 de 15 casos tienen todos los controles.' 'The yellow card is the one that matters: only 36% of the value is validated by finance. In red: only 3 of 15 cases have all the controls.'),
+      (L 'Debajo, «Qué frena el escalado»: los tres frenos por los que empezar, con qué bloquean, qué hacer, quién y el valor en juego (documento 60 §10.4).' 'Below, «What holds back scaling»: the three barriers to start with, with what they block, what to do, who and the value at stake (document 60 §10.4).'),
+      (L 'En el ejemplo: primero riesgo y cumplimiento (bloquea G5), después el valor sin validar (bloquea G7 · Escalar) y los casos que no avanzan.' 'In the example: first risk and compliance (blocks G5), then unvalidated value (blocks G7 · Scale) and cases that do not move forward.'),
+      (L 'El valor en juego ordena, no promete: es declarado, no validado.' 'The value at stake ranks, it does not promise: it is declared, not validated.')
+    ) 6700000 (L 'Si una cifra del panel no gusta, no se retoca el panel: se corrige la evidencia en el registro y se vuelve a generar.' 'If a figure on the dashboard looks wrong, the dashboard is not touched: the evidence is fixed in the register and it is generated again.')),
+
+    (Diapositiva-Imagen (L 'Dónde está el impacto: esferas × ambición' 'Where the impact is: spheres × ambition') (L 'El mapa de calor de la cartera (T16) en el mismo panel. Datos ficticios' 'The portfolio heat map (T16) in the same dashboard. Fictitious data') 'impacto' (L 'Mapa de calor de esferas por nivel de ambición con casos, inversión, neto y brechas' 'Heat map of spheres by ambition level with cases, investment, net and gaps') @(
+      (L 'Filas: las áreas donde la IA crea valor (cliente, producto, personas, operaciones, datos, conocimiento, decisión). Columnas: optimizar, aumentar, transformar.' 'Rows: the areas where AI creates value (customer, product, people, operations, data, knowledge, decision). Columns: optimise, augment, transform.'),
+      (L 'Cada celda: casos, inversión y coste, neto anual y valor validado; el color dice dónde se concentra el gasto.' 'Each cell: cases, investment and cost, annual net and validated value; the colour shows where spending is concentrated.'),
+      (L '«Brecha»: la ambición que aprobó la dirección en C2 para esa esfera no tiene ningún caso que haya superado G2.' '«Gap»: the ambition management approved in C2 for that sphere has no case that has passed G2.'),
+      (L 'En el ejemplo: el 40 % del gasto está en Cliente, Datos no tiene actividad y cinco esferas tienen brecha.' 'In the example: 40% of spending is in Customer, Data has no activity and five spheres have a gap.'),
+      (L 'La ambición objetivo sale de la tesis aprobada en el registro, no se escribe en el panel.' 'The target ambition comes from the thesis approved in the register; it is not written in the dashboard.')
+    ) 6700000 (L 'La pregunta que responde: ¿dónde tiene la IA más impacto en la compañía y dónde no estamos jugando? (documento 10 §8)' 'The question it answers: where does AI have most impact in the company and where are we not playing? (document 10 §8)'))
   )
 }
 
@@ -638,6 +645,7 @@ $pdfPendientes = [Collections.Generic.List[object]]::new()
 
 Registrar-Imagen 'registro' (Join-Path $imgDir 'registro-ejemplo.png')
 Registrar-Imagen 'panel' (Join-Path $imgDir 'panel-consejo-ejemplo.png')
+Registrar-Imagen 'impacto' (Join-Path $imgDir 'mapa-impacto-ejemplo.png')
 
 foreach ($lang in $Idiomas) {
   $script:EN = $lang -eq 'en'
