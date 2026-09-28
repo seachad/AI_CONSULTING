@@ -170,6 +170,17 @@ function render(){
    </div>
    <div class="estados">${CASES.length} casos: ${byE}${f?` · <b>${nuevos.length}</b> nuevos desde el ${fES(f.fecha)}`:""}</div>`;
 
+  // qué frena el escalado (D125; mismas reglas que el panel completo, documento 60 §10.4): los tres frenos por los que empezar
+  const FR = FR_M = frenosEscalado(CASES);
+  $("frenos").innerHTML = (FR.prioridad.length ? FR.prioridad.map((f,i)=>`<div class="row fr" data-fr="${f.id}"><div style="flex:1;min-width:0"><div class="n">${i+1}. ${f.id} · ${esc(f.nombre)}</div><div class="m">${esc(f.accion)}</div><div class="m"><b>Quién:</b> ${esc(f.resp)}${f.casos.length?` · ${f.casos.length} ${f.casos.length===1?"caso":"casos"}`:""}${f.valor!=null?` · ${fmt(f.valor)} en juego`:""}</div></div><div class="r">${f.nivel==="bloquea"?`<span class="badge rojo">bloquea</span>`:`<span class="badge amarillo">señales</span>`}</div></div>`).join("")
+    : `<div class="empty">Ningún freno con señales.</div>`) + (FR.faltan.length ? `<div class="empty">${FR.faltan.map(esc).join(" ")}</div>` : "");
+  document.querySelectorAll(".row.fr").forEach(r=>r.onclick=()=>freno(r.dataset.fr));
+  // dónde está el impacto (T16; D126; mismas reglas que el mapa del panel completo, documento 10 §8): una fila por esfera
+  const MI = mapaImpacto(CASES, "esfera"), misec = $("impacto-sec");
+  misec.hidden = !CASES.some(c=>(c.tags||{}).funcion);
+  if (!misec.hidden) $("impacto").innerHTML = MI.filas.map(f=>`<div class="row" style="cursor:default"><div style="flex:1;min-width:0"><div class="n">${esc(f.etiqueta)}</div><div class="m">${f.total.casos.length ? `${f.total.casos.length} ${f.total.casos.length===1?"caso":"casos"}: ${MI.cols.filter(a=>f.celdas[a].casos.length).map(a=>`${esc(a)} ${f.celdas[a].casos.length}`).join(" · ")}` : "sin actividad"}${f.objetivo?` · objetivo C2: ${esc(f.objetivo==="no_prioritaria"?"no prioritaria":f.objetivo)}`:""}${f.brecha?` <span class="badge rojo">brecha</span>`:""}</div></div><div class="r">${f.total.casos.length?`<b>${f.total.pct==null?"—":Math.round(f.total.pct)+" %"}</b><div class="m">${f.total.neto != null ? `neto ${fmt(f.total.neto)}` : "aún no produce"}</div>`:""}</div></div>`).join("")
+    + (MI.banda.casos.length ? `<div class="empty">Banda de habilitación (${MI.bandaFilas.map(esc).join(" y ")}): ${MI.banda.casos.length} ${MI.banda.casos.length===1?"caso":"casos"}, fuera del total.</div>` : "");
+
   const al = alertas();
   $("alertas").innerHTML = al.length ? al.map(([cls,txt])=>`<div class="alert ${cls}">${txt}</div>`).join("") : `<div class="empty">Sin alertas.</div>`;
 
@@ -273,6 +284,18 @@ function etapa(e){
   $("sheet").classList.add("open");
   document.querySelectorAll("#sheetbox .row[data-id]").forEach(r=>r.onclick=()=>ficha(CASES.find(c=>c.id===r.dataset.id)));
 }
+// un freno de escalado: qué hacer, quién y sus señales, con los casos (que abren su ficha)
+let FR_M = null;
+function freno(id){
+  const f = (FR_M || {frenos:[]}).frenos.find(x=>x.id===id); if (!f) return;
+  const sen = f.senales.map(s=>`<div class="row" style="cursor:default;display:block"><div class="m">${s.empresa?"compañía · ":s.patron?"patrón · ":""}${s.txt}${s.bloquea?` · <b>bloquea ${esc(s.bloquea)}</b>`:""}</div>${s.patron?"":s.casos.map(c=>`<div class="row" data-id="${c.id}" style="padding:6px 0;min-height:0"><div class="n" style="font-size:13px">${esc(c.nombre)}</div><div class="r m">${esc(c.estado)}</div></div>`).join("")}</div>`).join("");
+  $("sheetbox").innerHTML = `<button class="close" onclick="cerrar()">Cerrar</button><h3>${f.id} · ${esc(f.nombre)}</h3>
+   <div class="sub">${f.casos.length} ${f.casos.length===1?"caso afectado":"casos afectados"}${f.valor!=null?` · ${fmt(f.valor)} de valor anual en juego (declarado)`:""}</div>
+   <p style="font-size:14px;margin:10px 0 4px"><b>Qué hacer:</b> ${esc(f.accion)}</p><p style="font-size:13.5px;margin:0 0 8px;color:var(--ink2)"><b>Quién:</b> ${esc(f.resp)} · dónde se explica: ${esc(f.donde)}</p>
+   <div class="list">${sen || `<div class="empty">Sin señales.</div>`}</div>`;
+  $("sheet").classList.add("open");
+  document.querySelectorAll("#sheetbox .row[data-id]").forEach(r=>r.onclick=()=>ficha(CASES.find(c=>c.id===r.dataset.id)));
+}
 function cerrar(){ $("sheet").classList.remove("open"); }
 // «?» de cada sección: qué muestra y por qué importa (meta.navegacion.ayuda_tarjetas, D122); se abre en la misma hoja inferior que las fichas
 if (((DATA.meta||{}).navegacion||{}).ayuda_tarjetas) vigilarAyudas(document.querySelector(".wrap"), html=>{ $("sheetbox").innerHTML = `<button class="close" onclick="cerrar()">Cerrar</button>` + html; $("sheet").classList.add("open"); });
@@ -295,8 +318,10 @@ HTML = """<!DOCTYPE html>
  <div class="ctrls"><div class="seg" id="lado"><button class="on" data-l="actual">Actual</button><button data-l="potencial">Potencial</button></div><select id="compara" aria-label="Comparar con una foto guardada"></select></div></div></header>
 <div class="wrap">
  <div id="resumen" data-ayuda="m-resumen"></div>
+ <h2 data-ayuda="m-frenos">Qué frena el escalado</h2><div class="list" id="frenos"></div>
  <h2 data-ayuda="m-alertas">Alertas</h2><div id="alertas"></div>
  <h2 data-ayuda="m-embudo">Embudo de casos</h2><div class="list" id="embudo"></div>
+ <section id="impacto-sec" hidden><h2 data-ayuda="m-impacto">Dónde está el impacto</h2><div class="list" id="impacto"></div></section>
  <h2 data-ayuda="m-top">Casos que más aportan</h2><div class="list" id="top"></div>
  <h2 data-ayuda="m-rinde">Dónde rinde más el siguiente euro</h2><div class="list" id="rinde"></div>
  <section id="transv-sec" hidden><h2 data-ayuda="transv">Transversales y plataformas, por unidad</h2><div class="list" id="transv"></div></section>

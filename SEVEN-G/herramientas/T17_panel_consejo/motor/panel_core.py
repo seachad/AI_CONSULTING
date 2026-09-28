@@ -254,4 +254,157 @@ function etapaDeSalida(c){
 }
 function fechaProd(c){ const p = fechaDe(c, "produccion"); if (p) return {f:p, est:false}; return (c.estado==="En uso"||c.estado==="Desenganchado") ? {f:String(c.inicio_estimado), est:true} : {f:null, est:true}; }
 function esNuevo(c, f){ if (!f) return false; const x = (f.casos||{})[c.id]; const p = (rc(c).fechas||{}).produccion; return !x || (p && p > f.fecha && x.estado !== "En uso"); }
+// fecha en que un caso salió del embudo (parada o retirada): la del último tramo del historial o, si falta, la de retirada
+function fechaSalida(c){ if (!esSalida(c.estado)) return null; const t = historial(c).tramos; const u = t.length ? t[t.length-1] : null; return (u && esSalida(u.estado) ? u.fecha : null) || fechaDe(c, "retirada"); }
+// fase de SEVEN-G del caso (bloque opcional casos[].seveng que escribe el conector de T01); null si el panel no la recibe
+const faseDe = c => (c.seveng && c.seveng.fase != null) ? Number(c.seveng.fase) : null;
+// valor anual en juego de un caso: eficiencias + retorno potenciales (el máximo alcanzable con sus hipótesis) o, si no los hay, los actuales.
+// Es declarado, no validado: sirve para ordenar los frenos, no para prometer. null = sin dato (nunca cero).
+function valorEnJuego(c){ const r = R(c); const e = r.eficiencias_pot ?? r.eficiencias, t = r.retorno_pot ?? r.retorno; return (e == null && t == null) ? null : (e || 0) + (t || 0); }
+
+// ---- lectura ejecutiva: qué frena el escalado y dónde actuar primero (SEVEN-G, documento 60 §10.4; D125). Reglas deterministas
+// sobre lo que ya trae el panel: señales de caso (sobre los casos filtrados), patrones de las paradas y retiradas del último año y señales
+// de la compañía (madurez D1–D7 e índice de transformación, que no dependen de los filtros). Nada se estima: lo que falta se dice.
+// meta.frenos_escalado (JSON general de configuración) ajusta el umbral de madurez, los meses del patrón, qué motivo de parada
+// corresponde a cada freno y los textos de cada freno; sin la clave se usan estos valores (D53).
+const FRENOS_DEF = [
+  {id:"FE-1", nombre:"El valor no está demostrado", resp:"Control de gestión y responsable de negocio del beneficio",
+   accion:"Validar con Control de Gestión el valor de los casos en uso y cerrar su plan de realización (P62); llevar a G7 los que tienen neto negativo.",
+   donde:"documento 40, documento 43 y documento 21 (G7.01)", dims:["D7"]},
+  {id:"FE-2", nombre:"Los casos no avanzan", resp:"Comité de IA",
+   accion:"Llevar a su puerta los casos que superan el límite de días de su etapa y decidir: continuar con fecha, pivotar o parar.",
+   donde:"documento 14 §8 y documento 20 §11", dims:["D2"]},
+  {id:"FE-3", nombre:"Riesgo y cumplimiento sin cerrar", resp:"Responsable de riesgos y cumplimiento",
+   accion:"Completar la clasificación regulatoria y los controles pendientes antes de G5 y abrir no conformidad en los casos que ya están en uso sin ellos.",
+   donde:"documentos 32, 33 y 35; documento 21 (G5); documento 37", dims:["D6"]},
+  {id:"FE-4", nombre:"Las personas no lo adoptan", resp:"Responsable de negocio del beneficio y Personas",
+   accion:"Plan de adopción en las unidades por debajo del umbral y retirada o reasignación de licencias sin uso.",
+   donde:"documento 23 y documento 40 §7.2", dims:["D5"]},
+  {id:"FE-5", nombre:"Datos y tecnología no están listos", resp:"Responsable de datos y responsable de tecnología",
+   accion:"Asegurar calidad, acceso y propiedad de los datos antes de la fase 3 (P64) y la plataforma que necesitan los casos.",
+   donde:"documento 51 y documento 52", dims:["D3","D4"]},
+  {id:"FE-6", nombre:"Falta dirección y gobierno", resp:"Alta dirección y consejo",
+   accion:"Aprobar en C2 la tesis y la ambición por esfera y dar a cada caso un responsable de negocio del beneficio y una descripción defendible.",
+   donde:"documento 13 y documento 30", dims:["D1"]}];
+// motivo codificado de una parada o retirada (T01) → freno del que es síntoma; «Sustituida por otra solución» no es un freno
+const MOTIVO_FRENO_DEF = {"Sin valor plausible":"FE-1", "Hipótesis refutada":"FE-1", "Coste superior al valor":"FE-1", "Riesgo inaceptable":"FE-3", "Regulación":"FE-3",
+  "Sin adopción":"FE-4", "Datos insuficientes":"FE-5", "Inviable técnicamente":"FE-5", "Cambio de prioridad estratégica":"FE-6"};
+// condiciones de base y alertas del índice de transformación (documento 12) → freno
+const INDICE_FRENO = {B1:["FE-6","el índice de transformación no cumple B1 (cartera gobernada)"], B2:["FE-1","el índice de transformación no cumple B2 (valor validado)"], B3:["FE-2","el índice de transformación no cumple B3 (escala en producción)"],
+  a_nomat:["FE-1","alerta del índice: eficiencia no materializada"], a_fragil:["FE-1","alerta del índice: transformación frágil"], a_atasc:["FE-2","alerta del índice: apuestas atascadas"],
+  a_sinsup:["FE-3","alerta del índice: cambio sin supervisión"], a_sincons:["FE-6","alerta del índice: transformación sin consejo"], a_sobre:["FE-6","alerta del índice: sobredeclaración de ambición"], a_sobre_tr:["FE-6","alerta del índice: sobredeclaración en Transformar"]};
+const NIVEL_MAD = ["Inexistente", "Inicial", "En desarrollo", "Definido", "Gestionado", "Optimizado"];
+function cfgFrenos(){ const c = META().frenos_escalado || {};
+  return {umbral_madurez: c.umbral_madurez ?? 2, meses: c.meses_patron ?? 12, motivos: Object.assign({}, MOTIVO_FRENO_DEF, c.motivos || {}),
+    frenos: FRENOS_DEF.map(f => Object.assign({}, f, (c.textos || {})[f.id] || {}))}; }
+function frenosEscalado(rows){
+  const cf = cfgFrenos(), cfg = CICLO(), emb = cfg.embudo, gi = emb.indexOf(cfg.ganado), hoy = FECHA_PANEL();
+  const desde = new Date(new Date(hoy) - cf.meses * 30.44 * 86400000).toISOString().slice(0,10);
+  const vivos = rows.filter(c => !esSalida(c.estado)), enUso = rows.filter(c => esGanado(c.estado)), enCurso = rows.filter(c => esEnCurso(c.estado));
+  const previa = gi > 0 ? emb[gi-1] : null;   // última etapa antes de producción: sus casos pasan G5 para entrar en uso
+  const pend = c => { const k = rc(c).controles || {}; return CTRL.filter(x => k[x] !== "hecho" && k[x] !== "no_aplica"); };
+  const F = {}; cf.frenos.forEach(f => F[f.id] = Object.assign({}, f, {senales: []}));
+  const add = (id, s) => { if (F[id] && (s.casos ? s.casos.length : true)) F[id].senales.push(Object.assign({casos: [], bloquea: null, empresa: false, patron: false}, s)); };
+  const lista = cs => cs.map(c => esc(c.nombre)).join(", ");
+  // FE-1 · valor
+  const sinVal = enUso.filter(c => { const r = R(c), t = (r.eficiencias || 0) + (r.retorno || 0); return t > 0 && (r.valor_por_estado.validado || 0) < t; });
+  add("FE-1", {txt: `${sinVal.length} en uso con valor sin validar (${fmt(sum(sinVal.map(c => (R(c).eficiencias || 0) + (R(c).retorno || 0) - (R(c).valor_por_estado.validado || 0))))} sin validar)`, casos: sinVal, bloquea: "G7 · Escalar (G7.01)"});
+  const neg = enUso.filter(c => R(c).neto < 0);
+  add("FE-1", {txt: `${neg.length} en uso con neto anual negativo: cuestan más de lo que aportan o no miden su valor`, casos: neg});
+  const cap = rows.filter(c => (R(c).capacidad || 0) > 0);
+  add("FE-1", {txt: `${cap.length} con capacidad liberada sin materializar (${fmt(sum(cap.map(c => R(c).capacidad)))}, no suma en el neto)`, casos: cap});
+  // FE-2 · avance
+  const pl = c => plazoDe(c).nivel, rojos = enCurso.filter(c => pl(c) === "rojo"), amar = enCurso.filter(c => pl(c) === "amarillo");
+  add("FE-2", {txt: `${rojos.length} superan el límite de días de su etapa`, casos: rojos});
+  add("FE-2", {txt: `${amar.length} están cerca del límite de días de su etapa`, casos: amar});
+  // FE-3 · riesgo y cumplimiento
+  if (previa){ const pd = enCurso.filter(c => c.estado === previa && pend(c).length);
+    add("FE-3", {txt: `${pd.length} en «${esc(previa)}» con controles pendientes`, casos: pd, bloquea: "G5 · puesta en producción"}); }
+  const pu = enUso.filter(c => pend(c).length);
+  add("FE-3", {txt: `${pu.length} en uso con controles pendientes: no conformidad`, casos: pu});
+  const sinCl = vivos.filter(c => !rc(c).clasificacion_ria);
+  add("FE-3", {txt: `${sinCl.length} sin clasificación regulatoria de la compañía (solo hay estimación)`, casos: sinCl});
+  // FE-4 · adopción
+  const baja = rows.filter(c => adopcionBaja(c).length);
+  add("FE-4", {txt: `${baja.length} con unidades por debajo del umbral de adopción: ${baja.flatMap(c => adopcionBaja(c).map(u => `${esc(u.unidad)} ${Math.round(adopcionPct(u))} %`)).join(", ")}`, casos: baja});
+  // FE-6 · dirección
+  const sinResp = vivos.filter(c => !rc(c).propietario_negocio);
+  add("FE-6", {txt: `${sinResp.length} sin responsable de negocio del beneficio`, casos: sinResp});
+  const sinDesc = vivos.filter(c => !c.que_es);
+  add("FE-6", {txt: `${sinDesc.length} sin descripción de qué es y para qué se usa`, casos: sinDesc});
+  // patrones: paradas y retiradas del último periodo por un motivo que es síntoma de un freno (no cuentan como casos afectados)
+  const porMotivo = {};
+  rows.filter(c => esSalida(c.estado) && (fechaSalida(c) || "") >= desde).forEach(c => { const m = (rc(c).retirada || {}).motivo || "";
+    const lab = Object.keys(cf.motivos).find(l => m.includes(l)); if (lab && cf.motivos[lab]) (porMotivo[lab] = porMotivo[lab] || []).push(c); });
+  Object.entries(porMotivo).forEach(([lab, cs]) => add(cf.motivos[lab], {txt: `${cs.length} ${cs.length === 1 ? "parada o retirada" : "paradas o retiradas"} en los últimos ${cf.meses} meses por «${esc(lab)}»: ${lista(cs)}`, casos: cs, patron: true}));
+  // compañía: madurez (documento 11) e índice de transformación (documento 12); no dependen de los filtros
+  const faltan = [], md = DATA.madurez, dims = md && Array.isArray(md.dimensiones) ? md.dimensiones : [];
+  if (!dims.length) faltan.push("Sin diagnóstico de madurez (T15): no se puede leer la capacidad de la compañía en cada freno.");
+  else cf.frenos.forEach(f => (f.dims || []).forEach(d => { const x = dims.find(y => y.dimension === d); if (!x) return;
+    const limita = md.tope_aplicado && (md.limitante || []).includes(d);
+    if (x.nivel == null) { faltan.push(`${d}: nivel de madurez sin dato.`); return; }
+    if (x.nivel <= cf.umbral_madurez || limita) add(f.id, {txt: `${esc(d)} · ${esc(x.nombre || "")} en nivel ${x.nivel} (${NIVEL_MAD[x.nivel] || ""})${limita ? " y limita el nivel global de madurez" : ""}${(x.bloqueantes || []).length ? `; bloqueantes: ${x.bloqueantes.map(esc).join(", ")}` : ""}`,
+      empresa: true, bloquea: limita ? "el nivel global de madurez (11 §5)" : null}); }));
+  const ix = DATA.indice;
+  if (!ix) faltan.push("Sin índice de transformación (T14): no se leen sus condiciones de base ni sus alertas.");
+  else { Object.entries(ix.condiciones_base || {}).forEach(([b, v]) => { if (v === false && INDICE_FRENO[b]) add(INDICE_FRENO[b][0], {txt: INDICE_FRENO[b][1], empresa: true}); });
+    (ix.alertas || []).forEach(a => { if (INDICE_FRENO[a]) add(INDICE_FRENO[a][0], {txt: INDICE_FRENO[a][1], empresa: true}); }); }
+  if (!rows.some(c => historial(c).origen !== "sin_dato")) faltan.push("Ningún caso tiene fechas de cambio de estado: no se puede saber si los casos se atascan.");
+  // cada freno: casos afectados (sin repetir, sin los patrones), valor anual en juego, qué bloquea y nivel
+  const out = Object.values(F).map(f => {
+    const cs = [...new Map(f.senales.filter(s => !s.patron).flatMap(s => s.casos).map(c => [c.id, c])).values()];
+    const vs = cs.map(valorEnJuego).filter(v => v != null);
+    const bloq = [...new Set(f.senales.filter(s => s.bloquea).map(s => s.bloquea))];
+    return Object.assign(f, {casos: cs, valor: vs.length ? sum(vs) : null, sinValor: cs.length - vs.length, bloquea: bloq,
+      nivel: bloq.length ? "bloquea" : f.senales.length ? "activo" : "sin"}); });
+  const peso = f => f.nivel === "bloquea" ? 0 : f.nivel === "activo" ? 1 : 2;
+  out.sort((a, b) => peso(a) - peso(b) || (b.valor || 0) - (a.valor || 0) || b.casos.length - a.casos.length || b.senales.length - a.senales.length);
+  return {frenos: out, prioridad: out.filter(f => f.nivel !== "sin").slice(0, 3), faltan};
+}
+
+// ---- dónde está el impacto: mapa de calor esferas × niveles de ambición (T16; SEVEN-G, documento 10 §8; D126). Filas: esferas de valor
+// (meta.mapa_impacto.filas; sin la clave, las que traigan los casos en tags.funcion) o unidades de negocio; aparte, la banda de
+// habilitación (esferas 08 y 09). Perímetro: casos activos que han superado G0 (fase ≥ 1 si el panel recibe la fase) y, aparte, los
+// parados o retirados en los últimos meses. Color: proporción de la inversión de construcción y el coste recurrente anual de la celda sobre
+// el total de las filas (sin actividad · baja < 5 % · media 5–15 % · alta > 15 %; umbrales de meta.mapa_impacto.umbrales, a calibrar en C5).
+const AMB_COLS = ["Optimizar", "Aumentar", "Transformar"];
+function cfgImpacto(){ const c = META().mapa_impacto || {}, u = c.umbrales || {};
+  return {filas: Array.isArray(c.filas) && c.filas.length ? c.filas : null, habilitacion: c.habilitacion || [], objetivo: c.objetivo_c2 || {},
+    baja: u.baja ?? 5, alta: u.alta ?? 15, meses: c.meses_retiradas ?? 12}; }
+const codEsfera = s => (String(s || "").match(/^\d{2}/) || [""])[0];
+function mapaImpacto(rows, modo){
+  const cf = cfgImpacto(), hoy = FECHA_PANEL(), desde = new Date(new Date(hoy) - cf.meses * 30.44 * 86400000).toISOString().slice(0,10);
+  const esf = modo !== "unidad", clave = c => esf ? ((c.tags || {}).funcion || "sin dato") : (c.unidad || "sin dato");
+  const activo = c => !esSalida(c.estado) && (faseDe(c) == null || faseDe(c) >= 1);
+  const act = rows.filter(activo), ret = rows.filter(c => esSalida(c.estado) && (fechaSalida(c) || "") >= desde);
+  const hab = new Set(esf ? cf.habilitacion : []);
+  const cols = [...AMB_COLS, ...(act.some(c => !AMB_COLS.includes((c.tags || {}).ambicion)) ? ["sin dato"] : [])];
+  const colDe = c => AMB_COLS.includes((c.tags || {}).ambicion) ? c.tags.ambicion : "sin dato";
+  const gasto = c => { const r = R(c); return (r.construccion || 0) + (r.recurrente || 0); };
+  // neto anual: solo de los casos con alguna cifra actual (sin ellas el neto no es cero, es «aún no produce»); potencial: valor anual en juego
+  const conActual = c => { const r = R(c); return r.eficiencias != null || r.retorno != null || r.recurrente != null; };
+  const celda = cs => { const ca = cs.filter(conActual), vp = cs.map(valorEnJuego).filter(v => v != null);
+    return {casos: cs, enUso: cs.filter(c => esGanado(c.estado)).length, gasto: sum(cs.map(gasto)), neto: ca.length ? sum(ca.map(c => R(c).neto)) : null,
+      potencial: vp.length ? sum(vp) : null, validado: sum(cs.map(c => R(c).valor_por_estado.validado || 0)),
+      propuesta: cs.filter(c => c.seveng && c.seveng.ambicion && !c.seveng.ambicion.real && !c.seveng.ambicion.confirmada).length}; };
+  let etiquetas = esf && cf.filas ? cf.filas.filter(l => !hab.has(l)) : [...new Set(act.map(clave))].filter(l => !hab.has(l)).sort((a, b) => a.localeCompare(b, "es"));
+  [...new Set(act.map(clave))].forEach(l => { if (!hab.has(l) && !etiquetas.includes(l)) etiquetas.push(l); });
+  const enFilas = act.filter(c => !hab.has(clave(c))), total = sum(enFilas.map(gasto));
+  const nivel = g => !g ? "sin" : !total ? "baja" : 100 * g / total > cf.alta ? "alta" : 100 * g / total >= cf.baja ? "media" : "baja";
+  const doceMeses = new Date(new Date(hoy) - 365 * 86400000).toISOString().slice(0,10);
+  const superoG2 = c => faseDe(c) != null ? faseDe(c) >= 3 : etapaAlcanzada(c) >= 2;
+  const filas = etiquetas.map(l => {
+    const cs = act.filter(c => clave(c) === l), obj = esf ? (cf.objetivo[l] || cf.objetivo[codEsfera(l)] || null) : null;
+    const celdas = {}; cols.forEach(a => { const x = celda(cs.filter(c => colDe(c) === a)); x.nivel = nivel(x.gasto); x.pct = total ? 100 * x.gasto / total : null; celdas[a] = x; });
+    const tot = celda(cs); tot.nivel = nivel(tot.gasto); tot.pct = total ? 100 * tot.gasto / total : null;
+    const brecha = obj && AMB_COLS.includes(obj) && !celdas[obj].casos.some(superoG2) ? obj : null;
+    const fuera = obj === "no_prioritaria" && tot.pct != null && tot.pct > 5;
+    const sinEv = cs.filter(c => { const p = fechaDe(c, "produccion"); return esGanado(c.estado) && p && p <= doceMeses && !(R(c).valor_por_estado.validado > 0); });
+    const cod = codEsfera(l), secundaria = esf && cod ? rows.filter(c => c.seveng && c.seveng.esfera_secundaria === cod && !esSalida(c.estado)).length : 0;
+    return {etiqueta: l, objetivo: obj, celdas, total: tot, brecha, fuera, sinEv, secundaria, retiradas: ret.filter(c => clave(c) === l)};
+  });
+  const banda = celda(act.filter(c => hab.has(clave(c))));
+  const colTot = {}; cols.forEach(a => { const x = celda(enFilas.filter(c => colDe(c) === a)); x.pct = total ? 100 * x.gasto / total : null; colTot[a] = x; });
+  return {modo: esf ? "esfera" : "unidad", cols, filas, banda, bandaFilas: [...hab], colTot, total, activos: act.length, retiradas: ret, excluidos: rows.filter(c => !esSalida(c.estado) && !activo(c))};
+}
 """
