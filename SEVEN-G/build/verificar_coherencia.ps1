@@ -1288,7 +1288,7 @@ try {
   $malAh = 0; $nVis = 0; $nCla = 0
   $ayudaComun = Join-Path $repo 'SEVEN-G\herramientas\_comun\ayuda.js'
   if (-not (Test-Path $ayudaComun)) { Mal 'falta SEVEN-G/herramientas/_comun/ayuda.js (D123)'; $malAh++ }
-  $herrAy = @(@{ d = $t01; p = 'registro.plantilla.html'; h = 'registro.html'; b = 'build_registro.ps1' }, @{ d = $t11; p = 'calculadora.plantilla.html'; h = 'calculadora.html'; b = 'build_calculadora.ps1' }, @{ d = $t14; p = 'indice.plantilla.html'; h = 'indice.html'; b = 'build_indice.ps1' }, @{ d = $t15; p = 'madurez.plantilla.html'; h = 'madurez.html'; b = 'build_madurez.ps1' })
+  $herrAy = @(@{ d = $t01; p = 'registro.plantilla.html'; h = 'registro.html'; b = 'build_registro.ps1' }, @{ d = $t11; p = 'calculadora.plantilla.html'; h = 'calculadora.html'; b = 'build_calculadora.ps1' }, @{ d = $t14; p = 'indice.plantilla.html'; h = 'indice.html'; b = 'build_indice.ps1' }, @{ d = $t15; p = 'madurez.plantilla.html'; h = 'madurez.html'; b = 'build_madurez.ps1' }, @{ d = (Join-Path $repo 'SEVEN-G\herramientas\T23_recorrido_implantacion'); p = 'recorrido.plantilla.html'; h = 'recorrido.html'; b = 'build_recorrido.ps1' })
   foreach ($x in $herrAy) {
     $nom = Split-Path $x.d -Leaf
     $pl = [IO.File]::ReadAllText((Join-Path $x.d "_fuentes\$($x.p)"))
@@ -1315,7 +1315,7 @@ try {
     foreach ($rd in 'README.md', 'README_en.md') { $f = Join-Path $x.d $rd; if ((Test-Path $f) -and -not [IO.File]::ReadAllText($f).Contains('ayuda.json')) { Mal "${nom} ${rd}: no explica la ayuda de la herramienta (D123)"; $malAh++ } }
     $nVis += $a.vistas.Count; $nCla += $a.claves.Count
   }
-  if (-not $malAh) { Ok "$nVis vistas con su «?» y $nCla columnas y rótulos explicados, en español e inglés, en T01, T11, T14 y T15" }
+  if (-not $malAh) { Ok "$nVis vistas con su «?» y $nCla columnas y rótulos explicados, en español e inglés, en T01, T11, T14, T15 y T23" }
   # ---- 29. puntos de partida, recorrido de implantación y madurez en tres lentes (D119, D120): el documento 96 tiene en ES y EN
   # sus tablas completas (6 arquetipos, 5 modificadores, 12 preguntas, 22 hitos con prioridad válida por arquetipo); toda pregunta del
   # documento 11 que acredita un hito existe; 11 §7.6 y 12 §3.7 tienen sus escalas; los códigos nuevos están en el glosario y en el

@@ -252,6 +252,12 @@ $html = $html.Replace('__RECORRIDO__', (Compactar $rutaRec)).Replace('__DATOS_DE
 $comun = Join-Path (Join-Path (Join-Path $aqui '..') '_comun') 'datos_locales.js'
 if (-not (Test-Path $comun)) { throw "No se encuentra $comun" }
 $html = $html.Replace('__DATOS_LOCALES__', [IO.File]::ReadAllText($comun))
+# ayuda de la herramienta (D123): módulo común _comun/ayuda.js y textos de _fuentes/ayuda.json (ES/EN), incrustados como el resto
+$ayudaJs = Join-Path $aqui '..\_comun\ayuda.js'; $ayudaJson = Join-Path $aqui '_fuentes\ayuda.json'
+foreach ($f in $ayudaJs, $ayudaJson) { if (-not (Test-Path $f)) { throw "No se encuentra $f" } }
+if (([regex]::Matches($html, '__AYUDA__')).Count -ne 1) { throw 'La plantilla debe contener una sola vez la marca __AYUDA__' }
+$null = [IO.File]::ReadAllText($ayudaJson) | ConvertFrom-Json   # falla aquí si el JSON de ayuda no es válido
+$html = $html.Replace('__AYUDA__', 'const AYUDA_HERR = ' + [IO.File]::ReadAllText($ayudaJson).Trim().Replace('</', '<\/') + ";`n" + [IO.File]::ReadAllText($ayudaJs))
 $html = $html.Replace('<!doctype html>', "<!doctype html>`n<!-- GENERADO por build_recorrido.ps1 desde _fuentes/recorrido.plantilla.html, recorrido.json, $(Split-Path $Datos -Leaf) y ejemplo_pp_b.json. No editar a mano. -->")
 [IO.File]::WriteAllText($Salida, $html, [Text.UTF8Encoding]::new($false))
 "recorrido:    $Salida ($([math]::Round((Get-Item $Salida).Length / 1KB)) KB)"
