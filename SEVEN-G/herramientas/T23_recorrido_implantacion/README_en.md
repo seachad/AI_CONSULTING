@@ -16,6 +16,10 @@ Applies **document 96** (Starting points and implementation journey): a **twelve
 
 Data is saved only in the browser used (local storage, key `seveng-t23-datos-v1`). Nothing is sent to third parties. The **"Data: …"** button in the bar says where it is (sample, this browser, a file on your computer or the company server) and opens the "Where my data is" dialog (document 03 §2.1): automatic saving to a **JSON file on your computer** (Edge or Chrome; the same one that "Export" downloads) or, in a copy of the site served over http in the company, the file `herramientas/datos/T23_recorrido.json`, which replaces the sample data.
 
+## Help for each view
+
+Each view has a **“?”** button next to its title that explains, in the active language (Spanish or English), what the view shows, how to read it, what each column or figure means, why it matters and where it is explained in SEVEN-G. Each table header and headline figure also carries its explanation as a tooltip. The texts are in `_fuentes/ayuda.json`, embedded by `build_recorrido.ps1` with the common module `_comun/ayuda.js` (D123): a new column needs its explanation there in both languages.
+
 ## Mapping from T01 to Q01
 
 | `clasificacion.tecnologia` of an initiative in use | Q01 answer |

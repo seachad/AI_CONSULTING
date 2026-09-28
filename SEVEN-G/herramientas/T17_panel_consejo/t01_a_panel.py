@@ -547,7 +547,7 @@ AMBICION_OBJ = {"optimizar": "Optimizar", "aumentar": "Aumentar", "transformar":
 
 def tesis_c2(t01, corte):
     """Última tesis de C2 aprobada hasta la fecha de corte (decisión del consejo con asunto «tesis»), si trae la ambición objetivo por
-    esfera: (código DEC, {esfera: ambición}). El panel la usa en el mapa de impacto (documento 10 §8, 60 §10.5; D130)."""
+    esfera: (código DEC, {esfera: ambición}). El panel la usa en el mapa de impacto (documento 10 §8, 60 §10.5; D131)."""
     ts = [d for d in t01.get("decisiones_consejo") or [] if d.get("asunto") == "tesis" and d.get("resultado") in ("aprobada", "aprobada_condiciones")
           and d.get("fecha") and d["fecha"] <= corte]
     if not ts:
@@ -611,7 +611,7 @@ def convertir(t01, sigla=None, organizacion=None, prefijo="t01_", enlaces_pie=""
         "casos": casos,
         "historico": [],
     }
-    # tesis de C2 con la ambición objetivo por esfera (D130): el registro T01 manda sobre la configuración del panel (D100)
+    # tesis de C2 con la ambición objetivo por esfera (D131): el registro T01 manda sobre la configuración del panel (D100)
     tesis = tesis_c2(t01, corte)
     if tesis:
         datos["meta"]["mapa_impacto"] = {**(config.get("mapa_impacto") or {}), "objetivo_c2": tesis[1], "objetivo_fuente": tesis[0]}

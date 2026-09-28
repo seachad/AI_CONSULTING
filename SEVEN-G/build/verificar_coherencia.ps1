@@ -527,7 +527,7 @@ try {
            return $null } }
       # el cálculo que se abre es el del documento 12 §9: suma 12, perfil subyacente Eficiencia a escala y asignado Transformación declarada, no evidenciada
       # D100: el cálculo que se abre es el de septiembre de 2026, calculado desde el registro de demostración de T01 (perfil asignado «declarada», subyacente «táctica», suma 12, cobertura 8); el de junio (documento 12 §9) queda en la evolución
-      # D130: la vista Consejo del registro muestra la ambición objetivo por esfera de la tesis de C2 y el diálogo de la decisión la edita
+      # D131: la vista Consejo del registro muestra la ambición objetivo por esfera de la tesis de C2 y el diálogo de la decisión la edita
       @{ f = (Join-Path $t01 'registro.html'); antes = "location.hash='#/consejo'"; debe = @('#cj-amb-obj', '[data-acc="cj-dec"][data-dec]'); que = 'registro T01, vista Consejo' }
       @{ f = (Join-Path $t14 'indice.html'); debe = @('#perfil[data-perfil="declarada"][data-evidenciado="tactica"][data-suma="12"][data-cobertura="8"]', 'tr[data-senal="8"][data-punt="1"]', '#nav a[href="#/umbrales"]', '#t01-local[data-registro]', "#sitio-nav $ctl", '#principal a.cod-enlace[title]', '#btn-datos[data-estado="demo"]', '#principal h1 .ay-btn'); que = 'calculadora T14 (cálculo desde el registro T01 de demostración)' }
       # T11: el caso de ejemplo IA-2026-001 da VAN 1.826.542 €, ROI 217,7 % y plazo 1,44 años (40 §8); T15: nivel global 2 limitado por D6 (11 §5)
@@ -1290,7 +1290,7 @@ try {
   $malAh = 0; $nVis = 0; $nCla = 0
   $ayudaComun = Join-Path $repo 'SEVEN-G\herramientas\_comun\ayuda.js'
   if (-not (Test-Path $ayudaComun)) { Mal 'falta SEVEN-G/herramientas/_comun/ayuda.js (D123)'; $malAh++ }
-  $herrAy = @(@{ d = $t01; p = 'registro.plantilla.html'; h = 'registro.html'; b = 'build_registro.ps1' }, @{ d = $t11; p = 'calculadora.plantilla.html'; h = 'calculadora.html'; b = 'build_calculadora.ps1' }, @{ d = $t14; p = 'indice.plantilla.html'; h = 'indice.html'; b = 'build_indice.ps1' }, @{ d = $t15; p = 'madurez.plantilla.html'; h = 'madurez.html'; b = 'build_madurez.ps1' })
+  $herrAy = @(@{ d = $t01; p = 'registro.plantilla.html'; h = 'registro.html'; b = 'build_registro.ps1' }, @{ d = $t11; p = 'calculadora.plantilla.html'; h = 'calculadora.html'; b = 'build_calculadora.ps1' }, @{ d = $t14; p = 'indice.plantilla.html'; h = 'indice.html'; b = 'build_indice.ps1' }, @{ d = $t15; p = 'madurez.plantilla.html'; h = 'madurez.html'; b = 'build_madurez.ps1' }, @{ d = (Join-Path $repo 'SEVEN-G\herramientas\T23_recorrido_implantacion'); p = 'recorrido.plantilla.html'; h = 'recorrido.html'; b = 'build_recorrido.ps1' })
   foreach ($x in $herrAy) {
     $nom = Split-Path $x.d -Leaf
     $pl = [IO.File]::ReadAllText((Join-Path $x.d "_fuentes\$($x.p)"))
@@ -1317,7 +1317,7 @@ try {
     foreach ($rd in 'README.md', 'README_en.md') { $f = Join-Path $x.d $rd; if ((Test-Path $f) -and -not [IO.File]::ReadAllText($f).Contains('ayuda.json')) { Mal "${nom} ${rd}: no explica la ayuda de la herramienta (D123)"; $malAh++ } }
     $nVis += $a.vistas.Count; $nCla += $a.claves.Count
   }
-  if (-not $malAh) { Ok "$nVis vistas con su «?» y $nCla columnas y rótulos explicados, en español e inglés, en T01, T11, T14 y T15" }
+  if (-not $malAh) { Ok "$nVis vistas con su «?» y $nCla columnas y rótulos explicados, en español e inglés, en T01, T11, T14, T15 y T23" }
   # ---- 29. puntos de partida, recorrido de implantación y madurez en tres lentes (D119, D120): el documento 96 tiene en ES y EN
   # sus tablas completas (6 arquetipos, 5 modificadores, 12 preguntas, 22 hitos con prioridad válida por arquetipo); toda pregunta del
   # documento 11 que acredita un hito existe; 11 §7.6 y 12 §3.7 tienen sus escalas; los códigos nuevos están en el glosario y en el
@@ -1425,22 +1425,22 @@ try {
   }
   foreach ($p in 'index.html', 'en\index.html') { $pt = [IO.File]::ReadAllText((Join-Path $repo $p)); if ($pt -notmatch '<p class="rapido">.*entrada/index\.html#para-que') { Mal "${p}: la portada no enlaza las tres respuestas de la entrada (D129)"; $malPc++ } }
   if (-not $malPc) { Ok 'la entrada (ES/EN) abre con las tres respuestas que llevan al panel y la portada las enlaza' }
-  # ---- 32. la tesis de C2 guarda la ambición objetivo por esfera en T01 (D130): esquema, plantilla, datos de ejemplo, los dos conectores
+  # ---- 32. la tesis de C2 guarda la ambición objetivo por esfera en T01 (D131): esquema, plantilla, datos de ejemplo, los dos conectores
   # (Python y JS) la llevan al mapa de impacto del panel con la decisión de la que sale, y el documento 62 §10.2 la describe (ES/EN)
   Write-Host '32. Ambición objetivo por esfera en la tesis de C2 (T01 → mapa de impacto)'
   $malTc = 0
   $esqTc = [IO.File]::ReadAllText((Join-Path $t01 'esquema_registro.schema.json'))
-  if (-not $esqTc.Contains('"ambicion_objetivo"')) { Mal 'esquema de T01: falta decisiones_consejo[].ambicion_objetivo (D130)'; $malTc++ }
+  if (-not $esqTc.Contains('"ambicion_objetivo"')) { Mal 'esquema de T01: falta decisiones_consejo[].ambicion_objetivo (D131)'; $malTc++ }
   $plTc = [IO.File]::ReadAllText((Join-Path $t01 '_fuentes\registro.plantilla.html'))
-  foreach ($s in 'id="cj-amb-obj"', "'dc-ao-'", 'ambicion_obj:{', "cj_amb_obj:'") { if (-not $plTc.Contains($s)) { Mal "plantilla de T01: falta «$s» (D130)"; $malTc++ } }
+  foreach ($s in 'id="cj-amb-obj"', "'dc-ao-'", 'ambicion_obj:{', "cj_amb_obj:'") { if (-not $plTc.Contains($s)) { Mal "plantilla de T01: falta «$s» (D131)"; $malTc++ } }
   $demoTc = Get-Content (Join-Path $t01 'datos_demo.json') -Raw | ConvertFrom-Json
   $tesTc = @($demoTc.decisiones_consejo | Where-Object { $_.asunto -eq 'tesis' -and $_.ambicion_objetivo }) | Sort-Object fecha | Select-Object -Last 1
-  if (-not $tesTc) { Mal 'datos de ejemplo de T01: la tesis no lleva ambicion_objetivo (D130)'; $malTc++ }
-  foreach ($x in @(@('t01_a_panel.py', 'def tesis_c2('), @('t01_a_panel.js', 'function tesisC2('))) { if (-not [IO.File]::ReadAllText((Join-Path $t17 $x[0])).Contains($x[1])) { Mal "$($x[0]): falta $($x[1]) (D130)"; $malTc++ } }
+  if (-not $tesTc) { Mal 'datos de ejemplo de T01: la tesis no lleva ambicion_objetivo (D131)'; $malTc++ }
+  foreach ($x in @(@('t01_a_panel.py', 'def tesis_c2('), @('t01_a_panel.js', 'function tesisC2('))) { if (-not [IO.File]::ReadAllText((Join-Path $t17 $x[0])).Contains($x[1])) { Mal "$($x[0]): falta $($x[1]) (D131)"; $malTc++ } }
   $djTc = Get-Content (Join-Path $t17 'ejemplo\salida\t01_dashboard_data.json') -Raw | ConvertFrom-Json
   if ($tesTc -and $djTc.meta.mapa_impacto.objetivo_fuente -ne $tesTc.id) { Mal "panel de ejemplo: la ambición objetivo no sale de la tesis $($tesTc.id) del registro (regenerar con t01_a_panel.py)"; $malTc++ }
-  if ((Get-Content (Join-Path $t17 'config_panel.json') -Raw | ConvertFrom-Json).mapa_impacto.objetivo_c2) { Mal 'config_panel.json del ejemplo: objetivo_c2 debe venir del registro T01, no de la configuración (D130)'; $malTc++ }
-  foreach ($lg in 'es', 'en') { $d62 = [IO.File]::ReadAllText((Get-ChildItem (Join-Path $repo "SEVEN-G\mds\$lg") -Filter '62_*.md').FullName); if ($d62 -notmatch '\| \*\*(Ambición objetivo por esfera|Target ambition per sphere)\*\* \|') { Mal "documento 62 [$lg] §10.2: falta el campo de la ambición objetivo por esfera (D130)"; $malTc++ } }
+  if ((Get-Content (Join-Path $t17 'config_panel.json') -Raw | ConvertFrom-Json).mapa_impacto.objetivo_c2) { Mal 'config_panel.json del ejemplo: objetivo_c2 debe venir del registro T01, no de la configuración (D131)'; $malTc++ }
+  foreach ($lg in 'es', 'en') { $d62 = [IO.File]::ReadAllText((Get-ChildItem (Join-Path $repo "SEVEN-G\mds\$lg") -Filter '62_*.md').FullName); if ($d62 -notmatch '\| \*\*(Ambición objetivo por esfera|Target ambition per sphere)\*\* \|') { Mal "documento 62 [$lg] §10.2: falta el campo de la ambición objetivo por esfera (D131)"; $malTc++ } }
   if (-not $malTc) { Ok "la tesis $($tesTc.id) de T01 guarda la ambición objetivo por esfera y el mapa de impacto la toma de ahí (Python y JS); documento 62 §10.2 (ES/EN)" }
 }
 finally { Remove-Item $tmp -Recurse -Force -Confirm:$false -ErrorAction SilentlyContinue }
