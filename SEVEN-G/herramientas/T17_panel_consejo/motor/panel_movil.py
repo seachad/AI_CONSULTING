@@ -341,7 +341,8 @@ function ficha(c){
 (()=>{ const nv = (DATA.meta||{}).navegacion || {}; if (!nv.codigos) return;
   document.body.setAttribute("data-enlazar-codigos", "");
   const c = document.querySelector("header .ctrls"); if (c){ const h = document.createElement("div"); h.setAttribute("data-ir-codigo", ""); h.className = "ir-codigo-panel"; c.after(h); }
-  const s = document.createElement("script"); s.src = nv.codigos; s.defer = true; s.setAttribute("data-sin-medicion", ""); document.head.appendChild(s); })();
+  let en = new URLSearchParams(location.search).get("lang"); if (en !== "es" && en !== "en") { try { en = localStorage.getItem("seveng-idioma"); } catch (e) { en = null; } }
+  const s = document.createElement("script"); s.src = en === "en" ? String(nv.codigos).replace("/html/es/", "/html/en/") : nv.codigos; s.defer = true; s.setAttribute("data-sin-medicion", ""); document.head.appendChild(s); })();
 // casos de una etapa del embudo, ordenados por días en la etapa, con su desviación frente a la mediana
 function etapa(e){
   const cs = CASES.filter(c=>c.estado===e).map(c=>({c, p: plazoDe(c)})).sort((a,b)=>(b.p.dias??-1)-(a.p.dias??-1)), t = tiemposEstado(CASES, e).todas;

@@ -581,12 +581,18 @@ const NAV = Object.assign({pagina_todo: true, pagina_inicial: "todo", desplegar_
 // integración opcional en un sitio: tema_sitio = clave de localStorage con el tema general del sitio (salmon, claro o noche), que el panel
 // sigue y actualiza; sitio = [{texto, href}], enlaces de vuelta al sitio que se añaden al menú lateral. Sin esas claves, nada cambia.
 const TEMA_SITIO = NAV.tema_sitio || null;
+// idioma del sitio desde el que se llega (D137): «?lang=» del enlace o «seveng-idioma»; con «en», los enlaces de vuelta usan texto_en y href_en
+// si los tienen y el índice de códigos es el inglés. Sin esas claves ni idioma, nada cambia.
+const IDIOMA_SITIO = (()=>{ const q = new URLSearchParams(location.search).get('lang'); if (q === 'es' || q === 'en') return q;
+  try { const v = localStorage.getItem('seveng-idioma'); if (v === 'es' || v === 'en') return v; } catch (e) {} return null; })();
+const EN_SITIO = IDIOMA_SITIO === 'en';
 if (Array.isArray(NAV.sitio) && NAV.sitio.length){
   const hueco = document.querySelector('.side .grow');
   if (hueco){
-    const rot = document.createElement('div'); rot.className = 'lbl'; rot.textContent = NAV.sitio_titulo || 'Sitio'; hueco.before(rot);
-    NAV.sitio.forEach(s=>{ if (!s || !s.href) return; const a = document.createElement('a'); a.className = 'page-item site-link'; a.href = s.href; a.title = s.texto || s.href;
-      a.innerHTML = '<svg viewBox="0 0 24 24"><path d="M3 11l9-8 9 8M5 10v10h5v-6h4v6h5V10"/></svg><span class="txt"></span>'; a.querySelector('.txt').textContent = s.texto || s.href; hueco.before(a); });
+    const rot = document.createElement('div'); rot.className = 'lbl'; rot.textContent = (EN_SITIO && NAV.sitio_titulo_en) || NAV.sitio_titulo || 'Sitio'; hueco.before(rot);
+    NAV.sitio.forEach(s=>{ if (!s || !s.href) return; const a = document.createElement('a'), tx = (EN_SITIO && s.texto_en) || s.texto;
+      a.className = 'page-item site-link'; a.href = (EN_SITIO && s.href_en) || s.href; a.title = tx || a.href;
+      a.innerHTML = '<svg viewBox="0 0 24 24"><path d="M3 11l9-8 9 8M5 10v10h5v-6h4v6h5V10"/></svg><span class="txt"></span>'; a.querySelector('.txt').textContent = tx || s.href; hueco.before(a); });
   }
 }
 // códigos citados en el panel (D99): con navegacion.codigos (ruta al índice de códigos del sitio, codigos.js, relativa al panel), cada código
@@ -595,7 +601,7 @@ if (Array.isArray(NAV.sitio) && NAV.sitio.length){
 if (NAV.codigos){
   document.body.setAttribute('data-enlazar-codigos', '');
   const tb = document.querySelector('#barra .toolbar'); if (tb){ const h = document.createElement('span'); h.setAttribute('data-ir-codigo', ''); h.className = 'ir-codigo-panel'; tb.appendChild(h); }
-  const s = document.createElement('script'); s.src = NAV.codigos; s.defer = true; s.setAttribute('data-sin-medicion', ''); document.head.appendChild(s);
+  const s = document.createElement('script'); s.src = EN_SITIO ? String(NAV.codigos).replace('/html/es/', '/html/en/') : NAV.codigos; s.defer = true; s.setAttribute('data-sin-medicion', ''); document.head.appendChild(s);
 }
 if (!NAV.pagina_todo){ delete PAGINAS.todo; const bt = document.querySelector('.page-item[data-page="todo"]'); if (bt) bt.remove(); }
 const PAGINA_DEF = PAGINAS[NAV.pagina_inicial] ? NAV.pagina_inicial : (PAGINAS.todo ? "todo" : Object.keys(PAGINAS)[0]);

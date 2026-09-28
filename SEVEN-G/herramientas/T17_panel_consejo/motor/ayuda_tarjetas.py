@@ -52,8 +52,13 @@ const AYUDA_COLUMNAS = __COLUMNAS__;
 const AYUDA_TXT = {
   es: {que:"Qué muestra", leer:"Cómo leerla", cols:"Qué significa cada columna o dato", col:"Columna o dato", sig:"Qué significa", porque:"Por qué importa", donde:"Dónde se explica", boton:t=>`Qué muestra «${t}» y por qué importa`},
   en: {que:"What it shows", leer:"How to read it", cols:"What each column or figure means", col:"Column or figure", sig:"What it means", porque:"Why it matters", donde:"Where it is explained", boton:t=>`What «${t}» shows and why it matters`}};
+let AYUDA_ELEGIDO = null;   // idioma elegido en la propia ayuda durante esta visita
 function ayudaIdioma(){
+  // D137: lo elegido en la ayuda, «?lang=» del enlace desde el que se llega, lo elegido antes y, después, el idioma del sitio («seveng-idioma»)
+  if (AYUDA_ELEGIDO) return AYUDA_ELEGIDO;
+  const q = new URLSearchParams(location.search).get("lang"); if (q === "es" || q === "en") return q;
   try { const v = localStorage.getItem("seveng-ayuda-idioma"); if (v === "es" || v === "en") return v; } catch (e) {}
+  try { const v = localStorage.getItem("seveng-idioma"); if (v === "es" || v === "en") return v; } catch (e) {}
   const m = ((typeof DATA !== "undefined" && DATA.meta) || {}).idioma;
   if (m === "es" || m === "en") return m;
   return /^en/i.test(navigator.language || "") ? "en" : "es";
@@ -93,7 +98,7 @@ function abrirAyuda(k, abrir, lang){
   abrir(ayudaHtml(k, a, lang));
   document.querySelectorAll(`.ayuda-t[data-k="${k}"] .ayuda-idioma button`).forEach(b => b.addEventListener("click", ev => {
     ev.preventDefault(); ev.stopPropagation(); const l = b.dataset.l;
-    try { localStorage.setItem("seveng-ayuda-idioma", l); } catch (e) {}
+    AYUDA_ELEGIDO = l; try { localStorage.setItem("seveng-ayuda-idioma", l); } catch (e) {}
     abrirAyuda(k, abrir, l); explicarColumnas(); }));
 }
 function ponerAyudas(abrir){
