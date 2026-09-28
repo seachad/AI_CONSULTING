@@ -1651,6 +1651,12 @@ function vistaInforme(){
   }
   // 4
   h += '<h2>'+esc(t('i4'))+'</h2>'+lecturaHTML(ev, r)+'<h3>'+esc(t('decl'))+'</h3>'+declaracionHTML(ev, r);
+  // D120: resumen de las tres lentes en el informe (huella, alcance y alertas de 11 §7.6)
+  { const X = calcLentes(ev, r), hu = X.hu, al = X.al || {};
+    if(hu || X.al){ const hx = hu && hu.nivel ? LEN.huella.find(x=>x.nivel===hu.nivel) : null;
+      h += '<h3 id="informe-lentes">'+esc(t('tit_lentes'))+'</h3><p><b>'+esc(t('l_huella'))+':</b> '+(hu && hu.nivel ? esc(hu.nivel+(hx?' · '+L(hx.nombre):'')) : esc(t('sin_dato')))+
+        ' · <b>'+esc(t('l_alcance'))+':</b> '+esc(LEN.alcance.map(x=>x.nivel+' '+(al[x.nivel]||0)).join(' · '))+'</p>'+
+        (X.alertas.length ? '<ul>'+X.alertas.map(a=>{ const A = LEN.alertas.find(y=>y.codigo===a.codigo); return '<li><b>'+esc(L(A.nombre))+'</b> · '+esc(t('l_g_'+a.gravedad))+(a.dimension?' ('+esc(dimNombre(a.dimension))+')':'')+'</li>'; }).join('')+'</ul>' : '<p class="ayuda">'+esc(t('l_sin_alertas'))+'</p>'); } }
   // 5
   h += '<h2>'+esc(t('i5'))+'</h2>'+comparacionHTML(ev);
   // 6
