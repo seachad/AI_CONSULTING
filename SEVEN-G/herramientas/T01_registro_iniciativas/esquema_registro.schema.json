@@ -296,6 +296,27 @@
           }
         },
         "alcance": { "$ref": "#/$defs/alcance" },
+        "plan_realizacion": { "$ref": "#/$defs/plan_realizacion" },
+        "no_cuantificado": {
+          "description": "D135. Valor no cuantificado (documento 40, regla 7 y §5.3): mejoras que no tienen relación económica demostrable. Se registran con su dimensión, un nivel de 0 a 3, la métrica física (base, objetivo, actual) y el motivo; nunca se traducen a euros ni suman en el neto. Sin métrica no cuentan. Opcional.",
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["dimension", "nivel"],
+            "additionalProperties": false,
+            "properties": {
+              "dimension": { "enum": ["imagen", "posicionamiento", "cliente", "distribucion", "talento", "opcion"], "description": "imagen y reputación · posicionamiento competitivo · experiencia de cliente · red comercial y de distribución · talento y capacidades · opcion = valor de opción de Transformar (40 §5.3)." },
+              "nivel": { "type": "integer", "minimum": 0, "maximum": 3, "description": "0 sin efecto · 1 bajo · 2 medio · 3 alto." },
+              "metrica": { "$ref": "#/$defs/texto_o_nulo", "description": "Métrica física con la que se sigue (regla 7). Sin métrica, la dimensión no cuenta." },
+              "base": { "type": ["number", "string", "null"] },
+              "objetivo": { "type": ["number", "string", "null"] },
+              "actual": { "type": ["number", "string", "null"] },
+              "motivo": { "$ref": "#/$defs/texto_o_nulo", "description": "Por qué no se puede traducir a dinero (regla 7)." },
+              "estado": { "$ref": "#/$defs/estado_importe" },
+              "efecto_desde": { "$ref": "#/$defs/texto_o_nulo", "description": "Periodo desde el que se espera el efecto (AAAA, AAAA-Sn o AAAA-Tn)." }
+            }
+          }
+        },
         "etiquetas_libres": { "type": "array", "uniqueItems": true, "items": { "type": "string" } },
         "sistemas": { "type": "array", "uniqueItems": true, "items": { "$ref": "#/$defs/id_sistema" } },
         "indice": {
@@ -523,6 +544,65 @@
       }
     },
     "estado_control": { "enum": ["hecho", "pendiente", "no_aplica", null] },
+    "periodo_curva": { "type": "string", "pattern": "^\\d{4}(-(S[12]|T[1-4]))?$", "description": "Periodo de la curva: año (AAAA), semestre (AAAA-S1, AAAA-S2) o trimestre (AAAA-T1 … AAAA-T4)." },
+    "curva_realizacion": {
+      "type": "object",
+      "description": "Curva de realización (43 §4.1): % del valor esperado anual en régimen que se captura en cada periodo. Entre dos puntos, lineal; antes del primero, 0; después del último, el último. Lo más específico gana (trimestre sobre semestre y año).",
+      "propertyNames": { "$ref": "#/$defs/periodo_curva" },
+      "additionalProperties": { "type": "number", "minimum": 0 }
+    },
+    "plan_realizacion": {
+      "description": "D135. Plan de realización de beneficios (documento 43 §4.1): tramos de financiación con su condición de paso (14 §6.2), curva de realización, fecha de régimen, curva de referencia aprobada y valor realizado por periodo (43 §5.2). El panel del consejo (T17) calcula con él la curva, el VAN F7 (40 §8, H y r de C2) y la realización F10; sin plan, el caso figura como «sin plan de realización» y no se estima nada (regla 8). Opcional; null o ausente = sin plan.",
+      "type": ["object", "null"],
+      "additionalProperties": false,
+      "properties": {
+        "estado": { "enum": ["estimado", "declarado"], "description": "El plan es valor esperado y no se valida (40 §4.1, regla 2); el valor realizado de cada periodo (real) y cada tramo ejecutado sí pueden estar validados." },
+        "fuente": { "$ref": "#/$defs/texto_o_nulo" },
+        "fecha": { "$ref": "#/$defs/fecha_o_nula" },
+        "tramos": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["fecha", "importe"],
+            "additionalProperties": false,
+            "properties": {
+              "id": { "$ref": "#/$defs/texto_o_nulo" },
+              "fecha": { "type": "string", "pattern": "^\\d{4}-(0[1-9]|1[0-2])$", "description": "Mes (AAAA-MM) en que se invierte el tramo." },
+              "importe": { "$ref": "#/$defs/importe" },
+              "estado": { "$ref": "#/$defs/estado_importe" },
+              "alcance": { "$ref": "#/$defs/texto_o_nulo", "description": "Qué compra el tramo." },
+              "gate": { "enum": ["G0", "G3", "G5", "G7", null], "description": "Gate tras el que se libera (14 §6.2)." },
+              "condicion_paso": { "$ref": "#/$defs/texto_o_nulo", "description": "Hito que hay que demostrar para liberar el tramo (en Transformar, el hito de aprendizaje de la etapa)." },
+              "situacion": { "enum": ["ejecutado", "comprometido", "previsto", "opcional"], "description": "Los opcionales no suman en la curva." },
+              "captura_objetivo_pct": { "type": ["number", "null"], "minimum": 0, "description": "Nivel de captura que permite alcanzar (para el neto anual que desbloquea)." }
+            }
+          }
+        },
+        "curva": { "$ref": "#/$defs/curva_realizacion" },
+        "fecha_regimen": { "type": ["string", "null"], "pattern": "^\\d{4}-(0[1-9]|1[0-2])$", "description": "Mes en que se espera el 100 % del valor anual (43 §4.1)." },
+        "referencia": {
+          "type": ["object", "null"],
+          "additionalProperties": false,
+          "description": "Curva aprobada (G3, G4 o G5) y congelada: la realización F10 se mide contra ella.",
+          "properties": { "fecha": { "$ref": "#/$defs/fecha_o_nula" }, "curva": { "$ref": "#/$defs/curva_realizacion" } }
+        },
+        "real": {
+          "type": "object",
+          "description": "Valor realizado de cada periodo cerrado (43 §5.2): importe del periodo, no anualizado, con su estado.",
+          "propertyNames": { "$ref": "#/$defs/periodo_curva" },
+          "additionalProperties": {
+            "type": "object", "required": ["importe", "estado"], "additionalProperties": false,
+            "properties": { "importe": { "$ref": "#/$defs/importe" }, "estado": { "$ref": "#/$defs/estado_importe" } }
+          }
+        },
+        "declive": {
+          "type": ["object", "null"],
+          "additionalProperties": false,
+          "description": "Pérdida de valor por año desde un periodo (deriva del modelo, la competencia copia la ventaja).",
+          "properties": { "desde": { "$ref": "#/$defs/periodo_curva" }, "pct_anual": { "type": "number", "minimum": 0, "maximum": 100 } }
+        }
+      }
+    },
     "riesgo": {
       "type": "object",
       "description": "Entidad Riesgo (03 §4; 33 §8.1). Escalas 1–5 de 33 §4; nivel = probabilidad × impacto: Bajo 1–4 · Medio 5–9 · Alto 10–15 · Crítico 16–25. La herramienta T06 (vista «Riesgos» de T01) calcula los niveles a partir de probabilidad e impacto; nivel_inherente y nivel_residual se conservan para los datos que solo tienen el nivel.",

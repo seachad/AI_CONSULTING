@@ -473,7 +473,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
     <p class="antetitulo">Document 43 &#183; Benefits realisation</p>
     <h1>Benefits realisation</h1>
     <p class="entradilla">From expected value to validated value: business owners, tracking, materialisation and value audit</p>
-    <div class="firma"><span><b>Fernando Garc&#237;a Varela</b></span><span>Version 0.1 (working draft)</span><span>16-09-2026</span><span>Draft for review</span></div>
+    <div class="firma"><span><b>Fernando Garc&#237;a Varela</b></span><span>Version 0.2 (working draft)</span><span>16-09-2026</span><span>Draft for review</span></div>
     <div class="cifras"><div class="cifra"><b>1</b><span>business owner per benefit</span></div><div class="cifra"><b>2</b><span>post-implementation reviews (6 and 12 months)</span></div><div class="cifra"><b>3</b><span>amount statuses</span></div><div class="cifra"><b>0</b><span>euros counted twice in the portfolio</span></div></div>
   </div>
 </header>
@@ -656,7 +656,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <hr />
 <h2 id="benefits-realisation-plan"><span class="antetitulo">04</span>Benefits realisation plan</h2>
 <h3 id="4-1-content">4.1 Content</h3>
-<p>The plan is documented in template <a href="plantillas/P62_SEVEN-G_Plan_de_realizacion_de_beneficios.html" title="Template P62 &#183; Benefits realisation plan">P62</a> and recorded in <a href="plantillas/P28_SEVEN-G_Seguimiento_de_realizacion_de_valor.html" title="Tool T12 &#183; Value realisation tracking">T12</a>; <a href="plantillas/P28_SEVEN-G_Seguimiento_de_realizacion_de_valor.html" title="Template P28 &#183; Value realisation tracking">P28</a> captures its tracking by period. In Lite, the fields marked <strong>(Enterprise)</strong> may be omitted.</p>
+<p>The plan is documented in template <a href="plantillas/P62_SEVEN-G_Plan_de_realizacion_de_beneficios.html" title="Template P62 &#183; Benefits realisation plan">P62</a> and recorded in <a href="../../herramientas/T01_registro_iniciativas/registro.html" title="Tool T01 &#183; Initiative register">T01</a>, in the initiative's <code>plan_realizacion</code> block (<a href="plantillas/P28_SEVEN-G_Seguimiento_de_realizacion_de_valor.html" title="Tool T12 &#183; Value realisation tracking">T12</a>); <a href="plantillas/P28_SEVEN-G_Seguimiento_de_realizacion_de_valor.html" title="Template P28 &#183; Value realisation tracking">P28</a> captures its tracking by period. In Lite, the fields marked <strong>(Enterprise)</strong> may be omitted.</p>
 <div class="tabla"><table>
 <thead>
 <tr>
@@ -707,6 +707,11 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>Period in which 100% of the annual value is expected.</td>
 </tr>
 <tr>
+<td><strong>Funding</strong></td>
+<td>Funding tranches</td>
+<td>Date, amount, <em>gate</em> that releases each tranche and its pass condition: the milestone that must be met to release it (<a href="14_SEVEN-G_Gestion_de_cartera.html" title="Document 14 &#183; Portfolio management">document 14</a> §6.2).</td>
+</tr>
+<tr>
 <td><strong>Enabling changes</strong></td>
 <td>Changes to processes, roles, policies, systems or contracts without which the benefit will not arrive</td>
 <td>Each with an owner and a date.</td>
@@ -753,6 +758,46 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 </tbody>
 </table></div>
+<p><strong>Recording in <a href="../../herramientas/T01_registro_iniciativas/registro.html" title="Tool T01 &#183; Initiative register">T01</a>.</strong> The <code>plan_realizacion</code> block carries the plan's status, its source and its date, and these fields. The plan's status can only be estimated or declared, because expected value is not validated (section 2.2, rule 2; <a href="40_SEVEN-G_Reglas_de_medicion_del_valor.html" title="Document 40 &#183; Value measurement rules">document 40</a> §4.1); the realised value for each period and each tranche carry their own status, which may be validated.</p>
+<div class="tabla"><table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Content</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>curva</code></td>
+<td>Percentage of the expected annual steady-state value captured in each period (year, half-year or quarter). Between two points it is interpolated in a straight line; before the first it is 0 and after the last the last value is kept.</td>
+</tr>
+<tr>
+<td><code>fecha_regimen</code></td>
+<td>Period in which 100% is expected. It is informative: the curve prevails.</td>
+</tr>
+<tr>
+<td><code>tramos</code></td>
+<td>Each funding tranche with date, amount, scope, <em>gate</em> that releases it, pass condition, situation (executed, committed, planned or optional) and its own status (an executed investment may be validated). Optional tranches do not add up. Only investments are recorded as tranches: discovery and feasibility, design and delivery, scaling and, in Transform, each stage. Operation is not a tranche: it is the recurring cost, which the curve already deducts (<a href="14_SEVEN-G_Gestion_de_cartera.html" title="Document 14 &#183; Portfolio management">document 14</a> §6.2).</td>
+</tr>
+<tr>
+<td><code>tramos[].captura_objetivo_pct</code></td>
+<td>Level of capture of the steady-state value that the tranche makes it possible to reach. It is used to calculate the annual net value the tranche unlocks and its net value per euro (F3 of the tranche).</td>
+</tr>
+<tr>
+<td><code>referencia</code></td>
+<td>Curve of the plan approved at G3, G4 or G5, which is not changed afterwards. Realisation (F10) is measured against it; if it does not exist, against the current curve.</td>
+</tr>
+<tr>
+<td><code>real</code></td>
+<td>Realised value for each period with its status: validated, declared or estimated (section 5.2).</td>
+</tr>
+<tr>
+<td><code>declive</code></td>
+<td>Optional: loss of value per year (<code>pct_anual</code>) from a period (<code>desde</code>), for example because of model drift or because competitors copy the advantage.</td>
+</tr>
+</tbody>
+</table></div>
+<p>The board dashboard (<a href="../../herramientas/T17_panel_consejo/index.html" title="Tool T17 &#183; Board AI dashboard">T17</a>) reads this block and shows the curve and the tranches (section 11.2). An initiative without a recorded plan has no curve: the dashboard does not estimate it (<a href="40_SEVEN-G_Reglas_de_medicion_del_valor.html" title="Document 40 &#183; Value measurement rules">document 40</a>, rule 8).</p>
 <h3 id="4-2-approval">4.2 Approval</h3>
 <div class="tabla"><table>
 <thead>
@@ -858,6 +903,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 </tbody>
 </table></div>
+<p>The realised value for each period is recorded in <a href="../../herramientas/T01_registro_iniciativas/registro.html" title="Tool T01 &#183; Initiative register">T01</a>, in <code>plan_realizacion.real</code>, with the amount for the period (not annualised) and its status. With it and with the curve, the board dashboard calculates cumulative realisation in total and validated only.</p>
 <h3 id="5-3-illustrative-example">5.3 Illustrative example</h3>
 <p>Expected steady-state efficiency: €300,000 per year (€75,000 per quarter). Realisation curve: 25%, 50%, 75% and 100% in the first four quarters. Actual recurring cost for the year: €90,000.</p>
 <div class="tabla"><table>
@@ -1445,6 +1491,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <li><strong>Capacity without destination</strong> in the portfolio and its evolution.</li>
 <li><strong>Value by ambition level</strong>, separating efficiencies and return, for signals 2 and 3 of the transformation index.</li>
 <li><strong>Historical snapshots</strong> that allow periods to be compared without rewriting figures already presented; corrections are shown as adjustments.</li>
+<li><strong>Realisation plan: curve and tranches.</strong> Card with the portfolio curve by year, half-year or quarter (sum of the use cases with a recorded plan), cumulative realisation (F10) against the approved reference, in total and validated only, with the IND-VAL-14 thresholds (≥ 90% within tolerance, 70–90% moderate variance, &lt; 70% significant variance; section 9.1), and the NPV (F7) of each use case. Initiatives without a plan are shown as &quot;no realisation plan&quot; and are never estimated (<a href="40_SEVEN-G_Reglas_de_medicion_del_valor.html" title="Document 40 &#183; Value measurement rules">document 40</a>, rule 8).</li>
 </ul>
 <h3 id="11-3-aggregation-rules">11.3 Aggregation rules</h3>
 <ol>
@@ -1569,12 +1616,12 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tr id="cod-t12">
 <td><strong><a href="plantillas/P28_SEVEN-G_Seguimiento_de_realizacion_de_valor.html" title="Tool T12 &#183; Value realisation tracking">T12</a></strong></td>
 <td>Value realisation tracking</td>
-<td>Realisation plan, recording by period, statuses, realisation, variances.</td>
+<td>Realisation plan (<code>plan_realizacion</code> block of <a href="../../herramientas/T01_registro_iniciativas/registro.html" title="Tool T01 &#183; Initiative register">T01</a>), recording by period, statuses, realisation, variances.</td>
 </tr>
 <tr id="cod-t01">
 <td><strong><a href="../../herramientas/T01_registro_iniciativas/registro.html" title="Tool T01 &#183; Initiative register">T01</a></strong></td>
 <td>Initiative register</td>
-<td>Owners, review events, R6 and G7 decisions.</td>
+<td>Owners, review events, R6 and G7 decisions; realisation plan with curve, tranches and realised value by period.</td>
 </tr>
 <tr id="cod-t13">
 <td><strong><a href="../../herramientas/T11_calculadora_valor/calculadora.html#/costes" title="Tool T13 &#183; Cost calculator per use case">T13</a></strong></td>
@@ -1584,7 +1631,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tr id="cod-t17">
 <td><strong><a href="../../herramientas/T17_panel_consejo/index.html" title="Tool T17 &#183; Board AI dashboard">T17</a></strong></td>
 <td>Board AI dashboard</td>
-<td>Consolidation and presentation.</td>
+<td>Consolidation and presentation; &quot;Realisation plan: curve and tranches&quot; card.</td>
 </tr>
 <tr id="cod-t20">
 <td><strong><a href="plantillas/P20_SEVEN-G_Plan_de_adopcion_y_capacidad.html" title="Tool T20 &#183; Adoption and capacity plan">T20</a></strong></td>
@@ -1704,6 +1751,11 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>0.1</td>
 <td>16-09-2026</td>
 <td>First version. Defines the path from expected to validated value, the business owner of the benefit, the realisation plan, tracking by period, the methods to avoid double counting, the levers for materialising released capacity, the 6- and 12-month reviews, the treatment of variances, the link with R6 and G7, consolidation in the portfolio and in the board dashboard, and the value audit.</td>
+</tr>
+<tr>
+<td>0.2</td>
+<td>28-09-2026</td>
+<td>The realisation plan is recorded in <a href="../../herramientas/T01_registro_iniciativas/registro.html" title="Tool T01 &#183; Initiative register">T01</a> (<code>plan_realizacion</code>: curve, steady-state date, funding tranches with their pass condition, approved reference and realised value by period) and the board dashboard shows it in the &quot;Realisation plan: curve and tranches&quot; card; sections 4.1, 5.2, 11.2 and 13 (D135).</td>
 </tr>
 </tbody>
 </table></div>

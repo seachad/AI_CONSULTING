@@ -378,6 +378,32 @@ def economia(ix, ini, cerrado, moneda):
             "hipotesis_potencial": (hip or None) if not cerrado else None, "comparte_valor_con": [], "clave_reparto": None}
 
 
+def plan_realizacion(ini):
+    """Plan de realizacion de T01 (43 §4.1, tramos de 14 §6.2; campo opcional, D135) -> economia.curva del panel. Nada se estima:
+    sin plan no hay curva (el panel la cuenta como «sin plan de realizacion»). estimado -> estimado_cati (clave heredada del motor)."""
+    pr = ini.get("plan_realizacion") or None
+    if not pr:
+        return None
+    est = lambda e: "estimado_cati" if e == "estimado" else e
+    ref = pr.get("referencia") or None
+    return {"estado": est(pr.get("estado") or "declarado"), "fuente": pr.get("fuente"), "fecha": pr.get("fecha"),
+            "tramos": [{"id": t.get("id"), "fecha": t.get("fecha"), "importe": t.get("importe"), "estado": est(t.get("estado") or pr.get("estado") or "declarado"),
+                        "alcance": t.get("alcance"), "gate": t.get("gate"), "condicion_paso": t.get("condicion_paso"),
+                        "situacion": t.get("situacion") or "previsto", "captura_objetivo_pct": t.get("captura_objetivo_pct")} for t in pr.get("tramos") or []],
+            "captura": dict(pr.get("curva") or {}), "fecha_regimen": pr.get("fecha_regimen"),
+            "referencia": {"fecha": ref.get("fecha"), "captura": dict(ref.get("curva") or {})} if ref else None,
+            "real": {k: {"importe": v.get("importe"), "estado": est(v.get("estado"))} for k, v in (pr.get("real") or {}).items()},
+            "declive": pr.get("declive") or None}
+
+
+def no_cuantificado(ini):
+    """Valor no cuantificado de T01 (40 regla 7 y §5.3; D135) -> reporte_compania.valor_no_monetario: dimension y nivel 0–3 con su
+    metrica fisica (indicador) y motivo (nota); nunca en euros."""
+    return [{"dimension": d.get("dimension"), "nivel": d.get("nivel"), "indicador": d.get("metrica"), "base": d.get("base"), "objetivo": d.get("objetivo"),
+             "actual": d.get("actual"), "estado": ("estimado_cati" if d.get("estado") == "estimado" else d.get("estado")), "efecto_desde": d.get("efecto_desde"),
+             "nota": d.get("motivo")} for d in ini.get("no_cuantificado") or []]
+
+
 def alcance(ix, ini):
     """Bloque «alcance» del caso (opcional, esquema 0.3; documento 40 §7.2) o None si la iniciativa es de una unidad.
     Transversal: una fila por unidad con la escalera de medición —coste, adopción, capacidad liberada declarada y valor materializado—
@@ -448,6 +474,9 @@ def caso(ix, ini, org, moneda, ciclo_vida):
     inicio_estimado = "" if (produccion is None and (en_uso or cerrado)) else None
     al = alcance(ix, ini)   # solo iniciativas transversales y plataformas: las demás no cambian (D53)
     eco = economia(ix, ini, cerrado, moneda)
+    plan = plan_realizacion(ini) if not cerrado else None   # D135: solo si T01 tiene plan; los cerrados no suman
+    if plan:
+        eco["curva"] = plan
     if al and al["tipo"] == "transversal":
         eco["clave_reparto"] = ("Coste imputado a cada unidad de negocio por sus licencias; el gobierno común (oficina de adopción, formación y revisión de permisos) "
                                 "va sin unidad. El valor solo cuenta cuando la unidad lo materializa (documento 40 §7.2).")
@@ -491,7 +520,9 @@ def caso(ix, ini, org, moneda, ciclo_vida):
                           "seguridad": control("seguridad"), "MUC": control("muc"), "IA_ofensiva": control("ia_ofensiva")},
             "valor_validado": valor_validado(ix, ini),
             "coste_real": {"anio": None, "acumulado": None, "fuente": None},
-            "operacion": None, "agente": None, "proveedor_dora": None},
+            "operacion": None, "agente": None, "proveedor_dora": None,
+            # valor no cuantificado con nivel (D135); la revision del caso sostenido por el es la proxima R6
+            **({"valor_no_monetario": no_cuantificado(ini), "revision_estrategica": ciclo.get("proxima_revision")} if ini.get("no_cuantificado") else {})},
         # bloque propio de SEVEN-G: el panel actual no lo lee; se conserva para la adaptacion del motor (PROPUESTA_MOTOR.md)
         "seveng": {"fase": ciclo["fase"], "fase_nombre": FASES.get(ciclo["fase"]), "estado": ciclo["estado"], "fecha_entrada_fase": ciclo.get("fecha_entrada_fase"),
                    "iteracion": ciclo.get("iteracion"), "espera": ciclo.get("espera"), "proxima_revision": ciclo.get("proxima_revision"),

@@ -1442,6 +1442,38 @@ try {
   if ((Get-Content (Join-Path $t17 'config_panel.json') -Raw | ConvertFrom-Json).mapa_impacto.objetivo_c2) { Mal 'config_panel.json del ejemplo: objetivo_c2 debe venir del registro T01, no de la configuración (D131)'; $malTc++ }
   foreach ($lg in 'es', 'en') { $d62 = [IO.File]::ReadAllText((Get-ChildItem (Join-Path $repo "SEVEN-G\mds\$lg") -Filter '62_*.md').FullName); if ($d62 -notmatch '\| \*\*(Ambición objetivo por esfera|Target ambition per sphere)\*\* \|') { Mal "documento 62 [$lg] §10.2: falta el campo de la ambición objetivo por esfera (D131)"; $malTc++ } }
   if (-not $malTc) { Ok "la tesis $($tesTc.id) de T01 guarda la ambición objetivo por esfera y el mapa de impacto la toma de ahí (Python y JS); documento 62 §10.2 (ES/EN)" }
+
+  # ---- 33. plan de realización por tramos y valor no cuantificado (D135): T01 los registra (esquema, validador, ficha y ejemplo), los dos
+  # conectores los llevan al panel, el motor calcula la curva, el VAN F7 y la realización F10 sin estimar nada (estimar_sin_curva false),
+  # el panel y el móvil los muestran con su ayuda, el mapa de datos los declara y los documentos 40, 43 y 60 los describen (ES/EN)
+  Write-Host '33. Plan de realización por tramos y valor no cuantificado (T01 → T17)'
+  $malPr = 0
+  $esqPr = [IO.File]::ReadAllText((Join-Path $t01 'esquema_registro.schema.json'))
+  foreach ($s in '"plan_realizacion"', '"no_cuantificado"', '"condicion_paso"', '"curva_realizacion"') { if (-not $esqPr.Contains($s)) { Mal "esquema de T01: falta $s (D135)"; $malPr++ } }
+  $plPr = [IO.File]::ReadAllText((Join-Path $t01 '_fuentes\registro.plantilla.html'))
+  foreach ($s in 'function bloquePlan(', 'plan_realizacion.estado', "b_plan:'", "b_nocuant:'") { if (-not $plPr.Contains($s)) { Mal "plantilla de T01: falta «$s» (D135)"; $malPr++ } }
+  $demoPr = Get-Content (Join-Path $t01 'datos_demo.json') -Raw | ConvertFrom-Json
+  $conPlan = @($demoPr.iniciativas | Where-Object { $_.plan_realizacion -and @($_.plan_realizacion.tramos | Where-Object { $_.condicion_paso }).Count })
+  $conNc = @($demoPr.iniciativas | Where-Object { @($_.no_cuantificado).Count })
+  if (-not $conPlan.Count) { Mal 'datos de ejemplo de T01: ninguna iniciativa con plan de realización y tramos con condición de paso (D135)'; $malPr++ }
+  if (-not $conNc.Count) { Mal 'datos de ejemplo de T01: ninguna iniciativa con valor no cuantificado (D135)'; $malPr++ }
+  if (@($demoPr.iniciativas | Where-Object { $_.plan_realizacion -and $_.plan_realizacion.estado -eq 'validado' }).Count) { Mal 'datos de ejemplo de T01: un plan de realización no puede estar validado (40 §4.1, regla 2)'; $malPr++ }
+  foreach ($x in @(@('t01_a_panel.py', 'def plan_realizacion('), @('t01_a_panel.py', 'def no_cuantificado('), @('t01_a_panel.js', 'function planRealizacion('), @('t01_a_panel.js', 'function noCuantificado('), @('motor\economia.py', 'def van_f7('), @('motor\panel_core.py', 'function vanF7('), @('motor\build_dashboard.py', 'data-ayuda="curva"'), @('motor\build_dashboard.py', 'data-ayuda="tramos"'), @('motor\build_dashboard.py', 'data-ayuda="nocuant"'), @('motor\build_dashboard.py', 'function planFicha('), @('motor\panel_movil.py', 'data-ayuda="m-curva"'))) {
+    if (-not [IO.File]::ReadAllText((Join-Path $t17 $x[0])).Contains($x[1])) { Mal "T17 $($x[0]): falta $($x[1]) (D135)"; $malPr++ } }
+  $cfgPr = (Get-Content (Join-Path $t17 'config_panel.json') -Raw | ConvertFrom-Json).curva_valor
+  if (-not $cfgPr -or $cfgPr.estimar_sin_curva -ne $false) { Mal 'config_panel.json: curva_valor.estimar_sin_curva debe ser false (SEVEN-G no estima curvas; regla 8, D135)'; $malPr++ }
+  if ($cfgPr -and -not $cfgPr.horizonte_van_anios) { Mal 'config_panel.json: falta curva_valor.horizonte_van_anios (H de C2 para el VAN F7)'; $malPr++ }
+  $djPr = Get-Content (Join-Path $t17 'ejemplo\salida\t01_dashboard_data.json') -Raw | ConvertFrom-Json
+  if (-not @($djPr.casos | Where-Object { $_.economia.curva }).Count) { Mal 'panel de ejemplo: ningún caso con economia.curva (regenerar con t01_a_panel.py)'; $malPr++ }
+  if (-not @($djPr.casos | Where-Object { @($_.reporte_compania.valor_no_monetario).Count }).Count) { Mal 'panel de ejemplo: ningún caso con valor no cuantificado (regenerar con t01_a_panel.py)'; $malPr++ }
+  $mapaPr = [IO.File]::ReadAllText((Join-Path $repo 'SEVEN-G\herramientas\mapa_datos.json'))
+  foreach ($s in 'iniciativas[].plan_realizacion', 'iniciativas[].no_cuantificado') { if (-not $mapaPr.Contains($s)) { Mal "mapa_datos.json: T17 no declara que lee $s (D135)"; $malPr++ } }
+  foreach ($lg in 'es', 'en') {
+    $d43 = [IO.File]::ReadAllText((Get-ChildItem (Join-Path $repo "SEVEN-G\mds\$lg") -Filter '43_*.md').FullName); if (-not $d43.Contains('plan_realizacion')) { Mal "documento 43 [$lg]: no describe el registro del plan en T01 (plan_realizacion, D135)"; $malPr++ }
+    $d40 = [IO.File]::ReadAllText((Get-ChildItem (Join-Path $repo "SEVEN-G\mds\$lg") -Filter '40_*.md').FullName); if (-not $d40.Contains('no_cuantificado')) { Mal "documento 40 [$lg]: no describe el valor no cuantificado en T01 (no_cuantificado, D135)"; $malPr++ }
+    $d60 = [IO.File]::ReadAllText((Get-ChildItem (Join-Path $repo "SEVEN-G\mds\$lg") -Filter '60_*.md').FullName); if (-not $d60.Contains('### 10.6 ')) { Mal "documento 60 [$lg]: falta §10.6 (plan de realización en el panel, D135)"; $malPr++ }
+  }
+  if (-not $malPr) { Ok "$($conPlan.Count) iniciativas de ejemplo con plan de realización por tramos y $($conNc.Count) con valor no cuantificado: T01 (esquema, validación y ficha), conectores Python y JS, motor (VAN F7, realización F10, sin estimar), panel y móvil, mapa de datos y documentos 40, 43 y 60 (ES/EN)" }
 }
 finally { Remove-Item $tmp -Recurse -Force -Confirm:$false -ErrorAction SilentlyContinue }
 

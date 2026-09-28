@@ -31,7 +31,17 @@
   "_leeme": "Porcentajes. Por debajo de 'amarillo' el indicador se muestra en amarillo; por debajo de 'rojo', en rojo; en otro caso está en objetivo. 'rojo' debe ser menor que 'amarillo'. Valores de partida, a calibrar por cada organización.",
   "valor_validado_pct": {"amarillo": 50, "rojo": 20, "_que_mide": "% del valor actual (eficiencias + retorno) con estado «validado» en T01"},
   "clasificados_compania_pct": {"amarillo": 80, "rojo": 50, "_que_mide": "% de iniciativas con clasificación regulatoria registrada en T01 (distinta de «pendiente»)"},
-  "controles_completos_pct": {"amarillo": 80, "rojo": 50, "_que_mide": "% de iniciativas con todos los controles hechos o no aplicables"}
+  "controles_completos_pct": {"amarillo": 80, "rojo": 50, "_que_mide": "% de iniciativas con todos los controles hechos o no aplicables"},
+  "planes_realizacion_pct": {"amarillo": 80, "rojo": 50, "_que_mide": "% de iniciativas en fases 3 a 7 con plan de realización registrado en T01 (D135)"},
+  "realizacion_pct": {"amarillo": 90, "rojo": 70, "_que_mide": "Realización acumulada F10: valor realizado frente al esperado en la curva de referencia (43 §9.1, IND-VAL-14)"}
+ },
+ "curva_valor": {
+  "_leeme": "Plan de realización: curva y tramos (D135; 43 §4.1, 14 §6.2, 40 §8). 'granularidad': periodo por defecto de la curva (anual, semestral o trimestral); el panel deja cambiarlo y el cálculo es siempre trimestral. 'horizonte': años que se muestran (el acumulado incluye lo invertido antes). 'estimar_sin_curva': false = una iniciativa sin plan de realización en T01 no tiene curva y figura como «sin plan» (regla 8: nada se estima). 'horizonte_van_anios' y 'tasa_descuento_anual_pct': H y r del VAN F7 aprobados en C2 (40 §8.2); sin tasa, r = 0. Valores del ejemplo, ilustrativos.",
+  "granularidad": "anual",
+  "horizonte": {"desde": 2025, "hasta": 2030},
+  "estimar_sin_curva": false,
+  "horizonte_van_anios": 5,
+  "tasa_descuento_anual_pct": 8
  },
  "ciclo_vida": {
   "_leeme": "Ciclo de vida de las iniciativas como en un CRM. 'embudo': etapas en orden. Las dos terminales paralelas del embudo son 'En uso' (en producción) y 'Desenganchado' (retirada). 'salidas': estados de pérdida y desde qué etapas se llega a ellos. 'fecha_de_estado': fecha de reporte_compania.fechas que marca la entrada en cada estado si faltara el historial (el conector siempre lo aporta desde los eventos de T01). 'dias_limite': días máximos en cada estado (un número, o por complejidad: baja, media, alta y sin_dato); los estados sin límite (en producción y salidas) no se ponen. 'aviso_pct_limite': desde qué % del límite se marca en amarillo; por encima del límite, en rojo.",
