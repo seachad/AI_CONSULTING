@@ -1442,6 +1442,85 @@ try {
   if ((Get-Content (Join-Path $t17 'config_panel.json') -Raw | ConvertFrom-Json).mapa_impacto.objetivo_c2) { Mal 'config_panel.json del ejemplo: objetivo_c2 debe venir del registro T01, no de la configuración (D131)'; $malTc++ }
   foreach ($lg in 'es', 'en') { $d62 = [IO.File]::ReadAllText((Get-ChildItem (Join-Path $repo "SEVEN-G\mds\$lg") -Filter '62_*.md').FullName); if ($d62 -notmatch '\| \*\*(Ambición objetivo por esfera|Target ambition per sphere)\*\* \|') { Mal "documento 62 [$lg] §10.2: falta el campo de la ambición objetivo por esfera (D131)"; $malTc++ } }
   if (-not $malTc) { Ok "la tesis $($tesTc.id) de T01 guarda la ambición objetivo por esfera y el mapa de impacto la toma de ahí (Python y JS); documento 62 §10.2 (ES/EN)" }
+  # ---- 34. galería de ejemplos por sector (D137): cada registro de ejemplo sale de su ficha compacta y es un T01 válido, ficticio y
+  # distinto del canónico; sus paneles se generan con el mismo conector, muestran siempre sus datos incrustados y están al día; la página
+  # de la galería es bilingüe, lleva la exención (D113), navega los códigos (D99) y solo cita fuentes verificadas del registro (D41, D114)
+  Write-Host '34. Galería de ejemplos por sector'
+  $malGa = 0
+  $ejDir = Join-Path $t01 'ejemplos'
+  $galDir = Join-Path $t17 'galeria'
+  $sectGa = @(Get-ChildItem $ejDir -Directory | Where-Object { $_.Name -notlike '_*' -and (Test-Path (Join-Path $_.FullName 'datos_demo.json')) } | ForEach-Object Name)
+  if (-not $sectGa.Count) { Mal 'D137: no hay registros de ejemplo en T01_registro_iniciativas/ejemplos/<sector>/datos_demo.json'; $malGa++ }
+  $orgCanon = (Get-Content (Join-Path $t01 'datos_demo.json') -Raw | ConvertFrom-Json).meta.organizacion
+  $orgsGa = @{}
+  foreach ($s in $sectGa) {
+    $rutaGa = Join-Path $ejDir "$s\datos_demo.json"
+    $rg = Get-Content $rutaGa -Raw -Encoding utf8 | ConvertFrom-Json
+    if (-not $rg.meta.datos_ilustrativos -or $rg.meta.organizacion -notmatch 'ficti') { Mal "ejemplo ${s}: la organización debe ser ficticia y marcada como tal (datos_ilustrativos, «ficticia» en el nombre)"; $malGa++ }
+    if ($rg.meta.organizacion -eq $orgCanon -or $orgsGa.ContainsKey($rg.meta.organizacion)) { Mal "ejemplo ${s}: la organización repite la de otro ejemplo"; $malGa++ }
+    $orgsGa[$rg.meta.organizacion] = $s
+    if (-not ([string]$rg.aviso_legal).Contains($claveEs)) { Mal "ejemplo ${s}: el aviso legal no incluye la exención (D113)"; $malGa++ }
+    & pwsh -NoProfile -File (Join-Path $t01 'build_registro.ps1') -Datos $rutaGa -Salida (Join-Path $tmp "registro_$s.html") *> $null
+    if ($LASTEXITCODE) { Mal "ejemplo ${s}: build_registro.ps1 lo rechaza (referencias o criterios incoherentes)"; $malGa++ }
+    foreach ($r in $rg.riesgos) {
+      $inh = & $nivelPI $r.probabilidad $r.impacto; $res = & $nivelPI $r.probabilidad_residual $r.impacto_residual
+      if (($inh -and $r.nivel_inherente -ne $inh) -or ($res -and $r.nivel_residual -ne $res) -or ($r.aceptacion -and $res -and $rango[$r.aceptacion.organo] -lt $requerido[$res])) { Mal "ejemplo ${s}: riesgo $($r.id) incoherente con el documento 33 (P×I u órgano de aceptación)"; $malGa++ }
+    }
+  }
+  if (Get-Command uv -ErrorAction SilentlyContinue) {
+    Push-Location (Join-Path $ejDir '_fuentes')
+    try { $salGen = & uv run --with jsonschema python generar_ejemplos.py --comprobar 2>&1; $codGen = $LASTEXITCODE } finally { Pop-Location }
+    if ($codGen) { Mal "D137: registros de ejemplo desfasados o inválidos frente a su ficha: $(($salGen | Where-Object { $_ -notmatch 'al día' }) -join ' · ')"; $malGa++ }
+    $salGa = Join-Path $tmp 'galeria'
+    Push-Location $t17
+    try { & uv run python galeria.py --salida $salGa 2>&1 | Out-Null; $codGa = $LASTEXITCODE } finally { Pop-Location }
+    if ($codGa) { Mal 'D137: galeria.py ha fallado'; $malGa++ }
+    else {
+      foreach ($s in $sectGa) {
+        $a = Get-Content (Join-Path $salGa "$s\$($s)_dashboard_data.json") -Raw | ConvertFrom-Json -Depth 64
+        $pubGa = Join-Path $galDir "$s\$($s)_dashboard_data.json"
+        if (-not (Test-Path $pubGa)) { Mal "D137: falta el panel publicado de $s (ejecutar uv run python galeria.py)"; $malGa++; continue }
+        $b = Get-Content $pubGa -Raw | ConvertFrom-Json -Depth 64
+        $a.meta.textos.pie = $null; $b.meta.textos.pie = $null
+        if (($a | ConvertTo-Json -Depth 64 -Compress) -ne ($b | ConvertTo-Json -Depth 64 -Compress)) { Mal "D137: el panel de $s está desfasado: ejecutar uv run python galeria.py en T17_panel_consejo"; $malGa++ }
+      }
+    }
+  } else { Aviso 'uv no está instalado: no se comprueba que los ejemplos y los paneles de la galería estén al día' }
+  foreach ($s in $sectGa) {
+    foreach ($h in Get-ChildItem (Join-Path $galDir $s) -Filter '*Dashboard*.html' -ErrorAction SilentlyContinue) {
+      $th = [IO.File]::ReadAllText($h.FullName)
+      if (-not $th.Contains('"solo_datos_incrustados": true')) { Mal "D137: $($h.Name) no fija sus datos incrustados (navegacion.solo_datos_incrustados)"; $malGa++ }
+      if (-not $th.Contains($claveEs)) { Mal "D137: $($h.Name) no lleva la exención (D113)"; $malGa++ }
+      if ($th.Contains('"datos_t01"')) { Mal "D137: $($h.Name) no debe leer la copia de datos de la compañía (navegacion.datos_t01)"; $malGa++ }
+    }
+  }
+  $pubJs = [IO.File]::ReadAllText((Join-Path $t17 'publicacion_panel.py'))
+  if (-not $pubJs.Contains('solo_datos_incrustados')) { Mal 'publicacion_panel.py: el arranque no respeta navegacion.solo_datos_incrustados (D137)'; $malGa++ }
+  $idxGa = Join-Path $galDir 'index.html'
+  if (-not (Test-Path $idxGa)) { Mal 'D137: falta T17_panel_consejo/galeria/index.html (ejecutar uv run python galeria.py)'; $malGa++ }
+  else {
+    $tg = [IO.File]::ReadAllText($idxGa)
+    foreach ($m in 'data-ir-codigo', 'data-enlazar-codigos', 'codigos.js', '<section id="es"', '<section id="en"', $claveEs, $claveEn) { if (-not $tg.Contains($m)) { Mal "galeria/index.html: falta «$m» (D99, D113, bilingüe)"; $malGa++ } }
+    foreach ($s in $sectGa) { if (-not $tg.Contains("$s/$($s)_Dashboard_Casos_Uso_IA_")) { Mal "galeria/index.html: no enlaza el panel de $s"; $malGa++ } }
+    foreach ($href in [regex]::Matches($tg, 'href="([^"#]+)"') | ForEach-Object { $_.Groups[1].Value } | Where-Object { $_ -notmatch '^(https?:|mailto:)' } | Select-Object -Unique) {
+      if (-not (Test-Path (Join-Path $galDir ([Uri]::UnescapeDataString($href))))) { Mal "galeria/index.html: enlace roto $href"; $malGa++ }
+    }
+    $urlsReg = @{}; foreach ($r in $regs | Where-Object estado -eq 'verificado') { $urlsReg[$r.url_es] = $true; $urlsReg[$r.url_en] = $true }
+    $libres = @('https://creativecommons.org/licenses/by/4.0/deed.es', 'https://creativecommons.org/licenses/by/4.0/')
+    foreach ($href in [regex]::Matches($tg, 'href="(https?:[^"]+)"') | ForEach-Object { [Net.WebUtility]::HtmlDecode($_.Groups[1].Value) } | Select-Object -Unique) {
+      if (-not $urlsReg[$href] -and $href -notin $libres) { Mal "galeria/index.html: fuente externa fuera del registro de referencias o no verificada: $href (D41, D114)"; $malGa++ }
+    }
+  }
+  $tecGa = 'genai', 'agentica', 'ml', 'rpa_idp', 'vision', 'optimizacion', 'herramienta_sectorial', 'analitica'
+  foreach ($mf in Get-ChildItem (Join-Path $galDir '_fuentes\mercado') -Filter '*.json' -ErrorAction SilentlyContinue) {
+    $mg = Get-Content $mf.FullName -Raw -Encoding utf8 | ConvertFrom-Json
+    foreach ($c in $mg.casos) {
+      if (-not ($c.nombre_es -and $c.nombre_en -and $c.descripcion_es -and $c.descripcion_en -and $c.funcion_en)) { Mal "mercado $($mf.BaseName) $($c.id): falta texto en español o en inglés"; $malGa++ }
+      if ($c.tecnologia -notin $tecGa -or $c.horizonte -notin 'consolidado', 'en_adopcion', 'emergente_2027_2028') { Mal "mercado $($mf.BaseName) $($c.id): tecnología u horizonte no válidos"; $malGa++ }
+    }
+  }
+  foreach ($p in 'index.html', 'en\index.html', 'SEVEN-G\herramientas\T17_panel_consejo\index.html') { if (-not ([IO.File]::ReadAllText((Join-Path $repo $p))).Contains('galeria/index.html')) { Mal "${p}: no enlaza la galería de ejemplos por sector (D137)"; $malGa++ } }
+  if (-not $malGa) { Ok "galería de ejemplos por sector: $($sectGa.Count) registros T01 ficticios y válidos ($($sectGa -join ', ')), paneles al día y con datos fijos, página ES/EN con fuentes del registro" }
 }
 finally { Remove-Item $tmp -Recurse -Force -Confirm:$false -ErrorAction SilentlyContinue }
 
