@@ -5,8 +5,8 @@
 | | |
 |---|---|
 | Documento | Documento 02 · Glosario y convenciones |
-| Versión | 1.0 (versión final de biblioteca v0.1) |
-| Fecha | 16-09-2026 |
+| Versión | 1.1 |
+| Fecha | 28-09-2026 |
 | Autor | Fernando García Varela |
 | Estado | Vigente. Fuente única de términos, escalas y códigos del marco; se actualiza antes que cualquier otro documento cuando cambia un término. |
 
@@ -141,12 +141,14 @@ Orden alfabético. Las escalas completas están en la sección 4 y los códigos 
 | **Agente** | Sistema de IA que ejecuta acciones sobre otros sistemas, datos o personas, o las prepara para validación humana, mediante herramientas y permisos (autonomía A1, A2 o A3). Una herramienta de construcción capaz de actuar sobre repositorios, entornos o sistemas también es un agente. | 35 §4–5; 53 §1.3 | agent |
 | **Agentes con capacidad de actuar** | Criterio Enterprise: sistema con autonomía A2 o A3 cuyas acciones tienen efecto sobre terceros, dinero, datos personales o sistemas de producción. | 01 §9.2; 35 §5.2 | agents able to act † |
 | **Alcance de implantación** | Decisión de la compañía, Lite o Enterprise, sobre cómo organiza sus órganos y su verificación para aplicar SEVEN-G. No sustituye a la intensidad de cada iniciativa: en una compañía con alcance Lite, toda iniciativa que cumple un criterio Enterprise se gestiona con intensidad Enterprise. | 90 §2 | implementation scope † |
+| **Alcance del impacto** | Lectura de a qué afecta una iniciativa en uso según las preguntas IT-P1 a IT-P4 verificadas: IM1 tarea, IM2 proceso, IM3 personas y organización, IM4 modelo de negocio. Es la tercera lente de la madurez; no añade preguntas. | 12 §3.7; 11 §7.6 | impact reach † |
 | **Alfabetización en IA** | Nivel suficiente de conocimiento sobre la IA del personal y de otras personas que operan o usan sistemas de IA en nombre de la compañía (Reglamento Europeo de IA, art. 4). En SEVEN-G es un requisito de C2 (política corporativa) y una evidencia por iniciativa (plan de capacidades en P20), organizada por perfiles (PER-PA a PER-PF, documento 50 §5.2). | 31 §6; 50 §5; 23 §8 | AI literacy |
 | **Alta en el inventario** | Evidencia de fase 0: registro del sistema en el inventario de sistemas de IA (T02) con su código SIA-AAAA-NNN y los campos mínimos de su tipo de uso. | 01 §6.2; 32 §7.1; P05 | inventory registration |
 | **Alternativas sin IA** | Evidencia de fase 1 que documenta las soluciones sin IA consideradas para el mismo problema y por qué la IA aporta algo que ellas no aportan. | 01 §6.3; P06 | non-AI alternatives † |
 | **Alto riesgo (sistema de IA de)** | Sistema clasificado como de alto riesgo por el Reglamento Europeo de IA: componente de seguridad o producto del anexo I, o ámbito del anexo III sin excepción del art. 6.3. Es criterio Enterprise. Las fechas de aplicación de sus obligaciones se tratan en el documento 34. | 01 §9.2; 32 §3.4 y §5; 34 | high-risk AI system † |
 | **Ambición propuesta, confirmada y real** | Tres momentos de la clasificación de ambición de una iniciativa: **propuesta** en la fase 1, **confirmada** en G2 sobre la hipótesis de valor y **real** en G7 (y, si procede, en R6) según la evidencia en producción. | 12 §3.4; 03 §3.3 | proposed, confirmed and actual ambition † |
 | **Apetito de riesgo** | Cantidad y tipo de riesgo que la compañía está dispuesta a asumir para lograr sus objetivos con IA. Se declara por categoría de riesgo con un grado (Averso, Cauteloso, Moderado, Abierto), métricas de tolerancia y límites, y lo aprueba el consejo en C2. El grado puede endurecer la regla general de aceptación, nunca relajarla. | 13 §5 | risk appetite |
+| **Arquetipo de punto de partida** | Uno de los seis puntos de partida tipo de una compañía que implanta SEVEN-G (PP-A Punto cero · PP-B Usuario de IA de terceros · PP-C Automatizador · PP-D Analítica y ML clásico · PP-E Muchos pilotos · PP-F A escala), asignado con el cuestionario y la regla del documento 96. Cambia el orden y el calendario del recorrido, nunca lo que se exige al final. | 96 §2 | starting-point archetype † |
 | **Auditor de IA** | Rol de control que verifica las evidencias en todos los *gates* Enterprise y por muestreo en Lite, y cierra no conformidades. No puede participar en el diseño, la construcción ni la operación de la iniciativa ni depender jerárquicamente de su patrocinador. Puede ser de auditoría interna o externo. | 01 §8.1; 38 §3 | AI Auditor |
 | **Auditoría de IA** | Examen independiente de evidencias, controles o del marco. Tipos: de *gate*, de continuidad, del marco en la compañía, temática y de proveedor; además, auditorías de seguimiento y reauditorías. | 38 §4; 21 §10 | AI audit † |
 | **Aumentar** | Nivel de ambición en el que las personas hacen lo que antes no podían: cambia el rol y las capacidades, no el negocio. El valor combina coste y rendimiento. | 00 §4.1; 10 §3 | Augment |
@@ -253,8 +255,10 @@ Orden alfabético. Las escalas completas están en la sección 4 y los códigos 
 |---|---|---|---|
 | **Hallazgo** | Resultado de una verificación o auditoría clasificado como observación o como no conformidad menor, mayor o crítica. | 21 §10.5; 38 §8.1 | finding † |
 | **Hipótesis de valor falsable** | Formulación del valor esperado con métrica principal, línea base medida, objetivo, umbral de éxito, método de atribución, valor en dinero con fórmula y criterios de parada. Una hipótesis que no puede fallar no es válida. | 01 §6.4; P08 | falsifiable value hypothesis |
+| **Hito de implantación** | Cada uno de los 22 resultados del recorrido de implantación (HI-01 a HI-22), con quién lo lidera, su evidencia y la pregunta del documento 11 que lo acredita; está cumplido cuando esa pregunta está en «Sí» en una evaluación verificada. | 96 §4 | implementation milestone † |
 | **Hitos de aprendizaje** | Resultados intermedios verificables que una apuesta de Transformar debe alcanzar en cada etapa para liberar la siguiente. | 01 §6.4, §7.6; 13 §7; 14 §6.2 | learning milestones † |
 | **Horizonte (H) y tasa de descuento (r)** | Número de años de evaluación económica y tasa anual de descuento que fija la compañía en C2. Si no se fija tasa, r = 0. | 40 §8.2 | horizon · discount rate † |
+| **Huella tecnológica** | Lente descriptiva de la madurez que dice qué IA tiene la compañía en uso, en orden de exigencia de gobierno (HT0 sin IA en uso a HT5 agentes que actúan). No puntúa en la madurez, pero fija el gobierno mínimo exigible por dimensión y dispara la alerta «adopción por delante del gobierno». | 11 §7.6 | technology footprint † |
 
 ### 3.9 I
 
@@ -298,6 +302,7 @@ Orden alfabético. Las escalas completas están en la sección 4 y los códigos 
 | **Método de atribución** | Procedimiento para aislar el efecto de la IA: grupo de control aleatorizado, prueba A/B, diferencias en diferencias, antes y después con ajuste o, como último recurso, estimación experta. Se aprueba en G2 y condiciona el estado máximo que puede alcanzar el valor. | 01 §6.4; 40 §7 | attribution method |
 | **Mínimo privilegio** | Principio por el que un agente solo dispone de una lista cerrada de herramientas, operaciones y datos necesarios, con lectura y escritura autorizadas por separado. | 35 §4.2 | least privilege † |
 | **Modelo de IA de uso general** | Modelo entrenado con grandes volúmenes de datos, capaz de realizar una amplia variedad de tareas y de integrarse en otros sistemas. No es por sí mismo un sistema de IA; los sistemas que lo integran sí. | 32 §2.2, §4.2 | general-purpose AI model † |
+| **Modificador de punto de partida** | Circunstancia que ajusta el recorrido de implantación sin cambiar el arquetipo: MP1 sector regulado, MP2 decisiones sobre personas o alto riesgo, MP3 alcance Enterprise, MP4 gobierno previo reutilizable, MP5 sin patrocinador en la alta dirección (bloquea el recorrido). | 96 §2.3 | starting-point modifier † |
 | **Motivo de parada o retirada** | Motivo codificado, de una lista cerrada, que se registra en toda parada o retirada. | 01 §6.11; 03 §3.3 | stop or retirement reason |
 
 ### 3.12 N
@@ -353,6 +358,7 @@ Orden alfabético. Las escalas completas están en la sección 4 y los códigos 
 | **Realización del valor** | Proceso y medida de la conversión del valor esperado en valor realizado y validado: valor realizado del periodo ÷ valor esperado del periodo según el plan (F10). | 40 F10; 43 | value realisation |
 | **Reauditoría** | Repetición total o parcial de una auditoría tras un resultado No conforme o para verificar el cierre de no conformidades críticas y mayores. | 37 §3.9; 38 §10 | re-audit † |
 | **Recomendación del consejo** | Recomendación o encargo del consejo o de su comisión delegada con código persistente REC-AAAA-NNN, destinatario, fecha comprometida, estado declarado, evidencia y valoración independiente. | 62 §3–6; T18 | board recommendation † |
+| **Recorrido de implantación** | Orden en que una compañía cumple los hitos de la implantación según su punto de partida, en cinco etapas (Arrancar, Ordenar, Gobernar, Medir, Escalar y revisar). Lo calcula la herramienta T23. | 96 §3–§4; 90 | implementation journey † |
 | **Regla de impacto extremo** | Un riesgo con impacto 5 en el eje de personas y derechos o en el regulatorio se trata, a efectos de aceptación, como mínimo como Alto, aunque su probabilidad sea 1. | 33 §4.3 | extreme impact rule † |
 | **Registro de asignación de roles** | Evidencia de fase 0 que asigna los seis roles de la iniciativa y comprueba sus incompatibilidades. | 01 §6.2, §8.2; P03 | role assignment record |
 | **Registro de iniciativas** | Herramienta central (T01) que gestiona la cartera como un embudo: fase y estado, eventos con fecha, criterios de cada *gate*, condiciones, etiquetas de la taxonomía controlada, valor y motivos de parada. | 01 §6.11; 03 §3 | initiative register |
@@ -793,7 +799,7 @@ Equivalentes en inglés de los valores de la taxonomía:
 | **G\<n\>.\<nn\> · R6.\<nn\>** | Puerta + punto + dos cifras | Criterios de *gate*. Un código no se reutiliza aunque el criterio se retire. | 21 §2.1 | G3.08 · R6.04 |
 | **LV-G\<n\> · LV-R6 · LV-EV · LV-AG** | LV + guion + ámbito | Listas de verificación por puerta, de validación de evidencias y de agentes. | 22 §1 | LV-G5 |
 | **EV.01–EV.14** | EV + punto + dos cifras | Reglas de evidencia válida. | 21 §4.1; 22 §11 | EV.05 |
-| **T01–T22** | T + dos cifras | Herramientas del marco. | 03 §5 | T01 |
+| **T01–T23** | T + dos cifras | Herramientas del marco. | 03 §5 | T01 |
 | **P01–P74** | P + dos cifras | Plantillas del bloque H: P01–P31 por iniciativa (01 §6.10); P32–P71 de compañía, consejo, cumplimiento, terceros, auditoría e implantación; P72–P74, perfiles NIST y declaración de aplicabilidad de ISO/IEC 42001 (34 §4–§5). | Bloque H; 01 §6.10 | P29 |
 | **D1–D7** | D + número | Dimensiones de madurez. | 11 §2.1 | D6 |
 | **Niveles de madurez 0–5** | Número entero | Niveles de madurez. | 11 §2.2 | nivel 3 |
@@ -803,6 +809,11 @@ Equivalentes en inglés de los valores de la taxonomía:
 | **B1–B3** | B + número | Condiciones de base del índice de transformación. | 12 §4.3 | B2 |
 | **F1–F10 · F2v** | F + número | Fórmulas oficiales de medición. | 40 §6 | F7 |
 | **FE-1–FE-6** | FE + guion + número | Frenos de escalado de la lectura ejecutiva del panel del consejo: valor, avance, riesgo y cumplimiento, adopción, datos y tecnología, dirección y gobierno. | 60 §10.4 | FE-3 |
+| **PP-A–PP-F** | PP + guion + letra | Arquetipos de punto de partida: Punto cero, Usuario de IA de terceros, Automatizador, Analítica y ML clásico, Muchos pilotos, A escala. | 96 §2.1 | PP-D |
+| **MP1–MP5** | MP + número | Modificadores del punto de partida. | 96 §2.3 | MP2 |
+| **HI-01–HI-22** | HI + guion + dos cifras | Hitos del recorrido de implantación. | 96 §4.1 | HI-09 |
+| **HT0–HT5** | HT + número | Niveles de huella tecnológica; descriptivos, no son niveles de madurez. | 11 §7.6 | HT4 |
+| **IM1–IM4** | IM + número | Niveles de alcance del impacto de una iniciativa en uso. | 12 §3.7 | IM3 |
 | **RT-\<CAT\>-NN** | RT + categoría de tres letras + dos cifras | Riesgos tipo del catálogo (70 en la versión 0.1): EST 6 · TEC 8 · DAT 6 · ECO 5 · LEG 8 · ORG 9 · REP 5 · GEN 9 · SEG 7 · TER 7. | 33 §9 | RT-GEN-01 |
 | **SEG-01–SEG-25** | SEG + guion + dos cifras | Controles de seguridad de IA. | 35 §6 | SEG-02 |
 | **AG-01–AG-20** | AG + guion + dos cifras | Controles de agentes. | 35 §7 | AG-09 |
@@ -866,7 +877,7 @@ En nuevas versiones, los documentos **deberían** sustituir las numeraciones que
 | **F** | Personas, datos y operación | 50–53 | Personas, datos y conocimiento, operación, construcción con IA. |
 | **G** | Consejo | 60–62 | Paquete y guía de conversación con el consejo, registro de recomendaciones y decisiones. |
 | **H** | Plantillas | P01–P74 | Evidencias de cada fase del ciclo de vida (P01–P31); registros, informes y decisiones de la compañía, el consejo, el cumplimiento, los terceros, la auditoría y la implantación (P32–P71); perfiles NIST y declaración de aplicabilidad de ISO/IEC 42001 (P72–P74). |
-| **I** | Herramientas | T01–T22 | Catálogo en el documento 03; herramientas en HTML con datos JSON. |
+| **I** | Herramientas | T01–T23 | Catálogo en el documento 03; herramientas en HTML con datos JSON. |
 | **J** | Adopción del marco | 90–93 | Implantación, guía para consultores, casos de aplicación, licencia. |
 
 ### 7.2 Documentos
@@ -1008,6 +1019,7 @@ Las herramientas muestran los valores de las listas cerradas en español e ingl�
 
 | Versión | Fecha | Cambios |
 |---|---|---|
+| 1.1 | 28-09-2026 | Añade arquetipo y modificador de punto de partida, hito y recorrido de implantación (documento 96), huella tecnológica (11 §7.6) y alcance del impacto (12 §3.7), con sus códigos PP-A–PP-F, MP1–MP5, HI-01–HI-22, HT0–HT5 e IM1–IM4; herramientas T01–T23. |
 | 1.0 | 16-09-2026 | Versión final de biblioteca v0.1. Se actualiza la portada a estado vigente y se añade el principio de autoconsultoría de IA con criterio editorial: explicaciones didácticas orientadas a decisión y uso de herramientas, sin formato de curso. Ajustes de coherencia: 70 riesgos tipo (RT-ORG-07 a RT-ORG-09), 156 indicadores en 13 familias en el documento 41 (nueva familia PRO) y prefijo provisional CNC- para los indicadores de conocimiento del documento 51. |
 | 0.1 | 16-09-2026 | Primera versión. Fija la prelación entre fuentes, las convenciones de lenguaje normativo y de redacción, el glosario alfabético con equivalentes en inglés, 18 escalas oficiales (incluidos los resultados de R6 y los grados de apetito y de las esferas 08 y 09), la copia de la taxonomía controlada de 03 §3.3, el sistema de códigos con los códigos propuestos SIA, DEC y AUD, los códigos con prefijo IT- y PER- que sustituyen a las numeraciones locales de los documentos 12 y 50, las numeraciones de uso local que no deben usarse fuera de su documento, la numeración de la biblioteca y las siglas. |
 

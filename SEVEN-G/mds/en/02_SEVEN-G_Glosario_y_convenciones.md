@@ -5,8 +5,8 @@
 | | |
 |---|---|
 | Document | Document 02 · Glossary and conventions |
-| Version | 1.0 (final library version v0.1) |
-| Date | 16-09-2026 |
+| Version | 1.1 |
+| Date | 28-09-2026 |
 | Author | Fernando García Varela |
 | Status | In force. Single source of the framework's terms, scales and codes; it is updated before any other document when a term changes. |
 
@@ -264,6 +264,9 @@ Alphabetical order by English term. The full scales are in section 4 and the cod
 | Term | Definition in SEVEN-G | Reference document | Spanish term |
 |---|---|---|---|
 | **Impact map · sphere map** | Component A of the framework: nine spheres of impact and three ambition levels to decide where and with what ambition to use AI without talking about technology. | 00 §4.1; 10 | Mapa de impacto · mapa de esferas |
+| **Impact reach** | Reading of what an initiative in use affects, according to the verified questions IT-P1 to IT-P4: IM1 task, IM2 process, IM3 people and organisation, IM4 business model. It is the third lens of maturity; it adds no questions. | 12 §3.7; 11 §7.6 | alcance del impacto |
+| **Implementation journey** | Order in which a company achieves the implementation milestones according to its starting point, in five stages (Start, Organise, Govern, Measure, Scale and review). Computed by tool T23. | 96 §3–§4; 90 | recorrido de implantación |
+| **Implementation milestone** | Each of the 22 results of the implementation journey (HI-01 to HI-22), with who leads it, its evidence and the document 11 question that attests it; it is achieved when that question is "Yes" in a verified assessment. | 96 §4 | hito de implantación |
 | **Implementation scope** | The company's decision, Lite or Enterprise, on how it organises its bodies and its verification to apply SEVEN-G. It does not replace the intensity of each initiative: in a company with Lite scope, any initiative that meets an Enterprise criterion is managed with Enterprise intensity. | 90 §2 | Alcance de implantación |
 | **Index signals** | Eight observable signals of the transformation index (codes IT-S1 to IT-S8): 1 investment mix, 2 value mix, 3 materialisation, 4 depth of change, 5 operating model, 6 AI-enabled revenue, 7 progression to production, 8 board decision. Each scores from 0 to 3. | 00 §5.3; 12 §4.4 | Señales del índice |
 | **Inherent risk** | Level of risk without considering the initiative's specific controls. | 33 §5.1 | Riesgo inherente |
@@ -382,6 +385,8 @@ Alphabetical order by English term. The full scales are in section 4 and the cod
 | **Sphere** | Domain of AI impact in the organisation. There are nine, grouped into where value is created (01–04), enablers (05–07), boundaries (08) and meta-sphere (09). | 01 §4; 10 §2 | Esfera |
 | **Sphere × level heat map** | Portfolio view with investment, recurring cost and value by primary sphere and ambition level; rows 08 and 09 show grades by dimension. | 10 §8; T16 | Mapa de calor esferas × niveles |
 | **Stalled (initiative)** | Initiative that exceeds the reference time limit for its phase approved in C2. It is flagged and reviewed by the AI Committee. | 01 §6.11; 03 §3.6 | Estancada (iniciativa) |
+| **Starting-point archetype** | One of the six typical starting points of a company implementing SEVEN-G (PP-A Ground zero · PP-B Third-party AI user · PP-C Automator · PP-D Analytics and classic ML · PP-E Many pilots · PP-F At scale), assigned with the questionnaire and rule of document 96. It changes the order and calendar of the journey, never what is required in the end. | 96 §2 | arquetipo de punto de partida |
+| **Starting-point modifier** | Circumstance that adjusts the implementation journey without changing the archetype: MP1 regulated sector, MP2 decisions about people or high risk, MP3 Enterprise scope, MP4 reusable existing governance, MP5 no sponsor in senior management (blocks the journey). | 96 §2.3 | modificador de punto de partida |
 | **Stop** | *Gate* outcome: there is no plausible value, feasibility is not demonstrated or the risk is unacceptable. The initiative is closed with a coded reason and lessons learned. A well-founded stop is a valid outcome. | 01 §7.3 | Parar |
 | **Stop criteria** | Conditions set in phase 2, before investing, whose fulfilment requires Stop to be proposed. They cannot be relaxed during the phase without the approval of the body that authorised the initiative. | 01 §6.4, §7.4 | Criterios de parada |
 | **Stop or retirement reason** | Coded reason, from a closed list, recorded for every stop or retirement. | 01 §6.11; 03 §3.3 | Motivo de parada o retirada |
@@ -390,6 +395,7 @@ Alphabetical order by English term. The full scales are in section 4 and the cod
 
 | Term | Definition in SEVEN-G | Reference document | Spanish term |
 |---|---|---|---|
+| **Technology footprint** | Descriptive lens of maturity stating what AI the company has in use, in order of governance demand (HT0 no AI in use to HT5 agents that act). It does not score in maturity, but sets the minimum governance required per dimension and triggers the "adoption ahead of governance" alert. | 11 §7.6 | huella tecnológica |
 | **Template** | Standard Block H document: P01–P31 for preparing the initiative's mandatory evidence P32–P71 for the registers, reports and decisions of the company, the board, compliance, third parties, audit and framework implementation, and P72–P74 for the NIST profiles and the ISO/IEC 42001 statement of applicability. Each has an editable Word version. | 01 §6.10; 03 §5 | Plantilla |
 | **Third-party AI embedded in processes** | Supplier software with AI features that take part in decisions, operations or customer relations. It goes through the full lifecycle, with the design and delivery phases focused on the selection, integration, contract and controls of the supplier. | 01 §1.2; 32 §2.1 | IA de terceros integrada en procesos |
 | **Third-party requirement level** | Degree of due diligence, contract, monitoring and exit required for each relationship between a supplier and a service: N1 Standard, N2 Enhanced or N3 Critical, determined by the highest factor among criticality, data, autonomy and substitutability. | 36 §4 | Nivel de exigencia a terceros |
@@ -793,7 +799,7 @@ Spanish equivalents of the taxonomy values:
 | **G\<n\>.\<nn\> · R6.\<nn\>** | Gate + point + two digits | *Gate* criteria. A code is not reused even if the criterion is withdrawn. | 21 §2.1 | G3.08 · R6.04 |
 | **LV-G\<n\> · LV-R6 · LV-EV · LV-AG** | LV + hyphen + scope | Checklists by gate, for evidence validation and for agents. | 22 §1 | LV-G5 |
 | **EV.01–EV.14** | EV + point + two digits | Valid evidence rules. | 21 §4.1; 22 §11 | EV.05 |
-| **T01–T22** | T + two digits | Framework tools. | 03 §5 | T01 |
+| **T01–T23** | T + two digits | Framework tools. | 03 §5 | T01 |
 | **P01–P74** | P + two digits | Block H templates: P01–P31 per initiative (01 §6.10); P32–P71 for the company, board, compliance, third parties, audit and implementation; P72–P74, NIST profiles and ISO/IEC 42001 statement of applicability (34 §4–§5). | Block H; 01 §6.10 | P29 |
 | **D1–D7** | D + number | Maturity dimensions. | 11 §2.1 | D6 |
 | **Maturity levels 0–5** | Whole number | Maturity levels. | 11 §2.2 | level 3 |
@@ -803,6 +809,11 @@ Spanish equivalents of the taxonomy values:
 | **B1–B3** | B + number | Baseline conditions of the transformation index. | 12 §4.3 | B2 |
 | **F1–F10 · F2v** | F + number | Official measurement formulas. | 40 §6 | F7 |
 | **FE-1–FE-6** | FE + hyphen + number | Scaling barriers of the board dashboard's executive reading: value, progress, risk and compliance, adoption, data and technology, direction and governance. | 60 §10.4 | FE-3 |
+| **PP-A–PP-F** | PP + hyphen + letter | Starting-point archetypes: Ground zero, Third-party AI user, Automator, Analytics and classic ML, Many pilots, At scale. | 96 §2.1 | PP-D |
+| **MP1–MP5** | MP + number | Starting-point modifiers. | 96 §2.3 | MP2 |
+| **HI-01–HI-22** | HI + hyphen + two digits | Implementation journey milestones. | 96 §4.1 | HI-09 |
+| **HT0–HT5** | HT + number | Technology footprint levels; descriptive, they are not maturity levels. | 11 §7.6 | HT4 |
+| **IM1–IM4** | IM + number | Impact reach levels of an initiative in use. | 12 §3.7 | IM3 |
 | **RT-\<CAT\>-NN** | RT + three-letter category + two digits | Typical risks in the catalogue (70 in version 0.1): EST 6 · TEC 8 · DAT 6 · ECO 5 · LEG 8 · ORG 9 · REP 5 · GEN 9 · SEG 7 · TER 7. | 33 §9 | RT-GEN-01 |
 | **SEG-01–SEG-25** | SEG + hyphen + two digits | AI security controls. | 35 §6 | SEG-02 |
 | **AG-01–AG-20** | AG + hyphen + two digits | Agent controls. | 35 §7 | AG-09 |
@@ -866,7 +877,7 @@ In new versions, documents **should** replace the numbering that remains local w
 | **F** | People, data and operations | 50–53 | People, data and knowledge, operations, building with AI. |
 | **G** | Board | 60–62 | Board pack and conversation guide, recommendations and decisions register. |
 | **H** | Templates | P01–P74 | Evidence for each phase of the lifecycle (P01–P31); registers, reports and decisions of the company, the board, compliance, third parties, audit and implementation (P32–P71); NIST profiles and ISO/IEC 42001 statement of applicability (P72–P74). |
-| **I** | Tools | T01–T22 | Catalogue in document 03; HTML tools with JSON data. |
+| **I** | Tools | T01–T23 | Catalogue in document 03; HTML tools with JSON data. |
 | **J** | Framework adoption | 90–93 | Implementation, guide for consultants, application cases, licence. |
 
 ### 7.2 Documents
@@ -1008,6 +1019,7 @@ Tools display the values of closed lists in Spanish and English using the equiva
 
 | Version | Date | Changes |
 |---|---|---|
+| 1.1 | 28-09-2026 | Adds starting-point archetype and modifier, implementation milestone and journey (document 96), technology footprint (11 §7.6) and impact reach (12 §3.7), with their codes PP-A–PP-F, MP1–MP5, HI-01–HI-22, HT0–HT5 and IM1–IM4; tools T01–T23. |
 | 1.0 | 16-09-2026 | Final library version v0.1. The cover is updated to in-force status and the AI self-consulting principle is added with an editorial criterion: didactic explanations oriented towards decision-making and tool use, without a course format. Consistency adjustments: 70 typical risks (RT-ORG-07 to RT-ORG-09), 156 indicators in 13 families in document 41 (new PRO family) and provisional CNC- prefix for the knowledge indicators in document 51. |
 | 0.1 | 16-09-2026 | First version. Sets the order of precedence between sources, the normative language and drafting conventions, the alphabetical glossary with English equivalents, 18 official scales (including the R6 outcomes and the grades of appetite and of spheres 08 and 09), the copy of the controlled taxonomy in 03 §3.3, the code system with the proposed SIA, DEC and AUD codes, the IT- and PER- prefixed codes that replace the local numbering of documents 12 and 50, the locally used numbering that must not be used outside its document, the library numbering and the acronyms. |
 

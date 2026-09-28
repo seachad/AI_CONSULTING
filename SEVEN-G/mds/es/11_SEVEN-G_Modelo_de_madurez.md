@@ -5,8 +5,8 @@
 | | |
 |---|---|
 | Documento | Documento 11 · Modelo de madurez |
-| Versión | 0.2 (borrador de trabajo) |
-| Fecha | 25-09-2026 |
+| Versión | 0.3 (borrador de trabajo) |
+| Fecha | 28-09-2026 |
 | Autor | Fernando García Varela |
 | Estado | Borrador para revisión. Desarrolla la decisión D10. Los tamaños de muestra, los pesos y los objetivos de referencia son iniciales y se calibrarán con la aplicación práctica. |
 
@@ -28,7 +28,7 @@ El documento contiene las siete dimensiones y los seis niveles, la rúbrica y el
 
 | El modelo mide | El modelo no mide |
 |---|---|
-| La capacidad de la organización —órganos, prácticas, controles, datos, personas y medición— para decidir, construir, operar y supervisar la IA con control. | Cuánta IA usa la compañía ni lo avanzada que es su tecnología. |
+| La capacidad de la organización —órganos, prácticas, controles, datos, personas y medición— para decidir, construir, operar y supervisar la IA con control. | Cuánta IA usa la compañía ni lo avanzada que es su tecnología. Se muestra aparte, como huella tecnológica (sección 7.6), que no puntúa pero fija el gobierno mínimo exigible. |
 | Si esa capacidad está implantada y funciona, con evidencia observable. | Si la compañía se transforma o solo se eficienta: eso lo mide el índice de transformación (documento 12). |
 | El avance de la compañía en el tiempo con un método constante. | La posición frente a otras compañías. SEVEN-G no publica comparativas de mercado. |
 | La madurez del conjunto de la compañía o de un perímetro declarado. | La calidad de una iniciativa concreta: eso lo deciden los *gates*. |
@@ -449,6 +449,58 @@ El documento 34 baja el NIST AI RMF a sus 72 subcategorías (34 §5.4) y selecci
 
 > **Por qué importa.** La compañía que ya informa a su comité de riesgos con el AI RMF o con el CSF no necesita una segunda evaluación ni un segundo número. El mismo cuestionario verificado da el nivel de madurez y los perfiles, de modo que el consejo ve una sola escala y la brecha frente al objetivo sale de evidencia, no de una autoevaluación aparte.
 
+
+### 7.6 Lectura en tres lentes
+
+El nivel de madurez responde a una sola pregunta: **¿gobierna la compañía la IA con control?** Al consejo le interesan otras dos, que no deben mezclarse con esa: **¿qué IA tiene en uso?** y **¿a qué afecta?** Por eso el resultado se presenta con tres lentes juntas, y solo la primera es un nivel de madurez.
+
+| Lente | Pregunta | Escala | Dónde se define | Cómo se obtiene |
+|---|---|---|---|---|
+| **1 · Capacidad de gobierno** | ¿Lo hace con control? | 0–5 por dimensión D1–D7 y global | Secciones 2 a 5 | Cuestionario verificado (T15) |
+| **2 · Huella tecnológica** | ¿Qué IA tiene en uso y cuánta exigencia de gobierno supone? | HT0–HT5, descriptiva: no es una nota | Esta sección | Tecnología y autonomía de las iniciativas en uso del registro T01; sin registro, la pregunta Q01 del documento 96 |
+| **3 · Alcance del impacto** | ¿A qué afecta: tareas, procesos, personas y organización, modelo de negocio? | IM1–IM4 por iniciativa y su distribución en la compañía | Documento 12 §3.7 | Ambición real y preguntas IT-P1 a IT-P4 verificadas de las iniciativas en uso |
+
+**La tecnología no sube ni baja el nivel de madurez.** Sumarla premiaría adoptar por delante del gobierno: una compañía con modelos predictivos bien gobernados es más madura que otra con IA generativa sin control. Lo que hace la huella es **fijar el gobierno mínimo que se exige**, con el mismo espíritu que los objetivos por ambición de la sección 8, y disparar alertas cuando no se alcanza.
+
+#### Huella tecnológica
+
+Se informa el **nivel más alto en uso** (iniciativas en las fases 6 y 7 sin cerrar) y la **amplitud** (tipos de tecnología distintos y número de sistemas en uso). Los pilotos se muestran aparte, como «en exploración». El orden es de **exigencia de gobierno creciente**, no de «mejor tecnología».
+
+| Nivel | Nombre | Qué hay en uso | Tecnología en el registro T01 |
+|---|---|---|---|
+| **HT0** | Sin IA en uso | Nada en producción (puede haber uso no autorizado) | Sin iniciativas en uso |
+| **HT1** | Automatización sin aprendizaje | Reglas o RPA. No es IA a efectos del inventario (documento 32), pero se registra como contexto | `reglas` |
+| **HT2** | IA de terceros incluida | Asistentes corporativos, SaaS o productos con IA; la compañía no construye | `ia_terceros_embebida` |
+| **HT3** | Modelos predictivos propios | ML predictivo, visión u optimización con aprendizaje | `ml_predictivo`, `vision`, `optimizacion` |
+| **HT4** | IA generativa en procesos | Lenguaje, documentos, generación y recuperación integradas en procesos; agentes que solo proponen (A0 o A1) | `ia_generativa`, `lenguaje_documentos`; `agente` con A0 o A1 |
+| **HT5** | Agentes que actúan | Agentes con autonomía A2 o A3 sobre terceros, dinero, datos personales o sistemas de producción | `agente` con A2 o A3 |
+
+#### Gobierno mínimo exigible por huella
+
+Valores de partida, **a calibrar en C5** (sección 8). Cada nivel de huella exige su fila y las anteriores.
+
+| Huella en uso | D1 | D3 | D4 | D5 | D6 |
+|---|---|---|---|---|---|
+| **HT1** | 1 | — | — | — | 2 |
+| **HT2** | 1 | — | — | — | 2 |
+| **HT3** | 2 | 2 | 2 | — | 2 |
+| **HT4** | 2 | 3 | 3 | — | 3 |
+| **HT5** | 3 | 3 | 3 | 3 | 3 |
+
+En HT4, D3 recoge las fuentes de conocimiento con propietario y vigencia (D3.08) y D4 la evaluación con un conjunto de pruebas antes de cada cambio (D4.08); en HT5, D6 recoge los controles de agentes (D6.08).
+
+#### Alertas
+
+| Alerta | Cuándo salta | Gravedad | Qué pide |
+|---|---|---|---|
+| **Adopción por delante del gobierno** | Alguna dimensión por debajo del mínimo exigible por la huella en uso | Alta si es D1 o D6; media en las demás | Acciones prioritarias en el plan de mejora (P34 §6.6). Mientras D6 esté por debajo, ninguna iniciativa nueva de ese nivel de huella debería superar G5 sin una condición explícita de mejora, plazo y responsable |
+| **Gobierno sin uso** | Nivel global 3 o superior con huella HT2 o inferior, o ninguna iniciativa en uso doce meses después de C2 | Media | Revisar la cartera y el embudo (documento 14; D2.09): el marco no debe convertirse en burocracia sin valor |
+| **Transformación sin personas** | Alguna iniciativa en uso con alcance IM3 o IM4 y D5 en 2 o menos | Alta | Plan de adopción y de personas (documentos 23 y 50; D5.07 y D5.08) antes del siguiente *gate* |
+
+La lectura cruzada con el índice de transformación (sección 7.2 y 12 §5.3) se mantiene y se muestra junto a estas alertas. T15 presenta las tres lentes en su vista «Tres lentes», guarda su resumen en el registro T01 y el panel del consejo (T17) lo muestra en la tarjeta de madurez.
+
+> **Por qué importa.** Al consejo le interesa si la compañía tiene más IA, pero sobre todo si esa IA está bajo control y si cambia algo más que tareas. Con las tres lentes juntas lo ve sin que la madurez se infle: una compañía con agentes que actúan y D6 en 2 no aparece como «más madura», aparece con una alerta de gravedad alta.
+
 ---
 
 ## 8. Objetivos de madurez por ambición
@@ -463,7 +515,7 @@ La compañía fija en C2 sus objetivos de madurez. El nivel 5 no es un objetivo 
 | Alcance Enterprise o sector regulado | Nivel 3 en D6. | Nivel 4 en D6. |
 | Agentes con autonomía A2 o A3 en producción | Nivel 3 en D4 y D6 antes de la primera puesta en producción. | Nivel 4 en D4 y D6. |
 
-El consejo no debería aprobar apuestas de Transformar en G2 con D1 o D6 inferior a 2 salvo con una condición explícita de mejora, plazo y responsable.
+El consejo no debería aprobar apuestas de Transformar en G2 con D1 o D6 inferior a 2 salvo con una condición explícita de mejora, plazo y responsable. La huella tecnológica en uso añade su propio mínimo exigible (sección 7.6), que se suma a estas referencias.
 
 ---
 
@@ -496,6 +548,8 @@ El consejo no debería aprobar apuestas de Transformar en G2 con D1 o D6 inferio
 | T14 | Lectura cruzada con el índice de transformación. |
 | T17, T18 | Publicación del resultado y seguimiento de las acciones pedidas por el consejo. |
 | P03, P05, P07–P09, P11, P12, P14, P16, P18–P20, P24, P25, P28–P30 | Evidencias habituales. La hoja de respuestas, el cálculo y el informe tienen plantilla propia, P34, que T15 calcula y genera. |
+| **T15 · vista «Tres lentes»** | Capacidad de gobierno, huella tecnológica desde el registro T01, alcance del impacto (12 §3.7), mínimo exigible y alertas de la sección 7.6; el resumen se guarda en el registro T01 y lo muestra el panel del consejo. |
+| **T23 · Recorrido de implantación** | Usa las preguntas del cuestionario para marcar como cumplidos los hitos del documento 96. |
 | P72, P73 | Perfil de seguridad de IA (CSF 2.0 / Cyber AI Profile) y perfil de gobierno de IA (NIST AI RMF), con el nivel de cada subcategoría derivado del cuestionario (sección 7.5). T15 los calcula en sus vistas «Perfil CSF» y «Perfil AI RMF» y guarda su resumen en el registro T01. |
 
 ---
@@ -522,3 +576,4 @@ El consejo no debería aprobar apuestas de Transformar en G2 con D1 o D6 inferio
 |---|---|---|
 | 0.1 | 16-09-2026 | Primera versión. Confirma las siete dimensiones y los seis niveles (D10); define rúbricas, cuestionario de 84 preguntas, modalidades, muestreo, cálculo con límite por D1 y D6, informe, vínculos con el índice de transformación y con 01 §14, y objetivos de referencia por ambición. |
 | 0.2 | 25-09-2026 | Añade la equivalencia orientativa de los niveles 0–5 con los *tiers* del NIST CSF 2.0 (sección 2.2), que es una vista calculada y no una segunda escala, y el vínculo 7.5 con los perfiles NIST: nivel actual de cada subcategoría del AI RMF y del CSF derivado del cuestionario, preguntas propias, nivel objetivo en C2, brecha y *tier* equivalente (34 §5.4 y §5.5). Plantillas P72 y P73 en la sección 10. |
+| 0.3 | 28-09-2026 | Añade la lectura en tres lentes (sección 7.6): capacidad de gobierno, huella tecnológica HT0–HT5 y alcance del impacto (12 §3.7); la tecnología no puntúa, pero fija el gobierno mínimo exigible por dimensión y dispara las alertas «adopción por delante del gobierno», «gobierno sin uso» y «transformación sin personas». Nota en la sección 1.1 y remisiones en las secciones 8 y 10. |

@@ -380,7 +380,7 @@ table.mini tr.tot td{border-top:2px solid var(--ink);font-weight:650}
 .case .ciclo.rojo{background:var(--rojbg);color:var(--rojink)}.case .ciclo.amarillo{background:var(--ambbg);color:var(--ambink)}.case .ciclo.sin_fechas{color:var(--muted)}
 .ciclobar{display:flex;height:12px;border-radius:4px;overflow:hidden;gap:2px;margin:6px 0}
 .ciclobar i{display:block;min-width:3px}
-/* qué frena el escalado (D125): los tres frenos por los que empezar, en tarjetas, y la tabla de los seis */
+/* qué frena el escalado (D126): los tres frenos por los que empezar, en tarjetas, y la tabla de los seis */
 .fr-top{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:10px;margin:6px 0 14px}
 .fr{border:1px solid var(--grid);border-radius:10px;padding:10px 12px;background:var(--page);position:relative;cursor:pointer;outline:none}
 .fr:hover,.fr:focus-visible{border-color:var(--accent)}
@@ -394,7 +394,7 @@ table.mini tr.tot td{border-top:2px solid var(--ink);font-weight:650}
 table.mini tr.fr-row{cursor:pointer}table.mini tr.fr-row:hover td{background:var(--page)}
 .fr-sen{margin:4px 0 8px;padding-left:18px;font-size:12.5px}.fr-sen li{margin:4px 0}.fr-sen .emp{color:var(--muted);font-size:11px}
 .more-btn{display:inline-block;margin-top:10px}
-/* dónde está el impacto: mapa de calor esferas × niveles de ambición (T16, D126) */
+/* dónde está el impacto: mapa de calor esferas × niveles de ambición (T16, D127) */
 .mi-ctrl{display:flex;gap:8px;align-items:center;flex-wrap:wrap;margin:4px 0 10px}
 table.mi{border-collapse:separate;border-spacing:4px;width:100%;font-size:12px;min-width:640px}
 table.mi th{font-size:10.5px;color:var(--muted);text-transform:uppercase;letter-spacing:.03em;font-weight:600;text-align:left;padding:2px 6px}
@@ -655,7 +655,7 @@ function netoCif(o){ if (!o || !o.recurrente || (!o.eficiencias && !o.retorno)) 
   const v = (o.eficiencias ? o.eficiencias.v : 0) + (o.retorno ? o.retorno.v : 0) - o.recurrente.v;
   return {v, prev: [o.eficiencias, o.retorno, o.recurrente].some(x => x && x.prev)}; }
 const netoCelda = x => x ? `<b style="color:${x.v<0?"var(--critical)":"var(--neto)"}">${fmt(x.v)}</b>${x.prev?' <span class="prev">prev.</span>':""}` : "—";
-// columnas económicas del detalle de una etapa, primero (D127): neto anual, eficiencias, retorno, coste anual e inversión
+// columnas económicas del detalle de una etapa, primero (D128): neto anual, eficiencias, retorno, coste anual e inversión
 const cifCeldas = o => `<td class="n">${netoCelda(netoCif(o))}</td>` + CIF.map(([a])=>`<td class="n">${cifCelda(o[a])}</td>`).join("");
 // cifras guardadas en el historial con un cambio de estado (historial_estados[].cifras: previsto y actual)
 function cifrasTramo(t){ const c = t && t.cifras; if (!c) return null; const o = {}; [["eficiencias","eficiencias"],["retorno","retorno"],["recurrente","recurrente"],["construccion","inversion"]].forEach(([a,k])=>{ const ac = (c.actual||{})[k], pr = (c.previsto||{})[k]; o[a] = ac != null ? {v:ac, prev:false} : pr != null ? {v:pr, prev:true} : null; }); return CIF.some(([a])=>o[a]) ? o : null; }
@@ -730,7 +730,7 @@ function renderEmbudo(rows){
   el.querySelectorAll("[data-sel]").forEach(g=>{ const go = ()=>{ E.sel = E.sel===g.dataset.sel ? null : g.dataset.sel; renderEmbudo(CASES.filter(passes)); if (E.sel) document.getElementById("embudo-det").scrollIntoView({behavior:"smooth", block:"nearest"}); }; g.onclick = go; g.onkeydown = ev=>{ if (ev.key==="Enter"||ev.key===" "){ ev.preventDefault(); go(); } }; });
   renderEmbudoDetalle(rows); renderEmbudoPreguntas(rows);
 }
-// indicadores del embudo que se pueden pulsar (D127): cada uno abre sus casos con lo económico primero
+// indicadores del embudo que se pueden pulsar (D128): cada uno abre sus casos con lo económico primero
 function openKpiEmbudo(tipo, rows){
   const cfg = CICLO(), gi = cfg.embudo.indexOf(cfg.ganado);
   if (tipo === "ganados"){ state.embudo.sel = cfg.ganado; renderEmbudo(CASES.filter(passes)); document.getElementById("embudo-det").scrollIntoView({behavior:"smooth", block:"start"}); return; }
@@ -884,7 +884,7 @@ function renderKPIs(rows){
   const negUso = rows.filter(c=>c.estado==="En uso" && R(c).neto < 0).length;
   const pbTxt = negUso ? ` · <b>${negUso}</b> ${negUso===1?"caso en uso con neto negativo":"casos en uso con neto negativo"}` : "";
   const mas = `<div class="more">Ver desglose ›</div>`;
-  // todos los indicadores de cabecera se pueden pulsar (D127): los económicos abren su desglose y los demás un resumen con sus casos
+  // todos los indicadores de cabecera se pueden pulsar (D128): los económicos abren su desglose y los demás un resumen con sus casos
   const res = `<div class="more">Ver resumen ›</div>`;
   // indicador con umbral: color de semáforo y etiqueta con el umbral configurado (meta.umbrales_kpi)
   const semaf = (x, clave) => `<div class="kst ${x.nivel}" title="Umbrales: ${umbralTxt(clave)}">${x.pct==null?"sin dato":NIVEL_TXT[x.nivel]} · ${umbralTxt(clave)}</div>`;
@@ -901,7 +901,7 @@ function renderKPIs(rows){
 // ---- desglose de los KPI económicos (costes, retorno total y neto) de los casos seleccionados
 function agrupa(rows, clave){ const m = new Map(); rows.forEach(c=>{ const g = clave(c); if (!m.has(g)) m.set(g, []); m.get(g).push(c); }); return [...m.entries()]; }
 function porConcepto(rows, campo, lado){ const acc = {}; rows.forEach(c=>(eco(c)[campo]||[]).forEach(l=>{ let v = imp(l[lado]); if (v == null && lado==="potencial") v = imp(l.actual); if (v != null) acc[l.concepto] = (acc[l.concepto]||0) + v; })); return acc; }
-// ---- resumen de los indicadores que no son importes (D127): casos, valor validado, clasificación y controles; cada uno lista sus casos
+// ---- resumen de los indicadores que no son importes (D128): casos, valor validado, clasificación y controles; cada uno lista sus casos
 const CTRL_EST = {hecho:"hecho", pendiente:"pendiente", no_aplica:"no aplica"};
 function openResumen(tipo, rows){
   const tile = (t, v, d) => `<div class="tile"><div class="k">${t}</div><div class="v">${v}</div><div class="d">${d}</div></div>`;
@@ -1125,7 +1125,7 @@ function renderTransversales(rows){
     insight, bloques);
 }
 
-// ---- qué frena el escalado y dónde actuar primero (D125; reglas en el documento 60 §10.4, cálculo en panel_core.frenosEscalado).
+// ---- qué frena el escalado y dónde actuar primero (D126; reglas en el documento 60 §10.4, cálculo en panel_core.frenosEscalado).
 // La tarjeta abre la página: tres frenos por los que empezar (qué hacer, quién, casos y valor en juego) y la tabla de los seis.
 const NIVEL_FR = {bloquea:"Bloquea", activo:"Con señales", sin:"Sin señales"};
 let FR_ULT = null;
@@ -1160,7 +1160,7 @@ function openFreno(id){
     <div class="note" style="margin-top:10px">Dónde se explica: ${esc(f.donde)} · reglas de la lectura: documento 60 §10.4</div>`);
 }
 
-// ---- dónde está el impacto: mapa de calor esferas × niveles de ambición (T16; documento 10 §8; D126; cálculo en panel_core.mapaImpacto)
+// ---- dónde está el impacto: mapa de calor esferas × niveles de ambición (T16; documento 10 §8; D127; cálculo en panel_core.mapaImpacto)
 let MI_ULT = null;
 // neto anual de una celda; si ningún caso produce todavía, el valor anual potencial declarado (nunca un neto cero que no existe)
 const netoMi = x => x.neto != null ? `neto anual ${fmt(x.neto)}` : x.potencial != null ? `aún no produce · potencial ${fmt(x.potencial)}` : "aún no produce";
@@ -1267,11 +1267,21 @@ function renderMadurez(){
   const perfFilas = x.perfiles ? Object.keys(PERF_MD).filter(k=>x.perfiles[k] && x.perfiles[k].total).map(k=>{ const g = x.perfiles[k].total;
     return `<tr><td>${PERF_MD[k]}</td><td>${g.minimo == null ? '<span class="nd">sin dato</span>' : g.minimo}</td><td>${g.con_nivel} de ${g.subcategorias}</td><td>${g.con_objetivo}</td><td>${g.con_brecha ? `<b style="color:var(--warn)">${g.con_brecha}</b>` : "0"}</td></tr>`; }).join("") : "";
   const perfTabla = perfFilas ? `<div class="note" style="margin-top:10px">Perfiles NIST derivados de este diagnóstico (11 §7.5; plantillas P72 y P73). La brecha se mide frente al nivel objetivo fijado en C2.</div><div class="tblx" id="madurez-perfiles"><table class="mini"><thead><tr><th>Perfil</th><th>Nivel mínimo</th><th>Subcategorías con nivel</th><th>Con objetivo</th><th>Con brecha</th></tr></thead><tbody>${perfFilas}</tbody></table></div>` : "";
+  // tres lentes (opcional, esquema 0.8 de T01, D120): huella tecnológica, alcance del impacto, mínimo exigible y alertas, tal cual los escribe T15
+  const HT_MD = {HT0:"Sin IA en uso", HT1:"Automatización sin aprendizaje", HT2:"IA de terceros incluida", HT3:"Modelos predictivos propios", HT4:"IA generativa en procesos", HT5:"Agentes que actúan"};
+  const AL_MD = {adopcion_por_delante:"Adopción por delante del gobierno", gobierno_sin_uso:"Gobierno sin uso", transformacion_sin_personas:"Transformación sin personas"};
+  const le = x.lentes && typeof x.lentes === "object" ? x.lentes : null, hu = le && le.huella, alc = le && le.alcance;
+  const lentesTabla = le ? `<div class="note" style="margin-top:10px">Madurez en tres lentes (11 §7.6 y 12 §3.7): la huella tecnológica y el alcance del impacto no suben ni bajan el nivel de madurez; la huella fija el gobierno mínimo exigible y dispara alertas cuando no se alcanza.${le.fuente === "manual" ? " Huella y alcance introducidos a mano en T15." : ""}</div><div class="tblx" id="madurez-lentes"><table class="mini"><thead><tr><th>Lente</th><th>Lectura</th></tr></thead><tbody>` +
+    `<tr><td>1 · Capacidad de gobierno</td><td>Nivel global <b>${x.nivel_global == null ? "sin dato" : x.nivel_global}</b> (tabla de dimensiones de arriba)</td></tr>` +
+    `<tr data-huella="${esc(hu && hu.nivel || "")}"><td>2 · Huella tecnológica en uso</td><td>${hu && hu.nivel ? `<b>${esc(hu.nivel)}</b> · ${HT_MD[hu.nivel] || ""}${hu.amplitud != null ? ` · ${hu.amplitud} tipos de tecnología` : ""}${hu.sistemas_en_uso != null ? ` · ${hu.sistemas_en_uso} sistemas en uso` : ""}${hu.pilotos != null ? ` · ${hu.pilotos} en exploración${hu.nivel_exploracion ? ` (la más exigente ${esc(hu.nivel_exploracion)})` : ""}` : ""}` : '<span class="nd">sin dato</span>'}</td></tr>` +
+    `<tr><td>3 · Alcance del impacto (iniciativas en uso)</td><td>${alc ? Object.keys(alc).map(k=>`${esc(k)} <b>${alc[k]}</b>`).join(" · ") + ' <span class="nd">(IM1 tarea · IM2 proceso · IM3 personas y organización · IM4 modelo de negocio)</span>' : '<span class="nd">sin dato</span>'}</td></tr>` +
+    `<tr><td>Gobierno mínimo exigible por la huella</td><td>${le.exigible && Object.keys(le.exigible).length ? Object.keys(le.exigible).map(d=>`${esc(d)} ≥ ${le.exigible[d]}`).join(" · ") : "—"}</td></tr>` +
+    `<tr><td>Alertas</td><td id="madurez-alertas">${(le.alertas||[]).length ? le.alertas.map(a=>`<span class="badge" data-alerta="${esc(a.codigo||"")}" style="margin:0 4px 4px 0;display:inline-block${a.gravedad === "alta" ? ";color:var(--critical);border-color:var(--critical);font-weight:650" : ";color:var(--warn);border-color:var(--warn)"}">${AL_MD[a.codigo] || esc(a.codigo||"")} · ${a.gravedad === "alta" ? "alta" : "media"}${a.dimension ? ` · ${esc(a.dimension)} en ${a.nivel}${a.minimo != null ? `, exige ${a.minimo}` : ""}` : ""}</span>`).join("") : "ninguna"}</td></tr></tbody></table></div>` : "";
   setCard("madurez", "Madurez de la compañía (D1–D7)",
     `Diagnóstico de madurez T15 de SEVEN-G (documento 11) a ${fES(x.fecha_corte)} · cuestionario v${esc(x.version_cuestionario || "")} · ${MODALIDAD_MD[x.modalidad] || esc(x.modalidad || "")} · no depende de los filtros · el nivel global se limita a min(D1, D6) + 1`,
     `${global}${limite}${aviso}${antTxt}.`,
     `<div class="nd" style="margin:4px 0 8px">${identidad ? identidad + " · " : ""}Es el diagnóstico de la compañía en su conjunto, no de los casos de la cartera: los filtros no lo cambian.</div>` +
-    `<div class="tblx"><table class="mini"><thead><tr><th>Dimensión</th><th>Nivel (0–5)</th><th>Avance al nivel siguiente</th><th>Bloqueantes</th><th>Tendencia</th></tr></thead><tbody>${filas}</tbody></table></div>` + decl + perfTabla);
+    `<div class="tblx"><table class="mini"><thead><tr><th>Dimensión</th><th>Nivel (0–5)</th><th>Avance al nivel siguiente</th><th>Bloqueantes</th><th>Tendencia</th></tr></thead><tbody>${filas}</tbody></table></div>` + decl + perfTabla + lentesTabla);
 }
 
 // ---- bloque 1: cartera (movimientos, tiempo a producción, agilidad)

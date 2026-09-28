@@ -262,7 +262,7 @@ const faseDe = c => (c.seveng && c.seveng.fase != null) ? Number(c.seveng.fase) 
 // Es declarado, no validado: sirve para ordenar los frenos, no para prometer. null = sin dato (nunca cero).
 function valorEnJuego(c){ const r = R(c); const e = r.eficiencias_pot ?? r.eficiencias, t = r.retorno_pot ?? r.retorno; return (e == null && t == null) ? null : (e || 0) + (t || 0); }
 
-// ---- lectura ejecutiva: qué frena el escalado y dónde actuar primero (SEVEN-G, documento 60 §10.4; D125). Reglas deterministas
+// ---- lectura ejecutiva: qué frena el escalado y dónde actuar primero (SEVEN-G, documento 60 §10.4; D126). Reglas deterministas
 // sobre lo que ya trae el panel: señales de caso (sobre los casos filtrados), patrones de las paradas y retiradas del último año y señales
 // de la compañía (madurez D1–D7 e índice de transformación, que no dependen de los filtros). Nada se estima: lo que falta se dice.
 // meta.frenos_escalado (JSON general de configuración) ajusta el umbral de madurez, los meses del patrón, qué motivo de parada
@@ -362,7 +362,7 @@ function frenosEscalado(rows){
   return {frenos: out, prioridad: out.filter(f => f.nivel !== "sin").slice(0, 3), faltan};
 }
 
-// ---- dónde está el impacto: mapa de calor esferas × niveles de ambición (T16; SEVEN-G, documento 10 §8; D126). Filas: esferas de valor
+// ---- dónde está el impacto: mapa de calor esferas × niveles de ambición (T16; SEVEN-G, documento 10 §8; D127). Filas: esferas de valor
 // (meta.mapa_impacto.filas; sin la clave, las que traigan los casos en tags.funcion) o unidades de negocio; aparte, la banda de
 // habilitación (esferas 08 y 09). Perímetro: casos activos que han superado G0 (fase ≥ 1 si el panel recibe la fase) y, aparte, los
 // parados o retirados en los últimos meses. Color: proporción de la inversión de construcción y el coste recurrente anual de la celda sobre

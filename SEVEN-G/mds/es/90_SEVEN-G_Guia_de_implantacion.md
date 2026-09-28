@@ -24,6 +24,8 @@ Esta guía explica cómo una organización adopta SEVEN-G por primera vez. Desar
 
 Se dirige a quien dirige la implantación (normalmente el responsable de la futura oficina de IA), al patrocinador en la alta dirección y a las funciones de riesgos, cumplimiento y auditoría interna.
 
+**Por dónde empezar según el punto de partida.** No todas las compañías empiezan igual: una sin IA, otra con modelos predictivos en producción y otra con muchos pilotos necesitan un orden distinto. El documento 96 clasifica el punto de partida (seis arquetipos y cinco modificadores) y ordena los hitos de esta guía para cada caso, sin cambiar lo que se exige al final; la herramienta T23 hace el cuestionario y el plan.
+
 Este documento no constituye asesoramiento jurídico.
 
 ### 1.1 Qué significa implantar SEVEN-G
@@ -194,7 +196,7 @@ Si el consejo no puede aprobar C2 en la semana 12, la cartera funciona con crite
 
 ## 5. Regularización de iniciativas y sistemas existentes
 
-El procedimiento completo está en el documento 14, sección 11. En la implantación se aplica así:
+El procedimiento completo está en el documento 14, sección 11. En el recorrido de implantación es el hito HI-12, cuya prioridad depende del punto de partida (documento 96). En la implantación se aplica así:
 
 | Tipo | Cuándo | Tratamiento |
 |---|---|---|
@@ -299,7 +301,7 @@ Los objetivos son orientativos y los fija la compañía en su plan.
 
 | Periodo | Herramientas | Plantillas |
 |---|---|---|
-| **Mes 1** | T01, T02, T04 (inventario y registro); T15 (madurez); T14 (índice); T16 (mapa de esferas); T12 (valor actual). | P32, P33, P34, P05 |
+| **Mes 1** | T23 (punto de partida y recorrido); T01, T02, T04 (inventario y registro); T15 (madurez); T14 (índice); T16 (mapa de esferas); T12 (valor actual). | P32, P33, P34, P05 |
 | **Mes 2** | T06 (riesgos); T07 (clasificación regulatoria); T05 (ambición); T19 (tesis y apetito). | P35, P43, P06, P07, P11, P12, P31 |
 | **Mes 3** | T03 (*gates*); T08 (no conformidades); T17 (panel); T18 (recomendaciones); T01 y T16 (cartera). | P36, P38, P39, P40, P41, P03, P04, P28, P29 |
 | **Meses 4–18** | Todas las anteriores; T09, T10, T11, T13, T20, T21, T22 según avance la cartera. | P01–P31 según la fase de cada iniciativa; P42 y P67 cada trimestre; P37 en C5; el resto de P32–P74 cuando aplique |
@@ -320,6 +322,7 @@ Las herramientas sin aplicación propia se aplican con la plantilla o el documen
 | **14 · Gestión de cartera** | Primera cartera y regularización. |
 | **21, 22, 30, 31, 33, 34, 37, 40, 60, 62** | Contenido de la estructura de gobierno del mes 3. |
 | **95 · Datos en local e instalación propia** | Dónde quedan los datos de las herramientas y cómo alojar el sitio en la propia compañía. |
+| **96 · Puntos de partida y recorrido de implantación** | Orden de los hitos de esta guía según la IA y el gobierno que la compañía ya tiene; herramienta T23. |
 | **91 · Guía para consultores** | Acompañamiento externo de la implantación. |
 
 ---
@@ -331,3 +334,4 @@ Las herramientas sin aplicación propia se aplican con la plantilla o el documen
 | 0.1 | 16-09-2026 | Primera versión. Define el alcance de implantación Lite o Enterprise de compañía, los requisitos previos, el plan de 90 días semana a semana, la regularización, la hoja de ruta de 6 a 18 meses hasta 01 §14, los roles mínimos, los errores frecuentes y los indicadores de implantación. |
 | 0.1 | 19-09-2026 | El tamaño no decide el alcance (2.1); una apuesta de Transformar aislada no obliga a alcance Enterprise (2.2); ruta mínima en alcance Lite (2.4); se retiran las menciones a documentos o herramientas pendientes. |
 | 0.1 | 19-09-2026 | La ruta mínima (2.4) remite a la matriz de obligatoriedad (documento 94), al recuadro «Lo esencial» de cada documento y al curso. |
+| 0.1 | 28-09-2026 | Remisión al documento 96 (punto de partida y recorrido de implantación) en §1, §5, §10 y §11; herramienta T23 en el mes 1. |

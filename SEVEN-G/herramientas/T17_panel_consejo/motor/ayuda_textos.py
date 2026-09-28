@@ -24,6 +24,7 @@ def propia(rotulo, es, en_nombre, en):
 
 COLUMNAS = {
     # ---- identificación del caso
+    "Lente": c("Cada una de las tres lentes de la madurez (11 §7.6): capacidad de gobierno (niveles D1–D7), huella tecnológica (HT0–HT5, qué IA hay en uso) y alcance del impacto (IM1–IM4, a qué afecta). La huella y el alcance no cambian el nivel: fijan lo que se exige y disparan alertas.", "Lens", "Each of the three lenses of maturity (11 §7.6): governance capability (levels D1–D7), technology footprint (HT0–HT5, what AI is in use) and impact reach (IM1–IM4, what it affects). Footprint and reach do not change the level: they set what is required and trigger alerts."),
     "ID": c("Código del caso en el registro de iniciativas T01 (IA-AAAA-NNN).", "ID", "Code of the case in the T01 initiative register (IA-YYYY-NNN)."),
     "Caso": c("Nombre del caso de uso de IA. Al pulsarlo se abre su ficha.", "Case", "Name of the AI use case. Clicking it opens its record."),
     "Qué es y para qué se usa": c("Descripción breve del caso en lenguaje de negocio.", "What it is and what it is used for", "Short description of the case in business language."),
@@ -214,7 +215,7 @@ COLUMNAS = {
     "Rotación del equipo": c("Porcentaje del equipo de IA que se ha ido en los últimos doce meses.", "Team turnover", "Share of the AI team that left in the last twelve months."),
     # ---- desglose de indicadores (fichas de KPI)
     "Control": c("Control obligatorio que falta.", "Control", "Mandatory control that is missing."),
-    # ---- qué frena el escalado (D125) y dónde está el impacto (T16, D126)
+    # ---- qué frena el escalado (D126) y dónde está el impacto (T16, D127)
     "Freno": c("Uno de los seis frenos de escalado del documento 60 §10.4 (FE-1 a FE-6).", "Barrier", "One of the six scaling barriers in document 60 §10.4 (FE-1 to FE-6)."),
     "Situación": c("Bloquea (impide pasar una puerta o limita la madurez global), con señales o sin señales.", "Status", "Blocks (prevents passing a gate or caps overall maturity), with signals or without signals."),
     "Señales": c("Número de reglas del freno que se cumplen con los datos actuales (de caso, de patrón o de la compañía).", "Signals", "Number of barrier rules met with the current data (case, pattern or company rules)."),
@@ -261,7 +262,7 @@ def t(titulo, que, porque, donde="", leer=""):
 
 
 TARJETAS = {
-    # ---- Cartera y valor: lectura ejecutiva (D125) y mapa de impacto (T16, D126)
+    # ---- Cartera y valor: lectura ejecutiva (D126) y mapa de impacto (T16, D127)
     "frenos": {
         "es": t("Qué frena el escalado · dónde actuar primero",
                 "Una lectura ejecutiva que responde a «¿qué nos impide escalar la IA hoy?». Ordena seis frenos —FE-1 el valor no está demostrado, FE-2 los casos no avanzan, FE-3 riesgo y cumplimiento sin cerrar, FE-4 las personas no lo adoptan, FE-5 datos y tecnología no están listos, FE-6 falta dirección y gobierno— con señales que ya están en el panel: de cada caso seleccionado, de las paradas y retiradas del último año y de la compañía (madurez D1–D7 e índice de transformación). Arriba, los tres por los que empezar, con qué hacer, quién y cuánto valor hay en juego; al pulsar un freno se ven sus señales y sus casos.",

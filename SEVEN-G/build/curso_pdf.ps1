@@ -65,11 +65,12 @@ foreach ($lang in $Idiomas) {
   $pdfDir = Join-Path $repo "SEVEN-G\pdf\$lang\curso"
   New-Item -ItemType Directory -Force $pdfDir | Out-Null
   $pdfOut = Join-Path $pdfDir 'SEVEN-G_Curso_completo.pdf'
-  $perfil = Join-Path $env:TEMP "seveng-curso-pdf-$PID"
-  $uri = ([Uri]$tmpHtml).AbsoluteUri
+  $perfil = Join-Path ([IO.Path]::GetTempPath()) "seveng-curso-pdf-$PID"
+  $uri = $(if ($IsWindows) { ([Uri]$tmpHtml).AbsoluteUri } else { ([Uri]::new(($tmpHtml -replace '\\', '/'), [UriKind]::Absolute)).AbsoluteUri })  # en Linux, rutas con / y URI absoluta
   $argumentos = @('--headless=new', '--disable-gpu', '--no-first-run', '--no-pdf-header-footer',
                   '--virtual-time-budget=20000', "--user-data-dir=`"$perfil`"", "--print-to-pdf=`"$pdfOut`"", $uri)
-  Start-Process -FilePath $browser -ArgumentList $argumentos -Wait -WindowStyle Hidden
+  $sinVentana = if ($IsWindows) { @{ WindowStyle = 'Hidden' } } else { @{} }  # -WindowStyle solo existe en Windows
+  Start-Process -FilePath $browser -ArgumentList $argumentos -Wait @sinVentana
   Remove-Item $tmpHtml -Force -ErrorAction SilentlyContinue
   Remove-Item $perfil -Recurse -Force -ErrorAction SilentlyContinue
   if (Test-Path $pdfOut) { Write-Host "$lang : $($modulos.Count) módulos -> $pdfOut" }

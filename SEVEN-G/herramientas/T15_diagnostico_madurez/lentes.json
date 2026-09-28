@@ -1,0 +1,381 @@
+{
+  "origen": "Documento 11 · Modelo de madurez, §7.6 (lentes, huella tecnológica HT0–HT5, gobierno mínimo exigible por huella y alertas) y documento 12 · Índice de transformación, §3.7 (alcance del impacto IM1–IM4). Extraído con build_madurez.ps1 -ActualizarLentes; no se edita a mano.",
+  "lentes": [
+    {
+      "lente": 1,
+      "nombre": {
+        "es": "Capacidad de gobierno",
+        "en": "Governance capability"
+      },
+      "pregunta": {
+        "es": "¿Lo hace con control?",
+        "en": "Does it do so under control?"
+      },
+      "escala": {
+        "es": "0–5 por dimensión D1–D7 y global",
+        "en": "0–5 by dimension D1–D7 and overall"
+      },
+      "obtiene": {
+        "es": "Cuestionario verificado (T15)",
+        "en": "Verified questionnaire (T15)"
+      }
+    },
+    {
+      "lente": 2,
+      "nombre": {
+        "es": "Huella tecnológica",
+        "en": "Technology footprint"
+      },
+      "pregunta": {
+        "es": "¿Qué IA tiene en uso y cuánta exigencia de gobierno supone?",
+        "en": "What AI does it have in use and how much governance does that demand?"
+      },
+      "escala": {
+        "es": "HT0–HT5, descriptiva: no es una nota",
+        "en": "HT0–HT5, descriptive: it is not a score"
+      },
+      "obtiene": {
+        "es": "Tecnología y autonomía de las iniciativas en uso del registro T01; sin registro, la pregunta Q01 del documento 96",
+        "en": "Technology and autonomy of the initiatives in use in the T01 register; without a register, question Q01 of document 96"
+      }
+    },
+    {
+      "lente": 3,
+      "nombre": {
+        "es": "Alcance del impacto",
+        "en": "Impact reach"
+      },
+      "pregunta": {
+        "es": "¿A qué afecta: tareas, procesos, personas y organización, modelo de negocio?",
+        "en": "What does it affect: tasks, processes, people and organisation, business model?"
+      },
+      "escala": {
+        "es": "IM1–IM4 por iniciativa y su distribución en la compañía",
+        "en": "IM1–IM4 by initiative and its distribution across the company"
+      },
+      "obtiene": {
+        "es": "Ambición real y preguntas IT-P1 a IT-P4 verificadas de las iniciativas en uso",
+        "en": "Actual ambition and verified questions IT-P1 to IT-P4 of the initiatives in use"
+      }
+    }
+  ],
+  "huella": [
+    {
+      "nivel": "HT0",
+      "n": 0,
+      "tecnologias": [],
+      "nombre": {
+        "es": "Sin IA en uso",
+        "en": "No AI in use"
+      },
+      "que": {
+        "es": "Nada en producción (puede haber uso no autorizado)",
+        "en": "Nothing in production (there may be unauthorised use)"
+      },
+      "tecnologia_txt": {
+        "es": "Sin iniciativas en uso",
+        "en": "No initiatives in use"
+      }
+    },
+    {
+      "nivel": "HT1",
+      "n": 1,
+      "tecnologias": [
+        "reglas"
+      ],
+      "nombre": {
+        "es": "Automatización sin aprendizaje",
+        "en": "Automation without learning"
+      },
+      "que": {
+        "es": "Reglas o RPA. No es IA a efectos del inventario (documento 32), pero se registra como contexto",
+        "en": "Rules or RPA. It is not AI for inventory purposes (document 32), but it is recorded as context"
+      },
+      "tecnologia_txt": {
+        "es": "reglas",
+        "en": "reglas"
+      }
+    },
+    {
+      "nivel": "HT2",
+      "n": 2,
+      "tecnologias": [
+        "ia_terceros_embebida"
+      ],
+      "nombre": {
+        "es": "IA de terceros incluida",
+        "en": "Third-party AI included"
+      },
+      "que": {
+        "es": "Asistentes corporativos, SaaS o productos con IA; la compañía no construye",
+        "en": "Corporate assistants, SaaS or products with AI; the company does not build"
+      },
+      "tecnologia_txt": {
+        "es": "ia_terceros_embebida",
+        "en": "ia_terceros_embebida"
+      }
+    },
+    {
+      "nivel": "HT3",
+      "n": 3,
+      "tecnologias": [
+        "ml_predictivo",
+        "vision",
+        "optimizacion"
+      ],
+      "nombre": {
+        "es": "Modelos predictivos propios",
+        "en": "Own predictive models"
+      },
+      "que": {
+        "es": "ML predictivo, visión u optimización con aprendizaje",
+        "en": "Predictive ML, vision or optimisation with learning"
+      },
+      "tecnologia_txt": {
+        "es": "ml_predictivo, vision, optimizacion",
+        "en": "ml_predictivo, vision, optimizacion"
+      }
+    },
+    {
+      "nivel": "HT4",
+      "n": 4,
+      "tecnologias": [
+        "ia_generativa",
+        "lenguaje_documentos",
+        "agente"
+      ],
+      "agente_autonomia": [
+        "A0",
+        "A1"
+      ],
+      "nombre": {
+        "es": "IA generativa en procesos",
+        "en": "Generative AI in processes"
+      },
+      "que": {
+        "es": "Lenguaje, documentos, generación y recuperación integradas en procesos; agentes que solo proponen (A0 o A1)",
+        "en": "Language, documents, generation and retrieval integrated into processes; agents that only propose (A0 or A1)"
+      },
+      "tecnologia_txt": {
+        "es": "ia_generativa, lenguaje_documentos; agente con A0 o A1",
+        "en": "ia_generativa, lenguaje_documentos; agente with A0 or A1"
+      }
+    },
+    {
+      "nivel": "HT5",
+      "n": 5,
+      "tecnologias": [
+        "agente"
+      ],
+      "agente_autonomia": [
+        "A2",
+        "A3"
+      ],
+      "nombre": {
+        "es": "Agentes que actúan",
+        "en": "Agents that act"
+      },
+      "que": {
+        "es": "Agentes con autonomía A2 o A3 sobre terceros, dinero, datos personales o sistemas de producción",
+        "en": "Agents with A2 or A3 autonomy over third parties, money, personal data or production systems"
+      },
+      "tecnologia_txt": {
+        "es": "agente con A2 o A3",
+        "en": "agente with A2 or A3"
+      }
+    }
+  ],
+  "dimensiones_minimo": [
+    "D1",
+    "D3",
+    "D4",
+    "D5",
+    "D6"
+  ],
+  "minimos": [
+    {
+      "huella": "HT1",
+      "D1": 1,
+      "D3": null,
+      "D4": null,
+      "D5": null,
+      "D6": 2
+    },
+    {
+      "huella": "HT2",
+      "D1": 1,
+      "D3": null,
+      "D4": null,
+      "D5": null,
+      "D6": 2
+    },
+    {
+      "huella": "HT3",
+      "D1": 2,
+      "D3": 2,
+      "D4": 2,
+      "D5": null,
+      "D6": 2
+    },
+    {
+      "huella": "HT4",
+      "D1": 2,
+      "D3": 3,
+      "D4": 3,
+      "D5": null,
+      "D6": 3
+    },
+    {
+      "huella": "HT5",
+      "D1": 3,
+      "D3": 3,
+      "D4": 3,
+      "D5": 3,
+      "D6": 3
+    }
+  ],
+  "alertas": [
+    {
+      "codigo": "adopcion_por_delante",
+      "parametros": {
+        "gravedad": "media",
+        "alta_si": [
+          "D1",
+          "D6"
+        ]
+      },
+      "nombre": {
+        "es": "Adopción por delante del gobierno",
+        "en": "Adoption ahead of governance"
+      },
+      "cuando": {
+        "es": "Alguna dimensión por debajo del mínimo exigible por la huella en uso",
+        "en": "Any dimension below the minimum required by the footprint in use"
+      },
+      "gravedad": {
+        "es": "Alta si es D1 o D6; media en las demás",
+        "en": "High if it is D1 or D6; medium for the others"
+      },
+      "pide": {
+        "es": "Acciones prioritarias en el plan de mejora (P34 §6.6). Mientras D6 esté por debajo, ninguna iniciativa nueva de ese nivel de huella debería superar G5 sin una condición explícita de mejora, plazo y responsable",
+        "en": "Priority actions in the improvement plan (P34 §6.6). While D6 is below the minimum, no new initiative at that footprint level should pass G5 without an explicit improvement condition, deadline and owner"
+      }
+    },
+    {
+      "codigo": "gobierno_sin_uso",
+      "parametros": {
+        "gravedad": "media",
+        "global_minimo": 3,
+        "huella_maxima": "HT2",
+        "meses": 12,
+        "desde": "C2"
+      },
+      "nombre": {
+        "es": "Gobierno sin uso",
+        "en": "Governance without use"
+      },
+      "cuando": {
+        "es": "Nivel global 3 o superior con huella HT2 o inferior, o ninguna iniciativa en uso doce meses después de C2",
+        "en": "Overall level 3 or higher with footprint HT2 or lower, or no initiative in use twelve months after C2"
+      },
+      "gravedad": {
+        "es": "Media",
+        "en": "Medium"
+      },
+      "pide": {
+        "es": "Revisar la cartera y el embudo (documento 14; D2.09): el marco no debe convertirse en burocracia sin valor",
+        "en": "Review the portfolio and the funnel (document 14; D2.09): the framework must not turn into bureaucracy without value"
+      }
+    },
+    {
+      "codigo": "transformacion_sin_personas",
+      "parametros": {
+        "gravedad": "alta",
+        "alcance": [
+          "IM3",
+          "IM4"
+        ],
+        "dimension": "D5",
+        "maximo": 2
+      },
+      "nombre": {
+        "es": "Transformación sin personas",
+        "en": "Transformation without people"
+      },
+      "cuando": {
+        "es": "Alguna iniciativa en uso con alcance IM3 o IM4 y D5 en 2 o menos",
+        "en": "Any initiative in use with reach IM3 or IM4 and D5 at 2 or below"
+      },
+      "gravedad": {
+        "es": "Alta",
+        "en": "High"
+      },
+      "pide": {
+        "es": "Plan de adopción y de personas (documentos 23 y 50; D5.07 y D5.08) antes del siguiente gate",
+        "en": "Adoption and people plan (documents 23 and 50; D5.07 and D5.08) before the next gate"
+      }
+    }
+  ],
+  "alcance": [
+    {
+      "nivel": "IM1",
+      "nombre": {
+        "es": "Tarea",
+        "en": "Task"
+      },
+      "condicion": {
+        "es": "Mejora una tarea dentro de un proceso que no cambia (ninguna de las condiciones siguientes)",
+        "en": "Improves a task within a process that does not change (none of the following conditions)"
+      },
+      "ambicion": {
+        "es": "Optimizar",
+        "en": "Optimise"
+      }
+    },
+    {
+      "nivel": "IM2",
+      "nombre": {
+        "es": "Proceso",
+        "en": "Process"
+      },
+      "condicion": {
+        "es": "IT-P2 = sí: el proceso se rediseña de extremo a extremo",
+        "en": "IT-P2 = yes: the process is redesigned end to end"
+      },
+      "ambicion": {
+        "es": "Optimizar o Aumentar",
+        "en": "Optimise or Augment"
+      }
+    },
+    {
+      "nivel": "IM3",
+      "nombre": {
+        "es": "Personas y organización",
+        "en": "People and organisation"
+      },
+      "condicion": {
+        "es": "IT-P3 = sí: cambian los roles, la estructura o quién toma qué decisiones",
+        "en": "IT-P3 = yes: roles, structure or who takes which decisions change"
+      },
+      "ambicion": {
+        "es": "Aumentar o Transformar",
+        "en": "Augment or Transform"
+      }
+    },
+    {
+      "nivel": "IM4",
+      "nombre": {
+        "es": "Modelo de negocio",
+        "en": "Business model"
+      },
+      "condicion": {
+        "es": "IT-P1 o IT-P4 = sí: cambia la propuesta de valor al cliente o hay ingresos, servicios o mercados nuevos",
+        "en": "IT-P1 or IT-P4 = yes: the value proposition to the customer changes or there are new revenues, services or markets"
+      },
+      "ambicion": {
+        "es": "Transformar",
+        "en": "Transform"
+      }
+    }
+  ]
+}
