@@ -240,6 +240,25 @@ function economia(ix, ini, cerrado, moneda) {
     plazo_potencial: !cerrado ? (get(get(ini, "panel") || {}, "plazo_potencial") || null) : null,
     hipotesis_potencial: !cerrado ? (hip || null) : null, comparte_valor_con: [], clave_reparto: null};
 }
+// plan de realización de T01 (43 §4.1, tramos de 14 §6.2; D135) -> economia.curva; nada se estima: sin plan no hay curva
+function planRealizacion(ini) {
+  const pr = get(ini, "plan_realizacion");
+  if (!truthy(pr)) return null;
+  const est = e => e === "estimado" ? "estimado_cati" : e;
+  const ref = truthy(get(pr, "referencia")) ? pr.referencia : null;
+  const real = {}; for (const [k, v] of Object.entries(get(pr, "real") || {})) real[k] = {importe: get(v, "importe"), estado: est(get(v, "estado"))};
+  return {estado: est(get(pr, "estado") || "declarado"), fuente: get(pr, "fuente"), fecha: get(pr, "fecha"),
+    tramos: (get(pr, "tramos") || []).map(t => ({id: get(t, "id"), fecha: get(t, "fecha"), importe: get(t, "importe"), estado: est(get(t, "estado") || get(pr, "estado") || "declarado"),
+      alcance: get(t, "alcance"), gate: get(t, "gate"), condicion_paso: get(t, "condicion_paso"), situacion: get(t, "situacion") || "previsto", captura_objetivo_pct: get(t, "captura_objetivo_pct")})),
+    captura: Object.assign({}, get(pr, "curva") || {}), fecha_regimen: get(pr, "fecha_regimen"),
+    referencia: ref ? {fecha: get(ref, "fecha"), captura: Object.assign({}, get(ref, "curva") || {})} : null,
+    real, declive: truthy(get(pr, "declive")) ? pr.declive : null};
+}
+// valor no cuantificado de T01 (40 regla 7 y §5.3; D135) -> reporte_compania.valor_no_monetario; nunca en euros
+function noCuantificado(ini) {
+  return (get(ini, "no_cuantificado") || []).map(d => ({dimension: get(d, "dimension"), nivel: get(d, "nivel"), indicador: get(d, "metrica"), base: get(d, "base"),
+    objetivo: get(d, "objetivo"), actual: get(d, "actual"), estado: get(d, "estado") === "estimado" ? "estimado_cati" : get(d, "estado"), efecto_desde: get(d, "efecto_desde"), nota: get(d, "motivo")}));
+}
 function alcance(ix, ini) {
   const a = get(ini, "alcance") || {};
   if (!(get(a, "tipo") in ALCANCE)) return null;
@@ -297,6 +316,8 @@ function caso(ix, ini, org, moneda, ciclo) {
   const inicioEstimado = (!hay(produccion) && (enUso || cerrado)) ? "" : null;
   const al = alcance(ix, ini);
   const eco = economia(ix, ini, cerrado, moneda);
+  const plan = !cerrado ? planRealizacion(ini) : null;   // D135: solo si T01 tiene plan; los cerrados no suman
+  if (plan) eco.curva = plan;
   if (al && al.tipo === "transversal") eco.clave_reparto = "Coste imputado a cada unidad de negocio por sus licencias; el gobierno común (oficina de adopción, formación y revisión de permisos) " +
     "va sin unidad. El valor solo cuenta cuando la unidad lo materializa (documento 40 §7.2).";
   else if (al) { eco.clave_reparto = "El valor de la plataforma se imputa a los casos que la usan; aquí solo cuenta su coste (documento 10 §4.1, regla 3)."; eco.comparte_valor_con = al.habilita.map(h => h.id); }
@@ -331,6 +352,8 @@ function caso(ix, ini, org, moneda, ciclo) {
     valor_validado: valorValidado(ix, ini),
     coste_real: {anio: null, acumulado: null, fuente: null},
     operacion: null, agente: null, proveedor_dora: null};
+  // valor no cuantificado con nivel (D135); la revisión del caso sostenido por él es la próxima R6
+  if (truthy(get(ini, "no_cuantificado"))) { out.reporte_compania.valor_no_monetario = noCuantificado(ini); out.reporte_compania.revision_estrategica = get(cic, "proxima_revision"); }
   out.seveng = {fase: cic.fase, fase_nombre: nulo(FASES[cic.fase]), estado: cic.estado, fecha_entrada_fase: get(cic, "fecha_entrada_fase"),
     iteracion: get(cic, "iteracion"), espera: get(cic, "espera"), proxima_revision: get(cic, "proxima_revision"),
     gate_pendiente: pendiente ? pendiente.gate : null, intensidad: get(cl, "intensidad"),

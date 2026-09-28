@@ -429,6 +429,88 @@
           "ia_ofensiva": "pendiente"
         }
       },
+      "plan_realizacion": {
+        "estado": "declarado",
+        "fuente": "Plan de realización (P62) aprobado en G3 y ajustado en G5",
+        "fecha": "2026-01-28",
+        "tramos": [
+          {
+            "id": "T1",
+            "fecha": "2025-08",
+            "importe": 1500000,
+            "estado": "declarado",
+            "alcance": "Diseño y entrega (fases 4 y 5)",
+            "gate": "G3",
+            "condicion_paso": null,
+            "situacion": "ejecutado",
+            "captura_objetivo_pct": 40
+          },
+          {
+            "id": "T2",
+            "fecha": "2026-02",
+            "importe": 980000,
+            "estado": "declarado",
+            "alcance": "Operación y despliegue en todos los canales",
+            "gate": "G5",
+            "condicion_paso": "Contención ≥ 50 % en el piloto y encuesta de satisfacción sin caída",
+            "situacion": "ejecutado",
+            "captura_objetivo_pct": 65
+          },
+          {
+            "id": "T3",
+            "fecha": "2027-01",
+            "importe": 600000,
+            "estado": "estimado",
+            "alcance": "Escalado a gestiones transaccionales (nueva fase 0)",
+            "gate": "G7",
+            "condicion_paso": "Realización acumulada ≥ 90 % dos trimestres seguidos, con la contención validada por control de gestión",
+            "situacion": "previsto",
+            "captura_objetivo_pct": 100
+          }
+        ],
+        "curva": {
+          "2026-T1": 20,
+          "2026-T2": 35,
+          "2026-T3": 50,
+          "2027-S1": 70,
+          "2027-S2": 90,
+          "2028": 100
+        },
+        "fecha_regimen": "2027-12",
+        "referencia": {
+          "fecha": "2025-08-13",
+          "curva": {
+            "2026-T1": 25,
+            "2026-T2": 40,
+            "2026-T3": 55,
+            "2027": 80,
+            "2028": 100
+          }
+        },
+        "real": {
+          "2026-T1": {
+            "importe": 360000,
+            "estado": "validado"
+          },
+          "2026-T2": {
+            "importe": 540000,
+            "estado": "declarado"
+          }
+        }
+      },
+      "no_cuantificado": [
+        {
+          "dimension": "cliente",
+          "nivel": 2,
+          "metrica": "NPS de la atención digital",
+          "base": 22,
+          "objetivo": 35,
+          "actual": 29,
+          "motivo": "No hay relación demostrada en la compañía entre el NPS de este canal y la retención de clientes",
+          "estado": "declarado",
+          "efecto_desde": "2026-T2"
+        }
+      ],
       "etiquetas_libres": [
         "Programa cliente digital"
       ],
@@ -1085,6 +1167,77 @@
           "ia_ofensiva": null
         }
       },
+      "plan_realizacion": {
+        "estado": "estimado",
+        "fuente": "Hipótesis de etapas (Transformar; G2 en curso)",
+        "fecha": "2026-07-08",
+        "tramos": [
+          {
+            "id": "T1",
+            "fecha": "2026-03",
+            "importe": 480000,
+            "estado": "declarado",
+            "alcance": "Descubrimiento y viabilidad (fases 0 a 3)",
+            "gate": "G0",
+            "condicion_paso": null,
+            "situacion": "ejecutado",
+            "captura_objetivo_pct": null
+          },
+          {
+            "id": "T2",
+            "fecha": "2027-01",
+            "importe": 1900000,
+            "estado": "estimado",
+            "alcance": "Etapa 1: servicio piloto con tres clientes industriales",
+            "gate": "G3",
+            "condicion_paso": "Hito de aprendizaje: tres clientes pagan el piloto y renuevan",
+            "situacion": "previsto",
+            "captura_objetivo_pct": 15
+          },
+          {
+            "id": "T3",
+            "fecha": "2027-10",
+            "importe": 3800000,
+            "estado": "estimado",
+            "alcance": "Etapa 2: comercialización del servicio",
+            "gate": "G5",
+            "condicion_paso": "Hito de la etapa 1 cumplido y aprobación del consejo (Transformar)",
+            "situacion": "previsto",
+            "captura_objetivo_pct": 100
+          }
+        ],
+        "curva": {
+          "2027-T2": 5,
+          "2027-T4": 15,
+          "2028-S2": 50,
+          "2029-S2": 100
+        },
+        "fecha_regimen": "2029-12"
+      },
+      "no_cuantificado": [
+        {
+          "dimension": "opcion",
+          "nivel": 3,
+          "metrica": "Clientes industriales con contrato de servicio",
+          "base": 0,
+          "objetivo": 40,
+          "actual": 0,
+          "motivo": "Valor de opción: depende de las decisiones de las etapas siguientes (40 §5.3)",
+          "estado": "estimado",
+          "efecto_desde": "2028"
+        },
+        {
+          "dimension": "posicionamiento",
+          "nivel": 2,
+          "metrica": null,
+          "base": null,
+          "objetivo": null,
+          "actual": null,
+          "motivo": "Sin métrica acordada todavía",
+          "estado": "estimado",
+          "efecto_desde": null
+        }
+      ],
       "etiquetas_libres": [
         "Apuesta estratégica 2026"
       ],
@@ -1288,6 +1441,51 @@
           "seguridad": "hecho",
           "muc": "pendiente",
           "ia_ofensiva": "no_aplica"
+        }
+      },
+      "plan_realizacion": {
+        "estado": "declarado",
+        "fuente": "Plan de realización (P62) aprobado en G3",
+        "fecha": "2026-06-08",
+        "tramos": [
+          {
+            "id": "T1",
+            "fecha": "2026-06",
+            "importe": 320000,
+            "estado": "declarado",
+            "alcance": "Diseño, entrega y piloto en una línea",
+            "gate": "G3",
+            "condicion_paso": null,
+            "situacion": "ejecutado",
+            "captura_objetivo_pct": 25
+          },
+          {
+            "id": "T2",
+            "fecha": "2026-12",
+            "importe": 140000,
+            "estado": "estimado",
+            "alcance": "Despliegue en las cuatro líneas de montaje",
+            "gate": "G5",
+            "condicion_paso": "Piloto con ≥ 95 % de defectos detectados y < 2 % de falsos rechazos durante ocho semanas",
+            "situacion": "previsto",
+            "captura_objetivo_pct": 100
+          }
+        ],
+        "curva": {
+          "2026-T4": 10,
+          "2027-T1": 40,
+          "2027-T2": 70,
+          "2027-T4": 100
+        },
+        "fecha_regimen": "2027-10",
+        "referencia": {
+          "fecha": "2026-06-08",
+          "curva": {
+            "2026-T4": 10,
+            "2027-T1": 40,
+            "2027-T2": 70,
+            "2027-T4": 100
+          }
         }
       },
       "etiquetas_libres": [],
@@ -1776,6 +1974,19 @@
           }
         ]
       },
+      "no_cuantificado": [
+        {
+          "dimension": "talento",
+          "nivel": 2,
+          "metrica": "Empleados que usan el asistente cada semana",
+          "base": 0,
+          "objetivo": 3000,
+          "actual": 1900,
+          "motivo": "La capacidad liberada no está materializada y no suma (regla 3); la adopción es la condición para materializarla",
+          "estado": "declarado",
+          "efecto_desde": "2026"
+        }
+      ],
       "etiquetas_libres": [
         "Programa productividad"
       ],

@@ -5,7 +5,7 @@
 | | |
 |---|---|
 | Document | Document 43 · Benefits realisation |
-| Version | 0.1 (working draft) |
+| Version | 0.2 (working draft) |
 | Date | 16-09-2026 |
 | Author | Fernando García Varela |
 | Status | Draft for review. Develops value realisation tracking (P28, T12) and its link with R6 and G7. |
@@ -109,7 +109,7 @@ flowchart LR
 
 ### 4.1 Content
 
-The plan is documented in template P62 and recorded in T12; P28 captures its tracking by period. In Lite, the fields marked **(Enterprise)** may be omitted.
+The plan is documented in template P62 and recorded in T01, in the initiative's `plan_realizacion` block (T12); P28 captures its tracking by period. In Lite, the fields marked **(Enterprise)** may be omitted.
 
 | Block | Field | Guidance |
 |---|---|---|
@@ -121,6 +121,7 @@ The plan is documented in template P62 and recorded in T12; P28 captures its tra
 | | Validator | Person from management control. |
 | **Realisation curve** | Expected value per period | Reflects the adoption ramp-up; steady state is not assumed from the first period. |
 | | Steady-state date | Period in which 100% of the annual value is expected. |
+| **Funding** | Funding tranches | Date, amount, *gate* that releases each tranche and its pass condition: the milestone that must be met to release it (document 14 §6.2). |
 | **Enabling changes** | Changes to processes, roles, policies, systems or contracts without which the benefit will not arrive | Each with an owner and a date. |
 | **Materialisation** | Destination of the released capacity | Lever, hours, date and expected evidence (section 7). |
 | **Indicators** | Leading indicators | Use, quality, volume (ADO and OPE families in document 41). |
@@ -130,6 +131,20 @@ The plan is documented in template P62 and recorded in T12; P28 captures its tra
 | **Stop criteria** | Threshold below which iterating or retiring is proposed | Those approved at G2. |
 | **Reviews** | Dates of the 6- and 12-month reviews and of R6 | As per section 8. |
 | **Dependencies** | Other initiatives, suppliers or projects on which it depends | **(Enterprise)** |
+
+**Recording in T01.** The `plan_realizacion` block carries the plan's status, its source and its date, and these fields. The plan's status can only be estimated or declared, because expected value is not validated (section 2.2, rule 2; document 40 §4.1); the realised value for each period and each tranche carry their own status, which may be validated.
+
+| Field | Content |
+|---|---|
+| `curva` | Percentage of the expected annual steady-state value captured in each period (year, half-year or quarter). Between two points it is interpolated in a straight line; before the first it is 0 and after the last the last value is kept. |
+| `fecha_regimen` | Period in which 100% is expected. It is informative: the curve prevails. |
+| `tramos` | Each funding tranche with date, amount, scope, *gate* that releases it, pass condition, situation (executed, committed, planned or optional) and its own status (an executed investment may be validated). Optional tranches do not add up. Only investments are recorded as tranches: discovery and feasibility, design and delivery, scaling and, in Transform, each stage. Operation is not a tranche: it is the recurring cost, which the curve already deducts (document 14 §6.2). |
+| `tramos[].captura_objetivo_pct` | Level of capture of the steady-state value that the tranche makes it possible to reach. It is used to calculate the annual net value the tranche unlocks and its net value per euro (F3 of the tranche). |
+| `referencia` | Curve of the plan approved at G3, G4 or G5, which is not changed afterwards. Realisation (F10) is measured against it; if it does not exist, against the current curve. |
+| `real` | Realised value for each period with its status: validated, declared or estimated (section 5.2). |
+| `declive` | Optional: loss of value per year (`pct_anual`) from a period (`desde`), for example because of model drift or because competitors copy the advantage. |
+
+The board dashboard (T17) reads this block and shows the curve and the tranches (section 11.2). An initiative without a recorded plan has no curve: the dashboard does not estimate it (document 40, rule 8).
 
 ### 4.2 Approval
 
@@ -164,6 +179,8 @@ The plan is documented in template P62 and recorded in T12; P28 captures its tra
 | Realisation | For the period and cumulative (F10), in total and validated only. |
 | Variance and cause | If realisation is outside tolerance (section 9). |
 | Actions | With owner and date. |
+
+The realised value for each period is recorded in T01, in `plan_realizacion.real`, with the amount for the period (not annualised) and its status. With it and with the curve, the board dashboard calculates cumulative realisation in total and validated only.
 
 ### 5.3 Illustrative example
 
@@ -402,6 +419,7 @@ The presentation rules are in document 40 §11. For benefits realisation, the bo
 - **Capacity without destination** in the portfolio and its evolution.
 - **Value by ambition level**, separating efficiencies and return, for signals 2 and 3 of the transformation index.
 - **Historical snapshots** that allow periods to be compared without rewriting figures already presented; corrections are shown as adjustments.
+- **Realisation plan: curve and tranches.** Card with the portfolio curve by year, half-year or quarter (sum of the use cases with a recorded plan), cumulative realisation (F10) against the approved reference, in total and validated only, with the IND-VAL-14 thresholds (≥ 90% within tolerance, 70–90% moderate variance, < 70% significant variance; section 9.1), and the NPV (F7) of each use case. Initiatives without a plan are shown as "no realisation plan" and are never estimated (document 40, rule 8).
 
 ### 11.3 Aggregation rules
 
@@ -457,10 +475,10 @@ When a finding affects figures already presented to the board, the AI Office pre
 
 | Code | Name | Use in this document |
 |---|---|---|
-| **T12** | Value realisation tracking | Realisation plan, recording by period, statuses, realisation, variances. |
-| **T01** | Initiative register | Owners, review events, R6 and G7 decisions. |
+| **T12** | Value realisation tracking | Realisation plan (`plan_realizacion` block of T01), recording by period, statuses, realisation, variances. |
+| **T01** | Initiative register | Owners, review events, R6 and G7 decisions; realisation plan with curve, tranches and realised value by period. |
 | **T13** | Cost calculator per use case | Actual recurring cost. |
-| **T17** | Board AI dashboard | Consolidation and presentation. |
+| **T17** | Board AI dashboard | Consolidation and presentation; "Realisation plan: curve and tranches" card. |
 | **T20** | Adoption and capacity plan | Materialisation and reassignment of capacity. |
 | **T22** | Retirement manager | Final value and retirement. |
 | **P08 · P09** | Value hypothesis canvas · Baseline | Reference for the plan. |
@@ -496,3 +514,4 @@ When a finding affects figures already presented to the board, the AI Office pre
 | Version | Date | Changes |
 |---|---|---|
 | 0.1 | 16-09-2026 | First version. Defines the path from expected to validated value, the business owner of the benefit, the realisation plan, tracking by period, the methods to avoid double counting, the levers for materialising released capacity, the 6- and 12-month reviews, the treatment of variances, the link with R6 and G7, consolidation in the portfolio and in the board dashboard, and the value audit. |
+| 0.2 | 28-09-2026 | The realisation plan is recorded in T01 (`plan_realizacion`: curve, steady-state date, funding tranches with their pass condition, approved reference and realised value by period) and the board dashboard shows it in the "Realisation plan: curve and tranches" card; sections 4.1, 5.2, 11.2 and 13 (D135). |

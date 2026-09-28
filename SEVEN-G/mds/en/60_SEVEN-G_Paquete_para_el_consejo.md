@@ -5,7 +5,7 @@
 | | |
 |---|---|
 | Document | Document 60 · Board pack |
-| Version | 0.2 (working draft) |
+| Version | 0.3 (working draft) |
 | Date | 16-09-2026 |
 | Author | Fernando García Varela |
 | Status | Draft for review. Develops stage C4 (oversight) and the outputs of C2 and C5 that are escalated to the board. |
@@ -410,6 +410,7 @@ Rules of use:
 | Portfolio and value: what holds back scaling and where to act first (§10.4) | One-page summary (main message and what holds back scaling); decisions requested |
 | Portfolio and value: where the impact is, spheres × ambition level (T16, §10.5) | Annual direction (C2) and review (C5) packs; summary |
 | Portfolio and value: key indicators, efficiencies, return and cost by company and unit, additional net value per euro | One-page summary; use cases in detail; investment decisions |
+| Portfolio and value: realisation plan, pending funding tranches and non-quantified value (§10.6) | Decisions requested (release of tranches); use cases in detail; summary |
 | Where the company invests (ambition level) and agility | Summary; annual review (C5) |
 | History and trend | Changes since the previous session |
 | Adoption | Programme traffic light (adoption axis) |
@@ -420,7 +421,7 @@ Rules of use:
 
 ### 10.3 Pending adaptations
 
-Tool T17 is fed from the initiative register (T01) through its connector (03 §5.4): it shows the funnel by lifecycle **phase and status**, links each use case to its IA-AAAA-NNN code and generates the recommendations register of document 62. It also shows the executive reading **«What holds back scaling»** (§10.4) and the **map of spheres × ambition levels** (T16, §10.5). Grouping by **programme** with the traffic light in section 9 is not part of the dashboard: it is calculated with the rules of 14 §12 and annexed to the pack with P67, and board decisions are recorded in P69. The dashboard takes the C2 target ambition per sphere from the thesis approved in the T01 register (board decision with its target ambition per sphere, 62 §10.2) and, only if the register does not carry it, from its general configuration.
+Tool T17 is fed from the initiative register (T01) through its connector (03 §5.4): it shows the funnel by lifecycle **phase and status**, links each use case to its IA-AAAA-NNN code and generates the recommendations register of document 62. It also shows the executive reading **«What holds back scaling»** (§10.4), the **map of spheres × ambition levels** (T16, §10.5) and the **realisation plan with its tranches and the non-quantified value** (§10.6). Grouping by **programme** with the traffic light in section 9 is not part of the dashboard: it is calculated with the rules of 14 §12 and annexed to the pack with P67, and board decisions are recorded in P69. The dashboard takes the C2 target ambition per sphere from the thesis approved in the T01 register (board decision with its target ambition per sphere, 62 §10.2) and, only if the register does not carry it, from its general configuration.
 
 The engine files published in the demonstrations repository are copies from their source project: adaptations are made at source and published again.
 
@@ -465,6 +466,25 @@ Rules of use:
 - **The target ambition per sphere is the one approved in C2** (document 13). It is recorded in T01, in the board decision approving the thesis (62 §10.2), and the dashboard takes it from there and states which decision it comes from; only a dashboard not fed from T01 sets it in its general configuration (`mapa_impacto.objetivo_c2`). Without it, the map marks neither gaps nor «off thesis».
 - **The grades of spheres 08 and 09** are assessed with document 10 (§6.4 and §7.3) and are not deduced from the map.
 
+### 10.6 Realisation plan, funding tranches and non-quantified value in the dashboard
+
+The dashboard shows each use case's benefits realisation plan (document 43 §4.1) as recorded in T01 (`plan_realizacion`) and its non-quantified value (`no_cuantificado`, document 40 rule 7). It estimates nothing: an initiative without a recorded plan has no curve and is counted as «no realisation plan» (document 40, rule 8).
+
+> **Why it matters.** The board approves investment in tranches, but usually sees value as an annual steady-state figure. Without the curve it does not know when the value arrives, how much money still has to be put in or whether what has been captured is on the approved pace. And if what cannot be translated into euros is not kept apart, a case kept for reputation or as a strategic option looks like a loss-making case, or is inflated with figures nobody can prove.
+
+| Card or section | What it shows | Rules |
+|---|---|---|
+| **Realisation plan: curve and tranches** (portfolio and value) | Sum of the curves of the use cases with a plan, by year, half-year or quarter: tranche investment, value, recurring cost, net and cumulative. Figures: investment in the next twelve months, cash still needed, use cases with NPV ≥ 0 out of those with a plan, cumulative realisation (F10) and plans recorded out of the initiatives in phases 3 to 7. | NPV (F7) of each use case with the H and r of C2 (40 §8.2). Realisation against the approved reference, in total and validated only, with the IND-VAL-14 thresholds (≥ 90%, 70–90%, < 70%; 43 §9.1). The portfolio payback period is not given: aggregates hide use cases with negative value (40 rule 9). |
+| **Pending funding tranches** (portfolio and value) | Committed or planned tranches of each use case with date, amount, *gate* that releases them and pass condition, and the annual net value each tranche unlocks per euro invested (F3 of the tranche). | A tranche without a pass condition is flagged (14 §6.2). Optional tranches are shown but do not add up. |
+| **Non-quantified value** (portfolio and value) | For each use case, each dimension with its level 0–3 and its metric (baseline, target and current value); use cases «sustained by non-quantified value». | It is never translated into euros and never adds to net value (40 rule 7 and §5.3); without a metric it does not count. A use case in production (phases 6 and 7) with non-quantified value of medium or high level and a negative NPV, or without a plan that demonstrates it, is flagged as sustained by non-quantified value and needs its next R6 dated. In phases 3 to 5 it is not flagged: the option value of Transform is governed by its stages, milestones and *gates* (40 §8.3). |
+| **Realisation plan** (use case record) | NPV (F7), payback period (F9, informative), maximum cash need and cash still needed, realisation (F10) in total and validated only, curve chart and tranches with their *gate* and pass condition; below, the use case's non-quantified value. | Only if the use case has a recorded plan; otherwise, «no realisation plan». |
+
+**Cash still needed** is how much the cumulative net value still has to fall from today before it starts to rise: the money that still has to be put in. Money already spent does not count. **Maximum cash need** is the lowest point of the cumulative net value over the whole plan.
+
+In the **mobile version**, the «Portfolio realisation plan» section summarises the same figures, and the **alerts** warn of missing plans, tranches without a pass condition, cumulative realisation below 90% and use cases in production sustained by non-quantified value without an up-to-date R6 (no date or an overdue date).
+
+The default granularity, the years shown, H, r and the thresholds are adjusted in the dashboard's general configuration (`curva_valor` and `umbrales_kpi`), without changing the rules of this section. In the quarterly pack, the pending tranches card feeds the decisions requested section when the release of a tranche is requested, and the use case record feeds the use cases in detail.
+
 ---
 
 ## 11. Checklist before sending the pack
@@ -500,7 +520,7 @@ The checklist is applied with P67 §12.
 | T14 | Transformation index calculator | Annual C5 pack. |
 | T15 | Maturity diagnosis | Annual C2 and C5 packs. |
 | T16 | Portfolio sphere map | Annual C2 pack; dashboard card «Where the impact is» (§10.5). |
-| T17 | Board AI dashboard | Views in section 10; «What holds back scaling» reading (§10.4). |
+| T17 | Board AI dashboard | Views in section 10; «What holds back scaling» reading (§10.4); realisation plan, tranches and non-quantified value (§10.6). |
 | T18 | Board recommendations register | Recommendations and decisions section. |
 | T19 | AI thesis and risk appetite template | Annual C2 pack. |
 | P29 | *Gate* decision record | Evidence for the decisions escalated. |
@@ -535,3 +555,4 @@ The checklist is applied with P67 §12.
 |---|---|---|
 | 0.1 | 16-09-2026 | First version. Defines the quarterly (C4) and annual (C2 and C5) content, the structure of the pack, the decision sheet, the allocation between the full board and the board committee, the calendar, the rules for presenting figures, the programme traffic light and the relationship with the board dashboard. Consistency adjustments with 01 (segregation of duties at Lite, R6 outcomes, agents criterion) and with 34 and 37; traffic light aligned with the six axes in document 14. |
 | 0.2 | 28-09-2026 | Executive reading «What holds back scaling» (§10.4): six barriers FE-1 to FE-6 with case signals, stop patterns and company signals, ranking rules and annual value at stake; map of spheres × ambition levels in the dashboard (T16, §10.5); «What holds back scaling» field in the one-page summary (§4.2) and dashboard blocks (§10.2). |
+| 0.3 | 28-09-2026 | Realisation plan, funding tranches and non-quantified value in the dashboard (§10.6): «Realisation plan: curve and tranches», «Pending funding tranches» and «Non-quantified value» cards, «Realisation plan» section of the use case record, mobile version section and alerts; dashboard blocks (§10.2) and §10.3 (D135). |

@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-"""Genera los registros T01 de demostración de la galería de ejemplos por sector (D137).
+"""Genera los registros T01 de demostración de la galería de ejemplos por sector (D136).
 
 Cada sector se describe de forma compacta en _fuentes/<sector>.json (compañía ficticia, personas, iniciativas con su fase, valor y
 riesgo principal). Este script despliega esa descripción en un registro T01 completo y coherente (esquema 0.8): eventos de alta y de

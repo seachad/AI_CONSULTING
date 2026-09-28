@@ -5,7 +5,7 @@
 | | |
 |---|---|
 | Document | Document 14 · Portfolio management |
-| Version | 0.1 (working draft) |
+| Version | 0.2 (working draft) |
 | Date | 16-09-2026 |
 | Author | Fernando García Varela |
 | Status | Draft for review. The weights, scales and traffic-light thresholds are initial and will be calibrated through practical application. |
@@ -242,6 +242,8 @@ The items are the seven envelopes of the framework budget approved by the board 
 | **Scaling** | New phase 0 | G7 with a Scale outcome | New cycle with its own prioritisation. |
 
 In Transform, each approved stage is a tranche with its learning milestone; the next stage is not released until the milestone has been met. A deviation of more than 10% over the approved tranche requires approval from the body that decided the *gate*.
+
+The tranches of each initiative are recorded in T01, in the realisation plan (`plan_realizacion.tramos`), with their date, amount, the *gate* that releases them and their **pass condition**, the milestone that must be met to release them (document 43 §4.1). Only investments are recorded as tranches: 1 · discovery and feasibility, 2 · design and delivery, scaling and, in Transform, each stage. Tranche 3 · operation is not recorded as a tranche: it is the recurring cost, which the realisation curve already deducts. The board dashboard (T17) lists the pending tranches, flags those without a pass condition and shows the annual net value each tranche unlocks per euro invested (F3 of the tranche, document 40 rule 9).
 
 ### 6.3 Capacity
 
@@ -530,3 +532,4 @@ Initial thresholds, to be calibrated in C5.
 | Version | Date | Changes |
 |---|---|---|
 | 0.1 | 16-09-2026 | First version. Develops C3; defines portfolio entry, prioritisation by ambition lanes with six criteria, rules to avoid blocking transformation, balance of ambition and risk, tranche-based budget, monthly and quarterly reviews, treatment of stalled initiatives and holds, concentration, full retirement procedure with register, regularisation and programme traffic light. |
+| 0.2 | 28-09-2026 | Funding tranches are recorded in T01 (`plan_realizacion.tramos`) with gate, amount and pass condition, and the board dashboard lists the pending ones with the annual net value each one unlocks per euro (§6.2; D135). |

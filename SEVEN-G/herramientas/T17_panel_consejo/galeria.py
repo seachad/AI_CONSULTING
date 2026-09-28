@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-"""T17 · Galería de ejemplos por sector (D137).
+"""T17 · Galería de ejemplos por sector (D136).
 
 1. Genera el panel del consejo (completo y móvil), su JSON y el registro de recomendaciones de cada registro T01 de ejemplo por sector
    (../T01_registro_iniciativas/ejemplos/<sector>/datos_demo.json) en galeria/<sector>/, con el mismo conector y el mismo motor que el
