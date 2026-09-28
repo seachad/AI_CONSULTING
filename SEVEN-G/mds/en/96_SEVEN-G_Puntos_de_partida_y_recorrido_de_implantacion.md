@@ -5,10 +5,10 @@
 | | |
 |---|---|
 | Document | Document 96 · Starting points and implementation journey |
-| Version | 0.1 (working draft) |
+| Version | 0.2 |
 | Date | 28-09-2026 |
 | Author | Fernando García Varela |
-| Status | Draft for review. Guidance document: it orders the rules of documents 01, 11, 90 and 94, which prevail; it creates no new rules. |
+| Status | Thresholds and priorities validated (28-09-2026). Guidance document: it orders the rules of documents 01, 11, 90 and 94, which prevail; it creates no new rules. |
 
 <!-- cifras: 6 | typical starting points ; 5 | modifiers ; 22 | journey milestones ; 5 | stages up to the declaration of application -->
 
@@ -47,9 +47,9 @@ Tool **T23 · Implementation journey** applies this document: it runs the questi
 | **PP-A** | Ground zero | No own AI in production and none knowingly contracted. There is usually unauthorised use of generative assistants. | Unauthorised use with company data; ideas without an owner. | Mandate and sponsor; inventory of unauthorised use; acceptable use policy and basic literacy; use case record (P01) and T01 register for the first ideas. | Regularisation (there is nothing to regularise); agent security and operation, until a case reaches phase 4. |
 | **PP-B** | Third-party AI user | Assistants in the office suite, SaaS with AI included or contracted AI; it does not develop. | AI that comes in without passing through any gate (54 §5); licence costs without measured adoption. | Inventory of the AI included in what is contracted (36 §8, P55); requirements on suppliers N1–N3 (36, P14); acceptable use policy; measuring the assistant as a cross-unit initiative with a ladder by unit (40 §7.2). | In-house building (53) and part of the technical cycle, until it builds something. |
 | **PP-C** | Automator | Rule-based automation or RPA in production, with a centre of excellence or automation team; little or no AI that learns. | Confusing automation with AI; moving from bots to agents (A2/A3) without the controls of document 35. | Turning the centre of excellence into the seed of the AI Office (30); an inventory that separates what is AI from what is not (32); a portfolio of cases that replace rules with AI, each with its record. | Its process discipline is an asset: redesigning the process end to end (IT-P2) comes more easily to it. |
-| **PP-D** | Analytics and classic ML | Predictive models in production, a data team and, sometimes, model validation. | Models in production without a continuity review; generative AI coming in outside model governance. | Regularisation of what is in production (90 §5, review equivalent to G7); bringing existing model validation into G5 and R6; drift and monitoring (52); inventory with regulatory classification. | The gap is generative AI: knowledge sources (51; D3.08), evaluation with test sets (D4.08) and bias in responses (52 §4.2.7). |
+| **PP-D** | In-house AI in production | Own models in production —predictive (ML, vision, optimisation) or generative AI integrated into processes—, without agents that act or both at once. There is usually a data team and, sometimes, model validation. | Models in production without a continuity review; a new type of AI coming in outside the existing governance. | Regularisation of what is in production (90 §5, review equivalent to G7); bringing existing model validation into G5 and R6; drift and monitoring (52); inventory with regulatory classification. | What belongs to the type of AI it does not have yet: with ML only, knowledge sources (51; D3.08), evaluation with test sets (D4.08) and bias in responses (52 §4.2.7); with generative AI only, data drift and validation of predictive models (52). |
 | **PP-E** | Many pilots | Several generative AI proofs of concept (as a guide, three or more) and none or one in production. | "Pilot purgatory": cost without value and without a decision to stop. | Registering every pilot in T01 in its real phase; G3 as the stop gate and the funnel to stop or scale; value hypothesis and baseline (40, P08, P09) before more budget. | The full structure of bodies: first the decision on the portfolio, then the rest. |
-| **PP-F** | At scale | At least two of these three things in production: predictive ML, generative AI integrated into processes and agents that act (A2/A3). | Regulatory and security exposure that is already real; governance lagging behind use. | Segregated roles and AI Auditor immediately; complete inventory with classification; agent security (35) and suppliers (36); regularisation prioritised by risk; board dashboard and transformation index. | Nothing: everything is mandatory and urgent. |
+| **PP-F** | At scale | Agents that act (A2 or A3) in production, or predictive ML and generative AI integrated into processes at the same time. | Regulatory and security exposure that is already real; governance lagging behind use. | Segregated roles and AI Auditor immediately; complete inventory with classification; agent security (35) and suppliers (36); regularisation prioritised by risk; board dashboard and transformation index. | Nothing: everything is mandatory and urgent. |
 
 > **Why it matters.** Naming the starting point avoids two opposite mistakes: copying the plan of another company that started from somewhere else, and believing that, because something already exists (a data committee, an automation centre), there is no need to adapt it.
 
@@ -59,9 +59,9 @@ It is applied in this order and the **first archetype** whose conditions are met
 
 | Order | Archetype | Condition |
 |---|---|---|
-| 1 | PP-F | At least two of {predictive ML, generative AI integrated into processes, A2 or A3 agents} in production. |
+| 1 | PP-F | A2 or A3 agents in production, or predictive ML and generative AI integrated into processes at the same time. |
 | 2 | PP-E | Three or more AI pilots under way, mostly generative AI, and at most one generative AI system in production. |
-| 3 | PP-D | Predictive ML, vision or optimisation with learning in production. |
+| 3 | PP-D | In-house AI in production: predictive ML, vision or optimisation with learning, or generative AI integrated into processes. |
 | 4 | PP-C | Rules or RPA in production, with no AI that learns in production. |
 | 5 | PP-B | Third-party AI included in products or corporate assistants, with no in-house build in production. |
 | 6 | PP-A | None of the above. |
@@ -69,12 +69,12 @@ It is applied in this order and the **first archetype** whose conditions are met
 <!-- grafico: How the starting point is assigned | The first archetype that is met is assigned; the following ones that are also met are traits -->
 ```mermaid
 flowchart TD
-  Q["Questionnaire Q01 to Q12"] --> F{"Two of: ML, generative AI in processes, A2/A3 agents?"}
+  Q["Questionnaire Q01 to Q12"] --> F{"A2/A3 agents, or ML and generative AI at once?"}
   F -->|"Yes"| PF["PP-F · At scale"]
   F -->|"No"| E{"Three or more generative pilots and at most one in production?"}
   E -->|"Yes"| PE["PP-E · Many pilots"]
-  E -->|"No"| D{"ML, vision or optimisation in production?"}
-  D -->|"Yes"| PD["PP-D · Classic ML"]
+  E -->|"No"| D{"ML, vision, optimisation or own generative AI in production?"}
+  D -->|"Yes"| PD["PP-D · In-house AI"]
   D -->|"No"| C{"Rules or RPA in production?"}
   C -->|"Yes"| PC["PP-C · Automator"]
   C -->|"No"| B{"Third-party AI included in what is contracted?"}
@@ -205,11 +205,11 @@ Keys: **1**, start now (months 1–2); **2**, in its stage (months 3–6); **3**
 | **HI-13** | D | D | 2 | 2 | 1 | 2 |
 | **HI-14** | 2 | 2 | 2 | 2 | 1 | 2 |
 | **HI-15** | 2 | 2 | 2 | 2 | 2 | 1 |
-| **HI-16** | D | 1 | D | 2 | D | 1 |
+| **HI-16** | D | 1 | D | 2 | 2 | 1 |
 | **HI-17** | D | · | D | 1 | D | 1 |
 | **HI-18** | 3 | 2 | 2 | 2 | 2 | 1 |
 | **HI-19** | D | 1 | 2 | 2 | 2 | 1 |
-| **HI-20** | D | · | 2 | C | 2 | 1 |
+| **HI-20** | D | 2 | 2 | C | 2 | 1 |
 | **HI-21** | 3 | 3 | 3 | 3 | 3 | 3 |
 | **HI-22** | 3 | 3 | 3 | 3 | 3 | 3 |
 
@@ -335,3 +335,4 @@ A professional services company has deployed a generative assistant in the offic
 | Version | Date | Changes |
 |---|---|---|
 | 0.1 | 28-09-2026 | First version: six starting points, assignment rule, five modifiers, twelve-question questionnaire, five stages, twenty-two milestones with their evidence, the question from document 11 that substantiates them and their priority by archetype, roles by stage and three fictitious journeys. Assignment thresholds and priorities, to be validated. |
+| 0.2 | 28-09-2026 | Thresholds and priorities validated. The assignment rule no longer leaves in PP-A a company with in-house AI in production: PP-F becomes "A2 or A3 agents, or ML and generative AI at once" and PP-D, renamed "In-house AI in production", includes generative AI integrated into processes. HI-16 (suppliers) rises to 2 in PP-E, because generative pilots use third-party models with company data, and HI-20 (data and knowledge) goes from · to 2 in PP-B, because corporate assistants access the company's knowledge sources. |

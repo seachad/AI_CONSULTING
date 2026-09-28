@@ -385,7 +385,7 @@ Alphabetical order by English term. The full scales are in section 4 and the cod
 | **Sphere** | Domain of AI impact in the organisation. There are nine, grouped into where value is created (01–04), enablers (05–07), boundaries (08) and meta-sphere (09). | 01 §4; 10 §2 | Esfera |
 | **Sphere × level heat map** | Portfolio view with investment, recurring cost and value by primary sphere and ambition level; rows 08 and 09 show grades by dimension. | 10 §8; T16 | Mapa de calor esferas × niveles |
 | **Stalled (initiative)** | Initiative that exceeds the reference time limit for its phase approved in C2. It is flagged and reviewed by the AI Committee. | 01 §6.11; 03 §3.6 | Estancada (iniciativa) |
-| **Starting-point archetype** | One of the six typical starting points of a company implementing SEVEN-G (PP-A Ground zero · PP-B Third-party AI user · PP-C Automator · PP-D Analytics and classic ML · PP-E Many pilots · PP-F At scale), assigned with the questionnaire and rule of document 96. It changes the order and calendar of the journey, never what is required in the end. | 96 §2 | arquetipo de punto de partida |
+| **Starting-point archetype** | One of the six typical starting points of a company implementing SEVEN-G (PP-A Ground zero · PP-B Third-party AI user · PP-C Automator · PP-D In-house AI in production · PP-E Many pilots · PP-F At scale), assigned with the questionnaire and rule of document 96. It changes the order and calendar of the journey, never what is required in the end. | 96 §2 | arquetipo de punto de partida |
 | **Starting-point modifier** | Circumstance that adjusts the implementation journey without changing the archetype: MP1 regulated sector, MP2 decisions about people or high risk, MP3 Enterprise scope, MP4 reusable existing governance, MP5 no sponsor in senior management (blocks the journey). | 96 §2.3 | modificador de punto de partida |
 | **Stop** | *Gate* outcome: there is no plausible value, feasibility is not demonstrated or the risk is unacceptable. The initiative is closed with a coded reason and lessons learned. A well-founded stop is a valid outcome. | 01 §7.3 | Parar |
 | **Stop criteria** | Conditions set in phase 2, before investing, whose fulfilment requires Stop to be proposed. They cannot be relaxed during the phase without the approval of the body that authorised the initiative. | 01 §6.4, §7.4 | Criterios de parada |
@@ -809,7 +809,7 @@ Spanish equivalents of the taxonomy values:
 | **B1–B3** | B + number | Baseline conditions of the transformation index. | 12 §4.3 | B2 |
 | **F1–F10 · F2v** | F + number | Official measurement formulas. | 40 §6 | F7 |
 | **FE-1–FE-6** | FE + hyphen + number | Scaling barriers of the board dashboard's executive reading: value, progress, risk and compliance, adoption, data and technology, direction and governance. | 60 §10.4 | FE-3 |
-| **PP-A–PP-F** | PP + hyphen + letter | Starting-point archetypes: Ground zero, Third-party AI user, Automator, Analytics and classic ML, Many pilots, At scale. | 96 §2.1 | PP-D |
+| **PP-A–PP-F** | PP + hyphen + letter | Starting-point archetypes: Ground zero, Third-party AI user, Automator, In-house AI in production, Many pilots, At scale. | 96 §2.1 | PP-D |
 | **MP1–MP5** | MP + number | Starting-point modifiers. | 96 §2.3 | MP2 |
 | **HI-01–HI-22** | HI + hyphen + two digits | Implementation journey milestones. | 96 §4.1 | HI-09 |
 | **HT0–HT5** | HT + number | Technology footprint levels; descriptive, they are not maturity levels. | 11 §7.6 | HT4 |

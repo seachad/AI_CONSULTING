@@ -5,7 +5,7 @@
 | | |
 |---|---|
 | Document | Document 11 · Maturity model |
-| Version | 0.3 (working draft) |
+| Version | 0.4 (working draft) |
 | Date | 28-09-2026 |
 | Author | Fernando García Varela |
 | Status | Draft for review. Develops decision D10. Sample sizes, weights and reference targets are initial and will be calibrated through practical application. |
@@ -477,24 +477,24 @@ The **highest level in use** (initiatives in phases 6 and 7 that have not been c
 
 #### Minimum governance required by footprint
 
-Starting values, **to be calibrated in C5** (section 8). Each footprint level requires its own row and those above it.
+Values validated on 28-09-2026; they are recalibrated at each C5 with the company's own data (section 8). Each footprint level requires its own row and those above it.
 
 | Footprint in use | D1 | D3 | D4 | D5 | D6 |
 |---|---|---|---|---|---|
-| **HT1** | 1 | — | — | — | 2 |
-| **HT2** | 1 | — | — | — | 2 |
-| **HT3** | 2 | 2 | 2 | — | 2 |
-| **HT4** | 2 | 3 | 3 | — | 3 |
+| **HT1** | 1 | — | — | — | 1 |
+| **HT2** | 1 | — | — | 2 | 2 |
+| **HT3** | 2 | 2 | 2 | 2 | 2 |
+| **HT4** | 2 | 3 | 3 | 2 | 3 |
 | **HT5** | 3 | 3 | 3 | 3 | 3 |
 
-In HT4, D3 covers knowledge sources with an owner and validity (D3.08) and D4 covers evaluation with a test set before each change (D4.08); in HT5, D6 covers agent controls (D6.08).
+From HT2, D5 covers the literacy of those who use AI, which the EU AI Act requires of deployers (Art. 4; D5.03); at HT1, D6 at 1 is enough, because rules and RPA are not AI, but it must be checked that they do not incorporate it. In HT4, D3 covers knowledge sources with an owner and validity (D3.08) and D4 covers evaluation with a test set before each change (D4.08); in HT5, D6 covers agent controls (D6.08).
 
 #### Alerts
 
 | Alert | When it is triggered | Severity | What it calls for |
 |---|---|---|---|
 | **Adoption ahead of governance** | Any dimension below the minimum required by the footprint in use | High if it is D1 or D6; medium for the others | Priority actions in the improvement plan (P34 §6.6). While D6 is below the minimum, no new initiative at that footprint level should pass G5 without an explicit improvement condition, deadline and owner |
-| **Governance without use** | Overall level 3 or higher with footprint HT2 or lower, or no initiative in use twelve months after C2 | Medium | Review the portfolio and the funnel (document 14; D2.09): the framework must not turn into bureaucracy without value |
+| **Governance without use** | Overall level 3 or higher with footprint HT1 or lower, or no initiative in use twelve months after C2 | Medium | Review the portfolio and the funnel (document 14; D2.09): the framework must not turn into bureaucracy without value |
 | **Transformation without people** | Any initiative in use with reach IM3 or IM4 and D5 at 2 or below | High | Adoption and people plan (documents 23 and 50; D5.07 and D5.08) before the next *gate* |
 
 The cross-reading with the transformation index (section 7.2 and 12 §5.3) is kept and shown alongside these alerts. T15 presents the three lenses in its "Three lenses" view, saves their summary into the T01 register and the board dashboard (T17) shows it in the maturity card.
@@ -577,3 +577,4 @@ The board should not approve Transform bets at G2 with D1 or D6 below 2 unless t
 | 0.1 | 16-09-2026 | First version. Confirms the seven dimensions and the six levels (D10); defines rubrics, an 84-question questionnaire, assessment types, sampling, calculation with a cap based on D1 and D6, report, links with the transformation index and with 01 §14, and reference targets by ambition. |
 | 0.2 | 25-09-2026 | Adds the indicative equivalence of levels 0–5 with the NIST CSF 2.0 *tiers* (section 2.2), which is a calculated view and not a second scale, and link 7.5 with the NIST profiles: current level of each AI RMF and CSF subcategory derived from the questionnaire, own questions, target level in C2, gap and equivalent *tier* (34 §5.4 and §5.5). Templates P72 and P73 in section 10. |
 | 0.3 | 28-09-2026 | Adds the three-lens reading (section 7.6): governance capability, technology footprint HT0–HT5 and impact reach (12 §3.7); technology does not score, but it sets the minimum governance required by dimension and triggers the alerts "adoption ahead of governance", "governance without use" and "transformation without people". Note in section 1.1 and cross-references in sections 8 and 10. |
+| 0.4 | 28-09-2026 | Minimum governance by footprint validated: D5 at 2 from HT2 (literacy, Art. 4 of the EU AI Act) and 3 at HT5; D6 at 1 at HT1, which is not AI; the "governance without use" alert fires with footprint HT1 or lower (a company using third-party AI does use AI). |
