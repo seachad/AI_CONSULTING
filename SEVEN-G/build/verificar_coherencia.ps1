@@ -1160,7 +1160,21 @@ try {
     }
     foreach ($r in $regs | Where-Object { $_.situacion -and $_.situacion -ne 'final' }) { if (@($vig.prioritarias | ForEach-Object id) -notcontains $r.id) { Mal "referencia $($r.id) en $($r.situacion) y fuera de la vigilancia mensual (D117)"; $malVig++ } }
   }
-  if (-not $malVig) { Ok "vigilancia mensual: $(@($vig.prioritarias).Count) fuentes prioritarias, todas en el registro; toda fuente en borrador está vigilada" }}
+  if (-not $malVig) { Ok "vigilancia mensual: $(@($vig.prioritarias).Count) fuentes prioritarias, todas en el registro; toda fuente en borrador está vigilada" }
+  # ---- 26. colaboradores (D121): la portada ES y EN tiene la sección con las mismas personas y la nota de que el reconocimiento
+  # no implica titularidad ni coautoría
+  Write-Host '26. Colaboradores en la portada'
+  $malCol = 0; $nombresCol = @{}
+  foreach ($p in 'index.html', 'en\index.html') {
+    $html = [IO.File]::ReadAllText((Join-Path $repo $p))
+    $sec = [regex]::Match($html, '(?s)<h2 id="colaboradores">.*?</section>').Value
+    if (-not $sec) { Mal "$p`: falta la sección de colaboradores (D121)"; $malCol++; continue }
+    $nombresCol[$p] = (@([regex]::Matches($sec, '<li><b>([^<]+)</b>') | ForEach-Object { $_.Groups[1].Value.Trim() }) | Sort-Object) -join ' | '
+    if (-not $nombresCol[$p]) { Mal "$p`: la sección de colaboradores no nombra a nadie (D121)"; $malCol++ }
+    if ($sec -notmatch '(?i)coautoría|co-authorship') { Mal "$p`: la sección de colaboradores no aclara que no implica titularidad ni coautoría (D121, D89)"; $malCol++ }
+  }
+  if ($nombresCol.Count -eq 2 -and $nombresCol['index.html'] -ne $nombresCol['en\index.html']) { Mal "colaboradores distintos en ES («$($nombresCol['index.html'])») y EN («$($nombresCol['en\index.html'])») (D121)"; $malCol++ }
+  if (-not $malCol) { Ok "colaboradores en ES y EN: $($nombresCol['index.html'])" }}
 finally { Remove-Item $tmp -Recurse -Force -Confirm:$false -ErrorAction SilentlyContinue }
 
 Write-Host ''
