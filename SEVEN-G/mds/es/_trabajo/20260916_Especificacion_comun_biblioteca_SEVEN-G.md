@@ -15,7 +15,7 @@
 
 1. `SEVEN-G/mds/es/00_SEVEN-G_Que_es_y_para_que_sirve.md` (presentación, reglas de medición §6, índice de transformación §5).
 2. `SEVEN-G/mds/es/01_SEVEN-G_Metodologia_fundacional.md` (modelo, fases, *gates*, roles, intensidad, riesgos, no conformidades, regulación). **Es la referencia normativa.**
-3. `SEVEN-G/mds/es/03_SEVEN-G_Herramientas_y_registro_de_iniciativas.md` (registro, taxonomía, eventos, métricas, modelo de datos, herramientas T01–T22).
+3. `SEVEN-G/mds/es/03_SEVEN-G_Herramientas_y_registro_de_iniciativas.md` (registro, taxonomía, eventos, métricas, modelo de datos, herramientas T01–T23).
 4. `.claude/seveng_decisiones.md` (registro de decisiones).
 5. `SEVEN-G/build/guia_traduccion_en.md` (glosario ES/EN obligatorio: los términos en español de ese glosario son los términos oficiales).
 6. Este documento.
@@ -199,7 +199,7 @@ Formatos de respuesta: **"Sí"** · **"Sí, con una condición: …"** · **"Tod
 | `IE01.01`… | Indicadores por esfera (documento 10; consolidados en el catálogo del documento 41) |
 | `IND-<FAM>-NN` | Indicadores del catálogo (documento 41; 156 en 13 familias): VAL, COS, EMB, AGI, RIE, OPE, ADO, DAT, CLI, TRA, MAD, CON (consejo) y **PRO** (procesos y decisión, familia nueva que recoge los indicadores de las esferas 04 y 07) |
 | PER-NN · DAT-NN · **CNC-NN** · OPE-NN | Indicadores provisionales de los documentos 50, 51 y 52. **CNC-** (conocimiento, documento 51) sustituye a CON- para no confundirse con la familia IND-CON (consejo). Código definitivo en la tabla de correspondencia de 41 §21 |
-| T01–T22 | Herramientas (documento 03) |
+| T01–T23 | Herramientas (documento 03) |
 | P01–P74 | Plantillas (bloque H): P01–P31 por iniciativa; P32–P71 de compañía, consejo, cumplimiento, terceros, auditoría e implantación; P72–P74, perfiles NIST y declaración de aplicabilidad de ISO/IEC 42001 (§6.1) |
 | D1–D7 | Dimensiones de madurez |
 | S1–S4 | Severidad de incidentes |
@@ -217,6 +217,8 @@ Formatos de respuesta: **"Sí"** · **"Sí, con una condición: …"** · **"Tod
 | PRV-AAAA-NNN | Relación con un proveedor de IA en el registro de proveedores (P57, T09) |
 | SOL-AAAA-NNN · COM-AAAA-NNN · INF-AAAA-NNN | Solicitudes de herramienta y comunicaciones de empleados (P43) · información a la representación (P46) |
 | PA-AAAA-NNN · IDN-AAAA-NNN | Campañas de pruebas adversarias (P53) · identidades no humanas (P54) |
+| PP-A–PP-F · MP1–MP5 · HI-01–HI-22 | Arquetipos y modificadores de punto de partida e hitos del recorrido de implantación (documento 96; D119) |
+| HT0–HT5 · IM1–IM4 | Huella tecnológica (11 §7.6) y alcance del impacto (12 §3.7); descriptivos, no son niveles de madurez (D120) |
 
 ## 6. Plantillas del bloque H (alineadas con 01 §6.10)
 

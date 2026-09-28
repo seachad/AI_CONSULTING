@@ -176,6 +176,7 @@ Each document shows this same level in its "The essentials" box, with the minimu
 | 93 | [Licence, use by third parties and citation](93_SEVEN-G_Licencia_uso_y_citacion.html) | **Conditional** | Legal counsel, consultants |
 | 94 | [Obligation matrix and layered reading](94_SEVEN-G_Matriz_de_obligatoriedad_y_lectura_por_capas.html) | **Recommended** | Everyone |
 | 95 | [Where your data is and how to install SEVEN-G on your own server](95_SEVEN-G_Datos_en_local_e_instalacion_propia.html) | **Conditional** | AI Office, IT and security, consultants and partners |
+| 96 | [Starting points and implementation journey](96_SEVEN-G_Puntos_de_partida_y_recorrido_de_implantacion.html) | **Recommended** | Sponsor, AI office, consultants |
 
 The fact that a document is *Always* does not mean it must be read in full: nineteen documents have that level, but the initial reading for a company with Lite scope comes down to documents 00 and 01, the implementation guide, the adaptation of the governance model to small organisations and the Lite column of the gate criteria (document 90, section 2.4). The rest is opened when its moment in the cycle arrives.
 
@@ -237,6 +238,7 @@ No tool is mandatory as an application: what is mandatory is the register or the
 | T14 · Transformation index · T15 · Maturity diagnosis | **Always** | At C1 and at each C5. |
 | T17 · Board dashboard | **Always** | Aggregated in Lite scope; per initiative for Enterprise ones. |
 | T11 · Value calculator (with T13 costs) | **Recommended** | The formulas of document 40 are mandatory; the calculator is an aid. |
+| T23 · Implementation journey | **Recommended** | Orders the implementation according to the starting point (document 96); what is mandatory is still what document 90 sets. |
 | Rest of the catalogue | According to its procedure | They are applied with the template or document indicated in the catalogue of document 03. |
 
 ---

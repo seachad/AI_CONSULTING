@@ -176,6 +176,7 @@ Cada documento muestra este mismo nivel en su recuadro «Lo esencial», con la p
 | 93 | [Licencia, uso por terceros y citación](93_SEVEN-G_Licencia_uso_y_citacion.html) | **Condicional** | Asesoría jurídica, consultores |
 | 94 | [Matriz de obligatoriedad y lectura por capas](94_SEVEN-G_Matriz_de_obligatoriedad_y_lectura_por_capas.html) | **Recomendado** | Todos |
 | 95 | [Dónde están sus datos y cómo instalar SEVEN-G en un servidor propio](95_SEVEN-G_Datos_en_local_e_instalacion_propia.html) | **Condicional** | Oficina de IA, TI y seguridad, consultores y *partners* |
+| 96 | [Puntos de partida y recorrido de implantación](96_SEVEN-G_Puntos_de_partida_y_recorrido_de_implantacion.html) | **Recomendado** | Patrocinador, oficina de IA, consultores |
 
 Que un documento sea *Siempre* no obliga a leerlo entero: diecinueve documentos tienen ese nivel, pero la lectura inicial de una compañía con alcance Lite se reduce a los documentos 00 y 01, la guía de implantación, la adaptación a organizaciones pequeñas del modelo de gobierno y la columna Lite de los criterios de puerta (documento 90, sección 2.4). El resto se abre cuando llega su momento del ciclo.
 
@@ -237,6 +238,7 @@ Ninguna herramienta es obligatoria como aplicación: lo obligatorio es el regist
 | T14 · Índice de transformación · T15 · Diagnóstico de madurez | **Siempre** | En C1 y en cada C5. |
 | T17 · Panel del consejo | **Siempre** | Agregado en alcance Lite; por iniciativa para las Enterprise. |
 | T11 · Calculadora de valor (con T13 costes) | **Recomendado** | Las fórmulas del documento 40 son obligatorias; la calculadora, una ayuda. |
+| T23 · Recorrido de implantación | **Recomendado** | Ordena la implantación según el punto de partida (documento 96); lo obligatorio sigue siendo lo del documento 90. |
 | Resto del catálogo | Según su procedimiento | Se aplican con la plantilla o el documento que indica el catálogo del documento 03. |
 
 ---

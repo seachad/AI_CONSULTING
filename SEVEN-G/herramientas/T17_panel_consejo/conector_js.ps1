@@ -28,7 +28,8 @@ $pagina = '<!doctype html><meta charset="utf-8"><script>' + [IO.File]::ReadAllTe
 $perfil = Join-Path ([IO.Path]::GetTempPath()) ('t17_edge_' + [Guid]::NewGuid().ToString('N').Substring(0, 8))
 $puerto = Get-Random -Minimum 20000 -Maximum 40000
 $http = [System.Net.HttpListener]::new(); $http.Prefixes.Add("http://localhost:$puerto/"); $http.Start()
-$proc = Start-Process -FilePath $edge -ArgumentList '--headless=new', '--disable-gpu', '--no-first-run', "--user-data-dir=$perfil", '--virtual-time-budget=6000', "http://localhost:$puerto/" -PassThru -WindowStyle Hidden
+$sinVentana = if ($IsWindows) { @{ WindowStyle = 'Hidden' } } else { @{} }  # -WindowStyle solo existe en Windows
+$proc = Start-Process -FilePath $edge -ArgumentList '--headless=new', '--disable-gpu', '--no-first-run', "--user-data-dir=$perfil", '--virtual-time-budget=6000', "http://localhost:$puerto/" -PassThru @sinVentana
 $res = $null; $limite = (Get-Date).AddSeconds(45)
 try {
   while (-not $res -and (Get-Date) -lt $limite) {

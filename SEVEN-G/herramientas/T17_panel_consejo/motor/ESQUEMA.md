@@ -18,8 +18,8 @@ Se genera con `generar(datos, carpeta)` de `build_dashboard.py`. Los dos HTML ll
 | `leer_json_servidor` | `false` impide que el panel, servido por HTTP, lea un `dashboard_data.json` de su carpeta. |
 | `textos` | Textos de contexto opcionales: `aviso_previo`, `aviso_valor`, `pie`, `movimientos_vacio`, `agilidad_sin_fechas`, `backlog_sin_dato`, `adopcion_sin_telemetria`, `ref_guardarrailes`, `nota_concentracion`, `sin_que_es`, y etiquetas `ret_<concepto>` y `ef_<concepto>`. |
 | `glosario_extra` | Términos propios de la organización: `[grupo, sigla, desarrollo, explicación, en_móvil]`. |
-| `mapa_impacto` | Opcional (D126). Mapa de calor esferas × niveles de ambición (T16, documento 10 §8) de la tarjeta «Dónde está el impacto»: `filas` (esferas de valor en su orden; sin ella, las de `tags.funcion`), `habilitacion` (esferas de la banda de habilitación, fuera del total), `objetivo_c2` (ambición objetivo por esfera, por código o etiqueta: `Optimizar`, `Aumentar`, `Transformar` o `no_prioritaria`), `umbrales` (`baja`, `alta`, en %) y `meses_retiradas`. |
-| `frenos_escalado` | Opcional (D125). Lectura «Qué frena el escalado» (documento 60 §10.4): `umbral_madurez` (por defecto 2), `meses_patron` (12), `motivos` (texto del motivo de parada → `FE-1`…`FE-6`) y `textos` (por freno: `nombre`, `accion`, `resp`, `donde`). |
+| `mapa_impacto` | Opcional (D127). Mapa de calor esferas × niveles de ambición (T16, documento 10 §8) de la tarjeta «Dónde está el impacto»: `filas` (esferas de valor en su orden; sin ella, las de `tags.funcion`), `habilitacion` (esferas de la banda de habilitación, fuera del total), `objetivo_c2` (ambición objetivo por esfera, por código o etiqueta: `Optimizar`, `Aumentar`, `Transformar` o `no_prioritaria`), `umbrales` (`baja`, `alta`, en %) y `meses_retiradas`. |
+| `frenos_escalado` | Opcional (D126). Lectura «Qué frena el escalado» (documento 60 §10.4): `umbral_madurez` (por defecto 2), `meses_patron` (12), `motivos` (texto del motivo de parada → `FE-1`…`FE-6`) y `textos` (por freno: `nombre`, `accion`, `resp`, `donde`). |
 
 ## `casos[]`
 
@@ -89,7 +89,7 @@ Para proveedores, `proveedor_dora`: `en_registro`, `criticidad`, `estrategia_sal
 
 ## `madurez` (opcional)
 
-Diagnóstico de madurez de la compañía (documento 11 de SEVEN-G, diagnóstico T15), que el conector toma del registro T01 (esquema 0.6; desde el 0.7 puede traer `perfiles`, el resumen de los perfiles NIST del último diagnóstico, que la tarjeta muestra en una tabla aparte y el móvil en una lista; clave opcional). Si falta, la tarjeta «Madurez de la compañía (D1–D7)» del panel completo y el bloque del móvil no se muestran. No depende de los filtros y el motor no recalcula nada: solo lee el bloque.
+Diagnóstico de madurez de la compañía (documento 11 de SEVEN-G, diagnóstico T15), que el conector toma del registro T01 (esquema 0.6; desde el 0.7 puede traer `perfiles`, el resumen de los perfiles NIST del último diagnóstico, que la tarjeta muestra en una tabla aparte y el móvil en una lista, y desde el 0.8 `lentes`, la madurez en tres lentes; claves opcionales). Si falta, la tarjeta «Madurez de la compañía (D1–D7)» del panel completo y el bloque del móvil no se muestran. No depende de los filtros y el motor no recalcula nada: solo lee el bloque.
 
 | Campo | Contenido |
 |---|---|
@@ -98,6 +98,8 @@ Diagnóstico de madurez de la compañía (documento 11 de SEVEN-G, diagnóstico 
 | `validez`, `declaracion_posible` | `auto` (autodiagnóstico), `pend` (verificación incompleta) u `ok`; y si procede la declaración de aplicación de SEVEN-G (11 §7.3). |
 | `nivel_global`, `nivel_minimo`, `media`, `tope`, `tope_aplicado`, `limitante[]` | Nivel global 0–5 (`null` si hay preguntas sin responder que bloquean el cálculo: se muestra «sin dato» y `nivel_minimo` como mínimo garantizado), media ponderada, tope min(D1, D6) + 1, si se aplicó y qué dimensiones lo imponen. |
 | `dimensiones[]` | Una por dimensión D1–D7: `dimension`, `nombre`, `nivel` (0–5 o `null`), `avance` (porcentaje hacia el nivel siguiente, o `null`) y `bloqueantes[]` (códigos de los criterios que impiden subir). |
+| `perfiles` | Opcional (esquema 0.7, D115): resumen de los perfiles NIST (`ai_rmf`, `csf`) con `funciones[]`, `areas[]` (solo CSF) y `total` (`subcategorias`, `con_nivel`, `minimo`, `frecuente`, `con_objetivo`, `con_brecha`). |
+| `lentes` | Opcional (esquema 0.8, D120; documentos 11 §7.6 y 12 §3.7): `fuente` (`t01` o `manual`); `huella` (`nivel` HT0–HT5 más alto en uso, `amplitud` —tipos de tecnología—, `tipos[]`, `sistemas_en_uso`, `iniciativas_en_uso`, `pilotos` —iniciativas en fases 1 a 5— y `nivel_exploracion`); `alcance` (iniciativas en uso por nivel `IM1`–`IM4`); `exigible` (gobierno mínimo exigible por la huella, por dimensión) y `alertas[]` (`codigo`: `adopcion_por_delante`, `gobierno_sin_uso` o `transformacion_sin_personas`; `gravedad`: `alta` o `media`; y, si procede, `dimension`, `nivel`, `minimo` o `maximo`). La tarjeta lo muestra en la tabla «Madurez en tres lentes» y el móvil con una línea por lente y las alertas. La huella y el alcance no cambian el nivel de madurez. |
 | `anterior` | El diagnóstico anterior (`id`, `fecha_corte`, `modalidad`, `nivel_global`, `dimensiones[]` con `dimension` y `nivel`) para la tendencia; `null` si no lo hay. |
 
 Niveles: 0 Inexistente · 1 Inicial · 2 En desarrollo · 3 Definido · 4 Gestionado · 5 Optimizado.

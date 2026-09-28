@@ -5,8 +5,8 @@
 | | |
 |---|---|
 | Documento | Documento 03 · Herramientas y registro de iniciativas |
-| Versión | 0.1 (borrador de trabajo) |
-| Fecha | 16-09-2026 |
+| Versión | 0.3 (borrador de trabajo) |
+| Fecha | 28-09-2026 |
 | Autor | Fernando García Varela |
 | Estado | Borrador para revisión. Catálogo vivo: se actualiza cada vez que se construye o se modifica una herramienta. |
 
@@ -217,7 +217,7 @@ La fase 6 no tiene plazo; se controla con la periodicidad de la revisión de con
 
 ## 4. Modelo de datos común
 
-El modelo es la base de todas las herramientas. Su especificación completa (campos, tipos, listas cerradas y reglas de validación) es el esquema JSON del registro, `herramientas/T01_registro_iniciativas/esquema_registro.schema.json` (versión 0.7), que se publica con la herramienta T01 y que cada versión amplía solo con campos opcionales: un fichero de una versión anterior sigue siendo válido.
+El modelo es la base de todas las herramientas. Su especificación completa (campos, tipos, listas cerradas y reglas de validación) es el esquema JSON del registro, `herramientas/T01_registro_iniciativas/esquema_registro.schema.json` (versión 0.8), que se publica con la herramienta T01 y que cada versión amplía solo con campos opcionales: un fichero de una versión anterior sigue siendo válido.
 
 | Entidad | Qué representa | Se relaciona con |
 |---|---|---|
@@ -235,7 +235,7 @@ El modelo es la base de todas las herramientas. Su especificación completa (cam
 | **Proveedor** | Tercero, servicios, criticidad, contrato, evaluación. | Sistemas, iniciativas |
 | **Recomendación** | Recomendación del consejo con identificador persistente, destinatario, estado y evidencia. | Iniciativas, sistemas |
 | **Decisión del consejo** | Decisión del consejo o de su comisión (DEC-AAAA-NNN) con órgano, tipo, asunto, resultado, límite de inversión por etapa, decisión de etapa, esferas con Transformar como objetivo y vínculos (62 §10); esquema 0.5. Es la fuente de la señal 8 y de la condición IT-D1 del índice. | Iniciativas, recomendaciones |
-| **Diagnóstico de madurez** | Resumen de cada diagnóstico de madurez (EM-AAAA-MM; documento 11): fecha de corte, modalidad, versión del cuestionario, nivel global, media ponderada, límite por D1 o D6 y nivel, avance y criterios bloqueantes de cada dimensión. Desde el esquema 0.7, también el resumen de los perfiles NIST derivados del cuestionario (AI RMF y CSF 2.0: nivel mínimo, subcategorías con nivel, con objetivo y con brecha, por función y, en el CSF, por área; 11 §7.5). Lo escribe T15 (las respuestas y las evidencias se quedan en T15) y lo muestra el panel del consejo; esquemas 0.6 y 0.7. | Compañía |
+| **Diagnóstico de madurez** | Resumen de cada diagnóstico de madurez (EM-AAAA-MM; documento 11): fecha de corte, modalidad, versión del cuestionario, nivel global, media ponderada, límite por D1 o D6 y nivel, avance y criterios bloqueantes de cada dimensión. Desde el esquema 0.7, también el resumen de los perfiles NIST derivados del cuestionario (AI RMF y CSF 2.0: nivel mínimo, subcategorías con nivel, con objetivo y con brecha, por función y, en el CSF, por área; 11 §7.5). Desde el esquema 0.8, también la madurez en tres lentes a la fecha de corte (`lentes`): huella tecnológica HT0–HT5 en uso con su amplitud y los pilotos en exploración, alcance del impacto de las iniciativas en uso por IM1–IM4 y alertas de 11 §7.6 (código, gravedad y dimensión); la huella y el alcance no cambian el nivel (D120). Lo escribe T15 (las respuestas y las evidencias se quedan en T15) y lo muestra el panel del consejo; esquemas 0.6 a 0.8. | Compañía |
 
 ### 4.1 Qué lee y qué escribe cada herramienta
 
@@ -245,10 +245,11 @@ El registro T01 es la **fuente de verdad** de la compañía: las demás herramie
 |---|---|---|---|
 | **T11** (con T13) | Iniciativa (nombre, ambición, intensidad, fase, inversión realizada y pendiente) e importes esperados registrados. Un caso creado desde el registro se **actualiza** al volver a leerlo: se renuevan la identificación, los importes que siguen «desde T01» y los nuevos; una línea corregida a mano o descompuesta en unidades × valor unitario se conserva. | Los importes esperados del caso (eficiencias, retorno, capacidad liberada, coste recurrente e inversión), como esperados con fuente T11, y un evento de edición. | Parámetros (horizonte, tasa, coste horario), líneas de valor descompuestas, rampa, criterios de parada, etapas, costes por caso y conciliación. |
 | **T14** | Cartera (fases, estados, ambición, esferas, *gates*), importes realizados y validados, inversión, evidencia del índice de cada iniciativa, datos de la compañía (ingresos, IT-D3) y decisiones del consejo. Un cálculo hecho desde el registro se **actualiza** al volver a leerlo: solo se renuevan los datos que siguen marcados «desde T01». | Nada. Su resultado va al panel del consejo (T17) y deja el perfil del último cálculo para la lectura cruzada de T15. | Versiones de umbrales, cálculos con la marca de origen de cada dato, notas y acciones. |
-| **T15** | Compañía y muestra estratificada de iniciativas (Enterprise, en producción, Aumentar o Transformar, terceros, IA generativa o agentes; 11 §4.6). De T14, el perfil del último cálculo. | El resumen de cada diagnóstico (`madurez[]`): nivel global, media, límite por D1 o D6, nivel por dimensión y resumen de los perfiles NIST (`madurez[].perfiles`); nunca las respuestas. | Respuestas, evidencias, verificación, entrevistas, muestras, pesos, objetivos, mensajes, plan de mejora y los niveles objetivo y propios de los perfiles NIST. |
+| **T15** | Compañía y muestra estratificada de iniciativas (Enterprise, en producción, Aumentar o Transformar, terceros, IA generativa o agentes; 11 §4.6). De T14, el perfil del último cálculo. Para las tres lentes: fecha de registro, fase, tecnología, autonomía, ambición real, cierre y verificación de IT-P2 e IT-P3 de cada iniciativa, las entradas en fase y la tesis aprobada por el consejo (fecha de C2). | El resumen de cada diagnóstico (`madurez[]`): nivel global, media, límite por D1 o D6, nivel por dimensión y resumen de los perfiles NIST (`madurez[].perfiles`) y de las tres lentes (`madurez[].lentes`); nunca las respuestas. | Respuestas, evidencias, verificación, entrevistas, muestras, pesos, objetivos, mensajes, plan de mejora, los niveles objetivo y propios de los perfiles NIST y la huella y el alcance introducidos a mano cuando no hay registro. |
 | **T17** (generador) | El JSON completo del registro: iniciativas, ciclo de vida, importes, incidentes, recomendaciones y el diagnóstico de madurez más reciente; de T14, el índice exportado. | Nada. | Configuración del panel (umbrales, ciclo de vida, navegación) y los paneles generados. |
 | **T06** | Es una vista del propio registro. Para el **Excel del caso** (matriz, registro, plan de mitigación y plan de contingencia propuestos y riesgos tipo a considerar) lee, además de los riesgos de la iniciativa, su clasificación (tecnología, exposición, autonomía, clasificación regulatoria, ambición, intensidad y proveedores), sus evaluaciones de impacto, sus sistemas y sus responsables. | Nada: el Excel es un fichero descargado con la fecha y hora de generación; lo que el equipo decida en él se registra en la pestaña «Riesgos». | El catálogo de riesgos tipo con las reglas de aplicabilidad y las propuestas de mitigación y contingencia por código RT (`catalogo_riesgos.json`; el texto de cada riesgo tipo se lee del documento 33 §9 al generar la herramienta). |
 | **T18** | Es una vista del propio registro. | — | — |
+| **T23** | Tecnología y autonomía de las iniciativas en uso y pilotos en curso, para proponer las respuestas Q01 a Q03 del cuestionario (marcadas «desde T01» y editables). De T15, las respuestas de la evaluación más reciente, para marcar los hitos cumplidos. | Nada. | Cuestionario, arquetipo, estado de cada hito y notas. |
 
 **Por qué importa.** Sin una fuente de verdad, cada herramienta acaba con su propia versión de la compañía: el índice de transformación calculado con una cartera, el panel del consejo con otra y la madurez de una tercera. Fijar que todo deriva de T01, que cada dato lleva su procedencia y que lo corregido a mano no se pisa hace que el consejo, la Oficina de IA y el consultor lean la misma compañía en todas las herramientas.
 
@@ -292,11 +293,12 @@ El registro T01 es la **fuente de verdad** de la compañía: las demás herramie
 
 | Código | Herramienta | Para qué | Dónde se usa | Formato | Depende de | Prioridad | Estado |
 |---|---|---|---|---|---|---|---|
-| **T15** | Diagnóstico de madurez | Cuestionario de 84 preguntas con evidencia y verificación; nivel por dimensión y global con el límite de D1 y D6; comparación entre evaluaciones e informe para el consejo. Plantilla P34. | C1, C5 | HTML + JSON; exportación CSV | 11 | 2 | Disponible v0.1 |
+| **T15** | Diagnóstico de madurez | Cuestionario de 84 preguntas con evidencia y verificación; nivel por dimensión y global con el límite de D1 y D6; comparación entre evaluaciones e informe para el consejo; vista «Tres lentes»: huella tecnológica, alcance del impacto, mínimo exigible y alertas (11 §7.6). Plantilla P34. | C1, C5 | HTML + JSON; exportación CSV | 11 | 2 | Disponible v0.1 |
 | **T16** | Mapa de esferas de la cartera | Mapa de calor esferas × niveles de ambición con inversión y valor; en el panel del consejo (T17), tarjeta «Dónde está el impacto» (60 §10.5). | C2, C3 | Vista del panel del consejo | 10 | 2 | Se aplica con el documento 10 |
 | **T17** | Panel de IA para el consejo | Supervisión: valor, coste, riesgo, cumplimiento, incidentes, agilidad, adopción; lectura ejecutiva «Qué frena el escalado» (60 §10.4). | C4 | HTML completo y móvil + JSON | 60 | 1 | Disponible. Se alimenta de T01 mediante el conector `herramientas/T17_panel_consejo`: registro (JSON) más `config_panel.json` (umbrales de los indicadores y ciclo de vida) → JSON del panel → panel completo y móvil, con embudo y tiempos por etapa como en un CRM |
 | **T18** | Registro de recomendaciones del consejo | Recomendaciones con identificador persistente, estado, evidencia y valoración. | C4 | Módulo de T01 y HTML | 62 | 1 | Disponible v0.1: vista «Consejo (T18)» del registro T01, con las decisiones (DEC) y las recomendaciones (REC); el conector de T17 genera la página del registro a partir de las recomendaciones de T01 |
 | **T19** | Plantilla de tesis de IA y apetito de riesgo | Documento de decisión del consejo, con umbrales y plazos de referencia. | C2 | Plantilla de documento | 13 | 3 | Se aplica con P35 (tesis de IA y apetito de riesgo) |
+| **T23** | Recorrido de implantación | Cuestionario de doce preguntas; punto de partida de la compañía (arquetipo, rasgos y modificadores); recorrido por etapas y por rol con los 22 hitos del documento 96, su evidencia y la pregunta del documento 11 que los acredita; hitos cumplidos según T15; plan imprimible. | Implantación; C1 y C5 | HTML + JSON; exportación CSV | 96 | 2 | Disponible v0.1 |
 
 ### 5.5 Personas y operación
 
@@ -314,7 +316,7 @@ El registro T01 es la **fuente de verdad** de la compañía: las demás herramie
 |---|---|---|---|
 | **Ola 1 · Núcleo** | T01 con T02, T03, T04 y T05; adaptación de T17 y T18 para alimentarse del registro. | Tras el documento 02 (Glosario), que fija nombres y listas. | Cartera gestionada como embudo, con *gates* trazados y panel del consejo conectado. |
 | **Ola 2 · Gobierno completo** | T06, T07, T08, T11, T12, T14, T15, T16. | A medida que se terminan los documentos 11, 12, 33, 34, 37 y 40. | Riesgo, cumplimiento, valor, madurez e índice de transformación operativos. |
-| **Ola 3 · Complementos** | T09, T10, T13, T19, T20, T21, T22. | Con los documentos 13, 14, 23, 31, 35, 36, 42 y 50. | Cobertura completa del marco. |
+| **Ola 3 · Complementos** | T09, T10, T13, T19, T20, T21, T22, T23. | Con los documentos 13, 14, 23, 31, 35, 36, 42 y 50. | Cobertura completa del marco. |
 
 Regla de trabajo: **cada documento que define un proceso con registro, cálculo o cuestionario indica la herramienta asociada**, y la herramienta se construye o actualiza al cerrar ese documento.
 
@@ -339,3 +341,4 @@ Regla de trabajo: **cada documento que define un proceso con registro, cálculo 
 |---|---|---|
 | 0.1 | 16-09-2026 | Primera versión. Define el registro de iniciativas como embudo gestionado, su taxonomía, eventos, métricas y plazos de referencia; el modelo de datos común; el catálogo de 22 herramientas y el orden de construcción. |
 | 0.2 | 19-09-2026 | Catálogo al día: T11 (con T13 como módulo) y T15 disponibles; las herramientas sin aplicación propia se aplican con las plantillas P32–P71 que les corresponden (D68). |
+| 0.3 | 28-09-2026 | Herramienta T23 · Recorrido de implantación (documento 96) en el catálogo (§5.4), en el mapa de datos (§4.1) y en la ola 3; vista «Tres lentes» de T15 y esquema 0.8 del registro (§4 y §4.1). |

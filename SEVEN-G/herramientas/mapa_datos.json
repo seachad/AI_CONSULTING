@@ -14,7 +14,7 @@
     "T01": {
       "nombre": "Registro de iniciativas",
       "almacenamiento": "seveng-t01-datos-v1",
-      "propio": "todo el registro (esquema 0.7)",
+      "propio": "todo el registro (esquema 0.8)",
       "abre": {
         "T11": "../T11_calculadora_valor/calculadora.html?desde=t01&iniciativa=<id>",
         "T14": "../T14_indice_transformacion/indice.html?desde=t01",
@@ -70,19 +70,23 @@
       "lee_de_t01": [
         "meta.organizacion", "meta.fecha_referencia", "meta.datos_ilustrativos",
         "iniciativas[].id", "iniciativas[].ciclo.estado", "iniciativas[].clasificacion.intensidad", "iniciativas[].clasificacion.ambicion_confirmada", "iniciativas[].clasificacion.ambicion_propuesta", "iniciativas[].clasificacion.tecnologia", "iniciativas[].sistemas",
-        "sistemas[].id", "sistemas[].proveedores"
+        "sistemas[].id", "sistemas[].proveedores",
+        "iniciativas[].nombre", "iniciativas[].fecha_registro", "iniciativas[].ciclo.fase", "iniciativas[].clasificacion.autonomia", "iniciativas[].clasificacion.ambicion_real", "iniciativas[].cierre",
+        "iniciativas[].indice.itp2", "iniciativas[].indice.itp3",
+        "eventos[].id", "eventos[].iniciativa", "eventos[].fecha", "eventos[].tipo", "eventos[].fase",
+        "decisiones_consejo[].id", "decisiones_consejo[].fecha", "decisiones_consejo[].asunto", "decisiones_consejo[].resultado"
       ],
       "lee_de_t14": ["perfil_asignado", "fecha_corte", "id"],
       "escribe_en_t01": [
         "madurez[].id", "madurez[].fecha_corte", "madurez[].ciclo", "madurez[].modalidad", "madurez[].version_cuestionario", "madurez[].verificador", "madurez[].organo_aprobacion", "madurez[].fecha_aprobacion",
         "madurez[].nivel_global", "madurez[].nivel_minimo", "madurez[].media", "madurez[].tope", "madurez[].tope_aplicado", "madurez[].limitante", "madurez[].validez", "madurez[].declaracion_posible",
         "madurez[].dimensiones[].dimension", "madurez[].dimensiones[].nombre", "madurez[].dimensiones[].nivel", "madurez[].dimensiones[].nivel_minimo", "madurez[].dimensiones[].avance", "madurez[].dimensiones[].bloqueantes",
-        "madurez[].perfiles",
+        "madurez[].perfiles", "madurez[].lentes",
         "madurez[].fuente", "madurez[].exportado", "madurez[].incorporado"
       ],
-      "propio": ["evaluaciones[] (respuestas, evidencias, verificación, entrevistas, muestras, pesos, objetivos, mensajes, acciones y, desde el esquema 0.7, objetivos y niveles propios de los perfiles NIST)"],
+      "propio": ["evaluaciones[] (respuestas, evidencias, verificación, entrevistas, muestras, pesos, objetivos, mensajes, acciones y, desde el esquema 0.7, objetivos y niveles propios de los perfiles NIST; huella y alcance introducidos a mano, lentes_manual, cuando no hay registro)", "lentes.json (umbrales de la vista «Tres lentes», extraídos de 11 §7.6 y 12 §3.7)"],
       "actualiza_desde_t01": false,
-      "nota": "Las respuestas y las evidencias se quedan en T15; al registro solo va el resumen (nivel global, media, límite, nivel por dimensión y, desde el esquema 0.7, el resumen de los perfiles NIST por función y área, D115). La muestra estratificada de iniciativas se propone desde el registro (11 §4.6) y la selecciona el equipo evaluador."
+      "nota": "Las respuestas y las evidencias se quedan en T15; al registro solo va el resumen (nivel global, media, límite, nivel por dimensión y, desde el esquema 0.7, el resumen de los perfiles NIST por función y área, D115, y, desde el 0.8, las tres lentes: huella tecnológica HT0–HT5, alcance IM1–IM4, mínimo exigible y alertas, D120). La huella y el alcance se calculan desde el registro a la fecha de corte de cada diagnóstico (iniciativas en fases 6 y 7 sin cerrar, reconstruidas con las entradas en fase y los cierres) y no cambian el nivel de madurez. La muestra estratificada de iniciativas se propone desde el registro (11 §4.6) y la selecciona el equipo evaluador."
     },
     "T17": {
       "nombre": "Panel de IA para el consejo (generador)",
@@ -116,6 +120,19 @@
       "genera": "Excel del caso (.xlsx, D106): portada con código, fecha y hora de generación y resumen; matriz 5 × 5; registro; plan de mitigación y plan de contingencia propuestos por riesgo; riesgos tipo aplicables no registrados; escalas. Fichero descargado, no vuelve al registro.",
       "catalogo": "T01_registro_iniciativas/catalogo_riesgos.json (reglas de aplicabilidad, tipo de control y propuestas por código RT) + documento 33 §9 (título, descripción, causas, controles tipo y fase, leídos al generar registro.html)"
     },
-    "T18": { "nombre": "Registro de recomendaciones y decisiones del consejo", "modulo_de": "T01", "propio": "recomendaciones[] y decisiones_consejo[] del registro" }
+    "T18": { "nombre": "Registro de recomendaciones y decisiones del consejo", "modulo_de": "T01", "propio": "recomendaciones[] y decisiones_consejo[] del registro" },
+    "T23": {
+      "nombre": "Recorrido de implantación",
+      "almacenamiento": "seveng-t23-datos-v1",
+      "lee_de_t01": [
+        "meta.organizacion", "meta.fecha_referencia", "iniciativas[].id", "iniciativas[].ciclo.fase", "iniciativas[].ciclo.estado",
+        "iniciativas[].clasificacion.tecnologia", "iniciativas[].clasificacion.autonomia"
+      ],
+      "lee_de_t15": ["evaluaciones[].id", "evaluaciones[].fecha_corte", "evaluaciones[].modalidad", "evaluaciones[].respuestas"],
+      "escribe_en_t01": [],
+      "propio": ["respuestas (Q01–Q12, con fuente manual o t01)", "hitos (estado, fecha, nota y cubierto por el gobierno previo)", "recorrido.json (arquetipos, regla, modificadores, cuestionario, etapas, hitos, prioridades y roles, extraídos del documento 96)"],
+      "actualiza_desde_t01": true,
+      "nota": "Propone Q01 a Q03 desde el registro (iniciativas en uso: fase 6 o 7 sin parar ni retirar; pilotos: fases 1 a 5); una respuesta manual no se sustituye. Un hito se marca cumplido según T15 cuando todas sus preguntas del documento 11 están en «Sí» en la evaluación verificada o independiente más reciente; un estado manual no se pisa. No escribe en T01 ni en T15."
+    }
   }
 }

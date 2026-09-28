@@ -31,7 +31,7 @@
         motor de T17 (completo, móvil y recomendaciones), su ejemplo, la comunidad y la página de T17 lo cargan; los que prometen no
         medir visitas lo cargan con data-sin-medicion. La prueba de humo (7) sirve cada página con su ruta real para que codigos.js
         se cargue y comprueba que aparecen el control y los enlaces.
-    18. Mapa de datos entre herramientas (D100): mapa_datos.json con todas sus rutas en el esquema de T01 (0.6); T11, T14 y T15 leen el
+    18. Mapa de datos entre herramientas (D100): mapa_datos.json con todas sus rutas en el esquema de T01 (0.8, con madurez[].lentes, D120); T11, T14 y T15 leen el
         registro del navegador (misma clave) y atienden ?desde=t01; T01 incorpora sus resultados; las demostraciones de T11, T14, T15 y T17
         son de la misma compañía que T01 y derivan de él (cálculo del índice y madurez de T15); documento 03 §4.1 (ES/EN).
     19. Datos por usuario o compañía (D103): el módulo herramientas/_comun/datos_locales.js está incrustado en T01, T11, T14 y T15 (botón
@@ -58,6 +58,7 @@
     24. Exención de responsabilidad y rigor de las fuentes (D113, D114): todo aviso legal publicado incluye la exención por los efectos de la
         aplicación; 93 §11 lleva la exención completa; ninguna referencia del registro queda por corregir y ningún documento se apoya en
         fuentes secundarias.
+    25. Vigilancia mensual de fuentes (D117, D118): la lista solo cita referencias del registro y toda fuente en borrador está vigilada.
     27. Ayuda de cada tarjeta del panel del consejo (D122): toda clave data-ayuda del panel completo y del móvil tiene su ayuda en
         español e inglés en motor/ayuda_textos.py (título, qué muestra y por qué importa) y toda ayuda se usa; toda columna de tabla y
         todo rótulo de recuadro que escribe el motor tiene su explicación (ES/EN); los documentos citados existen; config_panel.json la
@@ -67,6 +68,10 @@
         tiene su ayuda en español e inglés (_fuentes/ayuda.json) y toda columna, rótulo de ficha o cifra de cabecera que escribe la plantilla
         tiene su explicación en los dos idiomas; los documentos citados existen y los README lo explican. La prueba de humo (7) comprueba
         el «?» del título de cada herramienta.
+    29. Puntos de partida y tres lentes (D119, D120): el documento 96 (ES/EN) tiene 6 arquetipos, 5 modificadores, 12 preguntas y
+        22 hitos con prioridad válida por arquetipo; las preguntas del 11 que acreditan cada hito existen; 11 §7.6 y 12 §3.7 tienen
+        HT0–HT5 e IM1–IM4; los códigos nuevos están en el glosario y en codigos.js; T23 está al día con sus fuentes; la entrada y
+        la portada enlazan T23 y la vista «Tres lentes» de T15. La prueba de humo (7) comprueba T23 (PP-F) y la vista de lentes.
 #>
 param([switch]$SinNavegador)
 $ErrorActionPreference = 'Stop'
@@ -337,7 +342,7 @@ try {
     if (Test-Path $d) { $publicables += Get-ChildItem $d -Recurse -File -Include *.html, *.md, *.json, *.py | Where-Object { $_.FullName -notmatch '[\\/](_[^\\/]*|__pycache__)[\\/]' } }
   }
   $patrones = @('_trabajo', 'notas_internas', 'C:\\SEACHAD', 'OneDrive')
-  $lista = Join-Path $env:USERPROFILE '.seveng\terminos_prohibidos.txt'
+  $lista = Join-Path ($env:USERPROFILE ?? $HOME) '.seveng\terminos_prohibidos.txt'
   # un término por línea, buscado como texto literal sin distinguir mayúsculas; una línea «re:<expresión>» es una expresión regular
   # (p. ej., re:\bSIGLA\b(?!_) para una sigla que también forma parte de palabras corrientes o de claves de datos)
   if (Test-Path $lista) { $patrones += Get-Content $lista -Encoding utf8 | Where-Object { $_.Trim() -and -not $_.StartsWith('#') } | ForEach-Object { $x = $_.Trim(); if ($x.StartsWith('re:')) { $x.Substring(3) } else { [regex]::Escape($x) } } }
@@ -361,7 +366,7 @@ try {
   }
 
   Write-Host '3. Aviso legal en herramientas y paneles'
-  $conAviso = @('index.html', 'en\index.html', 'SEVEN-G\herramientas\T01_registro_iniciativas\registro.html', 'SEVEN-G\herramientas\T14_indice_transformacion\indice.html', 'SEVEN-G\herramientas\T11_calculadora_valor\calculadora.html', 'SEVEN-G\herramientas\T15_diagnostico_madurez\madurez.html','SEVEN-G\herramientas\T17_panel_consejo\index.html', 'SEVEN-G\herramientas\comunidad\index.html') +
+  $conAviso = @('index.html', 'en\index.html', 'SEVEN-G\herramientas\T01_registro_iniciativas\registro.html', 'SEVEN-G\herramientas\T14_indice_transformacion\indice.html', 'SEVEN-G\herramientas\T11_calculadora_valor\calculadora.html', 'SEVEN-G\herramientas\T15_diagnostico_madurez\madurez.html', 'SEVEN-G\herramientas\T23_recorrido_implantacion\recorrido.html','SEVEN-G\herramientas\T17_panel_consejo\index.html', 'SEVEN-G\herramientas\comunidad\index.html') +
     @(Get-ChildItem (Join-Path $repo 'SEVEN-G\herramientas\T17_panel_consejo\ejemplo\salida') -Filter *.html | ForEach-Object { [IO.Path]::GetRelativePath($repo, $_.FullName) })
   $sin = $conAviso | Where-Object { -not (Select-String -Path (Join-Path $repo $_) -Pattern 'Aviso legal|Legal notice' -Quiet) }
   foreach ($x in $sin) { Mal "sin aviso legal: $x" }
@@ -527,9 +532,16 @@ try {
       @{ f = (Join-Path $t11 'calculadora.html'); debe = @('#resultado[data-van="1826542"][data-roi="217.7"][data-payback="1.44"]', '#nav a[href="#/costes"]', '#t01-local[data-registro]', "#sitio-nav $ctl", '#principal a.cod-enlace[title]', '#btn-datos[data-estado="demo"]', '#principal h1 .ay-btn'); que = 'calculadora T11/T13 (ejemplo IA-2026-001)' }
       @{ f = (Join-Path $t15 'madurez.html'); debe = @('#nivel-global[data-nivel="2"][data-tope="2"][data-tope-aplicado="1"]', 'tr[data-dim="D6"][data-nivel="1"]', 'tr[data-dim="D3"][data-nivel="2"]', '#t01-local[data-registro]', "#sitio-nav $ctl", '#principal a.cod-enlace[title]', '#btn-datos[data-estado="demo"]', '#principal h1 .ay-btn'); que = 'diagnóstico T15 (ejemplo EM-2026-06)' }
       @{ f = (Join-Path $t15 'madurez.html'); antes = "location.hash='#/perfil_csf'"; debe = @('#perfil-resumen[data-marco="csf"][data-con-brecha]', '#tabla-perfil tr[data-sub="ID.RA-01"]', '#tabla-perfil tr[data-sub="GV.OC-04"] select[data-pprop]'); que = 'diagnóstico T15, vista «Perfil CSF» (D115)' },
+      # D120: vista «Tres lentes» con el ejemplo EM-2026-06: huella HT4 desde el registro de demostración, D6 por debajo del mínimo (alerta alta) y alcance con una iniciativa IM3
+      @{ f = (Join-Path $t15 'madurez.html'); antes = "location.hash='#/lentes'"; debe = @('#lentes[data-huella="HT4"][data-fuente^="t01"]', '#tabla-minimos tr[data-dim="D6"][data-cumple="0"]', '#lentes-alertas [data-alerta="adopcion_por_delante"][data-gravedad="alta"][data-dim="D6"]', '.im-barra[data-im="IM3"][data-n="1"]', '#tabla-uso tr[data-ini="IA-2025-002"][data-im="IM3"]'); que = 'diagnóstico T15, vista «Tres lentes» (D120)' },
+      # D119: recorrido de implantación (T23) con la compañía de ejemplo: arquetipo PP-F con sus rasgos y modificadores, 12 preguntas, 22 hitos y HI-09 en prioridad 1
+      @{ f = (Join-Path $repo 'SEVEN-G\herramientas\T23_recorrido_implantacion\recorrido.html'); debe = @('#arquetipo[data-arquetipo="PP-F"][data-rasgos="PP-E,PP-D,PP-B"][data-modificadores="MP2,MP3,MP4"]', '#principal tr[data-pregunta="Q12"]', '#t01-local[data-registro]', "#sitio-nav $ctl", '#principal a.cod-enlace[title]', '#btn-datos[data-estado="demo"]'); que = 'recorrido T23 (ejemplo PP-F)'
+         eval = "(function(){var r=window.T23.resultado();return {arquetipo:r.arquetipo,preguntas:document.querySelectorAll('#principal tr[data-pregunta]').length,hitos:r.hitos,p09:r.prioridades['HI-09']}})()"
+         comprobar = { param($r) if ($r.arquetipo -ne 'PP-F' -or $r.preguntas -ne 12 -or $r.hitos -ne 22 -or $r.p09 -ne '1') { return "T23: $($r | ConvertTo-Json -Compress)" }; return $null } }
+      @{ f = (Join-Path $repo 'SEVEN-G\herramientas\T23_recorrido_implantacion\recorrido.html'); antes = "location.hash='#/recorrido'"; debe = @('tr[data-hito="HI-09"][data-prioridad="1"]', 'tr[data-hito="HI-08"][data-prioridad="C"]', 'section[data-etapa="E5"]'); que = 'recorrido T23, vista Recorrido' }
       # D100: la tarjeta de madurez (bloque «madurez» del panel, escrito por T15 en el registro) se dibuja con sus siete dimensiones
-      @{ f = (Get-ChildItem $salidaEj -Filter 't01_Dashboard_Casos_Uso_IA_v*.html' | Select-Object -First 1).FullName; debe = @('#indice tbody tr', '#kpis [data-kpi]', '#embudo .fun2-mid', '#embudo .fun-card.gan', '#embudo .fun-card li .pq', '#fbar #fopen, #filters .fgroup', '#transv table tbody tr', '#madurez table tbody tr', "#barra .toolbar $ctl", 'main a.cod-enlace[title]', '#kpis [data-ayuda="kpi-neto"] .ayuda-btn', '#indice > summary .ayuda-btn', '[data-ayuda="embudo"] h3 .ayuda-btn', '#madurez th.col-explicada[title]', '#frenos .fr-top .fr[data-fr]', '#frenos table tbody tr.fr-row', '#frenos > summary .ayuda-btn', '#impacto table.mi td.c[data-mi]', '#impacto #mi-modo', '#kpis [data-kpi="casos"]', '#kpis [data-kpi="controles"]', '#embudo-kpis [data-kpie="atascados"]')
-        # D125–D127: seis frenos con tres prioridades; el detalle de una etapa empieza por lo económico; los resúmenes de las cifras se abren
+      @{ f = (Get-ChildItem $salidaEj -Filter 't01_Dashboard_Casos_Uso_IA_v*.html' | Select-Object -First 1).FullName; debe = @('#indice tbody tr', '#kpis [data-kpi]', '#embudo .fun2-mid', '#embudo .fun-card.gan', '#embudo .fun-card li .pq', '#fbar #fopen, #filters .fgroup', '#transv table tbody tr', '#madurez table tbody tr', '#madurez-lentes table tbody tr[data-huella="HT4"]', "#barra .toolbar $ctl", 'main a.cod-enlace[title]', '#kpis [data-ayuda="kpi-neto"] .ayuda-btn', '#indice > summary .ayuda-btn', '[data-ayuda="embudo"] h3 .ayuda-btn', '#madurez th.col-explicada[title]', '#frenos .fr-top .fr[data-fr]', '#frenos table tbody tr.fr-row', '#frenos > summary .ayuda-btn', '#impacto table.mi td.c[data-mi]', '#impacto #mi-modo', '#kpis [data-kpi="casos"]', '#kpis [data-kpi="controles"]', '#embudo-kpis [data-kpie="atascados"]')
+        # D126–D128: seis frenos con tres prioridades; el detalle de una etapa empieza por lo económico; los resúmenes de las cifras se abren
         eval = "(function(){ var x = frenosEscalado(CASES.filter(passes)); state.embudo.sel = 'En desarrollo'; renderEmbudo(CASES.filter(passes)); var h = [].map.call(document.querySelectorAll('#embudo-det thead th'), function(t){ return t.textContent; }); openKpi('controles', CASES.filter(passes)); var r = document.getElementById('box').textContent; closeModal(); var m = mapaImpacto(CASES, 'esfera'); return {n: x.frenos.length, top: x.prioridad.map(function(f){ return f.id; }), h: h.slice(0, 6), resumen: r.indexOf('Controles por caso') >= 0, filas: m.filas.length}; })()"
         comprobar = {
           param($r)
@@ -541,7 +553,7 @@ try {
           return $null }; que = 'panel completo' }
       # comunidad (D80): la página se dibuja aunque no haya intermediario configurado ni red (el texto lo pone el JavaScript)
       @{ f = (Join-Path $repo 'SEVEN-G\herramientas\comunidad\index.html'); debe = @('h1[data-i18n]:not(:empty)', '#form-envio', '#lista[data-estado]', '#btn-identidad:not(:empty)', ".barra $ctl"); que = 'página de comunidad' }
-      @{ f = (Get-ChildItem $salidaEj -Filter 't01_Dashboard_Movil_IA_v*.html' | Select-Object -First 1).FullName; debe = @('#embudo .row.fun', '#embudo .row.fun.gan', '#transv .row', '#madurez-sec:not([hidden]) #madurez *', "header $ctl", 'body a.cod-enlace[title]', '#resumen .ayuda-btn', '#madurez-sec h2 .ayuda-btn', '#frenos .row.fr[data-fr]', '#impacto-sec:not([hidden]) #impacto .row'); que = 'panel móvil' }
+      @{ f = (Get-ChildItem $salidaEj -Filter 't01_Dashboard_Movil_IA_v*.html' | Select-Object -First 1).FullName; debe = @('#embudo .row.fun', '#embudo .row.fun.gan', '#transv .row', '#madurez-sec:not([hidden]) #madurez *', '#madurez-lentes .row', "header $ctl", 'body a.cod-enlace[title]', '#resumen .ayuda-btn', '#madurez-sec h2 .ayuda-btn', '#frenos .row.fr[data-fr]', '#impacto-sec:not([hidden]) #impacto .row'); que = 'panel móvil' }
       @{ f = (Join-Path $salidaEj 't01_Registro_Recomendaciones.html'); debe = @('#tl article.rec', ".top $ctl", 'body a.cod-enlace[title]'); que = 'registro de recomendaciones' }
       @{ f = (Join-Path $t17 'index.html'); debe = @('p.que-es', "header $ctl", '#es a.cod-enlace[title]'); que = 'página de T17' }
       # D105: buscador de términos con selector de ámbito; en «Todo el sitio» la lista de resultados llega de busqueda.json (servido por http)
@@ -563,7 +575,8 @@ try {
       $pagina = $pagina -replace '(?i)</body>', (($antes + $informe).Replace('$', '$$') + '</body>')
       $rutaPag = '/' + [IO.Path]::GetRelativePath($repo, $p.f).Replace('\', '/')
       $perfil = Join-Path $tmp ('edge_' + [Guid]::NewGuid().ToString('N').Substring(0, 6))
-      $proc = Start-Process -FilePath $edge -ArgumentList '--headless=new', '--disable-gpu', '--no-first-run', "--user-data-dir=$perfil", '--window-size=1400,1000', "--screenshot=$tmp\humo.png", '--virtual-time-budget=10000', "http://localhost:$puerto$rutaPag" -PassThru -WindowStyle Hidden
+      $sinVentana = if ($IsWindows) { @{ WindowStyle = 'Hidden' } } else { @{} }  # -WindowStyle solo existe en Windows
+      $proc = Start-Process -FilePath $edge -ArgumentList '--headless=new', '--disable-gpu', '--no-first-run', "--user-data-dir=$perfil", '--window-size=1400,1000', "--screenshot=$tmp\humo.png", '--virtual-time-budget=10000', "http://localhost:$puerto$rutaPag" -PassThru @sinVentana
       $resultado = $null; $limite = (Get-Date).AddSeconds(40)
       while (-not $resultado -and (Get-Date) -lt $limite) {
         $tarea = $http.GetContextAsync()
@@ -774,7 +787,7 @@ try {
     foreach ($req in 'data-enlazar-codigos', 'ir-codigo-citados', 'data-sin-medicion', 'enlazar: enlazar', 'MutationObserver', 'a.cod-enlace') { if (-not $tCod.Contains($req)) { Mal "codigos.js [$lang]: falta «$req» (pwsh -File SEVEN-G/build/codigos.ps1)"; $malCit++ } }
   }
   # herramientas: su contenido (plantilla y HTML generado) se enlaza
-  foreach ($h in (Get-ChildItem (Join-Path $repo 'SEVEN-G\herramientas') -Recurse -File -Filter *.plantilla.html) + @((Join-Path $t01 'registro.html'), (Join-Path $t11 'calculadora.html'), (Join-Path $t14 'indice.html'), (Join-Path $t15 'madurez.html') | ForEach-Object { Get-Item $_ })) {
+  foreach ($h in (Get-ChildItem (Join-Path $repo 'SEVEN-G\herramientas') -Recurse -File -Filter *.plantilla.html) + @((Join-Path $t01 'registro.html'), (Join-Path $t11 'calculadora.html'), (Join-Path $t14 'indice.html'), (Join-Path $t15 'madurez.html'), (Join-Path $repo 'SEVEN-G\herramientas\T23_recorrido_implantacion\recorrido.html') | ForEach-Object { Get-Item $_ })) {
     if (-not [IO.File]::ReadAllText($h.FullName).Contains('data-enlazar-codigos')) { Mal "herramienta sin enlace de códigos en su contenido (data-enlazar-codigos): $($h.Name)"; $malCit++ }
   }
   # motor de T17: los tres generadores admiten navegacion.codigos y cargan el índice sin medición
@@ -850,9 +863,9 @@ try {
     foreach ($e in "calculadora.html'", "indice.html'", "madurez.html'") { if (-not $tT01.Contains($e)) { Mal "T01: no enlaza la herramienta $e con el registro cargado"; $malMapa++ } }
     if (-not ($tT01.Contains("?desde=t01") -and $tT01.Contains('data-ir=') -and $tT01.Contains('function incorporarResultado'))) { Mal 'T01: faltan los enlaces ?desde=t01 (con guardado previo) o la incorporación de resultados de T11 y T15'; $malMapa++ }
     # esquema 0.6 admitido en el esquema JSON, en el registro y en el conector
-    if ($esq.properties.version_esquema.enum -notcontains '0.7' -or -not $esq.properties.ContainsKey('madurez')) { Mal 'esquema_registro.schema.json: falta la versión 0.6 con la lista madurez[]'; $malMapa++ }
-    if (-not $tT01.Contains("'0.7'")) { Mal 'T01: la validación no admite el esquema 0.7'; $malMapa++ }
-    if (-not [IO.File]::ReadAllText((Join-Path $t17 't01_a_panel.py')).Contains('"0.7"')) { Mal 'T17 t01_a_panel.py: no admite el esquema 0.7'; $malMapa++ }
+    if ($esq.properties.version_esquema.enum -notcontains '0.8' -or -not $esq.properties.ContainsKey('madurez') -or -not $esq['$defs'].madurez.properties.ContainsKey('lentes')) { Mal 'esquema_registro.schema.json: falta la versión 0.8 con madurez[].lentes (D120)'; $malMapa++ }
+    if (-not $tT01.Contains("'0.8'")) { Mal 'T01: la validación no admite el esquema 0.8'; $malMapa++ }
+    foreach ($f in 't01_a_panel.py', 't01_a_panel.js') { if (-not [IO.File]::ReadAllText((Join-Path $t17 $f)).Contains('"0.8"')) { Mal "T17 $f`: no admite el esquema 0.8"; $malMapa++ } }
     # demostraciones: una sola compañía ficticia
     $orgT01 = (Get-Content (Join-Path $t01 'datos_demo.json') -Raw -Encoding utf8 | ConvertFrom-Json -Depth 64).meta.organizacion
     foreach ($h in @(@{ c = 'T11'; d = $t11 }, @{ c = 'T14'; d = $t14 }, @{ c = 'T15'; d = $t15 })) {
@@ -883,6 +896,7 @@ try {
       }
       $dPanel = Get-Content (Join-Path $t17 'ejemplo\salida\t01_dashboard_data.json') -Raw -Encoding utf8 | ConvertFrom-Json -Depth 64
       if (-not $dPanel.madurez -or $dPanel.madurez.id -ne $mT01[-1].id) { Mal 'T17: el panel de ejemplo no lleva el bloque madurez del último diagnóstico del registro'; $malMapa++ }
+      elseif ($mT01[-1].lentes -and (($dPanel.madurez.lentes | ConvertTo-Json -Depth 16 -Compress) -ne ($mT01[-1].lentes | ConvertTo-Json -Depth 16 -Compress))) { Mal 'T17: el panel de ejemplo no lleva las tres lentes del último diagnóstico del registro (D120)'; $malMapa++ }
     }
     # documento 03 §4.1 (ES/EN): explica el mapa y nombra cada herramienta que lee del registro
     foreach ($lang in 'es', 'en') {
@@ -891,7 +905,7 @@ try {
       if (-not $sec -or -not $sec.Contains('mapa_datos.json')) { Mal "documento 03 [$lang]: falta la sección 4.1 con el mapa de datos (D100)"; $malMapa++ }
       else { foreach ($h in ($mapa.herramientas.Keys | Where-Object { $mapa.herramientas[$_].lee_de_t01 })) { if ($sec -notmatch "\*\*$h\*\*") { Mal "documento 03 [$lang] §4.1: no describe qué lee $h"; $malMapa++ } } }
     }
-    if (-not $malMapa) { Ok 'herramientas enlazadas con el registro T01 como fuente de verdad: clave compartida, enlaces ?desde=t01, esquema 0.6, demostraciones de una sola compañía y documento 03 §4.1' }
+    if (-not $malMapa) { Ok 'herramientas enlazadas con el registro T01 como fuente de verdad: clave compartida, enlaces ?desde=t01, esquema 0.8, demostraciones de una sola compañía y documento 03 §4.1' }
   }
 
   # ---- 19. datos por usuario o compañía (D103): módulo común incrustado en las cuatro herramientas, diálogo «Dónde están mis datos»,
@@ -907,7 +921,8 @@ try {
     if ($mj.Contains('</script')) { Mal 'datos_locales.js: contiene «</script», que rompería el HTML en el que se incrusta'; $malDat++ }
   }
   foreach ($h in @(@{ dir = 'T01_registro_iniciativas'; pl = '_fuentes\registro.plantilla.html'; html = 'registro.html'; f = 'T01_registro.json' }, @{ dir = 'T11_calculadora_valor'; pl = '_fuentes\calculadora.plantilla.html'; html = 'calculadora.html'; f = 'T11_calculadora.json' },
-                    @{ dir = 'T14_indice_transformacion'; pl = '_fuentes\indice.plantilla.html'; html = 'indice.html'; f = 'T14_indice.json' }, @{ dir = 'T15_diagnostico_madurez'; pl = '_fuentes\madurez.plantilla.html'; html = 'madurez.html'; f = 'T15_madurez.json' })) {
+                    @{ dir = 'T14_indice_transformacion'; pl = '_fuentes\indice.plantilla.html'; html = 'indice.html'; f = 'T14_indice.json' }, @{ dir = 'T15_diagnostico_madurez'; pl = '_fuentes\madurez.plantilla.html'; html = 'madurez.html'; f = 'T15_madurez.json' },
+                    @{ dir = 'T23_recorrido_implantacion'; pl = '_fuentes\recorrido.plantilla.html'; html = 'recorrido.html'; f = 'T23_recorrido.json' })) {
     $pl = [IO.File]::ReadAllText((Join-Path $repo "SEVEN-G\herramientas\$($h.dir)\$($h.pl)"))
     if (-not $pl.Contains('<script>__DATOS_LOCALES__</script>')) { Mal "$($h.dir): la plantilla no incrusta el módulo (marca __DATOS_LOCALES__)"; $malDat++ }
     if (-not $pl.Contains('SevengDatos.iniciar({') -or -not $pl.Contains("ficheroServidor:'../datos/$($h.f)'")) { Mal "$($h.dir): la plantilla no inicia el módulo con ../datos/$($h.f)"; $malDat++ }
@@ -1179,7 +1194,7 @@ try {
       elseif ($lin -match '^> \*\*Legal notice and disclaimer') { $nAv++; if (-not $lin.Contains($claveEn)) { Mal "$($md.Name): the legal notice lacks the disclaimer for the effects of application (D113)"; $malEx++ } }
     }
   }
-  $fuentesAviso = @('index.html', 'SEVEN-G\build\entrada\es\index.html', 'SEVEN-G\build\build.ps1', 'SEVEN-G\herramientas\T01_registro_iniciativas\_fuentes\registro.plantilla.html', 'SEVEN-G\herramientas\T11_calculadora_valor\_fuentes\calculadora.plantilla.html', 'SEVEN-G\herramientas\T14_indice_transformacion\_fuentes\indice.plantilla.html', 'SEVEN-G\herramientas\T15_diagnostico_madurez\_fuentes\madurez.plantilla.html', 'SEVEN-G\herramientas\T17_panel_consejo\index.html', 'SEVEN-G\herramientas\T17_panel_consejo\publicacion_panel.py', 'SEVEN-G\herramientas\T17_panel_consejo\t01_a_panel.js', 'SEVEN-G\herramientas\comunidad\index.html', 'LICENCIA_CONTENIDOS.md')
+  $fuentesAviso = @('index.html', 'SEVEN-G\build\entrada\es\index.html', 'SEVEN-G\build\build.ps1', 'SEVEN-G\herramientas\T01_registro_iniciativas\_fuentes\registro.plantilla.html', 'SEVEN-G\herramientas\T11_calculadora_valor\_fuentes\calculadora.plantilla.html', 'SEVEN-G\herramientas\T14_indice_transformacion\_fuentes\indice.plantilla.html', 'SEVEN-G\herramientas\T15_diagnostico_madurez\_fuentes\madurez.plantilla.html', 'SEVEN-G\herramientas\T23_recorrido_implantacion\_fuentes\recorrido.plantilla.html', 'SEVEN-G\herramientas\T17_panel_consejo\index.html', 'SEVEN-G\herramientas\T17_panel_consejo\publicacion_panel.py', 'SEVEN-G\herramientas\T17_panel_consejo\t01_a_panel.js', 'SEVEN-G\herramientas\comunidad\index.html', 'LICENCIA_CONTENIDOS.md')
   foreach ($fa in $fuentesAviso) { if (-not ([IO.File]::ReadAllText((Join-Path $repo $fa))).Contains($claveEs)) { Mal "${fa}: el aviso no incluye la exención por los efectos de la aplicación (D113)"; $malEx++ } }
   foreach ($fa in 'en\index.html', 'SEVEN-G\build\entrada\en\index.html', 'SEVEN-G\build\build.ps1') { if (-not ([IO.File]::ReadAllText((Join-Path $repo $fa))).Contains($claveEn)) { Mal "${fa}: the notice lacks the disclaimer for the effects of application (D113)"; $malEx++ } }
   foreach ($par in @(@('es', 'Exención completa de responsabilidad'), @('en', 'Full disclaimer of liability'))) {
@@ -1301,50 +1316,112 @@ try {
     $nVis += $a.vistas.Count; $nCla += $a.claves.Count
   }
   if (-not $malAh) { Ok "$nVis vistas con su «?» y $nCla columnas y rótulos explicados, en español e inglés, en T01, T11, T14 y T15" }
-  # ---- 29. el panel ayuda a decidir (D125–D127): «Qué frena el escalado» con los seis frenos FE-1…FE-6, que se llaman igual en el motor,
+  # ---- 29. puntos de partida, recorrido de implantación y madurez en tres lentes (D119, D120): el documento 96 tiene en ES y EN
+  # sus tablas completas (6 arquetipos, 5 modificadores, 12 preguntas, 22 hitos con prioridad válida por arquetipo); toda pregunta del
+  # documento 11 que acredita un hito existe; 11 §7.6 y 12 §3.7 tienen sus escalas; los códigos nuevos están en el glosario y en el
+  # índice de códigos; la herramienta T23 está generada desde el documento; la entrada y la portada enlazan T23 y la vista de tres lentes
+  Write-Host '29. Puntos de partida, recorrido de implantación y tres lentes'
+  $mal26 = 0
+  $filasDe = {
+    param([string]$texto, [string]$seccion)
+    $ini = [regex]::Match($texto, "(?m)^#{2,4} $([regex]::Escape($seccion))\b")
+    if (-not $ini.Success) { return @() }
+    $resto = $texto.Substring($ini.Index + $ini.Length)
+    $fin = [regex]::Match($resto, '(?m)^#{2,3} ')
+    if ($fin.Success) { $resto = $resto.Substring(0, $fin.Index) }
+    @($resto -split "`r?`n" | Where-Object { $_ -match '^\| \*\*[A-Z]' })
+  }
+  $preg11 = @{}
+  foreach ($l in (Get-Content (Join-Path $repo 'SEVEN-G\mds\es\11_SEVEN-G_Modelo_de_madurez.md') -Encoding utf8)) { if ($l -match '^\| (D\d\.\d{2}) \|') { $preg11[$Matches[1]] = $true } }
+  foreach ($lang in 'es', 'en') {
+    $f96 = Join-Path $repo "SEVEN-G\mds\$lang\96_SEVEN-G_Puntos_de_partida_y_recorrido_de_implantacion.md"
+    if (-not (Test-Path $f96)) { Mal "falta el documento 96 ($lang) (D119)"; $mal26++; continue }
+    $t96 = [IO.File]::ReadAllText($f96)
+    $esperado = @(@('2.1', '^\| \*\*PP-[A-F]\*\*', 6), @('2.3', '^\| \*\*MP[1-5]\*\*', 5), @('2.4', '^\| \*\*Q(0[1-9]|1[0-2])\*\*', 12), @('4.1', '^\| \*\*HI-(0[1-9]|1\d|2[0-2])\*\*', 22), @('4.2', '^\| \*\*HI-(0[1-9]|1\d|2[0-2])\*\*', 22))
+    foreach ($e in $esperado) {
+      $filas = & $filasDe $t96 $e[0]
+      $n = @($filas | Where-Object { $_ -match $e[1] }).Count
+      if ($n -ne $e[2]) { Mal "documento 96 ($lang) §$($e[0]): $n filas, se esperan $($e[2]) (D119)"; $mal26++ }
+      if ($e[0] -eq '4.2') {
+        foreach ($f in $filas) {
+          $c = @($f.Trim('|').Split('|') | ForEach-Object { $_.Trim() })
+          if ($c.Count -ne 7 -or @($c[1..6] | Where-Object { $_ -notin '1', '2', '3', 'C', 'D', '·' }).Count) { Mal "documento 96 ($lang) §4.2: prioridad no válida en «$($c[0])» (1, 2, 3, C, D o ·)"; $mal26++ }
+        }
+      }
+      if ($e[0] -eq '4.1') {
+        foreach ($f in $filas) {
+          foreach ($q in [regex]::Matches($f, '\bD\d\.\d{2}\b')) { if (-not $preg11.ContainsKey($q.Value)) { Mal "documento 96 ($lang): el hito cita la pregunta $($q.Value), que no existe en el documento 11"; $mal26++ } }
+        }
+      }
+    }
+    $f11 = [IO.File]::ReadAllText((Join-Path $repo "SEVEN-G\mds\$lang\11_SEVEN-G_Modelo_de_madurez.md"))
+    if (@(& $filasDe $f11 '7.6' | Where-Object { $_ -match '^\| \*\*HT[0-5]\*\*' }).Count -lt 6) { Mal "documento 11 ($lang) §7.6: faltan los niveles HT0–HT5 de la huella tecnológica (D120)"; $mal26++ }
+    $f12 = [IO.File]::ReadAllText((Join-Path $repo "SEVEN-G\mds\$lang\12_SEVEN-G_Indice_de_transformacion.md"))
+    if (@(& $filasDe $f12 '3.7' | Where-Object { $_ -match '^\| \*\*IM[1-4]\*\*' }).Count -ne 4) { Mal "documento 12 ($lang) §3.7: faltan los niveles IM1–IM4 del alcance del impacto (D120)"; $mal26++ }
+    $g02 = [IO.File]::ReadAllText((Join-Path $repo "SEVEN-G\mds\$lang\02_SEVEN-G_Glosario_y_convenciones.md"))
+    foreach ($cod in '**PP-A–PP-F**', '**MP1–MP5**', '**HI-01–HI-22**', '**HT0–HT5**', '**IM1–IM4**') { if (-not $g02.Contains("| $cod |")) { Mal "glosario 02 ($lang): falta el código $cod en §6.1 (D119, D120)"; $mal26++ } }
+    $cjs = Join-Path $repo "SEVEN-G\html\$lang\codigos.js"
+    if (Test-Path $cjs) { $tjs = [IO.File]::ReadAllText($cjs); foreach ($cod in 'PP-D', 'MP2', 'HI-09', 'HT4', 'IM3') { if (-not $tjs.Contains("""$cod""")) { Mal "codigos.js ($lang): no reconoce $cod; regenerar con build.ps1"; $mal26++ } } }
+  }
+  # herramienta T23 generada desde el documento 96
+  $t23 = Join-Path $repo 'SEVEN-G\herramientas\T23_recorrido_implantacion'
+  foreach ($fx in 'recorrido.html', 'recorrido.json', 'build_recorrido.ps1', 'README.md', 'README_en.md', '_fuentes\recorrido.plantilla.html') { if (-not (Test-Path (Join-Path $t23 $fx))) { Mal "T23: falta $fx (D119)"; $mal26++ } }
+  if (Test-Path (Join-Path $t23 'build_recorrido.ps1')) {
+    $sal23 = Join-Path $tmp 't23.html'
+    & pwsh -NoProfile -File (Join-Path $t23 'build_recorrido.ps1') -Salida $sal23 *> $null
+    if ($LASTEXITCODE -or -not (Test-Path $sal23)) { Mal 'T23: build_recorrido.ps1 ha fallado (¿recorrido.json desalineado con el documento 96?)'; $mal26++ }
+    elseif ([IO.File]::ReadAllText($sal23) -ne [IO.File]::ReadAllText((Join-Path $t23 'recorrido.html'))) { Mal 'T23: recorrido.html no está al día con sus fuentes: ejecutar build_recorrido.ps1'; $mal26++ }
+  }
+  # la entrada ligera y la portada llevan a T23 y a la vista de tres lentes
+  foreach ($p in 'index.html', 'en\index.html', 'SEVEN-G\build\entrada\es\index.html', 'SEVEN-G\build\entrada\en\index.html') {
+    $h = [IO.File]::ReadAllText((Join-Path $repo $p))
+    if ($h -notmatch 'T23_recorrido_implantacion/recorrido\.html' -or $h -notmatch 'T15_diagnostico_madurez/madurez\.html#/lentes') { Mal "$p no enlaza el recorrido de implantación (T23) y la vista de tres lentes de T15 (D119, D120)"; $mal26++ }
+  }
+  if (-not $mal26) { Ok 'documento 96 completo en ES y EN (6 arquetipos, 5 modificadores, 12 preguntas, 22 hitos con prioridad), 11 §7.6 y 12 §3.7, códigos en el glosario y en el índice, T23 al día y enlazada desde la entrada y la portada' }
+  # ---- 30. el panel ayuda a decidir (D126–D128): «Qué frena el escalado» con los seis frenos FE-1…FE-6, que se llaman igual en el motor,
   # en el documento 60 §10.4 (ES/EN) y en el glosario; mapa de impacto T16 (documentos 10 §8 y 60 §10.5); cifras de cabecera pulsables y lo
   # económico primero en el detalle del embudo; en los dos paneles, la configuración del ejemplo y los README
-  Write-Host '29. Panel que ayuda a decidir: frenos de escalado, mapa de impacto y cifras pulsables'
+  Write-Host '30. Panel que ayuda a decidir: frenos de escalado, mapa de impacto y cifras pulsables'
   $malDe = 0
   $coreDe = [IO.File]::ReadAllText((Join-Path $t17 'motor\panel_core.py'))
   $bdDe = [IO.File]::ReadAllText((Join-Path $t17 'motor\build_dashboard.py'))
   $mvDe = [IO.File]::ReadAllText((Join-Path $t17 'motor\panel_movil.py'))
   $nombresFr = [ordered]@{}; foreach ($m in [regex]::Matches($coreDe, '\{id:"(FE-\d)", nombre:"([^"]+)"')) { $nombresFr[$m.Groups[1].Value] = $m.Groups[2].Value }
   if ((@($nombresFr.Keys) -join ',') -ne 'FE-1,FE-2,FE-3,FE-4,FE-5,FE-6') { Mal "panel_core.py: los frenos deben ser FE-1 a FE-6 (hay: $(@($nombresFr.Keys) -join ', '))"; $malDe++ }
-  foreach ($s in 'function frenosEscalado(', 'function mapaImpacto(', 'const MOTIVO_FRENO_DEF', 'function valorEnJuego(') { if (-not $coreDe.Contains($s)) { Mal "panel_core.py: falta $s (D125, D126)"; $malDe++ } }
+  foreach ($s in 'function frenosEscalado(', 'function mapaImpacto(', 'const MOTIVO_FRENO_DEF', 'function valorEnJuego(') { if (-not $coreDe.Contains($s)) { Mal "panel_core.py: falta $s (D126, D127)"; $malDe++ } }
   foreach ($s in 'id="frenos" data-ayuda="frenos"', 'id="impacto" data-ayuda="impacto"', 'function openResumen(', 'function openKpiEmbudo(', 'data-kpi="casos"', 'data-kpi="validado"', 'data-kpi="clasificados"', 'data-kpi="controles"', 'data-kpie="atascados"', '<th>Caso</th><th class="n">Neto anual</th><th class="n">Eficiencias</th><th class="n">Retorno</th><th class="n">Coste anual</th><th class="n">Inversión</th>') {
-    if (-not $bdDe.Contains($s)) { Mal "build_dashboard.py: falta «$s» (D125–D127)"; $malDe++ } }
-  foreach ($s in 'data-ayuda="m-frenos"', 'data-ayuda="m-impacto"', 'frenosEscalado(CASES)', 'mapaImpacto(CASES') { if (-not $mvDe.Contains($s)) { Mal "panel_movil.py: falta «$s» (D125, D126)"; $malDe++ } }
+    if (-not $bdDe.Contains($s)) { Mal "build_dashboard.py: falta «$s» (D126–D128)"; $malDe++ } }
+  foreach ($s in 'data-ayuda="m-frenos"', 'data-ayuda="m-impacto"', 'frenosEscalado(CASES)', 'mapaImpacto(CASES') { if (-not $mvDe.Contains($s)) { Mal "panel_movil.py: falta «$s» (D126, D127)"; $malDe++ } }
   foreach ($lg in 'es', 'en') {
     $d60 = [IO.File]::ReadAllText((Get-ChildItem (Join-Path $repo "SEVEN-G\mds\$lg") -Filter '60_*.md').FullName)
-    if (-not ($d60.Contains('### 10.4 ') -and $d60.Contains('### 10.5 '))) { Mal "documento 60 [$lg]: faltan §10.4 o §10.5 (D125, D126)"; $malDe++ }
+    if (-not ($d60.Contains('### 10.4 ') -and $d60.Contains('### 10.5 '))) { Mal "documento 60 [$lg]: faltan §10.4 o §10.5 (D126, D127)"; $malDe++ }
     foreach ($k in $nombresFr.Keys) { if (-not $d60.Contains("| **$k** |")) { Mal "documento 60 [$lg] §10.4: falta la fila de $k"; $malDe++ } }
     if ($lg -eq 'es') { foreach ($k in $nombresFr.Keys) { if (-not $d60.Contains("| **$k** | $($nombresFr[$k]) |")) { Mal "el freno $k se llama «$($nombresFr[$k])» en el motor y de otra forma en el documento 60 §10.4"; $malDe++ } } }
     $g02 = [IO.File]::ReadAllText((Get-ChildItem (Join-Path $repo "SEVEN-G\mds\$lg") -Filter '02_*.md').FullName)
-    if (-not $g02.Contains('| **FE-1–FE-6** |')) { Mal "glosario 02 [$lg] §6.1: falta el código FE-1–FE-6 (D125)"; $malDe++ }
+    if (-not $g02.Contains('| **FE-1–FE-6** |')) { Mal "glosario 02 [$lg] §6.1: falta el código FE-1–FE-6 (D126)"; $malDe++ }
     $d10 = [IO.File]::ReadAllText((Get-ChildItem (Join-Path $repo "SEVEN-G\mds\$lg") -Filter '10_*.md').FullName)
     $d03 = [IO.File]::ReadAllText((Get-ChildItem (Join-Path $repo "SEVEN-G\mds\$lg") -Filter '03_*.md').FullName)
-    if (-not ($d10.Contains('60 §10.5') -and $d03.Contains('60 §10.5') -and $d03.Contains('60 §10.4'))) { Mal "documentos 10 y 03 [$lg]: no remiten al panel (60 §10.4 y §10.5) (D125, D126)"; $malDe++ }
+    if (-not ($d10.Contains('60 §10.5') -and $d03.Contains('60 §10.5') -and $d03.Contains('60 §10.4'))) { Mal "documentos 10 y 03 [$lg]: no remiten al panel (60 §10.4 y §10.5) (D126, D127)"; $malDe++ }
   }
   $cfgDe = Get-Content (Join-Path $t17 'config_panel.json') -Raw | ConvertFrom-Json
-  if (-not (@($cfgDe.mapa_impacto.filas).Count -eq 7 -and $cfgDe.frenos_escalado)) { Mal 'config_panel.json: faltan mapa_impacto (7 filas) o frenos_escalado en el ejemplo (D125, D126)'; $malDe++ }
+  if (-not (@($cfgDe.mapa_impacto.filas).Count -eq 7 -and $cfgDe.frenos_escalado)) { Mal 'config_panel.json: faltan mapa_impacto (7 filas) o frenos_escalado en el ejemplo (D126, D127)'; $malDe++ }
   $ejDe = [IO.File]::ReadAllText((Get-ChildItem (Join-Path $t17 'ejemplo\salida') -Filter 't01_Dashboard_Casos_Uso_IA_v*.html' | Select-Object -First 1).FullName)
   if (-not ($ejDe.Contains('function frenosEscalado(') -and $ejDe.Contains('id="impacto"'))) { Mal 'el panel de ejemplo no lleva los frenos ni el mapa de impacto: regenerar con t01_a_panel.py'; $malDe++ }
   foreach ($rd in 'README.md', 'README_en.md') { $tr = [IO.File]::ReadAllText((Join-Path $t17 $rd)); if (-not ($tr.Contains('frenos_escalado') -and $tr.Contains('mapa_impacto') -and $tr.Contains('60 §10.4'))) { Mal "T17 ${rd}: no explica frenos_escalado, mapa_impacto ni el documento 60 §10.4"; $malDe++ } }
   if (-not $malDe) { Ok "seis frenos (FE-1…FE-6) iguales en el motor, el documento 60 y el glosario (ES/EN); mapa de impacto T16; cifras pulsables y lo económico primero en el embudo; en los dos paneles y el ejemplo" }
-  # ---- 30. primera capa (D128): la entrada ligera abre con tres respuestas —dónde invertir, cómo escalar, cómo demostrar el valor— que llevan
+  # ---- 31. primera capa (D129): la entrada ligera abre con tres respuestas —dónde invertir, cómo escalar, cómo demostrar el valor— que llevan
   # al panel, y la portada enlaza a ellas antes que a la metodología (ES/EN)
-  Write-Host '30. Primera capa: tres respuestas antes de la metodología'
+  Write-Host '31. Primera capa: tres respuestas antes de la metodología'
   $malPc = 0
   foreach ($lg in 'es', 'en') {
     $en1 = [IO.File]::ReadAllText((Join-Path $repo "SEVEN-G\build\entrada\$lg\index.html"))
     $iPq = $en1.IndexOf('<section id="para-que">'); $iPr = $en1.IndexOf('<section id="preguntas">')
-    if ($iPq -lt 0 -or $iPr -lt $iPq) { Mal "entrada [$lg]: falta la sección «para-que» antes de las preguntas (D128)"; $malPc++; continue }
+    if ($iPq -lt 0 -or $iPr -lt $iPq) { Mal "entrada [$lg]: falta la sección «para-que» antes de las preguntas (D129)"; $malPc++; continue }
     $secPq = $en1.Substring($iPq, $iPr - $iPq)
-    if (([regex]::Matches($secPq, 'class="promesa"')).Count -ne 3 -or -not ($secPq.Contains('t01_Dashboard_Casos_Uso_IA_v') -and $secPq.Contains('t01_Dashboard_Movil_IA_v'))) { Mal "entrada [$lg]: la sección «para-que» debe tener tres promesas que lleven a los dos paneles (D128)"; $malPc++ }
-    if (-not $en1.Contains('href="#para-que"')) { Mal "entrada [$lg]: la barra no enlaza «para-que» (D128)"; $malPc++ }
+    if (([regex]::Matches($secPq, 'class="promesa"')).Count -ne 3 -or -not ($secPq.Contains('t01_Dashboard_Casos_Uso_IA_v') -and $secPq.Contains('t01_Dashboard_Movil_IA_v'))) { Mal "entrada [$lg]: la sección «para-que» debe tener tres promesas que lleven a los dos paneles (D129)"; $malPc++ }
+    if (-not $en1.Contains('href="#para-que"')) { Mal "entrada [$lg]: la barra no enlaza «para-que» (D129)"; $malPc++ }
   }
-  foreach ($p in 'index.html', 'en\index.html') { $pt = [IO.File]::ReadAllText((Join-Path $repo $p)); if ($pt -notmatch '<p class="rapido">.*entrada/index\.html#para-que') { Mal "${p}: la portada no enlaza las tres respuestas de la entrada (D128)"; $malPc++ } }
+  foreach ($p in 'index.html', 'en\index.html') { $pt = [IO.File]::ReadAllText((Join-Path $repo $p)); if ($pt -notmatch '<p class="rapido">.*entrada/index\.html#para-que') { Mal "${p}: la portada no enlaza las tres respuestas de la entrada (D129)"; $malPc++ } }
   if (-not $malPc) { Ok 'la entrada (ES/EN) abre con las tres respuestas que llevan al panel y la portada las enlaza' }
 }
 finally { Remove-Item $tmp -Recurse -Force -Confirm:$false -ErrorAction SilentlyContinue }

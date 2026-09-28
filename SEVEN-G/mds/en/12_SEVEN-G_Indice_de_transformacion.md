@@ -5,8 +5,8 @@
 | | |
 |---|---|
 | Document | Document 12 · Transformation index |
-| Version | 0.1 (working draft) |
-| Date | 16-09-2026 |
+| Version | 0.2 (working draft) |
+| Date | 28-09-2026 |
 | Author | Fernando García Varela |
 | Status | Draft for review. The numerical thresholds are initial and must be calibrated through practical application. |
 
@@ -157,6 +157,22 @@ The difference between confirmed and actual ambition **is not in itself a noncon
 |---|---|
 | 30% or more across the portfolio as a whole | Alert to the AI Committee and review of the quality of classification in phase 2. |
 | 50% or more among initiatives confirmed as Transform | The board is informed and it is taken into account when reading the profile (section 5.3). |
+
+
+### 3.7 Impact reach (IM1–IM4)
+
+The five questions in section 3.1 also say **what** each initiative **affects**. That reading is summarised in four reach levels, with no new questions, and it is the third lens of maturity (11 §7.6). It applies to initiatives in use and only with verified answers (section 3.4): an answer without evidence counts as "no".
+
+| Level | Reach | Condition | Typical ambition |
+|---|---|---|---|
+| **IM1** | Task | Improves a task within a process that does not change (none of the following conditions) | Optimise |
+| **IM2** | Process | IT-P2 = yes: the process is redesigned end to end | Optimise or Augment |
+| **IM3** | People and organisation | IT-P3 = yes: roles, structure or who takes which decisions change | Augment or Transform |
+| **IM4** | Business model | IT-P1 or IT-P4 = yes: the value proposition to the customer changes or there are new revenues, services or markets | Transform |
+
+The highest level whose condition is met is assigned. At company level, the **distribution** of initiatives in use by level is shown alongside the index profile (section 5): this shows, without a new number, whether AI only improves tasks, whether it already redesigns processes, whether it changes people's work or whether it touches the business model. The typical ambition is indicative: the level is given by the answers, not by the ambition label.
+
+> **Why it matters.** "Optimise" and "Transform" are labels that are declared; impact reach comes from what has actually changed. A portfolio with every initiative at IM1 is not transforming the company, even if the thesis says so, and an initiative at IM3 without a people plan is an alert (11 §7.6).
 
 ---
 
@@ -540,3 +556,4 @@ The index is not presented as a grade, nor is it compared with other companies (
 | Version | Date | Changes |
 |---|---|---|
 | 0.1 | 16-09-2026 | First version. Defines the ambition classification rules (five questions, ten rules, borderline cases, proposed, confirmed and actual statuses, discrepancies and overstatement rate); the eight signals with formula, source and initial thresholds to be calibrated; the baseline conditions; the profile assignment rules with detection of declared but unevidenced transformation; the treatment of "no data"; calibration in C5; and a complete example. |
+| 0.2 | 28-09-2026 | Adds impact reach IM1–IM4 (section 3.7), derived from the verified questions IT-P1 to IT-P4, as the third lens of maturity (11 §7.6). |
