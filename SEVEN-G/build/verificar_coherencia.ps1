@@ -649,15 +649,31 @@ try {
   if ($pag -match '(?i)umami') { Mal 'comunidad: la página no debe medirse'; $malUm++ }
   if ($pag -match 'codigos\.js' -and $pag -notmatch 'data-sin-medicion') { Mal 'comunidad: carga codigos.js sin data-sin-medicion (se mediría, D80/D90)'; $malUm++ }
   if (-not $malUm) { Ok "medición de visitas configurada$(if (-not $cfgUm.websiteId) { ' (sin websiteId: desactivada)' }), declarada en el documento 04 y fuera de la página de comunidad" }
-  # ---- 13. entrada ligera «Qué es SEVEN-G» (D91): en ES y EN, copia exacta de su fuente, enlazada desde la portada como primer
+  # ---- 13. entrada ligera «Qué es SEVEN-G» (D91): en ES y EN, igual a su fuente con los datos sustituidos al generar (D121: recuentos
+  # de la biblioteca e inventario de casos del JSON del panel de ejemplo, entrada_datos.ps1), enlazada desde la portada como primer
   # botón, y con paso al documento 00 (el detalle), al registro y a los dos paneles (completo y móvil); imágenes SEVEN-G_<lámina>.png
   Write-Host '13. Entrada ligera de SEVEN-G'
   $malEnt = 0
+  . (Join-Path $PSScriptRoot 'entrada_datos.ps1')
+  $trEnt = Get-Content (Join-Path $PSScriptRoot 'entrada_inventario_en.json') -Raw -Encoding utf8 | ConvertFrom-Json -AsHashtable
   foreach ($lang in 'es', 'en') {
     $fuente = Join-Path $repo "SEVEN-G\build\entrada\$lang\index.html"; $pub = Join-Path $repo "SEVEN-G\html\$lang\entrada\index.html"
     if (-not (Test-Path $fuente) -or -not (Test-Path $pub)) { Mal "entrada [$lang]: falta la fuente o la página publicada"; $malEnt++; continue }
     $tEnt = [IO.File]::ReadAllText($pub)
-    if (($tEnt -replace "`r`n", "`n") -cne ([IO.File]::ReadAllText($fuente) -replace "`r`n", "`n")) { Mal "entrada [$lang]: html/$lang/entrada/index.html no coincide con build/entrada/$lang (generar con build.ps1)"; $malEnt++ }
+    $tFuente = [IO.File]::ReadAllText($fuente)
+    # la fuente no lleva cifras escritas a mano (D121)
+    foreach ($m in [regex]::Matches($tFuente, '<b>(\d+)</b><span>')) { Mal "entrada [$lang]: la fuente escribe a mano la cifra $($m.Groups[1].Value); usar {{N_DOCUMENTOS}}, {{N_PLANTILLAS}} o {{N_HERRAMIENTAS}} (D121)"; $malEnt++ }
+    if ($tFuente -match '<tr data-caso=') { Mal "entrada [$lang]: la fuente escribe a mano filas del inventario; van en <!-- inventario-casos --> y salen del JSON del panel (D121)"; $malEnt++ }
+    # los recuentos son los del documento 00 generado (figura del inicio rápido, Recuentos-Biblioteca de build.ps1)
+    $d00 = [IO.File]::ReadAllText((Get-ChildItem (Join-Path $repo "SEVEN-G\html\$lang") -Filter '00_SEVEN-G_*.html' | Select-Object -First 1).FullName)
+    $recEnt = @{}
+    foreach ($par in @(@('{{N_DOCUMENTOS}}', 'ir-caja"'), @('{{N_PLANTILLAS}}', 'ir-caja p"'), @('{{N_HERRAMIENTAS}}', 'ir-caja t"'))) {
+      $m = [regex]::Match($d00, [regex]::Escape($par[1]) + '><b>(\d+)</b>')
+      if ($m.Success) { $recEnt[$par[0]] = $m.Groups[1].Value } else { Mal "documento 00 [$lang]: no se encuentra el recuento $($par[0]) del inicio rápido"; $malEnt++ }
+    }
+    $esperado = Expandir-Entrada $tFuente $lang $repo $recEnt
+    if (($tEnt -replace "`r`n", "`n") -cne ($esperado -replace "`r`n", "`n")) { Mal "entrada [$lang]: html/$lang/entrada/index.html no coincide con build/entrada/$lang y los datos actuales (recuentos o JSON del panel de ejemplo): generar con build.ps1"; $malEnt++ }
+    if ($tEnt -match '\{\{N_|<!-- inventario-') { Mal "entrada [$lang]: quedan marcas sin sustituir"; $malEnt++ }
     foreach ($req in '00_SEVEN-G_Que_es_y_para_que_sirve.html', 'T01_registro_iniciativas/registro.html', 'Dashboard_Casos_Uso_IA', 'Dashboard_Movil_IA', 'class="niv"', '<details class="aviso">', 'Presentaci%C3%B3n_Corregida.pptx', 'Presentaci%C3%B3n_Corregida.pdf') {
       if (-not $tEnt.Contains($req)) { Mal "entrada [$lang]: falta «$req»"; $malEnt++ }
     }
@@ -668,17 +684,23 @@ try {
     }
     $port = [IO.File]::ReadAllText((Join-Path $repo $(if ($lang -eq 'es') { 'index.html' } else { 'en\index.html' })))
     if ($port -notmatch "<a class=""boton primario"" href=""[^""]*SEVEN-G/html/$lang/entrada/index\.html""") { Mal "portada [$lang]: el botón «Qué es SEVEN-G» no lleva a la entrada ligera"; $malEnt++ }
-    # D108: tarjetas pequeñas con «?» e inventario reducido de casos, con los mismos casos (y etapas) que el panel de ejemplo
-    if ([regex]::Matches($tEnt, '<details class="ayuda">').Count -lt 4) { Mal "entrada [$lang]: el panel del consejo no lleva las tarjetas con «?» (D108)"; $malEnt++ }
+    # D121: tarjetas pequeñas con «?» e inventario reducido de casos, con los mismos casos (y etapas) que el panel de ejemplo
+    if ([regex]::Matches($tEnt, '<details class="ayuda">').Count -lt 4) { Mal "entrada [$lang]: el panel del consejo no lleva las tarjetas con «?» (D121)"; $malEnt++ }
     $casosPanel = (Get-Content (Join-Path $repo 'SEVEN-G\herramientas\T17_panel_consejo\ejemplo\salida\t01_dashboard_data.json') -Raw -Encoding utf8 | ConvertFrom-Json -Depth 64).casos
     $filasInv = [regex]::Matches($tEnt, '<tr data-caso="([^"]+)">.*?<span class="etapa [^"]*">([^<]+)</span>')
     $idsInv = @($filasInv | ForEach-Object { $_.Groups[1].Value } | Sort-Object)
-    if (($idsInv -join ',') -ne (@($casosPanel.id | Sort-Object) -join ',')) { Mal "entrada [$lang]: el inventario de casos no coincide con los casos del panel de ejemplo (actualizar la tabla de #panel, D108)"; $malEnt++ }
+    if (($idsInv -join ',') -ne (@($casosPanel.id | Sort-Object) -join ',')) { Mal "entrada [$lang]: el inventario de casos no coincide con los casos del panel de ejemplo (generar con build.ps1, D121)"; $malEnt++ }
     elseif ($lang -eq 'es') {
-      foreach ($f in $filasInv) { $c = $casosPanel | Where-Object id -eq $f.Groups[1].Value; if ($c.estado -ne $f.Groups[2].Value) { Mal "entrada [es]: $($c.id) figura como «$($f.Groups[2].Value)» y en el panel está «$($c.estado)» (D108)"; $malEnt++ } }
+      foreach ($f in $filasInv) { $c = $casosPanel | Where-Object id -eq $f.Groups[1].Value; if ($c.estado -ne $f.Groups[2].Value) { Mal "entrada [es]: $($c.id) figura como «$($f.Groups[2].Value)» y en el panel está «$($c.estado)» (D121)"; $malEnt++ } }
+    }
+    if ($lang -eq 'en') {
+      $sinEn = @($casosPanel | Where-Object { -not $trEnt.nombres.ContainsKey([string]$_.id) } | ForEach-Object id)
+      if ($sinEn) { Aviso "entrada [en]: casos del panel de ejemplo sin nombre en inglés en entrada_inventario_en.json (salen en español): $($sinEn -join ', ')" }
+      $sinEt = @($casosPanel | ForEach-Object { $_.unidad; $_.estado; $_.tags.ambicion; $_.tags.riesgo } | Sort-Object -Unique | Where-Object { $_ -and -not $trEnt.etiquetas.ContainsKey([string]$_) })
+      if ($sinEt) { Aviso "entrada [en]: etiquetas sin traducir en entrada_inventario_en.json (salen en español): $($sinEt -join ', ')" }
     }
   }
-  if (-not $malEnt) { Ok 'entrada ligera en ES y EN, igual a su fuente, enlazada desde la portada y con paso al documento 00, al registro y a los paneles; inventario de casos igual al panel de ejemplo' }
+  if (-not $malEnt) { Ok 'entrada ligera en ES y EN, igual a su fuente, enlazada desde la portada y con paso al documento 00, al registro y a los paneles; recuentos e inventario de casos tomados de la biblioteca y del JSON del panel de ejemplo' }
 
   # ---- 14. avisos plegados por defecto (D93): en los documentos (plegados en pantalla, completos en el PDF), la portada y los paneles
   Write-Host '14. Avisos plegados por defecto'
@@ -1023,7 +1045,7 @@ try {
     if (-not $ent.Contains('95_SEVEN-G_Datos_en_local_e_instalacion_propia.html')) { Mal "entrada [$lang]: no enlaza el documento 95"; $malInst++ }
   }
   $nDocs = @(Get-ChildItem (Join-Path $repo 'SEVEN-G\mds\es') -File -Filter '*.md' | Where-Object { $_.Name -match '^\d{2}_' }).Count
-  foreach ($p in @(@{ f = 'index.html'; l = 'es' }, @{ f = 'en\index.html'; l = 'en' }, @{ f = 'SEVEN-G\build\entrada\es\index.html'; l = 'es' }, @{ f = 'SEVEN-G\build\entrada\en\index.html'; l = 'en' })) {
+  foreach ($p in @(@{ f = 'index.html'; l = 'es' }, @{ f = 'en\index.html'; l = 'en' }, @{ f = 'SEVEN-G\html\es\entrada\index.html'; l = 'es' }, @{ f = 'SEVEN-G\html\en\entrada\index.html'; l = 'en' })) {
     $t = [IO.File]::ReadAllText((Join-Path $repo $p.f))
     if ($p.f -like '*index.html' -and $p.f -notlike '*entrada*') {
       if (-not ($t.Contains('95_SEVEN-G_Datos_en_local_e_instalacion_propia.html') -and $t.Contains($repoUrl))) { Mal "$($p.f): la portada no enlaza el documento 95 y el repositorio"; $malInst++ }
