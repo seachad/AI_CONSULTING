@@ -473,7 +473,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
     <p class="antetitulo">Document 96 &#183; Starting points and implementation journey</p>
     <h1>Starting points and implementation journey</h1>
     <p class="entradilla">Where each company starts according to the AI and governance it already has, what it does at each stage, who does it and with what evidence, without lowering what the framework requires in the end</p>
-    <div class="firma"><span><b>Fernando Garc&#237;a Varela</b></span><span>Version 0.1 (working draft)</span><span>28-09-2026</span><span>Draft for review</span></div>
+    <div class="firma"><span><b>Fernando Garc&#237;a Varela</b></span><span>Version 0.2</span><span>28-09-2026</span><span>Thresholds and priorities validated (28-09-2026)</span></div>
     <div class="cifras"><div class="cifra"><b>6</b><span>typical starting points</span></div><div class="cifra"><b>5</b><span>modifiers</span></div><div class="cifra"><b>22</b><span>journey milestones</span></div><div class="cifra"><b>5</b><span>stages up to the declaration of application</span></div></div>
   </div>
 </header>
@@ -539,11 +539,11 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 <tr>
 <td><strong>PP-D</strong></td>
-<td>Analytics and classic ML</td>
-<td>Predictive models in production, a data team and, sometimes, model validation.</td>
-<td>Models in production without a continuity review; generative AI coming in outside model governance.</td>
+<td>In-house AI in production</td>
+<td>Own models in production —predictive (ML, vision, optimisation) or generative AI integrated into processes—, without agents that act or both at once. There is usually a data team and, sometimes, model validation.</td>
+<td>Models in production without a continuity review; a new type of AI coming in outside the existing governance.</td>
 <td>Regularisation of what is in production (90 §5, review equivalent to G7); bringing existing model validation into G5 and R6; drift and monitoring (52); inventory with regulatory classification.</td>
-<td>The gap is generative AI: knowledge sources (51; D3.08), evaluation with test sets (D4.08) and bias in responses (52 §4.2.7).</td>
+<td>What belongs to the type of AI it does not have yet: with ML only, knowledge sources (51; D3.08), evaluation with test sets (D4.08) and bias in responses (52 §4.2.7); with generative AI only, data drift and validation of predictive models (52).</td>
 </tr>
 <tr>
 <td><strong>PP-E</strong></td>
@@ -556,7 +556,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tr>
 <td><strong>PP-F</strong></td>
 <td>At scale</td>
-<td>At least two of these three things in production: predictive ML, generative AI integrated into processes and agents that act (A2/A3).</td>
+<td>Agents that act (A2 or A3) in production, or predictive ML and generative AI integrated into processes at the same time.</td>
 <td>Regulatory and security exposure that is already real; governance lagging behind use.</td>
 <td>Segregated roles and AI Auditor immediately; complete inventory with classification; agent security (35) and suppliers (36); regularisation prioritised by risk; board dashboard and transformation index.</td>
 <td>Nothing: everything is mandatory and urgent.</td>
@@ -580,7 +580,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tr>
 <td>1</td>
 <td>PP-F</td>
-<td>At least two of {predictive ML, generative AI integrated into processes, A2 or A3 agents} in production.</td>
+<td>A2 or A3 agents in production, or predictive ML and generative AI integrated into processes at the same time.</td>
 </tr>
 <tr>
 <td>2</td>
@@ -590,7 +590,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tr>
 <td>3</td>
 <td>PP-D</td>
-<td>Predictive ML, vision or optimisation with learning in production.</td>
+<td>In-house AI in production: predictive ML, vision or optimisation with learning, or generative AI integrated into processes.</td>
 </tr>
 <tr>
 <td>4</td>
@@ -610,12 +610,12 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tbody>
 </table></div>
 <figure class="grafico"><div class="g-titulo">How the starting point is assigned</div><div class="g-sub">The first archetype that is met is assigned; the following ones that are also met are traits</div><div class="g-lienzo"><pre class="mermaid">flowchart TD
-  Q["Questionnaire Q01 to Q12"] --> F{"Two of: ML, generative AI in processes, A2/A3 agents?"}
+  Q["Questionnaire Q01 to Q12"] --> F{"A2/A3 agents, or ML and generative AI at once?"}
   F -->|"Yes"| PF["PP-F · At scale"]
   F -->|"No"| E{"Three or more generative pilots and at most one in production?"}
   E -->|"Yes"| PE["PP-E · Many pilots"]
-  E -->|"No"| D{"ML, vision or optimisation in production?"}
-  D -->|"Yes"| PD["PP-D · Classic ML"]
+  E -->|"No"| D{"ML, vision, optimisation or own generative AI in production?"}
+  D -->|"Yes"| PD["PP-D · In-house AI"]
   D -->|"No"| C{"Rules or RPA in production?"}
   C -->|"Yes"| PC["PP-C · Automator"]
   C -->|"No"| B{"Third-party AI included in what is contracted?"}
@@ -1179,7 +1179,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>1</td>
 <td>D</td>
 <td>2</td>
-<td>D</td>
+<td>2</td>
 <td>1</td>
 </tr>
 <tr id="cod-hi-17-2">
@@ -1212,7 +1212,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tr id="cod-hi-20-2">
 <td><strong>HI-20</strong></td>
 <td>D</td>
-<td>·</td>
+<td>2</td>
 <td>2</td>
 <td>C</td>
 <td>2</td>
@@ -1565,6 +1565,11 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>0.1</td>
 <td>28-09-2026</td>
 <td>First version: six starting points, assignment rule, five modifiers, twelve-question questionnaire, five stages, twenty-two milestones with their evidence, the question from <a href="11_SEVEN-G_Modelo_de_madurez.html" title="Document 11 &#183; Maturity model">document 11</a> that substantiates them and their priority by archetype, roles by stage and three fictitious journeys. Assignment thresholds and priorities, to be validated.</td>
+</tr>
+<tr>
+<td>0.2</td>
+<td>28-09-2026</td>
+<td>Thresholds and priorities validated. The assignment rule no longer leaves in PP-A a company with in-house AI in production: PP-F becomes &quot;A2 or A3 agents, or ML and generative AI at once&quot; and PP-D, renamed &quot;In-house AI in production&quot;, includes generative AI integrated into processes. HI-16 (suppliers) rises to 2 in PP-E, because generative pilots use third-party models with company data, and HI-20 (data and knowledge) goes from · to 2 in PP-B, because corporate assistants access the company's knowledge sources.</td>
 </tr>
 </tbody>
 </table></div>
