@@ -655,7 +655,7 @@ function netoCif(o){ if (!o || !o.recurrente || (!o.eficiencias && !o.retorno)) 
   const v = (o.eficiencias ? o.eficiencias.v : 0) + (o.retorno ? o.retorno.v : 0) - o.recurrente.v;
   return {v, prev: [o.eficiencias, o.retorno, o.recurrente].some(x => x && x.prev)}; }
 const netoCelda = x => x ? `<b style="color:${x.v<0?"var(--critical)":"var(--neto)"}">${fmt(x.v)}</b>${x.prev?' <span class="prev">prev.</span>':""}` : "—";
-// columnas económicas del detalle de una etapa, primero (D124): neto anual, eficiencias, retorno, coste anual e inversión
+// columnas económicas del detalle de una etapa, primero (D127): neto anual, eficiencias, retorno, coste anual e inversión
 const cifCeldas = o => `<td class="n">${netoCelda(netoCif(o))}</td>` + CIF.map(([a])=>`<td class="n">${cifCelda(o[a])}</td>`).join("");
 // cifras guardadas en el historial con un cambio de estado (historial_estados[].cifras: previsto y actual)
 function cifrasTramo(t){ const c = t && t.cifras; if (!c) return null; const o = {}; [["eficiencias","eficiencias"],["retorno","retorno"],["recurrente","recurrente"],["construccion","inversion"]].forEach(([a,k])=>{ const ac = (c.actual||{})[k], pr = (c.previsto||{})[k]; o[a] = ac != null ? {v:ac, prev:false} : pr != null ? {v:pr, prev:true} : null; }); return CIF.some(([a])=>o[a]) ? o : null; }
@@ -730,7 +730,7 @@ function renderEmbudo(rows){
   el.querySelectorAll("[data-sel]").forEach(g=>{ const go = ()=>{ E.sel = E.sel===g.dataset.sel ? null : g.dataset.sel; renderEmbudo(CASES.filter(passes)); if (E.sel) document.getElementById("embudo-det").scrollIntoView({behavior:"smooth", block:"nearest"}); }; g.onclick = go; g.onkeydown = ev=>{ if (ev.key==="Enter"||ev.key===" "){ ev.preventDefault(); go(); } }; });
   renderEmbudoDetalle(rows); renderEmbudoPreguntas(rows);
 }
-// indicadores del embudo que se pueden pulsar (D124): cada uno abre sus casos con lo económico primero
+// indicadores del embudo que se pueden pulsar (D127): cada uno abre sus casos con lo económico primero
 function openKpiEmbudo(tipo, rows){
   const cfg = CICLO(), gi = cfg.embudo.indexOf(cfg.ganado);
   if (tipo === "ganados"){ state.embudo.sel = cfg.ganado; renderEmbudo(CASES.filter(passes)); document.getElementById("embudo-det").scrollIntoView({behavior:"smooth", block:"start"}); return; }
@@ -884,7 +884,7 @@ function renderKPIs(rows){
   const negUso = rows.filter(c=>c.estado==="En uso" && R(c).neto < 0).length;
   const pbTxt = negUso ? ` · <b>${negUso}</b> ${negUso===1?"caso en uso con neto negativo":"casos en uso con neto negativo"}` : "";
   const mas = `<div class="more">Ver desglose ›</div>`;
-  // todos los indicadores de cabecera se pueden pulsar (D124): los económicos abren su desglose y los demás un resumen con sus casos
+  // todos los indicadores de cabecera se pueden pulsar (D127): los económicos abren su desglose y los demás un resumen con sus casos
   const res = `<div class="more">Ver resumen ›</div>`;
   // indicador con umbral: color de semáforo y etiqueta con el umbral configurado (meta.umbrales_kpi)
   const semaf = (x, clave) => `<div class="kst ${x.nivel}" title="Umbrales: ${umbralTxt(clave)}">${x.pct==null?"sin dato":NIVEL_TXT[x.nivel]} · ${umbralTxt(clave)}</div>`;
@@ -901,7 +901,7 @@ function renderKPIs(rows){
 // ---- desglose de los KPI económicos (costes, retorno total y neto) de los casos seleccionados
 function agrupa(rows, clave){ const m = new Map(); rows.forEach(c=>{ const g = clave(c); if (!m.has(g)) m.set(g, []); m.get(g).push(c); }); return [...m.entries()]; }
 function porConcepto(rows, campo, lado){ const acc = {}; rows.forEach(c=>(eco(c)[campo]||[]).forEach(l=>{ let v = imp(l[lado]); if (v == null && lado==="potencial") v = imp(l.actual); if (v != null) acc[l.concepto] = (acc[l.concepto]||0) + v; })); return acc; }
-// ---- resumen de los indicadores que no son importes (D124): casos, valor validado, clasificación y controles; cada uno lista sus casos
+// ---- resumen de los indicadores que no son importes (D127): casos, valor validado, clasificación y controles; cada uno lista sus casos
 const CTRL_EST = {hecho:"hecho", pendiente:"pendiente", no_aplica:"no aplica"};
 function openResumen(tipo, rows){
   const tile = (t, v, d) => `<div class="tile"><div class="k">${t}</div><div class="v">${v}</div><div class="d">${d}</div></div>`;
