@@ -5,8 +5,8 @@
 | | |
 |---|---|
 | Document | Document 03 · Tools and initiative register |
-| Version | 0.1 (working draft) |
-| Date | 16-09-2026 |
+| Version | 0.3 (working draft) |
+| Date | 28-09-2026 |
 | Author | Fernando García Varela |
 | Status | Draft for review. Living catalogue: it is updated every time a tool is built or modified. |
 
@@ -249,6 +249,7 @@ The T01 register is the company's **source of truth**: the other tools derive fr
 | **T17** (generator) | The full JSON of the register: initiatives, lifecycle, amounts, incidents, recommendations and the most recent maturity assessment; from T14, the exported index. | Nothing. | Dashboard configuration (thresholds, lifecycle, navigation) and the generated dashboards. |
 | **T06** | It is a view of the register itself. For the **Excel of the use case** (matrix, register, proposed mitigation and contingency plans and typical risks to consider) it reads, besides the initiative's risks, its classification (technology, exposure, autonomy, regulatory classification, ambition, intensity and providers), its impact assessments, its systems and its owners. | Nothing: the Excel is a downloaded file with the generation date and time; whatever the team decides in it is recorded on the "Risks" tab. | The catalogue of typical risks with the applicability rules and the mitigation and contingency proposals per RT code (`catalogo_riesgos.json`; the text of each typical risk is read from document 33 §9 when the tool is generated). |
 | **T18** | It is a view of the register itself. | — | — |
+| **T23** | Technology and autonomy of the initiatives in use and the pilots under way, to propose answers Q01 to Q03 of the questionnaire (marked "from T01" and editable). From T15, the answers of the most recent assessment, to mark milestones as achieved. | Nothing. | Questionnaire, archetype, status of each milestone and notes. |
 
 **Why it matters.** Without a source of truth, each tool ends up with its own version of the company: the transformation index computed with one portfolio, the board dashboard with another and maturity with a third. Establishing that everything derives from T01, that each figure carries its origin and that manual corrections are not overwritten means the board, the AI Office and the consultant read the same company in every tool.
 
@@ -297,6 +298,7 @@ The T01 register is the company's **source of truth**: the other tools derive fr
 | **T17** | Board AI dashboard | Oversight: value, cost, risk, compliance, incidents, agility, adoption. | C4 | Full and mobile HTML + JSON | 60 | 1 | Available. Fed from T01 through the connector `herramientas/T17_panel_consejo`: register (JSON) plus `config_panel.json` (indicator thresholds and lifecycle) → dashboard JSON → full and mobile dashboard, with a funnel and time per stage as in a CRM |
 | **T18** | Board recommendations register | Recommendations with persistent identifier, status, evidence and assessment. | C4 | T01 module and HTML | 62 | 1 | Available v0.1: "Board (T18)" view of the T01 register, with decisions (DEC) and recommendations (REC); the T17 connector generates the register page from the recommendations in T01 |
 | **T19** | AI thesis and risk appetite template | Board decision document, with thresholds and reference time limits. | C2 | Document template | 13 | 3 | Applied with P35 (AI thesis and risk appetite) |
+| **T23** | Implementation journey | Twelve-question questionnaire; the company's starting point (archetype, traits and modifiers); journey by stage and by role with the 22 milestones of document 96, their evidence and the document 11 question that attests them; milestones achieved according to T15; printable plan. | Implementation; C1 and C5 | HTML + JSON; CSV export | 96 | 2 | Available v0.1 |
 
 ### 5.5 People and operations
 
@@ -314,7 +316,7 @@ The T01 register is the company's **source of truth**: the other tools derive fr
 |---|---|---|---|
 | **Wave 1 · Core** | T01 with T02, T03, T04 and T05; adaptation of T17 and T18 to be fed from the register. | After document 02 (Glossary), which sets names and lists. | Portfolio managed as a funnel, with tracked *gates* and a connected board dashboard. |
 | **Wave 2 · Full governance** | T06, T07, T08, T11, T12, T14, T15, T16. | As documents 11, 12, 33, 34, 37 and 40 are completed. | Risk, compliance, value, maturity and transformation index operational. |
-| **Wave 3 · Complements** | T09, T10, T13, T19, T20, T21, T22. | With documents 13, 14, 23, 31, 35, 36, 42 and 50. | Full coverage of the framework. |
+| **Wave 3 · Complements** | T09, T10, T13, T19, T20, T21, T22, T23. | With documents 13, 14, 23, 31, 35, 36, 42 and 50. | Full coverage of the framework. |
 
 Working rule: **every document that defines a process involving a register, a calculation or a questionnaire specifies the associated tool**, and the tool is built or updated when that document is closed.
 
@@ -339,3 +341,4 @@ Working rule: **every document that defines a process involving a register, a ca
 |---|---|---|
 | 0.1 | 16-09-2026 | First version. Defines the initiative register as a managed funnel, with its taxonomy, events, metrics and reference time limits; the common data model; the catalogue of 22 tools; and the build order. |
 | 0.2 | 19-09-2026 | Catalogue brought up to date: T11 (with T13 as a module) and T15 available; tools without an application of their own are applied with their corresponding templates P32–P71 (D68). |
+| 0.3 | 28-09-2026 | Tool T23 · Implementation journey (document 96) in the catalogue (§5.4), in the data map (§4.1) and in wave 3; "Three lenses" view of T15 and schema 0.8 of the register (§4 and §4.1). |

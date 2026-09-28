@@ -5,8 +5,8 @@
 | | |
 |---|---|
 | Document | Document 11 · Maturity model |
-| Version | 0.2 (working draft) |
-| Date | 25-09-2026 |
+| Version | 0.3 (working draft) |
+| Date | 28-09-2026 |
 | Author | Fernando García Varela |
 | Status | Draft for review. Develops decision D10. Sample sizes, weights and reference targets are initial and will be calibrated through practical application. |
 
@@ -28,7 +28,7 @@ The document contains the seven dimensions and the six levels, the rubric and qu
 
 | The model measures | The model does not measure |
 |---|---|
-| The organisation's capability —bodies, practices, controls, data, people and measurement— to decide on, build, operate and oversee AI under control. | How much AI the company uses or how advanced its technology is. |
+| The organisation's capability —bodies, practices, controls, data, people and measurement— to decide on, build, operate and oversee AI under control. | How much AI the company uses or how advanced its technology is. It is shown separately, as the technology footprint (section 7.6), which does not score but sets the minimum governance required. |
 | Whether that capability is in place and working, with observable evidence. | Whether the company is transforming or merely becoming more efficient: that is measured by the transformation index (document 12). |
 | The company's progress over time using a consistent method. | Its position relative to other companies. SEVEN-G does not publish market comparisons. |
 | The maturity of the company as a whole or of a declared scope. | The quality of a specific initiative: that is decided by the *gates*. |
@@ -449,6 +449,58 @@ Document 34 breaks the NIST AI RMF down into its 72 subcategories (34 §5.4) and
 
 > **Why it matters.** A company that already reports to its risk committee with the AI RMF or the CSF does not need a second assessment or a second number. The same verified questionnaire gives the maturity level and the profiles, so the board sees a single scale and the gap against the target comes from evidence, not from a separate self-assessment.
 
+
+### 7.6 Three-lens reading
+
+The maturity level answers a single question: **does the company govern AI under control?** The board is interested in two others, which must not be mixed with that one: **what AI does it have in use?** and **what does it affect?** The result is therefore presented through three lenses together, and only the first is a maturity level.
+
+| Lens | Question | Scale | Where it is defined | How it is obtained |
+|---|---|---|---|---|
+| **1 · Governance capability** | Does it do so under control? | 0–5 by dimension D1–D7 and overall | Sections 2 to 5 | Verified questionnaire (T15) |
+| **2 · Technology footprint** | What AI does it have in use and how much governance does that demand? | HT0–HT5, descriptive: it is not a score | This section | Technology and autonomy of the initiatives in use in the T01 register; without a register, question Q01 of document 96 |
+| **3 · Impact reach** | What does it affect: tasks, processes, people and organisation, business model? | IM1–IM4 by initiative and its distribution across the company | Document 12 §3.7 | Actual ambition and verified questions IT-P1 to IT-P4 of the initiatives in use |
+
+**Technology does not raise or lower the maturity level.** Adding it would reward adopting ahead of governance: a company with well-governed predictive models is more mature than another with uncontrolled generative AI. What the footprint does is **set the minimum governance that is required**, in the same spirit as the targets by ambition in section 8, and trigger alerts when it is not reached.
+
+#### Technology footprint
+
+The **highest level in use** (initiatives in phases 6 and 7 that have not been closed) and the **breadth** (distinct technology types and number of systems in use) are reported. Pilots are shown separately, as "in exploration". The order is one of **increasing governance demand**, not of "better technology".
+
+| Level | Name | What is in use | Technology in the T01 register |
+|---|---|---|---|
+| **HT0** | No AI in use | Nothing in production (there may be unauthorised use) | No initiatives in use |
+| **HT1** | Automation without learning | Rules or RPA. It is not AI for inventory purposes (document 32), but it is recorded as context | `reglas` |
+| **HT2** | Third-party AI included | Corporate assistants, SaaS or products with AI; the company does not build | `ia_terceros_embebida` |
+| **HT3** | Own predictive models | Predictive ML, vision or optimisation with learning | `ml_predictivo`, `vision`, `optimizacion` |
+| **HT4** | Generative AI in processes | Language, documents, generation and retrieval integrated into processes; agents that only propose (A0 or A1) | `ia_generativa`, `lenguaje_documentos`; `agente` with A0 or A1 |
+| **HT5** | Agents that act | Agents with A2 or A3 autonomy over third parties, money, personal data or production systems | `agente` with A2 or A3 |
+
+#### Minimum governance required by footprint
+
+Starting values, **to be calibrated in C5** (section 8). Each footprint level requires its own row and those above it.
+
+| Footprint in use | D1 | D3 | D4 | D5 | D6 |
+|---|---|---|---|---|---|
+| **HT1** | 1 | — | — | — | 2 |
+| **HT2** | 1 | — | — | — | 2 |
+| **HT3** | 2 | 2 | 2 | — | 2 |
+| **HT4** | 2 | 3 | 3 | — | 3 |
+| **HT5** | 3 | 3 | 3 | 3 | 3 |
+
+In HT4, D3 covers knowledge sources with an owner and validity (D3.08) and D4 covers evaluation with a test set before each change (D4.08); in HT5, D6 covers agent controls (D6.08).
+
+#### Alerts
+
+| Alert | When it is triggered | Severity | What it calls for |
+|---|---|---|---|
+| **Adoption ahead of governance** | Any dimension below the minimum required by the footprint in use | High if it is D1 or D6; medium for the others | Priority actions in the improvement plan (P34 §6.6). While D6 is below the minimum, no new initiative at that footprint level should pass G5 without an explicit improvement condition, deadline and owner |
+| **Governance without use** | Overall level 3 or higher with footprint HT2 or lower, or no initiative in use twelve months after C2 | Medium | Review the portfolio and the funnel (document 14; D2.09): the framework must not turn into bureaucracy without value |
+| **Transformation without people** | Any initiative in use with reach IM3 or IM4 and D5 at 2 or below | High | Adoption and people plan (documents 23 and 50; D5.07 and D5.08) before the next *gate* |
+
+The cross-reading with the transformation index (section 7.2 and 12 §5.3) is kept and shown alongside these alerts. T15 presents the three lenses in its "Three lenses" view, saves their summary into the T01 register and the board dashboard (T17) shows it in the maturity card.
+
+> **Why it matters.** The board is interested in whether the company has more AI, but above all in whether that AI is under control and whether it changes more than tasks. With the three lenses together it sees this without maturity being inflated: a company with agents that act and D6 at 2 does not appear as "more mature"; it appears with a high-severity alert.
+
 ---
 
 ## 8. Maturity targets by ambition
@@ -463,7 +515,7 @@ The company sets its maturity targets in C2. Level 5 is not a default target: th
 | Enterprise scope or regulated sector | Level 3 in D6. | Level 4 in D6. |
 | Agents with A2 or A3 autonomy in production | Level 3 in D4 and D6 before the first go-live. | Level 4 in D4 and D6. |
 
-The board should not approve Transform bets at G2 with D1 or D6 below 2 unless there is an explicit improvement condition, deadline and owner.
+The board should not approve Transform bets at G2 with D1 or D6 below 2 unless there is an explicit improvement condition, deadline and owner. The technology footprint in use adds its own required minimum (section 7.6), which is added to these references.
 
 ---
 
@@ -496,6 +548,8 @@ The board should not approve Transform bets at G2 with D1 or D6 below 2 unless t
 | T14 | Cross-reading with the transformation index. |
 | T17, T18 | Publication of the result and tracking of the actions requested by the board. |
 | P03, P05, P07–P09, P11, P12, P14, P16, P18–P20, P24, P25, P28–P30 | Usual evidence. The answer sheet, the calculation and the report have their own template, P34, which T15 calculates and generates. |
+| **T15 · "Three lenses" view** | Governance capability, technology footprint from the T01 register, impact reach (12 §3.7), minimum required and alerts of section 7.6; the summary is saved into the T01 register and shown by the board dashboard. |
+| **T23 · Implementation journey** | Uses the questionnaire's questions to mark the milestones of document 96 as met. |
 | P72, P73 | AI security profile (CSF 2.0 / Cyber AI Profile) and AI governance profile (NIST AI RMF), with the level of each subcategory derived from the questionnaire (section 7.5). T15 calculates them in its "CSF profile" and "AI RMF profile" views and saves their summary into the T01 register. |
 
 ---
@@ -522,3 +576,4 @@ The board should not approve Transform bets at G2 with D1 or D6 below 2 unless t
 |---|---|---|
 | 0.1 | 16-09-2026 | First version. Confirms the seven dimensions and the six levels (D10); defines rubrics, an 84-question questionnaire, assessment types, sampling, calculation with a cap based on D1 and D6, report, links with the transformation index and with 01 §14, and reference targets by ambition. |
 | 0.2 | 25-09-2026 | Adds the indicative equivalence of levels 0–5 with the NIST CSF 2.0 *tiers* (section 2.2), which is a calculated view and not a second scale, and link 7.5 with the NIST profiles: current level of each AI RMF and CSF subcategory derived from the questionnaire, own questions, target level in C2, gap and equivalent *tier* (34 §5.4 and §5.5). Templates P72 and P73 in section 10. |
+| 0.3 | 28-09-2026 | Adds the three-lens reading (section 7.6): governance capability, technology footprint HT0–HT5 and impact reach (12 §3.7); technology does not score, but it sets the minimum governance required by dimension and triggers the alerts "adoption ahead of governance", "governance without use" and "transformation without people". Note in section 1.1 and cross-references in sections 8 and 10. |

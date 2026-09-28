@@ -27,7 +27,9 @@ Al terminar sabrá elegir el alcance de implantación de su compañía, distingu
 1. **Dos decisiones de proporcionalidad distintas.** La *intensidad* (Lite o Enterprise) es de cada iniciativa; el *alcance de implantación* (Lite o Enterprise) es de la compañía. El tamaño no decide ninguna de las dos.
 2. **Una sola biblioteca, tres capas.** Esencial (lo que aplica toda compañía), condicional (lo que activa un disparador) y completa (guías y consulta). No hay versiones reducidas de los documentos.
 3. **Ninguna fase ni puerta se salta.** En Lite se agrupan —G0 a G2 en una sesión, G4 y G5 en otra— y las evidencias se simplifican. G3 va siempre por separado.
-4. **Noventa días para tener diagnóstico, dirección y primera cartera**, sin moratoria: la actividad de IA continúa mientras se implanta el marco.
+4. **El punto de partida cambia el orden, no el destino.** Una compañía sin IA, otra con modelos predictivos en producción y otra con muchos pilotos empiezan por hitos distintos (documento 96), pero llegan a las mismas condiciones de 01 §14.
+5. **La tecnología no suma madurez.** La madurez se lee con tres lentes: capacidad de gobierno, huella tecnológica y alcance del impacto (11 §7.6). Tener agentes con un control de riesgos débil es una alerta, no más madurez.
+6. **Noventa días para tener diagnóstico, dirección y primera cartera**, sin moratoria: la actividad de IA continúa mientras se implanta el marco.
 
 ---
 
@@ -42,6 +44,8 @@ Al terminar sabrá elegir el alcance de implantación de su compañía, distingu
 | 5 | documento 90, sección 4 | El plan de 90 días, semana a semana, y sus criterios de finalización. |
 | 6 | documento 90, sección 8 | Los errores frecuentes. El primero: empezar por comprar o construir herramientas. |
 | 7 | documento 92 | Casos de aplicación, también de compañías medianas. |
+| 8 | documento 96 y herramienta T23 | Los seis puntos de partida, los cinco modificadores y los 22 hitos con su prioridad. Cargue en T23 el ejemplo PP-B y compárelo con la demostración, que sale PP-F. |
+| 9 | documento 11, sección 7.6, y T15, vista «Tres lentes» | Huella tecnológica, alcance del impacto, gobierno mínimo exigible y alertas de la compañía de ejemplo. |
 
 ---
 
@@ -50,7 +54,8 @@ Al terminar sabrá elegir el alcance de implantación de su compañía, distingu
 1. Con los cinco criterios del documento 90 (sección 2.2), decida el alcance de implantación de su compañía.
 2. Con los disparadores del documento 94 (sección 4), marque los que se dan hoy. Esa es su capa condicional.
 3. Escriba los nombres de las tres personas mínimas: quien impulsa y construye, quien controla los riesgos y quien lleva la oficina de IA. Si no salen tres personas distintas, ese es su primer problema de gobierno.
-4. Reserve la sesión del consejo de la semana 12.
+4. Responda en T23 las doce preguntas del cuestionario para su compañía. Anote su arquetipo, sus rasgos y los tres hitos con prioridad 1 que todavía no tiene.
+5. Reserve la sesión del consejo de la semana 12.
 
 ---
 
@@ -60,6 +65,7 @@ Al terminar sabrá elegir el alcance de implantación de su compañía, distingu
 2. ¿Qué puertas pueden agruparse en una iniciativa Lite?
 3. ¿Se reduce el inventario de sistemas de IA en alcance Lite?
 4. ¿Es obligatorio usar la aplicación T01?
+5. Una compañía tiene agentes con autonomía A2 en producción y D6 en nivel 2. ¿Es más madura que otra que solo tiene modelos predictivos y D6 en nivel 3?
 
 ---
 
@@ -67,4 +73,4 @@ Al terminar sabrá elegir el alcance de implantación de su compañía, distingu
 
 Ha terminado el curso. Vuelva a la [guía del curso](M00_SEVEN-G_Curso_Guia_del_curso.html) para ver otros itinerarios, o empiece por el documento 90. Si necesita acompañamiento, el documento 91 describe los modelos posibles y el documento 04 indica cómo contactar con el autor; usar el marco no obliga a contratar a nadie.
 
-**Respuestas.** 1) No: esa iniciativa es Enterprise y la aprueba el consejo, pero el alcance de la compañía sigue siendo Lite. 2) G0, G1 y G2 en una sesión, y G4 y G5 en otra; G3 siempre por separado. 3) No: abarca todos los sistemas, también los de terceros y los no autorizados. 4) No: lo obligatorio es el registro; puede llevarse en una hoja de cálculo con el modelo de datos del documento 03.
+**Respuestas.** 1) No: esa iniciativa es Enterprise y la aprueba el consejo, pero el alcance de la compañía sigue siendo Lite. 2) G0, G1 y G2 en una sesión, y G4 y G5 en otra; G3 siempre por separado. 3) No: abarca todos los sistemas, también los de terceros y los no autorizados. 4) No: lo obligatorio es el registro; puede llevarse en una hoja de cálculo con el modelo de datos del documento 03. 5) No. La huella tecnológica no suma madurez: la primera compañía está en HT5, que exige D6 en 3, y tiene la alerta «adopción por delante del gobierno» de gravedad alta (11 §7.6).

@@ -132,6 +132,24 @@ label{font-weight:600;font-size:13px;color:var(--tinta-2)}
 details summary{cursor:pointer;font-weight:700;padding:4px 0}
 .cab-calc{display:flex;flex-wrap:wrap;gap:8px 12px;align-items:end;margin:6px 0 4px}
 .cab-calc .campo{min-width:170px}
+/* Tres lentes (D120) */
+.lentes-g{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin:12px 0}
+@media (max-width:900px){.lentes-g{grid-template-columns:1fr}}
+.lente{border-top:4px solid var(--negro);background:var(--tarjeta);padding:10px 12px}
+.lente .rotulo{font-size:12px;font-weight:700;color:var(--tinta-3);text-transform:uppercase;letter-spacing:.05em}
+.lente .preg{font-size:13px;color:var(--tinta-2);margin:2px 0 6px}
+.lente .valor{font:600 26px/1.15 var(--serif);color:var(--negro);margin:4px 0}
+.lente .valor b{color:var(--oxford)}
+.lente .nota{font-size:12.5px;color:var(--tinta-3)}
+.ht-escala{display:flex;gap:2px;margin:6px 0}
+.ht-escala span{flex:1;font-size:11px;text-align:center;padding:3px 0;border-top:4px solid var(--regla);color:var(--tinta-3)}
+.ht-escala span.act{border-top-color:var(--velvet);color:var(--negro);font-weight:700;background:var(--papel-2)}
+.im-barra{display:grid;grid-template-columns:44px 1fr 28px;gap:6px;align-items:center;font-size:13px;margin:3px 0}
+.im-barra i{display:block;height:10px;background:var(--regla-2)}
+.im-barra i b{display:block;height:100%;background:var(--teal)}
+.alerta{border-left:4px solid var(--ambar);background:var(--med-bg);padding:8px 10px;margin:6px 0}
+.alerta.alta{border-color:var(--claret);background:var(--ko-bg)}
+.alerta small{display:block;color:var(--tinta-2);margin-top:3px}
 /* Cuestionario */
 .pestanas{display:flex;flex-wrap:wrap;gap:4px;margin:8px 0}
 .preg td{padding-top:10px;padding-bottom:10px}
@@ -194,6 +212,8 @@ dialog::backdrop{background:rgba(26,24,23,.45)}
 <input type="file" id="f-t15" accept=".json,application/json" class="oculto" tabindex="-1" aria-hidden="true">
 <script type="application/json" id="cuestionario">__CUESTIONARIO__</script>
 <script type="application/json" id="perfiles">__PERFILES__</script>
+<script type="application/json" id="lentes">__LENTES__</script>
+<script type="application/json" id="t01-extracto">__T01_EXTRACTO__</script>
 <script type="application/json" id="datos-demo">__DATOS_DEMO__</script>
 <script>__DATOS_LOCALES__</script>
 <script>
@@ -210,11 +230,16 @@ const DIMS = Q.dimensiones, PREG = {};
 for(const d of DIMS) for(const p of d.preguntas) PREG[p.codigo] = Object.assign({dim:d.codigo}, p);
 /* D115: subcategorías del NIST AI RMF (34 §5.4) y del CSF 2.0 (34 §5.5) con su dimensión de referencia y sus preguntas; build_madurez.ps1 las extrae del documento 34 */
 const PERF = JSON.parse(document.getElementById('perfiles').textContent);
+/* D120: madurez en tres lentes (11 §7.6 y 12 §3.7). Niveles de huella, mínimos exigibles, alertas y alcance vienen de lentes.json, que
+   build_madurez.ps1 extrae de los documentos: ningún umbral se escribe en esta plantilla. T01_EXTRACTO es un extracto del registro de
+   demostración de T01 (iniciativas, entradas en fase, cierres, evidencia del índice y tesis) para los datos de ejemplo y para -Resumen. */
+const LEN = JSON.parse(document.getElementById('lentes').textContent);
+const T01_EXTRACTO = JSON.parse(document.getElementById('t01-extracto').textContent);
 function lsGet(k){ try{ return localStorage.getItem(k); }catch(e){ return null; } }
 function lsSet(k,v){ try{ localStorage.setItem(k,v); return true; }catch(e){ return false; } }
 /* D100: el registro T01 es la fuente de verdad y las herramientas del sitio comparten el almacenamiento local del navegador. T15 lee el registro
    (compañía, muestra estratificada de iniciativas), toma el perfil del último cálculo de T14 para la lectura cruzada y devuelve al registro el
-   resumen de cada diagnóstico (lista madurez[] del esquema 0.7, con el resumen de los perfiles NIST), que el panel del consejo muestra. Abierta como fichero suelto no se comparte nada. */
+   resumen de cada diagnóstico (lista madurez[] del esquema 0.8, con el resumen de los perfiles NIST y de las tres lentes), que el panel del consejo muestra. Abierta como fichero suelto no se comparte nada. */
 const LS_T01 = 'seveng-t01-datos-v1', LS_T14_RESUMEN = 'seveng-t14-resumen-v1';
 function registroT01Local(){ try{ const r = JSON.parse(lsGet(LS_T01)||'null'); return (r && typeof r==='object' && r.meta && Array.isArray(r.iniciativas)) ? r : null; }catch(e){ return null; } }
 function resumenT14Local(){ try{ const r = JSON.parse(lsGet(LS_T14_RESUMEN)||'null'); return (r && r.herramienta==='T14' && r.perfil_asignado) ? r : null; }catch(e){ return null; } }
@@ -224,7 +249,18 @@ const TX = {
 es:{
  app:'T15 · Diagnóstico de madurez', saltar:'Saltar al contenido', idioma:'Idioma', tema:'Tema', t_auto:'Auto', t_claro:'Claro', t_oscuro:'Oscuro', vistas:'Vistas',
  doc11:'Documento 11', doc11_href:'../../html/es/11_SEVEN-G_Modelo_de_madurez.html', p34:'Plantilla P34', p34_href:'../../html/es/plantillas/P34_SEVEN-G_Cuestionario_e_informe_de_madurez.html', t14:'Índice T14',
- v_evaluacion:'Evaluación', v_cuestionario:'Cuestionario', v_informe:'Informe', v_evolucion:'Evolución', v_guia:'Guía de entrevistas', v_datos:'Datos', v_perfil_rmf:'Perfil AI RMF', v_perfil_csf:'Perfil CSF',
+ v_evaluacion:'Evaluación', v_cuestionario:'Cuestionario', v_informe:'Informe', v_evolucion:'Evolución', v_guia:'Guía de entrevistas', v_datos:'Datos', v_perfil_rmf:'Perfil AI RMF', v_perfil_csf:'Perfil CSF', v_lentes:'Tres lentes',
+ tit_lentes:'Madurez en tres lentes', sub_lentes:'Capacidad de gobierno (el nivel de madurez), huella tecnológica en uso y alcance del impacto (documento 11 §7.6 y documento 12 §3.7). Solo la primera lente es un nivel: la tecnología no sube ni baja la madurez, fija el gobierno mínimo exigible y dispara alertas cuando no se alcanza.',
+ l_lente:'Lente', l_global:'Nivel global', l_ht_amplitud:'{a} tipos de tecnología · {s} sistemas en uso · {i} iniciativas en uso', l_ht_pilotos:'En exploración (fases 1 a 5): {p} iniciativas{n}', l_ht_pilotos_n:', la más exigente {h}', l_im_total:'{n} iniciativas en uso',
+ l_fuente_t01:'Huella y alcance calculados desde el registro T01 «{o}» de este navegador a la fecha de corte {f}.', l_fuente_demo:'Huella y alcance calculados desde el registro de demostración de T01 «{o}» a la fecha de corte {f} (abra el registro de iniciativas para usar el de este navegador).', l_fuente_manual:'Sin registro T01 en este navegador: la huella y el alcance se introducen a mano y se marcan «manual». Abra el registro de iniciativas para calcularlos desde él.', l_manual:'manual',
+ l_regla_uso:'En uso: iniciativas en las fases 6 y 7 sin cerrar a la fecha de corte (se reconstruye con las entradas en fase y los cierres del registro). Alcance: IM4 si la ambición real es Transformar (IT-P1 o IT-P4 verificados en G7, 12 §3.4); IM3 si IT-P3 está verificada; IM2 si IT-P2 está verificada; IM1 en los demás casos. Una respuesta sin verificar cuenta como «no». Un agente sin autonomía registrada se trata como HT5 (el nivel más exigente).',
+ l_alertas:'Alertas', l_sin_alertas:'No salta ninguna alerta de 11 §7.6.', l_g_alta:'gravedad alta', l_g_media:'gravedad media', l_al_dim:'{d} en nivel {n}; la huella {h} exige {m}.', l_al_d5:'{d} en nivel {n} (máximo para alertar: {m}) con iniciativas en uso de alcance {a}.', l_al_uso:'Nivel global {g} con huella {h}.', l_al_uso_c2:'Ninguna iniciativa en uso {m} meses después de la tesis aprobada en C2 ({f}).', l_pide:'Qué pide',
+ l_minimo:'Gobierno mínimo exigible por la huella en uso', l_minimo_sub:'Valores de partida, a calibrar en C5 (11 §7.6). Cada nivel de huella exige su fila y las anteriores.', l_exigible:'Exigible', l_actual:'Actual', l_estado:'Estado', l_cumple:'cumple', l_no_cumple:'por debajo', l_sin_minimo:'sin mínimo', l_sin_huella:'Sin huella: no hay mínimo exigible.',
+ l_en_uso:'Iniciativas en uso (lente 2 y lente 3)', l_pilotos:'En exploración (fases 1 a 5)', l_iniciativa:'Iniciativa', l_tecnologia:'Tecnología', l_autonomia:'Autonomía', l_huella:'Huella', l_alcance:'Alcance', l_fase:'Fase', l_ninguna_uso:'No hay iniciativas en uso a esta fecha.', l_ninguna_pil:'No hay iniciativas en exploración a esta fecha.',
+ l_escala_ht:'Escala de la huella tecnológica (11 §7.6)', l_escala_im:'Escala del alcance del impacto (12 §3.7)', l_nivel:'Nivel', l_nombre:'Nombre', l_que:'Qué hay en uso', l_tec_t01:'Tecnología en el registro T01', l_condicion:'Condición', l_ambicion:'Ambición típica',
+ l_t14:'Perfil del índice de transformación (T14)', l_t14_ev:'en esta evaluación: {p}', l_t14_local:'último cálculo de T14 en este navegador ({f}): {p}', l_t14_no:'sin perfil del índice: calcúlelo en T14 para leerlo junto al alcance.',
+ l_man_tit:'Huella y alcance a mano', l_man_nivel:'Huella en uso', l_man_amplitud:'Tipos de tecnología', l_man_sistemas:'Sistemas en uso', l_man_pilotos:'Iniciativas en exploración', l_man_im:'Iniciativas en uso con alcance {k}', l_ver_lentes:'Ver la madurez en tres lentes (huella, alcance y alertas) →',
+ tec_ml_predictivo:'ML predictivo', tec_ia_generativa:'IA generativa', tec_agente:'Agente', tec_lenguaje_documentos:'Lenguaje y documentos', tec_vision:'Visión', tec_optimizacion:'Optimización', tec_ia_terceros_embebida:'IA de terceros embebida', tec_reglas:'Reglas (no es IA)',
  tit_prmf:'Perfil de gobierno de IA (NIST AI RMF)', sub_prmf:'Las 72 subcategorías del NIST AI RMF con el nivel actual derivado de este diagnóstico, el nivel objetivo, la brecha y el tier equivalente (documento 34 §5.4 y plantilla P73).',
  tit_pcsf:'Perfil de seguridad de IA (NIST CSF 2.0 / Cyber AI Profile)', sub_pcsf:'Las 48 subcategorías del CSF 2.0 con prioridad alta en el Cyber AI Profile, con el nivel actual derivado de este diagnóstico, el nivel objetivo, la brecha y el tier equivalente (documento 34 §5.5 y plantilla P72).',
  p_regla:'Una evaluación, dos lecturas (11 §7.5): el nivel actual es el de la dimensión de referencia, rebajado al nivel anterior al de la pregunta asociada de menor nivel que no está en Sí o No aplica. Las subcategorías «Propia» se evalúan aparte y nunca superan su dimensión. Sin evidencia no hay nivel: «s/d» no es 0. El tier es solo una vista (0–1 → 1; 2 → 2; 3 → 3; 4–5 → 4).',
@@ -298,7 +334,18 @@ es:{
 en:{
  app:'T15 · Maturity assessment', saltar:'Skip to content', idioma:'Language', tema:'Theme', t_auto:'Auto', t_claro:'Light', t_oscuro:'Dark', vistas:'Views',
  doc11:'Document 11', doc11_href:'../../html/en/11_SEVEN-G_Modelo_de_madurez.html', p34:'Template P34', p34_href:'../../html/en/plantillas/P34_SEVEN-G_Cuestionario_e_informe_de_madurez.html', t14:'T14 index',
- v_evaluacion:'Assessment', v_cuestionario:'Questionnaire', v_informe:'Report', v_evolucion:'Evolution', v_guia:'Interview guide', v_datos:'Data', v_perfil_rmf:'AI RMF profile', v_perfil_csf:'CSF profile',
+ v_evaluacion:'Assessment', v_cuestionario:'Questionnaire', v_informe:'Report', v_evolucion:'Evolution', v_guia:'Interview guide', v_datos:'Data', v_perfil_rmf:'AI RMF profile', v_perfil_csf:'CSF profile', v_lentes:'Three lenses',
+ tit_lentes:'Maturity through three lenses', sub_lentes:'Governance capability (the maturity level), technology footprint in use and impact reach (document 11 §7.6 and document 12 §3.7). Only the first lens is a level: technology does not raise or lower maturity; it sets the minimum governance required and triggers alerts when it is not reached.',
+ l_lente:'Lens', l_global:'Overall level', l_ht_amplitud:'{a} technology types · {s} systems in use · {i} initiatives in use', l_ht_pilotos:'In exploration (phases 1 to 5): {p} initiatives{n}', l_ht_pilotos_n:', the most demanding {h}', l_im_total:'{n} initiatives in use',
+ l_fuente_t01:'Footprint and reach calculated from the T01 register "{o}" in this browser as at the cut-off date {f}.', l_fuente_demo:'Footprint and reach calculated from the T01 demonstration register "{o}" as at the cut-off date {f} (open the initiative register to use the one in this browser).', l_fuente_manual:'There is no T01 register in this browser: footprint and reach are entered by hand and marked "manual". Open the initiative register to calculate them from it.', l_manual:'manual',
+ l_regla_uso:'In use: initiatives in phases 6 and 7 not closed at the cut-off date (rebuilt from the phase entries and closures in the register). Reach: IM4 if the actual ambition is Transform (IT-P1 or IT-P4 verified at G7, 12 §3.4); IM3 if IT-P3 is verified; IM2 if IT-P2 is verified; IM1 otherwise. An unverified answer counts as "no". An agent with no recorded autonomy is treated as HT5 (the most demanding level).',
+ l_alertas:'Alerts', l_sin_alertas:'None of the alerts in 11 §7.6 is triggered.', l_g_alta:'high severity', l_g_media:'medium severity', l_al_dim:'{d} at level {n}; footprint {h} requires {m}.', l_al_d5:'{d} at level {n} (alert threshold: {m} or below) with initiatives in use at reach {a}.', l_al_uso:'Overall level {g} with footprint {h}.', l_al_uso_c2:'No initiative in use {m} months after the thesis approved in C2 ({f}).', l_pide:'What it calls for',
+ l_minimo:'Minimum governance required by the footprint in use', l_minimo_sub:'Starting values, to be calibrated in C5 (11 §7.6). Each footprint level requires its own row and those above it.', l_exigible:'Required', l_actual:'Current', l_estado:'Status', l_cumple:'met', l_no_cumple:'below', l_sin_minimo:'no minimum', l_sin_huella:'No footprint: there is no minimum required.',
+ l_en_uso:'Initiatives in use (lens 2 and lens 3)', l_pilotos:'In exploration (phases 1 to 5)', l_iniciativa:'Initiative', l_tecnologia:'Technology', l_autonomia:'Autonomy', l_huella:'Footprint', l_alcance:'Reach', l_fase:'Phase', l_ninguna_uso:'There are no initiatives in use at this date.', l_ninguna_pil:'There are no initiatives in exploration at this date.',
+ l_escala_ht:'Technology footprint scale (11 §7.6)', l_escala_im:'Impact reach scale (12 §3.7)', l_nivel:'Level', l_nombre:'Name', l_que:'What is in use', l_tec_t01:'Technology in the T01 register', l_condicion:'Condition', l_ambicion:'Typical ambition',
+ l_t14:'Transformation index profile (T14)', l_t14_ev:'in this assessment: {p}', l_t14_local:'latest T14 calculation in this browser ({f}): {p}', l_t14_no:'no index profile: calculate it in T14 to read it alongside the reach.',
+ l_man_tit:'Footprint and reach by hand', l_man_nivel:'Footprint in use', l_man_amplitud:'Technology types', l_man_sistemas:'Systems in use', l_man_pilotos:'Initiatives in exploration', l_man_im:'Initiatives in use with reach {k}', l_ver_lentes:'See maturity through three lenses (footprint, reach and alerts) →',
+ tec_ml_predictivo:'Predictive ML', tec_ia_generativa:'Generative AI', tec_agente:'Agent', tec_lenguaje_documentos:'Language and documents', tec_vision:'Vision', tec_optimizacion:'Optimisation', tec_ia_terceros_embebida:'Embedded third-party AI', tec_reglas:'Rules (not AI)',
  tit_prmf:'AI governance profile (NIST AI RMF)', sub_prmf:'The 72 NIST AI RMF subcategories with the current level derived from this assessment, the target level, the gap and the equivalent tier (document 34 §5.4 and template P73).',
  tit_pcsf:'AI security profile (NIST CSF 2.0 / Cyber AI Profile)', sub_pcsf:'The 48 CSF 2.0 subcategories with high priority in the Cyber AI Profile, with the current level derived from this assessment, the target level, the gap and the equivalent tier (document 34 §5.5 and template P72).',
  p_regla:'One assessment, two readings (11 §7.5): the current level is that of the reference dimension, lowered to the level below that of the lowest-level associated question that is not at Yes or Not applicable. \u201cOwn\u201d subcategories are assessed separately and never exceed their dimension. No evidence, no level: \u201cn/d\u201d is not 0. The tier is only a view (0–1 → 1; 2 → 2; 3 → 3; 4–5 → 4).',
@@ -505,27 +552,84 @@ function resumenPerfil(filas, marco){
   if(marco==='csf') out.areas = ['S','D','T'].map(a=>Object.assign({area:a}, resumenGrupo(filas.filter(f=>f.s.prioridad && f.s.prioridad[a]===1))));
   out.total = resumenGrupo(filas); return out; }
 function perfilesResumen(ev, r){ return {ai_rmf:resumenPerfil(perfilFilas(ev, 'ai_rmf', r), 'ai_rmf'), csf:resumenPerfil(perfilFilas(ev, 'csf', r), 'csf')}; }
+/* ---- D120: tres lentes. Lente 1 = calcular(); lente 2 = huella HT0–HT5 de las iniciativas en uso; lente 3 = alcance IM1–IM4 ---- */
+function registroLentes(){ const reg = registroT01Local(); if(reg) return {reg, fuente:'t01'};
+  if(((D && D.meta)||{}).datos_ilustrativos || window.T15_USAR_T01_INCRUSTADO) return {reg:T01_EXTRACTO, fuente:'t01_demo'}; return null; }
+function htNum(h){ return h ? Number(String(h).slice(2)) : null; }
+/* nivel de huella de una iniciativa: el más exigente de sus tecnologías; un agente sin autonomía registrada cuenta como el nivel más exigente que lo admite */
+function htDeIniciativa(I){ const c = I.clasificacion||{}, tec = c.tecnologia||[], a = c.autonomia||null; let n = null;
+  for(const h of LEN.huella) for(const x of h.tecnologias){ if(!tec.includes(x)) continue; if(x==='agente' && h.agente_autonomia && a && !h.agente_autonomia.includes(a)) continue; if(n==null || h.n>n) n = h.n; }
+  return n; }
+/* fase y cierre de una iniciativa a una fecha: la última entrada en fase anterior o igual a la fecha (eventos de T01); sin eventos, la fase actual si ya estaba registrada */
+function estadoEn(reg, I, f){
+  const evs = (reg.eventos||[]).filter(e=>e.iniciativa===I.id && e.tipo==='entrada_fase' && e.fase!=null);
+  let fase = null;
+  if(evs.length){ const h = evs.filter(e=>String(e.fecha)<=f).sort((a,b)=>String(a.fecha).localeCompare(String(b.fecha)) || String(a.id||'').localeCompare(String(b.id||''))); fase = h.length ? Number(h[h.length-1].fase) : null; }
+  else if(!I.fecha_registro || String(I.fecha_registro)<=f){ const x = (I.ciclo||{}).fase; fase = x==null ? null : Number(x); }
+  const ci = I.cierre, cerrada = ci ? (!ci.fecha || String(ci.fecha)<=f) : ['parada','retirada'].includes((I.ciclo||{}).estado);
+  return {fase, cerrada};
+}
+/* alcance del impacto (12 §3.7) con respuestas verificadas (12 §3.4): IM4 ambición real Transformar; IM3 IT-P3 verificada; IM2 IT-P2 verificada; IM1 el resto */
+function imDeIniciativa(I, f){ const ix = I.indice||{}, ok = k => { const v = ix[k]; return !!v && v.estado==='verificada' && (!v.fecha || String(v.fecha)<=f); };
+  if(((I.clasificacion||{}).ambicion_real)==='transformar') return 'IM4'; if(ok('itp3')) return 'IM3'; if(ok('itp2')) return 'IM2'; return 'IM1'; }
+function sumarMeses(fecha, m){ const [y,mo,d] = String(fecha).split('-').map(Number), x = new Date(Date.UTC(y, mo-1+Number(m), d)); return x.toISOString().slice(0,10); }
+function calcLentes(ev, r){
+  r = r || calcular(ev);
+  const src = registroLentes(), f = ev.fecha_corte || hoy(); let hu = null, al = null, det;
+  if(src){ const reg = src.reg, uso = [], pil = [];
+    for(const I of reg.iniciativas||[]){ const s = estadoEn(reg, I, f); if(s.cerrada || s.fase==null) continue;
+      const x = {id:I.id, nombre:I.nombre||'', tec:(I.clasificacion||{}).tecnologia||[], aut:(I.clasificacion||{}).autonomia||null, ht:htDeIniciativa(I), fase:s.fase, sistemas:I.sistemas||[]};
+      if(s.fase>=6){ x.im = imDeIniciativa(I, f); uso.push(x); } else if(s.fase>=1) pil.push(x); }
+    const tipos = [...new Set(uso.flatMap(x=>x.tec))].sort(), sis = new Set(); let sinSis = 0;
+    for(const x of uso){ if(x.sistemas.length) x.sistemas.forEach(y=>sis.add(y)); else sinSis++; }
+    const hts = uso.map(x=>x.ht).filter(n=>n!=null), htp = pil.map(x=>x.ht).filter(n=>n!=null);
+    hu = {nivel: uso.length ? (hts.length ? 'HT'+Math.max(...hts) : null) : 'HT0', amplitud:tipos.length, tipos, sistemas_en_uso:sis.size+sinSis, iniciativas_en_uso:uso.length, pilotos:pil.length, nivel_exploracion: htp.length ? 'HT'+Math.max(...htp) : null};
+    al = {}; for(const a of LEN.alcance) al[a.nivel] = uso.filter(x=>x.im===a.nivel).length;
+    const tesis = (reg.decisiones_consejo||[]).filter(d=>d && d.asunto==='tesis' && d.resultado==='aprobada' && d.fecha).map(d=>d.fecha).sort()[0] || null;
+    det = {fuente:src.fuente, organizacion:(reg.meta||{}).organizacion||'', uso, pil, tesis};
+  } else { const m = ev.lentes_manual||{};
+    if(m.huella && m.huella.nivel) hu = {nivel:m.huella.nivel, amplitud:m.huella.amplitud??null, tipos:[], sistemas_en_uso:m.huella.sistemas_en_uso??null, iniciativas_en_uso:null, pilotos:m.huella.pilotos??null, nivel_exploracion:null};
+    if(m.alcance && LEN.alcance.some(a=>m.alcance[a.nivel]!=null && m.alcance[a.nivel]!=='')){ al = {}; for(const a of LEN.alcance){ const v = m.alcance[a.nivel]; al[a.nivel] = v==null || v==='' ? 0 : Number(v); } }
+    det = {fuente:'manual', uso:[], pil:[], tesis:null}; }
+  // gobierno mínimo exigible: cada nivel de huella exige su fila y las anteriores
+  const n = hu ? htNum(hu.nivel) : null, exigible = {};
+  for(const d of LEN.dimensiones_minimo){ let v = null; if(n!=null) for(const m of LEN.minimos){ if(htNum(m.huella)<=n && m[d]!=null) v = Math.max(v??0, m[d]); } if(v!=null) exigible[d] = v; }
+  const alertas = [], P = k => (LEN.alertas.find(a=>a.codigo===k)||{}).parametros||{};
+  const p1 = P('adopcion_por_delante');
+  for(const d of LEN.dimensiones_minimo){ const x = r.por[d]; if(exigible[d]==null || !x || x.nivel==null) continue;
+    if(x.nivel<exigible[d]) alertas.push({codigo:'adopcion_por_delante', gravedad:(p1.alta_si||[]).includes(d) ? 'alta' : p1.gravedad, dimension:d, minimo:exigible[d], nivel:x.nivel}); }
+  const p2 = P('gobierno_sin_uso');
+  if(hu && n!=null){ const sinUso = !!det.tesis && hu.iniciativas_en_uso===0 && sumarMeses(det.tesis, p2.meses)<=f;
+    if((r.nivel!=null && r.nivel>=p2.global_minimo && n<=htNum(p2.huella_maxima)) || sinUso) alertas.push({codigo:'gobierno_sin_uso', gravedad:p2.gravedad}); }
+  const p3 = P('transformacion_sin_personas'), d5 = r.por[p3.dimension];
+  if(al && d5 && d5.nivel!=null && d5.nivel<=p3.maximo && (p3.alcance||[]).some(k=>al[k]>0)) alertas.push({codigo:'transformacion_sin_personas', gravedad:p3.gravedad, dimension:p3.dimension, nivel:d5.nivel, maximo:p3.maximo});
+  return {hu, al, exigible, alertas, det, r};
+}
+/* resumen para T01 (esquema 0.8, madurez[].lentes): nunca las iniciativas, solo lo agregado */
+function lentesResumen(ev, r){ const X = calcLentes(ev, r); if(!X.hu && !X.al) return null;
+  return {fuente: X.det.fuente==='manual' ? 'manual' : 't01', huella: X.hu, alcance: X.al, exigible: X.exigible, alertas: X.alertas}; }
 function tamMinimo(p){ p = Number(p); if(!p || p<1) return null; return p<=5 ? p : p<=20 ? 5 : p<=60 ? 8 : 12; }
 
 /* ---- D100: intercambio con el registro T01 y con T14 ---- */
-/* resumen de un diagnóstico en el formato madurez[] del esquema 0.7 de T01 (nivel global, media, límite, nivel por dimensión y resumen de los perfiles NIST por función; nunca las respuestas) */
+/* resumen de un diagnóstico en el formato madurez[] del esquema 0.8 de T01 (0.8: lentes, D120) (nivel global, media, límite, nivel por dimensión y resumen de los perfiles NIST por función; nunca las respuestas) */
 function resumenParaT01(ev, fechaExport){
   const r = calcular(ev), nombre = c => L((DIMS.find(x=>x.codigo===c)||{}).nombre) || null;
   return {id:ev.id, fecha_corte:ev.fecha_corte, ciclo:ev.ciclo||null, modalidad:ev.modalidad||null, version_cuestionario:ev.version_cuestionario||null, verificador:ev.verificador||null, organo_aprobacion:ev.organo_aprobacion||null, fecha_aprobacion:ev.fecha_aprobacion||null,
     nivel_global:r.nivel==null?null:r.nivel, nivel_minimo:r.minimo==null?null:r.minimo, media:r.media==null?null:r.media, tope:r.tope==null?null:r.tope, tope_aplicado:!!r.tope_aplicado, limitante:r.limitante||[], validez:r.validez, declaracion_posible:!!r.declara,
     dimensiones:r.dims.map(d=>({dimension:d.codigo, nombre:nombre(d.codigo), nivel:d.nivel==null?null:d.nivel, nivel_minimo:d.minimo==null?null:d.minimo, avance:d.avance==null?null:Math.round(d.avance*10)/10, bloqueantes:d.bloqueantes.map(q=>q.codigo)})),
     perfiles:perfilesResumen(ev, r),
+    ...(()=>{ const l = lentesResumen(ev, r); return l ? {lentes:l} : {}; })(),
     fuente:'T15', exportado:fechaExport===undefined ? hoy() : fechaExport};
 }
 function ficheroParaT01(){ return {herramienta:'T15', version_esquema:VERSION_ESQUEMA, exportado:hoy(), aviso_legal:TX.es.legal_txt, datos_ilustrativos:!!(D.meta||{}).datos_ilustrativos, organizacion:(D.meta||{}).organizacion||null,
-  nota:'Resumen de los diagnósticos en el formato madurez[] del esquema 0.7 de T01 (documento 11 §5). Se incorpora en T01 («Datos» → «Validar y fusionar») o desde T15 si el registro está en el mismo navegador.', madurez_t01:ordenadas().map(ev=>resumenParaT01(ev))}; }
-/* guarda el resumen de todas las evaluaciones en el registro T01 de este navegador (se une por identificador; el registro pasa al esquema 0.7) */
+  nota:'Resumen de los diagnósticos en el formato madurez[] del esquema 0.8 de T01 (con perfiles NIST y tres lentes) (documento 11 §5). Se incorpora en T01 («Datos» → «Validar y fusionar») o desde T15 si el registro está en el mismo navegador.', madurez_t01:ordenadas().map(ev=>resumenParaT01(ev))}; }
+/* guarda el resumen de todas las evaluaciones en el registro T01 de este navegador (se une por identificador; el registro pasa al esquema 0.8) */
 function guardarEnT01(){
   const reg = registroT01Local(); if(!reg){ toast(t('t01_local_no')); return; }
   reg.madurez = Array.isArray(reg.madurez) ? reg.madurez : []; let n = 0;
   for(const ev of ordenadas()){ const m = Object.assign(resumenParaT01(ev), {incorporado:hoy()}); const k = reg.madurez.findIndex(y=>y && y.id===m.id); if(k>=0) reg.madurez[k]=m; else reg.madurez.push(m); n++; }
   reg.madurez.sort((a,b)=>String(a.fecha_corte)<String(b.fecha_corte)?-1:1);
-  if(['0.1','0.2','0.3','0.4','0.5','0.6'].includes(reg.version_esquema)) reg.version_esquema = '0.7';
+  if(['0.1','0.2','0.3','0.4','0.5','0.6','0.7'].includes(reg.version_esquema)) reg.version_esquema = '0.8';
   if(!lsSet(LS_T01, JSON.stringify(reg))){ toast(t('no_guardado')); return; }
   toast(t('ok_t01',{n, o:(reg.meta||{}).organizacion||''})); rerender();
 }
@@ -554,7 +658,7 @@ function ordenadas(){ return [...D.evaluaciones].sort((a,b)=>String(a.fecha_cort
 function evSel(){ return D.evaluaciones.find(e=>e.id===UI.sel) || ordenadas().slice(-1)[0] || null; }
 function anteriorVerificada(ev){ return ordenadas().filter(x=>x!==ev && String(x.fecha_corte)<String(ev.fecha_corte) && x.modalidad!=='autodiagnostico').slice(-1)[0] || null; }
 function nuevoId(fecha){ let base='EM-'+(fecha||'').slice(0,7), id=base, k=2; while(D.evaluaciones.some(e=>e.id===id)) id=base+'-'+(k++); return id; }
-function evVacia(){ const f=hoy(); return {id:nuevoId(f), fecha_corte:f, ciclo:'seguimiento', modalidad:'autodiagnostico', version_cuestionario:Q.version_cuestionario, perimetro:'', promotor:'', evaluador_principal:'', equipo:'', verificador:'', organo_aprobacion:'', fecha_aprobacion:'', limitaciones:'', pesos:pesosIguales(), respuestas:{}, entrevistas:[], muestras:[], lectura:{perfil_indice:'', referencia_indice:'', apuestas_transformar:null}, objetivos:{}, horizonte_objetivos:'', mensajes:[], acciones:[], perfiles:{objetivos:{}, propios:{}}, notas:''}; }
+function evVacia(){ const f=hoy(); return {id:nuevoId(f), fecha_corte:f, ciclo:'seguimiento', modalidad:'autodiagnostico', version_cuestionario:Q.version_cuestionario, perimetro:'', promotor:'', evaluador_principal:'', equipo:'', verificador:'', organo_aprobacion:'', fecha_aprobacion:'', limitaciones:'', pesos:pesosIguales(), respuestas:{}, entrevistas:[], muestras:[], lectura:{perfil_indice:'', referencia_indice:'', apuestas_transformar:null}, objetivos:{}, horizonte_objetivos:'', mensajes:[], acciones:[], perfiles:{objetivos:{}, propios:{}}, lentes_manual:{huella:{}, alcance:{}}, notas:''}; }
 function mismosPesos(a, b){ const ra = calcular(a).cuotas, rb = calcular(b).cuotas; return DIMS.every(d=>Math.abs(ra[d.codigo]-rb[d.codigo])<0.01); }
 function nivelTxt(n){ return n==null ? t('sin_dato') : String(n); }
 function barras(n, obj){ return '<span class="barras" aria-hidden="true">'+[1,2,3,4,5].map(i=>'<i class="'+(n!=null && i<=n?'on':'')+(obj===i?' obj':'')+'"></i>').join('')+'</span>'; }
@@ -591,7 +695,7 @@ function vistaEvaluacion(){
   let h = '<h1>'+esc(t('tit_eval'))+'</h1><p class="ayuda">'+esc(t('sub_eval'))+'</p>'+cabeceraEval(ev);
   h += avisoT01Local(ev);
   if(!ev) return h+'<p class="aviso info">'+esc(t('ninguna'))+'</p>';
-  h += '<div id="res">'+resultadoHTML(ev)+'</div>';
+  h += '<div id="res">'+resultadoHTML(ev)+'</div><p class="sin-imprimir"><a href="#/lentes">'+esc(t('l_ver_lentes'))+'</a></p>';
   h += '<div class="bloque sin-imprimir">'+bloquesEdicion(ev)+'</div>';
   return h;
 }
@@ -814,6 +918,57 @@ function vistaPerfil(marco){
       '<td data-l="'+esc(t('p_brecha'))+'" class="num">'+(f.brecha==null ? '—' : f.brecha)+'</td><td data-l="'+esc(t('p_tier'))+'" class="num">'+(f.tier==null ? '—' : f.tier)+'</td></tr>'; }
   return h+'</tbody></table></div>';
 }
+function vistaLentes(){
+  const ev = evSel();
+  let h = '<h1>'+esc(t('tit_lentes'))+'</h1><p class="ayuda">'+esc(t('sub_lentes'))+'</p>';
+  if(!ev) return h+'<p class="aviso info">'+esc(t('ninguna'))+'</p>';
+  const X = calcLentes(ev), r = X.r, hu = X.hu, al = X.al, det = X.det, en = lang==='en';
+  const htInfo = k => LEN.huella.find(x=>x.nivel===k), htTxt = k => { const x = htInfo(k); return x ? k+' · '+L(x.nombre) : t('sin_dato'); };
+  const tecTxt = l => (l||[]).map(k=>t('tec_'+k)).join(', ') || '—';
+  h += '<p class="ayuda"><b>'+esc(ev.id)+'</b> · '+esc(fF(ev.fecha_corte))+' · '+esc(t('m_'+ev.modalidad))+'</p>';
+  h += '<p class="aviso '+(det.fuente==='manual'?'':'info')+'" id="lentes-fuente">'+esc(det.fuente==='t01' ? t('l_fuente_t01',{o:det.organizacion, f:fF(ev.fecha_corte)}) : det.fuente==='t01_demo' ? t('l_fuente_demo',{o:det.organizacion, f:fF(ev.fecha_corte)}) : t('l_fuente_manual'))+'</p>';
+  // las tres lentes
+  const lente = (i, cuerpo) => { const x = LEN.lentes.find(y=>y.lente===i); return '<section class="lente" data-lente="'+i+'"><div class="rotulo">'+esc(t('l_lente'))+' '+i+' · '+esc(L(x.nombre))+'</div><div class="preg">'+esc(L(x.pregunta))+' <span class="ayuda">('+esc(L(x.escala))+')</span></div>'+cuerpo+'</section>'; };
+  const l1 = '<div class="valor">'+(r.nivel==null ? '<span class="sd">'+esc(t('sin_dato'))+'</span>' : '<b>'+r.nivel+'</b> · '+esc(nivelNombre(r.nivel)))+'</div><div class="nota">'+esc(t('l_global'))+(r.tope_aplicado?' · '+esc(t('tope'))+': '+esc(r.limitante.join(', ')):'')+'</div><div class="nota">'+r.dims.map(x=>'<b>'+x.codigo+'</b> '+(x.nivel==null?'s/d':x.nivel)).join(' · ')+'</div>';
+  const l2 = '<div class="valor">'+(hu ? (hu.nivel ? '<b>'+esc(hu.nivel)+'</b> · '+esc(L(htInfo(hu.nivel).nombre)) : '<span class="sd">'+esc(t('sin_dato'))+'</span>') : '<span class="sd">'+esc(t('sin_dato'))+'</span>')+(det.fuente==='manual' && hu ? ' <span class="et med">'+esc(t('l_manual'))+'</span>' : '')+'</div>'+
+    '<div class="ht-escala" aria-hidden="true">'+LEN.huella.map(x=>'<span class="'+(hu && x.nivel===hu.nivel?'act':'')+'">'+x.nivel+'</span>').join('')+'</div>'+
+    (hu ? '<div class="nota">'+esc(t('l_ht_amplitud',{a:hu.amplitud??'—', s:hu.sistemas_en_uso??'—', i:hu.iniciativas_en_uso??'—'}))+'</div><div class="nota">'+esc(t('l_ht_pilotos',{p:hu.pilotos??'—', n:hu.nivel_exploracion ? t('l_ht_pilotos_n',{h:hu.nivel_exploracion}) : ''}))+'</div>' : '');
+  const tot = al ? LEN.alcance.reduce((s,a)=>s+(al[a.nivel]||0), 0) : 0;
+  const l3 = al ? '<div class="valor"><b>'+tot+'</b> <span style="font-size:15px">'+esc(t('l_im_total',{n:''}).trim())+'</span>'+(det.fuente==='manual' ? ' <span class="et med">'+esc(t('l_manual'))+'</span>' : '')+'</div>'+LEN.alcance.map(a=>'<div class="im-barra" data-im="'+a.nivel+'" data-n="'+(al[a.nivel]||0)+'"><span><b>'+a.nivel+'</b></span><i title="'+esc(L(a.nombre))+'"><b style="width:'+(tot ? Math.round((al[a.nivel]||0)/tot*100) : 0)+'%"></b></i><span class="num">'+(al[a.nivel]||0)+'</span></div>').join('')+'<div class="nota">'+LEN.alcance.map(a=>a.nivel+' '+esc(L(a.nombre))).join(' · ')+'</div>' : '<div class="valor"><span class="sd">'+esc(t('sin_dato'))+'</span></div>';
+  h += '<div class="lentes-g" id="lentes" data-huella="'+esc(hu && hu.nivel || '')+'" data-fuente="'+det.fuente+'" data-alertas="'+X.alertas.length+'">'+lente(1, l1)+lente(2, l2)+lente(3, l3)+'</div>';
+  // alertas
+  const alTxt = a => a.codigo==='adopcion_por_delante' ? t('l_al_dim',{d:dimNombre(a.dimension), n:a.nivel, h:hu.nivel, m:a.minimo})
+    : a.codigo==='transformacion_sin_personas' ? t('l_al_d5',{d:dimNombre(a.dimension), n:a.nivel, m:a.maximo, a:LEN.alcance.filter(x=>((LEN.alertas.find(y=>y.codigo===a.codigo)||{}).parametros.alcance||[]).includes(x.nivel) && al[x.nivel]>0).map(x=>x.nivel).join(', ')})
+    : (r.nivel!=null && hu && r.nivel>=((LEN.alertas.find(y=>y.codigo===a.codigo)||{}).parametros||{}).global_minimo ? t('l_al_uso',{g:r.nivel, h:hu.nivel}) : t('l_al_uso_c2',{m:((LEN.alertas.find(y=>y.codigo===a.codigo)||{}).parametros||{}).meses, f:fF(det.tesis)}));
+  h += '<h2>'+esc(t('l_alertas'))+'</h2><div id="lentes-alertas">'+(X.alertas.length ? X.alertas.map(a=>{ const A = LEN.alertas.find(y=>y.codigo===a.codigo);
+    return '<div class="alerta '+a.gravedad+'" data-alerta="'+a.codigo+'" data-gravedad="'+a.gravedad+'"'+(a.dimension?' data-dim="'+a.dimension+'"':'')+'><b>'+esc(L(A.nombre))+'</b> · <span class="et '+(a.gravedad==='alta'?'ko':'med')+'">'+esc(t('l_g_'+a.gravedad))+'</span><small>'+esc(alTxt(a))+'</small><small><b>'+esc(t('l_pide'))+':</b> '+esc(L(A.pide))+'</small></div>'; }).join('') : '<p class="aviso ok">'+esc(t('l_sin_alertas'))+'</p>')+'</div>';
+  // mínimo exigible frente al nivel actual
+  h += '<h2>'+esc(t('l_minimo'))+'</h2><p class="ayuda">'+esc(t('l_minimo_sub'))+'</p>';
+  if(!hu || !hu.nivel || htNum(hu.nivel)===0) h += '<p class="ayuda" id="tabla-minimos" data-huella="'+esc(hu && hu.nivel || '')+'">'+esc(t('l_sin_huella'))+'</p>';
+  else h += '<div class="tblx"><table class="tabla resp" id="tabla-minimos" data-huella="'+esc(hu.nivel)+'"><thead><tr><th>'+esc(t('dimension'))+'</th><th class="num">'+esc(t('l_exigible'))+' ('+esc(hu.nivel)+')</th><th class="num">'+esc(t('l_actual'))+'</th><th>'+esc(t('l_estado'))+'</th></tr></thead><tbody>'+
+    LEN.dimensiones_minimo.map(d=>{ const m = X.exigible[d], x = r.por[d], ok = m==null ? null : (x.nivel==null ? null : x.nivel>=m);
+      return '<tr data-dim="'+d+'" data-cumple="'+(ok==null?'':ok?1:0)+'"><td data-l="'+esc(t('dimension'))+'">'+esc(dimNombre(d))+'</td><td data-l="'+esc(t('l_exigible'))+'" class="num">'+(m==null?'—':m)+'</td><td data-l="'+esc(t('l_actual'))+'" class="num">'+nivelTxt(x.nivel)+'</td><td data-l="'+esc(t('l_estado'))+'">'+(m==null ? '<span class="ayuda">'+esc(t('l_sin_minimo'))+'</span>' : ok==null ? '<span class="sd">'+esc(t('sin_dato'))+'</span>' : '<span class="et '+(ok?'ok':((p=>p.includes(d))((LEN.alertas[0].parametros||{}).alta_si||[])?'ko':'med'))+'">'+esc(t(ok?'l_cumple':'l_no_cumple'))+'</span>')+'</td></tr>'; }).join('')+'</tbody></table></div>';
+  // detalle de las iniciativas
+  if(det.fuente!=='manual'){
+    h += '<h2>'+esc(t('l_en_uso'))+'</h2>'+(det.uso.length ? '<div class="tblx"><table class="tabla resp" id="tabla-uso"><thead><tr><th>'+esc(t('l_iniciativa'))+'</th><th class="num">'+esc(t('l_fase'))+'</th><th>'+esc(t('l_tecnologia'))+'</th><th>'+esc(t('l_autonomia'))+'</th><th>'+esc(t('l_huella'))+'</th><th>'+esc(t('l_alcance'))+'</th></tr></thead><tbody>'+
+      det.uso.map(x=>{ const a = LEN.alcance.find(y=>y.nivel===x.im); return '<tr data-ini="'+esc(x.id)+'" data-ht="'+(x.ht==null?'':'HT'+x.ht)+'" data-im="'+esc(x.im)+'"><td data-l="'+esc(t('l_iniciativa'))+'"><b>'+esc(x.id)+'</b><small>'+esc(x.nombre)+'</small></td><td data-l="'+esc(t('l_fase'))+'" class="num">'+x.fase+'</td><td data-l="'+esc(t('l_tecnologia'))+'">'+esc(tecTxt(x.tec))+'</td><td data-l="'+esc(t('l_autonomia'))+'">'+esc(x.aut||'—')+'</td><td data-l="'+esc(t('l_huella'))+'">'+esc(x.ht==null?t('sin_dato'):htTxt('HT'+x.ht))+'</td><td data-l="'+esc(t('l_alcance'))+'">'+esc(x.im+' · '+L(a.nombre))+'</td></tr>'; }).join('')+'</tbody></table></div>' : '<p class="ayuda">'+esc(t('l_ninguna_uso'))+'</p>');
+    h += '<h3>'+esc(t('l_pilotos'))+'</h3>'+(det.pil.length ? '<div class="tblx"><table class="tabla resp" id="tabla-pilotos"><thead><tr><th>'+esc(t('l_iniciativa'))+'</th><th class="num">'+esc(t('l_fase'))+'</th><th>'+esc(t('l_tecnologia'))+'</th><th>'+esc(t('l_autonomia'))+'</th><th>'+esc(t('l_huella'))+'</th></tr></thead><tbody>'+
+      det.pil.map(x=>'<tr data-ini="'+esc(x.id)+'"><td data-l="'+esc(t('l_iniciativa'))+'"><b>'+esc(x.id)+'</b><small>'+esc(x.nombre)+'</small></td><td data-l="'+esc(t('l_fase'))+'" class="num">'+x.fase+'</td><td data-l="'+esc(t('l_tecnologia'))+'">'+esc(tecTxt(x.tec))+'</td><td data-l="'+esc(t('l_autonomia'))+'">'+esc(x.aut||'—')+'</td><td data-l="'+esc(t('l_huella'))+'">'+esc(x.ht==null?t('sin_dato'):htTxt('HT'+x.ht))+'</td></tr>').join('')+'</tbody></table></div>' : '<p class="ayuda">'+esc(t('l_ninguna_pil'))+'</p>');
+    h += '<p class="ayuda">'+esc(t('l_regla_uso'))+'</p>';
+  } else {
+    const m = ev.lentes_manual||{}, mh = m.huella||{}, ma = m.alcance||{};
+    h += '<h2>'+esc(t('l_man_tit'))+'</h2><div class="rejilla sin-imprimir"><div class="campo"><label for="lm-nivel">'+esc(t('l_man_nivel'))+'</label><select id="lm-nivel" data-lman="huella.nivel"><option value="">—</option>'+LEN.huella.map(x=>'<option value="'+x.nivel+'"'+(mh.nivel===x.nivel?' selected':'')+'>'+esc(x.nivel+' · '+L(x.nombre))+'</option>').join('')+'</select></div>'+
+      [['amplitud','l_man_amplitud'],['sistemas_en_uso','l_man_sistemas'],['pilotos','l_man_pilotos']].map(([k,et])=>'<div class="campo"><label for="lm-'+k+'">'+esc(t(et))+'</label><input type="number" min="0" id="lm-'+k+'" data-lman="huella.'+k+'" value="'+esc(mh[k]??'')+'"></div>').join('')+
+      LEN.alcance.map(a=>'<div class="campo"><label for="lm-'+a.nivel+'">'+esc(t('l_man_im',{k:a.nivel+' · '+L(a.nombre)}))+'</label><input type="number" min="0" id="lm-'+a.nivel+'" data-lman="alcance.'+a.nivel+'" value="'+esc(ma[a.nivel]??'')+'"></div>').join('')+'</div>';
+  }
+  // lente 3 junto al índice de transformación
+  const lc = ev.lectura||{}, r14 = resumenT14Local();
+  h += '<h2>'+esc(t('l_t14'))+'</h2><p>'+(lc.perfil_indice ? esc(t('l_t14_ev',{p:t('p_'+lc.perfil_indice)})) : '')+(r14 ? (lc.perfil_indice?' · ':'')+esc(t('l_t14_local',{f:fF(r14.fecha_corte), p:t('p_'+r14.perfil_asignado)})) : '')+(!lc.perfil_indice && !r14 ? '<span class="ayuda">'+esc(t('l_t14_no'))+'</span>' : '')+'</p>'+(r.lecturas.length ? r.lecturas.map(k=>'<div class="aviso '+(k==='lc_1'?'info':'ko')+'">'+esc(t(k))+'</div>').join('') : '');
+  // escalas
+  h += '<details><summary>'+esc(t('l_escala_ht'))+'</summary><div class="tblx"><table class="tabla resp"><thead><tr><th>'+esc(t('l_nivel'))+'</th><th>'+esc(t('l_nombre'))+'</th><th>'+esc(t('l_que'))+'</th><th>'+esc(t('l_tec_t01'))+'</th></tr></thead><tbody>'+LEN.huella.map(x=>'<tr><td data-l="'+esc(t('l_nivel'))+'"><b>'+x.nivel+'</b></td><td data-l="'+esc(t('l_nombre'))+'">'+esc(L(x.nombre))+'</td><td data-l="'+esc(t('l_que'))+'">'+esc(L(x.que))+'</td><td data-l="'+esc(t('l_tec_t01'))+'">'+esc(L(x.tecnologia_txt))+'</td></tr>').join('')+'</tbody></table></div></details>';
+  h += '<details><summary>'+esc(t('l_escala_im'))+'</summary><div class="tblx"><table class="tabla resp"><thead><tr><th>'+esc(t('l_nivel'))+'</th><th>'+esc(t('l_nombre'))+'</th><th>'+esc(t('l_condicion'))+'</th><th>'+esc(t('l_ambicion'))+'</th></tr></thead><tbody>'+LEN.alcance.map(x=>'<tr><td data-l="'+esc(t('l_nivel'))+'"><b>'+x.nivel+'</b></td><td data-l="'+esc(t('l_nombre'))+'">'+esc(L(x.nombre))+'</td><td data-l="'+esc(t('l_condicion'))+'">'+esc(L(x.condicion))+'</td><td data-l="'+esc(t('l_ambicion'))+'">'+esc(L(x.ambicion))+'</td></tr>').join('')+'</tbody></table></div></details>';
+  return h;
+}
 function vistaGuia(){
   const G = GUIA[lang] || GUIA.es;
   let h = '<h1>'+esc(t('tit_guia'))+'</h1><p class="ayuda">'+esc(t('sub_guia'))+'</p>';
@@ -838,7 +993,7 @@ function vistaDatos(){
 }
 
 /* ---------------- render ---------------- */
-const VISTAS = ['evaluacion','cuestionario','informe','perfil_rmf','perfil_csf','evolucion','guia','datos'];
+const VISTAS = ['evaluacion','cuestionario','informe','lentes','perfil_rmf','perfil_csf','evolucion','guia','datos'];
 function ruta(){ const v=(location.hash||'#/evaluacion').replace(/^#\/?/,'').split('/')[0]; return VISTAS.includes(v)?v:'evaluacion'; }
 function render(){
   const foco = document.activeElement && document.activeElement.id, y = window.scrollY;
@@ -858,7 +1013,7 @@ function render(){
   document.getElementById('nav').innerHTML = VISTAS.map(x=>'<a href="#/'+x+'"'+(x===v?' aria-current="page"':'')+'>'+esc(t('v_'+x))+'</a>').join('');
   document.getElementById('aviso-demo').innerHTML = (D.meta||{}).datos_ilustrativos ? '<div>'+esc(t('demo'))+'</div>' : '';
   const m = document.getElementById('principal');
-  m.innerHTML = v==='cuestionario' ? vistaCuestionario() : v==='informe' ? vistaInforme() : v==='perfil_rmf' ? vistaPerfil('ai_rmf') : v==='perfil_csf' ? vistaPerfil('csf') : v==='evolucion' ? vistaEvolucion() : v==='guia' ? vistaGuia() : v==='datos' ? vistaDatos() : vistaEvaluacion();
+  m.innerHTML = v==='cuestionario' ? vistaCuestionario() : v==='informe' ? vistaInforme() : v==='lentes' ? vistaLentes() : v==='perfil_rmf' ? vistaPerfil('ai_rmf') : v==='perfil_csf' ? vistaPerfil('csf') : v==='evolucion' ? vistaEvolucion() : v==='guia' ? vistaGuia() : v==='datos' ? vistaDatos() : vistaEvaluacion();
   document.getElementById('pie').innerHTML = '<p class="pie-legal"><b>'+esc(t('legal_tit'))+'.</b> '+esc(t('legal_txt'))+'</p><span>'+esc(t('pie_lic'))+'</span><span>'+esc(t('pie_priv'))+'</span>';
   if(window.SevengDatos) SevengDatos.refrescar();
   if(foco && render._mantener){ const e = document.getElementById(foco); if(e){ e.focus({preventScroll:true}); window.scrollTo(0, y); } }
@@ -894,6 +1049,7 @@ document.addEventListener('change', ev => {
   if(el.dataset.cab==='sel'){ UI.sel = el.value; guardar(); render(); return; }
   if(el.dataset.ui==='filtro'){ UI.filtro = el.value; guardar(); rerender(); return; }
   if(!e) return;
+  if(el.dataset.lman){ const [g,k] = el.dataset.lman.split('.'); e.lentes_manual = e.lentes_manual||{}; e.lentes_manual[g] = e.lentes_manual[g]||{}; e.lentes_manual[g][k] = el.value==='' ? null : (el.type==='number' ? Number(el.value) : el.value); guardar(); rerender(); return; }
   if(el.dataset.pobj){ e.perfiles = e.perfiles||{}; e.perfiles.objetivos = e.perfiles.objetivos||{}; if(el.value==='') delete e.perfiles.objetivos[el.dataset.pobj]; else e.perfiles.objetivos[el.dataset.pobj] = Number(el.value); guardar(); rerender(); return; }
   if(el.dataset.pprop){ e.perfiles = e.perfiles||{}; e.perfiles.propios = e.perfiles.propios||{}; const p = e.perfiles.propios[el.dataset.pprop] = e.perfiles.propios[el.dataset.pprop]||{}; p.nivel = el.value==='' ? null : Number(el.value); if(p.nivel==null && !String(p.evidencia||'').trim()) delete e.perfiles.propios[el.dataset.pprop]; guardar(); rerender(); return; }
   if(el.dataset.q && el.tagName==='SELECT'){ setResp(e, el.dataset.q, el.dataset.f, el.value); guardar(); rerender(); return; }
@@ -908,7 +1064,7 @@ function descargar(nombre, txt, tipo){ const blob=new Blob([txt],{type:tipo}), u
 /* el JSON completo del diagnóstico, con los resultados calculados: lo que descarga «Exportar» y lo que se escribe en el fichero del equipo (D103) */
 function datosExportables(){ const x=clon(D); x.version_esquema=VERSION_ESQUEMA; x.herramienta='T15'; x.meta=Object.assign({}, x.meta, {exportado:hoy(), aviso_legal:TX.es.legal_txt});
   x.evaluaciones.forEach((cc,i)=>{ const r=calcular(D.evaluaciones[i]); cc.resultado={nivel_global:r.nivel, nivel_minimo:r.minimo, media:r.media, tope:r.tope, tope_aplicado:r.tope_aplicado, limitante:r.limitante, validez:r.validez, declaracion_posible:r.declara, s14_no_si:r.s14_fallan,
-    dimensiones:r.dims.map(d=>({dimension:d.codigo, nivel:d.nivel, nivel_minimo:d.minimo, avance:d.avance==null?null:Math.round(d.avance*10)/10, bloqueantes:d.bloqueantes.map(q=>q.codigo), adelantados:d.adelantados.map(q=>q.codigo), sin_dato:d.sd})), lecturas:r.lecturas, perfiles:perfilesResumen(D.evaluaciones[i], r)}; });
+    dimensiones:r.dims.map(d=>({dimension:d.codigo, nivel:d.nivel, nivel_minimo:d.minimo, avance:d.avance==null?null:Math.round(d.avance*10)/10, bloqueantes:d.bloqueantes.map(q=>q.codigo), adelantados:d.adelantados.map(q=>q.codigo), sin_dato:d.sd})), lecturas:r.lecturas, perfiles:perfilesResumen(D.evaluaciones[i], r), lentes:lentesResumen(D.evaluaciones[i], r)}; });
   return x; }
 function csvCelda(v){ if(v==null) return ''; const s=String(v); return /[;"\r\n]/.test(s) ? '"'+s.replace(/"/g,'""')+'"' : s; }
 document.addEventListener('click', ev => {

@@ -24,6 +24,8 @@ This guide explains how an organisation adopts SEVEN-G for the first time. It de
 
 It is aimed at whoever leads the implementation (normally the head of the future AI Office), the sponsor in senior management and the risk, compliance and internal audit functions.
 
+**Where to start according to the starting point.** Not every company starts in the same way: one with no AI, another with predictive models in production and another with many pilots need a different order. Document 96 classifies the starting point (six archetypes and five modifiers) and orders the milestones of this guide for each case, without changing what is required in the end; tool T23 runs the questionnaire and produces the plan.
+
 This document does not constitute legal advice.
 
 ### 1.1 What implementing SEVEN-G means
@@ -194,7 +196,7 @@ If the board cannot approve C2 in week 12, the portfolio operates with provision
 
 ## 5. Regularisation of existing initiatives and systems
 
-The full procedure is in document 14, section 11. During implementation it is applied as follows:
+The full procedure is in document 14, section 11. In the implementation journey it is milestone HI-12, whose priority depends on the starting point (document 96). During implementation it is applied as follows:
 
 | Type | When | Treatment |
 |---|---|---|
@@ -299,7 +301,7 @@ The targets are indicative and are set by the company in its plan.
 
 | Period | Tools | Templates |
 |---|---|---|
-| **Month 1** | T01, T02, T04 (inventory and register); T15 (maturity); T14 (index); T16 (sphere map); T12 (current value). | P32, P33, P34, P05 |
+| **Month 1** | T23 (starting point and journey); T01, T02, T04 (inventory and register); T15 (maturity); T14 (index); T16 (sphere map); T12 (current value). | P32, P33, P34, P05 |
 | **Month 2** | T06 (risks); T07 (regulatory classification); T05 (ambition); T19 (thesis and appetite). | P35, P43, P06, P07, P11, P12, P31 |
 | **Month 3** | T03 (*gates*); T08 (nonconformities); T17 (dashboard); T18 (recommendations); T01 and T16 (portfolio). | P36, P38, P39, P40, P41, P03, P04, P28, P29 |
 | **Months 4–18** | All of the above; T09, T10, T11, T13, T20, T21, T22 as the portfolio progresses. | P01–P31 according to the phase of each initiative; P42 and P67 every quarter; P37 in C5; the rest of P32–P74 when applicable |
@@ -320,6 +322,7 @@ Tools without an application of their own are applied with the template or docum
 | **14 · Portfolio management** | First portfolio and regularisation. |
 | **21, 22, 30, 31, 33, 34, 37, 40, 60, 62** | Content of the month 3 governance structure. |
 | **95 · Local data and self-hosting** | Where the tools' data stays and how to host the site within the company. |
+| **96 · Starting points and implementation journey** | Order of this guide's milestones according to the AI and governance the company already has; tool T23. |
 | **91 · Guide for consultants** | External support for the implementation. |
 
 ---
@@ -331,3 +334,4 @@ Tools without an application of their own are applied with the template or docum
 | 0.1 | 16-09-2026 | First version. Defines the company-level Lite or Enterprise implementation scope, the prerequisites, the week-by-week 90-day plan, regularisation, the 6- to 18-month roadmap up to 01 §14, minimum roles, common mistakes and implementation indicators. |
 | 0.1 | 19-09-2026 | Size does not determine the scope (2.1); a single Transform bet does not require an Enterprise scope (2.2); minimum path in a Lite scope (2.4); references to pending documents or tools removed. |
 | 0.1 | 19-09-2026 | The minimum path (2.4) refers to the obligation matrix (document 94), to the "The essentials" box of each document and to the course. |
+| 0.1 | 28-09-2026 | Reference to document 96 (starting point and implementation journey) in §1, §5, §10 and §11; tool T23 in month 1. |
