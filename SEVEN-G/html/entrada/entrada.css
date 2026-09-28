@@ -202,3 +202,13 @@ footer p { margin: 8px 0; max-width: 900px; }
   .cifras { grid-template-columns: repeat(2, 1fr); }
   .cifra b { font-size: 40px; }
 }
+
+/* Para qué le sirve: tres promesas —dónde invertir, cómo escalar, cómo demostrar el valor— antes de la metodología (D128) */
+.promesas { display: grid; gap: 16px; grid-template-columns: repeat(auto-fit, minmax(min(280px, 100%), 1fr)); }
+.promesa { border-top: 4px solid var(--claret); background: var(--papel-2); padding: 18px 20px 20px; display: flex; flex-direction: column; gap: 10px; }
+.promesa:nth-child(2) { border-top-color: var(--oxford); } .promesa:nth-child(3) { border-top-color: var(--teal); }
+.promesa h3 { font: 600 27px/1.15 var(--serif); color: var(--negro); margin: 0; }
+.promesa .resp { font: 600 17px/1.45 var(--sans); color: var(--negro); margin: 0; }
+.promesa p { margin: 0; font: 400 15px/1.55 var(--sans); color: var(--tinta-2); }
+.promesa .enlaces { margin-top: auto; padding-top: 4px; }
+@media (max-width: 760px) { .promesa h3 { font-size: 23px; } .promesa .enlaces .solo-movil { display: inline; } }
