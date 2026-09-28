@@ -73,7 +73,7 @@ $comun = Join-Path $aqui '..\_comun\datos_locales.js'
 if (-not (Test-Path $comun)) { throw "No se encuentra $comun" }
 if (([regex]::Matches($html, '__DATOS_LOCALES__')).Count -ne 1) { throw 'La plantilla debe contener una sola vez la marca __DATOS_LOCALES__' }
 $html = $html.Replace('__DATOS_LOCALES__', [IO.File]::ReadAllText($comun))
-# ayuda de la herramienta (D111): módulo común _comun/ayuda.js y textos de _fuentes/ayuda.json (ES/EN), incrustados como el resto
+# ayuda de la herramienta (D123): módulo común _comun/ayuda.js y textos de _fuentes/ayuda.json (ES/EN), incrustados como el resto
 $ayudaJs = Join-Path $aqui '..\_comun\ayuda.js'; $ayudaJson = Join-Path $aqui '_fuentes\ayuda.json'
 foreach ($f in $ayudaJs, $ayudaJson) { if (-not (Test-Path $f)) { throw "No se encuentra $f" } }
 if (([regex]::Matches($html, '__AYUDA__')).Count -ne 1) { throw 'La plantilla debe contener una sola vez la marca __AYUDA__' }

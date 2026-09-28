@@ -12,7 +12,7 @@ Especificación: documento 03 (§3 y §4), documento 01 (§6–§9), documento 0
 
 ## Ayuda en pantalla
 
-Cada vista lleva junto a su título un botón **«?»** que explica, en el idioma activo (español o inglés), qué muestra la vista, cómo leerla, qué significa cada columna, rótulo o cifra que aparece en ella, por qué importa y dónde se explica en SEVEN-G. Además, cada encabezado de tabla, cada rótulo de ficha y cada cifra de cabecera lleva su explicación como tooltip (D111). Los textos están en `_fuentes/ayuda.json` (vistas y explicación de cada columna por su clave de traducción, en los dos idiomas); el módulo común `../_comun/ayuda.js` los muestra y `build_registro.ps1` los incrusta al generar. Una vista o columna nueva necesita su entrada en `ayuda.json` en los dos idiomas (`verificar_coherencia.ps1`, sección 24).
+Cada vista lleva junto a su título un botón **«?»** que explica, en el idioma activo (español o inglés), qué muestra la vista, cómo leerla, qué significa cada columna, rótulo o cifra que aparece en ella, por qué importa y dónde se explica en SEVEN-G. Además, cada encabezado de tabla, cada rótulo de ficha y cada cifra de cabecera lleva su explicación como tooltip (D123). Los textos están en `_fuentes/ayuda.json` (vistas y explicación de cada columna por su clave de traducción, en los dos idiomas); el módulo común `../_comun/ayuda.js` los muestra y `build_registro.ps1` los incrusta al generar. Una vista o columna nueva necesita su entrada en `ayuda.json` en los dos idiomas (`verificar_coherencia.ps1`, sección 28).
 
 ## Ficheros
 
@@ -132,9 +132,9 @@ La aplicación no envía datos a terceros ni carga recursos externos (usa las fu
 
 ## Modelo de datos
 
-Un único objeto JSON con `version_esquema` (`0.6`; los ficheros `0.1` a `0.5` se aceptan y se actualizan al cargarlos, porque cada versión posterior a la `0.1` solo añade campos opcionales), `aviso_legal` (texto, opcional al importar), `meta` (organización, fecha de referencia, moneda, configuración de plazos) y una lista por entidad de 03 §4. `null` significa «sin dato». Fechas `AAAA-MM-DD`.
+Un único objeto JSON con `version_esquema` (`0.7`; los ficheros `0.1` a `0.6` se aceptan y se actualizan al cargarlos, porque cada versión posterior a la `0.1` solo añade campos opcionales), `aviso_legal` (texto, opcional al importar), `meta` (organización, fecha de referencia, moneda, configuración de plazos) y una lista por entidad de 03 §4. `null` significa «sin dato». Fechas `AAAA-MM-DD`.
 
-**Esquema 0.6 (D100)**: lista opcional `madurez[]` con el resumen de cada diagnóstico de madurez de T15 (`EM-AAAA-MM`: fecha de corte, ciclo, modalidad, versión del cuestionario, verificador, órgano, nivel global, mínimo, media, límite por D1 o D6, validez, declaración posible y, por dimensión, nivel, avance y bloqueantes; nunca las respuestas). La escribe T15, la vista Consejo muestra el más reciente y el conector de T17 lo lleva a la tarjeta «Madurez de la compañía» del panel.
+**Esquema 0.6 (D100)**: lista opcional `madurez[]` con el resumen de cada diagnóstico de madurez de T15 (`EM-AAAA-MM`: fecha de corte, ciclo, modalidad, versión del cuestionario, verificador, órgano, nivel global, mínimo, media, límite por D1 o D6, validez, declaración posible y, por dimensión, nivel, avance y bloqueantes; nunca las respuestas). La escribe T15, la vista Consejo muestra el más reciente y el conector de T17 lo lleva a la tarjeta «Madurez de la compañía» del panel. **Esquema 0.7 (D115)**: cada diagnóstico puede llevar además `perfiles` con el resumen de los perfiles NIST derivados del cuestionario (`ai_rmf` y `csf`: por función, por área del Cyber AI Profile y total, con nivel mínimo, más frecuente, subcategorías con nivel, con objetivo y con brecha); la vista Consejo muestra el total de cada perfil y el panel, su tabla.
 
 | Lista | Entidad | Código |
 |---|---|---|

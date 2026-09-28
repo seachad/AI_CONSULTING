@@ -16,7 +16,7 @@
 (function (raiz) {
 'use strict';
 const VERSION_CONECTOR = "2.1";
-const ESQUEMAS_T01 = ["0.1", "0.2", "0.3", "0.4", "0.5", "0.6"];
+const ESQUEMAS_T01 = ["0.1", "0.2", "0.3", "0.4", "0.5", "0.6", "0.7"];
 const FUENTE_T01 = "Registro de iniciativas T01";
 const RUTA_CONECTOR = "SEVEN-G/herramientas/T17_panel_consejo/t01_a_panel.js";
 
@@ -82,7 +82,7 @@ const AUTOR = "Fernando García Varela", METODOLOGIA = "SEVEN-G", REPO_ORIGEN_MO
 const AVISO_LEGAL = "<b>Aviso legal.</b> Demostración con datos ficticios del registro de iniciativas T01 de SEVEN-G, ofrecida «tal cual» y con fines " +
   "informativos. No constituye asesoramiento jurídico, regulatorio ni financiero ni garantiza el cumplimiento de ninguna norma. " +
   "Las clasificaciones y referencias a regulación general o sectorial pueden quedar desactualizadas: cada organización es la única " +
-  "responsable de verificar la normativa que le aplica y certificar su propio cumplimiento regulatorio. El autor no asume " +
+  "responsable de verificar la normativa que le aplica y certificar su propio cumplimiento regulatorio. Esta metodología es una ayuda genérica y gratuita, compartida con la comunidad para que nadie tenga que empezar desde cero; cada persona u organización puede y debe adaptarla a su propio uso. No debe entenderse que sus partes jurídicamente sensibles hayan sido revisadas por una asesoría jurídica: esas revisiones, para cada empresa o sector, son responsabilidad última de la empresa, el consultor o la organización que la use. Aunque se procura mantenerla al día, alguna norma puede haber cambiado sin que se recoja aquí. En la máxima medida permitida por la ley, el autor no asume responsabilidad alguna por los efectos de su aplicación en ninguna organización ni por su aplicabilidad completa. La metodología no otorga certificación de ningún tipo. El autor no asume " +
   "responsabilidad por su uso.";
 const AVISO_LEGAL_CORTO = "Aviso legal: datos ficticios, «tal cual» y con fines informativos; no es asesoramiento jurídico, regulatorio ni financiero ni " +
   "garantiza el cumplimiento de ninguna norma. Cada organización verifica la normativa que le aplica.";
@@ -90,7 +90,7 @@ const AVISO_LEGAL_DATOS_PROPIOS = "<b>Aviso legal.</b> Panel generado desde el r
   "ofrecido «tal cual» y con fines informativos. No constituye asesoramiento jurídico, regulatorio ni financiero ni " +
   "garantiza el cumplimiento de ninguna norma. Las clasificaciones y referencias a regulación general o sectorial pueden " +
   "quedar desactualizadas: cada organización es la única responsable de verificar la normativa que le aplica y certificar " +
-  "su propio cumplimiento regulatorio. El autor no asume responsabilidad por su uso.";
+  "su propio cumplimiento regulatorio. Esta metodología es una ayuda genérica y gratuita, compartida con la comunidad para que nadie tenga que empezar desde cero; cada persona u organización puede y debe adaptarla a su propio uso. No debe entenderse que sus partes jurídicamente sensibles hayan sido revisadas por una asesoría jurídica: esas revisiones, para cada empresa o sector, son responsabilidad última de la empresa, el consultor o la organización que la use. Aunque se procura mantenerla al día, alguna norma puede haber cambiado sin que se recoja aquí. En la máxima medida permitida por la ley, el autor no asume responsabilidad alguna por los efectos de su aplicación en ninguna organización ni por su aplicabilidad completa. La metodología no otorga certificación de ningún tipo. El autor no asume responsabilidad por su uso.";
 const AVISO_CORTO_PROPIOS = "Aviso legal: «tal cual» y con fines informativos; no es asesoramiento jurídico, regulatorio ni financiero ni garantiza el cumplimiento de ninguna norma.";
 function pieAutoria() {
   return "© 2026 " + AUTOR + " · metodología " + METODOLOGIA + " · contenidos " +
@@ -446,6 +446,8 @@ function bloqueMadurez(t01) {
     tope_aplicado: !!get(m, "tope_aplicado"), limitante: get(m, "limitante") || [], validez: get(m, "validez"), declaracion_posible: get(m, "declaracion_posible"),
     dimensiones: (get(m, "dimensiones") || []).filter(d => d && typeof d === "object").map(d => ({dimension: get(d, "dimension"), nombre: get(d, "nombre"), nivel: get(d, "nivel"), avance: get(d, "avance"), bloqueantes: get(d, "bloqueantes") || []}))});
   const b = uno(validos[validos.length - 1]);
+  const per = get(validos[validos.length - 1], "perfiles");   // esquema 0.7 (D115): resumen de los perfiles NIST del último diagnóstico, tal cual lo escribe T15
+  if (per && typeof per === "object" && !Array.isArray(per)) b.perfiles = per;
   if (validos.length > 1) { const a = uno(validos[validos.length - 2]); b.anterior = {id: a.id, fecha_corte: a.fecha_corte, modalidad: a.modalidad, nivel_global: a.nivel_global, dimensiones: a.dimensiones.map(d => ({dimension: d.dimension, nivel: d.nivel}))}; }
   else b.anterior = null;
   return b;

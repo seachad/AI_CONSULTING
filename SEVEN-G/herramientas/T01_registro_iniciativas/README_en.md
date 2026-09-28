@@ -12,7 +12,7 @@ Specification: document 03 (§3 and §4), document 01 (§6–§9), document 00 (
 
 ## On-screen help
 
-Each view has a **“?”** button next to its title that explains, in the active language (Spanish or English), what the view shows, how to read it, what each column, label or figure in it means, why it matters and where it is explained in SEVEN-G. In addition, every table header, record label and header figure shows its explanation as a tooltip (D111). The texts live in `_fuentes/ayuda.json` (views and the explanation of each column by its translation key, in both languages); the shared module `../_comun/ayuda.js` displays them and `build_registro.ps1` embeds them when generating. A new view or column needs its entry in `ayuda.json` in both languages (`verificar_coherencia.ps1`, section 24).
+Each view has a **“?”** button next to its title that explains, in the active language (Spanish or English), what the view shows, how to read it, what each column, label or figure in it means, why it matters and where it is explained in SEVEN-G. In addition, every table header, record label and header figure shows its explanation as a tooltip (D123). The texts live in `_fuentes/ayuda.json` (views and the explanation of each column by its translation key, in both languages); the shared module `../_comun/ayuda.js` displays them and `build_registro.ps1` embeds them when generating. A new view or column needs its entry in `ayuda.json` in both languages (`verificar_coherencia.ps1`, section 28).
 
 ## Files
 
@@ -132,9 +132,9 @@ The application does not send data to third parties or load external resources (
 
 ## Data model
 
-A single JSON object with `version_esquema` (`0.6`; `0.1` to `0.5` files are accepted and upgraded on load, because each version after `0.1` only adds optional fields), `aviso_legal` (text, optional on import), `meta` (organisation, reference date, currency, time-limit configuration) and one list per entity from 03 §4. `null` means “no data”. Dates `YYYY-MM-DD`. Field names and closed-list codes are in Spanish, as in the rest of the SEVEN-G library.
+A single JSON object with `version_esquema` (`0.7`; `0.1` to `0.6` files are accepted and upgraded on load, because each version after `0.1` only adds optional fields), `aviso_legal` (text, optional on import), `meta` (organisation, reference date, currency, time-limit configuration) and one list per entity from 03 §4. `null` means “no data”. Dates `YYYY-MM-DD`. Field names and closed-list codes are in Spanish, as in the rest of the SEVEN-G library.
 
-**Schema 0.6 (D100)**: optional list `madurez[]` with the summary of each T15 maturity assessment (`EM-YYYY-MM`: cut-off date, cycle, mode, questionnaire version, verifier, body, overall level, minimum, average, cap by D1 or D6, validity, declaration possible and, per dimension, level, progress and blocking criteria; never the answers). T15 writes it, the Board view shows the most recent one and the T17 connector takes it to the "Company maturity" card of the dashboard.
+**Schema 0.6 (D100)**: optional list `madurez[]` with the summary of each T15 maturity assessment (`EM-YYYY-MM`: cut-off date, cycle, mode, questionnaire version, verifier, body, overall level, minimum, average, cap by D1 or D6, validity, declaration possible and, per dimension, level, progress and blocking criteria; never the answers). T15 writes it, the Board view shows the most recent one and the T17 connector takes it to the "Company maturity" card of the dashboard. **Schema 0.7 (D115)**: each assessment may also carry `perfiles` with the summary of the NIST profiles derived from the questionnaire (`ai_rmf` and `csf`: by function, by Cyber AI Profile area and in total, with minimum and most frequent level, subcategories with a level, with a target and with a gap); the Board view shows the total of each profile and the dashboard, its table.
 
 | List | Entity | Code |
 |---|---|---|

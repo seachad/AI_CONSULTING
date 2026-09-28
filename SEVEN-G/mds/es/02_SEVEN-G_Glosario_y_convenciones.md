@@ -14,7 +14,7 @@
 
 ---
 
-> **Aviso legal y exención de responsabilidad.** SEVEN-G es un marco metodológico de referencia que se ofrece «tal cual» y con fines exclusivamente informativos. No constituye asesoramiento jurídico, regulatorio, financiero ni profesional, ni garantiza el cumplimiento de ninguna norma. Las referencias a regulación general (como el Reglamento Europeo de IA, el RGPD, DORA o NIS2), a normas técnicas y a regulación específica de cada sector o jurisdicción pueden ser incompletas, no aplicar a un caso concreto o quedar desactualizadas por cambios normativos, interpretaciones o criterios de las autoridades posteriores a su fecha de consulta. **Cada organización que use SEVEN-G es la única responsable de identificar la normativa que le aplica, verificar su vigencia y certificar su propio cumplimiento regulatorio**, con el asesoramiento cualificado que corresponda. El autor no asume responsabilidad alguna por el uso que se haga de este contenido ni por las decisiones que se adopten con él. Los datos, cifras, compañías y casos de los ejemplos son ficticios o ilustrativos.
+> **Aviso legal y exención de responsabilidad.** SEVEN-G es un marco metodológico de referencia que se ofrece «tal cual» y con fines exclusivamente informativos. No constituye asesoramiento jurídico, regulatorio, financiero ni profesional, ni garantiza el cumplimiento de ninguna norma. Las referencias a regulación general (como el Reglamento Europeo de IA, el RGPD, DORA o NIS2), a normas técnicas y a regulación específica de cada sector o jurisdicción pueden ser incompletas, no aplicar a un caso concreto o quedar desactualizadas por cambios normativos, interpretaciones o criterios de las autoridades posteriores a su fecha de consulta. **Cada organización que use SEVEN-G es la única responsable de identificar la normativa que le aplica, verificar su vigencia y certificar su propio cumplimiento regulatorio**, con el asesoramiento cualificado que corresponda. Esta metodología es una ayuda genérica y gratuita, compartida con la comunidad para que nadie tenga que empezar desde cero; cada persona u organización puede y debe adaptarla a su propio uso. No debe entenderse que sus partes jurídicamente sensibles hayan sido revisadas por una asesoría jurídica: esas revisiones, para cada empresa o sector, son responsabilidad última de la empresa, el consultor o la organización que la use. Aunque se procura mantenerla al día, alguna norma puede haber cambiado sin que se recoja aquí. En la máxima medida permitida por la ley, el autor no asume responsabilidad alguna por los efectos de su aplicación en ninguna organización ni por su aplicabilidad completa. La metodología no otorga certificación de ningún tipo. El autor no asume responsabilidad alguna por el uso que se haga de este contenido ni por las decisiones que se adopten con él. Los datos, cifras, compañías y casos de los ejemplos son ficticios o ilustrativos.
 
 <!-- esencial: consulta | Glosario y códigos. No se lee de corrido: se consulta cuando aparece un término o un código (G, LV, P, T, IND, RT). Sus definiciones prevalecen si otro documento usa un término de forma distinta. -->
 
@@ -186,7 +186,7 @@ Orden alfabético. Las escalas completas están en la sección 4 y los códigos 
 | **Continuar la operación** | Resultado de R6: la iniciativa sigue aportando valor bajo control y continúa en producción hasta la siguiente revisión. | 01 §7.3; 21 §5.3 | Continue operation † |
 | **Control crítico** | Control de seguridad, cumplimiento legal o supervisión humana que no admite Continuar con condiciones: los criterios *Sí ◆* del documento 21 y los controles de agentes críticos por nivel de autonomía del documento 35. No diseñado bloquea G4; no probado bloquea G5; desactivado en producción es no conformidad crítica. | 01 §7.3; 21 §2.2; 35 §5.4 | critical control † |
 | **Control de intención** | Mecanismo que garantiza que cada acción de un agente es trazable a una intención autorizada: mandato con objetivo, herramientas, datos y límites; punto de decisión externo al modelo que comprueba cada acción; permiso efímero limitado a esa acción; y registro de la acción con el identificador de la intención. | 35 §4.4 | intent-based access control |
-| **Control de seguridad de IA (SEG) · control de agentes (AG)** | Catálogos de controles codificados: SEG-01 a SEG-20 para sistemas de IA y AG-01 a AG-20 para agentes, con mínimos obligatorios por nivel de autonomía. | 35 §5–7 | AI security control · agent control † |
+| **Control de seguridad de IA (SEG) · control de agentes (AG)** | Catálogos de controles codificados: SEG-01 a SEG-25 para sistemas de IA (SEG-21 a SEG-25, uso de la IA en la ciberdefensa) y AG-01 a AG-20 para agentes, con mínimos obligatorios por nivel de autonomía. | 35 §5–7 | AI security control · agent control † |
 | **Coste recurrente** | Coste anual completo para operar un caso, directo y compartido repartido, en las nueve categorías de coste. Se resta siempre completo, con independencia de su estado. | 00 regla 6; 40 §5.1; 42 §4 | recurring cost |
 | **Criterio de *gate*** | Condición verificable que se comprueba en una puerta, con código `G<n>.<nn>` o `R6.<nn>`, obligatoriedad (Sí, Sí ◆, Condicionable, Recomendado), aplicabilidad por intensidad y variación por nivel de ambición. | 21 §2 | gate criterion † |
 | **Criterio de salida** | Condición que debe cumplirse al final de una fase para solicitar su *gate*. | 01 §6.2–6.9 | exit criterion |
@@ -194,6 +194,7 @@ Orden alfabético. Las escalas completas están en la sección 4 y los códigos 
 | **Criterios Enterprise** | Ocho criterios que, con que se cumpla uno, determinan la intensidad Enterprise: alto riesgo regulatorio, decisiones sobre personas, exposición directa, agentes con capacidad de actuar, datos especialmente protegidos, función crítica, nivel Transformar e inversión superior al umbral de C2. | 01 §9.2 | Enterprise criteria † |
 | **Cuasi incidente** | Suceso que pudo causar daño y no lo causó gracias a un control o por azar. Se registra como incidente S4. | 37 §1.1 | near miss † |
 | **Cumplimiento (tipo de valor)** | Capacidad de cumplir una obligación regulatoria o contractual. Se informa por separado y no suma en el valor neto salvo que sustituya un coste de cumplimiento real medido con fórmula; entonces es eficiencia. | 40 §5.2 | compliance (value type) † |
+| **Cyber AI Profile** | Perfil comunitario del NIST CSF 2.0 para la IA (NIST IR 8596). Organiza las subcategorías del CSF en tres áreas —Secure (proteger los componentes de los sistemas de IA), Defend (usar la IA en la ciberdefensa) y Thwart (frustrar los ataques que usan IA)— y propone una prioridad para cada una. A fecha de consulta es un **borrador** preliminar (diciembre de 2025): se usa como orientación y no fundamenta criterios de *gate*. | 34 §5.3; 35 | Cyber AI Profile |
 
 ### 3.4 D
 
@@ -303,6 +304,7 @@ Orden alfabético. Las escalas completas están en la sección 4 y los códigos 
 | Término | Definición en SEVEN-G | Documento de referencia | Término en inglés |
 |---|---|---|---|
 | **Neto adicional por euro** | Neto anual adicional esperado ÷ inversión adicional necesaria (F3). Es el criterio de priorización entre casos (regla 9); no es criterio de viabilidad: ni él ni su múltiplo en el horizonte impiden pasar G3, donde se aplica VAN ≥ 0. | 00 regla 9; 40 F3; 14 §4.2 | additional net value per additional euro invested |
+| **NIST CSF** | Marco de ciberseguridad del NIST, versión 2.0 (NIST CSWP 29, febrero de 2024): taxonomía voluntaria de resultados de ciberseguridad con seis funciones (GV gobernar, ID identificar, PR proteger, DE detectar, RS responder y RC recuperar), 22 categorías y 106 subcategorías, perfiles de organización y *tiers*. SEVEN-G lo mapea en 34 §5.3 y en la columna «Función CSF» de los controles SEG y AG. | 34 §5.3; 35 §6–§7 | NIST CSF (Cybersecurity Framework) |
 | **Nivel de ambición** | Tipo de apuesta de una iniciativa: Optimizar, Aumentar o Transformar. No es una escalera: son tres apuestas con distinto coste, riesgo, plazo y resistencia organizativa. Cada iniciativa tiene un único nivel. | 01 §4; 10 §3; 12 §3 | ambition level |
 | **Nivel de exigencia a terceros** | Grado de diligencia, contrato, seguimiento y salida exigido a cada relación entre un proveedor y un servicio: N1 Estándar, N2 Reforzado o N3 Crítico, determinado por el factor más alto entre criticidad, datos, autonomía y sustituibilidad. | 36 §4 | third-party requirement level † |
 | **Nivel de riesgo** | Producto de probabilidad por impacto en la matriz 5 × 5: Bajo, Medio, Alto o Crítico. | 33 §4.3 | risk level † |
@@ -326,11 +328,12 @@ Orden alfabético. Las escalas completas están en la sección 4 y los códigos 
 | **Panel de IA del consejo** | Herramienta de supervisión del consejo alimentada por el registro de iniciativas: inventario, valor validado frente a declarado, coste, cumplimiento, incidentes, exposición a ataques con IA, agentes, adopción, agilidad y distribución por ambición. | 00 §4.6; 60; T17 | board AI dashboard |
 | **Parar** | Resultado de *gate*: no hay valor plausible, la viabilidad no se demuestra o el riesgo es inaceptable. La iniciativa se cierra con motivo codificado y lecciones aprendidas. Una parada bien fundamentada es un resultado válido. | 01 §7.3 | Stop |
 | **Patrocinador de IA** | Rol que decide: responde del valor y de la inversión y defiende la iniciativa ante los órganos. No puede verificar evidencias ni actuar como responsable de riesgos o auditor de su iniciativa. | 01 §8.1 | AI Sponsor |
+| **Perfil actual · perfil objetivo** | En el NIST CSF y en el NIST AI RMF, el **perfil actual** describe los resultados (subcategorías) que la organización alcanza hoy y el **perfil objetivo**, los que quiere alcanzar, priorizados. La diferencia entre ambos es la brecha que se convierte en plan de acción. SEVEN-G expresa el grado de cada resultado con la escala de madurez 0–5 (sección 4.9), no con los *tiers*. | 34 §5.3 | current profile · target profile |
 | **Perfil de transformación** | Uno de los cinco perfiles del índice de transformación (sección 4.16). El **perfil evidenciado** resulta de las señales y condiciones de base; si hay declaración de transformación no evidenciada, se informa como **perfil subyacente**. | 00 §5.3; 12 §5 | transformation profile †; evidenced · underlying profile † |
 | **Pivotar** | Resultado de G1, G2 o G3: la hipótesis no se sostiene, pero existe una alternativa razonable; se vuelve a la fase 2 con una nueva hipótesis, conservando el contexto aprobado. | 01 §7.3 | Pivot |
 | **Plan de realización de beneficios** | Plan firmado por el responsable de negocio del beneficio, en borrador en G3 y completo en G4, que fija cómo, cuándo y con qué cambios habilitadores se materializará el valor esperado. | 43 §4 | benefits realisation plan † |
 | **Plan de reversión** | Plan para volver a una situación anterior segura (versión anterior, alternativa sin IA, autonomía o alcance reducidos) si la solución falla. Debe probarse antes de la puesta en producción. | 01 §3 principio 4, §6.6–6.7; P19; 52 §10 | rollback plan |
-| **Plantilla** | Documento tipo del bloque H: P01–P31 para elaborar las evidencias obligatorias de la iniciativa y P32–P71 para los registros, informes y decisiones de la compañía, el consejo, el cumplimiento, los terceros, la auditoría y la implantación del marco. Cada una tiene versión editable en Word. | 01 §6.10; 03 §5 | template |
+| **Plantilla** | Documento tipo del bloque H: P01–P31 para elaborar las evidencias obligatorias de la iniciativa P32–P71 para los registros, informes y decisiones de la compañía, el consejo, el cumplimiento, los terceros, la auditoría y la implantación del marco, y P72–P74 para los perfiles NIST y la declaración de aplicabilidad de ISO/IEC 42001. Cada una tiene versión editable en Word. | 01 §6.10; 03 §5 | template |
 | **Plazo de recuperación · ROI** | Indicadores económicos **informativos**, sin umbrales propios: año en que el neto anual acumulado iguala la inversión inicial (F9) y retorno sobre la inversión inicial calculado siempre sobre neto anual (F8). No son umbral de G3: los plazos de recuperación por nivel de ambición del documento 13 §7 son referencias informativas. | 40 §6, §8.3; 13 §7 | payback period · ROI † |
 | **Plazo de referencia** | Duración orientativa de cada fase y de la decisión de un *gate*, aprobada en C2, cuya superación marca la iniciativa como estancada. | 01 §6.11; 03 §3.6 | reference time limit |
 | **Práctica prohibida** | Uso de IA prohibido por el art. 5 del Reglamento Europeo de IA. No se valora como riesgo ni se acepta: se evita, y en G3 obliga a Parar. | 01 §6.5; 33 §4.3; 21 G3.08 | prohibited practice † |
@@ -391,6 +394,7 @@ Orden alfabético. Las escalas completas están en la sección 4 y los códigos 
 | **Taxonomía controlada** | Listas cerradas de etiquetas del registro de iniciativas (esfera, nivel de ambición, intensidad, clasificación regulatoria, tecnología, exposición, tipo de valor y motivo de parada o retirada) que permiten filtrar, comparar y agregar la cartera. | 03 §3.3; sección 5 | controlled taxonomy · tags |
 | **Tesis de IA** | Declaración breve aprobada por el consejo en C2 que explica por qué la IA importa a la compañía, dónde quiere usarla, con qué ambición y qué no hará. Debe poder usarse para decir que no a una iniciativa. | 13 §3 | AI thesis |
 | **Tiempo en fase · tiempo de decisión** | **Tiempo en fase**: días entre la entrada y la salida de la fase, sin contar el tiempo en espera. **Tiempo de decisión**: días entre la solicitud del *gate* y la decisión. | 03 §3.5; 41 | time in phase · decision time |
+| ***Tier* (CSF)** | Grado del NIST CSF que caracteriza el rigor de las prácticas de gobierno y de gestión del riesgo de ciberseguridad de toda la organización o de una unidad: 1 Parcial, 2 Informado sobre el riesgo, 3 Repetible y 4 Adaptativo. No es un nivel de madurez de cada subcategoría y no existe en el NIST AI RMF. No se traduce. | 34 §5.3 | tier (CSF) |
 | **Tramo de financiación** | Parte del presupuesto de una iniciativa que se libera tras un *gate*: tramo 1 (fases 0–3) tras G0, tramo 2 (fases 4–5) tras G3, tramo 3 (operación) tras G5; en Transformar, cada etapa aprobada es un tramo. | 14 §6.2 | funding tranche † |
 | **Transformar** | Nivel de ambición que cambia qué se ofrece, cómo se compite o cómo se organiza la compañía. El valor está principalmente en retorno y en cambios del modelo operativo. Es siempre Enterprise y requiere aprobación del consejo en G2 y al escalar en G7. | 00 §4.1; 01 §7.5; 10 §3 | Transform |
 
@@ -788,7 +792,7 @@ Equivalentes en inglés de los valores de la taxonomía:
 | **LV-G\<n\> · LV-R6 · LV-EV · LV-AG** | LV + guion + ámbito | Listas de verificación por puerta, de validación de evidencias y de agentes. | 22 §1 | LV-G5 |
 | **EV.01–EV.14** | EV + punto + dos cifras | Reglas de evidencia válida. | 21 §4.1; 22 §11 | EV.05 |
 | **T01–T22** | T + dos cifras | Herramientas del marco. | 03 §5 | T01 |
-| **P01–P71** | P + dos cifras | Plantillas del bloque H: P01–P31 por iniciativa (01 §6.10); P32–P71 de compañía, consejo, cumplimiento, terceros, auditoría e implantación. | Bloque H; 01 §6.10 | P29 |
+| **P01–P74** | P + dos cifras | Plantillas del bloque H: P01–P31 por iniciativa (01 §6.10); P32–P71 de compañía, consejo, cumplimiento, terceros, auditoría e implantación; P72–P74, perfiles NIST y declaración de aplicabilidad de ISO/IEC 42001 (34 §4–§5). | Bloque H; 01 §6.10 | P29 |
 | **D1–D7** | D + número | Dimensiones de madurez. | 11 §2.1 | D6 |
 | **Niveles de madurez 0–5** | Número entero | Niveles de madurez. | 11 §2.2 | nivel 3 |
 | **S1–S4** | S + número | Severidad de incidentes de IA. | 37 §4.2 | S1 |
@@ -797,7 +801,7 @@ Equivalentes en inglés de los valores de la taxonomía:
 | **B1–B3** | B + número | Condiciones de base del índice de transformación. | 12 §4.3 | B2 |
 | **F1–F10 · F2v** | F + número | Fórmulas oficiales de medición. | 40 §6 | F7 |
 | **RT-\<CAT\>-NN** | RT + categoría de tres letras + dos cifras | Riesgos tipo del catálogo (70 en la versión 0.1): EST 6 · TEC 8 · DAT 6 · ECO 5 · LEG 8 · ORG 9 · REP 5 · GEN 9 · SEG 7 · TER 7. | 33 §9 | RT-GEN-01 |
-| **SEG-01–SEG-20** | SEG + guion + dos cifras | Controles de seguridad de IA. | 35 §6 | SEG-02 |
+| **SEG-01–SEG-25** | SEG + guion + dos cifras | Controles de seguridad de IA. | 35 §6 | SEG-02 |
 | **AG-01–AG-20** | AG + guion + dos cifras | Controles de agentes. | 35 §7 | AG-09 |
 | **IND-\<FAM\>-NN** | IND + familia de tres letras + dos cifras | Indicadores del catálogo (159 en 13 familias): VAL, COS, EMB, AGI, RIE, OPE, ADO, DAT, CLI, TRA, MAD, CON (consejo) y PRO (procesos y decisión). Un código no se reutiliza. | 41 §2 y §4 | IND-VAL-05 |
 | **IE\<esfera\>.\<nn\>** | IE + esfera de dos cifras + punto + dos cifras | Indicadores por esfera, provisionales hasta su consolidación en el documento 41. | 10 §5–7 | IE01.04 |
@@ -832,11 +836,11 @@ Las antiguas numeraciones locales de los documentos 12 y 50 (P1–P5, S1–S8 y 
 
 | Código o numeración | Significado | Documento | Cómo se cita fuera | No confundir con |
 |---|---|---|---|---|
-| IT-P1–IT-P5 | Cinco preguntas de clasificación de la ambición (antes P1–P5) | 12 §3.1 | "IT-P4" o "pregunta IT-P4 del documento 12" | P01–P71 (plantillas) |
+| IT-P1–IT-P5 | Cinco preguntas de clasificación de la ambición (antes P1–P5) | 12 §3.1 | "IT-P4" o "pregunta IT-P4 del documento 12" | P01–P74 (plantillas) |
 | IT-S1–IT-S8 | Ocho señales del índice de transformación (antes S1–S8) | 12 §4.4 | "IT-S7" o "señal 7 del índice" | S1–S4 (severidad) |
 | IT-D1–IT-D3 | Condiciones de la declaración de transformación (antes D1–D3) | 12 §5.1 | "condición IT-D1" | D1–D7 (madurez) |
 | PER-D1–PER-D5 | Destinos de la capacidad liberada (antes D1–D5) | 50 §6.2; 23 §10.5 | "destino PER-D1 (Materializar)" | D1–D7 (madurez); PER-NN (indicadores) |
-| PER-PA–PER-PF | Perfiles de alfabetización en IA (antes P-A–P-F) | 50 §5.2 | "perfil PER-PD" | P01–P71 (plantillas); PER-NN (indicadores) |
+| PER-PA–PER-PF | Perfiles de alfabetización en IA (antes P-A–P-F) | 50 §5.2 | "perfil PER-PD" | P01–P74 (plantillas); PER-NN (indicadores) |
 | PER-NN · DAT-NN · CNC-NN · OPE-NN | Indicadores provisionales de personas, datos, conocimiento (CNC, antes CON) y operación | 50, 51, 52 | Por su código IND- según la tabla de correspondencia de 41 §21 | IND-\<FAM\>-NN; CNC-NN no se confunde con IND-CON-NN (consejo) |
 | CI-n · I-n | Conflictos de interés e incompatibilidades del modelo de gobierno | 30 §5, §12 | "conflicto CI-2 del documento 30" | — |
 | PAT, RN, RP, RT, RO, RR, AUD, OIA, CG, CIA… | Abreviaturas de responsables en columnas | 41 §3 | Nombre completo del rol | RT-\<CAT\>-NN (riesgos tipo) |
@@ -858,7 +862,7 @@ En nuevas versiones, los documentos **deberían** sustituir las numeraciones que
 | **E** | Medición y valor | 40–43 | Reglas de medición, indicadores, costes, realización de beneficios. |
 | **F** | Personas, datos y operación | 50–53 | Personas, datos y conocimiento, operación, construcción con IA. |
 | **G** | Consejo | 60–62 | Paquete y guía de conversación con el consejo, registro de recomendaciones y decisiones. |
-| **H** | Plantillas | P01–P71 | Evidencias de cada fase del ciclo de vida (P01–P31) y registros, informes y decisiones de la compañía, el consejo, el cumplimiento, los terceros, la auditoría y la implantación (P32–P71). |
+| **H** | Plantillas | P01–P74 | Evidencias de cada fase del ciclo de vida (P01–P31); registros, informes y decisiones de la compañía, el consejo, el cumplimiento, los terceros, la auditoría y la implantación (P32–P71); perfiles NIST y declaración de aplicabilidad de ISO/IEC 42001 (P72–P74). |
 | **I** | Herramientas | T01–T22 | Catálogo en el documento 03; herramientas en HTML con datos JSON. |
 | **J** | Adopción del marco | 90–93 | Implantación, guía para consultores, casos de aplicación, licencia. |
 
@@ -933,7 +937,7 @@ Nombres de fichero: `NN_SEVEN-G_<Nombre_con_guiones_bajos>.md` para los document
 
 | Sigla | Desarrollo | Observación |
 |---|---|---|
-| **AESIA** | Agencia Española de Supervisión de la Inteligencia Artificial | Autoridad española de supervisión en materia de IA (documento 34). |
+| **AESIA** | Agencia Española de Supervisión de Inteligencia Artificial | Autoridad española de supervisión en materia de IA (documento 34). |
 | **API** | Interfaz de programación de aplicaciones | Forma habitual de consumir modelos de terceros. |
 | **CE** | Comisión Europea · marcado CE | Según contexto. |
 | **CEPD** | Comité Europeo de Protección de Datos | Emite directrices y dictámenes sobre el RGPD aplicados a la IA. |
@@ -950,6 +954,7 @@ Nombres de fichero: `NN_SEVEN-G_<Nombre_con_guiones_bajos>.md` para los document
 | **MITRE ATLAS** | Base de conocimiento de tácticas y técnicas de ataque a sistemas de IA | Referencia de amenazas (documento 35). |
 | **NIS2** | Directiva (UE) 2022/2555, relativa a medidas para un elevado nivel común de ciberseguridad | No se traduce. |
 | **NIST AI RMF** | Marco de gestión de riesgos de IA del NIST (Instituto Nacional de Estándares y Tecnología de EE. UU.) | No se traduce. |
+| **NIST CSF** | Marco de ciberseguridad del NIST (*Cybersecurity Framework*), versión 2.0 | No se traduce. Su perfil para la IA, el Cyber AI Profile, es a fecha de consulta un borrador (documento 34). |
 | **OWASP** | *Open Worldwide Application Security Project* | Listas de riesgos de aplicaciones con modelos de lenguaje y de agentes (documento 35). |
 | **P80** | Percentil 80 | Se usa con la mediana en las métricas de tiempo. |
 | **RAG** | Generación aumentada por recuperación | Sistemas de IA generativa que responden a partir de fuentes de conocimiento recuperadas (documento 51). |
@@ -973,7 +978,7 @@ Abreviaturas del marco que no son siglas generales: **k€** miles de euros · *
 | **T04** | Determinación de intensidad | Usa los criterios Enterprise y la escala de la sección 4.6. |
 | **T05** | Clasificador de ambición | Usa los niveles y estados de ambición de la sección 4.5. |
 | **T06–T22** | Resto de herramientas | Usan las escalas de riesgo, apetito, madurez, severidad, no conformidades, terceros, índice y valor de la sección 4. |
-| **P01–P71** | Plantillas del bloque H | Usan los términos de la sección 3 y los códigos de la sección 6. Ninguna plantilla define términos propios. |
+| **P01–P74** | Plantillas del bloque H | Usan los términos de la sección 3 y los códigos de la sección 6. Ninguna plantilla define términos propios. |
 
 Las herramientas muestran los valores de las listas cerradas en español e inglés con los equivalentes de este documento.
 
