@@ -59,7 +59,16 @@
         aplicación; 93 §11 lleva la exención completa; ninguna referencia del registro queda por corregir y ningún documento se apoya en
         fuentes secundarias.
     25. Vigilancia mensual de fuentes (D117, D118): la lista solo cita referencias del registro y toda fuente en borrador está vigilada.
-    26. Puntos de partida y tres lentes (D119, D120): el documento 96 (ES/EN) tiene 6 arquetipos, 5 modificadores, 12 preguntas y
+    27. Ayuda de cada tarjeta del panel del consejo (D122): toda clave data-ayuda del panel completo y del móvil tiene su ayuda en
+        español e inglés en motor/ayuda_textos.py (título, qué muestra y por qué importa) y toda ayuda se usa; toda columna de tabla y
+        todo rótulo de recuadro que escribe el motor tiene su explicación (ES/EN); los documentos citados existen; config_panel.json la
+        activa, los paneles de ejemplo la llevan y el README de T17 (ES/EN) la explica. La prueba de humo (7) comprueba que aparecen los
+        «?» en un indicador, en una tarjeta plegable, en el embudo y en el móvil, y que los encabezados de la madurez llevan su explicación.
+    28. Ayuda de las herramientas (D123): el módulo común herramientas/_comun/ayuda.js va incrustado en T01, T11, T14 y T15; cada vista
+        tiene su ayuda en español e inglés (_fuentes/ayuda.json) y toda columna, rótulo de ficha o cifra de cabecera que escribe la plantilla
+        tiene su explicación en los dos idiomas; los documentos citados existen y los README lo explican. La prueba de humo (7) comprueba
+        el «?» del título de cada herramienta.
+    29. Puntos de partida y tres lentes (D119, D120): el documento 96 (ES/EN) tiene 6 arquetipos, 5 modificadores, 12 preguntas y
         22 hitos con prioridad válida por arquetipo; las preguntas del 11 que acreditan cada hito existen; 11 §7.6 y 12 §3.7 tienen
         HT0–HT5 e IM1–IM4; los códigos nuevos están en el glosario y en codigos.js; T23 está al día con sus fuentes; la entrada y
         la portada enlazan T23 y la vista «Tres lentes» de T15. La prueba de humo (7) comprueba T23 (PP-F) y la vista de lentes.
@@ -497,7 +506,7 @@ try {
     $pruebas = @(
       # D103: el botón «Datos: …» del módulo de datos locales se dibuja en las cuatro herramientas
       # D106: además de dibujarse, el registro genera en el navegador el Excel del caso IA-2026-001 (clave «eval»), que se valida en «comprobar»
-      @{ f = (Join-Path $t01 'registro.html'); debe = @('#nav a[href="#/embudo"]', '#nav a[href="#/riesgos"]', '#nav a[href="#/consejo"]', '#lnk-panel', '#principal table', "#sitio-nav $ctl", '#principal a.cod-enlace[title]', '#btn-datos[data-estado="demo"]'); que = 'registro T01'
+      @{ f = (Join-Path $t01 'registro.html'); debe = @('#nav a[href="#/embudo"]', '#nav a[href="#/riesgos"]', '#nav a[href="#/consejo"]', '#lnk-panel', '#principal table', "#sitio-nav $ctl", '#principal a.cod-enlace[title]', '#btn-datos[data-estado="demo"]', '#principal h1 .ay-btn'); que = 'registro T01'
          eval = "window.T06_XLSX.base64('IA-2026-001')"; comprobar = {
            param($r)
            if (-not $r) { return 'el Excel del caso (T06_XLSX) no ha devuelto nada' }
@@ -518,10 +527,10 @@ try {
            return $null } }
       # el cálculo que se abre es el del documento 12 §9: suma 12, perfil subyacente Eficiencia a escala y asignado Transformación declarada, no evidenciada
       # D100: el cálculo que se abre es el de septiembre de 2026, calculado desde el registro de demostración de T01 (perfil asignado «declarada», subyacente «táctica», suma 12, cobertura 8); el de junio (documento 12 §9) queda en la evolución
-      @{ f = (Join-Path $t14 'indice.html'); debe = @('#perfil[data-perfil="declarada"][data-evidenciado="tactica"][data-suma="12"][data-cobertura="8"]', 'tr[data-senal="8"][data-punt="1"]', '#nav a[href="#/umbrales"]', '#t01-local[data-registro]', "#sitio-nav $ctl", '#principal a.cod-enlace[title]', '#btn-datos[data-estado="demo"]'); que = 'calculadora T14 (cálculo desde el registro T01 de demostración)' }
+      @{ f = (Join-Path $t14 'indice.html'); debe = @('#perfil[data-perfil="declarada"][data-evidenciado="tactica"][data-suma="12"][data-cobertura="8"]', 'tr[data-senal="8"][data-punt="1"]', '#nav a[href="#/umbrales"]', '#t01-local[data-registro]', "#sitio-nav $ctl", '#principal a.cod-enlace[title]', '#btn-datos[data-estado="demo"]', '#principal h1 .ay-btn'); que = 'calculadora T14 (cálculo desde el registro T01 de demostración)' }
       # T11: el caso de ejemplo IA-2026-001 da VAN 1.826.542 €, ROI 217,7 % y plazo 1,44 años (40 §8); T15: nivel global 2 limitado por D6 (11 §5)
-      @{ f = (Join-Path $t11 'calculadora.html'); debe = @('#resultado[data-van="1826542"][data-roi="217.7"][data-payback="1.44"]', '#nav a[href="#/costes"]', '#t01-local[data-registro]', "#sitio-nav $ctl", '#principal a.cod-enlace[title]', '#btn-datos[data-estado="demo"]'); que = 'calculadora T11/T13 (ejemplo IA-2026-001)' }
-      @{ f = (Join-Path $t15 'madurez.html'); debe = @('#nivel-global[data-nivel="2"][data-tope="2"][data-tope-aplicado="1"]', 'tr[data-dim="D6"][data-nivel="1"]', 'tr[data-dim="D3"][data-nivel="2"]', '#t01-local[data-registro]', "#sitio-nav $ctl", '#principal a.cod-enlace[title]', '#btn-datos[data-estado="demo"]'); que = 'diagnóstico T15 (ejemplo EM-2026-06)' }
+      @{ f = (Join-Path $t11 'calculadora.html'); debe = @('#resultado[data-van="1826542"][data-roi="217.7"][data-payback="1.44"]', '#nav a[href="#/costes"]', '#t01-local[data-registro]', "#sitio-nav $ctl", '#principal a.cod-enlace[title]', '#btn-datos[data-estado="demo"]', '#principal h1 .ay-btn'); que = 'calculadora T11/T13 (ejemplo IA-2026-001)' }
+      @{ f = (Join-Path $t15 'madurez.html'); debe = @('#nivel-global[data-nivel="2"][data-tope="2"][data-tope-aplicado="1"]', 'tr[data-dim="D6"][data-nivel="1"]', 'tr[data-dim="D3"][data-nivel="2"]', '#t01-local[data-registro]', "#sitio-nav $ctl", '#principal a.cod-enlace[title]', '#btn-datos[data-estado="demo"]', '#principal h1 .ay-btn'); que = 'diagnóstico T15 (ejemplo EM-2026-06)' }
       @{ f = (Join-Path $t15 'madurez.html'); antes = "location.hash='#/perfil_csf'"; debe = @('#perfil-resumen[data-marco="csf"][data-con-brecha]', '#tabla-perfil tr[data-sub="ID.RA-01"]', '#tabla-perfil tr[data-sub="GV.OC-04"] select[data-pprop]'); que = 'diagnóstico T15, vista «Perfil CSF» (D115)' },
       # D120: vista «Tres lentes» con el ejemplo EM-2026-06: huella HT4 desde el registro de demostración, D6 por debajo del mínimo (alerta alta) y alcance con una iniciativa IM3
       @{ f = (Join-Path $t15 'madurez.html'); antes = "location.hash='#/lentes'"; debe = @('#lentes[data-huella="HT4"][data-fuente^="t01"]', '#tabla-minimos tr[data-dim="D6"][data-cumple="0"]', '#lentes-alertas [data-alerta="adopcion_por_delante"][data-gravedad="alta"][data-dim="D6"]', '.im-barra[data-im="IM3"][data-n="1"]', '#tabla-uso tr[data-ini="IA-2025-002"][data-im="IM3"]'); que = 'diagnóstico T15, vista «Tres lentes» (D120)' },
@@ -531,10 +540,10 @@ try {
          comprobar = { param($r) if ($r.arquetipo -ne 'PP-F' -or $r.preguntas -ne 12 -or $r.hitos -ne 22 -or $r.p09 -ne '1') { return "T23: $($r | ConvertTo-Json -Compress)" }; return $null } }
       @{ f = (Join-Path $repo 'SEVEN-G\herramientas\T23_recorrido_implantacion\recorrido.html'); antes = "location.hash='#/recorrido'"; debe = @('tr[data-hito="HI-09"][data-prioridad="1"]', 'tr[data-hito="HI-08"][data-prioridad="C"]', 'section[data-etapa="E5"]'); que = 'recorrido T23, vista Recorrido' }
       # D100: la tarjeta de madurez (bloque «madurez» del panel, escrito por T15 en el registro) se dibuja con sus siete dimensiones
-      @{ f = (Get-ChildItem $salidaEj -Filter 't01_Dashboard_Casos_Uso_IA_v*.html' | Select-Object -First 1).FullName; debe = @('#indice tbody tr', '#kpis [data-kpi]', '#embudo .fun2-mid', '#embudo .fun-card.gan', '#embudo .fun-card li .pq', '#fbar #fopen, #filters .fgroup', '#transv table tbody tr', '#madurez table tbody tr', '#madurez-lentes table tbody tr[data-huella="HT4"]', "#barra .toolbar $ctl", 'main a.cod-enlace[title]'); que = 'panel completo' }
+      @{ f = (Get-ChildItem $salidaEj -Filter 't01_Dashboard_Casos_Uso_IA_v*.html' | Select-Object -First 1).FullName; debe = @('#indice tbody tr', '#kpis [data-kpi]', '#embudo .fun2-mid', '#embudo .fun-card.gan', '#embudo .fun-card li .pq', '#fbar #fopen, #filters .fgroup', '#transv table tbody tr', '#madurez table tbody tr', '#madurez-lentes table tbody tr[data-huella="HT4"]', "#barra .toolbar $ctl", 'main a.cod-enlace[title]', '#kpis [data-ayuda="kpi-neto"] .ayuda-btn', '#indice > summary .ayuda-btn', '[data-ayuda="embudo"] h3 .ayuda-btn', '#madurez th.col-explicada[title]'); que = 'panel completo' }
       # comunidad (D80): la página se dibuja aunque no haya intermediario configurado ni red (el texto lo pone el JavaScript)
       @{ f = (Join-Path $repo 'SEVEN-G\herramientas\comunidad\index.html'); debe = @('h1[data-i18n]:not(:empty)', '#form-envio', '#lista[data-estado]', '#btn-identidad:not(:empty)', ".barra $ctl"); que = 'página de comunidad' }
-      @{ f = (Get-ChildItem $salidaEj -Filter 't01_Dashboard_Movil_IA_v*.html' | Select-Object -First 1).FullName; debe = @('#embudo .row.fun', '#embudo .row.fun.gan', '#transv .row', '#madurez-sec:not([hidden]) #madurez *', '#madurez-lentes .row', "header $ctl", 'body a.cod-enlace[title]'); que = 'panel móvil' }
+      @{ f = (Get-ChildItem $salidaEj -Filter 't01_Dashboard_Movil_IA_v*.html' | Select-Object -First 1).FullName; debe = @('#embudo .row.fun', '#embudo .row.fun.gan', '#transv .row', '#madurez-sec:not([hidden]) #madurez *', '#madurez-lentes .row', "header $ctl", 'body a.cod-enlace[title]', '#resumen .ayuda-btn', '#madurez-sec h2 .ayuda-btn'); que = 'panel móvil' }
       @{ f = (Join-Path $salidaEj 't01_Registro_Recomendaciones.html'); debe = @('#tl article.rec', ".top $ctl", 'body a.cod-enlace[title]'); que = 'registro de recomendaciones' }
       @{ f = (Join-Path $t17 'index.html'); debe = @('p.que-es', "header $ctl", '#es a.cod-enlace[title]'); que = 'página de T17' }
       # D105: buscador de términos con selector de ámbito; en «Todo el sitio» la lista de resultados llega de busqueda.json (servido por http)
@@ -662,15 +671,31 @@ try {
   if ($pag -match '(?i)umami') { Mal 'comunidad: la página no debe medirse'; $malUm++ }
   if ($pag -match 'codigos\.js' -and $pag -notmatch 'data-sin-medicion') { Mal 'comunidad: carga codigos.js sin data-sin-medicion (se mediría, D80/D90)'; $malUm++ }
   if (-not $malUm) { Ok "medición de visitas configurada$(if (-not $cfgUm.websiteId) { ' (sin websiteId: desactivada)' }), declarada en el documento 04 y fuera de la página de comunidad" }
-  # ---- 13. entrada ligera «Qué es SEVEN-G» (D91): en ES y EN, copia exacta de su fuente, enlazada desde la portada como primer
+  # ---- 13. entrada ligera «Qué es SEVEN-G» (D91): en ES y EN, igual a su fuente con los datos sustituidos al generar (D124: recuentos
+  # de la biblioteca e inventario de casos del JSON del panel de ejemplo, entrada_datos.ps1), enlazada desde la portada como primer
   # botón, y con paso al documento 00 (el detalle), al registro y a los dos paneles (completo y móvil); imágenes SEVEN-G_<lámina>.png
   Write-Host '13. Entrada ligera de SEVEN-G'
   $malEnt = 0
+  . (Join-Path $PSScriptRoot 'entrada_datos.ps1')
+  $trEnt = Get-Content (Join-Path $PSScriptRoot 'entrada_inventario_en.json') -Raw -Encoding utf8 | ConvertFrom-Json -AsHashtable
   foreach ($lang in 'es', 'en') {
     $fuente = Join-Path $repo "SEVEN-G\build\entrada\$lang\index.html"; $pub = Join-Path $repo "SEVEN-G\html\$lang\entrada\index.html"
     if (-not (Test-Path $fuente) -or -not (Test-Path $pub)) { Mal "entrada [$lang]: falta la fuente o la página publicada"; $malEnt++; continue }
     $tEnt = [IO.File]::ReadAllText($pub)
-    if (($tEnt -replace "`r`n", "`n") -cne ([IO.File]::ReadAllText($fuente) -replace "`r`n", "`n")) { Mal "entrada [$lang]: html/$lang/entrada/index.html no coincide con build/entrada/$lang (generar con build.ps1)"; $malEnt++ }
+    $tFuente = [IO.File]::ReadAllText($fuente)
+    # la fuente no lleva cifras escritas a mano (D124)
+    foreach ($m in [regex]::Matches($tFuente, '<b>(\d+)</b><span>')) { Mal "entrada [$lang]: la fuente escribe a mano la cifra $($m.Groups[1].Value); usar {{N_DOCUMENTOS}}, {{N_PLANTILLAS}} o {{N_HERRAMIENTAS}} (D124)"; $malEnt++ }
+    if ($tFuente -match '<tr data-caso=') { Mal "entrada [$lang]: la fuente escribe a mano filas del inventario; van en <!-- inventario-casos --> y salen del JSON del panel (D124)"; $malEnt++ }
+    # los recuentos son los del documento 00 generado (figura del inicio rápido, Recuentos-Biblioteca de build.ps1)
+    $d00 = [IO.File]::ReadAllText((Get-ChildItem (Join-Path $repo "SEVEN-G\html\$lang") -Filter '00_SEVEN-G_*.html' | Select-Object -First 1).FullName)
+    $recEnt = @{}
+    foreach ($par in @(@('{{N_DOCUMENTOS}}', 'ir-caja"'), @('{{N_PLANTILLAS}}', 'ir-caja p"'), @('{{N_HERRAMIENTAS}}', 'ir-caja t"'))) {
+      $m = [regex]::Match($d00, [regex]::Escape($par[1]) + '><b>(\d+)</b>')
+      if ($m.Success) { $recEnt[$par[0]] = $m.Groups[1].Value } else { Mal "documento 00 [$lang]: no se encuentra el recuento $($par[0]) del inicio rápido"; $malEnt++ }
+    }
+    $esperado = Expandir-Entrada $tFuente $lang $repo $recEnt
+    if (($tEnt -replace "`r`n", "`n") -cne ($esperado -replace "`r`n", "`n")) { Mal "entrada [$lang]: html/$lang/entrada/index.html no coincide con build/entrada/$lang y los datos actuales (recuentos o JSON del panel de ejemplo): generar con build.ps1"; $malEnt++ }
+    if ($tEnt -match '\{\{N_|<!-- inventario-') { Mal "entrada [$lang]: quedan marcas sin sustituir"; $malEnt++ }
     foreach ($req in '00_SEVEN-G_Que_es_y_para_que_sirve.html', 'T01_registro_iniciativas/registro.html', 'Dashboard_Casos_Uso_IA', 'Dashboard_Movil_IA', 'class="niv"', '<details class="aviso">', 'Presentaci%C3%B3n_Corregida.pptx', 'Presentaci%C3%B3n_Corregida.pdf') {
       if (-not $tEnt.Contains($req)) { Mal "entrada [$lang]: falta «$req»"; $malEnt++ }
     }
@@ -681,8 +706,23 @@ try {
     }
     $port = [IO.File]::ReadAllText((Join-Path $repo $(if ($lang -eq 'es') { 'index.html' } else { 'en\index.html' })))
     if ($port -notmatch "<a class=""boton primario"" href=""[^""]*SEVEN-G/html/$lang/entrada/index\.html""") { Mal "portada [$lang]: el botón «Qué es SEVEN-G» no lleva a la entrada ligera"; $malEnt++ }
+    # D124: tarjetas pequeñas con «?» e inventario reducido de casos, con los mismos casos (y etapas) que el panel de ejemplo
+    if ([regex]::Matches($tEnt, '<details class="ayuda">').Count -lt 4) { Mal "entrada [$lang]: el panel del consejo no lleva las tarjetas con «?» (D124)"; $malEnt++ }
+    $casosPanel = (Get-Content (Join-Path $repo 'SEVEN-G\herramientas\T17_panel_consejo\ejemplo\salida\t01_dashboard_data.json') -Raw -Encoding utf8 | ConvertFrom-Json -Depth 64).casos
+    $filasInv = [regex]::Matches($tEnt, '<tr data-caso="([^"]+)">.*?<span class="etapa [^"]*">([^<]+)</span>')
+    $idsInv = @($filasInv | ForEach-Object { $_.Groups[1].Value } | Sort-Object)
+    if (($idsInv -join ',') -ne (@($casosPanel.id | Sort-Object) -join ',')) { Mal "entrada [$lang]: el inventario de casos no coincide con los casos del panel de ejemplo (generar con build.ps1, D124)"; $malEnt++ }
+    elseif ($lang -eq 'es') {
+      foreach ($f in $filasInv) { $c = $casosPanel | Where-Object id -eq $f.Groups[1].Value; if ($c.estado -ne $f.Groups[2].Value) { Mal "entrada [es]: $($c.id) figura como «$($f.Groups[2].Value)» y en el panel está «$($c.estado)» (D124)"; $malEnt++ } }
+    }
+    if ($lang -eq 'en') {
+      $sinEn = @($casosPanel | Where-Object { -not $trEnt.nombres.ContainsKey([string]$_.id) } | ForEach-Object id)
+      if ($sinEn) { Aviso "entrada [en]: casos del panel de ejemplo sin nombre en inglés en entrada_inventario_en.json (salen en español): $($sinEn -join ', ')" }
+      $sinEt = @($casosPanel | ForEach-Object { $_.unidad; $_.estado; $_.tags.ambicion; $_.tags.riesgo } | Sort-Object -Unique | Where-Object { $_ -and -not $trEnt.etiquetas.ContainsKey([string]$_) })
+      if ($sinEt) { Aviso "entrada [en]: etiquetas sin traducir en entrada_inventario_en.json (salen en español): $($sinEt -join ', ')" }
+    }
   }
-  if (-not $malEnt) { Ok 'entrada ligera en ES y EN, igual a su fuente, enlazada desde la portada y con paso al documento 00, al registro y a los paneles' }
+  if (-not $malEnt) { Ok 'entrada ligera en ES y EN, igual a su fuente, enlazada desde la portada y con paso al documento 00, al registro y a los paneles; recuentos e inventario de casos tomados de la biblioteca y del JSON del panel de ejemplo' }
 
   # ---- 14. avisos plegados por defecto (D93): en los documentos (plegados en pantalla, completos en el PDF), la portada y los paneles
   Write-Host '14. Avisos plegados por defecto'
@@ -1029,7 +1069,7 @@ try {
     if (-not $ent.Contains('95_SEVEN-G_Datos_en_local_e_instalacion_propia.html')) { Mal "entrada [$lang]: no enlaza el documento 95"; $malInst++ }
   }
   $nDocs = @(Get-ChildItem (Join-Path $repo 'SEVEN-G\mds\es') -File -Filter '*.md' | Where-Object { $_.Name -match '^\d{2}_' }).Count
-  foreach ($p in @(@{ f = 'index.html'; l = 'es' }, @{ f = 'en\index.html'; l = 'en' }, @{ f = 'SEVEN-G\build\entrada\es\index.html'; l = 'es' }, @{ f = 'SEVEN-G\build\entrada\en\index.html'; l = 'en' })) {
+  foreach ($p in @(@{ f = 'index.html'; l = 'es' }, @{ f = 'en\index.html'; l = 'en' }, @{ f = 'SEVEN-G\html\es\entrada\index.html'; l = 'es' }, @{ f = 'SEVEN-G\html\en\entrada\index.html'; l = 'en' })) {
     $t = [IO.File]::ReadAllText((Join-Path $repo $p.f))
     if ($p.f -like '*index.html' -and $p.f -notlike '*entrada*') {
       if (-not ($t.Contains('95_SEVEN-G_Datos_en_local_e_instalacion_propia.html') -and $t.Contains($repoUrl))) { Mal "$($p.f): la portada no enlaza el documento 95 y el repositorio"; $malInst++ }
@@ -1175,11 +1215,102 @@ try {
     }
     foreach ($r in $regs | Where-Object { $_.situacion -and $_.situacion -ne 'final' }) { if (@($vig.prioritarias | ForEach-Object id) -notcontains $r.id) { Mal "referencia $($r.id) en $($r.situacion) y fuera de la vigilancia mensual (D117)"; $malVig++ } }
   }
-  if (-not $malVig) { Ok "vigilancia mensual: $(@($vig.prioritarias).Count) fuentes prioritarias, todas en el registro; toda fuente en borrador está vigilada" }  # ---- 26. puntos de partida, recorrido de implantación y madurez en tres lentes (D119, D120): el documento 96 tiene en ES y EN
+  if (-not $malVig) { Ok "vigilancia mensual: $(@($vig.prioritarias).Count) fuentes prioritarias, todas en el registro; toda fuente en borrador está vigilada" }
+  # ---- 26. colaboradores (D121): la portada ES y EN tiene la sección con las mismas personas y la nota de que el reconocimiento
+  # no implica titularidad ni coautoría
+  Write-Host '26. Colaboradores en la portada'
+  $malCol = 0; $nombresCol = @{}
+  foreach ($p in 'index.html', 'en\index.html') {
+    $html = [IO.File]::ReadAllText((Join-Path $repo $p))
+    $sec = [regex]::Match($html, '(?s)<h2 id="colaboradores">.*?</section>').Value
+    if (-not $sec) { Mal "$p`: falta la sección de colaboradores (D121)"; $malCol++; continue }
+    $nombresCol[$p] = (@([regex]::Matches($sec, '<li><b>([^<]+)</b>') | ForEach-Object { $_.Groups[1].Value.Trim() }) | Sort-Object) -join ' | '
+    if (-not $nombresCol[$p]) { Mal "$p`: la sección de colaboradores no nombra a nadie (D121)"; $malCol++ }
+    if ($sec -notmatch '(?i)coautoría|co-authorship') { Mal "$p`: la sección de colaboradores no aclara que no implica titularidad ni coautoría (D121, D89)"; $malCol++ }
+  }
+  if ($nombresCol.Count -eq 2 -and $nombresCol['index.html'] -ne $nombresCol['en\index.html']) { Mal "colaboradores distintos en ES («$($nombresCol['index.html'])») y EN («$($nombresCol['en\index.html'])») (D121)"; $malCol++ }
+  if (-not $malCol) { Ok "colaboradores en ES y EN: $($nombresCol['index.html'])" }
+  # ---- 27. ayuda de cada tarjeta del panel del consejo (D122): cada data-ayuda del motor tiene su ayuda en español e inglés (título,
+  # qué muestra y por qué importa) y cada ayuda se usa; toda columna o recuadro que escribe el motor tiene su explicación (ES/EN); los
+  # documentos citados existen; el ejemplo la activa y la lleva; el README de T17 la explica (ES/EN)
+  Write-Host '27. Ayuda de cada tarjeta del panel del consejo'
+  $malAy = 0
+  $panelAy = Get-ChildItem (Join-Path $t17 'ejemplo\salida') -Filter 't01_Dashboard_Casos_Uso_IA_v*.html' | Select-Object -First 1
+  $mAy = [regex]::Match([IO.File]::ReadAllText($panelAy.FullName), '(?s)const AYUDA_TARJETAS = (\{.*?\});\r?\nconst AYUDA_COLUMNAS = (\{.*?\});\r?\n')
+  if (-not $mAy.Success) { Mal "panel de ejemplo sin la ayuda de las tarjetas: $($panelAy.Name) (regenerar con t01_a_panel.py)"; $malAy++ }
+  else {
+    $tarj = $mAy.Groups[1].Value | ConvertFrom-Json -AsHashtable
+    $cols = $mAy.Groups[2].Value | ConvertFrom-Json -AsHashtable
+    $prefijos = @($cols.Keys | Where-Object { $_.EndsWith('…') } | ForEach-Object { $_.Substring(0, $_.Length - 1).TrimEnd() })
+    $resuelve = { param($r) $r = ($r -replace '\s+', ' ').Trim(); if (-not $r) { return $true }; if ($cols.ContainsKey($r)) { return $true }; foreach ($p in $prefijos) { if ($r.StartsWith($p)) { return $true } }; return $false }
+    foreach ($k in $tarj.Keys) {
+      foreach ($lang in 'es', 'en') { foreach ($campo in 'titulo', 'que', 'porque') { if (-not $tarj[$k][$lang] -or ([string]$tarj[$k][$lang][$campo]).Length -lt 3) { Mal "ayuda de «$k»: falta «$campo» en $lang (motor/ayuda_textos.py)"; $malAy++ } } }
+      foreach ($x in @($tarj[$k].columnas)) { if ($x -is [string] -and -not (& $resuelve $x)) { Mal "ayuda de «$k»: la columna «$x» no está en COLUMNAS"; $malAy++ } }
+    }
+    foreach ($ck in $cols.Keys) { if (-not $cols[$ck].es -or @($cols[$ck].en).Count -ne 2) { Mal "COLUMNAS «$ck»: falta la explicación en español o en inglés"; $malAy++ } }
+    $usadas = @()
+    foreach ($f in 'motor\build_dashboard.py', 'motor\panel_movil.py') { $usadas += @([regex]::Matches([IO.File]::ReadAllText((Join-Path $t17 $f)), 'data-ayuda="([a-z0-9-]+)"') | ForEach-Object { $_.Groups[1].Value }) }
+    $usadas = @($usadas | Sort-Object -Unique)
+    foreach ($k in $usadas) { if (-not $tarj.ContainsKey($k)) { Mal "T17: data-ayuda=""$k"" sin ayuda en motor/ayuda_textos.py"; $malAy++ } }
+    foreach ($k in $tarj.Keys) { if ($usadas -notcontains $k) { Mal "motor/ayuda_textos.py: la ayuda «$k» no la usa ningún panel"; $malAy++ } }
+    # toda columna de tabla y todo rótulo de recuadro que escribe el motor del panel completo tiene su explicación
+    $tb = [IO.File]::ReadAllText((Join-Path $t17 'motor\build_dashboard.py'))
+    $rotulos = @()
+    $rotulos += @([regex]::Matches($tb, '<th[^>]*>([^<$]{1,70})') | ForEach-Object { $_.Groups[1].Value })
+    $rotulos += @([regex]::Matches($tb, '\["([^"\]]{1,60})",\s*(?:r|x|c)\s*=>') | ForEach-Object { $_.Groups[1].Value })
+    $rotulos += @([regex]::Matches($tb, '<div class="k">([^<$]{1,70})') | ForEach-Object { $_.Groups[1].Value })
+    $rotulos += @([regex]::Matches($tb, '\btile\("([^"]{1,70})"') | ForEach-Object { $_.Groups[1].Value })
+    foreach ($m in [regex]::Matches($tb, 'tabla\(\[([^\]]*)\]')) { $rotulos += @([regex]::Matches($m.Groups[1].Value, '"([^"]+)"') | ForEach-Object { $_.Groups[1].Value }) }
+    $sinExp = @($rotulos | ForEach-Object { ($_ -replace '\s+', ' ').Trim() } | Where-Object { $_ -and -not (& $resuelve $_) } | Sort-Object -Unique)
+    foreach ($r in $sinExp) { Mal "T17: la columna o recuadro «$r» no tiene explicación en COLUMNAS (motor/ayuda_textos.py)"; $malAy++ }
+    foreach ($m in [regex]::Matches([IO.File]::ReadAllText((Join-Path $t17 'motor\ayuda_textos.py')), 'documento (\d{2})')) { if (-not (Get-ChildItem (Join-Path $repo 'SEVEN-G\mds\es') -Filter "$($m.Groups[1].Value)_*.md")) { Mal "ayuda_textos.py: cita el documento $($m.Groups[1].Value), que no existe"; $malAy++ } }
+  }
+  foreach ($f in 'motor\build_dashboard.py', 'motor\panel_movil.py') { if (-not [IO.File]::ReadAllText((Join-Path $t17 $f)).Contains('vigilarAyudas(')) { Mal "T17 ${f}: no monta la ayuda de las tarjetas"; $malAy++ } }
+  if (-not ((Get-Content (Join-Path $t17 'config_panel.json') -Raw | ConvertFrom-Json).navegacion.ayuda_tarjetas)) { Mal 'config_panel.json: falta navegacion.ayuda_tarjetas en el ejemplo (D122)'; $malAy++ }
+  foreach ($f in (Get-ChildItem (Join-Path $t17 'ejemplo\salida') -Filter 't01_Dashboard_*.html')) { $tf = [IO.File]::ReadAllText($f.FullName); if (-not ($tf.Contains('AYUDA_COLUMNAS') -and $tf.Contains('data-ayuda='))) { Mal "panel de ejemplo sin la ayuda de las tarjetas: $($f.Name) (regenerar con t01_a_panel.py)"; $malAy++ } }
+  foreach ($r in 'README.md', 'README_en.md') { $tr = [IO.File]::ReadAllText((Join-Path $t17 $r)); if (-not ($tr.Contains('ayuda_tarjetas') -and $tr.Contains('ayuda_textos.py'))) { Mal "T17 ${r}: no explica navegacion.ayuda_tarjetas ni ayuda_textos.py (D122)"; $malAy++ } }
+  if (-not $malAy) { Ok "$($tarj.Count) tarjetas con su «?» en español e inglés y $($cols.Count) columnas y recuadros explicados (todas las que escribe el motor), activado en el ejemplo y explicado en el README (ES/EN)" }
+  # ---- 28. ayuda de las herramientas (D123): el módulo común _comun/ayuda.js va incrustado en T01, T11, T14 y T15 con sus textos
+  # (_fuentes/ayuda.json); cada vista de la herramienta tiene su ayuda en español e inglés (título, qué muestra y por qué importa); toda
+  # columna, rótulo de ficha o cifra de cabecera que escribe la plantilla con t('clave') tiene su explicación en los dos idiomas; los
+  # documentos citados existen; y los README (ES/EN) lo explican
+  Write-Host '28. Ayuda de las herramientas (vistas y columnas)'
+  $malAh = 0; $nVis = 0; $nCla = 0
+  $ayudaComun = Join-Path $repo 'SEVEN-G\herramientas\_comun\ayuda.js'
+  if (-not (Test-Path $ayudaComun)) { Mal 'falta SEVEN-G/herramientas/_comun/ayuda.js (D123)'; $malAh++ }
+  $herrAy = @(@{ d = $t01; p = 'registro.plantilla.html'; h = 'registro.html'; b = 'build_registro.ps1' }, @{ d = $t11; p = 'calculadora.plantilla.html'; h = 'calculadora.html'; b = 'build_calculadora.ps1' }, @{ d = $t14; p = 'indice.plantilla.html'; h = 'indice.html'; b = 'build_indice.ps1' }, @{ d = $t15; p = 'madurez.plantilla.html'; h = 'madurez.html'; b = 'build_madurez.ps1' })
+  foreach ($x in $herrAy) {
+    $nom = Split-Path $x.d -Leaf
+    $pl = [IO.File]::ReadAllText((Join-Path $x.d "_fuentes\$($x.p)"))
+    $js = Join-Path $x.d '_fuentes\ayuda.json'
+    if (([regex]::Matches($pl, '__AYUDA__')).Count -ne 1) { Mal "${nom}: la plantilla debe llevar una vez la marca __AYUDA__"; $malAh++ }
+    $ht = [IO.File]::ReadAllText((Join-Path $x.d $x.h))
+    if (-not ($ht.Contains('const AYUDA_HERR = ') -and $ht.Contains('SevengAyuda')) -or $ht.Contains('<script>__AYUDA__</script>')) { Mal "${nom}: $($x.h) no lleva la ayuda (ejecutar $($x.b))"; $malAh++ }
+    if (-not (Test-Path $js)) { Mal "${nom}: falta _fuentes/ayuda.json"; $malAh++; continue }
+    try { $a = [IO.File]::ReadAllText($js) | ConvertFrom-Json -AsHashtable } catch { Mal "${nom}: _fuentes/ayuda.json no es un JSON válido"; $malAh++; continue }
+    # vistas: las rutas que declara la plantilla (y las pestañas de la ficha en T01)
+    $rutas = @()
+    $mR = [regex]::Match($pl, 'const (?:VISTAS|RUTAS) = \[([^\]]*)\]'); if (-not $mR.Success) { $mR = [regex]::Match($pl, 'function ruta\(\)[^\n]*?\[([^\]]*)\]\.includes') }
+    if ($mR.Success) { $rutas += @([regex]::Matches($mR.Groups[1].Value, "'([a-z_]+)'") | ForEach-Object { $_.Groups[1].Value }) }
+    $mT = [regex]::Match($pl, "const tab = \[([^\]]*)\]\.includes"); if ($mT.Success) { $rutas = @($rutas | Where-Object { $_ -ne 'ficha' }) + @([regex]::Matches($mT.Groups[1].Value, "'([a-z_]+)'") | ForEach-Object { 'ficha/' + $_.Groups[1].Value }) }
+    if (-not $rutas.Count) { Mal "${nom}: no se encuentran las rutas de la plantilla"; $malAh++ }
+    foreach ($r in $rutas) { if (-not $a.vistas.ContainsKey($r)) { Mal "${nom}: la vista «$r» no tiene ayuda en _fuentes/ayuda.json"; $malAh++ } }
+    foreach ($r in $a.vistas.Keys) { foreach ($l in 'es', 'en') { foreach ($c in 'titulo', 'que', 'porque') { if (-not $a.vistas[$r][$l] -or ([string]$a.vistas[$r][$l][$c]).Length -lt 3) { Mal "${nom}: ayuda de la vista «$r» sin «$c» en $l"; $malAh++ } } } }
+    foreach ($k in $a.claves.Keys) { if (-not $a.claves[$k].es -or -not $a.claves[$k].en) { Mal "${nom}: la clave «$k» no tiene explicación en los dos idiomas"; $malAh++ } }
+    # columnas, rótulos de ficha y cifras de cabecera escritos con t('clave')
+    $usadas = @()
+    foreach ($pat in "<th[^>]*>'\s*\+\s*esc\(\s*t\(\s*'(\w+)'", "<dt>'\s*\+\s*esc\(\s*t\(\s*'(\w+)'", "class=""kpi""><b>[^<]*</b><span>'\s*\+\s*esc\(\s*t\(\s*'(\w+)'", "\bk\(t\('(\w+)'") { $usadas += @([regex]::Matches($pl, $pat) | ForEach-Object { $_.Groups[1].Value }) }
+    foreach ($k in @($usadas | Where-Object { -not $_.EndsWith('_') } | Sort-Object -Unique)) { if (-not $a.claves.ContainsKey($k)) { Mal "${nom}: la columna o rótulo t('$k') no tiene explicación en _fuentes/ayuda.json"; $malAh++ } }
+    foreach ($m in [regex]::Matches([IO.File]::ReadAllText($js), '(?:documento|document) (\d{2})\b')) { if (-not (Get-ChildItem (Join-Path $repo 'SEVEN-G\mds\es') -Filter "$($m.Groups[1].Value)_*.md")) { Mal "${nom}: la ayuda cita el documento $($m.Groups[1].Value), que no existe"; $malAh++ } }
+    foreach ($rd in 'README.md', 'README_en.md') { $f = Join-Path $x.d $rd; if ((Test-Path $f) -and -not [IO.File]::ReadAllText($f).Contains('ayuda.json')) { Mal "${nom} ${rd}: no explica la ayuda de la herramienta (D123)"; $malAh++ } }
+    $nVis += $a.vistas.Count; $nCla += $a.claves.Count
+  }
+  if (-not $malAh) { Ok "$nVis vistas con su «?» y $nCla columnas y rótulos explicados, en español e inglés, en T01, T11, T14 y T15" }
+  if (-not $malVig) { Ok "vigilancia mensual: $(@($vig.prioritarias).Count) fuentes prioritarias, todas en el registro; toda fuente en borrador está vigilada" }  # ---- 29. puntos de partida, recorrido de implantación y madurez en tres lentes (D119, D120): el documento 96 tiene en ES y EN
   # sus tablas completas (6 arquetipos, 5 modificadores, 12 preguntas, 22 hitos con prioridad válida por arquetipo); toda pregunta del
   # documento 11 que acredita un hito existe; 11 §7.6 y 12 §3.7 tienen sus escalas; los códigos nuevos están en el glosario y en el
   # índice de códigos; la herramienta T23 está generada desde el documento; la entrada y la portada enlazan T23 y la vista de tres lentes
-  Write-Host '26. Puntos de partida, recorrido de implantación y tres lentes'
+  Write-Host '29. Puntos de partida, recorrido de implantación y tres lentes'
   $mal26 = 0
   $filasDe = {
     param([string]$texto, [string]$seccion)

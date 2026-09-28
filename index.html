@@ -113,6 +113,12 @@ h2 { font: 600 clamp(26px, 3.2vw, 34px)/1.15 var(--serif); color: var(--negro); 
 .comunidad { border-top: 2px solid var(--negro); padding-top: 18px; max-width: 860px; }
 .comunidad p { margin: 0 0 14px; }
 .acciones-comunidad { display: flex; flex-wrap: wrap; gap: 10px; }
+
+/* Colaboradores (D121): una tarjeta por persona; para añadir a alguien basta otra <li> en ES y en EN */
+.colaboradores { list-style: none; margin: 0 0 14px; padding: 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(230px, 1fr)); gap: 12px; }
+.colaboradores li { border: 1px solid var(--regla); border-top: 3px solid var(--claret); background: var(--papel-2); padding: 14px 16px 12px; }
+.colaboradores b { display: block; font: 600 21px/1.2 var(--serif); color: var(--negro); }
+.colaboradores span { display: block; margin-top: 6px; font: 500 13px/1.4 var(--sans); color: var(--tinta-2); }
 </style>
 </head>
 <body>
@@ -234,6 +240,15 @@ h2 { font: 600 clamp(26px, 3.2vw, 34px)/1.15 var(--serif); color: var(--negro); 
     <div class="acciones-comunidad">
       <a class="boton primario" href="SEVEN-G/herramientas/comunidad/index.html">Incidencias y peticiones<small>Envía la tuya y vota las de otras personas</small></a>
     </div>
+  </section>
+
+  <h2 id="colaboradores">Colaboradores</h2>
+  <p class="sub">Personas que han dedicado su tiempo y su criterio a revisar estas metodologías y a ayudar a mejorarlas. Gracias.</p>
+  <section class="comunidad" aria-labelledby="colaboradores">
+    <ul class="colaboradores">
+      <li><b>Almudena Valenciano</b><span>Revisión y propuestas de mejora</span></li>
+    </ul>
+    <p class="nota">Este reconocimiento es un agradecimiento: no implica titularidad ni coautoría y no modifica la propiedad intelectual de las metodologías, que sigue siendo de su autor.</p>
   </section>
 
   <details class="aviso"><summary>Aviso legal y exención de responsabilidad</summary>Estos contenidos y herramientas se ofrecen «tal cual» y con fines exclusivamente informativos. No constituyen asesoramiento jurídico, regulatorio, financiero ni profesional, ni garantizan el cumplimiento de ninguna norma. Las referencias a regulación general y a regulación específica de cada sector o jurisdicción pueden quedar desactualizadas. <strong>Cada organización que los use es la única responsable de identificar la normativa que le aplica, verificar su vigencia y certificar su propio cumplimiento regulatorio</strong>, con el asesoramiento cualificado que corresponda. Esta metodología es una ayuda genérica y gratuita, compartida con la comunidad para que nadie tenga que empezar desde cero; cada persona u organización puede y debe adaptarla a su propio uso. No debe entenderse que sus partes jurídicamente sensibles hayan sido revisadas por una asesoría jurídica: esas revisiones, para cada empresa o sector, son responsabilidad última de la empresa, el consultor o la organización que la use. Aunque se procura mantenerla al día, alguna norma puede haber cambiado sin que se recoja aquí. En la máxima medida permitida por la ley, el autor no asume responsabilidad alguna por los efectos de su aplicación en ninguna organización ni por su aplicabilidad completa. La metodología no otorga certificación de ningún tipo. El autor no asume responsabilidad alguna por su uso. Los datos de ejemplo son ficticios. Asimismo, los contenidos, plantillas y metodologías del repositorio son reutilizables por cualquier organización para uso metodológico, salvo pacto escrito y específico sobre adaptaciones o desarrollos propios; ningún cliente puede alegar exclusividad sobre el marco base por el mero uso de estas metodologías.</details>
