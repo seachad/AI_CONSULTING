@@ -452,6 +452,24 @@ foreach ($lang in $Idiomas) {
     recuento();
   }
   window.addEventListener('hashchange', recontar);
+  /* ---- el idioma elegido se conserva al pasar a otra página del sitio (D137) ----
+     Cada página que carga este índice deja su idioma en «seveng-idioma» (las herramientas y los paneles lo leen al abrirse) y, al pulsar un
+     enlace a una herramienta o a un panel (SEVEN-G/herramientas/…html) que no dice su idioma, le añade «?lang=<idioma>»: así también se
+     conserva abriendo el sitio como ficheros sueltos, donde el almacenamiento local no se comparte entre páginas (D78). */
+  try { localStorage.setItem('seveng-idioma', DATOS.lang); } catch (e) {}
+  function conIdioma(ev) {
+    var a = ev.target && ev.target.closest ? ev.target.closest('a[href]') : null, l = window.sevengIrCodigo && window.sevengIrCodigo.lang;
+    if (!a || !l || a.hasAttribute('download')) return;
+    var h = a.getAttribute('href'); if (!h || /^(#|mailto:|tel:|javascript:|data:|blob:)/i.test(h)) return;
+    var u; try { u = new URL(h, location.href); } catch (e) { return; }
+    if (u.protocol !== location.protocol || u.host !== location.host) return;
+    if (!/\/herramientas\/.+\.html$/i.test(decodeURIComponent(u.pathname)) || u.searchParams.has('lang')) return;
+    u.searchParams.set('lang', l); a.setAttribute('href', u.href);
+  }
+  if (!window._sevengIdiomaEnlaces) {
+    window._sevengIdiomaEnlaces = 1;
+    ['mousedown', 'click', 'auxclick', 'focusin', 'touchstart'].forEach(function (t) { document.addEventListener(t, conIdioma, true); });
+  }
   window.sevengIrCodigo = { buscar: buscar, resolver: resolver, enlazar: enlazar, citados: citados, iniciar: iniciar, desconectar: desconectar, lang: DATOS.lang };
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', iniciar); else iniciar();
 })();

@@ -138,5 +138,6 @@ summary(); chips(); render();
 // enlaces a donde se explican y la cabecera ofrece «Ir a código» y «Citados aquí». Se carga sin medición de visitas. Sin la clave, nada cambia.
 if (D.codigos){ document.body.setAttribute("data-enlazar-codigos", "");
   const t = document.querySelector(".top"); if (t){ const h = document.createElement("div"); h.setAttribute("data-ir-codigo", ""); h.className = "ir-codigo-panel"; t.appendChild(h); }
-  const s = document.createElement("script"); s.src = D.codigos; s.defer = true; s.setAttribute("data-sin-medicion", ""); document.head.appendChild(s); }
+  let en = new URLSearchParams(location.search).get("lang"); if (en !== "es" && en !== "en") { try { en = localStorage.getItem("seveng-idioma"); } catch (e) { en = null; } }
+  const s = document.createElement("script"); s.src = en === "en" ? String(D.codigos).replace("/html/es/", "/html/en/") : D.codigos; s.defer = true; s.setAttribute("data-sin-medicion", ""); document.head.appendChild(s); }
 </script></body></html>

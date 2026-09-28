@@ -72,6 +72,10 @@
         22 hitos con prioridad válida por arquetipo; las preguntas del 11 que acreditan cada hito existen; 11 §7.6 y 12 §3.7 tienen
         HT0–HT5 e IM1–IM4; los códigos nuevos están en el glosario y en codigos.js; T23 está al día con sus fuentes; la entrada y
         la portada enlazan T23 y la vista «Tres lentes» de T15. La prueba de humo (7) comprueba T23 (PP-F) y la vista de lentes.
+    35. Historia de la entrada, idioma y cabeceras (D137): la entrada (ES/EN) abre con «Usando la IA en su empresa», siete capítulos
+        que enlazan cada zona de la página; el índice de códigos conserva el idioma al pasar a herramientas y paneles; herramientas,
+        página de T17, galería, comunidad y paneles leen el idioma del sitio; cada página vuelve a la cabecera de su metodología y la
+        cabecera, a la portada en el mismo idioma.
 #>
 param([switch]$SinNavegador)
 $ErrorActionPreference = 'Stop'
@@ -1553,6 +1557,50 @@ try {
   }
   foreach ($p in 'index.html', 'en\index.html', 'SEVEN-G\herramientas\T17_panel_consejo\index.html') { if (-not ([IO.File]::ReadAllText((Join-Path $repo $p))).Contains('galeria/index.html')) { Mal "${p}: no enlaza la galería de ejemplos por sector (D136)"; $malGa++ } }
   if (-not $malGa) { Ok "galería de ejemplos por sector: $($sectGa.Count) registros T01 ficticios y válidos ($($sectGa -join ', ')), paneles al día y con datos fijos, página ES/EN con fuentes del registro" }
+
+  # ---- 35. historia de la entrada, idioma y cabeceras (D137)
+  Write-Host '35. Historia de la entrada, idioma conservado y vuelta a la cabecera (D137)'
+  $mal35 = 0
+  foreach ($lg in 'es', 'en') {
+    $te = [IO.File]::ReadAllText((Join-Path $repo "SEVEN-G\build\entrada\$lg\index.html"))
+    $iH = $te.IndexOf('<section id="historia"'); $iP = $te.IndexOf('<section id="para-que"')
+    if ($iH -lt 0 -or $iP -lt $iH) { Mal "entrada [$lg]: falta la historia «Usando la IA en su empresa» (section#historia) antes de las tres respuestas (D137)"; $mal35++; continue }
+    $sh = $te.Substring($iH, $iP - $iH)
+    if (([regex]::Matches($sh, '<li>')).Count -ne 7) { Mal "entrada [$lg]: la historia debe tener siete capítulos (D137)"; $mal35++ }
+    foreach ($z in 'para-que', 'preguntas', 'embudo', 'panel', 'parar', 'mas', 'quickcheck', 'partida', 'empezar') {
+      if (-not $sh.Contains("href=""#$z""")) { Mal "entrada [$lg]: la historia no enlaza la zona #$z (D137)"; $mal35++ }
+      if (-not $te.Contains("id=""$z""")) { Mal "entrada [$lg]: falta la zona #$z que enlaza la historia"; $mal35++ }
+    }
+    if (-not $te.Contains('href="#historia"')) { Mal "entrada [$lg]: la barra no enlaza la historia (D137)"; $mal35++ }
+    $port = if ($lg -eq 'en') { '../../../../en/index.html' } else { '../../../../index.html' }
+    if ($te -notmatch "<a class=""portada"" href=""$([regex]::Escape($port))""") { Mal "entrada [$lg]: la cabecera de SEVEN-G no vuelve a la portada de AI Consulting en su idioma (D137)"; $mal35++ }
+    $cj = [IO.File]::ReadAllText((Join-Path $repo "SEVEN-G\html\$lg\codigos.js"))
+    if (-not ($cj.Contains("localStorage.setItem('seveng-idioma'") -and $cj.Contains("searchParams.set('lang'"))) { Mal "codigos.js [$lg]: no conserva el idioma al pasar a herramientas y paneles (generar con build.ps1, D137)"; $mal35++ }
+    # documentos: la marca de la barra lleva a la cabecera de su metodología; ⌂, a la portada en el mismo idioma
+    foreach ($met in @(@{ m = 'SEVEN-G'; cab = 'entrada/index.html' }, @{ m = 'SPHERES'; cab = '00_SPHERES_Que_es_y_para_que_sirve.html' }, @{ m = 'SPAD'; cab = '00_SPAD_Que_es_y_para_que_sirve.html' })) {
+      $dirM = Join-Path $repo "$($met.m)\html\$lg"; if (-not (Test-Path $dirM)) { continue }
+      $muestra = Get-ChildItem $dirM -Filter '0[1-9]_*.html' | Select-Object -First 1
+      if (-not $muestra) { continue }
+      $td = [IO.File]::ReadAllText($muestra.FullName)
+      if (-not $td.Contains("class=""barra-marca"" href=""$($met.cab)""")) { Mal "$($met.m) [$lg]: la marca de la barra de $($muestra.Name) no lleva a la cabecera ($($met.cab)) (D137)"; $mal35++ }
+      $pt = if ($lg -eq 'en') { '../../../en/index.html' } else { '../../../index.html' }
+      if (-not $td.Contains("href=""$pt""")) { Mal "$($met.m) [$lg]: $($muestra.Name) no vuelve a la portada en su idioma (D137)"; $mal35++ }
+    }
+  }
+  foreach ($pl in 'T01_registro_iniciativas\_fuentes\registro.plantilla.html', 'T11_calculadora_valor\_fuentes\calculadora.plantilla.html', 'T14_indice_transformacion\_fuentes\indice.plantilla.html', 'T15_diagnostico_madurez\_fuentes\madurez.plantilla.html', 'T23_recorrido_implantacion\_fuentes\recorrido.plantilla.html') {
+    $tp = [IO.File]::ReadAllText((Join-Path $repo "SEVEN-G\herramientas\$pl"))
+    if (-not $tp.Contains("localStorage.getItem('seveng-idioma')")) { Mal "${pl}: no sigue el idioma del sitio al abrirse (D137)"; $mal35++ }
+    if (-not $tp.Contains('<a class="sitio-marca"') -or -not $tp.Contains("/entrada/index.html")) { Mal "${pl}: la barra no vuelve a la cabecera de SEVEN-G (D137)"; $mal35++ }
+  }
+  foreach ($pg in 'SEVEN-G\herramientas\T17_panel_consejo\index.html', 'SEVEN-G\herramientas\T17_panel_consejo\galeria\index.html', 'SEVEN-G\herramientas\comunidad\index.html', 'SEVEN-G\herramientas\T17_panel_consejo\motor\build_dashboard.py', 'SEVEN-G\herramientas\T17_panel_consejo\motor\ayuda_tarjetas.py') {
+    if (-not ([IO.File]::ReadAllText((Join-Path $repo $pg))).Contains('seveng-idioma')) { Mal "${pg}: no sigue el idioma del sitio (D137)"; $mal35++ }
+  }
+  foreach ($pg in 'SEVEN-G\herramientas\T17_panel_consejo\index.html', 'SEVEN-G\herramientas\T17_panel_consejo\galeria\index.html') {
+    if (-not ([IO.File]::ReadAllText((Join-Path $repo $pg))).Contains('id="lnk-cabecera"')) { Mal "${pg}: no vuelve a la cabecera de SEVEN-G (D137)"; $mal35++ }
+  }
+  $cfgP = Get-Content (Join-Path $repo 'SEVEN-G\herramientas\T17_panel_consejo\config_panel.json') -Raw -Encoding utf8 | ConvertFrom-Json
+  if (-not ($cfgP.navegacion.sitio | Where-Object { $_.href -like '*/entrada/index.html' -and $_.href_en -like '*/html/en/entrada/index.html' })) { Mal 'config_panel.json: el menú del panel no vuelve a la cabecera de SEVEN-G en los dos idiomas (D137)'; $mal35++ }
+  if (-not $mal35) { Ok 'la entrada (ES/EN) abre con la historia «Usando la IA en su empresa» y sus siete capítulos enlazan cada zona; el idioma se conserva al pasar a herramientas y paneles; cada página vuelve a su cabecera y la cabecera, a la portada' }
 }
 finally { Remove-Item $tmp -Recurse -Force -Confirm:$false -ErrorAction SilentlyContinue }
 

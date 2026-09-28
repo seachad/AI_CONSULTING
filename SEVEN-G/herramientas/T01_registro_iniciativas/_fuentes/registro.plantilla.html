@@ -2672,11 +2672,13 @@ function irCodigoCargar(l){
   const previo=document.getElementById('ir-codigo-js'); if(previo) previo.parentNode.removeChild(previo);
   const s=document.createElement('script'); s.id='ir-codigo-js'; s.src='../../html/'+l+'/codigos.js'; document.head.appendChild(s);
 }
+// D137: idioma general del sitio («seveng-idioma»), que deja cada página del sitio al abrirse (codigos.js); la herramienta lo sigue al abrirse
+function idiomaSitio(){ try{ const v = localStorage.getItem('seveng-idioma'); return (v==='es'||v==='en') ? v : null; }catch(e){ return null; } }
 function sitioNav(){
   const n = document.getElementById('sitio-nav'); if(!n) return; const en = UI.lang === 'en', l = en ? 'en' : 'es';
-  const e = [[en ? '../../../en/index.html' : '../../../index.html', en ? '⌂ Home' : '⌂ Portada'], ['../../html/'+l+'/00_SEVEN-G_Que_es_y_para_que_sirve.html', en ? 'What SEVEN-G is' : 'Qué es SEVEN-G'], ['../../html/'+l+'/index.html', en ? 'Library' : 'Biblioteca'], ['../../html/'+l+'/curso/M00_SEVEN-G_Curso_Guia_del_curso.html', en ? 'Course' : 'Curso'], ['../T01_registro_iniciativas/registro.html', en ? 'Initiative register' : 'Registro de iniciativas'], ['../T17_panel_consejo/index.html', en ? 'Board dashboard' : 'Panel del consejo']];
+  const e = [[en ? '../../../en/index.html' : '../../../index.html', en ? '⌂ Home' : '⌂ Portada'], ['../../html/'+l+'/entrada/index.html', en ? 'What SEVEN-G is' : 'Qué es SEVEN-G'], ['../../html/'+l+'/index.html', en ? 'Library' : 'Biblioteca'], ['../../html/'+l+'/curso/M00_SEVEN-G_Curso_Guia_del_curso.html', en ? 'Course' : 'Curso'], ['../T01_registro_iniciativas/registro.html', en ? 'Initiative register' : 'Registro de iniciativas'], ['../T17_panel_consejo/index.html', en ? 'Board dashboard' : 'Panel del consejo']];
   n.setAttribute('aria-label', en ? 'Site' : 'Sitio');
-  n.innerHTML = '<span class="sitio-marca" style="color:var(--papel)">SEVEN-G</span>' + e.map(x => '<a href="'+x[0]+'">'+x[1]+'</a>').join('') + '<span data-ir-codigo style="margin-left:auto"></span>';
+  n.innerHTML = '<a class="sitio-marca" style="color:var(--papel)" href="../../html/'+l+'/entrada/index.html" title="'+(en ? 'SEVEN-G home: what it is and what it is for' : 'Cabecera de SEVEN-G: qué es y para qué sirve')+'">SEVEN-G</a>' + e.map(x => '<a href="'+x[0]+'">'+x[1]+'</a>').join('') + '<span data-ir-codigo style="margin-left:auto"></span>';
   irCodigoCargar(l);
 }function aplicarTema(){ temaSitioInicial(); const r=document.documentElement; if(UI.tema==='claro'||UI.tema==='oscuro'||UI.tema==='salmon') r.setAttribute('data-theme',UI.tema); else r.removeAttribute('data-theme'); }
 function cabecera(r){
@@ -2736,7 +2738,8 @@ document.addEventListener('click', e=>{
   if(typeof onAccion==='function') onAccion(acc, b, e);
 });
 window.addEventListener('hashchange', ()=>render(true));
-cargar(); aplicarTema(); render();
+cargar(); { const q = new URLSearchParams(location.search).get('lang'); const l = (q==='es'||q==='en') ? q : idiomaSitio(); if(l) UI.lang = l; }  // D137: «?lang=» o el idioma del sitio
+aplicarTema(); render();
 /* D103: dónde viven los datos (este navegador, un fichero del equipo o la carpeta de datos de la copia de la compañía) */
 SevengDatos.iniciar({codigo:'T01', ficheroServidor:'../datos/T01_registro.json', cargadoDeDemo:CARGA_DEMO,
   obtener:()=>DB, exportar:()=>conAvisoLegal(DB), aplicar:d=>{ DB=normalizar(d); indexar(); guardar(); render(); },

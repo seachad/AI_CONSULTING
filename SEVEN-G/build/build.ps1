@@ -67,10 +67,11 @@ $configuracion = @{
   'SEVEN-G' = @{
     marca = 'SEVEN-G'
     inicio = '00_SEVEN-G_Que_es_y_para_que_sirve'
+    cabecera = 'entrada/index'   # D137: la marca de la barra lleva a la cabecera de la metodología (en SEVEN-G, la entrada «Qué es SEVEN-G»)
     todasHerramientas = '03_*'
-    es = @{ T_TT_INICIO = 'Ir al documento 00: Qué es SEVEN-G y para qué sirve'; T_METODOLOGIA = 'Metodología SEVEN-G'
+    es = @{ T_TT_INICIO = 'Ir a la cabecera de SEVEN-G: qué es y para qué sirve'; T_METODOLOGIA = 'Metodología SEVEN-G'
             Indice = 'Biblioteca SEVEN-G'; IndiceSub = 'Documentos, plantillas y herramientas del marco de valor, gobierno y transformación con IA' }
-    en = @{ T_TT_INICIO = 'Go to document 00: What SEVEN-G is and how it helps companies'; T_METODOLOGIA = 'SEVEN-G methodology'
+    en = @{ T_TT_INICIO = 'Go to the SEVEN-G home: what it is and what it is for'; T_METODOLOGIA = 'SEVEN-G methodology'
             Indice = 'SEVEN-G Library'; IndiceSub = 'Documents, templates and tools of the framework for value, governance and transformation with AI' }
     bloques = @{
       es = [ordered]@{ A = 'A · Fundamentos'; B = 'B · Estrategia y cartera'; C = 'C · Ciclo de vida de la iniciativa'; D = 'D · Gobierno, riesgo y cumplimiento'; E = 'E · Medición y valor'; F = 'F · Personas, datos y operación'; G = 'G · Consejo'; H = 'H · Plantillas'; I = 'I · Herramientas'; J = 'J · Adopción del marco'; K = 'K · Curso' }
@@ -88,9 +89,9 @@ $configuracion = @{
     marca = 'SPHERES'
     inicio = '00_SPHERES_Que_es_y_para_que_sirve'
     todasHerramientas = $null
-    es = @{ T_TT_INICIO = 'Ir al documento 00: Qué es SPHERES y para qué sirve'; T_METODOLOGIA = 'Metodología SPHERES'
+    es = @{ T_TT_INICIO = 'Ir a la cabecera de SPHERES: documento 00, qué es y para qué sirve'; T_METODOLOGIA = 'Metodología SPHERES'
             Indice = 'Biblioteca SPHERES'; IndiceSub = 'Documentos de la metodología de esferas de impacto y niveles de ambición de la IA' }
-    en = @{ T_TT_INICIO = 'Go to document 00: What SPHERES is and how it helps'; T_METODOLOGIA = 'SPHERES methodology'
+    en = @{ T_TT_INICIO = 'Go to the SPHERES home: document 00, what it is and how it helps'; T_METODOLOGIA = 'SPHERES methodology'
             Indice = 'SPHERES Library'; IndiceSub = 'Documents of the methodology of AI impact spheres and ambition levels' }
     bloques = @{
       es = [ordered]@{ A = 'A · Fundamentos'; B = 'B · Las esferas'; C = 'C · Consejo' }
@@ -106,9 +107,9 @@ $configuracion = @{
     marca = 'SPAD'
     inicio = '00_SPAD_Que_es_y_para_que_sirve'
     todasHerramientas = $null
-    es = @{ T_TT_INICIO = 'Ir al documento 00: Qué es SPAD y para qué sirve'; T_METODOLOGIA = 'Metodología SPAD'
+    es = @{ T_TT_INICIO = 'Ir a la cabecera de SPAD: documento 00, qué es y para qué sirve'; T_METODOLOGIA = 'Metodología SPAD'
             Indice = 'Biblioteca SPAD'; IndiceSub = 'Documentos del marco de desarrollo de software con IA secuencial, bloqueante y auditable' }
-    en = @{ T_TT_INICIO = 'Go to document 00: What SPAD is and how it helps'; T_METODOLOGIA = 'SPAD methodology'
+    en = @{ T_TT_INICIO = 'Go to the SPAD home: document 00, what it is and how it helps'; T_METODOLOGIA = 'SPAD methodology'
             Indice = 'SPAD Library'; IndiceSub = 'Documents of the sequential, blocking and auditable framework for AI-assisted software development' }
     bloques = @{
       es = [ordered]@{ A = 'A · Fundamentos'; B = 'B · Método'; C = 'C · Aplicación' }
@@ -785,9 +786,9 @@ $titulosReferencias = ObtenerTitulosReferencias $lang
       }
     }) -join ''
 
-    $homeHtml = Join-Path $htmlDir "$($cfg.inicio).html"
+    $homeHtml = Join-Path $htmlDir "$(if ($cfg.cabecera) { $cfg.cabecera } else { $cfg.inicio }).html"
     $homeHref = [IO.Path]::GetRelativePath((Split-Path $htmlOut), $homeHtml).Replace('\\', '/').Replace('\', '/')
-    # ⌂ lleva a la portada general del sitio (todas las metodologías), en el idioma del documento; la marca, al documento 00
+    # ⌂ lleva a la portada general del sitio (todas las metodologías), en el idioma del documento; la marca, a la cabecera de la metodología (D137)
     $portadaHtml = Join-Path $repo $(if ($lang -eq 'en') { 'en\index.html' } else { 'index.html' })
     $portadaHref = [IO.Path]::GetRelativePath((Split-Path $htmlOut), $portadaHtml).Replace('\', '/')
 

@@ -15,6 +15,8 @@
   main { max-width: 980px; margin: 0 auto; padding: 32px 16px 56px; }
   header { display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: 12px; border-bottom: 1px solid var(--linea); padding-bottom: 14px; margin-bottom: 26px; }
   .marca { font-size: 13px; letter-spacing: .12em; text-transform: uppercase; color: var(--acento); font-weight: 600; }
+  .marca a { color: inherit; text-decoration: none; }
+  .marca a:hover { text-decoration: underline; }
   .idioma { display: inline-flex; border: 1px solid var(--linea); border-radius: 6px; overflow: hidden; }
   .idioma button { appearance: none; border: 0; background: transparent; color: var(--tinta); font: inherit; font-size: 13px; letter-spacing: .06em; padding: 4px 12px; cursor: pointer; }
   .idioma button[aria-pressed="true"] { background: var(--acento); color: #fff; }
@@ -56,7 +58,7 @@
 <body>
 <main>
   <header>
-    <div class="marca">SEVEN-G · Herramientas · T17 · Galería</div>
+    <div class="marca"><a id="lnk-portada" href="../../../../index.html">⌂ Portada</a> · <a id="lnk-cabecera" href="../../../html/es/entrada/index.html">SEVEN-G</a> · Herramientas · T17 · Galería</div>
     <span class="ir-codigo" data-ir-codigo></span>
     <div class="idioma" role="group" aria-label="Idioma / Language">
       <button type="button" id="btn-es" aria-pressed="true" onclick="idioma('es')">ES</button>
@@ -125,6 +127,9 @@
     document.documentElement.lang = l;
     document.title = es ? 'Galería de ejemplos por sector · SEVEN-G' : 'Gallery of examples by sector · SEVEN-G';
     try { localStorage.setItem('t17_idioma', l); } catch (e) {}
+    var ca = document.getElementById('lnk-cabecera'), po = document.getElementById('lnk-portada');   // D137: vuelta a la cabecera de SEVEN-G y a la portada, en el idioma activo
+    if (ca) { ca.href = '../../../html/' + l + '/entrada/index.html'; ca.title = es ? 'Cabecera de SEVEN-G: qué es y para qué sirve' : 'SEVEN-G home: what it is and what it is for'; }
+    if (po) { po.href = es ? '../../../../index.html' : '../../../../en/index.html'; po.textContent = es ? '⌂ Portada' : '⌂ Home'; po.title = es ? 'Portada de AI Consulting: todas las metodologías' : 'AI Consulting home page: all methodologies'; }
     cargaCodigos(l);
   }
   // «Buscador de documentos» y códigos citados (D99): índice del sitio en el idioma activo
@@ -135,8 +140,11 @@
   }
   (function () {
     var guardado = null;
-    try { guardado = localStorage.getItem('t17_idioma'); } catch (e) {}
-    if (guardado === 'en' || (!guardado && /^en\b/i.test(navigator.language || ''))) { idioma('en'); } else { cargaCodigos('es'); }
+    // D137: «?lang=» del enlace, después el idioma del sitio («seveng-idioma») y, por último, el de esta página o el del navegador
+    var q = new URLSearchParams(location.search).get('lang'), sitio = null;
+    try { guardado = localStorage.getItem('t17_idioma'); sitio = localStorage.getItem('seveng-idioma'); } catch (e) {}
+    var l = (q === 'es' || q === 'en') ? q : (sitio === 'es' || sitio === 'en') ? sitio : guardado;
+    if (l === 'en' || (!l && /^en\b/i.test(navigator.language || ''))) { idioma('en'); } else { cargaCodigos('es'); }
   })();
 </script>
 </body>

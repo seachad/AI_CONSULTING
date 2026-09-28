@@ -482,7 +482,9 @@ dialog .acciones { display: flex; gap: 10px; justify-content: flex-end; margin-t
 
   /* ---- arranque ---- */
   var guardado = leeLocal(K_IDIOMA);
-  ponIdioma(location.hash === '#en' ? 'en' : location.hash === '#es' ? 'es' : guardado || (/^en\b/i.test(navigator.language || '') ? 'en' : 'es'));
+  // D137: «?lang=» del enlace o «#en», después el idioma del sitio («seveng-idioma»), el guardado aquí y el del navegador
+  var qLang = new URLSearchParams(location.search).get('lang'), sitioLang = leeLocal('seveng-idioma');
+  ponIdioma(location.hash === '#en' || qLang === 'en' ? 'en' : location.hash === '#es' || qLang === 'es' ? 'es' : (sitioLang === 'es' || sitioLang === 'en') ? sitioLang : guardado || (/^en\b/i.test(navigator.language || '') ? 'en' : 'es'));
   carga();
 })();
 </script>

@@ -7,7 +7,7 @@
   "desplegar_todo": true,
   "_filtros_modal": "true: los filtros se componen en un diálogo modal (se añaden campos y se eligen sus valores) y sobre el panel queda la consulta aplicada en píldoras, sin desplazar el contenido. false: panel de filtros desplegable dentro de la página.",
   "filtros_modal": true,
-  "_sitio": "Opcional, para un panel alojado dentro de un sitio. 'tema_sitio': clave de localStorage con el tema general del sitio (salmon, claro o noche); el panel lo sigue y, si se cambia el tema en el panel, lo actualiza. 'sitio': enlaces de vuelta al sitio que se añaden al menú lateral bajo el rótulo 'sitio_titulo'; las rutas son relativas a la carpeta de salida del panel (aquí, ejemplo/salida). Un panel generado fuera del sitio debe quitar estas tres claves o poner sus propias rutas.",
+  "_sitio": "Opcional, para un panel alojado dentro de un sitio. 'tema_sitio': clave de localStorage con el tema general del sitio (salmon, claro o noche); el panel lo sigue y, si se cambia el tema en el panel, lo actualiza. 'sitio': enlaces de vuelta al sitio que se añaden al menú lateral bajo el rótulo 'sitio_titulo'; las rutas son relativas a la carpeta de salida del panel (aquí, ejemplo/salida). Opcionales (D137): 'sitio_titulo_en' y, en cada enlace, 'texto_en' y 'href_en', que el panel usa cuando se llega desde una página del sitio en inglés («?lang=en» o «seveng-idioma»); con ese idioma carga también el índice de códigos inglés. Un panel generado fuera del sitio debe quitar estas tres claves o poner sus propias rutas.",
   "_redirigir_movil": "Opcional. true: si el panel completo se abre desde un teléfono (pantalla de 760 px o menos) y está servido por http, pasa al panel móvil; añadir ?completo a la dirección lo evita. Sin la clave, no redirige.",
   "redirigir_movil": true,
   "_datos_t01": "Opcional (D103). Ruta, relativa a la carpeta del panel, del registro T01 de la copia de la compañía (SEVEN-G/herramientas/datos/T01_registro.json). Servido por http, si el fichero existe el panel lo convierte en el navegador y lo muestra en lugar de los datos incrustados; no hace falta Python. Sin la clave, el panel solo se regenera desde el registro T01 guardado en este navegador o con «Cargar JSON».",
@@ -18,13 +18,14 @@
   "ayuda_tarjetas": true,
 "tema_sitio": "seveng-tema",
   "sitio_titulo": "SEVEN-G",
+  "sitio_titulo_en": "SEVEN-G",
   "sitio": [
-   {"texto": "Portada del sitio", "href": "../../../../../index.html"},
-   {"texto": "Qué es SEVEN-G", "href": "../../../../html/es/00_SEVEN-G_Que_es_y_para_que_sirve.html"},
-   {"texto": "Biblioteca", "href": "../../../../html/es/index.html"},
-   {"texto": "Curso", "href": "../../../../html/es/curso/M00_SEVEN-G_Curso_Guia_del_curso.html"},
-   {"texto": "Registro de iniciativas (T01)", "href": "../../../T01_registro_iniciativas/registro.html"},
-   {"texto": "Cómo se genera este panel (T17)", "href": "../../index.html"}
+   {"texto": "Portada del sitio", "href": "../../../../../index.html", "texto_en": "Site home", "href_en": "../../../../../en/index.html"},
+   {"texto": "SEVEN-G: qué es y para qué sirve", "href": "../../../../html/es/entrada/index.html", "texto_en": "SEVEN-G: what it is and what it is for", "href_en": "../../../../html/en/entrada/index.html"},
+   {"texto": "Biblioteca", "href": "../../../../html/es/index.html", "texto_en": "Library", "href_en": "../../../../html/en/index.html"},
+   {"texto": "Curso", "href": "../../../../html/es/curso/M00_SEVEN-G_Curso_Guia_del_curso.html", "texto_en": "Course", "href_en": "../../../../html/en/curso/M00_SEVEN-G_Curso_Guia_del_curso.html"},
+   {"texto": "Registro de iniciativas (T01)", "href": "../../../T01_registro_iniciativas/registro.html", "texto_en": "Initiative register (T01)", "href_en": "../../../T01_registro_iniciativas/registro.html?lang=en"},
+   {"texto": "Cómo se genera este panel (T17)", "href": "../../index.html", "texto_en": "How this dashboard is generated (T17)", "href_en": "../../index.html?lang=en"}
   ]
  },
  "umbrales_kpi": {
