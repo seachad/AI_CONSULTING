@@ -328,7 +328,7 @@ try {
     if (Test-Path $d) { $publicables += Get-ChildItem $d -Recurse -File -Include *.html, *.md, *.json, *.py | Where-Object { $_.FullName -notmatch '[\\/](_[^\\/]*|__pycache__)[\\/]' } }
   }
   $patrones = @('_trabajo', 'notas_internas', 'C:\\SEACHAD', 'OneDrive')
-  $lista = Join-Path $env:USERPROFILE '.seveng\terminos_prohibidos.txt'
+  $lista = Join-Path ($env:USERPROFILE ?? $HOME) '.seveng\terminos_prohibidos.txt'
   # un término por línea, buscado como texto literal sin distinguir mayúsculas; una línea «re:<expresión>» es una expresión regular
   # (p. ej., re:\bSIGLA\b(?!_) para una sigla que también forma parte de palabras corrientes o de claves de datos)
   if (Test-Path $lista) { $patrones += Get-Content $lista -Encoding utf8 | Where-Object { $_.Trim() -and -not $_.StartsWith('#') } | ForEach-Object { $x = $_.Trim(); if ($x.StartsWith('re:')) { $x.Substring(3) } else { [regex]::Escape($x) } } }
@@ -544,7 +544,8 @@ try {
       $pagina = $pagina -replace '(?i)</body>', (($antes + $informe).Replace('$', '$$') + '</body>')
       $rutaPag = '/' + [IO.Path]::GetRelativePath($repo, $p.f).Replace('\', '/')
       $perfil = Join-Path $tmp ('edge_' + [Guid]::NewGuid().ToString('N').Substring(0, 6))
-      $proc = Start-Process -FilePath $edge -ArgumentList '--headless=new', '--disable-gpu', '--no-first-run', "--user-data-dir=$perfil", '--window-size=1400,1000', "--screenshot=$tmp\humo.png", '--virtual-time-budget=10000', "http://localhost:$puerto$rutaPag" -PassThru -WindowStyle Hidden
+      $sinVentana = if ($IsWindows) { @{ WindowStyle = 'Hidden' } } else { @{} }  # -WindowStyle solo existe en Windows
+      $proc = Start-Process -FilePath $edge -ArgumentList '--headless=new', '--disable-gpu', '--no-first-run', "--user-data-dir=$perfil", '--window-size=1400,1000', "--screenshot=$tmp\humo.png", '--virtual-time-budget=10000', "http://localhost:$puerto$rutaPag" -PassThru @sinVentana
       $resultado = $null; $limite = (Get-Date).AddSeconds(40)
       while (-not $resultado -and (Get-Date) -lt $limite) {
         $tarea = $http.GetContextAsync()
@@ -1097,7 +1098,7 @@ try {
     if ($p74 -notmatch '38 §12') { Mal "P74 [$lang]: no advierte de que la certificación la emite una entidad acreditada (38 §12)"; $malNist++ }
   }
   $borradores = @(Get-ChildItem (Join-Path $repo 'SEVEN-G\build\referencias') -Filter '*.json' | ForEach-Object { Get-Content $_.FullName -Raw -Encoding utf8 | ConvertFrom-Json } | Where-Object { $_.situacion -and $_.situacion -ne 'final' })
-  $paginas = @(foreach ($m in 'SEVEN-G', 'SPHERES', 'SPAD') { Get-ChildItem (Join-Path $repo "$m\html") -Recurse -Filter '*.html' -ErrorAction SilentlyContinue | Where-Object { $_.FullName -notmatch '\\_trabajo\\' } }) + @(Get-Item (Join-Path $repo 'index.html'), (Join-Path $repo 'en\index.html'))   # _trabajo no se publica
+  $paginas = @(foreach ($m in 'SEVEN-G', 'SPHERES', 'SPAD') { Get-ChildItem (Join-Path $repo "$m\html") -Recurse -Filter '*.html' -ErrorAction SilentlyContinue | Where-Object { $_.FullName -notmatch '[\\/]_trabajo[\\/]' } }) + @(Get-Item (Join-Path $repo 'index.html'), (Join-Path $repo 'en\index.html'))   # _trabajo no se publica
   $nMenc = 0
   foreach ($pg in $paginas) {
     $txt = [Net.WebUtility]::HtmlDecode(([regex]::Replace([IO.File]::ReadAllText($pg.FullName), '(?s)<script.*?</script>|<style.*?</style>|<nav\b.*?</nav>|<h[1-6]\b.*?</h[1-6]>|<[^>]+>', ' ') -replace '\s+', ' '))   # los títulos y la navegación no califican: lo hace el texto de la sección
@@ -1138,7 +1139,7 @@ try {
   }
   $regs = @(Get-ChildItem (Join-Path $repo 'SEVEN-G\build\referencias') -Filter '*.json' | ForEach-Object { Get-Content $_.FullName -Raw -Encoding utf8 | ConvertFrom-Json })
   foreach ($r in $regs | Where-Object { $_.estado -notin 'verificado', 'no-verificable' }) { Mal "referencia $($r.id): estado «$($r.estado)»; corregir el documento y verificarla (D41, D114)"; $malEx++ }
-  foreach ($md in Get-ChildItem (Join-Path $repo 'SEVEN-G\mds'), (Join-Path $repo 'SPHERES\mds'), (Join-Path $repo 'SPAD\mds') -Recurse -Filter '*.md' | Where-Object { $_.FullName -notmatch '\\_trabajo\\' }) {
+  foreach ($md in Get-ChildItem (Join-Path $repo 'SEVEN-G\mds'), (Join-Path $repo 'SPHERES\mds'), (Join-Path $repo 'SPAD\mds') -Recurse -Filter '*.md' | Where-Object { $_.FullName -notmatch '[\\/]_trabajo[\\/]' }) {
     if ([IO.File]::ReadAllText($md.FullName) -match '(?i)verificado \(secundaria\)|verified \(secondary\)|fuentes secundarias|secondary sources|análisis jurídicos publicados|published legal analyses') { Mal "$($md.Name): se apoya en fuentes secundarias (D114)"; $malEx++ }
   }
   if (-not $malEx) { Ok "exención completa en $nAv avisos de la biblioteca, portada, entrada, herramientas, paneles y licencia, y en 93 §11; $(@($regs).Count) referencias verificadas o marcadas no verificables, ninguna por corregir; sin fuentes secundarias" }

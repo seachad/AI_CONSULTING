@@ -33,7 +33,7 @@ SEVEN-G/docx/<idioma>/...       plantillas editables en Word (D67)
 #>
 param(
   [string]$Destino = 'C:\SEACHAD\ai-consulting',
-  [string]$TerminosProhibidos = (Join-Path $env:USERPROFILE '.seveng\terminos_prohibidos.txt'),
+  [string]$TerminosProhibidos = (Join-Path ($env:USERPROFILE ?? $HOME) '.seveng\terminos_prohibidos.txt'),
   [switch]$SinGenerar,
   [switch]$ConFuentes
 )
