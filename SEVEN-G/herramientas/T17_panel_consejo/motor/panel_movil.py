@@ -219,6 +219,10 @@ function render(){
     $("madurez").innerHTML = `<div class="hero" style="margin-top:0"><div class="k">Nivel global de madurez (0–5)</div><div class="v">${ng == null ? "—" : ng} <span style="font-size:16px;font-weight:600">${ng == null ? `sin dato${md.nivel_minimo != null ? ` · mínimo ${md.nivel_minimo}` : ""}` : NIV[ng] || ""}</span></div><div class="d">${cab}</div>${aviso}</div>
      <div class="list" style="margin-top:10px">${mdims.map(fil).join("")}</div>
      <div class="d" style="font-size:12px;color:var(--muted);margin-top:6px">Declaración de aplicación de SEVEN-G: ${md.declaracion_posible ? "posible" : "no procede todavía"} (11 §7.3). El nivel global se limita a min(D1, D6) + 1.</div>`;
+    // perfiles NIST (opcional, esquema 0.7 de T01, D115)
+    const PMD = {ai_rmf:"NIST AI RMF", csf:"NIST CSF 2.0 (perfil en borrador)"};
+    const pfs = md.perfiles ? Object.keys(PMD).filter(k=>md.perfiles[k] && md.perfiles[k].total) : [];
+    if (pfs.length) $("madurez").innerHTML += `<div class="list" id="madurez-perfiles" style="margin-top:10px">${pfs.map(k=>{ const g = md.perfiles[k].total; return `<div class="row" style="cursor:default"><div style="flex:1;min-width:0"><div class="n">${PMD[k]}</div><div class="m">${g.con_nivel} de ${g.subcategorias} subcategorías con nivel · ${g.con_brecha} con brecha</div></div><div class="r"><b>${g.minimo == null ? "—" : g.minimo}</b><div class="m">nivel mínimo</div></div></div>`; }).join("")}</div>`;
   }
 
   const sec = $("novedades-sec");

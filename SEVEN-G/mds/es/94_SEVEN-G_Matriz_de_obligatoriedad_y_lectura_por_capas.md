@@ -14,7 +14,7 @@
 
 ---
 
-> **Aviso legal y exención de responsabilidad.** SEVEN-G es un marco metodológico de referencia que se ofrece «tal cual» y con fines exclusivamente informativos. No constituye asesoramiento jurídico, regulatorio, financiero ni profesional, ni garantiza el cumplimiento de ninguna norma. Las referencias a regulación general (como el Reglamento Europeo de IA, el RGPD, DORA o NIS2), a normas técnicas y a regulación específica de cada sector o jurisdicción pueden ser incompletas, no aplicar a un caso concreto o quedar desactualizadas por cambios normativos, interpretaciones o criterios de las autoridades posteriores a su fecha de consulta. **Cada organización que use SEVEN-G es la única responsable de identificar la normativa que le aplica, verificar su vigencia y certificar su propio cumplimiento regulatorio**, con el asesoramiento cualificado que corresponda. El autor no asume responsabilidad alguna por el uso que se haga de este contenido ni por las decisiones que se adopten con él. Los datos, cifras, compañías y casos de los ejemplos son ficticios o ilustrativos.
+> **Aviso legal y exención de responsabilidad.** SEVEN-G es un marco metodológico de referencia que se ofrece «tal cual» y con fines exclusivamente informativos. No constituye asesoramiento jurídico, regulatorio, financiero ni profesional, ni garantiza el cumplimiento de ninguna norma. Las referencias a regulación general (como el Reglamento Europeo de IA, el RGPD, DORA o NIS2), a normas técnicas y a regulación específica de cada sector o jurisdicción pueden ser incompletas, no aplicar a un caso concreto o quedar desactualizadas por cambios normativos, interpretaciones o criterios de las autoridades posteriores a su fecha de consulta. **Cada organización que use SEVEN-G es la única responsable de identificar la normativa que le aplica, verificar su vigencia y certificar su propio cumplimiento regulatorio**, con el asesoramiento cualificado que corresponda. Esta metodología es una ayuda genérica y gratuita, compartida con la comunidad para que nadie tenga que empezar desde cero; cada persona u organización puede y debe adaptarla a su propio uso. No debe entenderse que sus partes jurídicamente sensibles hayan sido revisadas por una asesoría jurídica: esas revisiones, para cada empresa o sector, son responsabilidad última de la empresa, el consultor o la organización que la use. Aunque se procura mantenerla al día, alguna norma puede haber cambiado sin que se recoja aquí. En la máxima medida permitida por la ley, el autor no asume responsabilidad alguna por los efectos de su aplicación en ninguna organización ni por su aplicabilidad completa. La metodología no otorga certificación de ningún tipo. El autor no asume responsabilidad alguna por el uso que se haga de este contenido ni por las decisiones que se adopten con él. Los datos, cifras, compañías y casos de los ejemplos son ficticios o ilustrativos.
 
 <!-- esencial: recomendado | Documento de orientación para no leer la biblioteca entera. Dice qué es obligatorio en toda compañía, qué se añade solo con intensidad o alcance Enterprise, qué módulos se activan con un disparador y qué es guía o consulta. Regla de fondo: ninguna fase ni puerta se omite; en Lite se agrupan y se simplifican. No crea reglas: si discrepa de los documentos 01, 21 o 90, prevalecen estos. -->
 
@@ -166,6 +166,7 @@ Cada documento muestra este mismo nivel en su recuadro «Lo esencial», con la p
 | 51 | [Datos y conocimiento para IA](51_SEVEN-G_Datos_y_conocimiento.html) | **Condicional** | Datos, protección de datos |
 | 52 | [Manual de operación de IA](52_SEVEN-G_Manual_de_operacion_de_IA.html) | **Siempre** | Responsables de operación |
 | 53 | [Construcción de soluciones con IA](53_SEVEN-G_Construccion_de_soluciones_con_IA.html) | **Condicional** | Responsables técnicos |
+| 54 | [Cómo se organiza una compañía para la IA](54_SEVEN-G_Organizacion_de_la_compania_para_la_IA.html) | **Consulta** | Consejo, alta dirección, oficina de IA |
 | 60 | [Paquete para el consejo](60_SEVEN-G_Paquete_para_el_consejo.html) | **Siempre** | Secretaría del consejo, oficina de IA |
 | 61 | [Guía de conversación con el consejo](61_SEVEN-G_Guia_de_conversacion_con_el_consejo.html) | **Recomendado** | Consejeros, dirección |
 | 62 | [Registro de recomendaciones y decisiones](62_SEVEN-G_Registro_de_recomendaciones_y_decisiones.html) | **Siempre** | Secretaría del consejo, oficina de IA |
@@ -198,7 +199,7 @@ Que un documento sea *Siempre* no obliga a leerlo entero: diecinueve documentos 
 | P29 (todas las puertas) · P31 (ficha del caso) | **Siempre** | — |
 | P30 (fase 7) | **Siempre** | Cuando se convoca G7. |
 
-### 7.2 Compañía, consejo, cumplimiento, terceros, auditoría e implantación (P32–P71)
+### 7.2 Compañía, consejo, cumplimiento, terceros, auditoría e implantación (P32–P74)
 
 | Plantillas | Nivel | Disparador o nota |
 |---|---|---|
@@ -222,6 +223,7 @@ Que un documento sea *Siempre* no obliga a leerlo entero: diecinueve documentos 
 | P63 (presupuesto de consumo) · P64 (conjuntos de datos y fuentes) · P66 (anexos de SPAD) | **Condicional** | Disparador 9 · datos o conocimiento propios · disparador 14. |
 | P67 (paquete trimestral del consejo) · P69 (registro de decisiones del consejo) | **Siempre** | Agregado en alcance Lite. |
 | P70, P71 (consultoría) | **Condicional** | Acompañamiento externo. |
+| P72 (perfil de seguridad de IA) · P73 (perfil de gobierno de IA) · P74 (declaración de aplicabilidad de ISO/IEC 42001) | **Condicional** | Solo si la compañía usa el NIST CSF o el NIST AI RMF, o aspira a ISO/IEC 42001 (34 §4–§5). |
 
 ---
 

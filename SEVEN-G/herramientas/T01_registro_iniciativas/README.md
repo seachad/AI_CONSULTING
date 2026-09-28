@@ -128,9 +128,9 @@ La aplicación no envía datos a terceros ni carga recursos externos (usa las fu
 
 ## Modelo de datos
 
-Un único objeto JSON con `version_esquema` (`0.6`; los ficheros `0.1` a `0.5` se aceptan y se actualizan al cargarlos, porque cada versión posterior a la `0.1` solo añade campos opcionales), `aviso_legal` (texto, opcional al importar), `meta` (organización, fecha de referencia, moneda, configuración de plazos) y una lista por entidad de 03 §4. `null` significa «sin dato». Fechas `AAAA-MM-DD`.
+Un único objeto JSON con `version_esquema` (`0.7`; los ficheros `0.1` a `0.6` se aceptan y se actualizan al cargarlos, porque cada versión posterior a la `0.1` solo añade campos opcionales), `aviso_legal` (texto, opcional al importar), `meta` (organización, fecha de referencia, moneda, configuración de plazos) y una lista por entidad de 03 §4. `null` significa «sin dato». Fechas `AAAA-MM-DD`.
 
-**Esquema 0.6 (D100)**: lista opcional `madurez[]` con el resumen de cada diagnóstico de madurez de T15 (`EM-AAAA-MM`: fecha de corte, ciclo, modalidad, versión del cuestionario, verificador, órgano, nivel global, mínimo, media, límite por D1 o D6, validez, declaración posible y, por dimensión, nivel, avance y bloqueantes; nunca las respuestas). La escribe T15, la vista Consejo muestra el más reciente y el conector de T17 lo lleva a la tarjeta «Madurez de la compañía» del panel.
+**Esquema 0.6 (D100)**: lista opcional `madurez[]` con el resumen de cada diagnóstico de madurez de T15 (`EM-AAAA-MM`: fecha de corte, ciclo, modalidad, versión del cuestionario, verificador, órgano, nivel global, mínimo, media, límite por D1 o D6, validez, declaración posible y, por dimensión, nivel, avance y bloqueantes; nunca las respuestas). La escribe T15, la vista Consejo muestra el más reciente y el conector de T17 lo lleva a la tarjeta «Madurez de la compañía» del panel. **Esquema 0.7 (D115)**: cada diagnóstico puede llevar además `perfiles` con el resumen de los perfiles NIST derivados del cuestionario (`ai_rmf` y `csf`: por función, por área del Cyber AI Profile y total, con nivel mínimo, más frecuente, subcategorías con nivel, con objetivo y con brecha); la vista Consejo muestra el total de cada perfil y el panel, su tabla.
 
 | Lista | Entidad | Código |
 |---|---|---|

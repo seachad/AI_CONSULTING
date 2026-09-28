@@ -110,7 +110,7 @@ Ruta de redacción: `SEVEN-G/mds/es/`. La traducción usa **el mismo nombre de f
 | 93 | `93_SEVEN-G_Licencia_uso_y_citacion.md` |
 | 94 | `94_SEVEN-G_Matriz_de_obligatoriedad_y_lectura_por_capas.md` |
 | Curso | `curso/M00_SEVEN-G_Curso_Guia_del_curso.md` y `curso/MNN_SEVEN-G_Curso_<Nombre>.md` (M01–M09); sin directiva «esencial» |
-| P01–P71 | `plantillas/PNN_SEVEN-G_<Nombre_con_guiones_bajos>.md` |
+| P01–P74 | `plantillas/PNN_SEVEN-G_<Nombre_con_guiones_bajos>.md` |
 
 ## 5. Parámetros comunes
 
@@ -200,7 +200,7 @@ Formatos de respuesta: **"Sí"** · **"Sí, con una condición: …"** · **"Tod
 | `IND-<FAM>-NN` | Indicadores del catálogo (documento 41; 156 en 13 familias): VAL, COS, EMB, AGI, RIE, OPE, ADO, DAT, CLI, TRA, MAD, CON (consejo) y **PRO** (procesos y decisión, familia nueva que recoge los indicadores de las esferas 04 y 07) |
 | PER-NN · DAT-NN · **CNC-NN** · OPE-NN | Indicadores provisionales de los documentos 50, 51 y 52. **CNC-** (conocimiento, documento 51) sustituye a CON- para no confundirse con la familia IND-CON (consejo). Código definitivo en la tabla de correspondencia de 41 §21 |
 | T01–T22 | Herramientas (documento 03) |
-| P01–P71 | Plantillas (bloque H): P01–P31 por iniciativa; P32–P71 de compañía, consejo, cumplimiento, terceros, auditoría e implantación (§6.1) |
+| P01–P74 | Plantillas (bloque H): P01–P31 por iniciativa; P32–P71 de compañía, consejo, cumplimiento, terceros, auditoría e implantación; P72–P74, perfiles NIST y declaración de aplicabilidad de ISO/IEC 42001 (§6.1) |
 | D1–D7 | Dimensiones de madurez |
 | S1–S4 | Severidad de incidentes |
 | A0–A3 | Autonomía |
@@ -300,6 +300,9 @@ No son evidencias de una fase de la iniciativa: son los registros, informes y de
 | P69 | Registro de decisiones del consejo | Consejo | 62 §4–§10 | T18 |
 | P70 | Propuesta y carta de encargo | Consultoría | 91 §4 | — |
 | P71 | Plan de transferencia y nota de salida | Consultoría | 91 §4.6, §7.3 | — |
+| P72 | Perfil de seguridad de IA (CSF 2.0 / Cyber AI Profile) (D112) | C1, C2, C5; seguridad | 34 §5.3, §5.5; 35; 11 §7.5 | T15, T10 |
+| P73 | Perfil de gobierno de IA (NIST AI RMF) (D112) | C1, C2, C5; gobierno | 34 §5.4; 11 §7.5 | T15 |
+| P74 | Declaración de aplicabilidad de ISO/IEC 42001 (D112) | C2, C5; cumplimiento | 34 §4; 38 §12 | — |
 
 ## 7. Estructura de cada plantilla
 

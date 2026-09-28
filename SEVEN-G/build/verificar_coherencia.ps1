@@ -16,6 +16,7 @@
     1h. El documento 00 (ES/EN) lleva el mapa de uso navegable con sus fases, puertas y listas enlazadas y anclas existentes (D72).
     1j. Cada documento numerado de SEVEN-G lleva su recuadro «Lo esencial» con el mismo nivel en ES y EN y en la matriz del documento 94 (D75),
         y el curso tiene su guía y sus nueve módulos, enlazados desde la guía, el documento 00, el 94 y la portada (D79).
+    1k. Ningún classDef de un diagrama Mermaid usa un nombre de clase de estilo.css: el nodo heredaría ese estilo (D109).
     5. T01: registro.html coincide con lo que genera build_registro.ps1 (no se ha editado a mano ni está desfasado, D43).
        T14: indice.html coincide con lo que genera build_indice.ps1 (D64).
        T06: los riesgos de demostración tienen niveles coherentes con probabilidad × impacto y aceptaciones del órgano de su nivel (D65).
@@ -47,6 +48,16 @@
         humo (7) genera el libro de IA-2026-001 en el navegador (clave «eval») y comprueba que es un .xlsx válido con sus siete hojas,
         el código del caso y la fecha y hora de generación.
     22. Datos en local e instalación propia (D104): documento 95 (ES/EN), enlaces desde la portada, la entrada, el README y el 03, y cifras.
+    23. NIST CSF 2.0 y Cyber AI Profile (D110): el documento 34 (ES/EN) tiene la sección 5.3 con las seis funciones GV, ID, PR, DE, RS, RC y
+        las áreas Secure, Defend y Thwart; los catálogos SEG y AG del 35 llevan la columna «Función CSF» sin celdas vacías; ninguna página
+        publicada cita como definitiva una fuente que el registro de referencias marca como borrador (campo «situacion»). Perfiles (D111):
+        34 §5.4 con las 72 subcategorías del AI RMF en su orden y §5.5 con 48 del CSF con prioridad S · D · T y una de ellas 1; toda
+        pregunta citada existe en el 11; 11 §7.5 existe y la equivalencia 0–5 ↔ tiers de 11 §2.2 es 0–1→1, 2→2, 3→3, 4–5→4 en ES y EN.
+        Plantillas (D112): P72, P73 y P74 en ES y EN con HTML, PDF y Word y «Por qué importa»; nivel en la matriz del 94 §7.2; P74 con los
+        38 controles del anexo A y la advertencia de que la certificación la emite una entidad acreditada (38 §12).
+    24. Exención de responsabilidad y rigor de las fuentes (D113, D114): todo aviso legal publicado incluye la exención por los efectos de la
+        aplicación; 93 §11 lleva la exención completa; ninguna referencia del registro queda por corregir y ningún documento se apoya en
+        fuentes secundarias.
 #>
 param([switch]$SinNavegador)
 $ErrorActionPreference = 'Stop'
@@ -290,6 +301,25 @@ try {
   if ([IO.File]::ReadAllText((Join-Path $repo 'SEVEN-G\build\publicar.ps1')) -notmatch "'pptx'") { Mal 'publicar.ps1 no publica SEVEN-G/pptx'; $capasMal++ }
   if (-not $capasMal) { Ok "«Lo esencial» en $($matriz.Count) documentos, coherente con la matriz (94) en ES y EN; curso completo, enlazado y descargable en PPT y PDF" }
 
+  # ---- 1k. nombres de clase de los diagramas Mermaid (D109)
+  # Mermaid escribe el nombre de cada classDef como clase CSS del nodo: si coincide con una clase de estilo.css,
+  # la hoja del sitio se aplica al diagrama (p. ej. «eje» lo ponía en mayúsculas y negrita en el HTML y en el PDF).
+  Write-Host '1k. Clases de los diagramas Mermaid'
+  $cssTexto = [IO.File]::ReadAllText((Join-Path $repo 'SEVEN-G\build\estilo.css'))
+  $clasesCss = @{}
+  foreach ($m in [regex]::Matches($cssTexto, '\.([A-Za-z][\w-]*)')) { $clasesCss[$m.Groups[1].Value] = $true }
+  $malClases = 0; $nClassDef = 0
+  foreach ($md in (Get-ChildItem (Join-Path $repo 'SEVEN-G\mds'), (Join-Path $repo 'SPHERES\mds'), (Join-Path $repo 'SPAD\mds') -Recurse -File -Filter '*.md')) {
+    foreach ($m in [regex]::Matches([IO.File]::ReadAllText($md.FullName), '(?m)^\s*classDef\s+([A-Za-z][\w-]*)')) {
+      $nClassDef++
+      if ($clasesCss.ContainsKey($m.Groups[1].Value)) {
+        Mal "$([IO.Path]::GetRelativePath($repo, $md.FullName)): el classDef «$($m.Groups[1].Value)» coincide con una clase de estilo.css y el diagrama heredaría ese estilo"
+        $malClases++
+      }
+    }
+  }
+  if (-not $malClases) { Ok "$nClassDef clases de diagrama sin colisión con estilo.css" }
+
   # ---- 2 y 3. textos internos o de clientes, y aviso legal
   Write-Host '2. Textos internos o de clientes en lo publicable'
   $publicables = @(Get-Item (Join-Path $repo 'index.html'), (Join-Path $repo 'en\index.html'))
@@ -440,7 +470,8 @@ try {
   elseif ($SinNavegador -or -not $edgeIx) { Aviso 'sin navegador: no se comprueba el índice de ejemplo del panel' }
   else {
     $ixTmp = Join-Path $tmp 't14_indice.json'
-    & pwsh -NoProfile -File (Join-Path $t14 'build_indice.ps1') -Salida (Join-Path $tmp 'indice_ix.html') -DesdeT01 (Join-Path $t01 'datos_demo.json') -Exportar $ixTmp | Out-Null
+    # un reintento: el primer Edge sin ventana de la ejecución puede tardar más de lo que espera el script (arranque en frío)
+    foreach ($intento in 1, 2) { & pwsh -NoProfile -File (Join-Path $t14 'build_indice.ps1') -Salida (Join-Path $tmp 'indice_ix.html') -DesdeT01 (Join-Path $t01 'datos_demo.json') -Exportar $ixTmp *> $null; if (-not $LASTEXITCODE -and (Test-Path $ixTmp)) { break } }
     if ($LASTEXITCODE -or -not (Test-Path $ixTmp)) { Mal 'D71: build_indice.ps1 -DesdeT01 ha fallado' }
     elseif (([IO.File]::ReadAllText($ixTmp) -replace "`r`n", "`n") -cne ([IO.File]::ReadAllText($ixEj) -replace "`r`n", "`n")) { Mal 'D71: el índice de ejemplo del panel está desfasado: ejecutar build_indice.ps1 -DesdeT01 ../T01_registro_iniciativas/datos_demo.json -Exportar ../T17_panel_consejo/ejemplo/t14_indice.json y regenerar el panel' }
     else { $rIx = (Get-Content $ixTmp -Raw | ConvertFrom-Json).calculos[0].resultado; Ok "D71: índice de ejemplo del panel al día ($($rIx.perfil_asignado), suma $($rIx.suma), cobertura $($rIx.cobertura)/8)" }
@@ -486,6 +517,7 @@ try {
       # T11: el caso de ejemplo IA-2026-001 da VAN 1.826.542 €, ROI 217,7 % y plazo 1,44 años (40 §8); T15: nivel global 2 limitado por D6 (11 §5)
       @{ f = (Join-Path $t11 'calculadora.html'); debe = @('#resultado[data-van="1826542"][data-roi="217.7"][data-payback="1.44"]', '#nav a[href="#/costes"]', '#t01-local[data-registro]', "#sitio-nav $ctl", '#principal a.cod-enlace[title]', '#btn-datos[data-estado="demo"]'); que = 'calculadora T11/T13 (ejemplo IA-2026-001)' }
       @{ f = (Join-Path $t15 'madurez.html'); debe = @('#nivel-global[data-nivel="2"][data-tope="2"][data-tope-aplicado="1"]', 'tr[data-dim="D6"][data-nivel="1"]', 'tr[data-dim="D3"][data-nivel="2"]', '#t01-local[data-registro]', "#sitio-nav $ctl", '#principal a.cod-enlace[title]', '#btn-datos[data-estado="demo"]'); que = 'diagnóstico T15 (ejemplo EM-2026-06)' }
+      @{ f = (Join-Path $t15 'madurez.html'); antes = "location.hash='#/perfil_csf'"; debe = @('#perfil-resumen[data-marco="csf"][data-con-brecha]', '#tabla-perfil tr[data-sub="ID.RA-01"]', '#tabla-perfil tr[data-sub="GV.OC-04"] select[data-pprop]'); que = 'diagnóstico T15, vista «Perfil CSF» (D115)' },
       # D100: la tarjeta de madurez (bloque «madurez» del panel, escrito por T15 en el registro) se dibuja con sus siete dimensiones
       @{ f = (Get-ChildItem $salidaEj -Filter 't01_Dashboard_Casos_Uso_IA_v*.html' | Select-Object -First 1).FullName; debe = @('#indice tbody tr', '#kpis [data-kpi]', '#embudo .fun2-mid', '#embudo .fun-card.gan', '#embudo .fun-card li .pq', '#fbar #fopen, #filters .fgroup', '#transv table tbody tr', '#madurez table tbody tr', "#barra .toolbar $ctl", 'main a.cod-enlace[title]'); que = 'panel completo' }
       # comunidad (D80): la página se dibuja aunque no haya intermediario configurado ni red (el texto lo pone el JavaScript)
@@ -777,9 +809,9 @@ try {
     foreach ($e in "calculadora.html'", "indice.html'", "madurez.html'") { if (-not $tT01.Contains($e)) { Mal "T01: no enlaza la herramienta $e con el registro cargado"; $malMapa++ } }
     if (-not ($tT01.Contains("?desde=t01") -and $tT01.Contains('data-ir=') -and $tT01.Contains('function incorporarResultado'))) { Mal 'T01: faltan los enlaces ?desde=t01 (con guardado previo) o la incorporación de resultados de T11 y T15'; $malMapa++ }
     # esquema 0.6 admitido en el esquema JSON, en el registro y en el conector
-    if ($esq.properties.version_esquema.enum -notcontains '0.6' -or -not $esq.properties.ContainsKey('madurez')) { Mal 'esquema_registro.schema.json: falta la versión 0.6 con la lista madurez[]'; $malMapa++ }
-    if (-not $tT01.Contains("'0.6'")) { Mal 'T01: la validación no admite el esquema 0.6'; $malMapa++ }
-    if (-not [IO.File]::ReadAllText((Join-Path $t17 't01_a_panel.py')).Contains('"0.6"')) { Mal 'T17 t01_a_panel.py: no admite el esquema 0.6'; $malMapa++ }
+    if ($esq.properties.version_esquema.enum -notcontains '0.7' -or -not $esq.properties.ContainsKey('madurez')) { Mal 'esquema_registro.schema.json: falta la versión 0.6 con la lista madurez[]'; $malMapa++ }
+    if (-not $tT01.Contains("'0.7'")) { Mal 'T01: la validación no admite el esquema 0.7'; $malMapa++ }
+    if (-not [IO.File]::ReadAllText((Join-Path $t17 't01_a_panel.py')).Contains('"0.7"')) { Mal 'T17 t01_a_panel.py: no admite el esquema 0.7'; $malMapa++ }
     # demostraciones: una sola compañía ficticia
     $orgT01 = (Get-Content (Join-Path $t01 'datos_demo.json') -Raw -Encoding utf8 | ConvertFrom-Json -Depth 64).meta.organizacion
     foreach ($h in @(@{ c = 'T11'; d = $t11 }, @{ c = 'T14'; d = $t14 }, @{ c = 'T15'; d = $t15 })) {
@@ -800,7 +832,7 @@ try {
       if ($SinNavegador -or -not $edgeMad) { Aviso 'sin navegador: no se comprueba que la madurez del registro de demostración sea la que exporta T15' }
       else {
         $resTmp = Join-Path $tmp 't15_resumen.json'
-        & pwsh -NoProfile -File (Join-Path $t15 'build_madurez.ps1') -Salida (Join-Path $tmp 'madurez_res.html') -Resumen $resTmp | Out-Null
+        foreach ($intento in 1, 2) { & pwsh -NoProfile -File (Join-Path $t15 'build_madurez.ps1') -Salida (Join-Path $tmp 'madurez_res.html') -Resumen $resTmp *> $null; if (-not $LASTEXITCODE -and (Test-Path $resTmp)) { break } }   # un reintento (arranque en frío de Edge)
         if ($LASTEXITCODE -or -not (Test-Path $resTmp)) { Mal 'build_madurez.ps1 -Resumen ha fallado'; $malMapa++ }
         else {
           $mT15 = (Get-Content $resTmp -Raw -Encoding utf8 | ConvertFrom-Json -Depth 32).madurez_t01
@@ -1004,7 +1036,140 @@ try {
   if (-not ($readme.Contains('95_SEVEN-G_Datos_en_local_e_instalacion_propia.html') -and $readme.Contains("$repoUrl/archive/refs/heads/main.zip"))) { Mal 'README.md: no enlaza el documento 95 ni la descarga del repositorio'; $malInst++ }
   if ($readme -match '(?i)repositorio es privado') { Mal 'README.md: sigue diciendo que el repositorio es privado'; $malInst++ }
   if (-not $malInst) { Ok "documento 95 (ES/EN) con el repositorio y su ZIP, enlazado desde la portada, la entrada, el README y el documento 03; $nDocs documentos en las cifras de portada y entrada" }
-}
+
+  # ---- 23. NIST CSF 2.0, Cyber AI Profile, perfiles del AI RMF e ISO/IEC 42001 (D110): el 34 (ES/EN) tiene la sección del CSF con las
+  # seis funciones en su tabla; los catálogos SEG y AG del 35 llevan la columna «Función CSF» sin celdas vacías; y ninguna página
+  # publicada presenta como definitiva una fuente que el registro de referencias marca como borrador (campo «situacion»)
+  Write-Host '23. NIST CSF, Cyber AI Profile, perfiles NIST e ISO/IEC 42001'
+  $malNist = 0
+  foreach ($lang in 'es', 'en') {
+    $md34 = [IO.File]::ReadAllText((Get-ChildItem (Join-Path $repo "SEVEN-G\mds\$lang") -Filter '34_*.md' | Select-Object -First 1).FullName)
+    $sec53 = [regex]::Match($md34, '(?ms)^### 5\.3 NIST CSF 2\.0.*?(?=^## )')
+    if (-not $sec53.Success) { Mal "documento 34 [$lang]: falta la sección 5.3 «NIST CSF 2.0 y Cyber AI Profile»"; $malNist++ }
+    else {
+      foreach ($fn in 'GV', 'ID', 'PR', 'DE', 'RS', 'RC') { if ($sec53.Value -notmatch "(?m)^\|[^|\n]+\| $fn \($fn\.") { Mal "documento 34 [$lang] §5.3: la tabla de funciones no tiene la fila de $fn"; $malNist++ } }
+      foreach ($area in 'Secure', 'Defend', 'Thwart') { if ($sec53.Value -notmatch "(?m)^\| \*\*$area\*\* \|") { Mal "documento 34 [$lang] §5.3: falta el área $area del Cyber AI Profile"; $malNist++ } }
+    }
+    $md35 = [IO.File]::ReadAllText((Get-ChildItem (Join-Path $repo "SEVEN-G\mds\$lang") -Filter '35_*.md' | Select-Object -First 1).FullName)
+    $colCsf = if ($lang -eq 'en') { 'CSF function' } else { 'Función CSF' }
+    foreach ($pref in 'SEG', 'AG') {
+      $filas = [regex]::Matches($md35, "(?m)^\| \*\*$pref-\d\d\*\* \|.*$")
+      $esperados = if ($pref -eq 'SEG') { 25 } else { 20 }   # SEG-21 a SEG-25: uso de la IA en la ciberdefensa (D116)
+      if ($filas.Count -ne $esperados) { Mal "documento 35 [$lang]: el catálogo $pref tiene $($filas.Count) controles (se esperaban $esperados)"; $malNist++ }
+      foreach ($fi in $filas) {
+        $celdas = $fi.Value.Trim().Trim('|').Split('|')
+        if ($celdas[-1].Trim() -notmatch '^(GV|ID|PR|DE|RS|RC) \((GV|ID|PR|DE|RS|RC)\.[A-Z]{2}') { Mal "documento 35 [$lang]: $($celdas[0].Trim()) sin «$colCsf» válida"; $malNist++ }
+      }
+    }
+    if (([regex]::Matches($md35, "(?m)^\| (Código|Code) \|.*\| $colCsf \|\r?$")).Count -ne 2) { Mal "documento 35 [$lang]: los catálogos SEG y AG no llevan la columna «$colCsf»"; $malNist++ }
+  }
+  # entrega 2: perfiles por subcategoría (34 §5.4 y §5.5), equivalencia 0–5 ↔ tiers (11 §2.2) y regla de derivación (11 §7.5)
+  $rmfOficial = [Collections.Generic.List[string]]::new()
+  foreach ($fc in @(@('GOVERN', @(7, 3, 2, 3, 2, 2)), @('MAP', @(6, 3, 5, 2, 2)), @('MEASURE', @(3, 13, 3, 3)), @('MANAGE', @(4, 4, 2, 3)))) {
+    for ($c = 1; $c -le $fc[1].Count; $c++) { for ($s = 1; $s -le $fc[1][$c - 1]; $s++) { $rmfOficial.Add("$($fc[0]) $c.$s") } }
+  }   # 72 subcategorías del NIST AI RMF 1.0 (NIST AI 100-1, tablas 1 a 4)
+  $equiv = @{}
+  foreach ($lang in 'es', 'en') {
+    $md34 = [IO.File]::ReadAllText((Get-ChildItem (Join-Path $repo "SEVEN-G\mds\$lang") -Filter '34_*.md' | Select-Object -First 1).FullName)
+    $md11 = [IO.File]::ReadAllText((Get-ChildItem (Join-Path $repo "SEVEN-G\mds\$lang") -Filter '11_*.md' | Select-Object -First 1).FullName)
+    $preguntas = @([regex]::Matches($md11, '(?m)^\| (D[1-7]\.\d\d) \|') | ForEach-Object { $_.Groups[1].Value })
+    $s54 = [regex]::Match($md34, '(?ms)^### 5\.4 .*?(?=^### 5\.5 )').Value
+    $s55 = [regex]::Match($md34, '(?ms)^### 5\.5 .*?(?=^## )').Value
+    $ids54 = @([regex]::Matches($s54, '(?m)^\| ((GOVERN|MAP|MEASURE|MANAGE) \d+\.\d+) \|') | ForEach-Object { $_.Groups[1].Value })
+    if (-not $s54) { Mal "documento 34 [$lang]: falta la sección 5.4 (perfil del AI RMF por subcategoría)"; $malNist++ }
+    elseif (($ids54 -join '|') -ne ($rmfOficial -join '|')) { Mal "documento 34 [$lang] §5.4: las subcategorías no son las 72 del AI RMF en su orden ($($ids54.Count) filas)"; $malNist++ }
+    $filas55 = @([regex]::Matches($s55, '(?m)^\| ((GV|ID|PR|DE|RS|RC)\.[A-Z]{2}-\d\d) \|[^|\n]*\| ([123]) · ([123]) · ([123]) \|'))
+    if ($filas55.Count -ne 48) { Mal "documento 34 [$lang] §5.5: $($filas55.Count) subcategorías del CSF con prioridad S · D · T válida (se esperaban 48)"; $malNist++ }
+    foreach ($fi in $filas55) { if (-not ($fi.Groups[3].Value -eq '1' -or $fi.Groups[4].Value -eq '1' -or $fi.Groups[5].Value -eq '1')) { Mal "documento 34 [$lang] §5.5: $($fi.Groups[1].Value) no tiene prioridad 1 en ningún área"; $malNist++ } }
+    if ($s55 -notmatch '(?i)provisional') { Mal "documento 34 [$lang] §5.5: no dice que la selección es provisional mientras el Cyber AI Profile sea borrador"; $malNist++ }
+    foreach ($q in [regex]::Matches($s54 + $s55, '\bD[1-7]\.\d\d\b')) { if ($preguntas -notcontains $q.Value) { Mal "documento 34 [$lang]: cita la pregunta $($q.Value), que no existe en el documento 11"; $malNist++ } }
+    if ($md11 -notmatch '(?m)^### 7\.5 ') { Mal "documento 11 [$lang]: falta el vínculo 7.5 con los perfiles NIST"; $malNist++ }
+    $s22 = [regex]::Match($md11, '(?ms)^### 2\.2 .*?(?=^### 2\.3 )').Value
+    $equiv[$lang] = (@([regex]::Matches($s22, '(?m)^\| ([0-5])[^|]*?(?: · ([0-5])[^|]*)? \| \*Tier\* ([1-4]) ') | ForEach-Object { "$($_.Groups[1].Value)$($_.Groups[2].Value)>$($_.Groups[3].Value)" }) -join ',')
+  }
+  if ($equiv.es -ne '01>1,2>2,3>3,45>4' -or $equiv.en -ne $equiv.es) { Mal "documento 11 §2.2: la tabla de equivalencia 0–5 ↔ tiers no es 0–1→1, 2→2, 3→3, 4–5→4 o difiere entre ES ($($equiv.es)) y EN ($($equiv.en))"; $malNist++ }
+  # entrega 3: plantillas P72 (perfil de seguridad), P73 (perfil de gobierno) y P74 (declaración de aplicabilidad de 42001) en ES y EN,
+  # con HTML, PDF y Word, y con nivel en la matriz del documento 94
+  foreach ($lang in 'es', 'en') {
+    foreach ($pc in 'P72', 'P73', 'P74') {
+      $mdP = Get-ChildItem (Join-Path $repo "SEVEN-G\mds\$lang\plantillas") -Filter "$($pc)_*.md" | Select-Object -First 1
+      if (-not $mdP) { Mal "falta la plantilla $pc [$lang]"; $malNist++; continue }
+      $base = $mdP.BaseName
+      foreach ($sal in @("SEVEN-G\html\$lang\plantillas\$base.html", "SEVEN-G\pdf\$lang\plantillas\$base.pdf", "SEVEN-G\docx\$lang\plantillas\$base.docx")) { if (-not (Test-Path (Join-Path $repo $sal))) { Mal "$pc [$lang]: falta $sal"; $malNist++ } }
+      $tP = [IO.File]::ReadAllText($mdP.FullName)
+      if ($tP -notmatch $(if ($lang -eq 'en') { 'Why it matters' } else { 'Por qué importa' })) { Mal "$pc [$lang]: falta «Por qué importa»"; $malNist++ }
+    }
+    $md94 = [IO.File]::ReadAllText((Get-ChildItem (Join-Path $repo "SEVEN-G\mds\$lang") -Filter '94_*.md' | Select-Object -First 1).FullName)
+    if ($md94 -notmatch '(?m)^\| P72 .*P73 .*P74 .*\| \*\*(Condicional|Conditional)\*\* \|') { Mal "documento 94 [$lang] §7.2: P72, P73 y P74 no tienen nivel en la matriz"; $malNist++ }
+    $p74 = [IO.File]::ReadAllText((Get-ChildItem (Join-Path $repo "SEVEN-G\mds\$lang\plantillas") -Filter 'P74_*.md' | Select-Object -First 1).FullName)
+    if (([regex]::Matches($p74, '(?m)^\| A\.\d+\.\d+(\.\d+)? \|')).Count -ne 38) { Mal "P74 [$lang]: no declara los 38 controles del anexo A"; $malNist++ }
+    if ($p74 -notmatch '38 §12') { Mal "P74 [$lang]: no advierte de que la certificación la emite una entidad acreditada (38 §12)"; $malNist++ }
+  }
+  $borradores = @(Get-ChildItem (Join-Path $repo 'SEVEN-G\build\referencias') -Filter '*.json' | ForEach-Object { Get-Content $_.FullName -Raw -Encoding utf8 | ConvertFrom-Json } | Where-Object { $_.situacion -and $_.situacion -ne 'final' })
+  $paginas = @(foreach ($m in 'SEVEN-G', 'SPHERES', 'SPAD') { Get-ChildItem (Join-Path $repo "$m\html") -Recurse -Filter '*.html' -ErrorAction SilentlyContinue | Where-Object { $_.FullName -notmatch '\\_trabajo\\' } }) + @(Get-Item (Join-Path $repo 'index.html'), (Join-Path $repo 'en\index.html'))   # _trabajo no se publica
+  $nMenc = 0
+  foreach ($pg in $paginas) {
+    $txt = [Net.WebUtility]::HtmlDecode(([regex]::Replace([IO.File]::ReadAllText($pg.FullName), '(?s)<script.*?</script>|<style.*?</style>|<nav\b.*?</nav>|<h[1-6]\b.*?</h[1-6]>|<[^>]+>', ' ') -replace '\s+', ' '))   # los títulos y la navegación no califican: lo hace el texto de la sección
+    foreach ($b in $borradores) {
+      foreach ($pat in @($b.patrones_es) + @($b.patrones_en) | Select-Object -Unique) {
+        foreach ($m in [regex]::Matches($txt, [regex]::Escape($pat))) {
+          if ($m.Index -ge 10 -and $txt.Substring($m.Index - 10, 10) -eq 'CSF 2.0 / ') { continue }   # nombre de la plantilla P72, no una afirmación sobre la fuente
+          $nMenc++
+          $ctx = $txt.Substring([Math]::Max(0, $m.Index - 400), [Math]::Min($txt.Length - [Math]::Max(0, $m.Index - 400), 800 + $pat.Length))
+          if ($ctx -notmatch '(?i)borrador|draft') { Mal "$($pg.Name): cita «$pat» sin decir que es un borrador ($($b.id), situación «$($b.situacion)»)"; $malNist++; break }
+          if ($txt.Substring($m.Index, [Math]::Min(120, $txt.Length - $m.Index)) -match '(?i)^[^.]{0,100}\b(versión final|definitiv|final version|definitive)') { Mal "$($pg.Name): presenta «$pat» como definitivo y el registro lo marca como $($b.situacion)"; $malNist++; break }
+        }
+      }
+    }
+  }
+  if (-not $malNist) { Ok "documento 34 §5.3 (ES/EN) con GV, ID, PR, DE, RS, RC y las áreas Secure, Defend y Thwart; catálogos SEG y AG del 35 con «Función CSF» completa; 34 §5.4 (72) y §5.5 (48) con preguntas del 11 existentes; equivalencia 0–5 ↔ tiers igual en ES y EN; P72–P74 completas y en la matriz del 94; $nMenc menciones de fuentes en borrador ($(($borradores | ForEach-Object id) -join ', ')), todas marcadas como borrador" }
+  # ---- 24. exención de responsabilidad y rigor de las fuentes (D113, D114): todo aviso legal publicado dice que la metodología es una
+  # ayuda genérica y gratuita, sin revisión jurídica para ningún caso, sin responsabilidad por los efectos de su aplicación y sin
+  # certificación; el documento 93 §11 lleva la exención completa; el registro de referencias no tiene entradas por corregir y ningún
+  # documento publicado se apoya en fuentes secundarias
+  Write-Host '24. Exención de responsabilidad y rigor de las fuentes'
+  $malEx = 0
+  $claveEs = 'el autor no asume responsabilidad alguna por los efectos de su aplicación en ninguna organización'
+  $claveEn = 'the author accepts no responsibility whatsoever for the effects of its application in any organisation'
+  $nAv = 0
+  foreach ($md in Get-ChildItem (Join-Path $repo 'SEVEN-G\mds'), (Join-Path $repo 'SPHERES\mds'), (Join-Path $repo 'SPAD\mds') -Recurse -Filter '*.md') {
+    foreach ($lin in [IO.File]::ReadAllLines($md.FullName)) {
+      if ($lin -match '^> \*\*Aviso legal y exención') { $nAv++; if (-not $lin.Contains($claveEs)) { Mal "$($md.Name): el aviso legal no incluye la exención por los efectos de la aplicación (D113)"; $malEx++ } }
+      elseif ($lin -match '^> \*\*Legal notice and disclaimer') { $nAv++; if (-not $lin.Contains($claveEn)) { Mal "$($md.Name): the legal notice lacks the disclaimer for the effects of application (D113)"; $malEx++ } }
+    }
+  }
+  $fuentesAviso = @('index.html', 'SEVEN-G\build\entrada\es\index.html', 'SEVEN-G\build\build.ps1', 'SEVEN-G\herramientas\T01_registro_iniciativas\_fuentes\registro.plantilla.html', 'SEVEN-G\herramientas\T11_calculadora_valor\_fuentes\calculadora.plantilla.html', 'SEVEN-G\herramientas\T14_indice_transformacion\_fuentes\indice.plantilla.html', 'SEVEN-G\herramientas\T15_diagnostico_madurez\_fuentes\madurez.plantilla.html', 'SEVEN-G\herramientas\T17_panel_consejo\index.html', 'SEVEN-G\herramientas\T17_panel_consejo\publicacion_panel.py', 'SEVEN-G\herramientas\T17_panel_consejo\t01_a_panel.js', 'SEVEN-G\herramientas\comunidad\index.html', 'LICENCIA_CONTENIDOS.md')
+  foreach ($fa in $fuentesAviso) { if (-not ([IO.File]::ReadAllText((Join-Path $repo $fa))).Contains($claveEs)) { Mal "${fa}: el aviso no incluye la exención por los efectos de la aplicación (D113)"; $malEx++ } }
+  foreach ($fa in 'en\index.html', 'SEVEN-G\build\entrada\en\index.html', 'SEVEN-G\build\build.ps1') { if (-not ([IO.File]::ReadAllText((Join-Path $repo $fa))).Contains($claveEn)) { Mal "${fa}: the notice lacks the disclaimer for the effects of application (D113)"; $malEx++ } }
+  foreach ($par in @(@('es', 'Exención completa de responsabilidad'), @('en', 'Full disclaimer of liability'))) {
+    $d93 = [IO.File]::ReadAllText((Get-ChildItem (Join-Path $repo "SEVEN-G\mds\$($par[0])") -Filter '93_*.md' | Select-Object -First 1).FullName)
+    if (-not $d93.Contains($par[1])) { Mal "documento 93 [$($par[0])] §11: falta la exención completa (D113)"; $malEx++ }
+  }
+  $regs = @(Get-ChildItem (Join-Path $repo 'SEVEN-G\build\referencias') -Filter '*.json' | ForEach-Object { Get-Content $_.FullName -Raw -Encoding utf8 | ConvertFrom-Json })
+  foreach ($r in $regs | Where-Object { $_.estado -notin 'verificado', 'no-verificable' }) { Mal "referencia $($r.id): estado «$($r.estado)»; corregir el documento y verificarla (D41, D114)"; $malEx++ }
+  foreach ($md in Get-ChildItem (Join-Path $repo 'SEVEN-G\mds'), (Join-Path $repo 'SPHERES\mds'), (Join-Path $repo 'SPAD\mds') -Recurse -Filter '*.md' | Where-Object { $_.FullName -notmatch '\\_trabajo\\' }) {
+    if ([IO.File]::ReadAllText($md.FullName) -match '(?i)verificado \(secundaria\)|verified \(secondary\)|fuentes secundarias|secondary sources|análisis jurídicos publicados|published legal analyses') { Mal "$($md.Name): se apoya en fuentes secundarias (D114)"; $malEx++ }
+  }
+  if (-not $malEx) { Ok "exención completa en $nAv avisos de la biblioteca, portada, entrada, herramientas, paneles y licencia, y en 93 §11; $(@($regs).Count) referencias verificadas o marcadas no verificables, ninguna por corregir; sin fuentes secundarias" }
+  # ---- 25. vigilancia mensual de fuentes (D117): la lista de vigilancia solo cita referencias del registro y el script que prepara
+  # el informe existe; los informes viven en _trabajo (no se publican)
+  Write-Host '25. Vigilancia mensual de fuentes'
+  $malVig = 0
+  $vigCfg = Join-Path $repo 'SEVEN-G\build\vigilancia_fuentes.json'
+  if (-not (Test-Path $vigCfg) -or -not (Test-Path (Join-Path $repo 'SEVEN-G\build\vigilar_fuentes.ps1'))) { Mal 'falta vigilancia_fuentes.json o vigilar_fuentes.ps1 (D117)'; $malVig++ }
+  else {
+    $vig = Get-Content $vigCfg -Raw -Encoding utf8 | ConvertFrom-Json
+    $idsReg = @($regs | ForEach-Object id)
+    foreach ($p in $vig.prioritarias) {
+      if ($idsReg -notcontains $p.id) { Mal "vigilancia_fuentes.json: la referencia $($p.id) no está en el registro (D117)"; $malVig++ }
+      $regP = $regs | Where-Object id -eq $p.id | Select-Object -First 1
+      $dondeP = if ($p.donde) { $p.donde } elseif ($regP) { if ($regP.url_es) { $regP.url_es } else { $regP.url_en } }
+      if (-not $p.pregunta -or $dondeP -notmatch '^https://') { Mal "vigilancia_fuentes.json: $($p.id) sin pregunta o sin enlace https propio ni en el registro (D117, D118)"; $malVig++ }
+      if ($p.donde_comprobado -and $p.donde_comprobado -notmatch '^\d{2}-\d{2}-\d{4}$') { Mal "vigilancia_fuentes.json: $($p.id) «donde_comprobado» no es DD-MM-AAAA (D118)"; $malVig++ }
+    }
+    foreach ($r in $regs | Where-Object { $_.situacion -and $_.situacion -ne 'final' }) { if (@($vig.prioritarias | ForEach-Object id) -notcontains $r.id) { Mal "referencia $($r.id) en $($r.situacion) y fuera de la vigilancia mensual (D117)"; $malVig++ } }
+  }
+  if (-not $malVig) { Ok "vigilancia mensual: $(@($vig.prioritarias).Count) fuentes prioritarias, todas en el registro; toda fuente en borrador está vigilada" }}
 finally { Remove-Item $tmp -Recurse -Force -Confirm:$false -ErrorAction SilentlyContinue }
 
 Write-Host ''
