@@ -5,8 +5,8 @@
 | | |
 |---|---|
 | Documento | Documento 12 · Índice de transformación |
-| Versión | 0.1 (borrador de trabajo) |
-| Fecha | 16-09-2026 |
+| Versión | 0.2 (borrador de trabajo) |
+| Fecha | 28-09-2026 |
 | Autor | Fernando García Varela |
 | Estado | Borrador para revisión. Los umbrales numéricos son iniciales y deben calibrarse con la aplicación práctica. |
 
@@ -157,6 +157,22 @@ La diferencia entre ambición confirmada y real **no es en sí una no conformida
 |---|---|
 | 30 % o más en el conjunto de la cartera | Alerta al comité de IA y revisión de la calidad de la clasificación en la fase 2. |
 | 50 % o más en las iniciativas confirmadas como Transformar | Se informa al consejo y se tiene en cuenta en la lectura del perfil (sección 5.3). |
+
+
+### 3.7 Alcance del impacto (IM1–IM4)
+
+Las cinco preguntas de la sección 3.1 dicen también **a qué afecta** cada iniciativa. Esa lectura se resume en cuatro niveles de alcance, sin preguntas nuevas, y es la tercera lente de la madurez (11 §7.6). Se aplica a las iniciativas en uso y solo con respuestas verificadas (sección 3.4): una respuesta sin evidencia cuenta como «no».
+
+| Nivel | Alcance | Condición | Ambición típica |
+|---|---|---|---|
+| **IM1** | Tarea | Mejora una tarea dentro de un proceso que no cambia (ninguna de las condiciones siguientes) | Optimizar |
+| **IM2** | Proceso | IT-P2 = sí: el proceso se rediseña de extremo a extremo | Optimizar o Aumentar |
+| **IM3** | Personas y organización | IT-P3 = sí: cambian los roles, la estructura o quién toma qué decisiones | Aumentar o Transformar |
+| **IM4** | Modelo de negocio | IT-P1 o IT-P4 = sí: cambia la propuesta de valor al cliente o hay ingresos, servicios o mercados nuevos | Transformar |
+
+Se asigna el nivel más alto cuya condición se cumple. En la compañía se muestra la **distribución** de las iniciativas en uso por nivel junto con el perfil del índice (sección 5): así se ve, sin un número nuevo, si la IA solo mejora tareas, si ya rediseña procesos, si cambia el trabajo de las personas o si toca el modelo de negocio. La ambición típica es orientativa: el nivel lo dan las respuestas, no la etiqueta de ambición.
+
+> **Por qué importa.** «Optimizar» y «Transformar» son etiquetas que se declaran; el alcance del impacto sale de lo que ha cambiado de verdad. Una cartera con todas las iniciativas en IM1 no está transformando la compañía, aunque la tesis lo diga, y una iniciativa en IM3 sin plan de personas es una alerta (11 §7.6).
 
 ---
 
@@ -540,3 +556,4 @@ No se presenta el índice como una nota ni se compara con otras compañías (sec
 | Versión | Fecha | Cambios |
 |---|---|---|
 | 0.1 | 16-09-2026 | Primera versión. Define las reglas de clasificación de ambición (cinco preguntas, diez reglas, casos dudosos, estados propuesto, confirmado y real, discrepancias y tasa de sobredeclaración); las ocho señales con fórmula, fuente y umbrales iniciales a calibrar; las condiciones de base; las reglas de asignación de perfil con detección de la transformación declarada no evidenciada; el tratamiento del "sin dato"; la calibración en C5; y un ejemplo completo. |
+| 0.2 | 28-09-2026 | Añade el alcance del impacto IM1–IM4 (sección 3.7), derivado de las preguntas IT-P1 a IT-P4 verificadas, como tercera lente de la madurez (11 §7.6). |

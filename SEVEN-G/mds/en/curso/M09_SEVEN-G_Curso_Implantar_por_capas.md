@@ -27,7 +27,9 @@ By the end you will be able to choose your company's implementation scope, disti
 1. **Two different proportionality decisions.** *Intensity* (Lite or Enterprise) belongs to each initiative; *implementation scope* (Lite or Enterprise) belongs to the company. Size decides neither.
 2. **A single library, three layers.** Essential (what every company applies), conditional (what a trigger activates) and complete (guides and reference). There are no reduced versions of the documents.
 3. **No phase or gate is skipped.** In Lite they are grouped —G0 to G2 in one session, G4 and G5 in another— and the evidence is simplified. G3 always goes separately.
-4. **Ninety days to have a diagnosis, a direction and a first portfolio**, with no moratorium: AI activity continues while the framework is implemented.
+4. **The starting point changes the order, not the destination.** A company with no AI, another with predictive models in production and another with many pilots start with different milestones (document 96), but reach the same conditions of 01 §14.
+5. **Technology does not add maturity.** Maturity is read through three lenses: governance capability, technology footprint and impact reach (11 §7.6). Having agents with weak risk control is an alert, not more maturity.
+6. **Ninety days to have a diagnosis, a direction and a first portfolio**, with no moratorium: AI activity continues while the framework is implemented.
 
 ---
 
@@ -42,6 +44,8 @@ By the end you will be able to choose your company's implementation scope, disti
 | 5 | document 90, section 4 | The 90-day plan, week by week, and its completion criteria. |
 | 6 | document 90, section 8 | Common mistakes. The first: starting by buying or building tools. |
 | 7 | document 92 | Application cases, including medium-sized companies. |
+| 8 | document 96 and tool T23 | The six starting points, the five modifiers and the 22 milestones with their priority. Load the PP-B example in T23 and compare it with the demo, which comes out as PP-F. |
+| 9 | document 11, section 7.6, and T15, "Three lenses" view | Technology footprint, impact reach, minimum governance required and alerts of the example company. |
 
 ---
 
@@ -50,7 +54,8 @@ By the end you will be able to choose your company's implementation scope, disti
 1. With the five criteria of document 90 (section 2.2), decide your company's implementation scope.
 2. With the triggers of document 94 (section 4), mark those that occur today. That is your conditional layer.
 3. Write the names of the three minimum people: whoever drives and builds, whoever controls the risks and whoever runs the AI Office. If three different people do not come out, that is your first governance problem.
-4. Book the board session for week 12.
+4. Answer in T23 the twelve questions of the questionnaire for your company. Note your archetype, your traits and the three priority-1 milestones you do not have yet.
+5. Book the board session for week 12.
 
 ---
 
@@ -60,6 +65,7 @@ By the end you will be able to choose your company's implementation scope, disti
 2. Which gates can be grouped in a Lite initiative?
 3. Is the AI system inventory reduced in Lite scope?
 4. Is it mandatory to use the T01 application?
+5. A company has agents with A2 autonomy in production and D6 at level 2. Is it more mature than another that only has predictive models and D6 at level 3?
 
 ---
 
@@ -67,4 +73,4 @@ By the end you will be able to choose your company's implementation scope, disti
 
 You have finished the course. Go back to the [course guide](M00_SEVEN-G_Curso_Guia_del_curso.html) to see other paths, or start with document 90. If you need support, document 91 describes the possible models and document 04 indicates how to contact the author; using the framework does not oblige anyone to hire anybody.
 
-**Answers.** 1) No: that initiative is Enterprise and is approved by the board, but the company's scope remains Lite. 2) G0, G1 and G2 in one session, and G4 and G5 in another; G3 always separately. 3) No: it covers all systems, including third-party and unauthorised ones. 4) No: what is mandatory is the register; it can be kept in a spreadsheet with the data model of document 03.
+**Answers.** 1) No: that initiative is Enterprise and is approved by the board, but the company's scope remains Lite. 2) G0, G1 and G2 in one session, and G4 and G5 in another; G3 always separately. 3) No: it covers all systems, including third-party and unauthorised ones. 4) No: what is mandatory is the register; it can be kept in a spreadsheet with the data model of document 03. 5) No. The technology footprint does not add maturity: the first company is at HT5, which requires D6 at 3, and it has the high-severity "adoption ahead of governance" alert (11 §7.6).

@@ -4,6 +4,8 @@
   Uso:          pwsh -File SEVEN-G/herramientas/T15_diagnostico_madurez/build_madurez.ps1 [-Datos <t15.json>] [-Salida <fichero.html>] [-ActualizarCuestionario]
 
   Fuentes:      _fuentes/madurez.plantilla.html   aplicación (HTML, CSS y JavaScript) sin datos; es lo único que se edita a mano
+                lentes.json                       tres lentes, huella HT0–HT5, mínimo exigible, alertas (11 §7.6) y alcance IM1–IM4 (12 §3.7), extraído con -ActualizarLentes
+                ../T01_registro_iniciativas/datos_demo.json   se incrusta un extracto para la huella y el alcance del ejemplo (-RegistroT01)
                 cuestionario.json                 dimensiones, niveles, rúbricas y las 84 preguntas del documento 11 §2–§3 (ES/EN)
                 datos_demo.json                   evaluaciones de ejemplo (ficticias)
   Salida:       madurez.html                      un solo fichero, sin servidor ni dependencias. NUNCA se edita a mano.
@@ -19,15 +21,25 @@ param(
   [string]$Salida,
   [switch]$ActualizarCuestionario,
   [string]$Resumen,
-  [switch]$ActualizarPerfiles
+  [switch]$ActualizarPerfiles,
+  [switch]$ActualizarLentes,
+  [string]$RegistroT01
 )
+<#
+  -ActualizarLentes (D120): regenera lentes.json desde el documento 11 §7.6 (lentes, huella tecnológica HT0–HT5, gobierno mínimo exigible por
+  huella y alertas) y el documento 12 §3.7 (alcance del impacto IM1–IM4), ES/EN. En cada construcción se comprueba que coincide con los
+  documentos: si cambia un umbral, una tecnología o una alerta, la construcción falla hasta regenerarlo. Los umbrales nunca se escriben en la plantilla.
+  -RegistroT01 <fichero.json> (D120): registro T01 del que se incrusta un extracto mínimo (iniciativas, entradas en fase, cierres, evidencia
+  del índice y tesis del consejo) para calcular la huella y el alcance cuando no hay registro en el navegador: con los datos de ejemplo de T15
+  (y en -Resumen) se usa el registro de demostración de T01. Por defecto, ../T01_registro_iniciativas/datos_demo.json.
+#>
 <#
   -ActualizarPerfiles (D115): regenera perfiles_nist.json desde el documento 34 §5.4 y §5.5 (ES/EN). En cada construcción se comprueba que coincide
   con el documento: si cambia una subcategoría, su dimensión o sus preguntas, la construcción falla hasta regenerarlo.
 #>
 <#
   -Resumen <fichero.json>  (D100): además de construir la página, la abre en Edge sin ventana y escribe el resumen de todas las evaluaciones
-  del fichero de datos en el formato madurez[] del esquema 0.7 de T01 (con el resumen de los perfiles NIST) (el mismo fichero que exporta el botón «Exportar resumen para T01»,
+  del fichero de datos en el formato madurez[] del esquema 0.8 de T01 (con el resumen de los perfiles NIST y, desde el 0.8, de las tres lentes: huella, alcance y alertas; D120) (el mismo fichero que exporta el botón «Exportar resumen para T01»,
   sin fecha de exportación para que sea reproducible). Es lo que el registro de demostración de T01 lleva en su lista madurez[].
 #>
 $ErrorActionPreference = 'Stop'
@@ -162,6 +174,90 @@ function Perfiles-DesdeDocumento {
   }
 }
 
+# ---- madurez en tres lentes (D120): lentes, huella HT0–HT5, mínimo exigible por huella y alertas (11 §7.6) y alcance IM1–IM4 (12 §3.7)
+$rutaLentes = Join-Path $aqui 'lentes.json'
+$doc12 = @{ es = (Join-Path $mds 'es\12_SEVEN-G_Indice_de_transformacion.md'); en = (Join-Path $mds 'en\12_SEVEN-G_Indice_de_transformacion.md') }
+$codAlertas = @('adopcion_por_delante', 'gobierno_sin_uso', 'transformacion_sin_personas')
+function Celdas([string]$fila) { $c = $fila.Trim(); $c = $c.Substring(1, $c.Length - 2); return @($c -split '\|' | ForEach-Object { $_.Trim() }) }
+function Sin-Marcas([string]$s) { return (Limpiar ($s -replace '`', '')) }
+function Leer-Lentes([string]$ruta11, [string]$ruta12) {
+  foreach ($r in $ruta11, $ruta12) { if (-not (Test-Path $r)) { throw "No se encuentra $r" } }
+  $t = [IO.File]::ReadAllText($ruta11) -replace "`r`n", "`n"
+  $sec = [regex]::Match($t, '(?ms)^### 7\.6 .*?(?=^## )').Value
+  if (-not $sec) { throw "El documento 11 no tiene la sección 7.6: $ruta11" }
+  $partes = [regex]::Split($sec, '(?m)^#### .*$')
+  if ($partes.Count -ne 4) { throw "documento 11 §7.6: se esperaban tres subsecciones (huella, mínimo exigible y alertas) y hay $($partes.Count - 1)" }
+  $filas = { param($txt) @([regex]::Matches($txt, '(?m)^\|.*\|$') | ForEach-Object { $_.Value } | Where-Object { $_ -notmatch '^\|[-| ]+\|$' } | Select-Object -Skip 1) }
+  $lentes = @(foreach ($f in (& $filas $partes[0])) { $c = Celdas $f; if ($c.Count -ne 5 -or $c[0] -notmatch '^\*\*([1-3]) · (.+)\*\*$') { continue }; [ordered]@{ lente = [int]$Matches[1]; nombre = $Matches[2]; pregunta = (Sin-Marcas $c[1]); escala = (Sin-Marcas $c[2]); obtiene = (Sin-Marcas $c[4]) } })
+  $huella = @(foreach ($f in (& $filas $partes[1])) { $c = Celdas $f; if ($c.Count -ne 4 -or $c[0] -notmatch '^\*\*(HT[0-5])\*\*$') { throw "documento 11 §7.6, huella: fila no reconocida «$f»" }
+    $tec = @([regex]::Matches($c[3], '`([a-z_]+)`') | ForEach-Object { $_.Groups[1].Value })
+    $o = [ordered]@{ nivel = $Matches[1]; n = [int]$Matches[1].Substring(2); nombre = (Sin-Marcas $c[1]); que = (Sin-Marcas $c[2]); tecnologia_txt = (Sin-Marcas $c[3]); tecnologias = $tec }
+    if ($c[3] -match '`agente`[^`]*?\b(A[0-3])\b[^`]*?\b(A[0-3])\b') { $o.agente_autonomia = @($Matches[1], $Matches[2]) }
+    $o })
+  $mt = @(& $filas $partes[2]); $cab = Celdas ([regex]::Match($partes[2], '(?m)^\|.*\|$').Value)
+  $dims = @($cab | Select-Object -Skip 1); foreach ($d in $dims) { if ($d -notmatch '^D[1-7]$') { throw "documento 11 §7.6, mínimo exigible: columna no reconocida «$d»" } }
+  $minimos = @(foreach ($f in $mt) { $c = Celdas $f; if ($c[0] -notmatch '^\*\*(HT[0-5])\*\*$' -or $c.Count -ne $dims.Count + 1) { throw "documento 11 §7.6, mínimo exigible: fila no reconocida «$f»" }
+    $o = [ordered]@{ huella = $Matches[1] }; for ($i = 0; $i -lt $dims.Count; $i++) { $v = $c[$i + 1]; $o[$dims[$i]] = if ($v -match '^[0-5]$') { [int]$v } elseif ($v -match '^[—–-]$') { $null } else { throw "documento 11 §7.6, mínimo exigible: valor no reconocido «$v»" } }; $o })
+  $alertas = @(foreach ($f in (& $filas $partes[3])) { $c = Celdas $f; if ($c.Count -ne 4 -or $c[0] -notmatch '^\*\*(.+)\*\*$') { continue }; [ordered]@{ nombre = $Matches[1]; cuando = (Sin-Marcas $c[1]); gravedad_txt = (Sin-Marcas $c[2]); pide = (Sin-Marcas $c[3]) } })
+  $t12 = [IO.File]::ReadAllText($ruta12) -replace "`r`n", "`n"
+  $s37 = [regex]::Match($t12, '(?ms)^### 3\.7 .*?(?=^## |^### )').Value
+  if (-not $s37) { throw "El documento 12 no tiene la sección 3.7: $ruta12" }
+  $alcance = @(foreach ($f in (& $filas $s37)) { $c = Celdas $f; if ($c.Count -ne 4 -or $c[0] -notmatch '^\*\*(IM[1-4])\*\*$') { throw "documento 12 §3.7: fila no reconocida «$f»" }; [ordered]@{ nivel = $Matches[1]; nombre = (Sin-Marcas $c[1]); condicion = (Sin-Marcas $c[2]); ambicion = (Sin-Marcas $c[3]) } })
+  return [ordered]@{ lentes = $lentes; huella = $huella; dims = $dims; minimos = $minimos; alertas = $alertas; alcance = $alcance }
+}
+# parámetros de las alertas, leídos del texto español (el inglés debe citar los mismos códigos y cifras)
+function Fichas([string]$s) { return (@([regex]::Matches($s, '\b(?:HT[0-5]|IM[1-4]|D[1-7]|C[1-5]|[0-9]+)\b') | ForEach-Object { $_.Value }) -join ',') }
+$numeros = @{ doce = 12; seis = 6; tres = 3; veinticuatro = 24; dieciocho = 18; nueve = 9 }
+function Parametros-Alerta([int]$i, $a) {
+  $g = $a.gravedad_txt
+  $p = [ordered]@{ gravedad = if ($g -match '^(?i)alta') { 'alta' } elseif ($g -match '^(?i)media') { 'media' } else { throw "documento 11 §7.6: gravedad no reconocida «$g»" } }
+  if ($g -match '^(?i)alta si') { $p.gravedad = 'media'; $p.alta_si = @([regex]::Matches($g, '\bD[1-7]\b') | ForEach-Object { $_.Value }) }
+  switch ($i) {
+    1 { if ($a.cuando -notmatch '(\d) o superior' ) { throw 'documento 11 §7.6, alerta 2: falta «N o superior»' }; $p.global_minimo = [int]$Matches[1]
+        if ($a.cuando -notmatch '(HT[0-5]) o inferior') { throw 'documento 11 §7.6, alerta 2: falta «HTn o inferior»' }; $p.huella_maxima = $Matches[1]
+        if ($a.cuando -notmatch '(\w+) meses después de (C[1-5])') { throw 'documento 11 §7.6, alerta 2: falta «N meses después de Cn»' }
+        $p.meses = if ($Matches[1] -match '^\d+$') { [int]$Matches[1] } elseif ($numeros[$Matches[1]]) { $numeros[$Matches[1]] } else { throw "documento 11 §7.6, alerta 2: número no reconocido «$($Matches[1])»" }; $p.desde = $Matches[2] }
+    2 { $p.alcance = @([regex]::Matches($a.cuando, '\bIM[1-4]\b') | ForEach-Object { $_.Value })
+        if ($a.cuando -notmatch '(D[1-7]) en (\d) o menos') { throw 'documento 11 §7.6, alerta 3: falta «Dn en N o menos»' }; $p.dimension = $Matches[1]; $p.maximo = [int]$Matches[2] }
+  }
+  return $p
+}
+function Lentes-DesdeDocumento {
+  $es = Leer-Lentes $doc.es $doc12.es; $en = Leer-Lentes $doc.en $doc12.en
+  $bi = { param($a, $b) [ordered]@{ es = $a; en = $b } }
+  foreach ($k in 'lentes', 'huella', 'minimos', 'alertas', 'alcance') { if (@($es.$k).Count -ne @($en.$k).Count) { throw "documentos 11 §7.6 / 12 §3.7: la tabla «$k» tiene $(@($es.$k).Count) filas en ES y $(@($en.$k).Count) en EN" } }
+  if (@($es.lentes).Count -ne 3) { throw "documento 11 §7.6: $(@($es.lentes).Count) lentes (deben ser 3)" }
+  if (@($es.huella).Count -ne 6) { throw "documento 11 §7.6: $(@($es.huella).Count) niveles de huella (deben ser 6, HT0–HT5)" }
+  if (@($es.alcance).Count -ne 4) { throw "documento 12 §3.7: $(@($es.alcance).Count) niveles de alcance (deben ser 4, IM1–IM4)" }
+  if (@($es.alertas).Count -ne $codAlertas.Count) { throw "documento 11 §7.6: $(@($es.alertas).Count) alertas (T15 conoce $($codAlertas.Count); añadir su código y su regla en la plantilla)" }
+  if (($es.dims -join ',') -ne ($en.dims -join ',')) { throw 'documento 11 §7.6: columnas del mínimo exigible distintas en ES y EN' }
+  for ($i = 0; $i -lt 6; $i++) { $a = $es.huella[$i]; $b = $en.huella[$i]
+    if ($a.nivel -ne $b.nivel -or ($a.tecnologias -join ',') -ne ($b.tecnologias -join ',') -or ((@($a.agente_autonomia) -join ',') -ne (@($b.agente_autonomia) -join ','))) { throw "documento 11 §7.6: el nivel $($a.nivel) no coincide en ES y EN (código, tecnologías o autonomía)" } }
+  for ($i = 0; $i -lt @($es.minimos).Count; $i++) { if (($es.minimos[$i] | ConvertTo-Json -Compress) -ne ($en.minimos[$i] | ConvertTo-Json -Compress)) { throw "documento 11 §7.6: el mínimo exigible de $($es.minimos[$i].huella) no coincide en ES y EN" } }
+  for ($i = 0; $i -lt $codAlertas.Count; $i++) { $a = $es.alertas[$i]; $b = $en.alertas[$i]
+    foreach ($k in 'cuando', 'gravedad_txt') { if ((Fichas $a.$k) -ne (Fichas $b.$k)) { throw "documento 11 §7.6: la alerta «$($a.nombre)» cita códigos o cifras distintos en ES ($(Fichas $a.$k)) y EN ($(Fichas $b.$k)) ($k)" } } }
+  for ($i = 0; $i -lt 4; $i++) { if ($es.alcance[$i].nivel -ne $en.alcance[$i].nivel -or (Fichas $es.alcance[$i].condicion) -ne (Fichas $en.alcance[$i].condicion)) { throw "documento 12 §3.7: el nivel $($es.alcance[$i].nivel) no coincide en ES y EN" } }
+  $tecValidas = 'ml_predictivo', 'ia_generativa', 'agente', 'lenguaje_documentos', 'vision', 'optimizacion', 'ia_terceros_embebida', 'reglas'
+  foreach ($h in $es.huella) { foreach ($x in $h.tecnologias) { if ($x -notin $tecValidas) { throw "documento 11 §7.6: tecnología «$x» inexistente en el esquema de T01" } } }
+  return [ordered]@{
+    origen = 'Documento 11 · Modelo de madurez, §7.6 (lentes, huella tecnológica HT0–HT5, gobierno mínimo exigible por huella y alertas) y documento 12 · Índice de transformación, §3.7 (alcance del impacto IM1–IM4). Extraído con build_madurez.ps1 -ActualizarLentes; no se edita a mano.'
+    lentes = @(for ($i = 0; $i -lt 3; $i++) { $a = $es.lentes[$i]; $b = $en.lentes[$i]; [ordered]@{ lente = $a.lente; nombre = (& $bi $a.nombre $b.nombre); pregunta = (& $bi $a.pregunta $b.pregunta); escala = (& $bi $a.escala $b.escala); obtiene = (& $bi $a.obtiene $b.obtiene) } })
+    huella = @(for ($i = 0; $i -lt 6; $i++) { $a = $es.huella[$i]; $b = $en.huella[$i]
+      $o = [ordered]@{ nivel = $a.nivel; n = $a.n; tecnologias = @($a.tecnologias) }; if ($a.agente_autonomia) { $o.agente_autonomia = @($a.agente_autonomia) }
+      $o.nombre = (& $bi $a.nombre $b.nombre); $o.que = (& $bi $a.que $b.que); $o.tecnologia_txt = (& $bi $a.tecnologia_txt $b.tecnologia_txt); $o })
+    dimensiones_minimo = @($es.dims)
+    minimos = @($es.minimos)
+    alertas = @(for ($i = 0; $i -lt $codAlertas.Count; $i++) { $a = $es.alertas[$i]; $b = $en.alertas[$i]
+      [ordered]@{ codigo = $codAlertas[$i]; parametros = (Parametros-Alerta $i $a); nombre = (& $bi $a.nombre $b.nombre); cuando = (& $bi $a.cuando $b.cuando); gravedad = (& $bi $a.gravedad_txt $b.gravedad_txt); pide = (& $bi $a.pide $b.pide) } })
+    alcance = @(for ($i = 0; $i -lt 4; $i++) { $a = $es.alcance[$i]; $b = $en.alcance[$i]; [ordered]@{ nivel = $a.nivel; nombre = (& $bi $a.nombre $b.nombre); condicion = (& $bi $a.condicion $b.condicion); ambicion = (& $bi $a.ambicion $b.ambicion) } })
+  }
+}
+if ($ActualizarLentes) {
+  $l = Lentes-DesdeDocumento
+  [IO.File]::WriteAllText($rutaLentes, ($l | ConvertTo-Json -Depth 20) + "`n", [Text.UTF8Encoding]::new($false))
+  "lentes: $rutaLentes actualizado desde los documentos 11 §7.6 y 12 §3.7 ($(@($l.huella).Count) niveles de huella, $(@($l.minimos).Count) filas de mínimo exigible, $(@($l.alertas).Count) alertas, $(@($l.alcance).Count) niveles de alcance)"
+}
+
 if ($ActualizarPerfiles) {
   $p = Perfiles-DesdeDocumento
   [IO.File]::WriteAllText($rutaPerf, ($p | ConvertTo-Json -Depth 20) + "`n", [Text.UTF8Encoding]::new($false))
@@ -177,7 +273,8 @@ if ($ActualizarCuestionario) {
   "cuestionario: $rutaCuest actualizado desde el documento 11 (versión $($nuevo.version_cuestionario); si han cambiado preguntas o niveles, suba la versión)"
 }
 
-foreach ($f in $plantilla, $Datos, $rutaCuest, $rutaPerf) { if (-not (Test-Path $f)) { throw "No se encuentra $f (perfiles_nist.json se crea con -ActualizarPerfiles)" } }
+if (-not $RegistroT01) { $RegistroT01 = Join-Path $aqui '..\T01_registro_iniciativas\datos_demo.json' }
+foreach ($f in $plantilla, $Datos, $rutaCuest, $rutaPerf, $rutaLentes, $RegistroT01) { if (-not (Test-Path $f)) { throw "No se encuentra $f (perfiles_nist.json se crea con -ActualizarPerfiles y lentes.json con -ActualizarLentes)" } }
 $c = Get-Content $rutaCuest -Raw -Encoding utf8 | ConvertFrom-Json -Depth 20
 $errores = [Collections.Generic.List[string]]::new()
 foreach ($x in (Comprobar-Cuestionario $c)) { $errores.Add("cuestionario: $x") }
@@ -204,6 +301,31 @@ foreach ($s in @($perf.ai_rmf) + @($perf.csf)) { $idsPerf[$s.id] = $s
   if ($s.dimension -notin $codDims) { $errores.Add("perfil $($s.id): dimensión $($s.dimension) inexistente") }
   foreach ($q in @($s.preguntas)) { if (-not $codPreg[$q]) { $errores.Add("perfil $($s.id): pregunta $q inexistente en el cuestionario") } } }
 
+# ---- las lentes deben coincidir con los documentos 11 §7.6 y 12 §3.7 (ES/EN) (D120)
+$lentesJ = Get-Content $rutaLentes -Raw -Encoding utf8 | ConvertFrom-Json -Depth 20
+if ((Test-Path $doc.es) -and (Test-Path $doc.en) -and (Test-Path $doc12.es) -and (Test-Path $doc12.en)) {
+  $delDocL = (Lentes-DesdeDocumento) | ConvertTo-Json -Depth 20 | ConvertFrom-Json -Depth 20
+  if (($delDocL | ConvertTo-Json -Depth 20 -Compress) -cne ($lentesJ | ConvertTo-Json -Depth 20 -Compress)) { $errores.Add('lentes.json no coincide con los documentos 11 §7.6 y 12 §3.7 (ES/EN): ejecute build_madurez.ps1 -ActualizarLentes') }
+}
+foreach ($m in $lentesJ.minimos) { foreach ($dd in $lentesJ.dimensiones_minimo) { if ($null -ne $m.$dd -and $dd -notin $codDims) { $errores.Add("lentes.json: dimensión $dd inexistente") } } }
+
+# ---- extracto del registro T01 para la huella y el alcance cuando no hay registro en el navegador (D120)
+$r01 = Get-Content $RegistroT01 -Raw -Encoding utf8 | ConvertFrom-Json -Depth 64
+if (-not $r01.meta -or $null -eq $r01.iniciativas) { throw "$(Split-Path $RegistroT01 -Leaf): no es un registro completo de T01" }
+$extracto = [ordered]@{
+  origen = "Extracto de $(Split-Path (Split-Path $RegistroT01 -Parent) -Leaf)/$(Split-Path $RegistroT01 -Leaf) para la huella tecnológica y el alcance del impacto (11 §7.6, 12 §3.7); lo escribe build_madurez.ps1."
+  meta = [ordered]@{ organizacion = $r01.meta.organizacion; fecha_referencia = $r01.meta.fecha_referencia; datos_ilustrativos = [bool]$r01.meta.datos_ilustrativos }
+  iniciativas = @(foreach ($i in $r01.iniciativas) {
+    $ix = [ordered]@{}; foreach ($k in 'itp2', 'itp3') { $v = $i.indice.$k; if ($v) { $ix[$k] = [ordered]@{ estado = $v.estado; fecha = $v.fecha } } }
+    [ordered]@{ id = $i.id; nombre = $i.nombre; fecha_registro = $i.fecha_registro
+      clasificacion = [ordered]@{ tecnologia = @($i.clasificacion.tecnologia); autonomia = $i.clasificacion.autonomia; ambicion_real = $i.clasificacion.ambicion_real }
+      ciclo = [ordered]@{ fase = $i.ciclo.fase; estado = $i.ciclo.estado }; cierre = if ($i.cierre) { [ordered]@{ tipo = $i.cierre.tipo; fecha = $i.cierre.fecha } } else { $null }
+      sistemas = @($i.sistemas); indice = $ix } })
+  eventos = @($r01.eventos | Where-Object { $_.tipo -eq 'entrada_fase' } | ForEach-Object { [ordered]@{ id = $_.id; iniciativa = $_.iniciativa; fecha = $_.fecha; tipo = $_.tipo; fase = $_.fase } })
+  decisiones_consejo = @($r01.decisiones_consejo | Where-Object { $_ } | ForEach-Object { [ordered]@{ id = $_.id; fecha = $_.fecha; asunto = $_.asunto; resultado = $_.resultado } })
+}
+$extractoTxt = ($extracto | ConvertTo-Json -Depth 20 -Compress).Replace('</', '<\/')
+
 # ---- comprobaciones de los datos
 $d = Get-Content $Datos -Raw -Encoding utf8 | ConvertFrom-Json -Depth 32
 foreach ($k in 'version_esquema', 'meta', 'evaluaciones') { if ($null -eq $d.$k) { throw "$(Split-Path $Datos -Leaf): falta la clave «$k»" } }
@@ -221,6 +343,10 @@ foreach ($ev in $d.evaluaciones) {
     if ($null -ne $v.r -and $v.r -notin 'si', 'parcial', 'no', 'na') { $errores.Add("evaluación $($ev.id) $($pr.Name): respuesta no válida ($($v.r))") }
     if ($v.r -eq 'na' -and -not $q.si_aplica) { $errores.Add("evaluación $($ev.id) $($pr.Name): «No aplica» en una pregunta que no lo admite") }
   }
+  if ($ev.lentes_manual) {
+    $hm = $ev.lentes_manual.huella; if ($hm -and $hm.nivel -and $hm.nivel -notin @($lentesJ.huella | ForEach-Object nivel)) { $errores.Add("evaluación $($ev.id): lentes_manual.huella.nivel no válido ($($hm.nivel))") }
+    if ($ev.lentes_manual.alcance) { foreach ($pr in $ev.lentes_manual.alcance.PSObject.Properties) { if ($pr.Name -notin @($lentesJ.alcance | ForEach-Object nivel) -or ($null -ne $pr.Value -and $pr.Value -lt 0)) { $errores.Add("evaluación $($ev.id): lentes_manual.alcance.$($pr.Name) no válido") } } }
+  }
   foreach ($grupo in 'objetivos', 'propios') {
     if (-not $ev.perfiles -or -not $ev.perfiles.$grupo) { continue }
     foreach ($pr in $ev.perfiles.$grupo.PSObject.Properties) {
@@ -236,8 +362,8 @@ if ($errores.Count) { throw "Fuentes de T15 incoherentes:`n  " + ($errores -join
 
 # ---- construcción
 $html = [IO.File]::ReadAllText($plantilla)
-foreach ($m in '__CUESTIONARIO__', '__DATOS_DEMO__', '__PERFILES__') { if (([regex]::Matches($html, $m)).Count -ne 1) { throw "La plantilla debe contener una sola vez la marca $m" } }
-$html = $html.Replace('__CUESTIONARIO__', (Compactar $rutaCuest)).Replace('__DATOS_DEMO__', (Compactar $Datos)).Replace('__PERFILES__', (Compactar $rutaPerf))
+foreach ($m in '__CUESTIONARIO__', '__DATOS_DEMO__', '__PERFILES__', '__LENTES__', '__T01_EXTRACTO__') { if (([regex]::Matches($html, $m)).Count -ne 1) { throw "La plantilla debe contener una sola vez la marca $m" } }
+$html = $html.Replace('__CUESTIONARIO__', (Compactar $rutaCuest)).Replace('__DATOS_DEMO__', (Compactar $Datos)).Replace('__PERFILES__', (Compactar $rutaPerf)).Replace('__LENTES__', (Compactar $rutaLentes)).Replace('__T01_EXTRACTO__', $extractoTxt)
 # módulo común de datos locales (D103): se incrusta para que la herramienta siga siendo un solo fichero
 $comun = Join-Path $aqui '..\_comun\datos_locales.js'
 if (-not (Test-Path $comun)) { throw "No se encuentra $comun" }
@@ -261,7 +387,7 @@ setTimeout(function(){ try{
 }catch(e){ fetch('/resultado',{method:'POST',body:'ERROR '+e.message}); } }, 300);
 '@
   $js = $js.Replace('__DATOS__', (Split-Path $Datos -Leaf))
-  $pagina = $html.Replace('</body>', "<script>$js</script></body>")
+  $pagina = $html.Replace('<script type="application/json" id="cuestionario">', '<script>window.T15_USAR_T01_INCRUSTADO=true;</script><script type="application/json" id="cuestionario">').Replace('</body>', "<script>$js</script></body>")
   $perfil = Join-Path ([IO.Path]::GetTempPath()) ('t15_edge_' + [Guid]::NewGuid().ToString('N').Substring(0, 8))
   $puerto = Get-Random -Minimum 20000 -Maximum 40000
   $http = [System.Net.HttpListener]::new(); $http.Prefixes.Add("http://localhost:$puerto/"); $http.Start()
