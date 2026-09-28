@@ -324,7 +324,7 @@ function Nuevo-Indice([string]$lang) {
     [void]$sb.AppendLine()
   }
   # carpeta propia de cada proceso: dos generaciones simultáneas no deben leer el índice de la otra
-  $tmp = Join-Path $env:TEMP "seveng-indice-$PID\$($cfg.marca)\$lang\index.md"
+  $tmp = Join-Path ([IO.Path]::GetTempPath()) "seveng-indice-$PID\$($cfg.marca)\$lang\index.md"
   New-Item -ItemType Directory -Force (Split-Path $tmp) | Out-Null
   Set-Content -Path $tmp -Value $sb.ToString() -Encoding utf8
   $tmp
@@ -920,11 +920,12 @@ $titulosReferencias = ObtenerTitulosReferencias $lang
 
     if (-not $SinPdf -and -not $esIndice) {
       New-Item -ItemType Directory -Force (Split-Path $pdfOut) | Out-Null
-      $perfil = Join-Path $env:TEMP "seveng-pdf-$PID"
-      $uri = ([Uri]$htmlOut).AbsoluteUri
+      $perfil = Join-Path ([IO.Path]::GetTempPath()) "seveng-pdf-$PID"
+      $uri = ([Uri]$(if ($IsWindows) { $htmlOut } else { $htmlOut -replace '\\', '/' })).AbsoluteUri  # en Linux, rutas con /
       $argumentos = @('--headless=new', '--disable-gpu', '--no-first-run', '--no-pdf-header-footer',
                       '--virtual-time-budget=20000', "--user-data-dir=`"$perfil`"", "--print-to-pdf=`"$pdfOut`"", $uri)
-      Start-Process -FilePath $browser -ArgumentList $argumentos -Wait -WindowStyle Hidden
+      $sinVentana = if ($IsWindows) { @{ WindowStyle = 'Hidden' } } else { @{} }  # -WindowStyle solo existe en Windows
+      Start-Process -FilePath $browser -ArgumentList $argumentos -Wait @sinVentana
       if (Test-Path $pdfOut) { Write-Host "PDF   [$lang] $rel" } else { Write-Warning "No se generó $pdfOut" }
     }
   }
@@ -950,4 +951,4 @@ if ($Metodologias -contains 'SEVEN-G' -and -not $env:SEVENG_BUILD_CURSO_PASE2) {
 & (Join-Path $PSScriptRoot 'busqueda.ps1') -Idiomas $todos
 
 # índices temporales de este proceso
-Remove-Item -Recurse -Force (Join-Path $env:TEMP "seveng-indice-$PID") -ErrorAction SilentlyContinue
+Remove-Item -Recurse -Force (Join-Path ([IO.Path]::GetTempPath()) "seveng-indice-$PID") -ErrorAction SilentlyContinue
