@@ -564,7 +564,7 @@ foreach ($lang in $Idiomas) {
     $entDst = Join-Path $htmlDir 'entrada'; $entCom = Join-Path $root 'html\entrada'
     New-Item -ItemType Directory -Force $entDst, $entCom | Out-Null
     # la fuente no lleva cifras escritas a mano: los recuentos y el inventario de casos se toman al generar de la biblioteca
-    # y del JSON del panel de ejemplo (entrada_datos.ps1, D121)
+    # y del JSON del panel de ejemplo (entrada_datos.ps1, D124)
     $entHtml = Get-Content (Join-Path $entSrc "$lang\index.html") -Raw -Encoding utf8
     $entHtml = Expandir-Entrada $entHtml $lang $repo (Recuentos-Biblioteca $lang)
     [IO.File]::WriteAllText((Join-Path $entDst 'index.html'), $entHtml, [Text.UTF8Encoding]::new($false))

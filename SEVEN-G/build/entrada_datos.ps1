@@ -1,5 +1,5 @@
 <#
-  Datos de la entrada ligera «Qué es SEVEN-G» (D91, D121). Lo usan build.ps1 (al copiar la entrada a html/<idioma>/entrada/)
+  Datos de la entrada ligera «Qué es SEVEN-G» (D91, D124). Lo usan build.ps1 (al copiar la entrada a html/<idioma>/entrada/)
   y verificar_coherencia.ps1 (sección 13, para comprobar que la página publicada es su fuente con los datos al día).
 
   La fuente (build/entrada/<idioma>/index.html) no lleva cifras escritas a mano; lleva marcas que se sustituyen al generar:
