@@ -542,6 +542,21 @@ def incidentes(ix):
     return out
 
 
+AMBICION_OBJ = {"optimizar": "Optimizar", "aumentar": "Aumentar", "transformar": "Transformar", "no_prioritaria": "no_prioritaria"}
+
+
+def tesis_c2(t01, corte):
+    """Última tesis de C2 aprobada hasta la fecha de corte (decisión del consejo con asunto «tesis»), si trae la ambición objetivo por
+    esfera: (código DEC, {esfera: ambición}). El panel la usa en el mapa de impacto (documento 10 §8, 60 §10.5; D130)."""
+    ts = [d for d in t01.get("decisiones_consejo") or [] if d.get("asunto") == "tesis" and d.get("resultado") in ("aprobada", "aprobada_condiciones")
+          and d.get("fecha") and d["fecha"] <= corte]
+    if not ts:
+        return None
+    d = sorted(ts, key=lambda x: x["fecha"])[-1]
+    ao = {e: AMBICION_OBJ[v] for e, v in sorted((d.get("ambicion_objetivo") or {}).items()) if v in AMBICION_OBJ}
+    return (d.get("id"), ao) if ao else None
+
+
 # ---------------------------------------------------------------- conversion completa
 def convertir(t01, sigla=None, organizacion=None, prefijo="t01_", enlaces_pie="", demo=None):
     """JSON completo de T01 -> JSON del panel (motor/ESQUEMA.md). Requiere cargar_motor()."""
@@ -583,7 +598,7 @@ def convertir(t01, sigla=None, organizacion=None, prefijo="t01_", enlaces_pie=""
     }
     textos = PUB.textos_con_aviso(textos, aviso=aviso, aviso_corto=PUB.AVISO_LEGAL_CORTO if ficticio else
                                   "Aviso legal: «tal cual» y con fines informativos; no es asesoramiento jurídico, regulatorio ni financiero ni garantiza el cumplimiento de ninguna norma.")
-    return {
+    datos = {
         "meta": {"esquema": "ESQUEMA.md", "version_datos": 6, "generado": corte, "ejercicio_valor": anio,
                  "periodo": {"etiqueta": f"Registro de iniciativas T01 · corte {_fecha_txt(corte)}", "trimestre": f"{(int(corte[5:7]) - 1) // 3 + 1}T {anio}", "anterior": None},
                  "fuentes": {"t01": f"Registro de iniciativas T01 de SEVEN-G (esquema {t01.get('version_esquema')})"},
@@ -596,6 +611,11 @@ def convertir(t01, sigla=None, organizacion=None, prefijo="t01_", enlaces_pie=""
         "casos": casos,
         "historico": [],
     }
+    # tesis de C2 con la ambición objetivo por esfera (D130): el registro T01 manda sobre la configuración del panel (D100)
+    tesis = tesis_c2(t01, corte)
+    if tesis:
+        datos["meta"]["mapa_impacto"] = {**(config.get("mapa_impacto") or {}), "objetivo_c2": tesis[1], "objetivo_fuente": tesis[0]}
+    return datos
 
 
 # ---------------------------------------------------------------- indice de transformacion (T14, documento 12)

@@ -420,7 +420,7 @@ Rules of use:
 
 ### 10.3 Pending adaptations
 
-Tool T17 is fed from the initiative register (T01) through its connector (03 §5.4): it shows the funnel by lifecycle **phase and status**, links each use case to its IA-AAAA-NNN code and generates the recommendations register of document 62. It also shows the executive reading **«What holds back scaling»** (§10.4) and the **map of spheres × ambition levels** (T16, §10.5). Grouping by **programme** with the traffic light in section 9 is not part of the dashboard: it is calculated with the rules of 14 §12 and annexed to the pack with P67, and board decisions are recorded in P69. The dashboard takes the C2 target ambition per sphere from its general configuration until the T01 register stores it.
+Tool T17 is fed from the initiative register (T01) through its connector (03 §5.4): it shows the funnel by lifecycle **phase and status**, links each use case to its IA-AAAA-NNN code and generates the recommendations register of document 62. It also shows the executive reading **«What holds back scaling»** (§10.4) and the **map of spheres × ambition levels** (T16, §10.5). Grouping by **programme** with the traffic light in section 9 is not part of the dashboard: it is calculated with the rules of 14 §12 and annexed to the pack with P67, and board decisions are recorded in P69. The dashboard takes the C2 target ambition per sphere from the thesis approved in the T01 register (board decision with its target ambition per sphere, 62 §10.2) and, only if the register does not carry it, from its general configuration.
 
 The engine files published in the demonstrations repository are copies from their source project: adaptations are made at source and published again.
 
@@ -462,7 +462,7 @@ The dashboard includes the **portfolio heat map** (tool T16) with the rules of d
 Rules of use:
 
 - **It is the view for the annual direction (C2) and review (C5) packs**; in the quarterly pack it is used when the distribution changes or there is a new gap.
-- **The target ambition per sphere is the one approved in C2** (document 13). Until the T01 register stores it, it is set in the dashboard's general configuration (`mapa_impacto.objetivo_c2`); without it the map marks neither gaps nor «off thesis».
+- **The target ambition per sphere is the one approved in C2** (document 13). It is recorded in T01, in the board decision approving the thesis (62 §10.2), and the dashboard takes it from there and states which decision it comes from; only a dashboard not fed from T01 sets it in its general configuration (`mapa_impacto.objetivo_c2`). Without it, the map marks neither gaps nor «off thesis».
 - **The grades of spheres 08 and 09** are assessed with document 10 (§6.4 and §7.3) and are not deduced from the map.
 
 ---

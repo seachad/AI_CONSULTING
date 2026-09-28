@@ -420,7 +420,7 @@ Reglas de uso:
 
 ### 10.3 Adaptaciones pendientes
 
-La herramienta T17 se alimenta del registro de iniciativas (T01) mediante su conector (03 §5.4): muestra el embudo por **fase y estado** del ciclo de vida, enlaza cada caso con su código IA-AAAA-NNN y genera el registro de recomendaciones del documento 62. Muestra también la lectura ejecutiva **«Qué frena el escalado»** (§10.4) y el **mapa de esferas × niveles de ambición** (T16, §10.5). La agrupación por **programa** con el semáforo de la sección 9 no forma parte del panel: se calcula con las reglas de 14 §12 y se anexa al paquete con P67, y las decisiones del consejo se registran en P69. La ambición objetivo de C2 por esfera la toma el panel de su configuración general mientras el registro T01 no la guarde.
+La herramienta T17 se alimenta del registro de iniciativas (T01) mediante su conector (03 §5.4): muestra el embudo por **fase y estado** del ciclo de vida, enlaza cada caso con su código IA-AAAA-NNN y genera el registro de recomendaciones del documento 62. Muestra también la lectura ejecutiva **«Qué frena el escalado»** (§10.4) y el **mapa de esferas × niveles de ambición** (T16, §10.5). La agrupación por **programa** con el semáforo de la sección 9 no forma parte del panel: se calcula con las reglas de 14 §12 y se anexa al paquete con P67, y las decisiones del consejo se registran en P69. La ambición objetivo de C2 por esfera la toma el panel de la tesis aprobada en el registro T01 (decisión del consejo con su ambición objetivo por esfera, 62 §10.2) y, solo si el registro no la trae, de su configuración general.
 
 Los ficheros del motor que se publican en el repositorio de demostraciones son copia de su proyecto de origen: las adaptaciones se hacen en origen y se vuelven a publicar.
 
@@ -462,7 +462,7 @@ El panel incluye el **mapa de calor de la cartera** (herramienta T16) con las re
 Reglas de uso:
 
 - **Es la vista del paquete anual de dirección (C2) y de revisión (C5)**; en el trimestral se usa cuando cambia la distribución o hay una brecha nueva.
-- **La ambición objetivo por esfera es la aprobada en C2** (documento 13). Mientras el registro T01 no la guarde, se informa en la configuración general del panel (`mapa_impacto.objetivo_c2`); sin ella el mapa no marca brechas ni «fuera de tesis».
+- **La ambición objetivo por esfera es la aprobada en C2** (documento 13). Se registra en T01, en la decisión del consejo que aprueba la tesis (62 §10.2), y el panel la toma de ahí e indica de qué decisión sale; solo un panel que no se alimenta de T01 la informa en su configuración general (`mapa_impacto.objetivo_c2`). Sin ella, el mapa no marca brechas ni «fuera de tesis».
 - **Los grados de las esferas 08 y 09** se evalúan con el documento 10 (§6.4 y §7.3) y no se deducen del mapa.
 
 ---

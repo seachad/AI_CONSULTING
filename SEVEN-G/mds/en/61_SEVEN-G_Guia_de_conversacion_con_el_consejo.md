@@ -5,7 +5,7 @@
 | | |
 |---|---|
 | Document | Document 61 · Board conversation guide |
-| Version | 0.1 (working draft) |
+| Version | 0.2 (working draft) |
 | Date | 16-09-2026 |
 | Author | Fernando García Varela |
 | Status | Draft for review. Integrates the session script and the questions from the sphere map. |
@@ -363,6 +363,7 @@ The answers are indicative and are adapted using the company's data. All figures
 | 13 | **How much does AI really cost?** | Give the recurring cost by category and by use case, including model consumption and operations people. If there are uncharged costs, say so. | Cost per use case with allocation (T13; document 42). | Presenting only the licences. |
 | 14 | **Are employees using unauthorised AI tools?** | Give what is known: detections, active technical controls, training, regularisations. If it is not measured, "Not yet, because … is missing". | Corporate use monitor (T21); nonconformities for unauthorised use. | Saying it does not happen because it is prohibited. |
 | 15 | **Can we speed up if we relax the controls?** | "Yes, with one condition" only for non-critical controls and with acceptance of the risk by the appropriate person; "No" for security, legal compliance and human oversight. | Risk appetite approved in C2; rules on conditions (01 §7.3). | Giving in to deadline pressure without a record. |
+| 16 | **What is stopping us from scaling AI?** | Name the three barriers to start with, with what they block, what will be done, who and the annual value at stake; separate what blocks a gate from what only holds back value. | «What holds back scaling» reading of the dashboard (document 60 §10.4) and the decisions or recommendations that turn it into actions (document 62). | A list of problems without order or owner, or presenting the value at stake as secured value. |
 
 ---
 
@@ -456,3 +457,4 @@ The EU AI Act includes AI literacy obligations for the staff of providers and de
 | Version | Date | Changes |
 |---|---|---|
 | 0.1 | 16-09-2026 | First version. Integrates the questions and session script from the sphere map into the SEVEN-G framework; defines business language, the response format for the board with examples, the three-use-case rule, the questions by sphere and by stage, the difficult questions, the role of the director or adviser with AI experience and the frequent mistakes. |
+| 0.2 | 28-09-2026 | Difficult question 16 «What is stopping us from scaling AI?», answered with the dashboard's «What holds back scaling» reading (60 §10.4). |

@@ -498,7 +498,7 @@ Cada ficha tiene la misma estructura: qué cubre, preguntas para el consejo, eje
 
 ## 8. Mapa de calor esferas × niveles (T16)
 
-El mapa de calor es la vista de la cartera sobre el mapa de impacto. Se genera desde el registro de iniciativas (T01) y se muestra en el panel del consejo (T17), en la tarjeta «Dónde está el impacto» de «Cartera y valor» (60 §10.5), que permite también ver las filas por unidad de negocio. Mientras el registro no guarde la ambición objetivo de C2 por esfera, el panel la toma de su configuración general; sin ella no marca brechas ni «fuera de tesis».
+El mapa de calor es la vista de la cartera sobre el mapa de impacto. Se genera desde el registro de iniciativas (T01) y se muestra en el panel del consejo (T17), en la tarjeta «Dónde está el impacto» de «Cartera y valor» (60 §10.5), que permite también ver las filas por unidad de negocio. La ambición objetivo de C2 por esfera se registra en T01, en la decisión del consejo que aprueba la tesis (62 §10.2), y el panel la toma de ahí; sin ella no marca brechas ni «fuera de tesis».
 
 ### 8.1 Construcción
 
