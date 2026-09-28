@@ -5,7 +5,7 @@
 | | |
 |---|---|
 | Documento | Documento 10 · Mapa de esferas y niveles de ambición |
-| Versión | 0.1 (borrador de trabajo) |
+| Versión | 0.2 (borrador de trabajo) |
 | Fecha | 16-09-2026 |
 | Autor | Fernando García Varela |
 | Estado | Borrador para revisión. Desarrolla el componente A del marco (documento 01, sección 2). |
@@ -498,7 +498,7 @@ Cada ficha tiene la misma estructura: qué cubre, preguntas para el consejo, eje
 
 ## 8. Mapa de calor esferas × niveles (T16)
 
-El mapa de calor es la vista de la cartera sobre el mapa de impacto. Se genera desde el registro de iniciativas (T01) y se muestra en el panel del consejo (T17).
+El mapa de calor es la vista de la cartera sobre el mapa de impacto. Se genera desde el registro de iniciativas (T01) y se muestra en el panel del consejo (T17), en la tarjeta «Dónde está el impacto» de «Cartera y valor» (60 §10.5), que permite también ver las filas por unidad de negocio. Mientras el registro no guarde la ambición objetivo de C2 por esfera, el panel la toma de su configuración general; sin ella no marca brechas ni «fuera de tesis».
 
 ### 8.1 Construcción
 
@@ -629,3 +629,4 @@ Los **primeros noventa días** concentran C1 a C3 (documento 01, sección 5.3). 
 | Versión | Fecha | Cambios |
 |---|---|---|
 | 0.1 | 16-09-2026 | Primera versión. Integra el marco de esferas anterior en SEVEN-G: fichas de las nueve esferas con preguntas, ejemplos por nivel, señales de alerta e indicadores con fórmula; reglas de esfera principal y secundaria; regla de no mezcla de las esferas 08 y 09 con grados propios; mapa de calor (T16) y uso en C1–C5 y en las fases 1, 2 y 7. |
+| 0.2 | 28-09-2026 | El mapa de calor (T16) se muestra en el panel del consejo como tarjeta «Dónde está el impacto» (60 §10.5), con vista por unidad de negocio; sección 8. |

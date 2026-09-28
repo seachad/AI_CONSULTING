@@ -5,7 +5,7 @@
 | | |
 |---|---|
 | Document | Document 60 · Board pack |
-| Version | 0.1 (working draft) |
+| Version | 0.2 (working draft) |
 | Date | 16-09-2026 |
 | Author | Fernando García Varela |
 | Status | Draft for review. Develops stage C4 (oversight) and the outputs of C2 and C5 that are escalated to the board. |
@@ -130,6 +130,7 @@ The annual review should involve internal audit (01 §5.1).
 | **Key figures** | Efficiencies, return, recurring cost and annual net value; validated proportion; released capacity not realised (shown separately); investment executed against budget. | Rules in section 8. |
 | **Portfolio** | Initiatives by phase and status; in production; stopped and retired in the quarter; stalled. | From T01. |
 | **Risk** | Critical and High residual risks; S1 and S2 incidents; open major and critical nonconformities. | Number and link only; detail in sections 5 and 6. |
+| **What holds back scaling** | The three barriers to start with (FE-1 to FE-6), with what they block, what to do, who and the annual value at stake. | Reading of §10.4, from T17. If an action needs a decision, it moves to «Decisions requested». |
 | **Decisions requested** | List with code and one line per decision. | If there are no decisions, this is stated explicitly. |
 | **Recommendations** | Open, overdue, closed in the quarter, discrepancies between declared and assessed. | From T18. |
 | **Changes since the previous session** | What has changed and why. | Comparison with the snapshot from the previous session. |
@@ -142,6 +143,7 @@ The annual review should involve internal audit (01 §5.1).
 | Key figures | Efficiencies €3.9M · Return €1.6M · Recurring cost €1.3M · **Annual net value €4.2M** · Validated proportion 58% (€3.2M of €5.5M) · Released capacity not realised €1.1M (not added) · Investment executed €2.4M of €3.0M budgeted. |
 | Portfolio | 31 initiatives: 6 in phases 0–2, 7 in phases 3–5, 14 in production, 4 at G7. In the quarter: 1 stopped at G3 (unacceptable risk), 1 retired (replaced by another solution). 3 stalled. |
 | Risk | 0 Critical residual risks · 4 High · 1 S2 incident · 1 open major nonconformity. |
+| What holds back scaling | 1) FE-3 · Risk and compliance not closed: blocks G5 in 2 initiatives; complete their impact assessments before the next AI Committee meeting (risk owner). 2) FE-1 · Value is not proven: €1.4M in use not validated; validation by management control before quarter-end. 3) FE-2 · Cases do not move forward: 3 overdue; early *gate* at the next monthly meeting. |
 | Decisions requested | DEC-2026-014 · Authorise the value hypothesis of a Transform initiative (G2). DEC-2026-015 · Take note of the stopping of an initiative at G3. |
 | Recommendations | 12 open · 2 overdue · 3 closed with a conformant assessment · 1 discrepancy (declared met, assessed as nonconformant). |
 | Changes | The validated proportion rises owing to management control's validation of two use cases; the internal queries assistant is retired (no usage). |
@@ -405,6 +407,8 @@ Rules of use:
 
 | Dashboard block | Pack section that uses it |
 |---|---|
+| Portfolio and value: what holds back scaling and where to act first (§10.4) | One-page summary (main message and what holds back scaling); decisions requested |
+| Portfolio and value: where the impact is, spheres × ambition level (T16, §10.5) | Annual direction (C2) and review (C5) packs; summary |
 | Portfolio and value: key indicators, efficiencies, return and cost by company and unit, additional net value per euro | One-page summary; use cases in detail; investment decisions |
 | Where the company invests (ambition level) and agility | Summary; annual review (C5) |
 | History and trend | Changes since the previous session |
@@ -416,9 +420,50 @@ Rules of use:
 
 ### 10.3 Pending adaptations
 
-Tool T17 is fed from the initiative register (T01) through its connector (03 §5.4): it shows the funnel by lifecycle **phase and status**, links each use case to its IA-AAAA-NNN code and generates the recommendations register of document 62. Grouping by **programme** with the traffic light in section 9 and the distribution by **sphere** (T16 map) are not part of the dashboard: the traffic light is calculated with the rules of 14 §12 and annexed to the pack with P67, and board decisions are recorded in P69.
+Tool T17 is fed from the initiative register (T01) through its connector (03 §5.4): it shows the funnel by lifecycle **phase and status**, links each use case to its IA-AAAA-NNN code and generates the recommendations register of document 62. It also shows the executive reading **«What holds back scaling»** (§10.4) and the **map of spheres × ambition levels** (T16, §10.5). Grouping by **programme** with the traffic light in section 9 is not part of the dashboard: it is calculated with the rules of 14 §12 and annexed to the pack with P67, and board decisions are recorded in P69. The dashboard takes the C2 target ambition per sphere from its general configuration until the T01 register stores it.
 
 The engine files published in the demonstrations repository are copies from their source project: adaptations are made at source and published again.
+
+### 10.4 What holds back scaling: executive reading and where to act first
+
+Many companies today have AI cases that work and still cannot scale them. The dashboard answers that question —**what is stopping us from scaling AI today?**— with a reading that ranks six **scaling barriers** from data it already has: the selected cases, the stops and withdrawals of the last year and the company's diagnosis (maturity and transformation index). It says which barrier to tackle first, what to do, who and how much value waits behind it. It creates no new rules: each signal is the reading of a rule that already exists in another document.
+
+> **Why it matters.** A dashboard that only informs leaves the decision unprepared: the board sees twenty indicators and none tells it where to start. Ranking the barriers with fixed, written rules turns the metrics into a defensible priority for action —what blocks a gate comes first, then what holds back the most value— and keeps the conversation on the cause rather than on the most visible symptom.
+
+| Code | Barrier | Case signals | Pattern: stops and withdrawals because of… | Company signal | What it blocks | What to do | Who | Where it is explained |
+|---|---|---|---|---|---|---|---|---|
+| **FE-1** | Value is not proven | In use with unvalidated value; in use with negative annual net; released capacity not materialised. | No plausible value; hypothesis refuted; cost higher than value. | D7 at level 2 or below; the index does not meet B2; alerts «efficiency not materialised» and «fragile transformation». | G7 · Scale (G7.01). | Validate the value of the cases in use and close their benefits realisation plan (P62); take those with negative net to G7. | Management control and business benefit owner. | Documents 40 and 43; 21 (G7). |
+| **FE-2** | Cases do not move forward | In progress over the day limit of their stage, or close to it. | — | D2 at level 2 or below; the index does not meet B3; alert «stalled bets». | — | Take the overdue cases to their gate and decide: continue with a date, pivot or stop. | AI Committee. | 14 §8; 20 §11. |
+| **FE-3** | Risk and compliance not closed | In the last stage before production with pending controls; in use with pending controls; without the company's regulatory classification. | Unacceptable risk; regulation. | D6 at level 2 or below, or D6 caps the overall level (11 §5); alert «change without oversight». | G5 · go-live; the overall maturity level if D6 caps it. | Complete the classification and controls before G5; open a nonconformity for cases in use without them. | Risk and compliance owner. | Documents 32, 33 and 35; 21 (G5); 37. |
+| **FE-4** | People do not adopt it | Cross-cutting initiatives with units below the adoption threshold. | No adoption. | D5 at level 2 or below. | — | Adoption plan in the units below the threshold; withdraw or reassign unused licences. | Business benefit owner and People. | Document 23; 40 §7.2. |
+| **FE-5** | Data and technology are not ready | — | Insufficient data; technically unfeasible. | D3 or D4 at level 2 or below. | — | Secure data quality, access and ownership before phase 3 (P64) and the platform the cases need. | Data owner and technology owner. | Documents 51 and 52. |
+| **FE-6** | Lack of direction and governance | Active cases without a business benefit owner or without a description of what they are and what they are for. | Change of strategic priority. | D1 at level 2 or below, or D1 caps the overall level; the index does not meet B1; alerts «transformation without the board» and ambition over-declaration. | The overall maturity level if D1 caps it. | Approve in C2 the thesis and the ambition per sphere and give each case a business owner and a defensible description. | Senior management and board. | Documents 13 and 30. |
+
+**Rules of the reading:**
+
+1. **Perimeter.** Case signals are calculated on the selected cases (filters apply). Patterns, on the stops and withdrawals of the last twelve months with a coded reason that is a symptom of the barrier. Company signals come from the latest maturity diagnosis (document 11) and the latest transformation index calculation (document 12), and do not depend on the filters.
+2. **Affected cases.** The distinct cases hit by the barrier's case signals; stopped or withdrawn cases that only form a pattern do not count.
+3. **Annual value at stake.** Potential efficiencies plus return of the affected cases or, if a case has no potential, the current ones. It is a **declared, not validated** value: it ranks the barriers, it does not promise. A case without figures counts as «no data», never as zero.
+4. **Status.** *Blocks*, if a signal prevents passing a gate (G5, G7 · Scale) or if D1 or D6 cap the overall maturity level; *With signals*, if there is any signal; *No signals*, if there is none.
+5. **Order.** First those that block; then annual value at stake; then affected cases; and finally the number of signals. The first three with signals are **«Act first on»**.
+6. **Maturity threshold.** A dimension at level 2 (Developing) or below is a signal of its barrier. It is a starting value, to be calibrated in C5.
+7. **Nothing is estimated.** What cannot be read from the data —no maturity diagnosis, no transformation index, no status-change dates— is listed separately.
+8. **The reading ranks; the body decides.** The priority prepares the AI Committee's and the board's conversation; agreed actions are recorded as recommendations or decisions (document 62) and, if they require a gate, go through it.
+9. **Configuration.** Each company can adjust the maturity threshold, the months of the pattern, which stop reason maps to which barrier and the wording of the action and the owner, in the dashboard's general configuration (`frenos_escalado`), without changing the rules of this section.
+
+In the quarterly pack, the reading feeds the «What holds back scaling» field of the one-page summary (§4.2) and, when an action needs authorisation, the decisions requested section.
+
+### 10.5 Where the impact is: spheres × ambition levels in the dashboard (T16)
+
+The dashboard includes the **portfolio heat map** (tool T16) with the rules of document 10 §8: value spheres 01 to 07 in rows, Optimise, Augment and Transform in columns, enablement band (spheres 08 and 09) separately; in each cell, initiatives (and how many in production), investment and annual recurring cost, annual net and validated value; colour by share of investment and cost; gap, off-thesis, no-evidence and secondary marks. A selector switches the rows to business units. Clicking a cell shows its initiatives.
+
+> **Why it matters.** The board needs to see at a glance where the company is playing with AI and where it is not: whether investment is concentrated on efficiency in a single area, which spheres have no activity and whether the ambition approved in C2 has initiatives delivering it. Without that view, each case is discussed on its own and nobody sees the whole.
+
+Rules of use:
+
+- **It is the view for the annual direction (C2) and review (C5) packs**; in the quarterly pack it is used when the distribution changes or there is a new gap.
+- **The target ambition per sphere is the one approved in C2** (document 13). Until the T01 register stores it, it is set in the dashboard's general configuration (`mapa_impacto.objetivo_c2`); without it the map marks neither gaps nor «off thesis».
+- **The grades of spheres 08 and 09** are assessed with document 10 (§6.4 and §7.3) and are not deduced from the map.
 
 ---
 
@@ -454,8 +499,8 @@ The checklist is applied with P67 §12.
 | T12 | Value realisation tracking | Figures with validation status. |
 | T14 | Transformation index calculator | Annual C5 pack. |
 | T15 | Maturity diagnosis | Annual C2 and C5 packs. |
-| T16 | Portfolio sphere map | Annual C2 pack. |
-| T17 | Board AI dashboard | Views in section 10. |
+| T16 | Portfolio sphere map | Annual C2 pack; dashboard card «Where the impact is» (§10.5). |
+| T17 | Board AI dashboard | Views in section 10; «What holds back scaling» reading (§10.4). |
 | T18 | Board recommendations register | Recommendations and decisions section. |
 | T19 | AI thesis and risk appetite template | Annual C2 pack. |
 | P29 | *Gate* decision record | Evidence for the decisions escalated. |
@@ -471,7 +516,8 @@ The checklist is applied with P67 §12.
 | **00 · What SEVEN-G is and how it helps companies** | Value measurement rules and transformation index. |
 | **01 · Foundational methodology** | Corporate cycle, governance calendar, bodies, nonconformities. |
 | **03 · Tools and initiative register** | Data model, funnel metrics, T17 and T18. |
-| **11 · Maturity model** | Content of C1 and C5. |
+| **10 · Sphere map and ambition levels** | Rules of the portfolio heat map (T16) shown by the dashboard (§10.5). |
+| **11 · Maturity model** | Content of C1 and C5; company signals in «What holds back scaling» (§10.4). |
 | **12 · Transformation index** | Signals and profiles for the annual pack. |
 | **13 · AI thesis, ambition and risk appetite** | Content of C2. |
 | **14 · Portfolio management** | Programmes, prioritisation and retirements. |
@@ -488,3 +534,4 @@ The checklist is applied with P67 §12.
 | Version | Date | Changes |
 |---|---|---|
 | 0.1 | 16-09-2026 | First version. Defines the quarterly (C4) and annual (C2 and C5) content, the structure of the pack, the decision sheet, the allocation between the full board and the board committee, the calendar, the rules for presenting figures, the programme traffic light and the relationship with the board dashboard. Consistency adjustments with 01 (segregation of duties at Lite, R6 outcomes, agents criterion) and with 34 and 37; traffic light aligned with the six axes in document 14. |
+| 0.2 | 28-09-2026 | Executive reading «What holds back scaling» (§10.4): six barriers FE-1 to FE-6 with case signals, stop patterns and company signals, ranking rules and annual value at stake; map of spheres × ambition levels in the dashboard (T16, §10.5); «What holds back scaling» field in the one-page summary (§4.2) and dashboard blocks (§10.2). |

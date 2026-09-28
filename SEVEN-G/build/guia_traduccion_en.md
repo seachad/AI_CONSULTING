@@ -63,6 +63,7 @@ Uso interno del generador. Todas las traducciones al inglés deben seguir esta g
 | índice de transformación | transformation index |
 | Exploración dispersa · Eficiencia táctica · Eficiencia a escala · Transformación en curso · Transformación declarada, no evidenciada | Scattered exploration · Tactical efficiency · Efficiency at scale · Transformation under way · Declared but unevidenced transformation |
 | valor validado · declarado · estimado | validated · declared · estimated value |
+| freno de escalado · valor anual en juego · Qué frena el escalado · Dónde está el impacto | scaling barrier · annual value at stake · What holds back scaling · Where the impact is |
 | eficiencias · retorno · coste recurrente | efficiencies · return · recurring cost |
 | capacidad liberada | released capacity |
 | neto adicional por euro de inversión adicional | additional net value per additional euro invested |

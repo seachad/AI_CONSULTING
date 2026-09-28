@@ -5,7 +5,7 @@
 | | |
 |---|---|
 | Documento | Documento 60 · Paquete para el consejo |
-| Versión | 0.1 (borrador de trabajo) |
+| Versión | 0.2 (borrador de trabajo) |
 | Fecha | 16-09-2026 |
 | Autor | Fernando García Varela |
 | Estado | Borrador para revisión. Desarrolla la etapa C4 (supervisión) y los resultados de C2 y C5 que se elevan al consejo. |
@@ -130,6 +130,7 @@ La revisión anual debería contar con la participación de auditoría interna (
 | **Cifras clave** | Eficiencias, retorno, coste recurrente y neto anual; proporción validada; capacidad liberada no materializada (aparte); inversión ejecutada frente a presupuesto. | Reglas de la sección 8. |
 | **Cartera** | Iniciativas por fase y estado; en producción; paradas y retiradas del trimestre; estancadas. | Desde T01. |
 | **Riesgo** | Riesgos residuales Crítico y Alto; incidentes S1 y S2; no conformidades mayores y críticas abiertas. | Solo número y enlace; el detalle en los apartados 5 y 6. |
+| **Qué frena el escalado** | Los tres frenos por los que empezar (FE-1 a FE-6), con qué bloquean, qué hacer, quién y el valor anual en juego. | Lectura de §10.4, desde T17. Si una acción necesita decisión, pasa a «Decisiones solicitadas». |
 | **Decisiones solicitadas** | Lista con código y una línea por decisión. | Si no hay decisiones, se dice expresamente. |
 | **Recomendaciones** | Abiertas, vencidas, cerradas en el trimestre, discrepancias entre declarado y valorado. | Desde T18. |
 | **Cambios desde la sesión anterior** | Qué ha cambiado y por qué. | Comparación con la foto de la sesión anterior. |
@@ -142,6 +143,7 @@ La revisión anual debería contar con la participación de auditoría interna (
 | Cifras clave | Eficiencias 3,9 M€ · Retorno 1,6 M€ · Coste recurrente 1,3 M€ · **Neto anual 4,2 M€** · Proporción validada 58 % (3,2 M€ de 5,5 M€) · Capacidad liberada no materializada 1,1 M€ (no suma) · Inversión ejecutada 2,4 M€ de 3,0 M€ presupuestados. |
 | Cartera | 31 iniciativas: 6 en fases 0–2, 7 en fases 3–5, 14 en producción, 4 en G7. En el trimestre: 1 parada en G3 (riesgo inaceptable), 1 retirada (sustituida por otra solución). 3 estancadas. |
 | Riesgo | 0 riesgos residuales Críticos · 4 Altos · 1 incidente S2 · 1 no conformidad mayor abierta. |
+| Qué frena el escalado | 1) FE-3 · Riesgo y cumplimiento sin cerrar: bloquea G5 en 2 iniciativas; completar sus evaluaciones de impacto antes de la próxima reunión del comité (responsable de riesgos). 2) FE-1 · El valor no está demostrado: 1,4 M€ en uso sin validar; validación por control de gestión antes del cierre del trimestre. 3) FE-2 · Los casos no avanzan: 3 fuera de plazo; *gate* anticipado en la siguiente reunión mensual. |
 | Decisiones solicitadas | DEC-2026-014 · Autorizar la hipótesis de valor de una iniciativa de Transformar (G2). DEC-2026-015 · Tomar conocimiento de la parada de una iniciativa en G3. |
 | Recomendaciones | 12 abiertas · 2 vencidas · 3 cerradas con valoración conforme · 1 discrepancia (declarada cumplida, valorada no conforme). |
 | Cambios | Sube la proporción validada por la validación de control de gestión de dos casos; se retira el asistente de consultas internas (sin uso). |
@@ -405,6 +407,8 @@ Reglas de uso:
 
 | Bloque del panel | Apartado del paquete que lo usa |
 |---|---|
+| Cartera y valor: qué frena el escalado y dónde actuar primero (§10.4) | Resumen de una página (mensaje principal y qué frena el escalado); decisiones solicitadas |
+| Cartera y valor: dónde está el impacto, esferas × nivel de ambición (T16, §10.5) | Paquete anual de dirección (C2) y de revisión (C5); resumen |
 | Cartera y valor: indicadores clave, eficiencias, retorno y coste por compañía y unidad, neto adicional por euro | Resumen de una página; casos en detalle; decisiones de inversión |
 | Dónde invierte la compañía (nivel de ambición) y agilidad | Resumen; revisión anual (C5) |
 | Histórico y tendencia | Cambios desde la sesión anterior |
@@ -416,9 +420,50 @@ Reglas de uso:
 
 ### 10.3 Adaptaciones pendientes
 
-La herramienta T17 se alimenta del registro de iniciativas (T01) mediante su conector (03 §5.4): muestra el embudo por **fase y estado** del ciclo de vida, enlaza cada caso con su código IA-AAAA-NNN y genera el registro de recomendaciones del documento 62. La agrupación por **programa** con el semáforo de la sección 9 y la distribución por **esfera** (mapa T16) no forman parte del panel: el semáforo se calcula con las reglas de 14 §12 y se anexa al paquete con P67, y las decisiones del consejo se registran en P69.
+La herramienta T17 se alimenta del registro de iniciativas (T01) mediante su conector (03 §5.4): muestra el embudo por **fase y estado** del ciclo de vida, enlaza cada caso con su código IA-AAAA-NNN y genera el registro de recomendaciones del documento 62. Muestra también la lectura ejecutiva **«Qué frena el escalado»** (§10.4) y el **mapa de esferas × niveles de ambición** (T16, §10.5). La agrupación por **programa** con el semáforo de la sección 9 no forma parte del panel: se calcula con las reglas de 14 §12 y se anexa al paquete con P67, y las decisiones del consejo se registran en P69. La ambición objetivo de C2 por esfera la toma el panel de su configuración general mientras el registro T01 no la guarde.
 
 Los ficheros del motor que se publican en el repositorio de demostraciones son copia de su proyecto de origen: las adaptaciones se hacen en origen y se vuelven a publicar.
+
+### 10.4 Qué frena el escalado: lectura ejecutiva y dónde actuar primero
+
+Muchas compañías tienen hoy casos de IA que funcionan y, aun así, no consiguen escalarlos. El panel responde a esa pregunta —**¿qué nos impide escalar la IA hoy?**— con una lectura que ordena seis **frenos de escalado** a partir de datos que ya tiene: los casos seleccionados, las paradas y retiradas del último año y el diagnóstico de la compañía (madurez e índice de transformación). Dice qué freno atacar primero, qué hacer, quién y cuánto valor espera detrás. No crea reglas nuevas: cada señal es la lectura de una regla que ya está en otro documento.
+
+> **Por qué importa.** Un panel que solo informa deja la decisión sin preparar: el consejo ve veinte indicadores y ninguno le dice por dónde empezar. Ordenar los frenos con reglas fijas y escritas convierte las métricas en una prioridad de actuación defendible —lo que bloquea una puerta va primero, después lo que más valor retiene— y evita que la conversación se vaya al síntoma más visible en lugar de a la causa.
+
+| Código | Freno | Señales de caso | Patrón: paradas y retiradas por… | Señal de la compañía | Qué bloquea | Qué hacer | Quién | Dónde se explica |
+|---|---|---|---|---|---|---|---|---|
+| **FE-1** | El valor no está demostrado | En uso con valor sin validar; en uso con neto anual negativo; capacidad liberada sin materializar. | Sin valor plausible; hipótesis refutada; coste superior al valor. | D7 en nivel 2 o menos; el índice no cumple B2; alertas «eficiencia no materializada» y «transformación frágil». | G7 · Escalar (G7.01). | Validar el valor de los casos en uso y cerrar su plan de realización (P62); llevar a G7 los de neto negativo. | Control de gestión y responsable de negocio del beneficio. | Documentos 40 y 43; 21 (G7). |
+| **FE-2** | Los casos no avanzan | En curso por encima del límite de días de su etapa, o cerca de él. | — | D2 en nivel 2 o menos; el índice no cumple B3; alerta «apuestas atascadas». | — | Llevar a su puerta los casos fuera de plazo y decidir: continuar con fecha, pivotar o parar. | Comité de IA. | 14 §8; 20 §11. |
+| **FE-3** | Riesgo y cumplimiento sin cerrar | En la última etapa antes de producción con controles pendientes; en uso con controles pendientes; sin clasificación regulatoria de la compañía. | Riesgo inaceptable; regulación. | D6 en nivel 2 o menos, o D6 limita el nivel global (11 §5); alerta «cambio sin supervisión». | G5 · puesta en producción; el nivel global de madurez si D6 lo limita. | Completar la clasificación y los controles antes de G5; abrir no conformidad en los casos en uso sin ellos. | Responsable de riesgos y cumplimiento. | Documentos 32, 33 y 35; 21 (G5); 37. |
+| **FE-4** | Las personas no lo adoptan | Iniciativas transversales con unidades por debajo del umbral de adopción. | Sin adopción. | D5 en nivel 2 o menos. | — | Plan de adopción en las unidades por debajo del umbral; retirar o reasignar licencias sin uso. | Responsable de negocio del beneficio y Personas. | Documento 23; 40 §7.2. |
+| **FE-5** | Datos y tecnología no están listos | — | Datos insuficientes; inviable técnicamente. | D3 o D4 en nivel 2 o menos. | — | Asegurar calidad, acceso y propiedad de los datos antes de la fase 3 (P64) y la plataforma que necesitan los casos. | Responsable de datos y responsable de tecnología. | Documentos 51 y 52. |
+| **FE-6** | Falta dirección y gobierno | Casos activos sin responsable de negocio del beneficio o sin descripción de qué son y para qué se usan. | Cambio de prioridad estratégica. | D1 en nivel 2 o menos, o D1 limita el nivel global; el índice no cumple B1; alertas «transformación sin consejo» y de sobredeclaración de ambición. | El nivel global de madurez si D1 lo limita. | Aprobar en C2 la tesis y la ambición por esfera y dar a cada caso responsable de negocio y descripción defendible. | Alta dirección y consejo. | Documentos 13 y 30. |
+
+**Reglas de la lectura:**
+
+1. **Perímetro.** Las señales de caso se calculan sobre los casos seleccionados (los filtros cuentan). Los patrones, sobre las paradas y retiradas de los últimos doce meses con un motivo codificado que es síntoma del freno. Las señales de la compañía salen del último diagnóstico de madurez (documento 11) y del último cálculo del índice de transformación (documento 12), y no dependen de los filtros.
+2. **Casos afectados.** Los casos distintos que tocan las señales de caso del freno; los parados o retirados que solo forman patrón no cuentan.
+3. **Valor anual en juego.** Eficiencias más retorno potenciales de los casos afectados o, si un caso no tiene potencial, los actuales. Es un valor **declarado, no validado**: sirve para ordenar los frenos, no para prometer. Un caso sin cifras se cuenta como «sin dato», nunca como cero.
+4. **Situación.** *Bloquea*, si alguna señal impide pasar una puerta (G5, G7 · Escalar) o si D1 o D6 limitan el nivel global de madurez; *Con señales*, si hay alguna señal; *Sin señales*, si no hay ninguna.
+5. **Orden.** Primero los que bloquean; después, el valor anual en juego; después, los casos afectados; y, por último, el número de señales. Los tres primeros con señales son **«Actuar primero en»**.
+6. **Umbral de madurez.** Una dimensión en nivel 2 (En desarrollo) o inferior es señal del freno que le corresponde. Es un valor de partida, a calibrar en C5.
+7. **Nada se estima.** Lo que no se puede leer con los datos —sin diagnóstico de madurez, sin índice de transformación, sin fechas de cambio de estado— se lista aparte.
+8. **La lectura ordena; el órgano decide.** La prioridad prepara la conversación del comité de IA y del consejo; las acciones acordadas se registran como recomendaciones o decisiones (documento 62) y, si requieren una puerta, se tramitan en ella.
+9. **Configuración.** Cada compañía puede ajustar el umbral de madurez, los meses del patrón, qué motivo de parada corresponde a cada freno y el texto de la acción y del responsable, en la configuración general del panel (`frenos_escalado`), sin cambiar las reglas de esta sección.
+
+En el paquete trimestral, la lectura alimenta el campo «Qué frena el escalado» del resumen de una página (§4.2) y, cuando una acción necesita autorización, el apartado de decisiones solicitadas.
+
+### 10.5 Dónde está el impacto: esferas × niveles de ambición en el panel (T16)
+
+El panel incluye el **mapa de calor de la cartera** (herramienta T16) con las reglas del documento 10 §8: esferas de valor 01 a 07 en filas, Optimizar, Aumentar y Transformar en columnas, banda de habilitación (esferas 08 y 09) aparte; en cada celda, iniciativas (y cuántas en producción), inversión y coste recurrente anual, neto anual y valor validado; color por la proporción de la inversión y el coste; marcas de brecha, fuera de tesis, sin evidencia y secundaria. Un selector cambia las filas a unidades de negocio. Al pulsar una celda se ven sus iniciativas.
+
+> **Por qué importa.** El consejo necesita ver de un vistazo dónde juega la compañía con la IA y dónde no: si la inversión se concentra en eficiencia de una sola área, qué esferas no tienen actividad y si la ambición aprobada en C2 tiene iniciativas que la ejecuten. Sin esa vista, cada caso se discute suelto y nadie ve el conjunto.
+
+Reglas de uso:
+
+- **Es la vista del paquete anual de dirección (C2) y de revisión (C5)**; en el trimestral se usa cuando cambia la distribución o hay una brecha nueva.
+- **La ambición objetivo por esfera es la aprobada en C2** (documento 13). Mientras el registro T01 no la guarde, se informa en la configuración general del panel (`mapa_impacto.objetivo_c2`); sin ella el mapa no marca brechas ni «fuera de tesis».
+- **Los grados de las esferas 08 y 09** se evalúan con el documento 10 (§6.4 y §7.3) y no se deducen del mapa.
 
 ---
 
@@ -454,8 +499,8 @@ La lista se aplica con P67 §12.
 | T12 | Seguimiento de realización de valor | Cifras con estado de validación. |
 | T14 | Calculadora del índice de transformación | Paquete anual C5. |
 | T15 | Diagnóstico de madurez | Paquetes anuales C2 y C5. |
-| T16 | Mapa de esferas de la cartera | Paquete anual C2. |
-| T17 | Panel de IA para el consejo | Vistas de la sección 10. |
+| T16 | Mapa de esferas de la cartera | Paquete anual C2; tarjeta «Dónde está el impacto» del panel (§10.5). |
+| T17 | Panel de IA para el consejo | Vistas de la sección 10; lectura «Qué frena el escalado» (§10.4). |
 | T18 | Registro de recomendaciones del consejo | Apartado de recomendaciones y decisiones. |
 | T19 | Plantilla de tesis de IA y apetito de riesgo | Paquete anual C2. |
 | P29 | Registro de decisión de *gate* | Evidencia de las decisiones que se elevan. |
@@ -471,7 +516,8 @@ La lista se aplica con P67 §12.
 | **00 · Qué es SEVEN-G y para qué sirve** | Reglas de medición del valor e índice de transformación. |
 | **01 · Metodología fundacional** | Ciclo corporativo, calendario de gobierno, órganos, no conformidades. |
 | **03 · Herramientas y registro de iniciativas** | Modelo de datos, métricas del embudo, T17 y T18. |
-| **11 · Modelo de madurez** | Contenido de C1 y C5. |
+| **10 · Mapa de esferas y niveles de ambición** | Reglas del mapa de calor de la cartera (T16) que muestra el panel (§10.5). |
+| **11 · Modelo de madurez** | Contenido de C1 y C5; señales de la compañía en «Qué frena el escalado» (§10.4). |
 | **12 · Índice de transformación** | Señales y perfiles del paquete anual. |
 | **13 · Tesis de IA, ambición y apetito de riesgo** | Contenido de C2. |
 | **14 · Gestión de cartera** | Programas, priorización y retiradas. |
@@ -488,3 +534,4 @@ La lista se aplica con P67 §12.
 | Versión | Fecha | Cambios |
 |---|---|---|
 | 0.1 | 16-09-2026 | Primera versión. Define el contenido trimestral (C4) y anual (C2 y C5), la estructura del paquete, la ficha de decisión, el reparto entre pleno y comisión delegada, el calendario, las reglas de presentación de cifras, el semáforo de programas y la relación con el panel del consejo. Ajustes de coherencia con 01 (separación de funciones en Lite, resultados de R6, criterio de agentes) y con 34 y 37; semáforo alineado con los seis ejes del documento 14. |
+| 0.2 | 28-09-2026 | Lectura ejecutiva «Qué frena el escalado» (§10.4): seis frenos FE-1 a FE-6 con señales de caso, patrones de paradas y señales de la compañía, reglas de orden y valor anual en juego; mapa de esferas × niveles de ambición en el panel (T16, §10.5); campo «Qué frena el escalado» en el resumen de una página (§4.2) y bloques del panel (§10.2). |

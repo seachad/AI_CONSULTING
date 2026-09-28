@@ -5,7 +5,7 @@
 | | |
 |---|---|
 | Document | Document 10 · Sphere map and ambition levels |
-| Version | 0.1 (working draft) |
+| Version | 0.2 (working draft) |
 | Date | 16-09-2026 |
 | Author | Fernando García Varela |
 | Status | Draft for review. Develops component A of the framework (document 01, section 2). |
@@ -498,7 +498,7 @@ Each profile has the same structure: what it covers, questions for the board, ex
 
 ## 8. Sphere × level heat map (T16)
 
-The heat map is the portfolio view over the impact map. It is generated from the initiative register (T01) and shown in the board dashboard (T17).
+The heat map is the portfolio view over the impact map. It is generated from the initiative register (T01) and shown in the board dashboard (T17), in the card «Where the impact is» under «Portfolio and value» (60 §10.5), which can also show the rows by business unit. Until the register stores the C2 target ambition per sphere, the dashboard takes it from its general configuration; without it, it marks neither gaps nor «off thesis».
 
 ### 8.1 Construction
 
@@ -629,3 +629,4 @@ The **first ninety days** concentrate C1 to C3 (document 01, section 5.3). The d
 | Version | Date | Changes |
 |---|---|---|
 | 0.1 | 16-09-2026 | First version. Integrates the previous sphere framework into SEVEN-G: profiles of the nine spheres with questions, examples by level, warning signs and indicators with a formula; primary and secondary sphere rules; rule preventing spheres 08 and 09 from being mixed, with their own grades; heat map (T16) and its use in C1–C5 and in phases 1, 2 and 7. |
+| 0.2 | 28-09-2026 | The heat map (T16) is shown in the board dashboard as the card «Where the impact is» (60 §10.5), with a view by business unit; section 8. |

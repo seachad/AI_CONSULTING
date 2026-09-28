@@ -18,6 +18,8 @@ Se genera con `generar(datos, carpeta)` de `build_dashboard.py`. Los dos HTML ll
 | `leer_json_servidor` | `false` impide que el panel, servido por HTTP, lea un `dashboard_data.json` de su carpeta. |
 | `textos` | Textos de contexto opcionales: `aviso_previo`, `aviso_valor`, `pie`, `movimientos_vacio`, `agilidad_sin_fechas`, `backlog_sin_dato`, `adopcion_sin_telemetria`, `ref_guardarrailes`, `nota_concentracion`, `sin_que_es`, y etiquetas `ret_<concepto>` y `ef_<concepto>`. |
 | `glosario_extra` | Términos propios de la organización: `[grupo, sigla, desarrollo, explicación, en_móvil]`. |
+| `mapa_impacto` | Opcional (D126). Mapa de calor esferas × niveles de ambición (T16, documento 10 §8) de la tarjeta «Dónde está el impacto»: `filas` (esferas de valor en su orden; sin ella, las de `tags.funcion`), `habilitacion` (esferas de la banda de habilitación, fuera del total), `objetivo_c2` (ambición objetivo por esfera, por código o etiqueta: `Optimizar`, `Aumentar`, `Transformar` o `no_prioritaria`), `umbrales` (`baja`, `alta`, en %) y `meses_retiradas`. |
+| `frenos_escalado` | Opcional (D125). Lectura «Qué frena el escalado» (documento 60 §10.4): `umbral_madurez` (por defecto 2), `meses_patron` (12), `motivos` (texto del motivo de parada → `FE-1`…`FE-6`) y `textos` (por freno: `nombre`, `accion`, `resp`, `donde`). |
 
 ## `casos[]`
 
@@ -33,6 +35,7 @@ Se genera con `generar(datos, carpeta)` de `build_dashboard.py`. Los dos HTML ll
 | `economia` | Inversión, eficiencias y retorno (ver abajo). |
 | `reporte_compania` | Lo que aporta la compañía (ver abajo). |
 | `alcance` | Opcional: solo en iniciativas transversales o plataformas habilitadoras; sin él, el caso es de una unidad y el panel no cambia. `tipo` (`transversal` o `plataforma`), `umbral_adopcion_pct` (licencias activas sobre asignadas por debajo del cual una unidad en uso se marca), `habilita` (plataforma: `[{id, nombre}]` de los casos a los que se imputa su valor) y `unidades` (transversal: una fila por unidad de negocio con `unidad`, `estado` —`previsto`, `piloto`, `en_uso`, `retirado`—, `desde`, `licencias_asignadas`, `licencias_activas`, `usuarios_activos_semanales`, `horas_liberadas_mes`, `coste_anual`, `coste_previsto`, `valor_materializado`, `valor_validado`, `capacidad_liberada`, `fuente`, `fecha_dato`; una fila con `unidad` null recoge lo común). Con él, el panel muestra en «Cartera y valor» la tarjeta de iniciativas transversales y plataformas (con el neto de la cartera con y sin ellas), el desglose por unidad en la ficha económica, el filtro «Alcance» (`tags.alcance`) y, en el móvil, la lista por unidad y la alerta de adopción baja. Los importes del caso (`economia`) ya incluyen todas sus unidades: el desglose no suma dos veces. |
+| `seveng` | Opcional: bloque que escribe el conector de T01 (`fase`, `esfera_principal`, `esfera_secundaria`, `ambicion` con `propuesta`, `confirmada` y `real`, `intensidad`, `autonomia`…). El motor solo lee `fase` (perímetro del mapa de impacto: G0 superado; y superar G2 para la marca de brecha), `esfera_secundaria` y si la ambición es solo propuesta; sin él, usa la etapa del embudo. |
 
 ### `economia`: todo en euros, actual y potencial
 

@@ -371,6 +371,7 @@ footer{padding:20px 24px;color:var(--muted);font-size:11.5px;border-top:1px soli
 .pill.rojo{background:var(--rojbg);color:var(--rojink)}.pill.amarillo{background:var(--ambbg);color:var(--ambink)}.pill.ok{background:var(--okbg);color:var(--okink)}
 table.mini tr.rojo td{background:color-mix(in srgb,var(--rojbg) 55%,transparent)}
 table.mini tr.amarillo td{background:color-mix(in srgb,var(--ambbg) 55%,transparent)}
+table.mini tr.tot td{border-top:2px solid var(--ink);font-weight:650}
 .desv-mas{color:var(--rojink)}.desv-menos{color:var(--okink)}
 .preg-ctrl{display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin:6px 0 10px}
 .preg-ctrl select{max-width:100%}
@@ -379,6 +380,40 @@ table.mini tr.amarillo td{background:color-mix(in srgb,var(--ambbg) 55%,transpar
 .case .ciclo.rojo{background:var(--rojbg);color:var(--rojink)}.case .ciclo.amarillo{background:var(--ambbg);color:var(--ambink)}.case .ciclo.sin_fechas{color:var(--muted)}
 .ciclobar{display:flex;height:12px;border-radius:4px;overflow:hidden;gap:2px;margin:6px 0}
 .ciclobar i{display:block;min-width:3px}
+/* qué frena el escalado (D125): los tres frenos por los que empezar, en tarjetas, y la tabla de los seis */
+.fr-top{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:10px;margin:6px 0 14px}
+.fr{border:1px solid var(--grid);border-radius:10px;padding:10px 12px;background:var(--page);position:relative;cursor:pointer;outline:none}
+.fr:hover,.fr:focus-visible{border-color:var(--accent)}
+.fr .num{position:absolute;top:8px;right:12px;font:700 24px/1 var(--headfont);color:var(--muted)}
+.fr .h{font-weight:700;font-size:14px;padding-right:28px;font-family:var(--headfont)}
+.fr .h .cod{color:var(--muted);font-weight:600;margin-right:6px;font-family:system-ui,-apple-system,"Segoe UI",sans-serif;font-size:12px}
+.fr .acc{font-size:12.5px;margin:6px 0 4px;line-height:1.4}
+.fr .m{font-size:11.5px;color:var(--ink2);margin-top:3px;line-height:1.4}
+.fr.bloquea{box-shadow:inset 4px 0 0 var(--roj)}.fr.activo{box-shadow:inset 4px 0 0 var(--amb)}
+.pill.bloquea{background:var(--rojbg);color:var(--rojink)}.pill.activo{background:var(--ambbg);color:var(--ambink)}
+table.mini tr.fr-row{cursor:pointer}table.mini tr.fr-row:hover td{background:var(--page)}
+.fr-sen{margin:4px 0 8px;padding-left:18px;font-size:12.5px}.fr-sen li{margin:4px 0}.fr-sen .emp{color:var(--muted);font-size:11px}
+.more-btn{display:inline-block;margin-top:10px}
+/* dónde está el impacto: mapa de calor esferas × niveles de ambición (T16, D126) */
+.mi-ctrl{display:flex;gap:8px;align-items:center;flex-wrap:wrap;margin:4px 0 10px}
+table.mi{border-collapse:separate;border-spacing:4px;width:100%;font-size:12px;min-width:640px}
+table.mi th{font-size:10.5px;color:var(--muted);text-transform:uppercase;letter-spacing:.03em;font-weight:600;text-align:left;padding:2px 6px}
+table.mi td{vertical-align:top;border-radius:6px;padding:6px 8px}
+table.mi td.lbl{font-weight:650;padding-left:0;min-width:150px}
+table.mi td.lbl .d{font-weight:400}
+table.mi td.c{cursor:pointer;border:1px solid var(--grid);min-width:118px}
+table.mi td.c:hover,table.mi td.c:focus-visible{border-color:var(--accent);outline:none}
+table.mi td.c.sin{background:var(--page);color:var(--muted);cursor:default}
+table.mi td.c.baja{background:color-mix(in srgb,var(--s1) 9%,var(--surface))}
+table.mi td.c.media{background:color-mix(in srgb,var(--s1) 22%,var(--surface))}
+table.mi td.c.alta{background:color-mix(in srgb,var(--s1) 38%,var(--surface))}
+table.mi td.tot{border-top:2px solid var(--ink);font-weight:650}
+table.mi .n{font-size:15px;font-weight:700;line-height:1.2}
+table.mi .d{font-size:11px;color:var(--ink2);line-height:1.35}
+.marca{display:inline-block;font-size:10.5px;font-weight:700;border-radius:8px;padding:0 6px;margin:3px 3px 0 0;background:var(--rojbg);color:var(--rojink)}
+.marca.obj{background:var(--infbg);color:var(--infink)}.marca.info{background:var(--chip);color:var(--ink2)}
+.mi-ley{display:flex;gap:12px;flex-wrap:wrap;font-size:11.5px;color:var(--ink2);margin-top:8px}
+.mi-ley i{display:inline-block;width:14px;height:10px;border-radius:2px;border:1px solid var(--grid);margin-right:4px;vertical-align:-1px}
 """
 
 JS = r"""
@@ -387,7 +422,9 @@ let CASES = DATA.casos; let YEAR = DATA.meta.ejercicio_valor;
 __CORE__
 const state = { lado: "actual", compara: "", sort: "neto", view: "cards", grupo: true, q: "", filters: {},
   // vista de embudo: etapa seleccionada, referencia de la desviación y pregunta de análisis de tiempos con sus parámetros
-  embudo: { sel: null, ref: "mediana", q: "estados", a: "Propuesto", b: "En uso", dim: "tecnologia" } };
+  embudo: { sel: null, ref: "mediana", q: "estados", a: "Propuesto", b: "En uso", dim: "tecnologia" },
+  // mapa de impacto (T16): filas por esfera o por unidad de negocio
+  impacto: "esfera" };
 const rc = c => c.reporte_compania || {};
 const DIMS = [
   ["compania","Compañía", c=>c.compania],
@@ -399,6 +436,7 @@ const DIMS = [
   ["riesgo","Reglamento de IA (estimación " + CONSEJO() + ")", c=>c.tags.riesgo || "sin dato"],
   ["clasif","Clasificación de la compañía", c=>rc(c).clasificacion_ria || "sin dato"],
   ["prioridad","Prioridad de información", c=>c.tags.prioridad || "sin dato"],
+  ...(CASES.some(c=>c.tags.funcion) ? [["funcion","Esfera (mapa de impacto)", c=>c.tags.funcion || "sin dato"]] : []),
   ...(CASES.some(c=>c.tags.ambicion) ? [["ambicion","Ambición", c=>c.tags.ambicion || "sin dato"]] : []),
   ...(CASES.some(alcanceDe) ? [["alcance","Alcance", c=>c.tags.alcance || "De una unidad"]] : []),
   // ciclo de vida (embudo): situación, plazo en el estado actual, complejidad y origen del historial
@@ -607,9 +645,18 @@ function cicloFicha(c){
 // que no han llegado a producción—, lo previsto en ese momento, marcado como «prev.». null = sin dato; nunca se convierte en cero.
 const CIF = [["eficiencias","eficiencias_pot","efic."],["retorno","retorno_pot","ret."],["recurrente","recurrente_pot","coste/año"],["construccion",null,"inversión"]];
 function cifrasCaso(c){ const r = R(c), o = {}; CIF.forEach(([a,p])=>{ o[a] = r[a] != null ? {v:r[a], prev:false} : (p && r[p] != null ? {v:r[p], prev:true} : null); }); return o; }
-function cifrasSuma(cs){ const o = {}; CIF.forEach(([a])=>{ const xs = cs.map(c=>cifrasCaso(c)[a]).filter(Boolean); o[a] = xs.length ? {v:sum(xs.map(x=>x.v)), prev:xs.some(x=>x.prev), n:xs.length} : null; }); return o; }
+function cifrasSuma(cs){ return sumaCif(cs.map(cifrasCaso)); }
+// suma de varias cifras (de casos o de tramos): cada línea suma solo lo que tiene dato y se marca «prev.» si alguna parte es prevista
+function sumaCif(os){ const o = {}; CIF.forEach(([a])=>{ const xs = os.map(x=>x && x[a]).filter(Boolean); o[a] = xs.length ? {v:sum(xs.map(x=>x.v)), prev:xs.some(x=>x.prev), n:xs.length} : null; }); return o; }
 const cifTxt = (o, sep) => { const p = CIF.map(([a,,lab])=>o[a] ? `${lab} <b>${fmt(o[a].v)}</b>${o[a].prev?'<span class="prev"> prev.</span>':""}` : "").filter(Boolean); return p.length ? p.join(sep || " · ") : `<span class="nd">sin cifras todavía</span>`; };
 const cifCelda = x => x ? `${fmt(x.v)}${x.prev?' <span class="prev">prev.</span>':""}` : "—";
+// neto anual de unas cifras (de un caso, de un tramo o de una suma): eficiencias + retorno − coste anual; sin coste o sin valor no hay neto
+function netoCif(o){ if (!o || !o.recurrente || (!o.eficiencias && !o.retorno)) return null;
+  const v = (o.eficiencias ? o.eficiencias.v : 0) + (o.retorno ? o.retorno.v : 0) - o.recurrente.v;
+  return {v, prev: [o.eficiencias, o.retorno, o.recurrente].some(x => x && x.prev)}; }
+const netoCelda = x => x ? `<b style="color:${x.v<0?"var(--critical)":"var(--neto)"}">${fmt(x.v)}</b>${x.prev?' <span class="prev">prev.</span>':""}` : "—";
+// columnas económicas del detalle de una etapa, primero (D124): neto anual, eficiencias, retorno, coste anual e inversión
+const cifCeldas = o => `<td class="n">${netoCelda(netoCif(o))}</td>` + CIF.map(([a])=>`<td class="n">${cifCelda(o[a])}</td>`).join("");
 // cifras guardadas en el historial con un cambio de estado (historial_estados[].cifras: previsto y actual)
 function cifrasTramo(t){ const c = t && t.cifras; if (!c) return null; const o = {}; [["eficiencias","eficiencias"],["retorno","retorno"],["recurrente","recurrente"],["construccion","inversion"]].forEach(([a,k])=>{ const ac = (c.actual||{})[k], pr = (c.previsto||{})[k]; o[a] = ac != null ? {v:ac, prev:false} : pr != null ? {v:pr, prev:true} : null; }); return CIF.some(([a])=>o[a]) ? o : null; }
 function renderEmbudo(rows){
@@ -625,13 +672,15 @@ function renderEmbudo(rows){
   // sin casos perdidos en los datos la conversión no es medible (el inventario puede no incluir los no aprobados ni los descartados)
   const conv = perdAntes && llegaron + perdAntes ? Math.round(100*llegaron/(llegaron+perdAntes)) : null;
   const nivAtasco = rojos ? "rojo" : amar ? "amarillo" : conFechas ? "ok" : "";
+  const verE = `<div class="more">Ver los casos ›</div>`;
   document.getElementById("embudo-kpis").innerHTML = `
-   <div data-ayuda="emb-entradas" class="kpi"><div class="v">${rows.length}</div><div class="l">Entradas en el embudo</div><div class="d">${conFechas?`<b>${entr12}</b> en los últimos 12 meses (con fecha)`:"sin fechas de entrada"}</div></div>
-   <div data-ayuda="emb-encurso" class="kpi"><div class="v">${enCurso.length}</div><div class="l">En curso</div><div class="d">${emb.filter(e=>!esGanado(e)).map(e=>`${esc(e)} <b>${ahora(e).length}</b>`).join(" · ")}</div></div>
-   <div data-ayuda="emb-ganados" class="kpi"><div class="v">${ahora(cfg.ganado).length}</div><div class="l">Ganados: ${esc(cfg.ganado.toLowerCase())}</div><div class="d">Llegaron a producción <b>${llegaron}</b> (incluye los que se desengancharon después)</div></div>
-   <div data-ayuda="emb-perdidos" class="kpi"><div class="v">${perdidos}</div><div class="l">Perdidos</div><div class="d">${sal.map(s=>`${esc(s)} <b>${ahora(s).length}</b>`).join(" · ")}</div></div>
-   <div data-ayuda="emb-conversion" class="kpi"><div class="v">${conv==null?"—":conv+" %"}</div><div class="l">Conversión a producción</div><div class="d">${conv==null?"No medible: los datos no incluyen casos no aprobados ni descartados":"Llegaron a producción / (llegaron + perdidos antes de producción)"}</div></div>
-   <div data-ayuda="emb-atascados" class="kpi sem ${nivAtasco}"><div class="v">${rojos} <span class="de">+ ${amar}</span></div><div class="l">Casos atascados</div><div class="d">Superan el límite de días de su estado (${rojos}) o están a partir del ${cfg.aviso_pct_limite??80} % (${amar})</div><div class="kst ${nivAtasco}">${conFechas?`con fechas ${conFechas} de ${rows.length} casos`:"sin fechas: no se puede medir"}</div></div>`;
+   <div data-ayuda="emb-entradas" class="kpi link" data-kpie="entradas" role="button" tabindex="0"><div class="v">${rows.length}</div><div class="l">Entradas en el embudo</div><div class="d">${conFechas?`<b>${entr12}</b> en los últimos 12 meses (con fecha)`:"sin fechas de entrada"}</div>${verE}</div>
+   <div data-ayuda="emb-encurso" class="kpi link" data-kpie="encurso" role="button" tabindex="0"><div class="v">${enCurso.length}</div><div class="l">En curso</div><div class="d">${emb.filter(e=>!esGanado(e)).map(e=>`${esc(e)} <b>${ahora(e).length}</b>`).join(" · ")}</div>${verE}</div>
+   <div data-ayuda="emb-ganados" class="kpi link" data-kpie="ganados" role="button" tabindex="0"><div class="v">${ahora(cfg.ganado).length}</div><div class="l">Ganados: ${esc(cfg.ganado.toLowerCase())}</div><div class="d">Llegaron a producción <b>${llegaron}</b> (incluye los que se desengancharon después)</div>${verE}</div>
+   <div data-ayuda="emb-perdidos" class="kpi link" data-kpie="perdidos" role="button" tabindex="0"><div class="v">${perdidos}</div><div class="l">Perdidos</div><div class="d">${sal.map(s=>`${esc(s)} <b>${ahora(s).length}</b>`).join(" · ")}</div>${verE}</div>
+   <div data-ayuda="emb-conversion" class="kpi link" data-kpie="conversion" role="button" tabindex="0"><div class="v">${conv==null?"—":conv+" %"}</div><div class="l">Conversión a producción</div><div class="d">${conv==null?"No medible: los datos no incluyen casos no aprobados ni descartados":"Llegaron a producción / (llegaron + perdidos antes de producción)"}</div>${verE}</div>
+   <div data-ayuda="emb-atascados" class="kpi link sem ${nivAtasco}" data-kpie="atascados" role="button" tabindex="0"><div class="v">${rojos} <span class="de">+ ${amar}</span></div><div class="l">Casos atascados</div><div class="d">Superan el límite de días de su estado (${rojos}) o están a partir del ${cfg.aviso_pct_limite??80} % (${amar})</div><div class="kst ${nivAtasco}">${conFechas?`con fechas ${conFechas} de ${rows.length} casos`:"sin fechas: no se puede medir"}</div>${verE}</div>`;
+  document.querySelectorAll("#embudo-kpis [data-kpie]").forEach(el=>{ const go = ()=>openKpiEmbudo(el.dataset.kpie, rows); el.onclick = go; el.onkeydown = e=>{ if (e.key==="Enter"||e.key===" "){ e.preventDefault(); go(); } }; });
   document.getElementById("embudo-nota").innerHTML = `Anchura de cada etapa: casos que la alcanzaron (sin historial, se deduce del estado actual) · número dentro: casos que están ahora en ella · el embudo contiene solo los casos al vuelo: a la derecha de cada etapa, los que no la superaron; debajo, los que ya lo atravesaron (en uso y desenganchados) · tiempos: estancias cerradas y en curso hasta el ${fES(FECHA_PANEL())} · límites en días del JSON general de configuración${conFechas<rows.length?` · <b>${rows.length-conFechas}</b> de ${rows.length} casos sin fechas de estado: sus tiempos no cuentan`:""}`;
   // --- diagrama: el embudo solo contiene los casos al vuelo (las etapas anteriores a la ganada). A la derecha de cada etapa, las tarjetas de
   // los casos que no la superaron; al final, las tarjetas de los que ya atravesaron el embudo: en uso (verde) y desenganchados tras estar en uso.
@@ -681,6 +730,26 @@ function renderEmbudo(rows){
   el.querySelectorAll("[data-sel]").forEach(g=>{ const go = ()=>{ E.sel = E.sel===g.dataset.sel ? null : g.dataset.sel; renderEmbudo(CASES.filter(passes)); if (E.sel) document.getElementById("embudo-det").scrollIntoView({behavior:"smooth", block:"nearest"}); }; g.onclick = go; g.onkeydown = ev=>{ if (ev.key==="Enter"||ev.key===" "){ ev.preventDefault(); go(); } }; });
   renderEmbudoDetalle(rows); renderEmbudoPreguntas(rows);
 }
+// indicadores del embudo que se pueden pulsar (D124): cada uno abre sus casos con lo económico primero
+function openKpiEmbudo(tipo, rows){
+  const cfg = CICLO(), gi = cfg.embudo.indexOf(cfg.ganado);
+  if (tipo === "ganados"){ state.embudo.sel = cfg.ganado; renderEmbudo(CASES.filter(passes)); document.getElementById("embudo-det").scrollIntoView({behavior:"smooth", block:"start"}); return; }
+  const antes = c => esSalida(c.estado) && !(cfg.salidas[c.estado]||[]).includes(cfg.ganado);
+  const def = {
+    entradas: ["Entradas en el embudo", "Todos los casos que han entrado en el embudo, estén donde estén", rows],
+    encurso: ["En curso", "Casos en alguna etapa anterior a la producción", rows.filter(c=>esEnCurso(c.estado))],
+    perdidos: ["Perdidos", "Casos no aprobados, descartados o desenganchados, con el motivo", rows.filter(c=>esSalida(c.estado))],
+    conversion: ["Conversión a producción", "Casos que llegaron a producción y casos que se perdieron antes", rows.filter(c=>etapaAlcanzada(c) >= gi || antes(c))],
+    atascados: ["Casos atascados", "Casos en curso que superan el límite de días de su etapa o están cerca", rows.filter(c=>esEnCurso(c.estado) && ["rojo","amarillo"].includes(plazoDe(c).nivel))]}[tipo];
+  if (!def) return;
+  const [titulo, nota, cs] = def, o = c => esSalida(c.estado) ? (cifrasTramo(historial(c).tramos.slice(-1)[0]) || cifrasCaso(c)) : cifrasCaso(c);
+  const orden = [...cs].sort((a,b)=>ESTADOS_CICLO().indexOf(a.estado)-ESTADOS_CICLO().indexOf(b.estado) || (plazoDe(b).dias??-1)-(plazoDe(a).dias??-1));
+  const filas = orden.map(c=>{ const p = plazoDe(c), r = rc(c).retirada||{};
+    return `<tr class="${p.nivel==="rojo"||p.nivel==="amarillo"?p.nivel:""}"><td>${casoLink(c)} <span class="nd">${esc(c.id)}</span></td><td>${esc(c.estado)}</td>${cifCeldas(o(c))}<td class="n">${dTxt(p.dias)}</td><td>${esSalida(c.estado) ? nd(r.motivo) : pill(p.nivel)}</td></tr>`; });
+  open(`<h2>${titulo}</h2><div class="sub">${nota} · ${cs.length} casos (se respetan filtros y búsqueda) · primero lo económico («prev.» = previsto, aún no realizado)</div>
+   <div class="tblx"><table class="mini"><thead><tr><th>Caso</th><th>Estado</th><th class="n">Neto anual</th><th class="n">Eficiencias</th><th class="n">Retorno</th><th class="n">Coste anual</th><th class="n">Inversión</th><th class="n">Días en el estado</th><th>Plazo o motivo</th></tr></thead>
+   <tbody>${filas.join("") || `<tr><td colspan="9" class="nd">Ningún caso.</td></tr>`}${cs.length?`<tr class="tot"><td colspan="2"><b>Suma</b></td>${cifCeldas(sumaCif(cs.map(o)))}<td colspan="2"></td></tr>`:""}</tbody></table></div>`);
+}
 // casos de la etapa o salida elegida, con su desviación frente a la media o la mediana del estado
 function renderEmbudoDetalle(rows){
   const det = document.getElementById("embudo-det"), E = state.embudo, cfg = CICLO();
@@ -688,18 +757,19 @@ function renderEmbudoDetalle(rows){
   const cs = rows.filter(c=>c.estado===E.sel), refBtn = `<div class="seg small" id="emb-ref"><button data-r="mediana" class="${E.ref==="mediana"?"on":""}">Mediana</button><button data-r="media" class="${E.ref==="media"?"on":""}">Media</button></div>`;
   let h;
   if (esSalida(E.sel)){
-    const filas = cs.map(c=>{ const tr = historial(c).tramos, fin = tr.length ? tr[tr.length-1] : null; const d = tr.length ? dias(tr[0].fecha, tr[tr.length-1].fecha) : null; const ret = rc(c).retirada||{};
-      return {c, d, html:`<tr><td>${casoLink(c)} <span class="nd">${esc(c.id)}</span></td><td>${esc(c.compania)}</td><td>${esc(c.tags.tecnologia)}</td><td>${esc(etapaDeSalida(c)||"—")}</td><td class="n">${fin&&fin.estado===E.sel?fES(fin.fecha):"—"}</td><td class="n">${dTxt(d)}</td>${CIF.map(([a])=>`<td class="n">${cifCelda((cifrasTramo(fin) || cifrasCaso(c))[a])}</td>`).join("")}<td>${nd(ret.motivo)}</td></tr>`}; }).sort((a,b)=>(b.d??-1)-(a.d??-1));
-    h = `<h3>${esc(E.sel)}: ${cs.length} casos perdidos</h3><div class="note">Casos que salieron del embudo en esta rama · días en el embudo: desde su primera fecha hasta la salida · cifras: las que tenía el caso al salir («prev.» = previstas, aún no realizadas)</div>${cs.length?`<div class="tblx"><table class="mini"><thead><tr><th>Caso</th><th>Compañía</th><th>Tecnología</th><th>Salió desde</th><th class="n">Fecha de salida</th><th class="n">Días en el embudo</th><th class="n">Eficiencias</th><th class="n">Retorno</th><th class="n">Coste anual</th><th class="n">Inversión</th><th>Motivo</th></tr></thead><tbody>${filas.map(x=>x.html).join("")}</tbody></table></div>`:`<div class="nd">Ningún caso en esta salida con los filtros actuales.</div>`}`;
+    const filas = cs.map(c=>{ const tr = historial(c).tramos, fin = tr.length ? tr[tr.length-1] : null; const d = tr.length ? dias(tr[0].fecha, tr[tr.length-1].fecha) : null; const ret = rc(c).retirada||{}, o = cifrasTramo(fin) || cifrasCaso(c);
+      return {c, d, o, html:`<tr><td>${casoLink(c)} <span class="nd">${esc(c.id)}</span></td>${cifCeldas(o)}<td>${esc(etapaDeSalida(c)||"—")}</td><td class="n">${fin&&fin.estado===E.sel?fES(fin.fecha):"—"}</td><td class="n">${dTxt(d)}</td><td>${nd(ret.motivo)}</td><td>${esc(c.compania)}</td><td>${esc(c.tags.tecnologia)}</td></tr>`}; }).sort((a,b)=>(b.d??-1)-(a.d??-1));
+    h = `<h3>${esc(E.sel)}: ${cs.length} casos perdidos</h3><div class="note">Casos que salieron del embudo en esta rama · primero lo económico: neto anual, eficiencias, retorno, coste e inversión que tenía el caso al salir («prev.» = previstas, aún no realizadas) · días en el embudo: desde su primera fecha hasta la salida</div>${cs.length?`<div class="tblx"><table class="mini"><thead><tr><th>Caso</th><th class="n">Neto anual</th><th class="n">Eficiencias</th><th class="n">Retorno</th><th class="n">Coste anual</th><th class="n">Inversión</th><th>Salió desde</th><th class="n">Fecha de salida</th><th class="n">Días en el embudo</th><th>Motivo</th><th>Compañía</th><th>Tecnología</th></tr></thead><tbody>${filas.map(x=>x.html).join("")}<tr class="tot"><td><b>Suma</b> <span class="nd">${cs.length} casos</span></td>${cifCeldas(sumaCif(filas.map(x=>x.o)))}<td colspan="6"></td></tr></tbody></table></div>`:`<div class="nd">Ningún caso en esta salida con los filtros actuales.</div>`}`;
   } else {
     const t = tiemposEstado(rows, E.sel), ref = t.todas ? t.todas[E.ref] : null, lim = (cfg.dias_limite||{})[E.sel];
     const filas = cs.map(c=>{ const p = plazoDe(c), dv = p.dias!=null && ref!=null ? p.dias - ref : null, dp = dv!=null && ref ? Math.round(100*dv/ref) : null;
-      return {c, p, dv, html:`<tr class="${p.nivel==="rojo"||p.nivel==="amarillo"?p.nivel:""}"><td>${casoLink(c)} <span class="nd">${esc(c.id)}</span></td><td>${esc(c.compania)}</td><td>${esc(c.tags.tecnologia)}</td>${typeof lim==="object"&&lim?`<td>${nd(complejidadDe(c))}</td>`:""}<td class="n">${p.desde?fES(p.desde):"—"}</td><td class="n">${dTxt(p.dias)}</td><td class="n">${p.limite==null?"—":dTxt(p.limite)}</td><td class="n">${p.pct==null?"—":Math.round(p.pct)+" %"}</td>${CIF.map(([a])=>`<td class="n">${cifCelda(cifrasCaso(c)[a])}</td>`).join("")}<td class="n">${dv==null?"—":`<b class="${dv>0?"desv-mas":"desv-menos"}">${dv>0?"+":""}${dv} d</b>${dp!=null?` (${dp>0?"+":""}${dp} %)`:""}`}</td><td>${pill(p.nivel)}</td></tr>`}; })
+      return {c, p, dv, html:`<tr class="${p.nivel==="rojo"||p.nivel==="amarillo"?p.nivel:""}"><td>${casoLink(c)} <span class="nd">${esc(c.id)}</span></td>${cifCeldas(cifrasCaso(c))}${typeof lim==="object"&&lim?`<td>${nd(complejidadDe(c))}</td>`:""}<td class="n">${p.desde?fES(p.desde):"—"}</td><td class="n">${dTxt(p.dias)}</td><td class="n">${p.limite==null?"—":dTxt(p.limite)}</td><td class="n">${p.pct==null?"—":Math.round(p.pct)+" %"}</td><td class="n">${dv==null?"—":`<b class="${dv>0?"desv-mas":"desv-menos"}">${dv>0?"+":""}${dv} d</b>${dp!=null?` (${dp>0?"+":""}${dp} %)`:""}`}</td><td>${pill(p.nivel)}</td><td>${esc(c.compania)}</td><td>${esc(c.tags.tecnologia)}</td></tr>`}; })
       .sort((a,b)=> (b.dv??-1e9) - (a.dv??-1e9));
-    const sinF = cs.filter(c=>plazoDe(c).dias==null).length;
+    const sinF = cs.filter(c=>plazoDe(c).dias==null).length, colsT = 8 + (typeof lim==="object"&&lim ? 1 : 0);
     h = `<h3>${esc(E.sel)}: ${cs.length} casos ahora en la etapa</h3>
      <div class="preg-ctrl"><span class="sub">Desviación frente a la</span>${refBtn}<span class="sub">del estado: ${t.todas?`media <b>${t.todas.media} d</b> · mediana <b>${t.todas.mediana} d</b> · ${t.todas.n} estancias (${t.cerradas?t.cerradas.n:0} cerradas, ${t.en_curso?t.en_curso.n:0} en curso)${t.cerradas?` · solo cerradas: media ${t.cerradas.media} d, mediana ${t.cerradas.mediana} d`:""}`:"sin fechas: no hay tiempos"}</span></div>
-     ${cs.length?`<div class="tblx"><table class="mini"><thead><tr><th>Caso</th><th>Compañía</th><th>Tecnología</th>${typeof lim==="object"&&lim?"<th>Complejidad</th>":""}<th class="n">En la etapa desde</th><th class="n">Días</th><th class="n">Límite</th><th class="n">% del límite</th><th class="n">Eficiencias</th><th class="n">Retorno</th><th class="n">Coste anual</th><th class="n">Inversión</th><th class="n">Desviación (${E.ref})</th><th>Plazo</th></tr></thead><tbody>${filas.map(x=>x.html).join("")}</tbody></table></div>`:`<div class="nd">Ningún caso en esta etapa con los filtros actuales.</div>`}
+     <div class="note">Primero lo económico de cada caso: neto anual, eficiencias, retorno, coste anual e inversión (lo actual y, si aún no produce, lo previsto, «prev.»); después, el tiempo en la etapa</div>
+     ${cs.length?`<div class="tblx"><table class="mini"><thead><tr><th>Caso</th><th class="n">Neto anual</th><th class="n">Eficiencias</th><th class="n">Retorno</th><th class="n">Coste anual</th><th class="n">Inversión</th>${typeof lim==="object"&&lim?"<th>Complejidad</th>":""}<th class="n">En la etapa desde</th><th class="n">Días</th><th class="n">Límite</th><th class="n">% del límite</th><th class="n">Desviación (${E.ref})</th><th>Plazo</th><th>Compañía</th><th>Tecnología</th></tr></thead><tbody>${filas.map(x=>x.html).join("")}<tr class="tot"><td><b>Suma de la etapa</b> <span class="nd">${cs.length} casos</span></td>${cifCeldas(cifrasSuma(cs))}<td colspan="${colsT}"></td></tr></tbody></table></div>`:`<div class="nd">Ningún caso en esta etapa con los filtros actuales.</div>`}
      ${sinF?`<div class="nd" style="margin-top:6px">${sinF} de ${cs.length} casos sin fechas de cambio de estado: no se puede medir si están atascados.</div>`:""}`;
   }
   det.innerHTML = h;
@@ -760,7 +830,7 @@ function renderEmbudoPreguntas(rows){
 function render(){
   buildFilters();
   const rows = CASES.filter(passes);
-  renderKPIs(rows); renderCharts(rows); renderEmbudo(rows); renderCdm(); renderIndice(); renderMadurez(); renderTransversales(rows); renderCartera(rows); renderRiesgo(rows); renderIaOfensiva(rows); renderAgentes(rows); renderAdopcion(); renderHistorico(rows);
+  renderKPIs(rows); renderFrenos(rows); renderImpacto(rows); renderCharts(rows); renderEmbudo(rows); renderCdm(); renderIndice(); renderMadurez(); renderTransversales(rows); renderCartera(rows); renderRiesgo(rows); renderIaOfensiva(rows); renderAgentes(rows); renderAdopcion(); renderHistorico(rows);
   document.getElementById("cards").classList.toggle("hidden", state.view!=="cards");
   document.getElementById("table").classList.toggle("hidden", state.view!=="table");
   // agrupación (por compañía y unidad o sin agrupar) y presentación (tarjetas o tabla) son independientes
@@ -814,22 +884,71 @@ function renderKPIs(rows){
   const negUso = rows.filter(c=>c.estado==="En uso" && R(c).neto < 0).length;
   const pbTxt = negUso ? ` · <b>${negUso}</b> ${negUso===1?"caso en uso con neto negativo":"casos en uso con neto negativo"}` : "";
   const mas = `<div class="more">Ver desglose ›</div>`;
+  // todos los indicadores de cabecera se pueden pulsar (D124): los económicos abren su desglose y los demás un resumen con sus casos
+  const res = `<div class="more">Ver resumen ›</div>`;
   // indicador con umbral: color de semáforo y etiqueta con el umbral configurado (meta.umbrales_kpi)
   const semaf = (x, clave) => `<div class="kst ${x.nivel}" title="Umbrales: ${umbralTxt(clave)}">${x.pct==null?"sin dato":NIVEL_TXT[x.nivel]} · ${umbralTxt(clave)}</div>`;
   document.getElementById("kpis").innerHTML = `
-   <div data-ayuda="kpi-casos" class="kpi"><div class="v">${rows.length}</div><div class="l">Casos seleccionados</div><div class="d">${byE.map(([e,n])=>`${e}: <b>${n}</b>`).join(" · ")}${rows.filter(c=>!c.que_es).length?` · <b>${rows.filter(c=>!c.que_es).length}</b> sin descripción`:""}${f?` · <b>${nuevos}</b> nuevos o puestos en producción desde la foto del ${fES(f.fecha)}`:""}</div></div>
+   <div data-ayuda="kpi-casos" class="kpi link" data-kpi="casos" role="button" tabindex="0"><div class="v">${rows.length}</div><div class="l">Casos seleccionados</div><div class="d">${byE.map(([e,n])=>`${e}: <b>${n}</b>`).join(" · ")}${rows.filter(c=>!c.que_es).length?` · <b>${rows.filter(c=>!c.que_es).length}</b> sin descripción`:""}${f?` · <b>${nuevos}</b> nuevos o puestos en producción desde la foto del ${fES(f.fecha)}`:""}</div>${res}</div>
    <div data-ayuda="kpi-costes" class="kpi link eco-c" data-kpi="costes" role="button" tabindex="0"><div class="v">${fmt(coste)}</div><div class="l">Costes: coste anual${pot?" en régimen":""}</div><div class="d">Inversión de construcción <b>${fmt(cons)}</b>${pot?` · inversión adicional para el potencial <b>${fmt(adic)}</b>`:""} · ${est} de ${rows.length} casos con coste estimado por el ${CONSEJO()} ${dl(coste, SF(k("recurrente")), true)}</div>${mas}</div>
    <div data-ayuda="kpi-retorno" class="kpi link eco-r" data-kpi="retorno" role="button" tabindex="0"><div class="v">${fmt(total)}</div><div class="l">Retorno total${pot?" potencial":""}</div><div class="d">Eficiencias <b>${fmt(ef)}</b> + retorno <b>${fmt(ret)}</b>${S(k("capacidad"))?` · capacidad liberada no materializada ${fmt(S(k("capacidad")))} (no suma)`:""} ${dl(total, f?SF(k("eficiencias"))+SF(k("retorno")):null)}</div>${mas}</div>
    <div data-ayuda="kpi-neto" class="kpi link eco-n ${neto<0?'warn':''}" data-kpi="neto" role="button" tabindex="0"><div class="v">${fmt(neto)}</div><div class="l">Neto anual${pot?" potencial":""}</div><div class="d">Retorno total ${fmt(total)} − costes ${fmt(coste)}${pot?` · ${fmt(S("neto_pot")-S("neto"))} más que hoy, con ${fmt(adic)} de inversión adicional`:pbTxt} ${dl(neto, SF(k("neto")))}</div>${mas}</div>
-   <div data-ayuda="kpi-validado" class="kpi sem ${ind.validado.nivel}"><div class="v">${ind.validado.pct==null?"—":Math.round(ind.validado.pct)+" %"}</div><div class="l">Valor actual validado por Control de Gestión</div><div class="d">Declarado por la compañía ${fmt(pe.declarado)} · estimado por el ${CONSEJO()} ${fmt(pe.estimado_cati)} · validado ${fmt(pe.validado)}</div>${semaf(ind.validado, "valor_validado_pct")}</div>
-   <div data-ayuda="kpi-clasificados" class="kpi sem ${ind.clasificados.nivel}"><div class="v">${ind.clas} <span class="de">de ${rows.length}</span></div><div class="l">Clasificados por la compañía (Reglamento de IA)</div><div class="d">Con criterio jurídico; el resto solo tiene la estimación del ${CONSEJO()}</div>${semaf(ind.clasificados, "clasificados_compania_pct")}</div>
-   <div data-ayuda="kpi-controles" class="kpi sem ${ind.controles.nivel}"><div class="v">${ind.ctrl} <span class="de">de ${rows.length}</span></div><div class="l">Casos con controles completos</div><div class="d">RIA, FRIA, DPIA, Seguridad, MUC y riesgo de IA ofensiva hechos o no aplicables</div>${semaf(ind.controles, "controles_completos_pct")}</div>`;
+   <div data-ayuda="kpi-validado" class="kpi link sem ${ind.validado.nivel}" data-kpi="validado" role="button" tabindex="0"><div class="v">${ind.validado.pct==null?"—":Math.round(ind.validado.pct)+" %"}</div><div class="l">Valor actual validado por Control de Gestión</div><div class="d">Declarado por la compañía ${fmt(pe.declarado)} · estimado por el ${CONSEJO()} ${fmt(pe.estimado_cati)} · validado ${fmt(pe.validado)}</div>${semaf(ind.validado, "valor_validado_pct")}${res}</div>
+   <div data-ayuda="kpi-clasificados" class="kpi link sem ${ind.clasificados.nivel}" data-kpi="clasificados" role="button" tabindex="0"><div class="v">${ind.clas} <span class="de">de ${rows.length}</span></div><div class="l">Clasificados por la compañía (Reglamento de IA)</div><div class="d">Con criterio jurídico; el resto solo tiene la estimación del ${CONSEJO()}</div>${semaf(ind.clasificados, "clasificados_compania_pct")}${res}</div>
+   <div data-ayuda="kpi-controles" class="kpi link sem ${ind.controles.nivel}" data-kpi="controles" role="button" tabindex="0"><div class="v">${ind.ctrl} <span class="de">de ${rows.length}</span></div><div class="l">Casos con controles completos</div><div class="d">RIA, FRIA, DPIA, Seguridad, MUC y riesgo de IA ofensiva hechos o no aplicables</div>${semaf(ind.controles, "controles_completos_pct")}${res}</div>`;
   document.querySelectorAll("#kpis [data-kpi]").forEach(el=>{ const go = ()=>openKpi(el.dataset.kpi, rows); el.onclick = go; el.onkeydown = e=>{ if (e.key==="Enter"||e.key===" "){ e.preventDefault(); go(); } }; });
 }
 // ---- desglose de los KPI económicos (costes, retorno total y neto) de los casos seleccionados
 function agrupa(rows, clave){ const m = new Map(); rows.forEach(c=>{ const g = clave(c); if (!m.has(g)) m.set(g, []); m.get(g).push(c); }); return [...m.entries()]; }
 function porConcepto(rows, campo, lado){ const acc = {}; rows.forEach(c=>(eco(c)[campo]||[]).forEach(l=>{ let v = imp(l[lado]); if (v == null && lado==="potencial") v = imp(l.actual); if (v != null) acc[l.concepto] = (acc[l.concepto]||0) + v; })); return acc; }
+// ---- resumen de los indicadores que no son importes (D124): casos, valor validado, clasificación y controles; cada uno lista sus casos
+const CTRL_EST = {hecho:"hecho", pendiente:"pendiente", no_aplica:"no aplica"};
+function openResumen(tipo, rows){
+  const tile = (t, v, d) => `<div class="tile"><div class="k">${t}</div><div class="v">${v}</div><div class="d">${d}</div></div>`;
+  const tabla = (cab, filas, num) => `<div class="tblx"><table class="mini"><thead><tr>${cab.map((h,i)=>`<th class="${(num||[]).includes(i)?"n":""}">${h}</th>`).join("")}</tr></thead><tbody>${filas.join("") || `<tr><td colspan="${cab.length}" class="nd">Ningún caso.</td></tr>`}</tbody></table></div>`;
+  const td = (x, n) => `<td class="${n?"n":""}">${x}</td>`;
+  const caso = c => `${casoLink(c)} <span class="nd">${esc(c.id)}</span>`;
+  const sub = `<div class="sub">${rows.length} casos seleccionados (se respetan filtros y búsqueda)</div>`;
+  const ir = (pag, txt) => `<button class="btn more-btn" onclick="closeModal();showPage('${pag}',true)">${txt} ›</button>`;
+  let h = "", titulo = "";
+  if (tipo === "casos"){
+    titulo = "Casos seleccionados";
+    const grupos = [["En curso", rows.filter(c=>esEnCurso(c.estado))], ["En uso", rows.filter(c=>esGanado(c.estado))], ["Salieron del embudo", rows.filter(c=>esSalida(c.estado))]];
+    const filaE = e => { const cs = rows.filter(c=>c.estado===e); if (!cs.length) return ""; const s = cifrasSuma(cs), ne = netoCif(s);
+      return `<tr>${td(esc(e))}${td(cs.length, 1)}${td(cifCelda(s.eficiencias), 1)}${td(cifCelda(s.retorno), 1)}${td(cifCelda(s.recurrente), 1)}${td(cifCelda(ne), 1)}</tr>`; };
+    const sinDesc = rows.filter(c=>!c.que_es), sinResp = rows.filter(c=>!esSalida(c.estado) && !rc(c).propietario_negocio);
+    h = `<div class="tiles">${grupos.map(([t, cs])=>tile(t, cs.length, cs.length ? cifTxt(cifrasSuma(cs)) : "ningún caso")).join("")}</div>
+     <h3>Por estado</h3>${tabla(["Estado","Casos","Eficiencias","Retorno","Coste anual","Neto anual"], ESTADOS_CICLO().concat(ESTADOS.filter(e=>!ESTADOS_CICLO().includes(e))).map(filaE), [1,2,3,4,5])}
+     <div class="nd" style="margin-top:4px">De cada caso se usa lo actual y, si aún no produce, lo previsto («prev.»); sin dato nunca es cero.</div>
+     ${sinDesc.length ? `<h3>Sin descripción de qué es y para qué se usa</h3><ul class="warnlist">${sinDesc.map(c=>`<li>${caso(c)}</li>`).join("")}</ul>` : ""}
+     ${sinResp.length ? `<h3>Sin responsable de negocio del beneficio</h3><ul class="warnlist">${sinResp.map(c=>`<li>${caso(c)} · ${esc(c.estado)}</li>`).join("")}</ul>` : ""}
+     ${ir("embudo", "Ver el embudo y el ciclo de vida")}`;
+  } else if (tipo === "validado"){
+    titulo = "Valor actual validado por Control de Gestión";
+    const pe = valorPorEstado(rows), conV = rows.filter(c=>{ const v = R(c).valor_por_estado; return (v.validado||0) + (v.declarado||0) + (v.estimado_cati||0) > 0; });
+    const sinV = c => { const v = R(c).valor_por_estado; return (v.declarado||0) + (v.estimado_cati||0); };
+    h = `<div class="tiles">${tile("Validado", fmt(pe.validado), pe.total ? Math.round(100*pe.validado/pe.total) + " % del valor actual" : "sin valor actual")}${tile("Declarado por la compañía", fmt(pe.declarado), "pendiente de validar")}${tile("Estimado por el " + CONSEJO(), fmt(pe.estimado_cati), "pendiente de dato de la compañía")}</div>
+     <h3>Casos con valor actual, primero los que más valor tienen sin validar</h3>${tabla(["Caso","Estado","Valor actual","Validado","Sin validar","Dato del valor"], [...conV].sort((a,b)=>sinV(b)-sinV(a)).map(c=>{ const v = R(c).valor_por_estado, t = (v.validado||0)+(v.declarado||0)+(v.estimado_cati||0);
+       return `<tr>${td(caso(c))}${td(esc(c.estado))}${td(fmt(t), 1)}${td(fmt(v.validado||0), 1)}${td(sinV(c) ? `<b style="color:var(--critical)">${fmt(sinV(c))}</b>` : "0 €", 1)}${td(estadoTxt(c))}</tr>`; }), [2,3,4])}
+     <div class="note" style="margin-top:8px">Para escalar un caso en G7, el valor que lo justifica tiene que estar validado (documento 21, G7.01); cómo se valida, en el documento 40 y el documento 43.</div>`;
+  } else if (tipo === "clasificados"){
+    titulo = "Clasificación regulatoria por la compañía";
+    const orden = c => rc(c).clasificacion_ria ? 1 : 0;
+    h = `<div class="tiles">${tile("Clasificados por la compañía", rows.filter(c=>rc(c).clasificacion_ria).length, "con criterio jurídico")}${tile("Solo estimación", rows.filter(c=>!rc(c).clasificacion_ria).length, "estimación del " + CONSEJO())}</div>
+     <h3>Casos, primero los que no tienen clasificación de la compañía</h3>${tabla(["Caso","Estado","Clasificación de la compañía","Estimación del consejo asesor"], [...rows].sort((a,b)=>orden(a)-orden(b)).map(c=>`<tr>${td(caso(c))}${td(esc(c.estado))}${td(nd(rc(c).clasificacion_ria))}${td(nd(c.tags.riesgo))}</tr>`))}
+     <div class="note" style="margin-top:8px">La clasificación la hace la compañía con criterio jurídico (documento 32); la estimación del consejo asesor no la sustituye.</div>`;
+  } else if (tipo === "controles"){
+    titulo = "Controles por caso";
+    const falta = c => { const k = rc(c).controles || {}; return CTRL.filter(x => k[x] !== "hecho" && k[x] !== "no_aplica").length; };
+    const celda = (c, x) => { const v = (rc(c).controles || {})[x]; return v === "pendiente" ? `<span class="pill amarillo">pendiente</span>` : v ? CTRL_EST[v] || esc(v) : ND; };
+    h = `<div class="tiles">${tile("Con controles completos", rows.filter(controlesCompletos).length, "hechos o no aplicables")}${tile("Con algo pendiente", rows.filter(c=>!controlesCompletos(c)).length, "pendiente o sin dato")}</div>
+     <h3>Casos, primero los que tienen más controles sin cerrar</h3>${tabla(["Caso","Estado", ...CTRL.map(x=>CTRLLAB[x])], [...rows].sort((a,b)=>falta(b)-falta(a)).map(c=>`<tr>${td(caso(c))}${td(esc(c.estado))}${CTRL.map(x=>td(celda(c, x))).join("")}</tr>`))}
+     <div class="note" style="margin-top:8px">Un caso no entra en producción (G5) con controles pendientes; uno en uso sin ellos es una no conformidad (documento 37).</div>`;
+  }
+  open(`<h2>${titulo}</h2>${sub}${h}`);
+}
 function openKpi(tipo, rows){
+  if (["casos","validado","clasificados","controles"].includes(tipo)) return openResumen(tipo, rows);
   const pot = P(), k = n => pot ? n+"_pot" : n, S = (rs, n) => sum(rs.map(c=>R(c)[n]||0)), lado = pot ? "potencial" : "actual";
   const tile = (t, v, d) => `<div class="tile"><div class="k">${t}</div><div class="v">${v}</div><div class="d">${d}</div></div>`;
   const pctDe = (v, tot) => tot ? Math.round(100*v/tot) + " %" : "—";
@@ -1004,6 +1123,87 @@ function renderTransversales(rows){
   setCard("transv", "Iniciativas transversales y plataformas habilitadoras",
     "Por unidad de negocio: coste imputado desde el primer día, adopción real, horas liberadas declaradas, capacidad liberada (no suma) y valor materializado, lo único que llega al neto. El valor de una plataforma se imputa a los casos que la usan. Los importes de estos casos ya suman en la cartera: aquí se desglosan (SEVEN-G, documento 40 §7.2)",
     insight, bloques);
+}
+
+// ---- qué frena el escalado y dónde actuar primero (D125; reglas en el documento 60 §10.4, cálculo en panel_core.frenosEscalado).
+// La tarjeta abre la página: tres frenos por los que empezar (qué hacer, quién, casos y valor en juego) y la tabla de los seis.
+const NIVEL_FR = {bloquea:"Bloquea", activo:"Con señales", sin:"Sin señales"};
+let FR_ULT = null;
+const casosTxt = n => `${n} ${n===1?"caso afectado":"casos afectados"}`;
+const valorFr = f => f.valor == null ? (f.casos.length ? "valor en juego sin dato" : "") : `${fmt(f.valor)} de valor anual en juego${f.sinValor ? ` (${f.sinValor} sin dato)` : ""}`;
+function renderFrenos(rows){
+  const x = FR_ULT = frenosEscalado(rows), P1 = x.prioridad;
+  const insight = P1.length
+    ? `Actuar primero en <b>${P1[0].id} · ${esc(P1[0].nombre)}</b>${P1[0].bloquea.length ? ` (bloquea ${P1[0].bloquea.map(esc).join(" y ")})` : ""}: ${casosTxt(P1[0].casos.length)}${P1[0].valor != null ? `, ${fmt(P1[0].valor)} de valor anual en juego` : ""}${P1.length > 1 ? `; después, ${P1.slice(1).map(f=>`<b>${f.id}</b> ${esc(f.nombre.toLowerCase())}`).join(" y ")}` : ""}.`
+    : "Ningún freno con señales en los casos seleccionados ni en la compañía.";
+  const top = P1.map((f, i)=>`<div class="fr ${f.nivel}" data-fr="${f.id}" role="button" tabindex="0"><span class="num">${i+1}</span><div class="h"><span class="cod">${f.id}</span>${esc(f.nombre)}</div>
+    <div class="m"><span class="pill ${f.nivel}">${NIVEL_FR[f.nivel]}</span>${f.bloquea.length ? ` ${f.bloquea.map(esc).join(" · ")}` : ""}</div>
+    <div class="acc"><b>Qué hacer:</b> ${esc(f.accion)}</div><div class="m"><b>Quién:</b> ${esc(f.resp)}</div>
+    <div class="m">${[f.casos.length ? casosTxt(f.casos.length) : "", valorFr(f), f.senales.filter(s=>s.empresa).length ? "señales de la compañía" : ""].filter(Boolean).join(" · ")}</div>
+    <div class="m">Dónde se explica: ${esc(f.donde)}</div></div>`).join("");
+  const filas = x.frenos.map(f=>`<tr class="fr-row" data-fr="${f.id}" tabindex="0"><td><b>${f.id}</b> · ${esc(f.nombre)}</td><td><span class="pill ${f.nivel}">${NIVEL_FR[f.nivel]}</span></td><td class="n">${f.senales.length}</td><td class="n">${f.casos.length}</td><td class="n">${f.valor == null ? "—" : fmt(f.valor)}</td><td>${f.bloquea.length ? f.bloquea.map(esc).join(" · ") : "—"}</td><td>${esc(f.resp)}</td></tr>`).join("");
+  setCard("frenos", "Qué frena el escalado · dónde actuar primero",
+    "Lectura ejecutiva con las reglas del documento 60 §10.4: señales de los casos seleccionados (se respetan los filtros), patrones de las paradas y retiradas del último año y señales de la compañía (madurez e índice de transformación, que no dependen de los filtros). Orden: primero lo que bloquea una puerta o limita la madurez, después el valor anual en juego (eficiencias y retorno potenciales de los casos afectados: declarado, no validado; ordena, no promete). Nada se estima.",
+    insight,
+    (top ? `<div class="fr-top">${top}</div>` : "") +
+    `<div class="tblx"><table class="mini"><thead><tr><th>Freno</th><th>Situación</th><th class="n">Señales</th><th class="n">Casos afectados</th><th class="n">Valor anual en juego</th><th>Qué bloquea</th><th>Responsable</th></tr></thead><tbody>${filas}</tbody></table></div>` +
+    (x.faltan.length ? `<div class="note" style="margin-top:10px">Lo que no se puede leer con estos datos</div><ul class="warnlist">${x.faltan.map(t=>`<li>${esc(t)}</li>`).join("")}</ul>` : ""));
+  document.querySelectorAll("#frenos [data-fr]").forEach(el=>{ const go = ()=>openFreno(el.dataset.fr); el.onclick = go; el.onkeydown = e=>{ if (e.key==="Enter"||e.key===" "){ e.preventDefault(); go(); } }; });
+}
+function openFreno(id){
+  const f = (FR_ULT || {frenos:[]}).frenos.find(x=>x.id===id); if (!f) return;
+  const caso = c => `<li>${casoLink(c)} <span class="nd">${esc(c.id)} · ${esc(c.estado)}${valorEnJuego(c) != null ? ` · ${fmt(valorEnJuego(c))} en juego` : ""}</span></li>`;
+  const sen = f.senales.map(s=>`<li>${s.empresa ? '<span class="emp">compañía · </span>' : s.patron ? '<span class="emp">patrón · </span>' : ""}${s.txt}${s.bloquea ? ` · <b>bloquea ${esc(s.bloquea)}</b>` : ""}${s.casos.length && !s.patron ? `<ul class="fr-sen">${s.casos.map(caso).join("")}</ul>` : ""}</li>`).join("");
+  open(`<h2>${f.id} · ${esc(f.nombre)}</h2><div class="sub"><span class="pill ${f.nivel}">${NIVEL_FR[f.nivel]}</span> ${casosTxt(f.casos.length)}${f.casos.length ? ` · ${valorFr(f)}` : ""}</div>
+    <h3>Qué hacer</h3><p style="margin:0">${esc(f.accion)}</p><h3>Quién</h3><p style="margin:0">${esc(f.resp)}</p>
+    <h3>Señales</h3>${sen ? `<ul class="fr-sen">${sen}</ul>` : `<div class="nd">Sin señales con los datos y filtros actuales.</div>`}
+    <div class="note" style="margin-top:10px">Dónde se explica: ${esc(f.donde)} · reglas de la lectura: documento 60 §10.4</div>`);
+}
+
+// ---- dónde está el impacto: mapa de calor esferas × niveles de ambición (T16; documento 10 §8; D126; cálculo en panel_core.mapaImpacto)
+let MI_ULT = null;
+// neto anual de una celda; si ningún caso produce todavía, el valor anual potencial declarado (nunca un neto cero que no existe)
+const netoMi = x => x.neto != null ? `neto anual ${fmt(x.neto)}` : x.potencial != null ? `aún no produce · potencial ${fmt(x.potencial)}` : "aún no produce";
+function renderImpacto(rows){
+  if (!CASES.some(c=>(c.tags||{}).funcion) && !CASES.some(c=>c.unidad)){ setCard("impacto", "", "", "", ""); return; }
+  const modo = CASES.some(c=>(c.tags||{}).funcion) ? state.impacto : "unidad", m = MI_ULT = mapaImpacto(rows, modo), esf = m.modo === "esfera";
+  const pct = v => v == null ? "—" : Math.round(v) + " %";
+  const celda = (x, i, col, fila) => { const marcas = (fila.brecha === col ? `<span class="marca">Brecha</span>` : "") + (fila.objetivo === col ? `<span class="marca obj">Objetivo C2</span>` : "");
+    if (!x.casos.length) return `<td class="c sin">—${marcas ? `<div>${marcas}</div>` : ""}</td>`;
+    return `<td class="c ${x.nivel}" data-mi="${i}|${esc(col)}" tabindex="0" title="${pct(x.pct)} de la inversión y el coste de las filas"><div class="n">${x.casos.length}</div><div class="d">${x.enUso} en uso · ${fmt(x.gasto)} inversión y coste</div><div class="d">${netoMi(x)}${x.validado ? ` · validado ${fmt(x.validado)}` : ""}</div>${x.propuesta ? `<div class="d">${x.propuesta} con ambición solo propuesta</div>` : ""}${marcas ? `<div>${marcas}</div>` : ""}</td>`; };
+  const filas = m.filas.map((f, i)=>`<tr><td class="lbl">${esc(f.etiqueta)}${esf ? `<div class="d">objetivo C2: ${f.objetivo ? esc(f.objetivo === "no_prioritaria" ? "no prioritaria" : f.objetivo) : "sin dato"}</div>` : ""}<div>${f.fuera ? `<span class="marca">Fuera de tesis</span>` : ""}${f.sinEv.length ? `<span class="marca">Sin evidencia · ${f.sinEv.length}</span>` : ""}${f.secundaria ? `<span class="marca info">Secundaria · ${f.secundaria}</span>` : ""}${f.retiradas.length ? `<span class="marca info">Parados o retirados · ${f.retiradas.length}</span>` : ""}</div></td>${m.cols.map(col=>celda(f.celdas[col], i, col, f)).join("")}<td class="c ${f.total.casos.length ? f.total.nivel : "sin"}" ${f.total.casos.length ? `data-mi="${i}|*" tabindex="0"` : ""}><div class="n">${f.total.casos.length || "—"}</div>${f.total.casos.length ? `<div class="d">${pct(f.total.pct)} · ${netoMi(f.total)}</div>` : ""}</td></tr>`).join("");
+  const pie = `<tr><td class="lbl tot">Total por nivel</td>${m.cols.map(col=>`<td class="tot"><div class="n">${m.colTot[col].casos.length}</div><div class="d">${pct(m.colTot[col].pct)} · ${netoMi(m.colTot[col])}</div></td>`).join("")}<td class="tot"><div class="n">${sum(m.filas.map(f=>f.total.casos.length))}</div><div class="d">${fmt(m.total)}</div></td></tr>`;
+  const banda = esf && m.bandaFilas.length ? `<div class="note" style="margin-top:8px">Banda de habilitación (${m.bandaFilas.map(esc).join(" y ")}): ${m.banda.casos.length} ${m.banda.casos.length===1?"caso":"casos"} · ${fmt(m.banda.gasto)} de inversión y coste, fuera del total. Sus grados (Ausente, Básico, Sistemático, Avanzado) se evalúan con el documento 10 §6.4 y §7.3.</div>` : "";
+  // lectura en cabecera: dónde se concentra la inversión, dónde está el neto, qué esferas no tienen actividad y qué brechas hay frente a C2
+  const conGasto = m.filas.filter(f=>f.total.gasto), topG = [...conGasto].sort((a,b)=>b.total.gasto-a.total.gasto)[0], topN = [...m.filas].filter(f=>f.total.neto != null).sort((a,b)=>b.total.neto-a.total.neto)[0];
+  const ambTop = [...m.cols].filter(c=>m.colTot[c].gasto).sort((a,b)=>m.colTot[b].gasto-m.colTot[a].gasto)[0];
+  const vacias = m.filas.filter(f=>!f.total.casos.length).map(f=>f.etiqueta), brechas = m.filas.filter(f=>f.brecha).map(f=>`${f.etiqueta} (${f.brecha})`);
+  const insight = !m.activos ? "Ningún caso activo en el perímetro del mapa." : [
+    ambTop ? `El <b>${pct(m.colTot[ambTop].pct)}</b> de la inversión y el coste está en <b>${esc(ambTop)}</b>` : "",
+    topG ? `la ${esf?"esfera":"unidad"} con más gasto es <b>${esc(topG.etiqueta)}</b> (${pct(topG.total.pct)})` : "",
+    topN ? `el mayor neto anual está en <b>${esc(topN.etiqueta)}</b> (${fmt(topN.total.neto)})` : "",
+    vacias.length ? `sin actividad: ${vacias.map(esc).join(", ")}` : "",
+    brechas.length ? `brecha frente a la ambición objetivo de C2 en ${brechas.map(esc).join(", ")}` : ""].filter(Boolean).join("; ") + ".";
+  const toggle = CASES.some(c=>(c.tags||{}).funcion) ? `<div class="seg small" id="mi-modo"><button data-m="esfera" class="${esf?"on":""}">Por esfera</button><button data-m="unidad" class="${esf?"":"on"}">Por unidad de negocio</button></div>` : "";
+  setCard("impacto", "Dónde está el impacto: esferas × nivel de ambición (T16)",
+    `Mapa de calor del documento 10 §8 sobre los casos seleccionados: casos activos que han superado G0 y, aparte, los parados o retirados en los últimos 12 meses. Cada celda: casos (en uso), inversión de construcción y coste recurrente anual, neto anual y valor validado. Color: proporción de la inversión y el coste de la celda sobre el total de las filas (umbrales de partida, a calibrar en C5). Marcas: brecha (el nivel objetivo de C2 no tiene ningún caso que haya superado G2), fuera de tesis, sin evidencia (más de 12 meses en uso sin valor validado) y secundaria. Pulsa una celda para ver sus casos.`,
+    insight,
+    `<div class="mi-ctrl">${toggle}${m.excluidos.length ? `<span class="nd">${m.excluidos.length} ${m.excluidos.length===1?"propuesta sin G0 no cuenta":"propuestas sin G0 no cuentan"}</span>` : ""}</div>
+     <div class="tblx"><table class="mi"><thead><tr><th>${esf?"Esfera":"Unidad de negocio"}</th>${m.cols.map(c=>`<th>${esc(c)}</th>`).join("")}<th>Total</th></tr></thead><tbody>${filas}${pie}</tbody></table></div>${banda}
+     <div class="mi-ley"><span><i style="background:var(--page)"></i>Sin actividad</span><span><i style="background:color-mix(in srgb,var(--s1) 9%,var(--surface))"></i>Baja (&lt; ${cfgImpacto().baja} %)</span><span><i style="background:color-mix(in srgb,var(--s1) 22%,var(--surface))"></i>Media</span><span><i style="background:color-mix(in srgb,var(--s1) 38%,var(--surface))"></i>Alta (&gt; ${cfgImpacto().alta} %)</span></div>`);
+  document.querySelectorAll("#mi-modo button").forEach(b=>b.onclick=ev=>{ ev.preventDefault(); state.impacto = b.dataset.m; renderImpacto(CASES.filter(passes)); });
+  document.querySelectorAll("#impacto [data-mi]").forEach(el=>{ const go = ()=>openImpacto(el.dataset.mi); el.onclick = go; el.onkeydown = e=>{ if (e.key==="Enter"||e.key===" "){ e.preventDefault(); go(); } }; });
+}
+function openImpacto(k){
+  const [i, col] = k.split("|"), f = (MI_ULT || {filas:[]}).filas[Number(i)]; if (!f) return;
+  const x = col === "*" ? f.total : f.celdas[col]; if (!x) return;
+  const filas = [...x.casos].sort((a,b)=>R(b).neto-R(a).neto).map(c=>{ const r = R(c);
+    return `<tr><td>${casoLink(c)} <span class="nd">${esc(c.id)}</span></td><td>${esc(c.estado)}</td><td class="n">${faseDe(c) == null ? "—" : faseDe(c)}</td><td>${nd((c.tags||{}).ambicion)}</td><td class="n">${fmt((r.construccion||0)+(r.recurrente||0))}</td><td class="n">${netoCelda({v:r.neto, prev:false})}</td><td class="n">${fmt(r.valor_por_estado.validado||0)}</td><td class="n">${valorEnJuego(c) == null ? "—" : fmt(valorEnJuego(c))}</td></tr>`; }).join("");
+  open(`<h2>${esc(f.etiqueta)}${col === "*" ? "" : ` · ${esc(col)}`}</h2><div class="sub">${x.casos.length} casos activos · ${x.enUso} en uso · ${fmt(x.gasto)} de inversión y coste${f.objetivo ? ` · objetivo C2: ${esc(f.objetivo === "no_prioritaria" ? "no prioritaria" : f.objetivo)}` : ""}</div>
+   <div class="tblx"><table class="mini"><thead><tr><th>Caso</th><th>Estado</th><th class="n">Fase</th><th>Ambición</th><th class="n">Inversión y coste</th><th class="n">Neto anual</th><th class="n">Valor validado</th><th class="n">Valor anual en juego</th></tr></thead><tbody>${filas}</tbody></table></div>
+   ${f.sinEv.length && col === "*" ? `<div class="note" style="margin-top:8px">Sin evidencia: ${f.sinEv.map(c=>esc(c.nombre)).join(", ")} llevan más de 12 meses en uso sin valor validado.</div>` : ""}
+   ${f.retiradas.length && col === "*" ? `<div class="note" style="margin-top:8px">Parados o retirados en los últimos 12 meses: ${f.retiradas.map(c=>`${esc(c.nombre)} (${esc(c.estado)})`).join(", ")}.</div>` : ""}
+   <div class="note" style="margin-top:8px">Reglas del mapa: documento 10 §8.</div>`);
 }
 
 // ---- índice de transformación de la compañía (bloque «indice», opcional; documento 12 de SEVEN-G, calculadora T14)
@@ -1527,6 +1727,8 @@ HTML = """<!DOCTYPE html>
  <section class="page" data-page="cartera" id="secc-cartera">
  <div class="sec"><h2>Cartera y valor</h2><div class="sub">Bloques 1 y 2 del panel trimestral · las tarjetas plegadas muestran su lectura en cabecera; haz clic para ver el detalle. Compromisos, decisiones GO/NO-GO y riesgos abiertos se siguen en el registro de recomendaciones, no aquí.</div></div>
  <div class="kpis" id="kpis"></div>
+ <details class="card cdet" id="frenos" data-ayuda="frenos" style="margin-bottom:14px"></details>
+ <details class="card cdet" id="impacto" data-ayuda="impacto" style="margin-bottom:14px"></details>
  <div class="grid2">
   <div class="card" data-ayuda="c1"><h3>Eficiencias, retorno y coste por compañía y unidad de negocio</h3><div class="note">Actual o potencial según el selector · euros al año · la capacidad liberada no materializada se muestra aparte y no suma en el neto</div><div class="legend"><span><i style="background:var(--s3)"></i>Eficiencias</span><span><i style="background:var(--s1)"></i>Retorno</span><span><i style="background:var(--seq250)"></i>Capacidad no materializada</span><span><i style="background:var(--s2)"></i>Coste recurrente</span></div><div id="c1"></div></div>
   <div class="card" data-ayuda="c2"><h3 id="c2t"></h3><div class="note">Haz clic en una barra para ver la inversión, las eficiencias y el retorno del caso</div><div class="legend"><span><i style="background:var(--seq450)"></i>Neto anual adicional</span><span><i style="background:var(--s2)"></i>Inversión adicional</span></div><div id="c2"></div></div>
