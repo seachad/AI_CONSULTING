@@ -107,7 +107,8 @@ function controlesCompletos(c){ const k = rc(c).controles || {}; return CTRL.eve
 // ---- indicadores con umbral (semáforo): meta.umbrales_kpi, que sale del JSON general de configuración de cada organización.
 // Cada umbral es un porcentaje: por debajo de "amarillo" el indicador se marca en amarillo y por debajo de "rojo", en rojo.
 // Si los datos no traen umbrales, se usan estos valores por defecto.
-const UMBRALES_DEF = {valor_validado_pct:{amarillo:50, rojo:20}, clasificados_compania_pct:{amarillo:80, rojo:50}, controles_completos_pct:{amarillo:80, rojo:50}};
+const UMBRALES_DEF = {valor_validado_pct:{amarillo:50, rojo:20}, clasificados_compania_pct:{amarillo:80, rojo:50}, controles_completos_pct:{amarillo:80, rojo:50},
+  planes_realizacion_pct:{amarillo:80, rojo:50}, realizacion_pct:{amarillo:90, rojo:70}};
 function umbral(clave){ return Object.assign({}, UMBRALES_DEF[clave] || {}, (META().umbrales_kpi || {})[clave] || {}); }
 function nivelKPI(clave, valorPct){
   if (valorPct == null || isNaN(valorPct)) return "";
@@ -406,5 +407,207 @@ function mapaImpacto(rows, modo){
   const banda = celda(act.filter(c => hab.has(clave(c))));
   const colTot = {}; cols.forEach(a => { const x = celda(enFilas.filter(c => colDe(c) === a)); x.pct = total ? 100 * x.gasto / total : null; colTot[a] = x; });
   return {modo: esf ? "esfera" : "unidad", cols, filas, banda, bandaFilas: [...hab], colTot, total, activos: act.length, retiradas: ret, excluidos: rows.filter(c => !esSalida(c.estado) && !activo(c))};
+}
+
+// ---- plan de realización: curva y tramos (D135; misma lógica que economia.curva). SEVEN-G: la curva sale solo del plan registrado en
+// T01 (43 §4.1, tramos de 14 §6.2); con curva_valor.estimar_sin_curva = false un caso sin plan no tiene curva (curva(c) = null).
+// VAN F7 con H y r de C2 (40 §8). La inversión se hace por tramos, cada uno con fecha, importe,
+// alcance y condición de paso para liberar el siguiente, y el valor se captura poco a poco (% del valor en régimen en cada periodo).
+// El cálculo es trimestral y se agrega por año, semestre o trimestre. Sin curva reportada (economia.curva), se estima con reglas
+// fijas y se marca como estimada. Configuración en meta.curva_valor (config_panel.json).
+const CURVA_DEF = {granularidad:"anual", horizonte:{desde:null, hasta:null}, rampa_sin_plazo_trimestres:6,
+  produccion_sin_fecha_trimestres:{"Propuesto":6, "Aprobado":4, "POC":4, "En desarrollo":2}, tasa_descuento_anual_pct:null,
+  horizonte_van_anios:null, estimar_sin_curva:true};
+const SIT_TRAMO = {ejecutado:"Ejecutado", comprometido:"Comprometido", previsto:"Previsto (pendiente de decidir)", opcional:"Opción (fuera del plan)"};
+const EN_PLAN = new Set(["ejecutado","comprometido","previsto"]);
+const OPERANDO = new Set(["En uso","Desenganchado"]);
+const GRAN = {anual:"Año", semestral:"Semestre", trimestral:"Trimestre"};
+const cfgCurva = () => Object.assign({}, CURVA_DEF, META().curva_valor || {});
+function trimestre(s){
+  if (s == null || s === "") return null;
+  const m = String(s).trim().match(/^(\d{4})(?:-(?:[TQ]([1-4])|S([12])|(\d{1,2})(?:-\d{1,2})?))?$/);
+  if (!m) return null;
+  const y = +m[1];
+  if (m[2]) return y*4 + (+m[2]) - 1;
+  if (m[3]) return y*4 + ((+m[3]) - 1)*2;
+  if (m[4]) return y*4 + Math.floor((Math.min(12, Math.max(1, +m[4])) - 1)/3);
+  return y*4;
+}
+const nTrim = s => /^\d{4}$/.test(String(s)) ? 4 : /^\d{4}-S[12]$/.test(String(s)) ? 2 : 1;
+function etiquetaQ(q, gran){ const y = Math.floor(q/4), t = q - y*4; return gran==="anual" ? String(y) : gran==="semestral" ? `${y}-S${Math.floor(t/2)+1}` : `${y}-T${t+1}`; }
+// {periodo: valor} → {trimestre: valor}; lo más específico gana. Con repartir, el importe se divide entre los trimestres del periodo
+function mapaQ(mapa, repartir){
+  const out = {};
+  Object.entries(mapa || {}).filter(([k,v]) => v != null && !String(k).startsWith("_") && trimestre(k) != null)
+    .sort((a,b) => nTrim(b[0]) - nTrim(a[0])).forEach(([k,v]) => { const q = trimestre(k), n = nTrim(k); for (let i = 0; i < n; i++) out[q+i] = repartir ? v/n : v; });
+  return out;
+}
+// captura en q: el punto si existe; entre dos puntos, lineal; antes del primero, 0; después del último, el último
+function interpola(p, q){
+  if (q in p) return p[q];
+  const ks = Object.keys(p).map(Number), antes = ks.filter(k => k < q), despues = ks.filter(k => k > q);
+  if (!antes.length) return 0;
+  const a = Math.max(...antes); if (!despues.length) return p[a];
+  const b = Math.min(...despues); return p[a] + (p[b] - p[a]) * (q - a) / (b - a);
+}
+function costeAnualCap(cap, cref, rec, recp){ if (cref >= 100) return recp; const av = Math.min(1, Math.max(0, (cap - cref)/(100 - cref))); return rec + (recp - rec)*av; }
+const numIt = v => (v && typeof v === "object") ? v.importe : v;
+const fmtN = v => Number(v).toLocaleString("es-ES");
+let CUR = new WeakMap();
+function curva(c){
+  if (CUR.has(c)) return CUR.get(c);
+  const cfg = cfgCurva(), r = R(c), e = eco(c), cv = e.curva || null, fechas = rc(c).fechas || {}, estado = c.estado;
+  if (!cv && cfg.estimar_sin_curva === false){ CUR.set(c, null); return null; }
+  const hoy = trimestre(String(META().generado || "").slice(0,10)) || 0, hz = cfg.horizonte || {};
+  const q0 = (hz.desde || Math.floor(hoy/4) - 2) * 4, q1 = (hz.hasta || Math.floor(hoy/4) + 4) * 4 + 3;
+  const vact = (r.eficiencias||0) + (r.retorno||0), rec = r.recurrente||0, recp = r.recurrente_pot||0, hip = [];
+  const act = (cv||{}).actividad || {};
+  let vreg;
+  if (cv && numIt(cv.valor_regimen) != null) vreg = numIt(cv.valor_regimen);
+  else if (cv && act.volumen_anual != null && act.valor_unitario != null){ vreg = act.volumen_anual * act.valor_unitario; hip.push(`Valor en régimen = ${fmtN(act.volumen_anual)} ${act.unidad || "unidades"} al año × ${fmtN(act.valor_unitario)} € por unidad`); }
+  else vreg = (r.eficiencias_pot||0) + (r.retorno_pot||0);
+  const cact = vreg > 0 ? Math.min(100, 100*vact/vreg) : 0;
+  let prod, prodEst = false;
+  if (trimestre(fechas.produccion) != null) prod = trimestre(fechas.produccion);
+  else if (OPERANDO.has(estado) && trimestre(c.inicio_estimado) != null){ prod = trimestre(c.inicio_estimado); prodEst = true; hip.push(`Puesta en producción en ${etiquetaQ(prod)}: año de inicio estimado, sin fecha reportada`); }
+  else { prod = hoy + Math.trunc((cfg.produccion_sin_fecha_trimestres || {})[estado] ?? 4); prodEst = true; hip.push(`Puesta en producción estimada en ${etiquetaQ(prod)}, sin fecha reportada`); }
+  let fin = trimestre(fechas.retirada); if (fin == null && estado === "Desenganchado") fin = hoy;
+  const plazo = trimestre(e.plazo_potencial), rampa = Math.trunc(cfg.rampa_sin_plazo_trimestres || 6);
+  const inv = e.inversion || {};
+  let tramos = [], puntos = {}, cref, origen;
+  if (cv){
+    origen = "reportada";
+    (cv.tramos || []).forEach((t, i) => { const q = trimestre(t.fecha); if (q == null) return;
+      tramos.push({id: t.id || `T${i+1}`, q, importe: numIt(t.importe) || numIt(t.inversion) || 0, estado: t.estado || cv.estado || "declarado", alcance: t.alcance || null,
+        gate: t.gate || null, condicion_paso: t.condicion_paso || null, situacion: t.situacion || "previsto", captura_objetivo_pct: t.captura_objetivo_pct ?? null}); });
+    puntos = mapaQ(cv.captura);
+    cref = Object.keys(puntos).length ? interpola(puntos, hoy) : 0;
+  } else {
+    origen = "estimada";
+    cref = OPERANDO.has(estado) ? cact : 0;
+    if (r.construccion){
+      let qi = trimestre(fechas.inicio); if (qi == null) qi = OPERANDO.has(estado) ? prod - 1 : Math.min(hoy, prod - 1);
+      const sit = (OPERANDO.has(estado) && qi <= hoy) ? "ejecutado" : estado === "En desarrollo" ? "comprometido" : "previsto";
+      tramos.push({id:"T1", q:qi, importe:r.construccion, estado:(inv.construccion||{}).estado || "estimado_cati", alcance:"Construcción", condicion_paso:null, situacion:sit,
+        captura_objetivo_pct: OPERANDO.has(estado) ? cact : (r.adicional ? null : 100)});
+    }
+    if (r.adicional){
+      const qa = !OPERANDO.has(estado) ? Math.max(hoy + 1, prod) : hoy + 1;
+      tramos.push({id:"T2", q:qa, importe:r.adicional, estado:(inv.adicional_potencial||{}).estado || "estimado_cati", alcance:(inv.adicional_potencial||{}).hipotesis || "Ampliación hasta el potencial",
+        condicion_paso:null, situacion:"previsto", captura_objetivo_pct:100});
+    }
+    if (OPERANDO.has(estado)){
+      puntos[prod] = cact; if (hoy > prod) puntos[hoy] = cact;
+      if (vreg > vact && (fin == null || fin > hoy)){
+        const ini = Math.max(prod, hoy + (r.adicional ? 1 : 0)); puntos[ini] = cact;
+        const fq = (plazo != null && plazo > ini) ? plazo : ini + rampa; puntos[fq] = 100;
+        hip.push(`Captura constante al nivel actual (${Math.round(cact)} %) desde la producción; rampa lineal hasta el 100 % en ${etiquetaQ(fq)}` + (fq === plazo ? " (plazo del potencial)" : ` (${rampa} trimestres: sin plazo del potencial)`));
+      } else hip.push(`Captura constante al nivel actual (${Math.round(cact)} %) desde la producción`);
+    } else if (vreg > 0){
+      puntos[prod] = 0; const fq = (plazo != null && plazo > prod) ? plazo : prod + rampa; puntos[fq] = 100;
+      hip.push(`Rampa lineal desde la producción hasta el 100 % en ${etiquetaQ(fq)}` + (fq === plazo ? " (plazo del potencial)" : ` (${rampa} trimestres: sin plazo del potencial)`));
+    }
+    if (tramos.length) hip.push("Tramos: construcción y, si la hay, inversión adicional en el trimestre siguiente al de los datos, sin condición de paso fijada");
+  }
+  tramos.sort((a,b) => a.q - b.q);
+  const decl = (cv||{}).declive || {}, qd = trimestre(decl.desde), pd = decl.pct_anual;
+  const costes = mapaQ((cv||{}).coste_recurrente), ref = (cv||{}).referencia || {}, refP = mapaQ(ref.captura), hayRef = Object.keys(refP).length > 0;
+  const refV = numIt(ref.valor_regimen) == null ? vreg : numIt(ref.valor_regimen), realRaw = (cv||{}).real || {}, reales = mapaQ(Object.fromEntries(Object.entries(realRaw).map(([k,v]) => [k, (v && typeof v === "object") ? v.importe : v])), true),
+    realesVal = mapaQ(Object.fromEntries(Object.entries(realRaw).filter(([,v]) => v && typeof v === "object" && v.estado === "validado").map(([k,v]) => [k, v.importe])), true), hayP = Object.keys(puntos).length > 0;
+  const qa = Math.min(q0, prod, ...tramos.map(t => t.q)), serie = [];
+  let acum = 0;
+  for (let q = qa; q <= q1; q++){
+    const invq = sum(tramos.filter(t => t.q === q && EN_PLAN.has(t.situacion)).map(t => t.importe));
+    let cap = hayP ? interpola(puntos, q) : 0; if (fin != null && q >= fin) cap = 0;
+    const operando = (q >= prod || (origen === "reportada" && cap > 0)) && (fin == null || q < fin);
+    const factor = (qd != null && pd && q >= qd) ? Math.pow(1 - pd/100, (q - qd)/4) : 1;
+    const valor = operando ? cap/100 * vreg/4 * factor : 0;
+    const coste = operando ? ((q in costes) ? costes[q] : costeAnualCap(cap, cref, rec, recp)) / 4 : 0;
+    const neto = valor - coste - invq; acum += neto;
+    serie.push({q, inv:invq, valor, coste, neto, acum, cap: operando ? cap : 0, ref: (hayRef && operando) ? interpola(refP, q)/100 * refV/4 : null, real: (q in reales) ? reales[q] : null, real_val: (q in realesVal) ? realesVal[q] : null});
+  }
+  // rendimiento de cada tramo: neto anual que desbloquea frente al nivel del tramo anterior
+  let pc = 0, pco = 0;
+  tramos.forEach(t => {
+    const obj = t.captura_objetivo_pct;
+    if (obj == null){ Object.assign(t, {valor_anual_inc:null, neto_anual_inc:null, rendimiento:null, payback_anios:null}); return; }
+    const co = costeAnualCap(obj, cref, rec, recp), vi = (obj - pc)/100 * vreg, ni = vi - (co - pco);
+    Object.assign(t, {valor_anual_inc:vi, neto_anual_inc:ni, rendimiento: t.importe ? ni/t.importe : null, payback_anios: (t.importe && ni > 0) ? t.importe/ni : null});
+    pc = obj; pco = co;
+  });
+  tramos.forEach(t => t.periodo = etiquetaQ(t.q));
+  const out = {id:c.id, origen, estado:(cv||{}).estado || "estimado_cati", fuente:(cv||{}).fuente || null, valor_regimen:vreg, captura_actual_pct:cact,
+    produccion:etiquetaQ(prod), produccion_estimada:prodEst, hoy, q0, q1, serie, tramos, hipotesis:hip,
+    ...metricasCurva(serie, hoy, q0, q1, cfg.tasa_descuento_anual_pct)};
+  out.van_f7 = vanF7(serie, tramos, cfg);
+  const rq = serie.filter(x => x.real != null && x.q <= hoy), planR = sum(rq.map(x => x.ref != null ? x.ref : x.valor)), realR = sum(rq.map(x => x.real)), realV = sum(rq.map(x => x.real_val || 0));
+  out.desviacion = rq.length ? {real:realR, plan:planR, pct: planR ? 100*realR/planR : null, real_validado:realV, pct_validado: planR ? 100*realV/planR : null, periodos:rq.length, frente_a: hayRef ? "referencia" : "plan"} : null;
+  CUR.set(c, out); return out;
+}
+// VAN F7 (40 §6 y §8): flujos anuales de la curva descontados con r desde el año del primer tramo (t = 0) hasta t = H; r = 0 si C2 no fija tasa
+function vanF7(serie, tramos, cfg){
+  const H = cfg.horizonte_van_anios; if (!H || !tramos.length) return null;
+  const r = (cfg.tasa_descuento_anual_pct || 0)/100, y0 = Math.floor(Math.min(...tramos.map(t => t.q))/4), fl = {};
+  serie.forEach(x => { const y = Math.floor(x.q/4); if (y >= y0 && y <= y0 + Math.trunc(H)) fl[y] = (fl[y] || 0) + x.neto; });
+  return sum(Object.entries(fl).map(([y, v]) => v / Math.pow(1 + r, (+y) - y0)));
+}
+function metricasCurva(serie, hoy, q0, q1, tasa){
+  let minimo = 0, qmin = null;
+  serie.forEach(x => { if (x.acum < minimo - 1e-9){ minimo = x.acum; qmin = x.q; } });
+  let payback = null, motivo = null;
+  if (qmin == null) motivo = "sin_inversion_neta";
+  else { const x = serie.find(x => x.q > qmin && x.acum >= 0); if (x) payback = x.q; else motivo = "fuera_horizonte"; }
+  const hz = serie.filter(x => x.q >= q0 && x.q <= q1), fut = serie.filter(x => x.q > hoy && x.q <= q1);
+  // caja que aún hace falta por delante: cuánto baja el acumulado desde hoy hasta su mínimo futuro (lo ya gastado no cuenta)
+  const pasado = serie.filter(x => x.q <= hoy), acumHoy = pasado.length ? pasado[pasado.length-1].acum : 0;
+  const cajaFutura = Math.max(0, acumHoy - Math.min(acumHoy, ...fut.map(x => x.acum)));
+  return {payback_q:payback, payback: payback != null ? etiquetaQ(payback) : null, payback_motivo:motivo, caja_max:-minimo, caja_max_q:qmin, caja_futura:cajaFutura,
+    inv_12m: sum(serie.filter(x => x.q > hoy && x.q <= hoy + 4).map(x => x.inv)), inv_futura: sum(fut.map(x => x.inv)), valor_futuro: sum(fut.map(x => x.valor)),
+    neto_futuro: sum(fut.map(x => x.neto)), van_futuro: tasa ? sum(fut.map(x => x.neto / Math.pow(1 + tasa/100, (x.q - hoy)/4))) : null,
+    neto_horizonte: sum(hz.map(x => x.neto)), inv_horizonte: sum(hz.map(x => x.inv)), valor_horizonte: sum(hz.map(x => x.valor))};
+}
+// curva en J de una lista de casos: suma trimestral de sus curvas y métricas del conjunto
+function curvaCartera(rows){
+  const cs = rows.map(curva).filter(Boolean); if (!cs.length) return null;
+  const {hoy, q0, q1} = cs[0], qa = Math.min(...cs.map(c => c.serie[0].q)), pq = {};
+  for (let q = qa; q <= q1; q++) pq[q] = {q, inv:0, valor:0, coste:0, neto:0, real:null, real_val:null, ref:null};
+  cs.forEach(c => c.serie.forEach(x => { const d = pq[x.q]; ["inv","valor","coste","neto"].forEach(k => d[k] += x[k]); if (x.real != null) d.real = (d.real||0) + x.real; if (x.real_val != null) d.real_val = (d.real_val||0) + x.real_val; if (x.ref != null) d.ref = (d.ref||0) + x.ref; }));
+  let acum = 0; const serie = [];
+  for (let q = qa; q <= q1; q++){ acum += pq[q].neto; serie.push({...pq[q], acum}); }
+  return {hoy, q0, q1, serie, casos:cs.length, reportadas:cs.filter(c => c.origen === "reportada").length, ...metricasCurva(serie, hoy, q0, q1, cfgCurva().tasa_descuento_anual_pct)};
+}
+// agrega una serie trimestral por año, semestre o trimestre dentro del horizonte; el acumulado es el del último trimestre del grupo
+function agruparCurva(serie, gran, q0, q1){
+  const g = [];
+  serie.filter(x => x.q >= q0 && x.q <= q1).forEach(x => {
+    const et = etiquetaQ(x.q, gran);
+    if (!g.length || g[g.length-1].periodo !== et) g.push({periodo:et, q_ini:x.q, inv:0, valor:0, coste:0, neto:0, real:null, real_val:null, ref:null});
+    const u = g[g.length-1]; ["inv","valor","coste","neto"].forEach(k => u[k] += x[k]);
+    ["real","real_val","ref"].forEach(k => { if (x[k] != null) u[k] = (u[k]||0) + x[k]; });
+    u.acum = x.acum; u.q_fin = x.q;
+  });
+  return g;
+}
+const pbTxt = cu => !cu ? "sin plan de realización" : cu.payback ? cu.payback : cu.payback_motivo === "sin_inversion_neta" ? "sin inversión que recuperar" : "no se recupera en el horizonte";
+// captura frente al plan (o a la referencia aprobada) en los periodos con valor real: semáforo con umbrales_kpi.captura_frente_plan_pct
+// realización F10 acumulada (43 §9.1, IND-VAL-14): semáforo con umbrales_kpi.realizacion_pct
+const nivelDesv = cu => cu && cu.desviacion && cu.desviacion.pct != null ? nivelKPI("realizacion_pct", cu.desviacion.pct) : "";
+// ---- valor no cuantificado (40 regla 7 y §5.3; misma lógica que economia.no_monetario): dimensión y nivel de 0 a 3 con métrica física
+// obligatoria y motivo; nunca en euros. «opcion» es el valor de opción de Transformar.
+const DIM_NM = {imagen:"Imagen y reputación", posicionamiento:"Posicionamiento competitivo", cliente:"Experiencia de cliente", distribucion:"Red comercial y de distribución", talento:"Talento y capacidades", opcion:"Opción estratégica (valor de opción)"};
+const NIVEL_NM = ["sin efecto","bajo","medio","alto"];
+const dimNM = k => TX("nm_" + k, DIM_NM[k] || k);
+let NMC = new WeakMap();
+function noMonetario(c){
+  if (NMC.has(c)) return NMC.get(c);
+  const rep = rc(c), dims = (rep.valor_no_monetario || []).map(d => { let n = parseInt(d.nivel, 10); n = isNaN(n) ? 0 : Math.max(0, Math.min(3, n)); return {...d, nivel:n, con_indicador: !!d.indicador, cuenta: n >= 1 && !!d.indicador}; });
+  const max = Math.max(0, ...dims.filter(d => d.cuenta).map(d => d.nivel)), sinInd = dims.filter(d => d.nivel >= 1 && !d.con_indicador).length;
+  // sostenido por valor no cuantificado: nivel medio o alto con métrica y VAN F7 negativo o sin plan que lo demuestre (sin H, sin recuperar en el horizonte)
+  const cu = curva(c), sinDemostrar = !cu ? true : cu.van_f7 != null ? cu.van_f7 < 0 : cu.payback_motivo === "fuera_horizonte";
+  // solo en producción (fases 6 y 7, donde hay R6); antes, el valor de opción de Transformar se gobierna por etapas y gates (40 §8.3)
+  const fase = (c.seveng || {}).fase, enProd = fase == null || fase >= 6;
+  const rev = rep.revision_estrategica || null, estrategico = max >= 2 && sinDemostrar && enProd, hoy = String(META().generado || "").slice(0,10);
+  const out = {dimensiones:dims, max_nivel:max, sin_indicador:sinInd, estrategico, revision:rev, aviso: estrategico && !rev ? "sin_revision" : (estrategico && rev && String(rev) < hoy ? "revision_vencida" : null)};
+  NMC.set(c, out); return out;
 }
 """

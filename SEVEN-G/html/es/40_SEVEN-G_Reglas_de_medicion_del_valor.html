@@ -473,7 +473,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
     <p class="antetitulo">Documento 40 &#183; Reglas de medici&#243;n del valor</p>
     <h1>Reglas de medici&#243;n del valor</h1>
     <p class="entradilla">C&#243;mo se mide, se valida y se presenta el valor de la IA para que resista una auditor&#237;a</p>
-    <div class="firma"><span><b>Fernando Garc&#237;a Varela</b></span><span>Versión 0.1 (borrador de trabajo)</span><span>16-09-2026</span><span>Borrador para revisi&#243;n</span></div>
+    <div class="firma"><span><b>Fernando Garc&#237;a Varela</b></span><span>Versión 0.2 (borrador de trabajo)</span><span>16-09-2026</span><span>Borrador para revisi&#243;n</span></div>
     <div class="cifras"><div class="cifra"><b>10</b><span>reglas de medici&#243;n</span></div><div class="cifra"><b>3</b><span>estados del importe</span></div><div class="cifra"><b>5</b><span>m&#233;todos de atribuci&#243;n</span></div><div class="cifra"><b>1</b><span>criterio econ&#243;mico &#250;nico sobre beneficio neto</span></div></div>
   </div>
 </header>
@@ -749,7 +749,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 <tr>
 <td><strong>Cómo se aplica</strong></td>
-<td>Cada mejora no monetaria se traduce con una cadena explícita: magnitud física incremental × valor económico unitario con fuente. Si no existe una relación demostrable, el importe se registra como <strong>no cuantificado</strong>, con la métrica física y la razón. Un valor no cuantificado no es cero ni se estima sin indicarlo (regla 8).</td>
+<td>Cada mejora no monetaria se traduce con una cadena explícita: magnitud física incremental × valor económico unitario con fuente. Si no existe una relación demostrable, el importe se registra como <strong>no cuantificado</strong>, con la métrica física y la razón. Un valor no cuantificado no es cero ni se estima sin indicarlo (regla 8). En <a href="../../herramientas/T01_registro_iniciativas/registro.html" title="Herramienta T01 &#183; Registro de iniciativas">T01</a> se registra en <code>no_cuantificado[]</code> con su dimensión (imagen y reputación, posicionamiento competitivo, experiencia de cliente, red comercial y de distribución, talento y capacidades, u opción estratégica, que es el valor de opción de la sección 5.3), su nivel de 0 a 3 (sin efecto, bajo, medio, alto), la métrica física con su base, su objetivo y su valor actual, y el motivo por el que no se traduce a dinero. Sin métrica no cuenta. El nivel nunca se traduce a euros ni suma en el neto.</td>
 </tr>
 <tr>
 <td><strong>Ejemplo correcto</strong> <em>(ilustrativo)</em></td>
@@ -761,10 +761,11 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 <tr>
 <td><strong>Cómo se verifica</strong></td>
-<td>Cada métrica no monetaria de la hipótesis tiene importe con fórmula o marca de no cuantificada con motivo; los valores unitarios tienen fuente.</td>
+<td>Cada métrica no monetaria de la hipótesis tiene importe con fórmula o marca de no cuantificada con motivo; los valores unitarios tienen fuente; cada valor no cuantificado de <a href="../../herramientas/T01_registro_iniciativas/registro.html" title="Herramienta T01 &#183; Registro de iniciativas">T01</a> tiene dimensión, nivel, métrica y motivo.</td>
 </tr>
 </tbody>
 </table></div>
+<p><strong>Caso sostenido por valor no cuantificado.</strong> Una iniciativa en producción (fases 6 y 7) cuyo caso descansa en valor no cuantificado de nivel medio o alto, con métrica, mientras su VAN (F7) es negativo o no lo demuestra un plan de realización (<a href="43_SEVEN-G_Realizacion_de_beneficios.html" title="Documento 43 &#183; Realizaci&#243;n de beneficios">documento 43</a> §4.1), se muestra como «sostenido por valor no cuantificado». Necesita la fecha de su próxima R6 registrada en <a href="../../herramientas/T01_registro_iniciativas/registro.html" title="Herramienta T01 &#183; Registro de iniciativas">T01</a> (<code>ciclo.proxima_revision</code>), y el panel del consejo avisa si falta o está vencida. Así el consejo ve qué casos se mantienen por razones que no son económicas y cuándo se vuelven a revisar. En las fases 3 a 5 no se marca: el valor de opción de Transformar se gobierna por sus etapas, hitos y <em>gates</em> (sección 8.3, punto 5).</p>
 <h3 id="3-8-regla-8-quot-sin-dato-quot-no-es-cero">3.8 Regla 8 · &quot;Sin dato&quot; no es cero</h3>
 <blockquote>
 <p>&quot;Sin dato&quot; no es cero. Los datos ausentes se muestran como ausentes y nunca se estiman sin indicarlo.</p>
@@ -1055,12 +1056,12 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tr>
 <td><strong>Valor de opción</strong></td>
 <td>Apuestas de Transformar cuyo valor depende de decisiones futuras.</td>
-<td>Descripción cualitativa documentada en G3 (01 §7.6), hitos de aprendizaje y límite de inversión por etapa.</td>
+<td>Descripción cualitativa documentada en G3 (01 §7.6), hitos de aprendizaje y límite de inversión por etapa. En <a href="../../herramientas/T01_registro_iniciativas/registro.html" title="Herramienta T01 &#183; Registro de iniciativas">T01</a> se registra como valor no cuantificado de dimensión «opción estratégica».</td>
 </tr>
 <tr>
 <td><strong>Valor no cuantificado</strong></td>
 <td>No existe relación económica demostrable (regla 7).</td>
-<td>Métrica física y motivo.</td>
+<td>Métrica física y motivo; en <a href="../../herramientas/T01_registro_iniciativas/registro.html" title="Herramienta T01 &#183; Registro de iniciativas">T01</a>, en <code>no_cuantificado[]</code>, con dimensión y nivel 0–3 (sin efecto, bajo, medio, alto), métrica con base, objetivo y valor actual, y motivo. Sin métrica no cuenta; nunca se traduce a euros.</td>
 </tr>
 </tbody>
 </table></div>
@@ -1373,6 +1374,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 </tbody>
 </table></div>
+<p>El panel del consejo (<a href="../../herramientas/T17_panel_consejo/index.html" title="Herramienta T17 &#183; Panel de IA para el consejo">T17</a>) calcula el VAN (F7) de cada caso con la curva de su plan de realización (<a href="43_SEVEN-G_Realizacion_de_beneficios.html" title="Documento 43 &#183; Realizaci&#243;n de beneficios">documento 43</a> §4.1) y con la H y la r de C2 (r = 0 si la compañía no fija tasa). El año 0 es el año del primer tramo de financiación y la inversión de cada tramo se resta en el año en que se paga: el VAN es la suma de los flujos anuales (valor según la curva, menos coste recurrente, menos inversión del año) divididos por (1 + r)^t, para t = 0…H. Es la misma F7 con la inversión repartida en el tiempo; si toda la inversión se paga en el año 0 y el valor empieza en el año 1, el resultado es idéntico. El panel suma los flujos de t = 0 a t = H: si la curva ya captura valor en el año 0, su VAN puede diferir del calculado con <a href="../../herramientas/T11_calculadora_valor/calculadora.html" title="Herramienta T11 &#183; Lienzo y calculadora de hip&#243;tesis de valor">T11</a> en las fases 2 y 3. Sin plan de realización, el panel no calcula el VAN del caso.</p>
 <h3 id="8-3-regla">8.3 Regla</h3>
 <ol>
 <li><strong>El criterio de viabilidad económica es único: VAN (F7) ≥ 0 con la H y la r aprobadas en C2.</strong> Con r = 0 equivale a recuperar la inversión inicial dentro del horizonte.</li>
@@ -1752,7 +1754,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tr id="cod-t01">
 <td><strong><a href="../../herramientas/T01_registro_iniciativas/registro.html" title="Herramienta T01 &#183; Registro de iniciativas">T01</a></strong></td>
 <td>Registro de iniciativas</td>
-<td>Importes, estados, eventos de cambio de estado, fechas para agilidad; alcance de las iniciativas transversales y plataformas, con despliegue, adopción e importes por unidad (sección 7.2).</td>
+<td>Importes, estados, eventos de cambio de estado, fechas para agilidad; alcance de las iniciativas transversales y plataformas, con despliegue, adopción e importes por unidad (sección 7.2); valor no cuantificado con dimensión y nivel (regla 7).</td>
 </tr>
 <tr id="cod-t11">
 <td><strong><a href="../../herramientas/T11_calculadora_valor/calculadora.html" title="Herramienta T11 &#183; Lienzo y calculadora de hip&#243;tesis de valor">T11</a></strong></td>
@@ -1772,7 +1774,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tr id="cod-t17">
 <td><strong><a href="../../herramientas/T17_panel_consejo/index.html" title="Herramienta T17 &#183; Panel de IA para el consejo">T17</a></strong></td>
 <td>Panel de IA para el consejo</td>
-<td>Presentación con proporción validada visible; tarjeta de iniciativas transversales y plataformas con el neto de la cartera con y sin ellas.</td>
+<td>Presentación con proporción validada visible; tarjeta de iniciativas transversales y plataformas con el neto de la cartera con y sin ellas; VAN (F7) de cada caso con su plan de realización (sección 8.2) y tarjeta «Valor no cuantificado».</td>
 </tr>
 <tr id="cod-p08">
 <td><strong><a href="plantillas/P08_SEVEN-G_Lienzo_de_hipotesis_de_valor.html" title="Plantilla P08 &#183; Lienzo de hip&#243;tesis de valor">P08</a></strong></td>
@@ -1873,6 +1875,11 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>0.1</td>
 <td>18-09-2026</td>
 <td>Añade la sección 7.2: iniciativas transversales y plataformas habilitadoras, con la escalera de medición por unidad (coste, adopción, capacidad liberada y valor materializado), el umbral de adopción y el neto de la cartera con y sin ellas; el error 13 y la regla de presentación 10.</td>
+</tr>
+<tr>
+<td>0.2</td>
+<td>28-09-2026</td>
+<td>El valor no cuantificado se registra en <a href="../../herramientas/T01_registro_iniciativas/registro.html" title="Herramienta T01 &#183; Registro de iniciativas">T01</a> con dimensión, nivel 0–3, métrica y motivo, nunca en euros, y el caso sostenido por valor no cuantificado necesita su próxima R6 con fecha (regla 7 y sección 5.3); el panel del consejo calcula el VAN (F7) de cada caso con la curva de su plan de realización (sección 8.2); sección 13 (D135).</td>
 </tr>
 </tbody>
 </table></div>

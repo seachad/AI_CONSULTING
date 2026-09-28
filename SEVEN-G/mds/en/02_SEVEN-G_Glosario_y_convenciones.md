@@ -5,12 +5,12 @@
 | | |
 |---|---|
 | Document | Document 02 · Glossary and conventions |
-| Version | 1.1 |
+| Version | 1.2 |
 | Date | 28-09-2026 |
 | Author | Fernando García Varela |
 | Status | In force. Single source of the framework's terms, scales and codes; it is updated before any other document when a term changes. |
 
-<!-- cifras: 192 | defined terms ; 18 | official scales ; 32 | code families ; 68 | numbered documents and templates -->
+<!-- cifras: 209 | defined terms ; 18 | official scales ; 32 | code families ; 68 | numbered documents and templates -->
 
 ---
 
@@ -172,7 +172,7 @@ Alphabetical order by English term. The full scales are in section 4 and the cod
 |---|---|---|---|
 | **Baseline** | Measurement of the situation without the initiative (cost, time, errors, conversion or another metric) against which the incremental effect is calculated. It must be measured, not estimated, unless justified. | 01 §6.4; 40 §3.1; P09 | Línea base |
 | **Baseline conditions** | Conditions that do not score in the transformation index but are required by the profiles: B1 governed portfolio, B2 proportion of validated value and B3 scale in production. | 12 §4.3 | Condiciones de base |
-| **Benefits realisation plan** | Plan signed by the business owner of the benefit, in draft at G3 and complete at G4, that sets out how, when and with which enabling changes the expected value will be materialised. | 43 §4 | Plan de realización de beneficios |
+| **Benefits realisation plan** | Plan signed by the business owner of the benefit, in draft at G3 and complete at G4, that sets out how, when and with which enabling changes the expected value will be materialised. Its realisation curve, its funding tranches with their pass condition, its approved reference and the realised value by period are recorded in T01 (`plan_realizacion`) and shown by the board dashboard. | 43 §4; 60 §10.6 | Plan de realización de beneficios |
 | **Blocking criterion** | *Gate* criterion with mandatory status *Yes* or *Yes ◆* that is *Not met* or *Pending*. While any remains, neither Proceed nor Proceed with conditions is possible. | 21 §5.1 | Bloqueante (criterio) |
 | **Board AI dashboard** | Board oversight tool fed by the initiative register: inventory, validated versus declared value, cost, compliance, incidents, exposure to AI-enabled attacks, agents, adoption, agility and distribution by ambition. | 00 §4.6; 60; T17 | Panel de IA del consejo |
 | **Board committee** | Committee of the board (audit, risk or technology) that oversees, on a quarterly basis, risks, regulatory compliance, incidents, major and critical nonconformities and AI audits. | 01 §5.2; 30 §3.2 | Comisión delegada |
@@ -185,6 +185,7 @@ Alphabetical order by English term. The full scales are in section 4 and the cod
 
 | Term | Definition in SEVEN-G | Reference document | Spanish term |
 |---|---|---|---|
+| **Cash still needed** | How much the cumulative net value of a use case, or of the portfolio, still has to fall from today before it starts to rise, according to its realisation plan: the money that still has to be put in. Money already spent does not count. It is calculated by the board dashboard; without a realisation plan it is not calculated. | 60 §10.6; 43 §4.1 | Caja por delante |
 | **Checklist** | Conversion of the criteria of a *gate* into binary checks with the same code, plus the cross-cutting lists for evidence (LV-EV) and agents (LV-AG). | 22 | Lista de verificación |
 | **Competent body** | Body or role responsible for deciding a *gate* according to intensity and ambition level. | 01 §7.1, §7.5 | Órgano competente |
 | **Compliance (value type)** | Ability to meet a regulatory or contractual obligation. It is reported separately and does not add to net value unless it replaces an actual compliance cost measured with a formula; it is then an efficiency. | 40 §5.2 | Cumplimiento (tipo de valor) |
@@ -234,7 +235,7 @@ Alphabetical order by English term. The full scales are in section 4 and the cod
 | **Falsifiable value hypothesis** | Statement of the expected value with main metric, measured baseline, target, success threshold, attribution method, monetary value with formula and stop criteria. A hypothesis that cannot fail is not valid. | 01 §6.4; P08 | Hipótesis de valor falsable |
 | **Finding** | Result of a verification or audit classified as an observation or as a minor, major or critical nonconformity. | 21 §10.5; 38 §8.1 | Hallazgo |
 | **Fundamental rights impact assessment** | Assessment that the EU AI Act requires of certain deployers of high-risk systems before putting them into use (Article 27). | 32 §6.2; P11 | Evaluación de impacto en derechos fundamentales |
-| **Funding tranche** | Part of an initiative's budget released after a *gate*: tranche 1 (phases 0–3) after G0, tranche 2 (phases 4–5) after G3, tranche 3 (operation) after G5; in Transform, each approved stage is a tranche. | 14 §6.2 | Tramo de financiación |
+| **Funding tranche** | Part of an initiative's budget released after a *gate*: tranche 1 (phases 0–3) after G0, tranche 2 (phases 4–5) after G3, tranche 3 (operation) after G5; in Transform, each approved stage is a tranche. Each tranche is recorded in the T01 realisation plan with its date, amount, the *gate* that releases it and its pass condition. | 14 §6.2; 43 §4.1 | Tramo de financiación |
 | **Funnel** | Way of managing the portfolio as a sales process: initiatives by phase and status, times, conversion per *gate*, stalled initiatives and stop reasons. | 01 §6.11; 03 §3.5 | Embudo |
 
 ### 3.7 G
@@ -313,6 +314,7 @@ Alphabetical order by English term. The full scales are in section 4 and the cod
 | **NIST CSF** | NIST Cybersecurity Framework, version 2.0 (NIST CSWP 29, February 2024): voluntary taxonomy of cybersecurity outcomes with six functions (GV govern, ID identify, PR protect, DE detect, RS respond and RC recover), 22 categories and 106 subcategories, organisational profiles and *tiers*. SEVEN-G maps it in 34 §5.3 and in the "CSF function" column of the SEG and AG controls. | 34 §5.3; 35 §6–§7 | NIST CSF |
 | **No data** | Absent value. It is not zero, it is shown as absent and it is never replaced by an undeclared estimate. | 00 rule 8; 40 §3.8 | Sin dato |
 | **Non-AI alternatives** | Phase 1 evidence that documents the non-AI solutions considered for the same problem and why AI provides something they do not. | 01 §6.3; P06 | Alternativas sin IA |
+| **Non-quantified value** | Improvement with no demonstrable economic relationship, which is not translated into money (rule 7). It is recorded in T01 with its dimension (image and reputation, competitive positioning, customer experience, sales and distribution network, talent and capabilities, or strategic option), its level from 0 to 3 (no effect, low, medium, high), the physical metric with baseline, target and current value, and the reason. Without a metric it does not count. It is never translated into euros and never adds to net value. | 00 rule 7; 40 §3.7, §5.3 | Valor no cuantificado |
 | **Nonconformity** | Failure to meet a mandatory requirement of the framework ("must"), classified as minor, major or critical, and managed with containment, root cause, corrective action, effectiveness verification, closure and re-audit. | 01 §12; 37 §3 | No conformidad |
 
 ### 3.13 O
@@ -330,6 +332,7 @@ Alphabetical order by English term. The full scales are in section 4 and the cod
 
 | Term | Definition in SEVEN-G | Reference document | Spanish term |
 |---|---|---|---|
+| **Pass condition** | Milestone that must be met to release a funding tranche (in Transform, the stage's learning milestone). It is recorded with the tranche in the T01 realisation plan; the board dashboard flags the tranches that lack one. | 14 §6.2; 43 §4.1 | Condición de paso |
 | **Payback period · ROI** | **Informative** economic indicators, without thresholds of their own: the year in which cumulative annual net value equals the initial investment (F9), and return on the initial investment, always calculated on annual net value (F8). They are not a G3 threshold: the payback periods by ambition level in document 13 §7 are informative references. | 40 §6, §8.3; 13 §7 | Plazo de recuperación · ROI |
 | **Pivot** | Outcome of G1, G2 or G3: the hypothesis does not hold, but there is a reasonable alternative; the initiative returns to phase 2 with a new hypothesis, keeping the approved context. | 01 §7.3 | Pivotar |
 | **Portfolio** | Set of authorised initiatives, with their budget, priority and ambition balance. It is managed as a funnel. | 01 §4; 14 | Cartera |
@@ -352,6 +355,7 @@ Alphabetical order by English term. The full scales are in section 4 and the cod
 | Term | Definition in SEVEN-G | Reference document | Spanish term |
 |---|---|---|---|
 | **R6 · Continuity review** | Periodic review that replaces the *gate* in phase 6: at least quarterly in Enterprise and half-yearly in Lite. It checks realised value against the hypothesis, stability, incidents, compliance and the validity of the classification. Outcomes: Proceed with operation, Proceed with conditions or Bring G7 forward. Omitting it is a major nonconformity. | 01 §6.8, §7.3; 21 §6.7; 52 §8 | R6 · Revisión de continuidad |
+| **Realisation curve** | Part of the realisation plan that sets what percentage of the expected annual steady-state value is captured in each period (year, half-year or quarter), with its adoption ramp-up, up to the steady-state date. It is recorded in T01, and the curve of the approved plan is kept as the reference against which realisation (F10) is measured. | 43 §4.1; 40 §8.2 | Curva de realización |
 | **Reassigned capacity** | Part of released capacity explicitly assigned to identified activities, with owner, hours, date and outcome indicator. It only adds up as efficiency if it avoids a budgeted cost; if it is allocated to a new activity, its value is measured through the outcome of that activity and is not counted twice. | 23 §7.1; 40 §5.3; 50 §6 | Capacidad reasignada |
 | **Re-audit** | Full or partial repetition of an audit after a Nonconformant outcome or to verify the closure of critical and major nonconformities. | 37 §3.9; 38 §10 | Reauditoría |
 | **Recurring cost** | Full annual cost of operating a use case, direct and allocated shared cost, across the nine cost categories. It is always deducted in full, regardless of its status. | 00 rule 6; 40 §5.1; 42 §4 | Coste recurrente |
@@ -390,6 +394,7 @@ Alphabetical order by English term. The full scales are in section 4 and the cod
 | **Stop** | *Gate* outcome: there is no plausible value, feasibility is not demonstrated or the risk is unacceptable. The initiative is closed with a coded reason and lessons learned. A well-founded stop is a valid outcome. | 01 §7.3 | Parar |
 | **Stop criteria** | Conditions set in phase 2, before investing, whose fulfilment requires Stop to be proposed. They cannot be relaxed during the phase without the approval of the body that authorised the initiative. | 01 §6.4, §7.4 | Criterios de parada |
 | **Stop or retirement reason** | Coded reason, from a closed list, recorded for every stop or retirement. | 01 §6.11; 03 §3.3 | Motivo de parada o retirada |
+| **Sustained by non-quantified value** | Situation of an initiative in production (phases 6 and 7) whose case rests on non-quantified value of medium or high level, with a metric, while its NPV (F7) is negative or is not demonstrated by a realisation plan. It is shown as such in the board dashboard and needs the date of its next R6; the dashboard warns if it is missing or overdue. In phases 3 to 5 it is not flagged: the option value of Transform is governed by its stages, milestones and *gates*. | 40 §3.7, §8.3; 60 §10.6 | Sostenido por valor no cuantificado |
 
 ### 3.17 T
 
@@ -1019,6 +1024,7 @@ Tools display the values of closed lists in Spanish and English using the equiva
 
 | Version | Date | Changes |
 |---|---|---|
+| 1.2 | 28-09-2026 | Adds cash still needed, pass condition, realisation curve, sustained by non-quantified value and non-quantified value; extends benefits realisation plan and funding tranche with their recording in T01; 209 defined terms (D135). |
 | 1.1 | 28-09-2026 | Adds starting-point archetype and modifier, implementation milestone and journey (document 96), technology footprint (11 §7.6) and impact reach (12 §3.7), with their codes PP-A–PP-F, MP1–MP5, HI-01–HI-22, HT0–HT5 and IM1–IM4; tools T01–T23. |
 | 1.0 | 16-09-2026 | Final library version v0.1. The cover is updated to in-force status and the AI self-consulting principle is added with an editorial criterion: didactic explanations oriented towards decision-making and tool use, without a course format. Consistency adjustments: 70 typical risks (RT-ORG-07 to RT-ORG-09), 156 indicators in 13 families in document 41 (new PRO family) and provisional CNC- prefix for the knowledge indicators in document 51. |
 | 0.1 | 16-09-2026 | First version. Sets the order of precedence between sources, the normative language and drafting conventions, the alphabetical glossary with English equivalents, 18 official scales (including the R6 outcomes and the grades of appetite and of spheres 08 and 09), the copy of the controlled taxonomy in 03 §3.3, the code system with the proposed SIA, DEC and AUD codes, the IT- and PER- prefixed codes that replace the local numbering of documents 12 and 50, the locally used numbering that must not be used outside its document, the library numbering and the acronyms. |

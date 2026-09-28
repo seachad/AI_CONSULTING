@@ -473,7 +473,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
     <p class="antetitulo">Documento 03 &#183; Herramientas y registro de iniciativas</p>
     <h1>Herramientas de SEVEN-G y registro de iniciativas</h1>
     <p class="entradilla">La cartera de IA gestionada como un embudo: fases, tiempos, cumplimiento y etiquetas</p>
-    <div class="firma"><span><b>Fernando Garc&#237;a Varela</b></span><span>Versión 0.3 (borrador de trabajo)</span><span>28-09-2026</span><span>Borrador para revisi&#243;n</span></div>
+    <div class="firma"><span><b>Fernando Garc&#237;a Varela</b></span><span>Versión 0.4 (borrador de trabajo)</span><span>28-09-2026</span><span>Borrador para revisi&#243;n</span></div>
     <div class="cifras"><div class="cifra"><b>1</b><span>modelo de datos com&#250;n</span></div><div class="cifra"><b>8</b><span>fases trazadas con fecha</span></div><div class="cifra"><b>22</b><span>herramientas catalogadas</span></div><div class="cifra"><b>3</b><span>olas de construcci&#243;n</span></div></div>
   </div>
 </header>
@@ -1148,7 +1148,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 <tr>
 <td><strong>Valor</strong></td>
-<td>Importes por tipo (eficiencia, retorno, coste), fórmula, estado de validación, periodo y, en las iniciativas transversales, unidad de negocio; desde el esquema 0.5, si el retorno procede de una oferta habilitada por IA (señal 6 del 12).</td>
+<td>Importes por tipo (eficiencia, retorno, coste), fórmula, estado de validación, periodo y, en las iniciativas transversales, unidad de negocio; desde el esquema 0.5, si el retorno procede de una oferta habilitada por IA (señal 6 del 12). Desde el esquema 0.8, dos campos opcionales de la iniciativa que lee el panel del consejo: el plan de realización (<code>plan_realizacion</code>: estado, fuente y fecha; curva por periodo, fecha de régimen, tramos de financiación con <em>gate</em>, importe y condición de paso, referencia aprobada y valor realizado por periodo con su estado; 43 §4.1) y el valor no cuantificado (<code>no_cuantificado</code>: dimensión, nivel 0–3, métrica con base, objetivo y valor actual, y motivo; nunca en euros; 40 regla 7).</td>
 <td>Iniciativa</td>
 </tr>
 <tr>
@@ -1220,7 +1220,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 <tr>
 <td><strong><a href="../../herramientas/T17_panel_consejo/index.html" title="Herramienta T17 &#183; Panel de IA para el consejo">T17</a></strong> (generador)</td>
-<td>El JSON completo del registro: iniciativas, ciclo de vida, importes, incidentes, recomendaciones y el diagnóstico de madurez más reciente; de <a href="../../herramientas/T14_indice_transformacion/indice.html" title="Herramienta T14 &#183; Calculadora del &#237;ndice de transformaci&#243;n">T14</a>, el índice exportado.</td>
+<td>El JSON completo del registro: iniciativas, ciclo de vida, importes, incidentes, recomendaciones y el diagnóstico de madurez más reciente; el plan de realización (<code>plan_realizacion</code>) y el valor no cuantificado (<code>no_cuantificado</code>) de cada iniciativa, con la fecha de su próxima revisión (<code>ciclo.proxima_revision</code>); de <a href="../../herramientas/T14_indice_transformacion/indice.html" title="Herramienta T14 &#183; Calculadora del &#237;ndice de transformaci&#243;n">T14</a>, el índice exportado.</td>
 <td>Nada.</td>
 <td>Configuración del panel (umbrales, ciclo de vida, navegación) y los paneles generados.</td>
 </tr>
@@ -1411,12 +1411,12 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tr id="cod-t12">
 <td><strong><a href="plantillas/P28_SEVEN-G_Seguimiento_de_realizacion_de_valor.html" title="Herramienta T12 &#183; Seguimiento de realizaci&#243;n de valor">T12</a></strong></td>
 <td>Seguimiento de realización de valor</td>
-<td>Valor validado, declarado y estimado por periodo y por caso.</td>
-<td>Fases 6–7, C4</td>
-<td>Módulo de <a href="../../herramientas/T01_registro_iniciativas/registro.html" title="Herramienta T01 &#183; Registro de iniciativas">T01</a></td>
+<td>Valor validado, declarado y estimado por periodo y por caso; plan de realización con curva, tramos de financiación y condición de paso, y realización frente a la referencia aprobada.</td>
+<td>Fases 3–7, C4</td>
+<td>Módulo de <a href="../../herramientas/T01_registro_iniciativas/registro.html" title="Herramienta T01 &#183; Registro de iniciativas">T01</a> (bloque <code>plan_realizacion</code>, esquema 0.8) y tarjeta «Plan de realización: curva y tramos» de <a href="../../herramientas/T17_panel_consejo/index.html" title="Herramienta T17 &#183; Panel de IA para el consejo">T17</a></td>
 <td>40, 43</td>
 <td>2</td>
-<td>Se aplica con <a href="plantillas/P28_SEVEN-G_Seguimiento_de_realizacion_de_valor.html" title="Plantilla P28 &#183; Seguimiento de realizaci&#243;n de valor">P28</a> y <a href="plantillas/P62_SEVEN-G_Plan_de_realizacion_de_beneficios.html" title="Plantilla P62 &#183; Plan de realizaci&#243;n de beneficios">P62</a> (plan de realización de beneficios)</td>
+<td>Se aplica con <a href="plantillas/P28_SEVEN-G_Seguimiento_de_realizacion_de_valor.html" title="Plantilla P28 &#183; Seguimiento de realizaci&#243;n de valor">P28</a> y <a href="plantillas/P62_SEVEN-G_Plan_de_realizacion_de_beneficios.html" title="Plantilla P62 &#183; Plan de realizaci&#243;n de beneficios">P62</a> (plan de realización de beneficios). No es una aplicación aparte: el plan se registra en el bloque <code>plan_realizacion</code> de cada iniciativa de <a href="../../herramientas/T01_registro_iniciativas/registro.html" title="Herramienta T01 &#183; Registro de iniciativas">T01</a> y el panel del consejo lo muestra (43 §4.1, 60 §10.6)</td>
 </tr>
 <tr id="cod-t13">
 <td><strong><a href="../../herramientas/T11_calculadora_valor/calculadora.html#/costes" title="Herramienta T13 &#183; Calculadora de costes por caso">T13</a></strong></td>
@@ -1478,7 +1478,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tr id="cod-t17">
 <td><strong><a href="../../herramientas/T17_panel_consejo/index.html" title="Herramienta T17 &#183; Panel de IA para el consejo">T17</a></strong></td>
 <td>Panel de IA para el consejo</td>
-<td>Supervisión: valor, coste, riesgo, cumplimiento, incidentes, agilidad, adopción; lectura ejecutiva «Qué frena el escalado» (60 §10.4).</td>
+<td>Supervisión: valor, coste, riesgo, cumplimiento, incidentes, agilidad, adopción; lectura ejecutiva «Qué frena el escalado» (60 §10.4); plan de realización, tramos pendientes y valor no cuantificado (60 §10.6).</td>
 <td>C4</td>
 <td>HTML completo y móvil + JSON</td>
 <td>60</td>
@@ -1658,6 +1658,11 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>0.3</td>
 <td>28-09-2026</td>
 <td>Herramienta <a href="../../herramientas/T23_recorrido_implantacion/recorrido.html" title="Herramienta T23 &#183; Recorrido de implantaci&#243;n">T23</a> · Recorrido de implantación (<a href="96_SEVEN-G_Puntos_de_partida_y_recorrido_de_implantacion.html" title="Documento 96 &#183; Puntos de partida y recorrido de implantaci&#243;n">documento 96</a>) en el catálogo (§5.4), en el mapa de datos (§4.1) y en la ola 3; vista «Tres lentes» de <a href="../../herramientas/T15_diagnostico_madurez/madurez.html" title="Herramienta T15 &#183; Diagn&#243;stico de madurez">T15</a> y esquema 0.8 del registro (§4 y §4.1).</td>
+</tr>
+<tr>
+<td>0.4</td>
+<td>28-09-2026</td>
+<td><a href="plantillas/P28_SEVEN-G_Seguimiento_de_realizacion_de_valor.html" title="Herramienta T12 &#183; Seguimiento de realizaci&#243;n de valor">T12</a> se implementa como el bloque <code>plan_realizacion</code> de <a href="../../herramientas/T01_registro_iniciativas/registro.html" title="Herramienta T01 &#183; Registro de iniciativas">T01</a> más la tarjeta «Plan de realización: curva y tramos» de <a href="../../herramientas/T17_panel_consejo/index.html" title="Herramienta T17 &#183; Panel de IA para el consejo">T17</a> (§5.3); campos opcionales <code>plan_realizacion</code> y <code>no_cuantificado</code> del esquema 0.8 (§4) y su lectura por <a href="../../herramientas/T17_panel_consejo/index.html" title="Herramienta T17 &#183; Panel de IA para el consejo">T17</a> (§4.1 y §5.4) (D135).</td>
 </tr>
 </tbody>
 </table></div>

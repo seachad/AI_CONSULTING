@@ -159,3 +159,9 @@ Uso interno del generador. Todas las traducciones al inglés deben seguir esta g
 | recorrido de implantación · hito (de implantación) · Arrancar · Ordenar · Gobernar · Medir · Escalar y revisar | implementation journey · (implementation) milestone · Start · Organise · Govern · Measure · Scale and review |
 | convalidar (lo que ya existe) | map and validate (what already exists) |
 | huella tecnológica · alcance del impacto · lectura en tres lentes | technology footprint · impact reach · three-lens reading |
+| curva de realización · fecha de régimen · tramo de financiación · condición de paso | realisation curve · steady-state date · funding tranche · pass condition |
+| caja por delante · caja máxima · sin plan de realización | cash still needed · maximum cash need · no realisation plan |
+| valor no cuantificado · sostenido por valor no cuantificado | non-quantified value · sustained by non-quantified value |
+| imagen y reputación · posicionamiento competitivo · experiencia de cliente · red comercial y de distribución · talento y capacidades · opción estratégica (dimensiones del valor no cuantificado) | image and reputation · competitive positioning · customer experience · sales and distribution network · talent and capabilities · strategic option |
+| sin efecto · bajo · medio · alto (nivel del valor no cuantificado) | no effect · low · medium · high |
+| Plan de realización: curva y tramos · Tramos de financiación pendientes · Plan de realización de la cartera (panel) | Realisation plan: curve and tranches · Pending funding tranches · Portfolio realisation plan |

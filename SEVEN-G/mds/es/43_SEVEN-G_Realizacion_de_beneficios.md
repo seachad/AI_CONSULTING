@@ -5,7 +5,7 @@
 | | |
 |---|---|
 | Documento | Documento 43 · Realización de beneficios |
-| Versión | 0.1 (borrador de trabajo) |
+| Versión | 0.2 (borrador de trabajo) |
 | Fecha | 16-09-2026 |
 | Autor | Fernando García Varela |
 | Estado | Borrador para revisión. Desarrolla el seguimiento de realización de valor (P28, T12) y su vínculo con R6 y G7. |
@@ -109,7 +109,7 @@ flowchart LR
 
 ### 4.1 Contenido
 
-El plan se documenta en la plantilla P62 y se registra en T12; P28 recoge su seguimiento por periodo. En Lite, los campos marcados como **(Enterprise)** pueden omitirse.
+El plan se documenta en la plantilla P62 y se registra en T01, en el bloque `plan_realizacion` de la iniciativa (T12); P28 recoge su seguimiento por periodo. En Lite, los campos marcados como **(Enterprise)** pueden omitirse.
 
 | Bloque | Campo | Guía |
 |---|---|---|
@@ -121,6 +121,7 @@ El plan se documenta en la plantilla P62 y se registra en T12; P28 recoge su seg
 | | Validador | Persona de control de gestión. |
 | **Curva de realización** | Valor esperado por periodo | Refleja la rampa de adopción; no se supone el régimen desde el primer periodo. |
 | | Fecha de régimen | Periodo en que se espera el 100 % del valor anual. |
+| **Financiación** | Tramos de financiación | Fecha, importe, *gate* que libera cada tramo y su condición de paso: el hito que tiene que cumplirse para liberarlo (documento 14 §6.2). |
 | **Cambios habilitadores** | Cambios de proceso, roles, políticas, sistemas o contratos sin los que el beneficio no llega | Cada uno con responsable y fecha. |
 | **Materialización** | Destino de la capacidad liberada | Palanca, horas, fecha y evidencia prevista (sección 7). |
 | **Indicadores** | Indicadores adelantados | Uso, calidad, volumen (familias ADO y OPE del documento 41). |
@@ -130,6 +131,20 @@ El plan se documenta en la plantilla P62 y se registra en T12; P28 recoge su seg
 | **Criterios de parada** | Umbral por debajo del cual se propone iterar o retirar | Los aprobados en G2. |
 | **Revisiones** | Fechas de las revisiones a 6 y 12 meses y de R6 | Según la sección 8. |
 | **Dependencias** | Otras iniciativas, proveedores o proyectos de los que depende | **(Enterprise)** |
+
+**Registro en T01.** El bloque `plan_realizacion` lleva el estado del plan, su fuente y su fecha, y estos campos. El estado del plan solo puede ser estimado o declarado, porque el valor esperado no se valida (sección 2.2, regla 2; documento 40 §4.1); el valor realizado de cada periodo y cada tramo llevan su propio estado, que sí puede ser validado.
+
+| Campo | Contenido |
+|---|---|
+| `curva` | Porcentaje del valor esperado anual en régimen que se captura en cada periodo (año, semestre o trimestre). Entre dos puntos se interpola en línea recta; antes del primero es 0 y después del último se mantiene el último. |
+| `fecha_regimen` | Periodo en que se espera el 100 %. Es informativa: manda la curva. |
+| `tramos` | Cada tramo de financiación con fecha, importe, alcance, *gate* que lo libera, condición de paso, situación (ejecutado, comprometido, previsto u opcional) y su propio estado (una inversión ejecutada puede estar validada). Los opcionales no suman. Solo se registran como tramos las inversiones: descubrimiento y viabilidad, diseño y entrega, escalado y, en Transformar, cada etapa. La operación no es un tramo: es el coste recurrente, que la curva ya resta (documento 14 §6.2). |
+| `tramos[].captura_objetivo_pct` | Nivel de captura del valor en régimen que el tramo permite alcanzar. Con él se calcula el neto anual que desbloquea el tramo y su neto por euro (F3 del tramo). |
+| `referencia` | Curva del plan aprobado en G3, G4 o G5, que no se modifica después. La realización (F10) se mide contra ella; si no existe, contra la curva vigente. |
+| `real` | Valor realizado de cada periodo con su estado: validado, declarado o estimado (sección 5.2). |
+| `declive` | Opcional: pérdida de valor por año (`pct_anual`) desde un periodo (`desde`), por ejemplo por deriva del modelo o porque la competencia copia la ventaja. |
+
+El panel del consejo (T17) lee este bloque y muestra la curva y los tramos (sección 11.2). Una iniciativa sin plan registrado no tiene curva: el panel no la estima (documento 40, regla 8).
 
 ### 4.2 Aprobación
 
@@ -164,6 +179,8 @@ El plan se documenta en la plantilla P62 y se registra en T12; P28 recoge su seg
 | Realización | Del periodo y acumulada (F10), en total y solo con validado. |
 | Desviación y causa | Si la realización está fuera de tolerancia (sección 9). |
 | Acciones | Con responsable y fecha. |
+
+El valor realizado de cada periodo se registra en T01, en `plan_realizacion.real`, con el importe del periodo (no anualizado) y su estado. Con él y con la curva, el panel del consejo calcula la realización acumulada en total y solo con validado.
 
 ### 5.3 Ejemplo ilustrativo
 
@@ -402,6 +419,7 @@ Las reglas de presentación están en el documento 40 §11. Para la realización
 - **Capacidad sin destino** de la cartera y su evolución.
 - **Valor por nivel de ambición**, separando eficiencias y retorno, para las señales 2 y 3 del índice de transformación.
 - **Fotos históricas** que permitan comparar periodos sin reescribir cifras ya presentadas; las correcciones se muestran como ajuste.
+- **Plan de realización: curva y tramos.** Tarjeta con la curva de la cartera por año, semestre o trimestre (suma de los casos con plan registrado), la realización acumulada (F10) frente a la referencia aprobada, en total y solo con validado, con los umbrales de IND-VAL-14 (≥ 90 % dentro de tolerancia, 70–90 % desviación moderada, < 70 % desviación relevante; sección 9.1), y el VAN (F7) de cada caso. Las iniciativas sin plan se muestran como «sin plan de realización» y nunca se estiman (documento 40, regla 8).
 
 ### 11.3 Reglas de agregación
 
@@ -457,10 +475,10 @@ Cuando un hallazgo afecta a cifras ya presentadas al consejo, la oficina de IA p
 
 | Código | Nombre | Uso en este documento |
 |---|---|---|
-| **T12** | Seguimiento de realización de valor | Plan de realización, registro por periodo, estados, realización, desviaciones. |
-| **T01** | Registro de iniciativas | Responsables, eventos de revisión, decisiones de R6 y G7. |
+| **T12** | Seguimiento de realización de valor | Plan de realización (bloque `plan_realizacion` de T01), registro por periodo, estados, realización, desviaciones. |
+| **T01** | Registro de iniciativas | Responsables, eventos de revisión, decisiones de R6 y G7; plan de realización con curva, tramos y valor realizado por periodo. |
 | **T13** | Calculadora de costes por caso | Coste recurrente real. |
-| **T17** | Panel de IA para el consejo | Consolidación y presentación. |
+| **T17** | Panel de IA para el consejo | Consolidación y presentación; tarjeta «Plan de realización: curva y tramos». |
 | **T20** | Plan de adopción y capacidad | Materialización y reasignación de la capacidad. |
 | **T22** | Gestor de retiradas | Valor final y retirada. |
 | **P08 · P09** | Lienzo de hipótesis de valor · Línea base | Referencia del plan. |
@@ -496,3 +514,4 @@ Cuando un hallazgo afecta a cifras ya presentadas al consejo, la oficina de IA p
 | Versión | Fecha | Cambios |
 |---|---|---|
 | 0.1 | 16-09-2026 | Primera versión. Define el recorrido del valor esperado al validado, el responsable de negocio del beneficio, el plan de realización, el seguimiento por periodo, los métodos para evitar el doble conteo, las palancas de materialización de la capacidad liberada, las revisiones a 6 y 12 meses, el tratamiento de desviaciones, el vínculo con R6 y G7, la consolidación en cartera y en el panel del consejo y la auditoría del valor. |
+| 0.2 | 28-09-2026 | El plan de realización se registra en T01 (`plan_realizacion`: curva, fecha de régimen, tramos de financiación con su condición de paso, referencia aprobada y valor realizado por periodo) y el panel del consejo lo muestra en la tarjeta «Plan de realización: curva y tramos»; secciones 4.1, 5.2, 11.2 y 13 (D135). |

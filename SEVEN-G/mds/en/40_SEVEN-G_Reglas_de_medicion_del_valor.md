@@ -5,7 +5,7 @@
 | | |
 |---|---|
 | Document | Document 40 · Value measurement rules |
-| Version | 0.1 (working draft) |
+| Version | 0.2 (working draft) |
 | Date | 16-09-2026 |
 | Author | Fernando García Varela |
 | Status | Draft for review. Develops section 6 of document 00 and section 11 of document 01. |
@@ -124,10 +124,12 @@ The numbering is that of document 00, section 6, and is not modified.
 | | |
 |---|---|
 | **Rationale** | Non-monetary indicators cannot be compared with cost or used for prioritisation. But converting them using undeclared assumptions is worse than not converting them at all. |
-| **How it is applied** | Each non-monetary improvement is translated through an explicit chain: incremental physical magnitude × unit economic value with a source. If there is no demonstrable relationship, the amount is recorded as **not quantified**, with the physical metric and the reason. A non-quantified value is not zero and is not estimated without saying so (rule 8). |
+| **How it is applied** | Each non-monetary improvement is translated through an explicit chain: incremental physical magnitude × unit economic value with a source. If there is no demonstrable relationship, the amount is recorded as **not quantified**, with the physical metric and the reason. A non-quantified value is not zero and is not estimated without saying so (rule 8). In T01 it is recorded in `no_cuantificado[]` with its dimension (image and reputation, competitive positioning, customer experience, sales and distribution network, talent and capabilities, or strategic option, which is the option value of section 5.3), its level from 0 to 3 (no effect, low, medium, high), the physical metric with its baseline, target and current value, and the reason why it is not translated into money. Without a metric it does not count. The level is never translated into euros and never adds to net value. |
 | **Correct example** *(illustrative)* | 300 incremental customers retained against the control group × €450 average annual margin per customer = **€135,000/year of return**. Satisfaction improvement of 4 points: **not quantified**; there is no demonstrated relationship between that metric and purchasing behaviour in the company. |
 | **Incorrect example** | "Satisfaction rises by 4 points, which is equivalent to €1M of brand value", with no formula; or "retention improves by 2 points", with no economic translation and no indication that it has not been quantified. |
-| **How it is verified** | Each non-monetary metric in the hypothesis has an amount with a formula or a not-quantified flag with a reason; unit values have a source. |
+| **How it is verified** | Each non-monetary metric in the hypothesis has an amount with a formula or a not-quantified flag with a reason; unit values have a source; each non-quantified value in T01 has a dimension, level, metric and reason. |
+
+**Use case sustained by non-quantified value.** An initiative in production (phases 6 and 7) whose case rests on non-quantified value of medium or high level, with a metric, while its NPV (F7) is negative or is not demonstrated by a realisation plan (document 43 §4.1), is shown as "sustained by non-quantified value". It needs the date of its next R6 recorded in T01 (`ciclo.proxima_revision`), and the board dashboard warns if it is missing or overdue. This way the board sees which use cases are kept for reasons that are not economic and when they will be reviewed again. In phases 3 to 5 it is not flagged: the option value of Transform is governed by its stages, milestones and *gates* (section 8.3, point 5).
 
 ### 3.8 Rule 8 · "No data" is not zero
 
@@ -240,8 +242,8 @@ flowchart LR
 | **Unmaterialised released capacity** | It does not reduce any cost (rule 3). | In euros (F4) and in hours, with its materialisation rate (F5). |
 | **Capacity reassigned to a new activity** | Its value, if any, appears in the result of the destination activity; adding it would be double counting. | In hours and euros, with destination activity, owner and date. |
 | **Potential value** | It has not occurred (rule 4). | With additional investment, hypothesis and timeframe; for prioritisation only (F3). |
-| **Option value** | Transform bets whose value depends on future decisions. | Qualitative description documented at G3 (01 §7.6), learning milestones and investment cap per stage. |
-| **Non-quantified value** | There is no demonstrable economic relationship (rule 7). | Physical metric and reason. |
+| **Option value** | Transform bets whose value depends on future decisions. | Qualitative description documented at G3 (01 §7.6), learning milestones and investment cap per stage. In T01 it is recorded as non-quantified value with the "strategic option" dimension. |
+| **Non-quantified value** | There is no demonstrable economic relationship (rule 7). | Physical metric and reason; in T01, in `no_cuantificado[]`, with dimension and level 0–3 (no effect, low, medium, high), metric with baseline, target and current value, and reason. Without a metric it does not count; it is never translated into euros. |
 
 ---
 
@@ -347,6 +349,8 @@ The material prior to SEVEN-G combined several return thresholds (target ROI per
 | **Annual net value in year t** | Annual net value (F2) expected or realised in year t, with the adoption curve (ramp-up) set out in the realisation plan. If a retirement cost is foreseen, it is deducted in the year in which it is incurred. |
 | **H · Horizon** | Number of years of evaluation. It is set by the company in C2 (01 §5.1). It may not exceed the expected useful life of the solution. |
 | **r · Discount rate** | Annual rate set by the finance function in C2. If the company does not set one, r = 0. |
+
+The board dashboard (T17) calculates the NPV (F7) of each use case with the curve of its realisation plan (document 43 §4.1) and with the H and r of C2 (r = 0 if the company does not set a rate). Year 0 is the year of the first funding tranche and the investment of each tranche is deducted in the year in which it is paid: the NPV is the sum of the annual flows (value according to the curve, less recurring cost, less the year's investment) divided by (1 + r)^t, for t = 0…H. It is the same F7 with the investment spread over time; if all the investment is paid in year 0 and value starts in year 1, the result is identical. The dashboard adds up the flows from t = 0 to t = H: if the curve already captures value in year 0, its NPV may differ from the one calculated with T11 in phases 2 and 3. Without a realisation plan, the dashboard does not calculate the use case's NPV.
 
 ### 8.3 Rule
 
@@ -489,11 +493,11 @@ Reading for the board: the portfolio generates a positive annual net value accor
 
 | Code | Name | Use in this document |
 |---|---|---|
-| **T01** | Initiative register | Amounts, statuses, status change events, dates for agility; scope of cross-unit initiatives and platforms, with roll-out, adoption and amounts by unit (section 7.2). |
+| **T01** | Initiative register | Amounts, statuses, status change events, dates for agility; scope of cross-unit initiatives and platforms, with roll-out, adoption and amounts by unit (section 7.2); non-quantified value with dimension and level (rule 7). |
 | **T11** | Value hypothesis canvas and calculator | Formulas F1–F4 and F7–F9 in phases 2 and 3; attribution method; scenarios (P10 §6.2) and C2 criterion as information. Imports the initiative from T01 and exports its expected values. |
 | **T12** | Value realisation tracking | Statuses per period, expiries, F5, F6 and F10. |
 | **T13** | Cost calculator per use case | Full recurring cost and initial investment. |
-| **T17** | Board AI dashboard | Presentation with the validated proportion visible; card for cross-unit initiatives and platforms with the portfolio's net value with and without them. |
+| **T17** | Board AI dashboard | Presentation with the validated proportion visible; card for cross-unit initiatives and platforms with the portfolio's net value with and without them; NPV (F7) of each use case with its realisation plan (section 8.2) and "Non-quantified value" card. |
 | **P08** | Value hypothesis canvas | Hypothesis, attribution method and stop criteria. |
 | **P09** | Baseline | Reference measurement. |
 | **P22** | Validation and pilot results | Value measured against the hypothesis at G5. |
@@ -525,3 +529,4 @@ Reading for the board: the portfolio generates a positive annual net value accor
 |---|---|---|
 | 0.1 | 16-09-2026 | First version. Develops the ten measurement rules and sets out the amount statuses with owners, evidence and expiry, the official formulas F1–F10, the attribution methods with their maximum status, the single economic criterion based on net benefit (NPV with the C2 horizon and rate; ROI and payback period for information only), the measurement of agility by risk and ambition, the value inflation errors and the rules for presentation to the board. |
 | 0.1 | 18-09-2026 | Adds section 7.2: cross-unit initiatives and enabling platforms, with the measurement ladder by unit (cost, adoption, released capacity and realised value), the adoption threshold and the portfolio's net value with and without them; error 13 and presentation rule 10. |
+| 0.2 | 28-09-2026 | Non-quantified value is recorded in T01 with dimension, level 0–3, metric and reason, never in euros, and a use case sustained by non-quantified value needs its next R6 dated (rule 7 and section 5.3); the board dashboard calculates the NPV (F7) of each use case with the curve of its realisation plan (section 8.2); section 13 (D135). |
