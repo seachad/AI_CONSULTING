@@ -155,7 +155,7 @@ Uso interno del generador. Todas las traducciones al inglés deben seguir esta g
 | plan de realización de beneficios · paquete de revisión de continuidad | benefits realisation plan · continuity review pack |
 | carta de encargo · plan de transferencia · nota de salida | engagement letter · transfer plan · exit note |
 | punto de partida · arquetipo de punto de partida · rasgos · modificador de punto de partida | starting point · starting-point archetype · traits · starting-point modifier |
-| Punto cero · Usuario de IA de terceros · Automatizador · Analítica y ML clásico · Muchos pilotos · A escala | Ground zero · Third-party AI user · Automator · Analytics and classic ML · Many pilots · At scale |
+| Punto cero · Usuario de IA de terceros · Automatizador · IA propia en producción · Muchos pilotos · A escala | Ground zero · Third-party AI user · Automator · In-house AI in production · Many pilots · At scale |
 | recorrido de implantación · hito (de implantación) · Arrancar · Ordenar · Gobernar · Medir · Escalar y revisar | implementation journey · (implementation) milestone · Start · Organise · Govern · Measure · Scale and review |
 | convalidar (lo que ya existe) | map and validate (what already exists) |
 | huella tecnológica · alcance del impacto · lectura en tres lentes | technology footprint · impact reach · three-lens reading |

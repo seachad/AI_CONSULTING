@@ -1,5 +1,5 @@
 {
-  "version_recorrido": "0.1",
+  "version_recorrido": "0.2",
   "origen": "Documento 96 · Puntos de partida y recorrido de implantación, §2.1–§2.4, §3, §4.1, §4.2 y §5 (ES/EN). Extraído con build_recorrido.ps1 -ActualizarRecorrido; no se edita a mano.",
   "arquetipos": [
     {
@@ -74,24 +74,24 @@
     {
       "codigo": "PP-D",
       "nombre": {
-        "es": "Analítica y ML clásico",
-        "en": "Analytics and classic ML"
+        "es": "IA propia en producción",
+        "en": "In-house AI in production"
       },
       "reconoce": {
-        "es": "Modelos predictivos en producción, equipo de datos y, a veces, validación de modelos.",
-        "en": "Predictive models in production, a data team and, sometimes, model validation."
+        "es": "Modelos propios en producción —predictivos (ML, visión, optimización) o de IA generativa integrada en procesos—, sin agentes que actúan ni las dos cosas a la vez. Suele haber equipo de datos y, a veces, validación de modelos.",
+        "en": "Own models in production —predictive (ML, vision, optimisation) or generative AI integrated into processes—, without agents that act or both at once. There is usually a data team and, sometimes, model validation."
       },
       "riesgo": {
-        "es": "Modelos en producción sin revisión de continuidad; IA generativa que entra por fuera del gobierno de modelos.",
-        "en": "Models in production without a continuity review; generative AI coming in outside model governance."
+        "es": "Modelos en producción sin revisión de continuidad; un tipo de IA nuevo que entra por fuera del gobierno que ya existe.",
+        "en": "Models in production without a continuity review; a new type of AI coming in outside the existing governance."
       },
       "empieza": {
         "es": "Regularización de lo que está en producción (90 §5, revisión equivalente a G7); llevar la validación de modelos existente a G5 y R6; deriva y monitorización (52); inventario con clasificación regulatoria.",
         "en": "Regularisation of what is in production (90 §5, review equivalent to G7); bringing existing model validation into G5 and R6; drift and monitoring (52); inventory with regulatory classification."
       },
       "espera": {
-        "es": "El hueco es la IA generativa: fuentes de conocimiento (51; D3.08), evaluación con conjuntos de prueba (D4.08) y sesgo en las respuestas (52 §4.2.7).",
-        "en": "The gap is generative AI: knowledge sources (51; D3.08), evaluation with test sets (D4.08) and bias in responses (52 §4.2.7)."
+        "es": "Lo propio del tipo de IA que todavía no tiene: con solo ML, fuentes de conocimiento (51; D3.08), evaluación con conjuntos de prueba (D4.08) y sesgo en las respuestas (52 §4.2.7); con solo IA generativa, deriva de datos y validación de modelos predictivos (52).",
+        "en": "What belongs to the type of AI it does not have yet: with ML only, knowledge sources (51; D3.08), evaluation with test sets (D4.08) and bias in responses (52 §4.2.7); with generative AI only, data drift and validation of predictive models (52)."
       }
     },
     {
@@ -124,8 +124,8 @@
         "en": "At scale"
       },
       "reconoce": {
-        "es": "Al menos dos de estas tres cosas en producción: ML predictivo, IA generativa integrada en procesos y agentes que actúan (A2/A3).",
-        "en": "At least two of these three things in production: predictive ML, generative AI integrated into processes and agents that act (A2/A3)."
+        "es": "Agentes que actúan (A2 o A3) en producción, o a la vez ML predictivo e IA generativa integrada en procesos.",
+        "en": "Agents that act (A2 or A3) in production, or predictive ML and generative AI integrated into processes at the same time."
       },
       "riesgo": {
         "es": "Exposición regulatoria y de seguridad ya real; gobierno por detrás del uso.",
@@ -146,8 +146,8 @@
       "orden": 1,
       "arquetipo": "PP-F",
       "condicion": {
-        "es": "Al menos dos de {ML predictivo, IA generativa integrada en procesos, agentes A2 o A3} en producción.",
-        "en": "At least two of {predictive ML, generative AI integrated into processes, A2 or A3 agents} in production."
+        "es": "Agentes A2 o A3 en producción, o a la vez ML predictivo e IA generativa integrada en procesos.",
+        "en": "A2 or A3 agents in production, or predictive ML and generative AI integrated into processes at the same time."
       }
     },
     {
@@ -162,8 +162,8 @@
       "orden": 3,
       "arquetipo": "PP-D",
       "condicion": {
-        "es": "ML predictivo, visión u optimización con aprendizaje en producción.",
-        "en": "Predictive ML, vision or optimisation with learning in production."
+        "es": "IA propia en producción: ML predictivo, visión u optimización con aprendizaje, o IA generativa integrada en procesos.",
+        "en": "In-house AI in production: predictive ML, vision or optimisation with learning, or generative AI integrated into processes."
       }
     },
     {
@@ -1415,7 +1415,7 @@
         "PP-B": "1",
         "PP-C": "D",
         "PP-D": "2",
-        "PP-E": "D",
+        "PP-E": "2",
         "PP-F": "1"
       }
     },
@@ -1582,7 +1582,7 @@
       },
       "prioridad": {
         "PP-A": "D",
-        "PP-B": "·",
+        "PP-B": "2",
         "PP-C": "2",
         "PP-D": "C",
         "PP-E": "2",

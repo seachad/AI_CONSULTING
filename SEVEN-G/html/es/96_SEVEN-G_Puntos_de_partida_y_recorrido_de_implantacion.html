@@ -473,7 +473,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
     <p class="antetitulo">Documento 96 &#183; Puntos de partida y recorrido de implantaci&#243;n</p>
     <h1>Puntos de partida y recorrido de implantaci&#243;n</h1>
     <p class="entradilla">Por d&#243;nde empieza cada compa&#241;&#237;a seg&#250;n la IA y el gobierno que ya tiene, qu&#233; hace en cada etapa, qui&#233;n lo hace y con qu&#233; evidencia, sin rebajar lo que el marco exige al final</p>
-    <div class="firma"><span><b>Fernando Garc&#237;a Varela</b></span><span>Versión 0.1 (borrador de trabajo)</span><span>28-09-2026</span><span>Borrador para revisi&#243;n</span></div>
+    <div class="firma"><span><b>Fernando Garc&#237;a Varela</b></span><span>Versión 0.2</span><span>28-09-2026</span><span>Umbrales y prioridades validados (28-09-2026)</span></div>
     <div class="cifras"><div class="cifra"><b>6</b><span>puntos de partida tipo</span></div><div class="cifra"><b>5</b><span>modificadores</span></div><div class="cifra"><b>22</b><span>hitos del recorrido</span></div><div class="cifra"><b>5</b><span>etapas hasta la declaraci&#243;n de aplicaci&#243;n</span></div></div>
   </div>
 </header>
@@ -539,11 +539,11 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 <tr>
 <td><strong>PP-D</strong></td>
-<td>Analítica y ML clásico</td>
-<td>Modelos predictivos en producción, equipo de datos y, a veces, validación de modelos.</td>
-<td>Modelos en producción sin revisión de continuidad; IA generativa que entra por fuera del gobierno de modelos.</td>
+<td>IA propia en producción</td>
+<td>Modelos propios en producción —predictivos (ML, visión, optimización) o de IA generativa integrada en procesos—, sin agentes que actúan ni las dos cosas a la vez. Suele haber equipo de datos y, a veces, validación de modelos.</td>
+<td>Modelos en producción sin revisión de continuidad; un tipo de IA nuevo que entra por fuera del gobierno que ya existe.</td>
 <td>Regularización de lo que está en producción (90 §5, revisión equivalente a G7); llevar la validación de modelos existente a G5 y R6; deriva y monitorización (52); inventario con clasificación regulatoria.</td>
-<td>El hueco es la IA generativa: fuentes de conocimiento (51; D3.08), evaluación con conjuntos de prueba (D4.08) y sesgo en las respuestas (52 §4.2.7).</td>
+<td>Lo propio del tipo de IA que todavía no tiene: con solo ML, fuentes de conocimiento (51; D3.08), evaluación con conjuntos de prueba (D4.08) y sesgo en las respuestas (52 §4.2.7); con solo IA generativa, deriva de datos y validación de modelos predictivos (52).</td>
 </tr>
 <tr>
 <td><strong>PP-E</strong></td>
@@ -556,7 +556,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tr>
 <td><strong>PP-F</strong></td>
 <td>A escala</td>
-<td>Al menos dos de estas tres cosas en producción: ML predictivo, IA generativa integrada en procesos y agentes que actúan (A2/A3).</td>
+<td>Agentes que actúan (A2 o A3) en producción, o a la vez ML predictivo e IA generativa integrada en procesos.</td>
 <td>Exposición regulatoria y de seguridad ya real; gobierno por detrás del uso.</td>
 <td>Roles separados y auditor de IA de inmediato; inventario completo con clasificación; seguridad de agentes (35) y proveedores (36); regularización priorizada por riesgo; panel del consejo e índice de transformación.</td>
 <td>Nada: todo es obligatorio y urgente.</td>
@@ -580,7 +580,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tr>
 <td>1</td>
 <td>PP-F</td>
-<td>Al menos dos de {ML predictivo, IA generativa integrada en procesos, agentes A2 o A3} en producción.</td>
+<td>Agentes A2 o A3 en producción, o a la vez ML predictivo e IA generativa integrada en procesos.</td>
 </tr>
 <tr>
 <td>2</td>
@@ -590,7 +590,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tr>
 <td>3</td>
 <td>PP-D</td>
-<td>ML predictivo, visión u optimización con aprendizaje en producción.</td>
+<td>IA propia en producción: ML predictivo, visión u optimización con aprendizaje, o IA generativa integrada en procesos.</td>
 </tr>
 <tr>
 <td>4</td>
@@ -610,12 +610,12 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tbody>
 </table></div>
 <figure class="grafico"><div class="g-titulo">C&#243;mo se asigna el punto de partida</div><div class="g-sub">Se asigna el primer arquetipo que se cumple; los siguientes que tambi&#233;n se cumplen son rasgos</div><div class="g-lienzo"><pre class="mermaid">flowchart TD
-  Q["Cuestionario Q01 a Q12"] --> F{"¿Dos de: ML, IA generativa en procesos, agentes A2/A3?"}
+  Q["Cuestionario Q01 a Q12"] --> F{"¿Agentes A2/A3, o ML e IA generativa a la vez?"}
   F -->|"Sí"| PF["PP-F · A escala"]
   F -->|"No"| E{"¿Tres o más pilotos generativos y como mucho uno en producción?"}
   E -->|"Sí"| PE["PP-E · Muchos pilotos"]
-  E -->|"No"| D{"¿ML, visión u optimización en producción?"}
-  D -->|"Sí"| PD["PP-D · ML clásico"]
+  E -->|"No"| D{"¿ML, visión, optimización o IA generativa propia en producción?"}
+  D -->|"Sí"| PD["PP-D · IA propia"]
   D -->|"No"| C{"¿Reglas o RPA en producción?"}
   C -->|"Sí"| PC["PP-C · Automatizador"]
   C -->|"No"| B{"¿IA de terceros incluida en lo contratado?"}
@@ -1179,7 +1179,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>1</td>
 <td>D</td>
 <td>2</td>
-<td>D</td>
+<td>2</td>
 <td>1</td>
 </tr>
 <tr id="cod-hi-17-2">
@@ -1212,7 +1212,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tr id="cod-hi-20-2">
 <td><strong>HI-20</strong></td>
 <td>D</td>
-<td>·</td>
+<td>2</td>
 <td>2</td>
 <td>C</td>
 <td>2</td>
@@ -1565,6 +1565,11 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>0.1</td>
 <td>28-09-2026</td>
 <td>Primera versión: seis puntos de partida, regla de asignación, cinco modificadores, cuestionario de doce preguntas, cinco etapas, veintidós hitos con su evidencia, la pregunta del <a href="11_SEVEN-G_Modelo_de_madurez.html" title="Documento 11 &#183; Modelo de madurez">documento 11</a> que los acredita y su prioridad por arquetipo, roles por etapa y tres recorridos ficticios. Umbrales de asignación y prioridades, a validar.</td>
+</tr>
+<tr>
+<td>0.2</td>
+<td>28-09-2026</td>
+<td>Umbrales y prioridades validados. La regla de asignación ya no deja en PP-A a una compañía con IA propia en producción: PP-F pasa a «agentes A2 o A3, o ML e IA generativa a la vez» y PP-D, renombrado «IA propia en producción», incluye la IA generativa integrada en procesos. HI-16 (proveedores) sube a 2 en PP-E, porque los pilotos generativos usan modelos de terceros con datos de la compañía, y HI-20 (datos y conocimiento) pasa de · a 2 en PP-B, porque los asistentes corporativos acceden a las fuentes de conocimiento de la compañía.</td>
 </tr>
 </tbody>
 </table></div>

@@ -5,7 +5,7 @@
 | | |
 |---|---|
 | Documento | Documento 11 · Modelo de madurez |
-| Versión | 0.3 (borrador de trabajo) |
+| Versión | 0.4 (borrador de trabajo) |
 | Fecha | 28-09-2026 |
 | Autor | Fernando García Varela |
 | Estado | Borrador para revisión. Desarrolla la decisión D10. Los tamaños de muestra, los pesos y los objetivos de referencia son iniciales y se calibrarán con la aplicación práctica. |
@@ -477,24 +477,24 @@ Se informa el **nivel más alto en uso** (iniciativas en las fases 6 y 7 sin cer
 
 #### Gobierno mínimo exigible por huella
 
-Valores de partida, **a calibrar en C5** (sección 8). Cada nivel de huella exige su fila y las anteriores.
+Valores validados el 28-09-2026; se recalibran en cada C5 con datos propios (sección 8). Cada nivel de huella exige su fila y las anteriores.
 
 | Huella en uso | D1 | D3 | D4 | D5 | D6 |
 |---|---|---|---|---|---|
-| **HT1** | 1 | — | — | — | 2 |
-| **HT2** | 1 | — | — | — | 2 |
-| **HT3** | 2 | 2 | 2 | — | 2 |
-| **HT4** | 2 | 3 | 3 | — | 3 |
+| **HT1** | 1 | — | — | — | 1 |
+| **HT2** | 1 | — | — | 2 | 2 |
+| **HT3** | 2 | 2 | 2 | 2 | 2 |
+| **HT4** | 2 | 3 | 3 | 2 | 3 |
 | **HT5** | 3 | 3 | 3 | 3 | 3 |
 
-En HT4, D3 recoge las fuentes de conocimiento con propietario y vigencia (D3.08) y D4 la evaluación con un conjunto de pruebas antes de cada cambio (D4.08); en HT5, D6 recoge los controles de agentes (D6.08).
+Desde HT2, D5 recoge la alfabetización de quienes usan la IA, que el Reglamento Europeo de IA exige a quien la despliega (art. 4; D5.03); en HT1 basta con D6 en 1, porque las reglas y el RPA no son IA, pero hay que comprobar que no la incorporan. En HT4, D3 recoge las fuentes de conocimiento con propietario y vigencia (D3.08) y D4 la evaluación con un conjunto de pruebas antes de cada cambio (D4.08); en HT5, D6 recoge los controles de agentes (D6.08).
 
 #### Alertas
 
 | Alerta | Cuándo salta | Gravedad | Qué pide |
 |---|---|---|---|
 | **Adopción por delante del gobierno** | Alguna dimensión por debajo del mínimo exigible por la huella en uso | Alta si es D1 o D6; media en las demás | Acciones prioritarias en el plan de mejora (P34 §6.6). Mientras D6 esté por debajo, ninguna iniciativa nueva de ese nivel de huella debería superar G5 sin una condición explícita de mejora, plazo y responsable |
-| **Gobierno sin uso** | Nivel global 3 o superior con huella HT2 o inferior, o ninguna iniciativa en uso doce meses después de C2 | Media | Revisar la cartera y el embudo (documento 14; D2.09): el marco no debe convertirse en burocracia sin valor |
+| **Gobierno sin uso** | Nivel global 3 o superior con huella HT1 o inferior, o ninguna iniciativa en uso doce meses después de C2 | Media | Revisar la cartera y el embudo (documento 14; D2.09): el marco no debe convertirse en burocracia sin valor |
 | **Transformación sin personas** | Alguna iniciativa en uso con alcance IM3 o IM4 y D5 en 2 o menos | Alta | Plan de adopción y de personas (documentos 23 y 50; D5.07 y D5.08) antes del siguiente *gate* |
 
 La lectura cruzada con el índice de transformación (sección 7.2 y 12 §5.3) se mantiene y se muestra junto a estas alertas. T15 presenta las tres lentes en su vista «Tres lentes», guarda su resumen en el registro T01 y el panel del consejo (T17) lo muestra en la tarjeta de madurez.
@@ -577,3 +577,4 @@ El consejo no debería aprobar apuestas de Transformar en G2 con D1 o D6 inferio
 | 0.1 | 16-09-2026 | Primera versión. Confirma las siete dimensiones y los seis niveles (D10); define rúbricas, cuestionario de 84 preguntas, modalidades, muestreo, cálculo con límite por D1 y D6, informe, vínculos con el índice de transformación y con 01 §14, y objetivos de referencia por ambición. |
 | 0.2 | 25-09-2026 | Añade la equivalencia orientativa de los niveles 0–5 con los *tiers* del NIST CSF 2.0 (sección 2.2), que es una vista calculada y no una segunda escala, y el vínculo 7.5 con los perfiles NIST: nivel actual de cada subcategoría del AI RMF y del CSF derivado del cuestionario, preguntas propias, nivel objetivo en C2, brecha y *tier* equivalente (34 §5.4 y §5.5). Plantillas P72 y P73 en la sección 10. |
 | 0.3 | 28-09-2026 | Añade la lectura en tres lentes (sección 7.6): capacidad de gobierno, huella tecnológica HT0–HT5 y alcance del impacto (12 §3.7); la tecnología no puntúa, pero fija el gobierno mínimo exigible por dimensión y dispara las alertas «adopción por delante del gobierno», «gobierno sin uso» y «transformación sin personas». Nota en la sección 1.1 y remisiones en las secciones 8 y 10. |
+| 0.4 | 28-09-2026 | Mínimos exigibles por huella validados: D5 en 2 desde HT2 (alfabetización, art. 4 del Reglamento Europeo de IA) y en 3 en HT5; D6 en 1 en HT1, que no es IA; la alerta «gobierno sin uso» salta con huella HT1 o inferior (una compañía que usa IA de terceros sí la usa). |
