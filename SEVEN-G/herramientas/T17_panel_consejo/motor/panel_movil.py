@@ -222,6 +222,15 @@ function render(){
     // perfiles NIST (opcional, esquema 0.7 de T01, D115)
     const PMD = {ai_rmf:"NIST AI RMF", csf:"NIST CSF 2.0 (perfil en borrador)"};
     const pfs = md.perfiles ? Object.keys(PMD).filter(k=>md.perfiles[k] && md.perfiles[k].total) : [];
+    // tres lentes (opcional, esquema 0.8 de T01, D120): una línea por lente
+    const le = md.lentes && typeof md.lentes === "object" ? md.lentes : null;
+    if (le){ const HTM = {HT0:"Sin IA en uso", HT1:"Automatización sin aprendizaje", HT2:"IA de terceros incluida", HT3:"Modelos predictivos propios", HT4:"IA generativa en procesos", HT5:"Agentes que actúan"}, ALM = {adopcion_por_delante:"Adopción por delante del gobierno", gobierno_sin_uso:"Gobierno sin uso", transformacion_sin_personas:"Transformación sin personas"}, hu = le.huella, al = le.alcance;
+      const lin = (n, v, m) => `<div class="row" style="cursor:default"><div style="flex:1;min-width:0"><div class="n">${n}</div><div class="m">${m}</div></div><div class="r"><b>${v}</b></div></div>`;
+      $("madurez").innerHTML += `<div class="list" id="madurez-lentes" style="margin-top:10px">` +
+        lin("Lente 1 · Capacidad de gobierno", ng == null ? "—" : ng, "nivel global de madurez (0–5)") +
+        lin("Lente 2 · Huella tecnológica", hu && hu.nivel ? esc(hu.nivel) : "—", hu && hu.nivel ? `${HTM[hu.nivel] || ""}${hu.pilotos != null ? ` · ${hu.pilotos} en exploración` : ""}${le.exigible && Object.keys(le.exigible).length ? ` · exige ${Object.keys(le.exigible).map(d=>`${esc(d)} ≥ ${le.exigible[d]}`).join(", ")}` : ""}` : "sin dato") +
+        lin("Lente 3 · Alcance del impacto", al ? Object.keys(al).reduce((s,k)=>s+(Number(al[k])||0), 0) : "—", al ? `iniciativas en uso: ${Object.keys(al).map(k=>`${esc(k)} ${al[k]}`).join(" · ")} (IM1 tarea · IM2 proceso · IM3 personas · IM4 negocio)` : "sin dato") +
+        `</div>` + ((le.alertas||[]).length ? le.alertas.map(a=>`<div class="alert ${a.gravedad === "alta" ? "bad" : ""}" style="margin-top:8px" data-alerta="${esc(a.codigo||"")}">${ALM[a.codigo] || esc(a.codigo||"")} (gravedad ${a.gravedad === "alta" ? "alta" : "media"})${a.dimension ? `: ${esc(a.dimension)} en ${a.nivel}${a.minimo != null ? `, la huella exige ${a.minimo}` : ""}` : ""}.</div>`).join("") : ""); }
     if (pfs.length) $("madurez").innerHTML += `<div class="list" id="madurez-perfiles" style="margin-top:10px">${pfs.map(k=>{ const g = md.perfiles[k].total; return `<div class="row" style="cursor:default"><div style="flex:1;min-width:0"><div class="n">${PMD[k]}</div><div class="m">${g.con_nivel} de ${g.subcategorias} subcategorías con nivel · ${g.con_brecha} con brecha</div></div><div class="r"><b>${g.minimo == null ? "—" : g.minimo}</b><div class="m">nivel mínimo</div></div></div>`; }).join("")}</div>`;
   }
 

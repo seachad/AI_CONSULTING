@@ -82,7 +82,7 @@ def cargar_motor(panel=None):
 
 
 VERSION_CONECTOR = "2.1"
-ESQUEMAS_T01 = ("0.1", "0.2", "0.3", "0.4", "0.5", "0.6", "0.7")   # 0.6 (D100): lista opcional madurez[] escrita por T15 -> bloque «madurez» del panel
+ESQUEMAS_T01 = ("0.1", "0.2", "0.3", "0.4", "0.5", "0.6", "0.7", "0.8")   # 0.6 (D100): lista opcional madurez[] escrita por T15 -> bloque «madurez» del panel
 FUENTE_T01 = "Registro de iniciativas T01"
 
 # ---------------------------------------------------------------- listas cerradas de T01 y su etiqueta en el panel
@@ -649,6 +649,9 @@ def bloque_madurez(t01):
     per = validos[-1].get("perfiles")  # esquema 0.7 (D115): resumen de los perfiles NIST del ultimo diagnostico, tal cual lo escribe T15
     if isinstance(per, dict):
         b["perfiles"] = per
+    lentes = validos[-1].get("lentes")  # esquema 0.8 (D120): tres lentes del ultimo diagnostico (huella, alcance, minimo exigible y alertas), tal cual lo escribe T15
+    if isinstance(lentes, dict):
+        b["lentes"] = lentes
     if len(validos) > 1:
         a = uno(validos[-2])
         b["anterior"] = {"id": a["id"], "fecha_corte": a["fecha_corte"], "modalidad": a["modalidad"], "nivel_global": a["nivel_global"],

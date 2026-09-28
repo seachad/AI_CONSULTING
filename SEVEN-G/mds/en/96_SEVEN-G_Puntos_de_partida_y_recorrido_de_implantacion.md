@@ -55,7 +55,7 @@ Tool **T23 · Implementation journey** applies this document: it runs the questi
 
 ### 2.2 Assignment rule
 
-It is applied in this order and the **first archetype** whose conditions are met is assigned. Later archetypes whose conditions are also met are added as **traits**: their priority milestones are added to the journey (section 4.2, rule 5).
+It is applied in this order and the **first archetype** whose conditions are met is assigned. Later archetypes whose positive condition is also met (without their exclusions: for example, "rules or RPA in production" is enough for the PP-C trait even if there is also ML) are added as **traits**: their priority milestones are added to the journey (section 4.3, rule 5).
 
 | Order | Archetype | Condition |
 |---|---|---|
@@ -97,7 +97,7 @@ Example: a company with ML in production, four generative pilots not in producti
 | **MP1** | Regulated sector (financial services, insurance, healthcare, energy, public sector…) | Brings forward the inventory with classification (HI-05), regulatory mapping (34) and resilience (DORA or NIS2, where applicable). |
 | **MP2** | Decisions about people, high risk or direct exposure to customers | Brings forward the impact assessments (P11, P47, P48), human oversight (P17) and the independent risk owner (HI-10). |
 | **MP3** | Company-level Enterprise scope (90 §2.2) | Enterprise timetable of 90 §6.2. Without MP3, Lite timetable and minimum path of 90 §2.4. |
-| **MP4** | Reusable prior governance (model validation, data committee, centre of excellence, certified management system) | The corresponding milestones are **mapped and validated**: what exists is adapted and the correspondence is documented, instead of creating it anew (section 4.2, rule 3). |
+| **MP4** | Reusable prior governance (model validation, data committee, centre of excellence, certified management system) | The corresponding milestones are **mapped and validated**: what exists is adapted and the correspondence is documented, instead of creating it anew (section 4.3, rule 3). |
 | **MP5** | No sponsor in senior management | **Blocks**: before any other milestone, the prerequisites of 90 §3 must be met. It is not one more milestone: it is a precondition. |
 
 > **Why it matters.** Two companies of the same archetype do not have the same journey if one is supervised by a sector regulator or makes decisions about people. The modifiers capture those differences without multiplying the archetypes.
@@ -108,7 +108,7 @@ Twelve questions. The answers refer to what is **in production** (in real use), 
 
 | Code | Question | Answers | Feeds |
 |---|---|---|---|
-| **Q01** | What types of systems are in production today? (several answers) | None · rules or RPA · third-party AI included in products or assistants · predictive ML, vision or optimisation · generative AI integrated into processes · agents that execute actions (A2/A3) | Archetypes; technology footprint (11 §7.6) |
+| **Q01** | What types of systems are in production today? (several answers; if there is generative AI, how many cases: one or more than one) | None · rules or RPA · third-party AI included in products or assistants · predictive ML, vision or optimisation · generative AI integrated into processes · agents that execute actions (A2/A3) | Archetypes; technology footprint (11 §7.6) |
 | **Q02** | How many AI pilots or proofs of concept are under way? | 0 · 1–2 · 3–5 · more than 5 | PP-E |
 | **Q03** | How many of those pilots are generative AI? | None · some · most | PP-E |
 | **Q04** | Is there evidence of unauthorised use of AI assistants with company data? | Yes · No · Not known | Priority of HI-02 and HI-03 |
@@ -215,6 +215,7 @@ Keys: **1**, start now (months 1–2); **2**, in its stage (months 3–6); **3**
 
 The base month in document 90 is the limit; the priority only brings it forward or pushes it back within that limit. The modifiers adjust the priority as follows:
 
+- **Q04** at "yes" or "don't know" moves HI-02 and HI-03 to **1**.
 - **MP1** and **MP2** move HI-05 and HI-10 to **1** (and, with MP2, HI-19 when there is an initiative that changes people's work).
 - **MP4** changes to **C** the milestones covered by existing governance, provided that the correspondence is documented.
 - **MP5** blocks the whole journey until HI-01 is met.
