@@ -5,7 +5,7 @@
 | | |
 |---|---|
 | Documento | Documento 14 · Gestión de cartera |
-| Versión | 0.1 (borrador de trabajo) |
+| Versión | 0.2 (borrador de trabajo) |
 | Fecha | 16-09-2026 |
 | Autor | Fernando García Varela |
 | Estado | Borrador para revisión. Los pesos, las escalas y los umbrales del semáforo son iniciales y se calibrarán con la aplicación práctica. |
@@ -242,6 +242,8 @@ Las partidas son los siete sobres del presupuesto marco que aprueba el consejo e
 | **Escalado** | Nueva fase 0 | G7 con resultado Escalar | Nuevo ciclo con su propia priorización. |
 
 En Transformar, cada etapa aprobada es un tramo con su hito de aprendizaje; la siguiente etapa no se libera sin el hito cumplido. Una desviación superior al 10 % sobre el tramo aprobado requiere aprobación del órgano que decidió el *gate*.
+
+Los tramos de cada iniciativa se registran en T01, en el plan de realización (`plan_realizacion.tramos`), con su fecha, su importe, el *gate* que lo libera y su **condición de paso**, el hito que tiene que cumplirse para liberarlo (documento 43 §4.1). Solo se registran como tramos las inversiones: el 1 · descubrimiento y viabilidad, el 2 · diseño y entrega, el escalado y, en Transformar, cada etapa. El tramo 3 · operación no se registra como tramo: es el coste recurrente, que la curva de realización ya resta. El panel del consejo (T17) lista los tramos pendientes, señala los que no tienen condición de paso y muestra el neto anual que desbloquea cada tramo por euro invertido (F3 del tramo, documento 40 regla 9).
 
 ### 6.3 Capacidad
 
@@ -530,3 +532,4 @@ Umbrales iniciales, a calibrar en C5.
 | Versión | Fecha | Cambios |
 |---|---|---|
 | 0.1 | 16-09-2026 | Primera versión. Desarrolla C3; define entrada en cartera, priorización por carriles de ambición con seis criterios, reglas para no bloquear la transformación, equilibrio de ambición y de riesgo, presupuesto por tramos, revisiones mensual y trimestral, tratamiento de estancadas y esperas, concentración, procedimiento completo de retirada con registro, regularización y semáforo de programas. |
+| 0.2 | 28-09-2026 | Los tramos de financiación se registran en T01 (`plan_realizacion.tramos`) con *gate*, importe y condición de paso, y el panel del consejo lista los pendientes con el neto anual que desbloquea cada uno por euro (§6.2; D135). |

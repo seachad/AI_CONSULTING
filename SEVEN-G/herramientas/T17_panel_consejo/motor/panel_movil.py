@@ -16,7 +16,9 @@ import ayuda_tarjetas
 TERMINOS_MOVIL = {"VNB", "Neto anual", "Eficiencias", "Retorno", "Capacidad liberada", "Potencial",
                   "Neto adicional por euro invertido", "Estado del dato", "Foto (histórico)", "Puesta en producción",
                   "Inversión", "Consejo asesor", "IA", "Brecha de datos personales", "AEPD",
-                  "Embudo", "Límite de días", "Mediana"}
+                  "Embudo", "Límite de días", "Mediana", "Plan de realización de beneficios", "Curva de realización",
+                  "Tramo de financiación", "Condición de paso", "Caja por delante", "Realización (F10)", "Valor no cuantificado",
+                  "Sostenido por valor no cuantificado"}
 
 CSS = r"""
 /* misma paleta que el panel completo (sin semáforo): retorno azul oxford, eficiencias verde azulado, coste ocre mostaza,
@@ -96,13 +98,19 @@ details.gloss{margin-top:18px}
 .m.pq{margin-top:6px;color:var(--ink)}
 .row.fun.gan{border-left:4px solid #2e7d32;background:color-mix(in srgb,#2e7d32 12%,transparent)}
 .badge.rojo{background:var(--rojbg);color:var(--rojink)}.badge.amarillo{background:var(--ambbg);color:var(--ambink)}.badge.ok{background:var(--grid);color:var(--ink2)}
+/* plan de realización de la cartera (D135): selector de periodo y gráfico compacto */
+.h2row{display:flex;justify-content:space-between;align-items:center;gap:8px;margin:22px 0 8px}.h2row h2{margin:0}
+.seg.mini button{padding:6px 9px;font-size:13px;min-height:34px}
+.curva{background:var(--surface);border:1px solid var(--grid);border-radius:14px;padding:12px}
+.curva .d{font-size:12px;color:var(--muted);margin-top:4px}
+.sheet h4{margin:14px 0 4px;font-size:13px;color:var(--muted);text-transform:uppercase;letter-spacing:.04em}
 """
 
 JS = r"""
 let DATA = __DATA__;
 let CASES = DATA.casos; let YEAR = DATA.meta.ejercicio_valor;
 __CORE__
-const state = { lado: "actual", compara: "" };
+const state = { lado: "actual", compara: "", gran: GRAN[cfgCurva().granularidad] ? cfgCurva().granularidad : "anual" };
 const rc = c => c.reporte_compania || {};
 const $ = id => document.getElementById(id);
 const netoCls = v => v < 0 ? "neg" : "pos";
@@ -116,6 +124,38 @@ function spark(vals, labels){
   return `<svg viewBox="0 0 ${W} ${H}" width="100%" height="${H}" role="img" aria-label="Evolución del neto anual"><polyline points="${pts}" fill="none" stroke="var(--neto)" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round"/>${vals.map((v,i)=>`<circle cx="${x(i)}" cy="${y(v)}" r="3.5" fill="var(--neto)"/>`).join("")}</svg><div class="d">${labels[0]} → ${labels[labels.length-1]}</div>`;
 }
 
+// plan de realización de la cartera (D135): barras de inversión por tramos y línea del neto acumulado; banda gris en el periodo de hoy
+function curvaMini(G, hoyEt){
+  if (!G.length) return "";
+  const W = 340, H = 120, l = 4, r = 4, t = 8, b = 18, n = G.length, bw = (W - l - r) / n;
+  const vals = G.flatMap(g => [g.acum, -g.inv, 0]), mx = Math.max(...vals), mn = Math.min(...vals), rg = (mx - mn) || 1;
+  const y = v => t + (H - t - b) * (mx - v) / rg, cx = i => l + bw * (i + .5), paso = Math.ceil(n / 6);
+  let s = `<svg viewBox="0 0 ${W} ${H}" width="100%" role="img" aria-label="Neto acumulado de las iniciativas con plan de realización">`;
+  G.forEach((g, i) => { if (g.periodo === hoyEt) s += `<rect x="${l + bw*i}" y="${t}" width="${bw}" height="${H-t-b}" fill="var(--grid)" opacity=".6"/>`;
+    if (g.inv) s += `<rect x="${cx(i) - Math.min(8, bw*.3)}" y="${y(0)}" width="${Math.min(16, bw*.6)}" height="${Math.max(1, y(-g.inv) - y(0))}" fill="var(--s2)"/>`;
+    if (i % paso === 0) s += `<text x="${cx(i)}" y="${H-4}" text-anchor="middle" style="font-size:10px;fill:var(--muted)">${esc(g.periodo)}</text>`; });
+  s += `<line x1="${l}" y1="${y(0)}" x2="${W-r}" y2="${y(0)}" stroke="var(--muted)" stroke-width=".6"/>`;
+  s += `<polyline points="${G.map((g,i)=>`${cx(i)},${y(g.acum)}`).join(" ")}" fill="none" stroke="var(--neto)" stroke-width="2.4" stroke-linejoin="round"/>`;
+  return s + `</svg>`;
+}
+const debePlan = c => !esSalida(c.estado) && (c.seveng ? c.seveng.fase >= 3 : c.estado !== "Propuesto");
+function renderCurva(){
+  document.querySelectorAll("#gran button").forEach(b => b.classList.toggle("on", b.dataset.g === state.gran));
+  const cfg = cfgCurva(), deben = CASES.filter(debePlan), con = deben.filter(c => curva(c)), cc = curvaCartera(CASES);
+  const nivPlan = nivelKPI("planes_realizacion_pct", deben.length ? 100 * con.length / deben.length : null);
+  const planes = `<div class="tile ${nivPlan}"><div class="k">Planes de realización</div><div class="v">${con.length} <span style="font-size:13px;font-weight:500">de ${deben.length}</span></div><div class="d">iniciativas en fases 3 a 7 · ${umbralTxt("planes_realizacion_pct")}</div></div>`;
+  if (!cc){ $("curva").innerHTML = `<div class="empty">Ninguna iniciativa tiene plan de realización en T01: no se estima nada.</div><div class="grid">${planes}</div>`; return; }
+  const G = agruparCurva(cc.serie, state.gran, cc.q0, cc.q1), hoyEt = etiquetaQ(cc.hoy, state.gran), cs = con.map(curva), vans = cs.filter(c => c.van_f7 != null);
+  const dv = cs.filter(c => c.desviacion && c.desviacion.plan), dR = sum(dv.map(c => c.desviacion.real)), dP = sum(dv.map(c => c.desviacion.plan)), dPct = dP ? 100 * dR / dP : null;
+  $("curva").innerHTML = `<div class="curva">${curvaMini(G, hoyEt)}<div class="d">Neto acumulado (línea) e inversión por tramos (barras) de las iniciativas con plan, por ${GRAN[state.gran].toLowerCase()}; sin plan no se estima.</div></div>
+   <div class="grid">
+    <div class="tile"><div class="k">Inversión próximos 12 meses</div><div class="v">${fmt(cc.inv_12m)}</div><div class="d">tramos comprometidos o previstos</div></div>
+    <div class="tile"><div class="k">Caja que falta por delante</div><div class="v">${fmt(cc.caja_futura)}</div><div class="d">antes de que el acumulado suba</div></div>
+    <div class="tile"><div class="k">VAN (F7) ≥ 0</div><div class="v">${vans.length ? `${vans.filter(c => c.van_f7 >= 0).length} <span style="font-size:13px;font-weight:500">de ${vans.length}</span>` : "—"}</div><div class="d">H = ${cfg.horizonte_van_anios ?? "—"} años, r = ${cfg.tasa_descuento_anual_pct || 0} % (C2)</div></div>
+    <div class="tile ${dPct == null ? "" : nivelKPI("realizacion_pct", dPct)}"><div class="k">Realización acumulada (F10)</div><div class="v">${dPct == null ? "—" : Math.round(dPct) + " %"}</div><div class="d">${umbralTxt("realizacion_pct")}</div></div>
+    ${planes}
+   </div>`;
+}
 function alertas(){
   const out = [], S = n => sum(CASES.map(c=>R(c)[n]||0));
   // indicadores con umbral (meta.umbrales_kpi): mismos cálculos y niveles que las cajas del panel completo
@@ -138,9 +178,20 @@ function alertas(){
   // casos atascados: superan el límite de días de su estado (misma regla que el embudo del panel completo)
   const pl = CASES.map(plazoDe), atasR = pl.filter(p=>p.nivel==="rojo").length, atasA = pl.filter(p=>p.nivel==="amarillo").length;
   if (atasR || atasA) out.push([atasR?"rojo":"amarillo", `<b>${atasR}</b> ${atasR===1?"caso supera":"casos superan"} el límite de días de su estado${atasA?` y <b>${atasA}</b> ${atasA===1?"está cerca":"están cerca"}`:""}.`]);
+  // plan de realización (D135; mismos cálculos que el panel completo): planes que faltan, tramos sin condición de paso, realización F10
+  // por debajo de la tolerancia e iniciativas en producción sostenidas por valor no cuantificado sin la próxima R6 al día
+  const deben = CASES.filter(debePlan), conPlan = deben.filter(c => curva(c)), nP = nivelKPI("planes_realizacion_pct", deben.length ? 100 * conPlan.length / deben.length : null);
+  if (nP === "rojo" || nP === "amarillo") out.push([nP, `Solo <b>${conPlan.length} de ${deben.length}</b> iniciativas en fases 3 a 7 tienen plan de realización en T01 (${umbralTxt("planes_realizacion_pct")}); sin plan no se estima su curva.`]);
+  const hoyQ = trimestre(String(META().generado || "").slice(0,10)) || 0;
+  const t12 = conPlan.flatMap(c => curva(c).tramos).filter(x => ["comprometido","previsto"].includes(x.situacion) && x.q > hoyQ && x.q <= hoyQ + 4), sinCond = t12.filter(x => !x.condicion_paso);
+  if (sinCond.length) out.push(["amarillo", `<b>${sinCond.length}</b> ${sinCond.length===1?"tramo de financiación":"tramos de financiación"} en los próximos 12 meses (${fmt(sum(sinCond.map(x=>x.importe)))}) sin condición de paso.`]);
+  const dvs = conPlan.map(curva).filter(c => c.desviacion && c.desviacion.plan), dvR = sum(dvs.map(c=>c.desviacion.real)), dvP = sum(dvs.map(c=>c.desviacion.plan)), nDv = dvP ? nivelKPI("realizacion_pct", 100*dvR/dvP) : "";
+  if (nDv === "rojo" || nDv === "amarillo") out.push([nDv, `Realización acumulada (F10) del <b>${Math.round(100*dvR/dvP)} %</b> frente a la curva de referencia (${umbralTxt("realizacion_pct")}).`]);
+  const sost = CASES.filter(c => noMonetario(c).aviso);
+  if (sost.length) out.push(["amarillo", `<b>${sost.length}</b> ${sost.length===1?"iniciativa en producción sostenida":"iniciativas en producción sostenidas"} por valor no cuantificado sin la próxima R6 fechada o con la fecha vencida.`]);
   // primero lo más grave: rojo y brechas, después amarillo y el resto (orden estable dentro de cada grupo)
   const peso = cls => cls==="rojo" || cls==="bad" ? 0 : cls==="amarillo" ? 1 : 2;
-  return out.map((a,i)=>[a,i]).sort((x,y)=>peso(x[0][0])-peso(y[0][0]) || x[1]-y[1]).map(x=>x[0]).slice(0, 6);
+  return out.map((a,i)=>[a,i]).sort((x,y)=>peso(x[0][0])-peso(y[0][0]) || x[1]-y[1]).map(x=>x[0]).slice(0, 8);
 }
 
 function fila(c, valor, meta){
@@ -181,6 +232,7 @@ function render(){
   if (!misec.hidden) $("impacto").innerHTML = MI.filas.map(f=>`<div class="row" style="cursor:default"><div style="flex:1;min-width:0"><div class="n">${esc(f.etiqueta)}</div><div class="m">${f.total.casos.length ? `${f.total.casos.length} ${f.total.casos.length===1?"caso":"casos"}: ${MI.cols.filter(a=>f.celdas[a].casos.length).map(a=>`${esc(a)} ${f.celdas[a].casos.length}`).join(" · ")}` : "sin actividad"}${f.objetivo?` · objetivo C2: ${esc(f.objetivo==="no_prioritaria"?"no prioritaria":f.objetivo)}`:""}${f.brecha?` <span class="badge rojo">brecha</span>`:""}</div></div><div class="r">${f.total.casos.length?`<b>${f.total.pct==null?"—":Math.round(f.total.pct)+" %"}</b><div class="m">${f.total.neto != null ? `neto ${fmt(f.total.neto)}` : "aún no produce"}</div>`:""}</div></div>`).join("")
     + (MI.banda.casos.length ? `<div class="empty">Banda de habilitación (${MI.bandaFilas.map(esc).join(" y ")}): ${MI.banda.casos.length} ${MI.banda.casos.length===1?"caso":"casos"}, fuera del total.</div>` : "");
 
+  renderCurva();
   const al = alertas();
   $("alertas").innerHTML = al.length ? al.map(([cls,txt])=>`<div class="alert ${cls}">${txt}</div>`).join("") : `<div class="empty">Sin alertas.</div>`;
 
@@ -274,6 +326,12 @@ function ficha(c){
     <tr><td><b>Neto anual</b></td><td><b class="${netoCls(r.neto)}">${fmt(r.neto)}</b></td><td><b class="${netoCls(r.neto_pot)}">${fmt(r.neto_pot)}</b></td></tr></tbody></table>
    <div class="sub" style="margin-top:10px">${r.capacidad?`Capacidad liberada no materializada: ${fmt(r.capacidad)}. `:""}Inversión adicional ${fmt(r.adicional)} · ${rend(r.rendimiento_adicional)} · plazo ${esc(e.plazo_potencial||"sin fijar")}${fc?` · neto frente a la foto ${dl(r.neto, fc.neto)}`:""}</div>
    ${e.hipotesis_potencial?`<p style="font-size:13.5px;color:var(--ink2);margin:10px 0 0">${esc(e.hipotesis_potencial)}</p>`:""}
+   ${(()=>{ const cu = curva(c), nm = noMonetario(c), cfg = cfgCurva();
+      const plan = !cu ? (debePlan(c) ? `<h4>Plan de realización</h4><div class="sub">Sin plan de realización en T01: no se estima.</div>` : "")
+        : `<h4>Plan de realización</h4><div class="sub">VAN (F7) <b>${cu.van_f7 == null ? "sin H de C2" : fmt(cu.van_f7)}</b> (H = ${cfg.horizonte_van_anios ?? "—"}, r = ${cfg.tasa_descuento_anual_pct || 0} %) · recupera: ${esc(pbTxt(cu))} · caja máxima ${fmt(cu.caja_max)}${cu.desviacion&&cu.desviacion.pct!=null?` · realización <span class="badge ${nivelDesv(cu)}">${Math.round(cu.desviacion.pct)} %</span>`:""}</div>`
+          + (cu.tramos.filter(x => x.situacion !== "ejecutado").length ? `<table><thead><tr><th>Tramo pendiente</th><th>Importe</th><th>€/€</th></tr></thead><tbody>${cu.tramos.filter(x => x.situacion !== "ejecutado").map(x=>`<tr><td>${esc(x.periodo)}${x.gate?" · "+esc(x.gate):""} · ${esc(SIT_TRAMO[x.situacion]||x.situacion)}<div style="font-size:12px;color:var(--muted)">${x.condicion_paso?"condición: "+esc(x.condicion_paso):"sin condición de paso"}</div></td><td>${fmt(x.importe)}</td><td>${x.rendimiento==null?"—":rend(x.rendimiento)}</td></tr>`).join("")}</tbody></table>` : "");
+      const nc = nm.dimensiones.length ? `<h4>Valor no cuantificado</h4><div class="sub">${nm.dimensiones.map(d=>`${esc(dimNM(d.dimension))}: <b>${esc(NIVEL_NM[d.nivel])}</b>${d.indicador?` (${esc(d.indicador)}${d.actual!=null?`: ${esc(d.actual)}`:""})`:" · sin métrica, no cuenta"}`).join("<br>")}${nm.estrategico?`<br><span class="badge ${nm.aviso?"amarillo":"ok"}">sostenido por valor no cuantificado · ${nm.revision?"R6 "+fES(nm.revision):"sin R6 fechada"}</span>`:""}</div>` : "";
+      return plan + nc; })()}
    ${(()=>{ const h = historial(c), p = plazoDe(c); if (!h.tramos.length) return `<div class="sub" style="margin-top:10px">Recorrido por estados: sin fechas reportadas.</div>`;
       return `<div class="sub" style="margin-top:10px">Recorrido: ${h.tramos.map(t=>`${esc(t.estado)} ${t.dias==null?"":t.dias+" d"}`).join(" → ")}${p.limite?` · <span class="badge ${p.nivel}">${p.dias} de ${p.limite} d</span>`:""}</div>`; })()}`;
   $("sheet").classList.add("open");
@@ -312,8 +370,9 @@ $("sheet").onclick = e=>{ if (e.target === $("sheet")) cerrar(); };
 
 function fillCompara(){ const s = $("compara"), H = HIST(); s.innerHTML = `<option value="">Sin comparar</option>` + [...H].reverse().map(h=>`<option value="${h.fecha}">Frente a ${fES(h.fecha)}</option>`).join(""); s.value = state.compara; s.disabled = !H.length; }
 $("compara").onchange = e=>{ state.compara = e.target.value; render(); };
+document.querySelectorAll("#gran button").forEach(b=>b.onclick=()=>{ state.gran = b.dataset.g; renderCurva(); });
 document.querySelectorAll("#lado button").forEach(b=>b.onclick=()=>{ state.lado = b.dataset.l; document.querySelectorAll("#lado button").forEach(x=>x.classList.toggle("on", x===b)); render(); });
-if (location.protocol.startsWith("http") && META().leer_json_servidor !== false) { fetch("dashboard_data.json", {cache:"no-store"}).then(r=>r.ok?r.json():null).then(j=>{ if (j && j.casos){ DATA = normalize(j); DATA.meta.version_panel = DATA.meta.version_panel || __VERSION__; DATA.meta.panel_completo = DATA.meta.panel_completo || "__COMPLETO__"; CASES = DATA.casos; RES = new WeakMap(); HIS = new WeakMap(); fillCompara(); render(); } }).catch(()=>{}); }
+if (location.protocol.startsWith("http") && META().leer_json_servidor !== false) { fetch("dashboard_data.json", {cache:"no-store"}).then(r=>r.ok?r.json():null).then(j=>{ if (j && j.casos){ DATA = normalize(j); DATA.meta.version_panel = DATA.meta.version_panel || __VERSION__; DATA.meta.panel_completo = DATA.meta.panel_completo || "__COMPLETO__"; CASES = DATA.casos; RES = new WeakMap(); HIS = new WeakMap(); CUR = new WeakMap(); NMC = new WeakMap(); fillCompara(); render(); } }).catch(()=>{}); }
 fillCompara(); render();
 """
 
@@ -329,6 +388,7 @@ HTML = """<!DOCTYPE html>
  <div id="resumen" data-ayuda="m-resumen"></div>
  <h2 data-ayuda="m-frenos">Qué frena el escalado</h2><div class="list" id="frenos"></div>
  <h2 data-ayuda="m-alertas">Alertas</h2><div id="alertas"></div>
+ <div class="h2row"><h2 data-ayuda="m-curva">Plan de realización de la cartera</h2><div class="seg mini" id="gran" aria-label="Periodo de la curva"><button data-g="anual">Año</button><button data-g="semestral">Sem.</button><button data-g="trimestral">Trim.</button></div></div><div id="curva"></div>
  <h2 data-ayuda="m-embudo">Embudo de casos</h2><div class="list" id="embudo"></div>
  <section id="impacto-sec" hidden><h2 data-ayuda="m-impacto">Dónde está el impacto</h2><div class="list" id="impacto"></div></section>
  <h2 data-ayuda="m-top">Casos que más aportan</h2><div class="list" id="top"></div>

@@ -473,7 +473,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
     <p class="antetitulo">Documento 43 &#183; Realizaci&#243;n de beneficios</p>
     <h1>Realizaci&#243;n de beneficios</h1>
     <p class="entradilla">Del valor esperado al valor validado: responsables de negocio, seguimiento, materializaci&#243;n y auditor&#237;a del valor</p>
-    <div class="firma"><span><b>Fernando Garc&#237;a Varela</b></span><span>Versión 0.1 (borrador de trabajo)</span><span>16-09-2026</span><span>Borrador para revisi&#243;n</span></div>
+    <div class="firma"><span><b>Fernando Garc&#237;a Varela</b></span><span>Versión 0.2 (borrador de trabajo)</span><span>16-09-2026</span><span>Borrador para revisi&#243;n</span></div>
     <div class="cifras"><div class="cifra"><b>1</b><span>responsable de negocio por beneficio</span></div><div class="cifra"><b>2</b><span>revisiones posteriores a la implantaci&#243;n (6 y 12 meses)</span></div><div class="cifra"><b>3</b><span>estados del importe</span></div><div class="cifra"><b>0</b><span>euros contados dos veces en la cartera</span></div></div>
   </div>
 </header>
@@ -656,7 +656,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <hr />
 <h2 id="plan-de-realizacion-de-beneficios"><span class="antetitulo">04</span>Plan de realización de beneficios</h2>
 <h3 id="4-1-contenido">4.1 Contenido</h3>
-<p>El plan se documenta en la plantilla <a href="plantillas/P62_SEVEN-G_Plan_de_realizacion_de_beneficios.html" title="Plantilla P62 &#183; Plan de realizaci&#243;n de beneficios">P62</a> y se registra en <a href="plantillas/P28_SEVEN-G_Seguimiento_de_realizacion_de_valor.html" title="Herramienta T12 &#183; Seguimiento de realizaci&#243;n de valor">T12</a>; <a href="plantillas/P28_SEVEN-G_Seguimiento_de_realizacion_de_valor.html" title="Plantilla P28 &#183; Seguimiento de realizaci&#243;n de valor">P28</a> recoge su seguimiento por periodo. En Lite, los campos marcados como <strong>(Enterprise)</strong> pueden omitirse.</p>
+<p>El plan se documenta en la plantilla <a href="plantillas/P62_SEVEN-G_Plan_de_realizacion_de_beneficios.html" title="Plantilla P62 &#183; Plan de realizaci&#243;n de beneficios">P62</a> y se registra en <a href="../../herramientas/T01_registro_iniciativas/registro.html" title="Herramienta T01 &#183; Registro de iniciativas">T01</a>, en el bloque <code>plan_realizacion</code> de la iniciativa (<a href="plantillas/P28_SEVEN-G_Seguimiento_de_realizacion_de_valor.html" title="Herramienta T12 &#183; Seguimiento de realizaci&#243;n de valor">T12</a>); <a href="plantillas/P28_SEVEN-G_Seguimiento_de_realizacion_de_valor.html" title="Plantilla P28 &#183; Seguimiento de realizaci&#243;n de valor">P28</a> recoge su seguimiento por periodo. En Lite, los campos marcados como <strong>(Enterprise)</strong> pueden omitirse.</p>
 <div class="tabla"><table>
 <thead>
 <tr>
@@ -707,6 +707,11 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>Periodo en que se espera el 100 % del valor anual.</td>
 </tr>
 <tr>
+<td><strong>Financiación</strong></td>
+<td>Tramos de financiación</td>
+<td>Fecha, importe, <em>gate</em> que libera cada tramo y su condición de paso: el hito que tiene que cumplirse para liberarlo (<a href="14_SEVEN-G_Gestion_de_cartera.html" title="Documento 14 &#183; Gesti&#243;n de cartera">documento 14</a> §6.2).</td>
+</tr>
+<tr>
 <td><strong>Cambios habilitadores</strong></td>
 <td>Cambios de proceso, roles, políticas, sistemas o contratos sin los que el beneficio no llega</td>
 <td>Cada uno con responsable y fecha.</td>
@@ -753,6 +758,46 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 </tbody>
 </table></div>
+<p><strong>Registro en <a href="../../herramientas/T01_registro_iniciativas/registro.html" title="Herramienta T01 &#183; Registro de iniciativas">T01</a>.</strong> El bloque <code>plan_realizacion</code> lleva el estado del plan, su fuente y su fecha, y estos campos. El estado del plan solo puede ser estimado o declarado, porque el valor esperado no se valida (sección 2.2, regla 2; <a href="40_SEVEN-G_Reglas_de_medicion_del_valor.html" title="Documento 40 &#183; Reglas de medici&#243;n del valor">documento 40</a> §4.1); el valor realizado de cada periodo y cada tramo llevan su propio estado, que sí puede ser validado.</p>
+<div class="tabla"><table>
+<thead>
+<tr>
+<th>Campo</th>
+<th>Contenido</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>curva</code></td>
+<td>Porcentaje del valor esperado anual en régimen que se captura en cada periodo (año, semestre o trimestre). Entre dos puntos se interpola en línea recta; antes del primero es 0 y después del último se mantiene el último.</td>
+</tr>
+<tr>
+<td><code>fecha_regimen</code></td>
+<td>Periodo en que se espera el 100 %. Es informativa: manda la curva.</td>
+</tr>
+<tr>
+<td><code>tramos</code></td>
+<td>Cada tramo de financiación con fecha, importe, alcance, <em>gate</em> que lo libera, condición de paso, situación (ejecutado, comprometido, previsto u opcional) y su propio estado (una inversión ejecutada puede estar validada). Los opcionales no suman. Solo se registran como tramos las inversiones: descubrimiento y viabilidad, diseño y entrega, escalado y, en Transformar, cada etapa. La operación no es un tramo: es el coste recurrente, que la curva ya resta (<a href="14_SEVEN-G_Gestion_de_cartera.html" title="Documento 14 &#183; Gesti&#243;n de cartera">documento 14</a> §6.2).</td>
+</tr>
+<tr>
+<td><code>tramos[].captura_objetivo_pct</code></td>
+<td>Nivel de captura del valor en régimen que el tramo permite alcanzar. Con él se calcula el neto anual que desbloquea el tramo y su neto por euro (F3 del tramo).</td>
+</tr>
+<tr>
+<td><code>referencia</code></td>
+<td>Curva del plan aprobado en G3, G4 o G5, que no se modifica después. La realización (F10) se mide contra ella; si no existe, contra la curva vigente.</td>
+</tr>
+<tr>
+<td><code>real</code></td>
+<td>Valor realizado de cada periodo con su estado: validado, declarado o estimado (sección 5.2).</td>
+</tr>
+<tr>
+<td><code>declive</code></td>
+<td>Opcional: pérdida de valor por año (<code>pct_anual</code>) desde un periodo (<code>desde</code>), por ejemplo por deriva del modelo o porque la competencia copia la ventaja.</td>
+</tr>
+</tbody>
+</table></div>
+<p>El panel del consejo (<a href="../../herramientas/T17_panel_consejo/index.html" title="Herramienta T17 &#183; Panel de IA para el consejo">T17</a>) lee este bloque y muestra la curva y los tramos (sección 11.2). Una iniciativa sin plan registrado no tiene curva: el panel no la estima (<a href="40_SEVEN-G_Reglas_de_medicion_del_valor.html" title="Documento 40 &#183; Reglas de medici&#243;n del valor">documento 40</a>, regla 8).</p>
 <h3 id="4-2-aprobacion">4.2 Aprobación</h3>
 <div class="tabla"><table>
 <thead>
@@ -858,6 +903,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 </tbody>
 </table></div>
+<p>El valor realizado de cada periodo se registra en <a href="../../herramientas/T01_registro_iniciativas/registro.html" title="Herramienta T01 &#183; Registro de iniciativas">T01</a>, en <code>plan_realizacion.real</code>, con el importe del periodo (no anualizado) y su estado. Con él y con la curva, el panel del consejo calcula la realización acumulada en total y solo con validado.</p>
 <h3 id="5-3-ejemplo-ilustrativo">5.3 Ejemplo ilustrativo</h3>
 <p>Eficiencia esperada en régimen: 300.000 € al año (75.000 € por trimestre). Curva de realización: 25 %, 50 %, 75 % y 100 % en los cuatro primeros trimestres. Coste recurrente real del año: 90.000 €.</p>
 <div class="tabla"><table>
@@ -1445,6 +1491,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <li><strong>Capacidad sin destino</strong> de la cartera y su evolución.</li>
 <li><strong>Valor por nivel de ambición</strong>, separando eficiencias y retorno, para las señales 2 y 3 del índice de transformación.</li>
 <li><strong>Fotos históricas</strong> que permitan comparar periodos sin reescribir cifras ya presentadas; las correcciones se muestran como ajuste.</li>
+<li><strong>Plan de realización: curva y tramos.</strong> Tarjeta con la curva de la cartera por año, semestre o trimestre (suma de los casos con plan registrado), la realización acumulada (F10) frente a la referencia aprobada, en total y solo con validado, con los umbrales de IND-VAL-14 (≥ 90 % dentro de tolerancia, 70–90 % desviación moderada, &lt; 70 % desviación relevante; sección 9.1), y el VAN (F7) de cada caso. Las iniciativas sin plan se muestran como «sin plan de realización» y nunca se estiman (<a href="40_SEVEN-G_Reglas_de_medicion_del_valor.html" title="Documento 40 &#183; Reglas de medici&#243;n del valor">documento 40</a>, regla 8).</li>
 </ul>
 <h3 id="11-3-reglas-de-agregacion">11.3 Reglas de agregación</h3>
 <ol>
@@ -1569,12 +1616,12 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tr id="cod-t12">
 <td><strong><a href="plantillas/P28_SEVEN-G_Seguimiento_de_realizacion_de_valor.html" title="Herramienta T12 &#183; Seguimiento de realizaci&#243;n de valor">T12</a></strong></td>
 <td>Seguimiento de realización de valor</td>
-<td>Plan de realización, registro por periodo, estados, realización, desviaciones.</td>
+<td>Plan de realización (bloque <code>plan_realizacion</code> de <a href="../../herramientas/T01_registro_iniciativas/registro.html" title="Herramienta T01 &#183; Registro de iniciativas">T01</a>), registro por periodo, estados, realización, desviaciones.</td>
 </tr>
 <tr id="cod-t01">
 <td><strong><a href="../../herramientas/T01_registro_iniciativas/registro.html" title="Herramienta T01 &#183; Registro de iniciativas">T01</a></strong></td>
 <td>Registro de iniciativas</td>
-<td>Responsables, eventos de revisión, decisiones de R6 y G7.</td>
+<td>Responsables, eventos de revisión, decisiones de R6 y G7; plan de realización con curva, tramos y valor realizado por periodo.</td>
 </tr>
 <tr id="cod-t13">
 <td><strong><a href="../../herramientas/T11_calculadora_valor/calculadora.html#/costes" title="Herramienta T13 &#183; Calculadora de costes por caso">T13</a></strong></td>
@@ -1584,7 +1631,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tr id="cod-t17">
 <td><strong><a href="../../herramientas/T17_panel_consejo/index.html" title="Herramienta T17 &#183; Panel de IA para el consejo">T17</a></strong></td>
 <td>Panel de IA para el consejo</td>
-<td>Consolidación y presentación.</td>
+<td>Consolidación y presentación; tarjeta «Plan de realización: curva y tramos».</td>
 </tr>
 <tr id="cod-t20">
 <td><strong><a href="plantillas/P20_SEVEN-G_Plan_de_adopcion_y_capacidad.html" title="Herramienta T20 &#183; Plan de adopci&#243;n y capacidad">T20</a></strong></td>
@@ -1704,6 +1751,11 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>0.1</td>
 <td>16-09-2026</td>
 <td>Primera versión. Define el recorrido del valor esperado al validado, el responsable de negocio del beneficio, el plan de realización, el seguimiento por periodo, los métodos para evitar el doble conteo, las palancas de materialización de la capacidad liberada, las revisiones a 6 y 12 meses, el tratamiento de desviaciones, el vínculo con R6 y G7, la consolidación en cartera y en el panel del consejo y la auditoría del valor.</td>
+</tr>
+<tr>
+<td>0.2</td>
+<td>28-09-2026</td>
+<td>El plan de realización se registra en <a href="../../herramientas/T01_registro_iniciativas/registro.html" title="Herramienta T01 &#183; Registro de iniciativas">T01</a> (<code>plan_realizacion</code>: curva, fecha de régimen, tramos de financiación con su condición de paso, referencia aprobada y valor realizado por periodo) y el panel del consejo lo muestra en la tarjeta «Plan de realización: curva y tramos»; secciones 4.1, 5.2, 11.2 y 13 (D135).</td>
 </tr>
 </tbody>
 </table></div>

@@ -5,7 +5,7 @@
 | | |
 |---|---|
 | Documento | Documento 60 · Paquete para el consejo |
-| Versión | 0.2 (borrador de trabajo) |
+| Versión | 0.3 (borrador de trabajo) |
 | Fecha | 16-09-2026 |
 | Autor | Fernando García Varela |
 | Estado | Borrador para revisión. Desarrolla la etapa C4 (supervisión) y los resultados de C2 y C5 que se elevan al consejo. |
@@ -410,6 +410,7 @@ Reglas de uso:
 | Cartera y valor: qué frena el escalado y dónde actuar primero (§10.4) | Resumen de una página (mensaje principal y qué frena el escalado); decisiones solicitadas |
 | Cartera y valor: dónde está el impacto, esferas × nivel de ambición (T16, §10.5) | Paquete anual de dirección (C2) y de revisión (C5); resumen |
 | Cartera y valor: indicadores clave, eficiencias, retorno y coste por compañía y unidad, neto adicional por euro | Resumen de una página; casos en detalle; decisiones de inversión |
+| Cartera y valor: plan de realización, tramos de financiación pendientes y valor no cuantificado (§10.6) | Decisiones solicitadas (liberación de tramos); casos en detalle; resumen |
 | Dónde invierte la compañía (nivel de ambición) y agilidad | Resumen; revisión anual (C5) |
 | Histórico y tendencia | Cambios desde la sesión anterior |
 | Adopción | Semáforo de programas (eje de adopción) |
@@ -420,7 +421,7 @@ Reglas de uso:
 
 ### 10.3 Adaptaciones pendientes
 
-La herramienta T17 se alimenta del registro de iniciativas (T01) mediante su conector (03 §5.4): muestra el embudo por **fase y estado** del ciclo de vida, enlaza cada caso con su código IA-AAAA-NNN y genera el registro de recomendaciones del documento 62. Muestra también la lectura ejecutiva **«Qué frena el escalado»** (§10.4) y el **mapa de esferas × niveles de ambición** (T16, §10.5). La agrupación por **programa** con el semáforo de la sección 9 no forma parte del panel: se calcula con las reglas de 14 §12 y se anexa al paquete con P67, y las decisiones del consejo se registran en P69. La ambición objetivo de C2 por esfera la toma el panel de la tesis aprobada en el registro T01 (decisión del consejo con su ambición objetivo por esfera, 62 §10.2) y, solo si el registro no la trae, de su configuración general.
+La herramienta T17 se alimenta del registro de iniciativas (T01) mediante su conector (03 §5.4): muestra el embudo por **fase y estado** del ciclo de vida, enlaza cada caso con su código IA-AAAA-NNN y genera el registro de recomendaciones del documento 62. Muestra también la lectura ejecutiva **«Qué frena el escalado»** (§10.4), el **mapa de esferas × niveles de ambición** (T16, §10.5) y el **plan de realización con sus tramos y el valor no cuantificado** (§10.6). La agrupación por **programa** con el semáforo de la sección 9 no forma parte del panel: se calcula con las reglas de 14 §12 y se anexa al paquete con P67, y las decisiones del consejo se registran en P69. La ambición objetivo de C2 por esfera la toma el panel de la tesis aprobada en el registro T01 (decisión del consejo con su ambición objetivo por esfera, 62 §10.2) y, solo si el registro no la trae, de su configuración general.
 
 Los ficheros del motor que se publican en el repositorio de demostraciones son copia de su proyecto de origen: las adaptaciones se hacen en origen y se vuelven a publicar.
 
@@ -465,6 +466,25 @@ Reglas de uso:
 - **La ambición objetivo por esfera es la aprobada en C2** (documento 13). Se registra en T01, en la decisión del consejo que aprueba la tesis (62 §10.2), y el panel la toma de ahí e indica de qué decisión sale; solo un panel que no se alimenta de T01 la informa en su configuración general (`mapa_impacto.objetivo_c2`). Sin ella, el mapa no marca brechas ni «fuera de tesis».
 - **Los grados de las esferas 08 y 09** se evalúan con el documento 10 (§6.4 y §7.3) y no se deducen del mapa.
 
+### 10.6 Plan de realización, tramos de financiación y valor no cuantificado en el panel
+
+El panel muestra el plan de realización de beneficios de cada caso (documento 43 §4.1) tal como está registrado en T01 (`plan_realizacion`) y su valor no cuantificado (`no_cuantificado`, documento 40 regla 7). No estima nada: una iniciativa sin plan registrado no tiene curva y se cuenta como «sin plan de realización» (documento 40, regla 8).
+
+> **Por qué importa.** El consejo aprueba la inversión por tramos, pero suele ver el valor como una cifra anual en régimen. Sin la curva no sabe cuándo llega el valor, cuánto dinero falta todavía por poner ni si lo capturado va al ritmo aprobado. Y si lo que no se puede traducir a euros no se separa, un caso que se mantiene por reputación o por opción estratégica parece un caso con pérdidas, o se infla con cifras que nadie puede demostrar.
+
+| Tarjeta o sección | Qué muestra | Reglas |
+|---|---|---|
+| **Plan de realización: curva y tramos** (cartera y valor) | Suma de las curvas de los casos con plan, por año, semestre o trimestre: inversión de los tramos, valor, coste recurrente, neto y acumulado. Cifras: inversión de los próximos doce meses, caja por delante, casos con VAN ≥ 0 de los que tienen plan, realización acumulada (F10) y planes registrados sobre las iniciativas en las fases 3 a 7. | VAN (F7) de cada caso con la H y la r de C2 (40 §8.2). Realización frente a la referencia aprobada, en total y solo con validado, con los umbrales de IND-VAL-14 (≥ 90 %, 70–90 %, < 70 %; 43 §9.1). No se da el plazo de recuperación de la cartera: los agregados ocultan los casos con valor negativo (40 regla 9). |
+| **Tramos de financiación pendientes** (cartera y valor) | Tramos comprometidos o previstos de cada caso con fecha, importe, *gate* que los libera y condición de paso, y el neto anual que desbloquea cada tramo por euro invertido (F3 del tramo). | Se señala el tramo sin condición de paso (14 §6.2). Los tramos opcionales se muestran, pero no suman. |
+| **Valor no cuantificado** (cartera y valor) | Por caso, cada dimensión con su nivel 0–3 y su métrica (base, objetivo y valor actual); casos «sostenidos por valor no cuantificado». | Nunca se traduce a euros ni suma en el neto (40 regla 7 y §5.3); sin métrica no cuenta. Un caso en producción (fases 6 y 7) con valor no cuantificado de nivel medio o alto y VAN negativo, o sin plan que lo demuestre, se marca como sostenido por valor no cuantificado y necesita su próxima R6 con fecha. En las fases 3 a 5 no se marca: el valor de opción de Transformar se gobierna por sus etapas, hitos y *gates* (40 §8.3). |
+| **Plan de realización** (ficha del caso) | VAN (F7), plazo de recuperación (F9, informativo), caja máxima y caja por delante, realización (F10) en total y solo con validado, gráfico de la curva y tramos con su *gate* y su condición de paso; debajo, el valor no cuantificado del caso. | Solo si el caso tiene plan registrado; si no, «sin plan de realización». |
+
+**Caja por delante** es cuánto tiene que bajar todavía el neto acumulado desde hoy antes de empezar a subir: el dinero que aún falta por poner. El ya gastado no cuenta. **Caja máxima** es el punto más bajo del neto acumulado en todo el plan.
+
+En la **versión móvil**, la sección «Plan de realización de la cartera» resume las mismas cifras, y las **alertas** avisan de los planes que faltan, los tramos sin condición de paso, la realización acumulada por debajo del 90 % y los casos en producción sostenidos por valor no cuantificado sin R6 al día (sin fecha o con la fecha vencida).
+
+La granularidad por defecto, los años mostrados, la H, la r y los umbrales se ajustan en la configuración general del panel (`curva_valor` y `umbrales_kpi`), sin cambiar las reglas de esta sección. En el paquete trimestral, la tarjeta de tramos pendientes alimenta el apartado de decisiones solicitadas cuando se pide liberar un tramo, y la ficha del caso, los casos en detalle.
+
 ---
 
 ## 11. Lista de control antes de enviar el paquete
@@ -500,7 +520,7 @@ La lista se aplica con P67 §12.
 | T14 | Calculadora del índice de transformación | Paquete anual C5. |
 | T15 | Diagnóstico de madurez | Paquetes anuales C2 y C5. |
 | T16 | Mapa de esferas de la cartera | Paquete anual C2; tarjeta «Dónde está el impacto» del panel (§10.5). |
-| T17 | Panel de IA para el consejo | Vistas de la sección 10; lectura «Qué frena el escalado» (§10.4). |
+| T17 | Panel de IA para el consejo | Vistas de la sección 10; lectura «Qué frena el escalado» (§10.4); plan de realización, tramos y valor no cuantificado (§10.6). |
 | T18 | Registro de recomendaciones del consejo | Apartado de recomendaciones y decisiones. |
 | T19 | Plantilla de tesis de IA y apetito de riesgo | Paquete anual C2. |
 | P29 | Registro de decisión de *gate* | Evidencia de las decisiones que se elevan. |
@@ -535,3 +555,4 @@ La lista se aplica con P67 §12.
 |---|---|---|
 | 0.1 | 16-09-2026 | Primera versión. Define el contenido trimestral (C4) y anual (C2 y C5), la estructura del paquete, la ficha de decisión, el reparto entre pleno y comisión delegada, el calendario, las reglas de presentación de cifras, el semáforo de programas y la relación con el panel del consejo. Ajustes de coherencia con 01 (separación de funciones en Lite, resultados de R6, criterio de agentes) y con 34 y 37; semáforo alineado con los seis ejes del documento 14. |
 | 0.2 | 28-09-2026 | Lectura ejecutiva «Qué frena el escalado» (§10.4): seis frenos FE-1 a FE-6 con señales de caso, patrones de paradas y señales de la compañía, reglas de orden y valor anual en juego; mapa de esferas × niveles de ambición en el panel (T16, §10.5); campo «Qué frena el escalado» en el resumen de una página (§4.2) y bloques del panel (§10.2). |
+| 0.3 | 28-09-2026 | Plan de realización, tramos de financiación y valor no cuantificado en el panel (§10.6): tarjetas «Plan de realización: curva y tramos», «Tramos de financiación pendientes» y «Valor no cuantificado», sección «Plan de realización» de la ficha del caso, sección y alertas de la versión móvil; bloques del panel (§10.2) y §10.3 (D135). |

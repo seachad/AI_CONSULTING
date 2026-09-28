@@ -5,7 +5,7 @@
 | | |
 |---|---|
 | Documento | Documento 40 · Reglas de medición del valor |
-| Versión | 0.1 (borrador de trabajo) |
+| Versión | 0.2 (borrador de trabajo) |
 | Fecha | 16-09-2026 |
 | Autor | Fernando García Varela |
 | Estado | Borrador para revisión. Desarrolla la sección 6 del documento 00 y la sección 11 del documento 01. |
@@ -124,10 +124,12 @@ La numeración es la del documento 00, sección 6, y no se modifica.
 | | |
 |---|---|
 | **Fundamento** | Los indicadores no monetarios no se pueden comparar con el coste ni priorizar. Pero convertirlos con supuestos no declarados es peor que no convertirlos. |
-| **Cómo se aplica** | Cada mejora no monetaria se traduce con una cadena explícita: magnitud física incremental × valor económico unitario con fuente. Si no existe una relación demostrable, el importe se registra como **no cuantificado**, con la métrica física y la razón. Un valor no cuantificado no es cero ni se estima sin indicarlo (regla 8). |
+| **Cómo se aplica** | Cada mejora no monetaria se traduce con una cadena explícita: magnitud física incremental × valor económico unitario con fuente. Si no existe una relación demostrable, el importe se registra como **no cuantificado**, con la métrica física y la razón. Un valor no cuantificado no es cero ni se estima sin indicarlo (regla 8). En T01 se registra en `no_cuantificado[]` con su dimensión (imagen y reputación, posicionamiento competitivo, experiencia de cliente, red comercial y de distribución, talento y capacidades, u opción estratégica, que es el valor de opción de la sección 5.3), su nivel de 0 a 3 (sin efecto, bajo, medio, alto), la métrica física con su base, su objetivo y su valor actual, y el motivo por el que no se traduce a dinero. Sin métrica no cuenta. El nivel nunca se traduce a euros ni suma en el neto. |
 | **Ejemplo correcto** *(ilustrativo)* | 300 clientes retenidos incrementales frente al grupo de control × 450 € de margen anual medio por cliente = **135.000 €/año de retorno**. Mejora de satisfacción de 4 puntos: **no cuantificada**; no hay relación demostrada entre esa métrica y el comportamiento de compra en la compañía. |
 | **Ejemplo incorrecto** | "La satisfacción sube 4 puntos, lo que equivale a 1 M€ de valor de marca", sin fórmula; o "la retención mejora 2 puntos", sin traducción económica ni indicación de que no se ha cuantificado. |
-| **Cómo se verifica** | Cada métrica no monetaria de la hipótesis tiene importe con fórmula o marca de no cuantificada con motivo; los valores unitarios tienen fuente. |
+| **Cómo se verifica** | Cada métrica no monetaria de la hipótesis tiene importe con fórmula o marca de no cuantificada con motivo; los valores unitarios tienen fuente; cada valor no cuantificado de T01 tiene dimensión, nivel, métrica y motivo. |
+
+**Caso sostenido por valor no cuantificado.** Una iniciativa en producción (fases 6 y 7) cuyo caso descansa en valor no cuantificado de nivel medio o alto, con métrica, mientras su VAN (F7) es negativo o no lo demuestra un plan de realización (documento 43 §4.1), se muestra como «sostenido por valor no cuantificado». Necesita la fecha de su próxima R6 registrada en T01 (`ciclo.proxima_revision`), y el panel del consejo avisa si falta o está vencida. Así el consejo ve qué casos se mantienen por razones que no son económicas y cuándo se vuelven a revisar. En las fases 3 a 5 no se marca: el valor de opción de Transformar se gobierna por sus etapas, hitos y *gates* (sección 8.3, punto 5).
 
 ### 3.8 Regla 8 · "Sin dato" no es cero
 
@@ -240,8 +242,8 @@ flowchart LR
 | **Capacidad liberada no materializada** | No reduce ningún coste (regla 3). | En euros (F4) y en horas, con su tasa de materialización (F5). |
 | **Capacidad reasignada a actividad nueva** | Su valor, si existe, aparece en el resultado de la actividad de destino; sumarla sería contar dos veces. | En horas y euros, con actividad de destino, responsable y fecha. |
 | **Valor potencial** | No ha ocurrido (regla 4). | Con inversión adicional, hipótesis y plazo; solo para priorizar (F3). |
-| **Valor de opción** | Apuestas de Transformar cuyo valor depende de decisiones futuras. | Descripción cualitativa documentada en G3 (01 §7.6), hitos de aprendizaje y límite de inversión por etapa. |
-| **Valor no cuantificado** | No existe relación económica demostrable (regla 7). | Métrica física y motivo. |
+| **Valor de opción** | Apuestas de Transformar cuyo valor depende de decisiones futuras. | Descripción cualitativa documentada en G3 (01 §7.6), hitos de aprendizaje y límite de inversión por etapa. En T01 se registra como valor no cuantificado de dimensión «opción estratégica». |
+| **Valor no cuantificado** | No existe relación económica demostrable (regla 7). | Métrica física y motivo; en T01, en `no_cuantificado[]`, con dimensión y nivel 0–3 (sin efecto, bajo, medio, alto), métrica con base, objetivo y valor actual, y motivo. Sin métrica no cuenta; nunca se traduce a euros. |
 
 ---
 
@@ -347,6 +349,8 @@ El material anterior a SEVEN-G combinaba varios umbrales de retorno (porcentajes
 | **Neto anual del año t** | Valor neto anual (F2) esperado o realizado en el año t, con la curva de adopción (rampa) prevista en el plan de realización. Si hay coste de retirada previsto, se resta en el año en que se produce. |
 | **H · Horizonte** | Número de años de evaluación. Lo fija la compañía en C2 (01 §5.1). No puede superar la vida útil esperada de la solución. |
 | **r · Tasa de descuento** | Tasa anual que fija la función financiera en C2. Si la compañía no fija ninguna, r = 0. |
+
+El panel del consejo (T17) calcula el VAN (F7) de cada caso con la curva de su plan de realización (documento 43 §4.1) y con la H y la r de C2 (r = 0 si la compañía no fija tasa). El año 0 es el año del primer tramo de financiación y la inversión de cada tramo se resta en el año en que se paga: el VAN es la suma de los flujos anuales (valor según la curva, menos coste recurrente, menos inversión del año) divididos por (1 + r)^t, para t = 0…H. Es la misma F7 con la inversión repartida en el tiempo; si toda la inversión se paga en el año 0 y el valor empieza en el año 1, el resultado es idéntico. El panel suma los flujos de t = 0 a t = H: si la curva ya captura valor en el año 0, su VAN puede diferir del calculado con T11 en las fases 2 y 3. Sin plan de realización, el panel no calcula el VAN del caso.
 
 ### 8.3 Regla
 
@@ -489,11 +493,11 @@ Lectura para el consejo: la cartera genera un neto anual positivo según lo decl
 
 | Código | Nombre | Uso en este documento |
 |---|---|---|
-| **T01** | Registro de iniciativas | Importes, estados, eventos de cambio de estado, fechas para agilidad; alcance de las iniciativas transversales y plataformas, con despliegue, adopción e importes por unidad (sección 7.2). |
+| **T01** | Registro de iniciativas | Importes, estados, eventos de cambio de estado, fechas para agilidad; alcance de las iniciativas transversales y plataformas, con despliegue, adopción e importes por unidad (sección 7.2); valor no cuantificado con dimensión y nivel (regla 7). |
 | **T11** | Lienzo y calculadora de hipótesis de valor | Fórmulas F1–F4 y F7–F9 en fase 2 y 3; método de atribución; escenarios (P10 §6.2) y criterio de C2 como información. Importa la iniciativa desde T01 y exporta sus valores esperados. |
 | **T12** | Seguimiento de realización de valor | Estados por periodo, caducidades, F5, F6 y F10. |
 | **T13** | Calculadora de costes por caso | Coste recurrente completo e inversión inicial. |
-| **T17** | Panel de IA para el consejo | Presentación con proporción validada visible; tarjeta de iniciativas transversales y plataformas con el neto de la cartera con y sin ellas. |
+| **T17** | Panel de IA para el consejo | Presentación con proporción validada visible; tarjeta de iniciativas transversales y plataformas con el neto de la cartera con y sin ellas; VAN (F7) de cada caso con su plan de realización (sección 8.2) y tarjeta «Valor no cuantificado». |
 | **P08** | Lienzo de hipótesis de valor | Hipótesis, método de atribución y criterios de parada. |
 | **P09** | Línea base | Medición de referencia. |
 | **P22** | Resultados de validación y del piloto | Valor medido frente a la hipótesis en G5. |
@@ -525,3 +529,4 @@ Lectura para el consejo: la cartera genera un neto anual positivo según lo decl
 |---|---|---|
 | 0.1 | 16-09-2026 | Primera versión. Desarrolla las diez reglas de medición, fija los estados del importe con responsables, evidencia y caducidad, las fórmulas oficiales F1–F10, los métodos de atribución con su estado máximo, el criterio económico único sobre beneficio neto (VAN con horizonte y tasa de C2; ROI y plazo de recuperación informativos), la medición de la agilidad por riesgo y ambición, los errores de inflado y las reglas de presentación al consejo. |
 | 0.1 | 18-09-2026 | Añade la sección 7.2: iniciativas transversales y plataformas habilitadoras, con la escalera de medición por unidad (coste, adopción, capacidad liberada y valor materializado), el umbral de adopción y el neto de la cartera con y sin ellas; el error 13 y la regla de presentación 10. |
+| 0.2 | 28-09-2026 | El valor no cuantificado se registra en T01 con dimensión, nivel 0–3, métrica y motivo, nunca en euros, y el caso sostenido por valor no cuantificado necesita su próxima R6 con fecha (regla 7 y sección 5.3); el panel del consejo calcula el VAN (F7) de cada caso con la curva de su plan de realización (sección 8.2); sección 13 (D135). |

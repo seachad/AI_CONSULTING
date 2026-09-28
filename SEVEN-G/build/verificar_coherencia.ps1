@@ -1442,7 +1442,39 @@ try {
   if ((Get-Content (Join-Path $t17 'config_panel.json') -Raw | ConvertFrom-Json).mapa_impacto.objetivo_c2) { Mal 'config_panel.json del ejemplo: objetivo_c2 debe venir del registro T01, no de la configuración (D131)'; $malTc++ }
   foreach ($lg in 'es', 'en') { $d62 = [IO.File]::ReadAllText((Get-ChildItem (Join-Path $repo "SEVEN-G\mds\$lg") -Filter '62_*.md').FullName); if ($d62 -notmatch '\| \*\*(Ambición objetivo por esfera|Target ambition per sphere)\*\* \|') { Mal "documento 62 [$lg] §10.2: falta el campo de la ambición objetivo por esfera (D131)"; $malTc++ } }
   if (-not $malTc) { Ok "la tesis $($tesTc.id) de T01 guarda la ambición objetivo por esfera y el mapa de impacto la toma de ahí (Python y JS); documento 62 §10.2 (ES/EN)" }
-  # ---- 34. galería de ejemplos por sector (D137): cada registro de ejemplo sale de su ficha compacta y es un T01 válido, ficticio y
+
+  # ---- 33. plan de realización por tramos y valor no cuantificado (D135): T01 los registra (esquema, validador, ficha y ejemplo), los dos
+  # conectores los llevan al panel, el motor calcula la curva, el VAN F7 y la realización F10 sin estimar nada (estimar_sin_curva false),
+  # el panel y el móvil los muestran con su ayuda, el mapa de datos los declara y los documentos 40, 43 y 60 los describen (ES/EN)
+  Write-Host '33. Plan de realización por tramos y valor no cuantificado (T01 → T17)'
+  $malPr = 0
+  $esqPr = [IO.File]::ReadAllText((Join-Path $t01 'esquema_registro.schema.json'))
+  foreach ($s in '"plan_realizacion"', '"no_cuantificado"', '"condicion_paso"', '"curva_realizacion"') { if (-not $esqPr.Contains($s)) { Mal "esquema de T01: falta $s (D135)"; $malPr++ } }
+  $plPr = [IO.File]::ReadAllText((Join-Path $t01 '_fuentes\registro.plantilla.html'))
+  foreach ($s in 'function bloquePlan(', 'plan_realizacion.estado', "b_plan:'", "b_nocuant:'") { if (-not $plPr.Contains($s)) { Mal "plantilla de T01: falta «$s» (D135)"; $malPr++ } }
+  $demoPr = Get-Content (Join-Path $t01 'datos_demo.json') -Raw | ConvertFrom-Json
+  $conPlan = @($demoPr.iniciativas | Where-Object { $_.plan_realizacion -and @($_.plan_realizacion.tramos | Where-Object { $_.condicion_paso }).Count })
+  $conNc = @($demoPr.iniciativas | Where-Object { @($_.no_cuantificado).Count })
+  if (-not $conPlan.Count) { Mal 'datos de ejemplo de T01: ninguna iniciativa con plan de realización y tramos con condición de paso (D135)'; $malPr++ }
+  if (-not $conNc.Count) { Mal 'datos de ejemplo de T01: ninguna iniciativa con valor no cuantificado (D135)'; $malPr++ }
+  if (@($demoPr.iniciativas | Where-Object { $_.plan_realizacion -and $_.plan_realizacion.estado -eq 'validado' }).Count) { Mal 'datos de ejemplo de T01: un plan de realización no puede estar validado (40 §4.1, regla 2)'; $malPr++ }
+  foreach ($x in @(@('t01_a_panel.py', 'def plan_realizacion('), @('t01_a_panel.py', 'def no_cuantificado('), @('t01_a_panel.js', 'function planRealizacion('), @('t01_a_panel.js', 'function noCuantificado('), @('motor\economia.py', 'def van_f7('), @('motor\panel_core.py', 'function vanF7('), @('motor\build_dashboard.py', 'data-ayuda="curva"'), @('motor\build_dashboard.py', 'data-ayuda="tramos"'), @('motor\build_dashboard.py', 'data-ayuda="nocuant"'), @('motor\build_dashboard.py', 'function planFicha('), @('motor\panel_movil.py', 'data-ayuda="m-curva"'))) {
+    if (-not [IO.File]::ReadAllText((Join-Path $t17 $x[0])).Contains($x[1])) { Mal "T17 $($x[0]): falta $($x[1]) (D135)"; $malPr++ } }
+  $cfgPr = (Get-Content (Join-Path $t17 'config_panel.json') -Raw | ConvertFrom-Json).curva_valor
+  if (-not $cfgPr -or $cfgPr.estimar_sin_curva -ne $false) { Mal 'config_panel.json: curva_valor.estimar_sin_curva debe ser false (SEVEN-G no estima curvas; regla 8, D135)'; $malPr++ }
+  if ($cfgPr -and -not $cfgPr.horizonte_van_anios) { Mal 'config_panel.json: falta curva_valor.horizonte_van_anios (H de C2 para el VAN F7)'; $malPr++ }
+  $djPr = Get-Content (Join-Path $t17 'ejemplo\salida\t01_dashboard_data.json') -Raw | ConvertFrom-Json
+  if (-not @($djPr.casos | Where-Object { $_.economia.curva }).Count) { Mal 'panel de ejemplo: ningún caso con economia.curva (regenerar con t01_a_panel.py)'; $malPr++ }
+  if (-not @($djPr.casos | Where-Object { @($_.reporte_compania.valor_no_monetario).Count }).Count) { Mal 'panel de ejemplo: ningún caso con valor no cuantificado (regenerar con t01_a_panel.py)'; $malPr++ }
+  $mapaPr = [IO.File]::ReadAllText((Join-Path $repo 'SEVEN-G\herramientas\mapa_datos.json'))
+  foreach ($s in 'iniciativas[].plan_realizacion', 'iniciativas[].no_cuantificado') { if (-not $mapaPr.Contains($s)) { Mal "mapa_datos.json: T17 no declara que lee $s (D135)"; $malPr++ } }
+  foreach ($lg in 'es', 'en') {
+    $d43 = [IO.File]::ReadAllText((Get-ChildItem (Join-Path $repo "SEVEN-G\mds\$lg") -Filter '43_*.md').FullName); if (-not $d43.Contains('plan_realizacion')) { Mal "documento 43 [$lg]: no describe el registro del plan en T01 (plan_realizacion, D135)"; $malPr++ }
+    $d40 = [IO.File]::ReadAllText((Get-ChildItem (Join-Path $repo "SEVEN-G\mds\$lg") -Filter '40_*.md').FullName); if (-not $d40.Contains('no_cuantificado')) { Mal "documento 40 [$lg]: no describe el valor no cuantificado en T01 (no_cuantificado, D135)"; $malPr++ }
+    $d60 = [IO.File]::ReadAllText((Get-ChildItem (Join-Path $repo "SEVEN-G\mds\$lg") -Filter '60_*.md').FullName); if (-not $d60.Contains('### 10.6 ')) { Mal "documento 60 [$lg]: falta §10.6 (plan de realización en el panel, D135)"; $malPr++ }
+  }
+  if (-not $malPr) { Ok "$($conPlan.Count) iniciativas de ejemplo con plan de realización por tramos y $($conNc.Count) con valor no cuantificado: T01 (esquema, validación y ficha), conectores Python y JS, motor (VAN F7, realización F10, sin estimar), panel y móvil, mapa de datos y documentos 40, 43 y 60 (ES/EN)" }
+  # ---- 34. galería de ejemplos por sector (D136): cada registro de ejemplo sale de su ficha compacta y es un T01 válido, ficticio y
   # distinto del canónico; sus paneles se generan con el mismo conector, muestran siempre sus datos incrustados y están al día; la página
   # de la galería es bilingüe, lleva la exención (D113), navega los códigos (D99) y solo cita fuentes verificadas del registro (D41, D114)
   Write-Host '34. Galería de ejemplos por sector'
@@ -1450,7 +1482,7 @@ try {
   $ejDir = Join-Path $t01 'ejemplos'
   $galDir = Join-Path $t17 'galeria'
   $sectGa = @(Get-ChildItem $ejDir -Directory | Where-Object { $_.Name -notlike '_*' -and (Test-Path (Join-Path $_.FullName 'datos_demo.json')) } | ForEach-Object Name)
-  if (-not $sectGa.Count) { Mal 'D137: no hay registros de ejemplo en T01_registro_iniciativas/ejemplos/<sector>/datos_demo.json'; $malGa++ }
+  if (-not $sectGa.Count) { Mal 'D136: no hay registros de ejemplo en T01_registro_iniciativas/ejemplos/<sector>/datos_demo.json'; $malGa++ }
   $orgCanon = (Get-Content (Join-Path $t01 'datos_demo.json') -Raw | ConvertFrom-Json).meta.organizacion
   $orgsGa = @{}
   foreach ($s in $sectGa) {
@@ -1470,34 +1502,34 @@ try {
   if (Get-Command uv -ErrorAction SilentlyContinue) {
     Push-Location (Join-Path $ejDir '_fuentes')
     try { $salGen = & uv run --with jsonschema python generar_ejemplos.py --comprobar 2>&1; $codGen = $LASTEXITCODE } finally { Pop-Location }
-    if ($codGen) { Mal "D137: registros de ejemplo desfasados o inválidos frente a su ficha: $(($salGen | Where-Object { $_ -notmatch 'al día' }) -join ' · ')"; $malGa++ }
+    if ($codGen) { Mal "D136: registros de ejemplo desfasados o inválidos frente a su ficha: $(($salGen | Where-Object { $_ -notmatch 'al día' }) -join ' · ')"; $malGa++ }
     $salGa = Join-Path $tmp 'galeria'
     Push-Location $t17
     try { & uv run python galeria.py --salida $salGa 2>&1 | Out-Null; $codGa = $LASTEXITCODE } finally { Pop-Location }
-    if ($codGa) { Mal 'D137: galeria.py ha fallado'; $malGa++ }
+    if ($codGa) { Mal 'D136: galeria.py ha fallado'; $malGa++ }
     else {
       foreach ($s in $sectGa) {
         $a = Get-Content (Join-Path $salGa "$s\$($s)_dashboard_data.json") -Raw | ConvertFrom-Json -Depth 64
         $pubGa = Join-Path $galDir "$s\$($s)_dashboard_data.json"
-        if (-not (Test-Path $pubGa)) { Mal "D137: falta el panel publicado de $s (ejecutar uv run python galeria.py)"; $malGa++; continue }
+        if (-not (Test-Path $pubGa)) { Mal "D136: falta el panel publicado de $s (ejecutar uv run python galeria.py)"; $malGa++; continue }
         $b = Get-Content $pubGa -Raw | ConvertFrom-Json -Depth 64
         $a.meta.textos.pie = $null; $b.meta.textos.pie = $null
-        if (($a | ConvertTo-Json -Depth 64 -Compress) -ne ($b | ConvertTo-Json -Depth 64 -Compress)) { Mal "D137: el panel de $s está desfasado: ejecutar uv run python galeria.py en T17_panel_consejo"; $malGa++ }
+        if (($a | ConvertTo-Json -Depth 64 -Compress) -ne ($b | ConvertTo-Json -Depth 64 -Compress)) { Mal "D136: el panel de $s está desfasado: ejecutar uv run python galeria.py en T17_panel_consejo"; $malGa++ }
       }
     }
   } else { Aviso 'uv no está instalado: no se comprueba que los ejemplos y los paneles de la galería estén al día' }
   foreach ($s in $sectGa) {
     foreach ($h in Get-ChildItem (Join-Path $galDir $s) -Filter '*Dashboard*.html' -ErrorAction SilentlyContinue) {
       $th = [IO.File]::ReadAllText($h.FullName)
-      if (-not $th.Contains('"solo_datos_incrustados": true')) { Mal "D137: $($h.Name) no fija sus datos incrustados (navegacion.solo_datos_incrustados)"; $malGa++ }
-      if (-not $th.Contains($claveEs)) { Mal "D137: $($h.Name) no lleva la exención (D113)"; $malGa++ }
-      if ($th.Contains('"datos_t01"')) { Mal "D137: $($h.Name) no debe leer la copia de datos de la compañía (navegacion.datos_t01)"; $malGa++ }
+      if (-not $th.Contains('"solo_datos_incrustados": true')) { Mal "D136: $($h.Name) no fija sus datos incrustados (navegacion.solo_datos_incrustados)"; $malGa++ }
+      if (-not $th.Contains($claveEs)) { Mal "D136: $($h.Name) no lleva la exención (D113)"; $malGa++ }
+      if ($th.Contains('"datos_t01"')) { Mal "D136: $($h.Name) no debe leer la copia de datos de la compañía (navegacion.datos_t01)"; $malGa++ }
     }
   }
   $pubJs = [IO.File]::ReadAllText((Join-Path $t17 'publicacion_panel.py'))
-  if (-not $pubJs.Contains('solo_datos_incrustados')) { Mal 'publicacion_panel.py: el arranque no respeta navegacion.solo_datos_incrustados (D137)'; $malGa++ }
+  if (-not $pubJs.Contains('solo_datos_incrustados')) { Mal 'publicacion_panel.py: el arranque no respeta navegacion.solo_datos_incrustados (D136)'; $malGa++ }
   $idxGa = Join-Path $galDir 'index.html'
-  if (-not (Test-Path $idxGa)) { Mal 'D137: falta T17_panel_consejo/galeria/index.html (ejecutar uv run python galeria.py)'; $malGa++ }
+  if (-not (Test-Path $idxGa)) { Mal 'D136: falta T17_panel_consejo/galeria/index.html (ejecutar uv run python galeria.py)'; $malGa++ }
   else {
     $tg = [IO.File]::ReadAllText($idxGa)
     foreach ($m in 'data-ir-codigo', 'data-enlazar-codigos', 'codigos.js', '<section id="es"', '<section id="en"', $claveEs, $claveEn) { if (-not $tg.Contains($m)) { Mal "galeria/index.html: falta «$m» (D99, D113, bilingüe)"; $malGa++ } }
@@ -1519,7 +1551,7 @@ try {
       if ($c.tecnologia -notin $tecGa -or $c.horizonte -notin 'consolidado', 'en_adopcion', 'emergente_2027_2028') { Mal "mercado $($mf.BaseName) $($c.id): tecnología u horizonte no válidos"; $malGa++ }
     }
   }
-  foreach ($p in 'index.html', 'en\index.html', 'SEVEN-G\herramientas\T17_panel_consejo\index.html') { if (-not ([IO.File]::ReadAllText((Join-Path $repo $p))).Contains('galeria/index.html')) { Mal "${p}: no enlaza la galería de ejemplos por sector (D137)"; $malGa++ } }
+  foreach ($p in 'index.html', 'en\index.html', 'SEVEN-G\herramientas\T17_panel_consejo\index.html') { if (-not ([IO.File]::ReadAllText((Join-Path $repo $p))).Contains('galeria/index.html')) { Mal "${p}: no enlaza la galería de ejemplos por sector (D136)"; $malGa++ } }
   if (-not $malGa) { Ok "galería de ejemplos por sector: $($sectGa.Count) registros T01 ficticios y válidos ($($sectGa -join ', ')), paneles al día y con datos fijos, página ES/EN con fuentes del registro" }
 }
 finally { Remove-Item $tmp -Recurse -Force -Confirm:$false -ErrorAction SilentlyContinue }

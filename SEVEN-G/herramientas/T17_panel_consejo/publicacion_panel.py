@@ -178,7 +178,7 @@ def vista_sin_javascript(ruta, data, aviso, titulo):
 # convierte y lo muestra; (2) si no, servido por http, lee el fichero de la carpeta de datos de la copia de la compañia
 # (navegacion.datos_t01 de config_panel.json, ruta relativa al panel) y lo muestra; (3) «Cargar JSON» admite tambien un JSON de T01.
 # Sin nada de eso, el panel muestra los datos incrustados. La vista sin JavaScript y la huella siguen siendo las de los datos incrustados.
-# Con navegacion.solo_datos_incrustados (paneles de la galería de ejemplos por sector, D137) se omiten (1) y (2): el visitante ve siempre el
+# Con navegacion.solo_datos_incrustados (paneles de la galería de ejemplos por sector, D136) se omiten (1) y (2): el visitante ve siempre el
 # ejemplo, aunque tenga su propio registro T01 en el navegador; «Cargar JSON» sigue funcionando.
 MARCA_CONECTOR = "data-conector-t17"
 JS_ARRANQUE_CONECTOR = r"""
@@ -217,7 +217,7 @@ JS_ARRANQUE_CONECTOR = r"""
     textos(d); nota(etiqueta, d);
   }
   if (setDataOriginal) { setData = function(obj, label){ if (SevengT17.esRegistroT01(obj)) { try { aplicar(obj, (label || "JSON de T01") + " (registro T01 convertido en el navegador)"); } catch (e) { alert("No se ha podido convertir el registro T01: " + e.message); } return; } setDataOriginal(obj, label); }; }
-  // D137: un panel de ejemplo (galería por sector) muestra siempre sus datos incrustados; «Cargar JSON» sigue funcionando
+  // D136: un panel de ejemplo (galería por sector) muestra siempre sus datos incrustados; «Cargar JSON» sigue funcionando
   if ((CFG.navegacion || {}).solo_datos_incrustados) return;
   var origen = null, local = null;
   try { origen = JSON.parse(ls(LS_ORIGEN) || "null"); } catch (e) {}

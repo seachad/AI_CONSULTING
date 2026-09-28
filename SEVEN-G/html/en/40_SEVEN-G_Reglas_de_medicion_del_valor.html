@@ -473,7 +473,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
     <p class="antetitulo">Document 40 &#183; Value measurement rules</p>
     <h1>Value measurement rules</h1>
     <p class="entradilla">How the value of AI is measured, validated and presented so that it withstands an audit</p>
-    <div class="firma"><span><b>Fernando Garc&#237;a Varela</b></span><span>Version 0.1 (working draft)</span><span>16-09-2026</span><span>Draft for review</span></div>
+    <div class="firma"><span><b>Fernando Garc&#237;a Varela</b></span><span>Version 0.2 (working draft)</span><span>16-09-2026</span><span>Draft for review</span></div>
     <div class="cifras"><div class="cifra"><b>10</b><span>measurement rules</span></div><div class="cifra"><b>3</b><span>amount statuses</span></div><div class="cifra"><b>5</b><span>attribution methods</span></div><div class="cifra"><b>1</b><span>single economic criterion based on net benefit</span></div></div>
   </div>
 </header>
@@ -749,7 +749,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 <tr>
 <td><strong>How it is applied</strong></td>
-<td>Each non-monetary improvement is translated through an explicit chain: incremental physical magnitude × unit economic value with a source. If there is no demonstrable relationship, the amount is recorded as <strong>not quantified</strong>, with the physical metric and the reason. A non-quantified value is not zero and is not estimated without saying so (rule 8).</td>
+<td>Each non-monetary improvement is translated through an explicit chain: incremental physical magnitude × unit economic value with a source. If there is no demonstrable relationship, the amount is recorded as <strong>not quantified</strong>, with the physical metric and the reason. A non-quantified value is not zero and is not estimated without saying so (rule 8). In <a href="../../herramientas/T01_registro_iniciativas/registro.html" title="Tool T01 &#183; Initiative register">T01</a> it is recorded in <code>no_cuantificado[]</code> with its dimension (image and reputation, competitive positioning, customer experience, sales and distribution network, talent and capabilities, or strategic option, which is the option value of section 5.3), its level from 0 to 3 (no effect, low, medium, high), the physical metric with its baseline, target and current value, and the reason why it is not translated into money. Without a metric it does not count. The level is never translated into euros and never adds to net value.</td>
 </tr>
 <tr>
 <td><strong>Correct example</strong> <em>(illustrative)</em></td>
@@ -761,10 +761,11 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 <tr>
 <td><strong>How it is verified</strong></td>
-<td>Each non-monetary metric in the hypothesis has an amount with a formula or a not-quantified flag with a reason; unit values have a source.</td>
+<td>Each non-monetary metric in the hypothesis has an amount with a formula or a not-quantified flag with a reason; unit values have a source; each non-quantified value in <a href="../../herramientas/T01_registro_iniciativas/registro.html" title="Tool T01 &#183; Initiative register">T01</a> has a dimension, level, metric and reason.</td>
 </tr>
 </tbody>
 </table></div>
+<p><strong>Use case sustained by non-quantified value.</strong> An initiative in production (phases 6 and 7) whose case rests on non-quantified value of medium or high level, with a metric, while its NPV (F7) is negative or is not demonstrated by a realisation plan (<a href="43_SEVEN-G_Realizacion_de_beneficios.html" title="Document 43 &#183; Benefits realisation">document 43</a> §4.1), is shown as &quot;sustained by non-quantified value&quot;. It needs the date of its next R6 recorded in <a href="../../herramientas/T01_registro_iniciativas/registro.html" title="Tool T01 &#183; Initiative register">T01</a> (<code>ciclo.proxima_revision</code>), and the board dashboard warns if it is missing or overdue. This way the board sees which use cases are kept for reasons that are not economic and when they will be reviewed again. In phases 3 to 5 it is not flagged: the option value of Transform is governed by its stages, milestones and <em>gates</em> (section 8.3, point 5).</p>
 <h3 id="3-8-rule-8-quot-no-data-quot-is-not-zero">3.8 Rule 8 · &quot;No data&quot; is not zero</h3>
 <blockquote>
 <p>&quot;No data&quot; is not zero. Missing data is shown as missing and is never estimated without saying so.</p>
@@ -1055,12 +1056,12 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tr>
 <td><strong>Option value</strong></td>
 <td>Transform bets whose value depends on future decisions.</td>
-<td>Qualitative description documented at G3 (01 §7.6), learning milestones and investment cap per stage.</td>
+<td>Qualitative description documented at G3 (01 §7.6), learning milestones and investment cap per stage. In <a href="../../herramientas/T01_registro_iniciativas/registro.html" title="Tool T01 &#183; Initiative register">T01</a> it is recorded as non-quantified value with the &quot;strategic option&quot; dimension.</td>
 </tr>
 <tr>
 <td><strong>Non-quantified value</strong></td>
 <td>There is no demonstrable economic relationship (rule 7).</td>
-<td>Physical metric and reason.</td>
+<td>Physical metric and reason; in <a href="../../herramientas/T01_registro_iniciativas/registro.html" title="Tool T01 &#183; Initiative register">T01</a>, in <code>no_cuantificado[]</code>, with dimension and level 0–3 (no effect, low, medium, high), metric with baseline, target and current value, and reason. Without a metric it does not count; it is never translated into euros.</td>
 </tr>
 </tbody>
 </table></div>
@@ -1373,6 +1374,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 </tbody>
 </table></div>
+<p>The board dashboard (<a href="../../herramientas/T17_panel_consejo/index.html" title="Tool T17 &#183; Board AI dashboard">T17</a>) calculates the NPV (F7) of each use case with the curve of its realisation plan (<a href="43_SEVEN-G_Realizacion_de_beneficios.html" title="Document 43 &#183; Benefits realisation">document 43</a> §4.1) and with the H and r of C2 (r = 0 if the company does not set a rate). Year 0 is the year of the first funding tranche and the investment of each tranche is deducted in the year in which it is paid: the NPV is the sum of the annual flows (value according to the curve, less recurring cost, less the year's investment) divided by (1 + r)^t, for t = 0…H. It is the same F7 with the investment spread over time; if all the investment is paid in year 0 and value starts in year 1, the result is identical. The dashboard adds up the flows from t = 0 to t = H: if the curve already captures value in year 0, its NPV may differ from the one calculated with <a href="../../herramientas/T11_calculadora_valor/calculadora.html" title="Tool T11 &#183; Value hypothesis canvas and calculator">T11</a> in phases 2 and 3. Without a realisation plan, the dashboard does not calculate the use case's NPV.</p>
 <h3 id="8-3-rule">8.3 Rule</h3>
 <ol>
 <li><strong>There is a single economic feasibility criterion: NPV (F7) ≥ 0 with the H and r approved in C2.</strong> With r = 0, this is equivalent to recovering the initial investment within the horizon.</li>
@@ -1752,7 +1754,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tr id="cod-t01">
 <td><strong><a href="../../herramientas/T01_registro_iniciativas/registro.html" title="Tool T01 &#183; Initiative register">T01</a></strong></td>
 <td>Initiative register</td>
-<td>Amounts, statuses, status change events, dates for agility; scope of cross-unit initiatives and platforms, with roll-out, adoption and amounts by unit (section 7.2).</td>
+<td>Amounts, statuses, status change events, dates for agility; scope of cross-unit initiatives and platforms, with roll-out, adoption and amounts by unit (section 7.2); non-quantified value with dimension and level (rule 7).</td>
 </tr>
 <tr id="cod-t11">
 <td><strong><a href="../../herramientas/T11_calculadora_valor/calculadora.html" title="Tool T11 &#183; Value hypothesis canvas and calculator">T11</a></strong></td>
@@ -1772,7 +1774,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tr id="cod-t17">
 <td><strong><a href="../../herramientas/T17_panel_consejo/index.html" title="Tool T17 &#183; Board AI dashboard">T17</a></strong></td>
 <td>Board AI dashboard</td>
-<td>Presentation with the validated proportion visible; card for cross-unit initiatives and platforms with the portfolio's net value with and without them.</td>
+<td>Presentation with the validated proportion visible; card for cross-unit initiatives and platforms with the portfolio's net value with and without them; NPV (F7) of each use case with its realisation plan (section 8.2) and &quot;Non-quantified value&quot; card.</td>
 </tr>
 <tr id="cod-p08">
 <td><strong><a href="plantillas/P08_SEVEN-G_Lienzo_de_hipotesis_de_valor.html" title="Template P08 &#183; Value hypothesis canvas">P08</a></strong></td>
@@ -1873,6 +1875,11 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>0.1</td>
 <td>18-09-2026</td>
 <td>Adds section 7.2: cross-unit initiatives and enabling platforms, with the measurement ladder by unit (cost, adoption, released capacity and realised value), the adoption threshold and the portfolio's net value with and without them; error 13 and presentation rule 10.</td>
+</tr>
+<tr>
+<td>0.2</td>
+<td>28-09-2026</td>
+<td>Non-quantified value is recorded in <a href="../../herramientas/T01_registro_iniciativas/registro.html" title="Tool T01 &#183; Initiative register">T01</a> with dimension, level 0–3, metric and reason, never in euros, and a use case sustained by non-quantified value needs its next R6 dated (rule 7 and section 5.3); the board dashboard calculates the NPV (F7) of each use case with the curve of its realisation plan (section 8.2); section 13 (D135).</td>
 </tr>
 </tbody>
 </table></div>
