@@ -1,4 +1,4 @@
-/* Ayuda de las herramientas de SEVEN-G (D111): módulo común que cada build_*.ps1 incrusta en su HTML (marca __AYUDA__), junto con
+/* Ayuda de las herramientas de SEVEN-G (D123): módulo común que cada build_*.ps1 incrusta en su HTML (marca __AYUDA__), junto con
    los textos de la herramienta (_fuentes/ayuda.json, constante AYUDA_HERR). Hace dos cosas, en el idioma activo de la herramienta
    (document.documentElement.lang), sin tocar su código:
    1) Junto al título (h1) de cada vista pone un botón «?» que abre qué muestra la vista, cómo leerla, qué significa cada columna o

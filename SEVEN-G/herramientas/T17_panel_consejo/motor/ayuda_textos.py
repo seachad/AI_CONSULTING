@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-"""Textos de ayuda del panel del consejo, en español e inglés (D110). Los usa ayuda_tarjetas.py.
+"""Textos de ayuda del panel del consejo, en español e inglés (D122). Los usa ayuda_tarjetas.py.
 
 TARJETAS: una entrada por cada elemento marcado data-ayuda="<clave>" en el panel completo o en el movil, con
   "es" y "en": titulo, que (qué muestra), leer (cómo leerla: escalas, colores, signos; opcional), porque (por qué
@@ -10,7 +10,7 @@ COLUMNAS: qué significa cada columna o recuadro, por su rótulo tal como lo esc
   "en" es [nombre en inglés, explicación]. El panel pone esta explicación como tooltip en cada encabezado de tabla
   y en cada rótulo de recuadro, también en las fichas; dentro de una tarjeta manda la explicación propia de la tarjeta.
 Los textos son HTML de confianza. Una columna o tarjeta nueva del panel necesita su entrada aquí, en los dos idiomas
-(verificar_coherencia.ps1, sección 23).
+(verificar_coherencia.ps1, sección 27).
 """
 
 
@@ -164,6 +164,12 @@ COLUMNAS = {
     "Nivel (0–5)": c("0 Inexistente, 1 Inicial, 2 En desarrollo, 3 Definido, 4 Gestionado, 5 Optimizado. Un nivel se alcanza cuando se cumplen todos sus criterios.", "Level (0–5)", "0 Non-existent, 1 Initial, 2 Developing, 3 Defined, 4 Managed, 5 Optimised. A level is reached when all its criteria are met."),
     "Avance al nivel siguiente": c("Porcentaje de los criterios del nivel siguiente que ya se cumplen.", "Progress to next level", "Share of the next level's criteria already met."),
     "Bloqueantes": c("Códigos de los criterios que faltan e impiden subir de nivel: es la lista de trabajo.", "Blockers", "Codes of the missing criteria that prevent moving up a level: it is the to-do list."),
+    # ---- perfiles NIST derivados de la madurez (tarjeta de madurez)
+    "Perfil": c("Marco NIST al que se traduce el diagnóstico: AI RMF (gobierno de la IA) o CSF 2.0 con el Cyber AI Profile (seguridad; perfil todavía en borrador).", "Profile", "NIST framework the assessment is translated into: AI RMF (AI governance) or CSF 2.0 with the Cyber AI Profile (security; profile still in draft)."),
+    "Nivel mínimo": c("El nivel más bajo entre las subcategorías del perfil (0 a 5): el punto más débil.", "Minimum level", "The lowest level among the profile's subcategories (0 to 5): the weakest point."),
+    "Subcategorías con nivel": c("Subcategorías del perfil que tienen nivel actual, sobre el total; el resto está «sin dato» (no es 0).", "Subcategories with a level", "Profile subcategories that have a current level, out of the total; the rest are «no data» (not 0)."),
+    "Con objetivo": c("Subcategorías con nivel objetivo fijado por la compañía en C2.", "With target", "Subcategories with a target level set by the company at C2."),
+    "Con brecha": c("Subcategorías cuyo nivel actual está por debajo del objetivo; cada brecha pasa al plan de mejora del informe de madurez.", "With gap", "Subcategories whose current level is below target; each gap goes into the maturity report's improvement plan."),
     # ---- transversales
     "Despliegue": c("Situación en la unidad: previsto, piloto, en uso o retirado, con su fecha.", "Roll-out", "Status in the unit: planned, pilot, in use or withdrawn, with its date."),
     "Licencias activas / asignadas": c("Licencias usadas de verdad sobre las pagadas; en rojo si está por debajo del umbral de adopción.", "Active / assigned licences", "Licences actually used over those paid for; red if below the adoption threshold."),
@@ -364,16 +370,16 @@ TARJETAS = {
     },
     "madurez": {
         "es": t("Madurez de la compañía (D1–D7)",
-                "El último diagnóstico de T15: nivel global y de cada una de las siete dimensiones (0 a 5), avance hacia el nivel siguiente, criterios bloqueantes, límite por estrategia y gobierno (D1) o por riesgo, seguridad y cumplimiento (D6), tendencia y si es un autodiagnóstico o está verificado. Los filtros no lo cambian.",
+                "El último diagnóstico de T15: nivel global y de cada una de las siete dimensiones (0 a 5), avance hacia el nivel siguiente, criterios bloqueantes, límite por estrategia y gobierno (D1) o por riesgo, seguridad y cumplimiento (D6), tendencia y si es un autodiagnóstico o está verificado; y, si el diagnóstico los trae, los perfiles NIST (AI RMF y CSF) que se derivan de él con su brecha frente al objetivo. Los filtros no lo cambian.",
                 "Indica si la compañía tiene capacidad para sostener la cartera y la ambición que se le presentan: subir la ambición sin gobierno ni control del riesgo multiplica el riesgo. Una autoevaluación sin verificar no vale para el consejo.",
                 "documento 11 (modelo de madurez)",
                 "Niveles: 0 Inexistente, 1 Inicial, 2 En desarrollo, 3 Definido, 4 Gestionado, 5 Optimizado. El nivel global es la media ponderada redondeada hacia abajo y nunca puede superar en más de uno al nivel de D1 (gobierno) o D6 (riesgo): sin control no se presenta más madurez. Los círculos llenos son el nivel; la barra, el avance hacia el siguiente."),
         "en": t("Company maturity (D1–D7)",
-                "The latest T15 assessment: overall level and level of each of the seven dimensions (0 to 5), progress towards the next level, blocking criteria, cap by strategy and governance (D1) or by risk, security and compliance (D6), trend and whether it is a self-assessment or verified. Filters do not change it.",
+                "The latest T15 assessment: overall level and level of each of the seven dimensions (0 to 5), progress towards the next level, blocking criteria, cap by strategy and governance (D1) or by risk, security and compliance (D6), trend and whether it is a self-assessment or verified; and, if the assessment includes them, the NIST profiles (AI RMF and CSF) derived from it with their gap against target. Filters do not change it.",
                 "It shows whether the company can sustain the portfolio and ambition put before it: raising ambition without governance or risk control multiplies risk. An unverified self-assessment is not valid for the board.",
                 "document 11 (maturity model)",
                 "Levels: 0 Non-existent, 1 Initial, 2 Developing, 3 Defined, 4 Managed, 5 Optimised. The overall level is the weighted average rounded down and can never be more than one above the level of D1 (governance) or D6 (risk): without control, no higher maturity is presented. Filled circles are the level; the bar, progress towards the next one."),
-        "columnas": ["Dimensión", "Nivel (0–5)", "Avance al nivel siguiente", "Bloqueantes", "Tendencia"],
+        "columnas": ["Dimensión", "Nivel (0–5)", "Avance al nivel siguiente", "Bloqueantes", "Tendencia", "Perfil", "Nivel mínimo", "Subcategorías con nivel", "Con objetivo", "Con brecha"],
     },
     "transv": {
         "es": t("Iniciativas transversales y plataformas habilitadoras",

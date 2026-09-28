@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-"""Ayuda de cada tarjeta del panel del consejo (completo y movil), en español e inglés (D110).
+"""Ayuda de cada tarjeta del panel del consejo (completo y movil), en español e inglés (D122).
 
 Junto al título de cada tarjeta, indicador o sección marcada data-ayuda="<clave>" aparece un «?» que abre qué muestra,
 cómo leerla, qué significa cada columna o dato, por qué importa y dónde se explica en SEVEN-G, con un selector de
@@ -20,7 +20,7 @@ from ayuda_textos import TARJETAS, COLUMNAS
 AYUDA = {k: v["es"] for k, v in TARJETAS.items()}
 
 CSS = r"""
-/* ayuda de cada tarjeta (D110) */
+/* ayuda de cada tarjeta (D122) */
 [data-ayuda]:not(h2):not(h3){position:relative}
 .ayuda-btn{display:inline-flex;align-items:center;justify-content:center;width:20px;height:20px;margin:0 0 0 8px;padding:0;border:1px solid var(--muted);border-radius:50%;background:transparent;color:var(--muted);font:700 12px/1 system-ui,-apple-system,"Segoe UI",sans-serif;cursor:pointer;vertical-align:middle;flex:0 0 auto;text-decoration:none}
 .ayuda-btn:hover,.ayuda-btn:focus-visible{background:var(--ink);color:var(--surface);border-color:var(--ink);outline:none}
@@ -44,7 +44,7 @@ CSS = r"""
 """
 
 JS = r"""
-// ---- ayuda de cada tarjeta (meta.navegacion.ayuda_tarjetas, D110): un «?» junto al título de cada tarjeta marcada con data-ayuda abre
+// ---- ayuda de cada tarjeta (meta.navegacion.ayuda_tarjetas, D122): un «?» junto al título de cada tarjeta marcada con data-ayuda abre
 // qué muestra, cómo leerla, qué significa cada columna o dato, por qué importa y dónde se explica, en español o en inglés; y cada
 // encabezado de tabla o rótulo de recuadro lleva como tooltip lo que significa. meta.ayuda_tarjetas sustituye textos o quita una ayuda.
 const AYUDA_TARJETAS = __TARJETAS__;

@@ -14,7 +14,7 @@
 
 ---
 
-> **Legal notice and disclaimer.** SEVEN-G is a reference methodological framework provided "as is" and for information purposes only. It does not constitute legal, regulatory, financial or professional advice, nor does it guarantee compliance with any law or standard. References to general regulation (such as the EU AI Act, the GDPR, DORA or NIS2), to technical standards and to regulation specific to each sector or jurisdiction may be incomplete, may not apply to a particular case or may become out of date as a result of regulatory changes, interpretations or supervisory positions after their consultation date. **Each organisation that uses SEVEN-G is solely responsible for identifying the regulation that applies to it, verifying that it is current and certifying its own regulatory compliance**, with the appropriate qualified advice. The author accepts no liability for any use made of this content or for any decisions taken on the basis of it. The data, figures, companies and cases in the examples are fictitious or illustrative.
+> **Legal notice and disclaimer.** SEVEN-G is a reference methodological framework provided "as is" and for information purposes only. It does not constitute legal, regulatory, financial or professional advice, nor does it guarantee compliance with any law or standard. References to general regulation (such as the EU AI Act, the GDPR, DORA or NIS2), to technical standards and to regulation specific to each sector or jurisdiction may be incomplete, may not apply to a particular case or may become out of date as a result of regulatory changes, interpretations or supervisory positions after their consultation date. **Each organisation that uses SEVEN-G is solely responsible for identifying the regulation that applies to it, verifying that it is current and certifying its own regulatory compliance**, with the appropriate qualified advice. This methodology is a generic, free aid shared with the community so that nobody has to start from scratch; each person or organisation can and should adapt it to its own use. It must not be inferred that its legally sensitive parts have been reviewed by legal counsel: those reviews, for each company or sector, are the ultimate responsibility of the company, consultant or organisation that uses it. Although every effort is made to keep it up to date, some regulation may have changed without being reflected here. To the fullest extent permitted by law, the author accepts no responsibility whatsoever for the effects of its application in any organisation or for its full applicability. The methodology does not grant certification of any kind. The author accepts no liability for any use made of this content or for any decisions taken on the basis of it. The data, figures, companies and cases in the examples are fictitious or illustrative.
 
 <!-- esencial: recomendado | Guidance document so that the whole library does not have to be read. It says what is mandatory in every company, what is added only with Enterprise intensity or scope, which modules are activated by a trigger and what is guidance or reference. Underlying rule: no phase or gate is omitted; in Lite they are grouped and simplified. It creates no rules: if it differs from documents 01, 21 or 90, those prevail. -->
 
@@ -199,7 +199,7 @@ The fact that a document is *Always* does not mean it must be read in full: nine
 | P29 (all gates) · P31 (use case sheet) | **Always** | — |
 | P30 (phase 7) | **Always** | When G7 is convened. |
 
-### 7.2 Company, board, compliance, third parties, audit and implementation (P32–P71)
+### 7.2 Company, board, compliance, third parties, audit and implementation (P32–P74)
 
 | Templates | Level | Trigger or note |
 |---|---|---|
@@ -223,6 +223,7 @@ The fact that a document is *Always* does not mean it must be read in full: nine
 | P63 (consumption budget) · P64 (datasets and sources) · P66 (SPAD annexes) | **Conditional** | Trigger 9 · own data or knowledge · trigger 14. |
 | P67 (quarterly board pack) · P69 (register of board decisions) | **Always** | Aggregated in Lite scope. |
 | P70, P71 (consultancy) | **Conditional** | External support. |
+| P72 (AI security profile) · P73 (AI governance profile) · P74 (ISO/IEC 42001 statement of applicability) | **Conditional** | Only if the company uses the NIST CSF or the NIST AI RMF, or aims for ISO/IEC 42001 (34 §4–§5). |
 
 ---
 

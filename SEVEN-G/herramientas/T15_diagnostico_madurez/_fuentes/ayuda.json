@@ -1,5 +1,5 @@
 {
- "_leeme": "Textos de ayuda de la herramienta (D111), en español e inglés. Los usa el módulo común herramientas/_comun/ayuda.js, que el build_*.ps1 incrusta en el HTML. 'vistas': una entrada por vista (ruta #/<vista>, o <vista>/<pestaña> según 'subvistas'). 'claves': explicación de cada columna o dato por su clave de traducción (TX). 'textos': explicación de rótulos que no salen de TX, por su texto en cada idioma. Una columna nueva de la herramienta necesita aquí su clave, en los dos idiomas (verificar_coherencia.ps1, sección 24).",
+ "_leeme": "Textos de ayuda de la herramienta (D123), en español e inglés. Los usa el módulo común herramientas/_comun/ayuda.js, que el build_*.ps1 incrusta en el HTML. 'vistas': una entrada por vista (ruta #/<vista>, o <vista>/<pestaña> según 'subvistas'). 'claves': explicación de cada columna o dato por su clave de traducción (TX). 'textos': explicación de rótulos que no salen de TX, por su texto en cada idioma. Una columna nueva de la herramienta necesita aquí su clave, en los dos idiomas (verificar_coherencia.ps1, sección 28).",
  "inicial": "evaluacion",
  "vistas": {
   "evaluacion": {
@@ -62,6 +62,38 @@
     "donde": "document 11 §1.2"
    }
   },
+  "perfil_rmf": {
+   "es": {
+    "titulo": "Perfil AI RMF",
+    "que": "Las 72 subcategorías del NIST AI RMF traducidas desde este diagnóstico: para cada una, su función, la dimensión y las preguntas del documento 11 de las que sale, el nivel actual, el nivel objetivo fijado en C2, la brecha y el tier equivalente; con un resumen por función.",
+    "porque": "La compañía que ya informa con el AI RMF no necesita una segunda evaluación: el mismo cuestionario verificado da la madurez y el perfil, y la brecha sale de evidencia, no de una autoevaluación aparte.",
+    "leer": "Nivel actual = nivel de la dimensión de referencia, rebajado al nivel anterior al de la pregunta asociada de menor nivel que no esté en «Sí» o «No aplica». Brecha = objetivo − actual. El tier equivalente es solo una vista para quien lee en términos del NIST. «Sin dato» no es 0.",
+    "donde": "documento 11 §7.5, documento 34 §5.4 y P73"
+   },
+   "en": {
+    "titulo": "AI RMF profile",
+    "que": "The 72 NIST AI RMF subcategories translated from this assessment: for each one, its function, the dimension and document 11 questions it comes from, the current level, the target level set at C2, the gap and the equivalent tier; with a summary by function.",
+    "porque": "A company already reporting with the AI RMF does not need a second assessment: the same verified questionnaire gives maturity and the profile, and the gap comes from evidence, not from a separate self-assessment.",
+    "leer": "Current level = level of the reference dimension, lowered to the level below that of the lowest-level associated question not answered «Yes» or «Not applicable». Gap = target − current. The equivalent tier is only a view for those reading in NIST terms. «No data» is not 0.",
+    "donde": "document 11 §7.5, document 34 §5.4 and P73"
+   }
+  },
+  "perfil_csf": {
+   "es": {
+    "titulo": "Perfil CSF",
+    "que": "Las 48 subcategorías del NIST CSF 2.0 con prioridad alta en el Cyber AI Profile, traducidas desde este diagnóstico: función del CSF, prioridad en las áreas Secure, Defend y Thwart, nivel actual, objetivo, brecha y tier equivalente, con un resumen por función y por área.",
+    "porque": "Da a seguridad un perfil de ciberseguridad de la IA coherente con la madurez, sin otra evaluación. El Cyber AI Profile es un borrador del NIST: la selección y las prioridades son provisionales y no sirven para criterios de gate.",
+    "leer": "Prioridad S · D · T: 1 alta, 2 moderada, 3 fundamental en cada área (Secure: proteger la IA; Defend: usar la IA para defender; Thwart: frustrar ataques que usan IA). Mismas reglas de nivel actual, brecha y tier que en el perfil AI RMF.",
+    "donde": "documento 11 §7.5, documento 34 §5.3 y §5.5 y P72"
+   },
+   "en": {
+    "titulo": "CSF profile",
+    "que": "The 48 NIST CSF 2.0 subcategories with high priority in the Cyber AI Profile, translated from this assessment: CSF function, priority in the Secure, Defend and Thwart areas, current level, target, gap and equivalent tier, with a summary by function and area.",
+    "porque": "It gives security an AI cybersecurity profile consistent with maturity, without another assessment. The Cyber AI Profile is a NIST draft: the selection and priorities are provisional and cannot support gate criteria.",
+    "leer": "Priority S · D · T: 1 high, 2 moderate, 3 foundational in each area (Secure: protect AI; Defend: use AI to defend; Thwart: thwart attacks that use AI). Same current level, gap and tier rules as the AI RMF profile.",
+    "donde": "document 11 §7.5, document 34 §5.3 and §5.5 and P72"
+   }
+  },
   "guia": {
    "es": {
     "titulo": "Guía de entrevistas y de evidencias",
@@ -92,6 +124,74 @@
   }
  },
  "claves": {
+  "p_actual": {
+   "es": "Nivel actual de la subcategoría, derivado del cuestionario (0 a 5).",
+   "en": "Current level of the subcategory, derived from the questionnaire (0 to 5)."
+  },
+  "p_objetivo": {
+   "es": "Nivel objetivo que la compañía fija en C2 para la subcategoría.",
+   "en": "Target level the company sets at C2 for the subcategory."
+  },
+  "p_brecha": {
+   "es": "Objetivo − actual: niveles que faltan; cada brecha pasa al plan de mejora.",
+   "en": "Target − current: levels missing; each gap goes into the improvement plan."
+  },
+  "p_tier": {
+   "es": "Tier del NIST equivalente al nivel (0–1 → 1, 2 → 2, 3 → 3, 4–5 → 4); orientativo, solo como vista.",
+   "en": "NIST tier equivalent to the level (0–1 → 1, 2 → 2, 3 → 3, 4–5 → 4); indicative, a view only."
+  },
+  "p_subcat": {
+   "es": "Subcategoría del marco NIST (código y enunciado).",
+   "en": "NIST framework subcategory (code and statement)."
+  },
+  "p_subcats": {
+   "es": "Número de subcategorías.",
+   "en": "Number of subcategories."
+  },
+  "p_funcion": {
+   "es": "Función del marco (en el AI RMF: GOVERN, MAP, MEASURE, MANAGE; en el CSF: GV, ID, PR, DE, RS, RC) o área del Cyber AI Profile.",
+   "en": "Framework function (AI RMF: GOVERN, MAP, MEASURE, MANAGE; CSF: GV, ID, PR, DE, RS, RC) or Cyber AI Profile area."
+  },
+  "p_desde11": {
+   "es": "Dimensión y preguntas del documento 11 de las que se deriva el nivel; «Propia» si se evalúa aparte.",
+   "en": "Document 11 dimension and questions the level is derived from; «Own» if assessed separately."
+  },
+  "p_prioridad": {
+   "es": "Prioridad de la subcategoría en las áreas Secure · Defend · Thwart del Cyber AI Profile (1 alta, 2 moderada, 3 fundamental).",
+   "en": "Priority of the subcategory in the Secure · Defend · Thwart areas of the Cyber AI Profile (1 high, 2 moderate, 3 foundational)."
+  },
+  "p_minimo": {
+   "es": "Nivel más bajo del grupo: el punto más débil.",
+   "en": "Lowest level in the group: the weakest point."
+  },
+  "p_frecuente": {
+   "es": "Nivel que más se repite en el grupo.",
+   "en": "Most repeated level in the group."
+  },
+  "p_con_nivel": {
+   "es": "Subcategorías con nivel actual (el resto, «sin dato»).",
+   "en": "Subcategories with a current level (the rest, «no data»)."
+  },
+  "p_con_obj": {
+   "es": "Subcategorías con objetivo fijado.",
+   "en": "Subcategories with a target set."
+  },
+  "p_con_brecha": {
+   "es": "Subcategorías por debajo de su objetivo.",
+   "en": "Subcategories below their target."
+  },
+  "p_nivel_propio": {
+   "es": "Nivel de una subcategoría «Propia», evaluada con evidencia; nunca por encima de su dimensión de referencia.",
+   "en": "Level of an «Own» subcategory, assessed with evidence; never above its reference dimension."
+  },
+  "p_evidencia": {
+   "es": "Autor, fecha y versión de la evidencia que respalda el nivel propio.",
+   "en": "Author, date and version of the evidence supporting the own level."
+  },
+  "p_total": {
+   "es": "Resultado de todas las subcategorías del perfil.",
+   "en": "Result across all the profile's subcategories."
+  },
   "dimension": {
    "es": "Una de las siete dimensiones: D1 Estrategia y gobierno, D2 Valor y cartera, D3 Datos y conocimiento, D4 Tecnología y operación, D5 Personas y adopción, D6 Riesgo, seguridad y cumplimiento, D7 Medición y evidencia.",
    "en": "One of the seven dimensions: D1 Strategy and governance, D2 Value and portfolio, D3 Data and knowledge, D4 Technology and operations, D5 People and adoption, D6 Risk, security and compliance, D7 Measurement and evidence."

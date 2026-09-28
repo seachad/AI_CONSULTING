@@ -5,8 +5,8 @@
 | | |
 |---|---|
 | Documento | Documento 34 · Mapeo regulatorio |
-| Versión | 0.1 (borrador de trabajo) |
-| Fecha | 16-09-2026 |
+| Versión | 0.2 (borrador de trabajo) |
+| Fecha | 25-09-2026 |
 | Autor | Fernando García Varela |
 | Estado | Borrador para revisión. Fecha de consulta de las fuentes: 16-09-2026. Requiere revisión jurídica cualificada antes de su uso. |
 
@@ -14,7 +14,7 @@
 
 ---
 
-> **Aviso legal y exención de responsabilidad.** SEVEN-G es un marco metodológico de referencia que se ofrece «tal cual» y con fines exclusivamente informativos. No constituye asesoramiento jurídico, regulatorio, financiero ni profesional, ni garantiza el cumplimiento de ninguna norma. Las referencias a regulación general (como el Reglamento Europeo de IA, el RGPD, DORA o NIS2), a normas técnicas y a regulación específica de cada sector o jurisdicción pueden ser incompletas, no aplicar a un caso concreto o quedar desactualizadas por cambios normativos, interpretaciones o criterios de las autoridades posteriores a su fecha de consulta. **Cada organización que use SEVEN-G es la única responsable de identificar la normativa que le aplica, verificar su vigencia y certificar su propio cumplimiento regulatorio**, con el asesoramiento cualificado que corresponda. El autor no asume responsabilidad alguna por el uso que se haga de este contenido ni por las decisiones que se adopten con él. Los datos, cifras, compañías y casos de los ejemplos son ficticios o ilustrativos.
+> **Aviso legal y exención de responsabilidad.** SEVEN-G es un marco metodológico de referencia que se ofrece «tal cual» y con fines exclusivamente informativos. No constituye asesoramiento jurídico, regulatorio, financiero ni profesional, ni garantiza el cumplimiento de ninguna norma. Las referencias a regulación general (como el Reglamento Europeo de IA, el RGPD, DORA o NIS2), a normas técnicas y a regulación específica de cada sector o jurisdicción pueden ser incompletas, no aplicar a un caso concreto o quedar desactualizadas por cambios normativos, interpretaciones o criterios de las autoridades posteriores a su fecha de consulta. **Cada organización que use SEVEN-G es la única responsable de identificar la normativa que le aplica, verificar su vigencia y certificar su propio cumplimiento regulatorio**, con el asesoramiento cualificado que corresponda. Esta metodología es una ayuda genérica y gratuita, compartida con la comunidad para que nadie tenga que empezar desde cero; cada persona u organización puede y debe adaptarla a su propio uso. No debe entenderse que sus partes jurídicamente sensibles hayan sido revisadas por una asesoría jurídica: esas revisiones, para cada empresa o sector, son responsabilidad última de la empresa, el consultor o la organización que la use. Aunque se procura mantenerla al día, alguna norma puede haber cambiado sin que se recoja aquí. En la máxima medida permitida por la ley, el autor no asume responsabilidad alguna por los efectos de su aplicación en ninguna organización ni por su aplicabilidad completa. La metodología no otorga certificación de ningún tipo. El autor no asume responsabilidad alguna por el uso que se haga de este contenido ni por las decisiones que se adopten con él. Los datos, cifras, compañías y casos de los ejemplos son ficticios o ilustrativos.
 
 <!-- esencial: condicional | Disparador: la clasificación regulatoria de un sistema no es «riesgo mínimo», se tratan datos personales o la compañía está sujeta a regulación sectorial. Las determinaciones previas (sección 2) se hacen siempre; el resto se consulta por la norma que aplique. No constituye asesoramiento jurídico. -->
 
@@ -26,7 +26,7 @@
 
 SEVEN-G no reproduce la regulación dentro de sus fases. Vincula cada obligación a **una fase o etapa, un rol responsable, una evidencia y una herramienta**. Cuando una norma cambia, se actualiza la fila afectada de este documento y la herramienta T07, sin rehacer el ciclo de vida, los *gates* ni las plantillas.
 
-Este documento desarrolla la sección 13 del documento 01 y cubre: el Reglamento (UE) 2024/1689 (Reglamento Europeo de IA) modificado por el Reglamento (UE) 2026/1744 (sección 3); ISO/IEC 42001:2023 (sección 4); NIST AI RMF 1.0 y NIST AI 600-1 (sección 5); el RGPD y las guías del CEPD (sección 6); DORA y NIS2 cuando apliquen (sección 7); la normativa española y AESIA (sección 8); y, de forma orientativa, otras jurisdicciones y sectores (secciones 11 y 12).
+Este documento desarrolla la sección 13 del documento 01 y cubre: el Reglamento (UE) 2024/1689 (Reglamento Europeo de IA) modificado por el Reglamento (UE) 2026/1744 (sección 3); ISO/IEC 42001:2023 (sección 4); NIST AI RMF 1.0 y NIST AI 600-1 (secciones 5.1 y 5.2); el marco de ciberseguridad NIST CSF 2.0 y su perfil para la IA, el Cyber AI Profile, que a fecha de consulta es un borrador (sección 5.3); los desgloses por subcategoría del AI RMF y del CSF para construir perfiles (secciones 5.4 y 5.5); el RGPD y las guías del CEPD (sección 6); DORA y NIS2 cuando apliquen (sección 7); la normativa española y AESIA (sección 8); y, de forma orientativa, otras jurisdicciones y sectores (secciones 11 y 12).
 
 ### 1.2 Qué no hace este documento
 
@@ -55,8 +55,10 @@ Cada afirmación sobre fechas o cambios recientes lleva implícito uno de estos 
 | Estado | Significado |
 |---|---|
 | **Verificado (oficial)** | Confirmado en una fuente oficial: EUR-Lex, Comisión Europea, Parlamento Europeo, BOE, Congreso de los Diputados, AESIA, ISO, NIST o CEPD. |
-| **Verificado (secundaria)** | Confirmado en fuentes oficiales en lo esencial y detallado con análisis jurídicos publicados; pendiente de cotejo literal con el texto publicado en el Diario Oficial. |
 | **Pendiente de confirmar** | No se ha podido confirmar a fecha de consulta. No debe usarse sin verificación previa. |
+| **Borrador** | Documento que el emisor ha publicado oficialmente como borrador para comentarios (por ejemplo, el Cyber AI Profile del NIST). Se cita como orientación y puede cambiar; **nunca fundamenta un criterio de *gate*** ni una obligación de SEVEN-G. |
+
+Todas las afirmaciones de este documento se apoyan en **fuentes oficiales o primarias** (diarios oficiales, autoridades, organismos emisores de normas y marcos), enlazadas y registradas con su fecha de comprobación; no se usan análisis de terceros como fuente. Lo que no ha podido confirmarse en ellas se marca «Pendiente de confirmar».
 
 ---
 
@@ -109,28 +111,28 @@ El Reglamento (UE) 2024/1689 entró en vigor el 1 de agosto de 2024 y se aplica 
 | **2-02-2025** | Disposiciones generales (definiciones y alfabetización en IA, art. 4) y prácticas prohibidas (art. 5). | Verificado (oficial) | Ninguna iniciativa con práctica prohibida supera G3. Formación y política de uso (documentos 31 y 50). |
 | **2-08-2025** | Obligaciones de proveedores de modelos de IA de uso general (capítulo V); gobernanza; autoridades nacionales; régimen sancionador (salvo multas a proveedores de modelos de uso general). | Verificado (oficial) | Requisitos de información a proveedores de modelos (P14, T09). |
 | **2-08-2026** | Aplicación general del Reglamento, incluidas las obligaciones de transparencia del art. 50 y las facultades de ejecución de la Comisión sobre modelos de uso general. | Verificado (oficial) | Obligaciones del art. 50 exigibles para sistemas en producción: revisar en R6. |
-| **2-12-2026** | Nuevas prohibiciones añadidas al art. 5 por el ómnibus (generación de material íntimo no consentido y de material de abuso sexual infantil). Fin del periodo transitorio del marcado legible por máquina del art. 50.2 para sistemas introducidos en el mercado antes del 2-08-2026. | Verificado (oficial) en cuanto a fecha y contenido general; numeración del apartado pendiente de confirmar | Incorporar al cuestionario T07 y a las pruebas de la fase 5 de sistemas generativos. |
+| **2-12-2026** | Nuevas prohibiciones añadidas al art. 5 por el ómnibus (generación de material íntimo no consentido y de material de abuso sexual infantil). Fin del periodo transitorio del marcado legible por máquina del art. 50.2 para sistemas introducidos en el mercado antes del 2-08-2026. | Verificado (oficial): art. 5.1, letras b bis) y b ter), y apartados 1 bis y 1 ter; el plazo del art. 50.2 lo fija el nuevo art. 111.4 | Incorporar al cuestionario T07 y a las pruebas de la fase 5 de sistemas generativos. |
 | **2-08-2027** | Obligación de los Estados miembros de tener operativo al menos un espacio controlado de pruebas nacional (antes 2-08-2026). Plazo para modelos de uso general introducidos antes del 2-08-2025 (art. 111.3). | Verificado (oficial) el espacio de pruebas; art. 111.3 según texto original, sin cambios conocidos | — |
 | **2-12-2027** | Requisitos y obligaciones de los **sistemas de alto riesgo del art. 6.2 y el anexo III** (antes 2-08-2026). | Verificado (oficial) | Iniciativas con puesta en producción prevista después de esta fecha deben diseñarse ya con los requisitos (G4). |
 | **2-08-2028** | Requisitos de los **sistemas de alto riesgo del art. 6.1 y el anexo I** (productos regulados; antes 2-08-2027). | Verificado (oficial) | Ídem para productos regulados. |
 
-**Sistemas ya en el mercado.** Por el art. 111, los sistemas de alto riesgo anteriores a la fecha de aplicación solo quedan sujetos si sufren cambios significativos de diseño, con reglas propias para autoridades públicas; las fechas transitorias tras el ómnibus están **pendientes de cotejo con el texto publicado**. SEVEN-G no usa esta excepción para rebajar controles (01 §14).
+**Sistemas ya en el mercado.** Por el art. 111, los sistemas de alto riesgo anteriores a la fecha de aplicación solo quedan sujetos si sufren cambios significativos de diseño, con reglas propias para autoridades públicas; tras el ómnibus, el art. 111.2 mantiene que solo quedan sujetos si sufren cambios significativos de diseño, y los destinados a autoridades públicas deben cumplir a más tardar el 2-08-2030 (verificado en EUR-Lex). SEVEN-G no usa esta excepción para rebajar controles (01 §14).
 
 ### 3.2 Cambios del ómnibus digital sobre IA relevantes para SEVEN-G
 
 | Cambio | Disposición afectada | Aplicación | Estado | Efecto en SEVEN-G |
 |---|---|---|---|---|
 | Aplazamiento del alto riesgo | Art. 113 | 2-12-2027 (anexo III) y 2-08-2028 (anexo I) | Verificado (oficial) | Actualiza T07 y la columna de fechas de P11. No cambia los *gates*. |
-| Alfabetización en IA: la obligación pasa a ser de apoyo al desarrollo de la alfabetización del personal, sin exigir un nivel concreto; se refuerza el papel de la Comisión y los Estados miembros | Art. 4 | Desde la entrada en vigor del ómnibus | Verificado (oficial) en lo esencial; redacción literal verificada (secundaria) | La política y el plan de formación siguen siendo evidencia (documentos 31 y 50). Los responsables del despliegue de alto riesgo mantienen la exigencia de competencia de quien supervisa (art. 26.2). |
+| Alfabetización en IA: la obligación pasa a ser de apoyo al desarrollo de la alfabetización del personal, sin exigir un nivel concreto; se refuerza el papel de la Comisión y los Estados miembros | Art. 4 | Desde la entrada en vigor del ómnibus | Verificado (oficial) | La política y el plan de formación siguen siendo evidencia (documentos 31 y 50). Los responsables del despliegue de alto riesgo mantienen la exigencia de competencia de quien supervisa (art. 26.2). |
 | Nuevas prácticas prohibidas: sistemas que generan o manipulan material íntimo no consentido o material de abuso sexual infantil, incluidos sistemas en los que ese resultado sea razonablemente previsible sin salvaguardas adecuadas | Art. 5 | 2-12-2026 | Verificado (oficial) | Nueva pregunta en T07 y prueba específica en la fase 5 de sistemas generativos (P22). |
-| Periodo transitorio del marcado de contenido sintético | Art. 50.2 | 2-12-2026 para sistemas introducidos antes del 2-08-2026 | Verificado (oficial) | Plan de adecuación en R6 para sistemas existentes. |
-| Tratamiento de categorías especiales de datos para detectar y corregir sesgos, extendido más allá del alto riesgo con criterio de estricta necesidad | Art. 10 y disposición asociada | Desde la entrada en vigor del ómnibus | Verificado (oficial) en lo esencial; artículo exacto verificado (secundaria) | Requiere base jurídica RGPD documentada y salvaguardas (P16, evaluación de impacto en protección de datos en P11). |
-| Registro en la base de datos de la UE: se mantiene, con información simplificada, para sistemas del anexo III que el proveedor considera no de alto riesgo | Arts. 6.3, 49.2 y anexo VIII | Con el alto riesgo | Verificado (secundaria) | P11 conserva la documentación de la excepción del art. 6.3. |
-| Medidas de apoyo a pymes extendidas a pequeñas empresas de mediana capitalización | Varias disposiciones | Desde la entrada en vigor del ómnibus | Verificado (oficial); umbrales verificados (secundaria) | Relevante para la intensidad de la documentación; no rebaja criterios de SEVEN-G. |
+| Periodo transitorio del marcado de contenido sintético | Art. 111.4 (sobre el art. 50.2) | 2-12-2026 para sistemas introducidos antes del 2-08-2026 | Verificado (oficial) | Plan de adecuación en R6 para sistemas existentes. |
+| Tratamiento de categorías especiales de datos para detectar y corregir sesgos, extendido más allá del alto riesgo con criterio de estricta necesidad | Arts. 4 bis y 10 | Desde la entrada en vigor del ómnibus | Verificado (oficial) | Requiere base jurídica RGPD documentada y salvaguardas (P16, evaluación de impacto en protección de datos en P11). |
+| Registro en la base de datos de la UE: se mantiene, con información simplificada, para sistemas del anexo III que el proveedor considera no de alto riesgo | Arts. 6.3 y 49.2; anexo VIII, sección B (modificada) | Con el alto riesgo | Verificado (oficial) | P11 conserva la documentación de la excepción del art. 6.3. |
+| Medidas de apoyo a pymes extendidas a pequeñas empresas de mediana capitalización | Varias disposiciones | Desde la entrada en vigor del ómnibus | Verificado (oficial) | Relevante para la intensidad de la documentación; no rebaja criterios de SEVEN-G. |
 | Supervisión reforzada de la Oficina Europea de IA sobre sistemas basados en modelos de uso general del mismo proveedor y sobre sistemas integrados en plataformas y buscadores de muy gran tamaño | Art. 75 | Desde la entrada en vigor del ómnibus | Verificado (oficial) en lo esencial | Identificar la autoridad competente en P11. |
 | Espacios controlados de pruebas: plazo nacional a 2-08-2027 y posible espacio de ámbito UE | Art. 57 | 2-08-2027 | Verificado (oficial) | Opción para iniciativas en fase 3–5 (sección 8). |
-| Máquinas: los sistemas de IA en máquinas pasan a tratarse principalmente mediante el Reglamento (UE) 2023/1230; definición de componente de seguridad acotada | Art. 3.14, anexo I y Reglamento (UE) 2023/1230 | Pendiente de confirmar fecha exacta | Verificado (secundaria) | Solo relevante para fabricantes de productos. |
-| Plantilla del plan de vigilancia posterior a la comercialización | Art. 72.3 | — | Pendiente de confirmar si se mantiene el acto de ejecución o se sustituye por orientaciones | P25 y P26 no dependen del formato final. |
+| Máquinas: los sistemas de IA en máquinas pasan a tratarse principalmente mediante el Reglamento (UE) 2023/1230; definición de componente de seguridad acotada | Art. 3.14 (sustituido) y anexo I (el Reglamento (UE) 2023/1230 pasa a la sección B) | Según el art. 113 modificado | Verificado (oficial) | Solo relevante para fabricantes de productos. |
+| Plantilla del plan de vigilancia posterior a la comercialización | Art. 72.3 (sustituido) | Orientaciones con plantilla a más tardar el 2-09-2027 | Verificado (oficial): el acto de ejecución se sustituye por orientaciones de la Comisión | P25 y P26 no dependen del formato final. |
 
 ### 3.3 Directrices, códigos de práctica y plantillas de la Comisión
 
@@ -143,7 +145,7 @@ El Reglamento (UE) 2024/1689 entró en vigor el 1 de agosto de 2024 y se aplica 
 | Plantilla del resumen público del contenido de entrenamiento de modelos de uso general | Julio de 2025 | Publicada | P14 |
 | Proyecto de orientaciones y plantilla sobre notificación de incidentes graves (art. 73) | Consulta en 2025 | Versión final pendiente de confirmar | P26, T08 |
 | Proyecto de directrices sobre clasificación de sistemas de alto riesgo (art. 6) | Proyecto publicado el 19-05-2026; consulta dirigida | Proyecto; adopción final pendiente | T07, P11 |
-| Código de buenas prácticas sobre marcado y etiquetado de contenido generado por IA | 2026 | Publicado (voluntario) | P18, P22 |
+| Código de buenas prácticas sobre marcado y etiquetado de contenido generado por IA | 10-06-2026 | Publicado (voluntario) | P18, P22 |
 | Directrices sobre las obligaciones de transparencia (art. 50) | 20-07-2026 | Publicadas | T07, P11, P17 |
 | Normas armonizadas (CEN-CENELEC JTC 21) | En elaboración | Pendiente de confirmar publicación en el Diario Oficial | Sección 10: vigilancia normativa |
 
@@ -159,7 +161,7 @@ El Reglamento (UE) 2024/1689 entró en vigor el 1 de agosto de 2024 y se aplica 
 | No inferir emociones en el lugar de trabajo o en centros educativos, salvo por motivos médicos o de seguridad | Art. 5.1.f | Todos los operadores | 3 | Responsable de riesgos; segunda línea | P11 | T07 |
 | No categorizar biométricamente para deducir raza, opiniones políticas, afiliación sindical, convicciones, vida u orientación sexual | Art. 5.1.g | Todos los operadores | 3 | Responsable de riesgos | P11 | T07 |
 | No usar identificación biométrica remota en tiempo real en espacios públicos con fines policiales, salvo excepciones tasadas | Art. 5.1.h y 5.2–5.7 | Autoridades policiales | 3 | Responsable de riesgos | P11 | T07 |
-| No introducir ni usar sistemas que generen material íntimo no consentido o material de abuso sexual infantil, ni sistemas sin salvaguardas razonables frente a ese resultado previsible | Art. 5 modificado por el Reglamento (UE) 2026/1744 (apartado pendiente de confirmar); aplicación 2-12-2026 | Proveedores y responsables del despliegue | 3; pruebas en 5; revisión en R6 | Responsable técnico; Responsable de riesgos | P11, P18, P22 | T07, T10 |
+| No introducir ni usar sistemas que generen material íntimo no consentido o material de abuso sexual infantil, ni sistemas sin salvaguardas razonables frente a ese resultado previsible | Art. 5.1, letras b bis) y b ter), y apartados 1 bis y 1 ter, introducidos por el Reglamento (UE) 2026/1744; aplicación 2-12-2026 | Proveedores y responsables del despliegue | 3; pruebas en 5; revisión en R6 | Responsable técnico; Responsable de riesgos | P11, P18, P22 | T07, T10 |
 | Detectar y detener cualquier práctica prohibida en sistemas en producción o en uso no autorizado | Art. 5; 01 §6.5 y §12 | Toda la compañía | 6, C4 | Responsable de operación; Comité de IA; comisión delegada | P27; no conformidad crítica (documento 37) | T08, T21 |
 
 **Regla SEVEN-G.** Una práctica prohibida no pasa de la fase 3 en ningún caso (01 §6.5). Su detección en producción es no conformidad crítica con contención inmediata y escalado E-4 del documento 30.
@@ -237,7 +239,7 @@ El Reglamento (UE) 2024/1689 entró en vigor el 1 de agosto de 2024 y se aplica 
 | Realizar la evaluación antes del primer uso: procesos, periodo y frecuencia de uso, personas y colectivos afectados, riesgos específicos, medidas de supervisión humana y medidas ante materialización de riesgos | Art. 27.1 | Organismos de Derecho público, entidades privadas que prestan servicios públicos y responsables del despliegue de sistemas del anexo III, punto 5, letras b) y c); no aplica al área 2 del anexo III | 3 (evaluación), actualizada en 4 | Responsable de riesgos; segunda línea; Responsable de producto | P11, P48 | T07 |
 | Actualizar la evaluación cuando cambien sus elementos | Art. 27.2 | Mismos | R6 y cada cambio | Responsable de riesgos | P11, P48, P27 | T07, T08 |
 | Notificar los resultados a la autoridad de vigilancia del mercado con el formulario previsto | Art. 27.3 | Mismos | 5 (antes de G5) | Responsable de riesgos | P11, P48, P23 | T07 |
-| Complementar, sin duplicar, la evaluación de impacto en protección de datos | Art. 27.4; RGPD art. 35 | Mismos | 3 | Responsable de riesgos; delegado de protección de datos | P11, P48, P47 | T07 |
+| Complementar, sin duplicar, la evaluación de impacto en protección de datos, a la que el art. 27.4 modificado permite remitirse | Art. 27.4; RGPD art. 35 | Mismos | 3 | Responsable de riesgos; delegado de protección de datos | P11, P48, P47 | T07 |
 
 Se aplica con el alto riesgo (2-12-2027 para el anexo III); la plantilla de la Oficina Europea de IA está **pendiente de confirmar**. Toda iniciativa Enterprise con decisiones sobre personas debería aplicar este contenido en P11 y P48 aunque no esté obligada.
 
@@ -246,7 +248,7 @@ Se aplica con el alto riesgo (2-12-2027 para el anexo III); la plantilla de la O
 | Obligación / requisito | Artículo o cláusula | A quién aplica | Fase o etapa SEVEN-G | Rol responsable | Evidencia (P-código o documento) | Herramienta |
 |---|---|---|---|---|---|---|
 | Informar a las personas de que interactúan con un sistema de IA, salvo que sea evidente | Art. 50.1 | Proveedores de sistemas que interactúan con personas | 4 (diseño), 5 (prueba) | Responsable de producto | P17, P22, P49 | T07 |
-| Marcar en formato legible por máquina los contenidos sintéticos de audio, imagen, vídeo o texto | Art. 50.2 (periodo transitorio hasta 2-12-2026 para sistemas anteriores al 2-08-2026) | Proveedores de sistemas generativos | 4, 5; plan de adecuación en R6 | Responsable técnico | P18, P22 | T07, T10 |
+| Marcar en formato legible por máquina los contenidos sintéticos de audio, imagen, vídeo o texto | Art. 50.2; periodo transitorio hasta 2-12-2026 para sistemas anteriores al 2-08-2026 (art. 111.4) | Proveedores de sistemas generativos | 4, 5; plan de adecuación en R6 | Responsable técnico | P18, P22 | T07, T10 |
 | Informar a las personas expuestas a sistemas de reconocimiento de emociones o de categorización biométrica | Art. 50.3 | Responsables del despliegue | 4, 6 | Responsable de producto; delegado de protección de datos | P17, P24, P49 | T07 |
 | Revelar que un contenido es ultrasuplantación (*deepfake*), y que un texto publicado para informar sobre asuntos de interés público ha sido generado o manipulado, salvo revisión humana con responsabilidad editorial | Art. 50.4 | Responsables del despliegue | 4, 6 | Responsable de producto | P17, P24, P49 | T07 |
 | Facilitar la información de forma clara y a más tardar en la primera interacción o exposición | Art. 50.5 | Proveedores y responsables del despliegue | 5 (prueba) | Responsable de producto | P22 | — |
@@ -273,7 +275,7 @@ Calendario: obligaciones de proveedores de modelos desde el 2-08-2025; facultade
 | Obligación / requisito | Artículo o cláusula | A quién aplica | Fase o etapa SEVEN-G | Rol responsable | Evidencia (P-código o documento) | Herramienta |
 |---|---|---|---|---|---|---|
 | Registrar el proveedor y el sistema de alto riesgo del anexo III (salvo área 2, que se registra a nivel nacional) antes de introducirlo en el mercado o ponerlo en servicio | Art. 49.1, art. 71 y anexo VIII | Proveedores | 5, antes de G5 | Responsable técnico | P23 | T02, T03 |
-| Registrar los sistemas del anexo III que el proveedor considera no de alto riesgo por el art. 6.3, con la información simplificada que establezca el texto modificado | Art. 49.2 (modificado por el Reglamento (UE) 2026/1744) | Proveedores | 5, antes de G5 | Responsable técnico | P11, P23 | T02 |
+| Registrar los sistemas del anexo III que el proveedor considera no de alto riesgo por el art. 6.3, con la información simplificada que establezca el texto modificado | Art. 49.2 y anexo VIII, sección B (modificada por el Reglamento (UE) 2026/1744) | Proveedores | 5, antes de G5 | Responsable técnico | P11, P23 | T02 |
 | Registrarse y seleccionar el sistema en la base de datos cuando el responsable del despliegue es autoridad pública | Art. 49.3 | Autoridades y organismos públicos | 5, antes de G5 | Responsable técnico | P23 | T02 |
 | Mantener actualizada la información registrada | Arts. 49 y 71 | Proveedores y autoridades públicas | 6, R6, G7 | Responsable de operación | P27, P30 | T02, T08 |
 
@@ -317,7 +319,7 @@ El régimen sancionador español está en tramitación (sección 8). Las sancion
 
 ## 4. ISO/IEC 42001:2023
 
-ISO/IEC 42001:2023 (publicada en diciembre de 2023; en revisión sistemática según ISO a fecha de consulta) especifica los requisitos de un sistema de gestión de IA. En SEVEN-G, **el ciclo corporativo C1–C5 actúa como sistema de gestión** y el ciclo de vida 0–7 como proceso operativo (01 §13). La certificación no forma parte de SEVEN-G, pero una compañía que aplica el marco debería poder aportar las evidencias de esta sección.
+ISO/IEC 42001:2023 (publicada en diciembre de 2023; a fecha de consulta, 25-09-2026, ISO la mantiene publicada, en la etapa 60.60, sin revisión en curso) especifica los requisitos de un sistema de gestión de IA. En SEVEN-G, **el ciclo corporativo C1–C5 actúa como sistema de gestión** y el ciclo de vida 0–7 como proceso operativo (01 §13). La certificación no forma parte de SEVEN-G, pero una compañía que aplica el marco debería poder aportar las evidencias de esta sección.
 
 ### 4.1 Cláusulas 4 a 10
 
@@ -332,7 +334,7 @@ ISO/IEC 42001:2023 (publicada en diciembre de 2023; en revisión sistemática se
 | Roles, responsabilidades y autoridades | 5.3 | Alta dirección | C2; fase 0 | Comité de IA | Documento 30; P03 | T01 |
 | Acciones para abordar riesgos y oportunidades | 6.1.1 | Organización | C2, C3 | Comité de IA | Documentos 13 y 14 | T06 |
 | Evaluación de riesgos de IA | 6.1.2 | Organización | C2 (criterios), fase 3 (evaluación) | Responsable de riesgos | Documento 33; P12 | T06 |
-| Tratamiento de riesgos de IA y declaración de aplicabilidad de los controles | 6.1.3 | Organización | C2 (declaración), fases 3–4 | Oficina de IA; Responsable de riesgos | P13; sección 4.2 como base de la declaración | T06 |
+| Tratamiento de riesgos de IA y declaración de aplicabilidad de los controles | 6.1.3 | Organización | C2 (declaración), fases 3–4 | Oficina de IA; Responsable de riesgos | P13; P74 (declaración de aplicabilidad), con la sección 4.2 como base | T06 |
 | Evaluación de impacto de los sistemas de IA | 6.1.4 | Organización | Fase 3 | Responsable de riesgos | P11 | T07 |
 | Objetivos de IA y planificación para lograrlos | 6.2 | Organización | C2, C3; fase 2 | Alta dirección; Responsable de producto | Documentos 13 y 14; P08 | T11, T19 |
 | Planificación de los cambios | 6.3 | Organización | C3, C5 | Comité de IA | Documento 14; P27 | T01 |
@@ -353,7 +355,7 @@ ISO/IEC 42001:2023 (publicada en diciembre de 2023; en revisión sistemática se
 
 ### 4.2 Anexo A: controles por grupo
 
-El anexo A agrupa los controles de referencia en nueve grupos. La tabla indica el objetivo de cada grupo en términos propios y dónde lo cubre SEVEN-G. La declaración de aplicabilidad de la compañía debe cotejarse con el texto adquirido de la norma.
+El anexo A agrupa los controles de referencia en nueve grupos. La tabla indica el objetivo de cada grupo en términos propios y dónde lo cubre SEVEN-G. La declaración de aplicabilidad de la compañía se prepara con la plantilla P74, control a control, y debe cotejarse con el texto adquirido de la norma.
 
 | Obligación / requisito | Artículo o cláusula | A quién aplica | Fase o etapa SEVEN-G | Rol responsable | Evidencia (P-código o documento) | Herramienta |
 |---|---|---|---|---|---|---|
@@ -371,11 +373,13 @@ El anexo A agrupa los controles de referencia en nueve grupos. La tabla indica e
 
 ISO/IEC 42005:2025 (evaluación de impacto de sistemas de IA) es referencia metodológica de P11; ISO/IEC 23894:2023 (gestión del riesgo en IA), del documento 33; e ISO/IEC 42006:2025 (organismos de auditoría y certificación), del documento 38.
 
+**Correspondencia con el NIST AI RMF.** El centro de recursos del AI RMF de NIST (AIRC) aloja una correspondencia AI RMF ↔ ISO/IEC 42001 del AIRC aportada por un tercero (Microsoft) y preparada en 2023 sobre el borrador final (FDIS) de la norma, antes de su publicación. NIST advierte que alojarla no implica respaldo. Sirve como orientación para relacionar las subcategorías del AI RMF con las cláusulas y los controles del anexo A, pero debe cotejarse con la norma publicada. El AI RMF no es certificable: lo certificable es el sistema de gestión conforme a ISO/IEC 42001, por una entidad de certificación acreditada (documento 38 §12). SEVEN-G no certifica.
+
 ---
 
 ## 5. NIST AI RMF 1.0 y perfil de IA generativa NIST AI 600-1
 
-El NIST AI RMF 1.0 (enero de 2023) es un marco voluntario. A fecha de consulta, NIST indica que está en revisión; el perfil NIST AI 600-1 se publicó el 26 de julio de 2024. SEVEN-G los usa como referencia de buenas prácticas, no como obligación.
+El NIST AI RMF 1.0 (enero de 2023) es un marco voluntario. A fecha de consulta, NIST indica que está en revisión; el perfil NIST AI 600-1 se publicó el 26 de julio de 2024. SEVEN-G los usa como referencia de buenas prácticas, no como obligación. La sección 5.3 añade el marco de ciberseguridad del NIST (CSF 2.0) y su perfil para la IA.
 
 ### 5.1 Funciones y categorías del AI RMF
 
@@ -420,6 +424,172 @@ El perfil describe riesgos específicos o agravados por la IA generativa y accio
 | Contenido obsceno, degradante o abusivo | Riesgo "Obscene, degrading and/or abusive content" | Voluntario | Fases 3–5 (relacionado con las nuevas prohibiciones del art. 5) | Responsable técnico | P11, P22 | T07, T10 |
 | Cadena de valor e integración de componentes | Riesgo "Value chain and component integration" | Voluntario | Fases 3–4 | Responsable de riesgos | P14, P16 | T09 |
 
+### 5.3 NIST CSF 2.0 y Cyber AI Profile
+
+El **NIST CSF 2.0** (NIST CSWP 29, publicado en su versión final el 26 de febrero de 2024) es un marco **voluntario** de gestión del riesgo de ciberseguridad. Su núcleo es una taxonomía de resultados que se organiza en seis funciones —**GV** gobernar, **ID** identificar, **PR** proteger, **DE** detectar, **RS** responder y **RC** recuperar—, 22 categorías y 106 subcategorías. Cada organización describe con **perfiles** los resultados que alcanza hoy (**perfil actual**) y los que quiere alcanzar (**perfil objetivo**); la diferencia es la brecha que se convierte en un plan de acción priorizado.
+
+El **Cyber AI Profile** (NIST IR 8596) es el perfil comunitario del CSF 2.0 para la IA. A fecha de consulta (25-09-2026) solo existe su **borrador preliminar inicial**, publicado el 16 de diciembre de 2025, con comentarios cerrados el 30 de enero de 2026; la página del proyecto del NIST indica que se están revisando los comentarios. Organiza las subcategorías del CSF en tres áreas: **Secure**, proteger los componentes de los sistemas de IA; **Defend**, usar la IA en la ciberdefensa de la organización; y **Thwart**, frustrar los ataques que usan IA. Para cada subcategoría y área propone una prioridad (alta, moderada o fundamental). Estado: **Borrador** (sección 1.4). Mientras lo sea, SEVEN-G lo usa como orientación y **no fundamenta en él ningún criterio de *gate*** ni ninguna obligación.
+
+> **Advertencia sobre los *tiers*.** Los *tiers* del CSF (1 Parcial, 2 Informado sobre el riesgo, 3 Repetible, 4 Adaptativo) caracterizan el rigor de las prácticas de gobierno y de gestión del riesgo de ciberseguridad **de toda la organización** o de una unidad. **No son un nivel de madurez de cada subcategoría**, y el NIST AI RMF no tiene *tiers* ni escala de madurez. Puntuar cada subcategoría de 1 a 4 sería una convención propia que no debe presentarse como «*tier* del CSF». SEVEN-G no crea una segunda escala: el grado de cada resultado se expresa con la escala de madurez 0–5 del documento 11.
+
+> **Por qué importa.** Muchas compañías ya gestionan su ciberseguridad con el CSF y su comité de riesgos lee los resultados en sus seis funciones. Situar los controles de SEVEN-G en esas funciones permite que la seguridad de la IA entre en el mismo cuadro de mando y el mismo plan de acción que el resto de la ciberseguridad, sin inventar un vocabulario paralelo. Distinguir un borrador de una norma final evita decidir una puerta con un texto que aún puede cambiar.
+
+**Funciones del CSF 2.0 aplicadas a los sistemas de IA**
+
+| Obligación / requisito | Artículo o cláusula | A quién aplica | Fase o etapa SEVEN-G | Rol responsable | Evidencia (P-código o documento) | Herramienta |
+|---|---|---|---|---|---|---|
+| Establecer, comunicar y supervisar la estrategia, las expectativas, los roles y la política de riesgo de ciberseguridad, incluidos los sistemas de IA, su uso corporativo y su cadena de suministro | GV (GV.OC, GV.RM, GV.RR, GV.PO, GV.OV, GV.SC) | Organizaciones que lo adoptan (voluntario) | C2 (política y apetito), C4 (supervisión); fase 3 (proveedores) | Consejo; alta dirección; seguridad de la información | Documentos 13, 31 y 36; 35 §9.2; P14 | T19, T09, T17 |
+| Identificar los activos de IA (modelos, datos, conectores, identidades no humanas), sus vulnerabilidades y amenazas, y las mejoras que surgen de pruebas e incidentes | ID (ID.AM, ID.RA, ID.IM) | Ídem | Fase 0 (inventario), fase 3 (riesgos y amenazas), C5 (mejora) | Responsable técnico; Responsable de riesgos; seguridad de la información | P05, P12, P18 (modelo de amenazas, SEG-01), P54 | T02, T06 |
+| Proteger identidades y accesos, formar al personal y proteger datos, plataformas e infraestructura de los sistemas de IA | PR (PR.AA, PR.AT, PR.DS, PR.PS, PR.IR) | Ídem | Fase 4 (diseño), fase 5 (pruebas); C4 (controles corporativos) | Responsable técnico; seguridad de la información | P16, P18, P54; controles SEG y AG del documento 35 | T10 |
+| Detectar y analizar eventos adversos con monitorización continua de entradas, salidas, acciones y comportamiento | DE (DE.CM, DE.AE) | Ídem | Fase 6; C4 | Responsable de operación; seguridad de la información | P25; SEG-12, AG-17; documento 52 | T10, T08 |
+| Gestionar, analizar, comunicar y mitigar los incidentes de IA | RS (RS.MA, RS.AN, RS.CO, RS.MI) | Ídem | Fase 6 (severidades S1–S4) | Responsable de operación; seguridad de la información | P26, P27, P52; SEG-14, AG-09; documento 37 | T08 |
+| Ejecutar la recuperación y comunicarla: proceso alternativo, reversión y vuelta a la operación | RC (RC.RP, RC.CO) | Ídem | Fase 6; G7 si procede | Responsable de operación | P19, P24, P26; AG-19 | T08 |
+| Describir los perfiles actual y objetivo de ciberseguridad de la IA y su brecha | CSF 2.0, sección 3 (perfiles de organización) | Ídem | C1 (actual), C2 (objetivo), C5 (revisión) | Oficina de IA; seguridad de la información | P72; sección 5.5; 11 §7.5; P34 | T15 |
+
+**Cyber AI Profile por áreas (borrador)**
+
+| Área | Qué cubre | Dónde lo cubre SEVEN-G | Controles | Cobertura en la versión 0.x |
+|---|---|---|---|---|
+| **Secure** | Proteger los componentes de los sistemas de IA: modelos, datos, instrucciones, agentes, conectores y cadena de suministro. | 35 §3–§8; riesgos tipo RT-GEN y RT-SEG del documento 33; documento 36 | SEG-01 a SEG-14; AG-01 a AG-20 | Cubierta |
+| **Defend** | Usar la IA en la ciberdefensa de la compañía: detección y respuesta asistidas. | 35 §9.3: caso de uso con la autonomía de la respuesta fijada por tipo de acción, supervisión humana de la contención, calidad de la detección, dependencia del proveedor y pruebas del propio sistema defensivo; riesgo tipo RT-SEG-08. | SEG-21 a SEG-25; A0–A3; AG- | Cubierta |
+| **Thwart** | Frustrar los ataques que usan IA: suplantación sintética, *phishing* generado, explotación acelerada. | 35 §9 | SEG-15 a SEG-19; SEG-13 | Cubierta |
+
+La columna «Función CSF» de los catálogos SEG y AG (35 §6 y §7) indica a qué función y categoría del CSF contribuye cada control.
+
+### 5.4 Perfil del AI RMF por subcategoría
+
+La sección 5.1 mapea las 19 categorías del AI RMF. Un perfil actual u objetivo, en cambio, se construye sobre sus **72 subcategorías** (GOVERN 1.1 a MANAGE 4.3; número comprobado en la publicación NIST AI 100-1). La tabla indica, para cada una, qué pide en términos propios, dónde la cubre SEVEN-G y **de dónde sale su nivel**: la dimensión y las preguntas del cuestionario del documento 11 que lo acreditan, o «Propia» cuando ninguna pregunta la cubre y hay que evaluarla aparte. La regla de derivación está en 11 §7.5: una evaluación, dos lecturas, sin doble captura. El nivel se expresa en la escala 0–5 del documento 11; la equivalencia orientativa con los *tiers* del CSF está en 11 §2.2. Las descripciones son un resumen propio, no una traducción del texto del NIST. El perfil se documenta con la plantilla P73.
+
+| Subcategoría | Qué pide (resumen propio) | Dónde lo cubre SEVEN-G | Nivel desde el documento 11 |
+|---|---|---|---|
+| GOVERN 1.1 | Conocer, gestionar y documentar los requisitos legales y regulatorios que afectan a la IA. | Documento 34; 01 §13; P11 | D6 · D6.05, D6.12 |
+| GOVERN 1.2 | Integrar las características de una IA fiable en políticas, procesos y prácticas. | Documento 31; 01 §3 | D1 · D1.04 |
+| GOVERN 1.3 | Proporcionar el nivel de gestión del riesgo a la tolerancia al riesgo de la organización. | Documento 13 (apetito); 01 §9 (intensidad); P04 | D1 · D1.05, D1.06 |
+| GOVERN 1.4 | Establecer el proceso de gestión del riesgo y sus resultados con políticas y controles transparentes. | Documento 33; P12, P13 | D6 · D6.04, D6.06 |
+| GOVERN 1.5 | Planificar el seguimiento continuo y la revisión periódica del proceso de riesgos, con roles y frecuencia. | 33 §11; documento 30; R6 | D6 · D6.09 |
+| GOVERN 1.6 | Inventariar los sistemas de IA y dotarlos de recursos según las prioridades de riesgo. | Documento 32; P05 | D6 · D6.03, D6.05 |
+| GOVERN 1.7 | Retirar sistemas de IA de forma segura, sin aumentar el riesgo. | Documento 14 (retiradas); G7; P30 | D2 · D2.10 |
+| GOVERN 2.1 | Documentar roles, responsabilidades y líneas de comunicación sobre el riesgo de IA. | 01 §8; documento 30; P03 | D1 · D1.07, D1.08 |
+| GOVERN 2.2 | Formar al personal y a los socios en gestión del riesgo de IA según su función. | Documento 50; P45 | D5 · D5.05, D5.06 |
+| GOVERN 2.3 | Que la alta dirección asuma las decisiones sobre los riesgos de la IA que desarrolla o despliega. | Documentos 13 y 30; 01 §8.3 | D1 · D1.05, D1.09 |
+| GOVERN 3.1 | Tomar las decisiones de riesgo con equipos diversos en disciplinas, experiencia y perfiles. | Documentos 30 y 50; P03 | Propia (D5) |
+| GOVERN 3.2 | Definir los roles de la configuración persona–IA y de la supervisión de los sistemas. | P17; 35 §5; 01 §8 | D6 · D6.08 |
+| GOVERN 4.1 | Fomentar el pensamiento crítico y la seguridad primero en el diseño y el uso de la IA. | Documento 31; 01 §3 | Propia (D1) |
+| GOVERN 4.2 | Que los equipos documenten los riesgos e impactos de la IA y los comuniquen. | P11, P12; documento 33 | D6 · D6.06 |
+| GOVERN 4.3 | Permitir las pruebas de la IA, la identificación de incidentes y el intercambio de información. | Documento 37; 35 §8; P26, P53 | D6 · D6.07, D6.10 |
+| GOVERN 5.1 | Recoger y tener en cuenta la opinión externa sobre los impactos individuales y sociales. | P11, P46, P48 | Propia (D6) |
+| GOVERN 5.2 | Incorporar al diseño la retroalimentación ya valorada de los actores relevantes. | Documento 20; P27 | Propia (D2) |
+| GOVERN 6.1 | Tratar los riesgos de terceros, incluida la infracción de propiedad intelectual u otros derechos. | Documento 36; P14, P55, P56 | D6 · D6.08 |
+| GOVERN 6.2 | Tener contingencias ante fallos o incidentes de datos o sistemas de terceros de alto riesgo. | Documento 36; P19, P57 | D6 · D6.08 |
+| MAP 1.1 | Documentar la finalidad, los usos, las normas aplicables y el entorno de despliegue. | P01, P02 | D2 · D2.05 |
+| MAP 1.2 | Contar con actores interdisciplinares y diversos al fijar el contexto. | P03; documento 30 | Propia (D5) |
+| MAP 1.3 | Conocer y documentar la misión y los objetivos de la organización para la IA. | Documento 13 (tesis) | D1 · D1.05 |
+| MAP 1.4 | Definir, o reevaluar en sistemas existentes, el valor de negocio. | P07, P08; documento 40 | D2 · D2.08 |
+| MAP 1.5 | Determinar y documentar las tolerancias al riesgo. | Documento 13 (apetito); P35 | D1 · D1.05, D1.06 |
+| MAP 1.6 | Recoger los requisitos del sistema teniendo en cuenta sus implicaciones sociotécnicas. | P15, P17 | Propia (D4) |
+| MAP 2.1 | Definir las tareas y los métodos del sistema (clasificador, generativo, recomendador…). | P05, P15 | D6 · D6.05 |
+| MAP 2.2 | Documentar los límites de conocimiento del sistema y cómo se usan y supervisan sus salidas. | P17, P49 | Propia (D6) |
+| MAP 2.3 | Documentar la integridad científica y las pruebas: diseño, selección de datos, validez. | P09, P16, P22; documento 51 | D3 · D3.04, D3.07 |
+| MAP 3.1 | Examinar y documentar los beneficios esperados. | P08; documento 40 | D2 · D2.08 |
+| MAP 3.2 | Examinar los costes, también no monetarios, de los errores del sistema. | P10, P12; documento 42 | D6 · D6.06 |
+| MAP 3.3 | Delimitar el alcance de la aplicación según su capacidad, contexto y categoría. | P01, P02, P15 | D2 · D2.05 |
+| MAP 3.4 | Definir y evaluar la competencia de operadores y profesionales. | Documento 50; P20, P45 | D5 · D5.05, D5.06 |
+| MAP 3.5 | Definir y documentar la supervisión humana. | P17; 35 §4.6 | D4 · D4.06 |
+| MAP 4.1 | Identificar los riesgos tecnológicos y legales de los componentes, incluidos los de terceros. | P11, P14; documento 36 | D6 · D6.08 |
+| MAP 4.2 | Documentar los controles internos sobre los componentes, incluidos los de terceros. | P13, P18; SEG-09 | D6 · D6.08 |
+| MAP 5.1 | Estimar la probabilidad y la magnitud de cada impacto identificado. | P11, P12; documento 33 | D6 · D6.06 |
+| MAP 5.2 | Mantener la relación con los actores relevantes e integrar su opinión sobre los impactos. | P25, P28; documento 52 | Propia (D6) |
+| MEASURE 1.1 | Elegir métodos y métricas para los riesgos más significativos y documentar lo que no se mide. | P09, P22; documento 41 | D7 · D7.03 |
+| MEASURE 1.2 | Revisar la idoneidad de las métricas y la eficacia de los controles. | Documento 41; R6; P28 | D7 · D7.09; D6 · D6.11 |
+| MEASURE 1.3 | Implicar a evaluadores internos no participantes o externos en las evaluaciones. | Documento 38; 01 §8.2 | D6 · D6.10 |
+| MEASURE 2.1 | Documentar conjuntos de prueba, métricas y herramientas de evaluación. | P22; documento 53 | D4 · D4.08 |
+| MEASURE 2.2 | Que las evaluaciones con personas cumplan sus requisitos y sean representativas. | P22 | Propia (D6) |
+| MEASURE 2.3 | Medir el rendimiento en condiciones parecidas a las de uso real. | P09, P22 | D4 · D4.08 |
+| MEASURE 2.4 | Monitorizar el funcionamiento del sistema en producción. | P25; documento 52 | D4 · D4.05, D4.09 |
+| MEASURE 2.5 | Demostrar la validez y fiabilidad, y documentar los límites de generalización. | P22; G5 | D4 · D4.08 |
+| MEASURE 2.6 | Evaluar la seguridad del sistema frente a daños y su capacidad de fallar de forma segura. | P19, P22; AG-09 | D4 · D4.06 |
+| MEASURE 2.7 | Evaluar y documentar la seguridad frente a ataques y la resiliencia. | P18, P53; 35 §8 | D6 · D6.10 |
+| MEASURE 2.8 | Examinar los riesgos de transparencia y de rendición de cuentas. | P17, P49; P03 | Propia (D6) |
+| MEASURE 2.9 | Explicar el modelo e interpretar sus salidas en su contexto. | P17, P21 | Propia (D4) |
+| MEASURE 2.10 | Examinar y documentar el riesgo para la privacidad. | P11, P47; documento 51 | D3 · D3.06 |
+| MEASURE 2.11 | Evaluar la equidad y el sesgo y documentar los resultados. | P22; 52 §4.2.7 | Propia (D6) |
+| MEASURE 2.12 | Evaluar el impacto ambiental del entrenamiento y la operación. | Documento 42; P10 | Propia (D4) |
+| MEASURE 2.13 | Evaluar la eficacia de las propias métricas y procesos de prueba. | Documento 41; C5 | Propia (D7) |
+| MEASURE 3.1 | Identificar y seguir los riesgos existentes, imprevistos y emergentes. | 33 §11; P12; R6 | D6 · D6.09 |
+| MEASURE 3.2 | Seguir los riesgos que aún no pueden medirse con las técnicas disponibles. | Documento 33; P12 | Propia (D6) |
+| MEASURE 3.3 | Dar a usuarios y afectados un cauce para comunicar problemas y recurrir resultados. | P17, P24, P49; documento 37 | Propia (D6) |
+| MEASURE 4.1 | Conectar la medición al contexto de uso con la opinión de expertos y usuarios. | P09, P22 | Propia (D7) |
+| MEASURE 4.2 | Validar con expertos y actores relevantes los resultados sobre la fiabilidad en uso. | P28; R6 | D7 · D7.09 |
+| MEASURE 4.3 | Identificar mejoras o empeoramientos medibles del rendimiento y la fiabilidad. | P28; documento 41 | D2 · D2.10; D7 · D7.09 |
+| MANAGE 1.1 | Decidir si el sistema cumple su finalidad y si su desarrollo o despliegue debe continuar. | Documento 21; P29 | D2 · D2.06 |
+| MANAGE 1.2 | Priorizar el tratamiento de los riesgos por impacto, probabilidad y recursos. | P13; 33 §7 | D6 · D6.06 |
+| MANAGE 1.3 | Planificar la respuesta a los riesgos altos: mitigar, transferir, evitar o aceptar. | P13; 33 §7 | D6 · D6.06 |
+| MANAGE 1.4 | Documentar los riesgos residuales para usuarios y adquirentes. | P12, P13 | D6 · D6.06 |
+| MANAGE 2.1 | Considerar los recursos necesarios y las alternativas sin IA. | P06, P10; 01 §6.3 | D2 · D2.08 |
+| MANAGE 2.2 | Mantener el valor de los sistemas desplegados. | R6; P28; documento 43 | D2 · D2.10 |
+| MANAGE 2.3 | Responder y recuperarse cuando aparece un riesgo desconocido. | Documento 37; P26 | D6 · D6.07 |
+| MANAGE 2.4 | Poder sustituir, desenganchar o desactivar un sistema que se aparta de su uso previsto. | P19; AG-09; T22 | D4 · D4.06 |
+| MANAGE 3.1 | Seguir los riesgos y beneficios de los recursos de terceros. | Documento 36; P57 | D6 · D6.08 |
+| MANAGE 3.2 | Seguir los modelos preentrenados como parte de la monitorización. | P25, P54; SEG-09 | D4 · D4.08 |
+| MANAGE 4.1 | Aplicar planes de seguimiento tras el despliegue: opinión de usuarios, recurso, anulación, retirada, incidentes y cambios. | P24, P25, P27; documento 52 | D4 · D4.05, D4.07 |
+| MANAGE 4.2 | Integrar la mejora continua en las actualizaciones del sistema. | P28; R6; C5 | D4 · D4.12 |
+| MANAGE 4.3 | Comunicar y gestionar los incidentes y errores, también a las comunidades afectadas. | Documento 37; P26, P27, P51 | D6 · D6.07 |
+
+### 5.5 Perfil de seguridad de la IA: subcategorías del CSF 2.0
+
+El perfil de seguridad de la IA se construye sobre las subcategorías del CSF 2.0. La tabla recoge las **48** a las que el Cyber AI Profile propone **prioridad alta (1)** en al menos una de sus tres áreas, con la prioridad que propone en cada una (**S** Secure · **D** Defend · **T** Thwart; 1 alta, 2 moderada, 3 fundamental). **La selección es provisional** mientras el perfil sea un borrador (sección 5.3) y se revisará cuando el NIST publique una versión posterior. Las demás subcategorías del CSF pueden añadirse al perfil de la compañía si su contexto lo pide. Como en la sección 5.4, el nivel se deriva del documento 11 (11 §7.5) y las descripciones son un resumen propio. El perfil se documenta con la plantilla P72.
+
+| Subcategoría | Qué pide (resumen propio) | Prioridad S · D · T | Dónde lo cubre SEVEN-G | Nivel desde el documento 11 |
+|---|---|---|---|---|
+| GV.OC-03 | Conocer y gestionar los requisitos legales, regulatorios y contractuales de ciberseguridad, incluida la privacidad. | 3 · 1 · 3 | Documento 34; P11, P56 | D6 · D6.05, D6.12 |
+| GV.OC-04 | Conocer y comunicar los objetivos y servicios críticos de los que dependen terceros. | 1 · 1 · 3 | P02; 01 §9.2 (función crítica); P49 | Propia (D4) |
+| GV.OC-05 | Conocer y comunicar los resultados y servicios de los que depende la organización, incluidos los que aporta la IA. | 1 · 2 · 3 | P02, P15; documento 36 | Propia (D4) |
+| GV.RM-02 | Fijar, comunicar y mantener el apetito y la tolerancia al riesgo. | 2 · 2 · 1 | Documento 13; P35 | D1 · D1.05 |
+| GV.RM-07 | Incluir las oportunidades estratégicas en las conversaciones sobre el riesgo. | 3 · 1 · 3 | Documentos 13 y 14; P06 | D2 · D2.07 |
+| GV.RR-01 | Que la dirección responda del riesgo y promueva una cultura consciente del riesgo. | 3 · 1 · 2 | Documentos 13 y 30; P38 | D1 · D1.01, D1.09 |
+| GV.RR-02 | Establecer y hacer cumplir roles, responsabilidades y autoridades de gestión del riesgo. | 3 · 1 · 2 | 01 §8; documento 30; P03 | D1 · D1.07, D1.08 |
+| GV.RR-03 | Asignar recursos proporcionados a la estrategia de riesgo. | 2 · 2 · 1 | Documentos 13 y 14; P36 | Propia (D1) |
+| GV.RR-04 | Incluir la ciberseguridad en las prácticas de recursos humanos. | 1 · 3 · 1 | Documento 50; P45, P46 | Propia (D5) |
+| GV.PO-01 | Establecer, comunicar y hacer cumplir la política de gestión del riesgo. | 3 · 1 · 3 | Documentos 31 y 35 | D1 · D1.04 |
+| GV.PO-02 | Revisar y actualizar la política ante cambios de requisitos, amenazas o tecnología. | 1 · 1 · 2 | Documento 31; C5; P37 | D6 · D6.12 |
+| GV.SC-03 | Integrar el riesgo de la cadena de suministro en la gestión del riesgo. | 1 · 2 · 3 | Documentos 33 y 36 | D6 · D6.08 |
+| GV.SC-07 | Conocer, evaluar y seguir el riesgo de cada proveedor durante toda la relación. | 1 · 1 · 3 | Documento 36; P14, P55, P57 | D6 · D6.08 |
+| ID.AM-03 | Mantener la representación de las comunicaciones y los flujos de datos autorizados. | 1 · 2 · 2 | P15, P16 | D3 · D3.07 |
+| ID.AM-07 | Mantener inventarios de datos y de sus metadatos. | 1 · 1 · 3 | P64; documento 51 | D3 · D3.03, D3.05 |
+| ID.AM-08 | Gestionar sistemas, software, servicios y datos durante todo su ciclo de vida. | 1 · 3 · 2 | Documento 20; P05, P54 | D6 · D6.05 |
+| ID.RA-01 | Identificar, validar y registrar las vulnerabilidades de los activos. | 1 · 1 · 1 | SEG-11, SEG-13, SEG-19; P53 | D6 · D6.10 |
+| ID.RA-03 | Identificar y registrar las amenazas internas y externas. | 1 · 1 · 1 | SEG-01; P18; 35 §3 y §9 | D6 · D6.08 |
+| ID.RA-04 | Estimar el impacto y la probabilidad de que una amenaza explote una vulnerabilidad. | 1 · 1 · 1 | P12; documento 33 | D6 · D6.06 |
+| ID.RA-06 | Elegir, priorizar, planificar, seguir y comunicar las respuestas al riesgo. | 3 · 2 · 1 | P13; 33 §7 | D6 · D6.06 |
+| ID.RA-07 | Gestionar y registrar los cambios y excepciones, evaluando su efecto en el riesgo. | 2 · 1 · 1 | P27, P40; documento 52 | D4 · D4.04 |
+| ID.RA-08 | Recibir, analizar y responder a las divulgaciones de vulnerabilidades. | 3 · 3 · 1 | SEG-13; documento 37 | Propia (D6) |
+| PR.AA-01 | Gestionar las identidades y credenciales de usuarios, servicios y agentes. | 1 · 2 · 1 | AG-01, AG-03; P54 | D6 · D6.08 |
+| PR.AA-05 | Definir y revisar los permisos con mínimo privilegio y separación de funciones. | 1 · 2 · 1 | AG-02, AG-20; SEG-06 | D6 · D6.08 |
+| PR.AT-01 | Concienciar y formar al personal para trabajar teniendo en cuenta el riesgo. | 1 · 1 · 1 | Documento 50; SEG-17; P45 | D5 · D5.05 |
+| PR.AT-02 | Formar a quienes ocupan roles especializados. | 2 · 1 · 1 | Documento 50; P45 | D5 · D5.06 |
+| PR.DS-01 | Proteger la confidencialidad, integridad y disponibilidad de los datos almacenados. | 1 · 1 · 2 | SEG-07, SEG-08; P16, P18 | D3 · D3.05 |
+| PR.DS-10 | Proteger los datos en uso (contexto, instrucciones, memoria). | 1 · 1 · 3 | SEG-05, SEG-06, SEG-07; AG-14 | Propia (D6) |
+| PR.PS-01 | Establecer y aplicar la gestión de la configuración. | 1 · 1 · 3 | P15, P27; documento 52 | D4 · D4.04 |
+| PR.PS-02 | Mantener, sustituir y retirar el software según el riesgo. | 3 · 3 · 1 | SEG-09, SEG-13; P54 | Propia (D4) |
+| PR.PS-03 | Mantener, sustituir y retirar el hardware según el riesgo. | 3 · 2 · 1 | Documento 52 | Propia (D4) |
+| PR.PS-04 | Generar registros disponibles para la monitorización continua. | 1 · 1 · 1 | AG-10, SEG-12; P25 | D4 · D4.08 |
+| PR.PS-05 | Impedir la instalación y ejecución de software no autorizado, también de IA. | 2 · 2 · 1 | SEG-20, AG-13; documento 31; T21 | D6 · D6.09 |
+| PR.IR-01 | Proteger redes y entornos frente a accesos y usos no autorizados. | 2 · 2 · 1 | AG-11; P15 | D4 · D4.03 |
+| PR.IR-03 | Aplicar mecanismos de resiliencia en situaciones normales y adversas. | 2 · 1 · 2 | P19; AG-16; documento 52 | D4 · D4.06, D4.12 |
+| DE.CM-01 | Monitorizar redes y servicios de red para detectar eventos adversos. | 2 · 1 · 1 | SEG-12 | Propia (D4) |
+| DE.CM-06 | Monitorizar la actividad de los proveedores de servicios externos. | 1 · 2 · 2 | Documento 36; P57 | D6 · D6.08 |
+| DE.CM-09 | Monitorizar hardware, software, entornos de ejecución y datos. | 1 · 1 · 2 | SEG-12, AG-17; P25 | D4 · D4.05 |
+| DE.AE-03 | Correlacionar información de varias fuentes. | 3 · 1 · 2 | SEG-12 | Propia (D4) |
+| DE.AE-04 | Entender el impacto y el alcance estimados de los eventos adversos. | 3 · 1 · 2 | Documento 37; P27 | D6 · D6.07 |
+| DE.AE-06 | Hacer llegar la información de eventos adversos a las personas y herramientas autorizadas. | 3 · 2 · 1 | P24, P25 | D4 · D4.05 |
+| DE.AE-07 | Integrar la inteligencia de amenazas en el análisis. | 3 · 2 · 1 | 35 §9; SEG-19 | Propia (D6) |
+| RS.MA-02 | Clasificar y validar las notificaciones de incidentes. | 2 · 1 · 2 | Documento 37; P27 | D6 · D6.07 |
+| RS.MA-03 | Categorizar y priorizar los incidentes. | 2 · 1 · 1 | Documento 37 (S1–S4); P27 | D6 · D6.07 |
+| RS.AN-03 | Analizar lo ocurrido en un incidente y su causa raíz. | 1 · 1 · 1 | P52; documento 37 | D6 · D6.07 |
+| RS.AN-06 | Registrar las acciones de la investigación preservando su integridad y procedencia. | 3 · 3 · 1 | P27, P52 | D6 · D6.07 |
+| RS.AN-07 | Recoger los datos del incidente preservando su integridad y procedencia. | 1 · 2 · 2 | AG-10; P27 | D4 · D4.08 |
+| RC.RP-02 | Seleccionar, delimitar, priorizar y ejecutar las acciones de recuperación. | 3 · 1 · 3 | P19, P24, P26; AG-19 | D4 · D4.06 |
+
 ---
 
 ## 6. RGPD y guías del CEPD
@@ -430,7 +600,7 @@ El perfil describe riesgos específicos o agravados por la IA generativa y accio
 |---|---|---|---|---|---|---|
 | Principios: licitud, lealtad y transparencia; limitación de la finalidad; minimización; exactitud; limitación del plazo de conservación; integridad y confidencialidad; responsabilidad proactiva | Art. 5 | Responsables y encargados del tratamiento | Fases 3–4; verificación en G3 y G4 | Responsable de riesgos; delegado de protección de datos (asesora) | P11, P16 | T07 |
 | Base jurídica del tratamiento en entrenamiento, prueba y uso | Art. 6 | Responsables del tratamiento | Fase 3 | Responsable de riesgos; asesoría jurídica | P11, P16 | T07 |
-| Condiciones para tratar categorías especiales de datos, incluido el tratamiento para detectar y corregir sesgos permitido por el Reglamento de IA | Art. 9; Reglamento de IA art. 10 modificado | Responsables del tratamiento | Fases 3–5 | Responsable de riesgos; delegado de protección de datos | P11, P16 | T07 |
+| Condiciones para tratar categorías especiales de datos, incluido el tratamiento para detectar y corregir sesgos permitido por el Reglamento de IA | Art. 9; Reglamento de IA, arts. 4 bis y 10 | Responsables del tratamiento | Fases 3–5 | Responsable de riesgos; delegado de protección de datos | P11, P16 | T07 |
 | Información a los interesados, incluida la existencia de decisiones automatizadas e información significativa sobre la lógica aplicada | Arts. 13.2.f y 14.2.g | Responsables del tratamiento | Fase 4 (diseño), fase 6 | Responsable de producto | P17, P24 | — |
 | Derecho de acceso, incluida la información sobre decisiones automatizadas | Art. 15.1.h | Responsables del tratamiento | Fase 6 | Responsable de operación; delegado de protección de datos | P24, P27 | T08 |
 | No sujeción a decisiones basadas únicamente en tratamiento automatizado con efectos jurídicos o significativos, salvo excepciones con garantías (intervención humana, expresar el punto de vista, impugnar) | Art. 22 | Responsables del tratamiento | Fase 3 (clasificación), fase 4 (supervisión humana), fase 6 | Responsable de producto; Responsable de riesgos | P11, P17 | T07 |
@@ -453,7 +623,7 @@ El perfil describe riesgos específicos o agravados por la IA generativa y accio
 | Sentencia del TJUE C-634/21 (SCHUFA): la puntuación que condiciona decisiones de terceros puede ser decisión automatizada del art. 22 | 7-12-2023 | Firme | P11 (sistemas de puntuación) |
 | Sentencia del TJUE C-203/22 (Dun & Bradstreet Austria) sobre el alcance de la información significativa de la lógica aplicada | 27-02-2025 | Firme | P17, P24 |
 
-**Propuesta de modificación del RGPD.** El paquete ómnibus digital de noviembre de 2025 incluye, además de la parte de IA ya adoptada, una propuesta que modifica el RGPD (entre otros aspectos, definición de dato personal, interés legítimo para el desarrollo de IA y notificación de violaciones). A fecha de consulta, esa parte **sigue en tramitación y no está adoptada**; su contenido final está pendiente de confirmar. No se aplica en este mapeo.
+**Propuesta de modificación del RGPD.** El paquete ómnibus digital de noviembre de 2025 incluye, además de la parte de IA ya adoptada, una propuesta que modifica el RGPD (COM(2025) 837 final; procedimiento 2025/0360(COD)) (entre otros aspectos, definición de dato personal, interés legítimo para el desarrollo de IA y notificación de violaciones). A fecha de consulta, esa parte **sigue en tramitación y no está adoptada**; su contenido final está pendiente de confirmar. No se aplica en este mapeo.
 
 ---
 
@@ -481,9 +651,9 @@ Solo aplican a las compañías incluidas en su ámbito: DORA a las entidades fin
 | Medidas de gestión de riesgos de ciberseguridad, incluida la seguridad de la cadena de suministro | Art. 21 (en particular 21.2.d) | Entidades esenciales e importantes | Fases 3–6 | Seguridad de la información; Responsable técnico | P14, P18; documento 35 | T09, T10 |
 | Notificación de incidentes significativos: alerta temprana en 24 horas, notificación en 72 horas e informe final en un mes | Art. 23 | Entidades esenciales e importantes | Fase 6 (S1–S2) | Responsable de operación; seguridad de la información | P26, P27 | T08 |
 
-**Transposición en España.** A fecha de consulta, la ley que transpone NIS2 (Anteproyecto de Ley de Coordinación y Gobernanza de la Ciberseguridad, aprobado en primera vuelta en enero de 2025) **no consta publicada en el BOE**; estado exacto de tramitación pendiente de confirmar.
+**Transposición en España.** A fecha de consulta, la ley que transpone NIS2 (Anteproyecto de Ley de Coordinación y Gobernanza de la Ciberseguridad, aprobado en primera vuelta en enero de 2025) **no ha sido remitida a las Cortes Generales ni publicada en el BOE** (Departamento de Seguridad Nacional; BOE). El 8-07-2026 la Comisión Europea llevó a España ante el Tribunal de Justicia de la UE por no haber notificado la transposición (comunicado IP/26/1499).
 
-**Productos con elementos digitales.** Si la compañía fabrica productos con elementos digitales que incorporan IA, debe valorarse además el Reglamento (UE) 2024/2847 de ciberresiliencia (obligaciones de notificación desde el 11-09-2026 y obligaciones principales desde el 11-12-2027). Se desarrolla en el documento 35.
+**Productos con elementos digitales.** Si la compañía fabrica productos con elementos digitales que incorporan IA, debe valorarse además el Reglamento (UE) 2024/2847 de ciberresiliencia (obligaciones de notificación del art. 14 desde el 11-09-2026 y obligaciones principales desde el 11-12-2027). El documento 35 lo recoge en sus referencias y en los controles SEG-13 y SEG-14.
 
 ---
 
@@ -501,7 +671,7 @@ Solo aplican a las compañías incluidas en su ámbito: DORA a las entidades fin
 | Normativa autonómica | Por ejemplo, Ley 2/2025, de 2 de abril, para el desarrollo e impulso de la IA en Galicia | Vigente en su ámbito; revisar según la implantación territorial de la compañía. |
 | Guías de la AEPD sobre tratamientos que incorporan IA y auditoría de esos tratamientos | AEPD | Publicadas; referencia para P11. |
 
-Según el texto del proyecto remitido a las Cortes y sus análisis publicados, la ley designaría varias autoridades de vigilancia del mercado (entre ellas AESIA, la AEPD, el Banco de España y la CNMV), un régimen de infracciones leves, graves y muy graves, reglas para el sector público y regulación de los espacios controlados de pruebas. **Todo ello está pendiente de confirmar en el texto que finalmente se apruebe.**
+Según el proyecto publicado en el Boletín Oficial de las Cortes Generales, la ley designaría autoridades de vigilancia del mercado, un régimen de infracciones leves, graves y muy graves, reglas para el sector público y regulación de los espacios controlados de pruebas. **Todo ello está pendiente de confirmar en el texto que finalmente se apruebe.**
 
 ### 8.2 Mapeo
 
@@ -519,21 +689,21 @@ Según el texto del proyecto remitido a las Cortes y sus análisis publicados, l
 
 Lectura: qué pide cada referencia en cada etapa del ciclo corporativo y en cada fase del ciclo de vida. "—" indica que no hay obligación principal en ese punto.
 
-| Etapa o fase | Reglamento de IA | ISO/IEC 42001 | NIST AI RMF / 600-1 | RGPD | DORA / NIS2 (si aplican) | Normativa española |
+| Etapa o fase | Reglamento de IA | ISO/IEC 42001 | NIST AI RMF / 600-1 · CSF 2.0 | RGPD | DORA / NIS2 (si aplican) | Normativa española |
 |---|---|---|---|---|---|---|
-| **C1 · Diagnóstico** | Inventario y rol por sistema (arts. 3, 25) | 4.1, 4.2 | MAP 1 | Registro de tratamientos existente (art. 30) | Inventario TIC y registro de terceros (DORA art. 28) | Autoridades competentes identificadas |
-| **C2 · Dirección** | Alfabetización (art. 4); política frente a prácticas prohibidas | 4.3, 5.1–5.3, 6.1–6.2, A.2, A.3 | GOVERN 1–4 | Responsabilidad proactiva (art. 5.2) | Responsabilidad del órgano de dirección (DORA art. 5; NIS2 art. 20) | — |
-| **C3 · Cartera** | Señales de alto riesgo en la cartera | 6.3, 7.1–7.2 | GOVERN 2, 6 | — | Riesgo de concentración (DORA art. 29) | — |
-| **C4 · Supervisión** | Incidentes graves y vigilancia agregada | 9.1, 9.2 | MEASURE 3–4 | Violaciones de seguridad (arts. 33–34) | Incidentes graves (DORA arts. 17–19; NIS2 art. 23) | Seguimiento de la ley orgánica |
-| **C5 · Revisión** | Revisión del mapeo y de las clasificaciones | 9.3, 10.1, 10.2 | MEASURE 4; MANAGE 4 | — | Aprendizaje (DORA art. 13) | — |
-| **0 · Contexto** | Ámbito, rol y clasificación provisional | 5.3, 8.1 | MAP 1 | Identificar si hay datos personales | Identificar si soporta función crítica | Posible entorno de pruebas |
+| **C1 · Diagnóstico** | Inventario y rol por sistema (arts. 3, 25) | 4.1, 4.2 | MAP 1 · ID.AM, GV.OC; perfil actual | Registro de tratamientos existente (art. 30) | Inventario TIC y registro de terceros (DORA art. 28) | Autoridades competentes identificadas |
+| **C2 · Dirección** | Alfabetización (art. 4); política frente a prácticas prohibidas | 4.3, 5.1–5.3, 6.1–6.2, A.2, A.3 | GOVERN 1–4 · GV.RM, GV.RR, GV.PO; perfil objetivo | Responsabilidad proactiva (art. 5.2) | Responsabilidad del órgano de dirección (DORA art. 5; NIS2 art. 20) | — |
+| **C3 · Cartera** | Señales de alto riesgo en la cartera | 6.3, 7.1–7.2 | GOVERN 2, 6 · GV.SC | — | Riesgo de concentración (DORA art. 29) | — |
+| **C4 · Supervisión** | Incidentes graves y vigilancia agregada | 9.1, 9.2 | MEASURE 3–4 · GV.OV, DE.CM | Violaciones de seguridad (arts. 33–34) | Incidentes graves (DORA arts. 17–19; NIS2 art. 23) | Seguimiento de la ley orgánica |
+| **C5 · Revisión** | Revisión del mapeo y de las clasificaciones | 9.3, 10.1, 10.2 | MEASURE 4; MANAGE 4 · ID.IM; revisión del perfil | — | Aprendizaje (DORA art. 13) | — |
+| **0 · Contexto** | Ámbito, rol y clasificación provisional | 5.3, 8.1 | MAP 1 · ID.AM | Identificar si hay datos personales | Identificar si soporta función crítica | Posible entorno de pruebas |
 | **1 · Descubrimiento** | Filtrado de prácticas prohibidas y señales del anexo III | A.9 | MAP 1, MAP 3 | — | — | — |
 | **2 · Hipótesis** | — | 6.2 | MAP 3; MEASURE 1 | Minimización y finalidad (art. 5) | — | — |
-| **3 · Viabilidad y riesgo** | Clasificación (arts. 5, 6, 50); gestión de riesgos (art. 9); evaluación de impacto en derechos fundamentales (art. 27); modelos de uso general (art. 53) | 6.1.2–6.1.4, 8.2–8.4, A.5, A.7, A.10 | MAP 2–5; GOVERN 6; riesgos de 600-1 | Base jurídica (arts. 6, 9); evaluación de impacto (art. 35); art. 22 | Riesgo de terceros y contratos (DORA arts. 28–30; NIS2 art. 21) | Autoridad competente; guías AESIA |
-| **4 · Diseño** | Datos (art. 10), documentación (art. 11), registros (art. 12), instrucciones (art. 13), supervisión humana (art. 14), ciberseguridad (art. 15), transparencia (art. 50) | 8.1, A.4, A.6, A.7, A.8 | MANAGE 2; controles de 600-1 | Protección de datos desde el diseño (art. 25); información (arts. 13–14) | Protección y detección (DORA arts. 8–10) | Guías AESIA |
-| **5 · Entrega y validación** | Pruebas (arts. 9, 15), conformidad, declaración y marcado CE (arts. 43, 47, 48), registro (art. 49), información a trabajadores (art. 26.7), notificación de la evaluación de impacto (art. 27.3) | A.6, A.8 | MEASURE 1–2 | Registro de tratamientos actualizado (art. 30) | Pruebas de resiliencia (DORA arts. 24–27) | Notificaciones a la autoridad competente |
-| **6 · Operación** | Obligaciones del responsable del despliegue (art. 26), vigilancia posterior a la comercialización (art. 72), incidentes graves (art. 73), explicación (art. 86) | 8.2–8.4, 9.1, A.6, A.8 | MEASURE 3; MANAGE 1, 4 | Derechos (arts. 15, 22); violaciones (arts. 33–34) | Incidentes y recuperación (DORA arts. 11, 17–19; NIS2 art. 23) | Notificaciones y requerimientos |
-| **7 · Evolución o retirada** | Medidas correctoras y retirada (art. 20); conservación de documentación (art. 18); actualización del registro (art. 49) | 10.1, 10.2 | MANAGE 2, 4 | Conservación y supresión de datos (art. 5.1.e) | Estrategia de salida del proveedor (DORA art. 28) | — |
+| **3 · Viabilidad y riesgo** | Clasificación (arts. 5, 6, 50); gestión de riesgos (art. 9); evaluación de impacto en derechos fundamentales (art. 27); modelos de uso general (art. 53) | 6.1.2–6.1.4, 8.2–8.4, A.5, A.7, A.10 | MAP 2–5; GOVERN 6; riesgos de 600-1 · ID.RA, GV.SC | Base jurídica (arts. 6, 9); evaluación de impacto (art. 35); art. 22 | Riesgo de terceros y contratos (DORA arts. 28–30; NIS2 art. 21) | Autoridad competente; guías AESIA |
+| **4 · Diseño** | Datos (art. 10), documentación (art. 11), registros (art. 12), instrucciones (art. 13), supervisión humana (art. 14), ciberseguridad (art. 15), transparencia (art. 50) | 8.1, A.4, A.6, A.7, A.8 | MANAGE 2; controles de 600-1 · PR.AA, PR.DS, PR.PS | Protección de datos desde el diseño (art. 25); información (arts. 13–14) | Protección y detección (DORA arts. 8–10) | Guías AESIA |
+| **5 · Entrega y validación** | Pruebas (arts. 9, 15), conformidad, declaración y marcado CE (arts. 43, 47, 48), registro (art. 49), información a trabajadores (art. 26.7), notificación de la evaluación de impacto (art. 27.3) | A.6, A.8 | MEASURE 1–2 · ID.IM (pruebas) | Registro de tratamientos actualizado (art. 30) | Pruebas de resiliencia (DORA arts. 24–27) | Notificaciones a la autoridad competente |
+| **6 · Operación** | Obligaciones del responsable del despliegue (art. 26), vigilancia posterior a la comercialización (art. 72), incidentes graves (art. 73), explicación (art. 86) | 8.2–8.4, 9.1, A.6, A.8 | MEASURE 3; MANAGE 1, 4 · DE, RS, RC | Derechos (arts. 15, 22); violaciones (arts. 33–34) | Incidentes y recuperación (DORA arts. 11, 17–19; NIS2 art. 23) | Notificaciones y requerimientos |
+| **7 · Evolución o retirada** | Medidas correctoras y retirada (art. 20); conservación de documentación (art. 18); actualización del registro (art. 49) | 10.1, 10.2 | MANAGE 2, 4 · RC.RP; PR.AA (revocación) | Conservación y supresión de datos (art. 5.1.e) | Estrategia de salida del proveedor (DORA art. 28) | — |
 
 ---
 
@@ -583,9 +753,9 @@ Solo sirve para detectar posibles obligaciones fuera de la UE; no analiza requis
 
 | Jurisdicción | Situación orientativa a fecha de consulta | Tratamiento en SEVEN-G |
 |---|---|---|
-| **Reino Unido** | Enfoque basado en principios aplicados por los reguladores sectoriales, sin una ley general de IA equivalente al Reglamento europeo (pendiente de confirmar posibles iniciativas legislativas). La protección de datos sigue su propio régimen, con reformas recientes en materia de decisiones automatizadas (detalle pendiente de confirmar). | Declararlo como restricción en P02 y consultar con asesoría local en la fase 3. |
-| **Estados Unidos** | Sin ley federal general de IA; marcos voluntarios (NIST AI RMF), actuación de agencias sectoriales y leyes estatales con ámbitos y fechas de aplicación que han cambiado y deben verificarse caso por caso. | Declararlo en P02; usar la sección 5 como referencia de buenas prácticas. |
-| **Instrumentos internacionales** | Principios de IA de la OCDE; Convenio Marco del Consejo de Europa sobre IA y derechos humanos, democracia y Estado de Derecho (abierto a la firma en 2024; estado de ratificación pendiente de confirmar). | Referencia para la política corporativa (documento 31). |
+| **Reino Unido** | La Data (Use and Access) Act 2025 (sección 80) sustituye el art. 22 del UK GDPR sobre decisiones automatizadas por los arts. 22A a 22D, plenamente en vigor desde el 5-02-2026. El resto del marco del Reino Unido no se mapea en este documento y debe verificarse con asesoramiento local. | Declararlo como restricción en P02 y consultar con asesoría local en la fase 3. |
+| **Estados Unidos** | Este documento no mapea la regulación federal, sectorial ni estatal de Estados Unidos, que cambia con frecuencia: debe verificarse en las fuentes oficiales de cada jurisdicción con asesoramiento local. Como marco voluntario de referencia se usa el NIST AI RMF (sección 5). | Declararlo en P02; usar la sección 5 como referencia de buenas prácticas. |
+| **Instrumentos internacionales** | Principios de IA de la OCDE (versión de 2024); Convenio Marco del Consejo de Europa sobre IA y derechos humanos, democracia y Estado de Derecho (abierto a la firma en Vilna el 5-09-2024; la Unión Europea lo ratificó el 15-05-2026). | Referencia para la política corporativa (documento 31). |
 
 ---
 
@@ -595,25 +765,28 @@ No afirma requisitos sectoriales; señala interacciones que la segunda línea de
 
 | Sector | Puntos de contacto con el Reglamento de IA | Referencias sectoriales a revisar |
 |---|---|---|
-| **Banca y pagos** | Evaluación de solvencia y puntuación crediticia de personas físicas (anexo III, punto 5.b, salvo detección de fraude); integración de obligaciones en el gobierno interno (arts. 17.4 y 26.5); DORA (sección 7.1). | Ejercicio de la EBA sobre las implicaciones del Reglamento de IA (noviembre de 2025), sin necesidad inmediata de nuevas directrices; directrices de la EBA sobre concesión de préstamos; papel del Banco de España como autoridad (pendiente de la ley orgánica). |
+| **Banca y pagos** | Evaluación de solvencia y puntuación crediticia de personas físicas (anexo III, punto 5.b, salvo detección de fraude); integración de obligaciones en el gobierno interno (arts. 17.4 y 26.5); DORA (sección 7.1). | Ejercicio de mapeo de la EBA sobre el Reglamento de IA («AI Act: implications for the EU banking and payments sector», noviembre de 2025), sin necesidad inmediata de nuevas directrices; directrices de la EBA sobre concesión de préstamos; papel del Banco de España como autoridad (pendiente de la ley orgánica). |
 | **Seguros** | Evaluación de riesgos y fijación de precios en seguros de vida y salud (anexo III, punto 5.c); DORA. | Dictamen de EIOPA sobre gobierno y gestión del riesgo de la IA (6-08-2025), dirigido a supervisores, que no crea nuevos requisitos y excluye los sistemas de alto riesgo y prohibidos; Solvencia II y Directiva de distribución de seguros. |
-| **Sanidad** | Productos sanitarios y de diagnóstico *in vitro* con IA como alto riesgo por el art. 6.1 y el anexo I (aplicación 2-08-2028); triaje de llamadas de emergencia y acceso a prestaciones públicas (anexo III, punto 5); categorías especiales de datos (RGPD art. 9). | Reglamentos (UE) 2017/745 y 2017/746; Reglamento del Espacio Europeo de Datos de Salud (referencia exacta y calendario pendientes de confirmar); normativa sanitaria nacional. |
+| **Sanidad** | Productos sanitarios y de diagnóstico *in vitro* con IA como alto riesgo por el art. 6.1 y el anexo I (aplicación 2-08-2028); triaje de llamadas de emergencia y acceso a prestaciones públicas (anexo III, punto 5); categorías especiales de datos (RGPD art. 9). | Reglamentos (UE) 2017/745 y 2017/746; Reglamento (UE) 2025/327, del Espacio Europeo de Datos de Salud, aplicable con carácter general desde el 26-03-2027 y con disposiciones desde el 26-03-2029 y el 26-03-2031 (art. 105); normativa sanitaria nacional. |
 
 ---
 
 ## 13. Anexo C · Fuentes consultadas y estado de verificación
 
-Fecha de consulta de todas las fuentes: 16-09-2026.
+Fecha de consulta: 16-09-2026, salvo las fuentes de la sección 5.3, la correspondencia de la sección 4.3 y la ficha de ISO/IEC 42001, consultadas el 25-09-2026.
 
 | Tema | Fuente | Estado |
 |---|---|---|
 | Ómnibus: tramitación, entrada en vigor (27-07-2026), fechas de alto riesgo, art. 50.2 y nuevas prohibiciones | Comisión Europea (digital-strategy.ec.europa.eu; AI Act Service Desk); Parlamento Europeo, procedimiento 2025/0359(COD) | Verificado (oficial) |
-| Texto del Reglamento (UE) 2026/1744 y detalle de arts. 4, 10, 49 y 3.14 y umbrales de pequeñas empresas de mediana capitalización | EUR-Lex (el texto no pudo leerse de forma automatizada) y análisis jurídicos publicados | Verificado (secundaria): cotejar en EUR-Lex |
+| Texto del Reglamento (UE) 2026/1744 y detalle de los arts. 3.14, 4, 4 bis, 5, 10, 49, 72, 111 y anexos I y VIII | EUR-Lex (texto oficial cotejado con el navegador) | Verificado (oficial) |
 | Directrices y códigos de la Comisión | Comisión Europea | Verificado (oficial); finales de alto riesgo e incidentes graves pendientes |
 | ISO/IEC 42001, 42005 y 42006; NIST AI RMF y AI 600-1; CEPD | iso.org; nist.gov; edpb.europa.eu | Verificado (oficial) |
-| Parte del ómnibus que modifica el RGPD | Parlamento Europeo y análisis publicados | En tramitación; pendiente de confirmar |
+| NIST CSF 2.0 (NIST CSWP 29, versión final de 26-02-2024) | csrc.nist.gov; nist.gov/cyberframework (traducción oficial al español) | Verificado (oficial) |
+| Cyber AI Profile (NIST IR 8596, borrador preliminar inicial de 16-12-2025) | csrc.nist.gov; nccoe.nist.gov (el proyecto está revisando comentarios) | Verificado (oficial); **Borrador** |
+| Correspondencia AI RMF ↔ ISO/IEC 42001 (aportada por Microsoft sobre el FDIS de 2023) | airc.nist.gov | Verificado (oficial) en cuanto a su existencia y autoría; orientativa, no la firma NIST |
+| Parte del ómnibus que modifica el RGPD | EUR-Lex, COM(2025) 837 final; Parlamento Europeo, procedimiento 2025/0360(COD) | Verificado (oficial): en tramitación, no adoptada |
 | RD 729/2023, RD 817/2023, guías AESIA, proyecto de ley orgánica | boe.es; aesia.digital.gob.es; La Moncloa; congreso.es | Verificado (oficial); estado posterior al 16-09-2026 pendiente |
-| Transposición de NIS2 en España; Reino Unido; Estados Unidos; Espacio Europeo de Datos de Salud | Fuentes secundarias | Pendiente de confirmar; orientativo |
+| Transposición de NIS2 en España; Reino Unido; Espacio Europeo de Datos de Salud; Convenio Marco del Consejo de Europa | dsn.gob.es, lamoncloa.gob.es y Comisión Europea (IP/26/1499); legislation.gov.uk; EUR-Lex; coe.int | Verificado (oficial) |
 | Ciberresiliencia; EBA; EIOPA | Comisión Europea; eba.europa.eu; eiopa.europa.eu | Verificado (oficial) |
 
 ---
@@ -629,6 +802,9 @@ Fecha de consulta de todas las fuentes: 16-09-2026.
 | **P47 · Evaluación de impacto en protección de datos** | Evidencia de RGPD arts. 35 y 36 (sección 6.1). |
 | **P48 · Evaluación de impacto en derechos fundamentales** | Evidencia del art. 27 y de su notificación (sección 3.10). |
 | **P49 · Avisos de transparencia e instrucciones de uso** | Evidencia del art. 50 (sección 3.11). |
+| **P72 · Perfil de seguridad de IA (CSF 2.0 / Cyber AI Profile)** | Perfil actual y objetivo de las subcategorías de la sección 5.5 (secciones 5.3 y 5.5). |
+| **P73 · Perfil de gobierno de IA (NIST AI RMF)** | Perfil actual y objetivo de las 72 subcategorías de la sección 5.4. |
+| **P74 · Declaración de aplicabilidad de ISO/IEC 42001** | Controles del anexo A aplicables, justificación, cobertura y evidencia (secciones 4.1, cláusula 6.1.3, y 4.2). |
 | P02, P05 · P12–P18 · P21–P27 · P29 | Clasificación provisional · requisitos de diseño · conformidad, operación e incidentes · decisiones y cambios del mapeo. |
 
 ---
@@ -657,3 +833,5 @@ Fecha de consulta de todas las fuentes: 16-09-2026.
 | Versión | Fecha | Cambios |
 |---|---|---|
 | 0.1 | 16-09-2026 | Primera versión. Mapea el Reglamento Europeo de IA con las modificaciones del Reglamento (UE) 2026/1744 (calendario verificado a 16-09-2026), ISO/IEC 42001:2023, NIST AI RMF 1.0 y NIST AI 600-1, RGPD y guías del CEPD, DORA, NIS2 y normativa española; añade matriz resumen, procedimiento de mantenimiento y anexos orientativos de otras jurisdicciones y sectores. Aviso legal y responsabilidad del usuario sobre el cumplimiento regulatorio. |
+| 0.2 | 25-09-2026 | Añade la sección 5.3, NIST CSF 2.0 y Cyber AI Profile: funciones del CSF aplicadas a los sistemas de IA, áreas Secure, Defend y Thwart del perfil (en borrador) y advertencia de que los *tiers* no son niveles de madurez por subcategoría; el estado «Borrador» en la sección 1.4; la columna del CSF en la matriz resumen; la correspondencia AI RMF ↔ ISO/IEC 42001 del AIRC en la sección 4.3; las fuentes nuevas en la sección 13; y las secciones 5.4 (las 72 subcategorías del AI RMF) y 5.5 (las 48 subcategorías del CSF 2.0 con prioridad alta en el Cyber AI Profile, selección provisional), con su cobertura en SEVEN-G y la pregunta del documento 11 que da su nivel. Corrige el estado de ISO/IEC 42001: publicada (etapa 60.60), sin revisión en curso. Enlaza las plantillas P72 (perfil de seguridad de IA), P73 (perfil de gobierno de IA) y P74 (declaración de aplicabilidad de ISO/IEC 42001). Sustituye las afirmaciones que no se apoyaban en una fuente oficial por su fuente oficial (Reglamento (UE) 2026/1744 en EUR-Lex, NIS2 en España, Reino Unido, Espacio Europeo de Datos de Salud, Convenio Marco del Consejo de Europa y propuesta de modificación del RGPD) y retira el estado de verificación que admitía análisis de terceros. |
+| 0.3 | 25-09-2026 | El área Defend del Cyber AI Profile (en borrador) pasa a tener cobertura: sección 9.3 del documento 35, controles SEG-21 a SEG-25 y riesgo tipo RT-SEG-08. |

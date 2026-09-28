@@ -5,16 +5,16 @@
 | | |
 |---|---|
 | Document | Document 35 · AI and agent security |
-| Version | 0.1 (working draft) |
-| Date | 16-09-2026 |
+| Version | 0.2 (working draft) |
+| Date | 25-09-2026 |
 | Author | Fernando García Varela |
 | Status | Draft for review. It defines the autonomy levels A0–A3 and the SEG and AG control catalogues used by T10, P18 and the LV-AG checklist in document 22. |
 
-<!-- cifras: 4 | autonomy levels ; 20 | AI security controls (SEG) ; 20 | agent controls (AG) ; 9 | essential requirements for an agent -->
+<!-- cifras: 4 | autonomy levels ; 25 | AI security controls (SEG) ; 20 | agent controls (AG) ; 9 | essential requirements for an agent -->
 
 ---
 
-> **Legal notice and disclaimer.** SEVEN-G is a reference methodological framework provided "as is" and for information purposes only. It does not constitute legal, regulatory, financial or professional advice, nor does it guarantee compliance with any law or standard. References to general regulation (such as the EU AI Act, the GDPR, DORA or NIS2), to technical standards and to regulation specific to each sector or jurisdiction may be incomplete, may not apply to a particular case or may become out of date as a result of regulatory changes, interpretations or supervisory positions after their consultation date. **Each organisation that uses SEVEN-G is solely responsible for identifying the regulation that applies to it, verifying that it is current and certifying its own regulatory compliance**, with the appropriate qualified advice. The author accepts no liability for any use made of this content or for any decisions taken on the basis of it. The data, figures, companies and cases in the examples are fictitious or illustrative.
+> **Legal notice and disclaimer.** SEVEN-G is a reference methodological framework provided "as is" and for information purposes only. It does not constitute legal, regulatory, financial or professional advice, nor does it guarantee compliance with any law or standard. References to general regulation (such as the EU AI Act, the GDPR, DORA or NIS2), to technical standards and to regulation specific to each sector or jurisdiction may be incomplete, may not apply to a particular case or may become out of date as a result of regulatory changes, interpretations or supervisory positions after their consultation date. **Each organisation that uses SEVEN-G is solely responsible for identifying the regulation that applies to it, verifying that it is current and certifying its own regulatory compliance**, with the appropriate qualified advice. This methodology is a generic, free aid shared with the community so that nobody has to start from scratch; each person or organisation can and should adapt it to its own use. It must not be inferred that its legally sensitive parts have been reviewed by legal counsel: those reviews, for each company or sector, are the ultimate responsibility of the company, consultant or organisation that uses it. Although every effort is made to keep it up to date, some regulation may have changed without being reflected here. To the fullest extent permitted by law, the author accepts no responsibility whatsoever for the effects of its application in any organisation or for its full applicability. The methodology does not grant certification of any kind. The author accepts no liability for any use made of this content or for any decisions taken on the basis of it. The data, figures, companies and cases in the examples are fictitious or illustrative.
 
 <!-- esencial: condicional | Trigger: generative AI, agents (autonomy A1 to A3) or direct exposure to external people. The security design (P18) is evidence for every initiative; agent controls, adversarial testing and the minimums per autonomy level apply depending on the trigger. -->
 
@@ -28,18 +28,20 @@ This document establishes how an AI system is protected against attacks and misu
 |---|---|
 | In-house and third-party AI systems integrated into processes, including assistants, information retrieval systems and agents. | The company's general information security, which is governed by its own management system; this document complements it for AI. |
 | Corporate use of general-purpose AI insofar as it affects information leakage. | The acceptable use policy (document 31). |
-| Corporate exposure to offensive AI: impersonation, fraud, accelerated exploitation. | Incident management, which is developed in document 37. |
+| Corporate exposure to offensive AI: impersonation, fraud, accelerated exploitation; and use of AI in the company's cyber defence (section 9.3). | Incident management, which is developed in document 37. |
 
 ### 1.2 References
 
 The references were consulted in September 2026 and must be checked against their current version:
 
-- **OWASP Top 10 for LLM Applications**, 2025 version (risks LLM01 to LLM10).
+- **OWASP Top 10 for LLM Applications**, 2025 version (risks LLM01 to LLM10). The OWASP GenAI Security Project published the 2026 edition on 3 August 2026, with a different numbering: codes LLM01 to LLM10 in this document are those of the 2025 edition.
 - **OWASP Top 10 for Agentic Applications** (OWASP GenAI Security Project, published on 9 December 2025; risks ASI01 to ASI10) and the **Agentic AI – Threats and Mitigations** guide from the same project.
 - **MITRE ATLAS**, the knowledge base of adversary tactics and techniques against AI systems, which is updated periodically.
 - **NIST AI 600-1**, the generative AI profile of the NIST AI RMF (July 2024), in particular the information security, data privacy and value chain and component integration risks.
+- **NIST CSF 2.0** (NIST CSWP 29, February 2024), to express the controls with its six functions (govern, identify, protect, detect, respond and recover), and its AI profile, the **Cyber AI Profile** (NIST IR 8596), which as at the consultation date is a preliminary **draft** (December 2025) and is used for guidance only (34 §5.3).
 - **ISO/IEC 42001** and **ISO/IEC 23894** for the fit with the management system and with risk management.
 - **Regulation (EU) 2024/1689**, which requires high-risk systems to achieve an appropriate level of accuracy, robustness and cybersecurity, including resilience against the manipulation of data and models and against inputs designed to cause errors.
+- **Regulation (EU) 2024/2847 on cyber resilience**, for manufacturers of products with digital elements that incorporate AI: reporting of actively exploited vulnerabilities and severe incidents from 11-09-2026 (Art. 14) and main obligations from 11-12-2027; integrated with SEG-13, SEG-14 and document 37 (34 §7.2).
 - **CCN-CERT BP/36**, the good practice guide against offensive AI from the Spanish National Cryptologic Centre (Centro Criptológico Nacional) (June 2026).
 
 This document does not constitute legal advice.
@@ -76,7 +78,7 @@ This document does not constitute legal advice.
 | **Improper output handling** | The output is executed or inserted into other systems without validation (code, queries, links). | OWASP LLM05; ASI05 | RT-GEN-06 | SEG-04, AG-11 |
 | **Tool misuse** | The system uses legitimate tools in a harmful way through manipulation or excessive permissions. | OWASP LLM06; ASI02, ASI03 | RT-GEN-03, RT-GEN-04 | AG-02, AG-05, AG-07, AG-08 |
 | **Model supply chain** | Manipulated or vulnerable models, weights, libraries, connectors or tool servers. | OWASP LLM03; ASI04; NIST AI 600-1 | RT-SEG-07 | SEG-09, AG-13 |
-| **Unbounded consumption** | Mass usage that exhausts resources or causes costs to soar. | OWASP LLM10; ASI08 | RT-GEN-08, RT-ECO-02 | SEG-10, AG-16 |
+| **Unbounded consumption** | Mass usage that exhausts resources or causes costs to soar. | OWASP LLM10 | RT-GEN-08, RT-ECO-02 | SEG-10, AG-16 |
 | **Misinformation from the system itself** | False content presented as true that leads to wrong decisions. | OWASP LLM09; NIST AI 600-1 | RT-TEC-04 | SEG-11; source controls (33) |
 
 ### 3.2 Agent-specific threats
@@ -246,59 +248,64 @@ In A2 and A3, the **critical controls** are AG-01, AG-02, AG-03, AG-05, AG-08, A
 
 ## 6. Catalogue of AI security controls (SEG)
 
-*Applies* indicates the scope: **IA** (every AI system), **GEN** (generative AI and agents), **EXT** (exposure to external people), **CORP** (corporate control, not an initiative control).
+*Applies* indicates the scope: **IA** (every AI system), **GEN** (generative AI and agents), **EXT** (exposure to external people), **CORP** (corporate control, not an initiative control). *CSF function* indicates the NIST CSF 2.0 function to which the control mainly contributes and, in brackets, its category (34 §5.3); it is used to build the AI security profile from the existing controls.
 
-| Code | Control | What it requires | Evidence | Applies | Phase |
-|---|---|---|---|---|---|
-| **SEG-01** | AI threat modelling | Threat analysis using OWASP LLM 2025, OWASP Agentic and MITRE ATLAS, linked to the risk register. | Threat model in P18. | IA | 3, 4 |
-| **SEG-02** | Separation of instructions and data | External content is delimited and treated as data; system instructions cannot be overwritten by it. | Design and prompt injection test results. | GEN | 4, 5 |
-| **SEG-03** | Input and output filters | Detection of manipulation attempts, prohibited content and sensitive data before and after the model. | Configuration, thresholds and detection rate. | GEN | 4–6 |
-| **SEG-04** | Secure output handling | Outputs are validated and encoded before being executed or inserted into other systems. | Integration review; tests. | GEN | 4, 5 |
-| **SEG-05** | System prompt protection | No secrets, credentials or control logic in prompts; their disclosure does not compromise security. | Prompt review; extraction test. | GEN | 4, 5 |
-| **SEG-06** | Permission-aware retrieval | Information retrieval respects user permissions; indexes segmented by confidentiality level. | Index design; tests with users with different profiles. | GEN | 4, 5 |
-| **SEG-07** | Data leakage prevention | Minimisation, masking, information classification and control of data in inputs, context, outputs and logs. | Leakage prevention rules; log sampling. | IA, CORP | 4, 6 |
-| **SEG-08** | Integrity of training data and knowledge | Verified provenance, change control and anomaly detection in training, fine-tuning and evaluation data and knowledge bases. | Lineage (P16); ingestion controls. | IA | 4, 6 |
-| **SEG-09** | Model supply chain | Inventory of models and components with version and provenance; approved sources; integrity verification; vulnerability scanning. | Component inventory (P54); verification record. | IA | 4, 6 |
-| **SEG-10** | Usage and consumption limits | Authentication, quotas per user and system, size and rate limits, detection of extraction patterns. | Configuration and alerts. | GEN, EXT | 4, 6 |
-| **SEG-11** | Security evaluations and *red teaming* | Adversarial testing before G5, after relevant changes and periodically (section 8). | Plan, results and closed actions. | GEN | 5, 6 |
-| **SEG-12** | Security logging and monitoring | Telemetry of inputs, outputs, blocks and actions integrated into the company's security monitoring, with specific detection use cases. | Detection use cases; tested alerts. | IA | 4, 6 |
-| **SEG-13** | Accelerated vulnerability management | Shorter remediation deadlines for exposed systems and AI components; prioritisation by exploitability. | Approved deadlines; compliance. | CORP | 6 |
-| **SEG-14** | AI incident response | Procedures for injection, leakage, unauthorised action and agent compromise, connected to document 37. | Plan (P26); exercise. | IA, CORP | 5, 6 |
-| **SEG-15** | *Phishing*-resistant authentication | Impersonation-resistant multi-factor authentication for exposed and privileged access and for administration of AI platforms. | Measured coverage. | CORP | C4 |
-| **SEG-16** | Out-of-band verification | Confirmation through an independent, pre-established channel of payment orders, bank account changes and urgent requests from executives. | Procedure; compliance tests. | CORP | C4 |
-| **SEG-17** | Awareness of AI-enabled impersonation | Training and simulations with synthetic messages, voice and video, aimed especially at finance, senior management, customer service and technical support. | Plan; simulation results. | CORP | C4 |
-| **SEG-18** | Protocols against synthetic content | Agreed verification words or questions on voice and video channels; detection tools as support, not as the only barrier. | Published procedure. | CORP | C4 |
-| **SEG-19** | Continuous testing of the exposed surface | Discovery of exposed assets and recurring penetration testing that includes AI-automated techniques. | Results and remediation deadlines. | CORP | C4, 6 |
-| **SEG-20** | Control of corporate AI use | Approved tools, blocking or monitoring of unauthorised ones, prevention of leakage to external services. | Usage monitor (T21). | CORP | C4 |
+| Code | Control | What it requires | Evidence | Applies | Phase | CSF function |
+|---|---|---|---|---|---|---|
+| **SEG-01** | AI threat modelling | Threat analysis using OWASP LLM 2025, OWASP Agentic and MITRE ATLAS, linked to the risk register. | Threat model in P18. | IA | 3, 4 | ID (ID.RA) |
+| **SEG-02** | Separation of instructions and data | External content is delimited and treated as data; system instructions cannot be overwritten by it. | Design and prompt injection test results. | GEN | 4, 5 | PR (PR.DS) |
+| **SEG-03** | Input and output filters | Detection of manipulation attempts, prohibited content and sensitive data before and after the model. | Configuration, thresholds and detection rate. | GEN | 4–6 | PR (PR.DS) · DE (DE.CM) |
+| **SEG-04** | Secure output handling | Outputs are validated and encoded before being executed or inserted into other systems. | Integration review; tests. | GEN | 4, 5 | PR (PR.PS) |
+| **SEG-05** | System prompt protection | No secrets, credentials or control logic in prompts; their disclosure does not compromise security. | Prompt review; extraction test. | GEN | 4, 5 | PR (PR.PS) |
+| **SEG-06** | Permission-aware retrieval | Information retrieval respects user permissions; indexes segmented by confidentiality level. | Index design; tests with users with different profiles. | GEN | 4, 5 | PR (PR.AA) |
+| **SEG-07** | Data leakage prevention | Minimisation, masking, information classification and control of data in inputs, context, outputs and logs. | Leakage prevention rules; log sampling. | IA, CORP | 4, 6 | PR (PR.DS) |
+| **SEG-08** | Integrity of training data and knowledge | Verified provenance, change control and anomaly detection in training, fine-tuning and evaluation data and knowledge bases. | Lineage (P16); ingestion controls. | IA | 4, 6 | PR (PR.DS) |
+| **SEG-09** | Model supply chain | Inventory of models and components with version and provenance; approved sources; integrity verification; vulnerability scanning. | Component inventory (P54); verification record. | IA | 4, 6 | GV (GV.SC) · ID (ID.AM) |
+| **SEG-10** | Usage and consumption limits | Authentication, quotas per user and system, size and rate limits, detection of extraction patterns. | Configuration and alerts. | GEN, EXT | 4, 6 | PR (PR.IR) |
+| **SEG-11** | Security evaluations and *red teaming* | Adversarial testing before G5, after relevant changes and periodically (section 8). | Plan, results and closed actions. | GEN | 5, 6 | ID (ID.IM) |
+| **SEG-12** | Security logging and monitoring | Telemetry of inputs, outputs, blocks and actions integrated into the company's security monitoring, with specific detection use cases. | Detection use cases; tested alerts. | IA | 4, 6 | DE (DE.CM) |
+| **SEG-13** | Accelerated vulnerability management | Shorter remediation deadlines for exposed systems and AI components; prioritisation by exploitability. | Approved deadlines; compliance. | CORP | 6 | ID (ID.RA) · PR (PR.PS) |
+| **SEG-14** | AI incident response | Procedures for injection, leakage, unauthorised action and agent compromise, connected to document 37. | Plan (P26); exercise. | IA, CORP | 5, 6 | RS (RS.MA) · RC (RC.RP) |
+| **SEG-15** | *Phishing*-resistant authentication | Impersonation-resistant multi-factor authentication for exposed and privileged access and for administration of AI platforms. | Measured coverage. | CORP | C4 | PR (PR.AA) |
+| **SEG-16** | Out-of-band verification | Confirmation through an independent, pre-established channel of payment orders, bank account changes and urgent requests from executives. | Procedure; compliance tests. | CORP | C4 | PR (PR.AA) |
+| **SEG-17** | Awareness of AI-enabled impersonation | Training and simulations with synthetic messages, voice and video, aimed especially at finance, senior management, customer service and technical support. | Plan; simulation results. | CORP | C4 | PR (PR.AT) |
+| **SEG-18** | Protocols against synthetic content | Agreed verification words or questions on voice and video channels; detection tools as support, not as the only barrier. | Published procedure. | CORP | C4 | PR (PR.AA) · DE (DE.AE) |
+| **SEG-19** | Continuous testing of the exposed surface | Discovery of exposed assets and recurring penetration testing that includes AI-automated techniques. | Results and remediation deadlines. | CORP | C4, 6 | ID (ID.AM, ID.RA) |
+| **SEG-20** | Control of corporate AI use | Approved tools, blocking or monitoring of unauthorised ones, prevention of leakage to external services. | Usage monitor (T21). | CORP | C4 | GV (GV.PO) · PR (PR.DS) |
+| **SEG-21** | Autonomy of the automated response | A0–A3 level set by type of containment action; A2 or A3 only with an approved procedure, limits, tested rollback and a kill switch (section 9.3). | Matrix of actions and levels (P18); rollback tests (P19). | CORP | 4–6 | RS (RS.MI) |
+| **SEG-22** | Human validation of containment | Informed validation before containing with an effect on production, on customers or on people; after-the-fact review of those actions at A2 and A3. | Record of validations and reviews; rejection rate. | CORP | 6 | RS (RS.MA) |
+| **SEG-23** | Quality of AI detection | False positives and negatives, detection and response time against a baseline without AI, with thresholds; analysis of each false negative in a real incident. | Indicators and thresholds (P25); analysis of false negatives. | CORP | 5, 6 | DE (DE.AE) |
+| **SEG-24** | Dependency on the AI cyber defence supplier | Supplier assessment, control of the telemetry that leaves the company, exit plan and degraded operation without AI. | P14, P55, P57; degraded operation test. | CORP | 3, 6 | GV (GV.SC) |
+| **SEG-25** | Adversarial testing of the defensive system | Evasion, poisoning of telemetry or training and instruction injection in alerts, tickets or logs read by the system. | Adversarial testing plan and report (P53). | CORP | 5, 6 | ID (ID.IM) |
 
 ---
 
 ## 7. Catalogue of agent controls (AG)
 
-The **LV-AG** checklist in document 22 turns each control into verifiable binary questions at G4 (designed), G5 (tested) and R6 (operating). This document is the reference for its content.
+The **LV-AG** checklist in document 22 turns each control into verifiable binary questions at G4 (designed), G5 (tested) and R6 (operating). This document is the reference for its content. *CSF function* has the same meaning as in section 6.
 
-| Code | Control | What it requires | Evidence at G4 · G5 · R6 |
-|---|---|---|---|
-| **AG-01** | Own identity | Exclusive, registered non-human identity with a human owner; dual identity when acting on behalf of a user. | Identity record · Trace test · Current inventory |
-| **AG-02** | Least privilege | Closed list of tools, operations and data; separate read and write access; justified permissions. | Permission matrix · Denied access test · Review (AG-20) |
-| **AG-03** | Credential management | Secrets manager, short-lived credentials, rotation, revocation linked to the kill switch. | Design · Revocation test · Rotation log |
-| **AG-04** | Mandate and authorised intent | Each task with a requester or triggering event, objective, tools, data and limits. | Mandate schema · Samples · Samples |
-| **AG-05** | Intent decision point | Component external to the model that validates each action against the mandate and issues ephemeral permissions. | Design · Blocked deviation tests · Block rate |
-| **AG-06** | Action–intent traceability | Every action is linked to the identifier of the intent that authorised it. | Data model · Case reconstruction · Sampling |
-| **AG-07** | Action limits | Amounts, volumes, recipients, time windows, iterations and budget enforced outside the model. | Limits table · Limit breach tests · Alerts |
-| **AG-08** | Human validation | List of sensitive actions; informed validation; measurement of rejections and times. | List and design (P17) · User test · Rejection rate |
-| **AG-09** | Kill switch | Full stop or stop per capability without deploying code; revokes credentials; activates the fallback process. | Procedure · Test with time to take effect · Periodic tests |
-| **AG-10** | Action log | Complete, protected log with the fields in 4.8; defined retention. | Specification · Integrity test · Sampling |
-| **AG-11** | Sandboxed environments | Code execution, browsing and external files in sandboxed environments without production credentials. | Architecture · Escape test · Current configuration |
-| **AG-12** | Untrusted external content | Privilege separation between reading untrusted content and sensitive actions. | Design · Indirect injection tests · Periodic results |
-| **AG-13** | Approved tools and connectors | Inventory of tools, connectors and tool servers with pinned version, verified origin and approval. | Inventory · Verification · Change review |
-| **AG-14** | Memory and context integrity | Memory isolated per user and task, with expiry, write validation and the ability to purge. | Design · Poisoning test · Recorded purges |
-| **AG-15** | Secure inter-agent communication | Mutual authentication, integrity-protected messages, no implicit trust between agents. | Design · Spoofing test · Configuration |
-| **AG-16** | Cascade and consumption containment | Limits on iterations, retries and depth; circuit breakers; budget per task. | Parameters · Loop test · Consumption alerts |
-| **AG-17** | Behaviour monitoring | Action baselines and alerts on deviations (volume, destinations, time windows, tools). | Detection use cases · Tested alerts · Alert review |
-| **AG-18** | Agent adversarial testing | Direct and indirect injection, tool misuse, privilege escalation, manipulation of the approver. | Plan · Results · Periodic campaigns |
-| **AG-19** | Reversibility and compensation | Preference for reversible actions; procedure to undo or compensate for the others. | Design · Undo test · Real cases |
-| **AG-20** | Periodic permission review | Certification by the human owner of identities, permissions and tools at the frequency set in 5.3. | — · — · Review minutes |
+| Code | Control | What it requires | Evidence at G4 · G5 · R6 | CSF function |
+|---|---|---|---|---|
+| **AG-01** | Own identity | Exclusive, registered non-human identity with a human owner; dual identity when acting on behalf of a user. | Identity record · Trace test · Current inventory | PR (PR.AA) |
+| **AG-02** | Least privilege | Closed list of tools, operations and data; separate read and write access; justified permissions. | Permission matrix · Denied access test · Review (AG-20) | PR (PR.AA) |
+| **AG-03** | Credential management | Secrets manager, short-lived credentials, rotation, revocation linked to the kill switch. | Design · Revocation test · Rotation log | PR (PR.AA) |
+| **AG-04** | Mandate and authorised intent | Each task with a requester or triggering event, objective, tools, data and limits. | Mandate schema · Samples · Samples | PR (PR.AA) |
+| **AG-05** | Intent decision point | Component external to the model that validates each action against the mandate and issues ephemeral permissions. | Design · Blocked deviation tests · Block rate | PR (PR.AA) |
+| **AG-06** | Action–intent traceability | Every action is linked to the identifier of the intent that authorised it. | Data model · Case reconstruction · Sampling | PR (PR.PS) |
+| **AG-07** | Action limits | Amounts, volumes, recipients, time windows, iterations and budget enforced outside the model. | Limits table · Limit breach tests · Alerts | PR (PR.PS) |
+| **AG-08** | Human validation | List of sensitive actions; informed validation; measurement of rejections and times. | List and design (P17) · User test · Rejection rate | PR (PR.AA) |
+| **AG-09** | Kill switch | Full stop or stop per capability without deploying code; revokes credentials; activates the fallback process. | Procedure · Test with time to take effect · Periodic tests | RS (RS.MI) |
+| **AG-10** | Action log | Complete, protected log with the fields in 4.8; defined retention. | Specification · Integrity test · Sampling | PR (PR.PS) |
+| **AG-11** | Sandboxed environments | Code execution, browsing and external files in sandboxed environments without production credentials. | Architecture · Escape test · Current configuration | PR (PR.IR) |
+| **AG-12** | Untrusted external content | Privilege separation between reading untrusted content and sensitive actions. | Design · Indirect injection tests · Periodic results | PR (PR.AA) |
+| **AG-13** | Approved tools and connectors | Inventory of tools, connectors and tool servers with pinned version, verified origin and approval. | Inventory · Verification · Change review | ID (ID.AM) · GV (GV.SC) |
+| **AG-14** | Memory and context integrity | Memory isolated per user and task, with expiry, write validation and the ability to purge. | Design · Poisoning test · Recorded purges | PR (PR.DS) |
+| **AG-15** | Secure inter-agent communication | Mutual authentication, integrity-protected messages, no implicit trust between agents. | Design · Spoofing test · Configuration | PR (PR.DS) |
+| **AG-16** | Cascade and consumption containment | Limits on iterations, retries and depth; circuit breakers; budget per task. | Parameters · Loop test · Consumption alerts | PR (PR.IR) |
+| **AG-17** | Behaviour monitoring | Action baselines and alerts on deviations (volume, destinations, time windows, tools). | Detection use cases · Tested alerts · Alert review | DE (DE.CM) |
+| **AG-18** | Agent adversarial testing | Direct and indirect injection, tool misuse, privilege escalation, manipulation of the approver. | Plan · Results · Periodic campaigns | ID (ID.IM) |
+| **AG-19** | Reversibility and compensation | Preference for reversible actions; procedure to undo or compensate for the others. | Design · Undo test · Real cases | RC (RC.RP) |
+| **AG-20** | Periodic permission review | Certification by the human owner of identities, permissions and tools at the frequency set in 5.3. | — · — · Review minutes | PR (PR.AA) |
 
 ---
 
@@ -318,7 +325,7 @@ Automated adversarial evaluations are versioned and run before every relevant ch
 
 ---
 
-## 9. Exposure to offensive AI
+## 9. Exposure to offensive AI and use of AI in cyber defence
 
 For the most part, AI does not create new types of attack, but it lowers their cost, increases their credibility and shortens timescales. The CCN-CERT BP/36 guide stresses this idea: the time between the existence of a vulnerability and its exploitation is shrinking, and one-off security reviews arrive too late. Exposure is managed as a corporate risk (C4), with an owner in information security and reporting to the board.
 
@@ -342,6 +349,21 @@ For the most part, AI does not create new types of attack, but it lowers their c
 - **Payment processes** reviewed so that no order depends solely on recognition of voice, image or writing style.
 - **Remediation deadlines** for vulnerabilities in exposed systems reviewed and approved, with monitoring of compliance.
 
+### 9.3 Use of AI in the company's cyber defence (Defend)
+
+The company can also use AI to defend itself: alert correlation and triage, threat hunting, malicious code analysis and automated response. The NIST Cyber AI Profile, in draft, treats this as an area of its own, **Defend** (34 §5.3). In SEVEN-G it is one more **use case**: it is registered as an initiative, goes through the lifecycle with its gates and its autonomy is set with the A0–A3 scale (section 5). What is specific is that an error of the defensive system can let an attack through (false negative) or interrupt operations by containing something that is not an attack (false positive), and that the defensive system itself is a target for the attacker.
+
+| Aspect | Rule |
+|---|---|
+| **Autonomy of the response** | Each type of containment action (isolating a device, blocking an account, cutting traffic, revoking credentials, removing a message) has its A0–A3 level. Actions with an effect on production or on people are A1, with prior human validation, unless an approved procedure, with limits, tested rollback and a kill switch, allows A2 or A3 (SEG-21). |
+| **Human oversight** | Before a containment with an effect on production, on customers or on a person's account, a security person who sees why it is proposed validates it; at A2 and A3, those actions are reviewed afterwards (SEG-22). |
+| **Detection quality** | False positives and false negatives, detection time and response time, measured against a baseline without AI and with thresholds in P25 (SEG-23). A false negative in a real incident is analysed as a finding (document 37). |
+| **Supplier dependency** | Assessment of the AI cyber defence supplier (P14, P55), control of the telemetry that leaves the company and where it is processed, exit plan (P57) and degraded operation without the AI (SEG-24). |
+| **Testing of the defensive system itself** | Adversarial testing of evasion, of poisoning of telemetry or training data and of instruction injection in alerts, tickets or logs that the system reads (SEG-25, P53). |
+| **Typical risk** | RT-SEG-08 (document 33 §9.9). |
+
+> **Why it matters.** Using AI in cyber defence speeds up detection and response, but it hands over to an automated system decisions that can stop operations or let an attack through. Treating it as one more use case, with autonomy set by type of action, human oversight of what cannot be undone and accuracy metrics against a baseline, prevents defence from becoming a new source of incidents.
+
 ---
 
 ## 10. Indicators for the board
@@ -360,6 +382,7 @@ For the most part, AI does not create new types of attack, but it lowers their c
 | Exposed critical vulnerabilities past deadline | Number and age. | Zero. |
 | Impersonation exercises | Result of the last fraud exercise with synthetic content. | Percentage that applies out-of-band verification. |
 | Unauthorised use of AI | Cases detected and regularised. | Downward trend. |
+| Quality of AI cyber defence | False positives and negatives, detection and response time and automated containments reversed (section 9.3). | Improvement against the baseline without AI; every reversed containment is explained. |
 
 ---
 
@@ -385,6 +408,7 @@ The AI Technical Owner designs and implements the controls; information security
 | **T10** | Agent security assessment | Based on the autonomy level, generates the required SEG and AG controls, records their status (met, not met, not applicable, pending) with evidence and blocks G4 or G5 if a critical control has not been designed or tested. Checklist in T03. |
 | **P53** | Adversarial testing plan and report | Scope, rules of engagement, scenarios and results of *red teaming* campaigns (section 8). Phases 4 to 6. |
 | **P54** | Non-human identity and component inventory | Agent identities with their human owner (section 4) and components with version and provenance (SEG-09). Phase 4; reviewed during operation. |
+| **P72** | AI security profile (CSF 2.0 / Cyber AI Profile) | Current and target profile of AI security with the CSF functions, based on the "CSF function" column of sections 6 and 7 and on the document 11 questionnaire (34 §5.5). C1, C2 and C5. |
 | P17 · P24 · P26 | Human oversight design · Operations manual · Incident response plan | Sensitive actions and validation; kill switch procedure; AI incident response. |
 | T02 · T06 · T08 · T17 · T21 | Inventory · Risks · Incidents · Board dashboard · Corporate usage monitor | Autonomy level, risks, incidents, indicators and unauthorised use. |
 
@@ -410,3 +434,5 @@ The AI Technical Owner designs and implements the controls; information security
 | Version | Date | Changes |
 |---|---|---|
 | 0.1 | 16-09-2026 | First version. Defines the threats to AI systems with references to OWASP (LLM 2025 and agentic applications), MITRE ATLAS and NIST AI 600-1; the nine essential requirements for an agent; autonomy levels A0–A3 with minimum controls and frequencies; the SEG-01 to SEG-20 and AG-01 to AG-20 catalogues; testing by phase; exposure to offensive AI and the indicators for the board. |
+| 0.2 | 25-09-2026 | Adds the NIST CSF 2.0 and the Cyber AI Profile (in draft) to the references (section 1.2) and the "CSF function" column to the SEG and AG catalogues (sections 6 and 7), with the CSF function and category to which each control contributes (34 §5.3), and template P72 in section 12. |
+| 0.3 | 25-09-2026 | Adds section 9.3 on the use of AI in the company's cyber defence (Defend area of the Cyber AI Profile): autonomy of the response, human oversight of containment, detection quality, supplier dependency and testing of the defensive system itself; controls SEG-21 to SEG-25; an indicator for the board and typical risk RT-SEG-08. |
