@@ -31,7 +31,7 @@
         motor de T17 (completo, móvil y recomendaciones), su ejemplo, la comunidad y la página de T17 lo cargan; los que prometen no
         medir visitas lo cargan con data-sin-medicion. La prueba de humo (7) sirve cada página con su ruta real para que codigos.js
         se cargue y comprueba que aparecen el control y los enlaces.
-    18. Mapa de datos entre herramientas (D100): mapa_datos.json con todas sus rutas en el esquema de T01 (0.6); T11, T14 y T15 leen el
+    18. Mapa de datos entre herramientas (D100): mapa_datos.json con todas sus rutas en el esquema de T01 (0.8, con madurez[].lentes, D120); T11, T14 y T15 leen el
         registro del navegador (misma clave) y atienden ?desde=t01; T01 incorpora sus resultados; las demostraciones de T11, T14, T15 y T17
         son de la misma compañía que T01 y derivan de él (cálculo del índice y madurez de T15); documento 03 §4.1 (ES/EN).
     19. Datos por usuario o compañía (D103): el módulo herramientas/_comun/datos_locales.js está incrustado en T01, T11, T14 y T15 (botón
@@ -518,11 +518,13 @@ try {
       @{ f = (Join-Path $t11 'calculadora.html'); debe = @('#resultado[data-van="1826542"][data-roi="217.7"][data-payback="1.44"]', '#nav a[href="#/costes"]', '#t01-local[data-registro]', "#sitio-nav $ctl", '#principal a.cod-enlace[title]', '#btn-datos[data-estado="demo"]'); que = 'calculadora T11/T13 (ejemplo IA-2026-001)' }
       @{ f = (Join-Path $t15 'madurez.html'); debe = @('#nivel-global[data-nivel="2"][data-tope="2"][data-tope-aplicado="1"]', 'tr[data-dim="D6"][data-nivel="1"]', 'tr[data-dim="D3"][data-nivel="2"]', '#t01-local[data-registro]', "#sitio-nav $ctl", '#principal a.cod-enlace[title]', '#btn-datos[data-estado="demo"]'); que = 'diagnóstico T15 (ejemplo EM-2026-06)' }
       @{ f = (Join-Path $t15 'madurez.html'); antes = "location.hash='#/perfil_csf'"; debe = @('#perfil-resumen[data-marco="csf"][data-con-brecha]', '#tabla-perfil tr[data-sub="ID.RA-01"]', '#tabla-perfil tr[data-sub="GV.OC-04"] select[data-pprop]'); que = 'diagnóstico T15, vista «Perfil CSF» (D115)' },
+      # D120: vista «Tres lentes» con el ejemplo EM-2026-06: huella HT4 desde el registro de demostración, D6 por debajo del mínimo (alerta alta) y alcance con una iniciativa IM3
+      @{ f = (Join-Path $t15 'madurez.html'); antes = "location.hash='#/lentes'"; debe = @('#lentes[data-huella="HT4"][data-fuente^="t01"]', '#tabla-minimos tr[data-dim="D6"][data-cumple="0"]', '#lentes-alertas [data-alerta="adopcion_por_delante"][data-gravedad="alta"][data-dim="D6"]', '.im-barra[data-im="IM3"][data-n="1"]', '#tabla-uso tr[data-ini="IA-2025-002"][data-im="IM3"]'); que = 'diagnóstico T15, vista «Tres lentes» (D120)' },
       # D100: la tarjeta de madurez (bloque «madurez» del panel, escrito por T15 en el registro) se dibuja con sus siete dimensiones
-      @{ f = (Get-ChildItem $salidaEj -Filter 't01_Dashboard_Casos_Uso_IA_v*.html' | Select-Object -First 1).FullName; debe = @('#indice tbody tr', '#kpis [data-kpi]', '#embudo .fun2-mid', '#embudo .fun-card.gan', '#embudo .fun-card li .pq', '#fbar #fopen, #filters .fgroup', '#transv table tbody tr', '#madurez table tbody tr', "#barra .toolbar $ctl", 'main a.cod-enlace[title]'); que = 'panel completo' }
+      @{ f = (Get-ChildItem $salidaEj -Filter 't01_Dashboard_Casos_Uso_IA_v*.html' | Select-Object -First 1).FullName; debe = @('#indice tbody tr', '#kpis [data-kpi]', '#embudo .fun2-mid', '#embudo .fun-card.gan', '#embudo .fun-card li .pq', '#fbar #fopen, #filters .fgroup', '#transv table tbody tr', '#madurez table tbody tr', '#madurez-lentes table tbody tr[data-huella="HT4"]', "#barra .toolbar $ctl", 'main a.cod-enlace[title]'); que = 'panel completo' }
       # comunidad (D80): la página se dibuja aunque no haya intermediario configurado ni red (el texto lo pone el JavaScript)
       @{ f = (Join-Path $repo 'SEVEN-G\herramientas\comunidad\index.html'); debe = @('h1[data-i18n]:not(:empty)', '#form-envio', '#lista[data-estado]', '#btn-identidad:not(:empty)', ".barra $ctl"); que = 'página de comunidad' }
-      @{ f = (Get-ChildItem $salidaEj -Filter 't01_Dashboard_Movil_IA_v*.html' | Select-Object -First 1).FullName; debe = @('#embudo .row.fun', '#embudo .row.fun.gan', '#transv .row', '#madurez-sec:not([hidden]) #madurez *', "header $ctl", 'body a.cod-enlace[title]'); que = 'panel móvil' }
+      @{ f = (Get-ChildItem $salidaEj -Filter 't01_Dashboard_Movil_IA_v*.html' | Select-Object -First 1).FullName; debe = @('#embudo .row.fun', '#embudo .row.fun.gan', '#transv .row', '#madurez-sec:not([hidden]) #madurez *', '#madurez-lentes .row', "header $ctl", 'body a.cod-enlace[title]'); que = 'panel móvil' }
       @{ f = (Join-Path $salidaEj 't01_Registro_Recomendaciones.html'); debe = @('#tl article.rec', ".top $ctl", 'body a.cod-enlace[title]'); que = 'registro de recomendaciones' }
       @{ f = (Join-Path $t17 'index.html'); debe = @('p.que-es', "header $ctl", '#es a.cod-enlace[title]'); que = 'página de T17' }
       # D105: buscador de términos con selector de ámbito; en «Todo el sitio» la lista de resultados llega de busqueda.json (servido por http)
@@ -801,9 +803,9 @@ try {
     foreach ($e in "calculadora.html'", "indice.html'", "madurez.html'") { if (-not $tT01.Contains($e)) { Mal "T01: no enlaza la herramienta $e con el registro cargado"; $malMapa++ } }
     if (-not ($tT01.Contains("?desde=t01") -and $tT01.Contains('data-ir=') -and $tT01.Contains('function incorporarResultado'))) { Mal 'T01: faltan los enlaces ?desde=t01 (con guardado previo) o la incorporación de resultados de T11 y T15'; $malMapa++ }
     # esquema 0.6 admitido en el esquema JSON, en el registro y en el conector
-    if ($esq.properties.version_esquema.enum -notcontains '0.7' -or -not $esq.properties.ContainsKey('madurez')) { Mal 'esquema_registro.schema.json: falta la versión 0.6 con la lista madurez[]'; $malMapa++ }
-    if (-not $tT01.Contains("'0.7'")) { Mal 'T01: la validación no admite el esquema 0.7'; $malMapa++ }
-    if (-not [IO.File]::ReadAllText((Join-Path $t17 't01_a_panel.py')).Contains('"0.7"')) { Mal 'T17 t01_a_panel.py: no admite el esquema 0.7'; $malMapa++ }
+    if ($esq.properties.version_esquema.enum -notcontains '0.8' -or -not $esq.properties.ContainsKey('madurez') -or -not $esq['$defs'].madurez.properties.ContainsKey('lentes')) { Mal 'esquema_registro.schema.json: falta la versión 0.8 con madurez[].lentes (D120)'; $malMapa++ }
+    if (-not $tT01.Contains("'0.8'")) { Mal 'T01: la validación no admite el esquema 0.8'; $malMapa++ }
+    foreach ($f in 't01_a_panel.py', 't01_a_panel.js') { if (-not [IO.File]::ReadAllText((Join-Path $t17 $f)).Contains('"0.8"')) { Mal "T17 $f`: no admite el esquema 0.8"; $malMapa++ } }
     # demostraciones: una sola compañía ficticia
     $orgT01 = (Get-Content (Join-Path $t01 'datos_demo.json') -Raw -Encoding utf8 | ConvertFrom-Json -Depth 64).meta.organizacion
     foreach ($h in @(@{ c = 'T11'; d = $t11 }, @{ c = 'T14'; d = $t14 }, @{ c = 'T15'; d = $t15 })) {
@@ -834,6 +836,7 @@ try {
       }
       $dPanel = Get-Content (Join-Path $t17 'ejemplo\salida\t01_dashboard_data.json') -Raw -Encoding utf8 | ConvertFrom-Json -Depth 64
       if (-not $dPanel.madurez -or $dPanel.madurez.id -ne $mT01[-1].id) { Mal 'T17: el panel de ejemplo no lleva el bloque madurez del último diagnóstico del registro'; $malMapa++ }
+      elseif ($mT01[-1].lentes -and (($dPanel.madurez.lentes | ConvertTo-Json -Depth 16 -Compress) -ne ($mT01[-1].lentes | ConvertTo-Json -Depth 16 -Compress))) { Mal 'T17: el panel de ejemplo no lleva las tres lentes del último diagnóstico del registro (D120)'; $malMapa++ }
     }
     # documento 03 §4.1 (ES/EN): explica el mapa y nombra cada herramienta que lee del registro
     foreach ($lang in 'es', 'en') {
@@ -842,7 +845,7 @@ try {
       if (-not $sec -or -not $sec.Contains('mapa_datos.json')) { Mal "documento 03 [$lang]: falta la sección 4.1 con el mapa de datos (D100)"; $malMapa++ }
       else { foreach ($h in ($mapa.herramientas.Keys | Where-Object { $mapa.herramientas[$_].lee_de_t01 })) { if ($sec -notmatch "\*\*$h\*\*") { Mal "documento 03 [$lang] §4.1: no describe qué lee $h"; $malMapa++ } } }
     }
-    if (-not $malMapa) { Ok 'herramientas enlazadas con el registro T01 como fuente de verdad: clave compartida, enlaces ?desde=t01, esquema 0.6, demostraciones de una sola compañía y documento 03 §4.1' }
+    if (-not $malMapa) { Ok 'herramientas enlazadas con el registro T01 como fuente de verdad: clave compartida, enlaces ?desde=t01, esquema 0.8, demostraciones de una sola compañía y documento 03 §4.1' }
   }
 
   # ---- 19. datos por usuario o compañía (D103): módulo común incrustado en las cuatro herramientas, diálogo «Dónde están mis datos»,

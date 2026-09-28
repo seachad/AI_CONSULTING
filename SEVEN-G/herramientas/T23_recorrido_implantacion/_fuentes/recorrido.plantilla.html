@@ -1,0 +1,793 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light dark">
+<meta name="description" content="SEVEN-G · T23 Recorrido de implantación: cuestionario de doce preguntas que asigna el punto de partida (arquetipo, rasgos y modificadores) y recorrido priorizado de 22 hitos por etapas y por rol, con los hitos cumplidos según el diagnóstico de madurez. Documento 96. Funciona sin servidor.">
+<title>T23 · Recorrido de implantación</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Crect width='16' height='16' fill='%230d7680'/%3E%3Cpath d='M2 13h3v-3H2zm4.5-3h3V7h-3zM11 7h3V3h-3z' fill='%23fff1e5'/%3E%3C/svg%3E">
+<style>
+:root{
+  --papel:#fff1e5;--papel-2:#f2dfce;--papel-3:#ead2bd;--tarjeta:#fff8f2;
+  --tinta:#33302e;--tinta-2:#5b5550;--tinta-3:#6e655e;--negro:#1a1817;
+  --regla:#ccc1b7;--regla-2:#e3d3c4;
+  --claret:#990f3d;--oxford:#0f5499;--teal:#0d7680;--velvet:#593380;--ambar:#8a5a00;
+  --ok-bg:#d9ebe0;--med-bg:#f7e3c4;--ko-bg:#f3d3da;--info-bg:#dbe6f2;
+  --serif:"Source Serif 4",Georgia,"Times New Roman",serif;
+  --sans:"Libre Franklin","Segoe UI",Arial,sans-serif;
+  color-scheme:light;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="claro"]):not([data-theme="salmon"]){
+    --papel:#262a33;--papel-2:#30353f;--papel-3:#3a404b;--tarjeta:#2b3039;
+    --tinta:#f2e6dc;--tinta-2:#d3c6bb;--tinta-3:#b0a499;--negro:#fff1e5;
+    --regla:#555b66;--regla-2:#3d424c;
+    --claret:#ff7a9e;--oxford:#86b7f2;--teal:#5fd0cb;--velvet:#c6a3ec;--ambar:#f1c26b;
+    --ok-bg:#20433f;--med-bg:#4a3b22;--ko-bg:#4d2432;--info-bg:#233a57;
+    color-scheme:dark;
+  }
+}
+:root[data-theme="oscuro"]{
+  --papel:#262a33;--papel-2:#30353f;--papel-3:#3a404b;--tarjeta:#2b3039;
+  --tinta:#f2e6dc;--tinta-2:#d3c6bb;--tinta-3:#b0a499;--negro:#fff1e5;
+  --regla:#555b66;--regla-2:#3d424c;
+  --claret:#ff7a9e;--oxford:#86b7f2;--teal:#5fd0cb;--velvet:#c6a3ec;--ambar:#f1c26b;
+  --ok-bg:#20433f;--med-bg:#4a3b22;--ko-bg:#4d2432;--info-bg:#233a57;
+  color-scheme:dark;
+}
+*{box-sizing:border-box}
+html{background:var(--papel);-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--papel);color:var(--tinta);font:15px/1.5 var(--sans);overflow-wrap:break-word}
+a{color:var(--oxford);text-underline-offset:3px}
+h1,h2,h3{font-family:var(--serif);color:var(--negro);line-height:1.2}
+h1{font-size:clamp(24px,4vw,34px);margin:4px 0 6px;font-weight:600}
+h2{font-size:22px;margin:28px 0 10px;padding-top:10px;border-top:3px solid var(--negro);font-weight:600}
+h3{font-size:17px;margin:18px 0 8px;font-weight:700}
+p{margin:0 0 10px}
+.saltar{position:absolute;left:-9999px;top:0;background:var(--negro);color:var(--papel);padding:8px 12px;z-index:100}
+.saltar:focus{left:8px;top:8px}
+:focus-visible{outline:3px solid var(--oxford);outline-offset:2px}
+.oculto{position:absolute!important;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+.cab{border-bottom:1px solid var(--regla);background:var(--papel)}
+.cab-in{max-width:1280px;margin:0 auto;padding:10px 16px 8px;display:flex;flex-wrap:wrap;gap:8px 14px;align-items:center}
+.marca{display:flex;align-items:center;gap:8px;font:800 17px/1 var(--serif);letter-spacing:.04em;color:var(--negro);text-decoration:none;margin-right:auto}
+.marca i{width:10px;height:10px;background:var(--claret);display:inline-block}
+.marca span{font:600 14px/1.2 var(--sans);letter-spacing:0;color:var(--tinta-2)}
+.ajustes{display:flex;gap:6px;flex-wrap:wrap;align-items:center}
+.nav{max-width:1280px;margin:0 auto;padding:0 16px 8px;display:flex;flex-wrap:wrap;gap:4px}
+.nav a{font:600 14px/1 var(--sans);color:var(--tinta);text-decoration:none;padding:9px 10px;border:1px solid transparent;border-radius:2px;white-space:nowrap}
+.nav a:hover{border-color:var(--regla)}
+.nav a[aria-current="page"]{background:var(--negro);color:var(--papel)}
+.aviso-demo{max-width:1280px;margin:0 auto;padding:0 16px}
+.aviso-demo div{background:var(--med-bg);border-left:4px solid var(--ambar);padding:6px 10px;font-size:13px}
+main{max-width:1280px;margin:0 auto;padding:6px 16px 48px}
+main:focus{outline:none}
+.pie{max-width:1280px;margin:0 auto;padding:12px 16px 28px;border-top:3px solid var(--negro);font-size:12.5px;color:var(--tinta-3);display:flex;flex-wrap:wrap;gap:4px 18px;justify-content:space-between}
+.pie-legal{flex:1 1 100%;margin:0 0 8px;font-size:12px;line-height:1.5;color:var(--tinta-2)}
+.pie-legal b{color:var(--negro)}
+button,.btn,select,input,textarea{font:inherit;color:var(--tinta)}
+.btn,button{cursor:pointer;background:var(--papel);border:1px solid var(--regla);border-radius:2px;padding:7px 11px;font-weight:600;font-size:14px;line-height:1.2;min-height:36px;text-decoration:none;display:inline-block}
+.btn:hover,button:hover{border-color:var(--tinta-2)}
+.btn.primario,button.primario{background:var(--negro);color:var(--papel);border-color:var(--negro)}
+.btn.peligro,button.peligro{border-color:var(--claret);color:var(--claret)}
+button.pestana{background:var(--papel)}
+button.pestana[aria-pressed="true"]{background:var(--negro);color:var(--papel);border-color:var(--negro)}
+select,input[type=text],input[type=date],input[type=number],textarea{background:var(--tarjeta);border:1px solid var(--regla);border-radius:2px;padding:6px 8px;min-height:36px;max-width:100%}
+textarea{width:100%;min-height:56px}
+label{font-weight:600;font-size:13px;color:var(--tinta-2)}
+.campo{display:flex;flex-direction:column;gap:3px;min-width:0}
+.campo input,.campo select,.campo textarea{width:100%}
+.rejilla{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:10px 14px}
+.fila{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+.ayuda{font-size:12.5px;color:var(--tinta-3)}
+.enlace-btn,button.enlace-btn{background:none;border:0;padding:0;min-height:0;color:var(--oxford);text-decoration:underline;text-underline-offset:3px;font-weight:600;font-size:inherit;line-height:inherit;cursor:pointer}
+.ajustes .enlace-btn{font-size:13px;margin-right:6px;padding:8px 2px}
+.et{display:inline-block;font:600 12px/1.3 var(--sans);padding:2px 7px;border-radius:2px;border:1px solid var(--regla);background:var(--papel-2);color:var(--tinta);white-space:nowrap}
+.et.ok{background:var(--ok-bg);border-color:var(--teal)}
+.et.med{background:var(--med-bg);border-color:var(--ambar)}
+.et.ko{background:var(--ko-bg);border-color:var(--claret)}
+.et.info{background:var(--info-bg);border-color:var(--oxford)}
+.sd{font-style:italic;color:var(--tinta-3)}
+.num{font-variant-numeric:tabular-nums;text-align:right}
+.tabla{width:100%;border-collapse:collapse;font-size:14px;margin:6px 0 16px}
+.tabla th{text-align:left;font-size:12.5px;color:var(--tinta-2);border-bottom:2px solid var(--negro);padding:6px 10px 6px 0;vertical-align:bottom}
+.tabla td{border-bottom:1px solid var(--regla);padding:7px 10px 7px 0;vertical-align:top}
+.tabla td small{display:block;color:var(--tinta-3);font-size:12px}
+.tabla input,.tabla select,.tabla textarea{width:100%}
+.tblx{overflow-x:auto;max-width:100%}
+@media (max-width:760px){
+  .tabla.resp thead{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
+  .tabla.resp,.tabla.resp tbody,.tabla.resp tr,.tabla.resp td{display:block;width:100%}
+  .tabla.resp tr{border:1px solid var(--regla);background:var(--tarjeta);margin:0 0 10px;padding:6px 10px}
+  .tabla.resp td{border:0;padding:3px 0;display:grid;grid-template-columns:minmax(96px,38%) 1fr;gap:8px;text-align:left}
+  .tabla.resp td::before{content:attr(data-l);font-size:12px;font-weight:600;color:var(--tinta-3)}
+  .tabla.resp td.num{text-align:left}
+}
+.aviso{border-left:4px solid var(--ambar);background:var(--med-bg);padding:8px 10px;margin:8px 0}
+.aviso.ko{border-color:var(--claret);background:var(--ko-bg)}
+.aviso.ok{border-color:var(--teal);background:var(--ok-bg)}
+.aviso.info{border-color:var(--oxford);background:var(--info-bg)}
+/* Resultado */
+.global{display:grid;grid-template-columns:minmax(0,2fr) minmax(0,1fr);gap:0 24px;border-top:1px solid var(--negro);border-bottom:1px solid var(--regla);padding:12px 0;margin:10px 0 6px}
+@media (max-width:760px){.global{grid-template-columns:1fr}}
+.global .rotulo{font-size:12.5px;font-weight:700;color:var(--tinta-3);text-transform:uppercase;letter-spacing:.05em}
+.global .nombre{font:600 clamp(24px,3.4vw,34px)/1.15 var(--serif);color:var(--negro);margin:4px 0 6px}
+.global .nombre b{color:var(--oxford)}
+.global .cifras{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px 14px;align-content:start}
+.global .cifras b{display:block;font:600 24px/1.1 var(--serif);color:var(--oxford)}
+.global .cifras span{font-size:12.5px;color:var(--tinta-2)}
+.escala{display:flex;gap:3px;margin:10px 0 4px;flex-wrap:wrap}
+.escala span{flex:1 1 90px;font-size:12px;padding:5px 6px;border-top:4px solid var(--regla);color:var(--tinta-3)}
+.escala span.act{border-top-color:var(--oxford);color:var(--negro);font-weight:700;background:var(--info-bg)}
+.barras{display:inline-flex;gap:2px;vertical-align:middle}
+.barras i{width:12px;height:10px;background:var(--regla-2);display:inline-block}
+.barras i.on{background:var(--oxford)}
+.barras i.obj{outline:2px solid var(--ambar);outline-offset:-2px}
+.avance{display:inline-block;width:70px;height:8px;background:var(--regla-2);vertical-align:middle;margin-right:6px}
+.avance i{display:block;height:100%;background:var(--teal)}
+.tend{font-weight:700;font-size:13px}
+.tend.sube{color:var(--teal)}.tend.baja{color:var(--claret)}.tend.igual{color:var(--tinta-3)}
+.bloque details,.bloque>details{border:1px solid var(--regla);background:var(--tarjeta);padding:6px 12px;margin:8px 0}
+details summary{cursor:pointer;font-weight:700;padding:4px 0}
+.cab-calc{display:flex;flex-wrap:wrap;gap:8px 12px;align-items:end;margin:6px 0 4px}
+.cab-calc .campo{min-width:170px}
+/* Cuestionario */
+.pestanas{display:flex;flex-wrap:wrap;gap:4px;margin:8px 0}
+.preg td{padding-top:10px;padding-bottom:10px}
+.preg .cod{font-weight:700;white-space:nowrap}
+.preg .txt{max-width:48ch}
+.preg .req{font-size:12.5px;color:var(--tinta-3);margin-top:4px}
+.preg tr.r-si{box-shadow:inset 4px 0 0 var(--teal)}
+.preg tr.r-parcial{box-shadow:inset 4px 0 0 var(--ambar)}
+.preg tr.r-no{box-shadow:inset 4px 0 0 var(--claret)}
+.preg tr.r-na{box-shadow:inset 4px 0 0 var(--oxford)}
+.preg tr.r-sd{box-shadow:inset 4px 0 0 var(--regla)}
+.preg td:first-child{padding-left:10px}
+.col-resp{min-width:170px}.col-evi{min-width:220px}.col-ver{min-width:170px}
+/* Informe */
+.informe h2{break-after:avoid}
+.informe .dim{break-inside:avoid;border-top:1px solid var(--regla);padding-top:6px}
+.informe ul{margin:4px 0 10px;padding-left:20px}
+.informe li{margin:0 0 4px}
+dialog{border:0;border-top:4px solid var(--claret);background:var(--papel);color:var(--tinta);padding:0;width:min(760px,calc(100vw - 16px));max-height:calc(100vh - 24px)}
+dialog::backdrop{background:rgba(26,24,23,.45)}
+.dlg-cab{display:flex;justify-content:space-between;align-items:center;gap:8px;padding:10px 14px;border-bottom:1px solid var(--regla);position:sticky;top:0;background:var(--papel)}
+.dlg-cab h2{margin:0;padding:0;border:0;font-size:19px}
+.dlg-cuerpo{padding:10px 14px 14px}
+.dlg-cuerpo p{max-width:68ch;line-height:1.6}
+#toast{position:fixed;left:50%;bottom:16px;transform:translateX(-50%);background:var(--negro);color:var(--papel);padding:8px 14px;max-width:calc(100vw - 32px);z-index:200;font-weight:600;display:none}
+#toast.ver{display:block}
+@media print{.cab,.nav,.sin-imprimir,button,.btn,dialog,.aviso-demo,#toast{display:none!important}.pie{border-top:1px solid #000}main{padding:0}h2{border-top-width:2px}.tabla{font-size:11.5px}}
+/* tema salmón (el del sitio) y barra de navegación del sitio */
+:root[data-theme="salmon"]{--papel:#fbe2cd;--papel-2:#f3cfb2;--papel-3:#eabd9a;--tarjeta:#fdeede;--tinta:#2f2b28;--tinta-2:#564d47;--tinta-3:#6a5e56;--regla:#c9a78d;--regla-2:#e7c6ab;color-scheme:light}
+.sitio{display:flex;flex-wrap:wrap;gap:2px 18px;align-items:center;padding:6px 16px;background:var(--negro);font:600 13px/1.3 var(--sans)}
+.sitio a{color:var(--papel);text-decoration:none;padding:4px 0}
+.sitio a:hover,.sitio a:focus-visible{text-decoration:underline}
+.sitio .sitio-marca{font-family:var(--serif);font-weight:800;letter-spacing:.04em;margin-right:6px}
+@media print{.sitio{display:none}}
+/* T23 · recorrido */
+.res{display:grid;grid-template-columns:minmax(0,2fr) minmax(0,1fr);gap:0 24px;border-top:1px solid var(--negro);border-bottom:1px solid var(--regla);padding:12px 0;margin:10px 0 6px}
+@media (max-width:760px){.res{grid-template-columns:1fr}}
+.res .rotulo{font-size:12.5px;font-weight:700;color:var(--tinta-3);text-transform:uppercase;letter-spacing:.05em}
+.res .nombre{font:600 clamp(24px,3.4vw,34px)/1.15 var(--serif);color:var(--negro);margin:4px 0 6px}
+.res .nombre b{color:var(--oxford)}
+.res dl{margin:6px 0 0}.res dt{font-size:12.5px;font-weight:700;color:var(--tinta-3);margin-top:6px}.res dd{margin:0 0 2px}
+.chips{display:flex;flex-wrap:wrap;gap:4px;margin:4px 0}
+.pri{display:inline-block;min-width:26px;text-align:center;font:700 13px/1.3 var(--sans);padding:2px 6px;border-radius:2px;border:1px solid var(--regla);background:var(--papel-2)}
+.pri.p1{background:var(--ko-bg);border-color:var(--claret)}
+.pri.p2{background:var(--med-bg);border-color:var(--ambar)}
+.pri.p3{background:var(--papel-2)}
+.pri.pC{background:var(--info-bg);border-color:var(--oxford)}
+.pri.pD{background:var(--papel-3)}
+.pri.pn{background:transparent;color:var(--tinta-3)}
+.hito td{padding-top:10px;padding-bottom:10px}
+.hito .cod{font-weight:700;white-space:nowrap}
+.hito .txt{max-width:46ch}
+.hito tr.e-cumplido,.hito tr.e-convalidado{box-shadow:inset 4px 0 0 var(--teal)}
+.hito tr.e-en_curso{box-shadow:inset 4px 0 0 var(--ambar)}
+.hito tr.e-pendiente{box-shadow:inset 4px 0 0 var(--regla)}
+.hito tr.bloq{opacity:.62}
+.hito td:first-child{padding-left:10px}
+.q11{white-space:nowrap;margin-right:6px}
+.q11 i{font-style:normal;font-weight:700;margin-left:2px}
+.q11 i.si{color:var(--teal)}.q11 i.no{color:var(--claret)}
+.fuente{display:block;font-size:12px;color:var(--tinta-3);margin-top:3px}
+.col-est{min-width:190px}
+.traza td:nth-child(4){white-space:nowrap}
+.preg .q01 label{display:flex;gap:6px;align-items:flex-start;font-weight:400;font-size:14px;color:var(--tinta);margin:2px 0}
+.preg .q01 input{margin-top:3px}
+.etapa-cab{display:flex;flex-wrap:wrap;gap:4px 14px;align-items:baseline}
+.etapa-cab p{margin:0}
+.roles td{vertical-align:top}
+.roles .h{display:inline-flex;gap:3px;align-items:center;margin:0 6px 4px 0;white-space:nowrap}
+.chips .et{white-space:normal}
+.tabla input[type=checkbox]{width:auto;min-height:0;margin-right:4px}
+.plan h2{break-after:avoid}.plan tr{break-inside:avoid}
+@media print{.plan .tabla{font-size:10.5px}.pri{border-width:1px}}
+</style>
+</head>
+<body>
+<a class="saltar" href="#principal" id="saltar">Saltar al contenido</a>
+<nav class="sitio" id="sitio-nav" aria-label="Sitio"></nav>
+<header class="cab">
+  <div class="cab-in">
+    <a class="marca" href="#/partida"><i aria-hidden="true"></i>SEVEN-G <span id="txt-app">T23 · Recorrido de implantación</span></a>
+    <div class="ajustes">
+      <a class="enlace-btn" id="lnk-doc" href="../../html/es/96_SEVEN-G_Puntos_de_partida_y_recorrido_de_implantacion.html">Documento 96</a>
+      <a class="enlace-btn" id="lnk-t15" href="../T15_diagnostico_madurez/madurez.html">Madurez T15</a>
+      <a class="enlace-btn" id="lnk-t01" href="../T01_registro_iniciativas/registro.html">Registro T01</a>
+      <button type="button" class="enlace-btn" id="btn-legal" data-acc="aviso-legal" aria-haspopup="dialog">Aviso legal</button>
+      <label class="oculto" for="sel-lang" id="lbl-lang">Idioma</label>
+      <select id="sel-lang"><option value="es">ES</option><option value="en">EN</option></select>
+      <label class="oculto" for="sel-tema" id="lbl-tema">Tema</label>
+      <select id="sel-tema"><option value="auto">Auto</option><option value="salmon">Salmón</option><option value="claro">Claro</option><option value="oscuro">Oscuro</option></select>
+    </div>
+  </div>
+  <nav class="nav" id="nav" aria-label="Vistas"></nav>
+</header>
+<div class="aviso-demo" id="aviso-demo"></div>
+<main id="principal" tabindex="-1" data-enlazar-codigos></main>
+<footer class="pie" id="pie"></footer>
+<dialog id="dlg-legal" aria-labelledby="legal-t"></dialog>
+<div id="toast" role="status" aria-live="polite"></div>
+<input type="file" id="f-t23" accept=".json,application/json" class="oculto" tabindex="-1" aria-hidden="true">
+<script type="application/json" id="recorrido">__RECORRIDO__</script>
+<script type="application/json" id="datos-demo">__DATOS_DEMO__</script>
+<script type="application/json" id="ejemplo-b">__EJEMPLO_B__</script>
+<script>__DATOS_LOCALES__</script>
+<script>
+'use strict';
+/* =========================================================
+   SEVEN-G · T23 Recorrido de implantación (documento 96)
+   Código MIT · Contenidos CC BY 4.0 · © 2026 Fernando García Varela
+   El contenido (arquetipos, regla de asignación, modificadores, cuestionario, etapas, hitos, prioridades y roles) sale del
+   documento 96 a través de recorrido.json (build_recorrido.ps1 -ActualizarRecorrido). La herramienta no crea reglas: aplica las del documento.
+   ========================================================= */
+const R = JSON.parse(document.getElementById('recorrido').textContent);
+const DEMO_TXT = document.getElementById('datos-demo').textContent;
+const EJB_TXT = document.getElementById('ejemplo-b').textContent;
+const VERSION_ESQUEMA = '0.1';
+const LS_DATOS = 'seveng-t23-datos-v1', LS_UI = 'seveng-t23-ui-v1';
+/* D100: el registro T01 es la fuente de verdad. T23 lee el registro (propone Q01 a Q03) y el diagnóstico de T15 (hitos cumplidos cuando
+   todas sus preguntas del documento 11 están en «Sí» en la evaluación verificada más reciente). No escribe en ninguno de los dos. */
+const LS_T01 = 'seveng-t01-datos-v1', LS_T15 = 'seveng-t15-datos-v1';
+const ARQ = R.arquetipos.map(a => a.codigo), HI = {}, PREG = {};
+for(const h of R.hitos) HI[h.codigo] = h;
+for(const q of R.preguntas) PREG[q.codigo] = q;
+/* 96 §4.3 regla 5: orden de urgencia de las claves de prioridad */
+const ORD = {'1':0, '2':1, 'C':2, 'D':3, '3':4, '·':5};
+const ESTADOS = ['pendiente','en_curso','cumplido','convalidado'];
+function lsGet(k){ try{ return localStorage.getItem(k); }catch(e){ return null; } }
+function lsSet(k,v){ try{ localStorage.setItem(k,v); return true; }catch(e){ return false; } }
+function registroT01Local(){ try{ const r = JSON.parse(lsGet(LS_T01)||'null'); return (r && typeof r==='object' && r.meta && Array.isArray(r.iniciativas)) ? r : null; }catch(e){ return null; } }
+function datosT15Local(){ try{ const r = JSON.parse(lsGet(LS_T15)||'null'); return (r && typeof r==='object' && Array.isArray(r.evaluaciones)) ? r : null; }catch(e){ return null; } }
+
+/* ---------------- i18n ---------------- */
+const TX = {
+es:{
+ app:'T23 · Recorrido de implantación', saltar:'Saltar al contenido', idioma:'Idioma', tema:'Tema', t_auto:'Auto', t_claro:'Claro', t_oscuro:'Oscuro', vistas:'Vistas',
+ doc96:'Documento 96', t15:'Madurez T15', t01:'Registro T01',
+ v_partida:'Punto de partida', v_recorrido:'Recorrido', v_roles:'Por rol', v_plan:'Plan', v_datos:'Datos',
+ tit_partida:'¿Desde dónde parte la compañía?', sub_partida:'Doce preguntas sobre lo que está en producción (en uso real), salvo que la pregunta diga otra cosa. Con las respuestas se asigna el arquetipo principal con la regla de 96 §2.2, los rasgos y los modificadores. El punto de partida cambia el orden, el énfasis y el calendario, nunca lo que se exige al final (01 §14).',
+ organizacion:'Compañía', fecha:'Fecha', responsable:'Quién responde',
+ arquetipo:'Punto de partida', rasgos:'Rasgos', modificadores:'Modificadores', ninguno:'ninguno', calendario:'Calendario', cal_lite:'Lite (ruta mínima de 90 §2.4)', cal_ent:'Enterprise (90 §6.2)',
+ sin_q01:'Responda al menos Q01 (qué hay en producción) para asignar el punto de partida.',
+ aviso_a:'Hay sistemas en producción, pero ninguna condición de 96 §2.2 los recoge como arquetipo distinto de PP-A. Revise Q01 a Q03: la regla del documento prevalece, pero conviene confirmar las respuestas.',
+ como_reconoce:'Cómo se reconoce', riesgo:'Riesgo típico', empieza:'Por dónde empieza', espera:'Qué puede esperar',
+ por_que:'Por qué este resultado', traza_sub:'La regla de 96 §2.2 se aplica en orden y se asigna el primer arquetipo que se cumple. Para los rasgos se mira lo que define a cada arquetipo posterior (por ejemplo, reglas o RPA en producción para PP-C), sin las exclusiones que solo sirven para elegir el principal, como en el ejemplo de 96 §2.2.',
+ orden:'Orden', condicion:'Condición (96 §2.2)', datos_usados:'Con estas respuestas', resultado:'Resultado',
+ r_principal:'Arquetipo principal', r_rasgo:'Rasgo', r_no:'No se cumple', r_cumple_despues:'Se cumple, pero ya hay un arquetipo anterior', r_resto:'Ninguna de las anteriores',
+ u_f:'En producción, {n} de 3: ML {ml}; IA generativa {gen}; agentes A2/A3 {ag}.', u_e:'Pilotos en curso: {p}; de IA generativa: {g}; IA generativa en producción: {gp}.', u_e_rasgo:'Como rasgo: tres o más pilotos, en su mayoría de IA generativa: {s}.',
+ u_d:'ML, visión u optimización en producción: {s}.', u_c:'Reglas o RPA en producción: {s}; IA que aprende en producción: {l}.', u_b:'IA de terceros incluida: {s}; construcción propia en producción (ML, IA generativa o agentes): {l}.', u_a:'—',
+ si:'sí', no:'no', sd:'sin respuesta', gp_0:'ninguna', gp_1:'una', gp_n:'más de una', gp_sd:'una o ninguna (sin detallar)',
+ mods_tit:'Modificadores (96 §2.3)', mod_activo:'Activo', mod_por:'Por qué', mod_efecto:'Efecto en el recorrido',
+ m_MP1:'Q07 = {v}', m_MP2:'Q08 = {v} («No se sabe» cuenta como sí)', m_MP3:'Q09 = {v}', m_MP4:'Q05 = {v}', m_MP5:'Q10 = {v}',
+ mp5_banner:'MP5 · Sin patrocinador en la alta dirección: el recorrido no empieza hasta cumplir HI-01 (requisitos previos de 90 §3). No es un hito más: es una condición previa (96 §4.3, regla 1).',
+ cuest:'Cuestionario (96 §2.4)', pregunta:'Pregunta', respuesta:'Respuesta', alimenta:'Alimenta', origen:'Origen',
+ sin_resp:'— sin respuesta —', f_t01:'desde T01 (editable)', f_manual:'manual', gen_det:'¿Cuántos sistemas de IA generativa en producción? (para la condición de PP-E en 96 §2.2)', gen_uno:'uno', gen_varios:'más de uno',
+ arq_todos:'Los seis arquetipos (96 §2.1)', regla_tit:'Regla de asignación (96 §2.2)',
+ t01_local:'Registro T01 en este navegador: «{o}», {n} iniciativas, a fecha {f}.', t01_local_no:'No hay ningún registro T01 en este navegador: abra el registro de iniciativas desde este mismo sitio y vuelva para proponer las respuestas Q01 a Q03.',
+ t01_proponer:'Proponer respuestas desde el registro T01', ok_t01:'Propuestas Q01 a Q03 desde el registro T01: {c}.', ok_t01_manual:' Se conservan las respuestas manuales de {m}.',
+ t01_det:'En uso (fase 6 o 7, sin parar ni retirar): {u}. Pilotos (fases 1 a 5, sin parar): {p}, de IA generativa {g}.',
+ t15_local:'Diagnóstico T15 en este navegador: evaluación {id} ({m}) a fecha {f}. Un hito cuyas preguntas del documento 11 están todas en «Sí» se marca «cumplido según T15», salvo que tenga un estado manual (96 §4.3, regla 4).',
+ t15_auto:'Diagnóstico T15 en este navegador: solo hay autodiagnósticos (el más reciente, {id}, a fecha {f}). Un autodiagnóstico es orientativo: se muestran sus respuestas, pero no marca hitos cumplidos (96 §4.3, regla 4; 11 §4.1).',
+ t15_no:'No hay ningún diagnóstico T15 en este navegador: los estados de los hitos son manuales. Con una evaluación verificada en T15, los hitos cuyas preguntas están en «Sí» se marcan solos.',
+ tit_recorrido:'Recorrido de implantación', sub_recorrido:'Cinco etapas y veintidós hitos (96 §3–§4). Dentro de cada etapa, los hitos se ordenan por prioridad. La prioridad solo adelanta o retrasa el hito dentro del mes base del documento 90: ningún hito exigible desaparece.',
+ hito:'Hito', que:'Qué hay que tener', quien:'Quién', evidencia:'Evidencia', preg11:'Pregunta 11', mes:'Mes base', prioridad:'Prioridad', estado:'Estado', nota:'Nota',
+ p_1:'1 · Ya (meses 1–2)', p_2:'2 · En su etapa (meses 3–6)', p_3:'3 · Más adelante (meses 7–18)', p_C:'C · Convalidar lo que ya existe', p_D:'D · Cuando aparezca el disparador', 'p_·':'· · Todavía no aplica',
+ pc_1:'Ya', pc_2:'En su etapa', pc_3:'Más adelante', pc_C:'Convalidar', pc_D:'Al aparecer el disparador', 'pc_·':'Todavía no aplica',
+ base_de:'Prioridad {p} por {a}', aj_q04:'Q04 = {v}: HI-02 y HI-03 pasan a 1 (96 §2.4; «No se sabe» cuenta como sí)', aj_mp12:'{m}: HI-05 y HI-10 pasan a 1 (96 §4.2)', aj_mp2:'MP2: HI-19 pasa a 1 (96 §4.2)', aj_mp4:'MP4: cubierto por el gobierno existente → C, con la correspondencia documentada y verificada (96 §4.2 y §4.3, regla 3)',
+ cubierto:'Cubierto por el gobierno previo (MP4)',
+ e_pendiente:'Pendiente', e_en_curso:'En curso', e_cumplido:'Cumplido', e_convalidado:'Convalidado (C)',
+ fe_manual:'estado manual', fe_t15:'cumplido según T15 ({id})', fe_ninguno:'sin marcar', quitar:'Quitar el estado manual',
+ t15_tambien:'T15 ({id}): preguntas en «Sí»', t15_falta:'T15 ({id}): no están en «Sí»: {q}',
+ bloq:'Bloqueado por MP5 hasta cumplir HI-01',
+ resumen:'Resumen', r_total:'Hitos', r_ya:'Prioridad 1 sin cumplir', r_hechos:'Cumplidos o convalidados', r_curso:'En curso',
+ filtro:'Mostrar', f_todos:'Todos los hitos', f_pend:'Sin cumplir', f_p1:'Solo prioridad 1',
+ tit_roles:'Qué le toca a cada rol', sub_roles:'Tabla de 96 §5, derivada de la columna «Quién» de 96 §4.1: no añade responsabilidades. Cada hito lleva su prioridad para este punto de partida y su estado. En una organización pequeña varias funciones las ejerce la misma persona, con los límites de 90 §7 y 30 §11.',
+ rol:'Rol',
+ tit_plan:'Plan de implantación', sub_plan:'Hoja para el comité de IA y la dirección: punto de partida, modificadores y los veintidós hitos por etapa y prioridad, con su estado. Imprímala o guárdela como PDF desde el navegador.',
+ imprimir:'Imprimir o guardar como PDF', csv:'Exportar el recorrido (CSV)', plan_de:'Plan de {o} a fecha {f}',
+ tit_datos:'Datos', sub_datos:'Los datos de T23 (respuestas, estados y notas) se guardan en este navegador. Exporte el JSON para conservarlos o llevarlos a otro equipo, e impórtelo para seguir.',
+ exportar:'Exportar JSON de T23', importar:'Importar JSON de T23', ejemplo_b:'Cargar ejemplo PP-B (empresa de servicios)', restaurar:'Restaurar el ejemplo PP-F (datos de demostración)', vaciar:'Empezar en blanco',
+ conf_importar:'Se sustituirán los datos actuales de T23. ¿Continuar?', conf_restaurar:'Se sustituirán los datos actuales por los de ejemplo. ¿Continuar?', conf_vaciar:'Se borrarán todas las respuestas, estados y notas. ¿Continuar?',
+ ok_import:'Datos importados.', ok_export:'Fichero exportado.', err_json:'El fichero no es un JSON válido de T23.', ok_ejemplo:'Cargado el ejemplo {o}.',
+ no_guardado:'No se ha podido guardar en este navegador: exporte el JSON para no perder los cambios.',
+ demo:'Datos ilustrativos y ficticios.',
+ pie_lic:'Código MIT · Contenidos CC BY 4.0 · © 2026 Fernando García Varela · Metodología SEVEN-G', pie_priv:'Los datos se guardan solo en este navegador o, si así se elige, en un fichero de su equipo. No se envía nada a terceros.',
+ legal_tit:'Aviso legal y exención de responsabilidad', legal_link:'Aviso legal', legal_ok:'Entendido',
+ legal_txt:'SEVEN-G y esta herramienta se ofrecen «tal cual» y con fines exclusivamente informativos. No constituyen asesoramiento jurídico, regulatorio, financiero ni profesional, ni garantizan el cumplimiento de ninguna norma. El punto de partida y el recorrido son una orientación: no son una certificación, no sustituyen al diagnóstico de madurez ni a la auditoría del marco y no acreditan el cumplimiento regulatorio; los umbrales de asignación y las prioridades son iniciales y deben calibrarse. Cada organización que use la herramienta es la única responsable de sus datos, de las decisiones que adopte con ellos, de identificar la normativa que le aplica y de certificar su propio cumplimiento regulatorio. Esta metodología es una ayuda genérica y gratuita, compartida con la comunidad para que nadie tenga que empezar desde cero; cada persona u organización puede y debe adaptarla a su propio uso. No debe entenderse que sus partes jurídicamente sensibles hayan sido revisadas por una asesoría jurídica: esas revisiones, para cada empresa o sector, son responsabilidad última de la empresa, el consultor o la organización que la use. Aunque se procura mantenerla al día, alguna norma puede haber cambiado sin que se recoja aquí. En la máxima medida permitida por la ley, el autor no asume responsabilidad alguna por los efectos de su aplicación en ninguna organización ni por su aplicabilidad completa. La metodología no otorga certificación de ningún tipo. El autor no asume responsabilidad alguna por el uso de la herramienta. Los datos de demostración son ficticios.',
+ csv_cab:['Etapa','Hito','Prioridad','Mes base','Qué hay que tener','Quién','Evidencia','Preguntas del documento 11','Estado','Origen del estado','Nota']
+},
+en:{
+ app:'T23 · Implementation journey', saltar:'Skip to content', idioma:'Language', tema:'Theme', t_auto:'Auto', t_claro:'Light', t_oscuro:'Dark', vistas:'Views',
+ doc96:'Document 96', t15:'Maturity T15', t01:'Register T01',
+ v_partida:'Starting point', v_recorrido:'Journey', v_roles:'By role', v_plan:'Plan', v_datos:'Data',
+ tit_partida:'Where does the company start from?', sub_partida:'Twelve questions about what is in production (in real use), unless the question says otherwise. The answers assign the main archetype with the rule of 96 §2.2, the traits and the modifiers. The starting point changes the order, the emphasis and the timetable, never what is required at the end (01 §14).',
+ organizacion:'Company', fecha:'Date', responsable:'Who answers',
+ arquetipo:'Starting point', rasgos:'Traits', modificadores:'Modifiers', ninguno:'none', calendario:'Timetable', cal_lite:'Lite (minimum path of 90 §2.4)', cal_ent:'Enterprise (90 §6.2)',
+ sin_q01:'Answer at least Q01 (what is in production) to assign the starting point.',
+ aviso_a:'There are systems in production, but no condition of 96 §2.2 captures them as an archetype other than PP-A. Review Q01 to Q03: the rule of the document prevails, but the answers are worth confirming.',
+ como_reconoce:'How it is recognised', riesgo:'Typical risk', empieza:'Where it starts', espera:'What can wait',
+ por_que:'Why this result', traza_sub:'The rule of 96 §2.2 is applied in order and the first archetype whose conditions are met is assigned. For the traits, what defines each later archetype is checked (for example, rules or RPA in production for PP-C), without the exclusions that only serve to choose the main one, as in the example of 96 §2.2.',
+ orden:'Order', condicion:'Condition (96 §2.2)', datos_usados:'With these answers', resultado:'Result',
+ r_principal:'Main archetype', r_rasgo:'Trait', r_no:'Not met', r_cumple_despues:'Met, but an earlier archetype already applies', r_resto:'None of the above',
+ u_f:'In production, {n} of 3: ML {ml}; generative AI {gen}; A2/A3 agents {ag}.', u_e:'Pilots under way: {p}; generative AI: {g}; generative AI in production: {gp}.', u_e_rasgo:'As a trait: three or more pilots, mostly generative AI: {s}.',
+ u_d:'ML, vision or optimisation in production: {s}.', u_c:'Rules or RPA in production: {s}; AI that learns in production: {l}.', u_b:'Third-party AI included: {s}; in-house build in production (ML, generative AI or agents): {l}.', u_a:'—',
+ si:'yes', no:'no', sd:'no answer', gp_0:'none', gp_1:'one', gp_n:'more than one', gp_sd:'one or none (not detailed)',
+ mods_tit:'Modifiers (96 §2.3)', mod_activo:'Active', mod_por:'Why', mod_efecto:'Effect on the journey',
+ m_MP1:'Q07 = {v}', m_MP2:'Q08 = {v} ("Not known" counts as yes)', m_MP3:'Q09 = {v}', m_MP4:'Q05 = {v}', m_MP5:'Q10 = {v}',
+ mp5_banner:'MP5 · No sponsor in senior management: the journey does not start until HI-01 is met (prerequisites of 90 §3). It is not one more milestone: it is a precondition (96 §4.3, rule 1).',
+ cuest:'Questionnaire (96 §2.4)', pregunta:'Question', respuesta:'Answer', alimenta:'Feeds', origen:'Source',
+ sin_resp:'— no answer —', f_t01:'from T01 (editable)', f_manual:'manual', gen_det:'How many generative AI systems in production? (for the PP-E condition in 96 §2.2)', gen_uno:'one', gen_varios:'more than one',
+ arq_todos:'The six archetypes (96 §2.1)', regla_tit:'Assignment rule (96 §2.2)',
+ t01_local:'T01 register in this browser: "{o}", {n} initiatives, as at {f}.', t01_local_no:'There is no T01 register in this browser: open the initiative register from this same site and come back to propose answers Q01 to Q03.',
+ t01_proponer:'Propose answers from the T01 register', ok_t01:'Q01 to Q03 proposed from the T01 register: {c}.', ok_t01_manual:' The manual answers to {m} are kept.',
+ t01_det:'In use (phase 6 or 7, not stopped or retired): {u}. Pilots (phases 1 to 5, not stopped): {p}, of which generative AI {g}.',
+ t15_local:'T15 assessment in this browser: assessment {id} ({m}) as at {f}. A milestone whose document 11 questions are all "Yes" is marked "met according to T15", unless it has a manual status (96 §4.3, rule 4).',
+ t15_auto:'T15 assessment in this browser: there are only self-assessments (the latest, {id}, as at {f}). A self-assessment is indicative: its answers are shown, but it does not mark milestones as met (96 §4.3, rule 4; 11 §4.1).',
+ t15_no:'There is no T15 assessment in this browser: milestone statuses are manual. With a verified assessment in T15, milestones whose questions are "Yes" are marked automatically.',
+ tit_recorrido:'Implementation journey', sub_recorrido:'Five stages and twenty-two milestones (96 §3–§4). Within each stage, milestones are ordered by priority. The priority only brings a milestone forward or pushes it back within the base month of document 90: no required milestone disappears.',
+ hito:'Milestone', que:'What must be in place', quien:'Who', evidencia:'Evidence', preg11:'Question 11', mes:'Base month', prioridad:'Priority', estado:'Status', nota:'Note',
+ p_1:'1 · Now (months 1–2)', p_2:'2 · In its stage (months 3–6)', p_3:'3 · Later (months 7–18)', p_C:'C · Map and validate what exists', p_D:'D · When the trigger appears', 'p_·':'· · Does not apply yet',
+ pc_1:'Now', pc_2:'In its stage', pc_3:'Later', pc_C:'Map and validate', pc_D:'When the trigger appears', 'pc_·':'Does not apply yet',
+ base_de:'Priority {p} from {a}', aj_q04:'Q04 = {v}: HI-02 and HI-03 move to 1 (96 §2.4; "Not known" counts as yes)', aj_mp12:'{m}: HI-05 and HI-10 move to 1 (96 §4.2)', aj_mp2:'MP2: HI-19 moves to 1 (96 §4.2)', aj_mp4:'MP4: covered by existing governance → C, with the correspondence documented and verified (96 §4.2 and §4.3, rule 3)',
+ cubierto:'Covered by prior governance (MP4)',
+ e_pendiente:'Pending', e_en_curso:'In progress', e_cumplido:'Met', e_convalidado:'Mapped and validated (C)',
+ fe_manual:'manual status', fe_t15:'met according to T15 ({id})', fe_ninguno:'not marked', quitar:'Remove the manual status',
+ t15_tambien:'T15 ({id}): questions "Yes"', t15_falta:'T15 ({id}): not "Yes": {q}',
+ bloq:'Blocked by MP5 until HI-01 is met',
+ resumen:'Summary', r_total:'Milestones', r_ya:'Priority 1 not met', r_hechos:'Met or validated', r_curso:'In progress',
+ filtro:'Show', f_todos:'All milestones', f_pend:'Not met', f_p1:'Priority 1 only',
+ tit_roles:'What falls to each role', sub_roles:'Table of 96 §5, derived from the "Who" column of 96 §4.1: it adds no responsibilities. Each milestone shows its priority for this starting point and its status. In a small organisation several functions are performed by the same person, within the limits of 90 §7 and 30 §11.',
+ rol:'Role',
+ tit_plan:'Implementation plan', sub_plan:'Sheet for the AI Committee and management: starting point, modifiers and the twenty-two milestones by stage and priority, with their status. Print it or save it as PDF from the browser.',
+ imprimir:'Print or save as PDF', csv:'Export the journey (CSV)', plan_de:'Plan of {o} as at {f}',
+ tit_datos:'Data', sub_datos:'T23 data (answers, statuses and notes) is saved in this browser. Export the JSON to keep it or take it to another computer, and import it to continue.',
+ exportar:'Export T23 JSON', importar:'Import T23 JSON', ejemplo_b:'Load PP-B example (services company)', restaurar:'Restore the PP-F example (demonstration data)', vaciar:'Start blank',
+ conf_importar:'The current T23 data will be replaced. Continue?', conf_restaurar:'The current data will be replaced by the example data. Continue?', conf_vaciar:'All answers, statuses and notes will be deleted. Continue?',
+ ok_import:'Data imported.', ok_export:'File exported.', err_json:'The file is not a valid T23 JSON.', ok_ejemplo:'Example {o} loaded.',
+ no_guardado:'Could not save in this browser: export the JSON so as not to lose the changes.',
+ demo:'Illustrative and fictitious data.',
+ pie_lic:'Code MIT · Content CC BY 4.0 · © 2026 Fernando García Varela · SEVEN-G methodology', pie_priv:'Data is saved only in this browser or, if so chosen, in a file on your computer. Nothing is sent to third parties.',
+ legal_tit:'Legal notice and disclaimer', legal_link:'Legal notice', legal_ok:'Understood',
+ legal_txt:'SEVEN-G and this tool are provided "as is" and for information purposes only. They do not constitute legal, regulatory, financial or professional advice, nor do they guarantee compliance with any regulation. The starting point and the journey are guidance: they are not a certification, do not replace the maturity assessment or the framework audit and do not evidence regulatory compliance; the assignment thresholds and the priorities are initial values and must be calibrated. Each organisation using the tool is solely responsible for its data, for the decisions it takes with it, for identifying the regulations that apply to it and for certifying its own regulatory compliance. This methodology is a generic, free aid shared with the community so that nobody has to start from scratch; each person or organisation can and should adapt it to its own use. It must not be inferred that its legally sensitive parts have been reviewed by legal counsel: those reviews, for each company or sector, are the ultimate responsibility of the company, consultant or organisation that uses it. Although every effort is made to keep it up to date, some regulation may have changed without being reflected here. To the fullest extent permitted by law, the author accepts no responsibility whatsoever for the effects of its application in any organisation or for its full applicability. The methodology does not grant certification of any kind. The author accepts no liability for the use of the tool. Demonstration data is fictitious.',
+ csv_cab:['Stage','Milestone','Priority','Base month','What must be in place','Who','Evidence','Document 11 questions','Status','Status source','Note']
+}};
+let D = null, UI = { lang:'es', tema:'auto', filtro:'todos' }, CARGA_DEMO = false;
+let lang = 'es';
+function t(k, v){ let s = (TX[lang] && TX[lang][k]) ?? TX.es[k] ?? k; if(v && typeof s==='string') for(const x in v) s = s.split('{'+x+'}').join(v[x]); return s; }
+function L(o){ return o ? (o[lang] ?? o.es ?? '') : ''; }
+function esc(s){ return String(s ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c])); }
+function clon(o){ return JSON.parse(JSON.stringify(o)); }
+function toast(m){ const e=document.getElementById('toast'); e.textContent=m; e.classList.add('ver'); clearTimeout(toast._t); toast._t=setTimeout(()=>e.classList.remove('ver'),3600); }
+function guardar(){ if(!lsSet(LS_DATOS, JSON.stringify(D))) toast(t('no_guardado')); lsSet(LS_UI, JSON.stringify(UI)); if(window.SevengDatos) SevengDatos.guardado(); }
+function cargarDemo(){ return JSON.parse(DEMO_TXT); }
+function cargarEjemploB(){ return JSON.parse(EJB_TXT); }
+function valido(x){ return !!(x && typeof x==='object' && x.respuestas && typeof x.respuestas==='object' && !Array.isArray(x.respuestas) && (x.hitos==null || (typeof x.hitos==='object' && !Array.isArray(x.hitos)))); }
+function normalizar(x){ delete x.resultado; x.meta = x.meta || {}; x.hitos = x.hitos || {}; return x; }
+function vacio(){ return {version_esquema:VERSION_ESQUEMA, herramienta:'T23', meta:{organizacion:'', fecha:hoy(), responsable:'', datos_ilustrativos:false}, respuestas:{}, hitos:{}}; }
+function fF(s){ if(!s) return ''; const [y,m,d]=String(s).split('-'); return lang==='en' ? d+'/'+m+'/'+y : d+'-'+m+'-'+y; }
+function hoy(){ return new Date().toISOString().slice(0,10); }
+function arqNombre(c){ const a = R.arquetipos.find(x=>x.codigo===c); return a ? c+' · '+L(a.nombre) : c; }
+function etapaNombre(c){ const e = R.etapas.find(x=>x.codigo===c); return e ? c+' · '+L(e.nombre) : c; }
+function respTexto(q, k){ const r = (PREG[q].respuestas||[]).find(x=>x.clave===k); return r ? L(r.texto) : k; }
+
+/* =========================================================
+   Motor: asignación (96 §2.2), modificadores (§2.3), prioridad (§4.2 y §4.3) y estado (§4.3, regla 4)
+   ========================================================= */
+function v(q){ const a = (D.respuestas||{})[q]; return a ? a.v : null; }
+function tiene(k){ const x = v('Q01'); return Array.isArray(x) && x.includes(k); }
+function clasificar(){
+  const q01 = v('Q01'), hayQ01 = Array.isArray(q01) && q01.length > 0;
+  const ml = tiene('ml'), gen = tiene('generativa'), ag = tiene('agentes'), rpa = tiene('reglas'), terc = tiene('terceros');
+  const gv = (D.respuestas.Q01||{}).gen_varios, aprende = ml || gen || ag;
+  const nF = [ml,gen,ag].filter(Boolean).length;
+  const pilotos = ['3-5','mas5'].includes(v('Q02')), mayoriaGen = v('Q03')==='mayoria', genProdMax1 = !gen || gv!==true;
+  /* condición completa de cada arquetipo (para elegir el principal) y la que lo define (para los rasgos) */
+  const cond = { 'PP-F': nF>=2, 'PP-E': pilotos && mayoriaGen && genProdMax1, 'PP-D': ml, 'PP-C': rpa && !aprende, 'PP-B': terc && !aprende, 'PP-A': true };
+  const define = { 'PP-F': nF>=2, 'PP-E': pilotos && mayoriaGen, 'PP-D': ml, 'PP-C': rpa, 'PP-B': terc, 'PP-A': false };
+  const orden = R.asignacion.slice().sort((a,b)=>a.orden-b.orden).map(x=>x.arquetipo);
+  let principal = null; const rasgos = [];
+  if(hayQ01){ for(const a of orden){ if(!principal){ if(cond[a]) principal = a; } else if(define[a]) rasgos.push(a); } }
+  const sn = b => t(b?'si':'no'), resp = q => v(q)==null ? t('sd') : respTexto(q, v(q));
+  const usa = {
+    'PP-F': t('u_f',{n:nF, ml:sn(ml), gen:sn(gen), ag:sn(ag)}),
+    'PP-E': t('u_e',{p:resp('Q02'), g:resp('Q03'), gp: !gen ? t('gp_0') : gv===true ? t('gp_n') : gv===false ? t('gp_1') : t('gp_sd')}) + (define['PP-E']!==cond['PP-E'] ? ' '+t('u_e_rasgo',{s:sn(define['PP-E'])}) : ''),
+    'PP-D': t('u_d',{s:sn(ml)}), 'PP-C': t('u_c',{s:sn(rpa), l:sn(aprende)}), 'PP-B': t('u_b',{s:sn(terc), l:sn(aprende)}), 'PP-A': t('u_a') };
+  const traza = orden.map(a => ({arquetipo:a, cumple:cond[a], define:define[a], usa:usa[a], res: !hayQ01 ? '' : a===principal ? 'principal' : rasgos.includes(a) ? 'rasgo' : (principal && cond[a] && a!=='PP-A') ? 'despues' : a==='PP-A' ? (principal==='PP-A'?'principal':'no') : 'no'}));
+  const mods = [];
+  const Q = x => v(x), si = x => Q(x)==='si', mv = {MP1:si('Q07'), MP2:['si','nsnc'].includes(Q('Q08')), MP3:si('Q09'), MP4:['parcial','formal'].includes(Q('Q05')), MP5:Q('Q10')==='no'};
+  for(const m of R.modificadores) if(mv[m.codigo]) mods.push(m.codigo);
+  const avisoA = principal==='PP-A' && hayQ01 && q01.some(k=>k!=='ninguno');
+  return {arquetipo:principal, rasgos, modificadores:mods, traza, hayQ01, avisoA};
+}
+function cubierto(cod, res){ if(!res.modificadores.includes('MP4')) return false; const e = (D.hitos||{})[cod]||{}; return e.cubierto!=null ? !!e.cubierto : (cod==='HI-08' || cod==='HI-20'); }
+function prioridades(res){
+  const out = {};
+  const fuentes = res.arquetipo ? [res.arquetipo].concat(res.rasgos) : [];
+  const q04 = ['si','nsnc'].includes(v('Q04')), mp = x => res.modificadores.includes(x);
+  for(const h of R.hitos){
+    let p = null, de = null;
+    for(const a of fuentes){ const x = h.prioridad[a]; if(p==null || ORD[x] < ORD[p]){ p = x; de = a; } }
+    const base = p, aj = [];
+    if(p!=null){
+      if(q04 && (h.codigo==='HI-02' || h.codigo==='HI-03') && p!=='1'){ p = '1'; aj.push(t('aj_q04',{v:respTexto('Q04', v('Q04'))})); }
+      if((mp('MP1') || mp('MP2')) && (h.codigo==='HI-05' || h.codigo==='HI-10') && p!=='1'){ p = '1'; aj.push(t('aj_mp12',{m:[mp('MP1')?'MP1':null, mp('MP2')?'MP2':null].filter(Boolean).join(' · ')})); }
+      if(mp('MP2') && h.codigo==='HI-19' && p!=='1'){ p = '1'; aj.push(t('aj_mp2')); }
+      if(cubierto(h.codigo, res) && p!=='C'){ p = 'C'; aj.push(t('aj_mp4')); }
+    }
+    out[h.codigo] = {prioridad:p, base, de, ajustes:aj};
+  }
+  return out;
+}
+/* T15: la evaluación verificada (o independiente) más reciente; si solo hay autodiagnósticos, el más reciente, que no marca hitos */
+function evalT15(){
+  const d = datosT15Local(); if(!d || !d.evaluaciones.length) return null;
+  const ord = d.evaluaciones.slice().sort((a,b)=>String(b.fecha_corte||'').localeCompare(String(a.fecha_corte||'')));
+  const ver = ord.find(e=>e.modalidad==='verificada' || e.modalidad==='independiente');
+  return ver ? {ev:ver, verificada:true} : {ev:ord[0], verificada:false};
+}
+function t15Hito(h, E){
+  if(!E) return null;
+  const r = E.ev.respuestas || {}, faltan = h.preguntas11.filter(c => (r[c]||{}).r !== 'si');
+  return {cumple: faltan.length===0, faltan, porPregunta: Object.fromEntries(h.preguntas11.map(c=>[c, (r[c]||{}).r || null])), verificada:E.verificada, id:E.ev.id};
+}
+function estadoHito(h, E){
+  const m = (D.hitos||{})[h.codigo] || {}, x = t15Hito(h, E);
+  if(m.estado) return {estado:m.estado, fuente:'manual', t15:x};
+  if(x && x.verificada && x.cumple) return {estado:'cumplido', fuente:'t15', t15:x};
+  return {estado:'pendiente', fuente:'', t15:x};
+}
+function hecho(st){ return st.estado==='cumplido' || st.estado==='convalidado'; }
+function calcular(){
+  const res = clasificar(), pr = prioridades(res), E = evalT15(), est = {};
+  for(const h of R.hitos) est[h.codigo] = estadoHito(h, E);
+  const bloqueo = res.modificadores.includes('MP5') && !hecho(est['HI-01']);
+  const mp3 = res.modificadores.includes('MP3');
+  return {res, pr, E, est, bloqueo, mp3};
+}
+function ordenados(C, etapa){
+  return R.hitos.filter(h=>!etapa || h.etapa===etapa).slice().sort((a,b)=>{
+    const pa = C.pr[a.codigo].prioridad, pb = C.pr[b.codigo].prioridad;
+    return (ORD[pa] ?? 9) - (ORD[pb] ?? 9) || a.codigo.localeCompare(b.codigo); });
+}
+/* para la prueba de humo y para quien use la herramienta desde la consola */
+window.T23 = { resultado: function(){ const C = calcular(); return {arquetipo:C.res.arquetipo, rasgos:C.res.rasgos, modificadores:C.res.modificadores, preguntas:R.preguntas.length, hitos:R.hitos.length, bloqueo:C.bloqueo,
+  prioridades:Object.fromEntries(R.hitos.map(h=>[h.codigo, C.pr[h.codigo].prioridad])), estados:Object.fromEntries(R.hitos.map(h=>[h.codigo, C.est[h.codigo].estado]))}; } };
+
+/* =========================================================
+   Registro T01: propuesta de Q01 a Q03 (D100, D102: una respuesta manual no se pisa)
+   ========================================================= */
+function propuestaT01(reg){
+  const c = I => I.clasificacion || {}, ci = I => I.ciclo || {};
+  const vivo = I => !['parada','retirada'].includes(ci(I).estado);
+  const enUso = reg.iniciativas.filter(I => [6,7].includes(Number(ci(I).fase)) && vivo(I));
+  const pilotos = reg.iniciativas.filter(I => { const f = Number(ci(I).fase); return f>=1 && f<=5 && vivo(I); });
+  const tipos = new Set(); let nGen = 0;
+  for(const I of enUso){
+    const tec = Array.isArray(c(I).tecnologia) ? c(I).tecnologia : [], aut = String(c(I).autonomia||''), actua = aut==='A2' || aut==='A3';
+    let esGen = false;
+    for(const k of tec){
+      if(k==='reglas') tipos.add('reglas');
+      else if(k==='ia_terceros_embebida') tipos.add('terceros');
+      else if(['ml_predictivo','vision','optimizacion','lenguaje_documentos'].includes(k)) tipos.add('ml');
+      else if(k==='ia_generativa'){ tipos.add('generativa'); esGen = true; }
+      else if(k==='agente'){ if(actua) tipos.add('agentes'); else { tipos.add('generativa'); esGen = true; } }
+    }
+    if(actua) tipos.add('agentes');
+    if(esGen) nGen++;
+  }
+  const q01 = tipos.size ? ['reglas','terceros','ml','generativa','agentes'].filter(k=>tipos.has(k)) : ['ninguno'];
+  const nP = pilotos.length, gP = pilotos.filter(I => { const tec = Array.isArray(c(I).tecnologia) ? c(I).tecnologia : []; return tec.includes('ia_generativa') || tec.includes('agente'); }).length;
+  return {
+    Q01:{v:q01, gen_varios: tipos.has('generativa') ? nGen>1 : undefined, fuente:'t01'},
+    Q02:{v: nP===0 ? '0' : nP<=2 ? '1-2' : nP<=5 ? '3-5' : 'mas5', fuente:'t01'},
+    Q03:{v: gP===0 ? 'ninguno' : gP*2>nP ? 'mayoria' : 'alguno', fuente:'t01'},
+    det:{u:enUso.map(I=>I.id).join(', ')||'—', p:nP, g:gP}
+  };
+}
+function proponerT01(){
+  const reg = registroT01Local(); if(!reg){ toast(t('t01_local_no')); return; }
+  const p = propuestaT01(reg), cambiadas = [], manuales = [];
+  for(const q of ['Q01','Q02','Q03']){
+    const a = D.respuestas[q];
+    if(a && a.fuente==='manual' && a.v!=null && !(Array.isArray(a.v) && !a.v.length)){ manuales.push(q); continue; }
+    const n = clon(p[q]); if(n.gen_varios===undefined) delete n.gen_varios; D.respuestas[q] = n; cambiadas.push(q);
+  }
+  if(!D.meta.organizacion) D.meta.organizacion = (reg.meta||{}).organizacion || '';
+  guardar(); rerender();
+  toast(t('ok_t01',{c:cambiadas.join(', ')||'—'}) + (manuales.length ? t('ok_t01_manual',{m:manuales.join(', ')}) : ''));
+}
+
+/* =========================================================
+   Vistas
+   ========================================================= */
+function priBadge(p, title){ const k = p==null ? 'n' : p==='·' ? 'n' : p; return '<span class="pri p'+k+'" title="'+esc(title||(p==null?'':t('p_'+p)))+'">'+esc(p==null?'–':p)+'</span>'; }
+function priTitulo(x){ if(x.prioridad==null) return ''; return t('p_'+x.prioridad)+' · '+t('base_de',{p:x.base, a:x.de})+(x.ajustes.length?' · '+x.ajustes.join(' · '):''); }
+function avisoT01(){
+  const reg = registroT01Local();
+  if(!reg) return '<p class="aviso sin-imprimir" id="t01-local" data-registro="no">'+esc(t('t01_local_no'))+'</p>';
+  const p = propuestaT01(reg);
+  return '<p class="aviso info sin-imprimir" id="t01-local" data-registro="si">'+esc(t('t01_local',{o:(reg.meta||{}).organizacion||'', n:reg.iniciativas.length, f:fF((reg.meta||{}).fecha_referencia||'')}))+' '+esc(t('t01_det',p.det))+
+    ' <button type="button" data-acc="proponer-t01">'+esc(t('t01_proponer'))+'</button></p>';
+}
+function avisoT15(E){
+  if(!E) return '<p class="aviso sin-imprimir" id="t15-local" data-evaluacion="">'+esc(t('t15_no'))+'</p>';
+  const m = {autodiagnostico:{es:'autodiagnóstico',en:'self-assessment'}, verificada:{es:'verificada',en:'verified'}, independiente:{es:'independiente',en:'independent'}}[E.ev.modalidad] || {es:E.ev.modalidad, en:E.ev.modalidad};
+  return '<p class="aviso '+(E.verificada?'info':'')+' sin-imprimir" id="t15-local" data-evaluacion="'+esc(E.ev.id)+'" data-verificada="'+(E.verificada?'si':'no')+'">'+esc(E.verificada ? t('t15_local',{id:E.ev.id, m:L(m), f:fF(E.ev.fecha_corte)}) : t('t15_auto',{id:E.ev.id, f:fF(E.ev.fecha_corte)}))+'</p>';
+}
+function cabResultado(C, compacto){
+  const r = C.res, a = R.arquetipos.find(x=>x.codigo===r.arquetipo);
+  let h = '<div class="res" id="arquetipo" data-arquetipo="'+esc(r.arquetipo||'')+'" data-rasgos="'+esc(r.rasgos.join(','))+'" data-modificadores="'+esc(r.modificadores.join(','))+'" data-bloqueo="'+(C.bloqueo?'1':'0')+'"><div>';
+  h += '<div class="rotulo">'+esc(t('arquetipo'))+'</div>';
+  if(!r.arquetipo) h += '<p class="aviso">'+esc(t('sin_q01'))+'</p>';
+  else {
+    h += '<div class="nombre"><b>'+esc(r.arquetipo)+'</b> · '+esc(L(a.nombre))+'</div>';
+    if(!compacto) h += '<dl><dt>'+esc(t('como_reconoce'))+'</dt><dd>'+esc(L(a.reconoce))+'</dd><dt>'+esc(t('riesgo'))+'</dt><dd>'+esc(L(a.riesgo))+'</dd><dt>'+esc(t('empieza'))+'</dt><dd>'+esc(L(a.empieza))+'</dd><dt>'+esc(t('espera'))+'</dt><dd>'+esc(L(a.espera))+'</dd></dl>';
+  }
+  h += '</div><div><div class="rotulo">'+esc(t('rasgos'))+'</div><div class="chips">'+(r.rasgos.length ? r.rasgos.map(x=>'<span class="et info">'+esc(arqNombre(x))+'</span>').join('') : '<span class="sd">'+esc(t('ninguno'))+'</span>')+'</div>';
+  h += '<div class="rotulo">'+esc(t('modificadores'))+'</div><div class="chips">'+(r.modificadores.length ? r.modificadores.map(x=>{ const m = R.modificadores.find(y=>y.codigo===x); return '<span class="et '+(x==='MP5'?'ko':'med')+'" title="'+esc(L(m.efecto))+'">'+esc(x+' · '+L(m.nombre))+'</span>'; }).join('') : '<span class="sd">'+esc(t('ninguno'))+'</span>')+'</div>';
+  h += '<div class="rotulo">'+esc(t('calendario'))+'</div><p>'+esc(C.mp3 ? t('cal_ent') : t('cal_lite'))+'</p></div></div>';
+  if(C.bloqueo) h += '<p class="aviso ko" id="bloqueo">'+esc(t('mp5_banner'))+'</p>';
+  if(r.avisoA) h += '<p class="aviso">'+esc(t('aviso_a'))+'</p>';
+  return h;
+}
+function campoMeta(k, tipo){ return '<div class="campo"><label for="m-'+k+'">'+esc(t(k))+'</label><input type="'+(tipo||'text')+'" id="m-'+k+'" data-meta="'+k+'" value="'+esc((D.meta||{})[k]||'')+'"></div>'; }
+function vistaPartida(C){
+  const r = C.res;
+  let h = '<h1>'+esc(t('tit_partida'))+'</h1><p>'+esc(t('sub_partida'))+'</p>';
+  h += '<div class="rejilla sin-imprimir">'+campoMeta('organizacion')+campoMeta('fecha','date')+campoMeta('responsable')+'</div>';
+  h += avisoT01();
+  h += cabResultado(C, false);
+  // por qué: traza de la regla y modificadores
+  h += '<details open><summary>'+esc(t('por_que'))+'</summary><p class="ayuda">'+esc(t('traza_sub'))+'</p><div class="tblx"><table class="tabla traza resp"><thead><tr><th>'+esc(t('orden'))+'</th><th>'+esc(t('arquetipo'))+'</th><th>'+esc(t('condicion'))+'</th><th>'+esc(t('resultado'))+'</th><th>'+esc(t('datos_usados'))+'</th></tr></thead><tbody>';
+  r.traza.forEach((x,i)=>{ const reg = R.asignacion.find(y=>y.arquetipo===x.arquetipo);
+    const rt = x.res==='principal' ? '<span class="et ok">'+esc(t('r_principal'))+'</span>' : x.res==='rasgo' ? '<span class="et info">'+esc(t('r_rasgo'))+'</span>' : x.res==='despues' ? '<span class="et">'+esc(t('r_cumple_despues'))+'</span>' : x.res==='' ? '' : '<span class="sd">'+esc(t('r_no'))+'</span>';
+    h += '<tr data-traza="'+esc(x.arquetipo)+'" data-res="'+esc(x.res)+'"><td data-l="'+esc(t('orden'))+'">'+(i+1)+'</td><td data-l="'+esc(t('arquetipo'))+'"><b>'+esc(arqNombre(x.arquetipo))+'</b></td><td data-l="'+esc(t('condicion'))+'">'+esc(L(reg.condicion))+'</td><td data-l="'+esc(t('resultado'))+'">'+rt+'</td><td data-l="'+esc(t('datos_usados'))+'"><small>'+esc(x.usa)+'</small></td></tr>'; });
+  h += '</tbody></table></div>';
+  h += '<h3>'+esc(t('mods_tit'))+'</h3><div class="tblx"><table class="tabla resp"><thead><tr><th>'+esc(t('modificadores'))+'</th><th>'+esc(t('mod_activo'))+'</th><th>'+esc(t('mod_por'))+'</th><th>'+esc(t('mod_efecto'))+'</th></tr></thead><tbody>';
+  const qm = {MP1:'Q07', MP2:'Q08', MP3:'Q09', MP4:'Q05', MP5:'Q10'};
+  for(const m of R.modificadores){ const act = r.modificadores.includes(m.codigo), q = qm[m.codigo], vv = v(q);
+    h += '<tr data-mod="'+m.codigo+'" data-activo="'+(act?'1':'0')+'"><td data-l="'+esc(t('modificadores'))+'"><b>'+esc(m.codigo)+'</b> · '+esc(L(m.nombre))+'</td><td data-l="'+esc(t('mod_activo'))+'">'+(act?'<span class="et '+(m.codigo==='MP5'?'ko':'med')+'">'+esc(t('si'))+'</span>':'<span class="sd">'+esc(t('no'))+'</span>')+'</td><td data-l="'+esc(t('mod_por'))+'">'+esc(t('m_'+m.codigo,{v: vv==null ? t('sd') : respTexto(q, vv)}))+'</td><td data-l="'+esc(t('mod_efecto'))+'"><small>'+esc(L(m.efecto))+'</small></td></tr>'; }
+  h += '</tbody></table></div></details>';
+  // cuestionario
+  h += '<h2>'+esc(t('cuest'))+'</h2><div class="tblx"><table class="tabla preg resp"><thead><tr><th>'+esc(t('pregunta'))+'</th><th></th><th class="col-resp">'+esc(t('respuesta'))+'</th><th>'+esc(t('alimenta'))+'</th><th>'+esc(t('origen'))+'</th></tr></thead><tbody>';
+  for(const q of R.preguntas){
+    const a = D.respuestas[q.codigo] || {}, fu = a.v==null || (Array.isArray(a.v) && !a.v.length) ? '' : (a.fuente==='t01' ? t('f_t01') : t('f_manual'));
+    let ctl;
+    if(q.multiple){
+      const sel = Array.isArray(a.v) ? a.v : [];
+      ctl = '<div class="q01" role="group" aria-label="'+esc(q.codigo)+'">'+q.respuestas.map(o=>'<label><input type="checkbox" data-q01="'+esc(o.clave)+'"'+(sel.includes(o.clave)?' checked':'')+'> '+esc(L(o.texto))+'</label>').join('')+'</div>';
+      if(sel.includes('generativa')) ctl += '<label class="ayuda" for="q01-gen">'+esc(t('gen_det'))+'</label><select id="q01-gen" data-gen="1"><option value="">'+esc(t('sin_resp'))+'</option><option value="uno"'+(a.gen_varios===false?' selected':'')+'>'+esc(t('gen_uno'))+'</option><option value="varios"'+(a.gen_varios===true?' selected':'')+'>'+esc(t('gen_varios'))+'</option></select>';
+    } else {
+      ctl = '<select id="q-'+q.codigo+'" data-q="'+q.codigo+'" aria-label="'+esc(q.codigo)+'"><option value="">'+esc(t('sin_resp'))+'</option>'+q.respuestas.map(o=>'<option value="'+esc(o.clave)+'"'+(a.v===o.clave?' selected':'')+'>'+esc(L(o.texto))+'</option>').join('')+'</select>';
+    }
+    h += '<tr data-pregunta="'+q.codigo+'" data-respuesta="'+esc(Array.isArray(a.v)?a.v.join(','):(a.v||''))+'"><td data-l="'+esc(t('pregunta'))+'" class="cod">'+esc(q.codigo)+'</td><td data-l="" class="txt">'+esc(L(q.texto))+'</td><td data-l="'+esc(t('respuesta'))+'">'+ctl+'</td><td data-l="'+esc(t('alimenta'))+'"><small>'+esc(L(q.alimenta))+'</small></td><td data-l="'+esc(t('origen'))+'">'+(fu?'<span class="et '+(a.fuente==='t01'?'info':'')+'">'+esc(fu)+'</span>':'')+'</td></tr>';
+  }
+  h += '</tbody></table></div>';
+  // referencia: los seis arquetipos y la regla
+  h += '<details><summary>'+esc(t('arq_todos'))+'</summary><div class="tblx"><table class="tabla resp"><thead><tr><th>'+esc(t('arquetipo'))+'</th><th>'+esc(t('como_reconoce'))+'</th><th>'+esc(t('riesgo'))+'</th><th>'+esc(t('empieza'))+'</th><th>'+esc(t('espera'))+'</th></tr></thead><tbody>'+
+    R.arquetipos.map(a=>'<tr><td data-l="'+esc(t('arquetipo'))+'"><b>'+esc(a.codigo)+'</b> · '+esc(L(a.nombre))+'</td><td data-l="'+esc(t('como_reconoce'))+'">'+esc(L(a.reconoce))+'</td><td data-l="'+esc(t('riesgo'))+'">'+esc(L(a.riesgo))+'</td><td data-l="'+esc(t('empieza'))+'">'+esc(L(a.empieza))+'</td><td data-l="'+esc(t('espera'))+'">'+esc(L(a.espera))+'</td></tr>').join('')+'</tbody></table></div></details>';
+  return h;
+}
+function celdaQ11(h, st){
+  return h.preguntas11.map(c=>{ const r = st.t15 ? st.t15.porPregunta[c] : null; const mk = r==='si' ? '<i class="si" aria-label="'+esc(t('si'))+'">✓</i>' : st.t15 ? '<i class="no" aria-label="'+esc(t('no'))+'">✗</i>' : ''; return '<span class="q11">'+esc(c)+mk+'</span>'; }).join(' ');
+}
+function fuenteEstado(st){
+  let s = st.fuente==='manual' ? t('fe_manual') : st.fuente==='t15' ? t('fe_t15',{id:st.t15.id}) : t('fe_ninguno');
+  if(st.fuente==='manual' && st.t15 && st.t15.verificada) s += ' · ' + (st.t15.cumple ? t('t15_tambien',{id:st.t15.id}) : t('t15_falta',{id:st.t15.id, q:st.t15.faltan.join(', ')}));
+  return s;
+}
+function filaHito(h, C){
+  const x = C.pr[h.codigo], st = C.est[h.codigo], m = (D.hitos||{})[h.codigo] || {}, bloq = C.bloqueo && h.codigo!=='HI-01';
+  const mes = L(C.mp3 ? h.mes_base.enterprise : h.mes_base.lite);
+  let est = '<select data-estado="'+h.codigo+'" aria-label="'+esc(t('estado')+' '+h.codigo)+'">'+ESTADOS.map(e=>'<option value="'+e+'"'+(st.estado===e?' selected':'')+'>'+esc(t('e_'+e))+'</option>').join('')+'</select>';
+  est += '<span class="fuente" data-fuente="'+esc(st.fuente)+'">'+esc(fuenteEstado(st))+(st.fuente==='manual' ? ' · <button type="button" class="enlace-btn" data-acc="quitar-estado" data-hito="'+h.codigo+'">'+esc(t('quitar'))+'</button>' : '')+'</span>';
+  est += '<label class="oculto" for="n-'+h.codigo+'">'+esc(t('nota'))+'</label><input type="text" id="n-'+h.codigo+'" data-nota="'+h.codigo+'" placeholder="'+esc(t('nota'))+'" value="'+esc(m.nota||'')+'">';
+  if(C.res.modificadores.includes('MP4')) est += '<label class="ayuda"><input type="checkbox" data-cubierto="'+h.codigo+'"'+(cubierto(h.codigo, C.res)?' checked':'')+'> '+esc(t('cubierto'))+'</label>';
+  return '<tr class="e-'+st.estado+(bloq?' bloq':'')+'" data-hito="'+h.codigo+'" data-prioridad="'+esc(x.prioridad||'')+'" data-estado="'+st.estado+'" data-fuente="'+esc(st.fuente)+'">'+
+    '<td data-l="'+esc(t('hito'))+'"><span class="cod">'+esc(h.codigo)+'</span> '+priBadge(x.prioridad, priTitulo(x))+'<small>'+esc(x.prioridad==null?'':t('pc_'+x.prioridad))+'</small>'+(x.ajustes.length?'<small>'+esc(x.ajustes.join(' · '))+'</small>':'')+(bloq?'<small>'+esc(t('bloq'))+'</small>':'')+'</td>'+
+    '<td data-l="'+esc(t('que'))+'" class="txt">'+esc(L(h.que))+'<small>'+esc(t('quien'))+': '+esc(L(h.quien))+'</small></td>'+
+    '<td data-l="'+esc(t('evidencia'))+'">'+esc(L(h.evidencia))+'</td>'+
+    '<td data-l="'+esc(t('preg11'))+'">'+celdaQ11(h, st)+'</td>'+
+    '<td data-l="'+esc(t('mes'))+'">'+esc(mes)+'</td>'+
+    '<td data-l="'+esc(t('estado'))+'" class="col-est">'+est+'</td></tr>';
+}
+function resumenHTML(C){
+  const hs = R.hitos, n = hs.length, hechos = hs.filter(h=>hecho(C.est[h.codigo])).length, curso = hs.filter(h=>C.est[h.codigo].estado==='en_curso').length, ya = hs.filter(h=>C.pr[h.codigo].prioridad==='1' && !hecho(C.est[h.codigo])).length;
+  return '<div class="global" id="resumen" data-total="'+n+'" data-hechos="'+hechos+'" data-p1="'+ya+'" style="grid-template-columns:repeat(4,minmax(0,1fr))">'+
+    [[t('r_total'), n],[t('r_ya'), ya],[t('r_curso'), curso],[t('r_hechos'), hechos]].map(x=>'<div class="cifras" style="grid-template-columns:1fr"><div><b>'+x[1]+'</b><span>'+esc(x[0])+'</span></div></div>').join('')+'</div>';
+}
+function vistaRecorrido(C){
+  let h = '<h1>'+esc(t('tit_recorrido'))+'</h1><p>'+esc(t('sub_recorrido'))+'</p>';
+  h += cabResultado(C, true) + avisoT15(C.E) + resumenHTML(C);
+  h += '<div class="fila sin-imprimir"><label for="sel-filtro">'+esc(t('filtro'))+'</label><select id="sel-filtro" data-ui="filtro">'+[['todos','f_todos'],['pend','f_pend'],['p1','f_p1']].map(o=>'<option value="'+o[0]+'"'+(UI.filtro===o[0]?' selected':'')+'>'+esc(t(o[1]))+'</option>').join('')+'</select></div>';
+  const ver = h0 => UI.filtro==='pend' ? !hecho(C.est[h0.codigo]) : UI.filtro==='p1' ? C.pr[h0.codigo].prioridad==='1' : true;
+  for(const e of R.etapas){
+    const hs = ordenados(C, e.codigo).filter(ver);
+    h += '<section data-etapa="'+e.codigo+'"><h2>'+esc(etapaNombre(e.codigo))+'</h2><div class="etapa-cab"><p>'+esc(L(e.objetivo))+'</p><p class="ayuda">'+esc(L(e.referencia))+'</p></div>';
+    if(!hs.length){ h += '<p class="sd">—</p></section>'; continue; }
+    h += '<div class="tblx"><table class="tabla hito resp"><thead><tr><th>'+esc(t('hito'))+'</th><th>'+esc(t('que'))+'</th><th>'+esc(t('evidencia'))+'</th><th>'+esc(t('preg11'))+'</th><th>'+esc(t('mes'))+' · '+esc(C.mp3?'Enterprise':'Lite')+'</th><th class="col-est">'+esc(t('estado'))+'</th></tr></thead><tbody>'+hs.map(x=>filaHito(x, C)).join('')+'</tbody></table></div></section>';
+  }
+  h += '<h3>'+esc(t('prioridad'))+'</h3><div class="chips">'+['1','2','C','D','3','·'].map(p=>priBadge(p)+' <span class="ayuda">'+esc(t('pc_'+p))+'</span>').join(' &nbsp; ')+'</div>';
+  return h;
+}
+function vistaRoles(C){
+  let h = '<h1>'+esc(t('tit_roles'))+'</h1><p>'+esc(t('sub_roles'))+'</p>' + cabResultado(C, true);
+  h += '<div class="tblx"><table class="tabla roles resp"><thead><tr><th>'+esc(t('rol'))+'</th>'+R.etapas.map(e=>'<th>'+esc(etapaNombre(e.codigo))+'</th>').join('')+'</tr></thead><tbody>';
+  for(const ro of R.roles){
+    h += '<tr data-rol="'+esc(ro.rol.es)+'"><td data-l="'+esc(t('rol'))+'"><b>'+esc(L(ro.rol))+'</b></td>';
+    for(const e of R.etapas){ const c = ro.etapas[e.codigo] || {hitos:[], texto:{es:'—',en:'—'}};
+      h += '<td data-l="'+esc(etapaNombre(e.codigo))+'">'+(c.hitos.length ? c.hitos.map(x=>{ const st = C.est[x], p = C.pr[x]; return '<span class="h" title="'+esc(L(HI[x].que))+'">'+esc(x)+' '+priBadge(p.prioridad, priTitulo(p))+(hecho(st)?' <i class="si" style="color:var(--teal);font-style:normal">✓</i>':st.estado==='en_curso'?' <span class="ayuda">…</span>':'')+'</span>'; }).join('') + (L(c.texto).includes('(') ? '<small>'+esc(L(c.texto))+'</small>' : '') : '<span class="sd">—</span>')+'</td>'; }
+    h += '</tr>';
+  }
+  return h + '</tbody></table></div>';
+}
+function vistaPlan(C){
+  const r = C.res;
+  let h = '<div class="plan"><h1>'+esc(t('tit_plan'))+'</h1><p class="ayuda sin-imprimir">'+esc(t('sub_plan'))+'</p>';
+  h += '<div class="fila sin-imprimir"><button type="button" class="primario" data-acc="imprimir">'+esc(t('imprimir'))+'</button><button type="button" data-acc="csv">'+esc(t('csv'))+'</button></div>';
+  h += '<p><b>'+esc(t('plan_de',{o:(D.meta||{}).organizacion||'—', f:fF((D.meta||{}).fecha||hoy())}))+'</b>'+((D.meta||{}).responsable?' · '+esc(D.meta.responsable):'')+'</p>';
+  h += cabResultado(C, false);
+  if(r.modificadores.length) h += '<ul>'+r.modificadores.map(x=>{ const m = R.modificadores.find(y=>y.codigo===x); return '<li><b>'+esc(x)+' · '+esc(L(m.nombre))+'.</b> '+esc(L(m.efecto))+'</li>'; }).join('')+'</ul>';
+  h += resumenHTML(C);
+  for(const e of R.etapas){
+    h += '<h2>'+esc(etapaNombre(e.codigo))+'</h2><p class="ayuda">'+esc(L(e.objetivo))+' '+esc(L(e.referencia))+'</p><div class="tblx"><table class="tabla resp"><thead><tr><th>'+esc(t('hito'))+'</th><th>'+esc(t('prioridad'))+'</th><th>'+esc(t('mes'))+'</th><th>'+esc(t('que'))+'</th><th>'+esc(t('quien'))+'</th><th>'+esc(t('evidencia'))+'</th><th>'+esc(t('preg11'))+'</th><th>'+esc(t('estado'))+'</th></tr></thead><tbody>';
+    for(const hh of ordenados(C, e.codigo)){ const x = C.pr[hh.codigo], st = C.est[hh.codigo], m = (D.hitos||{})[hh.codigo]||{};
+      h += '<tr><td data-l="'+esc(t('hito'))+'"><b>'+esc(hh.codigo)+'</b></td><td data-l="'+esc(t('prioridad'))+'">'+priBadge(x.prioridad, priTitulo(x))+'<small>'+esc(x.prioridad==null?'':t('pc_'+x.prioridad))+'</small></td><td data-l="'+esc(t('mes'))+'">'+esc(L(C.mp3?hh.mes_base.enterprise:hh.mes_base.lite))+'</td><td data-l="'+esc(t('que'))+'">'+esc(L(hh.que))+'</td><td data-l="'+esc(t('quien'))+'">'+esc(L(hh.quien))+'</td><td data-l="'+esc(t('evidencia'))+'">'+esc(L(hh.evidencia))+'</td><td data-l="'+esc(t('preg11'))+'">'+esc(hh.preguntas11.join(', '))+'</td><td data-l="'+esc(t('estado'))+'">'+esc(t('e_'+st.estado))+'<small>'+esc(fuenteEstado(st))+'</small>'+(m.nota?'<small>'+esc(m.nota)+'</small>':'')+'</td></tr>'; }
+    h += '</tbody></table></div>';
+  }
+  return h + '</div>';
+}
+function vistaDatos(C){
+  let h = '<h1>'+esc(t('tit_datos'))+'</h1><p>'+esc(t('sub_datos'))+'</p>' + avisoT01() + avisoT15(C.E);
+  h += '<div class="fila"><button type="button" class="primario" data-acc="exportar">'+esc(t('exportar'))+'</button><button type="button" data-acc="importar">'+esc(t('importar'))+'</button><button type="button" data-acc="csv">'+esc(t('csv'))+'</button></div>';
+  h += '<div class="fila" style="margin-top:10px"><button type="button" data-acc="ejemplo-b" id="btn-ejemplo-b">'+esc(t('ejemplo_b'))+'</button><button type="button" data-acc="restaurar">'+esc(t('restaurar'))+'</button><button type="button" class="peligro" data-acc="vaciar">'+esc(t('vaciar'))+'</button></div>';
+  return h;
+}
+const VISTAS = ['partida','recorrido','roles','plan','datos'];
+function ruta(){ const x=(location.hash||'#/partida').replace(/^#\/?/,'').split('/')[0]; return VISTAS.includes(x)?x:'partida'; }
+function render(){
+  const foco = document.activeElement && document.activeElement.id, y = window.scrollY;
+  document.documentElement.lang = lang; document.title = t('app');
+  document.getElementById('txt-app').textContent = t('app');
+  document.getElementById('saltar').textContent = t('saltar');
+  document.getElementById('lbl-lang').textContent = t('idioma'); document.getElementById('lbl-tema').textContent = t('tema');
+  const st = document.getElementById('sel-tema'); st.options[0].text=t('t_auto'); st.options[1].text=(lang==='en'?'Salmon':'Salmón'); st.options[2].text=t('t_claro'); st.options[3].text=t('t_oscuro'); sitioNav(); st.value=UI.tema;
+  document.getElementById('sel-lang').value = lang;
+  document.getElementById('btn-legal').textContent = t('legal_link');
+  const ld = document.getElementById('lnk-doc'); ld.textContent = t('doc96'); ld.href = '../../html/'+lang+'/96_SEVEN-G_Puntos_de_partida_y_recorrido_de_implantacion.html';
+  document.getElementById('lnk-t15').textContent = t('t15'); document.getElementById('lnk-t01').textContent = t('t01');
+  document.getElementById('nav').setAttribute('aria-label', t('vistas'));
+  const vv = ruta();
+  document.getElementById('nav').innerHTML = VISTAS.map(x=>'<a href="#/'+x+'"'+(x===vv?' aria-current="page"':'')+'>'+esc(t('v_'+x))+'</a>').join('');
+  document.getElementById('aviso-demo').innerHTML = (D.meta||{}).datos_ilustrativos ? '<div>'+esc((typeof (D.meta||{}).nota==='object' ? L(D.meta.nota) : (D.meta||{}).nota)||t('demo'))+'</div>' : '';
+  const C = calcular();
+  document.getElementById('principal').innerHTML = vv==='recorrido' ? vistaRecorrido(C) : vv==='roles' ? vistaRoles(C) : vv==='plan' ? vistaPlan(C) : vv==='datos' ? vistaDatos(C) : vistaPartida(C);
+  document.getElementById('pie').innerHTML = '<p class="pie-legal"><b>'+esc(t('legal_tit'))+'.</b> '+esc(t('legal_txt'))+'</p><span>'+esc(t('pie_lic'))+'</span><span>'+esc(t('pie_priv'))+'</span>';
+  if(window.SevengDatos) SevengDatos.refrescar();
+  if(foco && render._mantener){ const e = document.getElementById(foco); if(e){ e.focus({preventScroll:true}); window.scrollTo(0, y); } }
+  render._mantener = false;
+}
+function rerender(){ render._mantener = true; render(); }
+
+/* ---------------- exportación ---------------- */
+function descargar(nombre, txt, tipo){ const blob=new Blob([txt],{type:tipo}), u=URL.createObjectURL(blob), l=document.createElement('a'); l.href=u; l.download=nombre; document.body.appendChild(l); l.click(); l.remove(); setTimeout(()=>URL.revokeObjectURL(u),1000); }
+/* el JSON completo de T23 con el resultado calculado: lo que descarga «Exportar» y lo que se escribe en el fichero del equipo (D103) */
+function datosExportables(){ const x = clon(D), C = calcular(); x.version_esquema = VERSION_ESQUEMA; x.herramienta = 'T23'; x.meta = Object.assign({}, x.meta, {exportado:hoy(), version_recorrido:R.version_recorrido, aviso_legal:TX.es.legal_txt});
+  x.resultado = {arquetipo:C.res.arquetipo, rasgos:C.res.rasgos, modificadores:C.res.modificadores, calendario:C.mp3?'enterprise':'lite', bloqueo_mp5:C.bloqueo, evaluacion_t15:C.E?C.E.ev.id:null,
+    hitos:R.hitos.map(h=>({codigo:h.codigo, etapa:h.etapa, prioridad:C.pr[h.codigo].prioridad, estado:C.est[h.codigo].estado, fuente_estado:C.est[h.codigo].fuente||null}))};
+  return x; }
+function csvCelda(v0){ if(v0==null) return ''; const s=String(v0); return /[;"\r\n]/.test(s) ? '"'+s.replace(/"/g,'""')+'"' : s; }
+function csvRecorrido(){ const C = calcular(), filas = [];
+  for(const e of R.etapas) for(const h of ordenados(C, e.codigo)){ const x = C.pr[h.codigo], st = C.est[h.codigo], m = (D.hitos||{})[h.codigo]||{};
+    filas.push([etapaNombre(e.codigo), h.codigo, x.prioridad==null?'':x.prioridad+' · '+t('pc_'+x.prioridad), L(C.mp3?h.mes_base.enterprise:h.mes_base.lite), L(h.que), L(h.quien), L(h.evidencia), h.preguntas11.join(', '), t('e_'+st.estado), fuenteEstado(st), m.nota||''].map(csvCelda).join(';')); }
+  return '﻿'+t('csv_cab').map(csvCelda).join(';')+'\r\n'+filas.join('\r\n')+'\r\n'; }
+
+/* ---------------- eventos ---------------- */
+function hitoDe(cod){ D.hitos = D.hitos || {}; return D.hitos[cod] = D.hitos[cod] || {}; }
+function limpiarHito(cod){ const m = (D.hitos||{})[cod]; if(m && !m.estado && !String(m.nota||'').trim() && m.cubierto==null && !m.fecha) delete D.hitos[cod]; }
+document.addEventListener('change', ev => {
+  const el = ev.target;
+  if(el.id==='sel-lang'){ lang = UI.lang = el.value==='en'?'en':'es'; guardar(); render(); return; }
+  if(el.id==='sel-tema'){ UI.tema = el.value; temaSitioGuardar(el.value); aplicarTema(); guardar(); return; }
+  if(el.dataset.ui==='filtro'){ UI.filtro = el.value; guardar(); rerender(); return; }
+  if(el.dataset.meta){ D.meta = D.meta || {}; D.meta[el.dataset.meta] = el.value; guardar(); return; }
+  if(el.dataset.q){ if(el.value==='') delete D.respuestas[el.dataset.q]; else D.respuestas[el.dataset.q] = {v:el.value, fuente:'manual'}; guardar(); rerender(); return; }
+  if(el.dataset.q01){ const a = D.respuestas.Q01 = Object.assign({v:[]}, D.respuestas.Q01||{}); let s = Array.isArray(a.v) ? a.v.slice() : [];
+    const k = el.dataset.q01;
+    if(el.checked){ if(k==='ninguno') s = ['ninguno']; else { s = s.filter(x=>x!=='ninguno'); if(!s.includes(k)) s.push(k); } } else s = s.filter(x=>x!==k);
+    const ordenQ = PREG.Q01.respuestas.map(o=>o.clave); s.sort((x,y)=>ordenQ.indexOf(x)-ordenQ.indexOf(y));
+    a.v = s; a.fuente = 'manual'; if(!s.includes('generativa')) delete a.gen_varios; if(!s.length) delete D.respuestas.Q01; guardar(); rerender(); return; }
+  if(el.dataset.gen){ const a = D.respuestas.Q01; if(!a) return; if(el.value==='') delete a.gen_varios; else a.gen_varios = el.value==='varios'; a.fuente = 'manual'; guardar(); rerender(); return; }
+  if(el.dataset.estado){ const m = hitoDe(el.dataset.estado); m.estado = el.value; if(!m.fecha && (el.value==='cumplido' || el.value==='convalidado')) m.fecha = hoy(); guardar(); rerender(); return; }
+  if(el.dataset.nota){ const m = hitoDe(el.dataset.nota); m.nota = el.value; limpiarHito(el.dataset.nota); guardar(); return; }
+  if(el.dataset.cubierto){ const m = hitoDe(el.dataset.cubierto); m.cubierto = el.checked; guardar(); rerender(); return; }
+});
+document.addEventListener('click', ev => {
+  const b = ev.target.closest('[data-acc]'); if(!b) return;
+  const a = b.dataset.acc;
+  if(a==='aviso-legal'){ const d=document.getElementById('dlg-legal'); d.innerHTML='<div class="dlg-cab"><h2 id="legal-t">'+esc(t('legal_tit'))+'</h2><button type="button" data-acc="cerrar-legal">'+esc(t('legal_ok'))+'</button></div><div class="dlg-cuerpo"><p>'+esc(t('legal_txt'))+'</p></div>'; d.showModal(); return; }
+  if(a==='cerrar-legal'){ document.getElementById('dlg-legal').close(); return; }
+  if(a==='proponer-t01'){ proponerT01(); return; }
+  if(a==='quitar-estado'){ const m = hitoDe(b.dataset.hito); delete m.estado; delete m.fecha; limpiarHito(b.dataset.hito); guardar(); rerender(); return; }
+  if(a==='imprimir'){ window.print(); return; }
+  if(a==='csv'){ descargar('T23_recorrido_'+hoy()+'.csv', csvRecorrido(), 'text/csv;charset=utf-8'); toast(t('ok_export')); return; }
+  if(a==='exportar'){ descargar('t23_recorrido_implantacion_'+hoy()+'.json', JSON.stringify(datosExportables(),null,2), 'application/json'); toast(t('ok_export')); return; }
+  if(a==='importar'){ document.getElementById('f-t23').click(); return; }
+  if(a==='ejemplo-b'){ if(!confirm(t('conf_restaurar'))) return; D = cargarEjemploB(); guardar(); location.hash = '#/partida'; render(); toast(t('ok_ejemplo',{o:'PP-B'})); return; }
+  if(a==='restaurar'){ if(!confirm(t('conf_restaurar'))) return; D = cargarDemo(); SevengDatos.reiniciar('demo'); guardar(); render(); return; }
+  if(a==='vaciar'){ if(!confirm(t('conf_vaciar'))) return; D = vacio(); guardar(); location.hash = '#/partida'; render(); return; }
+});
+document.getElementById('f-t23').addEventListener('change', ev => { const inp=ev.target, f=inp.files[0]; if(!f) return; const rd=new FileReader();
+  rd.onload=()=>{ let x=null; try{ x=JSON.parse(rd.result); }catch(e){} inp.value='';
+    if(!valido(x)){ toast(t('err_json')); return; } if(!confirm(t('conf_importar'))) return;
+    D = normalizar(x); guardar(); render(); toast(t('ok_import')); };
+  rd.readAsText(f); });
+// ---- integración en el sitio: barra de navegación y tema general compartido (clave «seveng-tema»: salmon, claro o noche) ----
+const LS_TEMA_SITIO = 'seveng-tema', LS_TEMA_AUTO = 'seveng-herramientas-tema-auto';
+let TEMA_SITIO_LEIDO = false;
+function temaSitioInicial(){
+  if(TEMA_SITIO_LEIDO) return; TEMA_SITIO_LEIDO = true;
+  try{ if(localStorage.getItem(LS_TEMA_AUTO)) return; const m = ({salmon:'salmon', claro:'claro', noche:'oscuro'})[localStorage.getItem(LS_TEMA_SITIO)]; if(m){ UI.tema = m; const s = document.getElementById('sel-tema'); if(s) s.value = m; } }catch(e){}
+}
+function temaSitioGuardar(v0){
+  try{ if(v0 === 'auto'){ localStorage.setItem(LS_TEMA_AUTO, '1'); } else { localStorage.removeItem(LS_TEMA_AUTO); localStorage.setItem(LS_TEMA_SITIO, ({salmon:'salmon', claro:'claro', oscuro:'noche'})[v0] || 'salmon'); } }catch(e){}
+}
+// control «Buscador de documentos» del sitio (D88, D99, D105): carga el índice del idioma activo, SEVEN-G/html/<idioma>/codigos.js
+function irCodigoCargar(l){
+  if(window.sevengIrCodigo && window.sevengIrCodigo.lang===l){ window.sevengIrCodigo.iniciar(); return; }
+  const previo=document.getElementById('ir-codigo-js'); if(previo) previo.parentNode.removeChild(previo);
+  const s=document.createElement('script'); s.id='ir-codigo-js'; s.src='../../html/'+l+'/codigos.js'; document.head.appendChild(s);
+}
+function sitioNav(){
+  const n = document.getElementById('sitio-nav'); if(!n) return; const en = lang === 'en', l = en ? 'en' : 'es';
+  const e = [[en ? '../../../en/index.html' : '../../../index.html', en ? '⌂ Home' : '⌂ Portada'], ['../../html/'+l+'/00_SEVEN-G_Que_es_y_para_que_sirve.html', en ? 'What SEVEN-G is' : 'Qué es SEVEN-G'], ['../../html/'+l+'/index.html', en ? 'Library' : 'Biblioteca'], ['../../html/'+l+'/curso/M00_SEVEN-G_Curso_Guia_del_curso.html', en ? 'Course' : 'Curso'], ['../T01_registro_iniciativas/registro.html', en ? 'Initiative register' : 'Registro de iniciativas'], ['../T17_panel_consejo/index.html', en ? 'Board dashboard' : 'Panel del consejo']];
+  n.setAttribute('aria-label', en ? 'Site' : 'Sitio');
+  n.innerHTML = '<span class="sitio-marca" style="color:var(--papel)">SEVEN-G</span>' + e.map(x => '<a href="'+x[0]+'">'+x[1]+'</a>').join('') + '<span data-ir-codigo style="margin-left:auto"></span>';
+  irCodigoCargar(l);
+}
+function aplicarTema(){ temaSitioInicial(); if(UI.tema==='auto') document.documentElement.removeAttribute('data-theme'); else document.documentElement.setAttribute('data-theme', UI.tema); }
+window.addEventListener('hashchange', render);
+
+/* ---------------- arranque ---------------- */
+(function(){
+  try{ const u = JSON.parse(lsGet(LS_UI)||'null'); if(u) UI = Object.assign(UI, u); }catch(e){}
+  try{ const d = JSON.parse(lsGet(LS_DATOS)||'null'); if(valido(d)) D = normalizar(d); }catch(e){}
+  if(!D){ D = cargarDemo(); CARGA_DEMO = true; }
+  const q = new URLSearchParams(location.search);
+  if(q.get('lang')==='en' || q.get('lang')==='es') UI.lang = q.get('lang');
+  else if(!lsGet(LS_UI) && /^en\b/i.test(navigator.language||'')) UI.lang = 'en';
+  lang = UI.lang==='en' ? 'en' : 'es';
+  aplicarTema(); render();
+  /* D103: dónde viven los datos (este navegador, un fichero del equipo o la carpeta de datos de la copia de la compañía) */
+  SevengDatos.iniciar({codigo:'T23', ficheroServidor:'../datos/T23_recorrido.json', cargadoDeDemo:CARGA_DEMO,
+    obtener:()=>D, exportar:datosExportables, aplicar:d=>{ D = normalizar(d); guardar(); render(); }, validar:valido,
+    esDemo:()=>!!(D.meta||{}).datos_ilustrativos, idioma:()=>lang, aviso:toast, nombreFichero:()=>'t23_recorrido_implantacion_'+hoy()+'.json',
+    ayudaHref:()=>'../../html/'+lang+'/03_SEVEN-G_Herramientas_y_registro_de_iniciativas.html#'+(lang==='en'?'2-1-where-the-data-of-the-tools-lives':'2-1-donde-viven-los-datos-de-las-herramientas')});
+})();
+</script>
+</body>
+</html>

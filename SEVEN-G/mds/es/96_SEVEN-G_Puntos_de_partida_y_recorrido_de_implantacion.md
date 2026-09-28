@@ -55,7 +55,7 @@ La herramienta **T23 · Recorrido de implantación** aplica este documento: hace
 
 ### 2.2 Regla de asignación
 
-Se aplica en este orden y se asigna el **primer arquetipo** cuyas condiciones se cumplen. Los arquetipos posteriores cuyas condiciones también se cumplen se añaden como **rasgos**: sus hitos prioritarios se suman al recorrido (sección 4.2, regla 5).
+Se aplica en este orden y se asigna el **primer arquetipo** cuyas condiciones se cumplen. Los arquetipos posteriores cuya condición positiva también se cumple (sin sus exclusiones: por ejemplo, «reglas o RPA en producción» basta para el rasgo PP-C aunque haya también ML) se añaden como **rasgos**: sus hitos prioritarios se suman al recorrido (sección 4.3, regla 5).
 
 | Orden | Arquetipo | Condición |
 |---|---|---|
@@ -97,7 +97,7 @@ Ejemplo: una compañía con ML en producción, cuatro pilotos generativos sin pr
 | **MP1** | Sector regulado (financiero, seguros, sanidad, energía, sector público…) | Adelanta el inventario con clasificación (HI-05), el mapeo regulatorio (34) y la resiliencia (DORA o NIS2, si aplican). |
 | **MP2** | Decisiones sobre personas, alto riesgo o exposición directa a clientes | Adelanta las evaluaciones de impacto (P11, P47, P48), la supervisión humana (P17) y el responsable de riesgos independiente (HI-10). |
 | **MP3** | Alcance Enterprise de compañía (90 §2.2) | Calendario Enterprise de 90 §6.2. Sin MP3, calendario Lite y ruta mínima de 90 §2.4. |
-| **MP4** | Gobierno previo reutilizable (validación de modelos, comité de datos, centro de excelencia, sistema de gestión certificado) | Los hitos correspondientes se **convalidan**: se adapta lo existente y se documenta la correspondencia, en lugar de crearlo de nuevo (sección 4.2, regla 3). |
+| **MP4** | Gobierno previo reutilizable (validación de modelos, comité de datos, centro de excelencia, sistema de gestión certificado) | Los hitos correspondientes se **convalidan**: se adapta lo existente y se documenta la correspondencia, en lugar de crearlo de nuevo (sección 4.3, regla 3). |
 | **MP5** | Sin patrocinador en la alta dirección | **Bloquea**: antes de cualquier otro hito hay que cumplir los requisitos previos de 90 §3. No es un hito más: es una condición previa. |
 
 > **Por qué importa.** Dos compañías del mismo arquetipo no tienen el mismo recorrido si una está supervisada por un regulador sectorial o decide sobre personas. Los modificadores recogen esas diferencias sin multiplicar los arquetipos.
@@ -108,7 +108,7 @@ Doce preguntas. Las respuestas se refieren a lo que está **en producción** (en
 
 | Código | Pregunta | Respuestas | Alimenta |
 |---|---|---|---|
-| **Q01** | ¿Qué tipos de sistemas hay en producción hoy? (varias respuestas) | Ninguno · reglas o RPA · IA de terceros incluida en productos o asistentes · ML predictivo, visión u optimización · IA generativa integrada en procesos · agentes que ejecutan acciones (A2/A3) | Arquetipos; huella tecnológica (11 §7.6) |
+| **Q01** | ¿Qué tipos de sistemas hay en producción hoy? (varias respuestas; si hay IA generativa, cuántos casos: uno o más de uno) | Ninguno · reglas o RPA · IA de terceros incluida en productos o asistentes · ML predictivo, visión u optimización · IA generativa integrada en procesos · agentes que ejecutan acciones (A2/A3) | Arquetipos; huella tecnológica (11 §7.6) |
 | **Q02** | ¿Cuántos pilotos o pruebas de concepto de IA hay en curso? | 0 · 1–2 · 3–5 · más de 5 | PP-E |
 | **Q03** | ¿Cuántos de esos pilotos son de IA generativa? | Ninguno · alguno · la mayoría | PP-E |
 | **Q04** | ¿Hay constancia de uso no autorizado de asistentes de IA con datos de la compañía? | Sí · No · No se sabe | Prioridad de HI-02 y HI-03 |
@@ -215,6 +215,7 @@ Claves: **1**, arrancar ya (meses 1–2); **2**, en su etapa (meses 3–6); **3*
 
 El mes base del documento 90 es el límite; la prioridad solo lo adelanta o lo retrasa dentro de ese límite. Los modificadores ajustan la prioridad así:
 
+- **Q04** en «sí» o «no se sabe» pasa a **1** HI-02 y HI-03.
 - **MP1** y **MP2** pasan a **1** HI-05 y HI-10 (y, con MP2, HI-19 cuando haya una iniciativa que cambie el trabajo de las personas).
 - **MP4** cambia a **C** los hitos que cubre el gobierno existente, siempre que se documente la correspondencia.
 - **MP5** bloquea todo el recorrido hasta cumplir HI-01.

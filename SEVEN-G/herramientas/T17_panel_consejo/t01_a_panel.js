@@ -16,7 +16,7 @@
 (function (raiz) {
 'use strict';
 const VERSION_CONECTOR = "2.1";
-const ESQUEMAS_T01 = ["0.1", "0.2", "0.3", "0.4", "0.5", "0.6", "0.7"];
+const ESQUEMAS_T01 = ["0.1", "0.2", "0.3", "0.4", "0.5", "0.6", "0.7", "0.8"];
 const FUENTE_T01 = "Registro de iniciativas T01";
 const RUTA_CONECTOR = "SEVEN-G/herramientas/T17_panel_consejo/t01_a_panel.js";
 
@@ -448,6 +448,8 @@ function bloqueMadurez(t01) {
   const b = uno(validos[validos.length - 1]);
   const per = get(validos[validos.length - 1], "perfiles");   // esquema 0.7 (D115): resumen de los perfiles NIST del último diagnóstico, tal cual lo escribe T15
   if (per && typeof per === "object" && !Array.isArray(per)) b.perfiles = per;
+  const len = get(validos[validos.length - 1], "lentes");   // esquema 0.8 (D120): tres lentes del último diagnóstico (huella, alcance, mínimo exigible y alertas), tal cual lo escribe T15
+  if (len && typeof len === "object" && !Array.isArray(len)) b.lentes = len;
   if (validos.length > 1) { const a = uno(validos[validos.length - 2]); b.anterior = {id: a.id, fecha_corte: a.fecha_corte, modalidad: a.modalidad, nivel_global: a.nivel_global, dimensiones: a.dimensiones.map(d => ({dimension: d.dimension, nivel: d.nivel}))}; }
   else b.anterior = null;
   return b;
