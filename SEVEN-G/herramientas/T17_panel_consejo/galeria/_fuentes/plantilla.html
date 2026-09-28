@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Galería de ejemplos por sector · SEVEN-G</title>
+<meta name="description" content="Registros de iniciativas y paneles del consejo de ejemplo por sector (datos ficticios) y hacia dónde se mueven los casos de uso de IA en cada sector, con fuentes verificadas.">
+<!-- Generado por T17_panel_consejo/galeria.py desde galeria/_fuentes (plantilla y textos de mercado). No editar a mano. -->
+<style>
+  :root { --fondo: #fbe2cd; --tinta: #2f2b28; --acento: #990f3d; --linea: rgba(47, 43, 40, .22); --suave: rgba(255, 255, 255, .45); }
+  * { box-sizing: border-box; }
+  html { background: var(--fondo); }
+  body { margin: 0; background: var(--fondo); color: var(--tinta); font-family: -apple-system, "Segoe UI", system-ui, Roboto, "Helvetica Neue", Arial, sans-serif;
+         font-size: 17px; line-height: 1.55; -webkit-font-smoothing: antialiased; }
+  main { max-width: 980px; margin: 0 auto; padding: 32px 16px 56px; }
+  header { display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: 12px; border-bottom: 1px solid var(--linea); padding-bottom: 14px; margin-bottom: 26px; }
+  .marca { font-size: 13px; letter-spacing: .12em; text-transform: uppercase; color: var(--acento); font-weight: 600; }
+  .idioma { display: inline-flex; border: 1px solid var(--linea); border-radius: 6px; overflow: hidden; }
+  .idioma button { appearance: none; border: 0; background: transparent; color: var(--tinta); font: inherit; font-size: 13px; letter-spacing: .06em; padding: 4px 12px; cursor: pointer; }
+  .idioma button[aria-pressed="true"] { background: var(--acento); color: #fff; }
+  .idioma button:focus-visible { outline: 2px solid var(--acento); outline-offset: -2px; }
+  h1 { font-size: 30px; line-height: 1.2; margin: 0 0 6px; font-weight: 700; letter-spacing: -.01em; }
+  h1 small { display: block; font-size: 16px; font-weight: 400; color: var(--acento); margin-top: 6px; }
+  h2 { font-size: 21px; margin: 36px 0 10px; font-weight: 700; }
+  h3 { font-size: 16px; margin: 18px 0 6px; }
+  p { margin: 0 0 12px; }
+  a { color: var(--acento); text-decoration: underline; text-underline-offset: 2px; }
+  a:hover { text-decoration-thickness: 2px; }
+  .que-es { border-left: 4px solid var(--acento); padding: 10px 14px; margin: 14px 0 18px; background: color-mix(in srgb, var(--acento) 7%, transparent); }
+  .demo { display: inline-block; font-size: 12px; letter-spacing: .08em; text-transform: uppercase; border: 1px solid var(--acento); color: var(--acento); border-radius: 4px; padding: 2px 8px; margin-bottom: 14px; }
+  ul.ejemplos { list-style: none; padding: 0; margin: 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 12px; }
+  ul.ejemplos li { background: var(--suave); border: 1px solid var(--linea); border-radius: 8px; padding: 12px 14px; display: flex; flex-direction: column; gap: 6px; }
+  ul.ejemplos .perfil { font-size: 14px; }
+  ul.ejemplos .cifra { font-size: 13px; opacity: .85; }
+  ul.ejemplos .acc { font-size: 14px; font-weight: 600; margin-top: auto; }
+  details.sector { background: var(--suave); border: 1px solid var(--linea); border-radius: 8px; margin: 10px 0; padding: 0 14px; }
+  details.sector > summary { cursor: pointer; padding: 12px 0; font-weight: 700; font-size: 18px; }
+  details.sector > summary span { font-weight: 400; font-size: 14px; opacity: .8; margin-left: 6px; }
+  details.sector[open] { padding-bottom: 14px; }
+  .tabla { overflow-x: auto; }
+  table { border-collapse: collapse; width: 100%; font-size: 14px; }
+  th, td { text-align: left; vertical-align: top; padding: 6px 8px; border-bottom: 1px solid var(--linea); }
+  thead th { font-size: 12px; text-transform: uppercase; letter-spacing: .05em; cursor: help; }
+  tr.grupo th { background: color-mix(in srgb, var(--acento) 10%, transparent); font-size: 13px; }
+  .desc { font-size: 13px; opacity: .9; }
+  .qa { display: inline-block; width: 15px; height: 15px; line-height: 15px; text-align: center; border-radius: 50%; border: 1px solid currentColor; font-size: 10px; opacity: .7; }
+  sup a.cita { text-decoration: none; font-size: 11px; margin-left: 1px; }
+  ol.fuentes { font-size: 14px; padding-left: 22px; }
+  .nota { font-size: 14px; font-style: italic; }
+  .aviso { border-left: 4px solid var(--acento); padding: 10px 16px; background: var(--suave); border-radius: 0 8px 8px 0; font-size: 15px; }
+  footer { margin-top: 44px; padding-top: 14px; border-top: 1px solid var(--linea); font-size: 14px; opacity: .9; }
+  [hidden] { display: none !important; }
+  @media (max-width: 480px) { body { font-size: 16px; } h1 { font-size: 25px; } main { padding-top: 22px; } th, td { padding: 5px 4px; } }
+</style>
+</head>
+<body>
+<main>
+  <header>
+    <div class="marca">SEVEN-G · Herramientas · T17 · Galería</div>
+    <span class="ir-codigo" data-ir-codigo></span>
+    <div class="idioma" role="group" aria-label="Idioma / Language">
+      <button type="button" id="btn-es" aria-pressed="true" onclick="idioma('es')">ES</button>
+      <button type="button" id="btn-en" aria-pressed="false" onclick="idioma('en')">EN</button>
+    </div>
+  </header>
+
+  <!-- ================================================================ ES -->
+  <section id="es" lang="es" data-enlazar-codigos>
+    <span class="demo">Ejemplos · datos ficticios</span>
+    <h1>Galería de ejemplos por sector<small>Cómo quedarían el registro de iniciativas y el panel del consejo de una compañía de su sector, y hacia dónde se mueven los casos de uso de IA</small></h1>
+    <p class="que-es"><strong>Para qué sirve:</strong> para empezar desde algo parecido a su realidad y no desde cero. Cada ejemplo es un registro de iniciativas T01 completo de una compañía ficticia del sector (fases, decisiones de <em>gate</em>, valor esperado y realizado, riesgos y cierres) y el panel del consejo que genera T17 a partir de él. Debajo, para __N_SECTORES__ sectores, qué están adoptando las compañías ahora y qué casos de uso de alto valor se esperan en 2027-2028, no solo de IA generativa: también ML predictivo, RPA e IDP, visión artificial, optimización y herramientas propias de cada sector, con sus fuentes.</p>
+
+    <h2>Ejemplos de registro y panel (__N_EJEMPLOS__ sectores)</h2>
+    <p>El ejemplo general de la metodología (compañía industrial ficticia) sigue en el <a href="../index.html">generador del panel T17</a> y en el <a href="../../T01_registro_iniciativas/registro.html">registro T01</a>. Estos paneles muestran siempre su ejemplo, aunque tenga su propio registro guardado en este navegador. El JSON de T01 de cada ejemplo se puede importar en el registro (Datos → Importar), pero sustituye los datos que tenga guardados en él.</p>
+    <ul class="ejemplos">__TARJETAS_ES__</ul>
+    <p style="margin-top:12px;font-size:15px">Compañías, personas, proveedores y cifras son ficticios y se han construido para que no se parezcan a ninguna organización real; cualquier parecido es casual. Los casos de uso de cada ejemplo se inspiran en lo que el mercado está adoptando según las fuentes de la sección siguiente.</p>
+
+    <h2>Hacia dónde se mueve cada sector (__N_CASOS__ casos de uso, __N_FUENTES__ fuentes)</h2>
+    <p>Lectura de estudios, encuestas e informes públicos recientes: solo fuentes primarias u oficiales, todas en el registro de referencias de SEVEN-G y comprobadas. Los casos se agrupan por horizonte: <strong>consolidados</strong> (práctica habitual del sector), <strong>en adopción</strong> (en despliegue en 2025-2026) y <strong>emergentes 2027-2028</strong> (donde las fuentes esperan el siguiente salto de valor). Son una orientación para priorizar con el mapa de esferas (documento 10) y el registro T01, no una recomendación para ninguna compañía concreta.</p>
+    __MERCADO_ES__
+
+    <h2>Aviso legal y exención de responsabilidad</h2>
+    <div class="aviso">
+      <p>SEVEN-G y esta herramienta se ofrecen «tal cual» y con fines exclusivamente informativos. No constituyen asesoramiento jurídico, regulatorio, financiero ni profesional, ni garantizan el cumplimiento de ninguna norma. Los criterios, clasificaciones y referencias a regulación general (Reglamento Europeo de IA, RGPD, DORA, NIS2…) o sectorial pueden ser incompletos, no aplicar a un caso concreto o quedar desactualizados por cambios normativos. Cada organización que use la herramienta es la única responsable de identificar la normativa que le aplica, verificar su vigencia y certificar su propio cumplimiento regulatorio, con el asesoramiento cualificado que corresponda. Esta metodología es una ayuda genérica y gratuita, compartida con la comunidad para que nadie tenga que empezar desde cero; cada persona u organización puede y debe adaptarla a su propio uso. No debe entenderse que sus partes jurídicamente sensibles hayan sido revisadas por una asesoría jurídica: esas revisiones, para cada empresa o sector, son responsabilidad última de la empresa, el consultor o la organización que la use. Aunque se procura mantenerla al día, alguna norma puede haber cambiado sin que se recoja aquí. En la máxima medida permitida por la ley, el autor no asume responsabilidad alguna por los efectos de su aplicación en ninguna organización ni por su aplicabilidad completa. La metodología no otorga certificación de ningún tipo. El autor no asume responsabilidad alguna por el uso de la herramienta ni por las decisiones adoptadas con ella. Los datos de demostración son ficticios. Las cifras y tendencias de mercado son de sus fuentes, que se citan, y pueden haber cambiado desde su publicación.</p>
+    </div>
+
+    <footer>
+      © 2026 Fernando García Varela · Metodología SEVEN-G · Código bajo licencia MIT · Contenidos bajo <a href="https://creativecommons.org/licenses/by/4.0/deed.es">CC BY 4.0</a> · Generado el __FECHA__ con <code>galeria.py</code>.
+    </footer>
+  </section>
+
+  <!-- ================================================================ EN -->
+  <section id="en" lang="en" hidden data-enlazar-codigos>
+    <span class="demo">Examples · fictitious data</span>
+    <h1>Gallery of examples by sector<small>What the initiative register and the board dashboard of a company in your sector could look like, and where AI use cases are heading</small></h1>
+    <p class="que-es"><strong>What it is for:</strong> to start from something close to your reality rather than from scratch. Each example is a complete T01 initiative register of a fictitious company in the sector (phases, gate decisions, expected and realised value, risks and closures) and the board dashboard that T17 generates from it. Below, for __N_SECTORES__ sectors, what companies are adopting now and which high-value use cases are expected in 2027-2028, not only generative AI: also predictive ML, RPA and IDP, computer vision, optimisation and sector-specific tools, with their sources.</p>
+
+    <h2>Register and dashboard examples (__N_EJEMPLOS__ sectors)</h2>
+    <p>The methodology's general example (a fictitious industrial company) remains in the <a href="../index.html">T17 dashboard generator</a> and in the <a href="../../T01_registro_iniciativas/registro.html">T01 register</a>. These dashboards always show their example, even if you have your own register saved in this browser. Each example's T01 JSON can be imported into the register (Data → Import), but it replaces the data saved there. Dashboards and data are in Spanish.</p>
+    <ul class="ejemplos">__TARJETAS_EN__</ul>
+    <p style="margin-top:12px;font-size:15px">Companies, people, suppliers and figures are fictitious and have been built so as not to resemble any real organisation; any resemblance is coincidental. The use cases in each example draw on what the market is adopting according to the sources in the next section.</p>
+
+    <h2>Where each sector is heading (__N_CASOS__ use cases, __N_FUENTES__ sources)</h2>
+    <p>A reading of recent public studies, surveys and reports: primary or official sources only, all in the SEVEN-G reference register and checked. Use cases are grouped by horizon: <strong>established</strong> (common practice in the sector), <strong>being adopted</strong> (rolling out in 2025-2026) and <strong>emerging 2027-2028</strong> (where the sources expect the next jump in value). They are guidance for prioritising with the sphere map (document 10) and the T01 register, not a recommendation for any specific company.</p>
+    __MERCADO_EN__
+
+    <h2>Legal notice and disclaimer</h2>
+    <div class="aviso">
+      <p>SEVEN-G and this tool are provided “as is” and for information purposes only. They do not constitute legal, regulatory, financial or professional advice, nor do they guarantee compliance with any regulation. The criteria, classifications and references to general regulation (EU AI Act, GDPR, DORA, NIS2…) or sector-specific regulation may be incomplete, may not apply to a specific case or may become outdated as a result of regulatory changes. Each organisation that uses the tool is solely responsible for identifying the regulation that applies to it, verifying that it is current and certifying its own regulatory compliance, with the appropriate qualified advice. This methodology is a generic, free aid shared with the community so that nobody has to start from scratch; each person or organisation can and should adapt it to its own use. It must not be inferred that its legally sensitive parts have been reviewed by legal counsel: those reviews, for each company or sector, are the ultimate responsibility of the company, consultant or organisation that uses it. Although every effort is made to keep it up to date, some regulation may have changed without being reflected here. To the fullest extent permitted by law, the author accepts no responsibility whatsoever for the effects of its application in any organisation or for its full applicability. The methodology does not grant certification of any kind. The author accepts no liability whatsoever for the use of the tool or for decisions taken with it. The demo data is fictitious. Market figures and trends belong to their cited sources and may have changed since publication.</p>
+    </div>
+
+    <footer>
+      © 2026 Fernando García Varela · SEVEN-G methodology · Code under the MIT licence · Contents under <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a> · Generated on __FECHA__ with <code>galeria.py</code>.
+    </footer>
+  </section>
+</main>
+
+<script>
+  function idioma(l) {
+    var es = l === 'es';
+    document.getElementById('es').hidden = !es;
+    document.getElementById('en').hidden = es;
+    document.getElementById('btn-es').setAttribute('aria-pressed', es ? 'true' : 'false');
+    document.getElementById('btn-en').setAttribute('aria-pressed', es ? 'false' : 'true');
+    document.documentElement.lang = l;
+    document.title = es ? 'Galería de ejemplos por sector · SEVEN-G' : 'Gallery of examples by sector · SEVEN-G';
+    try { localStorage.setItem('t17_idioma', l); } catch (e) {}
+    cargaCodigos(l);
+  }
+  // «Buscador de documentos» y códigos citados (D99): índice del sitio en el idioma activo
+  function cargaCodigos(l) {
+    if (window.sevengIrCodigo && window.sevengIrCodigo.lang === l) { window.sevengIrCodigo.iniciar(); return; }
+    var previo = document.getElementById('ir-codigo-js'); if (previo) previo.parentNode.removeChild(previo);
+    var sc = document.createElement('script'); sc.id = 'ir-codigo-js'; sc.src = '../../../html/' + l + '/codigos.js'; document.head.appendChild(sc);
+  }
+  (function () {
+    var guardado = null;
+    try { guardado = localStorage.getItem('t17_idioma'); } catch (e) {}
+    if (guardado === 'en' || (!guardado && /^en\b/i.test(navigator.language || ''))) { idioma('en'); } else { cargaCodigos('es'); }
+  })();
+</script>
+</body>
+</html>

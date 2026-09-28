@@ -89,6 +89,10 @@ El conector no escribe `__pycache__` (`sys.dont_write_bytecode`).
 
 `uv run python t01_a_panel.py` sin argumentos convierte `../T01_registro_iniciativas/datos_demo.json` (compañía, personas y proveedores ficticios) en `ejemplo/salida/` y enlaza los pies a `index.html` y al registro T01. Es el panel de ejemplo que abren el registro de iniciativas (cabecera y banda de «iniciativas de ejemplo») y la página del conector. Si cambian los datos de demostración o `config_panel.json`, se regenera. Nunca se editan a mano los HTML generados.
 
+## Galería de ejemplos por sector (D137)
+
+`uv run python galeria.py` genera, para cada registro de ejemplo de `../T01_registro_iniciativas/ejemplos/<sector>/datos_demo.json` (banca, seguros, industria y sector público; compañías ficticias), el panel completo, el móvil, su JSON y el registro de recomendaciones en `galeria/<sector>/`, con este mismo conector y motor, y escribe la página `galeria/index.html` (ES/EN). Los paneles de la galería llevan `navegacion.solo_datos_incrustados`: muestran siempre su ejemplo, aunque el visitante tenga su propio registro T01 en el navegador, y no leen la copia de datos de la compañía; «Cargar JSON» sigue funcionando. La página explica, para once sectores, hacia dónde se mueven los casos de uso de IA (consolidados, en adopción y emergentes 2027-2028) con fuentes primarias del registro de referencias (`SEVEN-G/build/referencias/g6_estudios_mercado.json`); sus textos están en `galeria/_fuentes/mercado/<sector>.json`. Si cambia un registro de ejemplo, el conector o el motor, se vuelve a ejecutar `galeria.py`; `verificar_coherencia.ps1` (sección 34) comprueba que todo está al día.
+
 ## Principios del mapeo
 
 1. **«Sin dato» no es cero.** Lo que T01 no registra queda a `null` (o lista vacía) y el panel lo muestra como «sin dato» (documento 03 §2, principio 7).

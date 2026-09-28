@@ -89,6 +89,10 @@ The connector does not write `__pycache__` (`sys.dont_write_bytecode`).
 
 `uv run python t01_a_panel.py` with no arguments converts `../T01_registro_iniciativas/datos_demo.json` (fictitious company, people and suppliers) into `ejemplo/salida/` and links the footers to `index.html` and to the T01 register. It is the example dashboard opened from the initiative register (header and “example initiatives” banner) and from the connector page. If the demo data or `config_panel.json` change, it is regenerated. Generated HTML files are never edited by hand.
 
+## Gallery of examples by sector (D137)
+
+`uv run python galeria.py` generates, for each example register in `../T01_registro_iniciativas/ejemplos/<sector>/datos_demo.json` (banking, insurance, manufacturing and public sector; fictitious companies), the full dashboard, the mobile one, their JSON and the recommendations log in `galeria/<sector>/`, with this same connector and engine, and writes the page `galeria/index.html` (ES/EN). Gallery dashboards carry `navegacion.solo_datos_incrustados`: they always show their example, even if the visitor has their own T01 register in the browser, and they do not read the company's data copy; "Cargar JSON" still works. For eleven sectors, the page explains where AI use cases are heading (established, being adopted and emerging 2027-2028) with primary sources from the reference register (`SEVEN-G/build/referencias/g6_estudios_mercado.json`); its texts are in `galeria/_fuentes/mercado/<sector>.json`. If an example register, the connector or the engine changes, run `galeria.py` again; `verificar_coherencia.ps1` (section 34) checks that everything is up to date.
+
 ## Mapping principles
 
 1. **"No data" is not zero.** Anything T01 does not record is `null` (or an empty list) and the dashboard shows "sin dato" (document 03 §2, principle 7).
