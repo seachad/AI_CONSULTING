@@ -5,7 +5,7 @@
 | | |
 |---|---|
 | Document | Document 62 · Recommendations and decisions register |
-| Version | 0.1 (working draft) |
+| Version | 0.2 (working draft) |
 | Date | 16-09-2026 |
 | Author | Fernando García Varela |
 | Status | Draft for review. Defines the register implemented by tool T18, pending adaptation. |
@@ -263,6 +263,7 @@ When the issuing body substantially reformulates a recommendation, the original 
 | **Text of the decision** | As recorded in the minutes. |
 | **Decision sheet** | Link to the sheet presented (60 §5). |
 | **Outcome** | Approved · Approved with conditions · Deferred · Rejected. |
+| **Target ambition per sphere** | Only in the decision approving the C2 thesis (document 13): target ambition of each value sphere 01–07 —Optimise, Augment, Transform or not a priority—. Those with Transform are the spheres of condition IT-D1 in document 12. The board dashboard reads it for the impact map (60 §10.5). |
 | **Conditions and limits** | Each condition with owner and time limit; limits on investment, stage and validity. |
 | **Validity** | Date until which it is valid, where applicable (for example, the acceptance of a risk). |
 | **Execution owner** | Accountable person. |
@@ -420,3 +421,4 @@ From schema 0.5 of the initiative register, **T18 is a T01 module** ("Board (T18
 | Version | Date | Changes |
 |---|---|---|
 | 0.1 | 16-09-2026 | First version. Defines persistent identifiers REC-AAAA-NNN and, as a proposal, DEC-AAAA-NNN; fields, declared statuses, independent assessment, evidence, lifecycle, closure, board decisions, links with initiatives and the dashboard, indicators and pending adaptation of tool T18. |
+| 0.2 | 28-09-2026 | The decision approving the C2 thesis records the target ambition of each sphere (§10.2), which the board dashboard uses in the impact map (60 §10.5). |

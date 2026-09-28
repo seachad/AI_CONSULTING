@@ -5,7 +5,7 @@
 | | |
 |---|---|
 | Documento | Documento 61 · Guía de conversación con el consejo |
-| Versión | 0.1 (borrador de trabajo) |
+| Versión | 0.2 (borrador de trabajo) |
 | Fecha | 16-09-2026 |
 | Autor | Fernando García Varela |
 | Estado | Borrador para revisión. Integra el guion de sesión y las preguntas del mapa de esferas. |
@@ -363,6 +363,7 @@ Las respuestas son orientativas y se adaptan con los datos de la compañía. Tod
 | 13 | **¿Cuánto cuesta de verdad la IA?** | Dar el coste recurrente por categorías y por caso, incluido el consumo de modelos y las personas de operación. Si hay costes sin imputar, decirlo. | Coste por caso con reparto (T13; documento 42). | Presentar solo las licencias. |
 | 14 | **¿Usan los empleados herramientas de IA no autorizadas?** | Dar lo que se sabe: detecciones, controles técnicos activos, formación, regularizaciones. Si no se mide, "Todavía no lo sabemos, porque falta…". | Monitor de uso corporativo (T21); no conformidades por uso no autorizado. | Decir que no ocurre porque está prohibido. |
 | 15 | **¿Podemos acelerar si relajamos los controles?** | "Sí, con una condición" solo para controles no críticos y con aceptación del riesgo por quien corresponde; "No" para seguridad, cumplimiento legal y supervisión humana. | Apetito de riesgo aprobado en C2; reglas de condiciones (01 §7.3). | Aceptar la presión de plazo sin registro. |
+| 16 | **¿Qué nos impide escalar la IA?** | Nombrar los tres frenos por los que empezar, con lo que bloquean, qué se va a hacer, quién y el valor anual en juego; separar lo que bloquea una puerta de lo que solo retiene valor. | Lectura «Qué frena el escalado» del panel (documento 60 §10.4) y las decisiones o recomendaciones que la convierten en acciones (documento 62). | Una lista de problemas sin orden ni responsable, o presentar el valor en juego como valor asegurado. |
 
 ---
 
@@ -456,3 +457,4 @@ El Reglamento Europeo de IA incluye obligaciones de alfabetización en IA para e
 | Versión | Fecha | Cambios |
 |---|---|---|
 | 0.1 | 16-09-2026 | Primera versión. Integra las preguntas y el guion de sesión del mapa de esferas en el marco SEVEN-G; define el lenguaje de negocio, el formato de respuesta al consejo con ejemplos, la regla de tres casos, las preguntas por esfera y por etapa, las preguntas difíciles, el papel del consejero o asesor con experiencia en IA y los errores frecuentes. |
+| 0.2 | 28-09-2026 | Pregunta difícil 16 «¿Qué nos impide escalar la IA?», que se responde con la lectura «Qué frena el escalado» del panel (60 §10.4). |

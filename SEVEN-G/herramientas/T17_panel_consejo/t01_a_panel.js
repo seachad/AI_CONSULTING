@@ -373,6 +373,15 @@ function incidentes(ix) {
 }
 
 // ---------------------------------------------------------------- conversión completa
+const AMBICION_OBJ = {optimizar: "Optimizar", aumentar: "Aumentar", transformar: "Transformar", no_prioritaria: "no_prioritaria"};
+// última tesis de C2 aprobada hasta la fecha de corte, si trae la ambición objetivo por esfera: [código DEC, {esfera: ambición}] (D130)
+function tesisC2(t01, corte) {
+  const ts = (t01.decisiones_consejo || []).filter(d => d.asunto === "tesis" && (d.resultado === "aprobada" || d.resultado === "aprobada_condiciones") && d.fecha && d.fecha <= corte);
+  if (!ts.length) return null;
+  const d = ts.slice().sort((a, b) => a.fecha < b.fecha ? -1 : a.fecha > b.fecha ? 1 : 0).pop();
+  const ao = {}; Object.keys(d.ambicion_objetivo || {}).sort().forEach(e => { const v = d.ambicion_objetivo[e]; if (AMBICION_OBJ[v]) ao[e] = AMBICION_OBJ[v]; });
+  return Object.keys(ao).length ? [d.id || null, ao] : null;
+}
 function convertir(t01, op) {
   op = op || {};
   if (!t01 || typeof t01 !== "object" || !("iniciativas" in t01) || !("meta" in t01)) throw new Error("el fichero no es un JSON completo exportado por T01");
@@ -413,6 +422,9 @@ function convertir(t01, op) {
     mostrar_refs: false, leer_json_servidor: false, textos, glosario_extra: GLOSARIO_SEVEN_G, demo: ficticio, industria: null};
   for (const k of Object.keys(config)) meta[k] = config[k];
   meta.origen = {herramienta: "SEVEN-G T01", version_esquema: get(t01, "version_esquema"), conector: RUTA_CONECTOR, version_conector: VERSION_CONECTOR, moneda};
+  // tesis de C2 con la ambición objetivo por esfera (D130): el registro T01 manda sobre la configuración del panel (D100)
+  const tesis = tesisC2(t01, corte);
+  if (tesis) meta.mapa_impacto = Object.assign({}, config.mapa_impacto || {}, {objetivo_c2: tesis[1], objetivo_fuente: tesis[0]});
   const out = {meta, seguimiento: {movimientos: movimientos(ix), incidentes: incidentes(ix), adopcion: null, agilidad: null, ia_ofensiva: null, cdm_compania: null}, casos, historico: []};
   if (avisos.length) out._avisos = avisos;
   return out;

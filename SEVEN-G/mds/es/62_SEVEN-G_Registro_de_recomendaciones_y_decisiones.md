@@ -5,7 +5,7 @@
 | | |
 |---|---|
 | Documento | Documento 62 · Registro de recomendaciones y decisiones |
-| Versión | 0.1 (borrador de trabajo) |
+| Versión | 0.2 (borrador de trabajo) |
 | Fecha | 16-09-2026 |
 | Autor | Fernando García Varela |
 | Estado | Borrador para revisión. Define el registro que implementa la herramienta T18, pendiente de adaptación. |
@@ -263,6 +263,7 @@ Cuando el órgano emisor reformula una recomendación de forma sustancial, la or
 | **Texto de la decisión** | Tal como consta en el acta. |
 | **Ficha de decisión** | Enlace a la ficha presentada (60 §5). |
 | **Resultado** | Aprobada · Aprobada con condiciones · Aplazada · Rechazada. |
+| **Ambición objetivo por esfera** | Solo en la decisión que aprueba la tesis de C2 (documento 13): ambición objetivo de cada esfera de valor 01–07 —Optimizar, Aumentar, Transformar o no prioritaria—. Las de Transformar son las esferas de la condición IT-D1 del documento 12. El panel del consejo la lee para el mapa de impacto (60 §10.5). |
 | **Condiciones y límites** | Cada condición con responsable y plazo; límites de inversión, etapa y vigencia. |
 | **Vigencia** | Fecha hasta la que es válida, si procede (por ejemplo, la aceptación de un riesgo). |
 | **Responsable de ejecución** | Persona responsable. |
@@ -420,3 +421,4 @@ Desde el esquema 0.5 del registro de iniciativas, **T18 es un módulo de T01** (
 | Versión | Fecha | Cambios |
 |---|---|---|
 | 0.1 | 16-09-2026 | Primera versión. Define identificadores persistentes REC-AAAA-NNN y, como propuesta, DEC-AAAA-NNN; campos, estados declarados, valoración independiente, evidencia, ciclo de vida, cierre, decisiones del consejo, vínculos con iniciativas y panel, indicadores y adaptación pendiente de la herramienta T18. |
+| 0.2 | 28-09-2026 | La decisión que aprueba la tesis de C2 registra la ambición objetivo de cada esfera (§10.2), que el panel del consejo usa en el mapa de impacto (60 §10.5). |

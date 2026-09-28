@@ -39,14 +39,14 @@ Al terminar sabrá qué decisiones sobre IA corresponden al consejo, cómo se le
 | 2 | documento 60, secciones 4 y 5 | La estructura del paquete trimestral y el formato de decisión. |
 | 3 | documento 61, secciones 6 y 9 | Preguntas por esfera y preguntas difíciles frecuentes. |
 | 4 | documento 62, secciones 4 y 10 | Los campos de una recomendación y las decisiones registradas. |
-| 5 | T17 | El panel de ejemplo: cartera y valor, embudo, casos que salieron y por qué, e índice de transformación. |
+| 5 | T17 | El panel de ejemplo: «Qué frena el escalado» (documento 60, sección 10.4) y «Dónde está el impacto» (documento 10, sección 8) al principio de cartera y valor; después, el embudo, los casos que salieron y por qué, y el índice de transformación. Pulse cualquier cifra de cabecera para ver sus casos. |
 | 6 | T18 (vista «Consejo» del registro) | Las decisiones y recomendaciones de ejemplo. |
 
 ---
 
 ## 4. Ejercicio
 
-Con el panel de ejemplo (T17) delante, prepare tres preguntas que haría como consejero. Una sobre valor —¿qué parte del neto está validada?—, una sobre riesgo y una sobre transformación. Después compruebe en la vista «Consejo» del registro si alguna decisión de ejemplo responde a esas preguntas.
+Con el panel de ejemplo (T17) delante, prepare tres preguntas que haría como consejero. Una sobre valor —¿qué parte del neto está validada?—, una sobre riesgo, una sobre transformación y una sobre escalado —¿qué freno ataca primero la compañía, quién lo mueve y en qué plazo?—. Después compruebe en la vista «Consejo» del registro si alguna decisión de ejemplo responde a esas preguntas.
 
 ---
 

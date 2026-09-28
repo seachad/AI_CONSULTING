@@ -343,6 +343,7 @@ const LB = {
   estado:{registrada:'Registrada',en_fase:'En fase',pendiente_gate:'Pendiente de gate',en_espera:'En espera',en_produccion:'En producción',pendiente_g7:'Pendiente de G7',parada:'Parada',retirada:'Retirada'},
   esfera:{'01':'01 Cliente','02':'02 Producto y servicio','03':'03 Personas','04':'04 Operaciones','05':'05 Datos','06':'06 Conocimiento','07':'07 Decisión','08':'08 Regulación, ética y responsabilidad','09':'09 Gobierno de la IA'},
   ambicion:{optimizar:'Optimizar',aumentar:'Aumentar',transformar:'Transformar'},
+  ambicion_obj:{optimizar:'Optimizar',aumentar:'Aumentar',transformar:'Transformar',no_prioritaria:'No prioritaria'},
   intensidad:{lite:'Lite',enterprise:'Enterprise'},
   regulatoria:{prohibido:'Prohibido',alto_riesgo:'Alto riesgo',transparencia:'Obligaciones de transparencia',riesgo_minimo:'Riesgo mínimo',fuera_ambito:'Fuera de ámbito',pendiente:'Pendiente de clasificar'},
   tecnologia:{ml_predictivo:'ML predictivo',ia_generativa:'IA generativa',agente:'Agente',lenguaje_documentos:'Procesamiento de lenguaje y documentos',vision:'Visión',optimizacion:'Optimización',ia_terceros_embebida:'IA de terceros embebida',reglas:'Reglas (no es IA)'},
@@ -385,6 +386,7 @@ const LB = {
   estado:{registrada:'Registered',en_fase:'In phase',pendiente_gate:'Awaiting gate',en_espera:'On hold',en_produccion:'In production',pendiente_g7:'Awaiting G7',parada:'Stopped',retirada:'Retired'},
   esfera:{'01':'01 Customer','02':'02 Product and service','03':'03 People','04':'04 Operations','05':'05 Data','06':'06 Knowledge','07':'07 Decision','08':'08 Regulation, ethics and accountability','09':'09 AI governance'},
   ambicion:{optimizar:'Optimise',aumentar:'Augment',transformar:'Transform'},
+  ambicion_obj:{optimizar:'Optimise',aumentar:'Augment',transformar:'Transform',no_prioritaria:'Not a priority'},
   intensidad:{lite:'Lite',enterprise:'Enterprise'},
   regulatoria:{prohibido:'Prohibited',alto_riesgo:'High risk',transparencia:'Transparency obligations',riesgo_minimo:'Minimal risk',fuera_ambito:'Out of scope',pendiente:'Pending classification'},
   tecnologia:{ml_predictivo:'Predictive ML',ia_generativa:'Generative AI',agente:'Agent',lenguaje_documentos:'Language and document processing',vision:'Computer vision',optimizacion:'Optimisation',ia_terceros_embebida:'Embedded third-party AI',reglas:'Rules (not AI)'},
@@ -2460,7 +2462,7 @@ Object.assign(TX.es,{
  cj_dec:'Decisiones del consejo (DEC)', cj_rec:'Recomendaciones y encargos (REC)', cj_nueva_dec:'Nueva decisión', cj_nueva_rec:'Nueva recomendación', cj_sin_dec:'No hay decisiones registradas.', cj_sin_rec:'No hay recomendaciones registradas.',
  dc_organo:'Órgano', dc_acta:'Referencia del acta', dc_tipo:'Tipo', dc_asunto:'Asunto', dc_texto:'Texto de la decisión', dc_resultado:'Resultado', dc_ini:'Iniciativas (IA-AAAA-NNN, separadas por comas)', dc_esferas:'Esferas con Transformar como objetivo (01–07, separadas por comas)', dc_limite:'Límite de inversión de la etapa (€)', dc_etapa:'Etapa a la que se aplica', dc_decision_etapa:'Decisión de etapa', dc_vigencia:'Vigencia', dc_responsable:'Responsable de ejecución', dc_recs:'Recomendaciones vinculadas (REC-AAAA-NNN)',
  rc_texto:'Texto (redactado para poder comprobar su cumplimiento)', rc_dest:'Destinatario', rc_estado:'Situación', rc_evidencia:'Evidencia', dlg_dec:'Decisión del consejo', dlg_rec:'Recomendación del consejo', dlg_ix:'Evidencia del índice de transformación', dlg_comp:'Datos de la compañía para el índice',
- e_dec_texto:'El texto de la decisión es obligatorio.', e_ini_x:'Iniciativa inexistente: {id}.', e_esfera_x:'Esfera no válida: {e} (01 a 07).', e_rec_texto:'El texto de la recomendación es obligatorio.'
+ e_dec_texto:'El texto de la decisión es obligatorio.', e_ini_x:'Iniciativa inexistente: {id}.', e_esfera_x:'Esfera no válida: {e} (01 a 07).', cj_amb_obj:'Ambición objetivo por esfera (C2)', dc_amb_obj:'Ambición objetivo por esfera (solo en la tesis de C2; la lee el mapa de impacto del panel del consejo)', e_amb_obj:'La ambición objetivo de la esfera {e} no es válida.', e_rec_texto:'El texto de la recomendación es obligatorio.'
 });
 Object.assign(TX.en,{
  v_consejo:'Board (T18)', b_indice:'Transformation index evidence', ix_editar:'Edit index evidence', ix_ayuda:'What the index calculator (T14) needs from each initiative and the register did not hold: verification of questions IT-P2 and IT-P3 at a gate, verified human oversight (P17) and released, materialised and reassigned capacity (T20). Document 12 §4.4.',
@@ -2475,7 +2477,7 @@ Object.assign(TX.en,{
  cj_dec:'Board decisions (DEC)', cj_rec:'Recommendations and mandates (REC)', cj_nueva_dec:'New decision', cj_nueva_rec:'New recommendation', cj_sin_dec:'No decisions recorded.', cj_sin_rec:'No recommendations recorded.',
  dc_organo:'Body', dc_acta:'Minutes reference', dc_tipo:'Type', dc_asunto:'Subject', dc_texto:'Text of the decision', dc_resultado:'Outcome', dc_ini:'Initiatives (IA-YYYY-NNN, comma-separated)', dc_esferas:'Spheres with Transform as target (01–07, comma-separated)', dc_limite:'Stage investment cap (€)', dc_etapa:'Stage it applies to', dc_decision_etapa:'Stage decision', dc_vigencia:'Valid until', dc_responsable:'Owner of execution', dc_recs:'Linked recommendations (REC-YYYY-NNN)',
  rc_texto:'Text (worded so that compliance can be checked)', rc_dest:'Addressee', rc_estado:'Status', rc_evidencia:'Evidence', dlg_dec:'Board decision', dlg_rec:'Board recommendation', dlg_ix:'Transformation index evidence', dlg_comp:'Company data for the index',
- e_dec_texto:'The text of the decision is required.', e_ini_x:'Initiative does not exist: {id}.', e_esfera_x:'Invalid sphere: {e} (01 to 07).', e_rec_texto:'The text of the recommendation is required.'
+ e_dec_texto:'The text of the decision is required.', e_ini_x:'Initiative does not exist: {id}.', e_esfera_x:'Invalid sphere: {e} (01 to 07).', cj_amb_obj:'Target ambition per sphere (C2)', dc_amb_obj:'Target ambition per sphere (only in the C2 thesis; read by the impact map of the board dashboard)', e_amb_obj:'The target ambition of sphere {e} is not valid.', e_rec_texto:'The text of the recommendation is required.'
 });
 Object.assign(LB.es,{
  ver_it:{pendiente:'Pendiente de verificar', verificada:'Verificada: sí', no_verificada:'Verificada: no (la respuesta no se confirma)'},
@@ -2544,7 +2546,7 @@ function listaIds(txt){ return (txt||'').split(/[,;\s]+/).map(x=>x.trim()).filte
 function vistaConsejo(){
   const Lc=lecturaConsejo(), mi=DB.meta.indice||{};
   let h='<div class="cab-ficha"><h1>'+esc(t('cj_titulo'))+'</h1><div class="fila"><button type="button" data-acc="cj-rec">'+esc(t('cj_nueva_rec'))+'</button><button type="button" class="primario" data-acc="cj-dec">'+esc(t('cj_nueva_dec'))+'</button></div></div><p class="ayuda">'+esc(t('cj_sub'))+'</p>';
-  h+='<div class="bloques"><section class="bloque"><h3>'+esc(t('cj_senal8'))+'</h3>'+dl([[t('cj_tesis'),Lc.tesis?'<span class="mono">'+esc(Lc.tesis.id)+'</span> · '+fF(Lc.tesis.fecha):(Lc.hayDecisiones?esc(t('no')):null)],[t('cj_esferas_t'),Lc.esferas.length?Lc.esferas.map(e=>esc(L('esfera',e))).join('<br>'):(Lc.tesis?esc(t('ninguna')):null)],[t('cj_apuestas'),String(Lc.apuestas)],[t('cj_limite'),esc(Lc.conLimite?t('si'):t('no'))],[t('cj_revisiones'),String(Lc.revisiones)],[t('cj_etapas'),String(Lc.etapas)]])+'<p class="ayuda" style="margin-top:6px"><a data-ir="t14" href="'+T14_INDICE+'?desde=t01">'+esc(t('ix_t14'))+' →</a></p></section>';
+  h+='<div class="bloques"><section class="bloque"><h3>'+esc(t('cj_senal8'))+'</h3>'+dl([[t('cj_tesis'),Lc.tesis?'<span class="mono">'+esc(Lc.tesis.id)+'</span> · '+fF(Lc.tesis.fecha):(Lc.hayDecisiones?esc(t('no')):null)],[t('cj_esferas_t'),Lc.esferas.length?Lc.esferas.map(e=>esc(L('esfera',e))).join('<br>'):(Lc.tesis?esc(t('ninguna')):null)],[t('cj_amb_obj'),Lc.tesis&&Lc.tesis.ambicion_objetivo&&Object.keys(Lc.tesis.ambicion_objetivo).length?'<span id="cj-amb-obj">'+Object.keys(Lc.tesis.ambicion_objetivo).sort().map(e=>esc(L('esfera',e))+': <b>'+esc(L('ambicion_obj',Lc.tesis.ambicion_objetivo[e]))+'</b>').join('<br>')+'</span>':null],[t('cj_apuestas'),String(Lc.apuestas)],[t('cj_limite'),esc(Lc.conLimite?t('si'):t('no'))],[t('cj_revisiones'),String(Lc.revisiones)],[t('cj_etapas'),String(Lc.etapas)]])+'<p class="ayuda" style="margin-top:6px"><a data-ir="t14" href="'+T14_INDICE+'?desde=t01">'+esc(t('ix_t14'))+' →</a></p></section>';
   h+='<section class="bloque"><h3>'+esc(t('cj_compania'))+'</h3>'+dl([[t('cj_ingresos'),mi.ingresos_totales!=null?fE(mi.ingresos_totales):null],[t('cj_ingresos_fecha'),mi.periodo_ingresos?esc(mi.periodo_ingresos):null],[t('cj_d3'),mi.it_d3!=null?esc(mi.it_d3?t('si'):t('no')):null],[t('cj_d3_ev'),mi.it_d3_evidencia?esc(mi.it_d3_evidencia):null]])+'<button type="button" data-acc="cj-comp">'+esc(t('cj_editar_comp'))+'</button></section>';
   const md=madurezUltima();
   h+='<section class="bloque" id="cj-madurez" data-madurez="'+(md?esc(md.id):'')+'"><h3>'+esc(t('cj_madurez'))+'</h3>'+(md
@@ -2567,10 +2569,14 @@ function abrirDecision(D){
     campo('dc-txt',t('dc_texto'),'<textarea id="dc-txt" name="dc-txt">'+esc(X.texto||'')+'</textarea>')+
     '<div class="rejilla">'+campo('dc-ini',t('dc_ini'),'<input type="text" id="dc-ini" name="dc-ini" value="'+esc((X.iniciativas||[]).join(', '))+'">')+campo('dc-esf',t('dc_esferas'),'<input type="text" id="dc-esf" name="dc-esf" value="'+esc((X.esferas_transformar||[]).join(', '))+'">')+
     campo('dc-lim',t('dc_limite'),'<input type="number" min="0" step="any" id="dc-lim" name="dc-lim" value="'+(X.limite_inversion_etapa==null?'':X.limite_inversion_etapa)+'">')+campo('dc-eta',t('dc_etapa'),'<input type="text" id="dc-eta" name="dc-eta" value="'+esc(X.etapa||'')+'">')+
-    campo('dc-dle',t('dc_decision_etapa'),sel('dc-dle','dec_etapa',X.decision_etapa,'—'))+campo('dc-vig',t('dc_vigencia'),'<input type="date" id="dc-vig" name="dc-vig" value="'+esc(X.vigencia||'')+'">')+campo('dc-rsp',t('dc_responsable'),selPersonas('dc-rsp',X.responsable||''))+campo('dc-rec',t('dc_recs'),'<input type="text" id="dc-rec" name="dc-rec" value="'+esc((X.recomendaciones||[]).join(', '))+'">')+'</div>';
+    campo('dc-dle',t('dc_decision_etapa'),sel('dc-dle','dec_etapa',X.decision_etapa,'—'))+campo('dc-vig',t('dc_vigencia'),'<input type="date" id="dc-vig" name="dc-vig" value="'+esc(X.vigencia||'')+'">')+campo('dc-rsp',t('dc_responsable'),selPersonas('dc-rsp',X.responsable||''))+campo('dc-rec',t('dc_recs'),'<input type="text" id="dc-rec" name="dc-rec" value="'+esc((X.recomendaciones||[]).join(', '))+'">')+'</div>'+
+    '<fieldset><legend>'+esc(t('dc_amb_obj'))+'</legend><div class="rejilla">'+['01','02','03','04','05','06','07'].map(e=>campo('dc-ao-'+e,L('esfera',e),sel('dc-ao-'+e,'ambicion_obj',(X.ambicion_objetivo||{})[e],'—'))).join('')+'</div></fieldset>';
   abrirDialogo(t('dlg_dec')+(X.id?' · '+X.id:''), bq, f=>{ const errs=[];
     const n={fecha:f['dc-fecha'].value, organo:f['dc-org'].value, acta:f['dc-acta'].value.trim()||null, asunto:f['dc-asu'].value, tipo:f['dc-tip'].value, resultado:f['dc-res'].value||null, texto:f['dc-txt'].value.trim(),
       iniciativas:listaIds(f['dc-ini'].value), esferas_transformar:listaIds(f['dc-esf'].value).map(e=>e.padStart(2,'0')), limite_inversion_etapa:leerNum(f,'dc-lim'), etapa:f['dc-eta'].value.trim()||null, decision_etapa:f['dc-dle'].value||null, vigencia:f['dc-vig'].value||null, responsable:f['dc-rsp'].value||null, recomendaciones:listaIds(f['dc-rec'].value)};
+    // ambición objetivo por esfera (tesis de C2, D130): solo las esferas con valor; las de Transformar se suman a esferas_transformar (IT-D1)
+    const ao={}; ['01','02','03','04','05','06','07'].forEach(e=>{ const v=f['dc-ao-'+e].value; if(v) ao[e]=v; });
+    if(Object.keys(ao).length){ n.ambicion_objetivo=ao; Object.keys(ao).filter(e=>ao[e]==='transformar').forEach(e=>{ if(!n.esferas_transformar.includes(e)) n.esferas_transformar.push(e); }); n.esferas_transformar.sort(); } else if(D) delete D.ambicion_objetivo;
     if(!esFecha(n.fecha)) errs.push(t('e_fecha')); if(!n.texto) errs.push(t('e_dec_texto'));
     n.iniciativas.forEach(id=>{ if(!M.ini.has(id)) errs.push(t('e_ini_x',{id})); }); n.esferas_transformar.forEach(e=>{ if(!/^0[1-7]$/.test(e)) errs.push(t('e_esfera_x',{e})); });
     if(errs.length) return errs;
@@ -2616,7 +2622,8 @@ function validarIndice(d, ini, err, x, FL, FNV){
     if(!/^DEC-\d{4}-\d{3}$/.test(D.id||'')) err(w+x('id no cumple DEC-AAAA-NNN.','id does not match DEC-YYYY-NNN.')); if(!esFecha(D.fecha)) err(w+'fecha'+FNV);
     if(!LB.es.dec_asunto[D.asunto]) err(w+'asunto'+FL); if(D.tipo!=null && !LB.es.dec_tipo[D.tipo]) err(w+'tipo'+FL); if(D.resultado!=null && !LB.es.dec_resultado[D.resultado]) err(w+'resultado'+FL); if(D.decision_etapa!=null && !LB.es.dec_etapa[D.decision_etapa]) err(w+'decision_etapa'+FL);
     (D.iniciativas||[]).forEach(id=>{ if(!ini.has(id)) err(w+x('iniciativa inexistente ','unknown initiative ')+id); });
-    (D.esferas_transformar||[]).forEach(e=>{ if(!/^0[1-7]$/.test(e)) err(w+'esferas_transformar'+FL); }); });
+    (D.esferas_transformar||[]).forEach(e=>{ if(!/^0[1-7]$/.test(e)) err(w+'esferas_transformar'+FL); });
+    if(D.ambicion_objetivo!=null){ if(typeof D.ambicion_objetivo!=='object'||Array.isArray(D.ambicion_objetivo)) err(w+'ambicion_objetivo'+x(' debe ser un objeto.',' must be an object.')); else Object.entries(D.ambicion_objetivo).forEach(([e,v])=>{ if(!/^0[1-7]$/.test(e)||!LB.es.ambicion_obj[v]) err(w+'ambicion_objetivo.'+e+FL); }); } });
 }
 
 /* ---------------- enrutado y arranque ---------------- */

@@ -39,14 +39,14 @@ By the end you will know which AI decisions belong to the board, how information
 | 2 | document 60, sections 4 and 5 | The structure of the quarterly pack and the decision format. |
 | 3 | document 61, sections 6 and 9 | Questions per sphere and frequent difficult questions. |
 | 4 | document 62, sections 4 and 10 | The fields of a recommendation and the recorded decisions. |
-| 5 | T17 | The example dashboard: portfolio and value, funnel, cases that left and why, and transformation index. |
+| 5 | T17 | The example dashboard: «What holds back scaling» (document 60, section 10.4) and «Where the impact is» (document 10, section 8) at the top of portfolio and value; then the funnel, the cases that left and why, and the transformation index. Click any header figure to see its cases. |
 | 6 | T18 ("Board" view of the register) | The example decisions and recommendations. |
 
 ---
 
 ## 4. Exercise
 
-With the example dashboard (T17) in front of you, prepare three questions you would ask as a board director. One about value —what part of the net value is validated?—, one about risk and one about transformation. Then check in the "Board" view of the register whether any example decision answers those questions.
+With the example dashboard (T17) in front of you, prepare three questions you would ask as a board director. One about value —what part of the net value is validated?—, one about risk, one about transformation and one about scaling —which barrier does the company tackle first, who moves it and by when?—. Then check in the "Board" view of the register whether any example decision answers those questions.
 
 ---
 

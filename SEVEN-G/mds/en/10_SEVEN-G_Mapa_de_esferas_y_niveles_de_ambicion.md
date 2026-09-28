@@ -498,7 +498,7 @@ Each profile has the same structure: what it covers, questions for the board, ex
 
 ## 8. Sphere × level heat map (T16)
 
-The heat map is the portfolio view over the impact map. It is generated from the initiative register (T01) and shown in the board dashboard (T17), in the card «Where the impact is» under «Portfolio and value» (60 §10.5), which can also show the rows by business unit. Until the register stores the C2 target ambition per sphere, the dashboard takes it from its general configuration; without it, it marks neither gaps nor «off thesis».
+The heat map is the portfolio view over the impact map. It is generated from the initiative register (T01) and shown in the board dashboard (T17), in the card «Where the impact is» under «Portfolio and value» (60 §10.5), which can also show the rows by business unit. The C2 target ambition per sphere is recorded in T01, in the board decision approving the thesis (62 §10.2), and the dashboard takes it from there; without it, it marks neither gaps nor «off thesis».
 
 ### 8.1 Construction
 

@@ -369,7 +369,7 @@ function frenosEscalado(rows){
 // el total de las filas (sin actividad · baja < 5 % · media 5–15 % · alta > 15 %; umbrales de meta.mapa_impacto.umbrales, a calibrar en C5).
 const AMB_COLS = ["Optimizar", "Aumentar", "Transformar"];
 function cfgImpacto(){ const c = META().mapa_impacto || {}, u = c.umbrales || {};
-  return {filas: Array.isArray(c.filas) && c.filas.length ? c.filas : null, habilitacion: c.habilitacion || [], objetivo: c.objetivo_c2 || {},
+  return {filas: Array.isArray(c.filas) && c.filas.length ? c.filas : null, habilitacion: c.habilitacion || [], objetivo: c.objetivo_c2 || {}, fuente: c.objetivo_fuente || null,
     baja: u.baja ?? 5, alta: u.alta ?? 15, meses: c.meses_retiradas ?? 12}; }
 const codEsfera = s => (String(s || "").match(/^\d{2}/) || [""])[0];
 function mapaImpacto(rows, modo){
