@@ -216,12 +216,13 @@ function Diapositiva-Ejemplo([string]$titulo, [string]$caso, [string[]]$bullets,
   $v = Shape-Caja 609600 5600000 10972800 900000 $veredicto $colorVeredicto $BLANCO 2100
   Slide-Xml ((Cabecera $titulo) + $c + $b + $v)
 }
-function Diapositiva-Cierre([string]$titulo, [string]$linea1, [string]$linea2, [string]$url) {
+function Diapositiva-Cierre([string]$titulo, [string]$linea1, [string]$linea2, [string]$url, [string]$aviso = '') {
   $t1 = Shape-Texto 609600 2300000 10972800 900000 (Parrafo $titulo $NEGRO 4400 $true 'ctr')
   $t2 = Shape-Texto 609600 3350000 10972800 900000 (Parrafo $linea1 $TINTA 1900 $false 'ctr')
   $t3 = Shape-Texto 609600 4350000 10972800 500000 (Parrafo $linea2 $TINTA2 1600 $false 'ctr')
   $t4 = Shape-Texto 609600 4950000 10972800 500000 (Parrafo $url $OXFORD 1700 $false 'ctr')
-  Slide-Xml ($t1 + $t2 + $t3 + $t4)
+  $t5 = if ($aviso) { Shape-Texto 609600 5550000 10972800 1000000 (Parrafo $aviso $TINTA2 1000 $false 'ctr') } else { '' }   # exención de responsabilidad (D113)
+  Slide-Xml ($t1 + $t2 + $t3 + $t4 + $t5)
 }
 
 # ---------- paquete pptx ----------
@@ -574,7 +575,7 @@ function Bloque-Partner() {
 
     (Diapositiva-Texto (L 'Cómo encajarlo en su metodología' 'How to fit it into your methodology') @(
       (L 'Haga una tabla de correspondencias: sus etapas frente a las fases 0 a 7, sus comités frente a los órganos, sus entregables frente a las plantillas P.' 'Build a mapping table: your stages against phases 0 to 7, your committees against the bodies, your deliverables against the P templates.'),
-      (L 'Conserve los códigos (G0–G7, P01–P71, T01–T22) o publique su equivalencia: sus clientes podrán contrastar con la fuente.' 'Keep the codes (G0–G7, P01–P71, T01–T22) or publish your equivalence: your clients will be able to check against the source.'),
+      (L 'Conserve los códigos (G0–G7, P01–P74, T01–T22) o publique su equivalencia: sus clientes podrán contrastar con la fuente.' 'Keep the codes (G0–G7, P01–P74, T01–T22) or publish your equivalence: your clients will be able to check against the source.'),
       (L 'Puede cambiar nombres, umbrales, plazos y pesos. No cambie lo que protege al cliente: separación de funciones, evidencia antes de decidir y estado de cada importe.' 'You may change names, thresholds, deadlines and weights. Do not change what protects the client: segregation of duties, evidence before deciding and a status for every amount.'),
       (L 'Indique la versión de partida y sus cambios; cuando el marco evolucione, decida si actualiza y dígalo.' 'State the base version and your changes; when the framework evolves, decide whether you update, and say so.'),
       (L 'En una obra que mezcla marcos debe quedar claro qué procede de SEVEN-G. Sus aportaciones puede licenciarlas como quiera, sin impedir la licencia del original.' "In a work that mixes frameworks it must be clear what comes from SEVEN-G. You may license your own contributions as you wish, without blocking the original's licence.")
@@ -584,7 +585,7 @@ function Bloque-Partner() {
       (L 'Un único modelo de datos para todo: el JSON del registro T01, con su esquema publicado. Se importa, se exporta y se fusiona por código de iniciativa.' "One data model for everything: the T01 register's JSON, with its published schema. It can be imported, exported and merged by initiative code."),
       (L 'Puede alimentar ese JSON desde su propia plataforma (gestión de proyectos, GRC, CRM) y generar el panel del consejo con el conector de T17.' 'You can feed that JSON from your own platform (project management, GRC, CRM) and generate the board dashboard with the T17 connector.'),
       (L 'Las herramientas son HTML sin servidor: se alojan donde quiera, con su marca junto al reconocimiento, y no envían datos a nadie.' 'The tools are serverless HTML: host them wherever you like, with your brand next to the attribution, and they send data to no one.'),
-      (L 'Las 71 plantillas se generan en Word desde Markdown: puede cambiar estilos y portada y regenerarlas con su imagen.' 'The 71 templates are generated in Word from Markdown: you can change styles and cover and regenerate them with your branding.'),
+      (L 'Las 74 plantillas se generan en Word desde Markdown: puede cambiar estilos y portada y regenerarlas con su imagen.' 'The 74 templates are generated in Word from Markdown: you can change styles and cover and regenerate them with your branding.'),
       (L 'Los esquemas nuevos solo añaden campos opcionales: los ficheros antiguos siguen funcionando.' 'New schema versions only add optional fields: old files keep working.'),
       (L 'Los datos del cliente son del cliente: déjelos siempre en formato abierto.' "The client's data belongs to the client: always leave it in an open format.")
     ) '' 1700),
@@ -651,7 +652,7 @@ foreach ($lang in $Idiomas) {
     foreach ($s in (Bloque-Proceso)) { $slides.Add($s) }
     foreach ($s in (Bloque-Ejemplos)) { $slides.Add($s) }
     foreach ($s in (& $curso.bloque)) { $slides.Add($s) }
-    $slides.Add((Diapositiva-Cierre (L 'Gracias' 'Thank you') (L 'SEVEN-G es gratuito: se usa, se descarga y se adapta sin registrarse, y el sitio nunca le escribirá. Si quiere hablar con el autor, la iniciativa es suya.' 'SEVEN-G is free: it is used, downloaded and adapted without registering, and the site will never write to you. If you want to talk to the author, the initiative is yours.') (L 'SEVEN-G es una marca registrada de Fernando García Varela · CC BY 4.0 (contenidos) · MIT (código)' 'SEVEN-G is a registered trademark of Fernando García Varela · CC BY 4.0 (content) · MIT (code)') 'https://www.linkedin.com/in/fernandogarciavarela/'))
+    $slides.Add((Diapositiva-Cierre (L 'Gracias' 'Thank you') (L 'SEVEN-G es gratuito: se usa, se descarga y se adapta sin registrarse, y el sitio nunca le escribirá. Si quiere hablar con el autor, la iniciativa es suya.' 'SEVEN-G is free: it is used, downloaded and adapted without registering, and the site will never write to you. If you want to talk to the author, the initiative is yours.') (L 'SEVEN-G es una marca registrada de Fernando García Varela · CC BY 4.0 (contenidos) · MIT (código)' 'SEVEN-G is a registered trademark of Fernando García Varela · CC BY 4.0 (content) · MIT (code)') 'https://www.linkedin.com/in/fernandogarciavarela/' (L 'Aviso legal: ayuda metodológica genérica y gratuita, «tal cual» y con fines informativos; no es asesoramiento jurídico ni está revisada jurídicamente para ningún caso. Cada organización la adapta y es responsable de su revisión legal y de su cumplimiento regulatorio; puede no recoger cambios normativos recientes. En la máxima medida permitida por la ley, el autor no asume responsabilidad alguna por los efectos de su aplicación. No otorga certificación de ningún tipo. Detalle en el documento 93.' 'Legal notice: a generic, free methodological aid provided "as is" for information purposes; it is not legal advice and has not been legally reviewed for any case. Each organisation adapts it and is responsible for its legal review and its regulatory compliance; it may not reflect recent regulatory changes. To the fullest extent permitted by law, the author accepts no liability whatsoever for the effects of its application. It does not grant certification of any kind. Details in document 93.')))
 
     $salida = Join-Path $repo "SEVEN-G\pptx\$lang\SEVEN-G_Curso_$($curso.clave).pptx"
     $pdf = Join-Path $repo "SEVEN-G\pdf\$lang\curso\SEVEN-G_Curso_$($curso.clave).pdf"

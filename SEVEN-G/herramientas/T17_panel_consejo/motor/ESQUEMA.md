@@ -86,7 +86,7 @@ Para proveedores, `proveedor_dora`: `en_registro`, `criticidad`, `estrategia_sal
 
 ## `madurez` (opcional)
 
-Diagnóstico de madurez de la compañía (documento 11 de SEVEN-G, diagnóstico T15), que el conector toma del registro T01 (esquema 0.6). Si falta, la tarjeta «Madurez de la compañía (D1–D7)» del panel completo y el bloque del móvil no se muestran. No depende de los filtros y el motor no recalcula nada: solo lee el bloque.
+Diagnóstico de madurez de la compañía (documento 11 de SEVEN-G, diagnóstico T15), que el conector toma del registro T01 (esquema 0.6; desde el 0.7 puede traer `perfiles`, el resumen de los perfiles NIST del último diagnóstico, que la tarjeta muestra en una tabla aparte y el móvil en una lista; clave opcional). Si falta, la tarjeta «Madurez de la compañía (D1–D7)» del panel completo y el bloque del móvil no se muestran. No depende de los filtros y el motor no recalcula nada: solo lee el bloque.
 
 | Campo | Contenido |
 |---|---|

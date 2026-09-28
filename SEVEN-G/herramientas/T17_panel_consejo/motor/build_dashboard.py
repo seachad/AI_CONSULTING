@@ -1061,11 +1061,16 @@ function renderMadurez(){
   const antTxt = ant ? ` · el diagnóstico anterior (${fES(ant.fecha_corte)}) daba nivel <b>${ant.nivel_global == null ? "sin dato" : ant.nivel_global}</b> ${flecha(x.nivel_global, ant.nivel_global)}` : "";
   const identidad = [x.id ? esc(x.id) : "", x.ciclo ? `ciclo ${esc(x.ciclo)}` : "", x.verificador ? `verifica ${esc(x.verificador)}` : "", x.organo_aprobacion ? `aprueba ${esc(x.organo_aprobacion)}` : ""].filter(Boolean).join(" · ");
   const decl = `<div class="note" style="margin-top:10px">Declaración de aplicación de SEVEN-G: <b>${x.declaracion_posible ? "posible" : "no procede todavía"}</b> (11 §7.3)</div>`;
+  // perfiles NIST (opcional, esquema 0.7 de T01, D115): resumen que escribe T15; el motor no recalcula nada
+  const PERF_MD = {ai_rmf:"NIST AI RMF (gobierno de la IA)", csf:"NIST CSF 2.0 · Cyber AI Profile (seguridad; perfil en borrador)"};
+  const perfFilas = x.perfiles ? Object.keys(PERF_MD).filter(k=>x.perfiles[k] && x.perfiles[k].total).map(k=>{ const g = x.perfiles[k].total;
+    return `<tr><td>${PERF_MD[k]}</td><td>${g.minimo == null ? '<span class="nd">sin dato</span>' : g.minimo}</td><td>${g.con_nivel} de ${g.subcategorias}</td><td>${g.con_objetivo}</td><td>${g.con_brecha ? `<b style="color:var(--warn)">${g.con_brecha}</b>` : "0"}</td></tr>`; }).join("") : "";
+  const perfTabla = perfFilas ? `<div class="note" style="margin-top:10px">Perfiles NIST derivados de este diagnóstico (11 §7.5; plantillas P72 y P73). La brecha se mide frente al nivel objetivo fijado en C2.</div><div class="tblx" id="madurez-perfiles"><table class="mini"><thead><tr><th>Perfil</th><th>Nivel mínimo</th><th>Subcategorías con nivel</th><th>Con objetivo</th><th>Con brecha</th></tr></thead><tbody>${perfFilas}</tbody></table></div>` : "";
   setCard("madurez", "Madurez de la compañía (D1–D7)",
     `Diagnóstico de madurez T15 de SEVEN-G (documento 11) a ${fES(x.fecha_corte)} · cuestionario v${esc(x.version_cuestionario || "")} · ${MODALIDAD_MD[x.modalidad] || esc(x.modalidad || "")} · no depende de los filtros · el nivel global se limita a min(D1, D6) + 1`,
     `${global}${limite}${aviso}${antTxt}.`,
     `<div class="nd" style="margin:4px 0 8px">${identidad ? identidad + " · " : ""}Es el diagnóstico de la compañía en su conjunto, no de los casos de la cartera: los filtros no lo cambian.</div>` +
-    `<div class="tblx"><table class="mini"><thead><tr><th>Dimensión</th><th>Nivel (0–5)</th><th>Avance al nivel siguiente</th><th>Bloqueantes</th><th>Tendencia</th></tr></thead><tbody>${filas}</tbody></table></div>` + decl);
+    `<div class="tblx"><table class="mini"><thead><tr><th>Dimensión</th><th>Nivel (0–5)</th><th>Avance al nivel siguiente</th><th>Bloqueantes</th><th>Tendencia</th></tr></thead><tbody>${filas}</tbody></table></div>` + decl + perfTabla);
 }
 
 // ---- bloque 1: cartera (movimientos, tiempo a producción, agilidad)

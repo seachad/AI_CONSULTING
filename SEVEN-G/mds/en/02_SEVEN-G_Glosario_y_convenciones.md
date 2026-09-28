@@ -14,7 +14,7 @@
 
 ---
 
-> **Legal notice and disclaimer.** SEVEN-G is a reference methodological framework provided "as is" and for information purposes only. It does not constitute legal, regulatory, financial or professional advice, nor does it guarantee compliance with any law or standard. References to general regulation (such as the EU AI Act, the GDPR, DORA or NIS2), to technical standards and to regulation specific to each sector or jurisdiction may be incomplete, may not apply to a particular case or may become out of date as a result of regulatory changes, interpretations or supervisory positions after their consultation date. **Each organisation that uses SEVEN-G is solely responsible for identifying the regulation that applies to it, verifying that it is current and certifying its own regulatory compliance**, with the appropriate qualified advice. The author accepts no liability for any use made of this content or for any decisions taken on the basis of it. The data, figures, companies and cases in the examples are fictitious or illustrative.
+> **Legal notice and disclaimer.** SEVEN-G is a reference methodological framework provided "as is" and for information purposes only. It does not constitute legal, regulatory, financial or professional advice, nor does it guarantee compliance with any law or standard. References to general regulation (such as the EU AI Act, the GDPR, DORA or NIS2), to technical standards and to regulation specific to each sector or jurisdiction may be incomplete, may not apply to a particular case or may become out of date as a result of regulatory changes, interpretations or supervisory positions after their consultation date. **Each organisation that uses SEVEN-G is solely responsible for identifying the regulation that applies to it, verifying that it is current and certifying its own regulatory compliance**, with the appropriate qualified advice. This methodology is a generic, free aid shared with the community so that nobody has to start from scratch; each person or organisation can and should adapt it to its own use. It must not be inferred that its legally sensitive parts have been reviewed by legal counsel: those reviews, for each company or sector, are the ultimate responsibility of the company, consultant or organisation that uses it. Although every effort is made to keep it up to date, some regulation may have changed without being reflected here. To the fullest extent permitted by law, the author accepts no responsibility whatsoever for the effects of its application in any organisation or for its full applicability. The methodology does not grant certification of any kind. The author accepts no liability for any use made of this content or for any decisions taken on the basis of it. The data, figures, companies and cases in the examples are fictitious or illustrative.
 
 <!-- esencial: consulta | Glossary and codes. It is not read straight through: it is consulted when a term or a code (G, LV, P, T, IND, RT) comes up. Its definitions prevail if another document uses a term differently. -->
 
@@ -150,7 +150,7 @@ Alphabetical order by English term. The full scales are in section 4 and the cod
 | **AI Product Owner** | Building role: accountable for the value hypothesis, actual use and adoption. It cannot verify evidence or decide *gates* of its initiative. | 01 §8.1 | Responsable de producto de IA |
 | **AI reviewer** | AI tool that reviews plans, code, tests or security within the building team (SEVEN-G name for the SPAD *AI Auditor* role). It approves nothing and is not the AI Auditor. | 53 §5 | IA revisora |
 | **AI Risk Owner** | Control role: accountable for the assessment and monitoring of risks and compliance, and issues risk clearance. It cannot be part of the team that builds the initiative. | 01 §8.1 | Responsable de riesgos de IA |
-| **AI security control (SEG) · agent control (AG)** | Catalogues of coded controls: SEG-01 to SEG-20 for AI systems and AG-01 to AG-20 for agents, with mandatory minimums by autonomy level. | 35 §5–7 | Control de seguridad de IA (SEG) · control de agentes (AG) |
+| **AI security control (SEG) · agent control (AG)** | Catalogues of coded controls: SEG-01 to SEG-25 for AI systems (SEG-21 to SEG-25, use of AI in cyber defence) and AG-01 to AG-20 for agents, with mandatory minimums by autonomy level. | 35 §5–7 | Control de seguridad de IA (SEG) · control de agentes (AG) |
 | **AI Sponsor** | Deciding role: accountable for value and investment, and champions the initiative before the bodies. It cannot verify evidence or act as risk owner or auditor of its initiative. | 01 §8.1 | Patrocinador de IA |
 | **AI supplier (third party)** | Third party that supplies models, platforms, software with AI features or services that use them, managed with requirement levels N1–N3. | 36 | Proveedor de IA (tercero) |
 | **AI system** | Machine-based system that, with varying levels of autonomy, infers from the input it receives how to generate outputs—predictions, content, recommendations or decisions—that can influence physical or virtual environments. It is aligned with the EU AI Act definition and is identified in the inventory with the code SIA-AAAA-NNN. | 01 §4; 32 §2 | Sistema de IA |
@@ -195,6 +195,8 @@ Alphabetical order by English term. The full scales are in section 4 and the cod
 | **Corporate use of general-purpose AI** | AI assistants and productivity suites used by employees. It is governed with the inventory, the acceptable use policy, training and technical controls, and moves to the full lifecycle if it meets any Enterprise criterion. | 01 §1.2; 31 §5 | Uso corporativo de IA de propósito general |
 | **Critical control** | Security, legal compliance or human oversight control that does not admit Proceed with conditions: the *Yes ◆* criteria in document 21 and the critical agent controls by autonomy level in document 35. Not designed, it blocks G4; not tested, it blocks G5; disabled in production, it is a critical nonconformity. | 01 §7.3; 21 §2.2; 35 §5.4 | Control crítico |
 | **Critical function** | Enterprise criterion: the system supports a critical or important business function, or one subject to sector-specific operational resilience regulation. | 01 §9.2; 36 §4.1 | Función crítica |
+| **Current profile · target profile** | In the NIST CSF and the NIST AI RMF, the **current profile** describes the outcomes (subcategories) that the organisation achieves today and the **target profile**, those it wants to achieve, prioritised. The difference between them is the gap that becomes an action plan. SEVEN-G expresses the degree of each outcome with the 0–5 maturity scale (section 4.9), not with *tiers*. | 34 §5.3 | Perfil actual · perfil objetivo |
+| **Cyber AI Profile** | NIST CSF 2.0 community profile for AI (NIST IR 8596). It organises the CSF subcategories into three areas —Secure (protecting the components of AI systems), Defend (using AI in cyber defence) and Thwart (thwarting attacks that use AI)— and proposes a priority for each one. As at the consultation date it is a preliminary **draft** (December 2025): it is used for guidance and does not underpin *gate* criteria. | 34 §5.3; 35 | Cyber AI Profile |
 
 ### 3.4 D
 
@@ -304,6 +306,7 @@ Alphabetical order by English term. The full scales are in section 4 and the cod
 |---|---|---|---|
 | **Near miss** | Event that could have caused harm and did not, thanks to a control or by chance. It is recorded as an S4 incident. | 37 §1.1 | Cuasi incidente |
 | **Net present value (NPV)** | NPV = −I + Σ annual net value in year t ÷ (1 + r)^t, for t = 1…H (F7). **Single economic feasibility criterion**: NPV ≥ 0 with the horizon and rate approved in C2, calculated on net benefit. In Transform it is not required at G3 and is calculated for information only. | 01 §7.6; 40 §8.3 | Valor actual neto (VAN) |
+| **NIST CSF** | NIST Cybersecurity Framework, version 2.0 (NIST CSWP 29, February 2024): voluntary taxonomy of cybersecurity outcomes with six functions (GV govern, ID identify, PR protect, DE detect, RS respond and RC recover), 22 categories and 106 subcategories, organisational profiles and *tiers*. SEVEN-G maps it in 34 §5.3 and in the "CSF function" column of the SEG and AG controls. | 34 §5.3; 35 §6–§7 | NIST CSF |
 | **No data** | Absent value. It is not zero, it is shown as absent and it is never replaced by an undeclared estimate. | 00 rule 8; 40 §3.8 | Sin dato |
 | **Non-AI alternatives** | Phase 1 evidence that documents the non-AI solutions considered for the same problem and why AI provides something they do not. | 01 §6.3; P06 | Alternativas sin IA |
 | **Nonconformity** | Failure to meet a mandatory requirement of the framework ("must"), classified as minor, major or critical, and managed with containment, root cause, corrective action, effectiveness verification, closure and re-audit. | 01 §12; 37 §3 | No conformidad |
@@ -385,9 +388,10 @@ Alphabetical order by English term. The full scales are in section 4 and the cod
 
 | Term | Definition in SEVEN-G | Reference document | Spanish term |
 |---|---|---|---|
-| **Template** | Standard Block H document: P01–P31 for preparing the initiative's mandatory evidence and P32–P71 for the registers, reports and decisions of the company, the board, compliance, third parties, audit and framework implementation. Each has an editable Word version. | 01 §6.10; 03 §5 | Plantilla |
+| **Template** | Standard Block H document: P01–P31 for preparing the initiative's mandatory evidence P32–P71 for the registers, reports and decisions of the company, the board, compliance, third parties, audit and framework implementation, and P72–P74 for the NIST profiles and the ISO/IEC 42001 statement of applicability. Each has an editable Word version. | 01 §6.10; 03 §5 | Plantilla |
 | **Third-party AI embedded in processes** | Supplier software with AI features that take part in decisions, operations or customer relations. It goes through the full lifecycle, with the design and delivery phases focused on the selection, integration, contract and controls of the supplier. | 01 §1.2; 32 §2.1 | IA de terceros integrada en procesos |
 | **Third-party requirement level** | Degree of due diligence, contract, monitoring and exit required for each relationship between a supplier and a service: N1 Standard, N2 Enhanced or N3 Critical, determined by the highest factor among criticality, data, autonomy and substitutability. | 36 §4 | Nivel de exigencia a terceros |
+| ***Tier* (CSF)** | NIST CSF degree that characterises the rigour of the cybersecurity risk governance and management practices of the whole organisation or of a unit: 1 Partial, 2 Risk Informed, 3 Repeatable and 4 Adaptive. It is not a maturity level for each subcategory and does not exist in the NIST AI RMF. Not translated. | 34 §5.3 | tier (CSF) |
 | **Time in phase · decision time** | **Time in phase**: days between entry into and exit from the phase, excluding time on hold. **Decision time**: days between the *gate* request and the decision. | 03 §3.5; 41 | Tiempo en fase · tiempo de decisión |
 | **Transform** | Ambition level that changes what is offered, how the company competes or how it is organised. Value lies mainly in return and in changes to the operating model. It is always Enterprise and requires board approval at G2 and when scaling at G7. | 00 §4.1; 01 §7.5; 10 §3 | Transformar |
 | **Transformation declaration** | Situation in which the company claims to be transforming itself with AI: its thesis sets Transform as the target ambition in some sphere, initiatives confirmed as Transform account for 10% or more of portfolio cost, or its communications present AI as business transformation (conditions IT-D1 to IT-D3). If it exists and the evidenced profile is not Transformation under way, the profile assigned is Declared but unevidenced transformation. | 12 §5.1–5.2 | Declaración de transformación |
@@ -788,7 +792,7 @@ Spanish equivalents of the taxonomy values:
 | **LV-G\<n\> · LV-R6 · LV-EV · LV-AG** | LV + hyphen + scope | Checklists by gate, for evidence validation and for agents. | 22 §1 | LV-G5 |
 | **EV.01–EV.14** | EV + point + two digits | Valid evidence rules. | 21 §4.1; 22 §11 | EV.05 |
 | **T01–T22** | T + two digits | Framework tools. | 03 §5 | T01 |
-| **P01–P71** | P + two digits | Block H templates: P01–P31 per initiative (01 §6.10); P32–P71 for the company, board, compliance, third parties, audit and implementation. | Block H; 01 §6.10 | P29 |
+| **P01–P74** | P + two digits | Block H templates: P01–P31 per initiative (01 §6.10); P32–P71 for the company, board, compliance, third parties, audit and implementation; P72–P74, NIST profiles and ISO/IEC 42001 statement of applicability (34 §4–§5). | Block H; 01 §6.10 | P29 |
 | **D1–D7** | D + number | Maturity dimensions. | 11 §2.1 | D6 |
 | **Maturity levels 0–5** | Whole number | Maturity levels. | 11 §2.2 | level 3 |
 | **S1–S4** | S + number | AI incident severity. | 37 §4.2 | S1 |
@@ -797,7 +801,7 @@ Spanish equivalents of the taxonomy values:
 | **B1–B3** | B + number | Baseline conditions of the transformation index. | 12 §4.3 | B2 |
 | **F1–F10 · F2v** | F + number | Official measurement formulas. | 40 §6 | F7 |
 | **RT-\<CAT\>-NN** | RT + three-letter category + two digits | Typical risks in the catalogue (70 in version 0.1): EST 6 · TEC 8 · DAT 6 · ECO 5 · LEG 8 · ORG 9 · REP 5 · GEN 9 · SEG 7 · TER 7. | 33 §9 | RT-GEN-01 |
-| **SEG-01–SEG-20** | SEG + hyphen + two digits | AI security controls. | 35 §6 | SEG-02 |
+| **SEG-01–SEG-25** | SEG + hyphen + two digits | AI security controls. | 35 §6 | SEG-02 |
 | **AG-01–AG-20** | AG + hyphen + two digits | Agent controls. | 35 §7 | AG-09 |
 | **IND-\<FAM\>-NN** | IND + three-letter family + two digits | Catalogue indicators (159 in 13 families): VAL, COS, EMB, AGI, RIE, OPE, ADO, DAT, CLI, TRA, MAD, CON (board) and PRO (processes and decision-making). A code is not reused. | 41 §2 and §4 | IND-VAL-05 |
 | **IE\<sphere\>.\<nn\>** | IE + two-digit sphere + point + two digits | Indicators by sphere, provisional until they are consolidated in document 41. | 10 §5–7 | IE01.04 |
@@ -832,11 +836,11 @@ The former local numbering in documents 12 and 50 (P1–P5, S1–S8 and D1–D3 
 
 | Code or numbering | Meaning | Document | How it is cited elsewhere | Not to be confused with |
 |---|---|---|---|---|
-| IT-P1–IT-P5 | Five ambition classification questions (formerly P1–P5) | 12 §3.1 | "IT-P4" or "question IT-P4 of document 12" | P01–P71 (templates) |
+| IT-P1–IT-P5 | Five ambition classification questions (formerly P1–P5) | 12 §3.1 | "IT-P4" or "question IT-P4 of document 12" | P01–P74 (templates) |
 | IT-S1–IT-S8 | Eight signals of the transformation index (formerly S1–S8) | 12 §4.4 | "IT-S7" or "signal 7 of the index" | S1–S4 (severity) |
 | IT-D1–IT-D3 | Conditions of the transformation declaration (formerly D1–D3) | 12 §5.1 | "condition IT-D1" | D1–D7 (maturity) |
 | PER-D1–PER-D5 | Destinations of released capacity (formerly D1–D5) | 50 §6.2; 23 §10.5 | "destination PER-D1 (Materialise)" | D1–D7 (maturity); PER-NN (indicators) |
-| PER-PA–PER-PF | AI literacy profiles (formerly P-A–P-F) | 50 §5.2 | "profile PER-PD" | P01–P71 (templates); PER-NN (indicators) |
+| PER-PA–PER-PF | AI literacy profiles (formerly P-A–P-F) | 50 §5.2 | "profile PER-PD" | P01–P74 (templates); PER-NN (indicators) |
 | PER-NN · DAT-NN · CNC-NN · OPE-NN | Provisional people, data, knowledge (CNC, formerly CON) and operations indicators | 50, 51, 52 | By their IND- code according to the mapping table in 41 §21 | IND-\<FAM\>-NN; CNC-NN is not to be confused with IND-CON-NN (board) |
 | CI-n · I-n | Conflicts of interest and incompatibilities in the governance model | 30 §5, §12 | "conflict CI-2 of document 30" | — |
 | SP, BO, PO, TO, OO, RO, AUD, AIO, MC, AIC… (Spanish version: PAT, RN, RP, RT, RO, RR, AUD, OIA, CG, CIA…) | Abbreviations for owners in columns | 41 §3 | Full name of the role | RT-\<CAT\>-NN (typical risks) |
@@ -858,7 +862,7 @@ In new versions, documents **should** replace the numbering that remains local w
 | **E** | Measurement and value | 40–43 | Measurement rules, indicators, costs, benefits realisation. |
 | **F** | People, data and operations | 50–53 | People, data and knowledge, operations, building with AI. |
 | **G** | Board | 60–62 | Board pack and conversation guide, recommendations and decisions register. |
-| **H** | Templates | P01–P71 | Evidence for each phase of the lifecycle (P01–P31) and registers, reports and decisions of the company, the board, compliance, third parties, audit and implementation (P32–P71). |
+| **H** | Templates | P01–P74 | Evidence for each phase of the lifecycle (P01–P31); registers, reports and decisions of the company, the board, compliance, third parties, audit and implementation (P32–P71); NIST profiles and ISO/IEC 42001 statement of applicability (P72–P74). |
 | **I** | Tools | T01–T22 | Catalogue in document 03; HTML tools with JSON data. |
 | **J** | Framework adoption | 90–93 | Implementation, guide for consultants, application cases, licence. |
 
@@ -952,6 +956,7 @@ File names: `NN_SEVEN-G_<Nombre_con_guiones_bajos>.md` for documents and `planti
 | **ML** | Machine learning | Value of the "Predictive ML" technology tag. |
 | **NIS2** | Directive (EU) 2022/2555 on measures for a high common level of cybersecurity | Not translated. |
 | **NIST AI RMF** | AI risk management framework of NIST (US National Institute of Standards and Technology) | Not translated. |
+| **NIST CSF** | NIST Cybersecurity Framework, version 2.0 | Not translated. Its AI profile, the Cyber AI Profile, is a draft as at the consultation date (document 34). |
 | **NPV** | Net present value | Single economic feasibility criterion; formula F7. In Spanish, VAN. |
 | **OJEU** | Official Journal of the European Union | Official source of EU regulation. In Spanish, DOUE. |
 | **OWASP** | *Open Worldwide Application Security Project* | Risk lists for applications using language models and for agents (document 35). |
@@ -973,7 +978,7 @@ Framework abbreviations that are not general acronyms: **€k** thousands of eur
 | **T04** | Intensity determination | Uses the Enterprise criteria and the scale in section 4.6. |
 | **T05** | Ambition classifier | Uses the ambition levels and statuses in section 4.5. |
 | **T06–T22** | Other tools | Use the risk, appetite, maturity, severity, nonconformity, third-party, index and value scales in section 4. |
-| **P01–P71** | Block H templates | Use the terms in section 3 and the codes in section 6. No template defines terms of its own. |
+| **P01–P74** | Block H templates | Use the terms in section 3 and the codes in section 6. No template defines terms of its own. |
 
 Tools display the values of closed lists in Spanish and English using the equivalents in this document.
 
