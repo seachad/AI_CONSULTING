@@ -5,10 +5,10 @@
 | | |
 |---|---|
 | Documento | Documento 96 · Puntos de partida y recorrido de implantación |
-| Versión | 0.1 (borrador de trabajo) |
+| Versión | 0.2 |
 | Fecha | 28-09-2026 |
 | Autor | Fernando García Varela |
-| Estado | Borrador para revisión. Documento de orientación: ordena las reglas de los documentos 01, 11, 90 y 94, que prevalecen; no crea reglas nuevas. |
+| Estado | Umbrales y prioridades validados (28-09-2026). Documento de orientación: ordena las reglas de los documentos 01, 11, 90 y 94, que prevalecen; no crea reglas nuevas. |
 
 <!-- cifras: 6 | puntos de partida tipo ; 5 | modificadores ; 22 | hitos del recorrido ; 5 | etapas hasta la declaración de aplicación -->
 
@@ -47,9 +47,9 @@ La herramienta **T23 · Recorrido de implantación** aplica este documento: hace
 | **PP-A** | Punto cero | No hay IA propia en producción ni contratada de forma consciente. Suele haber uso no autorizado de asistentes generativos. | Uso no autorizado con datos de la compañía; ideas sin dueño. | Mandato y patrocinador; inventario del uso no autorizado; política de uso aceptable y alfabetización básica; ficha de caso (P01) y registro T01 para las primeras ideas. | Regularización (no hay nada que regularizar); seguridad de agentes y operación, hasta que un caso llegue a la fase 4. |
 | **PP-B** | Usuario de IA de terceros | Asistentes en la suite ofimática, SaaS con IA incluida o IA contratada; no desarrolla. | IA que entra sin pasar por ninguna puerta (54 §5); coste de licencias sin adopción medida. | Inventario de la IA incluida en lo contratado (36 §8, P55); exigencia a proveedores N1–N3 (36, P14); política de uso aceptable; medir el asistente como iniciativa transversal con escalera por unidad (40 §7.2). | Construcción propia (53) y parte del ciclo técnico, hasta que construya algo. |
 | **PP-C** | Automatizador | Automatización con reglas o RPA en producción, con un centro de excelencia o equipo de automatización; poca o ninguna IA que aprenda. | Confundir automatización con IA; paso de bots a agentes (A2/A3) sin los controles del documento 35. | Convertir el centro de excelencia en el embrión de la oficina de IA (30); inventario que separa lo que es IA de lo que no lo es (32); cartera de casos que sustituyen reglas por IA, cada uno con su ficha. | Su disciplina de procesos es un activo: el rediseño del proceso de extremo a extremo (IT-P2) le resulta más fácil. |
-| **PP-D** | Analítica y ML clásico | Modelos predictivos en producción, equipo de datos y, a veces, validación de modelos. | Modelos en producción sin revisión de continuidad; IA generativa que entra por fuera del gobierno de modelos. | Regularización de lo que está en producción (90 §5, revisión equivalente a G7); llevar la validación de modelos existente a G5 y R6; deriva y monitorización (52); inventario con clasificación regulatoria. | El hueco es la IA generativa: fuentes de conocimiento (51; D3.08), evaluación con conjuntos de prueba (D4.08) y sesgo en las respuestas (52 §4.2.7). |
+| **PP-D** | IA propia en producción | Modelos propios en producción —predictivos (ML, visión, optimización) o de IA generativa integrada en procesos—, sin agentes que actúan ni las dos cosas a la vez. Suele haber equipo de datos y, a veces, validación de modelos. | Modelos en producción sin revisión de continuidad; un tipo de IA nuevo que entra por fuera del gobierno que ya existe. | Regularización de lo que está en producción (90 §5, revisión equivalente a G7); llevar la validación de modelos existente a G5 y R6; deriva y monitorización (52); inventario con clasificación regulatoria. | Lo propio del tipo de IA que todavía no tiene: con solo ML, fuentes de conocimiento (51; D3.08), evaluación con conjuntos de prueba (D4.08) y sesgo en las respuestas (52 §4.2.7); con solo IA generativa, deriva de datos y validación de modelos predictivos (52). |
 | **PP-E** | Muchos pilotos | Varias pruebas de concepto de IA generativa (orientativamente, tres o más) y ninguna o una en producción. | «Purgatorio de pilotos»: coste sin valor y sin decisión de parar. | Registrar todos los pilotos en T01 en su fase real; G3 como puerta de parada y el embudo para parar o escalar; hipótesis de valor y línea base (40, P08, P09) antes de más presupuesto. | La estructura completa de órganos: primero la decisión sobre la cartera, después el resto. |
-| **PP-F** | A escala | Al menos dos de estas tres cosas en producción: ML predictivo, IA generativa integrada en procesos y agentes que actúan (A2/A3). | Exposición regulatoria y de seguridad ya real; gobierno por detrás del uso. | Roles separados y auditor de IA de inmediato; inventario completo con clasificación; seguridad de agentes (35) y proveedores (36); regularización priorizada por riesgo; panel del consejo e índice de transformación. | Nada: todo es obligatorio y urgente. |
+| **PP-F** | A escala | Agentes que actúan (A2 o A3) en producción, o a la vez ML predictivo e IA generativa integrada en procesos. | Exposición regulatoria y de seguridad ya real; gobierno por detrás del uso. | Roles separados y auditor de IA de inmediato; inventario completo con clasificación; seguridad de agentes (35) y proveedores (36); regularización priorizada por riesgo; panel del consejo e índice de transformación. | Nada: todo es obligatorio y urgente. |
 
 > **Por qué importa.** Poner nombre al punto de partida evita dos errores opuestos: copiar el plan de otra compañía que partía de otro sitio y creer que, como ya se tiene algo (un comité de datos, un centro de automatización), no hay que adaptarlo.
 
@@ -59,9 +59,9 @@ Se aplica en este orden y se asigna el **primer arquetipo** cuyas condiciones se
 
 | Orden | Arquetipo | Condición |
 |---|---|---|
-| 1 | PP-F | Al menos dos de {ML predictivo, IA generativa integrada en procesos, agentes A2 o A3} en producción. |
+| 1 | PP-F | Agentes A2 o A3 en producción, o a la vez ML predictivo e IA generativa integrada en procesos. |
 | 2 | PP-E | Tres o más pilotos de IA en curso, en su mayoría de IA generativa, y como mucho uno de IA generativa en producción. |
-| 3 | PP-D | ML predictivo, visión u optimización con aprendizaje en producción. |
+| 3 | PP-D | IA propia en producción: ML predictivo, visión u optimización con aprendizaje, o IA generativa integrada en procesos. |
 | 4 | PP-C | Reglas o RPA en producción, sin IA que aprenda en producción. |
 | 5 | PP-B | IA de terceros incluida en productos o asistentes corporativos, sin construcción propia en producción. |
 | 6 | PP-A | Ninguna de las anteriores. |
@@ -69,12 +69,12 @@ Se aplica en este orden y se asigna el **primer arquetipo** cuyas condiciones se
 <!-- grafico: Cómo se asigna el punto de partida | Se asigna el primer arquetipo que se cumple; los siguientes que también se cumplen son rasgos -->
 ```mermaid
 flowchart TD
-  Q["Cuestionario Q01 a Q12"] --> F{"¿Dos de: ML, IA generativa en procesos, agentes A2/A3?"}
+  Q["Cuestionario Q01 a Q12"] --> F{"¿Agentes A2/A3, o ML e IA generativa a la vez?"}
   F -->|"Sí"| PF["PP-F · A escala"]
   F -->|"No"| E{"¿Tres o más pilotos generativos y como mucho uno en producción?"}
   E -->|"Sí"| PE["PP-E · Muchos pilotos"]
-  E -->|"No"| D{"¿ML, visión u optimización en producción?"}
-  D -->|"Sí"| PD["PP-D · ML clásico"]
+  E -->|"No"| D{"¿ML, visión, optimización o IA generativa propia en producción?"}
+  D -->|"Sí"| PD["PP-D · IA propia"]
   D -->|"No"| C{"¿Reglas o RPA en producción?"}
   C -->|"Sí"| PC["PP-C · Automatizador"]
   C -->|"No"| B{"¿IA de terceros incluida en lo contratado?"}
@@ -205,11 +205,11 @@ Claves: **1**, arrancar ya (meses 1–2); **2**, en su etapa (meses 3–6); **3*
 | **HI-13** | D | D | 2 | 2 | 1 | 2 |
 | **HI-14** | 2 | 2 | 2 | 2 | 1 | 2 |
 | **HI-15** | 2 | 2 | 2 | 2 | 2 | 1 |
-| **HI-16** | D | 1 | D | 2 | D | 1 |
+| **HI-16** | D | 1 | D | 2 | 2 | 1 |
 | **HI-17** | D | · | D | 1 | D | 1 |
 | **HI-18** | 3 | 2 | 2 | 2 | 2 | 1 |
 | **HI-19** | D | 1 | 2 | 2 | 2 | 1 |
-| **HI-20** | D | · | 2 | C | 2 | 1 |
+| **HI-20** | D | 2 | 2 | C | 2 | 1 |
 | **HI-21** | 3 | 3 | 3 | 3 | 3 | 3 |
 | **HI-22** | 3 | 3 | 3 | 3 | 3 | 3 |
 
@@ -335,3 +335,4 @@ Una empresa de servicios profesionales ha desplegado un asistente generativo en 
 | Versión | Fecha | Cambios |
 |---|---|---|
 | 0.1 | 28-09-2026 | Primera versión: seis puntos de partida, regla de asignación, cinco modificadores, cuestionario de doce preguntas, cinco etapas, veintidós hitos con su evidencia, la pregunta del documento 11 que los acredita y su prioridad por arquetipo, roles por etapa y tres recorridos ficticios. Umbrales de asignación y prioridades, a validar. |
+| 0.2 | 28-09-2026 | Umbrales y prioridades validados. La regla de asignación ya no deja en PP-A a una compañía con IA propia en producción: PP-F pasa a «agentes A2 o A3, o ML e IA generativa a la vez» y PP-D, renombrado «IA propia en producción», incluye la IA generativa integrada en procesos. HI-16 (proveedores) sube a 2 en PP-E, porque los pilotos generativos usan modelos de terceros con datos de la compañía, y HI-20 (datos y conocimiento) pasa de · a 2 en PP-B, porque los asistentes corporativos acceden a las fuentes de conocimiento de la compañía. |

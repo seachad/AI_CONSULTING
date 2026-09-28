@@ -279,8 +279,8 @@ es:{
  por_que:'Por qué este resultado', traza_sub:'La regla de 96 §2.2 se aplica en orden y se asigna el primer arquetipo que se cumple. Para los rasgos se mira lo que define a cada arquetipo posterior (por ejemplo, reglas o RPA en producción para PP-C), sin las exclusiones que solo sirven para elegir el principal, como en el ejemplo de 96 §2.2.',
  orden:'Orden', condicion:'Condición (96 §2.2)', datos_usados:'Con estas respuestas', resultado:'Resultado',
  r_principal:'Arquetipo principal', r_rasgo:'Rasgo', r_no:'No se cumple', r_cumple_despues:'Se cumple, pero ya hay un arquetipo anterior', r_resto:'Ninguna de las anteriores',
- u_f:'En producción, {n} de 3: ML {ml}; IA generativa {gen}; agentes A2/A3 {ag}.', u_e:'Pilotos en curso: {p}; de IA generativa: {g}; IA generativa en producción: {gp}.', u_e_rasgo:'Como rasgo: tres o más pilotos, en su mayoría de IA generativa: {s}.',
- u_d:'ML, visión u optimización en producción: {s}.', u_c:'Reglas o RPA en producción: {s}; IA que aprende en producción: {l}.', u_b:'IA de terceros incluida: {s}; construcción propia en producción (ML, IA generativa o agentes): {l}.', u_a:'—',
+ u_f:'Agentes A2/A3 en producción: {ag}; ML e IA generativa a la vez: {mg}.', u_e:'Pilotos en curso: {p}; de IA generativa: {g}; IA generativa en producción: {gp}.', u_e_rasgo:'Como rasgo: tres o más pilotos, en su mayoría de IA generativa: {s}.',
+ u_d:'IA propia en producción (ML, visión, optimización o IA generativa integrada): {s}.', u_c:'Reglas o RPA en producción: {s}; IA que aprende en producción: {l}.', u_b:'IA de terceros incluida: {s}; construcción propia en producción (ML, IA generativa o agentes): {l}.', u_a:'—',
  si:'sí', no:'no', sd:'sin respuesta', gp_0:'ninguna', gp_1:'una', gp_n:'más de una', gp_sd:'una o ninguna (sin detallar)',
  mods_tit:'Modificadores (96 §2.3)', mod_activo:'Activo', mod_por:'Por qué', mod_efecto:'Efecto en el recorrido',
  m_MP1:'Q07 = {v}', m_MP2:'Q08 = {v} («No se sabe» cuenta como sí)', m_MP3:'Q09 = {v}', m_MP4:'Q05 = {v}', m_MP5:'Q10 = {v}',
@@ -334,8 +334,8 @@ en:{
  por_que:'Why this result', traza_sub:'The rule of 96 §2.2 is applied in order and the first archetype whose conditions are met is assigned. For the traits, what defines each later archetype is checked (for example, rules or RPA in production for PP-C), without the exclusions that only serve to choose the main one, as in the example of 96 §2.2.',
  orden:'Order', condicion:'Condition (96 §2.2)', datos_usados:'With these answers', resultado:'Result',
  r_principal:'Main archetype', r_rasgo:'Trait', r_no:'Not met', r_cumple_despues:'Met, but an earlier archetype already applies', r_resto:'None of the above',
- u_f:'In production, {n} of 3: ML {ml}; generative AI {gen}; A2/A3 agents {ag}.', u_e:'Pilots under way: {p}; generative AI: {g}; generative AI in production: {gp}.', u_e_rasgo:'As a trait: three or more pilots, mostly generative AI: {s}.',
- u_d:'ML, vision or optimisation in production: {s}.', u_c:'Rules or RPA in production: {s}; AI that learns in production: {l}.', u_b:'Third-party AI included: {s}; in-house build in production (ML, generative AI or agents): {l}.', u_a:'—',
+ u_f:'A2/A3 agents in production: {ag}; ML and generative AI at once: {mg}.', u_e:'Pilots under way: {p}; generative AI: {g}; generative AI in production: {gp}.', u_e_rasgo:'As a trait: three or more pilots, mostly generative AI: {s}.',
+ u_d:'In-house AI in production (ML, vision, optimisation or integrated generative AI): {s}.', u_c:'Rules or RPA in production: {s}; AI that learns in production: {l}.', u_b:'Third-party AI included: {s}; in-house build in production (ML, generative AI or agents): {l}.', u_a:'—',
  si:'yes', no:'no', sd:'no answer', gp_0:'none', gp_1:'one', gp_n:'more than one', gp_sd:'one or none (not detailed)',
  mods_tit:'Modifiers (96 §2.3)', mod_activo:'Active', mod_por:'Why', mod_efecto:'Effect on the journey',
  m_MP1:'Q07 = {v}', m_MP2:'Q08 = {v} ("Not known" counts as yes)', m_MP3:'Q09 = {v}', m_MP4:'Q05 = {v}', m_MP5:'Q10 = {v}',
@@ -407,16 +407,17 @@ function clasificar(){
   const nF = [ml,gen,ag].filter(Boolean).length;
   const pilotos = ['3-5','mas5'].includes(v('Q02')), mayoriaGen = v('Q03')==='mayoria', genProdMax1 = !gen || gv!==true;
   /* condición completa de cada arquetipo (para elegir el principal) y la que lo define (para los rasgos) */
-  const cond = { 'PP-F': nF>=2, 'PP-E': pilotos && mayoriaGen && genProdMax1, 'PP-D': ml, 'PP-C': rpa && !aprende, 'PP-B': terc && !aprende, 'PP-A': true };
-  const define = { 'PP-F': nF>=2, 'PP-E': pilotos && mayoriaGen, 'PP-D': ml, 'PP-C': rpa, 'PP-B': terc, 'PP-A': false };
+  const fF = ag || (ml && gen), propia = ml || gen;
+  const cond = { 'PP-F': fF, 'PP-E': pilotos && mayoriaGen && genProdMax1, 'PP-D': propia, 'PP-C': rpa && !aprende, 'PP-B': terc && !aprende, 'PP-A': true };
+  const define = { 'PP-F': fF, 'PP-E': pilotos && mayoriaGen, 'PP-D': propia, 'PP-C': rpa, 'PP-B': terc, 'PP-A': false };
   const orden = R.asignacion.slice().sort((a,b)=>a.orden-b.orden).map(x=>x.arquetipo);
   let principal = null; const rasgos = [];
   if(hayQ01){ for(const a of orden){ if(!principal){ if(cond[a]) principal = a; } else if(define[a]) rasgos.push(a); } }
   const sn = b => t(b?'si':'no'), resp = q => v(q)==null ? t('sd') : respTexto(q, v(q));
   const usa = {
-    'PP-F': t('u_f',{n:nF, ml:sn(ml), gen:sn(gen), ag:sn(ag)}),
+    'PP-F': t('u_f',{ag:sn(ag), mg:sn(ml && gen)}),
     'PP-E': t('u_e',{p:resp('Q02'), g:resp('Q03'), gp: !gen ? t('gp_0') : gv===true ? t('gp_n') : gv===false ? t('gp_1') : t('gp_sd')}) + (define['PP-E']!==cond['PP-E'] ? ' '+t('u_e_rasgo',{s:sn(define['PP-E'])}) : ''),
-    'PP-D': t('u_d',{s:sn(ml)}), 'PP-C': t('u_c',{s:sn(rpa), l:sn(aprende)}), 'PP-B': t('u_b',{s:sn(terc), l:sn(aprende)}), 'PP-A': t('u_a') };
+    'PP-D': t('u_d',{s:sn(propia)}), 'PP-C': t('u_c',{s:sn(rpa), l:sn(aprende)}), 'PP-B': t('u_b',{s:sn(terc), l:sn(aprende)}), 'PP-A': t('u_a') };
   const traza = orden.map(a => ({arquetipo:a, cumple:cond[a], define:define[a], usa:usa[a], res: !hayQ01 ? '' : a===principal ? 'principal' : rasgos.includes(a) ? 'rasgo' : (principal && cond[a] && a!=='PP-A') ? 'despues' : a==='PP-A' ? (principal==='PP-A'?'principal':'no') : 'no'}));
   const mods = [];
   const Q = x => v(x), si = x => Q(x)==='si', mv = {MP1:si('Q07'), MP2:['si','nsnc'].includes(Q('Q08')), MP3:si('Q09'), MP4:['parcial','formal'].includes(Q('Q05')), MP5:Q('Q10')==='no'};
