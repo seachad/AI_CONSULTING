@@ -921,7 +921,7 @@ $titulosReferencias = ObtenerTitulosReferencias $lang
     if (-not $SinPdf -and -not $esIndice) {
       New-Item -ItemType Directory -Force (Split-Path $pdfOut) | Out-Null
       $perfil = Join-Path ([IO.Path]::GetTempPath()) "seveng-pdf-$PID"
-      $uri = ([Uri]$(if ($IsWindows) { $htmlOut } else { $htmlOut -replace '\\', '/' })).AbsoluteUri  # en Linux, rutas con /
+      $uri = $(if ($IsWindows) { ([Uri]$htmlOut).AbsoluteUri } else { ([Uri]::new(($htmlOut -replace '\\', '/'), [UriKind]::Absolute)).AbsoluteUri })  # en Linux, rutas con / y URI absoluta
       $argumentos = @('--headless=new', '--disable-gpu', '--no-first-run', '--no-pdf-header-footer',
                       '--virtual-time-budget=20000', "--user-data-dir=`"$perfil`"", "--print-to-pdf=`"$pdfOut`"", $uri)
       $sinVentana = if ($IsWindows) { @{ WindowStyle = 'Hidden' } } else { @{} }  # -WindowStyle solo existe en Windows

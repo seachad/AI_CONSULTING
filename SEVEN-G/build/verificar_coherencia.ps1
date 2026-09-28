@@ -58,6 +58,11 @@
     24. Exención de responsabilidad y rigor de las fuentes (D113, D114): todo aviso legal publicado incluye la exención por los efectos de la
         aplicación; 93 §11 lleva la exención completa; ninguna referencia del registro queda por corregir y ningún documento se apoya en
         fuentes secundarias.
+    25. Vigilancia mensual de fuentes (D117, D118): la lista solo cita referencias del registro y toda fuente en borrador está vigilada.
+    26. Puntos de partida y tres lentes (D119, D120): el documento 96 (ES/EN) tiene 6 arquetipos, 5 modificadores, 12 preguntas y
+        22 hitos con prioridad válida por arquetipo; las preguntas del 11 que acreditan cada hito existen; 11 §7.6 y 12 §3.7 tienen
+        HT0–HT5 e IM1–IM4; los códigos nuevos están en el glosario y en codigos.js; T23 está al día con sus fuentes; la entrada y
+        la portada enlazan T23 y la vista «Tres lentes» de T15. La prueba de humo (7) comprueba T23 (PP-F) y la vista de lentes.
 #>
 param([switch]$SinNavegador)
 $ErrorActionPreference = 'Stop'
@@ -352,7 +357,7 @@ try {
   }
 
   Write-Host '3. Aviso legal en herramientas y paneles'
-  $conAviso = @('index.html', 'en\index.html', 'SEVEN-G\herramientas\T01_registro_iniciativas\registro.html', 'SEVEN-G\herramientas\T14_indice_transformacion\indice.html', 'SEVEN-G\herramientas\T11_calculadora_valor\calculadora.html', 'SEVEN-G\herramientas\T15_diagnostico_madurez\madurez.html','SEVEN-G\herramientas\T17_panel_consejo\index.html', 'SEVEN-G\herramientas\comunidad\index.html') +
+  $conAviso = @('index.html', 'en\index.html', 'SEVEN-G\herramientas\T01_registro_iniciativas\registro.html', 'SEVEN-G\herramientas\T14_indice_transformacion\indice.html', 'SEVEN-G\herramientas\T11_calculadora_valor\calculadora.html', 'SEVEN-G\herramientas\T15_diagnostico_madurez\madurez.html', 'SEVEN-G\herramientas\T23_recorrido_implantacion\recorrido.html','SEVEN-G\herramientas\T17_panel_consejo\index.html', 'SEVEN-G\herramientas\comunidad\index.html') +
     @(Get-ChildItem (Join-Path $repo 'SEVEN-G\herramientas\T17_panel_consejo\ejemplo\salida') -Filter *.html | ForEach-Object { [IO.Path]::GetRelativePath($repo, $_.FullName) })
   $sin = $conAviso | Where-Object { -not (Select-String -Path (Join-Path $repo $_) -Pattern 'Aviso legal|Legal notice' -Quiet) }
   foreach ($x in $sin) { Mal "sin aviso legal: $x" }
@@ -520,6 +525,11 @@ try {
       @{ f = (Join-Path $t15 'madurez.html'); antes = "location.hash='#/perfil_csf'"; debe = @('#perfil-resumen[data-marco="csf"][data-con-brecha]', '#tabla-perfil tr[data-sub="ID.RA-01"]', '#tabla-perfil tr[data-sub="GV.OC-04"] select[data-pprop]'); que = 'diagnóstico T15, vista «Perfil CSF» (D115)' },
       # D120: vista «Tres lentes» con el ejemplo EM-2026-06: huella HT4 desde el registro de demostración, D6 por debajo del mínimo (alerta alta) y alcance con una iniciativa IM3
       @{ f = (Join-Path $t15 'madurez.html'); antes = "location.hash='#/lentes'"; debe = @('#lentes[data-huella="HT4"][data-fuente^="t01"]', '#tabla-minimos tr[data-dim="D6"][data-cumple="0"]', '#lentes-alertas [data-alerta="adopcion_por_delante"][data-gravedad="alta"][data-dim="D6"]', '.im-barra[data-im="IM3"][data-n="1"]', '#tabla-uso tr[data-ini="IA-2025-002"][data-im="IM3"]'); que = 'diagnóstico T15, vista «Tres lentes» (D120)' },
+      # D119: recorrido de implantación (T23) con la compañía de ejemplo: arquetipo PP-F con sus rasgos y modificadores, 12 preguntas, 22 hitos y HI-09 en prioridad 1
+      @{ f = (Join-Path $repo 'SEVEN-G\herramientas\T23_recorrido_implantacion\recorrido.html'); debe = @('#arquetipo[data-arquetipo="PP-F"][data-rasgos="PP-E,PP-D,PP-B"][data-modificadores="MP2,MP3,MP4"]', '#principal tr[data-pregunta="Q12"]', '#t01-local[data-registro]', "#sitio-nav $ctl", '#principal a.cod-enlace[title]', '#btn-datos[data-estado="demo"]'); que = 'recorrido T23 (ejemplo PP-F)'
+         eval = "(function(){var r=window.T23.resultado();return {arquetipo:r.arquetipo,preguntas:document.querySelectorAll('#principal tr[data-pregunta]').length,hitos:r.hitos,p09:r.prioridades['HI-09']}})()"
+         comprobar = { param($r) if ($r.arquetipo -ne 'PP-F' -or $r.preguntas -ne 12 -or $r.hitos -ne 22 -or $r.p09 -ne '1') { return "T23: $($r | ConvertTo-Json -Compress)" }; return $null } }
+      @{ f = (Join-Path $repo 'SEVEN-G\herramientas\T23_recorrido_implantacion\recorrido.html'); antes = "location.hash='#/recorrido'"; debe = @('tr[data-hito="HI-09"][data-prioridad="1"]', 'tr[data-hito="HI-08"][data-prioridad="C"]', 'section[data-etapa="E5"]'); que = 'recorrido T23, vista Recorrido' }
       # D100: la tarjeta de madurez (bloque «madurez» del panel, escrito por T15 en el registro) se dibuja con sus siete dimensiones
       @{ f = (Get-ChildItem $salidaEj -Filter 't01_Dashboard_Casos_Uso_IA_v*.html' | Select-Object -First 1).FullName; debe = @('#indice tbody tr', '#kpis [data-kpi]', '#embudo .fun2-mid', '#embudo .fun-card.gan', '#embudo .fun-card li .pq', '#fbar #fopen, #filters .fgroup', '#transv table tbody tr', '#madurez table tbody tr', '#madurez-lentes table tbody tr[data-huella="HT4"]', "#barra .toolbar $ctl", 'main a.cod-enlace[title]'); que = 'panel completo' }
       # comunidad (D80): la página se dibuja aunque no haya intermediario configurado ni red (el texto lo pone el JavaScript)
@@ -727,7 +737,7 @@ try {
     foreach ($req in 'data-enlazar-codigos', 'ir-codigo-citados', 'data-sin-medicion', 'enlazar: enlazar', 'MutationObserver', 'a.cod-enlace') { if (-not $tCod.Contains($req)) { Mal "codigos.js [$lang]: falta «$req» (pwsh -File SEVEN-G/build/codigos.ps1)"; $malCit++ } }
   }
   # herramientas: su contenido (plantilla y HTML generado) se enlaza
-  foreach ($h in (Get-ChildItem (Join-Path $repo 'SEVEN-G\herramientas') -Recurse -File -Filter *.plantilla.html) + @((Join-Path $t01 'registro.html'), (Join-Path $t11 'calculadora.html'), (Join-Path $t14 'indice.html'), (Join-Path $t15 'madurez.html') | ForEach-Object { Get-Item $_ })) {
+  foreach ($h in (Get-ChildItem (Join-Path $repo 'SEVEN-G\herramientas') -Recurse -File -Filter *.plantilla.html) + @((Join-Path $t01 'registro.html'), (Join-Path $t11 'calculadora.html'), (Join-Path $t14 'indice.html'), (Join-Path $t15 'madurez.html'), (Join-Path $repo 'SEVEN-G\herramientas\T23_recorrido_implantacion\recorrido.html') | ForEach-Object { Get-Item $_ })) {
     if (-not [IO.File]::ReadAllText($h.FullName).Contains('data-enlazar-codigos')) { Mal "herramienta sin enlace de códigos en su contenido (data-enlazar-codigos): $($h.Name)"; $malCit++ }
   }
   # motor de T17: los tres generadores admiten navegacion.codigos y cargan el índice sin medición
@@ -861,7 +871,8 @@ try {
     if ($mj.Contains('</script')) { Mal 'datos_locales.js: contiene «</script», que rompería el HTML en el que se incrusta'; $malDat++ }
   }
   foreach ($h in @(@{ dir = 'T01_registro_iniciativas'; pl = '_fuentes\registro.plantilla.html'; html = 'registro.html'; f = 'T01_registro.json' }, @{ dir = 'T11_calculadora_valor'; pl = '_fuentes\calculadora.plantilla.html'; html = 'calculadora.html'; f = 'T11_calculadora.json' },
-                    @{ dir = 'T14_indice_transformacion'; pl = '_fuentes\indice.plantilla.html'; html = 'indice.html'; f = 'T14_indice.json' }, @{ dir = 'T15_diagnostico_madurez'; pl = '_fuentes\madurez.plantilla.html'; html = 'madurez.html'; f = 'T15_madurez.json' })) {
+                    @{ dir = 'T14_indice_transformacion'; pl = '_fuentes\indice.plantilla.html'; html = 'indice.html'; f = 'T14_indice.json' }, @{ dir = 'T15_diagnostico_madurez'; pl = '_fuentes\madurez.plantilla.html'; html = 'madurez.html'; f = 'T15_madurez.json' },
+                    @{ dir = 'T23_recorrido_implantacion'; pl = '_fuentes\recorrido.plantilla.html'; html = 'recorrido.html'; f = 'T23_recorrido.json' })) {
     $pl = [IO.File]::ReadAllText((Join-Path $repo "SEVEN-G\herramientas\$($h.dir)\$($h.pl)"))
     if (-not $pl.Contains('<script>__DATOS_LOCALES__</script>')) { Mal "$($h.dir): la plantilla no incrusta el módulo (marca __DATOS_LOCALES__)"; $malDat++ }
     if (-not $pl.Contains('SevengDatos.iniciar({') -or -not $pl.Contains("ficheroServidor:'../datos/$($h.f)'")) { Mal "$($h.dir): la plantilla no inicia el módulo con ../datos/$($h.f)"; $malDat++ }
@@ -1133,7 +1144,7 @@ try {
       elseif ($lin -match '^> \*\*Legal notice and disclaimer') { $nAv++; if (-not $lin.Contains($claveEn)) { Mal "$($md.Name): the legal notice lacks the disclaimer for the effects of application (D113)"; $malEx++ } }
     }
   }
-  $fuentesAviso = @('index.html', 'SEVEN-G\build\entrada\es\index.html', 'SEVEN-G\build\build.ps1', 'SEVEN-G\herramientas\T01_registro_iniciativas\_fuentes\registro.plantilla.html', 'SEVEN-G\herramientas\T11_calculadora_valor\_fuentes\calculadora.plantilla.html', 'SEVEN-G\herramientas\T14_indice_transformacion\_fuentes\indice.plantilla.html', 'SEVEN-G\herramientas\T15_diagnostico_madurez\_fuentes\madurez.plantilla.html', 'SEVEN-G\herramientas\T17_panel_consejo\index.html', 'SEVEN-G\herramientas\T17_panel_consejo\publicacion_panel.py', 'SEVEN-G\herramientas\T17_panel_consejo\t01_a_panel.js', 'SEVEN-G\herramientas\comunidad\index.html', 'LICENCIA_CONTENIDOS.md')
+  $fuentesAviso = @('index.html', 'SEVEN-G\build\entrada\es\index.html', 'SEVEN-G\build\build.ps1', 'SEVEN-G\herramientas\T01_registro_iniciativas\_fuentes\registro.plantilla.html', 'SEVEN-G\herramientas\T11_calculadora_valor\_fuentes\calculadora.plantilla.html', 'SEVEN-G\herramientas\T14_indice_transformacion\_fuentes\indice.plantilla.html', 'SEVEN-G\herramientas\T15_diagnostico_madurez\_fuentes\madurez.plantilla.html', 'SEVEN-G\herramientas\T23_recorrido_implantacion\_fuentes\recorrido.plantilla.html', 'SEVEN-G\herramientas\T17_panel_consejo\index.html', 'SEVEN-G\herramientas\T17_panel_consejo\publicacion_panel.py', 'SEVEN-G\herramientas\T17_panel_consejo\t01_a_panel.js', 'SEVEN-G\herramientas\comunidad\index.html', 'LICENCIA_CONTENIDOS.md')
   foreach ($fa in $fuentesAviso) { if (-not ([IO.File]::ReadAllText((Join-Path $repo $fa))).Contains($claveEs)) { Mal "${fa}: el aviso no incluye la exención por los efectos de la aplicación (D113)"; $malEx++ } }
   foreach ($fa in 'en\index.html', 'SEVEN-G\build\entrada\en\index.html', 'SEVEN-G\build\build.ps1') { if (-not ([IO.File]::ReadAllText((Join-Path $repo $fa))).Contains($claveEn)) { Mal "${fa}: the notice lacks the disclaimer for the effects of application (D113)"; $malEx++ } }
   foreach ($par in @(@('es', 'Exención completa de responsabilidad'), @('en', 'Full disclaimer of liability'))) {
@@ -1164,7 +1175,69 @@ try {
     }
     foreach ($r in $regs | Where-Object { $_.situacion -and $_.situacion -ne 'final' }) { if (@($vig.prioritarias | ForEach-Object id) -notcontains $r.id) { Mal "referencia $($r.id) en $($r.situacion) y fuera de la vigilancia mensual (D117)"; $malVig++ } }
   }
-  if (-not $malVig) { Ok "vigilancia mensual: $(@($vig.prioritarias).Count) fuentes prioritarias, todas en el registro; toda fuente en borrador está vigilada" }}
+  if (-not $malVig) { Ok "vigilancia mensual: $(@($vig.prioritarias).Count) fuentes prioritarias, todas en el registro; toda fuente en borrador está vigilada" }  # ---- 26. puntos de partida, recorrido de implantación y madurez en tres lentes (D119, D120): el documento 96 tiene en ES y EN
+  # sus tablas completas (6 arquetipos, 5 modificadores, 12 preguntas, 22 hitos con prioridad válida por arquetipo); toda pregunta del
+  # documento 11 que acredita un hito existe; 11 §7.6 y 12 §3.7 tienen sus escalas; los códigos nuevos están en el glosario y en el
+  # índice de códigos; la herramienta T23 está generada desde el documento; la entrada y la portada enlazan T23 y la vista de tres lentes
+  Write-Host '26. Puntos de partida, recorrido de implantación y tres lentes'
+  $mal26 = 0
+  $filasDe = {
+    param([string]$texto, [string]$seccion)
+    $ini = [regex]::Match($texto, "(?m)^#{2,4} $([regex]::Escape($seccion))\b")
+    if (-not $ini.Success) { return @() }
+    $resto = $texto.Substring($ini.Index + $ini.Length)
+    $fin = [regex]::Match($resto, '(?m)^#{2,3} ')
+    if ($fin.Success) { $resto = $resto.Substring(0, $fin.Index) }
+    @($resto -split "`r?`n" | Where-Object { $_ -match '^\| \*\*[A-Z]' })
+  }
+  $preg11 = @{}
+  foreach ($l in (Get-Content (Join-Path $repo 'SEVEN-G\mds\es\11_SEVEN-G_Modelo_de_madurez.md') -Encoding utf8)) { if ($l -match '^\| (D\d\.\d{2}) \|') { $preg11[$Matches[1]] = $true } }
+  foreach ($lang in 'es', 'en') {
+    $f96 = Join-Path $repo "SEVEN-G\mds\$lang\96_SEVEN-G_Puntos_de_partida_y_recorrido_de_implantacion.md"
+    if (-not (Test-Path $f96)) { Mal "falta el documento 96 ($lang) (D119)"; $mal26++; continue }
+    $t96 = [IO.File]::ReadAllText($f96)
+    $esperado = @(@('2.1', '^\| \*\*PP-[A-F]\*\*', 6), @('2.3', '^\| \*\*MP[1-5]\*\*', 5), @('2.4', '^\| \*\*Q(0[1-9]|1[0-2])\*\*', 12), @('4.1', '^\| \*\*HI-(0[1-9]|1\d|2[0-2])\*\*', 22), @('4.2', '^\| \*\*HI-(0[1-9]|1\d|2[0-2])\*\*', 22))
+    foreach ($e in $esperado) {
+      $filas = & $filasDe $t96 $e[0]
+      $n = @($filas | Where-Object { $_ -match $e[1] }).Count
+      if ($n -ne $e[2]) { Mal "documento 96 ($lang) §$($e[0]): $n filas, se esperan $($e[2]) (D119)"; $mal26++ }
+      if ($e[0] -eq '4.2') {
+        foreach ($f in $filas) {
+          $c = @($f.Trim('|').Split('|') | ForEach-Object { $_.Trim() })
+          if ($c.Count -ne 7 -or @($c[1..6] | Where-Object { $_ -notin '1', '2', '3', 'C', 'D', '·' }).Count) { Mal "documento 96 ($lang) §4.2: prioridad no válida en «$($c[0])» (1, 2, 3, C, D o ·)"; $mal26++ }
+        }
+      }
+      if ($e[0] -eq '4.1') {
+        foreach ($f in $filas) {
+          foreach ($q in [regex]::Matches($f, '\bD\d\.\d{2}\b')) { if (-not $preg11.ContainsKey($q.Value)) { Mal "documento 96 ($lang): el hito cita la pregunta $($q.Value), que no existe en el documento 11"; $mal26++ } }
+        }
+      }
+    }
+    $f11 = [IO.File]::ReadAllText((Join-Path $repo "SEVEN-G\mds\$lang\11_SEVEN-G_Modelo_de_madurez.md"))
+    if (@(& $filasDe $f11 '7.6' | Where-Object { $_ -match '^\| \*\*HT[0-5]\*\*' }).Count -lt 6) { Mal "documento 11 ($lang) §7.6: faltan los niveles HT0–HT5 de la huella tecnológica (D120)"; $mal26++ }
+    $f12 = [IO.File]::ReadAllText((Join-Path $repo "SEVEN-G\mds\$lang\12_SEVEN-G_Indice_de_transformacion.md"))
+    if (@(& $filasDe $f12 '3.7' | Where-Object { $_ -match '^\| \*\*IM[1-4]\*\*' }).Count -ne 4) { Mal "documento 12 ($lang) §3.7: faltan los niveles IM1–IM4 del alcance del impacto (D120)"; $mal26++ }
+    $g02 = [IO.File]::ReadAllText((Join-Path $repo "SEVEN-G\mds\$lang\02_SEVEN-G_Glosario_y_convenciones.md"))
+    foreach ($cod in '**PP-A–PP-F**', '**MP1–MP5**', '**HI-01–HI-22**', '**HT0–HT5**', '**IM1–IM4**') { if (-not $g02.Contains("| $cod |")) { Mal "glosario 02 ($lang): falta el código $cod en §6.1 (D119, D120)"; $mal26++ } }
+    $cjs = Join-Path $repo "SEVEN-G\html\$lang\codigos.js"
+    if (Test-Path $cjs) { $tjs = [IO.File]::ReadAllText($cjs); foreach ($cod in 'PP-D', 'MP2', 'HI-09', 'HT4', 'IM3') { if (-not $tjs.Contains("""$cod""")) { Mal "codigos.js ($lang): no reconoce $cod; regenerar con build.ps1"; $mal26++ } } }
+  }
+  # herramienta T23 generada desde el documento 96
+  $t23 = Join-Path $repo 'SEVEN-G\herramientas\T23_recorrido_implantacion'
+  foreach ($fx in 'recorrido.html', 'recorrido.json', 'build_recorrido.ps1', 'README.md', 'README_en.md', '_fuentes\recorrido.plantilla.html') { if (-not (Test-Path (Join-Path $t23 $fx))) { Mal "T23: falta $fx (D119)"; $mal26++ } }
+  if (Test-Path (Join-Path $t23 'build_recorrido.ps1')) {
+    $sal23 = Join-Path $tmp 't23.html'
+    & pwsh -NoProfile -File (Join-Path $t23 'build_recorrido.ps1') -Salida $sal23 *> $null
+    if ($LASTEXITCODE -or -not (Test-Path $sal23)) { Mal 'T23: build_recorrido.ps1 ha fallado (¿recorrido.json desalineado con el documento 96?)'; $mal26++ }
+    elseif ([IO.File]::ReadAllText($sal23) -ne [IO.File]::ReadAllText((Join-Path $t23 'recorrido.html'))) { Mal 'T23: recorrido.html no está al día con sus fuentes: ejecutar build_recorrido.ps1'; $mal26++ }
+  }
+  # la entrada ligera y la portada llevan a T23 y a la vista de tres lentes
+  foreach ($p in 'index.html', 'en\index.html', 'SEVEN-G\build\entrada\es\index.html', 'SEVEN-G\build\entrada\en\index.html') {
+    $h = [IO.File]::ReadAllText((Join-Path $repo $p))
+    if ($h -notmatch 'T23_recorrido_implantacion/recorrido\.html' -or $h -notmatch 'T15_diagnostico_madurez/madurez\.html#/lentes') { Mal "$p no enlaza el recorrido de implantación (T23) y la vista de tres lentes de T15 (D119, D120)"; $mal26++ }
+  }
+  if (-not $mal26) { Ok 'documento 96 completo en ES y EN (6 arquetipos, 5 modificadores, 12 preguntas, 22 hitos con prioridad), 11 §7.6 y 12 §3.7, códigos en el glosario y en el índice, T23 al día y enlazada desde la entrada y la portada' }
+}
 finally { Remove-Item $tmp -Recurse -Force -Confirm:$false -ErrorAction SilentlyContinue }
 
 Write-Host ''

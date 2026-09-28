@@ -66,7 +66,7 @@ foreach ($lang in $Idiomas) {
   New-Item -ItemType Directory -Force $pdfDir | Out-Null
   $pdfOut = Join-Path $pdfDir 'SEVEN-G_Curso_completo.pdf'
   $perfil = Join-Path ([IO.Path]::GetTempPath()) "seveng-curso-pdf-$PID"
-  $uri = ([Uri]$(if ($IsWindows) { $tmpHtml } else { $tmpHtml -replace '\\', '/' })).AbsoluteUri  # en Linux, rutas con /
+  $uri = $(if ($IsWindows) { ([Uri]$tmpHtml).AbsoluteUri } else { ([Uri]::new(($tmpHtml -replace '\\', '/'), [UriKind]::Absolute)).AbsoluteUri })  # en Linux, rutas con / y URI absoluta
   $argumentos = @('--headless=new', '--disable-gpu', '--no-first-run', '--no-pdf-header-footer',
                   '--virtual-time-budget=20000', "--user-data-dir=`"$perfil`"", "--print-to-pdf=`"$pdfOut`"", $uri)
   $sinVentana = if ($IsWindows) { @{ WindowStyle = 'Hidden' } } else { @{} }  # -WindowStyle solo existe en Windows
