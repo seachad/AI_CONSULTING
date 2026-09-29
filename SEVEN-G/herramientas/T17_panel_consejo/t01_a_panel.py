@@ -776,6 +776,9 @@ def generar_desde_t01(t01, salida, sigla=None, organizacion=None, prefijo="t01_"
     if p:
         # códigos citados (D99): la misma ruta al índice del sitio que el panel (navegacion.codigos); sin ella, el registro no cambia
         p["codigos"] = (data["meta"].get("navegacion") or {}).get("codigos") or None
+        # navegación del sitio (D141): los mismos enlaces de vuelta y el mismo tema que el panel (navegacion.sitio y tema_sitio); sin ellas, nada cambia
+        p["sitio"] = (data["meta"].get("navegacion") or {}).get("sitio") or None
+        p["tema_sitio"] = (data["meta"].get("navegacion") or {}).get("tema_sitio") or None
         aviso = PUB.AVISO_LEGAL if ficticio else PUB.AVISO_LEGAL_DATOS_PROPIOS
         pie = (f"Registro de recomendaciones generado desde el registro de iniciativas T01 de SEVEN-G · {p['grupo']}"
                + (" y sus personas son ficticios" if ficticio else "") + f' · <a href="{os.path.basename(completo)}">ver el panel de IA del Consejo</a>'

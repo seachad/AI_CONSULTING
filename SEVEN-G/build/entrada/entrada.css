@@ -43,6 +43,10 @@ img { max-width: 100%; height: auto; display: block; }
 .idioma { display: flex; border: 1px solid var(--regla); font: 700 13px/1 var(--sans); }
 .idioma a, .idioma span { padding: 6px 9px; text-decoration: none; color: var(--tinta-2); }
 .idioma .activo { background: var(--negro); color: var(--papel); }
+/* selector de tema, el mismo del resto del sitio (clave seveng-tema) */
+.tema select { font: 600 13px/1 var(--sans); color: var(--tinta-2); background: var(--papel); border: 1px solid var(--regla); padding: 5px 6px; border-radius: 0; }
+.tema select:hover, .tema select:focus-visible { border-color: var(--claret); color: var(--claret); }
+.oculto { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
 
 /* Ilustraciones de plano: el blanco se funde con el papel */
 .plano { mix-blend-mode: multiply; }
@@ -184,7 +188,9 @@ footer p { margin: 8px 0; max-width: 900px; }
 @media (max-width: 760px) {
   body { font-size: 17px; }
   .barra nav { display: none; }
-  .barra .idioma { margin-left: auto; }
+  .barra .envoltura { gap: 10px 8px; }
+  .barra .tema { margin-left: auto; }
+  .barra .tema select { max-width: 104px; padding: 5px 3px; }
   .barra .ir-codigo { order: 3; flex: 1 1 100%; }
   .heroe { padding-top: 24px; }
   .heroe img { max-width: 78%; margin: 6px auto 0; }

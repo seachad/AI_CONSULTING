@@ -1,13 +1,21 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="es" data-theme="salmon">
 <head>
 <meta charset="utf-8">
+<script>try { var t = localStorage.getItem('seveng-tema'); if (t) document.documentElement.setAttribute('data-theme', t); } catch (e) {}</script>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Galería de ejemplos por sector · SEVEN-G</title>
 <meta name="description" content="Registros de iniciativas y paneles del consejo de ejemplo por sector (datos ficticios) y hacia dónde se mueven los casos de uso de IA en cada sector, con fuentes verificadas.">
 <!-- Generado por T17_panel_consejo/galeria.py desde galeria/_fuentes (plantilla y textos de mercado). No editar a mano. -->
 <style>
   :root { --fondo: #fbe2cd; --tinta: #2f2b28; --acento: #990f3d; --linea: rgba(47, 43, 40, .22); --suave: rgba(255, 255, 255, .45); }
+  /* tema del sitio (seveng-tema): salmón, salmón claro o noche */
+  :root[data-theme="claro"] { --fondo: #fff1e5; --suave: rgba(255, 255, 255, .6); }
+  :root[data-theme="noche"] { --fondo: #262a33; --tinta: #f2e6dc; --acento: #ff7a9e; --linea: rgba(242, 230, 220, .22); --suave: rgba(255, 255, 255, .06); color-scheme: dark;
+    /* colores del «Buscador de documentos» (codigos.js) en noche */
+    --papel: #262a33; --papel-2: #30353f; --tinta-2: #cdbfb3; --regla: #4c525d; --regla-2: #393e48; --claret: #ff7a9e; --oxford: #6ea8ee; --negro: #fff1e5; }
+  .tema select { font: inherit; font-size: 13px; color: var(--tinta); background: var(--suave); border: 1px solid var(--linea); border-radius: 6px; padding: 3px 6px; }
+  .oculto { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
   * { box-sizing: border-box; }
   html { background: var(--fondo); }
   body { margin: 0; background: var(--fondo); color: var(--tinta); font-family: -apple-system, "Segoe UI", system-ui, Roboto, "Helvetica Neue", Arial, sans-serif;
@@ -60,6 +68,13 @@
   <header>
     <div class="marca"><a id="lnk-portada" href="../../../../index.html">⌂ Portada</a> · <a id="lnk-cabecera" href="../../../html/es/entrada/index.html">SEVEN-G</a> · Herramientas · T17 · Galería</div>
     <span class="ir-codigo" data-ir-codigo></span>
+    <label class="tema"><span class="oculto" id="tema-rot">Tema</span>
+      <select id="tema" aria-labelledby="tema-rot" title="Tema de todo el sitio">
+        <option value="salmon">Salmón</option>
+        <option value="claro">Salmón claro</option>
+        <option value="noche">Noche</option>
+      </select>
+    </label>
     <div class="idioma" role="group" aria-label="Idioma / Language">
       <button type="button" id="btn-es" aria-pressed="true" onclick="idioma('es')">ES</button>
       <button type="button" id="btn-en" aria-pressed="false" onclick="idioma('en')">EN</button>
@@ -130,6 +145,10 @@
     var ca = document.getElementById('lnk-cabecera'), po = document.getElementById('lnk-portada');   // D137: vuelta a la cabecera de SEVEN-G y a la portada, en el idioma activo
     if (ca) { ca.href = '../../../html/' + l + '/entrada/index.html'; ca.title = es ? 'Cabecera de SEVEN-G: qué es y para qué sirve' : 'SEVEN-G home: what it is and what it is for'; }
     if (po) { po.href = es ? '../../../../index.html' : '../../../../en/index.html'; po.textContent = es ? '⌂ Portada' : '⌂ Home'; po.title = es ? 'Portada de AI Consulting: todas las metodologías' : 'AI Consulting home page: all methodologies'; }
+    var ts = document.getElementById('tema');   // selector de tema en el idioma activo
+    if (ts) { var tx = es ? ['Salmón', 'Salmón claro', 'Noche'] : ['Salmon', 'Light salmon', 'Night'];
+      for (var i = 0; i < 3; i++) ts.options[i].textContent = tx[i];
+      document.getElementById('tema-rot').textContent = es ? 'Tema' : 'Theme'; ts.title = es ? 'Tema de todo el sitio' : 'Theme for the whole site'; }
     cargaCodigos(l);
   }
   // «Buscador de documentos» y códigos citados (D99): índice del sitio en el idioma activo
@@ -138,6 +157,15 @@
     var previo = document.getElementById('ir-codigo-js'); if (previo) previo.parentNode.removeChild(previo);
     var sc = document.createElement('script'); sc.id = 'ir-codigo-js'; sc.src = '../../../html/' + l + '/codigos.js'; document.head.appendChild(sc);
   }
+  // tema: el mismo de todo el sitio (clave seveng-tema); cambiarlo aquí lo cambia en todas las páginas
+  (function () {
+    var sel = document.getElementById('tema'); if (!sel) return;
+    sel.value = document.documentElement.getAttribute('data-theme') || 'salmon';
+    sel.addEventListener('change', function () {
+      document.documentElement.setAttribute('data-theme', sel.value);
+      try { localStorage.setItem('seveng-tema', sel.value); } catch (e) {}
+    });
+  })();
   (function () {
     var guardado = null;
     // D137: «?lang=» del enlace, después el idioma del sitio («seveng-idioma») y, por último, el de esta página o el del navegador
