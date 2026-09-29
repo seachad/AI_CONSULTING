@@ -1567,6 +1567,7 @@ try {
     if ($iH -lt 0 -or $iP -lt $iH) { Mal "entrada [$lg]: falta la historia «Usando la IA en su empresa» (section#historia) antes de las tres respuestas (D137)"; $mal35++; continue }
     $sh = $te.Substring($iH, $iP - $iH)
     if (([regex]::Matches($sh, '<li>')).Count -ne 7) { Mal "entrada [$lg]: la historia debe tener siete capítulos (D137)"; $mal35++ }
+    if (([regex]::Matches($sh, '<div class="cap-ilu"><svg class="ilu"')).Count -ne 7) { Mal "entrada [$lg]: cada capítulo de la historia lleva su ilustración (div.cap-ilu con svg.ilu, D138)"; $mal35++ }
     foreach ($z in 'para-que', 'preguntas', 'embudo', 'panel', 'parar', 'mas', 'quickcheck', 'partida', 'empezar') {
       if (-not $sh.Contains("href=""#$z""")) { Mal "entrada [$lg]: la historia no enlaza la zona #$z (D137)"; $mal35++ }
       if (-not $te.Contains("id=""$z""")) { Mal "entrada [$lg]: falta la zona #$z que enlaza la historia"; $mal35++ }
