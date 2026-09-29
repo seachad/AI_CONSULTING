@@ -45,6 +45,10 @@ h1{font-size:18px;margin:0;font-weight:700;line-height:1.2;font-family:var(--hea
 .ctrls{display:flex;gap:8px;margin-top:10px}
 /* control «Ir a código» y lista de citados (codigos.js, D99) con los colores del tema del panel */
 .ir-codigo-panel{margin-top:8px}.ir-codigo-panel,.ir-codigo-lista{--papel:var(--surface);--papel-2:var(--grid);--tinta:var(--ink);--tinta-2:var(--ink2);--regla:var(--grid);--regla-2:var(--grid);--claret:var(--accent);--oxford:var(--accent);--negro:var(--ink);--sans:inherit}
+/* enlaces de vuelta al sitio (meta.navegacion.sitio, D141), en una línea que se desliza si no cabe */
+.sitio-m{display:flex;gap:6px 14px;overflow-x:auto;white-space:nowrap;margin-top:6px;font-size:12.5px;scrollbar-width:none}.sitio-m a{color:var(--ink2);text-decoration:none;border-bottom:1px solid var(--grid)}.sitio-m a:hover{color:var(--ink)}
+/* botón de tema (D87, D141): alterna claro y oscuro; con meta.navegacion.tema_sitio sigue y actualiza el tema del sitio */
+.tema-m{flex:0 0 auto;min-width:40px;min-height:40px;border:1px solid var(--grid);border-radius:10px;background:var(--surface);color:var(--ink);font-size:17px;line-height:1;cursor:pointer}
 .seg{display:inline-flex;border:1px solid var(--grid);border-radius:10px;overflow:hidden;flex:0 0 auto}
 .seg button{border:0;background:var(--surface);color:var(--ink2);padding:9px 12px;font-size:14px;min-height:40px}
 .seg button.on{background:var(--accent);color:var(--accent-ink);font-weight:600}
@@ -365,6 +369,27 @@ function freno(id){
   document.querySelectorAll("#sheetbox .row[data-id]").forEach(r=>r.onclick=()=>ficha(CASES.find(c=>c.id===r.dataset.id)));
 }
 function cerrar(){ $("sheet").classList.remove("open"); }
+// enlaces de vuelta al sitio (D141): con meta.navegacion.sitio, la cabecera lleva los mismos enlaces que el menú del panel completo (portada,
+// cabecera de SEVEN-G, biblioteca…), en el idioma del sitio (texto_en y href_en con «?lang=en» o «seveng-idioma», D137). Sin la clave, nada cambia.
+(()=>{ const nv = (DATA.meta||{}).navegacion || {}; if (!Array.isArray(nv.sitio) || !nv.sitio.length) return;
+  let l = new URLSearchParams(location.search).get("lang"); if (l !== "es" && l !== "en") { try { l = localStorage.getItem("seveng-idioma"); } catch (e) { l = null; } }
+  const en = l === "en", n = document.createElement("nav"); n.className = "sitio-m"; n.setAttribute("aria-label", en ? "Site" : "Sitio");
+  nv.sitio.forEach(x=>{ if (!x || !x.href) return; const a = document.createElement("a"), tx = (en && x.texto_en) || x.texto || x.href;
+    a.href = (en && x.href_en) || x.href; a.textContent = tx; a.title = tx; n.appendChild(a); });
+  const sub = document.querySelector("header .sub"); if (sub) sub.after(n); })();
+// tema (D87, D141): el botón de la cabecera alterna claro (papel salmón) y oscuro, y se recuerda en «dashboard-theme», la misma clave del panel
+// completo. Con meta.navegacion.tema_sitio (clave del tema general del sitio: salmon, claro o noche) sigue y actualiza ese tema. Sin elección, sigue al sistema.
+(()=>{ const clave = ((DATA.meta||{}).navegacion||{}).tema_sitio || null, r = document.documentElement, b = $("tema-m");
+  const leer = k=>{ try { return localStorage.getItem(k); } catch (e) { return null; } };
+  const de = v=> v === "dark" || v === "noche" ? "dark" : v ? "light" : null;
+  const ini = (clave && de(leer(clave))) || de(leer("dashboard-theme")); if (ini) r.setAttribute("data-theme", ini);
+  const oscuro = ()=> r.getAttribute("data-theme") ? r.getAttribute("data-theme") === "dark" : matchMedia("(prefers-color-scheme: dark)").matches;
+  const rot = ()=>{ if (!b) return; const o = oscuro(); b.textContent = o ? "☀" : "☾"; b.title = o ? "Cambiar a tema claro" : "Cambiar a tema oscuro"; b.setAttribute("aria-label", b.title); };
+  if (b) b.onclick = ()=>{ const t = oscuro() ? "light" : "dark"; r.setAttribute("data-theme", t);
+    try { const prev = leer("dashboard-theme"); localStorage.setItem("dashboard-theme", t === "dark" ? "dark" : (prev === "light" ? "light" : "salmon"));
+      if (clave){ const v = leer(clave); localStorage.setItem(clave, t === "dark" ? "noche" : (v === "claro" ? "claro" : "salmon")); } } catch (e) {}
+    rot(); };
+  rot(); })();
 // «?» de cada sección: qué muestra y por qué importa (meta.navegacion.ayuda_tarjetas, D122); se abre en la misma hoja inferior que las fichas
 if (((DATA.meta||{}).navegacion||{}).ayuda_tarjetas) vigilarAyudas(document.querySelector(".wrap"), html=>{ $("sheetbox").innerHTML = `<button class="close" onclick="cerrar()">Cerrar</button>` + html; $("sheet").classList.add("open"); });
 $("sheet").onclick = e=>{ if (e.target === $("sheet")) cerrar(); };
@@ -384,7 +409,7 @@ HTML = """<!DOCTYPE html>
 <style>__CSS__</style></head>
 <body>
 <header><div class="in"><h1>IA · Panel móvil del Consejo</h1><div class="sub">__ORG__ · __CONSEJO__ · versión __VERSION__ · datos del __FECHA__</div>
- <div class="ctrls"><div class="seg" id="lado"><button class="on" data-l="actual">Actual</button><button data-l="potencial">Potencial</button></div><select id="compara" aria-label="Comparar con una foto guardada"></select></div></div></header>
+ <div class="ctrls"><div class="seg" id="lado"><button class="on" data-l="actual">Actual</button><button data-l="potencial">Potencial</button></div><select id="compara" aria-label="Comparar con una foto guardada"></select><button type="button" class="tema-m" id="tema-m" aria-label="Cambiar el tema">☾</button></div></div></header>
 <div class="wrap">
  <div id="resumen" data-ayuda="m-resumen"></div>
  <h2 data-ayuda="m-frenos">Qué frena el escalado</h2><div class="list" id="frenos"></div>

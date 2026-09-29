@@ -211,6 +211,20 @@ function render(){ document.getElementById("tl").innerHTML = D.sesiones.map(s=>{
      <dl><dt>Destinatario</dt><dd>${esc(r.destinatario)}</dd><dt>Fecha comprometida</dt><dd>${r.fecha}</dd><dt>Evidencia presentada</dt><dd>${esc(r.evidencia)}</dd><dt>Valoración del consejo asesor</dt><dd>${esc(r.valoracion)}</dd></dl>
      ${p?`<a class="go" href="__SLUG___Panel_IA_demo.html#${p[0]}">↗ Ver en el panel: ${p[1]}</a>`:""}</article>`;}).join("")}</div></div>`; }).join(""); }
 summary(); chips(); render();
+// navegación del sitio (D141): con D.sitio, enlaces de vuelta (portada, cabecera de SEVEN-G, biblioteca…) en el idioma del sitio (D137);
+// con D.tema_sitio (clave del tema general: salmon, claro o noche), el registro lo sigue y ofrece el mismo selector. Sin esas claves, nada cambia.
+(()=>{ const t = document.querySelector(".top"); if (!t || (!Array.isArray(D.sitio) && !D.tema_sitio)) return;
+  let l = new URLSearchParams(location.search).get("lang"); if (l !== "es" && l !== "en") { try { l = localStorage.getItem("seveng-idioma"); } catch (e) { l = null; } }
+  const en = l === "en", n = document.createElement("nav"); n.className = "sitio-r"; n.setAttribute("aria-label", en ? "Site" : "Sitio");
+  (D.sitio || []).forEach(x=>{ if (!x || !x.href) return; const a = document.createElement("a"), tx = (en && x.texto_en) || x.texto || x.href;
+    a.href = (en && x.href_en) || x.href; a.textContent = tx; a.title = tx; n.appendChild(a); });
+  if (D.tema_sitio){ const r = document.documentElement, k = D.tema_sitio; let v = null; try { v = localStorage.getItem(k); } catch (e) {}
+    const ok = x=> x === "salmon" || x === "claro" || x === "noche"; r.setAttribute("data-theme", ok(v) ? v : "salmon");
+    const sel = document.createElement("select"); sel.setAttribute("aria-label", en ? "Theme" : "Tema"); sel.title = en ? "Theme for the whole site" : "Tema de todo el sitio";
+    (en ? [["salmon","Salmon"],["claro","Light salmon"],["noche","Night"]] : [["salmon","Salmón"],["claro","Salmón claro"],["noche","Noche"]]).forEach(([val, tx])=>{ const o = document.createElement("option"); o.value = val; o.textContent = tx; sel.appendChild(o); });
+    sel.value = r.getAttribute("data-theme"); sel.onchange = ()=>{ r.setAttribute("data-theme", sel.value); try { localStorage.setItem(k, sel.value); } catch (e) {} };
+    n.appendChild(sel); }
+  t.prepend(n); })();
 // códigos citados (D99): con D.codigos (ruta al índice de códigos del sitio, codigos.js), los códigos escritos en el registro pasan a ser
 // enlaces a donde se explican y la cabecera ofrece «Ir a código» y «Citados aquí». Se carga sin medición de visitas. Sin la clave, nada cambia.
 if (D.codigos){ document.body.setAttribute("data-enlazar-codigos", "");
@@ -219,6 +233,18 @@ if (D.codigos){ document.body.setAttribute("data-enlazar-codigos", "");
   const s = document.createElement("script"); s.src = en === "en" ? String(D.codigos).replace("/html/es/", "/html/en/") : D.codigos; s.defer = true; s.setAttribute("data-sin-medicion", ""); document.head.appendChild(s); }
 """
 CSS_REG_EXTRA = r"""
+/* temas del sitio (D141): con D.tema_sitio el registro sigue el tema general (salmon, claro o noche); noche es el oscuro de siempre */
+:root[data-theme="salmon"],:root[data-theme="claro"]{color-scheme:light;--bg:#f3d6c1;--panel:#fbe9dc;--panel2:#f0d2bb;--ink:#2a2421;--ink2:#54473f;--mute:#6f5d52;--line:#e3c3ac;--ring:rgba(42,36,33,.18);--link:#0f5499}
+:root[data-theme="claro"]{--bg:#fff1e5;--panel:#fff8f1;--panel2:#f2dfce;--line:#e3d3c4}
+:root[data-theme="salmon"] .pill.ok,:root[data-theme="claro"] .pill.ok{background:#d6ecdf;color:#0b5a3a;border-color:#9fcdb4}
+:root[data-theme="salmon"] .pill.ko,:root[data-theme="claro"] .pill.ko{background:#f4d3cd;color:#7d1a10;border-color:#dfa093}
+:root[data-theme="salmon"] .pill.mid,:root[data-theme="claro"] .pill.mid{background:#f7e3b8;color:#5c4300;border-color:#dcbb6e}
+:root[data-theme="salmon"] .pill.na,:root[data-theme="claro"] .pill.na{background:#eadbd0;color:#54473f;border-color:#d2bba9}
+:root[data-theme="salmon"] .chip.on,:root[data-theme="claro"] .chip.on{border-color:var(--ink)}
+/* navegación del sitio (D141): enlaces de vuelta y selector de tema */
+.sitio-r{display:flex;flex-wrap:wrap;align-items:center;gap:6px 16px;margin:0 0 12px;font-size:13px}
+.sitio-r a{color:var(--ink2);text-decoration:none;border-bottom:1px solid var(--line)}.sitio-r a:hover{color:var(--ink)}
+.sitio-r select{margin-left:auto;background:var(--panel2);color:var(--ink);border:1px solid var(--line);border-radius:8px;padding:4px 6px;font:inherit}
 .top{padding:26px 34px 10px;border-bottom:1px solid var(--line);background:var(--panel)}
 .top h1{font-size:30px;margin:0 0 4px}
 .top .lead{color:var(--ink2);max-width:110ch;margin:0 0 16px}

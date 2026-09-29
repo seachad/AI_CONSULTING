@@ -31,6 +31,13 @@
       <a href="#empezar">Empezar</a>
     </nav>
     <span class="ir-codigo" data-ir-codigo></span>
+    <label class="tema" title="Tema de todo el sitio"><span class="oculto">Tema</span>
+      <select id="tema" aria-label="Tema">
+        <option value="salmon">Salmón</option>
+        <option value="claro">Salmón claro</option>
+        <option value="noche">Noche</option>
+      </select>
+    </label>
     <div class="idioma" aria-label="Idioma"><span class="activo">ES</span><a href="../../en/entrada/index.html" title="This page in English">EN</a></div>
   </div>
 </header>
@@ -398,5 +405,16 @@
 </footer>
 
 <script src="../codigos.js" defer></script>
+<script>
+(function () {
+  var sel = document.getElementById('tema');
+  if (!sel) return;
+  sel.value = document.documentElement.getAttribute('data-theme') || 'salmon';
+  sel.addEventListener('change', function () {
+    document.documentElement.setAttribute('data-theme', sel.value);
+    try { localStorage.setItem('seveng-tema', sel.value); } catch (e) {}
+  });
+})();
+</script>
 </body>
 </html>

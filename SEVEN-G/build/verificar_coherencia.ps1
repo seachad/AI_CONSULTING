@@ -76,6 +76,9 @@
         capítulos que enlazan cada zona de la página, el diagnóstico de madurez y la galería por sector; el índice de códigos conserva el idioma al pasar a herramientas y paneles; herramientas,
         página de T17, galería, comunidad y paneles leen el idioma del sitio; cada página vuelve a la cabecera de su metodología y la
         cabecera, a la portada en el mismo idioma.
+    36. Navegación y tema en todas las páginas (D141): portada, entrada, documentos, herramientas, página de T17, galería,
+        comunidad, panel completo, panel móvil y registro de recomendaciones llevan el selector de tema, siguen el tema del sitio
+        (clave seveng-tema) y lo guardan al cambiarlo; el móvil y el registro de recomendaciones llevan los enlaces de vuelta al sitio.
 #>
 param([switch]$SinNavegador)
 $ErrorActionPreference = 'Stop'
@@ -1602,6 +1605,39 @@ try {
   $cfgP = Get-Content (Join-Path $repo 'SEVEN-G\herramientas\T17_panel_consejo\config_panel.json') -Raw -Encoding utf8 | ConvertFrom-Json
   if (-not ($cfgP.navegacion.sitio | Where-Object { $_.href -like '*/entrada/index.html' -and $_.href_en -like '*/html/en/entrada/index.html' })) { Mal 'config_panel.json: el menú del panel no vuelve a la cabecera de SEVEN-G en los dos idiomas (D137)'; $mal35++ }
   if (-not $mal35) { Ok 'la entrada (ES/EN) abre con la historia «Usando la IA en su empresa» y sus nueve capítulos enlazan cada zona, el diagnóstico de madurez y la galería por sector; el idioma se conserva al pasar a herramientas y paneles; cada página vuelve a su cabecera y la cabecera, a la portada' }
+
+  # ---- 36. navegación y tema en todas las páginas (D141)
+  Write-Host '36. Selector de tema y navegación del sitio en todas las páginas (D141)'
+  $mal36 = 0
+  # páginas estáticas: selector propio (id="tema"), lectura del tema al cargar y guardado al cambiarlo
+  $conSelector = @('index.html', 'en\index.html', 'SEVEN-G\build\plantilla.html', 'SEVEN-G\build\entrada\es\index.html', 'SEVEN-G\build\entrada\en\index.html',
+    'SEVEN-G\html\es\entrada\index.html', 'SEVEN-G\html\en\entrada\index.html',
+    'SEVEN-G\herramientas\T17_panel_consejo\index.html', 'SEVEN-G\herramientas\T17_panel_consejo\galeria\_fuentes\plantilla.html', 'SEVEN-G\herramientas\T17_panel_consejo\galeria\index.html')
+  foreach ($pg in $conSelector) {
+    $tx = [IO.File]::ReadAllText((Join-Path $repo $pg))
+    if (-not ($tx.Contains('id="tema"') -and $tx.Contains("localStorage.getItem('seveng-tema')") -and $tx.Contains("localStorage.setItem('seveng-tema'"))) { Mal "${pg}: falta el selector de tema del sitio o no sigue y guarda «seveng-tema» (D141)"; $mal36++ }
+  }
+  # herramientas y comunidad: siguen el tema del sitio (su selector lo guarda en seveng-tema)
+  foreach ($pl in 'T01_registro_iniciativas\_fuentes\registro.plantilla.html', 'T11_calculadora_valor\_fuentes\calculadora.plantilla.html', 'T14_indice_transformacion\_fuentes\indice.plantilla.html', 'T15_diagnostico_madurez\_fuentes\madurez.plantilla.html', 'T23_recorrido_implantacion\_fuentes\recorrido.plantilla.html', 'comunidad\index.html') {
+    if (-not ([IO.File]::ReadAllText((Join-Path $repo "SEVEN-G\herramientas\$pl"))).Contains('seveng-tema')) { Mal "${pl}: no sigue el tema del sitio (D141)"; $mal36++ }
+  }
+  # motor del panel: completo (theme-select), móvil (botón de tema y enlaces del sitio) y registro de recomendaciones (tema y enlaces)
+  $mB = [IO.File]::ReadAllText((Join-Path $repo 'SEVEN-G\herramientas\T17_panel_consejo\motor\build_dashboard.py'))
+  $mM = [IO.File]::ReadAllText((Join-Path $repo 'SEVEN-G\herramientas\T17_panel_consejo\motor\panel_movil.py'))
+  $mR = [IO.File]::ReadAllText((Join-Path $repo 'SEVEN-G\herramientas\T17_panel_consejo\motor\demo_lib.py'))
+  $mC = [IO.File]::ReadAllText((Join-Path $repo 'SEVEN-G\herramientas\T17_panel_consejo\t01_a_panel.py'))
+  if (-not ($mB.Contains('theme-select') -and $mB.Contains('TEMA_SITIO'))) { Mal 'motor del panel completo: falta el selector de tema o no sigue el tema del sitio (D87, D141)'; $mal36++ }
+  if (-not ($mM.Contains('id="tema-m"') -and $mM.Contains('tema_sitio') -and $mM.Contains('className = "sitio-m"'))) { Mal 'panel móvil: falta el botón de tema o los enlaces de vuelta al sitio (D141)'; $mal36++ }
+  if (-not ($mR.Contains('D.tema_sitio') -and $mR.Contains('"sitio-r"'))) { Mal 'registro de recomendaciones: falta el selector de tema o los enlaces de vuelta al sitio (D141)'; $mal36++ }
+  if (-not ($mC.Contains('p["tema_sitio"]') -and $mC.Contains('p["sitio"]'))) { Mal 't01_a_panel.py: el registro de recomendaciones no recibe la navegación del sitio (D141)'; $mal36++ }
+  # salidas generadas: el ejemplo y la galería llevan ya el botón de tema y la navegación (regenerar con t01_a_panel.py y galeria.py)
+  $salT17 = Get-ChildItem (Join-Path $repo 'SEVEN-G\herramientas\T17_panel_consejo') -Recurse -Include '*_Dashboard_Movil_IA_v8.html', '*_Registro_Recomendaciones.html' -File
+  foreach ($f in $salT17) {
+    $tx = [IO.File]::ReadAllText($f.FullName)
+    $ok = if ($f.Name -like '*Movil*') { $tx.Contains('id="tema-m"') -and $tx.Contains('sitio-m') } else { $tx.Contains('D.tema_sitio') -and $tx.Contains('"tema_sitio": "seveng-tema"') }
+    if (-not $ok) { Mal "$($f.Name): sin tema del sitio ni navegación de vuelta; regenerar (t01_a_panel.py o galeria.py) (D141)"; $mal36++ }
+  }
+  if (-not $mal36) { Ok "selector de tema y navegación del sitio en portada, entrada, documentos, herramientas, página de T17, galería, comunidad y paneles ($($salT17.Count) paneles móviles y registros de recomendaciones generados)" }
 }
 finally { Remove-Item $tmp -Recurse -Force -Confirm:$false -ErrorAction SilentlyContinue }
 
