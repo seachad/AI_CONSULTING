@@ -1,0 +1,19 @@
+{
+  "name": "seven-g-animacion-historia",
+  "version": "1.0.0",
+  "description": "Prueba local: animación con Remotion de la historia «Usando la IA en su empresa» (no se publica)",
+  "scripts": {
+    "datos": "node scripts/datos.mjs",
+    "estudio": "npm run datos && remotion studio src/index.ts",
+    "video": "npm run datos && remotion render src/index.ts Historia-es out/historia_es.mp4 && remotion render src/index.ts Historia-en out/historia_en.mp4"
+  },
+  "dependencies": {
+    "@remotion/cli": "^4.0.529",
+    "@remotion/fonts": "^4.0.529",
+    "@remotion/transitions": "^4.0.529",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "remotion": "^4.0.529"
+  },
+  "private": true
+}
