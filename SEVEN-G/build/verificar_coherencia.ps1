@@ -1240,7 +1240,7 @@ try {
     $html = [IO.File]::ReadAllText((Join-Path $repo $p))
     $sec = [regex]::Match($html, '(?s)<h2 id="colaboradores">.*?</section>').Value
     if (-not $sec) { Mal "$p`: falta la sección de colaboradores (D121)"; $malCol++; continue }
-    $nombresCol[$p] = (@([regex]::Matches($sec, '<li><b>([^<]+)</b>') | ForEach-Object { $_.Groups[1].Value.Trim() }) | Sort-Object) -join ' | '
+    $nombresCol[$p] = (@([regex]::Matches($sec, '<li[^>]*><b>(?:<a [^>]*>)?([^<]+)') | ForEach-Object { $_.Groups[1].Value.Trim() }) | Sort-Object) -join ' | '
     if (-not $nombresCol[$p]) { Mal "$p`: la sección de colaboradores no nombra a nadie (D121)"; $malCol++ }
     if ($sec -notmatch '(?i)coautoría|co-authorship') { Mal "$p`: la sección de colaboradores no aclara que no implica titularidad ni coautoría (D121, D89)"; $malCol++ }
   }
