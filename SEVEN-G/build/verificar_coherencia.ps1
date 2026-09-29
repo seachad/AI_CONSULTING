@@ -72,8 +72,8 @@
         22 hitos con prioridad válida por arquetipo; las preguntas del 11 que acreditan cada hito existen; 11 §7.6 y 12 §3.7 tienen
         HT0–HT5 e IM1–IM4; los códigos nuevos están en el glosario y en codigos.js; T23 está al día con sus fuentes; la entrada y
         la portada enlazan T23 y la vista «Tres lentes» de T15. La prueba de humo (7) comprueba T23 (PP-F) y la vista de lentes.
-    35. Historia de la entrada, idioma y cabeceras (D137): la entrada (ES/EN) abre con «Usando la IA en su empresa», siete capítulos
-        que enlazan cada zona de la página; el índice de códigos conserva el idioma al pasar a herramientas y paneles; herramientas,
+    35. Historia de la entrada, idioma y cabeceras (D137, D139): la entrada (ES/EN) abre con «Usando la IA en su empresa», nueve
+        capítulos que enlazan cada zona de la página, el diagnóstico de madurez y la galería por sector; el índice de códigos conserva el idioma al pasar a herramientas y paneles; herramientas,
         página de T17, galería, comunidad y paneles leen el idioma del sitio; cada página vuelve a la cabecera de su metodología y la
         cabecera, a la portada en el mismo idioma.
 #>
@@ -1566,7 +1566,8 @@ try {
     $iH = $te.IndexOf('<section id="historia"'); $iP = $te.IndexOf('<section id="para-que"')
     if ($iH -lt 0 -or $iP -lt $iH) { Mal "entrada [$lg]: falta la historia «Usando la IA en su empresa» (section#historia) antes de las tres respuestas (D137)"; $mal35++; continue }
     $sh = $te.Substring($iH, $iP - $iH)
-    if (([regex]::Matches($sh, '<li>')).Count -ne 7) { Mal "entrada [$lg]: la historia debe tener siete capítulos (D137)"; $mal35++ }
+    if (([regex]::Matches($sh, '<li>')).Count -ne 9) { Mal "entrada [$lg]: la historia debe tener nueve capítulos (D137, D139)"; $mal35++ }
+    foreach ($h in 'T15_diagnostico_madurez/madurez.html', 'T17_panel_consejo/galeria/index.html') { if (-not $sh.Contains($h)) { Mal "entrada [$lg]: la historia no enlaza $h (madurez y casos de uso por sector, D139)"; $mal35++ } }
     foreach ($z in 'para-que', 'preguntas', 'embudo', 'panel', 'parar', 'mas', 'quickcheck', 'partida', 'empezar') {
       if (-not $sh.Contains("href=""#$z""")) { Mal "entrada [$lg]: la historia no enlaza la zona #$z (D137)"; $mal35++ }
       if (-not $te.Contains("id=""$z""")) { Mal "entrada [$lg]: falta la zona #$z que enlaza la historia"; $mal35++ }
@@ -1600,7 +1601,7 @@ try {
   }
   $cfgP = Get-Content (Join-Path $repo 'SEVEN-G\herramientas\T17_panel_consejo\config_panel.json') -Raw -Encoding utf8 | ConvertFrom-Json
   if (-not ($cfgP.navegacion.sitio | Where-Object { $_.href -like '*/entrada/index.html' -and $_.href_en -like '*/html/en/entrada/index.html' })) { Mal 'config_panel.json: el menú del panel no vuelve a la cabecera de SEVEN-G en los dos idiomas (D137)'; $mal35++ }
-  if (-not $mal35) { Ok 'la entrada (ES/EN) abre con la historia «Usando la IA en su empresa» y sus siete capítulos enlazan cada zona; el idioma se conserva al pasar a herramientas y paneles; cada página vuelve a su cabecera y la cabecera, a la portada' }
+  if (-not $mal35) { Ok 'la entrada (ES/EN) abre con la historia «Usando la IA en su empresa» y sus nueve capítulos enlazan cada zona, el diagnóstico de madurez y la galería por sector; el idioma se conserva al pasar a herramientas y paneles; cada página vuelve a su cabecera y la cabecera, a la portada' }
 }
 finally { Remove-Item $tmp -Recurse -Force -Confirm:$false -ErrorAction SilentlyContinue }
 
