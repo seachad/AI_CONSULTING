@@ -2,6 +2,8 @@
 
 Repositorio de metodologías de IA de Fernando García Varela (D81). El trabajo principal es **SEVEN-G**.
 
+**Trato al autor:** se le llama **MAESTRO** y se le trata siempre de **tú**, nunca de usted (en el chat; no afecta al registro de los documentos publicados).
+
 ## Antes de trabajar en SEVEN-G
 
 1. Lee el registro de decisiones (importado abajo). Es la fuente de verdad sobre lo decidido.
