@@ -119,11 +119,12 @@ h2 { font: 600 clamp(26px, 3.2vw, 34px)/1.15 var(--serif); color: var(--negro); 
 .comunidad p { margin: 0 0 14px; }
 .acciones-comunidad { display: flex; flex-wrap: wrap; gap: 10px; }
 
-/* Colaboradores (D121): una tarjeta por persona; para añadir a alguien basta otra <li> en ES y en EN */
+/* Hall of Fame (D121, D142): las tarjetas se generan desde colaboradores.json con SEVEN-G/build/colaboradores.ps1 */
 .colaboradores { list-style: none; margin: 0 0 14px; padding: 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(230px, 1fr)); gap: 12px; }
 .colaboradores li { border: 1px solid var(--regla); border-top: 3px solid var(--claret); background: var(--papel-2); padding: 14px 16px 12px; }
 .colaboradores b { display: block; font: 600 21px/1.2 var(--serif); color: var(--negro); }
 .colaboradores span { display: block; margin-top: 6px; font: 500 13px/1.4 var(--sans); color: var(--tinta-2); }
+.colaboradores .empresa { margin-top: 4px; font: 600 12px/1.3 var(--sans); letter-spacing: .06em; text-transform: uppercase; color: var(--claret); }
 .colaboradores li.autor { grid-column: 1 / -1; border-top-color: var(--oxford); }
 .colaboradores b a { color: inherit; text-decoration: none; border-bottom: 1px solid var(--regla); }
 .colaboradores b a:hover { color: var(--claret); border-bottom-color: var(--claret); }
@@ -255,9 +256,11 @@ h2 { font: 600 clamp(26px, 3.2vw, 34px)/1.15 var(--serif); color: var(--negro); 
   <p class="sub">People who have given their time and judgement to review these methodologies and help improve them. Thank you.</p>
   <section class="comunidad" aria-labelledby="colaboradores">
     <ul class="colaboradores">
-      <li class="autor"><b><a href="https://www.linkedin.com/in/fernandogarciavarela/" target="_blank" rel="noopener" title="LinkedIn profile of Fernando García Varela">Fernando García Varela</a></b><span>Creator and owner of the methodologies</span></li>
-      <li><b><a href="https://www.linkedin.com/in/almudenavalenciano/" target="_blank" rel="noopener" title="LinkedIn profile of Almudena Valenciano">Almudena Valenciano</a></b><span>Review and suggestions for improvement</span></li>
-      <li><b><a href="https://www.linkedin.com/in/luisgarciavillaraco/" target="_blank" rel="noopener" title="LinkedIn profile of Luis Garcia-Villaraco">Luis Garcia-Villaraco</a></b><span>Review and suggestions for improvement</span></li>
+      <!-- colaboradores:inicio (no editar: se genera desde colaboradores.json con SEVEN-G/build/colaboradores.ps1) -->
+      <li class="autor"><b><a href="https://www.linkedin.com/in/fernandogarciavarela/" target="_blank" rel="noopener" title="LinkedIn profile of Fernando García Varela">Fernando García Varela</a></b><span class="empresa">Seachad</span><span>Creator and owner of the methodologies</span></li>
+      <li><b><a href="https://www.linkedin.com/in/almudenavalenciano/" target="_blank" rel="noopener" title="LinkedIn profile of Almudena Valenciano">Almudena Valenciano</a></b><span class="empresa">Microsoft</span><span>Review and suggestions for improvement</span></li>
+      <li><b><a href="https://www.linkedin.com/in/luisgarciavillaraco/" target="_blank" rel="noopener" title="LinkedIn profile of Luis García-Villaraco">Luis García-Villaraco</a></b><span class="empresa">Seachad</span><span>Review and suggestions for improvement</span></li>
+      <!-- colaboradores:fin -->
     </ul>
     <p class="nota">This acknowledgement is a thank-you: it implies no ownership or co-authorship and does not alter the intellectual property of the methodologies, which remains with their author.</p>
   </section>

@@ -952,6 +952,8 @@ if ($Metodologias -contains 'SEVEN-G' -and -not $env:SEVENG_BUILD_CURSO_PASE2) {
   }
 }
 
+# Hall of Fame de la portada (D142): las tarjetas se escriben desde colaboradores.json
+& (Join-Path $PSScriptRoot 'colaboradores.ps1')
 # índice de códigos del control «Buscador de documentos» (D88, D105): se rehace siempre, leyendo los HTML ya generados
 & (Join-Path $PSScriptRoot 'codigos.ps1') -Idiomas $todos
 # índice de texto del buscador de términos en todas las páginas (D105): también desde los HTML ya generados

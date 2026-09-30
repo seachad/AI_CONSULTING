@@ -1248,6 +1248,15 @@ try {
     if ($sec -notmatch '(?i)coautoría|co-authorship') { Mal "$p`: la sección de colaboradores no aclara que no implica titularidad ni coautoría (D121, D89)"; $malCol++ }
   }
   if ($nombresCol.Count -eq 2 -and $nombresCol['index.html'] -ne $nombresCol['en\index.html']) { Mal "colaboradores distintos en ES («$($nombresCol['index.html'])») y EN («$($nombresCol['en\index.html'])») (D121)"; $malCol++ }
+  # D142: las tarjetas salen de colaboradores.json (nombre, empresa actual y perfil de LinkedIn) y la portada está al día
+  try {
+    $salCol = & (Join-Path $PSScriptRoot 'colaboradores.ps1') -Comprobar *>&1
+    if ($LASTEXITCODE) { Mal "$salCol (pwsh -File SEVEN-G/build/colaboradores.ps1) (D142)"; $malCol++ }
+    foreach ($p in 'index.html', 'en\index.html') {
+      $sec = [regex]::Match([IO.File]::ReadAllText((Join-Path $repo $p)), '(?s)<h2 id="colaboradores">.*?</section>').Value
+      if (([regex]::Matches($sec, '<li[^>]*>')).Count -ne ([regex]::Matches($sec, 'class="empresa"')).Count) { Mal "$p`: alguna tarjeta del Hall of Fame no lleva empresa (D142)"; $malCol++ }
+    }
+  } catch { Mal "colaboradores.json: $($_.Exception.Message) (D142)"; $malCol++ }
   if (-not $malCol) { Ok "colaboradores en ES y EN: $($nombresCol['index.html'])" }
   # ---- 27. ayuda de cada tarjeta del panel del consejo (D122): cada data-ayuda del motor tiene su ayuda en español e inglés (título,
   # qué muestra y por qué importa) y cada ayuda se usa; toda columna o recuadro que escribe el motor tiene su explicación (ES/EN); los
