@@ -121,7 +121,7 @@ Durations are indicative and depend on the size of the company, the number of sy
 | | |
 |---|---|
 | **When** | The board, the board committee or internal audit want an independent opinion; the company wants to verify its declaration of application (01 §14); a review is required after a relevant incident. |
-| **Scope** | Verification of the seven conditions in 01 §14; sample-based review of *gate* decisions (dual validation, segregation of duties, evidence predating the decision); review of the inventory and classification; review of the application of the measurement rules in the board pack; review of the nonconformity process; review of the register of recommendations and of the independence of assessments. |
+| **Scope** | Verification of the fourteen core rules (01 §14.1); sample-based review of *gate* decisions (dual validation, segregation of duties, evidence predating the decision); review of the inventory and classification; review of the application of the measurement rules in the board pack; review of the nonconformity process; review of the register of recommendations and of the independence of assessments. |
 | **Out of scope** | Designing or implementing corrections; issuing certifications (section 6.3). |
 | **Deliverables** | Audit plan with scope, criteria and sample (P58) · Working papers with evidence (P59) · Report (P60) with a conclusion of **Conformant**, **Conformant with observations** or **Nonconformant** · Nonconformities detected, classified as minor, major or critical · Recommendations for the register (document 62). |
 | **Third-party roles** | Audit lead · Auditors with AI experience · Quality reviewer. None of them may have taken part in the implementation or support of the audited area (section 5). |
@@ -230,7 +230,7 @@ Template for a declaration of application (template P61):
 | Company and perimeter | Companies, areas and systems included. |
 | SEVEN-G version | Number and date. |
 | Date from which it is applied | |
-| Conditions in 01 §14 | For each of the seven: met or not met, and linked evidence. |
+| Core rules (01 §14.1) | For each of the fourteen: met or not met, and linked evidence. |
 | Adaptations | Parameters changed (thresholds, time limits, maturity weights) and reason. |
 | Exceptions | Systems under regularisation with a time limit approved in C2. |
 | Approving body | Board or board committee, with date. |

@@ -468,12 +468,12 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 
 <div id="top"></div>
 <header class="portada">
-  <div class="cabecera"><div class="marca"><i></i>SEVEN-G</div><div class="cabecera-dato">Document 21 · 16-09-2026</div></div>
+  <div class="cabecera"><div class="marca"><i></i>SEVEN-G</div><div class="cabecera-dato">Document 21 · 01-10-2026</div></div>
   <div class="portada-cuerpo">
     <p class="antetitulo">Document 21 &#183; Gate and audit criteria</p>
     <h1>Gate and audit criteria</h1>
     <p class="entradilla">What must be met at each decision gate, how it is verified and how it is audited</p>
-    <div class="firma"><span><b>Fernando Garc&#237;a Varela</b></span><span>Version 0.1 (working draft)</span><span>16-09-2026</span><span>Draft for review</span></div>
+    <div class="firma"><span><b>Fernando Garc&#237;a Varela</b></span><span>Version 0.2 (working draft)</span><span>01-10-2026</span><span>Draft for review</span></div>
     <div class="cifras"><div class="cifra"><b>8</b><span>decision gates</span></div><div class="cifra"><b>128</b><span>coded criteria</span></div><div class="cifra"><b>4</b><span>sign-offs with veto at G5</span></div><div class="cifra"><b>3</b><span>audit outcomes</span></div></div>
   </div>
 </header>
@@ -731,7 +731,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tr id="cod-ev-10">
 <td><strong>EV.10</strong></td>
 <td>Completeness</td>
-<td>Mandatory fields of the template filled in; in Lite, those not marked <em>(Enterprise)</em>. Missing data are shown as &quot;no data&quot;, not as zero.</td>
+<td>Mandatory fields of the template filled in or covered by referenced evidence (section 4.3); in Lite, those not marked <em>(Enterprise)</em>. Missing data are shown as &quot;no data&quot;, not as zero.</td>
 <td>Pending</td>
 </tr>
 <tr id="cod-ev-11">
@@ -762,6 +762,111 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </table></div>
 <h3 id="4-2-evidence-accepted-with-shortfalls">4.2 Evidence accepted with shortfalls</h3>
 <p>The verifier may accept a piece of evidence with minor shortfalls (rules EV.01–EV.04, EV.06 or EV.10) only if they do not affect a <em>Yes</em> or <em>Yes ◆</em> criterion and are corrected before the decision. Rules EV.05 and EV.09 admit no exception.</p>
+<h3 id="4-3-reference-rather-than-reproduce">4.3 Reference rather than reproduce</h3>
+<p>A large company already has mechanisms that produce much of what SEVEN-G asks for: business cases, impact assessments, supplier assessments, contracts, architecture and change records, continuity plans, financial controls. <strong>Evidence the company already has meets the criterion if it covers what is required, without copying it into a template</strong> (principle 11 in 01 §3, proportionality). The SEVEN-G template then serves as a <strong>checklist</strong> of what the evidence must contain, not as a document to fill in.</p>
+<p>A piece of referenced evidence is valid if it meets the same rules EV.01–EV.14 as any other and, in addition:</p>
+<div class="tabla"><table>
+<thead>
+<tr>
+<th>Requirement</th>
+<th>What is checked</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Locatable reference</strong></td>
+<td>Source system or repository, identifier or link, version and date, so that the verifier and the auditor can find it without asking for it (EV.06). In <a href="../../herramientas/T01_registro_iniciativas/registro.html" title="Tool T01 &#183; Initiative register">T01</a> it is recorded with origin &quot;reference&quot; and its source system.</td>
+</tr>
+<tr>
+<td><strong>Owner</strong></td>
+<td>Person and role who prepared or approved it in its source process (EV.02). Segregation of duties is checked in the same way (EV.09).</td>
+</tr>
+<tr>
+<td><strong>Coverage</strong></td>
+<td>The verifier compares the evidence with the template it covers and notes what is missing. What is missing is completed in a <strong>short annex</strong> with only those fields, never by copying what is already there.</td>
+</tr>
+<tr>
+<td><strong>Validity and relevance</strong></td>
+<td>It refers to this initiative, its scope and the system version (EV.07); if it is updated in its source process, it is verified again (EV.04).</td>
+</tr>
+</tbody>
+</table></div>
+<p>Usual equivalences (indicative; each company sets them when implementing the framework, <a href="90_SEVEN-G_Guia_de_implantacion.html" title="Document 90 &#183; SEVEN-G implementation guide">document 90</a>):</p>
+<div class="tabla"><table>
+<thead>
+<tr>
+<th>Evidence the company usually has</th>
+<th>SEVEN-G template it can cover</th>
+<th>What is usually missing and goes into the annex</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Business case from the investment committee</td>
+<td><a href="plantillas/P08_SEVEN-G_Lienzo_de_hipotesis_de_valor.html" title="Template P08 &#183; Value hypothesis canvas">P08</a>, <a href="plantillas/P10_SEVEN-G_Evaluacion_de_viabilidad.html" title="Template P10 &#183; Feasibility assessment">P10</a></td>
+<td>Falsifiable hypothesis, stop criteria and status of each amount (estimated, declared, validated)</td>
+</tr>
+<tr>
+<td>Management control baseline</td>
+<td><a href="plantillas/P09_SEVEN-G_Linea_base.html" title="Template P09 &#183; Baseline">P09</a></td>
+<td>Measurement method and period</td>
+</tr>
+<tr>
+<td>Data protection impact assessment</td>
+<td><a href="plantillas/P47_SEVEN-G_Evaluacion_de_impacto_en_proteccion_de_datos.html" title="Template P47 &#183; Data protection impact assessment">P47</a> (and its part of <a href="plantillas/P11_SEVEN-G_Clasificacion_regulatoria_y_evaluaciones_de_impacto.html" title="Template P11 &#183; Regulatory classification and impact assessments">P11</a>)</td>
+<td>AI-specific risks: bias, explainability, human oversight</td>
+</tr>
+<tr>
+<td>Procurement third-party risk assessment</td>
+<td><a href="plantillas/P14_SEVEN-G_Evaluacion_de_proveedor_de_IA.html" title="Template P14 &#183; AI supplier assessment">P14</a>, <a href="plantillas/P55_SEVEN-G_Cuestionario_de_diligencia_debida_a_proveedores_de_IA.html" title="Template P55 &#183; AI supplier due diligence questionnaire">P55</a></td>
+<td>Use of data for training, location, foundation models and exit (<a href="36_SEVEN-G_Terceros_y_proveedores_de_IA.html" title="Document 36 &#183; AI third parties and suppliers">document 36</a>)</td>
+</tr>
+<tr>
+<td>The company's contract or standard clauses</td>
+<td><a href="plantillas/P56_SEVEN-G_Clausulas_contractuales_tipo_de_IA.html" title="Template P56 &#183; Model AI contractual clauses">P56</a></td>
+<td>AI-specific clauses that are missing</td>
+</tr>
+<tr>
+<td>Architecture record or design sheet</td>
+<td><a href="plantillas/P15_SEVEN-G_Registro_de_arquitectura.html" title="Template P15 &#183; Architecture record">P15</a></td>
+<td>Traceability of inputs, outputs and model versions</td>
+</tr>
+<tr>
+<td>Security design and threat analysis</td>
+<td><a href="plantillas/P18_SEVEN-G_Diseno_de_seguridad.html" title="Template P18 &#183; Security design (including agents)">P18</a></td>
+<td>AI-specific threats: prompt injection, poisoning, leakage</td>
+</tr>
+<tr>
+<td>Change management and release to production</td>
+<td><a href="plantillas/P21_SEVEN-G_Informe_de_entrega.html" title="Template P21 &#183; Delivery report">P21</a>, <a href="plantillas/P23_SEVEN-G_Firma_de_puesta_en_produccion.html" title="Template P23 &#183; Go-live sign-off">P23</a></td>
+<td>Risk clearance signature or multi-level sign-off</td>
+</tr>
+<tr>
+<td>Continuity plan and rollback procedure</td>
+<td><a href="plantillas/P19_SEVEN-G_Plan_de_reversion_y_prueba.html" title="Template P19 &#183; Rollback plan and test">P19</a></td>
+<td>Rollback test with its actual time</td>
+</tr>
+<tr>
+<td>Training and change communication plan</td>
+<td><a href="plantillas/P20_SEVEN-G_Plan_de_adopcion_y_capacidad.html" title="Template P20 &#183; Adoption and capacity plan">P20</a></td>
+<td>AI literacy and usage measurement</td>
+</tr>
+<tr>
+<td>Operations manual and incident procedure</td>
+<td><a href="plantillas/P24_SEVEN-G_Manual_de_operacion.html" title="Template P24 &#183; Operations manual">P24</a>, <a href="plantillas/P26_SEVEN-G_Plan_de_respuesta_a_incidentes.html" title="Template P26 &#183; Incident response plan">P26</a></td>
+<td>S1–S4 severities and AI-specific notifications</td>
+</tr>
+<tr>
+<td>Benefits tracking by the project office</td>
+<td><a href="plantillas/P62_SEVEN-G_Plan_de_realizacion_de_beneficios.html" title="Template P62 &#183; Benefits realisation plan">P62</a></td>
+<td>Realisation curve and business owner of the benefit</td>
+</tr>
+</tbody>
+</table></div>
+<p>No evidence is requested twice: if a piece of data is already in referenced evidence, the template refers to it and does not repeat it.</p>
+<blockquote>
+<p><strong>Why it matters.</strong> If every initiative requires copying into the framework's own templates what the company already has, SEVEN-G becomes a parallel document system that nobody maintains and that drifts away from real processes. Referencing turns the framework into an orchestration and traceability layer over existing processes: the verifier checks what exists where it is, and the template only points out what is missing.</p>
+</blockquote>
 <hr />
 <h2 id="degree-of-compliance-and-decision-rule"><span class="antetitulo">05</span>Degree of compliance and decision rule</h2>
 <h3 id="5-1-calculation">5.1 Calculation</h3>
@@ -3084,6 +3189,11 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>0.1</td>
 <td>16-09-2026</td>
 <td>First version. Merges the two versions of the <em>gate</em> and audit criteria in the previous material with the current model in 01: 128 criteria coded by gate, intensity and ambition, with criteria for generative AI, agents and third parties; valid evidence, degree of compliance, multi-level sign-off with veto, audit and decision record. Consistency adjustments with 01 (segregation of duties in Lite, R6 outcomes, agent criterion) and with 34 and 37.</td>
+</tr>
+<tr>
+<td>0.2</td>
+<td>01-10-2026</td>
+<td>New section 4.3, reference rather than reproduce: evidence the company already has meets the criterion if it covers what is required, with requirements of reference, owner, coverage and validity, and a table of usual equivalences; EV.10 accepts referenced evidence.</td>
 </tr>
 </tbody>
 </table></div>

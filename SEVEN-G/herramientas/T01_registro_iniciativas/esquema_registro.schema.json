@@ -517,7 +517,9 @@
         "fecha": { "$ref": "#/$defs/fecha" },
         "verificada": { "type": "boolean" },
         "verificador": { "$ref": "#/$defs/id_persona_o_nula" },
-        "fecha_verificacion": { "$ref": "#/$defs/fecha_o_nula" }
+        "fecha_verificacion": { "$ref": "#/$defs/fecha_o_nula" },
+        "origen": { "enum": ["plantilla", "referencia"], "description": "plantilla: plantilla de SEVEN-G rellenada para el caso (valor por defecto si falta). referencia: evidencia que la compañía ya tenía (caso de negocio, evaluación de impacto, evaluación de proveedor, contrato…) referenciada sin copiarla; «plantilla» indica entonces qué plantilla cubre (21 §4.3, D146)." },
+        "sistema_origen": { "$ref": "#/$defs/texto_o_nulo", "description": "Sistema o repositorio de la compañía donde está la evidencia referenciada." }
       }
     },
     "valor": {

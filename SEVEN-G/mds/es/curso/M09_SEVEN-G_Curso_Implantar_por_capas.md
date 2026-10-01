@@ -27,7 +27,7 @@ Al terminar sabrá elegir el alcance de implantación de su compañía, distingu
 1. **Dos decisiones de proporcionalidad distintas.** La *intensidad* (Lite o Enterprise) es de cada iniciativa; el *alcance de implantación* (Lite o Enterprise) es de la compañía. El tamaño no decide ninguna de las dos.
 2. **Una sola biblioteca, tres capas.** Esencial (lo que aplica toda compañía), condicional (lo que activa un disparador) y completa (guías y consulta). No hay versiones reducidas de los documentos.
 3. **Ninguna fase ni puerta se salta.** En Lite se agrupan —G0 a G2 en una sesión, G4 y G5 en otra— y las evidencias se simplifican. G3 va siempre por separado.
-4. **El punto de partida cambia el orden, no el destino.** Una compañía sin IA, otra con modelos predictivos en producción y otra con muchos pilotos empiezan por hitos distintos (documento 96), pero llegan a las mismas condiciones de 01 §14.
+4. **El punto de partida cambia el orden, no el destino.** Una compañía sin IA, otra con modelos predictivos en producción y otra con muchos pilotos empiezan por hitos distintos (documento 96), pero llegan al mismo núcleo de catorce reglas (01 §14.1).
 5. **La tecnología no suma madurez.** La madurez se lee con tres lentes: capacidad de gobierno, huella tecnológica y alcance del impacto (11 §7.6). Tener agentes con un control de riesgos débil es una alerta, no más madurez.
 6. **Noventa días para tener diagnóstico, dirección y primera cartera**, sin moratoria: la actividad de IA continúa mientras se implanta el marco.
 

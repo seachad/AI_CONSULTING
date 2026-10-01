@@ -18,7 +18,7 @@
 
 ---
 
-<!-- esencial: recomendado | Used to choose the order of implementation according to the company's starting point (no AI, third-party AI, automation, ML, many pilots or at scale). Rule that is never skipped: the starting point changes the order, the emphasis and the timetable, never what is required in the end; the seven conditions of the declaration of application (01 §14) are the same for everyone. Tool T23 runs the questionnaire and produces the plan. -->
+<!-- esencial: recomendado | Used to choose the order of implementation according to the company's starting point (no AI, third-party AI, automation, ML, many pilots or at scale). Rule that is never skipped: the starting point changes the order, the emphasis and the timetable, never what is required in the end; the fourteen-rule core (01 §14.1) is the same for everyone. Tool T23 runs the questionnaire and produces the plan. -->
 
 ## 1. Purpose and scope
 

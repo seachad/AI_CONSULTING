@@ -18,7 +18,7 @@
 
 ---
 
-<!-- esencial: recomendado | Sirve para elegir el orden de la implantación según el punto de partida de la compañía (sin IA, con IA de terceros, con automatización, con ML, con muchos pilotos o a escala). Regla que no se omite: el punto de partida cambia el orden, el énfasis y el calendario, nunca lo que se exige al final; las siete condiciones de la declaración de aplicación (01 §14) son las mismas para todos. La herramienta T23 hace el cuestionario y el plan. -->
+<!-- esencial: recomendado | Sirve para elegir el orden de la implantación según el punto de partida de la compañía (sin IA, con IA de terceros, con automatización, con ML, con muchos pilotos o a escala). Regla que no se omite: el punto de partida cambia el orden, el énfasis y el calendario, nunca lo que se exige al final; el núcleo de catorce reglas (01 §14.1) es el mismo para todos. La herramienta T23 hace el cuestionario y el plan. -->
 
 ## 1. Objeto y alcance
 

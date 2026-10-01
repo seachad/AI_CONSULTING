@@ -5,8 +5,8 @@
 | | |
 |---|---|
 | Document | Document 21 · *Gate* and audit criteria |
-| Version | 0.1 (working draft) |
-| Date | 16-09-2026 |
+| Version | 0.2 (working draft) |
+| Date | 01-10-2026 |
 | Author | Fernando García Varela |
 | Status | Draft for review. Develops 01 §7 and replaces the *gate* criteria in the previous material. |
 
@@ -128,7 +128,7 @@ A piece of evidence is valid if it passes the following fourteen rules. Document
 | **EV.07** | Relevance | It refers to this initiative, its scope and the system version. Reuse of evidence from another initiative is justified. | Not valid |
 | **EV.08** | Real data | Where the criterion requires results: reproducible source, period and method; amounts with a formula and status (validated, declared or estimated). | Not valid |
 | **EV.09** | Approval and segregation | Approved by the appropriate person; author, verifier and decision-maker are different people. | Not valid · major nonconformity if there is self-approval |
-| **EV.10** | Completeness | Mandatory fields of the template filled in; in Lite, those not marked *(Enterprise)*. Missing data are shown as "no data", not as zero. | Pending |
+| **EV.10** | Completeness | Mandatory fields of the template filled in or covered by referenced evidence (section 4.3); in Lite, those not marked *(Enterprise)*. Missing data are shown as "no data", not as zero. | Pending |
 | **EV.11** | Consistency | Figures and statements match across evidence (for example, value in P08, P10 and P28; risks in P12 and controls in P18). | Not met until clarified |
 | **EV.12** | Information protection | It contains no unnecessary personal data; access restricted according to its classification. | Observation or nonconformity, depending on the case |
 | **EV.13** | System-generated evidence | Dated export or time-stamped link to logs, dashboards or test results. A screenshot with no date or source is not valid. | Not valid |
@@ -137,6 +137,40 @@ A piece of evidence is valid if it passes the following fourteen rules. Document
 ### 4.2 Evidence accepted with shortfalls
 
 The verifier may accept a piece of evidence with minor shortfalls (rules EV.01–EV.04, EV.06 or EV.10) only if they do not affect a *Yes* or *Yes ◆* criterion and are corrected before the decision. Rules EV.05 and EV.09 admit no exception.
+
+### 4.3 Reference rather than reproduce
+
+A large company already has mechanisms that produce much of what SEVEN-G asks for: business cases, impact assessments, supplier assessments, contracts, architecture and change records, continuity plans, financial controls. **Evidence the company already has meets the criterion if it covers what is required, without copying it into a template** (principle 11 in 01 §3, proportionality). The SEVEN-G template then serves as a **checklist** of what the evidence must contain, not as a document to fill in.
+
+A piece of referenced evidence is valid if it meets the same rules EV.01–EV.14 as any other and, in addition:
+
+| Requirement | What is checked |
+|---|---|
+| **Locatable reference** | Source system or repository, identifier or link, version and date, so that the verifier and the auditor can find it without asking for it (EV.06). In T01 it is recorded with origin "reference" and its source system. |
+| **Owner** | Person and role who prepared or approved it in its source process (EV.02). Segregation of duties is checked in the same way (EV.09). |
+| **Coverage** | The verifier compares the evidence with the template it covers and notes what is missing. What is missing is completed in a **short annex** with only those fields, never by copying what is already there. |
+| **Validity and relevance** | It refers to this initiative, its scope and the system version (EV.07); if it is updated in its source process, it is verified again (EV.04). |
+
+Usual equivalences (indicative; each company sets them when implementing the framework, document 90):
+
+| Evidence the company usually has | SEVEN-G template it can cover | What is usually missing and goes into the annex |
+|---|---|---|
+| Business case from the investment committee | P08, P10 | Falsifiable hypothesis, stop criteria and status of each amount (estimated, declared, validated) |
+| Management control baseline | P09 | Measurement method and period |
+| Data protection impact assessment | P47 (and its part of P11) | AI-specific risks: bias, explainability, human oversight |
+| Procurement third-party risk assessment | P14, P55 | Use of data for training, location, foundation models and exit (document 36) |
+| The company's contract or standard clauses | P56 | AI-specific clauses that are missing |
+| Architecture record or design sheet | P15 | Traceability of inputs, outputs and model versions |
+| Security design and threat analysis | P18 | AI-specific threats: prompt injection, poisoning, leakage |
+| Change management and release to production | P21, P23 | Risk clearance signature or multi-level sign-off |
+| Continuity plan and rollback procedure | P19 | Rollback test with its actual time |
+| Training and change communication plan | P20 | AI literacy and usage measurement |
+| Operations manual and incident procedure | P24, P26 | S1–S4 severities and AI-specific notifications |
+| Benefits tracking by the project office | P62 | Realisation curve and business owner of the benefit |
+
+No evidence is requested twice: if a piece of data is already in referenced evidence, the template refers to it and does not repeat it.
+
+> **Why it matters.** If every initiative requires copying into the framework's own templates what the company already has, SEVEN-G becomes a parallel document system that nobody maintains and that drifts away from real processes. Referencing turns the framework into an orchestration and traceability layer over existing processes: the verifier checks what exists where it is, and the template only points out what is missing.
 
 ---
 
@@ -701,3 +735,4 @@ No weighted scoring is used: criteria are either met or not, with evidence, and 
 | Version | Date | Changes |
 |---|---|---|
 | 0.1 | 16-09-2026 | First version. Merges the two versions of the *gate* and audit criteria in the previous material with the current model in 01: 128 criteria coded by gate, intensity and ambition, with criteria for generative AI, agents and third parties; valid evidence, degree of compliance, multi-level sign-off with veto, audit and decision record. Consistency adjustments with 01 (segregation of duties in Lite, R6 outcomes, agent criterion) and with 34 and 37. |
+| 0.2 | 01-10-2026 | New section 4.3, reference rather than reproduce: evidence the company already has meets the criterion if it covers what is required, with requirements of reference, owner, coverage and validity, and a table of usual equivalences; EV.10 accepts referenced evidence. |

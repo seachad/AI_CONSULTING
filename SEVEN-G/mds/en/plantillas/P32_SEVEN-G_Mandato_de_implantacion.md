@@ -88,7 +88,7 @@ Completion rules:
 
 ### 3.4 Adoption model
 
-SEVEN-G may be adopted **in full** or **modularly** by components (01 §1.2). Modular adoption is valid, but the company may only declare that it applies SEVEN-G once it meets the seven conditions in 01 §14.
+SEVEN-G may be adopted **in full** or **modularly** by components (01 §1.2). Modular adoption is valid, but the company may only declare that it applies SEVEN-G once it meets the fourteen core rules (01 §14.1).
 
 | Field | Content | Guidance |
 |---|---|---|
@@ -196,7 +196,7 @@ Definitions in 90 §9. The targets are set by the company; those in 90 §9 are i
 | Proportion of validated value | | | T12, T17 | |
 | Overdue nonconformities | | | T08 | |
 | AI literacy | | | Training record | |
-| Conditions in 01 §14 substantiated (out of 7) | | | T15 | |
+| Core rules (01 §14.1) substantiated (out of 14) | | | T15 | |
 
 ---
 

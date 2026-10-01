@@ -227,7 +227,7 @@ The model is the foundation of all the tools. Its full specification (fields, ty
 | **Gate decision** | Request, verification, decision, outcome and iteration. | Initiative, criteria, conditions |
 | **Assessed criterion** | Status of each criterion in a *gate* decision. | Gate decision, evidence |
 | **Condition** | Condition imposed with deadline, owner and status. | Gate decision |
-| **Evidence** | Link, type, version, author, date and verification. | Criteria, initiative |
+| **Evidence** | Link, type, version, author, date and verification; origin (SEVEN-G template or referenced company evidence, with its source system; 21 §4.3). | Criteria, initiative |
 | **Value** | Amounts by type (efficiency, return, cost), formula, validation status, period and, in cross-unit initiatives, business unit; from schema 0.5, whether the return comes from an AI-enabled offering (signal 6 of 12). From schema 0.8, two optional initiative fields read by the board dashboard: the realisation plan (`plan_realizacion`: status, source and date; curve by period, steady-state date, funding tranches with *gate*, amount and pass condition, approved reference and realised value by period with its status; 43 §4.1) and non-quantified value (`no_cuantificado`: dimension, level 0–3, metric with baseline, target and current value, and reason; never in euros; 40 rule 7). | Initiative |
 | **Risk** | Risk with probability, impact, inherent and residual level, owner and controls; from T01 schema 0.4, also impact axis, control effectiveness, target or verified residual, contingency, status, trend, next review and acceptance (33 §8.1). | Initiative, system |
 | **Nonconformity** | Type, detection, containment, root cause, action, closure. | Initiative, system |
