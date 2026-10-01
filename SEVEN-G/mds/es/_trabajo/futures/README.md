@@ -8,4 +8,4 @@ Carpeta de trabajo (no se publica, como todo `_trabajo/`). Contiene planes por s
 
 | Plan | Origen | Estado |
 |---|---|---|
-| [20261001_Plan_sprints_feedback_evolucion_SEVEN-G.md](20261001_Plan_sprints_feedback_evolucion_SEVEN-G.md) | Feedback externo «Informe de recomendaciones para la evolución de SEVEN-G» (01-10-2026), copiado en [20261001_Feedback_evolucion_SEVEN-G.md](20261001_Feedback_evolucion_SEVEN-G.md) | Propuesto, pendiente de validación del autor |
+| [20261001_Plan_sprints_feedback_evolucion_SEVEN-G.md](20261001_Plan_sprints_feedback_evolucion_SEVEN-G.md) | Feedback externo «Informe de recomendaciones para la evolución de SEVEN-G» (01-10-2026), copiado en [20261001_Feedback_evolucion_SEVEN-G.md](20261001_Feedback_evolucion_SEVEN-G.md) | Aceptado (D143); S3 con la opción C (D144); siguiente: S0 |
