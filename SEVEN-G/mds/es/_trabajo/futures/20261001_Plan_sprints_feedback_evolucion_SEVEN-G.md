@@ -248,7 +248,7 @@ Orden recomendado: **S0 → S1 → S2 → S3 → S4**, con **S6** intercalable e
 
 | Sprint | Estado | Sesión / fecha | Decisiones registradas |
 |---|---|---|---|
-| S0 | Pendiente | | |
+| S0 | **Hecho** ([informe](S0_Linea_base_carga_de_gobierno.md)) | 01-10-2026 | Lista Express: todos los «Sí ◆» + 20 criterios del núcleo (47 en el perfil A, frente a 90) |
 | S1 | Pendiente | | |
 | S2 | Pendiente | | |
 | S3 | Pendiente | | |
