@@ -113,6 +113,13 @@ foreach ($t in $legibles) {
     if ($texto.IndexOf($p, [StringComparison]::OrdinalIgnoreCase) -ge 0) { $errores.Add("Texto interno '$p' en $([IO.Path]::GetRelativePath($destinoAbs, $t.FullName))") }
   }
 }
+# sesiones en la nube (D153): sin fichero, la lista puede venir en la variable de entorno SEVENG_TERMINOS_PROHIBIDOS
+$tempTerminos = $null
+if (-not (Test-Path $TerminosProhibidos) -and $env:SEVENG_TERMINOS_PROHIBIDOS) {
+  $tempTerminos = Join-Path ([IO.Path]::GetTempPath()) ("seveng_terminos_{0}.txt" -f [guid]::NewGuid().ToString('N'))
+  [IO.File]::WriteAllText($tempTerminos, ($env:SEVENG_TERMINOS_PROHIBIDOS -replace '\\n', "`n"), [Text.UTF8Encoding]::new($false))
+  $TerminosProhibidos = $tempTerminos
+}
 if (Test-Path $TerminosProhibidos) {
   $terminos = Get-Content $TerminosProhibidos -Encoding utf8 | Where-Object { $_.Trim() -and -not $_.StartsWith('#') } | ForEach-Object { $_.Trim() }
   foreach ($t in (Get-ChildItem $destinoAbs -Recurse -File | Where-Object { $_.FullName -notmatch '[\\/]\.git[\\/]' })) {
@@ -128,8 +135,9 @@ if (Test-Path $TerminosProhibidos) {
   }
   Write-Host "Términos prohibidos comprobados: $($terminos.Count) (los PDF se comprueban a través de sus HTML de origen)."
 } else {
-  Write-Warning "No existe la lista privada de términos prohibidos ($TerminosProhibidos). Créala antes de publicar."
+  Write-Warning "No existe la lista privada de términos prohibidos ($TerminosProhibidos) ni la variable de entorno SEVENG_TERMINOS_PROHIBIDOS. Créala antes de publicar."
 }
+if ($tempTerminos) { Remove-Item $tempTerminos -Force -ErrorAction SilentlyContinue }
 
 # Enlaces relativos de la portada
 foreach ($p in @('index.html', 'en\index.html')) {
