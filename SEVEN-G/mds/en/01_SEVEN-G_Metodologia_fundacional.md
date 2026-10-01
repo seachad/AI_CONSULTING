@@ -5,8 +5,8 @@
 | | |
 |---|---|
 | Document | Document 01 · Foundational methodology |
-| Version | 0.1 (working draft) |
-| Date | 16-09-2026 |
+| Version | 0.2 (working draft) |
+| Date | 01-10-2026 |
 | Author | Fernando García Varela |
 | Status | Draft for review. The framework's normative reference document. |
 
@@ -101,6 +101,7 @@ The principles guide decisions in situations that the rules do not cover. Each p
 | 8 | **Evidence, not declaration** | What is not documented and verified is not considered done. | Evidence has an author, date, version and verification. |
 | 9 | **A conscious decision on ambition** | Efficiency and transformation are chosen, measured and decided separately. | Every initiative has a classified and confirmed ambition level. |
 | 10 | **People at the centre of change** | AI is also assessed by its effect on work, capabilities and responsibilities. | Augment and Transform initiatives have an adoption and people plan. |
+| 11 | **Proportionality** | Governance effort matches each initiative's risk, materiality and reversibility: no evidence is requested twice, no decision needs more participants than segregation of duties requires and no initiative bears a disproportionate governance cost. What is never reduced is the core (section 14.1). | Each initiative's intensity is determined and justified (section 9); evidence the company already has is referenced instead of copied (document 21, section 4); the cost of governance itself is measured and reviewed in C5 (document 41). |
 
 ---
 
@@ -544,19 +545,34 @@ This document does not constitute legal advice. The regulatory classification of
 
 ## 14. How to declare that SEVEN-G is applied
 
-An organisation may declare that it applies SEVEN-G when it meets, as a minimum, the following conditions:
+### 14.1 The SEVEN-G core
 
-1. It has completed C1 and C2, and the board has approved the AI thesis, the ambition per sphere and the risk appetite.
-2. It maintains an AI system inventory with regulatory classification, intensity and owner, and an initiative register with the traceability described in section 6.11.
-3. It has assigned the roles and bodies in line with the incompatibilities in section 8.2.
-4. All new initiatives go through the lifecycle with their *gates* recorded.
-5. All initiatives in production have a current continuity review.
-6. It applies the value measurement rules and reports to the board with the oversight dashboard.
-7. It manages nonconformities using the process in section 12.
+The **core** is the minimum, stable set of rules that distinguishes applying SEVEN-G from using some of its templates. It is the same for every company, intensity and scope. Everything else in the library is either a **practice** —the recommended way, or the mandatory way when its trigger occurs, of meeting the core (document 94, section 2.3)— or an **instrument** —a template or a tool that makes it easier—. The core has its own version and only changes by express decision of the framework's author, which is recorded; documents, templates and tools may evolve without changing it.
 
-The declaration is drafted with P61 and audited in accordance with 38 §11.
+| Code | Core rule | Where it is developed |
+|---|---|---|
+| **N-01** | **Complete inventory** of AI systems —own, third-party, corporate use and unauthorised— with an owner, regulatory classification and intensity. | document 32; document 90, section 2.4 |
+| **N-02** | **Every initiative is registered** before consuming budget, with its dates per phase, decisions, criteria and closing reason (traceability in section 6.11). | section 6.11; document 03 |
+| **N-03** | **Intensity is determined for each initiative** in phase 0 and reviewed at G3 and at each R6. One Enterprise criterion is enough. | section 9 |
+| **N-04** | **No phase or gate is skipped**: every initiative goes through all the gates of its lifecycle and each one is recorded with its criteria and its outcome. Which criteria are assessed and which sessions may be grouped depends on the intensity. | sections 7 and 9; document 21, section 3.4 |
+| **N-05** | **G3 is always decided separately**: it is the main stop gate. | section 6.1; document 90, section 2.4 |
+| **N-06** | **Segregation of duties**: roles and bodies assigned in line with the incompatibilities in section 8.2; whoever builds neither verifies nor decides their own work, and risk clearance is independent of the team. | section 8; document 30 |
+| **N-07** | **Dual validation and evidence prior to the decision**: without verified evidence there is no decision. | section 7.2; document 21, sections 3 and 4 |
+| **N-08** | **The "Yes ◆" criteria** (security, legal compliance, human oversight) are never accepted as a condition. | document 21, section 2.2 |
+| **N-09** | **Value hypothesis with baseline and stop criteria** before investing in feasibility. | section 6.4; document 40 |
+| **N-10** | **Regulatory classification and risk register** before design; a Critical residual risk without board approval blocks G3 and G5. | document 32; document 33 |
+| **N-11** | **Tested rollback plan and current continuity review** for everything in production; whatever was already in production when the framework was adopted is regularised within the time limit approved in C2, with a review equivalent to G7. | section 6.8; document 52; document 14, section 11 |
+| **N-12** | **The board approves in C2**, after the C1 diagnosis, the AI thesis, the ambition per sphere and the risk appetite; it receives AI information at least quarterly and approves Transform bets. | section 5; document 13 |
+| **N-13** | **Value and cost figures follow the measurement rules** and are reported to the board with the oversight dashboard. | section 11; document 40; document 60 |
+| **N-14** | **Nonconformities are managed** with the process in section 12. | section 12; document 37 |
 
-Initiatives in production that predate the adoption of the framework must be regularised within a time limit approved in C2, by undergoing a continuity review equivalent to G7.
+Core version: **1 (01-10-2026)**. Document 94, section 3, repeats this list for convenience; if they differ, this one prevails.
+
+> **Why it matters.** A framework that grows without a stable core forces people to reread it in full to know what is non-negotiable, and every new document looks like one more obligation. With a small core, a company knows what must never be missing and can apply the rest in proportion to the risk and materiality of each initiative (principle 11), without the library having to stop growing as guidance.
+
+### 14.2 Declaration
+
+An organisation may declare that it applies SEVEN-G when it meets the fourteen core rules (N-01 to N-14). The declaration is drafted with P61, cites the core version it applies and is audited in accordance with 38 §11.
 
 ---
 
@@ -590,3 +606,4 @@ Initiatives in production that predate the adoption of the framework must be reg
 | Version | Date | Changes |
 |---|---|---|
 | 0.1 | 16-09-2026 | First version. Consolidates the previous foundational methodology and the *gate* criteria into a single model; incorporates the corporate cycle, the criteria differentiated by ambition level, intensity determination, multi-level go-live sign-off, the incompatibility table, nonconformity time limits, regulatory fit and lifecycle traceability as a funnel. |
+| 0.2 | 01-10-2026 | Principle 11, proportionality (section 3). Section 14 defines the SEVEN-G core (14.1, rules N-01 to N-14, version 1), which unifies the seven declaration conditions and the twelve rules never omitted in document 94, and the declaration (14.2). |

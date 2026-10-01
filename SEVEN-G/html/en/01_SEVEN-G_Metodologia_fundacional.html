@@ -468,12 +468,12 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 
 <div id="top"></div>
 <header class="portada">
-  <div class="cabecera"><div class="marca"><i></i>SEVEN-G</div><div class="cabecera-dato">Document 01 · 16-09-2026</div></div>
+  <div class="cabecera"><div class="marca"><i></i>SEVEN-G</div><div class="cabecera-dato">Document 01 · 01-10-2026</div></div>
   <div class="portada-cuerpo">
     <p class="antetitulo">Document 01 &#183; Foundational methodology</p>
     <h1>SEVEN-G foundational methodology</h1>
     <p class="entradilla">Model, principles, governance cycles, decision gates and roles</p>
-    <div class="firma"><span><b>Fernando Garc&#237;a Varela</b></span><span>Version 0.1 (working draft)</span><span>16-09-2026</span><span>Draft for review</span></div>
+    <div class="firma"><span><b>Fernando Garc&#237;a Varela</b></span><span>Version 0.2 (working draft)</span><span>01-10-2026</span><span>Draft for review</span></div>
     <div class="cifras"><div class="cifra"><b>10</b><span>principles</span></div><div class="cifra"><b>2</b><span>governance levels</span></div><div class="cifra"><b>8</b><span>phases per initiative</span></div><div class="cifra"><b>6</b><span>roles with segregation of duties</span></div></div>
   </div>
 </header>
@@ -752,6 +752,12 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td><strong>People at the centre of change</strong></td>
 <td>AI is also assessed by its effect on work, capabilities and responsibilities.</td>
 <td>Augment and Transform initiatives have an adoption and people plan.</td>
+</tr>
+<tr>
+<td>11</td>
+<td><strong>Proportionality</strong></td>
+<td>Governance effort matches each initiative's risk, materiality and reversibility: no evidence is requested twice, no decision needs more participants than segregation of duties requires and no initiative bears a disproportionate governance cost. What is never reduced is the core (section 14.1).</td>
+<td>Each initiative's intensity is determined and justified (section 9); evidence the company already has is referenced instead of copied (<a href="21_SEVEN-G_Criterios_de_gate_y_auditoria.html" title="Document 21 &#183; Gate and audit criteria">document 21</a>, section 4); the cost of governance itself is measured and reviewed in C5 (<a href="41_SEVEN-G_Catalogo_de_indicadores.html" title="Document 41 &#183; Indicator catalogue">document 41</a>).</td>
 </tr>
 </tbody>
 </table></div>
@@ -2171,18 +2177,95 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <p>This document does not constitute legal advice. The regulatory classification of each system must be carried out with qualified legal judgement.</p>
 <hr />
 <h2 id="how-to-declare-that-seven-g-is-applied"><span class="antetitulo">14</span>How to declare that SEVEN-G is applied</h2>
-<p>An organisation may declare that it applies SEVEN-G when it meets, as a minimum, the following conditions:</p>
-<ol>
-<li>It has completed C1 and C2, and the board has approved the AI thesis, the ambition per sphere and the risk appetite.</li>
-<li>It maintains an AI system inventory with regulatory classification, intensity and owner, and an initiative register with the traceability described in section 6.11.</li>
-<li>It has assigned the roles and bodies in line with the incompatibilities in section 8.2.</li>
-<li>All new initiatives go through the lifecycle with their <em>gates</em> recorded.</li>
-<li>All initiatives in production have a current continuity review.</li>
-<li>It applies the value measurement rules and reports to the board with the oversight dashboard.</li>
-<li>It manages nonconformities using the process in section 12.</li>
-</ol>
-<p>The declaration is drafted with <a href="plantillas/P61_SEVEN-G_Declaracion_de_aplicacion_de_SEVEN-G.html" title="Template P61 &#183; SEVEN-G declaration of application">P61</a> and audited in accordance with 38 §11.</p>
-<p>Initiatives in production that predate the adoption of the framework must be regularised within a time limit approved in C2, by undergoing a continuity review equivalent to G7.</p>
+<h3 id="14-1-the-seven-g-core">14.1 The SEVEN-G core</h3>
+<p>The <strong>core</strong> is the minimum, stable set of rules that distinguishes applying SEVEN-G from using some of its templates. It is the same for every company, intensity and scope. Everything else in the library is either a <strong>practice</strong> —the recommended way, or the mandatory way when its trigger occurs, of meeting the core (<a href="94_SEVEN-G_Matriz_de_obligatoriedad_y_lectura_por_capas.html" title="Document 94 &#183; Obligation matrix and layered reading">document 94</a>, section 2.3)— or an <strong>instrument</strong> —a template or a tool that makes it easier—. The core has its own version and only changes by express decision of the framework's author, which is recorded; documents, templates and tools may evolve without changing it.</p>
+<div class="tabla"><table>
+<thead>
+<tr>
+<th>Code</th>
+<th>Core rule</th>
+<th>Where it is developed</th>
+</tr>
+</thead>
+<tbody>
+<tr id="cod-n-01">
+<td><strong>N-01</strong></td>
+<td><strong>Complete inventory</strong> of AI systems —own, third-party, corporate use and unauthorised— with an owner, regulatory classification and intensity.</td>
+<td><a href="32_SEVEN-G_Inventario_y_clasificacion_regulatoria.html" title="Document 32 &#183; AI system inventory and regulatory classification">document 32</a>; <a href="90_SEVEN-G_Guia_de_implantacion.html" title="Document 90 &#183; SEVEN-G implementation guide">document 90</a>, section 2.4</td>
+</tr>
+<tr id="cod-n-02">
+<td><strong>N-02</strong></td>
+<td><strong>Every initiative is registered</strong> before consuming budget, with its dates per phase, decisions, criteria and closing reason (traceability in section 6.11).</td>
+<td>section 6.11; <a href="03_SEVEN-G_Herramientas_y_registro_de_iniciativas.html" title="Document 03 &#183; SEVEN-G tools and initiative register">document 03</a></td>
+</tr>
+<tr id="cod-n-03">
+<td><strong>N-03</strong></td>
+<td><strong>Intensity is determined for each initiative</strong> in phase 0 and reviewed at G3 and at each R6. One Enterprise criterion is enough.</td>
+<td>section 9</td>
+</tr>
+<tr id="cod-n-04">
+<td><strong>N-04</strong></td>
+<td><strong>No phase or gate is skipped</strong>: every initiative goes through all the gates of its lifecycle and each one is recorded with its criteria and its outcome. Which criteria are assessed and which sessions may be grouped depends on the intensity.</td>
+<td>sections 7 and 9; <a href="21_SEVEN-G_Criterios_de_gate_y_auditoria.html" title="Document 21 &#183; Gate and audit criteria">document 21</a>, section 3.4</td>
+</tr>
+<tr id="cod-n-05">
+<td><strong>N-05</strong></td>
+<td><strong>G3 is always decided separately</strong>: it is the main stop gate.</td>
+<td>section 6.1; <a href="90_SEVEN-G_Guia_de_implantacion.html" title="Document 90 &#183; SEVEN-G implementation guide">document 90</a>, section 2.4</td>
+</tr>
+<tr id="cod-n-06">
+<td><strong>N-06</strong></td>
+<td><strong>Segregation of duties</strong>: roles and bodies assigned in line with the incompatibilities in section 8.2; whoever builds neither verifies nor decides their own work, and risk clearance is independent of the team.</td>
+<td>section 8; <a href="30_SEVEN-G_Modelo_de_gobierno.html" title="Document 30 &#183; Governance model">document 30</a></td>
+</tr>
+<tr id="cod-n-07">
+<td><strong>N-07</strong></td>
+<td><strong>Dual validation and evidence prior to the decision</strong>: without verified evidence there is no decision.</td>
+<td>section 7.2; <a href="21_SEVEN-G_Criterios_de_gate_y_auditoria.html" title="Document 21 &#183; Gate and audit criteria">document 21</a>, sections 3 and 4</td>
+</tr>
+<tr id="cod-n-08">
+<td><strong>N-08</strong></td>
+<td><strong>The &quot;Yes ◆&quot; criteria</strong> (security, legal compliance, human oversight) are never accepted as a condition.</td>
+<td><a href="21_SEVEN-G_Criterios_de_gate_y_auditoria.html" title="Document 21 &#183; Gate and audit criteria">document 21</a>, section 2.2</td>
+</tr>
+<tr id="cod-n-09">
+<td><strong>N-09</strong></td>
+<td><strong>Value hypothesis with baseline and stop criteria</strong> before investing in feasibility.</td>
+<td>section 6.4; <a href="40_SEVEN-G_Reglas_de_medicion_del_valor.html" title="Document 40 &#183; Value measurement rules">document 40</a></td>
+</tr>
+<tr id="cod-n-10">
+<td><strong>N-10</strong></td>
+<td><strong>Regulatory classification and risk register</strong> before design; a Critical residual risk without board approval blocks G3 and G5.</td>
+<td><a href="32_SEVEN-G_Inventario_y_clasificacion_regulatoria.html" title="Document 32 &#183; AI system inventory and regulatory classification">document 32</a>; <a href="33_SEVEN-G_Metodologia_de_riesgos_de_IA.html" title="Document 33 &#183; AI risk methodology">document 33</a></td>
+</tr>
+<tr id="cod-n-11">
+<td><strong>N-11</strong></td>
+<td><strong>Tested rollback plan and current continuity review</strong> for everything in production; whatever was already in production when the framework was adopted is regularised within the time limit approved in C2, with a review equivalent to G7.</td>
+<td>section 6.8; <a href="52_SEVEN-G_Manual_de_operacion_de_IA.html" title="Document 52 &#183; AI operations manual">document 52</a>; <a href="14_SEVEN-G_Gestion_de_cartera.html" title="Document 14 &#183; Portfolio management">document 14</a>, section 11</td>
+</tr>
+<tr id="cod-n-12">
+<td><strong>N-12</strong></td>
+<td><strong>The board approves in C2</strong>, after the C1 diagnosis, the AI thesis, the ambition per sphere and the risk appetite; it receives AI information at least quarterly and approves Transform bets.</td>
+<td>section 5; <a href="13_SEVEN-G_Tesis_de_IA_ambicion_y_apetito_de_riesgo.html" title="Document 13 &#183; AI thesis, ambition and risk appetite">document 13</a></td>
+</tr>
+<tr id="cod-n-13">
+<td><strong>N-13</strong></td>
+<td><strong>Value and cost figures follow the measurement rules</strong> and are reported to the board with the oversight dashboard.</td>
+<td>section 11; <a href="40_SEVEN-G_Reglas_de_medicion_del_valor.html" title="Document 40 &#183; Value measurement rules">document 40</a>; <a href="60_SEVEN-G_Paquete_para_el_consejo.html" title="Document 60 &#183; Board pack">document 60</a></td>
+</tr>
+<tr id="cod-n-14">
+<td><strong>N-14</strong></td>
+<td><strong>Nonconformities are managed</strong> with the process in section 12.</td>
+<td>section 12; <a href="37_SEVEN-G_No_conformidades_e_incidentes.html" title="Document 37 &#183; Nonconformities, AI incidents and remediation">document 37</a></td>
+</tr>
+</tbody>
+</table></div>
+<p>Core version: <strong>1 (01-10-2026)</strong>. Document 94, section 3, repeats this list for convenience; if they differ, this one prevails.</p>
+<blockquote>
+<p><strong>Why it matters.</strong> A framework that grows without a stable core forces people to reread it in full to know what is non-negotiable, and every new document looks like one more obligation. With a small core, a company knows what must never be missing and can apply the rest in proportion to the risk and materiality of each initiative (principle 11), without the library having to stop growing as guidance.</p>
+</blockquote>
+<h3 id="14-2-declaration">14.2 Declaration</h3>
+<p>An organisation may declare that it applies SEVEN-G when it meets the fourteen core rules (N-01 to N-14). The declaration is drafted with <a href="plantillas/P61_SEVEN-G_Declaracion_de_aplicacion_de_SEVEN-G.html" title="Template P61 &#183; SEVEN-G declaration of application">P61</a>, cites the core version it applies and is audited in accordance with 38 §11.</p>
 <hr />
 <h2 id="related-documents"><span class="antetitulo">15</span>Related documents</h2>
 <div class="tabla"><table>
@@ -2283,11 +2366,16 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>16-09-2026</td>
 <td>First version. Consolidates the previous foundational methodology and the <em>gate</em> criteria into a single model; incorporates the corporate cycle, the criteria differentiated by ambition level, intensity determination, multi-level go-live sign-off, the incompatibility table, nonconformity time limits, regulatory fit and lifecycle traceability as a funnel.</td>
 </tr>
+<tr>
+<td>0.2</td>
+<td>01-10-2026</td>
+<td>Principle 11, proportionality (section 3). Section 14 defines the SEVEN-G core (14.1, rules N-01 to N-14, version 1), which unifies the seven declaration conditions and the twelve rules never omitted in <a href="94_SEVEN-G_Matriz_de_obligatoriedad_y_lectura_por_capas.html" title="Document 94 &#183; Obligation matrix and layered reading">document 94</a>, and the declaration (14.2).</td>
+</tr>
 </tbody>
 </table></div>
 <h2 id="external-sources">External sources cited</h2><p class="fuentes-nota">Links to the official or primary source, checked before publication. Always verify the version in force on the date of use.</p><ul class="fuentes-externas"><li><a href="https://eur-lex.europa.eu/eli/dir/2022/2555/oj/eng" target="_blank" rel="noopener">Directive (EU) 2022/2555 of the European Parliament and of the Council of 14 December 2022 on measures for a high common level of cybersecurity across the Union (NIS 2 Directive)</a><span> · Parlamento Europeo y Consejo de la UE · 14-12-2022</span></li><li><a href="https://eur-lex.europa.eu/eli/reg/2016/679/oj/eng" target="_blank" rel="noopener">Regulation (EU) 2016/679 of the European Parliament and of the Council of 27 April 2016 on the protection of natural persons with regard to the processing of personal data and on the free movement of such data, and repealing Directive 95/46/EC (General Data Protection Regulation)</a><span> · Parlamento Europeo y Consejo de la UE · 27-04-2016</span></li><li><a href="https://eur-lex.europa.eu/eli/reg/2022/2554/oj/eng" target="_blank" rel="noopener">Regulation (EU) 2022/2554 of the European Parliament and of the Council of 14 December 2022 on digital operational resilience for the financial sector (DORA)</a><span> · Parlamento Europeo y Consejo de la UE · 14-12-2022</span></li><li><a href="https://eur-lex.europa.eu/eli/reg/2024/1689/oj/eng" target="_blank" rel="noopener">Regulation (EU) 2024/1689 of the European Parliament and of the Council of 13 June 2024 laying down harmonised rules on artificial intelligence (Artificial Intelligence Act)</a><span> · Parlamento Europeo y Consejo de la UE · 13-06-2024</span></li><li><a href="https://csrc.nist.gov/pubs/ir/8596/iprd" target="_blank" rel="noopener">Cybersecurity Framework Profile for Artificial Intelligence (Cyber AI Profile): NIST Community Profile, NIST IR 8596 (Initial Preliminary Draft)</a><span> · National Institute of Standards and Technology (NIST), NCCoE · 16-12-2025</span></li><li><a href="https://www.iso.org/standard/42001" target="_blank" rel="noopener">ISO/IEC 42001:2023 Information technology — Artificial intelligence — Management system</a><span> · ISO/IEC (JTC 1/SC 42) · 18-12-2023</span></li><li><a href="https://www.nist.gov/publications/artificial-intelligence-risk-management-framework-ai-rmf-10" target="_blank" rel="noopener">Artificial Intelligence Risk Management Framework (AI RMF 1.0), NIST AI 100-1</a><span> · National Institute of Standards and Technology (NIST), Departamento de Comercio de EE. UU. · 26-01-2023</span></li><li><a href="https://csrc.nist.gov/pubs/cswp/29/the-nist-cybersecurity-framework-csf-20/final" target="_blank" rel="noopener">The NIST Cybersecurity Framework (CSF) 2.0, NIST CSWP 29</a><span> · National Institute of Standards and Technology (NIST), Departamento de Comercio de EE. UU. · 26-02-2024</span></li></ul>
 </main>
-<footer class="pie"><div><span>© 2026 Fernando García Varela · SEVEN-G methodology</span><span>Generated on 28-09-2026</span></div><p class="pie-ia">Content generated and typeset with AI support under the author&#39;s editorial supervision.</p></footer>
+<footer class="pie"><div><span>© 2026 Fernando García Varela · SEVEN-G methodology</span><span>Generated on 01-10-2026</span></div><p class="pie-ia">Content generated and typeset with AI support under the author&#39;s editorial supervision.</p></footer>
 <script src="codigos.js" defer></script>
 
 <script>

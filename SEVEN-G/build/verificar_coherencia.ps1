@@ -79,6 +79,8 @@
     36. Navegación y tema en todas las páginas (D141): portada, entrada, documentos, herramientas, página de T17, galería,
         comunidad, panel completo, panel móvil y registro de recomendaciones llevan el selector de tema, siguen el tema del sitio
         (clave seveng-tema) y lo guardan al cambiarlo; el móvil y el registro de recomendaciones llevan los enlaces de vuelta al sitio.
+    37. Núcleo de SEVEN-G (D145): las catorce reglas N-01 a N-14 están, en el mismo orden, en 01 §14.1, 94 §3 y P61 (ES/EN); 01 §3 tiene
+        el principio 11 de proporcionalidad; 94 §2.3 distingue principio, práctica e instrumento; el glosario tiene el código.
 #>
 param([switch]$SinNavegador)
 $ErrorActionPreference = 'Stop'
@@ -572,7 +574,8 @@ try {
     $tipos = @{ '.html' = 'text/html; charset=utf-8'; '.js' = 'application/javascript; charset=utf-8'; '.css' = 'text/css; charset=utf-8'; '.json' = 'application/json; charset=utf-8'; '.png' = 'image/png'; '.jpg' = 'image/jpeg'; '.svg' = 'image/svg+xml'; '.pdf' = 'application/pdf'; '.woff2' = 'font/woff2' }
     foreach ($p in $pruebas) {
       $puerto = Get-Random -Minimum 20000 -Maximum 40000
-      $http = [System.Net.HttpListener]::new(); $http.Prefixes.Add("http://localhost:$puerto/"); $http.Start()
+      # si el puerto elegido al azar está ocupado, se prueba con otro
+      for ($intento = 0; ; $intento++) { $http = [System.Net.HttpListener]::new(); $http.Prefixes.Add("http://localhost:$puerto/"); try { $http.Start(); break } catch { $http.Close(); if ($intento -ge 9) { throw }; $puerto = Get-Random -Minimum 20000 -Maximum 40000 } }
       $sel = ($p.debe | ForEach-Object { "'" + $_.Replace("'", "\'") + "'" }) -join ','
       $pagina = [IO.File]::ReadAllText($p.f)
       $pagina = $pagina -replace '(?i)<head>', '<head><script>window.__errs=[];window.addEventListener("error",function(e){__errs.push(e.message)});</script>'
@@ -1647,6 +1650,27 @@ try {
     if (-not $ok) { Mal "$($f.Name): sin tema del sitio ni navegación de vuelta; regenerar (t01_a_panel.py o galeria.py) (D141)"; $mal36++ }
   }
   if (-not $mal36) { Ok "selector de tema y navegación del sitio en portada, entrada, documentos, herramientas, página de T17, galería, comunidad y paneles ($($salT17.Count) paneles móviles y registros de recomendaciones generados)" }
+
+  # ---- 37. núcleo de SEVEN-G y proporcionalidad (D145)
+  Write-Host '37. Núcleo de SEVEN-G (N-01 a N-14) y principio de proporcionalidad (D145)'
+  $mal37 = 0
+  $codN = 1..14 | ForEach-Object { 'N-{0:D2}' -f $_ }
+  foreach ($lg in 'es', 'en') {
+    $d01 = [IO.File]::ReadAllText((Get-ChildItem (Join-Path $repo "SEVEN-G\mds\$lg") -Filter '01_SEVEN-G_*.md').FullName)
+    $d94 = [IO.File]::ReadAllText((Get-ChildItem (Join-Path $repo "SEVEN-G\mds\$lg") -Filter '94_SEVEN-G_*.md').FullName)
+    $p61 = [IO.File]::ReadAllText((Get-ChildItem (Join-Path $repo "SEVEN-G\mds\$lg\plantillas") -Filter 'P61_SEVEN-G_*.md').FullName)
+    $g02 = [IO.File]::ReadAllText((Get-ChildItem (Join-Path $repo "SEVEN-G\mds\$lg") -Filter '02_SEVEN-G_*.md').FullName)
+    $s14 = [regex]::Match($d01, '(?s)\n### 14\.1 .*?\n### 14\.2 ').Value
+    $s3 = [regex]::Match($d94, '(?s)\n## 3\. .*?\n## 4\. ').Value
+    foreach ($par in @(@('01 §14.1', $s14), @('94 §3', $s3), @('P61', $p61))) {
+      $vistos = [regex]::Matches($par[1], '\| (?:\*\*)?(N-\d\d)(?:\*\*)? \|') | ForEach-Object { $_.Groups[1].Value }
+      if ((@($vistos) -join ',') -ne ($codN -join ',')) { Mal "$lg $($par[0]): el núcleo no tiene las reglas N-01 a N-14 en orden (D145)"; $mal37++ }
+    }
+    if ($d01 -notmatch '\n\| 11 \| \*\*(Proporcionalidad|Proportionality)\*\*') { Mal "$lg 01 §3: falta el principio 11 de proporcionalidad (D145)"; $mal37++ }
+    if ($d94 -notmatch '\n### 2\.3 ') { Mal "$lg 94 §2.3: falta «principio, práctica e instrumento» (D145)"; $mal37++ }
+    if (-not $g02.Contains('| **N-01–N-14** |')) { Mal "$lg 02 §6.1: falta el código N-01–N-14 (D145)"; $mal37++ }
+  }
+  if (-not $mal37) { Ok 'núcleo N-01 a N-14 igual en 01 §14.1, 94 §3 y P61 (ES/EN); principio 11 de proporcionalidad; 94 §2.3; código en el glosario' }
 }
 finally { Remove-Item $tmp -Recurse -Force -Confirm:$false -ErrorAction SilentlyContinue }
 

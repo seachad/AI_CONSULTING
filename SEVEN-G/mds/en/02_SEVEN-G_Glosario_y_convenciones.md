@@ -5,8 +5,8 @@
 | | |
 |---|---|
 | Document | Document 02 · Glossary and conventions |
-| Version | 1.2 |
-| Date | 28-09-2026 |
+| Version | 1.3 |
+| Date | 01-10-2026 |
 | Author | Fernando García Varela |
 | Status | In force. Single source of the framework's terms, scales and codes; it is updated before any other document when a term changes. |
 
@@ -193,6 +193,7 @@ Alphabetical order by English term. The full scales are in section 4 and the cod
 | **Conditionable criterion** | Mandatory *gate* criterion whose shortfall is not critical and whose evidence exists, and which therefore allows Proceed with conditions. | 21 §2.2 | Condicionable (criterio) |
 | **Context and constraints statement** | Phase 0 evidence that declares the initiative's regulatory, ethical, data, budget and time constraints. | 01 §6.2; P02 | Declaración de contexto y restricciones |
 | **Controlled taxonomy** | Closed lists of initiative register tags (sphere, ambition level, intensity, regulatory classification, technology, exposure, value type and stop or retirement reason) that make it possible to filter, compare and aggregate the portfolio. | 03 §3.3; section 5 | Taxonomía controlada |
+| **Core (SEVEN-G core)** | Minimum, stable set of fourteen rules (N-01 to N-14) that distinguishes applying SEVEN-G from using some of its templates: inventory, register, intensity, gates, G3 separately, segregation of duties, dual validation, "Yes ◆" criteria, value hypothesis, risks, rollback and continuity, board, measurement and nonconformities. It is the same for every company, intensity and scope, has its own version and only changes by express decision of the author. | 01 §14.1; 94 §3 | Núcleo de SEVEN-G |
 | **Corporate cycle** | Company level of the framework: five annual stages with continuous oversight (C1 Diagnosis, C2 Direction, C3 Portfolio, C4 Oversight, C5 Review) through which the board and senior management govern AI. | 01 §5 | Ciclo corporativo |
 | **Corporate use of general-purpose AI** | AI assistants and productivity suites used by employees. It is governed with the inventory, the acceptable use policy, training and technical controls, and moves to the full lifecycle if it meets any Enterprise criterion. | 01 §1.2; 31 §5 | Uso corporativo de IA de propósito general |
 | **Critical control** | Security, legal compliance or human oversight control that does not admit Proceed with conditions: the *Yes ◆* criteria in document 21 and the critical agent controls by autonomy level in document 35. Not designed, it blocks G4; not tested, it blocks G5; disabled in production, it is a critical nonconformity. | 01 §7.3; 21 §2.2; 35 §5.4 | Control crítico |
@@ -340,6 +341,7 @@ Alphabetical order by English term. The full scales are in section 4 and the cod
 | **Post-market monitoring** | Documented system with which the provider of a high-risk system collects and analyses data on its performance throughout its lifetime (EU AI Act, Article 72). The deployer monitors operation in accordance with the instructions for use and informs the provider (Article 26(5)). It is the single term used in the library; "post-production monitoring" and "post-commercialisation monitoring" are not used. | 52 §9; 34 §3.14 | Vigilancia posterior a la comercialización |
 | **Potential value** | Value that has not yet occurred. It is only a data point if it is accompanied by its additional investment, its hypothesis and its time frame; it is used for prioritisation and never adds to realised net value. | 00 rule 4; 40 §5.3 | Valor potencial |
 | **Primary sphere · secondary sphere** | The **primary** sphere is mandatory and is the one in which the main metric of the value hypothesis is measured; it receives all the investment and value. The **secondary** sphere is optional, at most one, only if there is a second measurable effect with an indicator of that sphere, and it carries no amounts. Spheres 08 and 09 are only primary or secondary when the purpose of the initiative is compliance or governance. | 10 §4.1–4.2 | Esfera principal · esfera secundaria |
+| **Principle · practice · instrument** | Three kinds of content in the library. **Mandatory principle**: a core rule (N-01 to N-14), always met. **Practice**: a way of meeting the core developed by the documents, mandatory according to its level and trigger or recommended. **Instrument**: a template or tool that makes the practice easier; what is mandatory is the evidence it organises, not its format. | 94 §2.3 | Principio obligatorio · práctica · instrumento |
 | **Proceed** | *Gate* outcome: all criteria are met and all evidence is verified; the initiative moves to the next phase. | 01 §7.3 | Continuar |
 | **Proceed with conditions** | *Gate* or R6 outcome: the essential criteria are met and non-critical aspects remain pending, with explicit conditions, time limit and owner. It is not accepted for critical security, legal compliance or human oversight controls. | 01 §7.3 | Continuar con condiciones |
 | **Proceed with operation** | R6 outcome: the initiative continues to deliver value under control and remains in production until the next review. | 01 §7.3; 21 §5.3 | Continuar la operación |
@@ -347,6 +349,7 @@ Alphabetical order by English term. The full scales are in section 4 and the cod
 | **Programme traffic light** | Summary of a programme's status using the worst colour across six axes (time, cost, value, risk, governance, adoption). An axis with no data is shown in grey and the programme cannot be green. | 14 §12 | Semáforo de programas |
 | **Prohibited practice** | Use of AI prohibited by Article 5 of the EU AI Act. It is not assessed as a risk or accepted: it is avoided, and at G3 it requires Stop. | 01 §6.5; 33 §4.3; 21 G3.08 | Práctica prohibida |
 | **Prompt injection** | Attack that introduces instructions to alter the intended behaviour of a generative AI system or an agent. It is **direct** when the user introduces it and **indirect** when it is hidden in content the system reads (documents, emails, websites, tool responses). Its controls must be checked with adversarial testing. | 35 §3.1; 33 §5.3 | Inyección de instrucciones |
+| **Proportionality** | Principle 11 of the framework: governance effort matches each initiative's risk, materiality and reversibility. No evidence is requested twice, no decision needs more participants than segregation of duties requires and no initiative bears a disproportionate governance cost; the core is never reduced. | 01 §3; 94 §2.3 | Proporcionalidad |
 | **Proposed, confirmed and actual ambition** | Three moments in the ambition classification of an initiative: **proposed** in phase 1, **confirmed** at G2 on the basis of the value hypothesis and **actual** at G7 (and, where appropriate, at R6) according to the evidence in production. | 12 §3.4; 03 §3.3 | Ambición propuesta, confirmada y real |
 | **Provider (regulatory role)** | Under the EU AI Act, a person or entity that develops an AI system or a general-purpose AI model, or has one developed, and places it on the market or puts it into service under its own name or trademark (Article 3(3)). A deployer becomes a provider if it puts its name or trademark on the system, makes a substantial modification or changes its purpose in such a way that the system becomes high-risk (Article 25(1)). | 32 §4 | Proveedor (rol regulatorio) |
 
@@ -796,7 +799,7 @@ Spanish equivalents of the taxonomy values:
 | Code | Format and range | What it identifies | Defining document | Example |
 |---|---|---|---|---|
 | **Measurement rules** | 1–10 | Value measurement rules; they are not renumbered. | 00 §6; 40 §3 | rule 3 |
-| **Principles** | 1–10 | Framework principles. | 01 §3 | principle 7 |
+| **Principles** | 1–11 | Framework principles. | 01 §3 | principle 7 |
 | **Spheres** | 01–09 (E01–E09 in indicator columns) | Spheres of the impact map. | 10 §2 | 04 Operations |
 | **C1–C5** | C + number | Corporate cycle stages: Diagnosis, Direction, Portfolio, Oversight, Review. | 01 §5.1 | C2 |
 | **Phases 0–7** | Number (F0–F7 in indicator columns) | Initiative lifecycle phases. | 01 §6.1 | phase 3 |
@@ -811,6 +814,7 @@ Spanish equivalents of the taxonomy values:
 | **S1–S4** | S + number | AI incident severity. | 37 §4.2 | S1 |
 | **A0–A3** | A + number | Autonomy levels. | 35 §5.1 | A2 |
 | **N1–N3** | N + number | Third-party requirement levels. | 36 §4 | N3 |
+| **N-01–N-14** | N + hyphen + two digits | SEVEN-G core rules. | 01 §14.1 | N-05 |
 | **B1–B3** | B + number | Baseline conditions of the transformation index. | 12 §4.3 | B2 |
 | **F1–F10 · F2v** | F + number | Official measurement formulas. | 40 §6 | F7 |
 | **FE-1–FE-6** | FE + hyphen + number | Scaling barriers of the board dashboard's executive reading: value, progress, risk and compliance, adoption, data and technology, direction and governance. | 60 §10.4 | FE-3 |
@@ -1024,6 +1028,7 @@ Tools display the values of closed lists in Spanish and English using the equiva
 
 | Version | Date | Changes |
 |---|---|---|
+| 1.3 | 01-10-2026 | Adds SEVEN-G core (N-01 to N-14), mandatory principle · practice · instrument and proportionality (principle 11); principles become 1–11. |
 | 1.2 | 28-09-2026 | Adds cash still needed, pass condition, realisation curve, sustained by non-quantified value and non-quantified value; extends benefits realisation plan and funding tranche with their recording in T01; 209 defined terms (D135). |
 | 1.1 | 28-09-2026 | Adds starting-point archetype and modifier, implementation milestone and journey (document 96), technology footprint (11 §7.6) and impact reach (12 §3.7), with their codes PP-A–PP-F, MP1–MP5, HI-01–HI-22, HT0–HT5 and IM1–IM4; tools T01–T23. |
 | 1.0 | 16-09-2026 | Final library version v0.1. The cover is updated to in-force status and the AI self-consulting principle is added with an editorial criterion: didactic explanations oriented towards decision-making and tool use, without a course format. Consistency adjustments: 70 typical risks (RT-ORG-07 to RT-ORG-09), 156 indicators in 13 families in document 41 (new PRO family) and provisional CNC- prefix for the knowledge indicators in document 51. |

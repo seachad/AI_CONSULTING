@@ -5,8 +5,8 @@
 | | |
 |---|---|
 | Documento | Documento 02 · Glosario y convenciones |
-| Versión | 1.2 |
-| Fecha | 28-09-2026 |
+| Versión | 1.3 |
+| Fecha | 01-10-2026 |
 | Autor | Fernando García Varela |
 | Estado | Vigente. Fuente única de términos, escalas y códigos del marco; se actualiza antes que cualquier otro documento cuando cambia un término. |
 
@@ -319,6 +319,7 @@ Orden alfabético. Las escalas completas están en la sección 4 y los códigos 
 | **Nivel de riesgo** | Producto de probabilidad por impacto en la matriz 5 × 5: Bajo, Medio, Alto o Crítico. | 33 §4.3 | risk level † |
 | **Nivel global de madurez** | Media ponderada de los niveles de las siete dimensiones, redondeada hacia abajo y limitada al nivel más bajo de D1 o D6 más uno. | 11 §2.3, §5.3 | overall maturity level † |
 | **No conformidad** | Incumplimiento de un requisito obligatorio del marco ("debe"), clasificado como menor, mayor o crítica, que se gestiona con contención, causa raíz, acción correctiva, verificación de eficacia, cierre y reauditoría. | 01 §12; 37 §3 | minor · major · critical nonconformity |
+| **Núcleo de SEVEN-G** | Conjunto mínimo y estable de catorce reglas (N-01 a N-14) que distingue aplicar SEVEN-G de usar algunas de sus plantillas: inventario, registro, intensidad, puertas, G3 por separado, separación de funciones, validación dual, criterios «Sí ◆», hipótesis de valor, riesgos, reversión y continuidad, consejo, medición y no conformidades. Es igual para toda compañía, intensidad y alcance, tiene su propia versión y solo cambia por decisión expresa del autor. | 01 §14.1; 94 §3 | SEVEN-G core |
 
 ### 3.13 O
 
@@ -347,8 +348,10 @@ Orden alfabético. Las escalas completas están en la sección 4 y los códigos 
 | **Plazo de referencia** | Duración orientativa de cada fase y de la decisión de un *gate*, aprobada en C2, cuya superación marca la iniciativa como estancada. | 01 §6.11; 03 §3.6 | reference time limit |
 | **Práctica prohibida** | Uso de IA prohibido por el art. 5 del Reglamento Europeo de IA. No se valora como riesgo ni se acepta: se evita, y en G3 obliga a Parar. | 01 §6.5; 33 §4.3; 21 G3.08 | prohibited practice † |
 | **Principal puerta de parada** | G3 · Viabilidad, puerta en la que se concentra la decisión de parar antes de invertir en construcción. | 01 §6.5 | main stop gate |
+| **Principio obligatorio · práctica · instrumento** | Tres clases de contenido de la biblioteca. **Principio obligatorio**: regla del núcleo (N-01 a N-14), que se cumple siempre. **Práctica**: forma de cumplir el núcleo que desarrollan los documentos, obligatoria según su nivel y su disparador o recomendada. **Instrumento**: plantilla o herramienta que facilita la práctica; lo obligatorio es la evidencia que ordena, no su formato. | 94 §2.3 | mandatory principle · practice · instrument |
 | **Programa** | Agrupación de iniciativas relacionadas mediante la etiqueta libre "Programa", cuyo estado se resume en un semáforo. | 14 §12 | programme † |
 | **Proporción validada** | Valor validado ÷ (validado + declarado + estimado), sobre el valor bruto realizado del periodo (F6). Los informes al consejo la muestran siempre. | 00 regla 2; 40 F6 | validated share † |
+| **Proporcionalidad** | Principio 11 del marco: el esfuerzo de gobierno se ajusta al riesgo, la materialidad y la reversibilidad de cada iniciativa. Ninguna evidencia se pide dos veces, ninguna decisión necesita más participantes de los que exige la separación de funciones y ninguna iniciativa soporta un coste de gobierno desproporcionado; el núcleo nunca se rebaja. | 01 §3; 94 §2.3 | proportionality |
 | **Proveedor (rol regulatorio)** | Según el Reglamento Europeo de IA, quien desarrolla un sistema de IA o un modelo de uso general, o lo hace desarrollar, y lo introduce en el mercado o lo pone en servicio con su propio nombre o marca (art. 3.3). Un responsable del despliegue pasa a ser proveedor si pone su marca, hace una modificación sustancial o cambia la finalidad de forma que el sistema pase a ser de alto riesgo (art. 25.1). | 32 §4 | provider † |
 | **Proveedor de IA (tercero)** | Tercero que suministra modelos, plataformas, software con funciones de IA o servicios que los usan, gestionado con niveles de exigencia N1–N3. | 36 | AI supplier † |
 | **Pruebas adversarias** | Pruebas que intentan deliberadamente hacer fallar un sistema de IA o un agente (inyección, extracción, abuso de herramientas) para comprobar la eficacia de sus controles. | 35 §8; 33 §5.3 | adversarial testing † |
@@ -796,7 +799,7 @@ Equivalentes en inglés de los valores de la taxonomía:
 | Código | Formato y rango | Qué identifica | Documento que lo define | Ejemplo |
 |---|---|---|---|---|
 | **Reglas de medición** | 1–10 | Reglas de medición del valor; no se renumeran. | 00 §6; 40 §3 | regla 3 |
-| **Principios** | 1–10 | Principios del marco. | 01 §3 | principio 7 |
+| **Principios** | 1–11 | Principios del marco. | 01 §3 | principio 7 |
 | **Esferas** | 01–09 (E01–E09 en columnas de indicadores) | Esferas del mapa de impacto. | 10 §2 | 04 Operaciones |
 | **C1–C5** | C + número | Etapas del ciclo corporativo: Diagnóstico, Dirección, Cartera, Supervisión, Revisión. | 01 §5.1 | C2 |
 | **Fases 0–7** | Número (F0–F7 en columnas de indicadores) | Fases del ciclo de vida de la iniciativa. | 01 §6.1 | fase 3 |
@@ -811,6 +814,7 @@ Equivalentes en inglés de los valores de la taxonomía:
 | **S1–S4** | S + número | Severidad de incidentes de IA. | 37 §4.2 | S1 |
 | **A0–A3** | A + número | Niveles de autonomía. | 35 §5.1 | A2 |
 | **N1–N3** | N + número | Niveles de exigencia a terceros. | 36 §4 | N3 |
+| **N-01–N-14** | N + guion + dos dígitos | Reglas del núcleo de SEVEN-G. | 01 §14.1 | N-05 |
 | **B1–B3** | B + número | Condiciones de base del índice de transformación. | 12 §4.3 | B2 |
 | **F1–F10 · F2v** | F + número | Fórmulas oficiales de medición. | 40 §6 | F7 |
 | **FE-1–FE-6** | FE + guion + número | Frenos de escalado de la lectura ejecutiva del panel del consejo: valor, avance, riesgo y cumplimiento, adopción, datos y tecnología, dirección y gobierno. | 60 §10.4 | FE-3 |
@@ -1024,6 +1028,7 @@ Las herramientas muestran los valores de las listas cerradas en español e ingl�
 
 | Versión | Fecha | Cambios |
 |---|---|---|
+| 1.3 | 01-10-2026 | Añade núcleo de SEVEN-G (N-01 a N-14), principio obligatorio · práctica · instrumento y proporcionalidad (principio 11); los principios pasan a 1–11. |
 | 1.2 | 28-09-2026 | Añade caja por delante, condición de paso, curva de realización, sostenido por valor no cuantificado y valor no cuantificado; amplía plan de realización de beneficios y tramo de financiación con su registro en T01; 209 términos definidos (D135). |
 | 1.1 | 28-09-2026 | Añade arquetipo y modificador de punto de partida, hito y recorrido de implantación (documento 96), huella tecnológica (11 §7.6) y alcance del impacto (12 §3.7), con sus códigos PP-A–PP-F, MP1–MP5, HI-01–HI-22, HT0–HT5 e IM1–IM4; herramientas T01–T23. |
 | 1.0 | 16-09-2026 | Versión final de biblioteca v0.1. Se actualiza la portada a estado vigente y se añade el principio de autoconsultoría de IA con criterio editorial: explicaciones didácticas orientadas a decisión y uso de herramientas, sin formato de curso. Ajustes de coherencia: 70 riesgos tipo (RT-ORG-07 a RT-ORG-09), 156 indicadores en 13 familias en el documento 41 (nueva familia PRO) y prefijo provisional CNC- para los indicadores de conocimiento del documento 51. |

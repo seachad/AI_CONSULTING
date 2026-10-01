@@ -37,7 +37,7 @@ Al terminar sabrá elegir el alcance de implantación de su compañía, distingu
 
 | Paso | Qué abrir | Qué mirar |
 |---|---|---|
-| 1 | documento 94, secciones 2 y 3 | Las tres capas, los cinco niveles y las doce reglas que nunca se omiten. |
+| 1 | documento 94, secciones 2 y 3 | Las tres capas, los cinco niveles, el núcleo de catorce reglas que nunca se omiten (N-01 a N-14) y la diferencia entre principio, práctica e instrumento. |
 | 2 | documento 94, sección 4 | Los disparadores: ¿cuáles se dan en su compañía? |
 | 3 | documento 01, sección 9 | Los criterios Enterprise de una iniciativa. |
 | 4 | documento 90, sección 2 | Alcance Lite o Enterprise de compañía y ruta mínima en Lite. |
