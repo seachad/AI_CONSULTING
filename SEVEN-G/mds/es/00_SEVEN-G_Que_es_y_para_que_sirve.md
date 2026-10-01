@@ -31,6 +31,8 @@
 3. **Separa quién decide, quién construye y quién controla**, y traduce la regulación (Reglamento Europeo de IA, RGPD, DORA, NIS2, ISO/IEC 42001) a fases, roles y evidencias concretas.
 4. **Mide el valor en dinero y con estado** —validado, declarado o estimado— y le dice al consejo, con ocho señales observables, si la compañía se transforma o solo se eficienta.
 
+**Qué es frente a los estándares.** Las normas y la regulación —ISO/IEC 42001, ISO/IEC 38507, ISO/IEC 23894, ISO/IEC 42005, el NIST AI RMF o el Reglamento Europeo de IA— dicen **qué debe existir**: un sistema de gestión, responsabilidades del órgano de gobierno, un proceso de riesgo, evaluaciones de impacto, obligaciones legales. SEVEN-G es la **capa operativa que lo hace funcionar**, iniciativa a iniciativa y cartera a cartera, con disciplina de inversión y de valor: quién decide en cada puerta, con qué evidencia, cuánto cuesta y qué rinde. No es una alternativa a ISO/IEC 42001 ni equivale a una certificación: su crosswalk (documento 34, sección 9.1) dice qué requisito cubre, cuál cubre en parte y cuál exige un control externo.
+
 **Qué se lleva, sin coste**
 
 SEVEN-G no es un folleto que termina en una propuesta comercial: **el material de trabajo está aquí, entero**. Los documentos explican el método; las plantillas son los entregables ya preparados para rellenar; las herramientas son aplicaciones que funcionan con los datos de cada compañía. Todo puede usarse tal cual, recortarse, ampliarse, cambiarse de nombre o integrarse en la metodología que la compañía o su consultora ya utilicen, con una única condición: citar la autoría e indicar los cambios.

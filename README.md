@@ -19,6 +19,8 @@ El procedimiento completo —cómo funciona el sitio, dónde están los datos, q
 
 Marco de valor, gobierno y transformación con IA. Proyecto vivo.
 
+**Posicionamiento.** Los estándares (ISO/IEC 42001, 38507, 23894, 42005, NIST AI RMF) y el Reglamento Europeo de IA dicen qué debe existir; SEVEN-G es la capa operativa que lo hace funcionar iniciativa a iniciativa y cartera a cartera, con disciplina de inversión y valor. No es una alternativa a ISO/IEC 42001 ni equivale a una certificación: el crosswalk del documento 34 (sección 9.1, generado desde `SEVEN-G/build/crosswalk/crosswalk.json`) dice qué cubre, qué cubre en parte y qué exige un control externo.
+
 | Carpeta | Contenido |
 |---|---|
 | `SEVEN-G/mds/es/` · `SEVEN-G/mds/en/` | Fuentes Markdown en español (redacción) e inglés (traducción): documentos 00–96, plantillas P01–P74 y curso M00–M09 |

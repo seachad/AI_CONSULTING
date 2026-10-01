@@ -255,6 +255,6 @@ Orden recomendado: **S0 → S1 → S2 → S3 → S4**, con **S6** intercalable e
 | S4 | **Hecho** | 01-10-2026 | D148: IND-COS-12 a 14 (el tiempo por puerta ya era IND-AGI-04); objetivos Express 5 %, Lite 10 %, Enterprise 15 % y coste por hora en 13 §6; horas declaradas en T01; tarjeta «Coste del gobierno» en T17; revisión en C5 (P37). La alerta «gobierno sin uso» de 11 §7.6 no se cambia: mide otra cosa (gobierno sin IA en uso). |
 | S5 | **Hecho** | 01-10-2026 | D149: `crosswalk.json` (52 filas, 6 normas) → 34 §9.1 con `crosswalk.ps1`; 38507 y 42005 citadas por tema (sin numeración cotejable en fuente abierta); ISO-38507 en el registro de referencias. |
 | S6 | **Hecho** | 01-10-2026 | D150: regla de presentación 11 del 40; `resultado_operativo[]` en T01; bloque de tres perspectivas en la ficha de valor de T01 y en la ficha del caso de T17; 60 §4.2 y §4.8; pregunta 17 del 61. Sin cambios en el panel móvil ni en el inventario (posible mejora). |
-| S7 | Pendiente | | |
+| S7 | **Hecho** | 01-10-2026 | D151: 04 §5.1 (qué aporta cada norma / qué añade SEVEN-G), 00 inicio rápido, 91 §6.2 y §8, entrada, portada y README. Pendiente para una sesión local: la diapositiva de posicionamiento de los cursos (el PDF necesita PowerPoint). |
 | S8 | Pendiente | | |
 | S9 | Pendiente (a la espera de datos) | | |

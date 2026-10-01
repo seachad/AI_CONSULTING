@@ -31,6 +31,8 @@
 3. **It separates who decides, who builds and who controls**, and translates regulation (EU AI Act, GDPR, DORA, NIS2, ISO/IEC 42001) into specific phases, roles and evidence.
 4. **It measures value in money and with a status** —validated, declared or estimated— and tells the board, with eight observable signals, whether the company is transforming itself or just becoming more efficient.
 
+**What it is compared with the standards.** Standards and regulation —ISO/IEC 42001, ISO/IEC 38507, ISO/IEC 23894, ISO/IEC 42005, the NIST AI RMF or the EU AI Act— say **what must exist**: a management system, responsibilities of the governing body, a risk process, impact assessments, legal obligations. SEVEN-G is the **operating layer that makes it work**, initiative by initiative and portfolio by portfolio, with investment and value discipline: who decides at each gate, with what evidence, what it costs and what it yields. It is not an alternative to ISO/IEC 42001 nor equivalent to a certification: its crosswalk (document 34, section 9.1) says which requirement it covers, which it covers in part and which needs an external control.
+
 **What you get, at no cost**
 
 SEVEN-G is not a brochure that ends in a sales proposal: **the working material is here, in full**. The documents explain the method; the templates are the deliverables, ready to be filled in; the tools are applications that work with each company's data. Everything can be used as it is, trimmed, extended, renamed or built into the methodology that the company or its consultancy already uses, with a single condition: credit the author and indicate the changes.

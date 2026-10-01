@@ -5,8 +5,8 @@
 | | |
 |---|---|
 | Document | Document 04 · Origins, differences and openness |
-| Version | 0.1 (working draft) |
-| Date | 19-09-2026 |
+| Version | 0.2 (working draft) |
+| Date | 01-10-2026 |
 | Author | Fernando García Varela |
 | Status | Draft for review. Explanatory document: it adds no rules to the framework. |
 
@@ -157,6 +157,23 @@ The company approves the **reference time limits per phase** in C2 and recalibra
 9. **It is compatible and modular**: it coexists with the frameworks and bodies the company already has and can be adopted by components.
 10. **It is open**: it can be used, adapted and redistributed without asking permission or paying (section 6).
 
+### 5.1 Compared with the standards: SEVEN-G as an AI operating model
+
+Standards say what must exist; SEVEN-G is the operating layer that makes it work initiative by initiative and portfolio by portfolio, with investment and value discipline. The table summarises what each reference provides and what the framework adds; the detail, requirement by requirement and with its coverage, is in the crosswalk of document 34 (section 9.1).
+
+| Reference | What it provides | What SEVEN-G adds |
+|---|---|---|
+| **ISO/IEC 42001** | The requirements of an AI management system, certifiable by an accredited body. | The lifecycle of each initiative with gates and verifiable criteria, the portfolio as a funnel, value measurement with status and the board pack; the evidence an audit asks for is already prepared (P74). |
+| **ISO/IEC 38507** | The responsibilities of the governing body over the use of AI. | What the board decides and when (G2 and G7 for Transform), with what information (dashboard and quarterly pack) and where decisions are recorded (register of decisions and recommendations). |
+| **ISO/IEC 23894** | The AI risk management process. | A common 5 × 5 scale, seventy-one standard risks, acceptance by the body of the right level and the link with the gates: without assessed risks, G3 is not passed. |
+| **ISO/IEC 42005** | How to assess the impact of an AI system on people and society. | When it is required (Enterprise criteria and regulatory classification), with which template and at which gate it is verified. |
+| **NIST AI RMF** | Functions and outcomes of trustworthy risk management (GOVERN, MAP, MEASURE, MANAGE). | Current and target profiles derived from the same maturity questionnaire, without a separate assessment (P73). |
+| **EU AI Act** | Legal obligations according to role and risk level. | Each obligation linked to a phase, a role, a piece of evidence and a tool (document 34). |
+
+> **Why it matters.** Whoever already works with a standard is not looking for another one to replace it, but for how to put it into practice without duplicating work. Stating precisely what SEVEN-G covers, and what it does not, avoids two costly mistakes: believing the framework certifies, and believing one must choose between the framework and the standard.
+
+What SEVEN-G is not: an alternative to ISO/IEC 42001, a certification or anything equivalent to one, or a guarantee of compliance with the EU AI Act (documents 91 and 93).
+
 ---
 
 ## 6. Why it is free of charge and freely distributable
@@ -240,3 +257,4 @@ There is no need to get in touch or ask permission for any use that complies wit
 | Version | Date | Changes |
 |---|---|---|
 | 0.1 | 19-09-2026 | First version. Practical origin of the framework, shortcomings of the usual approaches that it corrects, management disciplines it brings together, the portfolio as a sales funnel and its differences, reasons for the open licence, control kept by the author and contact. |
+| 0.2 | 01-10-2026 | Section 5.1: compared with the standards, SEVEN-G as an AI operating model; what each reference provides and what the framework adds, with reference to the crosswalk of document 34 (D151). |
