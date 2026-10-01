@@ -468,13 +468,13 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 
 <div id="top"></div>
 <header class="portada">
-  <div class="cabecera"><div class="marca"><i></i>SEVEN-G</div><div class="cabecera-dato">Document 41 · 16-09-2026</div></div>
+  <div class="cabecera"><div class="marca"><i></i>SEVEN-G</div><div class="cabecera-dato">Document 41 · 01-10-2026</div></div>
   <div class="portada-cuerpo">
     <p class="antetitulo">Document 41 &#183; Indicator catalogue</p>
     <h1>Indicator catalogue</h1>
     <p class="entradilla">Indicators with code, formula, source and owner to measure AI from the initiative to the board</p>
-    <div class="firma"><span><b>Fernando Garc&#237;a Varela</b></span><span>Version 0.1 (working draft)</span><span>16-09-2026</span><span>Draft for review</span></div>
-    <div class="cifras"><div class="cifra"><b>159</b><span>coded indicators</span></div><div class="cifra"><b>13</b><span>families</span></div><div class="cifra"><b>4</b><span>levels of use</span></div><div class="cifra"><b>26</b><span>indicators in the Lite minimum set</span></div></div>
+    <div class="firma"><span><b>Fernando Garc&#237;a Varela</b></span><span>Version 0.2 (working draft)</span><span>01-10-2026</span><span>Draft for review</span></div>
+    <div class="cifras"><div class="cifra"><b>162</b><span>coded indicators</span></div><div class="cifra"><b>13</b><span>families</span></div><div class="cifra"><b>4</b><span>levels of use</span></div><div class="cifra"><b>26</b><span>indicators in the Lite minimum set</span></div></div>
   </div>
 </header>
 <section class="descargas-zona" aria-label="Downloads and tools"><div class="dz-in"><div class="dz-bloque"><p class="dz-titulo">Downloads</p><div class="dz-enlaces"><a class="dz-item" href="../../pdf/en/41_SEVEN-G_Catalogo_de_indicadores.pdf" target="_blank" rel="noopener"><span class="dz-tipo">PDF</span><b>This document · English</b></a><a class="dz-item" href="../../pdf/es/41_SEVEN-G_Catalogo_de_indicadores.pdf" target="_blank" rel="noopener"><span class="dz-tipo">PDF</span><b>Spanish version</b></a><a class="dz-item" href="../es/41_SEVEN-G_Catalogo_de_indicadores.html" hreflang="es"><span class="dz-tipo html">HTML</span><b>Spanish version</b></a></div></div><div class="dz-bloque"><p class="dz-titulo">Related tools</p><div class="dz-enlaces"><a class="dz-item" href="../../herramientas/T01_registro_iniciativas/registro.html" target="_blank" rel="noopener"><span class="dz-tipo tool">T01</span><b>Initiative register</b></a><a class="dz-item" href="../../herramientas/T11_calculadora_valor/calculadora.html" target="_blank" rel="noopener"><span class="dz-tipo tool">T11</span><b>Value hypothesis and cost-per-case calculator</b></a><a class="dz-item" href="../../herramientas/T14_indice_transformacion/indice.html" target="_blank" rel="noopener"><span class="dz-tipo tool">T14</span><b>Transformation index calculator</b></a><a class="dz-item" href="../../herramientas/T15_diagnostico_madurez/madurez.html" target="_blank" rel="noopener"><span class="dz-tipo tool">T15</span><b>Maturity diagnosis</b></a><a class="dz-item" href="../../herramientas/T17_panel_consejo/index.html" target="_blank" rel="noopener"><span class="dz-tipo tool">T17</span><b>Regenerate the board dashboard</b></a></div></div></div></section>
@@ -565,7 +565,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tr>
 <td><strong>COS</strong></td>
 <td>Cost</td>
-<td>11</td>
+<td>14</td>
 </tr>
 <tr>
 <td><strong>EMB</strong></td>
@@ -625,7 +625,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tr>
 <td></td>
 <td><strong>Total</strong></td>
-<td><strong>159</strong></td>
+<td><strong>162</strong></td>
 </tr>
 </tbody>
 </table></div>
@@ -1106,6 +1106,45 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>C1, C4</td>
 <td>C2 framework budget</td>
 <td>●</td>
+</tr>
+<tr>
+<td>IND-COS-12</td>
+<td><strong>Governance hours per initiative.</strong> Hours declared to prepare and verify the evidence, meet and record an initiative's <em>gate</em> decisions. It measures the cost of the method itself; it is not allocated to the cost of the case (42 §4).</td>
+<td>Σ hours declared in the <em>gate</em> decisions (<code>decisiones_gate[].horas_gobierno</code>)</td>
+<td>hours</td>
+<td><a href="../../herramientas/T01_registro_iniciativas/registro.html" title="Tool T01 &#183; Initiative register">T01</a> · <a href="../../herramientas/T17_panel_consejo/index.html" title="Tool T17 &#183; Board AI dashboard">T17</a> <code>seveng.gobierno</code></td>
+<td>G · A</td>
+<td>OIA</td>
+<td>I · Ca</td>
+<td>All · by intensity</td>
+<td>Median by intensity, to be calibrated</td>
+<td></td>
+</tr>
+<tr>
+<td>IND-COS-13</td>
+<td><strong>Cost of governance over investment.</strong> Proportionality of governance (principle 11).</td>
+<td>Declared hours × C2 cost per hour ÷ the initiative's investment</td>
+<td>%</td>
+<td><a href="../../herramientas/T01_registro_iniciativas/registro.html" title="Tool T01 &#183; Initiative register">T01</a> · <a href="../../herramientas/T17_panel_consejo/index.html" title="Tool T17 &#183; Board AI dashboard">T17</a></td>
+<td>A</td>
+<td>OIA</td>
+<td>I · Ca · Cj</td>
+<td>All · by intensity</td>
+<td>Express 5% · Lite 10% · Enterprise 15% (13 §6; starting values, to be calibrated in C5)</td>
+<td></td>
+</tr>
+<tr>
+<td>IND-COS-14</td>
+<td><strong>Referenced evidence.</strong> Share of the evidence taken from what the company already has instead of being copied into a template (21 §4.3).</td>
+<td>Evidence with origin &quot;reference&quot; ÷ evidence</td>
+<td>%</td>
+<td><a href="../../herramientas/T01_registro_iniciativas/registro.html" title="Tool T01 &#183; Initiative register">T01</a></td>
+<td>Q</td>
+<td>OIA</td>
+<td>Ca · Co</td>
+<td>G0–G7</td>
+<td>To be set; increasing in large companies</td>
+<td></td>
 </tr>
 </tbody>
 </table></div>
@@ -3957,6 +3996,11 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>0.1</td>
 <td>18-09-2026</td>
 <td>Three new operations indicators (159 in total): IND-OPE-24 queries outside the validated scope (usage drift), IND-OPE-25 unequal responses in counterfactual pairs (bias in generative AI) and IND-OPE-26 cost-driven degraded mode; correspondence with OPE-18 to OPE-20 in <a href="52_SEVEN-G_Manual_de_operacion_de_IA.html" title="Document 52 &#183; AI operations manual">document 52</a>.</td>
+</tr>
+<tr>
+<td>0.2</td>
+<td>01-10-2026</td>
+<td>Three indicators of the cost of governance itself (162 in total): IND-COS-12 governance hours per initiative, IND-COS-13 cost of governance over investment with targets by intensity and IND-COS-14 referenced evidence. The time of each gate is already measured by IND-AGI-04.</td>
 </tr>
 </tbody>
 </table></div>

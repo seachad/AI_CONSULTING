@@ -102,7 +102,9 @@
             "revision_continuidad_dias": { "type": "object", "required": ["lite", "enterprise"], "properties": { "lite": { "type": "integer" }, "enterprise": { "type": "integer" } } },
             "historial_minimo_ponderado": { "type": "integer", "minimum": 1, "description": "Iniciativas resueltas (en producción o cerradas) que han pasado por una fase necesarias para mostrar su probabilidad histórica y el valor ponderado." },
             "umbral_inversion_enterprise": { "$ref": "#/$defs/importe" },
-            "umbral_express": { "$ref": "#/$defs/importe", "description": "Inversión más coste anual por debajo del cual una iniciativa puede ser Express, aprobado en C2 (D147)." }
+            "umbral_express": { "$ref": "#/$defs/importe", "description": "Inversión más coste anual por debajo del cual una iniciativa puede ser Express, aprobado en C2 (D147)." },
+            "coste_hora_gobierno": { "$ref": "#/$defs/importe", "description": "Coste por hora de gobierno aprobado en C2 para valorar las horas declaradas (41 IND-COS-13; D148)." },
+            "objetivo_coste_gobierno_pct": { "type": "object", "additionalProperties": false, "description": "Objetivo de proporcionalidad: coste del gobierno de una iniciativa sobre su inversión, en %, por intensidad (01 §3 principio 11; D148). Valores de partida, a calibrar en C5.", "properties": { "express": { "type": "number" }, "lite": { "type": "number" }, "enterprise": { "type": "number" } } }
           }
         }
       }
@@ -476,6 +478,7 @@
         "organo": { "enum": ["patrocinador", "patrocinador_conformidad_riesgos", "patrocinador_informando_comite", "comite_ia", "comite_ia_firma_multinivel", "consejo", "organo_superior", null] },
         "conformidad_riesgos": { "$ref": "#/$defs/id_persona_o_nula" },
         "elevada": { "type": "boolean", "description": "true cuando la decisión se eleva al órgano superior (tras dos iteraciones)." },
+        "horas_gobierno": { "type": ["number", "null"], "minimum": 0, "description": "Horas de gobierno declaradas para esta puerta (preparar y verificar la evidencia, reunirse y registrar la decisión, sumadas las de todas las personas). Opcional y nunca estimada (41 IND-COS-12; D148)." },
         "fecha_decision": { "$ref": "#/$defs/fecha_o_nula" },
         "resultado": { "enum": ["continuar", "continuar_condiciones", "iterar", "pivotar", "parar", "escalar", "retirar", "continuar_operacion", "adelantar_g7", null] },
         "resultado_propuesto": { "enum": ["continuar", "continuar_condiciones", "iterar", "pivotar", "parar", "escalar", "retirar", "continuar_operacion", "adelantar_g7", null], "description": "Resultado que el equipo propone; determina qué criterios de resultado (Escalar, Iterar, Retirar) aplican." },

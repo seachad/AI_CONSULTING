@@ -171,6 +171,7 @@ class Indice {
     for (const e of ordenar(t01.eventos || [], e => [e.fecha, e.id])) (this.eventos[get(e, "iniciativa")] = this.eventos[get(e, "iniciativa")] || []).push(e);
     for (const d of ordenar(t01.decisiones_gate || [], d => [get(d, "fecha_decision") || d.fecha_solicitud, d.iteracion, d.id])) (this.decisiones[d.iniciativa] = this.decisiones[d.iniciativa] || []).push(d);
     for (const v of t01.valores || []) (this.valores[v.iniciativa] = this.valores[v.iniciativa] || []).push(v);
+    this.evidencias = {}; for (const e of t01.evidencias || []) (this.evidencias[get(e, "iniciativa")] = this.evidencias[get(e, "iniciativa")] || []).push(e);
   }
   nombrePersona(pid) { const p = this.personas[pid]; return p ? p.nombre : (pid || null); }
   caso(iid) { const i = this.ini[iid]; return i ? iid + " " + i.nombre : iid; }
@@ -359,8 +360,17 @@ function caso(ix, ini, org, moneda, ciclo) {
     gate_pendiente: pendiente ? pendiente.gate : null, intensidad: get(cl, "intensidad"),
     esfera_principal: get(cl, "esfera_principal"), esfera_secundaria: get(cl, "esfera_secundaria"),
     ambicion: {propuesta: get(cl, "ambicion_propuesta"), confirmada: get(cl, "ambicion_confirmada"), real: get(cl, "ambicion_real")},
-    autonomia: get(cl, "autonomia"), regulatoria: reg, etiquetas_libres: get(ini, "etiquetas_libres") || [], sistemas: get(ini, "sistemas") || []};
+    autonomia: get(cl, "autonomia"), regulatoria: reg, etiquetas_libres: get(ini, "etiquetas_libres") || [], sistemas: get(ini, "sistemas") || [],
+    gobierno: gobiernoCaso(ix, iid)};
   return out;
+}
+// coste del propio gobierno de la iniciativa (41 IND-COS-12 a 14; D148): horas declaradas (nunca estimadas) y evidencias referenciadas (21 §4.3)
+function gobiernoCaso(ix, iid) {
+  const decididas = (ix.decisiones[iid] || []).filter(d => get(d, "fecha_decision"));
+  const conHoras = decididas.filter(d => typeof d.horas_gobierno === "number");
+  const evs = ix.evidencias[iid] || [];
+  return {horas: conHoras.length ? conHoras.reduce((a, d) => a + d.horas_gobierno, 0) : null, decisiones: decididas.length,
+    decisiones_con_horas: conHoras.length, evidencias: evs.length, evidencias_referenciadas: evs.filter(e => get(e, "origen") === "referencia").length};
 }
 
 // ---------------------------------------------------------------- seguimiento
@@ -444,6 +454,9 @@ function convertir(t01, op) {
     organizacion: org, consejo_sigla: sigla, compania_principal: org, prefijo_ficheros: prefijo,
     mostrar_refs: false, leer_json_servidor: false, textos, glosario_extra: GLOSARIO_SEVEN_G, demo: ficticio, industria: null};
   for (const k of Object.keys(config)) meta[k] = config[k];
+  // coste del gobierno (D148): coste por hora y objetivos por intensidad de C2, desde la configuración del registro T01
+  const cfgT01 = get(get(t01, "meta") || {}, "configuracion") || {};
+  meta.gobierno = {coste_hora: nulo(get(cfgT01, "coste_hora_gobierno")), objetivo_pct: nulo(get(cfgT01, "objetivo_coste_gobierno_pct"))};
   meta.origen = {herramienta: "SEVEN-G T01", version_esquema: get(t01, "version_esquema"), conector: RUTA_CONECTOR, version_conector: VERSION_CONECTOR, moneda};
   // tesis de C2 con la ambición objetivo por esfera (D131): el registro T01 manda sobre la configuración del panel (D100)
   const tesis = tesisC2(t01, corte);

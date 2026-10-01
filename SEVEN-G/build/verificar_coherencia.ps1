@@ -86,6 +86,8 @@
     39. Intensidad Express (D147): 01 §9.4 y 21 §2.5 (ES/EN, misma lista de criterios del núcleo); la columna Express («x») del catálogo
         de T01 sigue la regla de 21 §2.5; el esquema admite «express»; la demostración tiene una iniciativa Express con elegibilidad
         completa y confirmada; T01 aplica la lista reducida, la determina con T04 y avisa si deja de ser elegible.
+    40. Coste del propio gobierno (D148): IND-COS-12 a 14 en el 41 (ES/EN) y el total de la tabla de familias igual al número de
+        indicadores; horas_gobierno y coste_hora_gobierno en el esquema de T01; la ficha de T01 y la tarjeta del panel lo muestran.
 #>
 param([switch]$SinNavegador)
 $ErrorActionPreference = 'Stop'
@@ -1727,6 +1729,25 @@ try {
   $tplX = [IO.File]::ReadAllText((Join-Path $repo 'SEVEN-G\herramientas\T01_registro_iniciativas\_fuentes\registro.plantilla.html'))
   if (-not ($tplX.Contains('function colIntensidad(') -and $tplX.Contains("add('express'") -and $tplX.Contains('function resultadoT04('))) { Mal 'T01: falta la intensidad Express (lista reducida, T04 o alerta de salida) (D147)'; $mal39++ }
   if (-not $mal39) { Ok "intensidad Express: 01 §9.4 y 21 §2.5 (ES/EN), columna Express del catálogo según la regla ($(@($catX | Where-Object { $_.x -ne 'na' }).Count) de 128 criterios), esquema, demostración ($($iniX.Count) iniciativa) y T01" }
+
+  # ---- 40. coste del propio gobierno (D148)
+  Write-Host '40. Coste del propio gobierno: indicadores, horas declaradas y tarjeta del panel (D148)'
+  $mal40 = 0
+  foreach ($lg in 'es', 'en') {
+    $d41 = [IO.File]::ReadAllText((Get-ChildItem (Join-Path $repo "SEVEN-G\mds\$lg") -Filter '41_SEVEN-G_*.md').FullName)
+    foreach ($cod in 'IND-COS-12', 'IND-COS-13', 'IND-COS-14') { if (-not $d41.Contains("| $cod |")) { Mal "$lg 41: falta $cod (D148)"; $mal40++ } }
+    $nInd = ([regex]::Matches($d41, '(?m)^\| IND-[A-Z]{3}-\d\d \|')).Count
+    $tot = [regex]::Match($d41, '\| \| \*\*Total\*\* \| \*\*(\d+)\*\* \|').Groups[1].Value
+    if ("$nInd" -ne $tot) { Mal "$lg 41: la tabla de familias dice $tot indicadores y el catálogo tiene $nInd (D148)"; $mal40++ }
+  }
+  $esqG = Get-Content (Join-Path $repo 'SEVEN-G\herramientas\T01_registro_iniciativas\esquema_registro.schema.json') -Raw -Encoding utf8 | ConvertFrom-Json
+  if (-not ($esqG.'$defs'.decision_gate.properties.horas_gobierno -and $esqG.'$defs'.meta.properties.configuracion.properties.coste_hora_gobierno)) { Mal 'esquema de T01: faltan horas_gobierno o coste_hora_gobierno (D148)'; $mal40++ }
+  $pd = Get-Content (Join-Path $repo 'SEVEN-G\herramientas\T17_panel_consejo\ejemplo\salida\t01_dashboard_data.json') -Raw -Encoding utf8 | ConvertFrom-Json -Depth 64
+  if (-not ($pd.casos | Where-Object { $_.seveng.gobierno.horas -gt 0 })) { Mal 'panel de ejemplo: ningún caso con horas de gobierno (regenerar con t01_a_panel.py) (D148)'; $mal40++ }
+  $mot = [IO.File]::ReadAllText((Join-Path $repo 'SEVEN-G\herramientas\T17_panel_consejo\motor\build_dashboard.py'))
+  if (-not ($mot.Contains('function renderGobierno(') -and $mot.Contains('data-ayuda="gobierno"'))) { Mal 'motor del panel: falta la tarjeta «Coste del gobierno» (D148)'; $mal40++ }
+  if (-not [IO.File]::ReadAllText((Join-Path $repo 'SEVEN-G\herramientas\T01_registro_iniciativas\_fuentes\registro.plantilla.html')).Contains('function bloqueGobierno(')) { Mal 'T01: falta el bloque del coste del gobierno en la ficha (D148)'; $mal40++ }
+  if (-not $mal40) { Ok "IND-COS-12 a 14 en el 41 (ES/EN) con el recuento de familias al día; horas de gobierno en el esquema y la ficha de T01; tarjeta «Coste del gobierno» en el panel de ejemplo" }
 }
 finally { Remove-Item $tmp -Recurse -Force -Confirm:$false -ErrorAction SilentlyContinue }
 

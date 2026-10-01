@@ -5,7 +5,7 @@
 | | |
 |---|---|
 | Document | Document 02 · Glossary and conventions |
-| Version | 1.4 |
+| Version | 1.5 |
 | Date | 01-10-2026 |
 | Author | Fernando García Varela |
 | Status | In force. Single source of the framework's terms, scales and codes; it is updated before any other document when a term changes. |
@@ -829,7 +829,7 @@ Spanish equivalents of the taxonomy values:
 | **RT-\<CAT\>-NN** | RT + three-letter category + two digits | Typical risks in the catalogue (70 in version 0.1): EST 6 · TEC 8 · DAT 6 · ECO 5 · LEG 8 · ORG 9 · REP 5 · GEN 9 · SEG 7 · TER 7. | 33 §9 | RT-GEN-01 |
 | **SEG-01–SEG-25** | SEG + hyphen + two digits | AI security controls. | 35 §6 | SEG-02 |
 | **AG-01–AG-20** | AG + hyphen + two digits | Agent controls. | 35 §7 | AG-09 |
-| **IND-\<FAM\>-NN** | IND + three-letter family + two digits | Catalogue indicators (159 in 13 families): VAL, COS, EMB, AGI, RIE, OPE, ADO, DAT, CLI, TRA, MAD, CON (board) and PRO (processes and decision-making). A code is not reused. | 41 §2 and §4 | IND-VAL-05 |
+| **IND-\<FAM\>-NN** | IND + three-letter family + two digits | Catalogue indicators (162 in 13 families): VAL, COS, EMB, AGI, RIE, OPE, ADO, DAT, CLI, TRA, MAD, CON (board) and PRO (processes and decision-making). A code is not reused. | 41 §2 and §4 | IND-VAL-05 |
 | **IE\<sphere\>.\<nn\>** | IE + two-digit sphere + point + two digits | Indicators by sphere, provisional until they are consolidated in document 41. | 10 §5–7 | IE01.04 |
 | **IA-AAAA-NNN** | Year of registration + sequential number | Initiatives. | 03 §3.3 | IA-2026-014 |
 | **IA-AAAA-NNN · Rnn** | Initiative code + R + two digits | Specific risk of an initiative. | 33 §8.1 | IA-2026-014 · R03 |
@@ -1031,6 +1031,7 @@ Tools display the values of closed lists in Spanish and English using the equiva
 
 | Version | Date | Changes |
 |---|---|---|
+| 1.5 | 01-10-2026 | Catalogue indicators: 162. |
 | 1.4 | 01-10-2026 | Adds Express intensity (scale 4.6, term and taxonomy) and the living record. |
 | 1.3 | 01-10-2026 | Adds SEVEN-G core (N-01 to N-14), mandatory principle · practice · instrument and proportionality (principle 11); principles become 1–11. |
 | 1.2 | 28-09-2026 | Adds cash still needed, pass condition, realisation curve, sustained by non-quantified value and non-quantified value; extends benefits realisation plan and funding tranche with their recording in T01; 209 defined terms (D135). |
