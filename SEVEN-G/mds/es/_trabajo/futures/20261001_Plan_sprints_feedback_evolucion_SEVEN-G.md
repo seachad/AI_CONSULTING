@@ -256,5 +256,5 @@ Orden recomendado: **S0 → S1 → S2 → S3 → S4**, con **S6** intercalable e
 | S5 | **Hecho** | 01-10-2026 | D149: `crosswalk.json` (52 filas, 6 normas) → 34 §9.1 con `crosswalk.ps1`; 38507 y 42005 citadas por tema (sin numeración cotejable en fuente abierta); ISO-38507 en el registro de referencias. |
 | S6 | **Hecho** | 01-10-2026 | D150: regla de presentación 11 del 40; `resultado_operativo[]` en T01; bloque de tres perspectivas en la ficha de valor de T01 y en la ficha del caso de T17; 60 §4.2 y §4.8; pregunta 17 del 61. Sin cambios en el panel móvil ni en el inventario (posible mejora). |
 | S7 | **Hecho** | 01-10-2026 | D151: 04 §5.1 (qué aporta cada norma / qué añade SEVEN-G), 00 inicio rápido, 91 §6.2 y §8, entrada, portada y README. Pendiente para una sesión local: la diapositiva de posicionamiento de los cursos (el PDF necesita PowerPoint). |
-| S8 | Pendiente | | |
-| S9 | Pendiente (a la espera de datos) | | |
+| S8 | **Preparado** | 01-10-2026 | [Protocolo](S8_Protocolo_piloto.md), [instrumentos](S8_Instrumentos.md) y [`s8_anonimizar_t01.ps1`](s8_anonimizar_t01.ps1). Falta la decisión del autor: si hay programa de pilotos, condiciones y qué se publica. |
+| S9 | **Propuesto** | 01-10-2026 | [Umbrales a calibrar y criterios de salida a la 1.0](S9_Criterios_salida_1_0.md); la calibración espera a los datos de S8. |
