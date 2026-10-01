@@ -5,8 +5,8 @@
 | | |
 |---|---|
 | Document | Template P37 · C5 annual review |
-| Version | 0.1 (working draft) |
-| Date | 19-09-2026 |
+| Version | 0.2 (working draft) |
+| Date | 01-10-2026 |
 | Author | Fernando García Varela |
 | Status | Draft for review. |
 
@@ -121,6 +121,7 @@ Verified assessment with the same questionnaire version (11 §7.1).
 |---|---|---|
 | Assessment type | | Verified assessment; independent at least every two years in an Enterprise scope (11 §4.1). |
 | **(§14)** questions answered "Yes" | | Out of 10. Status of the declaration of application (01 §14). |
+| Cost of governance by intensity (IND-COS-12 to 14) | | Median hours and cost over investment by intensity against the C2 target (13 §6) and referenced evidence. If an intensity exceeds its target, the Express threshold, the reduced list (21 §2.5) or the evidence equivalences (21 §4.3) are reviewed; targets are recalibrated with the measured data. |
 
 ---
 
@@ -315,3 +316,4 @@ Segregation of duties: no body assesses itself alone; its self-assessment is rev
 | Version | Date | Changes |
 |---|---|---|
 | 0.1 | 19-09-2026 | First version. Covers the C5 outputs (01 §5.1) and the annual review in 13 §13: fulfilment of the thesis, maturity, index, funnel and cohorts (03 §3.5), consolidated lessons (14 §10.8; 43 §8.3), recalibration (12 §8), self-assessment of the bodies with an improvement plan (11, D1.11 and D1.12) and adjustments for the next C2. |
+| 0.2 | 01-10-2026 | C5 review of the cost of governance by intensity against the proportionality targets (41 IND-COS-12 to 14). |

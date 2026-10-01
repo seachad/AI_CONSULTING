@@ -5,12 +5,12 @@
 | | |
 |---|---|
 | Documento | Documento 41 · Catálogo de indicadores |
-| Versión | 0.1 (borrador de trabajo) |
-| Fecha | 16-09-2026 |
+| Versión | 0.2 (borrador de trabajo) |
+| Fecha | 01-10-2026 |
 | Autor | Fernando García Varela |
 | Estado | Borrador para revisión. Catálogo vivo: los umbrales se fijan por cada compañía y se recalibran en C5. |
 
-<!-- cifras: 159 | indicadores codificados ; 13 | familias ; 4 | niveles de uso ; 26 | indicadores del conjunto mínimo Lite -->
+<!-- cifras: 162 | indicadores codificados ; 13 | familias ; 4 | niveles de uso ; 26 | indicadores del conjunto mínimo Lite -->
 
 ---
 
@@ -65,7 +65,7 @@ Ninguna compañía necesita todos los indicadores. Se seleccionan en C2 según l
 | Código | Familia | Indicadores |
 |---|---|---|
 | **VAL** | Valor | 18 |
-| **COS** | Coste | 11 |
+| **COS** | Coste | 14 |
 | **EMB** | Embudo | 13 |
 | **AGI** | Agilidad | 6 |
 | **RIE** | Riesgo y cumplimiento | 17 |
@@ -77,7 +77,7 @@ Ninguna compañía necesita todos los indicadores. Se seleccionan en C2 según l
 | **MAD** | Madurez | 4 |
 | **CON** | Consejo | 5 |
 | **PRO** | Procesos y decisión | 6 |
-| | **Total** | **159** |
+| | **Total** | **162** |
 
 ---
 
@@ -142,6 +142,9 @@ Cada indicador del catálogo, y cualquier indicador propio que añada la compañ
 | IND-COS-09 | **Coste de licencias ociosas.** Licencias pagadas sin uso en el periodo. | Licencias asignadas sin uso × coste unitario | € | T21 · `adopcion` (licencias) | M | OIA | Co | C4 | A fijar | |
 | IND-COS-10 | **Inversión evitada por paradas.** Presupuesto aprobado no comprometido de iniciativas paradas o retiradas. | Σ presupuesto aprobado − Σ comprometido, en iniciativas paradas (42 §10) | € | T01 · T13 | T | OIA | Ca · Cj | C4, C5 | Informativo; no suma en valor | |
 | IND-COS-11 | **Coste de IA de la compañía.** Coste total de IA, incluido el uso corporativo. | Σ coste recurrente + Σ inversión del ejercicio de todos los sistemas | €/año | T13 | T | CG | Co · Cj | C1, C4 | Presupuesto marco de C2 | ● |
+| IND-COS-12 | **Horas de gobierno por iniciativa.** Horas declaradas para preparar y verificar la evidencia, reunirse y registrar las decisiones de *gate* de una iniciativa. Mide el coste del propio método; no se reparte en el coste del caso (42 §4). | Σ horas declaradas en las decisiones de *gate* (`decisiones_gate[].horas_gobierno`) | horas | T01 · T17 `seveng.gobierno` | G · A | OIA | I · Ca | Todas · por intensidad | Mediana por intensidad, a calibrar | |
+| IND-COS-13 | **Coste del gobierno sobre la inversión.** Proporcionalidad del gobierno (principio 11). | Horas declaradas × coste por hora de C2 ÷ inversión de la iniciativa | % | T01 · T17 | A | OIA | I · Ca · Cj | Todas · por intensidad | Express 5 % · Lite 10 % · Enterprise 15 % (13 §6; valores de partida, a calibrar en C5) | |
+| IND-COS-14 | **Evidencias referenciadas.** Parte de la evidencia que se toma de lo que la compañía ya tiene en lugar de copiarse en una plantilla (21 §4.3). | Evidencias con origen «referencia» ÷ evidencias | % | T01 | T | OIA | Ca · Co | G0–G7 | A fijar; creciente en grandes compañías | |
 
 ---
 
@@ -581,3 +584,4 @@ Los documentos 10, 50, 51 y 52 usan códigos provisionales de indicadores. Esta 
 |---|---|---|
 | 0.1 | 16-09-2026 | Primera versión. Catálogo de 156 indicadores en 13 familias con código, fórmula, unidad, fuente, periodicidad, responsable, nivel, aplicación y umbral orientativo; conjunto mínimo Lite de 26 indicadores; selección orientativa para el panel del consejo. Ajustes de coherencia con 01 (separación de funciones en Lite, resultados de R6, criterio de agentes) y con 34 y 37; correspondencia de códigos provisionales de los documentos 10, 50, 51 y 52 (sección 21). Incorporados al catálogo los 47 indicadores provisionales que no tenían equivalente (familias EMB, RIE, OPE, ADO, DAT y CLI, y nueva familia PRO · Procesos y decisión, sección 18); prefijo provisional de conocimiento del documento 51 renombrado de CON- a CNC-. |
 | 0.1 | 18-09-2026 | Tres indicadores nuevos de operación (159 en total): IND-OPE-24 consultas fuera del alcance validado (deriva de uso), IND-OPE-25 respuestas desiguales en pares contrafactuales (sesgo en IA generativa) e IND-OPE-26 modo degradado por coste; correspondencia con OPE-18 a OPE-20 del documento 52. |
+| 0.2 | 01-10-2026 | Tres indicadores del coste del propio gobierno (162 en total): IND-COS-12 horas de gobierno por iniciativa, IND-COS-13 coste del gobierno sobre la inversión con objetivos por intensidad e IND-COS-14 evidencias referenciadas. El tiempo de cada puerta ya lo mide IND-AGI-04. |

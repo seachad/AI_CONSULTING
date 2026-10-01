@@ -850,7 +850,7 @@ function renderEmbudoPreguntas(rows){
 function render(){
   buildFilters();
   const rows = CASES.filter(passes);
-  renderKPIs(rows); renderFrenos(rows); renderImpacto(rows); renderCharts(rows); renderCurva(rows); renderTramos(rows); renderNoCuant(rows); renderEmbudo(rows); renderCdm(); renderIndice(); renderMadurez(); renderTransversales(rows); renderCartera(rows); renderRiesgo(rows); renderIaOfensiva(rows); renderAgentes(rows); renderAdopcion(); renderHistorico(rows);
+  renderKPIs(rows); renderFrenos(rows); renderImpacto(rows); renderCharts(rows); renderCurva(rows); renderTramos(rows); renderNoCuant(rows); renderGobierno(rows); renderEmbudo(rows); renderCdm(); renderIndice(); renderMadurez(); renderTransversales(rows); renderCartera(rows); renderRiesgo(rows); renderIaOfensiva(rows); renderAgentes(rows); renderAdopcion(); renderHistorico(rows);
   document.getElementById("cards").classList.toggle("hidden", state.view!=="cards");
   document.getElementById("table").classList.toggle("hidden", state.view!=="table");
   // agrupación (por compañía y unidad o sin agrupar) y presentación (tarjetas o tabla) son independientes
@@ -1172,6 +1172,32 @@ function renderNoCuant(rows){
      <div class="note" style="margin-top:10px">Iniciativas con valor no cuantificado</div>${miniTable([["Caso", x=>`<a href="#" onclick="openFicha(CASES.find(y=>y.id==='${x.c.id}'));return false">${esc(x.c.nombre)}</a>`], ["Dimensiones", x=>x.nm.dimensiones.map(d=>`${esc(dimNM(d.dimension))} ${niv(d.nivel)}${d.con_indicador?"":' <span class="pill amarillo">sin métrica</span>'}`).join("<br>")],
        ["VAN (F7)", x=>{ const cu = curva(x.c); return cu ? vanTxt(cu.van_f7) : "sin plan de realización"; }], ["Sostenido por valor no cuantificado", x=>x.nm.estrategico ? (x.nm.aviso ? pill(x.nm.aviso==="sin_revision"?"rojo":"amarillo", x.nm.aviso==="sin_revision"?"sin R6 fechada":"R6 vencida") : `sí · R6 ${fES(x.nm.revision)}`) : "no"]], con.sort((a,b)=>b.nm.max_nivel-a.nm.max_nivel), 20)}` : "";
   setCard("nocuant", "Valor no cuantificado", "Mejoras sin relación económica demostrable (40 regla 7 y §5.3): dimensión y nivel de 0 a 3 con su métrica física y el motivo. Nunca se traduce a euros ni suma en el neto; sin métrica, se muestra pero no cuenta.", insight, body);
+}
+// coste del propio gobierno (D148; 41 IND-COS-12 a 14 e IND-AGI-04): horas declaradas en T01 (nunca estimadas), su coste con el coste por
+// hora de C2, proporción sobre la inversión frente al objetivo de cada intensidad y evidencias referenciadas (21 §4.3). Sin datos, no se dibuja.
+function renderGobierno(rows){
+  const G = (DATA.meta||{}).gobierno || {}, ch = typeof G.coste_hora === "number" ? G.coste_hora : null, obj = G.objetivo_pct || {};
+  const gob = c => (c.seveng||{}).gobierno || null, inten = c => (c.seveng||{}).intensidad || "sin dato";
+  const inv = c => { const e = (c.economia||{}).inversion||{}, a = (e.construccion||{}).importe, b = (e.adicional_potencial||{}).importe; return (a==null && b==null) ? null : (a||0)+(b||0); };
+  const xs = rows.map(c => ({c, g:gob(c), int:inten(c)})).filter(x => x.g);
+  const conH = xs.filter(x => x.g.horas != null);
+  if (!conH.length && !xs.some(x => x.g.evidencias_referenciadas)) { setCard("gobierno", "Coste del gobierno", "", "", ""); return; }
+  const med = a => { const v = a.filter(x=>x!=null).sort((p,q)=>p-q); if (!v.length) return null; const m = Math.floor(v.length/2); return v.length%2 ? v[m] : (v[m-1]+v[m])/2; };
+  const pctTxt = v => v == null ? ND : v.toLocaleString("es-ES",{maximumFractionDigits:1}) + " %";
+  const ratio = x => { const i = inv(x.c); return (x.g.horas == null || ch == null || !i) ? null : x.g.horas * ch / i * 100; };
+  const ints = ["express","lite","enterprise"].filter(k => xs.some(x => x.int === k));
+  const filas = ints.map(k => { const g = xs.filter(x => x.int === k), h = g.filter(x => x.g.horas != null), ev = sum(g.map(x=>x.g.evidencias||0)), er = sum(g.map(x=>x.g.evidencias_referenciadas||0));
+    const rm = med(h.map(ratio)), o = typeof obj[k] === "number" ? obj[k] : null;
+    return {k, n:g.length, nh:h.length, horas:med(h.map(x=>x.g.horas)), ratio:rm, obj:o, ref: ev ? er/ev*100 : null}; });
+  const etq = {express:"Express", lite:"Lite", enterprise:"Enterprise"};
+  const fuera = conH.filter(x => { const r = ratio(x), o = obj[x.int]; return r != null && typeof o === "number" && r > o; });
+  const insight = `<b>${conH.length}</b> de ${xs.length} iniciativas con horas de gobierno declaradas${ch==null?" · falta el coste por hora de C2: el coste no se calcula":""}${fuera.length?` · <b>${fuera.length}</b> por encima del objetivo de su intensidad`:""}`;
+  const body = miniTable([["Intensidad", x=>esc(etq[x.k]||x.k)], ["Casos", x=>String(x.n), "n"], ["Con horas declaradas", x=>String(x.nh), "n"], ["Horas por caso (mediana)", x=>x.horas==null?ND:Math.round(x.horas).toLocaleString("es-ES"), "n"],
+      ["Coste del gobierno sobre la inversión (mediana)", x=>pctTxt(x.ratio), "n"], ["Objetivo", x=>x.obj==null?ND:pctTxt(x.obj), "n"], ["Evidencias referenciadas", x=>pctTxt(x.ref), "n"]], filas, 5)
+    + (conH.length ? `<div class="note" style="margin-top:10px">Iniciativas con horas declaradas</div>${miniTable([["Caso", x=>`<a href="#" onclick="openFicha(CASES.find(y=>y.id==='${x.c.id}'));return false">${esc(x.c.nombre)}</a>`], ["Intensidad", x=>esc(etq[x.int]||x.int)],
+      ["Horas declaradas", x=>Math.round(x.g.horas).toLocaleString("es-ES")+` <span class="nd">(${x.g.decisiones_con_horas} de ${x.g.decisiones} decisiones)</span>`, "n"], ["Coste del gobierno", x=>ch==null?ND:fmt(x.g.horas*ch), "n"],
+      ["Coste del gobierno sobre la inversión", x=>{ const r = ratio(x), o = obj[x.int]; return r==null ? ND : (typeof o === "number" && r > o ? pill("amarillo", pctTxt(r)) : pctTxt(r)); }, "n"]], conH.sort((a,b)=>(ratio(b)||0)-(ratio(a)||0)), 15)}` : "");
+  setCard("gobierno", "Coste del gobierno", "Lo que cuesta gobernar cada iniciativa (principio 11, proporcionalidad): horas declaradas en las decisiones de gate, su coste con el coste por hora aprobado en C2, su proporción sobre la inversión frente al objetivo de cada intensidad y la parte de la evidencia que se referencia en lugar de copiarse (41 IND-COS-12 a 14). Las horas se declaran; nunca se estiman.", insight, body);
 }
 // plan de realización del caso en su ficha: VAN F7, recuperación F9, caja, realización F10, gráfico, tramos y tabla por periodo
 function planFicha(c){
@@ -1907,6 +1933,7 @@ HTML = """<!DOCTYPE html>
   <details class="tabper"><summary>Ver la tabla por periodo</summary><div id="curvatab"></div></details>
  </div>
  <div class="grid2"><details class="card cdet" id="tramos" data-ayuda="tramos"></details><details class="card cdet" id="nocuant" data-ayuda="nocuant"></details></div>
+ <details class="card cdet" id="gobierno" data-ayuda="gobierno" style="margin-bottom:14px"></details>
  <details class="card cdet" id="cdm" data-ayuda="cdm" style="margin-bottom:14px"></details>
  <details class="card cdet" id="indice" data-ayuda="indice" style="margin-bottom:14px"></details>
  <details class="card cdet" id="madurez" data-ayuda="madurez" style="margin-bottom:14px"></details>

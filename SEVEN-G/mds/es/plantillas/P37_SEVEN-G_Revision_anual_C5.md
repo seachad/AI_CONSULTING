@@ -5,8 +5,8 @@
 | | |
 |---|---|
 | Documento | Plantilla P37 · Revisión anual C5 |
-| Versión | 0.1 (borrador de trabajo) |
-| Fecha | 19-09-2026 |
+| Versión | 0.2 (borrador de trabajo) |
+| Fecha | 01-10-2026 |
 | Autor | Fernando García Varela |
 | Estado | Borrador para revisión. |
 
@@ -121,6 +121,7 @@ Evaluación verificada con la misma versión del cuestionario (11 §7.1).
 |---|---|---|
 | Modalidad | | Evaluación verificada; independiente al menos cada dos años en alcance Enterprise (11 §4.1). |
 | Preguntas **(§14)** en «Sí» | | De 10. Estado de la declaración de aplicación (01 §14). |
+| Coste del gobierno por intensidad (IND-COS-12 a 14) | | Mediana de horas y de coste sobre la inversión por intensidad frente al objetivo de C2 (13 §6) y evidencias referenciadas. Si una intensidad supera su objetivo, se revisan el umbral Express, la lista reducida (21 §2.5) o las equivalencias de evidencia (21 §4.3); los objetivos se recalibran con los datos medidos. |
 
 ---
 
@@ -315,3 +316,4 @@ Separación de funciones: ningún órgano se evalúa solo; su autoevaluación la
 | Versión | Fecha | Cambios |
 |---|---|---|
 | 0.1 | 19-09-2026 | Primera versión. Recoge los resultados de C5 (01 §5.1) y la revisión anual de 13 §13: cumplimiento de la tesis, madurez, índice, embudo y cohortes (03 §3.5), lecciones consolidadas (14 §10.8; 43 §8.3), recalibración (12 §8), autoevaluación de los órganos con plan de mejora (11, D1.11 y D1.12) y ajustes para el siguiente C2. |
+| 0.2 | 01-10-2026 | Revisión en C5 del coste del gobierno por intensidad frente a los objetivos de proporcionalidad (41 IND-COS-12 a 14). |
