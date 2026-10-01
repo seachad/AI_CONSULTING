@@ -7,7 +7,8 @@
   Qué comprueba:
     1. Paridad ES/EN de los Markdown de SEVEN-G, SPHERES y SPAD (D12) y que cada documento tiene su HTML y su PDF (D11, D32).
     2. Textos internos o de clientes en lo que se publica (D17, D33): los mismos patrones que .github/workflows/pages.yml y, si existe,
-       la lista privada de términos prohibidos (~/.seveng/terminos_prohibidos.txt).
+       la lista privada de términos prohibidos (~/.seveng/terminos_prohibidos.txt o, en una sesión en la nube, la variable de entorno
+       SEVENG_TERMINOS_PROHIBIDOS; D153).
     3. Aviso legal presente en las herramientas y paneles publicados (D33).
     4. Portada: el primer botón de cada metodología es el que explica el marco (D46) y sus enlaces locales existen.
     1e. Ninguna herramienta (Tnn) citada en los HTML generados queda sin enlace (D64).
@@ -365,10 +366,13 @@ try {
   }
   $patrones = @('_trabajo', 'notas_internas', 'C:\\SEACHAD', 'OneDrive')
   $lista = Join-Path ($env:USERPROFILE ?? $HOME) '.seveng\terminos_prohibidos.txt'
+  # sesiones en la nube (D153): si el fichero no existe, la lista puede venir en la variable de entorno SEVENG_TERMINOS_PROHIBIDOS
+  # (secreto del entorno, un término por línea o separados por «\n» literal); se escribe en un temporal fuera del repositorio y se borra al terminar
+  if (-not (Test-Path $lista) -and $env:SEVENG_TERMINOS_PROHIBIDOS) { $lista = Join-Path $tmp 'terminos_prohibidos.txt'; [IO.File]::WriteAllText($lista, ($env:SEVENG_TERMINOS_PROHIBIDOS -replace '\\n', "`n"), [Text.UTF8Encoding]::new($false)) }
   # un término por línea, buscado como texto literal sin distinguir mayúsculas; una línea «re:<expresión>» es una expresión regular
   # (p. ej., re:\bSIGLA\b(?!_) para una sigla que también forma parte de palabras corrientes o de claves de datos)
   if (Test-Path $lista) { $patrones += Get-Content $lista -Encoding utf8 | Where-Object { $_.Trim() -and -not $_.StartsWith('#') } | ForEach-Object { $x = $_.Trim(); if ($x.StartsWith('re:')) { $x.Substring(3) } else { [regex]::Escape($x) } } }
-  else { Aviso "no existe la lista privada de términos prohibidos ($lista): solo se comprueban los patrones generales" }
+  else { Aviso "no existe la lista privada de términos prohibidos ($lista) ni la variable de entorno SEVENG_TERMINOS_PROHIBIDOS: solo se comprueban los patrones generales" }
   $hallazgos = $publicables | Select-String -Pattern ($patrones -join '|') -List
   foreach ($h in $hallazgos) { Mal "texto interno o prohibido en $([IO.Path]::GetRelativePath($repo, $h.Path)):$($h.LineNumber)" }
   if (-not $hallazgos) { Ok "$($publicables.Count) ficheros publicables sin textos internos ($($patrones.Count) patrones)" }
