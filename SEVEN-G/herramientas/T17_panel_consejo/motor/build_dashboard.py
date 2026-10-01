@@ -1218,7 +1218,6 @@ function planFicha(c){
    <details class="tabper"><summary>Ver la tabla por periodo</summary>${tablaCurva(G, hoyEt)}</details>`;
 }
 // tres perspectivas del caso en paralelo (40 §11.1, regla 11; D150): valor económico, resultado operativo y exposición al riesgo; nunca se fusionan
-function enObjetivo(x){ if (!x || typeof x.actual!=="number" || typeof x.objetivo!=="number") return null; const baja = x.sentido ? x.sentido==="bajar" : (typeof x.base==="number" ? x.objetivo<x.base : false); return baja ? x.actual<=x.objetivo : x.actual>=x.objetivo; }
 function perspectivasFicha(c){
   const p = (c.seveng||{}).perspectivas; if (!p) return "";
   const r = R(c), pe = r.valor_por_estado || {}, ro = p.resultado_operativo || [], nm = noMonetario(c);
@@ -1237,6 +1236,13 @@ function noCuantFicha(c){
   return `<h3>Valor no cuantificado <span class="nd">(40 regla 7 y §5.3: nivel de 0 a 3 con métrica; nunca en euros)</span></h3>
    ${nm.estrategico?`<p style="margin:4px 0">${pill(nm.aviso?(nm.aviso==="sin_revision"?"rojo":"amarillo"):"ok", "sostenido por valor no cuantificado")} Nivel medio o alto con VAN F7 negativo o sin plan que lo demuestre: ${nm.revision?`próxima R6 el ${fES(nm.revision)}${nm.aviso==="revision_vencida"?" (vencida)":""}`:"<b>falta fechar la próxima R6</b>"}.</p>`:""}
    <div class="tblx"><table class="mini"><thead><tr><th>Dimensión</th><th>Nivel</th><th>Métrica</th><th class="n">Base</th><th class="n">Objetivo</th><th class="n">Actual</th><th>Motivo</th><th>Dato</th><th>Desde</th></tr></thead><tbody>${nm.dimensiones.map(d=>`<tr><td>${esc(dimNM(d.dimension))}</td><td>${esc(NIVEL_NM[d.nivel])}</td><td>${d.indicador?esc(d.indicador):pill("amarillo","sin métrica: no cuenta")}</td><td class="n">${nd(d.base)}</td><td class="n">${nd(d.objetivo)}</td><td class="n">${nd(d.actual)}</td><td>${nd(d.nota)}</td><td>${esc(ESTL(d.estado))}</td><td>${nd(d.efecto_desde)}</td></tr>`).join("")}</tbody></table></div>`;
+}
+// línea de la tarjeta del inventario: resultado operativo y exposición al riesgo, junto al valor y sin fusionarlos (40 §11.1, regla 11)
+function persLinea(c){
+  const pp = perspectivasDe(c); if (!pp) return "";
+  const oc = !pp.ro.length ? "" : pp.por_debajo ? "mid" : pp.en_objetivo === pp.ro.length ? "ok" : "";
+  const rc2 = pp.riesgos_altos || pp.incidentes ? "mid" : "";
+  return `<div class="cur" style="font-size:11.5px;color:var(--ink2);margin-top:4px" data-act="ficha">Resultado operativo: ${pp.ro.length?`<span class="badge ${oc}">${esc(operTxt(pp))}</span>`:`<span class="nd">sin indicador (no es cero)</span>`} · Exposición al riesgo: <span class="badge ${rc2}">${esc(expoTxt(pp))}</span></div>`;
 }
 // línea de la tarjeta del inventario: VAN F7, recuperación y realización del plan, o «sin plan»; valor no cuantificado
 function curLinea(c){
@@ -1688,6 +1694,7 @@ function card(c){
     </div>
     <div class="pot" data-act="pot"><div class="k"><span>Neto potencial <b>${fmt(r.neto_pot)}</b>${r.rendimiento_adicional!=null?` · ${r.rendimiento_adicional.toLocaleString("es-ES",{maximumFractionDigits:1})} € por € adicional`:""}</span><span>capturado ${ptot?pct(cap):"—"}</span></div><div class="bar"><i style="width:${cap*100}%"></i></div></div>
     ${curLinea(c)}
+    ${persLinea(c)}
   </div>`;
 }
 const openState = { comps: new Set(), units: new Set() };
@@ -1753,6 +1760,7 @@ function renderTable(rows){
     ["rend","€ neto por € adicional",c=>R(c).rendimiento_adicional ?? "","x"],["plazo","Plazo del potencial",c=>eco(c).plazo_potencial||""],
     ["planr","Plan de realización",c=>curva(c)?"sí":debePlan(c)?"falta":""],["vanf7","VAN (F7)",c=>{ const cu = curva(c); return cu && cu.van_f7 != null ? cu.van_f7 : ""; },"n"],["realiz","Realización (F10)",c=>{ const cu = curva(c); return cu && cu.desviacion && cu.desviacion.pct != null ? cu.desviacion.pct : ""; },"x"],
     ["vnc","Valor no cuantificado (máx.)",c=>{ const n = noMonetario(c); return n.max_nivel ? NIVEL_NM[n.max_nivel] : n.dimensiones.length ? "sin métrica" : ""; }],["sost","Sostenido por valor no cuantificado",c=>noMonetario(c).estrategico?"sí":""],
+    ["oper","Resultado operativo",c=>operTxt(perspectivasDe(c))],["expo","Exposición al riesgo",c=>expoTxt(perspectivasDe(c))],
     ["dneto",f?`Δ neto vs ${fES(f.fecha)}`:"Δ neto (elige foto)",c=>f?(R(c).neto-((f.casos||{})[c.id]||{}).neto||0):"","n"],["dato","Dato del valor",c=>estadoTxt(c)]];
   const col = cols.find(x=>x[0]===tsort.k) || cols.find(x=>x[0]==="neto"); const rs = [...rows].sort((a,b)=>{ const x=col[2](a), y=col[2](b); return (x<y?-1:x>y?1:0)*tsort.d; });
   const root = document.getElementById("table");

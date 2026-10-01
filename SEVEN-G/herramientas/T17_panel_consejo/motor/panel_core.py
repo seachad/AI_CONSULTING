@@ -592,6 +592,17 @@ const pbTxt = cu => !cu ? "sin plan de realización" : cu.payback ? cu.payback :
 // captura frente al plan (o a la referencia aprobada) en los periodos con valor real: semáforo con umbrales_kpi.captura_frente_plan_pct
 // realización F10 acumulada (43 §9.1, IND-VAL-14): semáforo con umbrales_kpi.realizacion_pct
 const nivelDesv = cu => cu && cu.desviacion && cu.desviacion.pct != null ? nivelKPI("realizacion_pct", cu.desviacion.pct) : "";
+// ---- tres perspectivas del caso (40 §11.1, regla 11; D150): resultado operativo y exposición al riesgo que el conector de T01 pasa en
+// casos[].seveng.perspectivas; el valor económico ya es R(c). Se presentan en paralelo y nunca se fusionan. null si el caso no las trae.
+function enObjetivo(x){ if (!x || typeof x.actual!=="number" || typeof x.objetivo!=="number") return null; const baja = x.sentido ? x.sentido==="bajar" : (typeof x.base==="number" ? x.objetivo<x.base : false); return baja ? x.actual<=x.objetivo : x.actual>=x.objetivo; }
+function perspectivasDe(c){
+  const p = (c.seveng||{}).perspectivas; if (!p) return null;
+  const ro = p.resultado_operativo || [], est = ro.map(enObjetivo);
+  return {ro, en_objetivo: est.filter(x=>x===true).length, por_debajo: est.filter(x=>x===false).length, sin_medir: est.filter(x=>x==null).length,
+    riesgos_altos: p.riesgos_altos_abiertos || 0, incidentes: p.incidentes_abiertos || 0, no_conformidades: p.no_conformidades_abiertas || 0};
+}
+const operTxt = pp => !pp ? "" : !pp.ro.length ? "sin indicador" : `${pp.en_objetivo} de ${pp.ro.length} en objetivo` + (pp.por_debajo ? ` · ${pp.por_debajo} por debajo` : "") + (pp.sin_medir ? ` · ${pp.sin_medir} sin medir` : "");
+const expoTxt = pp => !pp ? "" : `${pp.riesgos_altos} riesgo${pp.riesgos_altos===1?"":"s"} alto${pp.riesgos_altos===1?"":"s"} o crítico${pp.riesgos_altos===1?"":"s"} · ${pp.incidentes} incidente${pp.incidentes===1?"":"s"} · ${pp.no_conformidades} no conformidad${pp.no_conformidades===1?"":"es"}`;
 // ---- valor no cuantificado (40 regla 7 y §5.3; misma lógica que economia.no_monetario): dimensión y nivel de 0 a 3 con métrica física
 // obligatoria y motivo; nunca en euros. «opcion» es el valor de opción de Transformar.
 const DIM_NM = {imagen:"Imagen y reputación", posicionamiento:"Posicionamiento competitivo", cliente:"Experiencia de cliente", distribucion:"Red comercial y de distribución", talento:"Talento y capacidades", opcion:"Opción estratégica (valor de opción)"};

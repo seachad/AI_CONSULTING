@@ -1783,9 +1783,13 @@ try {
   if (-not ($dem42.iniciativas | Where-Object { $_.resultado_operativo })) { Mal 'demostración de T01: ninguna iniciativa con resultado_operativo (D150)'; $mal42++ }
   if (-not [IO.File]::ReadAllText((Join-Path $repo 'SEVEN-G\herramientas\T01_registro_iniciativas\_fuentes\registro.plantilla.html')).Contains('function bloquePerspectivas(')) { Mal 'T01: falta el bloque de las tres perspectivas en la ficha de valor (D150)'; $mal42++ }
   if (-not [IO.File]::ReadAllText((Join-Path $repo 'SEVEN-G\herramientas\T17_panel_consejo\motor\build_dashboard.py')).Contains('function perspectivasFicha(')) { Mal 'motor del panel: falta el bloque de las tres perspectivas en la ficha del caso (D150)'; $mal42++ }
+  $bd42 = [IO.File]::ReadAllText((Join-Path $repo 'SEVEN-G\herramientas\T17_panel_consejo\motor\build_dashboard.py'))
+  if (-not ($bd42.Contains('${persLinea(c)}') -and $bd42.Contains('["oper","Resultado operativo"'))) { Mal 'motor del panel: el inventario (tarjeta y tabla) no muestra el resultado operativo y la exposición al riesgo (D152)'; $mal42++ }
+  if (-not ([IO.File]::ReadAllText((Join-Path $repo 'SEVEN-G\herramientas\T17_panel_consejo\motor\panel_movil.py')).Contains('Tres perspectivas del caso'))) { Mal 'panel móvil: falta el bloque de las tres perspectivas en la ficha (D152)'; $mal42++ }
+  foreach ($mv in (Get-ChildItem (Join-Path $repo 'SEVEN-G\herramientas\T17_panel_consejo\ejemplo\salida') -Filter '*Movil*.html')) { if (-not [IO.File]::ReadAllText($mv.FullName).Contains('Tres perspectivas del caso')) { Mal "panel móvil de ejemplo sin las tres perspectivas: $($mv.Name) (regenerar) (D152)"; $mal42++ } }
   $pd42 = Get-Content (Join-Path $repo 'SEVEN-G\herramientas\T17_panel_consejo\ejemplo\salida\t01_dashboard_data.json') -Raw -Encoding utf8 | ConvertFrom-Json -Depth 64
   if (-not ($pd42.casos | Where-Object { @($_.seveng.perspectivas.resultado_operativo).Count -gt 0 })) { Mal 'panel de ejemplo: ningún caso con resultado operativo (regenerar con t01_a_panel.py) (D150)'; $mal42++ }
-  if (-not $mal42) { Ok "tres perspectivas: regla 11 del 40 y resumen del 60 (ES/EN), resultado_operativo en el esquema y la demostración, ficha de valor de T01 y ficha del caso del panel" }
+  if (-not $mal42) { Ok "tres perspectivas: regla 11 del 40 y resumen del 60 (ES/EN), resultado_operativo en el esquema y la demostración, ficha de valor de T01, ficha del caso, inventario y panel móvil" }
   # ---- 43. posicionamiento como modelo operativo (D151)
   Write-Host '43. Posicionamiento: los estándares dicen qué debe existir; SEVEN-G lo hace funcionar (D151)'
   $mal43 = 0
