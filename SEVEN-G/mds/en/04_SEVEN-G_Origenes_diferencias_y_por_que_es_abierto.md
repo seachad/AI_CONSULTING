@@ -20,7 +20,7 @@
 
 ## 1. Purpose and scope
 
-This document answers three questions asked by anyone who meets SEVEN-G for the first time: **where it comes from**, **how it differs** from what their company already does or already knows, and **why it is offered free of charge under an open licence**. Section 8 adds a comparison, of differences only, with other methodologies for adopting and governing AI.
+This document answers three questions asked by anyone who meets SEVEN-G for the first time: **where it comes from**, **how it differs** from what their company already does or already knows, and **why it is offered free of charge under an open licence**. Section 8 adds a comparison, of differences only, with other market methodologies for adopting and governing AI.
 
 It is an explanatory document. It adds no rules, criteria or evidence: the rules of the framework are in document 01 and in the documents that develop it. It is aimed at directors, executives and AI leads who are considering adopting the framework, and at consultants and auditors who want to understand its approach before applying it.
 
@@ -210,18 +210,20 @@ There is no need to get in touch or ask permission for any use that complies wit
 
 ---
 
-## 8. Comparison with other methodologies
+## 8. Comparison with other market methodologies
 
 ### 8.1 How the comparison is made
 
-People who come to SEVEN-G often already know other methodologies or frameworks for adopting and governing AI, and want to know how they differ. This section compares them one by one, always on the same basis:
+People who come to SEVEN-G often already know other market methodologies or frameworks for adopting and governing AI, and want to know how they differ. This section compares them one by one, always on the same basis:
 
 - **Differences only, no assessment.** It does not say which methodology is better or worse, or which one to choose: it describes what each one does and how it differs from SEVEN-G. Each methodology serves a different purpose and a different type of user.
 - **The same dimensions for all**, so that the comparisons can be read together: nature and purpose; access and licence; unit of management; lifecycle and decisions; maturity; use-case prioritisation; value measurement; risk, security and compliance; role of the board; templates and tools; market data; certification.
 - **Only official sources from the author of each methodology**, linked and with their consultation date (D41). Where the detail of a methodology is available only to its clients, the comparison uses what its author publishes openly and says so.
+- **Only what their author publishes openly, in our own words.** No text, figures or graphics are reproduced, no client-only research is used and their studies or predictions are not cited in support of SEVEN-G: each methodology is described in a summary of our own.
+- **Trademarks and no affiliation.** The names of other firms and of their frameworks are cited only to identify them; they are trademarks of their owners. SEVEN-G has no relationship with them and is not endorsed by them, and the comparison does not suggest otherwise.
 - **Compatibility.** No comparison suggests replacing what the company already uses: SEVEN-G can coexist with other frameworks and map and validate what already exists by documenting the correspondence (document 01, section 1.2; document 96, modifier MP4).
 
-The section grows in instalments: it starts with Gartner and other methodologies will be added with the same structure.
+The section grows in instalments: for now it covers Gartner, and other market methodologies will be added with the same structure as they come up.
 
 > **Why it matters.** A company that already works with a reference framework needs to know what SEVEN-G adds that is different and what overlaps, in order to decide what to adopt and how to fit it in, without having to read both methodologies in full.
 
@@ -235,8 +237,6 @@ The section grows in instalments: it starts with Gartner and other methodologies
 | **AI TRiSM** (*AI Trust, Risk and Security Management*) | Technical foundation for operationalising AI governance: four layers of technical capabilities (AI governance, runtime inspection and enforcement, information governance and infrastructure) that enforce governance policies. | [Gartner, AI Governance Needs More Than Policies](https://www.gartner.com/en/articles/ai-governance-trism) |
 | **AI Opportunity Radar** and **Use-Case Prism** | Prioritisation: the radar defines the company's AI ambition in terms of opportunity and feasibility; opportunity says where AI is used (internal operations or customer-facing activities) and how ("everyday" AI, which improves productivity, or "game-changing" AI), across four areas: back office, front office, new products and services and new core capabilities. The prisms place the use cases of each sector or function by business value and feasibility. | [Gartner, For AI Value, Focus on Your Use Cases](https://www.gartner.com/en/articles/ai-value) |
 | **Hype Cycle for Artificial Intelligence** | Graphic representation of the maturity and adoption of AI technologies in five phases, from the innovation trigger to the plateau of productivity. Published every year. | [Gartner, Hype Cycle Research Methodology](https://www.gartner.com/en/research/methodologies/gartner-hype-cycle) |
-
-Gartner also publishes market predictions; two of them describe the problem SEVEN-G addresses: that at least 30% of generative AI projects would be abandoned after proof of concept by the end of 2025, due to poor data quality, inadequate risk controls, escalating costs or unclear business value ([press release of 29-07-2024](https://www.gartner.com/en/newsroom/press-releases/2024-07-29-gartner-predicts-30-percent-of-generative-ai-projects-will-be-abandoned-after-proof-of-concept-by-end-of-2025)), and that over 40% of agentic AI projects will be cancelled by the end of 2027 due to escalating costs, unclear business value or inadequate risk controls ([press release of 25-06-2025](https://www.gartner.com/en/newsroom/press-releases/2025-06-25-gartner-predicts-over-40-percent-of-agentic-ai-projects-will-be-canceled-by-end-of-2027)). In a later article, Gartner states that the first prediction fell short: at least 50% of generative AI projects were abandoned after proof of concept, for the same reasons ([Why Half of GenAI Projects Fail](https://www.gartner.com/en/articles/genai-project-failure)).
 
 **Differences from SEVEN-G**
 
@@ -258,7 +258,9 @@ Gartner also publishes market predictions; two of them describe the problem SEVE
 
 **If the company already uses Gartner's frameworks.** The two approaches answer different questions and can be used together: Gartner's diagnosis and priorities can feed SEVEN-G's C1 diagnosis and C2 thesis, and its maturity assessment can be mapped and validated by documenting its correspondence with dimensions D1–D7 (document 96, modifier MP4).
 
-*Sources on gartner.com checked on 01-10-2026 against the text their author publishes openly (reference register, MER-GAR-01 to MER-GAR-09). Gartner's frameworks change over time: this comparison describes what its author published on that date.*
+*Gartner and Hype Cycle are registered trademarks of Gartner, Inc. or its affiliates, and the names of its frameworks cited here belong to their owner. SEVEN-G and its author have no relationship with Gartner and are not endorsed by it; this comparison is our own description based on what Gartner publishes openly.*
+
+*Sources on gartner.com checked on 01-10-2026 against the text their author publishes openly (reference register, MER-GAR-01 to MER-GAR-04, MER-GAR-08 and MER-GAR-09). Gartner's frameworks change over time: this comparison describes what its author published on that date.*
 
 ---
 
@@ -292,4 +294,4 @@ Gartner also publishes market predictions; two of them describe the problem SEVE
 | Version | Date | Changes |
 |---|---|---|
 | 0.1 | 19-09-2026 | First version. Practical origin of the framework, shortcomings of the usual approaches that it corrects, management disciplines it brings together, the portfolio as a sales funnel and its differences, reasons for the open licence, control kept by the author and contact. |
-| 0.2 | 01-10-2026 | New section 8, "Comparison with other methodologies": common basis (differences only, no assessment, same dimensions and official sources) and first comparison, with Gartner, checked against the sources on gartner.com (names of the workstreams and of the five maturity levels, areas of the radar, later figure for abandoned generative AI projects, value metrics and proportional governance of agents). Sections 8 to 10 become 9 to 11. |
+| 0.2 | 01-10-2026 | New section 8, "Comparison with other market methodologies": common basis (differences only, no assessment, same dimensions, official sources, only openly published content summarised in our own words, trademarks of their owners with no affiliation or endorsement) and first comparison, with Gartner, checked against the sources on gartner.com (names of the workstreams and of the five maturity levels, areas of the radar, value metrics and proportional governance of agents), with a trademark notice and without citing its market predictions. Sections 8 to 10 become 9 to 11. |
