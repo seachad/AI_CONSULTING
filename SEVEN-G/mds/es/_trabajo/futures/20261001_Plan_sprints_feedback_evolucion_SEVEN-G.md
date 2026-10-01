@@ -4,7 +4,7 @@
 |---|---|
 | Fecha | 01-10-2026 |
 | Origen | [Feedback externo del 01-10-2026](20261001_Feedback_evolucion_SEVEN-G.md) |
-| Estado | Propuesto por Claude; **pendiente de validación del autor** |
+| Estado | **Aceptado por el autor el 01-10-2026** (D143); S3 con la opción C (D144) |
 | Ámbito | SEVEN-G (y SPHERES donde toque esferas o niveles, D42) |
 
 ---
@@ -52,10 +52,10 @@ Resumen del orden y de las dependencias:
 
 | Sprint | Tema | Recomendaciones del feedback | Depende de | Decisión previa del autor | Tamaño |
 |---|---|---|---|---|---|
-| **S0** | Medir la carga actual y fijar el presupuesto de contenido | 1, 2, 6 | — | Sí: presupuesto de contenido | 1 sesión |
+| **S0** | Medir la carga actual y concretar el presupuesto de contenido | 1, 2, 6 | — | Presupuesto aceptado (D143); confirmar el perfil Express | 1 sesión |
 | **S1** | Núcleo normativo y principio de proporcionalidad | 3, 7, 10 | S0 | Sí: lista del núcleo | 1–2 sesiones |
 | **S2** | Referenciar evidencia antes que reproducirla | 4 | S1 | Ligera | 1–2 sesiones |
-| **S3** | Intensidad Express | 2, 3 | S1, S2 | **Sí: cambia reglas 4 y 5 de 94 §3 y 01 §14** | 2–3 sesiones |
+| **S3** | Intensidad Express (opción C) | 2, 3 | S1, S2 | Decidido (D144): cambia solo la regla 4 de 94 §3; G3 sigue por separado | 2–3 sesiones |
 | **S4** | Métricas del coste del gobierno | 6, 8 | S3 | Sí: objetivos de proporcionalidad | 1–2 sesiones |
 | **S5** | Crosswalk versionado con ISO, NIST y Reglamento de IA | 5, 6 | S1 | Ligera | 2–3 sesiones |
 | **S6** | Tres perspectivas: valor, resultado operativo y riesgo | 9 | — (puede ir en paralelo) | No | 1 sesión |
@@ -79,7 +79,7 @@ Orden recomendado: **S0 → S1 → S2 → S3 → S4**, con **S6** intercalable e
 
 **Entregable.** `_trabajo/futures/S0_Linea_base_carga_de_gobierno.md` (no publicado) con tablas por perfil, duplicidades detectadas y propuesta de presupuesto de contenido.
 
-**Decisión del autor al cerrar.** Aprobar el presupuesto de contenido (nueva D-nnn) y confirmar el perfil que define Express.
+**Decisión del autor al cerrar.** El presupuesto de contenido ya está aceptado (D143); al cerrar S0 se confirma el perfil que define Express y la propuesta de lista de criterios Express para S3 (D144).
 
 **Hecho cuando.** Las cifras salen de los ficheros (no a mano) con un script reproducible en `_trabajo/futures/`, y el autor ha decidido.
 
@@ -120,22 +120,28 @@ Orden recomendado: **S0 → S1 → S2 → S3 → S4**, con **S6** intercalable e
 
 ---
 
-### S3 · Intensidad Express
+### S3 · Intensidad Express (opción C, decidida: D144)
 
-**Objetivo.** Que el recorrido —no solo la profundidad— dependa de materialidad, riesgo y reversibilidad.
+**Objetivo.** Que el recorrido —no solo la profundidad— dependa de materialidad, riesgo y reversibilidad, **sin perder G3 como puerta de parada**.
 
-**Propuesta de diseño (a validar).**
-- **Elegibilidad** (todas a la vez): ningún disparador 1–8 de 94 §4 (criterios Enterprise); uso interno; reversible en días sin efecto residual; sin datos personales más allá de los de empleados con base legal ya existente, o sin datos personales; autonomía A0 o A1; inversión y coste anual bajo un **umbral Express fijado en C2**; proveedor ya homologado (P55 vigente) si lo hay. Lo confirma la función de riesgos (oficina de IA en compañías pequeñas), no el patrocinador.
-- **Recorrido**: una **ficha viva** (nueva sección de P01 o P29 condensada, no plantilla nueva) y **dos decisiones**: *autorización* (cubre los criterios del núcleo de G0–G3: problema, alternativa sin IA, hipótesis falsable con línea base y criterio de parada, clasificación y riesgos, responsable) y *puesta en uso* (G4–G5: prueba, supervisión, reversión probada). **Revisión de continuidad anual** que puede convertirse en G7.
-- **Salida automática** a Lite si aparece cualquier disparador, si se supera el umbral o si la revisión anual no demuestra valor; el registro T01 guarda el cambio de intensidad como evento.
-- **Lo que no cambia**: inventario y registro (reglas 1–2), separación de funciones, «Sí ◆», evidencia anterior a la decisión.
+**Por qué la opción C.** Medido en `catalogo_criterios.json` (01-10-2026): una iniciativa Lite evalúa hoy **97 de los 100 criterios** de G0–G5 (34 «Sí ◆») con **33 plantillas** distintas y 3 sesiones. La carga está en los criterios y las plantillas, que fija la regla 4 de 94 §3 («cada puerta conserva sus criterios»), no en la regla 5 (G3 por separado). Por eso Express **modifica solo la regla 4**; la regla 5 se mantiene. Se descartaron: la opción A (Express también junta G3 con G0–G2), porque debilita la puerta de parada y obliga a cambiar diagrama de flujo, mapa de uso, entrada, cursos, modelo de *gates* de T01 y medianas del embudo; y la opción B («Lite con decisión consolidada»), porque solo ahorra una reunión.
+
+**Diseño.**
+- **Elegibilidad** (todas a la vez): ningún disparador 1–8 de 94 §4 (criterios Enterprise); uso interno; reversible en días sin efecto residual; sin datos personales o solo de empleados con base legal ya existente; autonomía A0 o A1; inversión y coste anual bajo un **umbral Express fijado en C2**; proveedor ya homologado (P55 vigente) si lo hay. **Lo confirma la función de riesgos** (oficina de IA en compañías pequeñas), no el patrocinador.
+- **Recorrido: tres decisiones, las mismas puertas.** *Entrada* (G0–G2 en una decisión), **G3 por separado** y *puesta en uso* (G4–G5 en una decisión). G3 en Express **puede resolverse por escrito, sin sesión**: decide el patrocinador con la conformidad de riesgos registrada en T01. Cada puerta sigue registrada con su resultado (no se salta ninguna), pero se evalúa con la **lista reducida de criterios Express**.
+- **Lista reducida**: columna nueva en `catalogo_criterios.json` (por ejemplo `x`: `si` · `na`) que marca los criterios que aplican en Express; orden de magnitud a fijar en S0 (20–30 criterios en total), incluidos siempre los «Sí ◆» que correspondan al perfil (seguridad, cumplimiento, supervisión humana), la hipótesis falsable con línea base y criterio de parada (regla 9), la clasificación y el riesgo (regla 10) y la reversión probada (regla 11).
+- **Ficha viva única** como evidencia (sección condensada de P01 o P29, no plantilla nueva, por el presupuesto de contenido de D143); evidencias corporativas por referencia (S2).
+- **Revisión de continuidad anual**, que puede convertirse en G7.
+- **Salida automática** a Lite si aparece cualquier disparador, si se supera el umbral o si la revisión anual no demuestra valor; T01 guarda el cambio de intensidad como evento y, desde ese momento, aplica la lista Lite.
+- **Lo que no cambia**: reglas 1–3 y 5–12 de 94 §3 (inventario, registro, intensidad por iniciativa, **G3 por separado**, separación de funciones, «Sí ◆», evidencia anterior a la decisión, reversión, consejo).
 
 **Alcance.**
-- 01 §9 (tercera intensidad, figura `intensidad` ES/EN), 94 §3 (reglas 4 y 5 con la excepción Express), §5 (columna Express), §6–§8; 20 y 21 (qué criterios aplican en Express, marcados en `catalogo_criterios.json` con una etiqueta `EXP`), 22 (lista LV-EXP), 90 §2.4 (ruta mínima), 96 (prioridades por arquetipo: PP-A y PP-B probablemente empiezan con casi todo en Express), 02, 00, 04 si procede, curso M04 y M09, cursos en presentación.
-- **T01**: valor `express` de intensidad, ficha viva, decisión consolidada, alerta de salida de Express. **T03/gestor de gates** dentro de T01 con las dos decisiones. **T17**: filtro y recuento por intensidad, sin cambio de embudo (Express entra por las mismas etapas). **T23**: el recorrido de implantación propone Express donde aplique.
-- Conectores Python y JS a la vez (19b), ayuda ES/EN (27, 28), demostración con una o dos iniciativas Express.
+- **Documentos (ES/EN)**: 94 §3 (regla 4 reformulada: «cada puerta conserva su registro y se evalúa con la lista de criterios de su intensidad»), §5 (columna Express) y §6–§8; 01 §9 (tercera intensidad, tabla 9.3 y figura `intensidad`) y §14 (condición 4 matizada); 21 §3.4 (puertas agrupadas en Lite y Express; G3 por escrito en Express); 20 (qué se hace en cada fase en Express); 22 (lista LV-EXP o filtro Express de las LV); 90 §2.4 (ruta mínima); 96 (prioridades por arquetipo: PP-A y PP-B empiezan con casi todo en Express); 02 y guía de traducción («Express» no se traduce); 00 (intensidades); curso M04 y M09; cursos en presentación (diapositiva de intensidades).
+- **No cambian**: diagrama `flujo-uso`, mapa de uso del 00, sección de la puerta de parada de la entrada, modelo de *gates* de T01 y etapas del embudo de T17.
+- **T01**: valor `express` de intensidad en el esquema (opcional, D53), lista de criterios Express en la pestaña del *gate*, ficha viva, G3 por escrito, alerta de salida de Express. **T17**: filtro y recuento por intensidad (conectores Python y JS a la vez, 19b). **T23**: el recorrido propone Express donde aplique. Ayuda ES/EN (27, 28). Demostración con una o dos iniciativas Express.
+- **Verificación nueva**: todo criterio del catálogo tiene valor Express; los «Sí ◆» de seguridad, cumplimiento y supervisión humana aplican en Express cuando corresponden al perfil; 94 §3 regla 5 sigue sin excepción; la demostración contiene iniciativas Express con G3 registrado.
 
-**Decisión del autor (antes de empezar).** Aceptar que Express modifica las reglas 4 y 5 de 94 §3 (G3 deja de ir siempre por separado **solo** en Express), el criterio de elegibilidad, quién la confirma y el umbral de partida. Si no se acepta, alternativa menor: **«Lite con decisión consolidada»** (G0–G3 en una sesión, manteniendo la lista de G3), que no rompe la regla 5 pero ahorra menos.
+**Decisiones pendientes del autor dentro de S3.** Lista final de criterios Express (propuesta de Claude tras S0), umbral Express de partida para el ejemplo y si la elegibilidad la confirma riesgos u oficina de IA según el alcance de la compañía.
 
 **Partir si crece.** S3a documentos y catálogo; S3b herramientas y panel.
 
@@ -232,9 +238,9 @@ Orden recomendado: **S0 → S1 → S2 → S3 → S4**, con **S6** intercalable e
 
 ## 5. Decisiones que el autor debe tomar, en orden
 
-1. ¿Acepta el plan y el **presupuesto de contenido**? (antes de S0)
+1. ~~¿Acepta el plan y el **presupuesto de contenido**?~~ Aceptado el 01-10-2026 (D143).
 2. **Lista del núcleo** (al cerrar S1).
-3. **Express sí o no**, y si sí, que modifique las reglas 4 y 5 de 94 §3; elegibilidad, quién la confirma y umbral (antes de S3).
+3. ~~**Express sí o no**~~ Sí, opción C (D144): modifica solo la regla 4 de 94 §3. Quedan la lista de criterios Express y el umbral de partida (dentro de S3).
 4. **Objetivos de proporcionalidad** y si las horas de gobierno se declaran (S4).
 5. **Programa de pilotos** y condiciones de publicación (S8).
 
