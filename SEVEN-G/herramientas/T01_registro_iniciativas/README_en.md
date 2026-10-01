@@ -186,6 +186,7 @@ The connector `../T17_panel_consejo/t01_a_panel.py` converts the full JSON of th
 | `iniciativas[].alcance.umbral_adopcion_pct` | 0–100 | “Low adoption” alert when a unit in use has fewer active over assigned licences. |
 | `iniciativas[].alcance.habilita[]` | `IA-YYYY-NNN` codes | Platform: cases to which its value is allocated. |
 | `valores[].area` | a business unit | Cost and value of each unit; without `area`, what is shared across the initiative (governance, training). The Value tab shows the ladder by unit: cost, adoption, declared hours, released capacity and realised value. |
+| `iniciativas[].resultado_operativo[]` | `indicador` (IND- from document 41), `nombre`, `unidad`, `sentido` (`subir` · `bajar`), `base`, `fecha_base`, `objetivo`, `actual`, `fecha_actual`, `fuente` | Operational outcome (D150): physical indicators with baseline, target and current value. The Value tab opens with the use case's **three perspectives** (economic value, operational outcome and risk exposure, 40 §11.1, rule 11), which are never merged; never translated into euros. |
 
 **Fields added in schema 0.4: risk matrix and register (T06)** (document 33 §8.1; all optional in `riesgos[]`, a 0.1, 0.2 or 0.3 register remains valid):
 

@@ -1217,6 +1217,20 @@ function planFicha(c){
    ${cu.hipotesis.length?`<ul class="hip">${cu.hipotesis.map(h=>`<li>${esc(h)}</li>`).join("")}</ul>`:""}
    <details class="tabper"><summary>Ver la tabla por periodo</summary>${tablaCurva(G, hoyEt)}</details>`;
 }
+// tres perspectivas del caso en paralelo (40 §11.1, regla 11; D150): valor económico, resultado operativo y exposición al riesgo; nunca se fusionan
+function enObjetivo(x){ if (!x || typeof x.actual!=="number" || typeof x.objetivo!=="number") return null; const baja = x.sentido ? x.sentido==="bajar" : (typeof x.base==="number" ? x.objetivo<x.base : false); return baja ? x.actual<=x.objetivo : x.actual>=x.objetivo; }
+function perspectivasFicha(c){
+  const p = (c.seveng||{}).perspectivas; if (!p) return "";
+  const r = R(c), pe = r.valor_por_estado || {}, ro = p.resultado_operativo || [], nm = noMonetario(c);
+  const num = v => typeof v==="number" ? esc(v.toLocaleString("es-ES")) : ND;
+  const oper = ro.length ? `<div class="tblx"><table class="mini"><thead><tr><th>Indicador</th><th class="n">Base</th><th class="n">Objetivo</th><th class="n">Actual</th><th>Medido</th></tr></thead><tbody>${ro.map(x=>{ const ok = enObjetivo(x); return `<tr><td>${x.indicador?`<span class="id">${esc(x.indicador)}</span> `:""}${esc(x.nombre)}${x.unidad?` <span class="nd">(${esc(x.unidad)})</span>`:""}</td><td class="n">${num(x.base)}</td><td class="n">${num(x.objetivo)}</td><td class="n">${num(x.actual)}</td><td>${x.fecha_actual?esc(x.fecha_actual):ND}${ok==null?"":` <span class="badge ${ok?"ok":"mid"}">${ok?"en objetivo":"por debajo"}</span>`}</td></tr>`; }).join("")}</tbody></table></div>` : `<p class="nd" style="margin:0">Sin indicador operativo registrado en T01: no es cero.</p>`;
+  return `<h3 data-ayuda="perspectivas">Tres perspectivas del caso <span class="nd">(40 §11.1, regla 11: se leen juntas y no se fusionan)</span></h3>
+   <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px">
+    <div style="border-top:3px solid var(--good);padding-top:6px"><b>Valor económico</b><dl><dt>Neto anual</dt><dd>${fmt(r.neto)}</dd><dt>Validado</dt><dd>${fmt(pe.validado)}</dd><dt>Declarado</dt><dd>${fmt(pe.declarado)}</dd><dt>Estimado</dt><dd>${fmt(pe.estimado_cati)}</dd></dl></div>
+    <div style="border-top:3px solid var(--accent);padding-top:6px"><b>Resultado operativo</b>${oper}${nm.max_nivel>=2?`<p style="margin:4px 0 0">Valor no cuantificado ${esc(NIVEL_NM[nm.max_nivel])} (nunca en euros)</p>`:""}</div>
+    <div style="border-top:3px solid var(--critical);padding-top:6px"><b>Exposición al riesgo</b><dl><dt>Riesgo residual principal</dt><dd>${nd(rc(c).tier_riesgo)}</dd><dt>Riesgos Altos o Críticos abiertos</dt><dd>${p.riesgos_altos_abiertos}</dd><dt>Incidentes abiertos</dt><dd>${p.incidentes_abiertos}</dd><dt>No conformidades abiertas</dt><dd>${p.no_conformidades_abiertas}</dd></dl></div>
+   </div>`;
+}
 function noCuantFicha(c){
   const nm = noMonetario(c);
   if (!nm.dimensiones.length) return "";
@@ -1809,6 +1823,7 @@ function openFicha(c){
   open(`<h2>${c.id} · ${esc(c.nombre)}</h2><div class="sub">${esc(c.compania)} · ${esc(c.unidad)} · área ${esc(c.area)} · ${badgeEstado(c.estado)} · desde ${inicioDe(c)}${f.produccion?"":" (estimado)"}</div>
    <div style="margin:8px 0">${[t.tecnologia,t.naturaleza,t.exposicion,t.funcion,"Prioridad "+t.prioridad,...(t.alcance?[t.alcance]:[])].map(x=>`<span class="badge">${esc(x)}</span>`).join("")}${badgeRiesgo(t.riesgo)}</div>
    <h3>Qué es y para qué se usa</h3><p style="margin:0">${c.que_es?esc(c.que_es):ND}</p>
+   ${perspectivasFicha(c)}
    <h3>Clasificación del ${CONSEJO()}</h3>
    <dl><dt>Tecnología</dt><dd>${esc(d.tipo)}</dd><dt>Tipo de decisión</dt><dd>${esc(d.decision)}</dd><dt>Datos tratados</dt><dd>${esc(d.datos)}</dd><dt>Reglamento de IA (estimación)</dt><dd>${esc(d.aiact)}</dd><dt>Proveedores</dt><dd>${esc(d.proveedores)}</dd><dt>Naturaleza</dt><dd>${esc(d.es_ia)}</dd>
    <dt>En funcionamiento</dt><dd>${enUso(c).txt}${enUso(c).desde?` · desde ${enUso(c).desde}`:""}</dd>

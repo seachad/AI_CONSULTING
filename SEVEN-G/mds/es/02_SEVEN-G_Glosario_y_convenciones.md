@@ -5,7 +5,7 @@
 | | |
 |---|---|
 | Documento | Documento 02 · Glosario y convenciones |
-| Versión | 1.6 |
+| Versión | 1.7 |
 | Fecha | 01-10-2026 |
 | Autor | Fernando García Varela |
 | Estado | Vigente. Fuente única de términos, escalas y códigos del marco; se actualiza antes que cualquier otro documento cuando cambia un término. |
@@ -414,6 +414,7 @@ Orden alfabético. Las escalas completas están en la sección 4 y los códigos 
 | ***Tier* (CSF)** | Grado del NIST CSF que caracteriza el rigor de las prácticas de gobierno y de gestión del riesgo de ciberseguridad de toda la organización o de una unidad: 1 Parcial, 2 Informado sobre el riesgo, 3 Repetible y 4 Adaptativo. No es un nivel de madurez de cada subcategoría y no existe en el NIST AI RMF. No se traduce. | 34 §5.3 | tier (CSF) |
 | **Tramo de financiación** | Parte del presupuesto de una iniciativa que se libera tras un *gate*: tramo 1 (fases 0–3) tras G0, tramo 2 (fases 4–5) tras G3, tramo 3 (operación) tras G5; en Transformar, cada etapa aprobada es un tramo. Cada tramo se registra en el plan de realización de T01 con su fecha, su importe, el *gate* que lo libera y su condición de paso. | 14 §6.2; 43 §4.1 | funding tranche |
 | **Transformar** | Nivel de ambición que cambia qué se ofrece, cómo se compite o cómo se organiza la compañía. El valor está principalmente en retorno y en cambios del modelo operativo. Es siempre Enterprise y requiere aprobación del consejo en G2 y al escalar en G7. | 00 §4.1; 01 §7.5; 10 §3 | Transform |
+| **Tres perspectivas del caso** | Regla de presentación: cada caso se muestra con su valor económico (en euros, con su estado), su resultado operativo (indicadores físicos con línea base, objetivo y valor actual) y su exposición al riesgo (residual principal, riesgos Altos y Críticos abiertos, incidentes y no conformidades abiertos), en paralelo y sin fusionarlas ni traducir una a la otra. | 40 §11.1 (regla 11) | three perspectives of the use case |
 
 ### 3.18 U
 
@@ -1032,6 +1033,7 @@ Las herramientas muestran los valores de las listas cerradas en español e ingl�
 
 | Versión | Fecha | Cambios |
 |---|---|---|
+| 1.7 | 01-10-2026 | Añade «tres perspectivas del caso». |
 | 1.6 | 01-10-2026 | Añade «crosswalk de cobertura». |
 | 1.5 | 01-10-2026 | Indicadores del catálogo: 162. |
 | 1.4 | 01-10-2026 | Añade la intensidad Express (escala 4.6, término y taxonomía) y la ficha viva. |

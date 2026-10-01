@@ -134,6 +134,10 @@ La fase y el estado originales se conservan en `casos[].seveng`.
 
 Con horas declaradas en las decisiones de *gate* de T01 (`decisiones_gate[].horas_gobierno`, opcionales) y el coste por hora y los objetivos de C2 (`meta.configuracion.coste_hora_gobierno` y `objetivo_coste_gobierno_pct`), el conector pasa `casos[].seveng.gobierno` y `meta.gobierno`, y la tarjeta **Coste del gobierno** de «Cartera y valor» muestra, por intensidad (Express, Lite, Enterprise), las horas por caso, el coste del gobierno sobre la inversión frente al objetivo y la parte de las evidencias que se referencian (41 IND-COS-12 a 14). Las horas nunca se estiman: sin horas declaradas, la tarjeta no se dibuja.
 
+## Tres perspectivas del caso (D150)
+
+Con `iniciativas[].resultado_operativo` de T01 (indicadores físicos del documento 41 con línea base, objetivo y valor actual) y sus riesgos, incidentes y no conformidades abiertos, el conector pasa `casos[].seveng.perspectivas` y la ficha de cada caso abre con **Tres perspectivas del caso**: valor económico, resultado operativo y exposición al riesgo en tres columnas paralelas que no se fusionan (documento 40 §11.1, regla 11). Sin indicador operativo, la columna lo dice; nunca es cero.
+
 ## Tabla de mapeo
 
 ### `meta`

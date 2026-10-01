@@ -334,6 +334,27 @@
             }
           }
         },
+        "resultado_operativo": {
+          "description": "D150. Resultado operativo (documento 40 §11.1, regla 11): indicadores físicos de la iniciativa (documento 41) con su línea base, su objetivo y su valor actual. Es una de las tres perspectivas que se presentan en paralelo con el valor económico y la exposición al riesgo; nunca se traduce a euros ni suma en el neto. Opcional.",
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["nombre"],
+            "additionalProperties": false,
+            "properties": {
+              "indicador": { "type": ["string", "null"], "pattern": "^IND-[A-Z]{3}-\\d\\d$", "description": "Código del indicador del documento 41, si existe." },
+              "nombre": { "type": "string", "minLength": 1, "description": "Qué se mide, en palabras de negocio (por ejemplo, tiempo medio de resolución)." },
+              "unidad": { "$ref": "#/$defs/texto_o_nulo" },
+              "sentido": { "enum": ["subir", "bajar", null], "description": "Si mejora al subir o al bajar; decide si el valor actual está en su objetivo." },
+              "base": { "type": ["number", "null"] },
+              "fecha_base": { "$ref": "#/$defs/fecha_o_nula" },
+              "objetivo": { "type": ["number", "null"] },
+              "actual": { "type": ["number", "null"] },
+              "fecha_actual": { "$ref": "#/$defs/fecha_o_nula" },
+              "fuente": { "$ref": "#/$defs/texto_o_nulo", "description": "De dónde sale la medida (sistema, informe, muestra)." }
+            }
+          }
+        },
         "etiquetas_libres": { "type": "array", "uniqueItems": true, "items": { "type": "string" } },
         "sistemas": { "type": "array", "uniqueItems": true, "items": { "$ref": "#/$defs/id_sistema" } },
         "indice": {
