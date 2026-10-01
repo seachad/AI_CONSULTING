@@ -5,8 +5,8 @@
 | | |
 |---|---|
 | Documento | Documento 34 · Mapeo regulatorio |
-| Versión | 0.2 (borrador de trabajo) |
-| Fecha | 25-09-2026 |
+| Versión | 0.4 (borrador de trabajo) |
+| Fecha | 01-10-2026 |
 | Autor | Fernando García Varela |
 | Estado | Borrador para revisión. Fecha de consulta de las fuentes: 16-09-2026. Requiere revisión jurídica cualificada antes de su uso. |
 
@@ -705,6 +705,119 @@ Lectura: qué pide cada referencia en cada etapa del ciclo corporativo y en cada
 | **6 · Operación** | Obligaciones del responsable del despliegue (art. 26), vigilancia posterior a la comercialización (art. 72), incidentes graves (art. 73), explicación (art. 86) | 8.2–8.4, 9.1, A.6, A.8 | MEASURE 3; MANAGE 1, 4 · DE, RS, RC | Derechos (arts. 15, 22); violaciones (arts. 33–34) | Incidentes y recuperación (DORA arts. 11, 17–19; NIS2 art. 23) | Notificaciones y requerimientos |
 | **7 · Evolución o retirada** | Medidas correctoras y retirada (art. 20); conservación de documentación (art. 18); actualización del registro (art. 49) | 10.1, 10.2 | MANAGE 2, 4 · RC.RP; PR.AA (revocación) | Conservación y supresión de datos (art. 5.1.e) | Estrategia de salida del proveedor (DORA art. 28) | — |
 
+### 9.1 Crosswalk de cobertura: normas y regulación × SEVEN-G
+
+La matriz anterior dice qué pide cada referencia en cada momento. El crosswalk responde a la pregunta inversa, la que hace un auditor o un comité que ya trabaja con una norma: **para cada requisito, dónde lo cubre SEVEN-G, con qué regla del núcleo (01 §14.1), con qué evidencia y hasta dónde**. Cubre ISO/IEC 42001, ISO/IEC 38507, ISO/IEC 23894, ISO/IEC 42005, el NIST AI RMF y el Reglamento Europeo de IA.
+
+**Escala de cobertura**
+
+| Cobertura | Qué significa |
+|---|---|
+| **Directa** | SEVEN-G pide lo que el requisito exige, con su evidencia. |
+| **Parcial** | SEVEN-G cubre una parte; la nota dice qué falta y quién lo completa. |
+| **Requiere control externo** | El requisito lo cumple un tercero o un procedimiento fuera del marco (por ejemplo, la certificación o el marcado CE); SEVEN-G solo lo sitúa. |
+| **No cubierto** | SEVEN-G no lo trata; se cita para que la compañía no dé por hecho que sí. |
+
+> **Por qué importa.** Una compañía que ya tiene un sistema de gestión ISO o que trabaja con el NIST no adopta un marco nuevo si no ve dónde encaja con lo que ya hace. El crosswalk le dice qué reutiliza, qué completa y qué tiene que buscar fuera, sin que nadie lo reconstruya a mano en cada auditoría.
+
+**Cómo se lee y sus límites.** Las normas ISO se citan por el número de su apartado o, cuando su numeración no se ha podido cotejar en una fuente oficial abierta, **por tema**; el texto de cada fila es un **resumen propio**, nunca el de la norma, que debe cotejarse con el texto adquirido. El crosswalk **no es una certificación, una declaración de conformidad ni asesoramiento jurídico** (D25): sirve para orientar una auditoría o un análisis de brechas. Las tablas se generan desde un único fichero de datos versionado (`SEVEN-G/build/crosswalk/crosswalk.json`) con la versión del núcleo a la que corresponden; si cambia el núcleo o una norma, se actualiza ese fichero y se vuelve a generar.
+
+<!-- crosswalk:inicio -->
+Generado desde `crosswalk.json` (versión 1, 01-10-2026; versión del núcleo 1). No se edita a mano.
+
+| Norma | Filas | Directa | Parcial | Requiere control externo | No cubierto |
+|---|---|---|---|---|---|
+| ISO/IEC 42001:2023 · Sistema de gestión de la IA | 17 | 14 | 2 | 1 | 0 |
+| ISO/IEC 38507:2022 · Gobierno de la IA por el órgano de gobierno | 6 | 5 | 1 | 0 | 0 |
+| ISO/IEC 23894:2023 · Gestión del riesgo de la IA | 6 | 6 | 0 | 0 | 0 |
+| ISO/IEC 42005:2025 · Evaluación del impacto de los sistemas de IA | 5 | 4 | 1 | 0 | 0 |
+| NIST AI RMF 1.0 | 4 | 4 | 0 | 0 | 0 |
+| Reglamento (UE) 2024/1689 (Reglamento Europeo de IA) | 14 | 8 | 2 | 2 | 2 |
+| **Total** | 52 | 41 | 6 | 3 | 2 |
+
+**ISO/IEC 42001:2023 · Sistema de gestión de la IA**
+
+| Ref. | Tema (resumen propio) | Núcleo | Dónde en SEVEN-G | Evidencia | Cobertura | Nota |
+|---|---|---|---|---|---|---|
+| 4.1 | Contexto de la organización y su papel respecto a la IA | N-01, N-12 | 01 §5 (C1); 11; 32 | P33; T02, T15 | Directa | — |
+| 4.2 | Partes interesadas y sus expectativas | N-12 | 13 | P35; T19 | **Parcial** | SEVEN-G no tiene un registro de partes interesadas; lo cubre la tesis de C2. |
+| 4.3–4.4 | Alcance y establecimiento del sistema de gestión | N-12 | 01 §5; 13; 90 §2 | P32, P35 | Directa | — |
+| 5.1–5.2 | Liderazgo de la dirección y política de IA | N-12 | 13; 31; 60 | P35, P43 | Directa | — |
+| 5.3 | Roles, responsabilidades y autoridades | N-06 | 01 §8; 30 | P03, P38; T01 | Directa | — |
+| 6.1.1–6.1.3 | Riesgos y oportunidades; evaluación y tratamiento de riesgos de IA; declaración de aplicabilidad | N-10 | 13; 33 | P12, P13, P74; T06 | Directa | — |
+| 6.1.4 | Evaluación de impacto de los sistemas de IA | N-10 | 32; 34 §3.10 | P11, P47, P48; T07 | Directa | — |
+| 6.2–6.3 | Objetivos de IA y planificación de los cambios | N-09, N-12 | 13; 14; 40 | P08, P35, P36; T11 | Directa | — |
+| 7.1–7.3 | Recursos, competencia y toma de conciencia | — | 14; 31 §6; 50 | P20, P45; T20 | Directa | — |
+| 7.4–7.5 | Comunicación e información documentada | N-02, N-07 | 03 §4; 21 §4; 60 | P29; T01, T03, T17 | Directa | — |
+| 8.1–8.4 | Planificación y control operacional; evaluación de riesgos e impacto a intervalos planificados | N-04, N-10, N-11 | 20; 21; 52 | P11, P12, P29, P65; T01, T03 | Directa | — |
+| 9.1 | Seguimiento, medición, análisis y evaluación | N-13 | 40; 41; 52 | P25, P28; T12, T17 | Directa | — |
+| 9.2 | Auditoría interna | — | 38 | P58–P60 | Directa | — |
+| 9.3 | Revisión por la dirección | N-12 | 01 §5 (C5); 60 | P37; T15, T17 | Directa | — |
+| 10.1–10.2 | Mejora continua; no conformidad y acción correctiva | N-14 | 37; 01 §12 | P50, P52; T08 | Directa | — |
+| Anexo A (A.2–A.10) | Controles de referencia por grupo (políticas, organización, recursos, impacto, ciclo de vida, datos, información a partes interesadas, uso, terceros) | N-01, N-10 | 34 §4.2 | P74 | **Parcial** | La declaración de aplicabilidad se hace control a control con P74 y debe cotejarse con el texto adquirido de la norma. |
+| Certificación | Auditoría de certificación del sistema de gestión por una entidad acreditada | — | 38 §12 | — | **Requiere control externo** | SEVEN-G no certifica (D25); la certificación la emite una entidad acreditada según ISO/IEC 42006. |
+
+**ISO/IEC 38507:2022 · Gobierno de la IA por el órgano de gobierno**
+
+| Ref. | Tema (resumen propio) | Núcleo | Dónde en SEVEN-G | Evidencia | Cobertura | Nota |
+|---|---|---|---|---|---|---|
+| Por tema | Responsabilidad del órgano de gobierno sobre el uso de la IA y su rendición de cuentas | N-12 | 01 §5; 13; 30; 60; 61 | P35, P39, P67; T17, T18 | Directa | — |
+| Por tema | Supervisión de las decisiones que se apoyan en la IA y de su grado de automatización | N-08 | 35 §5 (autonomía A0–A3); 21 (supervisión humana) | P17, P18 | Directa | — |
+| Por tema | Gobierno del uso de los datos por la IA | N-10 | 51; 34 §6 | P47, P64 | Directa | — |
+| Por tema | Riesgo, apetito y cumplimiento en el uso de la IA | N-10, N-12 | 13; 33; 34 | P12, P35 | Directa | — |
+| Por tema | Cultura, valores y comportamiento esperados en el uso de la IA | — | 31; 50; 23 | P43, P45 | **Parcial** | SEVEN-G regula el uso aceptable y la alfabetización; la cultura y los valores corporativos los define cada compañía. |
+| Por tema | Valor y oportunidad estratégica de la IA para la organización | N-09, N-12, N-13 | 10; 12; 13; 40 | P35; T14, T17 | Directa | — |
+
+**ISO/IEC 23894:2023 · Gestión del riesgo de la IA**
+
+| Ref. | Tema (resumen propio) | Núcleo | Dónde en SEVEN-G | Evidencia | Cobertura | Nota |
+|---|---|---|---|---|---|---|
+| 4 | Principios de la gestión del riesgo aplicados a la IA | N-10 | 33 §1–§3 | P12 | Directa | — |
+| 5 | Marco de referencia: liderazgo, integración, diseño, implementación, evaluación y mejora de la gestión del riesgo | N-06, N-12 | 13; 30; 33 | P35, P38 | Directa | — |
+| 6.2–6.3 | Comunicación y consulta; alcance, contexto y criterios del riesgo | N-12 | 13 §5; 33 §4 | P35; T06 | Directa | — |
+| 6.4 | Evaluación del riesgo: identificación, análisis y valoración | N-10 | 33 §4–§9 (escala 5 × 5 y 71 riesgos tipo) | P12; T06 | Directa | — |
+| 6.5 | Tratamiento del riesgo | N-10 | 33 §8; 35 | P13, P18; T06 | Directa | — |
+| 6.6–6.7 | Seguimiento y revisión; registro e informe | N-11, N-13 | 33 §10–§11; 52; 60 | P25, P65; T06, T17 | Directa | — |
+
+**ISO/IEC 42005:2025 · Evaluación del impacto de los sistemas de IA**
+
+| Ref. | Tema (resumen propio) | Núcleo | Dónde en SEVEN-G | Evidencia | Cobertura | Nota |
+|---|---|---|---|---|---|---|
+| Por tema | Proceso de evaluación de impacto: cuándo se hace, alcance, responsables e integración con otros procesos | N-10 | 32; 20 (fase 3); 21 (G3.09, G4.13) | P11 | Directa | — |
+| Por tema | Información del sistema de IA, sus datos, su modelo y su entorno de despliegue | N-01 | 32; 51 | P05, P15, P16, P64 | Directa | — |
+| Por tema | Partes interesadas e impactos reales y razonablemente previsibles sobre personas, colectivos y sociedad | N-10 | 34 §3.10; 50 | P11, P48 | Directa | — |
+| Por tema | Usos sensibles o restringidos y umbrales que exigen una evaluación más profunda | N-03, N-10 | 01 §9.2; 32; 34 §3.4 | P04, P11 | **Parcial** | SEVEN-G usa los criterios Enterprise y la clasificación regulatoria como umbral; los usos restringidos propios los fija cada compañía en C2 (líneas rojas). |
+| Por tema | Medidas para abordar los impactos, aprobación, registro, seguimiento y revisión de la evaluación | N-07, N-11 | 21; 52 (R6) | P11, P13, P29, P65; T07 | Directa | — |
+
+**NIST AI RMF 1.0**
+
+| Ref. | Tema (resumen propio) | Núcleo | Dónde en SEVEN-G | Evidencia | Cobertura | Nota |
+|---|---|---|---|---|---|---|
+| GOVERN | Cultura y estructura de gobierno del riesgo de la IA | N-06, N-12 | 30; 31; 34 §5.4 | P38, P73 | Directa | Detalle por subcategoría en 34 §5.4 (72 subcategorías) y P73. |
+| MAP | Contexto, categorización y riesgos de cada sistema | N-01, N-10 | 20; 32; 33 | P04, P05, P11, P12 | Directa | — |
+| MEASURE | Medición, pruebas y seguimiento de riesgos y fiabilidad | N-11, N-13 | 41; 52; 53 | P22, P25, P53 | Directa | — |
+| MANAGE | Priorización, tratamiento, respuesta y comunicación de los riesgos | N-10, N-14 | 33; 37; 52 | P13, P26, P50 | Directa | — |
+
+**Reglamento (UE) 2024/1689 (Reglamento Europeo de IA)**
+
+| Ref. | Tema (resumen propio) | Núcleo | Dónde en SEVEN-G | Evidencia | Cobertura | Nota |
+|---|---|---|---|---|---|---|
+| Art. 4 | Alfabetización en IA del personal | — | 31 §6; 50 | P45 | Directa | — |
+| Art. 5 | Prácticas prohibidas | N-08, N-10 | 34 §3.4; 21 (G0.04, G3.08) | P02, P11 | Directa | — |
+| Art. 6 y anexos I y III | Clasificación como sistema de alto riesgo | N-10 | 32; 34 §3.6 | P11; T05 | Directa | — |
+| Arts. 9, 10, 12, 14 y 15 | Requisitos de los sistemas de alto riesgo: gestión de riesgos, datos, registros, supervisión humana, precisión, robustez y ciberseguridad | N-08, N-10 | 33; 51; 35; 34 §3.7 | P12, P16, P17, P18, P22, P25 | **Parcial** | Lo que SEVEN-G pide es necesario pero no suficiente para un proveedor de alto riesgo: debe completarse con las normas armonizadas aplicables. |
+| Arts. 11 y 17 y anexo IV | Documentación técnica y sistema de gestión de la calidad del proveedor de alto riesgo | — | 32 §6.3 | — | **Requiere control externo** | SEVEN-G 0.x no incluye plantillas de documentación técnica ni de sistema de gestión de la calidad (D69). |
+| Arts. 43, 47 y 48 | Evaluación de la conformidad, declaración UE y marcado CE | — | 34 §3.8 | — | **Requiere control externo** | Procedimiento del proveedor con organismo notificado cuando proceda; SEVEN-G solo lo sitúa en la fase 5. |
+| Art. 13 | Instrucciones de uso y transparencia hacia el responsable del despliegue | — | 34 §3.7 | P49 | Directa | — |
+| Art. 26 | Obligaciones del responsable del despliegue | N-11 | 34 §3.9; 52 | P17, P20, P24, P25 | Directa | — |
+| Art. 27 | Evaluación de impacto en derechos fundamentales | N-10 | 34 §3.10 | P48 | Directa | — |
+| Art. 49 | Registro en la base de datos de la UE | — | 34 §3.13 | P11 | **Parcial** | SEVEN-G recuerda la obligación y su evidencia; el registro lo hace la compañía en la base de datos. |
+| Art. 50 | Obligaciones de transparencia | N-08 | 34 §3.11; 21 (G4.05) | P17, P49 | Directa | — |
+| Arts. 51 a 55 | Obligaciones de los proveedores de modelos de IA de uso general | — | 34 §3.12 | — | **No cubierto** | SEVEN-G cubre solo a quien integra un modelo de uso general, no a su proveedor. |
+| Arts. 72 y 73 | Vigilancia posterior a la comercialización e incidentes graves | N-11, N-14 | 34 §3.14–§3.15; 37; 52 | P25, P26, P51; T08 | Directa | — |
+| Art. 99 | Régimen sancionador | — | 34 §3.16 | — | **No cubierto** | Se cita a título informativo; no es una obligación que SEVEN-G gestione. |
+<!-- crosswalk:fin -->
+
 ---
 
 ## 10. Procedimiento de mantenimiento del mapeo
@@ -835,3 +948,4 @@ Fecha de consulta: 16-09-2026, salvo las fuentes de la sección 5.3, la correspo
 | 0.1 | 16-09-2026 | Primera versión. Mapea el Reglamento Europeo de IA con las modificaciones del Reglamento (UE) 2026/1744 (calendario verificado a 16-09-2026), ISO/IEC 42001:2023, NIST AI RMF 1.0 y NIST AI 600-1, RGPD y guías del CEPD, DORA, NIS2 y normativa española; añade matriz resumen, procedimiento de mantenimiento y anexos orientativos de otras jurisdicciones y sectores. Aviso legal y responsabilidad del usuario sobre el cumplimiento regulatorio. |
 | 0.2 | 25-09-2026 | Añade la sección 5.3, NIST CSF 2.0 y Cyber AI Profile: funciones del CSF aplicadas a los sistemas de IA, áreas Secure, Defend y Thwart del perfil (en borrador) y advertencia de que los *tiers* no son niveles de madurez por subcategoría; el estado «Borrador» en la sección 1.4; la columna del CSF en la matriz resumen; la correspondencia AI RMF ↔ ISO/IEC 42001 del AIRC en la sección 4.3; las fuentes nuevas en la sección 13; y las secciones 5.4 (las 72 subcategorías del AI RMF) y 5.5 (las 48 subcategorías del CSF 2.0 con prioridad alta en el Cyber AI Profile, selección provisional), con su cobertura en SEVEN-G y la pregunta del documento 11 que da su nivel. Corrige el estado de ISO/IEC 42001: publicada (etapa 60.60), sin revisión en curso. Enlaza las plantillas P72 (perfil de seguridad de IA), P73 (perfil de gobierno de IA) y P74 (declaración de aplicabilidad de ISO/IEC 42001). Sustituye las afirmaciones que no se apoyaban en una fuente oficial por su fuente oficial (Reglamento (UE) 2026/1744 en EUR-Lex, NIS2 en España, Reino Unido, Espacio Europeo de Datos de Salud, Convenio Marco del Consejo de Europa y propuesta de modificación del RGPD) y retira el estado de verificación que admitía análisis de terceros. |
 | 0.3 | 25-09-2026 | El área Defend del Cyber AI Profile (en borrador) pasa a tener cobertura: sección 9.3 del documento 35, controles SEG-21 a SEG-25 y riesgo tipo RT-SEG-08. |
+| 0.4 | 01-10-2026 | Añade la sección 9.1, crosswalk de cobertura con ISO/IEC 42001, ISO/IEC 38507, ISO/IEC 23894, ISO/IEC 42005, el NIST AI RMF y el Reglamento Europeo de IA: por cada requisito, dónde lo cubre SEVEN-G, con qué regla del núcleo, con qué evidencia y con qué cobertura (directa, parcial, requiere control externo o no cubierto). Las tablas se generan desde `crosswalk.json`. |

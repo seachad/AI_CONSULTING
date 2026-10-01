@@ -5,7 +5,7 @@
 | | |
 |---|---|
 | Documento | Documento 02 · Glosario y convenciones |
-| Versión | 1.5 |
+| Versión | 1.6 |
 | Fecha | 01-10-2026 |
 | Autor | Fernando García Varela |
 | Estado | Vigente. Fuente única de términos, escalas y códigos del marco; se actualiza antes que cualquier otro documento cuando cambia un término. |
@@ -196,6 +196,7 @@ Orden alfabético. Las escalas completas están en la sección 4 y los códigos 
 | **Criterio de salida** | Condición que debe cumplirse al final de una fase para solicitar su *gate*. | 01 §6.2–6.9 | exit criterion |
 | **Criterios de parada** | Condiciones fijadas en la fase 2, antes de invertir, cuyo cumplimiento obliga a proponer Parar. No pueden relajarse durante la fase sin aprobación del órgano que autorizó la iniciativa. | 01 §6.4, §7.4 | stop criteria |
 | **Criterios Enterprise** | Ocho criterios que, con que se cumpla uno, determinan la intensidad Enterprise: alto riesgo regulatorio, decisiones sobre personas, exposición directa, agentes con capacidad de actuar, datos especialmente protegidos, función crítica, nivel Transformar e inversión superior al umbral de C2. | 01 §9.2 | Enterprise criteria † |
+| **Crosswalk de cobertura** | Tabla que indica, para cada requisito de una norma o regulación (ISO/IEC 42001, 38507, 23894, 42005, NIST AI RMF, Reglamento Europeo de IA), dónde lo cubre SEVEN-G, con qué regla del núcleo y qué evidencia, y su cobertura: directa, parcial, requiere control externo o no cubierto. Se genera desde un fichero de datos versionado; no es una certificación ni una declaración de conformidad. | 34 §9.1 | coverage crosswalk |
 | **Cuasi incidente** | Suceso que pudo causar daño y no lo causó gracias a un control o por azar. Se registra como incidente S4. | 37 §1.1 | near miss † |
 | **Cumplimiento (tipo de valor)** | Capacidad de cumplir una obligación regulatoria o contractual. Se informa por separado y no suma en el valor neto salvo que sustituya un coste de cumplimiento real medido con fórmula; entonces es eficiencia. | 40 §5.2 | compliance (value type) † |
 | **Curva de realización** | Parte del plan de realización que fija qué porcentaje del valor esperado anual en régimen se captura en cada periodo (año, semestre o trimestre), con su rampa de adopción, hasta la fecha de régimen. Se registra en T01 y la del plan aprobado se conserva como referencia para medir la realización (F10). | 43 §4.1; 40 §8.2 | realisation curve |
@@ -1031,6 +1032,7 @@ Las herramientas muestran los valores de las listas cerradas en español e ingl�
 
 | Versión | Fecha | Cambios |
 |---|---|---|
+| 1.6 | 01-10-2026 | Añade «crosswalk de cobertura». |
 | 1.5 | 01-10-2026 | Indicadores del catálogo: 162. |
 | 1.4 | 01-10-2026 | Añade la intensidad Express (escala 4.6, término y taxonomía) y la ficha viva. |
 | 1.3 | 01-10-2026 | Añade núcleo de SEVEN-G (N-01 a N-14), principio obligatorio · práctica · instrumento y proporcionalidad (principio 11); los principios pasan a 1–11. |

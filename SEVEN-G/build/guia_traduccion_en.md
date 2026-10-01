@@ -68,6 +68,7 @@ Uso interno del generador. Todas las traducciones al inglés deben seguir esta g
 | principio obligatorio · práctica · instrumento | mandatory principle · practice · instrument |
 | proporcionalidad (principio 11) | proportionality (principle 11) |
 | intensidad Express · ficha viva · lista reducida de criterios · umbral Express | Express intensity · living record · reduced list of criteria · Express threshold |
+| crosswalk de cobertura · cobertura directa · parcial · requiere control externo · no cubierto | coverage crosswalk · direct coverage · partial · requires external control · not covered |
 | evidencia referenciada · sistema de origen · referenciar antes que reproducir | referenced evidence · source system · reference rather than reproduce |
 | eficiencias · retorno · coste recurrente | efficiencies · return · recurring cost |
 | capacidad liberada | released capacity |
