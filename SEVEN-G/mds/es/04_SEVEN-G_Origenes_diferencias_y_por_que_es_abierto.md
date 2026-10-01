@@ -20,7 +20,7 @@
 
 ## 1. Objeto y alcance
 
-Este documento responde a tres preguntas que se hace quien conoce SEVEN-G por primera vez: **de dónde viene**, **en qué se diferencia** de lo que su compañía ya hace o ya conoce, y **por qué se ofrece gratis y con licencia abierta**. La sección 8 añade una comparación, solo de diferencias, con otras metodologías de adopción y gobierno de la IA.
+Este documento responde a tres preguntas que se hace quien conoce SEVEN-G por primera vez: **de dónde viene**, **en qué se diferencia** de lo que su compañía ya hace o ya conoce, y **por qué se ofrece gratis y con licencia abierta**. La sección 8 añade una comparación, solo de diferencias, con otras metodologías de mercado para la adopción y el gobierno de la IA.
 
 Es un documento explicativo. No añade reglas, criterios ni evidencias: las reglas del marco están en el documento 01 y en los documentos que lo desarrollan. Se dirige a consejeros, directivos y responsables de IA que valoran adoptar el marco, y a consultores y auditores que quieren entender su planteamiento antes de aplicarlo.
 
@@ -210,18 +210,20 @@ No es necesario contactar ni pedir permiso para ningún uso que cumpla la licenc
 
 ---
 
-## 8. Comparación con otras metodologías
+## 8. Comparación con otras metodologías de mercado
 
 ### 8.1 Cómo se compara
 
-Quien conoce SEVEN-G suele conocer ya otras metodologías o marcos de adopción y gobierno de la IA, y quiere saber en qué se distinguen. Esta sección los compara uno a uno con el mismo criterio:
+Quien conoce SEVEN-G suele conocer ya otras metodologías o marcos de mercado para la adopción y el gobierno de la IA, y quiere saber en qué se distinguen. Esta sección los compara uno a uno con el mismo criterio:
 
 - **Solo diferencias, sin valoración.** No se dice qué metodología es mejor o peor ni cuál conviene elegir: se describe qué hace cada una y en qué se distingue de SEVEN-G. Cada metodología responde a un propósito y a un tipo de usuario distintos.
 - **Las mismas dimensiones para todas**, para que las comparaciones se puedan leer juntas: naturaleza y propósito; acceso y licencia; unidad de gestión; ciclo de vida y decisiones; madurez; priorización de casos de uso; medición del valor; riesgo, seguridad y cumplimiento; papel del consejo; plantillas y herramientas; datos de mercado; certificación.
 - **Solo fuentes oficiales del autor de cada metodología**, enlazadas y con su fecha de consulta (D41). Cuando el detalle de una metodología solo está disponible para sus clientes, se compara con lo que su autor publica en abierto y se dice así.
+- **Solo lo que su autor publica en abierto, con palabras propias.** No se reproducen textos, figuras ni gráficos, no se usa investigación reservada a clientes y no se citan sus estudios ni sus previsiones como apoyo de SEVEN-G: se describe en qué consiste cada metodología, con un resumen propio.
+- **Marcas y ausencia de vínculo.** Los nombres de otras firmas y de sus marcos se citan solo para identificarlos; son marcas de sus titulares. SEVEN-G no tiene relación con ellas ni cuenta con su respaldo, y la comparación no lo sugiere.
 - **Compatibilidad.** Ninguna comparación sugiere sustituir lo que la compañía ya usa: SEVEN-G puede convivir con otros marcos y convalidar lo que ya existe documentando la correspondencia (documento 01, sección 1.2; documento 96, modificador MP4).
 
-La sección crece por entregas: se empieza por Gartner y se irán añadiendo otras metodologías con la misma estructura.
+La sección crece por entregas: de momento incluye Gartner, y se irán añadiendo otras metodologías de mercado con la misma estructura a medida que surjan.
 
 > **Por qué importa.** Una compañía que ya trabaja con un marco de referencia necesita saber qué le aporta SEVEN-G de distinto y qué solapa, para decidir qué adopta y cómo lo encaja, sin tener que leer las dos metodologías completas.
 
@@ -235,8 +237,6 @@ La sección crece por entregas: se empieza por Gartner y se irán añadiendo otr
 | **AI TRiSM** (*AI Trust, Risk and Security Management*) | Base técnica para aplicar el gobierno de la IA: cuatro capas de capacidades técnicas (gobierno de la IA, inspección y aplicación de políticas en ejecución, gobierno de la información e infraestructura) que hacen cumplir las políticas de gobierno. | [Gartner, AI Governance Needs More Than Policies](https://www.gartner.com/en/articles/ai-governance-trism) |
 | **AI Opportunity Radar** y **Use-Case Prism** | Priorización: el radar define la ambición de IA de la empresa en términos de oportunidad y de viabilidad; la oportunidad dice dónde se usa la IA (operaciones internas o actividades de cara al cliente) y cómo (IA «de cada día», que mejora la productividad, o IA que «cambia las reglas del juego»), en cuatro áreas: *back office*, *front office*, nuevos productos y servicios y nuevas capacidades centrales. Los prismas sitúan los casos de uso de cada sector o función según su valor de negocio y su viabilidad. | [Gartner, For AI Value, Focus on Your Use Cases](https://www.gartner.com/en/articles/ai-value) |
 | **Hype Cycle for Artificial Intelligence** | Representación gráfica de la madurez y la adopción de las tecnologías de IA en cinco fases, de la aparición de la innovación a la meseta de productividad. Se publica cada año. | [Gartner, Hype Cycle Research Methodology](https://www.gartner.com/en/research/methodologies/gartner-hype-cycle) |
-
-Gartner publica además previsiones sobre el mercado; dos de ellas describen el problema que SEVEN-G aborda: que al menos el 30 % de los proyectos de IA generativa se abandonarían tras la prueba de concepto antes de finalizar 2025, por mala calidad de los datos, controles de riesgo insuficientes, costes crecientes o valor de negocio poco claro ([nota de prensa de 29-07-2024](https://www.gartner.com/en/newsroom/press-releases/2024-07-29-gartner-predicts-30-percent-of-generative-ai-projects-will-be-abandoned-after-proof-of-concept-by-end-of-2025)), y que más del 40 % de los proyectos de IA agéntica se cancelarán antes de finalizar 2027 por costes crecientes, valor de negocio poco claro o controles de riesgo insuficientes ([nota de prensa de 25-06-2025](https://www.gartner.com/en/newsroom/press-releases/2025-06-25-gartner-predicts-over-40-percent-of-agentic-ai-projects-will-be-canceled-by-end-of-2027)). En un artículo posterior, Gartner indica que la primera previsión se quedó corta: al menos el 50 % de los proyectos de IA generativa se abandonaron tras la prueba de concepto, por las mismas causas ([Why Half of GenAI Projects Fail](https://www.gartner.com/en/articles/genai-project-failure)).
 
 **Diferencias con SEVEN-G**
 
@@ -258,7 +258,9 @@ Gartner publica además previsiones sobre el mercado; dos de ellas describen el 
 
 **Si la compañía ya usa los marcos de Gartner.** Los dos enfoques responden a preguntas distintas y pueden usarse a la vez: el diagnóstico y las prioridades de Gartner pueden alimentar el diagnóstico C1 y la tesis C2 de SEVEN-G, y su evaluación de madurez puede convalidarse documentando su correspondencia con las dimensiones D1–D7 (documento 96, modificador MP4).
 
-*Fuentes de gartner.com cotejadas el 01-10-2026 con el texto que su autor publica en abierto (registro de referencias, MER-GAR-01 a MER-GAR-09). Los marcos de Gartner cambian con el tiempo: esta comparación describe lo que su autor publicaba en esa fecha.*
+*Gartner y Hype Cycle son marcas registradas de Gartner, Inc. o de sus filiales, y los nombres de sus marcos citados aquí pertenecen a su titular. SEVEN-G y su autor no tienen relación con Gartner ni cuentan con su respaldo; esta comparación es una descripción propia hecha a partir de lo que Gartner publica en abierto.*
+
+*Fuentes de gartner.com cotejadas el 01-10-2026 con el texto que su autor publica en abierto (registro de referencias, MER-GAR-01 a MER-GAR-04, MER-GAR-08 y MER-GAR-09). Los marcos de Gartner cambian con el tiempo: esta comparación describe lo que su autor publicaba en esa fecha.*
 
 ---
 
@@ -292,4 +294,4 @@ Gartner publica además previsiones sobre el mercado; dos de ellas describen el 
 | Versión | Fecha | Cambios |
 |---|---|---|
 | 0.1 | 19-09-2026 | Primera versión. Origen práctico del marco, carencias de los enfoques habituales que corrige, disciplinas de gestión que reúne, la cartera como embudo comercial y sus diferencias, motivos de la licencia abierta, control que conserva el autor y contacto. |
-| 0.2 | 01-10-2026 | Nueva sección 8, «Comparación con otras metodologías»: criterio común (solo diferencias, sin valoración, mismas dimensiones y fuentes oficiales) y primera comparación, con Gartner, cotejada con las fuentes de gartner.com (nombres de las líneas y de los cinco niveles de madurez, áreas del radar, cifra posterior de abandono de proyectos de IA generativa, métricas de valor y gobierno proporcional de los agentes). Las secciones 8 a 10 pasan a 9 a 11. |
+| 0.2 | 01-10-2026 | Nueva sección 8, «Comparación con otras metodologías de mercado»: criterio común (solo diferencias, sin valoración, mismas dimensiones, fuentes oficiales, solo contenido publicado en abierto y resumido con palabras propias, marcas de sus titulares sin vínculo ni respaldo) y primera comparación, con Gartner, cotejada con las fuentes de gartner.com (nombres de las líneas y de los cinco niveles de madurez, áreas del radar, métricas de valor y gobierno proporcional de los agentes), con nota de marcas y sin citar sus previsiones de mercado. Las secciones 8 a 10 pasan a 9 a 11. |
