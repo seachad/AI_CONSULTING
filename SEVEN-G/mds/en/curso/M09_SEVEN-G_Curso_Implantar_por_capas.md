@@ -27,7 +27,7 @@ By the end you will be able to choose your company's implementation scope, disti
 1. **Two different proportionality decisions.** *Intensity* (Lite or Enterprise) belongs to each initiative; *implementation scope* (Lite or Enterprise) belongs to the company. Size decides neither.
 2. **A single library, three layers.** Essential (what every company applies), conditional (what a trigger activates) and complete (guides and reference). There are no reduced versions of the documents.
 3. **No phase or gate is skipped.** In Lite they are grouped —G0 to G2 in one session, G4 and G5 in another— and the evidence is simplified. G3 always goes separately.
-4. **The starting point changes the order, not the destination.** A company with no AI, another with predictive models in production and another with many pilots start with different milestones (document 96), but reach the same conditions of 01 §14.
+4. **The starting point changes the order, not the destination.** A company with no AI, another with predictive models in production and another with many pilots start with different milestones (document 96), but reach the same fourteen-rule core (01 §14.1).
 5. **Technology does not add maturity.** Maturity is read through three lenses: governance capability, technology footprint and impact reach (11 §7.6). Having agents with weak risk control is an alert, not more maturity.
 6. **Ninety days to have a diagnosis, a direction and a first portfolio**, with no moratorium: AI activity continues while the framework is implemented.
 

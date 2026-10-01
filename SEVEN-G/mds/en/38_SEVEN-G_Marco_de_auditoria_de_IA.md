@@ -5,8 +5,8 @@
 | | |
 |---|---|
 | Document | Document 38 · AI audit framework |
-| Version | 0.1 (working draft) |
-| Date | 16-09-2026 |
+| Version | 0.2 (working draft) |
+| Date | 01-10-2026 |
 | Author | Fernando García Varela |
 | Status | Draft for review. The *gate* criteria are set in document 21 and the nonconformity process in document 37. |
 
@@ -435,7 +435,7 @@ Rules:
 
 ## 11. Audit of the declaration of application of SEVEN-G
 
-A company may declare that it applies SEVEN-G when it meets the minimum conditions in 01 §14. The declaration is **the company's responsibility** and does not constitute a certification. This framework establishes how to audit it so that it is credible.
+A company may declare that it applies SEVEN-G when it meets the fourteen SEVEN-G core rules (01 §14.1). The declaration is **the company's responsibility** and does not constitute a certification. This framework establishes how to audit it so that it is credible.
 
 ### 11.1 When and who
 
@@ -445,25 +445,32 @@ A company may declare that it applies SEVEN-G when it meets the minimum conditio
 
 ### 11.2 Criteria, evidence and tests
 
-| Condition in 01 §14 | Evidence required | Minimum tests | Classification if not met |
+| Core rule (01 §14.1) | Evidence required | Minimum tests | Classification if not met |
 |---|---|---|---|
-| **1.** C1 and C2 completed; thesis, ambition per sphere and risk appetite approved by the board. | Board minutes; thesis and appetite document (document 13); C1 diagnosis. | Review of minutes and dates; consistency of the thresholds used in the portfolio with those approved. | Critical (cannot be declared) |
-| **2.** Inventory with regulatory classification, intensity and owner; initiative register with the traceability in 01 §6.11. | T02 and T01; quality indicators (32 §8). | Reconciliation of the inventory with independent sources (32 §9); sample of records (95%/10%: 29) against reality; sample of initiatives with phase and *gate* events. | Major; critical if there are non-inventoried high-risk systems |
-| **3.** Roles and bodies assigned in line with the incompatibilities in 01 §8.2. | Mandates (document 30); P03 of the initiatives. | Review of mandates; analysis of all assignments in T01 to detect incompatibilities. | Major |
-| **4.** All new initiatives go through the lifecycle with their *gates* recorded. | T01, T03, P29. | Analysis of the entire population: initiatives registered after adoption without G0 or with skipped phases; sample of *gates* with the tests in section 6.2 (including prior existence). | Major; critical if there are systems in production without G5 |
-| **5.** All initiatives in production have a current continuity review. | T01; R6 minutes. | Analysis of all R6 dates against the required frequency; sample of R6 reviews to check their content. | Major |
-| **6.** Applies the value measurement rules and reports to the board with the dashboard. | Board dashboard; T12; minutes. | Sample of use cases: formula, validation status, released capacity, single attribution (rules in 00 §6); check that the board receives the dashboard in C4. | Major |
-| **7.** Manages nonconformities using the process in 01 §12. | T08; reports to the board committee. | Analysis of all nonconformities: classification, containment and plan time limits, closure with effectiveness. | Major |
+| **N-01** Complete inventory with regulatory classification, intensity and owner. | T02; quality indicators (32 §8). | Reconciliation of the inventory with independent sources (32 §9); sample of records (95%/10%: 29) against reality. | Major; critical if there are non-inventoried high-risk systems |
+| **N-02** Initiative register with the traceability in 01 §6.11. | T01. | Sample of initiatives with phase and *gate* events; none with budget consumed before registration. | Major |
+| **N-03** Intensity determined for each initiative and reviewed at G3 and at each R6. | T01 (P04). | Analysis of the entire population: initiatives without intensity; sample of P04 against the eight Enterprise criteria. | Major |
+| **N-04** All new initiatives go through the lifecycle with their *gates* recorded. | T01, T03, P29. | Analysis of the entire population: initiatives registered after adoption without G0 or with skipped phases; sample of *gates* with the tests in section 6.2 (including prior existence). | Major; critical if there are systems in production without G5 |
+| **N-05** G3 always decided separately. | T01 (G3 decisions). | Analysis of the entire population: G3 decisions taken in the same session as another gate. | Major |
+| **N-06** Roles and bodies assigned in line with the incompatibilities in 01 §8.2. | Mandates (document 30); P03 of the initiatives. | Review of mandates; analysis of all assignments in T01 to detect incompatibilities. | Major |
+| **N-07** Dual validation and evidence prior to the decision. | T01 (verifier, request, evidence and decision dates). | Sample of *gates*: verifier different from the decision-maker and the team; evidence dated before the request (EV.05). | Major; critical if documentation was prepared after the fact |
+| **N-08** No "Yes ◆" criterion accepted as a condition. | T01, T03. | Analysis of all conditions: none on a "Yes ◆" criterion. | Critical |
+| **N-09** Value hypothesis with baseline and stop criteria before feasibility. | P08, P09; T11. | Sample of initiatives in phase 3 or later: falsifiable hypothesis, baseline and stop criterion dated before G2. | Major |
+| **N-10** Regulatory classification and risk register before design; no Critical risk without board approval. | P11, P12; T06. | Analysis of all Critical residual risks and their approvals; sample of classifications dated before G3. | Critical if a Critical risk lacks approval; major otherwise |
+| **N-11** Tested rollback and current continuity review in production; regularisation of earlier systems within the C2 time limit. | T01; P19; R6 minutes; regularisation list. | Analysis of all R6 dates against the required frequency; sample of R6 reviews and rollback tests; progress of regularisation against the time limit. | Major |
+| **N-12** C1 and C2 completed; thesis, ambition per sphere and risk appetite approved by the board; AI information at least quarterly. | Board minutes; thesis and appetite document (document 13); C1 diagnosis. | Review of minutes and dates; consistency of the thresholds used in the portfolio with those approved. | Critical (cannot be declared) |
+| **N-13** Value measurement rules applied and reporting to the board with the dashboard. | Board dashboard; T12; minutes. | Sample of use cases: formula, validation status, released capacity, single attribution (rules in 00 §6); check that the board receives the dashboard in C4. | Major |
+| **N-14** Nonconformities managed with the process in 01 §12. | T08; reports to the board committee. | Analysis of all nonconformities: classification, containment and plan time limits, closure with effectiveness. | Major |
 
-In addition, the **regularisation of initiatives predating** adoption within the time limit approved in C2 (01 §14, last paragraph) is verified.
+The regularisation of initiatives predating adoption, within the time limit approved in C2, is part of N-11.
 
 ### 11.3 Conclusion and use of the declaration
 
 | Outcome | Meaning | What the company may declare |
 |---|---|---|
-| **Conformant** | The seven conditions are met. | That it applies SEVEN-G, with scope (companies and types of use), date, framework version and reference to the audit. |
-| **Conformant with observations** | The seven conditions are met with minor nonconformities. | The same, stating that improvement actions are under way. |
-| **Nonconformant** | A condition is not met (major or critical nonconformity in it). | It may not declare that it applies SEVEN-G until it corrects this and passes a re-audit. It may state that it is in the process of implementation. |
+| **Conformant** | The fourteen core rules are met. | That it applies SEVEN-G, with scope (companies and types of use), date, framework and core version and reference to the audit. |
+| **Conformant with observations** | The fourteen core rules are met with minor nonconformities. | The same, stating that improvement actions are under way. |
+| **Nonconformant** | A core rule is not met (major or critical nonconformity in it). | It may not declare that it applies SEVEN-G until it corrects this and passes a re-audit. It may state that it is in the process of implementation. |
 
 **Minimum content of the declaration**: company name; scope; version of SEVEN-G applied; date; outcome and date of the last audit and type of auditor (internal or external); relevant exceptions in force; statement that the declaration is not a certification. In accordance with the content licence (CC BY 4.0), authorship of the framework must be acknowledged. Model text in P61.
 
@@ -556,3 +563,4 @@ This document does not constitute legal advice.
 | Version | Date | Changes |
 |---|---|---|
 | 0.1 | 16-09-2026 | First version. Replaces the scheme in the previous material (0–5 scoring and pass, conditional pass or fail outcomes) with the Conformant, Conformant with observations and Nonconformant outcomes, and the minor, major and critical nonconformities of 01. Defines five audit types, independence and competences, the audit universe and risk-based plan, standard work programmes, techniques with justified sample sizes, technical testing of models and agents, the report, follow-up, the audit of the declaration of application and the relationship with ISO/IEC 42001 and internal audit. Proposes the code `AUD-AAAA-NNN`. |
+| 0.2 | 01-10-2026 | The audit of the declaration (section 11) is carried out against the fourteen SEVEN-G core rules (01 §14.1), with evidence, tests and classification per rule. |

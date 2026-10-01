@@ -5,8 +5,8 @@
 | | |
 |---|---|
 | Document | Document 90 · Implementation guide |
-| Version | 0.1 (working draft) |
-| Date | 16-09-2026 |
+| Version | 0.2 (working draft) |
+| Date | 01-10-2026 |
 | Author | Fernando García Varela |
 | Status | Draft for review. Time limits and targets are indicative and will be adjusted through practical application. |
 
@@ -34,7 +34,7 @@ This document does not constitute legal advice.
 |---|---|
 | **Day 90** | Diagnosis with evidence (C1), direction proposed or approved (C2), first portfolio (C3), bodies, roles, *gates*, metrics and reporting cadence up and running. |
 | **Months 4–18** | The framework operates on a steady-state basis: new initiatives go through the lifecycle, existing ones are regularised, the board exercises oversight with the dashboard. |
-| **Declaration of application** | The seven conditions in 01 §14 are met, substantiated with the **(§14)** questions of document 11 in a verified assessment. |
+| **Declaration of application** | The fourteen core rules (01 §14.1) are met, substantiated with the **(§14)** questions of document 11 in a verified assessment and with the audit in 38 §11. |
 
 ---
 
@@ -171,7 +171,7 @@ Each milestone is accepted by the implementation sponsor together with the AI Co
 | Week | Activities and deliverables | Owner | Documents, templates and tools | Completion criterion |
 |---|---|---|---|---|
 | **9 · Bodies and roles** | Mandates of the AI Committee, the AI Office and the board committee (P38); roles in 01 §8 in existing initiatives with an incompatibility check; AI Auditor designated. | Sponsor; board secretariat | 01 §8, 30; P03; T01 | Mandates drafted; roles assigned without incompatibilities. |
-| **10 · Gates and policies** | *Gate* criteria (21) and checklists (22) adopted; reference time limits; corporate and acceptable use policy; nonconformity process. | AI Office; compliance | 21, 22, 31, 37; P04, P29; T03, T08 | *Gate* manager configured; policies in final draft. |
+| **10 · Gates and policies** | *Gate* criteria (21) and checklists (22) adopted; equivalences between the evidence the company already produces and the templates it covers (21 §4.3), so that it is referenced rather than copied; reference time limits; corporate and acceptable use policy; nonconformity process. | AI Office; compliance | 21, 22, 31, 37; P04, P29; T03, T08 | *Gate* manager configured; policies in final draft. |
 | **11 · Metrics, reporting and portfolio** | Measurement rules adopted; first version of the board dashboard; register of recommendations; reporting calendar (01 §5.2); first prioritised portfolio with envelopes, tranches and regularisation plan. | AI Office; management control; committee | 40, 60, 62, 14; P28; T17, T18, T01, T16 | Dashboard generated with inventory data; portfolio with scoring and owners. |
 | **12 · Approvals** | The board approves the thesis, ambition per sphere, risk appetite, thresholds and corporate policy (C2). The committee approves the portfolio, *gates*, metrics and regularisation plan (C3). | Sponsor; AI Committee; board | 13, 14, 31 | Minutes with the approvals. |
 | **13 · Steady state** | First ordinary meeting of the committee; first *gates* under the new model; 6–18-month roadmap approved; lessons from the implementation; communication to the organisation. | Implementation lead | 90; T01, T03 | **Milestone 3:** criteria in section 4.5 met. |
@@ -222,19 +222,21 @@ Regularisation documentation is identified as such and bears its actual date. It
 
 In a Lite scope, the stages may be compressed to reach the declaration between months 6 and 12.
 
-### 6.2 Path to the conditions in 01 §14
+### 6.2 Path to the core (01 §14.1)
 
-| Condition in 01 §14 | Questions in document 11 | Indicative timing (Lite / Enterprise) | Owner |
+| Core rule | Questions in document 11 | Indicative timing (Lite / Enterprise) | Owner |
 |---|---|---|---|
-| 1. C1 and C2 completed with board approval | D1.05 | Month 3 / month 3–4 | Sponsor |
-| 2. Inventory with classification, intensity and owner; register with traceability | D6.05, D2.05 | Month 6 / month 9 | AI Office; AI Risk Owner |
-| 3. Roles and bodies with incompatibilities | D1.07, D1.08 | Month 3 / month 4 | AI Committee |
-| 4. New initiatives with *gates* recorded | D2.06 | Month 4 / month 6 | AI Office |
-| 5. Current continuity review in production | D4.07 | Month 9 / month 12–15 | Operations owners |
-| 6. Measurement rules and board dashboard | D7.05, D7.06 | Month 6 / month 9–12 | Management control; AI Office |
-| 7. Nonconformities with the process in 01 §12 | D6.07 | Month 6 / month 9 | AI Risk Owner; audit |
+| N-12 · C1 and C2 completed with board approval | D1.05 | Month 3 / month 3–4 | Sponsor |
+| N-01 · Inventory with classification, intensity and owner | D6.05 | Month 6 / month 9 | AI Office; AI Risk Owner |
+| N-02 · Initiative register with traceability | D2.05 | Month 3 / month 4 | AI Office |
+| N-06 · Roles and bodies with incompatibilities | D1.07, D1.08 | Month 3 / month 4 | AI Committee |
+| N-03, N-04, N-05, N-07, N-08 · Intensity, *gates* recorded with G3 separately, dual validation and "Yes ◆" | D2.06 | Month 4 / month 6 | AI Office |
+| N-09, N-10 · Value hypothesis, classification and risk register | — | Month 4 / month 6 | AI Office; AI Risk Owner |
+| N-11 · Tested rollback and current continuity review in production; regularisation | D4.07 | Month 9 / month 12–15 | Operations owners |
+| N-13 · Measurement rules and board dashboard | D7.05, D7.06 | Month 6 / month 9–12 | Management control; AI Office |
+| N-14 · Nonconformities with the process in 01 §12 | D6.07 | Month 6 / month 9 | AI Risk Owner; audit |
 
-The declaration is based on a verified assessment with all of those questions answered "Yes" and with regularisation within the time limit (document 11, section 7.3).
+The declaration is based on a verified assessment with all of those questions answered "Yes", on the audit of the declaration, which also checks the rules without a question (38 §11.2), and on regularisation within the time limit (document 11, section 7.3).
 
 ---
 
@@ -293,7 +295,7 @@ The targets are indicative and are set by the company in its plan.
 | Proportion of validated value | Validated value ÷ total value reported. | Baseline | Target set in C2 | T12, T17 |
 | Overdue nonconformities | Open with an expired time limit. | Baseline | 0 critical; major ones decreasing | T08 |
 | AI literacy | Staff who use or oversee AI trained ÷ total. | Programme approved | Target set in C2 | Training record (P45) |
-| Conditions in 01 §14 | Conditions substantiated ÷ 7. | At least 2 | 7 in Lite; progress according to the roadmap in Enterprise | T15 |
+| Core rules (01 §14.1) | Rules substantiated ÷ 14. | At least 4 | 14 in Lite; progress according to the roadmap in Enterprise | T15 |
 
 ---
 
@@ -335,3 +337,4 @@ Tools without an application of their own are applied with the template or docum
 | 0.1 | 19-09-2026 | Size does not determine the scope (2.1); a single Transform bet does not require an Enterprise scope (2.2); minimum path in a Lite scope (2.4); references to pending documents or tools removed. |
 | 0.1 | 19-09-2026 | The minimum path (2.4) refers to the obligation matrix (document 94), to the "The essentials" box of each document and to the course. |
 | 0.1 | 28-09-2026 | Reference to document 96 (starting point and implementation journey) in §1, §5, §10 and §11; tool T23 in month 1. |
+| 0.2 | 01-10-2026 | Path to the SEVEN-G core (section 6.2) and implementation indicator on the fourteen rules (section 9); equivalences of corporate evidence in week 10 (21 §4.3). |

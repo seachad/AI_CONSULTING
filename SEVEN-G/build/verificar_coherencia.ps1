@@ -81,6 +81,8 @@
         (clave seveng-tema) y lo guardan al cambiarlo; el móvil y el registro de recomendaciones llevan los enlaces de vuelta al sitio.
     37. Núcleo de SEVEN-G (D145): las catorce reglas N-01 a N-14 están, en el mismo orden, en 01 §14.1, 94 §3 y P61 (ES/EN); 01 §3 tiene
         el principio 11 de proporcionalidad; 94 §2.3 distingue principio, práctica e instrumento; el glosario tiene el código.
+    38. Evidencia referenciada (D146): 21 §4.3 (ES/EN) con sus requisitos y la tabla de equivalencias con plantillas que existen; EV.10
+        la admite; el esquema de T01 tiene origen y sistema_origen en evidencias, la demostración incluye alguna y el diálogo la registra.
 #>
 param([switch]$SinNavegador)
 $ErrorActionPreference = 'Stop'
@@ -1671,6 +1673,27 @@ try {
     if (-not $g02.Contains('| **N-01–N-14** |')) { Mal "$lg 02 §6.1: falta el código N-01–N-14 (D145)"; $mal37++ }
   }
   if (-not $mal37) { Ok 'núcleo N-01 a N-14 igual en 01 §14.1, 94 §3 y P61 (ES/EN); principio 11 de proporcionalidad; 94 §2.3; código en el glosario' }
+
+  # ---- 38. evidencia referenciada (D146)
+  Write-Host '38. Referenciar antes que reproducir: evidencias de la compañía (D146)'
+  $mal38 = 0
+  foreach ($lg in 'es', 'en') {
+    $d21 = [IO.File]::ReadAllText((Get-ChildItem (Join-Path $repo "SEVEN-G\mds\$lg") -Filter '21_SEVEN-G_*.md').FullName)
+    $s43 = [regex]::Match($d21, '(?s)\n### 4\.3 .*?\n## 5\. ').Value
+    if (-not $s43) { Mal "$lg 21 §4.3: falta «referenciar antes que reproducir» (D146)"; $mal38++; continue }
+    $pls = [regex]::Matches($s43, '\bP\d\d\b') | ForEach-Object { $_.Value } | Sort-Object -Unique
+    foreach ($pl in $pls) { if (-not (Get-ChildItem (Join-Path $repo "SEVEN-G\mds\$lg\plantillas") -Filter "${pl}_SEVEN-G_*.md")) { Mal "$lg 21 §4.3: cita $pl, que no existe (D146)"; $mal38++ } }
+    if ($pls.Count -lt 10) { Mal "$lg 21 §4.3: la tabla de equivalencias cubre menos de 10 plantillas (D146)"; $mal38++ }
+    if ($d21 -notmatch '\| \*\*EV\.10\*\* \|[^\n]*4\.3') { Mal "$lg 21 §4.1: EV.10 no admite la evidencia referenciada (D146)"; $mal38++ }
+  }
+  $esq = Get-Content (Join-Path $repo 'SEVEN-G\herramientas\T01_registro_iniciativas\esquema_registro.schema.json') -Raw -Encoding utf8 | ConvertFrom-Json
+  $pe = $esq.'$defs'.evidencia.properties
+  if (-not ($pe.origen -and $pe.sistema_origen)) { Mal 'esquema de T01: evidencia sin origen ni sistema_origen (D146)'; $mal38++ }
+  $dd = Get-Content (Join-Path $repo 'SEVEN-G\herramientas\T01_registro_iniciativas\datos_demo.json') -Raw -Encoding utf8 | ConvertFrom-Json
+  if (-not ($dd.evidencias | Where-Object { $_.origen -eq 'referencia' -and $_.sistema_origen })) { Mal 'datos de demostración de T01: ninguna evidencia referenciada (D146)'; $mal38++ }
+  $tpl = [IO.File]::ReadAllText((Join-Path $repo 'SEVEN-G\herramientas\T01_registro_iniciativas\_fuentes\registro.plantilla.html'))
+  if (-not ($tpl.Contains("origen_referencia:") -and $tpl.Contains("ev.origen='referencia'"))) { Mal 'T01: el diálogo de evidencias no admite una evidencia referenciada (D146)'; $mal38++ }
+  if (-not $mal38) { Ok '21 §4.3 (ES/EN) con requisitos y tabla de equivalencias; EV.10; esquema, demostración y diálogo de T01 con evidencias referenciadas' }
 }
 finally { Remove-Item $tmp -Recurse -Force -Confirm:$false -ErrorAction SilentlyContinue }
 

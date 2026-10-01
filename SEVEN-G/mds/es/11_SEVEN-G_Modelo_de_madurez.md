@@ -98,7 +98,7 @@ El nivel 0 no tiene criterios propios. Los requisitos temporales de los niveles 
 - La **rúbrica** resume, nivel a nivel, los criterios observables y las evidencias exigidas.
 - El **cuestionario** convierte esos criterios en preguntas verificables. Cada dimensión tiene 12 preguntas: 2 de nivel 1, 2 de nivel 2, 4 de nivel 3, 2 de nivel 4 y 2 de nivel 5. Si una rúbrica y su cuestionario difieren, **prevalece el cuestionario**.
 - Cada pregunta se responde **Sí**, **Parcial** o **No** con las reglas de la sección 4.5. Solo las preguntas marcadas **(si aplica)** admiten *No aplica*, con justificación verificada.
-- Las preguntas marcadas **(§14)** acreditan una condición de la declaración de aplicación de SEVEN-G (01 §14). Todas son de nivel 3.
+- Las preguntas marcadas **(§14)** acreditan una regla del núcleo de SEVEN-G, que es la base de la declaración de aplicación (01 §14.1). Todas son de nivel 3.
 - Los códigos de plantillas (P) y herramientas (T) indican dónde suele encontrarse la evidencia; la compañía puede aportar evidencias equivalentes de sus propios sistemas.
 
 ### 3.2 D1 · Estrategia y gobierno
@@ -430,7 +430,7 @@ La madurez mide la **capacidad** de gobernar y capturar valor; el índice mide *
 
 ### 7.3 Con la declaración de aplicación (01 §14)
 
-Las diez preguntas **(§14)** acreditan las siete condiciones de 01 §14. Una compañía puede declarar que aplica SEVEN-G cuando **todas ellas están en "Sí" en una evaluación verificada** y las iniciativas previas al marco se están regularizando dentro del plazo aprobado en C2. Como todas son de nivel 3, **una compañía con nivel 3 verificado en D1, D2, D4, D6 y D7 cumple las condiciones**; la declaración se basa, no obstante, en las preguntas y no en el nivel global.
+Las diez preguntas **(§14)** acreditan las reglas del núcleo de SEVEN-G (01 §14.1) que tienen pregunta: N-01, N-02, N-04, N-06 y N-11 a N-14; las demás (N-03, N-05 y N-07 a N-10) las comprueba la auditoría de la declaración sobre el registro (38 §11.2). Una compañía puede declarar que aplica SEVEN-G cuando **todas ellas están en "Sí" en una evaluación verificada** y las iniciativas previas al marco se están regularizando dentro del plazo aprobado en C2. Como todas son de nivel 3, **una compañía con nivel 3 verificado en D1, D2, D4, D6 y D7 cumple esas reglas**; la declaración se basa, no obstante, en las preguntas y no en el nivel global.
 
 ### 7.4 Con el panel y los órganos
 

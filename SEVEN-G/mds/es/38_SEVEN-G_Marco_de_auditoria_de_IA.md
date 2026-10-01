@@ -5,8 +5,8 @@
 | | |
 |---|---|
 | Documento | Documento 38 · Marco de auditoría de IA |
-| Versión | 0.1 (borrador de trabajo) |
-| Fecha | 16-09-2026 |
+| Versión | 0.2 (borrador de trabajo) |
+| Fecha | 01-10-2026 |
 | Autor | Fernando García Varela |
 | Estado | Borrador para revisión. Los criterios de *gate* se fijan en el documento 21 y el proceso de no conformidades en el documento 37. |
 
@@ -435,7 +435,7 @@ Reglas:
 
 ## 11. Auditoría de la declaración de aplicación de SEVEN-G
 
-Una compañía puede declarar que aplica SEVEN-G cuando cumple las condiciones mínimas de 01 §14. La declaración es **responsabilidad de la compañía** y no constituye una certificación. Este marco establece cómo auditarla para que sea creíble.
+Una compañía puede declarar que aplica SEVEN-G cuando cumple las catorce reglas del núcleo de SEVEN-G (01 §14.1). La declaración es **responsabilidad de la compañía** y no constituye una certificación. Este marco establece cómo auditarla para que sea creíble.
 
 ### 11.1 Cuándo y quién
 
@@ -445,25 +445,32 @@ Una compañía puede declarar que aplica SEVEN-G cuando cumple las condiciones m
 
 ### 11.2 Criterios, evidencias y pruebas
 
-| Condición de 01 §14 | Evidencias requeridas | Pruebas mínimas | Clasificación si no se cumple |
+| Regla del núcleo (01 §14.1) | Evidencias requeridas | Pruebas mínimas | Clasificación si no se cumple |
 |---|---|---|---|
-| **1.** C1 y C2 completados; tesis, ambición por esfera y apetito de riesgo aprobados por el consejo. | Actas del consejo; documento de tesis y apetito (documento 13); diagnóstico de C1. | Revisión de actas y fechas; coherencia de los umbrales usados en la cartera con los aprobados. | Crítica (no puede declararse) |
-| **2.** Inventario con clasificación regulatoria, intensidad y responsable; registro de iniciativas con trazabilidad de 01 §6.11. | T02 y T01; indicadores de calidad (32 §8). | Conciliación del inventario con fuentes independientes (32 §9); muestra de fichas (95 %/10 %: 29) frente a la realidad; muestra de iniciativas con eventos de fase y *gate*. | Mayor; crítica si hay sistemas de alto riesgo sin inventariar |
-| **3.** Roles y órganos asignados con las incompatibilidades de 01 §8.2. | Mandatos (documento 30); P03 de las iniciativas. | Revisión de mandatos; análisis del total de asignaciones en T01 para detectar incompatibilidades. | Mayor |
-| **4.** Todas las iniciativas nuevas recorren el ciclo con *gates* registrados. | T01, T03, P29. | Análisis del total: iniciativas dadas de alta tras la adopción sin G0 o con saltos de fase; muestra de *gates* con pruebas de la sección 6.2 (incluida anterioridad). | Mayor; crítica si hay sistemas en producción sin G5 |
-| **5.** Todas las iniciativas en producción tienen revisión de continuidad vigente. | T01; actas de R6. | Análisis del total de fechas de R6 frente a la periodicidad; muestra de R6 para comprobar su contenido. | Mayor |
-| **6.** Aplica las reglas de medición del valor y reporta al consejo con el panel. | Panel del consejo; T12; actas. | Muestra de casos: fórmula, estado de validación, capacidad liberada, atribución única (reglas de 00 §6); comprobación de que el consejo recibe el panel en C4. | Mayor |
-| **7.** Gestiona las no conformidades con el proceso de 01 §12. | T08; informes a la comisión delegada. | Análisis del total de no conformidades: clasificación, plazos de contención y plan, cierre con eficacia. | Mayor |
+| **N-01** Inventario completo con clasificación regulatoria, intensidad y responsable. | T02; indicadores de calidad (32 §8). | Conciliación del inventario con fuentes independientes (32 §9); muestra de fichas (95 %/10 %: 29) frente a la realidad. | Mayor; crítica si hay sistemas de alto riesgo sin inventariar |
+| **N-02** Registro de iniciativas con la trazabilidad de 01 §6.11. | T01. | Muestra de iniciativas con eventos de fase y *gate*; ninguna con presupuesto consumido antes de su alta. | Mayor |
+| **N-03** Intensidad determinada en cada iniciativa y revisada en G3 y en cada R6. | T01 (P04). | Análisis del total: iniciativas sin intensidad; muestra de P04 frente a los ocho criterios Enterprise. | Mayor |
+| **N-04** Todas las iniciativas nuevas recorren el ciclo con *gates* registrados. | T01, T03, P29. | Análisis del total: iniciativas dadas de alta tras la adopción sin G0 o con saltos de fase; muestra de *gates* con pruebas de la sección 6.2 (incluida anterioridad). | Mayor; crítica si hay sistemas en producción sin G5 |
+| **N-05** G3 decidido siempre por separado. | T01 (decisiones de G3). | Análisis del total: decisiones de G3 en la misma sesión que otra puerta. | Mayor |
+| **N-06** Roles y órganos asignados con las incompatibilidades de 01 §8.2. | Mandatos (documento 30); P03 de las iniciativas. | Revisión de mandatos; análisis del total de asignaciones en T01 para detectar incompatibilidades. | Mayor |
+| **N-07** Validación dual y evidencia anterior a la decisión. | T01 (verificador, fechas de solicitud, de evidencia y de decisión). | Muestra de *gates*: verificador distinto del decisor y del equipo; evidencias fechadas antes de la solicitud (EV.05). | Mayor; crítica si hay documentación elaborada a posteriori |
+| **N-08** Ningún criterio «Sí ◆» admitido como condición. | T01, T03. | Análisis del total de condiciones: ninguna sobre un criterio «Sí ◆». | Crítica |
+| **N-09** Hipótesis de valor con línea base y criterios de parada antes de la viabilidad. | P08, P09; T11. | Muestra de iniciativas en fase 3 o posterior: hipótesis falsable, línea base y criterio de parada fechados antes de G2. | Mayor |
+| **N-10** Clasificación regulatoria y registro de riesgos antes de diseñar; ningún Crítico sin aprobación del consejo. | P11, P12; T06. | Análisis del total de riesgos residuales Críticos y sus aprobaciones; muestra de clasificaciones fechadas antes de G3. | Crítica si hay un Crítico sin aprobación; mayor en lo demás |
+| **N-11** Reversión probada y revisión de continuidad vigente en producción; regularización de lo anterior en el plazo de C2. | T01; P19; actas de R6; lista de regularización. | Análisis del total de fechas de R6 frente a la periodicidad; muestra de R6 y de pruebas de reversión; avance de la regularización frente al plazo. | Mayor |
+| **N-12** C1 y C2 completados; tesis, ambición por esfera y apetito de riesgo aprobados por el consejo; información de IA al menos trimestral. | Actas del consejo; documento de tesis y apetito (documento 13); diagnóstico de C1. | Revisión de actas y fechas; coherencia de los umbrales usados en la cartera con los aprobados. | Crítica (no puede declararse) |
+| **N-13** Reglas de medición del valor aplicadas e información al consejo con el panel. | Panel del consejo; T12; actas. | Muestra de casos: fórmula, estado de validación, capacidad liberada, atribución única (reglas de 00 §6); comprobación de que el consejo recibe el panel en C4. | Mayor |
+| **N-14** No conformidades gestionadas con el proceso de 01 §12. | T08; informes a la comisión delegada. | Análisis del total de no conformidades: clasificación, plazos de contención y plan, cierre con eficacia. | Mayor |
 
-Adicionalmente, se verifica la **regularización de las iniciativas anteriores** a la adopción en el plazo aprobado en C2 (01 §14, último párrafo).
+La regularización de las iniciativas anteriores a la adopción, en el plazo aprobado en C2, forma parte de N-11.
 
 ### 11.3 Conclusión y uso de la declaración
 
 | Resultado | Significado | Qué puede declarar la compañía |
 |---|---|---|
-| **Conforme** | Se cumplen las siete condiciones. | Que aplica SEVEN-G, con alcance (sociedades y tipos de uso), fecha, versión del marco y referencia a la auditoría. |
-| **Conforme con observaciones** | Se cumplen las siete condiciones con no conformidades menores. | Lo mismo, indicando que existen acciones de mejora en curso. |
-| **No conforme** | Alguna condición no se cumple (no conformidad mayor o crítica en ella). | No puede declarar que aplica SEVEN-G hasta corregir y superar una reauditoría. Puede comunicar que está en proceso de implantación. |
+| **Conforme** | Se cumplen las catorce reglas del núcleo. | Que aplica SEVEN-G, con alcance (sociedades y tipos de uso), fecha, versión del marco y del núcleo y referencia a la auditoría. |
+| **Conforme con observaciones** | Se cumplen las catorce reglas del núcleo con no conformidades menores. | Lo mismo, indicando que existen acciones de mejora en curso. |
+| **No conforme** | Alguna regla del núcleo no se cumple (no conformidad mayor o crítica en ella). | No puede declarar que aplica SEVEN-G hasta corregir y superar una reauditoría. Puede comunicar que está en proceso de implantación. |
 
 **Contenido mínimo de la declaración**: denominación de la compañía; alcance; versión de SEVEN-G aplicada; fecha; resultado y fecha de la última auditoría y tipo de auditor (interno o externo); excepciones vigentes relevantes; mención de que la declaración no es una certificación. Conforme a la licencia de los contenidos (CC BY 4.0), se debe reconocer la autoría del marco. Texto modelo en P61.
 
@@ -556,3 +563,4 @@ Este documento no constituye asesoramiento jurídico.
 | Versión | Fecha | Cambios |
 |---|---|---|
 | 0.1 | 16-09-2026 | Primera versión. Sustituye el esquema del material anterior (puntuación 0–5 y resultados de aprobado, condicionado o suspenso) por los resultados Conforme, Conforme con observaciones y No conforme, y las no conformidades menor, mayor y crítica de 01. Define cinco tipos de auditoría, independencia y competencias, universo y plan basado en riesgo, programas de trabajo tipo, técnicas con tamaños de muestra justificados, pruebas técnicas de modelos y agentes, informe, seguimiento, auditoría de la declaración de aplicación y relación con ISO/IEC 42001 y la auditoría interna. Propone el código `AUD-AAAA-NNN`. |
+| 0.2 | 01-10-2026 | La auditoría de la declaración (sección 11) se hace contra las catorce reglas del núcleo de SEVEN-G (01 §14.1), con evidencias, pruebas y clasificación por regla. |

@@ -5,8 +5,8 @@
 | | |
 |---|---|
 | Documento | Documento 21 · Criterios de *gate* y de auditoría |
-| Versión | 0.1 (borrador de trabajo) |
-| Fecha | 16-09-2026 |
+| Versión | 0.2 (borrador de trabajo) |
+| Fecha | 01-10-2026 |
 | Autor | Fernando García Varela |
 | Estado | Borrador para revisión. Desarrolla 01 §7 y sustituye a los criterios de *gate* del material anterior. |
 
@@ -128,7 +128,7 @@ Una evidencia es válida si supera las catorce reglas siguientes. El documento 2
 | **EV.07** | Pertinencia | Se refiere a esta iniciativa, a su alcance y a la versión del sistema. La reutilización de evidencias de otra iniciativa se justifica. | No válida |
 | **EV.08** | Datos reales | Cuando el criterio exige resultados: fuente, periodo y método reproducibles; importes con fórmula y estado (validado, declarado o estimado). | No válida |
 | **EV.09** | Aprobación y separación | Aprobada por quien corresponde; autor, verificador y decisor son personas distintas. | No válida · no conformidad mayor si hay autoaprobación |
-| **EV.10** | Completitud | Campos obligatorios de la plantilla rellenos; en Lite, los no marcados *(Enterprise)*. Los datos ausentes figuran como "sin dato", no como cero. | Pendiente |
+| **EV.10** | Completitud | Campos obligatorios de la plantilla rellenos o cubiertos por una evidencia referenciada (sección 4.3); en Lite, los no marcados *(Enterprise)*. Los datos ausentes figuran como "sin dato", no como cero. | Pendiente |
 | **EV.11** | Coherencia | Las cifras y afirmaciones coinciden entre evidencias (por ejemplo, valor en P08, P10 y P28; riesgos en P12 y controles en P18). | No cumple hasta aclarar |
 | **EV.12** | Protección de la información | No contiene datos personales innecesarios; acceso restringido según su clasificación. | Observación o no conformidad según el caso |
 | **EV.13** | Evidencias generadas por sistemas | Exportación fechada o enlace con marca temporal a registros, paneles o resultados de pruebas. Una captura sin fecha ni origen no es válida. | No válida |
@@ -137,6 +137,40 @@ Una evidencia es válida si supera las catorce reglas siguientes. El documento 2
 ### 4.2 Evidencia aceptada con carencias
 
 El verificador puede aceptar una evidencia con carencias menores (reglas EV.01–EV.04, EV.06 o EV.10) solo si no afectan a un criterio *Sí* o *Sí ◆* y se corrigen antes de la decisión. Las reglas EV.05 y EV.09 no admiten excepción.
+
+### 4.3 Referenciar antes que reproducir
+
+Una compañía grande ya tiene mecanismos que producen buena parte de lo que SEVEN-G pide: casos de negocio, evaluaciones de impacto, evaluaciones de proveedores, contratos, registros de arquitectura y de cambios, planes de continuidad, controles financieros. **Una evidencia que la compañía ya tiene satisface el criterio si cubre lo que pide, sin copiarla a una plantilla** (principio 11 de 01 §3, proporcionalidad). La plantilla de SEVEN-G sirve entonces de **lista de comprobación** de lo que la evidencia debe contener, no de documento que rellenar.
+
+Una evidencia referenciada es válida si cumple las mismas reglas EV.01–EV.14 que cualquier otra y, además:
+
+| Requisito | Qué se comprueba |
+|---|---|
+| **Referencia localizable** | Sistema o repositorio de origen, identificador o enlace, versión y fecha, de modo que el verificador y el auditor la encuentren sin pedirla (EV.06). En T01 se registra con origen «referencia» y su sistema de origen. |
+| **Responsable** | Persona y rol que la elaboró o aprobó en su proceso de origen (EV.02). La separación de funciones se comprueba igual (EV.09). |
+| **Cobertura** | El verificador contrasta la evidencia con la plantilla que cubre y anota lo que falta. Lo que falta se completa en un **anexo breve** con solo esos campos, nunca copiando lo que ya está. |
+| **Vigencia y pertinencia** | Se refiere a esta iniciativa, a su alcance y a la versión del sistema (EV.07); si se actualiza en su proceso de origen, se vuelve a verificar (EV.04). |
+
+Equivalencias habituales (orientativas; cada compañía las fija en su implantación, documento 90):
+
+| Evidencia que la compañía suele tener | Plantilla de SEVEN-G que puede cubrir | Lo que suele faltar y va al anexo |
+|---|---|---|
+| Caso de negocio del comité de inversiones | P08, P10 | Hipótesis falsable, criterios de parada y estado de cada importe (estimado, declarado, validado) |
+| Línea base de control de gestión | P09 | Método y periodo de medición |
+| Evaluación de impacto en protección de datos | P47 (y su parte de P11) | Riesgos propios de la IA: sesgo, explicabilidad, supervisión humana |
+| Evaluación de riesgo de terceros de compras | P14, P55 | Uso de los datos para entrenar, ubicación, modelos de base y salida (documento 36) |
+| Contrato o cláusulas tipo de la compañía | P56 | Cláusulas específicas de IA que no estén |
+| Registro de arquitectura o ficha de diseño | P15 | Trazabilidad de entradas, salidas y versiones del modelo |
+| Diseño de seguridad y análisis de amenazas | P18 | Amenazas propias de la IA: inyección de instrucciones, envenenamiento, fuga |
+| Gestión de cambios y pase a producción | P21, P23 | Firma de conformidad de riesgos o firma multinivel |
+| Plan de continuidad y procedimiento de vuelta atrás | P19 | Prueba de la reversión con su tiempo real |
+| Plan de formación y comunicación del cambio | P20 | Alfabetización en IA y medición del uso |
+| Manual y procedimiento de incidentes de operación | P24, P26 | Severidades S1–S4 y notificaciones propias de la IA |
+| Seguimiento de beneficios de la oficina de proyectos | P62 | Curva de realización y responsable de negocio del beneficio |
+
+Ninguna evidencia se pide dos veces: si un dato ya está en una evidencia referenciada, la plantilla remite a ella y no lo repite.
+
+> **Por qué importa.** Si cada iniciativa obliga a copiar en plantillas propias lo que la compañía ya tiene, SEVEN-G se convierte en un sistema documental paralelo que nadie mantiene y que se desincroniza de los procesos reales. Referenciar convierte el marco en una capa de orquestación y trazabilidad sobre los procesos existentes: el verificador comprueba lo que hay donde está, y la plantilla solo señala lo que falta.
 
 ---
 
@@ -701,3 +735,4 @@ No se usa puntuación ponderada: los criterios se cumplen o no, con evidencia, y
 | Versión | Fecha | Cambios |
 |---|---|---|
 | 0.1 | 16-09-2026 | Primera versión. Fusiona las dos versiones de los criterios de *gate* y auditoría del material anterior con el modelo vigente de 01: 128 criterios codificados por puerta, intensidad y ambición, con criterios de IA generativa, agentes y terceros; evidencia válida, grado de cumplimiento, firma multinivel con veto, auditoría y registro de decisión. Ajustes de coherencia con 01 (separación de funciones en Lite, resultados de R6, criterio de agentes) y con 34 y 37. |
+| 0.2 | 01-10-2026 | Nueva sección 4.3, referenciar antes que reproducir: una evidencia que la compañía ya tiene satisface el criterio si cubre lo que pide, con requisitos de referencia, responsable, cobertura y vigencia, y tabla de equivalencias habituales; EV.10 admite la evidencia referenciada. |

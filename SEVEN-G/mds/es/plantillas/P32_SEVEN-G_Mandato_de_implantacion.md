@@ -88,7 +88,7 @@ Se elige **Enterprise** si se cumple al menos un criterio (90 §2.2); en otro ca
 
 ### 3.4 Modelo de adopción
 
-SEVEN-G puede adoptarse de forma **integral** o **modular** por componentes (01 §1.2). La adopción modular es válida, pero la compañía solo puede declarar que aplica SEVEN-G cuando cumple las siete condiciones de 01 §14.
+SEVEN-G puede adoptarse de forma **integral** o **modular** por componentes (01 §1.2). La adopción modular es válida, pero la compañía solo puede declarar que aplica SEVEN-G cuando cumple las catorce reglas del núcleo (01 §14.1).
 
 | Campo | Contenido | Guía |
 |---|---|---|
@@ -196,7 +196,7 @@ Definiciones de 90 §9. Los objetivos los fija la compañía; los de 90 §9 son 
 | Proporción de valor validado | | | T12, T17 | |
 | No conformidades fuera de plazo | | | T08 | |
 | Alfabetización en IA | | | Registro de formación | |
-| Condiciones de 01 §14 acreditadas (de 7) | | | T15 | |
+| Reglas del núcleo (01 §14.1) acreditadas (de 14) | | | T15 | |
 
 ---
 

@@ -5,8 +5,8 @@
 | | |
 |---|---|
 | Documento | Documento 22 · Listas de verificación por *gate* |
-| Versión | 0.1 (borrador de trabajo) |
-| Fecha | 16-09-2026 |
+| Versión | 0.2 (borrador de trabajo) |
+| Fecha | 01-10-2026 |
 | Autor | Fernando García Varela |
 | Estado | Borrador para revisión. Los códigos coinciden con los criterios del documento 21. |
 
@@ -284,7 +284,7 @@ Se aplica a **cada evidencia** enlazada en la solicitud del *gate*, antes de rev
 | ☐ | EV.07 | ¿Corresponde a esta iniciativa, su alcance y la versión del sistema, o se justifica su reutilización? | Contenido · P15 (versión) | No válida |
 | ☐ | EV.08 | Si acredita resultados, ¿tiene fuente, periodo, método reproducible y, en importes, fórmula y estado? | Contenido · T11 · T12 | No válida |
 | ☐ | EV.09 | ¿Está aprobada por quien corresponde, y autor, verificador y decisor son personas distintas? | Ficha · P03 · P29 | No válida · no conformidad mayor si hay autoaprobación |
-| ☐ | EV.10 | ¿Están completos los campos obligatorios, con "sin dato" explícito donde falte información? | Plantilla | Pendiente |
+| ☐ | EV.10 | ¿Están completos los campos obligatorios —en la plantilla o en la evidencia referenciada con su anexo (21 §4.3)—, con "sin dato" explícito donde falte información? | Plantilla | Pendiente |
 | ☐ | EV.11 | ¿Sus cifras y afirmaciones coinciden con las de las demás evidencias? | P08 · P10 · P12 · P18 · P28 | No cumple hasta aclarar |
 | ☐ | EV.12 | ¿Evita datos personales innecesarios y tiene el acceso restringido que corresponde? | Contenido · permisos del repositorio | Observación o no conformidad |
 | ☐ | EV.13 | Si la generó un sistema, ¿es una exportación fechada o un enlace con marca temporal? | Registros · paneles · resultados de pruebas | No válida |
@@ -366,3 +366,4 @@ Un ítem obligatorio sin marcar en LV-AG equivale a *No cumple* en el criterio a
 | Versión | Fecha | Cambios |
 |---|---|---|
 | 0.1 | 16-09-2026 | Primera versión. Sustituye a las listas de verificación del material anterior: 128 controles binarios en ocho listas por puerta con los códigos del documento 21, lista LV-EV de validación de evidencias (14 controles), lista LV-AG para agentes alineada con T10 (21 controles) e instrucciones para el verificador y el auditor. Ajustes de coherencia con 01 (separación de funciones en Lite, resultados de R6, criterio de agentes) y con 34 y 37. |
+| 0.2 | 01-10-2026 | LV-EV, EV.10: los campos obligatorios pueden estar en una evidencia referenciada con su anexo (21 §4.3). |

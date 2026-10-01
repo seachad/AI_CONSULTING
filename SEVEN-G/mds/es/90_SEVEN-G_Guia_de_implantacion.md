@@ -5,8 +5,8 @@
 | | |
 |---|---|
 | Documento | Documento 90 · Guía de implantación |
-| Versión | 0.1 (borrador de trabajo) |
-| Fecha | 16-09-2026 |
+| Versión | 0.2 (borrador de trabajo) |
+| Fecha | 01-10-2026 |
 | Autor | Fernando García Varela |
 | Estado | Borrador para revisión. Los plazos y objetivos son orientativos y se ajustarán con la aplicación práctica. |
 
@@ -34,7 +34,7 @@ Este documento no constituye asesoramiento jurídico.
 |---|---|
 | **Día 90** | Diagnóstico con evidencia (C1), dirección propuesta o aprobada (C2), primera cartera (C3), órganos, roles, *gates*, métricas y ritmo de reporte en marcha. |
 | **Meses 4–18** | El marco funciona en régimen: las iniciativas nuevas recorren el ciclo de vida, las existentes se regularizan, el consejo supervisa con el panel. |
-| **Declaración de aplicación** | Se cumplen las siete condiciones de 01 §14, acreditadas con las preguntas **(§14)** del documento 11 en una evaluación verificada. |
+| **Declaración de aplicación** | Se cumplen las catorce reglas del núcleo (01 §14.1), acreditadas con las preguntas **(§14)** del documento 11 en una evaluación verificada y con la auditoría de 38 §11. |
 
 ---
 
@@ -171,7 +171,7 @@ Cada hito lo acepta el patrocinador de la implantación con el comité de IA (o 
 | Semana | Actividades y entregables | Responsable | Documentos, plantillas y herramientas | Criterio de finalización |
 |---|---|---|---|---|
 | **9 · Órganos y roles** | Mandatos del comité de IA, la oficina de IA y la comisión delegada (P38); roles de 01 §8 en las iniciativas existentes con comprobación de incompatibilidades; auditor de IA designado. | Patrocinador; secretaría del consejo | 01 §8, 30; P03; T01 | Mandatos redactados; roles asignados sin incompatibilidades. |
-| **10 · Gates y políticas** | Criterios de *gate* (21) y listas de verificación (22) adoptados; plazos de referencia; política corporativa y de uso aceptable; proceso de no conformidades. | Oficina de IA; cumplimiento | 21, 22, 31, 37; P04, P29; T03, T08 | Gestor de *gates* configurado; políticas en borrador final. |
+| **10 · Gates y políticas** | Criterios de *gate* (21) y listas de verificación (22) adoptados; equivalencias entre las evidencias que la compañía ya produce y las plantillas que cubren (21 §4.3), para referenciarlas en lugar de copiarlas; plazos de referencia; política corporativa y de uso aceptable; proceso de no conformidades. | Oficina de IA; cumplimiento | 21, 22, 31, 37; P04, P29; T03, T08 | Gestor de *gates* configurado; políticas en borrador final. |
 | **11 · Métricas, reporte y cartera** | Reglas de medición adoptadas; primera versión del panel del consejo; registro de recomendaciones; calendario de reporte (01 §5.2); primera cartera priorizada con sobres, tramos y plan de regularización. | Oficina de IA; control de gestión; comité | 40, 60, 62, 14; P28; T17, T18, T01, T16 | Panel generado con datos del inventario; cartera con puntuación y responsables. |
 | **12 · Aprobaciones** | El consejo aprueba tesis, ambición por esfera, apetito de riesgo, umbrales y política corporativa (C2). El comité aprueba cartera, *gates*, métricas y plan de regularización (C3). | Patrocinador; comité de IA; consejo | 13, 14, 31 | Actas con las aprobaciones. |
 | **13 · Régimen ordinario** | Primera reunión ordinaria del comité; primeros *gates* con el nuevo modelo; hoja de ruta de 6–18 meses aprobada; lecciones de la implantación; comunicación a la organización. | Responsable de implantación | 90; T01, T03 | **Hito 3:** criterios de la sección 4.5 cumplidos. |
@@ -222,19 +222,21 @@ La documentación de regularización se identifica como tal y con su fecha real.
 
 En alcance Lite, las etapas pueden comprimirse para alcanzar la declaración entre los meses 6 y 12.
 
-### 6.2 Camino hasta las condiciones de 01 §14
+### 6.2 Camino hasta el núcleo (01 §14.1)
 
-| Condición de 01 §14 | Preguntas del documento 11 | Momento orientativo (Lite / Enterprise) | Responsable |
+| Regla del núcleo | Preguntas del documento 11 | Momento orientativo (Lite / Enterprise) | Responsable |
 |---|---|---|---|
-| 1. C1 y C2 completados con aprobación del consejo | D1.05 | Mes 3 / mes 3–4 | Patrocinador |
-| 2. Inventario con clasificación, intensidad y responsable; registro con trazabilidad | D6.05, D2.05 | Mes 6 / mes 9 | Oficina de IA; responsable de riesgos |
-| 3. Roles y órganos con incompatibilidades | D1.07, D1.08 | Mes 3 / mes 4 | Comité de IA |
-| 4. Iniciativas nuevas con *gates* registrados | D2.06 | Mes 4 / mes 6 | Oficina de IA |
-| 5. Revisión de continuidad vigente en producción | D4.07 | Mes 9 / mes 12–15 | Responsables de operación |
-| 6. Reglas de medición y panel del consejo | D7.05, D7.06 | Mes 6 / mes 9–12 | Control de gestión; oficina de IA |
-| 7. No conformidades con el proceso de 01 §12 | D6.07 | Mes 6 / mes 9 | Responsable de riesgos; auditoría |
+| N-12 · C1 y C2 completados con aprobación del consejo | D1.05 | Mes 3 / mes 3–4 | Patrocinador |
+| N-01 · Inventario con clasificación, intensidad y responsable | D6.05 | Mes 6 / mes 9 | Oficina de IA; responsable de riesgos |
+| N-02 · Registro de iniciativas con trazabilidad | D2.05 | Mes 3 / mes 4 | Oficina de IA |
+| N-06 · Roles y órganos con incompatibilidades | D1.07, D1.08 | Mes 3 / mes 4 | Comité de IA |
+| N-03, N-04, N-05, N-07, N-08 · Intensidad, *gates* registrados con G3 aparte, validación dual y «Sí ◆» | D2.06 | Mes 4 / mes 6 | Oficina de IA |
+| N-09, N-10 · Hipótesis de valor, clasificación y registro de riesgos | — | Mes 4 / mes 6 | Oficina de IA; responsable de riesgos |
+| N-11 · Reversión probada y revisión de continuidad vigente en producción; regularización | D4.07 | Mes 9 / mes 12–15 | Responsables de operación |
+| N-13 · Reglas de medición y panel del consejo | D7.05, D7.06 | Mes 6 / mes 9–12 | Control de gestión; oficina de IA |
+| N-14 · No conformidades con el proceso de 01 §12 | D6.07 | Mes 6 / mes 9 | Responsable de riesgos; auditoría |
 
-La declaración se apoya en una evaluación verificada con todas esas preguntas en "Sí" y con la regularización dentro de plazo (documento 11, sección 7.3).
+La declaración se apoya en una evaluación verificada con todas esas preguntas en "Sí", en la auditoría de la declaración, que comprueba también las reglas sin pregunta (38 §11.2), y en la regularización dentro de plazo (documento 11, sección 7.3).
 
 ---
 
@@ -293,7 +295,7 @@ Los objetivos son orientativos y los fija la compañía en su plan.
 | Proporción de valor validado | Valor validado ÷ valor total informado. | Línea base | Objetivo fijado en C2 | T12, T17 |
 | No conformidades fuera de plazo | Abiertas con plazo vencido. | Línea base | 0 críticas; mayores en descenso | T08 |
 | Alfabetización | Personal que usa o supervisa IA formado ÷ total. | Programa aprobado | Objetivo fijado en C2 | Registro de formación (P45) |
-| Condiciones de 01 §14 | Condiciones acreditadas ÷ 7. | Al menos 2 | 7 en Lite; progreso según hoja de ruta en Enterprise | T15 |
+| Reglas del núcleo (01 §14.1) | Reglas acreditadas ÷ 14. | Al menos 4 | 14 en Lite; progreso según hoja de ruta en Enterprise | T15 |
 
 ---
 
@@ -335,3 +337,4 @@ Las herramientas sin aplicación propia se aplican con la plantilla o el documen
 | 0.1 | 19-09-2026 | El tamaño no decide el alcance (2.1); una apuesta de Transformar aislada no obliga a alcance Enterprise (2.2); ruta mínima en alcance Lite (2.4); se retiran las menciones a documentos o herramientas pendientes. |
 | 0.1 | 19-09-2026 | La ruta mínima (2.4) remite a la matriz de obligatoriedad (documento 94), al recuadro «Lo esencial» de cada documento y al curso. |
 | 0.1 | 28-09-2026 | Remisión al documento 96 (punto de partida y recorrido de implantación) en §1, §5, §10 y §11; herramienta T23 en el mes 1. |
+| 0.2 | 01-10-2026 | Camino hasta el núcleo de SEVEN-G (sección 6.2) e indicador de implantación sobre las catorce reglas (sección 9); equivalencias de evidencias corporativas en la semana 10 (21 §4.3). |

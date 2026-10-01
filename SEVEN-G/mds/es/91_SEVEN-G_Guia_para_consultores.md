@@ -121,7 +121,7 @@ Las duraciones son orientativas y dependen del tamaño de la compañía, del nú
 | | |
 |---|---|
 | **Cuándo** | El consejo, la comisión delegada o auditoría interna quieren una opinión independiente; la compañía quiere verificar su declaración de aplicación (01 §14); se requiere una revisión tras un incidente relevante. |
-| **Alcance** | Verificación de las siete condiciones de 01 §14; revisión por muestreo de decisiones de *gate* (validación dual, separación de funciones, evidencias previas a la decisión); revisión del inventario y la clasificación; revisión de la aplicación de las reglas de medición en el paquete del consejo; revisión del proceso de no conformidades; revisión del registro de recomendaciones y de la independencia de las valoraciones. |
+| **Alcance** | Verificación de las catorce reglas del núcleo (01 §14.1); revisión por muestreo de decisiones de *gate* (validación dual, separación de funciones, evidencias previas a la decisión); revisión del inventario y la clasificación; revisión de la aplicación de las reglas de medición en el paquete del consejo; revisión del proceso de no conformidades; revisión del registro de recomendaciones y de la independencia de las valoraciones. |
 | **Fuera de alcance** | Diseñar o implantar las correcciones; emitir certificaciones (sección 6.3). |
 | **Entregables** | Plan de auditoría con alcance, criterios y muestra (P58) · Papeles de trabajo con evidencias (P59) · Informe (P60) con conclusión **Conforme**, **Conforme con observaciones** o **No conforme** · No conformidades detectadas clasificadas como menor, mayor o crítica · Recomendaciones para el registro (documento 62). |
 | **Roles del tercero** | Responsable de auditoría · Auditores con experiencia en IA · Revisor de calidad. Ninguno puede haber participado en la implantación o en el acompañamiento del ámbito auditado (sección 5). |
@@ -230,7 +230,7 @@ Modelo de declaración de aplicación (plantilla P61):
 | Compañía y perímetro | Sociedades, áreas y sistemas incluidos. |
 | Versión de SEVEN-G | Número y fecha. |
 | Fecha desde la que se aplica | |
-| Condiciones de 01 §14 | Para cada una de las siete: cumple o no cumple, y evidencia enlazada. |
+| Reglas del núcleo (01 §14.1) | Para cada una de las catorce: cumple o no cumple, y evidencia enlazada. |
 | Adaptaciones | Parámetros cambiados (umbrales, plazos, pesos de madurez) y motivo. |
 | Excepciones | Sistemas en regularización con plazo aprobado en C2. |
 | Órgano que la aprueba | Consejo o comisión delegada, con fecha. |
