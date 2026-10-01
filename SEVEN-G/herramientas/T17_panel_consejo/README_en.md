@@ -134,6 +134,10 @@ Original phase and status are kept in `casos[].seveng`.
 
 With hours declared in T01's *gate* decisions (`decisiones_gate[].horas_gobierno`, optional) and the C2 cost per hour and targets (`meta.configuracion.coste_hora_gobierno` and `objetivo_coste_gobierno_pct`), the connector passes `casos[].seveng.gobierno` and `meta.gobierno`, and the **Cost of governance** card in "Portfolio and value" shows, by intensity (Express, Lite, Enterprise), hours per case, the cost of governance over the investment against the target and the share of evidence that is referenced (41 IND-COS-12 to 14). Hours are never estimated: without declared hours, the card is not drawn.
 
+## Three perspectives of the use case (D150)
+
+With T01's `iniciativas[].resultado_operativo` (physical indicators from document 41 with baseline, target and current value) and its open risks, incidents and nonconformities, the connector passes `casos[].seveng.perspectivas` and each use case record opens with **Three perspectives of the use case**: economic value, operational outcome and risk exposure in three parallel columns that are never merged (document 40 §11.1, rule 11). Without an operational indicator, the column says so; it is never zero.
+
 ## Mapping table
 
 ### `meta`

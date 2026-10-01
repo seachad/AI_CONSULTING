@@ -5,8 +5,8 @@
 | | |
 |---|---|
 | Documento | Documento 60 · Paquete para el consejo |
-| Versión | 0.3 (borrador de trabajo) |
-| Fecha | 16-09-2026 |
+| Versión | 0.4 (borrador de trabajo) |
+| Fecha | 01-10-2026 |
 | Autor | Fernando García Varela |
 | Estado | Borrador para revisión. Desarrolla la etapa C4 (supervisión) y los resultados de C2 y C5 que se elevan al consejo. |
 
@@ -128,6 +128,7 @@ La revisión anual debería contar con la participación de auditoría interna (
 |---|---|---|
 | **Mensaje principal** | Tres líneas como máximo, con uno de los cuatro formatos de respuesta (documento 61, sección 4). | Responde a "¿se cumple lo decidido?". Ejemplo: *"Sí, con una condición: el valor validado ha subido, pero dos iniciativas de alto riesgo siguen sin evaluación de impacto."* |
 | **Cifras clave** | Eficiencias, retorno, coste recurrente y neto anual; proporción validada; capacidad liberada no materializada (aparte); inversión ejecutada frente a presupuesto. | Reglas de la sección 8. |
+| **Resultado operativo** | Casos en uso con indicadores operativos: cuántos están en su objetivo, cuántos por debajo y cuántos sin indicador; valor no cuantificado de nivel medio o alto. | Documento 40 §11.1, regla 11: no se traduce a euros ni se suma con las cifras clave. |
 | **Cartera** | Iniciativas por fase y estado; en producción; paradas y retiradas del trimestre; estancadas. | Desde T01. |
 | **Riesgo** | Riesgos residuales Crítico y Alto; incidentes S1 y S2; no conformidades mayores y críticas abiertas. | Solo número y enlace; el detalle en los apartados 5 y 6. |
 | **Qué frena el escalado** | Los tres frenos por los que empezar (FE-1 a FE-6), con qué bloquean, qué hacer, quién y el valor anual en juego. | Lectura de §10.4, desde T17. Si una acción necesita decisión, pasa a «Decisiones solicitadas». |
@@ -141,6 +142,7 @@ La revisión anual debería contar con la participación de auditoría interna (
 |---|---|
 | Mensaje principal | Sí, con una condición: que el agente de atención no se amplíe hasta superar la prueba de inyección de instrucciones. La cartera cumple el presupuesto y el valor validado sube del 41 % al 58 %. |
 | Cifras clave | Eficiencias 3,9 M€ · Retorno 1,6 M€ · Coste recurrente 1,3 M€ · **Neto anual 4,2 M€** · Proporción validada 58 % (3,2 M€ de 5,5 M€) · Capacidad liberada no materializada 1,1 M€ (no suma) · Inversión ejecutada 2,4 M€ de 3,0 M€ presupuestados. |
+| Resultado operativo | 14 casos en uso: 9 en su objetivo operativo, 3 por debajo y 2 sin indicador. 2 casos con valor no cuantificado alto (experiencia de cliente). |
 | Cartera | 31 iniciativas: 6 en fases 0–2, 7 en fases 3–5, 14 en producción, 4 en G7. En el trimestre: 1 parada en G3 (riesgo inaceptable), 1 retirada (sustituida por otra solución). 3 estancadas. |
 | Riesgo | 0 riesgos residuales Críticos · 4 Altos · 1 incidente S2 · 1 no conformidad mayor abierta. |
 | Qué frena el escalado | 1) FE-3 · Riesgo y cumplimiento sin cerrar: bloquea G5 en 2 iniciativas; completar sus evaluaciones de impacto antes de la próxima reunión del comité (responsable de riesgos). 2) FE-1 · El valor no está demostrado: 1,4 M€ en uso sin validar; validación por control de gestión antes del cierre del trimestre. 3) FE-2 · Los casos no avanzan: 3 fuera de plazo; *gate* anticipado en la siguiente reunión mensual. |
@@ -206,7 +208,7 @@ Se presentan **como máximo tres casos en detalle** por sesión. El resto está 
 3. Casos que ilustran un cambio relevante de valor (positivo o negativo) o una parada o retirada con lecciones.
 4. Casos de Transformar en curso, para que el consejo siga sus hitos de aprendizaje.
 
-Cada caso ocupa una página con: qué es y para qué se usa (regla 10 de medición), esfera y nivel de ambición, fase y estado, valor con fórmula y estado, coste, riesgo residual principal, próxima decisión y fecha.
+Cada caso ocupa una página con: qué es y para qué se usa (regla 10 de medición), esfera y nivel de ambición, fase y estado, valor con fórmula y estado, coste, riesgo residual principal, próxima decisión y fecha. Valor económico, resultado operativo y exposición al riesgo van en tres columnas paralelas (documento 40 §11.1, regla 11), como en la ficha del caso del panel.
 
 ### 4.9 Anexos
 
@@ -556,3 +558,4 @@ La lista se aplica con P67 §12.
 | 0.1 | 16-09-2026 | Primera versión. Define el contenido trimestral (C4) y anual (C2 y C5), la estructura del paquete, la ficha de decisión, el reparto entre pleno y comisión delegada, el calendario, las reglas de presentación de cifras, el semáforo de programas y la relación con el panel del consejo. Ajustes de coherencia con 01 (separación de funciones en Lite, resultados de R6, criterio de agentes) y con 34 y 37; semáforo alineado con los seis ejes del documento 14. |
 | 0.2 | 28-09-2026 | Lectura ejecutiva «Qué frena el escalado» (§10.4): seis frenos FE-1 a FE-6 con señales de caso, patrones de paradas y señales de la compañía, reglas de orden y valor anual en juego; mapa de esferas × niveles de ambición en el panel (T16, §10.5); campo «Qué frena el escalado» en el resumen de una página (§4.2) y bloques del panel (§10.2). |
 | 0.3 | 28-09-2026 | Plan de realización, tramos de financiación y valor no cuantificado en el panel (§10.6): tarjetas «Plan de realización: curva y tramos», «Tramos de financiación pendientes» y «Valor no cuantificado», sección «Plan de realización» de la ficha del caso, sección y alertas de la versión móvil; bloques del panel (§10.2) y §10.3 (D135). |
+| 0.4 | 01-10-2026 | Campo «Resultado operativo» en el resumen de una página (§4.2) y tres perspectivas en paralelo en cada caso en detalle (§4.8) y en la ficha del caso del panel (documento 40 §11.1, regla 11; D150). |

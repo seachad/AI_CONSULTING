@@ -361,7 +361,7 @@ function caso(ix, ini, org, moneda, ciclo) {
     esfera_principal: get(cl, "esfera_principal"), esfera_secundaria: get(cl, "esfera_secundaria"),
     ambicion: {propuesta: get(cl, "ambicion_propuesta"), confirmada: get(cl, "ambicion_confirmada"), real: get(cl, "ambicion_real")},
     autonomia: get(cl, "autonomia"), regulatoria: reg, etiquetas_libres: get(ini, "etiquetas_libres") || [], sistemas: get(ini, "sistemas") || [],
-    gobierno: gobiernoCaso(ix, iid)};
+    gobierno: gobiernoCaso(ix, iid), perspectivas: perspectivasCaso(ix, ini, iid)};
   return out;
 }
 // coste del propio gobierno de la iniciativa (41 IND-COS-12 a 14; D148): horas declaradas (nunca estimadas) y evidencias referenciadas (21 §4.3)
@@ -371,6 +371,22 @@ function gobiernoCaso(ix, iid) {
   const evs = ix.evidencias[iid] || [];
   return {horas: conHoras.length ? conHoras.reduce((a, d) => a + d.horas_gobierno, 0) : null, decisiones: decididas.length,
     decisiones_con_horas: conHoras.length, evidencias: evs.length, evidencias_referenciadas: evs.filter(e => get(e, "origen") === "referencia").length};
+}
+
+// resultado operativo y exposición al riesgo (40 §11.1, regla 11; D150): se presentan en paralelo con el valor económico, nunca fusionados
+const RO_CLAVES = ["indicador", "nombre", "unidad", "sentido", "base", "fecha_base", "objetivo", "actual", "fecha_actual", "fuente"];
+function nivelResidual(r) {
+  const p = get(r, "probabilidad_residual"), i = get(r, "impacto_residual");
+  if (Number.isInteger(p) && Number.isInteger(i)) { const s = p * i; return s >= 16 ? "critico" : s >= 10 ? "alto" : s >= 5 ? "medio" : "bajo"; }
+  return get(r, "nivel_residual");
+}
+function perspectivasCaso(ix, ini, iid) {
+  const t01 = ix.t01;
+  const abiertos = (t01.riesgos || []).filter(r => r && typeof r === "object" && get(r, "iniciativa") === iid && get(r, "estado") !== "cerrado");
+  return {resultado_operativo: (get(ini, "resultado_operativo") || []).map(x => { const o = {}; for (const k of RO_CLAVES) o[k] = get(x, k); return o; }),
+    riesgos_altos_abiertos: abiertos.filter(r => ["alto", "critico"].includes(nivelResidual(r))).length,
+    incidentes_abiertos: (t01.incidentes || []).filter(n => get(n, "iniciativa") === iid && get(n, "estado") === "abierto").length,
+    no_conformidades_abiertas: (t01.no_conformidades || []).filter(n => get(n, "iniciativa") === iid && get(n, "estado") === "abierta").length};
 }
 
 // ---------------------------------------------------------------- seguimiento

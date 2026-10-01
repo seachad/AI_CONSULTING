@@ -5,8 +5,8 @@
 | | |
 |---|---|
 | Documento | Documento 61 · Guía de conversación con el consejo |
-| Versión | 0.2 (borrador de trabajo) |
-| Fecha | 16-09-2026 |
+| Versión | 0.3 (borrador de trabajo) |
+| Fecha | 01-10-2026 |
 | Autor | Fernando García Varela |
 | Estado | Borrador para revisión. Integra el guion de sesión y las preguntas del mapa de esferas. |
 
@@ -364,6 +364,7 @@ Las respuestas son orientativas y se adaptan con los datos de la compañía. Tod
 | 14 | **¿Usan los empleados herramientas de IA no autorizadas?** | Dar lo que se sabe: detecciones, controles técnicos activos, formación, regularizaciones. Si no se mide, "Todavía no lo sabemos, porque falta…". | Monitor de uso corporativo (T21); no conformidades por uso no autorizado. | Decir que no ocurre porque está prohibido. |
 | 15 | **¿Podemos acelerar si relajamos los controles?** | "Sí, con una condición" solo para controles no críticos y con aceptación del riesgo por quien corresponde; "No" para seguridad, cumplimiento legal y supervisión humana. | Apetito de riesgo aprobado en C2; reglas de condiciones (01 §7.3). | Aceptar la presión de plazo sin registro. |
 | 16 | **¿Qué nos impide escalar la IA?** | Nombrar los tres frenos por los que empezar, con lo que bloquean, qué se va a hacer, quién y el valor anual en juego; separar lo que bloquea una puerta de lo que solo retiene valor. | Lectura «Qué frena el escalado» del panel (documento 60 §10.4) y las decisiones o recomendaciones que la convierten en acciones (documento 62). | Una lista de problemas sin orden ni responsable, o presentar el valor en juego como valor asegurado. |
+| 17 | **¿Cómo sabemos que vale la pena si no se puede poner en euros?** | Separar las tres perspectivas: lo que sí rinde en euros (con su estado), lo que cambia en la operación (indicador con línea base, objetivo y valor actual) y el riesgo que se asume; si el caso se sostiene por valor no cuantificado, decir cuándo se vuelve a revisar. | Regla de presentación 11 y sección 5.3 del documento 40; ficha del caso en el panel y su próxima R6. | Convertir la mejora a euros sin fórmula («equivale a un millón de valor de marca»), o defender el caso solo con la percepción del equipo. |
 
 ---
 
@@ -458,3 +459,4 @@ El Reglamento Europeo de IA incluye obligaciones de alfabetización en IA para e
 |---|---|---|
 | 0.1 | 16-09-2026 | Primera versión. Integra las preguntas y el guion de sesión del mapa de esferas en el marco SEVEN-G; define el lenguaje de negocio, el formato de respuesta al consejo con ejemplos, la regla de tres casos, las preguntas por esfera y por etapa, las preguntas difíciles, el papel del consejero o asesor con experiencia en IA y los errores frecuentes. |
 | 0.2 | 28-09-2026 | Pregunta difícil 16 «¿Qué nos impide escalar la IA?», que se responde con la lectura «Qué frena el escalado» del panel (60 §10.4). |
+| 0.3 | 01-10-2026 | Pregunta difícil 17 «¿Cómo sabemos que vale la pena si no se puede poner en euros?», que se responde con las tres perspectivas del documento 40 §11.1, regla 11 (D150). |

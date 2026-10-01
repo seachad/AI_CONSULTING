@@ -90,6 +90,8 @@
         indicadores; horas_gobierno y coste_hora_gobierno en el esquema de T01; la ficha de T01 y la tarjeta del panel lo muestran.
     41. Crosswalk de cobertura (D149): el 34 §9.1 (ES/EN) coincide con crosswalk.json (crosswalk.ps1 -Comprobar), cada norma
         del crosswalk está en el registro de referencias, toda cobertura distinta de «directa» lleva nota y el 34 lo publica.
+    42. Tres perspectivas del caso (D150): regla de presentación 11 del 40 (ES/EN); resultado_operativo en el esquema de T01 y en la
+        demostración; bloque en la ficha de valor de T01 y en la ficha del caso del panel de ejemplo; campo del resumen del 60.
 #>
 param([switch]$SinNavegador)
 $ErrorActionPreference = 'Stop'
@@ -1764,6 +1766,24 @@ try {
     if (-not ($h34 -and [IO.File]::ReadAllText($h34.FullName).Contains('crosswalk.json'))) { Mal "$lg 34: el HTML no publica el crosswalk (regenerar) (D149)"; $mal41++ }
   }
   if (-not $mal41) { Ok "crosswalk: $(@($cw.filas).Count) filas de $(@($cw.normas).Count) normas, 34 §9.1 al día en ES y EN, normas en el registro de referencias" }
+  # ---- 42. tres perspectivas del caso (D150)
+  Write-Host '42. Tres perspectivas del caso: valor económico, resultado operativo y exposición al riesgo (D150)'
+  $mal42 = 0
+  foreach ($lg in 'es', 'en') {
+    $d40 = [IO.File]::ReadAllText((Get-ChildItem (Join-Path $repo "SEVEN-G\mds\$lg") -Filter '40_SEVEN-G_*.md').FullName)
+    if (-not ($d40 -match '(?m)^11\. \*\*(Tres perspectivas|Three perspectives)')) { Mal "$lg 40: falta la regla de presentación 11 (D150)"; $mal42++ }
+    $d60 = [IO.File]::ReadAllText((Get-ChildItem (Join-Path $repo "SEVEN-G\mds\$lg") -Filter '60_SEVEN-G_*.md').FullName)
+    if (-not ($d60.Contains('| **Resultado operativo** |') -or $d60.Contains('| **Operational outcome** |'))) { Mal "$lg 60: falta el campo «Resultado operativo» del resumen de una página (D150)"; $mal42++ }
+  }
+  $esq42 = Get-Content (Join-Path $repo 'SEVEN-G\herramientas\T01_registro_iniciativas\esquema_registro.schema.json') -Raw -Encoding utf8 | ConvertFrom-Json
+  if (-not $esq42.'$defs'.iniciativa.properties.resultado_operativo) { Mal 'esquema de T01: falta resultado_operativo (D150)'; $mal42++ }
+  $dem42 = Get-Content (Join-Path $repo 'SEVEN-G\herramientas\T01_registro_iniciativas\datos_demo.json') -Raw -Encoding utf8 | ConvertFrom-Json
+  if (-not ($dem42.iniciativas | Where-Object { $_.resultado_operativo })) { Mal 'demostración de T01: ninguna iniciativa con resultado_operativo (D150)'; $mal42++ }
+  if (-not [IO.File]::ReadAllText((Join-Path $repo 'SEVEN-G\herramientas\T01_registro_iniciativas\_fuentes\registro.plantilla.html')).Contains('function bloquePerspectivas(')) { Mal 'T01: falta el bloque de las tres perspectivas en la ficha de valor (D150)'; $mal42++ }
+  if (-not [IO.File]::ReadAllText((Join-Path $repo 'SEVEN-G\herramientas\T17_panel_consejo\motor\build_dashboard.py')).Contains('function perspectivasFicha(')) { Mal 'motor del panel: falta el bloque de las tres perspectivas en la ficha del caso (D150)'; $mal42++ }
+  $pd42 = Get-Content (Join-Path $repo 'SEVEN-G\herramientas\T17_panel_consejo\ejemplo\salida\t01_dashboard_data.json') -Raw -Encoding utf8 | ConvertFrom-Json -Depth 64
+  if (-not ($pd42.casos | Where-Object { @($_.seveng.perspectivas.resultado_operativo).Count -gt 0 })) { Mal 'panel de ejemplo: ningún caso con resultado operativo (regenerar con t01_a_panel.py) (D150)'; $mal42++ }
+  if (-not $mal42) { Ok "tres perspectivas: regla 11 del 40 y resumen del 60 (ES/EN), resultado_operativo en el esquema y la demostración, ficha de valor de T01 y ficha del caso del panel" }
 }
 finally { Remove-Item $tmp -Recurse -Force -Confirm:$false -ErrorAction SilentlyContinue }
 

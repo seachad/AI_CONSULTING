@@ -5,8 +5,8 @@
 | | |
 |---|---|
 | Document | Document 40 · Value measurement rules |
-| Version | 0.2 (working draft) |
-| Date | 16-09-2026 |
+| Version | 0.3 (working draft) |
+| Date | 01-10-2026 |
 | Author | Fernando García Varela |
 | Status | Draft for review. Develops section 6 of document 00 and section 11 of document 01. |
 
@@ -455,6 +455,9 @@ Presenting to the committee or the board as validated an amount that is not vali
 8. **Each use case presented in detail includes its understandable description** (rule 10). A maximum of three use cases are presented in detail per session, and answers follow the formats of the common specification: "Yes", "Yes, with one condition: …", "Not yet, because … is missing" or "No, because …".
 9. **The composition of value by ambition level** (efficiencies versus return) is shown to feed signals 1 and 2 of the transformation index.
 10. **Cross-unit initiatives and enabling platforms are shown separately**, with their breakdown by business unit (cost, adoption, released capacity and realised value), and the portfolio's net value is given with and without them (section 7.2).
+11. **Three perspectives, side by side and never merged.** Each use case is presented in three columns read together: **economic value** (in euros, with its status: validated, declared or estimated; rules 1 to 9), **operational outcome** (physical indicators from document 41 —cycle time, quality, errors, satisfaction, adoption— with their baseline, target and current value, plus the non-quantified value of section 5.3) and **risk exposure** (main residual risk, open High and Critical risks, open incidents and nonconformities; documents 33 and 37). None is translated into another and they are not combined into a single score: a good operational outcome does not offset an unproven economic value, nor does a high net value offset an untreated risk. In T01, each initiative's operational indicators are recorded in `resultado_operativo[]`, with the indicator code from document 41 when there is one; if there is none, the column says "no indicator", not zero (rule 8).
+
+> **Why it matters.** Forcing everything into euros pushes people to invent conversions without a formula (the rule 7 mistake) or to ignore what cannot be converted. With three columns, the board sees at once what the use case yields, what changes in operations and what risk it takes on, and decides knowing which part is money and which part is not.
 
 ### 11.2 Value summary template
 
@@ -530,3 +533,4 @@ Reading for the board: the portfolio generates a positive annual net value accor
 | 0.1 | 16-09-2026 | First version. Develops the ten measurement rules and sets out the amount statuses with owners, evidence and expiry, the official formulas F1–F10, the attribution methods with their maximum status, the single economic criterion based on net benefit (NPV with the C2 horizon and rate; ROI and payback period for information only), the measurement of agility by risk and ambition, the value inflation errors and the rules for presentation to the board. |
 | 0.1 | 18-09-2026 | Adds section 7.2: cross-unit initiatives and enabling platforms, with the measurement ladder by unit (cost, adoption, released capacity and realised value), the adoption threshold and the portfolio's net value with and without them; error 13 and presentation rule 10. |
 | 0.2 | 28-09-2026 | Non-quantified value is recorded in T01 with dimension, level 0–3, metric and reason, never in euros, and a use case sustained by non-quantified value needs its next R6 dated (rule 7 and section 5.3); the board dashboard calculates the NPV (F7) of each use case with the curve of its realisation plan (section 8.2); section 13 (D135). |
+| 0.3 | 01-10-2026 | Presentation rule 11: three perspectives side by side and never merged —economic value, operational outcome and risk exposure—; operational indicators are recorded in T01 in `resultado_operativo[]` (D150). |

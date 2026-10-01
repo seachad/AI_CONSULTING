@@ -5,7 +5,7 @@
 | | |
 |---|---|
 | Document | Document 02 · Glossary and conventions |
-| Version | 1.6 |
+| Version | 1.7 |
 | Date | 01-10-2026 |
 | Author | Fernando García Varela |
 | Status | In force. Single source of the framework's terms, scales and codes; it is updated before any other document when a term changes. |
@@ -410,6 +410,7 @@ Alphabetical order by English term. The full scales are in section 4 and the cod
 | **Template** | Standard Block H document: P01–P31 for preparing the initiative's mandatory evidence P32–P71 for the registers, reports and decisions of the company, the board, compliance, third parties, audit and framework implementation, and P72–P74 for the NIST profiles and the ISO/IEC 42001 statement of applicability. Each has an editable Word version. | 01 §6.10; 03 §5 | Plantilla |
 | **Third-party AI embedded in processes** | Supplier software with AI features that take part in decisions, operations or customer relations. It goes through the full lifecycle, with the design and delivery phases focused on the selection, integration, contract and controls of the supplier. | 01 §1.2; 32 §2.1 | IA de terceros integrada en procesos |
 | **Third-party requirement level** | Degree of due diligence, contract, monitoring and exit required for each relationship between a supplier and a service: N1 Standard, N2 Enhanced or N3 Critical, determined by the highest factor among criticality, data, autonomy and substitutability. | 36 §4 | Nivel de exigencia a terceros |
+| **Three perspectives of the use case** | Presentation rule: each use case is shown with its economic value (in euros, with its status), its operational outcome (physical indicators with baseline, target and current value) and its risk exposure (main residual, open High and Critical risks, open incidents and nonconformities), side by side, without merging them or translating one into another. | 40 §11.1 (rule 11) | tres perspectivas del caso |
 | ***Tier* (CSF)** | NIST CSF degree that characterises the rigour of the cybersecurity risk governance and management practices of the whole organisation or of a unit: 1 Partial, 2 Risk Informed, 3 Repeatable and 4 Adaptive. It is not a maturity level for each subcategory and does not exist in the NIST AI RMF. Not translated. | 34 §5.3 | tier (CSF) |
 | **Time in phase · decision time** | **Time in phase**: days between entry into and exit from the phase, excluding time on hold. **Decision time**: days between the *gate* request and the decision. | 03 §3.5; 41 | Tiempo en fase · tiempo de decisión |
 | **Transform** | Ambition level that changes what is offered, how the company competes or how it is organised. Value lies mainly in return and in changes to the operating model. It is always Enterprise and requires board approval at G2 and when scaling at G7. | 00 §4.1; 01 §7.5; 10 §3 | Transformar |
@@ -1032,6 +1033,7 @@ Tools display the values of closed lists in Spanish and English using the equiva
 
 | Version | Date | Changes |
 |---|---|---|
+| 1.7 | 01-10-2026 | Adds "three perspectives of the use case". |
 | 1.6 | 01-10-2026 | Adds "coverage crosswalk". |
 | 1.5 | 01-10-2026 | Catalogue indicators: 162. |
 | 1.4 | 01-10-2026 | Adds Express intensity (scale 4.6, term and taxonomy) and the living record. |

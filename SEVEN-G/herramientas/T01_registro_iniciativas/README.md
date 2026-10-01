@@ -186,6 +186,7 @@ El conector `../T17_panel_consejo/t01_a_panel.py` convierte el JSON completo de 
 | `iniciativas[].alcance.umbral_adopcion_pct` | 0–100 | Alerta «Adopción baja» cuando una unidad en uso tiene menos licencias activas sobre asignadas. |
 | `iniciativas[].alcance.habilita[]` | códigos `IA-AAAA-NNN` | Plataforma: casos a los que se imputa su valor. |
 | `valores[].area` | una unidad de negocio | Coste y valor de cada unidad; sin `area`, lo común de la iniciativa (gobierno, formación). La pestaña Valor muestra la escalera por unidad: coste, adopción, horas declaradas, capacidad liberada y valor materializado. |
+| `iniciativas[].resultado_operativo[]` | `indicador` (IND- del documento 41), `nombre`, `unidad`, `sentido` (`subir` · `bajar`), `base`, `fecha_base`, `objetivo`, `actual`, `fecha_actual`, `fuente` | Resultado operativo (D150): indicadores físicos con línea base, objetivo y valor actual. La pestaña Valor abre con las **tres perspectivas** del caso (valor económico, resultado operativo y exposición al riesgo, 40 §11.1, regla 11), que no se fusionan; nunca se traducen a euros. |
 
 **Campos añadidos en el esquema 0.4: matriz y registro de riesgos (T06)** (documento 33 §8.1; todos opcionales en `riesgos[]`, un registro 0.1, 0.2 o 0.3 sigue siendo válido):
 
