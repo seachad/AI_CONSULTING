@@ -5,8 +5,8 @@
 | | |
 |---|---|
 | Documento | Documento 04 · Orígenes, diferencias y apertura |
-| Versión | 0.1 (borrador de trabajo) |
-| Fecha | 19-09-2026 |
+| Versión | 0.2 (borrador de trabajo) |
+| Fecha | 01-10-2026 |
 | Autor | Fernando García Varela |
 | Estado | Borrador para revisión. Documento explicativo: no añade reglas al marco. |
 
@@ -16,11 +16,11 @@
 
 > **Aviso legal y exención de responsabilidad.** SEVEN-G es un marco metodológico de referencia que se ofrece «tal cual» y con fines exclusivamente informativos. No constituye asesoramiento jurídico, regulatorio, financiero ni profesional, ni garantiza el cumplimiento de ninguna norma. Las referencias a regulación general (como el Reglamento Europeo de IA, el RGPD, DORA o NIS2), a normas técnicas y a regulación específica de cada sector o jurisdicción pueden ser incompletas, no aplicar a un caso concreto o quedar desactualizadas por cambios normativos, interpretaciones o criterios de las autoridades posteriores a su fecha de consulta. **Cada organización que use SEVEN-G es la única responsable de identificar la normativa que le aplica, verificar su vigencia y certificar su propio cumplimiento regulatorio**, con el asesoramiento cualificado que corresponda. Esta metodología es una ayuda genérica y gratuita, compartida con la comunidad para que nadie tenga que empezar desde cero; cada persona u organización puede y debe adaptarla a su propio uso. No debe entenderse que sus partes jurídicamente sensibles hayan sido revisadas por una asesoría jurídica: esas revisiones, para cada empresa o sector, son responsabilidad última de la empresa, el consultor o la organización que la use. Aunque se procura mantenerla al día, alguna norma puede haber cambiado sin que se recoja aquí. En la máxima medida permitida por la ley, el autor no asume responsabilidad alguna por los efectos de su aplicación en ninguna organización ni por su aplicabilidad completa. La metodología no otorga certificación de ningún tipo. El autor no asume responsabilidad alguna por el uso que se haga de este contenido ni por las decisiones que se adopten con él. Los datos, cifras, compañías y casos de los ejemplos son ficticios o ilustrativos.
 
-<!-- esencial: consulta | Documento explicativo. Cuenta de dónde nace SEVEN-G (de la práctica, no de una metodología concreta), qué corrige de la forma habitual de adoptar la IA, qué toma de la gestión comercial del embudo y en qué se aparta de ella, y por qué el marco es gratuito y de libre distribución. No contiene reglas ni evidencias obligatorias: se lee una vez, para entender el porqué del marco. -->
+<!-- esencial: consulta | Documento explicativo. Cuenta de dónde nace SEVEN-G (de la práctica, no de una metodología concreta), qué corrige de la forma habitual de adoptar la IA, qué toma de la gestión comercial del embudo y en qué se aparta de ella, por qué el marco es gratuito y de libre distribución, y en qué se distingue de otras metodologías (sección 8). No contiene reglas ni evidencias obligatorias: se lee una vez, para entender el porqué del marco. -->
 
 ## 1. Objeto y alcance
 
-Este documento responde a tres preguntas que se hace quien conoce SEVEN-G por primera vez: **de dónde viene**, **en qué se diferencia** de lo que su compañía ya hace o ya conoce, y **por qué se ofrece gratis y con licencia abierta**.
+Este documento responde a tres preguntas que se hace quien conoce SEVEN-G por primera vez: **de dónde viene**, **en qué se diferencia** de lo que su compañía ya hace o ya conoce, y **por qué se ofrece gratis y con licencia abierta**. La sección 8 añade una comparación, solo de diferencias, con otras metodologías de adopción y gobierno de la IA.
 
 Es un documento explicativo. No añade reglas, criterios ni evidencias: las reglas del marco están en el documento 01 y en los documentos que lo desarrollan. Se dirige a consejeros, directivos y responsables de IA que valoran adoptar el marco, y a consultores y auditores que quieren entender su planteamiento antes de aplicarlo.
 
@@ -210,7 +210,59 @@ No es necesario contactar ni pedir permiso para ningún uso que cumpla la licenc
 
 ---
 
-## 8. Herramientas y plantillas asociadas
+## 8. Comparación con otras metodologías
+
+### 8.1 Cómo se compara
+
+Quien conoce SEVEN-G suele conocer ya otras metodologías o marcos de adopción y gobierno de la IA, y quiere saber en qué se distinguen. Esta sección los compara uno a uno con el mismo criterio:
+
+- **Solo diferencias, sin valoración.** No se dice qué metodología es mejor o peor ni cuál conviene elegir: se describe qué hace cada una y en qué se distingue de SEVEN-G. Cada metodología responde a un propósito y a un tipo de usuario distintos.
+- **Las mismas dimensiones para todas**, para que las comparaciones se puedan leer juntas: naturaleza y propósito; acceso y licencia; unidad de gestión; ciclo de vida y decisiones; madurez; priorización de casos de uso; medición del valor; riesgo, seguridad y cumplimiento; papel del consejo; plantillas y herramientas; datos de mercado; certificación.
+- **Solo fuentes oficiales del autor de cada metodología**, enlazadas y con su fecha de consulta (D41). Cuando el detalle de una metodología solo está disponible para sus clientes, se compara con lo que su autor publica en abierto y se dice así.
+- **Compatibilidad.** Ninguna comparación sugiere sustituir lo que la compañía ya usa: SEVEN-G puede convivir con otros marcos y convalidar lo que ya existe documentando la correspondencia (documento 01, sección 1.2; documento 96, modificador MP4).
+
+La sección crece por entregas: se empieza por Gartner y se irán añadiendo otras metodologías con la misma estructura.
+
+> **Por qué importa.** Una compañía que ya trabaja con un marco de referencia necesita saber qué le aporta SEVEN-G de distinto y qué solapa, para decidir qué adopta y cómo lo encaja, sin tener que leer las dos metodologías completas.
+
+### 8.2 Gartner
+
+**Qué es.** Gartner es una firma de investigación y asesoramiento. No publica una única metodología de IA, sino un conjunto de marcos y estudios que se usan juntos. Los principales para la adopción y el gobierno de la IA son:
+
+| Marco de Gartner | Qué es, según su autor | Fuente |
+|---|---|---|
+| **AI Maturity Model and AI Roadmap Toolkit** | Herramienta de diagnóstico y planificación: establece una línea base de la capacidad de IA de la organización, orienta la planificación y la asignación de recursos y permite seguir el avance. Se organiza en siete líneas de trabajo (estrategia, valor, organización, personas y cultura, gobierno, ingeniería y datos), cada una valorada en una escala de cinco niveles. | [Gartner, AI Maturity Model and AI Roadmap Toolkit](https://www.gartner.com/en/chief-information-officer/research/ai-maturity-model-toolkit) |
+| **AI TRiSM** (*AI Trust, Risk and Security Management*) | Base técnica para aplicar el gobierno de la IA: cuatro capas de capacidades técnicas (gobierno de la IA, inspección y aplicación de políticas en ejecución, gobierno de la información e infraestructura) que hacen cumplir las políticas de gobierno. | [Gartner, AI Governance Needs More Than Policies](https://www.gartner.com/en/articles/ai-governance-trism) |
+| **AI Opportunity Radar** y **Use-Case Prism** | Priorización: el radar sitúa la ambición de IA de la empresa entre usos internos o de cara al cliente y entre IA «de cada día» (productividad) e IA que «cambia las reglas del juego»; los prismas sitúan los casos de uso de cada sector o función según su valor de negocio y su viabilidad. | [Gartner, For AI Value, Focus on Your Use Cases](https://www.gartner.com/en/articles/ai-value) |
+| **Hype Cycle for Artificial Intelligence** | Representación gráfica de la madurez y la adopción de las tecnologías de IA en cinco fases, de la aparición de la innovación a la meseta de productividad. Se publica cada año. | [Gartner, Hype Cycle Research Methodology](https://www.gartner.com/en/research/methodologies/gartner-hype-cycle) |
+
+Gartner publica además previsiones sobre el mercado; dos de ellas describen el problema que SEVEN-G aborda: que al menos el 30 % de los proyectos de IA generativa se abandonarían tras la prueba de concepto antes de finalizar 2025, por mala calidad de los datos, controles de riesgo insuficientes, costes crecientes o valor de negocio poco claro ([nota de prensa de 29-07-2024](https://www.gartner.com/en/newsroom/press-releases/2024-07-29-gartner-predicts-30-percent-of-generative-ai-projects-will-be-abandoned-after-proof-of-concept-by-end-of-2025)), y que más del 40 % de los proyectos de IA agéntica se cancelarán antes de finalizar 2027 por causas similares ([nota de prensa de 25-06-2025](https://www.gartner.com/en/newsroom/press-releases/2025-06-25-gartner-predicts-over-40-percent-of-agentic-ai-projects-will-be-canceled-by-end-of-2027)).
+
+**Diferencias con SEVEN-G**
+
+| Dimensión | Gartner | SEVEN-G |
+|---|---|---|
+| **Naturaleza y propósito** | Investigación y asesoramiento: diagnostica, compara con el mercado y recomienda prioridades. Varios marcos independientes (madurez, riesgo, priorización, tendencias). | Marco operativo: define cómo se decide, se gobierna y se mide cada iniciativa de IA, con reglas, evidencias y un registro común. Un solo sistema con códigos y lenguaje compartidos (sección 5). |
+| **Acceso y licencia** | El detalle de los marcos (*toolkits*, guías de mercado, informes del Hype Cycle) es investigación para clientes; en abierto se publican artículos, notas de prensa y resúmenes. Los contenidos son propiedad de Gartner. | Todo es público y gratuito: documentos, plantillas y herramientas, con licencia CC BY 4.0 para los contenidos y MIT para el código; se puede adaptar y redistribuir citando la autoría (sección 6). |
+| **Unidad de gestión** | La organización y sus capacidades, organizadas en siete líneas de trabajo. | Dos niveles: el ciclo corporativo C1–C5 de la compañía y el ciclo de vida de **cada iniciativa**, fases 0 a 7 (documento 01). |
+| **Ciclo de vida y decisiones** | La hoja de ruta ordena el avance de las capacidades; los casos de uso se priorizan por valor y viabilidad. | Puertas G0–G7 con resultado formal (Continuar, Continuar con condiciones, Iterar, Pivotar o Parar; en G7, Escalar, Iterar o Retirar), validación dual, límite de dos iteraciones y G3 como principal puerta de parada (documentos 20 y 21). |
+| **Madurez** | Escala de cinco niveles por línea de trabajo, que sitúa a la organización y orienta su hoja de ruta. | Siete dimensiones D1–D7 en escala 0–5 con evidencias, nivel global limitado por el gobierno (D1) y el riesgo (D6), y tres lentes: la huella tecnológica no suma madurez, fija el gobierno mínimo exigible (documento 11). |
+| **Priorización de casos de uso** | Radar de ambición (de cada día o que cambia las reglas; interno o de cara al cliente) y prismas por sector o función según valor y viabilidad. | Nueve esferas de impacto por tres niveles de ambición (Optimizar, Aumentar, Transformar) con criterios de puerta distintos para cada nivel, y mapa de impacto frente a la ambición fijada en C2 (documento 10). |
+| **Medición del valor** | Recomendaciones sobre valor y retorno de la IA y marcos para clasificar los casos de negocio. | Reglas obligatorias: coste completo, estado de cada importe (validado, declarado o estimado), solo lo validado llega al neto, plan de realización por tramos y realización frente a la curva aprobada (documentos 40 y 43). |
+| **Distinguir eficiencia y transformación** | El radar distingue IA de productividad e IA que cambia el modelo de negocio. | Índice de transformación de la compañía con ocho señales y condiciones de base, que separa la transformación evidenciada de la declarada (documento 12). |
+| **Riesgo, seguridad y cumplimiento** | AI TRiSM: capacidades técnicas para hacer cumplir las políticas de gobierno; guías del mercado de soluciones de gobierno de la IA. | Riesgo P×I 5×5 con aceptación por el órgano de su nivel, catálogo de riesgos tipo, controles de seguridad y de agentes, niveles de autonomía A0–A3 y correspondencia con el Reglamento Europeo de IA, el RGPD, DORA, NIS2, el NIST AI RMF, el NIST CSF 2.0 e ISO/IEC 42001 (documentos 32–35). |
+| **Papel del consejo** | Material para que la dirección y el consejo entiendan la IA y sus prioridades. | Funciones formales: el consejo aprueba la tesis y el apetito de riesgo en C2, las apuestas de Transformar en G2 y el escalado en G7; panel del consejo y registro de decisiones y recomendaciones (documentos 30, 60 y 62). |
+| **Plantillas y herramientas** | *Toolkit* de diagnóstico en línea e informes para clientes. | Plantillas editables en Word (bloque H de la biblioteca) y herramientas de un solo HTML (registro de iniciativas, calculadoras, diagnóstico de madurez, recorrido de implantación y panel del consejo) que funcionan sin servidor (documento 03). |
+| **Datos de mercado** | Encuestas propias, comparación con otras organizaciones, previsiones y el Hype Cycle. | No compara a la compañía con el mercado: mide con los datos de la propia compañía; la galería por sector cita solo estudios con fuente abierta. |
+| **Certificación** | No consta en las fuentes publicadas por Gartner para estos marcos. | No hay certificación: la declaración de aplicación es una autodeclaración verificable por auditoría (documento 01, sección 14). |
+
+**Si la compañía ya usa los marcos de Gartner.** Los dos enfoques responden a preguntas distintas y pueden usarse a la vez: el diagnóstico y las prioridades de Gartner pueden alimentar el diagnóstico C1 y la tesis C2 de SEVEN-G, y su evaluación de madurez puede convalidarse documentando su correspondencia con las dimensiones D1–D7 (documento 96, modificador MP4).
+
+*Fuentes consultadas en gartner.com el 01-10-2026. Los marcos de Gartner cambian con el tiempo: esta comparación describe lo que su autor publicaba en esa fecha.*
+
+---
+
+## 9. Herramientas y plantillas asociadas
 
 | Código | Nombre | Relación con este documento |
 |---|---|---|
@@ -221,7 +273,7 @@ No es necesario contactar ni pedir permiso para ningún uso que cumpla la licenc
 
 ---
 
-## 9. Documentos relacionados
+## 10. Documentos relacionados
 
 | Documento | Relación |
 |---|---|
@@ -235,8 +287,9 @@ No es necesario contactar ni pedir permiso para ningún uso que cumpla la licenc
 
 ---
 
-## 10. Control de versiones
+## 11. Control de versiones
 
 | Versión | Fecha | Cambios |
 |---|---|---|
 | 0.1 | 19-09-2026 | Primera versión. Origen práctico del marco, carencias de los enfoques habituales que corrige, disciplinas de gestión que reúne, la cartera como embudo comercial y sus diferencias, motivos de la licencia abierta, control que conserva el autor y contacto. |
+| 0.2 | 01-10-2026 | Nueva sección 8, «Comparación con otras metodologías»: criterio común (solo diferencias, sin valoración, mismas dimensiones y fuentes oficiales) y primera comparación, con Gartner. Las secciones 8 a 10 pasan a 9 a 11. |

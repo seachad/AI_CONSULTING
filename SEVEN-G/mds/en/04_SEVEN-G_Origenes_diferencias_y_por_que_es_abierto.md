@@ -5,8 +5,8 @@
 | | |
 |---|---|
 | Document | Document 04 · Origins, differences and openness |
-| Version | 0.1 (working draft) |
-| Date | 19-09-2026 |
+| Version | 0.2 (working draft) |
+| Date | 01-10-2026 |
 | Author | Fernando García Varela |
 | Status | Draft for review. Explanatory document: it adds no rules to the framework. |
 
@@ -16,11 +16,11 @@
 
 > **Legal notice and disclaimer.** SEVEN-G is a reference methodological framework provided "as is" and for information purposes only. It does not constitute legal, regulatory, financial or professional advice, nor does it guarantee compliance with any law or standard. References to general regulation (such as the EU AI Act, the GDPR, DORA or NIS2), to technical standards and to regulation specific to each sector or jurisdiction may be incomplete, may not apply to a particular case or may become out of date as a result of regulatory changes, interpretations or supervisory positions after their consultation date. **Each organisation that uses SEVEN-G is solely responsible for identifying the regulation that applies to it, verifying that it is current and certifying its own regulatory compliance**, with the appropriate qualified advice. This methodology is a generic, free aid shared with the community so that nobody has to start from scratch; each person or organisation can and should adapt it to its own use. It must not be inferred that its legally sensitive parts have been reviewed by legal counsel: those reviews, for each company or sector, are the ultimate responsibility of the company, consultant or organisation that uses it. Although every effort is made to keep it up to date, some regulation may have changed without being reflected here. To the fullest extent permitted by law, the author accepts no responsibility whatsoever for the effects of its application in any organisation or for its full applicability. The methodology does not grant certification of any kind. The author accepts no liability for any use made of this content or for any decisions taken on the basis of it. The data, figures, companies and cases in the examples are fictitious or illustrative.
 
-<!-- esencial: consulta | Explanatory document. It tells where SEVEN-G was born (from practice, not from a specific methodology), what it corrects in the usual way of adopting AI, what it takes from sales funnel management and where it departs from it, and why the framework is free of charge and freely distributable. It contains no rules or mandatory evidence: it is read once, to understand the reasons behind the framework. -->
+<!-- esencial: consulta | Explanatory document. It tells where SEVEN-G was born (from practice, not from a specific methodology), what it corrects in the usual way of adopting AI, what it takes from sales funnel management and where it departs from it, why the framework is free of charge and freely distributable, and how it differs from other methodologies (section 8). It contains no rules or mandatory evidence: it is read once, to understand the reasons behind the framework. -->
 
 ## 1. Purpose and scope
 
-This document answers three questions asked by anyone who meets SEVEN-G for the first time: **where it comes from**, **how it differs** from what their company already does or already knows, and **why it is offered free of charge under an open licence**.
+This document answers three questions asked by anyone who meets SEVEN-G for the first time: **where it comes from**, **how it differs** from what their company already does or already knows, and **why it is offered free of charge under an open licence**. Section 8 adds a comparison, of differences only, with other methodologies for adopting and governing AI.
 
 It is an explanatory document. It adds no rules, criteria or evidence: the rules of the framework are in document 01 and in the documents that develop it. It is aimed at directors, executives and AI leads who are considering adopting the framework, and at consultants and auditors who want to understand its approach before applying it.
 
@@ -210,7 +210,59 @@ There is no need to get in touch or ask permission for any use that complies wit
 
 ---
 
-## 8. Associated tools and templates
+## 8. Comparison with other methodologies
+
+### 8.1 How the comparison is made
+
+People who come to SEVEN-G often already know other methodologies or frameworks for adopting and governing AI, and want to know how they differ. This section compares them one by one, always on the same basis:
+
+- **Differences only, no assessment.** It does not say which methodology is better or worse, or which one to choose: it describes what each one does and how it differs from SEVEN-G. Each methodology serves a different purpose and a different type of user.
+- **The same dimensions for all**, so that the comparisons can be read together: nature and purpose; access and licence; unit of management; lifecycle and decisions; maturity; use-case prioritisation; value measurement; risk, security and compliance; role of the board; templates and tools; market data; certification.
+- **Only official sources from the author of each methodology**, linked and with their consultation date (D41). Where the detail of a methodology is available only to its clients, the comparison uses what its author publishes openly and says so.
+- **Compatibility.** No comparison suggests replacing what the company already uses: SEVEN-G can coexist with other frameworks and map and validate what already exists by documenting the correspondence (document 01, section 1.2; document 96, modifier MP4).
+
+The section grows in instalments: it starts with Gartner and other methodologies will be added with the same structure.
+
+> **Why it matters.** A company that already works with a reference framework needs to know what SEVEN-G adds that is different and what overlaps, in order to decide what to adopt and how to fit it in, without having to read both methodologies in full.
+
+### 8.2 Gartner
+
+**What it is.** Gartner is a research and advisory firm. It does not publish a single AI methodology, but a set of frameworks and studies that are used together. The main ones for AI adoption and governance are:
+
+| Gartner framework | What it is, according to its author | Source |
+|---|---|---|
+| **AI Maturity Model and AI Roadmap Toolkit** | Diagnostic and planning tool: it establishes a baseline of the organisation's AI capability, guides planning and resource allocation and tracks progress. It is organised in seven workstreams (strategy, value, organisation, people and culture, governance, engineering and data), each rated on a five-level scale. | [Gartner, AI Maturity Model and AI Roadmap Toolkit](https://www.gartner.com/en/chief-information-officer/research/ai-maturity-model-toolkit) |
+| **AI TRiSM** (*AI Trust, Risk and Security Management*) | Technical foundation for operationalising AI governance: four layers of technical capabilities (AI governance, runtime inspection and enforcement, information governance and infrastructure) that enforce governance policies. | [Gartner, AI Governance Needs More Than Policies](https://www.gartner.com/en/articles/ai-governance-trism) |
+| **AI Opportunity Radar** and **Use-Case Prism** | Prioritisation: the radar places the company's AI ambition between internal and customer-facing uses and between "everyday" AI (productivity) and "game-changing" AI; the prisms place the use cases of each sector or function by business value and feasibility. | [Gartner, For AI Value, Focus on Your Use Cases](https://www.gartner.com/en/articles/ai-value) |
+| **Hype Cycle for Artificial Intelligence** | Graphic representation of the maturity and adoption of AI technologies in five phases, from the innovation trigger to the plateau of productivity. Published every year. | [Gartner, Hype Cycle Research Methodology](https://www.gartner.com/en/research/methodologies/gartner-hype-cycle) |
+
+Gartner also publishes market predictions; two of them describe the problem SEVEN-G addresses: that at least 30% of generative AI projects would be abandoned after proof of concept by the end of 2025, due to poor data quality, inadequate risk controls, escalating costs or unclear business value ([press release of 29-07-2024](https://www.gartner.com/en/newsroom/press-releases/2024-07-29-gartner-predicts-30-percent-of-generative-ai-projects-will-be-abandoned-after-proof-of-concept-by-end-of-2025)), and that over 40% of agentic AI projects will be cancelled by the end of 2027 for similar reasons ([press release of 25-06-2025](https://www.gartner.com/en/newsroom/press-releases/2025-06-25-gartner-predicts-over-40-percent-of-agentic-ai-projects-will-be-canceled-by-end-of-2027)).
+
+**Differences from SEVEN-G**
+
+| Dimension | Gartner | SEVEN-G |
+|---|---|---|
+| **Nature and purpose** | Research and advice: it diagnoses, compares with the market and recommends priorities. Several independent frameworks (maturity, risk, prioritisation, trends). | Operating framework: it defines how each AI initiative is decided, governed and measured, with rules, evidence and a common register. A single system with shared codes and language (section 5). |
+| **Access and licence** | The detail of the frameworks (toolkits, market guides, Hype Cycle reports) is client research; articles, press releases and summaries are published openly. The content is owned by Gartner. | Everything is public and free of charge: documents, templates and tools, under CC BY 4.0 for content and MIT for code; it can be adapted and redistributed with attribution (section 6). |
+| **Unit of management** | The organisation and its capabilities, organised in seven workstreams. | Two levels: the company's corporate cycle C1–C5 and the lifecycle of **each initiative**, phases 0 to 7 (document 01). |
+| **Lifecycle and decisions** | The roadmap orders the progress of capabilities; use cases are prioritised by value and feasibility. | *Gates* G0–G7 with a formal outcome (Continue, Continue with conditions, Iterate, Pivot or Stop; at G7, Scale, Iterate or Retire), dual validation, a limit of two iterations and G3 as the main stop gate (documents 20 and 21). |
+| **Maturity** | Five-level scale per workstream, which positions the organisation and guides its roadmap. | Seven dimensions D1–D7 on a 0–5 scale with evidence, an overall level capped by governance (D1) and risk (D6), and three lenses: the technology footprint does not add maturity, it sets the minimum governance required (document 11). |
+| **Use-case prioritisation** | Ambition radar (everyday or game-changing; internal or customer-facing) and prisms by sector or function by value and feasibility. | Nine impact spheres by three ambition levels (Optimise, Augment, Transform) with different gate criteria for each level, and an impact map against the ambition set in C2 (document 10). |
+| **Value measurement** | Recommendations on AI value and return and frameworks for classifying business cases. | Mandatory rules: full cost, status of each amount (validated, declared or estimated), only validated value reaches the net figure, a realisation plan with funding tranches and realisation against the approved curve (documents 40 and 43). |
+| **Telling efficiency from transformation** | The radar distinguishes productivity AI from AI that changes the business model. | Company transformation index with eight signals and baseline conditions, which separates evidenced from declared transformation (document 12). |
+| **Risk, security and compliance** | AI TRiSM: technical capabilities to enforce governance policies; guides to the market for AI governance solutions. | P×I 5×5 risk with acceptance by the body of the corresponding level, catalogue of standard risks, security and agent controls, autonomy levels A0–A3 and correspondence with the EU AI Act, the GDPR, DORA, NIS2, the NIST AI RMF, the NIST CSF 2.0 and ISO/IEC 42001 (documents 32–35). |
+| **Role of the board** | Material to help management and the board understand AI and its priorities. | Formal functions: the board approves the thesis and risk appetite in C2, Transform bets at G2 and scaling at G7; board dashboard and register of decisions and recommendations (documents 30, 60 and 62). |
+| **Templates and tools** | Online diagnostic toolkit and client reports. | Editable Word templates (block H of the library) and single-file HTML tools (initiative register, calculators, maturity diagnosis, implementation path and board dashboard) that work without a server (document 03). |
+| **Market data** | Own surveys, comparison with other organisations, predictions and the Hype Cycle. | It does not compare the company with the market: it measures with the company's own data; the sector gallery cites only studies with an open source. |
+| **Certification** | Not stated in the sources Gartner publishes for these frameworks. | There is no certification: the declaration of application is a self-declaration verifiable by audit (document 01, section 14). |
+
+**If the company already uses Gartner's frameworks.** The two approaches answer different questions and can be used together: Gartner's diagnosis and priorities can feed SEVEN-G's C1 diagnosis and C2 thesis, and its maturity assessment can be mapped and validated by documenting its correspondence with dimensions D1–D7 (document 96, modifier MP4).
+
+*Sources consulted on gartner.com on 01-10-2026. Gartner's frameworks change over time: this comparison describes what its author published on that date.*
+
+---
+
+## 9. Associated tools and templates
 
 | Code | Name | Relationship with this document |
 |---|---|---|
@@ -221,7 +273,7 @@ There is no need to get in touch or ask permission for any use that complies wit
 
 ---
 
-## 9. Related documents
+## 10. Related documents
 
 | Document | Relationship |
 |---|---|
@@ -235,8 +287,9 @@ There is no need to get in touch or ask permission for any use that complies wit
 
 ---
 
-## 10. Version control
+## 11. Version control
 
 | Version | Date | Changes |
 |---|---|---|
 | 0.1 | 19-09-2026 | First version. Practical origin of the framework, shortcomings of the usual approaches that it corrects, management disciplines it brings together, the portfolio as a sales funnel and its differences, reasons for the open licence, control kept by the author and contact. |
+| 0.2 | 01-10-2026 | New section 8, "Comparison with other methodologies": common basis (differences only, no assessment, same dimensions and official sources) and first comparison, with Gartner. Sections 8 to 10 become 9 to 11. |
