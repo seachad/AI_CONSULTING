@@ -5,7 +5,7 @@
 | | |
 |---|---|
 | Document | Document 22 · Checklists by *gate* |
-| Version | 0.2 (working draft) |
+| Version | 0.3 (working draft) |
 | Date | 01-10-2026 |
 | Author | Fernando García Varela |
 | Status | Draft for review. The codes match the criteria in document 21. |
@@ -58,7 +58,7 @@ Each item carries the **criterion code** from document 21 (G3.07, R6.11…) or t
 | **Question** | Worded to be answered yes or no. |
 | **Where to look** | Template (P), tool (T) or record where the evidence is found. |
 | **Type** | **Yes ◆** not conditionable and a critical control for security, legal compliance or human oversight · **Yes** not conditionable · **Cond.** conditionable · **Rec.** recommended. |
-| **L · E** | Application in Lite and Enterprise: **Yes** · **Simpl.** (simplified template) · **Rec.** · **—** (not applicable). |
+| **L · E** | Application in Lite and Enterprise: **Yes** · **Simpl.** (simplified template) · **Rec.** · **—** (not applicable). At Express intensity only the criteria of the reduced list (21 §2.5) are reviewed, with the P01 §14 living record as evidence. |
 | **Tags** | **[GEN]** generative AI and agents · **[AG]** agents (A1–A3) · **[TER]** third-party AI. |
 
 ### 2.4 Blocking rule
@@ -367,3 +367,4 @@ An unchecked mandatory item in LV-AG is equivalent to *Not met* for the criterio
 |---|---|---|
 | 0.1 | 16-09-2026 | First version. Replaces the checklists in the previous material: 128 binary controls in eight checklists by gate with the codes from document 21, LV-EV evidence validation checklist (14 controls), LV-AG checklist for agents aligned with T10 (21 controls) and instructions for the verifier and the auditor. Consistency adjustments with 01 (segregation of duties in Lite, R6 outcomes, agent criterion) and with 34 and 37. |
 | 0.2 | 01-10-2026 | LV-EV, EV.10: mandatory fields may be in referenced evidence with its annex (21 §4.3). |
+| 0.3 | 01-10-2026 | At Express intensity only the criteria of the reduced list (21 §2.5) are reviewed. |

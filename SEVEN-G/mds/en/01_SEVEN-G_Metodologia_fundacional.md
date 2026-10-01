@@ -5,7 +5,7 @@
 | | |
 |---|---|
 | Document | Document 01 · Foundational methodology |
-| Version | 0.2 (working draft) |
+| Version | 0.3 (working draft) |
 | Date | 01-10-2026 |
 | Author | Fernando García Varela |
 | Status | Draft for review. The framework's normative reference document. |
@@ -433,11 +433,11 @@ SEVEN-G does not create a parallel governance structure: the bodies may be exist
 
 ---
 
-## 9. Application intensity: Lite and Enterprise
+## 9. Application intensity: Express, Lite and Enterprise
 
 ### 9.1 How it is determined
 
-Intensity is determined in phase 0 and reviewed at G3 and at every continuity review. Meeting a single Enterprise criterion is enough for that intensity to apply.
+Intensity is determined in phase 0 and reviewed at G3 and at every continuity review. Meeting a single Enterprise criterion is enough for that intensity to apply. With no Enterprise criterion, the initiative is Lite or, if it also meets the conditions in section 9.4 and the risk function confirms it, Express.
 
 <!-- figura: intensidad -->
 
@@ -456,15 +456,30 @@ Intensity is determined in phase 0 and reviewed at G3 and at every continuity re
 
 ### 9.3 What changes between intensities
 
-| Aspect | Lite | Enterprise |
-|---|---|---|
-| **Gates** | G0–G2 and G4–G5 may be grouped | All separately |
-| **Evidence** | Simplified templates | Full templates |
-| **Verification** | AI Office; AI Auditor by sampling | AI Auditor at all *gates* |
-| **Decision** | Sponsor, with risk clearance at G3, G4 and G5 | AI Committee; board for Transform |
-| **Go-live** | Risk clearance | Multi-level sign-off with veto |
-| **Continuity review** | Half-yearly | Quarterly |
-| **Visibility** | Aggregated board dashboard | Board dashboard by initiative |
+| Aspect | Express | Lite | Enterprise |
+|---|---|---|---|
+| **Criteria** | Reduced list (21 §2.5): all applicable "Yes ◆" criteria and those that sustain the core | Lite column of document 21 | All |
+| **Gates** | Same gates as Lite: G0–G2 and G4–G5 in one decision each; G3 separately, may be resolved in writing | G0–G2 and G4–G5 may be grouped | All separately |
+| **Evidence** | Living record (P01, Express section) and referenced company evidence (21 §4.3) | Simplified templates | Full templates |
+| **Verification** | AI Office | AI Office; AI Auditor by sampling | AI Auditor at all *gates* |
+| **Decision** | Sponsor, with risk clearance at G3, G4 and G5 | Sponsor, with risk clearance at G3, G4 and G5 | AI Committee; board for Transform |
+| **Go-live** | Risk clearance | Risk clearance | Multi-level sign-off with veto |
+| **Continuity review** | Annual | Half-yearly | Quarterly |
+| **Visibility** | Aggregated board dashboard | Aggregated board dashboard | Board dashboard by initiative |
+
+### 9.4 Express intensity
+
+Express intensity exists so that a small, internal and reversible initiative does not bear the same administrative path as one of hundreds of hours (principle 11, proportionality). **It changes what is assessed at each gate, not which gates there are**: the initiative goes through all the gates with their record (N-04) and G3 is still decided separately (N-05).
+
+**Eligibility.** No Enterprise criterion in section 9.2 and, in addition, all these conditions: internal use (no direct exposure to customers or external people); reversible within days, with no residual effect; autonomy A0 or A1; no special categories of data or critical confidential information; investment plus annual cost below the **Express threshold** approved in C2; and, if an AI supplier is involved, that it is already approved (current P55). **It is confirmed by the risk function** (in small companies, the AI Office), never by the sponsor alone. It is recorded in P04 and in T04.
+
+**Path.** Three decisions with the same gates: *entry* (G0, G1 and G2 in one decision), **G3 separately**, which at Express may be resolved in writing —the sponsor decides with the risk clearance recorded in T01—, and *go-live* (G4 and G5 in one decision). Each gate is assessed with the **reduced list of Express criteria** in document 21 (section 2.5): all applicable "Yes ◆" criteria and those that sustain the core. The evidence is a **living record** (P01, Express section) plus the company evidence that is referenced (21 §4.3). The continuity review is **annual** and may bring G7 forward.
+
+**Automatic exit.** If any Enterprise criterion appears or an eligibility condition ceases to be met, the initiative moves to Lite or Enterprise from that moment, with a classification change event, and the following gates are assessed with the list of its new intensity. The same applies if the annual review does not demonstrate value.
+
+**What does not change.** The whole core (section 14.1): inventory and register, segregation of duties, dual validation with evidence prior to the decision, "Yes ◆" criteria, value hypothesis with baseline and stop criterion, classification and risks, tested rollback.
+
+> **Why it matters.** With only Lite and Enterprise, a low-cost internal assistant goes through 92% of the criteria of an agent that serves customers. That disproportion pushes people not to register small cases, which is exactly what governance wants to avoid. Express keeps traceability and critical controls and removes the rest, and its automatic exit prevents it from becoming a shortcut.
 
 ---
 
@@ -607,3 +622,4 @@ An organisation may declare that it applies SEVEN-G when it meets the fourteen c
 |---|---|---|
 | 0.1 | 16-09-2026 | First version. Consolidates the previous foundational methodology and the *gate* criteria into a single model; incorporates the corporate cycle, the criteria differentiated by ambition level, intensity determination, multi-level go-live sign-off, the incompatibility table, nonconformity time limits, regulatory fit and lifecycle traceability as a funnel. |
 | 0.2 | 01-10-2026 | Principle 11, proportionality (section 3). Section 14 defines the SEVEN-G core (14.1, rules N-01 to N-14, version 1), which unifies the seven declaration conditions and the twelve rules never omitted in document 94, and the declaration (14.2). |
+| 0.3 | 01-10-2026 | Express intensity (section 9.4, D147): eligibility confirmed by risk, same gates with G3 separately, reduced list of criteria, living record, annual review and automatic exit; Express column in 9.3 and in the intensity figure. |

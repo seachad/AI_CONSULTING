@@ -5,8 +5,8 @@
 | | |
 |---|---|
 | Document | Template P04 · Intensity determination |
-| Version | 0.1 (working draft) |
-| Date | 16-09-2026 |
+| Version | 0.2 (working draft) |
+| Date | 01-10-2026 |
 | Author | Fernando García Varela |
 | Status | Draft for review. |
 
@@ -93,7 +93,7 @@ Guidance for the questions that raise the most doubts:
 
 ## 5. Result
 
-**Calculation rule:** if at least one answer is "Yes" or "Pending", the intensity is **Enterprise**. If all are "No", the intensity is **Lite**.
+**Calculation rule:** if at least one answer is "Yes" or "Pending", the intensity is **Enterprise**. If all are "No", the intensity is **Lite**, or **Express** if the eligibility in section 5.1 is also met.
 
 In a spreadsheet: `=IF(COUNTIF(answer_range,"No")=8,"Lite","Enterprise")`.
 
@@ -101,12 +101,28 @@ In a spreadsheet: `=IF(COUNTIF(answer_range,"No")=8,"Lite","Enterprise")`.
 |---|---|---|
 | Number of criteria answered "Yes" | | Automatic count. |
 | Number of criteria answered "Pending" | | Automatic count. |
-| **Resulting intensity** | | Lite · Enterprise. |
+| **Resulting intensity** | | Express · Lite · Enterprise. |
 | Criteria that determine it | | Numbers of the criteria answered "Yes" or "Pending". |
 | Voluntary application of Enterprise | | Yes · No. Only if the result is Lite and the company decides to apply Enterprise. |
 | Pending items to be resolved | | Criterion, owner and date. |
 
 *(illustrative example)* Assistant for responding to customer queries about orders: criterion 3 "Yes" (customers converse with the assistant); the rest "No". Resulting intensity: **Enterprise**.
+
+### 5.1 Eligibility for Express
+
+Only if all eight Enterprise criteria are "No". The initiative is **Express** when all six conditions are "Yes" and the risk function (in small companies, the AI Office) confirms it; otherwise it is **Lite** (01 §9.4).
+
+| No. | Condition | Answer (Yes · No · Pending) | Justification and source |
+|---|---|---|---|
+| E1 | Internal use: no direct exposure to customers or external people. | | |
+| E2 | Reversible within days, with no residual effect. | | |
+| E3 | Autonomy A0 or A1. | | |
+| E4 | No special categories of data or critical confidential information. | | |
+| E5 | Investment plus annual cost below the Express threshold approved in C2. | | |
+| E6 | If an AI supplier is involved, it is already approved (current P55). | | |
+| | **Eligibility confirmed by** | Name and role (risk function or AI Office) | Date |
+
+If any condition later ceases to be met or an Enterprise criterion appears, section 7 is completed and the initiative moves to Lite or Enterprise.
 
 ---
 
@@ -114,15 +130,15 @@ In a spreadsheet: `=IF(COUNTIF(answer_range,"No")=8,"Lite","Enterprise")`.
 
 Reference: 01 §9.3 and, for verification and decision, 01 §7.5.
 
-| Aspect | Lite | Enterprise |
-|---|---|---|
-| Gates | G0–G2 and G4–G5 may be grouped | All separately |
-| Evidence | Simplified templates | Full templates |
-| Verification | AI Office; AI Auditor by sampling | AI Auditor at all *gates* |
-| Decision | Sponsor, with risk clearance at G3, G4 and G5 | AI Committee; board for Transform |
-| Go-live | Risk clearance | Multi-level sign-off with veto |
-| Continuity review | Half-yearly | Quarterly |
-| Visibility | Aggregated board dashboard | Board dashboard by initiative |
+| Aspect | Express | Lite | Enterprise |
+|---|---|---|---|
+| Gates | As Lite; G3 separately, may be resolved in writing | G0–G2 and G4–G5 may be grouped | All separately |
+| Evidence | Living record (P01 §14) and referenced evidence (21 §4.3) | Simplified templates | Full templates |
+| Verification | AI Office | AI Office; AI Auditor by sampling | AI Auditor at all *gates* |
+| Decision | Sponsor, with risk clearance at G3, G4 and G5 | Sponsor, with risk clearance at G3, G4 and G5 | AI Committee; board for Transform |
+| Go-live | Risk clearance | Risk clearance | Multi-level sign-off with veto |
+| Continuity review | Annual | Half-yearly | Quarterly |
+| Visibility | Aggregated board dashboard | Aggregated board dashboard | Board dashboard by initiative |
 
 ---
 
@@ -181,3 +197,4 @@ Segregation of duties: the verifier has not answered the questionnaire.
 |---|---|---|
 | 0.1 | 16-09-2026 | First version. Converts the eight Enterprise criteria of 01 §9.2 into questions with an automatic result and records changes of intensity. Consistency adjustments with 01 (segregation of duties at Lite, R6 outcomes, agents criterion) and with 34 and 37. |
 | 0.1 | 19-09-2026 | Block 7 (change of intensity) is no longer *(Enterprise)*: it is also completed at Lite, which is when the move to Enterprise is recorded. |
+| 0.2 | 01-10-2026 | Express intensity: section 5.1 on eligibility (six conditions and confirmation) and Express column in the consequences. |

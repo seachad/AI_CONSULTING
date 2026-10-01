@@ -24,7 +24,7 @@ By the end you will be able to choose your company's implementation scope, disti
 
 ## 2. Key ideas
 
-1. **Two different proportionality decisions.** *Intensity* (Lite or Enterprise) belongs to each initiative; *implementation scope* (Lite or Enterprise) belongs to the company. Size decides neither.
+1. **Two different proportionality decisions.** *Intensity* (Express, Lite or Enterprise) belongs to each initiative; *implementation scope* (Lite or Enterprise) belongs to the company. Size decides neither.
 2. **A single library, three layers.** Essential (what every company applies), conditional (what a trigger activates) and complete (guides and reference). There are no reduced versions of the documents.
 3. **No phase or gate is skipped.** In Lite they are grouped —G0 to G2 in one session, G4 and G5 in another— and the evidence is simplified. G3 always goes separately.
 4. **The starting point changes the order, not the destination.** A company with no AI, another with predictive models in production and another with many pilots start with different milestones (document 96), but reach the same fourteen-rule core (01 §14.1).

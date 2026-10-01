@@ -83,6 +83,9 @@
         el principio 11 de proporcionalidad; 94 §2.3 distingue principio, práctica e instrumento; el glosario tiene el código.
     38. Evidencia referenciada (D146): 21 §4.3 (ES/EN) con sus requisitos y la tabla de equivalencias con plantillas que existen; EV.10
         la admite; el esquema de T01 tiene origen y sistema_origen en evidencias, la demostración incluye alguna y el diálogo la registra.
+    39. Intensidad Express (D147): 01 §9.4 y 21 §2.5 (ES/EN, misma lista de criterios del núcleo); la columna Express («x») del catálogo
+        de T01 sigue la regla de 21 §2.5; el esquema admite «express»; la demostración tiene una iniciativa Express con elegibilidad
+        completa y confirmada; T01 aplica la lista reducida, la determina con T04 y avisa si deja de ser elegible.
 #>
 param([switch]$SinNavegador)
 $ErrorActionPreference = 'Stop'
@@ -1694,6 +1697,36 @@ try {
   $tpl = [IO.File]::ReadAllText((Join-Path $repo 'SEVEN-G\herramientas\T01_registro_iniciativas\_fuentes\registro.plantilla.html'))
   if (-not ($tpl.Contains("origen_referencia:") -and $tpl.Contains("ev.origen='referencia'"))) { Mal 'T01: el diálogo de evidencias no admite una evidencia referenciada (D146)'; $mal38++ }
   if (-not $mal38) { Ok '21 §4.3 (ES/EN) con requisitos y tabla de equivalencias; EV.10; esquema, demostración y diálogo de T01 con evidencias referenciadas' }
+
+  # ---- 39. intensidad Express (D147)
+  Write-Host '39. Intensidad Express: lista reducida de criterios y elegibilidad (D147)'
+  $mal39 = 0
+  $catX = Get-Content (Join-Path $repo 'SEVEN-G\herramientas\T01_registro_iniciativas\catalogo_criterios.json') -Raw -Encoding utf8 | ConvertFrom-Json
+  foreach ($lg in 'es', 'en') {
+    $d21 = [IO.File]::ReadAllText((Get-ChildItem (Join-Path $repo "SEVEN-G\mds\$lg") -Filter '21_SEVEN-G_*.md').FullName)
+    $d01 = [IO.File]::ReadAllText((Get-ChildItem (Join-Path $repo "SEVEN-G\mds\$lg") -Filter '01_SEVEN-G_*.md').FullName)
+    $s25 = [regex]::Match($d21, '(?s)\n### 2\.5 .*?\n## 3\. ').Value
+    if (-not $s25) { Mal "$lg 21 §2.5: falta la lista de criterios Express (D147)"; $mal39++; continue }
+    $l2 = ($s25 -split "`n" | Where-Object { $_ -match '^2\. ' }) -join ' '
+    $base = [regex]::Matches($l2, 'G\d\.\d\d') | ForEach-Object { $_.Value } | Sort-Object -Unique
+    if ($lg -eq 'es') { $base21 = $base }
+    elseif (($base -join ',') -ne ($base21 -join ',')) { Mal 'en 21 §2.5: la lista de criterios del núcleo no coincide con la española (D147)'; $mal39++ }
+    if ($d01 -notmatch '\n### 9\.4 ') { Mal "$lg 01 §9.4: falta la intensidad Express (D147)"; $mal39++ }
+  }
+  foreach ($c in $catX) {
+    if ('si', 'simpl', 'rec', 'na' -notcontains $c.x) { Mal "catalogo_criterios.json: $($c.c) sin columna Express válida (D147)"; $mal39++; continue }
+    $esperado = if ('R6', 'G7' -contains $c.g) { $c.l } elseif ($c.l -eq 'na') { 'na' } elseif ($c.o -eq 'si_critico' -or $base21 -contains $c.c) { $c.l } else { 'na' }
+    if ($c.x -ne $esperado) { Mal "catalogo_criterios.json: $($c.c) tiene Express «$($c.x)» y la regla de 21 §2.5 da «$esperado» (D147)"; $mal39++ }
+  }
+  $esqX = Get-Content (Join-Path $repo 'SEVEN-G\herramientas\T01_registro_iniciativas\esquema_registro.schema.json') -Raw -Encoding utf8 | ConvertFrom-Json
+  if ($esqX.'$defs'.intensidad.enum -notcontains 'express') { Mal 'esquema de T01: la intensidad no admite «express» (D147)'; $mal39++ }
+  $ddX = Get-Content (Join-Path $repo 'SEVEN-G\herramientas\T01_registro_iniciativas\datos_demo.json') -Raw -Encoding utf8 | ConvertFrom-Json -Depth 64
+  $iniX = @($ddX.iniciativas | Where-Object { $_.clasificacion.intensidad -eq 'express' })
+  if (-not $iniX.Count) { Mal 'datos de demostración de T01: ninguna iniciativa Express (D147)'; $mal39++ }
+  foreach ($i in $iniX) { $ex = $i.determinacion_intensidad.express; if (-not ($ex -and $ex.confirmado_por -and $ex.uso_interno -and $ex.reversible -and $ex.autonomia_baja -and $ex.sin_datos_sensibles -and $ex.bajo_umbral -and $ex.proveedor_homologado)) { Mal "$($i.id): Express sin elegibilidad completa y confirmada (D147)"; $mal39++ } }
+  $tplX = [IO.File]::ReadAllText((Join-Path $repo 'SEVEN-G\herramientas\T01_registro_iniciativas\_fuentes\registro.plantilla.html'))
+  if (-not ($tplX.Contains('function colIntensidad(') -and $tplX.Contains("add('express'") -and $tplX.Contains('function resultadoT04('))) { Mal 'T01: falta la intensidad Express (lista reducida, T04 o alerta de salida) (D147)'; $mal39++ }
+  if (-not $mal39) { Ok "intensidad Express: 01 §9.4 y 21 §2.5 (ES/EN), columna Express del catálogo según la regla ($(@($catX | Where-Object { $_.x -ne 'na' }).Count) de 128 criterios), esquema, demostración ($($iniX.Count) iniciativa) y T01" }
 }
 finally { Remove-Item $tmp -Recurse -Force -Confirm:$false -ErrorAction SilentlyContinue }
 

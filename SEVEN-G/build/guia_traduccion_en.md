@@ -67,6 +67,8 @@ Uso interno del generador. Todas las traducciones al inglés deben seguir esta g
 | núcleo de SEVEN-G · regla del núcleo (N-01…N-14) · versión del núcleo | SEVEN-G core · core rule (N-01…N-14) · core version |
 | principio obligatorio · práctica · instrumento | mandatory principle · practice · instrument |
 | proporcionalidad (principio 11) | proportionality (principle 11) |
+| intensidad Express · ficha viva · lista reducida de criterios · umbral Express | Express intensity · living record · reduced list of criteria · Express threshold |
+| evidencia referenciada · sistema de origen · referenciar antes que reproducir | referenced evidence · source system · reference rather than reproduce |
 | eficiencias · retorno · coste recurrente | efficiencies · return · recurring cost |
 | capacidad liberada | released capacity |
 | neto adicional por euro de inversión adicional | additional net value per additional euro invested |

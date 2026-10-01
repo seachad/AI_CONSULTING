@@ -24,7 +24,7 @@ Al terminar sabrá elegir el alcance de implantación de su compañía, distingu
 
 ## 2. Ideas clave
 
-1. **Dos decisiones de proporcionalidad distintas.** La *intensidad* (Lite o Enterprise) es de cada iniciativa; el *alcance de implantación* (Lite o Enterprise) es de la compañía. El tamaño no decide ninguna de las dos.
+1. **Dos decisiones de proporcionalidad distintas.** La *intensidad* (Express, Lite o Enterprise) es de cada iniciativa; el *alcance de implantación* (Lite o Enterprise) es de la compañía. El tamaño no decide ninguna de las dos.
 2. **Una sola biblioteca, tres capas.** Esencial (lo que aplica toda compañía), condicional (lo que activa un disparador) y completa (guías y consulta). No hay versiones reducidas de los documentos.
 3. **Ninguna fase ni puerta se salta.** En Lite se agrupan —G0 a G2 en una sesión, G4 y G5 en otra— y las evidencias se simplifican. G3 va siempre por separado.
 4. **El punto de partida cambia el orden, no el destino.** Una compañía sin IA, otra con modelos predictivos en producción y otra con muchos pilotos empiezan por hitos distintos (documento 96), pero llegan al mismo núcleo de catorce reglas (01 §14.1).

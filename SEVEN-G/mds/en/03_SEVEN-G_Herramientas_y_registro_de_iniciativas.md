@@ -137,7 +137,7 @@ flowchart LR
 |---|---|
 | **Sphere** | 01 Customer · 02 Product and service · 03 People · 04 Operations · 05 Data · 06 Knowledge · 07 Decision · 08 Regulation, ethics and accountability · 09 AI governance |
 | **Ambition level** | Optimise · Augment · Transform |
-| **Intensity** | Lite · Enterprise |
+| **Intensity** | Express · Lite · Enterprise |
 | **Regulatory classification** | Prohibited · High risk · Transparency obligations · Minimal risk · Out of scope · Pending classification |
 | **Technology** | Predictive ML · Generative AI · Agent · Language and document processing · Vision · Optimisation · Embedded third-party AI · Rules (not AI) |
 | **Exposure** | Internal · Employees · Customers indirectly · Customers or external persons directly |
@@ -267,7 +267,7 @@ The T01 register is the company's **source of truth**: the other tools derive fr
 | **T01** | **Initiative register** | CRM-style funnel: phases, statuses, events, tags, value and metrics. | Entire cycle; C3 and C4 | HTML + JSON; export to spreadsheet | 01, 02 | 1 | Available v0.1 |
 | **T02** | AI system inventory | Register of all systems, including third-party systems and corporate use. | C1, phase 0, C4 | T01 module | 01, 32 | 1 | Available v0.1 |
 | **T03** | Gate manager | Criteria with status, evidence, verification, decision and conditions. | All *gates* | T01 module | 01, 21, 22 | 1 | Available v0.1 (128 criteria from document 21) |
-| **T04** | Intensity determination | Lite or Enterprise questionnaire with recorded result. | Phase 0, G3, R6 | T01 module | 01 | 1 | Available v0.1 |
+| **T04** | Intensity determination | Express, Lite or Enterprise questionnaire (Enterprise criteria and Express eligibility) with recorded result. | Phase 0, G3, R6 | T01 module | 01 | 1 | Available v0.1 |
 | **T05** | Ambition classifier | Five questions for Optimise, Augment or Transform. | Phases 1, 2 and 7 | T01 module | 00, 12 | 1 | Available v0.1 |
 
 ### 5.2 Risk, security and compliance

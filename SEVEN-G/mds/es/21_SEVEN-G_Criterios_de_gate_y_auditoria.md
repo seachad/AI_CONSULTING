@@ -5,7 +5,7 @@
 | | |
 |---|---|
 | Documento | Documento 21 · Criterios de *gate* y de auditoría |
-| Versión | 0.2 (borrador de trabajo) |
+| Versión | 0.3 (borrador de trabajo) |
 | Fecha | 01-10-2026 |
 | Autor | Fernando García Varela |
 | Estado | Borrador para revisión. Desarrolla 01 §7 y sustituye a los criterios de *gate* del material anterior. |
@@ -45,7 +45,7 @@ Este documento no constituye asesoramiento jurídico. Las referencias regulatori
 | **Criterio** | Condición verificable. Las etiquetas iniciales delimitan su ámbito (sección 2.3). |
 | **Evidencia** | Plantilla (P01–P31) o herramienta (T01–T22) donde debe encontrarse la prueba. |
 | **Obligatorio** | Naturaleza del criterio (sección 2.2). |
-| **Lite · Enterprise** | Si aplica en cada intensidad: **Sí** (completo), **Simpl.** (con plantilla simplificada), **Rec.** (recomendado en esa intensidad) o **—** (no aplica en esa intensidad). |
+| **Lite · Enterprise** | Si aplica en cada intensidad (la intensidad Express no tiene columna propia: su lista la fija la regla de la sección 2.5): **Sí** (completo), **Simpl.** (con plantilla simplificada), **Rec.** (recomendado en esa intensidad) o **—** (no aplica en esa intensidad). |
 | **Optimizar / Aumentar / Transformar** | Cómo cambia el criterio según el nivel de ambición. "—" indica que no cambia. |
 
 ### 2.2 Obligatoriedad
@@ -69,6 +69,16 @@ Este documento no constituye asesoramiento jurídico. Las referencias regulatori
 ### 2.4 Estados de cada criterio
 
 Cada criterio se registra en T03 con uno de los cuatro estados del documento 03 §3.4: **Cumple** · **No cumple** · **No aplica** · **Pendiente**. *No aplica* exige justificación, que el verificador valida; un *No aplica* injustificado se trata como *No cumple*.
+
+### 2.5 Criterios en intensidad Express
+
+En la intensidad Express (01 §9.4) cada puerta se evalúa con una **lista reducida** que no se decide caso a caso, sino con una regla fija:
+
+1. **Todos los criterios «Sí ◆»** que apliquen al perfil de la iniciativa (seguridad, cumplimiento legal, supervisión humana): N-08 impide tratarlos como condición, así que tampoco pueden desaparecer.
+2. **Los criterios que sostienen el núcleo** (01 §14.1): G0.01, G0.05, G0.06, G0.07, G0.08 y G0.09 (ficha, roles, incompatibilidades, intensidad, registro y nada de presupuesto antes de decidir); G1.01 y G1.03 (necesidad de negocio y alternativa sin IA); G2.01, G2.03, G2.04, G2.06 y G2.08 (hipótesis falsable con línea base, objetivo, valor con fórmula y criterio de parada); G3.06, G3.11 y G3.13 (criterios de parada vigentes, riesgos valorados y plan para los Altos); G5.09, G5.11, G5.19 y G5.22 (criterio de parada no alcanzado, reversión probada, alfabetización y condiciones cerradas).
+3. **R6 y G7**: los mismos criterios que en Lite.
+
+Los demás criterios figuran en la decisión como *No aplica*, con la justificación «No aplica en intensidad Express (documento 21, sección 2.5)». Los criterios con etiqueta [GEN], [AG] o [TER] siguen la sección 2.3. El catálogo del gestor de *gates* lleva esta lista en su columna Express. En la iniciativa tipo de la línea base del plan de mejora (asistente generativo interno de un proveedor homologado), la lista reducida pasa de 90 a 47 criterios, de los que 27 son «Sí ◆».
 
 ---
 
@@ -103,7 +113,7 @@ Que todos los criterios estén en *Cumple* permite **Continuar**, pero no obliga
 
 ### 3.4 Puertas agrupadas en Lite
 
-En la intensidad Lite, G0, G1 y G2 pueden resolverse en una sola sesión, y G4 y G5 también (01 §7.5). La agrupación no fusiona criterios: cada puerta conserva su lista, su estado por criterio y su apartado en P29, y cada evidencia se verifica.
+En las intensidades Lite y Express, G0, G1 y G2 pueden resolverse en una sola sesión, y G4 y G5 también (01 §7.5). G3 va siempre por separado; en Express puede resolverse por escrito, sin sesión, con la conformidad de riesgos registrada (01 §9.4). La agrupación no fusiona criterios: cada puerta conserva su lista, su estado por criterio y su apartado en P29, y cada evidencia se verifica.
 
 ### 3.5 Decisiones del consejo en Transformar
 
@@ -736,3 +746,4 @@ No se usa puntuación ponderada: los criterios se cumplen o no, con evidencia, y
 |---|---|---|
 | 0.1 | 16-09-2026 | Primera versión. Fusiona las dos versiones de los criterios de *gate* y auditoría del material anterior con el modelo vigente de 01: 128 criterios codificados por puerta, intensidad y ambición, con criterios de IA generativa, agentes y terceros; evidencia válida, grado de cumplimiento, firma multinivel con veto, auditoría y registro de decisión. Ajustes de coherencia con 01 (separación de funciones en Lite, resultados de R6, criterio de agentes) y con 34 y 37. |
 | 0.2 | 01-10-2026 | Nueva sección 4.3, referenciar antes que reproducir: una evidencia que la compañía ya tiene satisface el criterio si cubre lo que pide, con requisitos de referencia, responsable, cobertura y vigencia, y tabla de equivalencias habituales; EV.10 admite la evidencia referenciada. |
+| 0.3 | 01-10-2026 | Nueva sección 2.5, criterios en intensidad Express (todos los «Sí ◆» que apliquen y los que sostienen el núcleo; R6 y G7 como Lite); 3.4 incluye Express y G3 por escrito. |

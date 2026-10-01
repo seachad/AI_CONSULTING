@@ -473,7 +473,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
     <p class="antetitulo">Documento 21 &#183; Criterios de gate y de auditor&#237;a</p>
     <h1>Criterios de gate y de auditor&#237;a</h1>
     <p class="entradilla">Qu&#233; debe cumplirse en cada puerta de decisi&#243;n, c&#243;mo se verifica y c&#243;mo se audita</p>
-    <div class="firma"><span><b>Fernando Garc&#237;a Varela</b></span><span>Versión 0.2 (borrador de trabajo)</span><span>01-10-2026</span><span>Borrador para revisi&#243;n</span></div>
+    <div class="firma"><span><b>Fernando Garc&#237;a Varela</b></span><span>Versión 0.3 (borrador de trabajo)</span><span>01-10-2026</span><span>Borrador para revisi&#243;n</span></div>
     <div class="cifras"><div class="cifra"><b>8</b><span>puertas de decisi&#243;n</span></div><div class="cifra"><b>128</b><span>criterios codificados</span></div><div class="cifra"><b>4</b><span>firmas con veto en G5</span></div><div class="cifra"><b>3</b><span>resultados de auditor&#237;a</span></div></div>
   </div>
 </header>
@@ -543,7 +543,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 <tr>
 <td><strong>Lite · Enterprise</strong></td>
-<td>Si aplica en cada intensidad: <strong>Sí</strong> (completo), <strong>Simpl.</strong> (con plantilla simplificada), <strong>Rec.</strong> (recomendado en esa intensidad) o <strong>—</strong> (no aplica en esa intensidad).</td>
+<td>Si aplica en cada intensidad (la intensidad Express no tiene columna propia: su lista la fija la regla de la sección 2.5): <strong>Sí</strong> (completo), <strong>Simpl.</strong> (con plantilla simplificada), <strong>Rec.</strong> (recomendado en esa intensidad) o <strong>—</strong> (no aplica en esa intensidad).</td>
 </tr>
 <tr>
 <td><strong>Optimizar / Aumentar / Transformar</strong></td>
@@ -617,6 +617,14 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </table></div>
 <h3 id="2-4-estados-de-cada-criterio">2.4 Estados de cada criterio</h3>
 <p>Cada criterio se registra en <a href="../../herramientas/T01_registro_iniciativas/registro.html#/gates" title="Herramienta T03 &#183; Gestor de gates">T03</a> con uno de los cuatro estados del <a href="03_SEVEN-G_Herramientas_y_registro_de_iniciativas.html" title="Documento 03 &#183; Herramientas de SEVEN-G y registro de iniciativas">documento 03</a> §3.4: <strong>Cumple</strong> · <strong>No cumple</strong> · <strong>No aplica</strong> · <strong>Pendiente</strong>. <em>No aplica</em> exige justificación, que el verificador valida; un <em>No aplica</em> injustificado se trata como <em>No cumple</em>.</p>
+<h3 id="2-5-criterios-en-intensidad-express">2.5 Criterios en intensidad Express</h3>
+<p>En la intensidad Express (01 §9.4) cada puerta se evalúa con una <strong>lista reducida</strong> que no se decide caso a caso, sino con una regla fija:</p>
+<ol>
+<li><strong>Todos los criterios «Sí ◆»</strong> que apliquen al perfil de la iniciativa (seguridad, cumplimiento legal, supervisión humana): N-08 impide tratarlos como condición, así que tampoco pueden desaparecer.</li>
+<li><strong>Los criterios que sostienen el núcleo</strong> (01 §14.1): G0.01, G0.05, G0.06, G0.07, G0.08 y G0.09 (ficha, roles, incompatibilidades, intensidad, registro y nada de presupuesto antes de decidir); G1.01 y G1.03 (necesidad de negocio y alternativa sin IA); G2.01, G2.03, G2.04, G2.06 y G2.08 (hipótesis falsable con línea base, objetivo, valor con fórmula y criterio de parada); G3.06, G3.11 y G3.13 (criterios de parada vigentes, riesgos valorados y plan para los Altos); G5.09, G5.11, G5.19 y G5.22 (criterio de parada no alcanzado, reversión probada, alfabetización y condiciones cerradas).</li>
+<li><strong>R6 y G7</strong>: los mismos criterios que en Lite.</li>
+</ol>
+<p>Los demás criterios figuran en la decisión como <em>No aplica</em>, con la justificación «No aplica en intensidad Express (<a href="21_SEVEN-G_Criterios_de_gate_y_auditoria.html" title="Documento 21 &#183; Criterios de gate y de auditor&#237;a">documento 21</a>, sección 2.5)». Los criterios con etiqueta [GEN], [AG] o [TER] siguen la sección 2.3. El catálogo del gestor de <em>gates</em> lleva esta lista en su columna Express. En la iniciativa tipo de la línea base del plan de mejora (asistente generativo interno de un proveedor homologado), la lista reducida pasa de 90 a 47 criterios, de los que 27 son «Sí ◆».</p>
 <hr />
 <h2 id="reglas-comunes-a-todas-las-puertas"><span class="antetitulo">03</span>Reglas comunes a todas las puertas</h2>
 <h3 id="3-1-validacion-dual">3.1 Validación dual</h3>
@@ -657,7 +665,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <h3 id="3-3-cumplir-los-criterios-es-necesario-no-suficiente">3.3 Cumplir los criterios es necesario, no suficiente</h3>
 <p>Que todos los criterios estén en <em>Cumple</em> permite <strong>Continuar</strong>, pero no obliga a ello. El órgano competente puede decidir <strong>Iterar</strong>, <strong>Pivotar</strong> o <strong>Parar</strong> con motivo registrado (por ejemplo, un cambio de prioridad estratégica). A la inversa, ningún órgano puede registrar <strong>Continuar</strong> con un criterio <em>Sí</em> o <em>Sí ◆</em> en <em>No cumple</em> o <em>Pendiente</em>.</p>
 <h3 id="3-4-puertas-agrupadas-en-lite">3.4 Puertas agrupadas en Lite</h3>
-<p>En la intensidad Lite, G0, G1 y G2 pueden resolverse en una sola sesión, y G4 y G5 también (01 §7.5). La agrupación no fusiona criterios: cada puerta conserva su lista, su estado por criterio y su apartado en <a href="plantillas/P29_SEVEN-G_Registro_de_decision_de_gate.html" title="Plantilla P29 &#183; Registro de decisi&#243;n de gate">P29</a>, y cada evidencia se verifica.</p>
+<p>En las intensidades Lite y Express, G0, G1 y G2 pueden resolverse en una sola sesión, y G4 y G5 también (01 §7.5). G3 va siempre por separado; en Express puede resolverse por escrito, sin sesión, con la conformidad de riesgos registrada (01 §9.4). La agrupación no fusiona criterios: cada puerta conserva su lista, su estado por criterio y su apartado en <a href="plantillas/P29_SEVEN-G_Registro_de_decision_de_gate.html" title="Plantilla P29 &#183; Registro de decisi&#243;n de gate">P29</a>, y cada evidencia se verifica.</p>
 <h3 id="3-5-decisiones-del-consejo-en-transformar">3.5 Decisiones del consejo en Transformar</h3>
 <p>Las iniciativas de Transformar son siempre Enterprise (01 §9.2) y requieren aprobación expresa del consejo o de su comisión delegada en <strong>G2</strong> (autorización de la apuesta, criterio G2.12) y en <strong>G7</strong> cuando se decide escalar (criterio G7.09). La aprobación se registra en <a href="plantillas/P29_SEVEN-G_Registro_de_decision_de_gate.html" title="Plantilla P29 &#183; Registro de decisi&#243;n de gate">P29</a> con referencia al acta o al registro de recomendaciones y decisiones (<a href="62_SEVEN-G_Registro_de_recomendaciones_y_decisiones.html" title="Documento 62 &#183; Registro de recomendaciones y decisiones">documento 62</a>).</p>
 <hr />
@@ -3194,6 +3202,11 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>0.2</td>
 <td>01-10-2026</td>
 <td>Nueva sección 4.3, referenciar antes que reproducir: una evidencia que la compañía ya tiene satisface el criterio si cubre lo que pide, con requisitos de referencia, responsable, cobertura y vigencia, y tabla de equivalencias habituales; EV.10 admite la evidencia referenciada.</td>
+</tr>
+<tr>
+<td>0.3</td>
+<td>01-10-2026</td>
+<td>Nueva sección 2.5, criterios en intensidad Express (todos los «Sí ◆» que apliquen y los que sostienen el núcleo; R6 y G7 como Lite); 3.4 incluye Express y G3 por escrito.</td>
 </tr>
 </tbody>
 </table></div>

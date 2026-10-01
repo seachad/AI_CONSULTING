@@ -5,8 +5,8 @@
 | | |
 |---|---|
 | Documento | Plantilla P04 · Determinación de intensidad |
-| Versión | 0.1 (borrador de trabajo) |
-| Fecha | 16-09-2026 |
+| Versión | 0.2 (borrador de trabajo) |
+| Fecha | 01-10-2026 |
 | Autor | Fernando García Varela |
 | Estado | Borrador para revisión. |
 
@@ -93,7 +93,7 @@ Guía para las preguntas que más dudas generan:
 
 ## 5. Resultado
 
-**Regla de cálculo:** si al menos una respuesta es "Sí" o "Pendiente", la intensidad es **Enterprise**. Si todas son "No", la intensidad es **Lite**.
+**Regla de cálculo:** si al menos una respuesta es "Sí" o "Pendiente", la intensidad es **Enterprise**. Si todas son "No", la intensidad es **Lite**, o **Express** si además se cumple la elegibilidad de la sección 5.1.
 
 En una hoja de cálculo: `=SI(CONTAR.SI(rango_respuestas;"No")=8;"Lite";"Enterprise")`.
 
@@ -101,12 +101,28 @@ En una hoja de cálculo: `=SI(CONTAR.SI(rango_respuestas;"No")=8;"Lite";"Enterpr
 |---|---|---|
 | Número de criterios en "Sí" | | Recuento automático. |
 | Número de criterios en "Pendiente" | | Recuento automático. |
-| **Intensidad resultante** | | Lite · Enterprise. |
+| **Intensidad resultante** | | Express · Lite · Enterprise. |
 | Criterios que la determinan | | Números de los criterios en "Sí" o "Pendiente". |
 | Aplicación voluntaria de Enterprise | | Sí · No. Solo si el resultado es Lite y la compañía decide aplicar Enterprise. |
 | Pendientes por resolver | | Criterio, responsable y fecha. |
 
 *(ejemplo ilustrativo)* Asistente de respuesta a consultas de clientes sobre pedidos: criterio 3 "Sí" (los clientes conversan con el asistente); resto "No". Intensidad resultante: **Enterprise**.
+
+### 5.1 Elegibilidad para Express
+
+Solo si los ocho criterios Enterprise están en «No». La iniciativa es **Express** cuando las seis condiciones están en «Sí» y la función de riesgos (en compañías pequeñas, la oficina de IA) lo confirma; si no, es **Lite** (01 §9.4).
+
+| Nº | Condición | Respuesta (Sí · No · Pendiente) | Justificación y fuente |
+|---|---|---|---|
+| E1 | Uso interno: sin exposición directa a clientes ni a personas externas. | | |
+| E2 | Reversible en días, sin efecto residual. | | |
+| E3 | Autonomía A0 o A1. | | |
+| E4 | Sin categorías especiales de datos ni información confidencial crítica. | | |
+| E5 | Inversión más coste anual por debajo del umbral Express aprobado en C2. | | |
+| E6 | Si interviene un proveedor de IA, ya está homologado (P55 vigente). | | |
+| | **Confirma la elegibilidad** | Nombre y rol (función de riesgos u oficina de IA) | Fecha |
+
+Si más adelante deja de cumplirse cualquier condición o aparece un criterio Enterprise, se rellena la sección 7 y la iniciativa pasa a Lite o a Enterprise.
 
 ---
 
@@ -114,15 +130,15 @@ En una hoja de cálculo: `=SI(CONTAR.SI(rango_respuestas;"No")=8;"Lite";"Enterpr
 
 Referencia: 01 §9.3 y, para verificación y decisión, 01 §7.5.
 
-| Aspecto | Lite | Enterprise |
-|---|---|---|
-| Puertas | G0–G2 y G4–G5 pueden agruparse | Todas por separado |
-| Evidencias | Plantillas simplificadas | Plantillas completas |
-| Verificación | Oficina de IA; auditor de IA por muestreo | Auditor de IA en todos los *gates* |
-| Decisión | Patrocinador, con conformidad de riesgos en G3, G4 y G5 | Comité de IA; consejo en Transformar |
-| Puesta en producción | Conformidad de riesgos | Firma multinivel con veto |
-| Revisión de continuidad | Semestral | Trimestral |
-| Visibilidad | Panel del consejo agregado | Panel del consejo por iniciativa |
+| Aspecto | Express | Lite | Enterprise |
+|---|---|---|---|
+| Puertas | Como Lite; G3 por separado, puede resolverse por escrito | G0–G2 y G4–G5 pueden agruparse | Todas por separado |
+| Evidencias | Ficha viva (P01 §14) y evidencias referenciadas (21 §4.3) | Plantillas simplificadas | Plantillas completas |
+| Verificación | Oficina de IA | Oficina de IA; auditor de IA por muestreo | Auditor de IA en todos los *gates* |
+| Decisión | Patrocinador, con conformidad de riesgos en G3, G4 y G5 | Patrocinador, con conformidad de riesgos en G3, G4 y G5 | Comité de IA; consejo en Transformar |
+| Puesta en producción | Conformidad de riesgos | Conformidad de riesgos | Firma multinivel con veto |
+| Revisión de continuidad | Anual | Semestral | Trimestral |
+| Visibilidad | Panel del consejo agregado | Panel del consejo agregado | Panel del consejo por iniciativa |
 
 ---
 
@@ -181,3 +197,4 @@ Separación de funciones: quien verifica no ha respondido al cuestionario.
 |---|---|---|
 | 0.1 | 16-09-2026 | Primera versión. Convierte los ocho criterios Enterprise de 01 §9.2 en preguntas con resultado automático y registra los cambios de intensidad. Ajustes de coherencia con 01 (separación de funciones en Lite, resultados de R6, criterio de agentes) y con 34 y 37. |
 | 0.1 | 19-09-2026 | El bloque 7 (cambio de intensidad) deja de ser *(Enterprise)*: se rellena también en Lite, que es cuando se registra el paso a Enterprise. |
+| 0.2 | 01-10-2026 | Intensidad Express: sección 5.1 de elegibilidad (seis condiciones y confirmación) y columna Express en las consecuencias. |

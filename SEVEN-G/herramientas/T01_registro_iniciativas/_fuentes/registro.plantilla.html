@@ -344,7 +344,7 @@ const LB = {
   esfera:{'01':'01 Cliente','02':'02 Producto y servicio','03':'03 Personas','04':'04 Operaciones','05':'05 Datos','06':'06 Conocimiento','07':'07 Decisión','08':'08 Regulación, ética y responsabilidad','09':'09 Gobierno de la IA'},
   ambicion:{optimizar:'Optimizar',aumentar:'Aumentar',transformar:'Transformar'},
   ambicion_obj:{optimizar:'Optimizar',aumentar:'Aumentar',transformar:'Transformar',no_prioritaria:'No prioritaria'},
-  intensidad:{lite:'Lite',enterprise:'Enterprise'},
+  intensidad:{express:'Express',lite:'Lite',enterprise:'Enterprise'},
   regulatoria:{prohibido:'Prohibido',alto_riesgo:'Alto riesgo',transparencia:'Obligaciones de transparencia',riesgo_minimo:'Riesgo mínimo',fuera_ambito:'Fuera de ámbito',pendiente:'Pendiente de clasificar'},
   tecnologia:{ml_predictivo:'ML predictivo',ia_generativa:'IA generativa',agente:'Agente',lenguaje_documentos:'Procesamiento de lenguaje y documentos',vision:'Visión',optimizacion:'Optimización',ia_terceros_embebida:'IA de terceros embebida',reglas:'Reglas (no es IA)'},
   exposicion:{interna:'Interna',empleados:'Empleados',clientes_indirecta:'Clientes de forma indirecta',clientes_directa:'Clientes o personas externas de forma directa'},
@@ -387,7 +387,7 @@ const LB = {
   esfera:{'01':'01 Customer','02':'02 Product and service','03':'03 People','04':'04 Operations','05':'05 Data','06':'06 Knowledge','07':'07 Decision','08':'08 Regulation, ethics and accountability','09':'09 AI governance'},
   ambicion:{optimizar:'Optimise',aumentar:'Augment',transformar:'Transform'},
   ambicion_obj:{optimizar:'Optimise',aumentar:'Augment',transformar:'Transform',no_prioritaria:'Not a priority'},
-  intensidad:{lite:'Lite',enterprise:'Enterprise'},
+  intensidad:{express:'Express',lite:'Lite',enterprise:'Enterprise'},
   regulatoria:{prohibido:'Prohibited',alto_riesgo:'High risk',transparencia:'Transparency obligations',riesgo_minimo:'Minimal risk',fuera_ambito:'Out of scope',pendiente:'Pending classification'},
   tecnologia:{ml_predictivo:'Predictive ML',ia_generativa:'Generative AI',agente:'Agent',lenguaje_documentos:'Language and document processing',vision:'Computer vision',optimizacion:'Optimisation',ia_terceros_embebida:'Embedded third-party AI',reglas:'Rules (not AI)'},
   exposicion:{interna:'Internal',empleados:'Employees',clientes_indirecta:'Customers, indirectly',clientes_directa:'Customers or external persons, directly'},
@@ -509,8 +509,10 @@ function intervalos(I){
   esperas.forEach(x=>{ x.dias=dias(x.desde, x.hasta||h); });
   return {intervalos:out, esperas};
 }
-function plazoFase(I){ if(I.ciclo.fase===6) return null; const p=DB.meta.configuracion.plazos_fase[I.clasificacion.intensidad]; return p? (p[String(I.ciclo.fase)] ?? null) : null; }
-function plazoDecision(int){ return DB.meta.configuracion.plazo_decision_dias_habiles[int]; }
+function plazoFase(I){ if(I.ciclo.fase===6) return null; const pf=DB.meta.configuracion.plazos_fase; const p=pf[I.clasificacion.intensidad]||pf.lite; return p? (p[String(I.ciclo.fase)] ?? null) : null; }
+function plazoDecision(int){ const pd=DB.meta.configuracion.plazo_decision_dias_habiles; return pd[int] ?? pd.lite; }
+/* días entre revisiones de continuidad: Express, anual por defecto (365) si la configuración no lo fija (01 §9.3, D147) */
+function diasRevision(int){ const rc=DB.meta.configuracion.revision_continuidad_dias; return rc[int] ?? (int==='express'? 365 : rc.lite); }
 function decisionAbierta(I){ return decisionesDe(I).find(d=>!d.fecha_decision) || null; }
 function sit(I){
   if(M.cache.has(I.id)) return M.cache.get(I.id);
@@ -547,6 +549,7 @@ function alertasDe(I, s){
   /* matriz y registro de riesgos (T06): observaciones que exigen acción (33 §4–§8; G3.11–G3.14) */
   if(typeof alertaRiesgos==='function'){ const ar=alertaRiesgos(I); if(ar) add('riesgos', ar.sev, ar.txt); }
   /* iniciativa transversal: unidades en uso por debajo del umbral de adopción (criterio de parada o de retirada de licencias, 40 §7.2) */
+  if(I.clasificacion.intensidad==='express' && !cerrada(I)){ const mx=motivosFueraExpress(I); if(mx.length) add('express','alta', t('al_express',{m:mx.join(' · ')})); }
   const al=alcanceDe(I); if(al && !cerrada(I) && al.umbral_adopcion_pct!=null) (al.reparto||[]).filter(u=>u.estado==='en_uso').forEach(u=>{ const p=pctAdop(u); if(p!=null && p<al.umbral_adopcion_pct) add('adopcion','media', t('al_adopcion',{u:u.area,p:Math.round(p),m:al.umbral_adopcion_pct})); });
   return A;
 }
@@ -702,7 +705,7 @@ Object.assign(TX.es,{
  anadir_valor:'Añadir importe', v_t11:'Calcular la hipótesis de valor con esta iniciativa (T11)', momento:'Momento', tipo:'Tipo', importe:'Importe', formula:'Fórmula', periodo:'Periodo', fuente:'Fuente', valor_reglas:'Todo importe tiene fórmula y estado (validado, declarado o estimado). La capacidad liberada no suma en el neto. Un importe vacío es «sin dato», nunca cero. Valor neto anual = eficiencias + retorno − coste recurrente.', importe_vacio:'Déjelo vacío si no hay dato.', sin_valores:'Sin importes registrados.',
  sin_eventos:'Sin eventos.', sin_decisiones:'Sin decisiones de gate.', ver_criterios:'Ver criterios', dias_decision:'Tiempo de decisión', pendiente:'Pendiente', solicitud:'Solicitud',
  dlg_alta:'Nueva iniciativa', dlg_editar:'Editar {id}', sin_asignar:'Sin asignar', e_nombre:'El nombre debe tener al menos 3 caracteres.', e_desc:'Describa qué es y para qué se usa (regla 10 de medición).', e_area:'Indique el área.', e_tec:'Seleccione al menos una tecnología.', e_roles:'Incompatibilidad de roles: {r}', inv_nota:'Importes en {m}; vacío = sin dato.', etiquetas_ayuda:'Separadas por comas.', intensidad_ayuda:'Use T04 para determinarla con los ocho criterios.', ok_alta:'Iniciativa {id} registrada.',
- dlg_t04:'Determinación de intensidad (T04)', t04_intro:'Basta con que se cumpla un criterio Enterprise para aplicar esa intensidad (01 §9.1). Se determina en la fase 0 y se revisa en G3 y en cada revisión de continuidad.', si:'Sí', no:'No', resultado_t:'Resultado', t04_prov:'Lite provisional: hay criterios sin dato.',
+ dlg_t04:'Determinación de intensidad (T04)', t04_intro:'Basta con que se cumpla un criterio Enterprise para aplicar esa intensidad (01 §9.1). Se determina en la fase 0 y se revisa en G3 y en cada revisión de continuidad.', si:'Sí', no:'No', resultado_t:'Resultado', t04_prov:'Lite provisional: hay criterios sin dato.', exp_tit:'Elegibilidad para Express (01 §9.4)', exp_intro:'Sin ningún criterio Enterprise, la iniciativa puede ir con intensidad Express si se cumplen todas estas condiciones y lo confirma la función de riesgos (la oficina de IA en compañías pequeñas). Mismas puertas que Lite, con la lista reducida de criterios (21 §2.5); G3 sigue por separado.', exp_uso_interno:'Uso interno: no hay exposición directa a clientes ni a personas externas.', exp_reversible:'Reversible en días, sin efecto residual.', exp_autonomia_baja:'Autonomía A0 o A1.', exp_sin_datos_sensibles:'Sin categorías especiales de datos ni información confidencial crítica.', exp_bajo_umbral:'Inversión más coste anual por debajo del umbral Express aprobado en C2.', exp_proveedor_homologado:'Si interviene un proveedor de IA, ya está homologado (P55 vigente).', exp_confirma:'Confirma la elegibilidad (función de riesgos)', exp_no:'Express no es posible: falta alguna condición o la confirmación.', at_express:'Fuera de Express', al_express:'La iniciativa es Express pero ya no cumple su elegibilidad ({m}): debe pasar a Lite o a Enterprise (01 §9.4).',
  c_alto_riesgo:'Alto riesgo regulatorio', d_alto_riesgo:'El sistema está clasificado como de alto riesgo según la regulación aplicable.',
  c_decisiones_personas:'Decisiones sobre personas', d_decisiones_personas:'El resultado influye de forma significativa en decisiones que afectan a personas (empleo, crédito, seguros, acceso a servicios, entre otras).',
  c_exposicion_directa:'Exposición directa', d_exposicion_directa:'Clientes, pacientes, ciudadanos u otras personas externas interactúan directamente con el sistema.',
@@ -753,7 +756,7 @@ Object.assign(TX.en,{
  anadir_valor:'Add amount', v_t11:'Calculate the value hypothesis with this initiative (T11)', momento:'Timing', tipo:'Type', importe:'Amount', formula:'Formula', periodo:'Period', fuente:'Source', valor_reglas:'Every amount has a formula and a status (validated, declared or estimated). Released capacity does not add to net value. An empty amount means “no data”, never zero. Annual net value = efficiencies + return − recurring cost.', importe_vacio:'Leave empty if there is no data.', sin_valores:'No amounts recorded.',
  sin_eventos:'No events.', sin_decisiones:'No gate decisions.', ver_criterios:'Show criteria', dias_decision:'Decision time', pendiente:'Pending', solicitud:'Request',
  dlg_alta:'New initiative', dlg_editar:'Edit {id}', sin_asignar:'Unassigned', e_nombre:'The name must have at least 3 characters.', e_desc:'Describe what it is and what it is used for (measurement rule 10).', e_area:'Enter the area.', e_tec:'Select at least one technology.', e_roles:'Role incompatibility: {r}', inv_nota:'Amounts in {m}; empty = no data.', etiquetas_ayuda:'Comma-separated.', intensidad_ayuda:'Use T04 to determine it with the eight criteria.', ok_alta:'Initiative {id} registered.',
- dlg_t04:'Intensity determination (T04)', t04_intro:'Meeting a single Enterprise criterion is enough to apply that intensity (01 §9.1). It is determined in phase 0 and reviewed at G3 and at every continuity review.', si:'Yes', no:'No', resultado_t:'Outcome', t04_prov:'Provisional Lite: some criteria have no data.',
+ dlg_t04:'Intensity determination (T04)', t04_intro:'Meeting a single Enterprise criterion is enough to apply that intensity (01 §9.1). It is determined in phase 0 and reviewed at G3 and at every continuity review.', si:'Yes', no:'No', resultado_t:'Outcome', t04_prov:'Provisional Lite: some criteria have no data.', exp_tit:'Eligibility for Express (01 §9.4)', exp_intro:'With no Enterprise criterion, the initiative may have Express intensity if all these conditions are met and the risk function confirms it (the AI Office in small companies). Same gates as Lite, with the reduced list of criteria (21 §2.5); G3 remains separate.', exp_uso_interno:'Internal use: no direct exposure to customers or external people.', exp_reversible:'Reversible within days, with no residual effect.', exp_autonomia_baja:'Autonomy A0 or A1.', exp_sin_datos_sensibles:'No special categories of data or critical confidential information.', exp_bajo_umbral:'Investment plus annual cost below the Express threshold approved in C2.', exp_proveedor_homologado:'If an AI supplier is involved, it is already approved (current P55).', exp_confirma:'Confirms eligibility (risk function)', exp_no:'Express is not possible: a condition or the confirmation is missing.', at_express:'Out of Express', al_express:'The initiative is Express but no longer meets its eligibility ({m}): it must move to Lite or Enterprise (01 §9.4).',
  c_alto_riesgo:'High regulatory risk', d_alto_riesgo:'The system is classified as high-risk under applicable regulation.',
  c_decisiones_personas:'Decisions about people', d_decisiones_personas:'The output significantly influences decisions that affect people (employment, credit, insurance, access to services, among others).',
  c_exposicion_directa:'Direct exposure', d_exposicion_directa:'Customers, patients, citizens or other external persons interact directly with the system.',
@@ -777,11 +780,12 @@ const PLANT = {P01:'Carta de la iniciativa',P02:'Declaración de contexto y rest
 
 /* ---------------- lógica de gates (T03) ---------------- */
 const RESULTADOS = {G0:['continuar','continuar_condiciones','iterar','parar'],G1:['continuar','continuar_condiciones','iterar','pivotar','parar'],G2:['continuar','continuar_condiciones','iterar','pivotar','parar'],G3:['continuar','continuar_condiciones','iterar','pivotar','parar'],G4:['continuar','continuar_condiciones','iterar','parar'],G5:['continuar','continuar_condiciones','iterar','parar'],R6:['continuar_operacion','continuar_condiciones','adelantar_g7'],G7:['escalar','iterar','retirar']};
+const CONDICIONES_EXPRESS = ['uso_interno','reversible','autonomia_baja','sin_datos_sensibles','bajo_umbral','proveedor_homologado'];
 const CRITERIOS_T04 = ['alto_riesgo','decisiones_personas','exposicion_directa','agentes_actuar','datos_protegidos','funcion_critica','transformar','inversion'];
 function ctxGate(I, dg){ const c=I.clasificacion; return {intensidad: dg && dg.fecha_decision? dg.intensidad : c.intensidad, ambicion: ambicionDe(I), tecnologia:c.tecnologia||[], autonomia:c.autonomia, proveedores:c.proveedores||[], propuesto: dg? (dg.resultado || dg.resultado_propuesto || null) : null}; }
 function aplicable(c, ctx){
-  const col = ctx.intensidad==='lite'? c.l : c.n;
-  if(col==='na') return UI.lang==='en'?'Does not apply at Lite intensity (document 21).':'No aplica en intensidad Lite (documento 21).';
+  const col = colIntensidad(c, ctx.intensidad);
+  if(col==='na') return ctx.intensidad==='express'? (UI.lang==='en'?'Does not apply at Express intensity (document 21, section 2.5).':'No aplica en intensidad Express (documento 21, sección 2.5).') : (UI.lang==='en'?'Does not apply at Lite intensity (document 21).':'No aplica en intensidad Lite (documento 21).');
   if(c.s.includes('GEN') && !ctx.tecnologia.some(x=>x==='ia_generativa'||x==='agente')) return UI.lang==='en'?'[GEN] The registered technology is neither generative AI nor an agent.':'[GEN] La tecnología registrada no es IA generativa ni agente.';
   if(c.s.includes('AG') && (!ctx.autonomia || ctx.autonomia==='A0')) return UI.lang==='en'?'[AG] Approved autonomy level A0.':'[AG] Nivel de autonomía aprobado A0.';
   if(c.s.includes('TER') && !ctx.proveedores.length) return UI.lang==='en'?'[TER] No AI suppliers registered.':'[TER] Sin proveedores de IA registrados.';
@@ -792,7 +796,11 @@ function aplicable(c, ctx){
     if(c.s.includes('ITERAR') && p!=='iterar') return UI.lang==='en'?'Proposed outcome is not Iterate.':'Resultado propuesto distinto de Iterar.'; }
   return null;
 }
-function obligDe(c, int){ const col = int==='lite'? c.l : c.n; return col==='rec'? 'recomendado' : c.o; }
+/* columna del catálogo que aplica a cada intensidad: Enterprise «n», Lite «l», Express «x» (lista reducida de 21 §2.5, D147; sin «x», la de Lite) */
+function colIntensidad(c, int){ return int==='enterprise'? c.n : (int==='express'? (c.x||c.l) : c.l); }
+/* Express sigue el circuito de Lite (quién verifica y decide, agrupación de puertas, conformidad de riesgos en G3–G5) */
+function comoLite(int){ return int!=='enterprise'; }
+function obligDe(c, int){ const col = colIntensidad(c, int); return col==='rec'? 'recomendado' : c.o; }
 function estadoCrit(dg, cod){ const r=(dg.criterios||[]).find(x=>x.codigo===cod); return r? r.estado : 'pendiente'; }
 function evaluar(dg, I, propuesto){
   const ctx=ctxGate(I,dg); if(propuesto!==undefined) ctx.propuesto=propuesto;
@@ -834,13 +842,13 @@ function permitidos(dg, I, o){
   return {lista:out, ev};
 }
 function quienGate(gate, I){
-  const lite=I.clasificacion.intensidad==='lite';
+  const lite=comoLite(I.clasificacion.intensidad);
   const organo = lite? (['G3','G4','G5'].includes(gate)?'patrocinador_conformidad_riesgos':'patrocinador') : (gate==='G1'?'patrocinador_informando_comite':(gate==='G5'?'comite_ia_firma_multinivel':'comite_ia'));
   return {verifica: lite? t('oficina') : t('auditor'), organo, notaTransf: ambicionDe(I)==='transformar'? (gate==='G2'?t('g_transf_g2'):(gate==='G7'?t('g_transf_g7'):'')) : ''};
 }
 function personaOrgano(org){ const p=DB.personas.find(x=>x.organo===org); return p? p.id : null; }
-function verificadorDefecto(I){ return I.clasificacion.intensidad==='lite'? (personaOrgano('oficina_ia')||'') : (I.responsables.auditor||personaOrgano('tercera_linea')||''); }
-function decisorDefecto(I, gate, organo){ if(organo==='consejo'||organo==='organo_superior') return personaOrgano('consejo')||''; if(I.clasificacion.intensidad==='lite'||gate==='G1') return I.responsables.patrocinador||''; return personaOrgano('comite_ia')||''; }
+function verificadorDefecto(I){ return comoLite(I.clasificacion.intensidad)? (personaOrgano('oficina_ia')||'') : (I.responsables.auditor||personaOrgano('tercera_linea')||''); }
+function decisorDefecto(I, gate, organo){ if(organo==='consejo'||organo==='organo_superior') return personaOrgano('consejo')||''; if(comoLite(I.clasificacion.intensidad)||gate==='G1') return I.responsables.patrocinador||''; return personaOrgano('comite_ia')||''; }
 function rolesDe(I, pid){ return Object.keys(I.responsables).filter(k=>I.responsables[k]===pid); }
 function autoresEvid(I, dg){ return new Set((M.evi.get(I.id)||[]).filter(e=>e.gate===dg.gate && e.fecha<=(dg.fecha_decision||hoy())).map(e=>e.autor).filter(Boolean)); }
 
@@ -960,7 +968,7 @@ function fichaGate(I,s){
   if(dg.gate==='G7'||dg.gate==='R6') h+='<div class="campo" style="max-width:320px"><label for="prop-'+dg.id+'">'+esc(t('res_propuesto'))+'</label><select id="prop-'+dg.id+'" name="propuesto" data-acc-change="propuesto" data-id="'+esc(I.id)+'"><option value="">'+esc(t('sin_propuesta'))+'</option>'+RESULTADOS[dg.gate].map(x=>'<option value="'+x+'"'+(dg.resultado_propuesto===x?' selected':'')+'>'+esc(L('resultado',x))+'</option>').join('')+'</select></div>';
   h+='<table class="tabla resp"><caption class="oculto">'+esc(t('criterios'))+'</caption><thead><tr><th scope="col">'+esc(t('c_codigo'))+'</th><th scope="col">'+esc(t('c_criterio'))+'</th><th scope="col">'+esc(t('c_estado'))+'</th><th scope="col">'+esc(t('c_just'))+'</th></tr></thead><tbody>';
   ev.filas.forEach(f=>{ const c=f.c; const idc=dg.id+'-'+c.c.replace('.','_');
-    const colInt=I.clasificacion.intensidad==='lite'?c.l:c.n;
+    const colInt=colIntensidad(c, I.clasificacion.intensidad);
     const cls = f.efectivo==='cumple'?'ok':(f.efectivo==='no_aplica'?'':(f.ob==='si'||f.ob==='si_critico'?'ko':'med'));
     h+='<tr><td data-l="'+esc(t('c_codigo'))+'"><b class="mono">'+esc(c.c)+'</b><br>'+et(L('oblig',f.ob),f.ob==='si_critico'?'ko':(f.ob==='si'?'info':''))+'</td>'+
       '<td data-l="'+esc(t('c_criterio'))+'" class="crit-txt">'+esc(critT(c))+'<small>'+esc(t('c_evid'))+': <span title="'+esc(c.e.split(' · ').map(p=>/^P\d\d$/.test(p)? p+' '+plantTxt(p) : p).join(' · '))+'">'+esc(c.e)+'</span> · Lite '+esc(L('col',c.l))+' · Enterprise '+esc(L('col',c.n))+(critA(c)?' · '+esc(critA(c)):'')+'</small></td>'+
@@ -990,7 +998,7 @@ function fichaGate(I,s){
   return h;
 }
 function formDecision(I,dg,q,P,verOk){
-  const lite=I.clasificacion.intensidad==='lite';
+  const lite=comoLite(I.clasificacion.intensidad);
   const organoDef = dg.iteracion>=3? 'organo_superior' : ((ambicionDe(I)==='transformar' && dg.gate==='G2')? 'consejo' : q.organo);
   let h='<form data-form="decision" data-id="'+esc(I.id)+'" id="fd-'+esc(dg.id)+'" novalidate'+(verOk?'':' hidden')+'>';
   h+='<div class="rejilla">'+campo('dc-fecha',t('fecha'),'<input type="date" id="dc-fecha" name="dc-fecha" value="'+esc(hoy())+'">')+campo('dc-decisor',t('decisor'),selPersonas('dc-decisor',dg.decisor||decisorDefecto(I,dg.gate,organoDef)))+
@@ -1041,7 +1049,7 @@ function entrarFase(I, fase, fecha, autor, motivo){
   nuevoEvento({iniciativa:I.id, fecha, tipo:'entrada_fase', autor, motivo, fase});
   I.ciclo.fase=fase; I.ciclo.fecha_entrada_fase=fecha; I.ciclo.iteracion=1;
   I.ciclo.estado = fase===6? 'en_produccion' : (fase===7? 'pendiente_g7' : 'en_fase');
-  if(fase===6) I.ciclo.proxima_revision = sumarDias(fecha, DB.meta.configuracion.revision_continuidad_dias[I.clasificacion.intensidad]);
+  if(fase===6) I.ciclo.proxima_revision = sumarDias(fecha, diasRevision(I.clasificacion.intensidad));
   if(fase===7) I.ciclo.proxima_revision = null;
 }
 function salirFase(I, fecha, autor, motivo){ nuevoEvento({iniciativa:I.id, fecha, tipo:'salida_fase', autor, motivo, fase:I.ciclo.fase}); }
@@ -1059,9 +1067,9 @@ function registrarDecision(I, dg, d){
     nuevoEvento({iniciativa:I.id, fecha:d.fecha, tipo:'condicion_creada', autor, motivo:id+(c.criterio?' ('+c.criterio+')':'')+': '+c.desc, gate:dg.gate, decision:dg.id}); });
   const r=d.resultado, g=dg.gate, f=FASE_DE_GATE[g];
   if(r==='continuar'||r==='continuar_condiciones'){
-    if(g==='R6'){ I.ciclo.proxima_revision=sumarDias(d.fecha, DB.meta.configuracion.revision_continuidad_dias[I.clasificacion.intensidad]); I.ciclo.estado='en_produccion'; }
+    if(g==='R6'){ I.ciclo.proxima_revision=sumarDias(d.fecha, diasRevision(I.clasificacion.intensidad)); I.ciclo.estado='en_produccion'; }
     else { salirFase(I,d.fecha,autor,g+' · '+L('resultado',r)); entrarFase(I,f+1,d.fecha,autor,g+' · '+L('resultado',r)); }
-  } else if(r==='continuar_operacion'){ I.ciclo.proxima_revision=sumarDias(d.fecha, DB.meta.configuracion.revision_continuidad_dias[I.clasificacion.intensidad]); I.ciclo.estado='en_produccion'; }
+  } else if(r==='continuar_operacion'){ I.ciclo.proxima_revision=sumarDias(d.fecha, diasRevision(I.clasificacion.intensidad)); I.ciclo.estado='en_produccion'; }
   else if(r==='adelantar_g7'){ salirFase(I,d.fecha,autor,'R6 · '+L('resultado',r)); entrarFase(I,7,d.fecha,autor,'R6 · '+L('resultado',r)); }
   else if(r==='iterar'){
     if(g==='G7'){ const fv=d.faseVuelta==null?6:d.faseVuelta; salirFase(I,d.fecha,autor,'G7 · '+L('resultado',r)); entrarFase(I,fv,d.fecha,autor,'G7 · '+L('resultado',r)); }
@@ -1368,23 +1376,38 @@ function abrirIniciativa(I, base){
     toast(t('ok_guardado')); return [];
   });
 }
+/* T04: Enterprise si se cumple un criterio; si no, Express cuando todas sus condiciones son «sí» y alguien lo confirma; si no, Lite (01 §9, D147) */
+function expressElegible(ex){ return !!ex && CONDICIONES_EXPRESS.every(k=>ex[k]===true) && !!ex.confirmado_por; }
+function resultadoT04(cr, ex){ if(CRITERIOS_T04.some(k=>cr[k]===true)) return 'enterprise'; if(CRITERIOS_T04.every(k=>cr[k]===false) && expressElegible(ex)) return 'express'; return 'lite'; }
+/* una iniciativa Express que deja de cumplir su elegibilidad debe cambiar de intensidad (01 §9.4) */
+function motivosFueraExpress(I){ const c=I.clasificacion, m=[];
+  if(['A2','A3'].includes(c.autonomia)) m.push(UI.lang==='en'?'autonomy '+c.autonomia:'autonomía '+c.autonomia);
+  if(['clientes_directa','clientes_indirecta'].includes(c.exposicion)) m.push(UI.lang==='en'?'exposure to customers':'exposición a clientes');
+  if(['alto_riesgo','prohibido'].includes(c.regulatoria)) m.push(L('regulatoria',c.regulatoria));
+  if(ambicionDe(I)==='transformar') m.push(L('ambicion','transformar'));
+  const d=I.determinacion_intensidad; if(!d || d.resultado!=='express' || !expressElegible(d.express)) m.push(UI.lang==='en'?'eligibility not confirmed in T04':'elegibilidad sin confirmar en T04');
+  return m; }
 function radio3(name, val){ return ['true','false','null'].map(v=>'<label><input type="radio" name="'+name+'" value="'+v+'"'+(String(val)===v?' checked':'')+'> '+esc(v==='true'?t('si'):(v==='false'?t('no'):t('sin_dato')))+'</label>').join(''); }
 function leer3(f,name){ const r=f.querySelector('input[name="'+name+'"]:checked'); return !r||r.value==='null'? null : r.value==='true'; }
 function abrirT04(I){
   const d=I.determinacion_intensidad; const pre={alto_riesgo:I.clasificacion.regulatoria==='alto_riesgo', exposicion_directa:I.clasificacion.exposicion==='clientes_directa', agentes_actuar:['A2','A3'].includes(I.clasificacion.autonomia)?null:false, transformar:ambicionDe(I)==='transformar'};
   let b='<p>'+esc(t('t04_intro'))+'</p><p class="nota-clas">'+esc(t('nota_clas'))+'</p>'+campo('t4-mom',t('momento_t'),'<select id="t4-mom" name="t4-mom">'+['fase_0','G3','R6','otro'].map(m=>'<option value="'+m+'"'+((d&&d.momento===m)||(!d&&m==='fase_0')?' selected':'')+'>'+esc(t('mom_'+m))+'</option>').join('')+'</select>');
   CRITERIOS_T04.forEach(k=>{ const v = d? d.criterios[k] : (pre[k]===undefined? null : pre[k]); b+='<fieldset><legend>'+esc(t('c_'+k))+'</legend><p class="ayuda">'+esc(t('d_'+k))+'</p><div class="checks">'+radio3('t4-'+k, v)+'</div></fieldset>'; });
+  const dx=(d&&d.express)||{}; const prx={uso_interno:['interna','empleados'].includes(I.clasificacion.exposicion), autonomia_baja:['A0','A1'].includes(I.clasificacion.autonomia)};
+  b+='<fieldset><legend>'+esc(t('exp_tit'))+'</legend><p class="ayuda">'+esc(t('exp_intro'))+'</p>'+CONDICIONES_EXPRESS.map(k=>{ const v = dx[k]!==undefined? dx[k] : (prx[k]===undefined? null : prx[k]); return '<p class="ayuda" style="margin-bottom:2px">'+esc(t('exp_'+k))+'</p><div class="checks">'+radio3('t4x-'+k, v)+'</div>'; }).join('')+campo('t4x-conf',t('exp_confirma'),selPersonas('t4x-conf',dx.confirmado_por||I.responsables.riesgos||''))+'</fieldset>';
   b+='<p class="aviso info" id="t4-res" aria-live="polite"></p>'+trio();
   abrirDialogo(t('dlg_t04'), b, f=>{
     const errs=[]; const tr=leerTrio(f,errs); if(errs.length) return errs;
-    const cr={}; CRITERIOS_T04.forEach(k=>cr[k]=leer3(f,'t4-'+k)); const res=CRITERIOS_T04.some(k=>cr[k]===true)?'enterprise':'lite';
+    const cr={}; CRITERIOS_T04.forEach(k=>cr[k]=leer3(f,'t4-'+k));
+    const ex={}; CONDICIONES_EXPRESS.forEach(k=>ex[k]=leer3(f,'t4x-'+k)); ex.confirmado_por=f['t4x-conf'].value||null;
+    const res=resultadoT04(cr, ex);
     const autor=autorId(tr.autor);
-    I.determinacion_intensidad={fecha:tr.fecha, autor:M.per.has(autor)?autor:null, momento:f['t4-mom'].value, criterios:cr, resultado:res, comentario:tr.motivo};
+    I.determinacion_intensidad={fecha:tr.fecha, autor:M.per.has(autor)?autor:null, momento:f['t4-mom'].value, criterios:cr, resultado:res, comentario:tr.motivo, express:ex};
     nuevoEvento({iniciativa:I.id, fecha:tr.fecha, tipo:'edicion', autor, motivo:'T04 · '+L('intensidad',res)+' · '+tr.motivo, campo:'determinacion_intensidad', antes:null, despues:cr, fase:I.ciclo.fase});
     if(res!==I.clasificacion.intensidad){ nuevoEvento({iniciativa:I.id, fecha:tr.fecha, tipo:'cambio_clasificacion', autor, motivo:'T04 · '+tr.motivo, campo:'clasificacion.intensidad', antes:I.clasificacion.intensidad, despues:res, fase:I.ciclo.fase}); I.clasificacion.intensidad=res; }
     toast(t('ok_guardado')); return [];
   });
-  const upd=()=>{ const f=$('#dlg-form'); if(!f) return; const cr=CRITERIOS_T04.map(k=>leer3(f,'t4-'+k)); const ent=cr.some(v=>v===true); $('#t4-res').textContent=t('resultado_t')+': '+(ent?'Enterprise':'Lite')+(!ent&&cr.some(v=>v===null)?' · '+t('t04_prov'):''); };
+  const upd=()=>{ const f=$('#dlg-form'); if(!f) return; const cr={}; CRITERIOS_T04.forEach(k=>cr[k]=leer3(f,'t4-'+k)); const ex={}; CONDICIONES_EXPRESS.forEach(k=>ex[k]=leer3(f,'t4x-'+k)); ex.confirmado_por=f['t4x-conf'].value||null; const res=resultadoT04(cr, ex); $('#t4-res').textContent=t('resultado_t')+': '+L('intensidad',res)+(res==='lite'&&Object.values(cr).some(v=>v===null)?' · '+t('t04_prov'):'')+(res==='lite'&&!Object.values(cr).some(v=>v!==false)&&!expressElegible(ex)?' · '+t('exp_no'):''); };
   $('#dlg-form').addEventListener('change',upd); upd();
 }
 function abrirT05(I){
@@ -1568,7 +1591,7 @@ function vistaAlertas(){
   const lista=filtrar(); const A=todasAlertas(lista);
   let h='<h1>'+esc(t('v_alertas'))+'</h1><p class="ayuda">'+esc(t('al_sub'))+'</p>'+filtrosHTML();
   if(!A.length) return h+'<p>'+esc(t('al_ninguna'))+'</p>';
-  const orden=['estancada','decision','condicion','revision','evidencias','riesgos','elevar','espera','roles','nc','adopcion'];
+  const orden=['estancada','decision','condicion','revision','evidencias','riesgos','express','elevar','espera','roles','nc','adopcion'];
   const g=agrupar(A,a=>a.tipo);
   h+='<div class="kpis">'+orden.filter(k=>g.has(k)).map(k=>'<div class="kpi"><b>'+g.get(k).length+'</b><span>'+esc(t('at_'+k))+'</span></div>').join('')+'</div>';
   orden.filter(k=>g.has(k)).forEach(k=>{
@@ -2256,7 +2279,7 @@ window.T06_XLSX={ base64:(id)=>{ const I=M.ini.get(id); if(!I) return null; cons
 
 /* ---------------- validación de importación ---------------- */
 const ENUM = {
-  esfera:['01','02','03','04','05','06','07','08','09'], ambicion:['optimizar','aumentar','transformar'], intensidad:['lite','enterprise'], regulatoria:['prohibido','alto_riesgo','transparencia','riesgo_minimo','fuera_ambito','pendiente'],
+  esfera:['01','02','03','04','05','06','07','08','09'], ambicion:['optimizar','aumentar','transformar'], intensidad:['lite','enterprise','express'], regulatoria:['prohibido','alto_riesgo','transparencia','riesgo_minimo','fuera_ambito','pendiente'],
   tecnologia:['ml_predictivo','ia_generativa','agente','lenguaje_documentos','vision','optimizacion','ia_terceros_embebida','reglas'], exposicion:['interna','empleados','clientes_indirecta','clientes_directa'], tipo_valor:['eficiencia','retorno','riesgo_evitado','cumplimiento'],
   motivo:['sin_valor_plausible','hipotesis_refutada','datos_insuficientes','inviable_tecnicamente','coste_superior_valor','riesgo_inaceptable','regulacion','sin_adopcion','sustituida','cambio_prioridad'],
   estado:['registrada','en_fase','pendiente_gate','en_espera','en_produccion','pendiente_g7','parada','retirada'], gate:['G0','G1','G2','G3','G4','G5','R6','G7'],

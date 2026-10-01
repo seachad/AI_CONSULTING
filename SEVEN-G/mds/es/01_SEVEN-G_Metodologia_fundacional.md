@@ -5,7 +5,7 @@
 | | |
 |---|---|
 | Documento | Documento 01 · Metodología fundacional |
-| Versión | 0.2 (borrador de trabajo) |
+| Versión | 0.3 (borrador de trabajo) |
 | Fecha | 01-10-2026 |
 | Autor | Fernando García Varela |
 | Estado | Borrador para revisión. Documento normativo de referencia del marco. |
@@ -433,11 +433,11 @@ SEVEN-G no crea un gobierno paralelo: los órganos pueden ser comités existente
 
 ---
 
-## 9. Intensidad de aplicación: Lite y Enterprise
+## 9. Intensidad de aplicación: Express, Lite y Enterprise
 
 ### 9.1 Cómo se determina
 
-La intensidad se determina en la fase 0 y se revisa en G3 y en cada revisión de continuidad. Basta con que se cumpla un criterio Enterprise para aplicar esa intensidad.
+La intensidad se determina en la fase 0 y se revisa en G3 y en cada revisión de continuidad. Basta con que se cumpla un criterio Enterprise para aplicar esa intensidad. Sin ningún criterio Enterprise, la iniciativa es Lite o, si cumple además las condiciones de la sección 9.4 y lo confirma la función de riesgos, Express.
 
 <!-- figura: intensidad -->
 
@@ -456,15 +456,30 @@ La intensidad se determina en la fase 0 y se revisa en G3 y en cada revisión de
 
 ### 9.3 Qué cambia entre intensidades
 
-| Aspecto | Lite | Enterprise |
-|---|---|---|
-| **Puertas** | G0–G2 y G4–G5 pueden agruparse | Todas por separado |
-| **Evidencias** | Plantillas simplificadas | Plantillas completas |
-| **Verificación** | Oficina de IA; auditor de IA por muestreo | Auditor de IA en todos los *gates* |
-| **Decisión** | Patrocinador, con conformidad de riesgos en G3, G4 y G5 | Comité de IA; consejo en Transformar |
-| **Puesta en producción** | Conformidad de riesgos | Firma multinivel con veto |
-| **Revisión de continuidad** | Semestral | Trimestral |
-| **Visibilidad** | Panel del consejo agregado | Panel del consejo por iniciativa |
+| Aspecto | Express | Lite | Enterprise |
+|---|---|---|---|
+| **Criterios** | Lista reducida (21 §2.5): todos los «Sí ◆» que apliquen y los que sostienen el núcleo | Columna Lite del documento 21 | Todos |
+| **Puertas** | Mismas puertas que Lite: G0–G2 y G4–G5 en una decisión cada una; G3 por separado, puede resolverse por escrito | G0–G2 y G4–G5 pueden agruparse | Todas por separado |
+| **Evidencias** | Ficha viva (P01, sección Express) y evidencias de la compañía referenciadas (21 §4.3) | Plantillas simplificadas | Plantillas completas |
+| **Verificación** | Oficina de IA | Oficina de IA; auditor de IA por muestreo | Auditor de IA en todos los *gates* |
+| **Decisión** | Patrocinador, con conformidad de riesgos en G3, G4 y G5 | Patrocinador, con conformidad de riesgos en G3, G4 y G5 | Comité de IA; consejo en Transformar |
+| **Puesta en producción** | Conformidad de riesgos | Conformidad de riesgos | Firma multinivel con veto |
+| **Revisión de continuidad** | Anual | Semestral | Trimestral |
+| **Visibilidad** | Panel del consejo agregado | Panel del consejo agregado | Panel del consejo por iniciativa |
+
+### 9.4 Intensidad Express
+
+La intensidad Express existe para que una iniciativa pequeña, interna y reversible no pague el mismo recorrido administrativo que una de cientos de horas (principio 11, proporcionalidad). **Cambia qué se evalúa en cada puerta, no qué puertas hay**: la iniciativa pasa por todas las puertas con su registro (N-04) y G3 se sigue decidiendo por separado (N-05).
+
+**Elegibilidad.** Ningún criterio Enterprise de la sección 9.2 y, además, todas estas condiciones: uso interno (sin exposición directa a clientes ni a personas externas); reversible en días, sin efecto residual; autonomía A0 o A1; sin categorías especiales de datos ni información confidencial crítica; inversión más coste anual por debajo del **umbral Express** aprobado en C2; y, si interviene un proveedor de IA, que ya esté homologado (P55 vigente). **La confirma la función de riesgos** (en compañías pequeñas, la oficina de IA), nunca el patrocinador solo. Se registra en P04 y en T04.
+
+**Recorrido.** Tres decisiones con las mismas puertas: *entrada* (G0, G1 y G2 en una decisión), **G3 por separado**, que en Express puede resolverse por escrito —decide el patrocinador con la conformidad de riesgos registrada en T01—, y *puesta en uso* (G4 y G5 en una decisión). Cada puerta se evalúa con la **lista reducida de criterios Express** del documento 21 (sección 2.5): todos los criterios «Sí ◆» que apliquen y los que sostienen el núcleo. La evidencia es una **ficha viva** (P01, sección Express) más las evidencias de la compañía que se referencian (21 §4.3). La revisión de continuidad es **anual** y puede adelantar G7.
+
+**Salida automática.** Si aparece cualquier criterio Enterprise o deja de cumplirse una condición de elegibilidad, la iniciativa pasa a Lite o a Enterprise desde ese momento, con un evento de cambio de clasificación, y las puertas siguientes se evalúan con la lista de su nueva intensidad. Lo mismo si la revisión anual no demuestra valor.
+
+**Lo que no cambia.** El núcleo entero (sección 14.1): inventario y registro, separación de funciones, validación dual con evidencia anterior a la decisión, criterios «Sí ◆», hipótesis de valor con línea base y criterio de parada, clasificación y riesgos, reversión probada.
+
+> **Por qué importa.** Con solo Lite y Enterprise, un asistente interno de bajo coste pasa por el 92 % de los criterios de un agente que atiende a clientes. Esa desproporción empuja a no registrar los casos pequeños, que es justo lo que el gobierno quiere evitar. Express mantiene la trazabilidad y los controles críticos y quita el resto, y su salida automática impide que se convierta en un atajo.
 
 ---
 
@@ -607,3 +622,4 @@ Una organización puede declarar que aplica SEVEN-G cuando cumple las catorce re
 |---|---|---|
 | 0.1 | 16-09-2026 | Primera versión. Consolida la metodología fundacional anterior y los criterios de *gate* en un único modelo; incorpora el ciclo corporativo, los criterios diferenciados por nivel de ambición, la determinación de intensidad, la firma multinivel de puesta en producción, la tabla de incompatibilidades, los plazos de no conformidades, el encaje regulatorio y la trazabilidad del ciclo de vida como embudo. |
 | 0.2 | 01-10-2026 | Principio 11, proporcionalidad (sección 3). La sección 14 define el núcleo de SEVEN-G (14.1, reglas N-01 a N-14, versión 1), que unifica las siete condiciones de declaración y las doce reglas que nunca se omiten del documento 94, y la declaración (14.2). |
+| 0.3 | 01-10-2026 | Intensidad Express (sección 9.4, D147): elegibilidad confirmada por riesgos, mismas puertas con G3 por separado, lista reducida de criterios, ficha viva, revisión anual y salida automática; columna Express en 9.3 y en la figura de la intensidad. |

@@ -5,7 +5,7 @@
 | | |
 |---|---|
 | Document | Document 94 · Obligation matrix and layered reading |
-| Version | 0.2 (working draft) |
+| Version | 0.3 (working draft) |
 | Date | 01-10-2026 |
 | Author | Fernando García Varela |
 | Status | Draft for review. Guidance document: it summarises rules from other documents, which prevail in the event of any discrepancy. The levels assigned to documents and templates will be validated through practical application. |
@@ -24,7 +24,7 @@ Not all companies have the same capacity for effort or the same risk exposure. S
 
 This document brings together in one place what other documents establish about proportionality:
 
-- the **intensity** of each initiative, Lite or Enterprise (document 01, section 9);
+- the **intensity** of each initiative, Express, Lite or Enterprise (document 01, section 9);
 - the company's **implementation scope**, Lite or Enterprise, and its minimum path (document 90, section 2);
 - the **obligation of each gate criterion** and its application in Lite (document 21, section 2);
 - the **scopes** that apply only to certain technologies: generative AI, agents and third parties (document 21, section 2.3).
@@ -135,6 +135,8 @@ An isolated Transform bet makes that initiative Enterprise, but **does not chang
 | **6 · Operation → R6** | No | **Six-monthly** continuity review. | **Quarterly** review. |
 | **7 · Evolution or retirement → G7** | No. It is convened when scaling or retirement is proposed, or when R6 brings it forward | The sponsor decides. | The AI Committee decides; the board, if a Transform bet is scaled. |
 
+**At Express intensity** (01 §9.4) gates are grouped as in Lite and G3 remains separate, but it may be resolved in writing with the risk clearance recorded; each gate is assessed with the reduced list in 21 §2.5 (all applicable "Yes ◆" criteria and the criteria that sustain the core) and the continuity review is annual. If an Enterprise criterion appears or eligibility ceases to be met, the initiative moves to Lite or Enterprise.
+
 **Three situations that look like skips and are not:**
 
 - **Systems that were already in production** before the framework was implemented. They do not go back through the phases: they are placed in the phase supported by their real evidence and go through a review equivalent to G7, with documentation identified as regularisation (document 14, section 11; document 90, section 5).
@@ -200,7 +202,7 @@ The fact that a document is *Always* does not mean it must be read in full: nine
 
 ### 7.1 Lifecycle evidence (P01–P31)
 
-**No mandatory evidence is omitted in Lite: it is simplified.** Each template marks with *(Enterprise)* the fields that a Lite initiative may leave blank.
+**No mandatory evidence is omitted in Lite: it is simplified.** At Express, the P01 living record gathers the evidence for phases 0 to 5 and the evidence the company already has is referenced (21 §4.3). Each template marks with *(Enterprise)* the fields that a Lite initiative may leave blank.
 
 | Templates | Level | Note |
 |---|---|---|
@@ -303,3 +305,4 @@ The [SEVEN-G course](curso/M00_SEVEN-G_Curso_Guia_del_curso.html) follows these 
 |---|---|---|
 | 0.1 | 19-09-2026 | First version. Three reading layers, five obligation levels, twelve rules that are never omitted, fifteen triggers, what can be grouped in phases and gates, level of each document, template and tool, and minimum reading by profile. |
 | 0.2 | 01-10-2026 | Section 3 becomes the SEVEN-G core (01 §14.1): fourteen rules coded N-01 to N-14. New section 2.3: principle, practice and instrument, and the proportionality principle. |
+| 0.3 | 01-10-2026 | Express intensity in sections 1, 5 and 7.1. |

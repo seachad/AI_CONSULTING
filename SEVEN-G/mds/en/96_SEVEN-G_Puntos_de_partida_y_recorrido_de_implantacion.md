@@ -22,7 +22,7 @@
 
 ## 1. Purpose and scope
 
-The implementation guide (document 90) describes **what** must be in place and within what maximum time limit: Lite or Enterprise scope, prerequisites, 90-day plan, regularisation of what already exists and roadmap up to the declaration of application. But companies do not start from the same place. One with no AI in production and another with forty predictive models and two agents that act need **to start with different things**, even though they must reach the same destination.
+The implementation guide (document 90) describes **what** must be in place and within what maximum time limit: Lite or Enterprise scope, prerequisites, 90-day plan, regularisation of what already exists and roadmap up to the declaration of application. But companies do not start from the same place. One with no AI in production and another with forty predictive models and two agents that act need **to start with different things**, even though they must reach the same destination. In archetypes PP-A and PP-B, many of the first initiatives meet the eligibility for Express intensity (01 §9.4), which makes it possible to register and govern them from day one without a disproportionate path.
 
 This document answers three questions:
 

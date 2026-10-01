@@ -5,8 +5,8 @@
 | | |
 |---|---|
 | Documento | Plantilla P01 · Carta de la iniciativa |
-| Versión | 0.1 (borrador de trabajo) |
-| Fecha | 16-09-2026 |
+| Versión | 0.2 (borrador de trabajo) |
+| Fecha | 01-10-2026 |
 | Autor | Fernando García Varela |
 | Estado | Borrador para revisión. |
 
@@ -137,7 +137,7 @@ El detalle, las incompatibilidades y los sustitutos se registran en P03.
 |---|---|---|
 | Restricciones principales | | Resumen de P02: regulatorias, éticas, de datos, presupuestarias, de plazo y tecnológicas. |
 | Líneas rojas | | Lo que la iniciativa no hará en ningún caso. |
-| Intensidad determinada | | Lite · Enterprise, con el criterio que la determina (P04). |
+| Intensidad determinada | | Express · Lite · Enterprise, con el criterio o la elegibilidad que la determina (P04). Si es Express, se rellena además la sección 14. |
 | Clasificación regulatoria preliminar | | Prohibido · Alto riesgo · Obligaciones de transparencia · Riesgo mínimo · Fuera de ámbito · Pendiente de clasificar. En fase 0 suele ser "Pendiente de clasificar"; se resuelve en P11. |
 | Alta en el inventario | | Referencia de la ficha P05 y fecha de alta. |
 
@@ -203,7 +203,27 @@ Separación de funciones: quien verifica no ha elaborado la carta; la fecha de v
 
 ---
 
-## 14. Control de versiones
+## 14. Ficha viva (solo intensidad Express)
+
+En una iniciativa Express (01 §9.4) esta sección sustituye a las plantillas de las fases 0 a 5: se rellena por tramos y se actualiza en cada puerta, y la evidencia que la compañía ya tiene se referencia en lugar de copiarse (21 §4.3). Cada fila indica los criterios de la lista reducida (21 §2.5) a los que da evidencia. En Lite y Enterprise esta sección no se usa.
+
+| Bloque | Contenido mínimo | Criterios | Se completa en |
+|---|---|---|---|
+| **Contexto y oportunidad** | Problema de negocio, proceso afectado, alternativa sin IA y por qué la IA aporta algo; cribado de prácticas prohibidas. | G0.01, G0.04, G1.01, G1.03, G1.07 | Entrada (G0–G2) |
+| **Elegibilidad Express** | Las seis condiciones de P04 §5.1 en «Sí» y quién las confirma. | G0.07 | Entrada (G0–G2) |
+| **Responsables** | Patrocinador, producto, técnico y riesgos con nombre; incompatibilidades comprobadas. | G0.05, G0.06 | Entrada (G0–G2) |
+| **Registro e inventario** | Código IA-AAAA-NNN y ficha de inventario; ningún presupuesto consumido antes de decidir. | G0.08, G0.09 | Entrada (G0–G2) |
+| **Hipótesis de valor** | Qué cambia, en qué métrica, cuánto y cuándo; línea base medida; valor con fórmula; criterio de parada con umbral y fecha. | G2.01, G2.03, G2.04, G2.06, G2.08 | Entrada (G0–G2) |
+| **Riesgo y cumplimiento** | Clasificación regulatoria, base legal si hay datos personales, riesgos valorados con la escala del 33 (en T06) y plan para los Altos; [GEN] riesgos de IA generativa y autonomía; [TER] cláusulas mínimas con el proveedor. | G3.03, G3.06–G3.09, G3.11–G3.13 y los «Sí ◆» de [GEN] y [TER] | G3 |
+| **Diseño mínimo y prueba** | Supervisión humana, transparencia, seguridad y trazabilidad; resultado de las pruebas y de las pruebas de robustez; [GEN] evaluación y defensas. | Los «Sí ◆» de G4 y G5 | Puesta en uso (G4–G5) |
+| **Reversión y operación** | Mecanismo de parada, plan de reversión probado con su tiempo real, plan de incidentes y alfabetización de quien usa el sistema. | G4.09, G5.11, G5.17, G5.19 | Puesta en uso (G4–G5) |
+| **Aprobación** | Fecha y decisión de cada puerta con la conformidad de riesgos en G3, G4 y G5 (en T01). | G5.22, G5.23 | Cada puerta |
+
+> **Por qué importa.** Una iniciativa pequeña que tuviera que rellenar treinta plantillas acabaría sin registrarse. La ficha viva conserva en un solo documento todo lo que el núcleo exige y que una auditoría pide ver, sin pedir nada dos veces.
+
+---
+
+## 15. Control de versiones
 
 **Documento cumplimentado**
 
@@ -216,3 +236,4 @@ Separación de funciones: quien verifica no ha elaborado la carta; la fecha de v
 | Versión | Fecha | Cambios |
 |---|---|---|
 | 0.1 | 16-09-2026 | Primera versión. Estructura alineada con 01 §6.2 y con la taxonomía controlada de 03 §3.3. |
+| 0.2 | 01-10-2026 | Nueva sección 14, ficha viva de las iniciativas Express (01 §9.4), que sustituye a las plantillas de las fases 0 a 5 con los criterios de la lista reducida (21 §2.5). |
