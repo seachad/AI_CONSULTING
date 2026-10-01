@@ -136,7 +136,7 @@ With hours declared in T01's *gate* decisions (`decisiones_gate[].horas_gobierno
 
 ## Three perspectives of the use case (D150)
 
-With T01's `iniciativas[].resultado_operativo` (physical indicators from document 41 with baseline, target and current value) and its open risks, incidents and nonconformities, the connector passes `casos[].seveng.perspectivas` and each use case record opens with **Three perspectives of the use case**: economic value, operational outcome and risk exposure in three parallel columns that are never merged (document 40 §11.1, rule 11). Without an operational indicator, the column says so; it is never zero.
+With T01's `iniciativas[].resultado_operativo` (physical indicators from document 41 with baseline, target and current value) and its open risks, incidents and nonconformities, the connector passes `casos[].seveng.perspectivas` and each use case record opens with **Three perspectives of the use case** (so does the mobile dashboard record; and the inventory, as cards and as a table, shows each use case's operational outcome and risk exposure alongside its value): economic value, operational outcome and risk exposure in three parallel columns that are never merged (document 40 §11.1, rule 11). Without an operational indicator, the column says so; it is never zero.
 
 ## Mapping table
 

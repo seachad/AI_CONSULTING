@@ -699,16 +699,16 @@ TARJETAS = {
     # ---- Inventario
     "inventario": {
         "es": t("Inventario por compañía y unidad",
-                "Cada caso con su estado, sus cifras y sus etiquetas, agrupado por compañía y unidad o seguido, en tarjetas o en tabla. Al pulsar un caso se abre su ficha.",
+                "Cada caso con su estado, sus cifras y sus etiquetas, agrupado por compañía y unidad o seguido, en tarjetas o en tabla. Junto al valor, cada caso muestra su resultado operativo y su exposición al riesgo, sin fusionarlos (40 §11.1, regla 11). Al pulsar un caso se abre su ficha.",
                 "Es el detalle que respalda todas las cifras agregadas del panel: cualquier importe se puede rastrear hasta los casos que lo forman.",
                 "documento 32 y T01",
                 "En la vista de tabla, pulse un encabezado para ordenar; pase el ratón por él para ver qué significa."),
         "en": t("Inventory by company and unit",
-                "Each case with its status, figures and tags, grouped by company and unit or listed, as cards or as a table. Clicking a case opens its record.",
+                "Each case with its status, figures and tags, grouped by company and unit or listed, as cards or as a table. Alongside value, each case shows its operational outcome and its risk exposure, without merging them (40 §11.1, rule 11). Clicking a case opens its record.",
                 "It is the detail behind every aggregate figure in the dashboard: any amount can be traced to the cases that make it up.",
                 "document 32 and T01",
                 "In the table view, click a header to sort; hover over it to see what it means."),
-        "columnas": ["ID", "Caso", "Qué es y para qué se usa", "Compañía", "Unidad", "Estado", "Puesta en producción", "Tecnología", "Reglamento IA …", "Controles", "Días en el estado", "Límite (días)", "Plazo en el estado", "Construcción", "Coste anual", "Eficiencias", "Capacidad no materializada", "Retorno", "Neto anual", "Neto potencial", "Inversión adicional", "€ neto por € adicional", "Δ neto …", "Plazo del potencial", "Dato del valor"],
+        "columnas": ["ID", "Caso", "Qué es y para qué se usa", "Compañía", "Unidad", "Estado", "Puesta en producción", "Tecnología", "Reglamento IA …", "Controles", "Días en el estado", "Límite (días)", "Plazo en el estado", "Construcción", "Coste anual", "Eficiencias", "Capacidad no materializada", "Retorno", "Neto anual", "Neto potencial", "Inversión adicional", "€ neto por € adicional", "Δ neto …", "Plazo del potencial", "Dato del valor", "Resultado operativo", "Exposición al riesgo"],
     },
     # ---- Panel móvil
     "m-resumen": {
@@ -795,6 +795,8 @@ COLUMNAS.update({
     "Captura objetivo": c("Nivel de captura del valor en régimen que permite alcanzar el tramo.", "Target capture", "Level of capture of the steady-state value the tranche makes possible."),
     "Neto anual que desbloquea": c("Neto anual adicional en el nivel de captura del tramo frente al del tramo anterior (valor − coste recurrente).", "Annual net unlocked", "Additional annual net at the tranche's capture level compared with the previous tranche's (value − recurring cost)."),
     "€ por €": c("Neto anual que desbloquea el tramo por cada euro que cuesta: el F3 del tramo (40 regla 9).", "€ per €", "Annual net the tranche unlocks per euro it costs: the tranche's F3 (40 rule 9)."),
+    "Resultado operativo": c("Indicadores operativos del caso: cuántos están en su objetivo, cuántos por debajo y cuántos sin medir; «sin indicador» si no tiene ninguno (nunca cero). No se traduce a euros (40 §11.1, regla 11).", "Operational outcome", "The use case's operational indicators: how many are on target, how many below and how many not measured; «no indicator» if it has none (never zero). Not translated into euros (40 §11.1, rule 11)."),
+    "Exposición al riesgo": c("Riesgos Altos o Críticos abiertos, incidentes abiertos y no conformidades abiertas del caso (documentos 33 y 37). Se lee junto al valor, nunca se compensa con él.", "Risk exposure", "Open High or Critical risks, open incidents and open nonconformities of the use case (documents 33 and 37). Read alongside value, never offset against it."),
     "Indicador": c("Indicador físico del resultado operativo del caso (documento 41), con su código IND- cuando existe; se registra en T01 (resultado_operativo).", "Indicator", "Physical indicator of the use case's operational outcome (document 41), with its IND- code when there is one; recorded in T01 (resultado_operativo)."),
     "Medido": c("Fecha del último valor medido y si está en su objetivo, según mejore al subir o al bajar. Sin valor medido, «sin dato» (nunca cero).", "Measured", "Date of the latest measured value and whether it is on target, depending on whether it improves upwards or downwards. Without a measured value, «no data» (never zero)."),
     "Métrica": c("Métrica física con la que se sigue el valor no cuantificado (40 regla 7). Sin métrica, la dimensión se muestra pero no cuenta.", "Metric", "Physical metric used to track the non-quantified value (40 rule 7). Without a metric, the dimension is shown but does not count."),

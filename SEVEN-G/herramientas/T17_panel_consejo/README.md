@@ -136,7 +136,7 @@ Con horas declaradas en las decisiones de *gate* de T01 (`decisiones_gate[].hora
 
 ## Tres perspectivas del caso (D150)
 
-Con `iniciativas[].resultado_operativo` de T01 (indicadores físicos del documento 41 con línea base, objetivo y valor actual) y sus riesgos, incidentes y no conformidades abiertos, el conector pasa `casos[].seveng.perspectivas` y la ficha de cada caso abre con **Tres perspectivas del caso**: valor económico, resultado operativo y exposición al riesgo en tres columnas paralelas que no se fusionan (documento 40 §11.1, regla 11). Sin indicador operativo, la columna lo dice; nunca es cero.
+Con `iniciativas[].resultado_operativo` de T01 (indicadores físicos del documento 41 con línea base, objetivo y valor actual) y sus riesgos, incidentes y no conformidades abiertos, el conector pasa `casos[].seveng.perspectivas` y la ficha de cada caso abre con **Tres perspectivas del caso** (también la ficha del panel móvil; y el inventario, en tarjetas y en tabla, muestra junto al valor el resultado operativo y la exposición al riesgo de cada caso): valor económico, resultado operativo y exposición al riesgo en tres columnas paralelas que no se fusionan (documento 40 §11.1, regla 11). Sin indicador operativo, la columna lo dice; nunca es cero.
 
 ## Tabla de mapeo
 
