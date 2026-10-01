@@ -20,7 +20,7 @@
 
 ## 1. Purpose and scope
 
-This document turns the initiative lifecycle defined in document 01 (section 6) into working instructions. For each phase, from 0 to 7, it sets out what must be done, in what order, who does it, what evidence must exist before the decision gate and how that gate is prepared. It includes the differences by intensity (Lite or Enterprise), by ambition level and by technology, as well as the transitions between phases.
+This document turns the initiative lifecycle defined in document 01 (section 6) into working instructions. For each phase, from 0 to 7, it sets out what must be done, in what order, who does it, what evidence must exist before the decision gate and how that gate is prepared. It includes the differences by intensity (Lite or Enterprise; at Express, the P01 §14 living record replaces the templates and each gate is assessed with the reduced list in 21 §2.5), by ambition level and by technology, as well as the transitions between phases.
 
 **What it does not cover and where to find it**
 

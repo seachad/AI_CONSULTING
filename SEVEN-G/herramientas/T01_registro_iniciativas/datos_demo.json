@@ -45,18 +45,30 @@
           "4": 45,
           "5": 90,
           "7": 30
+        },
+        "express": {
+          "0": 5,
+          "1": 10,
+          "2": 10,
+          "3": 10,
+          "4": 10,
+          "5": 30,
+          "7": 10
         }
       },
       "plazo_decision_dias_habiles": {
         "lite": 5,
-        "enterprise": 10
+        "enterprise": 10,
+        "express": 5
       },
       "revision_continuidad_dias": {
         "lite": 182,
-        "enterprise": 91
+        "enterprise": 91,
+        "express": 365
       },
       "historial_minimo_ponderado": 5,
-      "umbral_inversion_enterprise": 500000
+      "umbral_inversion_enterprise": 500000,
+      "umbral_express": 50000
     }
   },
   "personas": [
@@ -1617,7 +1629,7 @@
         ],
         "esfera_principal": "08",
         "ambicion_propuesta": "optimizar",
-        "intensidad": "lite",
+        "intensidad": "express",
         "regulatoria": "riesgo_minimo",
         "tecnologia": [
           "lenguaje_documentos",
@@ -1639,7 +1651,17 @@
           "transformar": false,
           "inversion": false
         },
-        "resultado": "lite"
+        "resultado": "express",
+        "comentario": "Sin criterios Enterprise; uso interno del área jurídica, reversible, A0, sin datos sensibles, proveedor homologado y por debajo del umbral Express de C2: intensidad Express confirmada por riesgos (ilustrativo).",
+        "express": {
+          "uso_interno": true,
+          "reversible": true,
+          "autonomia_baja": true,
+          "sin_datos_sensibles": true,
+          "bajo_umbral": true,
+          "proveedor_homologado": true,
+          "confirmado_por": "PER-12"
+        }
       },
       "clasificacion_ambicion": null,
       "ciclo": {
@@ -15923,7 +15945,7 @@
       "iniciativa": "IA-2026-006",
       "gate": "G0",
       "iteracion": 1,
-      "intensidad": "lite",
+      "intensidad": "express",
       "ambicion": "optimizar",
       "fecha_solicitud": "2026-07-01",
       "solicitante": "PER-21",
@@ -15948,17 +15970,13 @@
         },
         {
           "codigo": "G0.02",
-          "estado": "cumple",
-          "evidencias": [
-            "EVI-2026-0215"
-          ]
+          "estado": "no_aplica",
+          "justificacion": "No aplica en intensidad Express (documento 21, sección 2.5)."
         },
         {
           "codigo": "G0.03",
-          "estado": "cumple",
-          "evidencias": [
-            "EVI-2026-0216"
-          ]
+          "estado": "no_aplica",
+          "justificacion": "No aplica en intensidad Express (documento 21, sección 2.5)."
         },
         {
           "codigo": "G0.04",
@@ -16004,10 +16022,8 @@
         },
         {
           "codigo": "G0.10",
-          "estado": "cumple",
-          "evidencias": [
-            "EVI-2026-0216"
-          ]
+          "estado": "no_aplica",
+          "justificacion": "No aplica en intensidad Express (documento 21, sección 2.5)."
         }
       ]
     },

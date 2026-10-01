@@ -5,7 +5,7 @@
 | | |
 |---|---|
 | Document | Document 21 · *Gate* and audit criteria |
-| Version | 0.2 (working draft) |
+| Version | 0.3 (working draft) |
 | Date | 01-10-2026 |
 | Author | Fernando García Varela |
 | Status | Draft for review. Develops 01 §7 and replaces the *gate* criteria in the previous material. |
@@ -45,7 +45,7 @@ This document does not constitute legal advice. The regulatory references were c
 | **Criterion** | Verifiable condition. The initial tags delimit its scope (section 2.3). |
 | **Evidence** | Template (P01–P31) or tool (T01–T22) where the proof must be found. |
 | **Mandatory** | Nature of the criterion (section 2.2). |
-| **Lite · Enterprise** | Whether it applies at each intensity: **Yes** (in full), **Simpl.** (with a simplified template), **Rec.** (recommended at that intensity) or **—** (not applicable at that intensity). |
+| **Lite · Enterprise** | Whether it applies at each intensity (Express intensity has no column of its own: its list is set by the rule in section 2.5): **Yes** (in full), **Simpl.** (with a simplified template), **Rec.** (recommended at that intensity) or **—** (not applicable at that intensity). |
 | **Optimise / Augment / Transform** | How the criterion changes according to the ambition level. "—" indicates that it does not change. |
 
 ### 2.2 Mandatory nature
@@ -69,6 +69,16 @@ This document does not constitute legal advice. The regulatory references were c
 ### 2.4 Status of each criterion
 
 Each criterion is recorded in T03 with one of the four statuses in document 03 §3.4: **Met** · **Not met** · **Not applicable** · **Pending**. *Not applicable* requires a justification, which the verifier validates; an unjustified *Not applicable* is treated as *Not met*.
+
+### 2.5 Criteria at Express intensity
+
+At Express intensity (01 §9.4) each gate is assessed with a **reduced list** that is not decided case by case but with a fixed rule:
+
+1. **All "Yes ◆" criteria** that apply to the initiative's profile (security, legal compliance, human oversight): N-08 prevents them from being treated as conditions, so they cannot disappear either.
+2. **The criteria that sustain the core** (01 §14.1): G0.01, G0.05, G0.06, G0.07, G0.08 and G0.09 (record, roles, incompatibilities, intensity, register and no budget before the decision); G1.01 and G1.03 (business need and non-AI alternative); G2.01, G2.03, G2.04, G2.06 and G2.08 (falsifiable hypothesis with baseline, target, value with formula and stop criterion); G3.06, G3.11 and G3.13 (stop criteria in force, risks assessed and plan for High risks); G5.09, G5.11, G5.19 and G5.22 (stop criterion not reached, tested rollback, literacy and conditions closed).
+3. **R6 and G7**: the same criteria as in Lite.
+
+The other criteria appear in the decision as *Not applicable*, with the justification "Does not apply at Express intensity (document 21, section 2.5)". Criteria tagged [GEN], [AG] or [TER] follow section 2.3. The gate manager's catalogue carries this list in its Express column. In the typical initiative of the improvement plan's baseline (an internal generative assistant from an approved supplier), the reduced list goes from 90 to 47 criteria, of which 27 are "Yes ◆".
 
 ---
 
@@ -103,7 +113,7 @@ All criteria being *Met* allows **Proceed**, but does not require it. The compet
 
 ### 3.4 Grouped gates in Lite
 
-At Lite intensity, G0, G1 and G2 may be resolved in a single session, as may G4 and G5 (01 §7.5). Grouping does not merge criteria: each gate keeps its own list, its status per criterion and its section in P29, and each piece of evidence is verified.
+At Lite and Express intensity, G0, G1 and G2 may be resolved in a single session, as may G4 and G5 (01 §7.5). G3 is always separate; at Express it may be resolved in writing, without a session, with the risk clearance recorded (01 §9.4). Grouping does not merge criteria: each gate keeps its own list, its status per criterion and its section in P29, and each piece of evidence is verified.
 
 ### 3.5 Board decisions in Transform
 
@@ -736,3 +746,4 @@ No weighted scoring is used: criteria are either met or not, with evidence, and 
 |---|---|---|
 | 0.1 | 16-09-2026 | First version. Merges the two versions of the *gate* and audit criteria in the previous material with the current model in 01: 128 criteria coded by gate, intensity and ambition, with criteria for generative AI, agents and third parties; valid evidence, degree of compliance, multi-level sign-off with veto, audit and decision record. Consistency adjustments with 01 (segregation of duties in Lite, R6 outcomes, agent criterion) and with 34 and 37. |
 | 0.2 | 01-10-2026 | New section 4.3, reference rather than reproduce: evidence the company already has meets the criterion if it covers what is required, with requirements of reference, owner, coverage and validity, and a table of usual equivalences; EV.10 accepts referenced evidence. |
+| 0.3 | 01-10-2026 | New section 2.5, criteria at Express intensity (all applicable "Yes ◆" criteria and those that sustain the core; R6 and G7 as Lite); 3.4 includes Express and G3 in writing. |

@@ -5,7 +5,7 @@
 | | |
 |---|---|
 | Documento | Documento 90 · Guía de implantación |
-| Versión | 0.2 (borrador de trabajo) |
+| Versión | 0.3 (borrador de trabajo) |
 | Fecha | 01-10-2026 |
 | Autor | Fernando García Varela |
 | Estado | Borrador para revisión. Los plazos y objetivos son orientativos y se ajustarán con la aplicación práctica. |
@@ -86,6 +86,7 @@ El perímetro puede ser toda la compañía o una parte (una filial, un país, un
 | **Órganos** | Consejo con punto de IA al menos trimestral; comité de dirección con punto mensual de IA; oficina de IA de una persona a tiempo parcial. | 01 §5.2; 30 §11; sección 7 |
 | **Inventario** | Todos los sistemas de IA —propios, de terceros, uso corporativo y uso no autorizado— con declaración de completitud. No se reduce en Lite. | 32; P05; T01 |
 | **Intensidad** | Determinación en cada iniciativa: en la fase 0, en G3 y en cada R6. | 01 §9; P04; T04 |
+| **Iniciativas Express** | Las pequeñas, internas y reversibles que cumplen la elegibilidad de 01 §9.4 pasan las mismas puertas con la lista reducida de criterios y una ficha viva; el umbral Express se aprueba en C2. | 01 §9.4; 21 §2.5; P01 §14; P04 §5.1 |
 | **Evidencias de una iniciativa Lite** | Las que los criterios de *gate* marcan «Sí» o «Simpl.» en la columna Lite, con las plantillas sin los campos *(Enterprise)*. Ninguna evidencia obligatoria se omite: se simplifica. | 01 §6.10; 21 §2.1; P01–P31 |
 | **Puertas** | G0–G2 en una sesión, G3 por separado, G4–G5 en una sesión, R6 semestral y G7. Cada puerta conserva sus criterios y su registro en P29. | 21 §3.4 |
 | **Verificación y decisión** | Verifica la oficina de IA; decide el patrocinador, con conformidad de riesgos en G3, G4 y G5; el auditor de IA revisa cada semestre una muestra de los *gates* Lite. | 01 §9.3; 21 §10.3 |
@@ -338,3 +339,4 @@ Las herramientas sin aplicación propia se aplican con la plantilla o el documen
 | 0.1 | 19-09-2026 | La ruta mínima (2.4) remite a la matriz de obligatoriedad (documento 94), al recuadro «Lo esencial» de cada documento y al curso. |
 | 0.1 | 28-09-2026 | Remisión al documento 96 (punto de partida y recorrido de implantación) en §1, §5, §10 y §11; herramienta T23 en el mes 1. |
 | 0.2 | 01-10-2026 | Camino hasta el núcleo de SEVEN-G (sección 6.2) e indicador de implantación sobre las catorce reglas (sección 9); equivalencias de evidencias corporativas en la semana 10 (21 §4.3). |
+| 0.3 | 01-10-2026 | Iniciativas Express en la ruta mínima (sección 2.4). |

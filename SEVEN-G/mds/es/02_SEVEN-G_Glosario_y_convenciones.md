@@ -5,7 +5,7 @@
 | | |
 |---|---|
 | Documento | Documento 02 · Glosario y convenciones |
-| Versión | 1.3 |
+| Versión | 1.4 |
 | Fecha | 01-10-2026 |
 | Autor | Fernando García Varela |
 | Estado | Vigente. Fuente única de términos, escalas y códigos del marco; se actualiza antes que cualquier otro documento cuando cambia un término. |
@@ -231,12 +231,14 @@ Orden alfabético. Las escalas completas están en la sección 4 y los códigos 
 | **Evaluación de madurez verificada · independiente** | **Verificada**: la realiza el equipo evaluador de la oficina de IA con verificación independiente de una muestra; es el mínimo en C1 y C5. **Independiente**: la realiza la tercera línea o un evaluador externo sin participación en la implantación. El **autodiagnóstico** no produce un nivel válido. | 11 §4.1 | verified · independent maturity assessment † |
 | **Evidencia** | Documento, registro o resultado verificable que demuestra que se cumple un criterio. Tiene autor, fecha, versión y verificación, y debe existir antes del *gate*. | 01 §4, §7.4 | evidence; mandatory evidence |
 | **Evidencia válida** | Evidencia que supera las catorce reglas EV.01 a EV.14 (identificación, autor, fecha, versión, anterioridad, integridad, pertinencia, datos reales, aprobación y separación, completitud, coherencia, protección de la información, evidencias de sistemas y de terceros). | 21 §4; 22 §11 | valid evidence † |
+| **Express (intensidad)** | Intensidad para iniciativas sin criterio Enterprise que, además, son de uso interno, reversibles, con autonomía A0 o A1, sin datos sensibles y por debajo del umbral Express de C2, con elegibilidad confirmada por la función de riesgos. Mismas puertas que Lite, G3 por separado (puede resolverse por escrito), lista reducida de criterios (21 §2.5), ficha viva y R6 anual; si deja de cumplirse la elegibilidad, pasa a Lite o a Enterprise. | 01 §9.4; 21 §2.5 | Express intensity |
 | **Exposición directa** | Criterio Enterprise: clientes, pacientes, ciudadanos u otras personas externas interactúan directamente con el sistema. | 01 §9.2; 03 §3.3 | direct exposure † |
 
 ### 3.6 F
 
 | Término | Definición en SEVEN-G | Documento de referencia | Término en inglés |
 |---|---|---|---|
+| **Ficha viva** | Evidencia única de una iniciativa Express (sección Express de P01) que reúne contexto, oportunidad, hipótesis de valor, riesgo, responsables, prueba, aprobación y reversión, y se actualiza en cada puerta; las evidencias que la compañía ya tiene se referencian (21 §4.3). | 01 §9.4; P01 | living record |
 | **Fases del ciclo de vida** | 0 Contexto y restricciones · 1 Descubrimiento de oportunidades · 2 Hipótesis de valor · 3 Viabilidad y riesgo · 4 Diseño de la solución · 5 Entrega y validación · 6 Operación y gobierno · 7 Evolución o retirada. La fase 0 es habilitante: sin G0 aprobado la iniciativa no puede consumir presupuesto ni acceder a datos de producción. | 01 §6.1; 20 | 0 Context and constraints · 1 Opportunity discovery · 2 Value hypothesis · 3 Feasibility and risk · 4 Solution design · 5 Delivery and validation · 6 Operation and governance · 7 Evolution or retirement |
 | **Firma multinivel de puesta en producción** | Requisito de G5 Enterprise: firma registrada, con capacidad de veto, del responsable técnico, riesgos y cumplimiento, seguridad de la información y protección de datos. Un veto vigente impide continuar y solo lo levanta quien lo emitió o su sustituto formal. | 01 §6.7; 21 §9; P23 | multi-level go-live sign-off with veto power |
 | **Fórmulas oficiales** | Fórmulas F1 a F10 (y F2v) del documento 40, únicas válidas para importes, valor neto, neto adicional por euro, capacidad liberada, materialización, proporción validada, VAN, ROI, plazo de recuperación y realización del valor. | 40 §6 | official formulas † |
@@ -276,7 +278,7 @@ Orden alfabético. Las escalas completas están en la sección 4 y los códigos 
 | **Incidente grave relacionado con las TIC · incidente significativo** | Incidentes que cumplen, respectivamente, los criterios de clasificación de DORA o del art. 23.3 de NIS2 según su transposición. Cuando aplican, son S1. | 37 §1.1 | major ICT-related incident · significant incident † |
 | **Índice de transformación** | Instrumento que sitúa a la compañía en uno de cinco perfiles entre la eficiencia y la transformación, con ocho señales puntuadas de 0 a 3, tres condiciones de base y el contraste con la declaración de transformación. El perfil no se asigna por la suma de puntos. | 00 §5.3; 12 §4–5 | transformation index |
 | **Iniciativa** | Conjunto de trabajo que persigue una hipótesis de valor mediante uno o varios sistemas de IA. Es la unidad que recorre el ciclo de vida y se identifica con el código IA-AAAA-NNN. | 01 §4; 03 §3.3 | initiative |
-| **Intensidad** | Grado de exigencia con el que se aplica el ciclo de vida a una iniciativa: Lite o Enterprise. Se determina en la fase 0 y se revisa en G3 y en cada R6. | 01 §4, §9 | Lite / Enterprise intensity |
+| **Intensidad** | Grado de exigencia con el que se aplica el ciclo de vida a una iniciativa: Express, Lite o Enterprise. Se determina en la fase 0 y se revisa en G3 y en cada R6. | 01 §4, §9 | Lite / Enterprise intensity |
 | **Interruptor de parada** | Mecanismo para detener de inmediato un agente completo o una capacidad concreta sin desplegar código. Al activarse revoca credenciales, bloquea nuevas acciones, conserva los registros y activa el proceso alternativo. Se prueba antes de G5 y periódicamente. | 35 §4.7 | kill switch |
 | **Inventario de sistemas de IA** | Registro de todos los sistemas de IA de la compañía de los cuatro tipos de uso (iniciativas, IA de terceros integrada, uso corporativo y uso no autorizado), con clasificación regulatoria, intensidad, autonomía y responsable. | 01 §14; 32; T02 | AI system inventory |
 | **Inversión inicial (I)** | Coste de construcción más coste de adopción inicial, incurridos una vez. No incluye coste recurrente. | 40 §8.2; 42 | initial investment † |
@@ -527,6 +529,7 @@ Estados de la clasificación: **Propuesta** (fase 1) · **Confirmada** (G2) · *
 
 | Intensidad | Cuándo | Puertas | Verificación | Decisión | Puesta en producción | R6 | Inglés |
 |---|---|---|---|---|---|---|---|
+| **Express** | Ningún criterio Enterprise y, además, la elegibilidad de 01 §9.4, confirmada por la función de riesgos. | Como Lite; G3 por separado, puede resolverse por escrito; lista reducida de criterios (21 §2.5). | Oficina de IA. | Patrocinador; con conformidad de riesgos en G3, G4 y G5. | Conformidad de riesgos. | Anual | Express |
 | **Lite** | No se cumple ningún criterio Enterprise. | G0–G2 y G4–G5 pueden agruparse, conservando cada lista de criterios. | Oficina de IA; auditor de IA por muestreo. | Patrocinador; con conformidad de riesgos en G3, G4 y G5. | Conformidad de riesgos. | Semestral | Lite |
 | **Enterprise** | Se cumple al menos un criterio Enterprise (01 §9.2). | Todas por separado. | Auditor de IA en todos los *gates*. | Comité de IA (G1: patrocinador informando al comité); consejo en Transformar. | Firma multinivel con veto. | Trimestral | Enterprise |
 
@@ -766,7 +769,7 @@ Copia fiel de 03 §3.3. Cualquier cambio en estas listas se hace a la vez en amb
 |---|---|
 | **Esfera** | 01 Cliente · 02 Producto y servicio · 03 Personas · 04 Operaciones · 05 Datos · 06 Conocimiento · 07 Decisión · 08 Regulación, ética y responsabilidad · 09 Gobierno de la IA |
 | **Nivel de ambición** | Optimizar · Aumentar · Transformar |
-| **Intensidad** | Lite · Enterprise |
+| **Intensidad** | Express · Lite · Enterprise |
 | **Clasificación regulatoria** | Prohibido · Alto riesgo · Obligaciones de transparencia · Riesgo mínimo · Fuera de ámbito · Pendiente de clasificar |
 | **Tecnología** | ML predictivo · IA generativa · Agente · Procesamiento de lenguaje y documentos · Visión · Optimización · IA de terceros embebida · Reglas (no es IA) |
 | **Exposición** | Interna · Empleados · Clientes de forma indirecta · Clientes o personas externas de forma directa |
@@ -783,7 +786,7 @@ Equivalentes en inglés de los valores de la taxonomía:
 |---|---|
 | **Sphere** | 01 Customer · 02 Product and service · 03 People · 04 Operations · 05 Data · 06 Knowledge · 07 Decision · 08 Regulation, ethics and accountability · 09 AI governance |
 | **Ambition level** | Optimise · Augment · Transform |
-| **Intensity** | Lite · Enterprise |
+| **Intensity** | Express · Lite · Enterprise |
 | **Regulatory classification** † | Prohibited · High risk · Transparency obligations · Minimal risk · Out of scope · Pending classification |
 | **Technology** † | Predictive ML · Generative AI · Agent · Language and document processing · Vision · Optimisation · Embedded third-party AI · Rules (not AI) |
 | **Exposure** † | Internal · Employees · Customers indirectly · Customers or external persons directly |
@@ -1028,6 +1031,7 @@ Las herramientas muestran los valores de las listas cerradas en español e ingl�
 
 | Versión | Fecha | Cambios |
 |---|---|---|
+| 1.4 | 01-10-2026 | Añade la intensidad Express (escala 4.6, término y taxonomía) y la ficha viva. |
 | 1.3 | 01-10-2026 | Añade núcleo de SEVEN-G (N-01 a N-14), principio obligatorio · práctica · instrumento y proporcionalidad (principio 11); los principios pasan a 1–11. |
 | 1.2 | 28-09-2026 | Añade caja por delante, condición de paso, curva de realización, sostenido por valor no cuantificado y valor no cuantificado; amplía plan de realización de beneficios y tramo de financiación con su registro en T01; 209 términos definidos (D135). |
 | 1.1 | 28-09-2026 | Añade arquetipo y modificador de punto de partida, hito y recorrido de implantación (documento 96), huella tecnológica (11 §7.6) y alcance del impacto (12 §3.7), con sus códigos PP-A–PP-F, MP1–MP5, HI-01–HI-22, HT0–HT5 e IM1–IM4; herramientas T01–T23. |

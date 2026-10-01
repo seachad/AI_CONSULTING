@@ -5,7 +5,7 @@
 | | |
 |---|---|
 | Document | Document 90 · Implementation guide |
-| Version | 0.2 (working draft) |
+| Version | 0.3 (working draft) |
 | Date | 01-10-2026 |
 | Author | Fernando García Varela |
 | Status | Draft for review. Time limits and targets are indicative and will be adjusted through practical application. |
@@ -86,6 +86,7 @@ The perimeter may be the whole company or a part of it (a subsidiary, a country,
 | **Bodies** | Board with an AI item at least quarterly; executive committee with a monthly AI item; AI Office of one part-time person. | 01 §5.2; 30 §11; section 7 |
 | **Inventory** | All AI systems —in-house, third-party, corporate use and unauthorised use— with a completeness statement. It is not reduced in Lite. | 32; P05; T01 |
 | **Intensity** | Determination for each initiative: in phase 0, at G3 and at each R6. | 01 §9; P04; T04 |
+| **Express initiatives** | Small, internal and reversible ones that meet the eligibility in 01 §9.4 go through the same gates with the reduced list of criteria and a living record; the Express threshold is approved in C2. | 01 §9.4; 21 §2.5; P01 §14; P04 §5.1 |
 | **Evidence for a Lite initiative** | The evidence that the *gate* criteria mark "Yes" or "Simpl." in the Lite column, with templates without the *(Enterprise)* fields. No mandatory evidence is omitted: it is simplified. | 01 §6.10; 21 §2.1; P01–P31 |
 | **Gates** | G0–G2 in one session, G3 separately, G4–G5 in one session, half-yearly R6 and G7. Each gate keeps its criteria and its record in P29. | 21 §3.4 |
 | **Verification and decision** | The AI Office verifies; the sponsor decides, with risk clearance at G3, G4 and G5; the AI Auditor reviews a sample of Lite *gates* every half-year. | 01 §9.3; 21 §10.3 |
@@ -338,3 +339,4 @@ Tools without an application of their own are applied with the template or docum
 | 0.1 | 19-09-2026 | The minimum path (2.4) refers to the obligation matrix (document 94), to the "The essentials" box of each document and to the course. |
 | 0.1 | 28-09-2026 | Reference to document 96 (starting point and implementation journey) in §1, §5, §10 and §11; tool T23 in month 1. |
 | 0.2 | 01-10-2026 | Path to the SEVEN-G core (section 6.2) and implementation indicator on the fourteen rules (section 9); equivalences of corporate evidence in week 10 (21 §4.3). |
+| 0.3 | 01-10-2026 | Express initiatives in the minimum path (section 2.4). |

@@ -5,7 +5,7 @@
 | | |
 |---|---|
 | Document | Document 02 · Glossary and conventions |
-| Version | 1.3 |
+| Version | 1.4 |
 | Date | 01-10-2026 |
 | Author | Fernando García Varela |
 | Status | In force. Single source of the framework's terms, scales and codes; it is updated before any other document when a term changes. |
@@ -227,6 +227,7 @@ Alphabetical order by English term. The full scales are in section 4 and the cod
 | **European AI Office** | Body of the European Commission provided for in Regulation (EU) 2024/1689. | 30 §1.2; 34 §1.3 | Oficina Europea de IA |
 | **Evidence** | Verifiable document, record or result that demonstrates that a criterion is met. It has an author, date, version and verification, and must exist before the *gate*. | 01 §4, §7.4 | Evidencia; evidencias obligatorias |
 | **Exit criterion** | Condition that must be met at the end of a phase in order to request its *gate*. | 01 §6.2–6.9 | Criterio de salida |
+| **Express (intensity)** | Intensity for initiatives with no Enterprise criterion that, in addition, are for internal use, reversible, with autonomy A0 or A1, without sensitive data and below the C2 Express threshold, with eligibility confirmed by the risk function. Same gates as Lite, G3 separately (may be resolved in writing), reduced list of criteria (21 §2.5), living record and annual R6; if eligibility ceases to be met, it moves to Lite or Enterprise. | 01 §9.4; 21 §2.5 | Intensidad Express |
 | **Extreme impact rule** | A risk with impact 5 on the people and rights axis or on the regulatory axis is treated, for acceptance purposes, as at least High, even if its likelihood is 1. | 33 §4.3 | Regla de impacto extremo |
 
 ### 3.6 F
@@ -277,7 +278,7 @@ Alphabetical order by English term. The full scales are in section 4 and the cod
 | **Initiative charter** | Phase 0 evidence that identifies the initiative, its objective, its sponsor and its fit with the AI thesis. | 01 §6.2; P01 | Carta de la iniciativa |
 | **Initiative lifecycle** | Initiative level of the framework: phases 0 to 7, each closed by a decision gate (R6 in phase 6). | 01 §6 | Ciclo de vida de la iniciativa |
 | **Initiative register** | Central tool (T01) that manages the portfolio as a funnel: phase and status, dated events, criteria for each *gate*, conditions, controlled taxonomy tags, value and stop reasons. | 01 §6.11; 03 §3 | Registro de iniciativas |
-| **Intensity** | Level of rigour with which the lifecycle is applied to an initiative: Lite or Enterprise. It is determined in phase 0 and reviewed at G3 and at each R6. | 01 §4, §9 | Intensidad |
+| **Intensity** | Level of rigour with which the lifecycle is applied to an initiative: Express, Lite or Enterprise. It is determined in phase 0 and reviewed at G3 and at each R6. | 01 §4, §9 | Intensidad |
 | **Intensity determination** | Phase 0 evidence, reviewed at G3 and at each R6, that records whether any Enterprise criterion is met and the resulting intensity. | 01 §9.1; P04; T04 | Determinación de intensidad |
 | **Intent-based access control** | Mechanism that ensures that every action of an agent is traceable to an authorised intent: a mandate with objective, tools, data and limits; a decision point external to the model that checks each action; an ephemeral permission limited to that action; and a record of the action with the intent identifier. | 35 §4.4 | Control de intención |
 | **Inventory registration** | Phase 0 evidence: registration of the system in the AI system inventory (T02) with its code SIA-AAAA-NNN and the minimum fields for its usage type. | 01 §6.2; 32 §7.1; P05 | Alta en el inventario |
@@ -292,6 +293,7 @@ Alphabetical order by English term. The full scales are in section 4 and the cod
 | **Least privilege** | Principle whereby an agent only has a closed list of the tools, operations and data it needs, with read and write access authorised separately. | 35 §4.2 | Mínimo privilegio |
 | **Lifecycle phases** | 0 Context and constraints · 1 Opportunity discovery · 2 Value hypothesis · 3 Feasibility and risk · 4 Solution design · 5 Delivery and validation · 6 Operation and governance · 7 Evolution or retirement. Phase 0 is enabling: without an approved G0 the initiative cannot consume budget or access production data. | 01 §6.1; 20 | Fases del ciclo de vida (0 Contexto y restricciones · 1 Descubrimiento de oportunidades · 2 Hipótesis de valor · 3 Viabilidad y riesgo · 4 Diseño de la solución · 5 Entrega y validación · 6 Operación y gobierno · 7 Evolución o retirada) |
 | **Lite (intensity)** | Intensity for initiatives that do not meet any Enterprise criterion: G0–G2 and G4–G5 may be grouped, simplified templates, verification by the AI Office, decision by the sponsor (with risk clearance at G3, G4 and G5) and half-yearly R6. | 01 §7.5, §9.3 | Lite (intensidad) |
+| **Living record** | Single piece of evidence of an Express initiative (Express section of P01) that gathers context, opportunity, value hypothesis, risk, owners, test, approval and rollback, and is updated at each gate; evidence the company already has is referenced (21 §4.3). | 01 §9.4; P01 | Ficha viva |
 
 ### 3.11 M
 
@@ -527,6 +529,7 @@ Classification statuses: **Proposed** (phase 1) · **Confirmed** (G2) · **Actua
 
 | Intensity | When | Gates | Verification | Decision | Go-live | R6 | Spanish |
 |---|---|---|---|---|---|---|---|
+| **Express** | No Enterprise criterion and, in addition, the eligibility in 01 §9.4, confirmed by the risk function. | As Lite; G3 separately, may be resolved in writing; reduced list of criteria (21 §2.5). | AI Office. | Sponsor; with risk clearance at G3, G4 and G5. | Risk clearance. | Annual | Express |
 | **Lite** | No Enterprise criterion is met. | G0–G2 and G4–G5 may be grouped, keeping each list of criteria. | AI Office; AI Auditor by sampling. | Sponsor; with risk clearance at G3, G4 and G5. | Risk clearance. | Half-yearly | Lite |
 | **Enterprise** | At least one Enterprise criterion is met (01 §9.2). | All held separately. | AI Auditor at all *gates*. | AI Committee (G1: sponsor, informing the committee); board in Transform. | Multi-level sign-off with veto. | Quarterly | Enterprise |
 
@@ -766,7 +769,7 @@ Faithful copy of 03 §3.3. Any change to these lists is made at the same time in
 |---|---|
 | **Sphere** | 01 Customer · 02 Product and service · 03 People · 04 Operations · 05 Data · 06 Knowledge · 07 Decision · 08 Regulation, ethics and accountability · 09 AI governance |
 | **Ambition level** | Optimise · Augment · Transform |
-| **Intensity** | Lite · Enterprise |
+| **Intensity** | Express · Lite · Enterprise |
 | **Regulatory classification** | Prohibited · High risk · Transparency obligations · Minimal risk · Out of scope · Pending classification |
 | **Technology** | Predictive ML · Generative AI · Agent · Language and document processing · Vision · Optimisation · Embedded third-party AI · Rules (not AI) |
 | **Exposure** | Internal · Employees · Customers indirectly · Customers or external persons directly |
@@ -783,7 +786,7 @@ Spanish equivalents of the taxonomy values:
 |---|---|
 | **Esfera** | 01 Cliente · 02 Producto y servicio · 03 Personas · 04 Operaciones · 05 Datos · 06 Conocimiento · 07 Decisión · 08 Regulación, ética y responsabilidad · 09 Gobierno de la IA |
 | **Nivel de ambición** | Optimizar · Aumentar · Transformar |
-| **Intensidad** | Lite · Enterprise |
+| **Intensidad** | Express · Lite · Enterprise |
 | **Clasificación regulatoria** | Prohibido · Alto riesgo · Obligaciones de transparencia · Riesgo mínimo · Fuera de ámbito · Pendiente de clasificar |
 | **Tecnología** | ML predictivo · IA generativa · Agente · Procesamiento de lenguaje y documentos · Visión · Optimización · IA de terceros embebida · Reglas (no es IA) |
 | **Exposición** | Interna · Empleados · Clientes de forma indirecta · Clientes o personas externas de forma directa |
@@ -1028,6 +1031,7 @@ Tools display the values of closed lists in Spanish and English using the equiva
 
 | Version | Date | Changes |
 |---|---|---|
+| 1.4 | 01-10-2026 | Adds Express intensity (scale 4.6, term and taxonomy) and the living record. |
 | 1.3 | 01-10-2026 | Adds SEVEN-G core (N-01 to N-14), mandatory principle · practice · instrument and proportionality (principle 11); principles become 1–11. |
 | 1.2 | 28-09-2026 | Adds cash still needed, pass condition, realisation curve, sustained by non-quantified value and non-quantified value; extends benefits realisation plan and funding tranche with their recording in T01; 209 defined terms (D135). |
 | 1.1 | 28-09-2026 | Adds starting-point archetype and modifier, implementation milestone and journey (document 96), technology footprint (11 §7.6) and impact reach (12 §3.7), with their codes PP-A–PP-F, MP1–MP5, HI-01–HI-22, HT0–HT5 and IM1–IM4; tools T01–T23. |

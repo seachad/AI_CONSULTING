@@ -272,6 +272,7 @@ The funnel stages group the lifecycle phases: **Proposed** (phases 0 and 1), **V
 
 | Intensity | When it applies | What changes |
 |---|---|---|
+| **Express** | Small initiatives for internal use, reversible, with autonomy A0 or A1, without sensitive data and below the C2 Express threshold, with eligibility confirmed by the risk function. | The same gates with a reduced list of criteria —all security, compliance and human oversight criteria remain—, a living record instead of templates and an annual review; G3 is still separate. |
 | **Lite** | Low-risk initiatives, internal use, no decisions about people and no customer exposure, limited investment. | Grouped *gates*, simplified templates, decision by the sponsor with a record and verification by the AI Office. |
 | **Enterprise** | Systems that are high-risk under regulation, direct exposure to customers or people, automated decisions, agents with the ability to act, regulated environments or significant investment. | All *gates* and evidence, independent audit, visibility for the AI Committee and, where appropriate, for the board. |
 

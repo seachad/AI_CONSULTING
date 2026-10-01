@@ -43,7 +43,7 @@
     "esfera": { "enum": ["01", "02", "03", "04", "05", "06", "07", "08", "09"], "description": "01 Cliente · 02 Producto y servicio · 03 Personas · 04 Operaciones · 05 Datos · 06 Conocimiento · 07 Decisión · 08 Regulación, ética y responsabilidad · 09 Gobierno de la IA" },
     "ambicion": { "enum": ["optimizar", "aumentar", "transformar"] },
     "ambicion_o_nula": { "enum": ["optimizar", "aumentar", "transformar", null] },
-    "intensidad": { "enum": ["lite", "enterprise"] },
+    "intensidad": { "enum": ["lite", "enterprise", "express"], "description": "express desde D147 (opcional): iniciativa interna, reversible, A0–A1, sin datos sensibles y bajo el umbral Express de C2; mismas puertas que Lite con la lista reducida de criterios (21 §2.5)." },
     "regulatoria": { "enum": ["prohibido", "alto_riesgo", "transparencia", "riesgo_minimo", "fuera_ambito", "pendiente"], "description": "Prohibido · Alto riesgo · Obligaciones de transparencia · Riesgo mínimo · Fuera de ámbito · Pendiente de clasificar" },
     "tecnologia": { "enum": ["ml_predictivo", "ia_generativa", "agente", "lenguaje_documentos", "vision", "optimizacion", "ia_terceros_embebida", "reglas"], "description": "ML predictivo · IA generativa · Agente · Procesamiento de lenguaje y documentos · Visión · Optimización · IA de terceros embebida · Reglas (no es IA)" },
     "exposicion": { "enum": ["interna", "empleados", "clientes_indirecta", "clientes_directa"] },
@@ -97,11 +97,12 @@
           "required": ["plazos_fase", "plazo_decision_dias_habiles", "revision_continuidad_dias", "historial_minimo_ponderado"],
           "additionalProperties": false,
           "properties": {
-            "plazos_fase": { "type": "object", "required": ["lite", "enterprise"], "additionalProperties": false, "properties": { "lite": { "$ref": "#/$defs/plazos" }, "enterprise": { "$ref": "#/$defs/plazos" } } },
+            "plazos_fase": { "type": "object", "required": ["lite", "enterprise"], "additionalProperties": false, "properties": { "lite": { "$ref": "#/$defs/plazos" }, "enterprise": { "$ref": "#/$defs/plazos" }, "express": { "$ref": "#/$defs/plazos" } } },
             "plazo_decision_dias_habiles": { "type": "object", "required": ["lite", "enterprise"], "properties": { "lite": { "type": "integer" }, "enterprise": { "type": "integer" } } },
             "revision_continuidad_dias": { "type": "object", "required": ["lite", "enterprise"], "properties": { "lite": { "type": "integer" }, "enterprise": { "type": "integer" } } },
             "historial_minimo_ponderado": { "type": "integer", "minimum": 1, "description": "Iniciativas resueltas (en producción o cerradas) que han pasado por una fase necesarias para mostrar su probabilidad histórica y el valor ponderado." },
-            "umbral_inversion_enterprise": { "$ref": "#/$defs/importe" }
+            "umbral_inversion_enterprise": { "$ref": "#/$defs/importe" },
+            "umbral_express": { "$ref": "#/$defs/importe", "description": "Inversión más coste anual por debajo del cual una iniciativa puede ser Express, aprobado en C2 (D147)." }
           }
         }
       }
@@ -186,7 +187,21 @@
                 }
               },
               "resultado": { "$ref": "#/$defs/intensidad" },
-              "comentario": { "type": "string" }
+              "comentario": { "type": "string" },
+              "express": {
+                "description": "Elegibilidad para la intensidad Express (01 §9.4, D147): todas las condiciones en true y confirmación de la función de riesgos (o de la oficina de IA en compañías pequeñas). Opcional.",
+                "type": ["object", "null"],
+                "additionalProperties": false,
+                "properties": {
+                  "uso_interno": { "type": ["boolean", "null"] },
+                  "reversible": { "type": ["boolean", "null"] },
+                  "autonomia_baja": { "type": ["boolean", "null"] },
+                  "sin_datos_sensibles": { "type": ["boolean", "null"] },
+                  "bajo_umbral": { "type": ["boolean", "null"] },
+                  "proveedor_homologado": { "type": ["boolean", "null"] },
+                  "confirmado_por": { "$ref": "#/$defs/id_persona_o_nula" }
+                }
+              }
             }
           }]
         },

@@ -5,7 +5,7 @@
 | | |
 |---|---|
 | Documento | Documento 22 · Listas de verificación por *gate* |
-| Versión | 0.2 (borrador de trabajo) |
+| Versión | 0.3 (borrador de trabajo) |
 | Fecha | 01-10-2026 |
 | Autor | Fernando García Varela |
 | Estado | Borrador para revisión. Los códigos coinciden con los criterios del documento 21. |
@@ -58,7 +58,7 @@ Cada ítem lleva el **código del criterio** del documento 21 (G3.07, R6.11…) 
 | **Pregunta** | Formulada para responder sí o no. |
 | **Dónde mirar** | Plantilla (P), herramienta (T) o registro donde está la evidencia. |
 | **Tipo** | **Sí ◆** no condicionable y control crítico de seguridad, cumplimiento legal o supervisión humana · **Sí** no condicionable · **Cond.** condicionable · **Rec.** recomendado. |
-| **L · E** | Aplicación en Lite y Enterprise: **Sí** · **Simpl.** (plantilla simplificada) · **Rec.** · **—** (no aplica). |
+| **L · E** | Aplicación en Lite y Enterprise: **Sí** · **Simpl.** (plantilla simplificada) · **Rec.** · **—** (no aplica). En intensidad Express se revisan solo los criterios de la lista reducida (21 §2.5), con la ficha viva de P01 §14 como evidencia. |
 | **Etiquetas** | **[GEN]** IA generativa y agentes · **[AG]** agentes (A1–A3) · **[TER]** IA de terceros. |
 
 ### 2.4 Regla de bloqueo
@@ -367,3 +367,4 @@ Un ítem obligatorio sin marcar en LV-AG equivale a *No cumple* en el criterio a
 |---|---|---|
 | 0.1 | 16-09-2026 | Primera versión. Sustituye a las listas de verificación del material anterior: 128 controles binarios en ocho listas por puerta con los códigos del documento 21, lista LV-EV de validación de evidencias (14 controles), lista LV-AG para agentes alineada con T10 (21 controles) e instrucciones para el verificador y el auditor. Ajustes de coherencia con 01 (separación de funciones en Lite, resultados de R6, criterio de agentes) y con 34 y 37. |
 | 0.2 | 01-10-2026 | LV-EV, EV.10: los campos obligatorios pueden estar en una evidencia referenciada con su anexo (21 §4.3). |
+| 0.3 | 01-10-2026 | En intensidad Express se revisan solo los criterios de la lista reducida (21 §2.5). |

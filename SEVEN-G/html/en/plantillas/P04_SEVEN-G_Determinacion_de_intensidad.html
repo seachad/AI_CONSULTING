@@ -468,12 +468,12 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 
 <div id="top"></div>
 <header class="portada">
-  <div class="cabecera"><div class="marca"><i></i>SEVEN-G</div><div class="cabecera-dato">Template P04 · 16-09-2026</div></div>
+  <div class="cabecera"><div class="marca"><i></i>SEVEN-G</div><div class="cabecera-dato">Template P04 · 01-10-2026</div></div>
   <div class="portada-cuerpo">
     <p class="antetitulo">Template P04 &#183; Intensity determination</p>
     <h1>Intensity determination</h1>
     <p class="entradilla">Decides, using eight yes-or-no questions, whether the initiative is governed at Lite or Enterprise intensity, and records the justification.</p>
-    <div class="firma"><span><b>Fernando Garc&#237;a Varela</b></span><span>Version 0.1 (working draft)</span><span>16-09-2026</span><span>Draft for review</span></div>
+    <div class="firma"><span><b>Fernando Garc&#237;a Varela</b></span><span>Version 0.2 (working draft)</span><span>01-10-2026</span><span>Draft for review</span></div>
     
   </div>
 </header>
@@ -742,7 +742,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </table></div>
 <hr />
 <h2 id="result"><span class="antetitulo">05</span>Result</h2>
-<p><strong>Calculation rule:</strong> if at least one answer is &quot;Yes&quot; or &quot;Pending&quot;, the intensity is <strong>Enterprise</strong>. If all are &quot;No&quot;, the intensity is <strong>Lite</strong>.</p>
+<p><strong>Calculation rule:</strong> if at least one answer is &quot;Yes&quot; or &quot;Pending&quot;, the intensity is <strong>Enterprise</strong>. If all are &quot;No&quot;, the intensity is <strong>Lite</strong>, or <strong>Express</strong> if the eligibility in section 5.1 is also met.</p>
 <p>In a spreadsheet: <code>=IF(COUNTIF(answer_range,&quot;No&quot;)=8,&quot;Lite&quot;,&quot;Enterprise&quot;)</code>.</p>
 <div class="tabla"><table>
 <thead>
@@ -766,7 +766,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tr>
 <td><strong>Resulting intensity</strong></td>
 <td></td>
-<td>Lite · Enterprise.</td>
+<td>Express · Lite · Enterprise.</td>
 </tr>
 <tr>
 <td>Criteria that determine it</td>
@@ -786,6 +786,63 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tbody>
 </table></div>
 <p><em>(illustrative example)</em> Assistant for responding to customer queries about orders: criterion 3 &quot;Yes&quot; (customers converse with the assistant); the rest &quot;No&quot;. Resulting intensity: <strong>Enterprise</strong>.</p>
+<h3 id="5-1-eligibility-for-express">5.1 Eligibility for Express</h3>
+<p>Only if all eight Enterprise criteria are &quot;No&quot;. The initiative is <strong>Express</strong> when all six conditions are &quot;Yes&quot; and the risk function (in small companies, the AI Office) confirms it; otherwise it is <strong>Lite</strong> (01 §9.4).</p>
+<div class="tabla"><table>
+<thead>
+<tr>
+<th>No.</th>
+<th>Condition</th>
+<th>Answer (Yes · No · Pending)</th>
+<th>Justification and source</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>E1</td>
+<td>Internal use: no direct exposure to customers or external people.</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>E2</td>
+<td>Reversible within days, with no residual effect.</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>E3</td>
+<td>Autonomy A0 or A1.</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>E4</td>
+<td>No special categories of data or critical confidential information.</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>E5</td>
+<td>Investment plus annual cost below the Express threshold approved in C2.</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>E6</td>
+<td>If an AI supplier is involved, it is already approved (current <a href="P55_SEVEN-G_Cuestionario_de_diligencia_debida_a_proveedores_de_IA.html" title="Template P55 &#183; AI supplier due diligence questionnaire">P55</a>).</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td><strong>Eligibility confirmed by</strong></td>
+<td>Name and role (risk function or AI Office)</td>
+<td>Date</td>
+</tr>
+</tbody>
+</table></div>
+<p>If any condition later ceases to be met or an Enterprise criterion appears, section 7 is completed and the initiative moves to Lite or Enterprise.</p>
 <hr />
 <h2 id="consequences-of-the-intensity"><span class="antetitulo">06</span>Consequences of the intensity</h2>
 <p>Reference: 01 §9.3 and, for verification and decision, 01 §7.5.</p>
@@ -793,6 +850,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <thead>
 <tr>
 <th>Aspect</th>
+<th>Express</th>
 <th>Lite</th>
 <th>Enterprise</th>
 </tr>
@@ -800,36 +858,43 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tbody>
 <tr>
 <td>Gates</td>
+<td>As Lite; G3 separately, may be resolved in writing</td>
 <td>G0–G2 and G4–G5 may be grouped</td>
 <td>All separately</td>
 </tr>
 <tr>
 <td>Evidence</td>
+<td>Living record (<a href="P01_SEVEN-G_Carta_de_la_iniciativa.html" title="Template P01 &#183; Initiative charter">P01</a> §14) and referenced evidence (21 §4.3)</td>
 <td>Simplified templates</td>
 <td>Full templates</td>
 </tr>
 <tr>
 <td>Verification</td>
+<td>AI Office</td>
 <td>AI Office; AI Auditor by sampling</td>
 <td>AI Auditor at all <em>gates</em></td>
 </tr>
 <tr>
 <td>Decision</td>
 <td>Sponsor, with risk clearance at G3, G4 and G5</td>
+<td>Sponsor, with risk clearance at G3, G4 and G5</td>
 <td>AI Committee; board for Transform</td>
 </tr>
 <tr>
 <td>Go-live</td>
 <td>Risk clearance</td>
+<td>Risk clearance</td>
 <td>Multi-level sign-off with veto</td>
 </tr>
 <tr>
 <td>Continuity review</td>
+<td>Annual</td>
 <td>Half-yearly</td>
 <td>Quarterly</td>
 </tr>
 <tr>
 <td>Visibility</td>
+<td>Aggregated board dashboard</td>
 <td>Aggregated board dashboard</td>
 <td>Board dashboard by initiative</td>
 </tr>
@@ -1000,6 +1065,11 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>0.1</td>
 <td>19-09-2026</td>
 <td>Block 7 (change of intensity) is no longer <em>(Enterprise)</em>: it is also completed at Lite, which is when the move to Enterprise is recorded.</td>
+</tr>
+<tr>
+<td>0.2</td>
+<td>01-10-2026</td>
+<td>Express intensity: section 5.1 on eligibility (six conditions and confirmation) and Express column in the consequences.</td>
 </tr>
 </tbody>
 </table></div>

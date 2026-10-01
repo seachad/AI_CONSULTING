@@ -473,7 +473,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
     <p class="antetitulo">Document 21 &#183; Gate and audit criteria</p>
     <h1>Gate and audit criteria</h1>
     <p class="entradilla">What must be met at each decision gate, how it is verified and how it is audited</p>
-    <div class="firma"><span><b>Fernando Garc&#237;a Varela</b></span><span>Version 0.2 (working draft)</span><span>01-10-2026</span><span>Draft for review</span></div>
+    <div class="firma"><span><b>Fernando Garc&#237;a Varela</b></span><span>Version 0.3 (working draft)</span><span>01-10-2026</span><span>Draft for review</span></div>
     <div class="cifras"><div class="cifra"><b>8</b><span>decision gates</span></div><div class="cifra"><b>128</b><span>coded criteria</span></div><div class="cifra"><b>4</b><span>sign-offs with veto at G5</span></div><div class="cifra"><b>3</b><span>audit outcomes</span></div></div>
   </div>
 </header>
@@ -543,7 +543,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 <tr>
 <td><strong>Lite · Enterprise</strong></td>
-<td>Whether it applies at each intensity: <strong>Yes</strong> (in full), <strong>Simpl.</strong> (with a simplified template), <strong>Rec.</strong> (recommended at that intensity) or <strong>—</strong> (not applicable at that intensity).</td>
+<td>Whether it applies at each intensity (Express intensity has no column of its own: its list is set by the rule in section 2.5): <strong>Yes</strong> (in full), <strong>Simpl.</strong> (with a simplified template), <strong>Rec.</strong> (recommended at that intensity) or <strong>—</strong> (not applicable at that intensity).</td>
 </tr>
 <tr>
 <td><strong>Optimise / Augment / Transform</strong></td>
@@ -617,6 +617,14 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </table></div>
 <h3 id="2-4-status-of-each-criterion">2.4 Status of each criterion</h3>
 <p>Each criterion is recorded in <a href="../../herramientas/T01_registro_iniciativas/registro.html#/gates" title="Tool T03 &#183; Gate manager">T03</a> with one of the four statuses in <a href="03_SEVEN-G_Herramientas_y_registro_de_iniciativas.html" title="Document 03 &#183; SEVEN-G tools and initiative register">document 03</a> §3.4: <strong>Met</strong> · <strong>Not met</strong> · <strong>Not applicable</strong> · <strong>Pending</strong>. <em>Not applicable</em> requires a justification, which the verifier validates; an unjustified <em>Not applicable</em> is treated as <em>Not met</em>.</p>
+<h3 id="2-5-criteria-at-express-intensity">2.5 Criteria at Express intensity</h3>
+<p>At Express intensity (01 §9.4) each gate is assessed with a <strong>reduced list</strong> that is not decided case by case but with a fixed rule:</p>
+<ol>
+<li><strong>All &quot;Yes ◆&quot; criteria</strong> that apply to the initiative's profile (security, legal compliance, human oversight): N-08 prevents them from being treated as conditions, so they cannot disappear either.</li>
+<li><strong>The criteria that sustain the core</strong> (01 §14.1): G0.01, G0.05, G0.06, G0.07, G0.08 and G0.09 (record, roles, incompatibilities, intensity, register and no budget before the decision); G1.01 and G1.03 (business need and non-AI alternative); G2.01, G2.03, G2.04, G2.06 and G2.08 (falsifiable hypothesis with baseline, target, value with formula and stop criterion); G3.06, G3.11 and G3.13 (stop criteria in force, risks assessed and plan for High risks); G5.09, G5.11, G5.19 and G5.22 (stop criterion not reached, tested rollback, literacy and conditions closed).</li>
+<li><strong>R6 and G7</strong>: the same criteria as in Lite.</li>
+</ol>
+<p>The other criteria appear in the decision as <em>Not applicable</em>, with the justification &quot;Does not apply at Express intensity (<a href="21_SEVEN-G_Criterios_de_gate_y_auditoria.html" title="Document 21 &#183; Gate and audit criteria">document 21</a>, section 2.5)&quot;. Criteria tagged [GEN], [AG] or [TER] follow section 2.3. The gate manager's catalogue carries this list in its Express column. In the typical initiative of the improvement plan's baseline (an internal generative assistant from an approved supplier), the reduced list goes from 90 to 47 criteria, of which 27 are &quot;Yes ◆&quot;.</p>
 <hr />
 <h2 id="rules-common-to-all-gates"><span class="antetitulo">03</span>Rules common to all gates</h2>
 <h3 id="3-1-dual-validation">3.1 Dual validation</h3>
@@ -657,7 +665,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <h3 id="3-3-meeting-the-criteria-is-necessary-not-sufficient">3.3 Meeting the criteria is necessary, not sufficient</h3>
 <p>All criteria being <em>Met</em> allows <strong>Proceed</strong>, but does not require it. The competent body may decide to <strong>Iterate</strong>, <strong>Pivot</strong> or <strong>Stop</strong> with a recorded reason (for example, a change in strategic priority). Conversely, no body may record <strong>Proceed</strong> with a <em>Yes</em> or <em>Yes ◆</em> criterion that is <em>Not met</em> or <em>Pending</em>.</p>
 <h3 id="3-4-grouped-gates-in-lite">3.4 Grouped gates in Lite</h3>
-<p>At Lite intensity, G0, G1 and G2 may be resolved in a single session, as may G4 and G5 (01 §7.5). Grouping does not merge criteria: each gate keeps its own list, its status per criterion and its section in <a href="plantillas/P29_SEVEN-G_Registro_de_decision_de_gate.html" title="Template P29 &#183; Gate decision record">P29</a>, and each piece of evidence is verified.</p>
+<p>At Lite and Express intensity, G0, G1 and G2 may be resolved in a single session, as may G4 and G5 (01 §7.5). G3 is always separate; at Express it may be resolved in writing, without a session, with the risk clearance recorded (01 §9.4). Grouping does not merge criteria: each gate keeps its own list, its status per criterion and its section in <a href="plantillas/P29_SEVEN-G_Registro_de_decision_de_gate.html" title="Template P29 &#183; Gate decision record">P29</a>, and each piece of evidence is verified.</p>
 <h3 id="3-5-board-decisions-in-transform">3.5 Board decisions in Transform</h3>
 <p>Transform initiatives are always Enterprise (01 §9.2) and require express approval by the board or its board committee at <strong>G2</strong> (authorisation of the bet, criterion G2.12) and at <strong>G7</strong> when the decision is to scale (criterion G7.09). The approval is recorded in <a href="plantillas/P29_SEVEN-G_Registro_de_decision_de_gate.html" title="Template P29 &#183; Gate decision record">P29</a> with a reference to the minutes or to the register of recommendations and decisions (<a href="62_SEVEN-G_Registro_de_recomendaciones_y_decisiones.html" title="Document 62 &#183; Recommendations and decisions register">document 62</a>).</p>
 <hr />
@@ -3194,6 +3202,11 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>0.2</td>
 <td>01-10-2026</td>
 <td>New section 4.3, reference rather than reproduce: evidence the company already has meets the criterion if it covers what is required, with requirements of reference, owner, coverage and validity, and a table of usual equivalences; EV.10 accepts referenced evidence.</td>
+</tr>
+<tr>
+<td>0.3</td>
+<td>01-10-2026</td>
+<td>New section 2.5, criteria at Express intensity (all applicable &quot;Yes ◆&quot; criteria and those that sustain the core; R6 and G7 as Lite); 3.4 includes Express and G3 in writing.</td>
 </tr>
 </tbody>
 </table></div>

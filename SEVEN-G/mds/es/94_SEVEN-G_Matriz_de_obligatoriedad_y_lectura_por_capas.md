@@ -5,7 +5,7 @@
 | | |
 |---|---|
 | Documento | Documento 94 · Matriz de obligatoriedad y lectura por capas |
-| Versión | 0.2 (borrador de trabajo) |
+| Versión | 0.3 (borrador de trabajo) |
 | Fecha | 01-10-2026 |
 | Autor | Fernando García Varela |
 | Estado | Borrador para revisión. Documento de orientación: resume reglas de otros documentos, que prevalecen en caso de discrepancia. Los niveles asignados a documentos y plantillas se validarán con la aplicación práctica. |
@@ -24,7 +24,7 @@ No todas las compañías tienen la misma capacidad de esfuerzo ni la misma expos
 
 Este documento reúne en un solo lugar lo que otros documentos establecen sobre proporcionalidad:
 
-- la **intensidad** de cada iniciativa, Lite o Enterprise (documento 01, sección 9);
+- la **intensidad** de cada iniciativa, Express, Lite o Enterprise (documento 01, sección 9);
 - el **alcance de implantación** de la compañía, Lite o Enterprise, y su ruta mínima (documento 90, sección 2);
 - la **obligatoriedad de cada criterio** de puerta y su aplicación en Lite (documento 21, sección 2);
 - los **ámbitos** que solo aplican a ciertas tecnologías: IA generativa, agentes y terceros (documento 21, sección 2.3).
@@ -135,6 +135,8 @@ Una apuesta de Transformar aislada hace Enterprise a esa iniciativa, pero **no c
 | **6 · Operación → R6** | No | Revisión de continuidad **semestral**. | Revisión **trimestral**. |
 | **7 · Evolución o retirada → G7** | No. Se convoca cuando se propone escalar o retirar, o cuando R6 lo adelanta | Decide el patrocinador. | Decide el comité de IA; el consejo, si se escala una apuesta de Transformar. |
 
+**En intensidad Express** (01 §9.4) las puertas se agrupan como en Lite y G3 sigue por separado, pero puede resolverse por escrito con la conformidad de riesgos registrada; cada puerta se evalúa con la lista reducida de 21 §2.5 (todos los «Sí ◆» que apliquen y los criterios que sostienen el núcleo) y la revisión de continuidad es anual. Si aparece un criterio Enterprise o deja de cumplirse la elegibilidad, la iniciativa pasa a Lite o a Enterprise.
+
 **Tres situaciones que parecen saltos y no lo son:**
 
 - **Sistemas que ya estaban en producción** antes de implantar el marco. No recorren las fases hacia atrás: se sitúan en la fase que acreditan sus evidencias reales y pasan una revisión equivalente a G7, con documentación identificada como de regularización (documento 14, sección 11; documento 90, sección 5).
@@ -200,7 +202,7 @@ Que un documento sea *Siempre* no obliga a leerlo entero: diecinueve documentos 
 
 ### 7.1 Evidencias del ciclo de vida (P01–P31)
 
-**Ninguna evidencia obligatoria se omite en Lite: se simplifica.** Cada plantilla marca con *(Enterprise)* los campos que una iniciativa Lite puede dejar sin rellenar.
+**Ninguna evidencia obligatoria se omite en Lite: se simplifica.** En Express, la ficha viva de P01 reúne la evidencia de las fases 0 a 5 y las evidencias que la compañía ya tiene se referencian (21 §4.3). Cada plantilla marca con *(Enterprise)* los campos que una iniciativa Lite puede dejar sin rellenar.
 
 | Plantillas | Nivel | Nota |
 |---|---|---|
@@ -303,3 +305,4 @@ El [curso de SEVEN-G](curso/M00_SEVEN-G_Curso_Guia_del_curso.html) recorre estos
 |---|---|---|
 | 0.1 | 19-09-2026 | Primera versión. Tres capas de lectura, cinco niveles de obligatoriedad, doce reglas que nunca se omiten, quince disparadores, qué puede agruparse en las fases y puertas, nivel de cada documento, plantilla y herramienta, y lectura mínima por perfil. |
 | 0.2 | 01-10-2026 | La sección 3 pasa a ser el núcleo de SEVEN-G (01 §14.1): catorce reglas con código N-01 a N-14. Nueva sección 2.3: principio, práctica e instrumento, y principio de proporcionalidad. |
+| 0.3 | 01-10-2026 | Intensidad Express en las secciones 1, 5 y 7.1. |

@@ -251,7 +251,7 @@ Orden recomendado: **S0 → S1 → S2 → S3 → S4**, con **S6** intercalable e
 | S0 | **Hecho** ([informe](S0_Linea_base_carga_de_gobierno.md)) | 01-10-2026 | Lista Express: todos los «Sí ◆» + 20 criterios del núcleo (47 en el perfil A, frente a 90) |
 | S1 | **Hecho** | 01-10-2026 | D145: núcleo N-01 a N-14 (01 §14.1, 94 §3, P61), principio 11 de proporcionalidad, 94 §2.3 principio · práctica · instrumento. La clasificación se da por clase (94 §2.3) en lugar de una columna por fila: toda plantilla y herramienta es instrumento y todo documento es práctica con su nivel. |
 | S2 | **Hecho** | 01-10-2026 | D146: 21 §4.3 con requisitos y tabla de equivalencias; EV.10 y LV-EV; T01 `evidencias[].origen` y `sistema_origen` (esquema 0.8, opcionales); 38 §11 auditado contra el núcleo |
-| S3 | Pendiente | | |
+| S3 | **Hecho** | 01-10-2026 | D147: 01 §9.4, 21 §2.5 (todos los «Sí ◆» + 20 del núcleo; 47 frente a 90 en el perfil A), P01 §14 ficha viva, P04 §5.1, columna `x` del catálogo, T01 (T04, lista reducida, alerta «Fuera de Express»), demostración IA-2026-006. No se tocó T23 ni el panel (no usan la intensidad); el filtro por intensidad del panel queda como mejora menor. |
 | S4 | Pendiente | | |
 | S5 | Pendiente | | |
 | S6 | Pendiente | | |

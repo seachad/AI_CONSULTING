@@ -22,7 +22,7 @@
 
 ## 1. Objeto y alcance
 
-La guía de implantación (documento 90) describe **qué** hay que tener y en qué plazo máximo: alcance Lite o Enterprise, requisitos previos, plan de 90 días, regularización de lo existente y hoja de ruta hasta la declaración de aplicación. Pero las compañías no parten del mismo sitio. Una que no tiene ninguna IA en producción y otra que tiene cuarenta modelos predictivos y dos agentes que actúan necesitan **empezar por cosas distintas**, aunque tengan que llegar al mismo lugar.
+La guía de implantación (documento 90) describe **qué** hay que tener y en qué plazo máximo: alcance Lite o Enterprise, requisitos previos, plan de 90 días, regularización de lo existente y hoja de ruta hasta la declaración de aplicación. Pero las compañías no parten del mismo sitio. Una que no tiene ninguna IA en producción y otra que tiene cuarenta modelos predictivos y dos agentes que actúan necesitan **empezar por cosas distintas**, aunque tengan que llegar al mismo lugar. En los arquetipos PP-A y PP-B, muchas de las primeras iniciativas cumplen la elegibilidad de la intensidad Express (01 §9.4), que permite registrarlas y gobernarlas desde el primer día sin un recorrido desproporcionado.
 
 Este documento responde a tres preguntas:
 

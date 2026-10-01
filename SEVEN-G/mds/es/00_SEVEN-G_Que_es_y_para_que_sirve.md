@@ -272,6 +272,7 @@ Las etapas del embudo agrupan las fases del ciclo de vida: **Propuesto** (fases 
 
 | Intensidad | Cuándo se aplica | Qué cambia |
 |---|---|---|
+| **Express** | Iniciativas pequeñas de uso interno, reversibles, con autonomía A0 o A1, sin datos sensibles y por debajo del umbral Express de C2, con elegibilidad confirmada por la función de riesgos. | Las mismas puertas con una lista reducida de criterios —todos los de seguridad, cumplimiento y supervisión humana se mantienen—, una ficha viva en lugar de plantillas y revisión anual; G3 sigue por separado. |
 | **Lite** | Iniciativas de bajo riesgo, uso interno, sin decisiones sobre personas ni exposición a clientes, inversión reducida. | *Gates* agrupados, plantillas simplificadas, decisión del patrocinador con registro y verificación de la oficina de IA. |
 | **Enterprise** | Sistemas de alto riesgo según la regulación, exposición directa a clientes o personas, decisiones automatizadas, agentes con capacidad de actuar, entornos regulados o inversión significativa. | Todos los *gates* y evidencias, auditoría independiente, visibilidad del comité de IA y, cuando proceda, del consejo. |
 

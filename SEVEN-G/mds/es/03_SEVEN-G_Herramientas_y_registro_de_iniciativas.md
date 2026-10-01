@@ -137,7 +137,7 @@ flowchart LR
 |---|---|
 | **Esfera** | 01 Cliente · 02 Producto y servicio · 03 Personas · 04 Operaciones · 05 Datos · 06 Conocimiento · 07 Decisión · 08 Regulación, ética y responsabilidad · 09 Gobierno de la IA |
 | **Nivel de ambición** | Optimizar · Aumentar · Transformar |
-| **Intensidad** | Lite · Enterprise |
+| **Intensidad** | Express · Lite · Enterprise |
 | **Clasificación regulatoria** | Prohibido · Alto riesgo · Obligaciones de transparencia · Riesgo mínimo · Fuera de ámbito · Pendiente de clasificar |
 | **Tecnología** | ML predictivo · IA generativa · Agente · Procesamiento de lenguaje y documentos · Visión · Optimización · IA de terceros embebida · Reglas (no es IA) |
 | **Exposición** | Interna · Empleados · Clientes de forma indirecta · Clientes o personas externas de forma directa |
@@ -267,7 +267,7 @@ El registro T01 es la **fuente de verdad** de la compañía: las demás herramie
 | **T01** | **Registro de iniciativas** | Embudo tipo CRM: fases, estados, eventos, etiquetas, valor y métricas. | Todo el ciclo; C3 y C4 | HTML + JSON; exportación a hoja de cálculo | 01, 02 | 1 | Disponible v0.1 |
 | **T02** | Inventario de sistemas de IA | Registro de todos los sistemas, incluidos los de terceros y el uso corporativo. | C1, fase 0, C4 | Módulo de T01 | 01, 32 | 1 | Disponible v0.1 |
 | **T03** | Gestor de gates | Criterios con estado, evidencias, verificación, decisión y condiciones. | Todos los *gates* | Módulo de T01 | 01, 21, 22 | 1 | Disponible v0.1 (128 criterios del documento 21) |
-| **T04** | Determinación de intensidad | Cuestionario Lite o Enterprise con resultado registrado. | Fase 0, G3, R6 | Módulo de T01 | 01 | 1 | Disponible v0.1 |
+| **T04** | Determinación de intensidad | Cuestionario Express, Lite o Enterprise (criterios Enterprise y elegibilidad Express) con resultado registrado. | Fase 0, G3, R6 | Módulo de T01 | 01 | 1 | Disponible v0.1 |
 | **T05** | Clasificador de ambición | Cinco preguntas para Optimizar, Aumentar o Transformar. | Fases 1, 2 y 7 | Módulo de T01 | 00, 12 | 1 | Disponible v0.1 |
 
 ### 5.2 Riesgo, seguridad y cumplimiento
