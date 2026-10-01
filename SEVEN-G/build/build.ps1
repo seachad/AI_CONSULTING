@@ -539,6 +539,8 @@ $cfg           = $configuracion[$metodologia]
 $root          = Join-Path $repo $metodologia
 $bloquesIndice = $cfg.bloques
 Write-Host "== $metodologia =="
+# crosswalk de cobertura (D149): las tablas del 34 §9.1 se escriben desde crosswalk.json antes de generar
+if ($metodologia -eq 'SEVEN-G') { & (Join-Path $PSScriptRoot 'crosswalk.ps1') }
 # versión editable en Word de las plantillas (D67), antes de los HTML para que la zona de descargas la enlace
 if ($metodologia -eq 'SEVEN-G') { & (Join-Path $PSScriptRoot 'docx.ps1') -Idiomas $Idiomas }
 

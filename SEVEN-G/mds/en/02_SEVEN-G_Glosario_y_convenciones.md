@@ -5,7 +5,7 @@
 | | |
 |---|---|
 | Document | Document 02 · Glossary and conventions |
-| Version | 1.5 |
+| Version | 1.6 |
 | Date | 01-10-2026 |
 | Author | Fernando García Varela |
 | Status | In force. Single source of the framework's terms, scales and codes; it is updated before any other document when a term changes. |
@@ -196,6 +196,7 @@ Alphabetical order by English term. The full scales are in section 4 and the cod
 | **Core (SEVEN-G core)** | Minimum, stable set of fourteen rules (N-01 to N-14) that distinguishes applying SEVEN-G from using some of its templates: inventory, register, intensity, gates, G3 separately, segregation of duties, dual validation, "Yes ◆" criteria, value hypothesis, risks, rollback and continuity, board, measurement and nonconformities. It is the same for every company, intensity and scope, has its own version and only changes by express decision of the author. | 01 §14.1; 94 §3 | Núcleo de SEVEN-G |
 | **Corporate cycle** | Company level of the framework: five annual stages with continuous oversight (C1 Diagnosis, C2 Direction, C3 Portfolio, C4 Oversight, C5 Review) through which the board and senior management govern AI. | 01 §5 | Ciclo corporativo |
 | **Corporate use of general-purpose AI** | AI assistants and productivity suites used by employees. It is governed with the inventory, the acceptable use policy, training and technical controls, and moves to the full lifecycle if it meets any Enterprise criterion. | 01 §1.2; 31 §5 | Uso corporativo de IA de propósito general |
+| **Coverage crosswalk** | Table showing, for each requirement of a standard or regulation (ISO/IEC 42001, 38507, 23894, 42005, NIST AI RMF, EU AI Act), where SEVEN-G covers it, with which core rule and which evidence, and its coverage: direct, partial, requires external control or not covered. It is generated from a versioned data file; it is not a certification or a declaration of conformity. | 34 §9.1 | crosswalk de cobertura |
 | **Critical control** | Security, legal compliance or human oversight control that does not admit Proceed with conditions: the *Yes ◆* criteria in document 21 and the critical agent controls by autonomy level in document 35. Not designed, it blocks G4; not tested, it blocks G5; disabled in production, it is a critical nonconformity. | 01 §7.3; 21 §2.2; 35 §5.4 | Control crítico |
 | **Critical function** | Enterprise criterion: the system supports a critical or important business function, or one subject to sector-specific operational resilience regulation. | 01 §9.2; 36 §4.1 | Función crítica |
 | **Current profile · target profile** | In the NIST CSF and the NIST AI RMF, the **current profile** describes the outcomes (subcategories) that the organisation achieves today and the **target profile**, those it wants to achieve, prioritised. The difference between them is the gap that becomes an action plan. SEVEN-G expresses the degree of each outcome with the 0–5 maturity scale (section 4.9), not with *tiers*. | 34 §5.3 | Perfil actual · perfil objetivo |
@@ -1031,6 +1032,7 @@ Tools display the values of closed lists in Spanish and English using the equiva
 
 | Version | Date | Changes |
 |---|---|---|
+| 1.6 | 01-10-2026 | Adds "coverage crosswalk". |
 | 1.5 | 01-10-2026 | Catalogue indicators: 162. |
 | 1.4 | 01-10-2026 | Adds Express intensity (scale 4.6, term and taxonomy) and the living record. |
 | 1.3 | 01-10-2026 | Adds SEVEN-G core (N-01 to N-14), mandatory principle · practice · instrument and proportionality (principle 11); principles become 1–11. |

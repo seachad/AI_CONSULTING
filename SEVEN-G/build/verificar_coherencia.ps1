@@ -88,6 +88,8 @@
         completa y confirmada; T01 aplica la lista reducida, la determina con T04 y avisa si deja de ser elegible.
     40. Coste del propio gobierno (D148): IND-COS-12 a 14 en el 41 (ES/EN) y el total de la tabla de familias igual al número de
         indicadores; horas_gobierno y coste_hora_gobierno en el esquema de T01; la ficha de T01 y la tarjeta del panel lo muestran.
+    41. Crosswalk de cobertura (D149): el 34 §9.1 (ES/EN) coincide con crosswalk.json (crosswalk.ps1 -Comprobar), cada norma
+        del crosswalk está en el registro de referencias, toda cobertura distinta de «directa» lleva nota y el 34 lo publica.
 #>
 param([switch]$SinNavegador)
 $ErrorActionPreference = 'Stop'
@@ -1748,6 +1750,20 @@ try {
   if (-not ($mot.Contains('function renderGobierno(') -and $mot.Contains('data-ayuda="gobierno"'))) { Mal 'motor del panel: falta la tarjeta «Coste del gobierno» (D148)'; $mal40++ }
   if (-not [IO.File]::ReadAllText((Join-Path $repo 'SEVEN-G\herramientas\T01_registro_iniciativas\_fuentes\registro.plantilla.html')).Contains('function bloqueGobierno(')) { Mal 'T01: falta el bloque del coste del gobierno en la ficha (D148)'; $mal40++ }
   if (-not $mal40) { Ok "IND-COS-12 a 14 en el 41 (ES/EN) con el recuento de familias al día; horas de gobierno en el esquema y la ficha de T01; tarjeta «Coste del gobierno» en el panel de ejemplo" }
+  # ---- 41. crosswalk de cobertura (D149)
+  Write-Host '41. Crosswalk de cobertura con normas y regulación (D149)'
+  $mal41 = 0
+  & pwsh -NoProfile -File (Join-Path $PSScriptRoot 'crosswalk.ps1') -Comprobar | Out-Null
+  if ($LASTEXITCODE -ne 0) { Mal 'el 34 §9.1 no coincide con crosswalk.json (ejecutar crosswalk.ps1 y regenerar) (D149)'; $mal41++ }
+  $cw = Get-Content (Join-Path $PSScriptRoot 'crosswalk\crosswalk.json') -Raw -Encoding utf8 | ConvertFrom-Json
+  $idsRef = @(Get-ChildItem (Join-Path $PSScriptRoot 'referencias') -Filter 'g*.json' | ForEach-Object { Get-Content $_.FullName -Raw -Encoding utf8 | ConvertFrom-Json } | ForEach-Object { $_ } | ForEach-Object id)
+  foreach ($n in $cw.normas) { if ($idsRef -notcontains $n.referencia) { Mal "crosswalk: la norma $($n.id) no está en el registro de referencias ($($n.referencia)) (D41, D149)"; $mal41++ } }
+  foreach ($f in $cw.filas) { if ($f.cobertura -ne 'directa' -and -not ($f.nota.es -and $f.nota.en)) { Mal "crosswalk: $($f.norma) $($f.ref) sin nota (D149)"; $mal41++ } }
+  foreach ($lg in 'es', 'en') {
+    $h34 = Get-ChildItem (Join-Path $repo "SEVEN-G\html\$lg") -Filter '34_SEVEN-G_*.html' | Select-Object -First 1
+    if (-not ($h34 -and [IO.File]::ReadAllText($h34.FullName).Contains('crosswalk.json'))) { Mal "$lg 34: el HTML no publica el crosswalk (regenerar) (D149)"; $mal41++ }
+  }
+  if (-not $mal41) { Ok "crosswalk: $(@($cw.filas).Count) filas de $(@($cw.normas).Count) normas, 34 §9.1 al día en ES y EN, normas en el registro de referencias" }
 }
 finally { Remove-Item $tmp -Recurse -Force -Confirm:$false -ErrorAction SilentlyContinue }
 
