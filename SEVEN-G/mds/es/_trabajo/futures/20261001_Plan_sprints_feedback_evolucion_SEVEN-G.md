@@ -249,7 +249,7 @@ Orden recomendado: **S0 → S1 → S2 → S3 → S4**, con **S6** intercalable e
 | Sprint | Estado | Sesión / fecha | Decisiones registradas |
 |---|---|---|---|
 | S0 | **Hecho** ([informe](S0_Linea_base_carga_de_gobierno.md)) | 01-10-2026 | Lista Express: todos los «Sí ◆» + 20 criterios del núcleo (47 en el perfil A, frente a 90) |
-| S1 | Pendiente | | |
+| S1 | **Hecho** | 01-10-2026 | D145: núcleo N-01 a N-14 (01 §14.1, 94 §3, P61), principio 11 de proporcionalidad, 94 §2.3 principio · práctica · instrumento. La clasificación se da por clase (94 §2.3) en lugar de una columna por fila: toda plantilla y herramienta es instrumento y todo documento es práctica con su nivel. |
 | S2 | Pendiente | | |
 | S3 | Pendiente | | |
 | S4 | Pendiente | | |

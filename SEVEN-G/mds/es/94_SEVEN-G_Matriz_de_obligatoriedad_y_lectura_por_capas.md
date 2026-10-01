@@ -5,8 +5,8 @@
 | | |
 |---|---|
 | Documento | Documento 94 · Matriz de obligatoriedad y lectura por capas |
-| Versión | 0.1 (borrador de trabajo) |
-| Fecha | 19-09-2026 |
+| Versión | 0.2 (borrador de trabajo) |
+| Fecha | 01-10-2026 |
 | Autor | Fernando García Varela |
 | Estado | Borrador para revisión. Documento de orientación: resume reglas de otros documentos, que prevalecen en caso de discrepancia. Los niveles asignados a documentos y plantillas se validarán con la aplicación práctica. |
 
@@ -59,26 +59,40 @@ Una compañía mediana con iniciativas Lite trabaja en la capa 1 y entra en la c
 
 El nivel de un documento indica **cuándo hay que aplicar lo que regula**, no que deba leerse entero: su recuadro «Lo esencial» dice qué parte es la mínima.
 
+### 2.3 Principio, práctica e instrumento
+
+La biblioteca distingue tres clases de contenido, para que el núcleo sea pequeño y estable y lo demás pueda evolucionar sin cambiar lo que se exige:
+
+| Clase | Qué es | Dónde está | Qué se exige |
+|---|---|---|---|
+| **Principio obligatorio** | Condición necesaria para decir que se aplica SEVEN-G: las catorce reglas del núcleo (N-01 a N-14). | Documento 01, sección 14.1; sección 3 de este documento | Se cumple siempre, en toda compañía e iniciativa. |
+| **Práctica** | Forma de cumplir el núcleo: criterios de puerta, reglas de medición, procedimientos de riesgo, operación, auditoría… Es **obligatoria** cuando su nivel es *Siempre*, *Enterprise* o *Condicional* y se da su condición, y **recomendada** en los niveles *Recomendado* y *Consulta*. | Documentos numerados (sección 6) | Lo que dice su nivel. |
+| **Instrumento** | Plantilla o herramienta que facilita la práctica. **Lo obligatorio es la evidencia que ordena, no su formato**: una evidencia que la compañía ya tiene (un caso de negocio, una evaluación de impacto, un contrato) sirve si cubre lo que pide el criterio (documento 21, sección 4). | Plantillas (sección 7) y herramientas (sección 8) | Que la evidencia exista y se pueda verificar. |
+
+El principio 11 de 01 §3, **proporcionalidad**, gobierna cómo se aplica todo lo que no es núcleo: ninguna evidencia se pide dos veces, ninguna decisión necesita más participantes de los que exige la separación de funciones y ninguna iniciativa soporta un coste de gobierno desproporcionado a su riesgo y materialidad.
+
 ---
 
 ## 3. Lo que nunca se omite
 
-Estas doce reglas valen para cualquier compañía, con cualquier alcance y en cualquier iniciativa. Son las que distinguen aplicar SEVEN-G de usar algunas de sus plantillas.
+Estas catorce reglas son el **núcleo de SEVEN-G** (documento 01, sección 14.1): valen para cualquier compañía, con cualquier alcance y en cualquier iniciativa, y son las que distinguen aplicar SEVEN-G de usar algunas de sus plantillas. Se repiten aquí para tenerlas a mano; si difieren, prevalece el documento 01.
 
-| # | Regla | Origen |
+| Código | Regla | Origen |
 |---|---|---|
-| 1 | **Inventario completo** de los sistemas de IA —propios, de terceros, de uso corporativo y no autorizados— con responsable. | documento 32; documento 90, sección 2.4 |
-| 2 | **Toda iniciativa se registra** antes de consumir presupuesto, con sus fechas por fase, decisiones, criterios y motivo de cierre. | documento 01, sección 6.11; documento 03 |
-| 3 | **La intensidad se determina en cada iniciativa** en la fase 0 y se revisa en G3 y en cada R6. Basta un criterio Enterprise. | documento 01, sección 9 |
-| 4 | **Ninguna fase ni puerta se salta.** En Lite pueden agruparse en una sesión; cada puerta conserva sus criterios y su registro. | documento 21, sección 3.4 |
-| 5 | **G3 se decide siempre por separado**: es la principal puerta de parada. | documento 01, sección 6.1; documento 90, sección 2.4 |
-| 6 | **Separación de funciones**: quien construye no verifica ni decide su propio trabajo, y la conformidad de riesgos es independiente del equipo. | documento 01, sección 8; documento 30 |
-| 7 | **Validación dual y evidencia anterior a la decisión**: sin evidencia verificada no hay decisión. | documento 21, secciones 3 y 4 |
-| 8 | **Los criterios «Sí ◆»** (seguridad, cumplimiento legal, supervisión humana) nunca se admiten como condición. | documento 21, sección 2.2 |
-| 9 | **Hipótesis de valor con línea base y criterios de parada** antes de invertir en viabilidad, y reglas de medición en todas las cifras. | documento 01, sección 6; documento 40 |
-| 10 | **Clasificación regulatoria y registro de riesgos** antes de diseñar; un riesgo residual Crítico sin aprobación del consejo bloquea G3 y G5. | documento 32; documento 33 |
-| 11 | **Plan de reversión probado y revisión de continuidad vigente** en todo lo que está en producción. | documento 52 |
-| 12 | **El consejo aprueba la dirección y el apetito de riesgo (C2)**, recibe información de IA al menos trimestral y aprueba las apuestas de Transformar. | documento 01, sección 5; documento 13 |
+| **N-01** | **Inventario completo** de los sistemas de IA —propios, de terceros, de uso corporativo y no autorizados— con responsable, clasificación regulatoria e intensidad. | documento 32; documento 90, sección 2.4 |
+| **N-02** | **Toda iniciativa se registra** antes de consumir presupuesto, con sus fechas por fase, decisiones, criterios y motivo de cierre (trazabilidad de 01 §6.11). | documento 01, sección 6.11; documento 03 |
+| **N-03** | **La intensidad se determina en cada iniciativa** en la fase 0 y se revisa en G3 y en cada R6. Basta un criterio Enterprise. | documento 01, sección 9 |
+| **N-04** | **Ninguna fase ni puerta se salta**: toda iniciativa pasa por todas las puertas de su ciclo de vida y cada una queda registrada con sus criterios y su resultado. Qué criterios se evalúan y qué sesiones pueden agruparse depende de la intensidad. | documento 01, secciones 7 y 9; documento 21, sección 3.4 |
+| **N-05** | **G3 se decide siempre por separado**: es la principal puerta de parada. | documento 01, sección 6.1; documento 90, sección 2.4 |
+| **N-06** | **Separación de funciones**: roles y órganos asignados con las incompatibilidades de 01 §8.2; quien construye no verifica ni decide su propio trabajo, y la conformidad de riesgos es independiente del equipo. | documento 01, sección 8; documento 30 |
+| **N-07** | **Validación dual y evidencia anterior a la decisión**: sin evidencia verificada no hay decisión. | documento 01, sección 7.2; documento 21, secciones 3 y 4 |
+| **N-08** | **Los criterios «Sí ◆»** (seguridad, cumplimiento legal, supervisión humana) nunca se admiten como condición. | documento 21, sección 2.2 |
+| **N-09** | **Hipótesis de valor con línea base y criterios de parada** antes de invertir en viabilidad. | documento 01, sección 6.4; documento 40 |
+| **N-10** | **Clasificación regulatoria y registro de riesgos** antes de diseñar; un riesgo residual Crítico sin aprobación del consejo bloquea G3 y G5. | documento 32; documento 33 |
+| **N-11** | **Plan de reversión probado y revisión de continuidad vigente** en todo lo que está en producción; lo que ya estaba en producción al adoptar el marco se regulariza en el plazo aprobado en C2, con una revisión equivalente a G7. | documento 01, sección 6.8; documento 52; documento 14, sección 11 |
+| **N-12** | **El consejo aprueba en C2**, tras el diagnóstico de C1, la tesis de IA, la ambición por esfera y el apetito de riesgo; recibe información de IA al menos trimestral y aprueba las apuestas de Transformar. | documento 01, sección 5; documento 13 |
+| **N-13** | **Las cifras de valor y coste siguen las reglas de medición** y se informan al consejo con el panel de supervisión. | documento 01, sección 11; documento 40; documento 60 |
+| **N-14** | **Las no conformidades se gestionan** con el proceso de 01 §12. | documento 01, sección 12; documento 37 |
 
 ---
 
@@ -288,3 +302,4 @@ El [curso de SEVEN-G](curso/M00_SEVEN-G_Curso_Guia_del_curso.html) recorre estos
 | Versión | Fecha | Cambios |
 |---|---|---|
 | 0.1 | 19-09-2026 | Primera versión. Tres capas de lectura, cinco niveles de obligatoriedad, doce reglas que nunca se omiten, quince disparadores, qué puede agruparse en las fases y puertas, nivel de cada documento, plantilla y herramienta, y lectura mínima por perfil. |
+| 0.2 | 01-10-2026 | La sección 3 pasa a ser el núcleo de SEVEN-G (01 §14.1): catorce reglas con código N-01 a N-14. Nueva sección 2.3: principio, práctica e instrumento, y principio de proporcionalidad. |

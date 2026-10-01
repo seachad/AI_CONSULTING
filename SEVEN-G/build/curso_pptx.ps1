@@ -92,9 +92,17 @@ $parr
 $script:IMAGENES = @{}
 function Registrar-Imagen([string]$clave, [string]$ruta) {
   if (-not (Test-Path $ruta)) { throw "Falta la imagen del curso: $ruta" }
-  $img = [System.Drawing.Image]::FromFile($ruta)
-  $script:IMAGENES[$clave] = [pscustomobject]@{ ruta = $ruta; ancho = $img.Width; alto = $img.Height }
-  $img.Dispose()
+  # PNG: ancho y alto en la cabecera (bytes 16–23), sin System.Drawing, que no existe en Linux (D125); otros formatos, con System.Drawing
+  $b = [IO.File]::ReadAllBytes($ruta)
+  if ($b.Length -gt 24 -and $b[1] -eq 0x50 -and $b[2] -eq 0x4E -and $b[3] -eq 0x47) {
+    $an = ([int]$b[16] -shl 24) -bor ([int]$b[17] -shl 16) -bor ([int]$b[18] -shl 8) -bor [int]$b[19]
+    $al = ([int]$b[20] -shl 24) -bor ([int]$b[21] -shl 16) -bor ([int]$b[22] -shl 8) -bor [int]$b[23]
+    $script:IMAGENES[$clave] = [pscustomobject]@{ ruta = $ruta; ancho = $an; alto = $al }
+  } else {
+    $img = [System.Drawing.Image]::FromFile($ruta)
+    $script:IMAGENES[$clave] = [pscustomobject]@{ ruta = $ruta; ancho = $img.Width; alto = $img.Height }
+    $img.Dispose()
+  }
 }
 # coloca la imagen dentro de la caja (x, y, cx, cy) conservando su proporción, alineada arriba a la izquierda
 function Imagen([string]$clave, [int]$x, [int]$y, [int]$cx, [int]$cy, [string]$descr) {

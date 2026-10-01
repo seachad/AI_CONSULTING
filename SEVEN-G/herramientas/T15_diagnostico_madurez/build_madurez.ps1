@@ -396,7 +396,8 @@ setTimeout(function(){ try{
   $pagina = $html.Replace('<script type="application/json" id="cuestionario">', '<script>window.T15_USAR_T01_INCRUSTADO=true;</script><script type="application/json" id="cuestionario">').Replace('</body>', "<script>$js</script></body>")
   $perfil = Join-Path ([IO.Path]::GetTempPath()) ('t15_edge_' + [Guid]::NewGuid().ToString('N').Substring(0, 8))
   $puerto = Get-Random -Minimum 20000 -Maximum 40000
-  $http = [System.Net.HttpListener]::new(); $http.Prefixes.Add("http://localhost:$puerto/"); $http.Start()
+  # si el puerto elegido al azar está ocupado, se prueba con otro
+  for ($intento = 0; ; $intento++) { $http = [System.Net.HttpListener]::new(); $http.Prefixes.Add("http://localhost:$puerto/"); try { $http.Start(); break } catch { $http.Close(); if ($intento -ge 9) { throw }; $puerto = Get-Random -Minimum 20000 -Maximum 40000 } }
   $sinVentana = if ($IsWindows) { @{ WindowStyle = 'Hidden' } } else { @{} }  # -WindowStyle solo existe en Windows
   $proc = Start-Process -FilePath $edge -ArgumentList '--headless=new', '--disable-gpu', '--no-first-run', "--user-data-dir=$perfil", '--virtual-time-budget=6000', "http://localhost:$puerto/?lang=es" -PassThru @sinVentana
   $res = $null; $limite = (Get-Date).AddSeconds(45)

@@ -37,7 +37,7 @@ By the end you will be able to choose your company's implementation scope, disti
 
 | Step | What to open | What to look at |
 |---|---|---|
-| 1 | document 94, sections 2 and 3 | The three layers, the five levels and the twelve rules that are never omitted. |
+| 1 | document 94, sections 2 and 3 | The three layers, the five levels, the fourteen-rule core that is never omitted (N-01 to N-14) and the difference between principle, practice and instrument. |
 | 2 | document 94, section 4 | The triggers: which ones occur in your company? |
 | 3 | document 01, section 9 | The Enterprise criteria of an initiative. |
 | 4 | document 90, section 2 | Company Lite or Enterprise scope and minimum path in Lite. |
