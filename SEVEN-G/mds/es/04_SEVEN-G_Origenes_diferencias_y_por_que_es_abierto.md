@@ -5,8 +5,8 @@
 | | |
 |---|---|
 | Documento | Documento 04 · Orígenes, diferencias y apertura |
-| Versión | 0.1 (borrador de trabajo) |
-| Fecha | 19-09-2026 |
+| Versión | 0.2 (borrador de trabajo) |
+| Fecha | 01-10-2026 |
 | Autor | Fernando García Varela |
 | Estado | Borrador para revisión. Documento explicativo: no añade reglas al marco. |
 
@@ -157,6 +157,23 @@ La compañía aprueba en C2 los **plazos de referencia por fase** y los recalibr
 9. **Es compatible y modular**: convive con los marcos y órganos que la compañía ya tiene y puede adoptarse por componentes.
 10. **Es abierto**: se puede usar, adaptar y redistribuir sin pedir permiso ni pagar (sección 6).
 
+### 5.1 Frente a los estándares: SEVEN-G como modelo operativo de IA
+
+Los estándares dicen qué debe existir; SEVEN-G es la capa operativa que lo hace funcionar iniciativa a iniciativa y cartera a cartera, con disciplina de inversión y valor. La tabla resume qué aporta cada referencia y qué añade el marco; el detalle, requisito a requisito y con su cobertura, está en el crosswalk del documento 34 (sección 9.1).
+
+| Referencia | Qué aporta | Qué añade SEVEN-G |
+|---|---|---|
+| **ISO/IEC 42001** | Los requisitos de un sistema de gestión de la IA, certificable por una entidad acreditada. | El ciclo de vida de cada iniciativa con puertas y criterios verificables, la cartera como embudo, la medición del valor con estado y el paquete para el consejo; las evidencias que pide una auditoría ya quedan preparadas (P74). |
+| **ISO/IEC 38507** | Las responsabilidades del órgano de gobierno sobre el uso de la IA. | Qué decide el consejo y cuándo (G2 y G7 de Transformar), con qué información (panel y paquete trimestral) y dónde queda lo decidido (registro de decisiones y recomendaciones). |
+| **ISO/IEC 23894** | El proceso de gestión del riesgo de la IA. | Una escala común de 5 × 5, setenta y un riesgos tipo, la aceptación por el órgano de su nivel y la conexión con las puertas: sin riesgos valorados no se pasa G3. |
+| **ISO/IEC 42005** | Cómo evaluar el impacto de un sistema de IA en personas y en la sociedad. | Cuándo se exige (criterios Enterprise y clasificación regulatoria), con qué plantilla y en qué puerta se verifica. |
+| **NIST AI RMF** | Funciones y resultados de una gestión del riesgo fiable (GOVERN, MAP, MEASURE, MANAGE). | Los perfiles actual y objetivo derivados del mismo cuestionario de madurez, sin una evaluación aparte (P73). |
+| **Reglamento Europeo de IA** | Obligaciones legales según el rol y el nivel de riesgo. | Cada obligación vinculada a una fase, un rol, una evidencia y una herramienta (documento 34). |
+
+> **Por qué importa.** Quien ya trabaja con una norma no busca otra que la sustituya, sino cómo ponerla en marcha sin duplicar trabajo. Decir con precisión qué cubre SEVEN-G, y qué no, evita dos errores caros: creer que el marco certifica y creer que hay que elegir entre el marco y la norma.
+
+Lo que SEVEN-G no es: una alternativa a ISO/IEC 42001, una certificación ni algo equivalente a ella, ni una garantía de cumplimiento del Reglamento Europeo de IA (documentos 91 y 93).
+
 ---
 
 ## 6. Por qué es gratuito y de libre distribución
@@ -240,3 +257,4 @@ No es necesario contactar ni pedir permiso para ningún uso que cumpla la licenc
 | Versión | Fecha | Cambios |
 |---|---|---|
 | 0.1 | 19-09-2026 | Primera versión. Origen práctico del marco, carencias de los enfoques habituales que corrige, disciplinas de gestión que reúne, la cartera como embudo comercial y sus diferencias, motivos de la licencia abierta, control que conserva el autor y contacto. |
+| 0.2 | 01-10-2026 | Sección 5.1: frente a los estándares, SEVEN-G como modelo operativo de IA; qué aporta cada referencia y qué añade el marco, con remisión al crosswalk del documento 34 (D151). |

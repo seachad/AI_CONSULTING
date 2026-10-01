@@ -92,6 +92,8 @@
         del crosswalk está en el registro de referencias, toda cobertura distinta de «directa» lleva nota y el 34 lo publica.
     42. Tres perspectivas del caso (D150): regla de presentación 11 del 40 (ES/EN); resultado_operativo en el esquema de T01 y en la
         demostración; bloque en la ficha de valor de T01 y en la ficha del caso del panel de ejemplo; campo del resumen del 60.
+    43. Posicionamiento como modelo operativo (D151): 04 §5.1 (ES/EN) con las seis referencias y remisión al crosswalk; párrafo del
+        inicio rápido del 00; filas del 91 contra «alternativa a ISO/IEC 42001»; entrada (fuente) con enlace al crosswalk; portada.
 #>
 param([switch]$SinNavegador)
 $ErrorActionPreference = 'Stop'
@@ -1784,6 +1786,24 @@ try {
   $pd42 = Get-Content (Join-Path $repo 'SEVEN-G\herramientas\T17_panel_consejo\ejemplo\salida\t01_dashboard_data.json') -Raw -Encoding utf8 | ConvertFrom-Json -Depth 64
   if (-not ($pd42.casos | Where-Object { @($_.seveng.perspectivas.resultado_operativo).Count -gt 0 })) { Mal 'panel de ejemplo: ningún caso con resultado operativo (regenerar con t01_a_panel.py) (D150)'; $mal42++ }
   if (-not $mal42) { Ok "tres perspectivas: regla 11 del 40 y resumen del 60 (ES/EN), resultado_operativo en el esquema y la demostración, ficha de valor de T01 y ficha del caso del panel" }
+  # ---- 43. posicionamiento como modelo operativo (D151)
+  Write-Host '43. Posicionamiento: los estándares dicen qué debe existir; SEVEN-G lo hace funcionar (D151)'
+  $mal43 = 0
+  $txt43 = @{ es = @('### 5.1 Frente a los estándares', '**Qué es frente a los estándares.**', 'Alternativa a ISO/IEC 42001', 'capa operativa que lo hace funcionar', '#9-1-crosswalk-de-cobertura');
+              en = @('### 5.1 Compared with the standards', '**What it is compared with the standards.**', 'Alternative to ISO/IEC 42001', 'operating layer that makes it work', '#9-1-coverage-crosswalk') }
+  foreach ($lg in 'es', 'en') {
+    $md = Join-Path $repo "SEVEN-G\mds\$lg"
+    $d04 = [IO.File]::ReadAllText((Get-ChildItem $md -Filter '04_SEVEN-G_*.md').FullName)
+    if (-not $d04.Contains($txt43[$lg][0])) { Mal "$lg 04: falta la sección 5.1 (D151)"; $mal43++ }
+    foreach ($ref in 'ISO/IEC 42001', 'ISO/IEC 38507', 'ISO/IEC 23894', 'ISO/IEC 42005', 'NIST AI RMF') { if (-not $d04.Contains("| **$ref** |")) { Mal "$lg 04 §5.1: falta $ref (D151)"; $mal43++ } }
+    if (-not [IO.File]::ReadAllText((Get-ChildItem $md -Filter '00_SEVEN-G_*.md').FullName).Contains($txt43[$lg][1])) { Mal "$lg 00: falta el posicionamiento en el inicio rápido (D151)"; $mal43++ }
+    if (-not [IO.File]::ReadAllText((Get-ChildItem $md -Filter '91_SEVEN-G_*.md').FullName).Contains($txt43[$lg][2])) { Mal "$lg 91: falta la expresión a evitar sobre ISO/IEC 42001 (D151)"; $mal43++ }
+    $ent = [IO.File]::ReadAllText((Join-Path $repo "SEVEN-G\build\entrada\$lg\index.html"))
+    if (-not ($ent.Contains($txt43[$lg][3]) -and $ent.Contains($txt43[$lg][4]))) { Mal "$lg entrada: falta el posicionamiento con enlace al crosswalk (D151)"; $mal43++ }
+    $por = [IO.File]::ReadAllText((Join-Path $repo $(if ($lg -eq 'es') { 'index.html' } else { 'en\index.html' })))
+    if (-not $por.Contains($txt43[$lg][3])) { Mal "$lg portada: falta el posicionamiento (D151)"; $mal43++ }
+  }
+  if (-not $mal43) { Ok "posicionamiento como modelo operativo en 04 §5.1, 00, 91, entrada y portada (ES/EN)" }
 }
 finally { Remove-Item $tmp -Recurse -Force -Confirm:$false -ErrorAction SilentlyContinue }
 

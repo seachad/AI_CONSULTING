@@ -5,8 +5,8 @@
 | | |
 |---|---|
 | Documento | Documento 91 · Guía para consultores y modelos de acompañamiento |
-| Versión | 0.1 (borrador de trabajo) |
-| Fecha | 16-09-2026 |
+| Versión | 0.2 (borrador de trabajo) |
+| Fecha | 01-10-2026 |
 | Autor | Fernando García Varela |
 | Estado | Borrador para revisión. En esta versión no existe certificación oficial de SEVEN-G. |
 
@@ -214,6 +214,7 @@ Al inicio de todo servicio M3 o M4, y cuando cambie la situación, el tercero en
 | "Cumplimiento del Reglamento de IA garantizado por SEVEN-G" | El marco mapea obligaciones; no garantiza su cumplimiento. |
 | "El cliente cumple la regulación según SEVEN-G" o cualquier declaración o certificación del cumplimiento regulatorio de un cliente en nombre de SEVEN-G o del autor | El consultor no puede declarar ni certificar el cumplimiento regulatorio de un cliente en nombre de SEVEN-G ni del autor: esa responsabilidad es de la organización y, en su caso, del profesional que la asume con su propia firma. Debe trasladar el aviso legal de SEVEN-G a sus entregables (documento 93, sección 11). |
 | "SEVEN-G" aplicado a un servicio que omite reglas esenciales sin declararlo | Induce a error sobre el contenido del servicio. |
+| "Alternativa a ISO/IEC 42001", "equivalente a una certificación" o "cumple ISO/IEC 42001 por aplicar SEVEN-G" | SEVEN-G es una capa operativa que ayuda a poner en marcha lo que piden las normas, no las sustituye ni certifica; lo que cubre y lo que no está en el crosswalk del documento 34 (sección 9.1). Decir en su lugar: "Modelo operativo que ayuda a implantar lo que pide ISO/IEC 42001; la certificación la emite una entidad acreditada." |
 
 ### 6.3 La declaración de aplicación no es una certificación
 
@@ -288,6 +289,7 @@ Al terminar cualquier modelo, el tercero entrega: registros y datos en formato a
 | "Implantación en X semanas" sin diagnóstico | El plazo depende del punto de partida. | "Primera implantación de referencia en noventa días, a confirmar tras el diagnóstico." |
 | "Método validado por el autor" o "certificado por el autor" | La licencia no permite sugerir respaldo. | "Basado en SEVEN-G, marco de Fernando García Varela, CC BY 4.0." |
 | "Con SEVEN-G no hará falta auditoría" | El marco exige verificación independiente. | "SEVEN-G facilita la auditoría porque deja las evidencias preparadas." |
+| "SEVEN-G sustituye a ISO/IEC 42001" o "con SEVEN-G ya tiene la certificación" | Son cosas distintas: la norma dice qué debe existir y se certifica; SEVEN-G lo hace funcionar en cada iniciativa y no certifica (D25). | "Los estándares dicen qué debe existir; SEVEN-G es la capa operativa que lo hace funcionar, iniciativa a iniciativa, y deja preparada la evidencia; el crosswalk del documento 34 dice qué cubre y qué no." |
 
 ---
 
@@ -340,3 +342,4 @@ Al terminar cualquier modelo, el tercero entrega: registros y datos en formato a
 | Versión | Fecha | Cambios |
 |---|---|---|
 | 0.1 | 16-09-2026 | Primera versión. Sustituye la guía de *engagement* anterior, que usaba otro modelo de fases, tarifas y resultados no demostrables. Define el uso del marco por terceros, cinco modelos de acompañamiento, las reglas de independencia, el uso del nombre sin certificación, los compromisos de calidad y lo que no se debe prometer. |
+| 0.2 | 01-10-2026 | Posicionamiento frente a los estándares: en §6.2 y §8, no presentar SEVEN-G como alternativa a ISO/IEC 42001 ni como equivalente a una certificación, con la expresión adecuada y remisión al crosswalk del documento 34 (D151). |
