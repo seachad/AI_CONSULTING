@@ -3,7 +3,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
 <style>
-  /* Layout: estándar de informes de sesión (el de GEMA): barra fija con pestañas Resumen · Qué falta y selector de tema; cabecera con anillo de avance; una vía vertical de pasos. Color: verde = hecho, ámbar = te toca, violeta = lo hace Claude, rosa = terceros. */
+  /* Estándar de informe de sesión (el de GEMA): barra fija con pestañas Resumen · Qué falta y tema; anillo de avance; vía vertical de pasos. Verde = hecho, ámbar = te toca, violeta = Claude, rosa = terceros. */
   :root {
     --bg: #eef2f5; --surface: #ffffff; --surface2: #f5f8fa; --ink: #14202c; --muted: #566676; --line: #d5dde5;
     --accent: #0a7c76; --accent-soft: #d8f0ee; --turn: #a8570a; --turn-soft: #fde9cf;
@@ -140,6 +140,35 @@
   .tests div { background: var(--surface); border: 1px solid var(--line); border-radius: 10px; padding: 10px 14px; }
   @media (max-width: 560px) { .tl li { grid-template-columns: 1fr; } }
   @media (prefers-reduced-motion: reduce) { .ring .bar { transition: none; } }
+
+  /* Conversación con Claude desde el informe */
+  .claude-box { background: var(--surface); border: 1px solid var(--line); border-radius: 14px; padding: 14px 16px; margin: 0 0 8px; display: grid; gap: 10px; }
+  .claude-box h2 { font-size: 1.1rem; display: flex; gap: 10px; align-items: baseline; flex-wrap: wrap; }
+  .claude-box h2 small { font: 500 .82rem var(--font-body); color: var(--muted); }
+  .estado-claude { font-size: .82rem; font-weight: 600; padding: 3px 10px; border-radius: 999px; background: var(--surface2); color: var(--muted); border: 1px solid var(--line); }
+  .estado-claude.ok { background: var(--claude-soft); color: var(--claude); border-color: transparent; }
+  textarea.msg { width: 100%; min-height: 70px; resize: vertical; font: inherit; color: var(--ink); background: var(--surface2); border: 1px solid var(--line); border-radius: 10px; padding: 9px 11px; }
+  textarea.msg:focus-visible { outline: 2px solid var(--claude); outline-offset: 1px; }
+  .acciones { display: flex; gap: 8px; flex-wrap: wrap; align-items: center; padding: 0 16px 14px 50px; }
+  .claude-box .acciones { padding: 0; }
+  .btn { border: 1px solid var(--claude); background: var(--claude); color: var(--bg); border-radius: 999px; padding: 7px 15px; font-size: .9rem; font-weight: 600; cursor: pointer; }
+  .btn.sec { background: var(--surface); color: var(--claude); }
+  .btn:disabled { opacity: .55; cursor: default; }
+  .btn:focus-visible { outline: 2px solid var(--claude); outline-offset: 2px; }
+  .aviso-envio { font-size: .85rem; color: var(--muted); }
+  .aviso-envio.ok { color: var(--accent); font-weight: 600; }
+  .aviso-envio.mal { color: var(--turn); font-weight: 600; }
+  .preguntas { display: grid; gap: 14px; padding: 0 16px 14px 50px; }
+  .preg { display: grid; gap: 8px; background: var(--surface2); border: 1px solid var(--line); border-radius: 10px; padding: 10px 12px; min-width: 0; }
+  .preg > b { font-family: var(--font-display); font-size: .98rem; }
+  .preg .opts { display: flex; gap: 6px; flex-wrap: wrap; }
+  .opt { border: 1px solid var(--line); background: var(--surface); color: var(--ink); padding: 6px 12px; border-radius: 999px; cursor: pointer; font-size: .86rem; text-align: left; }
+  .opt[aria-pressed="true"] { background: var(--claude); color: var(--bg); border-color: var(--claude); }
+  .opt .rec { font-size: .72rem; font-weight: 700; text-transform: uppercase; letter-spacing: .05em; margin-left: 6px; opacity: .8; }
+  .opt:focus-visible { outline: 2px solid var(--claude); outline-offset: 2px; }
+  .preg input.otra { font: inherit; font-size: .88rem; color: var(--ink); background: var(--surface); border: 1px solid var(--line); border-radius: 8px; padding: 6px 9px; width: 100%; }
+  .enviado-tag { background: var(--claude-soft); color: var(--claude); }
+  @media (max-width: 560px) { .acciones, .preguntas { padding-left: 16px; } }
 </style>
 <div class="wrap">
   <nav class="bar" aria-label="Menú del informe">
@@ -154,311 +183,219 @@
       <button type="button" data-tema="oscuro" aria-pressed="false">Oscuro</button>
     </div>
   </nav>
-
   <header class="top">
-    <div>
-      <h1>Asistente<br>SEVEN-G</h1>
-      <p>Un servidor MCP para Claude y ChatGPT que ejecuta SEVEN-G conversando: entrevista a la compañía, rellena T01, T15, T23, las puertas y las plantillas, y cita siempre la regla exacta.</p>
-    </div>
+    <div><h1>Asistente<br>SEVEN-G</h1><p>Un servidor MCP para Claude y ChatGPT que ejecuta SEVEN-G conversando: entrevista a la compañía, rellena T01, T15, T23, las puertas y las plantillas, y cita siempre la regla exacta.</p></div>
     <div class="ring" aria-live="polite">
       <svg viewBox="0 0 84 84" aria-hidden="true"><circle class="track" cx="42" cy="42" r="35" stroke-width="8"/><circle class="bar" id="bar" cx="42" cy="42" r="35" stroke-width="8" transform="rotate(-90 42 42)" stroke-dasharray="219.9" stroke-dashoffset="219.9"/></svg>
       <div><b id="cuenta">0 de 0</b><span>pasos hechos</span></div>
     </div>
   </header>
-
-  <p class="meta">
-    <span>Hilo: <b>Plugin AI Consultant: viabilidad y monetización</b></span>
-    <span>Empezado: <b>2026-10-12</b></span>
-    <span>Última actualización: <b>2026-10-12 20:35</b></span>
-    <span>Rama: <b>claude/charming-curie-r8jaaf</b></span>
-    <span>Artifact: <a href="https://claude.ai/artifact/1ojQFJXfbJqegaJJD4eDpf" target="_blank" rel="noopener">abrir en el panel</a></span>
-    <span>Hora de Madrid</span>
-  </p>
-
+  <p class="meta"><span>Hilo: <b>Plugin AI Consultant: viabilidad y monetización</b></span><span>Empezado: <b>2026-10-12</b></span><span>Última actualización: <b>2026-10-12 21:10</b></span><span>Rama: <b>claude/charming-curie-r8jaaf</b></span><span>Artifact: <a href="https://claude.ai/artifact/1ojQFJXfbJqegaJJD4eDpf" target="_blank" rel="noopener">abrir en el panel</a></span><span>Sesión: <a href="https://claude.ai/code/session_012rw4eY3rhUVZSaPhCHv8Mx" target="_blank" rel="noopener">abrir</a></span><span>Hora de Madrid</span></p>
+  <section class="claude-box" data-envio="general" data-titulo="Petición general"><h2>Hablar con Claude <small>lo que envíes aquí llega a esta sesión</small> <span class="estado-claude" id="estado-claude"></span></h2><textarea class="msg" id="msg-general" aria-label="Mensaje para Claude" placeholder="Pide algo nuevo, haz una pregunta o di cómo seguir. Si es trabajo nuevo, Claude lo añade a este informe."></textarea><div class="acciones"><button type="button" class="btn" data-enviar>Enviar a Claude</button><button type="button" class="btn sec" data-enviar data-msg="Sigue con el siguiente paso">Sigue con el siguiente paso</button><button type="button" class="btn sec" data-enviar data-msg="Resume dónde estamos y qué me toca">Resume dónde estamos y qué me toca</button><span class="aviso-envio" role="status"></span></div></section>
   <div id="tab-resumen" role="tabpanel" aria-labelledby="t-resumen" hidden>
-    <section class="block">
-      <h2>Lo pedido y lo hecho <small>por orden de fecha</small></h2>
-      <ol class="tl">
-        <li><time>2026-10-12<i>19:12</i></time><div class="what"><span class="kind k-pedido">Pedido</span>«Dime si tiene sentido hacer un plugin para Claude/OpenAI que pueda trabajar como AI Consultant para cualquier compañía… si habría mercado y cómo se podría monetizar.»</div></li>
-        <li><time>2026-10-12<i>19:15 aprox.</i></time><div class="what"><span class="kind k-hecho">Hecho</span>Análisis de viabilidad y mercado<small>Técnicamente viable (servidor MCP común a Claude y ChatGPT). Como plugin de pago, débil; como servicio empaquetado con revisión del autor y como reputación, fuerte. Riesgos: CC BY permite copias, responsabilidad (D113), «no difundir» en 0.x (D58).</small></div></li>
-        <li><time>2026-10-12<i>19:20 aprox.</i></time><div class="what"><span class="kind k-pedido">Pedido</span>«Vamos a ello, necesito que tengamos el artifact para ir siguiendo lo que hacemos.»</div></li>
-        <li><time>2026-10-12<i>19:40</i></time><div class="what"><span class="kind k-hecho">Hecho</span>Plan del asistente y primer seguimiento<small><span class="mono">_trabajo/20261012_Plan_asistente_SEVEN-G.md</span> (qué es, qué no es, mercado, arquitectura, F0–F10, seis decisiones, riesgos) y pendiente en <span class="mono">CLAUDE.md</span>. Commit 2afb9ec en la rama de la sesión.</small></div></li>
-        <li><time>2026-10-12<i>20:00 aprox.</i></time><div class="what"><span class="kind k-pedido">Pedido</span>«El artifact siempre se tiene que hacer por sesión, no quiero tener que pedirlo; revisa todas las sesiones de AI_CONSULTING y que cada una tenga su artifact.» Y: «el mismo layout, el menú, etc. que estamos haciendo para el proyecto GEMA. Ese va a ser el standard».</div></li>
-        <li><time>2026-10-12<i>20:15</i></time><div class="what"><span class="kind k-hecho">Hecho</span>Estándar de informe de sesión en el repositorio<small>Regla en <span class="mono">CLAUDE.md</span>, plantilla y guía en <span class="mono">.claude/artifact_sesion/</span> (copia del layout de GEMA). Este informe pasa a ese formato con la misma dirección.</small></div></li>
-        <li><time>2026-10-12<i>20:15</i></time><div class="what"><span class="kind k-hecho">Hecho</span>Aviso a las sesiones abiertas de AI_CONSULTING<small>Cuatro sesiones activas (Hall of Fame contributions, Análisis feedback evolución, SEVEN-G vs Gartner metodología, Limpiar nombres de cliente) reciben la instrucción de crear o adaptar su informe. Las dos inactivas tienen informe creado desde aquí: <a href="https://claude.ai/artifact/8tqjDFhRhY5WaCEwtrM5GK" target="_blank" rel="noopener">SEVEN-G frente a Gartner</a> y <a href="https://claude.ai/artifact/KAeMxZ7AmSSKQCK2DybvXt" target="_blank" rel="noopener">Hector en el Hall of Fame</a>. Las 14 archivadas no se tocan.</small></div></li>
-      </ol>
-    </section>
-
-    <section class="block">
-      <h2>Tests <small>estado actual</small></h2>
-      <div class="tests">
-        <div><b>Sin pruebas de código todavía:</b> en esta sesión solo hay documentos de trabajo y la regla en <span class="mono">CLAUDE.md</span>.</div>
-        <div><b>No ejecutado:</b> <span class="mono">verificar_coherencia.ps1</span>, porque este entorno no tiene PowerShell. Los cambios están en <span class="mono">_trabajo</span>, <span class="mono">.claude</span> y <span class="mono">CLAUDE.md</span>, que no se publican.</div>
-      </div>
-    </section>
+    <section class="block"><h2>Lo pedido y lo hecho <small>por orden de fecha</small></h2><ol class="tl"><li><time>2026-10-12<i>19:12</i></time><div class="what"><span class="kind k-pedido">Pedido</span>«Dime si tiene sentido hacer un plugin para Claude/OpenAI que pueda trabajar como AI Consultant para cualquier compañía… si habría mercado y cómo se podría monetizar.»</div></li><li><time>2026-10-12<i>19:15 aprox.</i></time><div class="what"><span class="kind k-hecho">Hecho</span>Análisis de viabilidad y mercado<small>Técnicamente viable (servidor MCP común a Claude y ChatGPT). Como plugin de pago, débil; como servicio empaquetado con tu revisión y como reputación, fuerte. Riesgos: CC BY permite copias, responsabilidad (D113), «no difundir» en 0.x (D58).</small></div></li><li><time>2026-10-12<i>19:20 aprox.</i></time><div class="what"><span class="kind k-pedido">Pedido</span>«Vamos a ello, necesito que tengamos el artifact para ir siguiendo lo que hacemos.»</div></li><li><time>2026-10-12<i>19:40</i></time><div class="what"><span class="kind k-hecho">Hecho</span>Plan del asistente y primer seguimiento<small><span class="mono">_trabajo/20261012_Plan_asistente_SEVEN-G.md</span> y pendiente en <span class="mono">CLAUDE.md</span>. Commit 2afb9ec.</small></div></li><li><time>2026-10-12<i>20:00 aprox.</i></time><div class="what"><span class="kind k-pedido">Pedido</span>«El artifact siempre se tiene que hacer por sesión, no quiero tener que pedirlo; revisa todas las sesiones de AI_CONSULTING.» Y: «el mismo layout, el menú, etc. que GEMA. Ese va a ser el standard».</div></li><li><time>2026-10-12<i>20:35</i></time><div class="what"><span class="kind k-hecho">Hecho</span>Estándar de informe de sesión y revisión de las sesiones<small>Regla en <span class="mono">CLAUDE.md</span> y modelo en <span class="mono">.claude/artifact_sesion/</span>. Aviso a 4 sesiones activas; informes creados para las 2 inactivas; 14 archivadas sin tocar. Commit bd0080e.</small></div></li><li><time>2026-10-12<i>20:50 aprox.</i></time><div class="what"><span class="kind k-pedido">Pedido</span>«Que si hay algo que hacer con Claude, incluido responder preguntas, esté en el artifact, incluso botones de enviar a Claude, seguir… el artifact es la guía para continuar con la sesión… que la sesión termine finalmente con todo lo que se haya ido haciendo o pidiendo.»</div></li><li><time>2026-10-12<i>21:10</i></time><div class="what"><span class="kind k-hecho">Hecho</span>Informe interactivo: preguntas, «Seguir con esto» y «Hablar con Claude»<small>Los botones envían un comentario a Claude que despierta la sesión que vigila el informe. Generador <span class="mono">.claude/artifact_sesion/generar.py</span> desde un JSON por sesión; regla ampliada en <span class="mono">CLAUDE.md</span>.</small></div></li></ol></section>
+    <section class="block"><h2>Tests <small>estado actual</small></h2><div class="tests"><div><b>Sin pruebas de código todavía:</b> solo documentos de trabajo, la regla y el generador del informe.</div><div><b>No ejecutado:</b> <span class="mono">verificar_coherencia.ps1</span> (no hay PowerShell en este entorno). Los cambios están en <span class="mono">_trabajo</span>, <span class="mono">.claude</span> y <span class="mono">CLAUDE.md</span>, que no se publican.</div><div><b>Pendiente de prueba humana:</b> pulsar un botón «Enviar a Claude» y comprobar que llega a esta sesión (la primera vez pedirá permiso para escribir comentarios).</div></div></section>
   </div>
-
   <div id="tab-falta" role="tabpanel" aria-labelledby="t-falta">
-
-  <div class="filters" role="group" aria-label="Filtrar por quién lo hace">
-    <span class="lbl">Ver</span>
-    <button class="chip" data-f="todo" aria-pressed="true">Todo</button>
-    <button class="chip" data-f="tu" aria-pressed="false">Lo mío</button>
-    <button class="chip" data-f="claude" aria-pressed="false">Lo que hace Claude</button>
-    <button class="chip" data-f="persona" aria-pressed="false">Pilotos</button>
-  </div>
-
-  <section class="block">
-    <h2>El camino del asistente <small>del repositorio al cliente</small></h2>
-    <div class="flow">
-      <div><b class="t">1 · Decides</b>Seis decisiones del plan: lenguaje, nombre, sitio, publicación, alcance y licencia.</div>
-      <div><b class="c">2 · Lo construyo</b>Servidor MCP y tres flujos: diagnóstico, alta de iniciativa y preparar una puerta.</div>
-      <div><b class="t">3 · Lo usas</b>En tus encargos, para comprobar que ahorra horas.</div>
-      <div><b class="p">4 · Pilotos</b>3–5 compañías o consultoras; después, la oferta.</div>
+    <div class="filters" role="group" aria-label="Filtrar por quién lo hace">
+      <span class="lbl">Ver</span>
+      <button class="chip" data-f="todo" aria-pressed="true">Todo</button>
+      <button class="chip" data-f="tu" aria-pressed="false">Lo mío</button>
+      <button class="chip" data-f="claude" aria-pressed="false">Lo que hace Claude</button>
+      <button class="chip" data-f="persona" aria-pressed="false">Pilotos</button>
     </div>
-  </section>
-
-  <section class="block">
-    <h2>Ya está hecho <small id="n-hecho"></small></h2>
-    <ul class="done-list">
-      <li><svg viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><div>Análisis de viabilidad, mercado y monetización<small>Recomendación: servicio empaquetado con tu firma; el asistente abierto, para reputación.</small></div></li>
-      <li><svg viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><div>Plan del asistente<small><span class="mono">_trabajo/20261012_Plan_asistente_SEVEN-G.md</span>, commit 2afb9ec.</small></div></li>
-      <li><svg viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><div>Estándar de informe de sesión<small>Regla en <span class="mono">CLAUDE.md</span> y plantilla en <span class="mono">.claude/artifact_sesion/</span>.</small></div></li>
-    </ul>
-  </section>
-
-  <section class="block">
-    <h2>Ahora <small>en este orden</small></h2>
-    <ol class="steps" id="ahora">
-
-      <li class="step" data-id="main" data-who="tu">
-        <div class="card">
-          <div class="head">
-            <input type="checkbox" id="c-main" aria-label="Marcar como hecho: autorizar la integración en main">
-            <div class="txt">
-              <h3>Autorizar que la regla del informe llegue a <code>main</code></h3>
-              <p>Las sesiones nuevas leen el <code>CLAUDE.md</code> de <code>main</code>; hoy la regla solo está en la rama de esta sesión.</p>
-              <p class="why"><b>Por qué hace falta:</b> sin eso, una sesión nueva no sabrá que debe crear su informe sin que lo pidas. <b>Desbloquea:</b> que todas las sesiones futuras lo hagan solas.</p>
-              <div class="tags"><span class="tag tu">Tú decides</span><span class="tag estado"></span><span class="tag nota">1 respuesta</span></div>
-            </div>
-          </div>
-        </div>
-      </li>
-
-      <li class="step" data-id="decisiones" data-who="tu">
-        <div class="card">
-          <div class="head">
-            <input type="checkbox" id="c-decisiones" aria-label="Marcar como hecho: validar las seis decisiones">
-            <div class="txt">
-              <h3>Validar las seis decisiones del plan</h3>
-              <p>Basta con «de acuerdo con todas» o corregir la que no encaje.</p>
-              <p class="why"><b>Por qué hace falta:</b> fijan cómo se construye todo lo demás. <b>Desbloquea:</b> F1 y F2.</p>
-              <div class="tags"><span class="tag tu">Tú decides</span><span class="tag estado"></span><span class="tag nota">plan §7</span></div>
-            </div>
-          </div>
-          <details class="more">
-            <summary>Las seis, con mi recomendación</summary>
-            <div class="body">
-              <ol>
-                <li><b>Lenguaje y forma:</b> Python con <code>uv</code>, MCP local por stdio (T17 ya usa Python; lo local cumple D103).</li>
-                <li><b>Nombre:</b> «Asistente SEVEN-G» (EN: «SEVEN-G Assistant»), apoyado en la marca registrada.</li>
-                <li><b>Ubicación:</b> <code>SEVEN-G/asistente/</code> en este repositorio.</li>
-                <li><b>Publicación:</b> uso propio y pilotos privados hasta la 1.x (D58) y las revisiones jurídicas pendientes.</li>
-                <li><b>Mínimo viable:</b> diagnóstico inicial (T23 + T15), alta de iniciativa con intensidad y preparación de una puerta.</li>
-                <li><b>Licencia:</b> MIT (D07).</li>
-              </ol>
-              <div class="note">Al validarlas se registran en el registro de decisiones con el número siguiente a la rama de Express (D144–D153), para no duplicar numeración.</div>
-            </div>
-          </details>
-        </div>
-      </li>
-
-      <li class="step" data-id="f1" data-who="claude">
-        <div class="card">
-          <div class="head">
-            <input type="checkbox" id="c-f1" aria-label="Marcar como hecho: F1 y F2">
-            <div class="txt">
-              <h3>F1–F2 · Núcleo de conocimiento y servidor MCP de lectura</h3>
-              <p><code>buscar_codigo</code>, <code>leer_seccion</code>, <code>buscar_termino</code> y <code>listar_plantillas</code> sobre <code>codigos.js</code>, <code>busqueda.json</code> y los Markdown.</p>
-              <p class="why"><b>Por qué:</b> es lo que hace que el asistente cite la regla exacta en vez de opinar. <b>Desbloquea:</b> todos los flujos.</p>
-              <div class="tags"><span class="tag claude">Claude</span><span class="tag estado"></span></div>
-            </div>
-          </div>
-        </div>
-      </li>
-
-      <li class="step" data-id="f3" data-who="claude">
-        <div class="card">
-          <div class="head">
-            <input type="checkbox" id="c-f3" aria-label="Marcar como hecho: F3">
-            <div class="txt">
-              <h3>F3 · Registro T01 desde la conversación</h3>
-              <p>Leer, validar contra <code>esquema_registro.schema.json</code> y escribir con evento; nunca estima importes.</p>
-              <p class="why"><b>Por qué:</b> lo que se habla queda como datos que abren T01, T15, T17 y T23. <b>Desbloquea:</b> los tres flujos.</p>
-              <div class="tags"><span class="tag claude">Claude</span><span class="tag estado"></span><span class="tag nota">D43 · D100</span></div>
-            </div>
-          </div>
-        </div>
-      </li>
-
-      <li class="step" data-id="flujos" data-who="claude">
-        <div class="card">
-          <div class="head">
-            <input type="checkbox" id="c-flujos" aria-label="Marcar como hecho: F4 a F6">
-            <div class="txt">
-              <h3>F4–F6 · Los tres flujos del mínimo viable</h3>
-              <p>Diagnóstico inicial, alta de iniciativa con intensidad y preparación de una puerta.</p>
-              <p class="why"><b>Por qué:</b> son los que más horas de consultor consumen y ya tienen datos estructurados. <b>Desbloquea:</b> probarlo en tus encargos.</p>
-              <div class="tags"><span class="tag claude">Claude</span><span class="tag estado"></span></div>
-            </div>
-          </div>
-          <details class="more">
-            <summary>Detalle</summary>
-            <div class="body">
-              <ul>
-                <li><b>F4:</b> las 12 preguntas de T23 y las 84 del documento 11; lógica en Python con prueba de paridad frente a las herramientas JS.</li>
-                <li><b>F5:</b> ficha mínima y patrocinador (14 §3.2), intensidad (01 §9), borradores de P01–P04.</li>
-                <li><b>F6:</b> evidencia frente a <code>catalogo_criterios.json</code> y la lista LV; dice qué falta, no decide la puerta.</li>
-              </ul>
-            </div>
-          </details>
-        </div>
-      </li>
-
-      <li class="step" data-id="paquete" data-who="claude">
-        <div class="card">
-          <div class="head">
-            <input type="checkbox" id="c-paquete" aria-label="Marcar como hecho: F7 y F8">
-            <div class="txt">
-              <h3>F7–F8 · Plantillas en Word y empaquetado</h3>
-              <p><code>rellenar_plantilla(Pnn)</code>, plugin de Claude con skills por flujo y configuración para ChatGPT.</p>
-              <p class="why"><b>Por qué:</b> el entregable que un comité acepta es un documento, no una conversación.</p>
-              <div class="tags"><span class="tag claude">Claude</span><span class="tag estado"></span></div>
-            </div>
-          </div>
-        </div>
-      </li>
-
-      <li class="step" data-id="uso" data-who="tu">
-        <div class="card">
-          <div class="head">
-            <input type="checkbox" id="c-uso" aria-label="Marcar como hecho: usarlo en tus encargos">
-            <div class="txt">
-              <h3>Usarlo en uno de tus encargos</h3>
-              <p>Comparar horas y calidad frente a hacerlo sin asistente.</p>
-              <p class="why"><b>Por qué:</b> es la forma más barata de saber si vale la pena seguir. <b>Desbloquea:</b> los pilotos.</p>
-              <div class="tags"><span class="tag tu">Tú</span><span class="tag estado"></span></div>
-            </div>
-          </div>
-        </div>
-      </li>
-
-      <li class="step" data-id="pilotos" data-who="persona tu">
-        <div class="card">
-          <div class="head">
-            <input type="checkbox" id="c-pilotos" aria-label="Marcar como hecho: pilotos">
-            <div class="txt">
-              <h3>F9 · Pilotos con 3–5 compañías o consultoras</h3>
-              <p>Con guion y preguntas de evaluación; privados mientras SEVEN-G esté en 0.x.</p>
-              <p class="why"><b>Por qué:</b> confirma demanda antes de decidir la oferta. <b>Desbloquea:</b> F10, el diagnóstico acelerado SEVEN-G.</p>
-              <div class="tags"><span class="tag persona">Pilotos</span><span class="tag tu">Tú</span><span class="tag estado"></span></div>
-            </div>
-          </div>
-        </div>
-      </li>
-    </ol>
-  </section>
-
+    
+    <section class="block"><h2>Ya está hecho <small id="n-hecho"></small></h2><ul class="done-list"><li><svg viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><div>Análisis de viabilidad, mercado y monetización<small>Servicio empaquetado con tu firma; el asistente abierto, para reputación.</small></div></li><li><svg viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><div>Plan del asistente<small>_trabajo/20261012_Plan_asistente_SEVEN-G.md, commit 2afb9ec.</small></div></li><li><svg viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><div>Estándar de informe de sesión<small>Layout de GEMA, regla en CLAUDE.md, commit bd0080e.</small></div></li><li><svg viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><div>Informe interactivo<small>Preguntas y botones que envían a Claude; generador por JSON.</small></div></li></ul></section>
+    <section class="block"><h2>Ahora <small>en este orden</small></h2><ol class="steps" id="ahora"><li class="step" data-id="main" data-who="tu"><div class="card"><div class="head"><input type="checkbox" id="c-main" aria-label="Marcar como hecho: ¿Llevo a main la regla y el modelo del informe?"><div class="txt"><h3>¿Llevo a <code>main</code> la regla y el modelo del informe?</h3><p>Las sesiones nuevas leen el <code>CLAUDE.md</code> de <code>main</code>; hoy la regla solo está en la rama de esta sesión.</p><p class="why"><b>Por qué hace falta:</b> sin eso, una sesión nueva no sabrá que debe crear su informe sin que lo pidas. <b>Desbloquea:</b> que todas las sesiones futuras lo hagan solas.</p><div class="tags"><span class="tag tu">Tú decides</span><span class="tag estado"></span><span class="tag enviado-tag" hidden></span><span class="tag nota">solo CLAUDE.md y .claude/</span></div></div></div><div class="envio" data-envio="main" data-titulo="¿Llevo a main la regla y el modelo del informe?"><div class="preguntas"><div class="preg" data-q="Integrar en main"><b>Integrar en main</b><div class="opts"><button type="button" class="opt" aria-pressed="false" data-valor="Sí, llévalo a main">Sí, llévalo a main<span class="rec">recomendada</span></button><button type="button" class="opt" aria-pressed="false" data-valor="No, espera">No, espera</button></div><input class="otra" id="o-main-q" aria-label="Otra respuesta: Integrar en main" placeholder="Otra respuesta (opcional)"></div></div><div class="acciones"><button type="button" class="btn" data-enviar data-msg="">Enviar respuesta a Claude</button><span class="aviso-envio" role="status"></span></div></div></div></li><li class="step" data-id="decisiones" data-who="tu"><div class="card"><div class="head"><input type="checkbox" id="c-decisiones" aria-label="Marcar como hecho: Validar las seis decisiones del plan"><div class="txt"><h3>Validar las seis decisiones del plan</h3><p>Elige una opción en cada una o escribe la tuya, y envíalas juntas.</p><p class="why"><b>Por qué hace falta:</b> fijan cómo se construye todo lo demás. <b>Desbloquea:</b> F1 y F2.</p><div class="tags"><span class="tag tu">Tú decides</span><span class="tag estado"></span><span class="tag enviado-tag" hidden></span><span class="tag nota">plan §7</span></div></div></div><div class="envio" data-envio="decisiones" data-titulo="Validar las seis decisiones del plan"><div class="preguntas"><div class="preg" data-q="1 · Lenguaje y forma del servidor"><b>1 · Lenguaje y forma del servidor</b><div class="opts"><button type="button" class="opt" aria-pressed="false" data-valor="Python con uv, MCP local por stdio">Python con uv, MCP local por stdio<span class="rec">recomendada</span></button><button type="button" class="opt" aria-pressed="false" data-valor="Node/TypeScript">Node/TypeScript</button><button type="button" class="opt" aria-pressed="false" data-valor="Servidor remoto desde el principio">Servidor remoto desde el principio</button></div><input class="otra" id="o-decisiones-d1" aria-label="Otra respuesta: 1 · Lenguaje y forma del servidor" placeholder="Otra respuesta (opcional)"></div><div class="preg" data-q="2 · Nombre"><b>2 · Nombre</b><div class="opts"><button type="button" class="opt" aria-pressed="false" data-valor="Asistente SEVEN-G (EN: SEVEN-G Assistant)">Asistente SEVEN-G (EN: SEVEN-G Assistant)<span class="rec">recomendada</span></button><button type="button" class="opt" aria-pressed="false" data-valor="Consultor SEVEN-G">Consultor SEVEN-G</button></div><input class="otra" id="o-decisiones-d2" aria-label="Otra respuesta: 2 · Nombre" placeholder="Otra respuesta (opcional)"></div><div class="preg" data-q="3 · Dónde vive el código"><b>3 · Dónde vive el código</b><div class="opts"><button type="button" class="opt" aria-pressed="false" data-valor="SEVEN-G/asistente/ en este repositorio">SEVEN-G/asistente/ en este repositorio<span class="rec">recomendada</span></button><button type="button" class="opt" aria-pressed="false" data-valor="Repositorio aparte">Repositorio aparte</button></div><input class="otra" id="o-decisiones-d3" aria-label="Otra respuesta: 3 · Dónde vive el código" placeholder="Otra respuesta (opcional)"></div><div class="preg" data-q="4 · Publicación"><b>4 · Publicación</b><div class="opts"><button type="button" class="opt" aria-pressed="false" data-valor="Uso propio y pilotos privados hasta la 1.x">Uso propio y pilotos privados hasta la 1.x<span class="rec">recomendada</span></button><button type="button" class="opt" aria-pressed="false" data-valor="Publicarlo ya en abierto">Publicarlo ya en abierto</button></div><input class="otra" id="o-decisiones-d4" aria-label="Otra respuesta: 4 · Publicación" placeholder="Otra respuesta (opcional)"></div><div class="preg" data-q="5 · Mínimo viable"><b>5 · Mínimo viable</b><div class="opts"><button type="button" class="opt" aria-pressed="false" data-valor="Diagnóstico inicial + alta de iniciativa + preparar una puerta">Diagnóstico inicial + alta de iniciativa + preparar una puerta<span class="rec">recomendada</span></button><button type="button" class="opt" aria-pressed="false" data-valor="Solo el diagnóstico inicial">Solo el diagnóstico inicial</button></div><input class="otra" id="o-decisiones-d5" aria-label="Otra respuesta: 5 · Mínimo viable" placeholder="Otra respuesta (opcional)"></div><div class="preg" data-q="6 · Licencia del código"><b>6 · Licencia del código</b><div class="opts"><button type="button" class="opt" aria-pressed="false" data-valor="MIT, como el resto (D07)">MIT, como el resto (D07)<span class="rec">recomendada</span></button><button type="button" class="opt" aria-pressed="false" data-valor="Privada de momento">Privada de momento</button></div><input class="otra" id="o-decisiones-d6" aria-label="Otra respuesta: 6 · Licencia del código" placeholder="Otra respuesta (opcional)"></div></div><div class="acciones"><button type="button" class="btn" data-enviar data-msg="">Enviar decisiones a Claude</button><span class="aviso-envio" role="status"></span></div></div></div></li><li class="step" data-id="f1" data-who="claude"><div class="card"><div class="head"><input type="checkbox" id="c-f1" aria-label="Marcar como hecho: F1–F2 · Núcleo de conocimiento y servidor MCP de lectura"><div class="txt"><h3>F1–F2 · Núcleo de conocimiento y servidor MCP de lectura</h3><p><code>buscar_codigo</code>, <code>leer_seccion</code>, <code>buscar_termino</code> y <code>listar_plantillas</code> sobre <code>codigos.js</code>, <code>busqueda.json</code> y los Markdown.</p><p class="why"><b>Por qué:</b> es lo que hace que el asistente cite la regla exacta en vez de opinar. <b>Desbloquea:</b> todos los flujos.</p><div class="tags"><span class="tag claude">Claude</span><span class="tag estado"></span><span class="tag enviado-tag" hidden></span></div></div></div><div class="envio" data-envio="f1" data-titulo="F1–F2 · Núcleo de conocimiento y servidor MCP de lectura"><div class="acciones"><button type="button" class="btn" data-enviar data-msg="Empieza F1 y F2 con las decisiones que tengas validadas; si falta alguna, usa tu recomendación y dímelo.">Empieza F1–F2</button><span class="aviso-envio" role="status"></span></div></div></div></li><li class="step" data-id="f3" data-who="claude"><div class="card"><div class="head"><input type="checkbox" id="c-f3" aria-label="Marcar como hecho: F3 · Registro T01 desde la conversación"><div class="txt"><h3>F3 · Registro T01 desde la conversación</h3><p>Leer, validar contra <code>esquema_registro.schema.json</code> y escribir con evento; nunca estima importes.</p><p class="why"><b>Por qué:</b> lo que se habla queda como datos que abren T01, T15, T17 y T23. <b>Desbloquea:</b> los tres flujos.</p><div class="tags"><span class="tag claude">Claude</span><span class="tag estado"></span><span class="tag enviado-tag" hidden></span><span class="tag nota">D43 · D100</span></div></div></div><div class="envio" data-envio="f3" data-titulo="F3 · Registro T01 desde la conversación"><div class="acciones"><button type="button" class="btn" data-enviar data-msg="Sigue con F3: registro T01 desde la conversación.">Seguir con F3</button><span class="aviso-envio" role="status"></span></div></div></div></li><li class="step" data-id="flujos" data-who="claude"><div class="card"><div class="head"><input type="checkbox" id="c-flujos" aria-label="Marcar como hecho: F4–F6 · Los tres flujos del mínimo viable"><div class="txt"><h3>F4–F6 · Los tres flujos del mínimo viable</h3><p>Diagnóstico inicial, alta de iniciativa con intensidad y preparación de una puerta.</p><p class="why"><b>Por qué:</b> son los que más horas de consultor consumen y ya tienen datos estructurados. <b>Desbloquea:</b> probarlo en tus encargos.</p><div class="tags"><span class="tag claude">Claude</span><span class="tag estado"></span><span class="tag enviado-tag" hidden></span></div></div></div><div class="envio" data-envio="flujos" data-titulo="F4–F6 · Los tres flujos del mínimo viable"><div class="acciones"><button type="button" class="btn" data-enviar data-msg="Sigue con F4 a F6: los tres flujos del mínimo viable.">Seguir con F4–F6</button><span class="aviso-envio" role="status"></span></div></div><details class="more"><summary>Pasos</summary><div class="body"><ul><li><b>F4:</b> las 12 preguntas de T23 y las 84 del documento 11; lógica en Python con prueba de paridad frente a las herramientas JS.</li><li><b>F5:</b> ficha mínima y patrocinador (14 §3.2), intensidad (01 §9), borradores de P01–P04.</li><li><b>F6:</b> evidencia frente a <code>catalogo_criterios.json</code> y la lista LV; dice qué falta, no decide la puerta.</li></ul></div></details></div></li><li class="step" data-id="paquete" data-who="claude"><div class="card"><div class="head"><input type="checkbox" id="c-paquete" aria-label="Marcar como hecho: F7–F8 · Plantillas en Word y empaquetado"><div class="txt"><h3>F7–F8 · Plantillas en Word y empaquetado</h3><p><code>rellenar_plantilla(Pnn)</code>, plugin de Claude con skills por flujo y configuración para ChatGPT.</p><p class="why"><b>Por qué:</b> el entregable que un comité acepta es un documento, no una conversación.</p><div class="tags"><span class="tag claude">Claude</span><span class="tag estado"></span><span class="tag enviado-tag" hidden></span></div></div></div><div class="envio" data-envio="paquete" data-titulo="F7–F8 · Plantillas en Word y empaquetado"><div class="acciones"><button type="button" class="btn" data-enviar data-msg="Sigue con F7 y F8: plantillas en Word y empaquetado para Claude y ChatGPT.">Seguir con F7–F8</button><span class="aviso-envio" role="status"></span></div></div></div></li><li class="step" data-id="uso" data-who="tu"><div class="card"><div class="head"><input type="checkbox" id="c-uso" aria-label="Marcar como hecho: Usarlo en uno de tus encargos"><div class="txt"><h3>Usarlo en uno de tus encargos</h3><p>Comparar horas y calidad frente a hacerlo sin asistente.</p><p class="why"><b>Por qué:</b> es la forma más barata de saber si vale la pena seguir. <b>Desbloquea:</b> los pilotos.</p><div class="tags"><span class="tag tu">Tú</span><span class="tag estado"></span><span class="tag enviado-tag" hidden></span></div></div></div><div class="envio" data-envio="uso" data-titulo="Usarlo en uno de tus encargos"><div class="acciones"><button type="button" class="btn" data-enviar data-msg="Prepárame un guion para probar el asistente en uno de mis encargos y medir horas y calidad.">Prepárame el guion de prueba</button><span class="aviso-envio" role="status"></span></div></div></div></li><li class="step" data-id="pilotos" data-who="persona tu"><div class="card"><div class="head"><input type="checkbox" id="c-pilotos" aria-label="Marcar como hecho: F9 · Pilotos con 3–5 compañías o consultoras"><div class="txt"><h3>F9 · Pilotos con 3–5 compañías o consultoras</h3><p>Con guion y preguntas de evaluación; privados mientras SEVEN-G esté en 0.x.</p><p class="why"><b>Por qué:</b> confirma demanda antes de decidir la oferta. <b>Desbloquea:</b> F10, el diagnóstico acelerado SEVEN-G.</p><div class="tags"><span class="tag persona">Pilotos</span><span class="tag tu">Tú</span><span class="tag estado"></span><span class="tag enviado-tag" hidden></span></div></div></div><div class="envio" data-envio="pilotos" data-titulo="F9 · Pilotos con 3–5 compañías o consultoras"><div class="acciones"><button type="button" class="btn" data-enviar data-msg="Prepara el kit de piloto: guion, preguntas de evaluación y criterios de éxito.">Prepara el kit de piloto</button><span class="aviso-envio" role="status"></span></div></div></div></li></ol></section>
   </div>
-
-  <p class="foot">Las casillas se guardan solo en este navegador. Informe de la sesión: se actualiza en cada petición. Detalle completo en <span class="mono">SEVEN-G/mds/es/_trabajo/20261012_Plan_asistente_SEVEN-G.md</span>; fuente de esta página en <span class="mono">.claude/sesiones/2026-10-12_asistente-seveng.html</span>.</p>
+  <p class="foot">Las casillas y los envíos se recuerdan solo en este navegador. Lo que envías a Claude queda como comentario en este informe; la sesión responde en el hilo y vuelve a publicar el informe con lo nuevo. La sesión termina cuando aquí no queda nada pendiente. Detalle en <span class="mono">SEVEN-G/mds/es/_trabajo/20261012_Plan_asistente_SEVEN-G.md</span>; fuente en <span class="mono">.claude/sesiones/2026-10-12_asistente-seveng.json</span>.</p>
 </div>
+<script>window.INFORME = {"key": "aic-asistente-seveng", "base": 4, "sesion": "https://claude.ai/code/session_012rw4eY3rhUVZSaPhCHv8Mx"};</script>
+<script>(function () {
+  /* Informe de sesión: casillas, filtros, tema, pestañas y conversación con Claude.
+     Los botones envían un comentario a Claude (capacidad comments, sendToClaude): llega a la sesión
+     que vigila este artifact, que responde en el hilo y vuelve a publicar el informe. */
+  var cfg = window.INFORME || {};
+  var KEY = cfg.key || "informe-sesion";
+  var BASE = cfg.base || 0;
+  var steps = Array.prototype.slice.call(document.querySelectorAll(".step"));
+  var saved = {}, enviados = {};
+  try { saved = JSON.parse(localStorage.getItem(KEY) || "{}") || {}; } catch (e) { saved = {}; }
+  try { enviados = JSON.parse(localStorage.getItem(KEY + "-env") || "{}") || {}; } catch (e) { enviados = {}; }
+  function guardar(k, v) { try { localStorage.setItem(k, JSON.stringify(v)); } catch (e) { /* sin almacenamiento */ } }
+  function ahora() {
+    try { return new Intl.DateTimeFormat("sv-SE", { timeZone: "Europe/Madrid", dateStyle: "short", timeStyle: "short" }).format(new Date()); }
+    catch (e) { return new Date().toISOString().slice(0, 16).replace("T", " "); }
+  }
 
-<script>
-  (function () {
-    var KEY = "aic-asistente-seveng";
-    var BASE = 3; /* cosas ya hechas antes de esta lista */
-    var steps = Array.prototype.slice.call(document.querySelectorAll(".step"));
-    var saved = {};
-    try { saved = JSON.parse(localStorage.getItem(KEY) || "{}") || {}; } catch (e) { saved = {}; }
-    function persist() { try { localStorage.setItem(KEY, JSON.stringify(saved)); } catch (e) { /* sin almacenamiento */ } }
-
-    function render() {
-      var checked = 0, firstOpen = null;
-      steps.forEach(function (s) {
-        var done = !!saved[s.getAttribute("data-id")];
-        s.querySelector("input[type=checkbox]").checked = done;
-        if (done) checked++; else if (!firstOpen) firstOpen = s;
-      });
-      var total = BASE + steps.length, count = BASE + checked;
-      steps.forEach(function (s) {
-        var id = s.getAttribute("data-id"), done = !!saved[id], now = s === firstOpen, when = saved[id];
-        s.classList.toggle("is-done", done);
-        s.classList.toggle("is-now", now);
-        s.querySelector(".tag.estado").textContent = done ? "Hecho" + (typeof when === "string" && when.length > 4 ? " · " + when : "") : now ? "Te toca ahora" : "Pendiente";
-      });
-      document.getElementById("cuenta").textContent = count + " de " + total;
-      document.getElementById("n-hecho").textContent = BASE + " cosas";
-      var c = 2 * Math.PI * 35;
-      document.getElementById("bar").style.strokeDashoffset = String(c * (1 - count / total));
-    }
-
+  function render() {
+    var checked = 0, firstOpen = null;
     steps.forEach(function (s) {
-      s.querySelector("input[type=checkbox]").addEventListener("change", function (ev) {
-        var stamp = false;
-        if (ev.target.checked) {
-          try { stamp = new Intl.DateTimeFormat("sv-SE", { timeZone: "Europe/Madrid", dateStyle: "short", timeStyle: "short" }).format(new Date()); }
-          catch (e) { stamp = new Date().toISOString().slice(0, 16).replace("T", " "); }
-        }
-        saved[s.getAttribute("data-id")] = stamp || false;
-        persist(); render();
+      var done = !!saved[s.getAttribute("data-id")];
+      s.querySelector("input[type=checkbox]").checked = done;
+      if (done) checked++; else if (!firstOpen) firstOpen = s;
+    });
+    var total = BASE + steps.length, count = BASE + checked;
+    steps.forEach(function (s) {
+      var id = s.getAttribute("data-id"), done = !!saved[id], now = s === firstOpen, when = saved[id];
+      s.classList.toggle("is-done", done);
+      s.classList.toggle("is-now", now);
+      s.querySelector(".tag.estado").textContent = done ? "Hecho" + (typeof when === "string" && when.length > 4 ? " · " + when : "") : now ? "Te toca ahora" : "Pendiente";
+      var env = s.querySelector(".tag.enviado-tag");
+      if (env) { env.hidden = !enviados[id]; env.textContent = enviados[id] ? "Enviado a Claude · " + enviados[id] : ""; }
+    });
+    document.getElementById("cuenta").textContent = count + " de " + total;
+    var nh = document.getElementById("n-hecho"); if (nh) nh.textContent = BASE + " cosas";
+    var c = 2 * Math.PI * 35;
+    document.getElementById("bar").style.strokeDashoffset = String(c * (1 - (total ? count / total : 0)));
+  }
+
+  steps.forEach(function (s) {
+    s.querySelector("input[type=checkbox]").addEventListener("change", function (ev) {
+      saved[s.getAttribute("data-id")] = ev.target.checked ? ahora() : false;
+      guardar(KEY, saved); render();
+    });
+  });
+
+  var chips = document.querySelectorAll(".chip");
+  chips.forEach(function (chip) {
+    chip.addEventListener("click", function () {
+      var f = chip.getAttribute("data-f");
+      chips.forEach(function (c) { c.setAttribute("aria-pressed", c === chip ? "true" : "false"); });
+      steps.forEach(function (s) {
+        var who = (s.getAttribute("data-who") || "").split(" ");
+        s.classList.toggle("hidden-by-filter", f !== "todo" && who.indexOf(f) === -1);
       });
     });
+  });
 
-    var chips = document.querySelectorAll(".chip");
-    chips.forEach(function (chip) {
-      chip.addEventListener("click", function () {
-        var f = chip.getAttribute("data-f");
-        chips.forEach(function (c) { c.setAttribute("aria-pressed", c === chip ? "true" : "false"); });
-        steps.forEach(function (s) {
-          var who = (s.getAttribute("data-who") || "").split(" ");
-          s.classList.toggle("hidden-by-filter", f !== "todo" && who.indexOf(f) === -1);
-        });
+  /* Tema: Sistema, Claro u Oscuro */
+  var root = document.documentElement, hostTheme = root.getAttribute("data-theme");
+  var temaBtns = document.querySelectorAll("[data-tema]");
+  function setTema(name) {
+    if (name === "claro") root.setAttribute("data-theme", "light");
+    else if (name === "oscuro") root.setAttribute("data-theme", "dark");
+    else if (hostTheme) root.setAttribute("data-theme", hostTheme);
+    else root.removeAttribute("data-theme");
+    temaBtns.forEach(function (b) { b.setAttribute("aria-pressed", b.getAttribute("data-tema") === name ? "true" : "false"); });
+    try { localStorage.setItem(KEY + "-tema", name); } catch (e) { /* sin almacenamiento */ }
+  }
+  temaBtns.forEach(function (b) { b.addEventListener("click", function () { setTema(b.getAttribute("data-tema")); }); });
+  var tema0 = "sistema";
+  try { tema0 = localStorage.getItem(KEY + "-tema") || "sistema"; } catch (e) { tema0 = "sistema"; }
+  setTema(tema0);
+
+  /* Pestañas */
+  var tabs = document.querySelectorAll(".tab");
+  function showTab(name) {
+    tabs.forEach(function (t) {
+      var on = t.getAttribute("data-tab") === name;
+      t.setAttribute("aria-selected", on ? "true" : "false");
+      document.getElementById("tab-" + t.getAttribute("data-tab")).hidden = !on;
+    });
+    try { localStorage.setItem(KEY + "-tab", name); } catch (e) { /* sin almacenamiento */ }
+  }
+  tabs.forEach(function (t) { t.addEventListener("click", function () { showTab(t.getAttribute("data-tab")); }); });
+  var start = "falta";
+  try { start = localStorage.getItem(KEY + "-tab") || "falta"; } catch (e) { start = "falta"; }
+  if (location.hash === "#resumen" || location.hash === "#falta") start = location.hash.slice(1);
+  showTab(start === "resumen" ? "resumen" : "falta");
+
+  /* Preguntas: una opción por pregunta o texto propio */
+  document.querySelectorAll(".preg").forEach(function (p) {
+    var opts = p.querySelectorAll(".opt");
+    opts.forEach(function (o) {
+      o.addEventListener("click", function () {
+        var on = o.getAttribute("aria-pressed") !== "true";
+        opts.forEach(function (x) { x.setAttribute("aria-pressed", "false"); });
+        o.setAttribute("aria-pressed", on ? "true" : "false");
       });
     });
+  });
+  function respuestas(cont) {
+    var partes = [], faltan = 0;
+    cont.querySelectorAll(".preg").forEach(function (p) {
+      var sel = p.querySelector('.opt[aria-pressed="true"]');
+      var otra = p.querySelector("input.otra");
+      var r = (otra && otra.value.trim()) || (sel ? sel.getAttribute("data-valor") : "");
+      if (!r) { faltan++; return; }
+      partes.push(p.getAttribute("data-q") + ": " + r);
+    });
+    return { texto: partes.join(" · "), faltan: faltan };
+  }
 
-    var root = document.documentElement, hostTheme = root.getAttribute("data-theme");
-    var temaBtns = document.querySelectorAll("[data-tema]");
-    function setTema(name) {
-      if (name === "claro") root.setAttribute("data-theme", "light");
-      else if (name === "oscuro") root.setAttribute("data-theme", "dark");
-      else if (hostTheme) root.setAttribute("data-theme", hostTheme);
-      else root.removeAttribute("data-theme");
-      temaBtns.forEach(function (b) { b.setAttribute("aria-pressed", b.getAttribute("data-tema") === name ? "true" : "false"); });
-      try { localStorage.setItem(KEY + "-tema", name); } catch (e) { /* sin almacenamiento */ }
+  /* Envío a Claude */
+  var comments = null, estado = "off";
+  var MOTIVOS = { writers_only: "solo quien puede editar este informe puede enviar a Claude", no_session: "ninguna sesión de Claude lo está escuchando ahora; abre la sesión y vuelve a intentarlo", off: "esta vista no permite enviar a Claude" };
+  function pintarEstado() {
+    var el = document.getElementById("estado-claude");
+    if (!el) return;
+    el.classList.toggle("ok", estado === "available");
+    el.textContent = estado === "available" ? "Claude escucha este informe" : "Envío directo no disponible: se copiará el mensaje";
+    el.title = estado === "available" ? "" : (MOTIVOS[estado] || "");
+  }
+  function limpiar(t) { return String(t).replace(/[\u0000-\u001f\u007f]+/g, " ").replace(/\s+/g, " ").trim().slice(0, 3500); }
+  function copiar(texto, aviso) {
+    function fallo() { aviso.className = "aviso-envio mal"; aviso.textContent = "No se pudo copiar. Escríbelo en la sesión: " + texto; }
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(texto).then(function () {
+        aviso.className = "aviso-envio mal";
+        aviso.textContent = "Copiado. " + (MOTIVOS[estado] ? "Motivo: " + MOTIVOS[estado] + ". " : "") + "Pégalo en la sesión" + (cfg.sesion ? " (enlace arriba)." : ".");
+      }, fallo);
+    } else { fallo(); }
+  }
+  function enviar(btn) {
+    var bloque = btn.closest("[data-envio]");
+    var aviso = bloque.querySelector(".aviso-envio");
+    var id = bloque.getAttribute("data-envio");
+    var titulo = bloque.getAttribute("data-titulo") || "";
+    var cuerpo = btn.getAttribute("data-msg") || "";
+    var area = bloque.querySelector("textarea.msg");
+    if (bloque.querySelector(".preg")) {
+      var r = respuestas(bloque);
+      if (!r.texto) { aviso.className = "aviso-envio mal"; aviso.textContent = "Elige una opción o escribe tu respuesta en al menos una pregunta."; return; }
+      cuerpo = (cuerpo ? cuerpo + " " : "") + r.texto + (r.faltan ? " · (" + r.faltan + " sin responder todavía)" : "");
     }
-    temaBtns.forEach(function (b) { b.addEventListener("click", function () { setTema(b.getAttribute("data-tema")); }); });
-    var tema0 = "sistema";
-    try { tema0 = localStorage.getItem(KEY + "-tema") || "sistema"; } catch (e) { tema0 = "sistema"; }
-    setTema(tema0);
-
-    var tabs = document.querySelectorAll(".tab");
-    function showTab(name) {
-      tabs.forEach(function (t) {
-        var on = t.getAttribute("data-tab") === name;
-        t.setAttribute("aria-selected", on ? "true" : "false");
-        document.getElementById("tab-" + t.getAttribute("data-tab")).hidden = !on;
-      });
-      try { localStorage.setItem(KEY + "-tab", name); } catch (e) { /* sin almacenamiento */ }
+    if (area) {
+      var extra = area.value.trim();
+      if (!extra && !cuerpo) { aviso.className = "aviso-envio mal"; aviso.textContent = "Escribe qué quieres pedir."; area.focus(); return; }
+      if (extra) cuerpo = (cuerpo ? cuerpo + " · " : "") + extra;
     }
-    tabs.forEach(function (t) { t.addEventListener("click", function () { showTab(t.getAttribute("data-tab")); }); });
-    var start = "falta";
-    try { start = localStorage.getItem(KEY + "-tab") || "falta"; } catch (e) { start = "falta"; }
-    if (location.hash === "#resumen" || location.hash === "#falta") start = location.hash.slice(1);
-    showTab(start === "resumen" ? "resumen" : "falta");
+    var texto = limpiar("[Informe de sesión" + (titulo ? " · " + titulo : "") + "] " + cuerpo);
+    if (!comments || estado !== "available") { copiar(texto, aviso); return; }
+    btn.disabled = true; aviso.className = "aviso-envio"; aviso.textContent = "Enviando…";
+    var ancla = bloque.closest(".card") || bloque;
+    comments.anchorFor(ancla).then(function (anchor) {
+      return comments.sendToClaude({ anchor: anchor, text: texto });
+    }).then(function () {
+      var t = ahora();
+      enviados[id] = t; guardar(KEY + "-env", enviados);
+      aviso.className = "aviso-envio ok";
+      aviso.textContent = "Enviado a Claude · " + t + ". Responde en el hilo de comentarios y actualiza este informe.";
+      if (area) area.value = "";
+      render();
+    }).catch(function (e) {
+      var code = e && e.code;
+      if (code === "consent_required") { aviso.className = "aviso-envio mal"; aviso.textContent = "No se envió: hace falta permitir que esta página escriba comentarios. Vuelve a pulsar y acepta el permiso."; }
+      else if (code === "rate_limited") { aviso.className = "aviso-envio mal"; aviso.textContent = "Demasiados envíos seguidos. Espera un momento y vuelve a pulsar."; }
+      else { copiar(texto, aviso); }
+    }).then(function () { btn.disabled = false; });
+  }
+  document.querySelectorAll("[data-enviar]").forEach(function (b) { b.addEventListener("click", function () { enviar(b); }); });
 
-    render();
-    var first = document.querySelector(".step.is-now details.more");
-    if (first) first.open = true;
-  })();
+  pintarEstado();
+  if (window.claude && claude.use) {
+    claude.use("comments").then(function (c) {
+      comments = c;
+      if (!c || !c.canSendToClaude) { estado = "off"; pintarEstado(); return; }
+      function comprobar() { c.canSendToClaude().then(function (v) { estado = v; pintarEstado(); }, function () { estado = "off"; pintarEstado(); }); }
+      comprobar();
+      document.addEventListener("visibilitychange", function () { if (!document.hidden) comprobar(); });
+    });
+  }
+
+  render();
+  var first = document.querySelector(".step.is-now details.more");
+  if (first) first.open = true;
+})();
 </script>

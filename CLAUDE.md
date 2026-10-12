@@ -37,7 +37,9 @@ Repositorio de metodologías de IA de Fernando García Varela (D81). El trabajo 
 
 ## Informe de sesión (artifact)
 
-- **Toda sesión crea su informe de sesión como artifact en su primera respuesta, sin que el autor lo pida, y lo republica a la misma dirección en cada petición.** Estándar común con GEMA: modelo y guía en `.claude/artifact_sesion/` (barra con pestañas Resumen · Qué falta y tema Sistema · Claro · Oscuro, anillo de avance, «Lo pedido y lo hecho», pasos con «Por qué hace falta» y «Desbloquea»). La fuente de cada informe se guarda en `.claude/sesiones/AAAA-MM-DD_<tema>.html` y se sube con el trabajo de la sesión. Si la sesión retoma un trabajo que ya tiene informe, actualiza ese en vez de crear otro.
+- **Toda sesión crea su informe de sesión como artifact en su primera respuesta, sin que el autor lo pida, y lo republica a la misma dirección en cada petición.** El informe es la guía para continuar la sesión: todo lo que haya que hacer con Claude, incluidas las preguntas al autor, está en él con su botón «Enviar a Claude» (o «Seguir con esto»), y arriba «Hablar con Claude» para pedir algo nuevo. Lo que se pida durante la sesión se añade al informe; la sesión termina cuando no queda nada pendiente.
+- Estándar común con GEMA (pestañas Resumen · Qué falta, tema Sistema · Claro · Oscuro, anillo de avance, «Lo pedido y lo hecho», pasos con «Por qué hace falta» y «Desbloquea»). Guía, modelo y generador en `.claude/artifact_sesion/`: el contenido va en `.claude/sesiones/AAAA-MM-DD_<tema>.json`, `generar.py` escribe el HTML y se publica con `capabilities: {"comments": {}}`. Ambos ficheros se suben con el trabajo de la sesión. Si la sesión retoma un trabajo que ya tiene informe, actualiza ese.
+- Un comentario que empieza por `[Informe de sesión · …]` viene de un botón del informe: se atiende, se responde en su hilo y se actualiza el informe.
 
 ## Cierre de cada tarea
 

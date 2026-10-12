@@ -1,21 +1,34 @@
 # Informe de sesión (artifact) · estándar
 
-Toda sesión de Claude en AI_CONSULTING crea **su propio informe de sesión** como artifact de claude.ai **en su primera respuesta, sin que el autor lo pida**, y lo actualiza (republicando a la misma dirección) **en cada petición**. Es el mismo estándar que el proyecto GEMA.
+El informe es **la guía para continuar la sesión**. Toda sesión de Claude en AI_CONSULTING lo crea **en su primera respuesta, sin que el autor lo pida**, y lo vuelve a publicar a la misma dirección **en cada petición**. Todo lo que haya que hacer con Claude, incluidas las preguntas que el autor debe responder, está en el informe con su botón para enviar a Claude. Si en la sesión se pide algo nuevo, se añade al informe; la sesión termina cuando el informe no tiene nada pendiente. Mismo layout que GEMA.
+
+## Ficheros
+
+| Fichero | Para qué |
+|---|---|
+| `generar.py` | Genera el HTML desde el JSON de la sesión: `python .claude/artifact_sesion/generar.py .claude/sesiones/AAAA-MM-DD_tema.json` |
+| `estilo.css`, `informe.js` | Estilo y comportamiento comunes; el generador los incrusta (la página es un solo fichero). No se copian a mano. |
+| `modelo.json` / `modelo.html` | Ejemplo completo (el informe del Asistente SEVEN-G). |
 
 ## Cómo se hace
 
-1. Copiar `modelo.html` a `.claude/sesiones/AAAA-MM-DD_<tema-corto>.html` y cambiar solo el contenido; el CSS, la barra, el tema y el script no se tocan.
-2. Publicar con la herramienta Artifact (`icon: "checklist"`, sin `capabilities`: es una página estática). Guardar la dirección en la línea `meta` («Artifact: abrir en el panel») y decírsela al autor.
-3. En cada petición: añadir el pedido y lo hecho al Resumen, mover lo terminado a «Ya está hecho», ajustar «Ahora», cambiar «Última actualización» (hora de Madrid) y republicar el mismo fichero.
-4. Hacer commit del fichero junto con el resto del trabajo de la sesión. `.claude/` no se publica en el sitio.
+1. Copiar `modelo.json` a `.claude/sesiones/AAAA-MM-DD_<tema>.json` y escribir el contenido de la sesión.
+2. Generar el HTML y publicarlo con la herramienta Artifact: `icon: "checklist"` y **`capabilities: {"comments": {}}`** (sin esa capacidad los botones solo copian el mensaje). Poner en el JSON `url` (dirección del artifact) y `sesion_url` (`https://claude.ai/code/<id de sesión>`), regenerar y volver a publicar. Dar el enlace al autor.
+3. **En cada petición**: añadir el pedido (cita literal) y lo hecho (con commit) a `tl`; pasar lo terminado a `done`; añadir, quitar o reordenar `steps`; cambiar `act` (hora de Madrid); regenerar y publicar a la misma dirección.
+4. **Cuando llega un comentario enviado desde el informe** (empieza por `[Informe de sesión · …]`): hacer lo que pide o responder la pregunta, contestar en el hilo del comentario y actualizar el informe.
+5. Subir el JSON y el HTML con el resto del trabajo de la sesión. `.claude/` no se publica en el sitio.
 
-## Estructura obligatoria
+## Qué lleva el JSON
 
-- **Barra fija** con las pestañas **Resumen · Qué falta** y el selector de tema **Sistema · Claro · Oscuro** (se recuerda en el navegador).
-- **Cabecera**: título (nombre del hilo, dos a cuatro palabras), una frase de qué se busca y el **anillo** «n de m pasos hechos».
-- **Línea meta**: hilo, empezado, última actualización, rama, enlace al artifact, «Hora de Madrid».
-- **Resumen**: «Lo pedido y lo hecho» por fecha, con etiquetas *Pedido* (cita literal del autor), *Hecho* (con commit), *Decisión* y *Prueba real*; y «Tests» (lo que pasó, lo no ejecutado y por qué, lo pendiente de prueba humana).
-- **Qué falta**: filtros por quién lo hace (Todo · Lo mío · Lo que hace Claude · terceros), un recorrido de 3–4 pasos si ayuda, «Ya está hecho» y «Ahora, en este orden»: cada paso con casilla, qué es, **Por qué hace falta** y **Desbloquea**, etiquetas de quién y estado, y «Ver cómo» con los pasos concretos cuando los haya.
-- Pie: las casillas se guardan solo en este navegador y dónde está el detalle completo.
+- Cabecera: `title`, `h1`, `lead`, `hilo`, `inicio`, `act`, `rama`, `url`, `sesion_url`, `key` (clave única para el almacenamiento del navegador), `persona` (rótulo de terceros), `rapidos` (botones rápidos de «Hablar con Claude»).
+- `tl`: «Lo pedido y lo hecho» (`k`: pedido, hecho, decision, prueba). `tests`: estado de las pruebas.
+- `done`: lo ya hecho. `flow` (opcional): recorrido de 3–4 pasos.
+- `steps`: cada paso con `id`, `who` (tu, claude, persona), `tags` (tu, tudec, claude, persona), `h`, `p`, `why` (**Por qué hace falta** y **Desbloquea**), `nota`, `more` (pasos concretos) y una de estas dos:
+  - `accion`: `{boton, msg}` → botón que envía `msg` a Claude (por ejemplo, «Seguir con esto»).
+  - `preguntas`: `[{id, q, opciones, recomendada}]` y `boton` → el autor elige o escribe y envía todas las respuestas juntas.
 
-Colores: verde = hecho, ámbar = te toca, violeta = Claude, rosa = terceros.
+Todo paso que dependa de Claude lleva `accion`; toda decisión o pregunta al autor lleva `preguntas`. Arriba, «Hablar con Claude» sirve para pedir algo nuevo.
+
+## Cómo llega a la sesión
+
+Los botones usan `sendToClaude` de la capacidad `comments`: se publica un comentario en el informe y se avisa a la sesión que vigila el artifact (la que lo publicó). Si nadie lo escucha o no hay permiso, el botón copia el mensaje para pegarlo en la sesión. La primera vez el navegador pide permiso para escribir comentarios.

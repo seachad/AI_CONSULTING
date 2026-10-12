@@ -3,7 +3,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
 <style>
-  /* Layout: estándar de informes de sesión (el de GEMA): barra fija con pestañas Resumen · Qué falta y selector de tema; cabecera con anillo de avance; una vía vertical de pasos. Color: verde = hecho, ámbar = te toca, violeta = lo hace Claude, rosa = terceros. */
+  /* Estándar de informe de sesión (el de GEMA): barra fija con pestañas Resumen · Qué falta y tema; anillo de avance; vía vertical de pasos. Verde = hecho, ámbar = te toca, violeta = Claude, rosa = terceros. */
   :root {
     --bg: #eef2f5; --surface: #ffffff; --surface2: #f5f8fa; --ink: #14202c; --muted: #566676; --line: #d5dde5;
     --accent: #0a7c76; --accent-soft: #d8f0ee; --turn: #a8570a; --turn-soft: #fde9cf;
@@ -140,6 +140,35 @@
   .tests div { background: var(--surface); border: 1px solid var(--line); border-radius: 10px; padding: 10px 14px; }
   @media (max-width: 560px) { .tl li { grid-template-columns: 1fr; } }
   @media (prefers-reduced-motion: reduce) { .ring .bar { transition: none; } }
+
+  /* Conversación con Claude desde el informe */
+  .claude-box { background: var(--surface); border: 1px solid var(--line); border-radius: 14px; padding: 14px 16px; margin: 0 0 8px; display: grid; gap: 10px; }
+  .claude-box h2 { font-size: 1.1rem; display: flex; gap: 10px; align-items: baseline; flex-wrap: wrap; }
+  .claude-box h2 small { font: 500 .82rem var(--font-body); color: var(--muted); }
+  .estado-claude { font-size: .82rem; font-weight: 600; padding: 3px 10px; border-radius: 999px; background: var(--surface2); color: var(--muted); border: 1px solid var(--line); }
+  .estado-claude.ok { background: var(--claude-soft); color: var(--claude); border-color: transparent; }
+  textarea.msg { width: 100%; min-height: 70px; resize: vertical; font: inherit; color: var(--ink); background: var(--surface2); border: 1px solid var(--line); border-radius: 10px; padding: 9px 11px; }
+  textarea.msg:focus-visible { outline: 2px solid var(--claude); outline-offset: 1px; }
+  .acciones { display: flex; gap: 8px; flex-wrap: wrap; align-items: center; padding: 0 16px 14px 50px; }
+  .claude-box .acciones { padding: 0; }
+  .btn { border: 1px solid var(--claude); background: var(--claude); color: var(--bg); border-radius: 999px; padding: 7px 15px; font-size: .9rem; font-weight: 600; cursor: pointer; }
+  .btn.sec { background: var(--surface); color: var(--claude); }
+  .btn:disabled { opacity: .55; cursor: default; }
+  .btn:focus-visible { outline: 2px solid var(--claude); outline-offset: 2px; }
+  .aviso-envio { font-size: .85rem; color: var(--muted); }
+  .aviso-envio.ok { color: var(--accent); font-weight: 600; }
+  .aviso-envio.mal { color: var(--turn); font-weight: 600; }
+  .preguntas { display: grid; gap: 14px; padding: 0 16px 14px 50px; }
+  .preg { display: grid; gap: 8px; background: var(--surface2); border: 1px solid var(--line); border-radius: 10px; padding: 10px 12px; min-width: 0; }
+  .preg > b { font-family: var(--font-display); font-size: .98rem; }
+  .preg .opts { display: flex; gap: 6px; flex-wrap: wrap; }
+  .opt { border: 1px solid var(--line); background: var(--surface); color: var(--ink); padding: 6px 12px; border-radius: 999px; cursor: pointer; font-size: .86rem; text-align: left; }
+  .opt[aria-pressed="true"] { background: var(--claude); color: var(--bg); border-color: var(--claude); }
+  .opt .rec { font-size: .72rem; font-weight: 700; text-transform: uppercase; letter-spacing: .05em; margin-left: 6px; opacity: .8; }
+  .opt:focus-visible { outline: 2px solid var(--claude); outline-offset: 2px; }
+  .preg input.otra { font: inherit; font-size: .88rem; color: var(--ink); background: var(--surface); border: 1px solid var(--line); border-radius: 8px; padding: 6px 9px; width: 100%; }
+  .enviado-tag { background: var(--claude-soft); color: var(--claude); }
+  @media (max-width: 560px) { .acciones, .preguntas { padding-left: 16px; } }
 </style>
 <div class="wrap">
   <nav class="bar" aria-label="Menú del informe">
@@ -161,109 +190,212 @@
       <div><b id="cuenta">0 de 0</b><span>pasos hechos</span></div>
     </div>
   </header>
-  <p class="meta"><span>Hilo: <b>Sesión SEVEN-G vs Garner</b></span><span>Empezado: <b>2026-10-01</b></span><span>Última actualización: <b>2026-10-12 20:30</b></span><span>Rama: <b>claude/lucid-euler-nhim3l</b></span><span>Artifact: <a href="https://claude.ai/artifact/8tqjDFhRhY5WaCEwtrM5GK" target="_blank" rel="noopener">abrir en el panel</a></span><span>Hora de Madrid</span></p>
+  <p class="meta"><span>Hilo: <b>Sesión SEVEN-G vs Garner</b></span><span>Empezado: <b>2026-10-01</b></span><span>Última actualización: <b>2026-10-12 21:10</b></span><span>Rama: <b>claude/lucid-euler-nhim3l</b></span><span>Artifact: <a href="https://claude.ai/artifact/8tqjDFhRhY5WaCEwtrM5GK" target="_blank" rel="noopener">abrir en el panel</a></span><span>Sesión: <a href="https://claude.ai/code/session_013EFyQ31MsjaSMXKD7fPVkV" target="_blank" rel="noopener">abrir</a></span><span>Hora de Madrid</span></p>
+  <section class="claude-box" data-envio="general" data-titulo="Petición general"><h2>Hablar con Claude <small>lo que envíes aquí llega a esta sesión</small> <span class="estado-claude" id="estado-claude"></span></h2><textarea class="msg" id="msg-general" aria-label="Mensaje para Claude" placeholder="Pide algo nuevo, haz una pregunta o di cómo seguir. Si es trabajo nuevo, Claude lo añade a este informe."></textarea><div class="acciones"><button type="button" class="btn" data-enviar>Enviar a Claude</button><button type="button" class="btn sec" data-enviar data-msg="Sigue con el siguiente paso">Sigue con el siguiente paso</button><button type="button" class="btn sec" data-enviar data-msg="Resume dónde estamos y qué me toca">Resume dónde estamos y qué me toca</button><span class="aviso-envio" role="status"></span></div></section>
   <div id="tab-resumen" role="tabpanel" aria-labelledby="t-resumen" hidden>
-    <section class="block"><h2>Lo pedido y lo hecho <small>por orden de fecha</small></h2><ol class="tl"><li><time>2026-10-01<i>07:43</i></time><div class="what"><span class="kind k-pedido">Pedido</span>«Sí, hazlo.» (aplicar las correcciones del borrador de comparación con Gartner).</div></li><li><time>2026-10-01<i>07:48</i></time><div class="what"><span class="kind k-hecho">Hecho</span>Documento 04 §8.2 cotejado con las fuentes oficiales de gartner.com (ES/EN)<small>Herramienta de madurez, radar de oportunidades y previsiones; nueve fuentes MER-GAR-01 a 09 en el registro de referencias. Verificación en verde. Commit 7f16171.</small></div></li><li><time>2026-10-01<i>07:52</i></time><div class="what"><span class="kind k-pedido">Pedido</span>«Solo has añadido comparativa con Gartner, verdad? … no has modificado nada en la metodología, índice de madurez, etc.»<small>Confirmado: solo cambia el documento 04 (explicativo, sin reglas), el registro de referencias y los índices regenerados.</small></div></li><li><time>2026-10-01<i>12:04</i></time><div class="what"><span class="kind k-pedido">Pedido</span>«El meter referencias a Gartner puede tener problemas de IP… yo pondría comparación con otras metodologías de mercado y ahí pondría, de momento, a Gartner.»</div></li><li><time>2026-10-01<i>12:07</i></time><div class="what"><span class="kind k-decision">Decisión</span>D143: §8 «Comparación con otras metodologías de mercado» y criterios para citar a terceros<small>No copiar su contenido, no sugerir vínculo y no usar su investigación como argumento a favor de SEVEN-G; se suavizan los párrafos más cercanos a ese límite. Commit eaa00b6.</small></div></li><li><time>2026-10-12<i>20:30</i></time><div class="what"><span class="kind k-hecho">Hecho</span>Informe de sesión con el estándar GEMA<small>Creado desde otra sesión porque esta está inactiva.</small></div></li></ol></section>
+    <section class="block"><h2>Lo pedido y lo hecho <small>por orden de fecha</small></h2><ol class="tl"><li><time>2026-10-01<i>07:43</i></time><div class="what"><span class="kind k-pedido">Pedido</span>«Sí, hazlo.» (aplicar las correcciones del borrador de comparación con Gartner).</div></li><li><time>2026-10-01<i>07:48</i></time><div class="what"><span class="kind k-hecho">Hecho</span>Documento 04 §8.2 cotejado con las fuentes oficiales de gartner.com (ES/EN)<small>Herramienta de madurez, radar de oportunidades y previsiones; nueve fuentes MER-GAR-01 a 09 en el registro de referencias. Verificación en verde. Commit 7f16171.</small></div></li><li><time>2026-10-01<i>07:52</i></time><div class="what"><span class="kind k-pedido">Pedido</span>«Solo has añadido comparativa con Gartner, verdad? … no has modificado nada en la metodología, índice de madurez, etc.»<small>Confirmado: solo cambia el documento 04 (explicativo, sin reglas), el registro de referencias y los índices regenerados.</small></div></li><li><time>2026-10-01<i>12:04</i></time><div class="what"><span class="kind k-pedido">Pedido</span>«El meter referencias a Gartner puede tener problemas de IP… yo pondría comparación con otras metodologías de mercado y ahí pondría, de momento, a Gartner.»</div></li><li><time>2026-10-01<i>12:07</i></time><div class="what"><span class="kind k-decision">Decisión</span>D143: §8 «Comparación con otras metodologías de mercado» y criterios para citar a terceros<small>No copiar su contenido, no sugerir vínculo y no usar su investigación como argumento a favor de SEVEN-G; se suavizan los párrafos más cercanos a ese límite. Commit eaa00b6.</small></div></li><li><time>2026-10-12<i>20:30</i></time><div class="what"><span class="kind k-hecho">Hecho</span>Informe de sesión con el estándar GEMA<small>Creado desde otra sesión porque esta está inactiva.</small></div></li><li><time>2026-10-12<i>21:10</i></time><div class="what"><span class="kind k-hecho">Hecho</span>Informe interactivo<small>Preguntas y botones que envían a Claude.</small></div></li></ol></section>
     <section class="block"><h2>Tests <small>estado actual</small></h2><div class="tests"><div><b>Verificación de coherencia en verde</b> en las dos entregas del 2026-10-01, con revisión visual del PDF del documento 04.</div><div><b>Pendiente:</b> las citas de gartner.com no se pudieron abrir en la propia página desde la sesión; conviene comprobarlas en un navegador antes de llevarlo a <span class="mono">main</span>.</div></div></section>
   </div>
   <div id="tab-falta" role="tabpanel" aria-labelledby="t-falta">
-  <div class="filters" role="group" aria-label="Filtrar por quién lo hace">
-    <span class="lbl">Ver</span>
-    <button class="chip" data-f="todo" aria-pressed="true">Todo</button>
-    <button class="chip" data-f="tu" aria-pressed="false">Lo mío</button>
-    <button class="chip" data-f="claude" aria-pressed="false">Lo que hace Claude</button>
+    <div class="filters" role="group" aria-label="Filtrar por quién lo hace">
+      <span class="lbl">Ver</span>
+      <button class="chip" data-f="todo" aria-pressed="true">Todo</button>
+      <button class="chip" data-f="tu" aria-pressed="false">Lo mío</button>
+      <button class="chip" data-f="claude" aria-pressed="false">Lo que hace Claude</button>
+      
+    </div>
+    
+    <section class="block"><h2>Ya está hecho <small id="n-hecho"></small></h2><ul class="done-list"><li><svg viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><div>Comparación con Gartner cotejada con sus fuentes<small>Documento 04 §8.2 (ES/EN), commit 7f16171.</small></div></li><li><svg viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><div>Sección genérica «de mercado» y criterios para citar a terceros<small>D143, commit eaa00b6.</small></div></li></ul></section>
+    <section class="block"><h2>Ahora <small>en este orden</small></h2><ol class="steps" id="ahora"><li class="step" data-id="citas" data-who="tu"><div class="card"><div class="head"><input type="checkbox" id="c-citas" aria-label="Marcar como hecho: Comprobar en el navegador las nueve citas de Gartner"><div class="txt"><h3>Comprobar en el navegador las nueve citas de Gartner</h3><p>Las entradas MER-GAR-01 a 09 del registro de referencias.</p><p class="why"><b>Por qué hace falta:</b> la sesión no pudo abrir las páginas de gartner.com, y D41 exige referencias verificadas. <b>Desbloquea:</b> llevar la rama a <span class="mono">main</span>.</p><div class="tags"><span class="tag tu">Tú</span><span class="tag estado"></span><span class="tag enviado-tag" hidden></span><span class="tag nota">10 min</span></div></div></div><div class="envio" data-envio="citas" data-titulo="Comprobar en el navegador las nueve citas de Gartner"><div class="acciones"><button type="button" class="btn" data-enviar data-msg="He comprobado en el navegador las nueve citas de Gartner (MER-GAR-01 a 09). Anota el resultado: ">Ya las he comprobado</button><span class="aviso-envio" role="status"></span></div></div></div></li><li class="step" data-id="main" data-who="tu"><div class="card"><div class="head"><input type="checkbox" id="c-main" aria-label="Marcar como hecho: Decidir si la rama claude/lucid-euler-nhim3l se integra en main"><div class="txt"><h3>Decidir si la rama <code>claude/lucid-euler-nhim3l</code> se integra en <code>main</code></h3><p>Sigue sin integrar a 2026-10-12.</p><p class="why"><b>Por qué hace falta:</b> mientras no esté en <span class="mono">main</span>, el sitio publicado no muestra la sección 8. <b>Ojo:</b> la rama registra D143; la de Express usa D144–D153 y deben integrarse en ese orden. <b>Desbloquea:</b> publicar la comparación.</p><div class="tags"><span class="tag tu">Tú decides</span><span class="tag estado"></span><span class="tag enviado-tag" hidden></span></div></div></div><div class="envio" data-envio="main" data-titulo="Decidir si la rama claude/lucid-euler-nhim3l se integra en main"><div class="preguntas"><div class="preg" data-q="Integrar claude/lucid-euler-nhim3l en main"><b>Integrar claude/lucid-euler-nhim3l en main</b><div class="opts"><button type="button" class="opt" aria-pressed="false" data-valor="Sí, intégrala (antes que la rama de Express)">Sí, intégrala (antes que la rama de Express)</button><button type="button" class="opt" aria-pressed="false" data-valor="Todavía no">Todavía no</button></div><input class="otra" id="o-main-q" aria-label="Otra respuesta: Integrar claude/lucid-euler-nhim3l en main" placeholder="Otra respuesta (opcional)"></div></div><div class="acciones"><button type="button" class="btn" data-enviar data-msg="">Enviar decisión a Claude</button><span class="aviso-envio" role="status"></span></div></div></div></li><li class="step" data-id="otras" data-who="tu claude"><div class="card"><div class="head"><input type="checkbox" id="c-otras" aria-label="Marcar como hecho: Añadir otras metodologías a la comparación cuando surjan"><div class="txt"><h3>Añadir otras metodologías a la comparación cuando surjan</h3><p>La sección ya es genérica; cada metodología nueva sigue los criterios de D143.</p><p class="why"><b>Por qué:</b> lo pediste el 2026-10-01. <b>Desbloquea:</b> una comparación de mercado más completa.</p><div class="tags"><span class="tag tu">Tú decides</span><span class="tag claude">Claude</span><span class="tag estado"></span><span class="tag enviado-tag" hidden></span><span class="tag nota">cuando toque</span></div></div></div><div class="envio" data-envio="otras" data-titulo="Añadir otras metodologías a la comparación cuando surjan"><div class="acciones"><button type="button" class="btn" data-enviar data-msg="Propón la siguiente metodología de mercado para la comparación del documento 04 §8, con sus fuentes oficiales y siguiendo D143.">Propón otra metodología</button><span class="aviso-envio" role="status"></span></div></div></div></li></ol></section>
   </div>
-  <section class="block"><h2>Ya está hecho <small id="n-hecho"></small></h2><ul class="done-list"><li><svg viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><div>Comparación con Gartner cotejada con sus fuentes<small>Documento 04 §8.2 (ES/EN), commit 7f16171.</small></div></li><li><svg viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><div>Sección genérica «de mercado» y criterios para citar a terceros<small>D143, commit eaa00b6.</small></div></li></ul></section>
-  <section class="block"><h2>Ahora <small>en este orden</small></h2><ol class="steps" id="ahora"><li class="step" data-id="citas" data-who="tu"><div class="card"><div class="head"><input type="checkbox" id="c-citas" aria-label="Marcar como hecho: Comprobar en el navegador las nueve citas de Gartner"><div class="txt"><h3>Comprobar en el navegador las nueve citas de Gartner</h3><p>Las entradas MER-GAR-01 a 09 del registro de referencias.</p><p class="why"><b>Por qué hace falta:</b> la sesión no pudo abrir las páginas de gartner.com, y D41 exige referencias verificadas. <b>Desbloquea:</b> llevar la rama a <span class="mono">main</span>.</p><div class="tags"><span class="tag tu">Tú</span><span class="tag estado"></span><span class="tag nota">10 min</span></div></div></div></div></li><li class="step" data-id="main" data-who="tu"><div class="card"><div class="head"><input type="checkbox" id="c-main" aria-label="Marcar como hecho: Decidir si la rama claude/lucid-euler-nhim3l se integra en main"><div class="txt"><h3>Decidir si la rama <code>claude/lucid-euler-nhim3l</code> se integra en <code>main</code></h3><p>Sigue sin integrar a 2026-10-12.</p><p class="why"><b>Por qué hace falta:</b> mientras no esté en <span class="mono">main</span>, el sitio publicado no muestra la sección 8. <b>Ojo:</b> la rama registra D143; la de Express usa D144–D153 y deben integrarse en ese orden. <b>Desbloquea:</b> publicar la comparación.</p><div class="tags"><span class="tag tu">Tú decides</span><span class="tag estado"></span></div></div></div></div></li><li class="step" data-id="otras" data-who="tu claude"><div class="card"><div class="head"><input type="checkbox" id="c-otras" aria-label="Marcar como hecho: Añadir otras metodologías a la comparación cuando surjan"><div class="txt"><h3>Añadir otras metodologías a la comparación cuando surjan</h3><p>La sección ya es genérica; cada metodología nueva sigue los criterios de D143.</p><p class="why"><b>Por qué:</b> lo pediste el 2026-10-01. <b>Desbloquea:</b> una comparación de mercado más completa.</p><div class="tags"><span class="tag tu">Tú decides</span><span class="tag claude">Claude</span><span class="tag estado"></span><span class="tag nota">cuando toque</span></div></div></div></div></li></ol></section>
-  </div>
-  <p class="foot">Las casillas se guardan solo en este navegador. Informe de la sesión: se actualiza en cada petición. Detalle en el documento 04 §8 (ES/EN) y en el registro de decisiones (D143) de la rama <span class="mono">claude/lucid-euler-nhim3l</span>.</p>
+  <p class="foot">Las casillas y los envíos se recuerdan solo en este navegador. Lo que envías a Claude queda como comentario en este informe; la sesión responde en el hilo y vuelve a publicar el informe con lo nuevo. La sesión termina cuando aquí no queda nada pendiente. Detalle en el documento 04 §8 (ES/EN) y en el registro de decisiones (D143) de la rama <span class="mono">claude/lucid-euler-nhim3l</span>. Esta sesión está inactiva: los envíos desde este informe los recibe la sesión «Plugin AI Consultant», que lo creó y lo vigila.</p>
 </div>
+<script>window.INFORME = {"key": "aic-seveng-vs-gartner", "base": 2, "sesion": "https://claude.ai/code/session_013EFyQ31MsjaSMXKD7fPVkV"};</script>
+<script>(function () {
+  /* Informe de sesión: casillas, filtros, tema, pestañas y conversación con Claude.
+     Los botones envían un comentario a Claude (capacidad comments, sendToClaude): llega a la sesión
+     que vigila este artifact, que responde en el hilo y vuelve a publicar el informe. */
+  var cfg = window.INFORME || {};
+  var KEY = cfg.key || "informe-sesion";
+  var BASE = cfg.base || 0;
+  var steps = Array.prototype.slice.call(document.querySelectorAll(".step"));
+  var saved = {}, enviados = {};
+  try { saved = JSON.parse(localStorage.getItem(KEY) || "{}") || {}; } catch (e) { saved = {}; }
+  try { enviados = JSON.parse(localStorage.getItem(KEY + "-env") || "{}") || {}; } catch (e) { enviados = {}; }
+  function guardar(k, v) { try { localStorage.setItem(k, JSON.stringify(v)); } catch (e) { /* sin almacenamiento */ } }
+  function ahora() {
+    try { return new Intl.DateTimeFormat("sv-SE", { timeZone: "Europe/Madrid", dateStyle: "short", timeStyle: "short" }).format(new Date()); }
+    catch (e) { return new Date().toISOString().slice(0, 16).replace("T", " "); }
+  }
 
-<script>
-  (function () {
-    var KEY = "aic-seveng-vs-gartner";
-    var BASE = 2; /* cosas ya hechas antes de esta lista */
-    var steps = Array.prototype.slice.call(document.querySelectorAll(".step"));
-    var saved = {};
-    try { saved = JSON.parse(localStorage.getItem(KEY) || "{}") || {}; } catch (e) { saved = {}; }
-    function persist() { try { localStorage.setItem(KEY, JSON.stringify(saved)); } catch (e) { /* sin almacenamiento */ } }
-
-    function render() {
-      var checked = 0, firstOpen = null;
-      steps.forEach(function (s) {
-        var done = !!saved[s.getAttribute("data-id")];
-        s.querySelector("input[type=checkbox]").checked = done;
-        if (done) checked++; else if (!firstOpen) firstOpen = s;
-      });
-      var total = BASE + steps.length, count = BASE + checked;
-      steps.forEach(function (s) {
-        var id = s.getAttribute("data-id"), done = !!saved[id], now = s === firstOpen, when = saved[id];
-        s.classList.toggle("is-done", done);
-        s.classList.toggle("is-now", now);
-        s.querySelector(".tag.estado").textContent = done ? "Hecho" + (typeof when === "string" && when.length > 4 ? " · " + when : "") : now ? "Te toca ahora" : "Pendiente";
-      });
-      document.getElementById("cuenta").textContent = count + " de " + total;
-      document.getElementById("n-hecho").textContent = BASE + " cosas";
-      var c = 2 * Math.PI * 35;
-      document.getElementById("bar").style.strokeDashoffset = String(c * (1 - count / total));
-    }
-
+  function render() {
+    var checked = 0, firstOpen = null;
     steps.forEach(function (s) {
-      s.querySelector("input[type=checkbox]").addEventListener("change", function (ev) {
-        var stamp = false;
-        if (ev.target.checked) {
-          try { stamp = new Intl.DateTimeFormat("sv-SE", { timeZone: "Europe/Madrid", dateStyle: "short", timeStyle: "short" }).format(new Date()); }
-          catch (e) { stamp = new Date().toISOString().slice(0, 16).replace("T", " "); }
-        }
-        saved[s.getAttribute("data-id")] = stamp || false;
-        persist(); render();
+      var done = !!saved[s.getAttribute("data-id")];
+      s.querySelector("input[type=checkbox]").checked = done;
+      if (done) checked++; else if (!firstOpen) firstOpen = s;
+    });
+    var total = BASE + steps.length, count = BASE + checked;
+    steps.forEach(function (s) {
+      var id = s.getAttribute("data-id"), done = !!saved[id], now = s === firstOpen, when = saved[id];
+      s.classList.toggle("is-done", done);
+      s.classList.toggle("is-now", now);
+      s.querySelector(".tag.estado").textContent = done ? "Hecho" + (typeof when === "string" && when.length > 4 ? " · " + when : "") : now ? "Te toca ahora" : "Pendiente";
+      var env = s.querySelector(".tag.enviado-tag");
+      if (env) { env.hidden = !enviados[id]; env.textContent = enviados[id] ? "Enviado a Claude · " + enviados[id] : ""; }
+    });
+    document.getElementById("cuenta").textContent = count + " de " + total;
+    var nh = document.getElementById("n-hecho"); if (nh) nh.textContent = BASE + " cosas";
+    var c = 2 * Math.PI * 35;
+    document.getElementById("bar").style.strokeDashoffset = String(c * (1 - (total ? count / total : 0)));
+  }
+
+  steps.forEach(function (s) {
+    s.querySelector("input[type=checkbox]").addEventListener("change", function (ev) {
+      saved[s.getAttribute("data-id")] = ev.target.checked ? ahora() : false;
+      guardar(KEY, saved); render();
+    });
+  });
+
+  var chips = document.querySelectorAll(".chip");
+  chips.forEach(function (chip) {
+    chip.addEventListener("click", function () {
+      var f = chip.getAttribute("data-f");
+      chips.forEach(function (c) { c.setAttribute("aria-pressed", c === chip ? "true" : "false"); });
+      steps.forEach(function (s) {
+        var who = (s.getAttribute("data-who") || "").split(" ");
+        s.classList.toggle("hidden-by-filter", f !== "todo" && who.indexOf(f) === -1);
       });
     });
+  });
 
-    var chips = document.querySelectorAll(".chip");
-    chips.forEach(function (chip) {
-      chip.addEventListener("click", function () {
-        var f = chip.getAttribute("data-f");
-        chips.forEach(function (c) { c.setAttribute("aria-pressed", c === chip ? "true" : "false"); });
-        steps.forEach(function (s) {
-          var who = (s.getAttribute("data-who") || "").split(" ");
-          s.classList.toggle("hidden-by-filter", f !== "todo" && who.indexOf(f) === -1);
-        });
+  /* Tema: Sistema, Claro u Oscuro */
+  var root = document.documentElement, hostTheme = root.getAttribute("data-theme");
+  var temaBtns = document.querySelectorAll("[data-tema]");
+  function setTema(name) {
+    if (name === "claro") root.setAttribute("data-theme", "light");
+    else if (name === "oscuro") root.setAttribute("data-theme", "dark");
+    else if (hostTheme) root.setAttribute("data-theme", hostTheme);
+    else root.removeAttribute("data-theme");
+    temaBtns.forEach(function (b) { b.setAttribute("aria-pressed", b.getAttribute("data-tema") === name ? "true" : "false"); });
+    try { localStorage.setItem(KEY + "-tema", name); } catch (e) { /* sin almacenamiento */ }
+  }
+  temaBtns.forEach(function (b) { b.addEventListener("click", function () { setTema(b.getAttribute("data-tema")); }); });
+  var tema0 = "sistema";
+  try { tema0 = localStorage.getItem(KEY + "-tema") || "sistema"; } catch (e) { tema0 = "sistema"; }
+  setTema(tema0);
+
+  /* Pestañas */
+  var tabs = document.querySelectorAll(".tab");
+  function showTab(name) {
+    tabs.forEach(function (t) {
+      var on = t.getAttribute("data-tab") === name;
+      t.setAttribute("aria-selected", on ? "true" : "false");
+      document.getElementById("tab-" + t.getAttribute("data-tab")).hidden = !on;
+    });
+    try { localStorage.setItem(KEY + "-tab", name); } catch (e) { /* sin almacenamiento */ }
+  }
+  tabs.forEach(function (t) { t.addEventListener("click", function () { showTab(t.getAttribute("data-tab")); }); });
+  var start = "falta";
+  try { start = localStorage.getItem(KEY + "-tab") || "falta"; } catch (e) { start = "falta"; }
+  if (location.hash === "#resumen" || location.hash === "#falta") start = location.hash.slice(1);
+  showTab(start === "resumen" ? "resumen" : "falta");
+
+  /* Preguntas: una opción por pregunta o texto propio */
+  document.querySelectorAll(".preg").forEach(function (p) {
+    var opts = p.querySelectorAll(".opt");
+    opts.forEach(function (o) {
+      o.addEventListener("click", function () {
+        var on = o.getAttribute("aria-pressed") !== "true";
+        opts.forEach(function (x) { x.setAttribute("aria-pressed", "false"); });
+        o.setAttribute("aria-pressed", on ? "true" : "false");
       });
     });
+  });
+  function respuestas(cont) {
+    var partes = [], faltan = 0;
+    cont.querySelectorAll(".preg").forEach(function (p) {
+      var sel = p.querySelector('.opt[aria-pressed="true"]');
+      var otra = p.querySelector("input.otra");
+      var r = (otra && otra.value.trim()) || (sel ? sel.getAttribute("data-valor") : "");
+      if (!r) { faltan++; return; }
+      partes.push(p.getAttribute("data-q") + ": " + r);
+    });
+    return { texto: partes.join(" · "), faltan: faltan };
+  }
 
-    var root = document.documentElement, hostTheme = root.getAttribute("data-theme");
-    var temaBtns = document.querySelectorAll("[data-tema]");
-    function setTema(name) {
-      if (name === "claro") root.setAttribute("data-theme", "light");
-      else if (name === "oscuro") root.setAttribute("data-theme", "dark");
-      else if (hostTheme) root.setAttribute("data-theme", hostTheme);
-      else root.removeAttribute("data-theme");
-      temaBtns.forEach(function (b) { b.setAttribute("aria-pressed", b.getAttribute("data-tema") === name ? "true" : "false"); });
-      try { localStorage.setItem(KEY + "-tema", name); } catch (e) { /* sin almacenamiento */ }
+  /* Envío a Claude */
+  var comments = null, estado = "off";
+  var MOTIVOS = { writers_only: "solo quien puede editar este informe puede enviar a Claude", no_session: "ninguna sesión de Claude lo está escuchando ahora; abre la sesión y vuelve a intentarlo", off: "esta vista no permite enviar a Claude" };
+  function pintarEstado() {
+    var el = document.getElementById("estado-claude");
+    if (!el) return;
+    el.classList.toggle("ok", estado === "available");
+    el.textContent = estado === "available" ? "Claude escucha este informe" : "Envío directo no disponible: se copiará el mensaje";
+    el.title = estado === "available" ? "" : (MOTIVOS[estado] || "");
+  }
+  function limpiar(t) { return String(t).replace(/[\u0000-\u001f\u007f]+/g, " ").replace(/\s+/g, " ").trim().slice(0, 3500); }
+  function copiar(texto, aviso) {
+    function fallo() { aviso.className = "aviso-envio mal"; aviso.textContent = "No se pudo copiar. Escríbelo en la sesión: " + texto; }
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(texto).then(function () {
+        aviso.className = "aviso-envio mal";
+        aviso.textContent = "Copiado. " + (MOTIVOS[estado] ? "Motivo: " + MOTIVOS[estado] + ". " : "") + "Pégalo en la sesión" + (cfg.sesion ? " (enlace arriba)." : ".");
+      }, fallo);
+    } else { fallo(); }
+  }
+  function enviar(btn) {
+    var bloque = btn.closest("[data-envio]");
+    var aviso = bloque.querySelector(".aviso-envio");
+    var id = bloque.getAttribute("data-envio");
+    var titulo = bloque.getAttribute("data-titulo") || "";
+    var cuerpo = btn.getAttribute("data-msg") || "";
+    var area = bloque.querySelector("textarea.msg");
+    if (bloque.querySelector(".preg")) {
+      var r = respuestas(bloque);
+      if (!r.texto) { aviso.className = "aviso-envio mal"; aviso.textContent = "Elige una opción o escribe tu respuesta en al menos una pregunta."; return; }
+      cuerpo = (cuerpo ? cuerpo + " " : "") + r.texto + (r.faltan ? " · (" + r.faltan + " sin responder todavía)" : "");
     }
-    temaBtns.forEach(function (b) { b.addEventListener("click", function () { setTema(b.getAttribute("data-tema")); }); });
-    var tema0 = "sistema";
-    try { tema0 = localStorage.getItem(KEY + "-tema") || "sistema"; } catch (e) { tema0 = "sistema"; }
-    setTema(tema0);
-
-    var tabs = document.querySelectorAll(".tab");
-    function showTab(name) {
-      tabs.forEach(function (t) {
-        var on = t.getAttribute("data-tab") === name;
-        t.setAttribute("aria-selected", on ? "true" : "false");
-        document.getElementById("tab-" + t.getAttribute("data-tab")).hidden = !on;
-      });
-      try { localStorage.setItem(KEY + "-tab", name); } catch (e) { /* sin almacenamiento */ }
+    if (area) {
+      var extra = area.value.trim();
+      if (!extra && !cuerpo) { aviso.className = "aviso-envio mal"; aviso.textContent = "Escribe qué quieres pedir."; area.focus(); return; }
+      if (extra) cuerpo = (cuerpo ? cuerpo + " · " : "") + extra;
     }
-    tabs.forEach(function (t) { t.addEventListener("click", function () { showTab(t.getAttribute("data-tab")); }); });
-    var start = "falta";
-    try { start = localStorage.getItem(KEY + "-tab") || "falta"; } catch (e) { start = "falta"; }
-    if (location.hash === "#resumen" || location.hash === "#falta") start = location.hash.slice(1);
-    showTab(start === "resumen" ? "resumen" : "falta");
+    var texto = limpiar("[Informe de sesión" + (titulo ? " · " + titulo : "") + "] " + cuerpo);
+    if (!comments || estado !== "available") { copiar(texto, aviso); return; }
+    btn.disabled = true; aviso.className = "aviso-envio"; aviso.textContent = "Enviando…";
+    var ancla = bloque.closest(".card") || bloque;
+    comments.anchorFor(ancla).then(function (anchor) {
+      return comments.sendToClaude({ anchor: anchor, text: texto });
+    }).then(function () {
+      var t = ahora();
+      enviados[id] = t; guardar(KEY + "-env", enviados);
+      aviso.className = "aviso-envio ok";
+      aviso.textContent = "Enviado a Claude · " + t + ". Responde en el hilo de comentarios y actualiza este informe.";
+      if (area) area.value = "";
+      render();
+    }).catch(function (e) {
+      var code = e && e.code;
+      if (code === "consent_required") { aviso.className = "aviso-envio mal"; aviso.textContent = "No se envió: hace falta permitir que esta página escriba comentarios. Vuelve a pulsar y acepta el permiso."; }
+      else if (code === "rate_limited") { aviso.className = "aviso-envio mal"; aviso.textContent = "Demasiados envíos seguidos. Espera un momento y vuelve a pulsar."; }
+      else { copiar(texto, aviso); }
+    }).then(function () { btn.disabled = false; });
+  }
+  document.querySelectorAll("[data-enviar]").forEach(function (b) { b.addEventListener("click", function () { enviar(b); }); });
 
-    render();
-    var first = document.querySelector(".step.is-now details.more");
-    if (first) first.open = true;
-  })();
+  pintarEstado();
+  if (window.claude && claude.use) {
+    claude.use("comments").then(function (c) {
+      comments = c;
+      if (!c || !c.canSendToClaude) { estado = "off"; pintarEstado(); return; }
+      function comprobar() { c.canSendToClaude().then(function (v) { estado = v; pintarEstado(); }, function () { estado = "off"; pintarEstado(); }); }
+      comprobar();
+      document.addEventListener("visibilitychange", function () { if (!document.hidden) comprobar(); });
+    });
+  }
+
+  render();
+  var first = document.querySelector(".step.is-now details.more");
+  if (first) first.open = true;
+})();
 </script>
