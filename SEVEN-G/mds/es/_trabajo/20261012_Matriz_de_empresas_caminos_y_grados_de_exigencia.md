@@ -369,3 +369,68 @@ Orden propuesto: primero los criterios y las métricas (son datos, una sesión),
 6. **Si los `.docx` de las plantillas se generan en tres versiones** (M · M+E · completa) o solo la completa con los grados marcados.
 7. **Umbrales orientativos que aparecen aquí** y no están en el marco: 250 personas como frontera de «pequeña» (solo para el eje 3, no decide exigencias); «X meses» para pilotos sin G3. Se proponen como valores de partida a calibrar en C5, como el resto.
 8. **Cuándo**: si se hace antes o después de integrar la rama de Express en `main`. Recomendación: después, porque P01, P04, 21 y 94 cambian en las dos.
+9. **Los bloques «Organización» y «Aspiración» del cuestionario de entrada** (§10): las nueve preguntas, el modificador MP6 y que la organización no puntúe madurez.
+
+---
+
+## 10. Cuestionario de entrada: dónde está, cómo está organizada y dónde quiere estar
+
+Petición del autor (12-10-2026): preguntar también por la organización (equipo dedicado, negocios separados por P&L que impiden la visión 360 del cliente y de los procesos) para medir la madurez actual y la aspiracional y el camino entre ambas; y que la herramienta sea autoconsumible, atractiva y breve, porque se libera en abierto.
+
+### 10.1 Qué se mide ya y qué no
+
+| Pregunta de una compañía | ¿Se pregunta hoy? | Dónde |
+|---|---|---|
+| ¿Qué tengo en producción: reglas, IA de terceros, ML, generativa, agentes? | Sí | T23 Q01; huella HT0–HT5 (11 §7.6) |
+| ¿Cuántos pilotos tengo y de qué tipo? | Sí | T23 Q02–Q03 |
+| ¿Hago eficiencia o me transformo? | Sí | Índice IM1–IM4 (12); ambición por iniciativa |
+| ¿Tengo equipo propio? | Parcial | T23 Q12 (propio o por terceros; no distingue dedicado) |
+| ¿Tengo equipo **dedicado** a la IA, o personas a ratos? | **No** | — |
+| ¿Mis negocios están separados por P&L? | **No** | — (54 §3 lo describe, sin pregunta) |
+| ¿Tengo visión 360 del cliente entre unidades? | **No** | — |
+| ¿Tienen mis procesos un dueño de extremo a extremo? | **No** | IT-P2 lo mide por iniciativa, no para la compañía |
+| ¿Comparto datos y plataforma entre unidades? | **No** | D3.11 y D4.11 lo miden en nivel 5, como resultado, no como situación de partida |
+| ¿Dónde quiero estar en 12 y 24 meses? | Parcial | 11 §8 da objetivos por ambición; P34 §6.6 los recoge a mano; nadie los pregunta ni los calcula |
+
+### 10.2 Un solo cuestionario de entrada, tres bloques, una página
+
+T23 ya tiene las doce preguntas de situación. Se le añaden dos bloques y una salida, sin herramienta nueva (D143):
+
+| Bloque | Preguntas | Alimenta |
+|---|---|---|
+| **A · Dónde está** | Q01–Q12 actuales + **Q13** estructura societaria (§3.3) | Arquetipo PP, perfil EM (ejes 1 y 2), huella |
+| **B · Cómo está organizada** (nuevo) | **Q14** Equipo de IA: ninguno · personas a tiempo parcial · equipo dedicado · varios equipos por unidad. **Q15** ¿Los negocios se gestionan con P&L separados? sí · no · parcialmente. **Q16** ¿Comparten las unidades los datos del cliente (visión 360)? no · parcial · sí. **Q17** ¿Tienen los procesos principales un dueño de extremo a extremo? ninguno · alguno · la mayoría. **Q18** ¿Datos y plataforma de IA son comunes a las unidades? no · parcial · sí. **Q19** ¿Quién decide la inversión en IA? cada unidad · central · mixto. | Eje 3 (quién ocupa los roles); **modificador MP6**; prioridad de hitos; lectura de la madurez D3 y D5 |
+| **C · Dónde quiere estar** (nuevo) | **Q20** Ambición predominante a 24 meses: optimizar · aumentar · transformar. **Q21** Alcance del impacto que busca: tarea · proceso · personas y organización · modelo de negocio (IM1–IM4). **Q22** Huella objetivo: hasta IA de terceros · modelos propios · IA generativa en procesos · agentes que actúan (HT2–HT5). | Objetivo por dimensión D1–D7 (tabla de 11 §8 y mínimos por huella de 11 §7.6) → **madurez aspiracional**; brecha con la actual; camino |
+
+**Salida, en una pantalla:** perfil EM y arquetipo · madurez actual (de T15 si existe; si no, «sin diagnóstico», nunca estimada) · madurez aspiracional por dimensión (calculada de Q20–Q22 con 11 §8, marcada «objetivo de referencia, a aprobar en C2») · brecha · los tres hitos por los que empezar · lo que la organización frena (§10.3). Se imprime como el plan actual de T23.
+
+### 10.3 Modificador MP6 · negocios en silos
+
+Se propone un sexto modificador en el 96 §2.3, derivado de Q15–Q18:
+
+| Condición | Efecto en el recorrido |
+|---|---|
+| P&L separados (Q15 sí) **y** sin visión 360 (Q16 no) o sin dueño de proceso (Q17 ninguno) | **IM3 e IM4 no son alcanzables con la organización actual**: toda iniciativa de Transformar sobre cliente o proceso lleva una condición organizativa en G2 (dueño de proceso nombrado o acuerdo de datos entre unidades) antes de invertir en viabilidad. Las iniciativas transversales se miden por unidad desde el principio (40 §7.2). HI-20 (datos y conocimiento) y HI-19 (personas) suben a prioridad 2; el camino incluye el hito organizativo como condición de la ambición, no como hito nuevo. |
+| Varios equipos por unidad (Q14) sin plataforma común (Q18 no) | Inventario consolidado (HI-05) a prioridad 1; plataforma habilitadora como primera decisión de cartera (10 §4.1). |
+| Inversión decidida por cada unidad (Q19) | Umbrales de C2 y sobres (13 §6) se aprueban antes que cualquier iniciativa nueva; el panel distingue por unidad. |
+
+**La organización no puntúa madurez.** Igual que la huella tecnológica (D120), Q14–Q19 no suben ni bajan el nivel D1–D7: fijan qué ambición es alcanzable y qué hitos van antes. Si se sumaran, una compañía centralizada parecería más madura que una federada bien gobernada.
+
+### 10.4 Madurez aspiracional
+
+Hoy el objetivo por dimensión se fija a mano en C2 (P34 §6.6). Con Q20–Q22 se calcula un **objetivo de referencia** desde la tabla de 11 §8 (por ambición, a 12 y 24 meses) y los mínimos por huella de 11 §7.6 (por la huella objetivo), y se muestra junto al nivel actual de T15:
+
+| Dimensión | Actual (T15) | Objetivo 12 m | Objetivo 24 m | Brecha | Qué la cierra (hitos) |
+|---|---|---|---|---|---|
+
+La fila se rellena sola; la compañía la aprueba o la cambia en C2 y queda en `madurez[].objetivos` de T01 (campo opcional, D53). T15 lo muestra en su informe y el panel T17 en la tarjeta de madurez («actual · objetivo · brecha»). Un objetivo por debajo del mínimo exigible por la huella objetivo se marca en rojo: no se puede aspirar a agentes con D6 en 2.
+
+### 10.5 Autoconsumible y breve
+
+Reglas para esta pantalla, que valen para todo lo que se libere en abierto:
+
+1. **Una pantalla, 22 preguntas, respuestas cerradas**, ninguna exige leer un documento antes. Cada pregunta lleva un «?» de una línea (D123), no un párrafo.
+2. **El resultado cabe en una tarjeta**: perfil, actual, aspiracional, brecha, tres hitos. Lo demás (el recorrido completo, el plan por rol) está a un clic, como ya hace T23.
+3. **Sin cuenta, sin envío, datos en el navegador** (D103). Se imprime o se exporta JSON.
+4. **Sin vocabulario interno en la pantalla**: «¿Los negocios se gestionan con cuentas de resultados separadas?» en lugar de «P&L por unidad». Los códigos (PP, EM, HI) aparecen en la tarjeta de resultado, enlazados (D99), no en las preguntas.
+5. Lo que no se sabe se responde «no se sabe» y cuenta como el valor más exigente (regla de 96 §2.4).
