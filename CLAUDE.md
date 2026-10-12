@@ -35,6 +35,10 @@ Repositorio de metodologías de IA de Fernando García Varela (D81). El trabajo 
 - **Hall of Fame de la portada** (D142): las personas (nombre, empresa actual, perfil de LinkedIn y papel) se editan a mano en `colaboradores.json`; `SEVEN-G/build/colaboradores.ps1` (lo llama `build.ps1`) escribe las tarjetas en `index.html` y `en/index.html`. No se editan las tarjetas; `verificar_coherencia.ps1` (26) lo comprueba.
 - El buscador de términos de la barra de los documentos busca en esta página o en todo el sitio (D105): el índice de texto `SEVEN-G/html/<idioma>/busqueda.json` lo genera `SEVEN-G/build/busqueda.ps1` desde los HTML (lo llama `build.ps1` tras `codigos.ps1`); no se edita a mano y `verificar_coherencia.ps1` (20) lo comprueba.
 
+## Informe de sesión (artifact)
+
+- **Toda sesión crea su informe de sesión como artifact en su primera respuesta, sin que el autor lo pida, y lo republica a la misma dirección en cada petición.** Estándar común con GEMA: modelo y guía en `.claude/artifact_sesion/` (barra con pestañas Resumen · Qué falta y tema Sistema · Claro · Oscuro, anillo de avance, «Lo pedido y lo hecho», pasos con «Por qué hace falta» y «Desbloquea»). La fuente de cada informe se guarda en `.claude/sesiones/AAAA-MM-DD_<tema>.html` y se sube con el trabajo de la sesión. Si la sesión retoma un trabajo que ya tiene informe, actualiza ese en vez de crear otro.
+
 ## Cierre de cada tarea
 
 - Trabajar con las recomendaciones propias sin pedir confirmación paso a paso y **terminar siempre con commit y push** a `main` si pasan las pruebas de coherencia: `pwsh -File SEVEN-G/build/verificar_coherencia.ps1` (código de salida 0). Si fallan, corregir o explicar; no publicar (D52).
