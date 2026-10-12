@@ -392,6 +392,10 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 /* Ilustraciones en imagen (p. ej., SPAD): ocupan el ancho del lienzo y conservan su proporción */
 .g-lienzo img { display: block; width: 100%; height: auto; border: 1px solid var(--regla-2); }
 .ilustracion .g-lienzo img[src*="ilusion_de_velocidad"] { max-width: 560px; margin: 0 auto; }
+/* Nombre primero, código después (D144): el código entre paréntesis tras el nombre, en tablas y títulos */
+.codigo { font-family: var(--mono, 'Courier New', monospace); font-size: .88em; color: var(--tinta-2); white-space: nowrap; font-weight: 400; }
+h2 .codigo, h3 .codigo { font-weight: 400; }
+
 @page { @bottom-left { content: "SEVEN-G · Realización de beneficios"; font: 8.5pt "Libre Franklin", "Segoe UI", sans-serif; color: #74675e; } }
 </style>
 </head>
@@ -513,7 +517,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </thead>
 <tbody>
 <tr id="cod-g2-hipotesis">
-<td><strong>G2 · Hipótesis</strong></td>
+<td><strong>Hipótesis</strong> <span class="codigo">(G2)</span></td>
 <td>Valor esperado con fórmula, línea base y método de atribución.</td>
 <td>Estimado o declarado</td>
 <td>Responsable de producto con el responsable de negocio</td>
@@ -521,7 +525,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td><a href="plantillas/P08_SEVEN-G_Lienzo_de_hipotesis_de_valor.html" title="Plantilla P08 &#183; Lienzo de hip&#243;tesis de valor">P08</a>, <a href="plantillas/P09_SEVEN-G_Linea_base.html" title="Plantilla P09 &#183; L&#237;nea base">P09</a></td>
 </tr>
 <tr id="cod-g3-viabilidad">
-<td><strong>G3 · Viabilidad</strong></td>
+<td><strong>Viabilidad</strong> <span class="codigo">(G3)</span></td>
 <td>Valor esperado revisado con costes completos y plan de realización en borrador.</td>
 <td>Estimado o declarado</td>
 <td>Responsable de producto; control de gestión revisa el cálculo</td>
@@ -529,7 +533,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td><a href="plantillas/P10_SEVEN-G_Evaluacion_de_viabilidad.html" title="Plantilla P10 &#183; Evaluaci&#243;n de viabilidad">P10</a>, <a href="../../herramientas/T11_calculadora_valor/calculadora.html" title="Herramienta T11 &#183; Lienzo y calculadora de hip&#243;tesis de valor">T11</a>, <a href="../../herramientas/T11_calculadora_valor/calculadora.html#/costes" title="Herramienta T13 &#183; Calculadora de costes por caso">T13</a></td>
 </tr>
 <tr id="cod-g4-diseno">
-<td><strong>G4 · Diseño</strong></td>
+<td><strong>Diseño</strong> <span class="codigo">(G4)</span></td>
 <td>Plan de realización completo, incluido el plan de materialización.</td>
 <td>—</td>
 <td>Responsable de negocio</td>
@@ -537,7 +541,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>Plan de realización (sección 4)</td>
 </tr>
 <tr id="cod-g5-puesta-en-produccion">
-<td><strong>G5 · Puesta en producción</strong></td>
+<td><strong>Puesta en producción</strong> <span class="codigo">(G5)</span></td>
 <td>Valor medido en el piloto con el método de atribución.</td>
 <td>Declarado; validado si control de gestión verifica el periodo del piloto</td>
 <td>Responsable de producto</td>
@@ -545,7 +549,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td><a href="plantillas/P22_SEVEN-G_Resultados_de_validacion_y_del_piloto.html" title="Plantilla P22 &#183; Resultados de validaci&#243;n y del piloto">P22</a></td>
 </tr>
 <tr id="cod-fase-6-cada-periodo">
-<td><strong>Fase 6 · Cada periodo</strong></td>
+<td><strong>Cada periodo</strong> <span class="codigo">(fase 6)</span></td>
 <td>Valor realizado del periodo.</td>
 <td>Declarado → validado</td>
 <td>Responsable de negocio</td>
@@ -561,7 +565,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>Informe de revisión (sección 8)</td>
 </tr>
 <tr id="cod-g7-escalado-o-retirada">
-<td><strong>G7 · Escalado o retirada</strong></td>
+<td><strong>Escalado o retirada</strong> <span class="codigo">(G7)</span></td>
 <td>Valor realizado validado y ambición real frente a declarada.</td>
 <td>Validado para acreditar criterios</td>
 <td>Responsable de producto</td>
@@ -809,17 +813,17 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </thead>
 <tbody>
 <tr>
-<td>G3</td>
+<td><strong>Viabilidad</strong> <span class="codigo">(G3)</span></td>
 <td>Borrador con curva de realización, responsables y solapes identificados.</td>
 <td>Responsable de negocio; revisión de cálculo por control de gestión.</td>
 </tr>
 <tr>
-<td>G4</td>
+<td><strong>Dise&#241;o</strong> <span class="codigo">(G4)</span></td>
 <td>Completo, con cambios habilitadores y plan de materialización.</td>
 <td>Responsable de negocio y patrocinador.</td>
 </tr>
 <tr>
-<td>G5</td>
+<td><strong>Puesta en producci&#243;n</strong> <span class="codigo">(G5)</span></td>
 <td>Vigente, ajustado con los resultados del piloto sin rebajar el objetivo aprobado sin autorización.</td>
 <td>Responsable de negocio y patrocinador; verificado en G5.</td>
 </tr>
@@ -1607,75 +1611,75 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <div class="tabla"><table>
 <thead>
 <tr>
-<th>Código</th>
 <th>Nombre</th>
+
 <th>Uso en este documento</th>
 </tr>
 </thead>
 <tbody>
 <tr id="cod-t12">
-<td><strong><a href="plantillas/P28_SEVEN-G_Seguimiento_de_realizacion_de_valor.html" title="Herramienta T12 &#183; Seguimiento de realizaci&#243;n de valor">T12</a></strong></td>
-<td>Seguimiento de realización de valor</td>
+<td><strong>Seguimiento de realización de valor</strong> <span class="codigo">(<a href="plantillas/P28_SEVEN-G_Seguimiento_de_realizacion_de_valor.html" title="Herramienta T12 &#183; Seguimiento de realizaci&#243;n de valor">T12</a>)</span></td>
+
 <td>Plan de realización (bloque <code>plan_realizacion</code> de <a href="../../herramientas/T01_registro_iniciativas/registro.html" title="Herramienta T01 &#183; Registro de iniciativas">T01</a>), registro por periodo, estados, realización, desviaciones.</td>
 </tr>
 <tr id="cod-t01">
-<td><strong><a href="../../herramientas/T01_registro_iniciativas/registro.html" title="Herramienta T01 &#183; Registro de iniciativas">T01</a></strong></td>
-<td>Registro de iniciativas</td>
+<td><strong>Registro de iniciativas</strong> <span class="codigo">(<a href="../../herramientas/T01_registro_iniciativas/registro.html" title="Herramienta T01 &#183; Registro de iniciativas">T01</a>)</span></td>
+
 <td>Responsables, eventos de revisión, decisiones de R6 y G7; plan de realización con curva, tramos y valor realizado por periodo.</td>
 </tr>
 <tr id="cod-t13">
-<td><strong><a href="../../herramientas/T11_calculadora_valor/calculadora.html#/costes" title="Herramienta T13 &#183; Calculadora de costes por caso">T13</a></strong></td>
-<td>Calculadora de costes por caso</td>
+<td><strong>Calculadora de costes por caso</strong> <span class="codigo">(<a href="../../herramientas/T11_calculadora_valor/calculadora.html#/costes" title="Herramienta T13 &#183; Calculadora de costes por caso">T13</a>)</span></td>
+
 <td>Coste recurrente real.</td>
 </tr>
 <tr id="cod-t17">
-<td><strong><a href="../../herramientas/T17_panel_consejo/index.html" title="Herramienta T17 &#183; Panel de IA para el consejo">T17</a></strong></td>
-<td>Panel de IA para el consejo</td>
+<td><strong>Panel de IA para el consejo</strong> <span class="codigo">(<a href="../../herramientas/T17_panel_consejo/index.html" title="Herramienta T17 &#183; Panel de IA para el consejo">T17</a>)</span></td>
+
 <td>Consolidación y presentación; tarjeta «Plan de realización: curva y tramos».</td>
 </tr>
 <tr id="cod-t20">
-<td><strong><a href="plantillas/P20_SEVEN-G_Plan_de_adopcion_y_capacidad.html" title="Herramienta T20 &#183; Plan de adopci&#243;n y capacidad">T20</a></strong></td>
-<td>Plan de adopción y capacidad</td>
+<td><strong>Plan de adopción y capacidad</strong> <span class="codigo">(<a href="plantillas/P20_SEVEN-G_Plan_de_adopcion_y_capacidad.html" title="Herramienta T20 &#183; Plan de adopci&#243;n y capacidad">T20</a>)</span></td>
+
 <td>Materialización y reasignación de la capacidad.</td>
 </tr>
 <tr id="cod-t22">
-<td><strong><a href="plantillas/P30_SEVEN-G_Decision_de_escalado_o_retirada.html" title="Herramienta T22 &#183; Gestor de retiradas">T22</a></strong></td>
-<td>Gestor de retiradas</td>
+<td><strong>Gestor de retiradas</strong> <span class="codigo">(<a href="plantillas/P30_SEVEN-G_Decision_de_escalado_o_retirada.html" title="Herramienta T22 &#183; Gestor de retiradas">T22</a>)</span></td>
+
 <td>Valor final y retirada.</td>
 </tr>
 <tr>
-<td><strong><a href="plantillas/P08_SEVEN-G_Lienzo_de_hipotesis_de_valor.html" title="Plantilla P08 &#183; Lienzo de hip&#243;tesis de valor">P08</a> · <a href="plantillas/P09_SEVEN-G_Linea_base.html" title="Plantilla P09 &#183; L&#237;nea base">P09</a></strong></td>
-<td>Lienzo de hipótesis de valor · Línea base</td>
+<td><strong>Lienzo de hipótesis de valor · Línea base</strong> <span class="codigo">(<a href="plantillas/P08_SEVEN-G_Lienzo_de_hipotesis_de_valor.html" title="Plantilla P08 &#183; Lienzo de hip&#243;tesis de valor">P08</a> · <a href="plantillas/P09_SEVEN-G_Linea_base.html" title="Plantilla P09 &#183; L&#237;nea base">P09</a>)</span></td>
+
 <td>Referencia del plan.</td>
 </tr>
 <tr id="cod-p20">
-<td><strong><a href="plantillas/P20_SEVEN-G_Plan_de_adopcion_y_capacidad.html" title="Plantilla P20 &#183; Plan de adopci&#243;n y capacidad">P20</a></strong></td>
-<td>Plan de adopción y capacidad</td>
+<td><strong>Plan de adopción y capacidad</strong> <span class="codigo">(<a href="plantillas/P20_SEVEN-G_Plan_de_adopcion_y_capacidad.html" title="Plantilla P20 &#183; Plan de adopci&#243;n y capacidad">P20</a>)</span></td>
+
 <td>Cambios habilitadores y destino de la capacidad.</td>
 </tr>
 <tr id="cod-p22">
-<td><strong><a href="plantillas/P22_SEVEN-G_Resultados_de_validacion_y_del_piloto.html" title="Plantilla P22 &#183; Resultados de validaci&#243;n y del piloto">P22</a></strong></td>
-<td>Resultados de validación y del piloto</td>
+<td><strong>Resultados de validación y del piloto</strong> <span class="codigo">(<a href="plantillas/P22_SEVEN-G_Resultados_de_validacion_y_del_piloto.html" title="Plantilla P22 &#183; Resultados de validaci&#243;n y del piloto">P22</a>)</span></td>
+
 <td>Valor medido en G5.</td>
 </tr>
 <tr id="cod-p28">
-<td><strong><a href="plantillas/P28_SEVEN-G_Seguimiento_de_realizacion_de_valor.html" title="Plantilla P28 &#183; Seguimiento de realizaci&#243;n de valor">P28</a></strong></td>
-<td>Seguimiento de realización de valor</td>
+<td><strong>Seguimiento de realización de valor</strong> <span class="codigo">(<a href="plantillas/P28_SEVEN-G_Seguimiento_de_realizacion_de_valor.html" title="Plantilla P28 &#183; Seguimiento de realizaci&#243;n de valor">P28</a>)</span></td>
+
 <td>Seguimiento por periodo.</td>
 </tr>
 <tr id="cod-p62">
-<td><strong><a href="plantillas/P62_SEVEN-G_Plan_de_realizacion_de_beneficios.html" title="Plantilla P62 &#183; Plan de realizaci&#243;n de beneficios">P62</a></strong></td>
-<td>Plan de realización de beneficios</td>
+<td><strong>Plan de realización de beneficios</strong> <span class="codigo">(<a href="plantillas/P62_SEVEN-G_Plan_de_realizacion_de_beneficios.html" title="Plantilla P62 &#183; Plan de realizaci&#243;n de beneficios">P62</a>)</span></td>
+
 <td>Plan de realización: curva, responsables y habilitadores (sección 4).</td>
 </tr>
 <tr id="cod-p29">
-<td><strong><a href="plantillas/P29_SEVEN-G_Registro_de_decision_de_gate.html" title="Plantilla P29 &#183; Registro de decisi&#243;n de gate">P29</a></strong></td>
-<td>Registro de decisión de <em>gate</em></td>
+<td><strong>Registro de decisión de <em>gate</em></strong> <span class="codigo">(<a href="plantillas/P29_SEVEN-G_Registro_de_decision_de_gate.html" title="Plantilla P29 &#183; Registro de decisi&#243;n de gate">P29</a>)</span></td>
+
 <td>Decisiones de R6 y G7.</td>
 </tr>
 <tr id="cod-p30">
-<td><strong><a href="plantillas/P30_SEVEN-G_Decision_de_escalado_o_retirada.html" title="Plantilla P30 &#183; Decisi&#243;n de escalado o retirada">P30</a></strong></td>
-<td>Decisión de escalado o retirada</td>
+<td><strong>Decisión de escalado o retirada</strong> <span class="codigo">(<a href="plantillas/P30_SEVEN-G_Decision_de_escalado_o_retirada.html" title="Plantilla P30 &#183; Decisi&#243;n de escalado o retirada">P30</a>)</span></td>
+
 <td>Evidencia de valor en G7.</td>
 </tr>
 </tbody>
@@ -1761,7 +1765,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </table></div>
 
 </main>
-<footer class="pie"><div><span>© 2026 Fernando García Varela · Metodolog&#237;a SEVEN-G</span><span>Generado el 28-09-2026</span></div><p class="pie-ia">Contenido generado y maquetado con apoyo de IA bajo supervisi&#243;n editorial del autor.</p></footer>
+<footer class="pie"><div><span>© 2026 Fernando García Varela · Metodolog&#237;a SEVEN-G</span><span>Generado el 12-10-2026</span></div><p class="pie-ia">Contenido generado y maquetado con apoyo de IA bajo supervisi&#243;n editorial del autor.</p></footer>
 <script src="codigos.js" defer></script>
 
 <script>

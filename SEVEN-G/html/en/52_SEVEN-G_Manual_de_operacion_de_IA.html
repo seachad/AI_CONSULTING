@@ -392,6 +392,10 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 /* Ilustraciones en imagen (p. ej., SPAD): ocupan el ancho del lienzo y conservan su proporción */
 .g-lienzo img { display: block; width: 100%; height: auto; border: 1px solid var(--regla-2); }
 .ilustracion .g-lienzo img[src*="ilusion_de_velocidad"] { max-width: 560px; margin: 0 auto; }
+/* Nombre primero, código después (D144): el código entre paréntesis tras el nombre, en tablas y títulos */
+.codigo { font-family: var(--mono, 'Courier New', monospace); font-size: .88em; color: var(--tinta-2); white-space: nowrap; font-weight: 400; }
+h2 .codigo, h3 .codigo { font-weight: 400; }
+
 @page { @bottom-left { content: "SEVEN-G · AI operations manual"; font: 8.5pt "Libre Franklin", "Segoe UI", sans-serif; color: #74675e; } }
 </style>
 </head>
@@ -1828,7 +1832,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>The same, and whenever the risk assessment indicates it</td>
 </tr>
 <tr>
-<td>R6</td>
+<td><strong>Continuity review</strong> <span class="codigo">(R6)</span></td>
 <td>Half-yearly</td>
 <td>Quarterly</td>
 </tr>
@@ -1845,34 +1849,34 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <div class="tabla"><table>
 <thead>
 <tr>
-<th>Code</th>
 <th>Template</th>
+
 <th>Minimum content</th>
 <th>Reviewed at</th>
 </tr>
 </thead>
 <tbody>
 <tr id="cod-p24">
-<td><strong><a href="plantillas/P24_SEVEN-G_Manual_de_operacion.html" title="Template P24 &#183; Operations manual">P24</a></strong></td>
-<td>Operations manual</td>
+<td><strong>Operations manual</strong> <span class="codigo">(<a href="plantillas/P24_SEVEN-G_Manual_de_operacion.html" title="Template P24 &#183; Operations manual">P24</a>)</span></td>
+
 <td>Description of the system and type; autonomy level; service levels; responsibilities and on-call; procedures per alert; retraining or continuous evaluation; agent limits and shutdown; degraded modes and cost-driven degradation cascade with its triggers; costs and consumption limits; records and retention; dependencies and suppliers; post-market monitoring plan where applicable; maximum recovery time for critical functions.</td>
 <td>G5, R6, after significant and substantial changes</td>
 </tr>
 <tr id="cod-p25">
-<td><strong><a href="plantillas/P25_SEVEN-G_Configuracion_de_monitorizacion_y_alertas.html" title="Template P25 &#183; Monitoring and alerting configuration">P25</a></strong></td>
-<td>Monitoring and alerts configuration</td>
+<td><strong>Monitoring and alerts configuration</strong> <span class="codigo">(<a href="plantillas/P25_SEVEN-G_Configuracion_de_monitorizacion_y_alertas.html" title="Template P25 &#183; Monitoring and alerting configuration">P25</a>)</span></td>
+
 <td>Metrics per layer; baseline; warning and critical thresholds; initial severity; owner; procedure; label delay; usage reference and query classification; reference evaluation set with counterfactual pairs and sampling; minimum quality in degraded mode; result of the alert test.</td>
 <td>G5, R6</td>
 </tr>
 <tr id="cod-p26">
-<td><strong><a href="plantillas/P26_SEVEN-G_Plan_de_respuesta_a_incidentes.html" title="Template P26 &#183; Incident response plan">P26</a></strong></td>
-<td>Incident response plan</td>
+<td><strong>Incident response plan</strong> <span class="codigo">(<a href="plantillas/P26_SEVEN-G_Plan_de_respuesta_a_incidentes.html" title="Template P26 &#183; Incident response plan">P26</a>)</span></td>
+
 <td>S1–S4 criteria applied to the system; contacts and escalation; pre-approved containment actions; applicable notifications with owner and time limit; communication to users, affected parties and the supplier; relationship with the continuity plan.</td>
 <td>G5, R6, after each S1–S2 incident</td>
 </tr>
 <tr id="cod-p27">
-<td><strong><a href="plantillas/P27_SEVEN-G_Registro_de_incidentes_y_cambios.html" title="Template P27 &#183; Incident and change log">P27</a></strong></td>
-<td>Incident and change log</td>
+<td><strong>Incident and change log</strong> <span class="codigo">(<a href="plantillas/P27_SEVEN-G_Registro_de_incidentes_y_cambios.html" title="Template P27 &#183; Incident and change log">P27</a>)</span></td>
+
 <td>Changes: class, description, validation, approval, <em>gate</em> where applicable, date. Incidents: severity, timeline, containment, notifications, root cause, actions, closure, link to nonconformity.</td>
 <td>Continuous; R6</td>
 </tr>
@@ -1952,7 +1956,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </table></div>
 <h2 id="external-sources">External sources cited</h2><p class="fuentes-nota">Links to the official or primary source, checked before publication. Always verify the version in force on the date of use.</p><ul class="fuentes-externas"><li><a href="https://eur-lex.europa.eu/eli/dir/2022/2555/oj/eng" target="_blank" rel="noopener">Directive (EU) 2022/2555 of the European Parliament and of the Council of 14 December 2022 on measures for a high common level of cybersecurity across the Union (NIS 2 Directive)</a><span> · Parlamento Europeo y Consejo de la UE · 14-12-2022</span></li><li><a href="https://eur-lex.europa.eu/eli/reg/2016/679/oj/eng" target="_blank" rel="noopener">Regulation (EU) 2016/679 of the European Parliament and of the Council of 27 April 2016 on the protection of natural persons with regard to the processing of personal data and on the free movement of such data, and repealing Directive 95/46/EC (General Data Protection Regulation)</a><span> · Parlamento Europeo y Consejo de la UE · 27-04-2016</span></li><li><a href="https://eur-lex.europa.eu/eli/reg/2022/2554/oj/eng" target="_blank" rel="noopener">Regulation (EU) 2022/2554 of the European Parliament and of the Council of 14 December 2022 on digital operational resilience for the financial sector (DORA)</a><span> · Parlamento Europeo y Consejo de la UE · 14-12-2022</span></li><li><a href="https://eur-lex.europa.eu/eli/reg/2024/1689/oj/eng" target="_blank" rel="noopener">Regulation (EU) 2024/1689 of the European Parliament and of the Council of 13 June 2024 laying down harmonised rules on artificial intelligence (Artificial Intelligence Act)</a><span> · Parlamento Europeo y Consejo de la UE · 13-06-2024</span></li><li><a href="https://eur-lex.europa.eu/eli/reg/2026/1744/oj/eng" target="_blank" rel="noopener">Regulation (EU) 2026/1744 of the European Parliament and of the Council of 8 July 2026 amending Regulations (EU) 2024/1689, (EU) 2018/1139 and (EU) 2023/1230 as regards the simplification of the implementation of harmonised rules on artificial intelligence (Digital Omnibus on AI)</a><span> · Parlamento Europeo y Consejo de la UE · 08-07-2026</span></li></ul>
 </main>
-<footer class="pie"><div><span>© 2026 Fernando García Varela · SEVEN-G methodology</span><span>Generated on 28-09-2026</span></div><p class="pie-ia">Content generated and typeset with AI support under the author&#39;s editorial supervision.</p></footer>
+<footer class="pie"><div><span>© 2026 Fernando García Varela · SEVEN-G methodology</span><span>Generated on 12-10-2026</span></div><p class="pie-ia">Content generated and typeset with AI support under the author&#39;s editorial supervision.</p></footer>
 <script src="codigos.js" defer></script>
 
 <script>

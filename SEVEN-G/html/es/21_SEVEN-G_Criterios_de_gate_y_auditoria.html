@@ -392,6 +392,10 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 /* Ilustraciones en imagen (p. ej., SPAD): ocupan el ancho del lienzo y conservan su proporción */
 .g-lienzo img { display: block; width: 100%; height: auto; border: 1px solid var(--regla-2); }
 .ilustracion .g-lienzo img[src*="ilusion_de_velocidad"] { max-width: 560px; margin: 0 auto; }
+/* Nombre primero, código después (D144): el código entre paréntesis tras el nombre, en tablas y títulos */
+.codigo { font-family: var(--mono, 'Courier New', monospace); font-size: .88em; color: var(--tinta-2); white-space: nowrap; font-weight: 400; }
+h2 .codigo, h3 .codigo { font-weight: 400; }
+
 @page { @bottom-left { content: "SEVEN-G · Criterios de gate y de auditoría"; font: 8.5pt "Libre Franklin", "Segoe UI", sans-serif; color: #74675e; } }
 </style>
 </head>
@@ -829,7 +833,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </thead>
 <tbody>
 <tr>
-<td>G0</td>
+<td><strong>Autorizaci&#243;n</strong> <span class="codigo">(G0)</span></td>
 <td>Continuar · Continuar con condiciones · Iterar · Parar</td>
 <td>—</td>
 </tr>
@@ -844,12 +848,12 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>G5: no se continúa con un veto vigente (sección 9).</td>
 </tr>
 <tr>
-<td>R6</td>
+<td><strong>Revisi&#243;n de continuidad</strong> <span class="codigo">(R6)</span></td>
 <td>Continuar la operación · Continuar con condiciones · Adelantar G7</td>
 <td><strong>Adelantar G7</strong> si concurre alguna desviación de la sección 6.7.</td>
 </tr>
 <tr>
-<td>G7</td>
+<td><strong>Escalado o retirada</strong> <span class="codigo">(G7)</span></td>
 <td>Escalar · Iterar · Retirar</td>
 <td>—</td>
 </tr>
@@ -859,7 +863,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <hr />
 <h2 id="criterios-por-puerta"><span class="antetitulo">06</span>Criterios por puerta</h2>
 <p>Cada puerta incluye su propósito, quién verifica y decide (01 §7.5), las evidencias que se examinan y la tabla de criterios. La columna de ambición desarrolla 01 §7.6; la sección 7 la resume.</p>
-<h3 id="6-1-g0-autorizacion">6.1 G0 · Autorización</h3>
+<h3 id="6-1-g0-autorizacion">6.1 Autorización (G0)</h3>
 <p><strong>Propósito.</strong> Autorizar formalmente la iniciativa y fijar el marco en el que se desarrollará. Sin G0 aprobado la iniciativa no está autorizada: no puede consumir presupuesto ni acceder a datos de producción.</p>
 <div class="tabla"><table>
 <thead>
@@ -989,7 +993,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tbody>
 </table></div>
 <p><strong>Reglas específicas.</strong> Un incumplimiento de G0.09 detectado después de G0 es no conformidad mayor y, si hubo acceso a datos personales de producción sin base, se evalúa como crítica. G0.04 en <em>No cumple</em> conduce a <strong>Parar</strong>.</p>
-<h3 id="6-2-g1-oportunidad">6.2 G1 · Oportunidad</h3>
+<h3 id="6-2-g1-oportunidad">6.2 Oportunidad (G1)</h3>
 <p><strong>Propósito.</strong> Confirmar que existe una oportunidad de negocio que requiere IA y que su valor potencial justifica formular una hipótesis.</p>
 <div class="tabla"><table>
 <thead>
@@ -1119,7 +1123,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tbody>
 </table></div>
 <p><strong>Reglas específicas.</strong> <strong>Pivotar</strong> en G1 lleva a formular una hipótesis distinta en la fase 2 conservando el contexto aprobado en G0.</p>
-<h3 id="6-3-g2-hipotesis">6.3 G2 · Hipótesis</h3>
+<h3 id="6-3-g2-hipotesis">6.3 Hipótesis (G2)</h3>
 <p><strong>Propósito.</strong> Aprobar una hipótesis de valor medible y falsable, con línea base, método de atribución y criterios de parada definidos antes de invertir.</p>
 <div class="tabla"><table>
 <thead>
@@ -1276,7 +1280,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tbody>
 </table></div>
 <p><strong>Reglas específicas.</strong> Si la ambición confirmada pasa a Transformar, la intensidad pasa a Enterprise y se aplican G2.11 y G2.12 antes de decidir. Si una iniciativa aprobada como Transformar se reclasifica a un nivel inferior, se informa al consejo.</p>
-<h3 id="6-4-g3-viabilidad">6.4 G3 · Viabilidad</h3>
+<h3 id="6-4-g3-viabilidad">6.4 Viabilidad (G3)</h3>
 <p><strong>Propósito.</strong> Decidir si la iniciativa es viable técnica, económica, regulatoria y organizativamente con un riesgo aceptable. Es la <strong>principal puerta de parada</strong> del ciclo.</p>
 <div class="tabla"><table>
 <thead>
@@ -1514,7 +1518,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tbody>
 </table></div>
 <p><strong>Reglas específicas.</strong> Las prácticas prohibidas no pasan de esta fase en ningún caso (01 §6.5). Un riesgo residual Crítico sin la aprobación de G3.12 bloquea G3. <strong>Pivotar</strong> es admisible cuando la hipótesis no se sostiene pero existe una alternativa razonable.</p>
-<h3 id="6-5-g4-diseno">6.5 G4 · Diseño</h3>
+<h3 id="6-5-g4-diseno">6.5 Diseño (G4)</h3>
 <p><strong>Propósito.</strong> Aprobar un diseño controlable, supervisable y reversible, que cubra los controles exigidos por la clasificación de riesgo y en el que cada riesgo de la fase 3 tenga control diseñado.</p>
 <div class="tabla"><table>
 <thead>
@@ -1752,7 +1756,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tbody>
 </table></div>
 <p><strong>Reglas específicas.</strong> En Lite, G4 y G5 pueden resolverse en la misma sesión si cada criterio se evalúa y registra por separado. La clasificación de alto riesgo implica intensidad Enterprise, por eso G4.14 no tiene columna Lite.</p>
-<h3 id="6-6-g5-puesta-en-produccion">6.6 G5 · Puesta en producción</h3>
+<h3 id="6-6-g5-puesta-en-produccion">6.6 Puesta en producción (G5)</h3>
 <p><strong>Propósito.</strong> Autorizar la puesta en producción cuando la solución funciona, aporta valor en condiciones reales, los controles críticos operan y la operación está preparada.</p>
 <div class="tabla"><table>
 <thead>
@@ -1999,7 +2003,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tbody>
 </table></div>
 <p><strong>Reglas específicas.</strong> Un sistema en producción sin G5 aprobado es no conformidad crítica (01 §12). Las firmas de <a href="plantillas/P23_SEVEN-G_Firma_de_puesta_en_produccion.html" title="Plantilla P23 &#183; Firma de puesta en producci&#243;n">P23</a> se refieren a una versión concreta del sistema: un cambio significativo entre la firma y la puesta en producción obliga a firmar de nuevo.</p>
-<h3 id="6-7-r6-revision-de-continuidad">6.7 R6 · Revisión de continuidad</h3>
+<h3 id="6-7-r6-revision-de-continuidad">6.7 Revisión de continuidad (R6)</h3>
 <p><strong>Propósito.</strong> Comprobar periódicamente que el sistema sigue funcionando, aportando valor y bajo control, y adelantar G7 si hay desviaciones relevantes. Periodicidad mínima: <strong>trimestral en Enterprise y semestral en Lite</strong>.</p>
 <div class="tabla"><table>
 <thead>
@@ -2191,7 +2195,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <li>Cambia la clasificación regulatoria o la intensidad.</li>
 <li>El proveedor deja de cumplir condiciones exigidas como no condicionables o anuncia la retirada del servicio.</li>
 </ul>
-<h3 id="6-8-g7-escalado-o-retirada">6.8 G7 · Escalado o retirada</h3>
+<h3 id="6-8-g7-escalado-o-retirada">6.8 Escalado o retirada (G7)</h3>
 <p><strong>Propósito.</strong> Decidir con evidencia si la iniciativa se escala, se itera o se retira.</p>
 <div class="tabla"><table>
 <thead>
@@ -2354,43 +2358,43 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </thead>
 <tbody>
 <tr id="cod-g1">
-<td><strong>G1</strong></td>
+<td><strong>Oportunidad</strong> <span class="codigo">(G1)</span></td>
 <td>Impacto en personas recomendado (G1.10).</td>
 <td>Roles y equipos afectados identificados (G1.10).</td>
 <td>Propuesta comunicada al comité de IA (G1.06); patrocinador de alta dirección (G0.01).</td>
 </tr>
 <tr id="cod-g2">
-<td><strong>G2</strong></td>
+<td><strong>Hip&#243;tesis</strong> <span class="codigo">(G2)</span></td>
 <td>Línea base de coste, tiempo o errores (G2.03); ahorro esperado con fórmula (G2.06); objetivo de adopción recomendado (G2.10).</td>
 <td>Línea base de rendimiento y coste (G2.03); objetivo de adopción obligatorio (G2.10).</td>
 <td>Hitos de aprendizaje, límite de inversión y criterios de parada por etapa (G2.08, G2.11); aprobación del consejo (G2.12).</td>
 </tr>
 <tr id="cod-g3">
-<td><strong>G3</strong></td>
+<td><strong>Viabilidad</strong> <span class="codigo">(G3)</span></td>
 <td>Neto anual esperado positivo dentro del horizonte de C2 (G3.05).</td>
 <td>Neto esperado y viabilidad de la adopción y del cambio de rol (G3.05, G3.16).</td>
 <td>Viabilidad de la primera etapa, criterios de parada por etapa y valor de opción documentado (G3.01, G3.05); impacto en el modelo operativo (G3.16).</td>
 </tr>
 <tr id="cod-g4">
-<td><strong>G4</strong></td>
+<td><strong>Dise&#241;o</strong> <span class="codigo">(G4)</span></td>
 <td>Plan de materialización de la capacidad liberada (G4.11).</td>
 <td>Plan de cambio de rol y reasignación (G4.11).</td>
 <td>Cambio del modelo operativo de la primera etapa; piloto que mide evidencia de mercado o de cliente (G4.11, G4.12).</td>
 </tr>
 <tr id="cod-g5">
-<td><strong>G5</strong></td>
+<td><strong>Puesta en producci&#243;n</strong> <span class="codigo">(G5)</span></td>
 <td>Eficiencia validada frente a la línea base; plan para materializar la capacidad liberada (G5.08, G5.10).</td>
 <td>Adopción real y mejora de rendimiento medidas; plan de reasignación (G5.08, G5.10).</td>
 <td>Evidencia de mercado o de cliente: uso, conversión, ingresos iniciales o cambio operativo verificado (G5.08).</td>
 </tr>
 <tr id="cod-r6">
-<td><strong>R6</strong></td>
+<td><strong>Revisi&#243;n de continuidad</strong> <span class="codigo">(R6)</span></td>
 <td>Ahorro materializado o capacidad reasignada (R6.02); adopción recomendada (R6.14).</td>
 <td>Rendimiento y adopción sostenidos (R6.02, R6.14).</td>
 <td>Avance frente a los hitos de la etapa (R6.02).</td>
 </tr>
 <tr id="cod-g7">
-<td><strong>G7</strong></td>
+<td><strong>Escalado o retirada</strong> <span class="codigo">(G7)</span></td>
 <td>Ahorro materializado, no solo capacidad liberada (G7.01).</td>
 <td>Rendimiento sostenido y capacidad reasignada (G7.01).</td>
 <td>Retorno medido y cambio del modelo operativo o de la oferta verificado (G7.01); aprobación del consejo para escalar (G7.09).</td>
@@ -2976,35 +2980,35 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <div class="tabla"><table>
 <thead>
 <tr>
-<th>Código</th>
 <th>Nombre</th>
+
 <th>Uso en este documento</th>
 </tr>
 </thead>
 <tbody>
 <tr id="cod-t03">
-<td><strong><a href="../../herramientas/T01_registro_iniciativas/registro.html#/gates" title="Herramienta T03 &#183; Gestor de gates">T03</a></strong></td>
-<td>Gestor de <em>gates</em></td>
+<td><strong>Gestor de <em>gates</em></strong> <span class="codigo">(<a href="../../herramientas/T01_registro_iniciativas/registro.html#/gates" title="Herramienta T03 &#183; Gestor de gates">T03</a>)</span></td>
+
 <td>Criterios con código y aplicabilidad; estados, dimensiones R y D, verificación, firmas, decisión y condiciones; cálculo del grado de cumplimiento y bloqueo de Continuar con bloqueantes.</td>
 </tr>
 <tr>
-<td><strong><a href="../../herramientas/T01_registro_iniciativas/registro.html" title="Herramienta T01 &#183; Registro de iniciativas">T01</a>, <a href="../../herramientas/T01_registro_iniciativas/registro.html#/inventario" title="Herramienta T02 &#183; Inventario de sistemas de IA">T02</a>, <a href="../../herramientas/T01_registro_iniciativas/registro.html" title="Herramienta T04 &#183; Determinaci&#243;n de intensidad">T04</a>–<a href="../../herramientas/T11_calculadora_valor/calculadora.html#/costes" title="Herramienta T13 &#183; Calculadora de costes por caso">T13</a>, <a href="plantillas/P20_SEVEN-G_Plan_de_adopcion_y_capacidad.html" title="Herramienta T20 &#183; Plan de adopci&#243;n y capacidad">T20</a>, <a href="plantillas/P30_SEVEN-G_Decision_de_escalado_o_retirada.html" title="Herramienta T22 &#183; Gestor de retiradas">T22</a></strong></td>
-<td>Resto de herramientas del <a href="03_SEVEN-G_Herramientas_y_registro_de_iniciativas.html" title="Documento 03 &#183; Herramientas de SEVEN-G y registro de iniciativas">documento 03</a></td>
+<td><strong>Resto de herramientas del <a href="03_SEVEN-G_Herramientas_y_registro_de_iniciativas.html" title="Documento 03 &#183; Herramientas de SEVEN-G y registro de iniciativas">documento 03</a></strong> <span class="codigo">(<a href="../../herramientas/T01_registro_iniciativas/registro.html" title="Herramienta T01 &#183; Registro de iniciativas">T01</a>, <a href="../../herramientas/T01_registro_iniciativas/registro.html#/inventario" title="Herramienta T02 &#183; Inventario de sistemas de IA">T02</a>, <a href="../../herramientas/T01_registro_iniciativas/registro.html" title="Herramienta T04 &#183; Determinaci&#243;n de intensidad">T04</a>–<a href="../../herramientas/T11_calculadora_valor/calculadora.html#/costes" title="Herramienta T13 &#183; Calculadora de costes por caso">T13</a>, <a href="plantillas/P20_SEVEN-G_Plan_de_adopcion_y_capacidad.html" title="Herramienta T20 &#183; Plan de adopci&#243;n y capacidad">T20</a>, <a href="plantillas/P30_SEVEN-G_Decision_de_escalado_o_retirada.html" title="Herramienta T22 &#183; Gestor de retiradas">T22</a>)</span></td>
+
 <td>Trazabilidad temporal y evidencias de los criterios, según la columna <em>Evidencia</em>.</td>
 </tr>
 <tr id="cod-p23">
-<td><strong><a href="plantillas/P23_SEVEN-G_Firma_de_puesta_en_produccion.html" title="Plantilla P23 &#183; Firma de puesta en producci&#243;n">P23</a></strong></td>
-<td>Firma de puesta en producción</td>
+<td><strong>Firma de puesta en producción</strong> <span class="codigo">(<a href="plantillas/P23_SEVEN-G_Firma_de_puesta_en_produccion.html" title="Plantilla P23 &#183; Firma de puesta en producci&#243;n">P23</a>)</span></td>
+
 <td>Firma multinivel y veto (sección 9).</td>
 </tr>
 <tr id="cod-p29">
-<td><strong><a href="plantillas/P29_SEVEN-G_Registro_de_decision_de_gate.html" title="Plantilla P29 &#183; Registro de decisi&#243;n de gate">P29</a></strong></td>
-<td>Registro de decisión de <em>gate</em></td>
+<td><strong>Registro de decisión de <em>gate</em></strong> <span class="codigo">(<a href="plantillas/P29_SEVEN-G_Registro_de_decision_de_gate.html" title="Plantilla P29 &#183; Registro de decisi&#243;n de gate">P29</a>)</span></td>
+
 <td>Formato de la sección 11.</td>
 </tr>
 <tr>
-<td><strong><a href="plantillas/P01_SEVEN-G_Carta_de_la_iniciativa.html" title="Plantilla P01 &#183; Carta de la iniciativa">P01</a>–<a href="plantillas/P31_SEVEN-G_Ficha_de_caso_de_uso.html" title="Plantilla P31 &#183; Ficha de caso de uso">P31</a></strong></td>
-<td>Plantillas del bloque H</td>
+<td><strong>Plantillas del bloque H</strong> <span class="codigo">(<a href="plantillas/P01_SEVEN-G_Carta_de_la_iniciativa.html" title="Plantilla P01 &#183; Carta de la iniciativa">P01</a>–<a href="plantillas/P31_SEVEN-G_Ficha_de_caso_de_uso.html" title="Plantilla P31 &#183; Ficha de caso de uso">P31</a>)</span></td>
+
 <td>Evidencias de cada criterio.</td>
 </tr>
 </tbody>
@@ -3089,7 +3093,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </table></div>
 <h2 id="fuentes-externas">Fuentes externas citadas</h2><p class="fuentes-nota">Enlaces a la fuente oficial o primaria, comprobados antes de publicar. Verifique siempre la versión vigente en la fecha de uso.</p><ul class="fuentes-externas"><li><a href="https://eur-lex.europa.eu/eli/dir/2022/2555/oj/spa" target="_blank" rel="noopener">Directiva (UE) 2022/2555 del Parlamento Europeo y del Consejo, de 14 de diciembre de 2022, relativa a las medidas destinadas a garantizar un elevado nivel com&#250;n de ciberseguridad en toda la Uni&#243;n (Directiva SRI 2 / NIS2)</a><span> · Parlamento Europeo y Consejo de la UE · 14-12-2022</span></li><li><a href="https://eur-lex.europa.eu/eli/reg/2022/2554/oj/spa" target="_blank" rel="noopener">Reglamento (UE) 2022/2554 del Parlamento Europeo y del Consejo, de 14 de diciembre de 2022, sobre la resiliencia operativa digital del sector financiero (DORA)</a><span> · Parlamento Europeo y Consejo de la UE · 14-12-2022</span></li><li><a href="https://eur-lex.europa.eu/eli/reg/2024/1689/oj/spa" target="_blank" rel="noopener">Reglamento (UE) 2024/1689 del Parlamento Europeo y del Consejo, de 13 de junio de 2024, por el que se establecen normas armonizadas en materia de inteligencia artificial (Reglamento de Inteligencia Artificial)</a><span> · Parlamento Europeo y Consejo de la UE · 13-06-2024</span></li></ul>
 </main>
-<footer class="pie"><div><span>© 2026 Fernando García Varela · Metodolog&#237;a SEVEN-G</span><span>Generado el 28-09-2026</span></div><p class="pie-ia">Contenido generado y maquetado con apoyo de IA bajo supervisi&#243;n editorial del autor.</p></footer>
+<footer class="pie"><div><span>© 2026 Fernando García Varela · Metodolog&#237;a SEVEN-G</span><span>Generado el 12-10-2026</span></div><p class="pie-ia">Contenido generado y maquetado con apoyo de IA bajo supervisi&#243;n editorial del autor.</p></footer>
 <script src="codigos.js" defer></script>
 
 <script>

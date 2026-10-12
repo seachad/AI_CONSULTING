@@ -392,6 +392,10 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 /* Ilustraciones en imagen (p. ej., SPAD): ocupan el ancho del lienzo y conservan su proporción */
 .g-lienzo img { display: block; width: 100%; height: auto; border: 1px solid var(--regla-2); }
 .ilustracion .g-lienzo img[src*="ilusion_de_velocidad"] { max-width: 560px; margin: 0 auto; }
+/* Nombre primero, código después (D144): el código entre paréntesis tras el nombre, en tablas y títulos */
+.codigo { font-family: var(--mono, 'Courier New', monospace); font-size: .88em; color: var(--tinta-2); white-space: nowrap; font-weight: 400; }
+h2 .codigo, h3 .codigo { font-weight: 400; }
+
 @page { @bottom-left { content: "SEVEN-G foundational methodology"; font: 8.5pt "Libre Franklin", "Segoe UI", sans-serif; color: #74675e; } }
 </style>
 </head>
@@ -748,7 +752,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>Every initiative has a classified and confirmed ambition level.</td>
 </tr>
 <tr>
-<td>10</td>
+<td><strong>Sphere map and ambition levels</strong> <span class="codigo">(10)</span></td>
 <td><strong>People at the centre of change</strong></td>
 <td>AI is also assessed by its effect on work, capabilities and responsibilities.</td>
 <td>Augment and Transform initiatives have an adoption and people plan.</td>
@@ -828,35 +832,35 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </thead>
 <tbody>
 <tr id="cod-c1-diagnosis">
-<td><strong>C1 · Diagnosis</strong></td>
+<td><strong>Diagnosis</strong> <span class="codigo">(C1)</span></td>
 <td>Understand the real situation of AI in the company.</td>
 <td>AI system inventory; maturity assessment with evidence; current sphere map; transformation index profile; current validated value and cost.</td>
 <td>AI Office</td>
 <td>AI Committee; presented to the board</td>
 </tr>
 <tr id="cod-c2-direction">
-<td><strong>C2 · Direction</strong></td>
+<td><strong>Direction</strong> <span class="codigo">(C2)</span></td>
 <td>Decide where to play, with what ambition and with what risk appetite.</td>
 <td>AI thesis; ambition level per sphere; risk appetite and thresholds (including those for Enterprise intensity and the return horizon); corporate AI policy; framework budget.</td>
 <td>Senior management</td>
 <td>Board</td>
 </tr>
 <tr id="cod-c3-portfolio">
-<td><strong>C3 · Portfolio</strong></td>
+<td><strong>Portfolio</strong> <span class="codigo">(C3)</span></td>
 <td>Select, prioritise and balance initiatives.</td>
 <td>Prioritised portfolio with ambition level, sphere, intensity, budget and owners; retirement criteria; available capacity.</td>
 <td>AI Committee</td>
 <td>AI Committee; the board approves Transform initiatives</td>
 </tr>
 <tr id="cod-c4-oversight">
-<td><strong>C4 · Oversight</strong></td>
+<td><strong>Oversight</strong> <span class="codigo">(C4)</span></td>
 <td>Check that what was decided is being delivered and act on deviations.</td>
 <td>Board dashboard; register of recommendations and decisions; outcomes of relevant <em>gates</em>; incidents and nonconformities; main portfolio risks.</td>
 <td>AI Office</td>
 <td>AI Committee (monthly); board or board committee (quarterly)</td>
 </tr>
 <tr id="cod-c5-review">
-<td><strong>C5 · Review</strong></td>
+<td><strong>Review</strong> <span class="codigo">(C5)</span></td>
 <td>Assess progress and adjust direction.</td>
 <td>Review of maturity and the transformation index; delivery against the thesis; lessons learned; proposed adjustments for the new cycle.</td>
 <td>AI Office with internal audit</td>
@@ -999,53 +1003,53 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>0</td>
 <td><strong>Context and constraints</strong></td>
 <td>Is the initiative authorised, and within what framework?</td>
-<td>G0 · Authorisation</td>
+<td>Authorisation <span class="codigo">(G0)</span></td>
 </tr>
 <tr>
 <td>1</td>
 <td><strong>Opportunity discovery</strong></td>
 <td>Is there a business opportunity that requires AI?</td>
-<td>G1 · Opportunity</td>
+<td>Opportunity <span class="codigo">(G1)</span></td>
 </tr>
 <tr>
 <td>2</td>
 <td><strong>Value hypothesis</strong></td>
 <td>What value do we expect, how will we measure it and how will we know it has failed?</td>
-<td>G2 · Hypothesis</td>
+<td>Hypothesis <span class="codigo">(G2)</span></td>
 </tr>
 <tr>
 <td>3</td>
 <td><strong>Feasibility and risk</strong></td>
 <td>Is it technically, economically, regulatorily and organisationally feasible, with acceptable risk?</td>
-<td>G3 · Feasibility (main stop gate)</td>
+<td>Feasibility <span class="codigo">(G3 · main stop gate)</span></td>
 </tr>
 <tr>
 <td>4</td>
 <td><strong>Solution design</strong></td>
 <td>How is it built with control, human oversight and reversibility?</td>
-<td>G4 · Design</td>
+<td>Design <span class="codigo">(G4)</span></td>
 </tr>
 <tr>
 <td>5</td>
 <td><strong>Delivery and validation</strong></td>
 <td>Does it work and deliver value under real conditions?</td>
-<td>G5 · Go-live</td>
+<td>Go-live <span class="codigo">(G5)</span></td>
 </tr>
 <tr>
 <td>6</td>
 <td><strong>Operation and governance</strong></td>
 <td>Is it still working, delivering value and under control?</td>
-<td>R6 · Continuity review (periodic)</td>
+<td>Continuity review <span class="codigo">(R6 · periodic)</span></td>
 </tr>
 <tr>
 <td>7</td>
 <td><strong>Evolution or retirement</strong></td>
 <td>Do we scale, iterate or retire?</td>
-<td>G7 · Scale or retire</td>
+<td>Scale or retire <span class="codigo">(G7)</span></td>
 </tr>
 </tbody>
 </table></div>
-<h3 id="6-2-phase-0-context-and-constraints">6.2 Phase 0 · Context and constraints</h3>
+<h3 id="6-2-phase-0-context-and-constraints">6.2 Context and constraints (phase 0)</h3>
 <div class="tabla"><table>
 <thead>
 <tr>
@@ -1076,7 +1080,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 </tbody>
 </table></div>
-<h3 id="6-3-phase-1-opportunity-discovery">6.3 Phase 1 · Opportunity discovery</h3>
+<h3 id="6-3-phase-1-opportunity-discovery">6.3 Opportunity discovery (phase 1)</h3>
 <div class="tabla"><table>
 <thead>
 <tr>
@@ -1103,7 +1107,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 </tbody>
 </table></div>
-<h3 id="6-4-phase-2-value-hypothesis">6.4 Phase 2 · Value hypothesis</h3>
+<h3 id="6-4-phase-2-value-hypothesis">6.4 Value hypothesis (phase 2)</h3>
 <div class="tabla"><table>
 <thead>
 <tr>
@@ -1134,7 +1138,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 </tbody>
 </table></div>
-<h3 id="6-5-phase-3-feasibility-and-risk">6.5 Phase 3 · Feasibility and risk</h3>
+<h3 id="6-5-phase-3-feasibility-and-risk">6.5 Feasibility and risk (phase 3)</h3>
 <div class="tabla"><table>
 <thead>
 <tr>
@@ -1165,7 +1169,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 </tbody>
 </table></div>
-<h3 id="6-6-phase-4-solution-design">6.6 Phase 4 · Solution design</h3>
+<h3 id="6-6-phase-4-solution-design">6.6 Solution design (phase 4)</h3>
 <div class="tabla"><table>
 <thead>
 <tr>
@@ -1192,7 +1196,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 </tbody>
 </table></div>
-<h3 id="6-7-phase-5-delivery-and-validation">6.7 Phase 5 · Delivery and validation</h3>
+<h3 id="6-7-phase-5-delivery-and-validation">6.7 Delivery and validation (phase 5)</h3>
 <div class="tabla"><table>
 <thead>
 <tr>
@@ -1223,7 +1227,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 </tbody>
 </table></div>
-<h3 id="6-8-phase-6-operation-and-governance">6.8 Phase 6 · Operation and governance</h3>
+<h3 id="6-8-phase-6-operation-and-governance">6.8 Operation and governance (phase 6)</h3>
 <div class="tabla"><table>
 <thead>
 <tr>
@@ -1250,7 +1254,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 </tbody>
 </table></div>
-<h3 id="6-9-phase-7-evolution-or-retirement">6.9 Phase 7 · Evolution or retirement</h3>
+<h3 id="6-9-phase-7-evolution-or-retirement">6.9 Evolution or retirement (phase 7)</h3>
 <div class="tabla"><table>
 <thead>
 <tr>
@@ -1442,56 +1446,56 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </thead>
 <tbody>
 <tr id="cod-g0-authorisation">
-<td><strong>G0 · Authorisation</strong></td>
+<td><strong>Authorisation</strong> <span class="codigo">(G0)</span></td>
 <td>AI Office</td>
 <td>Sponsor</td>
 <td>AI Auditor</td>
 <td>AI Committee</td>
 </tr>
 <tr id="cod-g1-opportunity">
-<td><strong>G1 · Opportunity</strong></td>
+<td><strong>Opportunity</strong> <span class="codigo">(G1)</span></td>
 <td>AI Office</td>
 <td>Sponsor</td>
 <td>AI Auditor</td>
 <td>Sponsor, informing the committee</td>
 </tr>
 <tr id="cod-g2-hypothesis">
-<td><strong>G2 · Hypothesis</strong></td>
+<td><strong>Hypothesis</strong> <span class="codigo">(G2)</span></td>
 <td>AI Office</td>
 <td>Sponsor</td>
 <td>AI Auditor</td>
 <td>AI Committee</td>
 </tr>
 <tr id="cod-g3-feasibility">
-<td><strong>G3 · Feasibility</strong></td>
+<td><strong>Feasibility</strong> <span class="codigo">(G3)</span></td>
 <td>AI Office</td>
 <td>Sponsor with risk clearance</td>
 <td>AI Auditor</td>
 <td>AI Committee</td>
 </tr>
 <tr id="cod-g4-design">
-<td><strong>G4 · Design</strong></td>
+<td><strong>Design</strong> <span class="codigo">(G4)</span></td>
 <td>AI Office</td>
 <td>Sponsor with risk clearance</td>
 <td>AI Auditor</td>
 <td>AI Committee</td>
 </tr>
 <tr id="cod-g5-go-live">
-<td><strong>G5 · Go-live</strong></td>
+<td><strong>Go-live</strong> <span class="codigo">(G5)</span></td>
 <td>AI Office</td>
 <td>Sponsor with risk clearance</td>
 <td>AI Auditor</td>
 <td>AI Committee after multi-level sign-off</td>
 </tr>
 <tr id="cod-r6-continuity">
-<td><strong>R6 · Continuity</strong></td>
+<td><strong>Continuity</strong> <span class="codigo">(R6)</span></td>
 <td>AI Office</td>
 <td>Sponsor</td>
 <td>AI Auditor</td>
 <td>AI Committee</td>
 </tr>
 <tr id="cod-g7-scale-or-retire">
-<td><strong>G7 · Scale or retire</strong></td>
+<td><strong>Scale or retire</strong> <span class="codigo">(G7)</span></td>
 <td>AI Office</td>
 <td>Sponsor</td>
 <td>AI Auditor</td>
@@ -1513,25 +1517,25 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </thead>
 <tbody>
 <tr id="cod-g2-hypothesis-2">
-<td><strong>G2 · Hypothesis</strong></td>
+<td><strong>Hypothesis</strong> <span class="codigo">(G2)</span></td>
 <td>Baseline for cost, time or errors; expected savings with a formula.</td>
 <td>Performance and cost metrics; adoption target.</td>
 <td>Return hypothesis with learning milestones; investment limit per stage; board approval.</td>
 </tr>
 <tr id="cod-g3-feasibility-2">
-<td><strong>G3 · Feasibility</strong></td>
+<td><strong>Feasibility</strong> <span class="codigo">(G3)</span></td>
 <td>Positive expected annual net value and NPV ≥ 0 within the horizon and at the rate set in C2 (<a href="40_SEVEN-G_Reglas_de_medicion_del_valor.html" title="Document 40 &#183; Value measurement rules">document 40</a>).</td>
 <td>Feasibility of adoption and of the role change, in addition to the expected net value.</td>
 <td>Feasibility of the first stage; stop criteria per stage; documented option value.</td>
 </tr>
 <tr id="cod-g5-go-live-2">
-<td><strong>G5 · Go-live</strong></td>
+<td><strong>Go-live</strong> <span class="codigo">(G5)</span></td>
 <td>Efficiency validated against the baseline; plan to realise the released capacity.</td>
 <td>Actual adoption and performance improvement measured.</td>
 <td>Market or customer evidence: usage, conversion, initial revenue or verified operational change.</td>
 </tr>
 <tr id="cod-g7-scale-or-retire-2">
-<td><strong>G7 · Scale or retire</strong></td>
+<td><strong>Scale or retire</strong> <span class="codigo">(G7)</span></td>
 <td>Realised savings, not just released capacity.</td>
 <td>Sustained performance and reassigned capacity.</td>
 <td>Measured return and verified change in the operating model or the offering.</td>
@@ -2043,7 +2047,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>Diagnose and review direction.</td>
 </tr>
 <tr id="cod-c4">
-<td><strong>C4</strong></td>
+<td><strong>Oversight</strong> <span class="codigo">(C4)</span></td>
 <td>Board dashboard; decision agility (time from idea to approval and to production).</td>
 <td>Oversee.</td>
 </tr>
@@ -2287,7 +2291,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </table></div>
 <h2 id="external-sources">External sources cited</h2><p class="fuentes-nota">Links to the official or primary source, checked before publication. Always verify the version in force on the date of use.</p><ul class="fuentes-externas"><li><a href="https://eur-lex.europa.eu/eli/dir/2022/2555/oj/eng" target="_blank" rel="noopener">Directive (EU) 2022/2555 of the European Parliament and of the Council of 14 December 2022 on measures for a high common level of cybersecurity across the Union (NIS 2 Directive)</a><span> · Parlamento Europeo y Consejo de la UE · 14-12-2022</span></li><li><a href="https://eur-lex.europa.eu/eli/reg/2016/679/oj/eng" target="_blank" rel="noopener">Regulation (EU) 2016/679 of the European Parliament and of the Council of 27 April 2016 on the protection of natural persons with regard to the processing of personal data and on the free movement of such data, and repealing Directive 95/46/EC (General Data Protection Regulation)</a><span> · Parlamento Europeo y Consejo de la UE · 27-04-2016</span></li><li><a href="https://eur-lex.europa.eu/eli/reg/2022/2554/oj/eng" target="_blank" rel="noopener">Regulation (EU) 2022/2554 of the European Parliament and of the Council of 14 December 2022 on digital operational resilience for the financial sector (DORA)</a><span> · Parlamento Europeo y Consejo de la UE · 14-12-2022</span></li><li><a href="https://eur-lex.europa.eu/eli/reg/2024/1689/oj/eng" target="_blank" rel="noopener">Regulation (EU) 2024/1689 of the European Parliament and of the Council of 13 June 2024 laying down harmonised rules on artificial intelligence (Artificial Intelligence Act)</a><span> · Parlamento Europeo y Consejo de la UE · 13-06-2024</span></li><li><a href="https://csrc.nist.gov/pubs/ir/8596/iprd" target="_blank" rel="noopener">Cybersecurity Framework Profile for Artificial Intelligence (Cyber AI Profile): NIST Community Profile, NIST IR 8596 (Initial Preliminary Draft)</a><span> · National Institute of Standards and Technology (NIST), NCCoE · 16-12-2025</span></li><li><a href="https://www.iso.org/standard/42001" target="_blank" rel="noopener">ISO/IEC 42001:2023 Information technology — Artificial intelligence — Management system</a><span> · ISO/IEC (JTC 1/SC 42) · 18-12-2023</span></li><li><a href="https://www.nist.gov/publications/artificial-intelligence-risk-management-framework-ai-rmf-10" target="_blank" rel="noopener">Artificial Intelligence Risk Management Framework (AI RMF 1.0), NIST AI 100-1</a><span> · National Institute of Standards and Technology (NIST), Departamento de Comercio de EE. UU. · 26-01-2023</span></li><li><a href="https://csrc.nist.gov/pubs/cswp/29/the-nist-cybersecurity-framework-csf-20/final" target="_blank" rel="noopener">The NIST Cybersecurity Framework (CSF) 2.0, NIST CSWP 29</a><span> · National Institute of Standards and Technology (NIST), Departamento de Comercio de EE. UU. · 26-02-2024</span></li></ul>
 </main>
-<footer class="pie"><div><span>© 2026 Fernando García Varela · SEVEN-G methodology</span><span>Generated on 28-09-2026</span></div><p class="pie-ia">Content generated and typeset with AI support under the author&#39;s editorial supervision.</p></footer>
+<footer class="pie"><div><span>© 2026 Fernando García Varela · SEVEN-G methodology</span><span>Generated on 12-10-2026</span></div><p class="pie-ia">Content generated and typeset with AI support under the author&#39;s editorial supervision.</p></footer>
 <script src="codigos.js" defer></script>
 
 <script>

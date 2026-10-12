@@ -392,6 +392,10 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 /* Ilustraciones en imagen (p. ej., SPAD): ocupan el ancho del lienzo y conservan su proporción */
 .g-lienzo img { display: block; width: 100%; height: auto; border: 1px solid var(--regla-2); }
 .ilustracion .g-lienzo img[src*="ilusion_de_velocidad"] { max-width: 560px; margin: 0 auto; }
+/* Nombre primero, código después (D144): el código entre paréntesis tras el nombre, en tablas y títulos */
+.codigo { font-family: var(--mono, 'Courier New', monospace); font-size: .88em; color: var(--tinta-2); white-space: nowrap; font-weight: 400; }
+h2 .codigo, h3 .codigo { font-weight: 400; }
+
 @page { @bottom-left { content: "SEVEN-G · Manual de operación de IA"; font: 8.5pt "Libre Franklin", "Segoe UI", sans-serif; color: #74675e; } }
 </style>
 </head>
@@ -1828,7 +1832,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>Igual, y siempre que lo indique la evaluación de riesgos</td>
 </tr>
 <tr>
-<td>R6</td>
+<td><strong>Revisi&#243;n de continuidad</strong> <span class="codigo">(R6)</span></td>
 <td>Semestral</td>
 <td>Trimestral</td>
 </tr>
@@ -1845,34 +1849,34 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <div class="tabla"><table>
 <thead>
 <tr>
-<th>Código</th>
 <th>Plantilla</th>
+
 <th>Contenido mínimo</th>
 <th>Se revisa en</th>
 </tr>
 </thead>
 <tbody>
 <tr id="cod-p24">
-<td><strong><a href="plantillas/P24_SEVEN-G_Manual_de_operacion.html" title="Plantilla P24 &#183; Manual de operaci&#243;n">P24</a></strong></td>
-<td>Manual de operación</td>
+<td><strong>Manual de operación</strong> <span class="codigo">(<a href="plantillas/P24_SEVEN-G_Manual_de_operacion.html" title="Plantilla P24 &#183; Manual de operaci&#243;n">P24</a>)</span></td>
+
 <td>Descripción del sistema y tipo; nivel de autonomía; niveles de servicio; responsabilidades y guardia; procedimientos por alerta; reentrenamiento o evaluación continua; límites y parada de agentes; modos degradados y cascada de degradación por coste con sus disparadores; costes y límites de consumo; registros y conservación; dependencias y proveedores; plan de vigilancia posterior a la comercialización si procede; tiempo máximo de recuperación en funciones críticas.</td>
 <td>G5, R6, tras cambios significativos y sustanciales</td>
 </tr>
 <tr id="cod-p25">
-<td><strong><a href="plantillas/P25_SEVEN-G_Configuracion_de_monitorizacion_y_alertas.html" title="Plantilla P25 &#183; Configuraci&#243;n de monitorizaci&#243;n y alertas">P25</a></strong></td>
-<td>Configuración de monitorización y alertas</td>
+<td><strong>Configuración de monitorización y alertas</strong> <span class="codigo">(<a href="plantillas/P25_SEVEN-G_Configuracion_de_monitorizacion_y_alertas.html" title="Plantilla P25 &#183; Configuraci&#243;n de monitorizaci&#243;n y alertas">P25</a>)</span></td>
+
 <td>Métricas por capa; línea base; umbrales de aviso y crítico; severidad inicial; responsable; procedimiento; retraso de etiquetas; referencia de uso y clasificación de consultas; conjunto de evaluación de referencia con pares contrafactuales y muestreo; calidad mínima en modo degradado; resultado de la prueba de alertas.</td>
 <td>G5, R6</td>
 </tr>
 <tr id="cod-p26">
-<td><strong><a href="plantillas/P26_SEVEN-G_Plan_de_respuesta_a_incidentes.html" title="Plantilla P26 &#183; Plan de respuesta a incidentes">P26</a></strong></td>
-<td>Plan de respuesta a incidentes</td>
+<td><strong>Plan de respuesta a incidentes</strong> <span class="codigo">(<a href="plantillas/P26_SEVEN-G_Plan_de_respuesta_a_incidentes.html" title="Plantilla P26 &#183; Plan de respuesta a incidentes">P26</a>)</span></td>
+
 <td>Criterios S1–S4 aplicados al sistema; contactos y escalado; acciones de contención preaprobadas; notificaciones aplicables con responsable y plazo; comunicación a usuarios, afectados y proveedor; relación con el plan de continuidad.</td>
 <td>G5, R6, tras cada incidente S1–S2</td>
 </tr>
 <tr id="cod-p27">
-<td><strong><a href="plantillas/P27_SEVEN-G_Registro_de_incidentes_y_cambios.html" title="Plantilla P27 &#183; Registro de incidentes y cambios">P27</a></strong></td>
-<td>Registro de incidentes y cambios</td>
+<td><strong>Registro de incidentes y cambios</strong> <span class="codigo">(<a href="plantillas/P27_SEVEN-G_Registro_de_incidentes_y_cambios.html" title="Plantilla P27 &#183; Registro de incidentes y cambios">P27</a>)</span></td>
+
 <td>Cambios: clase, descripción, validación, aprobación, <em>gate</em> si procede, fecha. Incidentes: severidad, cronología, contención, notificaciones, causa raíz, acciones, cierre, enlace a no conformidad.</td>
 <td>Continuo; R6</td>
 </tr>
@@ -1952,7 +1956,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </table></div>
 <h2 id="fuentes-externas">Fuentes externas citadas</h2><p class="fuentes-nota">Enlaces a la fuente oficial o primaria, comprobados antes de publicar. Verifique siempre la versión vigente en la fecha de uso.</p><ul class="fuentes-externas"><li><a href="https://eur-lex.europa.eu/eli/dir/2022/2555/oj/spa" target="_blank" rel="noopener">Directiva (UE) 2022/2555 del Parlamento Europeo y del Consejo, de 14 de diciembre de 2022, relativa a las medidas destinadas a garantizar un elevado nivel com&#250;n de ciberseguridad en toda la Uni&#243;n (Directiva SRI 2 / NIS2)</a><span> · Parlamento Europeo y Consejo de la UE · 14-12-2022</span></li><li><a href="https://eur-lex.europa.eu/eli/reg/2016/679/oj/spa" target="_blank" rel="noopener">Reglamento (UE) 2016/679 del Parlamento Europeo y del Consejo, de 27 de abril de 2016, relativo a la protecci&#243;n de las personas f&#237;sicas en lo que respecta al tratamiento de datos personales y a la libre circulaci&#243;n de estos datos y por el que se deroga la Directiva 95/46/CE (Reglamento general de protecci&#243;n de datos)</a><span> · Parlamento Europeo y Consejo de la UE · 27-04-2016</span></li><li><a href="https://eur-lex.europa.eu/eli/reg/2022/2554/oj/spa" target="_blank" rel="noopener">Reglamento (UE) 2022/2554 del Parlamento Europeo y del Consejo, de 14 de diciembre de 2022, sobre la resiliencia operativa digital del sector financiero (DORA)</a><span> · Parlamento Europeo y Consejo de la UE · 14-12-2022</span></li><li><a href="https://eur-lex.europa.eu/eli/reg/2024/1689/oj/spa" target="_blank" rel="noopener">Reglamento (UE) 2024/1689 del Parlamento Europeo y del Consejo, de 13 de junio de 2024, por el que se establecen normas armonizadas en materia de inteligencia artificial (Reglamento de Inteligencia Artificial)</a><span> · Parlamento Europeo y Consejo de la UE · 13-06-2024</span></li><li><a href="https://eur-lex.europa.eu/eli/reg/2026/1744/oj/spa" target="_blank" rel="noopener">Reglamento (UE) 2026/1744 del Parlamento Europeo y del Consejo, de 8 de julio de 2026, por el que se modifican los Reglamentos (UE) 2024/1689, (UE) 2018/1139 y (UE) 2023/1230 en lo que respecta a la simplificaci&#243;n de la aplicaci&#243;n de normas armonizadas en materia de inteligencia artificial (&#211;mnibus digital sobre IA)</a><span> · Parlamento Europeo y Consejo de la UE · 08-07-2026</span></li></ul>
 </main>
-<footer class="pie"><div><span>© 2026 Fernando García Varela · Metodolog&#237;a SEVEN-G</span><span>Generado el 28-09-2026</span></div><p class="pie-ia">Contenido generado y maquetado con apoyo de IA bajo supervisi&#243;n editorial del autor.</p></footer>
+<footer class="pie"><div><span>© 2026 Fernando García Varela · Metodolog&#237;a SEVEN-G</span><span>Generado el 12-10-2026</span></div><p class="pie-ia">Contenido generado y maquetado con apoyo de IA bajo supervisi&#243;n editorial del autor.</p></footer>
 <script src="codigos.js" defer></script>
 
 <script>

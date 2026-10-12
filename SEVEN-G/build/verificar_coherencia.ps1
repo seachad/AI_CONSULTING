@@ -25,6 +25,7 @@
     7. Prueba de humo en Edge sin ventana: el registro, el panel completo y el panel móvil se dibujan (un error de JavaScript los deja vacíos),
        y la calculadora T14 reproduce el ejemplo del documento 12 §9 (suma 12, transformación declarada no evidenciada).
     8. Registro de decisiones: numeración única y correlativa.
+   37. Nombre primero, código después (D144): nombres.json al día, títulos y tablas generados con «Nombre (código)», sin variantes de nombre.
     10. Comunidad (D80): la página de incidencias y peticiones no pide correo ni datos de contacto, no carga recursos de terceros, no usa
         cookies, muestra la regla de los votos, está enlazada desde la portada (ES/EN) y en su carpeta no hay ningún token.
     17. Códigos citados en cualquier panel (D99): codigos.js enlaza los códigos escritos y ofrece «Citados aquí»; las herramientas, el
@@ -1647,6 +1648,53 @@ try {
     if (-not $ok) { Mal "$($f.Name): sin tema del sitio ni navegación de vuelta; regenerar (t01_a_panel.py o galeria.py) (D141)"; $mal36++ }
   }
   if (-not $mal36) { Ok "selector de tema y navegación del sitio en portada, entrada, documentos, herramientas, página de T17, galería, comunidad y paneles ($($salT17.Count) paneles móviles y registros de recomendaciones generados)" }
+  # ---- 37. nombre primero, código después (D144, R16)
+  Write-Host '37. Nombre primero, código después (D144)'
+  $mal37 = 0
+  # (a) la lista única de nombres canónicos está al día
+  & pwsh -NoProfile -File (Join-Path $repo 'SEVEN-G\build\nombres.ps1') -Comprobar *> $null
+  if ($LASTEXITCODE) { Mal 'nombres.json no está al día: ejecutar pwsh -File SEVEN-G/build/nombres.ps1 (D144)'; $mal37++ }
+  $nombresJson = Get-Content (Join-Path $repo 'SEVEN-G\build\nombres.json') -Raw -Encoding utf8 | ConvertFrom-Json -AsHashtable
+  # (b) ningún título generado empieza por un código seguido de «·»: el generador debe mostrar «Nombre (código)»
+  $lectura = @('00_', '01_', '20_', '21_', '22_', '60_', '61_', '90_', '94_', '96_')
+  $codPrimero = 0
+  foreach ($lang in 'es', 'en') {
+    foreach ($h in Get-ChildItem (Join-Path $repo "SEVEN-G\html\$lang") -File -Filter *.html) {
+      $tx = [IO.File]::ReadAllText($h.FullName)
+      foreach ($m in [regex]::Matches($tx, '<h[23] id="[^"]+">(?:<span class="antetitulo">\d+</span>)?\s*(?:\d+\.\d+\s+)?(G[0-7]|R6|LV-[A-Z0-9]+|C[1-5]|D[1-7]|(?:Fase|Phase) \d)\s*·')) { $codPrimero++ }
+      # (c) en una tabla con columna de nombre (Nombre, Herramienta, Plantilla, Hito…), ninguna fila canónica puede seguir mostrando solo el código:
+      #     el generador la transforma en «Nombre (código)» salvo que no pueda suprimir la columna sin desalinear (se deja como está y aquí se señala)
+      foreach ($tb in [regex]::Matches($tx, '(?s)<table>.*?</table>')) {
+        $cab = [regex]::Match($tb.Value, '(?s)<thead>(.*?)</thead>')
+        if (-not $cab.Success) { continue }
+        $ths = @([regex]::Matches($cab.Groups[1].Value, '(?s)<th[^>]*>(.*?)</th>') | ForEach-Object { [Net.WebUtility]::HtmlDecode(($_.Groups[1].Value -replace '<[^>]+>', '')).Trim() })
+        if ($ths.Count -lt 2 -or -not (@($ths | Select-Object -Skip 1) -match '^(Nombre|Name|Herramienta|Tool|Plantilla|Template|Dimensión|Dimension|Hito|Milestone|Arquetipo|Archetype|Modificador|Modifier|Herramienta o plantilla|Tool or template)$')) { continue }
+        foreach ($fc in [regex]::Matches($tb.Value, '(?s)<tr id="cod-[^"]+">\s*<td[^>]*>(.*?)</td>')) {
+          $m1 = [regex]::Match($fc.Groups[1].Value, '(?s)^\s*<strong>(?:<a [^>]*>)?([A-Z][^<]{0,40}?)(?:</a>)?</strong>\s*$')
+          if ($m1.Success) { $k = [Net.WebUtility]::HtmlDecode($m1.Groups[1].Value).Trim(); if ($nombresJson[$lang].ContainsKey($k) -and $k -notmatch '^\d{2}$') { $codPrimero++; if ($codPrimero -le 5) { Aviso "$($h.Name): fila «$k» con el código delante del nombre (la tabla tiene alguna fila sin identificador en negrita)" } } }
+        }
+      }
+    }
+  }
+  if ($codPrimero) { Mal "$codPrimero títulos o filas de tabla con el código delante del nombre en el HTML generado: regenerar con build.ps1 (D144)"; $mal37++ }
+  # (d) un nombre, un código: ninguna variante de nombre de puerta o fase en los Markdown (ES/EN)
+  $variantes = 0
+  foreach ($lang in 'es', 'en') {
+    $nj = $nombresJson[$lang]
+    $mds = Get-ChildItem (Join-Path $repo "SEVEN-G\mds\$lang") -Recurse -File -Filter *.md | Where-Object { $_.FullName -notmatch '[\\/]_trabajo[\\/]' }
+    foreach ($f in $mds) {
+      $tx = [IO.File]::ReadAllText($f.FullName)
+      foreach ($m in [regex]::Matches($tx, '(?m)(?<![\w.])(G[0-7]|R6)\s*·\s*\*{0,2}([A-Za-zÁÉÍÓÚáéíóúñÑ][^|*\n(]{2,60}?)\*{0,2}\s*(?=\(|\||$|\n)')) {
+        $cod = $m.Groups[1].Value; $nom = $m.Groups[2].Value.Trim()
+        if ($nj.ContainsKey($cod) -and $nom -ne $nj[$cod].nombre -and $nom -notmatch '^(condiciones|conditions|aprobación|approval|cambio|change|parada|stop)') { $variantes++; if ($variantes -le 5) { Aviso "$($f.Name): «$cod · $nom» no es el nombre canónico («$($nj[$cod].nombre)»)" } }
+      }
+    }
+  }
+  if ($variantes -gt 5) { Aviso "$variantes variantes de nombre de puerta en total (R16)" }
+  # (e) informativo: menciones de puerta por código sin nombre delante en los documentos de lectura (baja entrega a entrega en E3)
+  $sueltas = 0
+  foreach ($pfx in $lectura) { foreach ($f in Get-ChildItem (Join-Path $repo 'SEVEN-G\mds\es') -File -Filter "$pfx*.md") { $sueltas += ([regex]::Matches([IO.File]::ReadAllText($f.FullName), '(?<![(·\w-])\b(G[0-7]|R6)\b(?!\.\d|\s*·|\))')).Count } }
+  if (-not $mal37) { Ok "nombres canónicos al día ($($nombresJson.es.Count) es, $($nombresJson.en.Count) en); títulos y tablas generados con el nombre primero; $sueltas menciones de puerta solo por código en los documentos de lectura (ES), pendientes de la batida editorial (E3)" }
 }
 finally { Remove-Item $tmp -Recurse -Force -Confirm:$false -ErrorAction SilentlyContinue }
 

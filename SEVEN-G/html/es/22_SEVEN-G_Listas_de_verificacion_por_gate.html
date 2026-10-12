@@ -392,6 +392,10 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 /* Ilustraciones en imagen (p. ej., SPAD): ocupan el ancho del lienzo y conservan su proporción */
 .g-lienzo img { display: block; width: 100%; height: auto; border: 1px solid var(--regla-2); }
 .ilustracion .g-lienzo img[src*="ilusion_de_velocidad"] { max-width: 560px; margin: 0 auto; }
+/* Nombre primero, código después (D144): el código entre paréntesis tras el nombre, en tablas y títulos */
+.codigo { font-family: var(--mono, 'Courier New', monospace); font-size: .88em; color: var(--tinta-2); white-space: nowrap; font-weight: 400; }
+h2 .codigo, h3 .codigo { font-weight: 400; }
+
 @page { @bottom-left { content: "SEVEN-G · Listas de verificación por gate"; font: 8.5pt "Libre Franklin", "Segoe UI", sans-serif; color: #74675e; } }
 </style>
 </head>
@@ -478,7 +482,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
   </div>
 </header>
 <section class="descargas-zona" aria-label="Descargas y herramientas"><div class="dz-in"><div class="dz-bloque"><p class="dz-titulo">Descargas</p><div class="dz-enlaces"><a class="dz-item" href="../../pdf/es/22_SEVEN-G_Listas_de_verificacion_por_gate.pdf" target="_blank" rel="noopener"><span class="dz-tipo">PDF</span><b>Este documento · español</b></a><a class="dz-item" href="../../pdf/en/22_SEVEN-G_Listas_de_verificacion_por_gate.pdf" target="_blank" rel="noopener"><span class="dz-tipo">PDF</span><b>Versión en inglés</b></a><a class="dz-item" href="../en/22_SEVEN-G_Listas_de_verificacion_por_gate.html" hreflang="en"><span class="dz-tipo html">HTML</span><b>Versión en inglés</b></a></div></div><div class="dz-bloque"><p class="dz-titulo">Herramientas relacionadas</p><div class="dz-enlaces"><a class="dz-item" href="../../herramientas/T01_registro_iniciativas/registro.html" target="_blank" rel="noopener"><span class="dz-tipo tool">T01</span><b>Registro de iniciativas</b></a><a class="dz-item" href="../../herramientas/T11_calculadora_valor/calculadora.html" target="_blank" rel="noopener"><span class="dz-tipo tool">T11</span><b>Calculadora de hip&#243;tesis de valor y costes por caso</b></a></div></div></div></section>
-<nav class="indice"><div class="indice-in"><h2>En este documento</h2><ol><li><a href="#objeto-y-alcance"><span>01</span>Objeto y alcance</a></li><li><a href="#instrucciones-de-uso"><span>02</span>Instrucciones de uso</a></li><li><a href="#lv-g0-autorizacion"><span>03</span>LV-G0 · Autorización</a></li><li><a href="#lv-g1-oportunidad"><span>04</span>LV-G1 · Oportunidad</a></li><li><a href="#lv-g2-hipotesis"><span>05</span>LV-G2 · Hipótesis</a></li><li><a href="#lv-g3-viabilidad"><span>06</span>LV-G3 · Viabilidad</a></li><li><a href="#lv-g4-diseno"><span>07</span>LV-G4 · Diseño</a></li><li><a href="#lv-g5-puesta-en-produccion"><span>08</span>LV-G5 · Puesta en producción</a></li><li><a href="#lv-r6-revision-de-continuidad"><span>09</span>LV-R6 · Revisión de continuidad</a></li><li><a href="#lv-g7-escalado-o-retirada"><span>10</span>LV-G7 · Escalado o retirada</a></li><li><a href="#lv-ev-validacion-de-evidencias"><span>11</span>LV-EV · Validación de evidencias</a></li><li><a href="#lv-ag-agentes"><span>12</span>LV-AG · Agentes</a></li><li><a href="#herramientas-y-plantillas-asociadas"><span>13</span>Herramientas y plantillas asociadas</a></li><li><a href="#documentos-relacionados"><span>14</span>Documentos relacionados</a></li><li><a href="#control-de-versiones"><span>15</span>Control de versiones</a></li></ol></div></nav>
+<nav class="indice"><div class="indice-in"><h2>En este documento</h2><ol><li><a href="#objeto-y-alcance"><span>01</span>Objeto y alcance</a></li><li><a href="#instrucciones-de-uso"><span>02</span>Instrucciones de uso</a></li><li><a href="#lv-g0-autorizacion"><span>03</span>Autorización (LV-G0)</a></li><li><a href="#lv-g1-oportunidad"><span>04</span>Oportunidad (LV-G1)</a></li><li><a href="#lv-g2-hipotesis"><span>05</span>Hipótesis (LV-G2)</a></li><li><a href="#lv-g3-viabilidad"><span>06</span>Viabilidad (LV-G3)</a></li><li><a href="#lv-g4-diseno"><span>07</span>Diseño (LV-G4)</a></li><li><a href="#lv-g5-puesta-en-produccion"><span>08</span>Puesta en producción (LV-G5)</a></li><li><a href="#lv-r6-revision-de-continuidad"><span>09</span>Revisión de continuidad (LV-R6)</a></li><li><a href="#lv-g7-escalado-o-retirada"><span>10</span>Escalado o retirada (LV-G7)</a></li><li><a href="#lv-ev-validacion-de-evidencias"><span>11</span>Validación de evidencias (LV-EV)</a></li><li><a href="#lv-ag-agentes"><span>12</span>Agentes (LV-AG)</a></li><li><a href="#herramientas-y-plantillas-asociadas"><span>13</span>Herramientas y plantillas asociadas</a></li><li><a href="#documentos-relacionados"><span>14</span>Documentos relacionados</a></li><li><a href="#control-de-versiones"><span>15</span>Control de versiones</a></li></ol></div></nav>
 <main class="contenido" id="contenido">
 <blockquote class="aviso-legal plegado">
 <p><strong>Aviso legal y exención de responsabilidad.</strong> SEVEN-G es un marco metodológico de referencia que se ofrece «tal cual» y con fines exclusivamente informativos. No constituye asesoramiento jurídico, regulatorio, financiero ni profesional, ni garantiza el cumplimiento de ninguna norma. Las referencias a regulación general (como el Reglamento Europeo de IA, el RGPD, DORA o NIS2), a normas técnicas y a regulación específica de cada sector o jurisdicción pueden ser incompletas, no aplicar a un caso concreto o quedar desactualizadas por cambios normativos, interpretaciones o criterios de las autoridades posteriores a su fecha de consulta. <strong>Cada organización que use SEVEN-G es la única responsable de identificar la normativa que le aplica, verificar su vigencia y certificar su propio cumplimiento regulatorio</strong>, con el asesoramiento cualificado que corresponda. Esta metodología es una ayuda genérica y gratuita, compartida con la comunidad para que nadie tenga que empezar desde cero; cada persona u organización puede y debe adaptarla a su propio uso. No debe entenderse que sus partes jurídicamente sensibles hayan sido revisadas por una asesoría jurídica: esas revisiones, para cada empresa o sector, son responsabilidad última de la empresa, el consultor o la organización que la use. Aunque se procura mantenerla al día, alguna norma puede haber cambiado sin que se recoja aquí. En la máxima medida permitida por la ley, el autor no asume responsabilidad alguna por los efectos de su aplicación en ninguna organización ni por su aplicabilidad completa. La metodología no otorga certificación de ningún tipo. El autor no asume responsabilidad alguna por el uso que se haga de este contenido ni por las decisiones que se adopten con él. Los datos, cifras, compañías y casos de los ejemplos son ficticios o ilustrativos.</p>
@@ -586,7 +590,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <h3 id="2-6-cierre-de-cada-lista">2.6 Cierre de cada lista</h3>
 <p>Al final de cada lista se anota: <strong>criterios aplicables · grado de cumplimiento · bloqueantes · condicionables abiertos · opinión (☐ Conforme ☐ Conforme con observaciones ☐ No conforme) · verificador · fecha</strong>.</p>
 <hr />
-<h2 id="lv-g0-autorizacion"><span class="antetitulo">03</span>LV-G0 · Autorización</h2>
+<h2 id="lv-g0-autorizacion"><span class="antetitulo">03</span>Autorización (LV-G0)</h2>
 <p>Verifica: oficina de IA (Lite) · auditor de IA (Enterprise). Decide: patrocinador (Lite) · comité de IA (Enterprise).</p>
 <div class="tabla"><table>
 <thead>
@@ -693,7 +697,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 </tbody>
 </table></div>
-<h2 id="lv-g1-oportunidad"><span class="antetitulo">04</span>LV-G1 · Oportunidad</h2>
+<h2 id="lv-g1-oportunidad"><span class="antetitulo">04</span>Oportunidad (LV-G1)</h2>
 <p>Verifica: oficina de IA (Lite) · auditor de IA (Enterprise). Decide: patrocinador (en Enterprise, informando al comité).</p>
 <div class="tabla"><table>
 <thead>
@@ -800,7 +804,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 </tbody>
 </table></div>
-<h2 id="lv-g2-hipotesis"><span class="antetitulo">05</span>LV-G2 · Hipótesis</h2>
+<h2 id="lv-g2-hipotesis"><span class="antetitulo">05</span>Hipótesis (LV-G2)</h2>
 <p>Verifica: oficina de IA (Lite) · auditor de IA (Enterprise). Decide: patrocinador (Lite) · comité de IA (Enterprise) · consejo en Transformar.</p>
 <div class="tabla"><table>
 <thead>
@@ -934,7 +938,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 </tbody>
 </table></div>
-<h2 id="lv-g3-viabilidad"><span class="antetitulo">06</span>LV-G3 · Viabilidad</h2>
+<h2 id="lv-g3-viabilidad"><span class="antetitulo">06</span>Viabilidad (LV-G3)</h2>
 <p>Verifica: oficina de IA (Lite) · auditor de IA (Enterprise). Decide: patrocinador con conformidad de riesgos (Lite) · comité de IA (Enterprise). Principal puerta de parada.</p>
 <div class="tabla"><table>
 <thead>
@@ -1149,7 +1153,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 </tbody>
 </table></div>
-<h2 id="lv-g4-diseno"><span class="antetitulo">07</span>LV-G4 · Diseño</h2>
+<h2 id="lv-g4-diseno"><span class="antetitulo">07</span>Diseño (LV-G4)</h2>
 <p>Verifica: oficina de IA (Lite) · auditor de IA (Enterprise). Decide: patrocinador con conformidad de riesgos (Lite) · comité de IA (Enterprise).</p>
 <div class="tabla"><table>
 <thead>
@@ -1364,7 +1368,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 </tbody>
 </table></div>
-<h2 id="lv-g5-puesta-en-produccion"><span class="antetitulo">08</span>LV-G5 · Puesta en producción</h2>
+<h2 id="lv-g5-puesta-en-produccion"><span class="antetitulo">08</span>Puesta en producción (LV-G5)</h2>
 <p>Verifica: oficina de IA (Lite) · auditor de IA (Enterprise). Decide: patrocinador con conformidad de riesgos (Lite) · comité de IA tras firma multinivel (Enterprise).</p>
 <div class="tabla"><table>
 <thead>
@@ -1589,7 +1593,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tbody>
 </table></div>
 <p><strong>Firma multinivel (Enterprise).</strong> Antes de marcar G5.23, comprobar para cada firmante (técnico, riesgos y cumplimiento, seguridad de la información, protección de datos): ☐ firma registrada con fecha y versión del sistema · ☐ sentido (favorable, con reservas o veto) · ☐ ningún firmante participó en la construcción · ☐ los vetos anteriores están levantados por quien los emitió (21 §9.2).</p>
-<h2 id="lv-r6-revision-de-continuidad"><span class="antetitulo">09</span>LV-R6 · Revisión de continuidad</h2>
+<h2 id="lv-r6-revision-de-continuidad"><span class="antetitulo">09</span>Revisión de continuidad (LV-R6)</h2>
 <p>Verifica: oficina de IA (Lite) · auditor de IA (Enterprise). Decide: patrocinador (Lite) · comité de IA (Enterprise). Periodicidad: semestral (Lite) · trimestral (Enterprise). Resultados (01 §7.3): Continuar la operación · Continuar con condiciones · Adelantar G7.</p>
 <div class="tabla"><table>
 <thead>
@@ -1750,7 +1754,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 </tbody>
 </table></div>
-<h2 id="lv-g7-escalado-o-retirada"><span class="antetitulo">10</span>LV-G7 · Escalado o retirada</h2>
+<h2 id="lv-g7-escalado-o-retirada"><span class="antetitulo">10</span>Escalado o retirada (LV-G7)</h2>
 <p>Verifica: oficina de IA (Lite) · auditor de IA (Enterprise). Decide: patrocinador (Lite) · comité de IA (Enterprise) · consejo para escalar en Transformar. Marcar <em>No aplica</em> los ítems del resultado no propuesto. Mantener el sistema sin cambios se verifica como <em>Iterar</em> con vuelta a la fase 6 (21 §5.3).</p>
 <div class="tabla"><table>
 <thead>
@@ -1876,7 +1880,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tbody>
 </table></div>
 <hr />
-<h2 id="lv-ev-validacion-de-evidencias"><span class="antetitulo">11</span>LV-EV · Validación de evidencias</h2>
+<h2 id="lv-ev-validacion-de-evidencias"><span class="antetitulo">11</span>Validación de evidencias (LV-EV)</h2>
 <p>Se aplica a <strong>cada evidencia</strong> enlazada en la solicitud del <em>gate</em>, antes de revisar la lista de la puerta. Desarrolla 21 §4. Aplica igual en Lite y Enterprise, salvo EV.10, que en Lite exige solo los campos no marcados <em>(Enterprise)</em>.</p>
 <div class="tabla"><table>
 <thead>
@@ -1991,7 +1995,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </table></div>
 <p>Una evidencia con EV.05 o EV.09 en <em>no</em> no puede usarse para ningún criterio. Con carencias en EV.01–EV.04, EV.06 o EV.10 puede aceptarse solo si no sostiene un criterio <em>Sí</em> o <em>Sí ◆</em> y se corrige antes de la decisión (21 §4.2).</p>
 <hr />
-<h2 id="lv-ag-agentes"><span class="antetitulo">12</span>LV-AG · Agentes</h2>
+<h2 id="lv-ag-agentes"><span class="antetitulo">12</span>Agentes (LV-AG)</h2>
 <p>Reúne los controles para sistemas que ejecutan acciones o las preparan para validación humana. Es el contenido de la herramienta <a href="plantillas/P18_SEVEN-G_Diseno_de_seguridad.html" title="Herramienta T10 &#183; Evaluaci&#243;n de seguridad de agentes">T10</a> (evaluación de seguridad de agentes) y complementa, sin sustituir, las listas de cada puerta. Aplica igual en Lite y Enterprise; las columnas indican qué exige cada nivel de autonomía (21 §8.2): <strong>Sí</strong> obligatorio · <strong>Rec.</strong> recomendado · <strong>—</strong> no aplica. Varios ítems pueden remitir al mismo criterio.</p>
 <div class="tabla"><table>
 <thead>
@@ -2315,40 +2319,40 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <div class="tabla"><table>
 <thead>
 <tr>
-<th>Código</th>
 <th>Nombre</th>
+
 <th>Uso</th>
 </tr>
 </thead>
 <tbody>
 <tr id="cod-t03">
-<td><strong><a href="../../herramientas/T01_registro_iniciativas/registro.html#/gates" title="Herramienta T03 &#183; Gestor de gates">T03</a></strong></td>
-<td>Gestor de <em>gates</em></td>
+<td><strong>Gestor de <em>gates</em></strong> <span class="codigo">(<a href="../../herramientas/T01_registro_iniciativas/registro.html#/gates" title="Herramienta T03 &#183; Gestor de gates">T03</a>)</span></td>
+
 <td>Carga las listas, registra el estado de cada ítem, calcula el grado de cumplimiento y aplica la regla de bloqueo.</td>
 </tr>
 <tr id="cod-t10">
-<td><strong><a href="plantillas/P18_SEVEN-G_Diseno_de_seguridad.html" title="Herramienta T10 &#183; Evaluaci&#243;n de seguridad de agentes">T10</a></strong></td>
-<td>Evaluación de seguridad de agentes</td>
+<td><strong>Evaluación de seguridad de agentes</strong> <span class="codigo">(<a href="plantillas/P18_SEVEN-G_Diseno_de_seguridad.html" title="Herramienta T10 &#183; Evaluaci&#243;n de seguridad de agentes">T10</a>)</span></td>
+
 <td>Implementa LV-AG dentro de <a href="../../herramientas/T01_registro_iniciativas/registro.html#/gates" title="Herramienta T03 &#183; Gestor de gates">T03</a>.</td>
 </tr>
 <tr>
-<td><strong><a href="../../herramientas/T01_registro_iniciativas/registro.html" title="Herramienta T01 &#183; Registro de iniciativas">T01</a> · <a href="plantillas/P50_SEVEN-G_Registro_de_no_conformidades.html" title="Herramienta T08 &#183; Registro de no conformidades e incidentes">T08</a></strong></td>
-<td>Registro de iniciativas · No conformidades e incidentes</td>
+<td><strong>Registro de iniciativas · No conformidades e incidentes</strong> <span class="codigo">(<a href="../../herramientas/T01_registro_iniciativas/registro.html" title="Herramienta T01 &#183; Registro de iniciativas">T01</a> · <a href="plantillas/P50_SEVEN-G_Registro_de_no_conformidades.html" title="Herramienta T08 &#183; Registro de no conformidades e incidentes">T08</a>)</span></td>
+
 <td>Eventos para comprobar la anterioridad; registro de hallazgos.</td>
 </tr>
 <tr id="cod-p29">
-<td><strong><a href="plantillas/P29_SEVEN-G_Registro_de_decision_de_gate.html" title="Plantilla P29 &#183; Registro de decisi&#243;n de gate">P29</a></strong></td>
-<td>Registro de decisión de <em>gate</em></td>
+<td><strong>Registro de decisión de <em>gate</em></strong> <span class="codigo">(<a href="plantillas/P29_SEVEN-G_Registro_de_decision_de_gate.html" title="Plantilla P29 &#183; Registro de decisi&#243;n de gate">P29</a>)</span></td>
+
 <td>Recoge el resultado de las listas y la opinión de verificación.</td>
 </tr>
 <tr id="cod-p23">
-<td><strong><a href="plantillas/P23_SEVEN-G_Firma_de_puesta_en_produccion.html" title="Plantilla P23 &#183; Firma de puesta en producci&#243;n">P23</a></strong></td>
-<td>Firma de puesta en producción</td>
+<td><strong>Firma de puesta en producción</strong> <span class="codigo">(<a href="plantillas/P23_SEVEN-G_Firma_de_puesta_en_produccion.html" title="Plantilla P23 &#183; Firma de puesta en producci&#243;n">P23</a>)</span></td>
+
 <td>Comprobación de firmas de LV-G5.</td>
 </tr>
 <tr>
-<td><strong><a href="plantillas/P01_SEVEN-G_Carta_de_la_iniciativa.html" title="Plantilla P01 &#183; Carta de la iniciativa">P01</a>–<a href="plantillas/P31_SEVEN-G_Ficha_de_caso_de_uso.html" title="Plantilla P31 &#183; Ficha de caso de uso">P31</a></strong></td>
-<td>Plantillas del bloque H</td>
+<td><strong>Plantillas del bloque H</strong> <span class="codigo">(<a href="plantillas/P01_SEVEN-G_Carta_de_la_iniciativa.html" title="Plantilla P01 &#183; Carta de la iniciativa">P01</a>–<a href="plantillas/P31_SEVEN-G_Ficha_de_caso_de_uso.html" title="Plantilla P31 &#183; Ficha de caso de uso">P31</a>)</span></td>
+
 <td>Dónde mirar cada evidencia.</td>
 </tr>
 </tbody>
@@ -2409,7 +2413,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </table></div>
 
 </main>
-<footer class="pie"><div><span>© 2026 Fernando García Varela · Metodolog&#237;a SEVEN-G</span><span>Generado el 28-09-2026</span></div><p class="pie-ia">Contenido generado y maquetado con apoyo de IA bajo supervisi&#243;n editorial del autor.</p></footer>
+<footer class="pie"><div><span>© 2026 Fernando García Varela · Metodolog&#237;a SEVEN-G</span><span>Generado el 12-10-2026</span></div><p class="pie-ia">Contenido generado y maquetado con apoyo de IA bajo supervisi&#243;n editorial del autor.</p></footer>
 <script src="codigos.js" defer></script>
 
 <script>

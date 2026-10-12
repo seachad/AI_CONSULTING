@@ -392,6 +392,10 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 /* Ilustraciones en imagen (p. ej., SPAD): ocupan el ancho del lienzo y conservan su proporción */
 .g-lienzo img { display: block; width: 100%; height: auto; border: 1px solid var(--regla-2); }
 .ilustracion .g-lienzo img[src*="ilusion_de_velocidad"] { max-width: 560px; margin: 0 auto; }
+/* Nombre primero, código después (D144): el código entre paréntesis tras el nombre, en tablas y títulos */
+.codigo { font-family: var(--mono, 'Courier New', monospace); font-size: .88em; color: var(--tinta-2); white-space: nowrap; font-weight: 400; }
+h2 .codigo, h3 .codigo { font-weight: 400; }
+
 @page { @bottom-left { content: "SEVEN-G · Índice de transformación"; font: 8.5pt "Libre Franklin", "Segoe UI", sans-serif; color: #74675e; } }
 </style>
 </head>
@@ -761,35 +765,35 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </thead>
 <tbody>
 <tr id="cod-fase-1-propuesta">
-<td><strong>Fase 1 · Propuesta</strong></td>
+<td><strong>Propuesta</strong> <span class="codigo">(fase 1)</span></td>
 <td>Responsable de producto de IA</td>
 <td>Oficina de IA (coherencia de respuestas)</td>
 <td>Patrocinador, en G1</td>
 <td>Se registra el evento en <a href="../../herramientas/T01_registro_iniciativas/registro.html" title="Herramienta T01 &#183; Registro de iniciativas">T01</a>.</td>
 </tr>
 <tr id="cod-fase-2-confirmacion-lite">
-<td><strong>Fase 2 · Confirmación (Lite)</strong></td>
+<td><strong>Confirmación</strong> <span class="codigo">(fase 2 · Lite)</span></td>
 <td>Responsable de producto de IA</td>
 <td>Oficina de IA</td>
 <td>Patrocinador, en G2</td>
 <td>Si el nivel confirmado es Transformar, la intensidad pasa a Enterprise.</td>
 </tr>
 <tr id="cod-fase-2-confirmacion-enterprise">
-<td><strong>Fase 2 · Confirmación (Enterprise)</strong></td>
+<td><strong>Confirmación</strong> <span class="codigo">(fase 2 · Enterprise)</span></td>
 <td>Responsable de producto de IA</td>
 <td>Auditor de IA</td>
 <td>Comité de IA, en G2</td>
 <td>Transformar requiere además aprobación del consejo.</td>
 </tr>
 <tr id="cod-r6-revision-de-continuidad">
-<td><strong>R6 · Revisión de continuidad</strong></td>
+<td><strong>Revisión de continuidad</strong> <span class="codigo">(R6)</span></td>
 <td>Responsable de producto de IA</td>
 <td>Oficina de IA o auditor de IA</td>
 <td>Órgano de R6</td>
 <td>Si hay indicios de que el nivel real difiere del confirmado, se adelanta G7.</td>
 </tr>
 <tr id="cod-fase-7-ambicion-real">
-<td><strong>Fase 7 · Ambición real</strong></td>
+<td><strong>Ambición real</strong> <span class="codigo">(fase 7)</span></td>
 <td>Responsable de producto de IA, con datos de <a href="plantillas/P28_SEVEN-G_Seguimiento_de_realizacion_de_valor.html" title="Herramienta T12 &#183; Seguimiento de realizaci&#243;n de valor">T12</a></td>
 <td>Oficina de IA (Lite) o auditor de IA (Enterprise)</td>
 <td>Órgano de G7</td>
@@ -1837,65 +1841,65 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <div class="tabla"><table>
 <thead>
 <tr>
-<th>Código</th>
 <th>Nombre</th>
+
 <th>Uso en este documento</th>
 </tr>
 </thead>
 <tbody>
 <tr id="cod-t01">
-<td><strong><a href="../../herramientas/T01_registro_iniciativas/registro.html" title="Herramienta T01 &#183; Registro de iniciativas">T01</a></strong></td>
-<td>Registro de iniciativas</td>
+<td><strong>Registro de iniciativas</strong> <span class="codigo">(<a href="../../herramientas/T01_registro_iniciativas/registro.html" title="Herramienta T01 &#183; Registro de iniciativas">T01</a>)</span></td>
+
 <td>Campos: respuestas IT-P1–IT-P5 con evidencia y estado de verificación; ambición propuesta, confirmada y real con fecha y motivo; esfera principal; fechas de <em>gates</em>; estados; motivos de parada; origen de la iniciativa. Desde el esquema 0.5: verificación de IT-P2 e IT-P3 en un <em>gate</em> con supervisión humana verificada, unidad completa rediseñada, capacidad liberada, materializada y reasignada, oferta habilitada por IA en los importes e ingresos totales e IT-D3 de la compañía.</td>
 </tr>
 <tr id="cod-t03">
-<td><strong><a href="../../herramientas/T01_registro_iniciativas/registro.html#/gates" title="Herramienta T03 &#183; Gestor de gates">T03</a></strong></td>
-<td>Gestor de <em>gates</em></td>
+<td><strong>Gestor de <em>gates</em></strong> <span class="codigo">(<a href="../../herramientas/T01_registro_iniciativas/registro.html#/gates" title="Herramienta T03 &#183; Gestor de gates">T03</a>)</span></td>
+
 <td>Verificación de la clasificación en G2 y G7; aprobaciones del consejo.</td>
 </tr>
 <tr id="cod-t05">
-<td><strong><a href="../../herramientas/T01_registro_iniciativas/registro.html" title="Herramienta T05 &#183; Clasificador de ambici&#243;n">T05</a></strong></td>
-<td>Clasificador de ambición</td>
+<td><strong>Clasificador de ambición</strong> <span class="codigo">(<a href="../../herramientas/T01_registro_iniciativas/registro.html" title="Herramienta T05 &#183; Clasificador de ambici&#243;n">T05</a>)</span></td>
+
 <td>Aplica las cinco preguntas y las reglas 1 a 10; registra el resultado y las incoherencias.</td>
 </tr>
 <tr id="cod-t12">
-<td><strong><a href="plantillas/P28_SEVEN-G_Seguimiento_de_realizacion_de_valor.html" title="Herramienta T12 &#183; Seguimiento de realizaci&#243;n de valor">T12</a></strong></td>
-<td>Seguimiento de realización de valor</td>
+<td><strong>Seguimiento de realización de valor</strong> <span class="codigo">(<a href="plantillas/P28_SEVEN-G_Seguimiento_de_realizacion_de_valor.html" title="Herramienta T12 &#183; Seguimiento de realizaci&#243;n de valor">T12</a>)</span></td>
+
 <td>Importes por tipo y estado; capacidad liberada y materializada; ingresos habilitados por IA.</td>
 </tr>
 <tr id="cod-t13">
-<td><strong><a href="../../herramientas/T11_calculadora_valor/calculadora.html#/costes" title="Herramienta T13 &#183; Calculadora de costes por caso">T13</a></strong></td>
-<td>Calculadora de costes por caso</td>
+<td><strong>Calculadora de costes por caso</strong> <span class="codigo">(<a href="../../herramientas/T11_calculadora_valor/calculadora.html#/costes" title="Herramienta T13 &#183; Calculadora de costes por caso">T13</a>)</span></td>
+
 <td>Inversión y coste recurrente de cada iniciativa (señal 1).</td>
 </tr>
 <tr id="cod-t14">
-<td><strong><a href="../../herramientas/T14_indice_transformacion/indice.html" title="Herramienta T14 &#183; Calculadora del &#237;ndice de transformaci&#243;n">T14</a></strong></td>
-<td>Calculadora del índice de transformación</td>
+<td><strong>Calculadora del índice de transformación</strong> <span class="codigo">(<a href="../../herramientas/T14_indice_transformacion/indice.html" title="Herramienta T14 &#183; Calculadora del &#237;ndice de transformaci&#243;n">T14</a>)</span></td>
+
 <td>Calcula condiciones de base, señales, perfil, alertas, cobertura, qué movería el perfil y evolución; conserva la versión de umbrales. Parte del JSON del registro <a href="../../herramientas/T01_registro_iniciativas/registro.html" title="Herramienta T01 &#183; Registro de iniciativas">T01</a>: con el esquema 0.5 calcula desde él las ocho señales y las condiciones IT-D1 e IT-D3; lo que el registro no contenga se completa a mano. Exporta su resultado para el panel del consejo.</td>
 </tr>
 <tr id="cod-t17">
-<td><strong><a href="../../herramientas/T17_panel_consejo/index.html" title="Herramienta T17 &#183; Panel de IA para el consejo">T17</a></strong></td>
-<td>Panel de IA para el consejo</td>
+<td><strong>Panel de IA para el consejo</strong> <span class="codigo">(<a href="../../herramientas/T17_panel_consejo/index.html" title="Herramienta T17 &#183; Panel de IA para el consejo">T17</a>)</span></td>
+
 <td>Tarjeta «Índice de transformación de la compañía» en «Cartera y valor»: perfil, condiciones de base, señales, tendencia, alertas y qué movería el perfil, a partir del resultado exportado por <a href="../../herramientas/T14_indice_transformacion/indice.html" title="Herramienta T14 &#183; Calculadora del &#237;ndice de transformaci&#243;n">T14</a>.</td>
 </tr>
 <tr id="cod-t18">
-<td><strong><a href="../../herramientas/T01_registro_iniciativas/registro.html#/consejo" title="Herramienta T18 &#183; Registro de recomendaciones del consejo">T18</a></strong></td>
-<td>Registro de recomendaciones del consejo</td>
+<td><strong>Registro de recomendaciones del consejo</strong> <span class="codigo">(<a href="../../herramientas/T01_registro_iniciativas/registro.html#/consejo" title="Herramienta T18 &#183; Registro de recomendaciones del consejo">T18</a>)</span></td>
+
 <td>Vista «Consejo (<a href="../../herramientas/T01_registro_iniciativas/registro.html#/consejo" title="Herramienta T18 &#183; Registro de recomendaciones del consejo">T18</a>)» del registro <a href="../../herramientas/T01_registro_iniciativas/registro.html" title="Herramienta T01 &#183; Registro de iniciativas">T01</a>: las decisiones del consejo (tesis, apuestas de Transformar con límite por etapa, revisiones y decisiones de etapa) son la fuente de la señal 8 y de IT-D1.</td>
 </tr>
 <tr id="cod-t19">
-<td><strong><a href="plantillas/P35_SEVEN-G_Tesis_de_IA_y_apetito_de_riesgo.html" title="Herramienta T19 &#183; Plantilla de tesis de IA y apetito de riesgo">T19</a></strong></td>
-<td>Plantilla de tesis de IA y apetito de riesgo</td>
+<td><strong>Plantilla de tesis de IA y apetito de riesgo</strong> <span class="codigo">(<a href="plantillas/P35_SEVEN-G_Tesis_de_IA_y_apetito_de_riesgo.html" title="Herramienta T19 &#183; Plantilla de tesis de IA y apetito de riesgo">T19</a>)</span></td>
+
 <td>Documento de decisión de C2: tesis aprobada (señal 8) y ambición objetivo por esfera (condición IT-D1).</td>
 </tr>
 <tr id="cod-t20">
-<td><strong><a href="plantillas/P20_SEVEN-G_Plan_de_adopcion_y_capacidad.html" title="Herramienta T20 &#183; Plan de adopci&#243;n y capacidad">T20</a></strong></td>
-<td>Plan de adopción y capacidad</td>
+<td><strong>Plan de adopción y capacidad</strong> <span class="codigo">(<a href="plantillas/P20_SEVEN-G_Plan_de_adopcion_y_capacidad.html" title="Herramienta T20 &#183; Plan de adopci&#243;n y capacidad">T20</a>)</span></td>
+
 <td>Horas reasignadas y roles rediseñados (señales 3 y 5).</td>
 </tr>
 <tr id="cod-p07">
-<td><strong><a href="plantillas/P07_SEVEN-G_Clasificacion_de_esfera_y_ambicion.html" title="Plantilla P07 &#183; Clasificaci&#243;n de esfera y ambici&#243;n">P07</a></strong></td>
-<td>Clasificación de esfera y ambición</td>
+<td><strong>Clasificación de esfera y ambición</strong> <span class="codigo">(<a href="plantillas/P07_SEVEN-G_Clasificacion_de_esfera_y_ambicion.html" title="Plantilla P07 &#183; Clasificaci&#243;n de esfera y ambici&#243;n">P07</a>)</span></td>
+
 <td>Evidencia de la clasificación en las fases 1, 2 y 7.</td>
 </tr>
 </tbody>
@@ -1973,7 +1977,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </table></div>
 
 </main>
-<footer class="pie"><div><span>© 2026 Fernando García Varela · Metodolog&#237;a SEVEN-G</span><span>Generado el 28-09-2026</span></div><p class="pie-ia">Contenido generado y maquetado con apoyo de IA bajo supervisi&#243;n editorial del autor.</p></footer>
+<footer class="pie"><div><span>© 2026 Fernando García Varela · Metodolog&#237;a SEVEN-G</span><span>Generado el 12-10-2026</span></div><p class="pie-ia">Contenido generado y maquetado con apoyo de IA bajo supervisi&#243;n editorial del autor.</p></footer>
 <script src="codigos.js" defer></script>
 
 <script>

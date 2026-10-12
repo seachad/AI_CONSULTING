@@ -392,6 +392,10 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 /* Ilustraciones en imagen (p. ej., SPAD): ocupan el ancho del lienzo y conservan su proporción */
 .g-lienzo img { display: block; width: 100%; height: auto; border: 1px solid var(--regla-2); }
 .ilustracion .g-lienzo img[src*="ilusion_de_velocidad"] { max-width: 560px; margin: 0 auto; }
+/* Nombre primero, código después (D144): el código entre paréntesis tras el nombre, en tablas y títulos */
+.codigo { font-family: var(--mono, 'Courier New', monospace); font-size: .88em; color: var(--tinta-2); white-space: nowrap; font-weight: 400; }
+h2 .codigo, h3 .codigo { font-weight: 400; }
+
 @page { @bottom-left { content: "SEVEN-G · Application cases"; font: 8.5pt "Libre Franklin", "Segoe UI", sans-serif; color: #74675e; } }
 </style>
 </head>
@@ -600,37 +604,37 @@ The companies, their bodies, people, systems, initiatives, decisions, dates and 
 </thead>
 <tbody>
 <tr>
-<td>D1 · Strategy and governance</td>
+<td>Strategy and governance <span class="codigo">(D1)</span></td>
 <td>2</td>
 <td>Data committee with minutes, without a mandate over AI or an approved thesis.</td>
 </tr>
 <tr>
-<td>D2 · Value and portfolio</td>
+<td>Value and portfolio <span class="codigo">(D2)</span></td>
 <td>2</td>
 <td>List of projects with value declared by the business areas; no prioritisation or retirement criteria.</td>
 </tr>
 <tr>
-<td>D3 · Data and knowledge</td>
+<td>Data and knowledge <span class="codigo">(D3)</span></td>
 <td>3</td>
 <td>Grid and customer data owners appointed; catalogue with lineage in the main domains.</td>
 </tr>
 <tr>
-<td>D4 · Technology and operations</td>
+<td>Technology and operations <span class="codigo">(D4)</span></td>
 <td>3</td>
 <td>Common model platform with degradation monitoring in most use cases in production.</td>
 </tr>
 <tr>
-<td>D5 · People and adoption</td>
+<td>People and adoption <span class="codigo">(D5)</span></td>
 <td>2</td>
 <td>Occasional training; no adoption plans.</td>
 </tr>
 <tr>
-<td>D6 · Risk, security and compliance</td>
+<td>Risk, security and compliance <span class="codigo">(D6)</span></td>
 <td>2</td>
 <td>Strong cybersecurity in the control network, but no complete AI inventory or regulatory classification.</td>
 </tr>
 <tr>
-<td>D7 · Measurement and evidence</td>
+<td>Measurement and evidence <span class="codigo">(D7)</span></td>
 <td>1</td>
 <td>Declared value with no baseline or attribution method.</td>
 </tr>
@@ -684,56 +688,56 @@ The companies, their bodies, people, systems, initiatives, decisions, dates and 
 </thead>
 <tbody>
 <tr>
-<td>G0</td>
+<td><strong>Authorisation</strong> <span class="codigo">(G0)</span></td>
 <td>Q1 27</td>
 <td>Proceed</td>
 <td>AI Committee</td>
 <td>Fit with the thesis; roles without incompatibilities.</td>
 </tr>
 <tr>
-<td>G1</td>
+<td><strong>Opportunity</strong> <span class="codigo">(G1)</span></td>
 <td>Q1 27</td>
 <td>Proceed</td>
 <td>Sponsor, informing the committee</td>
 <td>Unplanned failures are the largest avoidable maintenance cost.</td>
 </tr>
 <tr>
-<td>G2</td>
+<td><strong>Hypothesis</strong> <span class="codigo">(G2)</span></td>
 <td>Q2 27</td>
 <td>Proceed</td>
 <td>AI Committee</td>
 <td>Baseline measured: 118 unplanned failures a year in the pilot zone; comparable control zone.</td>
 </tr>
 <tr>
-<td>G3</td>
+<td><strong>Feasibility</strong> <span class="codigo">(G3)</span></td>
 <td>Q2 27</td>
 <td>Proceed</td>
 <td>AI Committee</td>
 <td>Sufficient telemetry data; Medium residual risk.</td>
 </tr>
 <tr>
-<td>G4</td>
+<td><strong>Design</strong> <span class="codigo">(G4)</span></td>
 <td>Q3 27</td>
 <td>Proceed</td>
 <td>AI Committee</td>
 <td>Rollback plan: return to the age-based replacement schedule.</td>
 </tr>
 <tr>
-<td>G5</td>
+<td><strong>Go-live</strong> <span class="codigo">(G5)</span></td>
 <td>Q4 27</td>
 <td>Proceed with conditions</td>
 <td>AI Committee after multi-level sign-off</td>
 <td>Condition: measure for twelve months against the control zone (deadline Q4 28; owner: management control).</td>
 </tr>
 <tr>
-<td>R6</td>
+<td><strong>Continuity review</strong> <span class="codigo">(R6)</span></td>
 <td>Quarterly 2028</td>
 <td>Proceed</td>
 <td>AI Committee</td>
 <td>Stable; no incidents.</td>
 </tr>
 <tr>
-<td>G7</td>
+<td><strong>Scale or retire</strong> <span class="codigo">(G7)</span></td>
 <td>Q4 28</td>
 <td><strong>Scale</strong></td>
 <td>AI Committee</td>
@@ -798,14 +802,14 @@ The companies, their bodies, people, systems, initiatives, decisions, dates and 
 <td>Opportunity aligned with sphere 02.</td>
 </tr>
 <tr>
-<td>G2</td>
+<td><strong>Hypothesis</strong> <span class="codigo">(G2)</span></td>
 <td>Q2 27</td>
 <td>Proceed</td>
 <td>AI Committee and <strong>full board</strong> (DEC-2027-004)</td>
 <td>Stage 1 with a limit of €250,000; stop criterion: Critical residual risk not acceptable within the appetite.</td>
 </tr>
 <tr>
-<td>G3</td>
+<td><strong>Feasibility</strong> <span class="codigo">(G3)</span></td>
 <td>Q3 27</td>
 <td><strong>Stop</strong></td>
 <td>AI Committee</td>
@@ -857,7 +861,7 @@ The companies, their bodies, people, systems, initiatives, decisions, dates and 
 </thead>
 <tbody>
 <tr>
-<td>G7</td>
+<td><strong>Scale or retire</strong> <span class="codigo">(G7)</span></td>
 <td>Q2 27</td>
 <td><strong>Retire</strong></td>
 <td>AI Committee</td>
@@ -918,37 +922,37 @@ The companies, their bodies, people, systems, initiatives, decisions, dates and 
 </thead>
 <tbody>
 <tr>
-<td>D1 · Strategy and governance</td>
+<td>Strategy and governance <span class="codigo">(D1)</span></td>
 <td>3</td>
 <td>Digital operations committee with a mandate and minutes; approved portfolio.</td>
 </tr>
 <tr>
-<td>D2 · Value and portfolio</td>
+<td>Value and portfolio <span class="codigo">(D2)</span></td>
 <td>3</td>
 <td>Use cases prioritised with value and cost; retirement criteria documented.</td>
 </tr>
 <tr>
-<td>D3 · Data and knowledge</td>
+<td>Data and knowledge <span class="codigo">(D3)</span></td>
 <td>2</td>
 <td>Good telemetry data; scattered commercial data.</td>
 </tr>
 <tr>
-<td>D4 · Technology and operations</td>
+<td>Technology and operations <span class="codigo">(D4)</span></td>
 <td>3</td>
 <td>Monitoring and rollback plans in the planning systems.</td>
 </tr>
 <tr>
-<td>D5 · People and adoption</td>
+<td>People and adoption <span class="codigo">(D5)</span></td>
 <td>2</td>
 <td>Training for planners; no position on the effect on drivers.</td>
 </tr>
 <tr>
-<td>D6 · Risk, security and compliance</td>
+<td>Risk, security and compliance <span class="codigo">(D6)</span></td>
 <td>2</td>
 <td>Complete inventory; regulatory classification pending for systems that affect employees.</td>
 </tr>
 <tr>
-<td>D7 · Measurement and evidence</td>
+<td>Measurement and evidence <span class="codigo">(D7)</span></td>
 <td>3</td>
 <td>Pilots with control depots; validation by management control.</td>
 </tr>
@@ -1009,7 +1013,7 @@ The companies, their bodies, people, systems, initiatives, decisions, dates and 
 <td>Baseline of kilometres and hours in two pilot depots and two control depots.</td>
 </tr>
 <tr>
-<td>G3</td>
+<td><strong>Feasibility</strong> <span class="codigo">(G3)</span></td>
 <td>Q1 27</td>
 <td>Proceed</td>
 <td>Sponsor with risk clearance</td>
@@ -1023,14 +1027,14 @@ The companies, their bodies, people, systems, initiatives, decisions, dates and 
 <td>Pilot exceeds the threshold; rollback to the manual plan tested.</td>
 </tr>
 <tr>
-<td>R6</td>
+<td><strong>Continuity review</strong> <span class="codigo">(R6)</span></td>
 <td>Q1 28</td>
 <td>Proceed</td>
 <td>Sponsor</td>
 <td>Stable.</td>
 </tr>
 <tr>
-<td>G7</td>
+<td><strong>Scale or retire</strong> <span class="codigo">(G7)</span></td>
 <td>Q3 28</td>
 <td><strong>Scale</strong></td>
 <td>Sponsor</td>
@@ -1107,28 +1111,28 @@ The companies, their bodies, people, systems, initiatives, decisions, dates and 
 <td>Fit with the thesis.</td>
 </tr>
 <tr>
-<td>G2</td>
+<td><strong>Hypothesis</strong> <span class="codigo">(G2)</span></td>
 <td>Q2 27</td>
 <td>Proceed</td>
 <td>AI Committee and <strong>full board</strong> (DEC-2027-015)</td>
 <td>Learning milestone: 400 loads. Stop criteria: improvement in margin per load of less than 1.0 point against the control group, or more than 2 % of loads with errors in the terms.</td>
 </tr>
 <tr>
-<td>G3</td>
+<td><strong>Feasibility</strong> <span class="codigo">(G3)</span></td>
 <td>Q2 27</td>
 <td>Proceed with conditions</td>
 <td>AI Committee</td>
 <td>Non-critical condition: agreements signed with two freight exchanges before G5.</td>
 </tr>
 <tr>
-<td>G4</td>
+<td><strong>Design</strong> <span class="codigo">(G4)</span></td>
 <td>Q3 27</td>
 <td>Proceed</td>
 <td>AI Committee</td>
 <td>Limit per load, action log and kill switch designed.</td>
 </tr>
 <tr>
-<td>G5</td>
+<td><strong>Go-live</strong> <span class="codigo">(G5)</span></td>
 <td>Q1 28</td>
 <td><strong>Stop</strong></td>
 <td>AI Committee</td>
@@ -1157,7 +1161,7 @@ The companies, their bodies, people, systems, initiatives, decisions, dates and 
 <td>Baseline: 212 own-damage accidents a year in the pilot fleet.</td>
 </tr>
 <tr>
-<td>G3</td>
+<td><strong>Feasibility</strong> <span class="codigo">(G3)</span></td>
 <td>Q3 27</td>
 <td><strong>Iterate</strong></td>
 <td>AI Committee</td>
@@ -1171,14 +1175,14 @@ The companies, their bodies, people, systems, initiatives, decisions, dates and 
 <td>Assessments complete; position approved in response to REC-2027-012.</td>
 </tr>
 <tr>
-<td>G4</td>
+<td><strong>Design</strong> <span class="codigo">(G4)</span></td>
 <td>Q1 28</td>
 <td>Proceed</td>
 <td>AI Committee</td>
 <td>No automatic sanctions; the traffic manager decides.</td>
 </tr>
 <tr>
-<td>G5</td>
+<td><strong>Go-live</strong> <span class="codigo">(G5)</span></td>
 <td>Q2 28</td>
 <td>Proceed</td>
 <td>AI Committee after multi-level sign-off</td>
@@ -1208,37 +1212,37 @@ The companies, their bodies, people, systems, initiatives, decisions, dates and 
 </thead>
 <tbody>
 <tr>
-<td>D1 · Strategy and governance</td>
+<td>Strategy and governance <span class="codigo">(D1)</span></td>
 <td>3</td>
 <td>Clinical AI committee with physicians and ethics representation; approved mandate.</td>
 </tr>
 <tr>
-<td>D2 · Value and portfolio</td>
+<td>Value and portfolio <span class="codigo">(D2)</span></td>
 <td>2</td>
 <td>Portfolio with no value in money and no retirement criteria.</td>
 </tr>
 <tr>
-<td>D3 · Data and knowledge</td>
+<td>Data and knowledge <span class="codigo">(D3)</span></td>
 <td>3</td>
 <td>Clinical data governance with owners and access controls.</td>
 </tr>
 <tr>
-<td>D4 · Technology and operations</td>
+<td>Technology and operations <span class="codigo">(D4)</span></td>
 <td>3</td>
 <td>Monitoring and rollback in clinical systems.</td>
 </tr>
 <tr>
-<td>D5 · People and adoption</td>
+<td>People and adoption <span class="codigo">(D5)</span></td>
 <td>3</td>
 <td>Adoption plans with clinical training.</td>
 </tr>
 <tr>
-<td>D6 · Risk, security and compliance</td>
+<td>Risk, security and compliance <span class="codigo">(D6)</span></td>
 <td>4</td>
 <td>Complete inventory, classification with legal judgement, impact assessments and drills.</td>
 </tr>
 <tr>
-<td>D7 · Measurement and evidence</td>
+<td>Measurement and evidence <span class="codigo">(D7)</span></td>
 <td>1</td>
 <td>Clinical and economic benefits declared, with no baseline or control group.</td>
 </tr>
@@ -1299,35 +1303,35 @@ The companies, their bodies, people, systems, initiatives, decisions, dates and 
 <td>Baseline: 7.5 minutes of documentation per consultation.</td>
 </tr>
 <tr>
-<td>G3</td>
+<td><strong>Feasibility</strong> <span class="codigo">(G3)</span></td>
 <td>Q2 27</td>
 <td>Proceed</td>
 <td>AI Committee</td>
 <td>Impact assessments complete; Medium residual risk.</td>
 </tr>
 <tr>
-<td>G4</td>
+<td><strong>Design</strong> <span class="codigo">(G4)</span></td>
 <td>Q2 27</td>
 <td>Proceed</td>
 <td>AI Committee</td>
 <td>Mandatory physician signature; kill switch that reverts to manual drafting.</td>
 </tr>
 <tr>
-<td>G5</td>
+<td><strong>Go-live</strong> <span class="codigo">(G5)</span></td>
 <td>Q3 27</td>
 <td>Proceed with conditions</td>
 <td>AI Committee after multi-level sign-off</td>
 <td>Non-critical condition: capacity reassignment plan approved by medical management within 90 days.</td>
 </tr>
 <tr>
-<td>R6</td>
+<td><strong>Continuity review</strong> <span class="codigo">(R6)</span></td>
 <td>Q4 27</td>
 <td>Proceed</td>
 <td>AI Committee</td>
 <td>INC-2027-006 (S3): a draft attributed a medication to another patient; detected during review before signature. Action: verification of the patient's identity when recording starts.</td>
 </tr>
 <tr>
-<td>G7</td>
+<td><strong>Scale or retire</strong> <span class="codigo">(G7)</span></td>
 <td>Q3 28</td>
 <td><strong>Iterate</strong></td>
 <td>AI Committee</td>
@@ -1403,14 +1407,14 @@ The companies, their bodies, people, systems, initiatives, decisions, dates and 
 </thead>
 <tbody>
 <tr>
-<td>R6</td>
+<td><strong>Continuity review</strong> <span class="codigo">(R6)</span></td>
 <td>Q2 27</td>
 <td>Brings G7 forward</td>
 <td>AI Committee</td>
 <td>First bias test: sensitivity of 0.71 overall, but 0.52 in patients over 80, the group with the most readmissions.</td>
 </tr>
 <tr>
-<td>G7</td>
+<td><strong>Scale or retire</strong> <span class="codigo">(G7)</span></td>
 <td>Q2 27</td>
 <td><strong>Retire</strong></td>
 <td>AI Committee</td>
@@ -1439,14 +1443,14 @@ The companies, their bodies, people, systems, initiatives, decisions, dates and 
 <td>Patient demand identified.</td>
 </tr>
 <tr>
-<td>G2</td>
+<td><strong>Hypothesis</strong> <span class="codigo">(G2)</span></td>
 <td>Q3 27</td>
 <td>Proceed</td>
 <td>AI Committee and <strong>full board</strong> (DEC-2027-025)</td>
 <td>Stage 1 with a limit of €150,000.</td>
 </tr>
 <tr>
-<td>G3</td>
+<td><strong>Feasibility</strong> <span class="codigo">(G3)</span></td>
 <td>Q4 27</td>
 <td><strong>Stop</strong></td>
 <td>AI Committee</td>
@@ -1477,37 +1481,37 @@ The companies, their bodies, people, systems, initiatives, decisions, dates and 
 </thead>
 <tbody>
 <tr>
-<td>D1 · Strategy and governance</td>
+<td>Strategy and governance <span class="codigo">(D1)</span></td>
 <td>3</td>
 <td>Approved AI thesis; AI Committee with recorded decisions.</td>
 </tr>
 <tr>
-<td>D2 · Value and portfolio</td>
+<td>Value and portfolio <span class="codigo">(D2)</span></td>
 <td>3</td>
 <td>Portfolio prioritised by additional net value per euro.</td>
 </tr>
 <tr>
-<td>D3 · Data and knowledge</td>
+<td>Data and knowledge <span class="codigo">(D3)</span></td>
 <td>3</td>
 <td>Sales and customer data governed; procurement data incomplete.</td>
 </tr>
 <tr>
-<td>D4 · Technology and operations</td>
+<td>Technology and operations <span class="codigo">(D4)</span></td>
 <td>3</td>
 <td>Monitoring, rollback and incident management.</td>
 </tr>
 <tr>
-<td>D5 · People and adoption</td>
+<td>People and adoption <span class="codigo">(D5)</span></td>
 <td>3</td>
 <td>Adoption plans in stores and head offices.</td>
 </tr>
 <tr>
-<td>D6 · Risk, security and compliance</td>
+<td>Risk, security and compliance <span class="codigo">(D6)</span></td>
 <td>3</td>
 <td>Inventory, classification and assessments up to date.</td>
 </tr>
 <tr>
-<td>D7 · Measurement and evidence</td>
+<td>Measurement and evidence <span class="codigo">(D7)</span></td>
 <td>3</td>
 <td>Control groups in the main use cases.</td>
 </tr>
@@ -1561,42 +1565,42 @@ The companies, their bodies, people, systems, initiatives, decisions, dates and 
 </thead>
 <tbody>
 <tr>
-<td>G2</td>
+<td><strong>Hypothesis</strong> <span class="codigo">(G2)</span></td>
 <td>Q1 27</td>
 <td>Proceed</td>
 <td>AI Committee and <strong>full board</strong> (DEC-2027-032)</td>
 <td>Milestones: 10,000 active subscribers at nine months; incremental margin ≥ €4 per order against the control group. Stop: fewer than 5,000 subscribers or margin below €2.</td>
 </tr>
 <tr>
-<td>G3</td>
+<td><strong>Feasibility</strong> <span class="codigo">(G3)</span></td>
 <td>Q2 27</td>
 <td>Proceed</td>
 <td>AI Committee</td>
 <td>Medium residual risk (data protection and personalisation).</td>
 </tr>
 <tr>
-<td>G4</td>
+<td><strong>Design</strong> <span class="codigo">(G4)</span></td>
 <td>Q2 27</td>
 <td>Proceed</td>
 <td>AI Committee</td>
 <td>Control group of 5 % of customers designed.</td>
 </tr>
 <tr>
-<td>G5</td>
+<td><strong>Go-live</strong> <span class="codigo">(G5)</span></td>
 <td>Q4 27</td>
 <td>Proceed</td>
 <td>AI Committee after multi-level sign-off</td>
 <td>Market evidence: 12,300 active subscribers at nine months.</td>
 </tr>
 <tr>
-<td>R6</td>
+<td><strong>Continuity review</strong> <span class="codigo">(R6)</span></td>
 <td>Quarterly 2028</td>
 <td>Proceed</td>
 <td>AI Committee</td>
 <td>No relevant incidents.</td>
 </tr>
 <tr>
-<td>G7</td>
+<td><strong>Scale or retire</strong> <span class="codigo">(G7)</span></td>
 <td>Q4 28</td>
 <td><strong>Scale</strong></td>
 <td>AI Committee and <strong>full board</strong> (DEC-2028-030)</td>
@@ -1662,7 +1666,7 @@ The companies, their bodies, people, systems, initiatives, decisions, dates and 
 <td>Hypothesis of improved terms with a baseline from the latest negotiations.</td>
 </tr>
 <tr>
-<td>G3</td>
+<td><strong>Feasibility</strong> <span class="codigo">(G3)</span></td>
 <td>Q3 27</td>
 <td><strong>Stop</strong></td>
 <td>AI Committee</td>
@@ -1714,14 +1718,14 @@ The companies, their bodies, people, systems, initiatives, decisions, dates and 
 </thead>
 <tbody>
 <tr>
-<td>R6</td>
+<td><strong>Continuity review</strong> <span class="codigo">(R6)</span></td>
 <td>Q1 27</td>
 <td>Brings G7 forward</td>
 <td>AI Committee</td>
 <td>Negative net value and reputational effect.</td>
 </tr>
 <tr>
-<td>G7</td>
+<td><strong>Scale or retire</strong> <span class="codigo">(G7)</span></td>
 <td>Q2 27</td>
 <td><strong>Retire</strong></td>
 <td>AI Committee</td>
@@ -1751,37 +1755,37 @@ The companies, their bodies, people, systems, initiatives, decisions, dates and 
 </thead>
 <tbody>
 <tr>
-<td>D1 · Strategy and governance</td>
+<td>Strategy and governance <span class="codigo">(D1)</span></td>
 <td>1</td>
 <td>Isolated initiatives by department; no body with a mandate over AI.</td>
 </tr>
 <tr>
-<td>D2 · Value and portfolio</td>
+<td>Value and portfolio <span class="codigo">(D2)</span></td>
 <td>1</td>
 <td>No portfolio.</td>
 </tr>
 <tr>
-<td>D3 · Data and knowledge</td>
+<td>Data and knowledge <span class="codigo">(D3)</span></td>
 <td>2</td>
 <td>Data owners in taxation and the municipal register of residents.</td>
 </tr>
 <tr>
-<td>D4 · Technology and operations</td>
+<td>Technology and operations <span class="codigo">(D4)</span></td>
 <td>2</td>
 <td>Stable operation of in-house systems; supplier tools without control.</td>
 </tr>
 <tr>
-<td>D5 · People and adoption</td>
+<td>People and adoption <span class="codigo">(D5)</span></td>
 <td>1</td>
 <td>No AI training.</td>
 </tr>
 <tr>
-<td>D6 · Risk, security and compliance</td>
+<td>Risk, security and compliance <span class="codigo">(D6)</span></td>
 <td>1</td>
 <td>No prior inventory or classification.</td>
 </tr>
 <tr>
-<td>D7 · Measurement and evidence</td>
+<td>Measurement and evidence <span class="codigo">(D7)</span></td>
 <td>0</td>
 <td>No value measured.</td>
 </tr>
@@ -1859,7 +1863,7 @@ The companies, their bodies, people, systems, initiatives, decisions, dates and 
 <td>Baseline: external classification service and 1.7 minutes of internal review per document.</td>
 </tr>
 <tr>
-<td>G3</td>
+<td><strong>Feasibility</strong> <span class="codigo">(G3)</span></td>
 <td>Q3 27</td>
 <td>Proceed</td>
 <td>Sponsor with risk clearance</td>
@@ -1873,7 +1877,7 @@ The companies, their bodies, people, systems, initiatives, decisions, dates and 
 <td>Pilot with accuracy within the threshold; rollback to manual routing tested.</td>
 </tr>
 <tr>
-<td>R6</td>
+<td><strong>Continuity review</strong> <span class="codigo">(R6)</span></td>
 <td>Q2 28</td>
 <td>Proceed</td>
 <td>Sponsor</td>
@@ -1956,7 +1960,7 @@ The companies, their bodies, people, systems, initiatives, decisions, dates and 
 <td>Hypothesis: more people placed per employment adviser.</td>
 </tr>
 <tr>
-<td>G3</td>
+<td><strong>Feasibility</strong> <span class="codigo">(G3)</span></td>
 <td>Q1 28</td>
 <td><strong>Stop</strong></td>
 <td>Digital transformation commission</td>
@@ -1987,37 +1991,37 @@ The companies, their bodies, people, systems, initiatives, decisions, dates and 
 </thead>
 <tbody>
 <tr>
-<td>D1 · Strategy and governance</td>
+<td>Strategy and governance <span class="codigo">(D1)</span></td>
 <td>2</td>
 <td>Cooperative thesis with no formal mandate over AI.</td>
 </tr>
 <tr>
-<td>D2 · Value and portfolio</td>
+<td>Value and portfolio <span class="codigo">(D2)</span></td>
 <td>2</td>
 <td>Isolated projects with declared value; no prioritisation criteria.</td>
 </tr>
 <tr>
-<td>D3 · Data and knowledge</td>
+<td>Data and knowledge <span class="codigo">(D3)</span></td>
 <td>2</td>
 <td>Procurement and sales data in accounting and the ERP, with some dispersion.</td>
 </tr>
 <tr>
-<td>D4 · Technology and operations</td>
+<td>Technology and operations <span class="codigo">(D4)</span></td>
 <td>2</td>
 <td>Stable production systems; little data automation.</td>
 </tr>
 <tr>
-<td>D5 · People and adoption</td>
+<td>People and adoption <span class="codigo">(D5)</span></td>
 <td>2</td>
 <td>Warehouse and production staff with a culture of continuous improvement.</td>
 </tr>
 <tr>
-<td>D6 · Risk, security and compliance</td>
+<td>Risk, security and compliance <span class="codigo">(D6)</span></td>
 <td>2</td>
 <td>Acceptable production security controls; AI inventory still incomplete.</td>
 </tr>
 <tr>
-<td>D7 · Measurement and evidence</td>
+<td>Measurement and evidence <span class="codigo">(D7)</span></td>
 <td>1</td>
 <td>No baselines or formal validation of value.</td>
 </tr>
@@ -2068,21 +2072,21 @@ The companies, their bodies, people, systems, initiatives, decisions, dates and 
 <td>Baseline of sales and returns by centre.</td>
 </tr>
 <tr>
-<td>G3</td>
+<td><strong>Feasibility</strong> <span class="codigo">(G3)</span></td>
 <td>Q2 27</td>
 <td>Proceed</td>
 <td>Sponsor with risk clearance</td>
 <td>Low residual risk; the decision concerns logistics coordination, not procurement.</td>
 </tr>
 <tr>
-<td>G4</td>
+<td><strong>Design</strong> <span class="codigo">(G4)</span></td>
 <td>Q2 27</td>
 <td>Proceed</td>
 <td>General assembly</td>
 <td>Rollback to manual planning tested.</td>
 </tr>
 <tr>
-<td>G5</td>
+<td><strong>Go-live</strong> <span class="codigo">(G5)</span></td>
 <td>Q4 27</td>
 <td><strong>Stop</strong></td>
 <td>General assembly</td>
@@ -2147,37 +2151,37 @@ The companies, their bodies, people, systems, initiatives, decisions, dates and 
 </thead>
 <tbody>
 <tr>
-<td>D1 · Strategy and governance</td>
+<td>Strategy and governance <span class="codigo">(D1)</span></td>
 <td>2</td>
 <td>Management with experience objectives, but no formal AI thesis.</td>
 </tr>
 <tr>
-<td>D2 · Value and portfolio</td>
+<td>Value and portfolio <span class="codigo">(D2)</span></td>
 <td>2</td>
 <td>Some isolated marketing pilots; no portfolio or closure criteria.</td>
 </tr>
 <tr>
-<td>D3 · Data and knowledge</td>
+<td>Data and knowledge <span class="codigo">(D3)</span></td>
 <td>2</td>
 <td>Fairly good booking and occupancy history; fragmented customer data.</td>
 </tr>
 <tr>
-<td>D4 · Technology and operations</td>
+<td>Technology and operations <span class="codigo">(D4)</span></td>
 <td>2</td>
 <td>CRM and PMS with partial integration.</td>
 </tr>
 <tr>
-<td>D5 · People and adoption</td>
+<td>People and adoption <span class="codigo">(D5)</span></td>
 <td>3</td>
 <td>Front desk and management team with a positive attitude.</td>
 </tr>
 <tr>
-<td>D6 · Risk, security and compliance</td>
+<td>Risk, security and compliance <span class="codigo">(D6)</span></td>
 <td>2</td>
 <td>Incomplete inventory of generative tools; third-party contracts reviewed.</td>
 </tr>
 <tr>
-<td>D7 · Measurement and evidence</td>
+<td>Measurement and evidence <span class="codigo">(D7)</span></td>
 <td>1</td>
 <td>Some occupancy indicators, but no validation of incremental value.</td>
 </tr>
@@ -2228,7 +2232,7 @@ The companies, their bodies, people, systems, initiatives, decisions, dates and 
 <td>The Black Friday campaign and high-demand dates had already been measured.</td>
 </tr>
 <tr>
-<td>G3</td>
+<td><strong>Feasibility</strong> <span class="codigo">(G3)</span></td>
 <td>Q2 27</td>
 <td><strong>Iterate</strong></td>
 <td>Management board</td>
@@ -2300,37 +2304,37 @@ The companies, their bodies, people, systems, initiatives, decisions, dates and 
 </thead>
 <tbody>
 <tr>
-<td>D1 · Strategy and governance</td>
+<td>Strategy and governance <span class="codigo">(D1)</span></td>
 <td>3</td>
 <td>There is a continuous improvement agenda and an operations committee with owners.</td>
 </tr>
 <tr>
-<td>D2 · Value and portfolio</td>
+<td>Value and portfolio <span class="codigo">(D2)</span></td>
 <td>3</td>
 <td>Clear priorities by business line.</td>
 </tr>
 <tr>
-<td>D3 · Data and knowledge</td>
+<td>Data and knowledge <span class="codigo">(D3)</span></td>
 <td>3</td>
 <td>Sensors and traceability in production with a well-organised ERP.</td>
 </tr>
 <tr>
-<td>D4 · Technology and operations</td>
+<td>Technology and operations <span class="codigo">(D4)</span></td>
 <td>3</td>
 <td>Predictive maintenance and monitoring already in place.</td>
 </tr>
 <tr>
-<td>D5 · People and adoption</td>
+<td>People and adoption <span class="codigo">(D5)</span></td>
 <td>2</td>
 <td>Some teams with a good foundation; others showing resistance to change.</td>
 </tr>
 <tr>
-<td>D6 · Risk, security and compliance</td>
+<td>Risk, security and compliance <span class="codigo">(D6)</span></td>
 <td>2</td>
 <td>Supplier identification and control, without a complete AI inventory.</td>
 </tr>
 <tr>
-<td>D7 · Measurement and evidence</td>
+<td>Measurement and evidence <span class="codigo">(D7)</span></td>
 <td>3</td>
 <td>Baseline and comparison groups in maintenance and service.</td>
 </tr>
@@ -2386,21 +2390,21 @@ The companies, their bodies, people, systems, initiatives, decisions, dates and 
 <td>Machinery control groups and failure dates recorded.</td>
 </tr>
 <tr>
-<td>G3</td>
+<td><strong>Feasibility</strong> <span class="codigo">(G3)</span></td>
 <td>Q2 27</td>
 <td>Proceed</td>
 <td>Management</td>
 <td>Medium residual risk; review by maintenance.</td>
 </tr>
 <tr>
-<td>G4</td>
+<td><strong>Design</strong> <span class="codigo">(G4)</span></td>
 <td>Q3 27</td>
 <td>Proceed</td>
 <td>Management</td>
 <td>Rollback through manual shutdown tested.</td>
 </tr>
 <tr>
-<td>G5</td>
+<td><strong>Go-live</strong> <span class="codigo">(G5)</span></td>
 <td>Q1 28</td>
 <td><strong>Scale</strong></td>
 <td>Management board</td>
@@ -2429,21 +2433,21 @@ The companies, their bodies, people, systems, initiatives, decisions, dates and 
 <td>Hypothesis of reduced response time and improved service.</td>
 </tr>
 <tr>
-<td>G3</td>
+<td><strong>Feasibility</strong> <span class="codigo">(G3)</span></td>
 <td>Q3 27</td>
 <td>Proceed with conditions</td>
 <td>Management</td>
 <td>Condition: human review and traceability of decisions on contracts and deliveries.</td>
 </tr>
 <tr>
-<td>G4</td>
+<td><strong>Design</strong> <span class="codigo">(G4)</span></td>
 <td>Q4 27</td>
 <td>Proceed</td>
 <td>Management</td>
 <td>Margin milestone prior to service.</td>
 </tr>
 <tr>
-<td>G5</td>
+<td><strong>Go-live</strong> <span class="codigo">(G5)</span></td>
 <td>Q2 28</td>
 <td><strong>Stop</strong></td>
 <td>Board</td>
@@ -2547,65 +2551,65 @@ The companies, their bodies, people, systems, initiatives, decisions, dates and 
 <div class="tabla"><table>
 <thead>
 <tr>
-<th>Code</th>
 <th>Name</th>
+
 <th>Use in the cases</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td><a href="../../herramientas/T01_registro_iniciativas/registro.html" title="Tool T01 &#183; Initiative register">T01</a></td>
-<td>Initiative register</td>
+<td><strong>Initiative register</strong> <span class="codigo">(<a href="../../herramientas/T01_registro_iniciativas/registro.html" title="Tool T01 &#183; Initiative register">T01</a>)</span></td>
+
 <td>Progression through <em>gates</em>, statuses and coded reasons.</td>
 </tr>
 <tr>
-<td><a href="../../herramientas/T01_registro_iniciativas/registro.html#/inventario" title="Tool T02 &#183; AI system inventory">T02</a></td>
-<td>AI system inventory</td>
+<td><strong>AI system inventory</strong> <span class="codigo">(<a href="../../herramientas/T01_registro_iniciativas/registro.html#/inventario" title="Tool T02 &#183; AI system inventory">T02</a>)</span></td>
+
 <td>Initial findings in cases 1 and 5.</td>
 </tr>
 <tr>
-<td><a href="../../herramientas/T01_registro_iniciativas/registro.html#/gates" title="Tool T03 &#183; Gate manager">T03</a></td>
-<td><em>Gate</em> manager</td>
+<td><strong><em>Gate</em> manager</strong> <span class="codigo">(<a href="../../herramientas/T01_registro_iniciativas/registro.html#/gates" title="Tool T03 &#183; Gate manager">T03</a>)</span></td>
+
 <td>Decisions and conditions.</td>
 </tr>
 <tr>
-<td><a href="../../herramientas/T01_registro_iniciativas/registro.html" title="Tool T05 &#183; Ambition classifier">T05</a></td>
-<td>Ambition classifier</td>
+<td><strong>Ambition classifier</strong> <span class="codigo">(<a href="../../herramientas/T01_registro_iniciativas/registro.html" title="Tool T05 &#183; Ambition classifier">T05</a>)</span></td>
+
 <td>Ambition level of each initiative.</td>
 </tr>
 <tr>
-<td><a href="plantillas/P28_SEVEN-G_Seguimiento_de_realizacion_de_valor.html" title="Tool T12 &#183; Value realisation tracking">T12</a></td>
-<td>Value realisation tracking</td>
+<td><strong>Value realisation tracking</strong> <span class="codigo">(<a href="plantillas/P28_SEVEN-G_Seguimiento_de_realizacion_de_valor.html" title="Tool T12 &#183; Value realisation tracking">T12</a>)</span></td>
+
 <td>Value tables with status.</td>
 </tr>
 <tr>
-<td><a href="../../herramientas/T14_indice_transformacion/indice.html" title="Tool T14 &#183; Transformation index calculator">T14</a></td>
-<td>Transformation index calculator</td>
+<td><strong>Transformation index calculator</strong> <span class="codigo">(<a href="../../herramientas/T14_indice_transformacion/indice.html" title="Tool T14 &#183; Transformation index calculator">T14</a>)</span></td>
+
 <td>Profiles of each company.</td>
 </tr>
 <tr>
-<td><a href="../../herramientas/T15_diagnostico_madurez/madurez.html" title="Tool T15 &#183; Maturity diagnosis">T15</a></td>
-<td>Maturity diagnosis</td>
+<td><strong>Maturity diagnosis</strong> <span class="codigo">(<a href="../../herramientas/T15_diagnostico_madurez/madurez.html" title="Tool T15 &#183; Maturity diagnosis">T15</a>)</span></td>
+
 <td>D1–D7 tables.</td>
 </tr>
 <tr>
-<td><a href="../../herramientas/T01_registro_iniciativas/registro.html#/consejo" title="Tool T18 &#183; Board recommendations register">T18</a></td>
-<td>Board recommendations register</td>
+<td><strong>Board recommendations register</strong> <span class="codigo">(<a href="../../herramientas/T01_registro_iniciativas/registro.html#/consejo" title="Tool T18 &#183; Board recommendations register">T18</a>)</span></td>
+
 <td>REC and DEC codes.</td>
 </tr>
 <tr>
-<td><a href="plantillas/P30_SEVEN-G_Decision_de_escalado_o_retirada.html" title="Tool T22 &#183; Retirement manager">T22</a></td>
-<td>Retirement manager</td>
+<td><strong>Retirement manager</strong> <span class="codigo">(<a href="plantillas/P30_SEVEN-G_Decision_de_escalado_o_retirada.html" title="Tool T22 &#183; Retirement manager">T22</a>)</span></td>
+
 <td>Retirements in cases 1, 3, 4 and 5.</td>
 </tr>
 <tr>
-<td><a href="plantillas/P29_SEVEN-G_Registro_de_decision_de_gate.html" title="Template P29 &#183; Gate decision record">P29</a></td>
-<td><em>Gate</em> decision record</td>
+<td><strong><em>Gate</em> decision record</strong> <span class="codigo">(<a href="plantillas/P29_SEVEN-G_Registro_de_decision_de_gate.html" title="Template P29 &#183; Gate decision record">P29</a>)</span></td>
+
 <td>Each row of the <em>gate</em> tables.</td>
 </tr>
 <tr>
-<td><a href="plantillas/P30_SEVEN-G_Decision_de_escalado_o_retirada.html" title="Template P30 &#183; Scale or retire decision">P30</a></td>
-<td>Scale or retirement decision</td>
+<td><strong>Scale or retirement decision</strong> <span class="codigo">(<a href="plantillas/P30_SEVEN-G_Decision_de_escalado_o_retirada.html" title="Template P30 &#183; Scale or retire decision">P30</a>)</span></td>
+
 <td>G7 decisions.</td>
 </tr>
 </tbody>
@@ -2682,7 +2686,7 @@ The companies, their bodies, people, systems, initiatives, decisions, dates and 
 </table></div>
 
 </main>
-<footer class="pie"><div><span>© 2026 Fernando García Varela · SEVEN-G methodology</span><span>Generated on 28-09-2026</span></div><p class="pie-ia">Content generated and typeset with AI support under the author&#39;s editorial supervision.</p></footer>
+<footer class="pie"><div><span>© 2026 Fernando García Varela · SEVEN-G methodology</span><span>Generated on 12-10-2026</span></div><p class="pie-ia">Content generated and typeset with AI support under the author&#39;s editorial supervision.</p></footer>
 <script src="codigos.js" defer></script>
 
 <script>

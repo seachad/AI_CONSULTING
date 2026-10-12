@@ -392,6 +392,10 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 /* Ilustraciones en imagen (p. ej., SPAD): ocupan el ancho del lienzo y conservan su proporción */
 .g-lienzo img { display: block; width: 100%; height: auto; border: 1px solid var(--regla-2); }
 .ilustracion .g-lienzo img[src*="ilusion_de_velocidad"] { max-width: 560px; margin: 0 auto; }
+/* Nombre primero, código después (D144): el código entre paréntesis tras el nombre, en tablas y títulos */
+.codigo { font-family: var(--mono, 'Courier New', monospace); font-size: .88em; color: var(--tinta-2); white-space: nowrap; font-weight: 400; }
+h2 .codigo, h3 .codigo { font-weight: 400; }
+
 @page { @bottom-left { content: "SEVEN-G · Gate decision record"; font: 8.5pt "Libre Franklin", "Segoe UI", sans-serif; color: #74675e; } }
 </style>
 </head>
@@ -788,28 +792,28 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </thead>
 <tbody>
 <tr>
-<td>G2</td>
+<td><strong>Hypothesis</strong> <span class="codigo">(G2)</span></td>
 <td>Baseline for cost, time or errors; expected savings with a formula.</td>
 <td>Performance and cost metrics; adoption target.</td>
 <td>Return hypothesis with learning milestones; investment limit per stage; board approval.</td>
 <td></td>
 </tr>
 <tr>
-<td>G3</td>
+<td><strong>Feasibility</strong> <span class="codigo">(G3)</span></td>
 <td>Positive expected annual net value within the horizon set in C2.</td>
 <td>Feasibility of adoption and of the role change, in addition to the expected net value.</td>
 <td>Feasibility of the first stage; stop criteria per stage; documented option value.</td>
 <td></td>
 </tr>
 <tr>
-<td>G5</td>
+<td><strong>Go-live</strong> <span class="codigo">(G5)</span></td>
 <td>Efficiency validated against the baseline; plan to realise the released capacity.</td>
 <td>Actual adoption and performance improvement measured.</td>
 <td>Verified market or customer evidence.</td>
 <td></td>
 </tr>
 <tr>
-<td>G7</td>
+<td><strong>Scale or retire</strong> <span class="codigo">(G7)</span></td>
 <td>Realised savings, not just released capacity.</td>
 <td>Sustained performance and reassigned capacity.</td>
 <td>Measured return and verified change in the operating model or the offering.</td>
@@ -853,7 +857,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </thead>
 <tbody>
 <tr>
-<td>G0</td>
+<td><strong>Authorisation</strong> <span class="codigo">(G0)</span></td>
 <td>Proceed · Proceed with conditions · Iterate · Stop</td>
 </tr>
 <tr>
@@ -865,11 +869,11 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>Proceed · Proceed with conditions · Iterate · Stop</td>
 </tr>
 <tr>
-<td>R6</td>
+<td><strong>Continuity review</strong> <span class="codigo">(R6)</span></td>
 <td>Proceed with operation · Proceed with conditions · Bring G7 forward (01 §7.3)</td>
 </tr>
 <tr>
-<td>G7</td>
+<td><strong>Scale or retire</strong> <span class="codigo">(G7)</span></td>
 <td>Scale · Iterate · Retire. Keeping the system unchanged is recorded as Iterate with a return to phase 6.</td>
 </tr>
 </tbody>
@@ -1239,56 +1243,56 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </thead>
 <tbody>
 <tr>
-<td>G0</td>
+<td><strong>Authorisation</strong> <span class="codigo">(G0)</span></td>
 <td>AI Office</td>
 <td>Sponsor</td>
 <td>AI Auditor</td>
 <td>AI Committee</td>
 </tr>
 <tr>
-<td>G1</td>
+<td><strong>Opportunity</strong> <span class="codigo">(G1)</span></td>
 <td>AI Office</td>
 <td>Sponsor</td>
 <td>AI Auditor</td>
 <td>Sponsor, informing the committee</td>
 </tr>
 <tr>
-<td>G2</td>
+<td><strong>Hypothesis</strong> <span class="codigo">(G2)</span></td>
 <td>AI Office</td>
 <td>Sponsor</td>
 <td>AI Auditor</td>
 <td>AI Committee</td>
 </tr>
 <tr>
-<td>G3</td>
+<td><strong>Feasibility</strong> <span class="codigo">(G3)</span></td>
 <td>AI Office</td>
 <td>Sponsor with risk clearance</td>
 <td>AI Auditor</td>
 <td>AI Committee</td>
 </tr>
 <tr>
-<td>G4</td>
+<td><strong>Design</strong> <span class="codigo">(G4)</span></td>
 <td>AI Office</td>
 <td>Sponsor with risk clearance</td>
 <td>AI Auditor</td>
 <td>AI Committee</td>
 </tr>
 <tr>
-<td>G5</td>
+<td><strong>Go-live</strong> <span class="codigo">(G5)</span></td>
 <td>AI Office</td>
 <td>Sponsor with risk clearance</td>
 <td>AI Auditor</td>
 <td>AI Committee after multi-level sign-off (<a href="P23_SEVEN-G_Firma_de_puesta_en_produccion.html" title="Template P23 &#183; Go-live sign-off">P23</a>)</td>
 </tr>
 <tr>
-<td>R6</td>
+<td><strong>Continuity review</strong> <span class="codigo">(R6)</span></td>
 <td>AI Office</td>
 <td>Sponsor</td>
 <td>AI Auditor</td>
 <td>AI Committee</td>
 </tr>
 <tr>
-<td>G7</td>
+<td><strong>Scale or retire</strong> <span class="codigo">(G7)</span></td>
 <td>AI Office</td>
 <td>Sponsor</td>
 <td>AI Auditor</td>
@@ -1316,7 +1320,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </table></div>
 
 </main>
-<footer class="pie"><div><span>© 2026 Fernando García Varela · SEVEN-G methodology</span><span>Generated on 28-09-2026</span></div><p class="pie-ia">Content generated and typeset with AI support under the author&#39;s editorial supervision.</p></footer>
+<footer class="pie"><div><span>© 2026 Fernando García Varela · SEVEN-G methodology</span><span>Generated on 12-10-2026</span></div><p class="pie-ia">Content generated and typeset with AI support under the author&#39;s editorial supervision.</p></footer>
 <script src="../codigos.js" defer></script>
 
 <script>

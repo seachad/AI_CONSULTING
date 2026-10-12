@@ -392,6 +392,10 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 /* Ilustraciones en imagen (p. ej., SPAD): ocupan el ancho del lienzo y conservan su proporción */
 .g-lienzo img { display: block; width: 100%; height: auto; border: 1px solid var(--regla-2); }
 .ilustracion .g-lienzo img[src*="ilusion_de_velocidad"] { max-width: 560px; margin: 0 auto; }
+/* Nombre primero, código después (D144): el código entre paréntesis tras el nombre, en tablas y títulos */
+.codigo { font-family: var(--mono, 'Courier New', monospace); font-size: .88em; color: var(--tinta-2); white-space: nowrap; font-weight: 400; }
+h2 .codigo, h3 .codigo { font-weight: 400; }
+
 @page { @bottom-left { content: "SEVEN-G · Paquete para el consejo"; font: 8.5pt "Libre Franklin", "Segoe UI", sans-serif; color: #74675e; } }
 </style>
 </head>
@@ -1286,25 +1290,25 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tbody>
 <tr>
 <td><strong>Primero</strong></td>
-<td>C5 · Revisión anual del ejercicio anterior. C4 · Supervisión del cuarto trimestre.</td>
+<td>Revisión anual del ejercicio anterior. C4 · Supervisión del cuarto trimestre. <span class="codigo">(C5)</span></td>
 <td>Riesgos, incidentes, no conformidades y auditoría del cuarto trimestre. Informe previo a C5.</td>
 <td>Mensual. Preparación de C5 con auditoría interna.</td>
 </tr>
 <tr>
 <td><strong>Segundo</strong></td>
-<td>C4 · Supervisión del primer trimestre.</td>
+<td>Supervisión del primer trimestre. <span class="codigo">(C4)</span></td>
 <td>Supervisión trimestral.</td>
 <td>Mensual.</td>
 </tr>
 <tr>
 <td><strong>Tercero</strong></td>
-<td>C4 · Supervisión del segundo trimestre. Orientaciones para la tesis del ejercicio siguiente.</td>
+<td>Supervisión del segundo trimestre. Orientaciones para la tesis del ejercicio siguiente. <span class="codigo">(C4)</span></td>
 <td>Supervisión trimestral. Revisión del apetito de riesgo vigente.</td>
 <td>Mensual. Preparación de C2 y C3.</td>
 </tr>
 <tr>
 <td><strong>Cuarto</strong></td>
-<td>C2 · Dirección para el ejercicio siguiente: tesis, ambición, apetito de riesgo, presupuesto marco. C4 · Supervisión del tercer trimestre.</td>
+<td>Dirección para el ejercicio siguiente: tesis, ambición, apetito de riesgo, presupuesto marco. C4 · Supervisión del tercer trimestre. <span class="codigo">(C2)</span></td>
 <td>Supervisión trimestral. Informe previo sobre el apetito de riesgo.</td>
 <td>Mensual. C3 · Cartera del ejercicio siguiente tras la aprobación de C2.</td>
 </tr>
@@ -1438,21 +1442,21 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>&quot;El valor sube un 12 % en los mismos casos; los casos nuevos aportan 0,6 M€&quot;</td>
 </tr>
 <tr>
-<td>10</td>
+<td><strong>Mapa de esferas y niveles de ambici&#243;n</strong> <span class="codigo">(10)</span></td>
 <td><strong>Fecha de corte y fuente</strong></td>
 <td>Toda cifra lleva la fecha de corte y el sistema de origen.</td>
 <td>Cifras sin fecha</td>
 <td>&quot;Datos a 30 de junio; fuente: registro de iniciativas&quot;</td>
 </tr>
 <tr>
-<td>11</td>
+<td><strong>Modelo de madurez</strong> <span class="codigo">(11)</span></td>
 <td><strong>Redondeo coherente</strong></td>
 <td>Millones con un decimal o miles sin decimales; los totales se calculan antes de redondear.</td>
 <td>Sumas que no cuadran</td>
 <td>Nota de redondeo cuando proceda</td>
 </tr>
 <tr>
-<td>12</td>
+<td><strong>&#205;ndice de transformaci&#243;n</strong> <span class="codigo">(12)</span></td>
 <td><strong>Nada de referencias externas sin fuente</strong></td>
 <td>No se comparan cifras con &quot;el mercado&quot; o &quot;el sector&quot; sin fuente verificable y fecha.</td>
 <td>&quot;Estamos por encima de la media del sector&quot;</td>
@@ -1710,7 +1714,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>En uso con valor sin validar; en uso con neto anual negativo; capacidad liberada sin materializar.</td>
 <td>Sin valor plausible; hipótesis refutada; coste superior al valor.</td>
 <td>D7 en nivel 2 o menos; el índice no cumple B2; alertas «eficiencia no materializada» y «transformación frágil».</td>
-<td>G7 · Escalar (G7.01).</td>
+<td>Escalar (G7.01). <span class="codigo">(G7)</span></td>
 <td>Validar el valor de los casos en uso y cerrar su plan de realización (<a href="plantillas/P62_SEVEN-G_Plan_de_realizacion_de_beneficios.html" title="Plantilla P62 &#183; Plan de realizaci&#243;n de beneficios">P62</a>); llevar a G7 los de neto negativo.</td>
 <td>Control de gestión y responsable de negocio del beneficio.</td>
 <td>Documentos 40 y 43; 21 (G7).</td>
@@ -1732,7 +1736,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>En la última etapa antes de producción con controles pendientes; en uso con controles pendientes; sin clasificación regulatoria de la compañía.</td>
 <td>Riesgo inaceptable; regulación.</td>
 <td>D6 en nivel 2 o menos, o D6 limita el nivel global (11 §5); alerta «cambio sin supervisión».</td>
-<td>G5 · puesta en producción; el nivel global de madurez si D6 lo limita.</td>
+<td>puesta en producción; el nivel global de madurez si D6 lo limita. <span class="codigo">(G5)</span></td>
 <td>Completar la clasificación y los controles antes de G5; abrir no conformidad en los casos en uso sin ellos.</td>
 <td>Responsable de riesgos y cumplimiento.</td>
 <td>Documentos 32, 33 y 35; 21 (G5); 37.</td>
@@ -1892,17 +1896,17 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>Oficina de IA</td>
 </tr>
 <tr>
-<td>10</td>
+<td><strong>Mapa de esferas y niveles de ambici&#243;n</strong> <span class="codigo">(10)</span></td>
 <td>El panel referido es la foto de la fecha de corte y coincide su huella de datos.</td>
 <td>Oficina de IA</td>
 </tr>
 <tr>
-<td>11</td>
+<td><strong>Modelo de madurez</strong> <span class="codigo">(11)</span></td>
 <td>El reparto entre pleno y comisión respeta la sección 6 y el reglamento del consejo.</td>
 <td>Secretaría del consejo</td>
 </tr>
 <tr>
-<td>12</td>
+<td><strong>&#205;ndice de transformaci&#243;n</strong> <span class="codigo">(12)</span></td>
 <td>No hay tecnicismos sin traducir ni comparaciones con el mercado sin fuente.</td>
 <td>Presidencia del comité de IA</td>
 </tr>
@@ -1914,80 +1918,80 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <div class="tabla"><table>
 <thead>
 <tr>
-<th>Código</th>
 <th>Nombre</th>
+
 <th>Uso en este documento</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td><a href="../../herramientas/T01_registro_iniciativas/registro.html" title="Herramienta T01 &#183; Registro de iniciativas">T01</a></td>
-<td>Registro de iniciativas</td>
+<td><strong>Registro de iniciativas</strong> <span class="codigo">(<a href="../../herramientas/T01_registro_iniciativas/registro.html" title="Herramienta T01 &#183; Registro de iniciativas">T01</a>)</span></td>
+
 <td>Fuente de cartera, fases, estados, programas y valor.</td>
 </tr>
 <tr>
-<td><a href="../../herramientas/T01_registro_iniciativas/registro.html#/gates" title="Herramienta T03 &#183; Gestor de gates">T03</a></td>
-<td>Gestor de <em>gates</em></td>
+<td><strong>Gestor de <em>gates</em></strong> <span class="codigo">(<a href="../../herramientas/T01_registro_iniciativas/registro.html#/gates" title="Herramienta T03 &#183; Gestor de gates">T03</a>)</span></td>
+
 <td>Evidencias y verificación de las decisiones solicitadas.</td>
 </tr>
 <tr>
-<td><a href="../../herramientas/T01_registro_iniciativas/registro.html#/riesgos" title="Herramienta T06 &#183; Matriz y registro de riesgos">T06</a></td>
-<td>Matriz y registro de riesgos</td>
+<td><strong>Matriz y registro de riesgos</strong> <span class="codigo">(<a href="../../herramientas/T01_registro_iniciativas/registro.html#/riesgos" title="Herramienta T06 &#183; Matriz y registro de riesgos">T06</a>)</span></td>
+
 <td>Apartado de riesgos.</td>
 </tr>
 <tr>
-<td><a href="plantillas/P50_SEVEN-G_Registro_de_no_conformidades.html" title="Herramienta T08 &#183; Registro de no conformidades e incidentes">T08</a></td>
-<td>Registro de no conformidades e incidentes</td>
+<td><strong>Registro de no conformidades e incidentes</strong> <span class="codigo">(<a href="plantillas/P50_SEVEN-G_Registro_de_no_conformidades.html" title="Herramienta T08 &#183; Registro de no conformidades e incidentes">T08</a>)</span></td>
+
 <td>Apartado de incidentes y no conformidades.</td>
 </tr>
 <tr>
-<td><a href="plantillas/P28_SEVEN-G_Seguimiento_de_realizacion_de_valor.html" title="Herramienta T12 &#183; Seguimiento de realizaci&#243;n de valor">T12</a></td>
-<td>Seguimiento de realización de valor</td>
+<td><strong>Seguimiento de realización de valor</strong> <span class="codigo">(<a href="plantillas/P28_SEVEN-G_Seguimiento_de_realizacion_de_valor.html" title="Herramienta T12 &#183; Seguimiento de realizaci&#243;n de valor">T12</a>)</span></td>
+
 <td>Cifras con estado de validación.</td>
 </tr>
 <tr>
-<td><a href="../../herramientas/T14_indice_transformacion/indice.html" title="Herramienta T14 &#183; Calculadora del &#237;ndice de transformaci&#243;n">T14</a></td>
-<td>Calculadora del índice de transformación</td>
+<td><strong>Calculadora del índice de transformación</strong> <span class="codigo">(<a href="../../herramientas/T14_indice_transformacion/indice.html" title="Herramienta T14 &#183; Calculadora del &#237;ndice de transformaci&#243;n">T14</a>)</span></td>
+
 <td>Paquete anual C5.</td>
 </tr>
 <tr>
-<td><a href="../../herramientas/T15_diagnostico_madurez/madurez.html" title="Herramienta T15 &#183; Diagn&#243;stico de madurez">T15</a></td>
-<td>Diagnóstico de madurez</td>
+<td><strong>Diagnóstico de madurez</strong> <span class="codigo">(<a href="../../herramientas/T15_diagnostico_madurez/madurez.html" title="Herramienta T15 &#183; Diagn&#243;stico de madurez">T15</a>)</span></td>
+
 <td>Paquetes anuales C2 y C5.</td>
 </tr>
 <tr>
-<td><a href="10_SEVEN-G_Mapa_de_esferas_y_niveles_de_ambicion.html" title="Herramienta T16 &#183; Mapa de esferas de la cartera">T16</a></td>
-<td>Mapa de esferas de la cartera</td>
+<td><strong>Mapa de esferas de la cartera</strong> <span class="codigo">(<a href="10_SEVEN-G_Mapa_de_esferas_y_niveles_de_ambicion.html" title="Herramienta T16 &#183; Mapa de esferas de la cartera">T16</a>)</span></td>
+
 <td>Paquete anual C2; tarjeta «Dónde está el impacto» del panel (§10.5).</td>
 </tr>
 <tr>
-<td><a href="../../herramientas/T17_panel_consejo/index.html" title="Herramienta T17 &#183; Panel de IA para el consejo">T17</a></td>
-<td>Panel de IA para el consejo</td>
+<td><strong>Panel de IA para el consejo</strong> <span class="codigo">(<a href="../../herramientas/T17_panel_consejo/index.html" title="Herramienta T17 &#183; Panel de IA para el consejo">T17</a>)</span></td>
+
 <td>Vistas de la sección 10; lectura «Qué frena el escalado» (§10.4); plan de realización, tramos y valor no cuantificado (§10.6).</td>
 </tr>
 <tr>
-<td><a href="../../herramientas/T01_registro_iniciativas/registro.html#/consejo" title="Herramienta T18 &#183; Registro de recomendaciones del consejo">T18</a></td>
-<td>Registro de recomendaciones del consejo</td>
+<td><strong>Registro de recomendaciones del consejo</strong> <span class="codigo">(<a href="../../herramientas/T01_registro_iniciativas/registro.html#/consejo" title="Herramienta T18 &#183; Registro de recomendaciones del consejo">T18</a>)</span></td>
+
 <td>Apartado de recomendaciones y decisiones.</td>
 </tr>
 <tr>
-<td><a href="plantillas/P35_SEVEN-G_Tesis_de_IA_y_apetito_de_riesgo.html" title="Herramienta T19 &#183; Plantilla de tesis de IA y apetito de riesgo">T19</a></td>
-<td>Plantilla de tesis de IA y apetito de riesgo</td>
+<td><strong>Plantilla de tesis de IA y apetito de riesgo</strong> <span class="codigo">(<a href="plantillas/P35_SEVEN-G_Tesis_de_IA_y_apetito_de_riesgo.html" title="Herramienta T19 &#183; Plantilla de tesis de IA y apetito de riesgo">T19</a>)</span></td>
+
 <td>Paquete anual C2.</td>
 </tr>
 <tr>
-<td><a href="plantillas/P29_SEVEN-G_Registro_de_decision_de_gate.html" title="Plantilla P29 &#183; Registro de decisi&#243;n de gate">P29</a></td>
-<td>Registro de decisión de <em>gate</em></td>
+<td><strong>Registro de decisión de <em>gate</em></strong> <span class="codigo">(<a href="plantillas/P29_SEVEN-G_Registro_de_decision_de_gate.html" title="Plantilla P29 &#183; Registro de decisi&#243;n de gate">P29</a>)</span></td>
+
 <td>Evidencia de las decisiones que se elevan.</td>
 </tr>
 <tr>
-<td><a href="plantillas/P30_SEVEN-G_Decision_de_escalado_o_retirada.html" title="Plantilla P30 &#183; Decisi&#243;n de escalado o retirada">P30</a></td>
-<td>Decisión de escalado o retirada</td>
+<td><strong>Decisión de escalado o retirada</strong> <span class="codigo">(<a href="plantillas/P30_SEVEN-G_Decision_de_escalado_o_retirada.html" title="Plantilla P30 &#183; Decisi&#243;n de escalado o retirada">P30</a>)</span></td>
+
 <td>Decisiones de G7 que se elevan.</td>
 </tr>
 <tr>
-<td><a href="plantillas/P67_SEVEN-G_Paquete_trimestral_para_el_consejo.html" title="Plantilla P67 &#183; Paquete trimestral para el consejo">P67</a></td>
-<td>Paquete trimestral para el consejo</td>
+<td><strong>Paquete trimestral para el consejo</strong> <span class="codigo">(<a href="plantillas/P67_SEVEN-G_Paquete_trimestral_para_el_consejo.html" title="Plantilla P67 &#183; Paquete trimestral para el consejo">P67</a>)</span></td>
+
 <td>Formulario del paquete C4 y variantes C2, C5 y extraordinarias.</td>
 </tr>
 </tbody>
@@ -2086,7 +2090,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </table></div>
 
 </main>
-<footer class="pie"><div><span>© 2026 Fernando García Varela · Metodolog&#237;a SEVEN-G</span><span>Generado el 28-09-2026</span></div><p class="pie-ia">Contenido generado y maquetado con apoyo de IA bajo supervisi&#243;n editorial del autor.</p></footer>
+<footer class="pie"><div><span>© 2026 Fernando García Varela · Metodolog&#237;a SEVEN-G</span><span>Generado el 12-10-2026</span></div><p class="pie-ia">Contenido generado y maquetado con apoyo de IA bajo supervisi&#243;n editorial del autor.</p></footer>
 <script src="codigos.js" defer></script>
 
 <script>

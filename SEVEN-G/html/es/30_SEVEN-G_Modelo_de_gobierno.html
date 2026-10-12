@@ -392,6 +392,10 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 /* Ilustraciones en imagen (p. ej., SPAD): ocupan el ancho del lienzo y conservan su proporción */
 .g-lienzo img { display: block; width: 100%; height: auto; border: 1px solid var(--regla-2); }
 .ilustracion .g-lienzo img[src*="ilusion_de_velocidad"] { max-width: 560px; margin: 0 auto; }
+/* Nombre primero, código después (D144): el código entre paréntesis tras el nombre, en tablas y títulos */
+.codigo { font-family: var(--mono, 'Courier New', monospace); font-size: .88em; color: var(--tinta-2); white-space: nowrap; font-weight: 400; }
+h2 .codigo, h3 .codigo { font-weight: 400; }
+
 @page { @bottom-left { content: "SEVEN-G · Modelo de gobierno"; font: 8.5pt "Libre Franklin", "Segoe UI", sans-serif; color: #74675e; } }
 </style>
 </head>
@@ -1393,7 +1397,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </thead>
 <tbody>
 <tr>
-<td>G0 · Autorización</td>
+<td>Autorización <span class="codigo">(G0)</span></td>
 <td>Oficina de IA</td>
 <td>Patrocinador</td>
 <td>Auditor de IA</td>
@@ -1401,7 +1405,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>Informar al consejo</td>
 </tr>
 <tr>
-<td>G1 · Oportunidad</td>
+<td>Oportunidad <span class="codigo">(G1)</span></td>
 <td>Oficina de IA</td>
 <td>Patrocinador</td>
 <td>Auditor de IA</td>
@@ -1409,7 +1413,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>—</td>
 </tr>
 <tr>
-<td>G2 · Hipótesis</td>
+<td>Hipótesis <span class="codigo">(G2)</span></td>
 <td>Oficina de IA</td>
 <td>Patrocinador</td>
 <td>Auditor de IA</td>
@@ -1417,7 +1421,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td><strong>Consejo</strong></td>
 </tr>
 <tr>
-<td>G3 · Viabilidad</td>
+<td>Viabilidad <span class="codigo">(G3)</span></td>
 <td>Oficina de IA</td>
 <td>Patrocinador con conformidad de riesgos</td>
 <td>Auditor de IA</td>
@@ -1425,7 +1429,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>Consejo si se supera el límite de inversión por etapa</td>
 </tr>
 <tr>
-<td>G4 · Diseño</td>
+<td>Diseño <span class="codigo">(G4)</span></td>
 <td>Oficina de IA</td>
 <td>Patrocinador con conformidad de riesgos</td>
 <td>Auditor de IA</td>
@@ -1433,7 +1437,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>—</td>
 </tr>
 <tr>
-<td>G5 · Puesta en producción</td>
+<td>Puesta en producción <span class="codigo">(G5)</span></td>
 <td>Oficina de IA</td>
 <td>Patrocinador con conformidad de riesgos</td>
 <td>Auditor de IA</td>
@@ -1441,7 +1445,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>—</td>
 </tr>
 <tr>
-<td>R6 · Continuidad</td>
+<td>Continuidad <span class="codigo">(R6)</span></td>
 <td>Oficina de IA</td>
 <td>Patrocinador</td>
 <td>Auditor de IA</td>
@@ -1449,7 +1453,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>—</td>
 </tr>
 <tr>
-<td>G7 · Escalado o retirada</td>
+<td>Escalado o retirada <span class="codigo">(G7)</span></td>
 <td>Oficina de IA</td>
 <td>Patrocinador</td>
 <td>Auditor de IA</td>
@@ -2059,80 +2063,80 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <div class="tabla"><table>
 <thead>
 <tr>
-<th>Código</th>
 <th>Nombre</th>
+
 <th>Uso en este documento</th>
 </tr>
 </thead>
 <tbody>
 <tr id="cod-t01">
-<td><strong><a href="../../herramientas/T01_registro_iniciativas/registro.html" title="Herramienta T01 &#183; Registro de iniciativas">T01</a></strong></td>
-<td>Registro de iniciativas</td>
+<td><strong>Registro de iniciativas</strong> <span class="codigo">(<a href="../../herramientas/T01_registro_iniciativas/registro.html" title="Herramienta T01 &#183; Registro de iniciativas">T01</a>)</span></td>
+
 <td>Órganos, personas y decisiones de las iniciativas.</td>
 </tr>
 <tr id="cod-t03">
-<td><strong><a href="../../herramientas/T01_registro_iniciativas/registro.html#/gates" title="Herramienta T03 &#183; Gestor de gates">T03</a></strong></td>
-<td>Gestor de <em>gates</em></td>
+<td><strong>Gestor de <em>gates</em></strong> <span class="codigo">(<a href="../../herramientas/T01_registro_iniciativas/registro.html#/gates" title="Herramienta T03 &#183; Gestor de gates">T03</a>)</span></td>
+
 <td>Verificador y decisor por <em>gate</em>; bloqueo de autoaprobación.</td>
 </tr>
 <tr id="cod-t08">
-<td><strong><a href="plantillas/P50_SEVEN-G_Registro_de_no_conformidades.html" title="Herramienta T08 &#183; Registro de no conformidades e incidentes">T08</a></strong></td>
-<td>Registro de no conformidades e incidentes</td>
+<td><strong>Registro de no conformidades e incidentes</strong> <span class="codigo">(<a href="plantillas/P50_SEVEN-G_Registro_de_no_conformidades.html" title="Herramienta T08 &#183; Registro de no conformidades e incidentes">T08</a>)</span></td>
+
 <td>Escalado con plazos y alertas.</td>
 </tr>
 <tr id="cod-t18">
-<td><strong><a href="../../herramientas/T01_registro_iniciativas/registro.html#/consejo" title="Herramienta T18 &#183; Registro de recomendaciones del consejo">T18</a></strong></td>
-<td>Registro de recomendaciones del consejo</td>
+<td><strong>Registro de recomendaciones del consejo</strong> <span class="codigo">(<a href="../../herramientas/T01_registro_iniciativas/registro.html#/consejo" title="Herramienta T18 &#183; Registro de recomendaciones del consejo">T18</a>)</span></td>
+
 <td>Acuerdos del consejo y de la comisión delegada.</td>
 </tr>
 <tr id="cod-t22">
-<td><strong><a href="plantillas/P30_SEVEN-G_Decision_de_escalado_o_retirada.html" title="Herramienta T22 &#183; Gestor de retiradas">T22</a></strong></td>
-<td>Gestor de retiradas</td>
+<td><strong>Gestor de retiradas</strong> <span class="codigo">(<a href="plantillas/P30_SEVEN-G_Decision_de_escalado_o_retirada.html" title="Herramienta T22 &#183; Gestor de retiradas">T22</a>)</span></td>
+
 <td>Retiradas planificadas y forzosas.</td>
 </tr>
 <tr id="cod-p03">
-<td><strong><a href="plantillas/P03_SEVEN-G_Registro_de_asignacion_de_roles.html" title="Plantilla P03 &#183; Registro de asignaci&#243;n de roles">P03</a></strong></td>
-<td>Registro de asignación de roles</td>
+<td><strong>Registro de asignación de roles</strong> <span class="codigo">(<a href="plantillas/P03_SEVEN-G_Registro_de_asignacion_de_roles.html" title="Plantilla P03 &#183; Registro de asignaci&#243;n de roles">P03</a>)</span></td>
+
 <td>Asignación, incompatibilidades y conflictos.</td>
 </tr>
 <tr id="cod-p23">
-<td><strong><a href="plantillas/P23_SEVEN-G_Firma_de_puesta_en_produccion.html" title="Plantilla P23 &#183; Firma de puesta en producci&#243;n">P23</a></strong></td>
-<td>Firma de puesta en producción</td>
+<td><strong>Firma de puesta en producción</strong> <span class="codigo">(<a href="plantillas/P23_SEVEN-G_Firma_de_puesta_en_produccion.html" title="Plantilla P23 &#183; Firma de puesta en producci&#243;n">P23</a>)</span></td>
+
 <td>Firma multinivel con veto.</td>
 </tr>
 <tr id="cod-p29">
-<td><strong><a href="plantillas/P29_SEVEN-G_Registro_de_decision_de_gate.html" title="Plantilla P29 &#183; Registro de decisi&#243;n de gate">P29</a></strong></td>
-<td>Registro de decisión de <em>gate</em></td>
+<td><strong>Registro de decisión de <em>gate</em></strong> <span class="codigo">(<a href="plantillas/P29_SEVEN-G_Registro_de_decision_de_gate.html" title="Plantilla P29 &#183; Registro de decisi&#243;n de gate">P29</a>)</span></td>
+
 <td>Decisión, decisor, verificador y condiciones.</td>
 </tr>
 <tr id="cod-p30">
-<td><strong><a href="plantillas/P30_SEVEN-G_Decision_de_escalado_o_retirada.html" title="Plantilla P30 &#183; Decisi&#243;n de escalado o retirada">P30</a></strong></td>
-<td>Decisión de escalado o retirada</td>
+<td><strong>Decisión de escalado o retirada</strong> <span class="codigo">(<a href="plantillas/P30_SEVEN-G_Decision_de_escalado_o_retirada.html" title="Plantilla P30 &#183; Decisi&#243;n de escalado o retirada">P30</a>)</span></td>
+
 <td>Decisiones de G7.</td>
 </tr>
 <tr id="cod-p38">
-<td><strong><a href="plantillas/P38_SEVEN-G_Reglamento_de_los_organos_de_gobierno_de_IA.html" title="Plantilla P38 &#183; Reglamento de los &#243;rganos de gobierno de IA">P38</a></strong></td>
-<td>Reglamento de los órganos de gobierno de IA</td>
+<td><strong>Reglamento de los órganos de gobierno de IA</strong> <span class="codigo">(<a href="plantillas/P38_SEVEN-G_Reglamento_de_los_organos_de_gobierno_de_IA.html" title="Plantilla P38 &#183; Reglamento de los &#243;rganos de gobierno de IA">P38</a>)</span></td>
+
 <td>Texto aprobable de los mandatos de la sección 3 y nombramiento del responsable de IA.</td>
 </tr>
 <tr id="cod-p39">
-<td><strong><a href="plantillas/P39_SEVEN-G_Orden_del_dia_y_acta_de_organo_de_gobierno.html" title="Plantilla P39 &#183; Orden del d&#237;a y acta de &#243;rgano de gobierno">P39</a></strong></td>
-<td>Orden del día y acta de órgano de gobierno</td>
+<td><strong>Orden del día y acta de órgano de gobierno</strong> <span class="codigo">(<a href="plantillas/P39_SEVEN-G_Orden_del_dia_y_acta_de_organo_de_gobierno.html" title="Plantilla P39 &#183; Orden del d&#237;a y acta de &#243;rgano de gobierno">P39</a>)</span></td>
+
 <td>Sesiones de los órganos, acuerdos y votaciones.</td>
 </tr>
 <tr id="cod-p40">
-<td><strong><a href="plantillas/P40_SEVEN-G_Solicitud_y_registro_de_excepciones.html" title="Plantilla P40 &#183; Solicitud y registro de excepciones">P40</a></strong></td>
-<td>Solicitud y registro de excepciones</td>
+<td><strong>Solicitud y registro de excepciones</strong> <span class="codigo">(<a href="plantillas/P40_SEVEN-G_Solicitud_y_registro_de_excepciones.html" title="Plantilla P40 &#183; Solicitud y registro de excepciones">P40</a>)</span></td>
+
 <td>Excepciones de la sección 7.4.</td>
 </tr>
 <tr id="cod-p41">
-<td><strong><a href="plantillas/P41_SEVEN-G_Declaraciones_de_independencia_y_conflictos_de_interes.html" title="Plantilla P41 &#183; Declaraciones de independencia y conflictos de inter&#233;s">P41</a></strong></td>
-<td>Declaraciones de independencia y conflictos de interés</td>
+<td><strong>Declaraciones de independencia y conflictos de interés</strong> <span class="codigo">(<a href="plantillas/P41_SEVEN-G_Declaraciones_de_independencia_y_conflictos_de_interes.html" title="Plantilla P41 &#183; Declaraciones de independencia y conflictos de inter&#233;s">P41</a>)</span></td>
+
 <td>Declaraciones, abstenciones y medidas de la sección 12.</td>
 </tr>
 <tr id="cod-p42">
-<td><strong><a href="plantillas/P42_SEVEN-G_Informe_trimestral_de_segunda_linea.html" title="Plantilla P42 &#183; Informe trimestral de segunda l&#237;nea">P42</a></strong></td>
-<td>Informe trimestral de segunda línea</td>
+<td><strong>Informe trimestral de segunda línea</strong> <span class="codigo">(<a href="plantillas/P42_SEVEN-G_Informe_trimestral_de_segunda_linea.html" title="Plantilla P42 &#183; Informe trimestral de segunda l&#237;nea">P42</a>)</span></td>
+
 <td>Información trimestral a la comisión delegada (sección 6.3).</td>
 </tr>
 </tbody>
@@ -2228,7 +2232,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </table></div>
 <h2 id="fuentes-externas">Fuentes externas citadas</h2><p class="fuentes-nota">Enlaces a la fuente oficial o primaria, comprobados antes de publicar. Verifique siempre la versión vigente en la fecha de uso.</p><ul class="fuentes-externas"><li><a href="https://eur-lex.europa.eu/eli/dir/2022/2555/oj/spa" target="_blank" rel="noopener">Directiva (UE) 2022/2555 del Parlamento Europeo y del Consejo, de 14 de diciembre de 2022, relativa a las medidas destinadas a garantizar un elevado nivel com&#250;n de ciberseguridad en toda la Uni&#243;n (Directiva SRI 2 / NIS2)</a><span> · Parlamento Europeo y Consejo de la UE · 14-12-2022</span></li><li><a href="https://eur-lex.europa.eu/eli/reg/2016/679/oj/spa" target="_blank" rel="noopener">Reglamento (UE) 2016/679 del Parlamento Europeo y del Consejo, de 27 de abril de 2016, relativo a la protecci&#243;n de las personas f&#237;sicas en lo que respecta al tratamiento de datos personales y a la libre circulaci&#243;n de estos datos y por el que se deroga la Directiva 95/46/CE (Reglamento general de protecci&#243;n de datos)</a><span> · Parlamento Europeo y Consejo de la UE · 27-04-2016</span></li><li><a href="https://eur-lex.europa.eu/eli/reg/2022/2554/oj/spa" target="_blank" rel="noopener">Reglamento (UE) 2022/2554 del Parlamento Europeo y del Consejo, de 14 de diciembre de 2022, sobre la resiliencia operativa digital del sector financiero (DORA)</a><span> · Parlamento Europeo y Consejo de la UE · 14-12-2022</span></li><li><a href="https://eur-lex.europa.eu/eli/reg/2024/1689/oj/spa" target="_blank" rel="noopener">Reglamento (UE) 2024/1689 del Parlamento Europeo y del Consejo, de 13 de junio de 2024, por el que se establecen normas armonizadas en materia de inteligencia artificial (Reglamento de Inteligencia Artificial)</a><span> · Parlamento Europeo y Consejo de la UE · 13-06-2024</span></li><li><a href="https://www.boe.es/eli/es/l/2023/02/20/2/con" target="_blank" rel="noopener">Ley 2/2023, de 20 de febrero, reguladora de la protecci&#243;n de las personas que informen sobre infracciones normativas y de lucha contra la corrupci&#243;n</a><span> · Cortes Generales · 20-02-2023</span></li><li><a href="https://digital-strategy.ec.europa.eu/es/policies/ai-office" target="_blank" rel="noopener">Oficina Europea de IA (Comisi&#243;n Europea)</a><span> · Comisi&#243;n Europea (DG CONNECT)</span></li><li><a href="https://www.iso.org/standard/42001" target="_blank" rel="noopener">ISO/IEC 42001:2023 Tecnolog&#237;a de la informaci&#243;n — Inteligencia artificial — Sistema de gesti&#243;n</a><span> · ISO/IEC (JTC 1/SC 42) · 18-12-2023</span></li><li><a href="https://www.theiia.org/en/resources/statements-of-position/" target="_blank" rel="noopener">Modelo de las tres l&#237;neas del IIA — Declaraci&#243;n de posici&#243;n &#171;Three Lines Model: Assurance and Advice in Support of Effective Governance&#187; (2026), que sustituye al documento de posici&#243;n de 2020 &#171;El modelo de las tres l&#237;neas del IIA: una actualizaci&#243;n de las tres l&#237;neas de defensa&#187;</a><span> · The Institute of Internal Auditors (IIA), Global Board of Directors · 08-07-2026</span></li></ul>
 </main>
-<footer class="pie"><div><span>© 2026 Fernando García Varela · Metodolog&#237;a SEVEN-G</span><span>Generado el 28-09-2026</span></div><p class="pie-ia">Contenido generado y maquetado con apoyo de IA bajo supervisi&#243;n editorial del autor.</p></footer>
+<footer class="pie"><div><span>© 2026 Fernando García Varela · Metodolog&#237;a SEVEN-G</span><span>Generado el 12-10-2026</span></div><p class="pie-ia">Contenido generado y maquetado con apoyo de IA bajo supervisi&#243;n editorial del autor.</p></footer>
 <script src="codigos.js" defer></script>
 
 <script>

@@ -392,6 +392,10 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 /* Ilustraciones en imagen (p. ej., SPAD): ocupan el ancho del lienzo y conservan su proporción */
 .g-lienzo img { display: block; width: 100%; height: auto; border: 1px solid var(--regla-2); }
 .ilustracion .g-lienzo img[src*="ilusion_de_velocidad"] { max-width: 560px; margin: 0 auto; }
+/* Nombre primero, código después (D144): el código entre paréntesis tras el nombre, en tablas y títulos */
+.codigo { font-family: var(--mono, 'Courier New', monospace); font-size: .88em; color: var(--tinta-2); white-space: nowrap; font-weight: 400; }
+h2 .codigo, h3 .codigo { font-weight: 400; }
+
 @page { @bottom-left { content: "SEVEN-G · Regulatory mapping"; font: 8.5pt "Libre Franklin", "Segoe UI", sans-serif; color: #74675e; } }
 </style>
 </head>
@@ -2603,61 +2607,61 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>GOVERN 1.1</td>
 <td>Understand, manage and document the legal and regulatory requirements that affect AI.</td>
 <td>Document 34; 01 §13; <a href="plantillas/P11_SEVEN-G_Clasificacion_regulatoria_y_evaluaciones_de_impacto.html" title="Template P11 &#183; Regulatory classification and impact assessments">P11</a></td>
-<td>D6 · D6.05, D6.12</td>
+<td>D6.05, D6.12 <span class="codigo">(D6)</span></td>
 </tr>
 <tr>
 <td>GOVERN 1.2</td>
 <td>Integrate the characteristics of trustworthy AI into policies, processes and practices.</td>
 <td>Document 31; 01 §3</td>
-<td>D1 · D1.04</td>
+<td>D1.04 <span class="codigo">(D1)</span></td>
 </tr>
 <tr>
 <td>GOVERN 1.3</td>
 <td>Make the level of risk management proportionate to the organisation's risk tolerance.</td>
 <td>Document 13 (appetite); 01 §9 (intensity); <a href="plantillas/P04_SEVEN-G_Determinacion_de_intensidad.html" title="Template P04 &#183; Intensity determination">P04</a></td>
-<td>D1 · D1.05, D1.06</td>
+<td>D1.05, D1.06 <span class="codigo">(D1)</span></td>
 </tr>
 <tr>
 <td>GOVERN 1.4</td>
 <td>Establish the risk management process and its outcomes through transparent policies and controls.</td>
 <td>Document 33; <a href="plantillas/P12_SEVEN-G_Matriz_y_registro_de_riesgos.html" title="Template P12 &#183; Risk matrix and register">P12</a>, <a href="plantillas/P13_SEVEN-G_Plan_de_mitigacion_y_contingencia.html" title="Template P13 &#183; Mitigation and contingency plan">P13</a></td>
-<td>D6 · D6.04, D6.06</td>
+<td>D6.04, D6.06 <span class="codigo">(D6)</span></td>
 </tr>
 <tr>
 <td>GOVERN 1.5</td>
 <td>Plan ongoing monitoring and periodic review of the risk process, with roles and frequency.</td>
 <td>33 §11; <a href="30_SEVEN-G_Modelo_de_gobierno.html" title="Document 30 &#183; Governance model">document 30</a>; R6</td>
-<td>D6 · D6.09</td>
+<td>D6.09 <span class="codigo">(D6)</span></td>
 </tr>
 <tr>
 <td>GOVERN 1.6</td>
 <td>Inventory AI systems and resource them according to risk priorities.</td>
 <td>Document 32; <a href="plantillas/P05_SEVEN-G_Ficha_de_inventario_del_sistema_de_IA.html" title="Template P05 &#183; AI system inventory record">P05</a></td>
-<td>D6 · D6.03, D6.05</td>
+<td>D6.03, D6.05 <span class="codigo">(D6)</span></td>
 </tr>
 <tr>
 <td>GOVERN 1.7</td>
 <td>Decommission AI systems safely, without increasing risk.</td>
 <td>Document 14 (retirements); G7; <a href="plantillas/P30_SEVEN-G_Decision_de_escalado_o_retirada.html" title="Template P30 &#183; Scale or retire decision">P30</a></td>
-<td>D2 · D2.10</td>
+<td>D2.10 <span class="codigo">(D2)</span></td>
 </tr>
 <tr>
 <td>GOVERN 2.1</td>
 <td>Document roles, responsibilities and lines of communication on AI risk.</td>
 <td>01 §8; <a href="30_SEVEN-G_Modelo_de_gobierno.html" title="Document 30 &#183; Governance model">document 30</a>; <a href="plantillas/P03_SEVEN-G_Registro_de_asignacion_de_roles.html" title="Template P03 &#183; Role assignment record">P03</a></td>
-<td>D1 · D1.07, D1.08</td>
+<td>D1.07, D1.08 <span class="codigo">(D1)</span></td>
 </tr>
 <tr>
 <td>GOVERN 2.2</td>
 <td>Train staff and partners in AI risk management according to their role.</td>
 <td>Document 50; <a href="plantillas/P45_SEVEN-G_Plan_y_registro_de_alfabetizacion_y_formacion.html" title="Template P45 &#183; Literacy and training plan and record">P45</a></td>
-<td>D5 · D5.05, D5.06</td>
+<td>D5.05, D5.06 <span class="codigo">(D5)</span></td>
 </tr>
 <tr>
 <td>GOVERN 2.3</td>
 <td>Have senior management take responsibility for decisions on the risks of the AI it develops or deploys.</td>
 <td>Documents 13 and 30; 01 §8.3</td>
-<td>D1 · D1.05, D1.09</td>
+<td>D1.05, D1.09 <span class="codigo">(D1)</span></td>
 </tr>
 <tr>
 <td>GOVERN 3.1</td>
@@ -2669,7 +2673,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>GOVERN 3.2</td>
 <td>Define the roles for the human–AI configuration and for the oversight of systems.</td>
 <td><a href="plantillas/P17_SEVEN-G_Diseno_de_gobierno_y_supervision_humana.html" title="Template P17 &#183; Governance and human oversight design">P17</a>; 35 §5; 01 §8</td>
-<td>D6 · D6.08</td>
+<td>D6.08 <span class="codigo">(D6)</span></td>
 </tr>
 <tr>
 <td>GOVERN 4.1</td>
@@ -2681,13 +2685,13 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>GOVERN 4.2</td>
 <td>Have teams document the risks and impacts of AI and communicate them.</td>
 <td><a href="plantillas/P11_SEVEN-G_Clasificacion_regulatoria_y_evaluaciones_de_impacto.html" title="Template P11 &#183; Regulatory classification and impact assessments">P11</a>, <a href="plantillas/P12_SEVEN-G_Matriz_y_registro_de_riesgos.html" title="Template P12 &#183; Risk matrix and register">P12</a>; <a href="33_SEVEN-G_Metodologia_de_riesgos_de_IA.html" title="Document 33 &#183; AI risk methodology">document 33</a></td>
-<td>D6 · D6.06</td>
+<td>D6.06 <span class="codigo">(D6)</span></td>
 </tr>
 <tr>
 <td>GOVERN 4.3</td>
 <td>Enable AI testing, incident identification and information sharing.</td>
 <td>Document 37; 35 §8; <a href="plantillas/P26_SEVEN-G_Plan_de_respuesta_a_incidentes.html" title="Template P26 &#183; Incident response plan">P26</a>, <a href="plantillas/P53_SEVEN-G_Plan_e_informe_de_pruebas_adversarias.html" title="Template P53 &#183; Adversarial testing plan and report">P53</a></td>
-<td>D6 · D6.07, D6.10</td>
+<td>D6.07, D6.10 <span class="codigo">(D6)</span></td>
 </tr>
 <tr>
 <td>GOVERN 5.1</td>
@@ -2705,19 +2709,19 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>GOVERN 6.1</td>
 <td>Address third-party risks, including infringement of intellectual property or other rights.</td>
 <td>Document 36; <a href="plantillas/P14_SEVEN-G_Evaluacion_de_proveedor_de_IA.html" title="Template P14 &#183; AI supplier assessment">P14</a>, <a href="plantillas/P55_SEVEN-G_Cuestionario_de_diligencia_debida_a_proveedores_de_IA.html" title="Template P55 &#183; AI supplier due diligence questionnaire">P55</a>, <a href="plantillas/P56_SEVEN-G_Clausulas_contractuales_tipo_de_IA.html" title="Template P56 &#183; Model AI contractual clauses">P56</a></td>
-<td>D6 · D6.08</td>
+<td>D6.08 <span class="codigo">(D6)</span></td>
 </tr>
 <tr>
 <td>GOVERN 6.2</td>
 <td>Have contingencies for failures or incidents in high-risk third-party data or systems.</td>
 <td>Document 36; <a href="plantillas/P19_SEVEN-G_Plan_de_reversion_y_prueba.html" title="Template P19 &#183; Rollback plan and test">P19</a>, <a href="plantillas/P57_SEVEN-G_Registro_de_proveedores_y_plan_de_salida.html" title="Template P57 &#183; Supplier register and exit plan">P57</a></td>
-<td>D6 · D6.08</td>
+<td>D6.08 <span class="codigo">(D6)</span></td>
 </tr>
 <tr>
 <td>MAP 1.1</td>
 <td>Document the purpose, uses, applicable norms and deployment setting.</td>
 <td><a href="plantillas/P01_SEVEN-G_Carta_de_la_iniciativa.html" title="Template P01 &#183; Initiative charter">P01</a>, <a href="plantillas/P02_SEVEN-G_Declaracion_de_contexto_y_restricciones.html" title="Template P02 &#183; Context and constraints statement">P02</a></td>
-<td>D2 · D2.05</td>
+<td>D2.05 <span class="codigo">(D2)</span></td>
 </tr>
 <tr>
 <td>MAP 1.2</td>
@@ -2729,19 +2733,19 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>MAP 1.3</td>
 <td>Understand and document the organisation's mission and goals for AI.</td>
 <td>Document 13 (thesis)</td>
-<td>D1 · D1.05</td>
+<td>D1.05 <span class="codigo">(D1)</span></td>
 </tr>
 <tr>
 <td>MAP 1.4</td>
 <td>Define, or re-evaluate for existing systems, the business value.</td>
 <td><a href="plantillas/P07_SEVEN-G_Clasificacion_de_esfera_y_ambicion.html" title="Template P07 &#183; Sphere and ambition classification">P07</a>, <a href="plantillas/P08_SEVEN-G_Lienzo_de_hipotesis_de_valor.html" title="Template P08 &#183; Value hypothesis canvas">P08</a>; <a href="40_SEVEN-G_Reglas_de_medicion_del_valor.html" title="Document 40 &#183; Value measurement rules">document 40</a></td>
-<td>D2 · D2.08</td>
+<td>D2.08 <span class="codigo">(D2)</span></td>
 </tr>
 <tr>
 <td>MAP 1.5</td>
 <td>Determine and document risk tolerances.</td>
 <td>Document 13 (appetite); <a href="plantillas/P35_SEVEN-G_Tesis_de_IA_y_apetito_de_riesgo.html" title="Template P35 &#183; AI thesis and risk appetite">P35</a></td>
-<td>D1 · D1.05, D1.06</td>
+<td>D1.05, D1.06 <span class="codigo">(D1)</span></td>
 </tr>
 <tr>
 <td>MAP 1.6</td>
@@ -2753,7 +2757,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>MAP 2.1</td>
 <td>Define the tasks and methods of the system (classifier, generative, recommender…).</td>
 <td><a href="plantillas/P05_SEVEN-G_Ficha_de_inventario_del_sistema_de_IA.html" title="Template P05 &#183; AI system inventory record">P05</a>, <a href="plantillas/P15_SEVEN-G_Registro_de_arquitectura.html" title="Template P15 &#183; Architecture record">P15</a></td>
-<td>D6 · D6.05</td>
+<td>D6.05 <span class="codigo">(D6)</span></td>
 </tr>
 <tr>
 <td>MAP 2.2</td>
@@ -2765,55 +2769,55 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>MAP 2.3</td>
 <td>Document scientific integrity and testing: design, data selection, validity.</td>
 <td><a href="plantillas/P09_SEVEN-G_Linea_base.html" title="Template P09 &#183; Baseline">P09</a>, <a href="plantillas/P16_SEVEN-G_Linaje_de_datos_y_modelos.html" title="Template P16 &#183; Data and model lineage">P16</a>, <a href="plantillas/P22_SEVEN-G_Resultados_de_validacion_y_del_piloto.html" title="Template P22 &#183; Validation and pilot results">P22</a>; <a href="51_SEVEN-G_Datos_y_conocimiento.html" title="Document 51 &#183; Data and knowledge for AI">document 51</a></td>
-<td>D3 · D3.04, D3.07</td>
+<td>D3.04, D3.07 <span class="codigo">(D3)</span></td>
 </tr>
 <tr>
 <td>MAP 3.1</td>
 <td>Examine and document the expected benefits.</td>
 <td><a href="plantillas/P08_SEVEN-G_Lienzo_de_hipotesis_de_valor.html" title="Template P08 &#183; Value hypothesis canvas">P08</a>; <a href="40_SEVEN-G_Reglas_de_medicion_del_valor.html" title="Document 40 &#183; Value measurement rules">document 40</a></td>
-<td>D2 · D2.08</td>
+<td>D2.08 <span class="codigo">(D2)</span></td>
 </tr>
 <tr>
 <td>MAP 3.2</td>
 <td>Examine the costs, including non-monetary costs, of system errors.</td>
 <td><a href="plantillas/P10_SEVEN-G_Evaluacion_de_viabilidad.html" title="Template P10 &#183; Feasibility assessment">P10</a>, <a href="plantillas/P12_SEVEN-G_Matriz_y_registro_de_riesgos.html" title="Template P12 &#183; Risk matrix and register">P12</a>; <a href="42_SEVEN-G_Costes_de_IA.html" title="Document 42 &#183; AI costs and allocation per use case">document 42</a></td>
-<td>D6 · D6.06</td>
+<td>D6.06 <span class="codigo">(D6)</span></td>
 </tr>
 <tr>
 <td>MAP 3.3</td>
 <td>Delimit the scope of the application according to its capability, context and category.</td>
 <td><a href="plantillas/P01_SEVEN-G_Carta_de_la_iniciativa.html" title="Template P01 &#183; Initiative charter">P01</a>, <a href="plantillas/P02_SEVEN-G_Declaracion_de_contexto_y_restricciones.html" title="Template P02 &#183; Context and constraints statement">P02</a>, <a href="plantillas/P15_SEVEN-G_Registro_de_arquitectura.html" title="Template P15 &#183; Architecture record">P15</a></td>
-<td>D2 · D2.05</td>
+<td>D2.05 <span class="codigo">(D2)</span></td>
 </tr>
 <tr>
 <td>MAP 3.4</td>
 <td>Define and assess the proficiency of operators and practitioners.</td>
 <td>Document 50; <a href="plantillas/P20_SEVEN-G_Plan_de_adopcion_y_capacidad.html" title="Template P20 &#183; Adoption and capacity plan">P20</a>, <a href="plantillas/P45_SEVEN-G_Plan_y_registro_de_alfabetizacion_y_formacion.html" title="Template P45 &#183; Literacy and training plan and record">P45</a></td>
-<td>D5 · D5.05, D5.06</td>
+<td>D5.05, D5.06 <span class="codigo">(D5)</span></td>
 </tr>
 <tr>
 <td>MAP 3.5</td>
 <td>Define and document human oversight.</td>
 <td><a href="plantillas/P17_SEVEN-G_Diseno_de_gobierno_y_supervision_humana.html" title="Template P17 &#183; Governance and human oversight design">P17</a>; 35 §4.6</td>
-<td>D4 · D4.06</td>
+<td>D4.06 <span class="codigo">(D4)</span></td>
 </tr>
 <tr>
 <td>MAP 4.1</td>
 <td>Identify the technology and legal risks of components, including third-party ones.</td>
 <td><a href="plantillas/P11_SEVEN-G_Clasificacion_regulatoria_y_evaluaciones_de_impacto.html" title="Template P11 &#183; Regulatory classification and impact assessments">P11</a>, <a href="plantillas/P14_SEVEN-G_Evaluacion_de_proveedor_de_IA.html" title="Template P14 &#183; AI supplier assessment">P14</a>; <a href="36_SEVEN-G_Terceros_y_proveedores_de_IA.html" title="Document 36 &#183; AI third parties and suppliers">document 36</a></td>
-<td>D6 · D6.08</td>
+<td>D6.08 <span class="codigo">(D6)</span></td>
 </tr>
 <tr>
 <td>MAP 4.2</td>
 <td>Document the internal controls over components, including third-party ones.</td>
 <td><a href="plantillas/P13_SEVEN-G_Plan_de_mitigacion_y_contingencia.html" title="Template P13 &#183; Mitigation and contingency plan">P13</a>, <a href="plantillas/P18_SEVEN-G_Diseno_de_seguridad.html" title="Template P18 &#183; Security design (including agents)">P18</a>; SEG-09</td>
-<td>D6 · D6.08</td>
+<td>D6.08 <span class="codigo">(D6)</span></td>
 </tr>
 <tr>
 <td>MAP 5.1</td>
 <td>Estimate the likelihood and magnitude of each identified impact.</td>
 <td><a href="plantillas/P11_SEVEN-G_Clasificacion_regulatoria_y_evaluaciones_de_impacto.html" title="Template P11 &#183; Regulatory classification and impact assessments">P11</a>, <a href="plantillas/P12_SEVEN-G_Matriz_y_registro_de_riesgos.html" title="Template P12 &#183; Risk matrix and register">P12</a>; <a href="33_SEVEN-G_Metodologia_de_riesgos_de_IA.html" title="Document 33 &#183; AI risk methodology">document 33</a></td>
-<td>D6 · D6.06</td>
+<td>D6.06 <span class="codigo">(D6)</span></td>
 </tr>
 <tr>
 <td>MAP 5.2</td>
@@ -2825,25 +2829,25 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>MEASURE 1.1</td>
 <td>Choose methods and metrics for the most significant risks and document what is not measured.</td>
 <td><a href="plantillas/P09_SEVEN-G_Linea_base.html" title="Template P09 &#183; Baseline">P09</a>, <a href="plantillas/P22_SEVEN-G_Resultados_de_validacion_y_del_piloto.html" title="Template P22 &#183; Validation and pilot results">P22</a>; <a href="41_SEVEN-G_Catalogo_de_indicadores.html" title="Document 41 &#183; Indicator catalogue">document 41</a></td>
-<td>D7 · D7.03</td>
+<td>D7.03 <span class="codigo">(D7)</span></td>
 </tr>
 <tr>
 <td>MEASURE 1.2</td>
 <td>Review the appropriateness of metrics and the effectiveness of controls.</td>
 <td>Document 41; R6; <a href="plantillas/P28_SEVEN-G_Seguimiento_de_realizacion_de_valor.html" title="Template P28 &#183; Value realisation tracking">P28</a></td>
-<td>D7 · D7.09; D6 · D6.11</td>
+<td>D7.09; D6 · D6.11 <span class="codigo">(D7)</span></td>
 </tr>
 <tr>
 <td>MEASURE 1.3</td>
 <td>Involve internal assessors who did not take part, or external assessors, in the assessments.</td>
 <td>Document 38; 01 §8.2</td>
-<td>D6 · D6.10</td>
+<td>D6.10 <span class="codigo">(D6)</span></td>
 </tr>
 <tr>
 <td>MEASURE 2.1</td>
 <td>Document test sets, metrics and evaluation tools.</td>
 <td><a href="plantillas/P22_SEVEN-G_Resultados_de_validacion_y_del_piloto.html" title="Template P22 &#183; Validation and pilot results">P22</a>; <a href="53_SEVEN-G_Construccion_de_soluciones_con_IA.html" title="Document 53 &#183; Building solutions with AI">document 53</a></td>
-<td>D4 · D4.08</td>
+<td>D4.08 <span class="codigo">(D4)</span></td>
 </tr>
 <tr>
 <td>MEASURE 2.2</td>
@@ -2855,31 +2859,31 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>MEASURE 2.3</td>
 <td>Measure performance in conditions similar to real use.</td>
 <td><a href="plantillas/P09_SEVEN-G_Linea_base.html" title="Template P09 &#183; Baseline">P09</a>, <a href="plantillas/P22_SEVEN-G_Resultados_de_validacion_y_del_piloto.html" title="Template P22 &#183; Validation and pilot results">P22</a></td>
-<td>D4 · D4.08</td>
+<td>D4.08 <span class="codigo">(D4)</span></td>
 </tr>
 <tr>
 <td>MEASURE 2.4</td>
 <td>Monitor the functioning of the system in production.</td>
 <td><a href="plantillas/P25_SEVEN-G_Configuracion_de_monitorizacion_y_alertas.html" title="Template P25 &#183; Monitoring and alerting configuration">P25</a>; <a href="52_SEVEN-G_Manual_de_operacion_de_IA.html" title="Document 52 &#183; AI operations manual">document 52</a></td>
-<td>D4 · D4.05, D4.09</td>
+<td>D4.05, D4.09 <span class="codigo">(D4)</span></td>
 </tr>
 <tr>
 <td>MEASURE 2.5</td>
 <td>Demonstrate validity and reliability, and document the limits of generalisation.</td>
 <td><a href="plantillas/P22_SEVEN-G_Resultados_de_validacion_y_del_piloto.html" title="Template P22 &#183; Validation and pilot results">P22</a>; G5</td>
-<td>D4 · D4.08</td>
+<td>D4.08 <span class="codigo">(D4)</span></td>
 </tr>
 <tr>
 <td>MEASURE 2.6</td>
 <td>Evaluate the system's safety against harm and its ability to fail safely.</td>
 <td><a href="plantillas/P19_SEVEN-G_Plan_de_reversion_y_prueba.html" title="Template P19 &#183; Rollback plan and test">P19</a>, <a href="plantillas/P22_SEVEN-G_Resultados_de_validacion_y_del_piloto.html" title="Template P22 &#183; Validation and pilot results">P22</a>; AG-09</td>
-<td>D4 · D4.06</td>
+<td>D4.06 <span class="codigo">(D4)</span></td>
 </tr>
 <tr>
 <td>MEASURE 2.7</td>
 <td>Evaluate and document security against attacks and resilience.</td>
 <td><a href="plantillas/P18_SEVEN-G_Diseno_de_seguridad.html" title="Template P18 &#183; Security design (including agents)">P18</a>, <a href="plantillas/P53_SEVEN-G_Plan_e_informe_de_pruebas_adversarias.html" title="Template P53 &#183; Adversarial testing plan and report">P53</a>; 35 §8</td>
-<td>D6 · D6.10</td>
+<td>D6.10 <span class="codigo">(D6)</span></td>
 </tr>
 <tr>
 <td>MEASURE 2.8</td>
@@ -2897,7 +2901,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>MEASURE 2.10</td>
 <td>Examine and document the privacy risk.</td>
 <td><a href="plantillas/P11_SEVEN-G_Clasificacion_regulatoria_y_evaluaciones_de_impacto.html" title="Template P11 &#183; Regulatory classification and impact assessments">P11</a>, <a href="plantillas/P47_SEVEN-G_Evaluacion_de_impacto_en_proteccion_de_datos.html" title="Template P47 &#183; Data protection impact assessment">P47</a>; <a href="51_SEVEN-G_Datos_y_conocimiento.html" title="Document 51 &#183; Data and knowledge for AI">document 51</a></td>
-<td>D3 · D3.06</td>
+<td>D3.06 <span class="codigo">(D3)</span></td>
 </tr>
 <tr>
 <td>MEASURE 2.11</td>
@@ -2921,7 +2925,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>MEASURE 3.1</td>
 <td>Identify and track existing, unanticipated and emergent risks.</td>
 <td>33 §11; <a href="plantillas/P12_SEVEN-G_Matriz_y_registro_de_riesgos.html" title="Template P12 &#183; Risk matrix and register">P12</a>; R6</td>
-<td>D6 · D6.09</td>
+<td>D6.09 <span class="codigo">(D6)</span></td>
 </tr>
 <tr>
 <td>MEASURE 3.2</td>
@@ -2945,91 +2949,91 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>MEASURE 4.2</td>
 <td>Validate with experts and relevant actors the results on trustworthiness in use.</td>
 <td><a href="plantillas/P28_SEVEN-G_Seguimiento_de_realizacion_de_valor.html" title="Template P28 &#183; Value realisation tracking">P28</a>; R6</td>
-<td>D7 · D7.09</td>
+<td>D7.09 <span class="codigo">(D7)</span></td>
 </tr>
 <tr>
 <td>MEASURE 4.3</td>
 <td>Identify measurable improvements or declines in performance and trustworthiness.</td>
 <td><a href="plantillas/P28_SEVEN-G_Seguimiento_de_realizacion_de_valor.html" title="Template P28 &#183; Value realisation tracking">P28</a>; <a href="41_SEVEN-G_Catalogo_de_indicadores.html" title="Document 41 &#183; Indicator catalogue">document 41</a></td>
-<td>D2 · D2.10; D7 · D7.09</td>
+<td>D2.10; D7 · D7.09 <span class="codigo">(D2)</span></td>
 </tr>
 <tr>
 <td>MANAGE 1.1</td>
 <td>Decide whether the system achieves its purpose and whether its development or deployment should continue.</td>
 <td>Document 21; <a href="plantillas/P29_SEVEN-G_Registro_de_decision_de_gate.html" title="Template P29 &#183; Gate decision record">P29</a></td>
-<td>D2 · D2.06</td>
+<td>D2.06 <span class="codigo">(D2)</span></td>
 </tr>
 <tr>
 <td>MANAGE 1.2</td>
 <td>Prioritise risk treatment by impact, likelihood and resources.</td>
 <td><a href="plantillas/P13_SEVEN-G_Plan_de_mitigacion_y_contingencia.html" title="Template P13 &#183; Mitigation and contingency plan">P13</a>; 33 §7</td>
-<td>D6 · D6.06</td>
+<td>D6.06 <span class="codigo">(D6)</span></td>
 </tr>
 <tr>
 <td>MANAGE 1.3</td>
 <td>Plan the response to high risks: mitigate, transfer, avoid or accept.</td>
 <td><a href="plantillas/P13_SEVEN-G_Plan_de_mitigacion_y_contingencia.html" title="Template P13 &#183; Mitigation and contingency plan">P13</a>; 33 §7</td>
-<td>D6 · D6.06</td>
+<td>D6.06 <span class="codigo">(D6)</span></td>
 </tr>
 <tr>
 <td>MANAGE 1.4</td>
 <td>Document residual risks for users and acquirers.</td>
 <td><a href="plantillas/P12_SEVEN-G_Matriz_y_registro_de_riesgos.html" title="Template P12 &#183; Risk matrix and register">P12</a>, <a href="plantillas/P13_SEVEN-G_Plan_de_mitigacion_y_contingencia.html" title="Template P13 &#183; Mitigation and contingency plan">P13</a></td>
-<td>D6 · D6.06</td>
+<td>D6.06 <span class="codigo">(D6)</span></td>
 </tr>
 <tr>
 <td>MANAGE 2.1</td>
 <td>Consider the resources required and the non-AI alternatives.</td>
 <td><a href="plantillas/P06_SEVEN-G_Cartera_de_oportunidades_y_notas_de_filtrado.html" title="Template P06 &#183; Opportunity portfolio and screening notes">P06</a>, <a href="plantillas/P10_SEVEN-G_Evaluacion_de_viabilidad.html" title="Template P10 &#183; Feasibility assessment">P10</a>; 01 §6.3</td>
-<td>D2 · D2.08</td>
+<td>D2.08 <span class="codigo">(D2)</span></td>
 </tr>
 <tr>
 <td>MANAGE 2.2</td>
 <td>Sustain the value of deployed systems.</td>
 <td>R6; <a href="plantillas/P28_SEVEN-G_Seguimiento_de_realizacion_de_valor.html" title="Template P28 &#183; Value realisation tracking">P28</a>; <a href="43_SEVEN-G_Realizacion_de_beneficios.html" title="Document 43 &#183; Benefits realisation">document 43</a></td>
-<td>D2 · D2.10</td>
+<td>D2.10 <span class="codigo">(D2)</span></td>
 </tr>
 <tr>
 <td>MANAGE 2.3</td>
 <td>Respond and recover when a previously unknown risk appears.</td>
 <td>Document 37; <a href="plantillas/P26_SEVEN-G_Plan_de_respuesta_a_incidentes.html" title="Template P26 &#183; Incident response plan">P26</a></td>
-<td>D6 · D6.07</td>
+<td>D6.07 <span class="codigo">(D6)</span></td>
 </tr>
 <tr>
 <td>MANAGE 2.4</td>
 <td>Be able to supersede, disengage or deactivate a system that departs from its intended use.</td>
 <td><a href="plantillas/P19_SEVEN-G_Plan_de_reversion_y_prueba.html" title="Template P19 &#183; Rollback plan and test">P19</a>; AG-09; <a href="plantillas/P30_SEVEN-G_Decision_de_escalado_o_retirada.html" title="Tool T22 &#183; Retirement manager">T22</a></td>
-<td>D4 · D4.06</td>
+<td>D4.06 <span class="codigo">(D4)</span></td>
 </tr>
 <tr>
 <td>MANAGE 3.1</td>
 <td>Monitor the risks and benefits of third-party resources.</td>
 <td>Document 36; <a href="plantillas/P57_SEVEN-G_Registro_de_proveedores_y_plan_de_salida.html" title="Template P57 &#183; Supplier register and exit plan">P57</a></td>
-<td>D6 · D6.08</td>
+<td>D6.08 <span class="codigo">(D6)</span></td>
 </tr>
 <tr>
 <td>MANAGE 3.2</td>
 <td>Monitor pre-trained models as part of regular monitoring.</td>
 <td><a href="plantillas/P25_SEVEN-G_Configuracion_de_monitorizacion_y_alertas.html" title="Template P25 &#183; Monitoring and alerting configuration">P25</a>, <a href="plantillas/P54_SEVEN-G_Inventario_de_identidades_no_humanas_y_componentes.html" title="Template P54 &#183; Non-human identity and component inventory">P54</a>; SEG-09</td>
-<td>D4 · D4.08</td>
+<td>D4.08 <span class="codigo">(D4)</span></td>
 </tr>
 <tr>
 <td>MANAGE 4.1</td>
 <td>Implement post-deployment monitoring plans: user input, appeal, override, decommissioning, incidents and change.</td>
 <td><a href="plantillas/P24_SEVEN-G_Manual_de_operacion.html" title="Template P24 &#183; Operations manual">P24</a>, <a href="plantillas/P25_SEVEN-G_Configuracion_de_monitorizacion_y_alertas.html" title="Template P25 &#183; Monitoring and alerting configuration">P25</a>, <a href="plantillas/P27_SEVEN-G_Registro_de_incidentes_y_cambios.html" title="Template P27 &#183; Incident and change log">P27</a>; <a href="52_SEVEN-G_Manual_de_operacion_de_IA.html" title="Document 52 &#183; AI operations manual">document 52</a></td>
-<td>D4 · D4.05, D4.07</td>
+<td>D4.05, D4.07 <span class="codigo">(D4)</span></td>
 </tr>
 <tr>
 <td>MANAGE 4.2</td>
 <td>Integrate continual improvement into system updates.</td>
 <td><a href="plantillas/P28_SEVEN-G_Seguimiento_de_realizacion_de_valor.html" title="Template P28 &#183; Value realisation tracking">P28</a>; R6; C5</td>
-<td>D4 · D4.12</td>
+<td>D4.12 <span class="codigo">(D4)</span></td>
 </tr>
 <tr>
 <td>MANAGE 4.3</td>
 <td>Communicate and manage incidents and errors, including to affected communities.</td>
 <td>Document 37; <a href="plantillas/P26_SEVEN-G_Plan_de_respuesta_a_incidentes.html" title="Template P26 &#183; Incident response plan">P26</a>, <a href="plantillas/P27_SEVEN-G_Registro_de_incidentes_y_cambios.html" title="Template P27 &#183; Incident and change log">P27</a>, <a href="plantillas/P51_SEVEN-G_Notificaciones_y_comunicaciones_de_incidentes.html" title="Template P51 &#183; Incident reports and communications">P51</a></td>
-<td>D6 · D6.07</td>
+<td>D6.07 <span class="codigo">(D6)</span></td>
 </tr>
 </tbody>
 </table></div>
@@ -3051,7 +3055,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>Understand and manage legal, regulatory and contractual cybersecurity requirements, including privacy.</td>
 <td>3 · 1 · 3</td>
 <td>Document 34; <a href="plantillas/P11_SEVEN-G_Clasificacion_regulatoria_y_evaluaciones_de_impacto.html" title="Template P11 &#183; Regulatory classification and impact assessments">P11</a>, <a href="plantillas/P56_SEVEN-G_Clausulas_contractuales_tipo_de_IA.html" title="Template P56 &#183; Model AI contractual clauses">P56</a></td>
-<td>D6 · D6.05, D6.12</td>
+<td>D6.05, D6.12 <span class="codigo">(D6)</span></td>
 </tr>
 <tr>
 <td>GV.OC-04</td>
@@ -3072,28 +3076,28 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>Set, communicate and maintain risk appetite and tolerance.</td>
 <td>2 · 2 · 1</td>
 <td>Document 13; <a href="plantillas/P35_SEVEN-G_Tesis_de_IA_y_apetito_de_riesgo.html" title="Template P35 &#183; AI thesis and risk appetite">P35</a></td>
-<td>D1 · D1.05</td>
+<td>D1.05 <span class="codigo">(D1)</span></td>
 </tr>
 <tr>
 <td>GV.RM-07</td>
 <td>Include strategic opportunities in risk discussions.</td>
 <td>3 · 1 · 3</td>
 <td>Documents 13 and 14; <a href="plantillas/P06_SEVEN-G_Cartera_de_oportunidades_y_notas_de_filtrado.html" title="Template P06 &#183; Opportunity portfolio and screening notes">P06</a></td>
-<td>D2 · D2.07</td>
+<td>D2.07 <span class="codigo">(D2)</span></td>
 </tr>
 <tr>
 <td>GV.RR-01</td>
 <td>Have leadership answer for risk and foster a risk-aware culture.</td>
 <td>3 · 1 · 2</td>
 <td>Documents 13 and 30; <a href="plantillas/P38_SEVEN-G_Reglamento_de_los_organos_de_gobierno_de_IA.html" title="Template P38 &#183; Rules of procedure of the AI governance bodies">P38</a></td>
-<td>D1 · D1.01, D1.09</td>
+<td>D1.01, D1.09 <span class="codigo">(D1)</span></td>
 </tr>
 <tr>
 <td>GV.RR-02</td>
 <td>Establish and enforce roles, responsibilities and authorities for risk management.</td>
 <td>3 · 1 · 2</td>
 <td>01 §8; <a href="30_SEVEN-G_Modelo_de_gobierno.html" title="Document 30 &#183; Governance model">document 30</a>; <a href="plantillas/P03_SEVEN-G_Registro_de_asignacion_de_roles.html" title="Template P03 &#183; Role assignment record">P03</a></td>
-<td>D1 · D1.07, D1.08</td>
+<td>D1.07, D1.08 <span class="codigo">(D1)</span></td>
 </tr>
 <tr>
 <td>GV.RR-03</td>
@@ -3114,84 +3118,84 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>Establish, communicate and enforce the risk management policy.</td>
 <td>3 · 1 · 3</td>
 <td>Documents 31 and 35</td>
-<td>D1 · D1.04</td>
+<td>D1.04 <span class="codigo">(D1)</span></td>
 </tr>
 <tr>
 <td>GV.PO-02</td>
 <td>Review and update the policy when requirements, threats or technology change.</td>
 <td>1 · 1 · 2</td>
 <td>Document 31; C5; <a href="plantillas/P37_SEVEN-G_Revision_anual_C5.html" title="Template P37 &#183; C5 annual review">P37</a></td>
-<td>D6 · D6.12</td>
+<td>D6.12 <span class="codigo">(D6)</span></td>
 </tr>
 <tr>
 <td>GV.SC-03</td>
 <td>Integrate supply chain risk into risk management.</td>
 <td>1 · 2 · 3</td>
 <td>Documents 33 and 36</td>
-<td>D6 · D6.08</td>
+<td>D6.08 <span class="codigo">(D6)</span></td>
 </tr>
 <tr>
 <td>GV.SC-07</td>
 <td>Understand, assess and monitor the risk of each supplier over the whole relationship.</td>
 <td>1 · 1 · 3</td>
 <td>Document 36; <a href="plantillas/P14_SEVEN-G_Evaluacion_de_proveedor_de_IA.html" title="Template P14 &#183; AI supplier assessment">P14</a>, <a href="plantillas/P55_SEVEN-G_Cuestionario_de_diligencia_debida_a_proveedores_de_IA.html" title="Template P55 &#183; AI supplier due diligence questionnaire">P55</a>, <a href="plantillas/P57_SEVEN-G_Registro_de_proveedores_y_plan_de_salida.html" title="Template P57 &#183; Supplier register and exit plan">P57</a></td>
-<td>D6 · D6.08</td>
+<td>D6.08 <span class="codigo">(D6)</span></td>
 </tr>
 <tr>
 <td>ID.AM-03</td>
 <td>Maintain representations of authorised communications and data flows.</td>
 <td>1 · 2 · 2</td>
 <td><a href="plantillas/P15_SEVEN-G_Registro_de_arquitectura.html" title="Template P15 &#183; Architecture record">P15</a>, <a href="plantillas/P16_SEVEN-G_Linaje_de_datos_y_modelos.html" title="Template P16 &#183; Data and model lineage">P16</a></td>
-<td>D3 · D3.07</td>
+<td>D3.07 <span class="codigo">(D3)</span></td>
 </tr>
 <tr>
 <td>ID.AM-07</td>
 <td>Maintain inventories of data and their metadata.</td>
 <td>1 · 1 · 3</td>
 <td><a href="plantillas/P64_SEVEN-G_Ficha_de_conjunto_de_datos_e_inventario_de_fuentes_de_conocimiento.html" title="Template P64 &#183; Dataset record and knowledge source inventory">P64</a>; <a href="51_SEVEN-G_Datos_y_conocimiento.html" title="Document 51 &#183; Data and knowledge for AI">document 51</a></td>
-<td>D3 · D3.03, D3.05</td>
+<td>D3.03, D3.05 <span class="codigo">(D3)</span></td>
 </tr>
 <tr>
 <td>ID.AM-08</td>
 <td>Manage systems, software, services and data throughout their life cycle.</td>
 <td>1 · 3 · 2</td>
 <td>Document 20; <a href="plantillas/P05_SEVEN-G_Ficha_de_inventario_del_sistema_de_IA.html" title="Template P05 &#183; AI system inventory record">P05</a>, <a href="plantillas/P54_SEVEN-G_Inventario_de_identidades_no_humanas_y_componentes.html" title="Template P54 &#183; Non-human identity and component inventory">P54</a></td>
-<td>D6 · D6.05</td>
+<td>D6.05 <span class="codigo">(D6)</span></td>
 </tr>
 <tr>
 <td>ID.RA-01</td>
 <td>Identify, validate and record vulnerabilities in assets.</td>
 <td>1 · 1 · 1</td>
 <td>SEG-11, SEG-13, SEG-19; <a href="plantillas/P53_SEVEN-G_Plan_e_informe_de_pruebas_adversarias.html" title="Template P53 &#183; Adversarial testing plan and report">P53</a></td>
-<td>D6 · D6.10</td>
+<td>D6.10 <span class="codigo">(D6)</span></td>
 </tr>
 <tr>
 <td>ID.RA-03</td>
 <td>Identify and record internal and external threats.</td>
 <td>1 · 1 · 1</td>
 <td>SEG-01; <a href="plantillas/P18_SEVEN-G_Diseno_de_seguridad.html" title="Template P18 &#183; Security design (including agents)">P18</a>; 35 §3 and §9</td>
-<td>D6 · D6.08</td>
+<td>D6.08 <span class="codigo">(D6)</span></td>
 </tr>
 <tr>
 <td>ID.RA-04</td>
 <td>Estimate the impact and likelihood of a threat exploiting a vulnerability.</td>
 <td>1 · 1 · 1</td>
 <td><a href="plantillas/P12_SEVEN-G_Matriz_y_registro_de_riesgos.html" title="Template P12 &#183; Risk matrix and register">P12</a>; <a href="33_SEVEN-G_Metodologia_de_riesgos_de_IA.html" title="Document 33 &#183; AI risk methodology">document 33</a></td>
-<td>D6 · D6.06</td>
+<td>D6.06 <span class="codigo">(D6)</span></td>
 </tr>
 <tr>
 <td>ID.RA-06</td>
 <td>Choose, prioritise, plan, track and communicate risk responses.</td>
 <td>3 · 2 · 1</td>
 <td><a href="plantillas/P13_SEVEN-G_Plan_de_mitigacion_y_contingencia.html" title="Template P13 &#183; Mitigation and contingency plan">P13</a>; 33 §7</td>
-<td>D6 · D6.06</td>
+<td>D6.06 <span class="codigo">(D6)</span></td>
 </tr>
 <tr>
 <td>ID.RA-07</td>
 <td>Manage and record changes and exceptions, assessing their effect on risk.</td>
 <td>2 · 1 · 1</td>
 <td><a href="plantillas/P27_SEVEN-G_Registro_de_incidentes_y_cambios.html" title="Template P27 &#183; Incident and change log">P27</a>, <a href="plantillas/P40_SEVEN-G_Solicitud_y_registro_de_excepciones.html" title="Template P40 &#183; Exception request and register">P40</a>; <a href="52_SEVEN-G_Manual_de_operacion_de_IA.html" title="Document 52 &#183; AI operations manual">document 52</a></td>
-<td>D4 · D4.04</td>
+<td>D4.04 <span class="codigo">(D4)</span></td>
 </tr>
 <tr>
 <td>ID.RA-08</td>
@@ -3205,35 +3209,35 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>Manage the identities and credentials of users, services and agents.</td>
 <td>1 · 2 · 1</td>
 <td>AG-01, AG-03; <a href="plantillas/P54_SEVEN-G_Inventario_de_identidades_no_humanas_y_componentes.html" title="Template P54 &#183; Non-human identity and component inventory">P54</a></td>
-<td>D6 · D6.08</td>
+<td>D6.08 <span class="codigo">(D6)</span></td>
 </tr>
 <tr>
 <td>PR.AA-05</td>
 <td>Define and review permissions with least privilege and separation of duties.</td>
 <td>1 · 2 · 1</td>
 <td>AG-02, AG-20; SEG-06</td>
-<td>D6 · D6.08</td>
+<td>D6.08 <span class="codigo">(D6)</span></td>
 </tr>
 <tr>
 <td>PR.AT-01</td>
 <td>Make staff aware and train them to work with risk in mind.</td>
 <td>1 · 1 · 1</td>
 <td>Document 50; SEG-17; <a href="plantillas/P45_SEVEN-G_Plan_y_registro_de_alfabetizacion_y_formacion.html" title="Template P45 &#183; Literacy and training plan and record">P45</a></td>
-<td>D5 · D5.05</td>
+<td>D5.05 <span class="codigo">(D5)</span></td>
 </tr>
 <tr>
 <td>PR.AT-02</td>
 <td>Train people in specialised roles.</td>
 <td>2 · 1 · 1</td>
 <td>Document 50; <a href="plantillas/P45_SEVEN-G_Plan_y_registro_de_alfabetizacion_y_formacion.html" title="Template P45 &#183; Literacy and training plan and record">P45</a></td>
-<td>D5 · D5.06</td>
+<td>D5.06 <span class="codigo">(D5)</span></td>
 </tr>
 <tr>
 <td>PR.DS-01</td>
 <td>Protect the confidentiality, integrity and availability of data at rest.</td>
 <td>1 · 1 · 2</td>
 <td>SEG-07, SEG-08; <a href="plantillas/P16_SEVEN-G_Linaje_de_datos_y_modelos.html" title="Template P16 &#183; Data and model lineage">P16</a>, <a href="plantillas/P18_SEVEN-G_Diseno_de_seguridad.html" title="Template P18 &#183; Security design (including agents)">P18</a></td>
-<td>D3 · D3.05</td>
+<td>D3.05 <span class="codigo">(D3)</span></td>
 </tr>
 <tr>
 <td>PR.DS-10</td>
@@ -3247,7 +3251,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>Establish and apply configuration management.</td>
 <td>1 · 1 · 3</td>
 <td><a href="plantillas/P15_SEVEN-G_Registro_de_arquitectura.html" title="Template P15 &#183; Architecture record">P15</a>, <a href="plantillas/P27_SEVEN-G_Registro_de_incidentes_y_cambios.html" title="Template P27 &#183; Incident and change log">P27</a>; <a href="52_SEVEN-G_Manual_de_operacion_de_IA.html" title="Document 52 &#183; AI operations manual">document 52</a></td>
-<td>D4 · D4.04</td>
+<td>D4.04 <span class="codigo">(D4)</span></td>
 </tr>
 <tr>
 <td>PR.PS-02</td>
@@ -3268,28 +3272,28 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>Generate log records available for continuous monitoring.</td>
 <td>1 · 1 · 1</td>
 <td>AG-10, SEG-12; <a href="plantillas/P25_SEVEN-G_Configuracion_de_monitorizacion_y_alertas.html" title="Template P25 &#183; Monitoring and alerting configuration">P25</a></td>
-<td>D4 · D4.08</td>
+<td>D4.08 <span class="codigo">(D4)</span></td>
 </tr>
 <tr>
 <td>PR.PS-05</td>
 <td>Prevent the installation and execution of unauthorised software, including AI.</td>
 <td>2 · 2 · 1</td>
 <td>SEG-20, AG-13; <a href="31_SEVEN-G_Politica_corporativa_y_uso_aceptable.html" title="Document 31 &#183; Corporate AI policy and acceptable use policy">document 31</a>; <a href="plantillas/P43_SEVEN-G_Catalogo_de_herramientas_autorizadas_y_solicitudes.html" title="Tool T21 &#183; Corporate AI use monitor">T21</a></td>
-<td>D6 · D6.09</td>
+<td>D6.09 <span class="codigo">(D6)</span></td>
 </tr>
 <tr>
 <td>PR.IR-01</td>
 <td>Protect networks and environments from unauthorised access and use.</td>
 <td>2 · 2 · 1</td>
 <td>AG-11; <a href="plantillas/P15_SEVEN-G_Registro_de_arquitectura.html" title="Template P15 &#183; Architecture record">P15</a></td>
-<td>D4 · D4.03</td>
+<td>D4.03 <span class="codigo">(D4)</span></td>
 </tr>
 <tr>
 <td>PR.IR-03</td>
 <td>Implement resilience mechanisms for normal and adverse situations.</td>
 <td>2 · 1 · 2</td>
 <td><a href="plantillas/P19_SEVEN-G_Plan_de_reversion_y_prueba.html" title="Template P19 &#183; Rollback plan and test">P19</a>; AG-16; <a href="52_SEVEN-G_Manual_de_operacion_de_IA.html" title="Document 52 &#183; AI operations manual">document 52</a></td>
-<td>D4 · D4.06, D4.12</td>
+<td>D4.06, D4.12 <span class="codigo">(D4)</span></td>
 </tr>
 <tr>
 <td>DE.CM-01</td>
@@ -3303,14 +3307,14 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>Monitor the activity of external service providers.</td>
 <td>1 · 2 · 2</td>
 <td>Document 36; <a href="plantillas/P57_SEVEN-G_Registro_de_proveedores_y_plan_de_salida.html" title="Template P57 &#183; Supplier register and exit plan">P57</a></td>
-<td>D6 · D6.08</td>
+<td>D6.08 <span class="codigo">(D6)</span></td>
 </tr>
 <tr>
 <td>DE.CM-09</td>
 <td>Monitor hardware, software, runtime environments and data.</td>
 <td>1 · 1 · 2</td>
 <td>SEG-12, AG-17; <a href="plantillas/P25_SEVEN-G_Configuracion_de_monitorizacion_y_alertas.html" title="Template P25 &#183; Monitoring and alerting configuration">P25</a></td>
-<td>D4 · D4.05</td>
+<td>D4.05 <span class="codigo">(D4)</span></td>
 </tr>
 <tr>
 <td>DE.AE-03</td>
@@ -3324,14 +3328,14 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>Understand the estimated impact and scope of adverse events.</td>
 <td>3 · 1 · 2</td>
 <td>Document 37; <a href="plantillas/P27_SEVEN-G_Registro_de_incidentes_y_cambios.html" title="Template P27 &#183; Incident and change log">P27</a></td>
-<td>D6 · D6.07</td>
+<td>D6.07 <span class="codigo">(D6)</span></td>
 </tr>
 <tr>
 <td>DE.AE-06</td>
 <td>Provide information on adverse events to authorised people and tools.</td>
 <td>3 · 2 · 1</td>
 <td><a href="plantillas/P24_SEVEN-G_Manual_de_operacion.html" title="Template P24 &#183; Operations manual">P24</a>, <a href="plantillas/P25_SEVEN-G_Configuracion_de_monitorizacion_y_alertas.html" title="Template P25 &#183; Monitoring and alerting configuration">P25</a></td>
-<td>D4 · D4.05</td>
+<td>D4.05 <span class="codigo">(D4)</span></td>
 </tr>
 <tr>
 <td>DE.AE-07</td>
@@ -3345,42 +3349,42 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>Triage and validate incident reports.</td>
 <td>2 · 1 · 2</td>
 <td>Document 37; <a href="plantillas/P27_SEVEN-G_Registro_de_incidentes_y_cambios.html" title="Template P27 &#183; Incident and change log">P27</a></td>
-<td>D6 · D6.07</td>
+<td>D6.07 <span class="codigo">(D6)</span></td>
 </tr>
 <tr>
 <td>RS.MA-03</td>
 <td>Categorise and prioritise incidents.</td>
 <td>2 · 1 · 1</td>
 <td>Document 37 (S1–S4); <a href="plantillas/P27_SEVEN-G_Registro_de_incidentes_y_cambios.html" title="Template P27 &#183; Incident and change log">P27</a></td>
-<td>D6 · D6.07</td>
+<td>D6.07 <span class="codigo">(D6)</span></td>
 </tr>
 <tr>
 <td>RS.AN-03</td>
 <td>Analyse what happened in an incident and its root cause.</td>
 <td>1 · 1 · 1</td>
 <td><a href="plantillas/P52_SEVEN-G_Analisis_de_causa_raiz_y_plan_de_accion_correctiva.html" title="Template P52 &#183; Root cause analysis and corrective action plan">P52</a>; <a href="37_SEVEN-G_No_conformidades_e_incidentes.html" title="Document 37 &#183; Nonconformities, AI incidents and remediation">document 37</a></td>
-<td>D6 · D6.07</td>
+<td>D6.07 <span class="codigo">(D6)</span></td>
 </tr>
 <tr>
 <td>RS.AN-06</td>
 <td>Record investigation actions, preserving their integrity and provenance.</td>
 <td>3 · 3 · 1</td>
 <td><a href="plantillas/P27_SEVEN-G_Registro_de_incidentes_y_cambios.html" title="Template P27 &#183; Incident and change log">P27</a>, <a href="plantillas/P52_SEVEN-G_Analisis_de_causa_raiz_y_plan_de_accion_correctiva.html" title="Template P52 &#183; Root cause analysis and corrective action plan">P52</a></td>
-<td>D6 · D6.07</td>
+<td>D6.07 <span class="codigo">(D6)</span></td>
 </tr>
 <tr>
 <td>RS.AN-07</td>
 <td>Collect incident data, preserving their integrity and provenance.</td>
 <td>1 · 2 · 2</td>
 <td>AG-10; <a href="plantillas/P27_SEVEN-G_Registro_de_incidentes_y_cambios.html" title="Template P27 &#183; Incident and change log">P27</a></td>
-<td>D4 · D4.08</td>
+<td>D4.08 <span class="codigo">(D4)</span></td>
 </tr>
 <tr>
 <td>RC.RP-02</td>
 <td>Select, scope, prioritise and perform recovery actions.</td>
 <td>3 · 1 · 3</td>
 <td><a href="plantillas/P19_SEVEN-G_Plan_de_reversion_y_prueba.html" title="Template P19 &#183; Rollback plan and test">P19</a>, <a href="plantillas/P24_SEVEN-G_Manual_de_operacion.html" title="Template P24 &#183; Operations manual">P24</a>, <a href="plantillas/P26_SEVEN-G_Plan_de_respuesta_a_incidentes.html" title="Template P26 &#183; Incident response plan">P26</a>; AG-19</td>
-<td>D4 · D4.06</td>
+<td>D4.06 <span class="codigo">(D4)</span></td>
 </tr>
 </tbody>
 </table></div>
@@ -3815,7 +3819,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </thead>
 <tbody>
 <tr id="cod-c1-diagnosis">
-<td><strong>C1 · Diagnosis</strong></td>
+<td><strong>Diagnosis</strong> <span class="codigo">(C1)</span></td>
 <td>Inventory and role per system (Arts. 3, 25)</td>
 <td>4.1, 4.2</td>
 <td>MAP 1 · ID.AM, GV.OC; current profile</td>
@@ -3824,7 +3828,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>Competent authorities identified</td>
 </tr>
 <tr id="cod-c2-direction">
-<td><strong>C2 · Direction</strong></td>
+<td><strong>Direction</strong> <span class="codigo">(C2)</span></td>
 <td>AI literacy (Art. 4); policy on prohibited practices</td>
 <td>4.3, 5.1–5.3, 6.1–6.2, A.2, A.3</td>
 <td>GOVERN 1–4 · GV.RM, GV.RR, GV.PO; target profile</td>
@@ -3833,7 +3837,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>—</td>
 </tr>
 <tr id="cod-c3-portfolio">
-<td><strong>C3 · Portfolio</strong></td>
+<td><strong>Portfolio</strong> <span class="codigo">(C3)</span></td>
 <td>High-risk signals in the portfolio</td>
 <td>6.3, 7.1–7.2</td>
 <td>GOVERN 2, 6 · GV.SC</td>
@@ -3842,7 +3846,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>—</td>
 </tr>
 <tr id="cod-c4-oversight">
-<td><strong>C4 · Oversight</strong></td>
+<td><strong>Oversight</strong> <span class="codigo">(C4)</span></td>
 <td>Serious incidents and aggregated monitoring</td>
 <td>9.1, 9.2</td>
 <td>MEASURE 3–4 · GV.OV, DE.CM</td>
@@ -3851,7 +3855,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>Monitoring of the organic law</td>
 </tr>
 <tr id="cod-c5-review">
-<td><strong>C5 · Review</strong></td>
+<td><strong>Review</strong> <span class="codigo">(C5)</span></td>
 <td>Review of the mapping and of classifications</td>
 <td>9.3, 10.1, 10.2</td>
 <td>MEASURE 4; MANAGE 4 · ID.IM; profile review</td>
@@ -4343,7 +4347,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </table></div>
 <h2 id="external-sources">External sources cited</h2><p class="fuentes-nota">Links to the official or primary source, checked before publication. Always verify the version in force on the date of use.</p><ul class="fuentes-externas"><li><a href="https://eur-lex.europa.eu/eli/dir/2016/97/oj/eng" target="_blank" rel="noopener">Directive (EU) 2016/97 of the European Parliament and of the Council of 20 January 2016 on insurance distribution (recast)</a><span> · Parlamento Europeo y Consejo de la UE · 20-01-2016</span></li><li><a href="https://eur-lex.europa.eu/eli/dir/2022/2555/oj/eng" target="_blank" rel="noopener">Directive (EU) 2022/2555 of the European Parliament and of the Council of 14 December 2022 on measures for a high common level of cybersecurity across the Union (NIS 2 Directive)</a><span> · Parlamento Europeo y Consejo de la UE · 14-12-2022</span></li><li><a href="https://eur-lex.europa.eu/eli/dir/2009/138/oj/eng" target="_blank" rel="noopener">Directive 2009/138/EC of the European Parliament and of the Council of 25 November 2009 on the taking-up and pursuit of the business of Insurance and Reinsurance (Solvency II) (recast)</a><span> · Parlamento Europeo y Consejo de la UE · 25-11-2009</span></li><li><a href="https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:52025PC0837" target="_blank" rel="noopener">Proposal for a Regulation of the European Parliament and of the Council amending Regulations (EU) 2016/679, (EU) 2018/1724, (EU) 2018/1725, (EU) 2023/2854 and Directives 2002/58/EC, (EU) 2022/2555 and (EU) 2022/2557 as regards the simplification of the digital legislative framework, and repealing Regulations (EU) 2018/1807, (EU) 2019/1150, (EU) 2022/868, and Directive (EU) 2019/1024 (Digital Omnibus) &#183; COM(2025) 837 final &#183; procedure 2025/0360(COD)</a><span> · Comisi&#243;n Europea (propuesta); Parlamento Europeo y Consejo de la UE (tramitaci&#243;n) · 19-11-2025</span></li><li><a href="https://eur-lex.europa.eu/eli/reg/2016/679/oj/eng" target="_blank" rel="noopener">Regulation (EU) 2016/679 of the European Parliament and of the Council of 27 April 2016 on the protection of natural persons with regard to the processing of personal data and on the free movement of such data, and repealing Directive 95/46/EC (General Data Protection Regulation)</a><span> · Parlamento Europeo y Consejo de la UE · 27-04-2016</span></li><li><a href="https://eur-lex.europa.eu/eli/reg/2017/745/oj/eng" target="_blank" rel="noopener">Regulation (EU) 2017/745 of the European Parliament and of the Council of 5 April 2017 on medical devices</a><span> · Parlamento Europeo y Consejo de la UE · 05-04-2017</span></li><li><a href="https://eur-lex.europa.eu/eli/reg/2017/746/oj/eng" target="_blank" rel="noopener">Regulation (EU) 2017/746 of the European Parliament and of the Council of 5 April 2017 on in vitro diagnostic medical devices</a><span> · Parlamento Europeo y Consejo de la UE · 05-04-2017</span></li><li><a href="https://eur-lex.europa.eu/eli/reg/2022/2554/oj/eng" target="_blank" rel="noopener">Regulation (EU) 2022/2554 of the European Parliament and of the Council of 14 December 2022 on digital operational resilience for the financial sector (DORA)</a><span> · Parlamento Europeo y Consejo de la UE · 14-12-2022</span></li><li><a href="https://eur-lex.europa.eu/eli/reg/2023/1230/oj/eng" target="_blank" rel="noopener">Regulation (EU) 2023/1230 of the European Parliament and of the Council of 14 June 2023 on machinery and repealing Directive 2006/42/EC and Council Directive 73/361/EEC</a><span> · Parlamento Europeo y Consejo de la UE · 14-06-2023</span></li><li><a href="https://eur-lex.europa.eu/eli/reg/2024/1689/oj/eng" target="_blank" rel="noopener">Regulation (EU) 2024/1689 of the European Parliament and of the Council of 13 June 2024 laying down harmonised rules on artificial intelligence (Artificial Intelligence Act)</a><span> · Parlamento Europeo y Consejo de la UE · 13-06-2024</span></li><li><a href="https://eur-lex.europa.eu/eli/reg/2024/2847/oj/eng" target="_blank" rel="noopener">Regulation (EU) 2024/2847 of the European Parliament and of the Council of 23 October 2024 on horizontal cybersecurity requirements for products with digital elements (Cyber Resilience Act)</a><span> · Parlamento Europeo y Consejo de la UE · 23-10-2024</span></li><li><a href="https://eur-lex.europa.eu/eli/reg/2025/327/oj/eng" target="_blank" rel="noopener">Regulation (EU) 2025/327 of the European Parliament and of the Council of 11 February 2025 on the European Health Data Space and amending Directive 2011/24/EU and Regulation (EU) 2024/2847</a><span> · Parlamento Europeo y Consejo de la UE · 11-02-2025</span></li><li><a href="https://eur-lex.europa.eu/eli/reg/2026/1744/oj/eng" target="_blank" rel="noopener">Regulation (EU) 2026/1744 of the European Parliament and of the Council of 8 July 2026 amending Regulations (EU) 2024/1689, (EU) 2018/1139 and (EU) 2023/1230 as regards the simplification of the implementation of harmonised rules on artificial intelligence (Digital Omnibus on AI)</a><span> · Parlamento Europeo y Consejo de la UE · 08-07-2026</span></li><li><a href="https://www.coe.int/en/web/artificial-intelligence/the-framework-convention-on-artificial-intelligence" target="_blank" rel="noopener">Council of Europe Framework Convention on Artificial Intelligence and Human Rights, Democracy and the Rule of Law (CETS No. 225), Vilnius, 5 September 2024</a><span> · Consejo de Europa · 05-09-2024</span></li><li><a href="https://www.legislation.gov.uk/ukpga/2025/18/contents" target="_blank" rel="noopener">Data (Use and Access) Act 2025 (c. 18), 19 June 2025; section 80 (automated decision-making, new Articles 22A to 22D UK GDPR)</a><span> · Parlamento del Reino Unido · 19-06-2025</span></li><li><a href="https://www.boe.es/eli/es/a/2026/01/28/(1)" target="_blank" rel="noopener">Agreement of 28 January 2026 of the Plenary of the General Council of the Judiciary approving Instruction 2/2026 on the use of artificial intelligence systems in the exercise of judicial activity (unofficial translation)</a><span> · Consejo General del Poder Judicial (Pleno) · 28-01-2026</span></li><li><a href="https://www.dsn.gob.es/es/actualidad/sala-de-prensa/anteproyecto-ley-coordinacion-gobernanza-ciberseguridad" target="_blank" rel="noopener">Draft Law on Cybersecurity Coordination and Governance (Anteproyecto de Ley de Coordinaci&#243;n y Gobernanza de la Ciberseguridad), approved at first reading by the Spanish Council of Ministers on 14 January 2025</a><span> · Gobierno de Espa&#241;a (Consejo de Ministros; Departamento de Seguridad Nacional) · 14-01-2025</span></li><li><a href="https://www.congreso.es/es/proyectos-de-ley?p_p_id=iniciativas&amp;p_p_lifecycle=0&amp;p_p_state=normal&amp;p_p_mode=view&amp;_iniciativas_mode=mostrarDetalle&amp;_iniciativas_legislatura=XV&amp;_iniciativas_id=121%2F000096" target="_blank" rel="noopener">Draft Organic Law for the proper use and governance of artificial intelligence (file 121/000096) (unofficial translation)</a><span> · Gobierno de Espa&#241;a (Consejo de Ministros); Congreso de los Diputados (tramitaci&#243;n) · 26-05-2026</span></li><li><a href="https://www.boe.es/eli/es-ga/l/2025/04/02/2" target="_blank" rel="noopener">Law 2/2025 of 2 April on the development and promotion of artificial intelligence in Galicia (unofficial translation)</a><span> · Comunidad Aut&#243;noma de Galicia (Parlamento de Galicia) · 02-04-2025</span></li><li><a href="https://www.boe.es/eli/es/rd/2023/08/22/729/con" target="_blank" rel="noopener">Royal Decree 729/2023 of 22 August approving the Statute of the Spanish Agency for the Supervision of Artificial Intelligence (unofficial translation)</a><span> · Gobierno de Espa&#241;a (Ministerio de Hacienda y Funci&#243;n P&#250;blica) · 22-08-2023</span></li><li><a href="https://www.boe.es/buscar/act.php?id=BOE-A-2023-22767" target="_blank" rel="noopener">Royal Decree 817/2023 of 8 November establishing a controlled testing environment for testing compliance with the proposal for a Regulation laying down harmonised rules on artificial intelligence (unofficial translation)</a><span> · Gobierno de Espa&#241;a (Ministerio de Asuntos Econ&#243;micos y Transformaci&#243;n Digital) · 08-11-2023</span></li><li><a href="https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:62022CJ0203" target="_blank" rel="noopener">Judgment of the Court (First Chamber) of 27 February 2025, CK v Magistrat der Stadt Wien (Dun &amp; Bradstreet Austria), Case C-203/22, ECLI:EU:C:2025:117</a><span> · Tribunal de Justicia de la Uni&#243;n Europea · 27-02-2025</span></li><li><a href="https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:62021CJ0634" target="_blank" rel="noopener">Judgment of the Court (First Chamber) of 7 December 2023, OQ v Land Hessen (SCHUFA Holding — Scoring), Case C-634/21, ECLI:EU:C:2023:957</a><span> · Tribunal de Justicia de la Uni&#243;n Europea · 07-12-2023</span></li><li><a href="https://www.bde.es/wbe/en/" target="_blank" rel="noopener">Banco de Espa&#241;a (Bank of Spain)</a><span> · Banco de Espa&#241;a</span></li><li><a href="https://digital-strategy.ec.europa.eu/en/policies/ai-office" target="_blank" rel="noopener">European AI Office (European Commission)</a><span> · Comisi&#243;n Europea (DG CONNECT)</span></li><li><a href="https://www.edpb.europa.eu/edpb_en" target="_blank" rel="noopener">European Data Protection Board (EDPB)</a><span> · Comit&#233; Europeo de Protecci&#243;n de Datos (organismo de la UE creado por el art. 68 del RGPD)</span></li><li><a href="https://aesia.digital.gob.es/es" target="_blank" rel="noopener">Spanish Agency for the Supervision of Artificial Intelligence (AESIA)</a><span> · Agencia Espa&#241;ola de Supervisi&#243;n de Inteligencia Artificial</span></li><li><a href="https://www.aepd.es/en" target="_blank" rel="noopener">Spanish Data Protection Agency (Agencia Espa&#241;ola de Protecci&#243;n de Datos, AEPD)</a><span> · Agencia Espa&#241;ola de Protecci&#243;n de Datos</span></li><li><a href="https://www.aepd.es/en/areas/innovation-and-technology" target="_blank" rel="noopener">AEPD guides on processing that embeds AI: &#171;GDPR compliance of processing that embed Artificial Intelligence. An introduction&#187; (February 2020) and &#171;Audit Requirements for Personal Data Processing Activities involving AI&#187; (January 2021) &#183; &#171;Innovation and Technology&#187; page listing both</a><span> · Agencia Espa&#241;ola de Protecci&#243;n de Datos</span></li><li><a href="https://www.nist.gov/publications/artificial-intelligence-risk-management-framework-generative-artificial-intelligence" target="_blank" rel="noopener">Artificial Intelligence Risk Management Framework: Generative Artificial Intelligence Profile (NIST AI 600-1)</a><span> · National Institute of Standards and Technology (NIST) · 26-07-2024</span></li><li><a href="https://digital-strategy.ec.europa.eu/en/policies/code-practice-ai-generated-content" target="_blank" rel="noopener">Code of Practice on Transparency of AI-generated Content (marking and labelling)</a><span> · Comisi&#243;n Europea (Oficina Europea de IA), elaborado por expertos independientes · 10-06-2026</span></li><li><a href="https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:02024R1689-20260727" target="_blank" rel="noopener">Commission guidance, including a template, on the post-market monitoring plan (Article 72(3) AI Act, as amended by Regulation (EU) 2026/1744)</a><span> · Comisi&#243;n Europea</span></li><li><a href="https://digital-strategy.ec.europa.eu/en/library/commission-publishes-guidelines-prohibited-artificial-intelligence-ai-practices-defined-ai-act" target="_blank" rel="noopener">Commission Guidelines on prohibited artificial intelligence practices established by Regulation (EU) 2024/1689 (AI Act)</a><span> · Comisi&#243;n Europea · 04-02-2025</span></li><li><a href="https://digital-strategy.ec.europa.eu/en/library/commission-publishes-guidelines-ai-system-definition-facilitate-first-ai-acts-rules-application" target="_blank" rel="noopener">Commission Guidelines on the definition of an artificial intelligence system established by Regulation (EU) 2024/1689 (AI Act)</a><span> · Comisi&#243;n Europea · 06-02-2025</span></li><li><a href="https://csrc.nist.gov/pubs/ir/8596/iprd" target="_blank" rel="noopener">Cybersecurity Framework Profile for Artificial Intelligence (Cyber AI Profile): NIST Community Profile, NIST IR 8596 (Initial Preliminary Draft)</a><span> · National Institute of Standards and Technology (NIST), NCCoE · 16-12-2025</span></li><li><a href="https://digital-strategy.ec.europa.eu/en/library/draft-commission-guidelines-classification-high-risk-ai-systems" target="_blank" rel="noopener">Draft Commission guidelines on the classification of high-risk AI systems</a><span> · Comisi&#243;n Europea · 19-05-2026</span></li><li><a href="https://digital-strategy.ec.europa.eu/en/consultations/ai-act-commission-issues-draft-guidance-and-reporting-template-serious-ai-incidents-and-seeks" target="_blank" rel="noopener">Draft guidance and reporting template on serious AI incidents (Article 73 AI Act)</a><span> · Comisi&#243;n Europea · 26-09-2025</span></li><li><a href="https://www.eba.europa.eu/activities/single-rulebook/regulatory-activities/credit-risk/guidelines-loan-origination-and-monitoring" target="_blank" rel="noopener">EBA Guidelines on loan origination and monitoring (EBA/GL/2020/06), 29 May 2020</a><span> · Autoridad Bancaria Europea (EBA) · 29-05-2020</span></li><li><a href="https://www.eiopa.europa.eu/publications/opinion-artificial-intelligence-governance-and-risk-management_en" target="_blank" rel="noopener">EIOPA Opinion on Artificial Intelligence governance and risk management (EIOPA-BoS-25-360), 6 August 2025</a><span> · Autoridad Europea de Seguros y Pensiones de Jubilaci&#243;n (EIOPA) · 06-08-2025</span></li><li><a href="https://digital-strategy.ec.europa.eu/en/library/explanatory-notice-and-template-public-summary-training-content-general-purpose-ai-models" target="_blank" rel="noopener">Explanatory Notice and Template for the Public Summary of Training Content for general-purpose AI models</a><span> · Comisi&#243;n Europea (Oficina Europea de IA) · 24-07-2025</span></li><li><a href="https://www.edpb.europa.eu/public-consultations/guidelines-012025-on-pseudonymisation_en" target="_blank" rel="noopener">Guidelines 01/2025 on Pseudonymisation (version 1.0 for public consultation)</a><span> · Comit&#233; Europeo de Protecci&#243;n de Datos · 16-01-2025</span></li><li><a href="https://www.edpb.europa.eu/public-consultations/guidelines-022026-on-anonymisation_en" target="_blank" rel="noopener">Guidelines 02/2026 on Anonymisation (version 1.0 for public consultation)</a><span> · Comit&#233; Europeo de Protecci&#243;n de Datos · 07-07-2026</span></li><li><a href="https://www.edpb.europa.eu/public-consultations/guidelines-032026-on-web-scraping-in-the-context-of-generative-ai_en" target="_blank" rel="noopener">Guidelines 03/2026 on web scraping in the context of generative AI (version 1.0 for public consultation)</a><span> · Comit&#233; Europeo de Protecci&#243;n de Datos · 07-07-2026</span></li><li><a href="https://www.edpb.europa.eu/our-work-tools/our-documents/guidelines/guidelines-42019-article-25-data-protection-design-and_en" target="_blank" rel="noopener">Guidelines 4/2019 on Article 25 Data Protection by Design and by Default (version 2.0)</a><span> · Comit&#233; Europeo de Protecci&#243;n de Datos · 20-10-2020</span></li><li><a href="https://www.edpb.europa.eu/our-work-tools/our-documents/guidelines/automated-decision-making-and-profiling_en" target="_blank" rel="noopener">Guidelines on Automated individual decision-making and Profiling for the purposes of Regulation 2016/679 (WP251rev.01), Article 29 Working Party, endorsed by the EDPB</a><span> · Grupo de Trabajo del Art&#237;culo 29; asumidas por el Comit&#233; Europeo de Protecci&#243;n de Datos (25-05-2018) · 06-02-2018</span></li><li><a href="https://www.edpb.europa.eu/our-work-tools/our-documents/guidelines/data-protection-impact-assessments-high-risk-processing_en" target="_blank" rel="noopener">Guidelines on Data Protection Impact Assessment (DPIA) and determining whether processing is &quot;likely to result in a high risk&quot; for the purposes of Regulation 2016/679 (WP248rev.01), Article 29 Working Party, endorsed by the EDPB</a><span> · Grupo de Trabajo del Art&#237;culo 29; asumidas por el Comit&#233; Europeo de Protecci&#243;n de Datos (25-05-2018) · 04-10-2017</span></li><li><a href="https://digital-strategy.ec.europa.eu/en/library/guidelines-transparency-obligations-providers-and-deployers-ai-systems" target="_blank" rel="noopener">Guidelines on the implementation of the transparency obligations for certain AI systems under Article 50 of the AI Act</a><span> · Comisi&#243;n Europea · 20-07-2026</span></li><li><a href="https://digital-strategy.ec.europa.eu/en/library/guidelines-scope-obligations-providers-general-purpose-ai-models-under-ai-act" target="_blank" rel="noopener">Guidelines on the scope of obligations for providers of general-purpose AI models under the AI Act</a><span> · Comisi&#243;n Europea · 18-07-2025</span></li><li><a href="https://aesia.digital.gob.es/en/guides" target="_blank" rel="noopener">Guides to support compliance with the AI Act (16 guides: 2 introductory, 13 technical and a checklist manual with compendium)</a><span> · Agencia Espa&#241;ola de Supervisi&#243;n de Inteligencia Artificial (AESIA) · 16-12-2025</span></li><li><a href="https://airc.nist.gov/airmf-resources/crosswalks/" target="_blank" rel="noopener">NIST AI Risk Management Framework to ISO-IEC-42001 Crosswalk, listed in the AI RMF resource centre (AIRC)</a><span> · Microsoft (aportada por un tercero y alojada por NIST en el AIRC) · 23-05-2023</span></li><li><a href="https://www.edpb.europa.eu/our-work-tools/our-documents/opinion-board-art-64/opinion-282024-certain-data-protection-aspects_en" target="_blank" rel="noopener">Opinion 28/2024 on certain data protection aspects related to the processing of personal data in the context of AI models</a><span> · Comit&#233; Europeo de Protecci&#243;n de Datos · 17-12-2024</span></li><li><a href="https://www.edpb.europa.eu/our-work-tools/our-documents/statements/statement-32024-data-protection-authorities-role-artificial_en" target="_blank" rel="noopener">Statement 3/2024 on data protection authorities&#39; role in the Artificial Intelligence Act framework</a><span> · Comit&#233; Europeo de Protecci&#243;n de Datos · 16-07-2024</span></li><li><a href="https://digital-strategy.ec.europa.eu/en/policies/contents-code-gpai" target="_blank" rel="noopener">The General-Purpose AI Code of Practice</a><span> · Comisi&#243;n Europea (Oficina Europea de IA), elaborado por expertos independientes · 10-07-2025</span></li><li><a href="https://www.cencenelec.eu/areas-of-work/cen-cenelec-topics/artificial-intelligence/" target="_blank" rel="noopener">CEN-CLC/JTC 21 &#39;Artificial Intelligence&#39;: European (harmonised) standards supporting the AI Act</a><span> · CEN y CENELEC (Comit&#233; T&#233;cnico Conjunto 21), a petici&#243;n de normalizaci&#243;n de la Comisi&#243;n Europea</span></li><li><a href="https://www.iso.org/standard/77304.html" target="_blank" rel="noopener">ISO/IEC 23894:2023 Information technology — Artificial intelligence — Guidance on risk management</a><span> · ISO/IEC (JTC 1/SC 42) · 06-02-2023</span></li><li><a href="https://www.iso.org/standard/42001" target="_blank" rel="noopener">ISO/IEC 42001:2023 Information technology — Artificial intelligence — Management system</a><span> · ISO/IEC (JTC 1/SC 42) · 18-12-2023</span></li><li><a href="https://www.iso.org/standard/42005" target="_blank" rel="noopener">ISO/IEC 42005:2025 Information technology — Artificial intelligence (AI) — AI system impact assessment</a><span> · ISO/IEC (JTC 1/SC 42) · 28-05-2025</span></li><li><a href="https://www.iso.org/standard/42006" target="_blank" rel="noopener">ISO/IEC 42006:2025 Information technology — Artificial intelligence — Requirements for bodies providing audit and certification of artificial intelligence management systems</a><span> · ISO/IEC (JTC 1/SC 42) · 07-07-2025</span></li><li><a href="https://www.nist.gov/publications/artificial-intelligence-risk-management-framework-ai-rmf-10" target="_blank" rel="noopener">Artificial Intelligence Risk Management Framework (AI RMF 1.0), NIST AI 100-1</a><span> · National Institute of Standards and Technology (NIST), Departamento de Comercio de EE. UU. · 26-01-2023</span></li><li><a href="https://legalinstruments.oecd.org/en/instruments/OECD-LEGAL-0449" target="_blank" rel="noopener">OECD Recommendation of the Council on Artificial Intelligence (OECD/LEGAL/0449), OECD AI Principles, adopted 22 May 2019, amended 3 May 2024</a><span> · Organizaci&#243;n para la Cooperaci&#243;n y el Desarrollo Econ&#243;micos (OCDE) · 03-05-2024</span></li><li><a href="https://csrc.nist.gov/pubs/cswp/29/the-nist-cybersecurity-framework-csf-20/final" target="_blank" rel="noopener">The NIST Cybersecurity Framework (CSF) 2.0, NIST CSWP 29</a><span> · National Institute of Standards and Technology (NIST), Departamento de Comercio de EE. UU. · 26-02-2024</span></li></ul>
 </main>
-<footer class="pie"><div><span>© 2026 Fernando García Varela · SEVEN-G methodology</span><span>Generated on 28-09-2026</span></div><p class="pie-ia">Content generated and typeset with AI support under the author&#39;s editorial supervision.</p></footer>
+<footer class="pie"><div><span>© 2026 Fernando García Varela · SEVEN-G methodology</span><span>Generated on 12-10-2026</span></div><p class="pie-ia">Content generated and typeset with AI support under the author&#39;s editorial supervision.</p></footer>
 <script src="codigos.js" defer></script>
 
 <script>

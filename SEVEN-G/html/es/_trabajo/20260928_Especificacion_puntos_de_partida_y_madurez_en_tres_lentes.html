@@ -392,6 +392,10 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 /* Ilustraciones en imagen (p. ej., SPAD): ocupan el ancho del lienzo y conservan su proporción */
 .g-lienzo img { display: block; width: 100%; height: auto; border: 1px solid var(--regla-2); }
 .ilustracion .g-lienzo img[src*="ilusion_de_velocidad"] { max-width: 560px; margin: 0 auto; }
+/* Nombre primero, código después (D144): el código entre paréntesis tras el nombre, en tablas y títulos */
+.codigo { font-family: var(--mono, 'Courier New', monospace); font-size: .88em; color: var(--tinta-2); white-space: nowrap; font-weight: 400; }
+h2 .codigo, h3 .codigo { font-weight: 400; }
+
 @page { @bottom-left { content: "SEVEN-G · Especificación · Puntos de partida, recorrido de implantación y madurez en tres lentes"; font: 8.5pt "Libre Franklin", "Segoe UI", sans-serif; color: #74675e; } }
 </style>
 </head>
@@ -535,8 +539,8 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <div class="tabla"><table>
 <thead>
 <tr>
-<th>Código</th>
 <th>Arquetipo</th>
+
 <th>Cómo se reconoce</th>
 <th>Riesgo típico</th>
 <th>Por dónde empieza</th>
@@ -545,48 +549,48 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </thead>
 <tbody>
 <tr>
-<td><strong>PP-A</strong></td>
-<td><strong>Punto cero</strong></td>
+<td><strong><strong>Punto cero</strong></strong> <span class="codigo">(PP-A)</span></td>
+
 <td>No hay IA propia en producción ni contratada de forma consciente. Suele haber uso no autorizado de asistentes generativos.</td>
 <td>Uso no autorizado con datos de la compañía; ideas sin dueño.</td>
 <td>Mandato y patrocinador; inventario del uso no autorizado; política de uso aceptable y alfabetización básica; ficha de caso (<a href="../plantillas/P01_SEVEN-G_Carta_de_la_iniciativa.html" title="Plantilla P01 &#183; Carta de la iniciativa">P01</a>) y registro <a href="../../../herramientas/T01_registro_iniciativas/registro.html" title="Herramienta T01 &#183; Registro de iniciativas">T01</a> para las primeras ideas.</td>
 <td>Regularización (no hay nada que regularizar); seguridad de agentes y operación hasta que haya un caso en fase 4.</td>
 </tr>
 <tr>
-<td><strong>PP-B</strong></td>
-<td><strong>Usuario de IA de terceros</strong></td>
+<td><strong><strong>Usuario de IA de terceros</strong></strong> <span class="codigo">(PP-B)</span></td>
+
 <td>Asistentes en la suite ofimática, SaaS con IA incluida o IA contratada; no desarrolla.</td>
 <td>IA que entra sin pasar por ninguna puerta (54 §5); coste de licencias sin adopción medida.</td>
 <td>Inventario de la IA incluida en lo contratado (36 §8, <a href="../plantillas/P55_SEVEN-G_Cuestionario_de_diligencia_debida_a_proveedores_de_IA.html" title="Plantilla P55 &#183; Cuestionario de diligencia debida a proveedores de IA">P55</a> anexo A); proveedores N1–N3 (36, <a href="../plantillas/P14_SEVEN-G_Evaluacion_de_proveedor_de_IA.html" title="Plantilla P14 &#183; Evaluaci&#243;n de proveedor de IA">P14</a>); política de uso aceptable; medir el asistente como iniciativa transversal con escalera por unidad (40 §7.2).</td>
 <td>Construcción propia (53) y parte del ciclo técnico hasta que construya algo.</td>
 </tr>
 <tr>
-<td><strong>PP-C</strong></td>
-<td><strong>Automatizador</strong></td>
+<td><strong><strong>Automatizador</strong></strong> <span class="codigo">(PP-C)</span></td>
+
 <td>Automatización con reglas o RPA en producción, con un centro de excelencia o equipo de automatización; poca o ninguna IA que aprenda.</td>
 <td>Confundir automatización con IA; paso de bots a agentes (A2/A3) sin los controles del 35.</td>
 <td>Convertir el centro de excelencia en el embrión de la oficina de IA (30); inventario que separa lo que es IA de lo que no lo es (32); cartera de casos que sustituyen reglas por IA con su ficha.</td>
 <td>Su disciplina de procesos es un activo: rediseño de proceso (IT-P2) más fácil.</td>
 </tr>
 <tr>
-<td><strong>PP-D</strong></td>
-<td><strong>Analítica y ML clásico</strong></td>
+<td><strong><strong>Analítica y ML clásico</strong></strong> <span class="codigo">(PP-D)</span></td>
+
 <td>Modelos predictivos en producción, equipo de datos y, a veces, validación de modelos (banca, seguros).</td>
 <td>Modelos en producción sin revisión de continuidad; IA generativa que entra por fuera del gobierno de modelos.</td>
 <td><strong>Regularización</strong> de lo que está en producción (90 §5, revisión equivalente a G7); llevar la validación de modelos existente a G5 y R6; deriva y monitorización (52); inventario con clasificación regulatoria (decisiones sobre personas).</td>
 <td>El hueco es la IA generativa: fuentes de conocimiento (51, D3.08), evaluación con conjuntos de prueba (D4.08) y sesgo contrafactual (52 §4.2.7).</td>
 </tr>
 <tr>
-<td><strong>PP-E</strong></td>
-<td><strong>Muchos pilotos</strong></td>
+<td><strong><strong>Muchos pilotos</strong></strong> <span class="codigo">(PP-E)</span></td>
+
 <td>Varias pruebas de concepto de IA generativa (orientativamente, tres o más) y ninguna o una en producción.</td>
 <td>«Purgatorio de pilotos»: coste sin valor, sin decisión de parar.</td>
 <td>Registrar todos los pilotos en <a href="../../../herramientas/T01_registro_iniciativas/registro.html" title="Herramienta T01 &#183; Registro de iniciativas">T01</a> y situarlos en su fase real; <strong>G3 como puerta de parada</strong> y el embudo para parar o escalar; hipótesis de valor y línea base (40, <a href="../plantillas/P08_SEVEN-G_Lienzo_de_hipotesis_de_valor.html" title="Plantilla P08 &#183; Lienzo de hip&#243;tesis de valor">P08</a>, <a href="../plantillas/P09_SEVEN-G_Linea_base.html" title="Plantilla P09 &#183; L&#237;nea base">P09</a>) antes de más presupuesto.</td>
 <td>Estructura completa de órganos: primero la decisión sobre la cartera, luego el resto.</td>
 </tr>
 <tr>
-<td><strong>PP-F</strong></td>
-<td><strong>A escala</strong></td>
+<td><strong><strong>A escala</strong></strong> <span class="codigo">(PP-F)</span></td>
+
 <td>Al menos dos de estas tres cosas en producción: ML, IA generativa integrada en procesos y agentes que actúan (A2/A3).</td>
 <td>Exposición regulatoria y de seguridad ya real; gobierno detrás del uso.</td>
 <td>Roles separados y auditor de IA de inmediato; inventario completo con clasificación; seguridad de agentes (35) y proveedores (36); regularización priorizada por riesgo; panel del consejo e índice de transformación.</td>
@@ -612,35 +616,35 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <div class="tabla"><table>
 <thead>
 <tr>
-<th>Código</th>
 <th>Modificador</th>
+
 <th>Efecto en el recorrido</th>
 </tr>
 </thead>
 <tbody>
 <tr id="cod-mp1">
-<td><strong>MP1</strong></td>
-<td>Sector regulado (financiero, seguros, sanidad, energía, sector público…)</td>
+<td><strong>Sector regulado (financiero, seguros, sanidad, energía, sector público…)</strong> <span class="codigo">(MP1)</span></td>
+
 <td>Adelanta el inventario con clasificación (HI-05), el mapeo regulatorio (34) y la resiliencia (<a class="ref-ext" href="https://eur-lex.europa.eu/eli/reg/2022/2554/oj/spa" target="_blank" rel="noopener" title="Reglamento (UE) 2022/2554 del Parlamento Europeo y del Consejo, de 14 de diciembre de 2022, sobre la resiliencia operativa digital del sector financiero (DORA)">DORA</a>/<a class="ref-ext" href="https://eur-lex.europa.eu/eli/dir/2022/2555/oj/spa" target="_blank" rel="noopener" title="Directiva (UE) 2022/2555 del Parlamento Europeo y del Consejo, de 14 de diciembre de 2022, relativa a las medidas destinadas a garantizar un elevado nivel com&#250;n de ciberseguridad en toda la Uni&#243;n (Directiva SRI 2 / NIS2)">NIS2</a> si aplican).</td>
 </tr>
 <tr id="cod-mp2">
-<td><strong>MP2</strong></td>
-<td>Decisiones sobre personas, alto riesgo o exposición directa a clientes</td>
+<td><strong>Decisiones sobre personas, alto riesgo o exposición directa a clientes</strong> <span class="codigo">(MP2)</span></td>
+
 <td>Adelanta la evaluación de impacto (<a href="../plantillas/P11_SEVEN-G_Clasificacion_regulatoria_y_evaluaciones_de_impacto.html" title="Plantilla P11 &#183; Clasificaci&#243;n regulatoria y evaluaciones de impacto">P11</a>, <a href="../plantillas/P47_SEVEN-G_Evaluacion_de_impacto_en_proteccion_de_datos.html" title="Plantilla P47 &#183; Evaluaci&#243;n de impacto en protecci&#243;n de datos">P47</a>, <a href="../plantillas/P48_SEVEN-G_Evaluacion_de_impacto_en_derechos_fundamentales.html" title="Plantilla P48 &#183; Evaluaci&#243;n de impacto en derechos fundamentales">P48</a>), la supervisión humana (<a href="../plantillas/P17_SEVEN-G_Diseno_de_gobierno_y_supervision_humana.html" title="Plantilla P17 &#183; Dise&#241;o de gobierno y supervisi&#243;n humana">P17</a>) y el responsable de riesgos independiente (HI-10).</td>
 </tr>
 <tr id="cod-mp3">
-<td><strong>MP3</strong></td>
-<td>Alcance Enterprise de compañía (90 §2.2)</td>
+<td><strong>Alcance Enterprise de compañía (90 §2.2)</strong> <span class="codigo">(MP3)</span></td>
+
 <td>Calendario Enterprise de 90 §6.2. Sin MP3, calendario Lite y ruta mínima de 90 §2.4.</td>
 </tr>
 <tr id="cod-mp4">
-<td><strong>MP4</strong></td>
-<td>Gobierno previo reutilizable (validación de modelos, comité de datos, centro de excelencia, sistema de gestión ISO)</td>
+<td><strong>Gobierno previo reutilizable (validación de modelos, comité de datos, centro de excelencia, sistema de gestión ISO)</strong> <span class="codigo">(MP4)</span></td>
+
 <td>Los hitos correspondientes se <strong>convalidan</strong>: se adapta lo existente y se documenta la correspondencia en lugar de crearlo de nuevo (D31).</td>
 </tr>
 <tr id="cod-mp5">
-<td><strong>MP5</strong></td>
-<td>Sin patrocinador en la alta dirección</td>
+<td><strong>Sin patrocinador en la alta dirección</strong> <span class="codigo">(MP5)</span></td>
+
 <td><strong>Bloquea</strong>: antes de cualquier otro hito hay que cumplir los requisitos previos de 90 §3. La herramienta lo muestra como condición previa, no como un hito más.</td>
 </tr>
 </tbody>
@@ -786,7 +790,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tr>
 <th>Hito</th>
 <th>Etapa</th>
-<th>Qué hay que tener</th>
+
 <th>Quién</th>
 <th>Evidencia</th>
 <th>Pregunta 11</th>
@@ -801,9 +805,9 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </thead>
 <tbody>
 <tr id="cod-hi-01">
-<td><strong>HI-01</strong></td>
+<td><strong>Patrocinador en la alta dirección y mandato de implantación con perímetro</strong> <span class="codigo">(HI-01)</span></td>
 <td>E1</td>
-<td>Patrocinador en la alta dirección y mandato de implantación con perímetro</td>
+
 <td>Consejo o CEO; patrocinador</td>
 <td><a href="../plantillas/P32_SEVEN-G_Mandato_de_implantacion.html" title="Plantilla P32 &#183; Mandato de implantaci&#243;n de SEVEN-G">P32</a></td>
 <td>D1.01</td>
@@ -816,9 +820,9 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>1</td>
 </tr>
 <tr id="cod-hi-02">
-<td><strong>HI-02</strong></td>
+<td><strong>Inventario del uso corporativo y del uso no autorizado de IA</strong> <span class="codigo">(HI-02)</span></td>
 <td>E1</td>
-<td>Inventario del uso corporativo y del uso no autorizado de IA</td>
+
 <td>Oficina de IA; seguridad</td>
 <td><a href="../plantillas/P05_SEVEN-G_Ficha_de_inventario_del_sistema_de_IA.html" title="Plantilla P05 &#183; Ficha de inventario del sistema de IA">P05</a>; <a href="../../../herramientas/T01_registro_iniciativas/registro.html" title="Herramienta T01 &#183; Registro de iniciativas">T01</a> (<a href="../../../herramientas/T01_registro_iniciativas/registro.html#/inventario" title="Herramienta T02 &#183; Inventario de sistemas de IA">T02</a>); <a href="../plantillas/P43_SEVEN-G_Catalogo_de_herramientas_autorizadas_y_solicitudes.html" title="Herramienta T21 &#183; Monitor de uso corporativo de IA">T21</a></td>
 <td>D6.03</td>
@@ -831,9 +835,9 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>1</td>
 </tr>
 <tr id="cod-hi-03">
-<td><strong>HI-03</strong></td>
+<td><strong>Política de uso aceptable y alfabetización básica</strong> <span class="codigo">(HI-03)</span></td>
 <td>E1</td>
-<td>Política de uso aceptable y alfabetización básica</td>
+
 <td>Oficina de IA; personas</td>
 <td>31; <a href="../plantillas/P43_SEVEN-G_Catalogo_de_herramientas_autorizadas_y_solicitudes.html" title="Plantilla P43 &#183; Cat&#225;logo de herramientas autorizadas y solicitudes">P43</a>; <a href="../plantillas/P45_SEVEN-G_Plan_y_registro_de_alfabetizacion_y_formacion.html" title="Plantilla P45 &#183; Plan y registro de alfabetizaci&#243;n y formaci&#243;n">P45</a></td>
 <td>D1.04; D5.03</td>
@@ -846,9 +850,9 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>1</td>
 </tr>
 <tr id="cod-hi-04">
-<td><strong>HI-04</strong></td>
+<td><strong>Ficha de caso y registro de iniciativas con todas las ideas y pilotos en su fase real</strong> <span class="codigo">(HI-04)</span></td>
 <td>E2</td>
-<td>Ficha de caso y registro de iniciativas con todas las ideas y pilotos en su fase real</td>
+
 <td>Oficina de IA; responsables de producto</td>
 <td><a href="../plantillas/P01_SEVEN-G_Carta_de_la_iniciativa.html" title="Plantilla P01 &#183; Carta de la iniciativa">P01</a>; <a href="../../../herramientas/T01_registro_iniciativas/registro.html" title="Herramienta T01 &#183; Registro de iniciativas">T01</a></td>
 <td>D2.01; D2.03</td>
@@ -861,9 +865,9 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>1</td>
 </tr>
 <tr id="cod-hi-05">
-<td><strong>HI-05</strong></td>
+<td><strong>Inventario completo con clasificación regulatoria, intensidad y responsable, incluida la IA de terceros</strong> <span class="codigo">(HI-05)</span></td>
 <td>E2</td>
-<td>Inventario completo con clasificación regulatoria, intensidad y responsable, incluida la IA de terceros</td>
+
 <td>Oficina de IA; riesgos; jurídico</td>
 <td><a href="../plantillas/P04_SEVEN-G_Determinacion_de_intensidad.html" title="Plantilla P04 &#183; Determinaci&#243;n de intensidad">P04</a>; <a href="../plantillas/P05_SEVEN-G_Ficha_de_inventario_del_sistema_de_IA.html" title="Plantilla P05 &#183; Ficha de inventario del sistema de IA">P05</a>; <a href="../plantillas/P07_SEVEN-G_Clasificacion_de_esfera_y_ambicion.html" title="Plantilla P07 &#183; Clasificaci&#243;n de esfera y ambici&#243;n">P07</a>; 32; 36 §8</td>
 <td>D6.05</td>
@@ -876,9 +880,9 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>1</td>
 </tr>
 <tr id="cod-hi-06">
-<td><strong>HI-06</strong></td>
+<td><strong>Diagnóstico C1: madurez verificada, índice de transformación y huella tecnológica</strong> <span class="codigo">(HI-06)</span></td>
 <td>E2</td>
-<td>Diagnóstico C1: madurez verificada, índice de transformación y huella tecnológica</td>
+
 <td>Oficina de IA; evaluador independiente</td>
 <td><a href="../plantillas/P33_SEVEN-G_Informe_de_diagnostico_C1.html" title="Plantilla P33 &#183; Informe de diagn&#243;stico C1">P33</a>; <a href="../plantillas/P34_SEVEN-G_Cuestionario_e_informe_de_madurez.html" title="Plantilla P34 &#183; Cuestionario e informe de madurez">P34</a>; <a href="../../../herramientas/T15_diagnostico_madurez/madurez.html" title="Herramienta T15 &#183; Diagn&#243;stico de madurez">T15</a>; <a href="../../../herramientas/T14_indice_transformacion/indice.html" title="Herramienta T14 &#183; Calculadora del &#237;ndice de transformaci&#243;n">T14</a></td>
 <td>D7.08</td>
@@ -891,9 +895,9 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>1</td>
 </tr>
 <tr id="cod-hi-07">
-<td><strong>HI-07</strong></td>
+<td><strong>Tesis, ambición por esfera y apetito de riesgo aprobados por el consejo (C2)</strong> <span class="codigo">(HI-07)</span></td>
 <td>E2</td>
-<td>Tesis, ambición por esfera y apetito de riesgo aprobados por el consejo (C2)</td>
+
 <td>Patrocinador; consejo</td>
 <td><a href="../plantillas/P35_SEVEN-G_Tesis_de_IA_y_apetito_de_riesgo.html" title="Plantilla P35 &#183; Tesis de IA y apetito de riesgo">P35</a>; 13</td>
 <td>D1.05</td>
@@ -906,9 +910,9 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>2</td>
 </tr>
 <tr id="cod-hi-08">
-<td><strong>HI-08</strong></td>
+<td><strong>Comité de IA, oficina de IA y comisión delegada constituidos</strong> <span class="codigo">(HI-08)</span></td>
 <td>E3</td>
-<td>Comité de IA, oficina de IA y comisión delegada constituidos</td>
+
 <td>Comité de dirección; consejo</td>
 <td><a href="../plantillas/P38_SEVEN-G_Reglamento_de_los_organos_de_gobierno_de_IA.html" title="Plantilla P38 &#183; Reglamento de los &#243;rganos de gobierno de IA">P38</a>; 30</td>
 <td>D1.07</td>
@@ -921,9 +925,9 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>1</td>
 </tr>
 <tr id="cod-hi-09">
-<td><strong>HI-09</strong></td>
+<td><strong><strong>Roles separados</strong> en cada iniciativa: responsable de producto, técnico y de operación, responsable de riesgos independiente y <strong>auditor de IA</strong> (en Enterprise, en todos los <em>gates</em>)</strong> <span class="codigo">(HI-09)</span></td>
 <td>E3</td>
-<td><strong>Roles separados</strong> en cada iniciativa: responsable de producto, técnico y de operación, responsable de riesgos independiente y <strong>auditor de IA</strong> (en Enterprise, en todos los <em>gates</em>)</td>
+
 <td>Comité de IA</td>
 <td><a href="../plantillas/P03_SEVEN-G_Registro_de_asignacion_de_roles.html" title="Plantilla P03 &#183; Registro de asignaci&#243;n de roles">P03</a>; <a href="../plantillas/P41_SEVEN-G_Declaraciones_de_independencia_y_conflictos_de_interes.html" title="Plantilla P41 &#183; Declaraciones de independencia y conflictos de inter&#233;s">P41</a>; 01 §8</td>
 <td>D1.08</td>
@@ -936,9 +940,9 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>1</td>
 </tr>
 <tr id="cod-hi-10">
-<td><strong>HI-10</strong></td>
+<td><strong>Responsable de riesgos de IA independiente y <strong>registro de riesgos con la escala del 33</strong> desde la fase 3</strong> <span class="codigo">(HI-10)</span></td>
 <td>E3</td>
-<td>Responsable de riesgos de IA independiente y <strong>registro de riesgos con la escala del 33</strong> desde la fase 3</td>
+
 <td>Comité de IA; riesgos</td>
 <td>33; <a href="../plantillas/P12_SEVEN-G_Matriz_y_registro_de_riesgos.html" title="Plantilla P12 &#183; Matriz y registro de riesgos">P12</a>; <a href="../plantillas/P13_SEVEN-G_Plan_de_mitigacion_y_contingencia.html" title="Plantilla P13 &#183; Plan de mitigaci&#243;n y contingencia">P13</a>; <a href="../../../herramientas/T01_registro_iniciativas/registro.html#/riesgos" title="Herramienta T06 &#183; Matriz y registro de riesgos">T06</a></td>
 <td>D6.04; D6.06</td>
@@ -951,9 +955,9 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>1</td>
 </tr>
 <tr id="cod-hi-11">
-<td><strong>HI-11</strong></td>
+<td><strong>Ciclo de vida con <em>gates</em> registrados para toda iniciativa nueva</strong> <span class="codigo">(HI-11)</span></td>
 <td>E3</td>
-<td>Ciclo de vida con <em>gates</em> registrados para toda iniciativa nueva</td>
+
 <td>Oficina de IA; decisores de <em>gate</em></td>
 <td>20; 21; 22; <a href="../plantillas/P29_SEVEN-G_Registro_de_decision_de_gate.html" title="Plantilla P29 &#183; Registro de decisi&#243;n de gate">P29</a>; <a href="../../../herramientas/T01_registro_iniciativas/registro.html#/gates" title="Herramienta T03 &#183; Gestor de gates">T03</a></td>
 <td>D2.06</td>
@@ -966,9 +970,9 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>1</td>
 </tr>
 <tr id="cod-hi-12">
-<td><strong>HI-12</strong></td>
+<td><strong><strong>Regularización</strong> de lo que está en producción (revisión equivalente a G7, primero lo de más riesgo)</strong> <span class="codigo">(HI-12)</span></td>
 <td>E3</td>
-<td><strong>Regularización</strong> de lo que está en producción (revisión equivalente a G7, primero lo de más riesgo)</td>
+
 <td>Responsables de operación; auditor de IA</td>
 <td>90 §5; 14 §11; <a href="../plantillas/P30_SEVEN-G_Decision_de_escalado_o_retirada.html" title="Plantilla P30 &#183; Decisi&#243;n de escalado o retirada">P30</a></td>
 <td>D4.07</td>
@@ -981,9 +985,9 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>1</td>
 </tr>
 <tr id="cod-hi-13">
-<td><strong>HI-13</strong></td>
+<td><strong>Decisión de <strong>parar o escalar</strong> cada piloto: G3 como puerta de parada y embudo en <a href="../../../herramientas/T01_registro_iniciativas/registro.html" title="Herramienta T01 &#183; Registro de iniciativas">T01</a></strong> <span class="codigo">(HI-13)</span></td>
 <td>E2</td>
-<td>Decisión de <strong>parar o escalar</strong> cada piloto: G3 como puerta de parada y embudo en <a href="../../../herramientas/T01_registro_iniciativas/registro.html" title="Herramienta T01 &#183; Registro de iniciativas">T01</a></td>
+
 <td>Comité de IA</td>
 <td>21 §6 (G3); <a href="../../../herramientas/T01_registro_iniciativas/registro.html" title="Herramienta T01 &#183; Registro de iniciativas">T01</a></td>
 <td>D2.04; D2.09</td>
@@ -996,9 +1000,9 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>2</td>
 </tr>
 <tr id="cod-hi-14">
-<td><strong>HI-14</strong></td>
+<td><strong>Reglas de medición del valor, línea base e hipótesis falsable en cada iniciativa desde G2</strong> <span class="codigo">(HI-14)</span></td>
 <td>E4</td>
-<td>Reglas de medición del valor, línea base e hipótesis falsable en cada iniciativa desde G2</td>
+
 <td>Control de gestión; responsables de negocio</td>
 <td>40; <a href="../plantillas/P08_SEVEN-G_Lienzo_de_hipotesis_de_valor.html" title="Plantilla P08 &#183; Lienzo de hip&#243;tesis de valor">P08</a>; <a href="../plantillas/P09_SEVEN-G_Linea_base.html" title="Plantilla P09 &#183; L&#237;nea base">P09</a>; <a href="../../../herramientas/T11_calculadora_valor/calculadora.html" title="Herramienta T11 &#183; Lienzo y calculadora de hip&#243;tesis de valor">T11</a></td>
 <td>D2.08; D7.03; D7.05</td>
@@ -1011,9 +1015,9 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>2</td>
 </tr>
 <tr id="cod-hi-15">
-<td><strong>HI-15</strong></td>
+<td><strong><strong>Panel de la dirección</strong> (informe periódico) y <strong>panel del consejo</strong></strong> <span class="codigo">(HI-15)</span></td>
 <td>E4</td>
-<td><strong>Panel de la dirección</strong> (informe periódico) y <strong>panel del consejo</strong></td>
+
 <td>Oficina de IA; comisión delegada</td>
 <td>60; <a href="../plantillas/P67_SEVEN-G_Paquete_trimestral_para_el_consejo.html" title="Plantilla P67 &#183; Paquete trimestral para el consejo">P67</a>; <a href="../../../herramientas/T17_panel_consejo/index.html" title="Herramienta T17 &#183; Panel de IA para el consejo">T17</a></td>
 <td>D7.04 (dirección); D7.06 (consejo); D1.09</td>
@@ -1026,9 +1030,9 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>1</td>
 </tr>
 <tr id="cod-hi-16">
-<td><strong>HI-16</strong></td>
+<td><strong>Seguridad de agentes y exigencia a proveedores N1–N3</strong> <span class="codigo">(HI-16)</span></td>
 <td>E3</td>
-<td>Seguridad de agentes y exigencia a proveedores N1–N3</td>
+
 <td>Seguridad; compras; riesgos</td>
 <td>35; 36; <a href="../plantillas/P14_SEVEN-G_Evaluacion_de_proveedor_de_IA.html" title="Plantilla P14 &#183; Evaluaci&#243;n de proveedor de IA">P14</a>; <a href="../plantillas/P18_SEVEN-G_Diseno_de_seguridad.html" title="Plantilla P18 &#183; Dise&#241;o de seguridad (incluye agentes)">P18</a>; <a href="../plantillas/P55_SEVEN-G_Cuestionario_de_diligencia_debida_a_proveedores_de_IA.html" title="Plantilla P55 &#183; Cuestionario de diligencia debida a proveedores de IA">P55</a></td>
 <td>D6.08</td>
@@ -1041,9 +1045,9 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>1</td>
 </tr>
 <tr id="cod-hi-17">
-<td><strong>HI-17</strong></td>
+<td><strong>Operación bajo control: manual, monitorización y deriva, reversión probada, R6 vigente</strong> <span class="codigo">(HI-17)</span></td>
 <td>E4</td>
-<td>Operación bajo control: manual, monitorización y deriva, reversión probada, R6 vigente</td>
+
 <td>Responsables de operación</td>
 <td>52; <a href="../plantillas/P24_SEVEN-G_Manual_de_operacion.html" title="Plantilla P24 &#183; Manual de operaci&#243;n">P24</a>; <a href="../plantillas/P25_SEVEN-G_Configuracion_de_monitorizacion_y_alertas.html" title="Plantilla P25 &#183; Configuraci&#243;n de monitorizaci&#243;n y alertas">P25</a>; <a href="../plantillas/P65_SEVEN-G_Paquete_de_revision_de_continuidad_R6.html" title="Plantilla P65 &#183; Paquete de revisi&#243;n de continuidad R6">P65</a></td>
 <td>D4.05; D4.06; D4.07</td>
@@ -1056,9 +1060,9 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>1</td>
 </tr>
 <tr id="cod-hi-18">
-<td><strong>HI-18</strong></td>
+<td><strong>No conformidades e incidentes con el proceso de 01 §12</strong> <span class="codigo">(HI-18)</span></td>
 <td>E4</td>
-<td>No conformidades e incidentes con el proceso de 01 §12</td>
+
 <td>Riesgos; auditoría</td>
 <td>37; <a href="../plantillas/P50_SEVEN-G_Registro_de_no_conformidades.html" title="Plantilla P50 &#183; Registro de no conformidades">P50</a>; <a href="../plantillas/P26_SEVEN-G_Plan_de_respuesta_a_incidentes.html" title="Plantilla P26 &#183; Plan de respuesta a incidentes">P26</a></td>
 <td>D6.07</td>
@@ -1071,9 +1075,9 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>1</td>
 </tr>
 <tr id="cod-hi-19">
-<td><strong>HI-19</strong></td>
+<td><strong>Adopción y personas: plan de adopción, capacidad liberada separada del ahorro e información a la representación</strong> <span class="codigo">(HI-19)</span></td>
 <td>E4</td>
-<td>Adopción y personas: plan de adopción, capacidad liberada separada del ahorro e información a la representación</td>
+
 <td>Personas; responsables de negocio</td>
 <td>23; 50; <a href="../plantillas/P20_SEVEN-G_Plan_de_adopcion_y_capacidad.html" title="Plantilla P20 &#183; Plan de adopci&#243;n y capacidad">P20</a>; <a href="../plantillas/P20_SEVEN-G_Plan_de_adopcion_y_capacidad.html" title="Herramienta T20 &#183; Plan de adopci&#243;n y capacidad">T20</a></td>
 <td>D5.07; D5.08; D5.09</td>
@@ -1086,9 +1090,9 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>1</td>
 </tr>
 <tr id="cod-hi-20">
-<td><strong>HI-20</strong></td>
+<td><strong>Datos y conocimiento con propietario, base legal y vigencia (también las fuentes de la IA generativa)</strong> <span class="codigo">(HI-20)</span></td>
 <td>E3</td>
-<td>Datos y conocimiento con propietario, base legal y vigencia (también las fuentes de la IA generativa)</td>
+
 <td>Propietarios de datos; protección de datos</td>
 <td>51; <a href="../plantillas/P64_SEVEN-G_Ficha_de_conjunto_de_datos_e_inventario_de_fuentes_de_conocimiento.html" title="Plantilla P64 &#183; Ficha de conjunto de datos e inventario de fuentes de conocimiento">P64</a></td>
 <td>D3.03; D3.05; D3.08</td>
@@ -1101,9 +1105,9 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>1</td>
 </tr>
 <tr id="cod-hi-21">
-<td><strong>HI-21</strong></td>
+<td><strong>Primera auditoría del marco por la tercera línea o un externo</strong> <span class="codigo">(HI-21)</span></td>
 <td>E5</td>
-<td>Primera auditoría del marco por la tercera línea o un externo</td>
+
 <td>Auditoría interna</td>
 <td>38; <a href="../plantillas/P58_SEVEN-G_Plan_anual_de_auditoria_de_IA.html" title="Plantilla P58 &#183; Plan anual de auditor&#237;a de IA">P58</a>–<a href="../plantillas/P61_SEVEN-G_Declaracion_de_aplicacion_de_SEVEN-G.html" title="Plantilla P61 &#183; Declaraci&#243;n de aplicaci&#243;n de SEVEN-G">P61</a></td>
 <td>D6.10</td>
@@ -1116,9 +1120,9 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>3</td>
 </tr>
 <tr id="cod-hi-22">
-<td><strong>HI-22</strong></td>
+<td><strong>C5: madurez recalculada con el mismo cuestionario, índice, tesis revisada y declaración de aplicación</strong> <span class="codigo">(HI-22)</span></td>
 <td>E5</td>
-<td>C5: madurez recalculada con el mismo cuestionario, índice, tesis revisada y declaración de aplicación</td>
+
 <td>Comité de IA; consejo</td>
 <td><a href="../plantillas/P37_SEVEN-G_Revision_anual_C5.html" title="Plantilla P37 &#183; Revisi&#243;n anual C5">P37</a>; <a href="../plantillas/P61_SEVEN-G_Declaracion_de_aplicacion_de_SEVEN-G.html" title="Plantilla P61 &#183; Declaraci&#243;n de aplicaci&#243;n de SEVEN-G">P61</a>; 01 §14</td>
 <td>Preguntas (§14)</td>
@@ -1408,31 +1412,31 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>Puntos de partida y recorrido de implantación: §1 objeto; §2 arquetipos, regla, modificadores y cuestionario; §3 etapas; §4 catálogo de hitos con reglas; §5 roles por etapa; §6 ejemplos ficticios; §7 relación con 90, 11, 12 y 94; herramientas; documentos relacionados; versiones. Directiva <code>esencial: recomendado</code>. «Por qué importa» en cada concepto nuevo</td>
 </tr>
 <tr>
-<td><strong>90</strong></td>
+<td><strong>Gu&#237;a de implantaci&#243;n de SEVEN-G</strong> <span class="codigo">(90)</span></td>
 <td>§1 y §2: remisión al 96 para el orden según el punto de partida; §5, regularización: remisión a HI-12; §10 herramientas: <a href="../../../herramientas/T23_recorrido_implantacion/recorrido.html" title="Herramienta T23 &#183; Recorrido de implantaci&#243;n">T23</a></td>
 </tr>
 <tr>
-<td><strong>11</strong></td>
+<td><strong>Modelo de madurez</strong> <span class="codigo">(11)</span></td>
 <td>§1.1 nota; <strong>§7.6 Lectura en tres lentes</strong> (HT, mínimo exigible, alertas); §8 remisión; §10: <a href="../../../herramientas/T15_diagnostico_madurez/madurez.html" title="Herramienta T15 &#183; Diagn&#243;stico de madurez">T15</a> vista tres lentes</td>
 </tr>
 <tr>
-<td><strong>12</strong></td>
+<td><strong>&#205;ndice de transformaci&#243;n</strong> <span class="codigo">(12)</span></td>
 <td><strong>§3.7 Alcance del impacto IM1–IM4</strong>, derivado de IT-P1 a IT-P4</td>
 </tr>
 <tr>
-<td><strong>02</strong></td>
+<td><strong>Glosario y convenciones de SEVEN-G</strong> <span class="codigo">(02)</span></td>
 <td>Glosario: arquetipo de punto de partida (PP-A…F), modificador (MP1–MP5), hito de implantación (HI-nn), huella tecnológica (HT0–HT5), alcance del impacto (IM1–IM4), alertas; códigos en la tabla de §6; <code>guia_traduccion_en.md</code>: <em>starting point archetype</em>, <em>implementation milestone</em>, <em>technology footprint</em>, <em>impact reach</em></td>
 </tr>
 <tr>
-<td><strong>03</strong></td>
+<td><strong>Herramientas de SEVEN-G y registro de iniciativas</strong> <span class="codigo">(03)</span></td>
 <td>Catálogo: <strong><a href="../../../herramientas/T23_recorrido_implantacion/recorrido.html" title="Herramienta T23 &#183; Recorrido de implantaci&#243;n">T23</a></strong> con su estado; §4.1 mapa de datos (<a href="../../../herramientas/T23_recorrido_implantacion/recorrido.html" title="Herramienta T23 &#183; Recorrido de implantaci&#243;n">T23</a> lee <a href="../../../herramientas/T01_registro_iniciativas/registro.html" title="Herramienta T01 &#183; Registro de iniciativas">T01</a> y <a href="../../../herramientas/T15_diagnostico_madurez/madurez.html" title="Herramienta T15 &#183; Diagn&#243;stico de madurez">T15</a>; <a href="../../../herramientas/T15_diagnostico_madurez/madurez.html" title="Herramienta T15 &#183; Diagn&#243;stico de madurez">T15</a> escribe <code>lentes</code>); <code>mapa_datos.json</code></td>
 </tr>
 <tr>
-<td><strong>94</strong></td>
+<td><strong>Matriz de obligatoriedad y lectura por capas</strong> <span class="codigo">(94)</span></td>
 <td>§6: 96 como Recomendado; §7: <a href="../../../herramientas/T23_recorrido_implantacion/recorrido.html" title="Herramienta T23 &#183; Recorrido de implantaci&#243;n">T23</a> como Recomendado; disparadores si procede</td>
 </tr>
 <tr>
-<td><strong>00</strong></td>
+<td><strong>Qu&#233; es SEVEN-G y para qu&#233; sirve</strong> <span class="codigo">(00)</span></td>
 <td>§10 fila del 96; inicio rápido</td>
 </tr>
 <tr id="cod-curso-m09">
@@ -1457,7 +1461,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </ul>
 <h2 id="fuentes-externas">Fuentes externas citadas</h2><p class="fuentes-nota">Enlaces a la fuente oficial o primaria, comprobados antes de publicar. Verifique siempre la versión vigente en la fecha de uso.</p><ul class="fuentes-externas"><li><a href="https://eur-lex.europa.eu/eli/dir/2022/2555/oj/spa" target="_blank" rel="noopener">Directiva (UE) 2022/2555 del Parlamento Europeo y del Consejo, de 14 de diciembre de 2022, relativa a las medidas destinadas a garantizar un elevado nivel com&#250;n de ciberseguridad en toda la Uni&#243;n (Directiva SRI 2 / NIS2)</a><span> · Parlamento Europeo y Consejo de la UE · 14-12-2022</span></li><li><a href="https://eur-lex.europa.eu/eli/reg/2022/2554/oj/spa" target="_blank" rel="noopener">Reglamento (UE) 2022/2554 del Parlamento Europeo y del Consejo, de 14 de diciembre de 2022, sobre la resiliencia operativa digital del sector financiero (DORA)</a><span> · Parlamento Europeo y Consejo de la UE · 14-12-2022</span></li><li><a href="https://www.iso.org/standard/42001" target="_blank" rel="noopener">ISO/IEC 42001:2023 Tecnolog&#237;a de la informaci&#243;n — Inteligencia artificial — Sistema de gesti&#243;n</a><span> · ISO/IEC (JTC 1/SC 42) · 18-12-2023</span></li></ul>
 </main>
-<footer class="pie"><div><span>© 2026 Fernando García Varela · Metodolog&#237;a SEVEN-G</span><span>Generado el 28-09-2026</span></div><p class="pie-ia">Contenido generado y maquetado con apoyo de IA bajo supervisi&#243;n editorial del autor.</p></footer>
+<footer class="pie"><div><span>© 2026 Fernando García Varela · Metodolog&#237;a SEVEN-G</span><span>Generado el 12-10-2026</span></div><p class="pie-ia">Contenido generado y maquetado con apoyo de IA bajo supervisi&#243;n editorial del autor.</p></footer>
 <script src="../codigos.js" defer></script>
 
 <script>

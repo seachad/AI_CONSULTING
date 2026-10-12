@@ -392,6 +392,10 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 /* Ilustraciones en imagen (p. ej., SPAD): ocupan el ancho del lienzo y conservan su proporción */
 .g-lienzo img { display: block; width: 100%; height: auto; border: 1px solid var(--regla-2); }
 .ilustracion .g-lienzo img[src*="ilusion_de_velocidad"] { max-width: 560px; margin: 0 auto; }
+/* Nombre primero, código después (D144): el código entre paréntesis tras el nombre, en tablas y títulos */
+.codigo { font-family: var(--mono, 'Courier New', monospace); font-size: .88em; color: var(--tinta-2); white-space: nowrap; font-weight: 400; }
+h2 .codigo, h3 .codigo { font-weight: 400; }
+
 @page { @bottom-left { content: "SEVEN-G · Benefits realisation"; font: 8.5pt "Libre Franklin", "Segoe UI", sans-serif; color: #74675e; } }
 </style>
 </head>
@@ -513,7 +517,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </thead>
 <tbody>
 <tr id="cod-g2-hypothesis">
-<td><strong>G2 · Hypothesis</strong></td>
+<td><strong>Hypothesis</strong> <span class="codigo">(G2)</span></td>
 <td>Expected value with formula, baseline and attribution method.</td>
 <td>Estimated or declared</td>
 <td>AI Product Owner with the business owner</td>
@@ -521,7 +525,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td><a href="plantillas/P08_SEVEN-G_Lienzo_de_hipotesis_de_valor.html" title="Template P08 &#183; Value hypothesis canvas">P08</a>, <a href="plantillas/P09_SEVEN-G_Linea_base.html" title="Template P09 &#183; Baseline">P09</a></td>
 </tr>
 <tr id="cod-g3-feasibility">
-<td><strong>G3 · Feasibility</strong></td>
+<td><strong>Feasibility</strong> <span class="codigo">(G3)</span></td>
 <td>Expected value revised with full costs and a draft realisation plan.</td>
 <td>Estimated or declared</td>
 <td>AI Product Owner; management control reviews the calculation</td>
@@ -529,7 +533,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td><a href="plantillas/P10_SEVEN-G_Evaluacion_de_viabilidad.html" title="Template P10 &#183; Feasibility assessment">P10</a>, <a href="../../herramientas/T11_calculadora_valor/calculadora.html" title="Tool T11 &#183; Value hypothesis canvas and calculator">T11</a>, <a href="../../herramientas/T11_calculadora_valor/calculadora.html#/costes" title="Tool T13 &#183; Cost calculator per use case">T13</a></td>
 </tr>
 <tr id="cod-g4-design">
-<td><strong>G4 · Design</strong></td>
+<td><strong>Design</strong> <span class="codigo">(G4)</span></td>
 <td>Full realisation plan, including the materialisation plan.</td>
 <td>—</td>
 <td>Business owner</td>
@@ -537,7 +541,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>Realisation plan (section 4)</td>
 </tr>
 <tr id="cod-g5-go-live">
-<td><strong>G5 · Go-live</strong></td>
+<td><strong>Go-live</strong> <span class="codigo">(G5)</span></td>
 <td>Value measured in the pilot with the attribution method.</td>
 <td>Declared; validated if management control verifies the pilot period</td>
 <td>AI Product Owner</td>
@@ -545,7 +549,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td><a href="plantillas/P22_SEVEN-G_Resultados_de_validacion_y_del_piloto.html" title="Template P22 &#183; Validation and pilot results">P22</a></td>
 </tr>
 <tr id="cod-phase-6-each-period">
-<td><strong>Phase 6 · Each period</strong></td>
+<td><strong>Each period</strong> <span class="codigo">(phase 6)</span></td>
 <td>Realised value for the period.</td>
 <td>Declared → validated</td>
 <td>Business owner</td>
@@ -561,7 +565,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>Review report (section 8)</td>
 </tr>
 <tr id="cod-g7-scale-or-retire">
-<td><strong>G7 · Scale or retire</strong></td>
+<td><strong>Scale or retire</strong> <span class="codigo">(G7)</span></td>
 <td>Validated realised value and actual versus declared ambition.</td>
 <td>Validated to demonstrate criteria</td>
 <td>AI Product Owner</td>
@@ -809,17 +813,17 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </thead>
 <tbody>
 <tr>
-<td>G3</td>
+<td><strong>Feasibility</strong> <span class="codigo">(G3)</span></td>
 <td>Draft with realisation curve, owners and overlaps identified.</td>
 <td>Business owner; calculation reviewed by management control.</td>
 </tr>
 <tr>
-<td>G4</td>
+<td><strong>Design</strong> <span class="codigo">(G4)</span></td>
 <td>Complete, with enabling changes and materialisation plan.</td>
 <td>Business owner and sponsor.</td>
 </tr>
 <tr>
-<td>G5</td>
+<td><strong>Go-live</strong> <span class="codigo">(G5)</span></td>
 <td>In force, adjusted with the pilot results without lowering the approved target without authorisation.</td>
 <td>Business owner and sponsor; verified at G5.</td>
 </tr>
@@ -1607,75 +1611,75 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <div class="tabla"><table>
 <thead>
 <tr>
-<th>Code</th>
 <th>Name</th>
+
 <th>Use in this document</th>
 </tr>
 </thead>
 <tbody>
 <tr id="cod-t12">
-<td><strong><a href="plantillas/P28_SEVEN-G_Seguimiento_de_realizacion_de_valor.html" title="Tool T12 &#183; Value realisation tracking">T12</a></strong></td>
-<td>Value realisation tracking</td>
+<td><strong>Value realisation tracking</strong> <span class="codigo">(<a href="plantillas/P28_SEVEN-G_Seguimiento_de_realizacion_de_valor.html" title="Tool T12 &#183; Value realisation tracking">T12</a>)</span></td>
+
 <td>Realisation plan (<code>plan_realizacion</code> block of <a href="../../herramientas/T01_registro_iniciativas/registro.html" title="Tool T01 &#183; Initiative register">T01</a>), recording by period, statuses, realisation, variances.</td>
 </tr>
 <tr id="cod-t01">
-<td><strong><a href="../../herramientas/T01_registro_iniciativas/registro.html" title="Tool T01 &#183; Initiative register">T01</a></strong></td>
-<td>Initiative register</td>
+<td><strong>Initiative register</strong> <span class="codigo">(<a href="../../herramientas/T01_registro_iniciativas/registro.html" title="Tool T01 &#183; Initiative register">T01</a>)</span></td>
+
 <td>Owners, review events, R6 and G7 decisions; realisation plan with curve, tranches and realised value by period.</td>
 </tr>
 <tr id="cod-t13">
-<td><strong><a href="../../herramientas/T11_calculadora_valor/calculadora.html#/costes" title="Tool T13 &#183; Cost calculator per use case">T13</a></strong></td>
-<td>Cost calculator per use case</td>
+<td><strong>Cost calculator per use case</strong> <span class="codigo">(<a href="../../herramientas/T11_calculadora_valor/calculadora.html#/costes" title="Tool T13 &#183; Cost calculator per use case">T13</a>)</span></td>
+
 <td>Actual recurring cost.</td>
 </tr>
 <tr id="cod-t17">
-<td><strong><a href="../../herramientas/T17_panel_consejo/index.html" title="Tool T17 &#183; Board AI dashboard">T17</a></strong></td>
-<td>Board AI dashboard</td>
+<td><strong>Board AI dashboard</strong> <span class="codigo">(<a href="../../herramientas/T17_panel_consejo/index.html" title="Tool T17 &#183; Board AI dashboard">T17</a>)</span></td>
+
 <td>Consolidation and presentation; &quot;Realisation plan: curve and tranches&quot; card.</td>
 </tr>
 <tr id="cod-t20">
-<td><strong><a href="plantillas/P20_SEVEN-G_Plan_de_adopcion_y_capacidad.html" title="Tool T20 &#183; Adoption and capacity plan">T20</a></strong></td>
-<td>Adoption and capacity plan</td>
+<td><strong>Adoption and capacity plan</strong> <span class="codigo">(<a href="plantillas/P20_SEVEN-G_Plan_de_adopcion_y_capacidad.html" title="Tool T20 &#183; Adoption and capacity plan">T20</a>)</span></td>
+
 <td>Materialisation and reassignment of capacity.</td>
 </tr>
 <tr id="cod-t22">
-<td><strong><a href="plantillas/P30_SEVEN-G_Decision_de_escalado_o_retirada.html" title="Tool T22 &#183; Retirement manager">T22</a></strong></td>
-<td>Retirement manager</td>
+<td><strong>Retirement manager</strong> <span class="codigo">(<a href="plantillas/P30_SEVEN-G_Decision_de_escalado_o_retirada.html" title="Tool T22 &#183; Retirement manager">T22</a>)</span></td>
+
 <td>Final value and retirement.</td>
 </tr>
 <tr>
-<td><strong><a href="plantillas/P08_SEVEN-G_Lienzo_de_hipotesis_de_valor.html" title="Template P08 &#183; Value hypothesis canvas">P08</a> · <a href="plantillas/P09_SEVEN-G_Linea_base.html" title="Template P09 &#183; Baseline">P09</a></strong></td>
-<td>Value hypothesis canvas · Baseline</td>
+<td><strong>Value hypothesis canvas · Baseline</strong> <span class="codigo">(<a href="plantillas/P08_SEVEN-G_Lienzo_de_hipotesis_de_valor.html" title="Template P08 &#183; Value hypothesis canvas">P08</a> · <a href="plantillas/P09_SEVEN-G_Linea_base.html" title="Template P09 &#183; Baseline">P09</a>)</span></td>
+
 <td>Reference for the plan.</td>
 </tr>
 <tr id="cod-p20">
-<td><strong><a href="plantillas/P20_SEVEN-G_Plan_de_adopcion_y_capacidad.html" title="Template P20 &#183; Adoption and capacity plan">P20</a></strong></td>
-<td>Adoption and capacity plan</td>
+<td><strong>Adoption and capacity plan</strong> <span class="codigo">(<a href="plantillas/P20_SEVEN-G_Plan_de_adopcion_y_capacidad.html" title="Template P20 &#183; Adoption and capacity plan">P20</a>)</span></td>
+
 <td>Enabling changes and destination of capacity.</td>
 </tr>
 <tr id="cod-p22">
-<td><strong><a href="plantillas/P22_SEVEN-G_Resultados_de_validacion_y_del_piloto.html" title="Template P22 &#183; Validation and pilot results">P22</a></strong></td>
-<td>Validation and pilot results</td>
+<td><strong>Validation and pilot results</strong> <span class="codigo">(<a href="plantillas/P22_SEVEN-G_Resultados_de_validacion_y_del_piloto.html" title="Template P22 &#183; Validation and pilot results">P22</a>)</span></td>
+
 <td>Value measured at G5.</td>
 </tr>
 <tr id="cod-p28">
-<td><strong><a href="plantillas/P28_SEVEN-G_Seguimiento_de_realizacion_de_valor.html" title="Template P28 &#183; Value realisation tracking">P28</a></strong></td>
-<td>Value realisation tracking</td>
+<td><strong>Value realisation tracking</strong> <span class="codigo">(<a href="plantillas/P28_SEVEN-G_Seguimiento_de_realizacion_de_valor.html" title="Template P28 &#183; Value realisation tracking">P28</a>)</span></td>
+
 <td>Tracking by period.</td>
 </tr>
 <tr id="cod-p62">
-<td><strong><a href="plantillas/P62_SEVEN-G_Plan_de_realizacion_de_beneficios.html" title="Template P62 &#183; Benefits realisation plan">P62</a></strong></td>
-<td>Benefits realisation plan</td>
+<td><strong>Benefits realisation plan</strong> <span class="codigo">(<a href="plantillas/P62_SEVEN-G_Plan_de_realizacion_de_beneficios.html" title="Template P62 &#183; Benefits realisation plan">P62</a>)</span></td>
+
 <td>Realisation plan: curve, owners and enablers (section 4).</td>
 </tr>
 <tr id="cod-p29">
-<td><strong><a href="plantillas/P29_SEVEN-G_Registro_de_decision_de_gate.html" title="Template P29 &#183; Gate decision record">P29</a></strong></td>
-<td><em>Gate</em> decision record</td>
+<td><strong><em>Gate</em> decision record</strong> <span class="codigo">(<a href="plantillas/P29_SEVEN-G_Registro_de_decision_de_gate.html" title="Template P29 &#183; Gate decision record">P29</a>)</span></td>
+
 <td>R6 and G7 decisions.</td>
 </tr>
 <tr id="cod-p30">
-<td><strong><a href="plantillas/P30_SEVEN-G_Decision_de_escalado_o_retirada.html" title="Template P30 &#183; Scale or retire decision">P30</a></strong></td>
-<td>Scaling or retirement decision</td>
+<td><strong>Scaling or retirement decision</strong> <span class="codigo">(<a href="plantillas/P30_SEVEN-G_Decision_de_escalado_o_retirada.html" title="Template P30 &#183; Scale or retire decision">P30</a>)</span></td>
+
 <td>Value evidence at G7.</td>
 </tr>
 </tbody>
@@ -1761,7 +1765,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </table></div>
 
 </main>
-<footer class="pie"><div><span>© 2026 Fernando García Varela · SEVEN-G methodology</span><span>Generated on 28-09-2026</span></div><p class="pie-ia">Content generated and typeset with AI support under the author&#39;s editorial supervision.</p></footer>
+<footer class="pie"><div><span>© 2026 Fernando García Varela · SEVEN-G methodology</span><span>Generated on 12-10-2026</span></div><p class="pie-ia">Content generated and typeset with AI support under the author&#39;s editorial supervision.</p></footer>
 <script src="codigos.js" defer></script>
 
 <script>
