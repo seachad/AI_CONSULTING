@@ -434,3 +434,7 @@ Reglas para esta pantalla, que valen para todo lo que se libere en abierto:
 3. **Sin cuenta, sin envío, datos en el navegador** (D103). Se imprime o se exporta JSON.
 4. **Sin vocabulario interno en la pantalla**: «¿Los negocios se gestionan con cuentas de resultados separadas?» en lugar de «P&L por unidad». Los códigos (PP, EM, HI) aparecen en la tarjeta de resultado, enlazados (D99), no en las preguntas.
 5. Lo que no se sabe se responde «no se sabe» y cuenta como el valor más exigente (regla de 96 §2.4).
+
+### 10.6 Prototipo
+
+`_trabajo/20261012_Prototipo_cuestionario_de_entrada_T23.html` (una página, sin dependencias; publicado también como artifact privado) implementa el cuestionario de §10.2 con las reglas de asignación del 96 §2.2, los modificadores MP1–MP6, las prioridades de 96 §4.2 con los ajustes de §10.3, los objetivos de 11 §8 y los mínimos por huella de `lentes.json`. Q07 gana la opción «sector público», sin la cual EM-7 no se puede asignar. El nivel actual de madurez se introduce a mano si existe un diagnóstico de T15; sin él, la tarjeta dice «sin diagnóstico» y no estima. Es la referencia funcional para implantarlo en T23 (`recorrido.json` + `build_recorrido.ps1`), con la ayuda «?» de D123 y los dos idiomas.

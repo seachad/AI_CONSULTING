@@ -1,0 +1,366 @@
+<title>Dónde está su empresa</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400;8..60,600;8..60,700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: cuestionario a la izquierda (tres bloques, respuestas cerradas como fichas), tarjeta de resultado pegajosa a la derecha; en móvil, apilado. Papel salmón del sitio SEVEN-G. */
+:root{
+  --papel:#fff1e5; --papel-2:#f9e6d6; --tinta:#1a1817; --tinta-2:#4d4845; --tinta-3:#7c746f;
+  --regla:#dcc8b8; --claret:#990f3d; --oxford:#0f5499; --teal:#0d7680; --velvet:#593380; --ok:#0d7680; --aviso:#b4601a; --mal:#990f3d;
+  --sel-bg:#1a1817; --sel-fg:#fff1e5; --okbg:#d9ebe0; --avbg:#f6e3c9; --malbg:#f3d3da;
+  --display:"Source Serif 4",Georgia,serif; --body:"IBM Plex Sans","Helvetica Neue",Arial,sans-serif; --mono:"IBM Plex Mono",Consolas,monospace;
+}
+@media (prefers-color-scheme: dark){ :root:not([data-theme="light"]){
+  --papel:#1a1817; --papel-2:#262220; --tinta:#f2e9e1; --tinta-2:#cfc3b8; --tinta-3:#9b8f86; --regla:#3f3833;
+  --claret:#ff7a9b; --oxford:#7fb0e6; --teal:#5fc1c8; --velvet:#b89be0; --ok:#5fc1c8; --aviso:#f0a860; --mal:#ff7a9b;
+  --sel-bg:#f2e9e1; --sel-fg:#1a1817; --okbg:#133c40; --avbg:#4a3418; --malbg:#4a1f2c; color-scheme:dark } }
+:root[data-theme="dark"]{
+  --papel:#1a1817; --papel-2:#262220; --tinta:#f2e9e1; --tinta-2:#cfc3b8; --tinta-3:#9b8f86; --regla:#3f3833;
+  --claret:#ff7a9b; --oxford:#7fb0e6; --teal:#5fc1c8; --velvet:#b89be0; --ok:#5fc1c8; --aviso:#f0a860; --mal:#ff7a9b;
+  --sel-bg:#f2e9e1; --sel-fg:#1a1817; --okbg:#133c40; --avbg:#4a3418; --malbg:#4a1f2c; color-scheme:dark }
+*{box-sizing:border-box}
+body{background:var(--papel);color:var(--tinta);font-family:var(--body);font-size:15px;line-height:1.5;margin:0}
+.wrap{max-width:1160px;margin:0 auto;padding-inline:20px;padding-block:0 60px}
+header{padding-block:26px 14px;border-bottom:3px double var(--regla)}
+.kicker{font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--claret);font-weight:600}
+h1{font-family:var(--display);font-weight:700;font-size:clamp(28px,4vw,40px);line-height:1.08;margin:6px 0 8px;text-wrap:balance;letter-spacing:-.01em}
+.sub{font-family:var(--display);font-size:17px;color:var(--tinta-2);max-width:60ch;margin:0}
+.meta{display:flex;gap:16px;flex-wrap:wrap;font-size:13px;color:var(--tinta-3);margin-top:10px}
+.cols{display:grid;grid-template-columns:minmax(0,1fr) 380px;gap:28px;align-items:start;margin-top:18px}
+@media (max-width:900px){ .cols{grid-template-columns:1fr} .res{position:static!important} }
+.bloque{margin-bottom:28px}
+.bloque h2{font-family:var(--display);font-size:22px;margin:0 0 2px}
+.bloque h2 .n{color:var(--claret);font-family:var(--mono);font-size:14px;margin-right:8px;vertical-align:middle}
+.bloque .para{font-size:13px;color:var(--tinta-3);margin:0 0 12px}
+.q{padding:12px 0;border-top:1px solid var(--regla)}
+.q .t{display:flex;gap:10px;align-items:baseline;margin-bottom:8px}
+.q .t .c{font-family:var(--mono);font-size:12px;color:var(--oxford);min-width:34px}
+.q .t .p{font-weight:600}
+.q .h{font-size:12.5px;color:var(--tinta-3);margin:-4px 0 8px 44px}
+.ops{display:flex;flex-wrap:wrap;gap:6px;margin-left:44px}
+@media (max-width:560px){ .ops,.q .h{margin-left:0} }
+.op{position:relative}
+.op input{position:absolute;opacity:0;width:1px;height:1px}
+.op label{display:inline-block;padding:6px 11px;border:1px solid var(--regla);border-radius:3px;background:var(--papel);font-size:13.5px;cursor:pointer;line-height:1.3;user-select:none}
+.op input:checked+label{background:var(--sel-bg);color:var(--sel-fg);border-color:var(--sel-bg)}
+.op input:focus-visible+label{outline:2px solid var(--oxford);outline-offset:2px}
+.mad{display:grid;grid-template-columns:repeat(auto-fill,minmax(130px,1fr));gap:8px;margin-left:44px}
+@media (max-width:560px){ .mad{margin-left:0} }
+.mad label{font-size:12.5px;display:flex;flex-direction:column;gap:3px;color:var(--tinta-2)}
+.mad select{font:inherit;font-size:13.5px;padding:5px 6px;border:1px solid var(--regla);border-radius:3px;background:var(--papel);color:var(--tinta)}
+.res{position:sticky;top:calc(env(safe-area-inset-top,0px) + 12px);border:1px solid var(--regla);background:var(--papel-2);padding:16px 18px;border-radius:3px}
+.res h2{font-family:var(--display);font-size:20px;margin:0 0 2px}
+.res .prog{font-size:12px;color:var(--tinta-3);margin-bottom:12px}
+.res .bar{height:4px;background:var(--regla);border-radius:2px;overflow:hidden;margin-top:4px}
+.res .bar i{display:block;height:100%;background:var(--teal);width:0}
+.rz{padding:10px 0;border-top:1px solid var(--regla)}
+.rz .k{font-size:11.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--claret);font-weight:600;margin-bottom:4px}
+.rz .v{font-family:var(--display);font-size:18px;line-height:1.2}
+.rz .s{font-size:13px;color:var(--tinta-2);margin-top:3px}
+.chips{display:flex;flex-wrap:wrap;gap:5px;margin-top:6px}
+.chip{font-family:var(--mono);font-size:11.5px;padding:2px 7px;border-radius:2px;background:var(--papel);border:1px solid var(--regla);color:var(--tinta-2)}
+.chip.mal{background:var(--malbg);border-color:transparent;color:var(--mal)}
+.chip.av{background:var(--avbg);border-color:transparent;color:var(--aviso)}
+.chip.ok{background:var(--okbg);border-color:transparent;color:var(--ok)}
+table.m{width:100%;border-collapse:collapse;font-size:12.5px;margin-top:6px;font-variant-numeric:tabular-nums}
+table.m th{font-size:10.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--tinta-3);text-align:left;padding:3px 4px;font-weight:600}
+table.m td{padding:4px;border-top:1px solid var(--regla)}
+table.m td.n{text-align:center}
+table.m td.mal{color:var(--mal);font-weight:600}
+table.m td.ok{color:var(--ok)}
+ol.hi{margin:6px 0 0;padding-left:18px;font-size:13.5px}
+ol.hi li{margin:4px 0}
+ol.hi .cod{font-family:var(--mono);font-size:12px;color:var(--oxford);margin-right:4px}
+ul.fr{margin:6px 0 0;padding-left:16px;font-size:13px}
+ul.fr li{margin:4px 0}
+.btns{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}
+button{font:inherit;font-size:13px;padding:7px 12px;border:1px solid var(--tinta);background:var(--tinta);color:var(--papel);border-radius:3px;cursor:pointer}
+button.sec{background:transparent;color:var(--tinta)}
+button:focus-visible{outline:2px solid var(--oxford);outline-offset:2px}
+.toast{font-size:12.5px;color:var(--teal);min-height:1.2em;margin-top:6px}
+.vacio{font-size:13.5px;color:var(--tinta-3)}
+.nota{font-size:12px;color:var(--tinta-3);margin-top:10px;line-height:1.45}
+footer{border-top:3px double var(--regla);margin-top:34px;padding-top:12px;font-size:12.5px;color:var(--tinta-3)}
+footer a{color:var(--oxford)}
+@media (prefers-reduced-motion:no-preference){ html{scroll-behavior:smooth} .res .bar i{transition:width .3s} }
+</style>
+
+<div class="wrap">
+<header>
+  <div class="kicker">SEVEN-G · T23 · Cuestionario de entrada (prototipo)</div>
+  <h1>¿Dónde está su empresa con la IA, y dónde quiere estar?</h1>
+  <p class="sub">22 preguntas cerradas, cinco minutos. A la derecha sale su perfil, su madurez de referencia y por dónde empezar.</p>
+  <div class="meta"><span>Sin cuenta</span><span>Nada sale de su navegador</span><span>«No lo sé» cuenta como la respuesta más exigente</span></div>
+</header>
+
+<div class="cols">
+<main id="form">
+
+<div class="bloque" id="bA">
+  <h2><span class="n">A</span>Dónde está</h2>
+  <p class="para">Lo que hay hoy en uso real, no lo que está previsto.</p>
+
+  <div class="q" data-q="Q01"><div class="t"><span class="c">Q01</span><span class="p">¿Qué sistemas tiene en producción? Marque todos los que apliquen.</span></div><div class="h">Producción = en uso real por personas de la empresa o clientes.</div>
+  <div class="ops">
+    <span class="op"><input type="checkbox" id="q01_ninguno" name="Q01" value="ninguno"><label for="q01_ninguno">Ninguno</label></span>
+    <span class="op"><input type="checkbox" id="q01_reglas" name="Q01" value="reglas"><label for="q01_reglas">Automatización con reglas o RPA</label></span>
+    <span class="op"><input type="checkbox" id="q01_terceros" name="Q01" value="terceros"><label for="q01_terceros">IA incluida en productos o asistentes contratados</label></span>
+    <span class="op"><input type="checkbox" id="q01_ml" name="Q01" value="ml"><label for="q01_ml">Modelos propios (predicción, visión, optimización)</label></span>
+    <span class="op"><input type="checkbox" id="q01_gen1" name="Q01" value="gen1"><label for="q01_gen1">IA generativa en un proceso</label></span>
+    <span class="op"><input type="checkbox" id="q01_gen2" name="Q01" value="gen2"><label for="q01_gen2">IA generativa en varios procesos</label></span>
+    <span class="op"><input type="checkbox" id="q01_agentes" name="Q01" value="agentes"><label for="q01_agentes">Agentes que ejecutan acciones por su cuenta</label></span>
+  </div></div>
+
+  <div class="q" data-q="Q02"><div class="t"><span class="c">Q02</span><span class="p">¿Cuántos pilotos o pruebas de IA hay en curso?</span></div>
+  <div class="ops" data-radio="Q02"><span class="op"><input type="radio" id="q02_0" name="Q02" value="0"><label for="q02_0">0</label></span><span class="op"><input type="radio" id="q02_1" name="Q02" value="1"><label for="q02_1">1–2</label></span><span class="op"><input type="radio" id="q02_3" name="Q02" value="3"><label for="q02_3">3–5</label></span><span class="op"><input type="radio" id="q02_6" name="Q02" value="6"><label for="q02_6">Más de 5</label></span></div></div>
+
+  <div class="q" data-q="Q03"><div class="t"><span class="c">Q03</span><span class="p">¿Cuántos de esos pilotos son de IA generativa?</span></div>
+  <div class="ops"><span class="op"><input type="radio" id="q03_n" name="Q03" value="ninguno"><label for="q03_n">Ninguno</label></span><span class="op"><input type="radio" id="q03_a" name="Q03" value="alguno"><label for="q03_a">Alguno</label></span><span class="op"><input type="radio" id="q03_m" name="Q03" value="mayoria"><label for="q03_m">La mayoría</label></span></div></div>
+
+  <div class="q" data-q="Q04"><div class="t"><span class="c">Q04</span><span class="p">¿Hay constancia de que se usan asistentes de IA con datos de la empresa sin autorización?</span></div>
+  <div class="ops"><span class="op"><input type="radio" id="q04_s" name="Q04" value="si"><label for="q04_s">Sí</label></span><span class="op"><input type="radio" id="q04_n" name="Q04" value="no"><label for="q04_n">No</label></span><span class="op"><input type="radio" id="q04_x" name="Q04" value="nose"><label for="q04_x">No lo sé</label></span></div></div>
+
+  <div class="q" data-q="Q05"><div class="t"><span class="c">Q05</span><span class="p">¿Qué gobierno existe hoy sobre modelos, automatización o datos?</span></div><div class="h">Lo que ya existe se adapta y se convalida; no se crea de nuevo.</div>
+  <div class="ops"><span class="op"><input type="radio" id="q05_n" name="Q05" value="ninguno"><label for="q05_n">Ninguno</label></span><span class="op"><input type="radio" id="q05_p" name="Q05" value="parcial"><label for="q05_p">Parcial (validación de modelos, comité de datos, centro de automatización)</label></span><span class="op"><input type="radio" id="q05_f" name="Q05" value="formal"><label for="q05_f">Sistema formal o certificado</label></span></div></div>
+
+  <div class="q" data-q="Q06"><div class="t"><span class="c">Q06</span><span class="p">¿Existe un inventario de los sistemas de IA?</span></div>
+  <div class="ops"><span class="op"><input type="radio" id="q06_n" name="Q06" value="no"><label for="q06_n">No</label></span><span class="op"><input type="radio" id="q06_p" name="Q06" value="parcial"><label for="q06_p">Parcial</label></span><span class="op"><input type="radio" id="q06_c" name="Q06" value="completo"><label for="q06_c">Completo, con responsable por sistema</label></span></div></div>
+
+  <div class="q" data-q="Q07"><div class="t"><span class="c">Q07</span><span class="p">¿Está la empresa en un sector supervisado?</span></div><div class="h">Financiero, seguros, sanidad, energía, telecomunicaciones, infraestructura crítica, sector público.</div>
+  <div class="ops"><span class="op"><input type="radio" id="q07_n" name="Q07" value="no"><label for="q07_n">No</label></span><span class="op"><input type="radio" id="q07_s" name="Q07" value="si"><label for="q07_s">Sí, sector privado regulado</label></span><span class="op"><input type="radio" id="q07_p" name="Q07" value="publico"><label for="q07_p">Sí, sector público o misión pública</label></span></div></div>
+
+  <div class="q" data-q="Q08"><div class="t"><span class="c">Q08</span><span class="p">¿La IA toma o apoya decisiones sobre personas, trata con clientes directamente o puede ser de alto riesgo?</span></div>
+  <div class="ops"><span class="op"><input type="radio" id="q08_s" name="Q08" value="si"><label for="q08_s">Sí</label></span><span class="op"><input type="radio" id="q08_n" name="Q08" value="no"><label for="q08_n">No</label></span><span class="op"><input type="radio" id="q08_x" name="Q08" value="nose"><label for="q08_x">No lo sé</label></span></div></div>
+
+  <div class="q" data-q="Q09"><div class="t"><span class="c">Q09</span><span class="p">¿Tiene o prevé sistemas de alto riesgo, agentes que actúan sobre clientes o dinero, o varias apuestas de transformación a la vez?</span></div><div class="h">Cualquiera de ellas lleva al alcance Enterprise de compañía.</div>
+  <div class="ops"><span class="op"><input type="radio" id="q09_s" name="Q09" value="si"><label for="q09_s">Sí</label></span><span class="op"><input type="radio" id="q09_n" name="Q09" value="no"><label for="q09_n">No</label></span></div></div>
+
+  <div class="q" data-q="Q10"><div class="t"><span class="c">Q10</span><span class="p">¿Hay alguien de la alta dirección con responsabilidad escrita sobre la IA?</span></div>
+  <div class="ops"><span class="op"><input type="radio" id="q10_s" name="Q10" value="si"><label for="q10_s">Sí</label></span><span class="op"><input type="radio" id="q10_n" name="Q10" value="no"><label for="q10_n">No</label></span></div></div>
+
+  <div class="q" data-q="Q11"><div class="t"><span class="c">Q11</span><span class="p">¿Quién recibe un informe periódico sobre la IA?</span></div>
+  <div class="ops"><span class="op"><input type="radio" id="q11_n" name="Q11" value="nadie"><label for="q11_n">Nadie</label></span><span class="op"><input type="radio" id="q11_d" name="Q11" value="direccion"><label for="q11_d">La dirección</label></span><span class="op"><input type="radio" id="q11_c" name="Q11" value="consejo"><label for="q11_c">El consejo</label></span></div></div>
+
+  <div class="q" data-q="Q12"><div class="t"><span class="c">Q12</span><span class="p">¿Quién desarrolla la IA?</span></div>
+  <div class="ops"><span class="op"><input type="radio" id="q12_p" name="Q12" value="propio"><label for="q12_p">Equipo propio</label></span><span class="op"><input type="radio" id="q12_t" name="Q12" value="terceros"><label for="q12_t">Terceros</label></span><span class="op"><input type="radio" id="q12_n" name="Q12" value="nadie"><label for="q12_n">Nadie todavía</label></span></div></div>
+
+  <div class="q" data-q="Q13"><div class="t"><span class="c">Q13</span><span class="p">¿Cómo está estructurada la empresa?</span></div>
+  <div class="ops"><span class="op"><input type="radio" id="q13_u" name="Q13" value="una"><label for="q13_u">Una sociedad</label></span><span class="op"><input type="radio" id="q13_p" name="Q13" value="pocas"><label for="q13_p">Pocas sociedades con un marco común</label></span><span class="op"><input type="radio" id="q13_g" name="Q13" value="grupo"><label for="q13_g">Grupo con varias sociedades o países</label></span></div></div>
+</div>
+
+<div class="bloque" id="bB">
+  <h2><span class="n">B</span>Cómo está organizada</h2>
+  <p class="para">No puntúa madurez. Dice qué ambición es alcanzable con la organización actual y qué va antes.</p>
+
+  <div class="q" data-q="Q14"><div class="t"><span class="c">Q14</span><span class="p">¿Quién lleva la IA?</span></div>
+  <div class="ops"><span class="op"><input type="radio" id="q14_n" name="Q14" value="nadie"><label for="q14_n">Nadie en concreto</label></span><span class="op"><input type="radio" id="q14_p" name="Q14" value="parcial"><label for="q14_p">Personas a tiempo parcial</label></span><span class="op"><input type="radio" id="q14_d" name="Q14" value="dedicado"><label for="q14_d">Un equipo dedicado</label></span><span class="op"><input type="radio" id="q14_v" name="Q14" value="varios"><label for="q14_v">Varios equipos, uno por unidad</label></span></div></div>
+
+  <div class="q" data-q="Q15"><div class="t"><span class="c">Q15</span><span class="p">¿Los negocios se gestionan con cuentas de resultados separadas?</span></div>
+  <div class="ops"><span class="op"><input type="radio" id="q15_s" name="Q15" value="si"><label for="q15_s">Sí</label></span><span class="op"><input type="radio" id="q15_p" name="Q15" value="parcial"><label for="q15_p">En parte</label></span><span class="op"><input type="radio" id="q15_n" name="Q15" value="no"><label for="q15_n">No</label></span></div></div>
+
+  <div class="q" data-q="Q16"><div class="t"><span class="c">Q16</span><span class="p">¿Las unidades comparten los datos del cliente (visión 360)?</span></div>
+  <div class="ops"><span class="op"><input type="radio" id="q16_n" name="Q16" value="no"><label for="q16_n">No</label></span><span class="op"><input type="radio" id="q16_p" name="Q16" value="parcial"><label for="q16_p">En parte</label></span><span class="op"><input type="radio" id="q16_s" name="Q16" value="si"><label for="q16_s">Sí</label></span></div></div>
+
+  <div class="q" data-q="Q17"><div class="t"><span class="c">Q17</span><span class="p">¿Los procesos principales tienen un dueño de extremo a extremo?</span></div>
+  <div class="ops"><span class="op"><input type="radio" id="q17_n" name="Q17" value="ninguno"><label for="q17_n">Ninguno</label></span><span class="op"><input type="radio" id="q17_a" name="Q17" value="alguno"><label for="q17_a">Alguno</label></span><span class="op"><input type="radio" id="q17_m" name="Q17" value="mayoria"><label for="q17_m">La mayoría</label></span></div></div>
+
+  <div class="q" data-q="Q18"><div class="t"><span class="c">Q18</span><span class="p">¿Datos y plataforma de IA son comunes a las unidades?</span></div>
+  <div class="ops"><span class="op"><input type="radio" id="q18_n" name="Q18" value="no"><label for="q18_n">No</label></span><span class="op"><input type="radio" id="q18_p" name="Q18" value="parcial"><label for="q18_p">En parte</label></span><span class="op"><input type="radio" id="q18_s" name="Q18" value="si"><label for="q18_s">Sí</label></span></div></div>
+
+  <div class="q" data-q="Q19"><div class="t"><span class="c">Q19</span><span class="p">¿Quién decide la inversión en IA?</span></div>
+  <div class="ops"><span class="op"><input type="radio" id="q19_u" name="Q19" value="unidad"><label for="q19_u">Cada unidad</label></span><span class="op"><input type="radio" id="q19_c" name="Q19" value="central"><label for="q19_c">Una decisión central</label></span><span class="op"><input type="radio" id="q19_m" name="Q19" value="mixto"><label for="q19_m">Mixto</label></span></div></div>
+</div>
+
+<div class="bloque" id="bC">
+  <h2><span class="n">C</span>Dónde quiere estar</h2>
+  <p class="para">A 24 meses. De aquí sale la madurez de referencia, que el consejo aprueba o cambia en C2.</p>
+
+  <div class="q" data-q="Q20"><div class="t"><span class="c">Q20</span><span class="p">¿Qué busca sobre todo?</span></div>
+  <div class="ops"><span class="op"><input type="radio" id="q20_o" name="Q20" value="optimizar"><label for="q20_o">Hacer lo mismo con menos coste</label></span><span class="op"><input type="radio" id="q20_a" name="Q20" value="aumentar"><label for="q20_a">Hacer más y mejor con las mismas personas</label></span><span class="op"><input type="radio" id="q20_t" name="Q20" value="transformar"><label for="q20_t">Cambiar el negocio o la propuesta de valor</label></span></div></div>
+
+  <div class="q" data-q="Q21"><div class="t"><span class="c">Q21</span><span class="p">¿Hasta dónde quiere que llegue el cambio?</span></div>
+  <div class="ops"><span class="op"><input type="radio" id="q21_1" name="Q21" value="1"><label for="q21_1">Tareas concretas</label></span><span class="op"><input type="radio" id="q21_2" name="Q21" value="2"><label for="q21_2">Procesos completos</label></span><span class="op"><input type="radio" id="q21_3" name="Q21" value="3"><label for="q21_3">Personas y organización</label></span><span class="op"><input type="radio" id="q21_4" name="Q21" value="4"><label for="q21_4">El modelo de negocio</label></span></div></div>
+
+  <div class="q" data-q="Q22"><div class="t"><span class="c">Q22</span><span class="p">¿Qué tecnología quiere tener en uso?</span></div>
+  <div class="ops"><span class="op"><input type="radio" id="q22_2" name="Q22" value="2"><label for="q22_2">IA incluida en lo que contrato</label></span><span class="op"><input type="radio" id="q22_3" name="Q22" value="3"><label for="q22_3">Modelos propios</label></span><span class="op"><input type="radio" id="q22_4" name="Q22" value="4"><label for="q22_4">IA generativa en mis procesos</label></span><span class="op"><input type="radio" id="q22_5" name="Q22" value="5"><label for="q22_5">Agentes que actúan</label></span></div></div>
+
+  <div class="q" data-q="MAD"><div class="t"><span class="c">T15</span><span class="p">Opcional: si ya hizo el diagnóstico de madurez, su nivel por dimensión.</span></div><div class="h">Se usa tal cual para calcular la brecha. No se estima nada: sin diagnóstico, la tarjeta lo dice.</div>
+  <div class="mad">
+    <label>D1 Estrategia y gobierno<select id="m1"><option value="">sin dato</option><option>0</option><option>1</option><option>2</option><option>3</option><option>4</option><option>5</option></select></label>
+    <label>D2 Valor y cartera<select id="m2"><option value="">sin dato</option><option>0</option><option>1</option><option>2</option><option>3</option><option>4</option><option>5</option></select></label>
+    <label>D3 Datos y conocimiento<select id="m3"><option value="">sin dato</option><option>0</option><option>1</option><option>2</option><option>3</option><option>4</option><option>5</option></select></label>
+    <label>D4 Tecnología y operación<select id="m4"><option value="">sin dato</option><option>0</option><option>1</option><option>2</option><option>3</option><option>4</option><option>5</option></select></label>
+    <label>D5 Personas y adopción<select id="m5"><option value="">sin dato</option><option>0</option><option>1</option><option>2</option><option>3</option><option>4</option><option>5</option></select></label>
+    <label>D6 Riesgo y cumplimiento<select id="m6"><option value="">sin dato</option><option>0</option><option>1</option><option>2</option><option>3</option><option>4</option><option>5</option></select></label>
+    <label>D7 Medición y evidencia<select id="m7"><option value="">sin dato</option><option>0</option><option>1</option><option>2</option><option>3</option><option>4</option><option>5</option></select></label>
+  </div></div>
+</div>
+</main>
+
+<aside class="res" id="res" aria-live="polite">
+  <h2>Su resultado</h2>
+  <div class="prog"><span id="prog">0 de 22 respondidas</span><div class="bar"><i id="bar"></i></div></div>
+  <div id="salida"><p class="vacio">Responda y la tarjeta se va rellenando. Con el bloque A ya sale el perfil; con el C, la madurez de referencia.</p></div>
+  <div class="btns"><button type="button" id="copiar">Copiar resumen</button><button type="button" class="sec" id="borrar">Empezar de nuevo</button></div>
+  <div class="toast" id="toast"></div>
+  <p class="nota">Las respuestas se guardan solo en este navegador. La madurez de referencia sale de la tabla del documento 11 §8 y de los mínimos por huella de 11 §7.6; es un objetivo de partida, no un diagnóstico.</p>
+</aside>
+</div>
+
+<footer>Prototipo del cuestionario de entrada de T23 (propuesta del 12-10-2026, §10). Reglas: arquetipos y modificadores del documento 96; prioridades de 96 §4.2; objetivos de madurez de 11 §8; mínimos por huella de 11 §7.6. <a href="https://claude.ai/artifact/AEtTyUs3zQRWr3opMneEYN" target="_blank" rel="noopener">Propuesta completa</a>.</footer>
+</div>
+
+<script>
+(function(){
+const $=s=>document.querySelector(s), $$=s=>Array.from(document.querySelectorAll(s));
+const RADIOS=['Q02','Q03','Q04','Q05','Q06','Q07','Q08','Q09','Q10','Q11','Q12','Q13','Q14','Q15','Q16','Q17','Q18','Q19','Q20','Q21','Q22'];
+const DIM={D1:'Estrategia y gobierno',D2:'Valor y cartera',D3:'Datos y conocimiento',D4:'Tecnología y operación',D5:'Personas y adopción',D6:'Riesgo y cumplimiento',D7:'Medición y evidencia'};
+const HI={
+ 1:'Patrocinador y mandato',2:'Inventario del uso corporativo y no autorizado',3:'Política de uso aceptable y alfabetización',4:'Registro de todas las ideas y pilotos en su fase real',5:'Inventario completo con clasificación y responsable',6:'Diagnóstico C1: madurez, índice y huella',7:'Tesis, ambición y apetito aprobados por el consejo (C2)',8:'Comité, oficina y comisión delegada',9:'Roles separados en cada iniciativa',10:'Responsable de riesgos independiente y registro de riesgos',11:'Ciclo de vida con puertas registradas',12:'Regularizar lo que está en producción',13:'Parar o escalar cada piloto (G3)',14:'Reglas de medición, línea base e hipótesis',15:'Informe a la dirección y panel del consejo',16:'Seguridad de agentes y exigencia a proveedores',17:'Operación bajo control: monitorización, reversión, R6',18:'No conformidades e incidentes',19:'Adopción y personas',20:'Datos y conocimiento con propietario',21:'Primera auditoría del marco',22:'Revisión C5 y declaración de aplicación'};
+// prioridad por arquetipo (96 §4.2): 1,2,3,C,D,·
+const PR={
+ A:['1','1','1','1','2','1','2','2','2','D','2','·','D','2','2','D','D','3','D','D','3','3'],
+ B:['1','1','1','2','1','1','2','2','2','2','2','2','D','2','2','1','·','2','1','2','3','3'],
+ C:['1','1','2','1','2','1','2','C','2','2','2','2','2','2','2','D','D','2','2','2','3','3'],
+ D:['1','1','2','1','1','1','2','C','1','1','2','1','2','2','2','2','1','2','2','C','3','3'],
+ E:['1','1','1','1','2','1','2','2','2','1','1','2','1','1','2','2','D','2','2','2','3','3'],
+ F:['1','1','1','1','1','1','2','1','1','1','1','1','2','2','1','1','1','1','1','1','3','3']};
+const ORD={'1':0,'2':1,'C':2,'D':3,'3':4,'·':5};
+const MIN={2:{D1:1,D5:2,D6:2},3:{D1:2,D3:2,D4:2,D5:2,D6:2},4:{D1:2,D3:3,D4:3,D5:2,D6:3},5:{D1:3,D3:3,D4:3,D5:3,D6:3}};
+const EMN={1:'Pequeña no regulada que empieza',2:'Mediana no regulada con pilotos o automatización',3:'Mediana con clientes y datos personales',4:'Pequeña o mediana regulada',5:'Grande o grupo no regulado',6:'Grupo regulado a escala',7:'Sector público y misión pública'};
+const PPN={A:'Punto cero',B:'Usuario de IA de terceros',C:'Automatizador',D:'IA propia en producción',E:'Muchos pilotos',F:'A escala'};
+
+function leer(){
+ const r={}; RADIOS.forEach(q=>{const e=document.querySelector('input[name='+q+']:checked'); r[q]=e?e.value:null;});
+ r.Q01=$$('input[name=Q01]:checked').map(e=>e.value);
+ r.M={}; for(let i=1;i<=7;i++){const v=$('#m'+i).value; r.M['D'+i]=v===''?null:+v;}
+ return r;
+}
+function guardar(r){ try{localStorage.setItem('seveng-t23-entrada-v1',JSON.stringify(r));}catch(e){} }
+function cargar(){ try{const s=localStorage.getItem('seveng-t23-entrada-v1'); if(!s)return; const r=JSON.parse(s);
+ RADIOS.forEach(q=>{ if(r[q]){const e=document.querySelector('input[name='+q+'][value="'+r[q]+'"]'); if(e)e.checked=true;} });
+ (r.Q01||[]).forEach(v=>{const e=document.querySelector('input[name=Q01][value="'+v+'"]'); if(e)e.checked=true;});
+ for(let i=1;i<=7;i++){ if(r.M&&r.M['D'+i]!=null) $('#m'+i).value=r.M['D'+i]; }
+ }catch(e){} }
+
+function calcular(r){
+ const s=new Set(r.Q01); const agentes=s.has('agentes'), ml=s.has('ml'), gen=s.has('gen1')||s.has('gen2'), gen2=s.has('gen2'), reglas=s.has('reglas'), terc=s.has('terceros');
+ const pilotos=r.Q02?+r.Q02:null; // 0,1,3,6
+ const huella=agentes?5:gen?4:ml?3:terc?2:reglas?1:0;
+ // arquetipo
+ let pp=null;
+ if(r.Q01.length||pilotos!=null){
+  if(agentes||(ml&&gen)) pp='F';
+  else if(pilotos!=null&&pilotos>=3&&r.Q03==='mayoria'&&!gen2) pp='E';
+  else if(ml||gen) pp='D';
+  else if(reglas) pp='C';
+  else if(terc) pp='B';
+  else pp='A';
+ }
+ const rasgos=[]; if(pp){ if(pp!=='F'&&(agentes||(ml&&gen)))rasgos.push('F'); if(pp!=='E'&&pilotos!=null&&pilotos>=3&&r.Q03==='mayoria')rasgos.push('E'); if(pp!=='D'&&(ml||gen))rasgos.push('D'); if(pp!=='C'&&reglas)rasgos.push('C'); if(pp!=='B'&&terc)rasgos.push('B'); }
+ // modificadores
+ const mp=[];
+ if(r.Q07==='si'||r.Q07==='publico') mp.push('MP1');
+ if(r.Q08==='si'||r.Q08==='nose') mp.push('MP2');
+ if(r.Q09==='si') mp.push('MP3');
+ if(r.Q05==='parcial'||r.Q05==='formal') mp.push('MP4');
+ if(r.Q10==='no') mp.push('MP5');
+ const silos=r.Q15==='si'&&(r.Q16==='no'||r.Q17==='ninguno'); if(silos) mp.push('MP6');
+ // ejes
+ const eje1=(r.Q07==='si'||r.Q07==='publico'||r.Q09==='si')?'Alta':(r.Q08&&r.Q08!=='no')?'Media':(r.Q07&&r.Q08)?'Baja':null;
+ const grupo=r.Q13==='grupo';
+ const eje3=r.Q13?(grupo?'Grupo':(r.Q13==='pocas'||(r.Q05&&r.Q05!=='ninguno')||r.Q14==='dedicado'||r.Q14==='varios')?'Mediana':'Pequeña'):null;
+ let em=null;
+ if(eje1&&eje3){
+  if(r.Q07==='publico') em=7;
+  else if(eje1==='Alta') em=grupo?6:4;
+  else if(eje1==='Media') em=grupo?5:3;
+  else em=grupo?5:(eje3==='Pequeña'&&(pp==='A'||pp==='B'||!pp))?1:2;
+ }
+ const alcance=eje1?((eje1==='Alta'||r.Q09==='si'||grupo)?'Enterprise':'Lite'):null;
+ // hitos
+ let hitos=[];
+ if(pp){
+  const base=PR[pp].slice();
+  rasgos.forEach(x=>{PR[x].forEach((v,i)=>{ if(ORD[v]<ORD[base[i]]) base[i]=v; });});
+  const up=(i,v)=>{ if(ORD[v]<ORD[base[i-1]]) base[i-1]=v; };
+  if(r.Q04==='si'||r.Q04==='nose'){up(2,'1');up(3,'1');}
+  if(mp.includes('MP1')||mp.includes('MP2')){up(5,'1');up(10,'1');}
+  if(mp.includes('MP4')){ base[7]='C'; if(r.Q05==='formal') base[9]='C'; }
+  if(silos){up(19,'2');up(20,'2');}
+  if(r.Q14==='varios'&&r.Q18==='no') up(5,'1');
+  if(r.Q19==='unidad') up(7,'1');
+  const hecho=n=>(n===1&&r.Q10==='si')||(n===5&&r.Q06==='completo')||(n===15&&r.Q11==='consejo')||(n===8&&r.Q05==='formal');
+  const lista=base.map((v,i)=>({n:i+1,p:v})).filter(h=>!hecho(h.n)&&h.p!=='·'&&h.p!=='D').sort((a,b)=>ORD[a.p]-ORD[b.p]||a.n-b.n);
+  hitos=mp.includes('MP5')?[{n:1,p:'1'}]:lista.slice(0,3);
+ }
+ // madurez de referencia
+ let obj=null;
+ if(r.Q20){
+  const o12={},o24={}; for(const d in DIM){o12[d]=2;o24[d]=2;}
+  o12.D2=3;o12.D7=3; ['D1','D2','D4','D6','D7'].forEach(d=>o24[d]=3);
+  if(r.Q20==='aumentar'||r.Q20==='transformar'){o12.D5=Math.max(o12.D5,3);o24.D3=Math.max(o24.D3,3);o24.D5=Math.max(o24.D5,4);}
+  if(r.Q20==='transformar'){['D1','D2','D6','D7'].forEach(d=>o12[d]=Math.max(o12[d],3));['D1','D2','D7'].forEach(d=>o24[d]=Math.max(o24[d],4));}
+  if(eje1==='Alta'||alcance==='Enterprise'){o12.D6=Math.max(o12.D6,3);o24.D6=Math.max(o24.D6,4);}
+  if(r.Q22==='5'){o12.D4=Math.max(o12.D4,3);o12.D6=Math.max(o12.D6,3);o24.D4=Math.max(o24.D4,4);o24.D6=Math.max(o24.D6,4);}
+  const ht=r.Q22?+r.Q22:null; if(ht&&MIN[ht]) for(const d in MIN[ht]){o24[d]=Math.max(o24[d],MIN[ht][d]);}
+  obj={o12,o24,ht};
+ }
+ // frenos organizativos
+ const frenos=[];
+ if(silos&&r.Q21&&+r.Q21>=3) frenos.push('Con cuentas de resultados separadas y sin visión 360 o sin dueño de proceso, el cambio sobre personas u organización (IM3) y sobre el modelo de negocio (IM4) no es alcanzable con la organización actual: cada apuesta de transformación sobre cliente o proceso lleva una condición organizativa en G2 antes de invertir.');
+ else if(silos) frenos.push('Negocios en silos: las iniciativas transversales se miden por unidad desde el principio y datos y personas (HI-20, HI-19) suben de prioridad.');
+ if(r.Q14==='varios'&&r.Q18==='no') frenos.push('Varios equipos sin plataforma común: el inventario consolidado es lo primero y la plataforma habilitadora, la primera decisión de cartera.');
+ if(r.Q19==='unidad') frenos.push('La inversión la decide cada unidad: los umbrales y los sobres de C2 se aprueban antes que cualquier iniciativa nueva.');
+ if(r.Q14==='nadie'&&r.Q10==='si') frenos.push('Hay patrocinador pero nadie lleva la IA: la oficina de IA, aunque sea una persona a tiempo parcial, va en el mes 1.');
+ if(mp.includes('MP5')) frenos.push('Sin patrocinador en la alta dirección el recorrido no empieza (MP5): el primer y único hito es HI-01.');
+ if(r.Q22&&huella>+r.Q22) frenos.push('La tecnología que quiere tener en uso es menor que la que ya tiene: el objetivo se fija al menos en la huella actual.');
+ const n=RADIOS.filter(q=>r[q]).length+(r.Q01.length?1:0);
+ return {pp,rasgos,mp,eje1,eje3,em,alcance,huella,hitos,obj,frenos,n,silos};
+}
+
+function pintar(c,r){
+ $('#prog').textContent=c.n+' de 22 respondidas'; $('#bar').style.width=Math.round(c.n/22*100)+'%';
+ if(!c.pp&&!c.em&&!c.obj){ $('#salida').innerHTML='<p class="vacio">Responda y la tarjeta se va rellenando. Con el bloque A ya sale el perfil; con el C, la madurez de referencia.</p>'; return; }
+ let h='';
+ h+='<div class="rz"><div class="k">Perfil de empresa</div><div class="v">'+(c.em?'EM-'+c.em+' · '+EMN[c.em]:'Faltan Q07–Q09 y Q13')+'</div>';
+ if(c.em) h+='<div class="s">Exposición '+c.eje1+' · '+c.eje3+' · alcance <b>'+c.alcance+'</b></div>';
+ h+='</div>';
+ h+='<div class="rz"><div class="k">Punto de partida</div><div class="v">'+(c.pp?'PP-'+c.pp+' · '+PPN[c.pp]:'Falta Q01')+'</div>';
+ if(c.pp){ h+='<div class="s">Huella en uso HT'+c.huella+(c.obj&&c.obj.ht?' → objetivo HT'+c.obj.ht:'')+'</div>'; if(c.rasgos.length) h+='<div class="s">Rasgos: '+c.rasgos.map(x=>'PP-'+x).join(', ')+'</div>'; }
+ if(c.mp.length) h+='<div class="chips">'+c.mp.map(m=>'<span class="chip'+(m==='MP5'?' mal':m==='MP6'?' av':m==='MP4'?' ok':'')+'">'+m+'</span>').join('')+'</div>';
+ h+='</div>';
+ if(c.obj){
+  h+='<div class="rz"><div class="k">Madurez: actual y de referencia</div><table class="m"><tr><th>Dim.</th><th>Hoy</th><th>12 m</th><th>24 m</th><th>Brecha</th></tr>';
+  for(const d in DIM){ const a=r.M[d]; const o=c.obj.o24[d]; const b=a==null?null:o-a;
+   h+='<tr><td title="'+DIM[d]+'">'+d+'</td><td class="n">'+(a==null?'<span class="vacio">—</span>':a)+'</td><td class="n">'+c.obj.o12[d]+'</td><td class="n">'+o+'</td><td class="n '+(b==null?'':b>0?'mal':'ok')+'">'+(b==null?'sin dato':b>0?'+'+b:'✓')+'</td></tr>'; }
+  h+='</table>';
+  const sinDato=Object.values(r.M).every(v=>v==null);
+  h+='<div class="s">'+(sinDato?'Sin diagnóstico de madurez: no se estima. Hágalo con T15 y vuelva.':'Niveles «hoy» tal como los ha introducido.')+' Referencia: 11 §8'+(c.obj.ht?' y mínimos por huella HT'+c.obj.ht:'')+'; se aprueba en C2.</div></div>';
+ }
+ if(c.hitos.length){ h+='<div class="rz"><div class="k">Empezar por</div><ol class="hi">'+c.hitos.map(x=>'<li><span class="cod">HI-'+String(x.n).padStart(2,'0')+'</span>'+HI[x.n]+(x.p==='C'?' <span class="chip ok">convalidar</span>':'')+'</li>').join('')+'</ol></div>'; }
+ if(c.frenos.length){ h+='<div class="rz"><div class="k">Lo que frena la organización</div><ul class="fr">'+c.frenos.map(f=>'<li>'+f+'</li>').join('')+'</ul></div>'; }
+ $('#salida').innerHTML=h;
+}
+
+function resumen(c,r){
+ const L=[]; L.push('SEVEN-G · Cuestionario de entrada');
+ if(c.em) L.push('Perfil: EM-'+c.em+' · '+EMN[c.em]+' · exposición '+c.eje1+' · '+c.eje3+' · alcance '+c.alcance);
+ if(c.pp) L.push('Punto de partida: PP-'+c.pp+' · '+PPN[c.pp]+(c.rasgos.length?' (rasgos '+c.rasgos.map(x=>'PP-'+x).join(', ')+')':'')+' · huella HT'+c.huella+(c.obj&&c.obj.ht?' → HT'+c.obj.ht:''));
+ if(c.mp.length) L.push('Modificadores: '+c.mp.join(', '));
+ if(c.obj){ L.push('Madurez (hoy / 12 m / 24 m):'); for(const d in DIM){ const a=r.M[d]; L.push('  '+d+' '+DIM[d]+': '+(a==null?'sin dato':a)+' / '+c.obj.o12[d]+' / '+c.obj.o24[d]); } }
+ if(c.hitos.length) L.push('Empezar por: '+c.hitos.map(x=>'HI-'+String(x.n).padStart(2,'0')+' '+HI[x.n]).join('; '));
+ if(c.frenos.length) L.push('Frenos organizativos: '+c.frenos.join(' | '));
+ return L.join('\n');
+}
+
+let ultimo=null;
+function refrescar(){ const r=leer(); const c=calcular(r); ultimo={c,r}; pintar(c,r); guardar(r); }
+document.getElementById('form').addEventListener('change',e=>{
+ if(e.target.name==='Q01'){ const n=$('#q01_ninguno'); if(e.target===n&&n.checked){$$('input[name=Q01]').forEach(x=>{if(x!==n)x.checked=false;});} else if(e.target.checked){n.checked=false;} if(e.target.id==='q01_gen1'&&e.target.checked)$('#q01_gen2').checked=false; if(e.target.id==='q01_gen2'&&e.target.checked)$('#q01_gen1').checked=false; }
+ refrescar();
+});
+$('#copiar').addEventListener('click',()=>{ if(!ultimo){return;} const t=resumen(ultimo.c,ultimo.r); const ok=()=>{$('#toast').textContent='Resumen copiado.';setTimeout(()=>$('#toast').textContent='',2500);};
+ if(navigator.clipboard&&navigator.clipboard.writeText){ navigator.clipboard.writeText(t).then(ok).catch(()=>{ $('#toast').textContent='No se pudo copiar; seleccione el texto de la tarjeta.'; }); } else { $('#toast').textContent='No se pudo copiar; seleccione el texto de la tarjeta.'; } });
+$('#borrar').addEventListener('click',()=>{ $$('#form input').forEach(i=>i.checked=false); for(let i=1;i<=7;i++)$('#m'+i).value=''; try{localStorage.removeItem('seveng-t23-entrada-v1');}catch(e){} refrescar(); });
+cargar(); refrescar();
+})();
+</script>
