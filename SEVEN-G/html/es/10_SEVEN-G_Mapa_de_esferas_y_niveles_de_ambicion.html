@@ -392,6 +392,10 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 /* Ilustraciones en imagen (p. ej., SPAD): ocupan el ancho del lienzo y conservan su proporción */
 .g-lienzo img { display: block; width: 100%; height: auto; border: 1px solid var(--regla-2); }
 .ilustracion .g-lienzo img[src*="ilusion_de_velocidad"] { max-width: 560px; margin: 0 auto; }
+/* Nombre primero, código después (D144): el código entre paréntesis tras el nombre, en tablas y títulos */
+.codigo { font-family: var(--mono, 'Courier New', monospace); font-size: .88em; color: var(--tinta-2); white-space: nowrap; font-weight: 400; }
+h2 .codigo, h3 .codigo { font-weight: 400; }
+
 @page { @bottom-left { content: "SEVEN-G · Mapa de esferas y niveles de ambición"; font: 8.5pt "Libre Franklin", "Segoe UI", sans-serif; color: #74675e; } }
 </style>
 </head>
@@ -1953,31 +1957,31 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </thead>
 <tbody>
 <tr id="cod-c1-diagnostico">
-<td><strong>C1 · Diagnóstico</strong></td>
+<td><strong>Diagnóstico</strong> <span class="codigo">(C1)</span></td>
 <td>Clasificar las iniciativas y sistemas existentes por esfera y nivel; calcular los indicadores disponibles; asignar grados a 08 y 09; construir el mapa de calor actual. Para cada esfera se registran el <strong>nivel alcanzado</strong> (máximo nivel con al menos una iniciativa en producción y valor medido) y el <strong>nivel en cartera</strong> (máximo nivel con alguna iniciativa que haya superado G2).</td>
 <td>Mapa de esferas actual con indicadores y &quot;sin dato&quot; explícitos.</td>
 <td>11, 12</td>
 </tr>
 <tr id="cod-c2-direccion">
-<td><strong>C2 · Dirección</strong></td>
+<td><strong>Dirección</strong> <span class="codigo">(C2)</span></td>
 <td>Fijar para cada esfera 01–07 la prioridad y la ambición objetivo, y para 08 y 09 el grado objetivo por dimensión, con un indicador principal por esfera elegido entre los de este documento.</td>
 <td>Ambición por esfera aprobada por el consejo.</td>
 <td>13</td>
 </tr>
 <tr id="cod-c3-cartera">
-<td><strong>C3 · Cartera</strong></td>
+<td><strong>Cartera</strong> <span class="codigo">(C3)</span></td>
 <td>Comparar el mapa de calor con la ambición objetivo; priorizar iniciativas que cierren brechas; limitar la inversión fuera de tesis; comprobar que las esferas habilitadoras soportan la ambición de las esferas de valor.</td>
 <td>Cartera priorizada con esfera y nivel por iniciativa.</td>
 <td>14</td>
 </tr>
 <tr id="cod-c4-supervision">
-<td><strong>C4 · Supervisión</strong></td>
+<td><strong>Supervisión</strong> <span class="codigo">(C4)</span></td>
 <td>Mapa de calor trimestral en el panel del consejo con marcas de brecha, fuera de tesis y sin evidencia; evolución de los indicadores principales.</td>
 <td>Alertas y recomendaciones del consejo.</td>
 <td>60, 62</td>
 </tr>
 <tr id="cod-c5-revision">
-<td><strong>C5 · Revisión</strong></td>
+<td><strong>Revisión</strong> <span class="codigo">(C5)</span></td>
 <td>Comparar el mapa con el del año anterior y con la ambición objetivo; recalibrar umbrales de color y marcas; revisar los indicadores elegidos.</td>
 <td>Propuesta de ajuste de la ambición por esfera.</td>
 <td>12, 13</td>
@@ -2098,60 +2102,60 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <div class="tabla"><table>
 <thead>
 <tr>
-<th>Código</th>
 <th>Nombre</th>
+
 <th>Uso en este documento</th>
 </tr>
 </thead>
 <tbody>
 <tr id="cod-t01">
-<td><strong><a href="../../herramientas/T01_registro_iniciativas/registro.html" title="Herramienta T01 &#183; Registro de iniciativas">T01</a></strong></td>
-<td>Registro de iniciativas</td>
+<td><strong>Registro de iniciativas</strong> <span class="codigo">(<a href="../../herramientas/T01_registro_iniciativas/registro.html" title="Herramienta T01 &#183; Registro de iniciativas">T01</a>)</span></td>
+
 <td>Campos de esfera principal y secundaria, nivel de ambición propuesto, confirmado y real, y dimensión de contribución para 08 y 09.</td>
 </tr>
 <tr id="cod-t02">
-<td><strong><a href="../../herramientas/T01_registro_iniciativas/registro.html#/inventario" title="Herramienta T02 &#183; Inventario de sistemas de IA">T02</a></strong></td>
-<td>Inventario de sistemas de IA</td>
+<td><strong>Inventario de sistemas de IA</strong> <span class="codigo">(<a href="../../herramientas/T01_registro_iniciativas/registro.html#/inventario" title="Herramienta T02 &#183; Inventario de sistemas de IA">T02</a>)</span></td>
+
 <td>Base de los indicadores de datos, decisión, cumplimiento y gobierno.</td>
 </tr>
 <tr id="cod-t05">
-<td><strong><a href="../../herramientas/T01_registro_iniciativas/registro.html" title="Herramienta T05 &#183; Clasificador de ambici&#243;n">T05</a></strong></td>
-<td>Clasificador de ambición</td>
+<td><strong>Clasificador de ambición</strong> <span class="codigo">(<a href="../../herramientas/T01_registro_iniciativas/registro.html" title="Herramienta T05 &#183; Clasificador de ambici&#243;n">T05</a>)</span></td>
+
 <td>Cinco preguntas del <a href="12_SEVEN-G_Indice_de_transformacion.html" title="Documento 12 &#183; &#205;ndice de transformaci&#243;n">documento 12</a>, integradas con la selección de esfera.</td>
 </tr>
 <tr id="cod-t12">
-<td><strong><a href="plantillas/P28_SEVEN-G_Seguimiento_de_realizacion_de_valor.html" title="Herramienta T12 &#183; Seguimiento de realizaci&#243;n de valor">T12</a></strong></td>
-<td>Seguimiento de realización de valor</td>
+<td><strong>Seguimiento de realización de valor</strong> <span class="codigo">(<a href="plantillas/P28_SEVEN-G_Seguimiento_de_realizacion_de_valor.html" title="Herramienta T12 &#183; Seguimiento de realizaci&#243;n de valor">T12</a>)</span></td>
+
 <td>Importes de los indicadores traducidos a dinero.</td>
 </tr>
 <tr id="cod-t14">
-<td><strong><a href="../../herramientas/T14_indice_transformacion/indice.html" title="Herramienta T14 &#183; Calculadora del &#237;ndice de transformaci&#243;n">T14</a></strong></td>
-<td>Calculadora del índice de transformación</td>
+<td><strong>Calculadora del índice de transformación</strong> <span class="codigo">(<a href="../../herramientas/T14_indice_transformacion/indice.html" title="Herramienta T14 &#183; Calculadora del &#237;ndice de transformaci&#243;n">T14</a>)</span></td>
+
 <td>Usa la banda de habilitación para excluir las esferas 08 y 09 de las señales 1, 2 y 7.</td>
 </tr>
 <tr id="cod-t16">
-<td><strong><a href="10_SEVEN-G_Mapa_de_esferas_y_niveles_de_ambicion.html" title="Herramienta T16 &#183; Mapa de esferas de la cartera">T16</a></strong></td>
-<td>Mapa de esferas de la cartera</td>
+<td><strong>Mapa de esferas de la cartera</strong> <span class="codigo">(<a href="10_SEVEN-G_Mapa_de_esferas_y_niveles_de_ambicion.html" title="Herramienta T16 &#183; Mapa de esferas de la cartera">T16</a>)</span></td>
+
 <td>Mapa de calor de la sección 8.</td>
 </tr>
 <tr id="cod-t17">
-<td><strong><a href="../../herramientas/T17_panel_consejo/index.html" title="Herramienta T17 &#183; Panel de IA para el consejo">T17</a></strong></td>
-<td>Panel de IA para el consejo</td>
+<td><strong>Panel de IA para el consejo</strong> <span class="codigo">(<a href="../../herramientas/T17_panel_consejo/index.html" title="Herramienta T17 &#183; Panel de IA para el consejo">T17</a>)</span></td>
+
 <td>Muestra el mapa de calor y los indicadores principales por esfera.</td>
 </tr>
 <tr id="cod-p06">
-<td><strong><a href="plantillas/P06_SEVEN-G_Cartera_de_oportunidades_y_notas_de_filtrado.html" title="Plantilla P06 &#183; Cartera de oportunidades y notas de filtrado">P06</a></strong></td>
-<td>Cartera de oportunidades y notas de filtrado</td>
+<td><strong>Cartera de oportunidades y notas de filtrado</strong> <span class="codigo">(<a href="plantillas/P06_SEVEN-G_Cartera_de_oportunidades_y_notas_de_filtrado.html" title="Plantilla P06 &#183; Cartera de oportunidades y notas de filtrado">P06</a>)</span></td>
+
 <td>Esfera propuesta en la fase 1.</td>
 </tr>
 <tr id="cod-p07">
-<td><strong><a href="plantillas/P07_SEVEN-G_Clasificacion_de_esfera_y_ambicion.html" title="Plantilla P07 &#183; Clasificaci&#243;n de esfera y ambici&#243;n">P07</a></strong></td>
-<td>Clasificación de esfera y ambición</td>
+<td><strong>Clasificación de esfera y ambición</strong> <span class="codigo">(<a href="plantillas/P07_SEVEN-G_Clasificacion_de_esfera_y_ambicion.html" title="Plantilla P07 &#183; Clasificaci&#243;n de esfera y ambici&#243;n">P07</a>)</span></td>
+
 <td>Evidencia de las fases 1, 2 y 7.</td>
 </tr>
 <tr id="cod-p31">
-<td><strong><a href="plantillas/P31_SEVEN-G_Ficha_de_caso_de_uso.html" title="Plantilla P31 &#183; Ficha de caso de uso">P31</a></strong></td>
-<td>Ficha de caso de uso</td>
+<td><strong>Ficha de caso de uso</strong> <span class="codigo">(<a href="plantillas/P31_SEVEN-G_Ficha_de_caso_de_uso.html" title="Plantilla P31 &#183; Ficha de caso de uso">P31</a>)</span></td>
+
 <td>Descripción comprensible con su esfera y nivel.</td>
 </tr>
 </tbody>
@@ -2249,7 +2253,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </table></div>
 <h2 id="fuentes-externas">Fuentes externas citadas</h2><p class="fuentes-nota">Enlaces a la fuente oficial o primaria, comprobados antes de publicar. Verifique siempre la versión vigente en la fecha de uso.</p><ul class="fuentes-externas"><li><a href="https://eur-lex.europa.eu/eli/reg/2024/1689/oj/spa" target="_blank" rel="noopener">Reglamento (UE) 2024/1689 del Parlamento Europeo y del Consejo, de 13 de junio de 2024, por el que se establecen normas armonizadas en materia de inteligencia artificial (Reglamento de Inteligencia Artificial)</a><span> · Parlamento Europeo y Consejo de la UE · 13-06-2024</span></li></ul>
 </main>
-<footer class="pie"><div><span>© 2026 Fernando García Varela · Metodolog&#237;a SEVEN-G</span><span>Generado el 28-09-2026</span></div><p class="pie-ia">Contenido generado y maquetado con apoyo de IA bajo supervisi&#243;n editorial del autor.</p></footer>
+<footer class="pie"><div><span>© 2026 Fernando García Varela · Metodolog&#237;a SEVEN-G</span><span>Generado el 12-10-2026</span></div><p class="pie-ia">Contenido generado y maquetado con apoyo de IA bajo supervisi&#243;n editorial del autor.</p></footer>
 <script src="codigos.js" defer></script>
 
 <script>

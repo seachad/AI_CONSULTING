@@ -392,6 +392,10 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 /* Ilustraciones en imagen (p. ej., SPAD): ocupan el ancho del lienzo y conservan su proporción */
 .g-lienzo img { display: block; width: 100%; height: auto; border: 1px solid var(--regla-2); }
 .ilustracion .g-lienzo img[src*="ilusion_de_velocidad"] { max-width: 560px; margin: 0 auto; }
+/* Nombre primero, código después (D144): el código entre paréntesis tras el nombre, en tablas y títulos */
+.codigo { font-family: var(--mono, 'Courier New', monospace); font-size: .88em; color: var(--tinta-2); white-space: nowrap; font-weight: 400; }
+h2 .codigo, h3 .codigo { font-weight: 400; }
+
 @page { @bottom-left { content: "SEVEN-G · Casos de aplicación"; font: 8.5pt "Libre Franklin", "Segoe UI", sans-serif; color: #74675e; } }
 </style>
 </head>
@@ -600,37 +604,37 @@ Las compañías, sus órganos, personas, sistemas, iniciativas, decisiones, fech
 </thead>
 <tbody>
 <tr>
-<td>D1 · Estrategia y gobierno</td>
+<td>Estrategia y gobierno <span class="codigo">(D1)</span></td>
 <td>2</td>
 <td>Comité de datos con actas, sin mandato sobre IA ni tesis aprobada.</td>
 </tr>
 <tr>
-<td>D2 · Valor y cartera</td>
+<td>Valor y cartera <span class="codigo">(D2)</span></td>
 <td>2</td>
 <td>Lista de proyectos con valor declarado por las áreas; sin priorización ni criterios de retirada.</td>
 </tr>
 <tr>
-<td>D3 · Datos y conocimiento</td>
+<td>Datos y conocimiento <span class="codigo">(D3)</span></td>
 <td>3</td>
 <td>Responsables de datos de red y de clientes nombrados; catálogo con linaje en los dominios principales.</td>
 </tr>
 <tr>
-<td>D4 · Tecnología y operación</td>
+<td>Tecnología y operación <span class="codigo">(D4)</span></td>
 <td>3</td>
 <td>Plataforma común de modelos con monitorización de la degradación en la mayoría de los casos en producción.</td>
 </tr>
 <tr>
-<td>D5 · Personas y adopción</td>
+<td>Personas y adopción <span class="codigo">(D5)</span></td>
 <td>2</td>
 <td>Formación puntual; sin planes de adopción.</td>
 </tr>
 <tr>
-<td>D6 · Riesgo, seguridad y cumplimiento</td>
+<td>Riesgo, seguridad y cumplimiento <span class="codigo">(D6)</span></td>
 <td>2</td>
 <td>Ciberseguridad de la red de control sólida, pero sin inventario de IA completo ni clasificación regulatoria.</td>
 </tr>
 <tr>
-<td>D7 · Medición y evidencia</td>
+<td>Medición y evidencia <span class="codigo">(D7)</span></td>
 <td>1</td>
 <td>Valor declarado sin línea base ni método de atribución.</td>
 </tr>
@@ -684,56 +688,56 @@ Las compañías, sus órganos, personas, sistemas, iniciativas, decisiones, fech
 </thead>
 <tbody>
 <tr>
-<td>G0</td>
+<td><strong>Autorizaci&#243;n</strong> <span class="codigo">(G0)</span></td>
 <td>1T27</td>
 <td>Continuar</td>
 <td>Comité de IA</td>
 <td>Encaje con la tesis; roles sin incompatibilidades.</td>
 </tr>
 <tr>
-<td>G1</td>
+<td><strong>Oportunidad</strong> <span class="codigo">(G1)</span></td>
 <td>1T27</td>
 <td>Continuar</td>
 <td>Patrocinador, informando al comité</td>
 <td>Las averías no planificadas son el mayor coste evitable del mantenimiento.</td>
 </tr>
 <tr>
-<td>G2</td>
+<td><strong>Hip&#243;tesis</strong> <span class="codigo">(G2)</span></td>
 <td>2T27</td>
 <td>Continuar</td>
 <td>Comité de IA</td>
 <td>Línea base medida: 118 averías no planificadas al año en la zona piloto; zona de control comparable.</td>
 </tr>
 <tr>
-<td>G3</td>
+<td><strong>Viabilidad</strong> <span class="codigo">(G3)</span></td>
 <td>2T27</td>
 <td>Continuar</td>
 <td>Comité de IA</td>
 <td>Datos de telemetría suficientes; riesgo residual Medio.</td>
 </tr>
 <tr>
-<td>G4</td>
+<td><strong>Dise&#241;o</strong> <span class="codigo">(G4)</span></td>
 <td>3T27</td>
 <td>Continuar</td>
 <td>Comité de IA</td>
 <td>Plan de reversión: volver al calendario de sustitución por antigüedad.</td>
 </tr>
 <tr>
-<td>G5</td>
+<td><strong>Puesta en producci&#243;n</strong> <span class="codigo">(G5)</span></td>
 <td>4T27</td>
 <td>Continuar con condiciones</td>
 <td>Comité de IA tras firma multinivel</td>
 <td>Condición: medir doce meses frente a la zona de control (plazo 4T28; responsable: control de gestión).</td>
 </tr>
 <tr>
-<td>R6</td>
+<td><strong>Revisi&#243;n de continuidad</strong> <span class="codigo">(R6)</span></td>
 <td>Trimestral 2028</td>
 <td>Continuar</td>
 <td>Comité de IA</td>
 <td>Estable; sin incidentes.</td>
 </tr>
 <tr>
-<td>G7</td>
+<td><strong>Escalado o retirada</strong> <span class="codigo">(G7)</span></td>
 <td>4T28</td>
 <td><strong>Escalar</strong></td>
 <td>Comité de IA</td>
@@ -798,14 +802,14 @@ Las compañías, sus órganos, personas, sistemas, iniciativas, decisiones, fech
 <td>Oportunidad alineada con la esfera 02.</td>
 </tr>
 <tr>
-<td>G2</td>
+<td><strong>Hip&#243;tesis</strong> <span class="codigo">(G2)</span></td>
 <td>2T27</td>
 <td>Continuar</td>
 <td>Comité de IA y <strong>pleno</strong> (DEC-2027-004)</td>
 <td>Etapa 1 con límite de 250.000 €; criterio de parada: riesgo residual Crítico no aceptable dentro del apetito.</td>
 </tr>
 <tr>
-<td>G3</td>
+<td><strong>Viabilidad</strong> <span class="codigo">(G3)</span></td>
 <td>3T27</td>
 <td><strong>Parar</strong></td>
 <td>Comité de IA</td>
@@ -857,7 +861,7 @@ Las compañías, sus órganos, personas, sistemas, iniciativas, decisiones, fech
 </thead>
 <tbody>
 <tr>
-<td>G7</td>
+<td><strong>Escalado o retirada</strong> <span class="codigo">(G7)</span></td>
 <td>2T27</td>
 <td><strong>Retirar</strong></td>
 <td>Comité de IA</td>
@@ -918,37 +922,37 @@ Las compañías, sus órganos, personas, sistemas, iniciativas, decisiones, fech
 </thead>
 <tbody>
 <tr>
-<td>D1 · Estrategia y gobierno</td>
+<td>Estrategia y gobierno <span class="codigo">(D1)</span></td>
 <td>3</td>
 <td>Comité de operaciones digitales con mandato y actas; cartera aprobada.</td>
 </tr>
 <tr>
-<td>D2 · Valor y cartera</td>
+<td>Valor y cartera <span class="codigo">(D2)</span></td>
 <td>3</td>
 <td>Casos priorizados con valor y coste; criterios de retirada documentados.</td>
 </tr>
 <tr>
-<td>D3 · Datos y conocimiento</td>
+<td>Datos y conocimiento <span class="codigo">(D3)</span></td>
 <td>2</td>
 <td>Datos de telemetría buenos; datos comerciales dispersos.</td>
 </tr>
 <tr>
-<td>D4 · Tecnología y operación</td>
+<td>Tecnología y operación <span class="codigo">(D4)</span></td>
 <td>3</td>
 <td>Monitorización y planes de reversión en los sistemas de planificación.</td>
 </tr>
 <tr>
-<td>D5 · Personas y adopción</td>
+<td>Personas y adopción <span class="codigo">(D5)</span></td>
 <td>2</td>
 <td>Formación de planificadores; sin posición sobre el efecto en conductores.</td>
 </tr>
 <tr>
-<td>D6 · Riesgo, seguridad y cumplimiento</td>
+<td>Riesgo, seguridad y cumplimiento <span class="codigo">(D6)</span></td>
 <td>2</td>
 <td>Inventario completo; clasificación regulatoria pendiente en sistemas que afectan a empleados.</td>
 </tr>
 <tr>
-<td>D7 · Medición y evidencia</td>
+<td>Medición y evidencia <span class="codigo">(D7)</span></td>
 <td>3</td>
 <td>Pilotos con centros de control; validación por control de gestión.</td>
 </tr>
@@ -1009,7 +1013,7 @@ Las compañías, sus órganos, personas, sistemas, iniciativas, decisiones, fech
 <td>Línea base de kilómetros y horas en dos centros piloto y dos de control.</td>
 </tr>
 <tr>
-<td>G3</td>
+<td><strong>Viabilidad</strong> <span class="codigo">(G3)</span></td>
 <td>1T27</td>
 <td>Continuar</td>
 <td>Patrocinador con conformidad de riesgos</td>
@@ -1023,14 +1027,14 @@ Las compañías, sus órganos, personas, sistemas, iniciativas, decisiones, fech
 <td>Piloto supera el umbral; reversión probada al plan manual.</td>
 </tr>
 <tr>
-<td>R6</td>
+<td><strong>Revisi&#243;n de continuidad</strong> <span class="codigo">(R6)</span></td>
 <td>1T28</td>
 <td>Continuar</td>
 <td>Patrocinador</td>
 <td>Estable.</td>
 </tr>
 <tr>
-<td>G7</td>
+<td><strong>Escalado o retirada</strong> <span class="codigo">(G7)</span></td>
 <td>3T28</td>
 <td><strong>Escalar</strong></td>
 <td>Patrocinador</td>
@@ -1107,28 +1111,28 @@ Las compañías, sus órganos, personas, sistemas, iniciativas, decisiones, fech
 <td>Encaje con la tesis.</td>
 </tr>
 <tr>
-<td>G2</td>
+<td><strong>Hip&#243;tesis</strong> <span class="codigo">(G2)</span></td>
 <td>2T27</td>
 <td>Continuar</td>
 <td>Comité de IA y <strong>pleno</strong> (DEC-2027-015)</td>
 <td>Hito de aprendizaje: 400 cargas. Criterios de parada: mejora del margen por carga inferior a 1,0 punto frente al grupo de control, o más del 2 % de cargas con errores en las condiciones.</td>
 </tr>
 <tr>
-<td>G3</td>
+<td><strong>Viabilidad</strong> <span class="codigo">(G3)</span></td>
 <td>2T27</td>
 <td>Continuar con condiciones</td>
 <td>Comité de IA</td>
 <td>Condición no crítica: acuerdos firmados con dos bolsas de carga antes de G5.</td>
 </tr>
 <tr>
-<td>G4</td>
+<td><strong>Dise&#241;o</strong> <span class="codigo">(G4)</span></td>
 <td>3T27</td>
 <td>Continuar</td>
 <td>Comité de IA</td>
 <td>Límite por carga, registro de acciones e interruptor de parada diseñados.</td>
 </tr>
 <tr>
-<td>G5</td>
+<td><strong>Puesta en producci&#243;n</strong> <span class="codigo">(G5)</span></td>
 <td>1T28</td>
 <td><strong>Parar</strong></td>
 <td>Comité de IA</td>
@@ -1157,7 +1161,7 @@ Las compañías, sus órganos, personas, sistemas, iniciativas, decisiones, fech
 <td>Línea base: 212 accidentes con daños propios al año en la flota piloto.</td>
 </tr>
 <tr>
-<td>G3</td>
+<td><strong>Viabilidad</strong> <span class="codigo">(G3)</span></td>
 <td>3T27</td>
 <td><strong>Iterar</strong></td>
 <td>Comité de IA</td>
@@ -1171,14 +1175,14 @@ Las compañías, sus órganos, personas, sistemas, iniciativas, decisiones, fech
 <td>Evaluaciones completas; posición aprobada en respuesta a REC-2027-012.</td>
 </tr>
 <tr>
-<td>G4</td>
+<td><strong>Dise&#241;o</strong> <span class="codigo">(G4)</span></td>
 <td>1T28</td>
 <td>Continuar</td>
 <td>Comité de IA</td>
 <td>Sin sanciones automáticas; el jefe de tráfico decide.</td>
 </tr>
 <tr>
-<td>G5</td>
+<td><strong>Puesta en producci&#243;n</strong> <span class="codigo">(G5)</span></td>
 <td>2T28</td>
 <td>Continuar</td>
 <td>Comité de IA tras firma multinivel</td>
@@ -1208,37 +1212,37 @@ Las compañías, sus órganos, personas, sistemas, iniciativas, decisiones, fech
 </thead>
 <tbody>
 <tr>
-<td>D1 · Estrategia y gobierno</td>
+<td>Estrategia y gobierno <span class="codigo">(D1)</span></td>
 <td>3</td>
 <td>Comité de IA clínica con facultativos y ética; mandato aprobado.</td>
 </tr>
 <tr>
-<td>D2 · Valor y cartera</td>
+<td>Valor y cartera <span class="codigo">(D2)</span></td>
 <td>2</td>
 <td>Cartera sin valor en dinero ni criterios de retirada.</td>
 </tr>
 <tr>
-<td>D3 · Datos y conocimiento</td>
+<td>Datos y conocimiento <span class="codigo">(D3)</span></td>
 <td>3</td>
 <td>Gobierno del dato clínico con responsables y controles de acceso.</td>
 </tr>
 <tr>
-<td>D4 · Tecnología y operación</td>
+<td>Tecnología y operación <span class="codigo">(D4)</span></td>
 <td>3</td>
 <td>Monitorización y reversión en los sistemas clínicos.</td>
 </tr>
 <tr>
-<td>D5 · Personas y adopción</td>
+<td>Personas y adopción <span class="codigo">(D5)</span></td>
 <td>3</td>
 <td>Planes de adopción con formación clínica.</td>
 </tr>
 <tr>
-<td>D6 · Riesgo, seguridad y cumplimiento</td>
+<td>Riesgo, seguridad y cumplimiento <span class="codigo">(D6)</span></td>
 <td>4</td>
 <td>Inventario completo, clasificación con criterio jurídico, evaluaciones de impacto y simulacros.</td>
 </tr>
 <tr>
-<td>D7 · Medición y evidencia</td>
+<td>Medición y evidencia <span class="codigo">(D7)</span></td>
 <td>1</td>
 <td>Beneficios clínicos y económicos declarados, sin línea base ni grupo de control.</td>
 </tr>
@@ -1299,35 +1303,35 @@ Las compañías, sus órganos, personas, sistemas, iniciativas, decisiones, fech
 <td>Línea base: 7,5 minutos de documentación por consulta.</td>
 </tr>
 <tr>
-<td>G3</td>
+<td><strong>Viabilidad</strong> <span class="codigo">(G3)</span></td>
 <td>2T27</td>
 <td>Continuar</td>
 <td>Comité de IA</td>
 <td>Evaluaciones de impacto completas; riesgo residual Medio.</td>
 </tr>
 <tr>
-<td>G4</td>
+<td><strong>Dise&#241;o</strong> <span class="codigo">(G4)</span></td>
 <td>2T27</td>
 <td>Continuar</td>
 <td>Comité de IA</td>
 <td>Firma médica obligatoria; interruptor de parada que vuelve a la redacción manual.</td>
 </tr>
 <tr>
-<td>G5</td>
+<td><strong>Puesta en producci&#243;n</strong> <span class="codigo">(G5)</span></td>
 <td>3T27</td>
 <td>Continuar con condiciones</td>
 <td>Comité de IA tras firma multinivel</td>
 <td>Condición no crítica: plan de reasignación de la capacidad aprobado por dirección médica en 90 días.</td>
 </tr>
 <tr>
-<td>R6</td>
+<td><strong>Revisi&#243;n de continuidad</strong> <span class="codigo">(R6)</span></td>
 <td>4T27</td>
 <td>Continuar</td>
 <td>Comité de IA</td>
 <td>INC-2027-006 (S3): un borrador atribuía una medicación a otro paciente; detectado en la revisión antes de la firma. Acción: verificación de la identidad del paciente al iniciar la grabación.</td>
 </tr>
 <tr>
-<td>G7</td>
+<td><strong>Escalado o retirada</strong> <span class="codigo">(G7)</span></td>
 <td>3T28</td>
 <td><strong>Iterar</strong></td>
 <td>Comité de IA</td>
@@ -1403,14 +1407,14 @@ Las compañías, sus órganos, personas, sistemas, iniciativas, decisiones, fech
 </thead>
 <tbody>
 <tr>
-<td>R6</td>
+<td><strong>Revisi&#243;n de continuidad</strong> <span class="codigo">(R6)</span></td>
 <td>2T27</td>
 <td>Adelanta G7</td>
 <td>Comité de IA</td>
 <td>Primera prueba de sesgo: sensibilidad de 0,71 en el conjunto, pero de 0,52 en pacientes mayores de 80 años, el grupo con más reingresos.</td>
 </tr>
 <tr>
-<td>G7</td>
+<td><strong>Escalado o retirada</strong> <span class="codigo">(G7)</span></td>
 <td>2T27</td>
 <td><strong>Retirar</strong></td>
 <td>Comité de IA</td>
@@ -1439,14 +1443,14 @@ Las compañías, sus órganos, personas, sistemas, iniciativas, decisiones, fech
 <td>Demanda de pacientes identificada.</td>
 </tr>
 <tr>
-<td>G2</td>
+<td><strong>Hip&#243;tesis</strong> <span class="codigo">(G2)</span></td>
 <td>3T27</td>
 <td>Continuar</td>
 <td>Comité de IA y <strong>pleno</strong> (DEC-2027-025)</td>
 <td>Etapa 1 con límite de 150.000 €.</td>
 </tr>
 <tr>
-<td>G3</td>
+<td><strong>Viabilidad</strong> <span class="codigo">(G3)</span></td>
 <td>4T27</td>
 <td><strong>Parar</strong></td>
 <td>Comité de IA</td>
@@ -1477,37 +1481,37 @@ Las compañías, sus órganos, personas, sistemas, iniciativas, decisiones, fech
 </thead>
 <tbody>
 <tr>
-<td>D1 · Estrategia y gobierno</td>
+<td>Estrategia y gobierno <span class="codigo">(D1)</span></td>
 <td>3</td>
 <td>Tesis de IA aprobada; comité de IA con decisiones registradas.</td>
 </tr>
 <tr>
-<td>D2 · Valor y cartera</td>
+<td>Valor y cartera <span class="codigo">(D2)</span></td>
 <td>3</td>
 <td>Cartera priorizada con neto adicional por euro.</td>
 </tr>
 <tr>
-<td>D3 · Datos y conocimiento</td>
+<td>Datos y conocimiento <span class="codigo">(D3)</span></td>
 <td>3</td>
 <td>Datos de ventas y clientes gobernados; datos de compras incompletos.</td>
 </tr>
 <tr>
-<td>D4 · Tecnología y operación</td>
+<td>Tecnología y operación <span class="codigo">(D4)</span></td>
 <td>3</td>
 <td>Monitorización, reversión y gestión de incidentes.</td>
 </tr>
 <tr>
-<td>D5 · Personas y adopción</td>
+<td>Personas y adopción <span class="codigo">(D5)</span></td>
 <td>3</td>
 <td>Planes de adopción en tiendas y centrales.</td>
 </tr>
 <tr>
-<td>D6 · Riesgo, seguridad y cumplimiento</td>
+<td>Riesgo, seguridad y cumplimiento <span class="codigo">(D6)</span></td>
 <td>3</td>
 <td>Inventario, clasificación y evaluaciones al día.</td>
 </tr>
 <tr>
-<td>D7 · Medición y evidencia</td>
+<td>Medición y evidencia <span class="codigo">(D7)</span></td>
 <td>3</td>
 <td>Grupos de control en los principales casos.</td>
 </tr>
@@ -1561,42 +1565,42 @@ Las compañías, sus órganos, personas, sistemas, iniciativas, decisiones, fech
 </thead>
 <tbody>
 <tr>
-<td>G2</td>
+<td><strong>Hip&#243;tesis</strong> <span class="codigo">(G2)</span></td>
 <td>1T27</td>
 <td>Continuar</td>
 <td>Comité de IA y <strong>pleno</strong> (DEC-2027-032)</td>
 <td>Hitos: 10.000 suscriptores activos a nueve meses; margen incremental ≥ 4 € por pedido frente al grupo de control. Parada: menos de 5.000 suscriptores o margen inferior a 2 €.</td>
 </tr>
 <tr>
-<td>G3</td>
+<td><strong>Viabilidad</strong> <span class="codigo">(G3)</span></td>
 <td>2T27</td>
 <td>Continuar</td>
 <td>Comité de IA</td>
 <td>Riesgo residual Medio (protección de datos y personalización).</td>
 </tr>
 <tr>
-<td>G4</td>
+<td><strong>Dise&#241;o</strong> <span class="codigo">(G4)</span></td>
 <td>2T27</td>
 <td>Continuar</td>
 <td>Comité de IA</td>
 <td>Grupo de control del 5 % de clientes diseñado.</td>
 </tr>
 <tr>
-<td>G5</td>
+<td><strong>Puesta en producci&#243;n</strong> <span class="codigo">(G5)</span></td>
 <td>4T27</td>
 <td>Continuar</td>
 <td>Comité de IA tras firma multinivel</td>
 <td>Evidencia de mercado: 12.300 suscriptores activos a nueve meses.</td>
 </tr>
 <tr>
-<td>R6</td>
+<td><strong>Revisi&#243;n de continuidad</strong> <span class="codigo">(R6)</span></td>
 <td>Trimestral 2028</td>
 <td>Continuar</td>
 <td>Comité de IA</td>
 <td>Sin incidentes relevantes.</td>
 </tr>
 <tr>
-<td>G7</td>
+<td><strong>Escalado o retirada</strong> <span class="codigo">(G7)</span></td>
 <td>4T28</td>
 <td><strong>Escalar</strong></td>
 <td>Comité de IA y <strong>pleno</strong> (DEC-2028-030)</td>
@@ -1662,7 +1666,7 @@ Las compañías, sus órganos, personas, sistemas, iniciativas, decisiones, fech
 <td>Hipótesis de mejora de condiciones con línea base de las últimas negociaciones.</td>
 </tr>
 <tr>
-<td>G3</td>
+<td><strong>Viabilidad</strong> <span class="codigo">(G3)</span></td>
 <td>3T27</td>
 <td><strong>Parar</strong></td>
 <td>Comité de IA</td>
@@ -1714,14 +1718,14 @@ Las compañías, sus órganos, personas, sistemas, iniciativas, decisiones, fech
 </thead>
 <tbody>
 <tr>
-<td>R6</td>
+<td><strong>Revisi&#243;n de continuidad</strong> <span class="codigo">(R6)</span></td>
 <td>1T27</td>
 <td>Adelanta G7</td>
 <td>Comité de IA</td>
 <td>Neto negativo y efecto reputacional.</td>
 </tr>
 <tr>
-<td>G7</td>
+<td><strong>Escalado o retirada</strong> <span class="codigo">(G7)</span></td>
 <td>2T27</td>
 <td><strong>Retirar</strong></td>
 <td>Comité de IA</td>
@@ -1751,37 +1755,37 @@ Las compañías, sus órganos, personas, sistemas, iniciativas, decisiones, fech
 </thead>
 <tbody>
 <tr>
-<td>D1 · Estrategia y gobierno</td>
+<td>Estrategia y gobierno <span class="codigo">(D1)</span></td>
 <td>1</td>
 <td>Iniciativas aisladas por servicio; sin órgano con mandato sobre IA.</td>
 </tr>
 <tr>
-<td>D2 · Valor y cartera</td>
+<td>Valor y cartera <span class="codigo">(D2)</span></td>
 <td>1</td>
 <td>Sin cartera.</td>
 </tr>
 <tr>
-<td>D3 · Datos y conocimiento</td>
+<td>Datos y conocimiento <span class="codigo">(D3)</span></td>
 <td>2</td>
 <td>Responsables de datos en tributos y padrón.</td>
 </tr>
 <tr>
-<td>D4 · Tecnología y operación</td>
+<td>Tecnología y operación <span class="codigo">(D4)</span></td>
 <td>2</td>
 <td>Operación de sistemas propios estable; herramientas de proveedores sin control.</td>
 </tr>
 <tr>
-<td>D5 · Personas y adopción</td>
+<td>Personas y adopción <span class="codigo">(D5)</span></td>
 <td>1</td>
 <td>Sin formación en IA.</td>
 </tr>
 <tr>
-<td>D6 · Riesgo, seguridad y cumplimiento</td>
+<td>Riesgo, seguridad y cumplimiento <span class="codigo">(D6)</span></td>
 <td>1</td>
 <td>Sin inventario previo ni clasificación.</td>
 </tr>
 <tr>
-<td>D7 · Medición y evidencia</td>
+<td>Medición y evidencia <span class="codigo">(D7)</span></td>
 <td>0</td>
 <td>Ningún valor medido.</td>
 </tr>
@@ -1859,7 +1863,7 @@ Las compañías, sus órganos, personas, sistemas, iniciativas, decisiones, fech
 <td>Línea base: servicio externo de clasificación y 1,7 minutos de revisión interna por escrito.</td>
 </tr>
 <tr>
-<td>G3</td>
+<td><strong>Viabilidad</strong> <span class="codigo">(G3)</span></td>
 <td>3T27</td>
 <td>Continuar</td>
 <td>Patrocinador con conformidad de riesgos</td>
@@ -1873,7 +1877,7 @@ Las compañías, sus órganos, personas, sistemas, iniciativas, decisiones, fech
 <td>Piloto con precisión dentro del umbral; reversión al reparto manual probada.</td>
 </tr>
 <tr>
-<td>R6</td>
+<td><strong>Revisi&#243;n de continuidad</strong> <span class="codigo">(R6)</span></td>
 <td>2T28</td>
 <td>Continuar</td>
 <td>Patrocinador</td>
@@ -1956,7 +1960,7 @@ Las compañías, sus órganos, personas, sistemas, iniciativas, decisiones, fech
 <td>Hipótesis: más personas colocadas por orientador.</td>
 </tr>
 <tr>
-<td>G3</td>
+<td><strong>Viabilidad</strong> <span class="codigo">(G3)</span></td>
 <td>1T28</td>
 <td><strong>Parar</strong></td>
 <td>Comisión de transformación digital</td>
@@ -1987,37 +1991,37 @@ Las compañías, sus órganos, personas, sistemas, iniciativas, decisiones, fech
 </thead>
 <tbody>
 <tr>
-<td>D1 · Estrategia y gobierno</td>
+<td>Estrategia y gobierno <span class="codigo">(D1)</span></td>
 <td>2</td>
 <td>Tesis de la cooperativa sin mandato formal sobre IA.</td>
 </tr>
 <tr>
-<td>D2 · Valor y cartera</td>
+<td>Valor y cartera <span class="codigo">(D2)</span></td>
 <td>2</td>
 <td>Proyectos aislados con valor declarado; sin criterios de priorización.</td>
 </tr>
 <tr>
-<td>D3 · Datos y conocimiento</td>
+<td>Datos y conocimiento <span class="codigo">(D3)</span></td>
 <td>2</td>
 <td>Datos de compras y ventas en contabilidad y ERP con cierta dispersión.</td>
 </tr>
 <tr>
-<td>D4 · Tecnología y operación</td>
+<td>Tecnología y operación <span class="codigo">(D4)</span></td>
 <td>2</td>
 <td>Sistemas de producción estables; poca automatización de datos.</td>
 </tr>
 <tr>
-<td>D5 · Personas y adopción</td>
+<td>Personas y adopción <span class="codigo">(D5)</span></td>
 <td>2</td>
 <td>Personal de almacén y producción con cultura de mejora continua.</td>
 </tr>
 <tr>
-<td>D6 · Riesgo, seguridad y cumplimiento</td>
+<td>Riesgo, seguridad y cumplimiento <span class="codigo">(D6)</span></td>
 <td>2</td>
 <td>Control de seguridad de producción aceptable; inventario de IA aún incompleto.</td>
 </tr>
 <tr>
-<td>D7 · Medición y evidencia</td>
+<td>Medición y evidencia <span class="codigo">(D7)</span></td>
 <td>1</td>
 <td>Sin líneas base ni validación formal del valor.</td>
 </tr>
@@ -2068,21 +2072,21 @@ Las compañías, sus órganos, personas, sistemas, iniciativas, decisiones, fech
 <td>Línea base de ventas y devoluciones por centro.</td>
 </tr>
 <tr>
-<td>G3</td>
+<td><strong>Viabilidad</strong> <span class="codigo">(G3)</span></td>
 <td>2T27</td>
 <td>Continuar</td>
 <td>Patrocinador con conformidad de riesgos</td>
 <td>Riesgo residual Bajo; la decisión es de coordinación logística, no de compra.</td>
 </tr>
 <tr>
-<td>G4</td>
+<td><strong>Dise&#241;o</strong> <span class="codigo">(G4)</span></td>
 <td>2T27</td>
 <td>Continuar</td>
 <td>Junta</td>
 <td>Reversión a la planificación manual probada.</td>
 </tr>
 <tr>
-<td>G5</td>
+<td><strong>Puesta en producci&#243;n</strong> <span class="codigo">(G5)</span></td>
 <td>4T27</td>
 <td><strong>Parar</strong></td>
 <td>Junta</td>
@@ -2147,37 +2151,37 @@ Las compañías, sus órganos, personas, sistemas, iniciativas, decisiones, fech
 </thead>
 <tbody>
 <tr>
-<td>D1 · Estrategia y gobierno</td>
+<td>Estrategia y gobierno <span class="codigo">(D1)</span></td>
 <td>2</td>
 <td>Dirección con objetivos de experiencia, pero sin una tesis formal de IA.</td>
 </tr>
 <tr>
-<td>D2 · Valor y cartera</td>
+<td>Valor y cartera <span class="codigo">(D2)</span></td>
 <td>2</td>
 <td>Algunos pilotos aislados de marketing; sin cartera ni criterios de cierre.</td>
 </tr>
 <tr>
-<td>D3 · Datos y conocimiento</td>
+<td>Datos y conocimiento <span class="codigo">(D3)</span></td>
 <td>2</td>
 <td>Historial de reservas y ocupación bastante bueno; datos de clientes fragmentados.</td>
 </tr>
 <tr>
-<td>D4 · Tecnología y operación</td>
+<td>Tecnología y operación <span class="codigo">(D4)</span></td>
 <td>2</td>
 <td>CRM y PMS con integración parcial.</td>
 </tr>
 <tr>
-<td>D5 · Personas y adopción</td>
+<td>Personas y adopción <span class="codigo">(D5)</span></td>
 <td>3</td>
 <td>Equipo de recepción y gestión con buena disposición.</td>
 </tr>
 <tr>
-<td>D6 · Riesgo, seguridad y cumplimiento</td>
+<td>Riesgo, seguridad y cumplimiento <span class="codigo">(D6)</span></td>
 <td>2</td>
 <td>Inventario incompleto de herramientas generativas; contratos de terceros revisados.</td>
 </tr>
 <tr>
-<td>D7 · Medición y evidencia</td>
+<td>Medición y evidencia <span class="codigo">(D7)</span></td>
 <td>1</td>
 <td>Algunos indicadores de ocupación, pero sin validación de valor incremental.</td>
 </tr>
@@ -2228,7 +2232,7 @@ Las compañías, sus órganos, personas, sistemas, iniciativas, decisiones, fech
 <td>La campaña de Black Friday y las fechas de alta demanda ya estaban medidas.</td>
 </tr>
 <tr>
-<td>G3</td>
+<td><strong>Viabilidad</strong> <span class="codigo">(G3)</span></td>
 <td>2T27</td>
 <td><strong>Iterar</strong></td>
 <td>Consejo de dirección</td>
@@ -2300,37 +2304,37 @@ Las compañías, sus órganos, personas, sistemas, iniciativas, decisiones, fech
 </thead>
 <tbody>
 <tr>
-<td>D1 · Estrategia y gobierno</td>
+<td>Estrategia y gobierno <span class="codigo">(D1)</span></td>
 <td>3</td>
 <td>Hay una agenda de mejora continua y un comité operativo con responsables.</td>
 </tr>
 <tr>
-<td>D2 · Valor y cartera</td>
+<td>Valor y cartera <span class="codigo">(D2)</span></td>
 <td>3</td>
 <td>Prioridades claras por línea de negocio.</td>
 </tr>
 <tr>
-<td>D3 · Datos y conocimiento</td>
+<td>Datos y conocimiento <span class="codigo">(D3)</span></td>
 <td>3</td>
 <td>Sensores y trazabilidad en producción con un ERP ordenado.</td>
 </tr>
 <tr>
-<td>D4 · Tecnología y operación</td>
+<td>Tecnología y operación <span class="codigo">(D4)</span></td>
 <td>3</td>
 <td>Mantenimiento predictivo y monitorización ya instalados.</td>
 </tr>
 <tr>
-<td>D5 · Personas y adopción</td>
+<td>Personas y adopción <span class="codigo">(D5)</span></td>
 <td>2</td>
 <td>Algunos equipos con buena base; otros mostrando resistencia al cambio.</td>
 </tr>
 <tr>
-<td>D6 · Riesgo, seguridad y cumplimiento</td>
+<td>Riesgo, seguridad y cumplimiento <span class="codigo">(D6)</span></td>
 <td>2</td>
 <td>Identificación y control de proveedores, sin inventario de IA completo.</td>
 </tr>
 <tr>
-<td>D7 · Medición y evidencia</td>
+<td>Medición y evidencia <span class="codigo">(D7)</span></td>
 <td>3</td>
 <td>Línea base y grupos de comparación en mantenimiento y servicio.</td>
 </tr>
@@ -2386,21 +2390,21 @@ Las compañías, sus órganos, personas, sistemas, iniciativas, decisiones, fech
 <td>Grupos de control de maquinaria y fecha de avería registradas.</td>
 </tr>
 <tr>
-<td>G3</td>
+<td><strong>Viabilidad</strong> <span class="codigo">(G3)</span></td>
 <td>2T27</td>
 <td>Continuar</td>
 <td>Dirección</td>
 <td>Riesgo residual Medio; revisión por mantenimiento.</td>
 </tr>
 <tr>
-<td>G4</td>
+<td><strong>Dise&#241;o</strong> <span class="codigo">(G4)</span></td>
 <td>3T27</td>
 <td>Continuar</td>
 <td>Dirección</td>
 <td>Reversión por parada manual probada.</td>
 </tr>
 <tr>
-<td>G5</td>
+<td><strong>Puesta en producci&#243;n</strong> <span class="codigo">(G5)</span></td>
 <td>1T28</td>
 <td><strong>Escalar</strong></td>
 <td>Consejo de dirección</td>
@@ -2429,21 +2433,21 @@ Las compañías, sus órganos, personas, sistemas, iniciativas, decisiones, fech
 <td>Hipótesis de reducción del tiempo de respuesta y mejora del servicio.</td>
 </tr>
 <tr>
-<td>G3</td>
+<td><strong>Viabilidad</strong> <span class="codigo">(G3)</span></td>
 <td>3T27</td>
 <td>Continuar con condiciones</td>
 <td>Dirección</td>
 <td>Condición: revisión humana y traabilidad de las decisiones sobre contratos y entregas.</td>
 </tr>
 <tr>
-<td>G4</td>
+<td><strong>Dise&#241;o</strong> <span class="codigo">(G4)</span></td>
 <td>4T27</td>
 <td>Continuar</td>
 <td>Dirección</td>
 <td>Hito de margen previo al servicio.</td>
 </tr>
 <tr>
-<td>G5</td>
+<td><strong>Puesta en producci&#243;n</strong> <span class="codigo">(G5)</span></td>
 <td>2T28</td>
 <td><strong>Parar</strong></td>
 <td>Consejo</td>
@@ -2547,65 +2551,65 @@ Las compañías, sus órganos, personas, sistemas, iniciativas, decisiones, fech
 <div class="tabla"><table>
 <thead>
 <tr>
-<th>Código</th>
 <th>Nombre</th>
+
 <th>Uso en los casos</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td><a href="../../herramientas/T01_registro_iniciativas/registro.html" title="Herramienta T01 &#183; Registro de iniciativas">T01</a></td>
-<td>Registro de iniciativas</td>
+<td><strong>Registro de iniciativas</strong> <span class="codigo">(<a href="../../herramientas/T01_registro_iniciativas/registro.html" title="Herramienta T01 &#183; Registro de iniciativas">T01</a>)</span></td>
+
 <td>Recorrido de <em>gates</em>, estados y motivos codificados.</td>
 </tr>
 <tr>
-<td><a href="../../herramientas/T01_registro_iniciativas/registro.html#/inventario" title="Herramienta T02 &#183; Inventario de sistemas de IA">T02</a></td>
-<td>Inventario de sistemas de IA</td>
+<td><strong>Inventario de sistemas de IA</strong> <span class="codigo">(<a href="../../herramientas/T01_registro_iniciativas/registro.html#/inventario" title="Herramienta T02 &#183; Inventario de sistemas de IA">T02</a>)</span></td>
+
 <td>Hallazgos iniciales de los casos 1 y 5.</td>
 </tr>
 <tr>
-<td><a href="../../herramientas/T01_registro_iniciativas/registro.html#/gates" title="Herramienta T03 &#183; Gestor de gates">T03</a></td>
-<td>Gestor de <em>gates</em></td>
+<td><strong>Gestor de <em>gates</em></strong> <span class="codigo">(<a href="../../herramientas/T01_registro_iniciativas/registro.html#/gates" title="Herramienta T03 &#183; Gestor de gates">T03</a>)</span></td>
+
 <td>Decisiones y condiciones.</td>
 </tr>
 <tr>
-<td><a href="../../herramientas/T01_registro_iniciativas/registro.html" title="Herramienta T05 &#183; Clasificador de ambici&#243;n">T05</a></td>
-<td>Clasificador de ambición</td>
+<td><strong>Clasificador de ambición</strong> <span class="codigo">(<a href="../../herramientas/T01_registro_iniciativas/registro.html" title="Herramienta T05 &#183; Clasificador de ambici&#243;n">T05</a>)</span></td>
+
 <td>Nivel de ambición de cada iniciativa.</td>
 </tr>
 <tr>
-<td><a href="plantillas/P28_SEVEN-G_Seguimiento_de_realizacion_de_valor.html" title="Herramienta T12 &#183; Seguimiento de realizaci&#243;n de valor">T12</a></td>
-<td>Seguimiento de realización de valor</td>
+<td><strong>Seguimiento de realización de valor</strong> <span class="codigo">(<a href="plantillas/P28_SEVEN-G_Seguimiento_de_realizacion_de_valor.html" title="Herramienta T12 &#183; Seguimiento de realizaci&#243;n de valor">T12</a>)</span></td>
+
 <td>Tablas de valor con estado.</td>
 </tr>
 <tr>
-<td><a href="../../herramientas/T14_indice_transformacion/indice.html" title="Herramienta T14 &#183; Calculadora del &#237;ndice de transformaci&#243;n">T14</a></td>
-<td>Calculadora del índice de transformación</td>
+<td><strong>Calculadora del índice de transformación</strong> <span class="codigo">(<a href="../../herramientas/T14_indice_transformacion/indice.html" title="Herramienta T14 &#183; Calculadora del &#237;ndice de transformaci&#243;n">T14</a>)</span></td>
+
 <td>Perfiles de cada compañía.</td>
 </tr>
 <tr>
-<td><a href="../../herramientas/T15_diagnostico_madurez/madurez.html" title="Herramienta T15 &#183; Diagn&#243;stico de madurez">T15</a></td>
-<td>Diagnóstico de madurez</td>
+<td><strong>Diagnóstico de madurez</strong> <span class="codigo">(<a href="../../herramientas/T15_diagnostico_madurez/madurez.html" title="Herramienta T15 &#183; Diagn&#243;stico de madurez">T15</a>)</span></td>
+
 <td>Tablas D1–D7.</td>
 </tr>
 <tr>
-<td><a href="../../herramientas/T01_registro_iniciativas/registro.html#/consejo" title="Herramienta T18 &#183; Registro de recomendaciones del consejo">T18</a></td>
-<td>Registro de recomendaciones del consejo</td>
+<td><strong>Registro de recomendaciones del consejo</strong> <span class="codigo">(<a href="../../herramientas/T01_registro_iniciativas/registro.html#/consejo" title="Herramienta T18 &#183; Registro de recomendaciones del consejo">T18</a>)</span></td>
+
 <td>Códigos REC y DEC.</td>
 </tr>
 <tr>
-<td><a href="plantillas/P30_SEVEN-G_Decision_de_escalado_o_retirada.html" title="Herramienta T22 &#183; Gestor de retiradas">T22</a></td>
-<td>Gestor de retiradas</td>
+<td><strong>Gestor de retiradas</strong> <span class="codigo">(<a href="plantillas/P30_SEVEN-G_Decision_de_escalado_o_retirada.html" title="Herramienta T22 &#183; Gestor de retiradas">T22</a>)</span></td>
+
 <td>Retiradas de los casos 1, 3, 4 y 5.</td>
 </tr>
 <tr>
-<td><a href="plantillas/P29_SEVEN-G_Registro_de_decision_de_gate.html" title="Plantilla P29 &#183; Registro de decisi&#243;n de gate">P29</a></td>
-<td>Registro de decisión de <em>gate</em></td>
+<td><strong>Registro de decisión de <em>gate</em></strong> <span class="codigo">(<a href="plantillas/P29_SEVEN-G_Registro_de_decision_de_gate.html" title="Plantilla P29 &#183; Registro de decisi&#243;n de gate">P29</a>)</span></td>
+
 <td>Cada fila de las tablas de <em>gates</em>.</td>
 </tr>
 <tr>
-<td><a href="plantillas/P30_SEVEN-G_Decision_de_escalado_o_retirada.html" title="Plantilla P30 &#183; Decisi&#243;n de escalado o retirada">P30</a></td>
-<td>Decisión de escalado o retirada</td>
+<td><strong>Decisión de escalado o retirada</strong> <span class="codigo">(<a href="plantillas/P30_SEVEN-G_Decision_de_escalado_o_retirada.html" title="Plantilla P30 &#183; Decisi&#243;n de escalado o retirada">P30</a>)</span></td>
+
 <td>Decisiones de G7.</td>
 </tr>
 </tbody>
@@ -2682,7 +2686,7 @@ Las compañías, sus órganos, personas, sistemas, iniciativas, decisiones, fech
 </table></div>
 
 </main>
-<footer class="pie"><div><span>© 2026 Fernando García Varela · Metodolog&#237;a SEVEN-G</span><span>Generado el 28-09-2026</span></div><p class="pie-ia">Contenido generado y maquetado con apoyo de IA bajo supervisi&#243;n editorial del autor.</p></footer>
+<footer class="pie"><div><span>© 2026 Fernando García Varela · Metodolog&#237;a SEVEN-G</span><span>Generado el 12-10-2026</span></div><p class="pie-ia">Contenido generado y maquetado con apoyo de IA bajo supervisi&#243;n editorial del autor.</p></footer>
 <script src="codigos.js" defer></script>
 
 <script>

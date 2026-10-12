@@ -392,6 +392,10 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 /* Ilustraciones en imagen (p. ej., SPAD): ocupan el ancho del lienzo y conservan su proporción */
 .g-lienzo img { display: block; width: 100%; height: auto; border: 1px solid var(--regla-2); }
 .ilustracion .g-lienzo img[src*="ilusion_de_velocidad"] { max-width: 560px; margin: 0 auto; }
+/* Nombre primero, código después (D144): el código entre paréntesis tras el nombre, en tablas y títulos */
+.codigo { font-family: var(--mono, 'Courier New', monospace); font-size: .88em; color: var(--tinta-2); white-space: nowrap; font-weight: 400; }
+h2 .codigo, h3 .codigo { font-weight: 400; }
+
 @page { @bottom-left { content: "SEVEN-G · Gate and audit criteria"; font: 8.5pt "Libre Franklin", "Segoe UI", sans-serif; color: #74675e; } }
 </style>
 </head>
@@ -829,7 +833,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </thead>
 <tbody>
 <tr>
-<td>G0</td>
+<td><strong>Authorisation</strong> <span class="codigo">(G0)</span></td>
 <td>Proceed · Proceed with conditions · Iterate · Stop</td>
 <td>—</td>
 </tr>
@@ -844,12 +848,12 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>G5: no proceeding with a veto in force (section 9).</td>
 </tr>
 <tr>
-<td>R6</td>
+<td><strong>Continuity review</strong> <span class="codigo">(R6)</span></td>
 <td>Proceed with operation · Proceed with conditions · Bring G7 forward</td>
 <td><strong>Bring G7 forward</strong> if any deviation in section 6.7 occurs.</td>
 </tr>
 <tr>
-<td>G7</td>
+<td><strong>Scale or retire</strong> <span class="codigo">(G7)</span></td>
 <td>Scale · Iterate · Retire</td>
 <td>—</td>
 </tr>
@@ -859,7 +863,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <hr />
 <h2 id="criteria-per-gate"><span class="antetitulo">06</span>Criteria per gate</h2>
 <p>Each gate includes its purpose, who verifies and who decides (01 §7.5), the evidence examined and the table of criteria. The ambition column develops 01 §7.6; section 7 summarises it.</p>
-<h3 id="6-1-g0-authorisation">6.1 G0 · Authorisation</h3>
+<h3 id="6-1-g0-authorisation">6.1 Authorisation (G0)</h3>
 <p><strong>Purpose.</strong> Formally authorise the initiative and set the framework within which it will be developed. Without an approved G0 the initiative is not authorised: it may not consume budget or access production data.</p>
 <div class="tabla"><table>
 <thead>
@@ -989,7 +993,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tbody>
 </table></div>
 <p><strong>Specific rules.</strong> A breach of G0.09 detected after G0 is a major nonconformity and, if production personal data were accessed without a legal basis, it is assessed as critical. G0.04 in <em>Not met</em> leads to <strong>Stop</strong>.</p>
-<h3 id="6-2-g1-opportunity">6.2 G1 · Opportunity</h3>
+<h3 id="6-2-g1-opportunity">6.2 Opportunity (G1)</h3>
 <p><strong>Purpose.</strong> Confirm that there is a business opportunity that requires AI and that its potential value justifies formulating a hypothesis.</p>
 <div class="tabla"><table>
 <thead>
@@ -1119,7 +1123,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tbody>
 </table></div>
 <p><strong>Specific rules.</strong> <strong>Pivot</strong> at G1 leads to formulating a different hypothesis in phase 2 while keeping the context approved at G0.</p>
-<h3 id="6-3-g2-hypothesis">6.3 G2 · Hypothesis</h3>
+<h3 id="6-3-g2-hypothesis">6.3 Hypothesis (G2)</h3>
 <p><strong>Purpose.</strong> Approve a measurable and falsifiable value hypothesis, with a baseline, attribution method and stop criteria defined before investing.</p>
 <div class="tabla"><table>
 <thead>
@@ -1276,7 +1280,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tbody>
 </table></div>
 <p><strong>Specific rules.</strong> If the confirmed ambition becomes Transform, the intensity becomes Enterprise and G2.11 and G2.12 apply before deciding. If an initiative approved as Transform is reclassified to a lower level, the board is informed.</p>
-<h3 id="6-4-g3-feasibility">6.4 G3 · Feasibility</h3>
+<h3 id="6-4-g3-feasibility">6.4 Feasibility (G3)</h3>
 <p><strong>Purpose.</strong> Decide whether the initiative is technically, economically, regulatorily and organisationally feasible with an acceptable risk. It is the <strong>main stop gate</strong> of the lifecycle.</p>
 <div class="tabla"><table>
 <thead>
@@ -1514,7 +1518,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tbody>
 </table></div>
 <p><strong>Specific rules.</strong> Prohibited practices never get past this phase (01 §6.5). A Critical residual risk without the approval in G3.12 blocks G3. <strong>Pivot</strong> is admissible when the hypothesis does not hold but a reasonable alternative exists.</p>
-<h3 id="6-5-g4-design">6.5 G4 · Design</h3>
+<h3 id="6-5-g4-design">6.5 Design (G4)</h3>
 <p><strong>Purpose.</strong> Approve a design that is controllable, supervisable and reversible, that covers the controls required by the risk classification, and in which each risk from phase 3 has a designed control.</p>
 <div class="tabla"><table>
 <thead>
@@ -1752,7 +1756,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tbody>
 </table></div>
 <p><strong>Specific rules.</strong> In Lite, G4 and G5 may be resolved in the same session if each criterion is assessed and recorded separately. High-risk classification implies Enterprise intensity, which is why G4.14 has no Lite column.</p>
-<h3 id="6-6-g5-go-live">6.6 G5 · Go-live</h3>
+<h3 id="6-6-g5-go-live">6.6 Go-live (G5)</h3>
 <p><strong>Purpose.</strong> Authorise go-live when the solution works, delivers value under real conditions, the critical controls operate and operations are prepared.</p>
 <div class="tabla"><table>
 <thead>
@@ -1999,7 +2003,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tbody>
 </table></div>
 <p><strong>Specific rules.</strong> A system in production without an approved G5 is a critical nonconformity (01 §12). The sign-offs in <a href="plantillas/P23_SEVEN-G_Firma_de_puesta_en_produccion.html" title="Template P23 &#183; Go-live sign-off">P23</a> refer to a specific version of the system: a significant change between sign-off and go-live requires signing off again.</p>
-<h3 id="6-7-r6-continuity-review">6.7 R6 · Continuity review</h3>
+<h3 id="6-7-r6-continuity-review">6.7 Continuity review (R6)</h3>
 <p><strong>Purpose.</strong> Periodically check that the system continues to work, deliver value and remain under control, and bring G7 forward if there are relevant deviations. Minimum frequency: <strong>quarterly in Enterprise and half-yearly in Lite</strong>.</p>
 <div class="tabla"><table>
 <thead>
@@ -2191,7 +2195,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <li>The regulatory classification or the intensity changes.</li>
 <li>The supplier ceases to meet conditions required as not conditionable or announces the withdrawal of the service.</li>
 </ul>
-<h3 id="6-8-g7-scale-or-retire">6.8 G7 · Scale or retire</h3>
+<h3 id="6-8-g7-scale-or-retire">6.8 Scale or retire (G7)</h3>
 <p><strong>Purpose.</strong> Decide with evidence whether the initiative is scaled, iterated or retired.</p>
 <div class="tabla"><table>
 <thead>
@@ -2354,43 +2358,43 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </thead>
 <tbody>
 <tr id="cod-g1">
-<td><strong>G1</strong></td>
+<td><strong>Opportunity</strong> <span class="codigo">(G1)</span></td>
 <td>Impact on people recommended (G1.10).</td>
 <td>Affected roles and teams identified (G1.10).</td>
 <td>Proposal communicated to the AI Committee (G1.06); senior management sponsor (G0.01).</td>
 </tr>
 <tr id="cod-g2">
-<td><strong>G2</strong></td>
+<td><strong>Hypothesis</strong> <span class="codigo">(G2)</span></td>
 <td>Baseline for cost, time or errors (G2.03); expected savings with a formula (G2.06); adoption target recommended (G2.10).</td>
 <td>Baseline for performance and cost (G2.03); adoption target mandatory (G2.10).</td>
 <td>Learning milestones, investment limit and stop criteria per stage (G2.08, G2.11); board approval (G2.12).</td>
 </tr>
 <tr id="cod-g3">
-<td><strong>G3</strong></td>
+<td><strong>Feasibility</strong> <span class="codigo">(G3)</span></td>
 <td>Positive expected annual net value within the C2 horizon (G3.05).</td>
 <td>Expected net value and feasibility of adoption and of the role change (G3.05, G3.16).</td>
 <td>Feasibility of the first stage, stop criteria per stage and documented option value (G3.01, G3.05); impact on the operating model (G3.16).</td>
 </tr>
 <tr id="cod-g4">
-<td><strong>G4</strong></td>
+<td><strong>Design</strong> <span class="codigo">(G4)</span></td>
 <td>Plan for realising released capacity (G4.11).</td>
 <td>Plan for role change and reallocation (G4.11).</td>
 <td>Change in the operating model for the first stage; pilot that measures market or customer evidence (G4.11, G4.12).</td>
 </tr>
 <tr id="cod-g5">
-<td><strong>G5</strong></td>
+<td><strong>Go-live</strong> <span class="codigo">(G5)</span></td>
 <td>Efficiency validated against the baseline; plan to realise released capacity (G5.08, G5.10).</td>
 <td>Actual adoption and performance improvement measured; reallocation plan (G5.08, G5.10).</td>
 <td>Market or customer evidence: use, conversion, initial revenue or verified operational change (G5.08).</td>
 </tr>
 <tr id="cod-r6">
-<td><strong>R6</strong></td>
+<td><strong>Continuity review</strong> <span class="codigo">(R6)</span></td>
 <td>Realised savings or reassigned capacity (R6.02); adoption recommended (R6.14).</td>
 <td>Sustained performance and adoption (R6.02, R6.14).</td>
 <td>Progress against the stage milestones (R6.02).</td>
 </tr>
 <tr id="cod-g7">
-<td><strong>G7</strong></td>
+<td><strong>Scale or retire</strong> <span class="codigo">(G7)</span></td>
 <td>Realised savings, not just released capacity (G7.01).</td>
 <td>Sustained performance and reassigned capacity (G7.01).</td>
 <td>Measured return and verified change in the operating model or the offering (G7.01); board approval to scale (G7.09).</td>
@@ -2976,35 +2980,35 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <div class="tabla"><table>
 <thead>
 <tr>
-<th>Code</th>
 <th>Name</th>
+
 <th>Use in this document</th>
 </tr>
 </thead>
 <tbody>
 <tr id="cod-t03">
-<td><strong><a href="../../herramientas/T01_registro_iniciativas/registro.html#/gates" title="Tool T03 &#183; Gate manager">T03</a></strong></td>
-<td><em>Gate</em> manager</td>
+<td><strong><em>Gate</em> manager</strong> <span class="codigo">(<a href="../../herramientas/T01_registro_iniciativas/registro.html#/gates" title="Tool T03 &#183; Gate manager">T03</a>)</span></td>
+
 <td>Criteria with code and applicability; statuses, R and D dimensions, verification, sign-offs, decision and conditions; calculation of the degree of compliance and blocking of Proceed when there are blocking criteria.</td>
 </tr>
 <tr>
-<td><strong><a href="../../herramientas/T01_registro_iniciativas/registro.html" title="Tool T01 &#183; Initiative register">T01</a>, <a href="../../herramientas/T01_registro_iniciativas/registro.html#/inventario" title="Tool T02 &#183; AI system inventory">T02</a>, <a href="../../herramientas/T01_registro_iniciativas/registro.html" title="Tool T04 &#183; Intensity determination">T04</a>–<a href="../../herramientas/T11_calculadora_valor/calculadora.html#/costes" title="Tool T13 &#183; Cost calculator per use case">T13</a>, <a href="plantillas/P20_SEVEN-G_Plan_de_adopcion_y_capacidad.html" title="Tool T20 &#183; Adoption and capacity plan">T20</a>, <a href="plantillas/P30_SEVEN-G_Decision_de_escalado_o_retirada.html" title="Tool T22 &#183; Retirement manager">T22</a></strong></td>
-<td>Other tools in <a href="03_SEVEN-G_Herramientas_y_registro_de_iniciativas.html" title="Document 03 &#183; SEVEN-G tools and initiative register">document 03</a></td>
+<td><strong>Other tools in <a href="03_SEVEN-G_Herramientas_y_registro_de_iniciativas.html" title="Document 03 &#183; SEVEN-G tools and initiative register">document 03</a></strong> <span class="codigo">(<a href="../../herramientas/T01_registro_iniciativas/registro.html" title="Tool T01 &#183; Initiative register">T01</a>, <a href="../../herramientas/T01_registro_iniciativas/registro.html#/inventario" title="Tool T02 &#183; AI system inventory">T02</a>, <a href="../../herramientas/T01_registro_iniciativas/registro.html" title="Tool T04 &#183; Intensity determination">T04</a>–<a href="../../herramientas/T11_calculadora_valor/calculadora.html#/costes" title="Tool T13 &#183; Cost calculator per use case">T13</a>, <a href="plantillas/P20_SEVEN-G_Plan_de_adopcion_y_capacidad.html" title="Tool T20 &#183; Adoption and capacity plan">T20</a>, <a href="plantillas/P30_SEVEN-G_Decision_de_escalado_o_retirada.html" title="Tool T22 &#183; Retirement manager">T22</a>)</span></td>
+
 <td>Time traceability and evidence for the criteria, according to the <em>Evidence</em> column.</td>
 </tr>
 <tr id="cod-p23">
-<td><strong><a href="plantillas/P23_SEVEN-G_Firma_de_puesta_en_produccion.html" title="Template P23 &#183; Go-live sign-off">P23</a></strong></td>
-<td>Go-live sign-off</td>
+<td><strong>Go-live sign-off</strong> <span class="codigo">(<a href="plantillas/P23_SEVEN-G_Firma_de_puesta_en_produccion.html" title="Template P23 &#183; Go-live sign-off">P23</a>)</span></td>
+
 <td>Multi-level sign-off and veto (section 9).</td>
 </tr>
 <tr id="cod-p29">
-<td><strong><a href="plantillas/P29_SEVEN-G_Registro_de_decision_de_gate.html" title="Template P29 &#183; Gate decision record">P29</a></strong></td>
-<td><em>Gate</em> decision record</td>
+<td><strong><em>Gate</em> decision record</strong> <span class="codigo">(<a href="plantillas/P29_SEVEN-G_Registro_de_decision_de_gate.html" title="Template P29 &#183; Gate decision record">P29</a>)</span></td>
+
 <td>Format in section 11.</td>
 </tr>
 <tr>
-<td><strong><a href="plantillas/P01_SEVEN-G_Carta_de_la_iniciativa.html" title="Template P01 &#183; Initiative charter">P01</a>–<a href="plantillas/P31_SEVEN-G_Ficha_de_caso_de_uso.html" title="Template P31 &#183; Use case record">P31</a></strong></td>
-<td>Block H templates</td>
+<td><strong>Block H templates</strong> <span class="codigo">(<a href="plantillas/P01_SEVEN-G_Carta_de_la_iniciativa.html" title="Template P01 &#183; Initiative charter">P01</a>–<a href="plantillas/P31_SEVEN-G_Ficha_de_caso_de_uso.html" title="Template P31 &#183; Use case record">P31</a>)</span></td>
+
 <td>Evidence for each criterion.</td>
 </tr>
 </tbody>
@@ -3089,7 +3093,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </table></div>
 <h2 id="external-sources">External sources cited</h2><p class="fuentes-nota">Links to the official or primary source, checked before publication. Always verify the version in force on the date of use.</p><ul class="fuentes-externas"><li><a href="https://eur-lex.europa.eu/eli/dir/2022/2555/oj/eng" target="_blank" rel="noopener">Directive (EU) 2022/2555 of the European Parliament and of the Council of 14 December 2022 on measures for a high common level of cybersecurity across the Union (NIS 2 Directive)</a><span> · Parlamento Europeo y Consejo de la UE · 14-12-2022</span></li><li><a href="https://eur-lex.europa.eu/eli/reg/2022/2554/oj/eng" target="_blank" rel="noopener">Regulation (EU) 2022/2554 of the European Parliament and of the Council of 14 December 2022 on digital operational resilience for the financial sector (DORA)</a><span> · Parlamento Europeo y Consejo de la UE · 14-12-2022</span></li><li><a href="https://eur-lex.europa.eu/eli/reg/2024/1689/oj/eng" target="_blank" rel="noopener">Regulation (EU) 2024/1689 of the European Parliament and of the Council of 13 June 2024 laying down harmonised rules on artificial intelligence (Artificial Intelligence Act)</a><span> · Parlamento Europeo y Consejo de la UE · 13-06-2024</span></li></ul>
 </main>
-<footer class="pie"><div><span>© 2026 Fernando García Varela · SEVEN-G methodology</span><span>Generated on 28-09-2026</span></div><p class="pie-ia">Content generated and typeset with AI support under the author&#39;s editorial supervision.</p></footer>
+<footer class="pie"><div><span>© 2026 Fernando García Varela · SEVEN-G methodology</span><span>Generated on 12-10-2026</span></div><p class="pie-ia">Content generated and typeset with AI support under the author&#39;s editorial supervision.</p></footer>
 <script src="codigos.js" defer></script>
 
 <script>

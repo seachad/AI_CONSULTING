@@ -599,6 +599,30 @@ foreach ($lang in $Idiomas) {
 
   $mapaReferencias = ObtenerMapaReferencias $lang
 $titulosReferencias = ObtenerTitulosReferencias $lang
+# ---- Nombre primero, código después (D144, R16) ----
+# La lista única de nombres canónicos (build/nombres.json, generada por nombres.ps1) da (a) el tooltip de los enlaces de código y
+# (b) la forma visible «Nombre (código)» de los títulos «G3 · Viabilidad» y de las tablas cuya primera celda es un código con nombre.
+# El Markdown no cambia (los generadores leen el código en la primera celda) y las anclas se siguen calculando del texto original.
+$nombresCanonicos = @{}
+$nombresRuta = Join-Path $PSScriptRoot 'nombres.json'
+if (Test-Path $nombresRuta) {
+  $nj = Get-Content $nombresRuta -Raw -Encoding utf8 | ConvertFrom-Json -AsHashtable
+  if ($nj.ContainsKey($lang)) { $nombresCanonicos = $nj[$lang] }
+}
+foreach ($k in @($nombresCanonicos.Keys)) {
+  $n = $nombresCanonicos[$k]
+  if ($k -match '^\d{2}$') { $titulosReferencias[$k] = "$(if ($lang -eq 'en') { 'Document' } else { 'Documento' }) $k · $($n.nombre)" }
+  elseif ($k -match '^P\d{2}$') { $titulosReferencias[$k] = "$(if ($lang -eq 'en') { 'Template' } else { 'Plantilla' }) $k · $($n.nombre)" }
+  elseif ($k -match '^T\d{2}$') { $titulosReferencias[$k] = "$(if ($lang -eq 'en') { 'Tool' } else { 'Herramienta' }) $k · $($n.nombre)" }
+  elseif ($k -match '^M\d{2}$') { $titulosReferencias[$k] = "$(if ($lang -eq 'en') { 'Course module' } else { 'Módulo del curso' }) $k · $($n.nombre)" }
+}
+# «G3 · Viabilidad» → «Viabilidad (G3)»; «6.4 G3 · Viabilidad» → «6.4 Viabilidad (G3)»; «Fase 3 · X» → «X (fase 3)»; «LV-G3 · X» → «X (LV-G3)»; «C1 · X» → «X (C1)»
+function NombrePrimero([string]$texto) {
+  $m = [regex]::Match($texto, '^(?<num>\d+(?:\.\d+)?\s+)?(?<cod>G[0-7]|R6|LV-[A-Z0-9]+|C[1-5]|D[1-7]|HT[0-5]|IM[1-4]|PP-[A-F]|MP\d|HI-\d{2}|FE-\d|(?:Fase|Phase) \d)\s*·\s*(?<nom>.+)$')
+  if (-not $m.Success) { return $texto }
+  $cod = $m.Groups['cod'].Value -replace '^Fase ', 'fase ' -replace '^Phase ', 'phase '
+  "$($m.Groups['num'].Value)$($m.Groups['nom'].Value) ($cod)"
+}
   $referencias = @(CargarReferencias)
 
   # Herramientas disponibles (carpeta herramientas/<código>_<nombre>/ con un HTML) y módulos que viven dentro de otra
@@ -694,14 +718,15 @@ $titulosReferencias = ObtenerTitulosReferencias $lang
     $body = [regex]::Replace($body, '(?s)<h([23])(?:\s+id="[^"]*")?>(.*?)</h\1>', {
       param($h)
       $nivel = $h.Groups[1].Value; $texto = $h.Groups[2].Value.Trim()
-      if ($nivel -eq '3') { return "<h3 id=""$(IdUnico (Slug $texto))"">$texto</h3>" }
+      if ($nivel -eq '3') { return "<h3 id=""$(IdUnico (Slug $texto))"">$(NombrePrimero $texto)</h3>" }
       $num = ''
       $nm = [regex]::Match($texto, '^(\d+)\.\s*(.*)$', 'Singleline')
       if ($nm.Success) { $num = '{0:D2}' -f [int]$nm.Groups[1].Value; $texto = $nm.Groups[2].Value }
       $id = IdUnico (Slug $texto)
-      $indice.Add("<li><a href=""#$id""><span>$num</span>$(Limpiar $texto)</a></li>")
+      $textoVisible = NombrePrimero $texto
+      $indice.Add("<li><a href=""#$id""><span>$num</span>$(Limpiar $textoVisible)</a></li>")
       $ante = if ($num) { "<span class=""antetitulo"">$num</span>" } else { '' }
-      "<h2 id=""$id"">$ante$texto</h2>"
+      "<h2 id=""$id"">$ante$textoVisible</h2>"
     })
     $indiceHtml = if ($indice.Count -ge 4) { "<nav class=""indice""><div class=""indice-in""><h2>$($t.EnEsteDocumento)</h2><ol>$($indice -join '')</ol></div></nav>" } else { '' }
 
@@ -717,6 +742,87 @@ $titulosReferencias = ObtenerTitulosReferencias $lang
       if ($usados.ContainsKey($idFila)) { $n = 2; while ($usados.ContainsKey("$idFila-$n")) { $n++ }; $idFila = "$idFila-$n" }
       $usados[$idFila] = 1
       "<tr id=""$idFila"">$($f.Groups[1].Value)$($f.Groups[2].Value)$($f.Groups[3].Value)"
+    })
+    # Nombre primero, código después (D144): en cada tabla, (a) una celda «G3 · Viabilidad» pasa a «Viabilidad (G3)»; (b) si la primera
+    # celda es un código con nombre canónico, se muestra «**Nombre** (código)» y, cuando todas las filas tienen nombre y la columna
+    # que lo repite es la misma en todas, esa columna se suprime (también en la cabecera). Una tabla precedida por
+    # <!-- tabla: codigo-primero --> se deja como está (catálogos donde el código es la clave que se lee). Los id="cod-…" no cambian.
+    $body = [regex]::Replace($body, '(?s)(<!--\s*tabla:\s*codigo-primero\s*-->\s*)?<div class="tabla"><table>(.*?)</table></div>', {
+      param($tb)
+      if ($tb.Groups[1].Success) { return $tb.Value }
+      $tabla = $tb.Groups[2].Value
+      $tabla = [regex]::Replace($tabla, '(?s)<td([^>]*)>\s*(<strong>)?((?:<a [^>]*>)?(?:G[0-7]|R6|LV-[A-Z0-9]+|C[1-5]|D[1-7]|HT[0-5]|IM[1-4]|(?:Fase|Phase) \d)(?:</a>)?)\s*·\s*([^<]+?)(</strong>)?\s*</td>', {
+        param($c)
+        $cod = $c.Groups[3].Value -replace '<[^>]+>', '' -replace '^Fase ', 'fase ' -replace '^Phase ', 'phase '
+        $codHtml = if ($c.Groups[3].Value -match '<a ') { $c.Groups[3].Value -replace '>Fase ', '>fase ' -replace '>Phase ', '>phase ' } else { $cod }
+        $nom = $c.Groups[4].Value.Trim()
+        $nota = [regex]::Match($nom, '^(.*?)\s*\(([^()]+)\)$'); if ($nota.Success) { $nom = $nota.Groups[1].Value; $codHtml = "$codHtml · $($nota.Groups[2].Value)" }
+        if ($c.Groups[2].Success) { "<td$($c.Groups[1].Value)><strong>$nom</strong> <span class=""codigo"">($codHtml)</span></td>" } else { "<td$($c.Groups[1].Value)>$nom <span class=""codigo"">($codHtml)</span></td>" }
+      })
+      $filas = [regex]::Matches($tabla, '(?s)<tr(?: id="cod-[^"]+")?>.*?</tr>')
+      $cuerpo = @($filas | Where-Object { $_.Value -match '<td' })
+      if (-not $cuerpo.Count) { return "<div class=""tabla""><table>$tabla</table></div>" }
+      $cabecera = @($filas | Where-Object { $_.Value -match '<th' } | Select-Object -First 1)
+      $ths = if ($cabecera.Count) { [regex]::Matches($cabecera[0].Value, '(?s)<th[^>]*>.*?</th>') } else { @() }
+      $th1 = if ($ths.Count) { [Net.WebUtility]::HtmlDecode(($ths[0].Value -replace '<[^>]+>', '')).Trim() } else { '' }
+      # un código de dos cifras («00», «34») es un documento solo bajo una cabecera que lo diga: en otras tablas es un número (esfera, nivel)
+      $cabeceraDoc = $th1 -match '^(Nº|N\.º|#|Documento|Document|Doc\.?)$'
+      # 1) filas cuya primera celda es un identificador en negrita; las canónicas tienen nombre en nombres.json
+      $plan = @{}; $todasNegrita = $true; $canonicas = 0; $dups = @{}; $minCeldas = 99
+      foreach ($fila in $cuerpo) {
+        $celdas = [regex]::Matches($fila.Value, '(?s)<td[^>]*>.*?</td>')
+        if ($celdas.Count -lt $minCeldas) { $minCeldas = $celdas.Count }
+        $m1 = [regex]::Match($celdas[0].Value, '(?s)^<td[^>]*>\s*<strong>(.*?)</strong>\s*</td>$')
+        if (-not $m1.Success) { $m1 = [regex]::Match($celdas[0].Value, '(?s)^<td[^>]*>(.*?)</td>$') }   # «T01 · T02 · T08» sin negrita: también es un identificador
+        $clave = [Net.WebUtility]::HtmlDecode(($m1.Groups[1].Value -replace '<[^>]+>', '')).Trim()
+        if (-not $clave -or $clave -notmatch '^([A-Z]{1,3}[\d-]|\d{2}$)') { $todasNegrita = $false; continue }
+        $esCanon = $nombresCanonicos.ContainsKey($clave) -and -not ($clave -match '^\d{2}$' -and -not $cabeceraDoc)
+        if ($esCanon) {
+          $canonicas++
+          $nombre = $nombresCanonicos[$clave].nombre
+          for ($i = 1; $i -lt $celdas.Count; $i++) {
+            $txt = [Net.WebUtility]::HtmlDecode(($celdas[$i].Value -replace '<[^>]+>', '')).Trim()
+            if ($txt -and ($txt -ieq $nombre)) { $dups[$i] = 1 + [int]$dups[$i]; break }
+          }
+        }
+        $plan[$fila.Value] = @{ canon = $esCanon; nombre = $(if ($esCanon) { $nombre } else { '' }); codigoHtml = $m1.Groups[1].Value; celdas = $celdas }
+      }
+      if (-not $canonicas) { return "<div class=""tabla""><table>$tabla</table></div>" }
+      # 2) la columna del nombre es la que más filas canónicas repiten; se suprime solo si toda fila empieza por un identificador y la tiene
+      $quitar = -1
+      if ($dups.Count) { $quitar = [int](($dups.GetEnumerator() | Sort-Object -Property Value -Descending | Select-Object -First 1).Key) }
+      if ($quitar -ge 1 -and (-not $todasNegrita -or $minCeldas -le $quitar)) { return "<div class=""tabla""><table>$tabla</table></div>" }   # hay columna del nombre pero no se puede quitar sin desalinear: se deja como está
+      # sin columna del nombre, solo se transforman las filas canónicas (con el nombre canónico); con ella, todas (toman el nombre de esa columna)
+      if ($quitar -lt 1) { foreach ($k in @($plan.Keys)) { if (-not $plan[$k].canon) { $plan.Remove($k) } } }
+      $nuevo = [regex]::Replace($tabla, '(?s)<tr(?: id="cod-[^"]+")?>.*?</tr>', {
+        param($fila)
+        if (-not $plan.ContainsKey($fila.Value)) {
+          if ($quitar -ge 1 -and $fila.Value -match '<th') {
+            $ths = [regex]::Matches($fila.Value, '(?s)<th[^>]*>.*?</th>')
+            if ($ths.Count -gt $quitar) {
+              # se quita primero la cabecera repetida (solo esa aparición) y después se renombra la primera
+              $thQ = [Net.WebUtility]::HtmlDecode(($ths[$quitar].Value -replace '<[^>]+>', '')).Trim()
+              $out = $fila.Value.Remove($ths[$quitar].Index, $ths[$quitar].Length)
+              if ($th1 -match '^(Código|Code|Nº|N\.º|#|Hito|Milestone|Dimensión|Dimension|Perfil|Profile|Arquetipo|Archetype|Modificador|Modifier)$' -and $thQ -match '^(Nombre|Name|Herramienta|Tool|Plantilla|Template|Documento|Document|Dimensión|Dimension|Hito|Milestone|Arquetipo|Archetype|Modificador|Modifier|Herramienta o plantilla|Tool or template)$') {
+                $out = $out.Remove($ths[0].Index, $ths[0].Length).Insert($ths[0].Index, ($ths[0].Value -replace '>[^<]*</th>$', ">$thQ</th>"))
+              }
+              return $out
+            }
+          }
+          return $fila.Value
+        }
+        $p = $plan[$fila.Value]; $celdas = $p.celdas
+        $attr = [regex]::Match($celdas[0].Value, '^<td([^>]*)>').Groups[1].Value
+        # el nombre mostrado es el de la columna del nombre (conserva sus enlaces); sin esa columna, el nombre canónico
+        $nombreHtml = if ($quitar -ge 1) { [regex]::Match($celdas[$quitar].Value, '(?s)^<td[^>]*>(.*?)</td>$').Groups[1].Value.Trim() }
+                      else { (EnlazarReferenciasMarkdown (Enc $p.nombre) $mapaDoc) -replace '\[([^\]]+)\]\(([^)]+)\)', '<a href="$2">$1</a>' }   # el nombre canónico con sus códigos enlazados (D64)
+        $nuevaPrimera = "<td$attr><strong>$nombreHtml</strong> <span class=""codigo"">($($p.codigoHtml))</span></td>"
+        # se quita la celda repetida (solo esa aparición) antes de sustituir la primera, para que los índices sigan valiendo
+        $out = $fila.Value
+        if ($quitar -ge 1) { $out = $out.Remove($celdas[$quitar].Index, $celdas[$quitar].Length) }
+        $out.Remove($celdas[0].Index, $celdas[0].Length).Insert($celdas[0].Index, $nuevaPrimera)
+      })
+      "<div class=""tabla""><table>$nuevo</table></div>"
     })
     # los avisos van plegados en pantalla (una línea con su título; se despliegan al pulsar) y completos en el PDF (D93)
     $body = [regex]::Replace($body, '<blockquote>(\s*<p><strong>(?:Aviso legal|Legal notice|Versión en revisión|Version under review|Titularidad|Ownership))', '<blockquote class="aviso-legal plegado">$1')

@@ -392,6 +392,10 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 /* Ilustraciones en imagen (p. ej., SPAD): ocupan el ancho del lienzo y conservan su proporción */
 .g-lienzo img { display: block; width: 100%; height: auto; border: 1px solid var(--regla-2); }
 .ilustracion .g-lienzo img[src*="ilusion_de_velocidad"] { max-width: 560px; margin: 0 auto; }
+/* Nombre primero, código después (D144): el código entre paréntesis tras el nombre, en tablas y títulos */
+.codigo { font-family: var(--mono, 'Courier New', monospace); font-size: .88em; color: var(--tinta-2); white-space: nowrap; font-weight: 400; }
+h2 .codigo, h3 .codigo { font-weight: 400; }
+
 @page { @bottom-left { content: "SEVEN-G · Transformation index"; font: 8.5pt "Libre Franklin", "Segoe UI", sans-serif; color: #74675e; } }
 </style>
 </head>
@@ -761,35 +765,35 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </thead>
 <tbody>
 <tr id="cod-phase-1-proposal">
-<td><strong>Phase 1 · Proposal</strong></td>
+<td><strong>Proposal</strong> <span class="codigo">(phase 1)</span></td>
 <td>AI Product Owner</td>
 <td>AI Office (consistency of answers)</td>
 <td>Sponsor, at G1</td>
 <td>The event is recorded in <a href="../../herramientas/T01_registro_iniciativas/registro.html" title="Tool T01 &#183; Initiative register">T01</a>.</td>
 </tr>
 <tr id="cod-phase-2-confirmation-lite">
-<td><strong>Phase 2 · Confirmation (Lite)</strong></td>
+<td><strong>Confirmation</strong> <span class="codigo">(phase 2 · Lite)</span></td>
 <td>AI Product Owner</td>
 <td>AI Office</td>
 <td>Sponsor, at G2</td>
 <td>If the confirmed level is Transform, the intensity becomes Enterprise.</td>
 </tr>
 <tr id="cod-phase-2-confirmation-enterprise">
-<td><strong>Phase 2 · Confirmation (Enterprise)</strong></td>
+<td><strong>Confirmation</strong> <span class="codigo">(phase 2 · Enterprise)</span></td>
 <td>AI Product Owner</td>
 <td>AI Auditor</td>
 <td>AI Committee, at G2</td>
 <td>Transform also requires board approval.</td>
 </tr>
 <tr id="cod-r6-continuity-review">
-<td><strong>R6 · Continuity review</strong></td>
+<td><strong>Continuity review</strong> <span class="codigo">(R6)</span></td>
 <td>AI Product Owner</td>
 <td>AI Office or AI Auditor</td>
 <td>R6 body</td>
 <td>If there are indications that the actual level differs from the confirmed level, G7 is brought forward.</td>
 </tr>
 <tr id="cod-phase-7-actual-ambition">
-<td><strong>Phase 7 · Actual ambition</strong></td>
+<td><strong>Actual ambition</strong> <span class="codigo">(phase 7)</span></td>
 <td>AI Product Owner, with data from <a href="plantillas/P28_SEVEN-G_Seguimiento_de_realizacion_de_valor.html" title="Tool T12 &#183; Value realisation tracking">T12</a></td>
 <td>AI Office (Lite) or AI Auditor (Enterprise)</td>
 <td>G7 body</td>
@@ -1837,65 +1841,65 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <div class="tabla"><table>
 <thead>
 <tr>
-<th>Code</th>
 <th>Name</th>
+
 <th>Use in this document</th>
 </tr>
 </thead>
 <tbody>
 <tr id="cod-t01">
-<td><strong><a href="../../herramientas/T01_registro_iniciativas/registro.html" title="Tool T01 &#183; Initiative register">T01</a></strong></td>
-<td>Initiative register</td>
+<td><strong>Initiative register</strong> <span class="codigo">(<a href="../../herramientas/T01_registro_iniciativas/registro.html" title="Tool T01 &#183; Initiative register">T01</a>)</span></td>
+
 <td>Fields: answers IT-P1–IT-P5 with evidence and verification status; proposed, confirmed and actual ambition with date and reason; primary sphere; <em>gate</em> dates; statuses; stop reasons; origin of the initiative. From schema 0.5: verification of IT-P2 and IT-P3 at a <em>gate</em> with verified human oversight, entire unit redesigned, released, materialised and reassigned capacity, AI-enabled offering in the amounts, and company total revenue and IT-D3.</td>
 </tr>
 <tr id="cod-t03">
-<td><strong><a href="../../herramientas/T01_registro_iniciativas/registro.html#/gates" title="Tool T03 &#183; Gate manager">T03</a></strong></td>
-<td>Gate manager</td>
+<td><strong>Gate manager</strong> <span class="codigo">(<a href="../../herramientas/T01_registro_iniciativas/registro.html#/gates" title="Tool T03 &#183; Gate manager">T03</a>)</span></td>
+
 <td>Verification of the classification at G2 and G7; board approvals.</td>
 </tr>
 <tr id="cod-t05">
-<td><strong><a href="../../herramientas/T01_registro_iniciativas/registro.html" title="Tool T05 &#183; Ambition classifier">T05</a></strong></td>
-<td>Ambition classifier</td>
+<td><strong>Ambition classifier</strong> <span class="codigo">(<a href="../../herramientas/T01_registro_iniciativas/registro.html" title="Tool T05 &#183; Ambition classifier">T05</a>)</span></td>
+
 <td>Applies the five questions and rules 1 to 10; records the result and inconsistencies.</td>
 </tr>
 <tr id="cod-t12">
-<td><strong><a href="plantillas/P28_SEVEN-G_Seguimiento_de_realizacion_de_valor.html" title="Tool T12 &#183; Value realisation tracking">T12</a></strong></td>
-<td>Value realisation tracking</td>
+<td><strong>Value realisation tracking</strong> <span class="codigo">(<a href="plantillas/P28_SEVEN-G_Seguimiento_de_realizacion_de_valor.html" title="Tool T12 &#183; Value realisation tracking">T12</a>)</span></td>
+
 <td>Amounts by type and status; released and materialised capacity; AI-enabled revenue.</td>
 </tr>
 <tr id="cod-t13">
-<td><strong><a href="../../herramientas/T11_calculadora_valor/calculadora.html#/costes" title="Tool T13 &#183; Cost calculator per use case">T13</a></strong></td>
-<td>Cost calculator per use case</td>
+<td><strong>Cost calculator per use case</strong> <span class="codigo">(<a href="../../herramientas/T11_calculadora_valor/calculadora.html#/costes" title="Tool T13 &#183; Cost calculator per use case">T13</a>)</span></td>
+
 <td>Investment and recurring cost of each initiative (signal 1).</td>
 </tr>
 <tr id="cod-t14">
-<td><strong><a href="../../herramientas/T14_indice_transformacion/indice.html" title="Tool T14 &#183; Transformation index calculator">T14</a></strong></td>
-<td>Transformation index calculator</td>
+<td><strong>Transformation index calculator</strong> <span class="codigo">(<a href="../../herramientas/T14_indice_transformacion/indice.html" title="Tool T14 &#183; Transformation index calculator">T14</a>)</span></td>
+
 <td>Calculates baseline conditions, signals, profile, alerts, coverage, what would move the profile and evolution; retains the threshold version. It starts from the <a href="../../herramientas/T01_registro_iniciativas/registro.html" title="Tool T01 &#183; Initiative register">T01</a> register JSON: with schema 0.5 it calculates from it the eight signals and conditions IT-D1 and IT-D3; whatever the register does not contain is completed manually. It exports its result for the board dashboard.</td>
 </tr>
 <tr id="cod-t17">
-<td><strong><a href="../../herramientas/T17_panel_consejo/index.html" title="Tool T17 &#183; Board AI dashboard">T17</a></strong></td>
-<td>Board AI dashboard</td>
+<td><strong>Board AI dashboard</strong> <span class="codigo">(<a href="../../herramientas/T17_panel_consejo/index.html" title="Tool T17 &#183; Board AI dashboard">T17</a>)</span></td>
+
 <td>&quot;Company transformation index&quot; card in &quot;Portfolio and value&quot;: profile, baseline conditions, signals, trend, alerts and what would move the profile, from the result exported by <a href="../../herramientas/T14_indice_transformacion/indice.html" title="Tool T14 &#183; Transformation index calculator">T14</a>.</td>
 </tr>
 <tr id="cod-t18">
-<td><strong><a href="../../herramientas/T01_registro_iniciativas/registro.html#/consejo" title="Tool T18 &#183; Board recommendations register">T18</a></strong></td>
-<td>Board recommendations register</td>
+<td><strong>Board recommendations register</strong> <span class="codigo">(<a href="../../herramientas/T01_registro_iniciativas/registro.html#/consejo" title="Tool T18 &#183; Board recommendations register">T18</a>)</span></td>
+
 <td>&quot;Board (<a href="../../herramientas/T01_registro_iniciativas/registro.html#/consejo" title="Tool T18 &#183; Board recommendations register">T18</a>)&quot; view of the <a href="../../herramientas/T01_registro_iniciativas/registro.html" title="Tool T01 &#183; Initiative register">T01</a> register: board decisions (thesis, Transform bets with a cap per stage, reviews and stage decisions) are the source of signal 8 and IT-D1.</td>
 </tr>
 <tr id="cod-t19">
-<td><strong><a href="plantillas/P35_SEVEN-G_Tesis_de_IA_y_apetito_de_riesgo.html" title="Tool T19 &#183; AI thesis and risk appetite template">T19</a></strong></td>
-<td>AI thesis and risk appetite template</td>
+<td><strong>AI thesis and risk appetite template</strong> <span class="codigo">(<a href="plantillas/P35_SEVEN-G_Tesis_de_IA_y_apetito_de_riesgo.html" title="Tool T19 &#183; AI thesis and risk appetite template">T19</a>)</span></td>
+
 <td>C2 decision document: approved thesis (signal 8) and target ambition by sphere (condition IT-D1).</td>
 </tr>
 <tr id="cod-t20">
-<td><strong><a href="plantillas/P20_SEVEN-G_Plan_de_adopcion_y_capacidad.html" title="Tool T20 &#183; Adoption and capacity plan">T20</a></strong></td>
-<td>Adoption and capacity plan</td>
+<td><strong>Adoption and capacity plan</strong> <span class="codigo">(<a href="plantillas/P20_SEVEN-G_Plan_de_adopcion_y_capacidad.html" title="Tool T20 &#183; Adoption and capacity plan">T20</a>)</span></td>
+
 <td>Reassigned hours and redesigned roles (signals 3 and 5).</td>
 </tr>
 <tr id="cod-p07">
-<td><strong><a href="plantillas/P07_SEVEN-G_Clasificacion_de_esfera_y_ambicion.html" title="Template P07 &#183; Sphere and ambition classification">P07</a></strong></td>
-<td>Sphere and ambition classification</td>
+<td><strong>Sphere and ambition classification</strong> <span class="codigo">(<a href="plantillas/P07_SEVEN-G_Clasificacion_de_esfera_y_ambicion.html" title="Template P07 &#183; Sphere and ambition classification">P07</a>)</span></td>
+
 <td>Evidence of the classification in phases 1, 2 and 7.</td>
 </tr>
 </tbody>
@@ -1973,7 +1977,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </table></div>
 
 </main>
-<footer class="pie"><div><span>© 2026 Fernando García Varela · SEVEN-G methodology</span><span>Generated on 28-09-2026</span></div><p class="pie-ia">Content generated and typeset with AI support under the author&#39;s editorial supervision.</p></footer>
+<footer class="pie"><div><span>© 2026 Fernando García Varela · SEVEN-G methodology</span><span>Generated on 12-10-2026</span></div><p class="pie-ia">Content generated and typeset with AI support under the author&#39;s editorial supervision.</p></footer>
 <script src="codigos.js" defer></script>
 
 <script>

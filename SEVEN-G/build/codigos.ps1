@@ -115,15 +115,18 @@ foreach ($lang in $Idiomas) {
     # solo la tabla del catálogo (cabecera «Código | Herramienta» / «Code | Tool»): otras tablas del 03 (§4.1, §5) también empiezan filas con
     # el código. La fila lleva id="cod-tnn" o, si otra tabla lo tomó antes, "cod-tnn-2" (build.ps1); sin id, se va a la sección que la contiene
     $h03 = $paginas['03'].html
-    $tablasCat = [regex]::Matches($h03, '(?s)<table>\s*<thead>\s*<tr>\s*<th[^>]*>(?:Código|Code)</th>\s*<th[^>]*>(?:Herramienta|Tool)</th>.*?</table>')   # una tabla por bloque del catálogo
+    $tablasCat = [regex]::Matches($h03, '(?s)<table>\s*<thead>\s*<tr>\s*<th[^>]*>(?:Código|Code|Herramienta|Tool)</th>\s*(?:<th[^>]*>(?:Herramienta|Tool)</th>\s*)?<th[^>]*>(?:Para qué|Purpose)</th>.*?</table>')   # una tabla por bloque del catálogo; con «Nombre (código)» (D144) la columna «Herramienta» se funde con la del código
     if (-not $tablasCat.Count) { Write-Warning "[$lang] no se encuentra la tabla del catálogo de herramientas en el documento 03" }
     foreach ($cat in $tablasCat) {
       $sec = [regex]::Matches($h03.Substring(0, $cat.Index), '<h[23] id="([^"]+)"'); $seccionCat = if ($sec.Count) { $sec[$sec.Count - 1].Groups[1].Value } else { '' }
-      foreach ($m in [regex]::Matches($cat.Value, '(?s)<tr(?: id="(cod-t\d{2}(?:-\d+)?)")?>\s*<td[^>]*>(.*?)</td>\s*<td[^>]*>(.*?)</td>\s*<td[^>]*>(.*?)</td>')) {
-        $cod = (Texto $m.Groups[2].Value)
-        if ($cod -notmatch '^T\d{2}$') { continue }
+      foreach ($m in [regex]::Matches($cat.Value, '(?s)<tr(?: id="(cod-t\d{2}(?:-\d+)?)")?>\s*<td[^>]*>(.*?)</td>\s*<td[^>]*>(.*?)</td>(?:\s*<td[^>]*>(.*?)</td>)?')) {
+        $c1 = Texto $m.Groups[2].Value
+        # forma antigua «T06 | Nombre | Descripción» o forma «Nombre (T06) | Descripción» (nombre primero, D144)
+        if ($c1 -match '^T\d{2}$') { $cod = $c1; $nom = Texto $m.Groups[3].Value; $desc = Texto $m.Groups[4].Value }
+        elseif ($c1 -match '^(.+?)\s*\((T\d{2})\)$') { $nom = $Matches[1]; $cod = $Matches[2]; $desc = Texto $m.Groups[3].Value }
+        else { continue }
         $ancla = if ($m.Groups[1].Success) { $m.Groups[1].Value } else { $seccionCat }
-        Anadir $cod $cod "$(Texto $m.Groups[3].Value) — $(Texto $m.Groups[4].Value)" "$($paginas['03'].href)$(if ($ancla) { "#$ancla" })" 'her'
+        Anadir $cod $cod "$nom — $desc" "$($paginas['03'].href)$(if ($ancla) { "#$ancla" })" 'her'
       }
     }
   }
@@ -138,20 +141,20 @@ foreach ($lang in $Idiomas) {
 
   # ---- fases, puertas, criterios, listas de verificación y esferas: a su sección ----
   foreach ($n in 0..7) {
-    $e = Por-Texto '20' "^(Fase|Phase) $n\b"
+    $e = Por-Texto '20' "(^(Fase|Phase) $n\b|\((fase|phase) $n\)$)"
     if ($e) { foreach ($k in "FASE $n", "PHASE $n", "F$n") { Anadir $k "$(if ($en) { 'Phase' } else { 'Fase' }) $n" "$($e.texto) — $(if ($en) { 'phase manual' } else { 'manual de la fase' })" $e.href 'fase' } }
   }
   foreach ($g in 'G0', 'G1', 'G2', 'G3', 'G4', 'G5', 'R6', 'G7') {
-    $e = Por-Texto '21' "^\d+\.\d+ $g\b"
+    $e = Por-Texto '21' "^\d+\.\d+ (?:$g\b|.*\($g\)$)"
     if ($e) {
       $rot = "$($e.texto -replace '^\d+\.\d+\s*', '') — $(if ($en) { 'gate criteria' } else { 'criterios de la puerta' })"
       Anadir $g $g $rot $e.href 'puerta'
       $patrones.Add([ordered]@{ re = "^$g\.\d{2}$"; c = "$g.nn"; t = "$(if ($en) { 'Gate criterion' } else { 'Criterio de puerta' }) · $rot"; h = $e.href; k = 'puerta' })
     }
-    $lv = Por-Texto '22' "^LV-$g\b"
+    $lv = Por-Texto '22' "(^LV-$g\b|\(LV-$g\)$)"
     if ($lv) { Anadir "LV-$g" "LV-$g" "$($lv.texto) — $(if ($en) { 'checklist' } else { 'lista de verificación' })" $lv.href 'lv' }
   }
-  foreach ($x in 'LV-EV', 'LV-AG') { $lv = Por-Texto '22' "^$x\b"; if ($lv) { Anadir $x $x $lv.texto $lv.href 'lv' } }
+  foreach ($x in 'LV-EV', 'LV-AG') { $lv = Por-Texto '22' "(^$x\b|\($x\)$)"; if ($lv) { Anadir $x $x $lv.texto $lv.href 'lv' } }
   foreach ($n in 1..9) {
     $e = Por-Texto '10' "(Esfera|Sphere) 0$n\b"
     if ($e) { foreach ($k in "ESFERA 0$n", "SPHERE 0$n", "E0$n") { Anadir $k "$(if ($en) { 'Sphere' } else { 'Esfera' }) 0$n" ($e.texto -replace '^\d+(\.\d+)?\s*', '') $e.href 'esfera' } }

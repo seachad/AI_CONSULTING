@@ -392,6 +392,10 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 /* Ilustraciones en imagen (p. ej., SPAD): ocupan el ancho del lienzo y conservan su proporción */
 .g-lienzo img { display: block; width: 100%; height: auto; border: 1px solid var(--regla-2); }
 .ilustracion .g-lienzo img[src*="ilusion_de_velocidad"] { max-width: 560px; margin: 0 auto; }
+/* Nombre primero, código después (D144): el código entre paréntesis tras el nombre, en tablas y títulos */
+.codigo { font-family: var(--mono, 'Courier New', monospace); font-size: .88em; color: var(--tinta-2); white-space: nowrap; font-weight: 400; }
+h2 .codigo, h3 .codigo { font-weight: 400; }
+
 @page { @bottom-left { content: "SEVEN-G · Checklists by gate"; font: 8.5pt "Libre Franklin", "Segoe UI", sans-serif; color: #74675e; } }
 </style>
 </head>
@@ -478,7 +482,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
   </div>
 </header>
 <section class="descargas-zona" aria-label="Downloads and tools"><div class="dz-in"><div class="dz-bloque"><p class="dz-titulo">Downloads</p><div class="dz-enlaces"><a class="dz-item" href="../../pdf/en/22_SEVEN-G_Listas_de_verificacion_por_gate.pdf" target="_blank" rel="noopener"><span class="dz-tipo">PDF</span><b>This document · English</b></a><a class="dz-item" href="../../pdf/es/22_SEVEN-G_Listas_de_verificacion_por_gate.pdf" target="_blank" rel="noopener"><span class="dz-tipo">PDF</span><b>Spanish version</b></a><a class="dz-item" href="../es/22_SEVEN-G_Listas_de_verificacion_por_gate.html" hreflang="es"><span class="dz-tipo html">HTML</span><b>Spanish version</b></a></div></div><div class="dz-bloque"><p class="dz-titulo">Related tools</p><div class="dz-enlaces"><a class="dz-item" href="../../herramientas/T01_registro_iniciativas/registro.html" target="_blank" rel="noopener"><span class="dz-tipo tool">T01</span><b>Initiative register</b></a><a class="dz-item" href="../../herramientas/T11_calculadora_valor/calculadora.html" target="_blank" rel="noopener"><span class="dz-tipo tool">T11</span><b>Value hypothesis and cost-per-case calculator</b></a></div></div></div></section>
-<nav class="indice"><div class="indice-in"><h2>In this document</h2><ol><li><a href="#purpose-and-scope"><span>01</span>Purpose and scope</a></li><li><a href="#instructions-for-use"><span>02</span>Instructions for use</a></li><li><a href="#lv-g0-authorisation"><span>03</span>LV-G0 · Authorisation</a></li><li><a href="#lv-g1-opportunity"><span>04</span>LV-G1 · Opportunity</a></li><li><a href="#lv-g2-hypothesis"><span>05</span>LV-G2 · Hypothesis</a></li><li><a href="#lv-g3-feasibility"><span>06</span>LV-G3 · Feasibility</a></li><li><a href="#lv-g4-design"><span>07</span>LV-G4 · Design</a></li><li><a href="#lv-g5-go-live"><span>08</span>LV-G5 · Go-live</a></li><li><a href="#lv-r6-continuity-review"><span>09</span>LV-R6 · Continuity review</a></li><li><a href="#lv-g7-scale-or-retire"><span>10</span>LV-G7 · Scale or retire</a></li><li><a href="#lv-ev-evidence-validation"><span>11</span>LV-EV · Evidence validation</a></li><li><a href="#lv-ag-agents"><span>12</span>LV-AG · Agents</a></li><li><a href="#associated-tools-and-templates"><span>13</span>Associated tools and templates</a></li><li><a href="#related-documents"><span>14</span>Related documents</a></li><li><a href="#version-control"><span>15</span>Version control</a></li></ol></div></nav>
+<nav class="indice"><div class="indice-in"><h2>In this document</h2><ol><li><a href="#purpose-and-scope"><span>01</span>Purpose and scope</a></li><li><a href="#instructions-for-use"><span>02</span>Instructions for use</a></li><li><a href="#lv-g0-authorisation"><span>03</span>Authorisation (LV-G0)</a></li><li><a href="#lv-g1-opportunity"><span>04</span>Opportunity (LV-G1)</a></li><li><a href="#lv-g2-hypothesis"><span>05</span>Hypothesis (LV-G2)</a></li><li><a href="#lv-g3-feasibility"><span>06</span>Feasibility (LV-G3)</a></li><li><a href="#lv-g4-design"><span>07</span>Design (LV-G4)</a></li><li><a href="#lv-g5-go-live"><span>08</span>Go-live (LV-G5)</a></li><li><a href="#lv-r6-continuity-review"><span>09</span>Continuity review (LV-R6)</a></li><li><a href="#lv-g7-scale-or-retire"><span>10</span>Scale or retire (LV-G7)</a></li><li><a href="#lv-ev-evidence-validation"><span>11</span>Evidence validation (LV-EV)</a></li><li><a href="#lv-ag-agents"><span>12</span>Agents (LV-AG)</a></li><li><a href="#associated-tools-and-templates"><span>13</span>Associated tools and templates</a></li><li><a href="#related-documents"><span>14</span>Related documents</a></li><li><a href="#version-control"><span>15</span>Version control</a></li></ol></div></nav>
 <main class="contenido" id="contenido">
 <blockquote class="aviso-legal plegado">
 <p><strong>Legal notice and disclaimer.</strong> SEVEN-G is a reference methodological framework provided &quot;as is&quot; and for information purposes only. It does not constitute legal, regulatory, financial or professional advice, nor does it guarantee compliance with any law or standard. References to general regulation (such as the EU AI Act, the GDPR, DORA or NIS2), to technical standards and to regulation specific to each sector or jurisdiction may be incomplete, may not apply to a particular case or may become out of date as a result of regulatory changes, interpretations or supervisory positions after their consultation date. <strong>Each organisation that uses SEVEN-G is solely responsible for identifying the regulation that applies to it, verifying that it is current and certifying its own regulatory compliance</strong>, with the appropriate qualified advice. This methodology is a generic, free aid shared with the community so that nobody has to start from scratch; each person or organisation can and should adapt it to its own use. It must not be inferred that its legally sensitive parts have been reviewed by legal counsel: those reviews, for each company or sector, are the ultimate responsibility of the company, consultant or organisation that uses it. Although every effort is made to keep it up to date, some regulation may have changed without being reflected here. To the fullest extent permitted by law, the author accepts no responsibility whatsoever for the effects of its application in any organisation or for its full applicability. The methodology does not grant certification of any kind. The author accepts no liability for any use made of this content or for any decisions taken on the basis of it. The data, figures, companies and cases in the examples are fictitious or illustrative.</p>
@@ -586,7 +590,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <h3 id="2-6-closing-each-checklist">2.6 Closing each checklist</h3>
 <p>At the end of each checklist, record: <strong>applicable criteria · degree of compliance · blocking criteria · open conditionable criteria · opinion (☐ Conformant ☐ Conformant with observations ☐ Nonconformant) · verifier · date</strong>.</p>
 <hr />
-<h2 id="lv-g0-authorisation"><span class="antetitulo">03</span>LV-G0 · Authorisation</h2>
+<h2 id="lv-g0-authorisation"><span class="antetitulo">03</span>Authorisation (LV-G0)</h2>
 <p>Verifies: AI Office (Lite) · AI Auditor (Enterprise). Decides: sponsor (Lite) · AI Committee (Enterprise).</p>
 <div class="tabla"><table>
 <thead>
@@ -693,7 +697,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 </tbody>
 </table></div>
-<h2 id="lv-g1-opportunity"><span class="antetitulo">04</span>LV-G1 · Opportunity</h2>
+<h2 id="lv-g1-opportunity"><span class="antetitulo">04</span>Opportunity (LV-G1)</h2>
 <p>Verifies: AI Office (Lite) · AI Auditor (Enterprise). Decides: sponsor (in Enterprise, informing the committee).</p>
 <div class="tabla"><table>
 <thead>
@@ -800,7 +804,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 </tbody>
 </table></div>
-<h2 id="lv-g2-hypothesis"><span class="antetitulo">05</span>LV-G2 · Hypothesis</h2>
+<h2 id="lv-g2-hypothesis"><span class="antetitulo">05</span>Hypothesis (LV-G2)</h2>
 <p>Verifies: AI Office (Lite) · AI Auditor (Enterprise). Decides: sponsor (Lite) · AI Committee (Enterprise) · board in Transform.</p>
 <div class="tabla"><table>
 <thead>
@@ -934,7 +938,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 </tbody>
 </table></div>
-<h2 id="lv-g3-feasibility"><span class="antetitulo">06</span>LV-G3 · Feasibility</h2>
+<h2 id="lv-g3-feasibility"><span class="antetitulo">06</span>Feasibility (LV-G3)</h2>
 <p>Verifies: AI Office (Lite) · AI Auditor (Enterprise). Decides: sponsor with risk clearance (Lite) · AI Committee (Enterprise). Main stop gate.</p>
 <div class="tabla"><table>
 <thead>
@@ -1149,7 +1153,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 </tbody>
 </table></div>
-<h2 id="lv-g4-design"><span class="antetitulo">07</span>LV-G4 · Design</h2>
+<h2 id="lv-g4-design"><span class="antetitulo">07</span>Design (LV-G4)</h2>
 <p>Verifies: AI Office (Lite) · AI Auditor (Enterprise). Decides: sponsor with risk clearance (Lite) · AI Committee (Enterprise).</p>
 <div class="tabla"><table>
 <thead>
@@ -1364,7 +1368,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 </tbody>
 </table></div>
-<h2 id="lv-g5-go-live"><span class="antetitulo">08</span>LV-G5 · Go-live</h2>
+<h2 id="lv-g5-go-live"><span class="antetitulo">08</span>Go-live (LV-G5)</h2>
 <p>Verifies: AI Office (Lite) · AI Auditor (Enterprise). Decides: sponsor with risk clearance (Lite) · AI Committee after multi-level sign-off (Enterprise).</p>
 <div class="tabla"><table>
 <thead>
@@ -1589,7 +1593,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tbody>
 </table></div>
 <p><strong>Multi-level sign-off (Enterprise).</strong> Before checking G5.23, check for each signatory (technical, risk and compliance, information security, data protection): ☐ sign-off recorded with date and system version · ☐ direction (favourable, with reservations or veto) · ☐ no signatory took part in the build · ☐ previous vetoes have been lifted by whoever issued them (21 §9.2).</p>
-<h2 id="lv-r6-continuity-review"><span class="antetitulo">09</span>LV-R6 · Continuity review</h2>
+<h2 id="lv-r6-continuity-review"><span class="antetitulo">09</span>Continuity review (LV-R6)</h2>
 <p>Verifies: AI Office (Lite) · AI Auditor (Enterprise). Decides: sponsor (Lite) · AI Committee (Enterprise). Frequency: every six months (Lite) · quarterly (Enterprise). Outcomes (01 §7.3): Proceed with operation · Proceed with conditions · Bring G7 forward.</p>
 <div class="tabla"><table>
 <thead>
@@ -1750,7 +1754,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 </tbody>
 </table></div>
-<h2 id="lv-g7-scale-or-retire"><span class="antetitulo">10</span>LV-G7 · Scale or retire</h2>
+<h2 id="lv-g7-scale-or-retire"><span class="antetitulo">10</span>Scale or retire (LV-G7)</h2>
 <p>Verifies: AI Office (Lite) · AI Auditor (Enterprise). Decides: sponsor (Lite) · AI Committee (Enterprise) · board to scale in Transform. Mark items for the outcome not proposed as <em>Not applicable</em>. Keeping the system unchanged is verified as <em>Iterate</em> with a return to phase 6 (21 §5.3).</p>
 <div class="tabla"><table>
 <thead>
@@ -1876,7 +1880,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tbody>
 </table></div>
 <hr />
-<h2 id="lv-ev-evidence-validation"><span class="antetitulo">11</span>LV-EV · Evidence validation</h2>
+<h2 id="lv-ev-evidence-validation"><span class="antetitulo">11</span>Evidence validation (LV-EV)</h2>
 <p>Applied to <strong>each piece of evidence</strong> linked in the <em>gate</em> request, before reviewing the gate checklist. It develops 21 §4. It applies equally in Lite and Enterprise, except EV.10, which in Lite requires only the fields not marked <em>(Enterprise)</em>.</p>
 <div class="tabla"><table>
 <thead>
@@ -1991,7 +1995,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </table></div>
 <p>Evidence with a <em>no</em> in EV.05 or EV.09 cannot be used for any criterion. With shortcomings in EV.01–EV.04, EV.06 or EV.10, it may be accepted only if it does not support a <em>Yes</em> or <em>Yes ◆</em> criterion and is corrected before the decision (21 §4.2).</p>
 <hr />
-<h2 id="lv-ag-agents"><span class="antetitulo">12</span>LV-AG · Agents</h2>
+<h2 id="lv-ag-agents"><span class="antetitulo">12</span>Agents (LV-AG)</h2>
 <p>Brings together the controls for systems that execute actions or prepare them for human validation. It is the content of tool <a href="plantillas/P18_SEVEN-G_Diseno_de_seguridad.html" title="Tool T10 &#183; Agent security assessment">T10</a> (agent security assessment) and complements, without replacing, the checklists for each gate. It applies equally in Lite and Enterprise; the columns indicate what each autonomy level requires (21 §8.2): <strong>Yes</strong> mandatory · <strong>Rec.</strong> recommended · <strong>—</strong> not applicable. Several items may refer to the same criterion.</p>
 <div class="tabla"><table>
 <thead>
@@ -2315,40 +2319,40 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <div class="tabla"><table>
 <thead>
 <tr>
-<th>Code</th>
 <th>Name</th>
+
 <th>Use</th>
 </tr>
 </thead>
 <tbody>
 <tr id="cod-t03">
-<td><strong><a href="../../herramientas/T01_registro_iniciativas/registro.html#/gates" title="Tool T03 &#183; Gate manager">T03</a></strong></td>
-<td><em>Gate</em> manager</td>
+<td><strong><em>Gate</em> manager</strong> <span class="codigo">(<a href="../../herramientas/T01_registro_iniciativas/registro.html#/gates" title="Tool T03 &#183; Gate manager">T03</a>)</span></td>
+
 <td>Loads the checklists, records the status of each item, calculates the degree of compliance and applies the blocking rule.</td>
 </tr>
 <tr id="cod-t10">
-<td><strong><a href="plantillas/P18_SEVEN-G_Diseno_de_seguridad.html" title="Tool T10 &#183; Agent security assessment">T10</a></strong></td>
-<td>Agent security assessment</td>
+<td><strong>Agent security assessment</strong> <span class="codigo">(<a href="plantillas/P18_SEVEN-G_Diseno_de_seguridad.html" title="Tool T10 &#183; Agent security assessment">T10</a>)</span></td>
+
 <td>Implements LV-AG within <a href="../../herramientas/T01_registro_iniciativas/registro.html#/gates" title="Tool T03 &#183; Gate manager">T03</a>.</td>
 </tr>
 <tr>
-<td><strong><a href="../../herramientas/T01_registro_iniciativas/registro.html" title="Tool T01 &#183; Initiative register">T01</a> · <a href="plantillas/P50_SEVEN-G_Registro_de_no_conformidades.html" title="Tool T08 &#183; Nonconformity and incident register">T08</a></strong></td>
-<td>Initiative register · Nonconformities and incidents</td>
+<td><strong>Initiative register · Nonconformities and incidents</strong> <span class="codigo">(<a href="../../herramientas/T01_registro_iniciativas/registro.html" title="Tool T01 &#183; Initiative register">T01</a> · <a href="plantillas/P50_SEVEN-G_Registro_de_no_conformidades.html" title="Tool T08 &#183; Nonconformity and incident register">T08</a>)</span></td>
+
 <td>Events to check prior existence; register of findings.</td>
 </tr>
 <tr id="cod-p29">
-<td><strong><a href="plantillas/P29_SEVEN-G_Registro_de_decision_de_gate.html" title="Template P29 &#183; Gate decision record">P29</a></strong></td>
-<td><em>Gate</em> decision record</td>
+<td><strong><em>Gate</em> decision record</strong> <span class="codigo">(<a href="plantillas/P29_SEVEN-G_Registro_de_decision_de_gate.html" title="Template P29 &#183; Gate decision record">P29</a>)</span></td>
+
 <td>Records the result of the checklists and the verification opinion.</td>
 </tr>
 <tr id="cod-p23">
-<td><strong><a href="plantillas/P23_SEVEN-G_Firma_de_puesta_en_produccion.html" title="Template P23 &#183; Go-live sign-off">P23</a></strong></td>
-<td>Go-live sign-off</td>
+<td><strong>Go-live sign-off</strong> <span class="codigo">(<a href="plantillas/P23_SEVEN-G_Firma_de_puesta_en_produccion.html" title="Template P23 &#183; Go-live sign-off">P23</a>)</span></td>
+
 <td>Check of the LV-G5 sign-offs.</td>
 </tr>
 <tr>
-<td><strong><a href="plantillas/P01_SEVEN-G_Carta_de_la_iniciativa.html" title="Template P01 &#183; Initiative charter">P01</a>–<a href="plantillas/P31_SEVEN-G_Ficha_de_caso_de_uso.html" title="Template P31 &#183; Use case record">P31</a></strong></td>
-<td>Block H templates</td>
+<td><strong>Block H templates</strong> <span class="codigo">(<a href="plantillas/P01_SEVEN-G_Carta_de_la_iniciativa.html" title="Template P01 &#183; Initiative charter">P01</a>–<a href="plantillas/P31_SEVEN-G_Ficha_de_caso_de_uso.html" title="Template P31 &#183; Use case record">P31</a>)</span></td>
+
 <td>Where to look for each piece of evidence.</td>
 </tr>
 </tbody>
@@ -2409,7 +2413,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </table></div>
 
 </main>
-<footer class="pie"><div><span>© 2026 Fernando García Varela · SEVEN-G methodology</span><span>Generated on 28-09-2026</span></div><p class="pie-ia">Content generated and typeset with AI support under the author&#39;s editorial supervision.</p></footer>
+<footer class="pie"><div><span>© 2026 Fernando García Varela · SEVEN-G methodology</span><span>Generated on 12-10-2026</span></div><p class="pie-ia">Content generated and typeset with AI support under the author&#39;s editorial supervision.</p></footer>
 <script src="codigos.js" defer></script>
 
 <script>

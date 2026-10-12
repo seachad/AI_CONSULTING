@@ -392,6 +392,10 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 /* Ilustraciones en imagen (p. ej., SPAD): ocupan el ancho del lienzo y conservan su proporción */
 .g-lienzo img { display: block; width: 100%; height: auto; border: 1px solid var(--regla-2); }
 .ilustracion .g-lienzo img[src*="ilusion_de_velocidad"] { max-width: 560px; margin: 0 auto; }
+/* Nombre primero, código después (D144): el código entre paréntesis tras el nombre, en tablas y títulos */
+.codigo { font-family: var(--mono, 'Courier New', monospace); font-size: .88em; color: var(--tinta-2); white-space: nowrap; font-weight: 400; }
+h2 .codigo, h3 .codigo { font-weight: 400; }
+
 @page { @bottom-left { content: "Metodología fundacional de SEVEN-G"; font: 8.5pt "Libre Franklin", "Segoe UI", sans-serif; color: #74675e; } }
 </style>
 </head>
@@ -748,7 +752,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>Toda iniciativa tiene nivel de ambición clasificado y confirmado.</td>
 </tr>
 <tr>
-<td>10</td>
+<td><strong>Mapa de esferas y niveles de ambici&#243;n</strong> <span class="codigo">(10)</span></td>
 <td><strong>Las personas en el centro del cambio</strong></td>
 <td>La IA se evalúa también por su efecto en el trabajo, las capacidades y las responsabilidades.</td>
 <td>Las iniciativas de Aumentar y Transformar tienen plan de adopción y de personas.</td>
@@ -828,35 +832,35 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </thead>
 <tbody>
 <tr id="cod-c1-diagnostico">
-<td><strong>C1 · Diagnóstico</strong></td>
+<td><strong>Diagnóstico</strong> <span class="codigo">(C1)</span></td>
 <td>Conocer la situación real de la IA en la compañía.</td>
 <td>Inventario de sistemas de IA; evaluación de madurez con evidencia; mapa de esferas actual; perfil del índice de transformación; valor validado y coste actuales.</td>
 <td>Oficina de IA</td>
 <td>Comité de IA; se presenta al consejo</td>
 </tr>
 <tr id="cod-c2-direccion">
-<td><strong>C2 · Dirección</strong></td>
+<td><strong>Dirección</strong> <span class="codigo">(C2)</span></td>
 <td>Decidir dónde jugar, con qué ambición y con qué apetito de riesgo.</td>
 <td>Tesis de IA; nivel de ambición por esfera; apetito de riesgo y umbrales (incluidos los de intensidad Enterprise y el horizonte de retorno); política corporativa de IA; presupuesto marco.</td>
 <td>Alta dirección</td>
 <td>Consejo</td>
 </tr>
 <tr id="cod-c3-cartera">
-<td><strong>C3 · Cartera</strong></td>
+<td><strong>Cartera</strong> <span class="codigo">(C3)</span></td>
 <td>Seleccionar, priorizar y equilibrar las iniciativas.</td>
 <td>Cartera priorizada con nivel de ambición, esfera, intensidad, presupuesto y responsables; criterios de retirada; capacidad disponible.</td>
 <td>Comité de IA</td>
 <td>Comité de IA; el consejo aprueba las iniciativas de Transformar</td>
 </tr>
 <tr id="cod-c4-supervision">
-<td><strong>C4 · Supervisión</strong></td>
+<td><strong>Supervisión</strong> <span class="codigo">(C4)</span></td>
 <td>Comprobar que se cumple lo decidido y actuar sobre las desviaciones.</td>
 <td>Panel del consejo; registro de recomendaciones y decisiones; resultados de <em>gates</em> relevantes; incidentes y no conformidades; riesgos principales de la cartera.</td>
 <td>Oficina de IA</td>
 <td>Comité de IA (mensual); consejo o comisión delegada (trimestral)</td>
 </tr>
 <tr id="cod-c5-revision">
-<td><strong>C5 · Revisión</strong></td>
+<td><strong>Revisión</strong> <span class="codigo">(C5)</span></td>
 <td>Evaluar el avance y ajustar la dirección.</td>
 <td>Revisión de madurez e índice de transformación; cumplimiento de la tesis; lecciones aprendidas; propuesta de ajustes para el nuevo ciclo.</td>
 <td>Oficina de IA con auditoría interna</td>
@@ -999,53 +1003,53 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>0</td>
 <td><strong>Contexto y restricciones</strong></td>
 <td>¿Está autorizada la iniciativa y en qué marco?</td>
-<td>G0 · Autorización</td>
+<td>Autorización <span class="codigo">(G0)</span></td>
 </tr>
 <tr>
 <td>1</td>
 <td><strong>Descubrimiento de oportunidades</strong></td>
 <td>¿Hay una oportunidad de negocio que requiere IA?</td>
-<td>G1 · Oportunidad</td>
+<td>Oportunidad <span class="codigo">(G1)</span></td>
 </tr>
 <tr>
 <td>2</td>
 <td><strong>Hipótesis de valor</strong></td>
 <td>¿Qué valor esperamos, cómo lo mediremos y cómo sabremos que ha fallado?</td>
-<td>G2 · Hipótesis</td>
+<td>Hipótesis <span class="codigo">(G2)</span></td>
 </tr>
 <tr>
 <td>3</td>
 <td><strong>Viabilidad y riesgo</strong></td>
 <td>¿Es viable técnica, económica, regulatoria y organizativamente, con un riesgo aceptable?</td>
-<td>G3 · Viabilidad (principal puerta de parada)</td>
+<td>Viabilidad <span class="codigo">(G3 · principal puerta de parada)</span></td>
 </tr>
 <tr>
 <td>4</td>
 <td><strong>Diseño de la solución</strong></td>
 <td>¿Cómo se construye con control, supervisión humana y reversibilidad?</td>
-<td>G4 · Diseño</td>
+<td>Diseño <span class="codigo">(G4)</span></td>
 </tr>
 <tr>
 <td>5</td>
 <td><strong>Entrega y validación</strong></td>
 <td>¿Funciona y aporta valor en condiciones reales?</td>
-<td>G5 · Puesta en producción</td>
+<td>Puesta en producción <span class="codigo">(G5)</span></td>
 </tr>
 <tr>
 <td>6</td>
 <td><strong>Operación y gobierno</strong></td>
 <td>¿Sigue funcionando, aportando valor y bajo control?</td>
-<td>R6 · Revisión de continuidad (periódica)</td>
+<td>Revisión de continuidad <span class="codigo">(R6 · periódica)</span></td>
 </tr>
 <tr>
 <td>7</td>
 <td><strong>Evolución o retirada</strong></td>
 <td>¿Escalamos, iteramos o retiramos?</td>
-<td>G7 · Escalado o retirada</td>
+<td>Escalado o retirada <span class="codigo">(G7)</span></td>
 </tr>
 </tbody>
 </table></div>
-<h3 id="6-2-fase-0-contexto-y-restricciones">6.2 Fase 0 · Contexto y restricciones</h3>
+<h3 id="6-2-fase-0-contexto-y-restricciones">6.2 Contexto y restricciones (fase 0)</h3>
 <div class="tabla"><table>
 <thead>
 <tr>
@@ -1076,7 +1080,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 </tbody>
 </table></div>
-<h3 id="6-3-fase-1-descubrimiento-de-oportunidades">6.3 Fase 1 · Descubrimiento de oportunidades</h3>
+<h3 id="6-3-fase-1-descubrimiento-de-oportunidades">6.3 Descubrimiento de oportunidades (fase 1)</h3>
 <div class="tabla"><table>
 <thead>
 <tr>
@@ -1103,7 +1107,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 </tbody>
 </table></div>
-<h3 id="6-4-fase-2-hipotesis-de-valor">6.4 Fase 2 · Hipótesis de valor</h3>
+<h3 id="6-4-fase-2-hipotesis-de-valor">6.4 Hipótesis de valor (fase 2)</h3>
 <div class="tabla"><table>
 <thead>
 <tr>
@@ -1134,7 +1138,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 </tbody>
 </table></div>
-<h3 id="6-5-fase-3-viabilidad-y-riesgo">6.5 Fase 3 · Viabilidad y riesgo</h3>
+<h3 id="6-5-fase-3-viabilidad-y-riesgo">6.5 Viabilidad y riesgo (fase 3)</h3>
 <div class="tabla"><table>
 <thead>
 <tr>
@@ -1165,7 +1169,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 </tbody>
 </table></div>
-<h3 id="6-6-fase-4-diseno-de-la-solucion">6.6 Fase 4 · Diseño de la solución</h3>
+<h3 id="6-6-fase-4-diseno-de-la-solucion">6.6 Diseño de la solución (fase 4)</h3>
 <div class="tabla"><table>
 <thead>
 <tr>
@@ -1192,7 +1196,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 </tbody>
 </table></div>
-<h3 id="6-7-fase-5-entrega-y-validacion">6.7 Fase 5 · Entrega y validación</h3>
+<h3 id="6-7-fase-5-entrega-y-validacion">6.7 Entrega y validación (fase 5)</h3>
 <div class="tabla"><table>
 <thead>
 <tr>
@@ -1223,7 +1227,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 </tbody>
 </table></div>
-<h3 id="6-8-fase-6-operacion-y-gobierno">6.8 Fase 6 · Operación y gobierno</h3>
+<h3 id="6-8-fase-6-operacion-y-gobierno">6.8 Operación y gobierno (fase 6)</h3>
 <div class="tabla"><table>
 <thead>
 <tr>
@@ -1250,7 +1254,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 </tbody>
 </table></div>
-<h3 id="6-9-fase-7-evolucion-o-retirada">6.9 Fase 7 · Evolución o retirada</h3>
+<h3 id="6-9-fase-7-evolucion-o-retirada">6.9 Evolución o retirada (fase 7)</h3>
 <div class="tabla"><table>
 <thead>
 <tr>
@@ -1442,56 +1446,56 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </thead>
 <tbody>
 <tr id="cod-g0-autorizacion">
-<td><strong>G0 · Autorización</strong></td>
+<td><strong>Autorización</strong> <span class="codigo">(G0)</span></td>
 <td>Oficina de IA</td>
 <td>Patrocinador</td>
 <td>Auditor de IA</td>
 <td>Comité de IA</td>
 </tr>
 <tr id="cod-g1-oportunidad">
-<td><strong>G1 · Oportunidad</strong></td>
+<td><strong>Oportunidad</strong> <span class="codigo">(G1)</span></td>
 <td>Oficina de IA</td>
 <td>Patrocinador</td>
 <td>Auditor de IA</td>
 <td>Patrocinador, informando al comité</td>
 </tr>
 <tr id="cod-g2-hipotesis">
-<td><strong>G2 · Hipótesis</strong></td>
+<td><strong>Hipótesis</strong> <span class="codigo">(G2)</span></td>
 <td>Oficina de IA</td>
 <td>Patrocinador</td>
 <td>Auditor de IA</td>
 <td>Comité de IA</td>
 </tr>
 <tr id="cod-g3-viabilidad">
-<td><strong>G3 · Viabilidad</strong></td>
+<td><strong>Viabilidad</strong> <span class="codigo">(G3)</span></td>
 <td>Oficina de IA</td>
 <td>Patrocinador con conformidad de riesgos</td>
 <td>Auditor de IA</td>
 <td>Comité de IA</td>
 </tr>
 <tr id="cod-g4-diseno">
-<td><strong>G4 · Diseño</strong></td>
+<td><strong>Diseño</strong> <span class="codigo">(G4)</span></td>
 <td>Oficina de IA</td>
 <td>Patrocinador con conformidad de riesgos</td>
 <td>Auditor de IA</td>
 <td>Comité de IA</td>
 </tr>
 <tr id="cod-g5-puesta-en-produccion">
-<td><strong>G5 · Puesta en producción</strong></td>
+<td><strong>Puesta en producción</strong> <span class="codigo">(G5)</span></td>
 <td>Oficina de IA</td>
 <td>Patrocinador con conformidad de riesgos</td>
 <td>Auditor de IA</td>
 <td>Comité de IA tras firma multinivel</td>
 </tr>
 <tr id="cod-r6-continuidad">
-<td><strong>R6 · Continuidad</strong></td>
+<td><strong>Continuidad</strong> <span class="codigo">(R6)</span></td>
 <td>Oficina de IA</td>
 <td>Patrocinador</td>
 <td>Auditor de IA</td>
 <td>Comité de IA</td>
 </tr>
 <tr id="cod-g7-escalado-o-retirada">
-<td><strong>G7 · Escalado o retirada</strong></td>
+<td><strong>Escalado o retirada</strong> <span class="codigo">(G7)</span></td>
 <td>Oficina de IA</td>
 <td>Patrocinador</td>
 <td>Auditor de IA</td>
@@ -1513,25 +1517,25 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </thead>
 <tbody>
 <tr id="cod-g2-hipotesis-2">
-<td><strong>G2 · Hipótesis</strong></td>
+<td><strong>Hipótesis</strong> <span class="codigo">(G2)</span></td>
 <td>Línea base de coste, tiempo o errores; ahorro esperado con fórmula.</td>
 <td>Métricas de rendimiento y de coste; objetivo de adopción.</td>
 <td>Hipótesis de retorno con hitos de aprendizaje; límite de inversión por etapa; aprobación del consejo.</td>
 </tr>
 <tr id="cod-g3-viabilidad-2">
-<td><strong>G3 · Viabilidad</strong></td>
+<td><strong>Viabilidad</strong> <span class="codigo">(G3)</span></td>
 <td>Neto anual esperado positivo y VAN ≥ 0 dentro del horizonte y con la tasa fijados en C2 (<a href="40_SEVEN-G_Reglas_de_medicion_del_valor.html" title="Documento 40 &#183; Reglas de medici&#243;n del valor">documento 40</a>).</td>
 <td>Viabilidad de la adopción y del cambio de rol, además del neto esperado.</td>
 <td>Viabilidad de la primera etapa; criterios de parada por etapa; valor de opción documentado.</td>
 </tr>
 <tr id="cod-g5-puesta-en-produccion-2">
-<td><strong>G5 · Puesta en producción</strong></td>
+<td><strong>Puesta en producción</strong> <span class="codigo">(G5)</span></td>
 <td>Eficiencia validada frente a la línea base; plan para materializar la capacidad liberada.</td>
 <td>Adopción real y mejora de rendimiento medidas.</td>
 <td>Evidencia de mercado o de cliente: uso, conversión, ingresos iniciales o cambio operativo verificado.</td>
 </tr>
 <tr id="cod-g7-escalado-o-retirada-2">
-<td><strong>G7 · Escalado o retirada</strong></td>
+<td><strong>Escalado o retirada</strong> <span class="codigo">(G7)</span></td>
 <td>Ahorro materializado, no solo capacidad liberada.</td>
 <td>Rendimiento sostenido y capacidad reasignada.</td>
 <td>Retorno medido y cambio del modelo operativo o de la oferta verificado.</td>
@@ -2043,7 +2047,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>Diagnosticar y revisar la dirección.</td>
 </tr>
 <tr id="cod-c4">
-<td><strong>C4</strong></td>
+<td><strong>Supervisi&#243;n</strong> <span class="codigo">(C4)</span></td>
 <td>Panel del consejo; agilidad de decisión (tiempo desde la idea hasta la aprobación y la producción).</td>
 <td>Supervisar.</td>
 </tr>
@@ -2287,7 +2291,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </table></div>
 <h2 id="fuentes-externas">Fuentes externas citadas</h2><p class="fuentes-nota">Enlaces a la fuente oficial o primaria, comprobados antes de publicar. Verifique siempre la versión vigente en la fecha de uso.</p><ul class="fuentes-externas"><li><a href="https://eur-lex.europa.eu/eli/dir/2022/2555/oj/spa" target="_blank" rel="noopener">Directiva (UE) 2022/2555 del Parlamento Europeo y del Consejo, de 14 de diciembre de 2022, relativa a las medidas destinadas a garantizar un elevado nivel com&#250;n de ciberseguridad en toda la Uni&#243;n (Directiva SRI 2 / NIS2)</a><span> · Parlamento Europeo y Consejo de la UE · 14-12-2022</span></li><li><a href="https://eur-lex.europa.eu/eli/reg/2016/679/oj/spa" target="_blank" rel="noopener">Reglamento (UE) 2016/679 del Parlamento Europeo y del Consejo, de 27 de abril de 2016, relativo a la protecci&#243;n de las personas f&#237;sicas en lo que respecta al tratamiento de datos personales y a la libre circulaci&#243;n de estos datos y por el que se deroga la Directiva 95/46/CE (Reglamento general de protecci&#243;n de datos)</a><span> · Parlamento Europeo y Consejo de la UE · 27-04-2016</span></li><li><a href="https://eur-lex.europa.eu/eli/reg/2022/2554/oj/spa" target="_blank" rel="noopener">Reglamento (UE) 2022/2554 del Parlamento Europeo y del Consejo, de 14 de diciembre de 2022, sobre la resiliencia operativa digital del sector financiero (DORA)</a><span> · Parlamento Europeo y Consejo de la UE · 14-12-2022</span></li><li><a href="https://eur-lex.europa.eu/eli/reg/2024/1689/oj/spa" target="_blank" rel="noopener">Reglamento (UE) 2024/1689 del Parlamento Europeo y del Consejo, de 13 de junio de 2024, por el que se establecen normas armonizadas en materia de inteligencia artificial (Reglamento de Inteligencia Artificial)</a><span> · Parlamento Europeo y Consejo de la UE · 13-06-2024</span></li><li><a href="https://csrc.nist.gov/pubs/ir/8596/iprd" target="_blank" rel="noopener">Perfil del marco de ciberseguridad para la inteligencia artificial (Cyber AI Profile): perfil comunitario del NIST, NIST IR 8596 (borrador preliminar inicial)</a><span> · National Institute of Standards and Technology (NIST), NCCoE · 16-12-2025</span></li><li><a href="https://www.iso.org/standard/42001" target="_blank" rel="noopener">ISO/IEC 42001:2023 Tecnolog&#237;a de la informaci&#243;n — Inteligencia artificial — Sistema de gesti&#243;n</a><span> · ISO/IEC (JTC 1/SC 42) · 18-12-2023</span></li><li><a href="https://doi.org/10.6028/NIST.CSWP.29.spa" target="_blank" rel="noopener">Marco de ciberseguridad del NIST, versi&#243;n 2.0 (The NIST Cybersecurity Framework (CSF) 2.0), NIST CSWP 29</a><span> · National Institute of Standards and Technology (NIST), Departamento de Comercio de EE. UU. · 26-02-2024</span></li><li><a href="https://www.nist.gov/publications/artificial-intelligence-risk-management-framework-ai-rmf-10" target="_blank" rel="noopener">Marco de gesti&#243;n de riesgos de inteligencia artificial del NIST (AI RMF 1.0), NIST AI 100-1</a><span> · National Institute of Standards and Technology (NIST), Departamento de Comercio de EE. UU. · 26-01-2023</span></li></ul>
 </main>
-<footer class="pie"><div><span>© 2026 Fernando García Varela · Metodolog&#237;a SEVEN-G</span><span>Generado el 28-09-2026</span></div><p class="pie-ia">Contenido generado y maquetado con apoyo de IA bajo supervisi&#243;n editorial del autor.</p></footer>
+<footer class="pie"><div><span>© 2026 Fernando García Varela · Metodolog&#237;a SEVEN-G</span><span>Generado el 12-10-2026</span></div><p class="pie-ia">Contenido generado y maquetado con apoyo de IA bajo supervisi&#243;n editorial del autor.</p></footer>
 <script src="codigos.js" defer></script>
 
 <script>

@@ -392,6 +392,10 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 /* Ilustraciones en imagen (p. ej., SPAD): ocupan el ancho del lienzo y conservan su proporción */
 .g-lienzo img { display: block; width: 100%; height: auto; border: 1px solid var(--regla-2); }
 .ilustracion .g-lienzo img[src*="ilusion_de_velocidad"] { max-width: 560px; margin: 0 auto; }
+/* Nombre primero, código después (D144): el código entre paréntesis tras el nombre, en tablas y títulos */
+.codigo { font-family: var(--mono, 'Courier New', monospace); font-size: .88em; color: var(--tinta-2); white-space: nowrap; font-weight: 400; }
+h2 .codigo, h3 .codigo { font-weight: 400; }
+
 @page { @bottom-left { content: "SEVEN-G tools and initiative register"; font: 8.5pt "Libre Franklin", "Segoe UI", sans-serif; color: #74675e; } }
 </style>
 </head>
@@ -1207,13 +1211,13 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>Parameters (horizon, rate, hourly cost), broken-down value lines, ramp-up, stop criteria, stages, costs per use case and reconciliation.</td>
 </tr>
 <tr id="cod-t14">
-<td><strong><a href="../../herramientas/T14_indice_transformacion/indice.html" title="Tool T14 &#183; Transformation index calculator">T14</a></strong></td>
+<td><strong>Transformation index calculator</strong> <span class="codigo">(<a href="../../herramientas/T14_indice_transformacion/indice.html" title="Tool T14 &#183; Transformation index calculator">T14</a>)</span></td>
 <td>Portfolio (phases, statuses, ambition, spheres, <em>gates</em>), realised and validated amounts, investment, index evidence of each initiative, company data (revenue, IT-D3) and board decisions. A calculation made from the register is <strong>refreshed</strong> when it is read again: only the figures still marked &quot;from <a href="../../herramientas/T01_registro_iniciativas/registro.html" title="Tool T01 &#183; Initiative register">T01</a>&quot; are renewed.</td>
 <td>Nothing. Its result goes to the board dashboard (<a href="../../herramientas/T17_panel_consejo/index.html" title="Tool T17 &#183; Board AI dashboard">T17</a>) and it leaves the profile of the latest calculation for the cross-reading in <a href="../../herramientas/T15_diagnostico_madurez/madurez.html" title="Tool T15 &#183; Maturity diagnosis">T15</a>.</td>
 <td>Threshold versions, calculations with the origin mark of each figure, notes and actions.</td>
 </tr>
 <tr id="cod-t15">
-<td><strong><a href="../../herramientas/T15_diagnostico_madurez/madurez.html" title="Tool T15 &#183; Maturity diagnosis">T15</a></strong></td>
+<td><strong>Maturity diagnosis</strong> <span class="codigo">(<a href="../../herramientas/T15_diagnostico_madurez/madurez.html" title="Tool T15 &#183; Maturity diagnosis">T15</a>)</span></td>
 <td>Company and a stratified sample of initiatives (Enterprise, in production, Augment or Transform, third party, generative AI or agents; 11 §4.6). From <a href="../../herramientas/T14_indice_transformacion/indice.html" title="Tool T14 &#183; Transformation index calculator">T14</a>, the profile of the latest calculation. For the three lenses: registration date, phase, technology, autonomy, actual ambition, closure and verification of IT-P2 and IT-P3 of each initiative, the phase entries and the thesis approved by the board (C2 date).</td>
 <td>The summary of each assessment (<code>madurez[]</code>): overall level, average, cap by D1 or D6, level by dimension and summary of the NIST profiles (<code>madurez[].perfiles</code>) and of the three lenses (<code>madurez[].lentes</code>); never the answers.</td>
 <td>Answers, evidence, verification, interviews, samples, weights, targets, messages, improvement plan, the target and own levels of the NIST profiles and the footprint and reach entered by hand when there is no register.</td>
@@ -1225,19 +1229,19 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>Dashboard configuration (thresholds, lifecycle, navigation) and the generated dashboards.</td>
 </tr>
 <tr id="cod-t06">
-<td><strong><a href="../../herramientas/T01_registro_iniciativas/registro.html#/riesgos" title="Tool T06 &#183; Risk matrix and register">T06</a></strong></td>
+<td><strong>Risk matrix and register</strong> <span class="codigo">(<a href="../../herramientas/T01_registro_iniciativas/registro.html#/riesgos" title="Tool T06 &#183; Risk matrix and register">T06</a>)</span></td>
 <td>It is a view of the register itself. For the <strong>Excel of the use case</strong> (matrix, register, proposed mitigation and contingency plans and typical risks to consider) it reads, besides the initiative's risks, its classification (technology, exposure, autonomy, regulatory classification, ambition, intensity and providers), its impact assessments, its systems and its owners.</td>
 <td>Nothing: the Excel is a downloaded file with the generation date and time; whatever the team decides in it is recorded on the &quot;Risks&quot; tab.</td>
 <td>The catalogue of typical risks with the applicability rules and the mitigation and contingency proposals per RT code (<code>catalogo_riesgos.json</code>; the text of each typical risk is read from <a href="33_SEVEN-G_Metodologia_de_riesgos_de_IA.html" title="Document 33 &#183; AI risk methodology">document 33</a> §9 when the tool is generated).</td>
 </tr>
 <tr id="cod-t18">
-<td><strong><a href="../../herramientas/T01_registro_iniciativas/registro.html#/consejo" title="Tool T18 &#183; Board recommendations register">T18</a></strong></td>
+<td><strong>Board recommendations register</strong> <span class="codigo">(<a href="../../herramientas/T01_registro_iniciativas/registro.html#/consejo" title="Tool T18 &#183; Board recommendations register">T18</a>)</span></td>
 <td>It is a view of the register itself.</td>
 <td>—</td>
 <td>—</td>
 </tr>
 <tr id="cod-t23">
-<td><strong><a href="../../herramientas/T23_recorrido_implantacion/recorrido.html" title="Tool T23 &#183; Implementation journey">T23</a></strong></td>
+<td><strong>Implementation journey</strong> <span class="codigo">(<a href="../../herramientas/T23_recorrido_implantacion/recorrido.html" title="Tool T23 &#183; Implementation journey">T23</a>)</span></td>
 <td>Technology and autonomy of the initiatives in use and the pilots under way, to propose answers Q01 to Q03 of the questionnaire (marked &quot;from <a href="../../herramientas/T01_registro_iniciativas/registro.html" title="Tool T01 &#183; Initiative register">T01</a>&quot; and editable). From <a href="../../herramientas/T15_diagnostico_madurez/madurez.html" title="Tool T15 &#183; Maturity diagnosis">T15</a>, the answers of the most recent assessment, to mark milestones as achieved.</td>
 <td>Nothing.</td>
 <td>Questionnaire, archetype, status of each milestone and notes.</td>
@@ -1253,8 +1257,8 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <div class="tabla"><table>
 <thead>
 <tr>
-<th>Code</th>
 <th>Tool</th>
+
 <th>Purpose</th>
 <th>Where it is used</th>
 <th>Format</th>
@@ -1265,8 +1269,8 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </thead>
 <tbody>
 <tr id="cod-t01">
-<td><strong><a href="../../herramientas/T01_registro_iniciativas/registro.html" title="Tool T01 &#183; Initiative register">T01</a></strong></td>
-<td><strong>Initiative register</strong></td>
+<td><strong><strong>Initiative register</strong></strong> <span class="codigo">(<a href="../../herramientas/T01_registro_iniciativas/registro.html" title="Tool T01 &#183; Initiative register">T01</a>)</span></td>
+
 <td>CRM-style funnel: phases, statuses, events, tags, value and metrics.</td>
 <td>Entire cycle; C3 and C4</td>
 <td>HTML + JSON; export to spreadsheet</td>
@@ -1275,8 +1279,8 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>Available v0.1</td>
 </tr>
 <tr id="cod-t02">
-<td><strong><a href="../../herramientas/T01_registro_iniciativas/registro.html#/inventario" title="Tool T02 &#183; AI system inventory">T02</a></strong></td>
-<td>AI system inventory</td>
+<td><strong>AI system inventory</strong> <span class="codigo">(<a href="../../herramientas/T01_registro_iniciativas/registro.html#/inventario" title="Tool T02 &#183; AI system inventory">T02</a>)</span></td>
+
 <td>Register of all systems, including third-party systems and corporate use.</td>
 <td>C1, phase 0, C4</td>
 <td><a href="../../herramientas/T01_registro_iniciativas/registro.html" title="Tool T01 &#183; Initiative register">T01</a> module</td>
@@ -1285,8 +1289,8 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>Available v0.1</td>
 </tr>
 <tr id="cod-t03">
-<td><strong><a href="../../herramientas/T01_registro_iniciativas/registro.html#/gates" title="Tool T03 &#183; Gate manager">T03</a></strong></td>
-<td>Gate manager</td>
+<td><strong>Gate manager</strong> <span class="codigo">(<a href="../../herramientas/T01_registro_iniciativas/registro.html#/gates" title="Tool T03 &#183; Gate manager">T03</a>)</span></td>
+
 <td>Criteria with status, evidence, verification, decision and conditions.</td>
 <td>All <em>gates</em></td>
 <td><a href="../../herramientas/T01_registro_iniciativas/registro.html" title="Tool T01 &#183; Initiative register">T01</a> module</td>
@@ -1295,8 +1299,8 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>Available v0.1 (128 criteria from <a href="21_SEVEN-G_Criterios_de_gate_y_auditoria.html" title="Document 21 &#183; Gate and audit criteria">document 21</a>)</td>
 </tr>
 <tr id="cod-t04">
-<td><strong><a href="../../herramientas/T01_registro_iniciativas/registro.html" title="Tool T04 &#183; Intensity determination">T04</a></strong></td>
-<td>Intensity determination</td>
+<td><strong>Intensity determination</strong> <span class="codigo">(<a href="../../herramientas/T01_registro_iniciativas/registro.html" title="Tool T04 &#183; Intensity determination">T04</a>)</span></td>
+
 <td>Lite or Enterprise questionnaire with recorded result.</td>
 <td>Phase 0, G3, R6</td>
 <td><a href="../../herramientas/T01_registro_iniciativas/registro.html" title="Tool T01 &#183; Initiative register">T01</a> module</td>
@@ -1305,8 +1309,8 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>Available v0.1</td>
 </tr>
 <tr id="cod-t05">
-<td><strong><a href="../../herramientas/T01_registro_iniciativas/registro.html" title="Tool T05 &#183; Ambition classifier">T05</a></strong></td>
-<td>Ambition classifier</td>
+<td><strong>Ambition classifier</strong> <span class="codigo">(<a href="../../herramientas/T01_registro_iniciativas/registro.html" title="Tool T05 &#183; Ambition classifier">T05</a>)</span></td>
+
 <td>Five questions for Optimise, Augment or Transform.</td>
 <td>Phases 1, 2 and 7</td>
 <td><a href="../../herramientas/T01_registro_iniciativas/registro.html" title="Tool T01 &#183; Initiative register">T01</a> module</td>
@@ -1320,8 +1324,8 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <div class="tabla"><table>
 <thead>
 <tr>
-<th>Code</th>
 <th>Tool</th>
+
 <th>Purpose</th>
 <th>Where it is used</th>
 <th>Format</th>
@@ -1332,8 +1336,8 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </thead>
 <tbody>
 <tr id="cod-t06-2">
-<td><strong><a href="../../herramientas/T01_registro_iniciativas/registro.html#/riesgos" title="Tool T06 &#183; Risk matrix and register">T06</a></strong></td>
-<td>Risk matrix and register</td>
+<td><strong>Risk matrix and register</strong> <span class="codigo">(<a href="../../herramientas/T01_registro_iniciativas/registro.html#/riesgos" title="Tool T06 &#183; Risk matrix and register">T06</a>)</span></td>
+
 <td>Probability and impact assessment, heat map, inherent and residual risk, controls and their effectiveness, response, contingency and acceptance by the body for its level, with observations from the methodology (Critical without board approval, High without contingency, acceptance expired or by a lower body, review overdue), CSV export for spreadsheets and <strong>Excel of the use case</strong>: matrix, register, mitigation and contingency plans proposed from the catalogue of typical risks in <a href="33_SEVEN-G_Metodologia_de_riesgos_de_IA.html" title="Document 33 &#183; AI risk methodology">document 33</a> §9 and applicable typical risks not registered, to include or discard with a reason.</td>
 <td>Phase 3, phase 6, portfolio</td>
 <td><a href="../../herramientas/T01_registro_iniciativas/registro.html" title="Tool T01 &#183; Initiative register">T01</a> module (&quot;Risks&quot; view and record tab)</td>
@@ -1342,8 +1346,8 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>Available v0.1. Documented with <a href="plantillas/P12_SEVEN-G_Matriz_y_registro_de_riesgos.html" title="Template P12 &#183; Risk matrix and register">P12</a> and <a href="plantillas/P13_SEVEN-G_Plan_de_mitigacion_y_contingencia.html" title="Template P13 &#183; Mitigation and contingency plan">P13</a></td>
 </tr>
 <tr id="cod-t07">
-<td><strong><a href="plantillas/P11_SEVEN-G_Clasificacion_regulatoria_y_evaluaciones_de_impacto.html" title="Tool T07 &#183; Regulatory classifier">T07</a></strong></td>
-<td>Regulatory classifier</td>
+<td><strong>Regulatory classifier</strong> <span class="codigo">(<a href="plantillas/P11_SEVEN-G_Clasificacion_regulatoria_y_evaluaciones_de_impacto.html" title="Tool T07 &#183; Regulatory classifier">T07</a>)</span></td>
+
 <td>Guided questionnaire for classification under the <a class="ref-ext" href="https://eur-lex.europa.eu/eli/reg/2024/1689/oj/eng" target="_blank" rel="noopener" title="Regulation (EU) 2024/1689 of the European Parliament and of the Council of 13 June 2024 laying down harmonised rules on artificial intelligence (Artificial Intelligence Act)">AI Act</a> and the assessments required.</td>
 <td>Phases 0 and 3</td>
 <td>HTML</td>
@@ -1352,8 +1356,8 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>Applied with <a href="plantillas/P11_SEVEN-G_Clasificacion_regulatoria_y_evaluaciones_de_impacto.html" title="Template P11 &#183; Regulatory classification and impact assessments">P11</a></td>
 </tr>
 <tr id="cod-t08">
-<td><strong><a href="plantillas/P50_SEVEN-G_Registro_de_no_conformidades.html" title="Tool T08 &#183; Nonconformity and incident register">T08</a></strong></td>
-<td>Nonconformity and incident register</td>
+<td><strong>Nonconformity and incident register</strong> <span class="codigo">(<a href="plantillas/P50_SEVEN-G_Registro_de_no_conformidades.html" title="Tool T08 &#183; Nonconformity and incident register">T08</a>)</span></td>
+
 <td>Full process with time limits and alerts.</td>
 <td>Phase 6, C4</td>
 <td><a href="../../herramientas/T01_registro_iniciativas/registro.html" title="Tool T01 &#183; Initiative register">T01</a> module</td>
@@ -1362,8 +1366,8 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>Applied with <a href="plantillas/P50_SEVEN-G_Registro_de_no_conformidades.html" title="Template P50 &#183; Nonconformity register">P50</a> (nonconformity register), <a href="plantillas/P51_SEVEN-G_Notificaciones_y_comunicaciones_de_incidentes.html" title="Template P51 &#183; Incident reports and communications">P51</a> (notifications and communications) and <a href="plantillas/P52_SEVEN-G_Analisis_de_causa_raiz_y_plan_de_accion_correctiva.html" title="Template P52 &#183; Root cause analysis and corrective action plan">P52</a> (root cause), together with <a href="plantillas/P26_SEVEN-G_Plan_de_respuesta_a_incidentes.html" title="Template P26 &#183; Incident response plan">P26</a> and <a href="plantillas/P27_SEVEN-G_Registro_de_incidentes_y_cambios.html" title="Template P27 &#183; Incident and change log">P27</a></td>
 </tr>
 <tr id="cod-t09">
-<td><strong><a href="plantillas/P57_SEVEN-G_Registro_de_proveedores_y_plan_de_salida.html" title="Tool T09 &#183; AI supplier register">T09</a></strong></td>
-<td>AI supplier register</td>
+<td><strong>AI supplier register</strong> <span class="codigo">(<a href="plantillas/P57_SEVEN-G_Registro_de_proveedores_y_plan_de_salida.html" title="Tool T09 &#183; AI supplier register">T09</a>)</span></td>
+
 <td>Third parties, criticality, contracts, assessment and dependency.</td>
 <td>Phases 3–4, C4</td>
 <td><a href="../../herramientas/T01_registro_iniciativas/registro.html" title="Tool T01 &#183; Initiative register">T01</a> module</td>
@@ -1372,8 +1376,8 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>Applied with <a href="plantillas/P57_SEVEN-G_Registro_de_proveedores_y_plan_de_salida.html" title="Template P57 &#183; Supplier register and exit plan">P57</a> (supplier register and exit plan), <a href="plantillas/P55_SEVEN-G_Cuestionario_de_diligencia_debida_a_proveedores_de_IA.html" title="Template P55 &#183; AI supplier due diligence questionnaire">P55</a> (due diligence), <a href="plantillas/P56_SEVEN-G_Clausulas_contractuales_tipo_de_IA.html" title="Template P56 &#183; Model AI contractual clauses">P56</a> (contract clauses) and <a href="plantillas/P14_SEVEN-G_Evaluacion_de_proveedor_de_IA.html" title="Template P14 &#183; AI supplier assessment">P14</a></td>
 </tr>
 <tr id="cod-t10">
-<td><strong><a href="plantillas/P18_SEVEN-G_Diseno_de_seguridad.html" title="Tool T10 &#183; Agent security assessment">T10</a></strong></td>
-<td>Agent security assessment</td>
+<td><strong>Agent security assessment</strong> <span class="codigo">(<a href="plantillas/P18_SEVEN-G_Diseno_de_seguridad.html" title="Tool T10 &#183; Agent security assessment">T10</a>)</span></td>
+
 <td>Identity, permissions, intent-based access control, kill switch, injection testing.</td>
 <td>Phases 4–6</td>
 <td>Checklist in <a href="../../herramientas/T01_registro_iniciativas/registro.html#/gates" title="Tool T03 &#183; Gate manager">T03</a></td>
@@ -1387,8 +1391,8 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <div class="tabla"><table>
 <thead>
 <tr>
-<th>Code</th>
 <th>Tool</th>
+
 <th>Purpose</th>
 <th>Where it is used</th>
 <th>Format</th>
@@ -1399,8 +1403,8 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </thead>
 <tbody>
 <tr id="cod-t11">
-<td><strong><a href="../../herramientas/T11_calculadora_valor/calculadora.html" title="Tool T11 &#183; Value hypothesis canvas and calculator">T11</a></strong></td>
-<td>Value hypothesis canvas and calculator</td>
+<td><strong>Value hypothesis canvas and calculator</strong> <span class="codigo">(<a href="../../herramientas/T11_calculadora_valor/calculadora.html" title="Tool T11 &#183; Value hypothesis canvas and calculator">T11</a>)</span></td>
+
 <td>Baseline, value lines with formula (F1), annual net value, NPV, ROI, payback and F3 with the C2 horizon and rate; scenarios; C2 economic criterion as information; imports the initiative from <a href="../../herramientas/T01_registro_iniciativas/registro.html" title="Tool T01 &#183; Initiative register">T01</a>. Documented with <a href="plantillas/P08_SEVEN-G_Lienzo_de_hipotesis_de_valor.html" title="Template P08 &#183; Value hypothesis canvas">P08</a>, <a href="plantillas/P09_SEVEN-G_Linea_base.html" title="Template P09 &#183; Baseline">P09</a> and <a href="plantillas/P10_SEVEN-G_Evaluacion_de_viabilidad.html" title="Template P10 &#183; Feasibility assessment">P10</a>.</td>
 <td>Phases 2, 3 and 7</td>
 <td>HTML + JSON; CSV export</td>
@@ -1409,8 +1413,8 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>Available v0.1</td>
 </tr>
 <tr id="cod-t12">
-<td><strong><a href="plantillas/P28_SEVEN-G_Seguimiento_de_realizacion_de_valor.html" title="Tool T12 &#183; Value realisation tracking">T12</a></strong></td>
-<td>Value realisation tracking</td>
+<td><strong>Value realisation tracking</strong> <span class="codigo">(<a href="plantillas/P28_SEVEN-G_Seguimiento_de_realizacion_de_valor.html" title="Tool T12 &#183; Value realisation tracking">T12</a>)</span></td>
+
 <td>Validated, declared and estimated value by period and by use case; realisation plan with curve, funding tranches and pass condition, and realisation against the approved reference.</td>
 <td>Phases 3–7, C4</td>
 <td><a href="../../herramientas/T01_registro_iniciativas/registro.html" title="Tool T01 &#183; Initiative register">T01</a> module (<code>plan_realizacion</code> block, schema 0.8) and &quot;Realisation plan: curve and tranches&quot; card in <a href="../../herramientas/T17_panel_consejo/index.html" title="Tool T17 &#183; Board AI dashboard">T17</a></td>
@@ -1419,8 +1423,8 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>Applied with <a href="plantillas/P28_SEVEN-G_Seguimiento_de_realizacion_de_valor.html" title="Template P28 &#183; Value realisation tracking">P28</a> and <a href="plantillas/P62_SEVEN-G_Plan_de_realizacion_de_beneficios.html" title="Template P62 &#183; Benefits realisation plan">P62</a> (benefits realisation plan). It is not a separate application: the plan is recorded in the <code>plan_realizacion</code> block of each <a href="../../herramientas/T01_registro_iniciativas/registro.html" title="Tool T01 &#183; Initiative register">T01</a> initiative and the board dashboard shows it (43 §4.1, 60 §10.6)</td>
 </tr>
 <tr id="cod-t13">
-<td><strong><a href="../../herramientas/T11_calculadora_valor/calculadora.html#/costes" title="Tool T13 &#183; Cost calculator per use case">T13</a></strong></td>
-<td>Cost calculator per use case</td>
+<td><strong>Cost calculator per use case</strong> <span class="codigo">(<a href="../../herramientas/T11_calculadora_valor/calculadora.html#/costes" title="Tool T13 &#183; Cost calculator per use case">T13</a>)</span></td>
+
 <td>Full and incremental cost, total cost of ownership, allocation of shared costs, consumption forecast with alerts, cost per unit, cost of stopping and reconciliation. Documented with <a href="plantillas/P10_SEVEN-G_Evaluacion_de_viabilidad.html" title="Template P10 &#183; Feasibility assessment">P10</a> and <a href="plantillas/P63_SEVEN-G_Presupuesto_de_consumo_y_conciliacion_de_costes.html" title="Template P63 &#183; Consumption budget and cost reconciliation">P63</a>.</td>
 <td>Phases 3 and 6</td>
 <td>Module of <a href="../../herramientas/T11_calculadora_valor/calculadora.html" title="Tool T11 &#183; Value hypothesis canvas and calculator">T11</a> (&quot;Cost per use case&quot; view); CSV export</td>
@@ -1429,8 +1433,8 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>Available v0.1</td>
 </tr>
 <tr id="cod-t14-2">
-<td><strong><a href="../../herramientas/T14_indice_transformacion/indice.html" title="Tool T14 &#183; Transformation index calculator">T14</a></strong></td>
-<td>Transformation index calculator</td>
+<td><strong>Transformation index calculator</strong> <span class="codigo">(<a href="../../herramientas/T14_indice_transformacion/indice.html" title="Tool T14 &#183; Transformation index calculator">T14</a>)</span></td>
+
 <td>Baseline conditions, eight signals, company profile, alerts, coverage and evolution, with threshold version; starts from the <a href="../../herramientas/T01_registro_iniciativas/registro.html" title="Tool T01 &#183; Initiative register">T01</a> register JSON, from which it calculates the eight signals when it holds the schema 0.5 evidence, and its result feeds the index card of the board dashboard (<a href="../../herramientas/T17_panel_consejo/index.html" title="Tool T17 &#183; Board AI dashboard">T17</a>).</td>
 <td>C1, C4, C5</td>
 <td>HTML + JSON</td>
@@ -1444,8 +1448,8 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <div class="tabla"><table>
 <thead>
 <tr>
-<th>Code</th>
 <th>Tool</th>
+
 <th>Purpose</th>
 <th>Where it is used</th>
 <th>Format</th>
@@ -1456,8 +1460,8 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </thead>
 <tbody>
 <tr id="cod-t15-2">
-<td><strong><a href="../../herramientas/T15_diagnostico_madurez/madurez.html" title="Tool T15 &#183; Maturity diagnosis">T15</a></strong></td>
-<td>Maturity diagnosis</td>
+<td><strong>Maturity diagnosis</strong> <span class="codigo">(<a href="../../herramientas/T15_diagnostico_madurez/madurez.html" title="Tool T15 &#183; Maturity diagnosis">T15</a>)</span></td>
+
 <td>84-question questionnaire with evidence and verification; level by dimension and overall level capped by D1 and D6; comparison between assessments and report for the board; &quot;Three lenses&quot; view: technology footprint, impact reach, minimum required and alerts (11 §7.6). Template <a href="plantillas/P34_SEVEN-G_Cuestionario_e_informe_de_madurez.html" title="Template P34 &#183; Maturity questionnaire and report">P34</a>.</td>
 <td>C1, C5</td>
 <td>HTML + JSON; CSV export</td>
@@ -1466,8 +1470,8 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>Available v0.1</td>
 </tr>
 <tr id="cod-t16">
-<td><strong><a href="10_SEVEN-G_Mapa_de_esferas_y_niveles_de_ambicion.html" title="Tool T16 &#183; Portfolio sphere map">T16</a></strong></td>
-<td>Portfolio sphere map</td>
+<td><strong>Portfolio sphere map</strong> <span class="codigo">(<a href="10_SEVEN-G_Mapa_de_esferas_y_niveles_de_ambicion.html" title="Tool T16 &#183; Portfolio sphere map">T16</a>)</span></td>
+
 <td>Heat map of spheres × ambition levels with investment and value; in the board dashboard (<a href="../../herramientas/T17_panel_consejo/index.html" title="Tool T17 &#183; Board AI dashboard">T17</a>), card «Where the impact is» (60 §10.5).</td>
 <td>C2, C3</td>
 <td>Board dashboard view</td>
@@ -1476,8 +1480,8 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>Applied with <a href="10_SEVEN-G_Mapa_de_esferas_y_niveles_de_ambicion.html" title="Document 10 &#183; Sphere map and ambition levels">document 10</a></td>
 </tr>
 <tr id="cod-t17">
-<td><strong><a href="../../herramientas/T17_panel_consejo/index.html" title="Tool T17 &#183; Board AI dashboard">T17</a></strong></td>
-<td>Board AI dashboard</td>
+<td><strong>Board AI dashboard</strong> <span class="codigo">(<a href="../../herramientas/T17_panel_consejo/index.html" title="Tool T17 &#183; Board AI dashboard">T17</a>)</span></td>
+
 <td>Oversight: value, cost, risk, compliance, incidents, agility, adoption; executive reading «What holds back scaling» (60 §10.4); realisation plan, pending tranches and non-quantified value (60 §10.6).</td>
 <td>C4</td>
 <td>Full and mobile HTML + JSON</td>
@@ -1486,8 +1490,8 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>Available. Fed from <a href="../../herramientas/T01_registro_iniciativas/registro.html" title="Tool T01 &#183; Initiative register">T01</a> through the connector <code>herramientas/T17_panel_consejo</code>: register (JSON) plus <code>config_panel.json</code> (indicator thresholds and lifecycle) → dashboard JSON → full and mobile dashboard, with a funnel and time per stage as in a CRM</td>
 </tr>
 <tr id="cod-t18-2">
-<td><strong><a href="../../herramientas/T01_registro_iniciativas/registro.html#/consejo" title="Tool T18 &#183; Board recommendations register">T18</a></strong></td>
-<td>Board recommendations register</td>
+<td><strong>Board recommendations register</strong> <span class="codigo">(<a href="../../herramientas/T01_registro_iniciativas/registro.html#/consejo" title="Tool T18 &#183; Board recommendations register">T18</a>)</span></td>
+
 <td>Recommendations with persistent identifier, status, evidence and assessment.</td>
 <td>C4</td>
 <td><a href="../../herramientas/T01_registro_iniciativas/registro.html" title="Tool T01 &#183; Initiative register">T01</a> module and HTML</td>
@@ -1496,8 +1500,8 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>Available v0.1: &quot;Board (<a href="../../herramientas/T01_registro_iniciativas/registro.html#/consejo" title="Tool T18 &#183; Board recommendations register">T18</a>)&quot; view of the <a href="../../herramientas/T01_registro_iniciativas/registro.html" title="Tool T01 &#183; Initiative register">T01</a> register, with decisions (DEC) and recommendations (REC); the <a href="../../herramientas/T17_panel_consejo/index.html" title="Tool T17 &#183; Board AI dashboard">T17</a> connector generates the register page from the recommendations in <a href="../../herramientas/T01_registro_iniciativas/registro.html" title="Tool T01 &#183; Initiative register">T01</a></td>
 </tr>
 <tr id="cod-t19">
-<td><strong><a href="plantillas/P35_SEVEN-G_Tesis_de_IA_y_apetito_de_riesgo.html" title="Tool T19 &#183; AI thesis and risk appetite template">T19</a></strong></td>
-<td>AI thesis and risk appetite template</td>
+<td><strong>AI thesis and risk appetite template</strong> <span class="codigo">(<a href="plantillas/P35_SEVEN-G_Tesis_de_IA_y_apetito_de_riesgo.html" title="Tool T19 &#183; AI thesis and risk appetite template">T19</a>)</span></td>
+
 <td>Board decision document, with thresholds and reference time limits.</td>
 <td>C2</td>
 <td>Document template</td>
@@ -1506,8 +1510,8 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>Applied with <a href="plantillas/P35_SEVEN-G_Tesis_de_IA_y_apetito_de_riesgo.html" title="Template P35 &#183; AI thesis and risk appetite">P35</a> (AI thesis and risk appetite)</td>
 </tr>
 <tr id="cod-t23-2">
-<td><strong><a href="../../herramientas/T23_recorrido_implantacion/recorrido.html" title="Tool T23 &#183; Implementation journey">T23</a></strong></td>
-<td>Implementation journey</td>
+<td><strong>Implementation journey</strong> <span class="codigo">(<a href="../../herramientas/T23_recorrido_implantacion/recorrido.html" title="Tool T23 &#183; Implementation journey">T23</a>)</span></td>
+
 <td>Twelve-question questionnaire; the company's starting point (archetype, traits and modifiers); journey by stage and by role with the 22 milestones of <a href="96_SEVEN-G_Puntos_de_partida_y_recorrido_de_implantacion.html" title="Document 96 &#183; Starting points and implementation journey">document 96</a>, their evidence and the <a href="11_SEVEN-G_Modelo_de_madurez.html" title="Document 11 &#183; Maturity model">document 11</a> question that attests them; milestones achieved according to <a href="../../herramientas/T15_diagnostico_madurez/madurez.html" title="Tool T15 &#183; Maturity diagnosis">T15</a>; printable plan.</td>
 <td>Implementation; C1 and C5</td>
 <td>HTML + JSON; CSV export</td>
@@ -1521,8 +1525,8 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <div class="tabla"><table>
 <thead>
 <tr>
-<th>Code</th>
 <th>Tool</th>
+
 <th>Purpose</th>
 <th>Where it is used</th>
 <th>Format</th>
@@ -1533,8 +1537,8 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </thead>
 <tbody>
 <tr id="cod-t20">
-<td><strong><a href="plantillas/P20_SEVEN-G_Plan_de_adopcion_y_capacidad.html" title="Tool T20 &#183; Adoption and capacity plan">T20</a></strong></td>
-<td>Adoption and capacity plan</td>
+<td><strong>Adoption and capacity plan</strong> <span class="codigo">(<a href="plantillas/P20_SEVEN-G_Plan_de_adopcion_y_capacidad.html" title="Tool T20 &#183; Adoption and capacity plan">T20</a>)</span></td>
+
 <td>Adoption, training and reassignment of released capacity.</td>
 <td>Phases 4–7</td>
 <td>Template and <a href="../../herramientas/T01_registro_iniciativas/registro.html" title="Tool T01 &#183; Initiative register">T01</a> module</td>
@@ -1543,8 +1547,8 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>Applied with <a href="plantillas/P20_SEVEN-G_Plan_de_adopcion_y_capacidad.html" title="Template P20 &#183; Adoption and capacity plan">P20</a> and <a href="plantillas/P45_SEVEN-G_Plan_y_registro_de_alfabetizacion_y_formacion.html" title="Template P45 &#183; Literacy and training plan and record">P45</a> (AI literacy and training plan and register); the released, materialised and reassigned capacity of each initiative is recorded in <a href="../../herramientas/T01_registro_iniciativas/registro.html" title="Tool T01 &#183; Initiative register">T01</a> (schema 0.5)</td>
 </tr>
 <tr id="cod-t21">
-<td><strong><a href="plantillas/P43_SEVEN-G_Catalogo_de_herramientas_autorizadas_y_solicitudes.html" title="Tool T21 &#183; Corporate AI use monitor">T21</a></strong></td>
-<td>Corporate AI use monitor</td>
+<td><strong>Corporate AI use monitor</strong> <span class="codigo">(<a href="plantillas/P43_SEVEN-G_Catalogo_de_herramientas_autorizadas_y_solicitudes.html" title="Tool T21 &#183; Corporate AI use monitor">T21</a>)</span></td>
+
 <td>Assigned and active licences, unauthorised use, data leakage controls.</td>
 <td>C4</td>
 <td>Board dashboard view</td>
@@ -1553,8 +1557,8 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>Applied with <a href="plantillas/P43_SEVEN-G_Catalogo_de_herramientas_autorizadas_y_solicitudes.html" title="Template P43 &#183; Catalogue of authorised tools and requests">P43</a> (catalogue of authorised tools and requests)</td>
 </tr>
 <tr id="cod-t22">
-<td><strong><a href="plantillas/P30_SEVEN-G_Decision_de_escalado_o_retirada.html" title="Tool T22 &#183; Retirement manager">T22</a></strong></td>
-<td>Retirement manager</td>
+<td><strong>Retirement manager</strong> <span class="codigo">(<a href="plantillas/P30_SEVEN-G_Decision_de_escalado_o_retirada.html" title="Tool T22 &#183; Retirement manager">T22</a>)</span></td>
+
 <td>Retirement plan, replacement, data and models, communication.</td>
 <td>Phase 7</td>
 <td><a href="../../herramientas/T01_registro_iniciativas/registro.html" title="Tool T01 &#183; Initiative register">T01</a> module</td>
@@ -1668,7 +1672,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </table></div>
 <h2 id="external-sources">External sources cited</h2><p class="fuentes-nota">Links to the official or primary source, checked before publication. Always verify the version in force on the date of use.</p><ul class="fuentes-externas"><li><a href="https://eur-lex.europa.eu/eli/reg/2024/1689/oj/eng" target="_blank" rel="noopener">Regulation (EU) 2024/1689 of the European Parliament and of the Council of 13 June 2024 laying down harmonised rules on artificial intelligence (Artificial Intelligence Act)</a><span> · Parlamento Europeo y Consejo de la UE · 13-06-2024</span></li><li><a href="https://csrc.nist.gov/pubs/cswp/29/the-nist-cybersecurity-framework-csf-20/final" target="_blank" rel="noopener">The NIST Cybersecurity Framework (CSF) 2.0, NIST CSWP 29</a><span> · National Institute of Standards and Technology (NIST), Departamento de Comercio de EE. UU. · 26-02-2024</span></li></ul>
 </main>
-<footer class="pie"><div><span>© 2026 Fernando García Varela · SEVEN-G methodology</span><span>Generated on 28-09-2026</span></div><p class="pie-ia">Content generated and typeset with AI support under the author&#39;s editorial supervision.</p></footer>
+<footer class="pie"><div><span>© 2026 Fernando García Varela · SEVEN-G methodology</span><span>Generated on 12-10-2026</span></div><p class="pie-ia">Content generated and typeset with AI support under the author&#39;s editorial supervision.</p></footer>
 <script src="codigos.js" defer></script>
 
 <script>

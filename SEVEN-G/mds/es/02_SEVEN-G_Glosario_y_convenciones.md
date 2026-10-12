@@ -111,15 +111,22 @@ Las formas negativas siguen la misma lógica: **no debe** prohíbe; **no deberí
 | Intervalos | Guion corto sin espacios. | 5–9 · G0–G2 |
 | Plazos | "días" son naturales salvo que se indique "días hábiles". | 10 días hábiles |
 
-### 2.4 Referencias cruzadas
+### 2.4 Referencias cruzadas: nombre primero, código después
+
+**Regla R16.** Todo elemento del marco que tiene código —documento, plantilla, herramienta, módulo del curso, fase, puerta, lista de verificación, criterio, hito, dimensión de madurez, ciclo corporativo, perfil, arquetipo, modificador, regla del núcleo, indicador, riesgo tipo o control— se cita por su **nombre canónico** y, a continuación, su **código entre paréntesis**: *la puerta de viabilidad (G3)*, *el registro de iniciativas (T01)*, *la matriz y registro de riesgos (P12)*, *las reglas de medición del valor (documento 40)*. En la versión HTML el código es el enlace al lugar donde se explica. El lector nuevo entiende la frase sin conocer el código; el lector habitual sigue teniendo el código para buscarlo.
+
+- **Primera mención en cada sección**: nombre (código). **Siguientes menciones** en la misma sección: solo el nombre.
+- **El código va solo** únicamente en las tablas cuya primera columna es un identificador (catálogos de criterios, controles, indicadores y riesgos tipo) y dentro de las herramientas y los registros, donde el código es el dato.
+- **Un nombre, un código.** Los nombres canónicos viven en una sola lista, `SEVEN-G/build/nombres.json` (español e inglés), generada por `nombres.ps1` desde el índice de códigos y las tablas de 01 §5.1 y §6.1, 11 §2.1 y 96 §2.1, §2.3 y §4.1; ningún documento escribe un nombre distinto del de la lista. En las tablas con el código en la primera columna y en los títulos «G3 · Viabilidad», el generador muestra «Nombre (código)» sin cambiar la fuente.
 
 | Forma | Significado | Ejemplo |
 |---|---|---|
-| **NN §x.y** | Documento NN, sección x.y. | 01 §7.3 |
-| **documento NN** | Documento completo. | documento 40 |
+| **nombre (código)** | Elemento del marco por su nombre canónico, con el código entre paréntesis en la primera mención de la sección. | la puerta de viabilidad (G3) · el inventario de sistemas de IA (T02) · la carta de la iniciativa (P01) |
+| **qué hay allí (NN §x.y)** | Sección x.y del documento NN, precedida de lo que se va a encontrar. | los resultados posibles de una puerta (01 §7.3) |
+| **nombre del documento (documento NN)** | Documento completo. | las reglas de medición del valor (documento 40) |
 | **regla n de medición** | Regla n de 00 §6, desarrollada en 40 §3. | regla 8 de medición |
 | **principio n** | Principio n de 01 §3. | principio 7 |
-| **Código** | Criterio, control, plantilla o herramienta por su código (sección 6). | G3.08 · AG-09 · P12 · T01 |
+| **Código solo** | Solo en tablas de identificadores, herramientas y registros (sección 6). | G3.08 · AG-09 · RT-GEN-01 |
 
 ### 2.5 "Sin dato"
 
@@ -1025,6 +1032,7 @@ Las herramientas muestran los valores de las listas cerradas en español e ingl�
 | Versión | Fecha | Cambios |
 |---|---|---|
 | 1.2 | 28-09-2026 | Añade caja por delante, condición de paso, curva de realización, sostenido por valor no cuantificado y valor no cuantificado; amplía plan de realización de beneficios y tramo de financiación con su registro en T01; 209 términos definidos (D135). |
+| 1.2 | 12-10-2026 | Sección 2.4 reescrita con la regla R16 «nombre primero, código después» (D144): nombre canónico seguido del código entre paréntesis en la primera mención de cada sección; lista única de nombres en `build/nombres.json`; el generador muestra «Nombre (código)» en tablas y títulos. |
 | 1.1 | 28-09-2026 | Añade arquetipo y modificador de punto de partida, hito y recorrido de implantación (documento 96), huella tecnológica (11 §7.6) y alcance del impacto (12 §3.7), con sus códigos PP-A–PP-F, MP1–MP5, HI-01–HI-22, HT0–HT5 e IM1–IM4; herramientas T01–T23. |
 | 1.0 | 16-09-2026 | Versión final de biblioteca v0.1. Se actualiza la portada a estado vigente y se añade el principio de autoconsultoría de IA con criterio editorial: explicaciones didácticas orientadas a decisión y uso de herramientas, sin formato de curso. Ajustes de coherencia: 70 riesgos tipo (RT-ORG-07 a RT-ORG-09), 156 indicadores en 13 familias en el documento 41 (nueva familia PRO) y prefijo provisional CNC- para los indicadores de conocimiento del documento 51. |
 | 0.1 | 16-09-2026 | Primera versión. Fija la prelación entre fuentes, las convenciones de lenguaje normativo y de redacción, el glosario alfabético con equivalentes en inglés, 18 escalas oficiales (incluidos los resultados de R6 y los grados de apetito y de las esferas 08 y 09), la copia de la taxonomía controlada de 03 §3.3, el sistema de códigos con los códigos propuestos SIA, DEC y AUD, los códigos con prefijo IT- y PER- que sustituyen a las numeraciones locales de los documentos 12 y 50, las numeraciones de uso local que no deben usarse fuera de su documento, la numeración de la biblioteca y las siglas. |
