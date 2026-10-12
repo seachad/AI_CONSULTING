@@ -1,0 +1,269 @@
+<title>Hector en el Hall of Fame</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+  /* Layout: estándar de informes de sesión (el de GEMA): barra fija con pestañas Resumen · Qué falta y selector de tema; cabecera con anillo de avance; una vía vertical de pasos. Color: verde = hecho, ámbar = te toca, violeta = lo hace Claude, rosa = terceros. */
+  :root {
+    --bg: #eef2f5; --surface: #ffffff; --surface2: #f5f8fa; --ink: #14202c; --muted: #566676; --line: #d5dde5;
+    --accent: #0a7c76; --accent-soft: #d8f0ee; --turn: #a8570a; --turn-soft: #fde9cf;
+    --claude: #5a49c8; --claude-soft: #e8e4fb; --rosa: #a4366b; --rosa-soft: #fad9e8;
+    --code-bg: #0f1b26; --code-fg: #d6f2ee;
+    --font-display: "Bricolage Grotesque", "Segoe UI", system-ui, sans-serif;
+    --font-body: "IBM Plex Sans", "Segoe UI", system-ui, sans-serif;
+    --font-mono: "IBM Plex Mono", ui-monospace, Consolas, monospace;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg: #0c141c; --surface: #142029; --surface2: #1a2833; --ink: #e6eef5; --muted: #93a5b6; --line: #27384a;
+      --accent: #3cc4bb; --accent-soft: #12383a; --turn: #f2a65a; --turn-soft: #3b2a14;
+      --claude: #a99bff; --claude-soft: #2a2550; --rosa: #f58cbc; --rosa-soft: #451f33;
+      --code-bg: #0a121a; --code-fg: #cdeee9; color-scheme: dark;
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg: #0c141c; --surface: #142029; --surface2: #1a2833; --ink: #e6eef5; --muted: #93a5b6; --line: #27384a;
+    --accent: #3cc4bb; --accent-soft: #12383a; --turn: #f2a65a; --turn-soft: #3b2a14;
+    --claude: #a99bff; --claude-soft: #2a2550; --rosa: #f58cbc; --rosa-soft: #451f33;
+    --code-bg: #0a121a; --code-fg: #cdeee9; color-scheme: dark;
+  }
+  * { box-sizing: border-box; }
+  body { background: var(--bg); color: var(--ink); font: 15px/1.55 var(--font-body); padding-inline: 18px; padding-block: 24px 56px; }
+  .wrap { max-width: 760px; margin: 0 auto; }
+  h1, h2, h3 { font-family: var(--font-display); text-wrap: balance; margin: 0; }
+  a { color: var(--accent); }
+  code, .mono { font-family: var(--font-mono); font-size: .92em; }
+  button { font: inherit; }
+
+  header.top { display: flex; gap: 18px; align-items: center; justify-content: space-between; flex-wrap: wrap; margin-bottom: 18px; }
+  .top h1 { font-size: clamp(1.7rem, 5.4vw, 2.5rem); line-height: 1.05; font-weight: 700; letter-spacing: -.02em; }
+  .top p { margin: 8px 0 0; color: var(--muted); max-width: 46ch; }
+  .ring { display: flex; align-items: center; gap: 12px; }
+  .ring svg { width: 84px; height: 84px; flex: none; }
+  .ring .track { stroke: var(--line); fill: none; }
+  .ring .bar { stroke: var(--accent); fill: none; stroke-linecap: round; transition: stroke-dashoffset .5s; }
+  .ring b { display: block; font: 700 1.5rem/1 var(--font-display); font-variant-numeric: tabular-nums; }
+  .ring span { font-size: .82rem; color: var(--muted); }
+
+  .filters { display: flex; gap: 8px; flex-wrap: wrap; margin: 4px 0 22px; align-items: center; }
+  .filters .lbl { font-size: .78rem; text-transform: uppercase; letter-spacing: .08em; color: var(--muted); margin-right: 4px; }
+  .chip { border: 1px solid var(--line); background: var(--surface); color: var(--ink); padding: 6px 13px; border-radius: 999px; cursor: pointer; font-size: .9rem; }
+  .chip[aria-pressed="true"] { background: var(--ink); color: var(--bg); border-color: var(--ink); }
+  .chip:focus-visible, summary:focus-visible, .copy:focus-visible, input:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+
+  section.block { margin-top: 30px; }
+  .block > h2 { font-size: 1.25rem; display: flex; align-items: baseline; gap: 10px; margin-bottom: 12px; }
+  .block > h2 small { font: 500 .85rem var(--font-body); color: var(--muted); }
+
+  .done-list { list-style: none; margin: 0; padding: 0; display: grid; gap: 8px; }
+  .done-list li { display: flex; gap: 10px; align-items: flex-start; background: var(--surface); border: 1px solid var(--line); border-radius: 10px; padding: 10px 14px; }
+  .done-list svg { width: 20px; height: 20px; flex: none; margin-top: 2px; stroke: var(--accent); fill: none; stroke-width: 2.4; stroke-linecap: round; stroke-linejoin: round; }
+  .done-list small { display: block; color: var(--muted); }
+
+  ol.steps { list-style: none; margin: 0; padding: 0; counter-reset: paso; position: relative; display: grid; gap: 14px; }
+  ol.steps::before { content: ""; position: absolute; left: 19px; top: 18px; bottom: 18px; width: 2px; background: var(--line); }
+  .step { counter-increment: paso; position: relative; padding-left: 52px; }
+  .step::before {
+    content: counter(paso); position: absolute; left: 0; top: 10px; width: 40px; height: 40px; border-radius: 50%;
+    display: grid; place-items: center; font: 700 1rem var(--font-display); background: var(--surface); color: var(--muted);
+    border: 2px solid var(--line); font-variant-numeric: tabular-nums;
+  }
+  .step.is-now::before { background: var(--turn); color: var(--bg); border-color: var(--turn); }
+  .step.is-done::before { content: "✓"; background: var(--accent); border-color: var(--accent); color: var(--bg); }
+  .card { background: var(--surface); border: 1px solid var(--line); border-radius: 14px; }
+  .step.is-now .card { border-color: var(--turn); box-shadow: 0 0 0 3px var(--turn-soft); }
+  .step.is-done .card { opacity: .78; }
+  .head { display: flex; gap: 12px; align-items: flex-start; padding: 14px 16px; }
+  .head input[type="checkbox"] { width: 22px; height: 22px; margin: 2px 0 0; accent-color: var(--accent); flex: none; cursor: pointer; }
+  .head .txt { flex: 1; min-width: 0; }
+  .head h3 { font-size: 1.1rem; line-height: 1.25; }
+  .head p { margin: 4px 0 0; color: var(--muted); font-size: .92rem; }
+  .tags { display: flex; gap: 6px; flex-wrap: wrap; margin-top: 8px; }
+  .tag { font-size: .75rem; font-weight: 600; padding: 3px 9px; border-radius: 999px; letter-spacing: .02em; }
+  .tag.tu { background: var(--turn-soft); color: var(--turn); }
+  .tag.claude { background: var(--claude-soft); color: var(--claude); }
+  .tag.persona { background: var(--rosa-soft); color: var(--rosa); }
+  .tag.estado, .tag.nota { background: var(--surface2); color: var(--muted); border: 1px solid var(--line); }
+  .is-now .tag.estado { background: var(--turn); color: var(--bg); border-color: var(--turn); }
+  .is-done .tag.estado { background: var(--accent-soft); color: var(--accent); border-color: transparent; }
+
+  details.more { border-top: 1px solid var(--line); }
+  details.more > summary { list-style: none; cursor: pointer; padding: 10px 16px; font-size: .9rem; color: var(--accent); font-weight: 600; display: flex; justify-content: space-between; }
+  details.more > summary::-webkit-details-marker { display: none; }
+  details.more > summary::after { content: "Ver cómo"; font-weight: 500; }
+  details.more[open] > summary::after { content: "Ocultar"; }
+  .body { padding: 2px 16px 16px; display: grid; gap: 14px; }
+  .body ol, .body ul { margin: 0; padding-left: 1.3em; display: grid; gap: 6px; }
+  .body li::marker { color: var(--muted); }
+  .note { background: var(--surface2); border-left: 3px solid var(--turn); border-radius: 6px; padding: 9px 12px; font-size: .9rem; }
+  .note.ok { border-left-color: var(--accent); }
+
+  .flow { display: grid; grid-template-columns: 1fr; gap: 8px; }
+  @media (min-width: 640px) { .flow { grid-template-columns: repeat(4, minmax(0, 1fr)); } }
+  .flow div { background: var(--surface2); border: 1px solid var(--line); border-radius: 10px; padding: 10px 12px; font-size: .85rem; min-width: 0; }
+  .flow b { display: block; font-family: var(--font-display); font-size: .95rem; margin-bottom: 2px; }
+  .flow .t { color: var(--turn); } .flow .c { color: var(--claude); } .flow .p { color: var(--rosa); }
+
+  .foot { margin-top: 34px; color: var(--muted); font-size: .85rem; border-top: 1px solid var(--line); padding-top: 14px; }
+  .hidden-by-filter { display: none; }
+
+  .meta { display: flex; flex-wrap: wrap; gap: 4px 16px; color: var(--muted); font-size: .85rem; margin: 0 0 18px; }
+  .meta b { color: var(--ink); font-variant-numeric: tabular-nums; font-family: var(--font-mono); font-weight: 500; }
+  .tabs { display: flex; gap: 4px; margin: 0 0 20px; border-bottom: 1px solid var(--line); }
+  .tab { border: 0; background: none; color: var(--muted); font: 600 .95rem var(--font-body); padding: 10px 16px; cursor: pointer; border-bottom: 3px solid transparent; margin-bottom: -1px; }
+  .tab[aria-selected="true"] { color: var(--ink); border-bottom-color: var(--accent); }
+  .tab:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+
+  .bar { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 30; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 4px 16px;
+    background: var(--surface); border: 1px solid var(--line); border-radius: 12px; padding: 2px 10px; margin: 0 0 20px; box-shadow: 0 6px 18px rgba(8, 20, 32, .12); }
+  .bar .tabs { margin: 0; border: 0; }
+  .bar .tab { padding: 12px; }
+  .tema { display: flex; align-items: center; gap: 6px; padding: 6px 0; }
+  .tema .lbl { font-size: .72rem; text-transform: uppercase; letter-spacing: .08em; color: var(--muted); margin-right: 2px; }
+  .tema button { border: 1px solid var(--line); background: var(--surface2); color: var(--ink); border-radius: 999px; padding: 5px 12px; font-size: .82rem; cursor: pointer; }
+  .tema button[aria-pressed="true"] { background: var(--ink); color: var(--bg); border-color: var(--ink); }
+  .tema button:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+  .tl { list-style: none; margin: 0; padding: 0; display: grid; gap: 10px; }
+  .tl li { display: grid; grid-template-columns: 118px minmax(0, 1fr); gap: 6px 14px; background: var(--surface); border: 1px solid var(--line); border-radius: 12px; padding: 11px 14px; }
+  .tl time { font: 500 .8rem/1.35 var(--font-mono); color: var(--ink); font-variant-numeric: tabular-nums; }
+  .tl time i { display: block; font-style: normal; font-size: .72rem; color: var(--muted); }
+  .kind { display: inline-block; font-size: .7rem; font-weight: 700; text-transform: uppercase; letter-spacing: .06em; padding: 2px 8px; border-radius: 999px; margin-right: 8px; vertical-align: 1px; }
+  .k-pedido { background: var(--turn-soft); color: var(--turn); }
+  .k-hecho { background: var(--accent-soft); color: var(--accent); }
+  .k-decision { background: var(--claude-soft); color: var(--claude); }
+  .k-prueba { background: var(--rosa-soft); color: var(--rosa); }
+  .tl .what { min-width: 0; overflow-wrap: anywhere; }
+  .tl .what small { display: block; color: var(--muted); margin-top: 3px; }
+  .why { margin: 6px 0 0; font-size: .88rem; color: var(--muted); }
+  .why b { color: var(--ink); }
+  .tests { display: grid; gap: 6px; }
+  .tests div { background: var(--surface); border: 1px solid var(--line); border-radius: 10px; padding: 10px 14px; }
+  @media (max-width: 560px) { .tl li { grid-template-columns: 1fr; } }
+  @media (prefers-reduced-motion: reduce) { .ring .bar { transition: none; } }
+</style>
+<div class="wrap">
+  <nav class="bar" aria-label="Menú del informe">
+    <div class="tabs" role="tablist">
+      <button class="tab" role="tab" id="t-resumen" aria-selected="false" aria-controls="tab-resumen" data-tab="resumen">Resumen</button>
+      <button class="tab" role="tab" id="t-falta" aria-selected="true" aria-controls="tab-falta" data-tab="falta">Qué falta</button>
+    </div>
+    <div class="tema" role="group" aria-label="Tema de la página">
+      <span class="lbl">Tema</span>
+      <button type="button" data-tema="sistema" aria-pressed="true" title="El del dispositivo">Sistema</button>
+      <button type="button" data-tema="claro" aria-pressed="false">Claro</button>
+      <button type="button" data-tema="oscuro" aria-pressed="false">Oscuro</button>
+    </div>
+  </nav>
+  <header class="top">
+    <div><h1>Hector en el<br>Hall of Fame</h1><p>Añadir a Hector Sanchez Montenegro (Google) al Hall of Fame de la portada y publicarlo.</p></div>
+    <div class="ring" aria-live="polite">
+      <svg viewBox="0 0 84 84" aria-hidden="true"><circle class="track" cx="42" cy="42" r="35" stroke-width="8"/><circle class="bar" id="bar" cx="42" cy="42" r="35" stroke-width="8" transform="rotate(-90 42 42)" stroke-dasharray="219.9" stroke-dashoffset="219.9"/></svg>
+      <div><b id="cuenta">0 de 0</b><span>pasos hechos</span></div>
+    </div>
+  </header>
+  <p class="meta"><span>Hilo: <b>Hector Sanchez Montenegro en Hall of Fame</b></span><span>Empezado: <b>2026-10-01</b></span><span>Última actualización: <b>2026-10-12 20:30</b></span><span>Rama: <b>claude/blissful-hypatia-aulkpl → main</b></span><span>Artifact: <a href="https://claude.ai/artifact/KAeMxZ7AmSSKQCK2DybvXt" target="_blank" rel="noopener">abrir en el panel</a></span><span>Hora de Madrid</span></p>
+  <div id="tab-resumen" role="tabpanel" aria-labelledby="t-resumen" hidden>
+    <section class="block"><h2>Lo pedido y lo hecho <small>por orden de fecha</small></h2><ol class="tl"><li><time>2026-10-01<i>hora aproximada</i></time><div class="what"><span class="kind k-pedido">Pedido</span>Añadir a Hector Sanchez Montenegro al Hall of Fame.</div></li><li><time>2026-10-01<i>12:00</i></time><div class="what"><span class="kind k-hecho">Hecho</span>Hector en <span class="mono">colaboradores.json</span> y portada regenerada (ES/EN)<small>Commit b847c3e en la rama de la sesión.</small></div></li><li><time>2026-10-01<i>14:02</i></time><div class="what"><span class="kind k-pedido">Pedido</span>«Sigo sin verlo.» Y después: «tienes mi permiso expreso» (para llevarlo a <span class="mono">main</span>).</div></li><li><time>2026-10-01<i>14:05</i></time><div class="what"><span class="kind k-hecho">Hecho</span>Llevado a <span class="mono">main</span>, que publica el sitio<small>b847c3e en main.</small></div></li><li><time>2026-10-12<i>20:30</i></time><div class="what"><span class="kind k-hecho">Hecho</span>Informe de sesión con el estándar GEMA<small>Creado desde otra sesión porque esta está inactiva.</small></div></li></ol></section>
+    <section class="block"><h2>Tests <small>estado actual</small></h2><div class="tests"><div><b>En main:</b> b847c3e está en la historia de <span class="mono">main</span> y <span class="mono">colaboradores.json</span> incluye a Hector.</div><div><b>Pendiente de comprobación humana:</b> verlo en la portada publicada (ES y EN).</div></div></section>
+  </div>
+  <div id="tab-falta" role="tabpanel" aria-labelledby="t-falta">
+  <div class="filters" role="group" aria-label="Filtrar por quién lo hace">
+    <span class="lbl">Ver</span>
+    <button class="chip" data-f="todo" aria-pressed="true">Todo</button>
+    <button class="chip" data-f="tu" aria-pressed="false">Lo mío</button>
+    <button class="chip" data-f="claude" aria-pressed="false">Lo que hace Claude</button>
+  </div>
+  <section class="block"><h2>Ya está hecho <small id="n-hecho"></small></h2><ul class="done-list"><li><svg viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><div>Hector añadido al Hall of Fame<small>colaboradores.json y portadas, commit b847c3e.</small></div></li><li><svg viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><div>Publicado en main<small>Con tu permiso expreso del 2026-10-01.</small></div></li></ul></section>
+  <section class="block"><h2>Ahora <small>en este orden</small></h2><ol class="steps" id="ahora"><li class="step" data-id="ver" data-who="tu"><div class="card"><div class="head"><input type="checkbox" id="c-ver" aria-label="Marcar como hecho: Comprobar que Hector aparece en la portada publicada"><div class="txt"><h3>Comprobar que Hector aparece en la portada publicada</h3><p>En español y en inglés, con su empresa y su enlace de LinkedIn.</p><p class="why"><b>Por qué hace falta:</b> fue lo que no veías el 2026-10-01; tras el paso a main debería estar. <b>Desbloquea:</b> cerrar esta sesión.</p><div class="tags"><span class="tag tu">Tú</span><span class="tag estado"></span><span class="tag nota">1 min</span></div></div></div></div></li></ol></section>
+  </div>
+  <p class="foot">Las casillas se guardan solo en este navegador. Informe de la sesión: se actualiza en cada petición. Las personas del Hall of Fame se editan en <span class="mono">colaboradores.json</span> (D142).</p>
+</div>
+
+<script>
+  (function () {
+    var KEY = "aic-hector-hall-of-fame";
+    var BASE = 2; /* cosas ya hechas antes de esta lista */
+    var steps = Array.prototype.slice.call(document.querySelectorAll(".step"));
+    var saved = {};
+    try { saved = JSON.parse(localStorage.getItem(KEY) || "{}") || {}; } catch (e) { saved = {}; }
+    function persist() { try { localStorage.setItem(KEY, JSON.stringify(saved)); } catch (e) { /* sin almacenamiento */ } }
+
+    function render() {
+      var checked = 0, firstOpen = null;
+      steps.forEach(function (s) {
+        var done = !!saved[s.getAttribute("data-id")];
+        s.querySelector("input[type=checkbox]").checked = done;
+        if (done) checked++; else if (!firstOpen) firstOpen = s;
+      });
+      var total = BASE + steps.length, count = BASE + checked;
+      steps.forEach(function (s) {
+        var id = s.getAttribute("data-id"), done = !!saved[id], now = s === firstOpen, when = saved[id];
+        s.classList.toggle("is-done", done);
+        s.classList.toggle("is-now", now);
+        s.querySelector(".tag.estado").textContent = done ? "Hecho" + (typeof when === "string" && when.length > 4 ? " · " + when : "") : now ? "Te toca ahora" : "Pendiente";
+      });
+      document.getElementById("cuenta").textContent = count + " de " + total;
+      document.getElementById("n-hecho").textContent = BASE + " cosas";
+      var c = 2 * Math.PI * 35;
+      document.getElementById("bar").style.strokeDashoffset = String(c * (1 - count / total));
+    }
+
+    steps.forEach(function (s) {
+      s.querySelector("input[type=checkbox]").addEventListener("change", function (ev) {
+        var stamp = false;
+        if (ev.target.checked) {
+          try { stamp = new Intl.DateTimeFormat("sv-SE", { timeZone: "Europe/Madrid", dateStyle: "short", timeStyle: "short" }).format(new Date()); }
+          catch (e) { stamp = new Date().toISOString().slice(0, 16).replace("T", " "); }
+        }
+        saved[s.getAttribute("data-id")] = stamp || false;
+        persist(); render();
+      });
+    });
+
+    var chips = document.querySelectorAll(".chip");
+    chips.forEach(function (chip) {
+      chip.addEventListener("click", function () {
+        var f = chip.getAttribute("data-f");
+        chips.forEach(function (c) { c.setAttribute("aria-pressed", c === chip ? "true" : "false"); });
+        steps.forEach(function (s) {
+          var who = (s.getAttribute("data-who") || "").split(" ");
+          s.classList.toggle("hidden-by-filter", f !== "todo" && who.indexOf(f) === -1);
+        });
+      });
+    });
+
+    var root = document.documentElement, hostTheme = root.getAttribute("data-theme");
+    var temaBtns = document.querySelectorAll("[data-tema]");
+    function setTema(name) {
+      if (name === "claro") root.setAttribute("data-theme", "light");
+      else if (name === "oscuro") root.setAttribute("data-theme", "dark");
+      else if (hostTheme) root.setAttribute("data-theme", hostTheme);
+      else root.removeAttribute("data-theme");
+      temaBtns.forEach(function (b) { b.setAttribute("aria-pressed", b.getAttribute("data-tema") === name ? "true" : "false"); });
+      try { localStorage.setItem(KEY + "-tema", name); } catch (e) { /* sin almacenamiento */ }
+    }
+    temaBtns.forEach(function (b) { b.addEventListener("click", function () { setTema(b.getAttribute("data-tema")); }); });
+    var tema0 = "sistema";
+    try { tema0 = localStorage.getItem(KEY + "-tema") || "sistema"; } catch (e) { tema0 = "sistema"; }
+    setTema(tema0);
+
+    var tabs = document.querySelectorAll(".tab");
+    function showTab(name) {
+      tabs.forEach(function (t) {
+        var on = t.getAttribute("data-tab") === name;
+        t.setAttribute("aria-selected", on ? "true" : "false");
+        document.getElementById("tab-" + t.getAttribute("data-tab")).hidden = !on;
+      });
+      try { localStorage.setItem(KEY + "-tab", name); } catch (e) { /* sin almacenamiento */ }
+    }
+    tabs.forEach(function (t) { t.addEventListener("click", function () { showTab(t.getAttribute("data-tab")); }); });
+    var start = "falta";
+    try { start = localStorage.getItem(KEY + "-tab") || "falta"; } catch (e) { start = "falta"; }
+    if (location.hash === "#resumen" || location.hash === "#falta") start = location.hash.slice(1);
+    showTab(start === "resumen" ? "resumen" : "falta");
+
+    render();
+    var first = document.querySelector(".step.is-now details.more");
+    if (first) first.open = true;
+  })();
+</script>
