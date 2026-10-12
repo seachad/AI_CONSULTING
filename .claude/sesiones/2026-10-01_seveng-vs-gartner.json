@@ -1,0 +1,135 @@
+{
+ "title": "SEVEN-G frente a Gartner",
+ "h1": "SEVEN-G frente<br>a Gartner",
+ "lead": "Comparación de SEVEN-G con otras metodologías de mercado en el documento 04 §8, empezando por Gartner, sin tocar la metodología.",
+ "hilo": "Sesión SEVEN-G vs Garner",
+ "inicio": "2026-10-01",
+ "act": "2026-10-12 21:10",
+ "rama": "claude/lucid-euler-nhim3l",
+ "key": "aic-seveng-vs-gartner",
+ "tl": [
+  {
+   "f": "2026-10-01",
+   "h": "07:43",
+   "k": "pedido",
+   "t": "«Sí, hazlo.» (aplicar las correcciones del borrador de comparación con Gartner)."
+  },
+  {
+   "f": "2026-10-01",
+   "h": "07:48",
+   "k": "hecho",
+   "t": "Documento 04 §8.2 cotejado con las fuentes oficiales de gartner.com (ES/EN)",
+   "s": "Herramienta de madurez, radar de oportunidades y previsiones; nueve fuentes MER-GAR-01 a 09 en el registro de referencias. Verificación en verde. Commit 7f16171."
+  },
+  {
+   "f": "2026-10-01",
+   "h": "07:52",
+   "k": "pedido",
+   "t": "«Solo has añadido comparativa con Gartner, verdad? … no has modificado nada en la metodología, índice de madurez, etc.»",
+   "s": "Confirmado: solo cambia el documento 04 (explicativo, sin reglas), el registro de referencias y los índices regenerados."
+  },
+  {
+   "f": "2026-10-01",
+   "h": "12:04",
+   "k": "pedido",
+   "t": "«El meter referencias a Gartner puede tener problemas de IP… yo pondría comparación con otras metodologías de mercado y ahí pondría, de momento, a Gartner.»"
+  },
+  {
+   "f": "2026-10-01",
+   "h": "12:07",
+   "k": "decision",
+   "t": "D143: §8 «Comparación con otras metodologías de mercado» y criterios para citar a terceros",
+   "s": "No copiar su contenido, no sugerir vínculo y no usar su investigación como argumento a favor de SEVEN-G; se suavizan los párrafos más cercanos a ese límite. Commit eaa00b6."
+  },
+  {
+   "f": "2026-10-12",
+   "h": "20:30",
+   "k": "hecho",
+   "t": "Informe de sesión con el estándar GEMA",
+   "s": "Creado desde otra sesión porque esta está inactiva."
+  },
+  {
+   "f": "2026-10-12",
+   "h": "21:10",
+   "k": "hecho",
+   "t": "Informe interactivo",
+   "s": "Preguntas y botones que envían a Claude."
+  }
+ ],
+ "tests": [
+  "<b>Verificación de coherencia en verde</b> en las dos entregas del 2026-10-01, con revisión visual del PDF del documento 04.",
+  "<b>Pendiente:</b> las citas de gartner.com no se pudieron abrir en la propia página desde la sesión; conviene comprobarlas en un navegador antes de llevarlo a <span class=\"mono\">main</span>."
+ ],
+ "done": [
+  [
+   "Comparación con Gartner cotejada con sus fuentes",
+   "Documento 04 §8.2 (ES/EN), commit 7f16171."
+  ],
+  [
+   "Sección genérica «de mercado» y criterios para citar a terceros",
+   "D143, commit eaa00b6."
+  ]
+ ],
+ "steps": [
+  {
+   "id": "citas",
+   "who": "tu",
+   "h": "Comprobar en el navegador las nueve citas de Gartner",
+   "p": "Las entradas MER-GAR-01 a 09 del registro de referencias.",
+   "why": "<b>Por qué hace falta:</b> la sesión no pudo abrir las páginas de gartner.com, y D41 exige referencias verificadas. <b>Desbloquea:</b> llevar la rama a <span class=\"mono\">main</span>.",
+   "tags": [
+    "tu"
+   ],
+   "nota": "10 min",
+   "accion": {
+    "boton": "Ya las he comprobado",
+    "msg": "He comprobado en el navegador las nueve citas de Gartner (MER-GAR-01 a 09). Anota el resultado: "
+   }
+  },
+  {
+   "id": "main",
+   "who": "tu",
+   "h": "Decidir si la rama <code>claude/lucid-euler-nhim3l</code> se integra en <code>main</code>",
+   "p": "Sigue sin integrar a 2026-10-12.",
+   "why": "<b>Por qué hace falta:</b> mientras no esté en <span class=\"mono\">main</span>, el sitio publicado no muestra la sección 8. <b>Ojo:</b> la rama registra D143; la de Express usa D144–D153 y deben integrarse en ese orden. <b>Desbloquea:</b> publicar la comparación.",
+   "tags": [
+    "tudec"
+   ],
+   "preguntas": [
+    {
+     "id": "q",
+     "q": "Integrar claude/lucid-euler-nhim3l en main",
+     "opciones": [
+      "Sí, intégrala (antes que la rama de Express)",
+      "Todavía no"
+     ],
+     "recomendada": -1
+    }
+   ],
+   "boton": "Enviar decisión a Claude"
+  },
+  {
+   "id": "otras",
+   "who": "tu claude",
+   "h": "Añadir otras metodologías a la comparación cuando surjan",
+   "p": "La sección ya es genérica; cada metodología nueva sigue los criterios de D143.",
+   "why": "<b>Por qué:</b> lo pediste el 2026-10-01. <b>Desbloquea:</b> una comparación de mercado más completa.",
+   "tags": [
+    "tudec",
+    "claude"
+   ],
+   "nota": "cuando toque",
+   "accion": {
+    "boton": "Propón otra metodología",
+    "msg": "Propón la siguiente metodología de mercado para la comparación del documento 04 §8, con sus fuentes oficiales y siguiendo D143."
+   }
+  }
+ ],
+ "foot": "Detalle en el documento 04 §8 (ES/EN) y en el registro de decisiones (D143) de la rama <span class=\"mono\">claude/lucid-euler-nhim3l</span>. Esta sesión está inactiva: los envíos desde este informe los recibe la sesión «Plugin AI Consultant», que lo creó y lo vigila.",
+ "url": "https://claude.ai/artifact/8tqjDFhRhY5WaCEwtrM5GK",
+ "sesion_url": "https://claude.ai/code/session_013EFyQ31MsjaSMXKD7fPVkV",
+ "rapidos": [
+  "Sigue con el siguiente paso",
+  "Resume dónde estamos y qué me toca"
+ ]
+}
