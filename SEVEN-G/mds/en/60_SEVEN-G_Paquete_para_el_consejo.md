@@ -5,8 +5,8 @@
 | | |
 |---|---|
 | Document | Document 60 · Board pack |
-| Version | 0.3 (working draft) |
-| Date | 16-09-2026 |
+| Version | 0.4 (working draft) |
+| Date | 01-10-2026 |
 | Author | Fernando García Varela |
 | Status | Draft for review. Develops stage C4 (oversight) and the outputs of C2 and C5 that are escalated to the board. |
 
@@ -128,6 +128,7 @@ The annual review should involve internal audit (01 §5.1).
 |---|---|---|
 | **Main message** | Three lines at most, using one of the four response formats (document 61, section 4). | Answers "is what was decided being delivered?". Example: *"Yes, with one condition: validated value has risen, but two high-risk initiatives still lack an impact assessment."* |
 | **Key figures** | Efficiencies, return, recurring cost and annual net value; validated proportion; released capacity not realised (shown separately); investment executed against budget. | Rules in section 8. |
+| **Operational outcome** | Use cases in use with operational indicators: how many are on target, how many below and how many without an indicator; non-quantified value at medium or high level. | Document 40 §11.1, rule 11: not translated into euros nor added to the key figures. |
 | **Portfolio** | Initiatives by phase and status; in production; stopped and retired in the quarter; stalled. | From T01. |
 | **Risk** | Critical and High residual risks; S1 and S2 incidents; open major and critical nonconformities. | Number and link only; detail in sections 5 and 6. |
 | **What holds back scaling** | The three barriers to start with (FE-1 to FE-6), with what they block, what to do, who and the annual value at stake. | Reading of §10.4, from T17. If an action needs a decision, it moves to «Decisions requested». |
@@ -141,6 +142,7 @@ The annual review should involve internal audit (01 §5.1).
 |---|---|
 | Main message | Yes, with one condition: that the customer service agent is not extended until it passes the prompt injection test. The portfolio is within budget and validated value rises from 41% to 58%. |
 | Key figures | Efficiencies €3.9M · Return €1.6M · Recurring cost €1.3M · **Annual net value €4.2M** · Validated proportion 58% (€3.2M of €5.5M) · Released capacity not realised €1.1M (not added) · Investment executed €2.4M of €3.0M budgeted. |
+| Operational outcome | 14 use cases in use: 9 on their operational target, 3 below and 2 without an indicator. 2 use cases with high non-quantified value (customer experience). |
 | Portfolio | 31 initiatives: 6 in phases 0–2, 7 in phases 3–5, 14 in production, 4 at G7. In the quarter: 1 stopped at G3 (unacceptable risk), 1 retired (replaced by another solution). 3 stalled. |
 | Risk | 0 Critical residual risks · 4 High · 1 S2 incident · 1 open major nonconformity. |
 | What holds back scaling | 1) FE-3 · Risk and compliance not closed: blocks G5 in 2 initiatives; complete their impact assessments before the next AI Committee meeting (risk owner). 2) FE-1 · Value is not proven: €1.4M in use not validated; validation by management control before quarter-end. 3) FE-2 · Cases do not move forward: 3 overdue; early *gate* at the next monthly meeting. |
@@ -206,7 +208,7 @@ Extract from the register of recommendations and decisions (document 62): overdu
 3. Use cases that illustrate a relevant change in value (positive or negative) or a stop or retirement with lessons.
 4. Transform use cases under way, so that the board can follow their learning milestones.
 
-Each use case takes up one page with: what it is and what it is used for (measurement rule 10), sphere and ambition level, phase and status, value with formula and status, cost, main residual risk, next decision and date.
+Each use case takes up one page with: what it is and what it is used for (measurement rule 10), sphere and ambition level, phase and status, value with formula and status, cost, main residual risk, next decision and date. Economic value, operational outcome and risk exposure go in three parallel columns (document 40 §11.1, rule 11), as in the dashboard's use case record.
 
 ### 4.9 Annexes
 
@@ -556,3 +558,4 @@ The checklist is applied with P67 §12.
 | 0.1 | 16-09-2026 | First version. Defines the quarterly (C4) and annual (C2 and C5) content, the structure of the pack, the decision sheet, the allocation between the full board and the board committee, the calendar, the rules for presenting figures, the programme traffic light and the relationship with the board dashboard. Consistency adjustments with 01 (segregation of duties at Lite, R6 outcomes, agents criterion) and with 34 and 37; traffic light aligned with the six axes in document 14. |
 | 0.2 | 28-09-2026 | Executive reading «What holds back scaling» (§10.4): six barriers FE-1 to FE-6 with case signals, stop patterns and company signals, ranking rules and annual value at stake; map of spheres × ambition levels in the dashboard (T16, §10.5); «What holds back scaling» field in the one-page summary (§4.2) and dashboard blocks (§10.2). |
 | 0.3 | 28-09-2026 | Realisation plan, funding tranches and non-quantified value in the dashboard (§10.6): «Realisation plan: curve and tranches», «Pending funding tranches» and «Non-quantified value» cards, «Realisation plan» section of the use case record, mobile version section and alerts; dashboard blocks (§10.2) and §10.3 (D135). |
+| 0.4 | 01-10-2026 | «Operational outcome» field in the one-page summary (§4.2) and three parallel perspectives in each detailed use case (§4.8) and in the dashboard's use case record (document 40 §11.1, rule 11; D150). |

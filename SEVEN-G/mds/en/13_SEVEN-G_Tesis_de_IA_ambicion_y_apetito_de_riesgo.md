@@ -5,8 +5,8 @@
 | | |
 |---|---|
 | Document | Document 13 · AI thesis, ambition and risk appetite |
-| Version | 0.1 (working draft) |
-| Date | 16-09-2026 |
+| Version | 0.2 (working draft) |
+| Date | 01-10-2026 |
 | Author | Fernando García Varela |
 | Status | Draft for review. The numerical values are illustrative examples or starting points that each company must set in C2. |
 
@@ -276,6 +276,8 @@ Amounts are rounded and reviewed annually in C5. The anchors for the other four 
 | Threshold | Definition | Illustrative rule | Example (EBITDA €50M) |
 |---|---|---|---|
 | **Enterprise investment threshold** | Total three-year cost of the initiative: build + expected recurring cost for the first three years. If it exceeds the threshold, the initiative is Enterprise (document 01, section 9.2). | 0.5% of EBITDA | €250k |
+| **Express threshold** | Total three-year cost below which an initiative that meets the other conditions in 01 §9.4 may have Express intensity. | 0.05% of EBITDA | €25k |
+| **Cost per governance hour and proportionality targets** | Cost per hour used to value the declared governance hours and maximum cost of governance of an initiative over its investment, by intensity (principle 11; 41 IND-COS-12 to 14). They are reviewed in C5 with the measured data. | Average cost per hour of the profiles involved; Express 5%, Lite 10%, Enterprise 15% (starting values) | €70/h |
 | **Materiality for the board** | Initiatives reported individually on the board dashboard, in addition to all Transform initiatives and those with High residual risk. | 2% of EBITDA | €1M |
 | **Board approval by amount** (optional) | The company **may** require board approval above a certain amount, in accordance with its internal delegation rules. | According to internal rules | — |
 | **Minimum scale in production (B3)** | Number of initiatives in production that the transformation index requires for Efficiency at scale (document 12). | 5 by default; adjustable to size | 5 |
@@ -591,6 +593,8 @@ The annex is completed with template P35.
 | Field | Content | Guidance |
 |---|---|---|
 | Enterprise investment threshold | | Total three-year cost; indicative value 0.5% of EBITDA. |
+| Express threshold | | Total three-year cost; indicative value 0.05% of EBITDA (01 §9.4). |
+| Cost per governance hour and proportionality targets | | Cost per hour; starting targets Express 5%, Lite 10%, Enterprise 15% (41 IND-COS-13). |
 | Materiality for individual reporting to the board | | Indicative value 2% of EBITDA. |
 | Board approval threshold by amount (Enterprise) | | Optional, according to delegation rules. |
 | Minimum scale in production (B3) | | Indicative value 5. |
@@ -734,3 +738,4 @@ The annex is completed with template P35.
 | Version | Date | Changes |
 |---|---|---|
 | 0.1 | 16-09-2026 | First version. Defines the twelve components of the C2 decision: structure of the AI thesis, ambition per sphere, appetite grades and tolerance metrics for the ten risk categories, proportionate economic impact thresholds, Enterprise investment and materiality thresholds, return horizon by level, portfolio balance bands, time limits, red lines, framework budget and review. Includes as an annex the board decision document template (T19). |
+| 0.2 | 01-10-2026 | Section 6 and block H: Express threshold (01 §9.4), cost per governance hour and proportionality targets by intensity (41 IND-COS-12 to 14). |

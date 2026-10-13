@@ -145,7 +145,7 @@ The code is provided **"as is", without warranty of any kind**, and the authors 
 
 ### 7.1 Principle
 
-**SEVEN-G is a registered trademark of Fernando García Varela** (professional profile: <https://www.linkedin.com/in/fernandogarciavarela/>). The CC BY 4.0 licence permits use of the content, but it does not grant any right over the trademark (section 4); **it does not make the user a representative of the framework, nor does it imply endorsement or certification**. Naming SEVEN-G to describe accurately what has been used is necessary to comply with the attribution requirement; using it to suggest endorsement, accreditation or certification is not permitted.
+**SEVEN-G is a name and trademark of Fernando García Varela** (professional profile: <https://www.linkedin.com/in/fernandogarciavarela/>). The CC BY 4.0 licence permits use of the content, but it does not grant any right over the trademark (section 4); **it does not make the user a representative of the framework, nor does it imply endorsement or certification**. Naming SEVEN-G to describe accurately what has been used is necessary to comply with the attribution requirement; using it to suggest endorsement, accreditation or certification is not permitted.
 
 ### 7.2 Appropriate and inappropriate uses
 

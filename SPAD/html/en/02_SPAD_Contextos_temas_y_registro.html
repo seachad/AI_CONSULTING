@@ -392,6 +392,10 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 /* Ilustraciones en imagen (p. ej., SPAD): ocupan el ancho del lienzo y conservan su proporción */
 .g-lienzo img { display: block; width: 100%; height: auto; border: 1px solid var(--regla-2); }
 .ilustracion .g-lienzo img[src*="ilusion_de_velocidad"] { max-width: 560px; margin: 0 auto; }
+/* Nombre primero, código después (D155): el código entre paréntesis tras el nombre, en tablas y títulos */
+.codigo { font-family: var(--mono, 'Courier New', monospace); font-size: .88em; color: var(--tinta-2); white-space: nowrap; font-weight: 400; }
+h2 .codigo, h3 .codigo { font-weight: 400; }
+
 @page { @bottom-left { content: "SPAD · Contexts, topics and artefact register"; font: 8.5pt "Libre Franklin", "Segoe UI", sans-serif; color: #74675e; } }
 </style>
 </head>
@@ -557,7 +561,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tr>
 <td><strong>Parameters of the complementary cycles</strong></td>
 <td>Maximum time limits for the simplified plan and for post-deployment monitoring in the urgent fix; severity scale and who accepts the residual risk.</td>
-<td>Starting values, to be calibrated (<a href="04_SPAD_Ciclos_complementarios.html" title="Document 04 &#183; Complementary cycles: legacy, debugging, urgent fixes and security">document 04</a>).</td>
+<td>Starting values, to be calibrated (<a href="04_SPAD_Ciclos_complementarios.html" title="Document 04 &#183; Where SEVEN-G comes from, how it differs and why it is open">document 04</a>).</td>
 </tr>
 <tr>
 <td><strong>Approved models</strong></td>
@@ -737,7 +741,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 <tr>
 <td>Outcome</td>
-<td>Valid · Invalid (with the cause from the validation policy, <a href="03_SPAD_Politica_de_validacion.html" title="Document 03 &#183; Validation policy">document 03</a>) · Exception approved.</td>
+<td>Valid · Invalid (with the cause from the validation policy, <a href="03_SPAD_Politica_de_validacion.html" title="Document 03 &#183; SEVEN-G tools and initiative register">document 03</a>) · Exception approved.</td>
 </tr>
 <tr>
 <td>Verdict accepted</td>
@@ -751,7 +755,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </table></div>
 <p>The record is kept in <code>VALIDATION.md</code> within the topic (or in the version control system, if the organisation prefers) and is completed <strong>at the time</strong>, not at the end.</p>
 <h3 id="4-3-violation-log">4.3 Violation log</h3>
-<p>Each response discarded under the validation policy (<a href="03_SPAD_Politica_de_validacion.html" title="Document 03 &#183; Validation policy">document 03</a>) is noted with date, phase, cause, model and action. It is the raw material for the process metrics (<a href="08_SPAD_Autoevaluacion_y_metricas.html" title="Document 08 &#183; Self-assessment of conformity and process metrics">document 08</a>) and for improving the instructions.</p>
+<p>Each response discarded under the validation policy (<a href="03_SPAD_Politica_de_validacion.html" title="Document 03 &#183; SEVEN-G tools and initiative register">document 03</a>) is noted with date, phase, cause, model and action. It is the raw material for the process metrics (<a href="08_SPAD_Autoevaluacion_y_metricas.html" title="Document 08 &#183; Self-assessment of conformity and process metrics">document 08</a>) and for improving the instructions.</p>
 <blockquote>
 <p><strong>Why it matters.</strong> The three records answer the three questions of any development audit: which tool did this, which person accepted it and how many times it had to be discarded and repeated. In SEVEN-G, those records are the input to the evidence of the design and delivery phases (<a href="../../../SEVEN-G/html/en/53_SEVEN-G_Construccion_de_soluciones_con_IA.html">SEVEN-G 53</a>, section 7.2).</p>
 </blockquote>
@@ -777,11 +781,11 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </thead>
 <tbody>
 <tr>
-<td><strong><a href="01_SPAD_Guia_operativa.html" title="Document 01 &#183; Operating guide: phases, roles and verdicts">document 01</a> · Operating guide</strong></td>
+<td><strong><a href="01_SPAD_Guia_operativa.html" title="Document 01 &#183; SEVEN-G foundational methodology">document 01</a> · Operating guide</strong></td>
 <td>Phases in which the recorded artefacts are produced.</td>
 </tr>
 <tr>
-<td><strong><a href="03_SPAD_Politica_de_validacion.html" title="Document 03 &#183; Validation policy">document 03</a> · Validation policy</strong></td>
+<td><strong><a href="03_SPAD_Politica_de_validacion.html" title="Document 03 &#183; SEVEN-G tools and initiative register">document 03</a> · Validation policy</strong></td>
 <td>Invalidation causes that feed the records.</td>
 </tr>
 <tr>
@@ -822,7 +826,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </table></div>
 <h2 id="external-sources">External sources cited</h2><p class="fuentes-nota">Links to the official or primary source, checked before publication. Always verify the version in force on the date of use.</p><ul class="fuentes-externas"><li><a href="https://top10.owasp.org/2025/" target="_blank" rel="noopener">OWASP Top 10:2025 (web application security risks)</a><span> · OWASP Foundation · 2025</span></li></ul>
 </main>
-<footer class="pie"><div><span>© 2026 Fernando García Varela · SPAD methodology</span><span>Generated on 28-09-2026</span></div><p class="pie-ia">Content generated and typeset with AI support under the author&#39;s editorial supervision.</p></footer>
+<footer class="pie"><div><span>© 2026 Fernando García Varela · SPAD methodology</span><span>Generated on 13-10-2026</span></div><p class="pie-ia">Content generated and typeset with AI support under the author&#39;s editorial supervision.</p></footer>
 <script src="../../../SEVEN-G/html/en/codigos.js" defer></script>
 
 <script>

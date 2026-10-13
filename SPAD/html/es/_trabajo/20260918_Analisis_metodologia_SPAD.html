@@ -392,6 +392,10 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 /* Ilustraciones en imagen (p. ej., SPAD): ocupan el ancho del lienzo y conservan su proporción */
 .g-lienzo img { display: block; width: 100%; height: auto; border: 1px solid var(--regla-2); }
 .ilustracion .g-lienzo img[src*="ilusion_de_velocidad"] { max-width: 560px; margin: 0 auto; }
+/* Nombre primero, código después (D155): el código entre paréntesis tras el nombre, en tablas y títulos */
+.codigo { font-family: var(--mono, 'Courier New', monospace); font-size: .88em; color: var(--tinta-2); white-space: nowrap; font-weight: 400; }
+h2 .codigo, h3 .codigo { font-weight: 400; }
+
 @page { @bottom-left { content: "Análisis de la metodología SPAD: completitud y cambios propuestos"; font: 8.5pt "Libre Franklin", "Segoe UI", sans-serif; color: #74675e; } }
 </style>
 </head>
@@ -488,7 +492,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <li><strong>Contenido que contradice decisiones registradas</strong> de SEVEN-G (cifras sin respaldo, &quot;certificación&quot;, SPAD presentado como parte de SEVEN-G u obligatorio dentro de él, dos idiomas mezclados, tono comercial).</li>
 <li><strong>Huecos de método</strong> que importan precisamente en los casos para los que SPAD se recomienda: validación humana sin registro propio, sistemas que incluyen IA en producción (no solo código escrito por IA), trazabilidad del modelo usado, cadena de suministro y licencias, datos enviados a proveedores de modelos, versión reducida (Lite) y métricas del propio proceso.</li>
 </ol>
-<p>La página de entrada publicada (<a href="../00_SPAD_Que_es_y_para_que_sirve.html" title="Documento 00 &#183; Qu&#233; es SPAD y para qu&#233; sirve">documento 00</a>) ya aplica las correcciones de los tipos 1 y 2 en lo que presenta; el resto se propone en la sección 5. <strong>Actualización del 19-09-2026:</strong> se ha aplicado todo lo propuesto en las secciones 3, 4, 5 y 6 salvo el hueco 12 (validador de artefactos: especificado en el <a href="../07_SPAD_Contratos_de_entrada_y_salida.html" title="Documento 07 &#183; Contratos de entrada y salida">documento 07</a> §6, herramienta pendiente) y las decisiones 6 de la sección 7 (regenerar láminas e ilustraciones en inglés), que requieren al autor.</p>
+<p>La página de entrada publicada (<a href="../00_SPAD_Que_es_y_para_que_sirve.html" title="Documento 00 &#183; Qu&#233; es SEVEN-G y para qu&#233; sirve">documento 00</a>) ya aplica las correcciones de los tipos 1 y 2 en lo que presenta; el resto se propone en la sección 5. <strong>Actualización del 19-09-2026:</strong> se ha aplicado todo lo propuesto en las secciones 3, 4, 5 y 6 salvo el hueco 12 (validador de artefactos: especificado en el <a href="../07_SPAD_Contratos_de_entrada_y_salida.html" title="Documento 07 &#183; Contratos de entrada y salida">documento 07</a> §6, herramienta pendiente) y las decisiones 6 de la sección 7 (regenerar láminas e ilustraciones en inglés), que requieren al autor.</p>
 <hr />
 <h2 id="material-revisado"><span class="antetitulo">02</span>Material revisado</h2>
 <div class="tabla"><table>
@@ -553,7 +557,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tr>
 <td><code>10_SPAD_Web_Landing.md</code> (EN)</td>
 <td>Textos para una web.</td>
-<td>Presenta SPAD como &quot;habilidad central de SEVEN-G&quot; (contra D09). Sustituido por el <a href="../00_SPAD_Que_es_y_para_que_sirve.html" title="Documento 00 &#183; Qu&#233; es SPAD y para qu&#233; sirve">documento 00</a>.</td>
+<td>Presenta SPAD como &quot;habilidad central de SEVEN-G&quot; (contra D09). Sustituido por el <a href="../00_SPAD_Que_es_y_para_que_sirve.html" title="Documento 00 &#183; Qu&#233; es SEVEN-G y para qu&#233; sirve">documento 00</a>.</td>
 </tr>
 <tr>
 <td><code>11_SPAD_Compliant_Certification.md</code> (EN)</td>
@@ -563,7 +567,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tr>
 <td><code>SPAD_AI_Engineering.pdf</code></td>
 <td>Presentación ilustrada (14 láminas).</td>
-<td>Nueve láminas se publican en el <a href="../00_SPAD_Que_es_y_para_que_sirve.html" title="Documento 00 &#183; Qu&#233; es SPAD y para qu&#233; sirve">documento 00</a>; cinco no (sección 4).</td>
+<td>Nueve láminas se publican en el <a href="../00_SPAD_Que_es_y_para_que_sirve.html" title="Documento 00 &#183; Qu&#233; es SEVEN-G y para qu&#233; sirve">documento 00</a>; cinco no (sección 4).</td>
 </tr>
 </tbody>
 </table></div>
@@ -583,7 +587,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>1</td>
 <td><strong>Numeración de fases distinta.</strong> La guía operativa: 0 Contexto, 1 PLAN, 2 revisión del plan, 3 guía de código, 4 estrategia de pruebas, 5 implementación, 6 pruebas, 7 revisión de pruebas, 8 revisión de código, 9 correcciones, 10 versión. La habilidad oficial repite &quot;IMPLEMENTATION&quot; en las fases 4 y 6, pone la estrategia de pruebas después de implementar y termina en la 11. La autoevaluación usa la numeración antigua (4 implementación, 5 revisión de código, 6 correcciones).</td>
 <td>0, 08, 11</td>
-<td><strong>Numeración canónica = guía operativa</strong> (la que usan el <a href="../00_SPAD_Que_es_y_para_que_sirve.html" title="Documento 00 &#183; Qu&#233; es SPAD y para qu&#233; sirve">documento 00</a> y la lámina del flujo bloqueante). Corregir 08 y 11.</td>
+<td><strong>Numeración canónica = guía operativa</strong> (la que usan el <a href="../00_SPAD_Que_es_y_para_que_sirve.html" title="Documento 00 &#183; Qu&#233; es SEVEN-G y para qu&#233; sirve">documento 00</a> y la lámina del flujo bloqueante). Corregir 08 y 11.</td>
 </tr>
 <tr>
 <td>2</td>
@@ -649,7 +653,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tr>
 <td>Cifras de mejora y retorno: &quot;60–80 % de retrabajo&quot;, &quot;−70 % retrabajo&quot;, &quot;−60 % incidentes&quot;, &quot;+200 % cobertura&quot;, &quot;30–40 % más rápido&quot;, <em>break-even</em> en 3–4 semanas.</td>
 <td>D35, D41</td>
-<td><strong>Retiradas.</strong> Se formulan como hipótesis a medir por cada organización (<a href="../00_SPAD_Que_es_y_para_que_sirve.html" title="Documento 00 &#183; Qu&#233; es SPAD y para qu&#233; sirve">documento 00</a>, sección 10). Las láminas 2 (solo se publica su gráfica conceptual) y 12 no se usan.</td>
+<td><strong>Retiradas.</strong> Se formulan como hipótesis a medir por cada organización (<a href="../00_SPAD_Que_es_y_para_que_sirve.html" title="Documento 00 &#183; Qu&#233; es SEVEN-G y para qu&#233; sirve">documento 00</a>, sección 10). Las láminas 2 (solo se publica su gráfica conceptual) y 12 no se usan.</td>
 </tr>
 <tr>
 <td>&quot;Certificación SPAD-Compliant™&quot;, &quot;estándar de oro&quot;, &quot;obligatorio para entornos financieros y de salud&quot;, &quot;evidencia para SOC 2, PCI-DSS o HIPAA&quot;.</td>
@@ -684,7 +688,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tr>
 <td>Licencia: &quot;propiedad intelectual de Seachad; la redistribución pública requiere permiso&quot;.</td>
 <td>D07 y decisión del autor (18-09-2026)</td>
-<td><strong>Sustituida</strong> por la de SEVEN-G: <a class="ref-ext" href="https://creativecommons.org/licenses/by/4.0/deed.es" target="_blank" rel="noopener" title="Creative Commons Atribuci&#243;n/Reconocimiento 4.0 Internacional (CC BY 4.0)">CC BY 4.0</a> y MIT (README y <a href="../00_SPAD_Que_es_y_para_que_sirve.html" title="Documento 00 &#183; Qu&#233; es SPAD y para qu&#233; sirve">documento 00</a>).</td>
+<td><strong>Sustituida</strong> por la de SEVEN-G: <a class="ref-ext" href="https://creativecommons.org/licenses/by/4.0/deed.es" target="_blank" rel="noopener" title="Creative Commons Atribuci&#243;n/Reconocimiento 4.0 Internacional (CC BY 4.0)">CC BY 4.0</a> y MIT (README y <a href="../00_SPAD_Que_es_y_para_que_sirve.html" title="Documento 00 &#183; Qu&#233; es SEVEN-G y para qu&#233; sirve">documento 00</a>).</td>
 </tr>
 </tbody>
 </table></div>
@@ -755,19 +759,19 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td><strong>SPAD Lite</strong> en la guía: fases fusionables y artefactos mínimos para iniciativas Lite, sin perder la revisión independiente.</td>
 </tr>
 <tr>
-<td>10</td>
+<td><strong>Mapa de esferas y niveles de ambici&#243;n</strong> <span class="codigo">(10)</span></td>
 <td><strong>Métricas del propio proceso.</strong> No hay indicadores para saber si SPAD funciona.</td>
 <td>Las mejoras que SPAD promete deben medirse, no afirmarse.</td>
 <td>Indicadores: tasa de invalidación por fase y modelo, tasa de NO-GO, iteraciones hasta GO, tiempo por fase, defectos escapados a producción, cobertura real frente a la exigida.</td>
 </tr>
 <tr>
-<td>11</td>
+<td><strong>Modelo de madurez</strong> <span class="codigo">(11)</span></td>
 <td><strong>Habilidades derivadas sin método</strong> (agentes, riesgo, FinOps).</td>
 <td>Hoy son listas de temas.</td>
 <td>Mantener solo la de diseño de agentes, desarrollada con el hueco 4; las de riesgo y FinOps se cubren con SEVEN-G (33, 42).</td>
 </tr>
 <tr>
-<td>12</td>
+<td><strong>&#205;ndice de transformaci&#243;n</strong> <span class="codigo">(12)</span></td>
 <td><strong>Herramientas.</strong> Los contratos JSON no se validan automáticamente.</td>
 <td>La validación de &quot;artefactos incompletos&quot; puede automatizarse.</td>
 <td>Herramienta sin servidor, al estilo de <a href="../../../../SEVEN-G/herramientas/T01_registro_iniciativas/registro.html" title="Herramienta T01 &#183; Registro de iniciativas">T01</a>: validador de artefactos SPAD frente a sus esquemas JSON y generador del registro del tema.</td>
@@ -787,27 +791,27 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </thead>
 <tbody>
 <tr>
-<td>00</td>
+<td><strong>Qu&#233; es SEVEN-G y para qu&#233; sirve</strong> <span class="codigo">(00)</span></td>
 <td>Qué es SPAD y para qué sirve</td>
 <td><strong>Publicado</strong> (18-09-2026).</td>
 </tr>
 <tr>
-<td>01</td>
+<td><strong>Metodolog&#237;a fundacional de SEVEN-G</strong> <span class="codigo">(01)</span></td>
 <td>Guía operativa: fases, roles y veredictos</td>
 <td>0 (base), 07, 08 corregidos; SPAD Lite (hueco 9).</td>
 </tr>
 <tr>
-<td>02</td>
+<td><strong>Glosario y convenciones de SEVEN-G</strong> <span class="codigo">(02)</span></td>
 <td>Contextos, temas y registro de artefactos</td>
 <td>04, con los huecos 1, 2 y 5.</td>
 </tr>
 <tr>
-<td>03</td>
+<td><strong>Herramientas de SEVEN-G y registro de iniciativas</strong> <span class="codigo">(03)</span></td>
 <td>Política de validación</td>
 <td>05, con el registro de validación (hueco 1).</td>
 </tr>
 <tr>
-<td>04</td>
+<td><strong>De d&#243;nde viene SEVEN-G, en qu&#233; se diferencia y por qu&#233; es abierto</strong> <span class="codigo">(04)</span></td>
 <td>Ciclos complementarios: legado, depuración, corrección urgente y seguridad</td>
 <td>0 §4.2–4.5, con los huecos 6, 7 y 8.</td>
 </tr>
@@ -846,7 +850,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </ol>
 <h2 id="fuentes-externas">Fuentes externas citadas</h2><p class="fuentes-nota">Enlaces a la fuente oficial o primaria, comprobados antes de publicar. Verifique siempre la versión vigente en la fecha de uso.</p><ul class="fuentes-externas"><li><a href="https://genai.owasp.org/resource/owasp-top-10-for-llm-applications-2025/" target="_blank" rel="noopener">OWASP Top 10 para aplicaciones con modelos de lenguaje de gran tama&#241;o, edici&#243;n 2025 (OWASP Top 10 for LLM Applications 2025)</a><span> · OWASP GenAI Security Project (OWASP Foundation) · 17-11-2024</span></li><li><a href="https://creativecommons.org/licenses/by/4.0/deed.es" target="_blank" rel="noopener">Creative Commons Atribuci&#243;n/Reconocimiento 4.0 Internacional (CC BY 4.0)</a><span> · Creative Commons</span></li></ul>
 </main>
-<footer class="pie"><div><span>© 2026 Fernando García Varela · Metodolog&#237;a SPAD</span><span>Generado el 28-09-2026</span></div><p class="pie-ia">Contenido generado y maquetado con apoyo de IA bajo supervisi&#243;n editorial del autor.</p></footer>
+<footer class="pie"><div><span>© 2026 Fernando García Varela · Metodolog&#237;a SPAD</span><span>Generado el 13-10-2026</span></div><p class="pie-ia">Contenido generado y maquetado con apoyo de IA bajo supervisi&#243;n editorial del autor.</p></footer>
 <script src="../../../../SEVEN-G/html/es/codigos.js" defer></script>
 
 <script>

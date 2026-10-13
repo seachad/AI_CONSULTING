@@ -92,9 +92,17 @@ $parr
 $script:IMAGENES = @{}
 function Registrar-Imagen([string]$clave, [string]$ruta) {
   if (-not (Test-Path $ruta)) { throw "Falta la imagen del curso: $ruta" }
-  $img = [System.Drawing.Image]::FromFile($ruta)
-  $script:IMAGENES[$clave] = [pscustomobject]@{ ruta = $ruta; ancho = $img.Width; alto = $img.Height }
-  $img.Dispose()
+  # PNG: ancho y alto en la cabecera (bytes 16–23), sin System.Drawing, que no existe en Linux (D125); otros formatos, con System.Drawing
+  $b = [IO.File]::ReadAllBytes($ruta)
+  if ($b.Length -gt 24 -and $b[1] -eq 0x50 -and $b[2] -eq 0x4E -and $b[3] -eq 0x47) {
+    $an = ([int]$b[16] -shl 24) -bor ([int]$b[17] -shl 16) -bor ([int]$b[18] -shl 8) -bor [int]$b[19]
+    $al = ([int]$b[20] -shl 24) -bor ([int]$b[21] -shl 16) -bor ([int]$b[22] -shl 8) -bor [int]$b[23]
+    $script:IMAGENES[$clave] = [pscustomobject]@{ ruta = $ruta; ancho = $an; alto = $al }
+  } else {
+    $img = [System.Drawing.Image]::FromFile($ruta)
+    $script:IMAGENES[$clave] = [pscustomobject]@{ ruta = $ruta; ancho = $img.Width; alto = $img.Height }
+    $img.Dispose()
+  }
 }
 # coloca la imagen dentro de la caja (x, y, cx, cy) conservando su proporción, alineada arriba a la izquierda
 function Imagen([string]$clave, [int]$x, [int]$y, [int]$cx, [int]$cy, [string]$descr) {
@@ -546,7 +554,7 @@ function Bloque-Consultor() {
       (L 'Honorarios ligados al valor: solo sobre valor validado por control de gestión o por una auditoría ajena a usted.' 'Value-linked fees: only on value validated by finance or by an audit that is not yours.')
     ) (L 'Documento 91, sección 5.' 'Document 91, section 5.')),
 
-    (Diapositiva-Tarjetas (L 'Qué puede decir y qué no' 'What you can and cannot say') (L 'SEVEN-G es una marca registrada de Fernando García Varela; la licencia de contenidos no cede la marca' 'SEVEN-G is a registered trademark of Fernando García Varela; the content licence does not grant the trademark') @(
+    (Diapositiva-Tarjetas (L 'Qué puede decir y qué no' 'What you can and cannot say') (L 'SEVEN-G es un nombre y una marca de Fernando García Varela; la licencia de contenidos no cede la marca' 'SEVEN-G is a name and trademark of Fernando García Varela; the content licence does not grant the trademark') @(
       (T (L 'Sí' 'Yes') $TEAL (L '«Servicio basado en SEVEN-G (versión …), marco de Fernando García Varela, CC BY 4.0.»   «Metodología adaptada de SEVEN-G; cambios: …»   «Utiliza el mapa de esferas y las reglas de medición de SEVEN-G.»' '"Service based on SEVEN-G (version …), a framework by Fernando García Varela, CC BY 4.0."   "Methodology adapted from SEVEN-G; changes: …"   "Uses the sphere map and measurement rules of SEVEN-G."')),
       (T (L 'No' 'No') $CLARET (L '«Certificado SEVEN-G», «consultora acreditada», «partner oficial», «avalado por el autor»: no existe certificación ni programa de socios. Tampoco «cumplimiento garantizado por SEVEN-G».' '"SEVEN-G certified", "accredited consultancy", "official partner", "endorsed by the author": there is no certification or partner programme. Nor "compliance guaranteed by SEVEN-G".')),
       (T (L 'No prometa' 'Do not promise') $ORO (L 'Un X % de ahorro antes del diagnóstico, un nivel de madurez en un plazo, «su compañía se transformará», «sin riesgo» o plazos de implantación sin haber diagnosticado.' 'X% savings before the diagnosis, a maturity level by a date, "your company will transform", "no risk", or implementation deadlines without a diagnosis.'))
@@ -570,7 +578,7 @@ function Bloque-Partner() {
     (Diapositiva-Tarjetas (L 'Qué permite la licencia y qué exige' 'What the licence allows and what it requires') (L 'Contenidos: CC BY 4.0. Código de las herramientas: MIT' 'Content: CC BY 4.0. Tool code: MIT') @(
       (T (L 'Permite' 'It allows') $TEAL (L 'Copiar, adaptar, traducir, recortar, renombrar, mezclar con su metodología e integrar en productos, también con fines comerciales, sin pedir permiso ni pagar.' 'Copying, adapting, translating, trimming, renaming, merging with your methodology and building into products, including commercially, without asking permission or paying.')),
       (T (L 'Exige' 'It requires') $OXFORD (L 'Reconocer la autoría (Fernando García Varela), enlazar la licencia, indicar los cambios y conservar el aviso legal. En el código, mantener el aviso de derechos de autor y la licencia MIT.' 'Crediting the author (Fernando García Varela), linking the licence, indicating changes and keeping the legal notice. In code, keeping the copyright notice and the MIT licence.')),
-      (T (L 'No cede' 'It does not grant') $CLARET (L 'La marca: SEVEN-G es una marca registrada. Puede nombrarla para decir con exactitud qué ha usado; no para sugerir aval, acreditación o certificación.' 'The trademark: SEVEN-G is a registered trademark. You may name it to state accurately what you used; not to suggest endorsement, accreditation or certification.'))
+      (T (L 'No cede' 'It does not grant') $CLARET (L 'La marca: SEVEN-G es un nombre y una marca de su autor. Puede nombrarla para decir con exactitud qué ha usado; no para sugerir aval, acreditación o certificación.' 'The trademark: SEVEN-G is a name and trademark of its author. You may name it to state accurately what you used; not to suggest endorsement, accreditation or certification.'))
     ) (L 'Las versiones publicadas no se revocan: lo que integre hoy podrá seguir usándolo (documento 93).' 'Published versions are not revoked: what you integrate today you can keep using (document 93).')),
 
     (Diapositiva-Tarjetas (L 'Adopción modular: cuatro componentes' 'Modular adoption: four components') (L 'Puede integrar el marco entero o solo las piezas que le faltan a su metodología' 'You can integrate the whole framework or just the pieces your methodology lacks') @(
@@ -660,7 +668,7 @@ foreach ($lang in $Idiomas) {
     foreach ($s in (Bloque-Proceso)) { $slides.Add($s) }
     foreach ($s in (Bloque-Ejemplos)) { $slides.Add($s) }
     foreach ($s in (& $curso.bloque)) { $slides.Add($s) }
-    $slides.Add((Diapositiva-Cierre (L 'Gracias' 'Thank you') (L 'SEVEN-G es gratuito: se usa, se descarga y se adapta sin registrarse, y el sitio nunca le escribirá. Si quiere hablar con el autor, la iniciativa es suya.' 'SEVEN-G is free: it is used, downloaded and adapted without registering, and the site will never write to you. If you want to talk to the author, the initiative is yours.') (L 'SEVEN-G es una marca registrada de Fernando García Varela · CC BY 4.0 (contenidos) · MIT (código)' 'SEVEN-G is a registered trademark of Fernando García Varela · CC BY 4.0 (content) · MIT (code)') 'https://www.linkedin.com/in/fernandogarciavarela/' (L 'Aviso legal: ayuda metodológica genérica y gratuita, «tal cual» y con fines informativos; no es asesoramiento jurídico ni está revisada jurídicamente para ningún caso. Cada organización la adapta y es responsable de su revisión legal y de su cumplimiento regulatorio; puede no recoger cambios normativos recientes. En la máxima medida permitida por la ley, el autor no asume responsabilidad alguna por los efectos de su aplicación. No otorga certificación de ningún tipo. Detalle en el documento 93.' 'Legal notice: a generic, free methodological aid provided "as is" for information purposes; it is not legal advice and has not been legally reviewed for any case. Each organisation adapts it and is responsible for its legal review and its regulatory compliance; it may not reflect recent regulatory changes. To the fullest extent permitted by law, the author accepts no liability whatsoever for the effects of its application. It does not grant certification of any kind. Details in document 93.')))
+    $slides.Add((Diapositiva-Cierre (L 'Gracias' 'Thank you') (L 'SEVEN-G es gratuito: se usa, se descarga y se adapta sin registrarse, y el sitio nunca le escribirá. Si quiere hablar con el autor, la iniciativa es suya.' 'SEVEN-G is free: it is used, downloaded and adapted without registering, and the site will never write to you. If you want to talk to the author, the initiative is yours.') (L 'SEVEN-G es un nombre y una marca de Fernando García Varela · CC BY 4.0 (contenidos) · MIT (código)' 'SEVEN-G is a name and trademark of Fernando García Varela · CC BY 4.0 (content) · MIT (code)') 'https://www.linkedin.com/in/fernandogarciavarela/' (L 'Aviso legal: ayuda metodológica genérica y gratuita, «tal cual» y con fines informativos; no es asesoramiento jurídico ni está revisada jurídicamente para ningún caso. Cada organización la adapta y es responsable de su revisión legal y de su cumplimiento regulatorio; puede no recoger cambios normativos recientes. En la máxima medida permitida por la ley, el autor no asume responsabilidad alguna por los efectos de su aplicación. No otorga certificación de ningún tipo. Detalle en el documento 93.' 'Legal notice: a generic, free methodological aid provided "as is" for information purposes; it is not legal advice and has not been legally reviewed for any case. Each organisation adapts it and is responsible for its legal review and its regulatory compliance; it may not reflect recent regulatory changes. To the fullest extent permitted by law, the author accepts no liability whatsoever for the effects of its application. It does not grant certification of any kind. Details in document 93.')))
 
     $salida = Join-Path $repo "SEVEN-G\pptx\$lang\SEVEN-G_Curso_$($curso.clave).pptx"
     $pdf = Join-Path $repo "SEVEN-G\pdf\$lang\curso\SEVEN-G_Curso_$($curso.clave).pdf"

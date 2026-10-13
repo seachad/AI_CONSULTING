@@ -5,8 +5,8 @@
 | | |
 |---|---|
 | Documento | Documento 01 · Metodología fundacional |
-| Versión | 0.1 (borrador de trabajo) |
-| Fecha | 16-09-2026 |
+| Versión | 0.3 (borrador de trabajo) |
+| Fecha | 01-10-2026 |
 | Autor | Fernando García Varela |
 | Estado | Borrador para revisión. Documento normativo de referencia del marco. |
 
@@ -101,6 +101,7 @@ Los principios orientan las decisiones en las situaciones que las reglas no cubr
 | 8 | **Evidencia, no declaración** | Lo que no está documentado y verificado no se considera realizado. | Las evidencias tienen autor, fecha, versión y verificación. |
 | 9 | **Decisión consciente sobre la ambición** | Eficiencia y transformación se eligen, se miden y se deciden por separado. | Toda iniciativa tiene nivel de ambición clasificado y confirmado. |
 | 10 | **Las personas en el centro del cambio** | La IA se evalúa también por su efecto en el trabajo, las capacidades y las responsabilidades. | Las iniciativas de Aumentar y Transformar tienen plan de adopción y de personas. |
+| 11 | **Proporcionalidad** | El esfuerzo de gobierno se ajusta al riesgo, la materialidad y la reversibilidad de cada iniciativa: ninguna evidencia se pide dos veces, ninguna decisión necesita más participantes de los que exige la separación de funciones y ninguna iniciativa soporta un coste de gobierno desproporcionado. Lo que nunca se rebaja es el núcleo (sección 14.1). | La intensidad de cada iniciativa está determinada y justificada (sección 9); las evidencias que la compañía ya tiene se referencian en lugar de copiarse (documento 21, sección 4); el coste del propio gobierno se mide y se revisa en C5 (documento 41). |
 
 ---
 
@@ -432,11 +433,11 @@ SEVEN-G no crea un gobierno paralelo: los órganos pueden ser comités existente
 
 ---
 
-## 9. Intensidad de aplicación: Lite y Enterprise
+## 9. Intensidad de aplicación: Express, Lite y Enterprise
 
 ### 9.1 Cómo se determina
 
-La intensidad se determina en la fase 0 y se revisa en G3 y en cada revisión de continuidad. Basta con que se cumpla un criterio Enterprise para aplicar esa intensidad.
+La intensidad se determina en la fase 0 y se revisa en G3 y en cada revisión de continuidad. Basta con que se cumpla un criterio Enterprise para aplicar esa intensidad. Sin ningún criterio Enterprise, la iniciativa es Lite o, si cumple además las condiciones de la sección 9.4 y lo confirma la función de riesgos, Express.
 
 <!-- figura: intensidad -->
 
@@ -455,15 +456,30 @@ La intensidad se determina en la fase 0 y se revisa en G3 y en cada revisión de
 
 ### 9.3 Qué cambia entre intensidades
 
-| Aspecto | Lite | Enterprise |
-|---|---|---|
-| **Puertas** | G0–G2 y G4–G5 pueden agruparse | Todas por separado |
-| **Evidencias** | Plantillas simplificadas | Plantillas completas |
-| **Verificación** | Oficina de IA; auditor de IA por muestreo | Auditor de IA en todos los *gates* |
-| **Decisión** | Patrocinador, con conformidad de riesgos en G3, G4 y G5 | Comité de IA; consejo en Transformar |
-| **Puesta en producción** | Conformidad de riesgos | Firma multinivel con veto |
-| **Revisión de continuidad** | Semestral | Trimestral |
-| **Visibilidad** | Panel del consejo agregado | Panel del consejo por iniciativa |
+| Aspecto | Express | Lite | Enterprise |
+|---|---|---|---|
+| **Criterios** | Lista reducida (21 §2.5): todos los «Sí ◆» que apliquen y los que sostienen el núcleo | Columna Lite del documento 21 | Todos |
+| **Puertas** | Mismas puertas que Lite: G0–G2 y G4–G5 en una decisión cada una; G3 por separado, puede resolverse por escrito | G0–G2 y G4–G5 pueden agruparse | Todas por separado |
+| **Evidencias** | Ficha viva (P01, sección Express) y evidencias de la compañía referenciadas (21 §4.3) | Plantillas simplificadas | Plantillas completas |
+| **Verificación** | Oficina de IA | Oficina de IA; auditor de IA por muestreo | Auditor de IA en todos los *gates* |
+| **Decisión** | Patrocinador, con conformidad de riesgos en G3, G4 y G5 | Patrocinador, con conformidad de riesgos en G3, G4 y G5 | Comité de IA; consejo en Transformar |
+| **Puesta en producción** | Conformidad de riesgos | Conformidad de riesgos | Firma multinivel con veto |
+| **Revisión de continuidad** | Anual | Semestral | Trimestral |
+| **Visibilidad** | Panel del consejo agregado | Panel del consejo agregado | Panel del consejo por iniciativa |
+
+### 9.4 Intensidad Express
+
+La intensidad Express existe para que una iniciativa pequeña, interna y reversible no pague el mismo recorrido administrativo que una de cientos de horas (principio 11, proporcionalidad). **Cambia qué se evalúa en cada puerta, no qué puertas hay**: la iniciativa pasa por todas las puertas con su registro (N-04) y G3 se sigue decidiendo por separado (N-05).
+
+**Elegibilidad.** Ningún criterio Enterprise de la sección 9.2 y, además, todas estas condiciones: uso interno (sin exposición directa a clientes ni a personas externas); reversible en días, sin efecto residual; autonomía A0 o A1; sin categorías especiales de datos ni información confidencial crítica; inversión más coste anual por debajo del **umbral Express** aprobado en C2; y, si interviene un proveedor de IA, que ya esté homologado (P55 vigente). **La confirma la función de riesgos** (en compañías pequeñas, la oficina de IA), nunca el patrocinador solo. Se registra en P04 y en T04.
+
+**Recorrido.** Tres decisiones con las mismas puertas: *entrada* (G0, G1 y G2 en una decisión), **G3 por separado**, que en Express puede resolverse por escrito —decide el patrocinador con la conformidad de riesgos registrada en T01—, y *puesta en uso* (G4 y G5 en una decisión). Cada puerta se evalúa con la **lista reducida de criterios Express** del documento 21 (sección 2.5): todos los criterios «Sí ◆» que apliquen y los que sostienen el núcleo. La evidencia es una **ficha viva** (P01, sección Express) más las evidencias de la compañía que se referencian (21 §4.3). La revisión de continuidad es **anual** y puede adelantar G7.
+
+**Salida automática.** Si aparece cualquier criterio Enterprise o deja de cumplirse una condición de elegibilidad, la iniciativa pasa a Lite o a Enterprise desde ese momento, con un evento de cambio de clasificación, y las puertas siguientes se evalúan con la lista de su nueva intensidad. Lo mismo si la revisión anual no demuestra valor.
+
+**Lo que no cambia.** El núcleo entero (sección 14.1): inventario y registro, separación de funciones, validación dual con evidencia anterior a la decisión, criterios «Sí ◆», hipótesis de valor con línea base y criterio de parada, clasificación y riesgos, reversión probada.
+
+> **Por qué importa.** Con solo Lite y Enterprise, un asistente interno de bajo coste pasa por el 92 % de los criterios de un agente que atiende a clientes. Esa desproporción empuja a no registrar los casos pequeños, que es justo lo que el gobierno quiere evitar. Express mantiene la trazabilidad y los controles críticos y quita el resto, y su salida automática impide que se convierta en un atajo.
 
 ---
 
@@ -544,19 +560,34 @@ Este documento no constituye asesoramiento jurídico. La clasificación regulato
 
 ## 14. Cómo se declara que se aplica SEVEN-G
 
-Una organización puede declarar que aplica SEVEN-G cuando cumple, como mínimo, las siguientes condiciones:
+### 14.1 El núcleo de SEVEN-G
 
-1. Ha completado C1 y C2, y tiene aprobados por el consejo la tesis de IA, la ambición por esfera y el apetito de riesgo.
-2. Mantiene un inventario de sistemas de IA con clasificación regulatoria, intensidad y responsable, y un registro de iniciativas con la trazabilidad de la sección 6.11.
-3. Ha asignado los roles y órganos con las incompatibilidades de la sección 8.2.
-4. Todas las iniciativas nuevas recorren el ciclo de vida con sus *gates* registrados.
-5. Todas las iniciativas en producción tienen revisión de continuidad vigente.
-6. Aplica las reglas de medición del valor y reporta al consejo con el panel de supervisión.
-7. Gestiona las no conformidades con el proceso de la sección 12.
+El **núcleo** es el conjunto mínimo y estable de reglas que distingue aplicar SEVEN-G de usar algunas de sus plantillas. Es el mismo para toda compañía, intensidad y alcance. Todo lo demás de la biblioteca es, o bien una **práctica** —la forma recomendada, u obligatoria cuando se da su disparador, de cumplir el núcleo (documento 94, sección 2.3)—, o bien un **instrumento** —una plantilla o una herramienta que lo facilita—. El núcleo tiene su propia versión y solo cambia por decisión expresa del autor del marco, que se registra; los documentos, las plantillas y las herramientas pueden evolucionar sin cambiarlo.
 
-La declaración se redacta con P61 y se audita según 38 §11.
+| Código | Regla del núcleo | Dónde se desarrolla |
+|---|---|---|
+| **N-01** | **Inventario completo** de los sistemas de IA —propios, de terceros, de uso corporativo y no autorizados— con responsable, clasificación regulatoria e intensidad. | documento 32; documento 90, sección 2.4 |
+| **N-02** | **Toda iniciativa se registra** antes de consumir presupuesto, con sus fechas por fase, decisiones, criterios y motivo de cierre (trazabilidad de la sección 6.11). | sección 6.11; documento 03 |
+| **N-03** | **La intensidad se determina en cada iniciativa** en la fase 0 y se revisa en G3 y en cada R6. Basta un criterio Enterprise. | sección 9 |
+| **N-04** | **Ninguna fase ni puerta se salta**: toda iniciativa pasa por todas las puertas de su ciclo de vida y cada una queda registrada con sus criterios y su resultado. Qué criterios se evalúan y qué sesiones pueden agruparse depende de la intensidad. | secciones 7 y 9; documento 21, sección 3.4 |
+| **N-05** | **G3 se decide siempre por separado**: es la principal puerta de parada. | sección 6.1; documento 90, sección 2.4 |
+| **N-06** | **Separación de funciones**: roles y órganos asignados con las incompatibilidades de la sección 8.2; quien construye no verifica ni decide su propio trabajo, y la conformidad de riesgos es independiente del equipo. | sección 8; documento 30 |
+| **N-07** | **Validación dual y evidencia anterior a la decisión**: sin evidencia verificada no hay decisión. | sección 7.2; documento 21, secciones 3 y 4 |
+| **N-08** | **Los criterios «Sí ◆»** (seguridad, cumplimiento legal, supervisión humana) nunca se admiten como condición. | documento 21, sección 2.2 |
+| **N-09** | **Hipótesis de valor con línea base y criterios de parada** antes de invertir en viabilidad. | sección 6.4; documento 40 |
+| **N-10** | **Clasificación regulatoria y registro de riesgos** antes de diseñar; un riesgo residual Crítico sin aprobación del consejo bloquea G3 y G5. | documento 32; documento 33 |
+| **N-11** | **Plan de reversión probado y revisión de continuidad vigente** en todo lo que está en producción; lo que ya estaba en producción al adoptar el marco se regulariza en el plazo aprobado en C2, con una revisión equivalente a G7. | sección 6.8; documento 52; documento 14, sección 11 |
+| **N-12** | **El consejo aprueba en C2**, tras el diagnóstico de C1, la tesis de IA, la ambición por esfera y el apetito de riesgo; recibe información de IA al menos trimestral y aprueba las apuestas de Transformar. | sección 5; documento 13 |
+| **N-13** | **Las cifras de valor y coste siguen las reglas de medición** y se informan al consejo con el panel de supervisión. | sección 11; documento 40; documento 60 |
+| **N-14** | **Las no conformidades se gestionan** con el proceso de la sección 12. | sección 12; documento 37 |
 
-Las iniciativas en producción anteriores a la adopción del marco deben regularizarse en un plazo aprobado en C2, pasando por una revisión de continuidad equivalente a G7.
+Versión del núcleo: **1 (01-10-2026)**. El documento 94, sección 3, repite esta lista para tenerla a mano; si difieren, prevalece esta.
+
+> **Por qué importa.** Un marco que crece sin un núcleo estable obliga a releerlo entero para saber qué es innegociable, y cada documento nuevo parece una obligación más. Con un núcleo pequeño, una compañía sabe qué no puede faltar nunca y puede aplicar el resto en proporción al riesgo y a la materialidad de cada iniciativa (principio 11), sin que la biblioteca tenga que dejar de crecer como guía.
+
+### 14.2 Declaración
+
+Una organización puede declarar que aplica SEVEN-G cuando cumple las catorce reglas del núcleo (N-01 a N-14). La declaración se redacta con P61, cita la versión del núcleo que aplica y se audita según 38 §11.
 
 ---
 
@@ -590,3 +621,5 @@ Las iniciativas en producción anteriores a la adopción del marco deben regular
 | Versión | Fecha | Cambios |
 |---|---|---|
 | 0.1 | 16-09-2026 | Primera versión. Consolida la metodología fundacional anterior y los criterios de *gate* en un único modelo; incorpora el ciclo corporativo, los criterios diferenciados por nivel de ambición, la determinación de intensidad, la firma multinivel de puesta en producción, la tabla de incompatibilidades, los plazos de no conformidades, el encaje regulatorio y la trazabilidad del ciclo de vida como embudo. |
+| 0.2 | 01-10-2026 | Principio 11, proporcionalidad (sección 3). La sección 14 define el núcleo de SEVEN-G (14.1, reglas N-01 a N-14, versión 1), que unifica las siete condiciones de declaración y las doce reglas que nunca se omiten del documento 94, y la declaración (14.2). |
+| 0.3 | 01-10-2026 | Intensidad Express (sección 9.4, D147): elegibilidad confirmada por riesgos, mismas puertas con G3 por separado, lista reducida de criterios, ficha viva, revisión anual y salida automática; columna Express en 9.3 y en la figura de la intensidad. |

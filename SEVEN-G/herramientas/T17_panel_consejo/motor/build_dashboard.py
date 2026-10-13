@@ -850,7 +850,7 @@ function renderEmbudoPreguntas(rows){
 function render(){
   buildFilters();
   const rows = CASES.filter(passes);
-  renderKPIs(rows); renderFrenos(rows); renderImpacto(rows); renderCharts(rows); renderCurva(rows); renderTramos(rows); renderNoCuant(rows); renderEmbudo(rows); renderCdm(); renderIndice(); renderMadurez(); renderTransversales(rows); renderCartera(rows); renderRiesgo(rows); renderIaOfensiva(rows); renderAgentes(rows); renderAdopcion(); renderHistorico(rows);
+  renderKPIs(rows); renderFrenos(rows); renderImpacto(rows); renderCharts(rows); renderCurva(rows); renderTramos(rows); renderNoCuant(rows); renderGobierno(rows); renderEmbudo(rows); renderCdm(); renderIndice(); renderMadurez(); renderTransversales(rows); renderCartera(rows); renderRiesgo(rows); renderIaOfensiva(rows); renderAgentes(rows); renderAdopcion(); renderHistorico(rows);
   document.getElementById("cards").classList.toggle("hidden", state.view!=="cards");
   document.getElementById("table").classList.toggle("hidden", state.view!=="table");
   // agrupación (por compañía y unidad o sin agrupar) y presentación (tarjetas o tabla) son independientes
@@ -1173,6 +1173,32 @@ function renderNoCuant(rows){
        ["VAN (F7)", x=>{ const cu = curva(x.c); return cu ? vanTxt(cu.van_f7) : "sin plan de realización"; }], ["Sostenido por valor no cuantificado", x=>x.nm.estrategico ? (x.nm.aviso ? pill(x.nm.aviso==="sin_revision"?"rojo":"amarillo", x.nm.aviso==="sin_revision"?"sin R6 fechada":"R6 vencida") : `sí · R6 ${fES(x.nm.revision)}`) : "no"]], con.sort((a,b)=>b.nm.max_nivel-a.nm.max_nivel), 20)}` : "";
   setCard("nocuant", "Valor no cuantificado", "Mejoras sin relación económica demostrable (40 regla 7 y §5.3): dimensión y nivel de 0 a 3 con su métrica física y el motivo. Nunca se traduce a euros ni suma en el neto; sin métrica, se muestra pero no cuenta.", insight, body);
 }
+// coste del propio gobierno (D148; 41 IND-COS-12 a 14 e IND-AGI-04): horas declaradas en T01 (nunca estimadas), su coste con el coste por
+// hora de C2, proporción sobre la inversión frente al objetivo de cada intensidad y evidencias referenciadas (21 §4.3). Sin datos, no se dibuja.
+function renderGobierno(rows){
+  const G = (DATA.meta||{}).gobierno || {}, ch = typeof G.coste_hora === "number" ? G.coste_hora : null, obj = G.objetivo_pct || {};
+  const gob = c => (c.seveng||{}).gobierno || null, inten = c => (c.seveng||{}).intensidad || "sin dato";
+  const inv = c => { const e = (c.economia||{}).inversion||{}, a = (e.construccion||{}).importe, b = (e.adicional_potencial||{}).importe; return (a==null && b==null) ? null : (a||0)+(b||0); };
+  const xs = rows.map(c => ({c, g:gob(c), int:inten(c)})).filter(x => x.g);
+  const conH = xs.filter(x => x.g.horas != null);
+  if (!conH.length && !xs.some(x => x.g.evidencias_referenciadas)) { setCard("gobierno", "Coste del gobierno", "", "", ""); return; }
+  const med = a => { const v = a.filter(x=>x!=null).sort((p,q)=>p-q); if (!v.length) return null; const m = Math.floor(v.length/2); return v.length%2 ? v[m] : (v[m-1]+v[m])/2; };
+  const pctTxt = v => v == null ? ND : v.toLocaleString("es-ES",{maximumFractionDigits:1}) + " %";
+  const ratio = x => { const i = inv(x.c); return (x.g.horas == null || ch == null || !i) ? null : x.g.horas * ch / i * 100; };
+  const ints = ["express","lite","enterprise"].filter(k => xs.some(x => x.int === k));
+  const filas = ints.map(k => { const g = xs.filter(x => x.int === k), h = g.filter(x => x.g.horas != null), ev = sum(g.map(x=>x.g.evidencias||0)), er = sum(g.map(x=>x.g.evidencias_referenciadas||0));
+    const rm = med(h.map(ratio)), o = typeof obj[k] === "number" ? obj[k] : null;
+    return {k, n:g.length, nh:h.length, horas:med(h.map(x=>x.g.horas)), ratio:rm, obj:o, ref: ev ? er/ev*100 : null}; });
+  const etq = {express:"Express", lite:"Lite", enterprise:"Enterprise"};
+  const fuera = conH.filter(x => { const r = ratio(x), o = obj[x.int]; return r != null && typeof o === "number" && r > o; });
+  const insight = `<b>${conH.length}</b> de ${xs.length} iniciativas con horas de gobierno declaradas${ch==null?" · falta el coste por hora de C2: el coste no se calcula":""}${fuera.length?` · <b>${fuera.length}</b> por encima del objetivo de su intensidad`:""}`;
+  const body = miniTable([["Intensidad", x=>esc(etq[x.k]||x.k)], ["Casos", x=>String(x.n), "n"], ["Con horas declaradas", x=>String(x.nh), "n"], ["Horas por caso (mediana)", x=>x.horas==null?ND:Math.round(x.horas).toLocaleString("es-ES"), "n"],
+      ["Coste del gobierno sobre la inversión (mediana)", x=>pctTxt(x.ratio), "n"], ["Objetivo", x=>x.obj==null?ND:pctTxt(x.obj), "n"], ["Evidencias referenciadas", x=>pctTxt(x.ref), "n"]], filas, 5)
+    + (conH.length ? `<div class="note" style="margin-top:10px">Iniciativas con horas declaradas</div>${miniTable([["Caso", x=>`<a href="#" onclick="openFicha(CASES.find(y=>y.id==='${x.c.id}'));return false">${esc(x.c.nombre)}</a>`], ["Intensidad", x=>esc(etq[x.int]||x.int)],
+      ["Horas declaradas", x=>Math.round(x.g.horas).toLocaleString("es-ES")+` <span class="nd">(${x.g.decisiones_con_horas} de ${x.g.decisiones} decisiones)</span>`, "n"], ["Coste del gobierno", x=>ch==null?ND:fmt(x.g.horas*ch), "n"],
+      ["Coste del gobierno sobre la inversión", x=>{ const r = ratio(x), o = obj[x.int]; return r==null ? ND : (typeof o === "number" && r > o ? pill("amarillo", pctTxt(r)) : pctTxt(r)); }, "n"]], conH.sort((a,b)=>(ratio(b)||0)-(ratio(a)||0)), 15)}` : "");
+  setCard("gobierno", "Coste del gobierno", "Lo que cuesta gobernar cada iniciativa (principio 11, proporcionalidad): horas declaradas en las decisiones de gate, su coste con el coste por hora aprobado en C2, su proporción sobre la inversión frente al objetivo de cada intensidad y la parte de la evidencia que se referencia en lugar de copiarse (41 IND-COS-12 a 14). Las horas se declaran; nunca se estiman.", insight, body);
+}
 // plan de realización del caso en su ficha: VAN F7, recuperación F9, caja, realización F10, gráfico, tramos y tabla por periodo
 function planFicha(c){
   const cu = curva(c);
@@ -1191,12 +1217,32 @@ function planFicha(c){
    ${cu.hipotesis.length?`<ul class="hip">${cu.hipotesis.map(h=>`<li>${esc(h)}</li>`).join("")}</ul>`:""}
    <details class="tabper"><summary>Ver la tabla por periodo</summary>${tablaCurva(G, hoyEt)}</details>`;
 }
+// tres perspectivas del caso en paralelo (40 §11.1, regla 11; D150): valor económico, resultado operativo y exposición al riesgo; nunca se fusionan
+function perspectivasFicha(c){
+  const p = (c.seveng||{}).perspectivas; if (!p) return "";
+  const r = R(c), pe = r.valor_por_estado || {}, ro = p.resultado_operativo || [], nm = noMonetario(c);
+  const num = v => typeof v==="number" ? esc(v.toLocaleString("es-ES")) : ND;
+  const oper = ro.length ? `<div class="tblx"><table class="mini"><thead><tr><th>Indicador</th><th class="n">Base</th><th class="n">Objetivo</th><th class="n">Actual</th><th>Medido</th></tr></thead><tbody>${ro.map(x=>{ const ok = enObjetivo(x); return `<tr><td>${x.indicador?`<span class="id">${esc(x.indicador)}</span> `:""}${esc(x.nombre)}${x.unidad?` <span class="nd">(${esc(x.unidad)})</span>`:""}</td><td class="n">${num(x.base)}</td><td class="n">${num(x.objetivo)}</td><td class="n">${num(x.actual)}</td><td>${x.fecha_actual?esc(x.fecha_actual):ND}${ok==null?"":` <span class="badge ${ok?"ok":"mid"}">${ok?"en objetivo":"por debajo"}</span>`}</td></tr>`; }).join("")}</tbody></table></div>` : `<p class="nd" style="margin:0">Sin indicador operativo registrado en T01: no es cero.</p>`;
+  return `<h3 data-ayuda="perspectivas">Tres perspectivas del caso <span class="nd">(40 §11.1, regla 11: se leen juntas y no se fusionan)</span></h3>
+   <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px">
+    <div style="border-top:3px solid var(--good);padding-top:6px"><b>Valor económico</b><dl><dt>Neto anual</dt><dd>${fmt(r.neto)}</dd><dt>Validado</dt><dd>${fmt(pe.validado)}</dd><dt>Declarado</dt><dd>${fmt(pe.declarado)}</dd><dt>Estimado</dt><dd>${fmt(pe.estimado_cati)}</dd></dl></div>
+    <div style="border-top:3px solid var(--accent);padding-top:6px"><b>Resultado operativo</b>${oper}${nm.max_nivel>=2?`<p style="margin:4px 0 0">Valor no cuantificado ${esc(NIVEL_NM[nm.max_nivel])} (nunca en euros)</p>`:""}</div>
+    <div style="border-top:3px solid var(--critical);padding-top:6px"><b>Exposición al riesgo</b><dl><dt>Riesgo residual principal</dt><dd>${nd(rc(c).tier_riesgo)}</dd><dt>Riesgos Altos o Críticos abiertos</dt><dd>${p.riesgos_altos_abiertos}</dd><dt>Incidentes abiertos</dt><dd>${p.incidentes_abiertos}</dd><dt>No conformidades abiertas</dt><dd>${p.no_conformidades_abiertas}</dd></dl></div>
+   </div>`;
+}
 function noCuantFicha(c){
   const nm = noMonetario(c);
   if (!nm.dimensiones.length) return "";
   return `<h3>Valor no cuantificado <span class="nd">(40 regla 7 y §5.3: nivel de 0 a 3 con métrica; nunca en euros)</span></h3>
    ${nm.estrategico?`<p style="margin:4px 0">${pill(nm.aviso?(nm.aviso==="sin_revision"?"rojo":"amarillo"):"ok", "sostenido por valor no cuantificado")} Nivel medio o alto con VAN F7 negativo o sin plan que lo demuestre: ${nm.revision?`próxima R6 el ${fES(nm.revision)}${nm.aviso==="revision_vencida"?" (vencida)":""}`:"<b>falta fechar la próxima R6</b>"}.</p>`:""}
    <div class="tblx"><table class="mini"><thead><tr><th>Dimensión</th><th>Nivel</th><th>Métrica</th><th class="n">Base</th><th class="n">Objetivo</th><th class="n">Actual</th><th>Motivo</th><th>Dato</th><th>Desde</th></tr></thead><tbody>${nm.dimensiones.map(d=>`<tr><td>${esc(dimNM(d.dimension))}</td><td>${esc(NIVEL_NM[d.nivel])}</td><td>${d.indicador?esc(d.indicador):pill("amarillo","sin métrica: no cuenta")}</td><td class="n">${nd(d.base)}</td><td class="n">${nd(d.objetivo)}</td><td class="n">${nd(d.actual)}</td><td>${nd(d.nota)}</td><td>${esc(ESTL(d.estado))}</td><td>${nd(d.efecto_desde)}</td></tr>`).join("")}</tbody></table></div>`;
+}
+// línea de la tarjeta del inventario: resultado operativo y exposición al riesgo, junto al valor y sin fusionarlos (40 §11.1, regla 11)
+function persLinea(c){
+  const pp = perspectivasDe(c); if (!pp) return "";
+  const oc = !pp.ro.length ? "" : pp.por_debajo ? "mid" : pp.en_objetivo === pp.ro.length ? "ok" : "";
+  const rc2 = pp.riesgos_altos || pp.incidentes ? "mid" : "";
+  return `<div class="cur" style="font-size:11.5px;color:var(--ink2);margin-top:4px" data-act="ficha">Resultado operativo: ${pp.ro.length?`<span class="badge ${oc}">${esc(operTxt(pp))}</span>`:`<span class="nd">sin indicador (no es cero)</span>`} · Exposición al riesgo: <span class="badge ${rc2}">${esc(expoTxt(pp))}</span></div>`;
 }
 // línea de la tarjeta del inventario: VAN F7, recuperación y realización del plan, o «sin plan»; valor no cuantificado
 function curLinea(c){
@@ -1648,6 +1694,7 @@ function card(c){
     </div>
     <div class="pot" data-act="pot"><div class="k"><span>Neto potencial <b>${fmt(r.neto_pot)}</b>${r.rendimiento_adicional!=null?` · ${r.rendimiento_adicional.toLocaleString("es-ES",{maximumFractionDigits:1})} € por € adicional`:""}</span><span>capturado ${ptot?pct(cap):"—"}</span></div><div class="bar"><i style="width:${cap*100}%"></i></div></div>
     ${curLinea(c)}
+    ${persLinea(c)}
   </div>`;
 }
 const openState = { comps: new Set(), units: new Set() };
@@ -1713,6 +1760,7 @@ function renderTable(rows){
     ["rend","€ neto por € adicional",c=>R(c).rendimiento_adicional ?? "","x"],["plazo","Plazo del potencial",c=>eco(c).plazo_potencial||""],
     ["planr","Plan de realización",c=>curva(c)?"sí":debePlan(c)?"falta":""],["vanf7","VAN (F7)",c=>{ const cu = curva(c); return cu && cu.van_f7 != null ? cu.van_f7 : ""; },"n"],["realiz","Realización (F10)",c=>{ const cu = curva(c); return cu && cu.desviacion && cu.desviacion.pct != null ? cu.desviacion.pct : ""; },"x"],
     ["vnc","Valor no cuantificado (máx.)",c=>{ const n = noMonetario(c); return n.max_nivel ? NIVEL_NM[n.max_nivel] : n.dimensiones.length ? "sin métrica" : ""; }],["sost","Sostenido por valor no cuantificado",c=>noMonetario(c).estrategico?"sí":""],
+    ["oper","Resultado operativo",c=>operTxt(perspectivasDe(c))],["expo","Exposición al riesgo",c=>expoTxt(perspectivasDe(c))],
     ["dneto",f?`Δ neto vs ${fES(f.fecha)}`:"Δ neto (elige foto)",c=>f?(R(c).neto-((f.casos||{})[c.id]||{}).neto||0):"","n"],["dato","Dato del valor",c=>estadoTxt(c)]];
   const col = cols.find(x=>x[0]===tsort.k) || cols.find(x=>x[0]==="neto"); const rs = [...rows].sort((a,b)=>{ const x=col[2](a), y=col[2](b); return (x<y?-1:x>y?1:0)*tsort.d; });
   const root = document.getElementById("table");
@@ -1783,6 +1831,7 @@ function openFicha(c){
   open(`<h2>${c.id} · ${esc(c.nombre)}</h2><div class="sub">${esc(c.compania)} · ${esc(c.unidad)} · área ${esc(c.area)} · ${badgeEstado(c.estado)} · desde ${inicioDe(c)}${f.produccion?"":" (estimado)"}</div>
    <div style="margin:8px 0">${[t.tecnologia,t.naturaleza,t.exposicion,t.funcion,"Prioridad "+t.prioridad,...(t.alcance?[t.alcance]:[])].map(x=>`<span class="badge">${esc(x)}</span>`).join("")}${badgeRiesgo(t.riesgo)}</div>
    <h3>Qué es y para qué se usa</h3><p style="margin:0">${c.que_es?esc(c.que_es):ND}</p>
+   ${perspectivasFicha(c)}
    <h3>Clasificación del ${CONSEJO()}</h3>
    <dl><dt>Tecnología</dt><dd>${esc(d.tipo)}</dd><dt>Tipo de decisión</dt><dd>${esc(d.decision)}</dd><dt>Datos tratados</dt><dd>${esc(d.datos)}</dd><dt>Reglamento de IA (estimación)</dt><dd>${esc(d.aiact)}</dd><dt>Proveedores</dt><dd>${esc(d.proveedores)}</dd><dt>Naturaleza</dt><dd>${esc(d.es_ia)}</dd>
    <dt>En funcionamiento</dt><dd>${enUso(c).txt}${enUso(c).desde?` · desde ${enUso(c).desde}`:""}</dd>
@@ -1907,6 +1956,7 @@ HTML = """<!DOCTYPE html>
   <details class="tabper"><summary>Ver la tabla por periodo</summary><div id="curvatab"></div></details>
  </div>
  <div class="grid2"><details class="card cdet" id="tramos" data-ayuda="tramos"></details><details class="card cdet" id="nocuant" data-ayuda="nocuant"></details></div>
+ <details class="card cdet" id="gobierno" data-ayuda="gobierno" style="margin-bottom:14px"></details>
  <details class="card cdet" id="cdm" data-ayuda="cdm" style="margin-bottom:14px"></details>
  <details class="card cdet" id="indice" data-ayuda="indice" style="margin-bottom:14px"></details>
  <details class="card cdet" id="madurez" data-ayuda="madurez" style="margin-bottom:14px"></details>

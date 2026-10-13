@@ -31,6 +31,8 @@
 3. **Separa quién decide, quién construye y quién controla**, y traduce la regulación (Reglamento Europeo de IA, RGPD, DORA, NIS2, ISO/IEC 42001) a fases, roles y evidencias concretas.
 4. **Mide el valor en dinero y con estado** —validado, declarado o estimado— y le dice al consejo, con ocho señales observables, si la compañía se transforma o solo se eficienta.
 
+**Qué es frente a los estándares.** Las normas y la regulación —ISO/IEC 42001, ISO/IEC 38507, ISO/IEC 23894, ISO/IEC 42005, el NIST AI RMF o el Reglamento Europeo de IA— dicen **qué debe existir**: un sistema de gestión, responsabilidades del órgano de gobierno, un proceso de riesgo, evaluaciones de impacto, obligaciones legales. SEVEN-G es la **capa operativa que lo hace funcionar**, iniciativa a iniciativa y cartera a cartera, con disciplina de inversión y de valor: quién decide en cada puerta, con qué evidencia, cuánto cuesta y qué rinde. No es una alternativa a ISO/IEC 42001 ni equivale a una certificación: su crosswalk (documento 34, sección 9.1) dice qué requisito cubre, cuál cubre en parte y cuál exige un control externo.
+
 **Qué se lleva, sin coste**
 
 SEVEN-G no es un folleto que termina en una propuesta comercial: **el material de trabajo está aquí, entero**. Los documentos explican el método; las plantillas son los entregables ya preparados para rellenar; las herramientas son aplicaciones que funcionan con los datos de cada compañía. Todo puede usarse tal cual, recortarse, ampliarse, cambiarse de nombre o integrarse en la metodología que la compañía o su consultora ya utilicen, con una única condición: citar la autoría e indicar los cambios.
@@ -63,7 +65,7 @@ Dos vistazos, con los datos ficticios de ejemplo: la cartera de iniciativas de I
 | Es una **compañía mediana** sin equipo de IA: el alcance Lite funciona con el comité de dirección, una persona a tiempo parcial y un auditor externo. | **Nadie en la dirección va a asumir las decisiones.** El marco exige un patrocinador por iniciativa y capacidad real de parar; sin eso, solo produce documentos. |
 | Es **consultor o responsable interno** y necesita un método completo que pueda adaptar y aplicar con su propia forma de trabajar, citando la fuente (documento 91). | |
 
-**Qué exige a cambio.** No cuesta dinero, pero sí disciplina: alguien que lo impulse, un registro de iniciativas al día y decisiones que se toman con evidencia delante. La adopción puede ser **modular** —empezar solo por el registro, por las puertas de decisión, por la medición del valor o por el panel del consejo— y ampliarse después. La guía de implantación (documento 90) propone un plan de 90 días y una ruta mínima para compañías medianas; el documento 96 y su herramienta, el recorrido de implantación (T23), dicen por dónde empezar según la IA y el gobierno que la compañía ya tiene.
+**Qué exige a cambio.** No cuesta dinero, pero sí disciplina: alguien que lo impulse, un registro de iniciativas al día y decisiones que se toman con evidencia delante. Lo innegociable cabe en catorce reglas, el **núcleo** (documento 01, sección 14.1); todo lo demás se aplica en proporción al riesgo y a la materialidad de cada iniciativa (principio 11, documento 94). La adopción puede ser **modular** —empezar solo por el registro, por las puertas de decisión, por la medición del valor o por el panel del consejo— y ampliarse después. La guía de implantación (documento 90) propone un plan de 90 días y una ruta mínima para compañías medianas; el documento 96 y su herramienta, el recorrido de implantación (T23), dicen por dónde empezar según la IA y el gobierno que la compañía ya tiene.
 
 **Por dónde seguir, según quién sea**
 
@@ -272,6 +274,7 @@ Las etapas del embudo agrupan las fases del ciclo de vida: **Propuesto** (fases 
 
 | Intensidad | Cuándo se aplica | Qué cambia |
 |---|---|---|
+| **Express** | Iniciativas pequeñas de uso interno, reversibles, con autonomía A0 o A1, sin datos sensibles y por debajo del umbral Express de C2, con elegibilidad confirmada por la función de riesgos. | Las mismas puertas con una lista reducida de criterios —todos los de seguridad, cumplimiento y supervisión humana se mantienen—, una ficha viva en lugar de plantillas y revisión anual; G3 sigue por separado. |
 | **Lite** | Iniciativas de bajo riesgo, uso interno, sin decisiones sobre personas ni exposición a clientes, inversión reducida. | *Gates* agrupados, plantillas simplificadas, decisión del patrocinador con registro y verificación de la oficina de IA. |
 | **Enterprise** | Sistemas de alto riesgo según la regulación, exposición directa a clientes o personas, decisiones automatizadas, agentes con capacidad de actuar, entornos regulados o inversión significativa. | Todos los *gates* y evidencias, auditoría independiente, visibilidad del comité de IA y, cuando proceda, del consejo. |
 

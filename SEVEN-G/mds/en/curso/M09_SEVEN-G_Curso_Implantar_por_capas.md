@@ -24,10 +24,10 @@ By the end you will be able to choose your company's implementation scope, disti
 
 ## 2. Key ideas
 
-1. **Two different proportionality decisions.** *Intensity* (Lite or Enterprise) belongs to each initiative; *implementation scope* (Lite or Enterprise) belongs to the company. Size decides neither.
+1. **Two different proportionality decisions.** *Intensity* (Express, Lite or Enterprise) belongs to each initiative; *implementation scope* (Lite or Enterprise) belongs to the company. Size decides neither.
 2. **A single library, three layers.** Essential (what every company applies), conditional (what a trigger activates) and complete (guides and reference). There are no reduced versions of the documents.
 3. **No phase or gate is skipped.** In Lite they are grouped —G0 to G2 in one session, G4 and G5 in another— and the evidence is simplified. G3 always goes separately.
-4. **The starting point changes the order, not the destination.** A company with no AI, another with predictive models in production and another with many pilots start with different milestones (document 96), but reach the same conditions of 01 §14.
+4. **The starting point changes the order, not the destination.** A company with no AI, another with predictive models in production and another with many pilots start with different milestones (document 96), but reach the same fourteen-rule core (01 §14.1).
 5. **Technology does not add maturity.** Maturity is read through three lenses: governance capability, technology footprint and impact reach (11 §7.6). Having agents with weak risk control is an alert, not more maturity.
 6. **Ninety days to have a diagnosis, a direction and a first portfolio**, with no moratorium: AI activity continues while the framework is implemented.
 
@@ -37,7 +37,7 @@ By the end you will be able to choose your company's implementation scope, disti
 
 | Step | What to open | What to look at |
 |---|---|---|
-| 1 | document 94, sections 2 and 3 | The three layers, the five levels and the twelve rules that are never omitted. |
+| 1 | document 94, sections 2 and 3 | The three layers, the five levels, the fourteen-rule core that is never omitted (N-01 to N-14) and the difference between principle, practice and instrument. |
 | 2 | document 94, section 4 | The triggers: which ones occur in your company? |
 | 3 | document 01, section 9 | The Enterprise criteria of an initiative. |
 | 4 | document 90, section 2 | Company Lite or Enterprise scope and minimum path in Lite. |
