@@ -1020,7 +1020,7 @@ function desdeT01(reg, fecha){
   const dec = (id, g) => dg.filter(d => d.iniciativa===id && d.gate===g && ok(d)).sort((a,b)=>String(a.fecha_decision).localeCompare(String(b.fecha_decision)))[0];
   const grupo = {at:{sup:0,res:0,pr:0,dias:[],pl:[]}, opt:{sup:0,res:0,pr:0,dias:[],pl:[]}};
   for(const I of per){ const nv=nivel(I); if(!nv) continue; const g2=dec(I.id,'G2'); if(!g2 || !en(g2.fecha_decision,24)) continue;
-    const G = grupo[nv==='optimizar'?'opt':'at']; G.sup++; const g5=dec(I.id,'G5'), p=plz[(I.clasificacion||{}).intensidad]||{}, suma=(p['3']||0)+(p['4']||0)+(p['5']||0);
+    const G = grupo[nv==='optimizar'?'opt':'at']; G.sup++; const g5=dec(I.id,'G5'), p=plz[(I.clasificacion||{}).intensidad]||plz.lite||{}, suma=(p['3']||0)+(p['4']||0)+(p['5']||0);
     if(suma) G.pl.push(suma);
     const dias = g5 ? (new Date(g5.fecha_decision)-new Date(g2.fecha_decision))/dia : (fc-new Date(g2.fecha_decision))/dia;
     if(g5 && new Date(g5.fecha_decision)<=fc){ G.res++; G.pr++; G.dias.push(dias); }

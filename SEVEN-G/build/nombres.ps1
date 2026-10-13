@@ -1,4 +1,4 @@
-# Lista única de nombres canónicos de SEVEN-G (D144): código → nombre, en español e inglés.
+# Lista única de nombres canónicos de SEVEN-G (D155): código → nombre, en español e inglés.
 # Fuente de la regla «nombre primero, código después» (02 §2.4, R16): toda mención a un elemento con código
 # se escribe con el nombre de esta lista y el código entre paréntesis. La lista no se edita a mano:
 #   pwsh -File SEVEN-G/build/nombres.ps1            escribe SEVEN-G/build/nombres.json

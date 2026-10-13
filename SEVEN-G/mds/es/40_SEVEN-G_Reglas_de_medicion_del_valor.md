@@ -5,8 +5,8 @@
 | | |
 |---|---|
 | Documento | Documento 40 · Reglas de medición del valor |
-| Versión | 0.2 (borrador de trabajo) |
-| Fecha | 16-09-2026 |
+| Versión | 0.3 (borrador de trabajo) |
+| Fecha | 01-10-2026 |
 | Autor | Fernando García Varela |
 | Estado | Borrador para revisión. Desarrolla la sección 6 del documento 00 y la sección 11 del documento 01. |
 
@@ -455,6 +455,9 @@ Presentar al comité o al consejo como validado un importe que no lo está const
 8. **Cada caso presentado en detalle incluye su descripción comprensible** (regla 10). Se presentan como máximo tres casos en detalle por sesión y se responde con los formatos de la especificación común: "Sí", "Sí, con una condición: …", "Todavía no, porque falta …" o "No, porque …".
 9. **La composición del valor por nivel de ambición** (eficiencias frente a retorno) se muestra para alimentar las señales 1 y 2 del índice de transformación.
 10. **Las iniciativas transversales y las plataformas habilitadoras se muestran aparte**, con su desglose por unidad de negocio (coste, adopción, capacidad liberada y valor materializado), y el neto de la cartera se da con y sin ellas (sección 7.2).
+11. **Tres perspectivas, en paralelo y sin fusionar.** Cada caso se presenta con tres columnas que se leen juntas: **valor económico** (en euros, con su estado: validado, declarado o estimado; reglas 1 a 9), **resultado operativo** (indicadores físicos del documento 41 —tiempo de ciclo, calidad, errores, satisfacción, adopción— con su línea base, su objetivo y su valor actual, y el valor no cuantificado de la sección 5.3) y **exposición al riesgo** (riesgo residual principal, riesgos Altos y Críticos abiertos, incidentes y no conformidades abiertos; documentos 33 y 37). Ninguna se traduce a la otra ni se combinan en una puntuación única: un buen resultado operativo no compensa un valor económico sin demostrar, ni un neto alto un riesgo sin tratar. En T01, los indicadores operativos de cada iniciativa se registran en `resultado_operativo[]`, con el código del indicador del documento 41 cuando existe; si no hay ninguno, la columna dice «sin indicador», no cero (regla 8).
+
+> **Por qué importa.** Obligar a traducir todo a euros empuja a inventar conversiones sin fórmula (error de la regla 7) o a ignorar lo que no se puede convertir. Con tres columnas, el consejo ve a la vez qué rinde el caso, qué cambia en la operación y qué riesgo asume, y decide sabiendo qué parte es dinero y qué parte no lo es.
 
 ### 11.2 Modelo de resumen de valor
 
@@ -530,3 +533,4 @@ Lectura para el consejo: la cartera genera un neto anual positivo según lo decl
 | 0.1 | 16-09-2026 | Primera versión. Desarrolla las diez reglas de medición, fija los estados del importe con responsables, evidencia y caducidad, las fórmulas oficiales F1–F10, los métodos de atribución con su estado máximo, el criterio económico único sobre beneficio neto (VAN con horizonte y tasa de C2; ROI y plazo de recuperación informativos), la medición de la agilidad por riesgo y ambición, los errores de inflado y las reglas de presentación al consejo. |
 | 0.1 | 18-09-2026 | Añade la sección 7.2: iniciativas transversales y plataformas habilitadoras, con la escalera de medición por unidad (coste, adopción, capacidad liberada y valor materializado), el umbral de adopción y el neto de la cartera con y sin ellas; el error 13 y la regla de presentación 10. |
 | 0.2 | 28-09-2026 | El valor no cuantificado se registra en T01 con dimensión, nivel 0–3, métrica y motivo, nunca en euros, y el caso sostenido por valor no cuantificado necesita su próxima R6 con fecha (regla 7 y sección 5.3); el panel del consejo calcula el VAN (F7) de cada caso con la curva de su plan de realización (sección 8.2); sección 13 (D135). |
+| 0.3 | 01-10-2026 | Regla de presentación 11: tres perspectivas en paralelo y sin fusionar —valor económico, resultado operativo y exposición al riesgo—; los indicadores operativos se registran en T01 en `resultado_operativo[]` (D150). |

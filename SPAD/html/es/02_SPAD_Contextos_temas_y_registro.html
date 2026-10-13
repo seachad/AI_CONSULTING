@@ -392,6 +392,10 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 /* Ilustraciones en imagen (p. ej., SPAD): ocupan el ancho del lienzo y conservan su proporción */
 .g-lienzo img { display: block; width: 100%; height: auto; border: 1px solid var(--regla-2); }
 .ilustracion .g-lienzo img[src*="ilusion_de_velocidad"] { max-width: 560px; margin: 0 auto; }
+/* Nombre primero, código después (D155): el código entre paréntesis tras el nombre, en tablas y títulos */
+.codigo { font-family: var(--mono, 'Courier New', monospace); font-size: .88em; color: var(--tinta-2); white-space: nowrap; font-weight: 400; }
+h2 .codigo, h3 .codigo { font-weight: 400; }
+
 @page { @bottom-left { content: "SPAD · Contextos, temas y registro de artefactos"; font: 8.5pt "Libre Franklin", "Segoe UI", sans-serif; color: #74675e; } }
 </style>
 </head>
@@ -557,7 +561,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tr>
 <td><strong>Parámetros de los ciclos complementarios</strong></td>
 <td>Plazos máximos de plan simplificado y de vigilancia posterior en la corrección urgente; escala de severidades y quién acepta el riesgo residual.</td>
-<td>Valores de partida, a calibrar (<a href="04_SPAD_Ciclos_complementarios.html" title="Documento 04 &#183; Ciclos complementarios: legado, depuraci&#243;n, correcci&#243;n urgente y seguridad">documento 04</a>).</td>
+<td>Valores de partida, a calibrar (<a href="04_SPAD_Ciclos_complementarios.html" title="Documento 04 &#183; De d&#243;nde viene SEVEN-G, en qu&#233; se diferencia y por qu&#233; es abierto">documento 04</a>).</td>
 </tr>
 <tr>
 <td><strong>Modelos aprobados</strong></td>
@@ -737,7 +741,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 <tr>
 <td>Resultado</td>
-<td>Válido · Inválido (con la causa de la política de validación, <a href="03_SPAD_Politica_de_validacion.html" title="Documento 03 &#183; Pol&#237;tica de validaci&#243;n">documento 03</a>) · Excepción aprobada.</td>
+<td>Válido · Inválido (con la causa de la política de validación, <a href="03_SPAD_Politica_de_validacion.html" title="Documento 03 &#183; Herramientas de SEVEN-G y registro de iniciativas">documento 03</a>) · Excepción aprobada.</td>
 </tr>
 <tr>
 <td>Veredicto aceptado</td>
@@ -751,7 +755,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </table></div>
 <p>El registro se guarda en <code>VALIDACION.md</code> dentro del tema (o en el sistema de control de versiones, si la organización lo prefiere) y se completa <strong>en el momento</strong>, no al final.</p>
 <h3 id="4-3-registro-de-infracciones">4.3 Registro de infracciones</h3>
-<p>Cada respuesta descartada por la política de validación (<a href="03_SPAD_Politica_de_validacion.html" title="Documento 03 &#183; Pol&#237;tica de validaci&#243;n">documento 03</a>) se anota con fecha, fase, causa, modelo y acción. Es la materia prima de las métricas del proceso (<a href="08_SPAD_Autoevaluacion_y_metricas.html" title="Documento 08 &#183; Autoevaluaci&#243;n de conformidad y m&#233;tricas del proceso">documento 08</a>) y de la mejora de las instrucciones.</p>
+<p>Cada respuesta descartada por la política de validación (<a href="03_SPAD_Politica_de_validacion.html" title="Documento 03 &#183; Herramientas de SEVEN-G y registro de iniciativas">documento 03</a>) se anota con fecha, fase, causa, modelo y acción. Es la materia prima de las métricas del proceso (<a href="08_SPAD_Autoevaluacion_y_metricas.html" title="Documento 08 &#183; Autoevaluaci&#243;n de conformidad y m&#233;tricas del proceso">documento 08</a>) y de la mejora de las instrucciones.</p>
 <blockquote>
 <p><strong>Por qué importa.</strong> Los tres registros responden a las tres preguntas de cualquier auditoría del desarrollo: qué herramienta hizo esto, qué persona lo aceptó y cuántas veces hubo que descartar y repetir. En SEVEN-G, esos registros son el insumo de las evidencias de las fases de diseño y entrega (<a href="../../../SEVEN-G/html/es/53_SEVEN-G_Construccion_de_soluciones_con_IA.html">SEVEN-G 53</a>, sección 7.2).</p>
 </blockquote>
@@ -777,11 +781,11 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </thead>
 <tbody>
 <tr>
-<td><strong><a href="01_SPAD_Guia_operativa.html" title="Documento 01 &#183; Gu&#237;a operativa: fases, roles y veredictos">documento 01</a> · Guía operativa</strong></td>
+<td><strong><a href="01_SPAD_Guia_operativa.html" title="Documento 01 &#183; Metodolog&#237;a fundacional de SEVEN-G">documento 01</a> · Guía operativa</strong></td>
 <td>Fases en las que se producen los artefactos registrados.</td>
 </tr>
 <tr>
-<td><strong><a href="03_SPAD_Politica_de_validacion.html" title="Documento 03 &#183; Pol&#237;tica de validaci&#243;n">documento 03</a> · Política de validación</strong></td>
+<td><strong><a href="03_SPAD_Politica_de_validacion.html" title="Documento 03 &#183; Herramientas de SEVEN-G y registro de iniciativas">documento 03</a> · Política de validación</strong></td>
 <td>Causas de invalidación que alimentan los registros.</td>
 </tr>
 <tr>
@@ -822,7 +826,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </table></div>
 <h2 id="fuentes-externas">Fuentes externas citadas</h2><p class="fuentes-nota">Enlaces a la fuente oficial o primaria, comprobados antes de publicar. Verifique siempre la versión vigente en la fecha de uso.</p><ul class="fuentes-externas"><li><a href="https://top10.owasp.org/2025/es/" target="_blank" rel="noopener">OWASP Top 10:2025 (riesgos de seguridad de aplicaciones web)</a><span> · OWASP Foundation · 2025</span></li></ul>
 </main>
-<footer class="pie"><div><span>© 2026 Fernando García Varela · Metodolog&#237;a SPAD</span><span>Generado el 28-09-2026</span></div><p class="pie-ia">Contenido generado y maquetado con apoyo de IA bajo supervisi&#243;n editorial del autor.</p></footer>
+<footer class="pie"><div><span>© 2026 Fernando García Varela · Metodolog&#237;a SPAD</span><span>Generado el 13-10-2026</span></div><p class="pie-ia">Contenido generado y maquetado con apoyo de IA bajo supervisi&#243;n editorial del autor.</p></footer>
 <script src="../../../SEVEN-G/html/es/codigos.js" defer></script>
 
 <script>

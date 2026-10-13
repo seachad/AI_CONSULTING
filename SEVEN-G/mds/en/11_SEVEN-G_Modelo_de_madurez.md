@@ -98,7 +98,7 @@ Level 0 has no criteria of its own. The time requirements of levels 4 and 5 prev
 - The **rubric** summarises, level by level, the observable criteria and the required evidence.
 - The **questionnaire** turns those criteria into verifiable questions. Each dimension has 12 questions: 2 at level 1, 2 at level 2, 4 at level 3, 2 at level 4 and 2 at level 5. If a rubric and its questionnaire differ, **the questionnaire prevails**.
 - Each question is answered **Yes**, **Partial** or **No** using the rules in section 4.5. Only questions marked **(if applicable)** allow *Not applicable*, with verified justification.
-- Questions marked **(§14)** substantiate a condition of the SEVEN-G declaration of application (01 §14). All of them are at level 3.
+- Questions marked **(§14)** substantiate a SEVEN-G core rule, which is the basis of the declaration of application (01 §14.1). All of them are at level 3.
 - The template (P) and tool (T) codes indicate where the evidence is usually found; the company may provide equivalent evidence from its own systems.
 
 ### 3.2 D1 · Strategy and governance
@@ -430,7 +430,7 @@ Maturity measures the **capability** to govern and capture value; the index meas
 
 ### 7.3 With the declaration of application (01 §14)
 
-The ten **(§14)** questions substantiate the seven conditions in 01 §14. A company may declare that it applies SEVEN-G when **all of them are "Yes" in a verified assessment** and the initiatives that predate the framework are being regularised within the time limit approved in C2. As all of them are at level 3, **a company with a verified level 3 in D1, D2, D4, D6 and D7 meets the conditions**; the declaration is nevertheless based on the questions and not on the overall level.
+The ten **(§14)** questions substantiate the SEVEN-G core rules (01 §14.1) that have a question: N-01, N-02, N-04, N-06 and N-11 to N-14; the others (N-03, N-05 and N-07 to N-10) are checked by the audit of the declaration on the register (38 §11.2). A company may declare that it applies SEVEN-G when **all of them are "Yes" in a verified assessment** and the initiatives that predate the framework are being regularised within the time limit approved in C2. As all of them are at level 3, **a company with a verified level 3 in D1, D2, D4, D6 and D7 meets those rules**; the declaration is nevertheless based on the questions and not on the overall level.
 
 ### 7.4 With the dashboard and the bodies
 

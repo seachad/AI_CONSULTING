@@ -392,6 +392,10 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 /* Ilustraciones en imagen (p. ej., SPAD): ocupan el ancho del lienzo y conservan su proporción */
 .g-lienzo img { display: block; width: 100%; height: auto; border: 1px solid var(--regla-2); }
 .ilustracion .g-lienzo img[src*="ilusion_de_velocidad"] { max-width: 560px; margin: 0 auto; }
+/* Nombre primero, código después (D155): el código entre paréntesis tras el nombre, en tablas y títulos */
+.codigo { font-family: var(--mono, 'Courier New', monospace); font-size: .88em; color: var(--tinta-2); white-space: nowrap; font-weight: 400; }
+h2 .codigo, h3 .codigo { font-weight: 400; }
+
 @page { @bottom-left { content: "SPAD · Instructions by phase"; font: 8.5pt "Libre Franklin", "Segoe UI", sans-serif; color: #74675e; } }
 </style>
 </head>
@@ -500,12 +504,12 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tr>
 <td><strong>Role and phase</strong></td>
 <td>Which role the AI takes on and which phase it is in.</td>
-<td>Prevents the AI from mixing roles (<a href="01_SPAD_Guia_operativa.html" title="Document 01 &#183; Operating guide: phases, roles and verdicts">document 01</a>).</td>
+<td>Prevents the AI from mixing roles (<a href="01_SPAD_Guia_operativa.html" title="Document 01 &#183; SEVEN-G foundational methodology">document 01</a>).</td>
 </tr>
 <tr>
 <td><strong>Mandatory output</strong></td>
 <td>The sections the response must contain, in the order of the contract (<a href="07_SPAD_Contratos_de_entrada_y_salida.html" title="Document 07 &#183; Input and output contracts">document 07</a>).</td>
-<td>An output without them is invalid (<a href="03_SPAD_Politica_de_validacion.html" title="Document 03 &#183; Validation policy">document 03</a>).</td>
+<td>An output without them is invalid (<a href="03_SPAD_Politica_de_validacion.html" title="Document 03 &#183; SEVEN-G tools and initiative register">document 03</a>).</td>
 </tr>
 <tr>
 <td><strong>Prohibitions</strong></td>
@@ -516,7 +520,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </table></div>
 <p>Rules of use:</p>
 <ol>
-<li>Before any instruction, the global and project <strong>contexts</strong> are loaded and the <strong>topic</strong> is set (<a href="02_SPAD_Contextos_temas_y_registro.html" title="Document 02 &#183; Contexts, topics and artefact register">document 02</a>).</li>
+<li>Before any instruction, the global and project <strong>contexts</strong> are loaded and the <strong>topic</strong> is set (<a href="02_SPAD_Contextos_temas_y_registro.html" title="Document 02 &#183; SEVEN-G glossary and conventions">document 02</a>).</li>
 <li>Each instruction is executed in its own interaction; <strong>phases are not merged</strong> into a single interaction.</li>
 <li>The instruction used and its version are kept in the artefact's <strong>model record</strong>.</li>
 <li>If a phase accumulates invalidations, the instruction is reinforced with the explicit prohibitions and examples of what is not admitted, and the new version is recorded.</li>
@@ -532,10 +536,10 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </blockquote>
 <hr />
 <h2 id="main-cycle"><span class="antetitulo">03</span>Main cycle</h2>
-<h3 id="phase-0-context-and-objective">Phase 0 · Context and objective</h3>
+<h3 id="phase-0-context-and-objective">Context and objective (phase 0)</h3>
 <p>The person orchestrating writes this artefact; there is no instruction to the AI. An AI may be asked to <strong>formulate questions</strong> to complete it, never to write it on its own.</p>
 <p><strong>Mandatory content:</strong> problem; who it affects; scope within and outside; technological, legal and deadline constraints; measurable success criteria; if the system includes AI, what it must never do (<a href="05_SPAD_Sistemas_que_incluyen_IA.html" title="Document 05 &#183; Systems that include AI: behaviour evaluation and agents">document 05</a>).</p>
-<h3 id="phase-1-plan">Phase 1 · PLAN</h3>
+<h3 id="phase-1-plan">PLAN (phase 1)</h3>
 <div class="tabla"><table>
 <thead>
 <tr>
@@ -558,7 +562,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 </tbody>
 </table></div>
-<h3 id="phase-2-plan-review-audit-plan">Phase 2 · Plan review (AUDIT_PLAN)</h3>
+<h3 id="phase-2-plan-review-audit-plan">Plan review (AUDIT_PLAN) (phase 2)</h3>
 <div class="tabla"><table>
 <thead>
 <tr>
@@ -581,7 +585,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 </tbody>
 </table></div>
-<h3 id="phase-3-code-primer-code-primer">Phase 3 · Code primer (CODE_PRIMER)</h3>
+<h3 id="phase-3-code-primer-code-primer">Code primer (CODE_PRIMER) (phase 3)</h3>
 <div class="tabla"><table>
 <thead>
 <tr>
@@ -604,7 +608,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 </tbody>
 </table></div>
-<h3 id="phase-4-test-strategy-test-strategy">Phase 4 · Test strategy (TEST_STRATEGY)</h3>
+<h3 id="phase-4-test-strategy-test-strategy">Test strategy (TEST_STRATEGY) (phase 4)</h3>
 <div class="tabla"><table>
 <thead>
 <tr>
@@ -627,7 +631,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 </tbody>
 </table></div>
-<h3 id="phase-5-implementation">Phase 5 · Implementation</h3>
+<h3 id="phase-5-implementation">Implementation (phase 5)</h3>
 <div class="tabla"><table>
 <thead>
 <tr>
@@ -650,7 +654,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 </tbody>
 </table></div>
-<h3 id="phase-6-test-implementation">Phase 6 · Test implementation</h3>
+<h3 id="phase-6-test-implementation">Test implementation (phase 6)</h3>
 <div class="tabla"><table>
 <thead>
 <tr>
@@ -673,7 +677,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 </tbody>
 </table></div>
-<h3 id="phase-7-test-review-audit-tests">Phase 7 · Test review (AUDIT_TESTS)</h3>
+<h3 id="phase-7-test-review-audit-tests">Test review (AUDIT_TESTS) (phase 7)</h3>
 <div class="tabla"><table>
 <thead>
 <tr>
@@ -696,7 +700,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 </tbody>
 </table></div>
-<h3 id="phase-8-code-review-audit-code">Phase 8 · Code review (AUDIT_CODE)</h3>
+<h3 id="phase-8-code-review-audit-code">Code review (AUDIT_CODE) (phase 8)</h3>
 <div class="tabla"><table>
 <thead>
 <tr>
@@ -719,7 +723,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 </tbody>
 </table></div>
-<h3 id="phase-9-fixes-fix-primers">Phase 9 · Fixes (FIX_PRIMERS)</h3>
+<h3 id="phase-9-fixes-fix-primers">Fixes (FIX_PRIMERS) (phase 9)</h3>
 <div class="tabla"><table>
 <thead>
 <tr>
@@ -813,7 +817,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 </tbody>
 </table></div>
-<h3 id="d1-diagnosis">D1 · Diagnosis</h3>
+<h3 id="d1-diagnosis">Diagnosis (D1)</h3>
 <div class="tabla"><table>
 <thead>
 <tr>
@@ -936,7 +940,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <ul class="contains-task-list">
 <li class="task-list-item"><input disabled="disabled" type="checkbox" /> Contains the common preamble with role, phase, contexts and topic.</li>
 <li class="task-list-item"><input disabled="disabled" type="checkbox" /> Lists the mandatory sections in the order of the contract (<a href="07_SPAD_Contratos_de_entrada_y_salida.html" title="Document 07 &#183; Input and output contracts">document 07</a>).</li>
-<li class="task-list-item"><input disabled="disabled" type="checkbox" /> Lists the prohibitions of the phase (<a href="03_SPAD_Politica_de_validacion.html" title="Document 03 &#183; Validation policy">document 03</a>).</li>
+<li class="task-list-item"><input disabled="disabled" type="checkbox" /> Lists the prohibitions of the phase (<a href="03_SPAD_Politica_de_validacion.html" title="Document 03 &#183; SEVEN-G tools and initiative register">document 03</a>).</li>
 <li class="task-list-item"><input disabled="disabled" type="checkbox" /> Requires the model record at the end.</li>
 <li class="task-list-item"><input disabled="disabled" type="checkbox" /> Asks for situations not covered to be described without deciding.</li>
 <li class="task-list-item"><input disabled="disabled" type="checkbox" /> Has a version number and date, and its change is recorded.</li>
@@ -952,19 +956,19 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </thead>
 <tbody>
 <tr>
-<td><strong><a href="01_SPAD_Guia_operativa.html" title="Document 01 &#183; Operating guide: phases, roles and verdicts">document 01</a> · Operating guide</strong></td>
+<td><strong><a href="01_SPAD_Guia_operativa.html" title="Document 01 &#183; SEVEN-G foundational methodology">document 01</a> · Operating guide</strong></td>
 <td>Phases and roles to which each instruction corresponds.</td>
 </tr>
 <tr>
-<td><strong><a href="02_SPAD_Contextos_temas_y_registro.html" title="Document 02 &#183; Contexts, topics and artefact register">document 02</a> · Contexts, topics and artefact register</strong></td>
+<td><strong><a href="02_SPAD_Contextos_temas_y_registro.html" title="Document 02 &#183; SEVEN-G glossary and conventions">document 02</a> · Contexts, topics and artefact register</strong></td>
 <td>Contexts loaded beforehand; model record.</td>
 </tr>
 <tr>
-<td><strong><a href="03_SPAD_Politica_de_validacion.html" title="Document 03 &#183; Validation policy">document 03</a> · Validation policy</strong></td>
+<td><strong><a href="03_SPAD_Politica_de_validacion.html" title="Document 03 &#183; SEVEN-G tools and initiative register">document 03</a> · Validation policy</strong></td>
 <td>Prohibitions which, if breached, invalidate the response.</td>
 </tr>
 <tr>
-<td><strong><a href="04_SPAD_Ciclos_complementarios.html" title="Document 04 &#183; Complementary cycles: legacy, debugging, urgent fixes and security">document 04</a> · Complementary cycles</strong></td>
+<td><strong><a href="04_SPAD_Ciclos_complementarios.html" title="Document 04 &#183; Where SEVEN-G comes from, how it differs and why it is open">document 04</a> · Complementary cycles</strong></td>
 <td>Phases L1, L2, D1, U2–U7 and S1.</td>
 </tr>
 <tr>
@@ -997,7 +1001,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </table></div>
 <h2 id="external-sources">External sources cited</h2><p class="fuentes-nota">Links to the official or primary source, checked before publication. Always verify the version in force on the date of use.</p><ul class="fuentes-externas"><li><a href="https://genai.owasp.org/resource/owasp-top-10-for-llm-applications-2025/" target="_blank" rel="noopener">OWASP Top 10 for Large Language Model Applications 2025</a><span> · OWASP GenAI Security Project (OWASP Foundation) · 17-11-2024</span></li><li><a href="https://top10.owasp.org/2025/" target="_blank" rel="noopener">OWASP Top 10:2025 (web application security risks)</a><span> · OWASP Foundation · 2025</span></li></ul>
 </main>
-<footer class="pie"><div><span>© 2026 Fernando García Varela · SPAD methodology</span><span>Generated on 28-09-2026</span></div><p class="pie-ia">Content generated and typeset with AI support under the author&#39;s editorial supervision.</p></footer>
+<footer class="pie"><div><span>© 2026 Fernando García Varela · SPAD methodology</span><span>Generated on 13-10-2026</span></div><p class="pie-ia">Content generated and typeset with AI support under the author&#39;s editorial supervision.</p></footer>
 <script src="../../../SEVEN-G/html/en/codigos.js" defer></script>
 
 <script>

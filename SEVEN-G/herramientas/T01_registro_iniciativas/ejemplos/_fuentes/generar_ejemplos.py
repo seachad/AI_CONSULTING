@@ -51,7 +51,8 @@ class Generador:
         self.cat = catalogo
         self.titulos = {}  # plantilla -> título de evidencia (del ejemplo canónico)
         for e in canonico["evidencias"]:
-            self.titulos.setdefault(e["plantilla"], e["titulo"])
+            if e.get("origen") != "referencia":  # una evidencia referenciada lleva el título de su documento de origen (D146)
+                self.titulos.setdefault(e["plantilla"], e["titulo"])
         self.aviso = canonico["aviso_legal"]
         self.config = canonico["meta"]["configuracion"]
         self.hoy = dt.date.fromisoformat(spec["fecha_referencia"])

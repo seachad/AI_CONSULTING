@@ -18,11 +18,11 @@
 
 ---
 
-<!-- esencial: recomendado | Used to choose the order of implementation according to the company's starting point (no AI, third-party AI, automation, ML, many pilots or at scale). Rule that is never skipped: the starting point changes the order, the emphasis and the timetable, never what is required in the end; the seven conditions of the declaration of application (01 §14) are the same for everyone. Tool T23 runs the questionnaire and produces the plan. -->
+<!-- esencial: recomendado | Used to choose the order of implementation according to the company's starting point (no AI, third-party AI, automation, ML, many pilots or at scale). Rule that is never skipped: the starting point changes the order, the emphasis and the timetable, never what is required in the end; the fourteen-rule core (01 §14.1) is the same for everyone. Tool T23 runs the questionnaire and produces the plan. -->
 
 ## 1. Purpose and scope
 
-The implementation guide (document 90) describes **what** must be in place and within what maximum time limit: Lite or Enterprise scope, prerequisites, 90-day plan, regularisation of what already exists and roadmap up to the declaration of application. But companies do not start from the same place. One with no AI in production and another with forty predictive models and two agents that act need **to start with different things**, even though they must reach the same destination.
+The implementation guide (document 90) describes **what** must be in place and within what maximum time limit: Lite or Enterprise scope, prerequisites, 90-day plan, regularisation of what already exists and roadmap up to the declaration of application. But companies do not start from the same place. One with no AI in production and another with forty predictive models and two agents that act need **to start with different things**, even though they must reach the same destination. In archetypes PP-A and PP-B, many of the first initiatives meet the eligibility for Express intensity (01 §9.4), which makes it possible to register and govern them from day one without a disproportionate path.
 
 This document answers three questions:
 

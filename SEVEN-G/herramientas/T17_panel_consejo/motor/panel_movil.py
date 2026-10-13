@@ -336,6 +336,15 @@ function ficha(c){
           + (cu.tramos.filter(x => x.situacion !== "ejecutado").length ? `<table><thead><tr><th>Tramo pendiente</th><th>Importe</th><th>€/€</th></tr></thead><tbody>${cu.tramos.filter(x => x.situacion !== "ejecutado").map(x=>`<tr><td>${esc(x.periodo)}${x.gate?" · "+esc(x.gate):""} · ${esc(SIT_TRAMO[x.situacion]||x.situacion)}<div style="font-size:12px;color:var(--muted)">${x.condicion_paso?"condición: "+esc(x.condicion_paso):"sin condición de paso"}</div></td><td>${fmt(x.importe)}</td><td>${x.rendimiento==null?"—":rend(x.rendimiento)}</td></tr>`).join("")}</tbody></table>` : "");
       const nc = nm.dimensiones.length ? `<h4>Valor no cuantificado</h4><div class="sub">${nm.dimensiones.map(d=>`${esc(dimNM(d.dimension))}: <b>${esc(NIVEL_NM[d.nivel])}</b>${d.indicador?` (${esc(d.indicador)}${d.actual!=null?`: ${esc(d.actual)}`:""})`:" · sin métrica, no cuenta"}`).join("<br>")}${nm.estrategico?`<br><span class="badge ${nm.aviso?"amarillo":"ok"}">sostenido por valor no cuantificado · ${nm.revision?"R6 "+fES(nm.revision):"sin R6 fechada"}</span>`:""}</div>` : "";
       return plan + nc; })()}
+   ${(()=>{ const pp = perspectivasDe(c); if (!pp) return "";
+      // tres perspectivas del caso en paralelo y sin fusionar (40 §11.1, regla 11; D150)
+      const num = v => typeof v==="number" ? esc(v.toLocaleString("es-ES")) : "—";
+      const oper = pp.ro.length ? pp.ro.map(x=>{ const ok = enObjetivo(x); return `${x.indicador?esc(x.indicador)+" · ":""}${esc(x.nombre)}: ${num(x.base)} → <b>${typeof x.actual==="number"?num(x.actual):"sin dato"}</b>${x.unidad?" "+esc(x.unidad):""} (objetivo ${num(x.objetivo)})${ok==null?"":` <span class="badge ${ok?"ok":"amarillo"}">${ok?"en objetivo":"por debajo"}</span>`}`; }).join("<br>") : "Sin indicador operativo registrado en T01: no es cero.";
+      const pe = R(c).valor_por_estado || {};
+      return `<h4 data-ayuda="perspectivas">Tres perspectivas del caso</h4><div class="sub">Se leen juntas y no se fusionan.</div>
+       <div class="sub"><b>Valor económico:</b> neto anual ${fmt(R(c).neto)} · validado ${fmt(pe.validado||0)} · declarado ${fmt(pe.declarado||0)} · estimado ${fmt(pe.estimado_cati||0)}</div>
+       <div class="sub"><b>Resultado operativo:</b><br>${oper}</div>
+       <div class="sub"><b>Exposición al riesgo:</b> ${esc(expoTxt(pp))}</div>`; })()}
    ${(()=>{ const h = historial(c), p = plazoDe(c); if (!h.tramos.length) return `<div class="sub" style="margin-top:10px">Recorrido por estados: sin fechas reportadas.</div>`;
       return `<div class="sub" style="margin-top:10px">Recorrido: ${h.tramos.map(t=>`${esc(t.estado)} ${t.dias==null?"":t.dias+" d"}`).join(" → ")}${p.limite?` · <span class="badge ${p.nivel}">${p.dias} de ${p.limite} d</span>`:""}</div>`; })()}`;
   $("sheet").classList.add("open");

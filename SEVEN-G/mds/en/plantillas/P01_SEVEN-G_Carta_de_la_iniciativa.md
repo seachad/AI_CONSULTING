@@ -5,8 +5,8 @@
 | | |
 |---|---|
 | Document | Template P01 · Initiative charter |
-| Version | 0.1 (working draft) |
-| Date | 16-09-2026 |
+| Version | 0.2 (working draft) |
+| Date | 01-10-2026 |
 | Author | Fernando García Varela |
 | Status | Draft for review. |
 
@@ -137,7 +137,7 @@ Details, incompatibilities and substitutes are recorded in P03.
 |---|---|---|
 | Main constraints | | Summary of P02: regulatory, ethical, data, budgetary, time and technological. |
 | Red lines | | What the initiative will not do under any circumstances. |
-| Determined intensity | | Lite · Enterprise, with the criterion that determines it (P04). |
+| Determined intensity | | Express · Lite · Enterprise, with the criterion or eligibility that determines it (P04). If Express, section 14 is also completed. |
 | Preliminary regulatory classification | | Prohibited · High risk · Transparency obligations · Minimal risk · Out of scope · Pending classification. In phase 0 it is usually "Pending classification"; it is resolved in P11. |
 | Inventory registration | | Reference of the P05 record and registration date. |
 
@@ -203,7 +203,27 @@ Segregation of duties: the verifier has not prepared the charter; the verificati
 
 ---
 
-## 14. Version control
+## 14. Living record (Express intensity only)
+
+In an Express initiative (01 §9.4) this section replaces the templates of phases 0 to 5: it is filled in stages and updated at each gate, and the evidence the company already has is referenced instead of copied (21 §4.3). Each row indicates the criteria of the reduced list (21 §2.5) for which it provides evidence. At Lite and Enterprise this section is not used.
+
+| Block | Minimum content | Criteria | Completed at |
+|---|---|---|---|
+| **Context and opportunity** | Business problem, process affected, non-AI alternative and why AI adds something; screening for prohibited practices. | G0.01, G0.04, G1.01, G1.03, G1.07 | Entry (G0–G2) |
+| **Express eligibility** | The six conditions in P04 §5.1 answered "Yes" and who confirms them. | G0.07 | Entry (G0–G2) |
+| **Owners** | Sponsor, product, technical and risk owners by name; incompatibilities checked. | G0.05, G0.06 | Entry (G0–G2) |
+| **Register and inventory** | Code IA-YYYY-NNN and inventory record; no budget consumed before the decision. | G0.08, G0.09 | Entry (G0–G2) |
+| **Value hypothesis** | What changes, in which metric, by how much and when; measured baseline; value with formula; stop criterion with threshold and date. | G2.01, G2.03, G2.04, G2.06, G2.08 | Entry (G0–G2) |
+| **Risk and compliance** | Regulatory classification, legal basis if there is personal data, risks assessed with the scale in document 33 (in T06) and plan for High risks; [GEN] generative AI risks and autonomy; [TER] minimum clauses with the supplier. | G3.03, G3.06–G3.09, G3.11–G3.13 and the "Yes ◆" criteria of [GEN] and [TER] | G3 |
+| **Minimum design and testing** | Human oversight, transparency, security and traceability; test results and robustness tests; [GEN] evaluation and defences. | The "Yes ◆" criteria of G4 and G5 | Go-live (G4–G5) |
+| **Rollback and operation** | Stop mechanism, rollback plan tested with its actual time, incident plan and literacy of those who use the system. | G4.09, G5.11, G5.17, G5.19 | Go-live (G4–G5) |
+| **Approval** | Date and decision of each gate with risk clearance at G3, G4 and G5 (in T01). | G5.22, G5.23 | Each gate |
+
+> **Why it matters.** A small initiative that had to fill in thirty templates would end up not being registered. The living record keeps in a single document everything the core requires and an audit asks to see, without asking for anything twice.
+
+---
+
+## 15. Version control
 
 **Completed document**
 
@@ -216,3 +236,4 @@ Segregation of duties: the verifier has not prepared the charter; the verificati
 | Version | Date | Changes |
 |---|---|---|
 | 0.1 | 16-09-2026 | First version. Structure aligned with 01 §6.2 and with the controlled taxonomy of 03 §3.3. |
+| 0.2 | 01-10-2026 | New section 14, living record of Express initiatives (01 §9.4), which replaces the templates of phases 0 to 5 with the criteria of the reduced list (21 §2.5). |

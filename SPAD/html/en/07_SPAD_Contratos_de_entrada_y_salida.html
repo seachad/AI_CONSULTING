@@ -392,6 +392,10 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 /* Ilustraciones en imagen (p. ej., SPAD): ocupan el ancho del lienzo y conservan su proporción */
 .g-lienzo img { display: block; width: 100%; height: auto; border: 1px solid var(--regla-2); }
 .ilustracion .g-lienzo img[src*="ilusion_de_velocidad"] { max-width: 560px; margin: 0 auto; }
+/* Nombre primero, código después (D155): el código entre paréntesis tras el nombre, en tablas y títulos */
+.codigo { font-family: var(--mono, 'Courier New', monospace); font-size: .88em; color: var(--tinta-2); white-space: nowrap; font-weight: 400; }
+h2 .codigo, h3 .codigo { font-weight: 400; }
+
 @page { @bottom-left { content: "SPAD · Input and output contracts"; font: 8.5pt "Libre Franklin", "Segoe UI", sans-serif; color: #74675e; } }
 </style>
 </head>
@@ -487,7 +491,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <p><strong>Legal notice and disclaimer.</strong> SPAD is a reference methodology provided &quot;as is&quot; and for information purposes only. It does not constitute legal, regulatory or professional advice, does not guarantee results or compliance with any law or standard and is not a certification. <strong>Each organisation that uses SPAD is solely responsible for validating its results, identifying the regulation that applies to it, verifying that it is current and certifying its own regulatory compliance</strong>, with the appropriate qualified advice. This methodology is a generic, free aid shared with the community so that nobody has to start from scratch; each person or organisation can and should adapt it to its own use. It must not be inferred that its legally sensitive parts have been reviewed by legal counsel: those reviews, for each company or sector, are the ultimate responsibility of the company, consultant or organisation that uses it. Although every effort is made to keep it up to date, some regulation may have changed without being reflected here. To the fullest extent permitted by law, the author accepts no responsibility whatsoever for the effects of its application in any organisation or for its full applicability. The methodology does not grant certification of any kind. The author accepts no liability for any use made of this content or for any decisions taken on the basis of it. The data, figures, companies and cases in the examples are fictitious or illustrative.</p>
 </blockquote>
 <h2 id="purpose"><span class="antetitulo">01</span>Purpose</h2>
-<p>Each SPAD phase produces an artefact with a <strong>contractual structure</strong>: mandatory sections and fields that the instruction requires (<a href="06_SPAD_Instrucciones_por_fase.html" title="Document 06 &#183; Instructions by phase">document 06</a>) and whose absence invalidates the response (<a href="03_SPAD_Politica_de_validacion.html" title="Document 03 &#183; Validation policy">document 03</a>). This document defines that structure in JSON, so that:</p>
+<p>Each SPAD phase produces an artefact with a <strong>contractual structure</strong>: mandatory sections and fields that the instruction requires (<a href="06_SPAD_Instrucciones_por_fase.html" title="Document 06 &#183; Instructions by phase">document 06</a>) and whose absence invalidates the response (<a href="03_SPAD_Politica_de_validacion.html" title="Document 03 &#183; SEVEN-G tools and initiative register">document 03</a>). This document defines that structure in JSON, so that:</p>
 <ul>
 <li>a person can check at a glance that the output is complete;</li>
 <li>an automatic validator can reject an incomplete artefact before anyone sees it;</li>
@@ -554,7 +558,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tbody>
 </table></div>
 <h3 id="2-3-human-validation-record">2.3 Human validation record</h3>
-<p>It is not part of the AI's artefact: the person writes it in the topic's <code>VALIDATION.md</code> (<a href="02_SPAD_Contextos_temas_y_registro.html" title="Document 02 &#183; Contexts, topics and artefact register">document 02</a>, section 4.2). Its canonical form:</p>
+<p>It is not part of the AI's artefact: the person writes it in the topic's <code>VALIDATION.md</code> (<a href="02_SPAD_Contextos_temas_y_registro.html" title="Document 02 &#183; SEVEN-G glossary and conventions">document 02</a>, section 4.2). Its canonical form:</p>
 <pre><code class="language-json">{
   &quot;artefact&quot;: &quot;SPAD_02_AUDIT_PLAN&quot;,
   &quot;person&quot;: &quot;identifier&quot;,
@@ -792,7 +796,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </code></pre>
 <hr />
 <h2 id="format-of-the-contexts"><span class="antetitulo">05</span>Format of the contexts</h2>
-<p>The contexts are not phase artefacts and are written in Markdown with fixed sections (<a href="02_SPAD_Contextos_temas_y_registro.html" title="Document 02 &#183; Contexts, topics and artefact register">document 02</a>):</p>
+<p>The contexts are not phase artefacts and are written in Markdown with fixed sections (<a href="02_SPAD_Contextos_temas_y_registro.html" title="Document 02 &#183; SEVEN-G glossary and conventions">document 02</a>):</p>
 <pre><code># GLOBAL_CONTEXT (version n)
 ## Artefacts
 ## Tests
@@ -865,19 +869,19 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </thead>
 <tbody>
 <tr>
-<td><strong><a href="01_SPAD_Guia_operativa.html" title="Document 01 &#183; Operating guide: phases, roles and verdicts">document 01</a> · Operating guide</strong></td>
+<td><strong><a href="01_SPAD_Guia_operativa.html" title="Document 01 &#183; SEVEN-G foundational methodology">document 01</a> · Operating guide</strong></td>
 <td>Phases that produce each artefact.</td>
 </tr>
 <tr>
-<td><strong><a href="02_SPAD_Contextos_temas_y_registro.html" title="Document 02 &#183; Contexts, topics and artefact register">document 02</a> · Contexts, topics and artefact register</strong></td>
+<td><strong><a href="02_SPAD_Contextos_temas_y_registro.html" title="Document 02 &#183; SEVEN-G glossary and conventions">document 02</a> · Contexts, topics and artefact register</strong></td>
 <td>Model record and validation record.</td>
 </tr>
 <tr>
-<td><strong><a href="03_SPAD_Politica_de_validacion.html" title="Document 03 &#183; Validation policy">document 03</a> · Validation policy</strong></td>
+<td><strong><a href="03_SPAD_Politica_de_validacion.html" title="Document 03 &#183; SEVEN-G tools and initiative register">document 03</a> · Validation policy</strong></td>
 <td>Causes that the automatic validator detects.</td>
 </tr>
 <tr>
-<td><strong><a href="04_SPAD_Ciclos_complementarios.html" title="Document 04 &#183; Complementary cycles: legacy, debugging, urgent fixes and security">document 04</a> · Complementary cycles</strong></td>
+<td><strong><a href="04_SPAD_Ciclos_complementarios.html" title="Document 04 &#183; Where SEVEN-G comes from, how it differs and why it is open">document 04</a> · Complementary cycles</strong></td>
 <td>Contracts L1, L2, D1, U and S1.</td>
 </tr>
 <tr>
@@ -910,7 +914,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </table></div>
 
 </main>
-<footer class="pie"><div><span>© 2026 Fernando García Varela · SPAD methodology</span><span>Generated on 28-09-2026</span></div><p class="pie-ia">Content generated and typeset with AI support under the author&#39;s editorial supervision.</p></footer>
+<footer class="pie"><div><span>© 2026 Fernando García Varela · SPAD methodology</span><span>Generated on 13-10-2026</span></div><p class="pie-ia">Content generated and typeset with AI support under the author&#39;s editorial supervision.</p></footer>
 <script src="../../../SEVEN-G/html/en/codigos.js" defer></script>
 
 <script>

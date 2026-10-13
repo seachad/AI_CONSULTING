@@ -5,8 +5,8 @@
 | | |
 |---|---|
 | Document | Document 01 · Foundational methodology |
-| Version | 0.1 (working draft) |
-| Date | 16-09-2026 |
+| Version | 0.3 (working draft) |
+| Date | 01-10-2026 |
 | Author | Fernando García Varela |
 | Status | Draft for review. The framework's normative reference document. |
 
@@ -101,6 +101,7 @@ The principles guide decisions in situations that the rules do not cover. Each p
 | 8 | **Evidence, not declaration** | What is not documented and verified is not considered done. | Evidence has an author, date, version and verification. |
 | 9 | **A conscious decision on ambition** | Efficiency and transformation are chosen, measured and decided separately. | Every initiative has a classified and confirmed ambition level. |
 | 10 | **People at the centre of change** | AI is also assessed by its effect on work, capabilities and responsibilities. | Augment and Transform initiatives have an adoption and people plan. |
+| 11 | **Proportionality** | Governance effort matches each initiative's risk, materiality and reversibility: no evidence is requested twice, no decision needs more participants than segregation of duties requires and no initiative bears a disproportionate governance cost. What is never reduced is the core (section 14.1). | Each initiative's intensity is determined and justified (section 9); evidence the company already has is referenced instead of copied (document 21, section 4); the cost of governance itself is measured and reviewed in C5 (document 41). |
 
 ---
 
@@ -432,11 +433,11 @@ SEVEN-G does not create a parallel governance structure: the bodies may be exist
 
 ---
 
-## 9. Application intensity: Lite and Enterprise
+## 9. Application intensity: Express, Lite and Enterprise
 
 ### 9.1 How it is determined
 
-Intensity is determined in phase 0 and reviewed at G3 and at every continuity review. Meeting a single Enterprise criterion is enough for that intensity to apply.
+Intensity is determined in phase 0 and reviewed at G3 and at every continuity review. Meeting a single Enterprise criterion is enough for that intensity to apply. With no Enterprise criterion, the initiative is Lite or, if it also meets the conditions in section 9.4 and the risk function confirms it, Express.
 
 <!-- figura: intensidad -->
 
@@ -455,15 +456,30 @@ Intensity is determined in phase 0 and reviewed at G3 and at every continuity re
 
 ### 9.3 What changes between intensities
 
-| Aspect | Lite | Enterprise |
-|---|---|---|
-| **Gates** | G0–G2 and G4–G5 may be grouped | All separately |
-| **Evidence** | Simplified templates | Full templates |
-| **Verification** | AI Office; AI Auditor by sampling | AI Auditor at all *gates* |
-| **Decision** | Sponsor, with risk clearance at G3, G4 and G5 | AI Committee; board for Transform |
-| **Go-live** | Risk clearance | Multi-level sign-off with veto |
-| **Continuity review** | Half-yearly | Quarterly |
-| **Visibility** | Aggregated board dashboard | Board dashboard by initiative |
+| Aspect | Express | Lite | Enterprise |
+|---|---|---|---|
+| **Criteria** | Reduced list (21 §2.5): all applicable "Yes ◆" criteria and those that sustain the core | Lite column of document 21 | All |
+| **Gates** | Same gates as Lite: G0–G2 and G4–G5 in one decision each; G3 separately, may be resolved in writing | G0–G2 and G4–G5 may be grouped | All separately |
+| **Evidence** | Living record (P01, Express section) and referenced company evidence (21 §4.3) | Simplified templates | Full templates |
+| **Verification** | AI Office | AI Office; AI Auditor by sampling | AI Auditor at all *gates* |
+| **Decision** | Sponsor, with risk clearance at G3, G4 and G5 | Sponsor, with risk clearance at G3, G4 and G5 | AI Committee; board for Transform |
+| **Go-live** | Risk clearance | Risk clearance | Multi-level sign-off with veto |
+| **Continuity review** | Annual | Half-yearly | Quarterly |
+| **Visibility** | Aggregated board dashboard | Aggregated board dashboard | Board dashboard by initiative |
+
+### 9.4 Express intensity
+
+Express intensity exists so that a small, internal and reversible initiative does not bear the same administrative path as one of hundreds of hours (principle 11, proportionality). **It changes what is assessed at each gate, not which gates there are**: the initiative goes through all the gates with their record (N-04) and G3 is still decided separately (N-05).
+
+**Eligibility.** No Enterprise criterion in section 9.2 and, in addition, all these conditions: internal use (no direct exposure to customers or external people); reversible within days, with no residual effect; autonomy A0 or A1; no special categories of data or critical confidential information; investment plus annual cost below the **Express threshold** approved in C2; and, if an AI supplier is involved, that it is already approved (current P55). **It is confirmed by the risk function** (in small companies, the AI Office), never by the sponsor alone. It is recorded in P04 and in T04.
+
+**Path.** Three decisions with the same gates: *entry* (G0, G1 and G2 in one decision), **G3 separately**, which at Express may be resolved in writing —the sponsor decides with the risk clearance recorded in T01—, and *go-live* (G4 and G5 in one decision). Each gate is assessed with the **reduced list of Express criteria** in document 21 (section 2.5): all applicable "Yes ◆" criteria and those that sustain the core. The evidence is a **living record** (P01, Express section) plus the company evidence that is referenced (21 §4.3). The continuity review is **annual** and may bring G7 forward.
+
+**Automatic exit.** If any Enterprise criterion appears or an eligibility condition ceases to be met, the initiative moves to Lite or Enterprise from that moment, with a classification change event, and the following gates are assessed with the list of its new intensity. The same applies if the annual review does not demonstrate value.
+
+**What does not change.** The whole core (section 14.1): inventory and register, segregation of duties, dual validation with evidence prior to the decision, "Yes ◆" criteria, value hypothesis with baseline and stop criterion, classification and risks, tested rollback.
+
+> **Why it matters.** With only Lite and Enterprise, a low-cost internal assistant goes through 92% of the criteria of an agent that serves customers. That disproportion pushes people not to register small cases, which is exactly what governance wants to avoid. Express keeps traceability and critical controls and removes the rest, and its automatic exit prevents it from becoming a shortcut.
 
 ---
 
@@ -544,19 +560,34 @@ This document does not constitute legal advice. The regulatory classification of
 
 ## 14. How to declare that SEVEN-G is applied
 
-An organisation may declare that it applies SEVEN-G when it meets, as a minimum, the following conditions:
+### 14.1 The SEVEN-G core
 
-1. It has completed C1 and C2, and the board has approved the AI thesis, the ambition per sphere and the risk appetite.
-2. It maintains an AI system inventory with regulatory classification, intensity and owner, and an initiative register with the traceability described in section 6.11.
-3. It has assigned the roles and bodies in line with the incompatibilities in section 8.2.
-4. All new initiatives go through the lifecycle with their *gates* recorded.
-5. All initiatives in production have a current continuity review.
-6. It applies the value measurement rules and reports to the board with the oversight dashboard.
-7. It manages nonconformities using the process in section 12.
+The **core** is the minimum, stable set of rules that distinguishes applying SEVEN-G from using some of its templates. It is the same for every company, intensity and scope. Everything else in the library is either a **practice** —the recommended way, or the mandatory way when its trigger occurs, of meeting the core (document 94, section 2.3)— or an **instrument** —a template or a tool that makes it easier—. The core has its own version and only changes by express decision of the framework's author, which is recorded; documents, templates and tools may evolve without changing it.
 
-The declaration is drafted with P61 and audited in accordance with 38 §11.
+| Code | Core rule | Where it is developed |
+|---|---|---|
+| **N-01** | **Complete inventory** of AI systems —own, third-party, corporate use and unauthorised— with an owner, regulatory classification and intensity. | document 32; document 90, section 2.4 |
+| **N-02** | **Every initiative is registered** before consuming budget, with its dates per phase, decisions, criteria and closing reason (traceability in section 6.11). | section 6.11; document 03 |
+| **N-03** | **Intensity is determined for each initiative** in phase 0 and reviewed at G3 and at each R6. One Enterprise criterion is enough. | section 9 |
+| **N-04** | **No phase or gate is skipped**: every initiative goes through all the gates of its lifecycle and each one is recorded with its criteria and its outcome. Which criteria are assessed and which sessions may be grouped depends on the intensity. | sections 7 and 9; document 21, section 3.4 |
+| **N-05** | **G3 is always decided separately**: it is the main stop gate. | section 6.1; document 90, section 2.4 |
+| **N-06** | **Segregation of duties**: roles and bodies assigned in line with the incompatibilities in section 8.2; whoever builds neither verifies nor decides their own work, and risk clearance is independent of the team. | section 8; document 30 |
+| **N-07** | **Dual validation and evidence prior to the decision**: without verified evidence there is no decision. | section 7.2; document 21, sections 3 and 4 |
+| **N-08** | **The "Yes ◆" criteria** (security, legal compliance, human oversight) are never accepted as a condition. | document 21, section 2.2 |
+| **N-09** | **Value hypothesis with baseline and stop criteria** before investing in feasibility. | section 6.4; document 40 |
+| **N-10** | **Regulatory classification and risk register** before design; a Critical residual risk without board approval blocks G3 and G5. | document 32; document 33 |
+| **N-11** | **Tested rollback plan and current continuity review** for everything in production; whatever was already in production when the framework was adopted is regularised within the time limit approved in C2, with a review equivalent to G7. | section 6.8; document 52; document 14, section 11 |
+| **N-12** | **The board approves in C2**, after the C1 diagnosis, the AI thesis, the ambition per sphere and the risk appetite; it receives AI information at least quarterly and approves Transform bets. | section 5; document 13 |
+| **N-13** | **Value and cost figures follow the measurement rules** and are reported to the board with the oversight dashboard. | section 11; document 40; document 60 |
+| **N-14** | **Nonconformities are managed** with the process in section 12. | section 12; document 37 |
 
-Initiatives in production that predate the adoption of the framework must be regularised within a time limit approved in C2, by undergoing a continuity review equivalent to G7.
+Core version: **1 (01-10-2026)**. Document 94, section 3, repeats this list for convenience; if they differ, this one prevails.
+
+> **Why it matters.** A framework that grows without a stable core forces people to reread it in full to know what is non-negotiable, and every new document looks like one more obligation. With a small core, a company knows what must never be missing and can apply the rest in proportion to the risk and materiality of each initiative (principle 11), without the library having to stop growing as guidance.
+
+### 14.2 Declaration
+
+An organisation may declare that it applies SEVEN-G when it meets the fourteen core rules (N-01 to N-14). The declaration is drafted with P61, cites the core version it applies and is audited in accordance with 38 §11.
 
 ---
 
@@ -590,3 +621,5 @@ Initiatives in production that predate the adoption of the framework must be reg
 | Version | Date | Changes |
 |---|---|---|
 | 0.1 | 16-09-2026 | First version. Consolidates the previous foundational methodology and the *gate* criteria into a single model; incorporates the corporate cycle, the criteria differentiated by ambition level, intensity determination, multi-level go-live sign-off, the incompatibility table, nonconformity time limits, regulatory fit and lifecycle traceability as a funnel. |
+| 0.2 | 01-10-2026 | Principle 11, proportionality (section 3). Section 14 defines the SEVEN-G core (14.1, rules N-01 to N-14, version 1), which unifies the seven declaration conditions and the twelve rules never omitted in document 94, and the declaration (14.2). |
+| 0.3 | 01-10-2026 | Express intensity (section 9.4, D147): eligibility confirmed by risk, same gates with G3 separately, reduced list of criteria, living record, annual review and automatic exit; Express column in 9.3 and in the intensity figure. |
