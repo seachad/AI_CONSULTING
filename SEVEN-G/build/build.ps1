@@ -539,6 +539,8 @@ $cfg           = $configuracion[$metodologia]
 $root          = Join-Path $repo $metodologia
 $bloquesIndice = $cfg.bloques
 Write-Host "== $metodologia =="
+# crosswalk de cobertura (D149): las tablas del 34 §9.1 se escriben desde crosswalk.json antes de generar
+if ($metodologia -eq 'SEVEN-G') { & (Join-Path $PSScriptRoot 'crosswalk.ps1') }
 # versión editable en Word de las plantillas (D67), antes de los HTML para que la zona de descargas la enlace
 if ($metodologia -eq 'SEVEN-G') { & (Join-Path $PSScriptRoot 'docx.ps1') -Idiomas $Idiomas }
 
@@ -599,7 +601,7 @@ foreach ($lang in $Idiomas) {
 
   $mapaReferencias = ObtenerMapaReferencias $lang
 $titulosReferencias = ObtenerTitulosReferencias $lang
-# ---- Nombre primero, código después (D144, R16) ----
+# ---- Nombre primero, código después (D155, R16) ----
 # La lista única de nombres canónicos (build/nombres.json, generada por nombres.ps1) da (a) el tooltip de los enlaces de código y
 # (b) la forma visible «Nombre (código)» de los títulos «G3 · Viabilidad» y de las tablas cuya primera celda es un código con nombre.
 # El Markdown no cambia (los generadores leen el código en la primera celda) y las anclas se siguen calculando del texto original.
@@ -743,7 +745,7 @@ function NombrePrimero([string]$texto) {
       $usados[$idFila] = 1
       "<tr id=""$idFila"">$($f.Groups[1].Value)$($f.Groups[2].Value)$($f.Groups[3].Value)"
     })
-    # Nombre primero, código después (D144): en cada tabla, (a) una celda «G3 · Viabilidad» pasa a «Viabilidad (G3)»; (b) si la primera
+    # Nombre primero, código después (D155): en cada tabla, (a) una celda «G3 · Viabilidad» pasa a «Viabilidad (G3)»; (b) si la primera
     # celda es un código con nombre canónico, se muestra «**Nombre** (código)» y, cuando todas las filas tienen nombre y la columna
     # que lo repite es la misma en todas, esa columna se suprime (también en la cabecera). Una tabla precedida por
     # <!-- tabla: codigo-primero --> se deja como está (catálogos donde el código es la clave que se lee). Los id="cod-…" no cambian.

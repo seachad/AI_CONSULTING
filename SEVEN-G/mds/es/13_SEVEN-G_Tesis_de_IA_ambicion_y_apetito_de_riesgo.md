@@ -5,8 +5,8 @@
 | | |
 |---|---|
 | Documento | Documento 13 · Tesis de IA, ambición y apetito de riesgo |
-| Versión | 0.1 (borrador de trabajo) |
-| Fecha | 16-09-2026 |
+| Versión | 0.2 (borrador de trabajo) |
+| Fecha | 01-10-2026 |
 | Autor | Fernando García Varela |
 | Estado | Borrador para revisión. Los valores numéricos son ejemplos ilustrativos o puntos de partida que cada compañía debe fijar en C2. |
 
@@ -276,6 +276,8 @@ Los importes se redondean y se revisan anualmente en C5. Los anclajes de los otr
 | Umbral | Definición | Regla ilustrativa | Ejemplo (EBITDA 50 M€) |
 |---|---|---|---|
 | **Umbral de inversión Enterprise** | Coste total a tres años de la iniciativa: construcción + coste recurrente previsto de los tres primeros años. Si lo supera, la iniciativa es Enterprise (documento 01, sección 9.2). | 0,5 % del EBITDA | 250 k€ |
+| **Umbral Express** | Coste total a tres años por debajo del cual una iniciativa que cumple las demás condiciones de 01 §9.4 puede ir con intensidad Express. | 0,05 % del EBITDA | 25 k€ |
+| **Coste por hora de gobierno y objetivos de proporcionalidad** | Coste por hora con el que se valoran las horas de gobierno declaradas y coste máximo del gobierno de una iniciativa sobre su inversión, por intensidad (principio 11; 41 IND-COS-12 a 14). Se revisan en C5 con los datos medidos. | Coste medio por hora de los perfiles que intervienen; Express 5 %, Lite 10 %, Enterprise 15 % (valores de partida) | 70 €/h |
 | **Materialidad para el consejo** | Iniciativas que se informan individualmente en el panel del consejo, además de todas las de Transformar y las que tengan riesgo residual Alto. | 2 % del EBITDA | 1 M€ |
 | **Aprobación del consejo por importe** (opcional) | La compañía **puede** exigir aprobación del consejo por encima de un importe, de acuerdo con sus reglas internas de delegación. | Según reglas internas | — |
 | **Escala mínima en producción (B3)** | Número de iniciativas en producción que el índice de transformación exige para Eficiencia a escala (documento 12). | 5 por defecto; ajustable al tamaño | 5 |
@@ -591,6 +593,8 @@ El anexo se cumplimenta con la plantilla P35.
 | Campo | Contenido | Guía |
 |---|---|---|
 | Umbral de inversión Enterprise | | Coste total a tres años; valor orientativo 0,5 % del EBITDA. |
+| Umbral Express | | Coste total a tres años; valor orientativo 0,05 % del EBITDA (01 §9.4). |
+| Coste por hora de gobierno y objetivos de proporcionalidad | | Coste por hora; objetivos de partida Express 5 %, Lite 10 %, Enterprise 15 % (41 IND-COS-13). |
 | Materialidad para información individual al consejo | | Valor orientativo 2 % del EBITDA. |
 | Umbral de aprobación del consejo por importe (Enterprise) | | Opcional, según reglas de delegación. |
 | Escala mínima en producción (B3) | | Valor orientativo 5. |
@@ -734,3 +738,4 @@ El anexo se cumplimenta con la plantilla P35.
 | Versión | Fecha | Cambios |
 |---|---|---|
 | 0.1 | 16-09-2026 | Primera versión. Define los doce componentes de la decisión de C2: estructura de la tesis de IA, ambición por esfera, grados de apetito y métricas de tolerancia para las diez categorías de riesgo, umbrales de impacto económico proporcionados, umbral de inversión Enterprise y de materialidad, horizonte de retorno por nivel, bandas de equilibrio de cartera, plazos, líneas rojas, presupuesto marco y revisión. Incluye como anexo la plantilla de documento de decisión del consejo (T19). |
+| 0.2 | 01-10-2026 | Sección 6 y bloque H: umbral Express (01 §9.4), coste por hora de gobierno y objetivos de proporcionalidad por intensidad (41 IND-COS-12 a 14). |

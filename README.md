@@ -2,7 +2,7 @@
 
 Metodologías de IA de Fernando García Varela: **SEVEN-G** (marco principal), **SPHERES** y **SPAD** (metodologías de apoyo). Repositorio público; sitio publicado en <https://seachad.github.io/AI_CONSULTING/>.
 
-Licencias: código MIT ([LICENSE](LICENSE)); contenidos CC BY 4.0 ([LICENCIA_CONTENIDOS.md](LICENCIA_CONTENIDOS.md)). SEVEN-G es una marca registrada a nombre de Fernando García Varela; no existe certificación oficial ni programa de socios.
+Licencias: código MIT ([LICENSE](LICENSE)); contenidos CC BY 4.0 ([LICENCIA_CONTENIDOS.md](LICENCIA_CONTENIDOS.md)). SEVEN-G es un nombre y una marca de Fernando García Varela; no existe certificación oficial ni programa de socios.
 
 ## Descargar e instalar en un servidor propio
 
@@ -18,6 +18,8 @@ El procedimiento completo —cómo funciona el sitio, dónde están los datos, q
 ## SEVEN-G
 
 Marco de valor, gobierno y transformación con IA. Proyecto vivo.
+
+**Posicionamiento.** Los estándares (ISO/IEC 42001, 38507, 23894, 42005, NIST AI RMF) y el Reglamento Europeo de IA dicen qué debe existir; SEVEN-G es la capa operativa que lo hace funcionar iniciativa a iniciativa y cartera a cartera, con disciplina de inversión y valor. No es una alternativa a ISO/IEC 42001 ni equivale a una certificación: el crosswalk del documento 34 (sección 9.1, generado desde `SEVEN-G/build/crosswalk/crosswalk.json`) dice qué cubre, qué cubre en parte y qué exige un control externo.
 
 | Carpeta | Contenido |
 |---|---|
@@ -48,4 +50,4 @@ Empieza por la portada del sitio, `index.html` (español) o `en/index.html` (ing
 
 El repositorio contiene material de trabajo (`_trabajo`, `_legacy`, `.claude`, fuentes de trabajo de SPAD) que **no se publica** en el sitio. El flujo `.github/workflows/pages.yml` copia solo lo publicable (portada, licencias, `SEVEN-G/html|pdf|docx|pptx|herramientas`, `SPHERES/html|pdf` y `SPAD/html|pdf`), comprueba que no haya textos internos y lo despliega en GitHub Pages en cada *push* a `main`, con *Settings → Pages → Source: GitHub Actions*. Un *fork* hereda el flujo. Alternativa manual: `pwsh -File SEVEN-G/build/publicar.ps1` prepara la misma copia limpia en otra carpeta.
 
-Antes de publicar, `verificar_coherencia.ps1` pasa también la lista privada de términos prohibidos del autor (`%USERPROFILE%\.seveng\terminos_prohibidos.txt`, fuera de cualquier repositorio), cuando existe.
+Antes de publicar, `verificar_coherencia.ps1` pasa también la lista privada de términos prohibidos del autor (`%USERPROFILE%\.seveng\terminos_prohibidos.txt`, fuera de cualquier repositorio), cuando existe. En una sesión en la nube, la misma lista se da como secreto del entorno en la variable `SEVENG_TERMINOS_PROHIBIDOS` (un término por línea, o separados por `\n`; admite líneas `re:`); nunca se escribe en el repositorio.

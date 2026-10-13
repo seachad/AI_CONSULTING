@@ -392,7 +392,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 /* Ilustraciones en imagen (p. ej., SPAD): ocupan el ancho del lienzo y conservan su proporción */
 .g-lienzo img { display: block; width: 100%; height: auto; border: 1px solid var(--regla-2); }
 .ilustracion .g-lienzo img[src*="ilusion_de_velocidad"] { max-width: 560px; margin: 0 auto; }
-/* Nombre primero, código después (D144): el código entre paréntesis tras el nombre, en tablas y títulos */
+/* Nombre primero, código después (D155): el código entre paréntesis tras el nombre, en tablas y títulos */
 .codigo { font-family: var(--mono, 'Courier New', monospace); font-size: .88em; color: var(--tinta-2); white-space: nowrap; font-weight: 400; }
 h2 .codigo, h3 .codigo { font-weight: 400; }
 
@@ -472,12 +472,12 @@ h2 .codigo, h3 .codigo { font-weight: 400; }
 
 <div id="top"></div>
 <header class="portada">
-  <div class="cabecera"><div class="marca"><i></i>SEVEN-G</div><div class="cabecera-dato">Plantilla P04 · 16-09-2026</div></div>
+  <div class="cabecera"><div class="marca"><i></i>SEVEN-G</div><div class="cabecera-dato">Plantilla P04 · 01-10-2026</div></div>
   <div class="portada-cuerpo">
     <p class="antetitulo">Plantilla P04 &#183; Determinaci&#243;n de intensidad</p>
     <h1>Determinaci&#243;n de intensidad</h1>
     <p class="entradilla">Decide, con ocho preguntas de s&#237; o no, si la iniciativa se gobierna con intensidad Lite o Enterprise y deja registrada la justificaci&#243;n.</p>
-    <div class="firma"><span><b>Fernando Garc&#237;a Varela</b></span><span>Versión 0.1 (borrador de trabajo)</span><span>16-09-2026</span><span>Borrador para revisi&#243;n</span></div>
+    <div class="firma"><span><b>Fernando Garc&#237;a Varela</b></span><span>Versión 0.2 (borrador de trabajo)</span><span>01-10-2026</span><span>Borrador para revisi&#243;n</span></div>
     
   </div>
 </header>
@@ -746,7 +746,7 @@ h2 .codigo, h3 .codigo { font-weight: 400; }
 </table></div>
 <hr />
 <h2 id="resultado"><span class="antetitulo">05</span>Resultado</h2>
-<p><strong>Regla de cálculo:</strong> si al menos una respuesta es &quot;Sí&quot; o &quot;Pendiente&quot;, la intensidad es <strong>Enterprise</strong>. Si todas son &quot;No&quot;, la intensidad es <strong>Lite</strong>.</p>
+<p><strong>Regla de cálculo:</strong> si al menos una respuesta es &quot;Sí&quot; o &quot;Pendiente&quot;, la intensidad es <strong>Enterprise</strong>. Si todas son &quot;No&quot;, la intensidad es <strong>Lite</strong>, o <strong>Express</strong> si además se cumple la elegibilidad de la sección 5.1.</p>
 <p>En una hoja de cálculo: <code>=SI(CONTAR.SI(rango_respuestas;&quot;No&quot;)=8;&quot;Lite&quot;;&quot;Enterprise&quot;)</code>.</p>
 <div class="tabla"><table>
 <thead>
@@ -770,7 +770,7 @@ h2 .codigo, h3 .codigo { font-weight: 400; }
 <tr>
 <td><strong>Intensidad resultante</strong></td>
 <td></td>
-<td>Lite · Enterprise.</td>
+<td>Express · Lite · Enterprise.</td>
 </tr>
 <tr>
 <td>Criterios que la determinan</td>
@@ -790,6 +790,63 @@ h2 .codigo, h3 .codigo { font-weight: 400; }
 </tbody>
 </table></div>
 <p><em>(ejemplo ilustrativo)</em> Asistente de respuesta a consultas de clientes sobre pedidos: criterio 3 &quot;Sí&quot; (los clientes conversan con el asistente); resto &quot;No&quot;. Intensidad resultante: <strong>Enterprise</strong>.</p>
+<h3 id="5-1-elegibilidad-para-express">5.1 Elegibilidad para Express</h3>
+<p>Solo si los ocho criterios Enterprise están en «No». La iniciativa es <strong>Express</strong> cuando las seis condiciones están en «Sí» y la función de riesgos (en compañías pequeñas, la oficina de IA) lo confirma; si no, es <strong>Lite</strong> (01 §9.4).</p>
+<div class="tabla"><table>
+<thead>
+<tr>
+<th>Nº</th>
+<th>Condición</th>
+<th>Respuesta (Sí · No · Pendiente)</th>
+<th>Justificación y fuente</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>E1</td>
+<td>Uso interno: sin exposición directa a clientes ni a personas externas.</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>E2</td>
+<td>Reversible en días, sin efecto residual.</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>E3</td>
+<td>Autonomía A0 o A1.</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>E4</td>
+<td>Sin categorías especiales de datos ni información confidencial crítica.</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>E5</td>
+<td>Inversión más coste anual por debajo del umbral Express aprobado en C2.</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>E6</td>
+<td>Si interviene un proveedor de IA, ya está homologado (<a href="P55_SEVEN-G_Cuestionario_de_diligencia_debida_a_proveedores_de_IA.html" title="Plantilla P55 &#183; Cuestionario de diligencia debida a proveedores de IA">P55</a> vigente).</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td><strong>Confirma la elegibilidad</strong></td>
+<td>Nombre y rol (función de riesgos u oficina de IA)</td>
+<td>Fecha</td>
+</tr>
+</tbody>
+</table></div>
+<p>Si más adelante deja de cumplirse cualquier condición o aparece un criterio Enterprise, se rellena la sección 7 y la iniciativa pasa a Lite o a Enterprise.</p>
 <hr />
 <h2 id="consecuencias-de-la-intensidad"><span class="antetitulo">06</span>Consecuencias de la intensidad</h2>
 <p>Referencia: 01 §9.3 y, para verificación y decisión, 01 §7.5.</p>
@@ -797,6 +854,7 @@ h2 .codigo, h3 .codigo { font-weight: 400; }
 <thead>
 <tr>
 <th>Aspecto</th>
+<th>Express</th>
 <th>Lite</th>
 <th>Enterprise</th>
 </tr>
@@ -804,36 +862,43 @@ h2 .codigo, h3 .codigo { font-weight: 400; }
 <tbody>
 <tr>
 <td>Puertas</td>
+<td>Como Lite; G3 por separado, puede resolverse por escrito</td>
 <td>G0–G2 y G4–G5 pueden agruparse</td>
 <td>Todas por separado</td>
 </tr>
 <tr>
 <td>Evidencias</td>
+<td>Ficha viva (<a href="P01_SEVEN-G_Carta_de_la_iniciativa.html" title="Plantilla P01 &#183; Carta de la iniciativa">P01</a> §14) y evidencias referenciadas (21 §4.3)</td>
 <td>Plantillas simplificadas</td>
 <td>Plantillas completas</td>
 </tr>
 <tr>
 <td>Verificación</td>
+<td>Oficina de IA</td>
 <td>Oficina de IA; auditor de IA por muestreo</td>
 <td>Auditor de IA en todos los <em>gates</em></td>
 </tr>
 <tr>
 <td>Decisión</td>
 <td>Patrocinador, con conformidad de riesgos en G3, G4 y G5</td>
+<td>Patrocinador, con conformidad de riesgos en G3, G4 y G5</td>
 <td>Comité de IA; consejo en Transformar</td>
 </tr>
 <tr>
 <td>Puesta en producción</td>
 <td>Conformidad de riesgos</td>
+<td>Conformidad de riesgos</td>
 <td>Firma multinivel con veto</td>
 </tr>
 <tr>
 <td>Revisión de continuidad</td>
+<td>Anual</td>
 <td>Semestral</td>
 <td>Trimestral</td>
 </tr>
 <tr>
 <td>Visibilidad</td>
+<td>Panel del consejo agregado</td>
 <td>Panel del consejo agregado</td>
 <td>Panel del consejo por iniciativa</td>
 </tr>
@@ -1005,11 +1070,16 @@ h2 .codigo, h3 .codigo { font-weight: 400; }
 <td>19-09-2026</td>
 <td>El bloque 7 (cambio de intensidad) deja de ser <em>(Enterprise)</em>: se rellena también en Lite, que es cuando se registra el paso a Enterprise.</td>
 </tr>
+<tr>
+<td>0.2</td>
+<td>01-10-2026</td>
+<td>Intensidad Express: sección 5.1 de elegibilidad (seis condiciones y confirmación) y columna Express en las consecuencias.</td>
+</tr>
 </tbody>
 </table></div>
 <h2 id="fuentes-externas">Fuentes externas citadas</h2><p class="fuentes-nota">Enlaces a la fuente oficial o primaria, comprobados antes de publicar. Verifique siempre la versión vigente en la fecha de uso.</p><ul class="fuentes-externas"><li><a href="https://eur-lex.europa.eu/eli/reg/2022/2554/oj/spa" target="_blank" rel="noopener">Reglamento (UE) 2022/2554 del Parlamento Europeo y del Consejo, de 14 de diciembre de 2022, sobre la resiliencia operativa digital del sector financiero (DORA)</a><span> · Parlamento Europeo y Consejo de la UE · 14-12-2022</span></li></ul>
 </main>
-<footer class="pie"><div><span>© 2026 Fernando García Varela · Metodolog&#237;a SEVEN-G</span><span>Generado el 12-10-2026</span></div><p class="pie-ia">Contenido generado y maquetado con apoyo de IA bajo supervisi&#243;n editorial del autor.</p></footer>
+<footer class="pie"><div><span>© 2026 Fernando García Varela · Metodolog&#237;a SEVEN-G</span><span>Generado el 13-10-2026</span></div><p class="pie-ia">Contenido generado y maquetado con apoyo de IA bajo supervisi&#243;n editorial del autor.</p></footer>
 <script src="../codigos.js" defer></script>
 
 <script>

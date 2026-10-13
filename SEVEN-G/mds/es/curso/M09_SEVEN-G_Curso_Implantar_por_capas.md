@@ -24,10 +24,10 @@ Al terminar sabrá elegir el alcance de implantación de su compañía, distingu
 
 ## 2. Ideas clave
 
-1. **Dos decisiones de proporcionalidad distintas.** La *intensidad* (Lite o Enterprise) es de cada iniciativa; el *alcance de implantación* (Lite o Enterprise) es de la compañía. El tamaño no decide ninguna de las dos.
+1. **Dos decisiones de proporcionalidad distintas.** La *intensidad* (Express, Lite o Enterprise) es de cada iniciativa; el *alcance de implantación* (Lite o Enterprise) es de la compañía. El tamaño no decide ninguna de las dos.
 2. **Una sola biblioteca, tres capas.** Esencial (lo que aplica toda compañía), condicional (lo que activa un disparador) y completa (guías y consulta). No hay versiones reducidas de los documentos.
 3. **Ninguna fase ni puerta se salta.** En Lite se agrupan —G0 a G2 en una sesión, G4 y G5 en otra— y las evidencias se simplifican. G3 va siempre por separado.
-4. **El punto de partida cambia el orden, no el destino.** Una compañía sin IA, otra con modelos predictivos en producción y otra con muchos pilotos empiezan por hitos distintos (documento 96), pero llegan a las mismas condiciones de 01 §14.
+4. **El punto de partida cambia el orden, no el destino.** Una compañía sin IA, otra con modelos predictivos en producción y otra con muchos pilotos empiezan por hitos distintos (documento 96), pero llegan al mismo núcleo de catorce reglas (01 §14.1).
 5. **La tecnología no suma madurez.** La madurez se lee con tres lentes: capacidad de gobierno, huella tecnológica y alcance del impacto (11 §7.6). Tener agentes con un control de riesgos débil es una alerta, no más madurez.
 6. **Noventa días para tener diagnóstico, dirección y primera cartera**, sin moratoria: la actividad de IA continúa mientras se implanta el marco.
 
@@ -37,7 +37,7 @@ Al terminar sabrá elegir el alcance de implantación de su compañía, distingu
 
 | Paso | Qué abrir | Qué mirar |
 |---|---|---|
-| 1 | documento 94, secciones 2 y 3 | Las tres capas, los cinco niveles y las doce reglas que nunca se omiten. |
+| 1 | documento 94, secciones 2 y 3 | Las tres capas, los cinco niveles, el núcleo de catorce reglas que nunca se omiten (N-01 a N-14) y la diferencia entre principio, práctica e instrumento. |
 | 2 | documento 94, sección 4 | Los disparadores: ¿cuáles se dan en su compañía? |
 | 3 | documento 01, sección 9 | Los criterios Enterprise de una iniciativa. |
 | 4 | documento 90, sección 2 | Alcance Lite o Enterprise de compañía y ruta mínima en Lite. |

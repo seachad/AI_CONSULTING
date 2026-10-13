@@ -70,7 +70,7 @@ Máximo una página. Se redacta al final.
 | Perfil del índice de transformación | | Perfil asignado y, si aplica, subyacente; provisional si la cobertura es inferior a 6 de 8. |
 | Valor neto anual y proporción de valor validado | | Con estado de los importes. |
 | Riesgos que requieren acción inmediata | | Y no conformidades abiertas por ellos. |
-| Condiciones de 01 §14 ya acreditadas | | De 7. |
+| Reglas del núcleo (01 §14.1) ya acreditadas | | De 14. |
 | Qué se pide al comité y al consejo | | Aceptar el informe y usarlo como base de C2. |
 
 ---

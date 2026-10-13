@@ -392,6 +392,10 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 /* Ilustraciones en imagen (p. ej., SPAD): ocupan el ancho del lienzo y conservan su proporción */
 .g-lienzo img { display: block; width: 100%; height: auto; border: 1px solid var(--regla-2); }
 .ilustracion .g-lienzo img[src*="ilusion_de_velocidad"] { max-width: 560px; margin: 0 auto; }
+/* Nombre primero, código después (D155): el código entre paréntesis tras el nombre, en tablas y títulos */
+.codigo { font-family: var(--mono, 'Courier New', monospace); font-size: .88em; color: var(--tinta-2); white-space: nowrap; font-weight: 400; }
+h2 .codigo, h3 .codigo { font-weight: 400; }
+
 @page { @bottom-left { content: "SPAD · Operating guide: phases, roles and verdicts"; font: 8.5pt "Libre Franklin", "Segoe UI", sans-serif; color: #74675e; } }
 </style>
 </head>
@@ -488,13 +492,13 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </blockquote>
 <h2 id="purpose"><span class="antetitulo">01</span>Purpose</h2>
 <p>This document describes <strong>how SPAD is used in practice</strong>: the order in which the phases are applied, what goes into and comes out of each one, the roles involved, the rules of interaction between artificial intelligences and the verdicts that allow work to advance or send it back. It is the canonical reference for numbering and vocabulary for the rest of the library.</p>
-<p>SPAD is not a collection of instructions: it is a <strong>sequential, blocking and auditable methodology</strong> (<a href="00_SPAD_Que_es_y_para_que_sirve.html" title="Document 00 &#183; What SPAD is and how it helps">document 00</a>). This guide makes it operational.</p>
+<p>SPAD is not a collection of instructions: it is a <strong>sequential, blocking and auditable methodology</strong> (<a href="00_SPAD_Que_es_y_para_que_sirve.html" title="Document 00 &#183; What SEVEN-G is and what it is for">document 00</a>). This guide makes it operational.</p>
 <hr />
 <h2 id="the-blocking-execution-principle"><span class="antetitulo">02</span>The blocking execution principle</h2>
 <blockquote>
 <p>No phase can begin until the previous phase has produced its artefact and a person has validated it.</p>
 </blockquote>
-<p>Each phase produces an <strong>explicit artefact</strong> that is the mandatory input to the next one. If validation fails, work goes back to the corresponding phase and the rejected artefact is kept in the topic register (<a href="02_SPAD_Contextos_temas_y_registro.html" title="Document 02 &#183; Contexts, topics and artefact register">document 02</a>), numbered as an iteration.</p>
+<p>Each phase produces an <strong>explicit artefact</strong> that is the mandatory input to the next one. If validation fails, work goes back to the corresponding phase and the rejected artefact is kept in the topic register (<a href="02_SPAD_Contextos_temas_y_registro.html" title="Document 02 &#183; SEVEN-G glossary and conventions">document 02</a>), numbered as an iteration.</p>
 <blockquote>
 <p><strong>Why it matters.</strong> Blocking is what makes SPAD a method rather than a recommendation. Without it, deadline pressure leads to &quot;starting the code while the plan is being finished&quot;, and at that moment the plan ceases to govern anything.</p>
 </blockquote>
@@ -544,19 +548,19 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tr>
 <td><strong>AI Analyst</strong></td>
 <td>AI</td>
-<td>Documents existing code and analyses the impact of a change (legacy cycle, <a href="04_SPAD_Ciclos_complementarios.html" title="Document 04 &#183; Complementary cycles: legacy, debugging, urgent fixes and security">document 04</a>).</td>
+<td>Documents existing code and analyses the impact of a change (legacy cycle, <a href="04_SPAD_Ciclos_complementarios.html" title="Document 04 &#183; Where SEVEN-G comes from, how it differs and why it is open">document 04</a>).</td>
 <td>Proposing the solution.</td>
 </tr>
 <tr>
 <td><strong>Diagnostic AI</strong></td>
 <td>AI</td>
-<td>Analyses incidents and produces the root cause report (debugging cycle, <a href="04_SPAD_Ciclos_complementarios.html" title="Document 04 &#183; Complementary cycles: legacy, debugging, urgent fixes and security">document 04</a>).</td>
+<td>Analyses incidents and produces the root cause report (debugging cycle, <a href="04_SPAD_Ciclos_complementarios.html" title="Document 04 &#183; Where SEVEN-G comes from, how it differs and why it is open">document 04</a>).</td>
 <td>Generating solution code; modifying production code.</td>
 </tr>
 <tr>
 <td><strong>AI Security Reviewer</strong></td>
 <td>AI other than the builder</td>
-<td>Security review of sensitive code (<a href="04_SPAD_Ciclos_complementarios.html" title="Document 04 &#183; Complementary cycles: legacy, debugging, urgent fixes and security">document 04</a>).</td>
+<td>Security review of sensitive code (<a href="04_SPAD_Ciclos_complementarios.html" title="Document 04 &#183; Where SEVEN-G comes from, how it differs and why it is open">document 04</a>).</td>
 <td>Fixing what it reviews.</td>
 </tr>
 </tbody>
@@ -755,10 +759,10 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </table></div>
 <p>Rules:</p>
 <ol>
-<li>A verdict without a written justification is an <strong>incomplete artefact</strong> and is discarded (<a href="03_SPAD_Politica_de_validacion.html" title="Document 03 &#183; Validation policy">document 03</a>).</li>
+<li>A verdict without a written justification is an <strong>incomplete artefact</strong> and is discarded (<a href="03_SPAD_Politica_de_validacion.html" title="Document 03 &#183; SEVEN-G tools and initiative register">document 03</a>).</li>
 <li>A GO with open critical or high findings is a <strong>self-approval</strong> and is discarded.</li>
 <li>A well-founded NO-GO <strong>is not a failure of the process</strong>: it is the process working.</li>
-<li>The verdict is issued by the AI Reviewer; <strong>it is accepted or rejected by the person orchestrating</strong>, who records it (<a href="02_SPAD_Contextos_temas_y_registro.html" title="Document 02 &#183; Contexts, topics and artefact register">document 02</a>).</li>
+<li>The verdict is issued by the AI Reviewer; <strong>it is accepted or rejected by the person orchestrating</strong>, who records it (<a href="02_SPAD_Contextos_temas_y_registro.html" title="Document 02 &#183; SEVEN-G glossary and conventions">document 02</a>).</li>
 </ol>
 <blockquote>
 <p><strong>Why it matters.</strong> Three different vocabularies for saying the same thing (GO/NO-GO, OK/ISSUES, approved/rejected) make it impossible to compare phases, measure the process (<a href="08_SPAD_Autoevaluacion_y_metricas.html" title="Document 08 &#183; Self-assessment of conformity and process metrics">document 08</a>) and automate the validation of the contracts (<a href="07_SPAD_Contratos_de_entrada_y_salida.html" title="Document 07 &#183; Input and output contracts">document 07</a>). A single vocabulary is a condition of auditability.</p>
@@ -875,17 +879,17 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>Consistency between pieces of work.</td>
 </tr>
 <tr>
-<td>10</td>
+<td><strong>Sphere map and ambition levels</strong> <span class="codigo">(10)</span></td>
 <td><strong>One topic per piece of work.</strong> Each feature, fix or incident has its own topic and folder.</td>
 <td>The organisation's memory.</td>
 </tr>
 <tr>
-<td>11</td>
+<td><strong>Maturity model</strong> <span class="codigo">(11)</span></td>
 <td><strong>Model recorded.</strong> Each artefact states which model, version and instructions produced it.</td>
 <td>Reproducibility.</td>
 </tr>
 <tr>
-<td>12</td>
+<td><strong>Transformation index</strong> <span class="codigo">(12)</span></td>
 <td><strong>No AI approves.</strong> Every acceptance is signed by an identified person.</td>
 <td>Accountability.</td>
 </tr>
@@ -902,19 +906,19 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </thead>
 <tbody>
 <tr>
-<td><strong><a href="00_SPAD_Que_es_y_para_que_sirve.html" title="Document 00 &#183; What SPAD is and how it helps">document 00</a> · What SPAD is and how it helps</strong></td>
+<td><strong><a href="00_SPAD_Que_es_y_para_que_sirve.html" title="Document 00 &#183; What SEVEN-G is and what it is for">document 00</a> · What SPAD is and how it helps</strong></td>
 <td>Overview of the method.</td>
 </tr>
 <tr>
-<td><strong><a href="02_SPAD_Contextos_temas_y_registro.html" title="Document 02 &#183; Contexts, topics and artefact register">document 02</a> · Contexts, topics and artefact register</strong></td>
+<td><strong><a href="02_SPAD_Contextos_temas_y_registro.html" title="Document 02 &#183; SEVEN-G glossary and conventions">document 02</a> · Contexts, topics and artefact register</strong></td>
 <td>What is loaded before phase 0 and how each output is stored.</td>
 </tr>
 <tr>
-<td><strong><a href="03_SPAD_Politica_de_validacion.html" title="Document 03 &#183; Validation policy">document 03</a> · Validation policy</strong></td>
+<td><strong><a href="03_SPAD_Politica_de_validacion.html" title="Document 03 &#183; SEVEN-G tools and initiative register">document 03</a> · Validation policy</strong></td>
 <td>When a response is discarded.</td>
 </tr>
 <tr>
-<td><strong><a href="04_SPAD_Ciclos_complementarios.html" title="Document 04 &#183; Complementary cycles: legacy, debugging, urgent fixes and security">document 04</a> · Complementary cycles</strong></td>
+<td><strong><a href="04_SPAD_Ciclos_complementarios.html" title="Document 04 &#183; Where SEVEN-G comes from, how it differs and why it is open">document 04</a> · Complementary cycles</strong></td>
 <td>Legacy, debugging, urgent fix and security.</td>
 </tr>
 <tr>
@@ -955,7 +959,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </table></div>
 
 </main>
-<footer class="pie"><div><span>© 2026 Fernando García Varela · SPAD methodology</span><span>Generated on 28-09-2026</span></div><p class="pie-ia">Content generated and typeset with AI support under the author&#39;s editorial supervision.</p></footer>
+<footer class="pie"><div><span>© 2026 Fernando García Varela · SPAD methodology</span><span>Generated on 13-10-2026</span></div><p class="pie-ia">Content generated and typeset with AI support under the author&#39;s editorial supervision.</p></footer>
 <script src="../../../SEVEN-G/html/en/codigos.js" defer></script>
 
 <script>

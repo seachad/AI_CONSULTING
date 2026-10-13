@@ -5,12 +5,12 @@
 | | |
 |---|---|
 | Document | Document 41 · Indicator catalogue |
-| Version | 0.1 (working draft) |
-| Date | 16-09-2026 |
+| Version | 0.2 (working draft) |
+| Date | 01-10-2026 |
 | Author | Fernando García Varela |
 | Status | Draft for review. Living catalogue: thresholds are set by each company and recalibrated in C5. |
 
-<!-- cifras: 159 | coded indicators ; 13 | families ; 4 | levels of use ; 26 | indicators in the Lite minimum set -->
+<!-- cifras: 162 | coded indicators ; 13 | families ; 4 | levels of use ; 26 | indicators in the Lite minimum set -->
 
 ---
 
@@ -65,7 +65,7 @@ No company needs all the indicators. They are selected in C2 according to the AI
 | Code | Family | Indicators |
 |---|---|---|
 | **VAL** | Value | 18 |
-| **COS** | Cost | 11 |
+| **COS** | Cost | 14 |
 | **EMB** | Funnel | 13 |
 | **AGI** | Agility | 6 |
 | **RIE** | Risk and compliance | 17 |
@@ -77,7 +77,7 @@ No company needs all the indicators. They are selected in C2 according to the AI
 | **MAD** | Maturity | 4 |
 | **CON** | Board | 5 |
 | **PRO** | Processes and decision-making | 6 |
-| | **Total** | **159** |
+| | **Total** | **162** |
 
 ---
 
@@ -142,6 +142,9 @@ Each indicator in the catalogue, and any in-house indicator added by the company
 | IND-COS-09 | **Idle licence cost.** Licences paid for but unused in the period. | Assigned unused licences × unit cost | € | T21 · `adopcion` (licences) | M | AIO | Co | C4 | To be set | |
 | IND-COS-10 | **Investment avoided through stops.** Approved but uncommitted budget of stopped or retired initiatives. | Σ approved budget − Σ committed, in stopped initiatives (42 §10) | € | T01 · T13 | Q | AIO | P · B | C4, C5 | For information; does not add to value | |
 | IND-COS-11 | **Company AI cost.** Total AI cost, including corporate use. | Σ recurring cost + Σ investment for the year across all systems | €/year | T13 | Q | MC | Co · B | C1, C4 | C2 framework budget | ● |
+| IND-COS-12 | **Governance hours per initiative.** Hours declared to prepare and verify the evidence, meet and record an initiative's *gate* decisions. It measures the cost of the method itself; it is not allocated to the cost of the case (42 §4). | Σ hours declared in the *gate* decisions (`decisiones_gate[].horas_gobierno`) | hours | T01 · T17 `seveng.gobierno` | G · A | OIA | I · Ca | All · by intensity | Median by intensity, to be calibrated | |
+| IND-COS-13 | **Cost of governance over investment.** Proportionality of governance (principle 11). | Declared hours × C2 cost per hour ÷ the initiative's investment | % | T01 · T17 | A | OIA | I · Ca · Cj | All · by intensity | Express 5% · Lite 10% · Enterprise 15% (13 §6; starting values, to be calibrated in C5) | |
+| IND-COS-14 | **Referenced evidence.** Share of the evidence taken from what the company already has instead of being copied into a template (21 §4.3). | Evidence with origin "reference" ÷ evidence | % | T01 | Q | OIA | Ca · Co | G0–G7 | To be set; increasing in large companies | |
 
 ---
 
@@ -581,3 +584,4 @@ Documents 10, 50, 51 and 52 use provisional indicator codes. This table maps the
 |---|---|---|
 | 0.1 | 16-09-2026 | First version. Catalogue of 156 indicators in 13 families with code, formula, unit, source, frequency, owner, level, application and indicative threshold; Lite minimum set of 26 indicators; indicative selection for the board dashboard. Consistency adjustments with 01 (segregation of duties in Lite, R6 outcomes, agent criterion) and with 34 and 37; mapping of provisional codes from documents 10, 50, 51 and 52 (section 21). The 47 provisional indicators that had no equivalent added to the catalogue (families EMB, RIE, OPE, ADO, DAT and CLI, and new family PRO · Processes and decision-making, section 18); provisional knowledge prefix in document 51 renamed from CON- to CNC-. |
 | 0.1 | 18-09-2026 | Three new operations indicators (159 in total): IND-OPE-24 queries outside the validated scope (usage drift), IND-OPE-25 unequal responses in counterfactual pairs (bias in generative AI) and IND-OPE-26 cost-driven degraded mode; correspondence with OPE-18 to OPE-20 in document 52. |
+| 0.2 | 01-10-2026 | Three indicators of the cost of governance itself (162 in total): IND-COS-12 governance hours per initiative, IND-COS-13 cost of governance over investment with targets by intensity and IND-COS-14 referenced evidence. The time of each gate is already measured by IND-AGI-04. |

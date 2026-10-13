@@ -31,6 +31,8 @@
 3. **It separates who decides, who builds and who controls**, and translates regulation (EU AI Act, GDPR, DORA, NIS2, ISO/IEC 42001) into specific phases, roles and evidence.
 4. **It measures value in money and with a status** —validated, declared or estimated— and tells the board, with eight observable signals, whether the company is transforming itself or just becoming more efficient.
 
+**What it is compared with the standards.** Standards and regulation —ISO/IEC 42001, ISO/IEC 38507, ISO/IEC 23894, ISO/IEC 42005, the NIST AI RMF or the EU AI Act— say **what must exist**: a management system, responsibilities of the governing body, a risk process, impact assessments, legal obligations. SEVEN-G is the **operating layer that makes it work**, initiative by initiative and portfolio by portfolio, with investment and value discipline: who decides at each gate, with what evidence, what it costs and what it yields. It is not an alternative to ISO/IEC 42001 nor equivalent to a certification: its crosswalk (document 34, section 9.1) says which requirement it covers, which it covers in part and which needs an external control.
+
 **What you get, at no cost**
 
 SEVEN-G is not a brochure that ends in a sales proposal: **the working material is here, in full**. The documents explain the method; the templates are the deliverables, ready to be filled in; the tools are applications that work with each company's data. Everything can be used as it is, trimmed, extended, renamed or built into the methodology that the company or its consultancy already uses, with a single condition: credit the author and indicate the changes.
@@ -63,7 +65,7 @@ Two quick views, with the fictitious sample data: the AI initiative portfolio re
 | You are a **medium-sized company** with no AI team: the Lite scope works with the executive committee, one part-time person and an external auditor. | **Nobody in management is going to own the decisions.** The framework requires a sponsor for each initiative and a real ability to stop; without that, it only produces documents. |
 | You are a **consultant or an in-house lead** and need a complete method that you can adapt and apply with your own way of working, citing the source ([document 91](91_SEVEN-G_Guia_para_consultores.html)). | |
 
-**What it asks in return.** It costs no money, but it does take discipline: someone to drive it, an initiative register kept up to date and decisions taken with the evidence on the table. Adoption can be **modular** —starting only with the register, with the decision gates, with value measurement or with the board dashboard— and be extended later. The implementation guide ([document 90](90_SEVEN-G_Guia_de_implantacion.html)) proposes a 90-day plan and a minimum path for medium-sized companies; document 96 and its tool, the implementation journey (T23), say where to start according to the AI and the governance the company already has.
+**What it asks in return.** It costs no money, but it does take discipline: someone to drive it, an initiative register kept up to date and decisions taken with the evidence on the table. What is non-negotiable fits in fourteen rules, the **core** (document 01, section 14.1); everything else is applied in proportion to the risk and materiality of each initiative (principle 11, document 94). Adoption can be **modular** —starting only with the register, with the decision gates, with value measurement or with the board dashboard— and be extended later. The implementation guide ([document 90](90_SEVEN-G_Guia_de_implantacion.html)) proposes a 90-day plan and a minimum path for medium-sized companies; document 96 and its tool, the implementation journey (T23), say where to start according to the AI and the governance the company already has.
 
 **Where to go next, depending on who you are**
 
@@ -272,6 +274,7 @@ The funnel stages group the lifecycle phases: **Proposed** (phases 0 and 1), **V
 
 | Intensity | When it applies | What changes |
 |---|---|---|
+| **Express** | Small initiatives for internal use, reversible, with autonomy A0 or A1, without sensitive data and below the C2 Express threshold, with eligibility confirmed by the risk function. | The same gates with a reduced list of criteria —all security, compliance and human oversight criteria remain—, a living record instead of templates and an annual review; G3 is still separate. |
 | **Lite** | Low-risk initiatives, internal use, no decisions about people and no customer exposure, limited investment. | Grouped *gates*, simplified templates, decision by the sponsor with a record and verification by the AI Office. |
 | **Enterprise** | Systems that are high-risk under regulation, direct exposure to customers or people, automated decisions, agents with the ability to act, regulated environments or significant investment. | All *gates* and evidence, independent audit, visibility for the AI Committee and, where appropriate, for the board. |
 

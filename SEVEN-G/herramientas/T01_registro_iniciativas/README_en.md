@@ -84,7 +84,7 @@ The application does not send data to third parties or load external resources (
 - Outcomes by gate (21 §5.3): G0 and G4–G5 without Pivot; G1–G3 with Pivot (return to phase 2); **R6**: Continue operation · Proceed with conditions · Bring G7 forward (deviation checkbox that forces bringing it forward); **G7**: Scale (returns to phase 6 and opens registration of the new extended-scope initiative) · Iterate (return phase, 6 by default) · Retire (coded reason, plan executed or pending recording).
 - Who verifies and who decides according to 01 §7.5 (at Lite, G3–G5: sponsor with risk clearance).
 
-**T04 · Intensity.** Eight criteria from 01 §9.2 with Yes/No/No data; one is enough for Enterprise. If there is no yes but some criteria have no data, the outcome is flagged as provisional Lite.
+**T04 · Intensity.** Eight criteria from 01 §9.2 with Yes/No/No data; one is enough for Enterprise. If there is no yes but some criteria have no data, the outcome is flagged as provisional Lite. With all eight answered "No", the **Eligibility for Express** block (01 §9.4, P04 §5.1; D147) records six conditions and who confirms them: if all are "Yes" and there is a confirmation, the intensity is **Express**. An Express initiative is assessed with the Express column of the catalogue (21 §2.5): criteria outside the reduced list come out as justified *Not applicable*; it follows the Lite circuit (AI Office, sponsor with risk clearance at G3–G5), its continuity review is annual (`revision_continuidad_dias.express`, 365 by default) and the **Out of Express** alert warns if it no longer meets its eligibility (autonomy A2/A3, exposure to customers, high risk, Transform or unconfirmed eligibility).
 
 **T05 · Ambition.** Five questions from 00 §5.2: 1 or 4 → Transform; 2 or 3 → Augment; 1–4 negative → Optimise. Depending on the moment it updates proposed (phase 1), confirmed (phase 2) or actual (phase 7) ambition. Transform forces Enterprise intensity.
 
@@ -143,7 +143,7 @@ A single JSON object with `version_esquema` (`0.8`; `0.1` to `0.7` files are acc
 | `eventos` | Event with date, author, reason and change. Events that change the status of the initiative (registration, phase entry, stop and retirement) also store the `cifras` (figures) at that time: investment, recurring cost, efficiencies and return, expected and realised | `EVT-NNNNNN` |
 | `decisiones_gate` | Request, verification, decision, body, escalation, proposed outcome and outcome, G5 sign-offs, evaluated criteria (`codigo`, `estado`, `justificacion`, `evidencias`) | `DG-AAAA-NNN` |
 | `condiciones` | Condition with decision, criterion, owner, deadline, verification and status | `CND-AAAA-NNN` |
-| `evidencias` | Link, template, version, author, date and verification (linked, not copied) | `EVI-AAAA-NNNN` |
+| `evidencias` | Link, template, version, author, date and verification (linked, not copied); `origen` ("plantilla" or "referencia", when it is evidence the company already had and is referenced, 21 §4.3) and `sistema_origen` | `EVI-AAAA-NNNN` |
 | `valores` | Expected or realised amount by type, formula, status (validated, declared, estimated), period, source, dashboard line (`concepto`, optional) and business unit (`area`, optional, cross-unit initiatives) | `VAL-NNNN` |
 | `riesgos` | Risk (T06): description, category, typical risk, system, owner, inherent and residual assessment, controls and their effectiveness, response, contingency, status, trend, review and acceptance | `IA-AAAA-NNN · Rnn` |
 | `no_conformidades` · `incidentes` · `proveedores` · `recomendaciones` | Related entities (in this version they are displayed and exported; full management belongs to T08 and T09; recommendations are managed in the Board view, T18) | `NC-AAAA-NNN` · `INC-AAAA-NNN` · `PRV-NNN` · `REC-AAAA-NNN` |
@@ -186,6 +186,7 @@ The connector `../T17_panel_consejo/t01_a_panel.py` converts the full JSON of th
 | `iniciativas[].alcance.umbral_adopcion_pct` | 0–100 | “Low adoption” alert when a unit in use has fewer active over assigned licences. |
 | `iniciativas[].alcance.habilita[]` | `IA-YYYY-NNN` codes | Platform: cases to which its value is allocated. |
 | `valores[].area` | a business unit | Cost and value of each unit; without `area`, what is shared across the initiative (governance, training). The Value tab shows the ladder by unit: cost, adoption, declared hours, released capacity and realised value. |
+| `iniciativas[].resultado_operativo[]` | `indicador` (IND- from document 41), `nombre`, `unidad`, `sentido` (`subir` · `bajar`), `base`, `fecha_base`, `objetivo`, `actual`, `fecha_actual`, `fuente` | Operational outcome (D150): physical indicators with baseline, target and current value. The Value tab opens with the use case's **three perspectives** (economic value, operational outcome and risk exposure, 40 §11.1, rule 11), which are never merged; never translated into euros. |
 
 **Fields added in schema 0.4: risk matrix and register (T06)** (document 33 §8.1; all optional in `riesgos[]`, a 0.1, 0.2 or 0.3 register remains valid):
 

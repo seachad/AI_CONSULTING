@@ -70,7 +70,7 @@ One page maximum. Written last.
 | Transformation index profile | | Assigned profile and, where applicable, underlying profile; provisional if coverage is below 6 out of 8. |
 | Annual net value and proportion of validated value | | With the status of the amounts. |
 | Risks requiring immediate action | | And the nonconformities opened for them. |
-| Conditions in 01 §14 already substantiated | | Out of 7. |
+| Core rules (01 §14.1) already substantiated | | Out of 14. |
 | What is asked of the committee and the board | | Accept the report and use it as the basis for C2. |
 
 ---

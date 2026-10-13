@@ -137,7 +137,7 @@ flowchart LR
 |---|---|
 | **Sphere** | 01 Customer · 02 Product and service · 03 People · 04 Operations · 05 Data · 06 Knowledge · 07 Decision · 08 Regulation, ethics and accountability · 09 AI governance |
 | **Ambition level** | Optimise · Augment · Transform |
-| **Intensity** | Lite · Enterprise |
+| **Intensity** | Express · Lite · Enterprise |
 | **Regulatory classification** | Prohibited · High risk · Transparency obligations · Minimal risk · Out of scope · Pending classification |
 | **Technology** | Predictive ML · Generative AI · Agent · Language and document processing · Vision · Optimisation · Embedded third-party AI · Rules (not AI) |
 | **Exposure** | Internal · Employees · Customers indirectly · Customers or external persons directly |
@@ -227,7 +227,7 @@ The model is the foundation of all the tools. Its full specification (fields, ty
 | **Gate decision** | Request, verification, decision, outcome and iteration. | Initiative, criteria, conditions |
 | **Assessed criterion** | Status of each criterion in a *gate* decision. | Gate decision, evidence |
 | **Condition** | Condition imposed with deadline, owner and status. | Gate decision |
-| **Evidence** | Link, type, version, author, date and verification. | Criteria, initiative |
+| **Evidence** | Link, type, version, author, date and verification; origin (SEVEN-G template or referenced company evidence, with its source system; 21 §4.3). | Criteria, initiative |
 | **Value** | Amounts by type (efficiency, return, cost), formula, validation status, period and, in cross-unit initiatives, business unit; from schema 0.5, whether the return comes from an AI-enabled offering (signal 6 of 12). From schema 0.8, two optional initiative fields read by the board dashboard: the realisation plan (`plan_realizacion`: status, source and date; curve by period, steady-state date, funding tranches with *gate*, amount and pass condition, approved reference and realised value by period with its status; 43 §4.1) and non-quantified value (`no_cuantificado`: dimension, level 0–3, metric with baseline, target and current value, and reason; never in euros; 40 rule 7). | Initiative |
 | **Risk** | Risk with probability, impact, inherent and residual level, owner and controls; from T01 schema 0.4, also impact axis, control effectiveness, target or verified residual, contingency, status, trend, next review and acceptance (33 §8.1). | Initiative, system |
 | **Nonconformity** | Type, detection, containment, root cause, action, closure. | Initiative, system |
@@ -267,7 +267,7 @@ The T01 register is the company's **source of truth**: the other tools derive fr
 | **T01** | **Initiative register** | CRM-style funnel: phases, statuses, events, tags, value and metrics. | Entire cycle; C3 and C4 | HTML + JSON; export to spreadsheet | 01, 02 | 1 | Available v0.1 |
 | **T02** | AI system inventory | Register of all systems, including third-party systems and corporate use. | C1, phase 0, C4 | T01 module | 01, 32 | 1 | Available v0.1 |
 | **T03** | Gate manager | Criteria with status, evidence, verification, decision and conditions. | All *gates* | T01 module | 01, 21, 22 | 1 | Available v0.1 (128 criteria from document 21) |
-| **T04** | Intensity determination | Lite or Enterprise questionnaire with recorded result. | Phase 0, G3, R6 | T01 module | 01 | 1 | Available v0.1 |
+| **T04** | Intensity determination | Express, Lite or Enterprise questionnaire (Enterprise criteria and Express eligibility) with recorded result. | Phase 0, G3, R6 | T01 module | 01 | 1 | Available v0.1 |
 | **T05** | Ambition classifier | Five questions for Optimise, Augment or Transform. | Phases 1, 2 and 7 | T01 module | 00, 12 | 1 | Available v0.1 |
 
 ### 5.2 Risk, security and compliance

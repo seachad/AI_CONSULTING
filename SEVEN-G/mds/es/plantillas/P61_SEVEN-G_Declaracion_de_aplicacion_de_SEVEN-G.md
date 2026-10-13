@@ -5,8 +5,8 @@
 | | |
 |---|---|
 | Documento | Plantilla P61 · Declaración de aplicación de SEVEN-G |
-| Versión | 0.1 (borrador de trabajo) |
-| Fecha | 19-09-2026 |
+| Versión | 0.2 (borrador de trabajo) |
+| Fecha | 01-10-2026 |
 | Autor | Fernando García Varela |
 | Estado | Borrador para revisión. |
 
@@ -14,7 +14,7 @@
 
 > **Aviso legal y exención de responsabilidad.** SEVEN-G es un marco metodológico de referencia que se ofrece «tal cual» y con fines exclusivamente informativos. No constituye asesoramiento jurídico, regulatorio, financiero ni profesional, ni garantiza el cumplimiento de ninguna norma. Las referencias a regulación general (como el Reglamento Europeo de IA, el RGPD, DORA o NIS2), a normas técnicas y a regulación específica de cada sector o jurisdicción pueden ser incompletas, no aplicar a un caso concreto o quedar desactualizadas por cambios normativos, interpretaciones o criterios de las autoridades posteriores a su fecha de consulta. **Cada organización que use SEVEN-G es la única responsable de identificar la normativa que le aplica, verificar su vigencia y certificar su propio cumplimiento regulatorio**, con el asesoramiento cualificado que corresponda. Esta metodología es una ayuda genérica y gratuita, compartida con la comunidad para que nadie tenga que empezar desde cero; cada persona u organización puede y debe adaptarla a su propio uso. No debe entenderse que sus partes jurídicamente sensibles hayan sido revisadas por una asesoría jurídica: esas revisiones, para cada empresa o sector, son responsabilidad última de la empresa, el consultor o la organización que la use. Aunque se procura mantenerla al día, alguna norma puede haber cambiado sin que se recoja aquí. En la máxima medida permitida por la ley, el autor no asume responsabilidad alguna por los efectos de su aplicación en ninguna organización ni por su aplicabilidad completa. La metodología no otorga certificación de ningún tipo. El autor no asume responsabilidad alguna por el uso que se haga de este contenido ni por las decisiones que se adopten con él. Los datos, cifras, compañías y casos de los ejemplos son ficticios o ilustrativos.
 
-> **Por qué importa.** Decir «aplicamos SEVEN-G» ante clientes, supervisores o inversores es una afirmación sobre cómo se gobierna la IA en la compañía. Si no dice qué perímetro cubre, qué se ha excluido, qué versión se aplica y qué auditoría la respalda, induce a error y expone a la compañía. Esta plantilla convierte la declaración en una **autodeclaración verificable**: cada una de las siete condiciones de 01 §14 enlaza con su evidencia y con el resultado de una auditoría, y el texto deja claro que no es una certificación.
+> **Por qué importa.** Decir «aplicamos SEVEN-G» ante clientes, supervisores o inversores es una afirmación sobre cómo se gobierna la IA en la compañía. Si no dice qué perímetro cubre, qué se ha excluido, qué versión se aplica y qué auditoría la respalda, induce a error y expone a la compañía. Esta plantilla convierte la declaración en una **autodeclaración verificable**: cada una de las catorce reglas del núcleo (01 §14.1) enlaza con su evidencia y con el resultado de una auditoría, y el texto deja claro que no es una certificación.
 
 > **No es una certificación.** No existe certificación oficial de SEVEN-G en la versión 0.x. La declaración es responsabilidad exclusiva de la compañía que la emite; un informe de revisión de un tercero es una opinión profesional con su alcance y su fecha, y no otorga ningún sello. El uso del nombre SEVEN-G no implica respaldo del autor (documentos 91 §6 y 93).
 
@@ -33,8 +33,8 @@
 
 Reglas de cumplimentación:
 
-- **Declaración integral**: solo si se cumplen las siete condiciones de 01 §14 y la auditoría de la declaración es Conforme o Conforme con observaciones. Con resultado No conforme la compañía no puede declarar que aplica SEVEN-G; puede comunicar que está en proceso de implantación (38 §11.3).
-- **Declaración modular**: una compañía que implanta solo algunos componentes (01 §1.2) no declara que «aplica SEVEN-G»; declara qué componentes **utiliza**, con la fórmula de 91 §6.1, y no invoca las siete condiciones.
+- **Declaración integral**: solo si se cumplen las catorce reglas del núcleo de 01 §14.1 y la auditoría de la declaración es Conforme o Conforme con observaciones. Con resultado No conforme la compañía no puede declarar que aplica SEVEN-G; puede comunicar que está en proceso de implantación (38 §11.3).
+- **Declaración modular**: una compañía que implanta solo algunos componentes (01 §1.2) no declara que «aplica SEVEN-G»; declara qué componentes **utiliza**, con la fórmula de 91 §6.1, y no invoca el núcleo.
 - Toda exclusión se justifica; las adaptaciones de parámetros (umbrales, plazos, pesos de madurez) se declaran con su motivo.
 - La declaración reconoce la autoría del marco conforme a la licencia CC BY 4.0.
 - No se usan las expresiones de la sección 10.2.
@@ -47,6 +47,7 @@ Reglas de cumplimentación:
 |---|---|---|
 | Denominación de la compañía | | Razón social. |
 | Versión de SEVEN-G aplicada | | Número y fecha (por ejemplo, 0.1 · 16-09-2026). |
+| Versión del núcleo aplicada | | Versión del núcleo de 01 §14.1 (por ejemplo, 1 · 01-10-2026). |
 | Fecha desde la que se aplica | | DD-MM-AAAA. |
 | Fecha de la declaración | | DD-MM-AAAA. |
 | Versión de la declaración | | 1.0, 2.0… en cada renovación anual. |
@@ -80,7 +81,7 @@ Reglas de cumplimentación:
 | D · Herramientas (plantillas, listas de verificación, panel del consejo, registro de recomendaciones) | | | Las herramientas de referencia no son obligatorias; se indica qué se usa en su lugar. |
 | *(ejemplo ilustrativo)* A · Mapa de impacto | Parcial | Esferas y niveles de ambición para clasificar la cartera | Los grados de las esferas habilitadoras se incorporan en el ejercicio siguiente. |
 
-En una declaración integral, el ciclo corporativo, el ciclo de vida, el sistema de gobierno y las reglas de medición del valor deben figurar como aplicados, porque los exigen las condiciones de 01 §14.
+En una declaración integral, el ciclo corporativo, el ciclo de vida, el sistema de gobierno y las reglas de medición del valor deben figurar como aplicados, porque los exige el núcleo (01 §14.1).
 
 ---
 
@@ -95,18 +96,24 @@ En una declaración integral, el ciclo corporativo, el ciclo de vida, el sistema
 
 ---
 
-## 6. Condiciones de 01 §14 y evidencias
+## 6. Reglas del núcleo (01 §14.1) y evidencias
 
-| Nº | Condición | Pregunta del documento 11 | ¿Cumple? (Sí · No) | Evidencia disponible | Resultado de la auditoría para la condición |
+| Código | Regla del núcleo | Pregunta del documento 11 | ¿Cumple? (Sí · No) | Evidencia disponible | Resultado de la auditoría para la regla |
 |---|---|---|---|---|---|
-| 1 | C1 y C2 completados; tesis de IA, ambición por esfera y apetito de riesgo aprobados por el consejo. | D1.05 | | Actas del consejo; documento de tesis y apetito; informe C1. | |
-| 2 | Inventario con clasificación regulatoria, intensidad y responsable; registro de iniciativas con la trazabilidad de 01 §6.11. | D6.05 · D2.05 | | T02, T01; conciliación del inventario (32 §9). | |
-| 3 | Roles y órganos asignados con las incompatibilidades de 01 §8.2. | D1.07 · D1.08 | | Mandatos (documento 30); P03. | |
-| 4 | Todas las iniciativas nuevas recorren el ciclo de vida con sus *gates* registrados. | D2.06 | | T01, T03, P29. | |
-| 5 | Todas las iniciativas en producción tienen revisión de continuidad vigente. | D4.07 | | T01; actas de R6. | |
-| 6 | Aplica las reglas de medición del valor y reporta al consejo con el panel de supervisión. | D7.05 · D7.06 | | T12; panel del consejo (T17); actas. | |
-| 7 | Gestiona las no conformidades con el proceso de 01 §12. | D6.07 | | T08; informes a la comisión delegada. | |
-| — | Regularización de las iniciativas en producción anteriores a la adopción, en el plazo aprobado en C2. | — | | Lista de iniciativas, plazo y revisión equivalente a G7. | |
+| N-01 | Inventario completo con responsable, clasificación regulatoria e intensidad. | D6.05 | | T02; conciliación del inventario (32 §9). | |
+| N-02 | Registro de iniciativas con la trazabilidad de 01 §6.11. | D2.05 | | T01. | |
+| N-03 | Intensidad determinada en cada iniciativa y revisada en G3 y en cada R6. | — | | T01 (P04, T04). | |
+| N-04 | Todas las iniciativas nuevas recorren el ciclo de vida con sus *gates* registrados. | D2.06 | | T01, T03, P29. | |
+| N-05 | G3 decidido siempre por separado. | — | | T01 (decisiones de G3). | |
+| N-06 | Roles y órganos asignados con las incompatibilidades de 01 §8.2. | D1.07 · D1.08 | | Mandatos (documento 30); P03. | |
+| N-07 | Validación dual y evidencia anterior a la decisión. | — | | T01 (verificador y fechas de evidencia). | |
+| N-08 | Ningún criterio «Sí ◆» admitido como condición. | — | | T01, T03. | |
+| N-09 | Hipótesis de valor con línea base y criterios de parada antes de la viabilidad. | — | | P08, P09; T11. | |
+| N-10 | Clasificación regulatoria y registro de riesgos antes de diseñar; ningún Crítico sin aprobación del consejo. | — | | P11, P12; T06. | |
+| N-11 | Reversión probada y revisión de continuidad vigente en producción; regularización de lo anterior en el plazo de C2. | D4.07 | | T01; actas de R6; lista de regularización. | |
+| N-12 | C1 y C2 completados; tesis, ambición por esfera y apetito de riesgo aprobados por el consejo; información trimestral. | D1.05 | | Actas del consejo; tesis y apetito; informe C1. | |
+| N-13 | Reglas de medición del valor aplicadas e información al consejo con el panel de supervisión. | D7.05 · D7.06 | | T12; panel del consejo (T17); actas. | |
+| N-14 | No conformidades gestionadas con el proceso de 01 §12. | D6.07 | | T08; informes a la comisión delegada. | |
 
 ---
 
@@ -141,7 +148,7 @@ En una declaración integral, el ciclo corporativo, el ciclo de vida, el sistema
 | Órgano que la aprueba | | Consejo o comisión delegada. |
 | Fecha y referencia del acta | | |
 | Vigencia | | Hasta la siguiente auditoría anual del marco en C5. |
-| Pérdida de vigencia | | Resultado No conforme en una auditoría o reauditoría; no conformidad mayor o crítica en una de las siete condiciones; cambio de perímetro no declarado. En esos casos se retira la declaración de las comunicaciones hasta superar una reauditoría. |
+| Pérdida de vigencia | | Resultado No conforme en una auditoría o reauditoría; no conformidad mayor o crítica en una de las reglas del núcleo; cambio de perímetro no declarado. En esos casos se retira la declaración de las comunicaciones hasta superar una reauditoría. |
 | Destinatarios externos | | Clientes, supervisores, inversores u otros, y fecha de comunicación. |
 
 ---
@@ -171,7 +178,7 @@ En una declaración integral, el ciclo corporativo, el ciclo de vida, el sistema
 | # | Comprobación | Estado |
 |---|---|---|
 | 1 | El tipo de declaración (integral o modular) es coherente con las condiciones cumplidas y con el texto modelo usado. | Cumple · No cumple · No aplica · Pendiente |
-| 2 | Las siete condiciones tienen evidencia enlazada y las preguntas D1.05, D1.07, D1.08, D2.05, D2.06, D4.07, D6.05, D6.07, D7.05 y D7.06 están en «Sí» en una evaluación verificada. | |
+| 2 | Las catorce reglas del núcleo tienen evidencia enlazada y las preguntas D1.05, D1.07, D1.08, D2.05, D2.06, D4.07, D6.05, D6.07, D7.05 y D7.06 están en «Sí» en una evaluación verificada. | |
 | 3 | La auditoría que la respalda es de los últimos doce meses, cubre la declaración y su resultado no es No conforme. | |
 | 4 | El auditor es independiente de la implantación del marco en los doce meses anteriores. | |
 | 5 | Alcance, exclusiones, adaptaciones y excepciones están declarados con su motivo. | |
@@ -207,3 +214,4 @@ Separación de funciones: quien ha implantado el marco en la compañía en los d
 | Versión | Fecha | Cambios |
 |---|---|---|
 | 0.1 | 19-09-2026 | Primera versión. Aplica las condiciones de 01 §14, la auditoría y el contenido mínimo de 38 §11, el modelo de 91 §6.3 y las preguntas **(§14)** del documento 11; distingue la declaración integral de la modular (01 §1.2) y advierte de que no existe certificación oficial en la versión 0.x. |
+| 0.2 | 01-10-2026 | Las siete condiciones de 01 §14 pasan a las catorce reglas del núcleo (01 §14.1, N-01 a N-14), con su pregunta del documento 11 y su evidencia; campo «Versión del núcleo aplicada». |

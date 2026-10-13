@@ -7,7 +7,8 @@
   Qué comprueba:
     1. Paridad ES/EN de los Markdown de SEVEN-G, SPHERES y SPAD (D12) y que cada documento tiene su HTML y su PDF (D11, D32).
     2. Textos internos o de clientes en lo que se publica (D17, D33): los mismos patrones que .github/workflows/pages.yml y, si existe,
-       la lista privada de términos prohibidos (~/.seveng/terminos_prohibidos.txt).
+       la lista privada de términos prohibidos (~/.seveng/terminos_prohibidos.txt o, en una sesión en la nube, la variable de entorno
+       SEVENG_TERMINOS_PROHIBIDOS; D153).
     3. Aviso legal presente en las herramientas y paneles publicados (D33).
     4. Portada: el primer botón de cada metodología es el que explica el marco (D46) y sus enlaces locales existen.
     1e. Ninguna herramienta (Tnn) citada en los HTML generados queda sin enlace (D64).
@@ -25,7 +26,7 @@
     7. Prueba de humo en Edge sin ventana: el registro, el panel completo y el panel móvil se dibujan (un error de JavaScript los deja vacíos),
        y la calculadora T14 reproduce el ejemplo del documento 12 §9 (suma 12, transformación declarada no evidenciada).
     8. Registro de decisiones: numeración única y correlativa.
-   37. Nombre primero, código después (D144): nombres.json al día, títulos y tablas generados con «Nombre (código)», sin variantes de nombre.
+   44. Nombre primero, código después (D155): nombres.json al día, títulos y tablas generados con «Nombre (código)», sin variantes de nombre.
     10. Comunidad (D80): la página de incidencias y peticiones no pide correo ni datos de contacto, no carga recursos de terceros, no usa
         cookies, muestra la regla de los votos, está enlazada desde la portada (ES/EN) y en su carpeta no hay ningún token.
     17. Códigos citados en cualquier panel (D99): codigos.js enlaza los códigos escritos y ofrece «Citados aquí»; las herramientas, el
@@ -80,6 +81,21 @@
     36. Navegación y tema en todas las páginas (D141): portada, entrada, documentos, herramientas, página de T17, galería,
         comunidad, panel completo, panel móvil y registro de recomendaciones llevan el selector de tema, siguen el tema del sitio
         (clave seveng-tema) y lo guardan al cambiarlo; el móvil y el registro de recomendaciones llevan los enlaces de vuelta al sitio.
+    37. Núcleo de SEVEN-G (D145): las catorce reglas N-01 a N-14 están, en el mismo orden, en 01 §14.1, 94 §3 y P61 (ES/EN); 01 §3 tiene
+        el principio 11 de proporcionalidad; 94 §2.3 distingue principio, práctica e instrumento; el glosario tiene el código.
+    38. Evidencia referenciada (D146): 21 §4.3 (ES/EN) con sus requisitos y la tabla de equivalencias con plantillas que existen; EV.10
+        la admite; el esquema de T01 tiene origen y sistema_origen en evidencias, la demostración incluye alguna y el diálogo la registra.
+    39. Intensidad Express (D147): 01 §9.4 y 21 §2.5 (ES/EN, misma lista de criterios del núcleo); la columna Express («x») del catálogo
+        de T01 sigue la regla de 21 §2.5; el esquema admite «express»; la demostración tiene una iniciativa Express con elegibilidad
+        completa y confirmada; T01 aplica la lista reducida, la determina con T04 y avisa si deja de ser elegible.
+    40. Coste del propio gobierno (D148): IND-COS-12 a 14 en el 41 (ES/EN) y el total de la tabla de familias igual al número de
+        indicadores; horas_gobierno y coste_hora_gobierno en el esquema de T01; la ficha de T01 y la tarjeta del panel lo muestran.
+    41. Crosswalk de cobertura (D149): el 34 §9.1 (ES/EN) coincide con crosswalk.json (crosswalk.ps1 -Comprobar), cada norma
+        del crosswalk está en el registro de referencias, toda cobertura distinta de «directa» lleva nota y el 34 lo publica.
+    42. Tres perspectivas del caso (D150): regla de presentación 11 del 40 (ES/EN); resultado_operativo en el esquema de T01 y en la
+        demostración; bloque en la ficha de valor de T01 y en la ficha del caso del panel de ejemplo; campo del resumen del 60.
+    43. Posicionamiento como modelo operativo (D151): 04 §5.1 (ES/EN) con las seis referencias y remisión al crosswalk; párrafo del
+        inicio rápido del 00; filas del 91 contra «alternativa a ISO/IEC 42001»; entrada (fuente) con enlace al crosswalk; portada.
 #>
 param([switch]$SinNavegador)
 $ErrorActionPreference = 'Stop'
@@ -351,10 +367,13 @@ try {
   }
   $patrones = @('_trabajo', 'notas_internas', 'C:\\SEACHAD', 'OneDrive')
   $lista = Join-Path ($env:USERPROFILE ?? $HOME) '.seveng\terminos_prohibidos.txt'
+  # sesiones en la nube (D153): si el fichero no existe, la lista puede venir en la variable de entorno SEVENG_TERMINOS_PROHIBIDOS
+  # (secreto del entorno, un término por línea o separados por «\n» literal); se escribe en un temporal fuera del repositorio y se borra al terminar
+  if (-not (Test-Path $lista) -and $env:SEVENG_TERMINOS_PROHIBIDOS) { $lista = Join-Path $tmp 'terminos_prohibidos.txt'; [IO.File]::WriteAllText($lista, ($env:SEVENG_TERMINOS_PROHIBIDOS -replace '\\n', "`n"), [Text.UTF8Encoding]::new($false)) }
   # un término por línea, buscado como texto literal sin distinguir mayúsculas; una línea «re:<expresión>» es una expresión regular
   # (p. ej., re:\bSIGLA\b(?!_) para una sigla que también forma parte de palabras corrientes o de claves de datos)
   if (Test-Path $lista) { $patrones += Get-Content $lista -Encoding utf8 | Where-Object { $_.Trim() -and -not $_.StartsWith('#') } | ForEach-Object { $x = $_.Trim(); if ($x.StartsWith('re:')) { $x.Substring(3) } else { [regex]::Escape($x) } } }
-  else { Aviso "no existe la lista privada de términos prohibidos ($lista): solo se comprueban los patrones generales" }
+  else { Aviso "no existe la lista privada de términos prohibidos ($lista) ni la variable de entorno SEVENG_TERMINOS_PROHIBIDOS: solo se comprueban los patrones generales" }
   $hallazgos = $publicables | Select-String -Pattern ($patrones -join '|') -List
   foreach ($h in $hallazgos) { Mal "texto interno o prohibido en $([IO.Path]::GetRelativePath($repo, $h.Path)):$($h.LineNumber)" }
   if (-not $hallazgos) { Ok "$($publicables.Count) ficheros publicables sin textos internos ($($patrones.Count) patrones)" }
@@ -364,6 +383,10 @@ try {
   $conSeachad = $publicables | Select-String -Pattern 'SEACHAD' -CaseSensitive -List
   foreach ($h in $conSeachad) { Mal "referencia a «SEACHAD» (D81, retirada de la marca): $([IO.Path]::GetRelativePath($repo, $h.Path)):$($h.LineNumber)" }
   if (-not $conSeachad) { Ok 'sin la marca «SEACHAD» en lo publicado' }
+  # D157: SEVEN-G no es una marca registrada; no se afirma en lo publicado ni en las fuentes de los cursos
+  $conRegistrada = @($publicables) + @(Get-Item (Join-Path $repo 'README.md'), (Join-Path $repo 'SEVEN-G\build\curso_pptx.ps1')) | Select-String -Pattern 'marca registrada|registered trademark' -List
+  foreach ($h in $conRegistrada) { Mal "afirma que SEVEN-G es una marca registrada (D157): $([IO.Path]::GetRelativePath($repo, $h.Path)):$($h.LineNumber)" }
+  if (-not $conRegistrada) { Ok 'no se afirma que SEVEN-G sea una marca registrada (D157)' }
 
   # los términos de la lista privada tampoco pueden estar en el nombre de ningún fichero versionado (aunque no se publique)
   if (Test-Path $lista) {
@@ -573,7 +596,8 @@ try {
     $tipos = @{ '.html' = 'text/html; charset=utf-8'; '.js' = 'application/javascript; charset=utf-8'; '.css' = 'text/css; charset=utf-8'; '.json' = 'application/json; charset=utf-8'; '.png' = 'image/png'; '.jpg' = 'image/jpeg'; '.svg' = 'image/svg+xml'; '.pdf' = 'application/pdf'; '.woff2' = 'font/woff2' }
     foreach ($p in $pruebas) {
       $puerto = Get-Random -Minimum 20000 -Maximum 40000
-      $http = [System.Net.HttpListener]::new(); $http.Prefixes.Add("http://localhost:$puerto/"); $http.Start()
+      # si el puerto elegido al azar está ocupado, se prueba con otro
+      for ($intento = 0; ; $intento++) { $http = [System.Net.HttpListener]::new(); $http.Prefixes.Add("http://localhost:$puerto/"); try { $http.Start(); break } catch { $http.Close(); if ($intento -ge 9) { throw }; $puerto = Get-Random -Minimum 20000 -Maximum 40000 } }
       $sel = ($p.debe | ForEach-Object { "'" + $_.Replace("'", "\'") + "'" }) -join ','
       $pagina = [IO.File]::ReadAllText($p.f)
       $pagina = $pagina -replace '(?i)<head>', '<head><script>window.__errs=[];window.addEventListener("error",function(e){__errs.push(e.message)});</script>'
@@ -1648,12 +1672,158 @@ try {
     if (-not $ok) { Mal "$($f.Name): sin tema del sitio ni navegación de vuelta; regenerar (t01_a_panel.py o galeria.py) (D141)"; $mal36++ }
   }
   if (-not $mal36) { Ok "selector de tema y navegación del sitio en portada, entrada, documentos, herramientas, página de T17, galería, comunidad y paneles ($($salT17.Count) paneles móviles y registros de recomendaciones generados)" }
-  # ---- 37. nombre primero, código después (D144, R16)
-  Write-Host '37. Nombre primero, código después (D144)'
+
+  # ---- 37. núcleo de SEVEN-G y proporcionalidad (D145)
+  Write-Host '37. Núcleo de SEVEN-G (N-01 a N-14) y principio de proporcionalidad (D145)'
   $mal37 = 0
+  $codN = 1..14 | ForEach-Object { 'N-{0:D2}' -f $_ }
+  foreach ($lg in 'es', 'en') {
+    $d01 = [IO.File]::ReadAllText((Get-ChildItem (Join-Path $repo "SEVEN-G\mds\$lg") -Filter '01_SEVEN-G_*.md').FullName)
+    $d94 = [IO.File]::ReadAllText((Get-ChildItem (Join-Path $repo "SEVEN-G\mds\$lg") -Filter '94_SEVEN-G_*.md').FullName)
+    $p61 = [IO.File]::ReadAllText((Get-ChildItem (Join-Path $repo "SEVEN-G\mds\$lg\plantillas") -Filter 'P61_SEVEN-G_*.md').FullName)
+    $g02 = [IO.File]::ReadAllText((Get-ChildItem (Join-Path $repo "SEVEN-G\mds\$lg") -Filter '02_SEVEN-G_*.md').FullName)
+    $s14 = [regex]::Match($d01, '(?s)\n### 14\.1 .*?\n### 14\.2 ').Value
+    $s3 = [regex]::Match($d94, '(?s)\n## 3\. .*?\n## 4\. ').Value
+    foreach ($par in @(@('01 §14.1', $s14), @('94 §3', $s3), @('P61', $p61))) {
+      $vistos = [regex]::Matches($par[1], '\| (?:\*\*)?(N-\d\d)(?:\*\*)? \|') | ForEach-Object { $_.Groups[1].Value }
+      if ((@($vistos) -join ',') -ne ($codN -join ',')) { Mal "$lg $($par[0]): el núcleo no tiene las reglas N-01 a N-14 en orden (D145)"; $mal37++ }
+    }
+    if ($d01 -notmatch '\n\| 11 \| \*\*(Proporcionalidad|Proportionality)\*\*') { Mal "$lg 01 §3: falta el principio 11 de proporcionalidad (D145)"; $mal37++ }
+    if ($d94 -notmatch '\n### 2\.3 ') { Mal "$lg 94 §2.3: falta «principio, práctica e instrumento» (D145)"; $mal37++ }
+    if (-not $g02.Contains('| **N-01–N-14** |')) { Mal "$lg 02 §6.1: falta el código N-01–N-14 (D145)"; $mal37++ }
+  }
+  if (-not $mal37) { Ok 'núcleo N-01 a N-14 igual en 01 §14.1, 94 §3 y P61 (ES/EN); principio 11 de proporcionalidad; 94 §2.3; código en el glosario' }
+
+  # ---- 38. evidencia referenciada (D146)
+  Write-Host '38. Referenciar antes que reproducir: evidencias de la compañía (D146)'
+  $mal38 = 0
+  foreach ($lg in 'es', 'en') {
+    $d21 = [IO.File]::ReadAllText((Get-ChildItem (Join-Path $repo "SEVEN-G\mds\$lg") -Filter '21_SEVEN-G_*.md').FullName)
+    $s43 = [regex]::Match($d21, '(?s)\n### 4\.3 .*?\n## 5\. ').Value
+    if (-not $s43) { Mal "$lg 21 §4.3: falta «referenciar antes que reproducir» (D146)"; $mal38++; continue }
+    $pls = [regex]::Matches($s43, '\bP\d\d\b') | ForEach-Object { $_.Value } | Sort-Object -Unique
+    foreach ($pl in $pls) { if (-not (Get-ChildItem (Join-Path $repo "SEVEN-G\mds\$lg\plantillas") -Filter "${pl}_SEVEN-G_*.md")) { Mal "$lg 21 §4.3: cita $pl, que no existe (D146)"; $mal38++ } }
+    if ($pls.Count -lt 10) { Mal "$lg 21 §4.3: la tabla de equivalencias cubre menos de 10 plantillas (D146)"; $mal38++ }
+    if ($d21 -notmatch '\| \*\*EV\.10\*\* \|[^\n]*4\.3') { Mal "$lg 21 §4.1: EV.10 no admite la evidencia referenciada (D146)"; $mal38++ }
+  }
+  $esq = Get-Content (Join-Path $repo 'SEVEN-G\herramientas\T01_registro_iniciativas\esquema_registro.schema.json') -Raw -Encoding utf8 | ConvertFrom-Json
+  $pe = $esq.'$defs'.evidencia.properties
+  if (-not ($pe.origen -and $pe.sistema_origen)) { Mal 'esquema de T01: evidencia sin origen ni sistema_origen (D146)'; $mal38++ }
+  $dd = Get-Content (Join-Path $repo 'SEVEN-G\herramientas\T01_registro_iniciativas\datos_demo.json') -Raw -Encoding utf8 | ConvertFrom-Json
+  if (-not ($dd.evidencias | Where-Object { $_.origen -eq 'referencia' -and $_.sistema_origen })) { Mal 'datos de demostración de T01: ninguna evidencia referenciada (D146)'; $mal38++ }
+  $tpl = [IO.File]::ReadAllText((Join-Path $repo 'SEVEN-G\herramientas\T01_registro_iniciativas\_fuentes\registro.plantilla.html'))
+  if (-not ($tpl.Contains("origen_referencia:") -and $tpl.Contains("ev.origen='referencia'"))) { Mal 'T01: el diálogo de evidencias no admite una evidencia referenciada (D146)'; $mal38++ }
+  if (-not $mal38) { Ok '21 §4.3 (ES/EN) con requisitos y tabla de equivalencias; EV.10; esquema, demostración y diálogo de T01 con evidencias referenciadas' }
+
+  # ---- 39. intensidad Express (D147)
+  Write-Host '39. Intensidad Express: lista reducida de criterios y elegibilidad (D147)'
+  $mal39 = 0
+  $catX = Get-Content (Join-Path $repo 'SEVEN-G\herramientas\T01_registro_iniciativas\catalogo_criterios.json') -Raw -Encoding utf8 | ConvertFrom-Json
+  foreach ($lg in 'es', 'en') {
+    $d21 = [IO.File]::ReadAllText((Get-ChildItem (Join-Path $repo "SEVEN-G\mds\$lg") -Filter '21_SEVEN-G_*.md').FullName)
+    $d01 = [IO.File]::ReadAllText((Get-ChildItem (Join-Path $repo "SEVEN-G\mds\$lg") -Filter '01_SEVEN-G_*.md').FullName)
+    $s25 = [regex]::Match($d21, '(?s)\n### 2\.5 .*?\n## 3\. ').Value
+    if (-not $s25) { Mal "$lg 21 §2.5: falta la lista de criterios Express (D147)"; $mal39++; continue }
+    $l2 = ($s25 -split "`n" | Where-Object { $_ -match '^2\. ' }) -join ' '
+    $base = [regex]::Matches($l2, 'G\d\.\d\d') | ForEach-Object { $_.Value } | Sort-Object -Unique
+    if ($lg -eq 'es') { $base21 = $base }
+    elseif (($base -join ',') -ne ($base21 -join ',')) { Mal 'en 21 §2.5: la lista de criterios del núcleo no coincide con la española (D147)'; $mal39++ }
+    if ($d01 -notmatch '\n### 9\.4 ') { Mal "$lg 01 §9.4: falta la intensidad Express (D147)"; $mal39++ }
+  }
+  foreach ($c in $catX) {
+    if ('si', 'simpl', 'rec', 'na' -notcontains $c.x) { Mal "catalogo_criterios.json: $($c.c) sin columna Express válida (D147)"; $mal39++; continue }
+    $esperado = if ('R6', 'G7' -contains $c.g) { $c.l } elseif ($c.l -eq 'na') { 'na' } elseif ($c.o -eq 'si_critico' -or $base21 -contains $c.c) { $c.l } else { 'na' }
+    if ($c.x -ne $esperado) { Mal "catalogo_criterios.json: $($c.c) tiene Express «$($c.x)» y la regla de 21 §2.5 da «$esperado» (D147)"; $mal39++ }
+  }
+  $esqX = Get-Content (Join-Path $repo 'SEVEN-G\herramientas\T01_registro_iniciativas\esquema_registro.schema.json') -Raw -Encoding utf8 | ConvertFrom-Json
+  if ($esqX.'$defs'.intensidad.enum -notcontains 'express') { Mal 'esquema de T01: la intensidad no admite «express» (D147)'; $mal39++ }
+  $ddX = Get-Content (Join-Path $repo 'SEVEN-G\herramientas\T01_registro_iniciativas\datos_demo.json') -Raw -Encoding utf8 | ConvertFrom-Json -Depth 64
+  $iniX = @($ddX.iniciativas | Where-Object { $_.clasificacion.intensidad -eq 'express' })
+  if (-not $iniX.Count) { Mal 'datos de demostración de T01: ninguna iniciativa Express (D147)'; $mal39++ }
+  foreach ($i in $iniX) { $ex = $i.determinacion_intensidad.express; if (-not ($ex -and $ex.confirmado_por -and $ex.uso_interno -and $ex.reversible -and $ex.autonomia_baja -and $ex.sin_datos_sensibles -and $ex.bajo_umbral -and $ex.proveedor_homologado)) { Mal "$($i.id): Express sin elegibilidad completa y confirmada (D147)"; $mal39++ } }
+  $tplX = [IO.File]::ReadAllText((Join-Path $repo 'SEVEN-G\herramientas\T01_registro_iniciativas\_fuentes\registro.plantilla.html'))
+  if (-not ($tplX.Contains('function colIntensidad(') -and $tplX.Contains("add('express'") -and $tplX.Contains('function resultadoT04('))) { Mal 'T01: falta la intensidad Express (lista reducida, T04 o alerta de salida) (D147)'; $mal39++ }
+  if (-not $mal39) { Ok "intensidad Express: 01 §9.4 y 21 §2.5 (ES/EN), columna Express del catálogo según la regla ($(@($catX | Where-Object { $_.x -ne 'na' }).Count) de 128 criterios), esquema, demostración ($($iniX.Count) iniciativa) y T01" }
+
+  # ---- 40. coste del propio gobierno (D148)
+  Write-Host '40. Coste del propio gobierno: indicadores, horas declaradas y tarjeta del panel (D148)'
+  $mal40 = 0
+  foreach ($lg in 'es', 'en') {
+    $d41 = [IO.File]::ReadAllText((Get-ChildItem (Join-Path $repo "SEVEN-G\mds\$lg") -Filter '41_SEVEN-G_*.md').FullName)
+    foreach ($cod in 'IND-COS-12', 'IND-COS-13', 'IND-COS-14') { if (-not $d41.Contains("| $cod |")) { Mal "$lg 41: falta $cod (D148)"; $mal40++ } }
+    $nInd = ([regex]::Matches($d41, '(?m)^\| IND-[A-Z]{3}-\d\d \|')).Count
+    $tot = [regex]::Match($d41, '\| \| \*\*Total\*\* \| \*\*(\d+)\*\* \|').Groups[1].Value
+    if ("$nInd" -ne $tot) { Mal "$lg 41: la tabla de familias dice $tot indicadores y el catálogo tiene $nInd (D148)"; $mal40++ }
+  }
+  $esqG = Get-Content (Join-Path $repo 'SEVEN-G\herramientas\T01_registro_iniciativas\esquema_registro.schema.json') -Raw -Encoding utf8 | ConvertFrom-Json
+  if (-not ($esqG.'$defs'.decision_gate.properties.horas_gobierno -and $esqG.'$defs'.meta.properties.configuracion.properties.coste_hora_gobierno)) { Mal 'esquema de T01: faltan horas_gobierno o coste_hora_gobierno (D148)'; $mal40++ }
+  $pd = Get-Content (Join-Path $repo 'SEVEN-G\herramientas\T17_panel_consejo\ejemplo\salida\t01_dashboard_data.json') -Raw -Encoding utf8 | ConvertFrom-Json -Depth 64
+  if (-not ($pd.casos | Where-Object { $_.seveng.gobierno.horas -gt 0 })) { Mal 'panel de ejemplo: ningún caso con horas de gobierno (regenerar con t01_a_panel.py) (D148)'; $mal40++ }
+  $mot = [IO.File]::ReadAllText((Join-Path $repo 'SEVEN-G\herramientas\T17_panel_consejo\motor\build_dashboard.py'))
+  if (-not ($mot.Contains('function renderGobierno(') -and $mot.Contains('data-ayuda="gobierno"'))) { Mal 'motor del panel: falta la tarjeta «Coste del gobierno» (D148)'; $mal40++ }
+  if (-not [IO.File]::ReadAllText((Join-Path $repo 'SEVEN-G\herramientas\T01_registro_iniciativas\_fuentes\registro.plantilla.html')).Contains('function bloqueGobierno(')) { Mal 'T01: falta el bloque del coste del gobierno en la ficha (D148)'; $mal40++ }
+  if (-not $mal40) { Ok "IND-COS-12 a 14 en el 41 (ES/EN) con el recuento de familias al día; horas de gobierno en el esquema y la ficha de T01; tarjeta «Coste del gobierno» en el panel de ejemplo" }
+  # ---- 41. crosswalk de cobertura (D149)
+  Write-Host '41. Crosswalk de cobertura con normas y regulación (D149)'
+  $mal41 = 0
+  & pwsh -NoProfile -File (Join-Path $PSScriptRoot 'crosswalk.ps1') -Comprobar | Out-Null
+  if ($LASTEXITCODE -ne 0) { Mal 'el 34 §9.1 no coincide con crosswalk.json (ejecutar crosswalk.ps1 y regenerar) (D149)'; $mal41++ }
+  $cw = Get-Content (Join-Path $PSScriptRoot 'crosswalk\crosswalk.json') -Raw -Encoding utf8 | ConvertFrom-Json
+  $idsRef = @(Get-ChildItem (Join-Path $PSScriptRoot 'referencias') -Filter 'g*.json' | ForEach-Object { Get-Content $_.FullName -Raw -Encoding utf8 | ConvertFrom-Json } | ForEach-Object { $_ } | ForEach-Object id)
+  foreach ($n in $cw.normas) { if ($idsRef -notcontains $n.referencia) { Mal "crosswalk: la norma $($n.id) no está en el registro de referencias ($($n.referencia)) (D41, D149)"; $mal41++ } }
+  foreach ($f in $cw.filas) { if ($f.cobertura -ne 'directa' -and -not ($f.nota.es -and $f.nota.en)) { Mal "crosswalk: $($f.norma) $($f.ref) sin nota (D149)"; $mal41++ } }
+  foreach ($lg in 'es', 'en') {
+    $h34 = Get-ChildItem (Join-Path $repo "SEVEN-G\html\$lg") -Filter '34_SEVEN-G_*.html' | Select-Object -First 1
+    if (-not ($h34 -and [IO.File]::ReadAllText($h34.FullName).Contains('crosswalk.json'))) { Mal "$lg 34: el HTML no publica el crosswalk (regenerar) (D149)"; $mal41++ }
+  }
+  if (-not $mal41) { Ok "crosswalk: $(@($cw.filas).Count) filas de $(@($cw.normas).Count) normas, 34 §9.1 al día en ES y EN, normas en el registro de referencias" }
+  # ---- 42. tres perspectivas del caso (D150)
+  Write-Host '42. Tres perspectivas del caso: valor económico, resultado operativo y exposición al riesgo (D150)'
+  $mal42 = 0
+  foreach ($lg in 'es', 'en') {
+    $d40 = [IO.File]::ReadAllText((Get-ChildItem (Join-Path $repo "SEVEN-G\mds\$lg") -Filter '40_SEVEN-G_*.md').FullName)
+    if (-not ($d40 -match '(?m)^11\. \*\*(Tres perspectivas|Three perspectives)')) { Mal "$lg 40: falta la regla de presentación 11 (D150)"; $mal42++ }
+    $d60 = [IO.File]::ReadAllText((Get-ChildItem (Join-Path $repo "SEVEN-G\mds\$lg") -Filter '60_SEVEN-G_*.md').FullName)
+    if (-not ($d60.Contains('| **Resultado operativo** |') -or $d60.Contains('| **Operational outcome** |'))) { Mal "$lg 60: falta el campo «Resultado operativo» del resumen de una página (D150)"; $mal42++ }
+  }
+  $esq42 = Get-Content (Join-Path $repo 'SEVEN-G\herramientas\T01_registro_iniciativas\esquema_registro.schema.json') -Raw -Encoding utf8 | ConvertFrom-Json
+  if (-not $esq42.'$defs'.iniciativa.properties.resultado_operativo) { Mal 'esquema de T01: falta resultado_operativo (D150)'; $mal42++ }
+  $dem42 = Get-Content (Join-Path $repo 'SEVEN-G\herramientas\T01_registro_iniciativas\datos_demo.json') -Raw -Encoding utf8 | ConvertFrom-Json
+  if (-not ($dem42.iniciativas | Where-Object { $_.resultado_operativo })) { Mal 'demostración de T01: ninguna iniciativa con resultado_operativo (D150)'; $mal42++ }
+  if (-not [IO.File]::ReadAllText((Join-Path $repo 'SEVEN-G\herramientas\T01_registro_iniciativas\_fuentes\registro.plantilla.html')).Contains('function bloquePerspectivas(')) { Mal 'T01: falta el bloque de las tres perspectivas en la ficha de valor (D150)'; $mal42++ }
+  if (-not [IO.File]::ReadAllText((Join-Path $repo 'SEVEN-G\herramientas\T17_panel_consejo\motor\build_dashboard.py')).Contains('function perspectivasFicha(')) { Mal 'motor del panel: falta el bloque de las tres perspectivas en la ficha del caso (D150)'; $mal42++ }
+  $bd42 = [IO.File]::ReadAllText((Join-Path $repo 'SEVEN-G\herramientas\T17_panel_consejo\motor\build_dashboard.py'))
+  if (-not ($bd42.Contains('${persLinea(c)}') -and $bd42.Contains('["oper","Resultado operativo"'))) { Mal 'motor del panel: el inventario (tarjeta y tabla) no muestra el resultado operativo y la exposición al riesgo (D152)'; $mal42++ }
+  if (-not ([IO.File]::ReadAllText((Join-Path $repo 'SEVEN-G\herramientas\T17_panel_consejo\motor\panel_movil.py')).Contains('Tres perspectivas del caso'))) { Mal 'panel móvil: falta el bloque de las tres perspectivas en la ficha (D152)'; $mal42++ }
+  foreach ($mv in (Get-ChildItem (Join-Path $repo 'SEVEN-G\herramientas\T17_panel_consejo\ejemplo\salida') -Filter '*Movil*.html')) { if (-not [IO.File]::ReadAllText($mv.FullName).Contains('Tres perspectivas del caso')) { Mal "panel móvil de ejemplo sin las tres perspectivas: $($mv.Name) (regenerar) (D152)"; $mal42++ } }
+  $pd42 = Get-Content (Join-Path $repo 'SEVEN-G\herramientas\T17_panel_consejo\ejemplo\salida\t01_dashboard_data.json') -Raw -Encoding utf8 | ConvertFrom-Json -Depth 64
+  if (-not ($pd42.casos | Where-Object { @($_.seveng.perspectivas.resultado_operativo).Count -gt 0 })) { Mal 'panel de ejemplo: ningún caso con resultado operativo (regenerar con t01_a_panel.py) (D150)'; $mal42++ }
+  if (-not $mal42) { Ok "tres perspectivas: regla 11 del 40 y resumen del 60 (ES/EN), resultado_operativo en el esquema y la demostración, ficha de valor de T01, ficha del caso, inventario y panel móvil" }
+  # ---- 43. posicionamiento como modelo operativo (D151)
+  Write-Host '43. Posicionamiento: los estándares dicen qué debe existir; SEVEN-G lo hace funcionar (D151)'
+  $mal43 = 0
+  $txt43 = @{ es = @('### 5.1 Frente a los estándares', '**Qué es frente a los estándares.**', 'Alternativa a ISO/IEC 42001', 'capa operativa que lo hace funcionar', '#9-1-crosswalk-de-cobertura');
+              en = @('### 5.1 Compared with the standards', '**What it is compared with the standards.**', 'Alternative to ISO/IEC 42001', 'operating layer that makes it work', '#9-1-coverage-crosswalk') }
+  foreach ($lg in 'es', 'en') {
+    $md = Join-Path $repo "SEVEN-G\mds\$lg"
+    $d04 = [IO.File]::ReadAllText((Get-ChildItem $md -Filter '04_SEVEN-G_*.md').FullName)
+    if (-not $d04.Contains($txt43[$lg][0])) { Mal "$lg 04: falta la sección 5.1 (D151)"; $mal43++ }
+    foreach ($ref in 'ISO/IEC 42001', 'ISO/IEC 38507', 'ISO/IEC 23894', 'ISO/IEC 42005', 'NIST AI RMF') { if (-not $d04.Contains("| **$ref** |")) { Mal "$lg 04 §5.1: falta $ref (D151)"; $mal43++ } }
+    if (-not [IO.File]::ReadAllText((Get-ChildItem $md -Filter '00_SEVEN-G_*.md').FullName).Contains($txt43[$lg][1])) { Mal "$lg 00: falta el posicionamiento en el inicio rápido (D151)"; $mal43++ }
+    if (-not [IO.File]::ReadAllText((Get-ChildItem $md -Filter '91_SEVEN-G_*.md').FullName).Contains($txt43[$lg][2])) { Mal "$lg 91: falta la expresión a evitar sobre ISO/IEC 42001 (D151)"; $mal43++ }
+    $ent = [IO.File]::ReadAllText((Join-Path $repo "SEVEN-G\build\entrada\$lg\index.html"))
+    if (-not ($ent.Contains($txt43[$lg][3]) -and $ent.Contains($txt43[$lg][4]))) { Mal "$lg entrada: falta el posicionamiento con enlace al crosswalk (D151)"; $mal43++ }
+    $por = [IO.File]::ReadAllText((Join-Path $repo $(if ($lg -eq 'es') { 'index.html' } else { 'en\index.html' })))
+    if (-not $por.Contains($txt43[$lg][3])) { Mal "$lg portada: falta el posicionamiento (D151)"; $mal43++ }
+  }
+  if (-not $mal43) { Ok "posicionamiento como modelo operativo en 04 §5.1, 00, 91, entrada y portada (ES/EN)" }
+
+  # ---- 44. nombre primero, código después (D155, R16)
+  Write-Host '44. Nombre primero, código después (D155)'
+  $mal44 = 0
   # (a) la lista única de nombres canónicos está al día
   & pwsh -NoProfile -File (Join-Path $repo 'SEVEN-G\build\nombres.ps1') -Comprobar *> $null
-  if ($LASTEXITCODE) { Mal 'nombres.json no está al día: ejecutar pwsh -File SEVEN-G/build/nombres.ps1 (D144)'; $mal37++ }
+  if ($LASTEXITCODE) { Mal 'nombres.json no está al día: ejecutar pwsh -File SEVEN-G/build/nombres.ps1 (D155)'; $mal44++ }
   $nombresJson = Get-Content (Join-Path $repo 'SEVEN-G\build\nombres.json') -Raw -Encoding utf8 | ConvertFrom-Json -AsHashtable
   # (b) ningún título generado empieza por un código seguido de «·»: el generador debe mostrar «Nombre (código)»
   $lectura = @('00_', '01_', '20_', '21_', '22_', '60_', '61_', '90_', '94_', '96_')
@@ -1676,7 +1846,7 @@ try {
       }
     }
   }
-  if ($codPrimero) { Mal "$codPrimero títulos o filas de tabla con el código delante del nombre en el HTML generado: regenerar con build.ps1 (D144)"; $mal37++ }
+  if ($codPrimero) { Mal "$codPrimero títulos o filas de tabla con el código delante del nombre en el HTML generado: regenerar con build.ps1 (D155)"; $mal44++ }
   # (d) un nombre, un código: ninguna variante de nombre de puerta o fase en los Markdown (ES/EN)
   $variantes = 0
   foreach ($lang in 'es', 'en') {
@@ -1694,7 +1864,7 @@ try {
   # (e) informativo: menciones de puerta por código sin nombre delante en los documentos de lectura (baja entrega a entrega en E3)
   $sueltas = 0
   foreach ($pfx in $lectura) { foreach ($f in Get-ChildItem (Join-Path $repo 'SEVEN-G\mds\es') -File -Filter "$pfx*.md") { $sueltas += ([regex]::Matches([IO.File]::ReadAllText($f.FullName), '(?<![(·\w-])\b(G[0-7]|R6)\b(?!\.\d|\s*·|\))')).Count } }
-  if (-not $mal37) { Ok "nombres canónicos al día ($($nombresJson.es.Count) es, $($nombresJson.en.Count) en); títulos y tablas generados con el nombre primero; $sueltas menciones de puerta solo por código en los documentos de lectura (ES), pendientes de la batida editorial (E3)" }
+  if (-not $mal44) { Ok "nombres canónicos al día ($($nombresJson.es.Count) es, $($nombresJson.en.Count) en); títulos y tablas generados con el nombre primero; $sueltas menciones de puerta solo por código en los documentos de lectura (ES), pendientes de la batida editorial (E3)" }
 }
 finally { Remove-Item $tmp -Recurse -Force -Confirm:$false -ErrorAction SilentlyContinue }
 

@@ -264,6 +264,9 @@ class Indice:
             self.decisiones.setdefault(d["iniciativa"], []).append(d)
         for v in t01.get("valores") or []:
             self.valores.setdefault(v["iniciativa"], []).append(v)
+        self.evidencias = {}
+        for e in t01.get("evidencias") or []:
+            self.evidencias.setdefault(e.get("iniciativa"), []).append(e)
 
     def nombre_persona(self, pid):
         p = self.personas.get(pid)
@@ -529,8 +532,43 @@ def caso(ix, ini, org, moneda, ciclo_vida):
                    "gate_pendiente": pendiente["gate"] if pendiente else None, "intensidad": cl.get("intensidad"),
                    "esfera_principal": cl.get("esfera_principal"), "esfera_secundaria": cl.get("esfera_secundaria"),
                    "ambicion": {"propuesta": cl.get("ambicion_propuesta"), "confirmada": cl.get("ambicion_confirmada"), "real": cl.get("ambicion_real")},
-                   "autonomia": cl.get("autonomia"), "regulatoria": reg, "etiquetas_libres": ini.get("etiquetas_libres") or [], "sistemas": ini.get("sistemas") or []},
+                   "autonomia": cl.get("autonomia"), "regulatoria": reg, "etiquetas_libres": ini.get("etiquetas_libres") or [], "sistemas": ini.get("sistemas") or [],
+                   "gobierno": gobierno_caso(ix, iid), "perspectivas": perspectivas_caso(ix, ini, iid)},
     }
+
+
+def gobierno_caso(ix, iid):
+    """Coste del propio gobierno de la iniciativa (41 IND-COS-12 a 14; D148): horas declaradas en las decisiones de gate (opcional, nunca
+    se estiman: sin ninguna declarada, «sin dato») y evidencias propias frente a referenciadas de la compañía (21 §4.3)."""
+    decididas = [d for d in ix.decisiones.get(iid, []) if d.get("fecha_decision")]
+    con_horas = [d for d in decididas if isinstance(d.get("horas_gobierno"), (int, float))]
+    evs = ix.evidencias.get(iid, [])
+    return {"horas": sum(d["horas_gobierno"] for d in con_horas) if con_horas else None, "decisiones": len(decididas),
+            "decisiones_con_horas": len(con_horas), "evidencias": len(evs),
+            "evidencias_referenciadas": len([e for e in evs if e.get("origen") == "referencia"])}
+
+
+RO_CLAVES = ("indicador", "nombre", "unidad", "sentido", "base", "fecha_base", "objetivo", "actual", "fecha_actual", "fuente")
+
+
+def nivel_residual(r):
+    """Nivel residual de un riesgo de T01 (33 §4): de la probabilidad por el impacto residuales si constan; si no, el nivel registrado."""
+    p, i = r.get("probabilidad_residual"), r.get("impacto_residual")
+    if isinstance(p, int) and isinstance(i, int):
+        s = p * i
+        return "critico" if s >= 16 else "alto" if s >= 10 else "medio" if s >= 5 else "bajo"
+    return r.get("nivel_residual")
+
+
+def perspectivas_caso(ix, ini, iid):
+    """Resultado operativo y exposición al riesgo de la iniciativa (40 §11.1, regla 11; D150). El valor económico ya va en el caso;
+    las tres perspectivas se presentan en paralelo y nunca se fusionan. Sin indicador operativo la lista va vacía (nunca cero)."""
+    t01 = ix.t01
+    abiertos = [r for r in t01.get("riesgos") or [] if isinstance(r, dict) and r.get("iniciativa") == iid and r.get("estado") != "cerrado"]
+    return {"resultado_operativo": [{k: x.get(k) for k in RO_CLAVES} for x in ini.get("resultado_operativo") or []],
+            "riesgos_altos_abiertos": len([r for r in abiertos if nivel_residual(r) in ("alto", "critico")]),
+            "incidentes_abiertos": len([n for n in t01.get("incidentes") or [] if n.get("iniciativa") == iid and n.get("estado") == "abierto"]),
+            "no_conformidades_abiertas": len([n for n in t01.get("no_conformidades") or [] if n.get("iniciativa") == iid and n.get("estado") == "abierta"])}
 
 
 # ---------------------------------------------------------------- seguimiento
@@ -636,6 +674,9 @@ def convertir(t01, sigla=None, organizacion=None, prefijo="t01_", enlaces_pie=""
                  "organizacion": org, "consejo_sigla": sigla, "compania_principal": org, "prefijo_ficheros": prefijo,
                  "mostrar_refs": False, "leer_json_servidor": False, "textos": textos, "glosario_extra": GLOSARIO_SEVEN_G, "demo": ficticio, "industria": None,
                  **config,   # umbrales_kpi y ciclo_vida (config_panel.json), como en el patrón del panel: la configuración general viaja en meta
+                 # coste del gobierno (D148): coste por hora y objetivos por intensidad de C2, desde la configuración del registro T01
+                 "gobierno": {"coste_hora": (m.get("configuracion") or {}).get("coste_hora_gobierno"),
+                              "objetivo_pct": (m.get("configuracion") or {}).get("objetivo_coste_gobierno_pct")},
                  "origen": {"herramienta": "SEVEN-G T01", "version_esquema": t01.get("version_esquema"), "conector": RUTA_CONECTOR,
                             "version_conector": VERSION_CONECTOR, "moneda": moneda}},
         "seguimiento": {"movimientos": movimientos(ix), "incidentes": incidentes(ix), "adopcion": None, "agilidad": None, "ia_ofensiva": None, "cdm_compania": None},
