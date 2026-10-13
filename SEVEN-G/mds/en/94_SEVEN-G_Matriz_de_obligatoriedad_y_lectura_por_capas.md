@@ -5,8 +5,8 @@
 | | |
 |---|---|
 | Document | Document 94 · Obligation matrix and layered reading |
-| Version | 0.1 (working draft) |
-| Date | 19-09-2026 |
+| Version | 0.3 (working draft) |
+| Date | 01-10-2026 |
 | Author | Fernando García Varela |
 | Status | Draft for review. Guidance document: it summarises rules from other documents, which prevail in the event of any discrepancy. The levels assigned to documents and templates will be validated through practical application. |
 
@@ -24,7 +24,7 @@ Not all companies have the same capacity for effort or the same risk exposure. S
 
 This document brings together in one place what other documents establish about proportionality:
 
-- the **intensity** of each initiative, Lite or Enterprise (document 01, section 9);
+- the **intensity** of each initiative, Express, Lite or Enterprise (document 01, section 9);
 - the company's **implementation scope**, Lite or Enterprise, and its minimum path (document 90, section 2);
 - the **obligation of each gate criterion** and its application in Lite (document 21, section 2);
 - the **scopes** that apply only to certain technologies: generative AI, agents and third parties (document 21, section 2.3).
@@ -59,26 +59,40 @@ A medium-sized company with Lite initiatives works in layer 1 and enters layer 2
 
 A document's level indicates **when what it regulates has to be applied**, not that it must be read in full: its "The essentials" box says which part is the minimum.
 
+### 2.3 Principle, practice and instrument
+
+The library distinguishes three kinds of content, so that the core is small and stable and everything else can evolve without changing what is required:
+
+| Kind | What it is | Where it is | What is required |
+|---|---|---|---|
+| **Mandatory principle** | Necessary condition for saying that SEVEN-G is applied: the fourteen core rules (N-01 to N-14). | Document 01, section 14.1; section 3 of this document | Always met, in every company and initiative. |
+| **Practice** | A way of meeting the core: gate criteria, measurement rules, risk, operation and audit procedures… It is **mandatory** when its level is *Always*, *Enterprise* or *Conditional* and its condition occurs, and **recommended** at the *Recommended* and *Reference* levels. | Numbered documents (section 6) | What its level says. |
+| **Instrument** | A template or tool that makes the practice easier. **What is mandatory is the evidence it organises, not its format**: evidence the company already has (a business case, an impact assessment, a contract) is valid if it covers what the criterion asks for (document 21, section 4). | Templates (section 7) and tools (section 8) | That the evidence exists and can be verified. |
+
+Principle 11 in 01 §3, **proportionality**, governs how everything that is not core is applied: no evidence is requested twice, no decision needs more participants than segregation of duties requires and no initiative bears a governance cost out of proportion to its risk and materiality.
+
 ---
 
 ## 3. What is never omitted
 
-These twelve rules hold for any company, with any scope and in any initiative. They are what distinguishes applying SEVEN-G from using some of its templates.
+These fourteen rules are the **SEVEN-G core** (document 01, section 14.1): they hold for any company, with any scope and in any initiative, and they are what distinguishes applying SEVEN-G from using some of its templates. They are repeated here for convenience; if they differ, document 01 prevails.
 
-| # | Rule | Source |
+| Code | Rule | Source |
 |---|---|---|
-| 1 | **Complete inventory** of AI systems —own, third-party, corporate use and unauthorised— with an owner. | document 32; document 90, section 2.4 |
-| 2 | **Every initiative is registered** before consuming budget, with its dates per phase, decisions, criteria and closing reason. | document 01, section 6.11; document 03 |
-| 3 | **Intensity is determined for each initiative** in phase 0 and reviewed at G3 and at each R6. One Enterprise criterion is enough. | document 01, section 9 |
-| 4 | **No phase or gate is skipped.** In Lite they may be grouped into one session; each gate keeps its criteria and its record. | document 21, section 3.4 |
-| 5 | **G3 is always decided separately**: it is the main stop gate. | document 01, section 6.1; document 90, section 2.4 |
-| 6 | **Segregation of duties**: whoever builds neither verifies nor decides their own work, and risk clearance is independent of the team. | document 01, section 8; document 30 |
-| 7 | **Dual validation and evidence prior to the decision**: without verified evidence there is no decision. | document 21, sections 3 and 4 |
-| 8 | **The "Yes ◆" criteria** (security, legal compliance, human oversight) are never accepted as a condition. | document 21, section 2.2 |
-| 9 | **Value hypothesis with baseline and stop criteria** before investing in feasibility, and measurement rules in all figures. | document 01, section 6; document 40 |
-| 10 | **Regulatory classification and risk register** before design; a Critical residual risk without board approval blocks G3 and G5. | document 32; document 33 |
-| 11 | **Tested rollback plan and current continuity review** for everything in production. | document 52 |
-| 12 | **The board approves the direction and the risk appetite (C2)**, receives AI information at least quarterly and approves Transform bets. | document 01, section 5; document 13 |
+| **N-01** | **Complete inventory** of AI systems —own, third-party, corporate use and unauthorised— with an owner, regulatory classification and intensity. | document 32; document 90, section 2.4 |
+| **N-02** | **Every initiative is registered** before consuming budget, with its dates per phase, decisions, criteria and closing reason (traceability in 01 §6.11). | document 01, section 6.11; document 03 |
+| **N-03** | **Intensity is determined for each initiative** in phase 0 and reviewed at G3 and at each R6. One Enterprise criterion is enough. | document 01, section 9 |
+| **N-04** | **No phase or gate is skipped**: every initiative goes through all the gates of its lifecycle and each one is recorded with its criteria and its outcome. Which criteria are assessed and which sessions may be grouped depends on the intensity. | document 01, sections 7 and 9; document 21, section 3.4 |
+| **N-05** | **G3 is always decided separately**: it is the main stop gate. | document 01, section 6.1; document 90, section 2.4 |
+| **N-06** | **Segregation of duties**: roles and bodies assigned in line with the incompatibilities in 01 §8.2; whoever builds neither verifies nor decides their own work, and risk clearance is independent of the team. | document 01, section 8; document 30 |
+| **N-07** | **Dual validation and evidence prior to the decision**: without verified evidence there is no decision. | document 01, section 7.2; document 21, sections 3 and 4 |
+| **N-08** | **The "Yes ◆" criteria** (security, legal compliance, human oversight) are never accepted as a condition. | document 21, section 2.2 |
+| **N-09** | **Value hypothesis with baseline and stop criteria** before investing in feasibility. | document 01, section 6.4; document 40 |
+| **N-10** | **Regulatory classification and risk register** before design; a Critical residual risk without board approval blocks G3 and G5. | document 32; document 33 |
+| **N-11** | **Tested rollback plan and current continuity review** for everything in production; whatever was already in production when the framework was adopted is regularised within the time limit approved in C2, with a review equivalent to G7. | document 01, section 6.8; document 52; document 14, section 11 |
+| **N-12** | **The board approves in C2**, after the C1 diagnosis, the AI thesis, the ambition per sphere and the risk appetite; it receives AI information at least quarterly and approves Transform bets. | document 01, section 5; document 13 |
+| **N-13** | **Value and cost figures follow the measurement rules** and are reported to the board with the oversight dashboard. | document 01, section 11; document 40; document 60 |
+| **N-14** | **Nonconformities are managed** with the process in 01 §12. | document 01, section 12; document 37 |
 
 ---
 
@@ -120,6 +134,8 @@ An isolated Transform bet makes that initiative Enterprise, but **does not chang
 | **5 · Delivery and validation → G5** | No | Go-live with risk clearance. | Multi-level sign-off with veto power. |
 | **6 · Operation → R6** | No | **Six-monthly** continuity review. | **Quarterly** review. |
 | **7 · Evolution or retirement → G7** | No. It is convened when scaling or retirement is proposed, or when R6 brings it forward | The sponsor decides. | The AI Committee decides; the board, if a Transform bet is scaled. |
+
+**At Express intensity** (01 §9.4) gates are grouped as in Lite and G3 remains separate, but it may be resolved in writing with the risk clearance recorded; each gate is assessed with the reduced list in 21 §2.5 (all applicable "Yes ◆" criteria and the criteria that sustain the core) and the continuity review is annual. If an Enterprise criterion appears or eligibility ceases to be met, the initiative moves to Lite or Enterprise.
 
 **Three situations that look like skips and are not:**
 
@@ -186,7 +202,7 @@ The fact that a document is *Always* does not mean it must be read in full: nine
 
 ### 7.1 Lifecycle evidence (P01–P31)
 
-**No mandatory evidence is omitted in Lite: it is simplified.** Each template marks with *(Enterprise)* the fields that a Lite initiative may leave blank.
+**No mandatory evidence is omitted in Lite: it is simplified.** At Express, the P01 living record gathers the evidence for phases 0 to 5 and the evidence the company already has is referenced (21 §4.3). Each template marks with *(Enterprise)* the fields that a Lite initiative may leave blank.
 
 | Templates | Level | Note |
 |---|---|---|
@@ -288,3 +304,5 @@ The [SEVEN-G course](curso/M00_SEVEN-G_Curso_Guia_del_curso.html) follows these 
 | Version | Date | Changes |
 |---|---|---|
 | 0.1 | 19-09-2026 | First version. Three reading layers, five obligation levels, twelve rules that are never omitted, fifteen triggers, what can be grouped in phases and gates, level of each document, template and tool, and minimum reading by profile. |
+| 0.2 | 01-10-2026 | Section 3 becomes the SEVEN-G core (01 §14.1): fourteen rules coded N-01 to N-14. New section 2.3: principle, practice and instrument, and the proportionality principle. |
+| 0.3 | 01-10-2026 | Express intensity in sections 1, 5 and 7.1. |

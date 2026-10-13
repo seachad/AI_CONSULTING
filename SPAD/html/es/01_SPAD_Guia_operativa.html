@@ -392,6 +392,10 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 /* Ilustraciones en imagen (p. ej., SPAD): ocupan el ancho del lienzo y conservan su proporción */
 .g-lienzo img { display: block; width: 100%; height: auto; border: 1px solid var(--regla-2); }
 .ilustracion .g-lienzo img[src*="ilusion_de_velocidad"] { max-width: 560px; margin: 0 auto; }
+/* Nombre primero, código después (D155): el código entre paréntesis tras el nombre, en tablas y títulos */
+.codigo { font-family: var(--mono, 'Courier New', monospace); font-size: .88em; color: var(--tinta-2); white-space: nowrap; font-weight: 400; }
+h2 .codigo, h3 .codigo { font-weight: 400; }
+
 @page { @bottom-left { content: "SPAD · Guía operativa: fases, roles y veredictos"; font: 8.5pt "Libre Franklin", "Segoe UI", sans-serif; color: #74675e; } }
 </style>
 </head>
@@ -488,13 +492,13 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </blockquote>
 <h2 id="objeto"><span class="antetitulo">01</span>Objeto</h2>
 <p>Este documento describe <strong>cómo se usa SPAD en la práctica</strong>: el orden de aplicación de las fases, lo que entra y sale de cada una, los roles que intervienen, las reglas de interacción entre inteligencias artificiales y los veredictos que permiten avanzar o devuelven el trabajo. Es la referencia canónica de numeración y vocabulario para el resto de la biblioteca.</p>
-<p>SPAD no es una colección de instrucciones: es una <strong>metodología secuencial, bloqueante y auditable</strong> (<a href="00_SPAD_Que_es_y_para_que_sirve.html" title="Documento 00 &#183; Qu&#233; es SPAD y para qu&#233; sirve">documento 00</a>). Esta guía la hace operativa.</p>
+<p>SPAD no es una colección de instrucciones: es una <strong>metodología secuencial, bloqueante y auditable</strong> (<a href="00_SPAD_Que_es_y_para_que_sirve.html" title="Documento 00 &#183; Qu&#233; es SEVEN-G y para qu&#233; sirve">documento 00</a>). Esta guía la hace operativa.</p>
 <hr />
 <h2 id="el-principio-de-ejecucion-bloqueante"><span class="antetitulo">02</span>El principio de ejecución bloqueante</h2>
 <blockquote>
 <p>Ninguna fase puede comenzar hasta que la fase anterior ha producido su artefacto y una persona lo ha validado.</p>
 </blockquote>
-<p>Cada fase produce un <strong>artefacto explícito</strong> que es la entrada obligatoria de la siguiente. Si la validación falla, el trabajo vuelve a la fase que corresponde y el artefacto rechazado se conserva en el registro del tema (<a href="02_SPAD_Contextos_temas_y_registro.html" title="Documento 02 &#183; Contextos, temas y registro de artefactos">documento 02</a>), numerado como iteración.</p>
+<p>Cada fase produce un <strong>artefacto explícito</strong> que es la entrada obligatoria de la siguiente. Si la validación falla, el trabajo vuelve a la fase que corresponde y el artefacto rechazado se conserva en el registro del tema (<a href="02_SPAD_Contextos_temas_y_registro.html" title="Documento 02 &#183; Glosario y convenciones de SEVEN-G">documento 02</a>), numerado como iteración.</p>
 <blockquote>
 <p><strong>Por qué importa.</strong> El bloqueo es lo que convierte a SPAD en un método y no en una recomendación. Sin él, la presión de plazos lleva a «empezar el código mientras se termina el plan», y en ese momento el plan deja de gobernar nada.</p>
 </blockquote>
@@ -544,19 +548,19 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tr>
 <td><strong>IA analista</strong></td>
 <td>IA</td>
-<td>Documenta código existente y analiza el impacto de un cambio (ciclo de legado, <a href="04_SPAD_Ciclos_complementarios.html" title="Documento 04 &#183; Ciclos complementarios: legado, depuraci&#243;n, correcci&#243;n urgente y seguridad">documento 04</a>).</td>
+<td>Documenta código existente y analiza el impacto de un cambio (ciclo de legado, <a href="04_SPAD_Ciclos_complementarios.html" title="Documento 04 &#183; De d&#243;nde viene SEVEN-G, en qu&#233; se diferencia y por qu&#233; es abierto">documento 04</a>).</td>
 <td>Proponer la solución.</td>
 </tr>
 <tr>
 <td><strong>IA de diagnóstico</strong></td>
 <td>IA</td>
-<td>Analiza incidentes y produce el informe de causa raíz (ciclo de depuración, <a href="04_SPAD_Ciclos_complementarios.html" title="Documento 04 &#183; Ciclos complementarios: legado, depuraci&#243;n, correcci&#243;n urgente y seguridad">documento 04</a>).</td>
+<td>Analiza incidentes y produce el informe de causa raíz (ciclo de depuración, <a href="04_SPAD_Ciclos_complementarios.html" title="Documento 04 &#183; De d&#243;nde viene SEVEN-G, en qu&#233; se diferencia y por qu&#233; es abierto">documento 04</a>).</td>
 <td>Generar código de solución; modificar código de producción.</td>
 </tr>
 <tr>
 <td><strong>IA revisora de seguridad</strong></td>
 <td>IA distinta de la constructora</td>
-<td>Revisión de seguridad del código sensible (<a href="04_SPAD_Ciclos_complementarios.html" title="Documento 04 &#183; Ciclos complementarios: legado, depuraci&#243;n, correcci&#243;n urgente y seguridad">documento 04</a>).</td>
+<td>Revisión de seguridad del código sensible (<a href="04_SPAD_Ciclos_complementarios.html" title="Documento 04 &#183; De d&#243;nde viene SEVEN-G, en qu&#233; se diferencia y por qu&#233; es abierto">documento 04</a>).</td>
 <td>Corregir lo que revisa.</td>
 </tr>
 </tbody>
@@ -755,10 +759,10 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </table></div>
 <p>Reglas:</p>
 <ol>
-<li>Un veredicto sin justificación escrita es un <strong>artefacto incompleto</strong> y se descarta (<a href="03_SPAD_Politica_de_validacion.html" title="Documento 03 &#183; Pol&#237;tica de validaci&#243;n">documento 03</a>).</li>
+<li>Un veredicto sin justificación escrita es un <strong>artefacto incompleto</strong> y se descarta (<a href="03_SPAD_Politica_de_validacion.html" title="Documento 03 &#183; Herramientas de SEVEN-G y registro de iniciativas">documento 03</a>).</li>
 <li>Un GO con hallazgos críticos o altos abiertos es una <strong>autoaprobación</strong> y se descarta.</li>
 <li>Un NO-GO bien fundado <strong>no es un fallo del proceso</strong>: es el proceso funcionando.</li>
-<li>El veredicto lo emite la IA revisora; <strong>lo acepta o rechaza la persona que orquesta</strong>, que lo registra (<a href="02_SPAD_Contextos_temas_y_registro.html" title="Documento 02 &#183; Contextos, temas y registro de artefactos">documento 02</a>).</li>
+<li>El veredicto lo emite la IA revisora; <strong>lo acepta o rechaza la persona que orquesta</strong>, que lo registra (<a href="02_SPAD_Contextos_temas_y_registro.html" title="Documento 02 &#183; Glosario y convenciones de SEVEN-G">documento 02</a>).</li>
 </ol>
 <blockquote>
 <p><strong>Por qué importa.</strong> Tres vocabularios distintos para decir lo mismo (GO/NO-GO, OK/ISSUES, aprobado/rechazado) hacen imposible comparar fases, medir el proceso (<a href="08_SPAD_Autoevaluacion_y_metricas.html" title="Documento 08 &#183; Autoevaluaci&#243;n de conformidad y m&#233;tricas del proceso">documento 08</a>) y automatizar la validación de los contratos (<a href="07_SPAD_Contratos_de_entrada_y_salida.html" title="Documento 07 &#183; Contratos de entrada y salida">documento 07</a>). Un solo vocabulario es una condición de auditabilidad.</p>
@@ -875,17 +879,17 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>La coherencia entre trabajos.</td>
 </tr>
 <tr>
-<td>10</td>
+<td><strong>Mapa de esferas y niveles de ambici&#243;n</strong> <span class="codigo">(10)</span></td>
 <td><strong>Un tema por trabajo.</strong> Cada funcionalidad, corrección o incidente tiene su tema y su carpeta.</td>
 <td>La memoria de la organización.</td>
 </tr>
 <tr>
-<td>11</td>
+<td><strong>Modelo de madurez</strong> <span class="codigo">(11)</span></td>
 <td><strong>Modelo registrado.</strong> Cada artefacto indica qué modelo, versión e instrucciones lo produjeron.</td>
 <td>La reproducibilidad.</td>
 </tr>
 <tr>
-<td>12</td>
+<td><strong>&#205;ndice de transformaci&#243;n</strong> <span class="codigo">(12)</span></td>
 <td><strong>Ninguna IA aprueba.</strong> Toda aceptación la firma una persona identificada.</td>
 <td>La responsabilidad.</td>
 </tr>
@@ -902,19 +906,19 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </thead>
 <tbody>
 <tr>
-<td><strong><a href="00_SPAD_Que_es_y_para_que_sirve.html" title="Documento 00 &#183; Qu&#233; es SPAD y para qu&#233; sirve">documento 00</a> · Qué es SPAD y para qué sirve</strong></td>
+<td><strong><a href="00_SPAD_Que_es_y_para_que_sirve.html" title="Documento 00 &#183; Qu&#233; es SEVEN-G y para qu&#233; sirve">documento 00</a> · Qué es SPAD y para qué sirve</strong></td>
 <td>Presentación del método.</td>
 </tr>
 <tr>
-<td><strong><a href="02_SPAD_Contextos_temas_y_registro.html" title="Documento 02 &#183; Contextos, temas y registro de artefactos">documento 02</a> · Contextos, temas y registro de artefactos</strong></td>
+<td><strong><a href="02_SPAD_Contextos_temas_y_registro.html" title="Documento 02 &#183; Glosario y convenciones de SEVEN-G">documento 02</a> · Contextos, temas y registro de artefactos</strong></td>
 <td>Qué se carga antes de la fase 0 y cómo se guarda cada salida.</td>
 </tr>
 <tr>
-<td><strong><a href="03_SPAD_Politica_de_validacion.html" title="Documento 03 &#183; Pol&#237;tica de validaci&#243;n">documento 03</a> · Política de validación</strong></td>
+<td><strong><a href="03_SPAD_Politica_de_validacion.html" title="Documento 03 &#183; Herramientas de SEVEN-G y registro de iniciativas">documento 03</a> · Política de validación</strong></td>
 <td>Cuándo se descarta una respuesta.</td>
 </tr>
 <tr>
-<td><strong><a href="04_SPAD_Ciclos_complementarios.html" title="Documento 04 &#183; Ciclos complementarios: legado, depuraci&#243;n, correcci&#243;n urgente y seguridad">documento 04</a> · Ciclos complementarios</strong></td>
+<td><strong><a href="04_SPAD_Ciclos_complementarios.html" title="Documento 04 &#183; De d&#243;nde viene SEVEN-G, en qu&#233; se diferencia y por qu&#233; es abierto">documento 04</a> · Ciclos complementarios</strong></td>
 <td>Legado, depuración, corrección urgente y seguridad.</td>
 </tr>
 <tr>
@@ -955,7 +959,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </table></div>
 
 </main>
-<footer class="pie"><div><span>© 2026 Fernando García Varela · Metodolog&#237;a SPAD</span><span>Generado el 28-09-2026</span></div><p class="pie-ia">Contenido generado y maquetado con apoyo de IA bajo supervisi&#243;n editorial del autor.</p></footer>
+<footer class="pie"><div><span>© 2026 Fernando García Varela · Metodolog&#237;a SPAD</span><span>Generado el 13-10-2026</span></div><p class="pie-ia">Contenido generado y maquetado con apoyo de IA bajo supervisi&#243;n editorial del autor.</p></footer>
 <script src="../../../SEVEN-G/html/es/codigos.js" defer></script>
 
 <script>

@@ -20,7 +20,7 @@
 
 ## 1. Objeto y alcance
 
-Este documento convierte el ciclo de vida de la iniciativa definido en el documento 01 (sección 6) en instrucciones de trabajo. Para cada fase, de la 0 a la 7, indica qué hay que hacer, en qué orden, quién lo hace, qué evidencias deben existir antes de la puerta de decisión y cómo se prepara esa puerta. Incluye las diferencias por intensidad (Lite o Enterprise), por nivel de ambición y por tecnología, y las transiciones entre fases.
+Este documento convierte el ciclo de vida de la iniciativa definido en el documento 01 (sección 6) en instrucciones de trabajo. Para cada fase, de la 0 a la 7, indica qué hay que hacer, en qué orden, quién lo hace, qué evidencias deben existir antes de la puerta de decisión y cómo se prepara esa puerta. Incluye las diferencias por intensidad (Lite o Enterprise; en Express, la ficha viva de P01 §14 sustituye a las plantillas y cada puerta se evalúa con la lista reducida de 21 §2.5), por nivel de ambición y por tecnología, y las transiciones entre fases.
 
 **Qué no cubre y dónde se encuentra**
 

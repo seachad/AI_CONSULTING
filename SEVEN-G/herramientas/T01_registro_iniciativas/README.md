@@ -84,7 +84,7 @@ La aplicación no envía datos a terceros ni carga recursos externos (usa las fu
 - Resultados por puerta (21 §5.3): G0 y G4–G5 sin Pivotar; G1–G3 con Pivotar (vuelta a la fase 2); **R6**: Continuar la operación · Continuar con condiciones · Adelantar G7 (casilla de desviación que obliga a adelantar); **G7**: Escalar (vuelve a fase 6 y abre el alta de la nueva iniciativa de alcance ampliado) · Iterar (fase de vuelta, por defecto 6) · Retirar (motivo codificado, plan ejecutado o pendiente de registrar).
 - Quién verifica y decide según 01 §7.5 (en Lite, G3–G5: patrocinador con conformidad de riesgos).
 
-**T04 · Intensidad.** Ocho criterios de 01 §9.2 con Sí/No/Sin dato; basta uno para Enterprise. Si no hay ningún sí pero hay criterios sin dato, el resultado se marca como Lite provisional.
+**T04 · Intensidad.** Ocho criterios de 01 §9.2 con Sí/No/Sin dato; basta uno para Enterprise. Si no hay ningún sí pero hay criterios sin dato, el resultado se marca como Lite provisional. Con los ocho en «No», el bloque **Elegibilidad para Express** (01 §9.4, P04 §5.1; D147) recoge seis condiciones y quién las confirma: si todas son «Sí» y hay confirmación, la intensidad es **Express**. Una iniciativa Express se evalúa con la columna Express del catálogo (21 §2.5): los criterios fuera de la lista reducida salen como *No aplica* justificado; sigue el circuito de Lite (oficina de IA, patrocinador con conformidad de riesgos en G3–G5), su revisión de continuidad es anual (`revision_continuidad_dias.express`, 365 por defecto) y la alerta **Fuera de Express** avisa si deja de cumplir la elegibilidad (autonomía A2/A3, exposición a clientes, alto riesgo, Transformar o elegibilidad sin confirmar).
 
 **T05 · Ambición.** Cinco preguntas de 00 §5.2: 1 o 4 → Transformar; 2 o 3 → Aumentar; 1–4 negativas → Optimizar. Según el momento actualiza la ambición propuesta (fase 1), confirmada (fase 2) o real (fase 7). Transformar fuerza intensidad Enterprise.
 
@@ -143,7 +143,7 @@ Un único objeto JSON con `version_esquema` (`0.8`; los ficheros `0.1` a `0.7` s
 | `eventos` | Evento con fecha, autor, motivo y cambio. Los que cambian el estado de la iniciativa (alta, entrada en fase, parada y retirada) guardan además las `cifras` de ese momento: inversión, coste recurrente, eficiencias y retorno, esperados y realizados | `EVT-NNNNNN` |
 | `decisiones_gate` | Solicitud, verificación, decisión, órgano, elevación, resultado propuesto y resultado, firmas G5, criterios evaluados (`codigo`, `estado`, `justificacion`, `evidencias`) | `DG-AAAA-NNN` |
 | `condiciones` | Condición con decisión, criterio, responsable, plazo, verificación y estado | `CND-AAAA-NNN` |
-| `evidencias` | Enlace, plantilla, versión, autor, fecha y verificación (se enlaza, no se copia) | `EVI-AAAA-NNNN` |
+| `evidencias` | Enlace, plantilla, versión, autor, fecha y verificación (se enlaza, no se copia); `origen` («plantilla» o «referencia», cuando es una evidencia que la compañía ya tenía y se referencia, 21 §4.3) y `sistema_origen` | `EVI-AAAA-NNNN` |
 | `valores` | Importe esperado o realizado por tipo, fórmula, estado (validado, declarado, estimado), periodo, fuente, concepto del panel (`concepto`, opcional) y unidad de negocio (`area`, opcional, iniciativas transversales) | `VAL-NNNN` |
 | `riesgos` | Riesgo (T06): descripción, categoría, riesgo tipo, sistema, responsable, valoración inherente y residual, controles y su eficacia, respuesta, contingencia, estado, tendencia, revisión y aceptación | `IA-AAAA-NNN · Rnn` |
 | `no_conformidades` · `incidentes` · `proveedores` · `recomendaciones` | Entidades relacionadas (en esta versión se muestran y se exportan; su gestión completa corresponde a T08 y T09; las recomendaciones se gestionan en la vista Consejo, T18) | `NC-AAAA-NNN` · `INC-AAAA-NNN` · `PRV-NNN` · `REC-AAAA-NNN` |
@@ -186,6 +186,7 @@ El conector `../T17_panel_consejo/t01_a_panel.py` convierte el JSON completo de 
 | `iniciativas[].alcance.umbral_adopcion_pct` | 0–100 | Alerta «Adopción baja» cuando una unidad en uso tiene menos licencias activas sobre asignadas. |
 | `iniciativas[].alcance.habilita[]` | códigos `IA-AAAA-NNN` | Plataforma: casos a los que se imputa su valor. |
 | `valores[].area` | una unidad de negocio | Coste y valor de cada unidad; sin `area`, lo común de la iniciativa (gobierno, formación). La pestaña Valor muestra la escalera por unidad: coste, adopción, horas declaradas, capacidad liberada y valor materializado. |
+| `iniciativas[].resultado_operativo[]` | `indicador` (IND- del documento 41), `nombre`, `unidad`, `sentido` (`subir` · `bajar`), `base`, `fecha_base`, `objetivo`, `actual`, `fecha_actual`, `fuente` | Resultado operativo (D150): indicadores físicos con línea base, objetivo y valor actual. La pestaña Valor abre con las **tres perspectivas** del caso (valor económico, resultado operativo y exposición al riesgo, 40 §11.1, regla 11), que no se fusionan; nunca se traducen a euros. |
 
 **Campos añadidos en el esquema 0.4: matriz y registro de riesgos (T06)** (documento 33 §8.1; todos opcionales en `riesgos[]`, un registro 0.1, 0.2 o 0.3 sigue siendo válido):
 

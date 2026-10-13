@@ -392,6 +392,10 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 /* Ilustraciones en imagen (p. ej., SPAD): ocupan el ancho del lienzo y conservan su proporción */
 .g-lienzo img { display: block; width: 100%; height: auto; border: 1px solid var(--regla-2); }
 .ilustracion .g-lienzo img[src*="ilusion_de_velocidad"] { max-width: 560px; margin: 0 auto; }
+/* Nombre primero, código después (D155): el código entre paréntesis tras el nombre, en tablas y títulos */
+.codigo { font-family: var(--mono, 'Courier New', monospace); font-size: .88em; color: var(--tinta-2); white-space: nowrap; font-weight: 400; }
+h2 .codigo, h3 .codigo { font-weight: 400; }
+
 @page { @bottom-left { content: "SPAD · Contratos de entrada y salida"; font: 8.5pt "Libre Franklin", "Segoe UI", sans-serif; color: #74675e; } }
 </style>
 </head>
@@ -487,7 +491,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <p><strong>Aviso legal y exención de responsabilidad.</strong> SPAD es una metodología de referencia que se ofrece «tal cual» y con fines exclusivamente informativos. No constituye asesoramiento jurídico, regulatorio ni profesional, no garantiza resultados ni el cumplimiento de ninguna norma y no es una certificación. <strong>Cada organización que use SPAD es la única responsable de validar sus resultados, identificar la normativa que le aplica, verificar su vigencia y certificar su propio cumplimiento regulatorio</strong>, con el asesoramiento cualificado que corresponda. Esta metodología es una ayuda genérica y gratuita, compartida con la comunidad para que nadie tenga que empezar desde cero; cada persona u organización puede y debe adaptarla a su propio uso. No debe entenderse que sus partes jurídicamente sensibles hayan sido revisadas por una asesoría jurídica: esas revisiones, para cada empresa o sector, son responsabilidad última de la empresa, el consultor o la organización que la use. Aunque se procura mantenerla al día, alguna norma puede haber cambiado sin que se recoja aquí. En la máxima medida permitida por la ley, el autor no asume responsabilidad alguna por los efectos de su aplicación en ninguna organización ni por su aplicabilidad completa. La metodología no otorga certificación de ningún tipo. El autor no asume responsabilidad alguna por el uso que se haga de este contenido ni por las decisiones que se adopten con él. Los datos, cifras, compañías y casos de los ejemplos son ficticios o ilustrativos.</p>
 </blockquote>
 <h2 id="objeto"><span class="antetitulo">01</span>Objeto</h2>
-<p>Cada fase de SPAD produce un artefacto con una <strong>estructura contractual</strong>: secciones y campos obligatorios que la instrucción exige (<a href="06_SPAD_Instrucciones_por_fase.html" title="Documento 06 &#183; Instrucciones por fase">documento 06</a>) y cuya ausencia invalida la respuesta (<a href="03_SPAD_Politica_de_validacion.html" title="Documento 03 &#183; Pol&#237;tica de validaci&#243;n">documento 03</a>). Este documento define esa estructura en JSON, de modo que:</p>
+<p>Cada fase de SPAD produce un artefacto con una <strong>estructura contractual</strong>: secciones y campos obligatorios que la instrucción exige (<a href="06_SPAD_Instrucciones_por_fase.html" title="Documento 06 &#183; Instrucciones por fase">documento 06</a>) y cuya ausencia invalida la respuesta (<a href="03_SPAD_Politica_de_validacion.html" title="Documento 03 &#183; Herramientas de SEVEN-G y registro de iniciativas">documento 03</a>). Este documento define esa estructura en JSON, de modo que:</p>
 <ul>
 <li>una persona pueda comprobar de un vistazo que la salida está completa;</li>
 <li>un validador automático pueda rechazar un artefacto incompleto antes de que lo vea nadie;</li>
@@ -554,7 +558,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tbody>
 </table></div>
 <h3 id="2-3-registro-de-validacion-humana">2.3 Registro de validación humana</h3>
-<p>No forma parte del artefacto de la IA: lo escribe la persona en <code>VALIDACION.md</code> del tema (<a href="02_SPAD_Contextos_temas_y_registro.html" title="Documento 02 &#183; Contextos, temas y registro de artefactos">documento 02</a>, sección 4.2). Su forma canónica:</p>
+<p>No forma parte del artefacto de la IA: lo escribe la persona en <code>VALIDACION.md</code> del tema (<a href="02_SPAD_Contextos_temas_y_registro.html" title="Documento 02 &#183; Glosario y convenciones de SEVEN-G">documento 02</a>, sección 4.2). Su forma canónica:</p>
 <pre><code class="language-json">{
   &quot;artefacto&quot;: &quot;SPAD_02_AUDIT_PLAN&quot;,
   &quot;persona&quot;: &quot;identificador&quot;,
@@ -792,7 +796,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </code></pre>
 <hr />
 <h2 id="formato-de-los-contextos"><span class="antetitulo">05</span>Formato de los contextos</h2>
-<p>Los contextos no son artefactos de fase y se escriben en Markdown con secciones fijas (<a href="02_SPAD_Contextos_temas_y_registro.html" title="Documento 02 &#183; Contextos, temas y registro de artefactos">documento 02</a>):</p>
+<p>Los contextos no son artefactos de fase y se escriben en Markdown con secciones fijas (<a href="02_SPAD_Contextos_temas_y_registro.html" title="Documento 02 &#183; Glosario y convenciones de SEVEN-G">documento 02</a>):</p>
 <pre><code># CONTEXTO_GLOBAL (versión n)
 ## Artefactos
 ## Pruebas
@@ -865,19 +869,19 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </thead>
 <tbody>
 <tr>
-<td><strong><a href="01_SPAD_Guia_operativa.html" title="Documento 01 &#183; Gu&#237;a operativa: fases, roles y veredictos">documento 01</a> · Guía operativa</strong></td>
+<td><strong><a href="01_SPAD_Guia_operativa.html" title="Documento 01 &#183; Metodolog&#237;a fundacional de SEVEN-G">documento 01</a> · Guía operativa</strong></td>
 <td>Fases que producen cada artefacto.</td>
 </tr>
 <tr>
-<td><strong><a href="02_SPAD_Contextos_temas_y_registro.html" title="Documento 02 &#183; Contextos, temas y registro de artefactos">documento 02</a> · Contextos, temas y registro de artefactos</strong></td>
+<td><strong><a href="02_SPAD_Contextos_temas_y_registro.html" title="Documento 02 &#183; Glosario y convenciones de SEVEN-G">documento 02</a> · Contextos, temas y registro de artefactos</strong></td>
 <td>Registro del modelo y de validación.</td>
 </tr>
 <tr>
-<td><strong><a href="03_SPAD_Politica_de_validacion.html" title="Documento 03 &#183; Pol&#237;tica de validaci&#243;n">documento 03</a> · Política de validación</strong></td>
+<td><strong><a href="03_SPAD_Politica_de_validacion.html" title="Documento 03 &#183; Herramientas de SEVEN-G y registro de iniciativas">documento 03</a> · Política de validación</strong></td>
 <td>Causas que el validador automático detecta.</td>
 </tr>
 <tr>
-<td><strong><a href="04_SPAD_Ciclos_complementarios.html" title="Documento 04 &#183; Ciclos complementarios: legado, depuraci&#243;n, correcci&#243;n urgente y seguridad">documento 04</a> · Ciclos complementarios</strong></td>
+<td><strong><a href="04_SPAD_Ciclos_complementarios.html" title="Documento 04 &#183; De d&#243;nde viene SEVEN-G, en qu&#233; se diferencia y por qu&#233; es abierto">documento 04</a> · Ciclos complementarios</strong></td>
 <td>Contratos L1, L2, D1, U y S1.</td>
 </tr>
 <tr>
@@ -910,7 +914,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </table></div>
 
 </main>
-<footer class="pie"><div><span>© 2026 Fernando García Varela · Metodolog&#237;a SPAD</span><span>Generado el 28-09-2026</span></div><p class="pie-ia">Contenido generado y maquetado con apoyo de IA bajo supervisi&#243;n editorial del autor.</p></footer>
+<footer class="pie"><div><span>© 2026 Fernando García Varela · Metodolog&#237;a SPAD</span><span>Generado el 13-10-2026</span></div><p class="pie-ia">Contenido generado y maquetado con apoyo de IA bajo supervisi&#243;n editorial del autor.</p></footer>
 <script src="../../../SEVEN-G/html/es/codigos.js" defer></script>
 
 <script>

@@ -3,10 +3,10 @@
 | Campo | Valor |
 |---|---|
 | Fecha | 12-10-2026 |
-| Decisiones que ejecuta | D143 (grados M/E/R, perfiles EM y cuestionario de entrada), D144 (nombre primero, código después) y D145 (marcador de la iniciativa) |
+| Decisiones que ejecuta | D154 (grados M/E/R, perfiles EM y cuestionario de entrada), D155 (nombre primero, código después) y D156 (marcador de la iniciativa) |
 | Fuentes | `_trabajo/20261012_Matriz_de_empresas_caminos_y_grados_de_exigencia.md` · `_trabajo/20261012_Batida_de_codigos_y_cuadro_de_mando_de_Dans.md` · `_trabajo/20261012_Prototipo_cuestionario_de_entrada_T23.html` |
 | Por qué en local | Toca Markdown publicado en ES y EN y exige regenerar HTML, PDF, Word y el índice de códigos, y pasar la prueba de humo en el navegador: en la nube no hay Chromium en la ruta de Edge (D125). Lo que no exige regenerar (lista de nombres, propuesta, prototipo, decisiones) ya está hecho en la nube. |
-| Orden | E1 y E2 hechas en la nube el 12-10-2026. E3, E4 y E5: **después** de integrar en `main` la rama de Express (`claude/blissful-hypatia-tcfdft`, D144–D153), porque P01, P04, 21 y 94 cambian en las dos. |
+| Orden | E1 y E2 hechas en la nube el 12-10-2026. E3, E4 y E5: rama de Express (D143–D153) integrada en `main` el 13-10-2026; ya pueden empezar. |
 
 ## Lo que ya está hecho (nube, 12-10-2026)
 
@@ -46,7 +46,7 @@
 
 Orden: entrada (`build/entrada/<idioma>/index.html`), 00, 01, 90, 94, 96, curso M00–M09, 60, 61; después 10–14, 20–23, 30–38, 40–43, 50–54, 62, 91–95; las plantillas al final (el nombre ya va en el título de cada sección; solo se revisan las instrucciones de uso).
 
-Regla de trabajo por documento: primera mención de cada elemento en cada sección → «nombre (código)»; siguientes → nombre; «documento NN» → «nombre del documento (documento NN)» la primera vez; «NN §x.y» → «qué hay allí (NN §x.y)». Casos tipo en la propuesta §1.2. **No se cambia el sentido de ninguna regla**: es redacción. Cada documento sube de versión (sección de control de versiones) con una línea «Redacción: nombre primero, código después (D144)».
+Regla de trabajo por documento: primera mención de cada elemento en cada sección → «nombre (código)»; siguientes → nombre; «documento NN» → «nombre del documento (documento NN)» la primera vez; «NN §x.y» → «qué hay allí (NN §x.y)». Casos tipo en la propuesta §1.2. **No se cambia el sentido de ninguna regla**: es redacción. Cada documento sube de versión (sección de control de versiones) con una línea «Redacción: nombre primero, código después (D155)».
 
 **Aceptación por documento**: ES y EN a la vez; verificación en verde; el recuento (E1.d) de ese documento en cero.
 
@@ -63,10 +63,10 @@ Regla de trabajo por documento: primera mención de cada elemento en cada secci�
 
 **Aceptación**: verificación en verde; prueba de humo con la pestaña Valor y la ficha del panel; sección 33 (plan de realización) sigue pasando.
 
-### E5 · Cuestionario de entrada en T23 y grados M/E/R (D143; tres a cuatro sesiones)
+### E5 · Cuestionario de entrada en T23 y grados M/E/R (D154; tres a cuatro sesiones)
 
 Según la propuesta del 12-10-2026 §8 y §10: `recorrido.json` con Q13–Q22, perfiles EM y MP6; T23 con la tarjeta de resultado del prototipo, ayuda «?» y dos idiomas; `madurez[].objetivos` en T01 y la fila «actual · objetivo · brecha» en T15 y T17; columna `grado` en `catalogo_criterios.json`; `scorecard_minimo.json` y fila «Inventario» en 60 §4.2; (M)/(E)/(R) en las 74 plantillas; 94 §2.2 y 96 §2 generados desde los datos. El prototipo `_trabajo/20261012_Prototipo_cuestionario_de_entrada_T23.html` es la referencia funcional y se retira cuando T23 lo incorpore.
 
 ## Cierre
 
-Al terminar cada entrega: verificación en verde, commit y push a `main` (D52), estado en el plan documental y en el pendiente de `CLAUDE.md`; al terminar E5, cerrar el pendiente del 12-10-2026 y anotar en D143–D145 «implantada el DD-MM-AAAA».
+Al terminar cada entrega: verificación en verde, commit y push a `main` (D52), estado en el plan documental y en el pendiente de `CLAUDE.md`; al terminar E5, cerrar el pendiente del 12-10-2026 y anotar en D154–D156 «implantada el DD-MM-AAAA».

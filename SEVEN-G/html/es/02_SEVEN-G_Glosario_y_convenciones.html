@@ -392,7 +392,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 /* Ilustraciones en imagen (p. ej., SPAD): ocupan el ancho del lienzo y conservan su proporción */
 .g-lienzo img { display: block; width: 100%; height: auto; border: 1px solid var(--regla-2); }
 .ilustracion .g-lienzo img[src*="ilusion_de_velocidad"] { max-width: 560px; margin: 0 auto; }
-/* Nombre primero, código después (D144): el código entre paréntesis tras el nombre, en tablas y títulos */
+/* Nombre primero, código después (D155): el código entre paréntesis tras el nombre, en tablas y títulos */
 .codigo { font-family: var(--mono, 'Courier New', monospace); font-size: .88em; color: var(--tinta-2); white-space: nowrap; font-weight: 400; }
 h2 .codigo, h3 .codigo { font-weight: 400; }
 
@@ -472,12 +472,12 @@ h2 .codigo, h3 .codigo { font-weight: 400; }
 
 <div id="top"></div>
 <header class="portada">
-  <div class="cabecera"><div class="marca"><i></i>SEVEN-G</div><div class="cabecera-dato">Documento 02 · 28-09-2026</div></div>
+  <div class="cabecera"><div class="marca"><i></i>SEVEN-G</div><div class="cabecera-dato">Documento 02 · 01-10-2026</div></div>
   <div class="portada-cuerpo">
     <p class="antetitulo">Documento 02 &#183; Glosario y convenciones</p>
     <h1>Glosario y convenciones de SEVEN-G</h1>
     <p class="entradilla">T&#233;rminos, escalas, c&#243;digos y reglas de redacci&#243;n comunes a toda la biblioteca</p>
-    <div class="firma"><span><b>Fernando Garc&#237;a Varela</b></span><span>Versión 1.2</span><span>28-09-2026</span><span>Vigente</span></div>
+    <div class="firma"><span><b>Fernando Garc&#237;a Varela</b></span><span>Versión 1.7</span><span>01-10-2026</span><span>Vigente</span></div>
     <div class="cifras"><div class="cifra"><b>209</b><span>t&#233;rminos definidos</span></div><div class="cifra"><b>18</b><span>escalas oficiales</span></div><div class="cifra"><b>32</b><span>familias de c&#243;digos</span></div><div class="cifra"><b>68</b><span>documentos y plantillas numerados</span></div></div>
   </div>
 </header>
@@ -1039,6 +1039,12 @@ h2 .codigo, h3 .codigo { font-weight: 400; }
 <td>Enterprise criteria †</td>
 </tr>
 <tr>
+<td><strong>Crosswalk de cobertura</strong></td>
+<td>Tabla que indica, para cada requisito de una norma o regulación (<a class="ref-ext" href="https://www.iso.org/standard/42001" target="_blank" rel="noopener" title="ISO/IEC 42001:2023 Tecnolog&#237;a de la informaci&#243;n — Inteligencia artificial — Sistema de gesti&#243;n">ISO/IEC 42001</a>, 38507, 23894, 42005, <a class="ref-ext" href="https://www.nist.gov/publications/artificial-intelligence-risk-management-framework-ai-rmf-10" target="_blank" rel="noopener" title="Marco de gesti&#243;n de riesgos de inteligencia artificial del NIST (AI RMF 1.0), NIST AI 100-1">NIST AI RMF</a>, Reglamento Europeo de IA), dónde lo cubre SEVEN-G, con qué regla del núcleo y qué evidencia, y su cobertura: directa, parcial, requiere control externo o no cubierto. Se genera desde un fichero de datos versionado; no es una certificación ni una declaración de conformidad.</td>
+<td>34 §9.1</td>
+<td>coverage crosswalk</td>
+</tr>
+<tr>
 <td><strong>Cuasi incidente</strong></td>
 <td>Suceso que pudo causar daño y no lo causó gracias a un control o por azar. Se registra como incidente S4.</td>
 <td>37 §1.1</td>
@@ -1089,7 +1095,7 @@ h2 .codigo, h3 .codigo { font-weight: 400; }
 </tr>
 <tr>
 <td><strong>Declaración de aplicación</strong></td>
-<td>Declaración de una compañía de que aplica SEVEN-G porque cumple las condiciones mínimas de 01 §14. Es una <strong>autodeclaración verificable</strong> por auditoría, no una certificación: en la versión 0.x no existe certificación oficial del marco.</td>
+<td>Declaración de una compañía de que aplica SEVEN-G porque cumple las catorce reglas del núcleo (01 §14.1). Es una <strong>autodeclaración verificable</strong> por auditoría, no una certificación: en la versión 0.x no existe certificación oficial del marco.</td>
 <td>01 §14; 38 §11; 93 §7.3</td>
 <td>statement of application †</td>
 </tr>
@@ -1215,6 +1221,12 @@ h2 .codigo, h3 .codigo { font-weight: 400; }
 <td>valid evidence †</td>
 </tr>
 <tr>
+<td><strong>Express (intensidad)</strong></td>
+<td>Intensidad para iniciativas sin criterio Enterprise que, además, son de uso interno, reversibles, con autonomía A0 o A1, sin datos sensibles y por debajo del umbral Express de C2, con elegibilidad confirmada por la función de riesgos. Mismas puertas que Lite, G3 por separado (puede resolverse por escrito), lista reducida de criterios (21 §2.5), ficha viva y R6 anual; si deja de cumplirse la elegibilidad, pasa a Lite o a Enterprise.</td>
+<td>01 §9.4; 21 §2.5</td>
+<td>Express intensity</td>
+</tr>
+<tr>
 <td><strong>Exposición directa</strong></td>
 <td>Criterio Enterprise: clientes, pacientes, ciudadanos u otras personas externas interactúan directamente con el sistema.</td>
 <td>01 §9.2; 03 §3.3</td>
@@ -1233,6 +1245,12 @@ h2 .codigo, h3 .codigo { font-weight: 400; }
 </tr>
 </thead>
 <tbody>
+<tr>
+<td><strong>Ficha viva</strong></td>
+<td>Evidencia única de una iniciativa Express (sección Express de <a href="plantillas/P01_SEVEN-G_Carta_de_la_iniciativa.html" title="Plantilla P01 &#183; Carta de la iniciativa">P01</a>) que reúne contexto, oportunidad, hipótesis de valor, riesgo, responsables, prueba, aprobación y reversión, y se actualiza en cada puerta; las evidencias que la compañía ya tiene se referencian (21 §4.3).</td>
+<td>01 §9.4; <a href="plantillas/P01_SEVEN-G_Carta_de_la_iniciativa.html" title="Plantilla P01 &#183; Carta de la iniciativa">P01</a></td>
+<td>living record</td>
+</tr>
 <tr>
 <td><strong>Fases del ciclo de vida</strong></td>
 <td>0 Contexto y restricciones · 1 Descubrimiento de oportunidades · 2 Hipótesis de valor · 3 Viabilidad y riesgo · 4 Diseño de la solución · 5 Entrega y validación · 6 Operación y gobierno · 7 Evolución o retirada. La fase 0 es habilitante: sin G0 aprobado la iniciativa no puede consumir presupuesto ni acceder a datos de producción.</td>
@@ -1418,7 +1436,7 @@ h2 .codigo, h3 .codigo { font-weight: 400; }
 </tr>
 <tr>
 <td><strong>Intensidad</strong></td>
-<td>Grado de exigencia con el que se aplica el ciclo de vida a una iniciativa: Lite o Enterprise. Se determina en la fase 0 y se revisa en G3 y en cada R6.</td>
+<td>Grado de exigencia con el que se aplica el ciclo de vida a una iniciativa: Express, Lite o Enterprise. Se determina en la fase 0 y se revisa en G3 y en cada R6.</td>
 <td>01 §4, §9</td>
 <td>Lite / Enterprise intensity</td>
 </tr>
@@ -1623,6 +1641,12 @@ h2 .codigo, h3 .codigo { font-weight: 400; }
 <td>01 §12; 37 §3</td>
 <td>minor · major · critical nonconformity</td>
 </tr>
+<tr>
+<td><strong>Núcleo de SEVEN-G</strong></td>
+<td>Conjunto mínimo y estable de catorce reglas (N-01 a N-14) que distingue aplicar SEVEN-G de usar algunas de sus plantillas: inventario, registro, intensidad, puertas, G3 por separado, separación de funciones, validación dual, criterios «Sí ◆», hipótesis de valor, riesgos, reversión y continuidad, consejo, medición y no conformidades. Es igual para toda compañía, intensidad y alcance, tiene su propia versión y solo cambia por decisión expresa del autor.</td>
+<td>01 §14.1; 94 §3</td>
+<td>SEVEN-G core</td>
+</tr>
 </tbody>
 </table></div>
 <h3 id="3-13-o">3.13 O</h3>
@@ -1699,7 +1723,7 @@ h2 .codigo, h3 .codigo { font-weight: 400; }
 </tr>
 <tr>
 <td><strong>Perfil actual · perfil objetivo</strong></td>
-<td>En el NIST CSF y en el <a class="ref-ext" href="https://www.nist.gov/publications/artificial-intelligence-risk-management-framework-ai-rmf-10" target="_blank" rel="noopener" title="Marco de gesti&#243;n de riesgos de inteligencia artificial del NIST (AI RMF 1.0), NIST AI 100-1">NIST AI RMF</a>, el <strong>perfil actual</strong> describe los resultados (subcategorías) que la organización alcanza hoy y el <strong>perfil objetivo</strong>, los que quiere alcanzar, priorizados. La diferencia entre ambos es la brecha que se convierte en plan de acción. SEVEN-G expresa el grado de cada resultado con la escala de madurez 0–5 (sección 4.9), no con los <em>tiers</em>.</td>
+<td>En el NIST CSF y en el NIST AI RMF, el <strong>perfil actual</strong> describe los resultados (subcategorías) que la organización alcanza hoy y el <strong>perfil objetivo</strong>, los que quiere alcanzar, priorizados. La diferencia entre ambos es la brecha que se convierte en plan de acción. SEVEN-G expresa el grado de cada resultado con la escala de madurez 0–5 (sección 4.9), no con los <em>tiers</em>.</td>
 <td>34 §5.3</td>
 <td>current profile · target profile</td>
 </tr>
@@ -1729,7 +1753,7 @@ h2 .codigo, h3 .codigo { font-weight: 400; }
 </tr>
 <tr>
 <td><strong>Plantilla</strong></td>
-<td>Documento tipo del bloque H: <a href="plantillas/P01_SEVEN-G_Carta_de_la_iniciativa.html" title="Plantilla P01 &#183; Carta de la iniciativa">P01</a>–<a href="plantillas/P31_SEVEN-G_Ficha_de_caso_de_uso.html" title="Plantilla P31 &#183; Ficha de caso de uso">P31</a> para elaborar las evidencias obligatorias de la iniciativa <a href="plantillas/P32_SEVEN-G_Mandato_de_implantacion.html" title="Plantilla P32 &#183; Mandato de implantaci&#243;n de SEVEN-G">P32</a>–<a href="plantillas/P71_SEVEN-G_Plan_de_transferencia_y_nota_de_salida.html" title="Plantilla P71 &#183; Plan de transferencia y nota de salida">P71</a> para los registros, informes y decisiones de la compañía, el consejo, el cumplimiento, los terceros, la auditoría y la implantación del marco, y <a href="plantillas/P72_SEVEN-G_Perfil_de_seguridad_de_IA_CSF_y_Cyber_AI_Profile.html" title="Plantilla P72 &#183; Perfil de seguridad de IA (CSF 2.0 / Cyber AI Profile)">P72</a>–<a href="plantillas/P74_SEVEN-G_Declaracion_de_aplicabilidad_ISO_IEC_42001.html" title="Plantilla P74 &#183; Declaraci&#243;n de aplicabilidad de ISO/IEC 42001">P74</a> para los perfiles NIST y la declaración de aplicabilidad de <a class="ref-ext" href="https://www.iso.org/standard/42001" target="_blank" rel="noopener" title="ISO/IEC 42001:2023 Tecnolog&#237;a de la informaci&#243;n — Inteligencia artificial — Sistema de gesti&#243;n">ISO/IEC 42001</a>. Cada una tiene versión editable en Word.</td>
+<td>Documento tipo del bloque H: <a href="plantillas/P01_SEVEN-G_Carta_de_la_iniciativa.html" title="Plantilla P01 &#183; Carta de la iniciativa">P01</a>–<a href="plantillas/P31_SEVEN-G_Ficha_de_caso_de_uso.html" title="Plantilla P31 &#183; Ficha de caso de uso">P31</a> para elaborar las evidencias obligatorias de la iniciativa <a href="plantillas/P32_SEVEN-G_Mandato_de_implantacion.html" title="Plantilla P32 &#183; Mandato de implantaci&#243;n de SEVEN-G">P32</a>–<a href="plantillas/P71_SEVEN-G_Plan_de_transferencia_y_nota_de_salida.html" title="Plantilla P71 &#183; Plan de transferencia y nota de salida">P71</a> para los registros, informes y decisiones de la compañía, el consejo, el cumplimiento, los terceros, la auditoría y la implantación del marco, y <a href="plantillas/P72_SEVEN-G_Perfil_de_seguridad_de_IA_CSF_y_Cyber_AI_Profile.html" title="Plantilla P72 &#183; Perfil de seguridad de IA (CSF 2.0 / Cyber AI Profile)">P72</a>–<a href="plantillas/P74_SEVEN-G_Declaracion_de_aplicabilidad_ISO_IEC_42001.html" title="Plantilla P74 &#183; Declaraci&#243;n de aplicabilidad de ISO/IEC 42001">P74</a> para los perfiles NIST y la declaración de aplicabilidad de ISO/IEC 42001. Cada una tiene versión editable en Word.</td>
 <td>01 §6.10; 03 §5</td>
 <td>template</td>
 </tr>
@@ -1758,6 +1782,12 @@ h2 .codigo, h3 .codigo { font-weight: 400; }
 <td>main stop gate</td>
 </tr>
 <tr>
+<td><strong>Principio obligatorio · práctica · instrumento</strong></td>
+<td>Tres clases de contenido de la biblioteca. <strong>Principio obligatorio</strong>: regla del núcleo (N-01 a N-14), que se cumple siempre. <strong>Práctica</strong>: forma de cumplir el núcleo que desarrollan los documentos, obligatoria según su nivel y su disparador o recomendada. <strong>Instrumento</strong>: plantilla o herramienta que facilita la práctica; lo obligatorio es la evidencia que ordena, no su formato.</td>
+<td>94 §2.3</td>
+<td>mandatory principle · practice · instrument</td>
+</tr>
+<tr>
 <td><strong>Programa</strong></td>
 <td>Agrupación de iniciativas relacionadas mediante la etiqueta libre &quot;Programa&quot;, cuyo estado se resume en un semáforo.</td>
 <td>14 §12</td>
@@ -1768,6 +1798,12 @@ h2 .codigo, h3 .codigo { font-weight: 400; }
 <td>Valor validado ÷ (validado + declarado + estimado), sobre el valor bruto realizado del periodo (F6). Los informes al consejo la muestran siempre.</td>
 <td>00 regla 2; 40 F6</td>
 <td>validated share †</td>
+</tr>
+<tr>
+<td><strong>Proporcionalidad</strong></td>
+<td>Principio 11 del marco: el esfuerzo de gobierno se ajusta al riesgo, la materialidad y la reversibilidad de cada iniciativa. Ninguna evidencia se pide dos veces, ninguna decisión necesita más participantes de los que exige la separación de funciones y ninguna iniciativa soporta un coste de gobierno desproporcionado; el núcleo nunca se rebaja.</td>
+<td>01 §3; 94 §2.3</td>
+<td>proportionality</td>
 </tr>
 <tr>
 <td><strong>Proveedor (rol regulatorio)</strong></td>
@@ -2071,6 +2107,12 @@ h2 .codigo, h3 .codigo { font-weight: 400; }
 <td>Nivel de ambición que cambia qué se ofrece, cómo se compite o cómo se organiza la compañía. El valor está principalmente en retorno y en cambios del modelo operativo. Es siempre Enterprise y requiere aprobación del consejo en G2 y al escalar en G7.</td>
 <td>00 §4.1; 01 §7.5; 10 §3</td>
 <td>Transform</td>
+</tr>
+<tr>
+<td><strong>Tres perspectivas del caso</strong></td>
+<td>Regla de presentación: cada caso se muestra con su valor económico (en euros, con su estado), su resultado operativo (indicadores físicos con línea base, objetivo y valor actual) y su exposición al riesgo (residual principal, riesgos Altos y Críticos abiertos, incidentes y no conformidades abiertos), en paralelo y sin fusionarlas ni traducir una a la otra.</td>
+<td>40 §11.1 (regla 11)</td>
+<td>three perspectives of the use case</td>
 </tr>
 </tbody>
 </table></div>
@@ -2530,6 +2572,16 @@ h2 .codigo, h3 .codigo { font-weight: 400; }
 </tr>
 </thead>
 <tbody>
+<tr>
+<td><strong>Express</strong></td>
+<td>Ningún criterio Enterprise y, además, la elegibilidad de 01 §9.4, confirmada por la función de riesgos.</td>
+<td>Como Lite; G3 por separado, puede resolverse por escrito; lista reducida de criterios (21 §2.5).</td>
+<td>Oficina de IA.</td>
+<td>Patrocinador; con conformidad de riesgos en G3, G4 y G5.</td>
+<td>Conformidad de riesgos.</td>
+<td>Anual</td>
+<td>Express</td>
+</tr>
 <tr>
 <td><strong>Lite</strong></td>
 <td>No se cumple ningún criterio Enterprise.</td>
@@ -3369,7 +3421,7 @@ h2 .codigo, h3 .codigo { font-weight: 400; }
 </tr>
 <tr>
 <td><strong>Intensidad</strong></td>
-<td>Lite · Enterprise</td>
+<td>Express · Lite · Enterprise</td>
 </tr>
 <tr>
 <td><strong>Clasificación regulatoria</strong></td>
@@ -3414,7 +3466,7 @@ h2 .codigo, h3 .codigo { font-weight: 400; }
 </tr>
 <tr>
 <td><strong>Intensity</strong></td>
-<td>Lite · Enterprise</td>
+<td>Express · Lite · Enterprise</td>
 </tr>
 <tr>
 <td><strong>Regulatory classification</strong> †</td>
@@ -3461,7 +3513,7 @@ h2 .codigo, h3 .codigo { font-weight: 400; }
 </tr>
 <tr>
 <td><strong>Principios</strong></td>
-<td>1–10</td>
+<td>1–11</td>
 <td>Principios del marco.</td>
 <td>01 §3</td>
 <td>principio 7</td>
@@ -3564,6 +3616,13 @@ h2 .codigo, h3 .codigo { font-weight: 400; }
 <td>36 §4</td>
 <td>N3</td>
 </tr>
+<tr id="cod-n-01-n-14">
+<td><strong>N-01–N-14</strong></td>
+<td>N + guion + dos dígitos</td>
+<td>Reglas del núcleo de SEVEN-G.</td>
+<td>01 §14.1</td>
+<td>N-05</td>
+</tr>
 <tr id="cod-b1-b3">
 <td><strong>B1–B3</strong></td>
 <td>B + número</td>
@@ -3644,7 +3703,7 @@ h2 .codigo, h3 .codigo { font-weight: 400; }
 <tr id="cod-ind-nn">
 <td><strong>IND-&lt;FAM&gt;-NN</strong></td>
 <td>IND + familia de tres letras + dos cifras</td>
-<td>Indicadores del catálogo (159 en 13 familias): VAL, COS, EMB, AGI, RIE, OPE, ADO, DAT, CLI, TRA, MAD, CON (consejo) y PRO (procesos y decisión). Un código no se reutiliza.</td>
+<td>Indicadores del catálogo (162 en 13 familias): VAL, COS, EMB, AGI, RIE, OPE, ADO, DAT, CLI, TRA, MAD, CON (consejo) y PRO (procesos y decisión). Un código no se reutiliza.</td>
 <td>41 §2 y §4</td>
 <td>IND-VAL-05</td>
 </tr>
@@ -4522,6 +4581,31 @@ h2 .codigo, h3 .codigo { font-weight: 400; }
 </thead>
 <tbody>
 <tr>
+<td>1.7</td>
+<td>01-10-2026</td>
+<td>Añade «tres perspectivas del caso».</td>
+</tr>
+<tr>
+<td>1.6</td>
+<td>01-10-2026</td>
+<td>Añade «crosswalk de cobertura».</td>
+</tr>
+<tr>
+<td>1.5</td>
+<td>01-10-2026</td>
+<td>Indicadores del catálogo: 162.</td>
+</tr>
+<tr>
+<td>1.4</td>
+<td>01-10-2026</td>
+<td>Añade la intensidad Express (escala 4.6, término y taxonomía) y la ficha viva.</td>
+</tr>
+<tr>
+<td>1.3</td>
+<td>01-10-2026</td>
+<td>Añade núcleo de SEVEN-G (N-01 a N-14), principio obligatorio · práctica · instrumento y proporcionalidad (principio 11); los principios pasan a 1–11.</td>
+</tr>
+<tr>
 <td>1.2</td>
 <td>28-09-2026</td>
 <td>Añade caja por delante, condición de paso, curva de realización, sostenido por valor no cuantificado y valor no cuantificado; amplía plan de realización de beneficios y tramo de financiación con su registro en <a href="../../herramientas/T01_registro_iniciativas/registro.html" title="Herramienta T01 &#183; Registro de iniciativas">T01</a>; 209 términos definidos (D135).</td>
@@ -4529,7 +4613,7 @@ h2 .codigo, h3 .codigo { font-weight: 400; }
 <tr>
 <td>1.2</td>
 <td>12-10-2026</td>
-<td>Sección 2.4 reescrita con la regla R16 «nombre primero, código después» (D144): nombre canónico seguido del código entre paréntesis en la primera mención de cada sección; lista única de nombres en <code>build/nombres.json</code>; el generador muestra «Nombre (código)» en tablas y títulos.</td>
+<td>Sección 2.4 reescrita con la regla R16 «nombre primero, código después» (D155): nombre canónico seguido del código entre paréntesis en la primera mención de cada sección; lista única de nombres en <code>build/nombres.json</code>; el generador muestra «Nombre (código)» en tablas y títulos.</td>
 </tr>
 <tr>
 <td>1.1</td>
@@ -4550,7 +4634,7 @@ h2 .codigo, h3 .codigo { font-weight: 400; }
 </table></div>
 <h2 id="fuentes-externas">Fuentes externas citadas</h2><p class="fuentes-nota">Enlaces a la fuente oficial o primaria, comprobados antes de publicar. Verifique siempre la versión vigente en la fecha de uso.</p><ul class="fuentes-externas"><li><a href="https://eur-lex.europa.eu/eli/dir/2022/2555/oj/spa" target="_blank" rel="noopener">Directiva (UE) 2022/2555 del Parlamento Europeo y del Consejo, de 14 de diciembre de 2022, relativa a las medidas destinadas a garantizar un elevado nivel com&#250;n de ciberseguridad en toda la Uni&#243;n (Directiva SRI 2 / NIS2)</a><span> · Parlamento Europeo y Consejo de la UE · 14-12-2022</span></li><li><a href="https://eur-lex.europa.eu/eli/reg/2016/679/oj/spa" target="_blank" rel="noopener">Reglamento (UE) 2016/679 del Parlamento Europeo y del Consejo, de 27 de abril de 2016, relativo a la protecci&#243;n de las personas f&#237;sicas en lo que respecta al tratamiento de datos personales y a la libre circulaci&#243;n de estos datos y por el que se deroga la Directiva 95/46/CE (Reglamento general de protecci&#243;n de datos)</a><span> · Parlamento Europeo y Consejo de la UE · 27-04-2016</span></li><li><a href="https://eur-lex.europa.eu/eli/reg/2022/2554/oj/spa" target="_blank" rel="noopener">Reglamento (UE) 2022/2554 del Parlamento Europeo y del Consejo, de 14 de diciembre de 2022, sobre la resiliencia operativa digital del sector financiero (DORA)</a><span> · Parlamento Europeo y Consejo de la UE · 14-12-2022</span></li><li><a href="https://eur-lex.europa.eu/eli/reg/2024/1689/oj/spa" target="_blank" rel="noopener">Reglamento (UE) 2024/1689 del Parlamento Europeo y del Consejo, de 13 de junio de 2024, por el que se establecen normas armonizadas en materia de inteligencia artificial (Reglamento de Inteligencia Artificial)</a><span> · Parlamento Europeo y Consejo de la UE · 13-06-2024</span></li><li><a href="https://www.boe.es/buscar/act.php?id=BOE-A-2018-16673" target="_blank" rel="noopener">Ley Org&#225;nica 3/2018, de 5 de diciembre, de Protecci&#243;n de Datos Personales y garant&#237;a de los derechos digitales</a><span> · Cortes Generales (Jefatura del Estado) · 05-12-2018</span></li><li><a href="https://aesia.digital.gob.es/es" target="_blank" rel="noopener">Agencia Espa&#241;ola de Supervisi&#243;n de Inteligencia Artificial (AESIA)</a><span> · Agencia Espa&#241;ola de Supervisi&#243;n de Inteligencia Artificial</span></li><li><a href="https://www.edpb.europa.eu/edpb_es" target="_blank" rel="noopener">Comit&#233; Europeo de Protecci&#243;n de Datos (CEPD)</a><span> · Comit&#233; Europeo de Protecci&#243;n de Datos (organismo de la UE creado por el art. 68 del RGPD)</span></li><li><a href="https://digital-strategy.ec.europa.eu/es/policies/ai-office" target="_blank" rel="noopener">Oficina Europea de IA (Comisi&#243;n Europea)</a><span> · Comisi&#243;n Europea (DG CONNECT)</span></li><li><a href="https://csrc.nist.gov/pubs/ir/8596/iprd" target="_blank" rel="noopener">Perfil del marco de ciberseguridad para la inteligencia artificial (Cyber AI Profile): perfil comunitario del NIST, NIST IR 8596 (borrador preliminar inicial)</a><span> · National Institute of Standards and Technology (NIST), NCCoE · 16-12-2025</span></li><li><a href="https://www.iso.org/standard/42001" target="_blank" rel="noopener">ISO/IEC 42001:2023 Tecnolog&#237;a de la informaci&#243;n — Inteligencia artificial — Sistema de gesti&#243;n</a><span> · ISO/IEC (JTC 1/SC 42) · 18-12-2023</span></li><li><a href="https://doi.org/10.6028/NIST.CSWP.29.spa" target="_blank" rel="noopener">Marco de ciberseguridad del NIST, versi&#243;n 2.0 (The NIST Cybersecurity Framework (CSF) 2.0), NIST CSWP 29</a><span> · National Institute of Standards and Technology (NIST), Departamento de Comercio de EE. UU. · 26-02-2024</span></li><li><a href="https://www.nist.gov/publications/artificial-intelligence-risk-management-framework-ai-rmf-10" target="_blank" rel="noopener">Marco de gesti&#243;n de riesgos de inteligencia artificial del NIST (AI RMF 1.0), NIST AI 100-1</a><span> · National Institute of Standards and Technology (NIST), Departamento de Comercio de EE. UU. · 26-01-2023</span></li><li><a href="https://atlas.mitre.org/" target="_blank" rel="noopener">MITRE ATLAS (Adversarial Threat Landscape for Artificial-Intelligence Systems), base de conocimiento de t&#225;cticas y t&#233;cnicas adversarias contra sistemas de IA</a><span> · The MITRE Corporation</span></li></ul>
 </main>
-<footer class="pie"><div><span>© 2026 Fernando García Varela · Metodolog&#237;a SEVEN-G</span><span>Generado el 12-10-2026</span></div><p class="pie-ia">Contenido generado y maquetado con apoyo de IA bajo supervisi&#243;n editorial del autor.</p></footer>
+<footer class="pie"><div><span>© 2026 Fernando García Varela · Metodolog&#237;a SEVEN-G</span><span>Generado el 13-10-2026</span></div><p class="pie-ia">Contenido generado y maquetado con apoyo de IA bajo supervisi&#243;n editorial del autor.</p></footer>
 <script src="codigos.js" defer></script>
 
 <script>

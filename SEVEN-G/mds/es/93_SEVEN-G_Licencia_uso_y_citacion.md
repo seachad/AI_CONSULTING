@@ -145,7 +145,7 @@ El código se entrega **"tal cual", sin garantía de ningún tipo**, y los autor
 
 ### 7.1 Principio
 
-**SEVEN-G es una marca registrada a nombre de Fernando García Varela** (perfil profesional: <https://www.linkedin.com/in/fernandogarciavarela/>). La licencia CC BY 4.0 permite usar los contenidos, pero no cede ningún derecho sobre la marca (sección 4); **no convierte al usuario en representante del marco ni implica respaldo ni certificación**. Nombrar SEVEN-G para describir con exactitud lo que se ha usado es necesario para cumplir el reconocimiento; usarlo para sugerir aval, acreditación o certificación no está permitido.
+**SEVEN-G es un nombre y una marca de Fernando García Varela** (perfil profesional: <https://www.linkedin.com/in/fernandogarciavarela/>). La licencia CC BY 4.0 permite usar los contenidos, pero no cede ningún derecho sobre la marca (sección 4); **no convierte al usuario en representante del marco ni implica respaldo ni certificación**. Nombrar SEVEN-G para describir con exactitud lo que se ha usado es necesario para cumplir el reconocimiento; usarlo para sugerir aval, acreditación o certificación no está permitido.
 
 ### 7.2 Usos adecuados y no adecuados
 

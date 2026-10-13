@@ -115,13 +115,13 @@ foreach ($lang in $Idiomas) {
     # solo la tabla del catálogo (cabecera «Código | Herramienta» / «Code | Tool»): otras tablas del 03 (§4.1, §5) también empiezan filas con
     # el código. La fila lleva id="cod-tnn" o, si otra tabla lo tomó antes, "cod-tnn-2" (build.ps1); sin id, se va a la sección que la contiene
     $h03 = $paginas['03'].html
-    $tablasCat = [regex]::Matches($h03, '(?s)<table>\s*<thead>\s*<tr>\s*<th[^>]*>(?:Código|Code|Herramienta|Tool)</th>\s*(?:<th[^>]*>(?:Herramienta|Tool)</th>\s*)?<th[^>]*>(?:Para qué|Purpose)</th>.*?</table>')   # una tabla por bloque del catálogo; con «Nombre (código)» (D144) la columna «Herramienta» se funde con la del código
+    $tablasCat = [regex]::Matches($h03, '(?s)<table>\s*<thead>\s*<tr>\s*<th[^>]*>(?:Código|Code|Herramienta|Tool)</th>\s*(?:<th[^>]*>(?:Herramienta|Tool)</th>\s*)?<th[^>]*>(?:Para qué|Purpose)</th>.*?</table>')   # una tabla por bloque del catálogo; con «Nombre (código)» (D155) la columna «Herramienta» se funde con la del código
     if (-not $tablasCat.Count) { Write-Warning "[$lang] no se encuentra la tabla del catálogo de herramientas en el documento 03" }
     foreach ($cat in $tablasCat) {
       $sec = [regex]::Matches($h03.Substring(0, $cat.Index), '<h[23] id="([^"]+)"'); $seccionCat = if ($sec.Count) { $sec[$sec.Count - 1].Groups[1].Value } else { '' }
       foreach ($m in [regex]::Matches($cat.Value, '(?s)<tr(?: id="(cod-t\d{2}(?:-\d+)?)")?>\s*<td[^>]*>(.*?)</td>\s*<td[^>]*>(.*?)</td>(?:\s*<td[^>]*>(.*?)</td>)?')) {
         $c1 = Texto $m.Groups[2].Value
-        # forma antigua «T06 | Nombre | Descripción» o forma «Nombre (T06) | Descripción» (nombre primero, D144)
+        # forma antigua «T06 | Nombre | Descripción» o forma «Nombre (T06) | Descripción» (nombre primero, D155)
         if ($c1 -match '^T\d{2}$') { $cod = $c1; $nom = Texto $m.Groups[3].Value; $desc = Texto $m.Groups[4].Value }
         elseif ($c1 -match '^(.+?)\s*\((T\d{2})\)$') { $nom = $Matches[1]; $cod = $Matches[2]; $desc = Texto $m.Groups[3].Value }
         else { continue }
