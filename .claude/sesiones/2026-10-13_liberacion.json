@@ -4,7 +4,7 @@
  "lead": "Batida de todo lo pendiente para soltar el marco en abierto: ramas sin integrar, sesiones abiertas, decisiones tuyas, revisiones de terceros y lo que hago yo. Ordenado por lo que bloquea la liberación primero.",
  "hilo": "Tareas pendientes del artifact",
  "inicio": "2026-10-13",
- "act": "2026-10-13 12:55",
+ "act": "2026-10-13 13:05",
  "rama": "claude/kind-feynman-qukv88",
  "url": "https://claude.ai/artifact/8czm4SiRzu6F5p3nYYMdto",
  "sesion_url": "https://claude.ai/code/session_01L7gTvyboaRVDMPVprUfrBz",
@@ -28,6 +28,13 @@
    "k": "hecho",
    "t": "Batida: 21 ramas remotas, 40 sesiones, pendientes de <span class=\"mono\">CLAUDE.md</span>, encargo E1–E5 y criterios de salida a la 1.0",
    "s": "7 ramas con trabajo fuera de <span class=\"mono\">main</span>; 1 sesión de AI_CONSULTING abierta (Plugin AI Consultant); el resto de sesiones son de otros proyectos (GEMA, impuestos…) y no se tocan. Dos hallazgos que bloquean: el repositorio es público con <span class=\"mono\">_trabajo</span> y <span class=\"mono\">.claude</span> dentro, y el sitio afirma «marca registrada»."
+  },
+  {
+   "f": "2026-10-13",
+   "h": "13:00",
+   "k": "decision",
+   "t": "Repositorio: <b>separar</b>. AI_CONSULTING vuelve a privado y el sitio se publica desde un repositorio público limpio con <span class=\"mono\">publicar.ps1</span>, sin historial interno.",
+   "s": "Decisión del autor desde el informe. Se registra con número al integrar Express (la numeración de <span class=\"mono\">main</span> está pendiente de renumerar)."
   }
  ],
  "tests": [
@@ -47,6 +54,10 @@
   [
    "Informe de liberación",
    "Este artifact, con una decisión por bloque."
+  ],
+  [
+   "Decidido: separar el repositorio",
+   "AI_CONSULTING privado + repositorio público limpio."
   ]
  ],
  "flow": [
@@ -99,27 +110,36 @@
   {
    "id": "repo",
    "who": "tu",
-   "h": "2 · El repositorio es público con el material interno dentro",
-   "p": "<span class=\"mono\">_trabajo</span>, <span class=\"mono\">.claude</span> (decisiones e informes de sesión) y <span class=\"mono\">CLAUDE.md</span> se ven en GitHub aunque Pages no los publique; mencionan el encargo con un cliente asegurador, rutas locales y pendientes. D18 ya decía excluir <span class=\"mono\">_trabajo</span> si el repositorio pasaba a público. Borrarlos no basta: siguen en el historial de git.",
-   "why": "<b>Por qué hace falta:</b> al anunciarlo, cualquiera leerá el repositorio, no solo el sitio (D17, D57). <b>Desbloquea:</b> anunciar la liberación sin riesgo de confidencialidad.",
+   "h": "2 · Repositorio público limpio: nombre y quién lo crea",
+   "p": "<b>Decidido: separar.</b> Al pasar AI_CONSULTING a privado, Pages deja de servir <span class=\"mono\">seachad.github.io/AI_CONSULTING</span> (salvo plan de pago) y la dirección del sitio cambia a la del repositorio nuevo. Yo cambio los enlaces fijos (documento 95, README, portadas), el destino de <span class=\"mono\">publicar.ps1</span> y un flujo de publicación; tú cambias la visibilidad y los orígenes de la comunidad y de Umami.",
+   "why": "<b>Por qué hace falta:</b> el nombre fija la dirección pública que vas a anunciar. <b>Desbloquea:</b> preparar la copia pública y la liberación (paso 9).",
    "tags": [
     "tudec"
    ],
-   "nota": "D17 · D18 · D57",
-   "boton": "Enviar decisión a Claude",
+   "nota": "decidido 13-10 · falta el nombre",
+   "boton": "Enviar respuestas a Claude",
    "preguntas": [
     {
-     "id": "q",
-     "q": "Qué hacemos con el repositorio",
+     "id": "nombre",
+     "q": "Nombre del repositorio público (dirección: seachad.github.io/&lt;nombre&gt;/)",
      "opciones": [
-      "Separar: AI_CONSULTING vuelve a privado y el sitio se publica desde un repositorio público limpio con publicar.ps1 (sin historial interno)",
-      "Limpiar el repositorio actual reescribiendo el historial (git filter-repo) para quitar _trabajo, .claude y CLAUDE.md",
-      "Dejarlo como está"
+      "seachad/seven-g",
+      "seachad/ai-consulting",
+      "Seachad-TEAM/ai-consulting (D36)"
+     ],
+     "recomendada": 0
+    },
+    {
+     "id": "crear",
+     "q": "¿Quién crea el repositorio?",
+     "opciones": [
+      "Créalo tú (Claude) vacío y público, y lo añado a la sesión",
+      "Lo creo yo en GitHub y te aviso"
      ],
      "recomendada": 0
     }
    ],
-   "more": "<ul><li><b>Opción 1:</b> <span class=\"mono\">publicar.ps1</span> ya existe (D36/D37); Pages en un repositorio privado necesita plan de pago, por eso el destino es un repositorio público aparte (por ejemplo <span class=\"mono\">seachad/seven-g</span>). El documento 95 y el README apuntan hoy a <span class=\"mono\">seachad/AI_CONSULTING</span>: los cambio al nuevo.</li><li><b>Opción 2:</b> reescribe la historia de un repositorio público; quien lo haya clonado conserva la copia antigua.</li><li>Cambiar la visibilidad del repositorio la haces tú en GitHub (Settings → General → Danger zone).</li></ul>"
+   "more": "<ul><li><b>Claude:</b> enlaces al repositorio y al sitio nuevos en 95, README y portadas (ES/EN); <span class=\"mono\">publicar.ps1</span> con el destino; flujo de Pages en el repositorio público; copia inicial verificada (sin <span class=\"mono\">_trabajo</span>, <span class=\"mono\">.claude</span>, <span class=\"mono\">CLAUDE.md</span> ni términos prohibidos).</li><li><b>Tú, después de la primera publicación:</b> AI_CONSULTING a privado (Settings → General → Danger zone); <span class=\"mono\">ORIGENES</span> del Worker de la comunidad y dominio en Umami con la dirección nueva.</li><li>Las copias que alguien haya clonado ya no se pueden recuperar; desde ahora no entra nada interno.</li></ul>"
   },
   {
    "id": "marca",
