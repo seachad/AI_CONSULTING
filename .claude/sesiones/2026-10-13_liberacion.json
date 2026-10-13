@@ -1,0 +1,350 @@
+{
+ "title": "Liberar SEVEN-G",
+ "h1": "Liberar<br>SEVEN-G",
+ "lead": "Batida de todo lo pendiente para soltar el marco en abierto: ramas sin integrar, sesiones abiertas, decisiones tuyas, revisiones de terceros y lo que hago yo. Ordenado por lo que bloquea la liberación primero.",
+ "hilo": "Tareas pendientes del artifact",
+ "inicio": "2026-10-13",
+ "act": "2026-10-13 12:55",
+ "rama": "claude/kind-feynman-qukv88",
+ "url": "https://claude.ai/artifact/8czm4SiRzu6F5p3nYYMdto",
+ "sesion_url": "https://claude.ai/code/session_01L7gTvyboaRVDMPVprUfrBz",
+ "key": "aic-liberacion",
+ "persona": "Terceros",
+ "rapidos": [
+  "Sigue con el siguiente paso",
+  "Aplica todas tus recomendaciones y empieza",
+  "Resume dónde estamos y qué me toca"
+ ],
+ "tl": [
+  {
+   "f": "2026-10-13",
+   "h": "12:45",
+   "k": "pedido",
+   "t": "«Dime qué cosas tenemos pendientes en un artifact, quiero liberarlo ya y necesito saber qué cosas tengo que terminar, decidir o lo que sea, pega una batida a las sesiones que tengamos pendientes y vamos a por ello.»"
+  },
+  {
+   "f": "2026-10-13",
+   "h": "12:55",
+   "k": "hecho",
+   "t": "Batida: 21 ramas remotas, 40 sesiones, pendientes de <span class=\"mono\">CLAUDE.md</span>, encargo E1–E5 y criterios de salida a la 1.0",
+   "s": "7 ramas con trabajo fuera de <span class=\"mono\">main</span>; 1 sesión de AI_CONSULTING abierta (Plugin AI Consultant); el resto de sesiones son de otros proyectos (GEMA, impuestos…) y no se tocan. Dos hallazgos que bloquean: el repositorio es público con <span class=\"mono\">_trabajo</span> y <span class=\"mono\">.claude</span> dentro, y el sitio afirma «marca registrada»."
+  }
+ ],
+ "tests": [
+  "<b>Comprobado:</b> <span class=\"mono\">seachad/AI_CONSULTING</span> es <b>público</b> (API de GitHub: <span class=\"mono\">visibility: public</span>). Pages no publica <span class=\"mono\">_trabajo</span> ni <span class=\"mono\">.claude</span>, pero el repositorio sí los muestra: 49 ficheros de <span class=\"mono\">_trabajo</span>, el registro de decisiones y <span class=\"mono\">CLAUDE.md</span>, que mencionan el trabajo con un cliente asegurador.",
+  "<b>Comprobado:</b> <span class=\"mono\">main</span> = b9223d2 (E1 y E2 hechas). La rama de Express está 13 commits por delante y usa D143–D153; <span class=\"mono\">main</span> usa D143–D145 provisionales: hay que renumerar al integrar.",
+  "<b>No ejecutado aún:</b> <span class=\"mono\">verificar_coherencia.ps1</span>; se pasa al integrar las ramas."
+ ],
+ "done": [
+  [
+   "Batida de ramas y sesiones",
+   "7 ramas con trabajo sin integrar; 13 ya integradas o vacías."
+  ],
+  [
+   "Lista de bloqueantes para liberar",
+   "Repositorio público, marca, términos prohibidos, ramas, avisos D58."
+  ],
+  [
+   "Informe de liberación",
+   "Este artifact, con una decisión por bloque."
+  ]
+ ],
+ "flow": [
+  {
+   "c": "t",
+   "b": "1 · Decides",
+   "t": "Bloque 1: qué es liberar, repositorio, marca"
+  },
+  {
+   "c": "c",
+   "b": "2 · Integro",
+   "t": "Express, renumeración, ramas pequeñas"
+  },
+  {
+   "c": "c",
+   "b": "3 · Libero",
+   "t": "Quito «no difundir», regenero, verifico, push"
+  },
+  {
+   "c": "p",
+   "b": "4 · Después",
+   "t": "E3–E5, pilotos, revisión jurídica"
+  }
+ ],
+ "steps": [
+  {
+   "id": "liberar",
+   "who": "tu",
+   "h": "1 · ¿Qué significa «liberarlo ya»?",
+   "p": "El aviso «Versión en revisión: no difundir» (D58) dice que se retira al pasar a la 1.x, y los criterios de salida a la 1.0 (S9) piden pilotos reales, revisión jurídica y umbrales calibrados: eso son meses. Liberar ya exige una decisión nueva.",
+   "why": "<b>Por qué hace falta:</b> sin ella no puedo quitar el aviso ni cambiar la versión de portadas y del documento 04. <b>Desbloquea:</b> el paso 9 (la liberación).",
+   "tags": [
+    "tudec"
+   ],
+   "nota": "D58 · S9",
+   "boton": "Enviar decisión a Claude",
+   "preguntas": [
+    {
+     "id": "q",
+     "q": "Tipo de liberación",
+     "opciones": [
+      "Versión pública 0.9: quito «no difundir», mantengo avisos legales, «a calibrar» y sin certificación; la 1.0 sigue con los criterios de S9",
+      "Esperar a la 1.0 (pilotos y revisión jurídica primero)",
+      "Abrir solo a un grupo cerrado, sin anunciarlo"
+     ],
+     "recomendada": 0
+    }
+   ]
+  },
+  {
+   "id": "repo",
+   "who": "tu",
+   "h": "2 · El repositorio es público con el material interno dentro",
+   "p": "<span class=\"mono\">_trabajo</span>, <span class=\"mono\">.claude</span> (decisiones e informes de sesión) y <span class=\"mono\">CLAUDE.md</span> se ven en GitHub aunque Pages no los publique; mencionan el encargo con un cliente asegurador, rutas locales y pendientes. D18 ya decía excluir <span class=\"mono\">_trabajo</span> si el repositorio pasaba a público. Borrarlos no basta: siguen en el historial de git.",
+   "why": "<b>Por qué hace falta:</b> al anunciarlo, cualquiera leerá el repositorio, no solo el sitio (D17, D57). <b>Desbloquea:</b> anunciar la liberación sin riesgo de confidencialidad.",
+   "tags": [
+    "tudec"
+   ],
+   "nota": "D17 · D18 · D57",
+   "boton": "Enviar decisión a Claude",
+   "preguntas": [
+    {
+     "id": "q",
+     "q": "Qué hacemos con el repositorio",
+     "opciones": [
+      "Separar: AI_CONSULTING vuelve a privado y el sitio se publica desde un repositorio público limpio con publicar.ps1 (sin historial interno)",
+      "Limpiar el repositorio actual reescribiendo el historial (git filter-repo) para quitar _trabajo, .claude y CLAUDE.md",
+      "Dejarlo como está"
+     ],
+     "recomendada": 0
+    }
+   ],
+   "more": "<ul><li><b>Opción 1:</b> <span class=\"mono\">publicar.ps1</span> ya existe (D36/D37); Pages en un repositorio privado necesita plan de pago, por eso el destino es un repositorio público aparte (por ejemplo <span class=\"mono\">seachad/seven-g</span>). El documento 95 y el README apuntan hoy a <span class=\"mono\">seachad/AI_CONSULTING</span>: los cambio al nuevo.</li><li><b>Opción 2:</b> reescribe la historia de un repositorio público; quien lo haya clonado conserva la copia antigua.</li><li>Cambiar la visibilidad del repositorio la haces tú en GitHub (Settings → General → Danger zone).</li></ul>"
+  },
+  {
+   "id": "marca",
+   "who": "tu",
+   "h": "3 · «SEVEN-G es una marca registrada»",
+   "p": "Lo afirman 93 §7.1, 04 §7 y las dos portadas (D81), pero D79 dejó pendiente «decidir si se registra la marca». Afirmar que una marca está registrada sin estarlo es un riesgo jurídico.",
+   "why": "<b>Por qué hace falta:</b> es una afirmación de hecho en un sitio público. <b>Desbloquea:</b> el texto definitivo de 93, 04 y portadas.",
+   "tags": [
+    "tudec"
+   ],
+   "nota": "D79 · D81",
+   "boton": "Enviar respuesta a Claude",
+   "preguntas": [
+    {
+     "id": "q",
+     "q": "Situación de la marca",
+     "opciones": [
+      "Registrada (te paso número OEPM/EUIPO y lo cito)",
+      "Solicitada, no concedida: escribir «marca solicitada»",
+      "No registrada: cambiar a «SEVEN-G es un nombre y una marca de Fernando García Varela» sin decir registrada"
+     ],
+     "recomendada": -1
+    }
+   ]
+  },
+  {
+   "id": "terminos",
+   "who": "tu",
+   "h": "4 · Dar de alta la lista de términos prohibidos en la nube",
+   "p": "La variable de entorno <span class=\"mono\">SEVENG_TERMINOS_PROHIBIDOS</span> (D153; mismo contenido que tu <span class=\"mono\">~/.seveng/terminos_prohibidos.txt</span>). Sin ella, la verificación en la nube no comprueba nombres de cliente antes de publicar.",
+   "why": "<b>Por qué hace falta:</b> es la última barrera de confidencialidad antes de liberar (D57). <b>Desbloquea:</b> una verificación completa en esta sesión.",
+   "tags": [
+    "tu"
+   ],
+   "nota": "D153",
+   "accion": {
+    "boton": "Dime cómo se hace",
+    "msg": "Explícame paso a paso cómo doy de alta SEVENG_TERMINOS_PROHIBIDOS en el entorno de la nube."
+   }
+  },
+  {
+   "id": "express",
+   "who": "claude",
+   "h": "5 · Integrar la rama de Express y renumerar",
+   "p": "<span class=\"mono\">claude/blissful-hypatia-tcfdft</span>: 13 commits del 01-10 (S0–S8 del plan de feedback: núcleo N-01–N-14, evidencia referenciada, intensidad Express, coste del gobierno, crosswalk, tres perspectivas, posicionamiento, protocolo de piloto; D143–D153). Las D143–D145 de <span class=\"mono\">main</span> pasan a D154–D156 (registro, <span class=\"mono\">CLAUDE.md</span>, tres <span class=\"mono\">_trabajo/20261012_*</span>, <span class=\"mono\">nombres.ps1</span>, informe de sesión). Añado núcleo y frenos a <span class=\"mono\">nombres.json</span>. Regenero y verifico.",
+   "why": "<b>Por qué hace falta:</b> es el trabajo más grande sin publicar y cambia P01, P04, 21 y 94; E3–E5 esperan a esto. <b>Desbloquea:</b> la liberación con el marco aligerado (Express) y el resto del encargo.",
+   "tags": [
+    "claude"
+   ],
+   "nota": "491 ficheros · merge con conflictos esperables",
+   "accion": {
+    "boton": "Integra Express",
+    "msg": "Integra la rama de Express en main, renumera D143–D145 a D154–D156, regenera, pasa la verificación y haz push si está en verde."
+   }
+  },
+  {
+   "id": "pequenas",
+   "who": "tu",
+   "h": "6 · Ramas pequeñas: qué entra y qué se archiva",
+   "p": "Cuatro ramas con trabajo útil y tres obsoletas.",
+   "why": "<b>Por qué hace falta:</b> que no quede trabajo perdido ni ramas que confundan a la próxima sesión. <b>Desbloquea:</b> un <span class=\"mono\">main</span> que es la única verdad.",
+   "tags": [
+    "tudec"
+   ],
+   "boton": "Enviar decisiones a Claude",
+   "preguntas": [
+    {
+     "id": "gartner",
+     "q": "Documento 04 §8 «Comparación con otras metodologías» (Gartner cotejado con sus fuentes; lucid-euler, usa también D143 → pasaría a D157)",
+     "opciones": [
+      "Integrarlo antes de liberar",
+      "Dejarlo para después de liberar",
+      "Descartarlo"
+     ],
+     "recomendada": 1
+    },
+    {
+     "id": "maestro",
+     "q": "Regla «llamar MAESTRO al autor y tratarlo de tú» (magical-pasteur, una línea en CLAUDE.md)",
+     "opciones": [
+      "Integrar",
+      "Descartar"
+     ],
+     "recomendada": 0
+    },
+    {
+     "id": "informe",
+     "q": "Regla de informe de sesión en CLAUDE.md y plan del Asistente SEVEN-G (charming-curie; los ficheros del modelo ya están en main, la regla no)",
+     "opciones": [
+      "Integrar la regla y el plan",
+      "Solo la regla",
+      "Nada"
+     ],
+     "recomendada": 0
+    },
+    {
+     "id": "archivar",
+     "q": "Obsoletas: mira-ai-consulting-speech (historia sin base común, septiembre), lucid-bardeen (prueba con Remotion), zealous-cannon (separadores de miles del 22-09, ya resuelto en main de otra forma)",
+     "opciones": [
+      "Borrarlas las tres",
+      "Revisar zealous-cannon antes de borrar",
+      "Dejarlas"
+     ],
+     "recomendada": 0
+    }
+   ]
+  },
+  {
+   "id": "juridico",
+   "who": "persona tu",
+   "h": "7 · Revisión jurídica pendiente",
+   "p": "Nadie la ha hecho: 93 §11 (exención completa), plantillas P47 (EIPD), P48 (FRIA), P49 (transparencia), P51 (notificaciones), P56 (cláusulas contractuales), P74 (aplicabilidad 42001) y el documento 34 (Reglamento 2026/1744, NIS2, ley orgánica). Ya llevan el aviso de exención (D113).",
+   "why": "<b>Por qué hace falta:</b> son los textos que una empresa podría usar tal cual frente a terceros. <b>Desbloquea:</b> el criterio 4 de salida a la 1.0.",
+   "tags": [
+    "persona",
+    "tudec"
+   ],
+   "nota": "D68 · D112 · D113",
+   "boton": "Enviar decisión a Claude",
+   "preguntas": [
+    {
+     "id": "q",
+     "q": "Cómo liberarlas",
+     "opciones": [
+      "Liberar con un rótulo visible «Pendiente de revisión jurídica: adaptar con su asesoría» en esas siete plantillas y en 34",
+      "Retirarlas del sitio hasta que las lea un abogado",
+      "Esperar al abogado para liberar todo"
+     ],
+     "recomendada": 0
+    }
+   ]
+  },
+  {
+   "id": "validar",
+   "who": "tu",
+   "h": "8 · Lo que tienes «a validar»",
+   "p": "Unas veinte validaciones abiertas: D19, D20, D22, D25; umbrales de índice, adopción (60 %), frenos, realización (90/70), alfabetización (≥ 90 %), mínimos por huella; textos de la historia de la entrada, ayudas, frenos, curso, 95, 54 §3 y §8; catálogo de riesgos de T06; los cuatro perfiles de la galería (el de seguros, comprobar que no se reconoce al cliente); hitos del 04 §2.3 (reconstruidos).",
+   "why": "<b>Por qué hace falta:</b> decidir si bloquean. El sitio ya los presenta como valores de partida y ejemplos ilustrativos. <b>Desbloquea:</b> liberar sin esperar a revisarlo todo.",
+   "tags": [
+    "tudec"
+   ],
+   "boton": "Enviar decisión a Claude",
+   "preguntas": [
+    {
+     "id": "q",
+     "q": "¿Bloquean la liberación?",
+     "opciones": [
+      "No: se liberan como valores de partida (ya marcados) y se validan con pilotos",
+      "Solo reviso antes los textos de la entrada y la portada",
+      "Sí, los reviso todos antes"
+     ],
+     "recomendada": 0
+    },
+    {
+     "id": "seguros",
+     "q": "Galería: ejemplo de seguros (no vida para empresas por corredores, D136)",
+     "opciones": [
+      "Lo reviso yo antes de liberar",
+      "Quitarlo de la galería por prudencia",
+      "Vale como está"
+     ],
+     "recomendada": 0
+    }
+   ]
+  },
+  {
+   "id": "publicar",
+   "who": "claude",
+   "h": "9 · La liberación",
+   "p": "Según tus respuestas a 1–3: quitar «no difundir» de portadas, índices, documentos 00 de SEVEN-G y SPHERES y su comprobación; versión del marco en 04 §2.3 y portadas; registrar la decisión de liberación; texto de la marca; regenerar todo, verificar, commit y push (y repositorio público limpio si eliges separar).",
+   "why": "<b>Por qué hace falta:</b> es lo que pediste. <b>Desbloquea:</b> anunciarlo.",
+   "tags": [
+    "claude"
+   ],
+   "nota": "tras 1, 2, 3 y 5",
+   "accion": {
+    "boton": "Libera con lo decidido",
+    "msg": "Haz la liberación con las decisiones que te he enviado; si falta alguna, usa tu recomendación y dímelo."
+   }
+  },
+  {
+   "id": "curso",
+   "who": "tu",
+   "h": "10 · Cursos en presentación (necesita tu equipo)",
+   "p": "Los PPTX y sus PDF se exportan con PowerPoint por COM y <span class=\"mono\">System.Drawing</span>: no se pueden regenerar en la nube. Falta la diapositiva de posicionamiento (S7) y recapturas si cambian los datos.",
+   "why": "<b>Por qué hace falta:</b> que el curso descargable no quede por detrás del sitio. <b>Desbloquea:</b> cursos al día en la liberación (o justo después).",
+   "tags": [
+    "tu"
+   ],
+   "nota": "sesión local",
+   "accion": {
+    "boton": "Prepárame el encargo local",
+    "msg": "Prepárame el encargo para la sesión local de los cursos en presentación (S7 y recapturas)."
+   }
+  },
+  {
+   "id": "despues",
+   "who": "claude",
+   "h": "11 · Después de liberar: E3, E4 y E5",
+   "p": "E3 batida editorial «nombre primero, código después» (cuatro a seis sesiones, solo redacción); E4 marcador de la iniciativa (P08, 40, 52, T01, T17); E5 cuestionario de entrada en T23, grados M/E/R y cuadro de mando mínimo.",
+   "why": "<b>Por qué hace falta:</b> mejoran lectura y adopción, pero no cambian reglas: no bloquean liberar. <b>Desbloquea:</b> la versión que enseñas a los pilotos.",
+   "tags": [
+    "claude"
+   ],
+   "nota": "D154–D156 tras renumerar",
+   "accion": {
+    "boton": "Empieza E3 por la entrada y el 00",
+    "msg": "Después de liberar, empieza E3 por la entrada y el documento 00 (ES/EN)."
+   }
+  },
+  {
+   "id": "pilotos",
+   "who": "persona tu",
+   "h": "12 · Pilotos y lo que caduca",
+   "p": "Probar el cuestionario de entrada con dos o tres empresas reales; decidir el programa de pilotos (S8, protocolo ya preparado); el token de la comunidad caduca el <b>20-12-2026</b> (renovar en el Worker); decidir el Asistente SEVEN-G (sesión «Plugin AI Consultant», seis decisiones abiertas).",
+   "why": "<b>Por qué hace falta:</b> son los datos que piden los criterios de la 1.0 y lo que deja de funcionar si se olvida. <b>Desbloquea:</b> la 1.0.",
+   "tags": [
+    "persona",
+    "tu"
+   ],
+   "accion": {
+    "boton": "Recuérdamelo el 1 de diciembre",
+    "msg": "Programa un recordatorio para el 1-12-2026 de renovar el token de la comunidad y revisar los pilotos."
+   }
+  }
+ ],
+ "foot": "Fuente: <span class=\"mono\">.claude/sesiones/2026-10-13_liberacion.json</span>. Criterios de salida a la 1.0 en la rama de Express, <span class=\"mono\">_trabajo/futures/S9_Criterios_salida_1_0.md</span>."
+}
