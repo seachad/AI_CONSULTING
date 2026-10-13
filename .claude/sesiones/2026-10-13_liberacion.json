@@ -4,7 +4,7 @@
  "lead": "Batida de todo lo pendiente para soltar el marco en abierto: ramas sin integrar, sesiones abiertas, decisiones tuyas, revisiones de terceros y lo que hago yo. Ordenado por lo que bloquea la liberación primero.",
  "hilo": "Tareas pendientes del artifact",
  "inicio": "2026-10-13",
- "act": "2026-10-13 13:05",
+ "act": "2026-10-13 13:50",
  "rama": "claude/kind-feynman-qukv88",
  "url": "https://claude.ai/artifact/8czm4SiRzu6F5p3nYYMdto",
  "sesion_url": "https://claude.ai/code/session_01L7gTvyboaRVDMPVprUfrBz",
@@ -35,12 +35,45 @@
    "k": "decision",
    "t": "Repositorio: <b>separar</b>. AI_CONSULTING vuelve a privado y el sitio se publica desde un repositorio público limpio con <span class=\"mono\">publicar.ps1</span>, sin historial interno.",
    "s": "Decisión del autor desde el informe. Se registra con número al integrar Express (la numeración de <span class=\"mono\">main</span> está pendiente de renumerar)."
+  },
+  {
+   "f": "2026-10-13",
+   "h": "13:01",
+   "k": "decision",
+   "t": "Marca: <b>no registrada</b>. Pasa a «SEVEN-G es un nombre y una marca de Fernando García Varela» (D157).",
+   "s": "93, 04, portadas, entrada, README y guion de los cursos (ES/EN); la verificación falla si vuelve «marca registrada»."
+  },
+  {
+   "f": "2026-10-13",
+   "h": "13:01",
+   "k": "pedido",
+   "t": "«Explícame paso a paso cómo doy de alta SEVENG_TERMINOS_PROHIBIDOS en el entorno de la nube.»"
+  },
+  {
+   "f": "2026-10-13",
+   "h": "13:05",
+   "k": "hecho",
+   "t": "Pasos explicados en el hilo del paso 4",
+   "s": "Menú del entorno → Editar → variable de entorno en una línea con <span class=\"mono\">\\n</span> literal; la leen las sesiones nuevas."
+  },
+  {
+   "f": "2026-10-13",
+   "h": "13:01",
+   "k": "pedido",
+   "t": "«Integra la rama de Express en main, renumera D143–D145 a D154–D156, regenera, pasa la verificación y haz push si está en verde.»"
+  },
+  {
+   "f": "2026-10-13",
+   "h": "13:45",
+   "k": "hecho",
+   "t": "Express integrado en <span class=\"mono\">main</span>; D154–D156 renumeradas; D157 y D158 registradas; sitio, herramientas, paneles y galería regenerados",
+   "s": "333 conflictos: 330 eran salidas generadas, regeneradas; 3 fuentes resueltas a mano (registro, <span class=\"mono\">CLAUDE.md</span>, verificación: la sección «nombre primero» pasa a la 44). Verificación en verde, 7 avisos. Commit 4805b2f en main."
   }
  ],
  "tests": [
-  "<b>Comprobado:</b> <span class=\"mono\">seachad/AI_CONSULTING</span> es <b>público</b> (API de GitHub: <span class=\"mono\">visibility: public</span>). Pages no publica <span class=\"mono\">_trabajo</span> ni <span class=\"mono\">.claude</span>, pero el repositorio sí los muestra: 49 ficheros de <span class=\"mono\">_trabajo</span>, el registro de decisiones y <span class=\"mono\">CLAUDE.md</span>, que mencionan el trabajo con un cliente asegurador.",
-  "<b>Comprobado:</b> <span class=\"mono\">main</span> = b9223d2 (E1 y E2 hechas). La rama de Express está 13 commits por delante y usa D143–D153; <span class=\"mono\">main</span> usa D143–D145 provisionales: hay que renumerar al integrar.",
-  "<b>No ejecutado aún:</b> <span class=\"mono\">verificar_coherencia.ps1</span>; se pasa al integrar las ramas."
+  "<b>Pasó:</b> <span class=\"mono\">verificar_coherencia.ps1</span> tras integrar Express y regenerar (4805b2f): todo correcto, 7 avisos (falta la lista privada de términos y 6 variantes de nombre de puerta que corrige E3). Incluye la comprobación nueva de D157.",
+  "<b>Comprobado:</b> el repositorio <span class=\"mono\">seachad/AI_CONSULTING</span> es público (pendiente de separar, D158).",
+  "<b>Falta:</b> verificación con la lista privada de términos (sesión nueva con la variable) y cursos en presentación regenerados en local."
  ],
  "done": [
   [
@@ -58,6 +91,18 @@
   [
    "Decidido: separar el repositorio",
    "AI_CONSULTING privado + repositorio público limpio."
+  ],
+  [
+   "Marca corregida (D157)",
+   "ES/EN; comprobación automática."
+  ],
+  [
+   "Términos prohibidos: pasos explicados",
+   "Te toca darla de alta."
+  ],
+  [
+   "Express integrado en main",
+   "D143–D153 + D154–D158; commit 4805b2f."
   ]
  ],
  "flow": [
@@ -142,64 +187,25 @@
    "more": "<ul><li><b>Claude:</b> enlaces al repositorio y al sitio nuevos en 95, README y portadas (ES/EN); <span class=\"mono\">publicar.ps1</span> con el destino; flujo de Pages en el repositorio público; copia inicial verificada (sin <span class=\"mono\">_trabajo</span>, <span class=\"mono\">.claude</span>, <span class=\"mono\">CLAUDE.md</span> ni términos prohibidos).</li><li><b>Tú, después de la primera publicación:</b> AI_CONSULTING a privado (Settings → General → Danger zone); <span class=\"mono\">ORIGENES</span> del Worker de la comunidad y dominio en Umami con la dirección nueva.</li><li>Las copias que alguien haya clonado ya no se pueden recuperar; desde ahora no entra nada interno.</li></ul>"
   },
   {
-   "id": "marca",
-   "who": "tu",
-   "h": "3 · «SEVEN-G es una marca registrada»",
-   "p": "Lo afirman 93 §7.1, 04 §7 y las dos portadas (D81), pero D79 dejó pendiente «decidir si se registra la marca». Afirmar que una marca está registrada sin estarlo es un riesgo jurídico.",
-   "why": "<b>Por qué hace falta:</b> es una afirmación de hecho en un sitio público. <b>Desbloquea:</b> el texto definitivo de 93, 04 y portadas.",
-   "tags": [
-    "tudec"
-   ],
-   "nota": "D79 · D81",
-   "boton": "Enviar respuesta a Claude",
-   "preguntas": [
-    {
-     "id": "q",
-     "q": "Situación de la marca",
-     "opciones": [
-      "Registrada (te paso número OEPM/EUIPO y lo cito)",
-      "Solicitada, no concedida: escribir «marca solicitada»",
-      "No registrada: cambiar a «SEVEN-G es un nombre y una marca de Fernando García Varela» sin decir registrada"
-     ],
-     "recomendada": -1
-    }
-   ]
-  },
-  {
    "id": "terminos",
    "who": "tu",
-   "h": "4 · Dar de alta la lista de términos prohibidos en la nube",
+   "h": "4 · Dar de alta la lista de términos prohibidos (te toca)",
    "p": "La variable de entorno <span class=\"mono\">SEVENG_TERMINOS_PROHIBIDOS</span> (D153; mismo contenido que tu <span class=\"mono\">~/.seveng/terminos_prohibidos.txt</span>). Sin ella, la verificación en la nube no comprueba nombres de cliente antes de publicar.",
    "why": "<b>Por qué hace falta:</b> es la última barrera de confidencialidad antes de liberar (D57). <b>Desbloquea:</b> una verificación completa en esta sesión.",
    "tags": [
     "tu"
    ],
-   "nota": "D153",
+   "nota": "pasos en el hilo · D153",
    "accion": {
-    "boton": "Dime cómo se hace",
-    "msg": "Explícame paso a paso cómo doy de alta SEVENG_TERMINOS_PROHIBIDOS en el entorno de la nube."
-   }
-  },
-  {
-   "id": "express",
-   "who": "claude",
-   "h": "5 · Integrar la rama de Express y renumerar",
-   "p": "<span class=\"mono\">claude/blissful-hypatia-tcfdft</span>: 13 commits del 01-10 (S0–S8 del plan de feedback: núcleo N-01–N-14, evidencia referenciada, intensidad Express, coste del gobierno, crosswalk, tres perspectivas, posicionamiento, protocolo de piloto; D143–D153). Las D143–D145 de <span class=\"mono\">main</span> pasan a D154–D156 (registro, <span class=\"mono\">CLAUDE.md</span>, tres <span class=\"mono\">_trabajo/20261012_*</span>, <span class=\"mono\">nombres.ps1</span>, informe de sesión). Añado núcleo y frenos a <span class=\"mono\">nombres.json</span>. Regenero y verifico.",
-   "why": "<b>Por qué hace falta:</b> es el trabajo más grande sin publicar y cambia P01, P04, 21 y 94; E3–E5 esperan a esto. <b>Desbloquea:</b> la liberación con el marco aligerado (Express) y el resto del encargo.",
-   "tags": [
-    "claude"
-   ],
-   "nota": "491 ficheros · merge con conflictos esperables",
-   "accion": {
-    "boton": "Integra Express",
-    "msg": "Integra la rama de Express en main, renumera D143–D145 a D154–D156, regenera, pasa la verificación y haz push si está en verde."
+    "boton": "Ya está dada de alta",
+    "msg": "Ya he dado de alta SEVENG_TERMINOS_PROHIBIDOS en el entorno; abre una sesión nueva y pasa la verificación completa."
    }
   },
   {
    "id": "pequenas",
    "who": "tu",
    "h": "6 · Ramas pequeñas: qué entra y qué se archiva",
-   "p": "Cuatro ramas con trabajo útil y tres obsoletas.",
+   "p": "Express ya está integrado. Quedan cuatro ramas con trabajo útil y tres obsoletas. El documento 04 §8 (Gartner) tomaría el número D159.",
    "why": "<b>Por qué hace falta:</b> que no quede trabajo perdido ni ramas que confundan a la próxima sesión. <b>Desbloquea:</b> un <span class=\"mono\">main</span> que es la única verdad.",
    "tags": [
     "tudec"
