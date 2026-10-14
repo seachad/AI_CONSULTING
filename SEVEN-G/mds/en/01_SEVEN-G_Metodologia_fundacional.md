@@ -564,6 +564,7 @@ This document does not constitute legal advice. The regulatory classification of
 
 The **core** is the minimum, stable set of rules that distinguishes applying SEVEN-G from using some of its templates. It is the same for every company, intensity and scope. Everything else in the library is either a **practice** —the recommended way, or the mandatory way when its trigger occurs, of meeting the core (document 94, section 2.3)— or an **instrument** —a template or a tool that makes it easier—. The core has its own version and only changes by express decision of the framework's author, which is recorded; documents, templates and tools may evolve without changing it.
 
+<!-- tabla: codigo-primero -->
 | Code | Core rule | Where it is developed |
 |---|---|---|
 | **N-01** | **Complete inventory** of AI systems —own, third-party, corporate use and unauthorised— with an owner, regulatory classification and intensity. | document 32; document 90, section 2.4 |

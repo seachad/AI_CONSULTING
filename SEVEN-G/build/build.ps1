@@ -805,7 +805,7 @@ function NombrePrimero([string]$texto) {
               # se quita primero la cabecera repetida (solo esa aparición) y después se renombra la primera
               $thQ = [Net.WebUtility]::HtmlDecode(($ths[$quitar].Value -replace '<[^>]+>', '')).Trim()
               $out = $fila.Value.Remove($ths[$quitar].Index, $ths[$quitar].Length)
-              if ($th1 -match '^(Código|Code|Nº|N\.º|#|Hito|Milestone|Dimensión|Dimension|Perfil|Profile|Arquetipo|Archetype|Modificador|Modifier)$' -and $thQ -match '^(Nombre|Name|Herramienta|Tool|Plantilla|Template|Documento|Document|Dimensión|Dimension|Hito|Milestone|Arquetipo|Archetype|Modificador|Modifier|Herramienta o plantilla|Tool or template)$') {
+              if ($th1 -match '^(Código|Code|Nº|N\.º|#|Hito|Milestone|Dimensión|Dimension|Perfil|Profile|Arquetipo|Archetype|Modificador|Modifier)$' -and $thQ -match '^(Nombre|Name|Herramienta|Tool|Plantilla|Template|Documento|Document|Dimensión|Dimension|Hito|Milestone|Arquetipo|Archetype|Modificador|Modifier|Herramienta o plantilla|Tool or template|Freno|Barrier)$') {
                 $out = $out.Remove($ths[0].Index, $ths[0].Length).Insert($ths[0].Index, ($ths[0].Value -replace '>[^<]*</th>$', ">$thQ</th>"))
               }
               return $out

@@ -77,6 +77,7 @@ Principle 11 in 01 §3, **proportionality**, governs how everything that is not 
 
 These fourteen rules are the **SEVEN-G core** (document 01, section 14.1): they hold for any company, with any scope and in any initiative, and they are what distinguishes applying SEVEN-G from using some of its templates. They are repeated here for convenience; if they differ, document 01 prevails.
 
+<!-- tabla: codigo-primero -->
 | Code | Rule | Source |
 |---|---|---|
 | **N-01** | **Complete inventory** of AI systems —own, third-party, corporate use and unauthorised— with an owner, regulatory classification and intensity. | document 32; document 90, section 2.4 |

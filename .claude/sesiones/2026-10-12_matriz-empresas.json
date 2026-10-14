@@ -4,7 +4,7 @@
 "lead": "Cómo se implanta SEVEN-G según el tipo de empresa sin que resulte grande ni rígido: perfiles, caminos, grados mínimo · exigible · recomendable, un cuestionario de entrada autoconsumible, nombre primero y código después, y el marcador de la iniciativa. Empezó con el Hall of Fame.",
 "hilo": "Hall of Fame y matriz de empresas",
 "inicio": "2026-10-01",
-"act": "2026-10-12 23:55",
+"act": "2026-10-14 10:30",
 "rama": "claude/tender-keller-98tg87 (todo integrado en main)",
 "url": "https://claude.ai/artifact/7hgCDVDkgXbyBg8CCkeSpL",
 "sesion_url": "https://claude.ai/code/session_01GYnn83qAo5rsL6DegA6ufe",
@@ -115,8 +115,8 @@
 "f": "2026-10-12",
 "h": "21:40",
 "k": "decision",
-"t": "D143 (grados M/E/R, perfiles, cuestionario y cuadro de mando mínimo), D144 (nombre primero, código después) y D145 (marcador de la iniciativa) registradas con las recomendaciones de Claude; <span class=\"mono\">build/nombres.ps1</span> → <span class=\"mono\">nombres.json</span> (219 nombres por idioma); encargo E1–E5",
-"s": "Numeración provisional: la rama de Express, sin integrar, ya usa D143–D153; al integrarla pasan a D154–D156. Commit 782ec8e."
+"t": "D154 (grados M/E/R, perfiles, cuestionario y cuadro de mando mínimo), D155 (nombre primero, código después) y D156 (marcador de la iniciativa) registradas con las recomendaciones de Claude; <span class=\"mono\">build/nombres.ps1</span> → <span class=\"mono\">nombres.json</span> (219 nombres por idioma); encargo E1–E5",
+"s": "Registradas como D143–D145 (numeración provisional) y renumeradas a D154–D156 el 13-10-2026 al integrar la rama de Express. Commit 782ec8e."
 },
 {
 "f": "2026-10-12",
@@ -130,10 +130,31 @@
 "k": "hecho",
 "t": "E1 y E2 hechas en la nube: regla R16 y 02 §2.4 (ES/EN, 1.2); <span class=\"mono\">build.ps1</span> muestra «Nombre (código)» en títulos («6.4 Viabilidad (G3)», «Viabilidad y riesgo (fase 3)») y en las tablas con código en la primera celda, fundiendo la columna del nombre y renombrando la cabecera, sin tocar el Markdown ni las anclas; <span class=\"mono\">codigos.ps1</span> sigue reconociendo puertas, fases, listas y las 23 herramientas; sección 37 de la verificación; tooltips desde <span class=\"mono\">nombres.json</span>",
 "s": "Fue posible porque el Chromium de la sesión pasa por Edge (D125); los cursos en presentación quedan fuera (<span class=\"mono\">System.Drawing</span> no existe en Linux). SEVEN-G regenerado entero (HTML y PDF, ES/EN); verificación con navegador en verde (8 avisos habituales); commit 1c4a2b9 en main."
+},
+{
+"f": "2026-10-13",
+"h": "11:20",
+"k": "hecho",
+"t": "La rama de Express ya está en <span class=\"mono\">main</span>: otra sesión la integró (D143–D153), renumeró estas decisiones a D154–D156 y la sección de verificación «nombre primero» pasa a la 44",
+"s": "Commit 4805b2f (sesión «Integra la rama de Express»). También: SEVEN-G deja de presentarse como marca registrada (D157) y se separan repositorio de trabajo y sitio público (D158)."
+},
+{
+"f": "2026-10-14",
+"h": "10:00",
+"k": "pedido",
+"t": "«No sé hacer esto» (sobre dar de alta la variable <span class=\"mono\">SEVENG_TERMINOS_PROHIBIDOS</span> y retomar la otra sesión)."
+},
+{
+"f": "2026-10-14",
+"h": "10:30",
+"k": "hecho",
+"t": "Ya no hace falta: la rama de Express está en main desde el 13-10. Cerrado el pendiente que quedaba: el núcleo N-01…N-14 y los frenos FE-1…FE-6 entran en <span class=\"mono\">nombres.json</span> (239 nombres por idioma)",
+"s": "<span class=\"mono\">nombres.ps1</span> los lee de 01 §14.1 y 60 §10.4; la tabla de frenos del 60 se muestra «Freno (FE-n)»; las tablas del núcleo (01, 94, P61) llevan <span class=\"mono\">&lt;!-- tabla: codigo-primero --&gt;</span> porque la regla ya empieza por su nombre. Documentos 01, 60, 94 y P61 regenerados (ES/EN)."
 }
 ],
 "tests": [
-"<b>Pasó:</b> <span class=\"mono\">verificar_coherencia.ps1</span> con navegador tras regenerar el sitio (12-10, 1c4a2b9): sección 37 nueva, anclas, índice de códigos y prueba de humo en verde; 8 avisos (lista privada de términos, una búsqueda no concluyente y las variantes de nombre que corregirá E3).",
+"<b>Pasó:</b> <span class=\"mono\">verificar_coherencia.ps1</span> con navegador tras regenerar el sitio (12-10, 1c4a2b9): sección 44 nueva (37 al crearla), anclas, índice de códigos y prueba de humo en verde; 8 avisos (lista privada de términos, una búsqueda no concluyente y las variantes de nombre que corregirá E3).",
+"<b>Pasó (14-10):</b> <span class=\"mono\">verificar_coherencia.ps1</span> tras añadir el núcleo y los frenos a <span class=\"mono\">nombres.json</span> y regenerar 01, 60, 94 y P61.",
 "<b>Dato para E3:</b> 385 menciones de puerta solo por código en los documentos de lectura (ES) y 94 variantes de nombre de puerta en los Markdown (p. ej. «R6 · Continuidad» en el 01).",
 "<b>Pendiente de prueba humana:</b> el cuestionario con dos o tres empresas reales; abrir el 21 §6, el 96 §4.1 y el catálogo del 03 para dar el visto bueno a la forma «Nombre (código)»."
 ],
@@ -151,8 +172,8 @@
 "Dónde está su empresa. Commit 293fcde."
 ],
 [
-"Decisiones D143, D144 y D145 registradas",
-"Con las recomendaciones de Claude («termínalo todo»)."
+"Decisiones D154, D155 y D156 registradas (antes D143–D145)",
+"Con las recomendaciones de Claude («termínalo todo»); renumeradas al integrar Express."
 ],
 [
 "Lista única de nombres canónicos y encargo E1–E5",
@@ -160,7 +181,15 @@
 ],
 [
 "E1 y E2: «nombre primero, código después» aplicado al sitio",
-"02 §2.4 (R16), build.ps1, codigos.ps1, estilo.css, verificación 37; SEVEN-G regenerado; commit 1c4a2b9."
+"02 §2.4 (R16), build.ps1, codigos.ps1, estilo.css, verificación 44 (antes 37); SEVEN-G regenerado; commit 1c4a2b9."
+],
+[
+"Rama de Express integrada en main y renumeración hecha",
+"Por otra sesión, 13-10-2026 (4805b2f). Sin variable privada: la verificación la trata como aviso."
+],
+[
+"Núcleo N-01…N-14 y frenos FE-1…FE-6 en nombres.json",
+"Cierra el pendiente del 12-10-2026 en CLAUDE.md."
 ]
 ],
 "flow": [
@@ -170,18 +199,13 @@
 "t": "La forma «Nombre (código)» en el sitio y el cuestionario con empresas reales."
 },
 {
-"c": "t",
-"b": "2 · Desbloqueas",
-"t": "La rama de Express en main (variable privada)."
-},
-{
 "c": "c",
-"b": "3 · E3 y E4",
+"b": "2 · E3 y E4",
 "t": "Batida editorial del texto corrido; marcador de la iniciativa."
 },
 {
 "c": "c",
-"b": "4 · E5",
+"b": "3 · E5",
 "t": "Cuestionario en T23 y grados M/E/R en criterios, métricas y plantillas."
 }
 ],
@@ -243,27 +267,11 @@
 "boton": "Enviar respuestas a Claude"
 },
 {
-"id": "express",
-"who": "tu",
-"h": "Desbloquear la rama de Express y llevarla a main",
-"p": "La sesión «Análisis feedback evolución SEVEN-G» (<code>claude/blissful-hypatia-tcfdft</code>, D144–D153) espera la variable <code>SEVENG_TERMINOS_PROHIBIDOS</code> en el entorno de la nube; has dicho que la darás más adelante.",
-"why": "<b>Por qué hace falta:</b> P01, P04, 21 y 94 cambian también en esa rama; E3, E4 y E5 se pasan una sola vez. <b>Desbloquea:</b> E3, E4 y E5, y la renumeración D143–D145 → D154–D156.",
-"tags": [
-"tu"
-],
-"nota": "otra sesión",
-"accion": {
-"boton": "Ya está la variable",
-"msg": "Ya he dado de alta SEVENG_TERMINOS_PROHIBIDOS. Comprueba si la rama de Express está en main y, si lo está, renumera D143–D145 a D154–D156 y sigue con E3."
-},
-"more": "<ol><li>Dar de alta la variable <code>SEVENG_TERMINOS_PROHIBIDOS</code> en el entorno de la nube con el contenido de <code>~/.seveng/terminos_prohibidos.txt</code> (un término por línea).</li><li>Retomar esa sesión: pasará la verificación y hará el push a <code>main</code>.</li></ol>"
-},
-{
 "id": "e3",
 "who": "claude",
 "h": "E3 · Batida editorial del texto corrido, por orden de lectura",
 "p": "«en G3» → «en la puerta de viabilidad (G3)»; «documento 40» → «las reglas de medición del valor (documento 40)». Entrada, 00, 01, 90, 94, 96, curso, 60, 61; después el resto; las plantillas al final. ES y EN a la vez; cada documento sube de versión.",
-"why": "<b>Por qué:</b> los títulos y las tablas ya van con el nombre delante; el texto corrido es lo que queda. <b>Desbloquea:</b> que el recuento de la sección 37 llegue a cero.",
+"why": "<b>Por qué:</b> los títulos y las tablas ya van con el nombre delante; el texto corrido es lo que queda. <b>Desbloquea:</b> que el recuento de la sección 44 llegue a cero.",
 "tags": [
 "claude"
 ],
@@ -282,10 +290,10 @@
 "tags": [
 "claude"
 ],
-"nota": "2 sesiones · D145",
+"nota": "2 sesiones · D156",
 "accion": {
 "boton": "Seguir con E4",
-"msg": "Sigue con E4: el marcador de la iniciativa (P08, P17, 52, T01, T17, 61, glosario) según D145 y el encargo."
+"msg": "Sigue con E4: el marcador de la iniciativa (P08, P17, 52, T01, T17, 61, glosario) según D156 y el encargo."
 }
 },
 {
@@ -293,28 +301,14 @@
 "who": "claude",
 "h": "E5 · Cuestionario en T23 y grados M/E/R",
 "p": "Q13–Q22, perfiles EM y MP6 en <code>recorrido.json</code>; tarjeta de resultado del prototipo en T23 (ES/EN, ayuda «?»); <code>madurez[].objetivos</code>; columna <code>grado</code> en criterios; <code>scorecard_minimo.json</code> y fila «Inventario» en 60 §4.2; (M)/(E)/(R) en las 74 plantillas; 94 §2.2 y 96 §2 desde los datos.",
-"why": "<b>Por qué:</b> cierra D143 y retira el prototipo. <b>Desbloquea:</b> que una compañía se autoclasifique desde la entrada «Qué es SEVEN-G».",
+"why": "<b>Por qué:</b> cierra D154 y retira el prototipo. <b>Desbloquea:</b> que una compañía se autoclasifique desde la entrada «Qué es SEVEN-G».",
 "tags": [
 "claude"
 ],
-"nota": "3–4 sesiones · D143",
+"nota": "3–4 sesiones · D154",
 "accion": {
 "boton": "Seguir con E5",
-"msg": "Sigue con E5: cuestionario de entrada en T23 y grados M/E/R (criterios, métricas, plantillas), según D143 y el encargo."
-}
-},
-{
-"id": "registro",
-"who": "claude",
-"h": "Cerrar: renumerar, registrar y actualizar el plan",
-"p": "Al integrar Express: D143–D145 → D154–D156 en el registro, CLAUDE.md, los tres <code>_trabajo/20261012_*.md</code>, <code>nombres.ps1</code> y este informe; añadir el núcleo N-01…N-14 y los frenos FE a <code>nombres.json</code>; cerrar el pendiente de CLAUDE.md.",
-"why": "<b>Por qué:</b> el registro es la fuente de verdad de lo decidido. <b>Desbloquea:</b> que otra sesión no vuelva a proponerlo.",
-"tags": [
-"claude"
-],
-"accion": {
-"boton": "Cierra el pendiente",
-"msg": "Renumera D143–D145 a D154–D156 si Express ya está en main, añade el núcleo y los frenos a nombres.json, y cierra el pendiente del 12-10-2026 en CLAUDE.md."
+"msg": "Sigue con E5: cuestionario de entrada en T23 y grados M/E/R (criterios, métricas, plantillas), según D154 y el encargo."
 }
 }
 ],

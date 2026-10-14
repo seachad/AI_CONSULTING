@@ -98,6 +98,7 @@ En una declaración integral, el ciclo corporativo, el ciclo de vida, el sistema
 
 ## 6. Reglas del núcleo (01 §14.1) y evidencias
 
+<!-- tabla: codigo-primero -->
 | Código | Regla del núcleo | Pregunta del documento 11 | ¿Cumple? (Sí · No) | Evidencia disponible | Resultado de la auditoría para la regla |
 |---|---|---|---|---|---|
 | N-01 | Inventario completo con responsable, clasificación regulatoria e intensidad. | D6.05 | | T02; conciliación del inventario (32 §9). | |

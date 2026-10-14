@@ -564,6 +564,7 @@ Este documento no constituye asesoramiento jurídico. La clasificación regulato
 
 El **núcleo** es el conjunto mínimo y estable de reglas que distingue aplicar SEVEN-G de usar algunas de sus plantillas. Es el mismo para toda compañía, intensidad y alcance. Todo lo demás de la biblioteca es, o bien una **práctica** —la forma recomendada, u obligatoria cuando se da su disparador, de cumplir el núcleo (documento 94, sección 2.3)—, o bien un **instrumento** —una plantilla o una herramienta que lo facilita—. El núcleo tiene su propia versión y solo cambia por decisión expresa del autor del marco, que se registra; los documentos, las plantillas y las herramientas pueden evolucionar sin cambiarlo.
 
+<!-- tabla: codigo-primero -->
 | Código | Regla del núcleo | Dónde se desarrolla |
 |---|---|---|
 | **N-01** | **Inventario completo** de los sistemas de IA —propios, de terceros, de uso corporativo y no autorizados— con responsable, clasificación regulatoria e intensidad. | documento 32; documento 90, sección 2.4 |
