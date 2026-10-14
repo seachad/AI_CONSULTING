@@ -5,7 +5,8 @@
 #   pwsh -File SEVEN-G/build/nombres.ps1 -Comprobar  sale con 1 si el fichero no está al día
 # De dónde sale cada nombre: documentos, plantillas, módulos del curso y herramientas, del índice de códigos
 # (html/<idioma>/codigos.js, que genera codigos.ps1); fases y puertas, de 01 §6.1; ciclo corporativo, de 01 §5.1;
-# dimensiones de madurez, de 11 §2.1; hitos, arquetipos y modificadores, de 96 §4.1, §2.1 y §2.3.
+# dimensiones de madurez, de 11 §2.1; hitos, arquetipos y modificadores, de 96 §4.1, §2.1 y §2.3; reglas del núcleo N-01…N-14,
+# de 01 §14.1 (el nombre es el texto en negrita con que empieza la regla); frenos de escalado FE-1…FE-6, de 60 §10.4.
 param([switch]$Comprobar)
 $ErrorActionPreference = 'Stop'
 $raiz = (Resolve-Path (Join-Path $PSScriptRoot '../..')).Path
@@ -90,6 +91,17 @@ foreach ($lang in 'es', 'en') {
   }
   foreach ($f in Tabla $d96 '### 2.3' '### 2.4') {
     $c = Celdas $f; if ($c.Count -ge 2 -and $c[0] -match '^\*\*(MP\d)\*\*$') { Poner $Matches[1] 'modificador' ($c[1] -replace '\s*\(.*$', '') }
+  }
+  # 6. Reglas del núcleo N-01…N-14: 01 §14.1 (la regla empieza por su nombre en negrita)
+  foreach ($f in Tabla $d01 '### 14.1' '### 14.2') {
+    $c = Celdas $f; if ($c.Count -lt 2) { continue }
+    $cod = [regex]::Match($c[0], '^\*\*(N-\d{2})\*\*$'); $nom = [regex]::Match($c[1], '^\*\*([^*]+)\*\*')
+    if ($cod.Success -and $nom.Success) { Poner $cod.Groups[1].Value 'nucleo' $nom.Groups[1].Value }
+  }
+  # 7. Frenos de escalado FE-1…FE-6: 60 §10.4
+  $d60 = Get-Content (Get-ChildItem $mds -Filter '60_*.md' | Select-Object -First 1).FullName -Raw -Encoding utf8
+  foreach ($f in Tabla $d60 '### 10.4' '### 10.5') {
+    $c = Celdas $f; if ($c.Count -ge 2 -and $c[0] -match '^\*\*(FE-\d)\*\*$') { Poner $Matches[1] 'freno' $c[1] }
   }
   $resultado[$lang] = $nombres
 }

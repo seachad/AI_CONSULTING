@@ -77,6 +77,7 @@ El principio 11 de 01 §3, **proporcionalidad**, gobierna cómo se aplica todo l
 
 Estas catorce reglas son el **núcleo de SEVEN-G** (documento 01, sección 14.1): valen para cualquier compañía, con cualquier alcance y en cualquier iniciativa, y son las que distinguen aplicar SEVEN-G de usar algunas de sus plantillas. Se repiten aquí para tenerlas a mano; si difieren, prevalece el documento 01.
 
+<!-- tabla: codigo-primero -->
 | Código | Regla | Origen |
 |---|---|---|
 | **N-01** | **Inventario completo** de los sistemas de IA —propios, de terceros, de uso corporativo y no autorizados— con responsable, clasificación regulatoria e intensidad. | documento 32; documento 90, sección 2.4 |

@@ -98,6 +98,7 @@ In a full declaration, the corporate cycle, the initiative lifecycle, the govern
 
 ## 6. Core rules (01 §14.1) and evidence
 
+<!-- tabla: codigo-primero -->
 | Code | Core rule | Question in document 11 | Met? (Yes · No) | Evidence available | Audit result for the rule |
 |---|---|---|---|---|---|
 | N-01 | Complete inventory with owner, regulatory classification and intensity. | D6.05 | | T02; reconciliation of the inventory (32 §9). | |
