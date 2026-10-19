@@ -9,6 +9,11 @@
    cifras y casos de uso consolidados, en adopción y emergentes) con sus fuentes, que deben estar en el registro de referencias
    (SEVEN-G/build/referencias/*.json, D41/D114). Los textos de mercado viven en galeria/_fuentes/mercado/<sector>.json.
 
+3. Si existe galeria/_fuentes/seguridad_ia.json, añade el bloque transversal «Seguridad de la IA: compañías y soluciones» (D159): por
+   capacidad de seguridad de la IA del documento 35, compañías y soluciones con lo que dice su página oficial. Cada entrada cita una
+   página oficial dada de alta y verificada en el registro de referencias (ids MER-SIA-NN). Es una lectura de mercado, no una
+   recomendación; los documentos de la metodología no nombran compañías.
+
 Nada se escribe a mano en los HTML: se regeneran con
   uv run python galeria.py
 """
@@ -29,6 +34,7 @@ EJEMPLOS = os.path.join(AQUI, "..", "T01_registro_iniciativas", "ejemplos")
 GALERIA = os.path.join(AQUI, "galeria")
 FUENTES = os.path.join(GALERIA, "_fuentes")
 MERCADO = os.path.join(FUENTES, "mercado")
+SEGURIDAD = os.path.join(FUENTES, "seguridad_ia.json")
 REFERENCIAS = os.path.join(AQUI, "..", "..", "build", "referencias")
 
 # orden y nombre de los sectores (los que no tienen registro de ejemplo muestran solo el mercado)
@@ -174,6 +180,53 @@ def mercado(sector, nombre, refs, lang, con_ejemplo):
             f'<h3>{"Fuentes" if es else "Sources"}</h3><ol class="fuentes">{lista_f}</ol></details>')
 
 
+def seguridad_ia(refs, lang):
+    """Bloque transversal «Seguridad de la IA» (D159). Sin el JSON, la página queda como estaba."""
+    if not os.path.exists(SEGURIDAD):
+        return ""
+    d = json.load(open(SEGURIDAD, encoding="utf-8"))
+    es = lang == "es"
+    total = sum(len(c["entradas"]) for c in d["categorias"])
+    titulo = (f"Seguridad de la IA: compañías y soluciones ({total} soluciones)" if es else f"AI security: companies and solutions ({total} solutions)")
+    intro = ("Lectura de mercado, no recomendación: compañías y soluciones que se presentan como respuesta a cada capacidad de seguridad de la IA del documento 35, "
+             "con lo que dice de sí misma su página oficial, comprobada el 19-10-2026. SEVEN-G no evalúa, avala ni compara productos; la lista no es exhaustiva y se ordena "
+             "alfabéticamente. Antes de usar cualquiera con datos de la compañía —también para probarla— se aplica la evaluación de proveedor (documento 36 y P55)."
+             if es else
+             "A market reading, not a recommendation: companies and solutions that present themselves as an answer to each AI security capability in document 35, "
+             "with what their own official page says about them, checked on 19-10-2026. SEVEN-G does not assess, endorse or compare products; the list is not exhaustive and is "
+             "sorted alphabetically. Before using any of them with company data —even to test it— the supplier assessment applies (document 36 and P55).")
+    th = ((("Compañía", "Empresa que ofrece la solución"), ("Solución", "Nombre del producto o servicio"),
+           ("Qué hace (según su página oficial)", "Resumen propio de lo que dice su página oficial, comprobada en la fecha indicada")) if es else
+          (("Company", "Company offering the solution"), ("Solution", "Name of the product or service"),
+           ("What it does (according to its official page)", "Own summary of what its official page says, checked on the date given")))
+    cab = "".join(f'<th title="{e(t)}">{e(n)}</th>' for n, t in th)
+    bloques = []
+    for c in d["categorias"]:
+        numero = {}
+        filas = []
+        for x in c["entradas"]:
+            assert x["fuente"] in refs and refs[x["fuente"]]["estado"] == "verificado", f"seguridad_ia: {x['fuente']} no está verificada en el registro"
+            ids = [x["fuente"]]
+            adq = x.get("adquisicion_" + lang) or ""
+            if adq:
+                fa = x["fuente_adquisicion"]
+                assert fa in refs and refs[fa]["estado"] == "verificado", f"seguridad_ia: {fa} no está verificada en el registro"
+                ids.append(fa)
+            for i in ids:
+                numero.setdefault(i, f"{lang}-sia-{c['id']}-f{len(numero) + 1}")
+            c1 = f'<sup><a href="#{numero[ids[0]]}" class="cita">{numero[ids[0]].split("-f")[-1]}</a></sup>'
+            extra = f' {e(adq)}<sup><a href="#{numero[ids[1]]}" class="cita">{numero[ids[1]].split("-f")[-1]}</a></sup>' if adq else ""
+            filas.append(f'<tr><td>{e(x["compania"])}</td><td><strong>{e(x["solucion"])}</strong>{c1}</td><td>{e(x["que_hace_" + lang])}{extra}</td></tr>')
+        lista_f = "".join(f'<li id="{n}">{enlace_fuente(i, refs, lang)} · {e(refs[i]["emisor"])} ({e(refs[i]["fecha"])})</li>' for i, n in numero.items())
+        nom = c["nombre_" + lang]
+        bloques.append(
+            f'<details class="sector" id="{lang}-sia-{c["id"]}"><summary>{e(nom)} <span>{len(c["entradas"])} {"soluciones" if es else "solutions"}</span></summary>'
+            f'<p>{e(c["que_es_" + lang])}</p><p class="nota">{"Controles de SEVEN-G" if es else "SEVEN-G security controls"}: {e(c["controles"])}</p>'
+            f'<div class="tabla"><table><thead><tr>{cab}</tr></thead><tbody>{"".join(filas)}</tbody></table></div>'
+            f'<h3>{"Fuentes" if es else "Sources"}</h3><ol class="fuentes">{lista_f}</ol></details>')
+    return f'<h2 id="{lang}-seguridad-ia">{e(titulo)}</h2><p>{e(intro)}</p>' + "".join(bloques)
+
+
 def pagina(resultados, refs):
     plantilla = open(os.path.join(FUENTES, "plantilla.html"), encoding="utf-8").read()
     fecha = datetime.date.today().isoformat()
@@ -182,6 +235,7 @@ def pagina(resultados, refs):
         tarjetas = "".join(tarjeta(s, resultados[s], lang) for s, *_ in SECTORES if s in resultados)
         bloques = "".join(mercado(s, n[idx - 1], refs, lang, s in resultados) for s, *n in SECTORES)
         plantilla = plantilla.replace(f"__TARJETAS_{lang.upper()}__", tarjetas).replace(f"__MERCADO_{lang.upper()}__", bloques)
+        plantilla = plantilla.replace(f"__SEGURIDAD_IA_{lang.upper()}__", seguridad_ia(refs, lang))
     n_casos = sum(len(json.load(open(f, encoding="utf-8"))["casos"]) for f in glob.glob(os.path.join(MERCADO, "*.json")))
     n_fuentes = len({f for p in glob.glob(os.path.join(MERCADO, "*.json")) for f in json.load(open(p, encoding="utf-8"))["fuentes"]})
     n_sect = len(glob.glob(os.path.join(MERCADO, "*.json")))

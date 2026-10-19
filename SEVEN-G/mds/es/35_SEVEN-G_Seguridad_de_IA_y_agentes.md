@@ -5,12 +5,12 @@
 | | |
 |---|---|
 | Documento | Documento 35 · Seguridad de IA y agentes |
-| Versión | 0.2 (borrador de trabajo) |
-| Fecha | 25-09-2026 |
+| Versión | 0.4 (borrador de trabajo) |
+| Fecha | 19-10-2026 |
 | Autor | Fernando García Varela |
 | Estado | Borrador para revisión. Define los niveles de autonomía A0–A3 y los catálogos de controles SEG y AG que usan T10, P18 y la lista LV-AG del documento 22. |
 
-<!-- cifras: 4 | niveles de autonomía ; 25 | controles de seguridad de IA (SEG) ; 20 | controles de agentes (AG) ; 9 | requisitos esenciales de un agente -->
+<!-- cifras: 4 | niveles de autonomía ; 27 | controles de seguridad de IA (SEG) ; 20 | controles de agentes (AG) ; 9 | requisitos esenciales de un agente -->
 
 ---
 
@@ -89,6 +89,7 @@ Un agente planifica, usa herramientas, conserva memoria y actúa con autoridad d
 |---|---|---|---|
 | **Secuestro del objetivo** | El agente persigue un objetivo distinto del encomendado. | ASI01 | AG-04, AG-05, AG-12 |
 | **Abuso de identidad y privilegios** | El agente usa credenciales o permisos heredados más allá de su tarea; un atacante los reutiliza. | ASI03 | AG-01, AG-02, AG-03, AG-20 |
+| **Envenenamiento de herramientas y conectores** | La descripción de una herramienta o de un conector lleva instrucciones ocultas que el agente obedece; una herramienta cambia de descripción o de comportamiento después de aprobarse; un conector pide ámbitos o permisos mayores que su función; o una persona instala servidores de herramientas sin control. | ASI02, ASI04 | AG-13, AG-02, AG-12, SEG-27 |
 | **Ejecución inesperada de código** | El agente genera o ejecuta código o comandos con efectos no previstos. | ASI05 | AG-11, SEG-04 |
 | **Envenenamiento de memoria y contexto** | Contenido manipulado persiste y condiciona tareas posteriores. | ASI06 | AG-14 |
 | **Comunicación insegura entre agentes** | Mensajes falsificados o no autenticados entre agentes. | ASI07 | AG-15 |
@@ -168,6 +169,10 @@ Se consideran **acciones sensibles**, salvo justificación registrada en P17 y P
 
 La validación **debe** ser informada: la persona ve qué acción se propone, con qué datos, por qué y con qué efectos, y puede rechazarla sin coste para ella. Se mide la tasa de rechazo y el tiempo de revisión para detectar aprobación rutinaria (AG-08, RT-ORG-04).
 
+**Derivación inmediata a una persona.** En los agentes y asistentes con exposición directa (01 §9.2), la conversación **debe** pasar de inmediato a una persona cuando quien la usa lo pide expresamente o cuando aparecen señales de vulnerabilidad: indicios de que es menor o de que tiene dificultades por la edad, confusión sobre lo que se le propone, duelo, angustia o cualquier situación en la que seguir con el sistema pueda perjudicarle. La derivación no exige justificar la petición ni repetirla y no se desactiva por coste (52 §10.3). Las señales y el canal se fijan en P17 y el texto que se muestra, en P49. Cada derivación se registra (motivo, momento y tiempo hasta que atiende una persona) y se mide (derivaciones por motivo, peticiones no atendidas) para revisar en R6 si las señales están bien calibradas. La regulación de cada sector o jurisdicción puede exigir más.
+
+> **Por qué importa.** Un sistema que atiende a personas externas encontrará a alguien que no está en condiciones de tratar con una máquina o que no quiere hacerlo. Retenerle en la conversación para contener costes convierte una eficiencia en un daño a una persona y en un riesgo reputacional. Derivar sin fricción, y medir cuándo se deriva, protege a la persona y dice si el sistema está bien diseñado.
+
 ### 4.7 Interruptor de parada
 
 - Mecanismo para detener de inmediato el agente completo o una capacidad concreta (una herramienta, un tipo de acción) **sin desplegar código** (AG-09).
@@ -239,6 +244,9 @@ AG-01, AG-03 y AG-13 aplican a A0 como obligatorios si el sistema accede a siste
 | Pruebas adversarias (AG-18) | Antes de G5 y tras cambios relevantes | Antes de G5, anual y tras cambios relevantes | Antes de G5, semestral y tras cambios relevantes |
 | Revisión de permisos (AG-20) | Anual | Semestral | Trimestral |
 | Revisión de muestras de acciones | Semestral | Mensual | Continua con alertas y revisión mensual |
+| Banco de pruebas corporativo (SEG-27) | Antes de G5 y tras cambios relevantes | En cada despliegue | En cada despliegue |
+
+En A0, el banco de pruebas corporativo se ejecuta antes de G5 y tras cambios relevantes, como en A1.
 
 ### 5.4 Controles críticos
 
@@ -271,12 +279,16 @@ En A2 y A3 son **controles críticos** AG-01, AG-02, AG-03, AG-05, AG-08, AG-09,
 | **SEG-17** | Concienciación sobre suplantación con IA | Formación y simulacros con mensajes, voz y vídeo sintéticos, dirigidos especialmente a finanzas, dirección, atención al cliente y soporte técnico. | Plan; resultados de simulacros. | CORP | C4 | PR (PR.AT) |
 | **SEG-18** | Protocolos frente a contenido sintético | Palabras de verificación o preguntas acordadas en canales de voz y vídeo; herramientas de detección como apoyo, no como única barrera. | Procedimiento publicado. | CORP | C4 | PR (PR.AA) · DE (DE.AE) |
 | **SEG-19** | Pruebas continuas de la superficie expuesta | Descubrimiento de activos expuestos y pruebas de intrusión recurrentes que incluyan técnicas automatizadas con IA. | Resultados y plazos de corrección. | CORP | C4, 6 | ID (ID.AM, ID.RA) |
-| **SEG-20** | Control del uso corporativo de IA | Herramientas aprobadas, bloqueo o supervisión de las no autorizadas, prevención de fuga hacia servicios externos. | Monitor de uso (T21). | CORP | C4 | GV (GV.PO) · PR (PR.DS) |
+| **SEG-20** | Control del uso corporativo de IA | Herramientas aprobadas, bloqueo o supervisión de las no autorizadas y prevención de fuga hacia servicios externos. Incluye los agentes locales en los equipos (asistentes de programación con credenciales, servidores de herramientas instalados por el usuario) y las extensiones del navegador con IA, que se inventarían y se autorizan como cualquier otra herramienta (31 §4.7). Probar una herramienta externa con datos de la compañía también es usarla (36 §2). | Monitor de uso (T21); inventario de agentes locales y extensiones. | CORP | C4 | GV (GV.PO) · PR (PR.DS) |
 | **SEG-21** | Autonomía de la respuesta automatizada | Nivel A0–A3 fijado por tipo de acción de contención; A2 o A3 solo con procedimiento aprobado, límites, reversión probada e interruptor de parada (sección 9.3). | Matriz de acciones y niveles (P18); pruebas de reversión (P19). | CORP | 4–6 | RS (RS.MI) |
 | **SEG-22** | Validación humana de la contención | Validación informada antes de contener con efecto en producción, en clientes o sobre personas; revisión a posteriori de esas acciones en A2 y A3. | Registro de validaciones y revisiones; tasa de rechazo. | CORP | 6 | RS (RS.MA) |
 | **SEG-23** | Calidad de la detección con IA | Falsos positivos y negativos, tiempo de detección y de respuesta frente a una línea base sin IA, con umbrales; análisis de cada falso negativo en un incidente real. | Indicadores y umbrales (P25); análisis de falsos negativos. | CORP | 5, 6 | DE (DE.AE) |
 | **SEG-24** | Dependencia del proveedor de ciberdefensa con IA | Evaluación del proveedor, control de la telemetría que sale de la compañía, plan de salida y operación degradada sin IA. | P14, P55, P57; prueba de operación degradada. | CORP | 3, 6 | GV (GV.SC) |
 | **SEG-25** | Pruebas adversarias del sistema defensivo | Evasión, envenenamiento de la telemetría o del entrenamiento e inyección de instrucciones en alertas, tickets o registros que lee el sistema. | Plan e informe de pruebas adversarias (P53). | CORP | 5, 6 | ID (ID.IM) |
+| **SEG-26** | Pasarela corporativa de IA | Todo el tráfico hacia modelos, propios o de terceros, pasa por un punto de control común fuera del modelo que aplica, con la misma configuración medida para todas las iniciativas: filtros de entrada, de salida y de contexto (SEG-03), prevención de fuga (SEG-07), cuotas y límites (SEG-10), lista de modelos aprobados, registro con identificador de correlación (SEG-12) y, para agentes, el punto de decisión de intención (AG-05). Falla cerrado en acciones sensibles y degradado en consultas. | Arquitectura (P18); configuración común versionada; prueba de que no hay tráfico a modelos fuera de la pasarela; eficacia medida (52 §5.2). | CORP | C4, 4–6 | PR (PR.PS) · DE (DE.CM) |
+| **SEG-27** | Banco de pruebas corporativo de agentes | Biblioteca versionada de escenarios adversarios, derivada del modelo de amenazas (SEG-01) y de los incidentes propios, que cubre todos los canales —texto, documentos, correo, web, respuestas de herramientas, memoria, mensajes entre agentes y voz o audio sintéticos—, las herramientas y conectores, y usuarios simulados. Está integrada en la cadena de despliegue: en A2 y A3 se ejecuta en cada despliegue y un escenario crítico con éxito impide desplegar; en A0 y A1, antes de G5 y tras cada cambio relevante. | Biblioteca de escenarios versionada; resultado por despliegue; informe de pruebas adversarias (P53). | CORP | 5, 6 | ID (ID.IM) |
+
+> **Por qué importa.** La pasarela corporativa de IA (SEG-26) y el banco de pruebas corporativo de agentes (SEG-27) convierten controles que cada equipo construiría a su manera en una capacidad común, medida y comparable: filtros, prevención de fuga y control de intención se configuran una vez y se miden igual para todas las iniciativas, y cada cambio de un agente se prueba contra los mismos ataques antes de llegar a producción. Sin ellos, la seguridad depende de lo que recuerde cada equipo y nadie puede decir al consejo si los guardarraíles funcionan.
 
 ---
 
@@ -298,7 +310,7 @@ La lista **LV-AG** del documento 22 convierte cada control en preguntas binarias
 | **AG-10** | Registro de acciones | Registro íntegro, protegido y con los campos de 4.8; conservación definida. | Especificación · Prueba de integridad · Muestreo | PR (PR.PS) |
 | **AG-11** | Entornos aislados | Ejecución de código, navegación y ficheros externos en entornos aislados sin credenciales de producción. | Arquitectura · Prueba de escape · Configuración vigente | PR (PR.IR) |
 | **AG-12** | Contenido externo no confiable | Separación de privilegios entre lectura de contenido no confiable y acciones sensibles. | Diseño · Pruebas de inyección indirecta · Resultados periódicos | PR (PR.AA) |
-| **AG-13** | Herramientas y conectores aprobados | Inventario de herramientas, conectores y servidores de herramientas con versión fijada, origen verificado y aprobación. | Inventario · Verificación · Revisión de cambios | ID (ID.AM) · GV (GV.SC) |
+| **AG-13** | Herramientas y conectores aprobados | Inventario de herramientas, conectores y servidores de herramientas —también los locales, instalados en equipos de usuario— con versión fijada, origen verificado y aprobación; revisión de la descripción de cada herramienta antes de aprobarla (sin instrucciones dirigidas al modelo) y de sus ámbitos y permisos frente a su función; nueva aprobación si cambia la descripción o el comportamiento. | Inventario y revisión de descripciones · Verificación y prueba de envenenamiento (SEG-27) · Revisión de cambios con nueva aprobación | ID (ID.AM) · GV (GV.SC) |
 | **AG-14** | Integridad de memoria y contexto | Memoria aislada por usuario y tarea, con caducidad, validación de escritura y posibilidad de purga. | Diseño · Prueba de envenenamiento · Purgas registradas | PR (PR.DS) |
 | **AG-15** | Comunicación segura entre agentes | Autenticación mutua, mensajes íntegros, sin confianza implícita entre agentes. | Diseño · Prueba de suplantación · Configuración | PR (PR.DS) |
 | **AG-16** | Contención de cascadas y consumo | Límites de iteración, reintentos y profundidad; disyuntores; presupuesto por tarea. | Parámetros · Prueba de bucle · Alertas de consumo | PR (PR.IR) |
@@ -315,13 +327,13 @@ La lista **LV-AG** del documento 22 convierte cada control en preguntas binarias
 |---|---|---|---|
 | **3 · Viabilidad** | Modelado de amenazas preliminar; evaluación de seguridad del proveedor; decisión preliminar de nivel de autonomía. | Técnico y seguridad | Riesgos RT-GEN y RT-SEG valorados en P12. |
 | **4 · Diseño** | Modelado de amenazas completo (SEG-01); revisión de arquitectura de permisos, control de intención e interruptor. | Seguridad, independiente del equipo | P18 con todos los controles aplicables diseñados. |
-| **5 · Entrega** | Evaluaciones adversarias automatizadas; *red teaming* manual; pruebas de inyección directa e indirecta; pruebas de límites, interruptor, revocación y reversión; pruebas de fuga de datos. | Equipo de pruebas independiente o tercero | Controles críticos probados; hallazgos altos cerrados o aceptados según 33 §7. |
-| **6 · Operación** | Evaluaciones continuas de regresión; campañas periódicas (5.3); pruebas tras cambios de modelo, instrucciones, herramientas o proveedor; simulacros de incidente. | Operación y seguridad | Indicadores de la sección 10 dentro de umbral. |
+| **5 · Entrega** | Evaluaciones adversarias automatizadas; *red teaming* manual; pruebas de inyección directa e indirecta; pruebas de límites, interruptor, revocación y reversión; pruebas de fuga de datos; ejecución del banco de pruebas corporativo de agentes (SEG-27) sobre la versión candidata. | Equipo de pruebas independiente o tercero | Controles críticos probados; hallazgos altos cerrados o aceptados según 33 §7. |
+| **6 · Operación** | Evaluaciones continuas de regresión; campañas periódicas (5.3); pruebas tras cambios de modelo, instrucciones, herramientas o proveedor; simulacros de incidente; en A2 y A3, banco de pruebas en cada despliegue y ampliación del banco con cada incidente propio. | Operación y seguridad | Indicadores de la sección 10 dentro de umbral. |
 | **7 · Evolución** | Pruebas del alcance ampliado; en retirada, revocación de identidades y borrado verificado. | Seguridad | Sin identidades ni credenciales huérfanas. |
 
 **Contenido mínimo de una campaña de *red teaming* (plantilla P53):** alcance y reglas de enfrentamiento aprobadas; escenarios derivados del modelo de amenazas; inyección directa e indirecta por todos los canales de entrada; intentos de extracción de instrucciones y datos; abuso de cada herramienta; intentos de superar límites y de inducir aprobaciones; resultados con tasa de éxito por escenario, severidad y acción correctiva; repetición de los escenarios fallidos tras la corrección.
 
-Las evaluaciones adversarias automatizadas se versionan y se ejecutan antes de cada cambio relevante. Un escenario con éxito en una acción sensible es un hallazgo que bloquea G5 hasta su corrección.
+Las evaluaciones adversarias automatizadas se versionan en el banco de pruebas corporativo (SEG-27) y se ejecutan antes de cada cambio relevante y, en A2 y A3, en cada despliegue. Un escenario con éxito en una acción sensible es un hallazgo que bloquea G5 hasta su corrección.
 
 ---
 
@@ -336,6 +348,7 @@ La IA no crea tipos de ataque nuevos en su mayoría, pero reduce su coste, aumen
 | **Suplantación de identidad** | Voz y vídeo sintéticos convincentes a partir de muestras públicas; suplantación en tiempo real. | RT-SEG-01 | SEG-16, SEG-17, SEG-18; límites de autorización de pagos. |
 | ***Phishing* generado** | Mensajes personalizados, sin errores, en cualquier idioma y a gran escala. | RT-SEG-02 | SEG-15, SEG-17; filtrado de correo; reducción de información pública sobre empleados. |
 | **Fraude del CEO con *deepfakes*** | Videollamadas o audios falsos de directivos que ordenan pagos urgentes o confidenciales. | RT-SEG-01 | SEG-16 sin excepciones por urgencia o jerarquía; doble firma; palabra de verificación (SEG-18). |
+| **Suplantación del cliente con IA** | Voz sintética o vídeo manipulado para superar la identificación del cliente en canales automatizados o telefónicos; documentos, fotografías o facturas manipulados con IA para respaldar reclamaciones, altas o cambios de datos. | RT-SEG-09 | Detección de voz sintética y prueba de vida solo como apoyo, nunca como única barrera; verificación por un segundo factor independiente del canal antes de operaciones sensibles o de cambios de datos de contacto o bancarios; revisión de documentos e imágenes con comprobación de metadatos y de coherencia, y revisión humana por muestreo y en los casos señalados; SEG-18 en los canales de voz y vídeo con clientes cuando sea posible. |
 | **Explotación acelerada de vulnerabilidades** | Descubrimiento y explotación automatizados poco después de publicarse una vulnerabilidad. | RT-SEG-03 | SEG-13, SEG-19; inventario de superficie expuesta; segmentación. |
 | **Ataque a identidades y credenciales** | Automatización de pruebas de credenciales y abuso de identidades no humanas. | RT-SEG-04 | SEG-15; AG-01, AG-03, AG-20; detección de tráfico automatizado. |
 | **Ataque a los propios agentes** | Inyección indirecta para que los agentes de la compañía actúen contra ella. | RT-GEN-02 | AG-05, AG-08, AG-12, AG-18. |
@@ -364,6 +377,16 @@ La compañía también puede usar la IA para defenderse: correlación y triaje d
 
 > **Por qué importa.** Usar IA en la ciberdefensa acelera la detección y la respuesta, pero traslada a un sistema automático decisiones que pueden parar la operación o dejar pasar un ataque. Tratarla como un caso de uso más, con autonomía fijada por tipo de acción, supervisión humana en lo que no se puede deshacer y métricas de acierto frente a una línea base, evita que la defensa se convierta en una nueva fuente de incidentes.
 
+**IA para TI y ciberdefensa: cómo se mide y cómo se financia.** Las iniciativas que usan IA para proteger y operar la tecnología de la propia compañía no se justifican con un VAN: su valor es menos pérdida esperada y más capacidad de detectar, responder y recuperarse. Se registran y recorren el ciclo de vida como cualquier otra iniciativa, se miden por **resultado operativo** (regla de presentación 11 del documento 40) y se financian desde el sobre de habilitación (documento 13 §12), presentadas aparte del neto de la cartera como las plataformas habilitadoras (40 §7.3).
+
+| Capacidad | Qué es | Cuándo se usa | Cómo se mide |
+|---|---|---|---|
+| **Detección y respuesta** | Correlación y triaje de alertas, caza de amenazas y contención asistidas por IA (este apartado; SEG-21 a SEG-25). | Cuando el volumen de alertas o el tiempo de respuesta superan lo que el equipo puede atender con calidad. | Tiempo de detección, de respuesta y de recuperación frente a la línea base sin IA; falsos positivos y negativos; contenciones revertidas. |
+| **Seguridad de aplicaciones y de interfaces de programación** | Revisión asistida de código, configuraciones e interfaces de programación expuestas, y pruebas continuas de la superficie expuesta (SEG-19). | Cuando la compañía desarrolla o expone servicios y la revisión manual no llega a todo el cambio. | Vulnerabilidades críticas detectadas antes de producción; tiempo de corrección; cobertura de interfaces revisadas. |
+| **Banco de pruebas de agentes** | El banco de pruebas corporativo (SEG-27) integrado en la cadena de despliegue. | Desde que hay agentes A1 o superiores, o IA generativa con exposición directa. | Escenarios cubiertos frente al modelo de amenazas; eficacia de los guardarraíles (52 §5.2); escenarios críticos bloqueados antes de producción. |
+| **Operación y resiliencia** | IA para anticipar fallos, correlacionar incidentes de operación y acelerar la recuperación de los servicios. | En servicios con niveles de servicio exigentes o funciones críticas. | Disponibilidad; tiempo medio de recuperación; incidentes evitados con causa registrada. |
+| **IA en la sombra** | Detección y regularización del uso no autorizado de IA, incluidos agentes locales y extensiones del navegador (SEG-20; 31 §5). | Desde C1, como parte del inventario. | Casos detectados y regularizados; tiempo de regularización; cobertura de equipos y de tráfico inspeccionados. |
+
 ---
 
 ## 10. Indicadores para el consejo
@@ -383,6 +406,9 @@ La compañía también puede usar la IA para defenderse: correlación y triaje d
 | Simulacros de suplantación | Resultado del último simulacro de fraude con contenido sintético. | Porcentaje que aplica la verificación fuera de banda. |
 | Uso no autorizado de IA | Casos detectados y regularizados. | Tendencia a la baja. |
 | Calidad de la ciberdefensa con IA | Falsos positivos y negativos, tiempo de detección y de respuesta y contenciones automáticas revertidas (sección 9.3). | Mejora frente a la línea base sin IA; cada contención revertida se explica. |
+| Eficacia de los guardarraíles | Escenarios del banco de pruebas (SEG-27) detectados o bloqueados, falsos positivos y desactivaciones (52 §5.2). | Cero escenarios críticos sin detectar; toda desactivación explicada. |
+| Tráfico por la pasarela corporativa | Proporción del tráfico hacia modelos que pasa por la pasarela (SEG-26). | 100 %; el tráfico directo se explica y se regulariza. |
+| Derivaciones a una persona | Derivaciones por motivo y peticiones no atendidas en sistemas con exposición directa (sección 4.6). | Ninguna petición sin atender; tendencia por motivo explicada. |
 
 ---
 
@@ -391,9 +417,9 @@ La compañía también puede usar la IA para defenderse: correlación y triaje d
 | Puerta | Qué se exige en seguridad |
 |---|---|
 | **G3** | Riesgos RT-GEN y RT-SEG valorados; nivel de autonomía propuesto; evaluación de seguridad del proveedor (documento 36). |
-| **G4** | P18 completo; controles SEG y AG aplicables diseñados; controles críticos diseñados; conformidad de seguridad de la información. |
-| **G5** | Controles críticos probados; *red teaming* realizado con hallazgos tratados; interruptor probado; firma de seguridad de la información en la firma multinivel (01 §6.7). |
-| **R6** | Controles operando; campañas y revisiones dentro de frecuencia; incidentes analizados; nivel de autonomía vigente. |
+| **G4** | P18 completo; controles SEG y AG aplicables diseñados; controles críticos diseñados; conformidad de seguridad de la información; tráfico hacia modelos por la pasarela corporativa (SEG-26). |
+| **G5** | Controles críticos probados; *red teaming* realizado con hallazgos tratados; interruptor probado; firma de seguridad de la información en la firma multinivel (01 §6.7); banco de pruebas corporativo (SEG-27) sin escenarios críticos con éxito. |
+| **R6** | Controles operando; campañas y revisiones dentro de frecuencia; incidentes analizados; nivel de autonomía vigente; banco de pruebas ejecutado en cada despliegue (A2 y A3). |
 | **G7** | En escalado, revisión de controles para el nuevo alcance; en retirada, revocación de identidades y credenciales. |
 
 El responsable técnico de IA diseña e implanta los controles; seguridad de la información los revisa y emite conformidad; el responsable de riesgos de IA valora el residual; el auditor de IA verifica las evidencias con la lista LV-AG. Quien construye el agente no realiza su *red teaming* de G5.
@@ -406,7 +432,7 @@ El responsable técnico de IA diseña e implanta los controles; seguridad de la 
 |---|---|---|
 | **P18** | Diseño de seguridad (incluye agentes) | Modelo de amenazas, nivel de autonomía, identidades, matriz de permisos, mandato y control de intención, límites, acciones sensibles, interruptor, registro, aislamiento, plan de pruebas y estado de cada control SEG y AG. Fase 4; se actualiza en 5 y 6. |
 | **T10** | Evaluación de seguridad de agentes | A partir del nivel de autonomía, genera los controles SEG y AG exigibles, registra su estado (cumple, no cumple, no aplica, pendiente) con evidencia y bloquea G4 o G5 si un control crítico no está diseñado o probado. Lista de verificación en T03. |
-| **P53** | Plan e informe de pruebas adversarias | Alcance, reglas de enfrentamiento, escenarios y resultados de las campañas de *red teaming* (sección 8). Fases 4 a 6. |
+| **P53** | Plan e informe de pruebas adversarias | Alcance, reglas de enfrentamiento, escenarios y resultados de las campañas de *red teaming* (sección 8). Fases 4 a 6. Incluye los resultados del banco de pruebas corporativo (SEG-27). |
 | **P54** | Inventario de identidades no humanas y componentes | Identidades de los agentes con su responsable humano (sección 4) y componentes con versión y procedencia (SEG-09). Fase 4; se revisa en la operación. |
 | **P72** | Perfil de seguridad de IA (CSF 2.0 / Cyber AI Profile) | Perfil actual y objetivo de la seguridad de la IA con las funciones del CSF, a partir de la columna «Función CSF» de las secciones 6 y 7 y del cuestionario del documento 11 (34 §5.5). C1, C2 y C5. |
 | P17 · P24 · P26 | Diseño de supervisión humana · Manual de operación · Plan de respuesta a incidentes | Acciones sensibles y validación; procedimiento del interruptor; respuesta a incidentes de IA. |
@@ -436,3 +462,4 @@ El responsable técnico de IA diseña e implanta los controles; seguridad de la 
 | 0.1 | 16-09-2026 | Primera versión. Define las amenazas a sistemas de IA con referencias a OWASP (LLM 2025 y aplicaciones agénticas), MITRE ATLAS y NIST AI 600-1; los nueve requisitos esenciales de un agente; los niveles de autonomía A0–A3 con controles mínimos y frecuencias; los catálogos SEG-01 a SEG-20 y AG-01 a AG-20; las pruebas por fase; la exposición a la IA ofensiva y los indicadores para el consejo. |
 | 0.2 | 25-09-2026 | Añade el NIST CSF 2.0 y el Cyber AI Profile (en borrador) a las referencias (sección 1.2) y la columna «Función CSF» a los catálogos SEG y AG (secciones 6 y 7), con la función y la categoría del CSF a las que contribuye cada control (34 §5.3), y la plantilla P72 en la sección 12. |
 | 0.3 | 25-09-2026 | Añade la sección 9.3 sobre el uso de la IA en la ciberdefensa de la compañía (área Defend del Cyber AI Profile): autonomía de la respuesta, supervisión humana de la contención, calidad de la detección, dependencia del proveedor y pruebas del propio sistema defensivo; los controles SEG-21 a SEG-25; un indicador para el consejo y el riesgo tipo RT-SEG-08. |
+| 0.4 | 19-10-2026 | Controles SEG-26 (pasarela corporativa de IA) y SEG-27 (banco de pruebas corporativo de agentes), con frecuencias, pruebas por fase, indicadores e integración en las puertas; SEG-20 ampliado a agentes locales y extensiones del navegador; amenaza de envenenamiento de herramientas y conectores (3.2) y AG-13 precisado; derivación inmediata a una persona (4.6); suplantación del cliente con IA (9.1, RT-SEG-09); medición y financiación de la IA para TI y ciberdefensa (9.3) (D159). |

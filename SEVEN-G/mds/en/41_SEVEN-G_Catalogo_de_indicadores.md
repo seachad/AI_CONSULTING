@@ -5,12 +5,12 @@
 | | |
 |---|---|
 | Document | Document 41 · Indicator catalogue |
-| Version | 0.2 (working draft) |
-| Date | 01-10-2026 |
+| Version | 0.3 (working draft) |
+| Date | 19-10-2026 |
 | Author | Fernando García Varela |
 | Status | Draft for review. Living catalogue: thresholds are set by each company and recalibrated in C5. |
 
-<!-- cifras: 162 | coded indicators ; 13 | families ; 4 | levels of use ; 26 | indicators in the Lite minimum set -->
+<!-- cifras: 165 | coded indicators ; 13 | families ; 4 | levels of use ; 26 | indicators in the Lite minimum set -->
 
 ---
 
@@ -69,7 +69,7 @@ No company needs all the indicators. They are selected in C2 according to the AI
 | **EMB** | Funnel | 13 |
 | **AGI** | Agility | 6 |
 | **RIE** | Risk and compliance | 17 |
-| **OPE** | Operations and model quality | 26 |
+| **OPE** | Operations and model quality | 29 |
 | **ADO** | Adoption and people | 15 |
 | **DAT** | Data and knowledge | 20 |
 | **CLI** | Customer and product | 9 |
@@ -77,7 +77,7 @@ No company needs all the indicators. They are selected in C2 according to the AI
 | **MAD** | Maturity | 4 |
 | **CON** | Board | 5 |
 | **PRO** | Processes and decision-making | 6 |
-| | **Total** | **162** |
+| | **Total** | **165** |
 
 ---
 
@@ -222,6 +222,9 @@ Definitions of the segments are in document 40 §9. All are segmented by residua
 | IND-OPE-22 | **Alert noise.** Alerts closed without action. | Alerts closed without action ÷ alerts generated | % | Monitoring · P25 | M | To be defined by the company | I · P | F6 | Downward trend | |
 | IND-OPE-23 | **Supplier versions at risk.** Systems whose provider model version has an announced deprecation and no migration plan. | Systems whose provider model version has an announced deprecation with no migration plan ÷ systems with a provider model | % | To be defined by the company | M | To be defined by the company | P | F6 | 0% | |
 | IND-OPE-26 | **Cost-driven degraded mode.** Days on which the system operates degraded because the consumption budget has run out, and quality during the mode. | Days in the period at N1 or above in the cascade (document 52 §10.3), by level; and quality measured in the mode ÷ P25 minimum quality | days · % | P27 · P25 | M | OO | I · P | F6 · generative AI, agents | Downward trend; quality ≥ 100% of the minimum | |
+| IND-OPE-27 | **Guardrail effectiveness.** Agent test bench scenarios detected or blocked, read together with false positives and deactivations. | Test bench scenarios (SEG-27) detected or blocked ÷ scenarios run; false positives on sampled legitimate traffic ÷ sample; number of deactivations | % · no. | Test bench · P25 · P53 | M and at each deployment | ISEC | I · P · B | F5–F6 · generative AI, agents | Zero critical scenarios undetected; the rest as per P25 | |
+| IND-OPE-28 | **End-to-end trace coverage.** Requests traced with a correlation identifier up to the result and received in security monitoring. | Requests with a complete trace received ÷ requests | % | Security monitoring · P25 | M | OO | I · P | F6 · generative AI, agents | 100% with direct exposure and for A2–A3 | |
+| IND-OPE-29 | **Recovery from model provider outage.** Systems that support critical use cases with the fallback switch tested in time and within the target time. | Systems with a test in time and actual time ≤ P24 target ÷ systems that support critical use cases with a provider model | % | P24 · P19 | H | OO | P · B | F6 | 100% | |
 
 ### 11.2 Predictive machine learning
 
@@ -541,6 +544,9 @@ Documents 10, 50, 51 and 52 use provisional indicator codes. This table maps the
 | OPE-18 | 52 | Cost-driven degraded mode | IND-OPE-26 (added) |
 | OPE-19 | 52 | Queries outside the validated scope | IND-OPE-24 (added) |
 | OPE-20 | 52 | Unequal responses in counterfactual pairs | IND-OPE-25 (added) |
+| OPE-21 | 52 | Guardrail effectiveness | IND-OPE-27 (added) |
+| OPE-22 | 52 | End-to-end trace coverage | IND-OPE-28 (added) |
+| OPE-23 | 52 | Recovery from model provider outage | IND-OPE-29 (added) |
 
 ---
 
@@ -585,3 +591,4 @@ Documents 10, 50, 51 and 52 use provisional indicator codes. This table maps the
 | 0.1 | 16-09-2026 | First version. Catalogue of 156 indicators in 13 families with code, formula, unit, source, frequency, owner, level, application and indicative threshold; Lite minimum set of 26 indicators; indicative selection for the board dashboard. Consistency adjustments with 01 (segregation of duties in Lite, R6 outcomes, agent criterion) and with 34 and 37; mapping of provisional codes from documents 10, 50, 51 and 52 (section 21). The 47 provisional indicators that had no equivalent added to the catalogue (families EMB, RIE, OPE, ADO, DAT and CLI, and new family PRO · Processes and decision-making, section 18); provisional knowledge prefix in document 51 renamed from CON- to CNC-. |
 | 0.1 | 18-09-2026 | Three new operations indicators (159 in total): IND-OPE-24 queries outside the validated scope (usage drift), IND-OPE-25 unequal responses in counterfactual pairs (bias in generative AI) and IND-OPE-26 cost-driven degraded mode; correspondence with OPE-18 to OPE-20 in document 52. |
 | 0.2 | 01-10-2026 | Three indicators of the cost of governance itself (162 in total): IND-COS-12 governance hours per initiative, IND-COS-13 cost of governance over investment with targets by intensity and IND-COS-14 referenced evidence. The time of each gate is already measured by IND-AGI-04. |
+| 0.3 | 19-10-2026 | Three operations indicators (165 in total): IND-OPE-27 guardrail effectiveness, IND-OPE-28 end-to-end trace coverage and IND-OPE-29 recovery from model provider outage; correspondence with OPE-21 to OPE-23 in document 52 (D159). |

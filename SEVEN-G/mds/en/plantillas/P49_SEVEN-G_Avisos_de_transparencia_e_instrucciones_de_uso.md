@@ -5,8 +5,8 @@
 | | |
 |---|---|
 | Document | Template P49 · Transparency notices and instructions for use |
-| Version | 0.1 (working draft) |
-| Date | 19-09-2026 |
+| Version | 0.2 (working draft) |
+| Date | 19-10-2026 |
 | Author | Fernando García Varela |
 | Status | Draft for review. |
 
@@ -82,6 +82,7 @@ Completion rules:
 | Written assistant | "You are talking to [assistant name], an artificial intelligence assistant from [company]. It may make mistakes. If you would prefer to be helped by a person, type [keyword] or call [channel]." | When the conversation opens, before the first message. |
 | Voice | "You are being assisted by an automated artificial intelligence assistant from [company]. To speak to a person, say [keyword] at any time." | At the start of the call. |
 | Email or message generated and sent without human review | "This message has been drafted by an artificial intelligence system from [company]. For any queries, reply to this message or write to [channel]." | In the message itself. |
+| Handover to a person (written or voice assistant) | "I am transferring you to a person at [company] right now. If you prefer, you can also call [channel]." Used without further questions when the person asks for it or signs of vulnerability appear (35 §4.6; P17 §8). | As soon as it is requested or the sign is detected. |
 
 ### 4.2 Generated or manipulated content
 
@@ -211,3 +212,4 @@ Segregation of duties: whoever drafts the texts does not verify their presence i
 | Version | Date | Changes |
 |---|---|---|
 | 0.1 | 19-09-2026 | First version. Model texts and register of Article 50 transparency notices, information to people affected by decisions and internal instructions for use, based on 34 §3.7, §3.9 and §3.11, 50 §7, P17 §8 and P24. References consulted in September 2026. |
+| 0.2 | 19-10-2026 | Model text for handover to a person (4.1) (35 §4.6) (D159). |

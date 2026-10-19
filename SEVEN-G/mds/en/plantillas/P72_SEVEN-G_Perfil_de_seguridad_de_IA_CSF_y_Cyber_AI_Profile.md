@@ -5,8 +5,8 @@
 | | |
 |---|---|
 | Document | Template P72 · AI security profile (CSF 2.0 / Cyber AI Profile) |
-| Version | 0.1 (working draft) |
-| Date | 25-09-2026 |
+| Version | 0.3 (working draft) |
+| Date | 19-10-2026 |
 | Author | Fernando García Varela |
 | Status | Draft for review. The selection of subcategories and their priorities depend on the Cyber AI Profile, which as at 25-09-2026 is a draft. |
 
@@ -153,7 +153,7 @@ Each area is summarised with the subcategories to which the profile gives priori
 
 | Area | What it covers | Subcategories with priority 1 | Minimum current level | Subcategories with a gap | Coverage in SEVEN-G |
 |---|---|---|---|---|---|
-| **Secure** | Protecting the components of AI systems. | 23 | | | 35 §3–§8; SEG-01 to SEG-14; AG-01 to AG-20 |
+| **Secure** | Protecting the components of AI systems. | 23 | | | 35 §3–§8; SEG-01 to SEG-14, SEG-26 and SEG-27; AG-01 to AG-20 |
 | **Defend** | Using AI in the company's cyber defence. | 28 | | | 35 §9.3; SEG-21 to SEG-25 and autonomy levels A0–A3 |
 | **Thwart** | Thwarting attacks that use AI. | 24 | | | 35 §9; SEG-13, SEG-15 to SEG-19 |
 
@@ -211,3 +211,4 @@ Segregation of duties: whoever designs or implements a control does not assess t
 |---|---|---|
 | 0.1 | 25-09-2026 | First version. Current and target profile of the 48 NIST CSF 2.0 subcategories with high priority in some area of the Cyber AI Profile (initial preliminary draft of December 2025), on the 0–5 scale of document 11, with the level derived from the questionnaire (11 §7.5), the gap, the equivalent *tier* as a view and the summaries by CSF function and by Secure, Defend and Thwart area. |
 | 0.2 | 25-09-2026 | The Defend area refers to 35 §9.3 and controls SEG-21 to SEG-25. |
+| 0.3 | 19-10-2026 | The Secure area includes the corporate AI gateway (SEG-26) and the corporate agent test bench (SEG-27) (D159). |

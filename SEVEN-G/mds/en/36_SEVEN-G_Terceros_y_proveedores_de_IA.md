@@ -5,8 +5,8 @@
 | | |
 |---|---|
 | Document | Document 36 · AI third parties and suppliers |
-| Version | 0.1 (working draft) |
-| Date | 16-09-2026 |
+| Version | 0.2 (working draft) |
+| Date | 19-10-2026 |
 | Author | Fernando García Varela |
 | Status | Draft for review. It defines the N1–N3 requirement levels used by documents 33 and 34, template P14 and tool T09. |
 
@@ -59,6 +59,9 @@ This document does not constitute legal advice. Contractual content must be revi
 | 5 | **No model change goes unnoticed** | The supplier reports relevant changes and the company evaluates them. |
 | 6 | **Concentration is managed at portfolio level** | Dependency on a supplier is measured across all systems, not just one. |
 | 7 | **AI that arrives through updates is also governed** | AI features in software already contracted are entered in the inventory and assessed. |
+| 8 | **Testing is also using** | No external AI tool is used with company data —not even to test it, research or compare it— without the supplier assessment (P55) proportionate to its N1–N3 level. A test with synthetic or public data does not need it; one with internal, personal or confidential data does. |
+
+> **Why it matters.** Many leaks do not happen in production but during a trial: someone uploads a real document to a tool "just to see how it works". Treating a trial as use makes the supplier assessment arrive before the data.
 
 ---
 
@@ -142,6 +145,8 @@ An N3 supplier normally implies **Enterprise** intensity for the initiatives tha
 12. **Ethics and responsible use:** acceptable use policies, bias management, use restrictions.
 
 The full questionnaire is in P55. A **Nonconformant** result in blocks 3 (data), 5 (security) or 7 (data protection) prevents the supplier from being used with production data until it is resolved.
+
+**AI security purchasing criteria.** At N2 and N3 the company also asks for: ISO/IEC 42001 certification of the service, if any, with its scope; recent independent adversarial testing reports on the AI service; the right to carry out its own tests (N3); access to the input, output and action logs needed for monitoring and incident investigation (52 §11); and the location of processing, including the provider's own filters and monitoring. They are collected in block 5 of P55.
 
 ---
 
@@ -356,3 +361,4 @@ The board or its board committee receives a quarterly report on concentration, N
 | Version | Date | Changes |
 |---|---|---|
 | 0.1 | 16-09-2026 | First version. Defines the criteria for building, buying, adapting or partnering; the N1–N3 requirement levels with four factors and requirements by level; the supplier lifecycle; sixteen key contractual clauses, with AI Act obligations along the value chain and DORA; management of dependency and concentration; the treatment of embedded AI and the supplier register fields. |
+| 0.2 | 19-10-2026 | Principle 8 "Testing is also using" and AI security purchasing criteria (4.3) (D159). |

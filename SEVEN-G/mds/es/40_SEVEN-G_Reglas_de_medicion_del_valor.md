@@ -5,8 +5,8 @@
 | | |
 |---|---|
 | Documento | Documento 40 · Reglas de medición del valor |
-| Versión | 0.3 (borrador de trabajo) |
-| Fecha | 01-10-2026 |
+| Versión | 0.4 (borrador de trabajo) |
+| Fecha | 19-10-2026 |
 | Autor | Fernando García Varela |
 | Estado | Borrador para revisión. Desarrolla la sección 6 del documento 00 y la sección 11 del documento 01. |
 
@@ -333,6 +333,18 @@ Lectura para el consejo: el neto anual de la iniciativa es 720.000 − 1.160.000
 
 > **Por qué importa.** Una herramienta transversal tiene un coste grande, seguro y visible desde el primer día, y un valor repartido entre muchas personas y unidades. Si se mide como un caso más, pasa una de dos cosas: se suman las horas declaradas y se infla la cartera, o no se mide nada y se sigue pagando por inercia. La escalera por unidad deja ver dónde se usa la herramienta, dónde produce valor y dónde conviene retirar licencias. Así el comité y el consejo deciden sobre la ampliación con datos y no con encuestas.
 
+### 7.3 Iniciativas de IA para TI y ciberdefensa
+
+Las iniciativas que usan IA para proteger y operar la tecnología de la propia compañía —detección y respuesta, seguridad de aplicaciones y de interfaces de programación, banco de pruebas de agentes, operación y resiliencia, y detección de la IA en la sombra (documento 35 §9.3)— se tratan como las plataformas habilitadoras de la sección 7.2:
+
+1. **Se miden por resultado operativo** (regla de presentación 11): tiempos de detección, de respuesta y de recuperación frente a la línea base, cobertura y eficacia, con los indicadores del documento 41 (por ejemplo, IND-RIE-08 e IND-OPE-27).
+2. **El VAN no es su criterio de viabilidad.** La regla de la sección 8.3 se aplica a los casos de negocio; en estas iniciativas, G3 comprueba que el resultado operativo esperado tiene línea base, objetivo y plazo, y que el coste completo cabe en el sobre aprobado. Si además producen valor económico observable (licencias o servicios retirados, por ejemplo), se registra con las reglas 1 a 9, sin que la viabilidad dependa de él.
+3. **Se financian desde el sobre de habilitación** (documento 13 §12) y no compiten con los casos de negocio por los sobres de Optimizar o Aumentar.
+4. **Se presentan aparte del neto de la cartera**, como las plataformas habilitadoras (regla de presentación 10): el neto se da con y sin ellas.
+5. **El riesgo evitado no se convierte en ahorro** (error 12 de la sección 10).
+
+> **Por qué importa.** Exigir VAN positivo a la ciberdefensa obliga a inventar pérdidas evitadas sin fórmula o a no invertir en lo que protege a toda la cartera. Medirla por lo que mejora la detección, la respuesta y la recuperación, y financiarla como habilitación, permite decidir con datos sin inflar el neto de los casos de negocio.
+
 ---
 
 ## 8. Horizonte, descuento y criterio económico único
@@ -454,7 +466,7 @@ Presentar al comité o al consejo como validado un importe que no lo está const
 7. **Se compara con el periodo anterior** y se explican las variaciones relevantes, incluidas las de estado.
 8. **Cada caso presentado en detalle incluye su descripción comprensible** (regla 10). Se presentan como máximo tres casos en detalle por sesión y se responde con los formatos de la especificación común: "Sí", "Sí, con una condición: …", "Todavía no, porque falta …" o "No, porque …".
 9. **La composición del valor por nivel de ambición** (eficiencias frente a retorno) se muestra para alimentar las señales 1 y 2 del índice de transformación.
-10. **Las iniciativas transversales y las plataformas habilitadoras se muestran aparte**, con su desglose por unidad de negocio (coste, adopción, capacidad liberada y valor materializado), y el neto de la cartera se da con y sin ellas (sección 7.2).
+10. **Las iniciativas transversales, las plataformas habilitadoras y las iniciativas de IA para TI y ciberdefensa se muestran aparte**, con su desglose por unidad de negocio cuando lo tienen (coste, adopción, capacidad liberada y valor materializado) o con su resultado operativo, y el neto de la cartera se da con y sin ellas (secciones 7.2 y 7.3).
 11. **Tres perspectivas, en paralelo y sin fusionar.** Cada caso se presenta con tres columnas que se leen juntas: **valor económico** (en euros, con su estado: validado, declarado o estimado; reglas 1 a 9), **resultado operativo** (indicadores físicos del documento 41 —tiempo de ciclo, calidad, errores, satisfacción, adopción— con su línea base, su objetivo y su valor actual, y el valor no cuantificado de la sección 5.3) y **exposición al riesgo** (riesgo residual principal, riesgos Altos y Críticos abiertos, incidentes y no conformidades abiertos; documentos 33 y 37). Ninguna se traduce a la otra ni se combinan en una puntuación única: un buen resultado operativo no compensa un valor económico sin demostrar, ni un neto alto un riesgo sin tratar. En T01, los indicadores operativos de cada iniciativa se registran en `resultado_operativo[]`, con el código del indicador del documento 41 cuando existe; si no hay ninguno, la columna dice «sin indicador», no cero (regla 8).
 
 > **Por qué importa.** Obligar a traducir todo a euros empuja a inventar conversiones sin fórmula (error de la regla 7) o a ignorar lo que no se puede convertir. Con tres columnas, el consejo ve a la vez qué rinde el caso, qué cambia en la operación y qué riesgo asume, y decide sabiendo qué parte es dinero y qué parte no lo es.
@@ -534,3 +546,4 @@ Lectura para el consejo: la cartera genera un neto anual positivo según lo decl
 | 0.1 | 18-09-2026 | Añade la sección 7.2: iniciativas transversales y plataformas habilitadoras, con la escalera de medición por unidad (coste, adopción, capacidad liberada y valor materializado), el umbral de adopción y el neto de la cartera con y sin ellas; el error 13 y la regla de presentación 10. |
 | 0.2 | 28-09-2026 | El valor no cuantificado se registra en T01 con dimensión, nivel 0–3, métrica y motivo, nunca en euros, y el caso sostenido por valor no cuantificado necesita su próxima R6 con fecha (regla 7 y sección 5.3); el panel del consejo calcula el VAN (F7) de cada caso con la curva de su plan de realización (sección 8.2); sección 13 (D135). |
 | 0.3 | 01-10-2026 | Regla de presentación 11: tres perspectivas en paralelo y sin fusionar —valor económico, resultado operativo y exposición al riesgo—; los indicadores operativos se registran en T01 en `resultado_operativo[]` (D150). |
+| 0.4 | 19-10-2026 | Sección 7.3: las iniciativas de IA para TI y ciberdefensa se miden por resultado operativo, el VAN no es su criterio de viabilidad, se financian desde el sobre de habilitación y se presentan aparte del neto; regla de presentación 10 ampliada (D159). |

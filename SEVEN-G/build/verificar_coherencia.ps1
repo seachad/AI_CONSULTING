@@ -27,6 +27,11 @@
        y la calculadora T14 reproduce el ejemplo del documento 12 §9 (suma 12, transformación declarada no evidenciada).
     8. Registro de decisiones: numeración única y correlativa.
    44. Nombre primero, código después (D155): nombres.json al día, títulos y tablas generados con «Nombre (código)», sin variantes de nombre.
+   45. IA aplicada a la ciberseguridad (D159): SEG-26 y SEG-27 en el 35 (ES/EN) con función CSF; envenenamiento de herramientas en 35 §3.2;
+       derivación a una persona en 35 §4.6; suplantación del cliente en 35 §9.1 y RT-SEG-09 en el 33 y en el catálogo de T01; trazas de extremo
+       a extremo y eficacia de los guardarraíles en el 52 e IND-OPE-27 a 29 en el 41; medición de la IA para TI y ciberdefensa en 35 §9.3 y
+       40 §7.3; «probar también es usar» en el 36; 27 preguntas en LV-AG (21 previas y 6 de D159); términos del glosario; galería con la categoría de seguridad de la
+       IA, fuentes del registro verificadas y ninguna compañía nombrada en los documentos normativos.
     10. Comunidad (D80): la página de incidencias y peticiones no pide correo ni datos de contacto, no carga recursos de terceros, no usa
         cookies, muestra la regla de los votos, está enlazada desde la portada (ES/EN) y en su carpeta no hay ningún token.
     17. Códigos citados en cualquier panel (D99): codigos.js enlaza los códigos escritos y ofrece «Citados aquí»; las herramientas, el
@@ -1144,7 +1149,7 @@ try {
     $colCsf = if ($lang -eq 'en') { 'CSF function' } else { 'Función CSF' }
     foreach ($pref in 'SEG', 'AG') {
       $filas = [regex]::Matches($md35, "(?m)^\| \*\*$pref-\d\d\*\* \|.*$")
-      $esperados = if ($pref -eq 'SEG') { 25 } else { 20 }   # SEG-21 a SEG-25: uso de la IA en la ciberdefensa (D116)
+      $esperados = if ($pref -eq 'SEG') { 27 } else { 20 }   # SEG-21 a SEG-25: ciberdefensa (D116); SEG-26 pasarela y SEG-27 banco de pruebas (D159)
       if ($filas.Count -ne $esperados) { Mal "documento 35 [$lang]: el catálogo $pref tiene $($filas.Count) controles (se esperaban $esperados)"; $malNist++ }
       foreach ($fi in $filas) {
         $celdas = $fi.Value.Trim().Trim('|').Split('|')
@@ -1865,6 +1870,75 @@ try {
   $sueltas = 0
   foreach ($pfx in $lectura) { foreach ($f in Get-ChildItem (Join-Path $repo 'SEVEN-G\mds\es') -File -Filter "$pfx*.md") { $sueltas += ([regex]::Matches([IO.File]::ReadAllText($f.FullName), '(?<![(·\w-])\b(G[0-7]|R6)\b(?!\.\d|\s*·|\))')).Count } }
   if (-not $mal44) { Ok "nombres canónicos al día ($($nombresJson.es.Count) es, $($nombresJson.en.Count) en); títulos y tablas generados con el nombre primero; $sueltas menciones de puerta solo por código en los documentos de lectura (ES), pendientes de la batida editorial (E3)" }
+
+
+  # ---- 45. IA aplicada a la ciberseguridad (D159)
+  Write-Host '45. IA aplicada a la ciberseguridad: pasarela, banco de pruebas, guardarraíles y galería (D159)'
+  $mal45 = 0
+  $md45 = { param($lg, $pfx) [IO.File]::ReadAllText((Get-ChildItem (Join-Path $repo "SEVEN-G\mds\$lg") -File -Filter "$($pfx)_SEVEN-G_*.md" | Select-Object -First 1).FullName) }
+  $tx45 = @{
+    es = @{ amen = '| **Envenenamiento de herramientas y conectores** |'; supl = '| **Suplantación del cliente con IA** |'; deriv = '**Derivación inmediata a una persona.**'; trazas = '**Trazas de extremo a extremo.**'; ope21 = '| **OPE-21** | Eficacia de los guardarraíles |'; cap = '| Capacidad | Qué es | Cuándo se usa | Cómo se mide |'; s73 = '### 7.3 Iniciativas de IA para TI y ciberdefensa'; probar = '| 8 | **Probar también es usar** |'
+            terminos = @('Pasarela corporativa de IA', 'Banco de pruebas corporativo de agentes', 'Envenenamiento de herramientas y conectores', 'Eficacia de los guardarraíles') }
+    en = @{ amen = '| **Tool and connector poisoning** |'; supl = '| **Customer impersonation with AI** |'; deriv = '**Immediate handover to a person.**'; trazas = '**End-to-end traces.**'; ope21 = '| **OPE-21** | Guardrail effectiveness |'; cap = '| Capability | What it is | When it is used | How it is measured |'; s73 = '### 7.3 AI initiatives for IT and cyber defence'; probar = '| 8 | **Testing is also using** |'
+            terminos = @('Corporate AI gateway', 'Corporate agent test bench', 'Tool and connector poisoning', 'Guardrail effectiveness') } }
+  foreach ($lg in 'es', 'en') {
+    $t = $tx45[$lg]
+    $d35 = & $md45 $lg '35'
+    foreach ($c in 'SEG-26', 'SEG-27') { if ($d35 -notmatch "(?m)^\| \*\*$c\*\* \|.*\| (GV|ID|PR|DE|RS|RC) \((GV|ID|PR|DE|RS|RC)\.[A-Z]{2}[^|]*\|\s*$") { Mal "$lg 35: falta $c con su función CSF (D159)"; $mal45++ } }
+    if (-not [regex]::Match($d35, '(?ms)^### 3\.2 .*?(?=^## )').Value.Contains($t.amen)) { Mal "$lg 35 §3.2: falta la amenaza de envenenamiento de herramientas y conectores (D159)"; $mal45++ }
+    if (-not [regex]::Match($d35, '(?ms)^### 4\.6 .*?(?=^### 4\.7 )').Value.Contains($t.deriv)) { Mal "$lg 35 §4.6: falta la derivación inmediata a una persona (D159)"; $mal45++ }
+    $s91 = [regex]::Match($d35, '(?ms)^### 9\.1 .*?(?=^### 9\.2 )').Value
+    if (-not ($s91.Contains($t.supl) -and $s91.Contains('RT-SEG-09'))) { Mal "$lg 35 §9.1: falta la suplantación del cliente con IA con RT-SEG-09 (D159)"; $mal45++ }
+    $s93 = [regex]::Match($d35, '(?ms)^### 9\.3 .*?(?=^## )').Value
+    if (-not ($s93.Contains($t.cap) -and $s93.Contains('40 §7.3'))) { Mal "$lg 35 §9.3: falta la tabla de capacidades de IA para TI y ciberdefensa o la remisión a 40 §7.3 (D159)"; $mal45++ }
+    if ((& $md45 $lg '33') -notmatch '(?m)^\| \*\*RT-SEG-09\*\* \| \*\*') { Mal "$lg 33 §9.9: falta RT-SEG-09 (D159)"; $mal45++ }
+    $d52 = & $md45 $lg '52'
+    if (-not [regex]::Match($d52, '(?ms)^#### 4\.3\.1 .*?(?=^#### 4\.3\.2 )').Value.Contains($t.trazas)) { Mal "$lg 52 §4.3.1: faltan las trazas de extremo a extremo (D159)"; $mal45++ }
+    if (-not $d52.Contains($t.ope21)) { Mal "$lg 52 §13: falta OPE-21 eficacia de los guardarraíles (D159)"; $mal45++ }
+    if ([regex]::Match($d52, '(?ms)^### 5\.2 .*?(?=^### 5\.3 )').Value -notmatch '(?m)^\| 7 \|[^\n]*SEG-27') { Mal "$lg 52 §5.2: falta la eficacia de los guardarraíles en la capa 7 (D159)"; $mal45++ }
+    $d41 = & $md45 $lg '41'
+    foreach ($c in 'IND-OPE-27', 'IND-OPE-28', 'IND-OPE-29') { if (-not $d41.Contains("| $c |")) { Mal "$lg 41: falta $c (D159)"; $mal45++ } }
+    if (-not (& $md45 $lg '40').Contains($t.s73)) { Mal "$lg 40: falta la sección 7.3 de IA para TI y ciberdefensa (D159)"; $mal45++ }
+    if (-not (& $md45 $lg '36').Contains($t.probar)) { Mal "$lg 36 §2: falta el principio «probar también es usar» (D159)"; $mal45++ }
+    $s12 = [regex]::Match((& $md45 $lg '22'), '(?ms)^## 12\. .*?(?=^---)').Value
+    $nAg = ([regex]::Matches($s12, '(?m)^\| ☐ \| [A-Z]\d')).Count
+    if ($nAg -ne 27 -or -not ($s12.Contains('SEG-26') -and $s12.Contains('SEG-27'))) { Mal "$lg 22 §12: LV-AG tiene $nAg preguntas (se esperaban 27 = 21 previas + 6 de D159, con SEG-26 y SEG-27) (D159)"; $mal45++ }
+    $d02 = & $md45 $lg '02'
+    foreach ($term in $t.terminos) { if (-not $d02.Contains("| **$term** |")) { Mal "$lg 02: falta el término «$term» (D159)"; $mal45++ } }
+  }
+  if (-not [IO.File]::ReadAllText((Join-Path $repo 'SEVEN-G\build\guia_traduccion_en.md')).Contains('corporate AI gateway')) { Mal 'guia_traduccion_en.md: faltan los términos de seguridad de la IA (D159)'; $mal45++ }
+  $cr45 = Get-Content (Join-Path $repo 'SEVEN-G\herramientas\T01_registro_iniciativas\catalogo_riesgos.json') -Raw -Encoding utf8 | ConvertFrom-Json -Depth 16
+  if (-not ($cr45.riesgos | Where-Object c -eq 'RT-SEG-09')) { Mal 'catalogo_riesgos.json: falta RT-SEG-09 (D159)'; $mal45++ }
+  # galería: categoría de seguridad de la IA con fuentes del registro verificadas
+  $sia = Join-Path $repo 'SEVEN-G\herramientas\T17_panel_consejo\galeria\_fuentes\seguridad_ia.json'
+  $nEnt45 = 0; $nCat45 = 0
+  if (-not (Test-Path $sia)) { Mal 'galería: falta _fuentes/seguridad_ia.json (D159)'; $mal45++ }
+  else {
+    $j45 = Get-Content $sia -Raw -Encoding utf8 | ConvertFrom-Json
+    $refV = @{}; foreach ($r in $regs | Where-Object estado -eq 'verificado') { $refV[$r.id] = $r }
+    $cats45 = @($j45.categorias); $ents45 = @($cats45 | ForEach-Object { $_.entradas }); $nEnt45 = $ents45.Count; $nCat45 = $cats45.Count
+    if ($nCat45 -lt 5) { Mal "galería: solo $nCat45 categorías de seguridad de la IA (mínimo 5) (D159)"; $mal45++ }
+    foreach ($c in $cats45) { if (-not ($c.id -and $c.nombre_es -and $c.nombre_en -and $c.que_es_es -and $c.que_es_en) -or @($c.entradas).Count -lt 1) { Mal "galería: categoría «$($c.id)» incompleta o vacía (D159)"; $mal45++ } }
+    if ($nEnt45 -lt 10 -or $nEnt45 -gt 25) { Mal "galería: $nEnt45 soluciones de seguridad de la IA (se esperaban entre 10 y 25) (D159)"; $mal45++ }
+    $idx45 = [IO.File]::ReadAllText((Join-Path $repo 'SEVEN-G\herramientas\T17_panel_consejo\galeria\index.html'))
+    foreach ($a in 'id="es-seguridad-ia"', 'id="en-seguridad-ia"') { if (-not $idx45.Contains($a)) { Mal "galeria/index.html: falta $a (regenerar con uv run python galeria.py) (D159)"; $mal45++ } }
+    foreach ($e in $ents45) {
+      if (-not ($e.compania -and $e.solucion -and $e.que_hace_es -and $e.que_hace_en)) { Mal "galería: entrada incompleta ($($e.compania) $($e.solucion)) (D159)"; $mal45++ }
+      if (-not $refV.ContainsKey([string]$e.fuente)) { Mal "galería: $($e.solucion) cita $($e.fuente), que no está en el registro de referencias como verificada (D41, D114, D159)"; $mal45++; continue }
+      if (($e.adquisicion_es -or $e.adquisicion_en) -and -not $refV.ContainsKey([string]$e.fuente_adquisicion)) { Mal "galería: la adquisición de $($e.compania) no tiene fuente oficial verificada (D159)"; $mal45++ }
+      if (-not $idx45.Contains($refV[[string]$e.fuente].url_es.Replace('&', '&amp;'))) { Mal "galeria/index.html: no publica la fuente de $($e.solucion) (regenerar) (D159)"; $mal45++ }
+    }
+    # los documentos normativos no nombran compañías
+    $nombres45 = @($ents45 | ForEach-Object { [string]$_.compania } | Where-Object { $_ } | Sort-Object -Unique)
+    foreach ($lg in 'es', 'en') {
+      $ficheros45 = @(foreach ($p in '22', '31', '33', '35', '36', '40', '41', '52') { Get-ChildItem (Join-Path $repo "SEVEN-G\mds\$lg") -File -Filter "$($p)_SEVEN-G_*.md" }) + @(foreach ($p in 'P17', 'P18', 'P49', 'P53', 'P55') { Get-ChildItem (Join-Path $repo "SEVEN-G\mds\$lg\plantillas") -File -Filter "$($p)_*.md" })
+      foreach ($f in $ficheros45) {
+        $tx = [IO.File]::ReadAllText($f.FullName)
+        foreach ($n in $nombres45) { if ($tx -cmatch "(?<![\w-])$([regex]::Escape($n))(?![\w-])") { Mal "$lg $($f.Name): nombra la compañía «$n»; los documentos normativos no nombran compañías (D159)"; $mal45++ } }
+      }
+    }
+  }
+  if (-not $mal45) { Ok "IA aplicada a la ciberseguridad: SEG-26 y SEG-27, amenazas, derivación, suplantación del cliente (RT-SEG-09), trazas y eficacia de los guardarraíles, IND-OPE-27 a 29, 35 §9.3 y 40 §7.3, 36 §2, LV-AG con 27 preguntas y glosario (ES/EN); galería con $nCat45 categorías y $nEnt45 soluciones de fuentes verificadas" }
 }
 finally { Remove-Item $tmp -Recurse -Force -Confirm:$false -ErrorAction SilentlyContinue }
 

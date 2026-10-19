@@ -5,8 +5,8 @@
 | | |
 |---|---|
 | Document | Document 34 · Regulatory mapping |
-| Version | 0.4 (working draft) |
-| Date | 01-10-2026 |
+| Version | 0.5 (working draft) |
+| Date | 19-10-2026 |
 | Author | Fernando García Varela |
 | Status | Draft for review. Date sources were consulted: 16-09-2026. Requires qualified legal review before use. |
 
@@ -450,7 +450,7 @@ The **Cyber AI Profile** (NIST IR 8596) is the CSF 2.0 community profile for AI.
 
 | Area | What it covers | Where SEVEN-G covers it | Controls | Coverage in version 0.x |
 |---|---|---|---|---|
-| **Secure** | Protecting the components of AI systems: models, data, instructions, agents, connectors and supply chain. | 35 §3–§8; typical risks RT-GEN and RT-SEG in document 33; document 36 | SEG-01 to SEG-14; AG-01 to AG-20 | Covered |
+| **Secure** | Protecting the components of AI systems: models, data, instructions, agents, connectors and supply chain. | 35 §3–§8; typical risks RT-GEN and RT-SEG in document 33; document 36 | SEG-01 to SEG-14, SEG-26 and SEG-27; AG-01 to AG-20 | Covered |
 | **Defend** | Using AI in the company's cyber defence: assisted detection and response. | 35 §9.3: use case with the autonomy of the response set by type of action, human oversight of containment, detection quality, supplier dependency and testing of the defensive system itself; typical risk RT-SEG-08. | SEG-21 to SEG-25; A0–A3; AG- | Covered |
 | **Thwart** | Thwarting attacks that use AI: synthetic impersonation, generated phishing, accelerated exploitation. | 35 §9 | SEG-15 to SEG-19; SEG-13 | Covered |
 
@@ -775,7 +775,7 @@ Generated from `crosswalk.json` (version 1, 01-10-2026; core version 1). Not edi
 | 4 | Risk management principles applied to AI | N-10 | 33 §1–§3 | P12 | Direct | — |
 | 5 | Framework: leadership, integration, design, implementation, evaluation and improvement of risk management | N-06, N-12 | 13; 30; 33 | P35, P38 | Direct | — |
 | 6.2–6.3 | Communication and consultation; scope, context and risk criteria | N-12 | 13 §5; 33 §4 | P35; T06 | Direct | — |
-| 6.4 | Risk assessment: identification, analysis and evaluation | N-10 | 33 §4–§9 (5 × 5 scale and 71 standard risks) | P12; T06 | Direct | — |
+| 6.4 | Risk assessment: identification, analysis and evaluation | N-10 | 33 §4–§9 (5 × 5 scale and 72 standard risks) | P12; T06 | Direct | — |
 | 6.5 | Risk treatment | N-10 | 33 §8; 35 | P13, P18; T06 | Direct | — |
 | 6.6–6.7 | Monitoring and review; recording and reporting | N-11, N-13 | 33 §10–§11; 52; 60 | P25, P65; T06, T17 | Direct | — |
 
@@ -949,3 +949,4 @@ Consultation date: 16-09-2026, except for the sources in section 5.3, the crossw
 | 0.2 | 25-09-2026 | Adds section 5.3, NIST CSF 2.0 and Cyber AI Profile: CSF functions applied to AI systems, the Secure, Defend and Thwart areas of the profile (in draft) and a warning that *tiers* are not maturity levels per subcategory; the "Draft" status in section 1.4; the CSF column in the summary matrix; the AIRC crosswalk between the AI RMF and ISO/IEC 42001 in section 4.3; the new sources in section 13; and sections 5.4 (the 72 AI RMF subcategories) and 5.5 (the 48 CSF 2.0 subcategories with high priority in the Cyber AI Profile, a provisional selection), with their coverage in SEVEN-G and the document 11 question that gives their level. Corrects the status of ISO/IEC 42001: published (stage 60.60), with no revision under way. Links templates P72 (AI security profile), P73 (AI governance profile) and P74 (ISO/IEC 42001 statement of applicability). Replaces the statements that were not based on an official source with their official source (Regulation (EU) 2026/1744 in EUR-Lex, NIS2 in Spain, United Kingdom, European Health Data Space, Council of Europe Framework Convention and proposed GDPR amendment) and removes the verification status that allowed third-party analyses. |
 | 0.3 | 25-09-2026 | The Defend area of the Cyber AI Profile (draft) is now covered: section 9.3 of document 35, controls SEG-21 to SEG-25 and typical risk RT-SEG-08. |
 | 0.4 | 01-10-2026 | Adds section 9.1, coverage crosswalk with ISO/IEC 42001, ISO/IEC 38507, ISO/IEC 23894, ISO/IEC 42005, the NIST AI RMF and the EU AI Act: for each requirement, where SEVEN-G covers it, with which core rule, with which evidence and with which coverage (direct, partial, requires external control or not covered). The tables are generated from `crosswalk.json`. |
+| 0.5 | 19-10-2026 | Secure area with the corporate AI gateway (SEG-26) and the corporate agent test bench (SEG-27); 72 typical risks in the crosswalk (D159). |

@@ -5,8 +5,8 @@
 | | |
 |---|---|
 | Document | Template P53 · Adversarial testing plan and report |
-| Version | 0.1 (working draft) |
-| Date | 19-09-2026 |
+| Version | 0.2 (working draft) |
+| Date | 19-10-2026 |
 | Author | Fernando García Varela |
 | Status | Draft for review. |
 
@@ -20,7 +20,7 @@
 
 | Aspect | Guidance |
 |---|---|
-| **When it is used** | Before G5 in every generative AI system or agent (SEG-11, AG-18); after relevant changes to the model, instructions, tools or supplier; and at the frequency in 35 §5.3 (A1: before G5 and after changes; A2: in addition, annually; A3: in addition, half-yearly). At corporate level (C4), for the annual assessment of exposure to offensive AI and the annual synthetic impersonation fraud drill (35 §9.2). |
+| **When it is used** | Before G5 in every generative AI system or agent (SEG-11, AG-18); after relevant changes to the model, instructions, tools or supplier; and at the frequency in 35 §5.3 (A1: before G5 and after changes; A2: in addition, annually; A3: in addition, half-yearly). At corporate level (C4), for the annual assessment of exposure to offensive AI and the annual synthetic impersonation fraud drill (35 §9.2); the results of the corporate agent test bench (SEG-27), which at A2 and A3 runs at every deployment. |
 | **Who completes it** | The plan, the AI Technical Owner with information security. The report, the independent test team or the third party carrying out the tests. In corporate campaigns, information security. |
 | **Who verifies it** | Information security reviews the plan and issues clearance. The AI Auditor (Enterprise) or the AI Office (Lite) verifies the report against the LV-AG checklist in document 22 §12. |
 | **Who decides or approves** | The rules of engagement and authorisations are approved by the AI Sponsor with information security (and the owner of each affected system). Acceptance of uncorrected findings follows the residual risk acceptance table (P12 §6). Corporate campaigns are reported to the AI Committee and the board committee. |
@@ -45,7 +45,7 @@ Completion rules:
 | Field | Content | Guidance |
 |---|---|---|
 | Campaign code | | PA-AAAA-NNN. |
-| Campaign type | | Pre-G5 · Periodic · After a relevant change · After an incident · Annual offensive AI assessment · Synthetic impersonation drill. |
+| Campaign type | | Pre-G5 · Periodic · After a relevant change · After an incident · Annual offensive AI assessment · Synthetic impersonation drill · Test bench in the deployment pipeline (SEG-27). |
 | System and initiative | | SIA-AAAA-NNN · IA-AAAA-NNN; *Not applicable* in corporate campaigns. |
 | Autonomy level | | A0 · A1 · A2 · A3 (P17, P18). |
 | Technology and exposure | | As per P18 §2. |
@@ -105,6 +105,8 @@ Each case is linked to a threat in P18 §3, to its typical risk (document 33) an
 | C11 | Lack of traceability of actions and intents | | — | AG-06, AG-10 | | | |
 | C12 | Impersonation or synthetic content used against the process **(Enterprise)** | | RT-SEG-01 | SEG-16, SEG-18 | | | |
 | C13 | Kill switch and credential revocation | | — | AG-03, AG-09 | | | |
+| C14 | Tool and connector poisoning | | RT-SEG-07 | AG-13, AG-12, SEG-27 | | | |
+| C15 | Customer impersonation with AI in automated channels **(Enterprise)** | | RT-SEG-09 | SEG-18; second factor (35 §9.1) | | | |
 | *(illustrative example)* C02 | Indirect prompt injection | PDF invoice with hidden text instructing the agent to forward the customer's history to an external address | RT-GEN-02 | AG-05, AG-12 | Yes (external send) | Blocked | 20 variants |
 
 The typical risks in the table are the reference in 35 §3.1; they are adjusted to the initiative's risk register (P12).
@@ -237,3 +239,4 @@ Segregation of duties: whoever builds the system does not carry out its G5 *red 
 | Version | Date | Changes |
 |---|---|---|
 | 0.1 | 19-09-2026 | First version. Campaign plan with rules of engagement and authorisations, cases linked to P18 §3 and to the SEG and AG controls, annual offensive AI assessment and synthetic impersonation drill (35 §9.2), success criteria and report with findings, retests and status. Proposes the code PA-AAAA-NNN. |
+| 0.2 | 19-10-2026 | Results of the corporate agent test bench (SEG-27), campaign type in the deployment pipeline and cases C14 (tool and connector poisoning) and C15 (customer impersonation with AI) (D159). |

@@ -472,13 +472,13 @@ h2 .codigo, h3 .codigo { font-weight: 400; }
 
 <div id="top"></div>
 <header class="portada">
-  <div class="cabecera"><div class="marca"><i></i>SEVEN-G</div><div class="cabecera-dato">Document 02 · 01-10-2026</div></div>
+  <div class="cabecera"><div class="marca"><i></i>SEVEN-G</div><div class="cabecera-dato">Document 02 · 19-10-2026</div></div>
   <div class="portada-cuerpo">
     <p class="antetitulo">Document 02 &#183; Glossary and conventions</p>
     <h1>SEVEN-G glossary and conventions</h1>
     <p class="entradilla">Terms, scales, codes and drafting rules common to the whole library</p>
-    <div class="firma"><span><b>Fernando Garc&#237;a Varela</b></span><span>Version 1.7</span><span>01-10-2026</span><span>In force</span></div>
-    <div class="cifras"><div class="cifra"><b>209</b><span>defined terms</span></div><div class="cifra"><b>18</b><span>official scales</span></div><div class="cifra"><b>32</b><span>code families</span></div><div class="cifra"><b>68</b><span>numbered documents and templates</span></div></div>
+    <div class="firma"><span><b>Fernando Garc&#237;a Varela</b></span><span>Version 1.8</span><span>19-10-2026</span><span>In force</span></div>
+    <div class="cifras"><div class="cifra"><b>213</b><span>defined terms</span></div><div class="cifra"><b>18</b><span>official scales</span></div><div class="cifra"><b>32</b><span>code families</span></div><div class="cifra"><b>68</b><span>numbered documents and templates</span></div></div>
   </div>
 </header>
 <section class="descargas-zona" aria-label="Downloads and tools"><div class="dz-in"><div class="dz-bloque"><p class="dz-titulo">Downloads</p><div class="dz-enlaces"><a class="dz-item" href="../../pdf/en/02_SEVEN-G_Glosario_y_convenciones.pdf" target="_blank" rel="noopener"><span class="dz-tipo">PDF</span><b>This document · English</b></a><a class="dz-item" href="../../pdf/es/02_SEVEN-G_Glosario_y_convenciones.pdf" target="_blank" rel="noopener"><span class="dz-tipo">PDF</span><b>Spanish version</b></a><a class="dz-item" href="../es/02_SEVEN-G_Glosario_y_convenciones.html" hreflang="es"><span class="dz-tipo html">HTML</span><b>Spanish version</b></a></div></div><div class="dz-bloque"><p class="dz-titulo">Related tools</p><div class="dz-enlaces"><a class="dz-item" href="../../herramientas/T01_registro_iniciativas/registro.html" target="_blank" rel="noopener"><span class="dz-tipo tool">T01</span><b>Initiative register</b></a><a class="dz-item" href="../../herramientas/T11_calculadora_valor/calculadora.html" target="_blank" rel="noopener"><span class="dz-tipo tool">T11</span><b>Value hypothesis and cost-per-case calculator</b></a><a class="dz-item" href="../../herramientas/T17_panel_consejo/index.html" target="_blank" rel="noopener"><span class="dz-tipo tool">T17</span><b>Regenerate the board dashboard</b></a><a class="dz-item" href="../../herramientas/T23_recorrido_implantacion/recorrido.html" target="_blank" rel="noopener"><span class="dz-tipo tool">T23</span><b>Implementation journey</b></a></div></div></div></section>
@@ -798,7 +798,7 @@ h2 .codigo, h3 .codigo { font-weight: 400; }
 </tr>
 <tr>
 <td><strong>AI security control (SEG) · agent control (AG)</strong></td>
-<td>Catalogues of coded controls: SEG-01 to SEG-25 for AI systems (SEG-21 to SEG-25, use of AI in cyber defence) and AG-01 to AG-20 for agents, with mandatory minimums by autonomy level.</td>
+<td>Catalogues of coded controls: SEG-01 to SEG-27 for AI systems (SEG-21 to SEG-25, use of AI in cyber defence; SEG-26, corporate AI gateway; SEG-27, corporate agent test bench) and AG-01 to AG-20 for agents, with mandatory minimums by autonomy level.</td>
 <td>35 §5–7</td>
 <td>Control de seguridad de IA (SEG) · control de agentes (AG)</td>
 </tr>
@@ -1025,6 +1025,18 @@ h2 .codigo, h3 .codigo { font-weight: 400; }
 <td>Minimum, stable set of fourteen rules (N-01 to N-14) that distinguishes applying SEVEN-G from using some of its templates: inventory, register, intensity, gates, G3 separately, segregation of duties, dual validation, &quot;Yes ◆&quot; criteria, value hypothesis, risks, rollback and continuity, board, measurement and nonconformities. It is the same for every company, intensity and scope, has its own version and only changes by express decision of the author.</td>
 <td>01 §14.1; 94 §3</td>
 <td>Núcleo de SEVEN-G</td>
+</tr>
+<tr>
+<td><strong>Corporate agent test bench</strong></td>
+<td>Versioned library of adversarial scenarios, derived from the threat model and from the company's own incidents, that tests agents and assistants through all their channels, tools and connectors with simulated users, built into the deployment pipeline: at A2 and A3 it runs at every deployment and a successful critical scenario blocks deployment; at A0 and A1, before G5 and after relevant changes (SEG-27).</td>
+<td>35 §6, §8</td>
+<td>Banco de pruebas corporativo de agentes</td>
+</tr>
+<tr>
+<td><strong>Corporate AI gateway</strong></td>
+<td>Common control point, outside the model, through which all traffic to models passes: input, output and context filters, leakage prevention, quotas, approved models, logging with a correlation identifier and, for agents, the intent decision point, with the same measured configuration for every initiative (SEG-26). It fails closed for sensitive actions and degraded for queries.</td>
+<td>35 §6</td>
+<td>Pasarela corporativa de IA</td>
 </tr>
 <tr>
 <td><strong>Corporate cycle</strong></td>
@@ -1311,6 +1323,12 @@ h2 .codigo, h3 .codigo { font-weight: 400; }
 <td>Specific scale used to assess the dimensions of spheres 08 and 09: Absent, Basic, Systematic, Advanced (section 4.10). They are neither maturity levels nor ambition levels.</td>
 <td>10 §4.2</td>
 <td>Grados de las esferas 08 y 09 (Ausente · Básico · Sistemático · Avanzado)</td>
+</tr>
+<tr>
+<td><strong>Guardrail effectiveness</strong></td>
+<td>Proportion of corporate test bench scenarios that the filters, the gateway and intent control detect or block, read together with false positives on legitimate traffic and deactivations in the period (OPE-21, IND-OPE-27).</td>
+<td>52 §5.2; 41 §11.1</td>
+<td>Eficacia de los guardarraíles</td>
 </tr>
 </tbody>
 </table></div>
@@ -2101,6 +2119,12 @@ h2 .codigo, h3 .codigo { font-weight: 400; }
 <td><strong>Time in phase</strong>: days between entry into and exit from the phase, excluding time on hold. <strong>Decision time</strong>: days between the <em>gate</em> request and the decision.</td>
 <td>03 §3.5; 41</td>
 <td>Tiempo en fase · tiempo de decisión</td>
+</tr>
+<tr>
+<td><strong>Tool and connector poisoning</strong></td>
+<td>Threat to agents: the description of a tool or connector carries hidden instructions, the tool changes after approval, requests excessive scopes or is installed without control. It is handled with AG-13 (description reviewed, version pinned and new approval on changes) and with the test bench (SEG-27).</td>
+<td>35 §3.2, §7</td>
+<td>Envenenamiento de herramientas y conectores</td>
 </tr>
 <tr>
 <td><strong>Transform</strong></td>
@@ -3686,8 +3710,8 @@ h2 .codigo, h3 .codigo { font-weight: 400; }
 <td>33 §9</td>
 <td>RT-GEN-01</td>
 </tr>
-<tr id="cod-seg-01-seg-25">
-<td><strong>SEG-01–SEG-25</strong></td>
+<tr id="cod-seg-01-seg-27">
+<td><strong>SEG-01–SEG-27</strong></td>
 <td>SEG + hyphen + two digits</td>
 <td>AI security controls.</td>
 <td>35 §6</td>
@@ -3703,7 +3727,7 @@ h2 .codigo, h3 .codigo { font-weight: 400; }
 <tr id="cod-ind-nn">
 <td><strong>IND-&lt;FAM&gt;-NN</strong></td>
 <td>IND + three-letter family + two digits</td>
-<td>Catalogue indicators (162 in 13 families): VAL, COS, EMB, AGI, RIE, OPE, ADO, DAT, CLI, TRA, MAD, CON (board) and PRO (processes and decision-making). A code is not reused.</td>
+<td>Catalogue indicators (165 in 13 families): VAL, COS, EMB, AGI, RIE, OPE, ADO, DAT, CLI, TRA, MAD, CON (board) and PRO (processes and decision-making). A code is not reused.</td>
 <td>41 §2 and §4</td>
 <td>IND-VAL-05</td>
 </tr>
@@ -4581,6 +4605,11 @@ h2 .codigo, h3 .codigo { font-weight: 400; }
 </thead>
 <tbody>
 <tr>
+<td>1.8</td>
+<td>19-10-2026</td>
+<td>Adds corporate AI gateway, corporate agent test bench, tool and connector poisoning and guardrail effectiveness; controls SEG-01 to SEG-27; catalogue indicators: 165 (D159).</td>
+</tr>
+<tr>
 <td>1.7</td>
 <td>01-10-2026</td>
 <td>Adds &quot;three perspectives of the use case&quot;.</td>
@@ -4634,7 +4663,7 @@ h2 .codigo, h3 .codigo { font-weight: 400; }
 </table></div>
 <h2 id="external-sources">External sources cited</h2><p class="fuentes-nota">Links to the official or primary source, checked before publication. Always verify the version in force on the date of use.</p><ul class="fuentes-externas"><li><a href="https://eur-lex.europa.eu/eli/dir/2022/2555/oj/eng" target="_blank" rel="noopener">Directive (EU) 2022/2555 of the European Parliament and of the Council of 14 December 2022 on measures for a high common level of cybersecurity across the Union (NIS 2 Directive)</a><span> · Parlamento Europeo y Consejo de la UE · 14-12-2022</span></li><li><a href="https://eur-lex.europa.eu/eli/reg/2016/679/oj/eng" target="_blank" rel="noopener">Regulation (EU) 2016/679 of the European Parliament and of the Council of 27 April 2016 on the protection of natural persons with regard to the processing of personal data and on the free movement of such data, and repealing Directive 95/46/EC (General Data Protection Regulation)</a><span> · Parlamento Europeo y Consejo de la UE · 27-04-2016</span></li><li><a href="https://eur-lex.europa.eu/eli/reg/2022/2554/oj/eng" target="_blank" rel="noopener">Regulation (EU) 2022/2554 of the European Parliament and of the Council of 14 December 2022 on digital operational resilience for the financial sector (DORA)</a><span> · Parlamento Europeo y Consejo de la UE · 14-12-2022</span></li><li><a href="https://eur-lex.europa.eu/eli/reg/2024/1689/oj/eng" target="_blank" rel="noopener">Regulation (EU) 2024/1689 of the European Parliament and of the Council of 13 June 2024 laying down harmonised rules on artificial intelligence (Artificial Intelligence Act)</a><span> · Parlamento Europeo y Consejo de la UE · 13-06-2024</span></li><li><a href="https://www.boe.es/buscar/act.php?id=BOE-A-2018-16673" target="_blank" rel="noopener">Organic Law 3/2018, of 5 December, on the Protection of Personal Data and Guarantee of Digital Rights (Ley Org&#225;nica 3/2018, de 5 de diciembre, de Protecci&#243;n de Datos Personales y garant&#237;a de los derechos digitales)</a><span> · Cortes Generales (Jefatura del Estado) · 05-12-2018</span></li><li><a href="https://digital-strategy.ec.europa.eu/en/policies/ai-office" target="_blank" rel="noopener">European AI Office (European Commission)</a><span> · Comisi&#243;n Europea (DG CONNECT)</span></li><li><a href="https://www.edpb.europa.eu/edpb_en" target="_blank" rel="noopener">European Data Protection Board (EDPB)</a><span> · Comit&#233; Europeo de Protecci&#243;n de Datos (organismo de la UE creado por el art. 68 del RGPD)</span></li><li><a href="https://aesia.digital.gob.es/es" target="_blank" rel="noopener">Spanish Agency for the Supervision of Artificial Intelligence (AESIA)</a><span> · Agencia Espa&#241;ola de Supervisi&#243;n de Inteligencia Artificial</span></li><li><a href="https://csrc.nist.gov/pubs/ir/8596/iprd" target="_blank" rel="noopener">Cybersecurity Framework Profile for Artificial Intelligence (Cyber AI Profile): NIST Community Profile, NIST IR 8596 (Initial Preliminary Draft)</a><span> · National Institute of Standards and Technology (NIST), NCCoE · 16-12-2025</span></li><li><a href="https://www.iso.org/standard/42001" target="_blank" rel="noopener">ISO/IEC 42001:2023 Information technology — Artificial intelligence — Management system</a><span> · ISO/IEC (JTC 1/SC 42) · 18-12-2023</span></li><li><a href="https://www.nist.gov/publications/artificial-intelligence-risk-management-framework-ai-rmf-10" target="_blank" rel="noopener">Artificial Intelligence Risk Management Framework (AI RMF 1.0), NIST AI 100-1</a><span> · National Institute of Standards and Technology (NIST), Departamento de Comercio de EE. UU. · 26-01-2023</span></li><li><a href="https://atlas.mitre.org/" target="_blank" rel="noopener">MITRE ATLAS (Adversarial Threat Landscape for Artificial-Intelligence Systems)</a><span> · The MITRE Corporation</span></li><li><a href="https://csrc.nist.gov/pubs/cswp/29/the-nist-cybersecurity-framework-csf-20/final" target="_blank" rel="noopener">The NIST Cybersecurity Framework (CSF) 2.0, NIST CSWP 29</a><span> · National Institute of Standards and Technology (NIST), Departamento de Comercio de EE. UU. · 26-02-2024</span></li></ul>
 </main>
-<footer class="pie"><div><span>© 2026 Fernando García Varela · SEVEN-G methodology</span><span>Generated on 13-10-2026</span></div><p class="pie-ia">Content generated and typeset with AI support under the author&#39;s editorial supervision.</p></footer>
+<footer class="pie"><div><span>© 2026 Fernando García Varela · SEVEN-G methodology</span><span>Generated on 19-10-2026</span></div><p class="pie-ia">Content generated and typeset with AI support under the author&#39;s editorial supervision.</p></footer>
 <script src="codigos.js" defer></script>
 
 <script>

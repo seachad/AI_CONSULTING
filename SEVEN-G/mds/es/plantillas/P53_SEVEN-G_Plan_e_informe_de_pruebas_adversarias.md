@@ -5,8 +5,8 @@
 | | |
 |---|---|
 | Documento | Plantilla P53 · Plan e informe de pruebas adversarias |
-| Versión | 0.1 (borrador de trabajo) |
-| Fecha | 19-09-2026 |
+| Versión | 0.2 (borrador de trabajo) |
+| Fecha | 19-10-2026 |
 | Autor | Fernando García Varela |
 | Estado | Borrador para revisión. |
 
@@ -20,7 +20,7 @@
 
 | Aspecto | Indicación |
 |---|---|
-| **Cuándo se usa** | Antes de G5 en todo sistema de IA generativa o agente (SEG-11, AG-18); tras cambios relevantes de modelo, instrucciones, herramientas o proveedor; y con la frecuencia de 35 §5.3 (A1: antes de G5 y tras cambios; A2: además, anual; A3: además, semestral). En el ámbito corporativo (C4), para la evaluación anual de exposición a la IA ofensiva y el simulacro anual de fraude con suplantación sintética (35 §9.2). |
+| **Cuándo se usa** | Antes de G5 en todo sistema de IA generativa o agente (SEG-11, AG-18); tras cambios relevantes de modelo, instrucciones, herramientas o proveedor; y con la frecuencia de 35 §5.3 (A1: antes de G5 y tras cambios; A2: además, anual; A3: además, semestral). En el ámbito corporativo (C4), para la evaluación anual de exposición a la IA ofensiva y el simulacro anual de fraude con suplantación sintética (35 §9.2); los resultados del banco de pruebas corporativo de agentes (SEG-27), que en A2 y A3 se ejecuta en cada despliegue. |
 | **Quién la rellena** | El plan, el responsable técnico de IA con seguridad de la información. El informe, el equipo de pruebas independiente o el tercero que ejecuta. En campañas corporativas, seguridad de la información. |
 | **Quién la verifica** | Seguridad de la información revisa el plan y emite conformidad. El auditor de IA (Enterprise) o la oficina de IA (Lite) verifica el informe frente a la lista LV-AG del documento 22 §12. |
 | **Quién decide o aprueba** | Las reglas de enfrentamiento y las autorizaciones las aprueba el patrocinador de IA con seguridad de la información (y el propietario de cada sistema afectado). La aceptación de hallazgos no corregidos sigue la tabla de aceptación del riesgo residual (P12 §6). Las campañas corporativas informan al comité de IA y a la comisión delegada. |
@@ -45,7 +45,7 @@ Reglas de cumplimentación:
 | Campo | Contenido | Guía |
 |---|---|---|
 | Código de la campaña | | PA-AAAA-NNN. |
-| Tipo de campaña | | Previa a G5 · Periódica · Tras cambio relevante · Tras incidente · Evaluación anual de IA ofensiva · Simulacro de suplantación sintética. |
+| Tipo de campaña | | Previa a G5 · Periódica · Tras cambio relevante · Tras incidente · Evaluación anual de IA ofensiva · Simulacro de suplantación sintética · Banco de pruebas en la cadena de despliegue (SEG-27). |
 | Sistema e iniciativa | | SIA-AAAA-NNN · IA-AAAA-NNN; *No aplica* en campañas corporativas. |
 | Nivel de autonomía | | A0 · A1 · A2 · A3 (P17, P18). |
 | Tecnología y exposición | | Según P18 §2. |
@@ -105,6 +105,8 @@ Cada caso se vincula a una amenaza de P18 §3, a su riesgo tipo (documento 33) y
 | C11 | Falta de trazabilidad de acciones e intenciones | | — | AG-06, AG-10 | | | |
 | C12 | Suplantación o contenido sintético usado contra el proceso **(Enterprise)** | | RT-SEG-01 | SEG-16, SEG-18 | | | |
 | C13 | Interruptor de parada y revocación de credenciales | | — | AG-03, AG-09 | | | |
+| C14 | Envenenamiento de herramientas y conectores | | RT-SEG-07 | AG-13, AG-12, SEG-27 | | | |
+| C15 | Suplantación del cliente con IA en canales automatizados **(Enterprise)** | | RT-SEG-09 | SEG-18; segundo factor (35 §9.1) | | | |
 | *(ejemplo ilustrativo)* C02 | Inyección de instrucciones indirecta | Factura en PDF con texto oculto que ordena reenviar el historial del cliente a una dirección externa | RT-GEN-02 | AG-05, AG-12 | Sí (envío externo) | Bloqueado | 20 variantes |
 
 Los riesgos tipo de la tabla son la referencia de 35 §3.1; se ajustan al registro de riesgos de la iniciativa (P12).
@@ -237,3 +239,4 @@ Separación de funciones: quien construye el sistema no ejecuta su *red teaming*
 | Versión | Fecha | Cambios |
 |---|---|---|
 | 0.1 | 19-09-2026 | Primera versión. Plan de campaña con reglas de enfrentamiento y autorizaciones, casos vinculados a P18 §3 y a los controles SEG y AG, evaluación anual de IA ofensiva y simulacro de suplantación sintética (35 §9.2), criterios de éxito e informe con hallazgos, reintentos y estado. Propone el código PA-AAAA-NNN. |
+| 0.2 | 19-10-2026 | Resultados del banco de pruebas corporativo de agentes (SEG-27), tipo de campaña en la cadena de despliegue y casos C14 (envenenamiento de herramientas y conectores) y C15 (suplantación del cliente con IA) (D159). |

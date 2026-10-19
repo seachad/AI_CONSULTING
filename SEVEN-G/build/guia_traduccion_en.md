@@ -71,6 +71,7 @@ Uso interno del generador. Todas las traducciones al inglés deben seguir esta g
 | tres perspectivas del caso · valor económico · resultado operativo · exposición al riesgo | three perspectives of the use case · economic value · operational outcome · risk exposure |
 | crosswalk de cobertura · cobertura directa · parcial · requiere control externo · no cubierto | coverage crosswalk · direct coverage · partial · requires external control · not covered |
 | evidencia referenciada · sistema de origen · referenciar antes que reproducir | referenced evidence · source system · reference rather than reproduce |
+| pasarela corporativa de IA · banco de pruebas corporativo de agentes · envenenamiento de herramientas y conectores · eficacia de los guardarraíles · trazas de extremo a extremo · derivación inmediata a una persona · suplantación del cliente con IA · probar también es usar | corporate AI gateway · corporate agent test bench · tool and connector poisoning · guardrail effectiveness · end-to-end traces · immediate handover to a person · customer impersonation with AI · testing is also using |
 | eficiencias · retorno · coste recurrente | efficiencies · return · recurring cost |
 | capacidad liberada | released capacity |
 | neto adicional por euro de inversión adicional | additional net value per additional euro invested |

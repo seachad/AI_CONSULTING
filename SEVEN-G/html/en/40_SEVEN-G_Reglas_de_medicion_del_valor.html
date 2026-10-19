@@ -472,12 +472,12 @@ h2 .codigo, h3 .codigo { font-weight: 400; }
 
 <div id="top"></div>
 <header class="portada">
-  <div class="cabecera"><div class="marca"><i></i>SEVEN-G</div><div class="cabecera-dato">Document 40 · 01-10-2026</div></div>
+  <div class="cabecera"><div class="marca"><i></i>SEVEN-G</div><div class="cabecera-dato">Document 40 · 19-10-2026</div></div>
   <div class="portada-cuerpo">
     <p class="antetitulo">Document 40 &#183; Value measurement rules</p>
     <h1>Value measurement rules</h1>
     <p class="entradilla">How the value of AI is measured, validated and presented so that it withstands an audit</p>
-    <div class="firma"><span><b>Fernando Garc&#237;a Varela</b></span><span>Version 0.3 (working draft)</span><span>01-10-2026</span><span>Draft for review</span></div>
+    <div class="firma"><span><b>Fernando Garc&#237;a Varela</b></span><span>Version 0.4 (working draft)</span><span>19-10-2026</span><span>Draft for review</span></div>
     <div class="cifras"><div class="cifra"><b>10</b><span>measurement rules</span></div><div class="cifra"><b>3</b><span>amount statuses</span></div><div class="cifra"><b>5</b><span>attribution methods</span></div><div class="cifra"><b>1</b><span>single economic criterion based on net benefit</span></div></div>
   </div>
 </header>
@@ -1347,6 +1347,18 @@ h2 .codigo, h3 .codigo { font-weight: 400; }
 <blockquote>
 <p><strong>Why it matters.</strong> A cross-unit tool has a large, certain cost that is visible from day one, and a value spread across many people and units. If it is measured like any other use case, one of two things happens: declared hours are added up and the portfolio is inflated, or nothing is measured and the tool keeps being paid for out of inertia. The ladder by unit shows where the tool is used, where it produces value and where licences should be withdrawn. The committee and the board can then decide on extending it with data rather than surveys.</p>
 </blockquote>
+<h3 id="7-3-ai-initiatives-for-it-and-cyber-defence">7.3 AI initiatives for IT and cyber defence</h3>
+<p>Initiatives that use AI to protect and operate the company's own technology —detection and response, application and API security, agent test bench, operations and resilience, and detection of shadow AI (<a href="35_SEVEN-G_Seguridad_de_IA_y_agentes.html" title="Document 35 &#183; AI and agent security">document 35</a> §9.3)— are treated like the enabling platforms of section 7.2:</p>
+<ol>
+<li><strong>They are measured by operational outcome</strong> (presentation rule 11): detection, response and recovery times against the baseline, coverage and effectiveness, with the indicators of <a href="41_SEVEN-G_Catalogo_de_indicadores.html" title="Document 41 &#183; Indicator catalogue">document 41</a> (for example, IND-RIE-08 and IND-OPE-27).</li>
+<li><strong>NPV is not their viability criterion.</strong> The rule in section 8.3 applies to business cases; for these initiatives, G3 checks that the expected operational outcome has a baseline, a target and a deadline, and that the full cost fits within the approved envelope. If they also produce observable economic value (licences or services withdrawn, for example), it is recorded under rules 1 to 9, without viability depending on it.</li>
+<li><strong>They are funded from the enablement envelope</strong> (<a href="13_SEVEN-G_Tesis_de_IA_ambicion_y_apetito_de_riesgo.html" title="Document 13 &#183; AI thesis, ambition and risk appetite">document 13</a> §12) and do not compete with business cases for the Optimise or Augment envelopes.</li>
+<li><strong>They are presented separately from the portfolio net value</strong>, like enabling platforms (presentation rule 10): net value is given with and without them.</li>
+<li><strong>Avoided risk is not turned into savings</strong> (error 12 in section 10).</li>
+</ol>
+<blockquote>
+<p><strong>Why it matters.</strong> Requiring a positive NPV from cyber defence forces the invention of avoided losses without a formula, or no investment in what protects the whole portfolio. Measuring it by what it improves in detection, response and recovery, and funding it as enablement, allows decisions to be made with data without inflating the net value of the business cases.</p>
+</blockquote>
 <hr />
 <h2 id="horizon-discounting-and-single-economic-criterion"><span class="antetitulo">08</span>Horizon, discounting and single economic criterion</h2>
 <h3 id="8-1-the-problem-it-solves">8.1 The problem it solves</h3>
@@ -1630,7 +1642,7 @@ h2 .codigo, h3 .codigo { font-weight: 400; }
 <li><strong>A comparison is made with the previous period</strong> and relevant variations are explained, including changes in status.</li>
 <li><strong>Each use case presented in detail includes its understandable description</strong> (rule 10). A maximum of three use cases are presented in detail per session, and answers follow the formats of the common specification: &quot;Yes&quot;, &quot;Yes, with one condition: …&quot;, &quot;Not yet, because … is missing&quot; or &quot;No, because …&quot;.</li>
 <li><strong>The composition of value by ambition level</strong> (efficiencies versus return) is shown to feed signals 1 and 2 of the transformation index.</li>
-<li><strong>Cross-unit initiatives and enabling platforms are shown separately</strong>, with their breakdown by business unit (cost, adoption, released capacity and realised value), and the portfolio's net value is given with and without them (section 7.2).</li>
+<li><strong>Cross-unit initiatives, enabling platforms and AI initiatives for IT and cyber defence are shown separately</strong>, with their breakdown by business unit where they have one (cost, adoption, released capacity and realised value) or with their operational outcome, and the portfolio's net value is given with and without them (sections 7.2 and 7.3).</li>
 <li><strong>Three perspectives, side by side and never merged.</strong> Each use case is presented in three columns read together: <strong>economic value</strong> (in euros, with its status: validated, declared or estimated; rules 1 to 9), <strong>operational outcome</strong> (physical indicators from <a href="41_SEVEN-G_Catalogo_de_indicadores.html" title="Document 41 &#183; Indicator catalogue">document 41</a> —cycle time, quality, errors, satisfaction, adoption— with their baseline, target and current value, plus the non-quantified value of section 5.3) and <strong>risk exposure</strong> (main residual risk, open High and Critical risks, open incidents and nonconformities; documents 33 and 37). None is translated into another and they are not combined into a single score: a good operational outcome does not offset an unproven economic value, nor does a high net value offset an untreated risk. In <a href="../../herramientas/T01_registro_iniciativas/registro.html" title="Tool T01 &#183; Initiative register">T01</a>, each initiative's operational indicators are recorded in <code>resultado_operativo[]</code>, with the indicator code from <a href="41_SEVEN-G_Catalogo_de_indicadores.html" title="Document 41 &#183; Indicator catalogue">document 41</a> when there is one; if there is none, the column says &quot;no indicator&quot;, not zero (rule 8).</li>
 </ol>
 <blockquote>
@@ -1894,11 +1906,16 @@ h2 .codigo, h3 .codigo { font-weight: 400; }
 <td>01-10-2026</td>
 <td>Presentation rule 11: three perspectives side by side and never merged —economic value, operational outcome and risk exposure—; operational indicators are recorded in <a href="../../herramientas/T01_registro_iniciativas/registro.html" title="Tool T01 &#183; Initiative register">T01</a> in <code>resultado_operativo[]</code> (D150).</td>
 </tr>
+<tr>
+<td>0.4</td>
+<td>19-10-2026</td>
+<td>Section 7.3: AI initiatives for IT and cyber defence are measured by operational outcome, NPV is not their viability criterion, they are funded from the enablement envelope and presented separately from the net value; presentation rule 10 extended (D159).</td>
+</tr>
 </tbody>
 </table></div>
 
 </main>
-<footer class="pie"><div><span>© 2026 Fernando García Varela · SEVEN-G methodology</span><span>Generated on 13-10-2026</span></div><p class="pie-ia">Content generated and typeset with AI support under the author&#39;s editorial supervision.</p></footer>
+<footer class="pie"><div><span>© 2026 Fernando García Varela · SEVEN-G methodology</span><span>Generated on 19-10-2026</span></div><p class="pie-ia">Content generated and typeset with AI support under the author&#39;s editorial supervision.</p></footer>
 <script src="codigos.js" defer></script>
 
 <script>

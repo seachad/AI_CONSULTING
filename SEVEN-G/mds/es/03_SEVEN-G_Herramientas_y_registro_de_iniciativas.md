@@ -5,8 +5,8 @@
 | | |
 |---|---|
 | Documento | Documento 03 · Herramientas y registro de iniciativas |
-| Versión | 0.4 (borrador de trabajo) |
-| Fecha | 28-09-2026 |
+| Versión | 0.5 (borrador de trabajo) |
+| Fecha | 19-10-2026 |
 | Autor | Fernando García Varela |
 | Estado | Borrador para revisión. Catálogo vivo: se actualiza cada vez que se construye o se modifica una herramienta. |
 
@@ -278,7 +278,7 @@ El registro T01 es la **fuente de verdad** de la compañía: las demás herramie
 | **T07** | Clasificador regulatorio | Cuestionario guiado de clasificación según el Reglamento de IA y evaluaciones requeridas. | Fases 0 y 3 | HTML | 34 | 2 | Se aplica con P11 |
 | **T08** | Registro de no conformidades e incidentes | Proceso completo con plazos y alertas. | Fase 6, C4 | Módulo de T01 | 37 | 2 | Se aplica con P50 (registro de no conformidades), P51 (notificaciones y comunicaciones) y P52 (causa raíz), junto con P26 y P27 |
 | **T09** | Registro de proveedores de IA | Terceros, criticidad, contratos, evaluación y dependencia. | Fases 3–4, C4 | Módulo de T01 | 36 | 3 | Se aplica con P57 (registro de proveedores y plan de salida), P55 (diligencia debida), P56 (cláusulas contractuales) y P14 |
-| **T10** | Evaluación de seguridad de agentes | Identidad, permisos, control de intención, interruptor de parada, pruebas de inyección. | Fases 4–6 | Lista de verificación en T03 | 35 | 3 | Se aplica con P18, P53 (pruebas adversarias), P54 (identidades no humanas y componentes) y los criterios [AG] del documento 22 |
+| **T10** | Evaluación de seguridad de agentes | Identidad, permisos, control de intención, interruptor de parada, pruebas de inyección; pasarela corporativa de IA (SEG-26) y banco de pruebas corporativo de agentes (SEG-27). | Fases 4–6 | Lista de verificación en T03 | 35 | 3 | Se aplica con P18, P53 (pruebas adversarias), P54 (identidades no humanas y componentes) y los criterios [AG] del documento 22 |
 
 ### 5.3 Valor y medición
 
@@ -343,3 +343,4 @@ Regla de trabajo: **cada documento que define un proceso con registro, cálculo 
 | 0.2 | 19-09-2026 | Catálogo al día: T11 (con T13 como módulo) y T15 disponibles; las herramientas sin aplicación propia se aplican con las plantillas P32–P71 que les corresponden (D68). |
 | 0.3 | 28-09-2026 | Herramienta T23 · Recorrido de implantación (documento 96) en el catálogo (§5.4), en el mapa de datos (§4.1) y en la ola 3; vista «Tres lentes» de T15 y esquema 0.8 del registro (§4 y §4.1). |
 | 0.4 | 28-09-2026 | T12 se implementa como el bloque `plan_realizacion` de T01 más la tarjeta «Plan de realización: curva y tramos» de T17 (§5.3); campos opcionales `plan_realizacion` y `no_cuantificado` del esquema 0.8 (§4) y su lectura por T17 (§4.1 y §5.4) (D135). |
+| 0.5 | 19-10-2026 | La fila de T10 incluye la pasarela corporativa de IA (SEG-26) y el banco de pruebas corporativo de agentes (SEG-27) (D159). |

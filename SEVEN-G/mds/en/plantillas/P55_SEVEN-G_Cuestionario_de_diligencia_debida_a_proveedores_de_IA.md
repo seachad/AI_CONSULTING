@@ -5,8 +5,8 @@
 | | |
 |---|---|
 | Document | Template P55 · AI supplier due diligence questionnaire |
-| Version | 0.1 (working draft) |
-| Date | 19-09-2026 |
+| Version | 0.2 (working draft) |
+| Date | 19-10-2026 |
 | Author | Fernando García Varela |
 | Status | Draft for review. |
 
@@ -20,7 +20,7 @@
 
 | Aspect | Guidance |
 |---|---|
-| **When it is used** | At stage 2 of the supplier lifecycle (36 §5), in phase 3 and before G3, once the preliminary requirement level has been set in P14 §3. It is repeated whenever a reassessment trigger occurs (36 §5) and before renewing the contract. Annex A is used with suppliers of software already contracted (36 §8.1) from C1 onwards and at every R6. |
+| **When it is used** | At stage 2 of the supplier lifecycle (36 §5), in phase 3 and before G3, once the preliminary requirement level has been set in P14 §3. It is repeated whenever a reassessment trigger occurs (36 §5) and before renewing the contract. Annex A is used with suppliers of software already contracted (36 §8.1) from C1 onwards and at every R6. It is also used before testing an external AI tool with company data that is not public or synthetic: testing is also using (36 §2, principle 8). |
 | **Who completes it** | The supplier answers and provides evidence. Procurement sends the questionnaire and coordinates. Assessors: the AI Technical Owner (blocks 2, 9 and 11), information security (block 5), data protection (blocks 3, 4 and 7), legal (blocks 6 and 8) and the AI Risk Owner (blocks 1, 10 and 12 and the overall assessment). |
 | **Who verifies it** | Lite: the AI Risk Owner; if the AI Risk Owner has assessed the questionnaire, the AI Office or the AI Auditor verifies it. Enterprise: the AI Auditor, who checks at G3 and G5 that the due diligence matches the level (36 §11). |
 | **Who decides or approves** | According to the level (36 §4.2): N1, AI Product Owner with procurement clearance; N2, AI Sponsor with risk and data protection clearance; N3, AI Committee with clearance from risk, information security, data protection and legal. |
@@ -127,6 +127,11 @@ Columns: **Level** indicates the level from which the question is asked. **Answe
 | 5.5 | If the service includes agents: what identity, permissions, action limits and kill switch do they have? | Description against the AG controls of document 35. | N2 | | |
 | 5.6 | How do you authenticate and log your staff's access to the company's data? | Access policy; logs. | N2 | | |
 | 5.7 | Do you accept adversarial testing by the company or provide recent independent reports of that type? | Testing authorisation or report. | N3 | | |
+| 5.8 | Can you provide recent independent adversarial testing reports on the AI service (prompt injection, leakage, tool abuse), with their date and scope? | Report or executive summary. | N2 | | |
+| 5.9 | Which input, output and action logs do you make available to the company, in what format and with what retention? | Description; sample log. | N2 | | |
+| 5.10 | Where do the filters, monitoring and log storage of the service itself run, and which of your staff have access to them? | Description; regions. | N2 | | |
+
+These questions and 5.1 (ISO/IEC 42001 certification, if any) reflect the AI security purchasing criteria in 36 §4.3.
 
 ### 4.6 Block 6 · AI Act compliance
 
@@ -304,3 +309,4 @@ Segregation of duties: whoever negotiates the contract does not assess or verify
 | Version | Date | Changes |
 |---|---|---|
 | 0.1 | 19-09-2026 | First version. Twelve blocks of 36 §4.3 graded by N1–N3 level, assessment scale, verification at N3 and embedded AI annex (36 §8). |
+| 0.2 | 19-10-2026 | Questions 5.8 to 5.10 (AI security purchasing criteria, 36 §4.3) and use before any test with company data (36 §2, principle 8) (D159). |

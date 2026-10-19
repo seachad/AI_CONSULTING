@@ -472,13 +472,13 @@ h2 .codigo, h3 .codigo { font-weight: 400; }
 
 <div id="top"></div>
 <header class="portada">
-  <div class="cabecera"><div class="marca"><i></i>SEVEN-G</div><div class="cabecera-dato">Document 22 · 01-10-2026</div></div>
+  <div class="cabecera"><div class="marca"><i></i>SEVEN-G</div><div class="cabecera-dato">Document 22 · 19-10-2026</div></div>
   <div class="portada-cuerpo">
     <p class="antetitulo">Document 22 &#183; Checklists by gate</p>
     <h1>Checklists by gate</h1>
     <p class="entradilla">Binary controls to verify and audit each decision gate</p>
-    <div class="firma"><span><b>Fernando Garc&#237;a Varela</b></span><span>Version 0.3 (working draft)</span><span>01-10-2026</span><span>Draft for review</span></div>
-    <div class="cifras"><div class="cifra"><b>8</b><span>checklists by gate</span></div><div class="cifra"><b>128</b><span>gate controls</span></div><div class="cifra"><b>14</b><span>evidence controls</span></div><div class="cifra"><b>21</b><span>agent controls</span></div></div>
+    <div class="firma"><span><b>Fernando Garc&#237;a Varela</b></span><span>Version 0.4 (working draft)</span><span>19-10-2026</span><span>Draft for review</span></div>
+    <div class="cifras"><div class="cifra"><b>8</b><span>checklists by gate</span></div><div class="cifra"><b>128</b><span>gate controls</span></div><div class="cifra"><b>14</b><span>evidence controls</span></div><div class="cifra"><b>27</b><span>agent controls</span></div></div>
   </div>
 </header>
 <section class="descargas-zona" aria-label="Downloads and tools"><div class="dz-in"><div class="dz-bloque"><p class="dz-titulo">Downloads</p><div class="dz-enlaces"><a class="dz-item" href="../../pdf/en/22_SEVEN-G_Listas_de_verificacion_por_gate.pdf" target="_blank" rel="noopener"><span class="dz-tipo">PDF</span><b>This document · English</b></a><a class="dz-item" href="../../pdf/es/22_SEVEN-G_Listas_de_verificacion_por_gate.pdf" target="_blank" rel="noopener"><span class="dz-tipo">PDF</span><b>Spanish version</b></a><a class="dz-item" href="../es/22_SEVEN-G_Listas_de_verificacion_por_gate.html" hreflang="es"><span class="dz-tipo html">HTML</span><b>Spanish version</b></a></div></div><div class="dz-bloque"><p class="dz-titulo">Related tools</p><div class="dz-enlaces"><a class="dz-item" href="../../herramientas/T01_registro_iniciativas/registro.html" target="_blank" rel="noopener"><span class="dz-tipo tool">T01</span><b>Initiative register</b></a><a class="dz-item" href="../../herramientas/T11_calculadora_valor/calculadora.html" target="_blank" rel="noopener"><span class="dz-tipo tool">T11</span><b>Value hypothesis and cost-per-case calculator</b></a></div></div></div></section>
@@ -2264,6 +2264,56 @@ h2 .codigo, h3 .codigo { font-weight: 400; }
 <tr>
 <td></td>
 <td></td>
+<td><strong>Tools, gateway, test bench and people</strong></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>☐</td>
+<td>G4.16</td>
+<td>Is each tool, connector or tool server of the agent —including local ones— inventoried with a pinned version and verified origin, and were its description and permissions reviewed before approving it (AG-13)?</td>
+<td><a href="plantillas/P18_SEVEN-G_Diseno_de_seguridad.html" title="Template P18 &#183; Security design (including agents)">P18</a> · <a href="plantillas/P54_SEVEN-G_Inventario_de_identidades_no_humanas_y_componentes.html" title="Template P54 &#183; Non-human identity and component inventory">P54</a></td>
+<td>G4</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td>☐</td>
+<td>G4.20</td>
+<td>Does all the agent's traffic to models pass through the corporate AI gateway (SEG-26) with the common configuration?</td>
+<td><a href="plantillas/P18_SEVEN-G_Diseno_de_seguridad.html" title="Template P18 &#183; Security design (including agents)">P18</a> · gateway configuration</td>
+<td>G4, G5</td>
+<td>Rec.</td>
+<td>Yes</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td>☐</td>
+<td>G5.05</td>
+<td>Was the corporate agent test bench (SEG-27) run on the version going into production, through all its channels, with no successful critical scenario?</td>
+<td><a href="plantillas/P53_SEVEN-G_Plan_e_informe_de_pruebas_adversarias.html" title="Template P53 &#183; Adversarial testing plan and report">P53</a> · <a href="plantillas/P18_SEVEN-G_Diseno_de_seguridad.html" title="Tool T10 &#183; Agent security assessment">T10</a></td>
+<td>G5</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td>☐</td>
+<td>G4.19</td>
+<td>With direct exposure: does the agent hand over immediately to a person on signs of vulnerability or an express request, and are handovers recorded (35 §4.6)?</td>
+<td><a href="plantillas/P17_SEVEN-G_Diseno_de_gobierno_y_supervision_humana.html" title="Template P17 &#183; Governance and human oversight design">P17</a> · <a href="plantillas/P49_SEVEN-G_Avisos_de_transparencia_e_instrucciones_de_uso.html" title="Template P49 &#183; Transparency notices and instructions for use">P49</a></td>
+<td>G4, G5</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
 <td><strong>Operation</strong></td>
 <td></td>
 <td></td>
@@ -2286,6 +2336,26 @@ h2 .codigo, h3 .codigo { font-weight: 400; }
 <td>R6.11</td>
 <td>Were permissions and credentials reviewed during the period, and were those no longer needed removed?</td>
 <td><a href="plantillas/P18_SEVEN-G_Diseno_de_seguridad.html" title="Template P18 &#183; Security design (including agents)">P18</a> · <a href="plantillas/P54_SEVEN-G_Inventario_de_identidades_no_humanas_y_componentes.html" title="Template P54 &#183; Non-human identity and component inventory">P54</a> · access configuration</td>
+<td>R6</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td>☐</td>
+<td>R6.11</td>
+<td>Does the test bench run at every deployment and was it extended with the period's incidents?</td>
+<td><a href="plantillas/P53_SEVEN-G_Plan_e_informe_de_pruebas_adversarias.html" title="Template P53 &#183; Adversarial testing plan and report">P53</a> · deployment pipeline</td>
+<td>R6</td>
+<td>Rec.</td>
+<td>Yes</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td>☐</td>
+<td>R6.11</td>
+<td>Was every tool or connector whose description or behaviour changed during the period approved again?</td>
+<td><a href="plantillas/P54_SEVEN-G_Inventario_de_identidades_no_humanas_y_componentes.html" title="Template P54 &#183; Non-human identity and component inventory">P54</a> · change log (<a href="plantillas/P27_SEVEN-G_Registro_de_incidentes_y_cambios.html" title="Template P27 &#183; Incident and change log">P27</a>)</td>
 <td>R6</td>
 <td>Yes</td>
 <td>Yes</td>
@@ -2419,11 +2489,16 @@ h2 .codigo, h3 .codigo { font-weight: 400; }
 <td>01-10-2026</td>
 <td>At Express intensity only the criteria of the reduced list (21 §2.5) are reviewed.</td>
 </tr>
+<tr>
+<td>0.4</td>
+<td>19-10-2026</td>
+<td>LV-AG: six questions on tools and connectors (AG-13), the corporate AI gateway (SEG-26), the corporate test bench (SEG-27) and handover to a person (35 §4.6); 27 agent controls (D159).</td>
+</tr>
 </tbody>
 </table></div>
 
 </main>
-<footer class="pie"><div><span>© 2026 Fernando García Varela · SEVEN-G methodology</span><span>Generated on 13-10-2026</span></div><p class="pie-ia">Content generated and typeset with AI support under the author&#39;s editorial supervision.</p></footer>
+<footer class="pie"><div><span>© 2026 Fernando García Varela · SEVEN-G methodology</span><span>Generated on 19-10-2026</span></div><p class="pie-ia">Content generated and typeset with AI support under the author&#39;s editorial supervision.</p></footer>
 <script src="codigos.js" defer></script>
 
 <script>

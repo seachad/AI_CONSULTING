@@ -5,12 +5,12 @@
 | | |
 |---|---|
 | Documento | Documento 02 · Glosario y convenciones |
-| Versión | 1.7 |
-| Fecha | 01-10-2026 |
+| Versión | 1.8 |
+| Fecha | 19-10-2026 |
 | Autor | Fernando García Varela |
 | Estado | Vigente. Fuente única de términos, escalas y códigos del marco; se actualiza antes que cualquier otro documento cuando cambia un término. |
 
-<!-- cifras: 209 | términos definidos ; 18 | escalas oficiales ; 32 | familias de códigos ; 68 | documentos y plantillas numerados -->
+<!-- cifras: 213 | términos definidos ; 18 | escalas oficiales ; 32 | familias de códigos ; 68 | documentos y plantillas numerados -->
 
 ---
 
@@ -165,6 +165,7 @@ Orden alfabético. Las escalas completas están en la sección 4 y los códigos 
 
 | Término | Definición en SEVEN-G | Documento de referencia | Término en inglés |
 |---|---|---|---|
+| **Banco de pruebas corporativo de agentes** | Biblioteca versionada de escenarios adversarios, derivada del modelo de amenazas y de los incidentes propios, que prueba agentes y asistentes por todos sus canales, herramientas y conectores con usuarios simulados, integrada en la cadena de despliegue: en A2 y A3 se ejecuta en cada despliegue y un escenario crítico con éxito impide desplegar; en A0 y A1, antes de G5 y tras cambios relevantes (SEG-27). | 35 §6, §8 | corporate agent test bench † |
 | **Banda de habilitación de gobierno y cumplimiento** | Presentación separada, en el mapa de calor, de la inversión de las iniciativas con esfera principal 08 o 09. Se excluye de las señales 1, 2 y 7 del índice de transformación. | 10 §4.2; 12 §4.2 | governance and compliance enablement band † |
 | **Bloqueante (criterio)** | Criterio de *gate* con obligatoriedad *Sí* o *Sí ◆* que está en *No cumple* o *Pendiente*. Mientras haya alguno, no cabe Continuar ni Continuar con condiciones. | 21 §5.1 | blocking criterion † |
 
@@ -197,7 +198,7 @@ Orden alfabético. Las escalas completas están en la sección 4 y los códigos 
 | **Continuar la operación** | Resultado de R6: la iniciativa sigue aportando valor bajo control y continúa en producción hasta la siguiente revisión. | 01 §7.3; 21 §5.3 | Continue operation † |
 | **Control crítico** | Control de seguridad, cumplimiento legal o supervisión humana que no admite Continuar con condiciones: los criterios *Sí ◆* del documento 21 y los controles de agentes críticos por nivel de autonomía del documento 35. No diseñado bloquea G4; no probado bloquea G5; desactivado en producción es no conformidad crítica. | 01 §7.3; 21 §2.2; 35 §5.4 | critical control † |
 | **Control de intención** | Mecanismo que garantiza que cada acción de un agente es trazable a una intención autorizada: mandato con objetivo, herramientas, datos y límites; punto de decisión externo al modelo que comprueba cada acción; permiso efímero limitado a esa acción; y registro de la acción con el identificador de la intención. | 35 §4.4 | intent-based access control |
-| **Control de seguridad de IA (SEG) · control de agentes (AG)** | Catálogos de controles codificados: SEG-01 a SEG-25 para sistemas de IA (SEG-21 a SEG-25, uso de la IA en la ciberdefensa) y AG-01 a AG-20 para agentes, con mínimos obligatorios por nivel de autonomía. | 35 §5–7 | AI security control · agent control † |
+| **Control de seguridad de IA (SEG) · control de agentes (AG)** | Catálogos de controles codificados: SEG-01 a SEG-27 para sistemas de IA (SEG-21 a SEG-25, uso de la IA en la ciberdefensa; SEG-26, pasarela corporativa de IA; SEG-27, banco de pruebas corporativo de agentes) y AG-01 a AG-20 para agentes, con mínimos obligatorios por nivel de autonomía. | 35 §5–7 | AI security control · agent control † |
 | **Coste recurrente** | Coste anual completo para operar un caso, directo y compartido repartido, en las nueve categorías de coste. Se resta siempre completo, con independencia de su estado. | 00 regla 6; 40 §5.1; 42 §4 | recurring cost |
 | **Criterio de *gate*** | Condición verificable que se comprueba en una puerta, con código `G<n>.<nn>` o `R6.<nn>`, obligatoriedad (Sí, Sí ◆, Condicionable, Recomendado), aplicabilidad por intensidad y variación por nivel de ambición. | 21 §2 | gate criterion † |
 | **Criterio de salida** | Condición que debe cumplirse al final de una fase para solicitar su *gate*. | 01 §6.2–6.9 | exit criterion |
@@ -226,9 +227,11 @@ Orden alfabético. Las escalas completas están en la sección 4 y los códigos 
 
 | Término | Definición en SEVEN-G | Documento de referencia | Término en inglés |
 |---|---|---|---|
+| **Eficacia de los guardarraíles** | Proporción de escenarios del banco de pruebas corporativo que los filtros, la pasarela y el control de intención detectan o bloquean, leída junto con los falsos positivos en tráfico legítimo y las desactivaciones del periodo (OPE-21, IND-OPE-27). | 52 §5.2; 41 §11.1 | guardrail effectiveness † |
 | **Eficiencias** | Tipo de valor sumable: menor coste real o coste evitado presupuestado, incremental y con fórmula. Solo cuentan las materializadas; para validarse requieren reflejo contable o evidencia del coste evitado. | 00 regla 6; 40 §5.1 | efficiencies |
 | **Embudo** | Forma de gestionar la cartera como un proceso comercial: iniciativas por fase y estado, tiempos, conversión por *gate*, estancadas y motivos de parada. | 01 §6.11; 03 §3.5 | funnel |
 | **Enterprise (intensidad)** | Intensidad con todos los *gates* por separado, plantillas completas, verificación del auditor de IA en todos los *gates*, decisión del comité de IA (consejo en Transformar), firma multinivel con veto y R6 trimestral. Se aplica si se cumple al menos un criterio Enterprise. | 01 §9 | Enterprise intensity |
+| **Envenenamiento de herramientas y conectores** | Amenaza a los agentes: la descripción de una herramienta o conector lleva instrucciones ocultas, la herramienta cambia tras aprobarse, pide ámbitos excesivos o se instala sin control. Se trata con AG-13 (descripción revisada, versión fijada y nueva aprobación ante cambios) y con el banco de pruebas (SEG-27). | 35 §3.2, §7 | tool and connector poisoning † |
 | **Escalar** | Resultado de G7: valor demostrado y riesgo controlado. Abre una nueva fase 0 para el alcance ampliado. En Transformar requiere aprobación del consejo. | 01 §7.3 | Scale |
 | **Esfera** | Dominio de impacto de la IA en la organización. Hay nueve, agrupadas en donde se genera valor (01–04), habilitadoras (05–07), límites (08) y meta-esfera (09). | 01 §4; 10 §2 | sphere |
 | **Esfera principal · esfera secundaria** | La **principal** es obligatoria y es aquella en la que se mide la métrica principal de la hipótesis de valor; recibe toda la inversión y el valor. La **secundaria** es opcional, como máximo una, solo si hay un segundo efecto medible con un indicador de esa esfera, y no lleva importes. Las esferas 08 y 09 solo son principal o secundaria cuando la finalidad de la iniciativa es el cumplimiento o el gobierno. | 10 §4.1–4.2 | primary sphere · secondary sphere † |
@@ -347,6 +350,7 @@ Orden alfabético. Las escalas completas están en la sección 4 y los códigos 
 |---|---|---|---|
 | **Panel de IA del consejo** | Herramienta de supervisión del consejo alimentada por el registro de iniciativas: inventario, valor validado frente a declarado, coste, cumplimiento, incidentes, exposición a ataques con IA, agentes, adopción, agilidad y distribución por ambición. | 00 §4.6; 60; T17 | board AI dashboard |
 | **Parar** | Resultado de *gate*: no hay valor plausible, la viabilidad no se demuestra o el riesgo es inaceptable. La iniciativa se cierra con motivo codificado y lecciones aprendidas. Una parada bien fundamentada es un resultado válido. | 01 §7.3 | Stop |
+| **Pasarela corporativa de IA** | Punto de control común, fuera del modelo, por el que pasa todo el tráfico hacia modelos: filtros de entrada, salida y contexto, prevención de fuga, cuotas, modelos aprobados, registro con identificador de correlación y, para agentes, el punto de decisión de intención, con la misma configuración medida para todas las iniciativas (SEG-26). Falla cerrado en acciones sensibles y degradado en consultas. | 35 §6 | corporate AI gateway † |
 | **Patrocinador de IA** | Rol que decide: responde del valor y de la inversión y defiende la iniciativa ante los órganos. No puede verificar evidencias ni actuar como responsable de riesgos o auditor de su iniciativa. | 01 §8.1 | AI Sponsor |
 | **Perfil actual · perfil objetivo** | En el NIST CSF y en el NIST AI RMF, el **perfil actual** describe los resultados (subcategorías) que la organización alcanza hoy y el **perfil objetivo**, los que quiere alcanzar, priorizados. La diferencia entre ambos es la brecha que se convierte en plan de acción. SEVEN-G expresa el grado de cada resultado con la escala de madurez 0–5 (sección 4.9), no con los *tiers*. | 34 §5.3 | current profile · target profile |
 | **Perfil de transformación** | Uno de los cinco perfiles del índice de transformación (sección 4.16). El **perfil evidenciado** resulta de las señales y condiciones de base; si hay declaración de transformación no evidenciada, se informa como **perfil subyacente**. | 00 §5.3; 12 §5 | transformation profile †; evidenced · underlying profile † |
@@ -836,9 +840,9 @@ Equivalentes en inglés de los valores de la taxonomía:
 | **HT0–HT5** | HT + número | Niveles de huella tecnológica; descriptivos, no son niveles de madurez. | 11 §7.6 | HT4 |
 | **IM1–IM4** | IM + número | Niveles de alcance del impacto de una iniciativa en uso. | 12 §3.7 | IM3 |
 | **RT-\<CAT\>-NN** | RT + categoría de tres letras + dos cifras | Riesgos tipo del catálogo (70 en la versión 0.1): EST 6 · TEC 8 · DAT 6 · ECO 5 · LEG 8 · ORG 9 · REP 5 · GEN 9 · SEG 7 · TER 7. | 33 §9 | RT-GEN-01 |
-| **SEG-01–SEG-25** | SEG + guion + dos cifras | Controles de seguridad de IA. | 35 §6 | SEG-02 |
+| **SEG-01–SEG-27** | SEG + guion + dos cifras | Controles de seguridad de IA. | 35 §6 | SEG-02 |
 | **AG-01–AG-20** | AG + guion + dos cifras | Controles de agentes. | 35 §7 | AG-09 |
-| **IND-\<FAM\>-NN** | IND + familia de tres letras + dos cifras | Indicadores del catálogo (162 en 13 familias): VAL, COS, EMB, AGI, RIE, OPE, ADO, DAT, CLI, TRA, MAD, CON (consejo) y PRO (procesos y decisión). Un código no se reutiliza. | 41 §2 y §4 | IND-VAL-05 |
+| **IND-\<FAM\>-NN** | IND + familia de tres letras + dos cifras | Indicadores del catálogo (165 en 13 familias): VAL, COS, EMB, AGI, RIE, OPE, ADO, DAT, CLI, TRA, MAD, CON (consejo) y PRO (procesos y decisión). Un código no se reutiliza. | 41 §2 y §4 | IND-VAL-05 |
 | **IE\<esfera\>.\<nn\>** | IE + esfera de dos cifras + punto + dos cifras | Indicadores por esfera, provisionales hasta su consolidación en el documento 41. | 10 §5–7 | IE01.04 |
 | **IA-AAAA-NNN** | Año de registro + número correlativo | Iniciativas. | 03 §3.3 | IA-2026-014 |
 | **IA-AAAA-NNN · Rnn** | Código de iniciativa + R + dos cifras | Riesgo concreto de una iniciativa. | 33 §8.1 | IA-2026-014 · R03 |
@@ -1040,6 +1044,7 @@ Las herramientas muestran los valores de las listas cerradas en español e ingl�
 
 | Versión | Fecha | Cambios |
 |---|---|---|
+| 1.8 | 19-10-2026 | Añade pasarela corporativa de IA, banco de pruebas corporativo de agentes, envenenamiento de herramientas y conectores y eficacia de los guardarraíles; controles SEG-01 a SEG-27; indicadores del catálogo: 165 (D159). |
 | 1.7 | 01-10-2026 | Añade «tres perspectivas del caso». |
 | 1.6 | 01-10-2026 | Añade «crosswalk de cobertura». |
 | 1.5 | 01-10-2026 | Indicadores del catálogo: 162. |

@@ -5,12 +5,12 @@
 | | |
 |---|---|
 | Documento | Documento 22 · Listas de verificación por *gate* |
-| Versión | 0.3 (borrador de trabajo) |
-| Fecha | 01-10-2026 |
+| Versión | 0.4 (borrador de trabajo) |
+| Fecha | 19-10-2026 |
 | Autor | Fernando García Varela |
 | Estado | Borrador para revisión. Los códigos coinciden con los criterios del documento 21. |
 
-<!-- cifras: 8 | listas por puerta ; 128 | controles de gate ; 14 | controles de evidencia ; 21 | controles para agentes -->
+<!-- cifras: 8 | listas por puerta ; 128 | controles de gate ; 14 | controles de evidencia ; 27 | controles para agentes -->
 
 ---
 
@@ -325,9 +325,16 @@ Reúne los controles para sistemas que ejecutan acciones o las preparan para val
 | ☐ | G4.20 | ¿El contenido externo (documentos, correos, web, respuestas de herramientas) se trata como no confiable y no puede alterar instrucciones ni permisos? | P18 | G4 | Sí | Sí | Sí |
 | ☐ | G5.05 | ¿Se superaron pruebas de inyección directa e indirecta dentro de umbral? | P22 · T10 | G5 | Sí | Sí | Sí |
 | ☐ | G5.05 | ¿Se superaron pruebas de fuga de datos personales, secretos e instrucciones del sistema? | P22 · T10 | G5 | Sí | Sí | Sí |
+| | | **Herramientas, pasarela, banco de pruebas y personas** | | | | | |
+| ☐ | G4.16 | ¿Cada herramienta, conector o servidor de herramientas del agente —también los locales— está inventariado con versión fijada y origen verificado, y se revisaron su descripción y sus permisos antes de aprobarlo (AG-13)? | P18 · P54 | G4 | Sí | Sí | Sí |
+| ☐ | G4.20 | ¿Todo el tráfico del agente hacia los modelos pasa por la pasarela corporativa de IA (SEG-26) con la configuración común? | P18 · configuración de la pasarela | G4, G5 | Rec. | Sí | Sí |
+| ☐ | G5.05 | ¿El banco de pruebas corporativo de agentes (SEG-27) se ejecutó sobre la versión que se pone en producción, por todos sus canales, sin ningún escenario crítico con éxito? | P53 · T10 | G5 | Sí | Sí | Sí |
+| ☐ | G4.19 | Con exposición directa: ¿el agente deriva de inmediato a una persona ante señales de vulnerabilidad o petición expresa, y se registran las derivaciones (35 §4.6)? | P17 · P49 | G4, G5 | Sí | Sí | Sí |
 | | | **Operación** | | | | | |
 | ☐ | R6.11 | ¿Se revisan las acciones bloqueadas, anómalas o fuera de patrón y se actúa sobre ellas? | P27 · registros | R6 | Rec. | Sí | Sí |
 | ☐ | R6.11 | ¿Se revisaron permisos y credenciales en el periodo y se retiraron los que sobran? | P18 · P54 · configuración de accesos | R6 | Sí | Sí | Sí |
+| ☐ | R6.11 | ¿El banco de pruebas se ejecuta en cada despliegue y se amplió con los incidentes del periodo? | P53 · cadena de despliegue | R6 | Rec. | Sí | Sí |
+| ☐ | R6.11 | ¿Se volvió a aprobar toda herramienta o conector cuya descripción o comportamiento cambió en el periodo? | P54 · registro de cambios (P27) | R6 | Sí | Sí | Sí |
 | | | **Retirada** | | | | | |
 | ☐ | G7.11 | ¿Al retirar el agente se revocan identidad, credenciales y permisos y se conservan los registros el periodo definido? | P30 · T22 | G7 | Sí | Sí | Sí |
 
@@ -368,3 +375,4 @@ Un ítem obligatorio sin marcar en LV-AG equivale a *No cumple* en el criterio a
 | 0.1 | 16-09-2026 | Primera versión. Sustituye a las listas de verificación del material anterior: 128 controles binarios en ocho listas por puerta con los códigos del documento 21, lista LV-EV de validación de evidencias (14 controles), lista LV-AG para agentes alineada con T10 (21 controles) e instrucciones para el verificador y el auditor. Ajustes de coherencia con 01 (separación de funciones en Lite, resultados de R6, criterio de agentes) y con 34 y 37. |
 | 0.2 | 01-10-2026 | LV-EV, EV.10: los campos obligatorios pueden estar en una evidencia referenciada con su anexo (21 §4.3). |
 | 0.3 | 01-10-2026 | En intensidad Express se revisan solo los criterios de la lista reducida (21 §2.5). |
+| 0.4 | 19-10-2026 | LV-AG: seis preguntas sobre herramientas y conectores (AG-13), pasarela corporativa de IA (SEG-26), banco de pruebas corporativo (SEG-27) y derivación a una persona (35 §4.6); 27 controles para agentes (D159). |

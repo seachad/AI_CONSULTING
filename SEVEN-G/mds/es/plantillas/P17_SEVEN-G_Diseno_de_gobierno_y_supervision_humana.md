@@ -5,8 +5,8 @@
 | | |
 |---|---|
 | Documento | Plantilla P17 · Diseño de gobierno y supervisión humana |
-| Versión | 0.1 (borrador de trabajo) |
-| Fecha | 16-09-2026 |
+| Versión | 0.2 (borrador de trabajo) |
+| Fecha | 19-10-2026 |
 | Autor | Fernando García Varela |
 | Estado | Borrador para revisión. |
 
@@ -144,6 +144,8 @@ En sistemas de alto riesgo, estos requisitos se contrastan con el artículo 14 d
 | Información sobre la lógica y los motivos del resultado | | Qué se explica y a quién. |
 | Vía para solicitar revisión humana o impugnar | | Canal, plazo interno de respuesta y rol que revisa. |
 | Registro de reclamaciones relacionadas con el sistema **(Enterprise)** | | Dónde se registran y cómo alimentan P25 y P27. |
+| Derivación inmediata a una persona (exposición directa) | | Señales de vulnerabilidad que la disparan, petición expresa, canal y tiempo máximo hasta que atiende una persona (35 §4.6). |
+| Registro de derivaciones | | Dónde se registran motivo, momento y tiempo de atención; se trasladan a P25. |
 
 Textos y registro de avisos en P49.
 
@@ -171,6 +173,7 @@ Se trasladan a P25 con sus umbrales.
 | Cobertura de la revisión a posteriori | Resultados revisados ÷ resultados producidos | | |
 | Aceptación sin revisión efectiva **(Enterprise)** | Validaciones con tiempo inferior al mínimo razonable | | |
 | Reclamaciones de personas afectadas | Número por periodo | | |
+| Derivaciones a una persona | Derivaciones por motivo y peticiones no atendidas | | |
 
 ---
 
@@ -209,3 +212,4 @@ Separación de funciones: el responsable de riesgos y el verificador no forman p
 | Versión | Fecha | Cambios |
 |---|---|---|
 | 0.1 | 16-09-2026 | Primera versión de la plantilla. |
+| 0.2 | 19-10-2026 | Derivación inmediata a una persona y registro de derivaciones (8) e indicador de derivaciones (10) (35 §4.6) (D159). |
