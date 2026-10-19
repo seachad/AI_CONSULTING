@@ -472,13 +472,13 @@ h2 .codigo, h3 .codigo { font-weight: 400; }
 
 <div id="top"></div>
 <header class="portada">
-  <div class="cabecera"><div class="marca"><i></i>SEVEN-G</div><div class="cabecera-dato">Documento 35 · 25-09-2026</div></div>
+  <div class="cabecera"><div class="marca"><i></i>SEVEN-G</div><div class="cabecera-dato">Documento 35 · 19-10-2026</div></div>
   <div class="portada-cuerpo">
     <p class="antetitulo">Documento 35 &#183; Seguridad de IA y agentes</p>
     <h1>Seguridad de IA y agentes</h1>
     <p class="entradilla">Amenazas a los sistemas de IA, controles para agentes con capacidad de actuar y exposici&#243;n a la IA ofensiva</p>
-    <div class="firma"><span><b>Fernando Garc&#237;a Varela</b></span><span>Versión 0.2 (borrador de trabajo)</span><span>25-09-2026</span><span>Borrador para revisi&#243;n</span></div>
-    <div class="cifras"><div class="cifra"><b>4</b><span>niveles de autonom&#237;a</span></div><div class="cifra"><b>25</b><span>controles de seguridad de IA (SEG)</span></div><div class="cifra"><b>20</b><span>controles de agentes (AG)</span></div><div class="cifra"><b>9</b><span>requisitos esenciales de un agente</span></div></div>
+    <div class="firma"><span><b>Fernando Garc&#237;a Varela</b></span><span>Versión 0.4 (borrador de trabajo)</span><span>19-10-2026</span><span>Borrador para revisi&#243;n</span></div>
+    <div class="cifras"><div class="cifra"><b>4</b><span>niveles de autonom&#237;a</span></div><div class="cifra"><b>27</b><span>controles de seguridad de IA (SEG)</span></div><div class="cifra"><b>20</b><span>controles de agentes (AG)</span></div><div class="cifra"><b>9</b><span>requisitos esenciales de un agente</span></div></div>
   </div>
 </header>
 <section class="descargas-zona" aria-label="Descargas y herramientas"><div class="dz-in"><div class="dz-bloque"><p class="dz-titulo">Descargas</p><div class="dz-enlaces"><a class="dz-item" href="../../pdf/es/35_SEVEN-G_Seguridad_de_IA_y_agentes.pdf" target="_blank" rel="noopener"><span class="dz-tipo">PDF</span><b>Este documento · español</b></a><a class="dz-item" href="../../pdf/en/35_SEVEN-G_Seguridad_de_IA_y_agentes.pdf" target="_blank" rel="noopener"><span class="dz-tipo">PDF</span><b>Versión en inglés</b></a><a class="dz-item" href="../en/35_SEVEN-G_Seguridad_de_IA_y_agentes.html" hreflang="en"><span class="dz-tipo html">HTML</span><b>Versión en inglés</b></a></div></div><div class="dz-bloque"><p class="dz-titulo">Herramientas relacionadas</p><div class="dz-enlaces"><a class="dz-item" href="../../herramientas/T01_registro_iniciativas/registro.html" target="_blank" rel="noopener"><span class="dz-tipo tool">T01</span><b>Registro de iniciativas</b></a><a class="dz-item" href="../../herramientas/T17_panel_consejo/index.html" target="_blank" rel="noopener"><span class="dz-tipo tool">T17</span><b>Regenerar el panel del consejo</b></a></div></div></div></section>
@@ -698,6 +698,12 @@ h2 .codigo, h3 .codigo { font-weight: 400; }
 <td>AG-01, AG-02, AG-03, AG-20</td>
 </tr>
 <tr>
+<td><strong>Envenenamiento de herramientas y conectores</strong></td>
+<td>La descripción de una herramienta o de un conector lleva instrucciones ocultas que el agente obedece; una herramienta cambia de descripción o de comportamiento después de aprobarse; un conector pide ámbitos o permisos mayores que su función; o una persona instala servidores de herramientas sin control.</td>
+<td>ASI02, ASI04</td>
+<td>AG-13, AG-02, AG-12, SEG-27</td>
+</tr>
+<tr>
 <td><strong>Ejecución inesperada de código</strong></td>
 <td>El agente genera o ejecuta código o comandos con efectos no previstos.</td>
 <td>ASI05</td>
@@ -796,6 +802,10 @@ h2 .codigo, h3 .codigo { font-weight: 400; }
 <li>Cualquier acción fuera de los límites ordinarios.</li>
 </ul>
 <p>La validación <strong>debe</strong> ser informada: la persona ve qué acción se propone, con qué datos, por qué y con qué efectos, y puede rechazarla sin coste para ella. Se mide la tasa de rechazo y el tiempo de revisión para detectar aprobación rutinaria (AG-08, RT-ORG-04).</p>
+<p><strong>Derivación inmediata a una persona.</strong> En los agentes y asistentes con exposición directa (01 §9.2), la conversación <strong>debe</strong> pasar de inmediato a una persona cuando quien la usa lo pide expresamente o cuando aparecen señales de vulnerabilidad: indicios de que es menor o de que tiene dificultades por la edad, confusión sobre lo que se le propone, duelo, angustia o cualquier situación en la que seguir con el sistema pueda perjudicarle. La derivación no exige justificar la petición ni repetirla y no se desactiva por coste (52 §10.3). Las señales y el canal se fijan en <a href="plantillas/P17_SEVEN-G_Diseno_de_gobierno_y_supervision_humana.html" title="Plantilla P17 &#183; Dise&#241;o de gobierno y supervisi&#243;n humana">P17</a> y el texto que se muestra, en <a href="plantillas/P49_SEVEN-G_Avisos_de_transparencia_e_instrucciones_de_uso.html" title="Plantilla P49 &#183; Avisos de transparencia e instrucciones de uso">P49</a>. Cada derivación se registra (motivo, momento y tiempo hasta que atiende una persona) y se mide (derivaciones por motivo, peticiones no atendidas) para revisar en R6 si las señales están bien calibradas. La regulación de cada sector o jurisdicción puede exigir más.</p>
+<blockquote>
+<p><strong>Por qué importa.</strong> Un sistema que atiende a personas externas encontrará a alguien que no está en condiciones de tratar con una máquina o que no quiere hacerlo. Retenerle en la conversación para contener costes convierte una eficiencia en un daño a una persona y en un riesgo reputacional. Derivar sin fricción, y medir cuándo se deriva, protege a la persona y dice si el sistema está bien diseñado.</p>
+</blockquote>
 <h3 id="4-7-interruptor-de-parada">4.7 Interruptor de parada</h3>
 <ul>
 <li>Mecanismo para detener de inmediato el agente completo o una capacidad concreta (una herramienta, un tipo de acción) <strong>sin desplegar código</strong> (AG-09).</li>
@@ -1044,8 +1054,15 @@ h2 .codigo, h3 .codigo { font-weight: 400; }
 <td>Mensual</td>
 <td>Continua con alertas y revisión mensual</td>
 </tr>
+<tr>
+<td>Banco de pruebas corporativo (SEG-27)</td>
+<td>Antes de G5 y tras cambios relevantes</td>
+<td>En cada despliegue</td>
+<td>En cada despliegue</td>
+</tr>
 </tbody>
 </table></div>
+<p>En A0, el banco de pruebas corporativo se ejecuta antes de G5 y tras cambios relevantes, como en A1.</p>
 <h3 id="5-4-controles-criticos">5.4 Controles críticos</h3>
 <p>En A2 y A3 son <strong>controles críticos</strong> AG-01, AG-02, AG-03, AG-05, AG-08, AG-09, AG-10 y AG-12; en A1, AG-02, AG-03, AG-08 y AG-12. Un control crítico no diseñado bloquea G4; no probado, bloquea G5. No se admite <strong>Continuar con condiciones</strong> sobre ellos (01 §7.3). Su desactivación en producción es no conformidad crítica (01 §12).</p>
 <hr />
@@ -1238,8 +1255,8 @@ h2 .codigo, h3 .codigo { font-weight: 400; }
 <tr id="cod-seg-20">
 <td><strong>SEG-20</strong></td>
 <td>Control del uso corporativo de IA</td>
-<td>Herramientas aprobadas, bloqueo o supervisión de las no autorizadas, prevención de fuga hacia servicios externos.</td>
-<td>Monitor de uso (<a href="plantillas/P43_SEVEN-G_Catalogo_de_herramientas_autorizadas_y_solicitudes.html" title="Herramienta T21 &#183; Monitor de uso corporativo de IA">T21</a>).</td>
+<td>Herramientas aprobadas, bloqueo o supervisión de las no autorizadas y prevención de fuga hacia servicios externos. Incluye los agentes locales en los equipos (asistentes de programación con credenciales, servidores de herramientas instalados por el usuario) y las extensiones del navegador con IA, que se inventarían y se autorizan como cualquier otra herramienta (31 §4.7). Probar una herramienta externa con datos de la compañía también es usarla (36 §2).</td>
+<td>Monitor de uso (<a href="plantillas/P43_SEVEN-G_Catalogo_de_herramientas_autorizadas_y_solicitudes.html" title="Herramienta T21 &#183; Monitor de uso corporativo de IA">T21</a>); inventario de agentes locales y extensiones.</td>
 <td>CORP</td>
 <td>C4</td>
 <td>GV (GV.PO) · PR (PR.DS)</td>
@@ -1289,8 +1306,29 @@ h2 .codigo, h3 .codigo { font-weight: 400; }
 <td>5, 6</td>
 <td>ID (ID.IM)</td>
 </tr>
+<tr id="cod-seg-26">
+<td><strong>SEG-26</strong></td>
+<td>Pasarela corporativa de IA</td>
+<td>Todo el tráfico hacia modelos, propios o de terceros, pasa por un punto de control común fuera del modelo que aplica, con la misma configuración medida para todas las iniciativas: filtros de entrada, de salida y de contexto (SEG-03), prevención de fuga (SEG-07), cuotas y límites (SEG-10), lista de modelos aprobados, registro con identificador de correlación (SEG-12) y, para agentes, el punto de decisión de intención (AG-05). Falla cerrado en acciones sensibles y degradado en consultas.</td>
+<td>Arquitectura (<a href="plantillas/P18_SEVEN-G_Diseno_de_seguridad.html" title="Plantilla P18 &#183; Dise&#241;o de seguridad (incluye agentes)">P18</a>); configuración común versionada; prueba de que no hay tráfico a modelos fuera de la pasarela; eficacia medida (52 §5.2).</td>
+<td>CORP</td>
+<td>C4, 4–6</td>
+<td>PR (PR.PS) · DE (DE.CM)</td>
+</tr>
+<tr id="cod-seg-27">
+<td><strong>SEG-27</strong></td>
+<td>Banco de pruebas corporativo de agentes</td>
+<td>Biblioteca versionada de escenarios adversarios, derivada del modelo de amenazas (SEG-01) y de los incidentes propios, que cubre todos los canales —texto, documentos, correo, web, respuestas de herramientas, memoria, mensajes entre agentes y voz o audio sintéticos—, las herramientas y conectores, y usuarios simulados. Está integrada en la cadena de despliegue: en A2 y A3 se ejecuta en cada despliegue y un escenario crítico con éxito impide desplegar; en A0 y A1, antes de G5 y tras cada cambio relevante.</td>
+<td>Biblioteca de escenarios versionada; resultado por despliegue; informe de pruebas adversarias (<a href="plantillas/P53_SEVEN-G_Plan_e_informe_de_pruebas_adversarias.html" title="Plantilla P53 &#183; Plan e informe de pruebas adversarias">P53</a>).</td>
+<td>CORP</td>
+<td>5, 6</td>
+<td>ID (ID.IM)</td>
+</tr>
 </tbody>
 </table></div>
+<blockquote>
+<p><strong>Por qué importa.</strong> La pasarela corporativa de IA (SEG-26) y el banco de pruebas corporativo de agentes (SEG-27) convierten controles que cada equipo construiría a su manera en una capacidad común, medida y comparable: filtros, prevención de fuga y control de intención se configuran una vez y se miden igual para todas las iniciativas, y cada cambio de un agente se prueba contra los mismos ataques antes de llegar a producción. Sin ellos, la seguridad depende de lo que recuerde cada equipo y nadie puede decir al consejo si los guardarraíles funcionan.</p>
+</blockquote>
 <hr />
 <h2 id="catalogo-de-controles-de-agentes-ag"><span class="antetitulo">07</span>Catálogo de controles de agentes (AG)</h2>
 <p>La lista <strong>LV-AG</strong> del <a href="22_SEVEN-G_Listas_de_verificacion_por_gate.html" title="Documento 22 &#183; Listas de verificaci&#243;n por gate">documento 22</a> convierte cada control en preguntas binarias verificables en G4 (diseñado), G5 (probado) y R6 (operando). Este documento es la referencia de su contenido. <em>Función CSF</em> tiene el mismo significado que en la sección 6.</p>
@@ -1392,8 +1430,8 @@ h2 .codigo, h3 .codigo { font-weight: 400; }
 <tr id="cod-ag-13">
 <td><strong>AG-13</strong></td>
 <td>Herramientas y conectores aprobados</td>
-<td>Inventario de herramientas, conectores y servidores de herramientas con versión fijada, origen verificado y aprobación.</td>
-<td>Inventario · Verificación · Revisión de cambios</td>
+<td>Inventario de herramientas, conectores y servidores de herramientas —también los locales, instalados en equipos de usuario— con versión fijada, origen verificado y aprobación; revisión de la descripción de cada herramienta antes de aprobarla (sin instrucciones dirigidas al modelo) y de sus ámbitos y permisos frente a su función; nueva aprobación si cambia la descripción o el comportamiento.</td>
+<td>Inventario y revisión de descripciones · Verificación y prueba de envenenamiento (SEG-27) · Revisión de cambios con nueva aprobación</td>
 <td>ID (ID.AM) · GV (GV.SC)</td>
 </tr>
 <tr id="cod-ag-14">
@@ -1473,13 +1511,13 @@ h2 .codigo, h3 .codigo { font-weight: 400; }
 </tr>
 <tr>
 <td><strong>5 · Entrega</strong></td>
-<td>Evaluaciones adversarias automatizadas; <em>red teaming</em> manual; pruebas de inyección directa e indirecta; pruebas de límites, interruptor, revocación y reversión; pruebas de fuga de datos.</td>
+<td>Evaluaciones adversarias automatizadas; <em>red teaming</em> manual; pruebas de inyección directa e indirecta; pruebas de límites, interruptor, revocación y reversión; pruebas de fuga de datos; ejecución del banco de pruebas corporativo de agentes (SEG-27) sobre la versión candidata.</td>
 <td>Equipo de pruebas independiente o tercero</td>
 <td>Controles críticos probados; hallazgos altos cerrados o aceptados según 33 §7.</td>
 </tr>
 <tr>
 <td><strong>6 · Operación</strong></td>
-<td>Evaluaciones continuas de regresión; campañas periódicas (5.3); pruebas tras cambios de modelo, instrucciones, herramientas o proveedor; simulacros de incidente.</td>
+<td>Evaluaciones continuas de regresión; campañas periódicas (5.3); pruebas tras cambios de modelo, instrucciones, herramientas o proveedor; simulacros de incidente; en A2 y A3, banco de pruebas en cada despliegue y ampliación del banco con cada incidente propio.</td>
 <td>Operación y seguridad</td>
 <td>Indicadores de la sección 10 dentro de umbral.</td>
 </tr>
@@ -1492,7 +1530,7 @@ h2 .codigo, h3 .codigo { font-weight: 400; }
 </tbody>
 </table></div>
 <p><strong>Contenido mínimo de una campaña de <em>red teaming</em> (plantilla <a href="plantillas/P53_SEVEN-G_Plan_e_informe_de_pruebas_adversarias.html" title="Plantilla P53 &#183; Plan e informe de pruebas adversarias">P53</a>):</strong> alcance y reglas de enfrentamiento aprobadas; escenarios derivados del modelo de amenazas; inyección directa e indirecta por todos los canales de entrada; intentos de extracción de instrucciones y datos; abuso de cada herramienta; intentos de superar límites y de inducir aprobaciones; resultados con tasa de éxito por escenario, severidad y acción correctiva; repetición de los escenarios fallidos tras la corrección.</p>
-<p>Las evaluaciones adversarias automatizadas se versionan y se ejecutan antes de cada cambio relevante. Un escenario con éxito en una acción sensible es un hallazgo que bloquea G5 hasta su corrección.</p>
+<p>Las evaluaciones adversarias automatizadas se versionan en el banco de pruebas corporativo (SEG-27) y se ejecutan antes de cada cambio relevante y, en A2 y A3, en cada despliegue. Un escenario con éxito en una acción sensible es un hallazgo que bloquea G5 hasta su corrección.</p>
 <hr />
 <h2 id="exposicion-a-la-ia-ofensiva-y-uso-de-la-ia-en-la-ciberdefensa"><span class="antetitulo">09</span>Exposición a la IA ofensiva y uso de la IA en la ciberdefensa</h2>
 <p>La IA no crea tipos de ataque nuevos en su mayoría, pero reduce su coste, aumenta su verosimilitud y acorta los tiempos. La guía <a class="ref-ext" href="https://www.ccn-cert.cni.es/es/informes/informes-de-buenas-practicas-bp/7469-ccn-cert-bp-36-buenas-practicas-ia-ofensiva/file.html" target="_blank" rel="noopener" title="CCN-CERT BP/36 &#183; Gu&#237;a de buenas pr&#225;cticas frente al modelo de IA ofensiva">CCN-CERT BP/36</a> insiste en esta idea: el tiempo entre la existencia de una vulnerabilidad y su explotación se reduce, y las revisiones de seguridad puntuales llegan tarde. La exposición se gestiona como riesgo corporativo (C4), con responsable en seguridad de la información e información al consejo.</p>
@@ -1524,6 +1562,12 @@ h2 .codigo, h3 .codigo { font-weight: 400; }
 <td>Videollamadas o audios falsos de directivos que ordenan pagos urgentes o confidenciales.</td>
 <td>RT-SEG-01</td>
 <td>SEG-16 sin excepciones por urgencia o jerarquía; doble firma; palabra de verificación (SEG-18).</td>
+</tr>
+<tr>
+<td><strong>Suplantación del cliente con IA</strong></td>
+<td>Voz sintética o vídeo manipulado para superar la identificación del cliente en canales automatizados o telefónicos; documentos, fotografías o facturas manipulados con IA para respaldar reclamaciones, altas o cambios de datos.</td>
+<td>RT-SEG-09</td>
+<td>Detección de voz sintética y prueba de vida solo como apoyo, nunca como única barrera; verificación por un segundo factor independiente del canal antes de operaciones sensibles o de cambios de datos de contacto o bancarios; revisión de documentos e imágenes con comprobación de metadatos y de coherencia, y revisión humana por muestreo y en los casos señalados; SEG-18 en los canales de voz y vídeo con clientes cuando sea posible.</td>
 </tr>
 <tr>
 <td><strong>Explotación acelerada de vulnerabilidades</strong></td>
@@ -1598,6 +1642,49 @@ h2 .codigo, h3 .codigo { font-weight: 400; }
 <blockquote>
 <p><strong>Por qué importa.</strong> Usar IA en la ciberdefensa acelera la detección y la respuesta, pero traslada a un sistema automático decisiones que pueden parar la operación o dejar pasar un ataque. Tratarla como un caso de uso más, con autonomía fijada por tipo de acción, supervisión humana en lo que no se puede deshacer y métricas de acierto frente a una línea base, evita que la defensa se convierta en una nueva fuente de incidentes.</p>
 </blockquote>
+<p><strong>IA para TI y ciberdefensa: cómo se mide y cómo se financia.</strong> Las iniciativas que usan IA para proteger y operar la tecnología de la propia compañía no se justifican con un VAN: su valor es menos pérdida esperada y más capacidad de detectar, responder y recuperarse. Se registran y recorren el ciclo de vida como cualquier otra iniciativa, se miden por <strong>resultado operativo</strong> (regla de presentación 11 del <a href="40_SEVEN-G_Reglas_de_medicion_del_valor.html" title="Documento 40 &#183; Reglas de medici&#243;n del valor">documento 40</a>) y se financian desde el sobre de habilitación (<a href="13_SEVEN-G_Tesis_de_IA_ambicion_y_apetito_de_riesgo.html" title="Documento 13 &#183; Tesis de IA, ambici&#243;n y apetito de riesgo">documento 13</a> §12), presentadas aparte del neto de la cartera como las plataformas habilitadoras (40 §7.3).</p>
+<div class="tabla"><table>
+<thead>
+<tr>
+<th>Capacidad</th>
+<th>Qué es</th>
+<th>Cuándo se usa</th>
+<th>Cómo se mide</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Detección y respuesta</strong></td>
+<td>Correlación y triaje de alertas, caza de amenazas y contención asistidas por IA (este apartado; SEG-21 a SEG-25).</td>
+<td>Cuando el volumen de alertas o el tiempo de respuesta superan lo que el equipo puede atender con calidad.</td>
+<td>Tiempo de detección, de respuesta y de recuperación frente a la línea base sin IA; falsos positivos y negativos; contenciones revertidas.</td>
+</tr>
+<tr>
+<td><strong>Seguridad de aplicaciones y de interfaces de programación</strong></td>
+<td>Revisión asistida de código, configuraciones e interfaces de programación expuestas, y pruebas continuas de la superficie expuesta (SEG-19).</td>
+<td>Cuando la compañía desarrolla o expone servicios y la revisión manual no llega a todo el cambio.</td>
+<td>Vulnerabilidades críticas detectadas antes de producción; tiempo de corrección; cobertura de interfaces revisadas.</td>
+</tr>
+<tr>
+<td><strong>Banco de pruebas de agentes</strong></td>
+<td>El banco de pruebas corporativo (SEG-27) integrado en la cadena de despliegue.</td>
+<td>Desde que hay agentes A1 o superiores, o IA generativa con exposición directa.</td>
+<td>Escenarios cubiertos frente al modelo de amenazas; eficacia de los guardarraíles (52 §5.2); escenarios críticos bloqueados antes de producción.</td>
+</tr>
+<tr>
+<td><strong>Operación y resiliencia</strong></td>
+<td>IA para anticipar fallos, correlacionar incidentes de operación y acelerar la recuperación de los servicios.</td>
+<td>En servicios con niveles de servicio exigentes o funciones críticas.</td>
+<td>Disponibilidad; tiempo medio de recuperación; incidentes evitados con causa registrada.</td>
+</tr>
+<tr>
+<td><strong>IA en la sombra</strong></td>
+<td>Detección y regularización del uso no autorizado de IA, incluidos agentes locales y extensiones del navegador (SEG-20; 31 §5).</td>
+<td>Desde C1, como parte del inventario.</td>
+<td>Casos detectados y regularizados; tiempo de regularización; cobertura de equipos y de tráfico inspeccionados.</td>
+</tr>
+</tbody>
+</table></div>
 <hr />
 <h2 id="indicadores-para-el-consejo"><span class="antetitulo">10</span>Indicadores para el consejo</h2>
 <div class="tabla"><table>
@@ -1674,6 +1761,21 @@ h2 .codigo, h3 .codigo { font-weight: 400; }
 <td>Falsos positivos y negativos, tiempo de detección y de respuesta y contenciones automáticas revertidas (sección 9.3).</td>
 <td>Mejora frente a la línea base sin IA; cada contención revertida se explica.</td>
 </tr>
+<tr>
+<td>Eficacia de los guardarraíles</td>
+<td>Escenarios del banco de pruebas (SEG-27) detectados o bloqueados, falsos positivos y desactivaciones (52 §5.2).</td>
+<td>Cero escenarios críticos sin detectar; toda desactivación explicada.</td>
+</tr>
+<tr>
+<td>Tráfico por la pasarela corporativa</td>
+<td>Proporción del tráfico hacia modelos que pasa por la pasarela (SEG-26).</td>
+<td>100 %; el tráfico directo se explica y se regulariza.</td>
+</tr>
+<tr>
+<td>Derivaciones a una persona</td>
+<td>Derivaciones por motivo y peticiones no atendidas en sistemas con exposición directa (sección 4.6).</td>
+<td>Ninguna petición sin atender; tendencia por motivo explicada.</td>
+</tr>
 </tbody>
 </table></div>
 <hr />
@@ -1692,15 +1794,15 @@ h2 .codigo, h3 .codigo { font-weight: 400; }
 </tr>
 <tr id="cod-g4">
 <td><strong>Dise&#241;o</strong> <span class="codigo">(G4)</span></td>
-<td><a href="plantillas/P18_SEVEN-G_Diseno_de_seguridad.html" title="Plantilla P18 &#183; Dise&#241;o de seguridad (incluye agentes)">P18</a> completo; controles SEG y AG aplicables diseñados; controles críticos diseñados; conformidad de seguridad de la información.</td>
+<td><a href="plantillas/P18_SEVEN-G_Diseno_de_seguridad.html" title="Plantilla P18 &#183; Dise&#241;o de seguridad (incluye agentes)">P18</a> completo; controles SEG y AG aplicables diseñados; controles críticos diseñados; conformidad de seguridad de la información; tráfico hacia modelos por la pasarela corporativa (SEG-26).</td>
 </tr>
 <tr id="cod-g5">
 <td><strong>Puesta en producci&#243;n</strong> <span class="codigo">(G5)</span></td>
-<td>Controles críticos probados; <em>red teaming</em> realizado con hallazgos tratados; interruptor probado; firma de seguridad de la información en la firma multinivel (01 §6.7).</td>
+<td>Controles críticos probados; <em>red teaming</em> realizado con hallazgos tratados; interruptor probado; firma de seguridad de la información en la firma multinivel (01 §6.7); banco de pruebas corporativo (SEG-27) sin escenarios críticos con éxito.</td>
 </tr>
 <tr id="cod-r6">
 <td><strong>Revisi&#243;n de continuidad</strong> <span class="codigo">(R6)</span></td>
-<td>Controles operando; campañas y revisiones dentro de frecuencia; incidentes analizados; nivel de autonomía vigente.</td>
+<td>Controles operando; campañas y revisiones dentro de frecuencia; incidentes analizados; nivel de autonomía vigente; banco de pruebas ejecutado en cada despliegue (A2 y A3).</td>
 </tr>
 <tr id="cod-g7">
 <td><strong>Escalado o retirada</strong> <span class="codigo">(G7)</span></td>
@@ -1733,7 +1835,7 @@ h2 .codigo, h3 .codigo { font-weight: 400; }
 <tr id="cod-p53">
 <td><strong>Plan e informe de pruebas adversarias</strong> <span class="codigo">(<a href="plantillas/P53_SEVEN-G_Plan_e_informe_de_pruebas_adversarias.html" title="Plantilla P53 &#183; Plan e informe de pruebas adversarias">P53</a>)</span></td>
 
-<td>Alcance, reglas de enfrentamiento, escenarios y resultados de las campañas de <em>red teaming</em> (sección 8). Fases 4 a 6.</td>
+<td>Alcance, reglas de enfrentamiento, escenarios y resultados de las campañas de <em>red teaming</em> (sección 8). Fases 4 a 6. Incluye los resultados del banco de pruebas corporativo (SEG-27).</td>
 </tr>
 <tr id="cod-p54">
 <td><strong>Inventario de identidades no humanas y componentes</strong> <span class="codigo">(<a href="plantillas/P54_SEVEN-G_Inventario_de_identidades_no_humanas_y_componentes.html" title="Plantilla P54 &#183; Inventario de identidades no humanas y componentes">P54</a>)</span></td>
@@ -1827,11 +1929,16 @@ h2 .codigo, h3 .codigo { font-weight: 400; }
 <td>25-09-2026</td>
 <td>Añade la sección 9.3 sobre el uso de la IA en la ciberdefensa de la compañía (área Defend del Cyber AI Profile): autonomía de la respuesta, supervisión humana de la contención, calidad de la detección, dependencia del proveedor y pruebas del propio sistema defensivo; los controles SEG-21 a SEG-25; un indicador para el consejo y el riesgo tipo RT-SEG-08.</td>
 </tr>
+<tr>
+<td>0.4</td>
+<td>19-10-2026</td>
+<td>Controles SEG-26 (pasarela corporativa de IA) y SEG-27 (banco de pruebas corporativo de agentes), con frecuencias, pruebas por fase, indicadores e integración en las puertas; SEG-20 ampliado a agentes locales y extensiones del navegador; amenaza de envenenamiento de herramientas y conectores (3.2) y AG-13 precisado; derivación inmediata a una persona (4.6); suplantación del cliente con IA (9.1, RT-SEG-09); medición y financiación de la IA para TI y ciberdefensa (9.3) (D159).</td>
+</tr>
 </tbody>
 </table></div>
 <h2 id="fuentes-externas">Fuentes externas citadas</h2><p class="fuentes-nota">Enlaces a la fuente oficial o primaria, comprobados antes de publicar. Verifique siempre la versión vigente en la fecha de uso.</p><ul class="fuentes-externas"><li><a href="https://eur-lex.europa.eu/eli/reg/2024/1689/oj/spa" target="_blank" rel="noopener">Reglamento (UE) 2024/1689 del Parlamento Europeo y del Consejo, de 13 de junio de 2024, por el que se establecen normas armonizadas en materia de inteligencia artificial (Reglamento de Inteligencia Artificial)</a><span> · Parlamento Europeo y Consejo de la UE · 13-06-2024</span></li><li><a href="https://eur-lex.europa.eu/eli/reg/2024/2847/oj/spa" target="_blank" rel="noopener">Reglamento (UE) 2024/2847 del Parlamento Europeo y del Consejo, de 23 de octubre de 2024, relativo a los requisitos horizontales de ciberseguridad para los productos con elementos digitales (Reglamento de Ciberresiliencia)</a><span> · Parlamento Europeo y Consejo de la UE · 23-10-2024</span></li><li><a href="https://www.boe.es/eli/es/rd/2022/05/03/311/con" target="_blank" rel="noopener">Real Decreto 311/2022, de 3 de mayo, por el que se regula el Esquema Nacional de Seguridad</a><span> · Gobierno de Espa&#241;a (Ministerio de Asuntos Econ&#243;micos y Transformaci&#243;n Digital) · 03-05-2022</span></li><li><a href="https://www.ccn.cni.es/index.php/es/" target="_blank" rel="noopener">Centro Criptol&#243;gico Nacional (CCN) / CCN-CERT</a><span> · Centro Criptol&#243;gico Nacional (adscrito al Centro Nacional de Inteligencia)</span></li><li><a href="https://genai.owasp.org/resource/agentic-ai-threats-and-mitigations/" target="_blank" rel="noopener">Agentic AI – Threats and Mitigations (IA ag&#233;ntica: amenazas y mitigaciones), v1.0</a><span> · OWASP GenAI Security Project (Agentic Security Initiative), OWASP Foundation · 17-02-2025</span></li><li><a href="https://www.ccn-cert.cni.es/es/informes/informes-de-buenas-practicas-bp/7469-ccn-cert-bp-36-buenas-practicas-ia-ofensiva/file.html" target="_blank" rel="noopener">CCN-CERT BP/36 &#183; Gu&#237;a de buenas pr&#225;cticas frente al modelo de IA ofensiva</a><span> · Centro Criptol&#243;gico Nacional (CCN-CERT) · 2026-06</span></li><li><a href="https://www.nist.gov/publications/artificial-intelligence-risk-management-framework-generative-artificial-intelligence" target="_blank" rel="noopener">Marco de gesti&#243;n de riesgos de IA: perfil de inteligencia artificial generativa (NIST AI 600-1)</a><span> · National Institute of Standards and Technology (NIST) · 26-07-2024</span></li><li><a href="https://genai.owasp.org/resource/owasp-top-10-for-agentic-applications-for-2026/" target="_blank" rel="noopener">OWASP Top 10 para aplicaciones ag&#233;nticas 2026 (OWASP Top 10 for Agentic Applications for 2026)</a><span> · OWASP GenAI Security Project (Agentic Security Initiative), OWASP Foundation · 09-12-2025</span></li><li><a href="https://genai.owasp.org/resource/owasp-top-10-for-llm-applications-2025/" target="_blank" rel="noopener">OWASP Top 10 para aplicaciones con modelos de lenguaje de gran tama&#241;o, edici&#243;n 2025 (OWASP Top 10 for LLM Applications 2025)</a><span> · OWASP GenAI Security Project (OWASP Foundation) · 17-11-2024</span></li><li><a href="https://csrc.nist.gov/pubs/ir/8596/iprd" target="_blank" rel="noopener">Perfil del marco de ciberseguridad para la inteligencia artificial (Cyber AI Profile): perfil comunitario del NIST, NIST IR 8596 (borrador preliminar inicial)</a><span> · National Institute of Standards and Technology (NIST), NCCoE · 16-12-2025</span></li><li><a href="https://www.iso.org/standard/77304.html" target="_blank" rel="noopener">ISO/IEC 23894:2023 Tecnolog&#237;a de la informaci&#243;n — Inteligencia artificial — Orientaci&#243;n sobre la gesti&#243;n del riesgo</a><span> · ISO/IEC (JTC 1/SC 42) · 06-02-2023</span></li><li><a href="https://www.iso.org/standard/42001" target="_blank" rel="noopener">ISO/IEC 42001:2023 Tecnolog&#237;a de la informaci&#243;n — Inteligencia artificial — Sistema de gesti&#243;n</a><span> · ISO/IEC (JTC 1/SC 42) · 18-12-2023</span></li><li><a href="https://doi.org/10.6028/NIST.CSWP.29.spa" target="_blank" rel="noopener">Marco de ciberseguridad del NIST, versi&#243;n 2.0 (The NIST Cybersecurity Framework (CSF) 2.0), NIST CSWP 29</a><span> · National Institute of Standards and Technology (NIST), Departamento de Comercio de EE. UU. · 26-02-2024</span></li><li><a href="https://www.nist.gov/publications/artificial-intelligence-risk-management-framework-ai-rmf-10" target="_blank" rel="noopener">Marco de gesti&#243;n de riesgos de inteligencia artificial del NIST (AI RMF 1.0), NIST AI 100-1</a><span> · National Institute of Standards and Technology (NIST), Departamento de Comercio de EE. UU. · 26-01-2023</span></li><li><a href="https://atlas.mitre.org/" target="_blank" rel="noopener">MITRE ATLAS (Adversarial Threat Landscape for Artificial-Intelligence Systems), base de conocimiento de t&#225;cticas y t&#233;cnicas adversarias contra sistemas de IA</a><span> · The MITRE Corporation</span></li></ul>
 </main>
-<footer class="pie"><div><span>© 2026 Fernando García Varela · Metodolog&#237;a SEVEN-G</span><span>Generado el 13-10-2026</span></div><p class="pie-ia">Contenido generado y maquetado con apoyo de IA bajo supervisi&#243;n editorial del autor.</p></footer>
+<footer class="pie"><div><span>© 2026 Fernando García Varela · Metodolog&#237;a SEVEN-G</span><span>Generado el 19-10-2026</span></div><p class="pie-ia">Contenido generado y maquetado con apoyo de IA bajo supervisi&#243;n editorial del autor.</p></footer>
 <script src="codigos.js" defer></script>
 
 <script>

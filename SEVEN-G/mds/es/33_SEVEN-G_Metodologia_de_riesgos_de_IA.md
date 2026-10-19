@@ -5,12 +5,12 @@
 | | |
 |---|---|
 | Documento | Documento 33 · Metodología de riesgos de IA |
-| Versión | 0.1 (borrador de trabajo) |
-| Fecha | 16-09-2026 |
+| Versión | 0.3 (borrador de trabajo) |
+| Fecha | 19-10-2026 |
 | Autor | Fernando García Varela |
 | Estado | Borrador para revisión. Desarrolla la sección 10 del documento 01 y fija las escalas comunes de riesgo del marco. |
 
-<!-- cifras: 10 | categorías de riesgo ; 71 | riesgos tipo catalogados ; 5 × 5 | matriz de probabilidad e impacto ; 5 | ejes de impacto -->
+<!-- cifras: 10 | categorías de riesgo ; 72 | riesgos tipo catalogados ; 5 × 5 | matriz de probabilidad e impacto ; 5 | ejes de impacto -->
 
 ---
 
@@ -408,6 +408,7 @@ La columna *Fase* indica dónde se identifica y dónde se trata principalmente; 
 | **RT-SEG-06** | **Extracción de modelos y abuso del servicio.** Consultas masivas para replicar el modelo, inferir datos o agotar recursos. | Interfaces expuestas sin límites. | SEG-10, SEG-12. | 4, 6 |
 | **RT-SEG-07** | **Compromiso de la cadena de suministro de IA.** Modelos, bibliotecas, conectores o servidores de herramientas maliciosos o vulnerables. | Componentes descargados sin verificación. | SEG-09; AG-13; evaluación de proveedor (36). | 4, 6 |
 | **RT-SEG-08** | **Errores de la ciberdefensa con IA.** Falsos negativos que dejan pasar un ataque o contenciones automáticas que interrumpen la operación sin ataque real; el propio sistema defensivo, atacado o manipulado. | Respuesta automatizada sin límites ni validación; detección no medida frente a una línea base; dependencia de un solo proveedor. | SEG-21, SEG-22, SEG-23, SEG-24, SEG-25 (35 §9.3). | 4, 6 |
+| **RT-SEG-09** | **Suplantación del cliente con IA.** Voz o vídeo sintéticos que superan la identificación del cliente en canales automatizados, o documentos e imágenes manipulados con IA que respaldan reclamaciones, altas o cambios de datos. | Identificación basada solo en voz, imagen o un documento; detección usada como única barrera; ausencia de un segundo factor independiente del canal. | Detección de voz sintética y prueba de vida como apoyo; segundo factor independiente del canal; revisión de documentos e imágenes; SEG-18; escenarios en el banco de pruebas (SEG-27) (35 §9.1). | 3, 4, 6 |
 
 ### 9.10 Terceros (TER)
 
@@ -537,3 +538,4 @@ El informe al consejo usa lenguaje de negocio: qué puede pasar, a quién afecta
 |---|---|---|
 | 0.1 | 16-09-2026 | Primera versión. Fija las escalas comunes de probabilidad e impacto en cinco ejes, la matriz 5 × 5, el riesgo residual objetivo y verificado, la eficacia de controles, la aceptación por niveles, los campos del registro, el catálogo de 70 riesgos tipo en diez categorías, el análisis de riesgo de cartera y los indicadores de riesgo clave. Incorporados al catálogo los riesgos organizativos RT-ORG-07 (información y consulta), RT-ORG-08 (conflicto laboral) y RT-ORG-09 (bienestar), propuestos en el documento 50. |
 | 0.2 | 25-09-2026 | Añade el riesgo tipo RT-SEG-08 (errores de la ciberdefensa con IA), con 71 riesgos tipo en el catálogo. |
+| 0.3 | 19-10-2026 | Añade el riesgo tipo RT-SEG-09 (suplantación del cliente con IA), con 72 riesgos tipo en el catálogo (D159). |

@@ -5,8 +5,8 @@
 | | |
 |---|---|
 | Documento | Plantilla P49 · Avisos de transparencia e instrucciones de uso |
-| Versión | 0.1 (borrador de trabajo) |
-| Fecha | 19-09-2026 |
+| Versión | 0.2 (borrador de trabajo) |
+| Fecha | 19-10-2026 |
 | Autor | Fernando García Varela |
 | Estado | Borrador para revisión. |
 
@@ -82,6 +82,7 @@ Reglas de cumplimentación:
 | Asistente escrito | «Está hablando con [nombre del asistente], un asistente de inteligencia artificial de [compañía]. Puede cometer errores. Si prefiere que le atienda una persona, escriba [palabra clave] o llame al [canal].» | Al abrir la conversación, antes del primer mensaje. |
 | Voz | «Le atiende un asistente automático con inteligencia artificial de [compañía]. Para hablar con una persona, diga [palabra clave] en cualquier momento.» | Al inicio de la llamada. |
 | Correo o mensaje generado y enviado sin revisión humana | «Este mensaje ha sido redactado por un sistema de inteligencia artificial de [compañía]. Para cualquier consulta, responda a este mensaje o escriba a [canal].» | En el propio mensaje. |
+| Derivación a una persona (asistente escrito o voz) | «Le paso con una persona de [compañía] ahora mismo. Si lo prefiere, también puede llamar al [canal].» Se usa sin más preguntas cuando la persona lo pide o aparecen señales de vulnerabilidad (35 §4.6; P17 §8). | En cuanto se pide o se detecta la señal. |
 
 ### 4.2 Contenido generado o manipulado
 
@@ -211,3 +212,4 @@ Separación de funciones: quien redacta los textos no verifica su presencia en p
 | Versión | Fecha | Cambios |
 |---|---|---|
 | 0.1 | 19-09-2026 | Primera versión. Textos modelo y registro de avisos de transparencia del artículo 50, información a personas afectadas por decisiones e instrucciones de uso internas, a partir de 34 §3.7, §3.9 y §3.11, 50 §7, P17 §8 y P24. Referencias consultadas en septiembre de 2026. |
+| 0.2 | 19-10-2026 | Texto modelo de derivación a una persona (4.1) (35 §4.6) (D159). |

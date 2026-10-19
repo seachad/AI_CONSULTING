@@ -5,8 +5,8 @@
 | | |
 |---|---|
 | Document | Document 52 · AI operations manual |
-| Version | 0.1 (working draft) |
-| Date | 16-09-2026 |
+| Version | 0.2 (working draft) |
+| Date | 19-10-2026 |
 | Author | Fernando García Varela |
 | Status | Draft for review. Thresholds and times are initial references to be calibrated; those for incidents are confirmed in document 37. |
 
@@ -204,6 +204,10 @@ The design controls for agents (identity, permissions, intent-based access contr
 
 Each action by an agent **must** record: the agent's own identity (not shared with people) and version; the user or process on whose behalf it acts; the **declared intent** (task objective and justification for the action); the tool, operation and data used; the result and effect; prior human validation and who gave it, if applicable; a timestamp and a correlation identifier to reconstruct the sequence.
 
+**End-to-end traces.** Each request receives a correlation identifier that is propagated through the corporate AI gateway (SEG-26), information retrieval, every model call, every agent step and every tool, up to the result. Traces are sent to the company's security monitoring (SEG-12) in an open, documented format that the security operations centre can ingest, with specific detection use cases (intent anomalies in 4.3.3, tool abuse, information leakage). They make it possible to reconstruct any sequence without depending on a supplier's logs. Their coverage is measured with OPE-22.
+
+> **Why it matters.** Without a thread linking the request, the model, the agent and the tool, an AI incident is investigated blind and the security centre cannot see what agents do. With end-to-end traces, AI security joins the same detection as the rest of the company.
+
 #### 4.3.2 Limits
 
 - **Per action:** amount, number of recipients, types of data.
@@ -270,7 +274,7 @@ The intensity of these controls depends on the requirement level for the third p
 | 4 · Model performance | Metrics against the G5 validation, by segment. | Predictive ML |
 | 5 · Response quality | Faithfulness, correctness, appropriate refusal, currency of sources; bias in responses (4.2.7). | Generative AI |
 | 6 · Actions and limits | Actions, blocks, intent anomalies, permissions. | Agents |
-| 7 · Security | Filter triggers, injection attempts, improper access. | All, with emphasis on generative AI and agents |
+| 7 · Security | Filter triggers, injection attempts, improper access; guardrail effectiveness against the test bench (SEG-27); end-to-end trace coverage (4.3.1). | All, with emphasis on generative AI and agents |
 | 8 · Cost | Consumption, cost per transaction, budget. | All, with emphasis on generative AI and agents |
 | 9 · Human oversight, use and value | Human override rate, adoption, value hypothesis indicators, bias. | All |
 
@@ -296,6 +300,9 @@ The values are **illustrative and to be calibrated** for each system in phase 5 
 | 6 | Intent anomalies | Any unexplained anomaly | Anomaly with an effect on third parties, money, personal data or production | S2; S1 if there is material harm |
 | 7 | Input filter triggers | > 3 × 7-day average | Sustained attack pattern | S3–S2 |
 | 7 | Exposure of personal or confidential data | — | Any confirmed case | S2; S1 if it is massive or involves special categories |
+| 7 | Guardrail effectiveness: test bench scenarios (SEG-27) detected or blocked | < P25 target − 5 points | Any critical scenario undetected | S3; S2 if it affects a sensitive action |
+| 7 | Guardrail false positives on sampled legitimate traffic | > 2 × 30-day average | > P25 threshold | S4–S3 |
+| 7 | Guardrails deactivated or in observe-only mode | Any case with a record and a reactivation date (5.3, rule 5) | Any case without a record | S2 (critical control, 01 §12) |
 | 8 | Monthly cost against budget | ≥ 80% | ≥ 100% | S4–S3 |
 | 8 | Cost per transaction | > 1.5 × 30-day average | > 3 × 30-day average | S3 |
 | 8 | Operation in cost-driven degraded mode | Any activation | > 5 days in the month or quality in the mode below the P25 minimum | S4; S3 if quality falls below the minimum |
@@ -503,6 +510,7 @@ This document does not constitute legal advice.
 2. The plan identifies the **people and capabilities** needed to operate without the system and is coordinated with document 50 (section 5.4).
 3. For systems that support a **critical or important function**, the maximum recovery time and the maximum tolerable data loss are set in P24 and aligned with the business continuity plan and, where applicable, with DORA.
 4. **Dependence on a provider** is assessed in P14 with an exit strategy (document 36).
+5. **Dependency on the model provider.** For each system that supports a critical use case, P24 sets what happens if the model provider goes down or degrades its service, the **target recovery time** and the degraded mode that is activated (10.1: fallback model, evaluated alternative provider or non-AI alternative). Switching to the fallback is **tested periodically** —at least yearly in Lite and half-yearly in Enterprise— with the same reference evaluation set (4.2.1), and the actual recovery time is measured (OPE-23).
 
 ### 10.3 Cost-driven degradation cascade
 
@@ -599,6 +607,9 @@ The codes are provisional until they are consolidated in document 41. The thresh
 | **OPE-18** | Cost-driven degraded mode | Days in the period at N1 or above in the cascade (10.3), by level; and quality measured in the mode ÷ P25 minimum quality | Monthly | Downward trend; quality ≥ 100% of the minimum |
 | **OPE-19** | Queries outside the validated scope | Queries classified outside the topics or tasks validated at G5 ÷ queries in the period | Monthly | According to the G5 reference |
 | **OPE-20** | Unequal responses in counterfactual pairs | Pairs with a material difference in outcome ÷ pairs evaluated | At each regression and periodic evaluation | P17 threshold |
+| **OPE-21** | Guardrail effectiveness | Test bench scenarios (SEG-27) detected or blocked ÷ scenarios run; false positives on sampled legitimate traffic ÷ sample; and deactivations in the period | At every deployment and monthly | As per P25; zero critical scenarios undetected; every deactivation recorded |
+| **OPE-22** | End-to-end trace coverage | Requests with a complete correlation identifier up to the result and received in security monitoring ÷ requests | Monthly | 100 % for generative AI with direct exposure and for A2–A3 agents |
+| **OPE-23** | Recovery from model provider outage | Systems that support critical use cases with a fallback switch test in time and actual recovery time ≤ P24 target ÷ those systems | Half-yearly | 100 % |
 
 ---
 
@@ -619,6 +630,9 @@ The codes are provisional until they are consolidated in document 41. The thresh
 | Usage drift (4.2.6) | Queries outside the scope by sampling | Distribution of topics and queries outside the scope with systematic classification |
 | Bias in responses (4.2.7) | When there are decisions or communications about people or direct exposure | The same, and whenever the risk assessment indicates it |
 | R6 | Half-yearly | Quarterly |
+| Test bench and guardrail effectiveness | Before G5 and after relevant changes | At every deployment at A2–A3; before G5 and after changes at A0–A1 |
+| End-to-end traces (4.3.1) | Correlation identifier in the logs | Sent to security monitoring with detection use cases |
+| Model provider fallback test (10.2) | Annual | Half-yearly |
 | Verification | AI Office; auditor by sampling | AI Auditor |
 
 ---
@@ -629,8 +643,8 @@ The codes are provisional until they are consolidated in document 41. The thresh
 
 | Code | Template | Minimum content | Reviewed at |
 |---|---|---|---|
-| **P24** | Operations manual | Description of the system and type; autonomy level; service levels; responsibilities and on-call; procedures per alert; retraining or continuous evaluation; agent limits and shutdown; degraded modes and cost-driven degradation cascade with its triggers; costs and consumption limits; records and retention; dependencies and suppliers; post-market monitoring plan where applicable; maximum recovery time for critical functions. | G5, R6, after significant and substantial changes |
-| **P25** | Monitoring and alerts configuration | Metrics per layer; baseline; warning and critical thresholds; initial severity; owner; procedure; label delay; usage reference and query classification; reference evaluation set with counterfactual pairs and sampling; minimum quality in degraded mode; result of the alert test. | G5, R6 |
+| **P24** | Operations manual | Description of the system and type; autonomy level; service levels; responsibilities and on-call; procedures per alert; retraining or continuous evaluation; agent limits and shutdown; degraded modes and cost-driven degradation cascade with its triggers; costs and consumption limits; records and retention; dependencies and suppliers; post-market monitoring plan where applicable; maximum recovery time for critical functions; recovery time if the model provider goes down and degraded mode (10.2). | G5, R6, after significant and substantial changes |
+| **P25** | Monitoring and alerts configuration | Metrics per layer; baseline; warning and critical thresholds; initial severity; owner; procedure; label delay; usage reference and query classification; reference evaluation set with counterfactual pairs and sampling; minimum quality in degraded mode; result of the alert test; guardrail effectiveness and false positive target (5.2). | G5, R6 |
 | **P26** | Incident response plan | S1–S4 criteria applied to the system; contacts and escalation; pre-approved containment actions; applicable notifications with owner and time limit; communication to users, affected parties and the supplier; relationship with the continuity plan. | G5, R6, after each S1–S2 incident |
 | **P27** | Incident and change log | Changes: class, description, validation, approval, *gate* where applicable, date. Incidents: severity, timeline, containment, notifications, root cause, actions, closure, link to nonconformity. | Continuous; R6 |
 
@@ -662,3 +676,4 @@ The codes are provisional until they are consolidated in document 41. The thresh
 |---|---|---|
 | 0.1 | 16-09-2026 | First version. Defines the operation of predictive ML (drift, retraining, champion/challenger), generative AI (continuous evaluations, quality, hallucinations, filters, costs, provider versions), agents (actions, limits, intent anomalies, kill switch, permissions) and embedded third-party AI; nine monitoring layers with typical thresholds; three change classes with a return-to-*gate* table; S1–S4 incident operation with regulatory notifications; R6 package and outcomes; post-market monitoring; continuity and rollback; records and retention; technical retirement; seventeen indicators and the minimum content of P24–P27. Consistency adjustments with 01 (segregation of duties at Lite, R6 outcomes, agents criterion) and with 34 and 37. |
 | 0.1 | 18-09-2026 | Usage drift in generative AI and agents (4.2.6); bias in responses with counterfactual pairs (4.2.7); layers 3 and 5 and thresholds extended; activating a planned degraded mode is not a change (6.4); cost-driven degradation cascade N0–N4 with a fallback model validated at G5 (10.3); indicators OPE-18 to OPE-20; Lite and Enterprise requirements and content of P24 and P25. |
+| 0.2 | 19-10-2026 | End-to-end traces (4.3.1); guardrail effectiveness in layer 7 (5.1 and 5.2); dependency on the model provider with recovery time and periodic test of the fallback (10.2); indicators OPE-21 to OPE-23 and Lite and Enterprise operation (D159). |

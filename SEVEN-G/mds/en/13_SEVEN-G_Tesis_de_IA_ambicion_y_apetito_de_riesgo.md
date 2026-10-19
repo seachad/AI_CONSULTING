@@ -5,8 +5,8 @@
 | | |
 |---|---|
 | Document | Document 13 · AI thesis, ambition and risk appetite |
-| Version | 0.2 (working draft) |
-| Date | 01-10-2026 |
+| Version | 0.3 (working draft) |
+| Date | 19-10-2026 |
 | Author | Fernando García Varela |
 | Status | Draft for review. The numerical values are illustrative examples or starting points that each company must set in C2. |
 
@@ -435,7 +435,7 @@ The framework budget is the annual amount that the board authorises for AI and t
 | **Optimise** | Build of optimisation initiatives. | Within the band in section 8. |
 | **Augment** | Build and adoption of augmentation initiatives. | Within the band in section 8. |
 | **Staged Transform** | Approved stages of transformation bets. | Released stage by stage after the competent body's decision on the milestones. |
-| **Enablement** | Data, common platform, governance and compliance (including initiatives in spheres 08 and 09). | Justified by the spheres it enables. |
+| **Enablement** | Data, common platform, governance and compliance (including initiatives in spheres 08 and 09) and AI initiatives for IT and cyber defence (40 §7.3). | Justified by the spheres it enables. |
 | **Committed recurring cost** | Operation of systems in production. | Budgeted in full; it does not compete with build. |
 | **Adoption and training** | AI literacy, role-based training and change management not charged to initiatives. | It should be explicit, not residual. |
 | **Contingency** | Unforeseen events and unplanned opportunities. | Allocated by the AI Committee, with a record. |
@@ -739,3 +739,4 @@ The annex is completed with template P35.
 |---|---|---|
 | 0.1 | 16-09-2026 | First version. Defines the twelve components of the C2 decision: structure of the AI thesis, ambition per sphere, appetite grades and tolerance metrics for the ten risk categories, proportionate economic impact thresholds, Enterprise investment and materiality thresholds, return horizon by level, portfolio balance bands, time limits, red lines, framework budget and review. Includes as an annex the board decision document template (T19). |
 | 0.2 | 01-10-2026 | Section 6 and block H: Express threshold (01 §9.4), cost per governance hour and proportionality targets by intensity (41 IND-COS-12 to 14). |
+| 0.3 | 19-10-2026 | Section 12: the enablement envelope includes AI initiatives for IT and cyber defence (40 §7.3) (D159). |

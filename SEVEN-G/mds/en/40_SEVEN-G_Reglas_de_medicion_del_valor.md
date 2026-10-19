@@ -5,8 +5,8 @@
 | | |
 |---|---|
 | Document | Document 40 · Value measurement rules |
-| Version | 0.3 (working draft) |
-| Date | 01-10-2026 |
+| Version | 0.4 (working draft) |
+| Date | 19-10-2026 |
 | Author | Fernando García Varela |
 | Status | Draft for review. Develops section 6 of document 00 and section 11 of document 01. |
 
@@ -333,6 +333,18 @@ Reading for the board: the initiative's annual net value is 720,000 − 1,160,00
 
 > **Why it matters.** A cross-unit tool has a large, certain cost that is visible from day one, and a value spread across many people and units. If it is measured like any other use case, one of two things happens: declared hours are added up and the portfolio is inflated, or nothing is measured and the tool keeps being paid for out of inertia. The ladder by unit shows where the tool is used, where it produces value and where licences should be withdrawn. The committee and the board can then decide on extending it with data rather than surveys.
 
+### 7.3 AI initiatives for IT and cyber defence
+
+Initiatives that use AI to protect and operate the company's own technology —detection and response, application and API security, agent test bench, operations and resilience, and detection of shadow AI (document 35 §9.3)— are treated like the enabling platforms of section 7.2:
+
+1. **They are measured by operational outcome** (presentation rule 11): detection, response and recovery times against the baseline, coverage and effectiveness, with the indicators of document 41 (for example, IND-RIE-08 and IND-OPE-27).
+2. **NPV is not their viability criterion.** The rule in section 8.3 applies to business cases; for these initiatives, G3 checks that the expected operational outcome has a baseline, a target and a deadline, and that the full cost fits within the approved envelope. If they also produce observable economic value (licences or services withdrawn, for example), it is recorded under rules 1 to 9, without viability depending on it.
+3. **They are funded from the enablement envelope** (document 13 §12) and do not compete with business cases for the Optimise or Augment envelopes.
+4. **They are presented separately from the portfolio net value**, like enabling platforms (presentation rule 10): net value is given with and without them.
+5. **Avoided risk is not turned into savings** (error 12 in section 10).
+
+> **Why it matters.** Requiring a positive NPV from cyber defence forces the invention of avoided losses without a formula, or no investment in what protects the whole portfolio. Measuring it by what it improves in detection, response and recovery, and funding it as enablement, allows decisions to be made with data without inflating the net value of the business cases.
+
 ---
 
 ## 8. Horizon, discounting and single economic criterion
@@ -454,7 +466,7 @@ Presenting to the committee or the board as validated an amount that is not vali
 7. **A comparison is made with the previous period** and relevant variations are explained, including changes in status.
 8. **Each use case presented in detail includes its understandable description** (rule 10). A maximum of three use cases are presented in detail per session, and answers follow the formats of the common specification: "Yes", "Yes, with one condition: …", "Not yet, because … is missing" or "No, because …".
 9. **The composition of value by ambition level** (efficiencies versus return) is shown to feed signals 1 and 2 of the transformation index.
-10. **Cross-unit initiatives and enabling platforms are shown separately**, with their breakdown by business unit (cost, adoption, released capacity and realised value), and the portfolio's net value is given with and without them (section 7.2).
+10. **Cross-unit initiatives, enabling platforms and AI initiatives for IT and cyber defence are shown separately**, with their breakdown by business unit where they have one (cost, adoption, released capacity and realised value) or with their operational outcome, and the portfolio's net value is given with and without them (sections 7.2 and 7.3).
 11. **Three perspectives, side by side and never merged.** Each use case is presented in three columns read together: **economic value** (in euros, with its status: validated, declared or estimated; rules 1 to 9), **operational outcome** (physical indicators from document 41 —cycle time, quality, errors, satisfaction, adoption— with their baseline, target and current value, plus the non-quantified value of section 5.3) and **risk exposure** (main residual risk, open High and Critical risks, open incidents and nonconformities; documents 33 and 37). None is translated into another and they are not combined into a single score: a good operational outcome does not offset an unproven economic value, nor does a high net value offset an untreated risk. In T01, each initiative's operational indicators are recorded in `resultado_operativo[]`, with the indicator code from document 41 when there is one; if there is none, the column says "no indicator", not zero (rule 8).
 
 > **Why it matters.** Forcing everything into euros pushes people to invent conversions without a formula (the rule 7 mistake) or to ignore what cannot be converted. With three columns, the board sees at once what the use case yields, what changes in operations and what risk it takes on, and decides knowing which part is money and which part is not.
@@ -534,3 +546,4 @@ Reading for the board: the portfolio generates a positive annual net value accor
 | 0.1 | 18-09-2026 | Adds section 7.2: cross-unit initiatives and enabling platforms, with the measurement ladder by unit (cost, adoption, released capacity and realised value), the adoption threshold and the portfolio's net value with and without them; error 13 and presentation rule 10. |
 | 0.2 | 28-09-2026 | Non-quantified value is recorded in T01 with dimension, level 0–3, metric and reason, never in euros, and a use case sustained by non-quantified value needs its next R6 dated (rule 7 and section 5.3); the board dashboard calculates the NPV (F7) of each use case with the curve of its realisation plan (section 8.2); section 13 (D135). |
 | 0.3 | 01-10-2026 | Presentation rule 11: three perspectives side by side and never merged —economic value, operational outcome and risk exposure—; operational indicators are recorded in T01 in `resultado_operativo[]` (D150). |
+| 0.4 | 19-10-2026 | Section 7.3: AI initiatives for IT and cyber defence are measured by operational outcome, NPV is not their viability criterion, they are funded from the enablement envelope and presented separately from the net value; presentation rule 10 extended (D159). |

@@ -472,13 +472,13 @@ h2 .codigo, h3 .codigo { font-weight: 400; }
 
 <div id="top"></div>
 <header class="portada">
-  <div class="cabecera"><div class="marca"><i></i>SEVEN-G</div><div class="cabecera-dato">Documento 22 · 01-10-2026</div></div>
+  <div class="cabecera"><div class="marca"><i></i>SEVEN-G</div><div class="cabecera-dato">Documento 22 · 19-10-2026</div></div>
   <div class="portada-cuerpo">
     <p class="antetitulo">Documento 22 &#183; Listas de verificaci&#243;n por gate</p>
     <h1>Listas de verificaci&#243;n por gate</h1>
     <p class="entradilla">Controles binarios para verificar y auditar cada puerta de decisi&#243;n</p>
-    <div class="firma"><span><b>Fernando Garc&#237;a Varela</b></span><span>Versión 0.3 (borrador de trabajo)</span><span>01-10-2026</span><span>Borrador para revisi&#243;n</span></div>
-    <div class="cifras"><div class="cifra"><b>8</b><span>listas por puerta</span></div><div class="cifra"><b>128</b><span>controles de gate</span></div><div class="cifra"><b>14</b><span>controles de evidencia</span></div><div class="cifra"><b>21</b><span>controles para agentes</span></div></div>
+    <div class="firma"><span><b>Fernando Garc&#237;a Varela</b></span><span>Versión 0.4 (borrador de trabajo)</span><span>19-10-2026</span><span>Borrador para revisi&#243;n</span></div>
+    <div class="cifras"><div class="cifra"><b>8</b><span>listas por puerta</span></div><div class="cifra"><b>128</b><span>controles de gate</span></div><div class="cifra"><b>14</b><span>controles de evidencia</span></div><div class="cifra"><b>27</b><span>controles para agentes</span></div></div>
   </div>
 </header>
 <section class="descargas-zona" aria-label="Descargas y herramientas"><div class="dz-in"><div class="dz-bloque"><p class="dz-titulo">Descargas</p><div class="dz-enlaces"><a class="dz-item" href="../../pdf/es/22_SEVEN-G_Listas_de_verificacion_por_gate.pdf" target="_blank" rel="noopener"><span class="dz-tipo">PDF</span><b>Este documento · español</b></a><a class="dz-item" href="../../pdf/en/22_SEVEN-G_Listas_de_verificacion_por_gate.pdf" target="_blank" rel="noopener"><span class="dz-tipo">PDF</span><b>Versión en inglés</b></a><a class="dz-item" href="../en/22_SEVEN-G_Listas_de_verificacion_por_gate.html" hreflang="en"><span class="dz-tipo html">HTML</span><b>Versión en inglés</b></a></div></div><div class="dz-bloque"><p class="dz-titulo">Herramientas relacionadas</p><div class="dz-enlaces"><a class="dz-item" href="../../herramientas/T01_registro_iniciativas/registro.html" target="_blank" rel="noopener"><span class="dz-tipo tool">T01</span><b>Registro de iniciativas</b></a><a class="dz-item" href="../../herramientas/T11_calculadora_valor/calculadora.html" target="_blank" rel="noopener"><span class="dz-tipo tool">T11</span><b>Calculadora de hip&#243;tesis de valor y costes por caso</b></a></div></div></div></section>
@@ -2264,6 +2264,56 @@ h2 .codigo, h3 .codigo { font-weight: 400; }
 <tr>
 <td></td>
 <td></td>
+<td><strong>Herramientas, pasarela, banco de pruebas y personas</strong></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>☐</td>
+<td>G4.16</td>
+<td>¿Cada herramienta, conector o servidor de herramientas del agente —también los locales— está inventariado con versión fijada y origen verificado, y se revisaron su descripción y sus permisos antes de aprobarlo (AG-13)?</td>
+<td><a href="plantillas/P18_SEVEN-G_Diseno_de_seguridad.html" title="Plantilla P18 &#183; Dise&#241;o de seguridad (incluye agentes)">P18</a> · <a href="plantillas/P54_SEVEN-G_Inventario_de_identidades_no_humanas_y_componentes.html" title="Plantilla P54 &#183; Inventario de identidades no humanas y componentes">P54</a></td>
+<td>G4</td>
+<td>Sí</td>
+<td>Sí</td>
+<td>Sí</td>
+</tr>
+<tr>
+<td>☐</td>
+<td>G4.20</td>
+<td>¿Todo el tráfico del agente hacia los modelos pasa por la pasarela corporativa de IA (SEG-26) con la configuración común?</td>
+<td><a href="plantillas/P18_SEVEN-G_Diseno_de_seguridad.html" title="Plantilla P18 &#183; Dise&#241;o de seguridad (incluye agentes)">P18</a> · configuración de la pasarela</td>
+<td>G4, G5</td>
+<td>Rec.</td>
+<td>Sí</td>
+<td>Sí</td>
+</tr>
+<tr>
+<td>☐</td>
+<td>G5.05</td>
+<td>¿El banco de pruebas corporativo de agentes (SEG-27) se ejecutó sobre la versión que se pone en producción, por todos sus canales, sin ningún escenario crítico con éxito?</td>
+<td><a href="plantillas/P53_SEVEN-G_Plan_e_informe_de_pruebas_adversarias.html" title="Plantilla P53 &#183; Plan e informe de pruebas adversarias">P53</a> · <a href="plantillas/P18_SEVEN-G_Diseno_de_seguridad.html" title="Herramienta T10 &#183; Evaluaci&#243;n de seguridad de agentes">T10</a></td>
+<td>G5</td>
+<td>Sí</td>
+<td>Sí</td>
+<td>Sí</td>
+</tr>
+<tr>
+<td>☐</td>
+<td>G4.19</td>
+<td>Con exposición directa: ¿el agente deriva de inmediato a una persona ante señales de vulnerabilidad o petición expresa, y se registran las derivaciones (35 §4.6)?</td>
+<td><a href="plantillas/P17_SEVEN-G_Diseno_de_gobierno_y_supervision_humana.html" title="Plantilla P17 &#183; Dise&#241;o de gobierno y supervisi&#243;n humana">P17</a> · <a href="plantillas/P49_SEVEN-G_Avisos_de_transparencia_e_instrucciones_de_uso.html" title="Plantilla P49 &#183; Avisos de transparencia e instrucciones de uso">P49</a></td>
+<td>G4, G5</td>
+<td>Sí</td>
+<td>Sí</td>
+<td>Sí</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
 <td><strong>Operación</strong></td>
 <td></td>
 <td></td>
@@ -2286,6 +2336,26 @@ h2 .codigo, h3 .codigo { font-weight: 400; }
 <td>R6.11</td>
 <td>¿Se revisaron permisos y credenciales en el periodo y se retiraron los que sobran?</td>
 <td><a href="plantillas/P18_SEVEN-G_Diseno_de_seguridad.html" title="Plantilla P18 &#183; Dise&#241;o de seguridad (incluye agentes)">P18</a> · <a href="plantillas/P54_SEVEN-G_Inventario_de_identidades_no_humanas_y_componentes.html" title="Plantilla P54 &#183; Inventario de identidades no humanas y componentes">P54</a> · configuración de accesos</td>
+<td>R6</td>
+<td>Sí</td>
+<td>Sí</td>
+<td>Sí</td>
+</tr>
+<tr>
+<td>☐</td>
+<td>R6.11</td>
+<td>¿El banco de pruebas se ejecuta en cada despliegue y se amplió con los incidentes del periodo?</td>
+<td><a href="plantillas/P53_SEVEN-G_Plan_e_informe_de_pruebas_adversarias.html" title="Plantilla P53 &#183; Plan e informe de pruebas adversarias">P53</a> · cadena de despliegue</td>
+<td>R6</td>
+<td>Rec.</td>
+<td>Sí</td>
+<td>Sí</td>
+</tr>
+<tr>
+<td>☐</td>
+<td>R6.11</td>
+<td>¿Se volvió a aprobar toda herramienta o conector cuya descripción o comportamiento cambió en el periodo?</td>
+<td><a href="plantillas/P54_SEVEN-G_Inventario_de_identidades_no_humanas_y_componentes.html" title="Plantilla P54 &#183; Inventario de identidades no humanas y componentes">P54</a> · registro de cambios (<a href="plantillas/P27_SEVEN-G_Registro_de_incidentes_y_cambios.html" title="Plantilla P27 &#183; Registro de incidentes y cambios">P27</a>)</td>
 <td>R6</td>
 <td>Sí</td>
 <td>Sí</td>
@@ -2419,11 +2489,16 @@ h2 .codigo, h3 .codigo { font-weight: 400; }
 <td>01-10-2026</td>
 <td>En intensidad Express se revisan solo los criterios de la lista reducida (21 §2.5).</td>
 </tr>
+<tr>
+<td>0.4</td>
+<td>19-10-2026</td>
+<td>LV-AG: seis preguntas sobre herramientas y conectores (AG-13), pasarela corporativa de IA (SEG-26), banco de pruebas corporativo (SEG-27) y derivación a una persona (35 §4.6); 27 controles para agentes (D159).</td>
+</tr>
 </tbody>
 </table></div>
 
 </main>
-<footer class="pie"><div><span>© 2026 Fernando García Varela · Metodolog&#237;a SEVEN-G</span><span>Generado el 13-10-2026</span></div><p class="pie-ia">Contenido generado y maquetado con apoyo de IA bajo supervisi&#243;n editorial del autor.</p></footer>
+<footer class="pie"><div><span>© 2026 Fernando García Varela · Metodolog&#237;a SEVEN-G</span><span>Generado el 19-10-2026</span></div><p class="pie-ia">Contenido generado y maquetado con apoyo de IA bajo supervisi&#243;n editorial del autor.</p></footer>
 <script src="codigos.js" defer></script>
 
 <script>

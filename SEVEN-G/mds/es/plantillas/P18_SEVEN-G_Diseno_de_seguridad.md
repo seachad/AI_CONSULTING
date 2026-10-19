@@ -5,8 +5,8 @@
 | | |
 |---|---|
 | Documento | Plantilla P18 · Diseño de seguridad (incluye agentes) |
-| Versión | 0.1 (borrador de trabajo) |
-| Fecha | 16-09-2026 |
+| Versión | 0.2 (borrador de trabajo) |
+| Fecha | 19-10-2026 |
 | Autor | Fernando García Varela |
 | Estado | Borrador para revisión. |
 
@@ -68,6 +68,9 @@ Reglas:
 | Abuso de consumo y coste | | | | | |
 | Cadena de suministro (modelos, librerías, proveedores) | | | | | |
 | Falta de trazabilidad de acciones e intenciones | | | | | |
+| Envenenamiento de herramientas y conectores (descripción con instrucciones ocultas, cambios tras aprobarse, ámbitos excesivos) | | | AG-13 | | |
+| Tráfico hacia modelos fuera de la pasarela corporativa de IA | | | SEG-26 | | |
+| Suplantación del cliente con IA (exposición directa) | | | 35 §9.1; RT-SEG-09 | | |
 | Suplantación o contenido sintético usado contra el proceso **(Enterprise)** | | | | | |
 
 ---
@@ -174,7 +177,7 @@ Por defecto, una acción sensible sin validación **se cancela**; nunca se ejecu
 
 ## 11. Pruebas de seguridad, incluida la inyección de instrucciones
 
-**Tipo:** Inyección directa · Inyección indirecta · Fuga de información · Escalada de permisos · Evasión de límites · Abuso de consumo · Prueba del interruptor de parada · Otra. **Resultado:** Superada · Superada con observaciones · No superada · Pendiente.
+**Tipo:** Inyección directa · Inyección indirecta · Fuga de información · Escalada de permisos · Evasión de límites · Abuso de consumo · Prueba del interruptor de parada · Banco de pruebas corporativo (SEG-27) · Otra. **Resultado:** Superada · Superada con observaciones · No superada · Pendiente.
 
 | Prueba | Tipo | Fecha | Ejecutada por | Resultado | Hallazgos | Acción y responsable |
 |---|---|---|---|---|---|---|
@@ -222,3 +225,4 @@ Separación de funciones: seguridad de la información y el verificador no forma
 | Versión | Fecha | Cambios |
 |---|---|---|
 | 0.1 | 16-09-2026 | Primera versión de la plantilla. |
+| 0.2 | 19-10-2026 | Amenazas de envenenamiento de herramientas y conectores, tráfico fuera de la pasarela corporativa de IA y suplantación del cliente con IA (3); tipo de prueba «banco de pruebas corporativo» (11) (D159). |

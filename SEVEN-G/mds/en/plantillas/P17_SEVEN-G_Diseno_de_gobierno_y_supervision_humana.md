@@ -5,8 +5,8 @@
 | | |
 |---|---|
 | Document | Template P17 · Governance and human oversight design |
-| Version | 0.1 (working draft) |
-| Date | 16-09-2026 |
+| Version | 0.2 (working draft) |
+| Date | 19-10-2026 |
 | Author | Fernando García Varela |
 | Status | Draft for review. |
 
@@ -144,6 +144,8 @@ In high-risk systems, these requirements are checked against Article 14 of the E
 | Information on the logic and the reasons for the output | | What is explained and to whom. |
 | Channel for requesting human review or contesting | | Channel, internal response time limit and role that reviews. |
 | Log of complaints related to the system **(Enterprise)** | | Where they are recorded and how they feed P25 and P27. |
+| Immediate handover to a person (direct exposure) | | Signs of vulnerability that trigger it, express request, channel and maximum time until a person responds (35 §4.6). |
+| Log of handovers | | Where reason, time and time to response are recorded; they are carried over to P25. |
 
 Notice texts and register in P49.
 
@@ -171,6 +173,7 @@ They are carried over to P25 with their thresholds.
 | After-the-fact review coverage | Outputs reviewed ÷ outputs produced | | |
 | Acceptance without effective review **(Enterprise)** | Validations taking less than the reasonable minimum time | | |
 | Complaints from affected persons | Number per period | | |
+| Handovers to a person | Handovers by reason and requests not served | | |
 
 ---
 
@@ -209,3 +212,4 @@ Segregation of duties: the AI Risk Owner and the verifier are not part of the te
 | Version | Date | Changes |
 |---|---|---|
 | 0.1 | 16-09-2026 | First version of the template. |
+| 0.2 | 19-10-2026 | Immediate handover to a person and handover log (8) and handover indicator (10) (35 §4.6) (D159). |

@@ -5,12 +5,12 @@
 | | |
 |---|---|
 | Document | Document 33 · AI risk methodology |
-| Version | 0.1 (working draft) |
-| Date | 16-09-2026 |
+| Version | 0.3 (working draft) |
+| Date | 19-10-2026 |
 | Author | Fernando García Varela |
 | Status | Draft for review. It develops section 10 of document 01 and sets the framework's common risk scales. |
 
-<!-- cifras: 10 | risk categories ; 71 | typical risks catalogued ; 5 × 5 | likelihood and impact matrix ; 5 | impact axes -->
+<!-- cifras: 10 | risk categories ; 72 | typical risks catalogued ; 5 × 5 | likelihood and impact matrix ; 5 | impact axes -->
 
 ---
 
@@ -408,6 +408,7 @@ The *Phase* column indicates where the risk is identified and where it is mainly
 | **RT-SEG-06** | **Model extraction and service abuse.** Mass queries to replicate the model, infer data or exhaust resources. | Exposed interfaces without limits. | SEG-10, SEG-12. | 4, 6 |
 | **RT-SEG-07** | **AI supply chain compromise.** Malicious or vulnerable models, libraries, connectors or tool servers. | Components downloaded without verification. | SEG-09; AG-13; supplier assessment (36). | 4, 6 |
 | **RT-SEG-08** | **Errors of AI cyber defence.** False negatives that let an attack through or automated containments that interrupt operations without a real attack; the defensive system itself attacked or manipulated. | Automated response without limits or validation; detection not measured against a baseline; dependency on a single supplier. | SEG-21, SEG-22, SEG-23, SEG-24, SEG-25 (35 §9.3). | 4, 6 |
+| **RT-SEG-09** | **Customer impersonation with AI.** Synthetic voice or video that passes customer identification in automated channels, or documents and images manipulated with AI that support claims, onboarding or data changes. | Identification based only on voice, image or a document; detection used as the sole barrier; no second factor independent of the channel. | Synthetic-voice detection and liveness checks as support; second factor independent of the channel; review of documents and images; SEG-18; scenarios in the test bench (SEG-27) (35 §9.1). | 3, 4, 6 |
 
 ### 9.10 Third parties (TER)
 
@@ -537,3 +538,4 @@ The report to the board uses business language: what can happen, whom it affects
 |---|---|---|
 | 0.1 | 16-09-2026 | First version. Sets the common scales of likelihood and impact across five axes, the 5 × 5 matrix, target and verified residual risk, control effectiveness, tiered acceptance, the register fields, the catalogue of 70 typical risks in ten categories, the portfolio risk analysis and the key risk indicators. Organisational risks RT-ORG-07 (information and consultation), RT-ORG-08 (labour dispute) and RT-ORG-09 (wellbeing), proposed in document 50, added to the catalogue. |
 | 0.2 | 25-09-2026 | Adds typical risk RT-SEG-08 (errors of AI cyber defence), bringing the catalogue to 71 typical risks. |
+| 0.3 | 19-10-2026 | Adds typical risk RT-SEG-09 (customer impersonation with AI), bringing the catalogue to 72 typical risks (D159). |

@@ -5,12 +5,12 @@
 | | |
 |---|---|
 | Document | Document 22 · Checklists by *gate* |
-| Version | 0.3 (working draft) |
-| Date | 01-10-2026 |
+| Version | 0.4 (working draft) |
+| Date | 19-10-2026 |
 | Author | Fernando García Varela |
 | Status | Draft for review. The codes match the criteria in document 21. |
 
-<!-- cifras: 8 | checklists by gate ; 128 | gate controls ; 14 | evidence controls ; 21 | agent controls -->
+<!-- cifras: 8 | checklists by gate ; 128 | gate controls ; 14 | evidence controls ; 27 | agent controls -->
 
 ---
 
@@ -325,9 +325,16 @@ Brings together the controls for systems that execute actions or prepare them fo
 | ☐ | G4.20 | Is external content (documents, emails, web, tool responses) treated as untrusted and unable to alter instructions or permissions? | P18 | G4 | Yes | Yes | Yes |
 | ☐ | G5.05 | Were direct and indirect injection tests passed within threshold? | P22 · T10 | G5 | Yes | Yes | Yes |
 | ☐ | G5.05 | Were tests for leakage of personal data, secrets and system instructions passed? | P22 · T10 | G5 | Yes | Yes | Yes |
+| | | **Tools, gateway, test bench and people** | | | | | |
+| ☐ | G4.16 | Is each tool, connector or tool server of the agent —including local ones— inventoried with a pinned version and verified origin, and were its description and permissions reviewed before approving it (AG-13)? | P18 · P54 | G4 | Yes | Yes | Yes |
+| ☐ | G4.20 | Does all the agent's traffic to models pass through the corporate AI gateway (SEG-26) with the common configuration? | P18 · gateway configuration | G4, G5 | Rec. | Yes | Yes |
+| ☐ | G5.05 | Was the corporate agent test bench (SEG-27) run on the version going into production, through all its channels, with no successful critical scenario? | P53 · T10 | G5 | Yes | Yes | Yes |
+| ☐ | G4.19 | With direct exposure: does the agent hand over immediately to a person on signs of vulnerability or an express request, and are handovers recorded (35 §4.6)? | P17 · P49 | G4, G5 | Yes | Yes | Yes |
 | | | **Operation** | | | | | |
 | ☐ | R6.11 | Are blocked, anomalous or out-of-pattern actions reviewed and acted upon? | P27 · logs | R6 | Rec. | Yes | Yes |
 | ☐ | R6.11 | Were permissions and credentials reviewed during the period, and were those no longer needed removed? | P18 · P54 · access configuration | R6 | Yes | Yes | Yes |
+| ☐ | R6.11 | Does the test bench run at every deployment and was it extended with the period's incidents? | P53 · deployment pipeline | R6 | Rec. | Yes | Yes |
+| ☐ | R6.11 | Was every tool or connector whose description or behaviour changed during the period approved again? | P54 · change log (P27) | R6 | Yes | Yes | Yes |
 | | | **Retirement** | | | | | |
 | ☐ | G7.11 | When the agent is retired, are its identity, credentials and permissions revoked and its logs retained for the defined period? | P30 · T22 | G7 | Yes | Yes | Yes |
 
@@ -368,3 +375,4 @@ An unchecked mandatory item in LV-AG is equivalent to *Not met* for the criterio
 | 0.1 | 16-09-2026 | First version. Replaces the checklists in the previous material: 128 binary controls in eight checklists by gate with the codes from document 21, LV-EV evidence validation checklist (14 controls), LV-AG checklist for agents aligned with T10 (21 controls) and instructions for the verifier and the auditor. Consistency adjustments with 01 (segregation of duties in Lite, R6 outcomes, agent criterion) and with 34 and 37. |
 | 0.2 | 01-10-2026 | LV-EV, EV.10: mandatory fields may be in referenced evidence with its annex (21 §4.3). |
 | 0.3 | 01-10-2026 | At Express intensity only the criteria of the reduced list (21 §2.5) are reviewed. |
+| 0.4 | 19-10-2026 | LV-AG: six questions on tools and connectors (AG-13), the corporate AI gateway (SEG-26), the corporate test bench (SEG-27) and handover to a person (35 §4.6); 27 agent controls (D159). |

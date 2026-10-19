@@ -5,8 +5,8 @@
 | | |
 |---|---|
 | Document | Document 03 · Tools and initiative register |
-| Version | 0.4 (working draft) |
-| Date | 28-09-2026 |
+| Version | 0.5 (working draft) |
+| Date | 19-10-2026 |
 | Author | Fernando García Varela |
 | Status | Draft for review. Living catalogue: it is updated every time a tool is built or modified. |
 
@@ -278,7 +278,7 @@ The T01 register is the company's **source of truth**: the other tools derive fr
 | **T07** | Regulatory classifier | Guided questionnaire for classification under the AI Act and the assessments required. | Phases 0 and 3 | HTML | 34 | 2 | Applied with P11 |
 | **T08** | Nonconformity and incident register | Full process with time limits and alerts. | Phase 6, C4 | T01 module | 37 | 2 | Applied with P50 (nonconformity register), P51 (notifications and communications) and P52 (root cause), together with P26 and P27 |
 | **T09** | AI supplier register | Third parties, criticality, contracts, assessment and dependency. | Phases 3–4, C4 | T01 module | 36 | 3 | Applied with P57 (supplier register and exit plan), P55 (due diligence), P56 (contract clauses) and P14 |
-| **T10** | Agent security assessment | Identity, permissions, intent-based access control, kill switch, injection testing. | Phases 4–6 | Checklist in T03 | 35 | 3 | Applied with P18, P53 (adversarial testing), P54 (non-human identities and components) and the [AG] criteria in document 22 |
+| **T10** | Agent security assessment | Identity, permissions, intent-based access control, kill switch, injection testing; corporate AI gateway (SEG-26) and corporate agent test bench (SEG-27). | Phases 4–6 | Checklist in T03 | 35 | 3 | Applied with P18, P53 (adversarial testing), P54 (non-human identities and components) and the [AG] criteria in document 22 |
 
 ### 5.3 Value and measurement
 
@@ -343,3 +343,4 @@ Working rule: **every document that defines a process involving a register, a ca
 | 0.2 | 19-09-2026 | Catalogue brought up to date: T11 (with T13 as a module) and T15 available; tools without an application of their own are applied with their corresponding templates P32–P71 (D68). |
 | 0.3 | 28-09-2026 | Tool T23 · Implementation journey (document 96) in the catalogue (§5.4), in the data map (§4.1) and in wave 3; "Three lenses" view of T15 and schema 0.8 of the register (§4 and §4.1). |
 | 0.4 | 28-09-2026 | T12 is implemented as the `plan_realizacion` block of T01 plus the "Realisation plan: curve and tranches" card of T17 (§5.3); optional fields `plan_realizacion` and `no_cuantificado` of schema 0.8 (§4) and their reading by T17 (§4.1 and §5.4) (D135). |
+| 0.5 | 19-10-2026 | The T10 row includes the corporate AI gateway (SEG-26) and the corporate agent test bench (SEG-27) (D159). |

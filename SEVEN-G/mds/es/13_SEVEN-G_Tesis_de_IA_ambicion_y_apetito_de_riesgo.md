@@ -5,8 +5,8 @@
 | | |
 |---|---|
 | Documento | Documento 13 · Tesis de IA, ambición y apetito de riesgo |
-| Versión | 0.2 (borrador de trabajo) |
-| Fecha | 01-10-2026 |
+| Versión | 0.3 (borrador de trabajo) |
+| Fecha | 19-10-2026 |
 | Autor | Fernando García Varela |
 | Estado | Borrador para revisión. Los valores numéricos son ejemplos ilustrativos o puntos de partida que cada compañía debe fijar en C2. |
 
@@ -435,7 +435,7 @@ El presupuesto marco es el importe anual que el consejo autoriza para la IA y la
 | **Optimizar** | Construcción de iniciativas de optimización. | Dentro de la banda de la sección 8. |
 | **Aumentar** | Construcción y adopción de iniciativas de aumento. | Dentro de la banda de la sección 8. |
 | **Transformar por etapas** | Etapas aprobadas de las apuestas de transformación. | Se libera etapa a etapa tras la decisión del órgano competente sobre los hitos. |
-| **Habilitación** | Datos, plataforma común, gobierno y cumplimiento (incluidas las iniciativas de esferas 08 y 09). | Se justifica por las esferas que habilita. |
+| **Habilitación** | Datos, plataforma común, gobierno y cumplimiento (incluidas las iniciativas de esferas 08 y 09) e iniciativas de IA para TI y ciberdefensa (40 §7.3). | Se justifica por las esferas que habilita. |
 | **Coste recurrente comprometido** | Operación de los sistemas en producción. | Se presupuesta completo; no compite con la construcción. |
 | **Adopción y formación** | Alfabetización en IA, formación por rol y gestión del cambio no imputada a iniciativas. | Debería ser explícito, no residual. |
 | **Contingencia** | Imprevistos y oportunidades no previstas. | Asignación por el comité de IA con registro. |
@@ -739,3 +739,4 @@ El anexo se cumplimenta con la plantilla P35.
 |---|---|---|
 | 0.1 | 16-09-2026 | Primera versión. Define los doce componentes de la decisión de C2: estructura de la tesis de IA, ambición por esfera, grados de apetito y métricas de tolerancia para las diez categorías de riesgo, umbrales de impacto económico proporcionados, umbral de inversión Enterprise y de materialidad, horizonte de retorno por nivel, bandas de equilibrio de cartera, plazos, líneas rojas, presupuesto marco y revisión. Incluye como anexo la plantilla de documento de decisión del consejo (T19). |
 | 0.2 | 01-10-2026 | Sección 6 y bloque H: umbral Express (01 §9.4), coste por hora de gobierno y objetivos de proporcionalidad por intensidad (41 IND-COS-12 a 14). |
+| 0.3 | 19-10-2026 | Sección 12: el sobre de habilitación incluye las iniciativas de IA para TI y ciberdefensa (40 §7.3) (D159). |

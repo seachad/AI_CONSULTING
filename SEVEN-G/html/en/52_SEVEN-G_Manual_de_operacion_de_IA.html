@@ -472,12 +472,12 @@ h2 .codigo, h3 .codigo { font-weight: 400; }
 
 <div id="top"></div>
 <header class="portada">
-  <div class="cabecera"><div class="marca"><i></i>SEVEN-G</div><div class="cabecera-dato">Document 52 · 16-09-2026</div></div>
+  <div class="cabecera"><div class="marca"><i></i>SEVEN-G</div><div class="cabecera-dato">Document 52 · 19-10-2026</div></div>
   <div class="portada-cuerpo">
     <p class="antetitulo">Document 52 &#183; AI operations manual</p>
     <h1>AI operations manual</h1>
     <p class="entradilla">Operation of predictive ML, generative AI, agents and third-party AI: monitoring, changes, incidents, continuity, records and retirement</p>
-    <div class="firma"><span><b>Fernando Garc&#237;a Varela</b></span><span>Version 0.1 (working draft)</span><span>16-09-2026</span><span>Draft for review</span></div>
+    <div class="firma"><span><b>Fernando Garc&#237;a Varela</b></span><span>Version 0.2 (working draft)</span><span>19-10-2026</span><span>Draft for review</span></div>
     <div class="cifras"><div class="cifra"><b>4</b><span>system types with differentiated operation</span></div><div class="cifra"><b>9</b><span>monitoring layers</span></div><div class="cifra"><b>3</b><span>change classes with a gate rule</span></div><div class="cifra"><b>4</b><span>operations templates P24–P27</span></div></div>
   </div>
 </header>
@@ -823,6 +823,10 @@ h2 .codigo, h3 .codigo { font-weight: 400; }
 <p>The design controls for agents (identity, permissions, intent-based access control, kill switch) are defined in <a href="35_SEVEN-G_Seguridad_de_IA_y_agentes.html" title="Document 35 &#183; AI and agent security">document 35</a> and assessed with <a href="plantillas/P18_SEVEN-G_Diseno_de_seguridad.html" title="Tool T10 &#183; Agent security assessment">T10</a>. This section sets out how they are operated.</p>
 <h4 id="action-monitoring">4.3.1 Action monitoring</h4>
 <p>Each action by an agent <strong>must</strong> record: the agent's own identity (not shared with people) and version; the user or process on whose behalf it acts; the <strong>declared intent</strong> (task objective and justification for the action); the tool, operation and data used; the result and effect; prior human validation and who gave it, if applicable; a timestamp and a correlation identifier to reconstruct the sequence.</p>
+<p><strong>End-to-end traces.</strong> Each request receives a correlation identifier that is propagated through the corporate AI gateway (SEG-26), information retrieval, every model call, every agent step and every tool, up to the result. Traces are sent to the company's security monitoring (SEG-12) in an open, documented format that the security operations centre can ingest, with specific detection use cases (intent anomalies in 4.3.3, tool abuse, information leakage). They make it possible to reconstruct any sequence without depending on a supplier's logs. Their coverage is measured with OPE-22.</p>
+<blockquote>
+<p><strong>Why it matters.</strong> Without a thread linking the request, the model, the agent and the tool, an AI incident is investigated blind and the security centre cannot see what agents do. With end-to-end traces, AI security joins the same detection as the rest of the company.</p>
+</blockquote>
 <h4 id="limits">4.3.2 Limits</h4>
 <ul>
 <li><strong>Per action:</strong> amount, number of recipients, types of data.</li>
@@ -939,7 +943,7 @@ h2 .codigo, h3 .codigo { font-weight: 400; }
 </tr>
 <tr>
 <td>7 · Security</td>
-<td>Filter triggers, injection attempts, improper access.</td>
+<td>Filter triggers, injection attempts, improper access; guardrail effectiveness against the test bench (SEG-27); end-to-end trace coverage (4.3.1).</td>
 <td>All, with emphasis on generative AI and agents</td>
 </tr>
 <tr>
@@ -1078,6 +1082,27 @@ h2 .codigo, h3 .codigo { font-weight: 400; }
 <td>—</td>
 <td>Any confirmed case</td>
 <td>S2; S1 if it is massive or involves special categories</td>
+</tr>
+<tr>
+<td>7</td>
+<td>Guardrail effectiveness: test bench scenarios (SEG-27) detected or blocked</td>
+<td>&lt; <a href="plantillas/P25_SEVEN-G_Configuracion_de_monitorizacion_y_alertas.html" title="Template P25 &#183; Monitoring and alerting configuration">P25</a> target − 5 points</td>
+<td>Any critical scenario undetected</td>
+<td>S3; S2 if it affects a sensitive action</td>
+</tr>
+<tr>
+<td>7</td>
+<td>Guardrail false positives on sampled legitimate traffic</td>
+<td>&gt; 2 × 30-day average</td>
+<td>&gt; <a href="plantillas/P25_SEVEN-G_Configuracion_de_monitorizacion_y_alertas.html" title="Template P25 &#183; Monitoring and alerting configuration">P25</a> threshold</td>
+<td>S4–S3</td>
+</tr>
+<tr>
+<td>7</td>
+<td>Guardrails deactivated or in observe-only mode</td>
+<td>Any case with a record and a reactivation date (5.3, rule 5)</td>
+<td>Any case without a record</td>
+<td>S2 (critical control, 01 §12)</td>
 </tr>
 <tr>
 <td>8</td>
@@ -1489,6 +1514,7 @@ h2 .codigo, h3 .codigo { font-weight: 400; }
 <li>The plan identifies the <strong>people and capabilities</strong> needed to operate without the system and is coordinated with <a href="50_SEVEN-G_Personas_y_organizacion.html" title="Document 50 &#183; People and organisation">document 50</a> (section 5.4).</li>
 <li>For systems that support a <strong>critical or important function</strong>, the maximum recovery time and the maximum tolerable data loss are set in <a href="plantillas/P24_SEVEN-G_Manual_de_operacion.html" title="Template P24 &#183; Operations manual">P24</a> and aligned with the business continuity plan and, where applicable, with <a class="ref-ext" href="https://eur-lex.europa.eu/eli/reg/2022/2554/oj/eng" target="_blank" rel="noopener" title="Regulation (EU) 2022/2554 of the European Parliament and of the Council of 14 December 2022 on digital operational resilience for the financial sector (DORA)">DORA</a>.</li>
 <li><strong>Dependence on a provider</strong> is assessed in <a href="plantillas/P14_SEVEN-G_Evaluacion_de_proveedor_de_IA.html" title="Template P14 &#183; AI supplier assessment">P14</a> with an exit strategy (<a href="36_SEVEN-G_Terceros_y_proveedores_de_IA.html" title="Document 36 &#183; AI third parties and suppliers">document 36</a>).</li>
+<li><strong>Dependency on the model provider.</strong> For each system that supports a critical use case, <a href="plantillas/P24_SEVEN-G_Manual_de_operacion.html" title="Template P24 &#183; Operations manual">P24</a> sets what happens if the model provider goes down or degrades its service, the <strong>target recovery time</strong> and the degraded mode that is activated (10.1: fallback model, evaluated alternative provider or non-AI alternative). Switching to the fallback is <strong>tested periodically</strong> —at least yearly in Lite and half-yearly in Enterprise— with the same reference evaluation set (4.2.1), and the actual recovery time is measured (OPE-23).</li>
 </ol>
 <h3 id="10-3-cost-driven-degradation-cascade">10.3 Cost-driven degradation cascade</h3>
 <p>Systems with variable consumption (generative AI and agents) <strong>must</strong> have defined in <a href="plantillas/P24_SEVEN-G_Manual_de_operacion.html" title="Template P24 &#183; Operations manual">P24</a> what happens when consumption reaches the budget, so that the response is neither improvised nor an abrupt cut-off. Degradation follows a <strong>cascade</strong> of levels, from least to most restrictive:</p>
@@ -1758,6 +1784,27 @@ h2 .codigo, h3 .codigo { font-weight: 400; }
 <td>At each regression and periodic evaluation</td>
 <td><a href="plantillas/P17_SEVEN-G_Diseno_de_gobierno_y_supervision_humana.html" title="Template P17 &#183; Governance and human oversight design">P17</a> threshold</td>
 </tr>
+<tr id="cod-ope-21">
+<td><strong>OPE-21</strong></td>
+<td>Guardrail effectiveness</td>
+<td>Test bench scenarios (SEG-27) detected or blocked ÷ scenarios run; false positives on sampled legitimate traffic ÷ sample; and deactivations in the period</td>
+<td>At every deployment and monthly</td>
+<td>As per <a href="plantillas/P25_SEVEN-G_Configuracion_de_monitorizacion_y_alertas.html" title="Template P25 &#183; Monitoring and alerting configuration">P25</a>; zero critical scenarios undetected; every deactivation recorded</td>
+</tr>
+<tr id="cod-ope-22">
+<td><strong>OPE-22</strong></td>
+<td>End-to-end trace coverage</td>
+<td>Requests with a complete correlation identifier up to the result and received in security monitoring ÷ requests</td>
+<td>Monthly</td>
+<td>100 % for generative AI with direct exposure and for A2–A3 agents</td>
+</tr>
+<tr id="cod-ope-23">
+<td><strong>OPE-23</strong></td>
+<td>Recovery from model provider outage</td>
+<td>Systems that support critical use cases with a fallback switch test in time and actual recovery time ≤ <a href="plantillas/P24_SEVEN-G_Manual_de_operacion.html" title="Template P24 &#183; Operations manual">P24</a> target ÷ those systems</td>
+<td>Half-yearly</td>
+<td>100 %</td>
+</tr>
 </tbody>
 </table></div>
 <hr />
@@ -1837,6 +1884,21 @@ h2 .codigo, h3 .codigo { font-weight: 400; }
 <td>Quarterly</td>
 </tr>
 <tr>
+<td>Test bench and guardrail effectiveness</td>
+<td>Before G5 and after relevant changes</td>
+<td>At every deployment at A2–A3; before G5 and after changes at A0–A1</td>
+</tr>
+<tr>
+<td>End-to-end traces (4.3.1)</td>
+<td>Correlation identifier in the logs</td>
+<td>Sent to security monitoring with detection use cases</td>
+</tr>
+<tr>
+<td>Model provider fallback test (10.2)</td>
+<td>Annual</td>
+<td>Half-yearly</td>
+</tr>
+<tr>
 <td>Verification</td>
 <td>AI Office; auditor by sampling</td>
 <td>AI Auditor</td>
@@ -1859,13 +1921,13 @@ h2 .codigo, h3 .codigo { font-weight: 400; }
 <tr id="cod-p24">
 <td><strong>Operations manual</strong> <span class="codigo">(<a href="plantillas/P24_SEVEN-G_Manual_de_operacion.html" title="Template P24 &#183; Operations manual">P24</a>)</span></td>
 
-<td>Description of the system and type; autonomy level; service levels; responsibilities and on-call; procedures per alert; retraining or continuous evaluation; agent limits and shutdown; degraded modes and cost-driven degradation cascade with its triggers; costs and consumption limits; records and retention; dependencies and suppliers; post-market monitoring plan where applicable; maximum recovery time for critical functions.</td>
+<td>Description of the system and type; autonomy level; service levels; responsibilities and on-call; procedures per alert; retraining or continuous evaluation; agent limits and shutdown; degraded modes and cost-driven degradation cascade with its triggers; costs and consumption limits; records and retention; dependencies and suppliers; post-market monitoring plan where applicable; maximum recovery time for critical functions; recovery time if the model provider goes down and degraded mode (10.2).</td>
 <td>G5, R6, after significant and substantial changes</td>
 </tr>
 <tr id="cod-p25">
 <td><strong>Monitoring and alerts configuration</strong> <span class="codigo">(<a href="plantillas/P25_SEVEN-G_Configuracion_de_monitorizacion_y_alertas.html" title="Template P25 &#183; Monitoring and alerting configuration">P25</a>)</span></td>
 
-<td>Metrics per layer; baseline; warning and critical thresholds; initial severity; owner; procedure; label delay; usage reference and query classification; reference evaluation set with counterfactual pairs and sampling; minimum quality in degraded mode; result of the alert test.</td>
+<td>Metrics per layer; baseline; warning and critical thresholds; initial severity; owner; procedure; label delay; usage reference and query classification; reference evaluation set with counterfactual pairs and sampling; minimum quality in degraded mode; result of the alert test; guardrail effectiveness and false positive target (5.2).</td>
 <td>G5, R6</td>
 </tr>
 <tr id="cod-p26">
@@ -1952,11 +2014,16 @@ h2 .codigo, h3 .codigo { font-weight: 400; }
 <td>18-09-2026</td>
 <td>Usage drift in generative AI and agents (4.2.6); bias in responses with counterfactual pairs (4.2.7); layers 3 and 5 and thresholds extended; activating a planned degraded mode is not a change (6.4); cost-driven degradation cascade N0–N4 with a fallback model validated at G5 (10.3); indicators OPE-18 to OPE-20; Lite and Enterprise requirements and content of <a href="plantillas/P24_SEVEN-G_Manual_de_operacion.html" title="Template P24 &#183; Operations manual">P24</a> and <a href="plantillas/P25_SEVEN-G_Configuracion_de_monitorizacion_y_alertas.html" title="Template P25 &#183; Monitoring and alerting configuration">P25</a>.</td>
 </tr>
+<tr>
+<td>0.2</td>
+<td>19-10-2026</td>
+<td>End-to-end traces (4.3.1); guardrail effectiveness in layer 7 (5.1 and 5.2); dependency on the model provider with recovery time and periodic test of the fallback (10.2); indicators OPE-21 to OPE-23 and Lite and Enterprise operation (D159).</td>
+</tr>
 </tbody>
 </table></div>
 <h2 id="external-sources">External sources cited</h2><p class="fuentes-nota">Links to the official or primary source, checked before publication. Always verify the version in force on the date of use.</p><ul class="fuentes-externas"><li><a href="https://eur-lex.europa.eu/eli/dir/2022/2555/oj/eng" target="_blank" rel="noopener">Directive (EU) 2022/2555 of the European Parliament and of the Council of 14 December 2022 on measures for a high common level of cybersecurity across the Union (NIS 2 Directive)</a><span> · Parlamento Europeo y Consejo de la UE · 14-12-2022</span></li><li><a href="https://eur-lex.europa.eu/eli/reg/2016/679/oj/eng" target="_blank" rel="noopener">Regulation (EU) 2016/679 of the European Parliament and of the Council of 27 April 2016 on the protection of natural persons with regard to the processing of personal data and on the free movement of such data, and repealing Directive 95/46/EC (General Data Protection Regulation)</a><span> · Parlamento Europeo y Consejo de la UE · 27-04-2016</span></li><li><a href="https://eur-lex.europa.eu/eli/reg/2022/2554/oj/eng" target="_blank" rel="noopener">Regulation (EU) 2022/2554 of the European Parliament and of the Council of 14 December 2022 on digital operational resilience for the financial sector (DORA)</a><span> · Parlamento Europeo y Consejo de la UE · 14-12-2022</span></li><li><a href="https://eur-lex.europa.eu/eli/reg/2024/1689/oj/eng" target="_blank" rel="noopener">Regulation (EU) 2024/1689 of the European Parliament and of the Council of 13 June 2024 laying down harmonised rules on artificial intelligence (Artificial Intelligence Act)</a><span> · Parlamento Europeo y Consejo de la UE · 13-06-2024</span></li><li><a href="https://eur-lex.europa.eu/eli/reg/2026/1744/oj/eng" target="_blank" rel="noopener">Regulation (EU) 2026/1744 of the European Parliament and of the Council of 8 July 2026 amending Regulations (EU) 2024/1689, (EU) 2018/1139 and (EU) 2023/1230 as regards the simplification of the implementation of harmonised rules on artificial intelligence (Digital Omnibus on AI)</a><span> · Parlamento Europeo y Consejo de la UE · 08-07-2026</span></li></ul>
 </main>
-<footer class="pie"><div><span>© 2026 Fernando García Varela · SEVEN-G methodology</span><span>Generated on 13-10-2026</span></div><p class="pie-ia">Content generated and typeset with AI support under the author&#39;s editorial supervision.</p></footer>
+<footer class="pie"><div><span>© 2026 Fernando García Varela · SEVEN-G methodology</span><span>Generated on 19-10-2026</span></div><p class="pie-ia">Content generated and typeset with AI support under the author&#39;s editorial supervision.</p></footer>
 <script src="codigos.js" defer></script>
 
 <script>

@@ -5,8 +5,8 @@
 | | |
 |---|---|
 | Documento | Documento 52 · Manual de operación de IA |
-| Versión | 0.1 (borrador de trabajo) |
-| Fecha | 16-09-2026 |
+| Versión | 0.2 (borrador de trabajo) |
+| Fecha | 19-10-2026 |
 | Autor | Fernando García Varela |
 | Estado | Borrador para revisión. Los umbrales y tiempos son referencias iniciales a calibrar; los de incidentes se confirman en el documento 37. |
 
@@ -204,6 +204,10 @@ Los controles de diseño de agentes (identidad, permisos, control de intención,
 
 Cada acción de un agente **debe** registrar: identidad propia del agente (no compartida con personas) y versión; usuario o proceso en cuyo nombre actúa; **intención declarada** (objetivo de la tarea y justificación de la acción); herramienta, operación y datos usados; resultado y efecto; validación humana previa y quién la dio, si aplica; marca temporal e identificador de correlación para reconstruir la secuencia.
 
+**Trazas de extremo a extremo.** Cada petición recibe un identificador de correlación que se propaga por la pasarela corporativa de IA (SEG-26), la recuperación de información, cada llamada al modelo, cada paso del agente y cada herramienta, hasta el resultado. Las trazas se envían a la monitorización de seguridad de la compañía (SEG-12) en un formato abierto y documentado que pueda ingerir el centro de operaciones de seguridad, con casos de detección específicos (anomalías de intención de 4.3.3, abuso de herramientas, fuga de información). Con ellas se reconstruye cualquier secuencia sin depender de los registros de un proveedor. Su cobertura se mide con OPE-22.
+
+> **Por qué importa.** Sin un hilo que una la petición, el modelo, el agente y la herramienta, un incidente de IA se investiga a ciegas y el centro de seguridad no ve lo que hacen los agentes. Con trazas de extremo a extremo, la seguridad de la IA entra en la misma detección que el resto de la compañía.
+
 #### 4.3.2 Límites
 
 - **Por acción:** importe, número de destinatarios, tipos de datos.
@@ -270,7 +274,7 @@ La intensidad de estos controles depende del nivel de exigencia al tercero: **N1
 | 4 · Rendimiento del modelo | Métricas frente a la validación de G5, por segmento. | ML predictivo |
 | 5 · Calidad de respuestas | Fidelidad, corrección, rechazo adecuado, vigencia de fuentes; sesgo en las respuestas (4.2.7). | IA generativa |
 | 6 · Acciones y límites | Acciones, bloqueos, anomalías de intención, permisos. | Agentes |
-| 7 · Seguridad | Activación de filtros, intentos de inyección, accesos indebidos. | Todos, con énfasis en IA generativa y agentes |
+| 7 · Seguridad | Activación de filtros, intentos de inyección, accesos indebidos; eficacia de los guardarraíles frente al banco de pruebas (SEG-27); cobertura de trazas de extremo a extremo (4.3.1). | Todos, con énfasis en IA generativa y agentes |
 | 8 · Coste | Consumo, coste por transacción, presupuesto. | Todos, con énfasis en IA generativa y agentes |
 | 9 · Supervisión humana, uso y valor | Tasa de modificación humana, adopción, indicadores de la hipótesis de valor, sesgo. | Todos |
 
@@ -296,6 +300,9 @@ Los valores son **ilustrativos y a calibrar** por sistema en la fase 5 a partir 
 | 6 | Anomalías de intención | Cualquier anomalía no explicada | Anomalía con efecto sobre terceros, dinero, datos personales o producción | S2; S1 si hay daño material |
 | 7 | Activación de filtros de entrada | > 3 × media de 7 días | Patrón sostenido de ataque | S3–S2 |
 | 7 | Exposición de datos personales o confidenciales | — | Cualquier caso confirmado | S2; S1 si es masiva o de categorías especiales |
+| 7 | Eficacia de los guardarraíles: escenarios del banco de pruebas (SEG-27) detectados o bloqueados | < objetivo de P25 − 5 puntos | Cualquier escenario crítico no detectado | S3; S2 si afecta a una acción sensible |
+| 7 | Falsos positivos de los guardarraíles en tráfico legítimo muestreado | > 2 × media de 30 días | > umbral de P25 | S4–S3 |
+| 7 | Guardarraíles desactivados o en modo de solo observación | Cualquier caso con registro y fecha de reactivación (5.3, regla 5) | Cualquier caso sin registro | S2 (control crítico, 01 §12) |
 | 8 | Coste mensual frente a presupuesto | ≥ 80 % | ≥ 100 % | S4–S3 |
 | 8 | Coste por transacción | > 1,5 × media de 30 días | > 3 × media de 30 días | S3 |
 | 8 | Funcionamiento en modo degradado por coste | Cualquier activación | > 5 días en el mes o calidad en el modo por debajo del mínimo de P25 | S4; S3 si la calidad cae por debajo del mínimo |
@@ -503,6 +510,7 @@ Este documento no constituye asesoramiento jurídico.
 2. El plan identifica las **personas y capacidades** necesarias para operar sin el sistema y se coordina con el documento 50 (sección 5.4).
 3. Para sistemas que soportan una **función crítica o importante**, el tiempo máximo de recuperación y la pérdida máxima de datos admisible se fijan en P24 y se alinean con el plan de continuidad de negocio y, cuando aplique, con DORA.
 4. La **dependencia de un proveedor** se valora en P14 con una estrategia de salida (documento 36).
+5. **Dependencia del proveedor de modelos.** P24 fija, para cada sistema que soporta un caso crítico, qué ocurre si el proveedor de modelos cae o degrada su servicio, el **tiempo de recuperación objetivo** y el modo degradado que se activa (10.1: modelo de respaldo, proveedor alternativo evaluado o alternativa sin IA). El cambio al respaldo se **prueba periódicamente** —al menos anual en Lite y semestral en Enterprise— con el mismo conjunto de evaluación de referencia (4.2.1), y se mide el tiempo real de recuperación (OPE-23).
 
 ### 10.3 Degradación por coste en cascada
 
@@ -599,6 +607,9 @@ Los códigos son provisionales hasta su consolidación en el documento 41. Los u
 | **OPE-18** | Modo degradado por coste | Días del periodo en N1 o superior de la cascada (10.3), por nivel; y calidad medida en el modo ÷ calidad mínima de P25 | Mensual | Tendencia decreciente; calidad ≥ 100 % del mínimo |
 | **OPE-19** | Consultas fuera del alcance validado | Consultas clasificadas fuera de los temas o tareas validados en G5 ÷ consultas del periodo | Mensual | Según referencia de G5 |
 | **OPE-20** | Respuestas desiguales en pares contrafactuales | Pares con diferencia material de resultado ÷ pares evaluados | En cada evaluación de regresión y periódica | Umbral de P17 |
+| **OPE-21** | Eficacia de los guardarraíles | Escenarios del banco de pruebas (SEG-27) detectados o bloqueados ÷ escenarios ejecutados; falsos positivos en tráfico legítimo muestreado ÷ muestra; y desactivaciones del periodo | En cada despliegue y mensual | Según P25; cero escenarios críticos sin detectar; toda desactivación registrada |
+| **OPE-22** | Cobertura de trazas de extremo a extremo | Peticiones con identificador de correlación completo hasta el resultado y recibidas en la monitorización de seguridad ÷ peticiones | Mensual | 100 % en IA generativa con exposición directa y en agentes A2–A3 |
+| **OPE-23** | Recuperación ante la caída del proveedor de modelos | Sistemas que soportan casos críticos con prueba de cambio al respaldo en plazo y tiempo real de recuperación ≤ objetivo de P24 ÷ esos sistemas | Semestral | 100 % |
 
 ---
 
@@ -619,6 +630,9 @@ Los códigos son provisionales hasta su consolidación en el documento 41. Los u
 | Deriva de uso (4.2.6) | Consultas fuera del alcance por muestreo | Distribución de temas y consultas fuera del alcance con clasificación sistemática |
 | Sesgo en las respuestas (4.2.7) | Cuando hay decisiones o comunicaciones sobre personas o exposición directa | Igual, y siempre que lo indique la evaluación de riesgos |
 | R6 | Semestral | Trimestral |
+| Banco de pruebas y eficacia de los guardarraíles | Antes de G5 y tras cambios relevantes | En cada despliegue en A2–A3; antes de G5 y tras cambios en A0–A1 |
+| Trazas de extremo a extremo (4.3.1) | Identificador de correlación en los registros | Envío a la monitorización de seguridad con casos de detección |
+| Prueba del respaldo del proveedor de modelos (10.2) | Anual | Semestral |
 | Verificación | Oficina de IA; auditor por muestreo | Auditor de IA |
 
 ---
@@ -629,8 +643,8 @@ Los códigos son provisionales hasta su consolidación en el documento 41. Los u
 
 | Código | Plantilla | Contenido mínimo | Se revisa en |
 |---|---|---|---|
-| **P24** | Manual de operación | Descripción del sistema y tipo; nivel de autonomía; niveles de servicio; responsabilidades y guardia; procedimientos por alerta; reentrenamiento o evaluación continua; límites y parada de agentes; modos degradados y cascada de degradación por coste con sus disparadores; costes y límites de consumo; registros y conservación; dependencias y proveedores; plan de vigilancia posterior a la comercialización si procede; tiempo máximo de recuperación en funciones críticas. | G5, R6, tras cambios significativos y sustanciales |
-| **P25** | Configuración de monitorización y alertas | Métricas por capa; línea base; umbrales de aviso y crítico; severidad inicial; responsable; procedimiento; retraso de etiquetas; referencia de uso y clasificación de consultas; conjunto de evaluación de referencia con pares contrafactuales y muestreo; calidad mínima en modo degradado; resultado de la prueba de alertas. | G5, R6 |
+| **P24** | Manual de operación | Descripción del sistema y tipo; nivel de autonomía; niveles de servicio; responsabilidades y guardia; procedimientos por alerta; reentrenamiento o evaluación continua; límites y parada de agentes; modos degradados y cascada de degradación por coste con sus disparadores; costes y límites de consumo; registros y conservación; dependencias y proveedores; plan de vigilancia posterior a la comercialización si procede; tiempo máximo de recuperación en funciones críticas; tiempo de recuperación ante la caída del proveedor de modelos y modo degradado (10.2). | G5, R6, tras cambios significativos y sustanciales |
+| **P25** | Configuración de monitorización y alertas | Métricas por capa; línea base; umbrales de aviso y crítico; severidad inicial; responsable; procedimiento; retraso de etiquetas; referencia de uso y clasificación de consultas; conjunto de evaluación de referencia con pares contrafactuales y muestreo; calidad mínima en modo degradado; resultado de la prueba de alertas; objetivo de eficacia de los guardarraíles y de falsos positivos (5.2). | G5, R6 |
 | **P26** | Plan de respuesta a incidentes | Criterios S1–S4 aplicados al sistema; contactos y escalado; acciones de contención preaprobadas; notificaciones aplicables con responsable y plazo; comunicación a usuarios, afectados y proveedor; relación con el plan de continuidad. | G5, R6, tras cada incidente S1–S2 |
 | **P27** | Registro de incidentes y cambios | Cambios: clase, descripción, validación, aprobación, *gate* si procede, fecha. Incidentes: severidad, cronología, contención, notificaciones, causa raíz, acciones, cierre, enlace a no conformidad. | Continuo; R6 |
 
@@ -662,3 +676,4 @@ Los códigos son provisionales hasta su consolidación en el documento 41. Los u
 |---|---|---|
 | 0.1 | 16-09-2026 | Primera versión. Define la operación de ML predictivo (deriva, reentrenamiento, campeón/retador), IA generativa (evaluaciones continuas, calidad, alucinaciones, filtros, costes, versiones del proveedor), agentes (acciones, límites, anomalías de intención, interruptor de parada, permisos) e IA de terceros embebida; nueve capas de monitorización con umbrales tipo; tres clases de cambio con tabla de vuelta a *gate*; operación de incidentes S1–S4 con notificaciones regulatorias; paquete y resultados de R6; vigilancia posterior a la comercialización; continuidad y reversión; registros y conservación; retirada técnica; diecisiete indicadores y el contenido mínimo de P24–P27. Ajustes de coherencia con 01 (separación de funciones en Lite, resultados de R6, criterio de agentes) y con 34 y 37. |
 | 0.1 | 18-09-2026 | Deriva de uso en IA generativa y agentes (4.2.6); sesgo en las respuestas con pares contrafactuales (4.2.7); capas 3 y 5 y umbrales ampliados; activar un modo degradado previsto no es un cambio (6.4); degradación por coste en cascada N0–N4 con modelo de respaldo validado en G5 (10.3); indicadores OPE-18 a OPE-20; requisitos Lite y Enterprise y contenido de P24 y P25. |
+| 0.2 | 19-10-2026 | Trazas de extremo a extremo (4.3.1); eficacia de los guardarraíles en la capa 7 (5.1 y 5.2); dependencia del proveedor de modelos con tiempo de recuperación y prueba periódica del respaldo (10.2); indicadores OPE-21 a OPE-23 y operación Lite y Enterprise (D159). |

@@ -5,8 +5,8 @@
 | | |
 |---|---|
 | Documento | Plantilla P55 · Cuestionario de diligencia debida a proveedores de IA |
-| Versión | 0.1 (borrador de trabajo) |
-| Fecha | 19-09-2026 |
+| Versión | 0.2 (borrador de trabajo) |
+| Fecha | 19-10-2026 |
 | Autor | Fernando García Varela |
 | Estado | Borrador para revisión. |
 
@@ -20,7 +20,7 @@
 
 | Aspecto | Indicación |
 |---|---|
-| **Cuándo se usa** | En la etapa 2 del ciclo del proveedor (36 §5), en la fase 3 y antes de G3, una vez fijado el nivel de exigencia preliminar en P14 §3. Se repite ante cualquier disparador de reevaluación (36 §5) y antes de renovar el contrato. El anexo A se usa con los proveedores de software ya contratado (36 §8.1) desde C1 y en cada R6. |
+| **Cuándo se usa** | En la etapa 2 del ciclo del proveedor (36 §5), en la fase 3 y antes de G3, una vez fijado el nivel de exigencia preliminar en P14 §3. Se repite ante cualquier disparador de reevaluación (36 §5) y antes de renovar el contrato. El anexo A se usa con los proveedores de software ya contratado (36 §8.1) desde C1 y en cada R6. También antes de probar una herramienta externa de IA con datos de la compañía que no sean públicos o sintéticos: probar también es usar (36 §2, principio 8). |
 | **Quién la rellena** | El proveedor responde y aporta evidencias. Compras envía el cuestionario y coordina. Valoran: el responsable técnico de IA (bloques 2, 9 y 11), seguridad de la información (bloque 5), protección de datos (bloques 3, 4 y 7), asesoría jurídica (bloques 6 y 8) y el responsable de riesgos de IA (bloques 1, 10 y 12 y valoración global). |
 | **Quién la verifica** | Lite: responsable de riesgos de IA; si ha valorado el cuestionario, verifica la oficina de IA o el auditor de IA. Enterprise: auditor de IA, que comprueba en G3 y G5 que la diligencia corresponde al nivel (36 §11). |
 | **Quién decide o aprueba** | Según el nivel (36 §4.2): N1, responsable de producto de IA con conformidad de compras; N2, patrocinador de IA con conformidad de riesgos y de protección de datos; N3, comité de IA con conformidad de riesgos, seguridad de la información, protección de datos y asesoría jurídica. |
@@ -127,6 +127,11 @@ Columnas: **Nivel** indica desde qué nivel se formula la pregunta. **Respuesta*
 | 5.5 | Si el servicio incluye agentes: ¿qué identidad, permisos, límites de acción e interruptor de parada tienen? | Descripción frente a los controles AG del documento 35. | N2 | | |
 | 5.6 | ¿Cómo autentica y registra el acceso de su personal a los datos de la compañía? | Política de acceso; registros. | N2 | | |
 | 5.7 | ¿Acepta pruebas adversarias de la compañía o aporta informes independientes recientes de ese tipo? | Autorización de pruebas o informe. | N3 | | |
+| 5.8 | ¿Puede aportar informes independientes recientes de pruebas adversarias del servicio de IA (inyección de instrucciones, fuga, abuso de herramientas), con su fecha y alcance? | Informe o resumen ejecutivo. | N2 | | |
+| 5.9 | ¿Qué registros de entradas, salidas y acciones pone a disposición de la compañía, en qué formato y con qué conservación? | Descripción; muestra de registro. | N2 | | |
+| 5.10 | ¿Dónde se ejecutan los filtros, la monitorización y el almacenamiento de registros del propio servicio, y qué personal suyo accede a ellos? | Descripción; regiones. | N2 | | |
+
+Estas preguntas y la 5.1 (certificación ISO/IEC 42001 si existe) recogen los criterios de compra de seguridad de la IA de 36 §4.3.
 
 ### 4.6 Bloque 6 · Cumplimiento del Reglamento de IA
 
@@ -304,3 +309,4 @@ Separación de funciones: quien negocia el contrato no valora ni verifica el cue
 | Versión | Fecha | Cambios |
 |---|---|---|
 | 0.1 | 19-09-2026 | Primera versión. Doce bloques de 36 §4.3 graduados por nivel N1–N3, escala de valoración, verificación en N3 y anexo de IA embebida (36 §8). |
+| 0.2 | 19-10-2026 | Preguntas 5.8 a 5.10 (criterios de compra de seguridad de la IA, 36 §4.3) y uso antes de cualquier prueba con datos de la compañía (36 §2, principio 8) (D159). |

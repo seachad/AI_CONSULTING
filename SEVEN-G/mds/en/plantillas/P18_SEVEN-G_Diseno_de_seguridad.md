@@ -5,8 +5,8 @@
 | | |
 |---|---|
 | Document | Template P18 · Security design (including agents) |
-| Version | 0.1 (working draft) |
-| Date | 16-09-2026 |
+| Version | 0.2 (working draft) |
+| Date | 19-10-2026 |
 | Author | Fernando García Varela |
 | Status | Draft for review. |
 
@@ -68,6 +68,9 @@ Rules:
 | Consumption and cost abuse | | | | | |
 | Supply chain (models, libraries, suppliers) | | | | | |
 | Lack of traceability of actions and intents | | | | | |
+| Tool and connector poisoning (description with hidden instructions, changes after approval, excessive scopes) | | | AG-13 | | |
+| Traffic to models outside the corporate AI gateway | | | SEG-26 | | |
+| Customer impersonation with AI (direct exposure) | | | 35 §9.1; RT-SEG-09 | | |
 | Impersonation or synthetic content used against the process **(Enterprise)** | | | | | |
 
 ---
@@ -174,7 +177,7 @@ By default, a sensitive action without validation **is cancelled**; it is never 
 
 ## 11. Security testing, including prompt injection
 
-**Type:** Direct injection · Indirect injection · Information leakage · Privilege escalation · Limit evasion · Consumption abuse · Kill switch test · Other. **Result:** Passed · Passed with observations · Failed · Pending.
+**Type:** Direct injection · Indirect injection · Information leakage · Privilege escalation · Limit evasion · Consumption abuse · Kill switch test · Corporate test bench (SEG-27) · Other. **Result:** Passed · Passed with observations · Failed · Pending.
 
 | Test | Type | Date | Performed by | Result | Findings | Action and owner |
 |---|---|---|---|---|---|---|
@@ -222,3 +225,4 @@ Segregation of duties: information security and the verifier are not part of the
 | Version | Date | Changes |
 |---|---|---|
 | 0.1 | 16-09-2026 | First version of the template. |
+| 0.2 | 19-10-2026 | Threats of tool and connector poisoning, traffic outside the corporate AI gateway and customer impersonation with AI (3); test type "corporate test bench" (11) (D159). |

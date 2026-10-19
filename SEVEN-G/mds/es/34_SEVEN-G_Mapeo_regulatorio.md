@@ -5,8 +5,8 @@
 | | |
 |---|---|
 | Documento | Documento 34 · Mapeo regulatorio |
-| Versión | 0.4 (borrador de trabajo) |
-| Fecha | 01-10-2026 |
+| Versión | 0.5 (borrador de trabajo) |
+| Fecha | 19-10-2026 |
 | Autor | Fernando García Varela |
 | Estado | Borrador para revisión. Fecha de consulta de las fuentes: 16-09-2026. Requiere revisión jurídica cualificada antes de su uso. |
 
@@ -450,7 +450,7 @@ El **Cyber AI Profile** (NIST IR 8596) es el perfil comunitario del CSF 2.0 para
 
 | Área | Qué cubre | Dónde lo cubre SEVEN-G | Controles | Cobertura en la versión 0.x |
 |---|---|---|---|---|
-| **Secure** | Proteger los componentes de los sistemas de IA: modelos, datos, instrucciones, agentes, conectores y cadena de suministro. | 35 §3–§8; riesgos tipo RT-GEN y RT-SEG del documento 33; documento 36 | SEG-01 a SEG-14; AG-01 a AG-20 | Cubierta |
+| **Secure** | Proteger los componentes de los sistemas de IA: modelos, datos, instrucciones, agentes, conectores y cadena de suministro. | 35 §3–§8; riesgos tipo RT-GEN y RT-SEG del documento 33; documento 36 | SEG-01 a SEG-14, SEG-26 y SEG-27; AG-01 a AG-20 | Cubierta |
 | **Defend** | Usar la IA en la ciberdefensa de la compañía: detección y respuesta asistidas. | 35 §9.3: caso de uso con la autonomía de la respuesta fijada por tipo de acción, supervisión humana de la contención, calidad de la detección, dependencia del proveedor y pruebas del propio sistema defensivo; riesgo tipo RT-SEG-08. | SEG-21 a SEG-25; A0–A3; AG- | Cubierta |
 | **Thwart** | Frustrar los ataques que usan IA: suplantación sintética, *phishing* generado, explotación acelerada. | 35 §9 | SEG-15 a SEG-19; SEG-13 | Cubierta |
 
@@ -775,7 +775,7 @@ Generado desde `crosswalk.json` (versión 1, 01-10-2026; versión del núcleo 1)
 | 4 | Principios de la gestión del riesgo aplicados a la IA | N-10 | 33 §1–§3 | P12 | Directa | — |
 | 5 | Marco de referencia: liderazgo, integración, diseño, implementación, evaluación y mejora de la gestión del riesgo | N-06, N-12 | 13; 30; 33 | P35, P38 | Directa | — |
 | 6.2–6.3 | Comunicación y consulta; alcance, contexto y criterios del riesgo | N-12 | 13 §5; 33 §4 | P35; T06 | Directa | — |
-| 6.4 | Evaluación del riesgo: identificación, análisis y valoración | N-10 | 33 §4–§9 (escala 5 × 5 y 71 riesgos tipo) | P12; T06 | Directa | — |
+| 6.4 | Evaluación del riesgo: identificación, análisis y valoración | N-10 | 33 §4–§9 (escala 5 × 5 y 72 riesgos tipo) | P12; T06 | Directa | — |
 | 6.5 | Tratamiento del riesgo | N-10 | 33 §8; 35 | P13, P18; T06 | Directa | — |
 | 6.6–6.7 | Seguimiento y revisión; registro e informe | N-11, N-13 | 33 §10–§11; 52; 60 | P25, P65; T06, T17 | Directa | — |
 
@@ -949,3 +949,4 @@ Fecha de consulta: 16-09-2026, salvo las fuentes de la sección 5.3, la correspo
 | 0.2 | 25-09-2026 | Añade la sección 5.3, NIST CSF 2.0 y Cyber AI Profile: funciones del CSF aplicadas a los sistemas de IA, áreas Secure, Defend y Thwart del perfil (en borrador) y advertencia de que los *tiers* no son niveles de madurez por subcategoría; el estado «Borrador» en la sección 1.4; la columna del CSF en la matriz resumen; la correspondencia AI RMF ↔ ISO/IEC 42001 del AIRC en la sección 4.3; las fuentes nuevas en la sección 13; y las secciones 5.4 (las 72 subcategorías del AI RMF) y 5.5 (las 48 subcategorías del CSF 2.0 con prioridad alta en el Cyber AI Profile, selección provisional), con su cobertura en SEVEN-G y la pregunta del documento 11 que da su nivel. Corrige el estado de ISO/IEC 42001: publicada (etapa 60.60), sin revisión en curso. Enlaza las plantillas P72 (perfil de seguridad de IA), P73 (perfil de gobierno de IA) y P74 (declaración de aplicabilidad de ISO/IEC 42001). Sustituye las afirmaciones que no se apoyaban en una fuente oficial por su fuente oficial (Reglamento (UE) 2026/1744 en EUR-Lex, NIS2 en España, Reino Unido, Espacio Europeo de Datos de Salud, Convenio Marco del Consejo de Europa y propuesta de modificación del RGPD) y retira el estado de verificación que admitía análisis de terceros. |
 | 0.3 | 25-09-2026 | El área Defend del Cyber AI Profile (en borrador) pasa a tener cobertura: sección 9.3 del documento 35, controles SEG-21 a SEG-25 y riesgo tipo RT-SEG-08. |
 | 0.4 | 01-10-2026 | Añade la sección 9.1, crosswalk de cobertura con ISO/IEC 42001, ISO/IEC 38507, ISO/IEC 23894, ISO/IEC 42005, el NIST AI RMF y el Reglamento Europeo de IA: por cada requisito, dónde lo cubre SEVEN-G, con qué regla del núcleo, con qué evidencia y con qué cobertura (directa, parcial, requiere control externo o no cubierto). Las tablas se generan desde `crosswalk.json`. |
+| 0.5 | 19-10-2026 | Área Secure con la pasarela corporativa de IA (SEG-26) y el banco de pruebas corporativo de agentes (SEG-27); 72 riesgos tipo en el crosswalk (D159). |

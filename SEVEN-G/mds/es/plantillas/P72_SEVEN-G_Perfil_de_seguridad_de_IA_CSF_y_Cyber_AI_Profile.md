@@ -5,8 +5,8 @@
 | | |
 |---|---|
 | Documento | Plantilla P72 · Perfil de seguridad de IA (CSF 2.0 / Cyber AI Profile) |
-| Versión | 0.1 (borrador de trabajo) |
-| Fecha | 25-09-2026 |
+| Versión | 0.3 (borrador de trabajo) |
+| Fecha | 19-10-2026 |
 | Autor | Fernando García Varela |
 | Estado | Borrador para revisión. La selección de subcategorías y sus prioridades dependen del Cyber AI Profile, que a 25-09-2026 es un borrador. |
 
@@ -153,7 +153,7 @@ Cada área se resume con las subcategorías a las que el perfil da prioridad 1 e
 
 | Área | Qué cubre | Subcategorías con prioridad 1 | Nivel actual mínimo | Subcategorías con brecha | Cobertura en SEVEN-G |
 |---|---|---|---|---|---|
-| **Secure** | Proteger los componentes de los sistemas de IA. | 23 | | | 35 §3–§8; SEG-01 a SEG-14; AG-01 a AG-20 |
+| **Secure** | Proteger los componentes de los sistemas de IA. | 23 | | | 35 §3–§8; SEG-01 a SEG-14, SEG-26 y SEG-27; AG-01 a AG-20 |
 | **Defend** | Usar la IA en la ciberdefensa de la compañía. | 28 | | | 35 §9.3; SEG-21 a SEG-25 y niveles de autonomía A0–A3 |
 | **Thwart** | Frustrar los ataques que usan IA. | 24 | | | 35 §9; SEG-13, SEG-15 a SEG-19 |
 
@@ -211,3 +211,4 @@ Separación de funciones: quien diseña o implanta un control no evalúa las sub
 |---|---|---|
 | 0.1 | 25-09-2026 | Primera versión. Perfil actual y objetivo de las 48 subcategorías del NIST CSF 2.0 con prioridad alta en alguna área del Cyber AI Profile (borrador preliminar de diciembre de 2025), en la escala 0–5 del documento 11, con el nivel derivado del cuestionario (11 §7.5), la brecha, el *tier* equivalente como vista y los resúmenes por función del CSF y por área Secure, Defend y Thwart. |
 | 0.2 | 25-09-2026 | El área Defend remite al 35 §9.3 y a los controles SEG-21 a SEG-25. |
+| 0.3 | 19-10-2026 | El área Secure incluye la pasarela corporativa de IA (SEG-26) y el banco de pruebas corporativo de agentes (SEG-27) (D159). |

@@ -5,8 +5,8 @@
 | | |
 |---|---|
 | Documento | Documento 36 · Terceros y proveedores de IA |
-| Versión | 0.1 (borrador de trabajo) |
-| Fecha | 16-09-2026 |
+| Versión | 0.2 (borrador de trabajo) |
+| Fecha | 19-10-2026 |
 | Autor | Fernando García Varela |
 | Estado | Borrador para revisión. Define los niveles de exigencia N1–N3 que usan los documentos 33 y 34, la plantilla P14 y la herramienta T09. |
 
@@ -59,6 +59,9 @@ Este documento no constituye asesoramiento jurídico. El contenido contractual d
 | 5 | **Ningún cambio de modelo sin saberlo** | El proveedor informa de los cambios relevantes y la compañía los evalúa. |
 | 6 | **La concentración se gestiona en cartera** | La dependencia de un proveedor se mide en todos los sistemas, no solo en uno. |
 | 7 | **La IA que llega por actualización también se gobierna** | Las funciones de IA de software ya contratado entran en el inventario y se evalúan. |
+| 8 | **Probar también es usar** | Ninguna herramienta externa de IA se usa con datos de la compañía —tampoco para probarla, investigar o compararla— sin la evaluación de proveedor (P55) proporcionada a su nivel N1–N3. Una prueba con datos sintéticos o públicos no la necesita; con datos internos, personales o confidenciales, sí. |
+
+> **Por qué importa.** Muchas fugas no ocurren en producción sino en la prueba: alguien sube un documento real a una herramienta «solo para ver qué tal funciona». Tratar la prueba como uso hace que la evaluación del proveedor llegue antes que los datos.
 
 ---
 
@@ -142,6 +145,8 @@ Un proveedor N3 implica normalmente intensidad **Enterprise** en las iniciativas
 12. **Ética y uso responsable:** políticas de uso aceptable, gestión de sesgo, restricciones de uso.
 
 El cuestionario completo está en P55. Un resultado **No conforme** en los bloques 3 (datos), 5 (seguridad) o 7 (protección de datos) impide usar el proveedor con datos de producción hasta resolverlo.
+
+**Criterios de compra de seguridad de la IA.** En N2 y N3 la compañía pide además: certificación ISO/IEC 42001 del servicio, si existe, con su alcance; informes independientes recientes de pruebas adversarias del servicio de IA; derecho a hacer pruebas propias (N3); acceso a los registros de entradas, salidas y acciones que necesitan la monitorización y la investigación de incidentes (52 §11); y ubicación del tratamiento, incluidos los filtros y la monitorización del propio proveedor. Se recogen en el bloque 5 de P55.
 
 ---
 
@@ -356,3 +361,4 @@ Al consejo o su comisión delegada se informa trimestralmente de la concentraci�
 | Versión | Fecha | Cambios |
 |---|---|---|
 | 0.1 | 16-09-2026 | Primera versión. Define los criterios para construir, comprar, adaptar o aliarse; los niveles de exigencia N1–N3 con cuatro factores y requisitos por nivel; el ciclo de vida del proveedor; dieciséis cláusulas contractuales clave, con las obligaciones del Reglamento de IA en la cadena de valor y DORA; la gestión de la dependencia y la concentración; el tratamiento de la IA embebida y los campos del registro de proveedores. |
+| 0.2 | 19-10-2026 | Principio 8 «Probar también es usar» y criterios de compra de seguridad de la IA (4.3) (D159). |

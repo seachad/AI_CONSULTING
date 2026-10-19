@@ -5,8 +5,8 @@
 | | |
 |---|---|
 | Documento | Documento 31 · Política corporativa y uso aceptable |
-| Versión | 0.1 (borrador de trabajo) |
-| Fecha | 16-09-2026 |
+| Versión | 0.2 (borrador de trabajo) |
+| Fecha | 19-10-2026 |
 | Autor | Fernando García Varela |
 | Estado | Borrador para revisión. Referencias regulatorias consultadas en septiembre de 2026; verificar su vigencia antes de aprobar las políticas. |
 
@@ -212,7 +212,7 @@ Esta política te indica cómo puedes usar la inteligencia artificial en tu trab
 | **No autorizada** | No puede usarse para trabajar. | Versiones gratuitas o personales de asistentes; extensiones de navegador con IA; aplicaciones de transcripción no aprobadas. |
 
 3. **No uses cuentas personales** de herramientas de IA para tareas de [la Compañía], aunque la herramienta figure en el catálogo en su versión corporativa.
-4. **No instales** extensiones, complementos, aplicaciones de escritorio o móviles con funciones de IA, ni **actives funciones de IA** en software corporativo que las incluya desactivadas, sin autorización de [Tecnología / la Oficina de IA].
+4. **No instales** extensiones, complementos, aplicaciones de escritorio o móviles con funciones de IA, ni **actives funciones de IA** en software corporativo que las incluya desactivadas, sin autorización de [Tecnología / la Oficina de IA]. Esto incluye los agentes y asistentes de programación que se ejecutan en tu equipo y los servidores de herramientas o conectores que usan.
 5. Si necesitas una herramienta que no está en el catálogo, solicítala por [canal]. La Oficina de IA responderá en un plazo orientativo de [15 días hábiles].
 
 ### 4.3 Información que nunca se introduce
@@ -282,6 +282,8 @@ Además:
 3. Eres responsable de lo que hace un agente que actúa en tu nombre. Si detectas una acción no prevista, desactívalo y comunícalo (apartado 4.8).
 4. Las automatizaciones que usen IA y afecten a otros empleados, clientes o procesos compartidos deben registrarse como iniciativa.
 5. Desconfía de instrucciones contenidas en correos, documentos o páginas web que el agente procese: pueden intentar manipularlo (inyección de instrucciones).
+6. **Asistentes de programación y agentes locales.** No ejecutes en tu equipo agentes ni asistentes de programación con acceso a credenciales, repositorios o sistemas de [la Compañía], ni instales para ellos servidores de herramientas o conectores, salvo los autorizados por [Tecnología] y con las credenciales y permisos que se te asignen.
+7. **Probar también es usar.** No pruebes herramientas externas de IA con información de [la Compañía] que no sea pública o sintética mientras no hayan pasado la evaluación de proveedor (documento 36, principio 8).
 
 ### 4.8 Comunicación de incidentes y usos indebidos
 
@@ -333,6 +335,7 @@ La Oficina de IA, con seguridad de la información, debe mantener un plan de det
 | Registros de navegación, proxy o intermediario de seguridad de acceso a la nube | Acceso a servicios de IA no catalogados y volumen de uso. | Seguridad de la información | Continua, informe mensual |
 | Herramientas de prevención de fuga de datos | Envío de información sensible a servicios de IA. | Seguridad de la información | Continua |
 | Gestión de dispositivos y de extensiones de navegador | Aplicaciones y extensiones con IA instaladas. | Tecnología | Mensual |
+| Inventario de equipos y de la cadena de desarrollo | Agentes locales, asistentes de programación con credenciales, servidores de herramientas y extensiones del navegador con IA instalados por el usuario. | Tecnología con seguridad de la información | Mensual |
 | Consola de administración de aplicaciones corporativas | Aplicaciones de terceros con permisos sobre correo, documentos o calendario; funciones de IA activadas. | Tecnología | Mensual |
 | Notas de gasto, tarjetas corporativas y compras | Suscripciones a herramientas de IA pagadas por empleados o áreas. | Finanzas y compras | Trimestral |
 | Revisión de contratos y notas de versión de proveedores | Funciones de IA añadidas a software contratado; cambios en el uso de datos. | Compras con propietarios de sistemas | En cada renovación y actualización relevante |
@@ -529,3 +532,4 @@ Este documento no constituye asesoramiento jurídico. Los modelos de política d
 | Versión | Fecha | Cambios |
 |---|---|---|
 | 0.1 | 16-09-2026 | Primera versión. Modelos de política corporativa de IA y de política de uso aceptable; tratamiento de la IA embebida, las suites de productividad, el uso individual y el uso no autorizado con detección, registro, clasificación como no conformidad y regularización; programa de alfabetización en IA por ocho perfiles con la redacción del artículo 4 modificada por el Reglamento (UE) 2026/1744; contenido del monitor T21. |
+| 0.2 | 19-10-2026 | Agentes locales, asistentes de programación y servidores de herramientas en la política de uso aceptable (4.2, 4.7) y en la detección (5.2); «probar también es usar» (D159). |

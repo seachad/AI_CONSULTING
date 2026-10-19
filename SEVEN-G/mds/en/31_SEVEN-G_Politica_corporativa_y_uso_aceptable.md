@@ -5,8 +5,8 @@
 | | |
 |---|---|
 | Document | Document 31 · Corporate policy and acceptable use |
-| Version | 0.1 (working draft) |
-| Date | 16-09-2026 |
+| Version | 0.2 (working draft) |
+| Date | 19-10-2026 |
 | Author | Fernando García Varela |
 | Status | Draft for review. Regulatory references consulted in September 2026; verify that they remain current before approving the policies. |
 
@@ -212,7 +212,7 @@ This policy tells you how you may use artificial intelligence in your work at [t
 | **Not authorised** | May not be used for work. | Free or personal versions of assistants; AI-enabled browser extensions; unapproved transcription applications. |
 
 3. **Do not use personal accounts** of AI tools for tasks of [the Company], even if the corporate version of the tool is listed in the catalogue.
-4. **Do not install** extensions, plug-ins, desktop or mobile applications with AI functions, or **enable AI functions** in corporate software in which they are disabled, without authorisation from [Technology / the AI Office].
+4. **Do not install** extensions, plug-ins, desktop or mobile applications with AI functions, or **enable AI functions** in corporate software in which they are disabled, without authorisation from [Technology / the AI Office]. This includes agents and coding assistants that run on your device and the tool servers or connectors they use.
 5. If you need a tool that is not in the catalogue, request it through [channel]. The AI Office will respond within an indicative period of [15 working days].
 
 ### 4.3 Information that is never entered
@@ -282,6 +282,8 @@ In addition:
 3. You are responsible for what an agent acting on your behalf does. If you detect an unexpected action, deactivate it and report it (paragraph 4.8).
 4. Automations that use AI and affect other employees, customers or shared processes must be registered as an initiative.
 5. Be wary of instructions contained in emails, documents or web pages processed by the agent: they may attempt to manipulate it (prompt injection).
+6. **Coding assistants and local agents.** Do not run on your device agents or coding assistants with access to the credentials, repositories or systems of [the Company], or install tool servers or connectors for them, except those authorised by [Technology] and with the credentials and permissions assigned to you.
+7. **Testing is also using.** Do not test external AI tools with information of [the Company] that is not public or synthetic until they have passed the supplier assessment (document 36, principle 8).
 
 ### 4.8 Reporting incidents and misuse
 
@@ -333,6 +335,7 @@ The AI Office, together with information security, must maintain a detection pla
 | Browsing, proxy or cloud access security broker logs | Access to uncatalogued AI services and volume of use. | Information security | Continuous, monthly report |
 | Data loss prevention tools | Sending of sensitive information to AI services. | Information security | Continuous |
 | Device and browser extension management | Installed AI-enabled applications and extensions. | Technology | Monthly |
+| Inventory of devices and the development chain | Local agents, coding assistants with credentials, tool servers and AI browser extensions installed by the user. | Technology with information security | Monthly |
 | Corporate application administration console | Third-party applications with permissions over email, documents or calendar; AI functions enabled. | Technology | Monthly |
 | Expense claims, corporate cards and procurement | Subscriptions to AI tools paid for by employees or areas. | Finance and procurement | Quarterly |
 | Review of supplier contracts and release notes | AI functions added to contracted software; changes in the use of data. | Procurement with system owners | At each renewal and relevant update |
@@ -529,3 +532,4 @@ This document does not constitute legal advice. The policy templates must be ada
 | Version | Date | Changes |
 |---|---|---|
 | 0.1 | 16-09-2026 | First version. Templates for the corporate AI policy and the acceptable use policy; treatment of embedded AI, productivity suites, individual use and unauthorised use with detection, recording, classification as a nonconformity and regularisation; AI literacy programme across eight profiles with the wording of Article 4 as amended by Regulation (EU) 2026/1744; content of the T21 monitor. |
+| 0.2 | 19-10-2026 | Local agents, coding assistants and tool servers in the acceptable use policy (4.2, 4.7) and in detection (5.2); "testing is also using" (D159). |

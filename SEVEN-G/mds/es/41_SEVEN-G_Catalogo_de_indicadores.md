@@ -5,12 +5,12 @@
 | | |
 |---|---|
 | Documento | Documento 41 · Catálogo de indicadores |
-| Versión | 0.2 (borrador de trabajo) |
-| Fecha | 01-10-2026 |
+| Versión | 0.3 (borrador de trabajo) |
+| Fecha | 19-10-2026 |
 | Autor | Fernando García Varela |
 | Estado | Borrador para revisión. Catálogo vivo: los umbrales se fijan por cada compañía y se recalibran en C5. |
 
-<!-- cifras: 162 | indicadores codificados ; 13 | familias ; 4 | niveles de uso ; 26 | indicadores del conjunto mínimo Lite -->
+<!-- cifras: 165 | indicadores codificados ; 13 | familias ; 4 | niveles de uso ; 26 | indicadores del conjunto mínimo Lite -->
 
 ---
 
@@ -69,7 +69,7 @@ Ninguna compañía necesita todos los indicadores. Se seleccionan en C2 según l
 | **EMB** | Embudo | 13 |
 | **AGI** | Agilidad | 6 |
 | **RIE** | Riesgo y cumplimiento | 17 |
-| **OPE** | Operación y calidad de modelos | 26 |
+| **OPE** | Operación y calidad de modelos | 29 |
 | **ADO** | Adopción y personas | 15 |
 | **DAT** | Datos y conocimiento | 20 |
 | **CLI** | Cliente y producto | 9 |
@@ -77,7 +77,7 @@ Ninguna compañía necesita todos los indicadores. Se seleccionan en C2 según l
 | **MAD** | Madurez | 4 |
 | **CON** | Consejo | 5 |
 | **PRO** | Procesos y decisión | 6 |
-| | **Total** | **162** |
+| | **Total** | **165** |
 
 ---
 
@@ -222,6 +222,9 @@ Definiciones de los tramos en el documento 40 §9. Todos se segmentan por nivel 
 | IND-OPE-22 | **Ruido de alertas.** Alertas que se cierran sin acción. | Alertas cerradas sin acción ÷ alertas generadas | % | Monitorización · P25 | M | A definir por la compañía | I · Ca | F6 | Tendencia decreciente | |
 | IND-OPE-23 | **Versiones de proveedor en riesgo.** Sistemas con versión de modelo de proveedor con obsolescencia anunciada y sin plan de migración. | Sistemas cuya versión de modelo de proveedor tiene obsolescencia anunciada sin plan de migración ÷ sistemas con modelo de proveedor | % | A definir por la compañía | M | A definir por la compañía | Ca | F6 | 0 % | |
 | IND-OPE-26 | **Modo degradado por coste.** Días en que el sistema funciona degradado por agotar el presupuesto de consumo y calidad durante el modo. | Días del periodo en N1 o superior de la cascada (documento 52 §10.3), por nivel; y calidad medida en el modo ÷ calidad mínima de P25 | días · % | P27 · P25 | M | RO | I · Ca | F6 · IA generativa, agentes | Tendencia decreciente; calidad ≥ 100 % del mínimo | |
+| IND-OPE-27 | **Eficacia de los guardarraíles.** Escenarios del banco de pruebas de agentes detectados o bloqueados, leídos con los falsos positivos y las desactivaciones. | Escenarios del banco (SEG-27) detectados o bloqueados ÷ escenarios ejecutados; falsos positivos en tráfico legítimo muestreado ÷ muestra; nº de desactivaciones | % · nº | Banco de pruebas · P25 · P53 | M y en cada despliegue | SEG | I · Ca · Cj | F5–F6 · IA generativa, agentes | Cero escenarios críticos sin detectar; resto según P25 | |
+| IND-OPE-28 | **Cobertura de trazas de extremo a extremo.** Peticiones trazadas con identificador de correlación hasta el resultado y recibidas en la monitorización de seguridad. | Peticiones con traza completa recibida ÷ peticiones | % | Monitorización de seguridad · P25 | M | RO | I · Ca | F6 · IA generativa, agentes | 100 % con exposición directa y en A2–A3 | |
+| IND-OPE-29 | **Recuperación ante la caída del proveedor de modelos.** Sistemas que soportan casos críticos con el cambio al respaldo probado en plazo y dentro del tiempo objetivo. | Sistemas con prueba en plazo y tiempo real ≤ objetivo de P24 ÷ sistemas que soportan casos críticos con modelo de proveedor | % | P24 · P19 | S | RO | Ca · Cj | F6 | 100 % | |
 
 ### 11.2 Aprendizaje automático predictivo
 
@@ -541,6 +544,9 @@ Los documentos 10, 50, 51 y 52 usan códigos provisionales de indicadores. Esta 
 | OPE-18 | 52 | Modo degradado por coste | IND-OPE-26 (incorporado) |
 | OPE-19 | 52 | Consultas fuera del alcance validado | IND-OPE-24 (incorporado) |
 | OPE-20 | 52 | Respuestas desiguales en pares contrafactuales | IND-OPE-25 (incorporado) |
+| OPE-21 | 52 | Eficacia de los guardarraíles | IND-OPE-27 (incorporado) |
+| OPE-22 | 52 | Cobertura de trazas de extremo a extremo | IND-OPE-28 (incorporado) |
+| OPE-23 | 52 | Recuperación ante la caída del proveedor de modelos | IND-OPE-29 (incorporado) |
 
 ---
 
@@ -585,3 +591,4 @@ Los documentos 10, 50, 51 y 52 usan códigos provisionales de indicadores. Esta 
 | 0.1 | 16-09-2026 | Primera versión. Catálogo de 156 indicadores en 13 familias con código, fórmula, unidad, fuente, periodicidad, responsable, nivel, aplicación y umbral orientativo; conjunto mínimo Lite de 26 indicadores; selección orientativa para el panel del consejo. Ajustes de coherencia con 01 (separación de funciones en Lite, resultados de R6, criterio de agentes) y con 34 y 37; correspondencia de códigos provisionales de los documentos 10, 50, 51 y 52 (sección 21). Incorporados al catálogo los 47 indicadores provisionales que no tenían equivalente (familias EMB, RIE, OPE, ADO, DAT y CLI, y nueva familia PRO · Procesos y decisión, sección 18); prefijo provisional de conocimiento del documento 51 renombrado de CON- a CNC-. |
 | 0.1 | 18-09-2026 | Tres indicadores nuevos de operación (159 en total): IND-OPE-24 consultas fuera del alcance validado (deriva de uso), IND-OPE-25 respuestas desiguales en pares contrafactuales (sesgo en IA generativa) e IND-OPE-26 modo degradado por coste; correspondencia con OPE-18 a OPE-20 del documento 52. |
 | 0.2 | 01-10-2026 | Tres indicadores del coste del propio gobierno (162 en total): IND-COS-12 horas de gobierno por iniciativa, IND-COS-13 coste del gobierno sobre la inversión con objetivos por intensidad e IND-COS-14 evidencias referenciadas. El tiempo de cada puerta ya lo mide IND-AGI-04. |
+| 0.3 | 19-10-2026 | Tres indicadores de operación (165 en total): IND-OPE-27 eficacia de los guardarraíles, IND-OPE-28 cobertura de trazas de extremo a extremo e IND-OPE-29 recuperación ante la caída del proveedor de modelos; correspondencia con OPE-21 a OPE-23 del documento 52 (D159). |

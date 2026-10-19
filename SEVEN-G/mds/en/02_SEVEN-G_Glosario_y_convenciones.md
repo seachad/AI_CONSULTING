@@ -5,12 +5,12 @@
 | | |
 |---|---|
 | Document | Document 02 · Glossary and conventions |
-| Version | 1.7 |
-| Date | 01-10-2026 |
+| Version | 1.8 |
+| Date | 19-10-2026 |
 | Author | Fernando García Varela |
 | Status | In force. Single source of the framework's terms, scales and codes; it is updated before any other document when a term changes. |
 
-<!-- cifras: 209 | defined terms ; 18 | official scales ; 32 | code families ; 68 | numbered documents and templates -->
+<!-- cifras: 213 | defined terms ; 18 | official scales ; 32 | code families ; 68 | numbered documents and templates -->
 
 ---
 
@@ -157,7 +157,7 @@ Alphabetical order by English term. The full scales are in section 4 and the cod
 | **AI Product Owner** | Building role: accountable for the value hypothesis, actual use and adoption. It cannot verify evidence or decide *gates* of its initiative. | 01 §8.1 | Responsable de producto de IA |
 | **AI reviewer** | AI tool that reviews plans, code, tests or security within the building team (SEVEN-G name for the SPAD *AI Auditor* role). It approves nothing and is not the AI Auditor. | 53 §5 | IA revisora |
 | **AI Risk Owner** | Control role: accountable for the assessment and monitoring of risks and compliance, and issues risk clearance. It cannot be part of the team that builds the initiative. | 01 §8.1 | Responsable de riesgos de IA |
-| **AI security control (SEG) · agent control (AG)** | Catalogues of coded controls: SEG-01 to SEG-25 for AI systems (SEG-21 to SEG-25, use of AI in cyber defence) and AG-01 to AG-20 for agents, with mandatory minimums by autonomy level. | 35 §5–7 | Control de seguridad de IA (SEG) · control de agentes (AG) |
+| **AI security control (SEG) · agent control (AG)** | Catalogues of coded controls: SEG-01 to SEG-27 for AI systems (SEG-21 to SEG-25, use of AI in cyber defence; SEG-26, corporate AI gateway; SEG-27, corporate agent test bench) and AG-01 to AG-20 for agents, with mandatory minimums by autonomy level. | 35 §5–7 | Control de seguridad de IA (SEG) · control de agentes (AG) |
 | **AI Sponsor** | Deciding role: accountable for value and investment, and champions the initiative before the bodies. It cannot verify evidence or act as risk owner or auditor of its initiative. | 01 §8.1 | Patrocinador de IA |
 | **AI supplier (third party)** | Third party that supplies models, platforms, software with AI features or services that use them, managed with requirement levels N1–N3. | 36 | Proveedor de IA (tercero) |
 | **AI system** | Machine-based system that, with varying levels of autonomy, infers from the input it receives how to generate outputs—predictions, content, recommendations or decisions—that can influence physical or virtual environments. It is aligned with the EU AI Act definition and is identified in the inventory with the code SIA-AAAA-NNN. | 01 §4; 32 §2 | Sistema de IA |
@@ -201,6 +201,8 @@ Alphabetical order by English term. The full scales are in section 4 and the cod
 | **Context and constraints statement** | Phase 0 evidence that declares the initiative's regulatory, ethical, data, budget and time constraints. | 01 §6.2; P02 | Declaración de contexto y restricciones |
 | **Controlled taxonomy** | Closed lists of initiative register tags (sphere, ambition level, intensity, regulatory classification, technology, exposure, value type and stop or retirement reason) that make it possible to filter, compare and aggregate the portfolio. | 03 §3.3; section 5 | Taxonomía controlada |
 | **Core (SEVEN-G core)** | Minimum, stable set of fourteen rules (N-01 to N-14) that distinguishes applying SEVEN-G from using some of its templates: inventory, register, intensity, gates, G3 separately, segregation of duties, dual validation, "Yes ◆" criteria, value hypothesis, risks, rollback and continuity, board, measurement and nonconformities. It is the same for every company, intensity and scope, has its own version and only changes by express decision of the author. | 01 §14.1; 94 §3 | Núcleo de SEVEN-G |
+| **Corporate agent test bench** | Versioned library of adversarial scenarios, derived from the threat model and from the company's own incidents, that tests agents and assistants through all their channels, tools and connectors with simulated users, built into the deployment pipeline: at A2 and A3 it runs at every deployment and a successful critical scenario blocks deployment; at A0 and A1, before G5 and after relevant changes (SEG-27). | 35 §6, §8 | Banco de pruebas corporativo de agentes |
+| **Corporate AI gateway** | Common control point, outside the model, through which all traffic to models passes: input, output and context filters, leakage prevention, quotas, approved models, logging with a correlation identifier and, for agents, the intent decision point, with the same measured configuration for every initiative (SEG-26). It fails closed for sensitive actions and degraded for queries. | 35 §6 | Pasarela corporativa de IA |
 | **Corporate cycle** | Company level of the framework: five annual stages with continuous oversight (C1 Diagnosis, C2 Direction, C3 Portfolio, C4 Oversight, C5 Review) through which the board and senior management govern AI. | 01 §5 | Ciclo corporativo |
 | **Corporate use of general-purpose AI** | AI assistants and productivity suites used by employees. It is governed with the inventory, the acceptable use policy, training and technical controls, and moves to the full lifecycle if it meets any Enterprise criterion. | 01 §1.2; 31 §5 | Uso corporativo de IA de propósito general |
 | **Coverage crosswalk** | Table showing, for each requirement of a standard or regulation (ISO/IEC 42001, 38507, 23894, 42005, NIST AI RMF, EU AI Act), where SEVEN-G covers it, with which core rule and which evidence, and its coverage: direct, partial, requires external control or not covered. It is generated from a versioned data file; it is not a certification or a declaration of conformity. | 34 §9.1 | crosswalk de cobertura |
@@ -260,6 +262,7 @@ Alphabetical order by English term. The full scales are in section 4 and the cod
 | **Generative AI** | Systems that generate content (text, image, audio, code) from instructions and context. It is a value of the technology tag and triggers the [GEN] criteria. | 03 §3.3; 21 §2.3; 35 | IA generativa |
 | **Governance and compliance enablement band** | Separate presentation, in the heat map, of the investment in initiatives whose primary sphere is 08 or 09. It is excluded from signals 1, 2 and 7 of the transformation index. | 10 §4.2; 12 §4.2 | Banda de habilitación de gobierno y cumplimiento |
 | **Grades of spheres 08 and 09** | Specific scale used to assess the dimensions of spheres 08 and 09: Absent, Basic, Systematic, Advanced (section 4.10). They are neither maturity levels nor ambition levels. | 10 §4.2 | Grados de las esferas 08 y 09 (Ausente · Básico · Sistemático · Avanzado) |
+| **Guardrail effectiveness** | Proportion of corporate test bench scenarios that the filters, the gateway and intent control detect or block, read together with false positives on legitimate traffic and deactivations in the period (OPE-21, IND-OPE-27). | 52 §5.2; 41 §11.1 | Eficacia de los guardarraíles |
 
 ### 3.8 H
 
@@ -420,6 +423,7 @@ Alphabetical order by English term. The full scales are in section 4 and the cod
 | **Three perspectives of the use case** | Presentation rule: each use case is shown with its economic value (in euros, with its status), its operational outcome (physical indicators with baseline, target and current value) and its risk exposure (main residual, open High and Critical risks, open incidents and nonconformities), side by side, without merging them or translating one into another. | 40 §11.1 (rule 11) | tres perspectivas del caso |
 | ***Tier* (CSF)** | NIST CSF degree that characterises the rigour of the cybersecurity risk governance and management practices of the whole organisation or of a unit: 1 Partial, 2 Risk Informed, 3 Repeatable and 4 Adaptive. It is not a maturity level for each subcategory and does not exist in the NIST AI RMF. Not translated. | 34 §5.3 | tier (CSF) |
 | **Time in phase · decision time** | **Time in phase**: days between entry into and exit from the phase, excluding time on hold. **Decision time**: days between the *gate* request and the decision. | 03 §3.5; 41 | Tiempo en fase · tiempo de decisión |
+| **Tool and connector poisoning** | Threat to agents: the description of a tool or connector carries hidden instructions, the tool changes after approval, requests excessive scopes or is installed without control. It is handled with AG-13 (description reviewed, version pinned and new approval on changes) and with the test bench (SEG-27). | 35 §3.2, §7 | Envenenamiento de herramientas y conectores |
 | **Transform** | Ambition level that changes what is offered, how the company competes or how it is organised. Value lies mainly in return and in changes to the operating model. It is always Enterprise and requires board approval at G2 and when scaling at G7. | 00 §4.1; 01 §7.5; 10 §3 | Transformar |
 | **Transformation declaration** | Situation in which the company claims to be transforming itself with AI: its thesis sets Transform as the target ambition in some sphere, initiatives confirmed as Transform account for 10% or more of portfolio cost, or its communications present AI as business transformation (conditions IT-D1 to IT-D3). If it exists and the evidenced profile is not Transformation under way, the profile assigned is Declared but unevidenced transformation. | 12 §5.1–5.2 | Declaración de transformación |
 | **Transformation index** | Instrument that places the company in one of five profiles between efficiency and transformation, with eight signals scored from 0 to 3, three baseline conditions and a cross-check against the transformation declaration. The profile is not assigned by the sum of points. | 00 §5.3; 12 §4–5 | Índice de transformación |
@@ -836,9 +840,9 @@ Spanish equivalents of the taxonomy values:
 | **HT0–HT5** | HT + number | Technology footprint levels; descriptive, they are not maturity levels. | 11 §7.6 | HT4 |
 | **IM1–IM4** | IM + number | Impact reach levels of an initiative in use. | 12 §3.7 | IM3 |
 | **RT-\<CAT\>-NN** | RT + three-letter category + two digits | Typical risks in the catalogue (70 in version 0.1): EST 6 · TEC 8 · DAT 6 · ECO 5 · LEG 8 · ORG 9 · REP 5 · GEN 9 · SEG 7 · TER 7. | 33 §9 | RT-GEN-01 |
-| **SEG-01–SEG-25** | SEG + hyphen + two digits | AI security controls. | 35 §6 | SEG-02 |
+| **SEG-01–SEG-27** | SEG + hyphen + two digits | AI security controls. | 35 §6 | SEG-02 |
 | **AG-01–AG-20** | AG + hyphen + two digits | Agent controls. | 35 §7 | AG-09 |
-| **IND-\<FAM\>-NN** | IND + three-letter family + two digits | Catalogue indicators (162 in 13 families): VAL, COS, EMB, AGI, RIE, OPE, ADO, DAT, CLI, TRA, MAD, CON (board) and PRO (processes and decision-making). A code is not reused. | 41 §2 and §4 | IND-VAL-05 |
+| **IND-\<FAM\>-NN** | IND + three-letter family + two digits | Catalogue indicators (165 in 13 families): VAL, COS, EMB, AGI, RIE, OPE, ADO, DAT, CLI, TRA, MAD, CON (board) and PRO (processes and decision-making). A code is not reused. | 41 §2 and §4 | IND-VAL-05 |
 | **IE\<sphere\>.\<nn\>** | IE + two-digit sphere + point + two digits | Indicators by sphere, provisional until they are consolidated in document 41. | 10 §5–7 | IE01.04 |
 | **IA-AAAA-NNN** | Year of registration + sequential number | Initiatives. | 03 §3.3 | IA-2026-014 |
 | **IA-AAAA-NNN · Rnn** | Initiative code + R + two digits | Specific risk of an initiative. | 33 §8.1 | IA-2026-014 · R03 |
@@ -1040,6 +1044,7 @@ Tools display the values of closed lists in Spanish and English using the equiva
 
 | Version | Date | Changes |
 |---|---|---|
+| 1.8 | 19-10-2026 | Adds corporate AI gateway, corporate agent test bench, tool and connector poisoning and guardrail effectiveness; controls SEG-01 to SEG-27; catalogue indicators: 165 (D159). |
 | 1.7 | 01-10-2026 | Adds "three perspectives of the use case". |
 | 1.6 | 01-10-2026 | Adds "coverage crosswalk". |
 | 1.5 | 01-10-2026 | Catalogue indicators: 162. |
