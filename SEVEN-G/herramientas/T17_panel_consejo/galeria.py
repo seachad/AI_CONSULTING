@@ -43,7 +43,16 @@ SECTORES = [
     ("sector_publico", "Sector público", "Public sector"), ("energia", "Energía", "Energy"), ("logistica", "Logística y transporte", "Logistics and transport"),
     ("retail", "Distribución y gran consumo", "Retail and consumer goods"), ("telecomunicaciones", "Telecomunicaciones", "Telecommunications"),
     ("sanidad", "Sanidad", "Healthcare"), ("farmaceutica", "Farmacéutica", "Pharmaceuticals"), ("turismo", "Turismo y hostelería", "Travel and hospitality"),
+    # Pymes y despachos profesionales (D161): se muestran aparte, bajo su propio rótulo; para añadir un sector, su ficha en _fuentes/mercado/ y una línea aquí (y en PYMES)
+    ("consultoria", "Consultoría de gestión y estrategia", "Management and strategy consulting"),
+    ("integradores_ti", "Integradores y servicios de TI", "IT integrators and services"),
+    ("proyectos_ingenieria", "Proyectos de ingeniería, instalaciones y obra", "Engineering, installation and construction projects"),
+    ("gestorias", "Gestorías administrativas y laborales", "Administrative and labour gestorías"),
+    ("abogados", "Despachos de abogados", "Law firms"),
+    ("asesorias_fiscales", "Asesorías fiscales y contables", "Tax and accounting advisory firms"),
 ]
+# sectores que se agrupan bajo «Pymes y despachos profesionales» (opcional: un sector que no esté aquí sigue en el grupo general)
+PYMES = {"consultoria", "integradores_ti", "proyectos_ingenieria", "gestorias", "abogados", "asesorias_fiscales"}
 TEC = {"genai": ("IA generativa", "Generative AI"), "agentica": ("IA agéntica", "Agentic AI"), "ml": ("ML predictivo", "Predictive ML"),
        "rpa_idp": ("RPA e IDP", "RPA and IDP"), "vision": ("Visión artificial", "Computer vision"), "optimizacion": ("Optimización", "Optimisation"),
        "herramienta_sectorial": ("Herramienta del sector", "Sector tool"), "analitica": ("Analítica avanzada", "Advanced analytics")}
@@ -233,7 +242,15 @@ def pagina(resultados, refs):
     for lang in ("es", "en"):
         idx = 1 if lang == "es" else 2
         tarjetas = "".join(tarjeta(s, resultados[s], lang) for s, *_ in SECTORES if s in resultados)
-        bloques = "".join(mercado(s, n[idx - 1], refs, lang, s in resultados) for s, *n in SECTORES)
+        general = "".join(mercado(s, n[idx - 1], refs, lang, s in resultados) for s, *n in SECTORES if s not in PYMES)
+        pymes = "".join(mercado(s, n[idx - 1], refs, lang, s in resultados) for s, *n in SECTORES if s in PYMES)
+        if pymes:
+            intro = ("Casos pensados para empresas sin equipo de sistemas: herramientas baratas o ya incluidas en lo que se usa, con el riesgo profesional (secreto profesional, protección de datos, supervisión humana y Reglamento europeo de IA) a la vista."
+                     if lang == "es" else
+                     "Cases designed for companies without an IT team: inexpensive tools or ones already included in what is used, with professional risk (professional secrecy, data protection, human oversight and the EU AI Act) in view.")
+            titulo = "Pymes y despachos profesionales" if lang == "es" else "SMEs and professional firms"
+            pymes = f'<h3 id="{lang}-pymes">{titulo}</h3><p>{e(intro)}</p>' + pymes
+        bloques = general + pymes
         plantilla = plantilla.replace(f"__TARJETAS_{lang.upper()}__", tarjetas).replace(f"__MERCADO_{lang.upper()}__", bloques)
         plantilla = plantilla.replace(f"__SEGURIDAD_IA_{lang.upper()}__", seguridad_ia(refs, lang))
     n_casos = sum(len(json.load(open(f, encoding="utf-8"))["casos"]) for f in glob.glob(os.path.join(MERCADO, "*.json")))
