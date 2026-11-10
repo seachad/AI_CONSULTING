@@ -1,34 +1,35 @@
 # Cómo se organiza una compañía para la IA
 
-**Quién hace qué en las organizaciones reales, dónde debe colgar el gobierno de la IA, de dónde nacen los casos de uso, cómo se gobiernan hasta producción y cómo llega la información al consejo; y qué organización se anticipa cuando la IA esté implantada**
+**Quién hace qué en las organizaciones reales, dónde debe colgar el gobierno de la IA, de dónde nacen los casos de uso, cómo se gobiernan hasta producción y cómo llega la información al consejo; qué organización se anticipa cuando la IA esté implantada y cómo se organizan las personas de una compañía IA-first**
 
 | | |
 |---|---|
 | Documento | Documento 54 · Organización de la compañía para la IA |
-| Versión | 0.1 (borrador de trabajo) |
-| Fecha | 22-09-2026 |
+| Versión | 0.2 (borrador de trabajo) |
+| Fecha | 10-11-2026 |
 | Autor | Fernando García Varela |
 | Estado | Borrador para revisión. Documento explicativo y de orientación: no añade reglas al marco. |
 
-<!-- cifras: 6 | funciones que alguien tiene que ejercer ; 4 | patrones de organización observados ; 8 | fuentes de las que nacen los casos de uso ; 4 | escenarios de organización a cinco años -->
+<!-- cifras: 6 | funciones que alguien tiene que ejercer ; 4 | patrones de organización observados ; 8 | fuentes de las que nacen los casos de uso ; 5 | opciones de organización para ser IA-first -->
 
 ---
 
 > **Aviso legal y exención de responsabilidad.** SEVEN-G es un marco metodológico de referencia que se ofrece «tal cual» y con fines exclusivamente informativos. No constituye asesoramiento jurídico, regulatorio, financiero ni profesional, ni garantiza el cumplimiento de ninguna norma. Las referencias a regulación general (como el Reglamento Europeo de IA, el RGPD, DORA o NIS2), a normas técnicas y a regulación específica de cada sector o jurisdicción pueden ser incompletas, no aplicar a un caso concreto o quedar desactualizadas por cambios normativos, interpretaciones o criterios de las autoridades posteriores a su fecha de consulta. **Cada organización que use SEVEN-G es la única responsable de identificar la normativa que le aplica, verificar su vigencia y certificar su propio cumplimiento regulatorio**, con el asesoramiento cualificado que corresponda. Esta metodología es una ayuda genérica y gratuita, compartida con la comunidad para que nadie tenga que empezar desde cero; cada persona u organización puede y debe adaptarla a su propio uso. No debe entenderse que sus partes jurídicamente sensibles hayan sido revisadas por una asesoría jurídica: esas revisiones, para cada empresa o sector, son responsabilidad última de la empresa, el consultor o la organización que la use. Aunque se procura mantenerla al día, alguna norma puede haber cambiado sin que se recoja aquí. En la máxima medida permitida por la ley, el autor no asume responsabilidad alguna por los efectos de su aplicación en ninguna organización ni por su aplicabilidad completa. La metodología no otorga certificación de ningún tipo. El autor no asume responsabilidad alguna por el uso que se haga de este contenido ni por las decisiones que se adopten con él. Los datos, cifras, compañías y casos de los ejemplos son ficticios o ilustrativos.
 
-<!-- esencial: consulta | Documento explicativo. Sirve para situar el marco en el organigrama real de una compañía: qué funciones tiene que ejercer alguien, qué cargos suelen asumirlas hoy, dónde conviene colgar el gobierno de la IA, de dónde vienen los casos de uso y cómo se gobiernan y se informan hasta el consejo. La sección 8 es prospectiva y está marcada como hipótesis del autor. No crea reglas ni evidencias: si discrepa de los documentos 01, 14, 30 o 60, prevalecen estos. -->
+<!-- esencial: consulta | Documento explicativo. Sirve para situar el marco en el organigrama real de una compañía: qué funciones tiene que ejercer alguien, qué cargos suelen asumirlas hoy, dónde conviene colgar el gobierno de la IA, de dónde vienen los casos de uso y cómo se gobiernan y se informan hasta el consejo. La sección 8 es prospectiva y está marcada como hipótesis del autor; la sección 9 propone cómo organizar a las personas de una compañía IA-first. No crea reglas ni evidencias: si discrepa de los documentos 01, 14, 30 o 60, prevalecen estos. -->
 
 ## 1. Objeto y alcance
 
 ### 1.1 Qué responde este documento
 
-Cuando una compañía decide usar la IA en serio aparece siempre la misma conversación: *¿de quién depende esto?* Sistemas tiene su dirección, seguridad la suya, datos la suya; hay una dirección de transformación, a veces una dirección de IA, y el consejo pide información que nadie sabe muy bien quién debe preparar. Este documento ordena esa conversación en cinco preguntas:
+Cuando una compañía decide usar la IA en serio aparece siempre la misma conversación: *¿de quién depende esto?* Sistemas tiene su dirección, seguridad la suya, datos la suya; hay una dirección de transformación, a veces una dirección de IA, y el consejo pide información que nadie sabe muy bien quién debe preparar. Este documento ordena esa conversación en seis preguntas:
 
 1. ¿Qué **funciones** tiene que ejercer alguien, se llame como se llame en el organigrama? (sección 2)
 2. ¿Qué se ve **hoy en el mercado** y qué patrones de organización funcionan y cuáles fallan? (sección 3)
 3. ¿Dónde debe colgar el **gobierno de la IA**: de la dirección de IA, de transformación, de riesgos, del consejo? (sección 3.4)
 4. ¿De dónde vienen los **casos de uso**, cómo se gobiernan y cómo se **informa al consejo**? (secciones 5, 6 y 7)
 5. ¿Qué organización viene después, cuando la IA esté implantada y los **silos funcionales** dejen de ser la forma natural de dividir el trabajo? (sección 8)
+6. ¿Qué significa ser una compañía **IA-first** y cómo se organizan sus personas sin crear un silo más? (sección 9)
 
 ### 1.2 Qué no es
 
@@ -36,6 +37,7 @@ Cuando una compañía decide usar la IA en serio aparece siempre la misma conver
 - **No sustituye al documento 30**, que define los órganos, sus mandatos, la matriz de delegación y el escalado. Aquí se explica cómo encajan esos órganos en un organigrama que ya existe.
 - **No es un estudio de mercado.** Lo que la sección 3 describe son patrones observados en la práctica profesional del autor, expresados de forma cualitativa. No lleva porcentajes ni cuotas porque no procederían de una fuente verificable (documento 04, sección 6).
 - **La sección 8 es una hipótesis razonada**, no una previsión. Se marca como tal y se acompaña de las señales que permitirían comprobar si se cumple.
+- **La sección 9 es una propuesta del autor** apoyada en fuentes externas comprobadas. No es un estudio de mercado y no repite cifras de ahorro de terceros.
 
 > **Por qué importa.** La mayoría de los bloqueos que se atribuyen a la tecnología son en realidad de asignación: dos áreas creen tener la misma competencia, o ninguna la tiene. Un marco de gobierno que no se traduce al organigrama real se queda en documento.
 
@@ -422,7 +424,271 @@ Cuatro movimientos que no se lamentan aunque el futuro sea otro: **inventario vi
 
 ---
 
-## 9. Preguntas para una conversación útil
+## 9. La organización humana de una compañía IA-first
+
+> **Propuesta del autor, no regla del marco.** Esta sección ordena lo que se observa en publicaciones de consultoras, en anuncios de compañías y en la expectativa supervisora, y propone cómo organizar a las personas de una compañía que quiere ser IA-first. No crea reglas ni evidencias: si discrepa de los documentos 01, 30 o 50, prevalecen estos. Las fuentes consultadas están en la sección 9.10.
+
+### 9.1 Qué significa ser IA-first
+
+No hay una definición establecida. El término suele usarse como regla de presupuesto («antes de pedir más personas, demuestre que la IA no puede hacerlo»). Eso es una regla de gasto, no un modelo de organización: no dice quién es dueño de qué ni dónde va el control.
+
+**Definición que propone SEVEN-G.** Una compañía es IA-first cuando **cada proceso se diseña dando por hecho que la IA hace el trabajo o propone la decisión, y las personas fijan el objetivo, deciden en las excepciones y responden del resultado**. La IA deja de ser un proyecto y pasa a ser la forma normal de trabajar. Los datos, la plataforma y los controles son infraestructura común.
+
+La fórmula corta es **IA por defecto, persona donde importa**: la IA mueve el flujo y la persona está en los momentos que definen la relación con el cliente, en las decisiones sobre personas o dinero y en todo lo que no se puede deshacer.
+
+**Qué no es:**
+
+- no es «IA en todo»;
+- no es sustituir personas como objetivo;
+- no es tener muchos casos de uso;
+- no es crear una dirección de IA (sección 9.5).
+
+### 9.2 Seis pruebas para saber si una compañía lo es
+
+Las seis pruebas sirven como indicadores. Cada una se apoya en algo que SEVEN-G ya pide o mide.
+
+| # | Prueba | Cómo se comprueba en SEVEN-G |
+|---|---|---|
+| 1 | **Dueño único de punta a punta.** Cada proceso clave tiene una persona que responde de su resultado completo, con presupuesto, aunque el proceso cruce varias direcciones. | Patrocinador de negocio y responsable de negocio del beneficio (documento 01, sección 8; documento 43). |
+| 2 | **La pregunta por defecto es «¿por qué no con IA?»**, con un control proporcional al riesgo, no un embudo igual para todo. | Intensidad Express, Lite o Enterprise (documento 01, sección 9) y principio de proporcionalidad (documento 01, sección 3). |
+| 3 | **Cada agente tiene un dueño humano con nombre**, figura en el inventario y cuenta en el plan de plantilla. | Inventario de sistemas de IA (T02) e identidades no humanas (P54); plan de plantilla del documento 50. |
+| 4 | **Los controles están dentro de la plataforma** y se aplican antes de producción, no después. | Puerta de viabilidad (G3) y puesta en producción (G5); controles de seguridad del documento 35. |
+| 5 | **Se mide el coste por resultado** (personas, agentes y consumo), no el coste por cabeza. | Coste completo por caso (documento 42) y valor validado (documento 40). |
+| 6 | **Las decisiones dejan rastro** (qué propuso la IA, qué se decidió y qué pasó) y la compañía aprende de él. | Registro y monitorización (documento 52); registro de decisiones del consejo (documento 62). |
+
+> **Por qué importa.** «IA-first» se usa a menudo como eslogan. Con seis pruebas comprobables, el consejo puede preguntar cuántas se cumplen hoy y cuándo se cumplirán las demás. La prueba 4 suele ser la más urgente: un caso en producción sin control cerrado es un riesgo abierto.
+
+### 9.3 Por qué el organigrama por funciones frena
+
+El organigrama clásico divide la compañía en funciones verticales: negocio, tecnología, operaciones, riesgos y personas. La IA útil vive en procesos que cruzan esas funciones. Por ejemplo, el alta de un cliente empresa empieza en ventas, pasa por riesgos, contratación, facturación y atención, y la tocan negocio, operaciones, tecnología, seguridad y cumplimiento.
+
+Si nadie es dueño del proceso entero, cada función optimiza su tramo, el caso se queda en piloto y el control llega tarde.
+
+<!-- grafico: Un caso de uso hoy | Un mismo caso depende de cinco áreas y ninguna es dueña del proceso entero -->
+```mermaid
+flowchart TB
+  DG["Primer ejecutivo"]
+  DG --> TR["Transformación o datos<br>equipo de IA"]
+  DG --> TE["Tecnología y operaciones<br>plataforma de IA"]
+  DG --> NE["Negocio<br>dueño del tramo comercial"]
+  DG --> OP["Operaciones<br>dueño del tramo de servicio"]
+  DG --> RI["Riesgos, cumplimiento,<br>seguridad y jurídica"]
+  CASO["Un caso de uso<br>sin dueño de punta a punta"]
+  TR -.-> CASO
+  TE -.-> CASO
+  NE -.-> CASO
+  OP -.-> CASO
+  RI -.->|"revisa al final"| CASO
+  classDef dir fill:#f2dfce,stroke:#0f5499,color:#1a1817
+  classDef ejec fill:#fdf3e8,stroke:#593380,color:#1a1817
+  classDef ctl fill:#d9ebe0,stroke:#0d7680,color:#1a1817
+  classDef fin fill:#f3d3da,stroke:#990f3d,color:#1a1817
+  class DG dir
+  class TR,TE,NE,OP ejec
+  class RI ctl
+  class CASO fin
+```
+
+**Dónde se atasca hoy un caso y dónde falla.** Ocho puntos que se repiten:
+
+| # | Tipo | Dónde | Qué pasa | Qué lo resuelve en el modelo propuesto |
+|---|---|---|---|---|
+| 1 | Atasco | Entrada | El caso espera turno en un comité que prioriza casos sueltos, no procesos. | El dueño de la cadena prioriza dentro de su presupuesto (sección 9.6, opción C). |
+| 2 | Atasco | Control | Los cuestionarios de riesgo se acumulan y se revisan uno a uno. | Carriles por nivel de riesgo, con los controles dentro de la plataforma. |
+| 3 | Atasco | Integración | El caso necesita sistemas de otra dirección que tiene otras prioridades. | Una sola fábrica de IA y datos (opción A). |
+| 4 | Atasco | Ciclo completo | Entre la idea y la producción pasan meses sin una fecha de decisión. | Puertas con plazo y financiación por tramos (documento 14, sección 6). |
+| 5 | Problema | Diseño | La idea resuelve un tramo y no el proceso: mejora local, resultado global igual. | Rediseño del proceso entero por su dueño. |
+| 6 | Problema | Construcción | Cada área construye su parte con su herramienta y su proveedor. | Plataforma común y catálogo de componentes. |
+| 7 | Problema | Producción | El sistema entra en uso con el control a medio cerrar. | Puesta en producción (G5) con firma de control. |
+| 8 | Problema | Valor | Nadie mide el resultado: se informa de actividad, no de beneficio. | Línea base y realización de beneficios (documentos 40 y 43). |
+
+### 9.4 Lo que se observa fuera
+
+| Quién | Qué hace o propone | Qué se aprende |
+|---|---|---|
+| **Accenture** («When everyone has AI, your operating model will set you apart», 2026) | Organizar la compañía alrededor de cinco a ocho cadenas de valor de punta a punta, con responsabilidad, decisiones y presupuesto. Todo agente tiene un dueño humano con nombre. | La matriz sigue existiendo; lo que se decide es cuánta responsabilidad pasa a la cadena. |
+| **BCG** («AI-First Enterprise Operations: Reinventing the Operating System of Work», 2026) | Un dueño de proceso que responde del resultado de punta a punta y una «fábrica» central que concentra financiación, guardarraíles y prioridades. Añadir asistentes a un flujo humano da resultados modestos; rediseñar el proceso da mucho más. | Dueño de proceso más fábrica común: la pareja que funciona. |
+| **Allianz** (artículo de Allianz sobre el proyecto Nemo, 2025) | Siete agentes con tareas concretas tramitan reclamaciones sencillas; el pago lo decide siempre una persona responsable. | Se organiza por proceso, con la persona en la decisión que importa. |
+| **Moderna** (equipo directivo de Moderna) | Una misma dirección reúne personas y tecnología digital. | Los agentes forman parte de la plantilla: personas y tecnología los planifican juntos. |
+| **AXA** (comunicado de AXA sobre cambios en su equipo directivo, 2025) | El responsable de tecnología e IA del grupo dirige también las operaciones del grupo. | La IA se une a tecnología y operaciones; no se crea un silo aparte. |
+| **MAPFRE** (manifiesto de MAPFRE por una IA humanista, ética y responsable, 2025) | Cinco principios, el primero un modelo de IA híbrida que amplía las capacidades de las personas. | El relato de la persona en el centro forma parte del modelo. |
+| **Supervisión** (Dictamen de EIOPA sobre gobierno y gestión del riesgo de la IA) | Aplica a la IA el sistema de gobierno ya exigible, de forma proporcional al riesgo, sin crear obligaciones nuevas. | El supervisor pide responsabilidades claras, no una figura concreta. |
+
+**Lo que se repite:**
+
+1. el proceso de punta a punta es la unidad de diseño;
+2. hay una pieza central, pequeña, que da plataforma, normas y controles;
+3. negocio y tecnología comparten objetivos;
+4. los agentes se gestionan como parte de la plantilla, con dueño humano;
+5. ninguna de las referencias crea una dirección de IA separada de tecnología y datos.
+
+**Cautela.** Casi todo el material es de consultoras con interés comercial. Sus cifras de ahorro vienen de sus propios clientes y SEVEN-G no las repite. Los anuncios de compañías dicen cómo se organizan, no si les funciona.
+
+### 9.5 ¿Hace falta un director de IA? En general, no
+
+La sección 3.3 da cuatro preguntas para decidir si hace falta una función central. Esa función es necesaria; **una dirección de IA como silo vertical, en general, no**:
+
+- **es un silo vertical para algo horizontal:** el director de IA acaba siendo dueño de los casos de uso y los procesos siguen sin dueño;
+- **crea un polo más** entre las áreas que ya se reparten la IA, en lugar de resolver el reparto;
+- **el regulador no lo pide:** pide responsabilidades claras (sección 9.4);
+- **si además construye y controla,** rompe la separación de funciones (sección 2).
+
+**Quién responde ante el consejo.** El primer ejecutivo, con tres responsabilidades repartidas:
+
+| Responsabilidad | Quién la ejerce | De qué responde |
+|---|---|---|
+| **Valor** | Los dueños de cadena de valor | Resultado de su proceso, con presupuesto y agentes. |
+| **Capacidad** | El responsable de la fábrica de IA y datos | Plataforma, datos, operación de modelos e inventario. |
+| **Control** | La segunda línea | Riesgo, cumplimiento, seguridad y jurídica, con los controles dentro de la plataforma. |
+
+Si la compañía quiere un nombre, que sea un rol de coordinación dentro del área que tenga la fábrica, no una dirección más. La oficina de IA del documento 30 sigue haciendo su trabajo de método, cartera e información.
+
+### 9.6 Cinco opciones de organización
+
+| Opción | En qué consiste | A favor | En contra | Encaje |
+|---|---|---|---|---|
+| **A · Una sola fábrica de IA y datos** | Se juntan en una unidad los equipos de IA, la plataforma, la operación de modelos y el inventario, con un único embudo. Las áreas siguen pidiendo los casos. | Cambio pequeño; termina con la IA repartida en varias casas. | Nadie es dueño del proceso entero; la IA sigue siendo «algo que hace tecnología». | Primer paso |
+| **B · Centro y radios** (*hub and spoke*) | La fábrica de A como centro y un responsable de IA en cada dirección y filial, con línea funcional con el centro. | Respeta un grupo federado. | Matriz difícil de dotar; los responsables locales acaban absorbidos por su área; sigue sin haber dueño del proceso. | Para filiales y unidades lejanas |
+| **C · Cadenas de valor** | De cinco a siete cadenas de punta a punta, cada una con un responsable de negocio y un socio tecnológico con los mismos objetivos, presupuesto por tramos y agentes propios. Las funciones pasan a ser centros de competencia (normas, expertos, carrera). | Es la única opción que resuelve la horizontalidad. | Mueve poder entre direcciones; necesita al primer ejecutivo detrás; hecha de golpe, puede paralizar la operación. | Destino |
+| **D · Oficina de transformación temporal** | Una oficina pequeña, dependiente del primer ejecutivo y con fecha de cierre (24 a 36 meses), que gestiona la cartera, financia por tramos y rediseña procesos con las áreas. | Velocidad y patrocinio claro sin un silo permanente. | Riesgo de que se vuelva permanente o de que funcione como una organización paralela. | Motor del cambio |
+| **E · Plantilla mixta** | Personas y tecnología planifican juntas la plantilla de personas y agentes; se definen roles nuevos (dueño de agente, supervisor de agentes, dueño de cadena) y la retribución variable se liga a objetivos de IA y de seguridad. | Ataca la parte humana: talento, roles y carrera. | No basta por sí sola. | Siempre |
+
+| Opción | Resuelve la horizontalidad | Cambio y riesgo | Encaje |
+|---|---|---|---|
+| A · Fábrica única | No | Bajo | Primer paso |
+| B · Centro y radios | Poco | Medio | Para filiales |
+| C · Cadenas de valor | Sí | Alto | Destino |
+| D · Oficina temporal | Mientras dura | Medio | Motor |
+| E · Plantilla mixta | No | Bajo | Siempre |
+
+Relación con los patrones de la sección 3.2: A y B son variantes del patrón C (oficina o función central); la opción C de esta sección es el escenario 3 de la sección 8.4 hecho realidad por cadenas.
+
+> **Por qué importa.** Elegir solo la fábrica (A) es lo fácil de acordar y de comprobar, pero deja los procesos sin dueño. Elegir las cadenas (C) de golpe es lo que más resuelve y lo que más riesgo tiene. La combinación por fases (sección 9.7) toma lo bueno de cada opción.
+
+### 9.7 Recomendación: combinación por fases
+
+**Destino C, construido sobre A, arrancado por D, con B para las filiales y E desde el primer día.** En una frase: los procesos tienen dueño, la IA tiene una sola casa y el control va dentro de la plataforma.
+
+<!-- grafico: El modelo destino | Cadenas de valor con pareja dueña sobre una sola fábrica, con el control dentro de la plataforma -->
+```mermaid
+flowchart LR
+  DG["Primer ejecutivo<br>responde ante el consejo"] --> COM["Comité de cadenas de valor e IA<br>prioridades y tramos"]
+  COM --> C1["Cadena 1"]
+  COM --> C2["Cadena 2"]
+  COM --> C3["Cadena 3"]
+  COM --> CN["Cadena n"]
+  FAB["Fábrica única de IA y datos<br>plataforma, datos, operación de modelos, inventario"] --> C1
+  FAB --> C2
+  FAB --> C3
+  FAB --> CN
+  CTL["Controles dentro de la plataforma<br>riesgos, cumplimiento, seguridad, jurídica"] --> FAB
+  PER["Personas y tecnología<br>plantilla de personas y agentes"] -.-> COM
+  FIN["Control de gestión<br>coste por resultado y tramos"] -.-> COM
+  classDef dir fill:#f2dfce,stroke:#0f5499,color:#1a1817
+  classDef ejec fill:#fdf3e8,stroke:#593380,color:#1a1817
+  classDef ctl fill:#d9ebe0,stroke:#0d7680,color:#1a1817
+  class DG,COM dir
+  class C1,C2,C3,CN,FAB,PER,FIN ejec
+  class CTL ctl
+```
+
+Cada cadena tiene una **pareja dueña**: un responsable de negocio y un socio tecnológico con los mismos objetivos. Las cadenas tienen el resultado y el presupuesto; la fábrica, la capacidad; la segunda línea, el control. El comité decide prioridades y tramos.
+
+**Cómo viaja un caso en el destino:**
+
+<!-- grafico: Cómo viaja un caso en el destino | Del rediseño propuesto por el dueño de la cadena a la revisión contra la curva de valor -->
+```mermaid
+flowchart LR
+  P1["1 · El dueño de la cadena<br>propone el rediseño con su curva<br>de valor y su primer tramo"]
+  P2["2 · El comité aprueba el tramo<br>y su condición de paso"]
+  P3["3 · La fábrica clasifica el riesgo<br>y aplica su carril"]
+  P4["4 · Controles activos en la<br>plataforma antes de producción"]
+  P5["5 · Agente en producción<br>con dueño humano y registro"]
+  P6["6 · Revisión periódica<br>contra la curva aprobada"]
+  P1 --> P2 --> P3 --> P4 --> P5 --> P6
+  P6 -->|"se cumple: siguiente tramo"| P2
+  P6 -->|"no se cumple: se corrige o se para"| P1
+  classDef fase fill:#fdf3e8,stroke:#593380,color:#1a1817
+  classDef gate fill:#f2dfce,stroke:#0f5499,color:#1a1817
+  class P1,P3,P5 fase
+  class P2,P4,P6 gate
+```
+
+El control va antes de producción y el dinero se libera por tramos según el valor real (documento 14, sección 6.2; documento 43). El recorrido de fases y puertas del documento 01 no cambia: lo que cambia es quién es dueño del caso.
+
+**Paso a paso:**
+
+| Etapa | Qué se hace | Por qué | Si falla |
+|---|---|---|---|
+| **0 · Decidir y nombrar** (primeros dos meses) | El primer ejecutivo nombra la oficina temporal y dos parejas piloto en las dos cadenas donde la IA ya trabaja o donde más duele la coordinación. Se decide una sola herramienta de inventario. | Sin patrocinio del primer ejecutivo, el destino C no se sostiene. | La compañía vuelve a un modelo por funciones y el problema se aplaza. |
+| **1 · Una sola fábrica** (primer semestre) | Se unen los equipos de IA y la plataforma bajo un solo responsable, con un embudo, un inventario y carriles por riesgo; se regulariza lo que está en producción sin control cerrado (documento 14, sección 11). | Las cadenas necesitan una sola casa a la que pedir. | Los pilotos piden a dos sitios y se repite el reparto. |
+| **1 · Pilotos con dueño** (primer semestre, en paralelo) | Las dos parejas reciben objetivos, presupuesto de IA de su cadena por tramos y la propiedad de sus agentes. Personas abre el plan de plantilla mixta y los roles nuevos. Control de gestión mide el coste por resultado. | Demostrar con datos antes de extender. | Se ve en la revisión periódica: la curva no se cumple y se corrige o se para el tramo siguiente. |
+| **2 · Extender** (segundo semestre y año siguiente) | Se añaden las demás cadenas; el comité de IA pasa a ser comité de cadenas e IA, presidido por el primer ejecutivo; la retribución variable se liga a los objetivos de la cadena; las filiales entran con el modelo B. | Extender lo que ha funcionado. | Conflicto de matriz entre cadena y función; se mitiga con objetivos comunes y un árbitro claro (el comité). |
+| **3 · Cerrar la oficina temporal** (24 a 36 meses) | Sus funciones pasan a las cadenas y a la fábrica. | Evitar un silo permanente. | Si la oficina no cierra, se ha creado la dirección de IA por la puerta de atrás. |
+
+**Riesgos que quedan en el modelo propuesto y cómo se cubren:**
+
+| # | Riesgo | Cómo se cubre |
+|---|---|---|
+| 1 | La cadena promete valor sin línea base. | Línea base y método de atribución antes del primer tramo (documento 40). |
+| 2 | El comité se convierte en otro cuello de botella. | Delegación por intensidad (documento 30, sección 7); el comité decide tramos, no casos sueltos. |
+| 3 | La fábrica se satura y las cadenas esperan. | Capacidad de la fábrica en el presupuesto de habilitación (documento 13); prioridades del comité. |
+| 4 | El control vuelve a llegar al final. | Controles dentro de la plataforma y puerta de viabilidad (G3) con la segunda línea presente. |
+| 5 | Roles nuevos sin definición ni carrera. | Plan de plantilla mixta y roles del documento 50; nombramientos por escrito (P38). |
+| 6 | La condición de paso de un tramo es blanda. | Condición de paso medible y revisión contra la curva aprobada (documento 43). |
+
+### 9.8 Implicaciones de decidir solo la fábrica o la combinación por fases
+
+Las dos opciones no se excluyen: la fábrica única es el primer paso de la combinación. Lo que de verdad se decide es **qué queda escrito como destino**.
+
+| | Combinación por fases | Solo la fábrica única (A) |
+|---|---|---|
+| **Qué resuelve** | La IA repartida en varias casas y que ningún proceso tenga dueño. | Solo la IA repartida: un embudo, un inventario, un responsable. |
+| **Tipo de valor** | Rediseña el proceso entero, donde están los ahorros grandes y un servicio distinto. | Mejoras caso a caso, más ordenadas. |
+| **Poder** | Negocio gana el presupuesto de IA de su cadena; los equipos de IA pasan a ser proveedores de las cadenas. | Solo se decide qué área se queda la fábrica. |
+| **Patrocinio** | El primer ejecutivo, visible y sostenido. | Basta con que dos direcciones se pongan de acuerdo. |
+| **Plazo** | Primeros datos en unos seis meses; modelo extendido en dos años. | Funcionando en tres a seis meses. |
+| **Riesgo operativo** | Mayor si coincide con otros grandes cambios; se reduce empezando por dos cadenas donde la IA ya trabaja. | Bajo. |
+| **Control** | Cada agente tiene un dueño de negocio y los controles van antes de producción. | El embudo se ordena, pero el control puede seguir llegando al final. |
+| **Personas** | Roles nuevos, retribución ligada a objetivos y más atractivo para el talento. | Casi nada cambia; la IA sigue siendo cosa de especialistas. |
+| **Efecto no buscado** | Conflictos de matriz entre cadena y función; hace falta un árbitro. | El responsable de la fábrica acaba siendo, de hecho, el director de IA que no se quería. |
+
+**Vía intermedia:** acordar ya la fábrica única y probar dos cadenas de valor con datos antes de cerrar el modelo objetivo. Cuesta poco y no cierra la puerta.
+
+### 9.9 Qué existe y qué falta: lista de comprobación
+
+| Pieza | Pregunta | Dónde se apoya en SEVEN-G |
+|---|---|---|
+| Política de IA y órganos | ¿Los órganos deciden sobre procesos y presupuesto, o solo sobre casos? | Documento 30; P38 |
+| Plataforma de IA | ¿Hay una sola casa para la IA, con un embudo y un inventario? | Documento 14; inventario de sistemas de IA (T02) |
+| Carriles por riesgo | ¿Los controles funcionan antes de producción? | Documento 01, sección 9; documentos 33 y 35 |
+| Dueño de proceso de punta a punta | ¿Hay parejas dueñas con presupuesto? | Documento 01, sección 8; documento 43 |
+| Dueño humano de cada agente | ¿Cada agente tiene dueño, alta y baja en el inventario? | P54; documento 35 |
+| Plan de plantilla de personas y agentes | ¿Personas planifica también los agentes? | Documento 50, sección 6 |
+| Coste por resultado y tramos | ¿Control de gestión mide el coste por resultado y libera por tramos? | Documentos 42 y 43; documento 14, sección 6.2 |
+| Rastro de las decisiones | ¿Se guarda qué propuso la IA, qué se decidió y qué pasó? | Documento 52; documento 62 |
+
+### 9.10 Fuentes consultadas y cautelas
+
+Fuentes externas comprobadas en su sitio original el 10-11-2026 y dadas de alta en el registro de referencias (D41, D114):
+
+| Fuente | Tipo | Qué se toma |
+|---|---|---|
+| Accenture, «When everyone has AI, your operating model will set you apart» (06-10-2026) | Publicación de consultora | Cadenas de valor de punta a punta con presupuesto; dueño humano de cada agente. |
+| BCG, «AI-First Enterprise Operations: Reinventing the Operating System of Work» (2026) | Publicación de consultora | Dueño de proceso de punta a punta y fábrica central de financiación, guardarraíles y prioridades. |
+| Artículo de Allianz sobre el proyecto Nemo (03-11-2025) | Anuncio de la compañía | Agentes por tareas y decisión de pago siempre humana. |
+| Equipo directivo de Moderna | Página de la compañía | Personas y tecnología digital bajo una misma dirección. |
+| Comunicado de AXA sobre cambios en su equipo directivo (2025) | Comunicado de la compañía | Tecnología, IA y operaciones del grupo bajo un mismo responsable. |
+| Manifiesto de MAPFRE por una IA humanista, ética y responsable (2025) | Documento de la compañía | IA híbrida que amplía las capacidades de las personas. |
+| Dictamen de EIOPA sobre gobierno y gestión del riesgo de la IA (06-08-2025) | Autoridad supervisora | Gobierno proporcional al riesgo sin figuras nuevas. |
+
+**Consultadas y no citadas.** Se consultaron también publicaciones de McKinsey sobre la organización agéntica y el modelo de plataformas, el informe anual de DBS sobre su modelo de plataformas dirigidas a la vez por negocio y tecnología, un estudio académico sobre el fracaso de los pilotos de IA generativa y varios memorandos de directivos sobre «IA primero». No se citan porque el 10-11-2026 no se pudo leer la fuente original (no respondía o solo había copias o resúmenes de terceros). Si se comprueban, se añadirán al registro.
+
+**Cautelas.** Las cifras de ahorro de las consultoras no se repiten porque proceden de sus propios clientes. Los anuncios de compañías describen cómo se organizan, no demuestran que les funcione. Las opciones y la recomendación son una propuesta del autor para una conversación de dirección o de consejo.
+
+---
+
+## 10. Preguntas para una conversación útil
 
 Para el consejo, el comité de dirección o una sesión de trabajo. No tienen respuesta correcta; tienen respuesta o no la tienen, y eso ya es información.
 
@@ -456,9 +722,15 @@ Para el consejo, el comité de dirección o una sesión de trabajo. No tienen re
 14. ¿Qué cadena de trabajo extremo a extremo sufre más por la separación entre áreas?
 15. Si dentro de tres años una parte del trabajo la hacen agentes, ¿quién los da de alta, quién responde de ellos y quién los da de baja?
 
+**Sobre ser IA-first**
+
+16. ¿Cuántas de las seis pruebas de la sección 9.2 cumplimos hoy?
+17. ¿Qué proceso tiene hoy un dueño de punta a punta, con presupuesto?
+18. Si la IA de la compañía está repartida en varias áreas, ¿cuál de las cinco opciones de la sección 9.6 nos acerca más al destino sin parar la operación?
+
 ---
 
-## 10. Cómo se monta en la práctica
+## 11. Cómo se monta en la práctica
 
 La secuencia de implantación está en el documento 90. En términos de organización, el orden que evita la mayor parte de los bloqueos es:
 
@@ -470,7 +742,7 @@ La secuencia de implantación está en el documento 90. En términos de organiza
 
 ---
 
-## 11. Herramientas y plantillas asociadas
+## 12. Herramientas y plantillas asociadas
 
 | Código | Nombre | Uso en este documento |
 |---|---|---|
@@ -489,7 +761,7 @@ La secuencia de implantación está en el documento 90. En términos de organiza
 
 ---
 
-## 12. Documentos relacionados
+## 13. Documentos relacionados
 
 | Documento | Relación |
 |---|---|
@@ -508,8 +780,9 @@ La secuencia de implantación está en el documento 90. En términos de organiza
 
 ---
 
-## 13. Control de versiones
+## 14. Control de versiones
 
 | Versión | Fecha | Cambios |
 |---|---|---|
 | 0.1 | 22-09-2026 | Primera versión. Seis funciones que alguien debe ejercer y sus separaciones; patrones de organización observados en el mercado y dónde colgar el gobierno de la IA; correspondencia entre el organigrama real y los órganos del documento 30; ocho fuentes de casos de uso con su sesgo y su puerta de entrada única; circuito de gobierno con quién decide en cada puerta; cadena de información al consejo; sección prospectiva marcada como hipótesis, con cuatro escenarios y sus señales; quince preguntas para una conversación de dirección o de consejo. Documento explicativo: no añade reglas ni evidencias. |
+| 0.2 | 10-11-2026 | Nueva sección 9, «La organización humana de una compañía IA-first»: definición propuesta y seis pruebas; por qué el organigrama por funciones frena; ocho puntos donde un caso se atasca o falla; lo que se observa fuera, con fuentes comprobadas; por qué no hace falta, en general, una dirección de IA; cinco opciones; recomendación de combinación por fases con el modelo destino, el recorrido de un caso, el paso a paso y los riesgos que quedan; implicaciones de cada decisión; lista de comprobación; fuentes y cautelas. Preguntas 16 a 18. Las secciones 9 a 13 pasan a ser 10 a 14. Propuesta del autor: no añade reglas ni evidencias. |

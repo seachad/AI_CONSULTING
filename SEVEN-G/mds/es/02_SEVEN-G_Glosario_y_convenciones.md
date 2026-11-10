@@ -5,8 +5,8 @@
 | | |
 |---|---|
 | Documento | Documento 02 · Glosario y convenciones |
-| Versión | 1.8 |
-| Fecha | 19-10-2026 |
+| Versión | 1.9 |
+| Fecha | 10-11-2026 |
 | Autor | Fernando García Varela |
 | Estado | Vigente. Fuente única de términos, escalas y códigos del marco; se actualiza antes que cualquier otro documento cuando cambia un término. |
 
@@ -173,6 +173,7 @@ Orden alfabético. Las escalas completas están en la sección 4 y los códigos 
 
 | Término | Definición en SEVEN-G | Documento de referencia | Término en inglés |
 |---|---|---|---|
+| **Cadena de valor de punta a punta** | Proceso completo que crea un resultado para el cliente o para la compañía y cruza varias funciones (por ejemplo, del pedido al cobro). En una compañía IA-first tiene una pareja dueña —un responsable de negocio y un socio tecnológico con los mismos objetivos— que responde de su resultado, con presupuesto por tramos y agentes propios. Propuesta organizativa, no órgano obligatorio. | 54 §9.6–§9.7 | end-to-end value chain † |
 | **Caja por delante** | Cuánto tiene que bajar todavía el neto acumulado de un caso, o de la cartera, desde hoy antes de empezar a subir, según su plan de realización: el dinero que aún falta por poner. El ya gastado no cuenta. La calcula el panel del consejo; sin plan de realización no se calcula. | 60 §10.6; 43 §4.1 | cash still needed |
 | **Cambio menor · significativo · sustancial** | Clases de cambio de un sistema en producción. **Menor**: no altera el comportamiento ni los controles. **Significativo**: altera el comportamiento dentro de la finalidad, el alcance, la autonomía y los riesgos aprobados, y exige evaluación de regresión, actualización de la documentación e informe en la siguiente R6. **Sustancial**: altera la finalidad, el alcance, la autonomía, los datos, los controles críticos o el perfil de riesgo aprobados, y exige volver al *gate* que corresponda. | 52 §6 | minor · significant · substantial change † |
 | **Capacidad liberada** | Horas de trabajo que dejan de ser necesarias para atender el mismo volumen con la misma calidad, descontado el trabajo nuevo que introduce la IA (fórmula F4). **No suma como ahorro** hasta que se materializa; se informa por separado. Capacidad liberada = materializada + reasignada + no aplicada. Sus cinco destinos (PER-D1 Materializar, PER-D2 Reasignar, PER-D3 Absorber crecimiento, PER-D4 Reinvertir en calidad, servicio o cumplimiento, PER-D5 Sin decisión) se agrupan en esas tres partes según 23 §10.5. | 00 regla 3; 23 §7.1, §10.5; 40 §5.3; 50 §6.2 | released capacity |
@@ -249,6 +250,7 @@ Orden alfabético. Las escalas completas están en la sección 4 y los códigos 
 
 | Término | Definición en SEVEN-G | Documento de referencia | Término en inglés |
 |---|---|---|---|
+| **Fábrica de IA y datos** | Unidad única que reúne los equipos de IA, la plataforma, los datos, la operación de modelos y el inventario, y da esa capacidad a todas las cadenas de valor con los controles dentro de la plataforma. Responde de la capacidad, no del valor de cada proceso. Propuesta organizativa, no órgano obligatorio. | 54 §9.5–§9.7 | AI and data factory † |
 | **Ficha viva** | Evidencia única de una iniciativa Express (sección Express de P01) que reúne contexto, oportunidad, hipótesis de valor, riesgo, responsables, prueba, aprobación y reversión, y se actualiza en cada puerta; las evidencias que la compañía ya tiene se referencian (21 §4.3). | 01 §9.4; P01 | living record |
 | **Fases del ciclo de vida** | 0 Contexto y restricciones · 1 Descubrimiento de oportunidades · 2 Hipótesis de valor · 3 Viabilidad y riesgo · 4 Diseño de la solución · 5 Entrega y validación · 6 Operación y gobierno · 7 Evolución o retirada. La fase 0 es habilitante: sin G0 aprobado la iniciativa no puede consumir presupuesto ni acceder a datos de producción. | 01 §6.1; 20 | 0 Context and constraints · 1 Opportunity discovery · 2 Value hypothesis · 3 Feasibility and risk · 4 Solution design · 5 Delivery and validation · 6 Operation and governance · 7 Evolution or retirement |
 | **Firma multinivel de puesta en producción** | Requisito de G5 Enterprise: firma registrada, con capacidad de veto, del responsable técnico, riesgos y cumplimiento, seguridad de la información y protección de datos. Un veto vigente impide continuar y solo lo levanta quien lo emitió o su sustituto formal. | 01 §6.7; 21 §9; P23 | multi-level go-live sign-off with veto power |
@@ -284,6 +286,7 @@ Orden alfabético. Las escalas completas están en la sección 4 y los códigos 
 | **IA generativa** | Sistemas que generan contenido (texto, imagen, audio, código) a partir de instrucciones y contexto. Es un valor de la etiqueta de tecnología y activa los criterios [GEN]. | 03 §3.3; 21 §2.3; 35 | generative AI |
 | **IA ofensiva (exposición a)** | Uso de IA por terceros para atacar a la compañía: suplantación sintética, automatización de ataques y explotación acelerada de vulnerabilidades. | 01 §10; 35 §9 | exposure to offensive AI † |
 | **IA revisora** | Herramienta de IA que revisa planes, código, pruebas o seguridad dentro del equipo que construye (denominación en SEVEN-G del rol *AI Auditor* de SPAD). No aprueba nada y no es el Auditor de IA. | 53 §5 | AI reviewer (SPAD) |
+| **IA-first** | Compañía en la que cada proceso se diseña dando por hecho que la IA hace el trabajo o propone la decisión, y las personas fijan el objetivo, deciden en las excepciones y responden del resultado: «IA por defecto, persona donde importa». Se comprueba con seis pruebas. No equivale a crear una dirección de IA. | 54 §9.1–§9.2 | AI-first |
 | **Incidente de IA** | Suceso en el que un sistema de IA, por su funcionamiento, fallo, manipulación o uso, causa o puede causar daño a personas, a la compañía o a terceros, o interrumpe o degrada un proceso, aunque el sistema siga disponible. Se clasifica por severidad S1–S4. | 37 §1.1; 52 §7.1 | AI incident † |
 | **Incidente grave (Reglamento de IA)** | Incidente o defecto de funcionamiento de un sistema de IA que, directa o indirectamente, causa el fallecimiento o un perjuicio grave para la salud de una persona, una alteración grave e irreversible de infraestructuras críticas, el incumplimiento de obligaciones del Derecho de la Unión destinadas a proteger los derechos fundamentales, o daños graves a la propiedad o al medio ambiente (art. 3.49). Todo posible incidente grave es S1. | 37 §1.1; 34 | serious incident † |
 | **Incidente grave relacionado con las TIC · incidente significativo** | Incidentes que cumplen, respectivamente, los criterios de clasificación de DORA o del art. 23.3 de NIS2 según su transposición. Cuando aplican, son S1. | 37 §1.1 | major ICT-related incident · significant incident † |
@@ -358,6 +361,7 @@ Orden alfabético. Las escalas completas están en la sección 4 y los códigos 
 | **Plan de realización de beneficios** | Plan firmado por el responsable de negocio del beneficio, en borrador en G3 y completo en G4, que fija cómo, cuándo y con qué cambios habilitadores se materializará el valor esperado. Su curva de realización, sus tramos de financiación con su condición de paso, su referencia aprobada y el valor realizado por periodo se registran en T01 (`plan_realizacion`) y los muestra el panel del consejo. | 43 §4; 60 §10.6 | benefits realisation plan |
 | **Plan de reversión** | Plan para volver a una situación anterior segura (versión anterior, alternativa sin IA, autonomía o alcance reducidos) si la solución falla. Debe probarse antes de la puesta en producción. | 01 §3 principio 4, §6.6–6.7; P19; 52 §10 | rollback plan |
 | **Plantilla** | Documento tipo del bloque H: P01–P31 para elaborar las evidencias obligatorias de la iniciativa P32–P71 para los registros, informes y decisiones de la compañía, el consejo, el cumplimiento, los terceros, la auditoría y la implantación del marco, y P72–P74 para los perfiles NIST y la declaración de aplicabilidad de ISO/IEC 42001. Cada una tiene versión editable en Word. | 01 §6.10; 03 §5 | template |
+| **Plantilla mixta** | Plantilla formada por personas y agentes que se planifica de forma conjunta: cada agente tiene un dueño humano, figura en el inventario y cuenta en el plan de plantilla, con roles nuevos como dueño de agente o supervisor de agentes. | 54 §9.6; 50 §6 | mixed workforce † |
 | **Plazo de recuperación · ROI** | Indicadores económicos **informativos**, sin umbrales propios: año en que el neto anual acumulado iguala la inversión inicial (F9) y retorno sobre la inversión inicial calculado siempre sobre neto anual (F8). No son umbral de G3: los plazos de recuperación por nivel de ambición del documento 13 §7 son referencias informativas. | 40 §6, §8.3; 13 §7 | payback period · ROI † |
 | **Plazo de referencia** | Duración orientativa de cada fase y de la decisión de un *gate*, aprobada en C2, cuya superación marca la iniciativa como estancada. | 01 §6.11; 03 §3.6 | reference time limit |
 | **Práctica prohibida** | Uso de IA prohibido por el art. 5 del Reglamento Europeo de IA. No se valora como riesgo ni se acepta: se evita, y en G3 obliga a Parar. | 01 §6.5; 33 §4.3; 21 G3.08 | prohibited practice † |
@@ -1044,6 +1048,7 @@ Las herramientas muestran los valores de las listas cerradas en español e ingl�
 
 | Versión | Fecha | Cambios |
 |---|---|---|
+| 1.9 | 10-11-2026 | Añade «IA-first», «cadena de valor de punta a punta», «fábrica de IA y datos» y «plantilla mixta» (documento 54, sección 9; D162). |
 | 1.8 | 19-10-2026 | Añade pasarela corporativa de IA, banco de pruebas corporativo de agentes, envenenamiento de herramientas y conectores y eficacia de los guardarraíles; controles SEG-01 a SEG-27; indicadores del catálogo: 165 (D159). |
 | 1.7 | 01-10-2026 | Añade «tres perspectivas del caso». |
 | 1.6 | 01-10-2026 | Añade «crosswalk de cobertura». |

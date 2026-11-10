@@ -5,8 +5,8 @@
 | | |
 |---|---|
 | Document | Document 02 · Glossary and conventions |
-| Version | 1.8 |
-| Date | 19-10-2026 |
+| Version | 1.9 |
+| Date | 10-11-2026 |
 | Author | Fernando García Varela |
 | Status | In force. Single source of the framework's terms, scales and codes; it is updated before any other document when a term changes. |
 
@@ -147,6 +147,7 @@ Alphabetical order by English term. The full scales are in section 4 and the cod
 | **Adversarial testing** | Tests that deliberately try to make an AI system or an agent fail (injection, extraction, tool abuse) in order to check the effectiveness of its controls. | 35 §8; 33 §5.3 | Pruebas adversarias |
 | **Agent** | AI system that executes actions on other systems, data or people, or prepares them for human validation, by means of tools and permissions (autonomy A1, A2 or A3). A build tool capable of acting on repositories, environments or systems is also an agent. | 35 §4–5; 53 §1.3 | Agente |
 | **Agents with the ability to act** | Enterprise criterion: system with autonomy A2 or A3 whose actions have an effect on third parties, money, personal data or production systems. | 01 §9.2; 35 §5.2 | Agentes con capacidad de actuar |
+| **AI and data factory** | Single unit that brings together the AI teams, the platform, data, model operations and the inventory, and provides that capacity to every value chain with controls built into the platform. It answers for capacity, not for the value of each process. Organisational proposal, not a mandatory body. | 54 §9.5–§9.7 | fábrica de IA y datos |
 | **AI audit** | Independent examination of evidence, controls or the framework. Types: *gate* audit, continuity audit, framework audit of the company, thematic audit and supplier audit; in addition, follow-up audits and re-audits. | 38 §4; 21 §10 | Auditoría de IA |
 | **AI Auditor** | Control role that verifies the evidence at all Enterprise *gates* and by sampling in Lite, and closes nonconformities. It cannot take part in the design, build or operation of the initiative or report hierarchically to its sponsor. It may come from internal audit or be external. | 01 §8.1; 38 §3 | Auditor de IA |
 | **AI Committee** | Senior management body covering business, technology, data, risk, compliance, security, data protection and people, which manages the portfolio, decides Enterprise *gates* and retirements, accepts High risks and escalates to the board as appropriate. It meets monthly. It may be an existing committee with an extended mandate. | 01 §8.3; 30 §3.3 | Comité de IA |
@@ -164,6 +165,7 @@ Alphabetical order by English term. The full scales are in section 4 and the cod
 | **AI system inventory** | Register of all the company's AI systems of the four usage types (initiatives, embedded third-party AI, corporate use and unauthorised use), with regulatory classification, intensity, autonomy and owner. | 01 §14; 32; T02 | Inventario de sistemas de IA |
 | **AI Technical Owner** | Building role: accountable for the solution, data, models and their technical documentation. It cannot verify evidence or decide *gates* of its initiative. | 01 §8.1 | Responsable técnico de IA |
 | **AI thesis** | Brief statement approved by the board in C2 that explains why AI matters to the company, where it wants to use it, with what ambition and what it will not do. It must be usable to say no to an initiative. | 13 §3 | Tesis de IA |
+| **AI-first** | Company in which each process is designed on the assumption that AI does the work or proposes the decision, and people set the objective, decide on the exceptions and answer for the result: "AI by default, people where it matters". It is checked with six tests. It does not mean creating an AI function. | 54 §9.1–§9.2 | IA-first |
 | **Ambition lane** | Grouping of the portfolio by confirmed ambition level (Optimise, Augment, Transform), with its own budget envelope and prioritisation criteria. Initiatives compete only within their lane. | 14 §4 | Carril de ambición |
 | **Ambition level** | Type of bet of an initiative: Optimise, Augment or Transform. It is not a ladder: they are three bets with different cost, risk, time frame and organisational resistance. Each initiative has a single level. | 01 §4; 10 §3; 12 §3 | Nivel de ambición |
 | **Annual net value** | Materialised efficiencies + return − recurring cost (F2). Non-materialised released capacity is excluded. | 00 rule 6; 40 F2 | Valor neto anual |
@@ -229,6 +231,7 @@ Alphabetical order by English term. The full scales are in section 4 and the cod
 | Term | Definition in SEVEN-G | Reference document | Spanish term |
 |---|---|---|---|
 | **Efficiencies** | Additive value type: lower actual cost or budgeted avoided cost, incremental and with a formula. Only materialised efficiencies count; to be validated they require an accounting reflection or evidence of the avoided cost. | 00 rule 6; 40 §5.1 | Eficiencias |
+| **End-to-end value chain** | Complete process that creates a result for the customer or the company and crosses several functions (for example, order to cash). In an AI-first company it has an owning pair —a business lead and a technology partner with the same objectives— that answers for its result, with a budget in tranches and its own agents. Organisational proposal, not a mandatory body. | 54 §9.6–§9.7 | cadena de valor de punta a punta |
 | **Enterprise criteria** | Eight criteria, any one of which determines Enterprise intensity: high regulatory risk, decisions about people, direct exposure, agents with the ability to act, specially protected data, critical function, Transform level and investment above the C2 threshold. | 01 §9.2 | Criterios Enterprise |
 | **Enterprise (intensity)** | Intensity with all *gates* held separately, full templates, verification by the AI Auditor at all *gates*, decision by the AI Committee (the board in Transform), multi-level sign-off with veto and quarterly R6. It applies if at least one Enterprise criterion is met. | 01 §9 | Enterprise (intensidad) |
 | **Enterprise investment threshold** | Total three-year cost of an initiative (build plus expected recurring cost for the first three years) above which the initiative is Enterprise. It is approved by the board in C2. Splitting an initiative to stay below it is a major nonconformity. | 01 §9.2; 13 §6 | Umbral de inversión Enterprise |
@@ -317,6 +320,7 @@ Alphabetical order by English term. The full scales are in section 4 and the cod
 | **Maturity** | Degree to which the company has AI practices that are defined, applied, measured and improved, assessed with evidence across seven dimensions (D1–D7) and six levels (0–5). | 00 §4.5; 11 | Madurez |
 | **Maturity dimension** | Each of the seven areas (D1–D7) in which the company's maturity is assessed with cumulative criteria and observable evidence. | 11 §2.1 | Dimensión de madurez |
 | **Minor · significant · substantial change** | Classes of change to a system in production. **Minor**: does not alter behaviour or controls. **Significant**: alters behaviour within the approved purpose, scope, autonomy and risks, and requires regression evaluation, updating of the documentation and a report at the next R6. **Substantial**: alters the approved purpose, scope, autonomy, data, critical controls or risk profile, and requires a return to the relevant *gate*. | 52 §6 | Cambio menor · significativo · sustancial |
+| **Mixed workforce** | Workforce made up of people and agents that is planned jointly: each agent has a human owner, appears in the inventory and counts in the workforce plan, with new roles such as agent owner or agent supervisor. | 54 §9.6; 50 §6 | plantilla mixta |
 | **Multi-level go-live sign-off** | Enterprise G5 requirement: recorded sign-off, with veto power, by the technical owner, risk and compliance, information security and data protection. A standing veto prevents proceeding and can only be lifted by whoever issued it or their formal substitute. | 01 §6.7; 21 §9; P23 | Firma multinivel de puesta en producción |
 
 ### 3.12 N
@@ -1044,6 +1048,7 @@ Tools display the values of closed lists in Spanish and English using the equiva
 
 | Version | Date | Changes |
 |---|---|---|
+| 1.9 | 10-11-2026 | Adds "AI-first", "end-to-end value chain", "AI and data factory" and "mixed workforce" (document 54, section 9; D162). |
 | 1.8 | 19-10-2026 | Adds corporate AI gateway, corporate agent test bench, tool and connector poisoning and guardrail effectiveness; controls SEG-01 to SEG-27; catalogue indicators: 165 (D159). |
 | 1.7 | 01-10-2026 | Adds "three perspectives of the use case". |
 | 1.6 | 01-10-2026 | Adds "coverage crosswalk". |

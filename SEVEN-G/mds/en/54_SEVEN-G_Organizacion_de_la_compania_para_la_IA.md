@@ -1,34 +1,35 @@
 # How a company organises itself for AI
 
-**Who does what in real organisations, where AI governance should sit, where use cases come from, how they are governed through to production and how the information reaches the board; and what organisation can be anticipated once AI is embedded**
+**Who does what in real organisations, where AI governance should sit, where use cases come from, how they are governed through to production and how the information reaches the board; what organisation can be anticipated once AI is embedded and how the people of an AI-first company are organised**
 
 | | |
 |---|---|
 | Document | Document 54 · Organising the company for AI |
-| Version | 0.1 (working draft) |
-| Date | 22-09-2026 |
+| Version | 0.2 (working draft) |
+| Date | 10-11-2026 |
 | Author | Fernando García Varela |
 | Status | Draft for review. Explanatory and orientation document: it adds no rules to the framework. |
 
-<!-- cifras: 6 | functions someone has to perform ; 4 | organisation patterns observed ; 8 | sources use cases come from ; 4 | organisation scenarios at five years -->
+<!-- cifras: 6 | functions someone has to perform ; 4 | organisation patterns observed ; 8 | sources use cases come from ; 5 | organisation options to become AI-first -->
 
 ---
 
 > **Legal notice and disclaimer.** SEVEN-G is a reference methodological framework provided "as is" and for information purposes only. It does not constitute legal, regulatory, financial or professional advice, nor does it guarantee compliance with any law or standard. References to general regulation (such as the EU AI Act, the GDPR, DORA or NIS2), to technical standards and to regulation specific to each sector or jurisdiction may be incomplete, may not apply to a particular case or may become out of date as a result of regulatory changes, interpretations or supervisory positions after their consultation date. **Each organisation that uses SEVEN-G is solely responsible for identifying the regulation that applies to it, verifying that it is current and certifying its own regulatory compliance**, with the appropriate qualified advice. This methodology is a generic, free aid shared with the community so that nobody has to start from scratch; each person or organisation can and should adapt it to its own use. It must not be inferred that its legally sensitive parts have been reviewed by legal counsel: those reviews, for each company or sector, are the ultimate responsibility of the company, consultant or organisation that uses it. Although every effort is made to keep it up to date, some regulation may have changed without being reflected here. To the fullest extent permitted by law, the author accepts no responsibility whatsoever for the effects of its application in any organisation or for its full applicability. The methodology does not grant certification of any kind. The author accepts no liability for any use made of this content or for any decisions taken on the basis of it. The data, figures, companies and cases in the examples are fictitious or illustrative.
 
-<!-- esencial: consulta | Explanatory document. It places the framework inside a company's real organisation chart: which functions someone has to perform, which roles usually take them on today, where AI governance is best placed, where use cases come from and how they are governed and reported up to the board. Section 8 is forward-looking and is marked as the author's hypothesis. It creates no rules or evidence: if it differs from documents 01, 14, 30 or 60, those prevail. -->
+<!-- esencial: consulta | Explanatory document. It places the framework inside a company's real organisation chart: which functions someone has to perform, which roles usually take them on today, where AI governance is best placed, where use cases come from and how they are governed and reported up to the board. Section 8 is forward-looking and is marked as the author's hypothesis; section 9 proposes how to organise the people of an AI-first company. It creates no rules or evidence: if it differs from documents 01, 14, 30 or 60, those prevail. -->
 
 ## 1. Purpose and scope
 
 ### 1.1 What this document answers
 
-When a company decides to use AI seriously, the same conversation always appears: *who owns this?* IT has its own director, security another, data another; there is a transformation function, sometimes an AI function, and the board asks for information that nobody is quite sure who should prepare. This document puts that conversation in order through five questions:
+When a company decides to use AI seriously, the same conversation always appears: *who owns this?* IT has its own director, security another, data another; there is a transformation function, sometimes an AI function, and the board asks for information that nobody is quite sure who should prepare. This document puts that conversation in order through six questions:
 
 1. Which **functions** does someone have to perform, whatever they are called in the organisation chart? (section 2)
 2. What is seen **in the market today**, and which organisation patterns work and which fail? (section 3)
 3. Where should **AI governance** sit: with the AI function, with transformation, with risk, with the board? (section 3.4)
 4. Where do **use cases** come from, how are they governed and how is the **board informed**? (sections 5, 6 and 7)
 5. What organisation comes next, once AI is embedded and **functional silos** stop being the natural way of dividing work? (section 8)
+6. What does being an **AI-first** company mean, and how are its people organised without creating one more silo? (section 9)
 
 ### 1.2 What it is not
 
@@ -36,6 +37,7 @@ When a company decides to use AI seriously, the same conversation always appears
 - **It does not replace document 30**, which defines the bodies, their mandates, the delegation matrix and escalation. Here we explain how those bodies fit into an organisation chart that already exists.
 - **It is not a market study.** What section 3 describes are patterns observed in the author's professional practice, expressed qualitatively. It carries no percentages or market shares because they would not come from a verifiable source (document 04, section 6).
 - **Section 8 is a reasoned hypothesis**, not a forecast. It is marked as such and accompanied by the signals that would allow one to check whether it is happening.
+- **Section 9 is the author's proposal**, based on checked external sources. It is not a market study and does not repeat third-party savings figures.
 
 > **Why it matters.** Most of the blockages attributed to technology are in fact questions of allocation: two areas believe they hold the same remit, or nobody holds it. A governance framework that is not translated into the real organisation chart remains a document.
 
@@ -422,7 +424,271 @@ Four moves that are not regretted even if the future turns out differently: a **
 
 ---
 
-## 9. Questions for a useful conversation
+## 9. The human organisation of an AI-first company
+
+> **The author's proposal, not a framework rule.** This section puts in order what can be observed in consultancy publications, in company announcements and in supervisory expectations, and proposes how to organise the people of a company that wants to be AI-first. It creates no rules or evidence: if it differs from documents 01, 30 or 50, those prevail. The sources consulted are in section 9.10.
+
+### 9.1 What being AI-first means
+
+There is no established definition. The term is often used as a budget rule ("before asking for more people, show that AI cannot do it"). That is a spending rule, not an organisation model: it does not say who owns what or where control sits.
+
+**Definition SEVEN-G proposes.** A company is AI-first when **each process is designed on the assumption that AI does the work or proposes the decision, and people set the objective, decide on the exceptions and answer for the result**. AI stops being a project and becomes the normal way of working. Data, the platform and the controls are shared infrastructure.
+
+The short formula is **AI by default, people where it matters**: AI moves the flow and a person is present at the moments that define the relationship with the customer, in decisions about people or money and in everything that cannot be undone.
+
+**What it is not:**
+
+- it is not "AI in everything";
+- it is not replacing people as an objective;
+- it is not having many use cases;
+- it is not creating an AI function (section 9.5).
+
+### 9.2 Six tests to tell whether a company is AI-first
+
+The six tests serve as indicators. Each one rests on something SEVEN-G already requires or measures.
+
+| # | Test | How it is checked in SEVEN-G |
+|---|---|---|
+| 1 | **A single end-to-end owner.** Each key process has one person who answers for its complete result, with a budget, even when the process crosses several functions. | Business sponsor and business benefit owner (document 01, section 8; document 43). |
+| 2 | **The default question is "why not with AI?"**, with control proportionate to risk, not the same funnel for everything. | Express, Lite or Enterprise intensity (document 01, section 9) and the proportionality principle (document 01, section 3). |
+| 3 | **Every agent has a named human owner**, appears in the inventory and counts in the workforce plan. | AI system inventory (T02) and non-human identities (P54); workforce plan in document 50. |
+| 4 | **Controls are built into the platform** and apply before production, not afterwards. | Feasibility gate (G3) and go-live (G5); security controls in document 35. |
+| 5 | **Cost is measured per outcome** (people, agents and consumption), not per head. | Full cost per case (document 42) and validated value (document 40). |
+| 6 | **Decisions leave a trail** (what AI proposed, what was decided and what happened) and the company learns from it. | Logging and monitoring (document 52); board decision register (document 62). |
+
+> **Why it matters.** "AI-first" is often used as a slogan. With six verifiable tests, the board can ask how many are met today and when the rest will be. Test 4 is usually the most urgent: a case in production without closed control is an open risk.
+
+### 9.3 Why a function-based organisation chart holds things back
+
+The classic organisation chart divides the company into vertical functions: business, technology, operations, risk and people. Useful AI lives in processes that cross those functions. For example, onboarding a business customer starts in sales and goes through risk, contracting, billing and customer service, and it is touched by business, operations, technology, security and compliance.
+
+If nobody owns the whole process, each function optimises its own stretch, the case stays a pilot and control arrives late.
+
+<!-- grafico: A use case today | The same case depends on five areas and none owns the whole process -->
+```mermaid
+flowchart TB
+  DG["Chief executive"]
+  DG --> TR["Transformation or data<br>AI team"]
+  DG --> TE["Technology and operations<br>AI platform"]
+  DG --> NE["Business<br>owner of the sales stretch"]
+  DG --> OP["Operations<br>owner of the service stretch"]
+  DG --> RI["Risk, compliance,<br>security and legal"]
+  CASO["A use case<br>with no end-to-end owner"]
+  TR -.-> CASO
+  TE -.-> CASO
+  NE -.-> CASO
+  OP -.-> CASO
+  RI -.->|"reviews at the end"| CASO
+  classDef dir fill:#f2dfce,stroke:#0f5499,color:#1a1817
+  classDef ejec fill:#fdf3e8,stroke:#593380,color:#1a1817
+  classDef ctl fill:#d9ebe0,stroke:#0d7680,color:#1a1817
+  classDef fin fill:#f3d3da,stroke:#990f3d,color:#1a1817
+  class DG dir
+  class TR,TE,NE,OP ejec
+  class RI ctl
+  class CASO fin
+```
+
+**Where a case gets stuck today and where it fails.** Eight recurring points:
+
+| # | Type | Where | What happens | What solves it in the proposed model |
+|---|---|---|---|---|
+| 1 | Bottleneck | Entry | The case waits its turn in a committee that prioritises single cases, not processes. | The chain owner prioritises within their budget (section 9.6, option C). |
+| 2 | Bottleneck | Control | Risk questionnaires pile up and are reviewed one by one. | Lanes by risk level, with controls built into the platform. |
+| 3 | Bottleneck | Integration | The case needs systems from another function that has other priorities. | A single AI and data factory (option A). |
+| 4 | Bottleneck | Full cycle | Months pass between the idea and production with no decision date. | Gates with deadlines and funding in tranches (document 14, section 6). |
+| 5 | Problem | Design | The idea solves one stretch, not the process: local improvement, same overall result. | Redesign of the whole process by its owner. |
+| 6 | Problem | Build | Each area builds its part with its own tool and supplier. | Shared platform and component catalogue. |
+| 7 | Problem | Production | The system goes live with control only half closed. | Go-live (G5) with a control sign-off. |
+| 8 | Problem | Value | Nobody measures the outcome: activity is reported, not benefit. | Baseline and benefits realisation (documents 40 and 43). |
+
+### 9.4 What can be observed elsewhere
+
+| Who | What it does or proposes | What can be learned |
+|---|---|---|
+| **Accenture** ("When everyone has AI, your operating model will set you apart", 2026) | Organise the company around five to eight end-to-end value streams, with accountability, decision rights and budget. Every agent has a named human owner. | The matrix still exists; what is decided is how much accountability moves to the value stream. |
+| **BCG** ("AI-First Enterprise Operations: Reinventing the Operating System of Work", 2026) | A process owner who answers for the end-to-end result and a central "factory" that concentrates funding, guardrails and priorities. Adding assistants to a human workflow gives modest results; redesigning the process gives much more. | Process owner plus shared factory: the pairing that works. |
+| **Allianz** (Allianz article on Project Nemo, 2025) | Seven task-specific agents handle simple claims; the payout is always decided by an accountable person. | Organisation is by process, with the person at the decision that matters. |
+| **Moderna** (Moderna leadership team) | A single executive brings together people and digital technology. | Agents are part of the workforce: people and technology plan them together. |
+| **AXA** (AXA press release on changes to its leadership team, 2025) | The group's technology and AI executive also runs group operations. | AI is joined to technology and operations; no separate silo is created. |
+| **MAPFRE** (MAPFRE manifesto for a humanist, ethical and responsible AI, 2025) | Five principles, the first being a hybrid AI model that extends people's capabilities. | The "people at the centre" narrative is part of the model. |
+| **Supervision** (EIOPA Opinion on AI governance and risk management) | Applies the governance system already required to AI, proportionately to risk, without creating new obligations. | The supervisor asks for clear accountabilities, not for a specific role. |
+
+**What recurs:**
+
+1. the end-to-end process is the unit of design;
+2. there is a small central piece that provides platform, standards and controls;
+3. business and technology share objectives;
+4. agents are managed as part of the workforce, with a human owner;
+5. none of the references creates an AI function separate from technology and data.
+
+**Caution.** Almost all of the material comes from consultancies with a commercial interest. Their savings figures come from their own clients and SEVEN-G does not repeat them. Company announcements say how they are organised, not whether it works for them.
+
+### 9.5 Is a chief AI officer needed? In general, no
+
+Section 3.3 gives four questions to decide whether a central function is needed. That function is needed; **an AI function as a vertical silo, in general, is not**:
+
+- **it is a vertical silo for something horizontal:** the chief AI officer ends up owning the use cases and the processes still have no owner;
+- **it creates one more pole** between the areas that already share AI, instead of resolving the split;
+- **the regulator does not ask for it:** it asks for clear accountabilities (section 9.4);
+- **if it also builds and controls,** it breaks the separation of functions (section 2).
+
+**Who answers to the board.** The chief executive, with three responsibilities divided as follows:
+
+| Responsibility | Who exercises it | What they answer for |
+|---|---|---|
+| **Value** | The value chain owners | The result of their process, with budget and agents. |
+| **Capacity** | The head of the AI and data factory | Platform, data, model operations and inventory. |
+| **Control** | The second line | Risk, compliance, security and legal, with controls built into the platform. |
+
+If the company wants a title, it should be a coordination role within the area that holds the factory, not one more function. The AI Office in document 30 keeps doing its work on method, portfolio and reporting.
+
+### 9.6 Five organisation options
+
+| Option | What it consists of | For | Against | Fit |
+|---|---|---|---|---|
+| **A · A single AI and data factory** | The AI teams, the platform, model operations and the inventory are brought into one unit, with a single funnel. Areas still request the cases. | Small change; ends AI being spread across several homes. | Nobody owns the whole process; AI is still "something technology does". | First step |
+| **B · Hub and spoke** | The factory from A as the hub and an AI lead in each function and subsidiary, with a functional line to the hub. | Respects a federated group. | A hard matrix to staff; local leads end up absorbed by their area; there is still no process owner. | For subsidiaries and distant units |
+| **C · Value chains** | Five to seven end-to-end chains, each with a business lead and a technology partner who share objectives, a budget in tranches and their own agents. Functions become centres of competence (standards, experts, careers). | The only option that resolves horizontality. | Moves power between functions; needs the chief executive behind it; done all at once, it can paralyse operations. | Destination |
+| **D · Temporary transformation office** | A small office reporting to the chief executive, with a closing date (24 to 36 months), that manages the portfolio, funds in tranches and redesigns processes with the areas. | Speed and clear sponsorship without a permanent silo. | Risk that it becomes permanent or acts as a parallel organisation. | Engine of change |
+| **E · Mixed workforce** | People and technology plan the workforce of people and agents together; new roles are defined (agent owner, agent supervisor, chain owner) and variable pay is linked to AI and security objectives. | Addresses the human side: talent, roles and careers. | Not enough on its own. | Always |
+
+| Option | Resolves horizontality | Change and risk | Fit |
+|---|---|---|---|
+| A · Single factory | No | Low | First step |
+| B · Hub and spoke | A little | Medium | For subsidiaries |
+| C · Value chains | Yes | High | Destination |
+| D · Temporary office | While it lasts | Medium | Engine |
+| E · Mixed workforce | No | Low | Always |
+
+Relation to the patterns in section 3.2: A and B are variants of pattern C (central office or function); option C in this section is scenario 3 of section 8.4 made real chain by chain.
+
+> **Why it matters.** Choosing only the factory (A) is easy to agree and to check, but it leaves processes without an owner. Choosing value chains (C) all at once solves the most and carries the most risk. The phased combination (section 9.7) takes the best of each option.
+
+### 9.7 Recommendation: a phased combination
+
+**Destination C, built on A, started by D, with B for subsidiaries and E from day one.** In one sentence: processes have an owner, AI has a single home and control sits inside the platform.
+
+<!-- grafico: The target model | Value chains with an owning pair on a single factory, with control inside the platform -->
+```mermaid
+flowchart LR
+  DG["Chief executive<br>answers to the board"] --> COM["Value chain and AI committee<br>priorities and tranches"]
+  COM --> C1["Chain 1"]
+  COM --> C2["Chain 2"]
+  COM --> C3["Chain 3"]
+  COM --> CN["Chain n"]
+  FAB["Single AI and data factory<br>platform, data, model operations, inventory"] --> C1
+  FAB --> C2
+  FAB --> C3
+  FAB --> CN
+  CTL["Controls inside the platform<br>risk, compliance, security, legal"] --> FAB
+  PER["People and technology<br>workforce of people and agents"] -.-> COM
+  FIN["Management control<br>cost per outcome and tranches"] -.-> COM
+  classDef dir fill:#f2dfce,stroke:#0f5499,color:#1a1817
+  classDef ejec fill:#fdf3e8,stroke:#593380,color:#1a1817
+  classDef ctl fill:#d9ebe0,stroke:#0d7680,color:#1a1817
+  class DG,COM dir
+  class C1,C2,C3,CN,FAB,PER,FIN ejec
+  class CTL ctl
+```
+
+Each chain has an **owning pair**: a business lead and a technology partner with the same objectives. The chains hold the result and the budget; the factory, the capacity; the second line, the control. The committee decides priorities and tranches.
+
+**How a case travels in the target model:**
+
+<!-- grafico: How a case travels in the target model | From the redesign proposed by the chain owner to the review against the value curve -->
+```mermaid
+flowchart LR
+  P1["1 · The chain owner<br>proposes the redesign with its value<br>curve and its first tranche"]
+  P2["2 · The committee approves the tranche<br>and its pass condition"]
+  P3["3 · The factory classifies the risk<br>and applies its lane"]
+  P4["4 · Controls active in the<br>platform before production"]
+  P5["5 · Agent in production<br>with a human owner and logging"]
+  P6["6 · Periodic review<br>against the approved curve"]
+  P1 --> P2 --> P3 --> P4 --> P5 --> P6
+  P6 -->|"met: next tranche"| P2
+  P6 -->|"not met: corrected or stopped"| P1
+  classDef fase fill:#fdf3e8,stroke:#593380,color:#1a1817
+  classDef gate fill:#f2dfce,stroke:#0f5499,color:#1a1817
+  class P1,P3,P5 fase
+  class P2,P4,P6 gate
+```
+
+Control comes before production and money is released in tranches according to real value (document 14, section 6.2; document 43). The sequence of phases and gates in document 01 does not change: what changes is who owns the case.
+
+**Step by step:**
+
+| Stage | What is done | Why | If it fails |
+|---|---|---|---|
+| **0 · Decide and appoint** (first two months) | The chief executive appoints the temporary office and two pilot pairs in the two chains where AI already works or where coordination hurts most. A single inventory tool is chosen. | Without the chief executive's sponsorship, destination C cannot hold. | The company falls back to a function-based model and the problem is postponed. |
+| **1 · A single factory** (first half-year) | The AI teams and the platform are brought under one head, with one funnel, one inventory and lanes by risk; whatever is in production without closed control is regularised (document 14, section 11). | The chains need a single home to ask. | The pilots ask two places and the split repeats itself. |
+| **1 · Pilots with an owner** (first half-year, in parallel) | The two pairs receive objectives, their chain's AI budget in tranches and ownership of their agents. People opens the mixed workforce plan and the new roles. Management control measures cost per outcome. | Prove it with data before extending it. | It shows in the periodic review: the curve is not met and the next tranche is corrected or stopped. |
+| **2 · Extend** (second half-year and the following year) | The other chains are added; the AI committee becomes the value chain and AI committee, chaired by the chief executive; variable pay is linked to the chain's objectives; subsidiaries join with model B. | Extend what has worked. | Matrix conflict between chain and function; mitigated with shared objectives and a clear arbiter (the committee). |
+| **3 · Close the temporary office** (24 to 36 months) | Its functions move to the chains and the factory. | Avoid a permanent silo. | If the office does not close, an AI function has been created through the back door. |
+
+**Risks that remain in the proposed model and how they are covered:**
+
+| # | Risk | How it is covered |
+|---|---|---|
+| 1 | The chain promises value without a baseline. | Baseline and attribution method before the first tranche (document 40). |
+| 2 | The committee becomes another bottleneck. | Delegation by intensity (document 30, section 7); the committee decides tranches, not single cases. |
+| 3 | The factory is saturated and the chains wait. | Factory capacity in the enablement budget (document 13); committee priorities. |
+| 4 | Control arrives at the end again. | Controls inside the platform and the feasibility gate (G3) with the second line present. |
+| 5 | New roles with no definition or career path. | Mixed workforce plan and roles in document 50; written appointments (P38). |
+| 6 | A tranche's pass condition is soft. | Measurable pass condition and review against the approved curve (document 43). |
+
+### 9.8 Implications of deciding only the factory or the phased combination
+
+The two options are not mutually exclusive: the single factory is the first step of the combination. What is really decided is **what is written down as the destination**.
+
+| | Phased combination | Single factory only (A) |
+|---|---|---|
+| **What it solves** | AI spread across several homes and no process having an owner. | Only the spread: one funnel, one inventory, one head. |
+| **Type of value** | Redesigns the whole process, where the large savings and a different service are. | Case-by-case improvements, better ordered. |
+| **Power** | Business gains its chain's AI budget; the AI teams become suppliers to the chains. | Only which area keeps the factory is decided. |
+| **Sponsorship** | The chief executive, visible and sustained. | Two functions agreeing is enough. |
+| **Timeframe** | First data in about six months; extended model in two years. | Working in three to six months. |
+| **Operational risk** | Higher if it coincides with other large changes; reduced by starting with two chains where AI already works. | Low. |
+| **Control** | Every agent has a business owner and controls come before production. | The funnel is put in order, but control may still arrive at the end. |
+| **People** | New roles, pay linked to objectives and more attractive to talent. | Almost nothing changes; AI remains a matter for specialists. |
+| **Unintended effect** | Matrix conflicts between chain and function; an arbiter is needed. | The head of the factory ends up, in practice, as the chief AI officer nobody wanted. |
+
+**Middle way:** agree the single factory now and test two value chains with data before closing the target model. It costs little and keeps the door open.
+
+### 9.9 What exists and what is missing: checklist
+
+| Piece | Question | Where it rests in SEVEN-G |
+|---|---|---|
+| AI policy and bodies | Do the bodies decide on processes and budget, or only on cases? | Document 30; P38 |
+| AI platform | Is there a single home for AI, with one funnel and one inventory? | Document 14; AI system inventory (T02) |
+| Lanes by risk | Do controls work before production? | Document 01, section 9; documents 33 and 35 |
+| End-to-end process owner | Are there owning pairs with a budget? | Document 01, section 8; document 43 |
+| Human owner of each agent | Does each agent have an owner, onboarding and offboarding in the inventory? | P54; document 35 |
+| Workforce plan for people and agents | Does People also plan the agents? | Document 50, section 6 |
+| Cost per outcome and tranches | Does management control measure cost per outcome and release funds in tranches? | Documents 42 and 43; document 14, section 6.2 |
+| Decision trail | Is it recorded what AI proposed, what was decided and what happened? | Document 52; document 62 |
+
+### 9.10 Sources consulted and cautions
+
+External sources checked on their original site on 10-11-2026 and entered in the reference register (D41, D114):
+
+| Source | Type | What is taken |
+|---|---|---|
+| Accenture, "When everyone has AI, your operating model will set you apart" (06-10-2026) | Consultancy publication | End-to-end value streams with budget; a human owner for each agent. |
+| BCG, "AI-First Enterprise Operations: Reinventing the Operating System of Work" (2026) | Consultancy publication | End-to-end process owner and a central factory for funding, guardrails and priorities. |
+| Allianz article on Project Nemo (03-11-2025) | Company announcement | Task-specific agents and payout decisions always made by a person. |
+| Moderna leadership team | Company page | People and digital technology under one executive. |
+| AXA press release on changes to its leadership team (2025) | Company press release | Group technology, AI and operations under one executive. |
+| MAPFRE manifesto for a humanist, ethical and responsible AI (2025) | Company document | Hybrid AI that extends people's capabilities. |
+| EIOPA Opinion on AI governance and risk management (06-08-2025) | Supervisory authority | Governance proportionate to risk without new roles. |
+
+**Consulted and not cited.** McKinsey publications on the agentic organisation and the platform model, DBS's annual report on its platform model jointly led by business and technology, an academic study on the failure of generative AI pilots and several executive memos on "AI first" were also consulted. They are not cited because on 10-11-2026 the original source could not be read (it did not respond, or only third-party copies or summaries were available). If they are checked, they will be added to the register.
+
+**Cautions.** Consultancies' savings figures are not repeated because they come from their own clients. Company announcements describe how they are organised; they do not prove that it works for them. The options and the recommendation are the author's proposal for a management or board conversation.
+
+---
+
+## 10. Questions for a useful conversation
 
 For the board, the management committee or a working session. They have no right answer; they either have an answer or they do not, and that in itself is information.
 
@@ -456,9 +722,15 @@ For the board, the management committee or a working session. They have no right
 14. Which end-to-end chain of work suffers most from the separation between areas?
 15. If in three years part of the work is done by agents, who onboards them, who owns them and who offboards them?
 
+**On being AI-first**
+
+16. How many of the six tests in section 9.2 do we meet today?
+17. Which process has an end-to-end owner today, with a budget?
+18. If the company's AI is spread across several areas, which of the five options in section 9.6 brings us closest to the destination without stopping operations?
+
 ---
 
-## 10. How it is set up in practice
+## 11. How it is set up in practice
 
 The implementation sequence is in document 90. In organisational terms, the order that avoids most blockages is:
 
@@ -470,7 +742,7 @@ The implementation sequence is in document 90. In organisational terms, the orde
 
 ---
 
-## 11. Associated tools and templates
+## 12. Associated tools and templates
 
 | Code | Name | Use in this document |
 |---|---|---|
@@ -489,7 +761,7 @@ The implementation sequence is in document 90. In organisational terms, the orde
 
 ---
 
-## 12. Related documents
+## 13. Related documents
 
 | Document | Relationship |
 |---|---|
@@ -508,8 +780,9 @@ The implementation sequence is in document 90. In organisational terms, the orde
 
 ---
 
-## 13. Version control
+## 14. Version control
 
 | Version | Date | Changes |
 |---|---|---|
 | 0.1 | 22-09-2026 | First version. Six functions someone must perform and their separations; organisation patterns observed in the market and where to place AI governance; mapping between the real organisation chart and the bodies in document 30; eight sources of use cases with their bias and their single entry point; governance circuit with who decides at each gate; reporting chain to the board; forward-looking section marked as a hypothesis, with four scenarios and their signals; fifteen questions for a management or board conversation. Explanatory document: it adds no rules or evidence. |
+| 0.2 | 10-11-2026 | New section 9, "The human organisation of an AI-first company": proposed definition and six tests; why a function-based organisation chart holds things back; eight points where a case gets stuck or fails; what can be observed elsewhere, with checked sources; why, in general, an AI function is not needed; five options; recommendation of a phased combination with the target model, how a case travels, the step-by-step plan and the remaining risks; implications of each decision; checklist; sources and cautions. Questions 16 to 18. Sections 9 to 13 become 10 to 14. The author's proposal: it adds no rules or evidence. |
