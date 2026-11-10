@@ -15,6 +15,12 @@ Repositorio de metodologías de IA de Fernando García Varela (D81). El trabajo 
 - Al terminar o actualizar un documento, se actualiza su estado en el plan documental (`_trabajo`) y en el catálogo de herramientas (documento 03) si afecta a herramientas.
 - Lo que haya que recordar y no sea una decisión (pendientes, dudas abiertas, preferencias) se anota en la sección "Pendientes" de este fichero.
 
+## Cómo se explican las cosas (todos los agentes)
+
+- Explain this using the spirit of ASD STE100. Keep sentence structures direct, limit procedural steps to single actions and avoid unnecessary synonyms (D162).
+- En la práctica: frases cortas y directas, en voz activa; cada paso de un procedimiento es una sola acción; un mismo concepto se nombra siempre con la misma palabra (la del glosario, documento 02), sin sinónimos para variar.
+- Aplica a las respuestas al autor, a los informes de sesión y a los procedimientos que escriban los agentes. No obliga a reescribir los documentos ya publicados.
+
 ## Convenciones de trabajo
 
 - La fuente de verdad es el Markdown (`SEVEN-G/mds/es/` y `SEVEN-G/mds/en/`). Los HTML y PDF se generan siempre desde esos ficheros; no se editan en paralelo ni se quedan desincronizados.
