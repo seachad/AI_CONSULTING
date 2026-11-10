@@ -571,19 +571,26 @@ Relación con los patrones de la sección 3.2: A y B son variantes del patrón C
 
 <!-- grafico: El modelo destino | Cadenas de valor con pareja dueña sobre una sola fábrica, con el control dentro de la plataforma -->
 ```mermaid
-flowchart LR
-  DG["Primer ejecutivo<br>responde ante el consejo"] --> COM["Comité de cadenas de valor e IA<br>prioridades y tramos"]
-  COM --> C1["Cadena 1"]
-  COM --> C2["Cadena 2"]
-  COM --> C3["Cadena 3"]
-  COM --> CN["Cadena n"]
-  FAB["Fábrica única de IA y datos<br>plataforma, datos, operación de modelos, inventario"] --> C1
-  FAB --> C2
-  FAB --> C3
-  FAB --> CN
-  CTL["Controles dentro de la plataforma<br>riesgos, cumplimiento, seguridad, jurídica"] --> FAB
-  PER["Personas y tecnología<br>plantilla de personas y agentes"] -.-> COM
-  FIN["Control de gestión<br>coste por resultado y tramos"] -.-> COM
+flowchart TB
+  DG["Primer ejecutivo<br>responde ante el consejo"]
+  COM["Comité de cadenas de valor e IA<br>prioridades y tramos"]
+  PER["Personas y tecnología<br>plantilla de personas y agentes"]
+  FIN["Control de gestión<br>coste por resultado y tramos"]
+  subgraph CAD["Cadenas de valor: cada una con su pareja dueña, negocio y tecnología"]
+    direction LR
+    C1["Cadena 1"]
+    C2["Cadena 2"]
+    C3["Cadena 3"]
+    CN["Cadena n"]
+  end
+  FAB["Fábrica única de IA y datos<br>plataforma, datos, operación de modelos, inventario"]
+  CTL["Controles dentro de la plataforma<br>riesgos, cumplimiento, seguridad, jurídica"]
+  DG --> COM
+  PER -.-> COM
+  FIN -.-> COM
+  COM -->|"objetivos y tramos"| CAD
+  FAB -->|"capacidad"| CAD
+  CTL -->|"control antes de producción"| FAB
   classDef dir fill:#f2dfce,stroke:#0f5499,color:#1a1817
   classDef ejec fill:#fdf3e8,stroke:#593380,color:#1a1817
   classDef ctl fill:#d9ebe0,stroke:#0d7680,color:#1a1817
@@ -594,17 +601,15 @@ flowchart LR
 
 Cada cadena tiene una **pareja dueña**: un responsable de negocio y un socio tecnológico con los mismos objetivos. Las cadenas tienen el resultado y el presupuesto; la fábrica, la capacidad; la segunda línea, el control. El comité decide prioridades y tramos.
 
-**Cómo viaja un caso en el destino:**
-
 <!-- grafico: Cómo viaja un caso en el destino | Del rediseño propuesto por el dueño de la cadena a la revisión contra la curva de valor -->
 ```mermaid
-flowchart LR
-  P1["1 · El dueño de la cadena<br>propone el rediseño con su curva<br>de valor y su primer tramo"]
-  P2["2 · El comité aprueba el tramo<br>y su condición de paso"]
-  P3["3 · La fábrica clasifica el riesgo<br>y aplica su carril"]
-  P4["4 · Controles activos en la<br>plataforma antes de producción"]
-  P5["5 · Agente en producción<br>con dueño humano y registro"]
-  P6["6 · Revisión periódica<br>contra la curva aprobada"]
+flowchart TB
+  P1["1 · El dueño de la cadena propone el rediseño<br>con su curva de valor y su primer tramo"]
+  P2["2 · El comité aprueba el tramo y su condición de paso"]
+  P3["3 · La fábrica clasifica el riesgo y aplica su carril"]
+  P4["4 · Controles activos en la plataforma antes de producción"]
+  P5["5 · Agente en producción con dueño humano y registro"]
+  P6["6 · Revisión periódica contra la curva aprobada"]
   P1 --> P2 --> P3 --> P4 --> P5 --> P6
   P6 -->|"se cumple: siguiente tramo"| P2
   P6 -->|"no se cumple: se corrige o se para"| P1

@@ -571,19 +571,26 @@ Relation to the patterns in section 3.2: A and B are variants of pattern C (cent
 
 <!-- grafico: The target model | Value chains with an owning pair on a single factory, with control inside the platform -->
 ```mermaid
-flowchart LR
-  DG["Chief executive<br>answers to the board"] --> COM["Value chain and AI committee<br>priorities and tranches"]
-  COM --> C1["Chain 1"]
-  COM --> C2["Chain 2"]
-  COM --> C3["Chain 3"]
-  COM --> CN["Chain n"]
-  FAB["Single AI and data factory<br>platform, data, model operations, inventory"] --> C1
-  FAB --> C2
-  FAB --> C3
-  FAB --> CN
-  CTL["Controls inside the platform<br>risk, compliance, security, legal"] --> FAB
-  PER["People and technology<br>workforce of people and agents"] -.-> COM
-  FIN["Management control<br>cost per outcome and tranches"] -.-> COM
+flowchart TB
+  DG["Chief executive<br>answers to the board"]
+  COM["Value chain and AI committee<br>priorities and tranches"]
+  PER["People and technology<br>workforce of people and agents"]
+  FIN["Management control<br>cost per outcome and tranches"]
+  subgraph CAD["Value chains: each with its owning pair, business and technology"]
+    direction LR
+    C1["Chain 1"]
+    C2["Chain 2"]
+    C3["Chain 3"]
+    CN["Chain n"]
+  end
+  FAB["Single AI and data factory<br>platform, data, model operations, inventory"]
+  CTL["Controls inside the platform<br>risk, compliance, security, legal"]
+  DG --> COM
+  PER -.-> COM
+  FIN -.-> COM
+  COM -->|"objectives and tranches"| CAD
+  FAB -->|"capacity"| CAD
+  CTL -->|"control before production"| FAB
   classDef dir fill:#f2dfce,stroke:#0f5499,color:#1a1817
   classDef ejec fill:#fdf3e8,stroke:#593380,color:#1a1817
   classDef ctl fill:#d9ebe0,stroke:#0d7680,color:#1a1817
@@ -594,17 +601,15 @@ flowchart LR
 
 Each chain has an **owning pair**: a business lead and a technology partner with the same objectives. The chains hold the result and the budget; the factory, the capacity; the second line, the control. The committee decides priorities and tranches.
 
-**How a case travels in the target model:**
-
 <!-- grafico: How a case travels in the target model | From the redesign proposed by the chain owner to the review against the value curve -->
 ```mermaid
-flowchart LR
-  P1["1 · The chain owner<br>proposes the redesign with its value<br>curve and its first tranche"]
-  P2["2 · The committee approves the tranche<br>and its pass condition"]
-  P3["3 · The factory classifies the risk<br>and applies its lane"]
-  P4["4 · Controls active in the<br>platform before production"]
-  P5["5 · Agent in production<br>with a human owner and logging"]
-  P6["6 · Periodic review<br>against the approved curve"]
+flowchart TB
+  P1["1 · The chain owner proposes the redesign<br>with its value curve and its first tranche"]
+  P2["2 · The committee approves the tranche and its pass condition"]
+  P3["3 · The factory classifies the risk and applies its lane"]
+  P4["4 · Controls active in the platform before production"]
+  P5["5 · Agent in production with a human owner and logging"]
+  P6["6 · Periodic review against the approved curve"]
   P1 --> P2 --> P3 --> P4 --> P5 --> P6
   P6 -->|"met: next tranche"| P2
   P6 -->|"not met: corrected or stopped"| P1
