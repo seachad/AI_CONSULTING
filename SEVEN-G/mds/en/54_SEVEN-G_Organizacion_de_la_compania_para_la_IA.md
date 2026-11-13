@@ -5,8 +5,8 @@
 | | |
 |---|---|
 | Document | Document 54 · Organising the company for AI |
-| Version | 0.2 (working draft) |
-| Date | 10-11-2026 |
+| Version | 0.3 (working draft) |
+| Date | 13-11-2026 |
 | Author | Fernando García Varela |
 | Status | Draft for review. Explanatory and orientation document: it adds no rules to the framework. |
 
@@ -152,7 +152,7 @@ This is the most frequent question and it has an answer of principle: **governan
 | **3 · AI Committee as the governing body**, with no dedicated function | A committee with management, technology, risk, data and people decides; the secretariat is held by whoever coordinates. | Inexpensive and sufficient in mid-sized companies; shares responsibility. | Without a dedicated secretariat, the committee neither prepares nor follows up anything. | Someone has real dedicated time to prepare decisions and follow up agreements. |
 | **4 · Governance inside the function that builds** | The same area proposes, builds, approves and declares the value. | None that survives a review. | Judge and party: the evidence is not defensible before audit or before the board. | It is not an acceptable option in SEVEN-G. |
 
-In the first three options the board keeps what it cannot delegate: approving the thesis and the risk appetite, approving Transform bets and overseeing results (document 30, section 3.1). Regulation reinforces this idea in sectors where the management body already has an express responsibility for technology and resilience risks, such as Regulation (EU) 2022/2554 (DORA) or Directive (EU) 2022/2555 (NIS2), and in supervisory expectations on AI governance, such as the EIOPA Opinion on AI governance and risk management (document 34).
+In the first three options the board keeps what it cannot delegate: approving the thesis and the risk appetite, approving Transform bets and overseeing results (document 30, section 3.1). Regulation reinforces this idea in sectors where the management body already has an express responsibility for technology and resilience risks, such as Regulation (EU) 2022/2554 (DORA) or Directive (EU) 2022/2555 (NIS2), and, for all sectors, in the EU AI Act, which requires human oversight of high-risk systems to be assigned to people with competence, training and authority (Article 26). Sector supervisors also publish their expectations on AI governance; one example, in insurance, is the EIOPA Opinion on AI governance and risk management (document 34).
 
 > **Why it matters.** Where governance sits determines what happens on the day an important initiative does not pass a gate. If the person who decides to stop reports to the person who has to deliver, nothing is ever stopped.
 
@@ -408,7 +408,7 @@ flowchart BT
 | **3 · Process-based organisation with mixed teams** | Work is organised into end-to-end chains, with people and agents, and outcome owners. | When the cost of coordinating between silos exceeds the cost of reorganising. | Process owners appear with budget and with outcome objectives. |
 | **4 · Governed network of agents** | Much of the execution is carried out by coordinated agents; people set objectives, exceptions and control. | Only after high maturity in data, security and control. | There is an inventory of agents with an owner, limits and offboarding, just like an employee register. |
 
-The author's hypothesis is that most large European companies will travel through **scenario 2**, and that **scenario 3** will arrive process by process, not through general reorganisations: first one chain (claims, onboarding, support, billing), then another.
+The author's hypothesis is that most large European companies will travel through **scenario 2**, and that **scenario 3** will arrive process by process, not through general reorganisations: first one chain (customer onboarding, support, procurement, billing), then another.
 
 ### 8.5 What will not change
 
@@ -426,11 +426,11 @@ Four moves that are not regretted even if the future turns out differently: a **
 
 ## 9. The human organisation of an AI-first company
 
-> **The author's proposal, not a framework rule.** This section puts in order what can be observed in consultancy publications, in company announcements and in supervisory expectations, and proposes how to organise the people of a company that wants to be AI-first. It creates no rules or evidence: if it differs from documents 01, 30 or 50, those prevail. The sources consulted are in section 9.10.
+> **The author's proposal, not a framework rule.** This section puts in order what can be observed in consultancy publications, in announcements by companies from different sectors and in regulation, and proposes how to organise the people of a company that wants to be AI-first. It creates no rules or evidence: if it differs from documents 01, 30 or 50, those prevail. The sources consulted are in section 9.10.
 
 ### 9.1 What being AI-first means
 
-There is no established definition. The term is often used as a budget rule ("before asking for more people, show that AI cannot do it"). That is a spending rule, not an organisation model: it does not say who owns what or where control sits.
+There is no established definition. Some companies announced it in 2025 as a way of working (for example, the Duolingo post on "AI-first"). It is often used as a budget rule ("before asking for more people, show that AI cannot do it"). That is a spending rule, not an organisation model: it does not say who owns what or where control sits.
 
 **Definition SEVEN-G proposes.** A company is AI-first when **each process is designed on the assumption that AI does the work or proposes the decision, and people set the objective, decide on the exceptions and answer for the result**. AI stops being a project and becomes the normal way of working. Data, the platform and the controls are shared infrastructure.
 
@@ -504,15 +504,15 @@ flowchart TB
 
 ### 9.4 What can be observed elsewhere
 
-| Who | What it does or proposes | What can be learned |
+| Who | What it does or proposes | What it means for your company |
 |---|---|---|
-| **Accenture** ("When everyone has AI, your operating model will set you apart", 2026) | Organise the company around five to eight end-to-end value streams, with accountability, decision rights and budget. Every agent has a named human owner. | The matrix still exists; what is decided is how much accountability moves to the value stream. |
-| **BCG** ("AI-First Enterprise Operations: Reinventing the Operating System of Work", 2026) | A process owner who answers for the end-to-end result and a central "factory" that concentrates funding, guardrails and priorities. Adding assistants to a human workflow gives modest results; redesigning the process gives much more. | Process owner plus shared factory: the pairing that works. |
-| **Allianz** (Allianz article on Project Nemo, 2025) | Seven task-specific agents handle simple claims; the payout is always decided by an accountable person. | Organisation is by process, with the person at the decision that matters. |
-| **Moderna** (Moderna leadership team) | A single executive brings together people and digital technology. | Agents are part of the workforce: people and technology plan them together. |
-| **AXA** (AXA press release on changes to its leadership team, 2025) | The group's technology and AI executive also runs group operations. | AI is joined to technology and operations; no separate silo is created. |
-| **MAPFRE** (MAPFRE manifesto for a humanist, ethical and responsible AI, 2025) | Five principles, the first being a hybrid AI model that extends people's capabilities. | The "people at the centre" narrative is part of the model. |
-| **Supervision** (EIOPA Opinion on AI governance and risk management) | Applies the governance system already required to AI, proportionately to risk, without creating new obligations. | The supervisor asks for clear accountabilities, not for a specific role. |
+| **Accenture**, consultancy ("When everyone has AI, your operating model will set you apart", 2026) | Organise the company into five to eight end-to-end value streams. Each stream has accountability, decision rights and budget. Every agent has a named human owner. | Give each key process an owner with their own budget. Departments still exist, but the person who answers for the result of the process is that owner. |
+| **BCG**, consultancy ("AI-First Enterprise Operations: Reinventing the Operating System of Work", 2026) | A process owner who answers for the end-to-end result, and a central "factory" that concentrates funding, guardrails and priorities. | Appoint an owner for the whole process and create a single central team that provides the platform and the rules. Adding an assistant to each job improves little; the large improvement comes from redesigning the whole process. |
+| **Microsoft**, technology (Microsoft Work Trend Index 2025 report; a cross-sector study) | Teams made up of people and agents. A new role for everyone: someone who builds agents, delegates work to them and manages them. Work is organised around outcomes and a new measure appears: how many agents there are per person. | Prepare people to direct agents, not only to use them. Decide in each process how many agents one person can supervise well. |
+| **BBVA**, banking (BBVA note on its AI Transformation area, 2026) | Creates, at the top level of the organisation, a global area that joins the data area and the technical capabilities to create, deploy and manage agents across the company. | AI, data and the platform sit together in a single top-level area. It is the "single factory" of section 9.6: it gives capacity to everyone, but it does not replace the owner of each process. |
+| **Moderna**, pharmaceuticals (Moderna leadership team) | A single executive brings together the people function and digital technology. | If agents do part of the work, the workforce plan must count people and agents together. For that, people and technology have to plan jointly. |
+| **Allianz**, insurance (Allianz article on Project Nemo, 2025) | Seven agents, each with one task, handle simple claims. The payout is always decided by an accountable person. | The whole process is redesigned with agents, but the decision that affects the customer and the money still belongs to a named person. |
+| **Regulation**, all sectors (EU AI Act, Articles 4 and 26) | Every company that uses AI must ensure the AI literacy of its staff. Whoever uses a high-risk system must assign human oversight to people with competence, training and authority. | The law does not ask for a new role. It asks that each system has named people with the training and authority to oversee it. |
 
 **What recurs:**
 
@@ -675,19 +675,30 @@ The two options are not mutually exclusive: the single factory is the first step
 
 ### 9.10 Sources consulted and cautions
 
-External sources checked on their original site on 10-11-2026 and entered in the reference register (D41, D114):
+External sources checked on their original site on 10-11-2026 and 13-11-2026 and entered in the reference register (D41, D114):
 
 | Source | Type | What is taken |
 |---|---|---|
 | Accenture, "When everyone has AI, your operating model will set you apart" (06-10-2026) | Consultancy publication | End-to-end value streams with budget; a human owner for each agent. |
 | BCG, "AI-First Enterprise Operations: Reinventing the Operating System of Work" (2026) | Consultancy publication | End-to-end process owner and a central factory for funding, guardrails and priorities. |
-| Allianz article on Project Nemo (03-11-2025) | Company announcement | Task-specific agents and payout decisions always made by a person. |
-| Moderna leadership team | Company page | People and digital technology under one executive. |
-| AXA press release on changes to its leadership team (2025) | Company press release | Group technology, AI and operations under one executive. |
-| MAPFRE manifesto for a humanist, ethical and responsible AI (2025) | Company document | Hybrid AI that extends people's capabilities. |
-| EIOPA Opinion on AI governance and risk management (06-08-2025) | Supervisory authority | Governance proportionate to risk without new roles. |
+| Microsoft Work Trend Index 2025 report (23-04-2025) | Study by a technology company, across sectors | Teams of people and agents; the role of whoever directs agents; work organised around outcomes. |
+| BBVA note on its AI Transformation area (28-05-2026) | Company announcement (banking) | Top-level area that joins data and the technical capability for agents. |
+| Moderna leadership team | Company page (pharmaceuticals) | People and digital technology under one executive. |
+| Allianz article on Project Nemo (03-11-2025) | Company announcement (insurance) | Task-specific agents and payout decisions always made by a person. |
+| Duolingo post on "AI-first" (2025) | Company announcement (digital education) | Use of the term "AI-first" as a way of working. |
+| EU AI Act, Articles 4 and 26 | European Union law | AI literacy and human oversight with competence, training and authority. |
 
-**Consulted and not cited.** McKinsey publications on the agentic organisation and the platform model, DBS's annual report on its platform model jointly led by business and technology, an academic study on the failure of generative AI pilots and several executive memos on "AI first" were also consulted. They are not cited because on 10-11-2026 the original source could not be read (it did not respond, or only third-party copies or summaries were available). If they are checked, they will be added to the register.
+**Consulted, but not checked at their original source.** These sources were also consulted. Their official site could not be read on 10-11-2026 or on 13-11-2026 (it did not respond to automated reading, or only third-party copies were available). They are therefore cited separately: they are not used to support any statement in this section, and they should be opened before relying on them.
+
+| Source | What it covers | Official address | Why it is not checked |
+|---|---|---|---|
+| McKinsey, "The agentic organization: contours of the next paradigm for the AI era" | Small, outcome-focused teams that supervise many agents across a whole process. | [mckinsey.com](https://www.mckinsey.com/capabilities/people-and-organization/our-insights/the-agentic-organization-contours-of-the-next-paradigm-for-the-ai-era) | The site returned a 503 error to automated reading. |
+| McKinsey, "The platform operating model for the AI bank of the future" | Platforms jointly led by business and technology. | [mckinsey.com](https://www.mckinsey.com/industries/financial-services/our-insights/platform-operating-model-for-the-ai-bank-of-the-future) | The site returned a 503 error to automated reading. |
+| DBS, 2018 annual report, chief information officer's statement | Platform model with one business lead and one technology lead for each platform. | [dbs.com](https://www.dbs.com/annualreports/2018/cio-statement.html) | The page only renders in a browser; automated reading did not obtain the text. |
+| Shopify, chief executive's message to staff (April 2025) | Before asking for more people, the team explains why it cannot do the work with AI. | [x.com](https://x.com/tobi/status/1909251946235437514) | The social network did not serve the post to automated reading. |
+| MIT NANDA, "The GenAI Divide: State of AI in Business 2025" | Why most generative AI pilots do not reach a measurable result. | [nanda.media.mit.edu](https://nanda.media.mit.edu/) | The report was not found on the publisher's site; only copies on third-party sites. |
+
+The examples are chosen from different sectors so that none weighs more than another; for that reason the announcements of two other insurance groups that were consulted are not cited.
 
 **Cautions.** Consultancies' savings figures are not repeated because they come from their own clients. Company announcements describe how they are organised; they do not prove that it works for them. The options and the recommendation are the author's proposal for a management or board conversation.
 
@@ -790,4 +801,5 @@ The implementation sequence is in document 90. In organisational terms, the orde
 | Version | Date | Changes |
 |---|---|---|
 | 0.1 | 22-09-2026 | First version. Six functions someone must perform and their separations; organisation patterns observed in the market and where to place AI governance; mapping between the real organisation chart and the bodies in document 30; eight sources of use cases with their bias and their single entry point; governance circuit with who decides at each gate; reporting chain to the board; forward-looking section marked as a hypothesis, with four scenarios and their signals; fifteen questions for a management or board conversation. Explanatory document: it adds no rules or evidence. |
+| 0.3 | 13-11-2026 | Section 9.4: examples from different sectors (consultancy, technology, banking, pharmaceuticals, insurance and general regulation) and a "What it means for your company" column with full explanations. Sections 3.4, 8.4 and 9.10 adjusted so that no sector weighs more. |
 | 0.2 | 10-11-2026 | New section 9, "The human organisation of an AI-first company": proposed definition and six tests; why a function-based organisation chart holds things back; eight points where a case gets stuck or fails; what can be observed elsewhere, with checked sources; why, in general, an AI function is not needed; five options; recommendation of a phased combination with the target model, how a case travels, the step-by-step plan and the remaining risks; implications of each decision; checklist; sources and cautions. Questions 16 to 18. Sections 9 to 13 become 10 to 14. The author's proposal: it adds no rules or evidence. |

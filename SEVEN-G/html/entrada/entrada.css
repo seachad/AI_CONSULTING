@@ -235,38 +235,37 @@ footer p { margin: 8px 0; max-width: 900px; }
 .historia .moraleja p { margin: 0; flex: 1 1 420px; font: 400 19px/1.5 var(--serif); color: var(--negro); }
 @media (max-width: 760px) { .historia .capitulos li { padding-left: 46px; } .historia .capitulos li:before { font-size: 26px; } .historia .moraleja .boton { flex: 1 1 100%; } }
 
-/* Mapa de temas (D163): tarjetas por macroconcepto con enlaces directos; las escribe build.ps1 desde build/temas.json */
+/* Áreas de actuación en IA (D163–D165): tarjetas plegadas por área, cada una con su color; las escribe build.ps1 desde build/temas.json */
 .macro-indice { display: flex; flex-wrap: wrap; gap: 8px; margin: 0 0 22px; }
 .macro-indice a { font: 600 14px/1.2 var(--sans); color: var(--negro); text-decoration: none; border: 1px solid var(--regla); background: var(--papel-2); padding: 7px 12px; border-radius: 999px; }
 .macro-indice a:hover, .macro-indice a:focus-visible { border-color: var(--claret); color: var(--claret); }
-.macros { display: grid; gap: 16px; grid-template-columns: repeat(auto-fit, minmax(min(300px, 100%), 1fr)); }
-.macro { border-top: 4px solid var(--oxford); background: var(--papel-2); padding: 16px 18px 14px; scroll-margin-top: 90px; }
-.macro:target { border-top-color: var(--claret); outline: 2px solid var(--claret); outline-offset: 2px; }
+.macros { display: grid; gap: 14px; grid-template-columns: repeat(auto-fit, minmax(min(300px, 100%), 1fr)); align-items: start; }
+/* color de cada área: --h es su matiz; pálido de fondo y más intenso en el filete */
+.macro { --area-fondo: hsl(var(--h, 30) 62% 89%); --area-filo: hsl(var(--h, 30) 48% 42%); border-top: 4px solid var(--area-filo); background: var(--area-fondo); padding: 14px 18px; scroll-margin-top: 90px; }
+:root[data-theme="noche"] .macro, :root[data-theme="noche"] .areas .area { --area-fondo: hsl(var(--h, 30) 28% 22%); --area-filo: hsl(var(--h, 30) 55% 66%); }
+.macro:target { outline: 2px solid var(--area-filo); outline-offset: 2px; }
 .macro h3 { font: 600 22px/1.2 var(--serif); color: var(--negro); margin: 0 0 4px; }
-.macro summary { list-style: none; cursor: default; }
+.macro summary { list-style: none; cursor: pointer; position: relative; padding-right: 30px; }
 .macro summary::-webkit-details-marker { display: none; }
-.macro-mas { margin: 10px 0 0; font: 700 14px/1.3 var(--sans); }
-.macro-mas a { color: var(--negro); text-decoration: none; border-bottom: 2px solid var(--claret); padding-bottom: 2px; }
-.macro .resp { font: 400 14.5px/1.45 var(--sans); color: var(--tinta-2); margin: 0 0 10px; }
-.macro ul { list-style: none; margin: 0; padding: 0; border-top: 1px solid var(--regla); }
-.macro li { border-bottom: 1px solid var(--regla-2); }
+.macro summary::after { content: "+"; position: absolute; right: 0; top: -2px; font: 600 26px/1 var(--sans); color: var(--area-filo); }
+.macro[open] summary::after { content: "–"; }
+.macro .resp { font: 400 14.5px/1.45 var(--sans); color: var(--tinta-2); margin: 0; }
+.macro[open] .resp { margin-bottom: 10px; }
+.macro ul { list-style: none; margin: 0; padding: 0; border-top: 1px solid var(--area-filo); }
+.macro li { border-bottom: 1px solid color-mix(in srgb, var(--area-filo) 25%, transparent); }
 .macro li:last-child { border-bottom: 0; }
 .macro li a { display: flex; gap: 8px; align-items: baseline; padding: 8px 0; font: 500 15px/1.35 var(--sans); color: var(--negro); text-decoration: none; }
 .macro li a:hover, .macro li a:focus-visible { color: var(--oxford); text-decoration: underline; }
-.macro .tipo { flex: 0 0 88px; font: 700 10.5px/1 var(--sans); letter-spacing: .06em; text-transform: uppercase; color: var(--tinta-3); }
+.macro .tipo { flex: 0 0 88px; font: 700 10.5px/1 var(--sans); letter-spacing: .06em; text-transform: uppercase; color: var(--tinta-2); }
 .macro .tipo.herramienta { color: var(--teal); }
 .macro .tipo.plantilla { color: var(--velvet); }
 .macro .tipo.ejemplo { color: var(--claret); }
-@media (max-width: 760px) {
-  .macro h3 { font-size: 20px; }
-  .macro { padding: 12px 14px; }
-  .macro summary { cursor: pointer; position: relative; padding-right: 30px; }
-  .macro summary::after { content: "+"; position: absolute; right: 0; top: 0; font: 600 24px/1 var(--sans); color: var(--claret); }
-  .macro[open] summary::after { content: "–"; }
-  .macro:not([open]) .resp { margin-bottom: 0; }
-  .macros { gap: 10px; }
-}
-/* Páginas completas de tema (D164) */
+.macro-mas { margin: 10px 0 0; font: 700 14px/1.3 var(--sans); }
+.macro-mas a { color: var(--negro); text-decoration: none; border-bottom: 2px solid var(--area-filo); padding-bottom: 2px; }
+@media (max-width: 760px) { .macro h3 { font-size: 20px; } .macro { padding: 12px 14px; } .macros { gap: 10px; } }
+/* Páginas completas de área (D164): llevan el color de su área */
+.pag-tema .heroe { background: hsl(var(--h, 30) 62% 89%); border-bottom-color: hsl(var(--h, 30) 48% 42%); }
+:root[data-theme="noche"] .pag-tema .heroe { background: hsl(var(--h, 30) 28% 22%); border-bottom-color: hsl(var(--h, 30) 55% 66%); }
 .pag-tema .heroe .envoltura { grid-template-columns: 1fr; }
 .pag-tema section { padding-top: 44px; }
 .tema-resumen { max-width: 820px; color: var(--negro); }
@@ -278,4 +277,4 @@ footer p { margin: 8px 0; max-width: 900px; }
 .tema-fuentes li { padding: 9px 0; border-bottom: 1px solid var(--regla-2); font: 400 15px/1.45 var(--sans); }
 .tema-fuentes span { color: var(--tinta-3); font-size: 13px; }
 .pag-tema .macros { grid-template-columns: minmax(0, 900px); }
-.pag-tema .macro { border-top-color: var(--negro); }
+.pag-tema article.macro .resp { margin: 0; }

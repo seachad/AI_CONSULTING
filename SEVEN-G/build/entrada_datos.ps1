@@ -67,24 +67,28 @@ function Dinero-Entrada([double]$v, [bool]$en) {
 
 function Html-Entrada([string]$s) { $s.Replace('&', '&amp;').Replace('<', '&lt;').Replace('>', '&gt;').Replace('"', '&quot;') }
 
+# Tono (matiz HSL) de cada área, en paleta ascendente: la misma área lleva el mismo color en la entrada, la portada y su página (D165).
+function Tono-Area([int]$i) { 18 + 28 * $i }
+
 # Mapa de temas de la entrada (D163): tarjetas por macroconcepto con enlaces directos, desde build/temas.json.
-# Cada tarjeta es un <details> abierto: la entrada lo pliega en el móvil (D164) y enlaza la página completa del tema.
+# Cada tarjeta es un <details> plegado, con su título y su pregunta a la vista y un color propio (D165); enlaza la página completa del área.
 # href del JSON es relativo a html/<idioma>/; la entrada está en html/<idioma>/entrada/, por eso se antepone «../».
 function Temas-Entrada([string]$lang) {
   $en = $lang -eq 'en'
   $datos = Get-Content (Join-Path $PSScriptRoot 'temas.json') -Raw -Encoding utf8 | ConvertFrom-Json -Depth 16
   $rot = if ($en) { @{ doc = 'Document'; plantilla = 'Template'; herramienta = 'Tool'; ejemplo = 'Example' } } else { @{ doc = 'Documento'; plantilla = 'Plantilla'; herramienta = 'Herramienta'; ejemplo = 'Ejemplo' } }
-  $sb = [Text.StringBuilder]::new()
+  $sb = [Text.StringBuilder]::new(); $nT = 0
   foreach ($t in $datos.temas) {
     $tx = if ($en) { $t.en } else { $t.es }
-    [void]$sb.Append("      <details class=""macro"" id=""tema-$($t.id)"" open>`n        <summary><h3>$(Html-Entrada $tx.titulo)</h3><p class=""resp"">$(Html-Entrada $tx.pregunta)</p></summary>`n        <ul>`n")
+    $tono = Tono-Area $nT; $nT++
+    [void]$sb.Append("      <details class=""macro"" id=""area-$($t.id)"" style=""--h: $tono"">`n        <summary><h3>$(Html-Entrada $tx.titulo)</h3><p class=""resp"">$(Html-Entrada $tx.pregunta)</p></summary>`n        <ul>`n")
     foreach ($e in $t.enlaces) {
       $texto = Html-Entrada $(if ($en) { $e.en } else { $e.es })
       $ancla = if ($en) { $e.ancla_en } else { $e.ancla_es }
       $href = '../' + $e.href + $(if ($ancla) { "#$ancla" } else { '' })
       [void]$sb.Append("          <li><a href=""$href"" title=""$($rot[[string]$e.tipo]): $texto""><span class=""tipo $($e.tipo)"">$($rot[[string]$e.tipo])</span>$texto</a></li>`n")
     }
-    [void]$sb.Append("        </ul>`n        <p class=""macro-mas""><a href=""../temas/$($t.id).html"" title=""$(if ($en) { 'Topic page: concepts, where it is covered and sources' } else { 'Página del tema: conceptos, dónde se trata y fuentes' })"">$(if ($en) { 'Full topic page' } else { 'Página completa del tema' }) →</a></p>`n      </details>`n")
+    [void]$sb.Append("        </ul>`n        <p class=""macro-mas""><a href=""../areas/$($t.id).html"" title=""$(if ($en) { 'Area page: concepts, where it is covered and sources' } else { 'Página del área: conceptos, dónde se trata y fuentes' })"">$(if ($en) { 'Full page of this area' } else { 'Página completa del área' }) →</a></p>`n      </details>`n")
   }
   $sb.ToString().TrimEnd("`n")
 }
@@ -92,7 +96,7 @@ function Temas-Entrada([string]$lang) {
 # Índice del mapa de temas: un enlace por tema a su tarjeta (#tema-<id>).
 function Temas-Indice-Entrada([string]$lang) {
   $datos = Get-Content (Join-Path $PSScriptRoot 'temas.json') -Raw -Encoding utf8 | ConvertFrom-Json -Depth 16
-  (@($datos.temas | ForEach-Object { $tx = if ($lang -eq 'en') { $_.en } else { $_.es }; "      <a href=""#tema-$($_.id)"">$(Html-Entrada $tx.titulo)</a>" }) -join "`n")
+  (@($datos.temas | ForEach-Object { $tx = if ($lang -eq 'en') { $_.en } else { $_.es }; "      <a href=""#area-$($_.id)"">$(Html-Entrada $tx.titulo)</a>" }) -join "`n")
 }
 
 # Devuelve la página con las marcas sustituidas. $recuentos: hashtable con {{N_DOCUMENTOS}}, {{N_PLANTILLAS}} y {{N_HERRAMIENTAS}}.
@@ -199,24 +203,24 @@ function Glosario-Temas([string]$repo, [string]$lang) {
 }
 function Textos-Temas([string]$lang) {
   if ($lang -eq 'en') {
-    @{ T_PORTADA = 'AI Consulting home: SEVEN-G, SPHERES and SPAD'; T_CABECERA = 'SEVEN-G header: what it is and what it is for'; T_NAV = 'Sections'; T_TODOS = 'All topics'; T_CONCEPTOS = 'Concepts'; T_DONDE = 'Where it is covered'; T_FUENTES = 'Sources'; T_BIBLIOTECA = 'Library'
-       T_TEMA_SITIO = 'Theme for the whole site'; T_TEMA = 'Theme'; T_SALMON = 'Salmon'; T_CLARO = 'Light salmon'; T_NOCHE = 'Night'; T_IDIOMA = 'Language'; T_ANTETITULO = 'SEVEN-G by topic'
-       T_K_RESUMEN = 'In brief'; T_H_RESUMEN = 'What this topic is about'
+    @{ T_PORTADA = 'AI Consulting home: SEVEN-G, SPHERES and SPAD'; T_CABECERA = 'SEVEN-G header: what it is and what it is for'; T_NAV = 'Sections'; T_TODOS = 'All areas'; T_CONCEPTOS = 'Concepts'; T_DONDE = 'Where it is covered'; T_FUENTES = 'Sources'; T_BIBLIOTECA = 'Library'
+       T_TEMA_SITIO = 'Theme for the whole site'; T_TEMA = 'Theme'; T_SALMON = 'Salmon'; T_CLARO = 'Light salmon'; T_NOCHE = 'Night'; T_IDIOMA = 'Language'; T_ANTETITULO = 'AI action areas'
+       T_K_RESUMEN = 'In brief'; T_H_RESUMEN = 'What this area is about'
        T_K_CONCEPTOS = 'Concepts'; T_H_CONCEPTOS = 'The concepts you need'; T_S_CONCEPTOS = 'Definitions taken from the SEVEN-G glossary (document 02). The codes are links to where each one is explained.'
-       T_K_DONDE = 'In the framework'; T_H_DONDE = 'Where it is covered'; T_S_DONDE = 'Documents, sections, templates, tools and examples that develop this topic.'
-       T_K_FUENTES = 'Sources'; T_H_FUENTES = 'External sources it is based on'; T_S_FUENTES = 'Official or primary sources cited by the documents of this topic, checked in the reference register. Always verify the version in force on the date of use.'
-       T_SIN_FUENTES = 'The documents of this topic cite no external sources: their content is the author''s own method.'
-       T_K_OTROS = 'Keep browsing'; T_H_OTROS = 'Other topics'; T_GLOSARIO = 'Full glossary (document 02)'; T_OTRO_IDIOMA = 'Esta página en español'
+       T_K_DONDE = 'In the framework'; T_H_DONDE = 'Where it is covered'; T_S_DONDE = 'Documents, sections, templates, tools and examples that develop this area.'
+       T_K_FUENTES = 'Sources'; T_H_FUENTES = 'External sources it is based on'; T_S_FUENTES = 'Official or primary sources cited by the documents of this area, checked in the reference register. Always verify the version in force on the date of use.'
+       T_SIN_FUENTES = 'The documents of this area cite no external sources: their content is the author''s own method.'
+       T_K_OTROS = 'Keep browsing'; T_H_OTROS = 'Other areas'; T_GLOSARIO = 'Full glossary (document 02)'; T_OTRO_IDIOMA = 'Esta página en español'
        doc = 'Document'; plantilla = 'Template'; herramienta = 'Tool'; ejemplo = 'Example' }
   } else {
-    @{ T_PORTADA = 'Portada de AI Consulting: SEVEN-G, SPHERES y SPAD'; T_CABECERA = 'Cabecera de SEVEN-G: qué es y para qué sirve'; T_NAV = 'Secciones'; T_TODOS = 'Todos los temas'; T_CONCEPTOS = 'Conceptos'; T_DONDE = 'Dónde se trata'; T_FUENTES = 'Fuentes'; T_BIBLIOTECA = 'Biblioteca'
-       T_TEMA_SITIO = 'Tema de todo el sitio'; T_TEMA = 'Tema'; T_SALMON = 'Salmón'; T_CLARO = 'Salmón claro'; T_NOCHE = 'Noche'; T_IDIOMA = 'Idioma'; T_ANTETITULO = 'SEVEN-G por temas'
-       T_K_RESUMEN = 'En pocas palabras'; T_H_RESUMEN = 'De qué trata este tema'
+    @{ T_PORTADA = 'Portada de AI Consulting: SEVEN-G, SPHERES y SPAD'; T_CABECERA = 'Cabecera de SEVEN-G: qué es y para qué sirve'; T_NAV = 'Secciones'; T_TODOS = 'Todas las áreas'; T_CONCEPTOS = 'Conceptos'; T_DONDE = 'Dónde se trata'; T_FUENTES = 'Fuentes'; T_BIBLIOTECA = 'Biblioteca'
+       T_TEMA_SITIO = 'Tema de todo el sitio'; T_TEMA = 'Tema'; T_SALMON = 'Salmón'; T_CLARO = 'Salmón claro'; T_NOCHE = 'Noche'; T_IDIOMA = 'Idioma'; T_ANTETITULO = 'Áreas de actuación en IA'
+       T_K_RESUMEN = 'En pocas palabras'; T_H_RESUMEN = 'De qué trata esta área'
        T_K_CONCEPTOS = 'Conceptos'; T_H_CONCEPTOS = 'Los conceptos que hacen falta'; T_S_CONCEPTOS = 'Definiciones tomadas del glosario de SEVEN-G (documento 02). Los códigos son enlaces a donde se explica cada uno.'
-       T_K_DONDE = 'En el marco'; T_H_DONDE = 'Dónde se trata'; T_S_DONDE = 'Documentos, secciones, plantillas, herramientas y ejemplos que desarrollan este tema.'
-       T_K_FUENTES = 'Fuentes'; T_H_FUENTES = 'Fuentes externas en que se basa'; T_S_FUENTES = 'Fuentes oficiales o primarias que citan los documentos de este tema, comprobadas en el registro de referencias. Verifique siempre la versión vigente en la fecha de uso.'
-       T_SIN_FUENTES = 'Los documentos de este tema no citan fuentes externas: su contenido es método propio del autor.'
-       T_K_OTROS = 'Seguir navegando'; T_H_OTROS = 'Otros temas'; T_GLOSARIO = 'Glosario completo (documento 02)'; T_OTRO_IDIOMA = 'This page in English'
+       T_K_DONDE = 'En el marco'; T_H_DONDE = 'Dónde se trata'; T_S_DONDE = 'Documentos, secciones, plantillas, herramientas y ejemplos que desarrollan esta área.'
+       T_K_FUENTES = 'Fuentes'; T_H_FUENTES = 'Fuentes externas en que se basa'; T_S_FUENTES = 'Fuentes oficiales o primarias que citan los documentos de esta área, comprobadas en el registro de referencias. Verifique siempre la versión vigente en la fecha de uso.'
+       T_SIN_FUENTES = 'Los documentos de esta área no citan fuentes externas: su contenido es método propio del autor.'
+       T_K_OTROS = 'Seguir navegando'; T_H_OTROS = 'Otras áreas'; T_GLOSARIO = 'Glosario completo (documento 02)'; T_OTRO_IDIOMA = 'This page in English'
        doc = 'Documento'; plantilla = 'Plantilla'; herramienta = 'Herramienta'; ejemplo = 'Ejemplo' }
   }
 }
@@ -231,8 +235,9 @@ function Paginas-Temas([string]$lang, [string]$repo, $avisos = $null) {
   $glosEs = @(Glosario-Temas $repo 'es'); $glosEn = if ($en) { @(Glosario-Temas $repo 'en') } else { @() }
   $refs = @(Get-ChildItem (Join-Path $PSScriptRoot 'referencias') -File -Filter '*.json' | Sort-Object Name | ForEach-Object { Get-Content $_.FullName -Raw -Encoding utf8 | ConvertFrom-Json } | ForEach-Object { $_ } | Where-Object { $_.estado -eq 'verificado' -and $_.url_es -and $_.url_en })
   $orden = @{ 'norma-ue' = 1; 'norma-internacional' = 2; 'norma-es' = 3; 'jurisprudencia' = 4; 'autoridad' = 5; 'guia' = 6; 'norma-tecnica' = 7; 'marco' = 8; 'estudio' = 9; 'licencia' = 10; 'web' = 11 }
-  $res = [ordered]@{}
+  $res = [ordered]@{}; $nP = 0
   foreach ($t in $datos.temas) {
+    $tonoP = Tono-Area $nP; $nP++
     $tt = if ($en) { $t.en } else { $t.es }
     # conceptos: definición del glosario en el idioma de la página
     $sbC = [Text.StringBuilder]::new()
@@ -272,13 +277,28 @@ function Paginas-Temas([string]$lang, [string]$repo, $avisos = $null) {
       }) -join "`n") + "`n    </ul>"
     } else { "    <p class=""pie"">$($tx.T_SIN_FUENTES)</p>" }
     $otros = (@($datos.temas | Where-Object { $_.id -ne $t.id } | ForEach-Object { $o = if ($en) { $_.en } else { $_.es }; "      <a href=""$($_.id).html"">$(Html-Entrada $o.titulo)</a>" }) -join "`n")
-    $idioma = if ($en) { "<a href=""../../es/temas/$($t.id).html"" title=""$($tx.T_OTRO_IDIOMA)"">ES</a><span class=""activo"">EN</span>" } else { "<span class=""activo"">ES</span><a href=""../../en/temas/$($t.id).html"" title=""$($tx.T_OTRO_IDIOMA)"">EN</a>" }
+    $idioma = if ($en) { "<a href=""../../es/areas/$($t.id).html"" title=""$($tx.T_OTRO_IDIOMA)"">ES</a><span class=""activo"">EN</span>" } else { "<span class=""activo"">ES</span><a href=""../../en/areas/$($t.id).html"" title=""$($tx.T_OTRO_IDIOMA)"">EN</a>" }
     $h = $plantilla
     foreach ($k in @($tx.Keys | Where-Object { $_ -like 'T_*' })) { $h = $h.Replace("{{$k}}", [string]$tx[$k]) }
-    $h = $h.Replace('{{LANG}}', $lang).Replace('{{OTRO}}', $otro).Replace('{{ID}}', [string]$t.id).Replace('{{TITULO}}', (Html-Entrada $tt.titulo)).Replace('{{PREGUNTA}}', (Html-Entrada $tt.pregunta)).
+    $h = $h.Replace('{{LANG}}', $lang).Replace('{{OTRO}}', $otro).Replace('{{ID}}', [string]$t.id).Replace('{{TONO}}', [string]$tonoP).Replace('{{TITULO}}', (Html-Entrada $tt.titulo)).Replace('{{PREGUNTA}}', (Html-Entrada $tt.pregunta)).
       Replace('{{RESUMEN}}', (Html-Entrada $tt.resumen)).Replace('{{PORTADA}}', $(if ($en) { '../../../../en/index.html' } else { '../../../../index.html' })).Replace('{{IDIOMA}}', $idioma).
       Replace('{{CONCEPTOS}}', $sbC.ToString()).Replace('{{ENLACES}}', $sbE.ToString().TrimEnd("`n")).Replace('{{FUENTES}}', $fuentes).Replace('{{OTROS}}', $otros).Replace('{{PIE_ENTRADA}}', $pie)
     $res[[string]$t.id] = $h
   }
   $res
+}
+
+# ---- Áreas de actuación en IA en la portada del sitio (D165) ----
+# Devuelve los enlaces a las páginas de área para la portada ($prefijo: ruta de la portada a la raíz del repositorio, '' o '../').
+function Portada-Areas([string]$lang, [string]$prefijo) {
+  $datos = Get-Content (Join-Path $PSScriptRoot 'temas.json') -Raw -Encoding utf8 | ConvertFrom-Json -Depth 16
+  $nA = 0
+  (@($datos.temas | ForEach-Object {
+    $tx = if ($lang -eq 'en') { $_.en } else { $_.es }; $tono = Tono-Area $nA; $nA++
+    "      <a class=""area"" style=""--h: $tono"" href=""${prefijo}SEVEN-G/html/$lang/areas/$($_.id).html"" title=""$(Html-Entrada $tx.pregunta)""><b>$(Html-Entrada $tx.titulo)</b><span>$(Html-Entrada $tx.pregunta)</span></a>"
+  }) -join "`n")
+}
+# Devuelve el texto de la portada con el bloque entre <!-- areas:inicio --> y <!-- areas:fin --> al día (o el mismo texto si no hay marcas).
+function Portada-Con-Areas([string]$html, [string]$lang, [string]$prefijo) {
+  [regex]::Replace($html, '(?s)(<!-- areas:inicio[^>]*-->).*?(\s*<!-- areas:fin -->)', { param($m) $m.Groups[1].Value + "`n" + (Portada-Areas $lang $prefijo) + "`n      <!-- areas:fin -->" })
 }

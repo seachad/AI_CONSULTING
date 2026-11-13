@@ -21,7 +21,7 @@
     <a class="portada" href="../../../../index.html" title="Portada de AI Consulting: SEVEN-G, SPHERES y SPAD">⌂ <span>AI Consulting</span></a>
     <a class="marca" href="index.html" title="Cabecera de SEVEN-G: qué es y para qué sirve"><i></i>SEVEN-G</a>
     <nav aria-label="Secciones">
-      <a href="#temas">Temas</a>
+      <a href="#areas">Áreas de IA</a>
       <a href="#historia">Usando la IA</a>
       <a href="#para-que">Para qué sirve</a>
       <a href="#preguntas">Las preguntas</a>
@@ -65,24 +65,21 @@
 
 <main>
 
-<section id="temas">
-  <div class="envoltura">
-    <p class="kicker">Ir directo a un tema</p>
-    <h2>Todo SEVEN-G, por temas</h2>
-    <p class="sub">Elija un tema y vaya al documento, la plantilla o la herramienta que lo trata. No hace falta leer el marco en orden. Si busca un código o un título concreto, use el «Buscador de documentos» de la barra.</p>
-    <nav class="macro-indice" aria-label="Temas">
+<section id="areas">
+  <div class="envoltura"><a id="temas"></a>
+    <p class="kicker">Ir directo a lo que le interesa</p>
+    <h2>Áreas de actuación en IA</h2>
+    <p class="sub">Elija un área y vaya al documento, la plantilla o la herramienta que la trata. Cada área tiene además su página completa, con sus conceptos y sus fuentes. No hace falta leer el marco en orden. Si busca un código o un título concreto, use el «Buscador de documentos» de la barra.</p>
+    <nav class="macro-indice" aria-label="Áreas de actuación en IA">
 <!-- temas-indice -->
     </nav>
     <div class="macros">
 <!-- temas -->
     </div>
     <script>
-    // D164: en el móvil las tarjetas de tema van plegadas; un enlace a #tema-<id> abre la suya. Sin JavaScript quedan abiertas.
+    // D165: las tarjetas de área van plegadas; un enlace a #area-<id> abre la suya.
     (function () {
-      var ts = document.querySelectorAll('#temas details.macro');
-      var movil = window.matchMedia && window.matchMedia('(max-width: 760px)').matches;
-      function abrir() { var d = location.hash.indexOf('#tema-') === 0 && document.getElementById(location.hash.slice(1)); if (d) d.open = true; }
-      if (movil) for (var i = 0; i < ts.length; i++) ts[i].open = false;
+      function abrir() { var d = location.hash.indexOf('#area-') === 0 && document.getElementById(location.hash.slice(1)); if (d) d.open = true; }
       abrir(); window.addEventListener('hashchange', abrir);
     })();
     </script>

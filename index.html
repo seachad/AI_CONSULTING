@@ -128,6 +128,14 @@ h2 { font: 600 clamp(26px, 3.2vw, 34px)/1.15 var(--serif); color: var(--negro); 
 .colaboradores li.autor { grid-column: 1 / -1; border-top-color: var(--oxford); }
 .colaboradores b a { color: inherit; text-decoration: none; border-bottom: 1px solid var(--regla); }
 .colaboradores b a:hover { color: var(--claret); border-bottom-color: var(--claret); }
+
+/* Áreas de actuación en IA (D165): enlaces a las páginas de área, escritos por build.ps1 desde SEVEN-G/build/temas.json */
+.areas { display: grid; gap: 10px; grid-template-columns: repeat(auto-fit, minmax(min(250px, 100%), 1fr)); border-top: 4px solid var(--negro); padding-top: 18px; }
+.areas .area { display: block; padding: 12px 14px; background: hsl(var(--h, 30) 62% 89%); border-left: 4px solid hsl(var(--h, 30) 48% 42%); text-decoration: none; color: var(--negro); }
+:root[data-theme="noche"] .areas .area { background: hsl(var(--h, 30) 28% 22%); border-left-color: hsl(var(--h, 30) 55% 66%); }
+.areas .area:hover, .areas .area:focus-visible { outline: 2px solid hsl(var(--h, 30) 48% 42%); }
+.areas .area b { display: block; font: 600 18px/1.2 var(--serif); margin-bottom: 3px; }
+.areas .area span { font: 400 13.5px/1.4 var(--sans); color: var(--tinta-2); }
 </style>
 </head>
 <body>
@@ -157,6 +165,25 @@ h2 { font: 600 clamp(26px, 3.2vw, 34px)/1.15 var(--serif); color: var(--negro); 
     <details class="aviso revision" style="margin-top: 18px; margin-bottom: 0;"><summary>Versión en revisión: no difundir</summary>El estado actual de estas metodologías (versión 0.x) no está pensado para compartirse de forma general. Se mantiene en público para que un número reducido de personas pueda revisarlo, dar su opinión y ayudar a mejorarlo. Se está trabajando en la adecuación de los documentos y las herramientas para que sean reutilizables; este aviso desaparecerá cuando el marco pase a la versión 1.x.</details>
     <details class="aviso" style="margin-top: 12px; margin-bottom: 0;"><summary>Titularidad, marca y reutilización</summary>La propiedad intelectual de SEVEN-G, SPHERES y SPAD pertenece a su autor, <strong>Fernando García Varela</strong>, y <strong>SEVEN-G es un nombre y una marca de Fernando García Varela</strong> (perfil profesional: <a href="https://www.linkedin.com/in/fernandogarciavarela/">linkedin.com/in/fernandogarciavarela</a>). Se ofrecen como marcos de referencia operativos (SEVEN-G en versión 0.1) o en construcción (SPHERES y SPAD), sin que ello constituya una versión comercial cerrada ni un producto liberado para clientes o mercados. Su reutilización y adaptación por cualquier organización, consultora o profesional independiente quedan sujetas a la licencia de contenidos y de código del proyecto (CC BY 4.0 para los contenidos, MIT para el código; documento 93 de SEVEN-G), que exige reconocer la autoría e indicar los cambios; ese uso no transfiere la titularidad ni otorga exclusividad ni derecho de propiedad sobre el marco base ni sobre la marca a ningún cliente, proveedor o tercero, salvo pacto escrito y específico sobre desarrollos propios.</details>
   </header>
+
+  <h2 id="areas">Áreas de actuación en IA</h2>
+  <p class="sub">Vaya directo a lo que le interesa. Cada área explica sus conceptos, dice dónde se trata en SEVEN-G y cita las fuentes en que se basa.</p>
+  <section class="areas" aria-labelledby="areas">
+      <!-- areas:inicio (no editar: se genera desde SEVEN-G/build/temas.json con build.ps1) -->
+      <a class="area" style="--h: 18" href="SEVEN-G/html/es/areas/estrategia.html" title="Dónde invertir y cuánto riesgo aceptar."><b>Estrategia e inversión</b><span>Dónde invertir y cuánto riesgo aceptar.</span></a>
+      <a class="area" style="--h: 46" href="SEVEN-G/html/es/areas/casos.html" title="De dónde vienen, cómo entran y qué hace su sector."><b>Casos de uso</b><span>De dónde vienen, cómo entran y qué hace su sector.</span></a>
+      <a class="area" style="--h: 74" href="SEVEN-G/html/es/areas/valor.html" title="Cuánto devuelve cada euro y cuánto está validado."><b>Valor y medición</b><span>Cuánto devuelve cada euro y cuánto está validado.</span></a>
+      <a class="area" style="--h: 102" href="SEVEN-G/html/es/areas/gobierno.html" title="Quién decide, en qué puerta y con qué evidencia."><b>Gobierno y decisiones</b><span>Quién decide, en qué puerta y con qué evidencia.</span></a>
+      <a class="area" style="--h: 130" href="SEVEN-G/html/es/areas/organizacion.html" title="Cómo se organiza una compañía IA-first sin crear un silo más."><b>Organización y personas</b><span>Cómo se organiza una compañía IA-first sin crear un silo más.</span></a>
+      <a class="area" style="--h: 158" href="SEVEN-G/html/es/areas/transformacion.html" title="Dónde está la compañía y si se transforma o solo es más eficiente."><b>Madurez y transformación</b><span>Dónde está la compañía y si se transforma o solo es más eficiente.</span></a>
+      <a class="area" style="--h: 186" href="SEVEN-G/html/es/areas/riesgo.html" title="Qué riesgo se asume y qué norma aplica a cada sistema."><b>Riesgo y regulación</b><span>Qué riesgo se asume y qué norma aplica a cada sistema.</span></a>
+      <a class="area" style="--h: 214" href="SEVEN-G/html/es/areas/seguridad.html" title="Cómo se protege la IA, qué puede hacer un agente y con qué proveedores."><b>Seguridad y agentes</b><span>Cómo se protege la IA, qué puede hacer un agente y con qué proveedores.</span></a>
+      <a class="area" style="--h: 242" href="SEVEN-G/html/es/areas/normas.html" title="Qué cubre SEVEN-G de ISO/IEC 42001, del NIST y del Reglamento Europeo de IA."><b>Normas y estándares</b><span>Qué cubre SEVEN-G de ISO/IEC 42001, del NIST y del Reglamento Europeo de IA.</span></a>
+      <a class="area" style="--h: 270" href="SEVEN-G/html/es/areas/consejo.html" title="Qué debe ver el consejo y qué preguntas hacer."><b>Consejo y dirección</b><span>Qué debe ver el consejo y qué preguntas hacer.</span></a>
+      <a class="area" style="--h: 298" href="SEVEN-G/html/es/areas/operacion.html" title="Con qué datos se construye y cómo se mantiene vivo en producción."><b>Datos, construcción y operación</b><span>Con qué datos se construye y cómo se mantiene vivo en producción.</span></a>
+      <a class="area" style="--h: 326" href="SEVEN-G/html/es/areas/implantar.html" title="Por dónde empezar según su punto de partida y qué es obligatorio."><b>Implantar el marco</b><span>Por dónde empezar según su punto de partida y qué es obligatorio.</span></a>
+      <!-- areas:fin -->
+  </section>
 
   <h2>Marco principal</h2>
   <p class="sub">Empieza aquí. SEVEN-G es el paraguas; las demás metodologías lo apoyan.</p>

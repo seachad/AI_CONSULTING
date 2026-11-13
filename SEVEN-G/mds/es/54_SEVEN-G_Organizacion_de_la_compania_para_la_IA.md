@@ -5,8 +5,8 @@
 | | |
 |---|---|
 | Documento | Documento 54 · Organización de la compañía para la IA |
-| Versión | 0.2 (borrador de trabajo) |
-| Fecha | 10-11-2026 |
+| Versión | 0.3 (borrador de trabajo) |
+| Fecha | 13-11-2026 |
 | Autor | Fernando García Varela |
 | Estado | Borrador para revisión. Documento explicativo y de orientación: no añade reglas al marco. |
 
@@ -152,7 +152,7 @@ Es la pregunta más frecuente y tiene una respuesta de principio: **el gobierno 
 | **3 · Comité de IA como órgano de gobierno**, sin dirección específica | Un comité con dirección, tecnología, riesgos, datos y personas decide; la secretaría la lleva quien coordine. | Barato y suficiente en compañías medianas; reparte la responsabilidad. | Sin secretaría con dedicación, el comité no prepara ni sigue nada. | Alguien tiene dedicación real a preparar decisiones y a seguir acuerdos. |
 | **4 · Gobierno dentro de la dirección que construye** | La misma área propone, construye, aprueba y declara el valor. | Ninguna que resista una revisión. | Juez y parte: la evidencia no es defendible ante auditoría ni ante el consejo. | No es una opción aceptable en SEVEN-G. |
 
-En las tres primeras opciones, el consejo conserva lo que no puede delegar: aprobar la tesis y el apetito de riesgo, aprobar las apuestas de Transformar y supervisar los resultados (documento 30, sección 3.1). La regulación refuerza esta idea en los sectores donde ya existe una responsabilidad expresa del órgano de administración sobre riesgos tecnológicos y de resiliencia, como en el Reglamento (UE) 2022/2554 (DORA) o en la Directiva (UE) 2022/2555 (NIS2), y en las expectativas supervisoras sobre gobierno de la IA, como el Dictamen de EIOPA sobre gobierno y gestión del riesgo de la IA (documento 34).
+En las tres primeras opciones, el consejo conserva lo que no puede delegar: aprobar la tesis y el apetito de riesgo, aprobar las apuestas de Transformar y supervisar los resultados (documento 30, sección 3.1). La regulación refuerza esta idea en los sectores donde ya existe una responsabilidad expresa del órgano de administración sobre riesgos tecnológicos y de resiliencia, como en el Reglamento (UE) 2022/2554 (DORA) o en la Directiva (UE) 2022/2555 (NIS2), y, para todos los sectores, en el Reglamento Europeo de IA, que exige encargar la supervisión humana de los sistemas de alto riesgo a personas con competencia, formación y autoridad (artículo 26). Los supervisores sectoriales publican además sus expectativas sobre gobierno de la IA; un ejemplo, en seguros, es el Dictamen de EIOPA sobre gobierno y gestión del riesgo de la IA (documento 34).
 
 > **Por qué importa.** La ubicación del gobierno determina qué ocurre el día que una iniciativa importante no supera una puerta. Si el que decide parar depende del que tiene que entregar, no se para nunca.
 
@@ -408,7 +408,7 @@ flowchart BT
 | **3 · Organización por procesos con equipos mixtos** | El trabajo se organiza en cadenas extremo a extremo, con personas y agentes, y dueños de resultado. | Cuando el coste de coordinación entre silos supera al de reorganizar. | Aparecen dueños de proceso con presupuesto y con objetivos de resultado. |
 | **4 · Red gobernada de agentes** | Buena parte de la ejecución la realizan agentes coordinados; las personas fijan objetivos, excepciones y control. | Solo tras madurez alta en datos, seguridad y control. | Existe inventario de agentes con responsable, límites y baja, igual que un registro de empleados. |
 
-La hipótesis del autor es que la mayoría de las grandes compañías europeas recorrerán el **escenario 2** y que el **3** llegará por procesos concretos, no por reorganizaciones generales: primero una cadena (siniestros, admisión, soporte, facturación), después otra.
+La hipótesis del autor es que la mayoría de las grandes compañías europeas recorrerán el **escenario 2** y que el **3** llegará por procesos concretos, no por reorganizaciones generales: primero una cadena (alta de clientes, soporte, compras, facturación), después otra.
 
 ### 8.5 Lo que no va a cambiar
 
@@ -426,11 +426,11 @@ Cuatro movimientos que no se lamentan aunque el futuro sea otro: **inventario vi
 
 ## 9. La organización humana de una compañía IA-first
 
-> **Propuesta del autor, no regla del marco.** Esta sección ordena lo que se observa en publicaciones de consultoras, en anuncios de compañías y en la expectativa supervisora, y propone cómo organizar a las personas de una compañía que quiere ser IA-first. No crea reglas ni evidencias: si discrepa de los documentos 01, 30 o 50, prevalecen estos. Las fuentes consultadas están en la sección 9.10.
+> **Propuesta del autor, no regla del marco.** Esta sección ordena lo que se observa en publicaciones de consultoras, en anuncios de compañías de sectores distintos y en la regulación, y propone cómo organizar a las personas de una compañía que quiere ser IA-first. No crea reglas ni evidencias: si discrepa de los documentos 01, 30 o 50, prevalecen estos. Las fuentes consultadas están en la sección 9.10.
 
 ### 9.1 Qué significa ser IA-first
 
-No hay una definición establecida. El término suele usarse como regla de presupuesto («antes de pedir más personas, demuestre que la IA no puede hacerlo»). Eso es una regla de gasto, no un modelo de organización: no dice quién es dueño de qué ni dónde va el control.
+No hay una definición establecida. Algunas compañías lo anunciaron en 2025 como forma de trabajar (por ejemplo, la publicación de Duolingo sobre «IA primero»). A menudo se usa como regla de presupuesto («antes de pedir más personas, demuestre que la IA no puede hacerlo»). Eso es una regla de gasto, no un modelo de organización: no dice quién es dueño de qué ni dónde va el control.
 
 **Definición que propone SEVEN-G.** Una compañía es IA-first cuando **cada proceso se diseña dando por hecho que la IA hace el trabajo o propone la decisión, y las personas fijan el objetivo, deciden en las excepciones y responden del resultado**. La IA deja de ser un proyecto y pasa a ser la forma normal de trabajar. Los datos, la plataforma y los controles son infraestructura común.
 
@@ -504,15 +504,15 @@ flowchart TB
 
 ### 9.4 Lo que se observa fuera
 
-| Quién | Qué hace o propone | Qué se aprende |
+| Quién | Qué hace o propone | Qué significa para su compañía |
 |---|---|---|
-| **Accenture** («When everyone has AI, your operating model will set you apart», 2026) | Organizar la compañía alrededor de cinco a ocho cadenas de valor de punta a punta, con responsabilidad, decisiones y presupuesto. Todo agente tiene un dueño humano con nombre. | La matriz sigue existiendo; lo que se decide es cuánta responsabilidad pasa a la cadena. |
-| **BCG** («AI-First Enterprise Operations: Reinventing the Operating System of Work», 2026) | Un dueño de proceso que responde del resultado de punta a punta y una «fábrica» central que concentra financiación, guardarraíles y prioridades. Añadir asistentes a un flujo humano da resultados modestos; rediseñar el proceso da mucho más. | Dueño de proceso más fábrica común: la pareja que funciona. |
-| **Allianz** (artículo de Allianz sobre el proyecto Nemo, 2025) | Siete agentes con tareas concretas tramitan reclamaciones sencillas; el pago lo decide siempre una persona responsable. | Se organiza por proceso, con la persona en la decisión que importa. |
-| **Moderna** (equipo directivo de Moderna) | Una misma dirección reúne personas y tecnología digital. | Los agentes forman parte de la plantilla: personas y tecnología los planifican juntos. |
-| **AXA** (comunicado de AXA sobre cambios en su equipo directivo, 2025) | El responsable de tecnología e IA del grupo dirige también las operaciones del grupo. | La IA se une a tecnología y operaciones; no se crea un silo aparte. |
-| **MAPFRE** (manifiesto de MAPFRE por una IA humanista, ética y responsable, 2025) | Cinco principios, el primero un modelo de IA híbrida que amplía las capacidades de las personas. | El relato de la persona en el centro forma parte del modelo. |
-| **Supervisión** (Dictamen de EIOPA sobre gobierno y gestión del riesgo de la IA) | Aplica a la IA el sistema de gobierno ya exigible, de forma proporcional al riesgo, sin crear obligaciones nuevas. | El supervisor pide responsabilidades claras, no una figura concreta. |
+| **Accenture**, consultora («When everyone has AI, your operating model will set you apart», 2026) | Organizar la compañía en cinco a ocho cadenas de valor de punta a punta. Cada cadena tiene responsabilidad, capacidad de decidir y presupuesto. Todo agente tiene un dueño humano con nombre. | Dé a cada proceso clave un responsable con presupuesto propio. Los departamentos siguen existiendo, pero quien responde del resultado del proceso es ese responsable. |
+| **BCG**, consultora («AI-First Enterprise Operations: Reinventing the Operating System of Work», 2026) | Un dueño de proceso que responde del resultado de punta a punta, y una «fábrica» central que concentra la financiación, los guardarraíles y las prioridades. | Nombre un dueño para el proceso completo y cree un solo equipo central que dé la plataforma y las reglas. Añadir un asistente a cada puesto mejora poco; la mejora grande viene de rediseñar el proceso entero. |
+| **Microsoft**, tecnología (informe Work Trend Index 2025 de Microsoft; estudio en varios sectores) | Equipos formados por personas y agentes. Un rol nuevo para todos: quien crea agentes, les delega trabajo y los gestiona. El trabajo se organiza por resultados y aparece una medida nueva: cuántos agentes hay por persona. | Prepare a las personas para dirigir agentes, no solo para usarlos. Decida en cada proceso cuántos agentes puede supervisar bien una persona. |
+| **BBVA**, banca (nota de BBVA sobre su área AI Transformation, 2026) | Crea, en el primer nivel de la organización, un área global que une el área de datos y las capacidades técnicas para crear, desplegar y gestionar agentes en toda la compañía. | La IA, los datos y la plataforma van juntos en una sola área de primer nivel. Es la «fábrica única» de la sección 9.6: da capacidad a todos, pero no sustituye al dueño de cada proceso. |
+| **Moderna**, farmacéutica (equipo directivo de Moderna) | Una misma dirección reúne la función de personas y la de tecnología digital. | Si los agentes hacen parte del trabajo, el plan de plantilla debe contar personas y agentes a la vez. Para eso, personas y tecnología tienen que planificar juntas. |
+| **Allianz**, seguros (artículo de Allianz sobre el proyecto Nemo, 2025) | Siete agentes, cada uno con una tarea, tramitan reclamaciones sencillas. El pago lo decide siempre una persona responsable. | El proceso se rediseña entero con agentes, pero la decisión que afecta al cliente y al dinero sigue siendo de una persona con nombre. |
+| **Regulación**, todos los sectores (Reglamento Europeo de IA, artículos 4 y 26) | Toda compañía que usa IA debe asegurar la alfabetización de su personal. Quien usa un sistema de alto riesgo debe encargar la supervisión humana a personas con competencia, formación y autoridad. | La norma no pide un cargo nuevo. Pide que cada sistema tenga personas con nombre, formación y autoridad para supervisarlo. |
 
 **Lo que se repite:**
 
@@ -675,19 +675,30 @@ Las dos opciones no se excluyen: la fábrica única es el primer paso de la comb
 
 ### 9.10 Fuentes consultadas y cautelas
 
-Fuentes externas comprobadas en su sitio original el 10-11-2026 y dadas de alta en el registro de referencias (D41, D114):
+Fuentes externas comprobadas en su sitio original el 10-11-2026 y el 13-11-2026 y dadas de alta en el registro de referencias (D41, D114):
 
 | Fuente | Tipo | Qué se toma |
 |---|---|---|
 | Accenture, «When everyone has AI, your operating model will set you apart» (06-10-2026) | Publicación de consultora | Cadenas de valor de punta a punta con presupuesto; dueño humano de cada agente. |
 | BCG, «AI-First Enterprise Operations: Reinventing the Operating System of Work» (2026) | Publicación de consultora | Dueño de proceso de punta a punta y fábrica central de financiación, guardarraíles y prioridades. |
-| Artículo de Allianz sobre el proyecto Nemo (03-11-2025) | Anuncio de la compañía | Agentes por tareas y decisión de pago siempre humana. |
-| Equipo directivo de Moderna | Página de la compañía | Personas y tecnología digital bajo una misma dirección. |
-| Comunicado de AXA sobre cambios en su equipo directivo (2025) | Comunicado de la compañía | Tecnología, IA y operaciones del grupo bajo un mismo responsable. |
-| Manifiesto de MAPFRE por una IA humanista, ética y responsable (2025) | Documento de la compañía | IA híbrida que amplía las capacidades de las personas. |
-| Dictamen de EIOPA sobre gobierno y gestión del riesgo de la IA (06-08-2025) | Autoridad supervisora | Gobierno proporcional al riesgo sin figuras nuevas. |
+| Informe Work Trend Index 2025 de Microsoft (23-04-2025) | Estudio de una compañía tecnológica, en varios sectores | Equipos de personas y agentes; rol de quien dirige agentes; trabajo organizado por resultados. |
+| Nota de BBVA sobre su área AI Transformation (28-05-2026) | Anuncio de la compañía (banca) | Área de primer nivel que une datos y capacidad técnica para los agentes. |
+| Equipo directivo de Moderna | Página de la compañía (farmacéutica) | Personas y tecnología digital bajo una misma dirección. |
+| Artículo de Allianz sobre el proyecto Nemo (03-11-2025) | Anuncio de la compañía (seguros) | Agentes por tareas y decisión de pago siempre humana. |
+| Publicación de Duolingo sobre «IA primero» (2025) | Anuncio de la compañía (educación digital) | Uso del término «IA primero» como forma de trabajar. |
+| Reglamento Europeo de IA, artículos 4 y 26 | Norma de la Unión Europea | Alfabetización y supervisión humana con competencia, formación y autoridad. |
 
-**Consultadas y no citadas.** Se consultaron también publicaciones de McKinsey sobre la organización agéntica y el modelo de plataformas, el informe anual de DBS sobre su modelo de plataformas dirigidas a la vez por negocio y tecnología, un estudio académico sobre el fracaso de los pilotos de IA generativa y varios memorandos de directivos sobre «IA primero». No se citan porque el 10-11-2026 no se pudo leer la fuente original (no respondía o solo había copias o resúmenes de terceros). Si se comprueban, se añadirán al registro.
+**Consultadas, pero no comprobadas en su fuente original.** Estas fuentes también se consultaron. Su sitio oficial no se pudo leer el 10-11-2026 ni el 13-11-2026 (no respondía a la lectura automática, o solo había copias de terceros). Por eso se citan aparte: no se usan para fundamentar ninguna afirmación de esta sección y conviene abrirlas antes de apoyarse en ellas.
+
+| Fuente | Qué trata | Dirección oficial | Por qué no está comprobada |
+|---|---|---|---|
+| McKinsey, «The agentic organization: contours of the next paradigm for the AI era» | Equipos pequeños, orientados a un resultado, que supervisan muchos agentes en un proceso completo. | [mckinsey.com](https://www.mckinsey.com/capabilities/people-and-organization/our-insights/the-agentic-organization-contours-of-the-next-paradigm-for-the-ai-era) | El sitio devolvió un error 503 a la lectura automática. |
+| McKinsey, «The platform operating model for the AI bank of the future» | Plataformas dirigidas a la vez por negocio y tecnología. | [mckinsey.com](https://www.mckinsey.com/industries/financial-services/our-insights/platform-operating-model-for-the-ai-bank-of-the-future) | El sitio devolvió un error 503 a la lectura automática. |
+| DBS, informe anual de 2018, declaración del director de sistemas | Modelo de plataformas con un responsable de negocio y otro de tecnología en cada una. | [dbs.com](https://www.dbs.com/annualreports/2018/cio-statement.html) | La página solo se muestra con un navegador; la lectura automática no obtuvo el texto. |
+| Shopify, mensaje de su consejero delegado a la plantilla (abril de 2025) | Antes de pedir más personas, el equipo explica por qué no puede hacerlo con IA. | [x.com](https://x.com/tobi/status/1909251946235437514) | La red social no sirvió la publicación a la lectura automática. |
+| MIT NANDA, «The GenAI Divide: State of AI in Business 2025» | Por qué la mayoría de los pilotos de IA generativa no llega a dar resultado medible. | [nanda.media.mit.edu](https://nanda.media.mit.edu/) | No se encontró el informe en el sitio del emisor; solo copias en sitios de terceros. |
+
+Los ejemplos se eligen de sectores distintos para que ninguno pese más que otro; por eso no se citan los anuncios de otros dos grupos aseguradores que se consultaron.
 
 **Cautelas.** Las cifras de ahorro de las consultoras no se repiten porque proceden de sus propios clientes. Los anuncios de compañías describen cómo se organizan, no demuestran que les funcione. Las opciones y la recomendación son una propuesta del autor para una conversación de dirección o de consejo.
 
@@ -790,4 +801,5 @@ La secuencia de implantación está en el documento 90. En términos de organiza
 | Versión | Fecha | Cambios |
 |---|---|---|
 | 0.1 | 22-09-2026 | Primera versión. Seis funciones que alguien debe ejercer y sus separaciones; patrones de organización observados en el mercado y dónde colgar el gobierno de la IA; correspondencia entre el organigrama real y los órganos del documento 30; ocho fuentes de casos de uso con su sesgo y su puerta de entrada única; circuito de gobierno con quién decide en cada puerta; cadena de información al consejo; sección prospectiva marcada como hipótesis, con cuatro escenarios y sus señales; quince preguntas para una conversación de dirección o de consejo. Documento explicativo: no añade reglas ni evidencias. |
+| 0.3 | 13-11-2026 | Sección 9.4: ejemplos de sectores distintos (consultoría, tecnología, banca, farmacéutica, seguros y regulación general) y columna «Qué significa para su compañía» con explicaciones completas. Secciones 3.4, 8.4 y 9.10 ajustadas para no dar más peso a un sector. |
 | 0.2 | 10-11-2026 | Nueva sección 9, «La organización humana de una compañía IA-first»: definición propuesta y seis pruebas; por qué el organigrama por funciones frena; ocho puntos donde un caso se atasca o falla; lo que se observa fuera, con fuentes comprobadas; por qué no hace falta, en general, una dirección de IA; cinco opciones; recomendación de combinación por fases con el modelo destino, el recorrido de un caso, el paso a paso y los riesgos que quedan; implicaciones de cada decisión; lista de comprobación; fuentes y cautelas. Preguntas 16 a 18. Las secciones 9 a 13 pasan a ser 10 a 14. Propuesta del autor: no añade reglas ni evidencias. |

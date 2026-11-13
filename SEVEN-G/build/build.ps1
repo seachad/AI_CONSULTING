@@ -573,13 +573,17 @@ foreach ($lang in $Idiomas) {
     [IO.File]::WriteAllText((Join-Path $entDst 'index.html'), $entHtml, [Text.UTF8Encoding]::new($false))
     Get-ChildItem $entSrc -File | Copy-Item -Destination $entCom -Force
     # páginas completas de tema (D164): html/<idioma>/temas/<id>.html, desde temas.json, el glosario y el registro de referencias
-    $temDst = Join-Path $htmlDir 'temas'
+    $temDst = Join-Path $htmlDir 'areas'
     New-Item -ItemType Directory -Force $temDst | Out-Null
     $avTemas = [Collections.Generic.List[string]]::new()
     $pagTemas = Paginas-Temas $lang $repo $avTemas
     foreach ($idT in $pagTemas.Keys) { [IO.File]::WriteAllText((Join-Path $temDst "$idT.html"), $pagTemas[$idT], [Text.UTF8Encoding]::new($false)) }
     foreach ($a in $avTemas) { Write-Warning $a }
-    Write-Host "temas [$lang]: $($pagTemas.Count) páginas"
+    Write-Host "áreas de actuación [$lang]: $($pagTemas.Count) páginas"
+    # la portada del sitio enlaza las mismas áreas (D165)
+    $portF = Join-Path $repo $(if ($lang -eq 'en') { 'en/index.html' } else { 'index.html' })
+    $portT = [IO.File]::ReadAllText($portF); $portN = Portada-Con-Areas $portT $lang $(if ($lang -eq 'en') { '../' } else { '' })
+    if ($portN -cne $portT) { [IO.File]::WriteAllText($portF, $portN, [Text.UTF8Encoding]::new($false)) }
   }
 
   $files = @(Get-ChildItem $mdsDir -Recurse -File -Filter $Filter | Where-Object Extension -eq '.md')
@@ -843,6 +847,26 @@ function NombrePrimero([string]$texto) {
       if (-not $t) { return $a.Value }
       "<a href=""$($a.Groups[1].Value)"" title=""$(Enc $t)"">$($a.Groups[2].Value)</a>"
     }, 'IgnoreCase')
+    # «Documentos relacionados» (D165): la primera celda de cada fila («01 · Metodología fundacional», «20 y 21 · Fases…») enlaza
+    # su documento, plantilla o herramienta, con tooltip (D94), y se abre siempre en una pestaña nueva. Un solo código enlaza la
+    # celda entera; varios, cada código. No se toca una celda que ya lleva un enlace escrito.
+    $body = [regex]::Replace($body, '(?s)(<h2[^>]*>(?:(?!</h2>).)*(?:Documentos relacionados|Related documents)(?:(?!</h2>).)*</h2>)(.*?)(?=<h2|$)', {
+      param($sec)
+      $sec.Groups[1].Value + [regex]::Replace($sec.Groups[2].Value, '(?s)(<tr[^>]*>\s*<td[^>]*>\s*<strong>)(.*?)(</strong>)', {
+        param($c)
+        $txt = $c.Groups[2].Value
+        if ($txt -match '<a ') { return $c.Value }
+        $corte = $txt.IndexOf(' · ')
+        $cab = if ($corte -ge 0) { $txt.Substring(0, $corte) } else { $txt }
+        $resto = if ($corte -ge 0) { $txt.Substring($corte) } else { '' }
+        $codigos = @([regex]::Matches($cab, '(?<![\w.])(\d{2}|[PTM]\d{2})(?![\w.])') | Where-Object { $mapaDoc[$_.Groups[1].Value] })
+        if (-not $codigos.Count) { return $c.Value }
+        $enlace = { param($cod, $texto) "<a href=""$($mapaDoc[$cod])"" target=""_blank"" rel=""noopener"" title=""$(Enc ([string]$titulosReferencias[$cod]))"">$texto</a>" }
+        $nuevo = if ($codigos.Count -eq 1 -and $cab.Trim() -eq $codigos[0].Value) { & $enlace $codigos[0].Groups[1].Value $txt }
+                 else { ([regex]::Replace($cab, '(?<![\w.])(\d{2}|[PTM]\d{2})(?![\w.])', { param($m) if ($mapaDoc[$m.Groups[1].Value]) { & $enlace $m.Groups[1].Value $m.Value } else { $m.Value } })) + $resto }
+        $c.Groups[1].Value + $nuevo + $c.Groups[3].Value
+      })
+    })
     $body = [regex]::Replace($body, '<!--\s*figura:\s*([\w-]+)\s*-->', {
       param($c)
       $ruta = $compDirs | ForEach-Object { Join-Path $_ "$($c.Groups[1].Value).html" } | Where-Object { Test-Path $_ } | Select-Object -First 1
