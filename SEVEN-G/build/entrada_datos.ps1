@@ -112,6 +112,7 @@ function Temas-Indice-Entrada([string]$lang) {
 function Expandir-Entrada([string]$html, [string]$lang, [string]$repo, [hashtable]$recuentos) {
   foreach ($k in $recuentos.Keys) { $html = $html.Replace($k, [string]$recuentos[$k]) }
   if ($html.Contains('<!-- temas -->')) { $html = $html.Replace('<!-- temas -->', (Temas-Entrada $lang)) }
+  if ($html.Contains('<!-- preguntas -->')) { $html = $html.Replace('<!-- preguntas -->', (Preguntas-Entrada $lang)) }
   if ($html.Contains('<!-- temas-indice -->')) { $html = $html.Replace('<!-- temas-indice -->', (Temas-Indice-Entrada $lang)) }
   if (-not ($html.Contains('<!-- inventario-casos -->') -or $html.Contains('<!-- inventario-resumen -->'))) { return $html }
   $en = $lang -eq 'en'
@@ -320,6 +321,71 @@ function Portada-Areas([string]$lang, [string]$prefijo) {
     [void]$sb.Append("        </ul>`n        <p class=""area-mas""><a href=""${base}areas/$($t.id).html"" title=""$(if ($en) { 'Area page: concepts, where it is covered and sources' } else { 'Página del área: conceptos, dónde se trata y fuentes' })"">$(if ($en) { 'Full page of this area' } else { 'Página completa del área' }) →</a></p>`n      </details>`n")
   }
   $sb.ToString().TrimEnd("`n")
+}
+# ---- Preguntas del consejo (D169): tarjetas de la entrada y una página por pregunta, desde build/preguntas.json.
+function Preguntas-Entrada([string]$lang) {
+  $en = $lang -eq 'en'
+  $datos = Get-Content (Join-Path $PSScriptRoot 'preguntas.json') -Raw -Encoding utf8 | ConvertFrom-Json -Depth 16
+  $n = 0
+  (@($datos.preguntas | ForEach-Object {
+    $n++; $tx = if ($en) { $_.en } else { $_.es }
+    "      <a class=""pregunta"" href=""../preguntas/$($_.id).html"" title=""$(if ($en) { 'Open the page of this question: how SEVEN-G answers it and where to see it' } else { 'Abrir la página de esta pregunta: cómo la responde SEVEN-G y dónde verlo' })""><span class=""n"">$('{0:00}' -f $n)</span><b>$(Html-Entrada $tx.titulo)</b><span>$(Html-Entrada $tx.corta)</span><span class=""ir"">$(if ($en) { 'See the answer' } else { 'Ver la respuesta' }) →</span></a>"
+  }) -join "`n")
+}
+# Devuelve un diccionario ordenado id -> HTML de la página de la pregunta.
+function Paginas-Preguntas([string]$lang, [string]$repo) {
+  $en = $lang -eq 'en'; $otro = if ($en) { 'es' } else { 'en' }
+  $datos = Get-Content (Join-Path $PSScriptRoot 'preguntas.json') -Raw -Encoding utf8 | ConvertFrom-Json -Depth 16
+  $temas = (Get-Content (Join-Path $PSScriptRoot 'temas.json') -Raw -Encoding utf8 | ConvertFrom-Json -Depth 16).temas
+  $plantilla = [IO.File]::ReadAllText((Join-Path $PSScriptRoot 'preguntas.plantilla.html'))
+  $tx = Textos-Temas $lang
+  $q = if ($en) {
+    @{ Q_TODAS = 'All questions'; Q_RESPUESTA = 'The answer'; Q_ANTETITULO = 'Questions your board will ask'; Q_K_RESPUESTA = 'How SEVEN-G answers it'; Q_H_RESPUESTA = 'The answer, in three ideas'
+       Q_K_DONDE = 'See it now'; Q_H_DONDE = 'Where to see it and where it is explained'; Q_S_DONDE = 'Each link opens the tool, the example or the document. The examples use a fictitious company.'; Q_H_OTRAS = 'The other questions'
+       vista_embudo = 'See the funnel on the SEVEN-G page'; vista_panel = 'See the board dashboard on the SEVEN-G page'; area = 'Full page of the area'
+       alt_puerta = 'Technical illustration of a vault door labelled Stop Gate'; alt_escalera = 'Six-step staircase: maturity levels, from 0 (non-existent: chaos or proofs of concept only) to 5 (optimised: transformation)'
+       niv = @('0 · Non-existent|chaos or PoCs only', '1 · Initial', '2 · Developing', '3 · Defined', '4 · Managed', '5 · Optimised|transformation') }
+  } else {
+    @{ Q_TODAS = 'Todas las preguntas'; Q_RESPUESTA = 'La respuesta'; Q_ANTETITULO = 'Preguntas que su consejo acabará haciendo'; Q_K_RESPUESTA = 'Cómo la responde SEVEN-G'; Q_H_RESPUESTA = 'La respuesta, en tres ideas'
+       Q_K_DONDE = 'Véalo ahora'; Q_H_DONDE = 'Dónde verlo y dónde se explica'; Q_S_DONDE = 'Cada enlace abre la herramienta, el ejemplo o el documento. Los ejemplos usan una compañía ficticia.'; Q_H_OTRAS = 'Las otras preguntas'
+       vista_embudo = 'Ver el embudo en la página de SEVEN-G'; vista_panel = 'Ver el panel del consejo en la página de SEVEN-G'; area = 'Página completa del área'
+       alt_puerta = 'Ilustración técnica de una puerta acorazada con el rótulo Stop Gate'; alt_escalera = 'Escalera de seis peldaños: los niveles de madurez, del 0 (inexistente: caos o solo pruebas de concepto) al 5 (optimizado: transformación)'
+       niv = @('0 · Inexistente|caos o solo POC', '1 · Inicial', '2 · En desarrollo', '3 · Definido', '4 · Gestionado', '5 · Optimizado|transformación') }
+  }
+  $entrada = [IO.File]::ReadAllText((Join-Path $PSScriptRoot "entrada/$lang/index.html"))
+  $pie = [regex]::Match($entrada, '(?s)<footer>.*?</footer>').Value
+  $res = [ordered]@{}
+  foreach ($p in $datos.preguntas) {
+    $pt = if ($en) { $p.en } else { $p.es }
+    $parr = (@($pt.parrafos | ForEach-Object { "        <p>$(Html-Entrada $_)</p>" }) -join "`n")
+    $vista = if ($p.vista) { "        <a class=""enlace"" href=""../entrada/index.html#$($p.vista)"">$($q["vista_$($p.vista)"]) →</a>" } else { '' }
+    $imagen = ''
+    if ($p.imagen -eq 'puerta') { $imagen = "      <div>`n        <img class=""plano ilus"" src=""../../entrada/SEVEN-G_06.png"" width=""1048"" height=""1200"" alt=""$($q.alt_puerta)"">`n      </div>" }
+    elseif ($p.imagen -eq 'escalera') {
+      $pos = @('right:82.1%;bottom:20.8%', 'right:70.1%;bottom:37%', 'right:57.9%;bottom:52.4%', 'right:45.7%;bottom:67.9%', 'right:33.7%;bottom:83.5%', 'right:21.5%;bottom:98.5%'); $i = 0
+      $niv = (@($q.niv | ForEach-Object { $b, $it = $_ -split '\|'; $l = "          <span class=""niv"" style=""$($pos[$i])""><b>$b</b>$(if ($it) { "<i>$it</i>" })</span>"; $i++; $l }) -join "`n")
+      $imagen = "      <div>`n        <div class=""escalera"">`n          <img class=""plano"" src=""../../entrada/SEVEN-G_13.png"" width=""1560"" height=""976"" alt=""$($q.alt_escalera)"">`n$niv`n        </div>`n      </div>"
+    }
+    $sbE = [Text.StringBuilder]::new()
+    foreach ($e in $p.enlaces) {
+      $texto = Html-Entrada $(if ($en) { $e.en } else { $e.es })
+      $ancla = if ($en) { $e.ancla_en } else { $e.ancla_es }
+      $href = '../' + $e.href + $(if ($ancla) { "#$ancla" } else { '' })
+      [void]$sbE.Append("          <li><a href=""$href"" title=""$($tx[[string]$e.tipo]): $texto""><span class=""tipo $($e.tipo)"">$($tx[[string]$e.tipo])</span>$texto</a></li>`n")
+    }
+    $ar = $temas | Where-Object { $_.id -eq $p.area } | Select-Object -First 1
+    $area = if ($ar) { $at = if ($en) { $ar.en } else { $ar.es }; "<a href=""../areas/$($ar.id).html"">$($q.area): $(Html-Entrada $at.titulo) →</a>" } else { '' }
+    $otras = (@($datos.preguntas | Where-Object { $_.id -ne $p.id } | ForEach-Object { $o = if ($en) { $_.en } else { $_.es }; "      <a href=""$($_.id).html"">$(Html-Entrada $o.titulo)</a>" }) -join "`n")
+    $idioma = if ($en) { "<a href=""../../es/preguntas/$($p.id).html"" title=""$($tx.T_OTRO_IDIOMA)"">ES</a><span class=""activo"">EN</span>" } else { "<span class=""activo"">ES</span><a href=""../../en/preguntas/$($p.id).html"" title=""$($tx.T_OTRO_IDIOMA)"">EN</a>" }
+    $h = $plantilla
+    foreach ($k in @($tx.Keys | Where-Object { $_ -like 'T_*' })) { $h = $h.Replace("{{$k}}", [string]$tx[$k]) }
+    foreach ($k in @($q.Keys | Where-Object { $_ -like 'Q_*' })) { $h = $h.Replace("{{$k}}", [string]$q[$k]) }
+    $h = $h.Replace('{{LANG}}', $lang).Replace('{{OTRO}}', $otro).Replace('{{ID}}', [string]$p.id).Replace('{{TITULO}}', (Html-Entrada $pt.titulo)).Replace('{{CORTA}}', (Html-Entrada $pt.corta)).
+      Replace('{{PORTADA}}', $(if ($en) { '../../../../en/index.html' } else { '../../../../index.html' })).Replace('{{IDIOMA}}', $idioma).Replace('{{DUO}}', $(if ($imagen) { 'duo' } else { 'duo solo' })).
+      Replace('{{PARRAFOS}}', $parr).Replace('{{VISTA}}', $vista).Replace('{{IMAGEN}}', $imagen).Replace('{{ENLACES}}', $sbE.ToString().TrimEnd("`n")).Replace('{{AREA}}', $area).Replace('{{OTRAS}}', $otras).Replace('{{PIE_ENTRADA}}', $pie)
+    $res[[string]$p.id] = $h
+  }
+  $res
 }
 # Devuelve el texto de la portada con el bloque entre <!-- areas:inicio --> y <!-- areas:fin --> al día (o el mismo texto si no hay marcas).
 function Portada-Con-Areas([string]$html, [string]$lang, [string]$prefijo) {

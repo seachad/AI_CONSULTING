@@ -785,7 +785,10 @@ try {
         if ($anc -and -not [IO.File]::ReadAllText($dest).Contains('id="' + $anc + '"')) { Mal "temas.json [$lang]: $($e.href) no tiene el ancla #$anc (tema $($tm.id)) (D163)"; $malEnt++ }
       }
     }
-    foreach ($req in '00_SEVEN-G_Que_es_y_para_que_sirve.html', 'T01_registro_iniciativas/registro.html', 'Dashboard_Casos_Uso_IA', 'Dashboard_Movil_IA', 'class="niv"', '<details class="aviso">', 'Presentaci%C3%B3n_Corregida.pptx', 'Presentaci%C3%B3n_Corregida.pdf') {
+    # D169: la escalera de madurez con sus niveles rotulados (D91) vive en la página de la pregunta «¿Puede hacer más mi compañía?»
+    $fMas = Join-Path $repo "SEVEN-G\html\$lang\preguntas\mas.html"
+    if (-not (Test-Path $fMas) -or ([regex]::Matches([IO.File]::ReadAllText($fMas), 'class="niv"')).Count -ne 6) { Mal "pregunta mas [$lang]: falta la escalera de madurez con sus seis niveles rotulados (D91, D169)"; $malEnt++ }
+    foreach ($req in '00_SEVEN-G_Que_es_y_para_que_sirve.html', 'T01_registro_iniciativas/registro.html', 'Dashboard_Casos_Uso_IA', 'Dashboard_Movil_IA', '<details class="aviso">', 'Presentaci%C3%B3n_Corregida.pptx', 'Presentaci%C3%B3n_Corregida.pdf') {
       if (-not $tEnt.Contains($req)) { Mal "entrada [$lang]: falta «$req»"; $malEnt++ }
     }
     foreach ($img in [regex]::Matches($tEnt, 'src="\.\./\.\./entrada/([^"]+\.png)"')) {
@@ -1648,13 +1651,36 @@ try {
     $iH = $te.IndexOf('<section id="historia"'); $iP = $te.IndexOf('<section id="para-que"')
     if ($iH -lt 0 -or $iP -lt $iH) { Mal "entrada [$lg]: falta la historia «Usando la IA en su empresa» (section#historia) antes de las tres respuestas (D137)"; $mal35++; continue }
     $sh = $te.Substring($iH, $iP - $iH)
-    if (([regex]::Matches($sh, '<li>')).Count -ne 9) { Mal "entrada [$lg]: la historia debe tener nueve capítulos (D137, D139)"; $mal35++ }
+    if (([regex]::Matches($sh, '<li class="paso">')).Count -ne 8 -or ([regex]::Matches($sh, '<ol class="pasos (ida|vuelta)"')).Count -ne 2 -or ([regex]::Matches($sh, '<p class="acto')).Count -ne 2) { Mal "entrada [$lg]: la historia debe tener ocho pasos en dos actos, como camino de ida y vuelta (D169)"; $mal35++ }
+    if (-not $sh.Contains('class="moraleja"')) { Mal "entrada [$lg]: falta la banda de cierre de la historia (D169)"; $mal35++ }
     foreach ($h in 'T15_diagnostico_madurez/madurez.html', 'T17_panel_consejo/galeria/index.html') { if (-not $sh.Contains($h)) { Mal "entrada [$lg]: la historia no enlaza $h (madurez y casos de uso por sector, D139)"; $mal35++ } }
-    foreach ($z in 'para-que', 'preguntas', 'embudo', 'panel', 'parar', 'mas', 'quickcheck', 'partida', 'empezar') {
+    foreach ($z in 'para-que', 'preguntas', 'embudo', 'panel', 'quickcheck', 'partida', 'empezar') {
       if (-not $sh.Contains("href=""#$z""")) { Mal "entrada [$lg]: la historia no enlaza la zona #$z (D137)"; $mal35++ }
       if (-not $te.Contains("id=""$z""")) { Mal "entrada [$lg]: falta la zona #$z que enlaza la historia"; $mal35++ }
     }
     if (-not $te.Contains('href="#historia"')) { Mal "entrada [$lg]: la barra no enlaza la historia (D137)"; $mal35++ }
+    # D169: orden de la página, la IA como activo estratégico y una página por pregunta del consejo
+    $ordenD169 = @('<section id="areas"', '<section id="historia"', '<section id="para-que"', '<section id="preguntas"', '<section id="embudo"', '<section id="panel"', '<section id="que-es"', '<section id="empezar"', '<section id="quickcheck"', '<section id="partida"')
+    $posD169 = @($ordenD169 | ForEach-Object { $te.IndexOf($_) })
+    if (@($posD169 | Where-Object { $_ -lt 0 }).Count -or (($posD169 | Sort-Object) -join ',') -ne ($posD169 -join ',')) { Mal "entrada [$lg]: las secciones no siguen el orden de D169 (áreas, historia, preguntas estratégicas, preguntas del consejo, embudo, panel, qué es, empezar, QUICK-CHECK, punto de partida)"; $mal35++ }
+    if ($te -notmatch '<blockquote class="tesis">') { Mal "entrada [$lg]: falta la frase de la IA como activo estratégico en las preguntas estratégicas (D169)"; $mal35++ }
+    if (-not $te.Contains('<!-- preguntas -->') -or $te -match 'class="pregunta"') { Mal "entrada [$lg]: las preguntas del consejo no se escriben a mano; van en <!-- preguntas --> y salen de build/preguntas.json (D169)"; $mal35++ }
+    $pagQ = Paginas-Preguntas $lg $repo
+    $teGen = [IO.File]::ReadAllText((Join-Path $repo "SEVEN-G\html\$lg\entrada\index.html"))
+    if ($pagQ.Count -lt 6) { Mal "preguntas.json: menos de seis preguntas del consejo (D169)"; $mal35++ }
+    foreach ($idQ in $pagQ.Keys) {
+      $fQ = Join-Path $repo "SEVEN-G\html\$lg\preguntas\$idQ.html"
+      if (-not (Test-Path $fQ)) { Mal "pregunta $idQ [$lg]: falta su página (D169)"; $mal35++; continue }
+      $hQ = [IO.File]::ReadAllText($fQ)
+      if (($hQ -replace "`r`n", "`n") -cne ($pagQ[$idQ] -replace "`r`n", "`n")) { Mal "pregunta $idQ [$lg]: html/$lg/preguntas/$idQ.html no está al día con preguntas.json: generar con build.ps1 (D169)"; $mal35++ }
+      if ($hQ -match '\{\{[A-Z_]+\}\}') { Mal "pregunta $idQ [$lg]: quedan marcas sin sustituir (D169)"; $mal35++ }
+      foreach ($req in 'data-ir-codigo', 'data-enlazar-codigos', 'codigos.js', 'seveng-tema', '<details class="aviso">', 'id="respuesta"', 'id="donde"', "../../$(if ($lg -eq 'es') { 'en' } else { 'es' })/preguntas/$idQ.html", '../areas/') {
+        if (-not $hQ.Contains($req)) { Mal "pregunta $idQ [$lg]: falta «$req» (D169)"; $mal35++ }
+      }
+      foreach ($mQ in [regex]::Matches($hQ, 'href="(\.\./[^"#?]+)')) { if (-not (Test-Path ([IO.Path]::GetFullPath((Join-Path (Split-Path $fQ) $mQ.Groups[1].Value))))) { Mal "pregunta $idQ [$lg]: enlace roto $($mQ.Groups[1].Value) (D169)"; $mal35++ } }
+      if (-not $teGen.Contains("href=""../preguntas/$idQ.html""")) { Mal "entrada [$lg]: la pregunta $idQ no enlaza su página (D169)"; $mal35++ }
+    }
+    foreach ($sQ in @(Get-ChildItem (Join-Path $repo "SEVEN-G\html\$lg\preguntas") -Filter '*.html' -ErrorAction SilentlyContinue | Where-Object { -not $pagQ.Contains($_.BaseName) })) { Mal "preguntas [$lg]: sobra $($sQ.Name), que no está en preguntas.json (D169)"; $mal35++ }
     $port = if ($lg -eq 'en') { '../../../../en/index.html' } else { '../../../../index.html' }
     if ($te -notmatch "<a class=""portada"" href=""$([regex]::Escape($port))""") { Mal "entrada [$lg]: la cabecera de SEVEN-G no vuelve a la portada de AI Consulting en su idioma (D137)"; $mal35++ }
     $cj = [IO.File]::ReadAllText((Join-Path $repo "SEVEN-G\html\$lg\codigos.js"))

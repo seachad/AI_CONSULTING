@@ -5,7 +5,7 @@
 | | |
 |---|---|
 | Document | Document 54 · Organising the company for AI |
-| Version | 0.3 (working draft) |
+| Version | 0.4 (working draft) |
 | Date | 13-11-2026 |
 | Author | Fernando García Varela |
 | Status | Draft for review. Explanatory and orientation document: it adds no rules to the framework. |
@@ -694,8 +694,6 @@ External sources checked on their original site on 10-11-2026 and 13-11-2026 and
 |---|---|---|---|
 | McKinsey, "The agentic organization: contours of the next paradigm for the AI era" | Small, outcome-focused teams that supervise many agents across a whole process. | [mckinsey.com](https://www.mckinsey.com/capabilities/people-and-organization/our-insights/the-agentic-organization-contours-of-the-next-paradigm-for-the-ai-era) | The site returned a 503 error to automated reading. |
 | McKinsey, "The platform operating model for the AI bank of the future" | Platforms jointly led by business and technology. | [mckinsey.com](https://www.mckinsey.com/industries/financial-services/our-insights/platform-operating-model-for-the-ai-bank-of-the-future) | The site returned a 503 error to automated reading. |
-| DBS, 2018 annual report, chief information officer's statement | Platform model with one business lead and one technology lead for each platform. | [dbs.com](https://www.dbs.com/annualreports/2018/cio-statement.html) | The page and the report PDF only render in a browser; automated reading did not obtain the text. |
-| Shopify, chief executive's message to staff (April 2025) | Before asking for more people, the team explains why it cannot do the work with AI. | [x.com](https://x.com/tobi/status/1909251946235437514) | Checked on the social network: the title ("Reflexive AI usage is now a baseline expectation at Shopify"), the author and the date (7 April 2025). The body of the message was not served to automated reading. |
 | MIT NANDA, "The GenAI Divide: State of AI in Business 2025" | Why most generative AI pilots do not reach a measurable result. | [nanda.media.mit.edu](https://nanda.media.mit.edu/) | The publisher's site does not publish the report openly: it delivers it after a form. Only copies on third-party sites exist. |
 
 The examples are chosen from different sectors so that none weighs more than another; for that reason the announcements of two other insurance groups that were consulted are not cited.
@@ -801,5 +799,6 @@ The implementation sequence is in document 90. In organisational terms, the orde
 | Version | Date | Changes |
 |---|---|---|
 | 0.1 | 22-09-2026 | First version. Six functions someone must perform and their separations; organisation patterns observed in the market and where to place AI governance; mapping between the real organisation chart and the bodies in document 30; eight sources of use cases with their bias and their single entry point; governance circuit with who decides at each gate; reporting chain to the board; forward-looking section marked as a hypothesis, with four scenarios and their signals; fifteen questions for a management or board conversation. Explanatory document: it adds no rules or evidence. |
+| 0.4 | 13-11-2026 | Section 9.10: the internal Shopify message (a leak of an internal document) and the 2018 DBS annual report (it is old) are removed from the consulted sources. |
 | 0.3 | 13-11-2026 | Section 9.4: examples from different sectors (consultancy, technology, banking, pharmaceuticals, insurance and general regulation) and a "What it means for your company" column with full explanations. Sections 3.4, 8.4 and 9.10 adjusted so that no sector weighs more. |
 | 0.2 | 10-11-2026 | New section 9, "The human organisation of an AI-first company": proposed definition and six tests; why a function-based organisation chart holds things back; eight points where a case gets stuck or fails; what can be observed elsewhere, with checked sources; why, in general, an AI function is not needed; five options; recommendation of a phased combination with the target model, how a case travels, the step-by-step plan and the remaining risks; implications of each decision; checklist; sources and cautions. Questions 16 to 18. Sections 9 to 13 become 10 to 14. The author's proposal: it adds no rules or evidence. |

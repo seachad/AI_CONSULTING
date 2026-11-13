@@ -580,6 +580,12 @@ foreach ($lang in $Idiomas) {
     foreach ($idT in $pagTemas.Keys) { [IO.File]::WriteAllText((Join-Path $temDst "$idT.html"), $pagTemas[$idT], [Text.UTF8Encoding]::new($false)) }
     foreach ($a in $avTemas) { Write-Warning $a }
     Write-Host "áreas de actuación [$lang]: $($pagTemas.Count) páginas"
+    # páginas de las preguntas del consejo (D169): html/<idioma>/preguntas/<id>.html, desde preguntas.json
+    $preDst = Join-Path $htmlDir 'preguntas'
+    New-Item -ItemType Directory -Force $preDst | Out-Null
+    $pagPre = Paginas-Preguntas $lang $repo
+    foreach ($idQ in $pagPre.Keys) { [IO.File]::WriteAllText((Join-Path $preDst "$idQ.html"), $pagPre[$idQ], [Text.UTF8Encoding]::new($false)) }
+    Write-Host "preguntas del consejo [$lang]: $($pagPre.Count) páginas"
     # la portada del sitio enlaza las mismas áreas (D165)
     $portF = Join-Path $repo $(if ($lang -eq 'en') { 'en/index.html' } else { 'index.html' })
     $portT = [IO.File]::ReadAllText($portF); $portN = Portada-Con-Areas $portT $lang $(if ($lang -eq 'en') { '../' } else { '' })

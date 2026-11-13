@@ -5,7 +5,7 @@
 | | |
 |---|---|
 | Documento | Documento 54 · Organización de la compañía para la IA |
-| Versión | 0.3 (borrador de trabajo) |
+| Versión | 0.4 (borrador de trabajo) |
 | Fecha | 13-11-2026 |
 | Autor | Fernando García Varela |
 | Estado | Borrador para revisión. Documento explicativo y de orientación: no añade reglas al marco. |
@@ -694,8 +694,6 @@ Fuentes externas comprobadas en su sitio original el 10-11-2026 y el 13-11-2026 
 |---|---|---|---|
 | McKinsey, «The agentic organization: contours of the next paradigm for the AI era» | Equipos pequeños, orientados a un resultado, que supervisan muchos agentes en un proceso completo. | [mckinsey.com](https://www.mckinsey.com/capabilities/people-and-organization/our-insights/the-agentic-organization-contours-of-the-next-paradigm-for-the-ai-era) | El sitio devolvió un error 503 a la lectura automática. |
 | McKinsey, «The platform operating model for the AI bank of the future» | Plataformas dirigidas a la vez por negocio y tecnología. | [mckinsey.com](https://www.mckinsey.com/industries/financial-services/our-insights/platform-operating-model-for-the-ai-bank-of-the-future) | El sitio devolvió un error 503 a la lectura automática. |
-| DBS, informe anual de 2018, declaración del director de sistemas | Modelo de plataformas con un responsable de negocio y otro de tecnología en cada una. | [dbs.com](https://www.dbs.com/annualreports/2018/cio-statement.html) | La página y el PDF del informe solo se muestran con un navegador; la lectura automática no obtuvo el texto. |
-| Shopify, mensaje de su consejero delegado a la plantilla (abril de 2025) | Antes de pedir más personas, el equipo explica por qué no puede hacerlo con IA. | [x.com](https://x.com/tobi/status/1909251946235437514) | Comprobados en la red social el título («Reflexive AI usage is now a baseline expectation at Shopify»), el autor y la fecha (7-04-2025). El cuerpo del mensaje no se sirvió a la lectura automática. |
 | MIT NANDA, «The GenAI Divide: State of AI in Business 2025» | Por qué la mayoría de los pilotos de IA generativa no llega a dar resultado medible. | [nanda.media.mit.edu](https://nanda.media.mit.edu/) | El sitio del emisor no publica el informe en abierto: lo entrega tras un formulario. Solo hay copias en sitios de terceros. |
 
 Los ejemplos se eligen de sectores distintos para que ninguno pese más que otro; por eso no se citan los anuncios de otros dos grupos aseguradores que se consultaron.
@@ -801,5 +799,6 @@ La secuencia de implantación está en el documento 90. En términos de organiza
 | Versión | Fecha | Cambios |
 |---|---|---|
 | 0.1 | 22-09-2026 | Primera versión. Seis funciones que alguien debe ejercer y sus separaciones; patrones de organización observados en el mercado y dónde colgar el gobierno de la IA; correspondencia entre el organigrama real y los órganos del documento 30; ocho fuentes de casos de uso con su sesgo y su puerta de entrada única; circuito de gobierno con quién decide en cada puerta; cadena de información al consejo; sección prospectiva marcada como hipótesis, con cuatro escenarios y sus señales; quince preguntas para una conversación de dirección o de consejo. Documento explicativo: no añade reglas ni evidencias. |
+| 0.4 | 13-11-2026 | Sección 9.10: se retiran de las fuentes consultadas el mensaje interno de Shopify (es una filtración de un documento interno) y el informe anual de DBS de 2018 (es antiguo). |
 | 0.3 | 13-11-2026 | Sección 9.4: ejemplos de sectores distintos (consultoría, tecnología, banca, farmacéutica, seguros y regulación general) y columna «Qué significa para su compañía» con explicaciones completas. Secciones 3.4, 8.4 y 9.10 ajustadas para no dar más peso a un sector. |
 | 0.2 | 10-11-2026 | Nueva sección 9, «La organización humana de una compañía IA-first»: definición propuesta y seis pruebas; por qué el organigrama por funciones frena; ocho puntos donde un caso se atasca o falla; lo que se observa fuera, con fuentes comprobadas; por qué no hace falta, en general, una dirección de IA; cinco opciones; recomendación de combinación por fases con el modelo destino, el recorrido de un caso, el paso a paso y los riesgos que quedan; implicaciones de cada decisión; lista de comprobación; fuentes y cautelas. Preguntas 16 a 18. Las secciones 9 a 13 pasan a ser 10 a 14. Propuesta del autor: no añade reglas ni evidencias. |
