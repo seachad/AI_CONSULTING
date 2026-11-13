@@ -767,7 +767,7 @@ try {
     $portA = [IO.File]::ReadAllText((Join-Path $repo $(if ($lang -eq 'es') { 'index.html' } else { 'en\index.html' })))
     if ($portA -notmatch '<!-- areas:inicio') { Mal "portada [$lang]: falta el bloque de áreas de actuación en IA (D165)"; $malEnt++ }
     elseif (@([regex]::Matches($portA, '<details class="area" name="areas" id="area-[a-z]+" style="--h: \d+">\s*<summary[^>]*><svg class="ico"')).Count -ne @((Get-Content (Join-Path $PSScriptRoot 'temas.json') -Raw -Encoding utf8 | ConvertFrom-Json -Depth 16).temas).Count -or $portA -notmatch "details\.area'\)" ) { Mal "portada [$lang]: cada área debe ser una tarjeta desplegable con icono, y la página debe plegar las demás al abrir una (D168)"; $malEnt++ }
-    elseif ((Portada-Con-Areas $portA $lang $(if ($lang -eq 'en') { '../' } else { '' })) -cne $portA) { Mal "portada [$lang]: las áreas de actuación no están al día con temas.json: generar con build.ps1 (D165)"; $malEnt++ }
+    elseif (((Portada-Con-Areas $portA $lang $(if ($lang -eq 'en') { '../' } else { '' })) -replace "`r`n", "`n") -cne ($portA -replace "`r`n", "`n")) { Mal "portada [$lang]: las áreas de actuación no están al día con temas.json: generar con build.ps1 (D165)"; $malEnt++ }
     $sobranT = @(Get-ChildItem (Join-Path $repo "SEVEN-G\html\$lang\areas") -Filter '*.html' -ErrorAction SilentlyContinue | Where-Object { -not $pagT.Contains($_.BaseName) })
     foreach ($s in $sobranT) { Mal "temas [$lang]: sobra $($s.Name), que no está en temas.json (D164)"; $malEnt++ }
     $temasEnt = (Get-Content (Join-Path $PSScriptRoot 'temas.json') -Raw -Encoding utf8 | ConvertFrom-Json -Depth 16).temas
