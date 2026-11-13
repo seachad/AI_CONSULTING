@@ -15,8 +15,8 @@ Ficheros de esta carpeta:
 2. **La historia de la entrada tiene ocho pasos (D169).** La decisión D169 y `SEVEN-G/build/preguntas.json` están en `main` desde el 13-11-2026; la sesión en la nube trabajó sobre una copia anterior. La serie de la historia pasa a ocho entregas y un cierre (secciones 2.3 y 5). Las secciones `#parar` y `#mas` ya no están en la entrada: esas publicaciones enlazan ahora las páginas de pregunta (`html/es/preguntas/`).
 3. Los textos usan «tú», como el autor en LinkedIn. No llevan emojis ni etiquetas (sección 1.3).
 4. Ninguna publicación cita cifras de mercado. Las únicas cifras son recuentos del propio marco (seis preguntas, ocho pasos, seis frenos).
-5. **Aprobado por el autor el 13-11-2026 (D171):** español para las 104 publicaciones, martes 08:15 y jueves 15:30 (hora de Madrid), inicio el martes 17-11-2026 y parámetros `utm` en los enlaces. El horario sigue siendo una hipótesis que se comprueba con la prueba de la sección 4.2. Cada texto sigue en `borrador` hasta que el autor cambie su `estado`.
-6. **La publicación 1 fija el objetivo de la serie** (decisión del autor, D171): compartir conocimiento sobre la implantación estratégica de la IA, abrir debate y pedir participación activa. El feedback sirve para mejorar SEVEN-G, SPHERES y SPAD y vuelve a la comunidad. Es la única publicación que nombra SPHERES y SPAD; el resto del plan no los trata.
+5. **Aprobado por el autor el 13-11-2026 (D172):** español para las 104 publicaciones, martes 08:15 y jueves 15:30 (hora de Madrid), inicio el martes 17-11-2026 y parámetros `utm` en los enlaces. El horario sigue siendo una hipótesis que se comprueba con la prueba de la sección 4.2. Cada texto sigue en `borrador` hasta que el autor cambie su `estado`.
+6. **La publicación 1 fija el objetivo de la serie** (decisión del autor, D172): compartir conocimiento sobre la implantación estratégica de la IA, abrir debate y pedir participación activa. El feedback sirve para mejorar SEVEN-G, SPHERES y SPAD y vuelve a la comunidad. Es la única publicación que nombra SPHERES y SPAD; el resto del plan no los trata.
 
 ## 1. Notas de estilo del autor
 
@@ -862,6 +862,6 @@ Lista de comprobación antes de aprobar un texto:
 3. Decidir si quiere etiquetas al final de cada publicación (sección 1.1: antes las usaba, ahora no).
 4. Revisar el titular y la sección «Acerca de» del perfil (sección 7.6).
 
-Aprobado el 13-11-2026 (D171): idioma, días y horas, fecha de inicio y parámetros `utm`.
+Aprobado el 13-11-2026 (D172): idioma, días y horas, fecha de inicio y parámetros `utm`.
 
 Hecho el 13-11-2026: lectura del perfil y notas de estilo; serie de la historia en ocho pasos (D169); enlaces de las seis preguntas a su página propia.
