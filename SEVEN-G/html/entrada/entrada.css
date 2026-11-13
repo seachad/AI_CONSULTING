@@ -234,3 +234,23 @@ footer p { margin: 8px 0; max-width: 900px; }
 .historia .moraleja { margin: 26px 0 0; padding: 20px 22px; background: var(--papel-2); border-left: 5px solid var(--claret); display: flex; flex-wrap: wrap; align-items: center; gap: 14px 24px; }
 .historia .moraleja p { margin: 0; flex: 1 1 420px; font: 400 19px/1.5 var(--serif); color: var(--negro); }
 @media (max-width: 760px) { .historia .capitulos li { padding-left: 46px; } .historia .capitulos li:before { font-size: 26px; } .historia .moraleja .boton { flex: 1 1 100%; } }
+
+/* Mapa de temas (D163): tarjetas por macroconcepto con enlaces directos; las escribe build.ps1 desde build/temas.json */
+.macro-indice { display: flex; flex-wrap: wrap; gap: 8px; margin: 0 0 22px; }
+.macro-indice a { font: 600 14px/1.2 var(--sans); color: var(--negro); text-decoration: none; border: 1px solid var(--regla); background: var(--papel-2); padding: 7px 12px; border-radius: 999px; }
+.macro-indice a:hover, .macro-indice a:focus-visible { border-color: var(--claret); color: var(--claret); }
+.macros { display: grid; gap: 16px; grid-template-columns: repeat(auto-fit, minmax(min(300px, 100%), 1fr)); }
+.macro { border-top: 4px solid var(--oxford); background: var(--papel-2); padding: 16px 18px 14px; scroll-margin-top: 90px; }
+.macro:target { border-top-color: var(--claret); outline: 2px solid var(--claret); outline-offset: 2px; }
+.macro h3 { font: 600 22px/1.2 var(--serif); color: var(--negro); margin: 0 0 4px; }
+.macro .resp { font: 400 14.5px/1.45 var(--sans); color: var(--tinta-2); margin: 0 0 10px; }
+.macro ul { list-style: none; margin: 0; padding: 0; border-top: 1px solid var(--regla); }
+.macro li { border-bottom: 1px solid var(--regla-2); }
+.macro li:last-child { border-bottom: 0; }
+.macro li a { display: flex; gap: 8px; align-items: baseline; padding: 8px 0; font: 500 15px/1.35 var(--sans); color: var(--negro); text-decoration: none; }
+.macro li a:hover, .macro li a:focus-visible { color: var(--oxford); text-decoration: underline; }
+.macro .tipo { flex: 0 0 88px; font: 700 10.5px/1 var(--sans); letter-spacing: .06em; text-transform: uppercase; color: var(--tinta-3); }
+.macro .tipo.herramienta { color: var(--teal); }
+.macro .tipo.plantilla { color: var(--velvet); }
+.macro .tipo.ejemplo { color: var(--claret); }
+@media (max-width: 760px) { .macro h3 { font-size: 20px; } }

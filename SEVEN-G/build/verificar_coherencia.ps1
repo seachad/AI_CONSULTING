@@ -744,7 +744,24 @@ try {
     }
     $esperado = Expandir-Entrada $tFuente $lang $repo $recEnt
     if (($tEnt -replace "`r`n", "`n") -cne ($esperado -replace "`r`n", "`n")) { Mal "entrada [$lang]: html/$lang/entrada/index.html no coincide con build/entrada/$lang y los datos actuales (recuentos o JSON del panel de ejemplo): generar con build.ps1"; $malEnt++ }
-    if ($tEnt -match '\{\{N_|<!-- inventario-') { Mal "entrada [$lang]: quedan marcas sin sustituir"; $malEnt++ }
+    if ($tEnt -match '\{\{N_|<!-- inventario-|<!-- temas') { Mal "entrada [$lang]: quedan marcas sin sustituir"; $malEnt++ }
+    # D163: mapa de temas generado desde build/temas.json; cada tema tiene su tarjeta y cada enlace lleva a un fichero y un ancla que existen
+    if ($tFuente -match '<article class="macro"') { Mal "entrada [$lang]: la fuente escribe a mano tarjetas de temas; van en <!-- temas --> y salen de build/temas.json (D163)"; $malEnt++ }
+    $temasEnt = (Get-Content (Join-Path $PSScriptRoot 'temas.json') -Raw -Encoding utf8 | ConvertFrom-Json -Depth 16).temas
+    if (@($temasEnt).Count -lt 8) { Mal "temas.json: menos de 8 temas (D163)"; $malEnt++ }
+    if ($tEnt -notmatch '<a href="#temas">') { Mal "entrada [$lang]: la barra no enlaza el mapa de temas (D163)"; $malEnt++ }
+    foreach ($tm in $temasEnt) {
+      $txT = if ($lang -eq 'en') { $tm.en } else { $tm.es }
+      if (-not $txT.titulo -or -not $txT.pregunta) { Mal "temas.json: el tema $($tm.id) no tiene título o pregunta en $lang (D163)"; $malEnt++ }
+      if (-not $tEnt.Contains('id="tema-' + $tm.id + '"') -or -not $tEnt.Contains('href="#tema-' + $tm.id + '"')) { Mal "entrada [$lang]: falta la tarjeta o el enlace del tema $($tm.id) (D163)"; $malEnt++ }
+      foreach ($e in $tm.enlaces) {
+        if (-not $e.es -or -not $e.en -or $e.tipo -notin 'doc', 'plantilla', 'herramienta', 'ejemplo') { Mal "temas.json: enlace incompleto en $($tm.id): $($e.href) (D163)"; $malEnt++ }
+        $dest = [IO.Path]::GetFullPath((Join-Path $repo ("SEVEN-G/html/$lang/" + $e.href)))
+        if (-not (Test-Path $dest -PathType Leaf)) { Mal "temas.json [$lang]: no existe $($e.href) (tema $($tm.id)) (D163)"; $malEnt++; continue }
+        $anc = if ($lang -eq 'en') { $e.ancla_en } else { $e.ancla_es }
+        if ($anc -and -not [IO.File]::ReadAllText($dest).Contains('id="' + $anc + '"')) { Mal "temas.json [$lang]: $($e.href) no tiene el ancla #$anc (tema $($tm.id)) (D163)"; $malEnt++ }
+      }
+    }
     foreach ($req in '00_SEVEN-G_Que_es_y_para_que_sirve.html', 'T01_registro_iniciativas/registro.html', 'Dashboard_Casos_Uso_IA', 'Dashboard_Movil_IA', 'class="niv"', '<details class="aviso">', 'Presentaci%C3%B3n_Corregida.pptx', 'Presentaci%C3%B3n_Corregida.pdf') {
       if (-not $tEnt.Contains($req)) { Mal "entrada [$lang]: falta «$req»"; $malEnt++ }
     }

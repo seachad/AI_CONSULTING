@@ -6,6 +6,7 @@
     {{N_DOCUMENTOS}}, {{N_PLANTILLAS}}, {{N_HERRAMIENTAS}}   recuentos de la biblioteca (los mismos del índice y del documento 00)
     <!-- inventario-resumen -->                            línea de cifras de la cartera de ejemplo
     <!-- inventario-casos -->                              filas de la tabla «La cartera, caso a caso»
+    <!-- temas -->                                         tarjetas del mapa de temas, desde build/temas.json (D163)
   Los casos y sus cifras salen del JSON del panel de ejemplo (T17_panel_consejo/ejemplo/salida/t01_dashboard_data.json), con las
   mismas fórmulas que el panel (motor/economia.py, función resumen): si cambian los datos de demostración, basta con volver a
   generar. Los textos en inglés de los casos (nombre, unidad, etapas, motivos de salida) están en build/entrada_inventario_en.json;
@@ -66,9 +67,38 @@ function Dinero-Entrada([double]$v, [bool]$en) {
 
 function Html-Entrada([string]$s) { $s.Replace('&', '&amp;').Replace('<', '&lt;').Replace('>', '&gt;').Replace('"', '&quot;') }
 
+# Mapa de temas de la entrada (D163): tarjetas por macroconcepto con enlaces directos, desde build/temas.json.
+# href del JSON es relativo a html/<idioma>/; la entrada está en html/<idioma>/entrada/, por eso se antepone «../».
+function Temas-Entrada([string]$lang) {
+  $en = $lang -eq 'en'
+  $datos = Get-Content (Join-Path $PSScriptRoot 'temas.json') -Raw -Encoding utf8 | ConvertFrom-Json -Depth 16
+  $rot = if ($en) { @{ doc = 'Document'; plantilla = 'Template'; herramienta = 'Tool'; ejemplo = 'Example' } } else { @{ doc = 'Documento'; plantilla = 'Plantilla'; herramienta = 'Herramienta'; ejemplo = 'Ejemplo' } }
+  $sb = [Text.StringBuilder]::new()
+  foreach ($t in $datos.temas) {
+    $tx = if ($en) { $t.en } else { $t.es }
+    [void]$sb.Append("      <article class=""macro"" id=""tema-$($t.id)"">`n        <h3>$(Html-Entrada $tx.titulo)</h3>`n        <p class=""resp"">$(Html-Entrada $tx.pregunta)</p>`n        <ul>`n")
+    foreach ($e in $t.enlaces) {
+      $texto = Html-Entrada $(if ($en) { $e.en } else { $e.es })
+      $ancla = if ($en) { $e.ancla_en } else { $e.ancla_es }
+      $href = '../' + $e.href + $(if ($ancla) { "#$ancla" } else { '' })
+      [void]$sb.Append("          <li><a href=""$href"" title=""$($rot[[string]$e.tipo]): $texto""><span class=""tipo $($e.tipo)"">$($rot[[string]$e.tipo])</span>$texto</a></li>`n")
+    }
+    [void]$sb.Append("        </ul>`n      </article>`n")
+  }
+  $sb.ToString().TrimEnd("`n")
+}
+
+# Índice del mapa de temas: un enlace por tema a su tarjeta (#tema-<id>).
+function Temas-Indice-Entrada([string]$lang) {
+  $datos = Get-Content (Join-Path $PSScriptRoot 'temas.json') -Raw -Encoding utf8 | ConvertFrom-Json -Depth 16
+  (@($datos.temas | ForEach-Object { $tx = if ($lang -eq 'en') { $_.en } else { $_.es }; "      <a href=""#tema-$($_.id)"">$(Html-Entrada $tx.titulo)</a>" }) -join "`n")
+}
+
 # Devuelve la página con las marcas sustituidas. $recuentos: hashtable con {{N_DOCUMENTOS}}, {{N_PLANTILLAS}} y {{N_HERRAMIENTAS}}.
 function Expandir-Entrada([string]$html, [string]$lang, [string]$repo, [hashtable]$recuentos) {
   foreach ($k in $recuentos.Keys) { $html = $html.Replace($k, [string]$recuentos[$k]) }
+  if ($html.Contains('<!-- temas -->')) { $html = $html.Replace('<!-- temas -->', (Temas-Entrada $lang)) }
+  if ($html.Contains('<!-- temas-indice -->')) { $html = $html.Replace('<!-- temas-indice -->', (Temas-Indice-Entrada $lang)) }
   if (-not ($html.Contains('<!-- inventario-casos -->') -or $html.Contains('<!-- inventario-resumen -->'))) { return $html }
   $en = $lang -eq 'en'
   $datos = Get-Content (Join-Path $repo 'SEVEN-G/herramientas/T17_panel_consejo/ejemplo/salida/t01_dashboard_data.json') -Raw -Encoding utf8 | ConvertFrom-Json -Depth 64
