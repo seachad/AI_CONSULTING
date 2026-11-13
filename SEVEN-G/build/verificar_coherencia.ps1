@@ -746,7 +746,25 @@ try {
     if (($tEnt -replace "`r`n", "`n") -cne ($esperado -replace "`r`n", "`n")) { Mal "entrada [$lang]: html/$lang/entrada/index.html no coincide con build/entrada/$lang y los datos actuales (recuentos o JSON del panel de ejemplo): generar con build.ps1"; $malEnt++ }
     if ($tEnt -match '\{\{N_|<!-- inventario-|<!-- temas') { Mal "entrada [$lang]: quedan marcas sin sustituir"; $malEnt++ }
     # D163: mapa de temas generado desde build/temas.json; cada tema tiene su tarjeta y cada enlace lleva a un fichero y un ancla que existen
-    if ($tFuente -match '<article class="macro"') { Mal "entrada [$lang]: la fuente escribe a mano tarjetas de temas; van en <!-- temas --> y salen de build/temas.json (D163)"; $malEnt++ }
+    if ($tFuente -match 'class="macro"') { Mal "entrada [$lang]: la fuente escribe a mano tarjetas de temas; van en <!-- temas --> y salen de build/temas.json (D163)"; $malEnt++ }
+    # D164: páginas completas de tema, generadas desde temas.json, el glosario y el registro de referencias; tarjetas plegables
+    $avT = [Collections.Generic.List[string]]::new()
+    $pagT = Paginas-Temas $lang $repo $avT
+    foreach ($a in $avT) { Mal "$a (D164)"; $malEnt++ }
+    if ($tEnt -notmatch '<details class="macro" id="tema-' -or $tEnt -notmatch "matchMedia\('\(max-width: 760px\)'\)") { Mal "entrada [$lang]: las tarjetas de tema no son plegables en el móvil (D164)"; $malEnt++ }
+    foreach ($idT in $pagT.Keys) {
+      $fT = Join-Path $repo "SEVEN-G\html\$lang\temas\$idT.html"
+      if (-not (Test-Path $fT)) { Mal "tema $idT [$lang]: falta su página completa (D164)"; $malEnt++; continue }
+      $hT = [IO.File]::ReadAllText($fT)
+      if (($hT -replace "`r`n", "`n") -cne ($pagT[$idT] -replace "`r`n", "`n")) { Mal "tema $idT [$lang]: html/$lang/temas/$idT.html no está al día con temas.json, el glosario o el registro de referencias: generar con build.ps1 (D164)"; $malEnt++ }
+      if ($hT -match '\{\{[A-Z_]+\}\}') { Mal "tema $idT [$lang]: quedan marcas sin sustituir (D164)"; $malEnt++ }
+      foreach ($req in 'data-ir-codigo', 'data-enlazar-codigos', 'codigos.js', 'seveng-tema', '<details class="aviso">', 'id="conceptos"', 'id="donde"', 'id="fuentes"', "../../$(if ($lang -eq 'es') { 'en' } else { 'es' })/temas/$idT.html") {
+        if (-not $hT.Contains($req)) { Mal "tema $idT [$lang]: falta «$req» (D164)"; $malEnt++ }
+      }
+      if (-not $tEnt.Contains("href=""../temas/$idT.html""")) { Mal "entrada [$lang]: la tarjeta del tema $idT no enlaza su página completa (D164)"; $malEnt++ }
+    }
+    $sobranT = @(Get-ChildItem (Join-Path $repo "SEVEN-G\html\$lang\temas") -Filter '*.html' -ErrorAction SilentlyContinue | Where-Object { -not $pagT.Contains($_.BaseName) })
+    foreach ($s in $sobranT) { Mal "temas [$lang]: sobra $($s.Name), que no está en temas.json (D164)"; $malEnt++ }
     $temasEnt = (Get-Content (Join-Path $PSScriptRoot 'temas.json') -Raw -Encoding utf8 | ConvertFrom-Json -Depth 16).temas
     if (@($temasEnt).Count -lt 8) { Mal "temas.json: menos de 8 temas (D163)"; $malEnt++ }
     if ($tEnt -notmatch '<a href="#temas">') { Mal "entrada [$lang]: la barra no enlaza el mapa de temas (D163)"; $malEnt++ }

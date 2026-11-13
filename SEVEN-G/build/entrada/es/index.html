@@ -76,6 +76,16 @@
     <div class="macros">
 <!-- temas -->
     </div>
+    <script>
+    // D164: en el móvil las tarjetas de tema van plegadas; un enlace a #tema-<id> abre la suya. Sin JavaScript quedan abiertas.
+    (function () {
+      var ts = document.querySelectorAll('#temas details.macro');
+      var movil = window.matchMedia && window.matchMedia('(max-width: 760px)').matches;
+      function abrir() { var d = location.hash.indexOf('#tema-') === 0 && document.getElementById(location.hash.slice(1)); if (d) d.open = true; }
+      if (movil) for (var i = 0; i < ts.length; i++) ts[i].open = false;
+      abrir(); window.addEventListener('hashchange', abrir);
+    })();
+    </script>
     <p class="pie">¿Prefiere el recorrido? Siga con la historia de tres minutos, aquí debajo, o abra <a href="../index.html" title="Índice de la biblioteca de SEVEN-G">la biblioteca completa</a>.</p>
   </div>
 </section>

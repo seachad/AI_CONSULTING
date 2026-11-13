@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="{{LANG}}" data-theme="salmon">
+<head>
+<!-- Página de tema de SEVEN-G (D164). Generada por build.ps1 (entrada_datos.ps1) desde build/temas.json, el glosario (documento 02) y el registro de referencias. No editar. -->
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SEVEN-G · {{TITULO}}</title>
+<meta name="description" content="{{PREGUNTA}}">
+<link rel="alternate" hreflang="{{LANG}}" href="{{ID}}.html">
+<link rel="alternate" hreflang="{{OTRO}}" href="../../{{OTRO}}/temas/{{ID}}.html">
+<script>try { var t = localStorage.getItem('seveng-tema'); if (t) document.documentElement.setAttribute('data-theme', t); } catch (e) {}</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400;8..60,600;8..60,700;8..60,800&family=Libre+Franklin:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../entrada/entrada.css">
+</head>
+<body class="pag-tema">
+
+<header class="barra">
+  <div class="envoltura">
+    <a class="portada" href="{{PORTADA}}" title="{{T_PORTADA}}">⌂ <span>AI Consulting</span></a>
+    <a class="marca" href="../entrada/index.html" title="{{T_CABECERA}}"><i></i>SEVEN-G</a>
+    <nav aria-label="{{T_NAV}}">
+      <a href="../entrada/index.html#temas">{{T_TODOS}}</a>
+      <a href="#conceptos">{{T_CONCEPTOS}}</a>
+      <a href="#donde">{{T_DONDE}}</a>
+      <a href="#fuentes">{{T_FUENTES}}</a>
+      <a href="../index.html">{{T_BIBLIOTECA}}</a>
+    </nav>
+    <span class="ir-codigo" data-ir-codigo></span>
+    <label class="tema" title="{{T_TEMA_SITIO}}"><span class="oculto">{{T_TEMA}}</span>
+      <select id="tema" aria-label="{{T_TEMA}}">
+        <option value="salmon">{{T_SALMON}}</option>
+        <option value="claro">{{T_CLARO}}</option>
+        <option value="noche">{{T_NOCHE}}</option>
+      </select>
+    </label>
+    <div class="idioma" aria-label="{{T_IDIOMA}}">{{IDIOMA}}</div>
+  </div>
+</header>
+
+<div class="heroe">
+  <div class="envoltura">
+    <div>
+      <p class="antetitulo">{{T_ANTETITULO}}</p>
+      <h1>{{TITULO}}</h1>
+      <p class="entradilla">{{PREGUNTA}}</p>
+    </div>
+  </div>
+</div>
+
+<main data-enlazar-codigos>
+
+<section id="resumen">
+  <div class="envoltura">
+    <p class="kicker">{{T_K_RESUMEN}}</p>
+    <h2>{{T_H_RESUMEN}}</h2>
+    <p class="sub tema-resumen">{{RESUMEN}}</p>
+  </div>
+</section>
+
+<section id="conceptos">
+  <div class="envoltura">
+    <p class="kicker">{{T_K_CONCEPTOS}}</p>
+    <h2>{{T_H_CONCEPTOS}}</h2>
+    <p class="sub">{{T_S_CONCEPTOS}}</p>
+    <dl class="tema-conceptos">
+{{CONCEPTOS}}
+    </dl>
+  </div>
+</section>
+
+<section id="donde">
+  <div class="envoltura">
+    <p class="kicker">{{T_K_DONDE}}</p>
+    <h2>{{T_H_DONDE}}</h2>
+    <p class="sub">{{T_S_DONDE}}</p>
+    <div class="macros">
+      <article class="macro">
+        <ul>
+{{ENLACES}}
+        </ul>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section id="fuentes">
+  <div class="envoltura">
+    <p class="kicker">{{T_K_FUENTES}}</p>
+    <h2>{{T_H_FUENTES}}</h2>
+    <p class="sub">{{T_S_FUENTES}}</p>
+{{FUENTES}}
+  </div>
+</section>
+
+<section id="otros">
+  <div class="envoltura">
+    <p class="kicker">{{T_K_OTROS}}</p>
+    <h2>{{T_H_OTROS}}</h2>
+    <nav class="macro-indice" aria-label="{{T_H_OTROS}}">
+{{OTROS}}
+    </nav>
+  </div>
+</section>
+
+</main>
+
+{{PIE_ENTRADA}}
+
+<script src="../codigos.js" defer></script>
+<script>
+(function () {
+  var sel = document.getElementById('tema');
+  if (!sel) return;
+  sel.value = document.documentElement.getAttribute('data-theme') || 'salmon';
+  sel.addEventListener('change', function () {
+    document.documentElement.setAttribute('data-theme', sel.value);
+    try { localStorage.setItem('seveng-tema', sel.value); } catch (e) {}
+  });
+})();
+</script>
+</body>
+</html>

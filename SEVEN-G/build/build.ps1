@@ -572,6 +572,14 @@ foreach ($lang in $Idiomas) {
     $entHtml = Expandir-Entrada $entHtml $lang $repo (Recuentos-Biblioteca $lang)
     [IO.File]::WriteAllText((Join-Path $entDst 'index.html'), $entHtml, [Text.UTF8Encoding]::new($false))
     Get-ChildItem $entSrc -File | Copy-Item -Destination $entCom -Force
+    # páginas completas de tema (D164): html/<idioma>/temas/<id>.html, desde temas.json, el glosario y el registro de referencias
+    $temDst = Join-Path $htmlDir 'temas'
+    New-Item -ItemType Directory -Force $temDst | Out-Null
+    $avTemas = [Collections.Generic.List[string]]::new()
+    $pagTemas = Paginas-Temas $lang $repo $avTemas
+    foreach ($idT in $pagTemas.Keys) { [IO.File]::WriteAllText((Join-Path $temDst "$idT.html"), $pagTemas[$idT], [Text.UTF8Encoding]::new($false)) }
+    foreach ($a in $avTemas) { Write-Warning $a }
+    Write-Host "temas [$lang]: $($pagTemas.Count) páginas"
   }
 
   $files = @(Get-ChildItem $mdsDir -Recurse -File -Filter $Filter | Where-Object Extension -eq '.md')

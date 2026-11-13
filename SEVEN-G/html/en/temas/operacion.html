@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="salmon">
+<head>
+<!-- Página de tema de SEVEN-G (D164). Generada por build.ps1 (entrada_datos.ps1) desde build/temas.json, el glosario (documento 02) y el registro de referencias. No editar. -->
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SEVEN-G · Data, build and operations</title>
+<meta name="description" content="Which data it is built on and how it is kept alive in production.">
+<link rel="alternate" hreflang="en" href="operacion.html">
+<link rel="alternate" hreflang="es" href="../../es/temas/operacion.html">
+<script>try { var t = localStorage.getItem('seveng-tema'); if (t) document.documentElement.setAttribute('data-theme', t); } catch (e) {}</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400;8..60,600;8..60,700;8..60,800&family=Libre+Franklin:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../entrada/entrada.css">
+</head>
+<body class="pag-tema">
+
+<header class="barra">
+  <div class="envoltura">
+    <a class="portada" href="../../../../en/index.html" title="AI Consulting home: SEVEN-G, SPHERES and SPAD">⌂ <span>AI Consulting</span></a>
+    <a class="marca" href="../entrada/index.html" title="SEVEN-G header: what it is and what it is for"><i></i>SEVEN-G</a>
+    <nav aria-label="Sections">
+      <a href="../entrada/index.html#temas">All topics</a>
+      <a href="#conceptos">Concepts</a>
+      <a href="#donde">Where it is covered</a>
+      <a href="#fuentes">Sources</a>
+      <a href="../index.html">Library</a>
+    </nav>
+    <span class="ir-codigo" data-ir-codigo></span>
+    <label class="tema" title="Theme for the whole site"><span class="oculto">Theme</span>
+      <select id="tema" aria-label="Theme">
+        <option value="salmon">Salmon</option>
+        <option value="claro">Light salmon</option>
+        <option value="noche">Night</option>
+      </select>
+    </label>
+    <div class="idioma" aria-label="Language"><a href="../../es/temas/operacion.html" title="Esta página en español">ES</a><span class="activo">EN</span></div>
+  </div>
+</header>
+
+<div class="heroe">
+  <div class="envoltura">
+    <div>
+      <p class="antetitulo">SEVEN-G by topic</p>
+      <h1>Data, build and operations</h1>
+      <p class="entradilla">Which data it is built on and how it is kept alive in production.</p>
+    </div>
+  </div>
+</div>
+
+<main data-enlazar-codigos>
+
+<section id="resumen">
+  <div class="envoltura">
+    <p class="kicker">In brief</p>
+    <h2>What this topic is about</h2>
+    <p class="sub tema-resumen">An AI system is built on data with permission to use and known quality. In production its behaviour, cost and drift are monitored. Each change is classified before it is applied, and there is always a tested plan to roll back.</p>
+  </div>
+</section>
+
+<section id="conceptos">
+  <div class="envoltura">
+    <p class="kicker">Concepts</p>
+    <h2>The concepts you need</h2>
+    <p class="sub">Definitions taken from the SEVEN-G glossary (document 02). The codes are links to where each one is explained.</p>
+    <dl class="tema-conceptos">
+      <dt>AI system</dt>
+      <dd>Machine-based system that, with varying levels of autonomy, infers from the input it receives how to generate outputs—predictions, content, recommendations or decisions—that can influence physical or virtual environments. It is aligned with the EU AI Act definition and is identified in the inventory with the code SIA-AAAA-NNN.</dd>
+      <dt>Generative AI</dt>
+      <dd>Systems that generate content (text, image, audio, code) from instructions and context. It is a value of the technology tag and triggers the [GEN] criteria.</dd>
+      <dt>Rollback plan</dt>
+      <dd>Plan to return to a previous safe situation (previous version, non-AI alternative, reduced autonomy or scope) if the solution fails. It must be tested before go-live.</dd>
+      <dt>Minor · significant · substantial change</dt>
+      <dd>Classes of change to a system in production. <b>Minor</b>: does not alter behaviour or controls. <b>Significant</b>: alters behaviour within the approved purpose, scope, autonomy and risks, and requires regression evaluation, updating of the documentation and a report at the next R6. <b>Substantial</b>: alters the approved purpose, scope, autonomy, data, critical controls or risk profile, and requires a return to the relevant <i>gate</i>.</dd>
+      <dt>AI Operations Owner</dt>
+      <dd>Building role: accountable for stability, monitoring, incidents and changes in production. It cannot verify evidence of its own operation.</dd>
+      <dt>R6 · Continuity review</dt>
+      <dd>Periodic review that replaces the <i>gate</i> in phase 6: at least quarterly in Enterprise and half-yearly in Lite. It checks realised value against the hypothesis, stability, incidents, compliance and the validity of the classification. Outcomes: Proceed with operation, Proceed with conditions or Bring G7 forward. Omitting it is a major nonconformity.</dd>
+      <dt class="mas"><a href="../02_SEVEN-G_Glosario_y_convenciones.html">Full glossary (document 02) →</a></dt>
+    </dl>
+  </div>
+</section>
+
+<section id="donde">
+  <div class="envoltura">
+    <p class="kicker">In the framework</p>
+    <h2>Where it is covered</h2>
+    <p class="sub">Documents, sections, templates, tools and examples that develop this topic.</p>
+    <div class="macros">
+      <article class="macro">
+        <ul>
+          <li><a href="../51_SEVEN-G_Datos_y_conocimiento.html" title="Document: Data and knowledge"><span class="tipo doc">Document</span>Data and knowledge</a></li>
+          <li><a href="../53_SEVEN-G_Construccion_de_soluciones_con_IA.html" title="Document: Building solutions with AI"><span class="tipo doc">Document</span>Building solutions with AI</a></li>
+          <li><a href="../52_SEVEN-G_Manual_de_operacion_de_IA.html" title="Document: AI operations manual"><span class="tipo doc">Document</span>AI operations manual</a></li>
+          <li><a href="../20_SEVEN-G_Manuales_de_fase.html" title="Document: Phase manuals"><span class="tipo doc">Document</span>Phase manuals</a></li>
+        </ul>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section id="fuentes">
+  <div class="envoltura">
+    <p class="kicker">Sources</p>
+    <h2>External sources it is based on</h2>
+    <p class="sub">Official or primary sources cited by the documents of this topic, checked in the reference register. Always verify the version in force on the date of use.</p>
+    <ul class="tema-fuentes">
+      <li><a href="https://eur-lex.europa.eu/eli/dir/2016/943/oj/eng" target="_blank" rel="noopener">Directive (EU) 2016/943 of the European Parliament and of the Council of 8 June 2016 on the protection of undisclosed know-how and business information (trade secrets) against their unlawful acquisition, use and disclosure</a><span> · Parlamento Europeo y Consejo de la UE · 08-06-2016</span></li>
+      <li><a href="https://eur-lex.europa.eu/eli/dir/2019/790/oj/eng" target="_blank" rel="noopener">Directive (EU) 2019/790 of the European Parliament and of the Council of 17 April 2019 on copyright and related rights in the Digital Single Market</a><span> · Parlamento Europeo y Consejo de la UE · 17-04-2019</span></li>
+      <li><a href="https://eur-lex.europa.eu/eli/dir/2022/2555/oj/eng" target="_blank" rel="noopener">Directive (EU) 2022/2555 of the European Parliament and of the Council of 14 December 2022 on measures for a high common level of cybersecurity across the Union (NIS 2 Directive)</a><span> · Parlamento Europeo y Consejo de la UE · 14-12-2022</span></li>
+      <li><a href="https://eur-lex.europa.eu/eli/reg/2016/679/oj/eng" target="_blank" rel="noopener">Regulation (EU) 2016/679 of the European Parliament and of the Council of 27 April 2016 on the protection of natural persons with regard to the processing of personal data and on the free movement of such data, and repealing Directive 95/46/EC (General Data Protection Regulation)</a><span> · Parlamento Europeo y Consejo de la UE · 27-04-2016</span></li>
+      <li><a href="https://eur-lex.europa.eu/eli/reg/2022/2554/oj/eng" target="_blank" rel="noopener">Regulation (EU) 2022/2554 of the European Parliament and of the Council of 14 December 2022 on digital operational resilience for the financial sector (DORA)</a><span> · Parlamento Europeo y Consejo de la UE · 14-12-2022</span></li>
+      <li><a href="https://eur-lex.europa.eu/eli/reg/2024/1689/oj/eng" target="_blank" rel="noopener">Regulation (EU) 2024/1689 of the European Parliament and of the Council of 13 June 2024 laying down harmonised rules on artificial intelligence (Artificial Intelligence Act)</a><span> · Parlamento Europeo y Consejo de la UE · 13-06-2024</span></li>
+      <li><a href="https://eur-lex.europa.eu/eli/reg/2024/2847/oj/eng" target="_blank" rel="noopener">Regulation (EU) 2024/2847 of the European Parliament and of the Council of 23 October 2024 on horizontal cybersecurity requirements for products with digital elements (Cyber Resilience Act)</a><span> · Parlamento Europeo y Consejo de la UE · 23-10-2024</span></li>
+      <li><a href="https://eur-lex.europa.eu/eli/reg/2026/1744/oj/eng" target="_blank" rel="noopener">Regulation (EU) 2026/1744 of the European Parliament and of the Council of 8 July 2026 amending Regulations (EU) 2024/1689, (EU) 2018/1139 and (EU) 2023/1230 as regards the simplification of the implementation of harmonised rules on artificial intelligence (Digital Omnibus on AI)</a><span> · Parlamento Europeo y Consejo de la UE · 08-07-2026</span></li>
+      <li><a href="https://www.edpb.europa.eu/edpb_en" target="_blank" rel="noopener">European Data Protection Board (EDPB)</a><span> · Comité Europeo de Protección de Datos (organismo de la UE creado por el art. 68 del RGPD)</span></li>
+      <li><a href="https://www.edpb.europa.eu/our-work-tools/our-documents/opinion-board-art-64/opinion-282024-certain-data-protection-aspects_en" target="_blank" rel="noopener">Opinion 28/2024 on certain data protection aspects related to the processing of personal data in the context of AI models</a><span> · Comité Europeo de Protección de Datos · 17-12-2024</span></li>
+      <li><a href="https://genai.owasp.org/resource/owasp-top-10-for-llm-applications-2025/" target="_blank" rel="noopener">OWASP Top 10 for Large Language Model Applications 2025</a><span> · OWASP GenAI Security Project (OWASP Foundation) · 17-11-2024</span></li>
+      <li><a href="https://top10.owasp.org/2025/" target="_blank" rel="noopener">OWASP Top 10:2025 (web application security risks)</a><span> · OWASP Foundation · 2025</span></li>
+    </ul>
+  </div>
+</section>
+
+<section id="otros">
+  <div class="envoltura">
+    <p class="kicker">Keep browsing</p>
+    <h2>Other topics</h2>
+    <nav class="macro-indice" aria-label="Other topics">
+      <a href="estrategia.html">Strategy and investment</a>
+      <a href="casos.html">Use cases</a>
+      <a href="valor.html">Value and measurement</a>
+      <a href="gobierno.html">Governance and decisions</a>
+      <a href="organizacion.html">Organisation and people</a>
+      <a href="transformacion.html">Maturity and transformation</a>
+      <a href="riesgo.html">Risk and regulation</a>
+      <a href="seguridad.html">Security and agents</a>
+      <a href="normas.html">Standards</a>
+      <a href="consejo.html">Board and management</a>
+      <a href="implantar.html">Implementing the framework</a>
+    </nav>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="envoltura">
+    <details class="aviso"><summary>Legal notice and disclaimer</summary><p>SEVEN-G is provided "as is", for information purposes: it is not legal, regulatory or financial advice and does not guarantee compliance with any law or standard. Each organisation is solely responsible for identifying the regulation that applies to it, verifying that it is in force and certifying its own regulatory compliance. This methodology is a generic, free aid shared with the community so that nobody has to start from scratch; each person or organisation can and should adapt it to its own use. It must not be inferred that its legally sensitive parts have been reviewed by legal counsel: those reviews, for each company or sector, are the ultimate responsibility of the company, consultant or organisation that uses it. Although every effort is made to keep it up to date, some regulation may have changed without being reflected here. To the fullest extent permitted by law, the author accepts no responsibility whatsoever for the effects of its application in any organisation or for its full applicability. The methodology does not grant certification of any kind. The data in the examples are fictitious.</p></details>
+    <details class="aviso"><summary>Version under review: please do not circulate</summary><p>The framework is at version 0.x, public so that a small number of people can review it, give feedback and help improve it.</p></details>
+    <p>SEVEN-G is a name and trademark of <a href="https://www.linkedin.com/in/fernandogarciavarela/">Fernando García Varela</a>. Content under CC BY 4.0; code under MIT.</p>
+  </div>
+</footer>
+
+<script src="../codigos.js" defer></script>
+<script>
+(function () {
+  var sel = document.getElementById('tema');
+  if (!sel) return;
+  sel.value = document.documentElement.getAttribute('data-theme') || 'salmon';
+  sel.addEventListener('change', function () {
+    document.documentElement.setAttribute('data-theme', sel.value);
+    try { localStorage.setItem('seveng-tema', sel.value); } catch (e) {}
+  });
+})();
+</script>
+</body>
+</html>
