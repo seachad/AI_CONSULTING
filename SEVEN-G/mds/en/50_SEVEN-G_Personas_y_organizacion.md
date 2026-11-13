@@ -5,8 +5,8 @@
 | | |
 |---|---|
 | Document | Document 50 · People and organisation |
-| Version | 0.1 (working draft) |
-| Date | 16-09-2026 |
+| Version | 0.2 (working draft) |
+| Date | 13-11-2026 |
 | Author | Fernando García Varela |
 | Status | Draft for review. Indicator thresholds are indicative and must be calibrated as the framework is applied. |
 
@@ -158,6 +158,89 @@ The SEVEN-G roles (document 01 §8) do not change. The following functions **may
 | **Labour relations lead for AI** | Information to workers' representatives and consultations. | Recommended if there is legal workers' representation. |
 
 **Authority rule.** A human overseer without real authority to disagree with the system, or who is appraised on how quickly they accept its proposals, is **not** human oversight. The design of the overseer's objectives and incentives forms part of P17.
+
+### 4.3 Attracting, developing and retaining technical talent
+
+> **The author's proposal, not a framework rule.** This section brings together reflections, practices and checked examples on technical AI talent. It creates no *gate* criteria or evidence. The sources are at the end of the section.
+
+**The problem.** AI systems are built and operated by a few people who are hard to find: data and model engineering, platform engineering, security, model evaluation and agent design. Many companies hire them with effort and lose them within two years. Paying more helps, but it is not enough. Three causes recur:
+
+1. **There is no technical career.** To be promoted, the person has to stop doing technical work and start managing teams.
+2. **The work does not reach production.** The person moves from one pilot to the next and nobody uses them. Their work has no visible effect.
+3. **The work is invisible.** Outside their team nobody knows what they do, inside or outside the company.
+
+**What a technical profile values.** In the Stack Overflow Developer Survey 2025, the three most cited factors for job satisfaction are, in this order: autonomy and trust to manage one's own work, competitive pay, and solving real-world problems.
+
+| What they value | What it means for your company | Where it rests in SEVEN-G |
+|---|---|---|
+| Autonomy and trust | Give outcome objectives and let the team decide how to reach them. Control at the gates, not at each task. | Phases and gates (document 01); separation of functions (document 30) |
+| Competitive pay | Compare pay with the technical market, not only with your sector's internal pay scale. | Position on people in the AI thesis (document 13) |
+| Real problems | Assign people to initiatives with a sponsor, a value hypothesis and a decision date. Stop early what will not get there. | Portfolio funnel (document 14); feasibility gate (G3) |
+
+**Six levers.** None works alone. Together the six give the person a career, projects and recognition.
+
+| # | Lever | What to do | Checked example or support |
+|---|---|---|---|
+| 1 | **A technical career parallel to management** | Define technical levels with their expectations, up to a level equivalent to director. A person can grow in pay and influence without managing people. Publish the levels inside the company. | The Dropbox Engineering Career Framework is public: it has technical levels from IC1 to IC7 (the last one, "Senior Principal") and management levels from M3 to M7, with the expectations for each level. |
+| 2 | **Projects that reach production** | Give technical profiles initiatives that can reach real use. Measure how many do. Rotate people between initiatives so that nobody spends years on pilots. | The SEVEN-G funnel shows what reaches production and why the rest is stopped (document 14). |
+| 3 | **Visible work: publishing open source code** | Publish the generic tools the company builds. The person signs their work, the community reviews it and the market sees what is done inside. It is also a way to attract candidates. | Inditex's organisation on GitHub publishes tools under an open licence, among them servers that connect AI models to other applications. Santander's organisation on GitHub publishes AI tools, among them a synthetic fraud data generator for evaluating models and guardrail utilities. |
+| 4 | **Continuous learning and communities of practice** | Reserve working time for learning. Create communities by speciality, each with an accountable person. Pay for certifications and conference attendance in exchange for sharing what was learned. | AI literacy is an obligation for every company that uses AI (EU AI Act, Article 4). The capability plan by profile is in section 5. |
+| 5 | **Internal mobility and new roles** | Offer the new roles to the company's own people first: human supervisor, knowledge owner, agent owner. Someone who knows the business and learns AI is harder to replace than someone who only knows AI. | Roles in section 4.2; destinations of released capacity (section 6); roles of an AI-first company (document 54, section 9). |
+| 6 | **Recognition linked to results** | Recognise what reaches production and what is shared, not the number of pilots. Give the most senior technical profiles a voice in architecture decisions and at the gates. | The AI Technical Owner takes part in the gates (document 01, section 8). |
+
+**Publishing code with control.** Publishing is not giving the business away. Follow these rules:
+
+1. Publish generic tools. Do not publish business logic, models trained on your own data, or data.
+2. Review each publication before it goes out: secrets and credentials, personal data, dependency licences and intellectual property (documents 35 and 53).
+3. Choose a well-known open licence and put a licence notice in each repository.
+4. Appoint a maintainer for each repository. An abandoned repository looks worse than not publishing.
+5. Count the time spent publishing and maintaining as work.
+6. Share inside the company first, between teams. What several teams use is the best candidate for publication.
+
+**Signs that technical talent is being lost:**
+
+- the most experienced people leave within two years;
+- the only possible promotion is to leave technical work;
+- most technical work stays in pilots;
+- learning happens outside working hours;
+- nobody outside the team can say what the company has built.
+
+**Indicative indicators.** They are not part of the indicator catalogue (document 41); each company decides whether to adopt them.
+
+| Indicator | How it is calculated | What it tells you |
+|---|---|---|
+| Voluntary turnover of technical AI profiles | Voluntary departures in 12 months ÷ average headcount of those profiles | Whether the company retains. |
+| Technical profiles with a level on the technical career | People with an assigned level ÷ total technical profiles | Whether the technical career really exists. |
+| Technical work that reaches production | Initiatives in production ÷ initiatives that passed the feasibility gate (G3) | Whether the projects are real. |
+| Time to fill technical vacancies | Days between opening and joining | Whether the company attracts. |
+| New-role vacancies filled with the company's own people | Vacancies filled internally ÷ new-role vacancies | Whether there is internal mobility. |
+
+**Questions for management:**
+
+1. Can a technical person reach a director's pay level without managing people?
+2. What share of our technical profiles' work reached production last year?
+3. What have we published or shared that a candidate can see before the interview?
+4. How many working hours a year does each technical profile spend learning?
+5. Why did the last three technical people we lost leave?
+
+> **Why it matters.** Without stable technical talent, the company depends on suppliers to build and also to understand what it buys. Each departure takes away business knowledge that is not written down. A career, real projects and visible work cost less than replacing whoever leaves.
+
+**Sources checked on their original site on 13-11-2026** (reference register):
+
+| Source | Type | What is taken |
+|---|---|---|
+| Stack Overflow Developer Survey 2025 | Annual developer survey | The three most cited job-satisfaction factors. Its figures are not repeated. |
+| Dropbox Engineering Career Framework | Public document from a technology company | Technical and management levels in parallel, with expectations per level. |
+| Inditex's organisation on GitHub | Public repositories of a retail company | Publication of tools under an open licence. |
+| Santander's organisation on GitHub | Public repositories of a bank | Publication of AI tools under an open licence. |
+| EU AI Act, Article 4 | European Union law | AI literacy obligation. |
+
+**Consulted, but not checked at their original source.** Their official site did not respond to automated reading on 13-11-2026. They do not support any statement in this section; they should be opened before relying on them.
+
+| Source | What it covers | Official address |
+|---|---|---|
+| World Economic Forum, "Future of Jobs Report 2025" | Fastest-growing skills and skill gaps as a barrier to transformation. | [weforum.org](https://www.weforum.org/publications/the-future-of-jobs-report-2025/) |
+| OECD, "Employment Outlook 2023" | Effect of AI on employment and skills. | [oecd.org](https://www.oecd.org/en/publications/oecd-employment-outlook-2023_08785bba-en.html) |
 
 ---
 
@@ -530,4 +613,5 @@ The **information sheet for workers' representatives** (section 7.3) and the reg
 
 | Version | Date | Changes |
 |---|---|---|
+| 0.2 | 13-11-2026 | New section 4.3, "Attracting, developing and retaining technical talent": causes of talent loss, what a technical profile values, six levers with checked examples (parallel technical career, projects that reach production, publishing open source code, learning, internal mobility and recognition), rules for publishing code with control, signs, indicative indicators, questions for management and sources. The author's proposal: it adds no rules or evidence. |
 | 0.1 | 16-09-2026 | First version. Develops sphere 03 with indicators; the assessment of the effect on work per initiative; roles and capabilities from the board to the teams; the literacy plan by profile; the process for deciding, recording and tracking released capacity with five destinations; information and consultation with reference to Article 64.4.d) of the Estatuto de los Trabajadores and the EU AI Act; maximum autonomy and controls in decisions about people; wellbeing and oversight; internal communication; fifteen indicators with a formula and ten typical organisational risks. Consistency adjustments with 01 (segregation of duties in Lite, R6 outcomes, agents criterion) and with 34 and 37; risks aligned with the codes in document 33; the three proposed risks are added to 33 as RT-ORG-07 to RT-ORG-09. |

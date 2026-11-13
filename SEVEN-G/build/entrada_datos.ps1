@@ -178,6 +178,8 @@ function Md-Linea-Tema([string]$s) {
   $h = [regex]::Replace($h, '\*\*(.+?)\*\*', '<b>$1</b>')
   $h = [regex]::Replace($h, '(?<![\*\w])\*(?!\s)(.+?)(?<!\s)\*(?![\*\w])', '<i>$1</i>')
   $h = [regex]::Replace($h, '`([^`]+)`', '<code>$1</code>')
+  # un código de herramienta escrito en una definición enlaza el catálogo de herramientas (documento 03): ninguna herramienta citada queda sin enlace (D64)
+  $h = [regex]::Replace($h, '(?<![\w/>-])(T\d{2})(?![\w<])', '<a href="../03_SEVEN-G_Herramientas_y_registro_de_iniciativas.html" title="$1">$1</a>')
   $h.Replace('\&lt;', '&lt;').Replace('\&gt;', '&gt;')
 }
 # clave de comparación de un término del glosario: primer tramo antes de «;», sin marcas ni paréntesis y con las palabras ordenadas

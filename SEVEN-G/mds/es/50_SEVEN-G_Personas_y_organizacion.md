@@ -5,8 +5,8 @@
 | | |
 |---|---|
 | Documento | Documento 50 · Personas y organización |
-| Versión | 0.1 (borrador de trabajo) |
-| Fecha | 16-09-2026 |
+| Versión | 0.2 (borrador de trabajo) |
+| Fecha | 13-11-2026 |
 | Autor | Fernando García Varela |
 | Estado | Borrador para revisión. Los umbrales de los indicadores son orientativos y deben calibrarse con la aplicación del marco. |
 
@@ -158,6 +158,89 @@ Los roles de SEVEN-G (documento 01 §8) no cambian. Las funciones siguientes **p
 | **Responsable de relaciones laborales para IA** | Información a la representación y consultas. | Recomendada si hay representación legal. |
 
 **Regla de autoridad.** Un supervisor humano sin autoridad real para discrepar del sistema, o evaluado por la rapidez con la que acepta sus propuestas, **no** es supervisión humana. El diseño de objetivos e incentivos del supervisor forma parte de P17.
+
+### 4.3 Atraer, desarrollar y retener el talento técnico
+
+> **Propuesta del autor, no regla del marco.** Esta sección reúne reflexiones, prácticas y ejemplos comprobados sobre el talento técnico de IA. No crea criterios de *gate* ni evidencias. Las fuentes están al final de la sección.
+
+**El problema.** Los sistemas de IA los construyen y los operan pocas personas, y son difíciles de encontrar: ingeniería de datos y de modelos, ingeniería de plataformas, seguridad, evaluación de modelos y diseño de agentes. Muchas compañías las contratan con esfuerzo y las pierden en dos años. Pagar más ayuda, pero no basta. Tres causas se repiten:
+
+1. **No hay carrera técnica.** Para ascender, la persona tiene que dejar de hacer trabajo técnico y pasar a gestionar equipos.
+2. **El trabajo no llega a producción.** La persona encadena pilotos que nadie usa. Su trabajo no tiene efecto visible.
+3. **El trabajo es invisible.** Fuera de su equipo nadie sabe qué hace, ni dentro ni fuera de la compañía.
+
+**Qué valora un perfil técnico.** En la encuesta de desarrolladores de Stack Overflow de 2025, los tres factores más citados para estar satisfecho en el trabajo son, por este orden: autonomía y confianza para organizar el propio trabajo, retribución competitiva y resolver problemas reales.
+
+| Qué valora | Qué significa para su compañía | Dónde se apoya en SEVEN-G |
+|---|---|---|
+| Autonomía y confianza | Dé objetivos de resultado y deje al equipo decidir cómo llega a ellos. Controle en las puertas, no en cada tarea. | Fases y puertas (documento 01); separación de funciones (documento 30) |
+| Retribución competitiva | Compare la retribución con el mercado técnico, no solo con la tabla interna de su sector. | Posición sobre personas de la tesis de IA (documento 13) |
+| Problemas reales | Asigne a las personas a iniciativas con patrocinador, hipótesis de valor y fecha de decisión. Pare pronto lo que no va a llegar. | Embudo de la cartera (documento 14); puerta de viabilidad (G3) |
+
+**Seis palancas.** Ninguna funciona sola. Las seis juntas dan a la persona carrera, proyectos y reconocimiento.
+
+| # | Palanca | Qué hacer | Ejemplo comprobado o apoyo |
+|---|---|---|---|
+| 1 | **Carrera técnica paralela a la de gestión** | Defina niveles técnicos con sus expectativas, hasta un nivel equivalente al de dirección. Una persona puede crecer en retribución y en influencia sin gestionar personas. Publique los niveles dentro de la compañía. | El marco de carrera de ingeniería de Dropbox es público: tiene niveles técnicos de IC1 a IC7 (el último, «Senior Principal») y niveles de gestión de M3 a M7, con las expectativas de cada nivel. |
+| 2 | **Proyectos que llegan a producción** | Dé a los perfiles técnicos iniciativas que pueden llegar a uso real. Mida cuántas llegan. Rote a las personas entre iniciativas para que no queden años en pilotos. | El embudo de SEVEN-G muestra qué llega a producción y por qué se para lo demás (documento 14). |
+| 3 | **Trabajo visible: publicar código abierto** | Publique las herramientas genéricas que la compañía construye. La persona firma su trabajo, la comunidad lo revisa y el mercado ve qué se hace dentro. Es también una forma de atraer candidatos. | La organización de Inditex en GitHub publica herramientas con licencia abierta, entre ellas servidores para conectar modelos de IA con otras aplicaciones. La organización de Santander en GitHub publica herramientas de IA, entre ellas un generador de datos sintéticos de fraude para evaluar modelos y utilidades de guardarraíles. |
+| 4 | **Formación continua y comunidades de práctica** | Reserve tiempo de trabajo para aprender. Cree comunidades por especialidad, con una persona responsable. Pague certificaciones y asistencia a congresos a cambio de compartir lo aprendido. | La alfabetización en IA es una obligación para toda compañía que usa IA (Reglamento Europeo de IA, artículo 4). El plan de capacidades por perfil está en la sección 5. |
+| 5 | **Movilidad interna y roles nuevos** | Ofrezca primero a las personas de la compañía los roles nuevos: supervisor humano, responsable de conocimiento, dueño de agente. Quien conoce el negocio y aprende IA es más difícil de sustituir que quien solo conoce IA. | Roles de la sección 4.2; destinos de la capacidad liberada (sección 6); roles de una compañía IA-first (documento 54, sección 9). |
+| 6 | **Reconocimiento ligado al resultado** | Reconozca lo que llega a producción y lo que se comparte, no el número de pilotos. Dé a los perfiles técnicos de más nivel voz en las decisiones de arquitectura y en las puertas. | El responsable técnico de IA participa en las puertas (documento 01, sección 8). |
+
+**Publicar código con control.** Publicar no es regalar el negocio. Siga estas reglas:
+
+1. Publique herramientas genéricas. No publique lógica de negocio, modelos entrenados con datos propios ni datos.
+2. Revise cada publicación antes de hacerla: secretos y credenciales, datos personales, licencias de las dependencias y propiedad intelectual (documentos 35 y 53).
+3. Elija una licencia abierta conocida y ponga un aviso de licencia en cada repositorio.
+4. Nombre un responsable de mantenimiento para cada repositorio. Un repositorio abandonado da peor imagen que no publicar.
+5. Cuente como trabajo el tiempo de publicar y de mantener.
+6. Comparta primero dentro de la compañía, entre equipos. Lo que varios equipos usan es el mejor candidato para publicarse.
+
+**Señales de que se pierde talento técnico:**
+
+- las personas con más experiencia se van antes de dos años;
+- el único ascenso posible es dejar la técnica;
+- la mayoría del trabajo técnico se queda en pilotos;
+- la formación se hace fuera del horario de trabajo;
+- nadie fuera del equipo puede decir qué ha construido la compañía.
+
+**Indicadores orientativos.** No forman parte del catálogo de indicadores (documento 41); cada compañía decide si los adopta.
+
+| Indicador | Cómo se calcula | Qué dice |
+|---|---|---|
+| Rotación voluntaria de perfiles técnicos de IA | Salidas voluntarias en 12 meses ÷ plantilla media de esos perfiles | Si la compañía retiene. |
+| Perfiles técnicos con nivel en la carrera técnica | Personas con nivel asignado ÷ total de perfiles técnicos | Si la carrera técnica existe de verdad. |
+| Trabajo técnico que llega a producción | Iniciativas en producción ÷ iniciativas que pasaron la puerta de viabilidad (G3) | Si los proyectos son reales. |
+| Tiempo de cobertura de vacantes técnicas | Días entre la apertura y la incorporación | Si la compañía atrae. |
+| Vacantes de roles nuevos cubiertas con personas de la compañía | Vacantes cubiertas internamente ÷ vacantes de roles nuevos | Si hay movilidad interna. |
+
+**Preguntas para la dirección:**
+
+1. ¿Puede una persona técnica llegar al nivel retributivo de un director sin gestionar personas?
+2. ¿Qué parte del trabajo de nuestros perfiles técnicos llegó a producción el último año?
+3. ¿Qué hemos publicado o compartido que una persona candidata pueda ver antes de la entrevista?
+4. ¿Cuántas horas de trabajo al año dedica cada perfil técnico a aprender?
+5. ¿Por qué se fueron las tres últimas personas técnicas que perdimos?
+
+> **Por qué importa.** Sin talento técnico estable, la compañía depende de proveedores para construir y también para entender lo que compra. Cada salida se lleva conocimiento del negocio que no está escrito. La carrera, los proyectos reales y el trabajo visible cuestan menos que sustituir a quien se va.
+
+**Fuentes comprobadas en su sitio original el 13-11-2026** (registro de referencias):
+
+| Fuente | Tipo | Qué se toma |
+|---|---|---|
+| Encuesta de desarrolladores de Stack Overflow de 2025 | Encuesta anual a desarrolladores | Los tres factores más citados de satisfacción en el trabajo. No se repiten sus cifras. |
+| Marco de carrera de ingeniería de Dropbox | Documento público de una compañía tecnológica | Niveles técnicos y de gestión en paralelo, con expectativas por nivel. |
+| Organización de Inditex en GitHub | Repositorios públicos de una compañía de distribución | Publicación de herramientas con licencia abierta. |
+| Organización de Santander en GitHub | Repositorios públicos de un banco | Publicación de herramientas de IA con licencia abierta. |
+| Reglamento Europeo de IA, artículo 4 | Norma de la Unión Europea | Obligación de alfabetización en IA. |
+
+**Consultadas, pero no comprobadas en su fuente original.** Su sitio oficial no respondió a la lectura automática el 13-11-2026. No fundamentan ninguna afirmación de esta sección; conviene abrirlas antes de apoyarse en ellas.
+
+| Fuente | Qué trata | Dirección oficial |
+|---|---|---|
+| Foro Económico Mundial, «Future of Jobs Report 2025» | Competencias que más crecen y carencias de competencias como freno a la transformación. | [weforum.org](https://www.weforum.org/publications/the-future-of-jobs-report-2025/) |
+| OCDE, «Employment Outlook 2023» | Efecto de la IA en el empleo y en las competencias. | [oecd.org](https://www.oecd.org/en/publications/oecd-employment-outlook-2023_08785bba-en.html) |
 
 ---
 
@@ -530,4 +613,5 @@ La **ficha informativa para la representación** (sección 7.3) y el registro de
 
 | Versión | Fecha | Cambios |
 |---|---|---|
+| 0.2 | 13-11-2026 | Nueva sección 4.3, «Atraer, desarrollar y retener el talento técnico»: causas de la pérdida de talento, qué valora un perfil técnico, seis palancas con ejemplos comprobados (carrera técnica paralela, proyectos que llegan a producción, publicación de código abierto, formación, movilidad interna y reconocimiento), reglas para publicar código con control, señales, indicadores orientativos, preguntas para la dirección y fuentes. Propuesta del autor: no añade reglas ni evidencias. |
 | 0.1 | 16-09-2026 | Primera versión. Desarrolla la esfera 03 con indicadores; la evaluación del efecto sobre el trabajo por iniciativa; roles y capacidades del consejo a los equipos; el plan de alfabetización por perfil; el proceso de decisión, registro y seguimiento de la capacidad liberada con cinco destinos; información y consulta con referencia al art. 64.4.d) del Estatuto de los Trabajadores y al Reglamento Europeo de IA; autonomía máxima y controles en decisiones sobre personas; bienestar y supervisión; comunicación interna; quince indicadores con fórmula y diez riesgos organizativos tipo. Ajustes de coherencia con 01 (separación de funciones en Lite, resultados de R6, criterio de agentes) y con 34 y 37; riesgos alineados con los códigos del documento 33; los tres riesgos propuestos se incorporan a 33 como RT-ORG-07 a RT-ORG-09. |
