@@ -5,7 +5,7 @@
 | | |
 |---|---|
 | Document | Document 50 · People and organisation |
-| Version | 0.4 (working draft) |
+| Version | 0.5 (working draft) |
 | Date | 13-11-2026 |
 | Author | Fernando García Varela |
 | Status | Draft for review. Indicator thresholds are indicative and must be calibrated as the framework is applied. |
@@ -236,6 +236,7 @@ The SEVEN-G roles (document 01 §8) do not change. The following functions **may
 | EU AI Act, Article 4 | European Union law | AI literacy obligation. |
 | OECD, "Employment Outlook 2023: Artificial Intelligence and the Labour Market" ([official PDF](https://www.oecd.org/content/dam/oecd/en/publications/reports/2023/07/oecd-employment-outlook-2023_904bcef3/08785bba-en.pdf)) | Report by an international organisation, with a 2022 survey of over 2,000 employers and 5,300 workers in manufacturing and finance in seven countries | Two in five employers say that the lack of AI skills is a barrier to using AI. AI increases the importance of specialised skills and, even more, of human skills. Outcomes are better where workers have been trained to work with AI. |
 | World Economic Forum, "Future of Jobs Report 2025" ([weforum.org](https://www.weforum.org/publications/the-future-of-jobs-report-2025/), January 2025), key findings | Report by an international organisation, with an employer survey | 63% of employers say that skill gaps are the biggest barrier to transforming their business between 2025 and 2030. "AI and big data" is the fastest-growing skill. 85% plan to prioritise upskilling their workforce. Training and better progression and promotion help to attract talent. |
+| Eurostat, "ICT specialists - statistics on hard-to-fill vacancies in enterprises" ([ec.europa.eu/eurostat](https://ec.europa.eu/eurostat/statistics-explained/index.php?title=ICT_specialists_-_statistics_on_hard-to-fill_vacancies_in_enterprises), data extracted in June 2025) | Official European Union statistics, from the 2024 survey of enterprises with 10 or more persons | In 2023, 57.5% of EU enterprises that recruited or tried to recruit ICT specialists had difficulties in filling the vacancies. The most cited difficulty was the lack of applications. The figure covers ICT specialists in general, not only AI. |
 
 The World Economic Forum report was read on its official site on 13-11-2026 with an ordinary browser (key findings page). It was previously listed as not checked because the site refused automated reading.
 
@@ -610,6 +611,7 @@ The **information sheet for workers' representatives** (section 7.3) and the reg
 
 | Version | Date | Changes |
 |---|---|---|
+| 0.5 | 13-11-2026 | Section 4.3: the Eurostat statistics on hard-to-fill vacancies for ICT specialists are added (read on its official site). |
 | 0.4 | 13-11-2026 | Section 4.3: the World Economic Forum "Future of Jobs Report 2025" becomes a checked source (key findings read on its official site with an ordinary browser) and the text says what is taken from it. |
 | 0.3 | 13-11-2026 | Section 4.3: the OECD "Employment Outlook 2023" report becomes a checked source (read in its official PDF) and the text says what is taken from it. The World Economic Forum report is still not checked after a second attempt. |
 | 0.2 | 13-11-2026 | New section 4.3, "Attracting, developing and retaining technical talent": causes of talent loss, what a technical profile values, six levers with checked examples (parallel technical career, projects that reach production, publishing open source code, learning, internal mobility and recognition), rules for publishing code with control, signs, indicative indicators, questions for management and sources. The author's proposal: it adds no rules or evidence. |

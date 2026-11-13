@@ -363,7 +363,7 @@ Una decisión de **parar** bien fundamentada es un resultado válido del método
 | **R6 · Continuidad** | Oficina de IA | Patrocinador | Auditor de IA | Comité de IA |
 | **G7 · Escalado o retirada** | Oficina de IA | Patrocinador | Auditor de IA | Comité de IA |
 
-Las iniciativas de **Transformar** requieren además aprobación del consejo en G2 (autorización de la apuesta) y en G7 cuando se decide escalar. En la intensidad **Lite**, G0, G1 y G2 pueden resolverse en una sola sesión, y G4 y G5 también, siempre que cada evidencia se verifique.
+Las iniciativas de **Transformar** requieren además aprobación del consejo en G2 (autorización de la apuesta) y en G7 cuando se decide escalar. En la intensidad **Lite**, G0, G1 y G2 pueden resolverse en una sola sesión, y G4 y G5 también, siempre que cada evidencia se verifique. En **Lite**, la oficina de IA verifica la puerta; las evidencias de riesgo, de clasificación regulatoria y de proveedores (P10 a P14) y las de cambio y validación (P21 y P22) las verifica el responsable de riesgos de IA, salvo que las haya elaborado él: entonces las verifica la oficina de IA o el auditor de IA.
 
 ### 7.6 Criterios diferenciados por nivel de ambición
 

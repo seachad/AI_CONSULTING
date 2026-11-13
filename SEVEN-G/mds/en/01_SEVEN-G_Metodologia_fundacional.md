@@ -363,7 +363,7 @@ A well-founded decision to **stop** is a valid outcome of the method. Avoiding a
 | **R6 · Continuity** | AI Office | Sponsor | AI Auditor | AI Committee |
 | **G7 · Scale or retire** | AI Office | Sponsor | AI Auditor | AI Committee |
 
-**Transform** initiatives additionally require board approval at G2 (authorisation of the bet) and at G7 when the decision is to scale. At **Lite** intensity, G0, G1 and G2 may be resolved in a single session, as may G4 and G5, provided that each piece of evidence is verified.
+**Transform** initiatives additionally require board approval at G2 (authorisation of the bet) and at G7 when the decision is to scale. At **Lite** intensity, G0, G1 and G2 may be resolved in a single session, as may G4 and G5, provided that each piece of evidence is verified. Under **Lite**, the AI Office verifies the gate; the risk, regulatory classification and supplier evidence (P10 to P14) and the change and validation evidence (P21 and P22) are verified by the AI Risk Owner, unless the AI Risk Owner prepared them: then the AI Office or the AI Auditor verifies them.
 
 ### 7.6 Criteria differentiated by ambition level
 

@@ -5,7 +5,7 @@
 | | |
 |---|---|
 | Document | Document 54 · Organising the company for AI |
-| Version | 0.5 (working draft) |
+| Version | 0.6 (working draft) |
 | Date | 13-11-2026 |
 | Author | Fernando García Varela |
 | Status | Draft for review. Explanatory and orientation document: it adds no rules to the framework. |
@@ -688,9 +688,9 @@ External sources checked on their original site on 10-11-2026 and 13-11-2026 and
 | Duolingo post on "AI-first" (2025) | Company announcement (digital education) | Use of the term "AI-first" as a way of working. |
 | EU AI Act, Articles 4 and 26 | European Union law | AI literacy and human oversight with competence, training and authority. |
 | McKinsey, "The agentic organization: contours of the next paradigm for the AI era" ([mckinsey.com](https://www.mckinsey.com/capabilities/people-and-organization/our-insights/the-agentic-organization-contours-of-the-next-paradigm-for-the-ai-era), 26-09-2025) | Consultancy publication | Small teams of people, owners of an end-to-end outcome, that supervise the agents of a whole process. The person keeps final accountability. Human oversight capacity limits how far it can scale. Its figures are not repeated. |
-| McKinsey, "The platform operating model for the AI bank of the future" ([mckinsey.com](https://www.mckinsey.com/industries/financial-services/our-insights/platform-operating-model-for-the-ai-bank-of-the-future), 18-05-2021) | Consultancy publication, on banking | Background to the platform model: each platform has two leaders, one from business and one from technology, with shared metrics and within common risk and finance guardrails. It dates from 2021 and predates agents: it is cited as background, not as a current example. |
+| Harvard Business School, "The Cybernetic Teammate: A Field Experiment on Generative AI Reshaping Teamwork and Expertise" ([hbs.edu](https://www.hbs.edu/faculty/Pages/item.aspx?num=67197), Working Paper 25-043, March 2025) | Academic study: field experiment with 776 professionals at a consumer goods company | One person with AI matched the performance of a team without AI. With AI, technical and commercial profiles proposed balanced solutions: AI breaks down functional silos. The authors conclude that it compels organisations to rethink the structure of collaborative work. The official record and its abstract were read, not the full paper. |
 
-The two McKinsey publications were read on their official site on 13-11-2026 with an ordinary browser. They were previously listed as not checked because the site did not respond to automated reading.
+The McKinsey publication was read on its official site on 13-11-2026 with an ordinary browser. It was previously listed as not checked because the site did not respond to automated reading. A second McKinsey publication, from 2021, on the platform model in banking was also consulted; it is not cited because it is old and predates agents.
 
 **Consulted, but not checked at its original source.** This source was also consulted. On 13-11-2026 its official site still did not publish the report openly. No site protection is bypassed to read it. It is therefore cited separately: it is not used to support any statement in this section, and it should be opened before relying on it.
 
@@ -801,6 +801,7 @@ The implementation sequence is in document 90. In organisational terms, the orde
 | Version | Date | Changes |
 |---|---|---|
 | 0.1 | 22-09-2026 | First version. Six functions someone must perform and their separations; organisation patterns observed in the market and where to place AI governance; mapping between the real organisation chart and the bodies in document 30; eight sources of use cases with their bias and their single entry point; governance circuit with who decides at each gate; reporting chain to the board; forward-looking section marked as a hypothesis, with four scenarios and their signals; fifteen questions for a management or board conversation. Explanatory document: it adds no rules or evidence. |
+| 0.6 | 13-11-2026 | Section 9.10: the Harvard Business School study "The Cybernetic Teammate" is added (field experiment; AI breaks down functional silos) and the 2021 McKinsey publication on banking is removed (old and predates agents). |
 | 0.5 | 13-11-2026 | Section 9.10: the two McKinsey publications become checked sources (read on their official site with an ordinary browser) and the text says what is taken from each. The MIT NANDA report is still not checked: its publisher delivers it after a form. |
 | 0.4 | 13-11-2026 | Section 9.10: the internal Shopify message (a leak of an internal document) and the 2018 DBS annual report (it is old) are removed from the consulted sources. |
 | 0.3 | 13-11-2026 | Section 9.4: examples from different sectors (consultancy, technology, banking, pharmaceuticals, insurance and general regulation) and a "What it means for your company" column with full explanations. Sections 3.4, 8.4 and 9.10 adjusted so that no sector weighs more. |
