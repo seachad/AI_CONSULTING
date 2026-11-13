@@ -342,7 +342,7 @@ Orden alfabético. Las escalas completas están en la sección 4 y los códigos 
 | Término | Definición en SEVEN-G | Documento de referencia | Término en inglés |
 |---|---|---|---|
 | **Observación** | Hallazgo que no es incumplimiento: oportunidad de mejora o riesgo de incumplimiento futuro. La dirección decide si actúa. | 21 §10.5; 38 §8.1 | observation † |
-| **Oficina de IA** | Unidad interna, de metodología, cartera y medición, que mantiene el inventario, verifica en Lite, consolida la medición y prepara la información de los órganos. No debe confundirse con la Oficina Europea de IA. | 01 §8.3; 30 §1.2 | AI Office |
+| **Oficina de IA** | Unidad interna, de metodología, cartera y medición, que mantiene el inventario, verifica los criterios de las puertas en las iniciativas de intensidad Lite (en las de intensidad Enterprise los verifica el auditor de IA), consolida la medición y prepara la información de los órganos. No debe confundirse con la Oficina Europea de IA. | 01 §8.3; 30 §1.2 | AI Office |
 | **Oficina Europea de IA** | Órgano de la Comisión Europea previsto en el Reglamento (UE) 2024/1689. | 30 §1.2; 34 §1.3 | European AI Office † |
 | **Optimizar** | Nivel de ambición que hace lo mismo más rápido, más barato o con menos errores, sin cambiar qué se hace ni quién lo hace. El valor está principalmente en eficiencias. | 00 §4.1; 10 §3 | Optimise |
 | **Órgano competente** | Órgano o rol al que corresponde decidir un *gate* según la intensidad y el nivel de ambición. | 01 §7.1, §7.5 | competent body |

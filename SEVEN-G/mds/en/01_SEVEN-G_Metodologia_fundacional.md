@@ -410,7 +410,7 @@ One person may take on more than one role if the roles are not incompatible (sec
 |---|---|---|
 | **Board of directors** or board committee | Directors; may be supported by a director or adviser with AI experience. | Approves the AI thesis, the ambition, the risk appetite and Transform initiatives; exercises quarterly oversight; reviews progress annually. |
 | **AI Committee** | Senior management from business, technology, data, risk, compliance, security, data protection and people. | Manages the portfolio; decides Enterprise *gates*; reviews portfolio risks; decides retirements; escalates to the board as appropriate. |
-| **AI Office** | Small methodology, portfolio and measurement team. | Maintains the inventory and the methodology; verifies in Lite; consolidates measurement; prepares information for the bodies. |
+| **AI Office** | Small methodology, portfolio and measurement team. | Maintains the inventory and the methodology; verifies the gate criteria in Lite-intensity initiatives (in Enterprise ones the AI Auditor verifies them); consolidates measurement; prepares information for the bodies. |
 | **Second line** | Risk, compliance, information security, data protection. | Provides the risk owners; issues clearances; signs off Enterprise go-live. |
 | **Third line** | Internal audit or external auditor. | Provides or supervises the AI Auditors; audits compliance with the framework. |
 

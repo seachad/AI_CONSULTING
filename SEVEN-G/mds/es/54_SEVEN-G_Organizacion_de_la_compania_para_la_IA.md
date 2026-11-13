@@ -5,7 +5,7 @@
 | | |
 |---|---|
 | Documento | Documento 54 · Organización de la compañía para la IA |
-| Versión | 0.4 (borrador de trabajo) |
+| Versión | 0.5 (borrador de trabajo) |
 | Fecha | 13-11-2026 |
 | Autor | Fernando García Varela |
 | Estado | Borrador para revisión. Documento explicativo y de orientación: no añade reglas al marco. |
@@ -687,14 +687,16 @@ Fuentes externas comprobadas en su sitio original el 10-11-2026 y el 13-11-2026 
 | Artículo de Allianz sobre el proyecto Nemo (03-11-2025) | Anuncio de la compañía (seguros) | Agentes por tareas y decisión de pago siempre humana. |
 | Publicación de Duolingo sobre «IA primero» (2025) | Anuncio de la compañía (educación digital) | Uso del término «IA primero» como forma de trabajar. |
 | Reglamento Europeo de IA, artículos 4 y 26 | Norma de la Unión Europea | Alfabetización y supervisión humana con competencia, formación y autoridad. |
+| McKinsey, «The agentic organization: contours of the next paradigm for the AI era» ([mckinsey.com](https://www.mckinsey.com/capabilities/people-and-organization/our-insights/the-agentic-organization-contours-of-the-next-paradigm-for-the-ai-era), 26-09-2025) | Publicación de consultora | Equipos pequeños de personas, dueños de un resultado de punta a punta, que supervisan los agentes de un proceso completo. La persona conserva la responsabilidad final. La capacidad de supervisión humana limita cuánto se puede escalar. No se repiten sus cifras. |
+| McKinsey, «The platform operating model for the AI bank of the future» ([mckinsey.com](https://www.mckinsey.com/industries/financial-services/our-insights/platform-operating-model-for-the-ai-bank-of-the-future), 18-05-2021) | Publicación de consultora, sobre banca | Antecedente del modelo de plataformas: cada plataforma tiene dos responsables, uno de negocio y otro de tecnología, con indicadores comunes y dentro de unos límites comunes de riesgo y finanzas. Es de 2021 y anterior a los agentes: se cita como antecedente, no como ejemplo actual. |
 
-**Consultadas, pero no comprobadas en su fuente original.** Estas fuentes también se consultaron. Su sitio oficial no se pudo leer el 10-11-2026 ni en dos intentos el 13-11-2026 (no respondía a la lectura automática, o solo había copias de terceros). No se salta ninguna protección del sitio para leerlas. Por eso se citan aparte: no se usan para fundamentar ninguna afirmación de esta sección y conviene abrirlas antes de apoyarse en ellas.
+Las dos publicaciones de McKinsey se leyeron en su sitio oficial el 13-11-2026 con un navegador normal. Antes figuraban como no comprobadas porque el sitio no respondía a la lectura automática.
+
+**Consultada, pero no comprobada en su fuente original.** Esta fuente también se consultó. El 13-11-2026 su sitio oficial seguía sin publicar el informe en abierto. No se salta ninguna protección del sitio para leerla. Por eso se cita aparte: no se usa para fundamentar ninguna afirmación de esta sección y conviene abrirla antes de apoyarse en ella.
 
 | Fuente | Qué trata | Dirección oficial | Por qué no está comprobada |
 |---|---|---|---|
-| McKinsey, «The agentic organization: contours of the next paradigm for the AI era» | Equipos pequeños, orientados a un resultado, que supervisan muchos agentes en un proceso completo. | [mckinsey.com](https://www.mckinsey.com/capabilities/people-and-organization/our-insights/the-agentic-organization-contours-of-the-next-paradigm-for-the-ai-era) | El sitio devolvió un error 503 a la lectura automática. |
-| McKinsey, «The platform operating model for the AI bank of the future» | Plataformas dirigidas a la vez por negocio y tecnología. | [mckinsey.com](https://www.mckinsey.com/industries/financial-services/our-insights/platform-operating-model-for-the-ai-bank-of-the-future) | El sitio devolvió un error 503 a la lectura automática. |
-| MIT NANDA, «The GenAI Divide: State of AI in Business 2025» | Por qué la mayoría de los pilotos de IA generativa no llega a dar resultado medible. | [nanda.media.mit.edu](https://nanda.media.mit.edu/) | El sitio del emisor no publica el informe en abierto: lo entrega tras un formulario. Solo hay copias en sitios de terceros. |
+| MIT NANDA, «The GenAI Divide: State of AI in Business 2025» | Por qué la mayoría de los pilotos de IA generativa no llega a dar resultado medible. | [media.mit.edu](https://www.media.mit.edu/groups/nanda/overview/) | El sitio del emisor no publica el informe en abierto: lo entrega tras un formulario. Solo hay copias en sitios de terceros. |
 
 Los ejemplos se eligen de sectores distintos para que ninguno pese más que otro; por eso no se citan los anuncios de otros dos grupos aseguradores que se consultaron.
 
@@ -799,6 +801,7 @@ La secuencia de implantación está en el documento 90. En términos de organiza
 | Versión | Fecha | Cambios |
 |---|---|---|
 | 0.1 | 22-09-2026 | Primera versión. Seis funciones que alguien debe ejercer y sus separaciones; patrones de organización observados en el mercado y dónde colgar el gobierno de la IA; correspondencia entre el organigrama real y los órganos del documento 30; ocho fuentes de casos de uso con su sesgo y su puerta de entrada única; circuito de gobierno con quién decide en cada puerta; cadena de información al consejo; sección prospectiva marcada como hipótesis, con cuatro escenarios y sus señales; quince preguntas para una conversación de dirección o de consejo. Documento explicativo: no añade reglas ni evidencias. |
+| 0.5 | 13-11-2026 | Sección 9.10: las dos publicaciones de McKinsey pasan a fuentes comprobadas (leídas en su sitio oficial con un navegador normal) y se dice qué se toma de cada una. El informe de MIT NANDA sigue sin comprobar: su emisor lo entrega tras un formulario. |
 | 0.4 | 13-11-2026 | Sección 9.10: se retiran de las fuentes consultadas el mensaje interno de Shopify (es una filtración de un documento interno) y el informe anual de DBS de 2018 (es antiguo). |
 | 0.3 | 13-11-2026 | Sección 9.4: ejemplos de sectores distintos (consultoría, tecnología, banca, farmacéutica, seguros y regulación general) y columna «Qué significa para su compañía» con explicaciones completas. Secciones 3.4, 8.4 y 9.10 ajustadas para no dar más peso a un sector. |
 | 0.2 | 10-11-2026 | Nueva sección 9, «La organización humana de una compañía IA-first»: definición propuesta y seis pruebas; por qué el organigrama por funciones frena; ocho puntos donde un caso se atasca o falla; lo que se observa fuera, con fuentes comprobadas; por qué no hace falta, en general, una dirección de IA; cinco opciones; recomendación de combinación por fases con el modelo destino, el recorrido de un caso, el paso a paso y los riesgos que quedan; implicaciones de cada decisión; lista de comprobación; fuentes y cautelas. Preguntas 16 a 18. Las secciones 9 a 13 pasan a ser 10 a 14. Propuesta del autor: no añade reglas ni evidencias. |

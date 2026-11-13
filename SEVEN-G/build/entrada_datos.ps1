@@ -90,14 +90,14 @@ function Temas-Entrada([string]$lang) {
   foreach ($t in $datos.temas) {
     $tx = if ($en) { $t.en } else { $t.es }
     $tono = Tono-Area $nT; $nT++
-    [void]$sb.Append("      <details class=""macro"" name=""areas"" id=""area-$($t.id)"" style=""--h: $tono"">`n        <summary>$(Icono-Area $t.icono)<h3>$(Html-Entrada $tx.titulo)</h3><p class=""resp"">$(Html-Entrada $tx.pregunta)</p></summary>`n        <ul>`n")
+    [void]$sb.Append("      <details class=""macro"" name=""areas"" id=""area-$($t.id)"" style=""--h: $tono"">`n        <summary>$(Icono-Area $t.icono)<h3>$(Html-Entrada $tx.titulo)</h3><p class=""resp"">$(Html-Entrada $tx.pregunta)</p></summary>`n        <p class=""macro-mas""><a href=""../areas/$($t.id).html"" title=""$(if ($en) { 'Area page: concepts, where it is covered and sources' } else { 'Página del área: conceptos, dónde se trata y fuentes' })"">$(if ($en) { 'Full page of this area' } else { 'Página completa del área' }) →</a></p>`n        <ul>`n")
     foreach ($e in $t.enlaces) {
       $texto = Html-Entrada $(if ($en) { $e.en } else { $e.es })
       $ancla = if ($en) { $e.ancla_en } else { $e.ancla_es }
       $href = '../' + $e.href + $(if ($ancla) { "#$ancla" } else { '' })
       [void]$sb.Append("          <li><a href=""$href"" title=""$($rot[[string]$e.tipo]): $texto""><span class=""tipo $($e.tipo)"">$($rot[[string]$e.tipo])</span>$texto</a></li>`n")
     }
-    [void]$sb.Append("        </ul>`n        <p class=""macro-mas""><a href=""../areas/$($t.id).html"" title=""$(if ($en) { 'Area page: concepts, where it is covered and sources' } else { 'Página del área: conceptos, dónde se trata y fuentes' })"">$(if ($en) { 'Full page of this area' } else { 'Página completa del área' }) →</a></p>`n      </details>`n")
+    [void]$sb.Append("        </ul>`n      </details>`n")
   }
   $sb.ToString().TrimEnd("`n")
 }
@@ -311,14 +311,14 @@ function Portada-Areas([string]$lang, [string]$prefijo) {
   [void]$sb.Append("      <!-- Iconos: Font Awesome Free 6.7.2, https://fontawesome.com (CC BY 4.0) -->`n")
   foreach ($t in $datos.temas) {
     $tx = if ($en) { $t.en } else { $t.es }; $tono = Tono-Area $nA; $nA++
-    [void]$sb.Append("      <details class=""area"" name=""areas"" id=""area-$($t.id)"" style=""--h: $tono"">`n        <summary title=""$(Html-Entrada $tx.pregunta)"">$(Icono-Area $t.icono)<b>$(Html-Entrada $tx.titulo)</b><span>$(Html-Entrada $tx.pregunta)</span></summary>`n        <ul>`n")
+    [void]$sb.Append("      <details class=""area"" name=""areas"" id=""area-$($t.id)"" style=""--h: $tono"">`n        <summary title=""$(Html-Entrada $tx.pregunta)"">$(Icono-Area $t.icono)<b>$(Html-Entrada $tx.titulo)</b><span>$(Html-Entrada $tx.pregunta)</span></summary>`n        <p class=""area-mas""><a href=""${base}areas/$($t.id).html"" title=""$(if ($en) { 'Area page: concepts, where it is covered and sources' } else { 'Página del área: conceptos, dónde se trata y fuentes' })"">$(if ($en) { 'Full page of this area' } else { 'Página completa del área' }) →</a></p>`n        <ul>`n")
     foreach ($e in $t.enlaces) {
       $texto = Html-Entrada $(if ($en) { $e.en } else { $e.es })
       $ancla = if ($en) { $e.ancla_en } else { $e.ancla_es }
       $href = $base + $e.href + $(if ($ancla) { "#$ancla" } else { '' })
       [void]$sb.Append("          <li><a href=""$href"" title=""$($rot[[string]$e.tipo]): $texto""><i class=""tipo $($e.tipo)"">$($rot[[string]$e.tipo])</i>$texto</a></li>`n")
     }
-    [void]$sb.Append("        </ul>`n        <p class=""area-mas""><a href=""${base}areas/$($t.id).html"" title=""$(if ($en) { 'Area page: concepts, where it is covered and sources' } else { 'Página del área: conceptos, dónde se trata y fuentes' })"">$(if ($en) { 'Full page of this area' } else { 'Página completa del área' }) →</a></p>`n      </details>`n")
+    [void]$sb.Append("        </ul>`n      </details>`n")
   }
   $sb.ToString().TrimEnd("`n")
 }

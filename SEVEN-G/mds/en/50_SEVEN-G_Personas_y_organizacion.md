@@ -5,7 +5,7 @@
 | | |
 |---|---|
 | Document | Document 50 · People and organisation |
-| Version | 0.3 (working draft) |
+| Version | 0.4 (working draft) |
 | Date | 13-11-2026 |
 | Author | Fernando García Varela |
 | Status | Draft for review. Indicator thresholds are indicative and must be calibrated as the framework is applied. |
@@ -235,12 +235,9 @@ The SEVEN-G roles (document 01 §8) do not change. The following functions **may
 | Santander's organisation on GitHub | Public repositories of a bank | Publication of AI tools under an open licence. |
 | EU AI Act, Article 4 | European Union law | AI literacy obligation. |
 | OECD, "Employment Outlook 2023: Artificial Intelligence and the Labour Market" ([official PDF](https://www.oecd.org/content/dam/oecd/en/publications/reports/2023/07/oecd-employment-outlook-2023_904bcef3/08785bba-en.pdf)) | Report by an international organisation, with a 2022 survey of over 2,000 employers and 5,300 workers in manufacturing and finance in seven countries | Two in five employers say that the lack of AI skills is a barrier to using AI. AI increases the importance of specialised skills and, even more, of human skills. Outcomes are better where workers have been trained to work with AI. |
+| World Economic Forum, "Future of Jobs Report 2025" ([weforum.org](https://www.weforum.org/publications/the-future-of-jobs-report-2025/), January 2025), key findings | Report by an international organisation, with an employer survey | 63% of employers say that skill gaps are the biggest barrier to transforming their business between 2025 and 2030. "AI and big data" is the fastest-growing skill. 85% plan to prioritise upskilling their workforce. Training and better progression and promotion help to attract talent. |
 
-**Consulted, but not checked at its original source.** Two attempts were made on 13-11-2026: the pages of the official site refused automated reading (error 403) and the official PDF did not download (error 504). It does not support any statement in this section; it should be opened before relying on it.
-
-| Source | What it covers | Official address |
-|---|---|---|
-| World Economic Forum, "Future of Jobs Report 2025" | Fastest-growing skills and skill gaps as a barrier to transformation. | [weforum.org](https://www.weforum.org/publications/the-future-of-jobs-report-2025/) |
+The World Economic Forum report was read on its official site on 13-11-2026 with an ordinary browser (key findings page). It was previously listed as not checked because the site refused automated reading.
 
 ---
 
@@ -613,6 +610,7 @@ The **information sheet for workers' representatives** (section 7.3) and the reg
 
 | Version | Date | Changes |
 |---|---|---|
+| 0.4 | 13-11-2026 | Section 4.3: the World Economic Forum "Future of Jobs Report 2025" becomes a checked source (key findings read on its official site with an ordinary browser) and the text says what is taken from it. |
 | 0.3 | 13-11-2026 | Section 4.3: the OECD "Employment Outlook 2023" report becomes a checked source (read in its official PDF) and the text says what is taken from it. The World Economic Forum report is still not checked after a second attempt. |
 | 0.2 | 13-11-2026 | New section 4.3, "Attracting, developing and retaining technical talent": causes of talent loss, what a technical profile values, six levers with checked examples (parallel technical career, projects that reach production, publishing open source code, learning, internal mobility and recognition), rules for publishing code with control, signs, indicative indicators, questions for management and sources. The author's proposal: it adds no rules or evidence. |
 | 0.1 | 16-09-2026 | First version. Develops sphere 03 with indicators; the assessment of the effect on work per initiative; roles and capabilities from the board to the teams; the literacy plan by profile; the process for deciding, recording and tracking released capacity with five destinations; information and consultation with reference to Article 64.4.d) of the Estatuto de los Trabajadores and the EU AI Act; maximum autonomy and controls in decisions about people; wellbeing and oversight; internal communication; fifteen indicators with a formula and ten typical organisational risks. Consistency adjustments with 01 (segregation of duties in Lite, R6 outcomes, agents criterion) and with 34 and 37; risks aligned with the codes in document 33; the three proposed risks are added to 33 as RT-ORG-07 to RT-ORG-09. |

@@ -410,7 +410,7 @@ Una persona puede asumir más de un rol si no son incompatibles (sección 8.2). 
 |---|---|---|
 | **Consejo de administración** o comisión delegada | Consejeros; puede apoyarse en un consejero o asesor con experiencia en IA. | Aprueba la tesis de IA, la ambición, el apetito de riesgo y las iniciativas de Transformar; supervisa trimestralmente; revisa anualmente el avance. |
 | **Comité de IA** | Alta dirección de negocio, tecnología, datos, riesgos, cumplimiento, seguridad, protección de datos y personas. | Gestiona la cartera; decide los *gates* Enterprise; revisa riesgos de cartera; decide retiradas; eleva al consejo lo que corresponda. |
-| **Oficina de IA** | Equipo reducido de metodología, cartera y medición. | Mantiene el inventario y la metodología; verifica en Lite; consolida la medición; prepara la información de los órganos. |
+| **Oficina de IA** | Equipo reducido de metodología, cartera y medición. | Mantiene el inventario y la metodología; verifica los criterios de las puertas en las iniciativas de intensidad Lite (en las Enterprise los verifica el auditor de IA); consolida la medición; prepara la información de los órganos. |
 | **Segunda línea** | Riesgos, cumplimiento, seguridad de la información, protección de datos. | Aporta los responsables de riesgos; emite conformidades; firma la puesta en producción Enterprise. |
 | **Tercera línea** | Auditoría interna o auditor externo. | Aporta o supervisa a los auditores de IA; audita el cumplimiento del marco. |
 

@@ -83,6 +83,15 @@
       abrir(); window.addEventListener('hashchange', abrir);
       // D168: al abrir una tarjeta se pliegan las demás (también en navegadores sin <details name>).
       var ts = document.querySelectorAll('details.macro');
+      // Tarjetas alineadas: todas las cabeceras toman la altura de la más alta.
+      function igualar() {
+        var m = 0;
+        ts.forEach(function (d) { var s = d.querySelector('summary'); s.style.boxSizing = 'border-box'; s.style.minHeight = ''; });
+        ts.forEach(function (d) { m = Math.max(m, d.querySelector('summary').offsetHeight); });
+        if (m) ts.forEach(function (d) { d.querySelector('summary').style.minHeight = m + 'px'; });
+      }
+      igualar(); window.addEventListener('resize', igualar); window.addEventListener('load', igualar);
+      if (document.fonts && document.fonts.ready) document.fonts.ready.then(igualar);
       ts.forEach(function (d) { d.addEventListener('toggle', function () { if (d.open) ts.forEach(function (o) { if (o !== d) o.open = false; }); }); });
     })();
     </script>

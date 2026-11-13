@@ -5,7 +5,7 @@
 | | |
 |---|---|
 | Document | Document 54 · Organising the company for AI |
-| Version | 0.4 (working draft) |
+| Version | 0.5 (working draft) |
 | Date | 13-11-2026 |
 | Author | Fernando García Varela |
 | Status | Draft for review. Explanatory and orientation document: it adds no rules to the framework. |
@@ -687,14 +687,16 @@ External sources checked on their original site on 10-11-2026 and 13-11-2026 and
 | Allianz article on Project Nemo (03-11-2025) | Company announcement (insurance) | Task-specific agents and payout decisions always made by a person. |
 | Duolingo post on "AI-first" (2025) | Company announcement (digital education) | Use of the term "AI-first" as a way of working. |
 | EU AI Act, Articles 4 and 26 | European Union law | AI literacy and human oversight with competence, training and authority. |
+| McKinsey, "The agentic organization: contours of the next paradigm for the AI era" ([mckinsey.com](https://www.mckinsey.com/capabilities/people-and-organization/our-insights/the-agentic-organization-contours-of-the-next-paradigm-for-the-ai-era), 26-09-2025) | Consultancy publication | Small teams of people, owners of an end-to-end outcome, that supervise the agents of a whole process. The person keeps final accountability. Human oversight capacity limits how far it can scale. Its figures are not repeated. |
+| McKinsey, "The platform operating model for the AI bank of the future" ([mckinsey.com](https://www.mckinsey.com/industries/financial-services/our-insights/platform-operating-model-for-the-ai-bank-of-the-future), 18-05-2021) | Consultancy publication, on banking | Background to the platform model: each platform has two leaders, one from business and one from technology, with shared metrics and within common risk and finance guardrails. It dates from 2021 and predates agents: it is cited as background, not as a current example. |
 
-**Consulted, but not checked at their original source.** These sources were also consulted. Their official site could not be read on 10-11-2026 or in two attempts on 13-11-2026 (it did not respond to automated reading, or only third-party copies were available). No site protection is bypassed to read them. They are therefore cited separately: they are not used to support any statement in this section, and they should be opened before relying on them.
+The two McKinsey publications were read on their official site on 13-11-2026 with an ordinary browser. They were previously listed as not checked because the site did not respond to automated reading.
+
+**Consulted, but not checked at its original source.** This source was also consulted. On 13-11-2026 its official site still did not publish the report openly. No site protection is bypassed to read it. It is therefore cited separately: it is not used to support any statement in this section, and it should be opened before relying on it.
 
 | Source | What it covers | Official address | Why it is not checked |
 |---|---|---|---|
-| McKinsey, "The agentic organization: contours of the next paradigm for the AI era" | Small, outcome-focused teams that supervise many agents across a whole process. | [mckinsey.com](https://www.mckinsey.com/capabilities/people-and-organization/our-insights/the-agentic-organization-contours-of-the-next-paradigm-for-the-ai-era) | The site returned a 503 error to automated reading. |
-| McKinsey, "The platform operating model for the AI bank of the future" | Platforms jointly led by business and technology. | [mckinsey.com](https://www.mckinsey.com/industries/financial-services/our-insights/platform-operating-model-for-the-ai-bank-of-the-future) | The site returned a 503 error to automated reading. |
-| MIT NANDA, "The GenAI Divide: State of AI in Business 2025" | Why most generative AI pilots do not reach a measurable result. | [nanda.media.mit.edu](https://nanda.media.mit.edu/) | The publisher's site does not publish the report openly: it delivers it after a form. Only copies on third-party sites exist. |
+| MIT NANDA, "The GenAI Divide: State of AI in Business 2025" | Why most generative AI pilots do not reach a measurable result. | [media.mit.edu](https://www.media.mit.edu/groups/nanda/overview/) | The publisher's site does not publish the report openly: it delivers it after a form. Only copies on third-party sites exist. |
 
 The examples are chosen from different sectors so that none weighs more than another; for that reason the announcements of two other insurance groups that were consulted are not cited.
 
@@ -799,6 +801,7 @@ The implementation sequence is in document 90. In organisational terms, the orde
 | Version | Date | Changes |
 |---|---|---|
 | 0.1 | 22-09-2026 | First version. Six functions someone must perform and their separations; organisation patterns observed in the market and where to place AI governance; mapping between the real organisation chart and the bodies in document 30; eight sources of use cases with their bias and their single entry point; governance circuit with who decides at each gate; reporting chain to the board; forward-looking section marked as a hypothesis, with four scenarios and their signals; fifteen questions for a management or board conversation. Explanatory document: it adds no rules or evidence. |
+| 0.5 | 13-11-2026 | Section 9.10: the two McKinsey publications become checked sources (read on their official site with an ordinary browser) and the text says what is taken from each. The MIT NANDA report is still not checked: its publisher delivers it after a form. |
 | 0.4 | 13-11-2026 | Section 9.10: the internal Shopify message (a leak of an internal document) and the 2018 DBS annual report (it is old) are removed from the consulted sources. |
 | 0.3 | 13-11-2026 | Section 9.4: examples from different sectors (consultancy, technology, banking, pharmaceuticals, insurance and general regulation) and a "What it means for your company" column with full explanations. Sections 3.4, 8.4 and 9.10 adjusted so that no sector weighs more. |
 | 0.2 | 10-11-2026 | New section 9, "The human organisation of an AI-first company": proposed definition and six tests; why a function-based organisation chart holds things back; eight points where a case gets stuck or fails; what can be observed elsewhere, with checked sources; why, in general, an AI function is not needed; five options; recommendation of a phased combination with the target model, how a case travels, the step-by-step plan and the remaining risks; implications of each decision; checklist; sources and cautions. Questions 16 to 18. Sections 9 to 13 become 10 to 14. The author's proposal: it adds no rules or evidence. |
