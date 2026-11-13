@@ -73,15 +73,24 @@ function Tono-Area([int]$i) { 18 + 28 * $i }
 # Mapa de temas de la entrada (D163): tarjetas por macroconcepto con enlaces directos, desde build/temas.json.
 # Cada tarjeta es un <details> plegado, con su título y su pregunta a la vista y un color propio (D165); enlaza la página completa del área.
 # href del JSON es relativo a html/<idioma>/; la entrada está en html/<idioma>/entrada/, por eso se antepone «../».
+# Icono de un área (D168): trazado de Font Awesome Free (CC BY 4.0) incrustado como SVG; los datos están en iconos_fa.json.
+$script:IconosFa = $null
+function Icono-Area([string]$nombre) {
+  if (-not $script:IconosFa) { $script:IconosFa = (Get-Content (Join-Path $PSScriptRoot 'iconos_fa.json') -Raw -Encoding utf8 | ConvertFrom-Json).iconos }
+  $i = $script:IconosFa.$nombre
+  if (-not $nombre -or -not $i) { return '' }
+  "<svg class=""ico"" viewBox=""$($i.viewBox)"" aria-hidden=""true"" focusable=""false""><path fill=""currentColor"" d=""$($i.d)""/></svg>"
+}
 function Temas-Entrada([string]$lang) {
   $en = $lang -eq 'en'
   $datos = Get-Content (Join-Path $PSScriptRoot 'temas.json') -Raw -Encoding utf8 | ConvertFrom-Json -Depth 16
   $rot = if ($en) { @{ doc = 'Document'; plantilla = 'Template'; herramienta = 'Tool'; ejemplo = 'Example' } } else { @{ doc = 'Documento'; plantilla = 'Plantilla'; herramienta = 'Herramienta'; ejemplo = 'Ejemplo' } }
   $sb = [Text.StringBuilder]::new(); $nT = 0
+  [void]$sb.Append("      <!-- Iconos: Font Awesome Free 6.7.2, https://fontawesome.com (CC BY 4.0) -->`n")
   foreach ($t in $datos.temas) {
     $tx = if ($en) { $t.en } else { $t.es }
     $tono = Tono-Area $nT; $nT++
-    [void]$sb.Append("      <details class=""macro"" id=""area-$($t.id)"" style=""--h: $tono"">`n        <summary><h3>$(Html-Entrada $tx.titulo)</h3><p class=""resp"">$(Html-Entrada $tx.pregunta)</p></summary>`n        <ul>`n")
+    [void]$sb.Append("      <details class=""macro"" name=""areas"" id=""area-$($t.id)"" style=""--h: $tono"">`n        <summary>$(Icono-Area $t.icono)<h3>$(Html-Entrada $tx.titulo)</h3><p class=""resp"">$(Html-Entrada $tx.pregunta)</p></summary>`n        <ul>`n")
     foreach ($e in $t.enlaces) {
       $texto = Html-Entrada $(if ($en) { $e.en } else { $e.es })
       $ancla = if ($en) { $e.ancla_en } else { $e.ancla_es }
@@ -293,12 +302,24 @@ function Paginas-Temas([string]$lang, [string]$repo, $avisos = $null) {
 # ---- Áreas de actuación en IA en la portada del sitio (D165) ----
 # Devuelve los enlaces a las páginas de área para la portada ($prefijo: ruta de la portada a la raíz del repositorio, '' o '../').
 function Portada-Areas([string]$lang, [string]$prefijo) {
+  $en = $lang -eq 'en'
   $datos = Get-Content (Join-Path $PSScriptRoot 'temas.json') -Raw -Encoding utf8 | ConvertFrom-Json -Depth 16
-  $nA = 0
-  (@($datos.temas | ForEach-Object {
-    $tx = if ($lang -eq 'en') { $_.en } else { $_.es }; $tono = Tono-Area $nA; $nA++
-    "      <a class=""area"" style=""--h: $tono"" href=""${prefijo}SEVEN-G/html/$lang/areas/$($_.id).html"" title=""$(Html-Entrada $tx.pregunta)""><b>$(Html-Entrada $tx.titulo)</b><span>$(Html-Entrada $tx.pregunta)</span></a>"
-  }) -join "`n")
+  $rot = if ($en) { @{ doc = 'Document'; plantilla = 'Template'; herramienta = 'Tool'; ejemplo = 'Example' } } else { @{ doc = 'Documento'; plantilla = 'Plantilla'; herramienta = 'Herramienta'; ejemplo = 'Ejemplo' } }
+  $base = "${prefijo}SEVEN-G/html/$lang/"
+  $sb = [Text.StringBuilder]::new(); $nA = 0
+  [void]$sb.Append("      <!-- Iconos: Font Awesome Free 6.7.2, https://fontawesome.com (CC BY 4.0) -->`n")
+  foreach ($t in $datos.temas) {
+    $tx = if ($en) { $t.en } else { $t.es }; $tono = Tono-Area $nA; $nA++
+    [void]$sb.Append("      <details class=""area"" name=""areas"" id=""area-$($t.id)"" style=""--h: $tono"">`n        <summary title=""$(Html-Entrada $tx.pregunta)"">$(Icono-Area $t.icono)<b>$(Html-Entrada $tx.titulo)</b><span>$(Html-Entrada $tx.pregunta)</span></summary>`n        <ul>`n")
+    foreach ($e in $t.enlaces) {
+      $texto = Html-Entrada $(if ($en) { $e.en } else { $e.es })
+      $ancla = if ($en) { $e.ancla_en } else { $e.ancla_es }
+      $href = $base + $e.href + $(if ($ancla) { "#$ancla" } else { '' })
+      [void]$sb.Append("          <li><a href=""$href"" title=""$($rot[[string]$e.tipo]): $texto""><i class=""tipo $($e.tipo)"">$($rot[[string]$e.tipo])</i>$texto</a></li>`n")
+    }
+    [void]$sb.Append("        </ul>`n        <p class=""area-mas""><a href=""${base}areas/$($t.id).html"" title=""$(if ($en) { 'Area page: concepts, where it is covered and sources' } else { 'Página del área: conceptos, dónde se trata y fuentes' })"">$(if ($en) { 'Full page of this area' } else { 'Página completa del área' }) →</a></p>`n      </details>`n")
+  }
+  $sb.ToString().TrimEnd("`n")
 }
 # Devuelve el texto de la portada con el bloque entre <!-- areas:inicio --> y <!-- areas:fin --> al día (o el mismo texto si no hay marcas).
 function Portada-Con-Areas([string]$html, [string]$lang, [string]$prefijo) {

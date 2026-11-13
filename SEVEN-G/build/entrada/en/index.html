@@ -81,6 +81,9 @@
     (function () {
       function abrir() { var d = location.hash.indexOf('#area-') === 0 && document.getElementById(location.hash.slice(1)); if (d) d.open = true; }
       abrir(); window.addEventListener('hashchange', abrir);
+      // D168: al abrir una tarjeta se pliegan las demás (también en navegadores sin <details name>).
+      var ts = document.querySelectorAll('details.macro');
+      ts.forEach(function (d) { d.addEventListener('toggle', function () { if (d.open) ts.forEach(function (o) { if (o !== d) o.open = false; }); }); });
     })();
     </script>
     <p class="pie">Prefer the journey? Continue with the three-minute story below, or open <a href="../index.html" title="SEVEN-G library index">the full library</a>.</p>

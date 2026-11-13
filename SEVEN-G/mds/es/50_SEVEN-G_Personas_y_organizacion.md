@@ -5,7 +5,7 @@
 | | |
 |---|---|
 | Documento | Documento 50 · Personas y organización |
-| Versión | 0.2 (borrador de trabajo) |
+| Versión | 0.3 (borrador de trabajo) |
 | Fecha | 13-11-2026 |
 | Autor | Fernando García Varela |
 | Estado | Borrador para revisión. Los umbrales de los indicadores son orientativos y deben calibrarse con la aplicación del marco. |
@@ -234,13 +234,13 @@ Los roles de SEVEN-G (documento 01 §8) no cambian. Las funciones siguientes **p
 | Organización de Inditex en GitHub | Repositorios públicos de una compañía de distribución | Publicación de herramientas con licencia abierta. |
 | Organización de Santander en GitHub | Repositorios públicos de un banco | Publicación de herramientas de IA con licencia abierta. |
 | Reglamento Europeo de IA, artículo 4 | Norma de la Unión Europea | Obligación de alfabetización en IA. |
+| OCDE, «Employment Outlook 2023: Artificial Intelligence and the Labour Market» ([PDF oficial](https://www.oecd.org/content/dam/oecd/en/publications/reports/2023/07/oecd-employment-outlook-2023_904bcef3/08785bba-en.pdf)) | Informe de un organismo internacional, con encuesta de 2022 a más de 2.000 empleadores y 5.300 trabajadores de industria y finanzas en siete países | Dos de cada cinco empleadores dicen que la falta de competencias de IA es una barrera para usarla. La IA aumenta la importancia de las competencias especializadas y, más aún, de las humanas. Los resultados son mejores donde los trabajadores han recibido formación para trabajar con la IA. |
 
-**Consultadas, pero no comprobadas en su fuente original.** Su sitio oficial no respondió a la lectura automática el 13-11-2026. No fundamentan ninguna afirmación de esta sección; conviene abrirlas antes de apoyarse en ellas.
+**Consultada, pero no comprobada en su fuente original.** Se intentó leer dos veces el 13-11-2026: las páginas del sitio oficial rechazaron la lectura automática (error 403) y el PDF oficial no se descargó (error 504). No fundamenta ninguna afirmación de esta sección; conviene abrirla antes de apoyarse en ella.
 
 | Fuente | Qué trata | Dirección oficial |
 |---|---|---|
 | Foro Económico Mundial, «Future of Jobs Report 2025» | Competencias que más crecen y carencias de competencias como freno a la transformación. | [weforum.org](https://www.weforum.org/publications/the-future-of-jobs-report-2025/) |
-| OCDE, «Employment Outlook 2023» | Efecto de la IA en el empleo y en las competencias. | [oecd.org](https://www.oecd.org/en/publications/oecd-employment-outlook-2023_08785bba-en.html) |
 
 ---
 
@@ -613,5 +613,6 @@ La **ficha informativa para la representación** (sección 7.3) y el registro de
 
 | Versión | Fecha | Cambios |
 |---|---|---|
+| 0.3 | 13-11-2026 | Sección 4.3: el informe «Employment Outlook 2023» de la OCDE pasa a fuente comprobada (leído en su PDF oficial) y se dice qué se toma de él. El informe del Foro Económico Mundial sigue sin comprobar tras un segundo intento. |
 | 0.2 | 13-11-2026 | Nueva sección 4.3, «Atraer, desarrollar y retener el talento técnico»: causas de la pérdida de talento, qué valora un perfil técnico, seis palancas con ejemplos comprobados (carrera técnica paralela, proyectos que llegan a producción, publicación de código abierto, formación, movilidad interna y reconocimiento), reglas para publicar código con control, señales, indicadores orientativos, preguntas para la dirección y fuentes. Propuesta del autor: no añade reglas ni evidencias. |
 | 0.1 | 16-09-2026 | Primera versión. Desarrolla la esfera 03 con indicadores; la evaluación del efecto sobre el trabajo por iniciativa; roles y capacidades del consejo a los equipos; el plan de alfabetización por perfil; el proceso de decisión, registro y seguimiento de la capacidad liberada con cinco destinos; información y consulta con referencia al art. 64.4.d) del Estatuto de los Trabajadores y al Reglamento Europeo de IA; autonomía máxima y controles en decisiones sobre personas; bienestar y supervisión; comunicación interna; quince indicadores con fórmula y diez riesgos organizativos tipo. Ajustes de coherencia con 01 (separación de funciones en Lite, resultados de R6, criterio de agentes) y con 34 y 37; riesgos alineados con los códigos del documento 33; los tres riesgos propuestos se incorporan a 33 como RT-ORG-07 a RT-ORG-09. |

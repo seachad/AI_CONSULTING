@@ -751,7 +751,7 @@ try {
     $avT = [Collections.Generic.List[string]]::new()
     $pagT = Paginas-Temas $lang $repo $avT
     foreach ($a in $avT) { Mal "$a (D164)"; $malEnt++ }
-    if ($tEnt -notmatch '<details class="macro" id="area-[a-z]+" style="--h: \d+">') { Mal "entrada [$lang]: las tarjetas de área no van plegadas y con su color (D165)"; $malEnt++ }
+    if ($tEnt -notmatch '<details class="macro" name="areas" id="area-[a-z]+" style="--h: \d+">\s*<summary><svg class="ico"') { Mal "entrada [$lang]: las tarjetas de área no van plegadas, con su color, su icono y en acordeón (D165, D168)"; $malEnt++ }
     foreach ($idT in $pagT.Keys) {
       $fT = Join-Path $repo "SEVEN-G\html\$lang\areas\$idT.html"
       if (-not (Test-Path $fT)) { Mal "tema $idT [$lang]: falta su página completa (D164)"; $malEnt++; continue }
@@ -766,6 +766,7 @@ try {
     # D165: la portada del sitio enlaza las áreas de actuación, generadas desde temas.json
     $portA = [IO.File]::ReadAllText((Join-Path $repo $(if ($lang -eq 'es') { 'index.html' } else { 'en\index.html' })))
     if ($portA -notmatch '<!-- areas:inicio') { Mal "portada [$lang]: falta el bloque de áreas de actuación en IA (D165)"; $malEnt++ }
+    elseif (@([regex]::Matches($portA, '<details class="area" name="areas" id="area-[a-z]+" style="--h: \d+">\s*<summary[^>]*><svg class="ico"')).Count -ne @((Get-Content (Join-Path $PSScriptRoot 'temas.json') -Raw -Encoding utf8 | ConvertFrom-Json -Depth 16).temas).Count -or $portA -notmatch "details\.area'\)" ) { Mal "portada [$lang]: cada área debe ser una tarjeta desplegable con icono, y la página debe plegar las demás al abrir una (D168)"; $malEnt++ }
     elseif ((Portada-Con-Areas $portA $lang $(if ($lang -eq 'en') { '../' } else { '' })) -cne $portA) { Mal "portada [$lang]: las áreas de actuación no están al día con temas.json: generar con build.ps1 (D165)"; $malEnt++ }
     $sobranT = @(Get-ChildItem (Join-Path $repo "SEVEN-G\html\$lang\areas") -Filter '*.html' -ErrorAction SilentlyContinue | Where-Object { -not $pagT.Contains($_.BaseName) })
     foreach ($s in $sobranT) { Mal "temas [$lang]: sobra $($s.Name), que no está en temas.json (D164)"; $malEnt++ }
