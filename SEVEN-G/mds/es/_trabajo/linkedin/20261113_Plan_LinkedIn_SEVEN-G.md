@@ -11,14 +11,16 @@ Ficheros de esta carpeta:
 
 ## 0. Avisos antes de leer
 
-1. **El perfil de LinkedIn del autor se leyó el 13-11-2026** con el navegador del autor: la página del perfil y las diez publicaciones que muestra su actividad (de hace un mes a hace ocho meses). La sección 1 son las notas de estilo. No se leyó la actividad más antigua.
+1. **El perfil de LinkedIn del autor se leyó el 13-11-2026** con el navegador del autor: la página del perfil y las 22 publicaciones de su actividad del último año. La sección 1 son las notas de estilo.
 2. **La historia de la entrada tiene ocho pasos (D169).** La decisión D169 y `SEVEN-G/build/preguntas.json` están en `main` desde el 13-11-2026; la sesión en la nube trabajó sobre una copia anterior. La serie de la historia pasa a ocho entregas y un cierre (secciones 2.3 y 5). Las secciones `#parar` y `#mas` ya no están en la entrada: esas publicaciones enlazan ahora las páginas de pregunta (`html/es/preguntas/`).
 3. Los textos usan «tú», como el autor en LinkedIn. No llevan emojis ni etiquetas (sección 1.3).
 4. Ninguna publicación cita cifras de mercado. Las únicas cifras son recuentos del propio marco (seis preguntas, ocho pasos, seis frenos).
+5. **Aprobado por el autor el 13-11-2026 (D171):** español para las 104 publicaciones, martes 08:15 y jueves 15:30 (hora de Madrid), inicio el martes 17-11-2026 y parámetros `utm` en los enlaces. El horario sigue siendo una hipótesis que se comprueba con la prueba de la sección 4.2. Cada texto sigue en `borrador` hasta que el autor cambie su `estado`.
+6. **La publicación 1 fija el objetivo de la serie** (decisión del autor, D171): compartir conocimiento sobre la implantación estratégica de la IA, abrir debate y pedir participación activa. El feedback sirve para mejorar SEVEN-G, SPHERES y SPAD y vuelve a la comunidad. Es la única publicación que nombra SPHERES y SPAD; el resto del plan no los trata.
 
 ## 1. Notas de estilo del autor
 
-Fuente: las diez publicaciones visibles en la actividad del perfil el 13-11-2026. Seis son textos propios y cuatro son comentarios breves al compartir una publicación de otra persona. Las citas son literales. No se nombra a ninguna compañía ni a terceros (D17).
+Fuente: las 22 publicaciones de la actividad del perfil, de hace un mes a hace un año, leídas el 13-11-2026. Unas diez son textos propios y el resto son comentarios al compartir una publicación de otra persona. Las citas son literales. No se nombra a ninguna compañía ni a terceros (D17).
 
 ### 1.1 Rasgos observados
 
@@ -31,11 +33,14 @@ Fuente: las diez publicaciones visibles en la actividad del perfil el 13-11-2026
 | Primera persona | Cuenta lo que ha leído, escrito o visto. | «He leído un artículo muy interesante» · «He escrito este artículo de divulgación» · «Es una pregunta que cada vez escucho más» |
 | Rótulos dentro del texto | Anuncia la parte con una palabra y dos puntos. | «La respuesta corta es: sí, y probablemente más que nunca.» · «Conclusión:» · «Consejo práctico:» · «Resultado:» |
 | Listas | Con «•», «→», «-» o números. Elementos cortos. | «• aparecen más tareas nuevas» · «→ Legal: un informe con referencias a jurisprudencia real» · «1. Usa RAG para generar borradores» |
-| Ejemplos y comparaciones | Explica con una historia o una imagen de la vida diaria. | «¿Sabías que una IA funciona como un turista perdido en una ciudad?» · «estamos usando el juguete más caro del mundo» |
-| Cierre | Tres formas: una pregunta al lector, la pregunta que debe hacerse un consejo, o una frase con valor de regla. A veces, una nota personal. | «¿Tienes el proceso para verificar lo que se produce?» · «¿Que debe preguntarse un consejo?: ¿Tenemos asegurada la continuidad de servicio…?» · «La clave no es si […], sino cuándo» |
+| Ejemplos y comparaciones | Explica con una historia o una imagen de la vida diaria. Es su recurso más propio. | «¿Sabías que una IA funciona como un turista perdido en una ciudad?» · «Tenemos el Ferrari y lo usamos para ir al supermercado.» · «parecidos a adoptar un cachorro y meterlo en tu casa» · «estamos usando el juguete más caro del mundo» |
+| Pregunta dentro del texto | Se hace la pregunta y la responde. | «¿Qué significa esto?» · «La pregunta del millón ¿Por qué ocurre esto?» · «más bien la pregunta es: ¿en qué parte del gráfico estamos?» |
+| Cierre | Cuatro formas: una pregunta al lector, la pregunta que debe hacerse un consejo, una frase con valor de regla o una invitación a comentar. A veces, una nota personal o un saludo. | «¿Tienes el proceso para verificar lo que se produce?» · «¿Que debe preguntarse un consejo?: ¿Tenemos asegurada la continuidad de servicio…?» · «La clave no es si […], sino cuándo» · «Se aceptan (y agradecen) comentarios» · «Feliz IA!» |
+| Reto al lector | Propone una prueba concreta. | «Reto: asigna a una IA […] una tarea que a un humano tenga que dedicar un orden de 5 horas» |
 | Exclamaciones | Solo el signo de cierre, a veces repetido. Más en los comentarios breves que en los textos largos. | «Siempre!» · «Impresionante!» · «Pues ya tengo libro para leer en Octubre!!!!» |
 | Emojis | Ninguno. Una vez, un emoticono de texto. | «El los llamada "la banda" :-)» |
-| Etiquetas | Irregular. Tres textos de hace seis a ocho meses llevan seis o siete al final, en español e inglés. Las publicaciones de los últimos cinco meses no llevan ninguna. | «#InteligenciaArtificial #LLM #Divulgación #EspacioLatente #IA #AIGovernance» |
+| Etiquetas | Irregular: de ninguna a siete, al final, en español e inglés. Una vez usó una etiqueta propia del marco. Las publicaciones de los últimos cinco meses no llevan ninguna. | «#InteligenciaArtificial #LLM #Divulgación #EspacioLatente #IA #AIGovernance» · «#IA #AECF_framework #SEVENG_framework» |
+| Experiencia propia | Habla de su trabajo con empresas sin nombrar a ninguna, y de su casa. | «En mi trabajo habitual con empresas insisto mucho en…» · «ahí tengo a mis hijos aprendiendo a programar» |
 | Fuentes | Las nombra en el texto o al final. | «(Harvard Business Review, febrero 2026)» · «Fuentes: […] y otras (12-13 jun. 2026).» |
 | Vocabulario | Términos de negocio en español y términos técnicos en inglés sin traducir. | «consejo», «gobernanza», «continuidad», «liderazgo» · «fallback», «failover», «output», «RAG» |
 | SEVEN-G | Lo cita como marco propio, dentro del razonamiento y no al principio. | «el caso ilustra algo que difiendo dentro del marco SEVEN-G» · «La metodología SEVEN-G parte de un principio claro» |
@@ -53,7 +58,7 @@ El autor escribe en el sitio con los mismos recursos: contraste («con cifras, n
 4. **Cierre** con una pregunta al lector o con la pregunta que debe hacer un consejo.
 5. **Listas con «•»** o con números.
 6. **Sin emojis y sin etiquetas**, como sus publicaciones recientes. Una exclamación como mucho, solo con signo de cierre.
-7. **Longitud: de 60 a 120 palabras.** Es más corto que su costumbre. Es lo que pidió para este plan (dos publicaciones breves por semana). Punto débil: su publicación propia con más alcance de las diez leídas es un texto con artículo enlazado, pregunta inicial y una comparación; no hay datos para saber si el formato breve funciona igual. La prueba de la sección 4.2 lo mide.
+7. **Longitud: de 60 a 120 palabras.** Es más corto que su costumbre. Es lo que pidió para este plan (dos publicaciones breves por semana). Punto débil: su publicación propia con más alcance de las leídas es un texto con artículo enlazado, pregunta inicial y una comparación; no hay datos para saber si el formato breve funciona igual. La prueba de la sección 4.2 lo mide.
 8. **No se inventan experiencias del autor.** Un texto solo dice «he visto» o «he leído» si el autor lo confirma al aprobarlo.
 
 Lo que no se toma: las faltas de tecleo de los originales («difiendo», «Mentre») y los términos técnicos en inglés, porque el público de este plan no es técnico.
@@ -190,7 +195,7 @@ Inicio propuesto: martes 17-11-2026. Si empieza otro día, las fechas se desplaz
 
 | Sem. | Fecha | Día | Pilar | Serie | Idea | Página de destino |
 |---|---|---|---|---|---|---|
-| 1 | 17-11-2026 | martes | Idea central | Apertura | Objetivo de la serie y mensaje principal: el error es tratar la IA como una tecnología más, que depende de tecnología. Invitación al debate. | `SEVEN-G/html/es/entrada/index.html` |
+| 1 | 17-11-2026 | martes | Idea central | Apertura | Objetivo de la serie y mensaje principal: el error es tratar la IA como una tecnología más, que depende de tecnología. Se busca participación activa: el feedback mejora SEVEN-G, SPHERES y SPAD y vuelve a la comunidad. | `SEVEN-G/html/es/entrada/index.html` |
 | 1 | 19-11-2026 | jueves | Seis preguntas del consejo | Apertura | ¿Cuántos sistemas de IA tiene hoy en producción? Seis preguntas que su consejo acabará haciendo. | `SEVEN-G/html/es/entrada/index.html#preguntas` |
 | 2 | 24-11-2026 | martes | Historia | Historia en ocho pasos 1/8 | Todo empieza con entusiasmo: una docena de iniciativas de IA y nadie las gobierna. | `SEVEN-G/html/es/entrada/index.html#historia` |
 | 2 | 26-11-2026 | jueves | Tres preguntas estratégicas | Tres preguntas 1/3 | Dónde invertir: ¿su inversión sigue a su estrategia o a quien pidió presupuesto primero? | `SEVEN-G/herramientas/T17_panel_consejo/ejemplo/salida/t01_Dashboard_Casos_Uso_IA_v8.html` |
@@ -318,7 +323,7 @@ Veinte publicaciones listas para revisar. Cada una tiene un gancho en la primera
 
 ### 1. Semana 1, martes 17-11-2026 · Idea central
 
-Destino: `SEVEN-G/html/es/entrada/index.html` · 111 palabras · texto
+Destino: `SEVEN-G/html/es/entrada/index.html` · 126 palabras · texto
 
 ```text
 El error más común con la IA: tratarla como una tecnología más.
@@ -327,11 +332,11 @@ Y, por tanto, dejarla en manos de tecnología.
 
 La IA ya no va de tecnología. Va de negocio, estrategia, organización, riesgos y liderazgo. Es un activo estratégico, y sus decisiones son del consejo, del primer ejecutivo y de la dirección financiera.
 
-Durante un año voy a compartir aquí, dos veces por semana, ideas sobre la implantación estratégica de la IA en las compañías. Todas salen de SEVEN-G, un marco abierto y gratuito.
+Durante un año voy a compartir aquí, dos veces por semana, ideas sobre la implantación estratégica de la IA en las compañías. Salen de SEVEN-G, un marco abierto y gratuito.
 
-Y quiero debate. Todo esto es discutible: en este campo estamos todos aprendiendo a la vez.
+Y busco participación activa. Todo esto es discutible: en este campo estamos todos aprendiendo a la vez. Todo feedback es bienvenido. Servirá para mejorar SEVEN-G y los otros marcos (SPHERES y SPAD), y todo vuelve a la comunidad.
 
-Empiezo yo: ¿estás de acuerdo, o lo ves de otra forma?
+Se aceptan (y agradecen) comentarios!
 
 {BASE}SEVEN-G/html/es/entrada/index.html
 ```
@@ -852,10 +857,11 @@ Lista de comprobación antes de aprobar un texto:
 
 ## 10. Pendiente del autor
 
-1. Leer las notas de estilo (sección 1) y corregir lo que no reconozca como suyo.
-2. Aprobar o corregir: idioma (sección 3), días y horas (sección 4), fecha de inicio y los 20 textos.
-3. Decidir si quiere los parámetros `utm` en los enlaces.
-4. Decidir si quiere etiquetas al final de cada publicación (sección 1.1: antes las usaba, ahora no).
-5. Revisar el titular y la sección «Acerca de» del perfil (sección 7.6).
+1. Leer los 20 textos y cambiar `estado` a `aprobado` en `linkedin_calendario.json`, uno a uno. La publicación 1 sale el 17-11-2026.
+2. Programar las aprobadas en LinkedIn. El enlace de cada una es `base_url` + `destino`, con «?» + `utm` antes del ancla.
+3. Decidir si quiere etiquetas al final de cada publicación (sección 1.1: antes las usaba, ahora no).
+4. Revisar el titular y la sección «Acerca de» del perfil (sección 7.6).
+
+Aprobado el 13-11-2026 (D171): idioma, días y horas, fecha de inicio y parámetros `utm`.
 
 Hecho el 13-11-2026: lectura del perfil y notas de estilo; serie de la historia en ocho pasos (D169); enlaces de las seis preguntas a su página propia.
