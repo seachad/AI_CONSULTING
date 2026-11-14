@@ -226,11 +226,13 @@ foreach ($lang in $Idiomas) {
   $txt = if ($en) {
     @{ ph = 'Document finder'; aria = 'Document finder: go to where a code or a title is explained (document, template, tool, gate, criterion…)'; nada = 'No such code. Try the glossary:'; glos = 'Glossary and conventions (02), code system'; ayuda = 'Document finder. Type a code (40, P12, T06, G3, G3.05, LV-G3, phase 3, C2, D6, A2, RT-GEN-01, IND-VAL-05…) or part of a title. Enter opens the first result.'
        citados = 'Cited here'; citadosTt = 'Documents, templates, tools and other codes this page names, each with its link'; citadosNada = 'This page names no code of the framework.'
+       hist = '↺ History'; histTt = 'Pages and tools you have visited, and the way back to the home page and to SEVEN-G'; histVacio = 'No visited pages yet.'; histVolver = 'Go to'; histPortada = '⌂ AI Consulting (home)'; histSeveng = 'SEVEN-G (what it is and what it is for)'; histBiblio = 'SEVEN-G library'; histRecientes = 'Visited recently'; histBorrar = 'Clear history'; histActual = 'you are here'
        tipos = @{ doc = 'Documents'; pla = 'Templates'; her = 'Tools'; app = 'Tools'; mod = 'Course'; puerta = 'Gates and criteria'; lv = 'Checklists'; fase = 'Phases'; esfera = 'Spheres'; otro = 'Other codes' }
        tt = @{ doc = 'Document'; pla = 'Template'; her = 'Tool'; app = 'Tool'; mod = 'Course module'; puerta = 'Gate'; lv = 'Checklist'; fase = 'Phase'; esfera = 'Sphere'; otro = 'Code' } }
   } else {
     @{ ph = 'Buscador de documentos'; aria = 'Buscador de documentos: ir a donde se explica un código o un título (documento, plantilla, herramienta, puerta, criterio…)'; nada = 'No existe ese código. Pruebe en el glosario:'; glos = 'Glosario y convenciones (02), sistema de códigos'; ayuda = 'Buscador de documentos. Escriba un código (40, P12, T06, G3, G3.05, LV-G3, fase 3, C2, D6, A2, RT-GEN-01, IND-VAL-05…) o parte de un título. Intro abre el primer resultado.'
        citados = 'Citados aquí'; citadosTt = 'Documentos, plantillas, herramientas y demás códigos que nombra esta página, cada uno con su enlace'; citadosNada = 'Esta página no nombra ningún código del marco.'
+       hist = '↺ Historial'; histTt = 'Páginas y herramientas que ha visitado, y el camino de vuelta a la portada y a SEVEN-G'; histVacio = 'Aún no hay páginas visitadas.'; histVolver = 'Ir a'; histPortada = '⌂ AI Consulting (portada)'; histSeveng = 'SEVEN-G (qué es y para qué sirve)'; histBiblio = 'Biblioteca de SEVEN-G'; histRecientes = 'Visitado recientemente'; histBorrar = 'Borrar historial'; histActual = 'está aquí'
        tipos = @{ doc = 'Documentos'; pla = 'Plantillas'; her = 'Herramientas'; app = 'Herramientas'; mod = 'Curso'; puerta = 'Puertas y criterios'; lv = 'Listas de verificación'; fase = 'Fases'; esfera = 'Esferas'; otro = 'Otros códigos' }
        tt = @{ doc = 'Documento'; pla = 'Plantilla'; her = 'Herramienta'; app = 'Herramienta'; mod = 'Módulo del curso'; puerta = 'Puerta'; lv = 'Lista de verificación'; fase = 'Fase'; esfera = 'Esfera'; otro = 'Código' } }
   }
@@ -347,6 +349,19 @@ foreach ($lang in $Idiomas) {
     return r;
   }
 
+  /* ---- historial común de páginas visitadas (clave de los documentos, «seveng-nav-history-<idioma>») ---- */
+  function claveHist() { return 'seveng-nav-history-' + DATOS.lang; }
+  function leerHistorial() { try { var v = JSON.parse(localStorage.getItem(claveHist()) || '[]'); return Array.isArray(v) ? v.filter(function (x) { return x && x.href; }) : []; } catch (e) { return []; } }
+  function registrarVisita() {
+    try {
+      if (location.protocol !== 'http:' && location.protocol !== 'https:' && location.protocol !== 'file:') return;
+      var href = location.href.split('#')[0], titulo = (document.title || '').replace(/\s+/g, ' ').trim() || href;
+      var items = leerHistorial().filter(function (x) { return x.href !== href; });
+      items.push({ href: href, title: titulo, when: new Date().toISOString() });
+      localStorage.setItem(claveHist(), JSON.stringify(items.slice(-80)));
+    } catch (e) {}
+  }
+  if (!window._sevengVisita) { window._sevengVisita = 1; registrarVisita(); setTimeout(registrarVisita, 2000); }
   function estilos() {
     if (document.getElementById('ir-codigo-css')) return;
     var st = document.createElement('style'); st.id = 'ir-codigo-css';
@@ -426,6 +441,33 @@ foreach ($lang in $Idiomas) {
       lista.classList.remove('abierta'); pintaCitados(); coloca(listaC, btn); listaC.classList.add('abierta'); btn.setAttribute('aria-expanded', 'true');
     });
     btn.addEventListener('keydown', function (ev) { if (ev.key === 'Escape') { cierraCitados(); btn.blur(); } });
+    // botón «↺ Historial»: páginas y herramientas visitadas y vuelta a la portada y a SEVEN-G, igual en todas las páginas (los documentos ya lo traen en su barra)
+    if (!document.getElementById('abrir-historial')) {
+      var hb = document.createElement('button'); hb.type = 'button'; hb.className = 'ir-codigo-citados'; hb.textContent = TX.hist; hb.title = TX.histTt; hb.setAttribute('aria-expanded', 'false');
+      var listaH = document.createElement('div'); listaH.className = 'ir-codigo-lista'; listaH._host = host;
+      host.appendChild(hb); document.body.appendChild(listaH);
+      var enl = function (h, t, s, actual) { var a = document.createElement('a'); a.href = h; var b = document.createElement('b'); b.textContent = t; a.appendChild(b); if (s) { var sp = document.createElement('span'); sp.textContent = s; a.appendChild(sp); } if (actual) a.className = 'activo'; return a; };
+      var grupoH = function (t) { var p = document.createElement('p'); p.className = 'grupo'; p.textContent = t; return p; };
+      var pintaH = function () {
+        listaH.innerHTML = ''; var en = DATOS.lang === 'en';
+        listaH.appendChild(grupoH(TX.histVvolver || TX.histVolver));
+        listaH.appendChild(enl(destino('../../../' + (en ? 'en/' : '') + 'index.html'), TX.histPortada));
+        listaH.appendChild(enl(destino('entrada/index.html'), TX.histSeveng));
+        listaH.appendChild(enl(destino('index.html'), TX.histBiblio));
+        listaH.appendChild(grupoH(TX.histRecientes));
+        var items = leerHistorial().slice().reverse(), aqui = location.href.split('#')[0];
+        if (!items.length) { var p = document.createElement('p'); p.textContent = TX.histVacio; listaH.appendChild(p); }
+        items.slice(0, 25).forEach(function (x) { var esta = x.href === aqui; var s = esta ? TX.histActual : (x.when ? new Date(x.when).toLocaleString() : ''); listaH.appendChild(enl(x.href, x.title || x.href, s, esta)); });
+        if (items.length) { var bo = document.createElement('p'); var ab = document.createElement('a'); ab.href = '#'; ab.textContent = TX.histBorrar; ab.style.display = 'inline'; ab.style.padding = '0'; ab.style.border = '0'; ab.style.color = 'var(--oxford,#0f5499)'; ab.addEventListener('click', function (ev) { ev.preventDefault(); try { localStorage.removeItem(claveHist()); } catch (e) {} registrarVisita(); pintaH(); }); bo.appendChild(ab); listaH.appendChild(bo); }
+      };
+      hb.addEventListener('click', function () {
+        if (listaH.classList.contains('abierta')) { listaH.classList.remove('abierta'); hb.setAttribute('aria-expanded', 'false'); return; }
+        lista.classList.remove('abierta'); cierraCitados(); pintaH(); coloca(listaH, hb); listaH.classList.add('abierta'); hb.setAttribute('aria-expanded', 'true');
+      });
+      hb.addEventListener('keydown', function (ev) { if (ev.key === 'Escape') { listaH.classList.remove('abierta'); hb.setAttribute('aria-expanded', 'false'); hb.blur(); } });
+      window.addEventListener('resize', function () { if (listaH.classList.contains('abierta')) coloca(listaH, hb); });
+      document.addEventListener('click', function (ev) { if (!host.contains(ev.target) && !listaH.contains(ev.target)) { listaH.classList.remove('abierta'); hb.setAttribute('aria-expanded', 'false'); } });
+    }
     document.addEventListener('click', function (ev) { if (!host.contains(ev.target) && !lista.contains(ev.target) && !listaC.contains(ev.target)) { lista.classList.remove('abierta'); cierraCitados(); } });
     host._cuenta = function () { var n = citados().length; btn.hidden = !n; btn.textContent = TX.citados + ' (' + n + ')'; if (listaC.classList.contains('abierta')) pintaCitados(); };
     host._cuenta();
