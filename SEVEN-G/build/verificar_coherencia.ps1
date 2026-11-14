@@ -322,7 +322,19 @@ try {
     $html00c = Join-Path $repo "SEVEN-G\html\$lang\00_SEVEN-G_Que_es_y_para_que_sirve.html"
     if (Test-Path $html00c) {
       $pasos = [regex]::Match([IO.File]::ReadAllText($html00c), '(?s)<div class="ir-pasos">.*?</div>\s*</div>').Value
-      if ([regex]::Matches($pasos, '<div class="ir-paso"><b>').Count -ne 4 -or -not $pasos.Contains('curso/M00_SEVEN-G_Curso_Guia_del_curso.html')) { Mal "00 [$lang]: el inicio rápido no ofrece el curso entre sus cuatro formas de empezar"; $capasMal++ }
+      if ([regex]::Matches($pasos, '<div class="ir-paso"><b>').Count -ne 5 -or -not $pasos.Contains('curso/M00_SEVEN-G_Curso_Guia_del_curso.html') -or -not $pasos.Contains('presentaciones/SEVEN-G_')) { Mal "00 [$lang]: el inicio rápido no ofrece el curso y las cinco diapositivas entre sus cinco formas de empezar"; $capasMal++ }
+      # entrada: cinco caminos por tiempo; el primero a un PDF de presentaciones que existe y el tercero a #quickcheck
+      $entC = Join-Path $repo "SEVEN-G\html\$lang\entrada\index.html"
+      if (Test-Path $entC) {
+        $ent = [IO.File]::ReadAllText($entC)
+        $cam = [regex]::Matches($ent, '<a class="camino" href="([^"]*)"')
+        if ($cam.Count -ne 5) { Mal "entrada [$lang]: debe tener cinco caminos por tiempo (hay $($cam.Count))"; $capasMal++ }
+        else {
+          $h1 = $cam[0].Groups[1].Value
+          if ($h1 -notlike '*presentaciones/SEVEN-G_*.pdf' -or -not (Test-Path (Join-Path (Split-Path $entC) $h1))) { Mal "entrada [$lang]: el primer camino no lleva a un PDF de presentaciones que exista"; $capasMal++ }
+          if ($cam[2].Groups[1].Value -ne '#quickcheck') { Mal "entrada [$lang]: el tercer camino debe llevar a #quickcheck"; $capasMal++ }
+        }
+      }
     }
     $portada = Join-Path $repo $(if ($lang -eq 'en') { 'en\index.html' } else { 'index.html' })
     if (-not [IO.File]::ReadAllText($portada).Contains("html/$lang/curso/M00_SEVEN-G_Curso_Guia_del_curso.html")) { Mal "portada [$lang]: no enlaza el curso"; $capasMal++ }
