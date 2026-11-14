@@ -527,14 +527,14 @@ h2 .codigo, h3 .codigo { font-weight: 400; }
 <td>Nada. Solo preferencias de lectura (tema, tamaño de texto, historial de páginas visitadas) en el almacenamiento local del navegador.</td>
 </tr>
 <tr>
-<td>Herramientas <a href="../../herramientas/T01_registro_iniciativas/registro.html" title="Herramienta T01 &#183; Registro de iniciativas">T01</a>, <a href="../../herramientas/T11_calculadora_valor/calculadora.html" title="Herramienta T11 &#183; Lienzo y calculadora de hip&#243;tesis de valor">T11</a>, <a href="../../herramientas/T14_indice_transformacion/indice.html" title="Herramienta T14 &#183; Calculadora del &#237;ndice de transformaci&#243;n">T14</a> y <a href="../../herramientas/T15_diagnostico_madurez/madurez.html" title="Herramienta T15 &#183; Diagn&#243;stico de madurez">T15</a></td>
+<td>Herramientas <a href="../../herramientas/T01_registro_iniciativas/registro.html" title="Herramienta T01 &#183; Registro de casos de uso">T01</a>, <a href="../../herramientas/T11_calculadora_valor/calculadora.html" title="Herramienta T11 &#183; Lienzo y calculadora de hip&#243;tesis de valor">T11</a>, <a href="../../herramientas/T14_indice_transformacion/indice.html" title="Herramienta T14 &#183; Calculadora del &#237;ndice de transformaci&#243;n">T14</a> y <a href="../../herramientas/T15_diagnostico_madurez/madurez.html" title="Herramienta T15 &#183; Diagn&#243;stico de madurez">T15</a></td>
 <td><strong>Un solo fichero HTML</strong> cada una, con la aplicación completa y unos datos de demostración ficticios incrustados.</td>
 <td>Íntegramente en el navegador. No necesitan servidor: funcionan también abriendo el fichero desde el disco.</td>
 <td><strong>Los datos que introduce, donde usted elija con el botón «Datos: …» de su barra</strong>: solo en su navegador (por defecto), en un fichero JSON de su equipo o, en una copia del sitio en el servidor de la compañía, en la carpeta <code>herramientas/datos/</code> (sección 3). Exportan e importan JSON y CSV.</td>
 </tr>
 <tr>
 <td>Panel del consejo (<a href="../../herramientas/T17_panel_consejo/index.html" title="Herramienta T17 &#183; Panel de IA para el consejo">T17</a>)</td>
-<td>El panel completo, el panel móvil y el registro de recomendaciones, generados a partir del registro <a href="../../herramientas/T01_registro_iniciativas/registro.html" title="Herramienta T01 &#183; Registro de iniciativas">T01</a>. Llevan incrustado el conector en JavaScript y <strong>se regeneran solos en el navegador</strong> con el registro guardado en él o con <code>herramientas/datos/T01_registro.json</code> de la copia de la compañía. El generador en Python (<code>t01_a_panel.py</code>) es opcional: produce los mismos paneles como ficheros estáticos para enviarlos.</td>
+<td>El panel completo, el panel móvil y el registro de recomendaciones, generados a partir del registro <a href="../../herramientas/T01_registro_iniciativas/registro.html" title="Herramienta T01 &#183; Registro de casos de uso">T01</a>. Llevan incrustado el conector en JavaScript y <strong>se regeneran solos en el navegador</strong> con el registro guardado en él o con <code>herramientas/datos/T01_registro.json</code> de la copia de la compañía. El generador en Python (<code>t01_a_panel.py</code>) es opcional: produce los mismos paneles como ficheros estáticos para enviarlos.</td>
 <td>En el navegador; el generador en Python, en el ordenador de quien lo ejecuta.</td>
 <td>Nada nuevo en el navegador. Los ficheros generados con Python <strong>contienen los datos</strong>.</td>
 </tr>
@@ -580,7 +580,7 @@ h2 .codigo, h3 .codigo { font-weight: 400; }
 <h2 id="donde-estan-los-datos-que-se-introducen"><span class="antetitulo">03</span>Dónde están los datos que se introducen</h2>
 <h3 id="3-1-en-el-navegador-no-en-el-servidor">3.1 En el navegador, no en el servidor</h3>
 <p>Cuando abre una herramienta por primera vez, el navegador copia los datos de demostración a su <strong>almacenamiento local</strong> (<em>localStorage</em>), una zona que cada navegador reserva por sitio en el propio equipo. Desde ese momento, cada cambio que hace —un caso de uso nuevo, una decisión de puerta, un riesgo, un cálculo— se guarda ahí, al instante y sin que nada viaje por la red.</p>
-<p>Ese es el primero de los tres lugares posibles. El botón <strong>«Datos: …»</strong> de la barra de cada herramienta dice cuál está en uso y abre el diálogo <strong>«Dónde están mis datos»</strong> para cambiarlo (<a href="03_SEVEN-G_Herramientas_y_registro_de_iniciativas.html" title="Documento 03 &#183; Herramientas de SEVEN-G y registro de iniciativas">documento 03</a> §2.1):</p>
+<p>Ese es el primero de los tres lugares posibles. El botón <strong>«Datos: …»</strong> de la barra de cada herramienta dice cuál está en uso y abre el diálogo <strong>«Dónde están mis datos»</strong> para cambiarlo (<a href="03_SEVEN-G_Herramientas_y_registro_de_iniciativas.html" title="Documento 03 &#183; Herramientas de SEVEN-G y registro de casos de uso">documento 03</a> §2.1):</p>
 <div class="tabla"><table>
 <thead>
 <tr>
@@ -617,7 +617,7 @@ h2 .codigo, h3 .codigo { font-weight: 400; }
 </thead>
 <tbody>
 <tr>
-<td><a href="../../herramientas/T01_registro_iniciativas/registro.html" title="Herramienta T01 &#183; Registro de iniciativas">T01</a> · Registro de casos de uso</td>
+<td><a href="../../herramientas/T01_registro_iniciativas/registro.html" title="Herramienta T01 &#183; Registro de casos de uso">T01</a> · Registro de casos de uso</td>
 <td><code>seveng-t01-datos-v1</code></td>
 </tr>
 <tr>
@@ -634,7 +634,7 @@ h2 .codigo, h3 .codigo { font-weight: 400; }
 </tr>
 </tbody>
 </table></div>
-<p><a href="../../herramientas/T11_calculadora_valor/calculadora.html" title="Herramienta T11 &#183; Lienzo y calculadora de hip&#243;tesis de valor">T11</a>, <a href="../../herramientas/T14_indice_transformacion/indice.html" title="Herramienta T14 &#183; Calculadora del &#237;ndice de transformaci&#243;n">T14</a> y <a href="../../herramientas/T15_diagnostico_madurez/madurez.html" title="Herramienta T15 &#183; Diagn&#243;stico de madurez">T15</a> leen además el registro <a href="../../herramientas/T01_registro_iniciativas/registro.html" title="Herramienta T01 &#183; Registro de iniciativas">T01</a> guardado en el mismo navegador cuando se abren desde él (<code>?desde=t01</code>), y devuelven sus resultados al registro por importación: el registro es la fuente de verdad de las demás herramientas (<a href="03_SEVEN-G_Herramientas_y_registro_de_iniciativas.html" title="Documento 03 &#183; Herramientas de SEVEN-G y registro de iniciativas">documento 03</a> §4.1). Todo ello ocurre dentro del navegador.</p>
+<p><a href="../../herramientas/T11_calculadora_valor/calculadora.html" title="Herramienta T11 &#183; Lienzo y calculadora de hip&#243;tesis de valor">T11</a>, <a href="../../herramientas/T14_indice_transformacion/indice.html" title="Herramienta T14 &#183; Calculadora del &#237;ndice de transformaci&#243;n">T14</a> y <a href="../../herramientas/T15_diagnostico_madurez/madurez.html" title="Herramienta T15 &#183; Diagn&#243;stico de madurez">T15</a> leen además el registro <a href="../../herramientas/T01_registro_iniciativas/registro.html" title="Herramienta T01 &#183; Registro de casos de uso">T01</a> guardado en el mismo navegador cuando se abren desde él (<code>?desde=t01</code>), y devuelven sus resultados al registro por importación: el registro es la fuente de verdad de las demás herramientas (<a href="03_SEVEN-G_Herramientas_y_registro_de_iniciativas.html" title="Documento 03 &#183; Herramientas de SEVEN-G y registro de casos de uso">documento 03</a> §4.1). Todo ello ocurre dentro del navegador.</p>
 <p>El servidor que aloja el sitio no tiene forma de recibir esos datos: no existe ningún punto de entrada que los acepte. Esto se puede comprobar en el código de cada herramienta, que es un único fichero HTML legible, y en la ausencia de cualquier programa en el servidor.</p>
 <h3 id="3-2-que-significa-en-la-practica">3.2 Qué significa en la práctica</h3>
 <div class="tabla"><table>
@@ -659,7 +659,7 @@ h2 .codigo, h3 .codigo { font-weight: 400; }
 </tr>
 <tr>
 <td><strong>Varias personas, varios navegadores.</strong></td>
-<td>Las herramientas son de un solo usuario por navegador. Un equipo que trabaja sobre el mismo registro lo hace por turnos con el JSON: una persona exporta, otra importa; <a href="../../herramientas/T01_registro_iniciativas/registro.html" title="Herramienta T01 &#183; Registro de iniciativas">T01</a> admite importar varios ficheros y <strong>fusionarlos por código</strong> (por ejemplo, un registro por área).</td>
+<td>Las herramientas son de un solo usuario por navegador. Un equipo que trabaja sobre el mismo registro lo hace por turnos con el JSON: una persona exporta, otra importa; <a href="../../herramientas/T01_registro_iniciativas/registro.html" title="Herramienta T01 &#183; Registro de casos de uso">T01</a> admite importar varios ficheros y <strong>fusionarlos por código</strong> (por ejemplo, un registro por área).</td>
 </tr>
 <tr>
 <td><strong>Los ficheros generados llevan los datos.</strong></td>
@@ -713,10 +713,10 @@ h2 .codigo, h3 .codigo { font-weight: 400; }
 <h3 id="3-4-copia-de-seguridad-y-traslado-entre-equipos">3.4 Copia de seguridad y traslado entre equipos</h3>
 <p>La forma más cómoda, en Microsoft Edge o Google Chrome, es elegir <strong>«Un fichero JSON del equipo»</strong> en el diálogo «Dónde están mis datos»: la herramienta guarda cada cambio en ese fichero y lo vuelve a leer al abrirla, de modo que la copia de seguridad se hace sola y el fichero puede vivir en una carpeta sincronizada de la compañía. En cualquier navegador, y para llevar los datos a otro equipo:</p>
 <ol>
-<li>En la herramienta, vaya a <strong>Datos → Exportar → JSON completo</strong> (en <a href="../../herramientas/T01_registro_iniciativas/registro.html" title="Herramienta T01 &#183; Registro de iniciativas">T01</a>) o al botón equivalente de exportación (<a href="../../herramientas/T11_calculadora_valor/calculadora.html" title="Herramienta T11 &#183; Lienzo y calculadora de hip&#243;tesis de valor">T11</a>, <a href="../../herramientas/T14_indice_transformacion/indice.html" title="Herramienta T14 &#183; Calculadora del &#237;ndice de transformaci&#243;n">T14</a>, <a href="../../herramientas/T15_diagnostico_madurez/madurez.html" title="Herramienta T15 &#183; Diagn&#243;stico de madurez">T15</a>). Se descarga un fichero JSON con todo el contenido.</li>
+<li>En la herramienta, vaya a <strong>Datos → Exportar → JSON completo</strong> (en <a href="../../herramientas/T01_registro_iniciativas/registro.html" title="Herramienta T01 &#183; Registro de casos de uso">T01</a>) o al botón equivalente de exportación (<a href="../../herramientas/T11_calculadora_valor/calculadora.html" title="Herramienta T11 &#183; Lienzo y calculadora de hip&#243;tesis de valor">T11</a>, <a href="../../herramientas/T14_indice_transformacion/indice.html" title="Herramienta T14 &#183; Calculadora del &#237;ndice de transformaci&#243;n">T14</a>, <a href="../../herramientas/T15_diagnostico_madurez/madurez.html" title="Herramienta T15 &#183; Diagn&#243;stico de madurez">T15</a>). Se descarga un fichero JSON con todo el contenido.</li>
 <li>Guárdelo donde la compañía guarda sus documentos: es la copia de seguridad, el medio para compartirlo y la entrada del generador del panel (<a href="../../herramientas/T17_panel_consejo/index.html" title="Herramienta T17 &#183; Panel de IA para el consejo">T17</a>).</li>
-<li>En otro equipo o navegador, <strong>Datos → Importar JSON</strong>. <a href="../../herramientas/T01_registro_iniciativas/registro.html" title="Herramienta T01 &#183; Registro de iniciativas">T01</a> valida el fichero antes de cargarlo y permite <strong>sustituir</strong> el registro actual o <strong>fusionar</strong> varios ficheros por código.</li>
-<li><strong>Restaurar datos de demostración</strong> y <strong>Borrar los datos guardados en este navegador</strong> (vista Datos de <a href="../../herramientas/T01_registro_iniciativas/registro.html" title="Herramienta T01 &#183; Registro de iniciativas">T01</a>) piden confirmación y avisan de que exporte antes.</li>
+<li>En otro equipo o navegador, <strong>Datos → Importar JSON</strong>. <a href="../../herramientas/T01_registro_iniciativas/registro.html" title="Herramienta T01 &#183; Registro de casos de uso">T01</a> valida el fichero antes de cargarlo y permite <strong>sustituir</strong> el registro actual o <strong>fusionar</strong> varios ficheros por código.</li>
+<li><strong>Restaurar datos de demostración</strong> y <strong>Borrar los datos guardados en este navegador</strong> (vista Datos de <a href="../../herramientas/T01_registro_iniciativas/registro.html" title="Herramienta T01 &#183; Registro de casos de uso">T01</a>) piden confirmación y avisan de que exporte antes.</li>
 </ol>
 <p>Recomendación: exporte al final de cada sesión de trabajo relevante y antes de cualquier limpieza del navegador, y guarde los JSON con fecha.</p>
 <h3 id="3-5-antes-de-introducir-datos-reales">3.5 Antes de introducir datos reales</h3>
@@ -784,7 +784,7 @@ h2 .codigo, h3 .codigo { font-weight: 400; }
 </tr>
 <tr>
 <td><code>SEVEN-G/herramientas</code></td>
-<td>Las herramientas <a href="../../herramientas/T01_registro_iniciativas/registro.html" title="Herramienta T01 &#183; Registro de iniciativas">T01</a>, <a href="../../herramientas/T11_calculadora_valor/calculadora.html" title="Herramienta T11 &#183; Lienzo y calculadora de hip&#243;tesis de valor">T11</a>, <a href="../../herramientas/T14_indice_transformacion/indice.html" title="Herramienta T14 &#183; Calculadora del &#237;ndice de transformaci&#243;n">T14</a> y <a href="../../herramientas/T15_diagnostico_madurez/madurez.html" title="Herramienta T15 &#183; Diagn&#243;stico de madurez">T15</a> (un HTML cada una, más sus fuentes y datos de demostración), el generador <a href="../../herramientas/T17_panel_consejo/index.html" title="Herramienta T17 &#183; Panel de IA para el consejo">T17</a> con su motor, la página de comunidad y el mapa de datos.</td>
+<td>Las herramientas <a href="../../herramientas/T01_registro_iniciativas/registro.html" title="Herramienta T01 &#183; Registro de casos de uso">T01</a>, <a href="../../herramientas/T11_calculadora_valor/calculadora.html" title="Herramienta T11 &#183; Lienzo y calculadora de hip&#243;tesis de valor">T11</a>, <a href="../../herramientas/T14_indice_transformacion/indice.html" title="Herramienta T14 &#183; Calculadora del &#237;ndice de transformaci&#243;n">T14</a> y <a href="../../herramientas/T15_diagnostico_madurez/madurez.html" title="Herramienta T15 &#183; Diagn&#243;stico de madurez">T15</a> (un HTML cada una, más sus fuentes y datos de demostración), el generador <a href="../../herramientas/T17_panel_consejo/index.html" title="Herramienta T17 &#183; Panel de IA para el consejo">T17</a> con su motor, la página de comunidad y el mapa de datos.</td>
 <td>Sí.</td>
 </tr>
 <tr>
@@ -816,9 +816,9 @@ h2 .codigo, h3 .codigo { font-weight: 400; }
 <li>Descargue o clone el repositorio (sección 4.2).</li>
 <li>Copie a la raíz del servidor <strong>solo lo publicable</strong>, que es exactamente lo que publica el flujo de GitHub Pages del repositorio (<code>.github/workflows/pages.yml</code>): <code>index.html</code>, <code>en/</code>, <code>LICENSE</code>, <code>LICENCIA_CONTENIDOS.md</code>, <code>SEVEN-G/html</code>, <code>SEVEN-G/pdf</code>, <code>SEVEN-G/docx</code>, <code>SEVEN-G/pptx</code>, <code>SEVEN-G/herramientas</code>, <code>SPHERES/html</code>, <code>SPHERES/pdf</code>, <code>SPAD/html</code> y <code>SPAD/pdf</code>, excluyendo cualquier carpeta cuyo nombre empiece por <code>_</code>. Con PowerShell 7, <code>pwsh -File SEVEN-G/build/publicar.ps1 -SinGenerar -Destino &lt;carpeta&gt;</code> prepara esa copia (avisa si no encuentra la lista privada de términos prohibidos del autor; en una instalación propia ese aviso puede ignorarse o sustituirse por su propia lista).</li>
 <li>Sírvalo con cualquier servidor de ficheros estáticos: IIS, nginx, Apache, un almacenamiento estático en la nube, la intranet corporativa o GitHub Pages de un <em>fork</em> (sección 4.7). No requiere ningún módulo, base de datos ni configuración especial; conviene que los ficheros <code>.html</code>, <code>.js</code>, <code>.json</code>, <code>.pdf</code>, <code>.docx</code> y <code>.pptx</code> se sirvan con su tipo de contenido habitual.</li>
-<li><strong>Sírvalo por <code>http</code> o <code>https</code>, no como ficheros sueltos.</strong> Abrir los HTML con doble clic funciona, pero el navegador aísla el almacenamiento local de cada fichero: el tema no se comparte, <a href="../../herramientas/T11_calculadora_valor/calculadora.html" title="Herramienta T11 &#183; Lienzo y calculadora de hip&#243;tesis de valor">T11</a>/T14/T15 no ven el registro de <a href="../../herramientas/T01_registro_iniciativas/registro.html" title="Herramienta T01 &#183; Registro de iniciativas">T01</a>, el panel completo no cede el paso al móvil y el índice de códigos no se carga. Para probar en local basta <code>pwsh -File SEVEN-G/build/servidor.ps1</code> y abrir <code>http://localhost:8765/</code>.</li>
-<li>Compruebe la portada, un documento, el registro <a href="../../herramientas/T01_registro_iniciativas/registro.html" title="Herramienta T01 &#183; Registro de iniciativas">T01</a> y el panel de ejemplo. Los enlaces son relativos: el sitio puede vivir en la raíz del dominio o en una subcarpeta.</li>
-<li>Para que toda la compañía vea la misma cartera, cree en la copia la carpeta <code>SEVEN-G/herramientas/datos/</code> con los JSON exportados por las herramientas que use: <code>T01_registro.json</code>, <code>T11_calculadora.json</code>, <code>T14_indice.json</code> y <code>T15_madurez.json</code>. Servidas por http, las herramientas los cargan en lugar de los datos de ejemplo y <strong>el panel del consejo se regenera solo en el navegador</strong> con <code>T01_registro.json</code> (clave <code>datos_t01</code> de <code>config_panel.json</code>, ya puesta en el ejemplo). Publicar una versión nueva de la cartera es sustituir el fichero (<a href="03_SEVEN-G_Herramientas_y_registro_de_iniciativas.html" title="Documento 03 &#183; Herramientas de SEVEN-G y registro de iniciativas">documento 03</a> §2.1).</li>
+<li><strong>Sírvalo por <code>http</code> o <code>https</code>, no como ficheros sueltos.</strong> Abrir los HTML con doble clic funciona, pero el navegador aísla el almacenamiento local de cada fichero: el tema no se comparte, <a href="../../herramientas/T11_calculadora_valor/calculadora.html" title="Herramienta T11 &#183; Lienzo y calculadora de hip&#243;tesis de valor">T11</a>/T14/T15 no ven el registro de <a href="../../herramientas/T01_registro_iniciativas/registro.html" title="Herramienta T01 &#183; Registro de casos de uso">T01</a>, el panel completo no cede el paso al móvil y el índice de códigos no se carga. Para probar en local basta <code>pwsh -File SEVEN-G/build/servidor.ps1</code> y abrir <code>http://localhost:8765/</code>.</li>
+<li>Compruebe la portada, un documento, el registro <a href="../../herramientas/T01_registro_iniciativas/registro.html" title="Herramienta T01 &#183; Registro de casos de uso">T01</a> y el panel de ejemplo. Los enlaces son relativos: el sitio puede vivir en la raíz del dominio o en una subcarpeta.</li>
+<li>Para que toda la compañía vea la misma cartera, cree en la copia la carpeta <code>SEVEN-G/herramientas/datos/</code> con los JSON exportados por las herramientas que use: <code>T01_registro.json</code>, <code>T11_calculadora.json</code>, <code>T14_indice.json</code> y <code>T15_madurez.json</code>. Servidas por http, las herramientas los cargan en lugar de los datos de ejemplo y <strong>el panel del consejo se regenera solo en el navegador</strong> con <code>T01_registro.json</code> (clave <code>datos_t01</code> de <code>config_panel.json</code>, ya puesta en el ejemplo). Publicar una versión nueva de la cartera es sustituir el fichero (<a href="03_SEVEN-G_Herramientas_y_registro_de_iniciativas.html" title="Documento 03 &#183; Herramientas de SEVEN-G y registro de casos de uso">documento 03</a> §2.1).</li>
 </ol>
 <p>Lo que ocurre con la instalación propia respecto al sitio público:</p>
 <ul>
@@ -848,8 +848,8 @@ h2 .codigo, h3 .codigo { font-weight: 400; }
 <td>Lo ejecuta <code>build.ps1</code>.</td>
 </tr>
 <tr>
-<td>Herramientas <a href="../../herramientas/T01_registro_iniciativas/registro.html" title="Herramienta T01 &#183; Registro de iniciativas">T01</a>, <a href="../../herramientas/T11_calculadora_valor/calculadora.html" title="Herramienta T11 &#183; Lienzo y calculadora de hip&#243;tesis de valor">T11</a>, <a href="../../herramientas/T14_indice_transformacion/indice.html" title="Herramienta T14 &#183; Calculadora del &#237;ndice de transformaci&#243;n">T14</a> y <a href="../../herramientas/T15_diagnostico_madurez/madurez.html" title="Herramienta T15 &#183; Diagn&#243;stico de madurez">T15</a></td>
-<td>PowerShell 7 (Edge para los cálculos desde <a href="../../herramientas/T01_registro_iniciativas/registro.html" title="Herramienta T01 &#183; Registro de iniciativas">T01</a> de <a href="../../herramientas/T14_indice_transformacion/indice.html" title="Herramienta T14 &#183; Calculadora del &#237;ndice de transformaci&#243;n">T14</a> y <a href="../../herramientas/T15_diagnostico_madurez/madurez.html" title="Herramienta T15 &#183; Diagn&#243;stico de madurez">T15</a>).</td>
+<td>Herramientas <a href="../../herramientas/T01_registro_iniciativas/registro.html" title="Herramienta T01 &#183; Registro de casos de uso">T01</a>, <a href="../../herramientas/T11_calculadora_valor/calculadora.html" title="Herramienta T11 &#183; Lienzo y calculadora de hip&#243;tesis de valor">T11</a>, <a href="../../herramientas/T14_indice_transformacion/indice.html" title="Herramienta T14 &#183; Calculadora del &#237;ndice de transformaci&#243;n">T14</a> y <a href="../../herramientas/T15_diagnostico_madurez/madurez.html" title="Herramienta T15 &#183; Diagn&#243;stico de madurez">T15</a></td>
+<td>PowerShell 7 (Edge para los cálculos desde <a href="../../herramientas/T01_registro_iniciativas/registro.html" title="Herramienta T01 &#183; Registro de casos de uso">T01</a> de <a href="../../herramientas/T14_indice_transformacion/indice.html" title="Herramienta T14 &#183; Calculadora del &#237;ndice de transformaci&#243;n">T14</a> y <a href="../../herramientas/T15_diagnostico_madurez/madurez.html" title="Herramienta T15 &#183; Diagn&#243;stico de madurez">T15</a>).</td>
 <td><code>pwsh -File SEVEN-G/herramientas/T01_registro_iniciativas/build_registro.ps1</code> y los <code>build_*.ps1</code> equivalentes.</td>
 </tr>
 <tr>
@@ -920,7 +920,7 @@ h2 .codigo, h3 .codigo { font-weight: 400; }
 <ol>
 <li>Si clonó el repositorio, <code>git pull</code>; si lo descargó, descargue el ZIP de nuevo. Los datos no se pierden porque nunca están en el repositorio.</li>
 <li>Vuelva a copiar lo publicable (sección 4.3) o regenere (sección 4.4).</li>
-<li>Los registros exportados con una versión anterior del esquema de <a href="../../herramientas/T01_registro_iniciativas/registro.html" title="Herramienta T01 &#183; Registro de iniciativas">T01</a> <strong>siguen siendo válidos</strong>: las herramientas actualizan el esquema al importar y las versiones nuevas solo añaden campos opcionales (decisión D53 del proyecto).</li>
+<li>Los registros exportados con una versión anterior del esquema de <a href="../../herramientas/T01_registro_iniciativas/registro.html" title="Herramienta T01 &#183; Registro de casos de uso">T01</a> <strong>siguen siendo válidos</strong>: las herramientas actualizan el esquema al importar y las versiones nuevas solo añaden campos opcionales (decisión D53 del proyecto).</li>
 <li>Revise el historial de versiones del <a href="04_SEVEN-G_Origenes_diferencias_y_por_que_es_abierto.html" title="Documento 04 &#183; De d&#243;nde viene SEVEN-G, en qu&#233; se diferencia y por qu&#233; es abierto">documento 04</a> §2.3 y el control de versiones de cada documento para saber qué ha cambiado.</li>
 </ol>
 <h3 id="4-7-fork-en-github-con-pages">4.7 Fork en GitHub con Pages</h3>
@@ -980,19 +980,19 @@ h2 .codigo, h3 .codigo { font-weight: 400; }
 </thead>
 <tbody>
 <tr>
-<td><strong>Registro de casos de uso</strong> <span class="codigo">(<a href="../../herramientas/T01_registro_iniciativas/registro.html" title="Herramienta T01 &#183; Registro de iniciativas">T01</a>)</span></td>
+<td><strong>Registro de casos de uso</strong> <span class="codigo">(<a href="../../herramientas/T01_registro_iniciativas/registro.html" title="Herramienta T01 &#183; Registro de casos de uso">T01</a>)</span></td>
 
 <td>Guarda los datos en el navegador; exporta e importa el JSON completo; construcción con datos propios (<code>build_registro.ps1 -Datos</code>).</td>
 </tr>
 <tr>
 <td><strong>Calculadora de valor, índice de transformación y diagnóstico de madurez</strong> <span class="codigo">(<a href="../../herramientas/T11_calculadora_valor/calculadora.html" title="Herramienta T11 &#183; Lienzo y calculadora de hip&#243;tesis de valor">T11</a>, <a href="../../herramientas/T14_indice_transformacion/indice.html" title="Herramienta T14 &#183; Calculadora del &#237;ndice de transformaci&#243;n">T14</a>, <a href="../../herramientas/T15_diagnostico_madurez/madurez.html" title="Herramienta T15 &#183; Diagn&#243;stico de madurez">T15</a>)</span></td>
 
-<td>Mismo funcionamiento; leen el registro <a href="../../herramientas/T01_registro_iniciativas/registro.html" title="Herramienta T01 &#183; Registro de iniciativas">T01</a> del mismo navegador.</td>
+<td>Mismo funcionamiento; leen el registro <a href="../../herramientas/T01_registro_iniciativas/registro.html" title="Herramienta T01 &#183; Registro de casos de uso">T01</a> del mismo navegador.</td>
 </tr>
 <tr>
 <td><strong>Panel de IA para el consejo</strong> <span class="codigo">(<a href="../../herramientas/T17_panel_consejo/index.html" title="Herramienta T17 &#183; Panel de IA para el consejo">T17</a>)</span></td>
 
-<td>Se regenera en el navegador desde el registro <a href="../../herramientas/T01_registro_iniciativas/registro.html" title="Herramienta T01 &#183; Registro de iniciativas">T01</a>; el generador en Python es opcional y sus ficheros contienen los datos.</td>
+<td>Se regenera en el navegador desde el registro <a href="../../herramientas/T01_registro_iniciativas/registro.html" title="Herramienta T01 &#183; Registro de casos de uso">T01</a>; el generador en Python es opcional y sus ficheros contienen los datos.</td>
 </tr>
 <tr>
 <td><strong>Propuesta y carta de encargo</strong> <span class="codigo">(<a href="plantillas/P70_SEVEN-G_Propuesta_y_carta_de_encargo.html" title="Plantilla P70 &#183; Propuesta y carta de encargo">P70</a>)</span></td>
@@ -1012,7 +1012,7 @@ h2 .codigo, h3 .codigo { font-weight: 400; }
 </thead>
 <tbody>
 <tr>
-<td><strong><a href="03_SEVEN-G_Herramientas_y_registro_de_iniciativas.html" target="_blank" rel="noopener" title="Documento 03 &#183; Herramientas de SEVEN-G y registro de iniciativas">03 · Herramientas y registro de casos de uso</a></strong></td>
+<td><strong><a href="03_SEVEN-G_Herramientas_y_registro_de_iniciativas.html" target="_blank" rel="noopener" title="Documento 03 &#183; Herramientas de SEVEN-G y registro de casos de uso">03 · Herramientas y registro de casos de uso</a></strong></td>
 <td>Principios de diseño de las herramientas (§2: sin servidor, datos de la compañía, códigos navegables), dónde viven los datos de las herramientas y cómo montar la copia de la compañía (§2.1) y mapa de datos entre herramientas (§4.1).</td>
 </tr>
 <tr>

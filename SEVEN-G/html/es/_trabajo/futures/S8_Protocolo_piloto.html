@@ -538,7 +538,7 @@ h2 .codigo, h3 .codigo { font-weight: 400; }
 <h2 id="duracion-y-alcance"><span class="antetitulo">03</span>Duración y alcance</h2>
 <ul>
 <li><strong>Un ciclo corporativo C1 → C2</strong> (diagnóstico de madurez con <a href="../../../../herramientas/T15_diagnostico_madurez/madurez.html" title="Herramienta T15 &#183; Diagn&#243;stico de madurez">T15</a>, recorrido con <a href="../../../../herramientas/T23_recorrido_implantacion/recorrido.html" title="Herramienta T23 &#183; Recorrido de implantaci&#243;n">T23</a>, tesis y apetito con <a href="../../plantillas/P35_SEVEN-G_Tesis_de_IA_y_apetito_de_riesgo.html" title="Plantilla P35 &#183; Tesis de IA y apetito de riesgo">P35</a>).</li>
-<li><strong>Dos o tres iniciativas desde la fase 0 hasta G5</strong>, registradas en <a href="../../../../herramientas/T01_registro_iniciativas/registro.html" title="Herramienta T01 &#183; Registro de iniciativas">T01</a> desde el primer día, con las horas de gobierno declaradas en cada decisión de <em>gate</em> (IND-COS-12).</li>
+<li><strong>Dos o tres iniciativas desde la fase 0 hasta G5</strong>, registradas en <a href="../../../../herramientas/T01_registro_iniciativas/registro.html" title="Herramienta T01 &#183; Registro de casos de uso">T01</a> desde el primer día, con las horas de gobierno declaradas en cada decisión de <em>gate</em> (IND-COS-12).</li>
 <li><strong>Una sesión del consejo</strong> con el paquete trimestral (<a href="../../60_SEVEN-G_Paquete_para_el_consejo.html" title="Documento 60 &#183; Paquete para el consejo">documento 60</a>) y el panel generado desde el registro (<a href="../../../../herramientas/T17_panel_consejo/index.html" title="Herramienta T17 &#183; Panel de IA para el consejo">T17</a>).</li>
 <li>Duración orientativa: de cuatro a seis meses. No se fija un plazo cerrado: depende del punto de partida (91 §8).</li>
 </ul>
@@ -555,22 +555,22 @@ h2 .codigo, h3 .codigo { font-weight: 400; }
 <tr>
 <td>Coste del gobierno por intensidad</td>
 <td>Horas declaradas × coste por hora de C2, sobre la inversión (IND-COS-12, 13)</td>
-<td><a href="../../../../herramientas/T01_registro_iniciativas/registro.html" title="Herramienta T01 &#183; Registro de iniciativas">T01</a>, tarjeta «Coste del gobierno» de <a href="../../../../herramientas/T17_panel_consejo/index.html" title="Herramienta T17 &#183; Panel de IA para el consejo">T17</a></td>
+<td><a href="../../../../herramientas/T01_registro_iniciativas/registro.html" title="Herramienta T01 &#183; Registro de casos de uso">T01</a>, tarjeta «Coste del gobierno» de <a href="../../../../herramientas/T17_panel_consejo/index.html" title="Herramienta T17 &#183; Panel de IA para el consejo">T17</a></td>
 </tr>
 <tr>
 <td>Evidencia referenciada frente a copiada</td>
 <td>IND-COS-14</td>
-<td><a href="../../../../herramientas/T01_registro_iniciativas/registro.html" title="Herramienta T01 &#183; Registro de iniciativas">T01</a> (<code>evidencias[].origen</code>)</td>
+<td><a href="../../../../herramientas/T01_registro_iniciativas/registro.html" title="Herramienta T01 &#183; Registro de casos de uso">T01</a> (<code>evidencias[].origen</code>)</td>
 </tr>
 <tr>
 <td>Tiempo de decisión por puerta</td>
 <td>IND-AGI-04</td>
-<td><a href="../../../../herramientas/T01_registro_iniciativas/registro.html" title="Herramienta T01 &#183; Registro de iniciativas">T01</a></td>
+<td><a href="../../../../herramientas/T01_registro_iniciativas/registro.html" title="Herramienta T01 &#183; Registro de casos de uso">T01</a></td>
 </tr>
 <tr>
 <td>Paradas, iteraciones y condiciones vencidas</td>
 <td>Recuento por puerta y motivo</td>
-<td><a href="../../../../herramientas/T01_registro_iniciativas/registro.html" title="Herramienta T01 &#183; Registro de iniciativas">T01</a></td>
+<td><a href="../../../../herramientas/T01_registro_iniciativas/registro.html" title="Herramienta T01 &#183; Registro de casos de uso">T01</a></td>
 </tr>
 <tr>
 <td>Madurez y recorrido</td>
@@ -596,7 +596,7 @@ h2 .codigo, h3 .codigo { font-weight: 400; }
 </table></div>
 <h2 id="como-se-recoge"><span class="antetitulo">05</span>Cómo se recoge</h2>
 <ol>
-<li>La compañía exporta su registro <a href="../../../../herramientas/T01_registro_iniciativas/registro.html" title="Herramienta T01 &#183; Registro de iniciativas">T01</a> (botón «Exportar» de la vista Datos). <strong>El JSON nunca sale de la compañía sin anonimizar.</strong></li>
+<li>La compañía exporta su registro <a href="../../../../herramientas/T01_registro_iniciativas/registro.html" title="Herramienta T01 &#183; Registro de casos de uso">T01</a> (botón «Exportar» de la vista Datos). <strong>El JSON nunca sale de la compañía sin anonimizar.</strong></li>
 <li>La compañía, o el autor con acuerdo de confidencialidad, ejecuta <code>pwsh -File SEVEN-G/mds/es/_trabajo/futures/s8_anonimizar_t01.ps1 -Entrada registro.json -Salida PIL-01.json -Codigo PIL-01 -FactorImportes &lt;factor secreto&gt;</code>: retira el texto libre, sustituye organización, personas, proveedores y unidades por códigos y escala los importes conservando sus proporciones.</li>
 <li>Se revisa a mano el resultado y se pasa por la lista privada de términos prohibidos (D57). Solo entonces se comparte.</li>
 <li>Las respuestas del cuestionario de fricción se recogen sin nombres, por rol.</li>

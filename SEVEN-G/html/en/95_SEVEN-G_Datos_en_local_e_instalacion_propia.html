@@ -527,14 +527,14 @@ h2 .codigo, h3 .codigo { font-weight: 400; }
 <td>Nothing. Only reading preferences (theme, text size, history of pages visited) in the browser's local storage.</td>
 </tr>
 <tr>
-<td>Tools <a href="../../herramientas/T01_registro_iniciativas/registro.html" title="Tool T01 &#183; Initiative register">T01</a>, <a href="../../herramientas/T11_calculadora_valor/calculadora.html" title="Tool T11 &#183; Value hypothesis canvas and calculator">T11</a>, <a href="../../herramientas/T14_indice_transformacion/indice.html" title="Tool T14 &#183; Transformation index calculator">T14</a> and <a href="../../herramientas/T15_diagnostico_madurez/madurez.html" title="Tool T15 &#183; Maturity diagnosis">T15</a></td>
+<td>Tools <a href="../../herramientas/T01_registro_iniciativas/registro.html" title="Tool T01 &#183; Use case register">T01</a>, <a href="../../herramientas/T11_calculadora_valor/calculadora.html" title="Tool T11 &#183; Value hypothesis canvas and calculator">T11</a>, <a href="../../herramientas/T14_indice_transformacion/indice.html" title="Tool T14 &#183; Transformation index calculator">T14</a> and <a href="../../herramientas/T15_diagnostico_madurez/madurez.html" title="Tool T15 &#183; Maturity diagnosis">T15</a></td>
 <td><strong>A single HTML file</strong> each, with the complete application and some fictitious demonstration data embedded.</td>
 <td>Entirely in the browser. They need no server: they also work when the file is opened from disk.</td>
 <td><strong>The data you enter, wherever you choose with the &quot;Datos: …&quot; button in their bar</strong>: only in your browser (default), in a JSON file on your computer or, in a copy of the site on the company's server, in the <code>herramientas/datos/</code> folder (section 3). They export and import JSON and CSV.</td>
 </tr>
 <tr>
 <td>Board dashboard (<a href="../../herramientas/T17_panel_consejo/index.html" title="Tool T17 &#183; Board AI dashboard">T17</a>)</td>
-<td>The full dashboard, the mobile dashboard and the recommendations register, generated from the <a href="../../herramientas/T01_registro_iniciativas/registro.html" title="Tool T01 &#183; Initiative register">T01</a> register. They carry the connector embedded in JavaScript and <strong>regenerate themselves in the browser</strong> from the register stored in it or from <code>herramientas/datos/T01_registro.json</code> in the company's copy. The Python generator (<code>t01_a_panel.py</code>) is optional: it produces the same dashboards as static files to send.</td>
+<td>The full dashboard, the mobile dashboard and the recommendations register, generated from the <a href="../../herramientas/T01_registro_iniciativas/registro.html" title="Tool T01 &#183; Use case register">T01</a> register. They carry the connector embedded in JavaScript and <strong>regenerate themselves in the browser</strong> from the register stored in it or from <code>herramientas/datos/T01_registro.json</code> in the company's copy. The Python generator (<code>t01_a_panel.py</code>) is optional: it produces the same dashboards as static files to send.</td>
 <td>In the browser; the Python generator, on the computer of whoever runs it.</td>
 <td>Nothing new in the browser. The files generated with Python <strong>contain the data</strong>.</td>
 </tr>
@@ -580,7 +580,7 @@ h2 .codigo, h3 .codigo { font-weight: 400; }
 <h2 id="where-the-data-you-enter-is"><span class="antetitulo">03</span>Where the data you enter is</h2>
 <h3 id="3-1-in-the-browser-not-on-the-server">3.1 In the browser, not on the server</h3>
 <p>When you open a tool for the first time, the browser copies the demonstration data into its <strong>local storage</strong> (<em>localStorage</em>), an area each browser reserves per site on the computer itself. From then on, every change you make —a new use case, a gate decision, a risk, a calculation— is saved there, instantly and without anything travelling over the network.</p>
-<p>That is the first of three possible places. The <strong>&quot;Datos: …&quot;</strong> button in the bar of each tool says which one is in use and opens the <strong>&quot;Dónde están mis datos&quot;</strong> (Where is my data) dialog to change it (<a href="03_SEVEN-G_Herramientas_y_registro_de_iniciativas.html" title="Document 03 &#183; SEVEN-G tools and initiative register">document 03</a> §2.1):</p>
+<p>That is the first of three possible places. The <strong>&quot;Datos: …&quot;</strong> button in the bar of each tool says which one is in use and opens the <strong>&quot;Dónde están mis datos&quot;</strong> (Where is my data) dialog to change it (<a href="03_SEVEN-G_Herramientas_y_registro_de_iniciativas.html" title="Document 03 &#183; SEVEN-G tools and use case register">document 03</a> §2.1):</p>
 <div class="tabla"><table>
 <thead>
 <tr>
@@ -617,7 +617,7 @@ h2 .codigo, h3 .codigo { font-weight: 400; }
 </thead>
 <tbody>
 <tr>
-<td><a href="../../herramientas/T01_registro_iniciativas/registro.html" title="Tool T01 &#183; Initiative register">T01</a> · Use case register</td>
+<td><a href="../../herramientas/T01_registro_iniciativas/registro.html" title="Tool T01 &#183; Use case register">T01</a> · Use case register</td>
 <td><code>seveng-t01-datos-v1</code></td>
 </tr>
 <tr>
@@ -634,7 +634,7 @@ h2 .codigo, h3 .codigo { font-weight: 400; }
 </tr>
 </tbody>
 </table></div>
-<p><a href="../../herramientas/T11_calculadora_valor/calculadora.html" title="Tool T11 &#183; Value hypothesis canvas and calculator">T11</a>, <a href="../../herramientas/T14_indice_transformacion/indice.html" title="Tool T14 &#183; Transformation index calculator">T14</a> and <a href="../../herramientas/T15_diagnostico_madurez/madurez.html" title="Tool T15 &#183; Maturity diagnosis">T15</a> also read the <a href="../../herramientas/T01_registro_iniciativas/registro.html" title="Tool T01 &#183; Initiative register">T01</a> register stored in the same browser when opened from it (<code>?desde=t01</code>), and return their results to the register by import: the register is the source of truth for the other tools (<a href="03_SEVEN-G_Herramientas_y_registro_de_iniciativas.html" title="Document 03 &#183; SEVEN-G tools and initiative register">document 03</a> §4.1). All of this happens inside the browser.</p>
+<p><a href="../../herramientas/T11_calculadora_valor/calculadora.html" title="Tool T11 &#183; Value hypothesis canvas and calculator">T11</a>, <a href="../../herramientas/T14_indice_transformacion/indice.html" title="Tool T14 &#183; Transformation index calculator">T14</a> and <a href="../../herramientas/T15_diagnostico_madurez/madurez.html" title="Tool T15 &#183; Maturity diagnosis">T15</a> also read the <a href="../../herramientas/T01_registro_iniciativas/registro.html" title="Tool T01 &#183; Use case register">T01</a> register stored in the same browser when opened from it (<code>?desde=t01</code>), and return their results to the register by import: the register is the source of truth for the other tools (<a href="03_SEVEN-G_Herramientas_y_registro_de_iniciativas.html" title="Document 03 &#183; SEVEN-G tools and use case register">document 03</a> §4.1). All of this happens inside the browser.</p>
 <p>The server hosting the site has no way of receiving that data: there is no entry point that accepts it. This can be checked in the code of each tool, which is a single readable HTML file, and in the absence of any program on the server.</p>
 <h3 id="3-2-what-it-means-in-practice">3.2 What it means in practice</h3>
 <div class="tabla"><table>
@@ -659,7 +659,7 @@ h2 .codigo, h3 .codigo { font-weight: 400; }
 </tr>
 <tr>
 <td><strong>Several people, several browsers.</strong></td>
-<td>The tools are single-user per browser. A team working on the same register does so in turns with the JSON: one person exports, another imports; <a href="../../herramientas/T01_registro_iniciativas/registro.html" title="Tool T01 &#183; Initiative register">T01</a> can import several files and <strong>merge them by code</strong> (for example, one register per area).</td>
+<td>The tools are single-user per browser. A team working on the same register does so in turns with the JSON: one person exports, another imports; <a href="../../herramientas/T01_registro_iniciativas/registro.html" title="Tool T01 &#183; Use case register">T01</a> can import several files and <strong>merge them by code</strong> (for example, one register per area).</td>
 </tr>
 <tr>
 <td><strong>Generated files carry the data.</strong></td>
@@ -713,10 +713,10 @@ h2 .codigo, h3 .codigo { font-weight: 400; }
 <h3 id="3-4-backup-and-moving-between-computers">3.4 Backup and moving between computers</h3>
 <p>The most convenient way, in Microsoft Edge or Google Chrome, is to choose <strong>&quot;A JSON file on your computer&quot;</strong> in the &quot;Where is my data&quot; dialog: the tool saves every change to that file and reads it again when opened, so the backup makes itself and the file can live in a synchronised folder of the company. In any browser, and to take the data to another computer:</p>
 <ol>
-<li>In the tool, go to <strong>Data → Export → Full JSON</strong> (in <a href="../../herramientas/T01_registro_iniciativas/registro.html" title="Tool T01 &#183; Initiative register">T01</a>) or the equivalent export button (<a href="../../herramientas/T11_calculadora_valor/calculadora.html" title="Tool T11 &#183; Value hypothesis canvas and calculator">T11</a>, <a href="../../herramientas/T14_indice_transformacion/indice.html" title="Tool T14 &#183; Transformation index calculator">T14</a>, <a href="../../herramientas/T15_diagnostico_madurez/madurez.html" title="Tool T15 &#183; Maturity diagnosis">T15</a>). A JSON file with all the content is downloaded.</li>
+<li>In the tool, go to <strong>Data → Export → Full JSON</strong> (in <a href="../../herramientas/T01_registro_iniciativas/registro.html" title="Tool T01 &#183; Use case register">T01</a>) or the equivalent export button (<a href="../../herramientas/T11_calculadora_valor/calculadora.html" title="Tool T11 &#183; Value hypothesis canvas and calculator">T11</a>, <a href="../../herramientas/T14_indice_transformacion/indice.html" title="Tool T14 &#183; Transformation index calculator">T14</a>, <a href="../../herramientas/T15_diagnostico_madurez/madurez.html" title="Tool T15 &#183; Maturity diagnosis">T15</a>). A JSON file with all the content is downloaded.</li>
 <li>Save it where the company keeps its documents: it is the backup, the means to share it and the input of the dashboard generator (<a href="../../herramientas/T17_panel_consejo/index.html" title="Tool T17 &#183; Board AI dashboard">T17</a>).</li>
-<li>On another computer or browser, <strong>Data → Import JSON</strong>. <a href="../../herramientas/T01_registro_iniciativas/registro.html" title="Tool T01 &#183; Initiative register">T01</a> validates the file before loading it and lets you <strong>replace</strong> the current register or <strong>merge</strong> several files by code.</li>
-<li><strong>Restore demo data</strong> and <strong>Delete the data saved in this browser</strong> (<a href="../../herramientas/T01_registro_iniciativas/registro.html" title="Tool T01 &#183; Initiative register">T01</a> Data view) ask for confirmation and remind you to export first.</li>
+<li>On another computer or browser, <strong>Data → Import JSON</strong>. <a href="../../herramientas/T01_registro_iniciativas/registro.html" title="Tool T01 &#183; Use case register">T01</a> validates the file before loading it and lets you <strong>replace</strong> the current register or <strong>merge</strong> several files by code.</li>
+<li><strong>Restore demo data</strong> and <strong>Delete the data saved in this browser</strong> (<a href="../../herramientas/T01_registro_iniciativas/registro.html" title="Tool T01 &#183; Use case register">T01</a> Data view) ask for confirmation and remind you to export first.</li>
 </ol>
 <p>Recommendation: export at the end of every relevant working session and before any browser clean-up, and keep the JSON files dated.</p>
 <h3 id="3-5-before-entering-real-data">3.5 Before entering real data</h3>
@@ -784,7 +784,7 @@ h2 .codigo, h3 .codigo { font-weight: 400; }
 </tr>
 <tr>
 <td><code>SEVEN-G/herramientas</code></td>
-<td>The tools <a href="../../herramientas/T01_registro_iniciativas/registro.html" title="Tool T01 &#183; Initiative register">T01</a>, <a href="../../herramientas/T11_calculadora_valor/calculadora.html" title="Tool T11 &#183; Value hypothesis canvas and calculator">T11</a>, <a href="../../herramientas/T14_indice_transformacion/indice.html" title="Tool T14 &#183; Transformation index calculator">T14</a> and <a href="../../herramientas/T15_diagnostico_madurez/madurez.html" title="Tool T15 &#183; Maturity diagnosis">T15</a> (one HTML each, plus their sources and demonstration data), the <a href="../../herramientas/T17_panel_consejo/index.html" title="Tool T17 &#183; Board AI dashboard">T17</a> generator with its engine, the community page and the data map.</td>
+<td>The tools <a href="../../herramientas/T01_registro_iniciativas/registro.html" title="Tool T01 &#183; Use case register">T01</a>, <a href="../../herramientas/T11_calculadora_valor/calculadora.html" title="Tool T11 &#183; Value hypothesis canvas and calculator">T11</a>, <a href="../../herramientas/T14_indice_transformacion/indice.html" title="Tool T14 &#183; Transformation index calculator">T14</a> and <a href="../../herramientas/T15_diagnostico_madurez/madurez.html" title="Tool T15 &#183; Maturity diagnosis">T15</a> (one HTML each, plus their sources and demonstration data), the <a href="../../herramientas/T17_panel_consejo/index.html" title="Tool T17 &#183; Board AI dashboard">T17</a> generator with its engine, the community page and the data map.</td>
 <td>Yes.</td>
 </tr>
 <tr>
@@ -816,9 +816,9 @@ h2 .codigo, h3 .codigo { font-weight: 400; }
 <li>Download or clone the repository (section 4.2).</li>
 <li>Copy to the root of the server <strong>only what is publishable</strong>, which is exactly what the repository's GitHub Pages workflow publishes (<code>.github/workflows/pages.yml</code>): <code>index.html</code>, <code>en/</code>, <code>LICENSE</code>, <code>LICENCIA_CONTENIDOS.md</code>, <code>SEVEN-G/html</code>, <code>SEVEN-G/pdf</code>, <code>SEVEN-G/docx</code>, <code>SEVEN-G/pptx</code>, <code>SEVEN-G/herramientas</code>, <code>SPHERES/html</code>, <code>SPHERES/pdf</code>, <code>SPAD/html</code> and <code>SPAD/pdf</code>, excluding any folder whose name starts with <code>_</code>. With PowerShell 7, <code>pwsh -File SEVEN-G/build/publicar.ps1 -SinGenerar -Destino &lt;folder&gt;</code> prepares that copy (it warns if it cannot find the author's private list of forbidden terms; in your own installation that warning can be ignored or replaced by your own list).</li>
 <li>Serve it with any static file server: IIS, nginx, Apache, static storage in the cloud, the corporate intranet or GitHub Pages of a fork (section 4.7). It requires no module, database or special configuration; the <code>.html</code>, <code>.js</code>, <code>.json</code>, <code>.pdf</code>, <code>.docx</code> and <code>.pptx</code> files should be served with their usual content types.</li>
-<li><strong>Serve it over <code>http</code> or <code>https</code>, not as loose files.</strong> Opening the HTML files by double-clicking works, but the browser isolates the local storage of each file: the theme is not shared, <a href="../../herramientas/T11_calculadora_valor/calculadora.html" title="Tool T11 &#183; Value hypothesis canvas and calculator">T11</a>/T14/T15 do not see the <a href="../../herramientas/T01_registro_iniciativas/registro.html" title="Tool T01 &#183; Initiative register">T01</a> register, the full dashboard does not hand over to the mobile one and the code index does not load. For a local test, <code>pwsh -File SEVEN-G/build/servidor.ps1</code> and open <code>http://localhost:8765/</code>.</li>
-<li>Check the home page, a document, the <a href="../../herramientas/T01_registro_iniciativas/registro.html" title="Tool T01 &#183; Initiative register">T01</a> register and the example dashboard. Links are relative: the site can live at the root of the domain or in a subfolder.</li>
-<li>So that the whole company sees the same portfolio, create in the copy the folder <code>SEVEN-G/herramientas/datos/</code> with the JSON files exported by the tools you use: <code>T01_registro.json</code>, <code>T11_calculadora.json</code>, <code>T14_indice.json</code> and <code>T15_madurez.json</code>. Served over http, the tools load them instead of the demonstration data and <strong>the board dashboard regenerates itself in the browser</strong> from <code>T01_registro.json</code> (<code>datos_t01</code> key of <code>config_panel.json</code>, already set in the example). Publishing a new version of the portfolio means replacing the file (<a href="03_SEVEN-G_Herramientas_y_registro_de_iniciativas.html" title="Document 03 &#183; SEVEN-G tools and initiative register">document 03</a> §2.1).</li>
+<li><strong>Serve it over <code>http</code> or <code>https</code>, not as loose files.</strong> Opening the HTML files by double-clicking works, but the browser isolates the local storage of each file: the theme is not shared, <a href="../../herramientas/T11_calculadora_valor/calculadora.html" title="Tool T11 &#183; Value hypothesis canvas and calculator">T11</a>/T14/T15 do not see the <a href="../../herramientas/T01_registro_iniciativas/registro.html" title="Tool T01 &#183; Use case register">T01</a> register, the full dashboard does not hand over to the mobile one and the code index does not load. For a local test, <code>pwsh -File SEVEN-G/build/servidor.ps1</code> and open <code>http://localhost:8765/</code>.</li>
+<li>Check the home page, a document, the <a href="../../herramientas/T01_registro_iniciativas/registro.html" title="Tool T01 &#183; Use case register">T01</a> register and the example dashboard. Links are relative: the site can live at the root of the domain or in a subfolder.</li>
+<li>So that the whole company sees the same portfolio, create in the copy the folder <code>SEVEN-G/herramientas/datos/</code> with the JSON files exported by the tools you use: <code>T01_registro.json</code>, <code>T11_calculadora.json</code>, <code>T14_indice.json</code> and <code>T15_madurez.json</code>. Served over http, the tools load them instead of the demonstration data and <strong>the board dashboard regenerates itself in the browser</strong> from <code>T01_registro.json</code> (<code>datos_t01</code> key of <code>config_panel.json</code>, already set in the example). Publishing a new version of the portfolio means replacing the file (<a href="03_SEVEN-G_Herramientas_y_registro_de_iniciativas.html" title="Document 03 &#183; SEVEN-G tools and use case register">document 03</a> §2.1).</li>
 </ol>
 <p>What happens with your own installation compared with the public site:</p>
 <ul>
@@ -848,8 +848,8 @@ h2 .codigo, h3 .codigo { font-weight: 400; }
 <td>Run by <code>build.ps1</code>.</td>
 </tr>
 <tr>
-<td>Tools <a href="../../herramientas/T01_registro_iniciativas/registro.html" title="Tool T01 &#183; Initiative register">T01</a>, <a href="../../herramientas/T11_calculadora_valor/calculadora.html" title="Tool T11 &#183; Value hypothesis canvas and calculator">T11</a>, <a href="../../herramientas/T14_indice_transformacion/indice.html" title="Tool T14 &#183; Transformation index calculator">T14</a> and <a href="../../herramientas/T15_diagnostico_madurez/madurez.html" title="Tool T15 &#183; Maturity diagnosis">T15</a></td>
-<td>PowerShell 7 (Edge for the <a href="../../herramientas/T14_indice_transformacion/indice.html" title="Tool T14 &#183; Transformation index calculator">T14</a> and <a href="../../herramientas/T15_diagnostico_madurez/madurez.html" title="Tool T15 &#183; Maturity diagnosis">T15</a> calculations from <a href="../../herramientas/T01_registro_iniciativas/registro.html" title="Tool T01 &#183; Initiative register">T01</a>).</td>
+<td>Tools <a href="../../herramientas/T01_registro_iniciativas/registro.html" title="Tool T01 &#183; Use case register">T01</a>, <a href="../../herramientas/T11_calculadora_valor/calculadora.html" title="Tool T11 &#183; Value hypothesis canvas and calculator">T11</a>, <a href="../../herramientas/T14_indice_transformacion/indice.html" title="Tool T14 &#183; Transformation index calculator">T14</a> and <a href="../../herramientas/T15_diagnostico_madurez/madurez.html" title="Tool T15 &#183; Maturity diagnosis">T15</a></td>
+<td>PowerShell 7 (Edge for the <a href="../../herramientas/T14_indice_transformacion/indice.html" title="Tool T14 &#183; Transformation index calculator">T14</a> and <a href="../../herramientas/T15_diagnostico_madurez/madurez.html" title="Tool T15 &#183; Maturity diagnosis">T15</a> calculations from <a href="../../herramientas/T01_registro_iniciativas/registro.html" title="Tool T01 &#183; Use case register">T01</a>).</td>
 <td><code>pwsh -File SEVEN-G/herramientas/T01_registro_iniciativas/build_registro.ps1</code> and the equivalent <code>build_*.ps1</code> scripts.</td>
 </tr>
 <tr>
@@ -920,7 +920,7 @@ h2 .codigo, h3 .codigo { font-weight: 400; }
 <ol>
 <li>If you cloned the repository, <code>git pull</code>; if you downloaded it, download the ZIP again. Data is not lost because it is never in the repository.</li>
 <li>Copy what is publishable again (section 4.3) or regenerate (section 4.4).</li>
-<li>Registers exported with an earlier version of the <a href="../../herramientas/T01_registro_iniciativas/registro.html" title="Tool T01 &#183; Initiative register">T01</a> schema <strong>remain valid</strong>: the tools update the schema on import and new versions only add optional fields (project decision D53).</li>
+<li>Registers exported with an earlier version of the <a href="../../herramientas/T01_registro_iniciativas/registro.html" title="Tool T01 &#183; Use case register">T01</a> schema <strong>remain valid</strong>: the tools update the schema on import and new versions only add optional fields (project decision D53).</li>
 <li>Review the framework's version history in <a href="04_SEVEN-G_Origenes_diferencias_y_por_que_es_abierto.html" title="Document 04 &#183; Where SEVEN-G comes from, how it differs and why it is open">document 04</a> §2.3 and the version control of each document to see what has changed.</li>
 </ol>
 <h3 id="4-7-fork-on-github-with-pages">4.7 Fork on GitHub with Pages</h3>
@@ -980,19 +980,19 @@ h2 .codigo, h3 .codigo { font-weight: 400; }
 </thead>
 <tbody>
 <tr>
-<td><strong>Use case register</strong> <span class="codigo">(<a href="../../herramientas/T01_registro_iniciativas/registro.html" title="Tool T01 &#183; Initiative register">T01</a>)</span></td>
+<td><strong>Use case register</strong> <span class="codigo">(<a href="../../herramientas/T01_registro_iniciativas/registro.html" title="Tool T01 &#183; Use case register">T01</a>)</span></td>
 
 <td>Stores the data in the browser; exports and imports the full JSON; build with your own data (<code>build_registro.ps1 -Datos</code>).</td>
 </tr>
 <tr>
 <td><strong>Value calculator, transformation index and maturity diagnosis</strong> <span class="codigo">(<a href="../../herramientas/T11_calculadora_valor/calculadora.html" title="Tool T11 &#183; Value hypothesis canvas and calculator">T11</a>, <a href="../../herramientas/T14_indice_transformacion/indice.html" title="Tool T14 &#183; Transformation index calculator">T14</a>, <a href="../../herramientas/T15_diagnostico_madurez/madurez.html" title="Tool T15 &#183; Maturity diagnosis">T15</a>)</span></td>
 
-<td>Same operation; they read the <a href="../../herramientas/T01_registro_iniciativas/registro.html" title="Tool T01 &#183; Initiative register">T01</a> register of the same browser.</td>
+<td>Same operation; they read the <a href="../../herramientas/T01_registro_iniciativas/registro.html" title="Tool T01 &#183; Use case register">T01</a> register of the same browser.</td>
 </tr>
 <tr>
 <td><strong>AI dashboard for the board</strong> <span class="codigo">(<a href="../../herramientas/T17_panel_consejo/index.html" title="Tool T17 &#183; Board AI dashboard">T17</a>)</span></td>
 
-<td>Regenerates itself in the browser from the <a href="../../herramientas/T01_registro_iniciativas/registro.html" title="Tool T01 &#183; Initiative register">T01</a> register; the Python generator is optional and its files contain the data.</td>
+<td>Regenerates itself in the browser from the <a href="../../herramientas/T01_registro_iniciativas/registro.html" title="Tool T01 &#183; Use case register">T01</a> register; the Python generator is optional and its files contain the data.</td>
 </tr>
 <tr>
 <td><strong>Proposal and engagement letter</strong> <span class="codigo">(<a href="plantillas/P70_SEVEN-G_Propuesta_y_carta_de_encargo.html" title="Template P70 &#183; Proposal and engagement letter">P70</a>)</span></td>
@@ -1012,7 +1012,7 @@ h2 .codigo, h3 .codigo { font-weight: 400; }
 </thead>
 <tbody>
 <tr>
-<td><strong><a href="03_SEVEN-G_Herramientas_y_registro_de_iniciativas.html" target="_blank" rel="noopener" title="Document 03 &#183; SEVEN-G tools and initiative register">03 · Tools and use case register</a></strong></td>
+<td><strong><a href="03_SEVEN-G_Herramientas_y_registro_de_iniciativas.html" target="_blank" rel="noopener" title="Document 03 &#183; SEVEN-G tools and use case register">03 · Tools and use case register</a></strong></td>
 <td>Tool design principles (§2: no server, the company's data, navigable codes), where the tools' data lives and how to set up the company's copy (§2.1) and data map between tools (§4.1).</td>
 </tr>
 <tr>

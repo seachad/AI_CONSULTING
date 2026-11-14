@@ -500,7 +500,7 @@ h2 .codigo, h3 .codigo { font-weight: 400; }
 <p>Este documento define:</p>
 <ul>
 <li>Qué se inventaría y qué no (sección 2).</li>
-<li>Los campos del inventario, coherentes con la taxonomía controlada del <a href="03_SEVEN-G_Herramientas_y_registro_de_iniciativas.html" title="Documento 03 &#183; Herramientas de SEVEN-G y registro de iniciativas">documento 03</a> (sección 3).</li>
+<li>Los campos del inventario, coherentes con la taxonomía controlada del <a href="03_SEVEN-G_Herramientas_y_registro_de_iniciativas.html" title="Documento 03 &#183; Herramientas de SEVEN-G y registro de casos de uso">documento 03</a> (sección 3).</li>
 <li>Los roles que puede tener la compañía según el <a class="ref-ext" href="https://eur-lex.europa.eu/eli/reg/2024/1689/oj/spa" target="_blank" rel="noopener" title="Reglamento (UE) 2024/1689 del Parlamento Europeo y del Consejo, de 13 de junio de 2024, por el que se establecen normas armonizadas en materia de inteligencia artificial (Reglamento de Inteligencia Artificial)">Reglamento (UE) 2024/1689</a> (sección 4).</li>
 <li>El árbol de clasificación regulatoria paso a paso (sección 5).</li>
 <li>Las evaluaciones que se derivan de la clasificación (sección 6).</li>
@@ -1281,7 +1281,7 @@ h2 .codigo, h3 .codigo { font-weight: 400; }
 </tbody>
 </table></div>
 <h3 id="3-8-correspondencia-con-el-esquema-del-panel-del-consejo">3.8 Correspondencia con el esquema del panel del consejo</h3>
-<p>El inventario alimenta el panel (<a href="../../herramientas/T17_panel_consejo/index.html" title="Herramienta T17 &#183; Panel de IA para el consejo">T17</a>). Correspondencias principales con el esquema de datos del panel: <code>reporte_compania.clasificacion_ria</code> (prohibido, alto_riesgo, transparencia, minimo, no_es_ia) se obtiene de <em>Clasificación regulatoria</em> (Fuera de ámbito por no ser IA → <code>no_es_ia</code>); <code>reporte_compania.controles</code> (<code>RIA</code>, <code>FRIA</code>, <code>DPIA</code>, <code>seguridad</code>…) de la sección 3.5; <code>tags.exposicion</code> y <code>tags.tecnologia</code> de la sección 3.3; <code>estado</code> del caso (En uso, En desarrollo, POC, Desenganchado) de <em>Estado del sistema</em> (En producción → En uso; En desarrollo → En desarrollo; Piloto → POC; Retirado → Desenganchado). Las diferencias de nomenclatura se resolverán al adaptar <a href="../../herramientas/T17_panel_consejo/index.html" title="Herramienta T17 &#183; Panel de IA para el consejo">T17</a> (<a href="03_SEVEN-G_Herramientas_y_registro_de_iniciativas.html" title="Documento 03 &#183; Herramientas de SEVEN-G y registro de iniciativas">documento 03</a>, ola 1).</p>
+<p>El inventario alimenta el panel (<a href="../../herramientas/T17_panel_consejo/index.html" title="Herramienta T17 &#183; Panel de IA para el consejo">T17</a>). Correspondencias principales con el esquema de datos del panel: <code>reporte_compania.clasificacion_ria</code> (prohibido, alto_riesgo, transparencia, minimo, no_es_ia) se obtiene de <em>Clasificación regulatoria</em> (Fuera de ámbito por no ser IA → <code>no_es_ia</code>); <code>reporte_compania.controles</code> (<code>RIA</code>, <code>FRIA</code>, <code>DPIA</code>, <code>seguridad</code>…) de la sección 3.5; <code>tags.exposicion</code> y <code>tags.tecnologia</code> de la sección 3.3; <code>estado</code> del caso (En uso, En desarrollo, POC, Desenganchado) de <em>Estado del sistema</em> (En producción → En uso; En desarrollo → En desarrollo; Piloto → POC; Retirado → Desenganchado). Las diferencias de nomenclatura se resolverán al adaptar <a href="../../herramientas/T17_panel_consejo/index.html" title="Herramienta T17 &#183; Panel de IA para el consejo">T17</a> (<a href="03_SEVEN-G_Herramientas_y_registro_de_iniciativas.html" title="Documento 03 &#183; Herramientas de SEVEN-G y registro de casos de uso">documento 03</a>, ola 1).</p>
 <hr />
 <h2 id="roles-de-la-compania-segun-el-reglamento-de-ia"><span class="antetitulo">04</span>Roles de la compañía según el Reglamento de IA</h2>
 <p>Las obligaciones dependen del <strong>rol</strong> que la compañía tenga respecto de cada sistema, no del sistema en abstracto. Una misma compañía puede tener roles distintos en sistemas distintos, y más de un rol en el mismo sistema.</p>
@@ -1940,7 +1940,7 @@ h2 .codigo, h3 .codigo { font-weight: 400; }
 <ol>
 <li><strong>Un sistema en producción sin ficha completa y clasificación definitiva</strong> es una no conformidad mayor; si además es de alto riesgo o prohibido, crítica.</li>
 <li><strong>Las fichas no se rellenan con estimaciones no declaradas.</strong> &quot;Sin dato&quot; se registra como tal.</li>
-<li><strong>Conciliación obligatoria</strong> entre <a href="../../herramientas/T01_registro_iniciativas/registro.html#/inventario" title="Herramienta T02 &#183; Inventario de sistemas de IA">T02</a> (sistemas) y <a href="../../herramientas/T01_registro_iniciativas/registro.html" title="Herramienta T01 &#183; Registro de iniciativas">T01</a> (casos de uso): todo caso de uso en fases 4–7 debe tener al menos un sistema vinculado, y todo sistema de tipo caso de uso debe tener un caso de uso.</li>
+<li><strong>Conciliación obligatoria</strong> entre <a href="../../herramientas/T01_registro_iniciativas/registro.html#/inventario" title="Herramienta T02 &#183; Inventario de sistemas de IA">T02</a> (sistemas) y <a href="../../herramientas/T01_registro_iniciativas/registro.html" title="Herramienta T01 &#183; Registro de casos de uso">T01</a> (casos de uso): todo caso de uso en fases 4–7 debe tener al menos un sistema vinculado, y todo sistema de tipo caso de uso debe tener un caso de uso.</li>
 <li><strong>Responsable nominal</strong>, no área genérica.</li>
 <li><strong>Historial conservado</strong>: los cambios no sobrescriben sin registrar el valor anterior.</li>
 </ol>
@@ -2087,7 +2087,7 @@ h2 .codigo, h3 .codigo { font-weight: 400; }
 <td>Informa al comité de IA de la conciliación de la sección 9 y del indicador Q7.</td>
 </tr>
 <tr id="cod-t01">
-<td><strong>Registro de casos de uso</strong> <span class="codigo">(<a href="../../herramientas/T01_registro_iniciativas/registro.html" title="Herramienta T01 &#183; Registro de iniciativas">T01</a>)</span></td>
+<td><strong>Registro de casos de uso</strong> <span class="codigo">(<a href="../../herramientas/T01_registro_iniciativas/registro.html" title="Herramienta T01 &#183; Registro de casos de uso">T01</a>)</span></td>
 
 <td>Vinculación sistema–caso de uso y eventos de cambio de clasificación.</td>
 </tr>
@@ -2128,7 +2128,7 @@ h2 .codigo, h3 .codigo { font-weight: 400; }
 <td>Tipos de uso (§1.2), fase 0 y fase 3, criterios Enterprise, declaración de aplicación (§14).</td>
 </tr>
 <tr>
-<td><strong><a href="03_SEVEN-G_Herramientas_y_registro_de_iniciativas.html" target="_blank" rel="noopener" title="Documento 03 &#183; Herramientas de SEVEN-G y registro de iniciativas">03 · Herramientas y registro de casos de uso</a></strong></td>
+<td><strong><a href="03_SEVEN-G_Herramientas_y_registro_de_iniciativas.html" target="_blank" rel="noopener" title="Documento 03 &#183; Herramientas de SEVEN-G y registro de casos de uso">03 · Herramientas y registro de casos de uso</a></strong></td>
 <td>Taxonomía controlada, modelo de datos y eventos.</td>
 </tr>
 <tr>
