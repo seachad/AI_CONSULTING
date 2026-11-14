@@ -1,0 +1,346 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Publicaciones de LinkedIn · SEVEN-G</title>
+<style>
+:root{--bg:#fff1e5;--tx:#33302e;--ac:#990f3d;--card:#fffaf5;--bd:#e3c9b4;--mut:#6b6560;--amb:#fff0c2;--ambbd:#d9a400;--l1:#0f5499;--l2:#0d7680;--ok:#1b7a3d;--btn:#fff;}
+@media (prefers-color-scheme:dark){:root{--bg:#1a1817;--tx:#eee6df;--ac:#ff8aa8;--card:#262321;--bd:#4a433e;--mut:#a89f97;--amb:#4a3d10;--ambbd:#d9a400;--l1:#7db4f2;--l2:#6dd0d8;--ok:#6fd08c;--btn:#2f2b28;}}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--tx);font:16px/1.5 system-ui,-apple-system,"Segoe UI",sans-serif}
+h1,h2{font-family:Georgia,serif;margin:0}
+header,main{max-width:900px;margin:0 auto;padding:0 16px}
+header{padding-top:16px}
+h1{font-size:1.5rem;color:var(--ac)}
+.aviso{background:var(--card);border-left:4px solid var(--ac);padding:8px 12px;margin:10px 0;font-size:.95rem}
+.estado-fichero{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin:8px 0}
+.conta{display:flex;flex-wrap:wrap;gap:6px;margin:8px 0}
+.chip{border:1px solid var(--bd);background:var(--card);border-radius:999px;padding:2px 10px;font-size:.85rem}
+button,select,input[type=search],input[type=text],input[type=file]{font:inherit;color:var(--tx)}
+button{background:var(--btn);border:1px solid var(--ac);color:var(--ac);border-radius:6px;padding:6px 12px;cursor:pointer}
+button.pri{background:var(--ac);color:#fff}
+@media (prefers-color-scheme:dark){button.pri{color:#1a1817}}
+button:hover{filter:brightness(.95)}
+:focus-visible{outline:3px solid var(--ac);outline-offset:2px}
+.filtros{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin:10px 0;padding:10px;background:var(--card);border:1px solid var(--bd);border-radius:8px;position:sticky;top:0;z-index:5}
+.filtros select,.filtros input[type=search]{background:var(--btn);border:1px solid var(--bd);border-radius:6px;padding:5px 8px;max-width:100%}
+.filtros input[type=search]{flex:1 1 160px;min-width:0}
+.filtros label{font-size:.9rem}
+h2.mes{margin:24px 0 8px;font-size:1.25rem;border-bottom:2px solid var(--ac);padding-bottom:2px}
+.hoy{margin:12px 0;padding:4px 10px;background:var(--ac);color:#fff;border-radius:6px;font-weight:600;font-size:.9rem}
+@media (prefers-color-scheme:dark){.hoy{color:#1a1817}}
+.card{background:var(--card);border:1px solid var(--bd);border-radius:8px;padding:12px;margin:10px 0}
+.card.pronto{background:var(--amb);border-color:var(--ambbd)}
+.cab{display:flex;flex-wrap:wrap;gap:6px 10px;align-items:center;font-weight:600}
+.tag{border-radius:4px;padding:1px 8px;font-size:.8rem;font-weight:700;border:1px solid currentColor;white-space:nowrap}
+.l-seven{color:var(--l1)}.l-mundo{color:var(--l2)}
+.e-borrador{color:var(--mut)}.e-aprobado{color:var(--ok)}.e-programado{color:var(--l1)}.e-publicado{color:var(--ac)}
+.meta{color:var(--mut);font-size:.9rem;margin:4px 0}
+.idea{margin:4px 0 8px}
+.dest{font-size:.85rem;word-break:break-all;margin:4px 0 8px}
+a{color:var(--ac)}
+textarea,.card input[type=text]{width:100%;background:var(--btn);border:1px solid var(--bd);border-radius:6px;padding:8px;font:inherit;color:var(--tx)}
+textarea{resize:vertical;min-height:90px;overflow:hidden}
+.vacio{font-style:italic;color:var(--mut);font-size:.9rem}
+.pal{font-size:.85rem;color:var(--mut)}.pal.mal{color:#c0392b;font-weight:700}
+details{margin:6px 0}summary{cursor:pointer;color:var(--ac)}
+.prev{white-space:pre-wrap;background:var(--btn);border:1px dashed var(--bd);border-radius:6px;padding:10px;margin-top:6px}
+.acc{display:flex;flex-wrap:wrap;gap:6px;margin:8px 0}
+.fila{margin-top:6px}.fila label{display:block;font-size:.85rem;color:var(--mut)}
+.vacia{padding:20px;text-align:center;color:var(--mut)}
+#msg{margin:8px 0;color:#c0392b;font-weight:600}
+footer{height:60px}
+</style>
+</head>
+<body>
+<header>
+<h1>Publicaciones de LinkedIn · SEVEN-G</h1>
+<div class="aviso">Nada se publica desde aquí. Aprobar solo cambia el estado; tú programas cada publicación en LinkedIn.</div>
+<div class="estado-fichero" id="fichero"></div>
+<div id="msg" role="alert"></div>
+<div class="conta" id="conta" aria-live="polite"></div>
+</header>
+<main>
+<div class="filtros" role="search">
+<label>Línea <select id="f-linea"><option value="">Todas</option><option>SEVEN-G</option><option>El mundo de la IA</option></select></label>
+<label>Estado <select id="f-estado"><option value="">Todos</option><option>borrador</option><option>aprobado</option><option>programado</option><option>publicado</option></select></label>
+<label>Mes <select id="f-mes"><option value="">Todos</option></select></label>
+<input type="search" id="f-q" placeholder="Buscar en idea y texto" aria-label="Buscar en idea y texto">
+<label><input type="checkbox" id="f-prox"> Solo próximas 4 semanas</label>
+</div>
+<div id="lista"></div>
+</main>
+<footer></footer>
+<script>
+(function(){
+'use strict';
+var MESES=['Enero','Febrero','Marzo','Abril','Mayo','Junio','Julio','Agosto','Septiembre','Octubre','Noviembre','Diciembre'];
+var datos=null,handle=null,dirty=false,saveTimer=null,saving=false,msgTxt='',ultimoGuardado='',modo='ninguno';
+var $=function(id){return document.getElementById(id)};
+
+function h(tag,attrs,kids){
+  var e=document.createElement(tag);
+  if(attrs)for(var k in attrs){
+    if(k==='class')e.className=attrs[k];
+    else if(k==='text')e.textContent=attrs[k];
+    else if(k.slice(0,2)==='on')e.addEventListener(k.slice(2),attrs[k]);
+    else if(attrs[k]!==null&&attrs[k]!==undefined)e.setAttribute(k,attrs[k]);
+  }
+  (kids||[]).forEach(function(c){if(c!=null)e.appendChild(typeof c==='string'?document.createTextNode(c):c)});
+  return e;
+}
+function pad(n){return (n<10?'0':'')+n}
+function hoyStr(){var d=new Date();return d.getFullYear()+'-'+pad(d.getMonth()+1)+'-'+pad(d.getDate())}
+function parseF(s){var a=String(s).split('-');return new Date(+a[0],+a[1]-1,+a[2])}
+function addDias(s,n){var d=parseF(s);d.setDate(d.getDate()+n);return d.getFullYear()+'-'+pad(d.getMonth()+1)+'-'+pad(d.getDate())}
+function fechaES(s){var a=String(s).split('-');return a[2]+'-'+a[1]+'-'+a[0]}
+function mesClave(s){return String(s).slice(0,7)}
+function mesNombre(k){var a=k.split('-');return MESES[+a[1]-1]+' de '+a[0]}
+function linea(p){
+  if(p.linea)return p.linea;
+  var d=(p.dia||'').toLowerCase();
+  if(!d&&p.fecha){d=['domingo','lunes','martes','miércoles','jueves','viernes','sábado'][parseF(p.fecha).getDay()]}
+  return d==='martes'?'SEVEN-G':'El mundo de la IA';
+}
+function enlace(p){
+  var d=p.destino||'';
+  if(/^http/i.test(d))return d;
+  var base=(datos.meta&&datos.meta.base_url)||'';
+  var i=d.indexOf('#'),pre=i<0?d:d.slice(0,i),anc=i<0?'':d.slice(i);
+  var u=p.utm?(pre.indexOf('?')<0?'?':'&')+p.utm:'';
+  return base+pre+u+anc;
+}
+function textoFinal(p){return (p.texto||'').replace(/\{enlace\}/g,enlace(p))}
+function palabras(p){var t=(p.texto||'').replace(/\{enlace\}/g,' ').trim();return t?t.split(/\s+/).length:0}
+
+/* ---------- IndexedDB ---------- */
+function idb(){return new Promise(function(ok,ko){
+  var r=indexedDB.open('editor-publicaciones-linkedin',1);
+  r.onupgradeneeded=function(){r.result.createObjectStore('h')};
+  r.onsuccess=function(){ok(r.result)};r.onerror=function(){ko(r.error)};
+})}
+function idbGet(){return idb().then(function(db){return new Promise(function(ok,ko){
+  var q=db.transaction('h').objectStore('h').get('handle');q.onsuccess=function(){ok(q.result)};q.onerror=function(){ko(q.error)}})})}
+function idbSet(v){return idb().then(function(db){return new Promise(function(ok,ko){
+  var t=db.transaction('h','readwrite');t.objectStore('h').put(v,'handle');t.oncomplete=ok;t.onerror=function(){ko(t.error)}})})}
+
+/* ---------- Cargar / guardar ---------- */
+function error(t){msgTxt=t;$('msg').textContent=t}
+function validar(j){
+  if(!j||!Array.isArray(j.publicaciones))throw new Error('El fichero no tiene la lista «publicaciones».');
+  return j;
+}
+function cargarDatos(j,origen){
+  datos=validar(j);dirty=false;error('');modo=origen;
+  poblarMeses();pintarFichero();render();
+}
+async function leerHandle(){
+  var f=await handle.getFile();
+  cargarDatos(JSON.parse(await f.text()),'fichero');
+}
+async function abrirFichero(){
+  try{
+    var r=await window.showOpenFilePicker({types:[{description:'Calendario JSON',accept:{'application/json':['.json']}}],multiple:false});
+    handle=r[0];
+    if(await handle.requestPermission({mode:'readwrite'})!=='granted'){error('Sin permiso de escritura: solo lectura.')}
+    await idbSet(handle);
+    await leerHandle();
+  }catch(e){if(e.name!=='AbortError')error('No se pudo abrir: '+e.message)}
+}
+async function reconectar(){
+  try{
+    var p=await handle.requestPermission({mode:'readwrite'});
+    if(p!=='granted'){error('No hay permiso para el fichero.');return}
+    await leerHandle();
+  }catch(e){error('No se pudo reconectar: '+e.message)}
+}
+function leerInput(ev){
+  var f=ev.target.files[0];if(!f)return;
+  var r=new FileReader();
+  r.onload=function(){try{handle=null;cargarDatos(JSON.parse(r.result),'descarga')}catch(e){error('JSON no válido: '+e.message)}};
+  r.readAsText(f,'utf-8');
+}
+function serializar(){return JSON.stringify(datos,null,1)+'\n'}
+function descargar(){
+  var b=new Blob([serializar()],{type:'application/json'});
+  var a=h('a',{href:URL.createObjectURL(b),download:'linkedin_calendario.json'});
+  document.body.appendChild(a);a.click();a.remove();
+  dirty=false;pintarFichero();
+}
+function marcarCambio(){
+  dirty=true;pintarFichero();
+  if(handle){clearTimeout(saveTimer);saveTimer=setTimeout(guardar,800)}
+}
+async function guardar(){
+  if(!handle||saving){if(saving){clearTimeout(saveTimer);saveTimer=setTimeout(guardar,400)}return}
+  saving=true;
+  try{
+    var w=await handle.createWritable();
+    await w.write(serializar());await w.close();
+    dirty=false;var d=new Date();ultimoGuardado=pad(d.getHours())+':'+pad(d.getMinutes());error('');
+  }catch(e){error('Error al guardar: '+e.message+'. Usa «Descargar JSON».')}
+  saving=false;pintarFichero();
+}
+window.addEventListener('beforeunload',function(e){if(dirty){e.preventDefault();e.returnValue=''}});
+
+function pintarFichero(){
+  var c=$('fichero');c.textContent='';
+  var tieneAPI=!!window.showOpenFilePicker;
+  var est;
+  if(!datos)est='Sin calendario cargado.';
+  else if(handle)est=dirty?'Cambios sin guardar':(ultimoGuardado?'Guardado a las '+ultimoGuardado:'Conectado con linkedin_calendario.json');
+  else if(modo==='http')est='Solo lectura (cargado del servidor). Conecta el fichero para guardar.';
+  else est=dirty?'Cambios sin guardar: usa «Descargar JSON»':'Sin fichero conectado.';
+  c.appendChild(h('span',{class:'chip',text:est}));
+  if(tieneAPI){
+    if(handle&&modo!=='fichero')c.appendChild(h('button',{class:'pri',onclick:reconectar,text:'Reconectar con linkedin_calendario.json'}));
+    c.appendChild(h('button',{class:handle&&datos?'':'pri',onclick:abrirFichero,text:'Abrir el calendario (JSON)'}));
+  }else{
+    c.appendChild(h('label',{class:'chip'},['Abrir JSON: ',h('input',{type:'file',accept:'.json,application/json',onchange:leerInput})]));
+  }
+  if(datos)c.appendChild(h('button',{onclick:descargar,text:'Descargar JSON'}));
+}
+function pintarConta(){
+  var c=$('conta');c.textContent='';
+  if(!datos)return;
+  var ps=datos.publicaciones,e={},l={};
+  ps.forEach(function(p){e[p.estado]=(e[p.estado]||0)+1;var x=linea(p);l[x]=(l[x]||0)+1});
+  ['borrador','aprobado','programado','publicado'].forEach(function(k){c.appendChild(h('span',{class:'chip tag e-'+k,text:k+': '+(e[k]||0)}))});
+  Object.keys(l).forEach(function(k){c.appendChild(h('span',{class:'chip',text:k+': '+l[k]}))});
+  c.appendChild(h('span',{class:'chip',text:'Total: '+ps.length}));
+}
+function poblarMeses(){
+  var s=$('f-mes'),v=s.value;s.length=1;
+  var ks={};datos.publicaciones.forEach(function(p){ks[mesClave(p.fecha)]=1});
+  Object.keys(ks).sort().forEach(function(k){var o=h('option',{value:k,text:mesNombre(k)});s.appendChild(o)});
+  s.value=v;
+}
+
+/* ---------- Tarjetas ---------- */
+function proxima(p){var t=hoyStr();return p.estado==='borrador'&&p.fecha>=t&&p.fecha<=addDias(t,14)}
+function crearTarjeta(p){
+  var card=h('div',{class:'card'+(proxima(p)?' pronto':''),id:'p'+p.n});
+  var ln=linea(p);
+  card.appendChild(h('div',{class:'cab'},[
+    h('span',{text:(p.dia||'')+' '+fechaES(p.fecha)+' · '+(p.hora_madrid||'')+' · semana '+p.semana+' · nº '+p.n}),
+    h('span',{class:'tag '+(ln==='SEVEN-G'?'l-seven':'l-mundo'),text:ln}),
+    h('span',{class:'tag e-'+p.estado,text:p.estado})
+  ]));
+  card.appendChild(h('div',{class:'meta',text:[p.pilar,p.serie,p.formato].filter(Boolean).join(' · ')}));
+  if(p.idea)card.appendChild(h('div',{class:'idea',text:p.idea}));
+  var url=enlace(p);
+  if(p.destino)card.appendChild(h('div',{class:'dest'},['Destino: ',h('a',{href:url,target:'_blank',rel:'noopener',text:url})]));
+  if(!(p.texto||'').trim())card.appendChild(h('div',{class:'vacio',text:'Sin texto todavía: Claude lo escribe en el lote del mes'}));
+  var ta=h('textarea',{'aria-label':'Texto de la publicación '+p.n,rows:4});
+  ta.value=p.texto||'';
+  var pal=h('div',{class:'pal'});
+  var prev=h('div',{class:'prev'});
+  var vacio=card.lastChild;
+  function refrescar(){
+    var n=palabras(p);
+    pal.textContent=n+' palabras'+(n>250?' · pasa de 250: acórtalo':'');
+    pal.className='pal'+(n>250?' mal':'');
+    prev.textContent=textoFinal(p);
+    ta.style.height='auto';ta.style.height=(ta.scrollHeight+4)+'px';
+    if(vacio&&vacio.className==='vacio')vacio.style.display=(p.texto||'').trim()?'none':'';
+  }
+  ta.addEventListener('input',function(){p.texto=ta.value;refrescar();marcarCambio()});
+  card.appendChild(ta);card.appendChild(pal);
+  var det=h('details',{},[h('summary',{text:'Vista previa'}),prev]);
+  det.addEventListener('toggle',function(){if(det.open)refrescar()});
+  card.appendChild(det);
+  var copiado=h('span',{class:'pal',role:'status'});
+  function cop(){
+    var t=textoFinal(p);
+    var ok=function(){copiado.textContent='Copiado';setTimeout(function(){copiado.textContent=''},2000)};
+    if(navigator.clipboard&&navigator.clipboard.writeText)navigator.clipboard.writeText(t).then(ok,function(){fb(t,ok)});else fb(t,ok);
+  }
+  function fb(t,ok){var x=h('textarea');x.value=t;document.body.appendChild(x);x.select();try{document.execCommand('copy');ok()}catch(e){error('No se pudo copiar.')}x.remove()}
+  var acc=h('div',{class:'acc'},[h('button',{class:'pri',onclick:cop,text:'Copiar para LinkedIn'}),copiado]);
+  function cambiar(est){
+    p.estado=est;
+    if(est==='publicado'&&!p.fecha_publicacion)p.fecha_publicacion=hoyStr();
+    marcarCambio();reemplazar(p);pintarConta();
+  }
+  if(p.estado==='borrador')acc.appendChild(h('button',{onclick:function(){cambiar('aprobado')},text:'Aprobar'}));
+  if(p.estado==='borrador'||p.estado==='aprobado')acc.appendChild(h('button',{onclick:function(){cambiar('programado')},text:'Marcar programado'}));
+  if(p.estado!=='publicado')acc.appendChild(h('button',{onclick:function(){cambiar('publicado')},text:'Marcar publicado'}));
+  if(p.estado!=='borrador')acc.appendChild(h('button',{onclick:function(){cambiar('borrador')},text:'Volver a borrador'}));
+  card.appendChild(acc);
+  if(p.estado==='publicado'){
+    var u=h('input',{type:'text',placeholder:'https://www.linkedin.com/...','aria-label':'URL de la publicación'});u.value=p.url_publicacion||'';
+    u.addEventListener('input',function(){if(u.value)p.url_publicacion=u.value;else delete p.url_publicacion;marcarCambio()});
+    var fp=h('input',{type:'text',placeholder:'AAAA-MM-DD','aria-label':'Fecha de publicación'});fp.value=p.fecha_publicacion||'';
+    fp.addEventListener('input',function(){if(fp.value)p.fecha_publicacion=fp.value;else delete p.fecha_publicacion;marcarCambio()});
+    card.appendChild(h('div',{class:'fila'},[h('label',{text:'URL de la publicación'}),u]));
+    card.appendChild(h('div',{class:'fila'},[h('label',{text:'Fecha de publicación'}),fp]));
+  }
+  var nt=h('input',{type:'text',placeholder:'Notas (opcional)','aria-label':'Notas'});nt.value=p.notas||'';
+  nt.addEventListener('input',function(){if(nt.value)p.notas=nt.value;else delete p.notas;marcarCambio()});
+  card.appendChild(h('div',{class:'fila'},[h('label',{text:'Notas'}),nt]));
+  setTimeout(refrescar,0);
+  return card;
+}
+function reemplazar(p){
+  var old=$('p'+p.n);
+  if(!old)return;
+  var visible=pasa(p);
+  if(!visible){old.remove();return}
+  old.replaceWith(crearTarjeta(p));
+}
+function pasa(p){
+  var v=function(id){return $(id).value};
+  if(v('f-linea')&&linea(p)!==v('f-linea'))return false;
+  if(v('f-estado')&&p.estado!==v('f-estado'))return false;
+  if(v('f-mes')&&mesClave(p.fecha)!==v('f-mes'))return false;
+  var q=v('f-q').trim().toLowerCase();
+  if(q&&((p.idea||'')+' '+(p.texto||'')).toLowerCase().indexOf(q)<0)return false;
+  if($('f-prox').checked){var t=hoyStr();if(p.fecha<t||p.fecha>addDias(t,28))return false}
+  return true;
+}
+function render(){
+  pintarConta();
+  var L=$('lista');L.textContent='';
+  if(!datos)return;
+  var ps=datos.publicaciones.slice().sort(function(a,b){return a.fecha<b.fecha?-1:a.fecha>b.fecha?1:(a.hora_madrid||'')<(b.hora_madrid||'')?-1:a.n-b.n}).filter(pasa);
+  if(!ps.length){L.appendChild(h('div',{class:'vacia',text:'Ninguna publicación coincide con los filtros.'}));return}
+  var mes='',hoyPuesto=false,t=hoyStr();
+  ps.forEach(function(p){
+    var m=mesClave(p.fecha);
+    if(m!==mes){mes=m;L.appendChild(h('h2',{class:'mes',text:mesNombre(m)}))}
+    if(!hoyPuesto&&p.fecha>=t){hoyPuesto=true;L.appendChild(h('div',{class:'hoy',text:'Hoy · '+fechaES(t)}))}
+    L.appendChild(crearTarjeta(p));
+  });
+}
+['f-linea','f-estado','f-mes','f-prox'].forEach(function(id){$(id).addEventListener('change',render)});
+$('f-q').addEventListener('input',render);
+
+/* ---------- Arranque ---------- */
+async function inicio(){
+  pintarFichero();
+  if(window.showOpenFilePicker){
+    try{
+      var hd=await idbGet();
+      if(hd){
+        handle=hd;
+        var p=await hd.queryPermission({mode:'readwrite'});
+        if(p==='granted'){await leerHandle();return}
+        pintarFichero();
+        // solo lectura desde el servidor mientras no se reconecte
+      }
+    }catch(e){}
+  }
+  if(/^https?:/.test(location.protocol)){
+    try{
+      var r=await fetch('linkedin_calendario.json',{cache:'no-store'});
+      if(r.ok){cargarDatos(await r.json(),'http');return}
+    }catch(e){}
+  }
+  pintarFichero();
+}
+inicio();
+})();
+</script>
+</body>
+</html>

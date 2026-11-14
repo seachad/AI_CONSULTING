@@ -1,13 +1,14 @@
 # Plan de publicaciones en LinkedIn · SEVEN-G y marca personal del autor
 
-Documento de trabajo. No se publica. Fecha: 13-11-2026. Estado: **propuesta, pendiente de aprobación del autor**.
+Documento de trabajo. No se publica. Fecha: 13-11-2026; actualizado el 14-11-2026 (D183: dos líneas). Estado: **aprobado por el autor (D172 y D183); cada texto sigue en `borrador` hasta que el autor lo apruebe**.
 
 Ficheros de esta carpeta:
 
-- `linkedin_calendario.json`: fuente del calendario (104 publicaciones, con el texto completo de las 20 primeras).
+- `linkedin_calendario.json`: fuente del calendario (104 publicaciones, con el texto completo de las 20 primeras y de 4 más).
+- `editor_publicaciones.html`: editor para revisar, modificar y aprobar las publicaciones (D183). Ábralo con Edge, pulse «Abrir el calendario (JSON)» y elija `linkedin_calendario.json`; cada cambio se guarda en ese fichero.
 - `linkedin_calendario.csv`: la misma tabla para hoja de cálculo (separador `;`).
 
-**Regla principal: nada se publica sin aprobación expresa del autor.** Cada publicación tiene un campo `estado`. Solo el autor lo cambia de `borrador` a `aprobado`.
+**Regla principal: nada se publica sin aprobación expresa del autor.** Cada publicación tiene un campo `estado`. Solo el autor lo cambia de `borrador` a `aprobado`, con el editor o a mano. El editor no publica nada.
 
 ## 0. Avisos antes de leer
 
@@ -16,6 +17,7 @@ Ficheros de esta carpeta:
 3. Los textos usan «tú», como el autor en LinkedIn. No llevan emojis ni etiquetas (sección 1.3).
 4. Ninguna publicación cita cifras de mercado. Las únicas cifras son recuentos del propio marco (seis preguntas, ocho pasos, seis frenos).
 5. **Aprobado por el autor el 13-11-2026 (D172):** español para las 104 publicaciones, martes 08:15 y jueves 15:30 (hora de Madrid), inicio el martes 17-11-2026 y parámetros `utm` en los enlaces. El horario sigue siendo una hipótesis que se comprueba con la prueba de la sección 4.2. Cada texto sigue en `borrador` hasta que el autor cambie su `estado`.
+7. **Dos líneas desde el 14-11-2026 (D183).** Martes: **SEVEN-G** (el método). Jueves: **El mundo de la IA** (estudios, fundamentos e historia, futuro y sectores), con una publicación al mes, el primer jueves, de «Lo que ha pasado este mes». Cada texto de esa línea termina con «Qué significa para tu consejo:». La historia en ocho pasos no cambia: todos sus pasos caen en martes. Las publicaciones de SEVEN-G pasan de 104 a 52; las ideas que no caben quedan para un segundo año.
 6. **La publicación 1 fija el objetivo de la serie** (decisión del autor, D172): compartir conocimiento sobre la implantación estratégica de la IA, abrir debate y pedir participación activa. El feedback sirve para mejorar SEVEN-G, SPHERES y SPAD y vuelve a la comunidad. Es la única publicación que nombra SPHERES y SPAD; el resto del plan no los trata.
 
 ## 1. Notas de estilo del autor
@@ -75,19 +77,22 @@ Idea central, que se repite al menos una vez al mes con palabras distintas:
 
 > La IA no es una tecnología ni un producto más. Es un activo estratégico. Sus decisiones son del consejo, del primer ejecutivo y de la dirección financiera, no solo de tecnología.
 
-Qué no se trata: AECF_MCP, SPAD, modelos de trabajo de equipos de desarrollo, comparativas de modelos, noticias de producto.
+Qué no se trata: AECF_MCP, SPAD, modelos de trabajo de equipos de desarrollo, comparativas de modelos, noticias de producto sueltas. Las noticias solo entran en «Lo que ha pasado este mes», con su lectura para el consejo.
 
 ### 2.2 Pilares
 
-| Pilar | Qué aporta | Publicaciones | Fuente en el sitio |
+| Línea · pilar | Qué aporta | Publicaciones | Fuente |
 |---|---|---|---|
-| Historia en ocho pasos, «Del entusiasmo a la transformación gobernada» | El relato: de probar a gobernar | 10 (ocho pasos, cierre y carrusel) | Entrada, `#historia` |
-| Tres preguntas estratégicas | Dónde invertir, cómo escalar, cómo demostrar el valor | 4 | Entrada, `#para-que` |
-| Seis preguntas del consejo, y «La pregunta incómoda» | El lenguaje del consejo | 19 | Entrada, `#preguntas`; documento 61, sección 9 |
-| Doce áreas de actuación | Profundidad, un asunto cada vez | 43 | `areas/<id>.html` y documentos 13, 40, 42, 43, 50, 54, 60 |
-| Mitos y errores de la dirección | Opinión, para abrir conversación | 10 | Documentos 54, 61 y 40 |
-| Casos por sector | Cercanía a cada sector | 11 | Galería por sector |
-| Idea central y cierres | Recordar el mensaje y los límites | 7 | Entrada, documentos 00, 04 y 95 |
+| SEVEN-G · Historia en ocho pasos, «Del entusiasmo a la transformación gobernada» | El relato: de probar a gobernar | 10 (ocho pasos, cierre y carrusel) | Entrada, `#historia` |
+| SEVEN-G · Tres preguntas estratégicas | Dónde invertir, cómo escalar, cómo demostrar el valor | 3 | Entrada, `#para-que` |
+| SEVEN-G · Seis preguntas del consejo | El lenguaje del consejo | 8 | Páginas `preguntas/`; documento 61, sección 9 |
+| SEVEN-G · Áreas de actuación | Profundidad, un asunto cada vez | 25 | `areas/<id>.html` y documentos del marco |
+| SEVEN-G · Mitos y errores, idea central | Opinión y límites del marco | 6 | Documentos 00, 04, 54 y 61 |
+| El mundo de la IA · Estudio | Lo que dice un estudio relevante, leído para un consejo | 8 | Fuente primaria verificada en el registro de referencias |
+| El mundo de la IA · Fundamentos e historia | Conceptos que un consejero debe distinguir | 12 | Sin cifras; si hay una, con fuente |
+| El mundo de la IA · Futuro | Qué vigilar y qué decidir antes | 9 | Fuente primaria o página del marco |
+| El mundo de la IA · Sector | Cercanía a cada sector | 11 | Galería por sector (fuentes verificadas) |
+| El mundo de la IA · Lo que ha pasado este mes | Estar al día sin ruido | 12 | Fuentes primarias; se escribe la semana anterior |
 
 Regla de reparto por sector (D165): ningún sector aparece más de una vez. Los once sectores son distintos.
 
@@ -95,8 +100,8 @@ Regla de reparto por sector (D165): ningún sector aparece más de una vez. Los 
 
 | Trimestre | Semanas | Tema del trimestre | Público principal | Series |
 |---|---|---|---|---|
-| 1 | 1 a 13 | De probar la IA a gobernarla | Primer ejecutivo y consejo | Historia (8 martes y un cierre), Tres preguntas (3 jueves), Mitos |
-| 2 | 14 a 26 | Las preguntas del consejo y el dinero | Consejo y dirección financiera | Seis preguntas (6 martes), Valor para la dirección financiera (6 martes), La pregunta incómoda (jueves) |
+| 1 | 1 a 13 | De probar la IA a gobernarla | Primer ejecutivo y consejo | Historia (8 martes, cierre y carrusel), Tres preguntas (martes) |
+| 2 | 14 a 26 | Las preguntas del consejo y el dinero | Consejo y dirección financiera | Seis preguntas (6 martes), Valor para la dirección financiera (martes) |
 | 3 | 27 a 39 | Organización, personas y transformación | Transformación, personas y negocio | Organización IA-first (4), Talento técnico (3), Transformación (4) |
 | 4 | 40 a 52 | Riesgo, seguridad, normas e implantación | Riesgos, cumplimiento y consejo | Riesgo (5), Seguridad (4), Consejo (3), Implantar (4) |
 
@@ -124,9 +129,9 @@ Una serie crea el hábito de volver. Reglas:
 - Cada entrega lleva su número («3 de 8») en la primera línea.
 - Cada entrega se entiende sola. No obliga a leer la anterior.
 - Al terminar una serie, un carrusel la resume (semanas 11, 26 y 52).
-- El jueves es el día de la opinión: una pregunta incómoda, un mito o un sector.
+- El jueves es «El mundo de la IA»: estudio, fundamentos, futuro o sector, y el primer jueves de cada mes, «Lo que ha pasado este mes». Rota para no repetir formato dos jueves seguidos.
 
-«La pregunta incómoda» es la serie más larga (12 entregas). Sale del documento 61, sección 9: preguntas difíciles que un consejo hace de verdad, con una buena respuesta y una mala.
+«La pregunta incómoda» se queda en dos entregas de martes (semanas 23 y 25); el resto de sus ideas queda para un segundo año.
 
 ## 3. Idioma
 
@@ -196,126 +201,126 @@ Inicio propuesto: martes 17-11-2026. Si empieza otro día, las fechas se desplaz
 | Sem. | Fecha | Día | Pilar | Serie | Idea | Página de destino |
 |---|---|---|---|---|---|---|
 | 1 | 17-11-2026 | martes | Idea central | Apertura | Objetivo de la serie, público, qué se va a publicar, qué son SEVEN-G y SPHERES y por qué se crearon, y mensaje principal: el error es tratar la IA como una tecnología más. Se busca participación activa: el feedback mejora SEVEN-G, SPHERES y SPAD y vuelve a la comunidad. | `SEVEN-G/html/es/entrada/index.html` |
-| 1 | 19-11-2026 | jueves | Seis preguntas del consejo | Apertura | ¿Cuántos sistemas de IA tiene hoy en producción? Seis preguntas que su consejo acabará haciendo. | `SEVEN-G/html/es/entrada/index.html#preguntas` |
+| 1 | 19-11-2026 | jueves | El mundo de la IA | Estudio | McKinsey, «The agentic organization» (septiembre de 2025): la IA como el mayor cambio de paradigma organizativo desde las revoluciones industrial y digital. Cuatro eras y qué cambia en la de la IA. | `https://www.mckinsey.com/capabilities/people-and-organization/our-insights/the-agentic-organization-contours-of-the-next-paradigm-for-the-ai-era` |
 | 2 | 24-11-2026 | martes | Historia | Historia en ocho pasos 1/8 | Todo empieza con entusiasmo: una docena de iniciativas de IA y nadie las gobierna. | `SEVEN-G/html/es/entrada/index.html#historia` |
-| 2 | 26-11-2026 | jueves | Tres preguntas estratégicas | Tres preguntas 1/3 | Dónde invertir: ¿su inversión sigue a su estrategia o a quien pidió presupuesto primero? | `SEVEN-G/herramientas/T17_panel_consejo/ejemplo/salida/t01_Dashboard_Casos_Uso_IA_v8.html` |
+| 2 | 26-11-2026 | jueves | El mundo de la IA | Fundamentos e historia | Qué es (y qué no es) un agente de IA. Un asistente propone; un agente actúa. Tres preguntas antes de aprobar uno. | `SEVEN-G/html/es/35_SEVEN-G_Seguridad_de_IA_y_agentes.html#niveles-de-autonomia` |
 | 3 | 01-12-2026 | martes | Historia | Historia en ocho pasos 2/8 | El consejo empieza a preguntar: «¿esto produce algo?». Nadie tiene una respuesta única. | `SEVEN-G/html/es/entrada/index.html#preguntas` |
-| 3 | 03-12-2026 | jueves | Tres preguntas estratégicas | Tres preguntas 2/3 | Cómo escalar: seis frenos y por cuál se empieza. Una lista sin orden no es un plan. | `SEVEN-G/html/es/60_SEVEN-G_Paquete_para_el_consejo.html#10-4-que-frena-el-escalado-lectura-ejecutiva-y-donde-actuar-primero` |
+| 3 | 03-12-2026 | jueves | El mundo de la IA | Lo que ha pasado este mes | Lo que ha pasado en IA en noviembre: tres o cuatro noticias con su lectura para el consejo. Solo fuentes primarias (anuncio de la compañía, regulador o estudio original). Se escribe la semana anterior. | `` |
 | 4 | 08-12-2026 | martes | Historia | Historia en ocho pasos 3/8 | Primero, saber qué tienes: inventario y primera lectura de madurez. Más tecnología que gobierno no es una ventaja. | `SEVEN-G/herramientas/T15_diagnostico_madurez/madurez.html` |
-| 4 | 10-12-2026 | jueves | Tres preguntas estratégicas | Tres preguntas 3/3 | Cómo demostrar el valor: las horas liberadas no son ahorro; solo suma lo validado. | `SEVEN-G/html/es/entrada/index.html#panel` |
+| 4 | 10-12-2026 | jueves | El mundo de la IA | Fundamentos e historia | La IA no es nueva; lo nuevo es lo que hace. Tres etapas (reglas, aprendizaje, generación y acción) y lo que cada una pidió a la dirección. | `SEVEN-G/html/es/11_SEVEN-G_Modelo_de_madurez.html#7-6-lectura-en-tres-lentes` |
 | 5 | 15-12-2026 | martes | Historia | Historia en ocho pasos 4/8 | Mirar fuera y decidir cuánto quieres: el sector como referencia, y la primera decisión del consejo sobre ambición y riesgo. | `SEVEN-G/herramientas/T17_panel_consejo/galeria/index.html` |
-| 5 | 17-12-2026 | jueves | Mitos y errores de la dirección | Mitos | Mito: «la IA es cosa de tecnología». Cuatro decisiones que tecnología no toma sola. | `SEVEN-G/html/es/54_SEVEN-G_Organizacion_de_la_compania_para_la_IA.html#3-1-que-trozo-de-ia-se-queda-cada-cargo-existente` |
+| 5 | 17-12-2026 | jueves | El mundo de la IA | Futuro | Foro Económico Mundial, «Future of Jobs Report 2025»: la barrera para transformar el negocio no es la tecnología, son las competencias. | `https://www.weforum.org/publications/the-future-of-jobs-report-2025/` |
 | 6 | 22-12-2026 | martes | Historia | Historia en ocho pasos 5/8 | Poner la cartera en movimiento: aquí empieza el método. El embudo muestra qué avanza, qué se atasca y qué sale. | `SEVEN-G/html/es/entrada/index.html#embudo` |
-| 6 | 24-12-2026 | jueves | Idea central | Fiestas | Una lectura de cinco minutos para estos días: qué es SEVEN-G, para quién sirve y para quién no. | `SEVEN-G/html/es/00_SEVEN-G_Que_es_y_para_que_sirve.html#inicio-rapido-quick-start` |
+| 6 | 24-12-2026 | jueves | El mundo de la IA | Fundamentos e historia | Lectura corta para las fiestas: IA predictiva, generativa y agéntica. Tres palabras que no son lo mismo y se gobiernan distinto. | `SEVEN-G/html/es/02_SEVEN-G_Glosario_y_convenciones.html` |
 | 7 | 29-12-2026 | martes | Historia | Historia en ocho pasos 6/8 | Cifras que el consejo puede creerse: «sin dato» nunca es cero. | `SEVEN-G/herramientas/T17_panel_consejo/ejemplo/salida/t01_Dashboard_Casos_Uso_IA_v8.html` |
-| 7 | 31-12-2026 | jueves | Áreas de actuación | Estrategia | Un propósito para el consejo: aprobar una tesis de IA. | `SEVEN-G/html/es/13_SEVEN-G_Tesis_de_IA_ambicion_y_apetito_de_riesgo.html#tesis-de-ia` |
+| 7 | 31-12-2026 | jueves | El mundo de la IA | Futuro | Tres cosas que vigilaría en 2027 desde un consejo: agentes en procesos reales, el coste de la IA y la regulación en aplicación. | `https://eur-lex.europa.eu/eli/reg/2024/1689/oj/spa` |
 | 8 | 05-01-2027 | martes | Historia | Historia en ocho pasos 7/8 | Gobernar sin frenar: una puerta antes de cada gran gasto. | `SEVEN-G/html/es/preguntas/parar.html` |
-| 8 | 07-01-2027 | jueves | Mitos y errores de la dirección | Mitos | Mito: «parar un proyecto de IA es un fracaso». Parar a tiempo, con motivo, es un resultado. | `SEVEN-G/html/es/61_SEVEN-G_Guia_de_conversacion_con_el_consejo.html#preguntas-dificiles-frecuentes` |
+| 8 | 07-01-2027 | jueves | El mundo de la IA | Lo que ha pasado este mes | Lo que ha pasado en IA en diciembre: tres o cuatro noticias con su lectura para el consejo. Solo fuentes primarias (anuncio de la compañía, regulador o estudio original). Se escribe la semana anterior. | `` |
 | 9 | 12-01-2027 | martes | Historia | Historia en ocho pasos 8/8 | Con la casa en orden, ir a más: la ambición de transformación solo es real con un gobierno serio debajo. | `SEVEN-G/html/es/preguntas/mas.html` |
-| 9 | 14-01-2027 | jueves | Mitos y errores de la dirección | Mitos | Mito: «tenemos muchos pilotos, vamos bien». Decidir uno por uno: escalar o parar. | `SEVEN-G/herramientas/T23_recorrido_implantacion/recorrido.html` |
+| 9 | 14-01-2027 | jueves | El mundo de la IA | Estudio | OCDE, «Employment Outlook 2023»: la IA rinde más donde se forma a las personas para trabajar con ella. | `https://www.oecd.org/content/dam/oecd/en/publications/reports/2023/07/oecd-employment-outlook-2023_904bcef3/08785bba-en.pdf` |
 | 10 | 19-01-2027 | martes | Historia | Cierre de la historia | El camino es el mismo; el punto de partida, no. Cierre de la historia y por dónde empieza cada compañía. | `SEVEN-G/html/es/entrada/index.html#partida` |
-| 10 | 21-01-2027 | jueves | Mitos y errores de la dirección | Mitos | Mito: «necesitamos un director de IA». En general, no: valor, capacidad y control. | `SEVEN-G/html/es/54_SEVEN-G_Organizacion_de_la_compania_para_la_IA.html#9-5-hace-falta-un-director-de-ia-en-general-no` |
+| 10 | 21-01-2027 | jueves | El mundo de la IA | Sector | Banca: el sector que más IA anuncia y el que menos la mide. Evident AI Outcomes Report 2025 y tres tendencias del sector. | `SEVEN-G/herramientas/T17_panel_consejo/galeria/index.html#es-banca` |
 | 11 | 26-01-2027 | martes | Historia | Resumen de la historia | Del entusiasmo a la transformación gobernada: la historia completa en ocho pasos. | `SEVEN-G/html/es/entrada/index.html#historia` |
-| 11 | 28-01-2027 | jueves | Seis preguntas del consejo | La pregunta incómoda | ¿Quién responde si la IA se equivoca? La responsabilidad no se traslada al sistema ni al proveedor. | `SEVEN-G/html/es/61_SEVEN-G_Guia_de_conversacion_con_el_consejo.html#preguntas-dificiles-frecuentes` |
-| 12 | 02-02-2027 | martes | Áreas de actuación | Valor (dirección financiera) | Trece errores que inflan el valor de la IA. Empiece por tres: ¿cuál comete su compañía? | `SEVEN-G/html/es/40_SEVEN-G_Reglas_de_medicion_del_valor.html#errores-frecuentes-que-inflan-el-valor` |
-| 12 | 04-02-2027 | jueves | Mitos y errores de la dirección | Mitos | Mito: «cumplimos el Reglamento de IA». Sin inventario completo, nadie puede afirmarlo. | `SEVEN-G/html/es/32_SEVEN-G_Inventario_y_clasificacion_regulatoria.html#que-se-inventaria` |
-| 13 | 09-02-2027 | martes | Mitos y errores de la dirección | Errores | Seis señales de que la organización para la IA está mal montada. | `SEVEN-G/html/es/54_SEVEN-G_Organizacion_de_la_compania_para_la_IA.html#3-5-seis-senales-de-que-la-organizacion-esta-mal-montada` |
-| 13 | 11-02-2027 | jueves | Idea central | Cierre de trimestre | Por qué SEVEN-G es gratuito y qué no es: no certifica, no sustituye a su asesoría, no capta contactos. | `SEVEN-G/html/es/04_SEVEN-G_Origenes_diferencias_y_por_que_es_abierto.html` |
+| 11 | 28-01-2027 | jueves | El mundo de la IA | Estudio | Harvard Business School, «The Cybernetic Teammate» (2025): con IA, una persona igualó a un equipo sin IA y la IA redujo los silos entre funciones. | `https://www.hbs.edu/faculty/Pages/item.aspx?num=67197` |
+| 12 | 02-02-2027 | martes | Tres preguntas estratégicas | Tres preguntas 1/3 | Dónde invertir: ¿su inversión sigue a su estrategia o a quien pidió presupuesto primero? | `SEVEN-G/herramientas/T17_panel_consejo/ejemplo/salida/t01_Dashboard_Casos_Uso_IA_v8.html` |
+| 12 | 04-02-2027 | jueves | El mundo de la IA | Lo que ha pasado este mes | Lo que ha pasado en IA en enero: tres o cuatro noticias con su lectura para el consejo. Solo fuentes primarias (anuncio de la compañía, regulador o estudio original). Se escribe la semana anterior. | `` |
+| 13 | 09-02-2027 | martes | Tres preguntas estratégicas | Tres preguntas 2/3 | Cómo escalar: seis frenos y por cuál se empieza. Una lista sin orden no es un plan. | `SEVEN-G/html/es/60_SEVEN-G_Paquete_para_el_consejo.html#10-4-que-frena-el-escalado-lectura-ejecutiva-y-donde-actuar-primero` |
+| 13 | 11-02-2027 | jueves | El mundo de la IA | Fundamentos e historia | Por qué la IA generativa se equivoca con tanta seguridad. Qué es una «alucinación» y qué controles pide a la dirección. | `SEVEN-G/html/es/52_SEVEN-G_Manual_de_operacion_de_IA.html` |
 
 ### Trimestre 2
 
 | Sem. | Fecha | Día | Pilar | Serie | Idea | Página de destino |
 |---|---|---|---|---|---|---|
-| 14 | 16-02-2027 | martes | Seis preguntas del consejo | Seis preguntas 1/6 | ¿Estoy avanzando con la IA? Cuántas entran, cuántas llegan y dónde se atascan. | `SEVEN-G/html/es/preguntas/avanzo.html` |
-| 14 | 18-02-2027 | jueves | Seis preguntas del consejo | La pregunta incómoda | ¿Cuánto nos ahorra la IA? Una cifra única sin estado no es una respuesta. | `SEVEN-G/html/es/61_SEVEN-G_Guia_de_conversacion_con_el_consejo.html#preguntas-dificiles-frecuentes` |
-| 15 | 23-02-2027 | martes | Seis preguntas del consejo | Seis preguntas 2/6 | ¿Son rentables mis casos de uso? Coste completo frente a eficiencias y retorno. | `SEVEN-G/html/es/preguntas/rentable.html` |
-| 15 | 25-02-2027 | jueves | Casos por sector | Sector: banca | Banca: qué casos de uso están consolidados y cuáles llegan. Panel de una entidad ficticia. | `SEVEN-G/herramientas/T17_panel_consejo/galeria/index.html#es-banca` |
-| 16 | 02-03-2027 | martes | Seis preguntas del consejo | Seis preguntas 3/6 | ¿Puede hacer más mi compañía? Nueve esferas y tres niveles de ambición. | `SEVEN-G/html/es/preguntas/mas.html` |
-| 16 | 04-03-2027 | jueves | Seis preguntas del consejo | La pregunta incómoda | ¿Vamos por detrás de la competencia? La comparación fiable es con uno mismo en el tiempo. | `SEVEN-G/html/es/61_SEVEN-G_Guia_de_conversacion_con_el_consejo.html#preguntas-dificiles-frecuentes` |
-| 17 | 09-03-2027 | martes | Seis preguntas del consejo | Seis preguntas 4/6 | ¿Me transformo o solo soy más eficiente? Ocho señales lo separan. | `SEVEN-G/html/es/preguntas/transformo.html` |
-| 17 | 11-03-2027 | jueves | Seis preguntas del consejo | La pregunta incómoda | ¿Cuántos empleos va a eliminar la IA? Primero, la posición aprobada: sustituir, aumentar o reorganizar. | `SEVEN-G/html/es/50_SEVEN-G_Personas_y_organizacion.html` |
-| 18 | 16-03-2027 | martes | Seis preguntas del consejo | Seis preguntas 5/6 | ¿Sé parar a tiempo? Cinco salidas en cada puerta, y parar es una de ellas. | `SEVEN-G/html/es/preguntas/parar.html` |
-| 18 | 18-03-2027 | jueves | Casos por sector | Sector: seguros | Seguros: hacia dónde se mueven los casos de uso. Panel de una aseguradora ficticia. | `SEVEN-G/herramientas/T17_panel_consejo/galeria/index.html#es-seguros` |
-| 19 | 23-03-2027 | martes | Seis preguntas del consejo | Seis preguntas 6/6 | ¿Tengo el riesgo bajo control? Inventario, una sola escala y roles separados. | `SEVEN-G/html/es/preguntas/riesgo.html` |
-| 19 | 25-03-2027 | jueves | Áreas de actuación | Consejo | Lectura tranquila: guion de una sesión de consejo de 60 minutos sobre IA. | `SEVEN-G/html/es/61_SEVEN-G_Guia_de_conversacion_con_el_consejo.html#guion-de-una-sesion-de-60-minutos` |
-| 20 | 30-03-2027 | martes | Áreas de actuación | Valor (dirección financiera) | Tres estados de una cifra: estimada, declarada, validada. Solo la última suma. | `SEVEN-G/html/es/40_SEVEN-G_Reglas_de_medicion_del_valor.html#estados-del-importe` |
-| 20 | 01-04-2027 | jueves | Seis preguntas del consejo | La pregunta incómoda | ¿Cuánto cuesta de verdad la IA? Las licencias son solo una parte. | `SEVEN-G/html/es/42_SEVEN-G_Costes_de_IA.html#componentes-del-coste-de-un-caso` |
-| 21 | 06-04-2027 | martes | Áreas de actuación | Valor (dirección financiera) | Un solo criterio económico de viabilidad; el resto de ratios informan, no deciden. | `SEVEN-G/html/es/40_SEVEN-G_Reglas_de_medicion_del_valor.html#horizonte-descuento-y-criterio-economico-unico` |
-| 21 | 08-04-2027 | jueves | Casos por sector | Sector: industria | Industria: casos de uso consolidados y emergentes. Panel de una compañía ficticia. | `SEVEN-G/herramientas/T17_panel_consejo/galeria/index.html#es-industria` |
-| 22 | 13-04-2027 | martes | Áreas de actuación | Valor (dirección financiera) | Invierta por tramos: cada tramo se libera en una puerta, con una condición de paso. | `SEVEN-G/html/es/14_SEVEN-G_Gestion_de_cartera.html#capacidad-y-presupuesto-por-etapas` |
-| 22 | 15-04-2027 | jueves | Seis preguntas del consejo | La pregunta incómoda | ¿Por qué es tan bajo el valor validado? Qué falta para validar y con qué fechas. | `SEVEN-G/html/es/43_SEVEN-G_Realizacion_de_beneficios.html#del-valor-esperado-al-valor-validado` |
-| 23 | 20-04-2027 | martes | Áreas de actuación | Valor (dirección financiera) | Todo beneficio necesita un responsable de negocio con nombre y un plan de realización. | `SEVEN-G/html/es/43_SEVEN-G_Realizacion_de_beneficios.html#plan-de-realizacion-de-beneficios` |
-| 23 | 22-04-2027 | jueves | Seis preguntas del consejo | La pregunta incómoda | ¿Por qué hemos parado esto después de invertir? Inversión consumida, evitada y lo aprendido. | `SEVEN-G/html/es/42_SEVEN-G_Costes_de_IA.html#coste-de-las-decisiones-de-parar` |
-| 24 | 27-04-2027 | martes | Áreas de actuación | Valor (dirección financiera) | Tres perspectivas sin fusionar: valor económico, resultado operativo y exposición al riesgo. | `SEVEN-G/html/es/40_SEVEN-G_Reglas_de_medicion_del_valor.html#11-1-reglas` |
-| 24 | 29-04-2027 | jueves | Casos por sector | Sector público | Sector público: casos de uso y panel de un organismo ficticio. | `SEVEN-G/herramientas/T17_panel_consejo/galeria/index.html` |
-| 25 | 04-05-2027 | martes | Áreas de actuación | Valor (dirección financiera) | El asistente de la suite ofimática: una sola iniciativa, medida unidad por unidad. | `SEVEN-G/html/es/40_SEVEN-G_Reglas_de_medicion_del_valor.html#7-2-iniciativas-transversales-y-plataformas-habilitadoras` |
-| 25 | 06-05-2027 | jueves | Seis preguntas del consejo | La pregunta incómoda | ¿Podemos acelerar si relajamos los controles? Sí con una condición; no en tres casos. | `SEVEN-G/html/es/61_SEVEN-G_Guia_de_conversacion_con_el_consejo.html#preguntas-dificiles-frecuentes` |
-| 26 | 11-05-2027 | martes | Áreas de actuación | Gobierno | Gobernar también cuesta: mida las horas de gobierno y manténgalas proporcionadas. | `SEVEN-G/html/es/01_SEVEN-G_Metodologia_fundacional.html#principios` |
-| 26 | 13-05-2027 | jueves | Tres preguntas estratégicas | Cierre de semestre | Qué frena el escalado: los seis frenos y qué hacer con cada uno. | `SEVEN-G/html/es/60_SEVEN-G_Paquete_para_el_consejo.html#10-4-que-frena-el-escalado-lectura-ejecutiva-y-donde-actuar-primero` |
+| 14 | 16-02-2027 | martes | Tres preguntas estratégicas | Tres preguntas 3/3 | Cómo demostrar el valor: las horas liberadas no son ahorro; solo suma lo validado. | `SEVEN-G/html/es/entrada/index.html#panel` |
+| 14 | 18-02-2027 | jueves | El mundo de la IA | Sector | Seguros: hacia dónde se mueven los casos de uso de IA, con sus fuentes. | `SEVEN-G/herramientas/T17_panel_consejo/galeria/index.html#es-seguros` |
+| 15 | 23-02-2027 | martes | Áreas de actuación | Valor (dirección financiera) | Trece errores que inflan el valor de la IA. Empiece por tres: ¿cuál comete su compañía? | `SEVEN-G/html/es/40_SEVEN-G_Reglas_de_medicion_del_valor.html#errores-frecuentes-que-inflan-el-valor` |
+| 15 | 25-02-2027 | jueves | El mundo de la IA | Futuro | El cliente con su propio agente de IA: compara, cambia de producto y mueve saldos. Qué pasa con la distribución. | `SEVEN-G/herramientas/T17_panel_consejo/galeria/index.html#es-banca` |
+| 16 | 02-03-2027 | martes | Seis preguntas del consejo | Seis preguntas 1/6 | ¿Estoy avanzando con la IA? Cuántas entran, cuántas llegan y dónde se atascan. | `SEVEN-G/html/es/preguntas/avanzo.html` |
+| 16 | 04-03-2027 | jueves | El mundo de la IA | Lo que ha pasado este mes | Lo que ha pasado en IA en febrero: tres o cuatro noticias con su lectura para el consejo. Solo fuentes primarias (anuncio de la compañía, regulador o estudio original). Se escribe la semana anterior. | `` |
+| 17 | 09-03-2027 | martes | Seis preguntas del consejo | Seis preguntas 2/6 | ¿Son rentables mis casos de uso? Coste completo frente a eficiencias y retorno. | `SEVEN-G/html/es/preguntas/rentable.html` |
+| 17 | 11-03-2027 | jueves | El mundo de la IA | Estudio | Eurostat: cuántas empresas europeas usan IA y para qué. Lo que dice la estadística oficial frente al ruido. | `https://ec.europa.eu/eurostat/statistics-explained/index.php?title=Use_of_artificial_intelligence_in_enterprises` |
+| 18 | 16-03-2027 | martes | Seis preguntas del consejo | Seis preguntas 3/6 | ¿Puede hacer más mi compañía? Nueve esferas y tres niveles de ambición. | `SEVEN-G/html/es/preguntas/mas.html` |
+| 18 | 18-03-2027 | jueves | El mundo de la IA | Fundamentos e historia | Sin datos propios, la IA es la misma para todos. Por qué los datos son la ventaja que no se compra. | `SEVEN-G/html/es/areas/operacion.html` |
+| 19 | 23-03-2027 | martes | Seis preguntas del consejo | Seis preguntas 4/6 | ¿Me transformo o solo soy más eficiente? Ocho señales lo separan. | `SEVEN-G/html/es/preguntas/transformo.html` |
+| 19 | 25-03-2027 | jueves | El mundo de la IA | Sector | Industria: casos de uso de IA consolidados y emergentes, con sus fuentes. | `SEVEN-G/herramientas/T17_panel_consejo/galeria/index.html#es-industria` |
+| 20 | 30-03-2027 | martes | Seis preguntas del consejo | Seis preguntas 5/6 | ¿Sé parar a tiempo? Cinco salidas en cada puerta, y parar es una de ellas. | `SEVEN-G/html/es/preguntas/parar.html` |
+| 20 | 01-04-2027 | jueves | El mundo de la IA | Lo que ha pasado este mes | Lo que ha pasado en IA en marzo: tres o cuatro noticias con su lectura para el consejo. Solo fuentes primarias (anuncio de la compañía, regulador o estudio original). Se escribe la semana anterior. | `` |
+| 21 | 06-04-2027 | martes | Seis preguntas del consejo | Seis preguntas 6/6 | ¿Tengo el riesgo bajo control? Inventario, una sola escala y roles separados. | `SEVEN-G/html/es/preguntas/riesgo.html` |
+| 21 | 08-04-2027 | jueves | El mundo de la IA | Futuro | Empleo e IA: sustituir, aumentar o reorganizar. Una posición que el consejo debe aprobar antes de que se la pregunten. | `SEVEN-G/html/es/50_SEVEN-G_Personas_y_organizacion.html` |
+| 22 | 13-04-2027 | martes | Mitos y errores de la dirección | Mitos | Mito: «tenemos muchos pilotos, vamos bien». Decidir uno por uno: escalar o parar. | `SEVEN-G/herramientas/T23_recorrido_implantacion/recorrido.html` |
+| 22 | 15-04-2027 | jueves | El mundo de la IA | Estudio | Microsoft, «Work Trend Index 2025»: la compañía de frontera y los equipos de personas y agentes. | `https://blogs.microsoft.com/blog/2025/04/23/the-2025-annual-work-trend-index-the-frontier-firm-is-born/` |
+| 23 | 20-04-2027 | martes | Seis preguntas del consejo | La pregunta incómoda | ¿Quién responde si la IA se equivoca? La responsabilidad no se traslada al sistema ni al proveedor. | `SEVEN-G/html/es/61_SEVEN-G_Guia_de_conversacion_con_el_consejo.html#preguntas-dificiles-frecuentes` |
+| 23 | 22-04-2027 | jueves | El mundo de la IA | Sector | Sector público: casos de uso de IA y cómo los gobierna la Administración, con sus fuentes. | `SEVEN-G/herramientas/T17_panel_consejo/galeria/index.html` |
+| 24 | 27-04-2027 | martes | Áreas de actuación | Valor (dirección financiera) | Tres estados de una cifra: estimada, declarada, validada. Solo la última suma. | `SEVEN-G/html/es/40_SEVEN-G_Reglas_de_medicion_del_valor.html#estados-del-importe` |
+| 24 | 29-04-2027 | jueves | El mundo de la IA | Fundamentos e historia | Qué es un modelo fundacional y por qué casi todos dependemos de pocos proveedores. | `SEVEN-G/html/es/36_SEVEN-G_Terceros_y_proveedores_de_IA.html#dependencia-tecnologica-y-concentracion` |
+| 25 | 04-05-2027 | martes | Seis preguntas del consejo | La pregunta incómoda | ¿Cuánto cuesta de verdad la IA? Las licencias son solo una parte. | `SEVEN-G/html/es/42_SEVEN-G_Costes_de_IA.html#componentes-del-coste-de-un-caso` |
+| 25 | 06-05-2027 | jueves | El mundo de la IA | Lo que ha pasado este mes | Lo que ha pasado en IA en abril: tres o cuatro noticias con su lectura para el consejo. Solo fuentes primarias (anuncio de la compañía, regulador o estudio original). Se escribe la semana anterior. | `` |
+| 26 | 11-05-2027 | martes | Áreas de actuación | Valor (dirección financiera) | Invierta por tramos: cada tramo se libera en una puerta, con una condición de paso. | `SEVEN-G/html/es/14_SEVEN-G_Gestion_de_cartera.html#capacidad-y-presupuesto-por-etapas` |
+| 26 | 13-05-2027 | jueves | El mundo de la IA | Futuro | El nuevo mando intermedio: personas que supervisan agentes. Qué cambia en la estructura de la compañía. | `https://www.mckinsey.com/capabilities/people-and-organization/our-insights/the-agentic-organization-contours-of-the-next-paradigm-for-the-ai-era` |
 
 ### Trimestre 3
 
 | Sem. | Fecha | Día | Pilar | Serie | Idea | Página de destino |
 |---|---|---|---|---|---|---|
-| 27 | 18-05-2027 | martes | Áreas de actuación | Organización IA-first 1/4 | IA-first: IA por defecto, persona donde importa. Qué es y qué no es. | `SEVEN-G/html/es/54_SEVEN-G_Organizacion_de_la_compania_para_la_IA.html#9-1-que-significa-ser-ia-first` |
-| 27 | 20-05-2027 | jueves | Áreas de actuación | Organización IA-first 2/4 | Seis pruebas para saber si una compañía es IA-first. ¿Cuántas cumple hoy? | `SEVEN-G/html/es/54_SEVEN-G_Organizacion_de_la_compania_para_la_IA.html#9-2-seis-pruebas-para-saber-si-una-compania-lo-es` |
-| 28 | 25-05-2027 | martes | Áreas de actuación | Organización IA-first 3/4 | Por qué el organigrama por funciones frena la IA: el caso cruza direcciones y nadie es su dueño. | `SEVEN-G/html/es/54_SEVEN-G_Organizacion_de_la_compania_para_la_IA.html#9-3-por-que-el-organigrama-por-funciones-frena` |
-| 28 | 27-05-2027 | jueves | Casos por sector | Sector: comercio | Comercio minorista: casos de uso consolidados, en adopción y emergentes. | `SEVEN-G/herramientas/T17_panel_consejo/galeria/index.html#es-retail` |
-| 29 | 01-06-2027 | martes | Áreas de actuación | Organización IA-first 4/4 | Cinco opciones de organización y una recomendación por fases. | `SEVEN-G/html/es/54_SEVEN-G_Organizacion_de_la_compania_para_la_IA.html#9-7-recomendacion-combinacion-por-fases` |
-| 29 | 03-06-2027 | jueves | Seis preguntas del consejo | La pregunta incómoda | ¿Por qué no usamos agentes como hacen otros? La autonomía es una decisión de negocio. | `SEVEN-G/html/es/35_SEVEN-G_Seguridad_de_IA_y_agentes.html#niveles-de-autonomia` |
-| 30 | 08-06-2027 | martes | Áreas de actuación | Casos de uso | Ocho fuentes de casos de uso y una sola puerta de entrada. | `SEVEN-G/html/es/areas/casos.html` |
-| 30 | 10-06-2027 | jueves | Mitos y errores de la dirección | Errores | Tres formas de IA que entran sin pasar por la puerta: la incluida en productos, la no autorizada y la prueba regalada. | `SEVEN-G/html/es/31_SEVEN-G_Politica_corporativa_y_uso_aceptable.html#la-ia-que-no-es-un-proyecto` |
-| 31 | 15-06-2027 | martes | Áreas de actuación | Talento técnico 1/3 | El talento técnico se va cuando no hay carrera técnica: una carrera paralela a la de gestión. | `SEVEN-G/html/es/50_SEVEN-G_Personas_y_organizacion.html#4-3-atraer-desarrollar-y-retener-el-talento-tecnico` |
-| 31 | 17-06-2027 | jueves | Casos por sector | Sector: energía | Energía: hacia dónde se mueven los casos de uso de IA. | `SEVEN-G/herramientas/T17_panel_consejo/galeria/index.html#es-energia` |
-| 32 | 22-06-2027 | martes | Áreas de actuación | Talento técnico 2/3 | Lo que más retiene a un perfil técnico: que su trabajo llegue a producción. | `SEVEN-G/html/es/50_SEVEN-G_Personas_y_organizacion.html#4-3-atraer-desarrollar-y-retener-el-talento-tecnico` |
-| 32 | 24-06-2027 | jueves | Seis preguntas del consejo | La pregunta incómoda | ¿Usan sus empleados IA no autorizada? «Está prohibido» no es una respuesta. | `SEVEN-G/html/es/31_SEVEN-G_Politica_corporativa_y_uso_aceptable.html#modelo-de-politica-de-uso-aceptable-de-ia` |
-| 33 | 29-06-2027 | martes | Áreas de actuación | Talento técnico 3/3 | Cinco preguntas sobre talento técnico para su comité de dirección. | `SEVEN-G/html/es/areas/organizacion.html` |
-| 33 | 01-07-2027 | jueves | Áreas de actuación | Personas | El valor de la IA depende de la adopción: lo que no se usa no devuelve nada. | `SEVEN-G/html/es/23_SEVEN-G_Adopcion_y_cambio.html#por-que-el-valor-depende-de-la-adopcion` |
-| 34 | 06-07-2027 | martes | Áreas de actuación | Madurez | Madurez en tres lentes: la tecnología no puntúa, pero fija el gobierno mínimo. | `SEVEN-G/html/es/11_SEVEN-G_Modelo_de_madurez.html#7-6-lectura-en-tres-lentes` |
-| 34 | 08-07-2027 | jueves | Casos por sector | Sector: sanidad | Sanidad: casos de uso consolidados y emergentes, con sus fuentes. | `SEVEN-G/herramientas/T17_panel_consejo/galeria/index.html#es-sanidad` |
-| 35 | 13-07-2027 | martes | Áreas de actuación | Transformación | Índice de transformación: ocho señales que el consejo puede pedir. | `SEVEN-G/html/es/12_SEVEN-G_Indice_de_transformacion.html#4-4-las-ocho-senales` |
-| 35 | 15-07-2027 | jueves | Mitos y errores de la dirección | Errores | «Transformación declarada, no evidenciada»: el perfil que nadie quiere ver en su panel. | `SEVEN-G/herramientas/T14_indice_transformacion/indice.html` |
-| 36 | 20-07-2027 | martes | Áreas de actuación | Transformación | Optimizar, aumentar, transformar. Optimizar está bien; llamarlo transformación, no. | `SEVEN-G/html/es/10_SEVEN-G_Mapa_de_esferas_y_niveles_de_ambicion.html#los-tres-niveles-de-ambicion` |
-| 36 | 22-07-2027 | jueves | Áreas de actuación | Transformación | Cinco preguntas para clasificar una iniciativa en la propia sala del consejo. | `SEVEN-G/html/es/12_SEVEN-G_Indice_de_transformacion.html#3-1-las-cinco-preguntas` |
-| 37 | 27-07-2027 | martes | Áreas de actuación | Organización (hipótesis) | Qué le pasará a cada silo cuando la IA esté implantada. Una hipótesis, con sus señales. | `SEVEN-G/html/es/54_SEVEN-G_Organizacion_de_la_compania_para_la_IA.html#8-2-que-le-pasa-a-cada-silo` |
-| 37 | 29-07-2027 | jueves | Casos por sector | Sector: logística | Logística: hacia dónde se mueven los casos de uso de IA. | `SEVEN-G/herramientas/T17_panel_consejo/galeria/index.html#es-logistica` |
-| 38 | 03-08-2027 | martes | Idea central | Verano | Lectura de verano: el curso de SEVEN-G, de dos a cuatro horas, por perfil. | `SEVEN-G/html/es/curso/M00_SEVEN-G_Curso_Guia_del_curso.html` |
-| 38 | 05-08-2027 | jueves | Áreas de actuación | Consejo | Una pregunta de verano para su comité: ¿quién es dueño de un proceso de punta a punta? | `SEVEN-G/html/es/54_SEVEN-G_Organizacion_de_la_compania_para_la_IA.html#9-9-que-existe-y-que-falta-lista-de-comprobacion` |
-| 39 | 10-08-2027 | martes | Áreas de actuación | Organización (hipótesis) | Lo que la IA no va a cambiar en una compañía. | `SEVEN-G/html/es/54_SEVEN-G_Organizacion_de_la_compania_para_la_IA.html#8-5-lo-que-no-va-a-cambiar` |
-| 39 | 12-08-2027 | jueves | Áreas de actuación | Implantar | Seis puntos de partida. El destino es el mismo; el camino cambia. ¿Cuál es el suyo? | `SEVEN-G/herramientas/T23_recorrido_implantacion/recorrido.html` |
+| 27 | 18-05-2027 | martes | Áreas de actuación | Valor (dirección financiera) | Todo beneficio necesita un responsable de negocio con nombre y un plan de realización. | `SEVEN-G/html/es/43_SEVEN-G_Realizacion_de_beneficios.html#plan-de-realizacion-de-beneficios` |
+| 27 | 20-05-2027 | jueves | El mundo de la IA | Sector | Comercio minorista: casos de uso de IA consolidados, en adopción y emergentes. | `SEVEN-G/herramientas/T17_panel_consejo/galeria/index.html#es-retail` |
+| 28 | 25-05-2027 | martes | Áreas de actuación | Valor (dirección financiera) | Tres perspectivas sin fusionar: valor económico, resultado operativo y exposición al riesgo. | `SEVEN-G/html/es/40_SEVEN-G_Reglas_de_medicion_del_valor.html#11-1-reglas` |
+| 28 | 27-05-2027 | jueves | El mundo de la IA | Fundamentos e historia | El Reglamento Europeo de IA en cinco ideas para un consejero. Sin promesas de cumplimiento. | `https://eur-lex.europa.eu/eli/reg/2024/1689/oj/spa` |
+| 29 | 01-06-2027 | martes | Mitos y errores de la dirección | Mitos | Mito: «necesitamos un director de IA». En general, no: valor, capacidad y control. | `SEVEN-G/html/es/54_SEVEN-G_Organizacion_de_la_compania_para_la_IA.html#9-5-hace-falta-un-director-de-ia-en-general-no` |
+| 29 | 03-06-2027 | jueves | El mundo de la IA | Lo que ha pasado este mes | Lo que ha pasado en IA en mayo: tres o cuatro noticias con su lectura para el consejo. Solo fuentes primarias (anuncio de la compañía, regulador o estudio original). Se escribe la semana anterior. | `` |
+| 30 | 08-06-2027 | martes | Áreas de actuación | Organización IA-first 1/4 | IA-first: IA por defecto, persona donde importa. Qué es y qué no es. | `SEVEN-G/html/es/54_SEVEN-G_Organizacion_de_la_compania_para_la_IA.html#9-1-que-significa-ser-ia-first` |
+| 30 | 10-06-2027 | jueves | El mundo de la IA | Estudio | Stack Overflow, encuesta a desarrolladores 2025: qué piensan de la IA quienes la usan cada día. | `https://survey.stackoverflow.co/2025/ai` |
+| 31 | 15-06-2027 | martes | Áreas de actuación | Organización IA-first 2/4 | Seis pruebas para saber si una compañía es IA-first. ¿Cuántas cumple hoy? | `SEVEN-G/html/es/54_SEVEN-G_Organizacion_de_la_compania_para_la_IA.html#9-2-seis-pruebas-para-saber-si-una-compania-lo-es` |
+| 31 | 17-06-2027 | jueves | El mundo de la IA | Sector | Energía: hacia dónde se mueven los casos de uso de IA. | `SEVEN-G/herramientas/T17_panel_consejo/galeria/index.html#es-energia` |
+| 32 | 22-06-2027 | martes | Áreas de actuación | Organización IA-first 3/4 | Por qué el organigrama por funciones frena la IA: el caso cruza direcciones y nadie es su dueño. | `SEVEN-G/html/es/54_SEVEN-G_Organizacion_de_la_compania_para_la_IA.html#9-3-por-que-el-organigrama-por-funciones-frena` |
+| 32 | 24-06-2027 | jueves | El mundo de la IA | Fundamentos e historia | Sesgo: la IA aprende lo que le das. Por qué es un riesgo de negocio y no solo técnico. | `SEVEN-G/html/es/52_SEVEN-G_Manual_de_operacion_de_IA.html` |
+| 33 | 29-06-2027 | martes | Áreas de actuación | Organización IA-first 4/4 | Cinco opciones de organización y una recomendación por fases. | `SEVEN-G/html/es/54_SEVEN-G_Organizacion_de_la_compania_para_la_IA.html#9-7-recomendacion-combinacion-por-fases` |
+| 33 | 01-07-2027 | jueves | El mundo de la IA | Lo que ha pasado este mes | Lo que ha pasado en IA en junio: tres o cuatro noticias con su lectura para el consejo. Solo fuentes primarias (anuncio de la compañía, regulador o estudio original). Se escribe la semana anterior. | `` |
+| 34 | 06-07-2027 | martes | Áreas de actuación | Casos de uso | Ocho fuentes de casos de uso y una sola puerta de entrada. | `SEVEN-G/html/es/areas/casos.html` |
+| 34 | 08-07-2027 | jueves | El mundo de la IA | Futuro | IA física: sensores, robots y drones. Qué llega a la operación y qué sigue siendo demostración. Fuente por verificar al escribir. | `` |
+| 35 | 13-07-2027 | martes | Mitos y errores de la dirección | Errores | Tres formas de IA que entran sin pasar por la puerta: la incluida en productos, la no autorizada y la prueba regalada. | `SEVEN-G/html/es/31_SEVEN-G_Politica_corporativa_y_uso_aceptable.html#la-ia-que-no-es-un-proyecto` |
+| 35 | 15-07-2027 | jueves | El mundo de la IA | Sector | Sanidad: casos de uso de IA consolidados y emergentes, con sus fuentes. | `SEVEN-G/herramientas/T17_panel_consejo/galeria/index.html#es-sanidad` |
+| 36 | 20-07-2027 | martes | Áreas de actuación | Talento técnico 1/3 | El talento técnico se va cuando no hay carrera técnica: una carrera paralela a la de gestión. | `SEVEN-G/html/es/50_SEVEN-G_Personas_y_organizacion.html#4-3-atraer-desarrollar-y-retener-el-talento-tecnico` |
+| 36 | 22-07-2027 | jueves | El mundo de la IA | Fundamentos e historia | El marco de gestión de riesgos de IA del NIST en cuatro verbos: gobernar, mapear, medir y gestionar. | `https://www.nist.gov/publications/artificial-intelligence-risk-management-framework-ai-rmf-10` |
+| 37 | 27-07-2027 | martes | Áreas de actuación | Personas | El valor de la IA depende de la adopción: lo que no se usa no devuelve nada. | `SEVEN-G/html/es/23_SEVEN-G_Adopcion_y_cambio.html#por-que-el-valor-depende-de-la-adopcion` |
+| 37 | 29-07-2027 | jueves | El mundo de la IA | Sector | Logística: hacia dónde se mueven los casos de uso de IA. | `SEVEN-G/herramientas/T17_panel_consejo/galeria/index.html#es-logistica` |
+| 38 | 03-08-2027 | martes | Áreas de actuación | Madurez | Madurez en tres lentes: la tecnología no puntúa, pero fija el gobierno mínimo. | `SEVEN-G/html/es/11_SEVEN-G_Modelo_de_madurez.html#7-6-lectura-en-tres-lentes` |
+| 38 | 05-08-2027 | jueves | El mundo de la IA | Lo que ha pasado este mes | Lo que ha pasado en IA en julio: tres o cuatro noticias con su lectura para el consejo. Solo fuentes primarias (anuncio de la compañía, regulador o estudio original). Se escribe la semana anterior. | `` |
+| 39 | 10-08-2027 | martes | Áreas de actuación | Transformación | Índice de transformación: ocho señales que el consejo puede pedir. | `SEVEN-G/html/es/12_SEVEN-G_Indice_de_transformacion.html#4-4-las-ocho-senales` |
+| 39 | 12-08-2027 | jueves | El mundo de la IA | Fundamentos e historia | Lectura de verano: la historia de la IA en cinco momentos. Fechas y fuentes por verificar al escribir. | `` |
 
 ### Trimestre 4
 
 | Sem. | Fecha | Día | Pilar | Serie | Idea | Página de destino |
 |---|---|---|---|---|---|---|
-| 40 | 17-08-2027 | martes | Áreas de actuación | Riesgo | El apetito de riesgo en IA es una decisión del consejo, no un anexo técnico. | `SEVEN-G/html/es/13_SEVEN-G_Tesis_de_IA_ambicion_y_apetito_de_riesgo.html#apetito-de-riesgo` |
-| 40 | 19-08-2027 | jueves | Áreas de actuación | Riesgo | Lo que no se delega nunca en un sistema de IA. | `SEVEN-G/html/es/13_SEVEN-G_Tesis_de_IA_ambicion_y_apetito_de_riesgo.html#11-2-lo-que-no-se-delega-nunca-en-ia` |
-| 41 | 24-08-2027 | martes | Áreas de actuación | Riesgo | Líneas rojas: ¿qué no hará nunca su compañía con IA? Escríbalo antes de que haga falta. | `SEVEN-G/html/es/13_SEVEN-G_Tesis_de_IA_ambicion_y_apetito_de_riesgo.html#lineas-rojas` |
-| 41 | 26-08-2027 | jueves | Casos por sector | Sector: turismo | Turismo: casos de uso consolidados y emergentes. | `SEVEN-G/herramientas/T17_panel_consejo/galeria/index.html#es-turismo` |
-| 42 | 31-08-2027 | martes | Áreas de actuación | Estrategia | Vuelta al curso: la tesis de IA en pocas páginas. Qué debe decir. | `SEVEN-G/html/es/13_SEVEN-G_Tesis_de_IA_ambicion_y_apetito_de_riesgo.html#3-2-estructura` |
-| 42 | 02-09-2027 | jueves | Seis preguntas del consejo | La pregunta incómoda | ¿Cumplimos el Reglamento de IA? Se responde sistema a sistema, con fecha. | `SEVEN-G/html/es/32_SEVEN-G_Inventario_y_clasificacion_regulatoria.html#arbol-de-clasificacion-regulatoria` |
-| 43 | 07-09-2027 | martes | Áreas de actuación | Riesgo | El inventario es la primera obligación: lo que no está inventariado no está gobernado. | `SEVEN-G/html/es/32_SEVEN-G_Inventario_y_clasificacion_regulatoria.html#que-se-inventaria` |
-| 43 | 09-09-2027 | jueves | Áreas de actuación | Seguridad | La IA que ya compró sin saberlo: la que viene dentro del software contratado. | `SEVEN-G/html/es/36_SEVEN-G_Terceros_y_proveedores_de_IA.html#ia-embebida-en-software-ya-contratado` |
-| 44 | 14-09-2027 | martes | Áreas de actuación | Seguridad y agentes | Un agente que actúa necesita un dueño humano con nombre y un interruptor de parada. | `SEVEN-G/html/es/35_SEVEN-G_Seguridad_de_IA_y_agentes.html#requisitos-esenciales-de-un-agente` |
-| 44 | 16-09-2027 | jueves | Seis preguntas del consejo | La pregunta incómoda | ¿Qué pasa si el sistema falla o nos atacan? «No puede ocurrir» no es una respuesta. | `SEVEN-G/html/es/52_SEVEN-G_Manual_de_operacion_de_IA.html#continuidad-y-reversion` |
-| 45 | 21-09-2027 | martes | Áreas de actuación | Seguridad | ¿Dependemos demasiado de un proveedor? Una estrategia de salida probada, no solo escrita. | `SEVEN-G/html/es/36_SEVEN-G_Terceros_y_proveedores_de_IA.html#dependencia-tecnologica-y-concentracion` |
-| 45 | 23-09-2027 | jueves | Casos por sector | Sector: farmacéutica | Farmacéutica: hacia dónde se mueven los casos de uso de IA. | `SEVEN-G/herramientas/T17_panel_consejo/galeria/index.html#es-farmaceutica` |
-| 46 | 28-09-2027 | martes | Áreas de actuación | Normas | Los estándares dicen qué debe existir; hace falta una capa que lo haga funcionar. SEVEN-G no certifica. | `SEVEN-G/html/es/34_SEVEN-G_Mapeo_regulatorio.html#9-1-crosswalk-de-cobertura-normas-y-regulacion-seven-g` |
-| 46 | 30-09-2027 | jueves | Áreas de actuación | Gobierno | Quien construye no se audita a sí mismo: las separaciones que no se negocian. | `SEVEN-G/html/es/30_SEVEN-G_Modelo_de_gobierno.html#incompatibilidades` |
-| 47 | 05-10-2027 | martes | Áreas de actuación | Consejo | El informe de IA para el consejo cabe en una página. | `SEVEN-G/html/es/60_SEVEN-G_Paquete_para_el_consejo.html#4-2-resumen-de-una-pagina` |
-| 47 | 07-10-2027 | jueves | Mitos y errores de la dirección | Errores | Llevar diez casos al consejo es no decidir ninguno: tres en detalle, el resto en el panel. | `SEVEN-G/html/es/61_SEVEN-G_Guia_de_conversacion_con_el_consejo.html#cuantos-casos-presentar` |
-| 48 | 12-10-2027 | martes | Áreas de actuación | Consejo | Cuatro formas de responder al consejo. «Depende» no es una de ellas. | `SEVEN-G/html/es/61_SEVEN-G_Guia_de_conversacion_con_el_consejo.html#formato-de-respuesta-al-consejo` |
-| 48 | 14-10-2027 | jueves | Casos por sector | Pymes y despachos | Pymes y despachos profesionales: casos realistas para empresas sin equipo de sistemas. | `SEVEN-G/herramientas/T17_panel_consejo/galeria/index.html#es-pymes` |
-| 49 | 19-10-2027 | martes | Áreas de actuación | Implantar | Noventa días para empezar: qué se hace primero y qué puede esperar. | `SEVEN-G/html/es/90_SEVEN-G_Guia_de_implantacion.html#plan-de-90-dias` |
-| 49 | 21-10-2027 | jueves | Mitos y errores de la dirección | Mitos | Mito: «el gobierno de la IA es para grandes compañías». El tamaño no decide la exigencia. | `SEVEN-G/html/es/90_SEVEN-G_Guia_de_implantacion.html#elegir-el-alcance-de-implantacion` |
-| 50 | 26-10-2027 | martes | Áreas de actuación | Implantar | Catorce reglas que nunca se omiten. Lo demás es proporcional. | `SEVEN-G/html/es/01_SEVEN-G_Metodologia_fundacional.html#14-1-el-nucleo-de-seven-g` |
-| 50 | 28-10-2027 | jueves | Áreas de actuación | Gobierno | Referenciar antes que reproducir: no pida dos veces una evidencia que la compañía ya tiene. | `SEVEN-G/html/es/21_SEVEN-G_Criterios_de_gate_y_auditoria.html#4-3-referenciar-antes-que-reproducir` |
-| 51 | 02-11-2027 | martes | Áreas de actuación | Implantar | Lo que ya está en producción también se gobierna: cómo regularizarlo sin parar el negocio. | `SEVEN-G/html/es/90_SEVEN-G_Guia_de_implantacion.html#regularizacion-de-iniciativas-y-sistemas-existentes` |
-| 51 | 04-11-2027 | jueves | Idea central | Confianza | Por qué el sitio no le pide nada: sus datos se quedan en su navegador. | `SEVEN-G/html/es/95_SEVEN-G_Datos_en_local_e_instalacion_propia.html` |
+| 40 | 17-08-2027 | martes | Áreas de actuación | Transformación | Optimizar, aumentar, transformar. Optimizar está bien; llamarlo transformación, no. | `SEVEN-G/html/es/10_SEVEN-G_Mapa_de_esferas_y_niveles_de_ambicion.html#los-tres-niveles-de-ambicion` |
+| 40 | 19-08-2027 | jueves | El mundo de la IA | Sector | Turismo: casos de uso de IA consolidados y emergentes. | `SEVEN-G/herramientas/T17_panel_consejo/galeria/index.html#es-turismo` |
+| 41 | 24-08-2027 | martes | Áreas de actuación | Estrategia | Un propósito para el consejo: aprobar una tesis de IA. | `SEVEN-G/html/es/13_SEVEN-G_Tesis_de_IA_ambicion_y_apetito_de_riesgo.html#tesis-de-ia` |
+| 41 | 26-08-2027 | jueves | El mundo de la IA | Futuro | La factura de la IA crece con el éxito. Por qué el coste de uso es una decisión de dirección. | `SEVEN-G/html/es/42_SEVEN-G_Costes_de_IA.html` |
+| 42 | 31-08-2027 | martes | Áreas de actuación | Riesgo | El apetito de riesgo en IA es una decisión del consejo, no un anexo técnico. | `SEVEN-G/html/es/13_SEVEN-G_Tesis_de_IA_ambicion_y_apetito_de_riesgo.html#apetito-de-riesgo` |
+| 42 | 02-09-2027 | jueves | El mundo de la IA | Lo que ha pasado este mes | Lo que ha pasado en IA en agosto: tres o cuatro noticias con su lectura para el consejo. Solo fuentes primarias (anuncio de la compañía, regulador o estudio original). Se escribe la semana anterior. | `` |
+| 43 | 07-09-2027 | martes | Áreas de actuación | Riesgo | Líneas rojas: ¿qué no hará nunca su compañía con IA? Escríbalo antes de que haga falta. | `SEVEN-G/html/es/13_SEVEN-G_Tesis_de_IA_ambicion_y_apetito_de_riesgo.html#lineas-rojas` |
+| 43 | 09-09-2027 | jueves | El mundo de la IA | Estudio | Los principios de IA de la OCDE: qué piden a una compañía y por qué siguen siendo la referencia. | `https://legalinstruments.oecd.org/en/instruments/OECD-LEGAL-0449` |
+| 44 | 14-09-2027 | martes | Áreas de actuación | Riesgo | El inventario es la primera obligación: lo que no está inventariado no está gobernado. | `SEVEN-G/html/es/32_SEVEN-G_Inventario_y_clasificacion_regulatoria.html#que-se-inventaria` |
+| 44 | 16-09-2027 | jueves | El mundo de la IA | Sector | Farmacéutica: hacia dónde se mueven los casos de uso de IA. | `SEVEN-G/herramientas/T17_panel_consejo/galeria/index.html#es-farmaceutica` |
+| 45 | 21-09-2027 | martes | Áreas de actuación | Seguridad y agentes | Un agente que actúa necesita un dueño humano con nombre y un interruptor de parada. | `SEVEN-G/html/es/35_SEVEN-G_Seguridad_de_IA_y_agentes.html#requisitos-esenciales-de-un-agente` |
+| 45 | 23-09-2027 | jueves | El mundo de la IA | Fundamentos e historia | ISO/IEC 42001: qué es un sistema de gestión de IA y qué certifica (y qué no). | `https://www.iso.org/standard/42001` |
+| 46 | 28-09-2027 | martes | Áreas de actuación | Seguridad | ¿Dependemos demasiado de un proveedor? Una estrategia de salida probada, no solo escrita. | `SEVEN-G/html/es/36_SEVEN-G_Terceros_y_proveedores_de_IA.html#dependencia-tecnologica-y-concentracion` |
+| 46 | 30-09-2027 | jueves | El mundo de la IA | Futuro | IA abierta o cerrada: una decisión de dirección, no de tecnología. Fuentes por verificar al escribir. | `` |
+| 47 | 05-10-2027 | martes | Áreas de actuación | Normas | Los estándares dicen qué debe existir; hace falta una capa que lo haga funcionar. SEVEN-G no certifica. | `SEVEN-G/html/es/34_SEVEN-G_Mapeo_regulatorio.html#9-1-crosswalk-de-cobertura-normas-y-regulacion-seven-g` |
+| 47 | 07-10-2027 | jueves | El mundo de la IA | Lo que ha pasado este mes | Lo que ha pasado en IA en septiembre: tres o cuatro noticias con su lectura para el consejo. Solo fuentes primarias (anuncio de la compañía, regulador o estudio original). Se escribe la semana anterior. | `` |
+| 48 | 12-10-2027 | martes | Áreas de actuación | Gobierno | Quien construye no se audita a sí mismo: las separaciones que no se negocian. | `SEVEN-G/html/es/30_SEVEN-G_Modelo_de_gobierno.html#incompatibilidades` |
+| 48 | 14-10-2027 | jueves | El mundo de la IA | Sector | Pymes y despachos profesionales: casos de IA realistas para empresas sin equipo de sistemas. | `SEVEN-G/herramientas/T17_panel_consejo/galeria/index.html#es-pymes` |
+| 49 | 19-10-2027 | martes | Áreas de actuación | Consejo | El informe de IA para el consejo cabe en una página. | `SEVEN-G/html/es/60_SEVEN-G_Paquete_para_el_consejo.html#4-2-resumen-de-una-pagina` |
+| 49 | 21-10-2027 | jueves | El mundo de la IA | Fundamentos e historia | Supervisión humana de verdad o decorativa: cómo distinguirlas. | `SEVEN-G/html/es/35_SEVEN-G_Seguridad_de_IA_y_agentes.html` |
+| 50 | 26-10-2027 | martes | Mitos y errores de la dirección | Mitos | Mito: «el gobierno de la IA es para grandes compañías». El tamaño no decide la exigencia. | `SEVEN-G/html/es/90_SEVEN-G_Guia_de_implantacion.html#elegir-el-alcance-de-implantacion` |
+| 50 | 28-10-2027 | jueves | El mundo de la IA | Estudio | Foro Económico Mundial, «Global Lighthouse Network 2026»: qué hacen las fábricas que más avanzan con IA. | `https://reports.weforum.org/docs/WEF_Global_Lighthouse_Network_2026.pdf` |
+| 51 | 02-11-2027 | martes | Áreas de actuación | Implantar | Catorce reglas que nunca se omiten. Lo demás es proporcional. | `SEVEN-G/html/es/01_SEVEN-G_Metodologia_fundacional.html#14-1-el-nucleo-de-seven-g` |
+| 51 | 04-11-2027 | jueves | El mundo de la IA | Lo que ha pasado este mes | Lo que ha pasado en IA en octubre: tres o cuatro noticias con su lectura para el consejo. Solo fuentes primarias (anuncio de la compañía, regulador o estudio original). Se escribe la semana anterior. | `` |
 | 52 | 09-11-2027 | martes | Idea central | Resumen del año | Diez ideas de un año sobre cómo gobernar, medir y escalar la IA. | `SEVEN-G/html/es/entrada/index.html#areas` |
-| 52 | 11-11-2027 | jueves | Idea central | Cierre | ¿Qué echa en falta en SEVEN-G? Las mejoras las decide la comunidad con sus votos. | `SEVEN-G/herramientas/comunidad/index.html` |
+| 52 | 11-11-2027 | jueves | El mundo de la IA | Futuro | Un año de IA: lo que ha cambiado y lo que no. Cierre de la línea y petición de ideas para el año siguiente. | `SEVEN-G/herramientas/comunidad/index.html` |
 
-## 6. Textos completos de las semanas 1 a 10
+## 6. Textos completos ya escritos
 
 Veinte publicaciones listas para revisar. Cada una tiene un gancho en la primera línea, una sola idea, una llamada a la acción y el enlace. Todas tienen entre 60 y 120 palabras. `{BASE}` es la base del sitio.
 
@@ -353,29 +358,29 @@ Se aceptan (y agradecen) comentarios!
 {BASE}SEVEN-G/html/es/entrada/index.html
 ```
 
-### 2. Semana 1, jueves 19-11-2026 · Seis preguntas del consejo
+### 2. Semana 1, jueves 19-11-2026 · El mundo de la IA
 
-Destino: `SEVEN-G/html/es/entrada/index.html#preguntas` · 91 palabras · pregunta
+Destino: `https://www.mckinsey.com/capabilities/people-and-organization/our-insights/the-agentic-organization-contours-of-the-next-paradigm-for-the-ai-era` · 164 palabras · texto
 
 ```text
-¿Sabes cuántos sistemas de IA tiene hoy tu compañía en producción?
+McKinsey publicó en septiembre de 2025 un artículo que conviene leer en un consejo: «The agentic organization».
 
-Si la respuesta tarda más de una semana, el problema es de gobierno, no de tecnología.
+Su tesis: la IA abre el mayor cambio de paradigma organizativo desde las revoluciones industrial y digital.
 
-Tu consejo acabará haciendo seis preguntas:
+Lo explican con cuatro eras: artesanal, industrial, digital e IA. En cada una cambian a la vez el modelo de negocio, la organización, el gobierno, las personas y la tecnología.
 
-1. ¿Avanzamos con la IA?
-2. ¿Son rentables los casos de uso?
-3. ¿Podemos hacer más?
-4. ¿Nos transformamos o solo ahorramos?
-5. ¿Sabemos parar a tiempo?
-6. ¿Tenemos el riesgo bajo control?
+En la era de la IA, según McKinsey:
+• equipos pequeños, dueños de un resultado de punta a punta, que supervisan agentes;
+• un gobierno integrado en el propio proceso, en tiempo real;
+• y la responsabilidad final, siempre en una persona.
 
-Casi todas las compañías tienen pilotos. Pocas responden a las seis sin abrir seis hojas de cálculo.
+Lo que más me gusta de su tabla es la última fila, la de los ejemplos. En la era de la IA, el liderazgo todavía está abierto.
 
-¿Cuál de las seis no sabrías responder hoy?
+Qué significa para tu consejo: si el cambio es organizativo, no se resuelve comprando tecnología. Se resuelve decidiendo cómo se organiza la compañía.
 
-{BASE}SEVEN-G/html/es/entrada/index.html#preguntas
+¿Cuál de esos cinco elementos está cambiando ya en la tuya?
+
+https://www.mckinsey.com/capabilities/people-and-organization/our-insights/the-agentic-organization-contours-of-the-next-paradigm-for-the-ai-era
 ```
 
 ### 3. Semana 2, martes 24-11-2026 · Historia
@@ -398,26 +403,28 @@ Si prefieres leerla entera hoy, está aquí:
 {BASE}SEVEN-G/html/es/entrada/index.html#historia
 ```
 
-### 4. Semana 2, jueves 26-11-2026 · Tres preguntas estratégicas
+### 4. Semana 2, jueves 26-11-2026 · El mundo de la IA
 
-Destino: `SEVEN-G/herramientas/T17_panel_consejo/ejemplo/salida/t01_Dashboard_Casos_Uso_IA_v8.html` · 104 palabras · texto + imagen (mapa de impacto)
+Destino: `SEVEN-G/html/es/35_SEVEN-G_Seguridad_de_IA_y_agentes.html#niveles-de-autonomia` · 115 palabras · lista
 
 ```text
-¿Tu inversión en IA sigue a tu estrategia, o a quien pidió presupuesto primero?
+Todo el mundo habla de agentes de IA. Pocos explican qué son.
 
-Para saberlo basta un mapa.
+La respuesta corta es: un agente no solo contesta. Actúa.
 
-• En las filas, las áreas donde la IA crea valor: cliente, producto, personas, operaciones, datos, conocimiento y decisión.
-• En las columnas, la ambición: optimizar, aumentar o transformar.
-• En cada celda, la inversión y el neto anual.
+• Un asistente te propone un correo. Tú lo envías.
+• Un agente lo envía. Y quizá también actualiza el pedido y avisa al almacén.
 
-El mapa enseña dos cosas: dónde se concentra el dinero, y dónde la compañía dijo que iba a jugar y no juega.
+Esa diferencia lo cambia todo para un consejo. Cuando la IA actúa, la pregunta deja de ser «¿acierta?». Pasa a ser «¿quién responde si se equivoca?».
 
-Conclusión: decidir dónde invertir es una decisión de dirección. No se delega en una lista de proyectos.
+Antes de aprobar un agente, conviene saber tres cosas:
+1. Qué puede hacer sin que una persona lo valide.
+2. Quién es su dueño, con nombre.
+3. Cómo se para.
 
-Míralo en un panel de ejemplo, con una compañía ficticia:
+Consejo práctico: pide que te enseñen el interruptor de parada antes que la demostración.
 
-{BASE}SEVEN-G/herramientas/T17_panel_consejo/ejemplo/salida/t01_Dashboard_Casos_Uso_IA_v8.html
+{BASE}SEVEN-G/html/es/35_SEVEN-G_Seguridad_de_IA_y_agentes.html#niveles-de-autonomia
 ```
 
 ### 5. Semana 3, martes 01-12-2026 · Historia
@@ -440,31 +447,6 @@ El consejo no necesita entender los modelos. Necesita la misma disciplina que ex
 {BASE}SEVEN-G/html/es/entrada/index.html#preguntas
 ```
 
-### 6. Semana 3, jueves 03-12-2026 · Tres preguntas estratégicas
-
-Destino: `SEVEN-G/html/es/60_SEVEN-G_Paquete_para_el_consejo.html#10-4-que-frena-el-escalado-lectura-ejecutiva-y-donde-actuar-primero` · 94 palabras · texto
-
-```text
-«Tenemos muchos pilotos y ninguno escala.»
-
-Si esta frase te suena, la causa casi nunca es técnica.
-
-SEVEN-G ordena seis frenos del escalado:
-
-1. El valor no está demostrado.
-2. Los casos no avanzan.
-3. El riesgo y el cumplimiento están sin cerrar.
-4. Las personas no lo adoptan.
-5. Los datos y la tecnología no están listos.
-6. Falta dirección y gobierno.
-
-El trabajo de la dirección es decidir por cuál se empieza, quién actúa y qué valor hay detrás de cada uno.
-
-Una lista de problemas sin orden no es un plan.
-
-{BASE}SEVEN-G/html/es/60_SEVEN-G_Paquete_para_el_consejo.html#10-4-que-frena-el-escalado-lectura-ejecutiva-y-donde-actuar-primero
-```
-
 ### 7. Semana 4, martes 08-12-2026 · Historia
 
 Destino: `SEVEN-G/herramientas/T15_diagnostico_madurez/madurez.html` · 97 palabras · texto
@@ -485,24 +467,26 @@ El diagnóstico es gratuito, y los datos que introduces se quedan en tu navegado
 {BASE}SEVEN-G/herramientas/T15_diagnostico_madurez/madurez.html
 ```
 
-### 8. Semana 4, jueves 10-12-2026 · Tres preguntas estratégicas
+### 8. Semana 4, jueves 10-12-2026 · El mundo de la IA
 
-Destino: `SEVEN-G/html/es/entrada/index.html#panel` · 98 palabras · texto + imagen (panel)
+Destino: `SEVEN-G/html/es/11_SEVEN-G_Modelo_de_madurez.html#7-6-lectura-en-tres-lentes` · 123 palabras · lista
 
 ```text
-Las horas liberadas no son ahorro.
+La IA no es nueva. Lo nuevo es lo que hace.
 
-Un asistente puede ahorrar tiempo a cada persona. Pero la cuenta de resultados no cambia por eso. Cambia cuando esa capacidad se convierte en algo: menos coste, más ingresos o trabajo reasignado.
+En tres etapas, muy simplificadas:
 
-Por eso cada cifra de valor debe llevar su estado: estimada, declarada o validada por control de gestión.
+1. Reglas. Una persona escribía, una a una, las reglas que seguía el sistema. Funcionaba en problemas cerrados.
+2. Aprendizaje. El sistema aprende de los datos a predecir: fraude, demanda, abandono de clientes. Muchas compañías llevan años aquí sin llamarlo IA.
+3. Generación y acción. El sistema escribe, resume, conversa y, cada vez más, actúa.
 
-Solo lo validado suma.
+Cada etapa pidió algo distinto a la dirección. Las reglas pedían expertos. El aprendizaje pedía datos. La generación y la acción piden gobierno: quién decide, quién supervisa y quién responde.
 
-Un porcentaje validado bajo y honesto es mejor que uno alto sin respaldo.
+Conclusión: la tecnología avanza por etapas. La organización tiene que avanzar con ella.
 
-¿Qué debe preguntar un consejo a su dirección financiera?: ¿qué parte del valor de la IA ha comprobado alguien ajeno al equipo que lo produce?
+¿En qué etapa está tu compañía? ¿Y su gobierno?
 
-{BASE}SEVEN-G/html/es/entrada/index.html#panel
+{BASE}SEVEN-G/html/es/11_SEVEN-G_Modelo_de_madurez.html#7-6-lectura-en-tres-lentes
 ```
 
 ### 9. Semana 5, martes 15-12-2026 · Historia
@@ -525,27 +509,24 @@ No es una recomendación de compra. Es un punto de partida para una conversació
 {BASE}SEVEN-G/herramientas/T17_panel_consejo/galeria/index.html
 ```
 
-### 10. Semana 5, jueves 17-12-2026 · Mitos y errores de la dirección
+### 10. Semana 5, jueves 17-12-2026 · El mundo de la IA
 
-Destino: `SEVEN-G/html/es/54_SEVEN-G_Organizacion_de_la_compania_para_la_IA.html#3-1-que-trozo-de-ia-se-queda-cada-cargo-existente` · 86 palabras · lista
+Destino: `https://www.weforum.org/publications/the-future-of-jobs-report-2025/` · 136 palabras · lista
 
 ```text
-Mito: «La IA es cosa de tecnología.»
+El Foro Económico Mundial pregunta a los empleadores cómo va a cambiar el trabajo. Su informe «Future of Jobs Report 2025» deja tres datos que un consejo debería tener delante:
 
-Tecnología construye y opera. Pero hay cuatro cosas que no decide sola:
+• El 63 % de los empleadores dice que la falta de competencias es la mayor barrera para transformar su negocio entre 2025 y 2030.
+• «IA y datos masivos» es la competencia que más crece.
+• El 85 % prevé dar prioridad a la formación de su plantilla.
 
-• dónde quiere competir la compañía con IA
-• cuánto riesgo acepta
-• cuánto invierte y qué retorno exige
-• qué decisiones no se delegan nunca en un sistema
+Lo que leo yo: la barrera no es la tecnología. Es la gente que sabe usarla. Y, sobre todo, la gente que sabe decidir con ella.
 
-Las cuatro son del consejo y del primer ejecutivo. La dirección financiera valida las cifras.
+Qué significa para tu consejo: un plan de IA sin plan de formación es medio plan. Y la formación empieza por el propio consejo.
 
-Cuando todo cuelga de tecnología, el consejo ve demostraciones de producto. No ve cartera, riesgo ni valor validado.
+¿Cuántas horas de formación en IA ha tenido tu consejo este año?
 
-¿De quién cuelga hoy la IA en tu compañía?
-
-{BASE}SEVEN-G/html/es/54_SEVEN-G_Organizacion_de_la_compania_para_la_IA.html#3-1-que-trozo-de-ia-se-queda-cada-cargo-existente
+https://www.weforum.org/publications/the-future-of-jobs-report-2025/
 ```
 
 ### 11. Semana 6, martes 22-12-2026 · Historia
@@ -572,24 +553,24 @@ Tu dirección comercial ya gestiona así las ventas. La IA merece la misma disci
 {BASE}SEVEN-G/html/es/entrada/index.html#embudo
 ```
 
-### 12. Semana 6, jueves 24-12-2026 · Idea central
+### 12. Semana 6, jueves 24-12-2026 · El mundo de la IA
 
-Destino: `SEVEN-G/html/es/00_SEVEN-G_Que_es_y_para_que_sirve.html#inicio-rapido-quick-start` · 82 palabras · texto breve
+Destino: `SEVEN-G/html/es/02_SEVEN-G_Glosario_y_convenciones.html` · 92 palabras · texto breve
 
 ```text
-Una lectura de cinco minutos para estos días.
+Una lectura corta para estos días.
 
-Si tu compañía va a invertir más en IA el año que viene, conviene decidir antes cómo la va a gobernar y cómo la va a medir.
+Tres palabras que se usan como si fueran lo mismo, y no lo son:
 
-El inicio rápido de SEVEN-G explica qué es el marco, para quién sirve y para quién no.
+→ IA predictiva: aprende de datos pasados para estimar lo que va a pasar. Fraude, demanda, abandono.
+→ IA generativa: crea contenido nuevo. Texto, imagen, código, resúmenes.
+→ IA agéntica: encadena pasos y actúa en otros sistemas, con más o menos supervisión.
 
-Es gratis. No pide registro ni correo. Y puedes adaptarlo a tu forma de trabajar.
+Cada una tiene un riesgo distinto y se gobierna de forma distinta. Mezclarlas en la misma conversación del consejo es la forma más rápida de no decidir nada.
 
-No es una certificación ni un asesoramiento jurídico. Es un método de trabajo.
+Felices fiestas, y Feliz IA! :-)
 
-Felices fiestas!
-
-{BASE}SEVEN-G/html/es/00_SEVEN-G_Que_es_y_para_que_sirve.html#inicio-rapido-quick-start
+{BASE}SEVEN-G/html/es/02_SEVEN-G_Glosario_y_convenciones.html
 ```
 
 ### 13. Semana 7, martes 29-12-2026 · Historia
@@ -615,22 +596,22 @@ Míralo en un panel de ejemplo, con una compañía ficticia:
 {BASE}SEVEN-G/herramientas/T17_panel_consejo/ejemplo/salida/t01_Dashboard_Casos_Uso_IA_v8.html
 ```
 
-### 14. Semana 7, jueves 31-12-2026 · Áreas de actuación
+### 14. Semana 7, jueves 31-12-2026 · El mundo de la IA
 
-Destino: `SEVEN-G/html/es/13_SEVEN-G_Tesis_de_IA_ambicion_y_apetito_de_riesgo.html#tesis-de-ia` · 79 palabras · pregunta
+Destino: `https://eur-lex.europa.eu/eli/reg/2024/1689/oj/spa` · 90 palabras · lista
 
 ```text
-Un propósito de IA para tu consejo: aprobar una tesis.
+Tres cosas que vigilaría en 2027 desde un consejo:
 
-Una tesis de IA cabe en pocas páginas. Dice dónde quiere competir la compañía con IA, con qué ambición en cada área, cuánto riesgo acepta y qué no hará nunca.
+1. Agentes en procesos reales. Pasarán de las demostraciones a la operación. La pregunta será quién los supervisa.
+2. El coste de la IA. El gasto de uso crece con el éxito. Lo que no se mide se descontrola.
+3. La regulación en aplicación. El Reglamento Europeo de IA entra en aplicación por fases. Ya no es un tema de futuro.
 
-Sin tesis, cada iniciativa se juzga sola. Con tesis, se juzga contra una decisión del consejo.
+Ninguna de las tres es una cuestión técnica. Las tres son decisiones de dirección.
 
-Para aprobarla no hace falta saber de modelos. Hace falta saber de estrategia y de riesgo.
+¿Qué añadirías tú a la lista?
 
-¿Tiene tu compañía esta decisión por escrito?
-
-{BASE}SEVEN-G/html/es/13_SEVEN-G_Tesis_de_IA_ambicion_y_apetito_de_riesgo.html#tesis-de-ia
+https://eur-lex.europa.eu/eli/reg/2024/1689/oj/spa
 ```
 
 ### 15. Semana 8, martes 05-01-2027 · Historia
@@ -657,26 +638,6 @@ Y parar a tiempo, con motivo, es un resultado. No un fracaso.
 {BASE}SEVEN-G/html/es/preguntas/parar.html
 ```
 
-### 16. Semana 8, jueves 07-01-2027 · Mitos y errores de la dirección
-
-Destino: `SEVEN-G/html/es/61_SEVEN-G_Guia_de_conversacion_con_el_consejo.html#preguntas-dificiles-frecuentes` · 90 palabras · pregunta
-
-```text
-Mito: «Parar un proyecto de IA es un fracaso.»
-
-No. Parar a tiempo, con motivo, es un resultado.
-
-Un consejero preguntará: «¿Por qué hemos parado esto después de invertir?»
-
-Hay una buena respuesta: «Porque no cumplió el criterio de parada que fijamos antes de invertir.» Y tres datos: la inversión consumida, la inversión evitada y lo aprendido.
-
-Una señal de alarma: en tu compañía ninguna iniciativa se ha parado nunca por criterio. Solo por falta de presupuesto o de personas.
-
-¿Fijáis el criterio de parada antes de aprobar la inversión?
-
-{BASE}SEVEN-G/html/es/61_SEVEN-G_Guia_de_conversacion_con_el_consejo.html#preguntas-dificiles-frecuentes
-```
-
 ### 17. Semana 9, martes 12-01-2027 · Historia
 
 Destino: `SEVEN-G/html/es/preguntas/mas.html` · 84 palabras · pregunta
@@ -695,7 +656,135 @@ Ahora sí: la ambición de transformación es real, porque hay un gobierno serio
 {BASE}SEVEN-G/html/es/preguntas/mas.html
 ```
 
-### 18. Semana 9, jueves 14-01-2027 · Mitos y errores de la dirección
+### 18. Semana 9, jueves 14-01-2027 · El mundo de la IA
+
+Destino: `https://www.oecd.org/content/dam/oecd/en/publications/reports/2023/07/oecd-employment-outlook-2023_904bcef3/08785bba-en.pdf` · 110 palabras · lista
+
+```text
+La OCDE preguntó a más de 2.000 empleadores y 5.300 trabajadores de industria y finanzas, en siete países, cómo les está cambiando la IA.
+
+Su informe «Employment Outlook 2023» deja tres ideas:
+
+• Dos de cada cinco empleadores dicen que la falta de competencias de IA les frena para usarla.
+• La IA hace más importantes las competencias especializadas y, sobre todo, las humanas.
+• Los resultados son mejores donde los trabajadores han recibido formación para trabajar con la IA.
+
+El estudio es de 2023, antes de la ola de agentes. Pero su mensaje ha envejecido bien.
+
+Qué significa para tu consejo: invertir en IA e invertir en personas son la misma decisión.
+
+https://www.oecd.org/content/dam/oecd/en/publications/reports/2023/07/oecd-employment-outlook-2023_904bcef3/08785bba-en.pdf
+```
+
+### 19. Semana 10, martes 19-01-2027 · Historia
+
+Destino: `SEVEN-G/html/es/entrada/index.html#partida` · 102 palabras · pregunta
+
+```text
+El camino es el mismo. El punto de partida, no.
+
+Durante ocho martes he contado una historia: del entusiasmo por la IA a la transformación gobernada.
+
+Tu compañía puede estar en el paso 1 o en el 6. Los pasos para poner orden son los mismos, y van en el mismo orden.
+
+Y no hace falta creerse un marco. Se puede comprobar: en el sitio hay un ejemplo completo, con una compañía ficticia.
+
+Conclusión: la IA deja de ser una colección de pilotos. Pasa a ser una cartera que la dirección gobierna, mide y escala con evidencia.
+
+¿Por dónde empieza la tuya?
+
+{BASE}SEVEN-G/html/es/entrada/index.html#partida
+```
+
+### 20. Semana 10, jueves 21-01-2027 · El mundo de la IA
+
+Destino: `SEVEN-G/herramientas/T17_panel_consejo/galeria/index.html#es-banca` · 123 palabras · lista
+
+```text
+Banca es el sector que más IA anuncia. Y no el que más la mide.
+
+Según el «Evident AI Outcomes Report 2025», 47 de los 50 mayores bancos anunciaron 173 nuevos casos de uso de IA en doce meses. Solo el 30 % publica métricas de impacto.
+
+Tres tendencias que se ven en el sector:
+• El aprendizaje automático ya es rutina: fraude, riesgo de crédito, prevención del blanqueo.
+• Los agentes entran primero por cumplimiento y operaciones, con supervisión humana.
+• El supervisor mira el gobierno: política de IA, explicabilidad y dependencia de terceros.
+
+Qué significa para tu consejo, sea o no de banca: anunciar casos es fácil. Demostrar su valor es lo que separa a los que avanzan.
+
+Más casos por sector, con sus fuentes:
+
+{BASE}SEVEN-G/herramientas/T17_panel_consejo/galeria/index.html#es-banca
+```
+
+### 23. Semana 12, martes 02-02-2027 · Tres preguntas estratégicas
+
+Destino: `SEVEN-G/herramientas/T17_panel_consejo/ejemplo/salida/t01_Dashboard_Casos_Uso_IA_v8.html` · 104 palabras · texto + imagen (mapa de impacto)
+
+```text
+¿Tu inversión en IA sigue a tu estrategia, o a quien pidió presupuesto primero?
+
+Para saberlo basta un mapa.
+
+• En las filas, las áreas donde la IA crea valor: cliente, producto, personas, operaciones, datos, conocimiento y decisión.
+• En las columnas, la ambición: optimizar, aumentar o transformar.
+• En cada celda, la inversión y el neto anual.
+
+El mapa enseña dos cosas: dónde se concentra el dinero, y dónde la compañía dijo que iba a jugar y no juega.
+
+Conclusión: decidir dónde invertir es una decisión de dirección. No se delega en una lista de proyectos.
+
+Míralo en un panel de ejemplo, con una compañía ficticia:
+
+{BASE}SEVEN-G/herramientas/T17_panel_consejo/ejemplo/salida/t01_Dashboard_Casos_Uso_IA_v8.html
+```
+
+### 25. Semana 13, martes 09-02-2027 · Tres preguntas estratégicas
+
+Destino: `SEVEN-G/html/es/60_SEVEN-G_Paquete_para_el_consejo.html#10-4-que-frena-el-escalado-lectura-ejecutiva-y-donde-actuar-primero` · 94 palabras · texto
+
+```text
+«Tenemos muchos pilotos y ninguno escala.»
+
+Si esta frase te suena, la causa casi nunca es técnica.
+
+SEVEN-G ordena seis frenos del escalado:
+
+1. El valor no está demostrado.
+2. Los casos no avanzan.
+3. El riesgo y el cumplimiento están sin cerrar.
+4. Las personas no lo adoptan.
+5. Los datos y la tecnología no están listos.
+6. Falta dirección y gobierno.
+
+El trabajo de la dirección es decidir por cuál se empieza, quién actúa y qué valor hay detrás de cada uno.
+
+Una lista de problemas sin orden no es un plan.
+
+{BASE}SEVEN-G/html/es/60_SEVEN-G_Paquete_para_el_consejo.html#10-4-que-frena-el-escalado-lectura-ejecutiva-y-donde-actuar-primero
+```
+
+### 27. Semana 14, martes 16-02-2027 · Tres preguntas estratégicas
+
+Destino: `SEVEN-G/html/es/entrada/index.html#panel` · 98 palabras · texto + imagen (panel)
+
+```text
+Las horas liberadas no son ahorro.
+
+Un asistente puede ahorrar tiempo a cada persona. Pero la cuenta de resultados no cambia por eso. Cambia cuando esa capacidad se convierte en algo: menos coste, más ingresos o trabajo reasignado.
+
+Por eso cada cifra de valor debe llevar su estado: estimada, declarada o validada por control de gestión.
+
+Solo lo validado suma.
+
+Un porcentaje validado bajo y honesto es mejor que uno alto sin respaldo.
+
+¿Qué debe preguntar un consejo a su dirección financiera?: ¿qué parte del valor de la IA ha comprobado alguien ajeno al equipo que lo produce?
+
+{BASE}SEVEN-G/html/es/entrada/index.html#panel
+```
+
+### 43. Semana 22, martes 13-04-2027 · Mitos y errores de la dirección
 
 Destino: `SEVEN-G/herramientas/T23_recorrido_implantacion/recorrido.html` · 80 palabras · lista
 
@@ -719,27 +808,7 @@ SEVEN-G describe seis puntos de partida y ordena los primeros pasos de cada uno.
 {BASE}SEVEN-G/herramientas/T23_recorrido_implantacion/recorrido.html
 ```
 
-### 19. Semana 10, martes 19-01-2027 · Historia
-
-Destino: `SEVEN-G/html/es/entrada/index.html#partida` · 102 palabras · pregunta
-
-```text
-El camino es el mismo. El punto de partida, no.
-
-Durante ocho martes he contado una historia: del entusiasmo por la IA a la transformación gobernada.
-
-Tu compañía puede estar en el paso 1 o en el 6. Los pasos para poner orden son los mismos, y van en el mismo orden.
-
-Y no hace falta creerse un marco. Se puede comprobar: en el sitio hay un ejemplo completo, con una compañía ficticia.
-
-Conclusión: la IA deja de ser una colección de pilotos. Pasa a ser una cartera que la dirección gobierna, mide y escala con evidencia.
-
-¿Por dónde empieza la tuya?
-
-{BASE}SEVEN-G/html/es/entrada/index.html#partida
-```
-
-### 20. Semana 10, jueves 21-01-2027 · Mitos y errores de la dirección
+### 57. Semana 29, martes 01-06-2027 · Mitos y errores de la dirección
 
 Destino: `SEVEN-G/html/es/54_SEVEN-G_Organizacion_de_la_compania_para_la_IA.html#9-5-hace-falta-un-director-de-ia-en-general-no` · 83 palabras · texto
 
@@ -759,7 +828,25 @@ Es una propuesta razonada, no una regla. Lee los argumentos y las cautelas, y de
 {BASE}SEVEN-G/html/es/54_SEVEN-G_Organizacion_de_la_compania_para_la_IA.html#9-5-hace-falta-un-director-de-ia-en-general-no
 ```
 
-Para las semanas 11 a 52, la línea de cada publicación está en la columna «Idea» del calendario (sección 5). Los textos completos se escriben por lotes de un mes, con el estilo ya ajustado.
+### 81. Semana 41, martes 24-08-2027 · Áreas de actuación
+
+Destino: `SEVEN-G/html/es/13_SEVEN-G_Tesis_de_IA_ambicion_y_apetito_de_riesgo.html#tesis-de-ia` · 82 palabras · pregunta
+
+```text
+Una decisión que tu consejo debería tener por escrito: una tesis de IA.
+
+Una tesis de IA cabe en pocas páginas. Dice dónde quiere competir la compañía con IA, con qué ambición en cada área, cuánto riesgo acepta y qué no hará nunca.
+
+Sin tesis, cada iniciativa se juzga sola. Con tesis, se juzga contra una decisión del consejo.
+
+Para aprobarla no hace falta saber de modelos. Hace falta saber de estrategia y de riesgo.
+
+¿Tiene tu compañía esta decisión por escrito?
+
+{BASE}SEVEN-G/html/es/13_SEVEN-G_Tesis_de_IA_ambicion_y_apetito_de_riesgo.html#tesis-de-ia
+```
+
+Para el resto de las semanas, la línea de cada publicación está en la columna «Idea» del calendario (sección 5). Los textos completos se escriben por lotes de un mes, con el estilo ya ajustado.
 
 ## 7. Consejos prácticos
 
@@ -863,17 +950,20 @@ Lista de comprobación antes de aprobar un texto:
 - [ ] No promete certificación ni cumplimiento normativo (D25).
 - [ ] No presenta SEVEN-G como alternativa a ISO/IEC 42001 (D151) ni como marca registrada (D157).
 - [ ] No pide datos de contacto ni ofrece servicios.
-- [ ] Trata de SEVEN-G: gobernar, medir y aplicar la IA en la empresa. No trata de SPAD ni de equipos de desarrollo.
-- [ ] Tiene una sola idea, entre 60 y 120 palabras, y un enlace a una página concreta que existe.
+- [ ] Martes: trata de SEVEN-G (gobernar, medir y aplicar la IA en la empresa). Jueves: trata del mundo de la IA y termina con «Qué significa para tu consejo:». Ninguna trata de SPAD ni de equipos de desarrollo.
+- [ ] Una noticia o un estudio se cita por su fuente primaria (anuncio de la compañía, regulador o estudio original), nunca por el medio que la cuenta. No se suben gráficos ni tablas de terceros: se cuentan con palabras propias y se enlaza la fuente.
+- [ ] Tiene una sola idea, entre 60 y 170 palabras (la publicación 1, hasta 250), y un enlace a una página concreta que existe.
 - [ ] Si lleva captura, dice «compañía ficticia» o «datos ilustrativos».
 
 ## 10. Pendiente del autor
 
-1. Leer los 20 textos y cambiar `estado` a `aprobado` en `linkedin_calendario.json`, uno a uno. La publicación 1 sale el 17-11-2026.
+1. Leer los textos en `editor_publicaciones.html` y aprobarlos uno a uno. La publicación 1 sale el martes 17-11-2026 y la 2 (McKinsey) el jueves 19-11-2026.
 2. Programar las aprobadas en LinkedIn. El enlace de cada una es `base_url` + `destino`, con «?» + `utm` antes del ancla.
 3. Decidir si quiere etiquetas al final de cada publicación (sección 1.1: antes las usaba, ahora no).
 4. Revisar el titular y la sección «Acerca de» del perfil (sección 7.6).
 
-Aprobado el 13-11-2026 (D172): idioma, días y horas, fecha de inicio y parámetros `utm`.
+Aprobado el 13-11-2026 (D172): idioma, días y horas, fecha de inicio y parámetros `utm`. Aprobado el 14-11-2026 (D183): martes SEVEN-G y jueves «El mundo de la IA», y el editor de publicaciones.
+
+Pendiente de Claude: «Lo que ha pasado este mes» de noviembre, para el jueves 03-12-2026, escrito la semana del 23-11-2026 con fuentes primarias; y cada mes, los textos del mes siguiente.
 
 Hecho el 13-11-2026: lectura del perfil y notas de estilo; serie de la historia en ocho pasos (D169); enlaces de las seis preguntas a su página propia.

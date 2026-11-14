@@ -2094,7 +2094,7 @@ try {
       if ($port46 -notmatch "<!-- slides:$($m):inicio") { Mal "portada [$lg]: falta la marca de «$m en slides»"; $mal46++ }
       elseif ($man46.Count -and $port46 -notmatch "(?s)<!-- slides:$($m):inicio[^>]*-->\s*<p class=""nota-acciones nota-slides""><a href=""[^""]+#presentaciones""") { Mal "portada [$lg]: no enlaza «$m en slides» (generar con build.ps1)"; $mal46++ }
     }
-    if ((Portada-Con-Slides $port46 $lg '' $repo) -cne $port46) { Mal "portada [$lg]: «en slides» no está al día con presentaciones/manifiesto.json: generar con build.ps1"; $mal46++ }
+    if (((Portada-Con-Slides $port46 $lg '' $repo) -replace "`r`n", "`n") -cne ($port46 -replace "`r`n", "`n")) { Mal "portada [$lg]: «en slides» no está al día con presentaciones/manifiesto.json: generar con build.ps1"; $mal46++ }
   }
   $pages46 = [IO.File]::ReadAllText((Join-Path $repo '.github\workflows\pages.yml'))
   if ($pages46 -notmatch 'for c in html pdf docx pptx herramientas' -or $pages46 -notmatch 'for c in html pdf pptx; do') { Mal 'pages.yml: no publica pptx y pdf de SEVEN-G, SPHERES y SPAD'; $mal46++ }
