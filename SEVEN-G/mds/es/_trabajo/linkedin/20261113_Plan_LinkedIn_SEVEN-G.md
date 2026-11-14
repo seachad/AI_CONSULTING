@@ -195,7 +195,7 @@ Inicio propuesto: martes 17-11-2026. Si empieza otro día, las fechas se desplaz
 
 | Sem. | Fecha | Día | Pilar | Serie | Idea | Página de destino |
 |---|---|---|---|---|---|---|
-| 1 | 17-11-2026 | martes | Idea central | Apertura | Objetivo de la serie y mensaje principal: el error es tratar la IA como una tecnología más, que depende de tecnología. Se busca participación activa: el feedback mejora SEVEN-G, SPHERES y SPAD y vuelve a la comunidad. | `SEVEN-G/html/es/entrada/index.html` |
+| 1 | 17-11-2026 | martes | Idea central | Apertura | Objetivo de la serie, público, qué se va a publicar, qué son SEVEN-G y SPHERES y por qué se crearon, y mensaje principal: el error es tratar la IA como una tecnología más. Se busca participación activa: el feedback mejora SEVEN-G, SPHERES y SPAD y vuelve a la comunidad. | `SEVEN-G/html/es/entrada/index.html` |
 | 1 | 19-11-2026 | jueves | Seis preguntas del consejo | Apertura | ¿Cuántos sistemas de IA tiene hoy en producción? Seis preguntas que su consejo acabará haciendo. | `SEVEN-G/html/es/entrada/index.html#preguntas` |
 | 2 | 24-11-2026 | martes | Historia | Historia en ocho pasos 1/8 | Todo empieza con entusiasmo: una docena de iniciativas de IA y nadie las gobierna. | `SEVEN-G/html/es/entrada/index.html#historia` |
 | 2 | 26-11-2026 | jueves | Tres preguntas estratégicas | Tres preguntas 1/3 | Dónde invertir: ¿su inversión sigue a su estrategia o a quien pidió presupuesto primero? | `SEVEN-G/herramientas/T17_panel_consejo/ejemplo/salida/t01_Dashboard_Casos_Uso_IA_v8.html` |
@@ -323,7 +323,7 @@ Veinte publicaciones listas para revisar. Cada una tiene un gancho en la primera
 
 ### 1. Semana 1, martes 17-11-2026 · Idea central
 
-Destino: `SEVEN-G/html/es/entrada/index.html` · 126 palabras · texto
+Destino: `SEVEN-G/html/es/entrada/index.html` · 242 palabras · texto
 
 ```text
 El error más común con la IA: tratarla como una tecnología más.
@@ -332,9 +332,21 @@ Y, por tanto, dejarla en manos de tecnología.
 
 La IA ya no va de tecnología. Va de negocio, estrategia, organización, riesgos y liderazgo. Es un activo estratégico, y sus decisiones son del consejo, del primer ejecutivo y de la dirección financiera.
 
-Durante un año voy a compartir aquí, dos veces por semana, ideas sobre la implantación estratégica de la IA en las compañías. Salen de SEVEN-G, un marco abierto y gratuito.
+Durante un año publicaré aquí dos veces por semana. Escribo para miembros de consejos de administración, ejecutivos (dirección general, finanzas, riesgos, transformación y negocio) y consultores que les acompañan.
 
-Y busco participación activa. Todo esto es discutible: en este campo estamos todos aprendiendo a la vez. Todo feedback es bienvenido. Servirá para mejorar SEVEN-G y los otros marcos (SPHERES y SPAD), y todo vuelve a la comunidad.
+Qué voy a publicar:
+• Las preguntas que un consejo debe hacer sobre la IA.
+• Cómo decidir dónde invertir y cuándo parar un caso.
+• Cómo medir el valor real, no el prometido.
+• Cómo gobernar el riesgo sin frenar a la compañía.
+
+Todo sale de dos marcos abiertos y gratuitos que he creado:
+→ SEVEN-G: cómo implantar, gobernar y medir la IA para saber si la compañía se transforma o solo se hace más eficiente.
+→ SPHERES: dónde genera valor la IA y con qué ambición: optimizar, aumentar o transformar.
+
+¿Por qué? Porque la adopción habitual de la IA falla en lo mismo: pilotos que no escalan, valor que nadie demuestra y decisiones que no llegan al consejo.
+
+Y busco participación activa. Todo esto es discutible: en este campo estamos todos aprendiendo a la vez. Todo feedback es bienvenido. Servirá para mejorar SEVEN-G, SPHERES y SPAD (su marco para construir software con IA), y todo vuelve a la comunidad.
 
 Se aceptan (y agradecen) comentarios!
 
