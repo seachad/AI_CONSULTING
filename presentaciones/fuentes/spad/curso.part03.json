@@ -1,0 +1,345 @@
+{
+  "slides": [
+    {
+      "tipo": "seccion",
+      "titulo": { "es": "Módulo 5 · Contextos, temas y registros", "en": "Module 5 · Contexts, topics and records" },
+      "rotulo": { "es": "Módulo 5", "en": "Module 5" },
+      "texto": {
+        "es": "Objetivo: saber qué reglas se cargan antes de cualquier fase (contextos), cómo se ordena cada trabajo (tema) y qué registros dejan la evidencia.",
+        "en": "Objective: know which rules are loaded before any phase (contexts), how each piece of work is organised (topic) and which records leave the evidence."
+      },
+      "enlaces": [
+        { "texto": { "es": "Contextos, temas y registro", "en": "Contexts, topics and records" }, "href": "SPAD/html/{idioma}/02_SPAD_Contextos_temas_y_registro.html" }
+      ],
+      "notas": {
+        "es": "Objetivo del módulo 5: entender la «memoria» de SPAD.\n\nUna IA no recuerda las normas de su compañía de un trabajo a otro. Si cada persona le explica las reglas a su manera, cada trabajo sale distinto. SPAD lo resuelve con tres piezas:\n- Los contextos: documentos con las reglas que la IA recibe antes de cualquier fase. Hay uno global, común a toda la organización, y uno por proyecto.\n- El tema: cada funcionalidad, corrección o incidente tiene un nombre corto y una carpeta donde se guardan todos sus artefactos.\n- Los registros: qué modelo produjo cada artefacto, quién lo validó y qué infracciones hubo.\n\nEjemplo cotidiano: un despacho profesional tiene un manual de estilo común (contexto global), unas instrucciones por cliente (contexto de proyecto) y un expediente por asunto (tema). Nadie empieza un asunto sin abrir su expediente.\n\nPor qué importa: sin contextos, la calidad depende de quién escribe las instrucciones. Sin tema, el trabajo se pierde en conversaciones sueltas. Sin registros, no hay forma de responder a una auditoría.\n\nPregunta para el aula: ¿dónde están hoy las normas técnicas de su compañía? ¿Las recibe la IA que usan sus equipos?",
+        "en": "Objective of module 5: understand SPAD's ‘memory’.\n\nAn AI does not remember your company's rules from one piece of work to the next. If each person explains the rules to it in their own way, each piece of work comes out different. SPAD solves this with three pieces:\n- Contexts: documents with the rules the AI receives before any phase. There is one global context, common to the whole organisation, and one per project.\n- The topic: each feature, fix or incident has a short name and a folder where all its artefacts are stored.\n- Records: which model produced each artefact, who validated it and which violations there were.\n\nEveryday example: a professional firm has a common style manual (global context), instructions per client (project context) and a file per matter (topic). Nobody starts a matter without opening its file.\n\nWhy it matters: without contexts, quality depends on whoever writes the instructions. Without a topic, work gets lost in loose conversations. Without records, there is no way to answer an audit.\n\nQuestion for the classroom: where are your company's technical rules today? Does the AI your teams use receive them?"
+      },
+      "fuentes": [
+        { "texto": { "es": "SPAD 02 · Contextos", "en": "SPAD 02 · Contexts" }, "href": { "es": "SPAD/html/es/02_SPAD_Contextos_temas_y_registro.html#contextos", "en": "SPAD/html/en/02_SPAD_Contextos_temas_y_registro.html#contexts" } },
+        { "texto": { "es": "SPAD 00 · Contextos y temas", "en": "SPAD 00 · Contexts and topics" }, "href": { "es": "SPAD/html/es/00_SPAD_Que_es_y_para_que_sirve.html#contextos", "en": "SPAD/html/en/00_SPAD_Que_es_y_para_que_sirve.html#contexts" } }
+      ]
+    },
+    {
+      "tipo": "imagen",
+      "titulo": { "es": "Contexto global, contexto de proyecto y tema", "en": "Global context, project context and topic" },
+      "sub": {
+        "es": "Las reglas comunes, las del proyecto y la carpeta de cada trabajo.",
+        "en": "The common rules, the project rules and the folder for each piece of work."
+      },
+      "imagen": "spad-08",
+      "bullets": [
+        {
+          "rotulo": { "es": "Contexto global", "en": "Global context" },
+          "texto": {
+            "es": "Reglas de toda la organización: artefactos, pruebas, versiones, seguridad base, datos, proveedores y modelos aprobados.",
+            "en": "Organisation-wide rules: artefacts, tests, versions, baseline security, data, providers and approved models."
+          }
+        },
+        {
+          "rotulo": { "es": "Contexto de proyecto", "en": "Project context" },
+          "texto": {
+            "es": "Tecnología, arquitectura, reglas de dominio y cumplimiento. Solo prevalece con una excepción escrita que aprueba una persona.",
+            "en": "Technology, architecture, domain rules and compliance. It only prevails with a written exception approved by a person."
+          }
+        },
+        {
+          "rotulo": { "es": "Tema", "en": "Topic" },
+          "texto": {
+            "es": "Nombre corto, como payment_gateway, y una carpeta con todos los artefactos, también los rechazados.",
+            "en": "A short name, such as payment_gateway, and a folder with all the artefacts, including rejected ones."
+          }
+        },
+        {
+          "rotulo": { "es": "Lámina", "en": "Illustration" },
+          "texto": {
+            "es": "Lámina de SPAD en español.",
+            "en": "SPAD illustration, in Spanish."
+          }
+        }
+      ],
+      "enlaces": [
+        { "texto": { "es": "Precedencia y excepciones", "en": "Precedence and exceptions" }, "href": { "es": "SPAD/html/es/02_SPAD_Contextos_temas_y_registro.html#2-3-precedencia-y-excepciones", "en": "SPAD/html/en/02_SPAD_Contextos_temas_y_registro.html#2-3-precedence-and-exceptions" } },
+        { "texto": { "es": "Temas", "en": "Topics" }, "href": { "es": "SPAD/html/es/02_SPAD_Contextos_temas_y_registro.html#temas", "en": "SPAD/html/en/02_SPAD_Contextos_temas_y_registro.html#topics" } }
+      ],
+      "notas": {
+        "es": "La lámina muestra las tres piezas que la IA recibe o usa en cada trabajo.\n\nContexto global: lo fija la organización y vale para todos los proyectos. Incluye cómo se nombran los artefactos, la cobertura mínima de pruebas (el documento propone 80 % como valor de partida, que cada organización ajusta), el versionado, la seguridad base (con OWASP Top 10 como referencia), las reglas de datos y de proveedores de modelos, las prohibiciones, los parámetros de los ciclos complementarios y los modelos aprobados.\n\nContexto de proyecto: añade lo propio del proyecto: tecnología, arquitectura, reglas de negocio, cumplimiento, convenciones y despliegue. Si contradice al global, solo prevalece con una excepción escrita y justificada que aprueba una persona, nunca una IA. Ejemplo del documento: bajar la cobertura del 80 % al 70 % durante una migración, con motivo y fecha.\n\nTema: un nombre corto en minúsculas, con guiones bajos y hasta 20 caracteres, como user_auth o payment_gateway. Cada tema tiene su carpeta. Los intentos rechazados se guardan: si el primer plan fue rechazado, la carpeta tiene el plan 01 rechazado y el plan 02 aprobado.\n\nPor qué importa: la excepción escrita convierte una decisión informal («esta vez no hacemos pruebas») en una decisión con responsable, motivo y fecha.\n\nPregunta para el aula: ¿quién debería aprobar en su compañía una excepción al contexto global?",
+        "en": "The illustration shows the three pieces that the AI receives or uses in each piece of work.\n\nGlobal context: the organisation sets it and it applies to all projects. It includes how artefacts are named, the minimum test coverage (the document proposes 80 % as a starting value, which each organisation adjusts), versioning, baseline security (with the OWASP Top 10 as a reference), the rules on data and model providers, the prohibitions, the parameters of the complementary cycles and the approved models.\n\nProject context: adds what is specific to the project: technology, architecture, business rules, compliance, conventions and deployment. If it contradicts the global context, it only prevails with a written, justified exception approved by a person, never by an AI. Example from the document: lowering coverage from 80 % to 70 % during a migration, with a reason and a date.\n\nTopic: a short name in lower case, with underscores and up to 20 characters, such as user_auth or payment_gateway. Each topic has its folder. Rejected attempts are kept: if the first plan was rejected, the folder has the rejected plan 01 and the approved plan 02.\n\nWhy it matters: the written exception turns an informal decision (‘this time we will skip the tests’) into a decision with an owner, a reason and a date.\n\nQuestion for the classroom: who should approve an exception to the global context in your company?"
+      },
+      "fuentes": [
+        { "texto": { "es": "SPAD 02 · Contexto global", "en": "SPAD 02 · Global context" }, "href": { "es": "SPAD/html/es/02_SPAD_Contextos_temas_y_registro.html#2-1-contexto-global", "en": "SPAD/html/en/02_SPAD_Contextos_temas_y_registro.html#2-1-global-context" } },
+        { "texto": { "es": "SPAD 02 · Contexto de proyecto", "en": "SPAD 02 · Project context" }, "href": { "es": "SPAD/html/es/02_SPAD_Contextos_temas_y_registro.html#2-2-contexto-de-proyecto", "en": "SPAD/html/en/02_SPAD_Contextos_temas_y_registro.html#2-2-project-context" } },
+        { "texto": { "es": "SPAD 02 · Organización de artefactos", "en": "SPAD 02 · Organisation of artefacts" }, "href": { "es": "SPAD/html/es/02_SPAD_Contextos_temas_y_registro.html#3-1-organizacion-de-artefactos", "en": "SPAD/html/en/02_SPAD_Contextos_temas_y_registro.html#3-1-organisation-of-artefacts" } },
+        { "texto": { "es": "OWASP Top 10 (fuente oficial)", "en": "OWASP Top 10 (official source)" }, "href": { "es": "https://top10.owasp.org/2025/es/", "en": "https://top10.owasp.org/2025/" } }
+      ]
+    },
+    {
+      "tipo": "tarjetas",
+      "titulo": { "es": "Tres registros por artefacto (y ejercicio del módulo 5)", "en": "Three records per artefact (and module 5 exercise)" },
+      "sub": {
+        "es": "La evidencia que permite responder a una auditoría sin depender de la memoria de nadie.",
+        "en": "The evidence that makes it possible to answer an audit without relying on anyone's memory."
+      },
+      "tarjetas": [
+        {
+          "titulo": { "es": "Registro del modelo", "en": "Model record" },
+          "texto": {
+            "es": "Qué proveedor, modelo, versión, instrucciones y contextos produjeron cada artefacto. Permite reproducir y explicar el trabajo.",
+            "en": "Which provider, model, version, instructions and contexts produced each artefact. It makes the work reproducible and explainable."
+          },
+          "color": "oxford",
+          "href": { "es": "SPAD/html/es/02_SPAD_Contextos_temas_y_registro.html#4-1-registro-del-modelo", "en": "SPAD/html/en/02_SPAD_Contextos_temas_y_registro.html#4-1-model-record" }
+        },
+        {
+          "titulo": { "es": "Registro de validación humana", "en": "Human validation record" },
+          "texto": {
+            "es": "Quién aceptó o rechazó cada veredicto, cuándo y por qué. Detrás de cada aceptación hay un nombre.",
+            "en": "Who accepted or rejected each verdict, when and why. Behind each acceptance there is a name."
+          },
+          "color": "teal",
+          "href": { "es": "SPAD/html/es/02_SPAD_Contextos_temas_y_registro.html#4-2-registro-de-validacion-humana", "en": "SPAD/html/en/02_SPAD_Contextos_temas_y_registro.html#4-2-human-validation-record" }
+        },
+        {
+          "titulo": { "es": "Registro de infracciones", "en": "Violation log" },
+          "texto": {
+            "es": "Cada respuesta invalidada, con su causa. Sirve para mejorar las instrucciones y medir qué modelos cumplen el proceso.",
+            "en": "Each invalidated response, with its cause. It helps improve the instructions and measure which models comply with the process."
+          },
+          "color": "claret",
+          "href": { "es": "SPAD/html/es/02_SPAD_Contextos_temas_y_registro.html#4-3-registro-de-infracciones", "en": "SPAD/html/en/02_SPAD_Contextos_temas_y_registro.html#4-3-violation-log" }
+        },
+        {
+          "titulo": { "es": "Ejercicio", "en": "Exercise" },
+          "texto": {
+            "es": "Elija un trabajo reciente hecho con IA. ¿Podría decir qué modelo lo produjo y quién lo validó? Repase la lista de comprobación del documento 02.",
+            "en": "Choose a recent piece of work done with AI. Could you say which model produced it and who validated it? Go through the checklist in document 02."
+          },
+          "color": "oro",
+          "href": { "es": "SPAD/html/es/02_SPAD_Contextos_temas_y_registro.html#lista-de-comprobacion-antes-de-empezar", "en": "SPAD/html/en/02_SPAD_Contextos_temas_y_registro.html#checklist-before-starting" }
+        }
+      ],
+      "enlaces": [
+        { "texto": { "es": "Registros por artefacto", "en": "Records per artefact" }, "href": { "es": "SPAD/html/es/02_SPAD_Contextos_temas_y_registro.html#registros-por-artefacto", "en": "SPAD/html/en/02_SPAD_Contextos_temas_y_registro.html#records-per-artefact" } },
+        { "texto": { "es": "Lista antes de empezar", "en": "Checklist before starting" }, "href": { "es": "SPAD/html/es/02_SPAD_Contextos_temas_y_registro.html#lista-de-comprobacion-antes-de-empezar", "en": "SPAD/html/en/02_SPAD_Contextos_temas_y_registro.html#checklist-before-starting" } }
+      ],
+      "notas": {
+        "es": "Cada tema guarda tres registros.\n\nRegistro del modelo: cada artefacto indica qué proveedor, modelo y versión lo produjeron, con qué instrucciones y con qué contextos. Los modelos cambian a menudo. Si dentro de seis meses aparece un defecto, este registro permite saber con qué se hizo y repetirlo.\n\nRegistro de validación humana: cada veredicto aceptado o rechazado lleva el nombre de la persona, la fecha y el motivo. Es la regla «ninguna IA aprueba» convertida en evidencia.\n\nRegistro de infracciones: cada respuesta descartada por la política de validación, con su causa. No es un registro de culpas: sirve para mejorar las instrucciones y para comparar qué modelos cumplen mejor el proceso, como veremos en las métricas del módulo 8.\n\nEjercicio del módulo 5 (cinco minutos, individual): elija un trabajo reciente hecho con IA en su equipo y responda: ¿qué modelo lo produjo?, ¿con qué instrucciones?, ¿quién lo validó?, ¿hubo intentos descartados? Después repase la lista de comprobación del documento 02, que resume lo que debe estar listo antes de empezar: contextos cargados, tema creado, roles asignados y modelos aprobados.\n\nRespuesta esperada: casi nadie podrá responder a las cuatro preguntas. Ese es el valor de los registros.\n\nPor qué importa para un responsable de tecnología: los registros cuestan poco si se llevan desde el principio y mucho si se reconstruyen para una auditoría.",
+        "en": "Each topic keeps three records.\n\nModel record: each artefact states which provider, model and version produced it, with which instructions and with which contexts. Models change often. If a defect appears in six months, this record makes it possible to know what it was built with and to repeat it.\n\nHuman validation record: each accepted or rejected verdict carries the person's name, the date and the reason. It is the rule ‘no AI approves’ turned into evidence.\n\nViolation log: each response discarded under the validation policy, with its cause. It is not a log of blame: it helps improve the instructions and compare which models comply better with the process, as we will see in the module 8 metrics.\n\nModule 5 exercise (five minutes, individual): choose a recent piece of work done with AI in your team and answer: which model produced it?, with which instructions?, who validated it?, were there discarded attempts? Then go through the checklist in document 02, which summarises what must be ready before starting: contexts loaded, topic created, roles assigned and models approved.\n\nExpected answer: almost nobody will be able to answer all four questions. That is the value of the records.\n\nWhy it matters for a technology leader: records cost little if they are kept from the start and a lot if they are rebuilt for an audit."
+      },
+      "fuentes": [
+        { "texto": { "es": "SPAD 02 · Registros por artefacto", "en": "SPAD 02 · Records per artefact" }, "href": { "es": "SPAD/html/es/02_SPAD_Contextos_temas_y_registro.html#registros-por-artefacto", "en": "SPAD/html/en/02_SPAD_Contextos_temas_y_registro.html#records-per-artefact" } },
+        { "texto": { "es": "SPAD 03 · Registro de validación e infracciones", "en": "SPAD 03 · Validation record and violation log" }, "href": { "es": "SPAD/html/es/03_SPAD_Politica_de_validacion.html#registro-de-validacion-e-infracciones", "en": "SPAD/html/en/03_SPAD_Politica_de_validacion.html#validation-record-and-violation-log" } },
+        { "texto": { "es": "SPAD 02 · Lista de comprobación", "en": "SPAD 02 · Checklist" }, "href": { "es": "SPAD/html/es/02_SPAD_Contextos_temas_y_registro.html#lista-de-comprobacion-antes-de-empezar", "en": "SPAD/html/en/02_SPAD_Contextos_temas_y_registro.html#checklist-before-starting" } }
+      ]
+    },
+    {
+      "tipo": "seccion",
+      "titulo": { "es": "Módulo 6 · Ciclos complementarios y seguridad", "en": "Module 6 · Complementary cycles and security" },
+      "rotulo": { "es": "Módulo 6", "en": "Module 6" },
+      "texto": {
+        "es": "Objetivo: saber qué ciclo se usa con código heredado, fallos y urgencias, cuándo es obligatoria la revisión de seguridad y qué hallazgos bloquean el despliegue.",
+        "en": "Objective: know which cycle is used for legacy code, failures and emergencies, when the security review is mandatory and which findings block deployment."
+      },
+      "enlaces": [
+        { "texto": { "es": "Otros ciclos de trabajo", "en": "Other work cycles" }, "href": { "es": "SPAD/html/es/00_SPAD_Que_es_y_para_que_sirve.html#otros-ciclos-de-trabajo", "en": "SPAD/html/en/00_SPAD_Que_es_y_para_que_sirve.html#other-work-cycles" } }
+      ],
+      "notas": {
+        "es": "Objetivo del módulo 6: conocer los ciclos que acompañan al principal.\n\nNo todo el trabajo empieza desde cero. A veces hay que tocar un sistema antiguo que nadie documentó, investigar por qué falla algo o arreglar un problema urgente en producción. SPAD no inventa un método distinto para cada caso: define ciclos complementarios que preparan o aceleran el ciclo principal, sin saltarse sus reglas.\n\nEl módulo también trata la seguridad. En SPAD la seguridad no es una revisión opcional al final: para el código sensible es una fase obligatoria, con reglas claras sobre qué hallazgos bloquean el despliegue y quién puede aceptar un riesgo.\n\nEjemplo cotidiano: un hospital tiene un protocolo de urgencias. Va más deprisa, pero no se salta la identificación del paciente ni el informe posterior. La corrección urgente de SPAD funciona igual.\n\nPregunta para el aula: cuando hay una urgencia en producción en su compañía, ¿qué controles se saltan? ¿Se revisan después?",
+        "en": "Objective of module 6: know the cycles that accompany the main one.\n\nNot all work starts from scratch. Sometimes a legacy system that nobody documented has to be changed, someone has to investigate why something fails or an urgent problem in production has to be fixed. SPAD does not invent a different method for each case: it defines complementary cycles that prepare or accelerate the main cycle, without skipping its rules.\n\nThe module also covers security. In SPAD, security is not an optional review at the end: for sensitive code it is a mandatory phase, with clear rules on which findings block deployment and who may accept a risk.\n\nEveryday example: a hospital has an emergency protocol. It goes faster, but it does not skip patient identification or the report afterwards. SPAD's urgent fix works in the same way.\n\nQuestion for the classroom: when there is an emergency in production in your company, which controls are skipped? Are they reviewed afterwards?"
+      },
+      "fuentes": [
+        { "texto": { "es": "SPAD 00 · Otros ciclos de trabajo", "en": "SPAD 00 · Other work cycles" }, "href": { "es": "SPAD/html/es/00_SPAD_Que_es_y_para_que_sirve.html#otros-ciclos-de-trabajo", "en": "SPAD/html/en/00_SPAD_Que_es_y_para_que_sirve.html#other-work-cycles" } },
+        { "texto": { "es": "SPAD 04 · Ciclos complementarios", "en": "SPAD 04 · Complementary cycles" }, "href": "SPAD/html/{idioma}/04_SPAD_Ciclos_complementarios.html" }
+      ]
+    },
+    {
+      "tipo": "tarjetas",
+      "titulo": { "es": "Cuatro ciclos complementarios", "en": "Four complementary cycles" },
+      "sub": {
+        "es": "Preparan o aceleran el ciclo principal. Ninguno elimina la revisión ni la validación humana.",
+        "en": "They prepare or accelerate the main cycle. None removes review or human validation."
+      },
+      "tarjetas": [
+        {
+          "titulo": { "es": "Legado", "en": "Legacy" },
+          "texto": {
+            "es": "La IA analista documenta el código existente y su impacto; se escriben pruebas que fijan el comportamiento actual; después, fase 1.",
+            "en": "The AI Analyst documents the existing code and its impact; tests are written that pin down current behaviour; then, phase 1."
+          },
+          "color": "oxford",
+          "href": { "es": "SPAD/html/es/04_SPAD_Ciclos_complementarios.html#ciclo-de-legado", "en": "SPAD/html/en/04_SPAD_Ciclos_complementarios.html#legacy-cycle" }
+        },
+        {
+          "titulo": { "es": "Depuración", "en": "Debugging" },
+          "texto": {
+            "es": "La IA de diagnóstico busca la causa raíz: código, configuración o infraestructura. No escribe la solución.",
+            "en": "The Diagnostic AI looks for the root cause: code, configuration or infrastructure. It does not write the solution."
+          },
+          "color": "teal",
+          "href": { "es": "SPAD/html/es/04_SPAD_Ciclos_complementarios.html#ciclo-de-depuracion", "en": "SPAD/html/en/04_SPAD_Ciclos_complementarios.html#debugging-cycle" }
+        },
+        {
+          "titulo": { "es": "Corrección urgente", "en": "Urgent fix" },
+          "texto": {
+            "es": "Acelera, pero no quita fases: revisión y pruebas mínimas obligatorias, análisis posterior siempre y tema nuevo para la solución definitiva.",
+            "en": "It accelerates, but removes no phases: review and minimum tests are mandatory, a post-mortem always and a new topic for the definitive fix."
+          },
+          "color": "claret",
+          "href": { "es": "SPAD/html/es/04_SPAD_Ciclos_complementarios.html#ciclo-de-correccion-urgente", "en": "SPAD/html/en/04_SPAD_Ciclos_complementarios.html#urgent-fix-cycle" }
+        },
+        {
+          "titulo": { "es": "Seguridad", "en": "Security" },
+          "texto": {
+            "es": "Revisión obligatoria en autenticación, pagos, datos personales, entradas no confiables y componentes de IA. Incluye dependencias y licencias.",
+            "en": "Mandatory review for authentication, payments, personal data, untrusted inputs and AI components. It includes dependencies and licences."
+          },
+          "color": "negro",
+          "href": { "es": "SPAD/html/es/04_SPAD_Ciclos_complementarios.html#ciclo-de-seguridad", "en": "SPAD/html/en/04_SPAD_Ciclos_complementarios.html#security-cycle" }
+        }
+      ],
+      "enlaces": [
+        { "texto": { "es": "Ciclos complementarios", "en": "Complementary cycles" }, "href": "SPAD/html/{idioma}/04_SPAD_Ciclos_complementarios.html" },
+        { "texto": { "es": "Cadena de suministro y licencias", "en": "Supply chain and licences" }, "href": { "es": "SPAD/html/es/04_SPAD_Ciclos_complementarios.html#5-4-cadena-de-suministro-y-licencias", "en": "SPAD/html/en/04_SPAD_Ciclos_complementarios.html#5-4-supply-chain-and-licences" } }
+      ],
+      "notas": {
+        "es": "Los cuatro ciclos complementarios del documento 04:\n\n- Legado: antes de cambiar un sistema que nadie documentó, la IA analista lo documenta y analiza el impacto del cambio. Después se escriben pruebas de caracterización: pruebas que fijan cómo se comporta hoy el sistema, aunque no sea perfecto. Así, cualquier cambio que altere ese comportamiento se detecta. Solo entonces empieza la fase 1.\n- Depuración: la IA de diagnóstico investiga un fallo y entrega un informe de causa raíz con un veredicto: el problema está en el código, en la configuración o en la infraestructura. No escribe la solución; la solución sigue el ciclo principal.\n- Corrección urgente: para incidentes en producción. Acelera, pero no quita fases. La revisión y las pruebas mínimas son obligatorias, el análisis posterior es obligatorio aunque la corrección haya funcionado, y una corrección provisional abre un tema nuevo para planificar la solución definitiva. Los plazos los fija el contexto global.\n- Seguridad: revisión S1 obligatoria para autenticación, autorización, pagos, datos personales, entradas no confiables y componentes de IA en producción. Incluye la cadena de suministro: que las dependencias existan, sus vulnerabilidades conocidas, sus licencias y una lista de componentes del software.\n\nEjemplo: un cobro duplicado en payment_gateway. Primero, depuración para hallar la causa. Si urge, corrección urgente con revisión y análisis posterior. Después, tema nuevo con la solución definitiva por el ciclo principal.\n\nPor qué importa: la urgencia es el momento en que más controles se saltan; SPAD la acelera sin dejarla sin control.",
+        "en": "The four complementary cycles in document 04:\n\n- Legacy: before changing a system that nobody documented, the AI Analyst documents it and analyses the impact of the change. Then characterisation tests are written: tests that pin down how the system behaves today, even if it is not perfect. That way, any change that alters that behaviour is detected. Only then does phase 1 start.\n- Debugging: the Diagnostic AI investigates a failure and delivers a root cause report with a verdict: the problem lies in the code, the configuration or the infrastructure. It does not write the solution; the solution follows the main cycle.\n- Urgent fix: for incidents in production. It accelerates, but removes no phases. Review and minimum tests are mandatory, the post-mortem is mandatory even if the fix worked, and a provisional fix opens a new topic to plan the definitive solution. The deadlines are set by the global context.\n- Security: the S1 review is mandatory for authentication, authorisation, payments, personal data, untrusted inputs and AI components in production. It includes the supply chain: that dependencies exist, their known vulnerabilities, their licences and a software bill of materials.\n\nExample: a duplicate charge in payment_gateway. First, debugging to find the cause. If it is urgent, an urgent fix with review and post-mortem. Then, a new topic with the definitive fix through the main cycle.\n\nWhy it matters: an emergency is when most controls get skipped; SPAD speeds it up without leaving it uncontrolled."
+      },
+      "fuentes": [
+        { "texto": { "es": "SPAD 04 · Ciclo de legado", "en": "SPAD 04 · Legacy cycle" }, "href": { "es": "SPAD/html/es/04_SPAD_Ciclos_complementarios.html#ciclo-de-legado", "en": "SPAD/html/en/04_SPAD_Ciclos_complementarios.html#legacy-cycle" } },
+        { "texto": { "es": "SPAD 04 · Ciclo de depuración", "en": "SPAD 04 · Debugging cycle" }, "href": { "es": "SPAD/html/es/04_SPAD_Ciclos_complementarios.html#ciclo-de-depuracion", "en": "SPAD/html/en/04_SPAD_Ciclos_complementarios.html#debugging-cycle" } },
+        { "texto": { "es": "SPAD 04 · Ciclo de corrección urgente", "en": "SPAD 04 · Urgent fix cycle" }, "href": { "es": "SPAD/html/es/04_SPAD_Ciclos_complementarios.html#ciclo-de-correccion-urgente", "en": "SPAD/html/en/04_SPAD_Ciclos_complementarios.html#urgent-fix-cycle" } },
+        { "texto": { "es": "SPAD 04 · Ciclo de seguridad", "en": "SPAD 04 · Security cycle" }, "href": { "es": "SPAD/html/es/04_SPAD_Ciclos_complementarios.html#ciclo-de-seguridad", "en": "SPAD/html/en/04_SPAD_Ciclos_complementarios.html#security-cycle" } }
+      ]
+    },
+    {
+      "tipo": "imagen",
+      "titulo": { "es": "Pruebas y seguridad: qué bloquea (y ejercicio del módulo 6)", "en": "Testing and security: what blocks (and module 6 exercise)" },
+      "sub": {
+        "es": "Pruebas obligatorias en las fases 4, 6 y 7, y revisión de seguridad del código sensible.",
+        "en": "Mandatory tests in phases 4, 6 and 7, and a security review of sensitive code."
+      },
+      "imagen": "spad-09",
+      "bullets": [
+        {
+          "rotulo": { "es": "Crítica y alta", "en": "Critical and high" },
+          "texto": {
+            "es": "Bloquean el despliegue. Una crítica no la acepta nadie; una alta, solo excepcionalmente, por escrito y con fecha.",
+            "en": "They block deployment. Nobody accepts a critical one; a high one, only exceptionally, in writing and with a date."
+          }
+        },
+        {
+          "rotulo": { "es": "Media y baja", "en": "Medium and low" },
+          "texto": {
+            "es": "No bloquean. Se corrigen o una persona con autoridad las acepta como riesgo residual.",
+            "en": "They do not block. They are fixed or a person with authority accepts them as residual risk."
+          }
+        },
+        {
+          "rotulo": { "es": "Ejercicio", "en": "Exercise" },
+          "texto": {
+            "es": "El viernes aparece una vulnerabilidad alta y el lanzamiento es el lunes. ¿Quién decide y qué queda escrito? (Notas.)",
+            "en": "On Friday a high vulnerability appears and the launch is on Monday. Who decides and what is put in writing? (See notes.)"
+          }
+        },
+        {
+          "rotulo": { "es": "Lámina", "en": "Illustration" },
+          "texto": {
+            "es": "Lámina en español. FIX_PRIMERS es la fase 9, correcciones.",
+            "en": "Illustration in Spanish. FIX_PRIMERS is phase 9, fixes."
+          }
+        }
+      ],
+      "destacado": {
+        "es": "Ninguna IA acepta un riesgo residual: la IA revisora de seguridad clasifica y recomienda; acepta una persona.",
+        "en": "No AI accepts a residual risk: the AI Security Reviewer classifies and recommends; a person accepts."
+      },
+      "enlaces": [
+        { "texto": { "es": "Severidades y aceptación del riesgo", "en": "Severities and risk acceptance" }, "href": { "es": "SPAD/html/es/04_SPAD_Ciclos_complementarios.html#5-3-severidades-bloqueo-y-aceptacion-del-riesgo", "en": "SPAD/html/en/04_SPAD_Ciclos_complementarios.html#5-3-severities-blocking-and-risk-acceptance" } }
+      ],
+      "notas": {
+        "es": "La lámina tiene dos partes. A la izquierda, las pruebas obligatorias: la estrategia se define en la fase 4, antes de escribir código; las pruebas se construyen en la fase 6; y en la fase 7 se comprueba la cobertura real frente a la esperada. A la derecha, la revisión de seguridad del código sensible, con OWASP como lista de referencia (para componentes de IA, también la lista OWASP para aplicaciones con modelos de lenguaje).\n\nLas severidades (documento 04, sección 5.3):\n- Crítica: bloquea el despliegue, vuelve a correcciones y a una nueva revisión de seguridad. Nadie puede aceptarla como riesgo residual.\n- Alta: bloquea el despliegue. Solo de forma excepcional la acepta la autoridad de riesgo definida en el contexto global, por escrito y con fecha de corrección.\n- Media: no bloquea. Se corrige o la acepta la persona con autoridad según el contexto global.\n- Baja: no bloquea. Se corrige o la acepta la persona que orquesta.\n\nEn organizaciones que aplican SEVEN-G, los hallazgos críticos y altos bloquean además la puerta de puesta en producción (G5).\n\nRespuesta al ejercicio: la vulnerabilidad alta bloquea el lanzamiento. La IA no decide. Solo la autoridad de riesgo del contexto global puede aceptarla, de forma excepcional, por escrito y con una fecha de corrección. Si fuera crítica, no habría lanzamiento el lunes.\n\nPor qué importa: la presión de la fecha es real; la regla escrita protege a quien tiene que decir que no.",
+        "en": "The illustration has two parts. On the left, the mandatory tests: the strategy is defined in phase 4, before writing code; the tests are built in phase 6; and in phase 7 real coverage is checked against expected coverage. On the right, the security review of sensitive code, with OWASP as the reference list (for AI components, also the OWASP list for applications with language models).\n\nThe severities (document 04, section 5.3):\n- Critical: blocks deployment, goes back to fixes and a new security review. Nobody may accept it as residual risk.\n- High: blocks deployment. Only exceptionally does the risk authority defined in the global context accept it, in writing and with a fix date.\n- Medium: does not block. It is fixed or accepted by the person with authority under the global context.\n- Low: does not block. It is fixed or accepted by the Orchestrator.\n\nIn organisations that apply SEVEN-G, critical and high findings also block the go-live gate (G5).\n\nAnswer to the exercise: the high vulnerability blocks the launch. The AI does not decide. Only the risk authority in the global context may accept it, exceptionally, in writing and with a fix date. If it were critical, there would be no launch on Monday.\n\nWhy it matters: deadline pressure is real; the written rule protects whoever has to say no."
+      },
+      "fuentes": [
+        { "texto": { "es": "SPAD 04 · Severidades y aceptación del riesgo", "en": "SPAD 04 · Severities and risk acceptance" }, "href": { "es": "SPAD/html/es/04_SPAD_Ciclos_complementarios.html#5-3-severidades-bloqueo-y-aceptacion-del-riesgo", "en": "SPAD/html/en/04_SPAD_Ciclos_complementarios.html#5-3-severities-blocking-and-risk-acceptance" } },
+        { "texto": { "es": "OWASP Top 10 (fuente oficial)", "en": "OWASP Top 10 (official source)" }, "href": { "es": "https://top10.owasp.org/2025/es/", "en": "https://top10.owasp.org/2025/" } },
+        { "texto": { "es": "OWASP Top 10 para aplicaciones con LLM", "en": "OWASP Top 10 for LLM applications" }, "href": "https://genai.owasp.org/resource/owasp-top-10-for-llm-applications-2025/" }
+      ]
+    },
+    {
+      "tipo": "seccion",
+      "titulo": { "es": "Módulo 7 · Sistemas que incluyen IA", "en": "Module 7 · Systems that include AI" },
+      "rotulo": { "es": "Módulo 7", "en": "Module 7" },
+      "texto": {
+        "es": "Objetivo: distinguir el código escrito con IA del sistema que lleva IA dentro, clasificar la autonomía (A0–A3) y saber qué añade la evaluación del comportamiento.",
+        "en": "Objective: distinguish code written with AI from a system that has AI inside, classify autonomy (A0–A3) and know what behaviour evaluation adds."
+      },
+      "enlaces": [
+        { "texto": { "es": "Dos objetos distintos", "en": "Two distinct objects" }, "href": { "es": "SPAD/html/es/05_SPAD_Sistemas_que_incluyen_IA.html#dos-objetos-distintos", "en": "SPAD/html/en/05_SPAD_Sistemas_que_incluyen_IA.html#two-distinct-objects" } }
+      ],
+      "notas": {
+        "es": "Objetivo del módulo 7: entender el caso de mayor riesgo.\n\nHasta ahora hemos hablado de código escrito con ayuda de IA: la IA produce código, pruebas y documentación, que se revisan antes de desplegar. Una vez en producción, el programa hace siempre lo mismo.\n\nUn sistema que incluye IA es otra cosa: su comportamiento en producción depende de un modelo, de unas instrucciones, de una base de conocimiento o de un agente que ejecuta acciones. Responde a entradas que nadie ha visto antes. Y puede cambiar de comportamiento sin que nadie toque el código: basta con que el proveedor actualice el modelo.\n\nEjemplo: un programa que calcula el IVA de una factura es código. Un asistente que responde a las preguntas de los clientes sobre su factura es un sistema que incluye IA. El primero se prueba una vez; el segundo hay que evaluarlo antes y vigilarlo durante el uso.\n\nRiesgos propios del segundo: respuestas incorrectas dadas con seguridad, inyección de instrucciones, fuga de datos, acciones no autorizadas, sesgo y deriva.\n\nPregunta para el aula: ¿cuántos de los proyectos de IA de su compañía son de un tipo y cuántos del otro?",
+        "en": "Objective of module 7: understand the highest-risk case.\n\nSo far we have talked about code written with the help of AI: the AI produces code, tests and documentation, which are reviewed before deployment. Once in production, the program always does the same thing.\n\nA system that includes AI is something else: its behaviour in production depends on a model, on some instructions, on a knowledge base or on an agent that executes actions. It responds to inputs nobody has seen before. And it can change behaviour without anyone touching the code: it is enough for the provider to update the model.\n\nExample: a program that calculates the VAT on an invoice is code. An assistant that answers customers' questions about their invoice is a system that includes AI. The first is tested once; the second must be evaluated beforehand and monitored during use.\n\nRisks specific to the second: incorrect answers given with confidence, prompt injection, data leakage, unauthorised actions, bias and drift.\n\nQuestion for the classroom: how many of your company's AI projects are of one type and how many of the other?"
+      },
+      "fuentes": [
+        { "texto": { "es": "SPAD 05 · Dos objetos distintos", "en": "SPAD 05 · Two distinct objects" }, "href": { "es": "SPAD/html/es/05_SPAD_Sistemas_que_incluyen_IA.html#dos-objetos-distintos", "en": "SPAD/html/en/05_SPAD_Sistemas_que_incluyen_IA.html#two-distinct-objects" } }
+      ]
+    },
+    {
+      "tipo": "tabla",
+      "titulo": { "es": "Nivel de autonomía: A0 a A3", "en": "Autonomy level: A0 to A3" },
+      "sub": {
+        "es": "Se fija en el plan y determina cuánto se exige. Es la escala de SEVEN-G.",
+        "en": "It is set in the plan and determines how much is required. It is the SEVEN-G scale."
+      },
+      "cabecera": [
+        { "es": "Nivel", "en": "Level" },
+        { "es": "Qué hace el sistema", "en": "What the system does" },
+        { "es": "Qué hace la persona", "en": "What the person does" },
+        { "es": "Ejemplo ilustrativo", "en": "Illustrative example" }
+      ],
+      "filas": [
+        [
+          { "es": "A0 · Asistencia", "en": "A0 · Assistance" },
+          { "es": "Informa, resume o genera contenido.", "en": "Informs, summarises or generates content." },
+          { "es": "Decide y ejecuta.", "en": "Decides and executes." },
+          { "es": "Resumen de un expediente para un analista.", "en": "Summary of a case file for an analyst." }
+        ],
+        [
+          { "es": "A1 · Recomendación", "en": "A1 · Recommendation" },
+          { "es": "Propone una decisión o acción concreta.", "en": "Proposes a specific decision or action." },
+          { "es": "Valida cada acción antes de ejecutarla.", "en": "Validates each action before it is executed." },
+          { "es": "Propuesta de respuesta a un cliente que aprueba una persona.", "en": "Draft reply to a customer that a person approves." }
+        ],
+        [
+          { "es": "A2 · Actuación supervisada", "en": "A2 · Supervised action" },
+          { "es": "Ejecuta acciones dentro de límites definidos.", "en": "Executes actions within defined limits." },
+          { "es": "Supervisa, puede interrumpir y revisa después.", "en": "Supervises, can interrupt and reviews afterwards." },
+          { "es": "Reposición de existencias con revisión diaria de excepciones.", "en": "Stock replenishment with a daily review of exceptions." }
+        ],
+        [
+          { "es": "A3 · Actuación autónoma", "en": "A3 · Autonomous action" },
+          { "es": "Ejecuta secuencias de acciones sin revisión una a una.", "en": "Executes sequences of actions without one-by-one review." },
+          { "es": "Fija límites, vigila agregados y tiene interruptor de parada.", "en": "Sets limits, monitors aggregates and has a kill switch." },
+          { "es": "Ajuste continuo de precios dentro de una banda aprobada.", "en": "Continuous price adjustment within an approved band." }
+        ]
+      ],
+      "destacado": {
+        "es": "A0 y A1 exigen evaluación del comportamiento; A2 y A3, además, límites, registro de acciones e interruptor de parada probado.",
+        "en": "A0 and A1 require behaviour evaluation; A2 and A3 also require limits, an action log and a tested kill switch."
+      },
+      "enlaces": [
+        { "texto": { "es": "Nivel de autonomía", "en": "Autonomy level" }, "href": { "es": "SPAD/html/es/05_SPAD_Sistemas_que_incluyen_IA.html#nivel-de-autonomia", "en": "SPAD/html/en/05_SPAD_Sistemas_que_incluyen_IA.html#autonomy-level" } }
+      ],
+      "notas": {
+        "es": "Todo componente de IA que decide o actúa se clasifica desde el plan con la escala de autonomía de SEVEN-G, de A0 a A3. La tabla resume el documento 05; los ejemplos son ilustrativos.\n\nLa clave para un público de negocio está en la columna de la persona. En A0 la persona decide todo. En A1 valida cada acción. En A2 ya no valida una a una: supervisa y revisa después. En A3 solo fija los límites y vigila el conjunto, con un interruptor de parada.\n\nCuanto más actúa el sistema, más se exige:\n- A0 y A1: evaluación del comportamiento.\n- A2 y A3: además, límites de actuación, registro de cada acción, interruptor de parada probado y, en organizaciones que aplican SEVEN-G, intensidad Enterprise y los controles de seguridad de agentes.\n\nEjemplo de debate: un asistente que redacta respuestas a reclamaciones es A1 si una persona las aprueba antes de enviarlas. Si se decide enviarlas automáticamente para ganar tiempo, pasa a A2. Eso no es un ajuste técnico: es una decisión de negocio que cambia los requisitos.\n\nPregunta para el aula: piense en un caso de uso de IA de su sector. ¿En qué nivel está hoy? ¿A qué nivel quieren llevarlo? ¿Qué tendrían que demostrar antes?",
+        "en": "Every AI component that decides or acts is classified from the plan onwards with the SEVEN-G autonomy scale, from A0 to A3. The table summarises document 05; the examples are illustrative.\n\nThe key for a business audience is in the person column. In A0 the person decides everything. In A1 they validate each action. In A2 they no longer validate one by one: they supervise and review afterwards. In A3 they only set the limits and monitor the whole, with a kill switch.\n\nThe more the system acts, the more is required:\n- A0 and A1: behaviour evaluation.\n- A2 and A3: in addition, action limits, a log of each action, a tested kill switch and, in organisations that apply SEVEN-G, Enterprise intensity and the agent security controls.\n\nExample for debate: an assistant that drafts replies to complaints is A1 if a person approves them before they are sent. If it is decided to send them automatically to save time, it becomes A2. That is not a technical adjustment: it is a business decision that changes the requirements.\n\nQuestion for the classroom: think of an AI use case in your sector. What level is it at today? What level do you want to take it to? What would you have to demonstrate first?"
+      },
+      "fuentes": [
+        { "texto": { "es": "SPAD 05 · Nivel de autonomía", "en": "SPAD 05 · Autonomy level" }, "href": { "es": "SPAD/html/es/05_SPAD_Sistemas_que_incluyen_IA.html#nivel-de-autonomia", "en": "SPAD/html/en/05_SPAD_Sistemas_que_incluyen_IA.html#autonomy-level" } },
+        { "texto": { "es": "SEVEN-G 01 · Criterios Enterprise", "en": "SEVEN-G 01 · Enterprise criteria" }, "href": { "es": "SEVEN-G/html/es/01_SEVEN-G_Metodologia_fundacional.html#9-2-criterios-enterprise", "en": "SEVEN-G/html/en/01_SEVEN-G_Metodologia_fundacional.html#9-2-enterprise-criteria" } }
+      ]
+    }
+  ]
+}

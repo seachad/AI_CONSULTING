@@ -14,9 +14,11 @@
 SEVEN-G/docx/<idioma>/...       plantillas editables en Word (D67)
     SEVEN-G/herramientas/...        herramientas sin servidor (T01…)
     SPHERES/html/<idioma>/...       documentos e índice de la biblioteca SPHERES
-    SPHERES/pdf/<idioma>/...        PDF de SPHERES
+    SPHERES/pdf/<idioma>/...        PDF de SPHERES (con las presentaciones en slides, presentaciones/)
+    SPHERES/pptx/<idioma>/...       presentaciones en slides de SPHERES (PowerPoint)
     SPAD/html/<idioma>/...          documentos e índice de la biblioteca SPAD
-    SPAD/pdf/<idioma>/...           PDF de SPAD
+    SPAD/pdf/<idioma>/...           PDF de SPAD (con las presentaciones en slides)
+    SPAD/pptx/<idioma>/...          presentaciones en slides de SPAD (PowerPoint)
     LICENSE, LICENCIA_CONTENIDOS.md, .nojekyll, README.md
 
   Nunca copia `_trabajo`, `_legacy`, `.claude`, `build/`, las fuentes Markdown (salvo -ConFuentes), SPAD/Documents ni ficheros que empiezan por `_`.
@@ -75,7 +77,7 @@ foreach ($f in @('index.html', 'en\index.html', 'LICENSE', 'LICENCIA_CONTENIDOS.
   $o = Join-Path $raiz $f
   if (Test-Path $o) { Copiar $o $f } else { Write-Warning "No existe $f" }
 }
-$publicables = @{ 'SEVEN-G' = @('html', 'pdf', 'docx', 'pptx', 'herramientas'); 'SPHERES' = @('html', 'pdf'); 'SPAD' = @('html', 'pdf') }
+$publicables = @{ 'SEVEN-G' = @('html', 'pdf', 'docx', 'pptx', 'herramientas'); 'SPHERES' = @('html', 'pdf', 'pptx'); 'SPAD' = @('html', 'pdf', 'pptx') }   # pptx: presentaciones en slides (presentaciones/ no se publica)
 foreach ($metodologia in $publicables.Keys) {
   $carpetas = $publicables[$metodologia]; if ($ConFuentes) { $carpetas += 'mds' }
   foreach ($c in $carpetas) {

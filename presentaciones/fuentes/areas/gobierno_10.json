@@ -1,0 +1,622 @@
+{
+  "marco": "SEVEN-G",
+  "area": "gobierno",
+  "clave": "gobierno_10",
+  "titulo": { "es": "Gobierno y decisiones en 10 slides", "en": "Governance and decisions in 10 slides" },
+  "descripcion": {
+    "es": "Quién decide, en qué puerta y con qué evidencia: conceptos, reglas, herramientas, un ejemplo ficticio, errores frecuentes y cómo empezar.",
+    "en": "Who decides, at which gate and with what evidence: concepts, rules, tools, a fictitious example, common mistakes and how to start."
+  },
+  "basado_en": [
+    "SEVEN-G/mds/es/30_SEVEN-G_Modelo_de_gobierno.md",
+    "SEVEN-G/mds/es/01_SEVEN-G_Metodologia_fundacional.md",
+    "SEVEN-G/mds/es/21_SEVEN-G_Criterios_de_gate_y_auditoria.md",
+    "SEVEN-G/mds/es/31_SEVEN-G_Politica_corporativa_y_uso_aceptable.md",
+    "SEVEN-G/mds/es/38_SEVEN-G_Marco_de_auditoria_de_IA.md",
+    "SEVEN-G/mds/es/02_SEVEN-G_Glosario_y_convenciones.md",
+    "SPHERES/mds/es/04_SPHERES_Regulacion_y_gobierno_de_la_IA.md",
+    "SPAD/mds/es/00_SPAD_Que_es_y_para_que_sirve.md"
+  ],
+  "slides": [
+    {
+      "tipo": "portada",
+      "titulo": { "es": "Gobierno y decisiones en 10 slides", "en": "Governance and decisions in 10 slides" },
+      "sub": {
+        "es": "Quién decide, en qué puerta y con qué evidencia. Cómo SEVEN-G separa a quien construye de quien verifica y de quien decide.",
+        "en": "Who decides, at which gate and with what evidence. How SEVEN-G separates whoever builds from whoever verifies and whoever decides."
+      },
+      "publico": {
+        "es": "Para alumnos y profesores de escuelas de negocio, directivos y consejeros",
+        "en": "For business school students and faculty, executives and board members"
+      },
+      "enlaces": [
+        { "texto": { "es": "Área: Gobierno y decisiones", "en": "Area: Governance and decisions" }, "href": "SEVEN-G/html/{idioma}/areas/gobierno.html" },
+        { "texto": { "es": "Modelo de gobierno (documento 30)", "en": "Governance model (document 30)" }, "href": "SEVEN-G/html/{idioma}/30_SEVEN-G_Modelo_de_gobierno.html" }
+      ],
+      "notas": {
+        "es": "Esta presentación recorre el área de actuación «Gobierno y decisiones» de SEVEN-G. Responde a una pregunta: quién decide, en qué puerta y con qué evidencia.\n\nEl gobierno de la IA dice quién decide en cada puerta de decisión (gate) y con qué evidencia. Tiene dos reglas que lo ordenan todo: quien construye no verifica su propia evidencia, y quien patrocina no firma el riesgo. La exigencia depende de la intensidad de cada iniciativa (Express, Lite o Enterprise), pero el núcleo de reglas es igual para todas.\n\nEl recorrido tiene diez pasos:\n- por qué importa el gobierno de la IA;\n- los conceptos clave, con las definiciones del glosario (documento 02);\n- quién verifica y quién decide en cada puerta;\n- las herramientas y plantillas que se usan;\n- un ejemplo con los datos ficticios del registro de ejemplo del sitio;\n- los errores frecuentes;\n- preguntas para la dirección o el aula;\n- la relación con otras áreas, con SPHERES y con SPAD;\n- cómo empezar.\n\nPor qué importa: las decisiones sobre la IA son del consejo, del primer ejecutivo y de la alta dirección, no solo del área de tecnología. Sin reglas claras de decisión, nadie puede parar un proyecto y nadie responde del conjunto.\n\nPregunta inicial para el aula: piense en la última decisión importante sobre un proyecto de IA que conozca. ¿Quién la tomó, quién comprobó los datos en que se apoyó y dónde quedó escrita?",
+        "en": "This presentation covers the SEVEN-G «Governance and decisions» action area. It answers one question: who decides, at which gate and with what evidence.\n\nAI governance says who decides at each decision gate and with what evidence. Two rules order everything: whoever builds does not verify their own evidence, and whoever sponsors does not sign off the risk. What is required depends on the intensity of each initiative (Express, Lite or Enterprise), but the core rules are the same for all.\n\nThe journey has ten steps:\n- why AI governance matters;\n- the key concepts, with the glossary definitions (document 02);\n- who verifies and who decides at each gate;\n- the tools and templates used;\n- an example with the fictitious data of the site's example register;\n- common mistakes;\n- questions for management or the classroom;\n- the relationship with other areas, with SPHERES and with SPAD;\n- how to start.\n\nWhy it matters: decisions on AI belong to the board, the chief executive and senior management, not only to the technology area. Without clear decision rules, nobody can stop a project and nobody answers for the whole.\n\nOpening question for the classroom: think of the last important decision on an AI project you know. Who took it, who checked the data it relied on, and where was it recorded?"
+      },
+      "fuentes": [
+        { "texto": { "es": "Área de actuación · Gobierno y decisiones", "en": "AI action area · Governance and decisions" }, "href": "SEVEN-G/html/{idioma}/areas/gobierno.html" },
+        { "texto": { "es": "Documento 30 · Modelo de gobierno", "en": "Document 30 · Governance model" }, "href": "SEVEN-G/html/{idioma}/30_SEVEN-G_Modelo_de_gobierno.html" },
+        { "texto": { "es": "Documento 01 · Puertas de decisión (sección 7)", "en": "Document 01 · Decision gates (section 7)" }, "href": { "es": "SEVEN-G/html/es/01_SEVEN-G_Metodologia_fundacional.html#puertas-de-decision", "en": "SEVEN-G/html/en/01_SEVEN-G_Metodologia_fundacional.html#decision-gates" } }
+      ]
+    },
+    {
+      "tipo": "cita",
+      "titulo": { "es": "Por qué importa el gobierno de la IA", "en": "Why AI governance matters" },
+      "texto": {
+        "es": "Una compañía puede tener buenos casos de uso y, aun así, no avanzar si nadie tiene la responsabilidad de decidir, priorizar, supervisar y parar.",
+        "en": "A company can have good use cases and still make no progress if nobody is responsible for deciding, prioritising, overseeing and stopping."
+      },
+      "apoyo": {
+        "es": "La IA necesita un gobierno con la misma formalidad que las finanzas o el cumplimiento: responsables designados, reglas de decisión, información periódica y capacidad real de corregir el rumbo.",
+        "en": "AI needs governance as formal as finance or compliance: appointed owners, decision rules, regular reporting and a real ability to change course."
+      },
+      "enlaces": [
+        { "texto": { "es": "SPHERES · Esfera 09, gobierno de la IA", "en": "SPHERES · Sphere 09, AI governance" }, "href": { "es": "SPHERES/html/es/04_SPHERES_Regulacion_y_gobierno_de_la_IA.html#esfera-09-gobierno-de-la-ia", "en": "SPHERES/html/en/04_SPHERES_Regulacion_y_gobierno_de_la_IA.html#sphere-09-ai-governance" } },
+        { "texto": { "es": "Principios de diseño del gobierno", "en": "Governance design principles" }, "href": { "es": "SEVEN-G/html/es/30_SEVEN-G_Modelo_de_gobierno.html#1-1-principios-de-diseno-del-gobierno", "en": "SEVEN-G/html/en/30_SEVEN-G_Modelo_de_gobierno.html#1-1-governance-design-principles" } }
+      ],
+      "notas": {
+        "es": "SEVEN-G parte de una premisa: los síntomas habituales de la IA en las compañías no son de tecnología, son de gobierno y de medición. Los síntomas son conocidos: muchos pilotos, pocos casos en producción, valor declarado que nadie valida y nadie con autoridad para parar un proyecto que no funciona.\n\nSPHERES lo explica con la esfera 09, Gobierno de la IA, la meta-esfera que conecta las otras ocho. Sin gobierno, la IA crece por acumulación de proyectos y nadie responde del conjunto.\n\nEl modelo de gobierno de SEVEN-G (documento 30) sigue cinco principios de diseño:\n- No crear un gobierno paralelo: los órganos pueden ser comités existentes con el mandato ampliado.\n- Separación de funciones: quien construye no verifica ni decide sobre su propio trabajo.\n- Proporcionalidad: la intensidad de cada iniciativa determina qué órgano decide.\n- Decisión registrada: toda decisión con efecto en la cartera, el riesgo o el cumplimiento queda en el registro de iniciativas (T01) con decisor, fecha y motivo.\n- Plazos conocidos: cada escalado tiene destinatario y plazo.\n\nPor qué importa para decidir: un consejo que no sabe quién decide no puede pedir cuentas. Para medir: si la decisión no queda escrita, no se puede comprobar después si fue buena. Para el riesgo: si quien construye se aprueba a sí mismo, el control no existe.\n\nPregunta para el aula: ¿qué parte del gobierno de las finanzas de una compañía (presupuesto, auditoría, delegación de firmas) tiene ya su equivalente para la IA?",
+        "en": "SEVEN-G starts from one premise: the usual symptoms of AI in companies are not about technology, they are about governance and measurement. The symptoms are well known: many pilots, few cases in production, declared value that nobody validates and nobody with authority to stop a project that does not work.\n\nSPHERES explains it with sphere 09, AI governance, the meta-sphere that connects the other eight. Without governance, AI grows by piling up projects and nobody answers for the whole.\n\nThe SEVEN-G governance model (document 30) follows five design principles:\n- Do not create a parallel governance: the bodies can be existing committees with an extended mandate.\n- Segregation of duties: whoever builds does not verify or decide on their own work.\n- Proportionality: the intensity of each initiative determines which body decides.\n- Recorded decision: every decision with an effect on the portfolio, risk or compliance is kept in the initiative register (T01) with decision-maker, date and reason.\n- Known time limits: every escalation has a recipient and a time limit.\n\nWhy it matters for deciding: a board that does not know who decides cannot hold anyone to account. For measuring: if the decision is not recorded, nobody can check later whether it was a good one. For risk: if whoever builds approves their own work, the control does not exist.\n\nQuestion for the classroom: which part of a company's financial governance (budget, audit, delegation of signing authority) already has its equivalent for AI?"
+      },
+      "fuentes": [
+        { "texto": { "es": "Área de actuación · Gobierno y decisiones", "en": "AI action area · Governance and decisions" }, "href": "SEVEN-G/html/{idioma}/areas/gobierno.html" },
+        { "texto": { "es": "Documento 30 · Principios de diseño del gobierno (sección 1.1)", "en": "Document 30 · Governance design principles (section 1.1)" }, "href": { "es": "SEVEN-G/html/es/30_SEVEN-G_Modelo_de_gobierno.html#1-1-principios-de-diseno-del-gobierno", "en": "SEVEN-G/html/en/30_SEVEN-G_Modelo_de_gobierno.html#1-1-governance-design-principles" } },
+        { "texto": { "es": "SPHERES 04 · Esfera 09, Gobierno de la IA", "en": "SPHERES 04 · Sphere 09, AI governance" }, "href": { "es": "SPHERES/html/es/04_SPHERES_Regulacion_y_gobierno_de_la_IA.html#esfera-09-gobierno-de-la-ia", "en": "SPHERES/html/en/04_SPHERES_Regulacion_y_gobierno_de_la_IA.html#sphere-09-ai-governance" } }
+      ]
+    },
+    {
+      "tipo": "tarjetas",
+      "titulo": { "es": "Los conceptos clave", "en": "The key concepts" },
+      "sub": {
+        "es": "La puerta de viabilidad (G3) es la principal puerta de parada: allí se decide parar antes de invertir en construir.",
+        "en": "The feasibility gate (G3) is the main stop gate: it is where the decision to stop is taken before investing in the build."
+      },
+      "tarjetas": [
+        {
+          "titulo": { "es": "Puerta de decisión (gate)", "en": "Decision gate (gate)" },
+          "texto": {
+            "es": "Punto al final de una fase en el que el órgano competente decide, sobre evidencia verificada, si la iniciativa sigue y con qué condiciones.",
+            "en": "Point at the end of a phase at which the competent body decides, on verified evidence, whether the initiative proceeds and on what terms."
+          },
+          "color": "claret",
+          "href": { "es": "SEVEN-G/html/es/01_SEVEN-G_Metodologia_fundacional.html#7-1-como-funciona-una-puerta", "en": "SEVEN-G/html/en/01_SEVEN-G_Metodologia_fundacional.html#7-1-how-a-gate-works" }
+        },
+        {
+          "titulo": { "es": "Validación dual", "en": "Dual validation" },
+          "texto": {
+            "es": "Una puerta solo se supera con resultados tangibles y documentación verificada a la vez. Una de las dos sola no basta.",
+            "en": "A gate is passed only with tangible results and verified documentation at the same time. One of the two alone is not enough."
+          },
+          "color": "oxford",
+          "href": { "es": "SEVEN-G/html/es/01_SEVEN-G_Metodologia_fundacional.html#7-2-validacion-dual", "en": "SEVEN-G/html/en/01_SEVEN-G_Metodologia_fundacional.html#7-2-dual-validation" }
+        },
+        {
+          "titulo": { "es": "Separación de funciones", "en": "Segregation of duties" },
+          "texto": {
+            "es": "Quien construye no controla y nadie se aprueba a sí mismo: quien aporta evidencias no las verifica ni decide.",
+            "en": "Whoever builds does not control and nobody approves their own work: whoever provides evidence neither verifies it nor decides."
+          },
+          "color": "teal",
+          "href": { "es": "SEVEN-G/html/es/01_SEVEN-G_Metodologia_fundacional.html#8-2-incompatibilidades", "en": "SEVEN-G/html/en/01_SEVEN-G_Metodologia_fundacional.html#8-2-incompatibilities" }
+        },
+        {
+          "titulo": { "es": "Intensidad", "en": "Intensity" },
+          "texto": {
+            "es": "Grado de exigencia de cada iniciativa: Express, Lite o Enterprise. Se fija en la fase 0 y se revisa en G3 y en cada R6.",
+            "en": "Level of rigour for each initiative: Express, Lite or Enterprise. It is set in phase 0 and reviewed at G3 and at each R6."
+          },
+          "color": "velvet",
+          "href": { "es": "SEVEN-G/html/es/01_SEVEN-G_Metodologia_fundacional.html#9-3-que-cambia-entre-intensidades", "en": "SEVEN-G/html/en/01_SEVEN-G_Metodologia_fundacional.html#9-3-what-changes-between-intensities" }
+        },
+        {
+          "titulo": { "es": "Núcleo de SEVEN-G", "en": "SEVEN-G core" },
+          "texto": {
+            "es": "Catorce reglas (N-01 a N-14), iguales para toda compañía, intensidad y alcance. Distinguen aplicar SEVEN-G de usar sus plantillas.",
+            "en": "Fourteen rules (N-01 to N-14), the same for every company, intensity and scope. They separate applying SEVEN-G from using its templates."
+          },
+          "color": "oro",
+          "href": { "es": "SEVEN-G/html/es/01_SEVEN-G_Metodologia_fundacional.html#14-1-el-nucleo-de-seven-g", "en": "SEVEN-G/html/en/01_SEVEN-G_Metodologia_fundacional.html#14-1-the-seven-g-core" }
+        },
+        {
+          "titulo": { "es": "Comité de IA", "en": "AI Committee" },
+          "texto": {
+            "es": "Alta dirección que gestiona la cartera, decide las puertas Enterprise y las retiradas, acepta riesgos Altos y eleva al consejo. Mensual.",
+            "en": "Senior management body that runs the portfolio, decides Enterprise gates and retirements, accepts High risks and escalates. Monthly."
+          },
+          "color": "verde",
+          "href": { "es": "SEVEN-G/html/es/30_SEVEN-G_Modelo_de_gobierno.html#3-3-comite-de-ia", "en": "SEVEN-G/html/en/30_SEVEN-G_Modelo_de_gobierno.html#3-3-ai-committee" }
+        }
+      ],
+      "enlaces": [
+        { "texto": { "es": "Glosario (documento 02)", "en": "Glossary (document 02)" }, "href": { "es": "SEVEN-G/html/es/02_SEVEN-G_Glosario_y_convenciones.html#glosario-de-terminos-del-marco", "en": "SEVEN-G/html/en/02_SEVEN-G_Glosario_y_convenciones.html#glossary-of-framework-terms" } },
+        { "texto": { "es": "Conceptos del área", "en": "Concepts of the area" }, "href": { "es": "SEVEN-G/html/es/areas/gobierno.html#conceptos", "en": "SEVEN-G/html/en/areas/gobierno.html#conceptos" } }
+      ],
+      "notas": {
+        "es": "Las definiciones salen del glosario de SEVEN-G (documento 02).\n\n- Puerta de decisión (gate). Hay ocho: G0 Autorización, G1 Oportunidad, G2 Hipótesis, G3 Viabilidad, G4 Diseño, G5 Puesta en producción, R6 Revisión de continuidad y G7 Escalado o retirada. Siempre sigue la misma secuencia: el equipo aporta evidencias, el verificador comprueba que son completas y válidas, y el órgano competente decide. Por qué importa: convierte una opinión en una decisión con dueño, fecha y motivo.\n- Principal puerta de parada. Es G3 · Viabilidad: allí se concentra la decisión de parar antes de invertir en construir. Se decide siempre por separado. Parar a tiempo es más barato que retirar después.\n- Validación dual. Resultados sin documentación, o documentación sin resultados, no superan la puerta. Por qué importa: evita tanto el piloto brillante sin papeles como el expediente perfecto sin resultados.\n- Separación de funciones. Los roles incompatibles no recaen en la misma persona. Por ejemplo, el responsable de riesgos no puede ser patrocinador ni formar parte del equipo que construye. Por qué importa: sin ella, el control es aparente.\n- Intensidad. Basta un criterio Enterprise (alto riesgo regulatorio, decisiones sobre personas, exposición directa, agentes que actúan, datos especialmente protegidos, función crítica, nivel Transformar o inversión sobre el umbral) para aplicar Enterprise. Por qué importa: proporciona el esfuerzo de control al riesgo.\n- Núcleo de SEVEN-G. Inventario, registro, intensidad, puertas, G3 por separado, separación de funciones, validación dual, criterios «Sí ◆», hipótesis de valor, riesgos, reversión y continuidad, consejo, medición y no conformidades. Solo cambia por decisión expresa del autor.\n- Comité de IA. Reúne negocio, tecnología, datos, riesgos, cumplimiento, seguridad, protección de datos y personas. Puede ser un comité existente con el mandato ampliado.\n\nPregunta para el aula: ¿cuál de estos conceptos le parece más difícil de aplicar en una compañía real, y por qué?",
+        "en": "The definitions come from the SEVEN-G glossary (document 02).\n\n- Decision gate (gate). There are eight: G0 Authorisation, G1 Opportunity, G2 Hypothesis, G3 Feasibility, G4 Design, G5 Go-live, R6 Continuity review and G7 Scale or retire. It always follows the same sequence: the team provides evidence, the verifier checks that it is complete and valid, and the competent body decides. Why it matters: it turns an opinion into a decision with an owner, a date and a reason.\n- Main stop gate. It is G3 · Feasibility: the decision to stop before investing in the build is concentrated there. It is always decided separately. Stopping in time is cheaper than retiring later.\n- Dual validation. Results without documentation, or documentation without results, do not pass the gate. Why it matters: it avoids both the brilliant pilot without records and the perfect file without results.\n- Segregation of duties. Incompatible roles are not held by the same person. For example, the AI Risk Owner cannot be the sponsor or be part of the team that builds. Why it matters: without it, control is only apparent.\n- Intensity. One Enterprise criterion (high regulatory risk, decisions about people, direct exposure, agents that act, specially protected data, critical function, Transform level or investment above the threshold) is enough to apply Enterprise. Why it matters: it matches the control effort to the risk.\n- SEVEN-G core. Inventory, register, intensity, gates, G3 separately, segregation of duties, dual validation, «Yes ◆» criteria, value hypothesis, risks, rollback and continuity, board, measurement and nonconformities. It only changes by express decision of the author.\n- AI Committee. It brings together business, technology, data, risk, compliance, security, data protection and people. It can be an existing committee with an extended mandate.\n\nQuestion for the classroom: which of these concepts seems hardest to apply in a real company, and why?"
+      },
+      "fuentes": [
+        { "texto": { "es": "Área de actuación · Gobierno y decisiones", "en": "AI action area · Governance and decisions" }, "href": "SEVEN-G/html/{idioma}/areas/gobierno.html" },
+        { "texto": { "es": "Documento 02 · Glosario de términos del marco", "en": "Document 02 · Glossary of framework terms" }, "href": { "es": "SEVEN-G/html/es/02_SEVEN-G_Glosario_y_convenciones.html#glosario-de-terminos-del-marco", "en": "SEVEN-G/html/en/02_SEVEN-G_Glosario_y_convenciones.html#glossary-of-framework-terms" } },
+        { "texto": { "es": "Documento 01 · Criterios Enterprise (sección 9.2)", "en": "Document 01 · Enterprise criteria (section 9.2)" }, "href": { "es": "SEVEN-G/html/es/01_SEVEN-G_Metodologia_fundacional.html#9-2-criterios-enterprise", "en": "SEVEN-G/html/en/01_SEVEN-G_Metodologia_fundacional.html#9-2-enterprise-criteria" } },
+        { "texto": { "es": "Documento 01 · El núcleo de SEVEN-G (sección 14.1)", "en": "Document 01 · The SEVEN-G core (section 14.1)" }, "href": { "es": "SEVEN-G/html/es/01_SEVEN-G_Metodologia_fundacional.html#14-1-el-nucleo-de-seven-g", "en": "SEVEN-G/html/en/01_SEVEN-G_Metodologia_fundacional.html#14-1-the-seven-g-core" } },
+        { "texto": { "es": "Documento 30 · Comité de IA (sección 3.3)", "en": "Document 30 · AI Committee (section 3.3)" }, "href": { "es": "SEVEN-G/html/es/30_SEVEN-G_Modelo_de_gobierno.html#3-3-comite-de-ia", "en": "SEVEN-G/html/en/30_SEVEN-G_Modelo_de_gobierno.html#3-3-ai-committee" } }
+      ]
+    },
+    {
+      "tipo": "tabla",
+      "titulo": { "es": "Quién verifica y quién decide en cada puerta", "en": "Who verifies and who decides at each gate" },
+      "sub": {
+        "es": "En Express y Lite decide el patrocinador y verifica la oficina de IA. En Enterprise decide el comité de IA y verifica el auditor de IA.",
+        "en": "In Express and Lite the sponsor decides and the AI Office verifies. In Enterprise the AI Committee decides and the AI Auditor verifies."
+      },
+      "cabecera": [
+        { "es": "Puerta", "en": "Gate" },
+        { "es": "Lite: verifica", "en": "Lite: verifies" },
+        { "es": "Lite: decide", "en": "Lite: decides" },
+        { "es": "Enterprise: verifica", "en": "Enterprise: verifies" },
+        { "es": "Enterprise: decide", "en": "Enterprise: decides" }
+      ],
+      "filas": [
+        [
+          { "es": "G0 a G2 · Autorización, oportunidad, hipótesis", "en": "G0 to G2 · Authorisation, opportunity, hypothesis" },
+          { "es": "Oficina de IA", "en": "AI Office" },
+          { "es": "Patrocinador", "en": "Sponsor" },
+          { "es": "Auditor de IA", "en": "AI Auditor" },
+          { "es": "Comité de IA (en G1, el patrocinador, informando)", "en": "AI Committee (at G1, the sponsor, reporting)" }
+        ],
+        [
+          { "es": "G3 Viabilidad y G4 Diseño", "en": "G3 Feasibility and G4 Design" },
+          { "es": "Oficina de IA", "en": "AI Office" },
+          { "es": "Patrocinador con conformidad de riesgos", "en": "Sponsor with risk clearance" },
+          { "es": "Auditor de IA", "en": "AI Auditor" },
+          { "es": "Comité de IA", "en": "AI Committee" }
+        ],
+        [
+          { "es": "G5 · Puesta en producción", "en": "G5 · Go-live" },
+          { "es": "Oficina de IA", "en": "AI Office" },
+          { "es": "Patrocinador con conformidad de riesgos", "en": "Sponsor with risk clearance" },
+          { "es": "Auditor de IA", "en": "AI Auditor" },
+          { "es": "Comité de IA tras la firma multinivel con veto", "en": "AI Committee after multi-level sign-off with veto" }
+        ],
+        [
+          { "es": "R6 Continuidad y G7 Escalado o retirada", "en": "R6 Continuity and G7 Scale or retire" },
+          { "es": "Oficina de IA", "en": "AI Office" },
+          { "es": "Patrocinador", "en": "Sponsor" },
+          { "es": "Auditor de IA", "en": "AI Auditor" },
+          { "es": "Comité de IA", "en": "AI Committee" }
+        ],
+        [
+          { "es": "Transformar: G2 y escalado en G7", "en": "Transform: G2 and scaling at G7" },
+          { "es": "No aplica: siempre es Enterprise", "en": "Not applicable: always Enterprise" },
+          { "es": "No aplica", "en": "Not applicable" },
+          { "es": "Auditor de IA", "en": "AI Auditor" },
+          { "es": "Consejo, además del comité", "en": "Board, in addition to the committee" }
+        ]
+      ],
+      "destacado": {
+        "es": "Sin la segunda línea en el quórum, el comité de IA no decide G3, G5, aceptaciones de riesgo ni excepciones.",
+        "en": "Without the second line in the quorum, the AI Committee does not decide G3, G5, risk acceptances or exceptions."
+      },
+      "enlaces": [
+        { "texto": { "es": "Matriz de delegación de decisiones", "en": "Decision delegation matrix" }, "href": { "es": "SEVEN-G/html/es/30_SEVEN-G_Modelo_de_gobierno.html#7-1-puertas-de-decision", "en": "SEVEN-G/html/en/30_SEVEN-G_Modelo_de_gobierno.html#7-1-decision-gates" } },
+        { "texto": { "es": "Aceptación del riesgo residual", "en": "Acceptance of residual risk" }, "href": { "es": "SEVEN-G/html/es/30_SEVEN-G_Modelo_de_gobierno.html#7-2-aceptacion-del-riesgo-residual", "en": "SEVEN-G/html/en/30_SEVEN-G_Modelo_de_gobierno.html#7-2-acceptance-of-residual-risk" } },
+        { "texto": { "es": "Firma multinivel y veto (G5)", "en": "Multi-level sign-off and veto (G5)" }, "href": { "es": "SEVEN-G/html/es/21_SEVEN-G_Criterios_de_gate_y_auditoria.html#9-2-reglas-de-la-firma-y-del-veto", "en": "SEVEN-G/html/en/21_SEVEN-G_Criterios_de_gate_y_auditoria.html#9-2-sign-off-and-veto-rules" } }
+      ],
+      "notas": {
+        "es": "La tabla resume la matriz de delegación del modelo de gobierno (documento 30, sección 7.1) y del documento 01, sección 7.5. Lo que no figura en la matriz corresponde al comité de IA, que puede elevarlo.\n\nReglas de decisión que se aplican en todas las puertas (01 §7.4):\n- Nadie decide sobre su propio trabajo. Quien aporta evidencias no las verifica ni decide.\n- Sin evidencia obligatoria no hay decisión, y la evidencia debe existir antes de la puerta.\n- Las condiciones tienen plazo y responsable; una condición vencida convierte el resultado en Iterar.\n- Tras dos iteraciones en la misma puerta, decide el órgano superior.\n- Los criterios de parada se fijan antes y no se relajan sin aprobación del órgano que autorizó la iniciativa.\n- Toda decisión queda registrada con resultado, motivo, condiciones, decisor y verificador.\n\nEn Lite, G0 a G2 pueden resolverse en una sola sesión, y G4 y G5 también, pero G3 va siempre por separado. En Express, G3 puede resolverse por escrito con la conformidad de riesgos registrada. En Lite, la oficina de IA verifica la puerta, pero las evidencias de riesgo, clasificación regulatoria y proveedores las verifica el responsable de riesgos de IA, salvo que las haya elaborado él.\n\nAceptación del riesgo residual: un riesgo Bajo lo acepta el responsable de producto; uno Medio, el patrocinador con conformidad del responsable de riesgos; uno Alto, el comité de IA. Un riesgo Crítico no se acepta; solo de forma excepcional, el consejo o su comisión delegada. Una práctica prohibida por el Reglamento Europeo de IA no la acepta ningún órgano.\n\nPor qué importa: la segunda línea no vota la decisión de negocio, pero su conformidad es necesaria. Si la deniega, el comité no puede decidir Continuar; puede iterar, pivotar, parar o elevar el desacuerdo a la comisión delegada. Este reparto sigue la lógica del modelo de las tres líneas del Instituto de Auditores Internos (IIA).",
+        "en": "The table summarises the delegation matrix of the governance model (document 30, section 7.1) and document 01, section 7.5. Anything not in the matrix belongs to the AI Committee, which can escalate it.\n\nDecision rules that apply at every gate (01 §7.4):\n- Nobody decides on their own work. Whoever provides evidence neither verifies it nor decides.\n- Without mandatory evidence there is no decision, and the evidence must exist before the gate.\n- Conditions have a deadline and an owner; an expired condition turns the outcome into Iterate.\n- After two iterations at the same gate, the higher body decides.\n- Stop criteria are set beforehand and are not relaxed without approval of the body that authorised the initiative.\n- Every decision is recorded with outcome, reason, conditions, decision-maker and verifier.\n\nIn Lite, G0 to G2 can be resolved in one session, and G4 and G5 too, but G3 always goes separately. In Express, G3 can be resolved in writing with the risk clearance recorded. In Lite, the AI Office verifies the gate, but the risk, regulatory classification and supplier evidence is verified by the AI Risk Owner, unless they prepared it.\n\nAcceptance of residual risk: a Low risk is accepted by the AI Product Owner; a Medium one, by the sponsor with clearance from the AI Risk Owner; a High one, by the AI Committee. A Critical risk is not accepted; only exceptionally, by the board or its board committee. A practice prohibited by the EU AI Act is not acceptable to any body.\n\nWhy it matters: the second line does not vote on the business decision, but its clearance is required. If it refuses, the committee cannot decide Proceed; it can iterate, pivot, stop or escalate the disagreement to the board committee. This split follows the logic of the Institute of Internal Auditors (IIA) three lines model."
+      },
+      "fuentes": [
+        { "texto": { "es": "Área de actuación · Gobierno y decisiones", "en": "AI action area · Governance and decisions" }, "href": "SEVEN-G/html/{idioma}/areas/gobierno.html" },
+        { "texto": { "es": "Documento 01 · Reglas de decisión (sección 7.4)", "en": "Document 01 · Decision rules (section 7.4)" }, "href": { "es": "SEVEN-G/html/es/01_SEVEN-G_Metodologia_fundacional.html#7-4-reglas-de-decision", "en": "SEVEN-G/html/en/01_SEVEN-G_Metodologia_fundacional.html#7-4-decision-rules" } },
+        { "texto": { "es": "Documento 30 · Desacuerdos con la segunda línea (sección 8.3)", "en": "Document 30 · Disagreements with the second line (section 8.3)" }, "href": { "es": "SEVEN-G/html/es/30_SEVEN-G_Modelo_de_gobierno.html#8-3-resolucion-de-desacuerdos-con-la-segunda-linea", "en": "SEVEN-G/html/en/30_SEVEN-G_Modelo_de_gobierno.html#8-3-resolving-disagreements-with-the-second-line" } },
+        { "texto": { "es": "Documento 30 · Modelo de tres líneas aplicado a la IA (sección 9)", "en": "Document 30 · Three lines model applied to AI (section 9)" }, "href": { "es": "SEVEN-G/html/es/30_SEVEN-G_Modelo_de_gobierno.html#modelo-de-tres-lineas-aplicado-a-la-ia", "en": "SEVEN-G/html/en/30_SEVEN-G_Modelo_de_gobierno.html#three-lines-model-applied-to-ai" } },
+        { "texto": { "es": "IIA · Modelo de las tres líneas (declaración de posición de 2026)", "en": "IIA · Three Lines Model (2026 statement of position)" }, "href": { "es": "https://www.theiia.org/en/resources/statements-of-position/", "en": "https://www.theiia.org/en/resources/statements-of-position/" } },
+        { "texto": { "es": "Reglamento (UE) 2024/1689 de Inteligencia Artificial", "en": "Regulation (EU) 2024/1689, the EU AI Act" }, "href": { "es": "https://eur-lex.europa.eu/eli/reg/2024/1689/oj/spa", "en": "https://eur-lex.europa.eu/eli/reg/2024/1689/oj/eng" } }
+      ]
+    },
+    {
+      "tipo": "texto",
+      "titulo": { "es": "Herramientas y plantillas del gobierno", "en": "Governance tools and templates" },
+      "sub": {
+        "es": "Las plantillas son instrumentos: lo obligatorio es la evidencia, no su formato. Una evidencia que la compañía ya tiene puede referenciarse.",
+        "en": "Templates are instruments: what is mandatory is the evidence, not its format. Evidence the company already has can be referenced."
+      },
+      "bullets": [
+        {
+          "rotulo": { "es": "Registro de iniciativas (T01)", "en": "Initiative register (T01)" },
+          "texto": {
+            "es": "Guarda órganos, personas y decisiones. Con el gestor de puertas (T03) impide registrar como decisor o verificador a alguien con un rol incompatible.",
+            "en": "Holds bodies, people and decisions. With the gate manager (T03) it prevents recording someone with an incompatible role as decision-maker or verifier."
+          },
+          "href": "SEVEN-G/herramientas/T01_registro_iniciativas/registro.html"
+        },
+        {
+          "rotulo": { "es": "Asignación de roles (P03)", "en": "Role assignment (P03)" },
+          "texto": {
+            "es": "Asigna los seis roles de cada iniciativa y comprueba incompatibilidades y conflictos de interés antes de empezar.",
+            "en": "Assigns the six roles of each initiative and checks incompatibilities and conflicts of interest before starting."
+          },
+          "href": "SEVEN-G/html/{idioma}/plantillas/P03_SEVEN-G_Registro_de_asignacion_de_roles.html"
+        },
+        {
+          "rotulo": { "es": "Decisión de puerta (P29)", "en": "Gate decision (P29)" },
+          "texto": {
+            "es": "Deja escrito el resultado, el motivo, las condiciones con plazo y responsable, el decisor y el verificador de cada puerta.",
+            "en": "Records the outcome, the reason, the conditions with deadline and owner, the decision-maker and the verifier of each gate."
+          },
+          "href": "SEVEN-G/html/{idioma}/plantillas/P29_SEVEN-G_Registro_de_decision_de_gate.html"
+        },
+        {
+          "rotulo": { "es": "Firma de producción (P23)", "en": "Go-live sign-off (P23)" },
+          "texto": {
+            "es": "En Enterprise firman el técnico, riesgos y cumplimiento, seguridad y protección de datos. Cada firmante tiene veto.",
+            "en": "In Enterprise, the technical owner, risk and compliance, security and data protection sign off. Each signatory has a veto."
+          },
+          "href": "SEVEN-G/html/{idioma}/plantillas/P23_SEVEN-G_Firma_de_puesta_en_produccion.html"
+        },
+        {
+          "rotulo": { "es": "Reglamento de órganos (P38)", "en": "Rules of the bodies (P38)" },
+          "texto": {
+            "es": "Texto aprobable de los mandatos del consejo, la comisión delegada, el comité y la oficina de IA, con el nombramiento del responsable de IA.",
+            "en": "Approvable text of the mandates of the board, the board committee, the committee and the AI Office, with the appointment of the AI lead."
+          },
+          "href": "SEVEN-G/html/{idioma}/plantillas/P38_SEVEN-G_Reglamento_de_los_organos_de_gobierno_de_IA.html"
+        },
+        {
+          "rotulo": { "es": "Excepciones (P40)", "en": "Exceptions (P40)" },
+          "texto": {
+            "es": "Registra cada excepción con justificación, riesgo, medidas compensatorias y caducidad. Las declaraciones de conflictos van en P41.",
+            "en": "Records each exception with justification, risk, compensating measures and expiry. Conflict-of-interest declarations go in P41."
+          },
+          "href": "SEVEN-G/html/{idioma}/plantillas/P40_SEVEN-G_Solicitud_y_registro_de_excepciones.html"
+        }
+      ],
+      "enlaces": [
+        { "texto": { "es": "Registro de iniciativas (T01)", "en": "Initiative register (T01)" }, "href": "SEVEN-G/herramientas/T01_registro_iniciativas/registro.html" },
+        { "texto": { "es": "Herramientas y plantillas asociadas", "en": "Associated tools and templates" }, "href": { "es": "SEVEN-G/html/es/30_SEVEN-G_Modelo_de_gobierno.html#herramientas-y-plantillas-asociadas", "en": "SEVEN-G/html/en/30_SEVEN-G_Modelo_de_gobierno.html#associated-tools-and-templates" } }
+      ],
+      "notas": {
+        "es": "El documento 30 asocia herramientas y plantillas a cada pieza del gobierno. Todas son gratuitas, se pueden editar en Word y adaptar al formato de la compañía.\n\n- Registro de iniciativas (T01). Es la fuente de verdad de la cartera. Con su gestor de puertas (T03) debe impedir registrar como decisor o verificador a una persona con rol incompatible, registrar abstenciones, exigir la segunda línea en G3, G5, aceptaciones de riesgo y excepciones, y generar alertas con los plazos de escalado. En el sitio se abre con datos ficticios.\n- Registro de asignación de roles (P03). Los seis roles son patrocinador, producto, técnico, operación, riesgos y auditor. Son funciones, no puestos: una persona los asume para una iniciativa además de su puesto.\n- Registro de decisión de puerta (P29). Por qué importa: una decisión no registrada no se puede auditar ni aprender de ella.\n- Firma de puesta en producción (P23). El veto es motivado y bloquea: el comité no puede levantarlo por mayoría; solo puede decidir Iterar o Parar. Solo lo levanta quien lo emitió, tras la corrección, o la comisión delegada.\n- Reglamento de los órganos (P38) y orden del día y acta (P39). Convierten los mandatos tipo en texto que el órgano puede aprobar.\n- Excepciones (P40). Nunca se admiten sobre prácticas prohibidas, obligaciones legales, separación de funciones, firma multinivel ni mecanismo de parada. Una excepción vencida sin cierre es no conformidad mayor.\n- Declaraciones de independencia y conflictos de interés (P41). Se firman al asumir un rol y cada año en los órganos.\n\nLa política corporativa de IA (documento 31) fija además las líneas rojas, que no admiten excepciones, y el marco de auditoría (documento 38) exige que el auditor de IA sea independiente de lo que audita.\n\nPregunta para el aula: ¿qué plantilla de esta lista ya tiene un equivalente en su compañía, aunque no hable de IA?",
+        "en": "Document 30 links tools and templates to each piece of governance. All are free, editable in Word and adaptable to the company's format.\n\n- Initiative register (T01). It is the single source of truth for the portfolio. With its gate manager (T03) it must prevent recording a person with an incompatible role as decision-maker or verifier, record abstentions, require the second line at G3, G5, risk acceptances and exceptions, and raise alerts with the escalation time limits. On the site it opens with fictitious data.\n- Role assignment record (P03). The six roles are sponsor, product, technical, operations, risk and auditor. They are functions, not jobs: a person takes them on for an initiative in addition to their job.\n- Gate decision record (P29). Why it matters: a decision that is not recorded cannot be audited or learnt from.\n- Go-live sign-off (P23). The veto is reasoned and it blocks: the committee cannot lift it by majority; it can only decide Iterate or Stop. Only whoever issued it lifts it, after the correction, or the board committee.\n- Rules of the governance bodies (P38) and agenda and minutes (P39). They turn the model mandates into text the body can approve.\n- Exceptions (P40). They are never allowed on prohibited practices, legal obligations, segregation of duties, multi-level sign-off or a stop mechanism. An expired exception that is not closed is a major nonconformity.\n- Independence and conflict-of-interest declarations (P41). They are signed when taking on a role and every year in the bodies.\n\nThe corporate AI policy (document 31) also sets the red lines, which allow no exceptions, and the audit framework (document 38) requires the AI Auditor to be independent of what they audit.\n\nQuestion for the classroom: which template on this list already has an equivalent in your company, even if it does not mention AI?"
+      },
+      "fuentes": [
+        { "texto": { "es": "Área de actuación · Gobierno y decisiones", "en": "AI action area · Governance and decisions" }, "href": "SEVEN-G/html/{idioma}/areas/gobierno.html" },
+        { "texto": { "es": "Documento 30 · Herramientas y plantillas asociadas (sección 13)", "en": "Document 30 · Associated tools and templates (section 13)" }, "href": { "es": "SEVEN-G/html/es/30_SEVEN-G_Modelo_de_gobierno.html#herramientas-y-plantillas-asociadas", "en": "SEVEN-G/html/en/30_SEVEN-G_Modelo_de_gobierno.html#associated-tools-and-templates" } },
+        { "texto": { "es": "Documento 30 · Excepciones (sección 7.4)", "en": "Document 30 · Exceptions (section 7.4)" }, "href": { "es": "SEVEN-G/html/es/30_SEVEN-G_Modelo_de_gobierno.html#7-4-excepciones", "en": "SEVEN-G/html/en/30_SEVEN-G_Modelo_de_gobierno.html#7-4-exceptions" } },
+        { "texto": { "es": "Documento 31 · Líneas rojas (sección 3.7)", "en": "Document 31 · Red lines (section 3.7)" }, "href": { "es": "SEVEN-G/html/es/31_SEVEN-G_Politica_corporativa_y_uso_aceptable.html#3-7-lineas-rojas", "en": "SEVEN-G/html/en/31_SEVEN-G_Politica_corporativa_y_uso_aceptable.html#3-7-red-lines" } },
+        { "texto": { "es": "Documento 38 · Independencia del auditor de IA (sección 3.1)", "en": "Document 38 · Independence of the AI Auditor (section 3.1)" }, "href": { "es": "SEVEN-G/html/es/38_SEVEN-G_Marco_de_auditoria_de_IA.html#3-1-independencia", "en": "SEVEN-G/html/en/38_SEVEN-G_Marco_de_auditoria_de_IA.html#3-1-independence" } },
+        { "texto": { "es": "Plantilla P41 · Declaraciones de independencia y conflictos", "en": "Template P41 · Independence and conflict declarations" }, "href": "SEVEN-G/html/{idioma}/plantillas/P41_SEVEN-G_Declaraciones_de_independencia_y_conflictos_de_interes.html" }
+      ]
+    },
+    {
+      "tipo": "proceso",
+      "titulo": { "es": "Ejemplo ficticio: parar a tiempo en la puerta de viabilidad", "en": "Fictitious example: stopping in time at the feasibility gate" },
+      "sub": {
+        "es": "Cribado de candidaturas (IA-2025-004), del registro de ejemplo del sitio. Todos los datos son ficticios.",
+        "en": "Candidate screening (IA-2025-004), from the site's example register. All data are fictitious."
+      },
+      "pasos": [
+        {
+          "rotulo": { "es": "Fase 0", "en": "Phase 0" },
+          "titulo": { "es": "Intensidad Enterprise", "en": "Enterprise intensity" },
+          "texto": {
+            "es": "Alto riesgo regulatorio y decisiones sobre personas. Basta un criterio. La oficina de IA lo registra.",
+            "en": "High regulatory risk and decisions about people. One criterion is enough. The AI Office records it."
+          },
+          "color": "oxford"
+        },
+        {
+          "rotulo": { "es": "Fase 3", "en": "Phase 3" },
+          "titulo": { "es": "Evaluación de riesgos", "en": "Risk assessment" },
+          "texto": {
+            "es": "Se hacen las evaluaciones de impacto en protección de datos y en derechos fundamentales. Aparece un sesgo por edad.",
+            "en": "The data protection and fundamental rights impact assessments are done. An age bias appears."
+          },
+          "color": "teal"
+        },
+        {
+          "rotulo": { "es": "G3", "en": "G3" },
+          "titulo": { "es": "Primera decisión: Iterar", "en": "First decision: Iterate" },
+          "texto": {
+            "es": "El comité de IA pide un plan de mitigación del sesgo. La auditora de IA verificó las evidencias; no decide.",
+            "en": "The AI Committee asks for a plan to mitigate the bias. The AI Auditor verified the evidence; she does not decide."
+          },
+          "color": "oro"
+        },
+        {
+          "rotulo": { "es": "G3", "en": "G3" },
+          "titulo": { "es": "Segunda decisión: Parar", "en": "Second decision: Stop" },
+          "texto": {
+            "es": "El sesgo no se corrige sin perder capacidad predictiva. Riesgo residual Alto en un sistema de alto riesgo.",
+            "en": "The bias cannot be corrected without losing predictive power. High residual risk in a high-risk system."
+          },
+          "color": "claret"
+        },
+        {
+          "rotulo": { "es": "Cierre", "en": "Closure" },
+          "titulo": { "es": "Lecciones registradas", "en": "Lessons recorded" },
+          "texto": {
+            "es": "Datos de entrenamiento borrados. Lección: evaluar el sesgo del histórico en la fase 1, antes de la hipótesis.",
+            "en": "Training data deleted. Lesson: assess the bias of the historical data in phase 1, before the hypothesis."
+          },
+          "color": "verde"
+        }
+      ],
+      "destacado": {
+        "es": "Parar con motivo es un resultado válido: evitar una mala inversión también es generar valor.",
+        "en": "Stopping for a reason is a valid result: avoiding a bad investment also creates value."
+      },
+      "enlaces": [
+        { "texto": { "es": "Abrir el registro de ejemplo (T01)", "en": "Open the example register (T01)" }, "href": "SEVEN-G/herramientas/T01_registro_iniciativas/registro.html" },
+        { "texto": { "es": "Criterios de G3 · Viabilidad", "en": "G3 · Feasibility criteria" }, "href": { "es": "SEVEN-G/html/es/21_SEVEN-G_Criterios_de_gate_y_auditoria.html#6-4-g3-viabilidad", "en": "SEVEN-G/html/en/21_SEVEN-G_Criterios_de_gate_y_auditoria.html#6-4-g3-feasibility" } }
+      ],
+      "notas": {
+        "es": "Este ejemplo sale del registro de iniciativas (T01) de ejemplo del sitio. La compañía, las personas y las fechas son ficticias.\n\nLa iniciativa propone un sistema que ordenaría las candidaturas recibidas según su ajuste al puesto, para que el equipo de selección priorice las entrevistas. Su ambición es Aumentar y su autonomía, A1: recomienda y una persona decide.\n\n- Fase 0. La determinación de intensidad marca dos criterios Enterprise: sistema de alto riesgo según la regulación y decisiones que afectan a personas. Basta uno. Por eso verifica el auditor de IA, de la tercera línea, y decide el comité de IA.\n- Fase 3. El equipo hace la evaluación de impacto en protección de datos y la evaluación de impacto en derechos fundamentales. El análisis del histórico de contrataciones muestra un sesgo por edad.\n- G3, primera decisión. El comité de IA decide Iterar: el sesgo no tiene plan de mitigación. La auditora de IA verificó las evidencias, pero no participa en la decisión. Es la separación de funciones.\n- G3, segunda decisión. Tras la iteración, el sesgo no se corrige sin perder capacidad predictiva. El riesgo residual sigue Alto en un sistema de alto riesgo. El comité de IA decide Parar, con el motivo codificado «riesgo inaceptable».\n- Cierre. Se borran los conjuntos de entrenamiento y se conserva la documentación de evaluación. La lección queda registrada: evaluar la calidad y el sesgo del histórico en la fase 1, antes de formular la hipótesis.\n\nPor qué importa: la decisión de parar se tomó en la principal puerta de parada, antes del gran gasto en construir. El panel del consejo muestra este caso entre los que salieron del embudo, con su porqué y lo aprendido. Eso forma parte del aprendizaje de la organización.\n\nPregunta para el aula: ¿qué habría pasado si el patrocinador del área de personas hubiera podido decidir solo esta puerta?",
+        "en": "This example comes from the site's example initiative register (T01). The company, the people and the dates are fictitious.\n\nThe initiative proposes a system that would rank incoming applications by their fit to the job, so that the selection team can prioritise interviews. Its ambition is Augment and its autonomy is A1: it recommends and a person decides.\n\n- Phase 0. The intensity determination flags two Enterprise criteria: a high-risk system under the regulation and decisions that affect people. One is enough. That is why the AI Auditor, from the third line, verifies, and the AI Committee decides.\n- Phase 3. The team carries out the data protection impact assessment and the fundamental rights impact assessment. The analysis of the hiring history shows an age bias.\n- G3, first decision. The AI Committee decides Iterate: the bias has no mitigation plan. The AI Auditor verified the evidence but does not take part in the decision. This is segregation of duties.\n- G3, second decision. After the iteration, the bias cannot be corrected without losing predictive power. The residual risk is still High in a high-risk system. The AI Committee decides Stop, with the coded reason «unacceptable risk».\n- Closure. The training data sets are deleted and the assessment documentation is kept. The lesson is recorded: assess the quality and bias of the historical data in phase 1, before formulating the hypothesis.\n\nWhy it matters: the decision to stop was taken at the main stop gate, before the big spend on the build. The board dashboard shows this case among those that left the funnel, with its reason and what was learnt. That is part of the organisation's learning.\n\nQuestion for the classroom: what would have happened if the sponsor from the people area had been able to decide this gate alone?"
+      },
+      "fuentes": [
+        { "texto": { "es": "Área de actuación · Gobierno y decisiones", "en": "AI action area · Governance and decisions" }, "href": "SEVEN-G/html/{idioma}/areas/gobierno.html" },
+        { "texto": { "es": "Registro de iniciativas (T01), datos ficticios", "en": "Initiative register (T01), fictitious data" }, "href": "SEVEN-G/herramientas/T01_registro_iniciativas/registro.html" },
+        { "texto": { "es": "Panel del consejo de ejemplo (T17), en español", "en": "Example board dashboard (T17), in Spanish" }, "href": "SEVEN-G/herramientas/T17_panel_consejo/ejemplo/salida/t01_Dashboard_Casos_Uso_IA_v8.html" },
+        { "texto": { "es": "Documento 01 · Resultados posibles de una puerta (sección 7.3)", "en": "Document 01 · Possible outcomes of a gate (section 7.3)" }, "href": { "es": "SEVEN-G/html/es/01_SEVEN-G_Metodologia_fundacional.html#7-3-resultados-posibles", "en": "SEVEN-G/html/en/01_SEVEN-G_Metodologia_fundacional.html#7-3-possible-outcomes" } }
+      ]
+    },
+    {
+      "tipo": "comparacion",
+      "titulo": { "es": "Errores frecuentes y lo que exige SEVEN-G", "en": "Common mistakes and what SEVEN-G requires" },
+      "izquierda": {
+        "titulo": { "es": "Error frecuente", "en": "Common mistake" },
+        "bullets": [
+          { "es": "El patrocinador verifica la evidencia de su propio caso, o el equipo técnico decide la puerta.", "en": "The sponsor verifies the evidence of their own case, or the technical team decides the gate." },
+          { "es": "Se aprueba con un control de seguridad o de supervisión humana pendiente, «como condición».", "en": "Approval is given with a security or human oversight control pending, «as a condition»." },
+          { "es": "La documentación se escribe después de avanzar, para justificar lo ya hecho.", "en": "The documentation is written after moving on, to justify what has already been done." },
+          { "es": "Se relajan los criterios de parada durante la fase para no tener que parar.", "en": "Stop criteria are relaxed during the phase to avoid having to stop." },
+          { "es": "Se crea un gobierno paralelo, con comités nuevos que nadie consulta.", "en": "A parallel governance is created, with new committees that nobody consults." }
+        ],
+        "color": "claret"
+      },
+      "derecha": {
+        "titulo": { "es": "Lo que exige SEVEN-G", "en": "What SEVEN-G requires" },
+        "bullets": [
+          { "es": "Quien aporta evidencias no verifica ni decide. Incumplirlo es no conformidad mayor.", "en": "Whoever provides evidence neither verifies nor decides. Breaching this is a major nonconformity." },
+          { "es": "Los criterios «Sí ◆» nunca se admiten como condición; en G5 Enterprise fundamentan el veto.", "en": "«Yes ◆» criteria are never accepted as a condition; at Enterprise G5 they ground the veto." },
+          { "es": "La evidencia existe antes de la puerta; si no, la puerta se invalida y es no conformidad mayor.", "en": "Evidence exists before the gate; if not, the gate is invalid and it is a major nonconformity." },
+          { "es": "Los criterios de parada se fijan antes; solo los cambia el órgano que autorizó la iniciativa.", "en": "Stop criteria are set beforehand; only the body that authorised the initiative changes them." },
+          { "es": "Los órganos pueden ser comités existentes con el mandato ampliado.", "en": "The bodies can be existing committees with an extended mandate." }
+        ],
+        "color": "teal"
+      },
+      "enlaces": [
+        { "texto": { "es": "Reglas de decisión (documento 21)", "en": "Decision rules (document 21)" }, "href": { "es": "SEVEN-G/html/es/21_SEVEN-G_Criterios_de_gate_y_auditoria.html#3-2-reglas-de-decision", "en": "SEVEN-G/html/en/21_SEVEN-G_Criterios_de_gate_y_auditoria.html#3-2-decision-rules" } },
+        { "texto": { "es": "Obligatoriedad de los criterios", "en": "Mandatory nature of the criteria" }, "href": { "es": "SEVEN-G/html/es/21_SEVEN-G_Criterios_de_gate_y_auditoria.html#2-2-obligatoriedad", "en": "SEVEN-G/html/en/21_SEVEN-G_Criterios_de_gate_y_auditoria.html#2-2-mandatory-nature" } },
+        { "texto": { "es": "Integración en comités existentes", "en": "Integration into existing committees" }, "href": { "es": "SEVEN-G/html/es/30_SEVEN-G_Modelo_de_gobierno.html#integracion-en-comites-existentes", "en": "SEVEN-G/html/en/30_SEVEN-G_Modelo_de_gobierno.html#integration-into-existing-committees" } }
+      ],
+      "notas": {
+        "es": "Estos errores aparecen cuando el gobierno se vive como un trámite y no como una forma de decidir mejor.\n\n- Autoaprobación. Si el patrocinador verifica su propio caso, la verificación no aporta nada. SEVEN-G lo trata como no conformidad mayor y, si afectó a G3 o a G5, la verificación y la decisión se repiten.\n- Controles críticos como condición. Los criterios marcados «Sí ◆» cubren seguridad, cumplimiento legal y supervisión humana. Son obligatorios y no condicionables: nunca se aprueba «Continuar con condiciones» con uno de ellos pendiente. Su ausencia en un sistema en producción es no conformidad mayor o crítica.\n- Documentación a posteriori. La evidencia debe tener fecha anterior a la solicitud de la puerta. Escribirla después para justificar un avance invalida la puerta.\n- Criterios de parada que se relajan. Se fijan en la hipótesis de valor, antes de invertir en viabilidad. Solo los cambia el órgano que autorizó la iniciativa, con la decisión registrada antes.\n- Gobierno paralelo. SEVEN-G no crea comités nuevos por defecto. El comité de dirección o el de transformación pueden asumir el papel del comité de IA, con la segunda línea presente en ese punto. La comisión de auditoría o de riesgos del consejo puede ser la comisión delegada para la IA.\n\nHay otro error frecuente: tratar las excepciones como permanentes. Toda excepción tiene caducidad y responsable, y la comisión delegada recibe cada trimestre las vigentes. Las líneas rojas de la política corporativa, como las prácticas prohibidas por el Reglamento Europeo de IA, no admiten excepciones.\n\nPor qué importa: cada uno de estos errores parece ahorrar tiempo, pero quita valor a la decisión. Un consejo que descubre uno de ellos deja de confiar en toda la cartera.\n\nPregunta para el aula: ¿cuál de estos errores es más probable en una compañía con prisa por mostrar resultados de IA?",
+        "en": "These mistakes appear when governance is seen as a formality and not as a way to decide better.\n\n- Self-approval. If the sponsor verifies their own case, verification adds nothing. SEVEN-G treats it as a major nonconformity and, if it affected G3 or G5, verification and decision are repeated.\n- Critical controls as a condition. Criteria marked «Yes ◆» cover security, legal compliance and human oversight. They are mandatory and cannot be made a condition: «Proceed with conditions» is never approved with one of them pending. Their absence in a system in production is a major or critical nonconformity.\n- Documentation after the fact. Evidence must be dated before the gate request. Writing it afterwards to justify progress invalidates the gate.\n- Stop criteria that are relaxed. They are set in the value hypothesis, before investing in feasibility. Only the body that authorised the initiative changes them, with the decision recorded beforehand.\n- Parallel governance. SEVEN-G does not create new committees by default. The management committee or the transformation committee can take on the role of the AI Committee, with the second line present for that item. The board's audit or risk committee can be the board committee for AI.\n\nThere is another common mistake: treating exceptions as permanent. Every exception has an expiry date and an owner, and the board committee receives the ones in force every quarter. The red lines of the corporate policy, such as the practices prohibited by the EU AI Act, allow no exceptions.\n\nWhy it matters: each of these mistakes seems to save time, but it takes value away from the decision. A board that finds one of them stops trusting the whole portfolio.\n\nQuestion for the classroom: which of these mistakes is most likely in a company in a hurry to show AI results?"
+      },
+      "fuentes": [
+        { "texto": { "es": "Área de actuación · Gobierno y decisiones", "en": "AI action area · Governance and decisions" }, "href": "SEVEN-G/html/{idioma}/areas/gobierno.html" },
+        { "texto": { "es": "Documento 21 · Obligatoriedad de los criterios (sección 2.2)", "en": "Document 21 · Mandatory nature of the criteria (section 2.2)" }, "href": { "es": "SEVEN-G/html/es/21_SEVEN-G_Criterios_de_gate_y_auditoria.html#2-2-obligatoriedad", "en": "SEVEN-G/html/en/21_SEVEN-G_Criterios_de_gate_y_auditoria.html#2-2-mandatory-nature" } },
+        { "texto": { "es": "Documento 30 · Incompatibilidades (sección 5)", "en": "Document 30 · Incompatibilities (section 5)" }, "href": { "es": "SEVEN-G/html/es/30_SEVEN-G_Modelo_de_gobierno.html#incompatibilidades", "en": "SEVEN-G/html/en/30_SEVEN-G_Modelo_de_gobierno.html#incompatibilities" } },
+        { "texto": { "es": "Documento 30 · Integración en comités existentes (sección 10)", "en": "Document 30 · Integration into existing committees (section 10)" }, "href": { "es": "SEVEN-G/html/es/30_SEVEN-G_Modelo_de_gobierno.html#integracion-en-comites-existentes", "en": "SEVEN-G/html/en/30_SEVEN-G_Modelo_de_gobierno.html#integration-into-existing-committees" } },
+        { "texto": { "es": "Documento 31 · Líneas rojas (sección 3.7)", "en": "Document 31 · Red lines (section 3.7)" }, "href": { "es": "SEVEN-G/html/es/31_SEVEN-G_Politica_corporativa_y_uso_aceptable.html#3-7-lineas-rojas", "en": "SEVEN-G/html/en/31_SEVEN-G_Politica_corporativa_y_uso_aceptable.html#3-7-red-lines" } }
+      ]
+    },
+    {
+      "tipo": "texto",
+      "titulo": { "es": "Preguntas para la dirección o el aula", "en": "Questions for management or the classroom" },
+      "bullets": [
+        {
+          "rotulo": { "es": "Parar", "en": "Stopping" },
+          "texto": {
+            "es": "¿Quién puede parar hoy una iniciativa de IA en su compañía? ¿Lo ha hecho alguna vez, y quedó escrito el motivo?",
+            "en": "Who can stop an AI initiative in your company today? Has it ever been done, and was the reason recorded?"
+          },
+          "href": { "es": "SEVEN-G/html/es/30_SEVEN-G_Modelo_de_gobierno.html#7-3-suspensiones-paradas-y-retiradas", "en": "SEVEN-G/html/en/30_SEVEN-G_Modelo_de_gobierno.html#7-3-suspensions-stops-and-retirements" }
+        },
+        {
+          "rotulo": { "es": "Autoaprobación", "en": "Self-approval" },
+          "texto": {
+            "es": "¿Alguna persona verifica o decide sobre un trabajo en el que participó? ¿Cómo lo sabría la compañía?",
+            "en": "Does anyone verify or decide on work they took part in? How would the company know?"
+          },
+          "href": { "es": "SEVEN-G/html/es/30_SEVEN-G_Modelo_de_gobierno.html#incompatibilidades", "en": "SEVEN-G/html/en/30_SEVEN-G_Modelo_de_gobierno.html#incompatibilities" }
+        },
+        {
+          "rotulo": { "es": "Riesgo", "en": "Risk" },
+          "texto": {
+            "es": "¿Qué órgano acepta un riesgo residual Alto? ¿Y uno Crítico? ¿Está escrito en algún reglamento?",
+            "en": "Which body accepts a High residual risk? And a Critical one? Is it written in any rules?"
+          },
+          "href": { "es": "SEVEN-G/html/es/30_SEVEN-G_Modelo_de_gobierno.html#7-2-aceptacion-del-riesgo-residual", "en": "SEVEN-G/html/en/30_SEVEN-G_Modelo_de_gobierno.html#7-2-acceptance-of-residual-risk" }
+        },
+        {
+          "rotulo": { "es": "Comités", "en": "Committees" },
+          "texto": {
+            "es": "¿Qué comité existente podría ser el comité de IA, con la segunda línea en el quórum?",
+            "en": "Which existing committee could be the AI Committee, with the second line in the quorum?"
+          },
+          "href": { "es": "SEVEN-G/html/es/30_SEVEN-G_Modelo_de_gobierno.html#integracion-en-comites-existentes", "en": "SEVEN-G/html/en/30_SEVEN-G_Modelo_de_gobierno.html#integration-into-existing-committees" }
+        },
+        {
+          "rotulo": { "es": "Conflictos", "en": "Conflicts" },
+          "texto": {
+            "es": "¿La retribución variable del patrocinador depende del valor declarado o del valor validado?",
+            "en": "Does the sponsor's variable pay depend on declared value or on validated value?"
+          },
+          "href": { "es": "SEVEN-G/html/es/30_SEVEN-G_Modelo_de_gobierno.html#conflictos-de-interes", "en": "SEVEN-G/html/en/30_SEVEN-G_Modelo_de_gobierno.html#conflicts-of-interest" }
+        },
+        {
+          "rotulo": { "es": "Debate", "en": "Debate" },
+          "texto": {
+            "es": "¿El gobierno frena la IA o la acelera? Argumente con el ejemplo del cribado de candidaturas.",
+            "en": "Does governance slow AI down or speed it up? Argue with the candidate screening example."
+          }
+        }
+      ],
+      "enlaces": [
+        { "texto": { "es": "Escalado y plazos (documento 30)", "en": "Escalation and time limits (document 30)" }, "href": { "es": "SEVEN-G/html/es/30_SEVEN-G_Modelo_de_gobierno.html#8-2-tabla-de-escalado", "en": "SEVEN-G/html/en/30_SEVEN-G_Modelo_de_gobierno.html#8-2-escalation-table" } },
+        { "texto": { "es": "Curso · Módulo 05, gobierno y riesgo", "en": "Course · Module 05, governance and risk" }, "href": "SEVEN-G/html/{idioma}/curso/M05_SEVEN-G_Curso_Gobierno_y_riesgo.html" }
+      ],
+      "notas": {
+        "es": "Estas preguntas sirven para una sesión de dirección o para un debate en el aula. Cada una lleva a la sección del modelo de gobierno (documento 30) donde está la respuesta de SEVEN-G.\n\n- Parar. La suspensión inmediata (interruptor de parada o desconexión) ante un incidente grave no requiere autorización previa, y quien la activa de buena fe no sufre consecuencias. El comité de IA la ratifica en dos días hábiles. La parada en una puerta la decide el órgano que decide esa puerta, con un motivo codificado.\n- Autoaprobación. Las incompatibilidades entre roles son obligatorias. Por ejemplo, el auditor de IA no puede asumir ningún otro rol en la misma iniciativa ni depender jerárquicamente del patrocinador.\n- Riesgo. Bajo lo acepta el responsable de producto; Medio, el patrocinador con conformidad de riesgos; Alto, el comité de IA. Crítico no se acepta, salvo de forma excepcional por el consejo o su comisión delegada.\n- Comités. Sin la segunda línea, el comité de IA no decide G3, G5, aceptaciones de riesgo ni excepciones.\n- Conflictos. Si los objetivos del patrocinador dependen del valor declarado, hay riesgo de inflar el valor o de evitar parar. El tratamiento de SEVEN-G es vincular los objetivos al valor validado.\n- Debate. Un argumento a favor de que acelera: las decisiones tienen plazos conocidos, la intensidad Express y Lite agrupa puertas, y los escalados tienen destinatario y plazo. Un argumento en contra: sin proporcionalidad, el gobierno se vuelve un trámite y los equipos lo eluden. SPHERES describe este equilibrio en la dimensión «equilibrio entre velocidad y control» de la esfera 09.\n\nPor qué importa: las respuestas muestran si el gobierno existe de verdad o solo en un documento.\n\nSugerencia para el profesor: pida a cada grupo que responda las preguntas para una compañía que conozca y que proponga un primer cambio.",
+        "en": "These questions are for a management session or a classroom debate. Each one leads to the section of the governance model (document 30) where the SEVEN-G answer is.\n\n- Stopping. Immediate suspension (kill switch or disconnection) after a serious incident needs no prior authorisation, and whoever triggers it in good faith suffers no consequences. The AI Committee ratifies it within two working days. A stop at a gate is decided by the body that decides that gate, with a coded reason.\n- Self-approval. Incompatibilities between roles are mandatory. For example, the AI Auditor cannot take on any other role in the same initiative or report to the sponsor.\n- Risk. Low is accepted by the AI Product Owner; Medium, by the sponsor with risk clearance; High, by the AI Committee. Critical is not accepted, except exceptionally by the board or its board committee.\n- Committees. Without the second line, the AI Committee does not decide G3, G5, risk acceptances or exceptions.\n- Conflicts. If the sponsor's objectives depend on declared value, there is a risk of inflating value or avoiding a stop. The SEVEN-G treatment is to link objectives to validated value.\n- Debate. An argument that it speeds things up: decisions have known time limits, Express and Lite intensity group gates, and escalations have a recipient and a time limit. An argument against: without proportionality, governance becomes a formality and teams work around it. SPHERES describes this balance in the «balance between speed and control» dimension of sphere 09.\n\nWhy it matters: the answers show whether governance really exists or only on paper.\n\nTip for faculty: ask each group to answer the questions for a company they know and to propose a first change."
+      },
+      "fuentes": [
+        { "texto": { "es": "Área de actuación · Gobierno y decisiones", "en": "AI action area · Governance and decisions" }, "href": "SEVEN-G/html/{idioma}/areas/gobierno.html" },
+        { "texto": { "es": "Documento 30 · Suspensiones, paradas y retiradas (sección 7.3)", "en": "Document 30 · Suspensions, stops and retirements (section 7.3)" }, "href": { "es": "SEVEN-G/html/es/30_SEVEN-G_Modelo_de_gobierno.html#7-3-suspensiones-paradas-y-retiradas", "en": "SEVEN-G/html/en/30_SEVEN-G_Modelo_de_gobierno.html#7-3-suspensions-stops-and-retirements" } },
+        { "texto": { "es": "Documento 30 · Conflictos de interés (sección 12)", "en": "Document 30 · Conflicts of interest (section 12)" }, "href": { "es": "SEVEN-G/html/es/30_SEVEN-G_Modelo_de_gobierno.html#conflictos-de-interes", "en": "SEVEN-G/html/en/30_SEVEN-G_Modelo_de_gobierno.html#conflicts-of-interest" } },
+        { "texto": { "es": "Documento 30 · Comité de IA (sección 3.3)", "en": "Document 30 · AI Committee (section 3.3)" }, "href": { "es": "SEVEN-G/html/es/30_SEVEN-G_Modelo_de_gobierno.html#3-3-comite-de-ia", "en": "SEVEN-G/html/en/30_SEVEN-G_Modelo_de_gobierno.html#3-3-ai-committee" } }
+      ]
+    },
+    {
+      "tipo": "tarjetas",
+      "titulo": { "es": "Relación con otras áreas, con SPHERES y con SPAD", "en": "Relationship with other areas, SPHERES and SPAD" },
+      "tarjetas": [
+        {
+          "titulo": { "es": "Riesgo y regulación", "en": "Risk and regulation" },
+          "texto": {
+            "es": "El gobierno dice quién acepta cada nivel de riesgo residual. Esa área dice cómo se valora el riesgo y qué norma aplica.",
+            "en": "Governance says who accepts each residual risk level. That area says how risk is assessed and which rules apply."
+          },
+          "color": "claret",
+          "href": "SEVEN-G/html/{idioma}/areas/riesgo.html"
+        },
+        {
+          "titulo": { "es": "Consejo y dirección", "en": "Board and management" },
+          "texto": {
+            "es": "El consejo aprueba tesis, ambición y apetito de riesgo en C2, aprueba las apuestas de Transformar y supervisa cada trimestre.",
+            "en": "The board approves thesis, ambition and risk appetite at C2, approves Transform bets and oversees every quarter."
+          },
+          "color": "oxford",
+          "href": "SEVEN-G/html/{idioma}/areas/consejo.html"
+        },
+        {
+          "titulo": { "es": "Valor y medición", "en": "Value and measurement" },
+          "texto": {
+            "es": "Las puertas deciden con cifras que siguen reglas de medición: cada importe es validado, declarado o estimado.",
+            "en": "Gates decide with figures that follow measurement rules: each amount is validated, declared or estimated."
+          },
+          "color": "oro",
+          "href": "SEVEN-G/html/{idioma}/areas/valor.html"
+        },
+        {
+          "titulo": { "es": "SPHERES · Esfera 09", "en": "SPHERES · Sphere 09" },
+          "texto": {
+            "es": "Gobierno de la IA, la meta-esfera. Se evalúa por grados en estructura, equilibrio entre velocidad y control, y proveedores.",
+            "en": "AI governance, the meta-sphere. It is assessed by grades in structure, balance between speed and control, and suppliers."
+          },
+          "color": "teal",
+          "href": { "es": "SPHERES/html/es/04_SPHERES_Regulacion_y_gobierno_de_la_IA.html#esfera-09-gobierno-de-la-ia", "en": "SPHERES/html/en/04_SPHERES_Regulacion_y_gobierno_de_la_IA.html#sphere-09-ai-governance" }
+        },
+        {
+          "titulo": { "es": "SPAD", "en": "SPAD" },
+          "texto": {
+            "es": "Gobierna cómo se construye el software con IA. Sus veredictos son insumos de la evidencia; no sustituyen a ninguna puerta.",
+            "en": "It governs how software is built with AI. Its verdicts are inputs to the evidence; they do not replace any gate."
+          },
+          "color": "velvet",
+          "href": { "es": "SPAD/html/es/00_SPAD_Que_es_y_para_que_sirve.html#relacion-con-seven-g", "en": "SPAD/html/en/00_SPAD_Que_es_y_para_que_sirve.html#relationship-with-seven-g" }
+        }
+      ],
+      "enlaces": [
+        { "texto": { "es": "SPHERES · Qué es y para qué sirve", "en": "SPHERES · What it is and what it is for" }, "href": "SPHERES/html/{idioma}/00_SPHERES_Que_es_y_para_que_sirve.html" },
+        { "texto": { "es": "SPAD · Qué es y para qué sirve", "en": "SPAD · What it is and what it is for" }, "href": "SPAD/html/{idioma}/00_SPAD_Que_es_y_para_que_sirve.html" },
+        { "texto": { "es": "Otras áreas de actuación", "en": "Other action areas" }, "href": { "es": "SEVEN-G/html/es/areas/gobierno.html#otros", "en": "SEVEN-G/html/en/areas/gobierno.html#otros" } }
+      ],
+      "notas": {
+        "es": "El gobierno es el área que conecta a las demás: dice quién decide sobre lo que las otras áreas analizan.\n\n- Riesgo y regulación. El gobierno fija quién acepta cada nivel de riesgo residual (Bajo, Medio, Alto o Crítico). El área de riesgo explica cómo se valora con probabilidad por impacto, y cómo se clasifica cada sistema según la regulación.\n- Consejo y dirección. El núcleo pide que el consejo apruebe en la etapa de dirección (C2), tras el diagnóstico, la tesis de IA, la ambición por esfera y el apetito de riesgo; que reciba información de IA al menos cada trimestre; y que apruebe las apuestas de Transformar.\n- Valor y medición. Las puertas usan cifras con fórmula y estado. La puerta de viabilidad (G3) pide, por ejemplo, en una iniciativa de Optimizar, un neto anual esperado positivo y un valor actual neto no negativo con el horizonte y la tasa fijados en C2.\n- SPHERES. Es la capa explicativa de las nueve esferas y los tres niveles de ambición. La esfera 09, Gobierno de la IA, no se mide con Optimizar, Aumentar o Transformar: se evalúa en tres dimensiones (estructura, equilibrio entre velocidad y control, y ecosistema de proveedores) con cuatro grados.\n- SPAD. Es la metodología de construcción de software con IA (Structured Prompt-Driven Engineering). SEVEN-G decide si la iniciativa sigue; SPAD gobierna cómo se construye, sobre todo en las fases de diseño y entrega. Sus veredictos no sustituyen a ninguna puerta de SEVEN-G ni a la verificación del auditor de IA, que es una persona. Sus artefactos son insumos de las evidencias.\n\nPor qué importa: un consejo no necesita saber cómo se revisa un plan de arquitectura, pero sí necesita saber que existe un método que lo hace y que deja evidencias. Las tres metodologías son independientes y se referencian entre sí.\n\nPregunta para el aula: ¿en qué grado situaría su compañía en la dimensión «estructura» de la esfera 09?",
+        "en": "Governance is the area that connects the others: it says who decides on what the other areas analyse.\n\n- Risk and regulation. Governance sets who accepts each residual risk level (Low, Medium, High or Critical). The risk area explains how it is assessed as probability by impact, and how each system is classified under the regulation.\n- Board and management. The core requires the board to approve at the direction stage (C2), after the diagnosis, the AI thesis, the ambition per sphere and the risk appetite; to receive AI reporting at least every quarter; and to approve Transform bets.\n- Value and measurement. Gates use figures with a formula and a status. The feasibility gate (G3) requires, for example, for an Optimise initiative, a positive expected annual net value and a non-negative net present value with the horizon and rate set at C2.\n- SPHERES. It is the explanatory layer of the nine spheres and the three ambition levels. Sphere 09, AI governance, is not measured with Optimise, Augment or Transform: it is assessed in three dimensions (structure, balance between speed and control, and supplier ecosystem) with four grades.\n- SPAD. It is the methodology for building software with AI (Structured Prompt-Driven Engineering). SEVEN-G decides whether the initiative goes on; SPAD governs how it is built, above all in the design and delivery phases. Its verdicts do not replace any SEVEN-G gate or the verification by the AI Auditor, who is a person. Its artefacts are inputs to the evidence.\n\nWhy it matters: a board does not need to know how an architecture plan is reviewed, but it does need to know that a method exists that does it and leaves evidence. The three methodologies are independent and reference each other.\n\nQuestion for the classroom: what grade would you give your company in the «structure» dimension of sphere 09?"
+      },
+      "fuentes": [
+        { "texto": { "es": "Área de actuación · Gobierno y decisiones", "en": "AI action area · Governance and decisions" }, "href": "SEVEN-G/html/{idioma}/areas/gobierno.html" },
+        { "texto": { "es": "SPHERES 04 · Esfera 09, Gobierno de la IA", "en": "SPHERES 04 · Sphere 09, AI governance" }, "href": { "es": "SPHERES/html/es/04_SPHERES_Regulacion_y_gobierno_de_la_IA.html#esfera-09-gobierno-de-la-ia", "en": "SPHERES/html/en/04_SPHERES_Regulacion_y_gobierno_de_la_IA.html#sphere-09-ai-governance" } },
+        { "texto": { "es": "SPAD 00 · Relación con SEVEN-G", "en": "SPAD 00 · Relationship with SEVEN-G" }, "href": { "es": "SPAD/html/es/00_SPAD_Que_es_y_para_que_sirve.html#relacion-con-seven-g", "en": "SPAD/html/en/00_SPAD_Que_es_y_para_que_sirve.html#relationship-with-seven-g" } },
+        { "texto": { "es": "Documento 01 · El núcleo de SEVEN-G (sección 14.1)", "en": "Document 01 · The SEVEN-G core (section 14.1)" }, "href": { "es": "SEVEN-G/html/es/01_SEVEN-G_Metodologia_fundacional.html#14-1-el-nucleo-de-seven-g", "en": "SEVEN-G/html/en/01_SEVEN-G_Metodologia_fundacional.html#14-1-the-seven-g-core" } },
+        { "texto": { "es": "Documento 01 · Criterios por nivel de ambición (sección 7.6)", "en": "Document 01 · Criteria by ambition level (section 7.6)" }, "href": { "es": "SEVEN-G/html/es/01_SEVEN-G_Metodologia_fundacional.html#7-6-criterios-diferenciados-por-nivel-de-ambicion", "en": "SEVEN-G/html/en/01_SEVEN-G_Metodologia_fundacional.html#7-6-criteria-differentiated-by-ambition-level" } }
+      ]
+    },
+    {
+      "tipo": "proceso",
+      "titulo": { "es": "Cómo empezar", "en": "How to start" },
+      "sub": {
+        "es": "Cinco pasos para integrar el gobierno en los comités que ya existen. Encajan en el tercer mes de la primera implantación.",
+        "en": "Five steps to build governance into the committees that already exist. They fit in the third month of the first implementation."
+      },
+      "pasos": [
+        {
+          "rotulo": { "es": "Paso 1", "en": "Step 1" },
+          "titulo": { "es": "Mapear comités", "en": "Map committees" },
+          "texto": {
+            "es": "Liste los comités existentes y sus reglamentos. SEVEN-G no crea un gobierno paralelo.",
+            "en": "List the existing committees and their rules. SEVEN-G does not create a parallel governance."
+          },
+          "color": "oxford"
+        },
+        {
+          "rotulo": { "es": "Paso 2", "en": "Step 2" },
+          "titulo": { "es": "Asignar funciones", "en": "Assign functions" },
+          "texto": {
+            "es": "Asigne cada función de los mandatos y de la matriz de delegación a un órgano, sin huecos ni duplicidades.",
+            "en": "Assign each function of the mandates and the delegation matrix to a body, with no gaps or overlaps."
+          },
+          "color": "teal"
+        },
+        {
+          "rotulo": { "es": "Paso 3", "en": "Step 3" },
+          "titulo": { "es": "Modificar reglamentos", "en": "Amend the rules" },
+          "texto": {
+            "es": "Adapte los mandatos tipo con el reglamento de los órganos de gobierno de IA (P38).",
+            "en": "Adapt the model mandates with the rules of the AI governance bodies (P38)."
+          },
+          "color": "velvet"
+        },
+        {
+          "rotulo": { "es": "Paso 4", "en": "Step 4" },
+          "titulo": { "es": "Aprobar en C2", "en": "Approve at C2" },
+          "texto": {
+            "es": "Apruebe la matriz de delegación en la etapa de dirección (C2), sin rebajar los niveles del marco.",
+            "en": "Approve the delegation matrix at the direction stage (C2), without lowering the framework's levels."
+          },
+          "color": "oro"
+        },
+        {
+          "rotulo": { "es": "Paso 5", "en": "Step 5" },
+          "titulo": { "es": "Dar de alta en T01", "en": "Register in T01" },
+          "texto": {
+            "es": "Registre órganos y personas en el registro de iniciativas (T01) para validar decisor y verificador.",
+            "en": "Record bodies and people in the initiative register (T01) to validate decision-maker and verifier."
+          },
+          "color": "verde"
+        }
+      ],
+      "destacado": {
+        "es": "Tres garantías irrenunciables: quien construye no verifica ni decide; alguien independiente da la conformidad de riesgos; el consejo aprueba dirección y apetito.",
+        "en": "Three non-negotiable safeguards: whoever builds neither verifies nor decides; someone independent gives risk clearance; the board approves direction and appetite."
+      },
+      "enlaces": [
+        { "texto": { "es": "Integración en comités existentes", "en": "Integration into existing committees" }, "href": { "es": "SEVEN-G/html/es/30_SEVEN-G_Modelo_de_gobierno.html#integracion-en-comites-existentes", "en": "SEVEN-G/html/en/30_SEVEN-G_Modelo_de_gobierno.html#integration-into-existing-committees" } },
+        { "texto": { "es": "Organizaciones pequeñas", "en": "Small organisations" }, "href": { "es": "SEVEN-G/html/es/30_SEVEN-G_Modelo_de_gobierno.html#adaptacion-a-organizaciones-pequenas", "en": "SEVEN-G/html/en/30_SEVEN-G_Modelo_de_gobierno.html#adaptation-to-small-organisations" } },
+        { "texto": { "es": "Plantilla P38 · Reglamento de órganos", "en": "Template P38 · Rules of the bodies" }, "href": "SEVEN-G/html/{idioma}/plantillas/P38_SEVEN-G_Reglamento_de_los_organos_de_gobierno_de_IA.html" }
+      ],
+      "notas": {
+        "es": "Los cinco pasos son los del modelo de gobierno (documento 30, sección 10). Esta secuencia encaja en el mes 3 de la primera implantación.\n\n- Mapear comités. El comité de dirección puede ser el comité de IA en organizaciones medianas, con un punto fijo mensual y la segunda línea presente. Un comité de transformación también puede serlo si incorpora riesgos, cumplimiento, protección de datos y personas. La comisión de auditoría o de riesgos del consejo puede ser la comisión delegada para la IA.\n- Asignar funciones. Use los mandatos tipo del consejo, la comisión delegada, el comité de IA, la oficina de IA y la segunda y tercera línea. Ninguna función debe quedar sin dueño ni repetida en dos órganos.\n- Modificar reglamentos. Los mandatos son modelos para adaptar. El quórum y los plazos son de referencia.\n- Aprobar en C2. La compañía puede ajustar la matriz de delegación en C2, pero sin rebajar los niveles del documento 01. El consejo aprueba la política corporativa de IA.\n- Dar de alta en T01. Con órganos y personas en el registro, la herramienta puede impedir que alguien con un rol incompatible figure como decisor o verificador.\n\nCompañías pequeñas. SEVEN-G admite una estructura mínima si se conservan tres garantías irrenunciables: quien construye no verifica ni decide su propio trabajo; alguien independiente del equipo emite la conformidad de riesgos; y el órgano de administración aprueba la dirección y el apetito de riesgo. La oficina de IA puede ser una persona a tiempo parcial y la segunda línea, un responsable de cumplimiento, el delegado de protección de datos o un asesor externo. Una iniciativa con un criterio Enterprise sigue siendo Enterprise completa, con auditor de IA en todas sus puertas, externo si no hay nadie independiente dentro.\n\nPor qué importa: empezar por los comités que ya existen reduce el coste y la resistencia. El gobierno funciona cuando forma parte de cómo la compañía ya decide.\n\nPara profundizar: página del área, documento 30 y módulo 05 del curso de SEVEN-G.",
+        "en": "The five steps are those of the governance model (document 30, section 10). This sequence fits in month 3 of the first implementation.\n\n- Map committees. The management committee can be the AI Committee in medium-sized organisations, with a fixed monthly item and the second line present. A transformation committee can be it too if it brings in risk, compliance, data protection and people. The board's audit or risk committee can be the board committee for AI.\n- Assign functions. Use the model mandates of the board, the board committee, the AI Committee, the AI Office and the second and third lines. No function should be left without an owner or repeated in two bodies.\n- Amend the rules. The mandates are models to adapt. Quorum and time limits are for reference.\n- Approve at C2. The company can adjust the delegation matrix at C2, but without lowering the levels of document 01. The board approves the corporate AI policy.\n- Register in T01. With bodies and people in the register, the tool can prevent someone with an incompatible role from appearing as decision-maker or verifier.\n\nSmall companies. SEVEN-G allows a minimum structure if three non-negotiable safeguards are kept: whoever builds neither verifies nor decides on their own work; someone independent of the team issues the risk clearance; and the governing body approves the direction and the risk appetite. The AI Office can be one part-time person and the second line, a compliance officer, the data protection officer or an external adviser. An initiative with one Enterprise criterion is still full Enterprise, with an AI Auditor at all its gates, external if there is nobody independent inside.\n\nWhy it matters: starting from the committees that already exist reduces cost and resistance. Governance works when it is part of how the company already decides.\n\nTo go further: the area page, document 30 and module 05 of the SEVEN-G course."
+      },
+      "fuentes": [
+        { "texto": { "es": "Área de actuación · Gobierno y decisiones", "en": "AI action area · Governance and decisions" }, "href": "SEVEN-G/html/{idioma}/areas/gobierno.html" },
+        { "texto": { "es": "Documento 30 · Integración en comités existentes (sección 10)", "en": "Document 30 · Integration into existing committees (section 10)" }, "href": { "es": "SEVEN-G/html/es/30_SEVEN-G_Modelo_de_gobierno.html#integracion-en-comites-existentes", "en": "SEVEN-G/html/en/30_SEVEN-G_Modelo_de_gobierno.html#integration-into-existing-committees" } },
+        { "texto": { "es": "Documento 30 · Adaptación a organizaciones pequeñas (sección 11)", "en": "Document 30 · Adaptation to small organisations (section 11)" }, "href": { "es": "SEVEN-G/html/es/30_SEVEN-G_Modelo_de_gobierno.html#adaptacion-a-organizaciones-pequenas", "en": "SEVEN-G/html/en/30_SEVEN-G_Modelo_de_gobierno.html#adaptation-to-small-organisations" } },
+        { "texto": { "es": "Documento 30 · Mandatos tipo de los órganos (sección 3)", "en": "Document 30 · Model mandates of the bodies (section 3)" }, "href": { "es": "SEVEN-G/html/es/30_SEVEN-G_Modelo_de_gobierno.html#mandatos-tipo-de-los-organos", "en": "SEVEN-G/html/en/30_SEVEN-G_Modelo_de_gobierno.html#model-mandates-of-the-bodies" } },
+        { "texto": { "es": "Curso · Módulo 05, gobierno y riesgo", "en": "Course · Module 05, governance and risk" }, "href": "SEVEN-G/html/{idioma}/curso/M05_SEVEN-G_Curso_Gobierno_y_riesgo.html" }
+      ]
+    }
+  ]
+}

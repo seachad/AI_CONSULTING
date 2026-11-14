@@ -35,7 +35,7 @@ jobs:
             rsync -a --exclude '_trabajo' --exclude '_legacy' --exclude '_*' --exclude '__pycache__' "SEVEN-G/$c" sitio/SEVEN-G/
           done
           for m in SPHERES SPAD; do
-            for c in html pdf; do
+            for c in html pdf pptx; do
               [ -d "$m/$c" ] || continue
               mkdir -p "sitio/$m"
               rsync -a --exclude '_trabajo' --exclude '_legacy' --exclude '_*' "$m/$c" "sitio/$m/"

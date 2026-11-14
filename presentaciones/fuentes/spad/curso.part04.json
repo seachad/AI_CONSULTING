@@ -1,0 +1,409 @@
+{
+  "slides": [
+    {
+      "tipo": "proceso",
+      "titulo": { "es": "Evaluación del comportamiento (y ejercicio del módulo 7)", "en": "Behaviour evaluation (and module 7 exercise)" },
+      "sub": {
+        "es": "En un sistema con IA se añade la fase E, entre la revisión de pruebas y la revisión del código.",
+        "en": "In a system with AI, phase E is added, between the test review and the code review."
+      },
+      "pasos": [
+        {
+          "rotulo": { "es": "Fase 6", "en": "Phase 6" },
+          "titulo": { "es": "Pruebas", "en": "Test implementation" },
+          "texto": {
+            "es": "Pruebas de código y conjuntos de evaluación, versionados con el código.",
+            "en": "Code tests and evaluation sets, versioned with the code."
+          },
+          "color": "velvet"
+        },
+        {
+          "rotulo": { "es": "Fase 7", "en": "Phase 7" },
+          "titulo": { "es": "Revisión de pruebas", "en": "Test review" },
+          "texto": {
+            "es": "La evaluación cubre los criterios de la fase 0 y los modos de fallo.",
+            "en": "The evaluation covers the phase 0 criteria and the failure modes."
+          },
+          "color": "claret"
+        },
+        {
+          "rotulo": { "es": "Fase E", "en": "Phase E" },
+          "titulo": { "es": "Evaluación", "en": "Behaviour evaluation" },
+          "texto": {
+            "es": "Casos reales, pruebas adversarias y de sesgo, y una muestra revisada por personas.",
+            "en": "Real cases, adversarial and bias tests, and a sample reviewed by people."
+          },
+          "color": "oro"
+        },
+        {
+          "rotulo": { "es": "Fase 8", "en": "Phase 8" },
+          "titulo": { "es": "Revisión del código", "en": "Code review" },
+          "texto": {
+            "es": "Además: registro de interacciones, memoria, datos e instrucciones separadas.",
+            "en": "Also: interaction log, memory, data and separated instructions."
+          },
+          "color": "claret"
+        },
+        {
+          "rotulo": { "es": "S1", "en": "S1" },
+          "titulo": { "es": "Revisión de seguridad", "en": "Security review" },
+          "texto": {
+            "es": "Obligatoria: inyección de instrucciones, fuga de datos, permisos excesivos.",
+            "en": "Mandatory: prompt injection, data leakage, excessive permissions."
+          },
+          "color": "negro"
+        },
+        {
+          "rotulo": { "es": "Fase 10", "en": "Phase 10" },
+          "titulo": { "es": "Versión", "en": "Version" },
+          "texto": {
+            "es": "Incluye modelo, instrucciones, vigilancia de deriva y coste, y modelo de respaldo.",
+            "en": "It includes model, instructions, drift and cost monitoring, and a backup model."
+          },
+          "color": "verde"
+        }
+      ],
+      "destacado": {
+        "es": "Ejercicio: el proveedor actualiza el modelo de su asistente y nadie toca el código. ¿Qué se repite antes de seguir? (Notas.)",
+        "en": "Exercise: the provider updates your assistant's model and nobody touches the code. What is repeated before carrying on? (See notes.)"
+      },
+      "enlaces": [
+        { "texto": { "es": "Fase E · Evaluación", "en": "Phase E · Behaviour evaluation" }, "href": { "es": "SPAD/html/es/05_SPAD_Sistemas_que_incluyen_IA.html#fase-e-evaluacion-del-comportamiento", "en": "SPAD/html/en/05_SPAD_Sistemas_que_incluyen_IA.html#phase-e-behaviour-evaluation" } },
+        { "texto": { "es": "Agentes", "en": "Agents" }, "href": { "es": "SPAD/html/es/05_SPAD_Sistemas_que_incluyen_IA.html#agentes", "en": "SPAD/html/en/05_SPAD_Sistemas_que_incluyen_IA.html#agents" } }
+      ],
+      "notas": {
+        "es": "Las pruebas de código verifican que el programa hace lo que dice el código. La evaluación del comportamiento verifica que el sistema hace lo que dice el objetivo.\n\nLa fase E ejecuta el sistema sobre un conjunto de evaluación: casos representativos del uso real, con la respuesta esperada o el criterio para juzgarla, incluidos casos que el sistema debe rechazar. Incluye:\n- Criterios de aceptación con umbrales fijados de antemano (exactitud, rechazo correcto, latencia, coste).\n- Pruebas adversarias: intentos de inyección de instrucciones, directa o escondida en un documento recuperado.\n- Pruebas de sesgo con pares contrafactuales: la misma entrada cambiando solo un atributo protegido. Son obligatorias si el sistema decide, recomienda o se comunica con personas.\n- Una muestra revisada por personas.\n- El modelo de respaldo, si lo hay, con el mismo conjunto.\n\nUn NO-GO devuelve el trabajo a la fase 1 si el fallo es de diseño y a la fase 5 si es de instrucciones.\n\nAgentes: contratos de herramientas con permisos mínimos, límites, memoria controlada, registro de acciones, identidad propia e interruptor de parada probado. Una regla clave: el contenido recuperado es dato, no instrucción.\n\nRespuesta al ejercicio: se repite la evaluación del comportamiento con el mismo conjunto versionado antes de seguir usando el sistema. En operación cambian cosas sin que cambie el código: el modelo, las instrucciones, la base de conocimiento, el uso y el coste.\n\nPor qué importa: sin conjunto de evaluación, la única prueba de que el asistente funciona es una demostración con las preguntas que se le ocurrieron a alguien.",
+        "en": "Code tests verify that the program does what the code says. Behaviour evaluation verifies that the system does what the objective says.\n\nPhase E runs the system on an evaluation set: cases representative of real use, with the expected answer or the criterion for judging it, including cases the system must refuse. It includes:\n- Acceptance criteria with thresholds set in advance (accuracy, correct refusal, latency, cost).\n- Adversarial tests: prompt injection attempts, direct or hidden in a retrieved document.\n- Bias tests with counterfactual pairs: the same input changing only a protected attribute. They are mandatory if the system decides, recommends or communicates with people.\n- A sample reviewed by people.\n- The backup model, if there is one, with the same set.\n\nA NO-GO sends work back to phase 1 if the failure is a design one and to phase 5 if it lies in the instructions.\n\nAgents: tool contracts with minimum permissions, limits, controlled memory, an action log, their own identity and a tested kill switch. A key rule: retrieved content is data, not instructions.\n\nAnswer to the exercise: the behaviour evaluation is repeated with the same versioned set before continuing to use the system. In operation, things change without the code changing: the model, the instructions, the knowledge base, usage and cost.\n\nWhy it matters: without an evaluation set, the only proof that the assistant works is a demonstration with the questions that occurred to someone."
+      },
+      "fuentes": [
+        { "texto": { "es": "SPAD 05 · Fase E · Evaluación del comportamiento", "en": "SPAD 05 · Phase E · Behaviour evaluation" }, "href": { "es": "SPAD/html/es/05_SPAD_Sistemas_que_incluyen_IA.html#fase-e-evaluacion-del-comportamiento", "en": "SPAD/html/en/05_SPAD_Sistemas_que_incluyen_IA.html#phase-e-behaviour-evaluation" } },
+        { "texto": { "es": "SPAD 05 · Qué añade a cada fase", "en": "SPAD 05 · What it adds to each phase" }, "href": { "es": "SPAD/html/es/05_SPAD_Sistemas_que_incluyen_IA.html#que-anade-a-cada-fase", "en": "SPAD/html/en/05_SPAD_Sistemas_que_incluyen_IA.html#what-it-adds-to-each-phase" } },
+        { "texto": { "es": "SPAD 05 · Lo que cambia sin cambiar el código", "en": "SPAD 05 · What changes without the code changing" }, "href": { "es": "SPAD/html/es/05_SPAD_Sistemas_que_incluyen_IA.html#operacion-lo-que-cambia-sin-que-cambie-el-codigo", "en": "SPAD/html/en/05_SPAD_Sistemas_que_incluyen_IA.html#operation-what-changes-without-the-code-changing" } },
+        { "texto": { "es": "OWASP Top 10 para aplicaciones con LLM", "en": "OWASP Top 10 for LLM applications" }, "href": "https://genai.owasp.org/resource/owasp-top-10-for-llm-applications-2025/" },
+        { "texto": { "es": "OWASP Top 10 para aplicaciones agénticas", "en": "OWASP Top 10 for agentic applications" }, "href": "https://genai.owasp.org/resource/owasp-top-10-for-agentic-applications-for-2026/" }
+      ]
+    },
+    {
+      "tipo": "seccion",
+      "titulo": { "es": "Módulo 8 · Medir: autoevaluación, métricas y versión reducida", "en": "Module 8 · Measuring: self-assessment, metrics and reduced version" },
+      "rotulo": { "es": "Módulo 8", "en": "Module 8" },
+      "texto": {
+        "es": "Objetivo: saber cómo comprueba una organización que trabaja conforme a SPAD, qué métricas usa para obtener sus propias cifras y cuándo basta la versión reducida.",
+        "en": "Objective: know how an organisation checks that it works in line with SPAD, which metrics it uses to obtain its own figures and when the reduced version is enough."
+      },
+      "enlaces": [
+        { "texto": { "es": "Autoevaluación y métricas", "en": "Self-assessment and metrics" }, "href": "SPAD/html/{idioma}/08_SPAD_Autoevaluacion_y_metricas.html" }
+      ],
+      "notas": {
+        "es": "Objetivo del módulo 8: medir sin prometer.\n\nUna metodología que no se mide se convierte en un ritual. SPAD da dos instrumentos:\n- La autoevaluación de conformidad: una revisión interna, hecha por una persona independiente de quienes construyeron, que comprueba si un trabajo se hizo conforme a SPAD.\n- Las métricas del proceso: indicadores calculados con los registros del módulo 5.\n\nUn mensaje importante para el aula: SPAD no afirma cifras de mejora. No dice «reduce los incidentes un tanto por ciento». Cada organización mide frente a su propia situación de partida: retrabajo después de la entrega, incidentes por trabajo entregado, horas para preparar una auditoría y tiempo hasta producción, antes y después de usar SPAD.\n\nEl módulo cierra con la versión reducida, porque las métricas también dicen cuándo el método completo es excesivo para un trabajo pequeño.\n\nEjemplo cotidiano: un plan de entrenamiento no promete cuántos kilos perderá usted; le dice qué medir cada semana para saber si funciona.\n\nPregunta para el aula: si un proveedor le promete una cifra exacta de mejora con su método, ¿qué le pediría antes de creerla?",
+        "en": "Objective of module 8: measure without promising.\n\nA methodology that is not measured becomes a ritual. SPAD provides two instruments:\n- The self-assessment of conformity: an internal review, done by a person independent of those who built, that checks whether a piece of work was done in line with SPAD.\n- The process metrics: indicators calculated from the records in module 5.\n\nAn important message for the classroom: SPAD does not claim improvement figures. It does not say ‘it reduces incidents by a certain percentage’. Each organisation measures against its own starting point: rework after delivery, incidents per delivered piece of work, hours to prepare an audit and time to production, before and after using SPAD.\n\nThe module closes with the reduced version, because the metrics also tell you when the full method is excessive for a small piece of work.\n\nEveryday example: a training plan does not promise how many kilos you will lose; it tells you what to measure each week to know whether it works.\n\nQuestion for the classroom: if a provider promises you an exact improvement figure with their method, what would you ask for before believing it?"
+      },
+      "fuentes": [
+        { "texto": { "es": "SPAD 08 · Qué es la autoevaluación", "en": "SPAD 08 · What the self-assessment is" }, "href": { "es": "SPAD/html/es/08_SPAD_Autoevaluacion_y_metricas.html#que-es-la-autoevaluacion", "en": "SPAD/html/en/08_SPAD_Autoevaluacion_y_metricas.html#what-the-self-assessment-is" } },
+        { "texto": { "es": "SPAD 08 · Métricas del proceso", "en": "SPAD 08 · Process metrics" }, "href": { "es": "SPAD/html/es/08_SPAD_Autoevaluacion_y_metricas.html#metricas-del-proceso", "en": "SPAD/html/en/08_SPAD_Autoevaluacion_y_metricas.html#process-metrics" } }
+      ]
+    },
+    {
+      "tipo": "tabla",
+      "titulo": { "es": "Métricas del proceso: las cifras las pone su organización", "en": "Process metrics: your organisation supplies the figures" },
+      "sub": {
+        "es": "Seis de las ocho métricas del documento 08, calculadas con los registros de cada tema.",
+        "en": "Six of the eight metrics in document 08, calculated from the records of each topic."
+      },
+      "cabecera": [
+        { "es": "Métrica", "en": "Metric" },
+        { "es": "Cómo se calcula", "en": "How it is calculated" },
+        { "es": "Qué indica", "en": "What it shows" }
+      ],
+      "filas": [
+        [
+          { "es": "Tasa de invalidación por fase", "en": "Invalidation rate per phase" },
+          { "es": "Respuestas inválidas ÷ respuestas de la fase × 100", "en": "Invalid responses ÷ responses in the phase × 100" },
+          { "es": "Fases con instrucciones débiles o modelos inadecuados.", "en": "Phases with weak instructions or unsuitable models." }
+        ],
+        [
+          { "es": "Tasa de NO-GO", "en": "NO-GO rate" },
+          { "es": "Revisiones con NO-GO ÷ revisiones × 100", "en": "Reviews with NO-GO ÷ reviews × 100" },
+          { "es": "Calidad antes de revisar. Cero durante meses: la revisión es un trámite.", "en": "Quality before review. Zero for months: the review is a formality." }
+        ],
+        [
+          { "es": "Iteraciones hasta GO", "en": "Iterations to GO" },
+          { "es": "Media y máximo por fase revisada", "en": "Mean and maximum per reviewed phase" },
+          { "es": "Coste del retrabajo dentro del ciclo.", "en": "Cost of rework within the cycle." }
+        ],
+        [
+          { "es": "Tiempo por fase", "en": "Time per phase" },
+          { "es": "Mediana entre la entrada y la validación", "en": "Median from entry to validation" },
+          { "es": "Cuellos de botella; base para usar la versión reducida.", "en": "Bottlenecks; basis for using the reduced version." }
+        ],
+        [
+          { "es": "Defectos escapados", "en": "Escaped defects" },
+          { "es": "Defectos en producción ÷ temas entregados", "en": "Defects in production ÷ topics delivered" },
+          { "es": "Eficacia de las revisiones. La cifra que de verdad importa.", "en": "Effectiveness of the reviews. The figure that really matters." }
+        ],
+        [
+          { "es": "Correcciones fuera de hallazgo", "en": "Fixes outside a finding" },
+          { "es": "Correcciones sin hallazgo ÷ correcciones × 100", "en": "Fixes without a finding ÷ fixes × 100" },
+          { "es": "Refactorizaciones encubiertas. Debería tender a cero.", "en": "Covert refactoring. It should tend to zero." }
+        ]
+      ],
+      "destacado": {
+        "es": "La autoevaluación no es una certificación: se registra siempre como «conforme con SPAD (autoevaluación)».",
+        "en": "The self-assessment is not a certification: it is always recorded as ‘conforming with SPAD (self-assessment)’."
+      },
+      "enlaces": [
+        { "texto": { "es": "Métricas del proceso", "en": "Process metrics" }, "href": { "es": "SPAD/html/es/08_SPAD_Autoevaluacion_y_metricas.html#metricas-del-proceso", "en": "SPAD/html/en/08_SPAD_Autoevaluacion_y_metricas.html#process-metrics" } },
+        { "texto": { "es": "Condiciones de conformidad", "en": "Conformity conditions" }, "href": { "es": "SPAD/html/es/08_SPAD_Autoevaluacion_y_metricas.html#condiciones-de-conformidad", "en": "SPAD/html/en/08_SPAD_Autoevaluacion_y_metricas.html#conformity-conditions" } }
+      ],
+      "notas": {
+        "es": "La tabla recoge seis de las ocho métricas del proceso. Las otras dos son la tasa de invalidación por modelo (qué modelos siguen mejor las reglas) y la cobertura real frente a la exigida. Para sistemas con IA se añaden las métricas de la evaluación del comportamiento y, en operación, la deriva y el coste por interacción.\n\nCómo leerlas, con ejemplos del documento 08:\n- Una tasa de invalidación alta en una sola fase indica que su instrucción necesita reforzarse; no es un problema del método.\n- Una tasa de NO-GO cercana a cero durante meses no es buena noticia: suele indicar que la revisión se ha vuelto un trámite.\n- Si el tiempo por fase supera con mucho al de construir en trabajos pequeños, conviene la versión reducida.\n- Los defectos escapados son la cifra que de verdad importa: miden si las revisiones funcionan.\n\nLa autoevaluación comprueba seis condiciones (siete si el sistema incluye IA): las decisiones se tomaron antes del código, cada fase produjo su artefacto, las revisiones fueron independientes, no se saltó ninguna fase, las correcciones fueron mínimas y ninguna IA aprobó nada. Si falta un artefacto obligatorio, el resultado es negativo. El resultado es conforme, conforme con condiciones o no conforme, y su vigencia la fija el contexto global (valor de partida: doce meses).\n\nNo es una certificación ni un sello: presentarla así incumple el uso permitido del nombre SPAD.\n\nPregunta para el aula: ¿qué métrica le pediría usted a su equipo en el primer trimestre?",
+        "en": "The table shows six of the eight process metrics. The other two are the invalidation rate per model (which models follow the rules best) and real versus required coverage. For systems with AI, the behaviour evaluation metrics are added and, in operation, drift and cost per interaction.\n\nHow to read them, with examples from document 08:\n- A high invalidation rate in a single phase shows that its instruction needs strengthening; it is not a problem with the method.\n- A NO-GO rate close to zero for months is not good news: it usually shows that the review has become a formality.\n- If the time per phase greatly exceeds building time on small pieces of work, the reduced version is advisable.\n- Escaped defects are the figure that really matters: they measure whether the reviews work.\n\nThe self-assessment checks six conditions (seven if the system includes AI): decisions were taken before the code, each phase produced its artefact, reviews were independent, no phase was skipped, fixes were minimal and no AI approved anything. If a mandatory artefact is missing, the result is negative. The result is conforming, conforming with conditions or non-conforming, and its validity is set by the global context (starting value: twelve months).\n\nIt is neither a certification nor a seal: presenting it as such breaches the permitted use of the SPAD name.\n\nQuestion for the classroom: which metric would you ask your team for in the first quarter?"
+      },
+      "fuentes": [
+        { "texto": { "es": "SPAD 08 · Métricas del proceso", "en": "SPAD 08 · Process metrics" }, "href": { "es": "SPAD/html/es/08_SPAD_Autoevaluacion_y_metricas.html#metricas-del-proceso", "en": "SPAD/html/en/08_SPAD_Autoevaluacion_y_metricas.html#process-metrics" } },
+        { "texto": { "es": "SPAD 08 · Procedimiento de autoevaluación", "en": "SPAD 08 · Self-assessment procedure" }, "href": { "es": "SPAD/html/es/08_SPAD_Autoevaluacion_y_metricas.html#procedimiento", "en": "SPAD/html/en/08_SPAD_Autoevaluacion_y_metricas.html#procedure" } },
+        { "texto": { "es": "SPAD 08 · Cuándo conviene usar SPAD", "en": "SPAD 08 · When SPAD is worth using" }, "href": { "es": "SPAD/html/es/08_SPAD_Autoevaluacion_y_metricas.html#cuando-conviene-usar-spad-segun-las-metricas", "en": "SPAD/html/en/08_SPAD_Autoevaluacion_y_metricas.html#when-spad-is-worth-using-according-to-the-metrics" } }
+      ]
+    },
+    {
+      "tipo": "comparacion",
+      "titulo": { "es": "Versión completa o reducida (y autocomprobación del módulo 8)", "en": "Full or reduced version (and module 8 self-check)" },
+      "sub": {
+        "es": "La versión reducida agrupa fases, pero no recorta los controles esenciales.",
+        "en": "The reduced version groups phases, but does not cut the essential controls."
+      },
+      "izquierda": {
+        "titulo": { "es": "Versión completa", "en": "Full version" },
+        "bullets": [
+          { "es": "Once fases, cada una con su artefacto y su revisión.", "en": "Eleven phases, each with its artefact and its review." },
+          { "es": "Obligatoria en código sensible y en agentes A2 o A3.", "en": "Mandatory for sensitive code and for A2 or A3 agents." },
+          { "es": "También en producción crítica, intensidad Enterprise de SEVEN-G o sector regulado.", "en": "Also for critical production, SEVEN-G Enterprise intensity or a regulated sector." },
+          { "es": "Y cuando trabajan varios equipos o proveedores.", "en": "And when several teams or providers are involved." }
+        ],
+        "color": "oxford"
+      },
+      "derecha": {
+        "titulo": { "es": "Versión reducida (SPAD Lite)", "en": "Reduced version (SPAD Lite)" },
+        "bullets": [
+          { "es": "Tres artefactos: plan revisado (fases 0–4), entrega revisada (5–9) y versión (10).", "en": "Three artefacts: reviewed plan (phases 0–4), reviewed delivery (5–9) and version (10)." },
+          { "es": "Para trabajos pequeños sin ninguno de los criterios de la versión completa.", "en": "For small pieces of work that meet none of the criteria for the full version." },
+          { "es": "Nunca se recorta: separación entre quien construye y quien revisa, ni validación humana.", "en": "Never cut: separation between builder and reviewer, or human validation." },
+          { "es": "Tampoco la política de validación ni el registro del tema.", "en": "Nor the validation policy or the topic record." }
+        ],
+        "color": "teal"
+      },
+      "destacado": {
+        "es": "Autocomprobación: un cambio en el cálculo de la nómina, con datos personales, ¿puede ir en versión reducida? (No: es código sensible.)",
+        "en": "Self-check: a change to the payroll calculation, with personal data, can it go through the reduced version? (No: it is sensitive code.)"
+      },
+      "enlaces": [
+        { "texto": { "es": "Versión reducida (SPAD Lite)", "en": "Reduced version (SPAD Lite)" }, "href": { "es": "SPAD/html/es/01_SPAD_Guia_operativa.html#version-reducida-spad-lite", "en": "SPAD/html/en/01_SPAD_Guia_operativa.html#reduced-version-spad-lite" } },
+        { "texto": { "es": "Artefactos obligatorios", "en": "Mandatory artefacts" }, "href": { "es": "SPAD/html/es/08_SPAD_Autoevaluacion_y_metricas.html#artefactos-obligatorios", "en": "SPAD/html/en/08_SPAD_Autoevaluacion_y_metricas.html#mandatory-artefacts" } }
+      ],
+      "notas": {
+        "es": "SPAD completo no tiene sentido para cada cambio pequeño. Por eso la guía operativa define una versión reducida, SPAD Lite, con tres artefactos:\n- Plan revisado: agrupa las fases 0 a 4.\n- Entrega revisada: agrupa las fases 5 a 9.\n- Versión: la fase 10.\n\nLas fases se agrupan, pero no desaparecen (regla 1). Y hay cuatro cosas que nunca se recortan: la separación entre quien construye y quien revisa, la validación humana, la política de validación y el registro del tema.\n\nSe usa la versión completa si se cumple cualquiera de estos criterios: código sensible (autenticación, pagos, datos personales…), agentes A2 o A3, producción crítica, intensidad Enterprise de SEVEN-G, varios equipos o proveedores, o sector regulado.\n\nEl documento 00 añade cuándo usar SPAD: es muy recomendable en sistemas que van a producción, que tocan datos sensibles, dinero o decisiones sobre personas, o en sectores regulados. No es necesario para prototipos desechables sin datos reales. Y al principio hace el trabajo más lento, mientras el equipo aprende.\n\nAutocomprobación del módulo 8 (respuestas):\n- Cambio en la nómina con datos personales: versión completa, por código sensible.\n- Cambio de texto en una pantalla interna, sin datos personales ni dinero: puede ir en versión reducida.\n- Prototipo para una demostración interna, sin datos reales: SPAD no es necesario.\n\nPor qué importa: la proporcionalidad evita que el método se abandone por pesado.",
+        "en": "Full SPAD does not make sense for every small change. That is why the operating guide defines a reduced version, SPAD Lite, with three artefacts:\n- Reviewed plan: groups phases 0 to 4.\n- Reviewed delivery: groups phases 5 to 9.\n- Version: phase 10.\n\nPhases are grouped, but they do not disappear (rule 1). And there are four things that are never cut: the separation between builder and reviewer, human validation, the validation policy and the topic record.\n\nThe full version is used if any of these criteria is met: sensitive code (authentication, payments, personal data…), A2 or A3 agents, critical production, SEVEN-G Enterprise intensity, several teams or providers, or a regulated sector.\n\nDocument 00 adds when to use SPAD: it is highly advisable for systems that go into production, that touch sensitive data, money or decisions about people, or in regulated sectors. It is not necessary for disposable prototypes without real data. And at first it makes work slower, while the team learns.\n\nModule 8 self-check (answers):\n- Payroll change with personal data: full version, because it is sensitive code.\n- Text change on an internal screen, with no personal data or money: it can go through the reduced version.\n- Prototype for an internal demonstration, with no real data: SPAD is not necessary.\n\nWhy it matters: proportionality prevents the method from being abandoned as too heavy."
+      },
+      "fuentes": [
+        { "texto": { "es": "SPAD 01 · Versión reducida (SPAD Lite)", "en": "SPAD 01 · Reduced version (SPAD Lite)" }, "href": { "es": "SPAD/html/es/01_SPAD_Guia_operativa.html#version-reducida-spad-lite", "en": "SPAD/html/en/01_SPAD_Guia_operativa.html#reduced-version-spad-lite" } },
+        { "texto": { "es": "SPAD 00 · Cuándo usar SPAD", "en": "SPAD 00 · When to use SPAD" }, "href": { "es": "SPAD/html/es/00_SPAD_Que_es_y_para_que_sirve.html#cuando-usar-spad", "en": "SPAD/html/en/00_SPAD_Que_es_y_para_que_sirve.html#when-to-use-spad" } }
+      ]
+    },
+    {
+      "tipo": "seccion",
+      "titulo": { "es": "Módulo 9 · SPAD dentro de la compañía", "en": "Module 9 · SPAD inside the company" },
+      "rotulo": { "es": "Módulo 9", "en": "Module 9" },
+      "texto": {
+        "es": "Objetivo: entender cómo SEVEN-G decide qué se construye, con qué riesgo y cómo se mide, cómo SPHERES sitúa el valor y dónde encaja SPAD entre ambos.",
+        "en": "Objective: understand how SEVEN-G decides what is built, with what risk and how it is measured, how SPHERES places the value and where SPAD fits between them."
+      },
+      "enlaces": [
+        { "texto": { "es": "Relación entre SEVEN-G y SPAD", "en": "Relationship between SEVEN-G and SPAD" }, "href": { "es": "SEVEN-G/html/es/53_SEVEN-G_Construccion_de_soluciones_con_IA.html#relacion-entre-seven-g-y-spad", "en": "SEVEN-G/html/en/53_SEVEN-G_Construccion_de_soluciones_con_IA.html#relationship-between-seven-g-and-spad" } }
+      ],
+      "notas": {
+        "es": "Objetivo del módulo 9: situar SPAD en el gobierno de la compañía. Es el módulo más importante para un público directivo.\n\nTres metodologías del mismo autor, independientes, que se citan entre sí:\n- SEVEN-G es el marco principal. Gobierna la iniciativa de IA: valor, riesgo, cumplimiento y decisión. Sus unidades son la iniciativa y el sistema de IA, y sus decisiones las toman personas y órganos en las puertas de decisión (G0 a G5, R6 y G7).\n- SPHERES es la capa explicativa: dónde se genera el valor de la IA, en nueve esferas, y con qué ambición, en tres niveles: Optimizar, Aumentar y Transformar.\n- SPAD es la metodología de construcción: gobierna el trabajo de ingeniería con IA dentro de la entrega. Su unidad es el tema de trabajo y sus decisiones son veredictos técnicos.\n\nSEVEN-G no obliga a usar SPAD: puede aplicarse con SPAD o con otro método de ingeniería documentado que cumpla sus requisitos mínimos. En una iniciativa Enterprise con construcción asistida por IA, debería usarse SPAD u otro método equivalente; en una Lite, puede usarse SPAD en su versión reducida.\n\nEjemplo: el comité decide en SEVEN-G invertir en un asistente para el servicio de atención al cliente (esfera de clientes, ambición Aumentar). El equipo lo construye con SPAD. Las evidencias de SPAD alimentan las puertas de diseño y de puesta en producción.\n\nPregunta para el aula: ¿quién decide hoy en su compañía qué se construye con IA, y quién decide cómo se construye?",
+        "en": "Objective of module 9: place SPAD within company governance. It is the most important module for an executive audience.\n\nThree methodologies by the same author, independent, which reference each other:\n- SEVEN-G is the main framework. It governs the AI initiative: value, risk, compliance and decision. Its units are the initiative and the AI system, and its decisions are taken by people and bodies at the decision gates (G0 to G5, R6 and G7).\n- SPHERES is the explanatory layer: where AI value is generated, in nine spheres, and with what ambition, in three levels: Optimise, Augment and Transform.\n- SPAD is the construction methodology: it governs AI-assisted engineering work within delivery. Its unit is the work topic and its decisions are technical verdicts.\n\nSEVEN-G does not require SPAD: it can be applied with SPAD or with another documented engineering method that meets its minimum requirements. In an Enterprise initiative with AI-assisted building, SPAD or an equivalent method should be used; in a Lite one, SPAD may be used in its reduced version.\n\nExample: the committee decides in SEVEN-G to invest in an assistant for the customer service team (customer sphere, Augment ambition). The team builds it with SPAD. SPAD's evidence feeds the design and go-live gates.\n\nQuestion for the classroom: who decides today in your company what is built with AI, and who decides how it is built?"
+      },
+      "fuentes": [
+        { "texto": { "es": "SEVEN-G 53 · Relación entre SEVEN-G y SPAD", "en": "SEVEN-G 53 · Relationship between SEVEN-G and SPAD" }, "href": { "es": "SEVEN-G/html/es/53_SEVEN-G_Construccion_de_soluciones_con_IA.html#relacion-entre-seven-g-y-spad", "en": "SEVEN-G/html/en/53_SEVEN-G_Construccion_de_soluciones_con_IA.html#relationship-between-seven-g-and-spad" } },
+        { "texto": { "es": "SEVEN-G 53 · Cuándo usar SPAD", "en": "SEVEN-G 53 · When to use SPAD" }, "href": { "es": "SEVEN-G/html/es/53_SEVEN-G_Construccion_de_soluciones_con_IA.html#2-3-cuando-usar-spad", "en": "SEVEN-G/html/en/53_SEVEN-G_Construccion_de_soluciones_con_IA.html#2-3-when-to-use-spad" } },
+        { "texto": { "es": "SPHERES 00 · Qué es SPHERES", "en": "SPHERES 00 · What SPHERES is" }, "href": { "es": "SPHERES/html/es/00_SPHERES_Que_es_y_para_que_sirve.html#que-es-spheres", "en": "SPHERES/html/en/00_SPHERES_Que_es_y_para_que_sirve.html#what-spheres-is" } }
+      ]
+    },
+    {
+      "tipo": "tabla",
+      "titulo": { "es": "Un veredicto técnico no es una decisión de la compañía", "en": "A technical verdict is not a company decision" },
+      "sub": {
+        "es": "Los veredictos de SPAD alimentan las puertas de SEVEN-G; nunca las sustituyen.",
+        "en": "SPAD verdicts feed the SEVEN-G gates; they never replace them."
+      },
+      "cabecera": [
+        { "es": "Veredicto SPAD", "en": "SPAD verdict" },
+        { "es": "Significado técnico", "en": "Technical meaning" },
+        { "es": "Tratamiento en SEVEN-G", "en": "Treatment in SEVEN-G" }
+      ],
+      "filas": [
+        [
+          { "es": "GO", "en": "GO" },
+          { "es": "La fase técnica puede continuar.", "en": "The technical phase can continue." },
+          { "es": "El equipo prepara las evidencias de la puerta. No implica «Continuar».", "en": "The team prepares the evidence for the gate. It does not imply ‘Continue’." }
+        ],
+        [
+          { "es": "GO con cambios", "en": "GO WITH CHANGES" },
+          { "es": "Hay que aplicar cambios y volver a revisar.", "en": "Changes must be applied and reviewed again." },
+          { "es": "Si quedan cambios en la puerta, el órgano decide «Continuar con condiciones» o «Iterar».", "en": "If changes remain at the gate, the body decides ‘Continue with conditions’ or ‘Iterate’." }
+        ],
+        [
+          { "es": "NO-GO", "en": "NO-GO" },
+          { "es": "El artefacto no es aceptable.", "en": "The artefact is not acceptable." },
+          { "es": "No se solicita la puerta. Si se repite, es señal para «Iterar» o «Pivotar».", "en": "The gate is not requested. If it recurs, it signals ‘Iterate’ or ‘Pivot’." }
+        ]
+      ],
+      "destacado": {
+        "es": "SPAD trabaja sobre todo en las fases de diseño (4) y de entrega (5) de SEVEN-G, que cierran la puerta de diseño (G4) y la de puesta en producción (G5).",
+        "en": "SPAD works mainly in SEVEN-G's design (4) and delivery (5) phases, which close the design gate (G4) and the go-live gate (G5)."
+      },
+      "enlaces": [
+        { "texto": { "es": "Veredictos y resultados de puerta", "en": "Verdicts and gate outcomes" }, "href": { "es": "SEVEN-G/html/es/53_SEVEN-G_Construccion_de_soluciones_con_IA.html#4-4-veredictos-tecnicos-y-resultados-de-gate", "en": "SEVEN-G/html/en/53_SEVEN-G_Construccion_de_soluciones_con_IA.html#4-4-technical-verdicts-and-gate-outcomes" } },
+        { "texto": { "es": "Verificación en las puertas", "en": "Verification at the gates" }, "href": { "es": "SEVEN-G/html/es/53_SEVEN-G_Construccion_de_soluciones_con_IA.html#verificacion-en-los-gates", "en": "SEVEN-G/html/en/53_SEVEN-G_Construccion_de_soluciones_con_IA.html#verification-at-the-gates" } }
+      ],
+      "notas": {
+        "es": "Esta tabla resume el documento 53 de SEVEN-G, sección 4.4. Un GO técnico de SPAD no significa que la compañía decida continuar: esa decisión la toma un órgano de SEVEN-G en una puerta de decisión, con validación de negocio y de riesgo.\n\nDónde encaja SPAD en el ciclo de vida de SEVEN-G:\n- En la fase de diseño de la solución (4): el PLAN, su revisión, la guía de código y la estrategia de pruebas son insumos de la puerta de diseño (G4). Allí se comprueba que las herramientas de IA de construcción están identificadas y aprobadas, que la estrategia de pruebas existe y que las excepciones al contexto global están registradas como riesgo.\n- En la fase de entrega y validación (5): implementación, pruebas, revisiones y versión son insumos de la puerta de puesta en producción (G5). Allí se comprueba la revisión humana registrada, la trazabilidad, las pruebas y la seguridad sin hallazgos críticos o altos abiertos, las licencias y un plan de reversión probado.\n- En operación, la revisión de continuidad (R6) comprueba que los cambios posteriores hechos con IA siguen los mismos requisitos.\n\nUna regla más: los artefactos de SPAD no son evidencias por sí solos. Lo son cuando se referencian en la plantilla de SEVEN-G que corresponde, con autor humano, fecha, versión y verificación. Y la autoevaluación de SPAD no exime de ninguna puerta.\n\nPor qué importa: separa dos preguntas que a menudo se mezclan: ¿está bien construido? (SPAD) y ¿debemos ponerlo en producción? (SEVEN-G).",
+        "en": "This table summarises SEVEN-G document 53, section 4.4. A technical GO in SPAD does not mean that the company decides to continue: that decision is taken by a SEVEN-G body at a decision gate, with business and risk validation.\n\nWhere SPAD fits in the SEVEN-G lifecycle:\n- In the solution design phase (4): the PLAN, its review, the code primer and the test strategy are inputs to the design gate (G4). There it is checked that the AI building tools are identified and approved, that the test strategy exists and that exceptions to the global context are recorded as risks.\n- In the delivery and validation phase (5): implementation, tests, reviews and version are inputs to the go-live gate (G5). There the recorded human review, traceability, tests and security with no open critical or high findings, licences and a tested rollback plan are checked.\n- In operation, the continuity review (R6) checks that later changes made with AI follow the same requirements.\n\nOne more rule: SPAD artefacts are not evidence on their own. They become evidence when they are referenced in the corresponding SEVEN-G template, with a human author, date, version and verification. And the SPAD self-assessment does not exempt from any gate.\n\nWhy it matters: it separates two questions that are often mixed up: is it well built? (SPAD) and should we put it into production? (SEVEN-G)."
+      },
+      "fuentes": [
+        { "texto": { "es": "SEVEN-G 53 · Veredictos técnicos y resultados de puerta", "en": "SEVEN-G 53 · Technical verdicts and gate outcomes" }, "href": { "es": "SEVEN-G/html/es/53_SEVEN-G_Construccion_de_soluciones_con_IA.html#4-4-veredictos-tecnicos-y-resultados-de-gate", "en": "SEVEN-G/html/en/53_SEVEN-G_Construccion_de_soluciones_con_IA.html#4-4-technical-verdicts-and-gate-outcomes" } },
+        { "texto": { "es": "SEVEN-G 53 · Dónde encaja SPAD en el ciclo de vida", "en": "SEVEN-G 53 · Where SPAD fits in the lifecycle" }, "href": { "es": "SEVEN-G/html/es/53_SEVEN-G_Construccion_de_soluciones_con_IA.html#donde-encaja-spad-en-el-ciclo-de-vida", "en": "SEVEN-G/html/en/53_SEVEN-G_Construccion_de_soluciones_con_IA.html#where-spad-fits-in-the-lifecycle" } },
+        { "texto": { "es": "SEVEN-G 53 · Verificación en las puertas", "en": "SEVEN-G 53 · Verification at the gates" }, "href": { "es": "SEVEN-G/html/es/53_SEVEN-G_Construccion_de_soluciones_con_IA.html#verificacion-en-los-gates", "en": "SEVEN-G/html/en/53_SEVEN-G_Construccion_de_soluciones_con_IA.html#verification-at-the-gates" } },
+        { "texto": { "es": "SEVEN-G 01 · Puertas de decisión", "en": "SEVEN-G 01 · Decision gates" }, "href": { "es": "SEVEN-G/html/es/01_SEVEN-G_Metodologia_fundacional.html#puertas-de-decision", "en": "SEVEN-G/html/en/01_SEVEN-G_Metodologia_fundacional.html#decision-gates" } }
+      ]
+    },
+    {
+      "tipo": "tarjetas",
+      "titulo": { "es": "Tres preguntas, tres metodologías (y ejercicio del módulo 9)", "en": "Three questions, three methodologies (and module 9 exercise)" },
+      "sub": {
+        "es": "Dónde está el valor, qué se decide y cómo se construye. Independientes, pero se citan entre sí.",
+        "en": "Where the value is, what is decided and how it is built. Independent, but they reference each other."
+      },
+      "tarjetas": [
+        {
+          "titulo": { "es": "SPHERES: dónde está el valor", "en": "SPHERES: where the value is" },
+          "texto": {
+            "es": "Nueve esferas: cuatro generan valor, tres lo habilitan, una fija límites y otra gobierna. Tres ambiciones: Optimizar, Aumentar y Transformar.",
+            "en": "Nine spheres: four generate value, three enable it, one sets limits and one governs. Three ambitions: Optimise, Augment and Transform."
+          },
+          "color": "velvet",
+          "href": { "es": "SPHERES/html/es/00_SPHERES_Que_es_y_para_que_sirve.html#las-nueve-esferas-de-un-vistazo", "en": "SPHERES/html/en/00_SPHERES_Que_es_y_para_que_sirve.html#the-nine-spheres-at-a-glance" }
+        },
+        {
+          "titulo": { "es": "SEVEN-G: qué se decide", "en": "SEVEN-G: what is decided" },
+          "texto": {
+            "es": "Qué iniciativa se construye, con qué riesgo y cómo se mide su valor. Las personas deciden en las puertas G4 y G5.",
+            "en": "Which initiative is built, with what risk and how its value is measured. People decide at gates G4 and G5."
+          },
+          "color": "claret",
+          "href": "SEVEN-G/html/{idioma}/entrada/index.html"
+        },
+        {
+          "titulo": { "es": "SPAD: cómo se construye", "en": "SPAD: how it is built" },
+          "texto": {
+            "es": "Fases bloqueantes, revisiones independientes y evidencias que alimentan las plantillas de SEVEN-G.",
+            "en": "Blocking phases, independent reviews and evidence that feeds the SEVEN-G templates."
+          },
+          "color": "teal",
+          "href": "SPAD/html/{idioma}/00_SPAD_Que_es_y_para_que_sirve.html"
+        },
+        {
+          "titulo": { "es": "Ejercicio", "en": "Exercise" },
+          "texto": {
+            "es": "Elija un caso de IA de su sector. Diga su esfera y su ambición, qué puerta lo aprobaría y qué artefacto de SPAD le pediría.",
+            "en": "Choose an AI case in your sector. State its sphere and ambition, which gate would approve it and which SPAD artefact you would ask for."
+          },
+          "color": "oro"
+        }
+      ],
+      "destacado": {
+        "es": "¿Dónde jugamos? ¿Con qué ambición? ¿Lo decidimos bien? ¿Lo construimos bien?",
+        "en": "Where do we play? With what ambition? Do we decide it well? Do we build it well?"
+      },
+      "enlaces": [
+        { "texto": { "es": "Niveles de ambición (SPHERES)", "en": "Ambition levels (SPHERES)" }, "href": { "es": "SPHERES/html/es/00_SPHERES_Que_es_y_para_que_sirve.html#los-tres-niveles-de-ambicion-de-un-vistazo", "en": "SPHERES/html/en/00_SPHERES_Que_es_y_para_que_sirve.html#the-three-ambition-levels-at-a-glance" } },
+        { "texto": { "es": "Requisitos mínimos de SEVEN-G", "en": "SEVEN-G minimum requirements" }, "href": { "es": "SEVEN-G/html/es/53_SEVEN-G_Construccion_de_soluciones_con_IA.html#requisitos-minimos-de-seven-g-para-codigo-generado-con-ia", "en": "SEVEN-G/html/en/53_SEVEN-G_Construccion_de_soluciones_con_IA.html#seven-g-minimum-requirements-for-ai-generated-code" } }
+      ],
+      "notas": {
+        "es": "Esta slide une las tres metodologías en una sola historia.\n\nSPHERES responde a dónde jugamos y con qué ambición. De las nueve esferas, cuatro generan valor directo (cliente, producto y servicio, personas y operaciones), tres lo habilitan (datos, conocimiento y decisión), una fija los límites (regulación, ética y responsabilidad) y la última es el gobierno de la IA. Los tres niveles de ambición son Optimizar (hacer lo mismo más rápido, más barato o con menos errores), Aumentar (las personas hacen lo que antes no podían) y Transformar (cambia qué se ofrece, cómo se compite o cómo se organiza la compañía). No son una escalera. SPHERES no contiene reglas operativas: las reglas están en SEVEN-G.\n\nSEVEN-G responde a qué se construye, con qué riesgo y cómo se mide. Para la construcción con IA, el documento 53 fija requisitos mínimos sea cual sea el método: revisión humana registrada, trazabilidad de lo generado con IA, pruebas, seguridad (los hallazgos críticos y altos bloquean la puesta en producción), propiedad intelectual y licencias, y datos y confidencialidad. Su exigencia depende de la intensidad, Lite o Enterprise.\n\nSPAD responde a cómo se construye bien. Sus artefactos alimentan plantillas de SEVEN-G como la de arquitectura (P15), la de flujos de datos (P16), el informe de entrega (P21) o el de pruebas (P22).\n\nEjercicio del módulo 9 (diez minutos, en grupos). Ejemplo de respuesta ficticio: un asistente que prepara respuestas a reclamaciones de clientes. Esfera de clientes; ambición Aumentar; autonomía A1. La puerta de diseño (G4) comprobará el plan y la estrategia de pruebas; la de puesta en producción (G5), la revisión humana y la evaluación del comportamiento. A SPAD le pediría el informe de evaluación del comportamiento y el registro de validación humana.\n\nPor qué importa: la IA en la compañía necesita las tres preguntas; responder solo a una deja huecos.",
+        "en": "This slide brings the three methodologies together into one story.\n\nSPHERES answers where we play and with what ambition. Of the nine spheres, four generate direct value (customer, product and service, people and operations), three enable it (data, knowledge and decision), one sets the limits (regulation, ethics and accountability) and the last one is AI governance. The three ambition levels are Optimise (doing the same thing faster, cheaper or with fewer errors), Augment (people do what they could not do before) and Transform (what is offered, how the company competes or how it is organised changes). They are not a ladder. SPHERES contains no operating rules: the rules are in SEVEN-G.\n\nSEVEN-G answers what is built, with what risk and how it is measured. For building with AI, document 53 sets minimum requirements whatever the method: recorded human review, traceability of what is generated with AI, tests, security (critical and high findings block go-live), intellectual property and licences, and data and confidentiality. How demanding they are depends on the intensity, Lite or Enterprise.\n\nSPAD answers how to build well. Its artefacts feed SEVEN-G templates such as the architecture template (P15), the data flows template (P16), the delivery report (P21) or the test report (P22).\n\nModule 9 exercise (ten minutes, in groups). Fictitious example answer: an assistant that prepares replies to customer complaints. Customer sphere; Augment ambition; autonomy A1. The design gate (G4) will check the plan and the test strategy; the go-live gate (G5), the human review and the behaviour evaluation. From SPAD I would ask for the behaviour evaluation report and the human validation record.\n\nWhy it matters: AI in the company needs all three questions; answering only one leaves gaps."
+      },
+      "fuentes": [
+        { "texto": { "es": "SPHERES 00 · Las nueve esferas", "en": "SPHERES 00 · The nine spheres" }, "href": { "es": "SPHERES/html/es/00_SPHERES_Que_es_y_para_que_sirve.html#las-nueve-esferas-de-un-vistazo", "en": "SPHERES/html/en/00_SPHERES_Que_es_y_para_que_sirve.html#the-nine-spheres-at-a-glance" } },
+        { "texto": { "es": "SPHERES 00 · Relación con SEVEN-G", "en": "SPHERES 00 · Relationship with SEVEN-G" }, "href": { "es": "SPHERES/html/es/00_SPHERES_Que_es_y_para_que_sirve.html#relacion-con-seven-g", "en": "SPHERES/html/en/00_SPHERES_Que_es_y_para_que_sirve.html#relationship-with-seven-g" } },
+        { "texto": { "es": "SEVEN-G 53 · Requisitos mínimos", "en": "SEVEN-G 53 · Minimum requirements" }, "href": { "es": "SEVEN-G/html/es/53_SEVEN-G_Construccion_de_soluciones_con_IA.html#requisitos-minimos-de-seven-g-para-codigo-generado-con-ia", "en": "SEVEN-G/html/en/53_SEVEN-G_Construccion_de_soluciones_con_IA.html#seven-g-minimum-requirements-for-ai-generated-code" } },
+        { "texto": { "es": "SEVEN-G 53 · Intensidad", "en": "SEVEN-G 53 · Intensity" }, "href": { "es": "SEVEN-G/html/es/53_SEVEN-G_Construccion_de_soluciones_con_IA.html#7-7-intensidad", "en": "SEVEN-G/html/en/53_SEVEN-G_Construccion_de_soluciones_con_IA.html#7-7-intensity" } }
+      ]
+    },
+    {
+      "tipo": "tarjetas",
+      "titulo": { "es": "Cierre: cuatro casos para discutir", "en": "Close: four cases for discussion" },
+      "sub": {
+        "es": "Casos ficticios. No hay una respuesta única; las notas dan la lectura de SPAD.",
+        "en": "Fictitious cases. There is no single answer; the notes give the SPAD reading."
+      },
+      "tarjetas": [
+        {
+          "titulo": { "es": "«El prototipo ya funciona»", "en": "‘The prototype already works’" },
+          "texto": {
+            "es": "Un equipo quiere llevar a producción un prototipo hecho con IA sin plan ni revisiones, porque la demostración salió bien.",
+            "en": "A team wants to put a prototype built with AI into production without a plan or reviews, because the demonstration went well."
+          },
+          "color": "claret",
+          "href": { "es": "SPAD/html/es/00_SPAD_Que_es_y_para_que_sirve.html#cuando-usar-spad", "en": "SPAD/html/en/00_SPAD_Que_es_y_para_que_sirve.html#when-to-use-spad" }
+        },
+        {
+          "titulo": { "es": "De A2 a A3", "en": "From A2 to A3" },
+          "texto": {
+            "es": "Una cadena de tiendas quiere quitar la revisión diaria de excepciones a su agente de reposición para ahorrar tiempo.",
+            "en": "A retail chain wants to remove the daily review of exceptions from its replenishment agent to save time."
+          },
+          "color": "oxford",
+          "href": { "es": "SPAD/html/es/05_SPAD_Sistemas_que_incluyen_IA.html#nivel-de-autonomia", "en": "SPAD/html/en/05_SPAD_Sistemas_que_incluyen_IA.html#autonomy-level" }
+        },
+        {
+          "titulo": { "es": "La revisión siempre dice GO", "en": "The review always says GO" },
+          "texto": {
+            "es": "En seis meses ninguna revisión ha dado NO-GO. La dirección lo presenta como prueba de calidad.",
+            "en": "In six months no review has given a NO-GO. Management presents it as proof of quality."
+          },
+          "color": "teal",
+          "href": { "es": "SPAD/html/es/08_SPAD_Autoevaluacion_y_metricas.html#cuando-conviene-usar-spad-segun-las-metricas", "en": "SPAD/html/en/08_SPAD_Autoevaluacion_y_metricas.html#when-spad-is-worth-using-according-to-the-metrics" }
+        },
+        {
+          "titulo": { "es": "«Certificados en SPAD»", "en": "‘SPAD certified’" },
+          "texto": {
+            "es": "Marketing quiere anunciar que la compañía está certificada en SPAD tras una autoevaluación conforme.",
+            "en": "Marketing wants to announce that the company is SPAD certified after a conforming self-assessment."
+          },
+          "color": "negro",
+          "href": { "es": "SPAD/html/es/08_SPAD_Autoevaluacion_y_metricas.html#que-es-la-autoevaluacion", "en": "SPAD/html/en/08_SPAD_Autoevaluacion_y_metricas.html#what-the-self-assessment-is" }
+        }
+      ],
+      "destacado": {
+        "es": "Vuelva al ejercicio de partida: ¿quién diseñó, quién revisó y dónde está la evidencia? Ahora sabe qué pedir.",
+        "en": "Go back to the starting exercise: who designed, who reviewed and where is the evidence? Now you know what to ask for."
+      },
+      "enlaces": [
+        { "texto": { "es": "Biblioteca SPAD", "en": "SPAD library" }, "href": "SPAD/html/{idioma}/index.html" },
+        { "texto": { "es": "Ejemplos de decisión", "en": "Examples of decisions" }, "href": { "es": "SPAD/html/es/03_SPAD_Politica_de_validacion.html#ejemplos-de-decision", "en": "SPAD/html/en/03_SPAD_Politica_de_validacion.html#examples-of-decisions" } }
+      ],
+      "notas": {
+        "es": "Cuatro casos ficticios para debatir en grupos (quince a veinte minutos). Lectura de SPAD para el profesor:\n\n- «El prototipo ya funciona»: un prototipo desechable sin datos reales no necesita SPAD. Pero en cuanto va a producción, con datos o clientes reales, deja de ser un prototipo. Lo razonable es abrir un tema y recorrer el ciclo: como mínimo, la versión reducida; si toca datos personales, dinero o decisiones sobre personas, la completa. En SEVEN-G, la puerta de puesta en producción (G5) pedirá revisión humana, pruebas y seguridad.\n- De A2 a A3: quitar la revisión diaria convierte un agente supervisado en autónomo. No es un ajuste técnico: es una decisión con nuevos requisitos (límites estrictos, vigilancia de agregados, interruptor de parada probado) y, en SEVEN-G, intensidad Enterprise. Debe decidirla una persona con autoridad, no el equipo para ganar tiempo.\n- La revisión siempre dice GO: según el documento 08, una tasa de NO-GO cercana a cero durante meses suele indicar que la revisión se ha vuelto un trámite. Hay que revisar su independencia y mirar los defectos escapados.\n- «Certificados en SPAD»: SPAD no certifica. La autoevaluación se registra siempre como «conforme con SPAD (autoevaluación)». Anunciar una certificación incumple el uso permitido del nombre y expone a la compañía.\n\nCierre: SPAD se publica con licencia CC BY 4.0 (contenidos) y MIT (código); usarlo es gratuito, citando la autoría: SPAD · Fernando García Varela. Los documentos 06 y 07 contienen las instrucciones y los contratos de cada fase para quien quiera aplicarlo.",
+        "en": "Four fictitious cases to debate in groups (fifteen to twenty minutes). SPAD reading for the teacher:\n\n- ‘The prototype already works’: a disposable prototype without real data does not need SPAD. But as soon as it goes into production, with real data or customers, it is no longer a prototype. The reasonable course is to open a topic and go through the cycle: at least the reduced version; if it involves personal data, money or decisions about people, the full one. In SEVEN-G, the go-live gate (G5) will ask for human review, tests and security.\n- From A2 to A3: removing the daily review turns a supervised agent into an autonomous one. It is not a technical adjustment: it is a decision with new requirements (strict limits, monitoring of aggregates, a tested kill switch) and, in SEVEN-G, Enterprise intensity. A person with authority must decide it, not the team to save time.\n- The review always says GO: according to document 08, a NO-GO rate close to zero for months usually shows that the review has become a formality. Its independence must be checked and escaped defects examined.\n- ‘SPAD certified’: SPAD does not certify. The self-assessment is always recorded as ‘conforming with SPAD (self-assessment)’. Announcing a certification breaches the permitted use of the name and exposes the company.\n\nClose: SPAD is published under a CC BY 4.0 licence (content) and MIT (code); using it is free, citing the authorship: SPAD · Fernando García Varela. Documents 06 and 07 contain the instructions and contracts for each phase for anyone who wants to apply it."
+      },
+      "fuentes": [
+        { "texto": { "es": "SPAD 00 · Cuándo usar SPAD", "en": "SPAD 00 · When to use SPAD" }, "href": { "es": "SPAD/html/es/00_SPAD_Que_es_y_para_que_sirve.html#cuando-usar-spad", "en": "SPAD/html/en/00_SPAD_Que_es_y_para_que_sirve.html#when-to-use-spad" } },
+        { "texto": { "es": "SPAD 08 · Qué es la autoevaluación", "en": "SPAD 08 · What the self-assessment is" }, "href": { "es": "SPAD/html/es/08_SPAD_Autoevaluacion_y_metricas.html#que-es-la-autoevaluacion", "en": "SPAD/html/en/08_SPAD_Autoevaluacion_y_metricas.html#what-the-self-assessment-is" } },
+        { "texto": { "es": "SPAD 07 · Contratos de entrada y salida", "en": "SPAD 07 · Input and output contracts" }, "href": { "es": "SPAD/html/es/07_SPAD_Contratos_de_entrada_y_salida.html#objeto", "en": "SPAD/html/en/07_SPAD_Contratos_de_entrada_y_salida.html#purpose" } },
+        { "texto": { "es": "SPAD 00 · Estado y licencia", "en": "SPAD 00 · Status and licence" }, "href": { "es": "SPAD/html/es/00_SPAD_Que_es_y_para_que_sirve.html#estado-licencia-y-proximos-pasos", "en": "SPAD/html/en/00_SPAD_Que_es_y_para_que_sirve.html#status-licence-and-next-steps" } }
+      ]
+    }
+  ]
+}

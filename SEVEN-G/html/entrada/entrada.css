@@ -178,6 +178,17 @@ h2 { font: 600 clamp(27px, 3.6vw, 42px)/1.12 var(--serif); color: var(--negro); 
 .camino span { font: 400 15px/1.45 var(--sans); color: var(--tinta-2); }
 .presentacion { margin: 30px 0 0; padding: 18px 0 0; border-top: 1px solid var(--negro); display: flex; flex-wrap: wrap; gap: 12px 26px; align-items: baseline; font: 400 16.5px/1.5 var(--sans); color: var(--tinta-2); }
 .presentacion b { color: var(--negro); }
+/* Presentaciones en slides (entrada y páginas de área): tarjetas generadas desde presentaciones/manifiesto.json */
+.slides { display: grid; gap: 16px; grid-template-columns: repeat(auto-fit, minmax(min(200px, 100%), 1fr)); }
+.slide-tarjeta { --filo: var(--claret); display: flex; flex-direction: column; border: 1px solid var(--regla); border-top: 4px solid var(--filo); background: var(--papel); padding: 16px 18px 18px; min-width: 0; }
+.slide-tarjeta:nth-child(5n+2) { --filo: var(--oxford); } .slide-tarjeta:nth-child(5n+3) { --filo: var(--teal); }
+.slide-tarjeta:nth-child(5n+4) { --filo: var(--velvet); } .slide-tarjeta:nth-child(5n+5) { --filo: var(--verde); }
+.slide-n { margin: 0 0 6px; font: 700 12px/1.2 var(--sans); letter-spacing: .08em; text-transform: uppercase; color: var(--filo); }
+.slide-n b { font: 700 30px/1 var(--serif); letter-spacing: 0; margin-right: 4px; }
+.slide-tarjeta h3 { margin: 0 0 8px; font: 600 21px/1.2 var(--serif); color: var(--negro); }
+.slide-tarjeta p:not(.slide-n):not(.slide-descargas) { margin: 0 0 14px; font: 400 15px/1.45 var(--sans); color: var(--tinta-2); flex: 1; }
+.slide-descargas { margin: 0; display: flex; flex-wrap: wrap; gap: 8px 20px; }
+.slides-otros .enlace { white-space: normal; }
 footer { margin-top: 64px; border-top: 4px solid var(--negro); padding: 20px 0 40px; font: 400 13px/1.55 var(--sans); color: var(--tinta-3); }
 footer p { margin: 8px 0; max-width: 900px; }
 /* los avisos van plegados: se ve su título y se despliegan al pulsar (D93) */

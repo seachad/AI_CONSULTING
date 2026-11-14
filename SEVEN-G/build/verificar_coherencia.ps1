@@ -2005,6 +2005,81 @@ try {
     }
   }
   if (-not $mal45) { Ok "IA aplicada a la ciberseguridad: SEG-26 y SEG-27, amenazas, derivación, suplantación del cliente (RT-SEG-09), trazas y eficacia de los guardarraíles, IND-OPE-27 a 29, 35 §9.3 y 40 §7.3, 36 §2, LV-AG con 27 preguntas y glosario (ES/EN); galería con $nCat45 categorías y $nEnt45 soluciones de fuentes verificadas" }
+
+  # ---- 46. Presentaciones en slides (PPTX y PDF): al día con sus JSON y accesibles desde las páginas principales
+  # (a) build_presentaciones.ps1 -Comprobar en verde; (b) las 15 presentaciones de marco (SEVEN-G, SPHERES y SPAD en 1, 5, 10 y
+  # 20 slides y curso) y las 24 de área (12 áreas en 1 y 10 slides) están en el manifiesto con su PPTX y su PDF en ES y EN;
+  # (c) la entrada de SEVEN-G, los documentos 00 de SPHERES y SPAD, cada página de área y la portada las enlazan; (d) la fuente
+  # de la entrada no escribe las tarjetas a mano; y la publicación copia pptx y pdf de los tres marcos, nunca presentaciones/.
+  Write-Host '46. Presentaciones en slides: generadas desde sus JSON y enlazadas desde la entrada, los documentos 00, las áreas y la portada'
+  $mal46 = 0
+  $genP46 = Join-Path $repo 'presentaciones\build_presentaciones.ps1'
+  if (-not (Test-Path $genP46)) { Mal 'falta presentaciones/build_presentaciones.ps1'; $mal46++ }
+  else {
+    $salP46 = @(& (Get-Process -Id $PID).Path -NoProfile -File $genP46 -Comprobar 2>&1 | ForEach-Object { "$_" })
+    if ($LASTEXITCODE -eq 1) {
+      $errP46 = @($salP46 | Where-Object { $_ -match '^ERROR\s' } | ForEach-Object { $_ -replace '^ERROR\s+', '' })
+      foreach ($l in ($errP46 | Select-Object -First 12)) { Mal "presentaciones: $l" }
+      if ($errP46.Count -gt 12) { Mal "presentaciones: … y $($errP46.Count - 12) problemas más (pwsh -File presentaciones/build_presentaciones.ps1 -Comprobar)" }
+      if (-not $errP46.Count) { Mal 'presentaciones: build_presentaciones.ps1 -Comprobar sale con 1 (ejecútelo para ver por qué)' }
+      $mal46++
+    }
+  }
+  $man46 = @{}; foreach ($p in (Manifiesto-Presentaciones $repo)) { $man46[[string]$p.id] = $p }
+  if (-not (Test-Path (Join-Path $repo 'presentaciones\manifiesto.json'))) { Mal 'falta presentaciones/manifiesto.json (generar con build_presentaciones.ps1)'; $mal46++ }
+  $ids46 = @(foreach ($m in 'seven-g', 'spheres', 'spad') { foreach ($k in '1', '5', '10', '20', 'curso') { "$m/$k" } })
+  $areas46 = @((Get-Content (Join-Path $PSScriptRoot 'temas.json') -Raw -Encoding utf8 | ConvertFrom-Json -Depth 16).temas | ForEach-Object { [string]$_.id })
+  $ids46 += @(foreach ($a in $areas46) { "areas/${a}_1"; "areas/${a}_10" })
+  $nOk46 = 0
+  foreach ($id in $ids46) {
+    if (-not $man46.ContainsKey($id)) { Mal "presentaciones: «$id» no está en el manifiesto"; $mal46++; continue }
+    $okId = $true
+    foreach ($lg in 'es', 'en') { foreach ($k in 'pptx', 'pdf') {
+      $rel = [string]$man46[$id].$k.$lg
+      if (-not $rel -or -not (Test-Path (Join-Path $repo $rel) -PathType Leaf)) { Mal "presentaciones: «$id» no tiene su $($k.ToUpper()) en $lg$(if ($rel) { " ($rel)" })"; $mal46++; $okId = $false }
+    } }
+    if ($okId) { $nOk46++ }
+  }
+  # (c) enlaces desde las páginas: cada página enlaza el PPTX y el PDF de su idioma, con ruta relativa a un fichero que existe
+  $paginas46 = [Collections.Generic.List[object]]::new()
+  foreach ($lg in 'es', 'en') {
+    $paginas46.Add(@{ f = "SEVEN-G\html\$lg\entrada\index.html"; ids = @($ids46 | Where-Object { $_ -like 'seven-g/*' }); lg = $lg })
+    foreach ($m in 'SPHERES', 'SPAD') { $paginas46.Add(@{ f = "$m\html\$lg\00_$($m)_Que_es_y_para_que_sirve.html"; ids = @($ids46 | Where-Object { $_ -like "$($m.ToLower())/*" }); lg = $lg }) }
+    $paginas46.Add(@{ f = "SEVEN-G\html\$lg\00_SEVEN-G_Que_es_y_para_que_sirve.html"; ids = @($ids46 | Where-Object { $_ -like 'seven-g/*' }); lg = $lg })
+    foreach ($a in $areas46) { $paginas46.Add(@{ f = "SEVEN-G\html\$lg\areas\$a.html"; ids = @("areas/${a}_1", "areas/${a}_10"); lg = $lg }) }
+  }
+  $nEnl46 = 0
+  foreach ($pg in $paginas46) {
+    $fP = Join-Path $repo $pg.f
+    if (-not (Test-Path $fP)) { Mal "presentaciones: falta la página $($pg.f)"; $mal46++; continue }
+    $hP = [IO.File]::ReadAllText($fP); $dirP = Split-Path $fP
+    foreach ($id in $pg.ids) {
+      if (-not $man46.ContainsKey($id)) { continue }
+      foreach ($k in 'pptx', 'pdf') {
+        $rel = [string]$man46[$id].$k.($pg.lg); if (-not $rel) { continue }
+        $abs = [IO.Path]::GetFullPath((Join-Path $repo $rel)); if (-not (Test-Path $abs)) { continue }
+        $href = [IO.Path]::GetRelativePath($dirP, $abs).Replace('\', '/')
+        if (-not $hP.Contains("href=""$href""")) { Mal "$($pg.f -replace '\\', '/'): no enlaza el $($k.ToUpper()) de «$id» ($href); generar con build.ps1"; $mal46++ } else { $nEnl46++ }
+      }
+    }
+  }
+  # (d) la fuente de la entrada no escribe tarjetas ni la sección a mano; la portada lleva las marcas de cada marco
+  foreach ($lg in 'es', 'en') {
+    $src46 = [IO.File]::ReadAllText((Join-Path $repo "SEVEN-G\build\entrada\$lg\index.html"))
+    if (-not ($src46.Contains('<!-- presentaciones -->') -and $src46.Contains('<!-- presentaciones-nav -->'))) { Mal "entrada [$lg]: la fuente no lleva las marcas <!-- presentaciones --> y <!-- presentaciones-nav -->"; $mal46++ }
+    if ($src46 -match 'class="slide-tarjeta"|<section id="presentaciones"|presentaciones/[^"]+\.pptx') { Mal "entrada [$lg]: la fuente escribe a mano las presentaciones; salen de presentaciones/manifiesto.json"; $mal46++ }
+    $port46 = [IO.File]::ReadAllText((Join-Path $repo $(if ($lg -eq 'es') { 'index.html' } else { 'en\index.html' })))
+    foreach ($m in 'SEVEN-G', 'SPHERES', 'SPAD') {
+      if ($port46 -notmatch "<!-- slides:$($m):inicio") { Mal "portada [$lg]: falta la marca de «$m en slides»"; $mal46++ }
+      elseif ($man46.Count -and $port46 -notmatch "(?s)<!-- slides:$($m):inicio[^>]*-->\s*<p class=""nota-acciones nota-slides""><a href=""[^""]+#presentaciones""") { Mal "portada [$lg]: no enlaza «$m en slides» (generar con build.ps1)"; $mal46++ }
+    }
+    if ((Portada-Con-Slides $port46 $lg '' $repo) -cne $port46) { Mal "portada [$lg]: «en slides» no está al día con presentaciones/manifiesto.json: generar con build.ps1"; $mal46++ }
+  }
+  $pages46 = [IO.File]::ReadAllText((Join-Path $repo '.github\workflows\pages.yml'))
+  if ($pages46 -notmatch 'for c in html pdf docx pptx herramientas' -or $pages46 -notmatch 'for c in html pdf pptx; do') { Mal 'pages.yml: no publica pptx y pdf de SEVEN-G, SPHERES y SPAD'; $mal46++ }
+  if ($pages46 -match '(?m)^\s*(cp|rsync)\b[^\n]*\bpresentaciones\b') { Mal 'pages.yml: publica presentaciones/ (fuentes de trabajo)'; $mal46++ }
+  if ([IO.File]::ReadAllText((Join-Path $PSScriptRoot 'publicar.ps1')) -notmatch "'SPHERES' = @\('html', 'pdf', 'pptx'\); 'SPAD' = @\('html', 'pdf', 'pptx'\)") { Mal 'publicar.ps1: no publica pptx de SPHERES y SPAD'; $mal46++ }
+  if (-not $mal46) { Ok "presentaciones en slides: $nOk46 de $($ids46.Count) con PPTX y PDF en ES y EN, al día con sus JSON; $nEnl46 enlaces de descarga en la entrada, los documentos 00 y las páginas de área; portada y publicación al día" }
 }
 finally { Remove-Item $tmp -Recurse -Force -Confirm:$false -ErrorAction SilentlyContinue }
 

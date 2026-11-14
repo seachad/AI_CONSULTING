@@ -7,6 +7,8 @@
     <!-- inventario-resumen -->                            línea de cifras de la cartera de ejemplo
     <!-- inventario-casos -->                              filas de la tabla «La cartera, caso a caso»
     <!-- temas -->                                         tarjetas del mapa de temas, desde build/temas.json (D163)
+    <!-- presentaciones --> y <!-- presentaciones-nav -->  sección «SEVEN-G en slides» y su enlace en la barra, desde
+                                                           presentaciones/manifiesto.json (también {{SLIDES}} en las páginas de área)
   Los casos y sus cifras salen del JSON del panel de ejemplo (T17_panel_consejo/ejemplo/salida/t01_dashboard_data.json), con las
   mismas fórmulas que el panel (motor/economia.py, función resumen): si cambian los datos de demostración, basta con volver a
   generar. Los textos en inglés de los casos (nombre, unidad, etapas, motivos de salida) están en build/entrada_inventario_en.json;
@@ -114,6 +116,9 @@ function Expandir-Entrada([string]$html, [string]$lang, [string]$repo, [hashtabl
   if ($html.Contains('<!-- temas -->')) { $html = $html.Replace('<!-- temas -->', (Temas-Entrada $lang)) }
   if ($html.Contains('<!-- preguntas -->')) { $html = $html.Replace('<!-- preguntas -->', (Preguntas-Entrada $lang)) }
   if ($html.Contains('<!-- temas-indice -->')) { $html = $html.Replace('<!-- temas-indice -->', (Temas-Indice-Entrada $lang)) }
+  # presentaciones en slides, desde presentaciones/manifiesto.json (sin manifiesto, la sección y su enlace no aparecen)
+  if ($html.Contains('<!-- presentaciones-nav -->')) { $html = $html.Replace('<!-- presentaciones-nav -->', (Slides-Nav-Entrada $lang $repo)) }
+  if ($html.Contains('<!-- presentaciones -->')) { $html = $html.Replace('<!-- presentaciones -->', (Slides-Entrada $lang $repo)) }
   if (-not ($html.Contains('<!-- inventario-casos -->') -or $html.Contains('<!-- inventario-resumen -->'))) { return $html }
   $en = $lang -eq 'en'
   $datos = Get-Content (Join-Path $repo 'SEVEN-G/herramientas/T17_panel_consejo/ejemplo/salida/t01_dashboard_data.json') -Raw -Encoding utf8 | ConvertFrom-Json -Depth 64
@@ -295,6 +300,9 @@ function Paginas-Temas([string]$lang, [string]$repo, $avisos = $null) {
     $h = $h.Replace('{{LANG}}', $lang).Replace('{{OTRO}}', $otro).Replace('{{ID}}', [string]$t.id).Replace('{{TONO}}', [string]$tonoP).Replace('{{TITULO}}', (Html-Entrada $tt.titulo)).Replace('{{PREGUNTA}}', (Html-Entrada $tt.pregunta)).
       Replace('{{RESUMEN}}', (Html-Entrada $tt.resumen)).Replace('{{PORTADA}}', $(if ($en) { '../../../../en/index.html' } else { '../../../../index.html' })).Replace('{{IDIOMA}}', $idioma).
       Replace('{{CONCEPTOS}}', $sbC.ToString()).Replace('{{ENLACES}}', $sbE.ToString().TrimEnd("`n")).Replace('{{FUENTES}}', $fuentes).Replace('{{OTROS}}', $otros).Replace('{{PIE_ENTRADA}}', $pie)
+    # presentaciones del área (1 y 10 slides), desde presentaciones/manifiesto.json; sin ellas, ni bloque ni enlace en la barra
+    $slA = Slides-Area ([string]$t.id) $lang $repo
+    $h = $h.Replace('{{SLIDES}}', $slA).Replace('{{SLIDES_NAV}}', $(if ($slA) { "<a href=""#slides"">Slides</a>" } else { '' }))
     $res[[string]$t.id] = $h
   }
   $res
@@ -390,4 +398,133 @@ function Paginas-Preguntas([string]$lang, [string]$repo) {
 # Devuelve el texto de la portada con el bloque entre <!-- areas:inicio --> y <!-- areas:fin --> al día (o el mismo texto si no hay marcas).
 function Portada-Con-Areas([string]$html, [string]$lang, [string]$prefijo) {
   [regex]::Replace($html, '(?s)(<!-- areas:inicio[^>]*-->).*?(\s*<!-- areas:fin -->)', { param($m) $m.Groups[1].Value + "`n" + (Portada-Areas $lang $prefijo) + "`n      <!-- areas:fin -->" })
+}
+
+# ---- Presentaciones en slides (PPTX y PDF), desde presentaciones/manifiesto.json ----
+# El manifiesto lo escribe presentaciones/build_presentaciones.ps1 (build.ps1 lo ejecuta antes de generar las páginas).
+# Ninguna tarjeta se escribe a mano: la entrada (<!-- presentaciones -->), los documentos 00 (zona de descargas), las páginas
+# de área ({{SLIDES}}) y la portada (<!-- slides:<MARCO>:inicio --> … <!-- slides:fin -->) salen de aquí. Sin manifiesto, o si
+# una presentación no está en él o no tiene sus ficheros, la página se genera sin ese bloque o esa tarjeta (D53).
+$script:ORDEN_SLIDES = @{ '1' = 1; '5' = 2; '10' = 3; '20' = 4; 'curso' = 5 }
+$script:CABECERA_MARCO = @{ 'SEVEN-G' = 'SEVEN-G/html/{0}/entrada/index.html'; 'SPHERES' = 'SPHERES/html/{0}/00_SPHERES_Que_es_y_para_que_sirve.html'; 'SPAD' = 'SPAD/html/{0}/00_SPAD_Que_es_y_para_que_sirve.html' }
+function Manifiesto-Presentaciones([string]$repo) {
+  $f = Join-Path $repo 'presentaciones/manifiesto.json'
+  if (-not (Test-Path $f)) { return @() }
+  try { $m = Get-Content $f -Raw -Encoding utf8 | ConvertFrom-Json -Depth 32 } catch { Write-Warning "presentaciones/manifiesto.json no se puede leer: $($_.Exception.Message)"; return @() }
+  @($m.presentaciones | Where-Object { $_ -and $_.id })
+}
+# ficheros de una presentación en un idioma (rutas absolutas), solo los que existen
+function Ficheros-Slides($p, [string]$lang, [string]$repo) {
+  $r = @{}
+  foreach ($k in 'pptx', 'pdf') {
+    $rel = if ($p.$k) { [string]$p.$k.$lang } else { '' }
+    if ($rel) { $abs = [IO.Path]::GetFullPath((Join-Path $repo $rel)); if (Test-Path $abs -PathType Leaf) { $r[$k] = $abs } }
+  }
+  $r
+}
+# presentaciones de un marco (sin las de área) o de un área, con algún fichero en ese idioma, en orden 1, 5, 10, 20, curso
+function Presentaciones-De([string]$repo, [string]$lang, [string]$marco, [string]$area) {
+  @(Manifiesto-Presentaciones $repo | Where-Object {
+      if ($area) { [string]$_.area -eq $area } else { -not $_.area -and [string]$_.marco -eq $marco }
+    } | Where-Object { (Ficheros-Slides $_ $lang $repo).Count } |
+    Sort-Object @{ e = { $k = [string]$_.clave -replace '^.*_(\d+)$', '$1'; $o = $script:ORDEN_SLIDES[$k]; if ($o) { $o } else { 9 } } }, @{ e = { [string]$_.clave } })
+}
+function Rel-Slides([string]$desde, [string]$abs) { [IO.Path]::GetRelativePath($desde, $abs).Replace('\', '/') }
+function Txt-Slides($o, [string]$lang) { if ($null -eq $o) { '' } elseif ($o -is [string]) { $o } else { [string]$o.$lang } }
+function N-Slides([int]$n, [bool]$en) { if ($n -eq 1) { 'slide' } else { 'slides' } }
+# tarjetas de descarga (entrada y páginas de área): título, descripción, nº de slides y dos botones del idioma de la página
+function Tarjetas-Slides([object[]]$lista, [string]$lang, [string]$repo, [string]$desde) {
+  $en = $lang -eq 'en'; $sb = [Text.StringBuilder]::new(); $i = 0
+  foreach ($p in $lista) {
+    $f = Ficheros-Slides $p $lang $repo; $tit = Html-Entrada (Txt-Slides $p.titulo $lang); $n = [int]$p.slides
+    $clave = ([string]$p.clave -replace '^.*_(\d+)$', '$1')
+    $botones = @()
+    if ($f.pptx) { $botones += "<a class=""enlace"" href=""$(Rel-Slides $desde $f.pptx)"" download title=""$tit · PowerPoint$(if ($en) { ', editable' } else { ', editable' })"">PowerPoint →</a>" }
+    if ($f.pdf) { $botones += "<a class=""enlace"" href=""$(Rel-Slides $desde $f.pdf)"" target=""_blank"" rel=""noopener"" title=""$tit · PDF$(if ($en) { ' with the notes of each slide' } else { ' con las notas de cada slide' })"">PDF →</a>" }
+    [void]$sb.Append("      <article class=""slide-tarjeta"" data-clave=""$(Html-Entrada $clave)"">`n        <p class=""slide-n""><b>$n</b> $(N-Slides $n $en)</p>`n        <h3>$tit</h3>`n        <p>$(Html-Entrada (Txt-Slides $p.descripcion $lang))</p>`n        <p class=""slide-descargas"">$($botones -join '')</p>`n      </article>`n")
+    $i++
+  }
+  $sb.ToString().TrimEnd("`n")
+}
+# enlace a la sección de slides de otro marco, relativo a $desde ($null si ese marco no tiene presentaciones)
+function Enlace-Slides-Marco([string]$repo, [string]$lang, [string]$marco, [string]$desde) {
+  if (-not (Presentaciones-De $repo $lang $marco '').Count) { return $null }
+  (Rel-Slides $desde ([IO.Path]::GetFullPath((Join-Path $repo ($script:CABECERA_MARCO[$marco] -f $lang))))) + '#presentaciones'
+}
+# Sección #presentaciones de la entrada de SEVEN-G (marca <!-- presentaciones -->) y su enlace en la barra (<!-- presentaciones-nav -->)
+function Slides-Entrada([string]$lang, [string]$repo) {
+  $en = $lang -eq 'en'
+  $desde = Join-Path $repo "SEVEN-G/html/$lang/entrada"
+  $lista = Presentaciones-De $repo $lang 'SEVEN-G' ''
+  if (-not $lista.Count) { return '' }
+  $otros = @()
+  foreach ($m in 'SPHERES', 'SPAD') { $h = Enlace-Slides-Marco $repo $lang $m $desde; if ($h) { $otros += "<a class=""enlace"" href=""$h"" title=""$(if ($en) { "$m in slides: presentations in PowerPoint and PDF" } else { "$m en slides: presentaciones en PowerPoint y PDF" })"">$m $(if ($en) { 'in slides' } else { 'en slides' }) →</a>" } }
+  $nAreas = @(Manifiesto-Presentaciones $repo | Where-Object { $_.area -and (Ficheros-Slides $_ $lang $repo).Count } | ForEach-Object { [string]$_.area } | Sort-Object -Unique).Count
+  if ($nAreas) { $otros += "<a class=""enlace"" href=""#areas"" title=""$(if ($en) { 'Each AI action area has its own presentations in 1 and 10 slides, on its full page' } else { 'Cada área de actuación en IA tiene sus presentaciones de 1 y 10 slides en su página completa' })"">$(if ($en) { "The $nAreas AI action areas, each in 1 and 10 slides" } else { "Las $nAreas áreas de actuación en IA, cada una en 1 y 10 slides" }) →</a>" }
+  $kicker = if ($en) { 'For a meeting or a classroom' } else { 'Para una reunión o un aula' }
+  $h2 = if ($en) { 'SEVEN-G in slides' } else { 'SEVEN-G en slides' }
+  $sub = if ($en) { 'From one slide to the complete course, in PowerPoint (editable) and PDF. Each version tells the same story in more depth; the notes of each slide explain it and link to the document that develops it.' } else { 'De una slide al curso completo, en PowerPoint (editable) y en PDF. Cada versión cuenta lo mismo con más profundidad; las notas de cada slide lo explican y enlazan al documento que lo desarrolla.' }
+  $linea = if ($otros.Count) { "`n    <p class=""presentacion slides-otros""><b>$(if ($en) { 'Also in slides:' } else { 'También en slides:' })</b> <span class=""dos-enlaces"">$($otros -join '')</span></p>" } else { '' }
+  "<section id=""presentaciones"">`n  <div class=""envoltura"">`n    <p class=""kicker"">$kicker</p>`n    <h2>$h2</h2>`n    <p class=""sub"">$sub</p>`n    <div class=""slides"">`n$(Tarjetas-Slides $lista $lang $repo $desde)`n    </div>$linea`n  </div>`n</section>"
+}
+function Slides-Nav-Entrada([string]$lang, [string]$repo) {
+  if (-not (Presentaciones-De $repo $lang 'SEVEN-G' '').Count) { return '' }
+  '<a href="#presentaciones">Slides</a>'
+}
+# Bloque «Esta área en slides» de la página de un área ({{SLIDES}}) y su enlace en la barra ({{SLIDES_NAV}})
+function Slides-Area([string]$id, [string]$lang, [string]$repo) {
+  $en = $lang -eq 'en'
+  $lista = Presentaciones-De $repo $lang 'SEVEN-G' $id
+  if (-not $lista.Count) { return '' }
+  $desde = Join-Path $repo "SEVEN-G/html/$lang/areas"
+  $sub = if ($en) { 'The whole area in one slide, or in ten slides to explain it in a meeting or a classroom. PowerPoint (editable) and PDF with the notes of each slide.' } else { 'El área completa en una slide, o en diez para explicarla en una reunión o en un aula. PowerPoint (editable) y PDF con las notas de cada slide.' }
+  "<section id=""slides"">`n  <div class=""envoltura"">`n    <p class=""kicker"">$(if ($en) { 'Presentations' } else { 'Presentaciones' })</p>`n    <h2>$(if ($en) { 'This area in slides' } else { 'Esta área en slides' })</h2>`n    <p class=""sub"">$sub</p>`n    <div class=""slides"">`n$(Tarjetas-Slides $lista $lang $repo $desde)`n    </div>`n  </div>`n</section>"
+}
+# Grupos de la zona de descargas del documento 00 de un marco (build.ps1, D97): una tarjeta por presentación con PPTX y PDF
+function Grupos-Slides-Doc([string]$marco, [string]$lang, [string]$repo, [string]$desde) {
+  $en = $lang -eq 'en'; $g = [Collections.Generic.List[object]]::new()
+  foreach ($p in (Presentaciones-De $repo $lang $marco '')) {
+    $f = Ficheros-Slides $p $lang $repo; $tit = Txt-Slides $p.titulo $lang; $n = [int]$p.slides
+    $enl = [Collections.Generic.List[string]]::new()
+    if ($f.pptx) { $enl.Add("<a class=""dz-item"" href=""$(Rel-Slides $desde $f.pptx)"" download title=""$(Html-Entrada "$tit · PowerPoint")""><span class=""dz-tipo"">PPTX</span><b>PowerPoint</b></a>") }
+    if ($f.pdf) { $enl.Add("<a class=""dz-item"" href=""$(Rel-Slides $desde $f.pdf)"" target=""_blank"" rel=""noopener"" title=""$(Html-Entrada "$tit · PDF")""><span class=""dz-tipo"">PDF</span><b>$(if ($en) { 'Open as PDF' } else { 'Abrir en PDF' })</b></a>") }
+    $g.Add(@{ clave = $(if ([string]$p.clave -eq 'curso') { 'slides-curso' } else { 'slides' }); rotulo = "$n $(N-Slides $n $en)"; titulo = $tit; texto = (Txt-Slides $p.descripcion $lang); enlaces = $enl })
+  }
+  $g
+}
+# Tarjeta «También en slides» del documento 00: los otros dos marcos y las áreas
+function Grupo-Slides-Otros([string]$marco, [string]$lang, [string]$repo, [string]$desde) {
+  $en = $lang -eq 'en'; $enl = [Collections.Generic.List[string]]::new()
+  foreach ($m in @('SEVEN-G', 'SPHERES', 'SPAD' | Where-Object { $_ -ne $marco })) {
+    $h = Enlace-Slides-Marco $repo $lang $m $desde
+    if ($h) { $enl.Add("<a class=""dz-item"" href=""$h"" title=""$(if ($en) { "$m in slides" } else { "$m en slides" })""><span class=""dz-tipo html"">Slides</span><b>$m</b></a>") }
+  }
+  if (@(Manifiesto-Presentaciones $repo | Where-Object { $_.area -and (Ficheros-Slides $_ $lang $repo).Count }).Count) {
+    $hA = (Rel-Slides $desde ([IO.Path]::GetFullPath((Join-Path $repo "SEVEN-G/html/$lang/entrada/index.html")))) + '#areas'
+    $enl.Add("<a class=""dz-item"" href=""$hA"" title=""$(if ($en) { 'Each AI action area in 1 and 10 slides, on its page' } else { 'Cada área de actuación en IA en 1 y 10 slides, en su página' })""><span class=""dz-tipo html"">Slides</span><b>$(if ($en) { 'AI action areas' } else { 'Áreas de actuación en IA' })</b></a>")
+  }
+  if (-not $enl.Count) { return $null }
+  @{ clave = 'slides-otros'; rotulo = $(if ($en) { 'Other frameworks' } else { 'Otros marcos' }); titulo = $(if ($en) { 'Also in slides' } else { 'También en slides' })
+     texto = $(if ($en) { 'The presentations of the other frameworks and of each AI action area.' } else { 'Las presentaciones de los otros marcos y de cada área de actuación en IA.' }); enlaces = $enl }
+}
+# Portada: línea «<Marco> en slides» bajo los botones de cada metodología, entre <!-- slides:<MARCO>:inicio … --> y <!-- slides:fin -->
+function Portada-Con-Slides([string]$html, [string]$lang, [string]$prefijo, [string]$repo) {
+  $en = $lang -eq 'en'
+  $desde = [IO.Path]::GetFullPath((Join-Path $repo $(if ($en) { 'en' } else { '.' })))
+  [regex]::Replace($html, '(?s)(<!-- slides:(SEVEN-G|SPHERES|SPAD):inicio[^>]*-->).*?(<!-- slides:fin -->)', {
+      param($m)
+      $marco = $m.Groups[2].Value
+      $lista = Presentaciones-De $repo $lang $marco ''
+      $cuerpo = ''
+      if ($lista.Count) {
+        $h = Enlace-Slides-Marco $repo $lang $marco $desde
+        $nums = @($lista | Where-Object { [string]$_.clave -ne 'curso' } | ForEach-Object { [string]$_.slides })
+        $y = if ($en) { 'and' } else { 'y' }
+        $txtN = if ($nums.Count -gt 1) { ($nums[0..($nums.Count - 2)] -join ', ') + " $y " + $nums[-1] } else { $nums -join '' }
+        $curso = @($lista | Where-Object { [string]$_.clave -eq 'curso' }).Count
+        $det = if ($en) { "$(if ($txtN) { "$txtN slides" })$(if ($txtN -and $curso) { ' and ' })$(if ($curso) { 'the complete course' }), in PowerPoint and PDF." } else { "$(if ($txtN) { "$txtN slides" })$(if ($txtN -and $curso) { ' y ' })$(if ($curso) { 'el curso completo' }), en PowerPoint y PDF." }
+        $cuerpo = "`n      <p class=""nota-acciones nota-slides""><a href=""$h"" title=""$(if ($en) { "$marco presentations to download" } else { "Presentaciones de $marco para descargar" })""><strong>$marco $(if ($en) { 'in slides' } else { 'en slides' }) →</strong></a> $det</p>`n      "
+      }
+      $m.Groups[1].Value + $cuerpo + $m.Groups[3].Value
+    })
 }

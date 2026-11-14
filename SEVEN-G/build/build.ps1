@@ -37,6 +37,14 @@
     <!-- grafico: Título | Subtítulo -->      -> título y subtítulo del diagrama Mermaid que va justo debajo
     ```mermaid ... ```                        -> diagrama Mermaid con los colores del tema activo
 
+  Presentaciones en slides (PPTX y PDF): lo primero que hace este script es ejecutar presentaciones/build_presentaciones.ps1
+  (con las metodologías, los idiomas y -SinPdf de esta llamada), que escribe <M>/pptx|pdf/<idioma>/presentaciones/,
+  SEVEN-G/pptx|pdf/<idioma>/areas/ y presentaciones/manifiesto.json. Después, al generar, la entrada de SEVEN-G
+  (sección #presentaciones), los documentos 00 (zona de descargas), las páginas de área («Esta área en slides») y la portada
+  («<Marco> en slides») leen ese manifiesto (entrada_datos.ps1). Orden: presentaciones -> páginas. La primera vez, si el
+  generador de presentaciones falla porque aún no existen las páginas que enlazan sus slides, ejecute build.ps1 dos veces.
+  Un fallo del generador se avisa y no detiene el sitio; -SinPresentaciones lo omite.
+
   Requisitos: PowerShell 7+ (ConvertFrom-Markdown) y Microsoft Edge o Google Chrome.
 
 .EXAMPLE
@@ -51,7 +59,8 @@ param(
   [string[]]$Metodologias = @('SEVEN-G', 'SPHERES', 'SPAD'),
   [string]$Filter = '*.md',
   [string[]]$Idiomas = @('es', 'en'),
-  [switch]$SinPdf
+  [switch]$SinPdf,
+  [switch]$SinPresentaciones
 )
 
 $ErrorActionPreference = 'Stop'
@@ -534,6 +543,28 @@ function EnlazarReferenciasMarkdown([string]$md, [hashtable]$map) {
   return ($partes -join '')
 }
 
+# Presentaciones en slides (PPTX y PDF) de SEVEN-G, SPHERES, SPAD y las áreas de actuación: se generan ANTES que las páginas,
+# porque la entrada de SEVEN-G, los documentos 00, las páginas de área y la portada leen presentaciones/manifiesto.json.
+# El generador valida que cada enlace de las slides apunte a una página publicada: la primera vez (sitio sin generar) puede
+# fallar; entonces se ejecuta build.ps1 dos veces. Un fallo del generador se informa y no impide generar el sitio.
+if (-not $SinPresentaciones -and -not $env:SEVENG_BUILD_CURSO_PASE2) {
+  $genPres = Join-Path $repo 'presentaciones\build_presentaciones.ps1'
+  if (Test-Path $genPres) {
+    $soloPres = @()
+    if (@($Metodologias).Count -lt 3) {
+      foreach ($mPres in $Metodologias) { $soloPres += switch ($mPres) { 'SEVEN-G' { 'seven-g/*', 'areas/*' } 'SPHERES' { 'spheres/*' } 'SPAD' { 'spad/*' } } }
+    }
+    $argsPres = @('-NoProfile', '-File', $genPres, '-Idiomas', ($Idiomas -join ','))
+    if ($soloPres.Count) { $argsPres += @('-Solo', ($soloPres -join ',')) }
+    if ($SinPdf) { $argsPres += '-SinPdf' }
+    Write-Host '== Presentaciones (presentaciones/build_presentaciones.ps1) =='
+    try {
+      & (Get-Process -Id $PID).Path @argsPres
+      if ($LASTEXITCODE) { Write-Warning "build_presentaciones.ps1 terminó con errores (código $LASTEXITCODE): las páginas usan el manifiesto que haya. Revise su salida." }
+    } catch { Write-Warning "build_presentaciones.ps1 no se pudo ejecutar: $($_.Exception.Message)" }
+  }
+}
+
 foreach ($metodologia in $Metodologias) {
 $cfg           = $configuracion[$metodologia]
 $root          = Join-Path $repo $metodologia
@@ -589,6 +620,7 @@ foreach ($lang in $Idiomas) {
     # la portada del sitio enlaza las mismas áreas (D165)
     $portF = Join-Path $repo $(if ($lang -eq 'en') { 'en/index.html' } else { 'index.html' })
     $portT = [IO.File]::ReadAllText($portF); $portN = Portada-Con-Areas $portT $lang $(if ($lang -eq 'en') { '../' } else { '' })
+    $portN = Portada-Con-Slides $portN $lang $(if ($lang -eq 'en') { '../' } else { '' }) $repo   # «<Marco> en slides», desde presentaciones/manifiesto.json
     if ($portN -cne $portT) { [IO.File]::WriteAllText($portF, $portN, [Text.UTF8Encoding]::new($false)) }
   }
 
@@ -998,6 +1030,25 @@ function NombrePrimero([string]$texto) {
                           enlaces = @($enlacesDoc) })
       }
     }
+    # documento 00 de cada metodología (la cabecera de SPHERES y SPAD): sus presentaciones en slides (1, 5, 10, 20 y curso,
+    # en PPTX y PDF), desde presentaciones/manifiesto.json (entrada_datos.ps1), en tarjetas como la guía del curso (D97), con
+    # este documento y una tarjeta hacia las presentaciones de los otros marcos. Sin manifiesto, el documento no cambia (D53).
+    $tituloGrupos = if ($en) { 'Downloads, by profile' } else { 'Descargas, según su perfil' }
+    $idZona = ''
+    if (-not $esIndice -and $relBase -eq $cfg.inicio -and -not $gruposDoc.Count) {
+      $gSl = @(Grupos-Slides-Doc $metodologia $lang $repo (Split-Path $htmlOut))
+      if ($gSl.Count) {
+        foreach ($g in $gSl) { $gruposDoc.Add($g) }
+        if ($enlacesDoc.Count) {
+          $gruposDoc.Add(@{ clave = 'guia'; rotulo = $(if ($en) { 'This page' } else { 'Esta página' }); titulo = $(if ($en) { 'This document' } else { 'Este documento' })
+                            texto = $(if ($en) { 'This document in PDF and its Spanish version.' } else { 'Este documento en PDF y su versión en inglés.' }); enlaces = @($enlacesDoc) })
+        }
+        $gOt = Grupo-Slides-Otros $metodologia $lang $repo (Split-Path $htmlOut)
+        if ($gOt) { $gruposDoc.Add($gOt) }
+        $tituloGrupos = if ($en) { "$metodologia in slides · downloads" } else { "$metodologia en slides · descargas" }
+        $idZona = ' id="presentaciones"'
+      }
+    }
 
     $todasHerr = $cfg.todasHerramientas -and ($esIndice -or $rel -like $cfg.todasHerramientas)
     $codigosHerr = if ($todasHerr) { @($herramientas.Keys) } else {
@@ -1013,11 +1064,11 @@ function NombrePrimero([string]$texto) {
     }
     $zonaDescargas = ''
     if ($enlacesDoc.Count -or $enlacesHerr.Count) {
-      $zonaDescargas = "<section class=""descargas-zona$(if ($gruposDoc.Count) { ' dz-agrupada' })"" aria-label=""$(if ($en) { 'Downloads and tools' } else { 'Descargas y herramientas' })""><div class=""dz-in"">"
+      $zonaDescargas = "<section$idZona class=""descargas-zona$(if ($gruposDoc.Count) { ' dz-agrupada' })"" aria-label=""$(if ($en) { 'Downloads and tools' } else { 'Descargas y herramientas' })""><div class=""dz-in"">"
       if ($gruposDoc.Count) {
         # una tarjeta por perfil o uso, con sus propios botones (D97)
         $tarjetas = ($gruposDoc | ForEach-Object { "<div class=""dz-card"" data-grupo=""$($_.clave)""><p class=""dz-card-rotulo"">$(Enc $_.rotulo)</p><p class=""dz-card-titulo"">$(Enc $_.titulo)</p><p class=""dz-card-texto"">$(Enc $_.texto)</p><div class=""dz-enlaces"">$($_.enlaces -join '')</div></div>" }) -join ''
-        $zonaDescargas += "<div class=""dz-bloque""><p class=""dz-titulo"">$(if ($en) { 'Downloads, by profile' } else { 'Descargas, según su perfil' })</p><div class=""dz-cards"">$tarjetas</div></div>"
+        $zonaDescargas += "<div class=""dz-bloque""><p class=""dz-titulo"">$(Enc $tituloGrupos)</p><div class=""dz-cards"">$tarjetas</div></div>"
       }
       elseif ($enlacesDoc.Count) { $zonaDescargas += "<div class=""dz-bloque""><p class=""dz-titulo"">$(if ($en) { 'Downloads' } else { 'Descargas' })</p><div class=""dz-enlaces"">$($enlacesDoc -join '')</div></div>" }
       if ($enlacesHerr.Count) { $zonaDescargas += "<div class=""dz-bloque""><p class=""dz-titulo"">$(if ($en) { 'Related tools' } else { 'Herramientas relacionadas' })</p><div class=""dz-enlaces"">$($enlacesHerr -join '')</div></div>" }
