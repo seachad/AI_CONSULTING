@@ -96,8 +96,8 @@ function Slides-Tarjeta-Area([string]$id, [string]$lang, [string]$desde, [string
     $f = Ficheros-Slides $p $lang $repoR; if (-not $f.Count) { continue }
     $tit = Html-Entrada (Txt-Slides $p.titulo $lang)
     $enl = @()
-    if ($f.pptx) { $enl += "<a href=""$(Rel-Slides $desde $f.pptx)"" download title=""$tit · PowerPoint"">PowerPoint</a>" }
-    if ($f.pdf) { $enl += "<a href=""$(Rel-Slides $desde $f.pdf)"" target=""_blank"" rel=""noopener"" title=""$tit · PDF"">PDF</a>" }
+    if ($f.pptx) { $enl += "<a href=""$(Rel-Slides $desde $f.pptx)$($f.v)"" download title=""$tit · PowerPoint"">PowerPoint</a>" }
+    if ($f.pdf) { $enl += "<a href=""$(Rel-Slides $desde $f.pdf)$($f.v)"" target=""_blank"" rel=""noopener"" title=""$tit · PDF"">PDF</a>" }
     $rot = if ($en) { "In $n $(N-Slides $n $true)" } else { "En $n $(N-Slides $n $false)" }
     $partes += "<span class=""sl-par""><b>$rot</b> $($enl -join ' · ')</span>"
   }
@@ -443,6 +443,10 @@ function Ficheros-Slides($p, [string]$lang, [string]$repo) {
     $rel = if ($p.$k) { [string]$p.$k.$lang } else { '' }
     if ($rel) { $abs = [IO.Path]::GetFullPath((Join-Path $repo $rel)); if (Test-Path $abs -PathType Leaf) { $r[$k] = $abs } }
   }
+  # Sello de versión de los enlaces de descarga (D182): «?v=» y los ocho primeros caracteres de la huella del PPTX.
+  # El nombre del fichero no cambia entre versiones, así que sin sello el navegador enseña la copia que tiene guardada.
+  # El PDF usa el mismo sello: solo se regenera cuando cambia su PPTX.
+  if ($r.Count -and $p.pptx_sha256) { $h = [string]$p.pptx_sha256.$lang; if ($h.Length -ge 8) { $r['v'] = '?v=' + $h.Substring(0, 8) } }
   $r
 }
 # presentaciones de un marco (sin las de área) o de un área, con algún fichero en ese idioma, en orden 1, 5, 10, 20, curso
@@ -462,8 +466,8 @@ function Tarjetas-Slides([object[]]$lista, [string]$lang, [string]$repo, [string
     $f = Ficheros-Slides $p $lang $repo; $tit = Html-Entrada (Txt-Slides $p.titulo $lang); $n = [int]$p.slides
     $clave = ([string]$p.clave -replace '^.*_(\d+)$', '$1')
     $botones = @()
-    if ($f.pptx) { $botones += "<a class=""enlace"" href=""$(Rel-Slides $desde $f.pptx)"" download title=""$tit · PowerPoint$(if ($en) { ', editable' } else { ', editable' })"">PowerPoint →</a>" }
-    if ($f.pdf) { $botones += "<a class=""enlace"" href=""$(Rel-Slides $desde $f.pdf)"" target=""_blank"" rel=""noopener"" title=""$tit · PDF$(if ($en) { ' with the notes of each slide' } else { ' con las notas de cada slide' })"">PDF →</a>" }
+    if ($f.pptx) { $botones += "<a class=""enlace"" href=""$(Rel-Slides $desde $f.pptx)$($f.v)"" download title=""$tit · PowerPoint$(if ($en) { ', editable' } else { ', editable' })"">PowerPoint →</a>" }
+    if ($f.pdf) { $botones += "<a class=""enlace"" href=""$(Rel-Slides $desde $f.pdf)$($f.v)"" target=""_blank"" rel=""noopener"" title=""$tit · PDF$(if ($en) { ' with the notes of each slide' } else { ' con las notas de cada slide' })"">PDF →</a>" }
     [void]$sb.Append("      <article class=""slide-tarjeta"" data-clave=""$(Html-Entrada $clave)"">`n        <p class=""slide-n""><b>$n</b> $(N-Slides $n $en)</p>`n        <h3>$tit</h3>`n        <p>$(Html-Entrada (Txt-Slides $p.descripcion $lang))</p>`n        <p class=""slide-descargas"">$($botones -join '')</p>`n      </article>`n")
     $i++
   }
@@ -510,8 +514,8 @@ function Grupos-Slides-Doc([string]$marco, [string]$lang, [string]$repo, [string
   foreach ($p in (Presentaciones-De $repo $lang $marco '')) {
     $f = Ficheros-Slides $p $lang $repo; $tit = Txt-Slides $p.titulo $lang; $n = [int]$p.slides
     $enl = [Collections.Generic.List[string]]::new()
-    if ($f.pptx) { $enl.Add("<a class=""dz-item"" href=""$(Rel-Slides $desde $f.pptx)"" download title=""$(Html-Entrada "$tit · PowerPoint")""><span class=""dz-tipo"">PPTX</span><b>PowerPoint</b></a>") }
-    if ($f.pdf) { $enl.Add("<a class=""dz-item"" href=""$(Rel-Slides $desde $f.pdf)"" target=""_blank"" rel=""noopener"" title=""$(Html-Entrada "$tit · PDF")""><span class=""dz-tipo"">PDF</span><b>$(if ($en) { 'Open as PDF' } else { 'Abrir en PDF' })</b></a>") }
+    if ($f.pptx) { $enl.Add("<a class=""dz-item"" href=""$(Rel-Slides $desde $f.pptx)$($f.v)"" download title=""$(Html-Entrada "$tit · PowerPoint")""><span class=""dz-tipo"">PPTX</span><b>PowerPoint</b></a>") }
+    if ($f.pdf) { $enl.Add("<a class=""dz-item"" href=""$(Rel-Slides $desde $f.pdf)$($f.v)"" target=""_blank"" rel=""noopener"" title=""$(Html-Entrada "$tit · PDF")""><span class=""dz-tipo"">PDF</span><b>$(if ($en) { 'Open as PDF' } else { 'Abrir en PDF' })</b></a>") }
     $g.Add(@{ clave = $(if ([string]$p.clave -eq 'curso') { 'slides-curso' } else { 'slides' }); rotulo = "$n $(N-Slides $n $en)"; titulo = $tit; texto = (Txt-Slides $p.descripcion $lang); enlaces = $enl })
   }
   $g

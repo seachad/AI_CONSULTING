@@ -443,7 +443,7 @@ try {
       if ($primero -notmatch '^(Qué es|What) ') { Mal "$p`: el primer botón no explica el marco: «$($primero -replace '<[^>]+>', ' ')»"; $bien = $false }
     }
     foreach ($m in [regex]::Matches($html, 'href="([^"#:]+)"')) {
-      $destino = Join-Path (Split-Path $ruta) $m.Groups[1].Value
+      $destino = Join-Path (Split-Path $ruta) (($m.Groups[1].Value -split '\?')[0])   # sin el sello de versión «?v=» (D182)
       if (-not (Test-Path $destino)) { Mal "$p`: enlace roto: $($m.Groups[1].Value)"; $bien = $false }
     }
     if ($bien) { Ok "$p" }
@@ -2079,7 +2079,8 @@ try {
         $rel = [string]$man46[$id].$k.($pg.lg); if (-not $rel) { continue }
         $abs = [IO.Path]::GetFullPath((Join-Path $repo $rel)); if (-not (Test-Path $abs)) { continue }
         $href = [IO.Path]::GetRelativePath($dirP, $abs).Replace('\', '/')
-        if (-not $hP.Contains("href=""$href""")) { Mal "$($pg.f -replace '\\', '/'): no enlaza el $($k.ToUpper()) de «$id» ($href); generar con build.ps1"; $mal46++ } else { $nEnl46++ }
+        # D182: el enlace lleva el sello de versión «?v=<8 hex de la huella del PPTX>» para que el navegador no enseñe una copia guardada
+        if ($hP -notmatch ('href="' + [regex]::Escape($href) + '\?v=[0-9a-f]{8}"')) { Mal "$($pg.f -replace '\\', '/'): no enlaza el $($k.ToUpper()) de «$id» con su sello de versión ($href?v=…); generar con build.ps1"; $mal46++ } else { $nEnl46++ }
       }
     }
   }
@@ -2156,7 +2157,7 @@ try {
             $abs = [IO.Path]::GetFullPath((Join-Path $repo $rel))
             if (-not (Test-Path $abs -PathType Leaf)) { Mal "$($pg.q) [$lg]: el $($k.ToUpper()) de «areas/${a}_$n» no existe ($rel)"; $mal47++; continue }
             $href = [IO.Path]::GetRelativePath($dirP, $abs).Replace('\', '/')
-            if (-not $tar.Contains("href=""$href""")) { Mal "$($pg.q) [$lg]: la tarjeta del área «$a» no enlaza el $($k.ToUpper()) de $n slide(s) ($href); generar con build.ps1"; $mal47++ } else { $nTar47++ }
+            if ($tar -notmatch ('href="' + [regex]::Escape($href) + '\?v=[0-9a-f]{8}"')) { Mal "$($pg.q) [$lg]: la tarjeta del área «$a» no enlaza el $($k.ToUpper()) de $n slide(s) ($href); generar con build.ps1"; $mal47++ } else { $nTar47++ }
           }
         }
       }
