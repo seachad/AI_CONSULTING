@@ -5,21 +5,23 @@
 | | |
 |---|---|
 | Document | Document 00 · What SPAD is and how it helps |
-| Version | 0.2 |
-| Date | 19-09-2026 |
+| Version | 0.3 |
+| Date | 14-11-2026 |
 | Author | Fernando García Varela |
-| Status | Under construction. Supporting methodology, independent of SEVEN-G and referenced from its document 53; not released commercially. |
+| Status | Under construction. Independent method for building software with AI; it is not part of the company's AI governance. It connects with SEVEN-G only through its document 53. Not released commercially. |
 | Type | Methodology overview |
 
 <!-- cifras: 11 | phases in the main cycle ; 5 | work cycles ; 3 | review verdicts ; 0 | approvals an AI can give itself -->
 
 ---
 
-> **Version under review: please do not circulate.** The current state of SPAD (version 0.x) is not meant to be shared widely. It is public so that a small number of people can review it, give feedback and help improve it. Documents and tools are being adapted to make them reusable; this notice will disappear when the framework reaches version 1.x.
+> **Version 0.x, under review.** SPAD is currently at version 0.x. The content is operational and may be used, adapted and redistributed under the project licence (CC BY 4.0 for content and MIT for code), crediting the author and indicating changes. Documents and tools are still being reviewed: feedback and proposals for improvement are welcome.
 
 > **Legal notice and disclaimer.** SPAD is a reference methodology provided "as is" and for information purposes only. It does not constitute legal, regulatory or professional advice, does not guarantee results or compliance with any law or standard and is not a certification. **Each organisation that uses SPAD is solely responsible for validating its results, identifying the regulation that applies to it, verifying that it is current and certifying its own regulatory compliance**, with the appropriate qualified advice. This methodology is a generic, free aid shared with the community so that nobody has to start from scratch; each person or organisation can and should adapt it to its own use. It must not be inferred that its legally sensitive parts have been reviewed by legal counsel: those reviews, for each company or sector, are the ultimate responsibility of the company, consultant or organisation that uses it. Although every effort is made to keep it up to date, some regulation may have changed without being reflected here. To the fullest extent permitted by law, the author accepts no responsibility whatsoever for the effects of its application in any organisation or for its full applicability. The methodology does not grant certification of any kind. The author accepts no liability for any use made of this content or for any decisions taken on the basis of it. The data, figures, companies and cases in the examples are fictitious or illustrative.
 
 ## 1. What SPAD is
+
+**SPAD solves one specific problem: building software with AI in a governed way.** It is not a framework for the company's AI governance. Deciding which AI initiatives go ahead, with what risk and how their value is measured is a different problem, at another level, which SEVEN-G solves (with SPHERES as its explanatory layer). SPAD deals only with how the software is built, and it can be used with or without SEVEN-G.
 
 **SPAD** (*Structured Prompt-Driven Engineering*) is Fernando García Varela's framework for **managing software development by means of artificial intelligence** in a controlled way. It turns AI from an informal programming assistant into a governed engineering tool whose work can be reviewed, reproduced and audited.
 
@@ -40,7 +42,29 @@ SPAD is not a collection of instructions (*prompts*) for requesting code. It is 
 
 > **Why it matters.** AI generates plausible code at great speed. Without structure, that speed turns into design decisions that nobody has taken consciously, insufficient tests, vulnerabilities introduced silently and technical debt that is hard to see. SPAD keeps the speed where it adds value and puts control where it is needed: in decisions, in reviews and in evidence.
 
-SPAD is a **supporting methodology, independent of SEVEN-G**. SEVEN-G governs the AI initiative as a whole (value, risk, decision gates); SPAD governs **how the software is built** when it is built with AI assistance (section 9).
+SPAD is an **independent method**, not a supporting methodology of SEVEN-G. The two connect at a single point, SEVEN-G document 53: SEVEN-G decides what is built, with what risk and how it is measured; SPAD solves how the software is built when it is built with AI (section 9).
+
+### What it does for a company
+
+*The author's position. SPAD does not promise savings or productivity figures: each organisation measures its own (document 08).*
+
+| Use | What the company does | What it relies on |
+|---|---|---|
+| **1. Build its own software with AI** | Its team works in phases, with reviewed artefacts, independent review and human validation of every output. | Roles (section 4), main cycle (section 5) and validation policy (section 7). |
+| **2. Demand as a client** | If it knows how software is built with AI, it can ask its suppliers and integrators to pass the productivity gain on to the company: lower cost, or more scope for the same price. | What SPAD already defines and the company can ask to receive (next table). |
+
+What it can ask of a supplier or an integrator, without going beyond what SPAD already defines:
+
+| What to ask for | What it gives you | Where SPAD defines it |
+|---|---|---|
+| The artefact of each phase: plan, plan review, test strategy, code review and version record. | Seeing that the design was decided before the code and that each phase was reviewed. | Section 5 and documents 01 and 07. |
+| The model record of each artefact: provider, model, version, instruction and contexts. | Knowing which part of the work the AI did and with which tool. | Document 02, section 4.1. |
+| The human validation record and the violation log. | Checking that a person approved what is delivered and seeing which AI responses were discarded. | Document 02, sections 4.2 and 4.3, and document 03. |
+| The verdicts of each review (GO, GO with changes, NO-GO). | Seeing where the work went back and why. | Document 01, section 5. |
+| The process metrics: time per phase, iterations to GO, escaped defects and rework after delivery. | Knowing the real effort of the work and discussing price and scope with the supplier's own data. | Document 08, section 5. |
+| The self-assessment of conformity. | Receiving the work with a shared definition of "done". | Section 8 and document 08. |
+
+> **Why it matters.** AI changes what it costs to build software. If the company does not know how software is built with AI, it cannot know whether that change reaches its invoice or stays with the supplier. SPAD gives it a common language and specific evidence to ask the question. It sets no percentage: it lets the company negotiate with data.
 
 ---
 
@@ -282,14 +306,14 @@ An organisation can check whether a system, a project or a team has worked in ac
 
 ## 9. Relationship with SEVEN-G
 
-SPAD and SEVEN-G work at different scales and complement each other:
+SPAD and SEVEN-G solve different problems, at different levels. SEVEN-G governs the company's AI; SPAD, building software with AI. SPAD is not part of SEVEN-G. The only bridge between the two is SEVEN-G document 53 and its template P66:
 
 | Aspect | SEVEN-G | SPAD |
 |---|---|---|
 | **Subject** | The complete AI initiative and the company's portfolio. | The development of a solution's software. |
 | **Question** | Is it worth it, with what risk and with what measured value? | Is it well built, tested and documented? |
 | **Decisions** | Decision gates taken by accountable people. | Technical review verdicts validated by the orchestrator. |
-| **Where it applies** | Throughout the lifecycle, from idea to retirement. | Mainly in the SEVEN-G design and delivery phases. |
+| **Where it applies** | Throughout the lifecycle, from idea to retirement. | Wherever software is built with AI. If the company uses SEVEN-G, mainly in its design and delivery phases. |
 
 Rules for working together:
 
@@ -299,7 +323,7 @@ Rules for working together:
 
 The detailed mapping of phases, roles, evidence and requirements is in [SEVEN-G 53 · Building solutions with AI](../../../SEVEN-G/html/en/53_SEVEN-G_Construccion_de_soluciones_con_IA.html).
 
-> **Why it matters.** A board does not need to know how an architecture plan is reviewed, but it does need to know that there is a method that does so and that leaves evidence. SPAD is that method within the build; SEVEN-G is the one that decides whether the initiative goes ahead.
+> **Why it matters.** A board does not need to know how an architecture plan is reviewed, but it does need to know that there is a method that does so and that leaves evidence. SPAD is that method for the build; SEVEN-G, if the company uses it, is the one that decides whether the initiative goes ahead.
 
 ---
 
@@ -343,5 +367,6 @@ There is no SPAD certification and use of the name does not imply endorsement by
 
 | Version | Date | Changes |
 |---|---|---|
+| 0.3 | 14-11-2026 | Positioning: SPAD solves one specific problem, building software with AI, and it is neither a framework for the company's AI governance nor a supporting methodology of SEVEN-G. New subsection "What it does for a company" (the author's position, without figures): building with method and demanding as a client that productivity reaches the company. SEVEN-G document 53 remains the only bridge (section 9). |
 | 0.2 | 19-09-2026 | Complete library (documents 01–08) linked from section 11; the diagnostic role is named "Diagnostic AI". |
 | 0.1 | 18-09-2026 | First version of the entry page, based on the SPAD working documents: properties of the framework, problem it solves, validation principle, roles, main cycle and verdicts, legacy, debugging, urgent fix and security cycles, contexts, topics, validation policy, self-assessment of conformity, relationship with SEVEN-G and when to use it. |

@@ -12,8 +12,7 @@
     "SPAD/mds/es/02_SPAD_Contextos_temas_y_registro.md",
     "SPAD/mds/es/03_SPAD_Politica_de_validacion.md",
     "SPAD/mds/es/08_SPAD_Autoevaluacion_y_metricas.md",
-    "SEVEN-G/mds/es/53_SEVEN-G_Construccion_de_soluciones_con_IA.md",
-    "SPHERES/mds/es/00_SPHERES_Que_es_y_para_que_sirve.md"
+    "SEVEN-G/mds/es/53_SEVEN-G_Construccion_de_soluciones_con_IA.md"
   ],
   "slides": [
     {
@@ -102,8 +101,8 @@
         "en": "The idea: think, validate and execute, in this order"
       },
       "sub": {
-        "es": "SPAD es secuencial, bloqueante y auditable. Cumplir el flujo importa más que la calidad aparente del resultado.",
-        "en": "SPAD is sequential, blocking and auditable. Following the flow matters more than the apparent quality of the result."
+        "es": "SPAD sigue el [principio de ejecución bloqueante](t:spad-bloqueante) y es auditable. Cumplir el flujo importa más que la calidad aparente.",
+        "en": "SPAD follows the [blocking execution principle](t:spad-bloqueante) and is auditable. Following the flow matters more than the apparent quality."
       },
       "tarjetas": [
         {
@@ -117,8 +116,8 @@
         {
           "titulo": { "es": "Validar", "en": "Validate" },
           "texto": {
-            "es": "Una revisión independiente evalúa el plan, las pruebas y el código y da un veredicto antes de avanzar.",
-            "en": "An independent review assesses the plan, the tests and the code and gives a verdict before work advances."
+            "es": "Una revisión independiente evalúa el plan, las pruebas y el código y da un [veredicto](t:spad-veredictos) antes de avanzar.",
+            "en": "An independent review assesses the plan, the tests and the code and gives a [verdict](t:spad-veredictos) before work advances."
           },
           "color": "oxford"
         },
@@ -133,24 +132,24 @@
         {
           "titulo": { "es": "Ninguna fase se salta", "en": "No phase is skipped" },
           "texto": {
-            "es": "Cada fase deja su artefacto. En la versión reducida las fases se agrupan, pero no desaparecen.",
-            "en": "Each phase leaves its artefact. In the reduced version phases are grouped, but they do not disappear."
+            "es": "Cada [fase](t:spad-ciclo) deja su artefacto. En la versión reducida ([SPAD Lite](t:spad-lite)) las fases se agrupan, pero no desaparecen.",
+            "en": "Each [phase](t:spad-ciclo) leaves its artefact. In the reduced version ([SPAD Lite](t:spad-lite)) phases are grouped, but they do not disappear."
           },
           "color": "velvet"
         },
         {
           "titulo": { "es": "Revisiones independientes", "en": "Independent reviews" },
           "texto": {
-            "es": "La IA que revisa nunca es la que construye, y una persona revisa además el código.",
-            "en": "The AI that reviews is never the one that builds, and a person also reviews the code."
+            "es": "La IA que revisa nunca es la que construye, y una persona hace además la [revisión humana del código](t:spad-revision-humana).",
+            "en": "The AI that reviews is never the one that builds, and a person also does the [human code review](t:spad-revision-humana)."
           },
           "color": "oro"
         },
         {
           "titulo": { "es": "Ninguna IA aprueba", "en": "No AI approves" },
           "texto": {
-            "es": "Toda aceptación la firma una persona identificada. Una IA que se aprueba a sí misma invalida su respuesta.",
-            "en": "Every acceptance is signed by an identified person. An AI that approves itself invalidates its response."
+            "es": "Toda aceptación la firma una persona. Si una IA se aprueba a sí misma, la [política de validación](t:spad-validacion) descarta su respuesta.",
+            "en": "Every acceptance is signed by a person. If an AI approves itself, the [validation policy](t:spad-validacion) discards its response."
           },
           "color": "negro"
         }
@@ -214,8 +213,8 @@
         "en": "How it works: eleven phases that block one another"
       },
       "sub": {
-        "es": "Cada fase produce un artefacto que es la entrada de la siguiente. Cada revisión da un veredicto: GO, GO con cambios o NO-GO.",
-        "en": "Each phase produces an artefact that is the input to the next. Each review gives a verdict: GO, GO with changes or NO-GO."
+        "es": "Cada [fase](t:spad-ciclo) produce un artefacto, entrada de la siguiente. Cada revisión da un [veredicto](t:spad-veredictos): GO, GO con cambios o NO-GO.",
+        "en": "Each [phase](t:spad-ciclo) produces an artefact, the input to the next. Each review gives a [verdict](t:spad-veredictos): GO, GO with changes or NO-GO."
       },
       "pasos": [
         {
@@ -233,23 +232,23 @@
         {
           "rotulo": { "es": "Fase 2", "en": "Phase 2" },
           "titulo": { "es": "Revisión del plan", "en": "Plan review" },
-          "texto": { "es": "Una IA revisora evalúa y da veredicto. No corrige.", "en": "An AI Reviewer assesses and gives a verdict. It does not fix." },
+          "texto": { "es": "Una [IA revisora](t:spad-roles) evalúa y da veredicto. No corrige.", "en": "An [AI Reviewer](t:spad-roles) assesses and gives a verdict. It does not fix." },
           "color": "oxford"
         },
         {
-          "rotulo": { "es": "Fases 3-4", "en": "Phases 3-4" },
+          "rotulo": { "es": "Fases 3–4", "en": "Phases 3–4" },
           "titulo": { "es": "Guía de código y pruebas", "en": "Code primer and tests" },
           "texto": { "es": "Reglas de construcción y cobertura mínima, antes de construir.", "en": "Build rules and minimum coverage, before building." },
           "color": "claret"
         },
         {
-          "rotulo": { "es": "Fases 5-6", "en": "Phases 5-6" },
+          "rotulo": { "es": "Fases 5–6", "en": "Phases 5–6" },
           "titulo": { "es": "Construcción", "en": "Build" },
           "texto": { "es": "La IA constructora escribe código y pruebas según el plan.", "en": "The AI Builder writes code and tests according to the plan." },
           "color": "teal"
         },
         {
-          "rotulo": { "es": "Fases 7-8", "en": "Phases 7-8" },
+          "rotulo": { "es": "Fases 7–8", "en": "Phases 7–8" },
           "titulo": { "es": "Revisión de pruebas y código", "en": "Test and code review" },
           "texto": { "es": "Cobertura real, fidelidad al plan, riesgos y dependencias.", "en": "Actual coverage, fidelity to the plan, risks and dependencies." },
           "color": "oxford"
@@ -273,7 +272,7 @@
       },
       "enlaces": [
         {
-          "texto": { "es": "Ciclo principal: fases 0 a 10", "en": "Main cycle: phases 0 to 10" },
+          "texto": { "es": "Ciclo principal: las once fases", "en": "Main cycle: the eleven phases" },
           "href": {
             "es": "SPAD/html/es/01_SPAD_Guia_operativa.html#ciclo-principal-fases-0-a-10",
             "en": "SPAD/html/en/01_SPAD_Guia_operativa.html#main-cycle-phases-0-to-10"
@@ -344,22 +343,22 @@
         {
           "rotulo": { "es": "Roles de IA", "en": "AI roles" },
           "texto": {
-            "es": "Planificadora, constructora y correctora producen; la IA revisora evalúa. Nunca dos roles en la misma fase.",
-            "en": "Planner, Builder and Fixer produce; the AI Reviewer assesses. Never two roles in the same phase."
+            "es": "Los [roles](t:spad-roles) de IA: la planificadora, la constructora y la correctora producen; la revisora evalúa. Nunca dos en la misma fase.",
+            "en": "AI [roles](t:spad-roles): Planner, Builder and Fixer produce; the Reviewer assesses. Never two roles in the same phase."
           }
         },
         {
           "rotulo": { "es": "Revisión humana", "en": "Human review" },
           "texto": {
-            "es": "Una persona revisa el código. En código sensible, revisa además otra que no orquestó la generación.",
-            "en": "A person reviews the code. In sensitive code, another person who did not orchestrate it also reviews."
+            "es": "Una persona hace la [revisión humana del código](t:spad-revision-humana). En código sensible, revisa además otra que no orquestó la generación.",
+            "en": "A person does the [human code review](t:spad-revision-humana). In sensitive code, another person who did not orchestrate it also reviews."
           }
         },
         {
           "rotulo": { "es": "Contextos y registros", "en": "Contexts and records" },
           "texto": {
-            "es": "Reglas de la organización y del proyecto antes de empezar; cada artefacto registra modelo y validación.",
-            "en": "Organisation and project rules before starting; each artefact records model and validation. Image in Spanish."
+            "es": "Los [contextos](t:spad-contextos) fijan las reglas antes de empezar; los [registros por artefacto](t:spad-registros) anotan modelo y validación.",
+            "en": "[Contexts](t:spad-contextos) set the rules before starting; [records per artefact](t:spad-registros) note model and validation. Image in Spanish."
           }
         }
       ],
@@ -380,16 +379,16 @@
           "href": "SPAD/html/{idioma}/02_SPAD_Contextos_temas_y_registro.html"
         },
         {
-          "texto": { "es": "IA revisora frente a Auditor de IA", "en": "AI Reviewer versus AI Auditor" },
+          "texto": { "es": "Autoaprobación: causa de invalidez", "en": "Self-approval: a cause of invalidity" },
           "href": {
-            "es": "SEVEN-G/html/es/53_SEVEN-G_Construccion_de_soluciones_con_IA.html#roles-ia-revisora-frente-a-auditor-de-ia",
-            "en": "SEVEN-G/html/en/53_SEVEN-G_Construccion_de_soluciones_con_IA.html#roles-ai-reviewer-versus-ai-auditor"
+            "es": "SPAD/html/es/03_SPAD_Politica_de_validacion.html#3-5-autoaprobacion",
+            "en": "SPAD/html/en/03_SPAD_Politica_de_validacion.html#3-5-self-approval"
           }
         }
       ],
       "notas": {
-        "es": "SPAD distingue roles lógicos, no personas ni herramientas concretas. Una misma IA puede asumir varios roles en un trabajo, pero nunca dos en la misma fase, y la IA que revisa un artefacto nunca es la que lo produjo.\n\n- El orquestador es una persona. Define el objetivo, carga los contextos, fija el tema, valida cada salida y decide si se avanza. No puede delegar la validación en la IA que produjo la salida.\n- La IA planificadora diseña y no escribe código. La IA constructora escribe código y no toma decisiones de diseño. La IA correctora aplica correcciones mínimas y no rediseña.\n- La IA revisora evalúa y no corrige. En la ilustración aparece como «IA-Auditor»: es la IA revisora. No se confunde con el Auditor de IA de SEVEN-G, que es una persona independiente.\n\nDos inteligencias artificiales pueden coincidir en el mismo error. Por eso una persona competente revisa también el código antes de incorporarlo. En autenticación, pagos, datos personales, agentes o sistemas críticos, revisa además una segunda persona que no orquestó la generación.\n\nContextos: antes de cualquier fase se cargan las reglas de la organización (por ejemplo, «ningún dato personal real en instrucciones a proveedores externos») y las del proyecto. Tema: un nombre corto que agrupa todos los artefactos de un trabajo en una carpeta. Registros: cada artefacto dice qué modelo lo produjo, quién lo validó y con qué resultado; y cada respuesta descartada queda anotada.\n\nPor qué importa a un directivo: es la separación de funciones de cualquier proceso serio. Quien responde ante la organización de que el código es correcto es una persona, y esa responsabilidad no se delega en una herramienta.\n\nPregunta para el aula: ¿qué datos de su compañía no deberían llegar nunca a una herramienta de IA externa?",
-        "en": "SPAD distinguishes logical roles, not specific people or tools. The same AI may take on several roles in a piece of work, but never two in the same phase, and the AI that reviews an artefact is never the one that produced it.\n\n- The Orchestrator is a person. They define the objective, load the contexts, set the topic, validate each output and decide whether to advance. They cannot delegate validation to the AI that produced the output.\n- The AI Planner designs and does not write code. The AI Builder writes code and does not take design decisions. The AI Fixer applies minimal fixes and does not redesign.\n- The AI Reviewer assesses and does not fix. The illustration labels it «IA-Auditor»: it is the AI Reviewer. It must not be confused with the SEVEN-G AI Auditor, who is an independent person.\n\nTwo artificial intelligences can make the same mistake. That is why a competent person also reviews the code before it is merged. In authentication, payments, personal data, agents or critical systems, a second person who did not orchestrate the generation also reviews.\n\nContexts: before any phase, the organisation's rules (for example, «no real personal data in instructions to external providers») and the project's rules are loaded. Topic: a short name that groups all the artefacts of a piece of work in one folder. Records: each artefact states which model produced it, who validated it and with what result; and each discarded response is logged.\n\nWhy it matters to an executive: this is the segregation of duties of any serious process. The person who answers to the organisation for the code being correct is a person, and that responsibility is not delegated to a tool.\n\nQuestion for the classroom: which data of your company should never reach an external AI tool?"
+        "es": "SPAD distingue roles lógicos, no personas ni herramientas concretas. Una misma IA puede asumir varios roles en un trabajo, pero nunca dos en la misma fase, y la IA que revisa un artefacto nunca es la que lo produjo.\n\n- El orquestador es una persona. Define el objetivo, carga los contextos, fija el tema, valida cada salida y decide si se avanza. No puede delegar la validación en la IA que produjo la salida.\n- La IA planificadora diseña y no escribe código. La IA constructora escribe código y no toma decisiones de diseño. La IA correctora aplica correcciones mínimas y no rediseña.\n- La IA revisora evalúa y no corrige. En la ilustración aparece como «IA-Auditor»: es la IA revisora. Es una IA, no una persona: su evaluación no sustituye a la revisión humana.\n\nDos inteligencias artificiales pueden coincidir en el mismo error. Por eso una persona competente revisa también el código antes de incorporarlo. En autenticación, pagos, datos personales, agentes o sistemas críticos, revisa además una segunda persona que no orquestó la generación.\n\nContextos: antes de cualquier fase se cargan las reglas de la organización (por ejemplo, «ningún dato personal real en instrucciones a proveedores externos») y las del proyecto. Tema: un nombre corto que agrupa todos los artefactos de un trabajo en una carpeta. Registros: cada artefacto dice qué modelo lo produjo, quién lo validó y con qué resultado; y cada respuesta descartada queda anotada.\n\nPor qué importa a un directivo: es la separación de funciones de cualquier proceso serio. Quien responde ante la organización de que el código es correcto es una persona, y esa responsabilidad no se delega en una herramienta.\n\nPregunta para el aula: ¿qué datos de su compañía no deberían llegar nunca a una herramienta de IA externa?",
+        "en": "SPAD distinguishes logical roles, not specific people or tools. The same AI may take on several roles in a piece of work, but never two in the same phase, and the AI that reviews an artefact is never the one that produced it.\n\n- The Orchestrator is a person. They define the objective, load the contexts, set the topic, validate each output and decide whether to advance. They cannot delegate validation to the AI that produced the output.\n- The AI Planner designs and does not write code. The AI Builder writes code and does not take design decisions. The AI Fixer applies minimal fixes and does not redesign.\n- The AI Reviewer assesses and does not fix. The illustration labels it «IA-Auditor»: it is the AI Reviewer. It is an AI, not a person: its assessment does not replace human review.\n\nTwo artificial intelligences can make the same mistake. That is why a competent person also reviews the code before it is merged. In authentication, payments, personal data, agents or critical systems, a second person who did not orchestrate the generation also reviews.\n\nContexts: before any phase, the organisation's rules (for example, «no real personal data in instructions to external providers») and the project's rules are loaded. Topic: a short name that groups all the artefacts of a piece of work in one folder. Records: each artefact states which model produced it, who validated it and with what result; and each discarded response is logged.\n\nWhy it matters to an executive: this is the segregation of duties of any serious process. The person who answers to the organisation for the code being correct is a person, and that responsibility is not delegated to a tool.\n\nQuestion for the classroom: which data of your company should never reach an external AI tool?"
       },
       "fuentes": [
         {
@@ -414,10 +413,10 @@
           }
         },
         {
-          "texto": { "es": "SEVEN-G 53 · IA revisora frente a Auditor de IA", "en": "SEVEN-G 53 · AI Reviewer versus AI Auditor" },
+          "texto": { "es": "SPAD 03 · Política de validación: autoaprobación", "en": "SPAD 03 · Validation policy: self-approval" },
           "href": {
-            "es": "SEVEN-G/html/es/53_SEVEN-G_Construccion_de_soluciones_con_IA.html#roles-ia-revisora-frente-a-auditor-de-ia",
-            "en": "SEVEN-G/html/en/53_SEVEN-G_Construccion_de_soluciones_con_IA.html#roles-ai-reviewer-versus-ai-auditor"
+            "es": "SPAD/html/es/03_SPAD_Politica_de_validacion.html#3-5-autoaprobacion",
+            "en": "SPAD/html/en/03_SPAD_Politica_de_validacion.html#3-5-self-approval"
           }
         }
       ]
@@ -425,12 +424,12 @@
     {
       "tipo": "tabla",
       "titulo": {
-        "es": "Qué se obtiene, cómo encaja y cómo empezar",
-        "en": "What you get, how it fits and how to start"
+        "es": "Qué se obtiene, para qué le sirve y cómo empezar",
+        "en": "What you get, what it does for you and how to start"
       },
       "sub": {
-        "es": "SPAD es gratuito, se adapta a cada organización y se apoya en SEVEN-G y SPHERES sin sustituirlos.",
-        "en": "SPAD is free, is adapted by each organisation and relies on SEVEN-G and SPHERES without replacing them."
+        "es": "SPAD es abierto y se adapta a cada organización. A su compañía le sirve para construir con método y para exigir a sus proveedores.",
+        "en": "SPAD is open and is adapted by each organisation. It helps your company build with method and make demands of its suppliers."
       },
       "cabecera": [
         { "es": "Pregunta", "en": "Question" },
@@ -459,31 +458,34 @@
             }
           },
           {
-            "es": "SPAD Lite: tres artefactos (plan revisado, entrega revisada, versión) para cambios acotados.",
-            "en": "SPAD Lite: three artefacts (reviewed plan, reviewed delivery, version) for contained changes."
+            "es": "[SPAD Lite](t:spad-lite): tres artefactos (plan revisado, entrega revisada, versión) para cambios acotados.",
+            "en": "[SPAD Lite](t:spad-lite): three artefacts (reviewed plan, reviewed delivery, version) for contained changes."
           }
         ],
         [
           {
-            "texto": { "es": "Con SEVEN-G", "en": "With SEVEN-G" },
+            "texto": { "es": "Construir con método", "en": "Build with method" },
             "href": {
-              "es": "SEVEN-G/html/es/53_SEVEN-G_Construccion_de_soluciones_con_IA.html#relacion-entre-seven-g-y-spad",
-              "en": "SEVEN-G/html/en/53_SEVEN-G_Construccion_de_soluciones_con_IA.html#relationship-between-seven-g-and-spad"
+              "es": "SPAD/html/es/00_SPAD_Que_es_y_para_que_sirve.html#para-que-le-sirve-a-una-compania",
+              "en": "SPAD/html/en/00_SPAD_Que_es_y_para_que_sirve.html#what-it-does-for-a-company"
             }
           },
           {
-            "es": "SEVEN-G decide qué se construye, con qué riesgo y valor medido; SPAD, cómo se construye.",
-            "en": "SEVEN-G decides what is built, with what risk and measured value; SPAD, how it is built."
+            "es": "Su equipo construye software con IA por [fases](t:spad-ciclo), con revisión independiente y validación humana.",
+            "en": "Your team builds software with AI in [phases](t:spad-ciclo), with independent review and human validation."
           }
         ],
         [
           {
-            "texto": { "es": "Con SPHERES", "en": "With SPHERES" },
-            "href": "SPHERES/html/{idioma}/00_SPHERES_Que_es_y_para_que_sirve.html"
+            "texto": { "es": "Exigir a proveedores", "en": "Require of suppliers" },
+            "href": {
+              "es": "SPAD/html/es/00_SPAD_Que_es_y_para_que_sirve.html#para-que-le-sirve-a-una-compania",
+              "en": "SPAD/html/en/00_SPAD_Que_es_y_para_que_sirve.html#what-it-does-for-a-company"
+            }
           },
           {
-            "es": "SPHERES explica dónde crea valor la IA (esferas y ambición); SPAD construye lo decidido.",
-            "en": "SPHERES explains where AI creates value (spheres and ambition); SPAD builds what is decided."
+            "es": "Pida [métricas del proceso](t:spad-metricas): que la productividad llegue en menos coste o más alcance.",
+            "en": "Ask for [process metrics](t:spad-metricas): productivity should reach you as lower cost or more scope."
           }
         ],
         [
@@ -495,8 +497,8 @@
             }
           },
           {
-            "es": "No promete cifras de mejora ni certifica: cada organización se mide a sí misma.",
-            "en": "It promises no improvement figures and does not certify: each organisation measures itself."
+            "es": "No promete cifras ni certifica: cada organización hace su [autoevaluación](t:spad-autoevaluacion).",
+            "en": "It promises no figures and does not certify: each organisation does its own [self-assessment](t:spad-autoevaluacion)."
           }
         ],
         [
@@ -508,23 +510,29 @@
             }
           },
           {
-            "es": "Con un trabajo pequeño: cargue los contextos, fije el tema y use la versión reducida.",
-            "en": "With a small piece of work: load the contexts, set the topic and use the reduced version."
+            "es": "Con un trabajo pequeño: cargue los [contextos](t:spad-contextos), fije el [tema](t:spad-temas) y use la versión reducida.",
+            "en": "With a small piece of work: load the [contexts](t:spad-contextos), set the [topic](t:spad-temas) and use the reduced version."
           }
         ]
       ],
       "destacado": {
-        "es": "Los veredictos de SPAD no sustituyen ninguna puerta de decisión de SEVEN-G: alimentan sus evidencias.",
-        "en": "SPAD verdicts do not replace any SEVEN-G decision gate: they feed its evidence."
+        "es": "Si su compañía sabe cómo se construye software con IA, puede saber si la ganancia llega a su factura.",
+        "en": "If your company knows how software is built with AI, it can tell whether the gain reaches its invoice."
       },
       "enlaces": [
         {
-          "texto": { "es": "SEVEN-G 53 · Construcción con IA", "en": "SEVEN-G 53 · Building with AI" },
-          "href": "SEVEN-G/html/{idioma}/53_SEVEN-G_Construccion_de_soluciones_con_IA.html"
+          "texto": { "es": "Para qué le sirve a una compañía", "en": "What it does for a company" },
+          "href": {
+            "es": "SPAD/html/es/00_SPAD_Que_es_y_para_que_sirve.html#para-que-le-sirve-a-una-compania",
+            "en": "SPAD/html/en/00_SPAD_Que_es_y_para_que_sirve.html#what-it-does-for-a-company"
+          }
         },
         {
-          "texto": { "es": "Qué es SPHERES", "en": "What SPHERES is" },
-          "href": "SPHERES/html/{idioma}/00_SPHERES_Que_es_y_para_que_sirve.html"
+          "texto": { "es": "Métricas del proceso", "en": "Process metrics" },
+          "href": {
+            "es": "SPAD/html/es/08_SPAD_Autoevaluacion_y_metricas.html#metricas-del-proceso",
+            "en": "SPAD/html/en/08_SPAD_Autoevaluacion_y_metricas.html#process-metrics"
+          }
         },
         {
           "texto": { "es": "Lista para empezar", "en": "Checklist to start" },
@@ -535,22 +543,19 @@
         }
       ],
       "notas": {
-        "es": "Qué se obtiene: decisiones tomadas antes de escribir código, un artefacto por fase, revisiones independientes y correcciones trazables. Todo queda en la carpeta del tema, que es la unidad de auditoría. La organización puede hacer una autoevaluación de conformidad, con una persona independiente de quienes construyeron. No es una certificación: nadie la emite ni la respalda desde fuera.\n\nVersión reducida (SPAD Lite): agrupa las fases en tres artefactos. Sirve para cambios acotados, sin datos personales ni dinero, con un equipo pequeño. Nunca se recorta la separación entre la IA que construye y la que revisa, la validación humana, la política de validación ni el registro del tema. El código sensible, los agentes con autonomía alta y los sistemas críticos exigen la versión completa.\n\nCómo se apoya en SEVEN-G (documento 53): SEVEN-G gobierna la iniciativa de IA completa, es decir, qué se construye, con qué riesgo y con qué valor medido, y lo deciden personas en puertas de decisión. SPAD trabaja dentro de la construcción, sobre todo en las fases de diseño y de entrega. Un GO de SPAD no equivale a «Continuar» en una puerta de SEVEN-G: sus artefactos son insumos de las evidencias. SEVEN-G admite SPAD u otro método documentado que cumpla sus requisitos mínimos.\n\nRelación con SPHERES: SPHERES explica las nueve esferas donde la IA crea valor y los tres niveles de ambición (Optimizar, Aumentar, Transformar). Ayuda a decidir dónde invertir; SPAD ayuda a construir bien lo decidido. Son metodologías independientes que se referencian.\n\nCómo empezar: elija un trabajo pequeño; cargue el contexto global y el del proyecto; fije el tema; asigne una IA revisora distinta de la constructora; abra el registro de validación; y compruebe qué información puede enviar a cada proveedor. Al principio irá más lento; mida retrabajo e incidentes frente a su punto de partida.\n\nSPAD se publica con licencia CC BY 4.0 (contenidos) y MIT (código); usarlo es gratuito.",
-        "en": "What you get: decisions taken before code is written, one artefact per phase, independent reviews and traceable fixes. Everything is kept in the topic folder, which is the unit of audit. The organisation can carry out a self-assessment of conformity, by a person independent of those who built. It is not a certification: nobody issues or endorses it from outside.\n\nReduced version (SPAD Lite): it groups the phases into three artefacts. It suits contained changes, with no personal data or money, and a small team. What is never cut is the separation between the AI that builds and the one that reviews, human validation, the validation policy and the topic register. Sensitive code, agents with high autonomy and critical systems require the complete version.\n\nHow it relies on SEVEN-G (document 53): SEVEN-G governs the complete AI initiative, that is, what is built, with what risk and with what measured value, and people decide at decision gates. SPAD works inside the build, mainly in the design and delivery phases. A SPAD GO does not equal «Proceed» at a SEVEN-G gate: its artefacts are inputs to the evidence. SEVEN-G accepts SPAD or another documented method that meets its minimum requirements.\n\nRelationship with SPHERES: SPHERES explains the nine spheres where AI creates value and the three ambition levels (Optimise, Augment, Transform). It helps decide where to invest; SPAD helps build well what has been decided. They are independent methodologies that reference each other.\n\nHow to start: choose a small piece of work; load the global and project contexts; set the topic; assign an AI Reviewer different from the builder; open the validation record; and check which information may be sent to each provider. At first it will be slower; measure rework and incidents against your starting position.\n\nSPAD is published under CC BY 4.0 (content) and MIT (code); using it is free."
+        "es": "Qué se obtiene: decisiones tomadas antes de escribir código, un artefacto por fase, revisiones independientes y correcciones trazables. Todo queda en la carpeta del tema, que es la unidad de auditoría. La organización puede hacer una autoevaluación de conformidad, con una persona independiente de quienes construyeron. No es una certificación: nadie la emite ni la respalda desde fuera.\n\nVersión reducida (SPAD Lite): agrupa las fases en tres artefactos. Sirve para cambios acotados, sin datos personales ni dinero, con un equipo pequeño. Nunca se recorta la separación entre la IA que construye y la que revisa, la validación humana, la política de validación ni el registro del tema. El código sensible, los agentes con autonomía alta y los sistemas críticos exigen la versión completa.\n\nPara qué le sirve a su compañía (posición del autor, sin cifras). Primer uso: construir su propio software con IA con método, con fases, artefactos revisados, revisión independiente y validación humana. Segundo uso, como cliente: una compañía que sabe cómo se construye software con IA puede exigir a sus proveedores e integradores que la ganancia de productividad llegue a ella, en menos coste o en más alcance por el mismo precio. Puede pedirles lo que SPAD ya define, sin inventar nada más: el artefacto de cada fase, el registro del modelo y de la validación humana, los veredictos de cada revisión y las métricas del proceso (tiempo por fase, iteraciones hasta GO, defectos escapados, retrabajo). Por qué importa: la IA cambia lo que cuesta construir software; sin ese conocimiento, la compañía no sabe si el cambio llega a su factura o se queda en el proveedor. SPAD no fija un porcentaje: permite negociar con datos.\n\nUn marco aparte. SPAD trata solo de cómo se construye el software; no es gobierno de la IA de la compañía. Quien quiera gobernar qué se construye, con qué riesgo y cómo se mide su valor tiene un marco aparte, SEVEN-G. El único puente es su documento 53, y los veredictos de SPAD no sustituyen a sus puertas de decisión.\n\nCómo empezar: elija un trabajo pequeño; cargue el contexto global y el del proyecto; fije el tema; asigne una IA revisora distinta de la constructora; abra el registro de validación; y compruebe qué información puede enviar a cada proveedor. Al principio irá más lento; mida retrabajo e incidentes frente a su punto de partida.\n\nSPAD se publica con licencia CC BY 4.0 (contenidos) y MIT (código): puede usarse y adaptarse citando la autoría.",
+        "en": "What you get: decisions taken before code is written, one artefact per phase, independent reviews and traceable fixes. Everything is kept in the topic folder, which is the unit of audit. The organisation can carry out a self-assessment of conformity, by a person independent of those who built. It is not a certification: nobody issues or endorses it from outside.\n\nReduced version (SPAD Lite): it groups the phases into three artefacts. It suits contained changes, with no personal data or money, and a small team. What is never cut is the separation between the AI that builds and the one that reviews, human validation, the validation policy and the topic register. Sensitive code, agents with high autonomy and critical systems require the complete version.\n\nWhat it does for your company (the author's position, with no figures). First use: building your own software with AI with method, with phases, reviewed artefacts, independent review and human validation. Second use, as a client: a company that knows how software is built with AI can require its suppliers and integrators to pass the productivity gain on to it, as lower cost or more scope for the same price. It can ask them for what SPAD already defines, without inventing anything else: the artefact of each phase, the record of the model and of human validation, the verdict of each review and the process metrics (time per phase, iterations to GO, escaped defects, rework). Why it matters: AI changes what it costs to build software; without that knowledge, the company does not know whether the change reaches its invoice or stays with the supplier. SPAD sets no percentage: it lets you negotiate with data.\n\nA separate framework. SPAD deals only with how software is built; it is not the governance of the company's AI. Whoever wants to govern what is built, with what risk and how its value is measured has a separate framework, SEVEN-G. The only bridge is its document 53, and SPAD verdicts do not replace its decision gates.\n\nHow to start: choose a small piece of work; load the global and project contexts; set the topic; assign an AI Reviewer different from the builder; open the validation record; and check which information may be sent to each provider. At first it will be slower; measure rework and incidents against your starting position.\n\nSPAD is published under CC BY 4.0 (content) and MIT (code): it can be used and adapted, citing the authorship."
       },
       "fuentes": [
         {
-          "texto": { "es": "SEVEN-G 53 · Relación entre SEVEN-G y SPAD", "en": "SEVEN-G 53 · Relationship between SEVEN-G and SPAD" },
-          "href": {
-            "es": "SEVEN-G/html/es/53_SEVEN-G_Construccion_de_soluciones_con_IA.html#relacion-entre-seven-g-y-spad",
-            "en": "SEVEN-G/html/en/53_SEVEN-G_Construccion_de_soluciones_con_IA.html#relationship-between-seven-g-and-spad"
-          }
+          "texto": { "es": "SEVEN-G 53 · Construcción de soluciones con IA (único puente)", "en": "SEVEN-G 53 · Building solutions with AI (the only bridge)" },
+          "href": "SEVEN-G/html/{idioma}/53_SEVEN-G_Construccion_de_soluciones_con_IA.html"
         },
         {
-          "texto": { "es": "SEVEN-G 53 · Veredictos técnicos y resultados de gate", "en": "SEVEN-G 53 · Technical verdicts and gate outcomes" },
+          "texto": { "es": "SPAD 00 · Para qué le sirve a una compañía", "en": "SPAD 00 · What it does for a company" },
           "href": {
-            "es": "SEVEN-G/html/es/53_SEVEN-G_Construccion_de_soluciones_con_IA.html#4-4-veredictos-tecnicos-y-resultados-de-gate",
-            "en": "SEVEN-G/html/en/53_SEVEN-G_Construccion_de_soluciones_con_IA.html#4-4-technical-verdicts-and-gate-outcomes"
+            "es": "SPAD/html/es/00_SPAD_Que_es_y_para_que_sirve.html#para-que-le-sirve-a-una-compania",
+            "en": "SPAD/html/en/00_SPAD_Que_es_y_para_que_sirve.html#what-it-does-for-a-company"
           }
         },
         {
@@ -566,10 +571,6 @@
             "es": "SPAD/html/es/08_SPAD_Autoevaluacion_y_metricas.html#metricas-del-proceso",
             "en": "SPAD/html/en/08_SPAD_Autoevaluacion_y_metricas.html#process-metrics"
           }
-        },
-        {
-          "texto": { "es": "SPHERES 00 · Qué es SPHERES y para qué sirve", "en": "SPHERES 00 · What SPHERES is and what it is for" },
-          "href": "SPHERES/html/{idioma}/00_SPHERES_Que_es_y_para_que_sirve.html"
         }
       ]
     }

@@ -22,6 +22,11 @@
 .PARAMETER Fuentes     Carpeta de fuentes (por defecto presentaciones/fuentes). Para pruebas.
 .PARAMETER Salida      Raíz de las salidas (por defecto la raíz del repositorio). Para pruebas.
 .PARAMETER Catalogo    Catálogo de imágenes (por defecto presentaciones/imagenes.json). Para pruebas.
+.PARAMETER Terminos    Catálogo de términos enlazados (por defecto presentaciones/terminos.json). Para pruebas.
+
+  Términos enlazados (D179): en el texto visible de una slide, «[texto visible](t:<id>)» se dibuja como un run con
+  hipervínculo al término <id> del catálogo de términos; las notas y el PDF añaden «Términos de esta slide».
+  Toda medida de texto y todo límite de caracteres se calculan sobre el texto visible, sin la marca.
 
 .EXAMPLE
   pwsh -File presentaciones/build_presentaciones.ps1
@@ -39,7 +44,8 @@ param(
   [switch]$Comprobar,
   [string]$Fuentes,
   [string]$Salida,
-  [string]$Catalogo
+  [string]$Catalogo,
+  [string]$Terminos
 )
 
 $ErrorActionPreference = 'Stop'
@@ -74,9 +80,39 @@ $AVISO = @{
   en = 'Legal notice: a generic, free methodological aid provided "as is" for information purposes; it is not legal advice and has not been legally reviewed for any case. Each organisation adapts it and is responsible for its legal review and its regulatory compliance; it may not reflect recent regulatory changes. To the fullest extent permitted by law, the author accepts no liability whatsoever for the effects of its application. It does not grant certification of any kind. Details in document 93.'
 }
 $TX = @{
-  es = @{ notas = 'Notas'; fuentes = 'Fuentes y enlaces'; aviso = 'Aviso legal' }
-  en = @{ notas = 'Notes'; fuentes = 'Sources and links'; aviso = 'Legal notice' }
+  es = @{ notas = 'Notas'; fuentes = 'Fuentes y enlaces'; aviso = 'Aviso legal'; terminos = 'Términos de esta slide'; grafico = 'Enlaces del gráfico' }
+  en = @{ notas = 'Notes'; fuentes = 'Sources and links'; aviso = 'Legal notice'; terminos = 'Terms on this slide'; grafico = 'Links in the chart' }
 }
+
+# =====================================================================================
+# Términos enlazados (D179): «[texto visible](t:<id>)»
+# Al leer un texto (Tx) la marca se codifica con caracteres de uso privado: U+E000, un carácter con el índice del
+# término (U+E100 + n) y el texto visible, cerrado con U+E002. Así la marca viaja por todo el código (concatenaciones,
+# mayúsculas, flechas) sin cambiar; las funciones de medida la quitan (Visible) y Run la dibuja como hipervínculo.
+# =====================================================================================
+$TERM_RE = '\[([^\[\]]+)\]\(t:([A-Za-z0-9_.\-]+)\)'
+$PUA = [char[]]@([char]0xE000, [char]0xE002)
+$script:termIds = [Collections.Generic.List[string]]::new()
+$script:termIdx = @{}
+$CAT_TERM = @{}
+$hayCatalogoTerminos = $false
+function Codificar([string]$s) {
+  if (-not $s -or $s.IndexOf('(t:') -lt 0) { return $s }
+  [regex]::Replace($s, $TERM_RE, {
+      param($m)
+      $id = $m.Groups[2].Value
+      if (-not $script:termIdx.ContainsKey($id)) { $script:termIdx[$id] = $script:termIds.Count; $script:termIds.Add($id) }
+      [string][char]0xE000 + [char](0xE100 + $script:termIdx[$id]) + $m.Groups[1].Value + [char]0xE002 })
+}
+# texto visible de un texto ya codificado
+function Visible([string]$s) {
+  if (-not $s -or $s.IndexOfAny($PUA) -lt 0) { return $s }
+  [regex]::Replace($s, '[\s\S]|', '')
+}
+# texto visible de un texto en bruto (con la marca escrita)
+function Visible-Bruto([string]$s) { if (-not $s) { return $s }; [regex]::Replace($s, $TERM_RE, '$1') }
+# ids de los términos de un texto en bruto, en orden
+function Ids-Bruto([string]$s) { if (-not $s) { return @() }; @([regex]::Matches($s, $TERM_RE) | ForEach-Object { $_.Groups[2].Value }) }
 
 function Xml([string]$s) { if ($null -eq $s) { return '' }; [Security.SecurityElement]::Escape($s) }
 function Sha256Bytes([byte[]]$b) { [Convert]::ToHexString([Security.Cryptography.SHA256]::HashData($b)).ToLowerInvariant() }
@@ -100,11 +136,13 @@ function ColorDe($nombre, [int]$i = 0) { if ($nombre -and $COLORES.ContainsKey([
 $SW = 12192000; $SH = 6858000
 $MX = 609600; $W = $SW - 2 * $MX
 $INS_LR = 91440; $INS_TB = 45720
+$DONACION_ZONAS = 0.04   # póster de pilares: fracción del ancho útil que gana la imagen con zonas de enlace
 
 # =====================================================================================
 # Medición de texto (estimación prudente, para que nada se salga de su caja)
 # =====================================================================================
 function Em-Palabra([string]$p) {
+  if ($p.IndexOfAny($PUA) -ge 0) { $p = Visible $p }
   $e = 0.0
   foreach ($ch in $p.ToCharArray()) {
     if ('iljI.,;:!|''`()[]'.Contains($ch)) { $e += 0.26 }
@@ -121,6 +159,7 @@ function Em-Palabra([string]$p) {
 # número de líneas que ocupa un texto en un ancho dado (pt) a un tamaño dado (pt)
 function Lineas([string]$texto, [double]$anchoPt, [double]$tamPt, [double]$factor) {
   if (-not $texto) { return 1 }
+  $texto = Visible $texto
   $total = 0
   foreach ($seg in ($texto -split "`n")) {
     $lin = 1; $act = 0.0
@@ -170,7 +209,7 @@ function Ajustar([object[]]$partes, [int]$cx, [int]$cy, [int]$max, [int]$min = 9
   }
   $script:ajusteOk = $false
   if ($script:ajusteSilencio) { return $min }
-  $muestra = (@($partes | ForEach-Object { $_.t }) -join ' ')
+  $muestra = Visible (@($partes | ForEach-Object { $_.t }) -join ' ')
   $muestra = $muestra.Substring(0, [math]::Min(40, $muestra.Length))
   $script:avisosAjuste.Add("texto muy largo para su caja (tamaño mínimo $([math]::Round($min/100,1)) pt): «$muestra…»")
   $min
@@ -204,14 +243,37 @@ function Enlace([string]$url) { if (-not $url) { return $null }; Rel-Nueva $scri
 function NuevoId() { $script:ctx.idSeq++; $script:ctx.idSeq }
 
 # run: $o = @{ color; tam; neg; ita; fam; url; sub (subrayado) }
+# Si el texto lleva términos codificados (Codificar), cada término es un run propio con su hipervínculo y el resto
+# conserva el formato (y el enlace) de $o.
 function Run([string]$texto, [hashtable]$o) {
+  if (-not $texto -or $texto.IndexOf([char]0xE000) -lt 0) { return Run-Uno $texto $o }
+  $out = ''; $pos = 0
+  foreach ($m in [regex]::Matches($texto, '([\s\S])([^]*)')) {
+    if ($m.Index -gt $pos) { $out += Run-Uno (Visible $texto.Substring($pos, $m.Index - $pos)) $o }
+    $id = $script:termIds[[int]$m.Groups[1].Value[0] - 0xE100]
+    $t = $CAT_TERM[$id]
+    if ($t) {
+      $o2 = @{} + $o
+      $o2.url = Url $t.href; $o2.sub = $true; $o2.termino = $true; $o2.color = ColorTermino $o.color
+      $out += Run-Uno $m.Groups[2].Value $o2
+    } else { $out += Run-Uno $m.Groups[2].Value $o }
+    $pos = $m.Index + $m.Length
+  }
+  if ($pos -lt $texto.Length) { $out += Run-Uno (Visible $texto.Substring($pos)) $o }
+  $out
+}
+# color de un término: sobre texto de tinta (fondo claro), oxford; sobre texto claro o de color, el mismo color
+function ColorTermino($c) { if (-not $c -or $c -in @($TINTA, $NEGRO, $TINTA2)) { $OXFORD } else { $c } }
+function Run-Uno([string]$texto, [hashtable]$o) {
   $a = " lang=""$($script:LANGTAG)"" sz=""$($o.tam)"""
   if ($o.neg) { $a += ' b="1"' }
   if ($o.ita) { $a += ' i="1"' }
   if ($o.sub) { $a += ' u="sng"' }
   $c = if ($o.color) { $o.color } else { $TINTA }
   $f = if ($o.fam) { "<a:latin typeface=""$($o.fam)""/>" } else { '' }
-  $h = if ($o.url) { "<a:hlinkClick r:id=""$(Enlace $o.url)""/>" } else { '' }
+  # en un término, el hipervínculo usa el color del texto (extensión de Office 2019+), no el del tema
+  $h = if ($o.url -and $o.termino) { "<a:hlinkClick r:id=""$(Enlace $o.url)""><a:extLst><a:ext uri=""{A12FA001-AC4F-418D-AE19-62706E023703}""><ahyp:hlinkClr xmlns:ahyp=""http://schemas.microsoft.com/office/drawing/2018/hyperlinkcolor"" val=""tx""/></a:ext></a:extLst></a:hlinkClick>" }
+  elseif ($o.url) { "<a:hlinkClick r:id=""$(Enlace $o.url)""/>" } else { '' }
   "<a:r><a:rPr$a dirty=""0""><a:solidFill><a:srgbClr val=""$c""/></a:solidFill>$f$h</a:rPr><a:t>$(Xml $texto)</a:t></a:r>"
 }
 # párrafo: $runs ya en XML; $o = @{ algn; aft (centipt); bullet (color); ind (EMU); lnSpc (%) ; bef }
@@ -276,6 +338,8 @@ function Medidas-Imagen([string]$ruta) {
 # Devuelve @(izq, arriba, der, abajo) en fracción, o $null.
 function Recorte-De([string]$ruta) {
   if ($ruta -notmatch '[\\/]presentaciones[\\/]img[\\/]') { return $null }
+  # una imagen con zonas de enlace se captura ya sin título ni pie, y sus zonas son relativas a la imagen entera
+  if ($ZONAS_RUTA.ContainsKey($ruta)) { return $null }
   $m = Medidas-Imagen $ruta
   $k = $m[0] / 2255.0
   @((25 * $k / $m[0]), (185 * $k / $m[1]), (25 * $k / $m[0]), (72 * $k / $m[1]))
@@ -300,6 +364,18 @@ function Pic([string]$ruta, [int]$x, [int]$y, [int]$cx, [int]$cy, [string]$descr
   $rid = Rel-Nueva $script:ctx $T_IMAGE "../media/$($script:media[$ruta])" $false
   $id = NuevoId
   $xml = "<p:pic><p:nvPicPr><p:cNvPr id=""$id"" name=""Imagen $id"" descr=""$(Xml $descr)""/><p:cNvPicPr><a:picLocks noChangeAspect=""1""/></p:cNvPicPr><p:nvPr/></p:nvPicPr><p:blipFill><a:blip r:embed=""$rid""/>$src<a:stretch><a:fillRect/></a:stretch></p:blipFill><p:spPr><a:xfrm><a:off x=""$ox"" y=""$oy""/><a:ext cx=""$w"" cy=""$h""/></a:xfrm><a:prstGeom prst=""rect""><a:avLst/></a:prstGeom><a:ln w=""9525""><a:solidFill><a:srgbClr val=""$GRIS""/></a:solidFill></a:ln></p:spPr></p:pic>"
+  # zonas de enlace de la imagen (imagenes.json, «zonas»): un rectángulo transparente con hipervínculo por zona, encima
+  # de la imagen. Se anotan en $script:zonasSlide para las notas y para las anclas del PDF.
+  if (-not $rec -and $ZONAS_RUTA.ContainsKey($ruta)) {
+    foreach ($z in $ZONAS_RUTA[$ruta]) {
+      $u = Url ([string]$z.href); if (-not $u) { continue }
+      $zx = $ox + [int]([double]$z.x * $w); $zy = $oy + [int]([double]$z.y * $h)
+      $zw = [math]::Max(1, [int]([double]$z.w * $w)); $zh = [math]::Max(1, [int]([double]$z.h * $h))
+      $zid = NuevoId; $tz = [string]$z.texto
+      $xml += "<p:sp><p:nvSpPr><p:cNvPr id=""$zid"" name=""Enlace $zid"" descr=""$(Xml $tz)""><a:hlinkClick r:id=""$(Enlace $u)"" tooltip=""$(Xml $tz)""/></p:cNvPr><p:cNvSpPr/><p:nvPr/></p:nvSpPr><p:spPr><a:xfrm><a:off x=""$zx"" y=""$zy""/><a:ext cx=""$zw"" cy=""$zh""/></a:xfrm><a:prstGeom prst=""rect""><a:avLst/></a:prstGeom><a:solidFill><a:srgbClr val=""FFFFFF""><a:alpha val=""0""/></a:srgbClr></a:solidFill><a:ln><a:noFill/></a:ln></p:spPr></p:sp>"
+      if ($null -ne $script:zonasSlide) { $script:zonasSlide.Add(@{ x = $zx; y = $zy; w = $zw; h = $zh; url = $u; texto = $tz }) }
+    }
+  }
   [pscustomobject]@{ xml = $xml; x = $ox; y = $oy; w = $w; h = $h }
 }
 
@@ -307,15 +383,20 @@ function Pic([string]$ruta, [int]$x, [int]$y, [int]$cx, [int]$cy, [string]$descr
 # Utilidades de contenido
 # =====================================================================================
 $script:L = 'es'
-function Tx($o) {
+# texto del idioma activo, en bruto (con la marca de término escrita)
+function TxBruto($o) {
   if ($null -eq $o) { return '' }
   if ($o -is [string]) { return $o }
   if ($o -is [System.Collections.IDictionary]) {
     if ($o.Contains($script:L)) { return [string]$o[$script:L] }
-    if ($o.Contains('texto')) { return Tx $o['texto'] }
+    if ($o.Contains('texto')) { return TxBruto $o['texto'] }
   }
   [string]$o
 }
+# texto del idioma activo con los términos codificados (lo que usan medida y dibujo)
+function Tx($o) { Codificar (TxBruto $o) }
+# texto del idioma activo, solo lo visible (notas, fuentes, títulos en el PDF)
+function TxVisible($o) { Visible-Bruto (TxBruto $o) }
 # href de un campo -> cadena del idioma (aún sin base)
 function HrefIdioma($h, [string]$lang) {
   if ($null -eq $h) { return $null }
@@ -483,13 +564,17 @@ function Cuerpo-Imagen($s, [int]$top, [int]$bot, [hashtable]$img) {
   $cols = @(, @($bl | Select-Object -First $mitad)); if ($bl.Count -gt $mitad) { $cols += , @($bl | Select-Object -Skip $mitad) }
   $anchoCol = [int](($W - 360000) / 2)
   $hB = 0; $tamB = 0
-  for ($h = 750000; $h -le [int]($alto * 0.5); $h += 50000) {
+  # un gráfico con zonas de enlace va siempre que se pueda en banda a todo el ancho (es apaisado y su texto es pequeño):
+  # se admite algo más de alto para las viñetas y una letra mínima algo menor
+  $conZonas = $ZONAS_RUTA.ContainsKey($img.ruta)
+  $limB = if ($conZonas) { 0.6 } else { 0.5 }; $minB = if ($conZonas) { 1200 } else { 1300 }
+  for ($h = 750000; $h -le [int]($alto * $limB); $h += 50000) {
     $t = 1700
-    foreach ($c in $cols) { $t = [math]::Min($t, (Cabe (Partes-Viñetas $c) $anchoCol $h 1700 1300)); if ($t -eq 0) { break } }
+    foreach ($c in $cols) { $t = [math]::Min($t, (Cabe (Partes-Viñetas $c) $anchoCol $h 1700 $minB)); if ($t -eq 0) { break } }
     if ($t -gt 0) { $hB = $h; $tamB = $t; break }
   }
   $wBanda = if ($hB) { [math]::Min($W, [int](($alto - $hB - 150000) * $r)) } else { 0 }
-  if ($wBanda -gt $wLado * 1.2) {
+  if ($wBanda -gt $wLado * 1.2 -or ($conZonas -and $wBanda -gt $wLado)) {
     $hImg = $alto - $hB - 150000
     $p = Pic $img.ruta $MX $top $W $hImg $img.descr 'centro' $rec
     $x = $p.xml
@@ -670,6 +755,44 @@ function Cuerpo-Poster($s, [int]$top, [int]$bot, $img) {
   $x = ''
   $partesDe = { param($b) @(@{ t = (ConFlecha (Tx $b.titulo) ([bool]$b.href)); neg = $true; fam = 'Georgia'; esc = 1.12; aft = 300 }, @{ t = (Tx $b.texto) }) }
   $cols = if ($n -eq 4) { 2 } else { 3 }
+  # Varias imágenes (imagen, imagen2, imagen3): «pilares». Una columna por imagen, con la imagen arriba y debajo los
+  # bloques que la explican (los bloques se reparten por filas: el bloque i va a la columna i mod k). El ancho de cada
+  # columna crece con la proporción de su imagen (exponente 0,4: la más apaisada recibe más ancho sin dejar a la más
+  # cuadrada sin sitio) y todas las imágenes van centradas en una banda de la misma altura.
+  $extra = @(foreach ($c in 'imagen2', 'imagen3') { if ($s[$c]) { Imagen-De ([string]$s[$c]) $script:L } })
+  if ($img -and $extra.Count) {
+    $imgs = @($img) + $extra; $k = $imgs.Count
+    $recs = @($imgs | ForEach-Object { , (Recorte-De $_.ruta) })
+    $rs = @(for ($i = 0; $i -lt $k; $i++) { Proporcion $imgs[$i].ruta $recs[$i] })
+    $pesos = @($rs | ForEach-Object { [math]::Pow($_, 0.4) }); $suma = ($pesos | Measure-Object -Sum).Sum
+    $util = $W - ($k - 1) * $hueco
+    $anchos = @($pesos | ForEach-Object { [int]($util * $_ / $suma) })
+    # una imagen con zonas de enlace (gráfico navegable, de texto pequeño) recibe más ancho para que se lea; se lo cede
+    # la otra imagen más apaisada (la que menos alto pierde), no la más cuadrada, cuyos bloques ya van justos
+    $iz = @(0..($k - 1) | Where-Object { $ZONAS_RUTA.ContainsKey($imgs[$_].ruta) }) | Select-Object -First 1
+    if ($null -ne $iz) {
+      $don = @(0..($k - 1) | Where-Object { $_ -ne $iz } | Sort-Object { - $rs[$_] }) | Select-Object -First 1
+      $tr = [int]($util * $DONACION_ZONAS); $anchos[$iz] += $tr; $anchos[$don] -= $tr
+    }
+    $filas = [int][math]::Ceiling($n / $k)
+    $hBanda = 0; for ($i = 0; $i -lt $k; $i++) { $hBanda = [math]::Max($hBanda, [int]($anchos[$i] / $rs[$i])) }
+    $hBanda = [int][math]::Min($hBanda, ($bot - $top) * 0.40)
+    $bTop = $top + $hBanda + 130000
+    $alto = [int](($bot - $bTop - ($filas - 1) * 110000) / $filas)
+    $xs = @(0) * $k; $acc = $MX; for ($i = 0; $i -lt $k; $i++) { $xs[$i] = $acc; $acc += $anchos[$i] + $hueco }
+    for ($i = 0; $i -lt $k; $i++) { $x += (Pic $imgs[$i].ruta $xs[$i] $top $anchos[$i] $hBanda $imgs[$i].descr 'centro' $recs[$i]).xml }
+    $tam = 1500
+    for ($i = 0; $i -lt $n; $i++) { $tam = [math]::Min($tam, (Ajustar (& $partesDe $bl[$i]) $anchos[$i % $k] ($alto - 50000) 1500 900 90000 60000)) }
+    for ($i = 0; $i -lt $n; $i++) {
+      $b = $bl[$i]; $col = ColorDe $b.color $i; $c = $i % $k; $f = [math]::Floor($i / $k)
+      $cx = $xs[$c]; $cy = $bTop + $f * ($alto + 110000)
+      $u = Url $b.href
+      $parr = (Parr (Run (ConFlecha (Tx $b.titulo) ([bool]$u)) @{ color = $col; tam = [int]($tam * 1.12); neg = $true; fam = 'Georgia' }) @{ aft = [int]($tam * 0.3) }) + (Parr (Run (Tx $b.texto) @{ color = $TINTA; tam = $tam }))
+      $x += Rect $cx $cy $anchos[$c] 50000 $col
+      $x += Forma $cx ($cy + 50000) $anchos[$c] ($alto - 50000) $parr @{ fill = $CARTA; insLR = 90000; insTB = 60000; url = $u }
+    }
+    return $x
+  }
   if ($img) {
     $rec = Recorte-De $img.ruta
     $r = Proporcion $img.ruta $rec
@@ -694,12 +817,24 @@ function Cuerpo-Poster($s, [int]$top, [int]$bot, $img) {
     $anchoCol = $W * 0.42
     $hCol = [math]::Min($bot - $top, $anchoCol / $r)
     $supCol = ($hCol * $r) * $hCol
-    if ($r -ge 2.2 -or $supBanda -ge 0.85 * $supCol) {
+    $img2 = if ($s.imagen2) { Imagen-De ([string]$s.imagen2) $script:L } else { $null }
+    if ($img2 -or $r -ge 2.2 -or $supBanda -ge 0.85 * $supCol) {
       if (-not $mejor) { $mejor = @{ cols = 3; filas = [int][math]::Ceiling($n / 3); hI = [int](($bot - $top) * 0.25) } }
       $cols = $mejor.cols
       $hImg = $mejor.hI
-      $p = Pic $img.ruta $MX $top $W $hImg $img.descr 'centro' $rec
-      $x += $p.xml
+      if ($img2) {
+        # dos imágenes en la banda, a la misma altura y con el ancho que pide la proporción de cada una
+        $rec2 = Recorte-De $img2.ruta; $r2 = Proporcion $img2.ruta $rec2
+        $sep = 200000
+        $hDos = [int][math]::Min($hImg, ($W - $sep) / ($r + $r2))
+        $w1 = [int]($hDos * $r); $w2 = [int]($hDos * $r2)
+        $x0 = $MX + [int](($W - $w1 - $w2 - $sep) / 2); $y0 = $top + [int](($hImg - $hDos) / 2)
+        $x += (Pic $img.ruta $x0 $y0 $w1 $hDos $img.descr 'centro' $rec).xml
+        $x += (Pic $img2.ruta ($x0 + $w1 + $sep) $y0 $w2 $hDos $img2.descr 'centro' $rec2).xml
+      } else {
+        $p = Pic $img.ruta $MX $top $W $hImg $img.descr 'centro' $rec
+        $x += $p.xml
+      }
       $bTop = $top + $hImg + 150000
     } else {
       # imagen más cuadrada: columna a la derecha del 42 % del ancho; bloques en dos columnas
@@ -819,24 +954,78 @@ function Bloques-Notas([string]$t) {
   }
   $out
 }
-# fuentes y enlaces de una slide, sin repetidos: lista de @{ texto; url }
+# textos visibles de una slide en el idioma activo, en bruto y en orden de lectura (no incluye notas ni fuentes)
+function Textos-Visibles($s) {
+  $o = [Collections.Generic.List[string]]::new()
+  $add = { param($v) $t = TxBruto $v; if ($t) { $o.Add($t) } }
+  $bul = { param($lst) foreach ($b in (Lista $lst)) { if ($b -is [System.Collections.IDictionary] -and ($b.Contains('texto') -or $b.Contains('rotulo'))) { & $add $b.rotulo; & $add $b.texto } else { & $add $b } } }
+  & $add $s.antetitulo
+  if ($s.tipo -eq 'seccion') { & $add $s.rotulo; & $add $s.titulo; & $add $s.texto; & $add $s.sub }
+  else { & $add $s.titulo; & $add $s.publico; & $add $s.sub; & $add $s.texto; & $add $s.apoyo }
+  & $bul $s.bullets
+  foreach ($k in 'tarjetas', 'bloques') { foreach ($b in (Lista $s[$k])) { & $add $b.titulo; & $add $b.texto } }
+  foreach ($b in (Lista $s.pasos)) { & $add $b.rotulo; & $add $b.titulo; & $add $b.texto }
+  foreach ($c in (Lista $s.cabecera)) { & $add $c }
+  foreach ($f in (Lista $s.filas)) { foreach ($c in @($f)) { & $add $c } }
+  foreach ($lado in 'izquierda', 'derecha') { $l = $s[$lado]; if ($l -is [System.Collections.IDictionary]) { & $add $l.titulo; & $bul $l.bullets } }
+  & $add $s.destacado
+  foreach ($e in (Lista $s.enlaces)) { & $add $e.texto }
+  , $o
+}
+# términos enlazados en el texto visible de una slide, sin repetir y en orden de aparición: lista de @{ id; nombre; codigo; explicacion; url }
+function Terminos-Slide($s) {
+  $vistos = @{}; $out = [Collections.Generic.List[object]]::new()
+  foreach ($t in (Textos-Visibles $s)) {
+    foreach ($id in (Ids-Bruto $t)) {
+      if ($vistos.ContainsKey($id) -or -not $CAT_TERM.ContainsKey($id)) { continue }
+      $vistos[$id] = $true; $e = $CAT_TERM[$id]
+      $nom = TxBruto $e.nombre; if ($nom) { $nom = $nom.Substring(0, 1).ToUpper($(if ($script:L -eq 'en') { [Globalization.CultureInfo]'en-GB' } else { [Globalization.CultureInfo]'es-ES' })) + $nom.Substring(1) }
+      $out.Add(@{ id = $id; nombre = $nom; codigo = [string]$e.codigo; explicacion = (TxBruto $e.explicacion); url = (Url $e.href) })
+    }
+  }
+  , $out
+}
+# fuentes y enlaces de una slide, sin repetidos ni términos de la slide: lista de @{ texto; url }
 function Fuentes-Slide($s) {
   $vistas = @{}; $out = [Collections.Generic.List[object]]::new()
+  foreach ($t in (Terminos-Slide $s)) { if ($t.url) { $vistas["url|$($t.url)"] = $true } }
   foreach ($f in (@(Lista $s.fuentes) + @(Lista $s.enlaces))) {
-    $u = Url $f.href; $t = Tx $f.texto
-    if (-not $u -or $vistas.ContainsKey("$t|$u")) { continue }
+    $u = Url $f.href; $t = TxVisible $f.texto
+    if (-not $u -or $vistas.ContainsKey("$t|$u") -or $vistas.ContainsKey("url|$u")) { continue }
     $vistas["$t|$u"] = $true; $out.Add(@{ texto = $t; url = $u })
   }
   $out
 }
-function Notas-Xml($s, [bool]$ultima) {
+# enlaces del gráfico de una slide (zonas de las imágenes que lleva), sin repetir: lista de @{ texto; url }
+function Enlaces-Grafico([object[]]$zonas) {
+  $vistos = @{}; $out = [Collections.Generic.List[object]]::new()
+  foreach ($z in @($zonas)) { if (-not $z) { continue }; $k = "$($z.texto)|$($z.url)"; if ($vistos.ContainsKey($k)) { continue }; $vistos[$k] = $true; $out.Add(@{ texto = $z.texto; url = $z.url }) }
+  $out
+}
+function Notas-Xml($s, [bool]$ultima, [object[]]$zonas = @()) {
   $p = ''
-  foreach ($b in (Bloques-Notas (Tx $s.notas))) {
+  foreach ($b in (Bloques-Notas (TxVisible $s.notas))) {
     if ($b.tipo -eq 'li') { $p += Parr (Run $b.texto @{ color = $NEGRO; tam = 1200 }) @{ bullet = $NEGRO; ind = 228600; aft = 300 } }
     else { $p += Parr (Run $b.texto @{ color = $NEGRO; tam = 1200 }) @{ aft = 600 } }
   }
-  $p += Parr (Run $TX[$script:L].fuentes @{ color = $NEGRO; tam = 1200; neg = $true }) @{ bef = 600; aft = 300 }
-  foreach ($f in (Fuentes-Slide $s)) {
+  $terms = Terminos-Slide $s
+  if ($terms.Count) {
+    $p += Parr (Run $TX[$script:L].terminos @{ color = $NEGRO; tam = 1200; neg = $true }) @{ bef = 600; aft = 300 }
+    foreach ($t in $terms) {
+      $cod = if ($t.codigo) { " ($($t.codigo))" } else { '' }
+      $r = (Run $t.nombre @{ color = $NEGRO; tam = 1100; neg = $true }) + (Run "${cod}: $($t.explicacion) " @{ color = $NEGRO; tam = 1100 })
+      if ($t.url) { $r += Run $t.url @{ color = $OXFORD; tam = 1100; url = $t.url; sub = $true } }
+      $p += Parr $r @{ bullet = $NEGRO; ind = 228600; aft = 200 }
+    }
+  }
+  $eg = @(Enlaces-Grafico $zonas)
+  if ($eg.Count) {
+    $p += Parr (Run $TX[$script:L].grafico @{ color = $NEGRO; tam = 1200; neg = $true }) @{ bef = 600; aft = 300 }
+    foreach ($e in $eg) { $p += Parr ((Run "$($e.texto): " @{ color = $NEGRO; tam = 1100 }) + (Run $e.url @{ color = $OXFORD; tam = 1100; url = $e.url; sub = $true })) @{ bullet = $NEGRO; ind = 228600; aft = 200 } }
+  }
+  $fs = @(Fuentes-Slide $s)
+  if ($fs.Count) { $p += Parr (Run $TX[$script:L].fuentes @{ color = $NEGRO; tam = 1200; neg = $true }) @{ bef = 600; aft = 300 } }
+  foreach ($f in $fs) {
     $p += Parr ((Run "$($f.texto): " @{ color = $NEGRO; tam = 1100 }) + (Run $f.url @{ color = $OXFORD; tam = 1100; url = $f.url; sub = $true })) @{ bullet = $NEGRO; ind = 228600; aft = 200 }
   }
   if ($ultima) { $p += Parr (Run $AVISO[$script:L] @{ color = $NEGRO; tam = 1000; ita = $true }) @{ bef = 900 } }
@@ -933,6 +1122,7 @@ foreach ($f in (Get-ChildItem (Join-Path $repo 'SEVEN-G/build/referencias') -Fil
 
 # catálogo de imágenes (tolerante: mapa clave -> {es,en} | ruta | {ruta_es,ruta_en} | {ruta:{es,en}}, o lista con «clave»)
 $IMAGENES = @{}
+$ZONAS_RUTA = @{}   # ruta absoluta de imagen -> zonas de enlace de ese idioma
 $rutaCat = if ($Catalogo) { [IO.Path]::GetFullPath($Catalogo) } else { Join-Path $presDir 'imagenes.json' }
 if (Test-Path $rutaCat) {
   try {
@@ -965,6 +1155,11 @@ if (Test-Path $rutaCat) {
       if (-not $rutas.en -and $rutas.es) { $rutas.en = $rutas.es }
       $descr = if ($v -is [System.Collections.IDictionary] -and $v.descripcion) { $v.descripcion } else { $k }
       $IMAGENES[$k] = @{ rutas = $rutas; descr = $descr }
+      # zonas de enlace por idioma: { es: [ {x,y,w,h,href,texto} ], en: [...] } (fracciones 0–1 de la imagen entera)
+      if ($v -is [System.Collections.IDictionary] -and $v.zonas -is [System.Collections.IDictionary]) {
+        $IMAGENES[$k].zonas = $v.zonas
+        foreach ($lg in 'es', 'en') { if ($rutas[$lg] -and $v.zonas[$lg]) { $ZONAS_RUTA[$rutas[$lg]] = @($v.zonas[$lg]) } }
+      }
     }
   } catch { $errores.Add("presentaciones/imagenes.json: no es un JSON válido o no se entiende ($($_.Exception.Message))") }
 }
@@ -1005,15 +1200,52 @@ function Validar-Href($h, [string]$donde, [Collections.Generic.List[string]]$err
     }
   }
 }
-# comprueba un texto {es,en}; $max = 0 sin límite
-function Validar-Texto($o, [string]$donde, [int]$max, [bool]$oblig, [Collections.Generic.List[string]]$err, [int]$min = 0) {
+# zonas de enlace del catálogo de imágenes: caja dentro de la imagen, texto y href que exista (fichero y ancla)
+foreach ($k in @($IMAGENES.Keys | Sort-Object)) {
+  $zs = $IMAGENES[$k].zonas; if (-not $zs) { continue }
+  foreach ($lg in 'es', 'en') {
+    $lista = @(Lista $zs[$lg])
+    if (-not $lista.Count) { $errores.Add("presentaciones/imagenes.json · $k.zonas.${lg}: falta o está vacío"); continue }
+    $n = 0
+    foreach ($z in $lista) {
+      $pz = "presentaciones/imagenes.json · $k.zonas.$lg[$n]"
+      $ok = $z -is [System.Collections.IDictionary]
+      if ($ok) { foreach ($c in 'x', 'y', 'w', 'h') { if ($z[$c] -isnot [double] -and $z[$c] -isnot [int] -and $z[$c] -isnot [long] -and $z[$c] -isnot [decimal]) { $ok = $false } } }
+      if (-not $ok) { $errores.Add("${pz}: necesita x, y, w y h numéricos"); $n++; continue }
+      if ($z.x -lt 0 -or $z.y -lt 0 -or $z.w -le 0 -or $z.h -le 0 -or ($z.x + $z.w) -gt 1.001 -or ($z.y + $z.h) -gt 1.001) { $errores.Add("${pz}: la caja se sale de la imagen (fracciones 0–1)") }
+      if (-not ([string]$z.texto).Trim()) { $errores.Add("${pz}.texto: falta") }
+      if ($z.href -isnot [string]) { $errores.Add("${pz}.href: falta o no es texto") } else { Validar-Href $z.href $pz $errores }
+      $n++
+    }
+  }
+}
+# comprueba un texto {es,en}; $max = 0 sin límite. Los límites cuentan el texto visible (sin la marca de término).
+# $modo: 'v' texto visible (admite términos; avisa de códigos entre paréntesis), 'vc' texto visible donde un código
+# es legítimo (rótulo de un paso de proceso, tabla), 'n' notas o fuentes (la marca no enlaza y no se valida).
+$CODIGO_RE = '\((T\d{2}|P\d{2}|G\d|R6|C\d|N-\d{2}|documento \d{2}|document \d{2})\)'
+$script:avActual = $null
+function Validar-Texto($o, [string]$donde, [int]$max, [bool]$oblig, [Collections.Generic.List[string]]$err, [int]$min = 0, [string]$modo = 'v') {
   if ($null -eq $o) { if ($oblig) { $err.Add("${donde}: falta") }; return }
   if ($o -isnot [System.Collections.IDictionary]) { $err.Add("${donde}: debe ser un objeto { es, en }"); return }
   foreach ($lg in 'es', 'en') {
     $v = $o[$lg]
     if ($v -isnot [string] -or -not $v.Trim()) { $err.Add("${donde}.${lg}: falta o está vacío"); continue }
-    if ($max -gt 0 -and $v.Length -gt $max) { $err.Add("${donde}.${lg}: $($v.Length) caracteres (máximo $max)") }
-    if ($min -gt 0 -and $v.Length -lt $min) { $err.Add("${donde}.${lg}: $($v.Length) caracteres (mínimo $min)") }
+    $vis = Visible-Bruto $v
+    if ($modo -ne 'n') {
+      foreach ($id in (Ids-Bruto $v)) {
+        if (-not $hayCatalogoTerminos) { $err.Add("${donde}.${lg}: término «t:$id» y no existe el catálogo de términos (presentaciones/terminos.json)") }
+        elseif (-not $CAT_TERM.ContainsKey($id)) { $err.Add("${donde}.${lg}: el término «t:$id» no está en el catálogo de términos (presentaciones/terminos.json)") }
+      }
+      $resto = [regex]::Replace($v, $TERM_RE, '')
+      if ($resto -match '\(t:\s*\)' -or $resto -match '\[\s*\]\(t:') { $err.Add("${donde}.${lg}: marca de término vacía («[]» o «(t:)»)") }
+      elseif ($resto -match '\]\s*\(' -or $resto -match '\(t:') { $err.Add("${donde}.${lg}: marca de término mal formada (se espera «[texto](t:<id>)»)") }
+      elseif (([regex]::Matches($resto, '\[')).Count -ne ([regex]::Matches($resto, '\]')).Count) { $err.Add("${donde}.${lg}: corchete sin cerrar (marca de término mal formada)") }
+      if ($modo -eq 'v' -and $null -ne $script:avActual) {
+        foreach ($m in [regex]::Matches($vis, $CODIGO_RE)) { $script:avActual.Add("${donde}.${lg}: código entre paréntesis «$($m.Value)»; use un término enlazado sin código (D179)") }
+      }
+    }
+    if ($max -gt 0 -and $vis.Length -gt $max) { $err.Add("${donde}.${lg}: $($vis.Length) caracteres (máximo $max)") }
+    if ($min -gt 0 -and $vis.Length -lt $min) { $err.Add("${donde}.${lg}: $($vis.Length) caracteres (mínimo $min)") }
   }
 }
 function Validar-Color($c, [string]$donde, $err) { if ($null -ne $c -and -not $COLORES.ContainsKey([string]$c)) { $err.Add("$donde.color: «$c» no es un color válido ($($COLORES.Keys -join ', '))") } }
@@ -1049,6 +1281,7 @@ function Slides-Esperadas([string]$clave, [string]$marco) {
 function Validar-Presentacion([hashtable]$d, [string]$carpeta, [string]$clave) {
   $err = [Collections.Generic.List[string]]::new()
   $av = [Collections.Generic.List[string]]::new()
+  $script:avActual = $av
   if ($d.marco -notin @('SEVEN-G', 'SPHERES', 'SPAD')) { $err.Add("marco: «$($d.marco)» no es SEVEN-G, SPHERES ni SPAD") }
   if ([string]$d.clave -ne $clave) { $err.Add("clave: «$($d.clave)» no coincide con el nombre del fichero («$clave»)") }
   $esArea = $carpeta -eq 'areas' -or $d.Contains('area')
@@ -1058,8 +1291,8 @@ function Validar-Presentacion([hashtable]$d, [string]$carpeta, [string]$clave) {
     elseif ($clave -notlike "$($d.area)_*") { $err.Add("clave: «$clave» debe ser «$($d.area)_1» o «$($d.area)_10»") }
     if ($d.marco -ne 'SEVEN-G') { $err.Add('marco: las áreas son de SEVEN-G') }
   }
-  Validar-Texto $d.titulo 'titulo' 0 $true $err
-  Validar-Texto $d.descripcion 'descripcion' 160 $true $err
+  Validar-Texto $d.titulo 'titulo' 0 $true $err 0 'n'
+  Validar-Texto $d.descripcion 'descripcion' 160 $true $err 0 'n'
   $bas = @(Lista $d.basado_en)
   if ($bas.Count -eq 0) { $err.Add('basado_en: falta (al menos una fuente Markdown)') }
   foreach ($b in $bas) { if ($b -isnot [string] -or -not (Test-Path (Join-Path $repo $b) -PathType Leaf)) { $err.Add("basado_en: no existe «$b»") } }
@@ -1084,13 +1317,19 @@ function Validar-Presentacion([hashtable]$d, [string]$carpeta, [string]$clave) {
     if (Validar-Rango $s.enlaces "$p.enlaces" 1 $maxEnl $err) {
       $k = 0; foreach ($e in $s.enlaces) { Validar-Texto $e.texto "$p.enlaces[$k].texto" 42 $true $err; Validar-Href $e.href "$p.enlaces[$k]" $err; $k++ }
     }
-    Validar-Texto $s.notas "$p.notas" $notMax $true $err $notMin
+    Validar-Texto $s.notas "$p.notas" $notMax $true $err $notMin 'n'
     if (Validar-Rango $s.fuentes "$p.fuentes" 1 6 $err) {
-      $k = 0; foreach ($e in $s.fuentes) { Validar-Texto $e.texto "$p.fuentes[$k].texto" 90 $true $err; Validar-Href $e.href "$p.fuentes[$k]" $err; $k++ }
+      $k = 0; foreach ($e in $s.fuentes) { Validar-Texto $e.texto "$p.fuentes[$k].texto" 90 $true $err 0 'n'; Validar-Href $e.href "$p.fuentes[$k]" $err; $k++ }
     }
     if ($s.Contains('imagen') -and $s.imagen) {
       if (-not $IMAGENES.ContainsKey([string]$s.imagen)) { $err.Add("$p.imagen: la clave «$($s.imagen)» no está en presentaciones/imagenes.json") }
       else { foreach ($lg in 'es', 'en') { $r = $IMAGENES[[string]$s.imagen].rutas[$lg]; if (-not $r -or -not (Test-Path $r)) { $err.Add("$p.imagen: falta el fichero de «$($s.imagen)» ($lg): $r") } } }
+    }
+    foreach ($ci in 'imagen2', 'imagen3') {
+      if (-not ($s.Contains($ci) -and $s[$ci])) { continue }
+      if ($t -ne 'poster' -or -not $s.imagen -or ($ci -eq 'imagen3' -and -not $s.imagen2)) { $err.Add("$p.${ci}: solo se admite en «poster», después de «imagen» (y «imagen3», después de «imagen2»)") }
+      if (-not $IMAGENES.ContainsKey([string]$s[$ci])) { $err.Add("$p.${ci}: la clave «$($s[$ci])» no está en presentaciones/imagenes.json") }
+      else { foreach ($lg in 'es', 'en') { $r = $IMAGENES[[string]$s[$ci]].rutas[$lg]; if (-not $r -or -not (Test-Path $r)) { $err.Add("$p.${ci}: falta el fichero de «$($s[$ci])» ($lg): $r") } } }
     }
     switch ($t) {
       'poster' {
@@ -1130,15 +1369,15 @@ function Validar-Presentacion([hashtable]$d, [string]$carpeta, [string]$clave) {
       }
       'tabla' {
         $okC = Validar-Rango $s.cabecera "$p.cabecera" 2 5 $err
-        if ($okC) { $k = 0; foreach ($c in $s.cabecera) { Validar-Texto $c "$p.cabecera[$k]" 26 $true $err; $k++ } }
+        if ($okC) { $k = 0; foreach ($c in $s.cabecera) { Validar-Texto $c "$p.cabecera[$k]" 26 $true $err 0 'vc'; $k++ } }
         if ((Validar-Rango $s.filas "$p.filas" 2 7 $err) -and $okC) {
           $nc = @($s.cabecera).Count; $maxC = if ($nc -eq 5) { 65 } else { 95 }
           $r = 0; foreach ($f in $s.filas) {
             $f = @($f)
             if ($f.Count -ne $nc) { $err.Add("$p.filas[$r]: $($f.Count) celdas; la cabecera tiene $nc") }
             $c = 0; foreach ($cel in $f) {
-              if ($cel -is [System.Collections.IDictionary] -and $cel.Contains('texto')) { Validar-Texto $cel.texto "$p.filas[$r][$c].texto" $maxC $true $err; if ($cel.Contains('href')) { Validar-Href $cel.href "$p.filas[$r][$c]" $err } }
-              else { Validar-Texto $cel "$p.filas[$r][$c]" $maxC $true $err }
+              if ($cel -is [System.Collections.IDictionary] -and $cel.Contains('texto')) { Validar-Texto $cel.texto "$p.filas[$r][$c].texto" $maxC $true $err 0 'vc'; if ($cel.Contains('href')) { Validar-Href $cel.href "$p.filas[$r][$c]" $err } }
+              else { Validar-Texto $cel "$p.filas[$r][$c]" $maxC $true $err 0 'vc' }
               $c++
             }
             $r++
@@ -1148,7 +1387,7 @@ function Validar-Presentacion([hashtable]$d, [string]$carpeta, [string]$clave) {
       'proceso' {
         if (Validar-Rango $s.pasos "$p.pasos" 3 8 $err) {
           $maxP = if (@($s.pasos).Count -ge 7) { 80 } else { 120 }
-          $k = 0; foreach ($b in $s.pasos) { Validar-Texto $b.rotulo "$p.pasos[$k].rotulo" 10 $true $err; Validar-Texto $b.titulo "$p.pasos[$k].titulo" 28 $true $err; Validar-Texto $b.texto "$p.pasos[$k].texto" $maxP $true $err; Validar-Color $b.color "$p.pasos[$k]" $err; $k++ }
+          $k = 0; foreach ($b in $s.pasos) { Validar-Texto $b.rotulo "$p.pasos[$k].rotulo" 10 $true $err 0 'vc'; Validar-Texto $b.titulo "$p.pasos[$k].titulo" 28 $true $err; Validar-Texto $b.texto "$p.pasos[$k].texto" $maxP $true $err; Validar-Color $b.color "$p.pasos[$k]" $err; $k++ }
         }
       }
       'comparacion' {
@@ -1171,6 +1410,36 @@ function Validar-Presentacion([hashtable]$d, [string]$carpeta, [string]$clave) {
   }
   Buscar-Prohibidos $d '' $err
   @{ errores = $err; avisos = $av }
+}
+
+# =====================================================================================
+# Catálogo de términos (D179): id -> { codigo, nombre {es,en}, href, explicacion {es,en} }. Se valida una vez.
+# =====================================================================================
+$erroresTerminos = [Collections.Generic.List[string]]::new()
+$rutaTerm = if ($Terminos) { [IO.Path]::GetFullPath($Terminos) } else { Join-Path $presDir 'terminos.json' }
+if (Test-Path $rutaTerm) {
+  $nomTerm = if ($Terminos) { $rutaTerm } else { 'presentaciones/terminos.json' }
+  try {
+    $raw = [IO.File]::ReadAllBytes($rutaTerm)
+    if ($raw.Length -ge 3 -and $raw[0] -eq 0xEF -and $raw[1] -eq 0xBB -and $raw[2] -eq 0xBF) { $erroresTerminos.Add("${nomTerm}: lleva BOM (debe ser UTF-8 sin BOM)") }
+    $catT = $utf8.GetString($raw).TrimStart([char]0xFEFF) | ConvertFrom-Json -AsHashtable -Depth 32
+    if ($catT -is [System.Collections.IDictionary] -and $catT.Contains('terminos') -and $catT['terminos'] -is [System.Collections.IDictionary]) { $catT = $catT['terminos'] }
+    if ($catT -isnot [System.Collections.IDictionary]) { throw 'debe ser un objeto id -> término' }
+    $hayCatalogoTerminos = $true
+    $errT = [Collections.Generic.List[string]]::new()
+    foreach ($id in @($catT.Keys | Sort-Object)) {
+      if ($id -like '_*') { continue }
+      $e = $catT[$id]; $p = "${nomTerm} · $id"
+      if ($id -notmatch '^[A-Za-z0-9_.\-]+$') { $errT.Add("${p}: id no válido (solo letras, cifras, «-», «_» y «.»)"); continue }
+      if ($e -isnot [System.Collections.IDictionary]) { $errT.Add("${p}: debe ser un objeto"); continue }
+      if ($e.Contains('codigo') -and $null -ne $e.codigo -and $e.codigo -isnot [string]) { $errT.Add("$p.codigo: debe ser texto (o «»)") }
+      Validar-Texto $e.nombre "$p.nombre" 60 $true $errT 3 'n'
+      Validar-Texto $e.explicacion "$p.explicacion" 700 $true $errT 120 'n'
+      Validar-Href $e.href $p $errT
+      $CAT_TERM[[string]$id] = $e
+    }
+    foreach ($x in $errT) { $erroresTerminos.Add($x) }
+  } catch { $erroresTerminos.Add("${nomTerm}: no es un JSON válido o no se entiende ($($_.Exception.Message))") }
 }
 
 # =====================================================================================
@@ -1250,10 +1519,12 @@ function Construir([hashtable]$d, [string]$lg, [string]$ruta, [string]$sha) {
   $script:presTitulo = [string]$d.titulo[$lg]
   $slides = @(Lista $d.slides)
   $out = [Collections.Generic.List[object]]::new()
+  $zonasPres = [Collections.Generic.List[object]]::new()
   for ($i = 0; $i -lt $slides.Count; $i++) {
     $s = $slides[$i]
     $script:avisosAjuste.Clear()
     $script:ctx = Nuevo-Ctx
+    $script:zonasSlide = [Collections.Generic.List[object]]::new()
     $img = $null; if ($s.imagen) { $img = Imagen-De ([string]$s.imagen) $lg }
     $xml = switch ($s.tipo) {
       'portada' { Slide-Portada $s ($i + 1) $slides.Count $img }
@@ -1262,10 +1533,14 @@ function Construir([hashtable]$d, [string]$lg, [string]$ruta, [string]$sha) {
     }
     foreach ($a in ($script:avisosAjuste | Select-Object -Unique)) { $script:avisosConstruccion.Add("$lg · slide $($i + 1): $a") }
     $rels = @($script:ctx.lista)
+    $zs = $script:zonasSlide; $script:zonasSlide = $null
+    $zonasPres.Add(@($zs))
     $script:ctx = Nuevo-Ctx
-    $notas = Notas-Xml $s ($i -eq $slides.Count - 1)
+    $notas = Notas-Xml $s ($i -eq $slides.Count - 1) $zs
     $out.Add(@{ xml = $xml; rels = $rels; notas = $notas; notasRels = @($script:ctx.lista) })
   }
+  # posiciones de las zonas de enlace de cada slide (EMU), para las anclas del PDF (Html-Pdf)
+  $d["__zonas_$lg"] = $zonasPres
   Escribir-Pptx $ruta $out @{ titulo = $script:presTitulo; descripcion = [string]$d.descripcion[$lg]; sha = $sha; licencia = "$($config.licencia[$lg]) · $AUTOR" }
 }
 
@@ -1283,14 +1558,28 @@ function Html-Pdf([hashtable]$d, [string]$lg, [string[]]$pngs) {
   for ($i = 0; $i -lt $slides.Count; $i++) {
     $s = $slides[$i]
     $notas = ''; $enLista = $false
-    foreach ($b in (Bloques-Notas (Tx $s.notas))) {
+    foreach ($b in (Bloques-Notas (TxVisible $s.notas))) {
       if ($b.tipo -eq 'li') { if (-not $enLista) { $notas += '<ul>'; $enLista = $true }; $notas += "<li>$(Enc $b.texto)</li>" }
       else { if ($enLista) { $notas += '</ul>'; $enLista = $false }; $notas += "<p>$(Enc $b.texto)</p>" }
     }
     if ($enLista) { $notas += '</ul>' }
+    $te = ''
+    foreach ($t in (Terminos-Slide $s)) {
+      $cod = if ($t.codigo) { " ($(Enc $t.codigo))" } else { '' }
+      $url = if ($t.url) { " <a href=""$(Enc $t.url)"" class=""url"">$(Enc $t.url)</a>" } else { '' }
+      $te += "<li><strong>$(Enc $t.nombre)</strong>${cod}: $(Enc $t.explicacion)$url</li>"
+    }
+    if ($te) { $te = "<h3>$($TX[$lg].terminos)</h3><ul class=""terminos"">$te</ul>" }
+    $zs = @(); $zp = $d["__zonas_$lg"]; if ($zp -and $i -lt $zp.Count) { $zs = @($zp[$i]) }
+    $eg = (@(Enlaces-Grafico $zs) | ForEach-Object { "<li>$(Enc $_.texto): <a href=""$(Enc $_.url)"" class=""url"">$(Enc $_.url)</a></li>" }) -join ''
+    if ($eg) { $te += "<h3>$($TX[$lg].grafico)</h3><ul class=""terminos"">$eg</ul>" }
+    # anclas sobre la imagen de la slide, en la posición de cada zona (porcentaje del tamaño de la slide)
+    $pc = { param($v, $tot) ([double]$v * 100.0 / $tot).ToString('0.###', [Globalization.CultureInfo]::InvariantCulture) }
+    $anclas = ($zs | Where-Object { $_ } | ForEach-Object { "<a class=""zona"" href=""$(Enc $_.url)"" title=""$(Enc $_.texto)"" style=""left:$(& $pc $_.x $SW)%;top:$(& $pc $_.y $SH)%;width:$(& $pc $_.w $SW)%;height:$(& $pc $_.h $SH)%""></a>" }) -join ''
     $fu = (Fuentes-Slide $s | ForEach-Object { "<li><a href=""$(Enc $_.url)"">$(Enc $_.texto)</a> <span class=""url"">$(Enc $_.url)</span></li>" }) -join ''
+    if ($fu) { $fu = "<h3>$($TX[$lg].fuentes)</h3><ul class=""fuentes"">$fu</ul>" }
     $src = ([Uri]$pngs[$i]).AbsoluteUri
-    $sec += "<section class=""slide""><div class=""num"">$($i + 1) / $($slides.Count) · $(Enc (Tx $s.titulo))</div><img src=""$src"" alt=""$(Enc (Tx $s.titulo))""><h2>$($TX[$lg].notas)</h2>$notas<h3>$($TX[$lg].fuentes)</h3><ul class=""fuentes"">$fu</ul></section>"
+    $sec += "<section class=""slide""><div class=""num"">$($i + 1) / $($slides.Count) · $(Enc (TxVisible $s.titulo))</div><div class=""img""><img src=""$src"" alt=""$(Enc (TxVisible $s.titulo))"">$anclas</div><h2>$($TX[$lg].notas)</h2>$notas$te$fu</section>"
   }
   $sec += "<section class=""aviso""><h3>$($TX[$lg].aviso)</h3><p>$(Enc $AVISO[$lg])</p><p>$(Enc $config.licencia[$lg]) · $(Enc $AUTOR) · <a href=""$(Enc $BASE_URL)"">$(Enc $SITIO_TXT)</a></p></section>"
   @"
@@ -1305,7 +1594,9 @@ body { margin: 0; font-family: Georgia, 'Times New Roman', serif; color: #2F2B28
 section.slide { break-before: page; }
 section.slide:first-of-type { break-before: auto; }
 .num { font: bold 8.5pt Arial, sans-serif; color: #5E544D; margin-bottom: 2mm; }
-img { width: 100%; border: 0.6pt solid #C9A78D; display: block; margin-bottom: 4mm; }
+div.img { position: relative; margin-bottom: 4mm; }
+img { width: 100%; border: 0.6pt solid #C9A78D; display: block; box-sizing: border-box; }
+a.zona { position: absolute; display: block; }
 h2 { font: bold 13pt Georgia, serif; color: #990F3D; margin: 3mm 0 2mm; border-bottom: 1px solid #C9A78D; padding-bottom: 1mm; }
 h3 { font: bold 10pt Arial, sans-serif; color: #1A1817; margin: 4mm 0 1.5mm; text-transform: uppercase; letter-spacing: .03em; }
 p { margin: 0 0 2.4mm; text-align: justify; hyphens: auto; }
@@ -1313,6 +1604,9 @@ ul { margin: 0 0 2.4mm 5mm; padding-left: 3mm; }
 li { margin-bottom: 1.2mm; }
 ul.fuentes { font: 9pt Arial, sans-serif; }
 ul.fuentes a { color: #0F5499; font-weight: bold; }
+ul.terminos { font-size: 9.5pt; }
+ul.terminos strong { color: #1A1817; }
+ul.terminos a.url { color: #0F5499; }
 .url { color: #5E544D; word-break: break-all; font-size: 8pt; }
 a { color: #0F5499; }
 section.aviso { break-before: page; font-size: 9.5pt; }
@@ -1359,7 +1653,9 @@ function Exportar-Pdfs([object[]]$pendientes) {
       if (Edge-Pdf $html $p.pdf) { Write-Host "PDF  -> $(Rel $p.pdf $Salida)" } else { Write-Warning "Edge no generó $($p.pdf) (se conserva el anterior, si lo hay)"; $script:fallos++ }
     }
   } finally {
-    $app.Quit(); [void][Runtime.InteropServices.Marshal]::ReleaseComObject($app); [GC]::Collect(); [GC]::WaitForPendingFinalizers()
+    # PowerPoint es de instancia única: si otro proceso tiene presentaciones abiertas en ella, no se cierra
+    if ($app.Presentations.Count -eq 0) { $app.Quit() }
+    [void][Runtime.InteropServices.Marshal]::ReleaseComObject($app); [GC]::Collect(); [GC]::WaitForPendingFinalizers()
     Remove-Item -Recurse -Force $tmpBase -ErrorAction SilentlyContinue
     Remove-Item -Recurse -Force (Join-Path ([IO.Path]::GetTempPath()) "presentaciones-edge-$PID") -ErrorAction SilentlyContinue
   }
@@ -1419,6 +1715,8 @@ if ($Revisado) {
   exit $(if ($problemas.Count) { 1 } else { 0 })
 }
 
+foreach ($e in $erroresTerminos) { $problemas.Add($e) }
+foreach ($e in $errores) { $problemas.Add($e) }
 $pdfPendientes = [Collections.Generic.List[object]]::new()
 $tmpDir = Join-Path ([IO.Path]::GetTempPath()) "presentaciones-build-$PID"
 New-Item -ItemType Directory -Force $tmpDir | Out-Null

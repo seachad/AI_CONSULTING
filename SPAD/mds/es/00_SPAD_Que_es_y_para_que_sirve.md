@@ -5,21 +5,23 @@
 | | |
 |---|---|
 | Documento | Documento 00 · Qué es SPAD y para qué sirve |
-| Versión | 0.2 |
-| Fecha | 19-09-2026 |
+| Versión | 0.3 |
+| Fecha | 14-11-2026 |
 | Autor | Fernando García Varela |
-| Estado | En construcción. Metodología de apoyo, independiente de SEVEN-G y referenciada desde su documento 53; versión no liberada comercialmente. |
+| Estado | En construcción. Método independiente para construir software con IA; no forma parte del gobierno de la IA de la compañía. Se conecta con SEVEN-G solo por su documento 53. Versión no liberada comercialmente. |
 | Tipo | Presentación de la metodología |
 
 <!-- cifras: 11 | fases del ciclo principal ; 5 | ciclos de trabajo ; 3 | veredictos de revisión ; 0 | aprobaciones que puede darse una IA -->
 
 ---
 
-> **Versión en revisión: no difundir.** El estado actual de SPAD (versión 0.x) no está pensado para compartirse de forma general. Se mantiene en público para que un número reducido de personas pueda revisarlo, dar su opinión y ayudar a mejorarlo. Se está trabajando en la adecuación de los documentos y las herramientas para que sean reutilizables; este aviso desaparecerá cuando el marco pase a la versión 1.x.
+> **Versión 0.x, en revisión.** El estado actual de SPAD es la versión 0.x. El contenido es operativo y puede usarse, adaptarse y redistribuirse con la licencia del proyecto (CC BY 4.0 para los contenidos y MIT para el código), citando la autoría e indicando los cambios. Los documentos y las herramientas se siguen revisando: se agradecen las opiniones y las propuestas de mejora.
 
 > **Aviso legal y exención de responsabilidad.** SPAD es una metodología de referencia que se ofrece «tal cual» y con fines exclusivamente informativos. No constituye asesoramiento jurídico, regulatorio ni profesional, no garantiza resultados ni el cumplimiento de ninguna norma y no es una certificación. **Cada organización que use SPAD es la única responsable de validar sus resultados, identificar la normativa que le aplica, verificar su vigencia y certificar su propio cumplimiento regulatorio**, con el asesoramiento cualificado que corresponda. Esta metodología es una ayuda genérica y gratuita, compartida con la comunidad para que nadie tenga que empezar desde cero; cada persona u organización puede y debe adaptarla a su propio uso. No debe entenderse que sus partes jurídicamente sensibles hayan sido revisadas por una asesoría jurídica: esas revisiones, para cada empresa o sector, son responsabilidad última de la empresa, el consultor o la organización que la use. Aunque se procura mantenerla al día, alguna norma puede haber cambiado sin que se recoja aquí. En la máxima medida permitida por la ley, el autor no asume responsabilidad alguna por los efectos de su aplicación en ninguna organización ni por su aplicabilidad completa. La metodología no otorga certificación de ningún tipo. El autor no asume responsabilidad alguna por el uso que se haga de este contenido ni por las decisiones que se adopten con él. Los datos, cifras, compañías y casos de los ejemplos son ficticios o ilustrativos.
 
 ## 1. Qué es SPAD
+
+**SPAD resuelve un problema específico: construir software con IA de forma gobernada.** No es un marco de gobierno de la IA de la compañía. Decidir qué iniciativas de IA se hacen, con qué riesgo y cómo se mide su valor es otro problema, a otro nivel, que resuelve SEVEN-G (con SPHERES como capa explicativa). SPAD trata solo de cómo se construye el software, y se puede usar con SEVEN-G o sin él.
 
 **SPAD** (*Structured Prompt-Driven Engineering*, ingeniería estructurada guiada por instrucciones) es el marco de trabajo de Fernando García Varela para **gestionar el desarrollo de software mediante inteligencia artificial** de forma controlada. Convierte la IA de un asistente informal de programación en una herramienta de ingeniería gobernada, cuyo trabajo puede revisarse, reproducirse y auditarse.
 
@@ -40,7 +42,29 @@ SPAD no es una colección de instrucciones (*prompts*) para pedir código. Es un
 
 > **Por qué importa.** La IA genera código plausible a gran velocidad. Sin estructura, esa velocidad se convierte en decisiones de diseño que nadie ha tomado de forma consciente, pruebas insuficientes, vulnerabilidades introducidas en silencio y deuda técnica difícil de ver. SPAD mantiene la velocidad donde aporta y pone control donde hace falta: en las decisiones, en las revisiones y en las evidencias.
 
-SPAD es una **metodología de apoyo, independiente de SEVEN-G**. SEVEN-G gobierna la iniciativa de IA en su conjunto (valor, riesgo, puertas de decisión); SPAD gobierna **cómo se construye el software** cuando se hace con asistencia de IA (sección 9).
+SPAD es un **método independiente**, no una metodología de apoyo de SEVEN-G. Los dos se conectan en un solo punto, el documento 53 de SEVEN-G: SEVEN-G decide qué se construye, con qué riesgo y cómo se mide; SPAD resuelve cómo se construye el software cuando se hace con IA (sección 9).
+
+### Para qué le sirve a una compañía
+
+*Posición del autor. SPAD no promete cifras de ahorro ni de productividad: cada organización mide las suyas (documento 08).*
+
+| Uso | Qué hace la compañía | En qué se apoya |
+|---|---|---|
+| **1. Construir su propio software con IA** | Su equipo trabaja por fases, con artefactos revisados, revisión independiente y validación humana de cada salida. | Roles (sección 4), ciclo principal (sección 5) y política de validación (sección 7). |
+| **2. Exigir como cliente** | Si sabe cómo se construye software con IA, puede pedir a sus proveedores e integradores que la ganancia de productividad llegue a la compañía: menos coste, o más alcance por el mismo precio. | Lo que SPAD ya define y la compañía puede pedir que se le entregue (tabla siguiente). |
+
+Qué puede pedir a un proveedor o a un integrador, sin salir de lo que SPAD ya define:
+
+| Qué pedir | Para qué le sirve | Dónde lo define SPAD |
+|---|---|---|
+| El artefacto de cada fase: plan, revisión del plan, estrategia de pruebas, revisión del código y registro de versión. | Ver que el diseño se decidió antes del código y que cada fase se revisó. | Sección 5 y documentos 01 y 07. |
+| El registro del modelo de cada artefacto: proveedor, modelo, versión, instrucción y contextos. | Saber qué parte del trabajo hizo la IA y con qué herramienta. | Documento 02, sección 4.1. |
+| El registro de validación humana y el registro de infracciones. | Comprobar que una persona aprobó lo que se entrega y ver qué respuestas de la IA se descartaron. | Documento 02, secciones 4.2 y 4.3, y documento 03. |
+| Los veredictos de cada revisión (GO, GO con cambios, NO-GO). | Ver dónde se volvió atrás y por qué. | Documento 01, sección 5. |
+| Las métricas del proceso: tiempo por fase, iteraciones hasta GO, defectos escapados y retrabajo tras la entrega. | Conocer el esfuerzo real del trabajo y hablar de precio y de alcance con datos del propio proveedor. | Documento 08, sección 5. |
+| La autoevaluación de conformidad. | Recibir el trabajo con una definición compartida de «terminado». | Sección 8 y documento 08. |
+
+> **Por qué importa.** La IA cambia lo que cuesta construir software. Si la compañía no sabe cómo se construye con IA, no puede saber si ese cambio llega a su factura o se queda en el proveedor. SPAD le da un lenguaje común y unas evidencias concretas para preguntarlo. No fija un porcentaje: permite negociar con datos.
 
 ---
 
@@ -282,14 +306,14 @@ Una organización puede comprobar si un sistema, un proyecto o un equipo ha trab
 
 ## 9. Relación con SEVEN-G
 
-SPAD y SEVEN-G trabajan a escalas distintas y se complementan:
+SPAD y SEVEN-G resuelven problemas distintos, a niveles distintos. SEVEN-G gobierna la IA de la compañía; SPAD, la construcción de software con IA. SPAD no forma parte de SEVEN-G. El único puente entre los dos es el documento 53 de SEVEN-G y su plantilla P66:
 
 | Aspecto | SEVEN-G | SPAD |
 |---|---|---|
 | **Objeto** | La iniciativa de IA completa y la cartera de la compañía. | El desarrollo del software de una solución. |
 | **Pregunta** | ¿Merece la pena, con qué riesgo y con qué valor medido? | ¿Está bien construido, probado y documentado? |
 | **Decisiones** | Puertas de decisión tomadas por personas con responsabilidad. | Veredictos técnicos de revisión validados por el orquestador. |
-| **Dónde se aplica** | En todo el ciclo de vida, de la idea a la retirada. | Principalmente en las fases de diseño y de entrega de SEVEN-G. |
+| **Dónde se aplica** | En todo el ciclo de vida, de la idea a la retirada. | Allí donde se construye software con IA. Si la compañía usa SEVEN-G, sobre todo en sus fases de diseño y de entrega. |
 
 Reglas de convivencia:
 
@@ -299,7 +323,7 @@ Reglas de convivencia:
 
 La correspondencia detallada de fases, roles, evidencias y requisitos está en [SEVEN-G 53 · Construcción de soluciones con IA](../../../SEVEN-G/html/es/53_SEVEN-G_Construccion_de_soluciones_con_IA.html).
 
-> **Por qué importa.** Un consejo no necesita saber cómo se revisa un plan de arquitectura, pero sí necesita saber que existe un método que lo hace y que deja evidencias. SPAD es ese método dentro de la construcción; SEVEN-G es el que decide si la iniciativa sigue adelante.
+> **Por qué importa.** Un consejo no necesita saber cómo se revisa un plan de arquitectura, pero sí necesita saber que existe un método que lo hace y que deja evidencias. SPAD es ese método para la construcción; SEVEN-G, si la compañía lo usa, es el que decide si la iniciativa sigue adelante.
 
 ---
 
@@ -343,5 +367,6 @@ No existe certificación de SPAD y el uso del nombre no implica respaldo del aut
 
 | Versión | Fecha | Cambios |
 |---|---|---|
+| 0.3 | 14-11-2026 | Posicionamiento: SPAD resuelve un problema específico, construir software con IA, y no es un marco de gobierno de la IA de la compañía ni una metodología de apoyo de SEVEN-G. Nueva subsección «Para qué le sirve a una compañía» (posición del autor, sin cifras): construir con método y exigir como cliente que la productividad llegue a la compañía. El documento 53 de SEVEN-G queda como único puente (sección 9). |
 | 0.2 | 19-09-2026 | Biblioteca completa (documentos 01–08) enlazada desde la sección 11; el rol de diagnóstico se denomina «IA de diagnóstico». |
 | 0.1 | 18-09-2026 | Primera versión de la página de entrada, a partir de los documentos de trabajo de SPAD: propiedades del marco, problema que resuelve, principio de validación, roles, ciclo principal y veredictos, ciclos de legado, depuración, corrección urgente y seguridad, contextos, temas, política de validación, autoevaluación de conformidad, relación con SEVEN-G y cuándo usarlo. |

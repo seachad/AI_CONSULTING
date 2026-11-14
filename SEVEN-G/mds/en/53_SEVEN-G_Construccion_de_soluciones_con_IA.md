@@ -5,8 +5,8 @@
 | | |
 |---|---|
 | Document | Document 53 · Building solutions with AI |
-| Version | 0.1 (working draft) |
-| Date | 16-09-2026 |
+| Version | 0.2 (working draft) |
+| Date | 14-11-2026 |
 | Author | Fernando García Varela |
 | Status | Draft for review. Contains regulatory references consulted on 16-09-2026. |
 
@@ -55,6 +55,8 @@ A build tool with the ability to execute actions on repositories, environments o
 ### 2.1 Position of SPAD
 
 **SPAD** (*Structured Prompt-Driven Engineering*) is an **independent methodology** for AI-assisted engineering, referenced from SEVEN-G and not integrated into it (decision D09). It is not a brand, a component or a "capability" of SEVEN-G. SEVEN-G can be applied with SPAD or with another engineering method that meets the requirements of section 7. The full methodology is in the [SPAD library](../../../SPAD/html/en/index.html) (documents 00 to 08).
+
+**This document is the only bridge between the two levels.** SEVEN-G governs the company's AI: it decides what is built, with what risk and how it is measured. How the software is built with AI is a different problem, which SPAD solves as an independent method. This document and its template P66 set out how the artefacts of the build become SEVEN-G evidence; SPAD verdicts do not replace any gate.
 
 | Aspect | SEVEN-G | SPAD |
 |---|---|---|
@@ -339,4 +341,5 @@ The formal criteria will be incorporated into document 21. In the meantime, the 
 
 | Version | Date | Changes |
 |---|---|---|
+| 0.2 | 14-11-2026 | Section 2.1 states that this document, with P66, is the only bridge between the company's AI governance (SEVEN-G) and building software with AI (SPAD, an independent method) (D176). No change to the rules. |
 | 0.1 | 16-09-2026 | First version. Defines the relationship with SPAD as an independent methodology (D09), the mapping of phases, roles and validation policy to SEVEN-G evidence, the renaming of SPAD's *AI Auditor* role to **AI Reviewer** and the minimum requirements for AI-generated artefacts. |

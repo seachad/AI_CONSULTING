@@ -5,8 +5,8 @@
 | | |
 |---|---|
 | Document | Document 04 · Origins, differences and openness |
-| Version | 0.2 (working draft) |
-| Date | 01-10-2026 |
+| Version | 0.3 (working draft) |
+| Date | 14-11-2026 |
 | Author | Fernando García Varela |
 | Status | Draft for review. Explanatory document: it adds no rules to the framework. |
 
@@ -78,7 +78,7 @@ SEVEN-G did not appear all at once: it grew out of earlier research work and has
 | August 2026 | Library extended with templates P32–P71 and the value, maturity and risk tools (T06, T11, T14, T15). |
 | September 2026 | **Version 0.80** (current): complete library (documents 00–94, ES/EN), the SEVEN-G course with layered reading, an issues-and-requests community, and continued adjustment of documents and tools ahead of version 1.0. |
 
-As long as the framework's version number has not reached 1.0, the "version under review" notice in section 6.4 still applies: the content is operational (document 00, decision D40), but it is requested not to be shared widely because documents and tools are still being adapted to make them reusable.
+As long as the framework's version number has not reached 1.0, its pages carry the "Version 0.x, under review" notice in section 6.4: the content is operational (document 00, decision D40) and may be used, adapted and redistributed under the project licence; documents and tools are still being reviewed.
 
 ---
 
@@ -215,7 +215,7 @@ The detail is in document 93. This document does not constitute legal advice.
 
 ### 6.4 The version-under-review notice
 
-While the framework is at version 0.x, its main pages ask readers **not to circulate it widely**. This is a request from the author, not a licence restriction: CC BY 4.0 already allows these versions to be shared. The request has a practical reason —documents and tools are being adapted to make them reusable— and it will disappear with version 1.x.
+While the framework is at version 0.x, its main pages carry the **"Version 0.x, under review"** notice. The notice restricts nothing: the content is operational and **may be used, adapted and redistributed** under the project licence (CC BY 4.0 for content and MIT for code), crediting the author and indicating changes. It only says that documents and tools are still being reviewed and that feedback and proposals for improvement are welcome. The notice will disappear with version 1.x.
 
 ---
 
@@ -258,3 +258,4 @@ There is no need to get in touch or ask permission for any use that complies wit
 |---|---|---|
 | 0.1 | 19-09-2026 | First version. Practical origin of the framework, shortcomings of the usual approaches that it corrects, management disciplines it brings together, the portfolio as a sales funnel and its differences, reasons for the open licence, control kept by the author and contact. |
 | 0.2 | 01-10-2026 | Section 5.1: compared with the standards, SEVEN-G as an AI operating model; what each reference provides and what the framework adds, with reference to the crosswalk of document 34 (D151). |
+| 0.3 | 14-11-2026 | Sections 2.3 and 6.4: the version 0.x notice becomes "Version 0.x, under review"; the content may be used, adapted and redistributed under the licence also at version 0.x (D177, which supersedes D58). |

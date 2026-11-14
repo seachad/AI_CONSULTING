@@ -5,8 +5,8 @@
 | | |
 |---|---|
 | Documento | Documento 53 · Construcción de soluciones con IA |
-| Versión | 0.1 (borrador de trabajo) |
-| Fecha | 16-09-2026 |
+| Versión | 0.2 (borrador de trabajo) |
+| Fecha | 14-11-2026 |
 | Autor | Fernando García Varela |
 | Estado | Borrador para revisión. Contiene referencias regulatorias consultadas el 16-09-2026. |
 
@@ -55,6 +55,8 @@ Una herramienta de construcción con capacidad de ejecutar acciones en repositor
 ### 2.1 Posición de SPAD
 
 **SPAD** (*Structured Prompt-Driven Engineering*) es una **metodología independiente** de ingeniería asistida por IA, referenciada desde SEVEN-G y no integrada en él (decisión D09). No es una marca, un componente ni una "capacidad" de SEVEN-G. SEVEN-G puede aplicarse con SPAD o con otro método de ingeniería que cumpla los requisitos de la sección 7. La metodología completa está en la [biblioteca SPAD](../../../SPAD/html/es/index.html) (documentos 00 a 08).
+
+**Este documento es el único puente entre los dos niveles.** SEVEN-G gobierna la IA de la compañía: decide qué se construye, con qué riesgo y cómo se mide. Cómo se construye el software con IA es otro problema, que resuelve SPAD como método independiente. Este documento y su plantilla P66 dicen cómo pasan a las evidencias de SEVEN-G los artefactos de la construcción; los veredictos de SPAD no sustituyen a ninguna puerta.
 
 | Aspecto | SEVEN-G | SPAD |
 |---|---|---|
@@ -339,4 +341,5 @@ Los criterios formales se incorporarán al documento 21. Mientras tanto, el veri
 
 | Versión | Fecha | Cambios |
 |---|---|---|
+| 0.2 | 14-11-2026 | La sección 2.1 dice que este documento, con P66, es el único puente entre el gobierno de la IA de la compañía (SEVEN-G) y la construcción de software con IA (SPAD, método independiente) (D176). Sin cambios en las reglas. |
 | 0.1 | 16-09-2026 | Primera versión. Define la relación con SPAD como metodología independiente (D09), la correspondencia de fases, roles y política de validación con evidencias SEVEN-G, el cambio de denominación del rol *AI Auditor* de SPAD a **IA revisora** y los requisitos mínimos para artefactos generados con IA. |

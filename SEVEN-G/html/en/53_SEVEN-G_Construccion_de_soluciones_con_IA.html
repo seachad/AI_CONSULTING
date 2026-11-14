@@ -374,6 +374,13 @@ blockquote.aviso-legal strong { color: var(--negro); }
 .dz-card-titulo { font: 700 19px/1.2 var(--serif); color: var(--negro); margin: 0 0 6px; }
 .dz-card-texto { font: 400 13.5px/1.4 var(--sans); color: var(--tinta-2); margin: 0 0 12px; flex: 1; }
 .dz-card .dz-item { background: var(--papel); }
+/* documento 00 de cada marco: sus presentaciones en slides (1, 5, 10 y 20 en tarjetas de dos columnas; el curso, de cuatro) */
+@media (min-width: 900px) { .dz-card[data-grupo="slides-curso"] { grid-column: span 4; } .dz-card[data-grupo="slides-otros"] { grid-column: span 3; } }
+.dz-card[data-grupo="slides-curso"] { border-top-color: var(--teal); }
+.dz-card[data-grupo="slides-curso"] .dz-card-rotulo { color: var(--teal); }
+.dz-card[data-grupo="slides-otros"] { border-top-color: var(--oxford); }
+.dz-card[data-grupo="slides-otros"] .dz-card-rotulo { color: var(--oxford); }
+.descargas-zona[id] { scroll-margin-top: 72px; }
 .dz-grupo { font: 700 12px/1.2 var(--sans); letter-spacing: .08em; text-transform: uppercase; color: var(--tinta-2); margin: 8px 0 -2px; padding-top: 10px; border-top: 1px solid var(--regla); }
 .dz-grupo:first-child { margin-top: 0; padding-top: 0; border-top: 0; }
 @media print { .descargas-zona { display: none !important; } }
@@ -472,12 +479,12 @@ h2 .codigo, h3 .codigo { font-weight: 400; }
 
 <div id="top"></div>
 <header class="portada">
-  <div class="cabecera"><div class="marca"><i></i>SEVEN-G</div><div class="cabecera-dato">Document 53 · 16-09-2026</div></div>
+  <div class="cabecera"><div class="marca"><i></i>SEVEN-G</div><div class="cabecera-dato">Document 53 · 14-11-2026</div></div>
   <div class="portada-cuerpo">
     <p class="antetitulo">Document 53 &#183; Building solutions with AI</p>
     <h1>Building solutions with AI</h1>
     <p class="entradilla">How design, code and tests generated with AI assistance are governed in phases 4 and 5, and how SPAD is used</p>
-    <div class="firma"><span><b>Fernando Garc&#237;a Varela</b></span><span>Version 0.1 (working draft)</span><span>16-09-2026</span><span>Draft for review</span></div>
+    <div class="firma"><span><b>Fernando Garc&#237;a Varela</b></span><span>Version 0.2 (working draft)</span><span>14-11-2026</span><span>Draft for review</span></div>
     <div class="cifras"><div class="cifra"><b>2</b><span>phases in which it applies (4 and 5)</span></div><div class="cifra"><b>6</b><span>minimum requirements for AI-generated code</span></div><div class="cifra"><b>7</b><span>SPAD roles mapped</span></div><div class="cifra"><b>0</b><span>approvals an AI can give</span></div></div>
   </div>
 </header>
@@ -535,6 +542,7 @@ h2 .codigo, h3 .codigo { font-weight: 400; }
 <h2 id="relationship-between-seven-g-and-spad"><span class="antetitulo">02</span>Relationship between SEVEN-G and SPAD</h2>
 <h3 id="2-1-position-of-spad">2.1 Position of SPAD</h3>
 <p><strong>SPAD</strong> (<em>Structured Prompt-Driven Engineering</em>) is an <strong>independent methodology</strong> for AI-assisted engineering, referenced from SEVEN-G and not integrated into it (decision D09). It is not a brand, a component or a &quot;capability&quot; of SEVEN-G. SEVEN-G can be applied with SPAD or with another engineering method that meets the requirements of section 7. The full methodology is in the <a href="../../../SPAD/html/en/index.html">SPAD library</a> (documents 00 to 08).</p>
+<p><strong>This document is the only bridge between the two levels.</strong> SEVEN-G governs the company's AI: it decides what is built, with what risk and how it is measured. How the software is built with AI is a different problem, which SPAD solves as an independent method. This document and its template <a href="plantillas/P66_SEVEN-G_Anexos_de_construccion_con_SPAD.html" title="Template P66 &#183; Build annexes with SPAD">P66</a> set out how the artefacts of the build become SEVEN-G evidence; SPAD verdicts do not replace any gate.</p>
 <div class="tabla"><table>
 <thead>
 <tr>
@@ -1238,6 +1246,11 @@ h2 .codigo, h3 .codigo { font-weight: 400; }
 </thead>
 <tbody>
 <tr>
+<td>0.2</td>
+<td>14-11-2026</td>
+<td>Section 2.1 states that this document, with <a href="plantillas/P66_SEVEN-G_Anexos_de_construccion_con_SPAD.html" title="Template P66 &#183; Build annexes with SPAD">P66</a>, is the only bridge between the company's AI governance (SEVEN-G) and building software with AI (SPAD, an independent method) (D176). No change to the rules.</td>
+</tr>
+<tr>
 <td>0.1</td>
 <td>16-09-2026</td>
 <td>First version. Defines the relationship with SPAD as an independent methodology (D09), the mapping of phases, roles and validation policy to SEVEN-G evidence, the renaming of SPAD's <em>AI Auditor</em> role to <strong>AI Reviewer</strong> and the minimum requirements for AI-generated artefacts.</td>
@@ -1246,7 +1259,7 @@ h2 .codigo, h3 .codigo { font-weight: 400; }
 </table></div>
 <h2 id="external-sources">External sources cited</h2><p class="fuentes-nota">Links to the official or primary source, checked before publication. Always verify the version in force on the date of use.</p><ul class="fuentes-externas"><li><a href="https://eur-lex.europa.eu/eli/reg/2022/2554/oj/eng" target="_blank" rel="noopener">Regulation (EU) 2022/2554 of the European Parliament and of the Council of 14 December 2022 on digital operational resilience for the financial sector (DORA)</a><span> · Parlamento Europeo y Consejo de la UE · 14-12-2022</span></li><li><a href="https://eur-lex.europa.eu/eli/reg/2024/1689/oj/eng" target="_blank" rel="noopener">Regulation (EU) 2024/1689 of the European Parliament and of the Council of 13 June 2024 laying down harmonised rules on artificial intelligence (Artificial Intelligence Act)</a><span> · Parlamento Europeo y Consejo de la UE · 13-06-2024</span></li><li><a href="https://eur-lex.europa.eu/eli/reg/2024/2847/oj/eng" target="_blank" rel="noopener">Regulation (EU) 2024/2847 of the European Parliament and of the Council of 23 October 2024 on horizontal cybersecurity requirements for products with digital elements (Cyber Resilience Act)</a><span> · Parlamento Europeo y Consejo de la UE · 23-10-2024</span></li><li><a href="https://genai.owasp.org/resource/owasp-top-10-for-llm-applications-2025/" target="_blank" rel="noopener">OWASP Top 10 for Large Language Model Applications 2025</a><span> · OWASP GenAI Security Project (OWASP Foundation) · 17-11-2024</span></li><li><a href="https://top10.owasp.org/2025/" target="_blank" rel="noopener">OWASP Top 10:2025 (web application security risks)</a><span> · OWASP Foundation · 2025</span></li></ul>
 </main>
-<footer class="pie"><div><span>© 2026 Fernando García Varela · SEVEN-G methodology</span><span>Generated on 13-11-2026</span></div><p class="pie-ia">Content generated and typeset with AI support under the author&#39;s editorial supervision.</p></footer>
+<footer class="pie"><div><span>© 2026 Fernando García Varela · SEVEN-G methodology</span><span>Generated on 14-11-2026</span></div><p class="pie-ia">Content generated and typeset with AI support under the author&#39;s editorial supervision.</p></footer>
 <script src="codigos.js" defer></script>
 
 <script>

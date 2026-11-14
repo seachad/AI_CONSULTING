@@ -5,8 +5,8 @@
 | | |
 |---|---|
 | Documento | Documento 95 · Datos en local e instalación propia |
-| Versión | 0.1 (borrador de trabajo) |
-| Fecha | 22-09-2026 |
+| Versión | 0.2 (borrador de trabajo) |
+| Fecha | 14-11-2026 |
 | Autor | Fernando García Varela |
 | Estado | Borrador para revisión. Describe el sitio y las herramientas tal como están publicados en la fecha del documento. |
 
@@ -170,7 +170,7 @@ Lo que contiene el repositorio:
 | `index.html`, `en/index.html`, `LICENSE`, `LICENCIA_CONTENIDOS.md` | Portada del sitio en los dos idiomas y licencias. | Sí. |
 | `SEVEN-G/html`, `SEVEN-G/pdf`, `SEVEN-G/docx`, `SEVEN-G/pptx` | Documentos, plantillas y curso ya generados, en los dos idiomas, con el índice de códigos (`codigos.js`). | Sí. |
 | `SEVEN-G/herramientas` | Las herramientas T01, T11, T14 y T15 (un HTML cada una, más sus fuentes y datos de demostración), el generador T17 con su motor, la página de comunidad y el mapa de datos. | Sí. |
-| `SPHERES/html`, `SPHERES/pdf`, `SPAD/html`, `SPAD/pdf` | Las metodologías de apoyo, ya generadas. | Sí, si se quieren servir. |
+| `SPHERES/html`, `SPHERES/pdf`, `SPAD/html`, `SPAD/pdf` | SPHERES (capa explicativa de SEVEN-G) y SPAD (método independiente para construir software con IA), ya generados. | Sí, si se quieren servir. |
 | `SEVEN-G/mds`, `SPHERES/mds`, `SPAD/mds` | Las fuentes Markdown de todo lo anterior. | Solo si se va a adaptar y regenerar. |
 | `SEVEN-G/build` | El generador (`build.ps1`), la plantilla, los estilos, los componentes gráficos, el índice de códigos, el servidor local de revisión y las pruebas de coherencia. | Solo si se va a regenerar. |
 | Carpetas cuyo nombre empieza por `_` o por `.` | Material de trabajo del autor, versiones no vigentes y configuración del repositorio. | No; no se publican. |
@@ -284,4 +284,5 @@ Un *partner* que quiera publicar su versión adaptada puede hacer un *fork* del 
 
 | Versión | Fecha | Cambios |
 |---|---|---|
+| 0.2 | 14-11-2026 | SPHERES y SPAD se describen como capa explicativa de SEVEN-G y método independiente para construir software con IA (D176). |
 | 0.1 | 22-09-2026 | Primera versión: cómo funciona el sitio, dónde se guardan los datos introducidos (solo en el navegador), qué sale del navegador y hacia dónde, copia de seguridad, e instalación en un servidor propio desde el repositorio público, con una instalación por cliente para consultoras, *partners* y consultores independientes. |

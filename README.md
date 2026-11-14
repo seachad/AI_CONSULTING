@@ -1,6 +1,6 @@
 # AI_CONSULTING
 
-Metodologías de IA de Fernando García Varela: **SEVEN-G** (marco principal), **SPHERES** y **SPAD** (metodologías de apoyo). Repositorio público; sitio publicado en <https://seachad.github.io/AI_CONSULTING/>.
+Metodologías de IA de Fernando García Varela, en dos niveles: **gobierno de la IA en la compañía**, con **SEVEN-G** (marco principal) y **SPHERES** (su capa explicativa), y, aparte, **construir software con IA**, con **SPAD** (método independiente, conectado con SEVEN-G solo por su documento 53). Repositorio público; sitio publicado en <https://seachad.github.io/AI_CONSULTING/>.
 
 Licencias: código MIT ([LICENSE](LICENSE)); contenidos CC BY 4.0 ([LICENCIA_CONTENIDOS.md](LICENCIA_CONTENIDOS.md)). SEVEN-G es un nombre y una marca de Fernando García Varela; no existe certificación oficial ni programa de socios.
 
@@ -30,9 +30,9 @@ Marco de valor, gobierno y transformación con IA. Proyecto vivo.
 | `SEVEN-G/build/` | Generador común (SEVEN-G, SPHERES y SPAD), plantilla, estilo, componentes gráficos, índice de códigos, guía de traducción, servidor local de revisión y pruebas de coherencia |
 | `SEVEN-G/_legacy/` | Materiales anteriores, no vigentes; solo como fuente de consulta |
 
-## SPHERES y SPAD
+## SPHERES y SPAD (dos niveles distintos)
 
-Metodologías de apoyo de SEVEN-G (en construcción). SPHERES: nueve esferas de impacto y tres niveles de ambición de la IA. SPAD: ingeniería guiada por instrucciones estructuradas para construir con IA. Misma jerarquía de carpetas que SEVEN-G (`mds`, `html`, `pdf`, `build/componentes`, `_legacy`); los componentes comunes están en `SEVEN-G/build/componentes/`.
+En construcción. SPHERES es la capa explicativa de SEVEN-G: nueve esferas de impacto y tres niveles de ambición de la IA. SPAD no forma parte del gobierno de la IA: es un método independiente para construir software con IA (ingeniería guiada por instrucciones estructuradas); el único puente con SEVEN-G es su documento 53. Misma jerarquía de carpetas que SEVEN-G (`mds`, `html`, `pdf`, `build/componentes`, `_legacy`); los componentes comunes están en `SEVEN-G/build/componentes/`.
 
 ## Generación y revisión
 
@@ -44,7 +44,7 @@ pwsh -File SEVEN-G/build/build.ps1
 
 Solo una metodología: `pwsh -File SEVEN-G/build/build.ps1 -Metodologias SPHERES`; un documento: `-Filter '03_*.md'`. Revisión local del sitio completo: `pwsh -File SEVEN-G/build/servidor.ps1` y abrir `http://localhost:8765/`. Pruebas de coherencia antes de publicar: `pwsh -File SEVEN-G/build/verificar_coherencia.ps1`.
 
-Empieza por la portada del sitio, `index.html` (español) o `en/index.html` (inglés), que presenta SEVEN-G (marco principal) y las metodologías de apoyo SPHERES y SPAD.
+Empieza por la portada del sitio, `index.html` (español) o `en/index.html` (inglés), que presenta los dos niveles: gobierno de la IA en la compañía (SEVEN-G y SPHERES) y construir software con IA (SPAD).
 
 ## Publicación (GitHub Pages)
 

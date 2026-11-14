@@ -32,6 +32,9 @@
        a extremo y eficacia de los guardarraíles en el 52 e IND-OPE-27 a 29 en el 41; medición de la IA para TI y ciberdefensa en 35 §9.3 y
        40 §7.3; «probar también es usar» en el 36; 27 preguntas en LV-AG (21 previas y 6 de D159); términos del glosario; galería con la categoría de seguridad de la
        IA, fuentes del registro verificadas y ninguna compañía nombrada en los documentos normativos.
+   47. Dos niveles (D176): la portada (ES/EN) separa «Gobierno de la IA en la compañía» (SEVEN-G y SPHERES) de «Construir software con
+       IA» (SPAD); las slides de SEVEN-G, SPHERES y áreas no nombran SPAD; el 00 de SPAD tiene «Para qué le sirve a una compañía»; las
+       tarjetas de área de la entrada y la portada enlazan sus slides de 1 y 10 (PPTX y PDF).
     10. Comunidad (D80): la página de incidencias y peticiones no pide correo ni datos de contacto, no carga recursos de terceros, no usa
         cookies, muestra la regla de los votos, está enlazada desde la portada (ES/EN) y en su carpeta no hay ningún token.
     17. Códigos citados en cualquier panel (D99): codigos.js enlaza los códigos escritos y ofrece «Citados aquí»; las herramientas, el
@@ -408,11 +411,16 @@ try {
   foreach ($x in $sin) { Mal "sin aviso legal: $x" }
   if (-not $sin) { Ok "$($conAviso.Count) páginas con aviso legal" }
 
-  # aviso de versión en revisión (D58) en las páginas principales mientras el marco esté en la versión 0.x; se retira al pasar a la 1.x
-  $principales = @('index.html', 'en\index.html') + @(foreach ($met in 'SEVEN-G', 'SPHERES', 'SPAD') { foreach ($lang in 'es', 'en') { "$met\html\$lang\index.html"; "$met\html\$lang\00_${met}_Que_es_y_para_que_sirve.html" } })
-  $sinRev = $principales | Where-Object { (Test-Path (Join-Path $repo $_)) -and -not (Select-String -Path (Join-Path $repo $_) -Pattern 'Versión en revisión|Version under review' -Quiet) }
-  foreach ($x in $sinRev) { Mal "sin aviso de versión en revisión: $x" }
-  if (-not $sinRev) { Ok "$($principales.Count) páginas principales con el aviso de versión en revisión" }
+  # aviso «Versión 0.x, en revisión» (D177, que sustituye a D58) en las páginas principales mientras el marco esté en la versión 0.x;
+  # dice que el contenido puede redistribuirse con la licencia; se retira al pasar a la 1.x
+  $principales = @('index.html', 'en\index.html', 'SEVEN-G\html\es\entrada\index.html', 'SEVEN-G\html\en\entrada\index.html') + @(foreach ($met in 'SEVEN-G', 'SPHERES', 'SPAD') { foreach ($lang in 'es', 'en') { "$met\html\$lang\index.html"; "$met\html\$lang\00_${met}_Que_es_y_para_que_sirve.html" } })
+  $sinRev = $principales | Where-Object { (Test-Path (Join-Path $repo $_)) -and -not ((Select-String -Path (Join-Path $repo $_) -Pattern 'Versión 0\.x, en revisión|Version 0\.x, under review' -Quiet) -and (Select-String -Path (Join-Path $repo $_) -Pattern 'redistribuirse|redistributed' -Quiet)) }
+  foreach ($x in $sinRev) { Mal "sin el aviso «Versión 0.x, en revisión» que permite redistribuir (D177): $x" }
+  # nada publicado vuelve a pedir que no se difunda (D177): Markdown, HTML generados, portada y fuente de la entrada
+  $pubRev = @(Get-ChildItem (Join-Path $repo 'SEVEN-G\mds'), (Join-Path $repo 'SPHERES\mds'), (Join-Path $repo 'SPAD\mds'), (Join-Path $repo 'SEVEN-G\html'), (Join-Path $repo 'SPHERES\html'), (Join-Path $repo 'SPAD\html'), (Join-Path $repo 'SEVEN-G\build\entrada') -Recurse -File -Include '*.md', '*.html' -ErrorAction SilentlyContinue | Where-Object { $_.FullName -notmatch '[\\/]_(trabajo|legacy)[\\/]' }) + @(Get-Item (Join-Path $repo 'index.html'), (Join-Path $repo 'en\index.html'))
+  $difundir = @($pubRev | Select-String -Pattern 'no difundir|do not circulate|not meant to be shared' -List | ForEach-Object { $_.Path.Substring($repo.Length + 1) })
+  foreach ($x in ($difundir | Select-Object -First 10)) { Mal "pide no difundir el contenido, y la versión 0.x puede redistribuirse (D177): $x" }
+  if (-not $sinRev -and -not $difundir) { Ok "$($principales.Count) páginas principales con el aviso «Versión 0.x, en revisión»; nada publicado pide no difundir" }
 
   # ---- 4. portada
   Write-Host '4. Portada: orden de botones y enlaces'
@@ -2079,7 +2087,70 @@ try {
   if ($pages46 -notmatch 'for c in html pdf docx pptx herramientas' -or $pages46 -notmatch 'for c in html pdf pptx; do') { Mal 'pages.yml: no publica pptx y pdf de SEVEN-G, SPHERES y SPAD'; $mal46++ }
   if ($pages46 -match '(?m)^\s*(cp|rsync)\b[^\n]*\bpresentaciones\b') { Mal 'pages.yml: publica presentaciones/ (fuentes de trabajo)'; $mal46++ }
   if ([IO.File]::ReadAllText((Join-Path $PSScriptRoot 'publicar.ps1')) -notmatch "'SPHERES' = @\('html', 'pdf', 'pptx'\); 'SPAD' = @\('html', 'pdf', 'pptx'\)") { Mal 'publicar.ps1: no publica pptx de SPHERES y SPAD'; $mal46++ }
-  if (-not $mal46) { Ok "presentaciones en slides: $nOk46 de $($ids46.Count) con PPTX y PDF en ES y EN, al día con sus JSON; $nEnl46 enlaces de descarga en la entrada, los documentos 00 y las páginas de área; portada y publicación al día" }
+  # (e) D176: las slides solo se cruzan entre SEVEN-G, SPHERES y áreas (gobierno de la IA); SPAD (construir software con IA) va aparte
+  $spadSl46 = '00_SPAD_Que_es_y_para_que_sirve\.html#presentaciones|SPAD/(pptx|pdf)/[^"]*presentaciones/'
+  foreach ($lg in 'es', 'en') {
+    foreach ($fg in "SEVEN-G\html\$lg\entrada\index.html", "SEVEN-G\html\$lg\00_SEVEN-G_Que_es_y_para_que_sirve.html", "SPHERES\html\$lg\00_SPHERES_Que_es_y_para_que_sirve.html") {
+      $pG = Join-Path $repo $fg
+      if ((Test-Path $pG) -and ([IO.File]::ReadAllText($pG) -match $spadSl46)) { Mal "$($fg -replace '\\', '/'): enlaza las slides de SPAD; SPAD es otro nivel (D176): generar con build.ps1"; $mal46++ }
+    }
+    $pS = Join-Path $repo "SPAD\html\$lg\00_SPAD_Que_es_y_para_que_sirve.html"
+    if (Test-Path $pS) {
+      $hS = [IO.File]::ReadAllText($pS)
+      if ($hS -match 'También en slides|Also in slides|(SEVEN-G|SPHERES)/(pptx|pdf)/|00_SPHERES_Que_es_y_para_que_sirve\.html#presentaciones|entrada/index\.html#(presentaciones|areas)') { Mal "SPAD/html/$lg/00: cruza slides con SEVEN-G o SPHERES; solo debe mostrar las suyas (D176)"; $mal46++ }
+    }
+    $port46b = [IO.File]::ReadAllText((Join-Path $repo $(if ($lg -eq 'es') { 'index.html' } else { 'en\index.html' })))
+    $iSw = $port46b.IndexOf('<h2 id="software">'); $iSl = $port46b.IndexOf('<!-- slides:SPAD:inicio')
+    if ($iSw -lt 0 -or $iSl -lt $iSw) { Mal "portada [$lg]: «SPAD en slides» debe ir dentro del nivel «Construir software con IA» (D176)"; $mal46++ }
+  }
+  if (-not $mal46) { Ok "presentaciones en slides: $nOk46 de $($ids46.Count) con PPTX y PDF en ES y EN, al día con sus JSON; $nEnl46 enlaces de descarga en la entrada, los documentos 00 y las páginas de área; SPAD sin cruces con SEVEN-G ni SPHERES (D176); portada y publicación al día" }
+
+  # ---- 47. Dos niveles (D176): gobierno de la IA en la compañía (SEVEN-G y SPHERES) y, aparte, construir software con IA (SPAD)
+  # (a) la portada (ES/EN) muestra los dos niveles con su rótulo y en orden, sin «metodologías de apoyo»; (b) las fuentes de las slides
+  # de SEVEN-G, SPHERES y áreas no nombran SPAD ni usan sus imágenes; (c) el documento 00 de SPAD (ES/EN) tiene la sección «Para qué le
+  # sirve a una compañía»; (d) cada tarjeta de área de la entrada y de la portada enlaza sus slides de 1 y 10 (PPTX y PDF) y existen.
+  Write-Host '47. Dos niveles: gobierno de la IA (SEVEN-G y SPHERES) y construir software con IA (SPAD); slides en las tarjetas de área'
+  $mal47 = 0
+  $niv47 = @{ es = @('Gobierno de la IA en la compañía', 'Construir software con IA', 'Metodologías de apoyo'); en = @('AI governance in the company', 'Building software with AI', 'Supporting methodologies') }
+  foreach ($lg in 'es', 'en') {
+    $p47 = [IO.File]::ReadAllText((Join-Path $repo $(if ($lg -eq 'es') { 'index.html' } else { 'en\index.html' })))
+    $orden = @("<h2 id=""gobierno"">$($niv47[$lg][0])</h2>", 'id="seveng"', 'id="spheres"', "<h2 id=""software"">$($niv47[$lg][1])</h2>", 'id="spad"')
+    $pos = @($orden | ForEach-Object { $p47.IndexOf($_) })
+    if ($pos -contains -1) { Mal "portada [$lg]: faltan los dos niveles «$($niv47[$lg][0])» y «$($niv47[$lg][1])» con SEVEN-G, SPHERES y SPAD (D176)"; $mal47++ }
+    elseif (($pos -join ',') -ne ((@($pos | Sort-Object)) -join ',')) { Mal "portada [$lg]: el orden debe ser gobierno de la IA (SEVEN-G, SPHERES) y después construir software con IA (SPAD) (D176)"; $mal47++ }
+    if ($p47.Contains($niv47[$lg][2])) { Mal "portada [$lg]: aún dice «$($niv47[$lg][2])»; SPAD no es una metodología de apoyo de SEVEN-G (D176)"; $mal47++ }
+  }
+  $fuentes47 = foreach ($c in 'seven-g', 'spheres', 'areas') { Get-ChildItem (Join-Path $repo "presentaciones\fuentes\$c") -Filter '*.json' -File -ErrorAction SilentlyContinue }
+  $conSpad47 = @(foreach ($j in $fuentes47) { $tj = [IO.File]::ReadAllText($j.FullName); if ($tj -cmatch 'SPAD' -or $tj -match 'spad-') { "$($j.Directory.Name)/$($j.Name)" } })
+  if ($conSpad47.Count) { Mal "presentaciones de SEVEN-G, SPHERES y áreas que aún nombran SPAD o usan una imagen spad- (D176): $(($conSpad47 | Select-Object -First 12) -join ', ')$(if ($conSpad47.Count -gt 12) { " … y $($conSpad47.Count - 12) más" })"; $mal47++ }
+  foreach ($x in @(@{ lg = 'es'; t = '### Para qué le sirve a una compañía'; h = 'Para qué le sirve a una compañía' }, @{ lg = 'en'; t = '### What it does for a company'; h = 'What it does for a company' })) {
+    $mdS = [IO.File]::ReadAllText((Join-Path $repo "SPAD\mds\$($x.lg)\00_SPAD_Que_es_y_para_que_sirve.md"))
+    if (-not $mdS.Contains($x.t) -or $mdS -notmatch '(?s)' + [regex]::Escape($x.t) + '.*?Posici[oó]n del autor|' + [regex]::Escape($x.t) + '.*?author''s position') { Mal "SPAD 00 [$($x.lg)]: falta la sección «$($x.h)» marcada como posición del autor (D176)"; $mal47++ }
+    $hS = Join-Path $repo "SPAD\html\$($x.lg)\00_SPAD_Que_es_y_para_que_sirve.html"
+    if ((Test-Path $hS) -and -not [IO.File]::ReadAllText($hS).Contains($x.h)) { Mal "SPAD 00 [$($x.lg)]: el HTML no tiene la sección «$($x.h)»: generar con build.ps1"; $mal47++ }
+  }
+  $nTar47 = 0
+  foreach ($lg in 'es', 'en') {
+    foreach ($pg in @(@{ f = "SEVEN-G\html\$lg\entrada\index.html"; q = 'entrada' }, @{ f = $(if ($lg -eq 'es') { 'index.html' } else { 'en\index.html' }); q = 'portada' })) {
+      $fP = Join-Path $repo $pg.f; if (-not (Test-Path $fP)) { continue }
+      $hP = [IO.File]::ReadAllText($fP); $dirP = Split-Path $fP
+      foreach ($a in $areas46) {
+        $tar = [regex]::Match($hP, "(?s)id=""area-$a"".*?</details>").Value
+        if (-not $tar) { Mal "$($pg.q) [$lg]: falta la tarjeta del área «$a»"; $mal47++; continue }
+        foreach ($n in 1, 10) {
+          $p = $man46["areas/${a}_$n"]; if (-not $p) { continue }
+          foreach ($k in 'pptx', 'pdf') {
+            $rel = [string]$p.$k.$lg; if (-not $rel) { continue }
+            $abs = [IO.Path]::GetFullPath((Join-Path $repo $rel))
+            if (-not (Test-Path $abs -PathType Leaf)) { Mal "$($pg.q) [$lg]: el $($k.ToUpper()) de «areas/${a}_$n» no existe ($rel)"; $mal47++; continue }
+            $href = [IO.Path]::GetRelativePath($dirP, $abs).Replace('\', '/')
+            if (-not $tar.Contains("href=""$href""")) { Mal "$($pg.q) [$lg]: la tarjeta del área «$a» no enlaza el $($k.ToUpper()) de $n slide(s) ($href); generar con build.ps1"; $mal47++ } else { $nTar47++ }
+          }
+        }
+      }
+    }
+  }
+  if (-not $mal47) { Ok "dos niveles en la portada (ES/EN), slides de SEVEN-G, SPHERES y áreas sin SPAD, sección «Para qué le sirve a una compañía» en el 00 de SPAD y $nTar47 enlaces de slides en las tarjetas de área de la entrada y la portada" }
 }
 finally { Remove-Item $tmp -Recurse -Force -Confirm:$false -ErrorAction SilentlyContinue }
 

@@ -374,6 +374,13 @@ blockquote.aviso-legal strong { color: var(--negro); }
 .dz-card-titulo { font: 700 19px/1.2 var(--serif); color: var(--negro); margin: 0 0 6px; }
 .dz-card-texto { font: 400 13.5px/1.4 var(--sans); color: var(--tinta-2); margin: 0 0 12px; flex: 1; }
 .dz-card .dz-item { background: var(--papel); }
+/* documento 00 de cada marco: sus presentaciones en slides (1, 5, 10 y 20 en tarjetas de dos columnas; el curso, de cuatro) */
+@media (min-width: 900px) { .dz-card[data-grupo="slides-curso"] { grid-column: span 4; } .dz-card[data-grupo="slides-otros"] { grid-column: span 3; } }
+.dz-card[data-grupo="slides-curso"] { border-top-color: var(--teal); }
+.dz-card[data-grupo="slides-curso"] .dz-card-rotulo { color: var(--teal); }
+.dz-card[data-grupo="slides-otros"] { border-top-color: var(--oxford); }
+.dz-card[data-grupo="slides-otros"] .dz-card-rotulo { color: var(--oxford); }
+.descargas-zona[id] { scroll-margin-top: 72px; }
 .dz-grupo { font: 700 12px/1.2 var(--sans); letter-spacing: .08em; text-transform: uppercase; color: var(--tinta-2); margin: 8px 0 -2px; padding-top: 10px; border-top: 1px solid var(--regla); }
 .dz-grupo:first-child { margin-top: 0; padding-top: 0; border-top: 0; }
 @media print { .descargas-zona { display: none !important; } }
@@ -472,12 +479,12 @@ h2 .codigo, h3 .codigo { font-weight: 400; }
 
 <div id="top"></div>
 <header class="portada">
-  <div class="cabecera"><div class="marca"><i></i>SEVEN-G</div><div class="cabecera-dato">Documento 53 · 16-09-2026</div></div>
+  <div class="cabecera"><div class="marca"><i></i>SEVEN-G</div><div class="cabecera-dato">Documento 53 · 14-11-2026</div></div>
   <div class="portada-cuerpo">
     <p class="antetitulo">Documento 53 &#183; Construcci&#243;n de soluciones con IA</p>
     <h1>Construcci&#243;n de soluciones con IA</h1>
     <p class="entradilla">C&#243;mo se gobiernan el dise&#241;o, el c&#243;digo y las pruebas generados con asistencia de IA en las fases 4 y 5, y c&#243;mo se usa SPAD</p>
-    <div class="firma"><span><b>Fernando Garc&#237;a Varela</b></span><span>Versión 0.1 (borrador de trabajo)</span><span>16-09-2026</span><span>Borrador para revisi&#243;n</span></div>
+    <div class="firma"><span><b>Fernando Garc&#237;a Varela</b></span><span>Versión 0.2 (borrador de trabajo)</span><span>14-11-2026</span><span>Borrador para revisi&#243;n</span></div>
     <div class="cifras"><div class="cifra"><b>2</b><span>fases en las que se aplica (4 y 5)</span></div><div class="cifra"><b>6</b><span>requisitos m&#237;nimos para c&#243;digo generado con IA</span></div><div class="cifra"><b>7</b><span>roles de SPAD mapeados</span></div><div class="cifra"><b>0</b><span>aprobaciones que puede dar una IA</span></div></div>
   </div>
 </header>
@@ -535,6 +542,7 @@ h2 .codigo, h3 .codigo { font-weight: 400; }
 <h2 id="relacion-entre-seven-g-y-spad"><span class="antetitulo">02</span>Relación entre SEVEN-G y SPAD</h2>
 <h3 id="2-1-posicion-de-spad">2.1 Posición de SPAD</h3>
 <p><strong>SPAD</strong> (<em>Structured Prompt-Driven Engineering</em>) es una <strong>metodología independiente</strong> de ingeniería asistida por IA, referenciada desde SEVEN-G y no integrada en él (decisión D09). No es una marca, un componente ni una &quot;capacidad&quot; de SEVEN-G. SEVEN-G puede aplicarse con SPAD o con otro método de ingeniería que cumpla los requisitos de la sección 7. La metodología completa está en la <a href="../../../SPAD/html/es/index.html">biblioteca SPAD</a> (documentos 00 a 08).</p>
+<p><strong>Este documento es el único puente entre los dos niveles.</strong> SEVEN-G gobierna la IA de la compañía: decide qué se construye, con qué riesgo y cómo se mide. Cómo se construye el software con IA es otro problema, que resuelve SPAD como método independiente. Este documento y su plantilla <a href="plantillas/P66_SEVEN-G_Anexos_de_construccion_con_SPAD.html" title="Plantilla P66 &#183; Anexos de construcci&#243;n con SPAD">P66</a> dicen cómo pasan a las evidencias de SEVEN-G los artefactos de la construcción; los veredictos de SPAD no sustituyen a ninguna puerta.</p>
 <div class="tabla"><table>
 <thead>
 <tr>
@@ -1238,6 +1246,11 @@ h2 .codigo, h3 .codigo { font-weight: 400; }
 </thead>
 <tbody>
 <tr>
+<td>0.2</td>
+<td>14-11-2026</td>
+<td>La sección 2.1 dice que este documento, con <a href="plantillas/P66_SEVEN-G_Anexos_de_construccion_con_SPAD.html" title="Plantilla P66 &#183; Anexos de construcci&#243;n con SPAD">P66</a>, es el único puente entre el gobierno de la IA de la compañía (SEVEN-G) y la construcción de software con IA (SPAD, método independiente) (D176). Sin cambios en las reglas.</td>
+</tr>
+<tr>
 <td>0.1</td>
 <td>16-09-2026</td>
 <td>Primera versión. Define la relación con SPAD como metodología independiente (D09), la correspondencia de fases, roles y política de validación con evidencias SEVEN-G, el cambio de denominación del rol <em>AI Auditor</em> de SPAD a <strong>IA revisora</strong> y los requisitos mínimos para artefactos generados con IA.</td>
@@ -1246,7 +1259,7 @@ h2 .codigo, h3 .codigo { font-weight: 400; }
 </table></div>
 <h2 id="fuentes-externas">Fuentes externas citadas</h2><p class="fuentes-nota">Enlaces a la fuente oficial o primaria, comprobados antes de publicar. Verifique siempre la versión vigente en la fecha de uso.</p><ul class="fuentes-externas"><li><a href="https://eur-lex.europa.eu/eli/reg/2022/2554/oj/spa" target="_blank" rel="noopener">Reglamento (UE) 2022/2554 del Parlamento Europeo y del Consejo, de 14 de diciembre de 2022, sobre la resiliencia operativa digital del sector financiero (DORA)</a><span> · Parlamento Europeo y Consejo de la UE · 14-12-2022</span></li><li><a href="https://eur-lex.europa.eu/eli/reg/2024/1689/oj/spa" target="_blank" rel="noopener">Reglamento (UE) 2024/1689 del Parlamento Europeo y del Consejo, de 13 de junio de 2024, por el que se establecen normas armonizadas en materia de inteligencia artificial (Reglamento de Inteligencia Artificial)</a><span> · Parlamento Europeo y Consejo de la UE · 13-06-2024</span></li><li><a href="https://eur-lex.europa.eu/eli/reg/2024/2847/oj/spa" target="_blank" rel="noopener">Reglamento (UE) 2024/2847 del Parlamento Europeo y del Consejo, de 23 de octubre de 2024, relativo a los requisitos horizontales de ciberseguridad para los productos con elementos digitales (Reglamento de Ciberresiliencia)</a><span> · Parlamento Europeo y Consejo de la UE · 23-10-2024</span></li><li><a href="https://genai.owasp.org/resource/owasp-top-10-for-llm-applications-2025/" target="_blank" rel="noopener">OWASP Top 10 para aplicaciones con modelos de lenguaje de gran tama&#241;o, edici&#243;n 2025 (OWASP Top 10 for LLM Applications 2025)</a><span> · OWASP GenAI Security Project (OWASP Foundation) · 17-11-2024</span></li><li><a href="https://top10.owasp.org/2025/es/" target="_blank" rel="noopener">OWASP Top 10:2025 (riesgos de seguridad de aplicaciones web)</a><span> · OWASP Foundation · 2025</span></li></ul>
 </main>
-<footer class="pie"><div><span>© 2026 Fernando García Varela · Metodolog&#237;a SEVEN-G</span><span>Generado el 13-11-2026</span></div><p class="pie-ia">Contenido generado y maquetado con apoyo de IA bajo supervisi&#243;n editorial del autor.</p></footer>
+<footer class="pie"><div><span>© 2026 Fernando García Varela · Metodolog&#237;a SEVEN-G</span><span>Generado el 14-11-2026</span></div><p class="pie-ia">Contenido generado y maquetado con apoyo de IA bajo supervisi&#243;n editorial del autor.</p></footer>
 <script src="codigos.js" defer></script>
 
 <script>

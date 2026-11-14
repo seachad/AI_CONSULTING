@@ -5,7 +5,7 @@
 | | |
 |---|---|
 | Document | Document 00 · Framework overview |
-| Version | 0.1 (working draft) |
+| Version | 0.2 (working draft) |
 | Date | 16-09-2026 |
 | Author | Fernando García Varela |
 | Status | Version 0.1 in operation as an open reference framework. It is not a closed commercial version or a product released to clients or markets. |
@@ -14,7 +14,7 @@
 
 ---
 
-> **Version under review: please do not circulate.** The current state of SEVEN-G (version 0.x) is not meant to be shared widely. It is public so that a small number of people can review it, give feedback and help improve it. Documents and tools are being adapted to make them reusable; this notice will disappear when the framework reaches version 1.x.
+> **Version 0.x, under review.** SEVEN-G is currently at version 0.x. The content is operational and may be used, adapted and redistributed under the project licence (CC BY 4.0 for content and MIT for code), crediting the author and indicating changes. Documents and tools are still being reviewed: feedback and proposals for improvement are welcome.
 
 > **Legal notice and disclaimer.** SEVEN-G is a reference methodological framework provided "as is" and for information purposes only. It does not constitute legal, regulatory, financial or professional advice, nor does it guarantee compliance with any law or standard. References to general regulation (such as the EU AI Act, the GDPR, DORA or NIS2), to technical standards and to regulation specific to each sector or jurisdiction may be incomplete, may not apply to a particular case or may become out of date as a result of regulatory changes, interpretations or supervisory positions after their consultation date. **Each organisation that uses SEVEN-G is solely responsible for identifying the regulation that applies to it, verifying that it is current and certifying its own regulatory compliance**, with the appropriate qualified advice. This methodology is a generic, free aid shared with the community so that nobody has to start from scratch; each person or organisation can and should adapt it to its own use. It must not be inferred that its legally sensitive parts have been reviewed by legal counsel: those reviews, for each company or sector, are the ultimate responsibility of the company, consultant or organisation that uses it. Although every effort is made to keep it up to date, some regulation may have changed without being reflected here. To the fullest extent permitted by law, the author accepts no responsibility whatsoever for the effects of its application in any organisation or for its full applicability. The methodology does not grant certification of any kind. The author accepts no liability for any use made of this content or for any decisions taken on the basis of it. The data, figures, companies and cases in the examples are fictitious or illustrative.
 
@@ -58,7 +58,7 @@ Two quick views, with the fictitious sample data: the AI initiative portfolio re
 
 | It is probably useful if… | It is probably not useful, or not yet, if… |
 |---|---|
-| You already have AI initiatives —pilots, generative assistants, models, agents— and nobody can say with evidence **how much they cost, how much they contribute and who is accountable** for each one. | You are looking for a technical guide to **build models or choose technology**. SEVEN-G governs and measures; for building, it refers to [document 53](53_SEVEN-G_Construccion_de_soluciones_con_IA.html) and to the SPAD methodology. |
+| You already have AI initiatives —pilots, generative assistants, models, agents— and nobody can say with evidence **how much they cost, how much they contribute and who is accountable** for each one. | You are looking for a technical guide to **build models or choose technology**. SEVEN-G governs and measures. Building software with AI is a different problem: SPAD, an independent method, solves it, and [document 53](53_SEVEN-G_Construccion_de_soluciones_con_IA.html) is the only bridge between the two. |
 | The board or senior management ask about AI and receive an **inventory of technical projects** instead of business decisions. | You are looking for a **certification or a seal**. There is none: the declaration of application is a self-declaration that can be verified by audit. |
 | There are **many pilots and few use cases in production**, and no rule for stopping what does not work. | You expect **legal advice** or a guarantee of compliance. The framework maps obligations to evidence, but each company is responsible for its own compliance. |
 | You have to **demonstrate compliance** with evidence rather than statements. | You only have one or two trials with no budget and no intention of taking them to production. Start with the acceptable use policy ([document 31](31_SEVEN-G_Politica_corporativa_y_uso_aceptable.html)) and the AI system inventory (T02), and come back when there is a portfolio to govern. |
@@ -466,4 +466,5 @@ SEVEN-G version 0.1 is operational. Every document, template and tool in this ta
 
 | Version | Date | Changes |
 |---|---|---|
+| 0.2 | 14-11-2026 | SPAD appears as an independent method for building software with AI, not as part of AI governance; document 53 is the only bridge (D176). |
 | 0.1 | 16-09-2026 | First version. Unifies the existing materials (foundational methodology, *gate* criteria, spheres framework, framework templates and board dashboard measurement rules) into a common model, introduces the corporate cycle and the transformation index, and sets the content licence. |

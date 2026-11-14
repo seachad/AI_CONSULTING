@@ -1,6 +1,6 @@
 # SPAD — Structured Prompt-Driven Engineering
 
-Metodología de apoyo de Fernando García Varela para gestionar el desarrollo de software con inteligencia artificial de forma **secuencial, bloqueante y auditable**. Independiente de SEVEN-G y referenciada desde su documento 53 (D09). En construcción (versión 0.x).
+Método de Fernando García Varela para construir software con inteligencia artificial de forma **secuencial, bloqueante y auditable**. Resuelve un problema específico, cómo se construye software con IA; no es un marco de gobierno de la IA de la compañía ni una metodología de apoyo de SEVEN-G. Es independiente y se conecta con SEVEN-G solo por su documento 53 (D09). En construcción (versión 0.x).
 
 > **Aviso legal y exención de responsabilidad.** SPAD es una metodología de referencia que se ofrece «tal cual» y con fines exclusivamente informativos. No constituye asesoramiento jurídico, regulatorio ni profesional, no garantiza resultados ni el cumplimiento de ninguna norma y no es una certificación. Cada organización que la use es la única responsable de validar sus resultados, identificar la normativa que le aplica, verificar su vigencia y certificar su propio cumplimiento regulatorio. El autor no asume responsabilidad alguna por su uso.
 

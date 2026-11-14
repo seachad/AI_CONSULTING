@@ -5,8 +5,8 @@
 | | |
 |---|---|
 | Document | Document 95 · Local data and self-hosting |
-| Version | 0.1 (working draft) |
-| Date | 22-09-2026 |
+| Version | 0.2 (working draft) |
+| Date | 14-11-2026 |
 | Author | Fernando García Varela |
 | Status | Draft for review. Describes the site and the tools as published on the date of the document. |
 
@@ -170,7 +170,7 @@ What the repository contains:
 | `index.html`, `en/index.html`, `LICENSE`, `LICENCIA_CONTENIDOS.md` | Site home page in both languages and licences. | Yes. |
 | `SEVEN-G/html`, `SEVEN-G/pdf`, `SEVEN-G/docx`, `SEVEN-G/pptx` | Documents, templates and course already generated, in both languages, with the code index (`codigos.js`). | Yes. |
 | `SEVEN-G/herramientas` | The tools T01, T11, T14 and T15 (one HTML each, plus their sources and demonstration data), the T17 generator with its engine, the community page and the data map. | Yes. |
-| `SPHERES/html`, `SPHERES/pdf`, `SPAD/html`, `SPAD/pdf` | The supporting methodologies, already generated. | Yes, if you want to serve them. |
+| `SPHERES/html`, `SPHERES/pdf`, `SPAD/html`, `SPAD/pdf` | SPHERES (the explanatory layer of SEVEN-G) and SPAD (an independent method for building software with AI), already generated. | Yes, if you want to serve them. |
 | `SEVEN-G/mds`, `SPHERES/mds`, `SPAD/mds` | The Markdown sources of all of the above. | Only if you are going to adapt and regenerate. |
 | `SEVEN-G/build` | The generator (`build.ps1`), the template, the styles, the graphic components, the code index, the local review server and the coherence checks. | Only if you are going to regenerate. |
 | Folders whose name starts with `_` or `.` | The author's working material, non-current versions and repository configuration. | No; they are not published. |
@@ -284,4 +284,5 @@ A partner wanting to publish its adapted version can fork the repository on GitH
 
 | Version | Date | Changes |
 |---|---|---|
+| 0.2 | 14-11-2026 | SPHERES and SPAD are described as the explanatory layer of SEVEN-G and an independent method for building software with AI (D176). |
 | 0.1 | 22-09-2026 | First version: how the site works, where the data entered is stored (only in the browser), what leaves the browser and where it goes, backup, and installation on your own server from the public repository, with one installation per client for consultancies, partners and independent consultants. |

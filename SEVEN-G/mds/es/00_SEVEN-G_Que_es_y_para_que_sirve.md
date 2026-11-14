@@ -5,7 +5,7 @@
 | | |
 |---|---|
 | Documento | Documento 00 · Presentación del marco |
-| Versión | 0.1 (borrador de trabajo) |
+| Versión | 0.2 (borrador de trabajo) |
 | Fecha | 16-09-2026 |
 | Autor | Fernando García Varela |
 | Estado | Versión 0.1 operativa como marco de referencia abierto. No se trata de una versión comercial cerrada ni de un producto liberado para clientes o mercados. |
@@ -14,7 +14,7 @@
 
 ---
 
-> **Versión en revisión: no difundir.** El estado actual de SEVEN-G (versión 0.x) no está pensado para compartirse de forma general. Se mantiene en público para que un número reducido de personas pueda revisarlo, dar su opinión y ayudar a mejorarlo. Se está trabajando en la adecuación de los documentos y las herramientas para que sean reutilizables; este aviso desaparecerá cuando el marco pase a la versión 1.x.
+> **Versión 0.x, en revisión.** El estado actual de SEVEN-G es la versión 0.x. El contenido es operativo y puede usarse, adaptarse y redistribuirse con la licencia del proyecto (CC BY 4.0 para los contenidos y MIT para el código), citando la autoría e indicando los cambios. Los documentos y las herramientas se siguen revisando: se agradecen las opiniones y las propuestas de mejora.
 
 > **Aviso legal y exención de responsabilidad.** SEVEN-G es un marco metodológico de referencia que se ofrece «tal cual» y con fines exclusivamente informativos. No constituye asesoramiento jurídico, regulatorio, financiero ni profesional, ni garantiza el cumplimiento de ninguna norma. Las referencias a regulación general (como el Reglamento Europeo de IA, el RGPD, DORA o NIS2), a normas técnicas y a regulación específica de cada sector o jurisdicción pueden ser incompletas, no aplicar a un caso concreto o quedar desactualizadas por cambios normativos, interpretaciones o criterios de las autoridades posteriores a su fecha de consulta. **Cada organización que use SEVEN-G es la única responsable de identificar la normativa que le aplica, verificar su vigencia y certificar su propio cumplimiento regulatorio**, con el asesoramiento cualificado que corresponda. Esta metodología es una ayuda genérica y gratuita, compartida con la comunidad para que nadie tenga que empezar desde cero; cada persona u organización puede y debe adaptarla a su propio uso. No debe entenderse que sus partes jurídicamente sensibles hayan sido revisadas por una asesoría jurídica: esas revisiones, para cada empresa o sector, son responsabilidad última de la empresa, el consultor o la organización que la use. Aunque se procura mantenerla al día, alguna norma puede haber cambiado sin que se recoja aquí. En la máxima medida permitida por la ley, el autor no asume responsabilidad alguna por los efectos de su aplicación en ninguna organización ni por su aplicabilidad completa. La metodología no otorga certificación de ningún tipo. El autor no asume responsabilidad alguna por el uso que se haga de este contenido ni por las decisiones que se adopten con él. Los datos, cifras, compañías y casos de los ejemplos son ficticios o ilustrativos.
 
@@ -58,7 +58,7 @@ Dos vistazos, con los datos ficticios de ejemplo: la cartera de iniciativas de I
 
 | Probablemente le sirve si… | Probablemente no le sirve, o todavía no, si… |
 |---|---|
-| Ya tiene iniciativas de IA —pilotos, asistentes generativos, modelos, agentes— y nadie puede decir con evidencia **cuánto cuestan, cuánto aportan y quién responde** de cada una. | Busca una guía técnica para **construir modelos o elegir tecnología**. SEVEN-G gobierna y mide; para la construcción remite al documento 53 y a la metodología SPAD. |
+| Ya tiene iniciativas de IA —pilotos, asistentes generativos, modelos, agentes— y nadie puede decir con evidencia **cuánto cuestan, cuánto aportan y quién responde** de cada una. | Busca una guía técnica para **construir modelos o elegir tecnología**. SEVEN-G gobierna y mide. Construir software con IA es otro problema: lo resuelve SPAD, un método independiente, y el documento 53 es el único puente entre los dos. |
 | El consejo o la dirección preguntan por la IA y reciben un **inventario de proyectos técnicos** en lugar de decisiones de negocio. | Busca una **certificación o un sello**. No existe: la declaración de aplicación es una autodeclaración verificable por auditoría. |
 | Hay **muchos pilotos y pocos casos en producción**, y ninguna regla para parar lo que no funciona. | Espera **asesoramiento jurídico** o una garantía de cumplimiento. El marco mapea obligaciones a evidencias, pero cada compañía responde de su propio cumplimiento. |
 | Tiene que **demostrar cumplimiento** con evidencias y no con declaraciones. | Solo tiene una o dos pruebas sin presupuesto ni intención de llevarlas a producción. Empiece por la política de uso aceptable (documento 31) y el inventario de sistemas (T02), y vuelva cuando haya una cartera que gobernar. |
@@ -466,4 +466,5 @@ La versión 0.1 de SEVEN-G es operativa. Todos los documentos, plantillas y herr
 
 | Versión | Fecha | Cambios |
 |---|---|---|
+| 0.2 | 14-11-2026 | SPAD figura como método independiente para construir software con IA, no como parte del gobierno de la IA; el documento 53 es el único puente (D176). |
 | 0.1 | 16-09-2026 | Primera versión. Unifica los materiales existentes (metodología fundacional, criterios de *gate*, marco de esferas, plantillas del framework y reglas de medición del panel del consejo) en un modelo común, introduce el ciclo corporativo y el índice de transformación, y fija la licencia de los contenidos. |

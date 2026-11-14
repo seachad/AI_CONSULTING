@@ -83,8 +83,30 @@ function Icono-Area([string]$nombre) {
   if (-not $nombre -or -not $i) { return '' }
   "<svg class=""ico"" viewBox=""$($i.viewBox)"" aria-hidden=""true"" focusable=""false""><path fill=""currentColor"" d=""$($i.d)""/></svg>"
 }
+# Línea «Slides» de la tarjeta de un área (entrada y portada): «En 1 slide» y «En 10 slides», cada una con su PowerPoint y su PDF
+# del idioma de la página, desde presentaciones/manifiesto.json (areas/<id>_1 y areas/<id>_10). Sin esas presentaciones, nada (D53).
+# $desde: carpeta absoluta de la página; $etiqueta: 'span' (entrada) o 'i' (portada), como el rótulo de tipo de cada página.
+function Slides-Tarjeta-Area([string]$id, [string]$lang, [string]$desde, [string]$clase, [string]$etiqueta) {
+  $en = $lang -eq 'en'
+  $repoR = [IO.Path]::GetFullPath((Join-Path $PSScriptRoot '..\..'))
+  $man = @{}; foreach ($p in (Manifiesto-Presentaciones $repoR)) { $man[[string]$p.id] = $p }
+  $partes = @()
+  foreach ($n in 1, 10) {
+    $p = $man["areas/${id}_$n"]; if (-not $p) { continue }
+    $f = Ficheros-Slides $p $lang $repoR; if (-not $f.Count) { continue }
+    $tit = Html-Entrada (Txt-Slides $p.titulo $lang)
+    $enl = @()
+    if ($f.pptx) { $enl += "<a href=""$(Rel-Slides $desde $f.pptx)"" download title=""$tit · PowerPoint"">PowerPoint</a>" }
+    if ($f.pdf) { $enl += "<a href=""$(Rel-Slides $desde $f.pdf)"" target=""_blank"" rel=""noopener"" title=""$tit · PDF"">PDF</a>" }
+    $rot = if ($en) { "In $n $(N-Slides $n $true)" } else { "En $n $(N-Slides $n $false)" }
+    $partes += "<span class=""sl-par""><b>$rot</b> $($enl -join ' · ')</span>"
+  }
+  if (-not $partes.Count) { return '' }
+  "        <p class=""$clase""><$etiqueta class=""tipo slides"">Slides</$etiqueta>$($partes -join '')</p>`n"
+}
 function Temas-Entrada([string]$lang) {
   $en = $lang -eq 'en'
+  $desdeE = [IO.Path]::GetFullPath((Join-Path $PSScriptRoot "..\html\$lang\entrada"))
   $datos = Get-Content (Join-Path $PSScriptRoot 'temas.json') -Raw -Encoding utf8 | ConvertFrom-Json -Depth 16
   $rot = if ($en) { @{ doc = 'Document'; plantilla = 'Template'; herramienta = 'Tool'; ejemplo = 'Example' } } else { @{ doc = 'Documento'; plantilla = 'Plantilla'; herramienta = 'Herramienta'; ejemplo = 'Ejemplo' } }
   $sb = [Text.StringBuilder]::new(); $nT = 0
@@ -92,7 +114,7 @@ function Temas-Entrada([string]$lang) {
   foreach ($t in $datos.temas) {
     $tx = if ($en) { $t.en } else { $t.es }
     $tono = Tono-Area $nT; $nT++
-    [void]$sb.Append("      <details class=""macro"" name=""areas"" id=""area-$($t.id)"" style=""--h: $tono"">`n        <summary>$(Icono-Area $t.icono)<h3>$(Html-Entrada $tx.titulo)</h3><p class=""resp"">$(Html-Entrada $tx.pregunta)</p></summary>`n        <p class=""macro-mas""><a href=""../areas/$($t.id).html"" title=""$(if ($en) { 'Area page: concepts, where it is covered and sources' } else { 'Página del área: conceptos, dónde se trata y fuentes' })"">$(if ($en) { 'Full page of this area' } else { 'Página completa del área' }) →</a></p>`n        <ul>`n")
+    [void]$sb.Append("      <details class=""macro"" name=""areas"" id=""area-$($t.id)"" style=""--h: $tono"">`n        <summary>$(Icono-Area $t.icono)<h3>$(Html-Entrada $tx.titulo)</h3><p class=""resp"">$(Html-Entrada $tx.pregunta)</p></summary>`n        <p class=""macro-mas""><a href=""../areas/$($t.id).html"" title=""$(if ($en) { 'Area page: concepts, where it is covered and sources' } else { 'Página del área: conceptos, dónde se trata y fuentes' })"">$(if ($en) { 'Full page of this area' } else { 'Página completa del área' }) →</a></p>`n$(Slides-Tarjeta-Area $t.id $lang $desdeE 'macro-slides' 'span')        <ul>`n")
     foreach ($e in $t.enlaces) {
       $texto = Html-Entrada $(if ($en) { $e.en } else { $e.es })
       $ancla = if ($en) { $e.ancla_en } else { $e.ancla_es }
@@ -315,11 +337,12 @@ function Portada-Areas([string]$lang, [string]$prefijo) {
   $datos = Get-Content (Join-Path $PSScriptRoot 'temas.json') -Raw -Encoding utf8 | ConvertFrom-Json -Depth 16
   $rot = if ($en) { @{ doc = 'Document'; plantilla = 'Template'; herramienta = 'Tool'; ejemplo = 'Example' } } else { @{ doc = 'Documento'; plantilla = 'Plantilla'; herramienta = 'Herramienta'; ejemplo = 'Ejemplo' } }
   $base = "${prefijo}SEVEN-G/html/$lang/"
+  $desdeP = [IO.Path]::GetFullPath((Join-Path $PSScriptRoot $(if ($en) { '..\..\en' } else { '..\..' })))
   $sb = [Text.StringBuilder]::new(); $nA = 0
   [void]$sb.Append("      <!-- Iconos: Font Awesome Free 6.7.2, https://fontawesome.com (CC BY 4.0) -->`n")
   foreach ($t in $datos.temas) {
     $tx = if ($en) { $t.en } else { $t.es }; $tono = Tono-Area $nA; $nA++
-    [void]$sb.Append("      <details class=""area"" name=""areas"" id=""area-$($t.id)"" style=""--h: $tono"">`n        <summary title=""$(Html-Entrada $tx.pregunta)"">$(Icono-Area $t.icono)<b>$(Html-Entrada $tx.titulo)</b><span>$(Html-Entrada $tx.pregunta)</span></summary>`n        <p class=""area-mas""><a href=""${base}areas/$($t.id).html"" title=""$(if ($en) { 'Area page: concepts, where it is covered and sources' } else { 'Página del área: conceptos, dónde se trata y fuentes' })"">$(if ($en) { 'Full page of this area' } else { 'Página completa del área' }) →</a></p>`n        <ul>`n")
+    [void]$sb.Append("      <details class=""area"" name=""areas"" id=""area-$($t.id)"" style=""--h: $tono"">`n        <summary title=""$(Html-Entrada $tx.pregunta)"">$(Icono-Area $t.icono)<b>$(Html-Entrada $tx.titulo)</b><span>$(Html-Entrada $tx.pregunta)</span></summary>`n        <p class=""area-mas""><a href=""${base}areas/$($t.id).html"" title=""$(if ($en) { 'Area page: concepts, where it is covered and sources' } else { 'Página del área: conceptos, dónde se trata y fuentes' })"">$(if ($en) { 'Full page of this area' } else { 'Página completa del área' }) →</a></p>`n$(Slides-Tarjeta-Area $t.id $lang $desdeP 'area-slides' 'i')        <ul>`n")
     foreach ($e in $t.enlaces) {
       $texto = Html-Entrada $(if ($en) { $e.en } else { $e.es })
       $ancla = if ($en) { $e.ancla_en } else { $e.ancla_es }
@@ -458,7 +481,8 @@ function Slides-Entrada([string]$lang, [string]$repo) {
   $lista = Presentaciones-De $repo $lang 'SEVEN-G' ''
   if (-not $lista.Count) { return '' }
   $otros = @()
-  foreach ($m in 'SPHERES', 'SPAD') { $h = Enlace-Slides-Marco $repo $lang $m $desde; if ($h) { $otros += "<a class=""enlace"" href=""$h"" title=""$(if ($en) { "$m in slides: presentations in PowerPoint and PDF" } else { "$m en slides: presentaciones en PowerPoint y PDF" })"">$m $(if ($en) { 'in slides' } else { 'en slides' }) →</a>" } }
+  # SPAD es otro nivel (construir software con IA, D176): la entrada de SEVEN-G no enlaza sus slides
+  foreach ($m in 'SPHERES') { $h = Enlace-Slides-Marco $repo $lang $m $desde; if ($h) { $otros += "<a class=""enlace"" href=""$h"" title=""$(if ($en) { "$m in slides: presentations in PowerPoint and PDF" } else { "$m en slides: presentaciones en PowerPoint y PDF" })"">$m $(if ($en) { 'in slides' } else { 'en slides' }) →</a>" } }
   $nAreas = @(Manifiesto-Presentaciones $repo | Where-Object { $_.area -and (Ficheros-Slides $_ $lang $repo).Count } | ForEach-Object { [string]$_.area } | Sort-Object -Unique).Count
   if ($nAreas) { $otros += "<a class=""enlace"" href=""#areas"" title=""$(if ($en) { 'Each AI action area has its own presentations in 1 and 10 slides, on its full page' } else { 'Cada área de actuación en IA tiene sus presentaciones de 1 y 10 slides en su página completa' })"">$(if ($en) { "The $nAreas AI action areas, each in 1 and 10 slides" } else { "Las $nAreas áreas de actuación en IA, cada una en 1 y 10 slides" }) →</a>" }
   $kicker = if ($en) { 'For a meeting or a classroom' } else { 'Para una reunión o un aula' }
@@ -492,10 +516,12 @@ function Grupos-Slides-Doc([string]$marco, [string]$lang, [string]$repo, [string
   }
   $g
 }
-# Tarjeta «También en slides» del documento 00: los otros dos marcos y las áreas
+# Tarjeta «También en slides» del documento 00 de SEVEN-G o SPHERES: el otro marco de gobierno y las áreas
 function Grupo-Slides-Otros([string]$marco, [string]$lang, [string]$repo, [string]$desde) {
   $en = $lang -eq 'en'; $enl = [Collections.Generic.List[string]]::new()
-  foreach ($m in @('SEVEN-G', 'SPHERES', 'SPAD' | Where-Object { $_ -ne $marco })) {
+  # Gobierno de la IA (SEVEN-G y SPHERES) y construir software con IA (SPAD) no se cruzan (D176): SPAD no lleva esta tarjeta
+  if ($marco -eq 'SPAD') { return $null }
+  foreach ($m in @('SEVEN-G', 'SPHERES' | Where-Object { $_ -ne $marco })) {
     $h = Enlace-Slides-Marco $repo $lang $m $desde
     if ($h) { $enl.Add("<a class=""dz-item"" href=""$h"" title=""$(if ($en) { "$m in slides" } else { "$m en slides" })""><span class=""dz-tipo html"">Slides</span><b>$m</b></a>") }
   }
@@ -505,7 +531,7 @@ function Grupo-Slides-Otros([string]$marco, [string]$lang, [string]$repo, [strin
   }
   if (-not $enl.Count) { return $null }
   @{ clave = 'slides-otros'; rotulo = $(if ($en) { 'Other frameworks' } else { 'Otros marcos' }); titulo = $(if ($en) { 'Also in slides' } else { 'También en slides' })
-     texto = $(if ($en) { 'The presentations of the other frameworks and of each AI action area.' } else { 'Las presentaciones de los otros marcos y de cada área de actuación en IA.' }); enlaces = $enl }
+     texto = $(if ($en) { 'The presentations of the other AI governance framework and of each AI action area.' } else { 'Las presentaciones del otro marco de gobierno de la IA y de cada área de actuación en IA.' }); enlaces = $enl }
 }
 # Portada: línea «<Marco> en slides» bajo los botones de cada metodología, entre <!-- slides:<MARCO>:inicio … --> y <!-- slides:fin -->
 function Portada-Con-Slides([string]$html, [string]$lang, [string]$prefijo, [string]$repo) {

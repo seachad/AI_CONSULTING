@@ -5,8 +5,8 @@
 | | |
 |---|---|
 | Documento | Documento 04 · Orígenes, diferencias y apertura |
-| Versión | 0.2 (borrador de trabajo) |
-| Fecha | 01-10-2026 |
+| Versión | 0.3 (borrador de trabajo) |
+| Fecha | 14-11-2026 |
 | Autor | Fernando García Varela |
 | Estado | Borrador para revisión. Documento explicativo: no añade reglas al marco. |
 
@@ -78,7 +78,7 @@ SEVEN-G no apareció de una vez: creció a partir de un trabajo de investigació
 | Agosto de 2026 | Biblioteca ampliada a las plantillas P32–P71 y a las herramientas de valor, madurez y riesgos (T06, T11, T14, T15). |
 | Septiembre de 2026 | **Versión 0.80** (actual): biblioteca completa (documentos 00–94, ES/EN), curso de SEVEN-G con lectura por capas, comunidad de incidencias y peticiones, y el ajuste continuo de documentos y herramientas de cara a la versión 1.0. |
 
-Mientras el número de versión del marco no llegue a 1.0, sigue aplicando el aviso de «versión en revisión» de la sección 6.4: el contenido es operativo (documento 00, decisión D40), pero se pide no difundirlo de forma general porque documentos y herramientas se siguen adecuando para que sean reutilizables.
+Mientras el número de versión del marco no llegue a 1.0, sus páginas llevan el aviso «Versión 0.x, en revisión» de la sección 6.4: el contenido es operativo (documento 00, decisión D40) y puede usarse, adaptarse y redistribuirse con la licencia del proyecto; los documentos y las herramientas se siguen revisando.
 
 ---
 
@@ -215,7 +215,7 @@ El detalle está en el documento 93. Este documento no constituye asesoramiento 
 
 ### 6.4 El aviso de versión en revisión
 
-Mientras el marco esté en la versión 0.x, sus páginas principales piden **no difundirlo de forma general**. Es una petición del autor, no una restricción de la licencia: CC BY 4.0 ya permite compartir estas versiones. La petición tiene un motivo práctico —los documentos y las herramientas se están adecuando para que sean reutilizables— y desaparecerá con la versión 1.x.
+Mientras el marco esté en la versión 0.x, sus páginas principales llevan el aviso **«Versión 0.x, en revisión»**. El aviso no limita nada: el contenido es operativo y **puede usarse, adaptarse y redistribuirse** con la licencia del proyecto (CC BY 4.0 para los contenidos y MIT para el código), citando la autoría e indicando los cambios. Solo informa de que los documentos y las herramientas se siguen revisando y de que se agradecen las opiniones y las propuestas de mejora. El aviso desaparecerá con la versión 1.x.
 
 ---
 
@@ -258,3 +258,4 @@ No es necesario contactar ni pedir permiso para ningún uso que cumpla la licenc
 |---|---|---|
 | 0.1 | 19-09-2026 | Primera versión. Origen práctico del marco, carencias de los enfoques habituales que corrige, disciplinas de gestión que reúne, la cartera como embudo comercial y sus diferencias, motivos de la licencia abierta, control que conserva el autor y contacto. |
 | 0.2 | 01-10-2026 | Sección 5.1: frente a los estándares, SEVEN-G como modelo operativo de IA; qué aporta cada referencia y qué añade el marco, con remisión al crosswalk del documento 34 (D151). |
+| 0.3 | 14-11-2026 | Secciones 2.3 y 6.4: el aviso de la versión 0.x pasa a «Versión 0.x, en revisión»; el contenido puede usarse, adaptarse y redistribuirse con la licencia también en la versión 0.x (D177, que sustituye a D58). |
