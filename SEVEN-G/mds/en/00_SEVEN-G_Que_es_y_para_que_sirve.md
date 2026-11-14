@@ -22,7 +22,7 @@
 
 ## 0. Quick start
 
-**SEVEN-G** (*Seven-phase Enterprise Value & Governance*) is a complete method, **free of charge and modifiable**, that lets a company, a consultancy or an independent professional implement, govern and measure an organisation's artificial intelligence —enterprise self-consulting supported by AI— and answer, with evidence, whether it is transforming itself or just becoming more efficient. This section takes five minutes to read and serves a single purpose: **deciding whether it is worth reading on**.
+**SEVEN-G** (*Seven-phase Enterprise Value & Governance*) is a complete method, **free of charge and modifiable**, that lets a company, a consultancy or an independent professional implement, govern and measure an organisation's artificial intelligence —enterprise self-consulting supported by AI— and answer, with evidence, whether it is transforming itself or just becoming more efficient. This section takes about fifteen minutes to read and serves a single purpose: **deciding whether it is worth reading on**.
 
 **What it does, in four ideas**
 

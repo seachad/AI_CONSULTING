@@ -169,7 +169,8 @@ h2 { font: 600 clamp(27px, 3.6vw, 42px)/1.12 var(--serif); color: var(--negro); 
 .qc-cierre p b { color: var(--negro); }
 
 /* Cierre */
-.caminos { display: grid; gap: 16px; grid-template-columns: repeat(auto-fit, minmax(min(250px, 100%), 1fr)); }
+.caminos { display: grid; gap: 16px; grid-template-columns: repeat(auto-fit, minmax(min(190px, 100%), 1fr)); }
+@media (min-width: 1000px) { .caminos { grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 12px; } .camino { padding: 18px 16px 20px; } .camino b { font-size: 21px; } }
 .camino { border: 2px solid var(--negro); padding: 20px 20px 22px; text-decoration: none; color: inherit; display: block; background: var(--papel); }
 .camino:hover { background: var(--negro); }
 .camino:hover * { color: var(--papel) !important; }
@@ -299,12 +300,12 @@ footer p { margin: 8px 0; max-width: 900px; }
 .pag-tema article.macro .resp { margin: 0; }
 
 /* D169: la historia en ocho pasos, como un camino en serpiente (fila 1 de izquierda a derecha, fila 2 de derecha a izquierda) */
-.camino { counter-reset: paso; }
-.camino .acto { margin: 0 0 10px; font: 800 13px/1.2 var(--sans); letter-spacing: .08em; text-transform: uppercase; color: var(--claret); }
-.camino .acto-2 { margin-top: 58px; color: var(--oxford); }
-.camino .pasos { list-style: none; margin: 0; padding: 0; display: grid; gap: 38px; grid-template-columns: repeat(4, minmax(0, 1fr)); }
-.camino .vuelta { direction: rtl; }
-.camino .vuelta > li { direction: ltr; }
+.camino-historia { counter-reset: paso; border: 2px solid var(--negro); padding: 20px 20px 22px; background: var(--papel); }
+.camino-historia .acto { margin: 0 0 10px; font: 800 13px/1.2 var(--sans); letter-spacing: .08em; text-transform: uppercase; color: var(--claret); }
+.camino-historia .acto-2 { margin-top: 58px; color: var(--oxford); }
+.camino-historia .pasos { list-style: none; margin: 0; padding: 0; display: grid; gap: 38px; grid-template-columns: repeat(4, minmax(0, 1fr)); }
+.camino-historia .vuelta { direction: rtl; }
+.camino-historia .vuelta > li { direction: ltr; }
 .paso { counter-increment: paso; position: relative; background: var(--papel-2); border-top: 4px solid var(--claret); padding: 16px 16px 18px; }
 .vuelta .paso { border-top-color: var(--oxford); }
 .paso::before { content: counter(paso, decimal-leading-zero); display: block; font: 700 32px/1 var(--serif); color: var(--claret); margin-bottom: 8px; }
@@ -318,9 +319,9 @@ footer p { margin: 8px 0; max-width: 900px; }
 .vuelta .paso::after { content: "←"; right: auto; left: -32px; color: var(--oxford); }
 .vuelta .paso:last-child::after { content: none; }
 @media (max-width: 1000px) {
-  .camino .pasos { grid-template-columns: minmax(0, 1fr); gap: 40px; }
-  .camino .vuelta { direction: ltr; }
-  .camino .acto-2 { margin-top: 44px; }
+  .camino-historia .pasos { grid-template-columns: minmax(0, 1fr); gap: 40px; }
+  .camino-historia .vuelta { direction: ltr; }
+  .camino-historia .acto-2 { margin-top: 44px; }
   .paso::after, .vuelta .paso::after, .ida .paso:last-child::after { content: "↓"; left: auto; right: 50%; top: auto; bottom: -34px; transform: translateX(50%); font-size: 26px; }
   .ida .paso:last-child::after { bottom: -36px; }
   .vuelta .paso:last-child::after { content: none; }
