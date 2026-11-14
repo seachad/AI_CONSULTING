@@ -32,7 +32,7 @@ Decision rules (01 §7.4):
 3. **Evidence must exist before the *gate*.** Documentation prepared after the fact to justify progress already made invalidates the *gate* and is a major nonconformity.
 4. **Conditions have a deadline and an owner.** An expired condition that has not been fulfilled turns the outcome into Iterate.
 5. **Iteration limit.** After two iterations at the same *gate*, the decision is escalated to the higher body.
-6. **Stop criteria are set in advance** and are not relaxed without the approval of the body that authorised the initiative.
+6. **Stop criteria are set in advance** and are not relaxed without the approval of the body that authorised the use case.
 7. **Every decision is recorded** with outcome, reason, conditions, decision-maker and verifier.
 
 ---
@@ -41,8 +41,8 @@ Decision rules (01 §7.4):
 
 | Field | Content | Guidance |
 |---|---|---|
-| Initiative code | | IA-AAAA-NNN (T01). |
-| Initiative name | | |
+| Use case code | | IA-AAAA-NNN (T01). |
+| Use case name | | |
 | *Gate* | | G0 Authorisation · G1 Opportunity · G2 Hypothesis · G3 Feasibility · G4 Design · G5 Go-live · R6 Continuity review · G7 Scale or retire. |
 | Iteration | | 1, 2, 3… If it is the 3rd or later, the decision falls to the higher body (rule 5). |
 | Grouped session (Lite) | | No · G0–G2 · G4–G5. |
@@ -102,7 +102,7 @@ Binary checklist applied: LV-G*n* from document 22 · version: ______.
 
 ## 6. Criteria differentiated by ambition level
 
-Only at G2, G3, G5 and G7 (01 §7.6). The column for the initiative's level is assessed.
+Only at G2, G3, G5 and G7 (01 §7.6). The column for the use case's level is assessed.
 
 | *Gate* | Optimise | Augment | Transform | Status |
 |---|---|---|---|---|

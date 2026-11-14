@@ -19,14 +19,14 @@ El procedimiento completo —cómo funciona el sitio, dónde están los datos, q
 
 Marco de valor, gobierno y transformación con IA. Proyecto vivo.
 
-**Posicionamiento.** Los estándares (ISO/IEC 42001, 38507, 23894, 42005, NIST AI RMF) y el Reglamento Europeo de IA dicen qué debe existir; SEVEN-G es la capa operativa que lo hace funcionar iniciativa a iniciativa y cartera a cartera, con disciplina de inversión y valor. No es una alternativa a ISO/IEC 42001 ni equivale a una certificación: el crosswalk del documento 34 (sección 9.1, generado desde `SEVEN-G/build/crosswalk/crosswalk.json`) dice qué cubre, qué cubre en parte y qué exige un control externo.
+**Posicionamiento.** SEVEN-G es una metodología operativa para transformar la empresa con IA: decide dónde invertir, gobierna cada caso de uso y mide el valor con evidencia. Los estándares (ISO/IEC 42001, 38507, 23894, 42005, NIST AI RMF) y el Reglamento Europeo de IA dicen qué debe existir; SEVEN-G lo hace funcionar caso a caso y cartera a cartera, con disciplina de inversión y valor. No es una alternativa a ISO/IEC 42001 ni equivale a una certificación: el crosswalk del documento 34 (sección 9.1, generado desde `SEVEN-G/build/crosswalk/crosswalk.json`) dice qué cubre, qué cubre en parte y qué exige un control externo.
 
 | Carpeta | Contenido |
 |---|---|
 | `SEVEN-G/mds/es/` · `SEVEN-G/mds/en/` | Fuentes Markdown en español (redacción) e inglés (traducción): documentos 00–96, plantillas P01–P74 y curso M00–M09 |
 | `SEVEN-G/html/` · `SEVEN-G/pdf/` | Documentos generados en HTML (con índice de la biblioteca por idioma y el índice de códigos `codigos.js`) y en PDF |
 | `SEVEN-G/docx/` · `SEVEN-G/pptx/` | Plantillas editables en Word y cursos en presentación |
-| `SEVEN-G/herramientas/` | Herramientas sin servidor: T01 registro de iniciativas (con T02–T06 y T18 como vistas), T11 calculadora de valor (con T13), T14 índice de transformación, T15 diagnóstico de madurez, T17 generador del panel del consejo (Python) y la página de comunidad |
+| `SEVEN-G/herramientas/` | Herramientas sin servidor: T01 registro de casos de uso (con T02–T06 y T18 como vistas), T11 calculadora de valor (con T13), T14 índice de transformación, T15 diagnóstico de madurez, T17 generador del panel del consejo (Python) y la página de comunidad |
 | `SEVEN-G/build/` | Generador común (SEVEN-G, SPHERES y SPAD), plantilla, estilo, componentes gráficos, índice de códigos, guía de traducción, servidor local de revisión y pruebas de coherencia |
 | `SEVEN-G/_legacy/` | Materiales anteriores, no vigentes; solo como fuente de consulta |
 

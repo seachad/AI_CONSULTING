@@ -14,7 +14,7 @@
 
 > **Legal notice and disclaimer.** SEVEN-G is a reference methodological framework provided "as is" and for information purposes only. It does not constitute legal, regulatory, financial or professional advice, nor does it guarantee compliance with any law or standard. References to general regulation (such as the EU AI Act, the GDPR, DORA or NIS2), to technical standards and to regulation specific to each sector or jurisdiction may be incomplete, may not apply to a particular case or may become out of date as a result of regulatory changes, interpretations or supervisory positions after their consultation date. **Each organisation that uses SEVEN-G is solely responsible for identifying the regulation that applies to it, verifying that it is current and certifying its own regulatory compliance**, with the appropriate qualified advice. This methodology is a generic, free aid shared with the community so that nobody has to start from scratch; each person or organisation can and should adapt it to its own use. It must not be inferred that its legally sensitive parts have been reviewed by legal counsel: those reviews, for each company or sector, are the ultimate responsibility of the company, consultant or organisation that uses it. Although every effort is made to keep it up to date, some regulation may have changed without being reflected here. To the fullest extent permitted by law, the author accepts no responsibility whatsoever for the effects of its application in any organisation or for its full applicability. The methodology does not grant certification of any kind. The author accepts no liability for any use made of this content or for any decisions taken on the basis of it. The data, figures, companies and cases in the examples are fictitious or illustrative.
 
-> **Why it matters.** What the board decides and assigns is only delivered if someone follows it up with a code, an owner, a date and evidence, and if whoever assesses it is not whoever carries it out. This register separates what the recipient **declares** from what has been **verified**, keeps the original date even when it is rescheduled and links each decision to its initiative and its *gate*. It is the "backup spreadsheet" cited in document 62 while T18 does not cover all its fields; without it, follow-up depends on the memory of the minutes and discrepancies never reach the board.
+> **Why it matters.** What the board decides and assigns is only delivered if someone follows it up with a code, an owner, a date and evidence, and if whoever assesses it is not whoever carries it out. This register separates what the recipient **declares** from what has been **verified**, keeps the original date even when it is rescheduled and links each decision to its use case and its *gate*. It is the "backup spreadsheet" cited in document 62 while T18 does not cover all its fields; without it, follow-up depends on the memory of the minutes and discrepancies never reach the board.
 
 ## 1. Instructions for use
 
@@ -75,7 +75,7 @@ Completion rules:
 
 ### 4.1 Decisions
 
-| Code | Body | Session date | Minutes reference | Type | Text of the decision | Decision sheet | Outcome | Limits | Validity | Execution owner | Initiatives | Other links | Review date |
+| Code | Body | Session date | Minutes reference | Type | Text of the decision | Decision sheet | Outcome | Limits | Validity | Execution owner | Use cases | Other links | Review date |
 |---|---|---|---|---|---|---|---|---|---|---|---|---|---|
 | DEC-2026-014 *(illustrative example)* | Full board | 24-09-2026 | Minutes 09/2026, item 4 | Authorise with limits | Authorise stage 1 of IA-2026-018 with a limit of €400,000 and a continuity decision within nine months. | P67, sheet DEC-2026-014 | Approved with conditions | €400,000; stage 1; nine months | 24-06-2027 | Sales management | IA-2026-018 | REC-2026-006; P29 G2 of IA-2026-018 | 10-12-2026 |
 | | | | | | | | | | | | | | |
@@ -92,7 +92,7 @@ One row per condition.
 | DEC-2026-014 *(illustrative example)* | 1 | Pilot contract approved by legal counsel before the first signature. | Sales management | 23-11-2026 | In progress | | | |
 | | | | | | | | | |
 
-Status: Pending · In progress · Met · Overdue. An overdue condition is reported to the body, which decides whether the decision remains valid; an initiative does not pass a *gate* with overdue conditions of a board decision that affect it (62 §10.3 and §11.1). A risk acceptance lapses on its validity date and the risk once again blocks the *gate*.
+Status: Pending · In progress · Met · Overdue. An overdue condition is reported to the body, which decides whether the decision remains valid; a use case does not pass a *gate* with overdue conditions of a board decision that affect it (62 §10.3 and §11.1). A risk acceptance lapses on its validity date and the risk once again blocks the *gate*.
 
 ---
 
@@ -122,7 +122,7 @@ To create or review a recommendation with all its fields (62 §4). Its data are 
 | | Assessor, date and comment | | Comment mandatory if not conformant. |
 | Closure | Situation | | Open · Closed · Discarded · Superseded. |
 | | Closure date, body and minutes | | Who accepted the closure or discarding. |
-| Links | Initiatives; INC, NC and systems; DEC | | IA-AAAA-NNN, INC-AAAA-NNN, NC-AAAA-NNN, SIA-AAAA-NNN, DEC-AAAA-NNN. |
+| Links | Use cases; INC, NC and systems; DEC | | IA-AAAA-NNN, INC-AAAA-NNN, NC-AAAA-NNN, SIA-AAAA-NNN, DEC-AAAA-NNN. |
 | | Dashboard block | | T17 block where the effect is measured (62 §11.2). |
 
 *(illustrative example)* Text: "Break down the value of each use case in production into efficiencies, return and recurring cost, with management control validation, before the year-end close." Compliance criterion: "All use cases in production with the three components and their status; management control report".
@@ -147,7 +147,7 @@ To create or review a recommendation with all its fields (62 §4). Its data are 
 
 ### 6.3 Closure and links
 
-| Code | Situation | Closure date | Closing body and minutes | Initiatives | INC, NC and systems | DEC | Dashboard block | Superseding or derived recommendation |
+| Code | Situation | Closure date | Closing body and minutes | Use cases | INC, NC and systems | DEC | Dashboard block | Superseding or derived recommendation |
 |---|---|---|---|---|---|---|---|---|
 | REC-2026-003 *(illustrative example)* | Open (closure proposed) | | | All in production | | | Value against potential | REC-2026-017 (observation) |
 | | | | | | | | | |

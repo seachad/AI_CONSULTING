@@ -16,7 +16,7 @@
 
 > **Aviso legal y exención de responsabilidad.** SEVEN-G es un marco metodológico de referencia que se ofrece «tal cual» y con fines exclusivamente informativos. No constituye asesoramiento jurídico, regulatorio, financiero ni profesional, ni garantiza el cumplimiento de ninguna norma. Las referencias a regulación general (como el Reglamento Europeo de IA, el RGPD, DORA o NIS2), a normas técnicas y a regulación específica de cada sector o jurisdicción pueden ser incompletas, no aplicar a un caso concreto o quedar desactualizadas por cambios normativos, interpretaciones o criterios de las autoridades posteriores a su fecha de consulta. **Cada organización que use SEVEN-G es la única responsable de identificar la normativa que le aplica, verificar su vigencia y certificar su propio cumplimiento regulatorio**, con el asesoramiento cualificado que corresponda. Esta metodología es una ayuda genérica y gratuita, compartida con la comunidad para que nadie tenga que empezar desde cero; cada persona u organización puede y debe adaptarla a su propio uso. No debe entenderse que sus partes jurídicamente sensibles hayan sido revisadas por una asesoría jurídica: esas revisiones, para cada empresa o sector, son responsabilidad última de la empresa, el consultor o la organización que la use. Aunque se procura mantenerla al día, alguna norma puede haber cambiado sin que se recoja aquí. En la máxima medida permitida por la ley, el autor no asume responsabilidad alguna por los efectos de su aplicación en ninguna organización ni por su aplicabilidad completa. La metodología no otorga certificación de ningún tipo. El autor no asume responsabilidad alguna por el uso que se haga de este contenido ni por las decisiones que se adopten con él. Los datos, cifras, compañías y casos de los ejemplos son ficticios o ilustrativos.
 
-<!-- esencial: siempre | El consejo recibe información de IA al menos cada trimestre, con cifras que cumplen las reglas de medición y decisiones en un formato claro. En alcance Lite el paquete es agregado; en alcance Enterprise lleva detalle por iniciativa Enterprise. -->
+<!-- esencial: siempre | El consejo recibe información de IA al menos cada trimestre, con cifras que cumplen las reglas de medición y decisiones en un formato claro. En alcance Lite el paquete es agregado; en alcance Enterprise lleva detalle por caso de uso Enterprise. -->
 
 ## 1. Objeto y alcance
 
@@ -39,7 +39,7 @@ No sustituye a la documentación societaria (orden del día, actas, informes de 
 |---|---|---|
 | 1 | **Decisión antes que información** | El paquete empieza por lo que el consejo tiene que decidir. Lo que no lleva a una decisión o a una supervisión concreta va a anexos. |
 | 2 | **Negocio, no tecnología** | Se habla de valor, riesgo, responsabilidad y ventaja competitiva. Los términos técnicos se traducen (documento 61, sección 3). |
-| 3 | **Evidencia, no declaración** | Toda cifra tiene fórmula y estado de validación; toda afirmación relevante enlaza con su evidencia en el registro de iniciativas (T01). |
+| 3 | **Evidencia, no declaración** | Toda cifra tiene fórmula y estado de validación; toda afirmación relevante enlaza con su evidencia en el registro de casos de uso (T01). |
 | 4 | **Un único dato** | El paquete, el panel del consejo (T17) y el registro de recomendaciones (T18) salen del mismo modelo de datos y de la misma fecha de corte. No se rehacen cifras a mano. |
 | 5 | **Comparable en el tiempo** | Mismo perímetro, mismas definiciones y comparación con la sesión anterior. Los cambios de criterio se declaran. |
 | 6 | **Breve** | Resumen de una página; como máximo tres casos en detalle por sesión; el resto, en el panel. |
@@ -57,7 +57,7 @@ Responde a una pregunta: **¿se está cumpliendo lo decidido y qué tiene que de
 | Bloque | Contenido mínimo | Fuente |
 |---|---|---|
 | **Resumen de una página** | Mensaje principal, cifras clave con proporción validada, decisiones solicitadas, riesgos principales, cambios desde la sesión anterior. | T01, T12, T17 |
-| **Decisiones solicitadas** | Fichas de decisión (sección 5), en particular iniciativas de Transformar en G2 y escalados de Transformar en G7. | T03 |
+| **Decisiones solicitadas** | Fichas de decisión (sección 5), en particular casos de uso de Transformar en G2 y escalados de Transformar en G7. | T03 |
 | **Panel** | Cartera y valor; riesgo y cumplimiento; agilidad; adopción. Vista indicada en la sección 10. | T17 |
 | **Riesgos** | Riesgos residuales Alto y Crítico de la cartera, concentración de riesgos, riesgos aceptados fuera de umbral. | T06 |
 | **Incidentes y no conformidades** | Incidentes S1 y S2 del trimestre; no conformidades mayores y críticas abiertas; estado de su contención y acción correctiva. | T08 |
@@ -87,9 +87,9 @@ Responde a: **¿hemos avanzado y nos estamos transformando o solo eficientando?*
 |---|---|
 | **Madurez** | Nivel por dimensión y nivel global con la regla del documento 11, comparados con el año anterior y con la evidencia que justifica cada cambio. |
 | **Índice de transformación** | Puntuación de las ocho señales y perfil resultante; señales sin dato identificadas como tales. |
-| **Cumplimiento de la tesis** | Ambición objetivo frente a ambición real por esfera; iniciativas de Transformar aprobadas, en producción, paradas y retiradas. |
+| **Cumplimiento de la tesis** | Ambición objetivo frente a ambición real por esfera; casos de uso de Transformar aprobados, en producción, parados y retirados. |
 | **Valor del ejercicio** | Neto anual por nivel de ambición, proporción validada, capacidad liberada materializada y no materializada. |
-| **Agilidad del gobierno** | Tiempo desde la idea hasta la aprobación y hasta producción por nivel de riesgo y de ambición; iniciativas estancadas; conversión por *gate*. |
+| **Agilidad del gobierno** | Tiempo desde la idea hasta la aprobación y hasta producción por nivel de riesgo y de ambición; casos de uso estancados; conversión por *gate*. |
 | **Lecciones aprendidas** | Motivos de parada y retirada; recomendaciones cerradas y su efecto. |
 | **Propuesta de ajustes** | Cambios a la tesis, la ambición, el apetito de riesgo, los umbrales y los plazos de referencia para el nuevo ciclo. |
 
@@ -101,7 +101,7 @@ La revisión anual debería contar con la participación de auditoría interna (
 |---|---|---|---|
 | Incidente **S1** (incluye posibles incidentes graves según la regulación) | Presidencia de la comisión delegada; información al pleno | Tan pronto como se confirme la severidad, sin esperar al paquete trimestral | Hechos, afectados, contención, notificaciones realizadas o pendientes, decisiones necesarias. |
 | No conformidad **crítica** | Comisión delegada | Dentro del plazo de contención (01 §12) | Descripción, contención, plan de acción, responsable. |
-| Iniciativa de **Transformar** en G2 o escalado en G7 fuera de calendario | Pleno | Antes de comprometer inversión | Ficha de decisión. |
+| Caso de uso de **Transformar** en G2 o escalado en G7 fuera de calendario | Pleno | Antes de comprometer inversión | Ficha de decisión. |
 | Solicitud de aceptación de un riesgo residual **Crítico** | Pleno o comisión delegada | Antes de G3 o G5 | Ficha de decisión con análisis de alternativas y límite temporal de la aceptación. |
 
 ---
@@ -126,10 +126,10 @@ La revisión anual debería contar con la participación de auditoría interna (
 
 | Campo | Contenido | Guía |
 |---|---|---|
-| **Mensaje principal** | Tres líneas como máximo, con uno de los cuatro formatos de respuesta (documento 61, sección 4). | Responde a "¿se cumple lo decidido?". Ejemplo: *"Sí, con una condición: el valor validado ha subido, pero dos iniciativas de alto riesgo siguen sin evaluación de impacto."* |
+| **Mensaje principal** | Tres líneas como máximo, con uno de los cuatro formatos de respuesta (documento 61, sección 4). | Responde a "¿se cumple lo decidido?". Ejemplo: *"Sí, con una condición: el valor validado ha subido, pero dos casos de uso de alto riesgo siguen sin evaluación de impacto."* |
 | **Cifras clave** | Eficiencias, retorno, coste recurrente y neto anual; proporción validada; capacidad liberada no materializada (aparte); inversión ejecutada frente a presupuesto. | Reglas de la sección 8. |
 | **Resultado operativo** | Casos en uso con indicadores operativos: cuántos están en su objetivo, cuántos por debajo y cuántos sin indicador; valor no cuantificado de nivel medio o alto. | Documento 40 §11.1, regla 11: no se traduce a euros ni se suma con las cifras clave. |
-| **Cartera** | Iniciativas por fase y estado; en producción; paradas y retiradas del trimestre; estancadas. | Desde T01. |
+| **Cartera** | Casos de uso por fase y estado; en producción; parados y retirados del trimestre; estancados. | Desde T01. |
 | **Riesgo** | Riesgos residuales Crítico y Alto; incidentes S1 y S2; no conformidades mayores y críticas abiertas. | Solo número y enlace; el detalle en los apartados 5 y 6. |
 | **Qué frena el escalado** | Los tres frenos por los que empezar (FE-1 a FE-6), con qué bloquean, qué hacer, quién y el valor anual en juego. | Lectura de §10.4, desde T17. Si una acción necesita decisión, pasa a «Decisiones solicitadas». |
 | **Decisiones solicitadas** | Lista con código y una línea por decisión. | Si no hay decisiones, se dice expresamente. |
@@ -143,10 +143,10 @@ La revisión anual debería contar con la participación de auditoría interna (
 | Mensaje principal | Sí, con una condición: que el agente de atención no se amplíe hasta superar la prueba de inyección de instrucciones. La cartera cumple el presupuesto y el valor validado sube del 41 % al 58 %. |
 | Cifras clave | Eficiencias 3,9 M€ · Retorno 1,6 M€ · Coste recurrente 1,3 M€ · **Neto anual 4,2 M€** · Proporción validada 58 % (3,2 M€ de 5,5 M€) · Capacidad liberada no materializada 1,1 M€ (no suma) · Inversión ejecutada 2,4 M€ de 3,0 M€ presupuestados. |
 | Resultado operativo | 14 casos en uso: 9 en su objetivo operativo, 3 por debajo y 2 sin indicador. 2 casos con valor no cuantificado alto (experiencia de cliente). |
-| Cartera | 31 iniciativas: 6 en fases 0–2, 7 en fases 3–5, 14 en producción, 4 en G7. En el trimestre: 1 parada en G3 (riesgo inaceptable), 1 retirada (sustituida por otra solución). 3 estancadas. |
+| Cartera | 31 casos de uso: 6 en fases 0–2, 7 en fases 3–5, 14 en producción, 4 en G7. En el trimestre: 1 parado en G3 (riesgo inaceptable), 1 retirado (sustituido por otra solución). 3 estancados. |
 | Riesgo | 0 riesgos residuales Críticos · 4 Altos · 1 incidente S2 · 1 no conformidad mayor abierta. |
-| Qué frena el escalado | 1) FE-3 · Riesgo y cumplimiento sin cerrar: bloquea G5 en 2 iniciativas; completar sus evaluaciones de impacto antes de la próxima reunión del comité (responsable de riesgos). 2) FE-1 · El valor no está demostrado: 1,4 M€ en uso sin validar; validación por control de gestión antes del cierre del trimestre. 3) FE-2 · Los casos no avanzan: 3 fuera de plazo; *gate* anticipado en la siguiente reunión mensual. |
-| Decisiones solicitadas | DEC-2026-014 · Autorizar la hipótesis de valor de una iniciativa de Transformar (G2). DEC-2026-015 · Tomar conocimiento de la parada de una iniciativa en G3. |
+| Qué frena el escalado | 1) FE-3 · Riesgo y cumplimiento sin cerrar: bloquea G5 en 2 casos de uso; completar sus evaluaciones de impacto antes de la próxima reunión del comité (responsable de riesgos). 2) FE-1 · El valor no está demostrado: 1,4 M€ en uso sin validar; validación por control de gestión antes del cierre del trimestre. 3) FE-2 · Los casos no avanzan: 3 fuera de plazo; *gate* anticipado en la siguiente reunión mensual. |
+| Decisiones solicitadas | DEC-2026-014 · Autorizar la hipótesis de valor de un caso de uso de Transformar (G2). DEC-2026-015 · Tomar conocimiento de la parada de un caso de uso en G3. |
 | Recomendaciones | 12 abiertas · 2 vencidas · 3 cerradas con valoración conforme · 1 discrepancia (declarada cumplida, valorada no conforme). |
 | Cambios | Sube la proporción validada por la validación de control de gestión de dos casos; se retira el asistente de consultas internas (sin uso). |
 
@@ -158,7 +158,7 @@ Tipos de decisión:
 
 | Tipo | Significado | Ejemplo |
 |---|---|---|
-| **Aprobar** | El órgano asume la decisión. | Tesis de IA, apetito de riesgo, iniciativa de Transformar en G2. |
+| **Aprobar** | El órgano asume la decisión. | Tesis de IA, apetito de riesgo, caso de uso de Transformar en G2. |
 | **Autorizar con límites** | Se aprueba una etapa con límite de inversión, plazo y criterios de parada. | Primera etapa de una apuesta de Transformar. |
 | **Aceptar un riesgo** | Excepcionalmente, se acepta un riesgo residual por encima del umbral, dentro del apetito aprobado y con plazo. | Riesgo residual Crítico con plan de reducción. |
 | **Tomar conocimiento** | El órgano queda informado de una decisión adoptada por quien corresponde. | Parada o retirada decidida por el comité de IA. |
@@ -174,8 +174,8 @@ El paquete no reproduce el panel: indica la vista que debe consultarse (sección
 
 | Campo | Contenido |
 |---|---|
-| Riesgos residuales Crítico y Alto | Código de riesgo tipo (RT-XXX-NN), iniciativa o sistema, nivel inherente y residual, responsable, controles y fecha de revisión. |
-| Concentración | Riesgos que afectan a varias iniciativas (mismo proveedor, mismos datos, mismo tipo de agente). |
+| Riesgos residuales Crítico y Alto | Código de riesgo tipo (RT-XXX-NN), caso de uso o sistema, nivel inherente y residual, responsable, controles y fecha de revisión. |
+| Concentración | Riesgos que afectan a varios casos de uso (mismo proveedor, mismos datos, mismo tipo de agente). |
 | Riesgos aceptados | Riesgos aceptados por encima de lo ordinario, quién los aceptó y hasta cuándo. |
 | Exposición a ataques con IA | Indicadores principales de la esfera de seguridad (documento 35). |
 | Cambios regulatorios | Obligaciones nuevas o modificadas con efecto en la cartera, con fecha de consulta. |
@@ -193,7 +193,7 @@ Escalas y niveles: los de la especificación común (probabilidad 1–5, impacto
 | No conformidades **mayores** | Individualmente si están abiertas fuera de plazo; agregadas en el resto de casos. |
 | No conformidades **menores** | Solo el número. |
 
-Para cada incidente individual: código INC-AAAA-NNN, sistema e iniciativa, fecha, severidad, origen, afectados, tiempo de detección y de contención, notificaciones a autoridades y su plazo, lecciones y acciones.
+Para cada incidente individual: código INC-AAAA-NNN, sistema y caso de uso, fecha, severidad, origen, afectados, tiempo de detección y de contención, notificaciones a autoridades y su plazo, lecciones y acciones.
 
 ### 4.7 Recomendaciones y compromisos
 
@@ -245,9 +245,9 @@ Inventario completo, detalle de valor por caso, métricas del embudo, registro c
 | Campo | Contenido |
 |---|---|
 | Código | DEC-2026-014 |
-| Qué se solicita | Autorizar la primera etapa de la iniciativa IA-2026-018 «Servicio de mantenimiento por suscripción basado en predicción de averías», con un límite de inversión de 400.000 € y decisión de continuidad en el plazo de nueve meses. |
+| Qué se solicita | Autorizar la primera etapa del caso de uso IA-2026-018 «Servicio de mantenimiento por suscripción basado en predicción de averías», con un límite de inversión de 400.000 € y decisión de continuidad en el plazo de nueve meses. |
 | Tipo | Autorizar con límites |
-| Órgano | Pleno (iniciativa de Transformar en G2) |
+| Órgano | Pleno (caso de uso de Transformar en G2) |
 | Respuesta de la dirección | Sí, con una condición: que el servicio se ofrezca en la primera etapa solo a clientes que acepten expresamente un piloto sin compromiso de permanencia. |
 | Contexto | Hoy se venden equipos y se reparan cuando fallan. La propuesta es vender disponibilidad garantizada por suscripción, apoyada en un modelo que anticipa averías. Esfera 02 · Producto y servicio. Transformar: cambia la propuesta de valor y crea ingresos que no existían. Fase 2. |
 | Opciones | A) Autorizar la etapa 1. B) Autorizar solo un estudio de mercado sin construcción (coste menor, retraso de un año). C) No autorizar. |
@@ -271,7 +271,7 @@ El reparto concreto depende de los estatutos, del reglamento del consejo y de la
 | Tesis de IA, ambición por esfera, apetito de riesgo (C2) | **Aprueba** | Informa previamente sobre riesgos | Propone |
 | Política corporativa de IA | **Aprueba** | Informa | Propone |
 | Presupuesto marco de IA | **Aprueba** | — | Propone |
-| Iniciativas de Transformar: G2 y escalado en G7 | **Aprueba** | — | Verifica y propone |
+| Casos de uso de Transformar: G2 y escalado en G7 | **Aprueba** | — | Verifica y propone |
 | Revisión anual: madurez, índice de transformación, cumplimiento de la tesis (C5) | **Evalúa y decide ajustes** | Informa sobre riesgos y auditoría | Prepara con auditoría interna |
 | Resumen trimestral y panel (C4) | **Supervisa** | Supervisa el bloque de riesgo en detalle | Prepara |
 | Riesgos residuales Crítico: aceptación excepcional | **Decide** o delega expresamente | **Decide** si tiene la delegación | Eleva |
@@ -337,7 +337,7 @@ Las diez reglas de medición del valor (00 §6) se aplican sin excepción. En el
 | 7 | **Priorizar con neto adicional por euro** | Neto anual adicional esperado ÷ inversión adicional necesaria, caso a caso. | "ROI de la cartera: 250 %" | Tabla de casos ordenada por neto adicional por euro, con los negativos visibles |
 | 8 | **Negativos visibles** | Los casos con neto negativo se listan, no se compensan en agregados. No se presenta el plazo de recuperación de toda la cartera. | "La cartera se recupera en 14 meses" | "3 casos en producción con neto negativo: …" |
 | 9 | **Mismo perímetro para comparar** | Las variaciones se calculan sobre el mismo conjunto de casos o se explica el cambio de perímetro. | "El valor sube un 40 %" (con casos nuevos) | "El valor sube un 12 % en los mismos casos; los casos nuevos aportan 0,6 M€" |
-| 10 | **Fecha de corte y fuente** | Toda cifra lleva la fecha de corte y el sistema de origen. | Cifras sin fecha | "Datos a 30 de junio; fuente: registro de iniciativas" |
+| 10 | **Fecha de corte y fuente** | Toda cifra lleva la fecha de corte y el sistema de origen. | Cifras sin fecha | "Datos a 30 de junio; fuente: registro de casos de uso" |
 | 11 | **Redondeo coherente** | Millones con un decimal o miles sin decimales; los totales se calculan antes de redondear. | Sumas que no cuadran | Nota de redondeo cuando proceda |
 | 12 | **Nada de referencias externas sin fuente** | No se comparan cifras con "el mercado" o "el sector" sin fuente verificable y fecha. | "Estamos por encima de la media del sector" | Se omite o se cita la fuente |
 
@@ -349,7 +349,7 @@ Los ejemplos de cifras que se incluyen en materiales de formación o demostraci�
 
 ### 9.1 Qué es un programa
 
-Un **programa** es una agrupación de iniciativas con un objetivo común, un patrocinador y un presupuesto (etiqueta *Programa* del registro de iniciativas, 03 §3.3). El consejo no supervisa treinta iniciativas; supervisa pocos programas y baja al detalle cuando el semáforo lo indica.
+Un **programa** es una agrupación de casos de uso con un objetivo común, un patrocinador y un presupuesto (etiqueta *Programa* del registro de casos de uso, 03 §3.3). El consejo no supervisa treinta casos de uso; supervisa pocos programas y baja al detalle cuando el semáforo lo indica.
 
 ### 9.2 Ejes y estados
 
@@ -357,7 +357,7 @@ Se usa el semáforo del documento 14 (§12): cada programa se evalúa en **seis 
 
 | Eje | Verde | Ámbar | Rojo |
 |---|---|---|---|
-| **Plazo** | Ninguna iniciativa estancada; hitos en fecha. | Una iniciativa estancada o un hito con retraso de hasta un plazo de referencia de fase. | Varias estancadas o hito crítico con retraso mayor. |
+| **Plazo** | Ningún caso de uso estancado; hitos en fecha. | Un caso de uso estancado o un hito con retraso de hasta un plazo de referencia de fase. | Varios estancados o hito crítico con retraso mayor. |
 | **Coste** | Desviación sobre los tramos aprobados de hasta el 10 %. | Del 10 % al 25 %. | Más del 25 % o sin aprobación. |
 | **Valor** | Valor realizado igual o superior al 90 % de lo previsto a la fecha, con estado validado o declarado. | Del 60 % al 90 %, o solo estimado. | Menos del 60 %, o hipótesis refutada sin decisión. |
 | **Riesgo** | Sin riesgos residuales fuera del apetito ni incidentes S1–S2 abiertos. | Riesgo Alto con mitigación en plazo o incidente S2 en gestión. | Riesgo fuera del apetito, incidente S1 o no conformidad crítica abierta. |
@@ -423,7 +423,7 @@ Reglas de uso:
 
 ### 10.3 Adaptaciones pendientes
 
-La herramienta T17 se alimenta del registro de iniciativas (T01) mediante su conector (03 §5.4): muestra el embudo por **fase y estado** del ciclo de vida, enlaza cada caso con su código IA-AAAA-NNN y genera el registro de recomendaciones del documento 62. Muestra también la lectura ejecutiva **«Qué frena el escalado»** (§10.4), el **mapa de esferas × niveles de ambición** (T16, §10.5) y el **plan de realización con sus tramos y el valor no cuantificado** (§10.6). La agrupación por **programa** con el semáforo de la sección 9 no forma parte del panel: se calcula con las reglas de 14 §12 y se anexa al paquete con P67, y las decisiones del consejo se registran en P69. La ambición objetivo de C2 por esfera la toma el panel de la tesis aprobada en el registro T01 (decisión del consejo con su ambición objetivo por esfera, 62 §10.2) y, solo si el registro no la trae, de su configuración general.
+La herramienta T17 se alimenta del registro de casos de uso (T01) mediante su conector (03 §5.4): muestra el embudo por **fase y estado** del ciclo de vida, enlaza cada caso con su código IA-AAAA-NNN y genera el registro de recomendaciones del documento 62. Muestra también la lectura ejecutiva **«Qué frena el escalado»** (§10.4), el **mapa de esferas × niveles de ambición** (T16, §10.5) y el **plan de realización con sus tramos y el valor no cuantificado** (§10.6). La agrupación por **programa** con el semáforo de la sección 9 no forma parte del panel: se calcula con las reglas de 14 §12 y se anexa al paquete con P67, y las decisiones del consejo se registran en P69. La ambición objetivo de C2 por esfera la toma el panel de la tesis aprobada en el registro T01 (decisión del consejo con su ambición objetivo por esfera, 62 §10.2) y, solo si el registro no la trae, de su configuración general.
 
 Los ficheros del motor que se publican en el repositorio de demostraciones son copia de su proyecto de origen: las adaptaciones se hacen en origen y se vuelven a publicar.
 
@@ -438,7 +438,7 @@ Muchas compañías tienen hoy casos de IA que funcionan y, aun así, no consigue
 | **FE-1** | El valor no está demostrado | En uso con valor sin validar; en uso con neto anual negativo; capacidad liberada sin materializar. | Sin valor plausible; hipótesis refutada; coste superior al valor. | D7 en nivel 2 o menos; el índice no cumple B2; alertas «eficiencia no materializada» y «transformación frágil». | G7 · Escalar (G7.01). | Validar el valor de los casos en uso y cerrar su plan de realización (P62); llevar a G7 los de neto negativo. | Control de gestión y responsable de negocio del beneficio. | Documentos 40 y 43; 21 (G7). |
 | **FE-2** | Los casos no avanzan | En curso por encima del límite de días de su etapa, o cerca de él. | — | D2 en nivel 2 o menos; el índice no cumple B3; alerta «apuestas atascadas». | — | Llevar a su puerta los casos fuera de plazo y decidir: continuar con fecha, pivotar o parar. | Comité de IA. | 14 §8; 20 §11. |
 | **FE-3** | Riesgo y cumplimiento sin cerrar | En la última etapa antes de producción con controles pendientes; en uso con controles pendientes; sin clasificación regulatoria de la compañía. | Riesgo inaceptable; regulación. | D6 en nivel 2 o menos, o D6 limita el nivel global (11 §5); alerta «cambio sin supervisión». | G5 · puesta en producción; el nivel global de madurez si D6 lo limita. | Completar la clasificación y los controles antes de G5; abrir no conformidad en los casos en uso sin ellos. | Responsable de riesgos y cumplimiento. | Documentos 32, 33 y 35; 21 (G5); 37. |
-| **FE-4** | Las personas no lo adoptan | Iniciativas transversales con unidades por debajo del umbral de adopción. | Sin adopción. | D5 en nivel 2 o menos. | — | Plan de adopción en las unidades por debajo del umbral; retirar o reasignar licencias sin uso. | Responsable de negocio del beneficio y Personas. | Documento 23; 40 §7.2. |
+| **FE-4** | Las personas no lo adoptan | Casos de uso transversales con unidades por debajo del umbral de adopción. | Sin adopción. | D5 en nivel 2 o menos. | — | Plan de adopción en las unidades por debajo del umbral; retirar o reasignar licencias sin uso. | Responsable de negocio del beneficio y Personas. | Documento 23; 40 §7.2. |
 | **FE-5** | Datos y tecnología no están listos | — | Datos insuficientes; inviable técnicamente. | D3 o D4 en nivel 2 o menos. | — | Asegurar calidad, acceso y propiedad de los datos antes de la fase 3 (P64) y la plataforma que necesitan los casos. | Responsable de datos y responsable de tecnología. | Documentos 51 y 52. |
 | **FE-6** | Falta dirección y gobierno | Casos activos sin responsable de negocio del beneficio o sin descripción de qué son y para qué se usan. | Cambio de prioridad estratégica. | D1 en nivel 2 o menos, o D1 limita el nivel global; el índice no cumple B1; alertas «transformación sin consejo» y de sobredeclaración de ambición. | El nivel global de madurez si D1 lo limita. | Aprobar en C2 la tesis y la ambición por esfera y dar a cada caso responsable de negocio y descripción defendible. | Alta dirección y consejo. | Documentos 13 y 30. |
 
@@ -458,9 +458,9 @@ En el paquete trimestral, la lectura alimenta el campo «Qué frena el escalado�
 
 ### 10.5 Dónde está el impacto: esferas × niveles de ambición en el panel (T16)
 
-El panel incluye el **mapa de calor de la cartera** (herramienta T16) con las reglas del documento 10 §8: esferas de valor 01 a 07 en filas, Optimizar, Aumentar y Transformar en columnas, banda de habilitación (esferas 08 y 09) aparte; en cada celda, iniciativas (y cuántas en producción), inversión y coste recurrente anual, neto anual y valor validado; color por la proporción de la inversión y el coste; marcas de brecha, fuera de tesis, sin evidencia y secundaria. Un selector cambia las filas a unidades de negocio. Al pulsar una celda se ven sus iniciativas.
+El panel incluye el **mapa de calor de la cartera** (herramienta T16) con las reglas del documento 10 §8: esferas de valor 01 a 07 en filas, Optimizar, Aumentar y Transformar en columnas, banda de habilitación (esferas 08 y 09) aparte; en cada celda, casos de uso (y cuántos en producción), inversión y coste recurrente anual, neto anual y valor validado; color por la proporción de la inversión y el coste; marcas de brecha, fuera de tesis, sin evidencia y secundaria. Un selector cambia las filas a unidades de negocio. Al pulsar una celda se ven sus casos de uso.
 
-> **Por qué importa.** El consejo necesita ver de un vistazo dónde juega la compañía con la IA y dónde no: si la inversión se concentra en eficiencia de una sola área, qué esferas no tienen actividad y si la ambición aprobada en C2 tiene iniciativas que la ejecuten. Sin esa vista, cada caso se discute suelto y nadie ve el conjunto.
+> **Por qué importa.** El consejo necesita ver de un vistazo dónde juega la compañía con la IA y dónde no: si la inversión se concentra en eficiencia de una sola área, qué esferas no tienen actividad y si la ambición aprobada en C2 tiene casos de uso que la ejecuten. Sin esa vista, cada caso se discute suelto y nadie ve el conjunto.
 
 Reglas de uso:
 
@@ -470,13 +470,13 @@ Reglas de uso:
 
 ### 10.6 Plan de realización, tramos de financiación y valor no cuantificado en el panel
 
-El panel muestra el plan de realización de beneficios de cada caso (documento 43 §4.1) tal como está registrado en T01 (`plan_realizacion`) y su valor no cuantificado (`no_cuantificado`, documento 40 regla 7). No estima nada: una iniciativa sin plan registrado no tiene curva y se cuenta como «sin plan de realización» (documento 40, regla 8).
+El panel muestra el plan de realización de beneficios de cada caso (documento 43 §4.1) tal como está registrado en T01 (`plan_realizacion`) y su valor no cuantificado (`no_cuantificado`, documento 40 regla 7). No estima nada: un caso de uso sin plan registrado no tiene curva y se cuenta como «sin plan de realización» (documento 40, regla 8).
 
 > **Por qué importa.** El consejo aprueba la inversión por tramos, pero suele ver el valor como una cifra anual en régimen. Sin la curva no sabe cuándo llega el valor, cuánto dinero falta todavía por poner ni si lo capturado va al ritmo aprobado. Y si lo que no se puede traducir a euros no se separa, un caso que se mantiene por reputación o por opción estratégica parece un caso con pérdidas, o se infla con cifras que nadie puede demostrar.
 
 | Tarjeta o sección | Qué muestra | Reglas |
 |---|---|---|
-| **Plan de realización: curva y tramos** (cartera y valor) | Suma de las curvas de los casos con plan, por año, semestre o trimestre: inversión de los tramos, valor, coste recurrente, neto y acumulado. Cifras: inversión de los próximos doce meses, caja por delante, casos con VAN ≥ 0 de los que tienen plan, realización acumulada (F10) y planes registrados sobre las iniciativas en las fases 3 a 7. | VAN (F7) de cada caso con la H y la r de C2 (40 §8.2). Realización frente a la referencia aprobada, en total y solo con validado, con los umbrales de IND-VAL-14 (≥ 90 %, 70–90 %, < 70 %; 43 §9.1). No se da el plazo de recuperación de la cartera: los agregados ocultan los casos con valor negativo (40 regla 9). |
+| **Plan de realización: curva y tramos** (cartera y valor) | Suma de las curvas de los casos con plan, por año, semestre o trimestre: inversión de los tramos, valor, coste recurrente, neto y acumulado. Cifras: inversión de los próximos doce meses, caja por delante, casos con VAN ≥ 0 de los que tienen plan, realización acumulada (F10) y planes registrados sobre los casos de uso en las fases 3 a 7. | VAN (F7) de cada caso con la H y la r de C2 (40 §8.2). Realización frente a la referencia aprobada, en total y solo con validado, con los umbrales de IND-VAL-14 (≥ 90 %, 70–90 %, < 70 %; 43 §9.1). No se da el plazo de recuperación de la cartera: los agregados ocultan los casos con valor negativo (40 regla 9). |
 | **Tramos de financiación pendientes** (cartera y valor) | Tramos comprometidos o previstos de cada caso con fecha, importe, *gate* que los libera y condición de paso, y el neto anual que desbloquea cada tramo por euro invertido (F3 del tramo). | Se señala el tramo sin condición de paso (14 §6.2). Los tramos opcionales se muestran, pero no suman. |
 | **Valor no cuantificado** (cartera y valor) | Por caso, cada dimensión con su nivel 0–3 y su métrica (base, objetivo y valor actual); casos «sostenidos por valor no cuantificado». | Nunca se traduce a euros ni suma en el neto (40 regla 7 y §5.3); sin métrica no cuenta. Un caso en producción (fases 6 y 7) con valor no cuantificado de nivel medio o alto y VAN negativo, o sin plan que lo demuestre, se marca como sostenido por valor no cuantificado y necesita su próxima R6 con fecha. En las fases 3 a 5 no se marca: el valor de opción de Transformar se gobierna por sus etapas, hitos y *gates* (40 §8.3). |
 | **Plan de realización** (ficha del caso) | VAN (F7), plazo de recuperación (F9, informativo), caja máxima y caja por delante, realización (F10) en total y solo con validado, gráfico de la curva y tramos con su *gate* y su condición de paso; debajo, el valor no cuantificado del caso. | Solo si el caso tiene plan registrado; si no, «sin plan de realización». |
@@ -514,7 +514,7 @@ La lista se aplica con P67 §12.
 
 | Código | Nombre | Uso en este documento |
 |---|---|---|
-| T01 | Registro de iniciativas | Fuente de cartera, fases, estados, programas y valor. |
+| T01 | Registro de casos de uso | Fuente de cartera, fases, estados, programas y valor. |
 | T03 | Gestor de *gates* | Evidencias y verificación de las decisiones solicitadas. |
 | T06 | Matriz y registro de riesgos | Apartado de riesgos. |
 | T08 | Registro de no conformidades e incidentes | Apartado de incidentes y no conformidades. |
@@ -537,7 +537,7 @@ La lista se aplica con P67 §12.
 |---|---|
 | **00 · Qué es SEVEN-G y para qué sirve** | Reglas de medición del valor e índice de transformación. |
 | **01 · Metodología fundacional** | Ciclo corporativo, calendario de gobierno, órganos, no conformidades. |
-| **03 · Herramientas y registro de iniciativas** | Modelo de datos, métricas del embudo, T17 y T18. |
+| **03 · Herramientas y registro de casos de uso** | Modelo de datos, métricas del embudo, T17 y T18. |
 | **10 · Mapa de esferas y niveles de ambición** | Reglas del mapa de calor de la cartera (T16) que muestra el panel (§10.5). |
 | **11 · Modelo de madurez** | Contenido de C1 y C5; señales de la compañía en «Qué frena el escalado» (§10.4). |
 | **12 · Índice de transformación** | Señales y perfiles del paquete anual. |

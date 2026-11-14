@@ -33,7 +33,7 @@ Este documento no constituye asesoramiento jurídico.
 | Hito | Qué se ha conseguido |
 |---|---|
 | **Día 90** | Diagnóstico con evidencia (C1), dirección propuesta o aprobada (C2), primera cartera (C3), órganos, roles, *gates*, métricas y ritmo de reporte en marcha. |
-| **Meses 4–18** | El marco funciona en régimen: las iniciativas nuevas recorren el ciclo de vida, las existentes se regularizan, el consejo supervisa con el panel. |
+| **Meses 4–18** | El marco funciona en régimen: los casos de uso nuevos recorren el ciclo de vida, los existentes se regularizan, el consejo supervisa con el panel. |
 | **Declaración de aplicación** | Se cumplen las catorce reglas del núcleo (01 §14.1), acreditadas con las preguntas **(§14)** del documento 11 en una evaluación verificada y con la auditoría de 38 §11. |
 
 ---
@@ -42,7 +42,7 @@ Este documento no constituye asesoramiento jurídico.
 
 ### 2.1 Lite o Enterprise de compañía
 
-El **alcance de implantación** es una decisión de la compañía sobre cómo organiza su gobierno. **No sustituye a la intensidad de cada iniciativa**: en una compañía con alcance Lite, toda iniciativa que cumple un criterio de 01 §9.2 se gestiona con intensidad Enterprise.
+El **alcance de implantación** es una decisión de la compañía sobre cómo organiza su gobierno. **No sustituye a la intensidad de cada caso de uso**: en una compañía con alcance Lite, todo caso de uso que cumple un criterio de 01 §9.2 se gestiona con intensidad Enterprise.
 
 | Aspecto | Alcance Lite | Alcance Enterprise |
 |---|---|---|
@@ -52,7 +52,7 @@ El **alcance de implantación** es una decisión de la compañía sobre cómo or
 | **Oficina de IA** | Una persona con dedicación parcial y apoyo puntual. | Equipo de metodología, cartera y medición. |
 | **Auditor de IA** | Auditoría interna o auditor externo, por muestreo en Lite y en cada *gate* Enterprise. | Tercera línea con auditores de IA asignados. |
 | **Madurez** | Evaluación verificada. | Evaluación verificada y, al menos cada dos años, independiente (documento 11). |
-| **Panel del consejo** | Agregado. | Por iniciativa para las Enterprise. |
+| **Panel del consejo** | Agregado. | Por caso de uso para los Enterprise. |
 | **Horizonte orientativo hasta 01 §14** | 6 a 12 meses. | 12 a 18 meses. |
 
 El **tamaño no decide el alcance**: lo deciden los criterios de la sección 2.2. Una compañía mediana sin supervisión sectorial ni sistemas de alto riesgo aplica alcance Lite; una compañía pequeña sujeta a supervisión prudencial aplica alcance Enterprise. Los dos alcances aplican el mismo ciclo de vida, las mismas evidencias y las mismas reglas de separación de funciones; cambia cómo se organizan los órganos y la verificación.
@@ -67,7 +67,7 @@ Se elige **alcance Enterprise** si se cumple al menos uno de estos criterios; en
 4. Opera como grupo con varias sociedades o países que deben seguir un marco común.
 5. La cartera aprobada o prevista incluye varias apuestas de Transformar simultáneas (orientativamente, tres o más; valor a calibrar en C2).
 
-**Una apuesta de Transformar aislada no cambia el alcance.** Esa iniciativa se gestiona con intensidad Enterprise (01 §9.2) y el consejo la aprueba en G2 y, si se escala, en G7 (01 §7.5); el resto de la cartera sigue en alcance Lite. El alcance se revisa en cada revisión anual (C5), o antes si la compañía pasa a cumplir alguno de estos criterios.
+**Una apuesta de Transformar aislada no cambia el alcance.** Ese caso de uso se gestiona con intensidad Enterprise (01 §9.2) y el consejo lo aprueba en G2 y, si se escala, en G7 (01 §7.5); el resto de la cartera sigue en alcance Lite. El alcance se revisa en cada revisión anual (C5), o antes si la compañía pasa a cumplir alguno de estos criterios.
 
 ### 2.3 Perímetro
 
@@ -75,7 +75,7 @@ El perímetro puede ser toda la compañía o una parte (una filial, un país, un
 
 ### 2.4 Ruta mínima en alcance Lite
 
-> **Por qué importa.** Una compañía mediana no necesita recorrer toda la biblioteca para empezar. Necesita saber qué es obligatorio desde el primer día, qué se añade solo cuando aparece una iniciativa Enterprise y qué puede consultar cuando lo necesite. Sin esa ruta, el marco parece más pesado de lo que es y la compañía acaba aplicando Enterprise a todo o no aplicando nada.
+> **Por qué importa.** Una compañía mediana no necesita recorrer toda la biblioteca para empezar. Necesita saber qué es obligatorio desde el primer día, qué se añade solo cuando aparece un caso de uso Enterprise y qué puede consultar cuando lo necesite. Sin esa ruta, el marco parece más pesado de lo que es y la compañía acaba aplicando Enterprise a todo o no aplicando nada.
 
 **Obligatorio desde el inicio**
 
@@ -85,26 +85,26 @@ El perímetro puede ser toda la compañía o una parte (una filial, un país, un
 | **Tres garantías** | Quien construye no verifica ni decide su propio trabajo; la conformidad de riesgos la emite alguien independiente del equipo; el consejo aprueba la dirección y el apetito de riesgo. | 30 §11 |
 | **Órganos** | Consejo con punto de IA al menos trimestral; comité de dirección con punto mensual de IA; oficina de IA de una persona a tiempo parcial. | 01 §5.2; 30 §11; sección 7 |
 | **Inventario** | Todos los sistemas de IA —propios, de terceros, uso corporativo y uso no autorizado— con declaración de completitud. No se reduce en Lite. | 32; P05; T01 |
-| **Intensidad** | Determinación en cada iniciativa: en la fase 0, en G3 y en cada R6. | 01 §9; P04; T04 |
-| **Iniciativas Express** | Las pequeñas, internas y reversibles que cumplen la elegibilidad de 01 §9.4 pasan las mismas puertas con la lista reducida de criterios y una ficha viva; el umbral Express se aprueba en C2. | 01 §9.4; 21 §2.5; P01 §14; P04 §5.1 |
-| **Evidencias de una iniciativa Lite** | Las que los criterios de *gate* marcan «Sí» o «Simpl.» en la columna Lite, con las plantillas sin los campos *(Enterprise)*. Ninguna evidencia obligatoria se omite: se simplifica. | 01 §6.10; 21 §2.1; P01–P31 |
+| **Intensidad** | Determinación en cada caso de uso: en la fase 0, en G3 y en cada R6. | 01 §9; P04; T04 |
+| **Casos de uso Express** | Los pequeños, internos y reversibles que cumplen la elegibilidad de 01 §9.4 pasan las mismas puertas con la lista reducida de criterios y una ficha viva; el umbral Express se aprueba en C2. | 01 §9.4; 21 §2.5; P01 §14; P04 §5.1 |
+| **Evidencias de un caso de uso Lite** | Las que los criterios de *gate* marcan «Sí» o «Simpl.» en la columna Lite, con las plantillas sin los campos *(Enterprise)*. Ninguna evidencia obligatoria se omite: se simplifica. | 01 §6.10; 21 §2.1; P01–P31 |
 | **Puertas** | G0–G2 en una sesión, G3 por separado, G4–G5 en una sesión, R6 semestral y G7. Cada puerta conserva sus criterios y su registro en P29. | 21 §3.4 |
 | **Verificación y decisión** | Verifica la oficina de IA; decide el patrocinador, con conformidad de riesgos en G3, G4 y G5; el auditor de IA revisa cada semestre una muestra de los *gates* Lite. | 01 §9.3; 21 §10.3 |
 | **Riesgos** | Registro de riesgos desde la fase 3 con la escala del documento 33. | 33; P12; T06 |
 | **Valor** | Reglas de medición, línea base y seguimiento del valor realizado; panel del consejo agregado. | 40; P09; P28; T17 |
 | **Diagnóstico** | Madurez con evaluación verificada e índice de transformación en C1 y en cada C5. | 11; 12; T15; T14 |
 
-**Se añade solo cuando una iniciativa cumple un criterio Enterprise**
+**Se añade solo cuando un caso de uso cumple un criterio Enterprise**
 
 | Qué se añade | Referencia |
 |---|---|
 | Puertas por separado, plantillas completas y decisión del comité de IA (del consejo en Transformar). | 01 §7.5, §9.3 |
-| Auditor de IA en todos los *gates* de esa iniciativa, externo si no hay nadie independiente dentro. | 01 §9.3; 38 |
+| Auditor de IA en todos los *gates* de ese caso de uso, externo si no hay nadie independiente dentro. | 01 §9.3; 38 |
 | Firma multinivel con veto en la puesta en producción y R6 trimestral. | 21 §9; P23 |
-| Visibilidad por iniciativa en el panel del consejo. | 60; T17 |
+| Visibilidad por caso de uso en el panel del consejo. | 60; T17 |
 | Según el criterio que se cumple: clasificación regulatoria y evaluaciones de impacto; seguridad de agentes A2 o A3; exigencia N2 o N3 a proveedores. | 32, 34, P11; 35, P18; 36, P14 |
 
-El resto de la biblioteca se consulta cuando se necesita: ambición y cartera (10, 13, 14), manuales de fase y listas de verificación (20, 22), adopción y personas (23, 50), políticas (31), incidentes (37), indicadores y costes (41, 42, 43), datos, operación y construcción (51, 52, 53), consejo (60, 61, 62) y casos de aplicación (92), que incluye iniciativas Lite de compañías medianas.
+El resto de la biblioteca se consulta cuando se necesita: ambición y cartera (10, 13, 14), manuales de fase y listas de verificación (20, 22), adopción y personas (23, 50), políticas (31), incidentes (37), indicadores y costes (41, 42, 43), datos, operación y construcción (51, 52, 53), consejo (60, 61, 62) y casos de aplicación (92), que incluye casos de uso Lite de compañías medianas.
 
 
 El documento 94 extiende esta ruta a toda la biblioteca: da el nivel de obligatoriedad de cada documento, plantilla y herramienta, los disparadores que activan cada módulo y lo que puede agruparse en las puertas; cada documento resume su parte mínima en su recuadro «Lo esencial». El [curso de SEVEN-G](curso/M00_SEVEN-G_Curso_Guia_del_curso.html) recorre la misma ruta en módulos breves.
@@ -171,13 +171,13 @@ Cada hito lo acepta el patrocinador de la implantación con el comité de IA (o 
 
 | Semana | Actividades y entregables | Responsable | Documentos, plantillas y herramientas | Criterio de finalización |
 |---|---|---|---|---|
-| **9 · Órganos y roles** | Mandatos del comité de IA, la oficina de IA y la comisión delegada (P38); roles de 01 §8 en las iniciativas existentes con comprobación de incompatibilidades; auditor de IA designado. | Patrocinador; secretaría del consejo | 01 §8, 30; P03; T01 | Mandatos redactados; roles asignados sin incompatibilidades. |
+| **9 · Órganos y roles** | Mandatos del comité de IA, la oficina de IA y la comisión delegada (P38); roles de 01 §8 en los casos de uso existentes con comprobación de incompatibilidades; auditor de IA designado. | Patrocinador; secretaría del consejo | 01 §8, 30; P03; T01 | Mandatos redactados; roles asignados sin incompatibilidades. |
 | **10 · Gates y políticas** | Criterios de *gate* (21) y listas de verificación (22) adoptados; equivalencias entre las evidencias que la compañía ya produce y las plantillas que cubren (21 §4.3), para referenciarlas en lugar de copiarlas; plazos de referencia; política corporativa y de uso aceptable; proceso de no conformidades. | Oficina de IA; cumplimiento | 21, 22, 31, 37; P04, P29; T03, T08 | Gestor de *gates* configurado; políticas en borrador final. |
 | **11 · Métricas, reporte y cartera** | Reglas de medición adoptadas; primera versión del panel del consejo; registro de recomendaciones; calendario de reporte (01 §5.2); primera cartera priorizada con sobres, tramos y plan de regularización. | Oficina de IA; control de gestión; comité | 40, 60, 62, 14; P28; T17, T18, T01, T16 | Panel generado con datos del inventario; cartera con puntuación y responsables. |
 | **12 · Aprobaciones** | El consejo aprueba tesis, ambición por esfera, apetito de riesgo, umbrales y política corporativa (C2). El comité aprueba cartera, *gates*, métricas y plan de regularización (C3). | Patrocinador; comité de IA; consejo | 13, 14, 31 | Actas con las aprobaciones. |
 | **13 · Régimen ordinario** | Primera reunión ordinaria del comité; primeros *gates* con el nuevo modelo; hoja de ruta de 6–18 meses aprobada; lecciones de la implantación; comunicación a la organización. | Responsable de implantación | 90; T01, T03 | **Hito 3:** criterios de la sección 4.5 cumplidos. |
 
-Si el consejo no puede aprobar C2 en la semana 12, la cartera funciona con criterios provisionales aprobados por el comité, **no se aprueban iniciativas de Transformar** y la aprobación se lleva a la siguiente sesión del consejo.
+Si el consejo no puede aprobar C2 en la semana 12, la cartera funciona con criterios provisionales aprobados por el comité, **no se aprueban casos de uso de Transformar** y la aprobación se lleva a la siguiente sesión del consejo.
 
 ### 4.5 Criterios de finalización de los 90 días
 
@@ -191,11 +191,11 @@ Si el consejo no puede aprobar C2 en la semana 12, la cartera funciona con crite
 | 6 | *Gates*, plazos de referencia y proceso de no conformidades operativos. | T03; T08. |
 | 7 | Panel del consejo y registro de recomendaciones con datos reales. | T17; T18. |
 | 8 | Primera cartera priorizada y plan de regularización con plazos. | Acta del comité; T01. |
-| 9 | Toda iniciativa nueva pasa por G0 antes de consumir presupuesto desde la semana 13. | T01. |
+| 9 | Todo caso de uso nuevo pasa por G0 antes de consumir presupuesto desde la semana 13. | T01. |
 
 ---
 
-## 5. Regularización de iniciativas y sistemas existentes
+## 5. Regularización de casos de uso y sistemas existentes
 
 El procedimiento completo está en el documento 14, sección 11. En el recorrido de implantación es el hito HI-12, cuya prioridad depende del punto de partida (documento 96). En la implantación se aplica así:
 
@@ -203,7 +203,7 @@ El procedimiento completo está en el documento 14, sección 11. En el recorrido
 |---|---|---|
 | **Sistemas en producción con criterios Enterprise** | Clasificación en el mes 2; revisión equivalente a G7 en los seis meses siguientes a C2. | Primero los de alto riesgo, decisiones sobre personas, exposición directa y agentes que actúan. |
 | **Resto de sistemas en producción** | En los 12 meses siguientes a C2. | Revisión equivalente a G7 con evidencias simplificadas. |
-| **Iniciativas en construcción o piloto** | Desde la semana 13. | Se sitúan en la fase que corresponde a sus evidencias reales y superan el siguiente *gate*. |
+| **Casos de uso en construcción o piloto** | Desde la semana 13. | Se sitúan en la fase que corresponde a sus evidencias reales y superan el siguiente *gate*. |
 | **Uso corporativo de IA de propósito general** | Inventario en el mes 1; política de uso aceptable en el mes 3. | Autorizar, sustituir o bloquear; formación y controles técnicos. |
 | **Uso no autorizado detectado** | Desde el mes 1. | No conformidad con contención proporcional al riesgo; autorizar, sustituir o bloquear (01 §1.2). |
 
@@ -217,8 +217,8 @@ La documentación de regularización se identifica como tal y con su fecha real.
 
 | Periodo | Objetivo | Resultados |
 |---|---|---|
-| **Meses 4–6 · Consolidación** | Que el ciclo de vida funcione con todas las iniciativas nuevas. | Registro completo; primeros *gates* verificados; regularización de los sistemas prioritarios; primera revisión trimestral del consejo con el panel; formación de roles SEVEN-G; programa de alfabetización en marcha. |
-| **Meses 7–12 · Extensión** | Que todo lo existente esté dentro del marco. | Regularización completa; R6 vigente en todas las iniciativas en producción; no conformidades gestionadas con plazos; costes por caso; primera auditoría del marco por la tercera línea en alcance Enterprise. |
+| **Meses 4–6 · Consolidación** | Que el ciclo de vida funcione con todos los casos de uso nuevos. | Registro completo; primeros *gates* verificados; regularización de los sistemas prioritarios; primera revisión trimestral del consejo con el panel; formación de roles SEVEN-G; programa de alfabetización en marcha. |
+| **Meses 7–12 · Extensión** | Que todo lo existente esté dentro del marco. | Regularización completa; R6 vigente en todos los casos de uso en producción; no conformidades gestionadas con plazos; costes por caso; primera auditoría del marco por la tercera línea en alcance Enterprise. |
 | **Meses 13–18 · Primera revisión (C5)** | Comprobar el avance y ajustar la dirección. | Madurez verificada con el mismo cuestionario; índice de transformación recalculado; tesis revisada; recalibración de plazos y umbrales; declaración de aplicación si procede. |
 
 En alcance Lite, las etapas pueden comprimirse para alcanzar la declaración entre los meses 6 y 12.
@@ -229,7 +229,7 @@ En alcance Lite, las etapas pueden comprimirse para alcanzar la declaración ent
 |---|---|---|---|
 | N-12 · C1 y C2 completados con aprobación del consejo | D1.05 | Mes 3 / mes 3–4 | Patrocinador |
 | N-01 · Inventario con clasificación, intensidad y responsable | D6.05 | Mes 6 / mes 9 | Oficina de IA; responsable de riesgos |
-| N-02 · Registro de iniciativas con trazabilidad | D2.05 | Mes 3 / mes 4 | Oficina de IA |
+| N-02 · Registro de casos de uso con trazabilidad | D2.05 | Mes 3 / mes 4 | Oficina de IA |
 | N-06 · Roles y órganos con incompatibilidades | D1.07, D1.08 | Mes 3 / mes 4 | Comité de IA |
 | N-03, N-04, N-05, N-07, N-08 · Intensidad, *gates* registrados con G3 aparte, validación dual y «Sí ◆» | D2.06 | Mes 4 / mes 6 | Oficina de IA |
 | N-09, N-10 · Hipótesis de valor, clasificación y registro de riesgos | — | Mes 4 / mes 6 | Oficina de IA; responsable de riesgos |
@@ -249,13 +249,13 @@ SEVEN-G no exige crear estructuras nuevas. En una organización pequeña, con al
 |---|---|---|
 | **Consejo o comisión delegada** | El consejo o su comisión de auditoría o riesgos. | La IA como punto recurrente, al menos trimestral. |
 | **Comité de IA** | Comité de dirección con el mandato ampliado. | Sesión mensual con orden del día propio de IA. |
-| **Oficina de IA** | Una persona con dedicación parcial (por ejemplo, de estrategia, transformación o control de gestión). | No puede verificar iniciativas en las que participa. |
+| **Oficina de IA** | Una persona con dedicación parcial (por ejemplo, de estrategia, transformación o control de gestión). | No puede verificar casos de uso en los que participa. |
 | **Patrocinador** | Director del área que obtiene el valor. | En Lite puede acumular producto, técnico y operación. |
 | **Responsable de producto, técnico y de operación** | Personas del área o del proveedor, con un responsable interno. | Compatibles entre sí. |
 | **Responsable de riesgos de IA** | Responsable de cumplimiento, riesgos o seguridad que no participe en la construcción. | Incompatible con el patrocinador y con quien construye. |
-| **Auditor de IA** | Auditoría interna o auditor externo. En Lite puede coincidir con el responsable de riesgos. | En iniciativas Enterprise debe ser distinto del responsable de riesgos: si no hay otra persona, auditor externo. |
+| **Auditor de IA** | Auditoría interna o auditor externo. En Lite puede coincidir con el responsable de riesgos. | En casos de uso Enterprise debe ser distinto del responsable de riesgos: si no hay otra persona, auditor externo. |
 
-**Mínimo práctico: tres personas distintas** —quien impulsa y construye, quien controla los riesgos y verifica en Lite, y la oficina de IA—, más un auditor externo para las iniciativas Enterprise.
+**Mínimo práctico: tres personas distintas** —quien impulsa y construye, quien controla los riesgos y verifica en Lite, y la oficina de IA—, más un auditor externo para los casos de uso Enterprise.
 
 ---
 
@@ -266,7 +266,7 @@ SEVEN-G no exige crear estructuras nuevas. En una organización pequeña, con al
 | Empezar por comprar o construir herramientas. | Registros vacíos y discusión técnica en lugar de decisiones. | Hoja de cálculo con el modelo de 03 hasta tener el proceso funcionando. |
 | Diagnóstico por autoevaluación. | Madurez inflada que no resiste la primera auditoría. | Evaluación verificada con muestreo (documento 11). |
 | Crear un gobierno paralelo. | Duplicidad de comités y rechazo interno. | Ampliar el mandato de los órganos existentes (01 §8.3). |
-| Aplicar Enterprise a todo. | Lentitud y huida hacia el uso no autorizado. | Intensidad por iniciativa con los criterios de 01 §9. |
+| Aplicar Enterprise a todo. | Lentitud y huida hacia el uso no autorizado. | Intensidad por caso de uso con los criterios de 01 §9. |
 | Moratoria general de la IA durante la implantación. | Pérdida de apoyo y de oportunidades. | Parar solo lo que el diagnóstico señale como riesgo inaceptable. |
 | No reservar la sesión del consejo desde el inicio. | C2 sin aprobar y cartera sin dirección. | Reserva en la semana 1. |
 | Olvidar el uso corporativo y el uso no autorizado. | Inventario parcial y riesgo invisible. | Censo desde compras, licencias y seguridad en la semana 2. |
@@ -286,12 +286,12 @@ Los objetivos son orientativos y los fija la compañía en su plan.
 | Indicador | Definición | Objetivo a 90 días | Objetivo a 12 meses | Fuente |
 |---|---|---|---|---|
 | Cobertura del inventario | Áreas del perímetro con declaración de completitud ÷ total. | 100 % | 100 % revisado en el año | T02 |
-| Iniciativas nuevas con G0 previo al gasto | Iniciativas nuevas con G0 anterior al primer gasto ÷ iniciativas nuevas. | 100 % desde la semana 13 | 100 % | T01 |
+| Casos de uso nuevos con G0 previo al gasto | Casos de uso nuevos con G0 anterior al primer gasto ÷ casos de uso nuevos. | 100 % desde la semana 13 | 100 % | T01 |
 | Sistemas con criterios Enterprise clasificados | Clasificados ÷ sistemas con criterios Enterprise. | Todos con clasificación o fecha | 100 % | T02 |
-| Regularización | Iniciativas en producción regularizadas ÷ total previo al marco. | Plan aprobado | 100 % | T01 |
-| Roles sin incompatibilidades | Iniciativas activas sin incompatibilidades ÷ total. | 100 % | 100 % | T01 |
+| Regularización | Casos de uso en producción regularizados ÷ total previo al marco. | Plan aprobado | 100 % | T01 |
+| Roles sin incompatibilidades | Casos de uso activos sin incompatibilidades ÷ total. | 100 % | 100 % | T01 |
 | Tiempo de decisión de *gates* | Mediana frente al plazo de referencia (03 §3.6). | — | Dentro del plazo | T01 |
-| R6 vigentes | Iniciativas en producción con R6 vigente ÷ total. | — | 100 % | T01 |
+| R6 vigentes | Casos de uso en producción con R6 vigente ÷ total. | — | 100 % | T01 |
 | Importes con estado | Importes con fórmula y estado ÷ importes informados. | 100 % en el informe C1 | 100 % | T12 |
 | Proporción de valor validado | Valor validado ÷ valor total informado. | Línea base | Objetivo fijado en C2 | T12, T17 |
 | No conformidades fuera de plazo | Abiertas con plazo vencido. | Línea base | 0 críticas; mayores en descenso | T08 |
@@ -307,7 +307,7 @@ Los objetivos son orientativos y los fija la compañía en su plan.
 | **Mes 1** | T23 (punto de partida y recorrido); T01, T02, T04 (inventario y registro); T15 (madurez); T14 (índice); T16 (mapa de esferas); T12 (valor actual). | P32, P33, P34, P05 |
 | **Mes 2** | T06 (riesgos); T07 (clasificación regulatoria); T05 (ambición); T19 (tesis y apetito). | P35, P43, P06, P07, P11, P12, P31 |
 | **Mes 3** | T03 (*gates*); T08 (no conformidades); T17 (panel); T18 (recomendaciones); T01 y T16 (cartera). | P36, P38, P39, P40, P41, P03, P04, P28, P29 |
-| **Meses 4–18** | Todas las anteriores; T09, T10, T11, T13, T20, T21, T22 según avance la cartera. | P01–P31 según la fase de cada iniciativa; P42 y P67 cada trimestre; P37 en C5; el resto de P32–P74 cuando aplique |
+| **Meses 4–18** | Todas las anteriores; T09, T10, T11, T13, T20, T21, T22 según avance la cartera. | P01–P31 según la fase de cada caso de uso; P42 y P67 cada trimestre; P37 en C5; el resto de P32–P74 cuando aplique |
 
 Las herramientas sin aplicación propia se aplican con la plantilla o el documento que indica el catálogo de 03. Una compañía que prefiera no usar T01 puede llevar el registro en una hoja de cálculo con los campos del modelo de datos de 03 §4.
 
@@ -319,7 +319,7 @@ Las herramientas sin aplicación propia se aplican con la plantilla o el documen
 |---|---|
 | **00 · Qué es SEVEN-G** | Presentación, primera implantación y reglas de medición. |
 | **01 · Metodología fundacional** | Ciclo corporativo (§5), primera implantación (§5.3), roles (§8), intensidad (§9), no conformidades (§12) y declaración de aplicación (§14). |
-| **03 · Herramientas y registro de iniciativas** | Registro, modelo de datos, plazos de referencia y catálogo de herramientas. |
+| **03 · Herramientas y registro de casos de uso** | Registro, modelo de datos, plazos de referencia y catálogo de herramientas. |
 | **10, 12 y 13** | Mapa de esferas, índice de transformación, tesis y apetito de riesgo. |
 | **11 · Modelo de madurez** | Diagnóstico del mes 1 y acreditación de 01 §14. |
 | **14 · Gestión de cartera** | Primera cartera y regularización. |
@@ -339,4 +339,4 @@ Las herramientas sin aplicación propia se aplican con la plantilla o el documen
 | 0.1 | 19-09-2026 | La ruta mínima (2.4) remite a la matriz de obligatoriedad (documento 94), al recuadro «Lo esencial» de cada documento y al curso. |
 | 0.1 | 28-09-2026 | Remisión al documento 96 (punto de partida y recorrido de implantación) en §1, §5, §10 y §11; herramienta T23 en el mes 1. |
 | 0.2 | 01-10-2026 | Camino hasta el núcleo de SEVEN-G (sección 6.2) e indicador de implantación sobre las catorce reglas (sección 9); equivalencias de evidencias corporativas en la semana 10 (21 §4.3). |
-| 0.3 | 01-10-2026 | Iniciativas Express en la ruta mínima (sección 2.4). |
+| 0.3 | 01-10-2026 | Casos de uso Express en la ruta mínima (sección 2.4). |

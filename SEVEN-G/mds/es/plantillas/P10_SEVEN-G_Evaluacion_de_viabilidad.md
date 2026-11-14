@@ -1,6 +1,6 @@
 # Evaluación de viabilidad
 
-**Reúne la evidencia técnica, de datos, económica, organizativa, regulatoria y de riesgo necesaria para decidir en G3 si la iniciativa continúa o se para.**
+**Reúne la evidencia técnica, de datos, económica, organizativa, regulatoria y de riesgo necesaria para decidir en G3 si el caso de uso continúa o se para.**
 
 | | |
 |---|---|
@@ -39,8 +39,8 @@ Reglas de cumplimentación:
 
 | Campo | Contenido | Guía |
 |---|---|---|
-| Código de la iniciativa | | IA-AAAA-NNN. |
-| Nombre de la iniciativa | | |
+| Código del caso de uso | | IA-AAAA-NNN. |
+| Nombre del caso de uso | | |
 | Nivel de ambición confirmado | | Optimizar · Aumentar · Transformar. |
 | Intensidad | | Lite · Enterprise (revisada en G3 con P04). |
 | Versión del documento | | |

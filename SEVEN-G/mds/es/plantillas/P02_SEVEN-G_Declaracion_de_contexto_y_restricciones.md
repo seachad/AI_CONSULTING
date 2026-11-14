@@ -1,6 +1,6 @@
 # Declaración de contexto y restricciones
 
-**Deja por escrito, antes de invertir, el marco estratégico, regulatorio, ético, de datos, económico y organizativo dentro del cual debe desarrollarse la iniciativa.**
+**Deja por escrito, antes de invertir, el marco estratégico, regulatorio, ético, de datos, económico y organizativo dentro del cual debe desarrollarse el caso de uso.**
 
 | | |
 |---|---|
@@ -18,17 +18,17 @@
 
 | Aspecto | Indicación |
 |---|---|
-| **Cuándo se usa** | En la fase 0, junto con la carta de la iniciativa (P01). Se revisa en G3 y cuando cambie una restricción relevante (norma, presupuesto, proveedor, datos). |
+| **Cuándo se usa** | En la fase 0, junto con la carta del caso de uso (P01). Se revisa en G3 y cuando cambie una restricción relevante (norma, presupuesto, proveedor, datos). |
 | **Quién la rellena** | El responsable de producto de IA. Consulta al responsable de riesgos, a protección de datos, a seguridad de la información y a asesoría jurídica. |
 | **Quién la verifica** | Lite: oficina de IA. Enterprise: auditor de IA. |
 | **Quién decide** | Se aprueba con G0: patrocinador (Lite) · comité de IA (Enterprise). |
 | **Gate en que se revisa** | G0 · Autorización; se vuelve a comprobar en G3 · Viabilidad. |
-| **Herramienta** | T01 · Registro de iniciativas (enlace como evidencia de G0). |
+| **Herramienta** | T01 · Registro de casos de uso (enlace como evidencia de G0). |
 | **Lite frente a Enterprise** | Lite puede omitir los campos marcados **(Enterprise)**. En Lite, las restricciones que no apliquen se marcan "No aplica" con una línea de motivo. |
 
 Reglas de cumplimentación:
 
-- Una restricción es algo que la iniciativa **no puede cambiar**. Si puede negociarse, es un supuesto y va a la sección 10.
+- Una restricción es algo que el caso de uso **no puede cambiar**. Si puede negociarse, es un supuesto y va a la sección 10.
 - Esta declaración no sustituye la clasificación regulatoria (P11) ni la matriz de riesgos (P12): identifica lo que se sabe en la fase 0 para que no se descubra tarde.
 - *Este documento no constituye asesoramiento jurídico.* La aplicabilidad de cada norma debe confirmarla quien tenga competencia jurídica en la compañía. Referencias normativas consultadas en septiembre de 2026; debe verificarse su vigencia.
 
@@ -38,8 +38,8 @@ Reglas de cumplimentación:
 
 | Campo | Contenido | Guía |
 |---|---|---|
-| Código de la iniciativa | | IA-AAAA-NNN. |
-| Nombre de la iniciativa | | Igual que en P01. |
+| Código del caso de uso | | IA-AAAA-NNN. |
+| Nombre del caso de uso | | Igual que en P01. |
 | Versión del documento | | |
 | Fecha | | DD-MM-AAAA. |
 | Autor | | Nombre y rol. |
@@ -52,11 +52,11 @@ Reglas de cumplimentación:
 
 | Campo | Contenido | Guía |
 |---|---|---|
-| Tesis de IA aplicable | | Extracto o referencia de la tesis aprobada en C2 que ampara la iniciativa. |
+| Tesis de IA aplicable | | Extracto o referencia de la tesis aprobada en C2 que ampara el caso de uso. |
 | Ambición aprobada para la esfera | | Nivel de ambición que el consejo fijó en C2 para la esfera principal. |
-| Apetito de riesgo aplicable | | Límites de C2 que afectan a esta iniciativa: nivel de riesgo residual aceptable, autonomía máxima, exposición a clientes, umbrales económicos. |
+| Apetito de riesgo aplicable | | Límites de C2 que afectan a este caso de uso: nivel de riesgo residual aceptable, autonomía máxima, exposición a clientes, umbrales económicos. |
 | Situación actual del proceso | | Cómo se hace hoy, con qué medios y con qué problemas conocidos. |
-| Iniciativas o sistemas existentes | | Otros sistemas de IA del inventario que ya cubren parte del proceso. |
+| Casos de uso o sistemas existentes | | Otros sistemas de IA del inventario que ya cubren parte del proceso. |
 | Horizonte de retorno fijado en C2 **(Enterprise)** | | Plazo en el que el neto esperado debe ser positivo para Optimizar y Aumentar. |
 
 ---
@@ -65,7 +65,7 @@ Reglas de cumplimentación:
 
 Indique para cada referencia si aplica. "Por determinar" obliga a resolverla antes de G3.
 
-| Referencia | ¿Aplica? | Motivo | Implicación para la iniciativa | Quién lo confirma |
+| Referencia | ¿Aplica? | Motivo | Implicación para el caso de uso | Quién lo confirma |
 |---|---|---|---|---|
 | Reglamento Europeo de IA (Reglamento (UE) 2024/1689) | Sí · No · Por determinar | | Clasificación y obligaciones según el rol de la compañía (P11). | |
 | RGPD (Reglamento (UE) 2016/679) y normativa nacional de protección de datos | | | Base jurídica, minimización, evaluación de impacto en protección de datos, decisiones automatizadas. | |
@@ -89,7 +89,7 @@ Indique para cada referencia si aplica. "Por determinar" obliga a resolverla ant
 | Personas o colectivos vulnerables | | Menores, personas mayores, personas con discapacidad, situaciones de dificultad económica. |
 | Supervisión humana mínima exigida | | Qué decisiones deben quedar siempre en manos de una persona. |
 | Autonomía máxima permitida | | A0 Asistencia · A1 Recomendación · A2 Actuación supervisada · A3 Actuación autónoma (documento 35). |
-| Líneas rojas | | Lo que la iniciativa no hará en ningún caso. *Ejemplo ilustrativo: el asistente no modificará pedidos ni emitirá reembolsos.* |
+| Líneas rojas | | Lo que el caso de uso no hará en ningún caso. *Ejemplo ilustrativo: el asistente no modificará pedidos ni emitirá reembolsos.* |
 
 ---
 

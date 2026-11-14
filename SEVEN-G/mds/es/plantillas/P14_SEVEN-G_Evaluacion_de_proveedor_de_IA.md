@@ -18,7 +18,7 @@
 
 | Aspecto | Indicación |
 |---|---|
-| **Cuándo se usa** | En la fase 3, antes de G3, para cada proveedor que aporte modelos, plataformas, datos o servicios de IA a la iniciativa. Se revisa antes de firmar o renovar el contrato, ante cualquier disparador de reevaluación (36 §5) y con la periodicidad del nivel de exigencia. |
+| **Cuándo se usa** | En la fase 3, antes de G3, para cada proveedor que aporte modelos, plataformas, datos o servicios de IA al caso de uso. Se revisa antes de firmar o renovar el contrato, ante cualquier disparador de reevaluación (36 §5) y con la periodicidad del nivel de exigencia. |
 | **Quién la rellena** | El responsable técnico de IA, con compras y el responsable de riesgos de IA. Consulta a seguridad de la información, protección de datos y asesoría jurídica. |
 | **Quién la verifica** | Lite: responsable de riesgos de IA; si ha elaborado la evaluación, verifica la oficina de IA o el auditor de IA. Enterprise: auditor de IA. |
 | **Quién decide** | Se aprueba con G3, según el nivel de exigencia (36 §4.2): N1, responsable de producto con conformidad de compras · N2, patrocinador con conformidad de riesgos y de protección de datos · N3, comité de IA con conformidad de riesgos, seguridad de la información, protección de datos y jurídico. |
@@ -40,7 +40,7 @@ Reglas de cumplimentación:
 
 | Campo | Contenido | Guía |
 |---|---|---|
-| Código de la iniciativa | | IA-AAAA-NNN. |
+| Código del caso de uso | | IA-AAAA-NNN. |
 | Sistemas de IA afectados | | Códigos de P05. |
 | Código de la relación proveedor–servicio | | PRV-AAAA-NNN del registro T09 (P57). |
 | Proveedor | | Razón social y país de establecimiento. |

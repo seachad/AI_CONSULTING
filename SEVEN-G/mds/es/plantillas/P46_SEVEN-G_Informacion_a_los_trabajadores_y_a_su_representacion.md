@@ -42,7 +42,7 @@ Reglas de cumplimentación:
 
 | Campo | Contenido | Guía |
 |---|---|---|
-| Código de la iniciativa | | IA-AAAA-NNN. |
+| Código del caso de uso | | IA-AAAA-NNN. |
 | Sistema de IA | | SIA-AAAA-NNN (P05). |
 | Nombre del sistema | | Nombre funcional. |
 | Intensidad y clasificación regulatoria | | P04 y P11. |

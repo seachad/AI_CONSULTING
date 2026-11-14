@@ -39,8 +39,8 @@ Esta plantilla no constituye asesoramiento jurídico. Las obligaciones de superv
 
 | Campo | Contenido | Guía |
 |---|---|---|
-| Código de la iniciativa | | IA-AAAA-NNN (T01). |
-| Nombre de la iniciativa | | |
+| Código del caso de uso | | IA-AAAA-NNN (T01). |
+| Nombre del caso de uso | | |
 | Sistema(s) de IA | | Identificador en el inventario (T02). |
 | Intensidad | | Lite · Enterprise. |
 | Nivel de ambición | | Optimizar · Aumentar · Transformar. |

@@ -374,6 +374,13 @@ blockquote.aviso-legal strong { color: var(--negro); }
 .dz-card-titulo { font: 700 19px/1.2 var(--serif); color: var(--negro); margin: 0 0 6px; }
 .dz-card-texto { font: 400 13.5px/1.4 var(--sans); color: var(--tinta-2); margin: 0 0 12px; flex: 1; }
 .dz-card .dz-item { background: var(--papel); }
+/* documento 00 de cada marco: sus presentaciones en slides (1, 5, 10 y 20 en tarjetas de dos columnas; el curso, de cuatro) */
+@media (min-width: 900px) { .dz-card[data-grupo="slides-curso"] { grid-column: span 4; } .dz-card[data-grupo="slides-otros"] { grid-column: span 3; } }
+.dz-card[data-grupo="slides-curso"] { border-top-color: var(--teal); }
+.dz-card[data-grupo="slides-curso"] .dz-card-rotulo { color: var(--teal); }
+.dz-card[data-grupo="slides-otros"] { border-top-color: var(--oxford); }
+.dz-card[data-grupo="slides-otros"] .dz-card-rotulo { color: var(--oxford); }
+.descargas-zona[id] { scroll-margin-top: 72px; }
 .dz-grupo { font: 700 12px/1.2 var(--sans); letter-spacing: .08em; text-transform: uppercase; color: var(--tinta-2); margin: 8px 0 -2px; padding-top: 10px; border-top: 1px solid var(--regla); }
 .dz-grupo:first-child { margin-top: 0; padding-top: 0; border-top: 0; }
 @media print { .descargas-zona { display: none !important; } }
@@ -583,12 +590,12 @@ h2 .codigo, h3 .codigo { font-weight: 400; }
 <tbody>
 <tr>
 <td><strong>Dos o tres semanas antes</strong></td>
-<td>Entrevistas breves con la presidencia, la dirección general y las direcciones de negocio, personas, tecnología y riesgos. Lista preliminar de iniciativas y sistemas de IA conocidos.</td>
+<td>Entrevistas breves con la presidencia, la dirección general y las direcciones de negocio, personas, tecnología y riesgos. Lista preliminar de casos de uso y sistemas de IA conocidos.</td>
 <td>Quien presenta, con la oficina de IA si existe</td>
 </tr>
 <tr>
 <td><strong>Dos semanas antes</strong></td>
-<td><strong>Primer mapa preliminar</strong>: cada iniciativa conocida se sitúa en su esfera principal y su nivel de ambición (<a href="01_SPHERES_Niveles_de_ambicion.html" title="Documento 01 &#183; Metodolog&#237;a fundacional de SEVEN-G">documento 01</a>). Se anotan los grados aproximados de las esferas 08 y 09 (<a href="04_SPHERES_Regulacion_y_gobierno_de_la_IA.html" title="Documento 04 &#183; De d&#243;nde viene SEVEN-G, en qu&#233; se diferencia y por qu&#233; es abierto">documento 04</a>). Se eligen los ejemplos por nivel.</td>
+<td><strong>Primer mapa preliminar</strong>: cada caso de uso conocido se sitúa en su esfera principal y su nivel de ambición (<a href="01_SPHERES_Niveles_de_ambicion.html" title="Documento 01 &#183; Metodolog&#237;a fundacional de SEVEN-G">documento 01</a>). Se anotan los grados aproximados de las esferas 08 y 09 (<a href="04_SPHERES_Regulacion_y_gobierno_de_la_IA.html" title="Documento 04 &#183; De d&#243;nde viene SEVEN-G, en qu&#233; se diferencia y por qu&#233; es abierto">documento 04</a>). Se eligen los ejemplos por nivel.</td>
 <td>Quien presenta</td>
 </tr>
 <tr>
@@ -605,7 +612,7 @@ h2 .codigo, h3 .codigo { font-weight: 400; }
 </table></div>
 <h3 id="como-construir-el-mapa-preliminar">Cómo construir el mapa preliminar</h3>
 <ol>
-<li><strong>Reunir la lista</strong> de iniciativas y sistemas de IA de las entrevistas, de los presupuestos y de los contratos con proveedores. Es habitual descubrir iniciativas que la dirección no conocía.</li>
+<li><strong>Reunir la lista</strong> de casos de uso y sistemas de IA de las entrevistas, de los presupuestos y de los contratos con proveedores. Es habitual descubrir casos de uso que la dirección no conocía.</li>
 <li><strong>Asignar la esfera principal</strong> de cada una: la esfera en la que se mide su métrica principal, no el área que la patrocina.</li>
 <li><strong>Asignar el nivel de ambición</strong> con las cinco preguntas del <a href="01_SPHERES_Niveles_de_ambicion.html" title="Documento 01 &#183; Metodolog&#237;a fundacional de SEVEN-G">documento 01</a>. En caso de duda, el nivel inferior.</li>
 <li><strong>Diagnosticar las habilitadoras</strong> con las cinco preguntas rápidas del <a href="03_SPHERES_Esferas_habilitadoras.html" title="Documento 03 &#183; Herramientas de SEVEN-G y registro de iniciativas">documento 03</a>.</li>
@@ -693,7 +700,7 @@ h2 .codigo, h3 .codigo { font-weight: 400; }
 <p><strong>Qué evitar.</strong> Convertir el bloque en una revisión de arquitectura tecnológica.</p>
 <h3 id="bloque-04-regulacion-etica-y-responsabilidad">Bloque 04 · Regulación, ética y responsabilidad</h3>
 <p><strong>Qué se presenta.</strong> Qué exige el <a class="ref-ext" href="https://eur-lex.europa.eu/eli/reg/2024/1689/oj/spa" target="_blank" rel="noopener" title="Reglamento (UE) 2024/1689 del Parlamento Europeo y del Consejo, de 13 de junio de 2024, por el que se establecen normas armonizadas en materia de inteligencia artificial (Reglamento de Inteligencia Artificial)">Reglamento Europeo de IA</a> según el nivel de riesgo de cada sistema, la protección de datos en decisiones automatizadas y la regulación sectorial aplicable, siempre con la fecha de consulta. Las tres dimensiones: Cumplimiento, Anticipación y Liderazgo ético. Suele ser el tema que más preocupa al consejo.</p>
-<p><strong>Qué se pregunta.</strong> ¿Gobernamos de forma proactiva o esperamos a que el regulador nos obligue? ¿Hay alguien con capacidad real de decir que no a una iniciativa rentable pero inadecuada?</p>
+<p><strong>Qué se pregunta.</strong> ¿Gobernamos de forma proactiva o esperamos a que el regulador nos obligue? ¿Hay alguien con capacidad real de decir que no a un caso de uso rentable pero inadecuado?</p>
 <p><strong>Qué evitar.</strong> Presentar la regulación como un catálogo de sanciones o dar por cerradas interpretaciones que requieren criterio jurídico.</p>
 <h3 id="bloque-05-posicion-sobre-las-personas">Bloque 05 · Posición sobre las personas</h3>
 <p>Se trata en la sección 6 de este documento.</p>
@@ -726,7 +733,7 @@ h2 .codigo, h3 .codigo { font-weight: 400; }
 <tr>
 <td><strong>03 · Personas</strong></td>
 <td>¿La IA sustituye, aumenta o reorganiza el trabajo de las personas?</td>
-<td>¿Qué ocurre con la capacidad liberada? ¿Qué proporción de las iniciativas nace de los propios empleados?</td>
+<td>¿Qué ocurre con la capacidad liberada? ¿Qué proporción de los casos de uso nace de los propios empleados?</td>
 </tr>
 <tr>
 <td><strong>04 · Operaciones</strong></td>
@@ -736,7 +743,7 @@ h2 .codigo, h3 .codigo { font-weight: 400; }
 <tr>
 <td><strong>05 · Datos</strong></td>
 <td>¿Sabemos qué datos tenemos, dónde están, quién responde de su calidad y si podemos usarlos legalmente para IA?</td>
-<td>¿Cuántas iniciativas se retrasan por falta de datos? ¿Son nuestros datos una ventaja difícil de replicar?</td>
+<td>¿Cuántos casos de uso se retrasan por falta de datos? ¿Son nuestros datos una ventaja difícil de replicar?</td>
 </tr>
 <tr>
 <td><strong>06 · Conocimiento</strong></td>
@@ -756,7 +763,7 @@ h2 .codigo, h3 .codigo { font-weight: 400; }
 <tr>
 <td><strong>09 · Gobierno de la IA</strong></td>
 <td>¿Tiene la IA un gobierno corporativo con la misma formalidad que las finanzas, los riesgos o el cumplimiento?</td>
-<td>¿Quién responde en última instancia? ¿Podemos parar una iniciativa que no funciona? ¿Dependemos de un solo proveedor de modelos?</td>
+<td>¿Quién responde en última instancia? ¿Podemos parar un caso de uso que no funciona? ¿Dependemos de un solo proveedor de modelos?</td>
 </tr>
 </tbody>
 </table></div>
@@ -821,7 +828,7 @@ h2 .codigo, h3 .codigo { font-weight: 400; }
 <tr id="cod-mes-1">
 <td><strong>Mes 1</strong></td>
 <td>Diagnóstico</td>
-<td>Inventario completo de iniciativas y sistemas; mapa actual por esfera y nivel; grados de 08 y 09 con evidencia; diagnóstico de las habilitadoras.</td>
+<td>Inventario completo de casos de uso y sistemas; mapa actual por esfera y nivel; grados de 08 y 09 con evidencia; diagnóstico de las habilitadoras.</td>
 <td>Mapa de la situación actual con los &quot;sin dato&quot; explícitos.</td>
 </tr>
 <tr id="cod-mes-2">
@@ -902,7 +909,7 @@ h2 .codigo, h3 .codigo { font-weight: 400; }
 </tr>
 <tr>
 <td>Declara sus intereses y relaciones con proveedores.</td>
-<td>Supervisa iniciativas en las que él o su organización prestan servicios de implantación.</td>
+<td>Supervisa casos de uso en las que él o su organización prestan servicios de implantación.</td>
 </tr>
 </tbody>
 </table></div>
@@ -974,7 +981,7 @@ h2 .codigo, h3 .codigo { font-weight: 400; }
 </tr>
 <tr>
 <td><strong><a href="01_SPHERES_Niveles_de_ambicion.html" title="Documento 01 &#183; Metodolog&#237;a fundacional de SEVEN-G">documento 01</a> · Niveles de ambición</strong></td>
-<td>Clasificación de las iniciativas para el mapa preliminar.</td>
+<td>Clasificación de los casos de uso para el mapa preliminar.</td>
 </tr>
 <tr>
 <td><strong><a href="02_SPHERES_Esferas_donde_se_genera_valor.html" title="Documento 02 &#183; Glosario y convenciones de SEVEN-G">documento 02</a> · Esferas donde se genera valor</strong></td>
@@ -1022,7 +1029,7 @@ h2 .codigo, h3 .codigo { font-weight: 400; }
 </table></div>
 <h2 id="fuentes-externas">Fuentes externas citadas</h2><p class="fuentes-nota">Enlaces a la fuente oficial o primaria, comprobados antes de publicar. Verifique siempre la versión vigente en la fecha de uso.</p><ul class="fuentes-externas"><li><a href="https://eur-lex.europa.eu/eli/reg/2024/1689/oj/spa" target="_blank" rel="noopener">Reglamento (UE) 2024/1689 del Parlamento Europeo y del Consejo, de 13 de junio de 2024, por el que se establecen normas armonizadas en materia de inteligencia artificial (Reglamento de Inteligencia Artificial)</a><span> · Parlamento Europeo y Consejo de la UE · 13-06-2024</span></li></ul>
 </main>
-<footer class="pie"><div><span>© 2026 Fernando García Varela · Metodolog&#237;a SPHERES</span><span>Generado el 19-10-2026</span></div><p class="pie-ia">Contenido generado y maquetado con apoyo de IA bajo supervisi&#243;n editorial del autor.</p></footer>
+<footer class="pie"><div><span>© 2026 Fernando García Varela · Metodolog&#237;a SPHERES</span><span>Generado el 14-11-2026</span></div><p class="pie-ia">Contenido generado y maquetado con apoyo de IA bajo supervisi&#243;n editorial del autor.</p></footer>
 <script src="../../../SEVEN-G/html/es/codigos.js" defer></script>
 
 <script>

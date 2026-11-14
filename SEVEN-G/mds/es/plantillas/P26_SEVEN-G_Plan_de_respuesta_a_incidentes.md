@@ -41,7 +41,7 @@ Esta plantilla no constituye asesoramiento jurídico. Las obligaciones de notifi
 
 | Campo | Contenido | Guía |
 |---|---|---|
-| Código de la iniciativa | | IA-AAAA-NNN (T01). |
+| Código del caso de uso | | IA-AAAA-NNN (T01). |
 | Sistema(s) de IA | | Identificador en el inventario (T02). |
 | Clasificación regulatoria | | Prohibido · Alto riesgo · Obligaciones de transparencia · Riesgo mínimo · Fuera de ámbito · Pendiente de clasificar. |
 | Papel de la compañía respecto al sistema | | Proveedor · Responsable del despliegue · Ambos · Por determinar. Condiciona las obligaciones de notificación (documento 34). |

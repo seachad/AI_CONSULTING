@@ -374,6 +374,13 @@ blockquote.aviso-legal strong { color: var(--negro); }
 .dz-card-titulo { font: 700 19px/1.2 var(--serif); color: var(--negro); margin: 0 0 6px; }
 .dz-card-texto { font: 400 13.5px/1.4 var(--sans); color: var(--tinta-2); margin: 0 0 12px; flex: 1; }
 .dz-card .dz-item { background: var(--papel); }
+/* documento 00 de cada marco: sus presentaciones en slides (1, 5, 10 y 20 en tarjetas de dos columnas; el curso, de cuatro) */
+@media (min-width: 900px) { .dz-card[data-grupo="slides-curso"] { grid-column: span 4; } .dz-card[data-grupo="slides-otros"] { grid-column: span 3; } }
+.dz-card[data-grupo="slides-curso"] { border-top-color: var(--teal); }
+.dz-card[data-grupo="slides-curso"] .dz-card-rotulo { color: var(--teal); }
+.dz-card[data-grupo="slides-otros"] { border-top-color: var(--oxford); }
+.dz-card[data-grupo="slides-otros"] .dz-card-rotulo { color: var(--oxford); }
+.descargas-zona[id] { scroll-margin-top: 72px; }
 .dz-grupo { font: 700 12px/1.2 var(--sans); letter-spacing: .08em; text-transform: uppercase; color: var(--tinta-2); margin: 8px 0 -2px; padding-top: 10px; border-top: 1px solid var(--regla); }
 .dz-grupo:first-child { margin-top: 0; padding-top: 0; border-top: 0; }
 @media print { .descargas-zona { display: none !important; } }
@@ -467,7 +474,7 @@ h2 .codigo, h3 .codigo { font-weight: 400; }
     <strong>Descargas</strong>
     <button class="btn btn-icono" id="cerrar-descargas" type="button" aria-label="Cerrar panel">✕</button>
   </div>
-  <div class="descargas-lista"><a class="dz-item" href="../../../pdf/es/_trabajo/20260918_Analisis_metodologia_SPAD.pdf" target="_blank" rel="noopener"><span class="dz-tipo">PDF</span><b>Este documento · español</b></a><a class="dz-item" href="../../../../SEVEN-G/herramientas/T01_registro_iniciativas/registro.html" target="_blank" rel="noopener"><span class="dz-tipo tool">T01</span><b>Registro de iniciativas</b></a></div>
+  <div class="descargas-lista"><a class="dz-item" href="../../../pdf/es/_trabajo/20260918_Analisis_metodologia_SPAD.pdf" target="_blank" rel="noopener"><span class="dz-tipo">PDF</span><b>Este documento · español</b></a><a class="dz-item" href="../../../../SEVEN-G/herramientas/T01_registro_iniciativas/registro.html" target="_blank" rel="noopener"><span class="dz-tipo tool">T01</span><b>Registro de casos de uso</b></a></div>
 </aside>
 
 <div id="top"></div>
@@ -481,7 +488,7 @@ h2 .codigo, h3 .codigo { font-weight: 400; }
     
   </div>
 </header>
-<section class="descargas-zona" aria-label="Descargas y herramientas"><div class="dz-in"><div class="dz-bloque"><p class="dz-titulo">Descargas</p><div class="dz-enlaces"><a class="dz-item" href="../../../pdf/es/_trabajo/20260918_Analisis_metodologia_SPAD.pdf" target="_blank" rel="noopener"><span class="dz-tipo">PDF</span><b>Este documento · español</b></a></div></div><div class="dz-bloque"><p class="dz-titulo">Herramientas relacionadas</p><div class="dz-enlaces"><a class="dz-item" href="../../../../SEVEN-G/herramientas/T01_registro_iniciativas/registro.html" target="_blank" rel="noopener"><span class="dz-tipo tool">T01</span><b>Registro de iniciativas</b></a></div></div></div></section>
+<section class="descargas-zona" aria-label="Descargas y herramientas"><div class="dz-in"><div class="dz-bloque"><p class="dz-titulo">Descargas</p><div class="dz-enlaces"><a class="dz-item" href="../../../pdf/es/_trabajo/20260918_Analisis_metodologia_SPAD.pdf" target="_blank" rel="noopener"><span class="dz-tipo">PDF</span><b>Este documento · español</b></a></div></div><div class="dz-bloque"><p class="dz-titulo">Herramientas relacionadas</p><div class="dz-enlaces"><a class="dz-item" href="../../../../SEVEN-G/herramientas/T01_registro_iniciativas/registro.html" target="_blank" rel="noopener"><span class="dz-tipo tool">T01</span><b>Registro de casos de uso</b></a></div></div></div></section>
 <nav class="indice"><div class="indice-in"><h2>En este documento</h2><ol><li><a href="#conclusion"><span>01</span>Conclusión</a></li><li><a href="#material-revisado"><span>02</span>Material revisado</a></li><li><a href="#incoherencias-internas"><span>03</span>Incoherencias internas</a></li><li><a href="#contenido-que-contradice-decisiones-registradas"><span>04</span>Contenido que contradice decisiones registradas</a></li><li><a href="#huecos-de-metodo-y-cambios-propuestos"><span>05</span>Huecos de método y cambios propuestos</a></li><li><a href="#biblioteca-propuesta"><span>06</span>Biblioteca propuesta</a></li><li><a href="#decisiones-que-se-piden-al-autor"><span>07</span>Decisiones que se piden al autor</a></li></ol></div></nav>
 <main class="contenido" id="contenido">
 <h2 id="conclusion"><span class="antetitulo">01</span>Conclusión</h2>
@@ -850,7 +857,7 @@ h2 .codigo, h3 .codigo { font-weight: 400; }
 </ol>
 <h2 id="fuentes-externas">Fuentes externas citadas</h2><p class="fuentes-nota">Enlaces a la fuente oficial o primaria, comprobados antes de publicar. Verifique siempre la versión vigente en la fecha de uso.</p><ul class="fuentes-externas"><li><a href="https://genai.owasp.org/resource/owasp-top-10-for-llm-applications-2025/" target="_blank" rel="noopener">OWASP Top 10 para aplicaciones con modelos de lenguaje de gran tama&#241;o, edici&#243;n 2025 (OWASP Top 10 for LLM Applications 2025)</a><span> · OWASP GenAI Security Project (OWASP Foundation) · 17-11-2024</span></li><li><a href="https://creativecommons.org/licenses/by/4.0/deed.es" target="_blank" rel="noopener">Creative Commons Atribuci&#243;n/Reconocimiento 4.0 Internacional (CC BY 4.0)</a><span> · Creative Commons</span></li></ul>
 </main>
-<footer class="pie"><div><span>© 2026 Fernando García Varela · Metodolog&#237;a SPAD</span><span>Generado el 19-10-2026</span></div><p class="pie-ia">Contenido generado y maquetado con apoyo de IA bajo supervisi&#243;n editorial del autor.</p></footer>
+<footer class="pie"><div><span>© 2026 Fernando García Varela · Metodolog&#237;a SPAD</span><span>Generado el 14-11-2026</span></div><p class="pie-ia">Contenido generado y maquetado con apoyo de IA bajo supervisi&#243;n editorial del autor.</p></footer>
 <script src="../../../../SEVEN-G/html/es/codigos.js" defer></script>
 
 <script>

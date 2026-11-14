@@ -10,7 +10,7 @@
 | Author | Fernando García Varela |
 | Status | Draft for review. Self-learning material: it defines no rules of the framework; if it differs from a document, the document prevails. |
 
-<!-- cifras: 20 | minutes ; 9 | impact spheres ; 3 | ambition levels ; 1 | primary sphere per initiative -->
+<!-- cifras: 20 | minutes ; 9 | impact spheres ; 3 | ambition levels ; 1 | primary sphere per use case -->
 
 ---
 
@@ -18,7 +18,7 @@
 
 ## 1. Objective
 
-By the end you will be able to place any AI initiative in a sphere and an ambition level, and you will understand why that classification changes the criteria by which it is judged.
+By the end you will be able to place any AI use case in a sphere and an ambition level, and you will understand why that classification changes the criteria by which it is judged.
 
 ---
 
@@ -45,14 +45,14 @@ By the end you will be able to place any AI initiative in a sphere and an ambiti
 
 ## 4. Exercise
 
-In the example register (T01), open the record of IA-2026-002 (predictive maintenance as a service for industrial customers), classified as Transform, and that of IA-2025-001 (invoice classification), classified as Optimise. Explain in two sentences why each has that level. Then classify three real initiatives from your company.
+In the example register (T01), open the record of IA-2026-002 (predictive maintenance as a service for industrial customers), classified as Transform, and that of IA-2025-001 (invoice classification), classified as Optimise. Explain in two sentences why each has that level. Then classify three real use cases from your company.
 
 ---
 
 ## 5. Self-check
 
 1. An assistant that halves the processing time of a case file: what ambition level does it have?
-2. Can an initiative have two primary spheres?
+2. Can a use case have two primary spheres?
 3. Who approves a Transform bet and at which gates?
 4. Where is the value of a platform used by several cases allocated?
 

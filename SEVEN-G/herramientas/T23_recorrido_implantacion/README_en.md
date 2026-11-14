@@ -10,7 +10,7 @@ Applies **document 96** (Starting points and implementation journey): a **twelve
 2. **Starting point**: answer the twelve questions. Q01 accepts several answers; if you tick generative AI, say whether there is one or more than one system in production (the PP-E condition of 96 §2.2 needs it). The "Why this result" table walks through the rule in its order (PP-F, PP-E, PP-D, PP-C, PP-B, PP-A) with the answers used; the modifiers table says which answer activates each one (Q07 → MP1, Q08 yes or not known → MP2, Q09 → MP3, Q05 partial or formal → MP4, Q10 no → MP5).
 3. **Journey**: the milestones of each stage ordered by priority (1, 2, C, D, 3, ·). The priority of a milestone is the most urgent among the main archetype and its traits (96 §4.3, rule 5) and is adjusted with 96 §4.2: MP1 or MP2 move HI-05 and HI-10 to 1; MP2 moves HI-19 to 1; with MP4, milestones covered by existing governance (by default HI-08 and HI-20; any can be marked) move to C; Q04 "yes" or "not known" moves HI-02 and HI-03 to 1 (96 §2.4). With MP5 the journey is blocked until HI-01 is met (a precondition, not one more milestone). Each milestone explains where its priority comes from.
 4. **Status of each milestone**: pending, in progress, met or mapped and validated (C). If there is a T15 assessment in this browser with a **verified** (or independent) assessment, a milestone whose document 11 questions are all "Yes" in the latest one appears **"met according to T15"** (96 §4.3, rule 4). A status set by hand is **never overwritten** (D100, D102): it is shown next to what T15 says and can be removed to go back to the automatic one. A self-assessment is shown but does not mark milestones.
-5. **With the T01 register** (D100): served from the site, T23 finds the register that T01 has saved and offers **"Propose answers from the T01 register"** for Q01 to Q03: types of system of the initiatives in use (phase 6 or 7, not stopped or retired) from `clasificacion.tecnologia` and `clasificacion.autonomia`, and pilots under way (phases 1 to 5) and how many are generative AI. Proposed answers are marked "from T01" and can be edited; a manual answer is not replaced.
+5. **With the T01 register** (D100): served from the site, T23 finds the register that T01 has saved and offers **"Propose answers from the T01 register"** for Q01 to Q03: types of system of the use cases in production (phase 6 or 7, not stopped or retired) from `clasificacion.tecnologia` and `clasificacion.autonomia`, and pilots under way (phases 1 to 5) and how many are generative AI. Proposed answers are marked "from T01" and can be edited; a manual answer is not replaced.
 6. **By role** and **Plan**: the table of 96 §5 with the priority and status of each milestone; the plan for the AI Committee and management is printed or saved as PDF from the browser. "Export the journey (CSV)" (separator ";", UTF-8).
 7. **Data**: export and import the T23 JSON (answers, statuses, notes and the calculated result).
 
@@ -22,13 +22,13 @@ Each view has a **“?”** button next to its title that explains, in the activ
 
 ## Mapping from T01 to Q01
 
-| `clasificacion.tecnologia` of an initiative in use | Q01 answer |
+| `clasificacion.tecnologia` of a use case in production | Q01 answer |
 |---|---|
 | `reglas` | rules or RPA |
 | `ia_terceros_embebida` | third-party AI included in products or assistants |
 | `ml_predictivo`, `vision`, `optimizacion`, `lenguaje_documentos` | predictive ML, vision or optimisation |
 | `ia_generativa`, or `agente` with autonomy A0 or A1 | generative AI integrated into processes |
-| `agente` with autonomy A2 or A3, or any initiative in use with autonomy A2 or A3 | agents that execute actions (A2/A3) |
+| `agente` with autonomy A2 or A3, or any use case in production with autonomy A2 or A3 | agents that execute actions (A2/A3) |
 
 ## Files
 

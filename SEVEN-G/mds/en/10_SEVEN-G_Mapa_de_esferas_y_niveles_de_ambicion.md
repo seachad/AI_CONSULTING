@@ -16,7 +16,7 @@
 
 > **Legal notice and disclaimer.** SEVEN-G is a reference methodological framework provided "as is" and for information purposes only. It does not constitute legal, regulatory, financial or professional advice, nor does it guarantee compliance with any law or standard. References to general regulation (such as the EU AI Act, the GDPR, DORA or NIS2), to technical standards and to regulation specific to each sector or jurisdiction may be incomplete, may not apply to a particular case or may become out of date as a result of regulatory changes, interpretations or supervisory positions after their consultation date. **Each organisation that uses SEVEN-G is solely responsible for identifying the regulation that applies to it, verifying that it is current and certifying its own regulatory compliance**, with the appropriate qualified advice. This methodology is a generic, free aid shared with the community so that nobody has to start from scratch; each person or organisation can and should adapt it to its own use. It must not be inferred that its legally sensitive parts have been reviewed by legal counsel: those reviews, for each company or sector, are the ultimate responsibility of the company, consultant or organisation that uses it. Although every effort is made to keep it up to date, some regulation may have changed without being reflected here. To the fullest extent permitted by law, the author accepts no responsibility whatsoever for the effects of its application in any organisation or for its full applicability. The methodology does not grant certification of any kind. The author accepts no liability for any use made of this content or for any decisions taken on the basis of it. The data, figures, companies and cases in the examples are fictitious or illustrative.
 
-<!-- esencial: siempre | Every initiative is classified in a primary sphere and an ambition level using the rules in section 4, and the board sets the ambition per sphere in C2. The sheets for each sphere and their indicators are consulted when working in that sphere. -->
+<!-- esencial: siempre | Every use case is classified in a primary sphere and an ambition level using the rules in section 4, and the board sets the ambition per sphere in C2. The sheets for each sphere and their indicators are consulted when working in that sphere. -->
 
 ## 1. Purpose and scope
 
@@ -24,11 +24,11 @@ This document develops the SEVEN-G **impact map**: nine spheres in which artific
 
 - What each sphere covers, what questions the board should ask, which examples correspond to each level and which signs indicate that something is not going well.
 - **Indicators with a formula** for each sphere, so that the map can be measured and not merely described.
-- The **classification rules** for placing an initiative on the map: primary sphere, secondary sphere and ambition level.
+- The **classification rules** for placing a use case on the map: primary sphere, secondary sphere and ambition level.
 - The **specific rule for spheres 08 and 09**, which are assessed on their own levels and must not be mixed with Optimise, Augment and Transform.
 - The portfolio **heat map** (tool T16) and its use in the corporate cycle (C1 to C5) and in the lifecycle (phases 1, 2 and 7).
 
-The detailed classification of an initiative's ambition level (five questions and decision rules) is in document 12. Setting the target ambition by sphere is an output of C2 and is documented with document 13.
+The detailed classification of a use case's ambition level (five questions and decision rules) is in document 12. Setting the target ambition by sphere is an output of C2 and is documented with document 13.
 
 The indicator codes in this document (`IE01.01`…) are provisional. Document 41 (Indicator catalogue) consolidates them with the rest of the framework's indicators.
 
@@ -54,7 +54,7 @@ A board does not decide on models or platforms: it decides on risk, opportunity,
 
 Principles for using the map:
 
-1. **The nine spheres cover the whole organisation.** If an initiative does not fit into any of them, its business objective is most probably unclear.
+1. **The nine spheres cover the whole organisation.** If a use case does not fit into any of them, its business objective is most probably unclear.
 2. **The enabling spheres constrain the value spheres.** An ambition to Transform in Customer or in Product without sufficient capability in Data, Knowledge and Decision is a sign of risk, not of boldness.
 3. **Spheres 08 and 09 do not generate value in themselves**: they set the boundaries and the governance system. That is why they are assessed on their own levels (sections 6 and 7).
 4. **The map is read at three points in time**: current situation (C1), target ambition (C2) and the portfolio that delivers it (C3).
@@ -78,9 +78,9 @@ Ambition levels **are not a ladder**. It is not mandatory to go through Optimise
 
 General rules:
 
-- **Every initiative has a single ambition level**, classified with the five questions in document 12. If an initiative combines components of different levels, it is split or classified according to the component that justifies the investment.
+- **Every use case has a single ambition level**, classified with the five questions in document 12. If a use case combines components of different levels, it is split or classified according to the component that justifies the investment.
 - **Ambition refers to what changes in the business**, not to the technology used. A generative AI agent can be Optimise; a classical statistical model can be Transform.
-- **The ambition of a sphere** (in C1 or in C2) is expressed through the levels of the initiatives that make it up; it is not assigned by opinion.
+- **The ambition of a sphere** (in C1 or in C2) is expressed through the levels of the use cases that make it up; it is not assigned by opinion.
 
 ---
 
@@ -88,26 +88,26 @@ General rules:
 
 ### 4.1 Primary sphere and secondary sphere
 
-Each initiative is recorded in the initiative register (T01) with a mandatory **primary sphere** and, at most, one **secondary sphere**.
+Each use case is recorded in the use case register (T01) with a mandatory **primary sphere** and, at most, one **secondary sphere**.
 
 | # | Rule |
 |---|---|
 | 1 | The **primary sphere** is the one in which the **main metric of the value hypothesis** is measured. It is not decided by the technology, by the sponsoring area or by the supplier. |
 | 2 | The **secondary sphere** is only recorded if there is a second relevant effect **measurable with an indicator of that sphere** or an explicit organisational change. It is not used to flag generic dependencies. |
-| 3 | Spheres **05 Data, 06 Knowledge and 07 Decision** are primary only when the main outcome is the enabling capability itself (a data catalogue, a knowledge base, a decision system). The fact that an initiative uses data does not place it in sphere 05. |
-| 4 | Sphere **03 People** is primary when the main outcome concerns work, capabilities or the organisation. It should be recorded as secondary in every Augment or Transform initiative that changes roles. |
-| 5 | Spheres **08 and 09** are primary only when the purpose of the initiative is compliance or governance (for example, an AI system to monitor regulatory obligations or to maintain the inventory). They are **never** used to indicate that an initiative carries regulatory risk: that is recorded in the regulatory classification and in the risk register. |
+| 3 | Spheres **05 Data, 06 Knowledge and 07 Decision** are primary only when the main outcome is the enabling capability itself (a data catalogue, a knowledge base, a decision system). The fact that a use case uses data does not place it in sphere 05. |
+| 4 | Sphere **03 People** is primary when the main outcome concerns work, capabilities or the organisation. It should be recorded as secondary in every Augment or Transform use case that changes roles. |
+| 5 | Spheres **08 and 09** are primary only when the purpose of the use case is compliance or governance (for example, an AI system to monitor regulatory obligations or to maintain the inventory). They are **never** used to indicate that a use case carries regulatory risk: that is recorded in the regulatory classification and in the risk register. |
 | 6 | Investment and value are allocated **only to the primary sphere** (measurement rule 5: each euro is attributed to a single use case). The secondary sphere appears on the map as a marker, without amounts. |
 | 7 | If the main metric changes at G2 or G7, the primary sphere is reviewed and the change is recorded as an event. |
 
 Common borderline cases (illustrative examples):
 
-| Initiative | Primary | Secondary | Reason |
+| Use case | Primary | Secondary | Reason |
 |---|---|---|---|
 | Assistant that drafts responses to customer complaints for the customer service team | 04 Operations | 01 Customer, only if satisfaction or repeat contact is measured | The main metric is handling time per complaint. |
 | Product recommender in the digital channel | 01 Customer | 02 Product and service, if it modifies the offering | The main metric is incremental conversion. |
 | Common data platform for several AI use cases | 05 Data | — | The outcome is the enabling capability; the value of the use cases that use it is allocated to those use cases. |
-| Generative assistant built into the office suite for several business units | 03 People | 06 Knowledge, if access to information is measured | It is a cross-unit initiative: it is recorded once and measured by business unit (document 40 §7.2). It is not an enabling capability of spheres 05 to 07: its outcome falls on people's work. |
+| Generative assistant built into the office suite for several business units | 03 People | 06 Knowledge, if access to information is measured | It is a cross-unit use case: it is recorded once and measured by business unit (document 40 §7.2). It is not an enabling capability of spheres 05 to 07: its outcome falls on people's work. |
 | Copilot for risk analysts that enables them to review more complex transactions | 03 People or 07 Decision | The other of the two | Primary according to the metric: analyst performance (03) or decision quality (07). |
 | AI system that monitors regulatory changes and assigns them to owners | 08 Regulation, ethics and accountability | — | Its purpose is regulatory anticipation. |
 
@@ -126,10 +126,10 @@ To avoid mixing them with the three levels, the following rules apply:
 |---|---|---|
 | 1 | On the heat map, rows 08 and 09 show **grades by dimension**, never Optimise, Augment or Transform columns. | Presenting "Transform in Regulation" as if it were a business bet. |
 | 2 | The C2 target ambition for 08 and 09 is expressed as a **target grade by dimension** (document 13). | Setting "Augment governance" as a target, which is not verifiable. |
-| 3 | An initiative whose primary sphere is 08 or 09 **has an ambition level** (it is classified with the five questions, like all the others), but that level **is not used** to rate the sphere. Its contribution is also recorded as the **dimension it contributes to** (for example, Anticipation). | Confusing the type of bet of a tool with the company's grade of governance. |
-| 4 | The investment of initiatives whose primary sphere is 08 or 09 is shown in a **separate band of the heat map** ("governance and compliance enablement") and is **excluded** from signals 1, 2 and 7 of the transformation index (document 12). | Investment in governance being read as "efficiency" and lowering the profile, or being used to inflate ambition. |
+| 3 | A use case whose primary sphere is 08 or 09 **has an ambition level** (it is classified with the five questions, like all the others), but that level **is not used** to rate the sphere. Its contribution is also recorded as the **dimension it contributes to** (for example, Anticipation). | Confusing the type of bet of a tool with the company's grade of governance. |
+| 4 | The investment of use cases whose primary sphere is 08 or 09 is shown in a **separate band of the heat map** ("governance and compliance enablement") and is **excluded** from signals 1, 2 and 7 of the transformation index (document 12). | Investment in governance being read as "efficiency" and lowering the profile, or being used to inflate ambition. |
 | 5 | The grades of 08 and 09 **are not maturity levels**. They serve as evidence for dimensions D6 (Risk, security and compliance) and D1 (Strategy and governance) of document 11, but do not replace them. | Duplicating or contradicting the maturity diagnosis. |
-| 6 | Spheres 08 and 09 **cannot be the secondary sphere** of an initiative whose purpose is not compliance or governance. | Using the 08 label as a synonym for "carries regulatory risk". |
+| 6 | Spheres 08 and 09 **cannot be the secondary sphere** of a use case whose purpose is not compliance or governance. | Using the 08 label as a synonym for "carries regulatory risk". |
 
 Common definition of the grades:
 
@@ -144,7 +144,7 @@ Common definition of the grades:
 
 ## 5. Profiles of spheres 01 to 07
 
-Each profile has the same structure: what it covers, questions for the board, examples by level, warning signs and indicators. **The examples are generic and illustrative**; they are neither recommendations nor market references. The indicators are calculated over the stated scope (company, unit or initiative) and follow the measurement rules in document 00: every amount has a formula and a status, and "no data" is not zero.
+Each profile has the same structure: what it covers, questions for the board, examples by level, warning signs and indicators. **The examples are generic and illustrative**; they are neither recommendations nor market references. The indicators are calculated over the stated scope (company, unit or use case) and follow the measurement rules in document 00: every amount has a formula and a status, and "no data" is not zero.
 
 ### 5.1 Sphere 01 · Customer
 
@@ -207,7 +207,7 @@ Each profile has the same structure: what it covers, questions for the board, ex
 - AI features are announced without measuring their actual usage.
 - The AI cost per unit of service is unknown or grows faster than the product's revenue.
 - There is no product owner accountable to the customer for the behaviour of the AI.
-- New product initiatives are assessed with the same payback period as efficiency initiatives and are stopped before market evidence is obtained.
+- New product use cases are assessed with the same payback period as efficiency use cases and are stopped before market evidence is obtained.
 
 **Indicators**
 
@@ -228,14 +228,14 @@ Each profile has the same structure: what it covers, questions for the board, ex
 |---|---|---|
 | **Recipients** | AI changes their tools, processes and productivity expectations, without them having chosen it. | Change management, training and AI literacy; adoption depends on them. |
 | **Subjects** | AI can restructure, reassign or eliminate jobs. | Explicit decision by management and the board, dialogue with employee representatives where appropriate, and responsible treatment. |
-| **Promoters** | Those who know a process best can identify uses of AI that no outsider would see. | A channel for proposing initiatives that enter the register and the portfolio. |
+| **Promoters** | Those who know a process best can identify uses of AI that no outsider would see. | A channel for proposing use cases that enter the register and the portfolio. |
 
 **Questions for the board**
 
 - Does AI replace, augment or reorganise people's work? That answer defines the culture, the employer brand and talent retention.
 - What happens to released capacity: does it become lower cost, is it reassigned or does it simply disappear?
 - Do the people who use or oversee AI have training appropriate to their role?
-- What proportion of initiatives originates from employees themselves?
+- What proportion of use cases originates from employees themselves?
 
 **Examples by level (illustrative)**
 
@@ -250,7 +250,7 @@ Each profile has the same structure: what it covers, questions for the board, ex
 - Released hours are reported without stating whether they have been realised or reassigned.
 - The number of assigned licences is measured, not actual usage.
 - Decisions on jobs are taken as a technical consequence of a project, without an explicit management decision.
-- There is no adoption plan in Augment or Transform initiatives.
+- There is no adoption plan in Augment or Transform use cases.
 - Turnover in the affected groups rises without anyone analysing it.
 
 **Indicators**
@@ -261,8 +261,8 @@ Each profile has the same structure: what it covers, questions for the board, ex
 | IE03.02 | Realised released capacity | Released hours converted into actual lower cost ÷ measured released hours × 100 | T12, T20 |
 | IE03.03 | Reassigned released capacity | Hours explicitly reassigned to recorded activities ÷ measured released hours × 100 | T20 |
 | IE03.04 | AI literacy by role | People with accredited AI training appropriate to their role ÷ people who use, oversee or make decisions on AI × 100 | Training register |
-| IE03.05 | Redesigned roles | Jobs with a description updated as a result of AI ÷ jobs affected by Augment or Transform initiatives × 100 | People, T20 |
-| IE03.06 | Employee-promoted initiatives | Employee-originated initiatives that pass G1 ÷ employee-originated initiatives registered × 100 | T01 (origin field) |
+| IE03.05 | Redesigned roles | Jobs with a description updated as a result of AI ÷ jobs affected by Augment or Transform use cases × 100 | People, T20 |
+| IE03.06 | Employee-promoted use cases | Employee-originated use cases that pass G1 ÷ employee-originated use cases registered × 100 | T01 (origin field) |
 
 ### 5.4 Sphere 04 · Operations
 
@@ -308,7 +308,7 @@ Each profile has the same structure: what it covers, questions for the board, ex
 **Questions for the board**
 
 - Do we know what data we have, where it is, who is accountable for its quality and whether we can legally use it for AI?
-- How many initiatives are delayed or stopped for lack of data?
+- How many use cases are delayed or stopped for lack of data?
 - Have we documented where the data used by each system in production to make decisions comes from?
 - Is our data an advantage that a competitor cannot replicate?
 
@@ -322,7 +322,7 @@ Each profile has the same structure: what it covers, questions for the board, ex
 
 **Warning signs**
 
-- Initiatives that reach phase 3 without having confirmed access to the data.
+- Use cases that reach phase 3 without having confirmed access to the data.
 - Personal data used to train or feed systems without a documented legal basis.
 - Critical datasets without an identified owner.
 - Systems in production without data and model lineage.
@@ -335,8 +335,8 @@ Each profile has the same structure: what it covers, questions for the board, ex
 | IE05.02 | Quality of critical data | Critical datasets that meet the defined quality thresholds ÷ critical datasets × 100 | Quality monitoring |
 | IE05.03 | Documented legal basis | Datasets with personal data used in AI with a documented legal basis ÷ datasets with personal data used in AI × 100 | Data protection |
 | IE05.04 | Documented lineage | AI systems in production with verified data and model lineage (P16) ÷ AI systems in production × 100 | T02, P16 |
-| IE05.05 | Time to data access | Median days between an initiative's data request and its availability in the authorised environment | T01 (events) |
-| IE05.06 | Initiatives blocked by data | Initiatives stopped with the reason "Insufficient data" or on hold for data ÷ initiatives stopped or on hold in the period × 100 | T01 |
+| IE05.05 | Time to data access | Median days between a use case's data request and its availability in the authorised environment | T01 (events) |
+| IE05.06 | Use cases blocked by data | Use cases stopped with the reason "Insufficient data" or on hold for data ÷ use cases stopped or on hold in the period × 100 | T01 |
 
 ### 5.6 Sphere 06 · Knowledge
 
@@ -426,7 +426,7 @@ Each profile has the same structure: what it covers, questions for the board, ex
 |---|---|---|---|---|
 | **Compliance** | Classification of systems under the EU AI Act, transparency and oversight obligations, data protection in automated decision-making and profiling, sector regulation. | Classification and assessments for some systems, on demand. | All inventoried systems are classified; the required assessments are carried out before G3; nonconformities are managed with time limits. | Systematic, with indicators on target for two quarters and an audit with no open major nonconformities. |
 | **Anticipation** | Monitoring of emerging regulation, impact assessments before deployment and preparation for external audits. | Regulation is followed informally. | Monitoring process with an owner; each relevant change has an impact analysis within the time limit; mock audits. | The company adapts its systems before the obligation becomes applicable and documents this. |
-| **Ethical leadership** | Own principles beyond the legal minimum, an ethics body with real veto power and public transparency about the use of AI. | Published principles with no enforcement mechanism. | Principles approved by the board, ethical review of the initiatives that require it and a body with documented veto power. | Periodic public report on the use of AI and recorded veto or modification decisions. |
+| **Ethical leadership** | Own principles beyond the legal minimum, an ethics body with real veto power and public transparency about the use of AI. | Published principles with no enforcement mechanism. | Principles approved by the board, ethical review of the use cases that require it and a body with documented veto power. | Periodic public report on the use of AI and recorded veto or modification decisions. |
 
 ### 6.2 Questions for the board by dimension
 
@@ -434,7 +434,7 @@ Each profile has the same structure: what it covers, questions for the board, ex
 |---|---|
 | Compliance | Are all our AI systems classified? Could any of them be a prohibited or high-risk practice without our knowing it? Who signs off that classification? |
 | Anticipation | Which obligations will apply to us in the next 24 months, and which systems do they affect? Are we prepared for an external AI audit? |
-| Ethical leadership | Do we have our own principles that go beyond the law? Is there anyone with real power to say no to an initiative that is profitable but inappropriate? |
+| Ethical leadership | Do we have our own principles that go beyond the law? Is there anyone with real power to say no to a use case that is profitable but inappropriate? |
 
 ### 6.3 Warning signs
 
@@ -453,8 +453,8 @@ Each profile has the same structure: what it covers, questions for the board, ex
 | IE08.04 | Anticipation | Timely analysis of regulatory changes | Relevant regulatory changes with an impact analysis within the set time limit ÷ relevant regulatory changes identified × 100 |
 | IE08.05 | Anticipation | Early adaptation | Obligations with a future application date and an approved adaptation plan ÷ obligations with an application date in the next 24 months × 100 |
 | IE08.06 | Anticipation | Unauthorised use regularised | Cases of unauthorised use regularised (authorised, replaced or blocked) on time ÷ cases detected × 100 |
-| IE08.07 | Ethical leadership | Ethical review applied | Initiatives that require ethical review and have it recorded before G3 ÷ initiatives that require it × 100 |
-| IE08.08 | Ethical leadership | Effective veto power | Number of initiatives modified or stopped by decision of the ethics body in the last 12 months (reported together with the number reviewed) |
+| IE08.07 | Ethical leadership | Ethical review applied | Use cases that require ethical review and have it recorded before G3 ÷ use cases that require it × 100 |
+| IE08.08 | Ethical leadership | Effective veto power | Number of use cases modified or stopped by decision of the ethics body in the last 12 months (reported together with the number reviewed) |
 | IE08.09 | Ethical leadership | Public transparency | Systems with direct exposure to people described in the company's public information ÷ systems with direct exposure × 100 |
 
 ---
@@ -469,14 +469,14 @@ Each profile has the same structure: what it covers, questions for the board, ex
 
 | Dimension | Questions for the board | Basic | Systematic | Advanced |
 |---|---|---|---|---|
-| **Structure** | Who has ultimate accountability for the AI strategy? Is there a framework that connects it with the business strategy? Is there a portfolio prioritised by impact and risk? Does the board receive regular and understandable information? | Designated owner; portfolio as a list of projects. | AI thesis and risk appetite approved; AI Committee operational; initiative register with roles and *gates*; quarterly dashboard to the board. | Systematic, with the register of recommendations up to date and the annual C5 review completed. |
-| **Balance between speed and control** | Are we accelerating adoption with risk under control? Are there decision gates in the lifecycle? How do we measure our maturity? Can we stop an initiative that is not working? | Some controls, applied unevenly. | *Gates* with dual validation in all initiatives; Lite or Enterprise intensity determined; reference time limits measured; stops and retirements recorded. | Decision times within time limits without an increase in nonconformities; annual calibration of time limits and thresholds. |
+| **Structure** | Who has ultimate accountability for the AI strategy? Is there a framework that connects it with the business strategy? Is there a portfolio prioritised by impact and risk? Does the board receive regular and understandable information? | Designated owner; portfolio as a list of projects. | AI thesis and risk appetite approved; AI Committee operational; use case register with roles and *gates*; quarterly dashboard to the board. | Systematic, with the register of recommendations up to date and the annual C5 review completed. |
+| **Balance between speed and control** | Are we accelerating adoption with risk under control? Are there decision gates in the lifecycle? How do we measure our maturity? Can we stop a use case that is not working? | Some controls, applied unevenly. | *Gates* with dual validation in all use cases; Lite or Enterprise intensity determined; reference time limits measured; stops and retirements recorded. | Decision times within time limits without an increase in nonconformities; annual calibration of time limits and thresholds. |
 | **Supplier ecosystem** | Do we depend on a single model supplier? Do we assess build, buy or partner for each capability? Do contracts protect our data and intellectual property? Do we understand the cost structure of AI? | Known suppliers, without consistent assessment. | Supplier register with N1–N3 requirement level; minimum contractual clauses; cost by category and by use case. | Tested exit strategy for N3 suppliers and concentration within risk appetite. |
 
 ### 7.2 Warning signs
 
-- Nobody has stopped or retired an initiative in the last 12 months.
-- Initiatives in production without a recorded *gate* or without a current continuity review.
+- Nobody has stopped or retired a use case in the last 12 months.
+- Use cases in production without a recorded *gate* or without a current continuity review.
 - *Gate* decision time well above the reference time limit, which pushes teams to bypass the process.
 - A single supplier accounts for most of the spending on models without an exit strategy.
 
@@ -484,12 +484,12 @@ Each profile has the same structure: what it covers, questions for the board, ex
 
 | Code | Dimension | Indicator | Formula |
 |---|---|---|---|
-| IE09.01 | Structure | Register coverage | Active AI initiatives and systems registered in T01 and T02 with roles assigned without incompatibilities ÷ known active initiatives and systems × 100 |
+| IE09.01 | Structure | Register coverage | Active AI use cases and systems registered in T01 and T02 with roles assigned without incompatibilities ÷ known active use cases and systems × 100 |
 | IE09.02 | Structure | Current continuity | Systems in production with a continuity review (R6) within its periodicity ÷ systems in production × 100 |
 | IE09.03 | Structure | Board recommendations closed on time | Recommendations closed with evidence within the time limit ÷ recommendations due in the period × 100 |
 | IE09.04 | Speed and control | *Gate* decision time | Median days between the request and the *gate* decision, by intensity, compared with the reference time limit |
 | IE09.05 | Speed and control | Time to production | Median days between registration and G5, by intensity and by ambition level |
-| IE09.06 | Speed and control | Ability to stop | Initiatives stopped or retired with a coded reason in 12 months ÷ initiatives with a *gate* decision in 12 months × 100 |
+| IE09.06 | Speed and control | Ability to stop | Use cases stopped or retired with a coded reason in 12 months ÷ use cases with a *gate* decision in 12 months × 100 |
 | IE09.07 | Ecosystem | Concentration in the main model supplier | Spending on the main model supplier ÷ total spending on models × 100 |
 | IE09.08 | Ecosystem | Exit strategy | N3 suppliers with a documented and tested exit strategy ÷ N3 suppliers × 100 |
 | IE09.09 | Ecosystem | Allocated AI cost | AI cost allocated to use cases through analytical allocation ÷ total AI cost × 100 |
@@ -498,19 +498,19 @@ Each profile has the same structure: what it covers, questions for the board, ex
 
 ## 8. Sphere × level heat map (T16)
 
-The heat map is the portfolio view over the impact map. It is generated from the initiative register (T01) and shown in the board dashboard (T17), in the card «Where the impact is» under «Portfolio and value» (60 §10.5), which can also show the rows by business unit. The C2 target ambition per sphere is recorded in T01, in the board decision approving the thesis (62 §10.2), and the dashboard takes it from there; without it, it marks neither gaps nor «off thesis».
+The heat map is the portfolio view over the impact map. It is generated from the use case register (T01) and shown in the board dashboard (T17), in the card «Where the impact is» under «Portfolio and value» (60 §10.5), which can also show the rows by business unit. The C2 target ambition per sphere is recorded in T01, in the board decision approving the thesis (62 §10.2), and the dashboard takes it from there; without it, it marks neither gaps nor «off thesis».
 
 ### 8.1 Construction
 
 | Element | Definition |
 |---|---|
-| **Rows** | Spheres 01 to 07. Below, in a separate block, spheres 08 and 09 with their dimensions, and the "governance and compliance enablement" band with the investment of initiatives whose primary sphere is 08 or 09. |
+| **Rows** | Spheres 01 to 07. Below, in a separate block, spheres 08 and 09 with their dimensions, and the "governance and compliance enablement" band with the investment of use cases whose primary sphere is 08 or 09. |
 | **Columns** | Optimise · Augment · Transform. |
-| **Scope** | Active initiatives (from G0 passed until retirement) and those stopped or retired in the last 12 months, which are shown separately. |
+| **Scope** | Active use cases (from G0 passed until retirement) and those stopped or retired in the last 12 months, which are shown separately. |
 | **Level used** | Actual ambition if it exists; otherwise, confirmed; otherwise, proposed, marked as such. |
-| **Content of each cell** | Number of initiatives (total and in production) · Investment and annual recurring cost · Validated annual net value · C2 target ambition for the sphere. |
+| **Content of each cell** | Number of use cases (total and in production) · Investment and annual recurring cost · Validated annual net value · C2 target ambition for the sphere. |
 | **Colour** | Share of the cell's investment and recurring cost in the total for spheres 01 to 07: **No activity** (0 %) · **Low** (less than 5 %) · **Medium** (5 % to 15 %) · **High** (more than 15 %). Initial thresholds, to be calibrated in C5. |
-| **Markers** | **Gap**: in the cell of the level that matches the sphere's target ambition there is no initiative that has passed G2. · **Outside the thesis**: investment in a sphere declared non-priority in C2 above 5 % of the total. · **No evidence**: initiatives with more than 12 months in production and no validated value. · **Secondary**: number of initiatives that have the sphere as secondary (without amounts). |
+| **Markers** | **Gap**: in the cell of the level that matches the sphere's target ambition there is no use case that has passed G2. · **Outside the thesis**: investment in a sphere declared non-priority in C2 above 5 % of the total. · **No evidence**: use cases with more than 12 months in production and no validated value. · **Secondary**: number of use cases that have the sphere as secondary (without amounts). |
 
 In rows 08 and 09 each dimension shows its **current grade** and its **target grade** (Absent, Basic, Systematic or Advanced), calculated with the indicators in sections 6.4 and 7.3 and validated by the AI Office.
 
@@ -520,21 +520,21 @@ In rows 08 and 09 each dimension shows its **current grade** and its **target gr
 
 | Sphere | C2 target | Optimise | Augment | Transform |
 |---|---|---|---|---|
-| 01 · Customer | Augment | 3 initiatives · 0.45 · Medium | 1 initiative · 0.30 · Medium | — |
+| 01 · Customer | Augment | 3 use cases · 0.45 · Medium | 1 use case · 0.30 · Medium | — |
 | 02 · Product and service | Transform | 1 · 0.10 · Low | — | 1 · 0.30 · Medium |
 | 03 · People | Augment | 2 · 0.40 · Medium | 1 · 0.40 · Medium | — |
 | 04 · Operations | Optimise | 6 · 1.60 · **High** | — | — |
 | 05 · Data | Augment | 1 · 0.35 · Medium | **Gap** | — |
 | 06 · Knowledge | Augment | 1 · 0.10 · Low | **Gap** | — |
 | 07 · Decision | Optimise | **Gap** | — | — |
-| Enablement band (08 and 09) | — | 2 initiatives · 0.25 (outside the total of 4.00) | — | — |
+| Enablement band (08 and 09) | — | 2 use cases · 0.25 (outside the total of 4.00) | — | — |
 
 | Sphere | Dimension | Current grade | Target grade |
 |---|---|---|---|
 | 08 | Compliance · Anticipation · Ethical leadership | Systematic · Basic · Basic | Systematic · Systematic · Basic |
 | 09 | Structure · Speed and control · Ecosystem | Systematic · Basic · Absent | Systematic · Systematic · Basic |
 
-Reading for the board: 75 % of the investment (3.00 of 4.00) is in Optimise and 40 % in Operations; the Transform bet in Product exists but is a single one; Data and Knowledge have an Augment target with no initiative delivering it, which weakens the value spheres; Decision has no activity; and the supplier ecosystem is not governed. The same example is used to calculate the transformation index in document 12.
+Reading for the board: 75 % of the investment (3.00 of 4.00) is in Optimise and 40 % in Operations; the Transform bet in Product exists but is a single one; Data and Knowledge have an Augment target with no use case delivering it, which weakens the value spheres; Decision has no activity; and the supplier ecosystem is not governed. The same example is used to calculate the transformation index in document 12.
 
 ---
 
@@ -544,22 +544,22 @@ Reading for the board: 75 % of the investment (3.00 of 4.00) is in Optimise and 
 
 | Stage | Use of the map | Output | Document |
 |---|---|---|---|
-| **C1 · Diagnosis** | Classify existing initiatives and systems by sphere and level; calculate the available indicators; assign grades to 08 and 09; build the current heat map. For each sphere, the **level achieved** (highest level with at least one initiative in production and measured value) and the **level in the portfolio** (highest level with any initiative that has passed G2) are recorded. | Current sphere map with explicit indicators and "no data". | 11, 12 |
+| **C1 · Diagnosis** | Classify existing use cases and systems by sphere and level; calculate the available indicators; assign grades to 08 and 09; build the current heat map. For each sphere, the **level achieved** (highest level with at least one use case in production and measured value) and the **level in the portfolio** (highest level with any use case that has passed G2) are recorded. | Current sphere map with explicit indicators and "no data". | 11, 12 |
 | **C2 · Direction** | Set the priority and target ambition for each sphere 01–07, and the target grade by dimension for 08 and 09, with one main indicator per sphere chosen from those in this document. | Ambition by sphere approved by the board. | 13 |
-| **C3 · Portfolio** | Compare the heat map with the target ambition; prioritise initiatives that close gaps; limit investment outside the thesis; check that the enabling spheres support the ambition of the value spheres. | Prioritised portfolio with sphere and level per initiative. | 14 |
+| **C3 · Portfolio** | Compare the heat map with the target ambition; prioritise use cases that close gaps; limit investment outside the thesis; check that the enabling spheres support the ambition of the value spheres. | Prioritised portfolio with sphere and level per use case. | 14 |
 | **C4 · Oversight** | Quarterly heat map in the board dashboard with gap, outside-the-thesis and no-evidence markers; evolution of the main indicators. | Board alerts and recommendations. | 60, 62 |
 | **C5 · Review** | Compare the map with the previous year's and with the target ambition; recalibrate colour thresholds and markers; review the chosen indicators. | Proposed adjustment of ambition by sphere. | 12, 13 |
 
-### 9.2 Initiative lifecycle
+### 9.2 Use case lifecycle
 
 | Moment | What is done | Who | Evidence |
 |---|---|---|---|
-| **Phase 0** | The expected sphere is stated in the initiative charter, to check alignment with the thesis. | AI Product Owner | P01 |
+| **Phase 0** | The expected sphere is stated in the use case charter, to check alignment with the thesis. | AI Product Owner | P01 |
 | **Phase 1** | The **primary sphere, secondary sphere and ambition level** are proposed using the rules in section 4 and the five questions in document 12. It is checked whether the sphere is a priority in C2. | AI Product Owner; reviewed by the AI Office | P07, P06 |
 | **Phase 2** | The primary sphere is confirmed with the main metric of the hypothesis and the ambition level is confirmed. At least one indicator of the primary sphere is chosen as the hypothesis metric or as a secondary metric. | Verified by the AI Office (Lite) or the AI Auditor (Enterprise) | P07, P08 |
 | **Phase 7** | The **actual ambition** is recorded with the evidence, and the sphere is reviewed if the main metric has changed. | AI Product Owner; verified by the AI Office or the AI Auditor | P07, P30 |
 
-An initiative in a sphere that is not a priority according to C2 **may** continue, but the sponsor must justify it at G0 and the AI Committee must be informed of it in C3.
+A use case in a sphere that is not a priority according to C2 **may** continue, but the sponsor must justify it at G0 and the AI Committee must be informed of it in C3.
 
 ---
 
@@ -590,7 +590,7 @@ The **first ninety days** concentrate C1 to C3 (document 01, section 5.3). The d
 
 | Code | Name | Use in this document |
 |---|---|---|
-| **T01** | Initiative register | Primary and secondary sphere fields, proposed, confirmed and actual ambition level, and contribution dimension for 08 and 09. |
+| **T01** | Use case register | Primary and secondary sphere fields, proposed, confirmed and actual ambition level, and contribution dimension for 08 and 09. |
 | **T02** | AI system inventory | Basis for the data, decision, compliance and governance indicators. |
 | **T05** | Ambition classifier | Five questions from document 12, integrated with sphere selection. |
 | **T12** | Value realisation tracking | Indicator amounts converted into money. |
@@ -609,9 +609,9 @@ The **first ninety days** concentrate C1 to C3 (document 01, section 5.3). The d
 |---|---|
 | **00 · What SEVEN-G is and how it helps companies** | Presentation of the impact map (section 4.1). |
 | **01 · Foundational methodology** | Component A, corporate cycle and *gate* criteria by ambition level. |
-| **03 · Tools and initiative register** | Controlled taxonomy of spheres and levels; tools T05 and T16. |
+| **03 · Tools and use case register** | Controlled taxonomy of spheres and levels; tools T05 and T16. |
 | **11 · Maturity model** | Spheres 08 and 09 provide evidence for D6 and D1. |
-| **12 · Transformation index** | Initiative ambition classification and company signals. |
+| **12 · Transformation index** | Use case ambition classification and company signals. |
 | **13 · AI thesis, ambition and risk appetite** | Target ambition by sphere and target grades for 08 and 09. |
 | **14 · Portfolio management** | Use of the heat map to prioritise and balance. |
 | **30 · Governance model** and **36 · AI third parties and suppliers** | Development of sphere 09. |

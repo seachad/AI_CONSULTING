@@ -1,6 +1,6 @@
 # Registro de asignación de roles
 
-**Designa a las personas que asumen cada rol de la iniciativa y demuestra que se respetan la separación de funciones y las incompatibilidades.**
+**Designa a las personas que asumen cada rol del caso de uso y demuestra que se respetan la separación de funciones y las incompatibilidades.**
 
 | | |
 |---|---|
@@ -23,7 +23,7 @@
 | **Quién la verifica** | Lite: oficina de IA. Enterprise: auditor de IA. Si la oficina de IA ha elaborado el registro, verifica el auditor de IA. |
 | **Quién decide** | Se aprueba con G0: patrocinador (Lite) · comité de IA (Enterprise). La designación del auditor de IA la hace la tercera línea, no el patrocinador. |
 | **Gate en que se revisa** | G0 · Autorización. En todos los *gates* se comprueba que el verificador y el decisor registrados son los de este documento. |
-| **Herramienta** | T01 · Registro de iniciativas (bloque *Responsables* de la ficha). |
+| **Herramienta** | T01 · Registro de casos de uso (bloque *Responsables* de la ficha). |
 | **Lite frente a Enterprise** | Lite puede omitir los campos marcados **(Enterprise)**. En Lite el auditor de IA interviene por muestreo, pero debe estar identificado quién lo haría. |
 
 Reglas de cumplimentación:
@@ -38,8 +38,8 @@ Reglas de cumplimentación:
 
 | Campo | Contenido | Guía |
 |---|---|---|
-| Código de la iniciativa | | IA-AAAA-NNN. |
-| Nombre de la iniciativa | | |
+| Código del caso de uso | | IA-AAAA-NNN. |
+| Nombre del caso de uso | | |
 | Intensidad aplicable | | Lite · Enterprise (P04). Si cambia, se revisa este registro. |
 | Nivel de ambición | | Optimizar · Aumentar · Transformar. En Transformar interviene el consejo en G2 y G7. |
 | Versión del documento | | |
@@ -48,7 +48,7 @@ Reglas de cumplimentación:
 
 ---
 
-## 3. Roles de la iniciativa
+## 3. Roles del caso de uso
 
 | Rol | Función | Persona | Cargo y unidad | Dedicación prevista | Fecha de aceptación | Sustituto **(Enterprise)** |
 |---|---|---|---|---|---|---|
@@ -106,7 +106,7 @@ Referencia: 01 §7.5. Indique la persona u órgano concreto que actuará en cada
 | R6 · Continuidad | Oficina de IA · Auditor de IA | Patrocinador · Comité de IA | |
 | G7 · Escalado o retirada | Oficina de IA · Auditor de IA | Patrocinador · Comité de IA | |
 
-En iniciativas de **Transformar**, además, el consejo o su comisión delegada aprueba en G2 y en G7 cuando se decide escalar.
+En casos de uso de **Transformar**, además, el consejo o su comisión delegada aprueba en G2 y en G7 cuando se decide escalar.
 
 **Firmantes de la puesta en producción (Enterprise)**
 
@@ -157,7 +157,7 @@ Se parte de 01 §8.4. Cualquier cambio respecto de la matriz de referencia debe 
 | Persona | Rol | ¿Conflicto de interés? | Descripción | Medida adoptada |
 |---|---|---|---|---|
 | | | Sí · No | | |
-| *(ejemplo ilustrativo)* Persona C | Responsable de riesgos | Sí | Participó en la selección del proveedor en otra iniciativa. | Se abstiene en la conformidad de P14; la emite su sustituto. |
+| *(ejemplo ilustrativo)* Persona C | Responsable de riesgos | Sí | Participó en la selección del proveedor en otro caso de uso. | Se abstiene en la conformidad de P14; la emite su sustituto. |
 
 ---
 
@@ -167,7 +167,7 @@ Se parte de 01 §8.4. Cualquier cambio respecto de la matriz de referencia debe 
 |---|---|---|---|---|---|
 | | | | | | |
 
-Cada cambio genera un evento en el registro de iniciativas (03 §3.3).
+Cada cambio genera un evento en el registro de casos de uso (03 §3.3).
 
 ---
 

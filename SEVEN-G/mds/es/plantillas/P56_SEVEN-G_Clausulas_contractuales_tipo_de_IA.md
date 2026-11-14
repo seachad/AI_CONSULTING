@@ -51,7 +51,7 @@ Reglas de cumplimentación:
 | Función crítica o importante | | Sí · No. Si la compañía está sujeta a DORA, ver sección 6. |
 | Instrumento | | Contrato nuevo · Anexo de IA a contrato existente · Adenda de IA embebida · Renovación. |
 | Referencia del contrato | | |
-| Iniciativas y sistemas vinculados | | IA-AAAA-NNN · SIA-AAAA-NNN. |
+| Casos de uso y sistemas vinculados | | IA-AAAA-NNN · SIA-AAAA-NNN. |
 | Versión del documento y fecha | | DD-MM-AAAA. |
 
 ---

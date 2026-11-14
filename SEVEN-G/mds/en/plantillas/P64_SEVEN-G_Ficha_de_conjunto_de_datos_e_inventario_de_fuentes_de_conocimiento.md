@@ -14,7 +14,7 @@
 
 > **Legal notice and disclaimer.** SEVEN-G is a reference methodological framework provided "as is" and for information purposes only. It does not constitute legal, regulatory, financial or professional advice, nor does it guarantee compliance with any law or standard. References to general regulation (such as the EU AI Act, the GDPR, DORA or NIS2), to technical standards and to regulation specific to each sector or jurisdiction may be incomplete, may not apply to a particular case or may become out of date as a result of regulatory changes, interpretations or supervisory positions after their consultation date. **Each organisation that uses SEVEN-G is solely responsible for identifying the regulation that applies to it, verifying that it is current and certifying its own regulatory compliance**, with the appropriate qualified advice. This methodology is a generic, free aid shared with the community so that nobody has to start from scratch; each person or organisation can and should adapt it to its own use. It must not be inferred that its legally sensitive parts have been reviewed by legal counsel: those reviews, for each company or sector, are the ultimate responsibility of the company, consultant or organisation that uses it. Although every effort is made to keep it up to date, some regulation may have changed without being reflected here. To the fullest extent permitted by law, the author accepts no responsibility whatsoever for the effects of its application in any organisation or for its full applicability. The methodology does not grant certification of any kind. The author accepts no liability for any use made of this content or for any decisions taken on the basis of it. The data, figures, companies and cases in the examples are fictitious or illustrative.
 
-> **Why it matters.** An AI system is only as reliable as the data it learns from and the sources it answers from. If a dataset has no owner, legal basis or measured quality, the initiative cannot be defended before an auditor or a regulator; if a knowledge source has no owner or review date, the assistant will end up citing out-of-date documents to customers or employees. And if critical knowledge depends on two people, their departure paralyses processes and systems. This template gives each asset an owner and a date, and makes it possible to measure DAT-02, CNC-01, CNC-06 and CNC-07.
+> **Why it matters.** An AI system is only as reliable as the data it learns from and the sources it answers from. If a dataset has no owner, legal basis or measured quality, the use case cannot be defended before an auditor or a regulator; if a knowledge source has no owner or review date, the assistant will end up citing out-of-date documents to customers or employees. And if critical knowledge depends on two people, their departure paralyses processes and systems. This template gives each asset an owner and a date, and makes it possible to measure DAT-02, CNC-01, CNC-06 and CNC-07.
 
 ## 1. Instructions for use
 
@@ -23,7 +23,7 @@
 | **When it is used** | Dataset records (sections 3 to 5): phase 3 assessment with real data and full record in phase 4; versioned when datasets are frozen in phase 5. Source inventory (sections 6 and 7): phase 4, before each source is connected, and at each validity review. Dependence map and capture plan (sections 8 and 9): at C1 and at C5. |
 | **Who completes it** | Records: AI Technical Owner with the data owner and the data custodian. Sources: content or knowledge owner. Map and plan: the AI Office coordinates with the areas that own each domain, with the people function (document 50). |
 | **Who verifies it** | AI Office in Lite; AI Auditor in Enterprise. The data protection officer reviews the personal data and legal basis fields; the AI Risk Owner assesses the RT-DAT risks. |
-| **Who decides or approves** | The data owner authorises use for the initiative at G3. The *gate* is decided by the body in 01 §7.5. The capture plan is approved by the AI Committee at C1. |
+| **Who decides or approves** | The data owner authorises use for the use case at G3. The *gate* is decided by the body in 01 §7.5. The capture plan is approved by the AI Committee at C1. |
 | **Stage, *gate* or moment** | G3 (data available, quality and legal basis), G4 (lineage and records), G5 (frozen datasets, cleaned sources), R6 (validity); C1 and C5 for the dependence map. |
 | **Tool** | The company's data catalogue, if there is one; system attributes in T02. There is no dedicated tool (51 §15). |
 | **Reference document** | Document 51 (§4.2, §4.3, §4.5, §8, §10.1–10.6); P16 for the lineage that uses these records. |
@@ -43,7 +43,7 @@ Completion rules:
 
 | Field | Content | Guidance |
 |---|---|---|
-| Initiative code | | IA-AAAA-NNN (T01). Not applicable to the dependence map. |
+| Use case code | | IA-AAAA-NNN (T01). Not applicable to the dependence map. |
 | AI systems | | SIA-AAAA-NNN (T02, P05). |
 | Regulatory classification | | P11. |
 | Intensity | | Lite · Enterprise. |
@@ -69,7 +69,7 @@ One record per dataset used to train, fine-tune, validate, test or feed an AI sy
 | Justification for each personal attribute used as a variable **(Enterprise)** | | Minimisation (51 §4.4). |
 | Use and confidentiality restrictions | | Contractual, licensing, sectoral or territorial; information classification. |
 | Retention | | Period and rule for deletion or anonymisation (51 §4.5). |
-| Systems that use it | | Initiatives and model versions; link to P16 and T02. |
+| Systems that use it | | Use cases and model versions; link to P16 and T02. |
 | Version and freeze date | | Mandatory if it was used for training. |
 | Synthetic data | | Yes · No. If Yes, source dataset, generation method and version; utility and privacy validation (DAT-11). Until shown otherwise, they are treated as personal data. |
 

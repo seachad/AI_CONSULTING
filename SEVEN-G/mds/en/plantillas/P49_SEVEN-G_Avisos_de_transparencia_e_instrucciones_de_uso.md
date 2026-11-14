@@ -45,7 +45,7 @@ Completion rules:
 
 | Field | Content | Guidance |
 |---|---|---|
-| Initiative code | | IA-AAAA-NNN. |
+| Use case code | | IA-AAAA-NNN. |
 | System code and name | | SIA-AAAA-NNN from P05 (T02). |
 | Regulatory classification | | From P11 §8. |
 | Applicable paragraphs of Article 50 | | None · 50.1 · 50.2 · 50.3 · 50.4 (P11 §7; 32 §3.4). |

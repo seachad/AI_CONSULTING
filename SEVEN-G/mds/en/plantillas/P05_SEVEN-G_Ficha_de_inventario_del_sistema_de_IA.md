@@ -28,7 +28,7 @@
 
 Completion rules:
 
-- **One record per AI system.** An initiative may have several systems and a system may serve several initiatives.
+- **One record per AI system.** A use case may have several systems and a system may serve several use cases.
 - The classification fields use the controlled taxonomy of 03 §3.3 **verbatim**.
 - "No data" is not zero: anything not yet known is marked "no data" with the phase in which it will be completed.
 
@@ -40,7 +40,7 @@ Completion rules:
 |---|---|---|
 | System code | | Persistent code assigned by the inventory in accordance with document 32. |
 | System name | | Functional name, not the commercial name of the product. |
-| Linked initiatives | | IA-AAAA-NNN codes. Empty only for corporate use or unauthorised use. |
+| Linked use cases | | IA-AAAA-NNN codes. Empty only for corporate use or unauthorised use. |
 | Record version | | |
 | Inventory registration date | | DD-MM-AAAA. |
 | Last update date | | DD-MM-AAAA. |
@@ -58,7 +58,7 @@ Completion rules:
 | User area | | |
 | Users | | Profiles and approximate number. |
 | System status | | Planned · In construction or integration · In pilot · In production · Suspended · Retired. Proposed list, to be confirmed in document 32. |
-| Initiative phase and status | | Phase 0–7 and status (03 §3.2): Registered · In phase · Awaiting gate · On hold · In production · Awaiting G7 · Stopped · Retired. |
+| Use case phase and status | | Phase 0–7 and status (03 §3.2): Registered · In phase · Awaiting gate · On hold · In production · Awaiting G7 · Stopped · Retired. |
 | Go-live date | | |
 
 ---
@@ -67,7 +67,7 @@ Completion rules:
 
 | Field | Content | Guidance |
 |---|---|---|
-| Type of AI use | | AI initiative · Third-party AI embedded in processes · Corporate use of general-purpose AI · Unauthorised use (01 §1.2). |
+| Type of AI use | | AI use case · Third-party AI embedded in processes · Corporate use of general-purpose AI · Unauthorised use (01 §1.2). |
 | Primary sphere | | 01 Customer · 02 Product and service · 03 People · 04 Operations · 05 Data · 06 Knowledge · 07 Decision · 08 Regulation, ethics and accountability · 09 AI governance |
 | Secondary sphere | | Same list or "none". |
 | Ambition level | | Optimise · Augment · Transform. |
@@ -190,7 +190,7 @@ The formal criteria are in document 21 (see criteria G0.xx and R6.xx) and the in
 
 | # | Check | Status |
 |---|---|---|
-| 1 | There is a record for each system in the initiative. | Met · Not met · Not applicable · Pending |
+| 1 | There is a record for each system in the use case. | Met · Not met · Not applicable · Pending |
 | 2 | The tags use the controlled taxonomy verbatim. | |
 | 3 | The intended purpose is specific and has limits. | |
 | 4 | The regulatory role is justified and consistent with P11. | |

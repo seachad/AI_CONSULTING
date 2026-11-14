@@ -16,7 +16,7 @@
 
 > **Aviso legal y exención de responsabilidad.** SEVEN-G es un marco metodológico de referencia que se ofrece «tal cual» y con fines exclusivamente informativos. No constituye asesoramiento jurídico, regulatorio, financiero ni profesional, ni garantiza el cumplimiento de ninguna norma. Las referencias a regulación general (como el Reglamento Europeo de IA, el RGPD, DORA o NIS2), a normas técnicas y a regulación específica de cada sector o jurisdicción pueden ser incompletas, no aplicar a un caso concreto o quedar desactualizadas por cambios normativos, interpretaciones o criterios de las autoridades posteriores a su fecha de consulta. **Cada organización que use SEVEN-G es la única responsable de identificar la normativa que le aplica, verificar su vigencia y certificar su propio cumplimiento regulatorio**, con el asesoramiento cualificado que corresponda. Esta metodología es una ayuda genérica y gratuita, compartida con la comunidad para que nadie tenga que empezar desde cero; cada persona u organización puede y debe adaptarla a su propio uso. No debe entenderse que sus partes jurídicamente sensibles hayan sido revisadas por una asesoría jurídica: esas revisiones, para cada empresa o sector, son responsabilidad última de la empresa, el consultor o la organización que la use. Aunque se procura mantenerla al día, alguna norma puede haber cambiado sin que se recoja aquí. En la máxima medida permitida por la ley, el autor no asume responsabilidad alguna por los efectos de su aplicación en ninguna organización ni por su aplicabilidad completa. La metodología no otorga certificación de ningún tipo. El autor no asume responsabilidad alguna por el uso que se haga de este contenido ni por las decisiones que se adopten con él. Los datos, cifras, compañías y casos de los ejemplos son ficticios o ilustrativos.
 
-<!-- esencial: condicional | Disparador: la iniciativa usa datos propios para entrenar, ajustar o alimentar un sistema, usa fuentes de conocimiento o trata datos personales. El linaje de datos y modelos (P16) es evidencia de toda iniciativa en la fase 4. -->
+<!-- esencial: condicional | Disparador: el caso de uso usa datos propios para entrenar, ajustar o alimentar un sistema, usa fuentes de conocimiento o trata datos personales. El linaje de datos y modelos (P16) es evidencia de todo caso de uso en la fase 4. -->
 
 ## 1. Objeto y alcance
 
@@ -48,7 +48,7 @@ Este documento no constituye asesoramiento jurídico.
 | **05 · Datos** | ¿Sabemos qué datos tenemos, quién responde de su calidad y si podemos usarlos legalmente para IA? |
 | **06 · Conocimiento** | ¿Cuánto conocimiento crítico depende de pocas personas y no está disponible para la organización? |
 
-Las dos esferas son **habilitadoras**: rara vez generan valor por sí solas, pero sin ellas las iniciativas de las esferas 01 a 04 fracasan o no se pueden defender ante un auditor o un regulador.
+Las dos esferas son **habilitadoras**: rara vez generan valor por sí solas, pero sin ellas los casos de uso de las esferas 01 a 04 fracasan o no se pueden defender ante un auditor o un regulador.
 
 ### 2.2 Niveles de ambición
 
@@ -91,9 +91,9 @@ Estas dimensiones alimentan **D3 Datos y conocimiento** en el modelo de madurez 
 
 | Rol | Responsabilidad en IA |
 |---|---|
-| **Propietario del dato** (negocio) | Autoriza el uso para una iniciativa concreta (en G3), define la calidad aceptable y responde de la finalidad. |
+| **Propietario del dato** (negocio) | Autoriza el uso para un caso de uso concreto (en G3), define la calidad aceptable y responde de la finalidad. |
 | **Custodio del dato** (tecnología) | Aplica controles de acceso, calidad, retención y copia; apoya al responsable técnico. |
-| **Responsable técnico de IA** | Responde de los datos y modelos de la iniciativa, de su preparación y de su linaje. |
+| **Responsable técnico de IA** | Responde de los datos y modelos del caso de uso, de su preparación y de su linaje. |
 | **Delegado de protección de datos** | Asesora y supervisa en tratamientos de datos personales; consultado en la evaluación de impacto (fases 3–4); protección de datos interviene en la firma multinivel de G5. |
 | **Responsable de contenido o de conocimiento** | Calidad, vigencia y permisos de las fuentes de la IA generativa (documento 50, sección 4.2). |
 | **Responsable de riesgos de IA** | Valora los riesgos RT-DAT y emite conformidad. |
@@ -113,7 +113,7 @@ Todo conjunto de datos que se usa para entrenar, ajustar, validar, probar o alim
 | Calidad | Dimensiones medidas, resultado y fecha (sección 4.3). |
 | Representatividad y sesgos conocidos | Poblaciones cubiertas e infrarrepresentadas; obligatorio en alto riesgo (sección 6). |
 | Retención | Plazo y regla de eliminación o anonimización (sección 4.5). |
-| Sistemas que lo usan | Iniciativas y versiones de modelo; enlace a P16 y T02. |
+| Sistemas que lo usan | Casos de uso y versiones de modelo; enlace a P16 y T02. |
 | Versión | Versión y fecha de congelación si se usó para entrenar. |
 
 ### 4.3 Calidad
@@ -157,7 +157,7 @@ Los **umbrales** se fijan en la fase 3 para cada conjunto crítico y se conviert
 
 | Fase | Qué se hace con los datos | Evidencia | Pregunta de parada |
 |---|---|---|---|
-| **0 · Contexto** | Declarar restricciones de datos conocidas: datos protegidos, transferencias internacionales, secretos, licencias. | P02 | ¿Hay una restricción que impide la iniciativa? |
+| **0 · Contexto** | Declarar restricciones de datos conocidas: datos protegidos, transferencias internacionales, secretos, licencias. | P02 | ¿Hay una restricción que impide el caso de uso? |
 | **1 · Descubrimiento** | Identificar qué datos o conocimiento serían necesarios y si existen. | P06 | ¿Depende la oportunidad de datos que no existen? |
 | **2 · Hipótesis** | Confirmar que la línea base se puede medir con datos reales. | P09 | ¿Se puede medir la línea base? |
 | **3 · Viabilidad** | **Evaluación de disponibilidad y calidad con datos reales**; base legal; derechos de terceros; representatividad. | P10, P11 | ¿Hay datos suficientes, de calidad suficiente y utilizables legalmente? |
@@ -168,7 +168,7 @@ Los **umbrales** se fijan en la fase 3 para cada conjunto crítico y se conviert
 
 ### 5.2 Fase 3: la evaluación que más paradas evita
 
-SEVEN-G parte de la premisa de que la **falta de disponibilidad o de calidad de los datos** es la principal causa de fracaso de las iniciativas de IA que no llegan a producción o no sostienen su valor. El marco no apoya esta premisa en cifras de mercado, sino en su lógica: un problema de datos descubierto en la fase 5 cuesta la construcción entera. Por eso la evaluación se sitúa en la fase 3, antes de la inversión en diseño y construcción, y el indicador DAT-07 permite contrastar la premisa con los datos propios de cada compañía.
+SEVEN-G parte de la premisa de que la **falta de disponibilidad o de calidad de los datos** es la principal causa de fracaso de los casos de uso de IA que no llegan a producción o no sostienen su valor. El marco no apoya esta premisa en cifras de mercado, sino en su lógica: un problema de datos descubierto en la fase 5 cuesta la construcción entera. Por eso la evaluación se sitúa en la fase 3, antes de la inversión en diseño y construcción, y el indicador DAT-07 permite contrastar la premisa con los datos propios de cada compañía.
 
 **Regla.** La evaluación de datos de la fase 3 **debe** hacerse **con datos reales** o con una muestra representativa extraída de los sistemas de origen, no con descripciones de lo que los datos deberían contener. Una evaluación basada solo en entrevistas o en diccionarios de datos no supera G3.
 
@@ -428,7 +428,7 @@ Los códigos son provisionales; su código definitivo `IND-` figura en la tabla 
 | **DAT-07** | Decisiones de G3 por datos | Decisiones de G3 con resultado Iterar, Pivotar o Parar y motivo *Datos insuficientes* ÷ decisiones de G3 | Semestral | T01, T03 | Lectura, no objetivo: muy baja puede indicar evaluación laxa; muy alta, mala selección de oportunidades |
 | **DAT-08** | Cumplimiento de retención | Conjuntos con plazo de retención definido y aplicado ÷ conjuntos usados por IA | Semestral | Catálogo | 100 % |
 | **DAT-09** | Incidentes con causa en datos | Incidentes de IA cuya causa raíz es de datos ÷ incidentes de IA cerrados | Trimestral | T08 | Tendencia decreciente |
-| **DAT-10** | Tiempo de acceso a datos | Mediana de días entre la solicitud de acceso a datos de una iniciativa y su disponibilidad autorizada | Trimestral | Solicitudes de acceso | Tendencia decreciente |
+| **DAT-10** | Tiempo de acceso a datos | Mediana de días entre la solicitud de acceso a datos de un caso de uso y su disponibilidad autorizada | Trimestral | Solicitudes de acceso | Tendencia decreciente |
 | **DAT-11** | Datos sintéticos validados | Conjuntos sintéticos en uso con validación de utilidad y privacidad registrada ÷ conjuntos sintéticos en uso | Semestral | Catálogo | 100 % |
 
 ### 12.2 Esfera 06 · Conocimiento

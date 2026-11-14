@@ -38,7 +38,7 @@ Reglas:
 
 | Campo | Contenido | Guía |
 |---|---|---|
-| Código de la iniciativa | | IA-AAAA-NNN (T01). |
+| Código del caso de uso | | IA-AAAA-NNN (T01). |
 | Sistema(s) de IA | | Identificador en el inventario (T02). |
 | Tecnología | | ML predictivo · IA generativa · Agente · Procesamiento de lenguaje y documentos · Visión · Optimización · IA de terceros embebida · Reglas (no es IA). |
 | Exposición | | Interna · Empleados · Clientes de forma indirecta · Clientes o personas externas de forma directa. |

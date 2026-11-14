@@ -32,7 +32,7 @@ Cada esfera se presenta con la misma estructura: qué es, por qué importa, qué
 
 **Los ejemplos son genéricos e ilustrativos.** No son recomendaciones ni referencias de mercado, y cualquier compañía o cifra que aparezca es ficticia.
 
-> **Por qué importa.** Si una iniciativa de IA no mueve ningún indicador de estas cuatro esferas, no genera valor directo. Puede ser necesaria (una plataforma de datos, un control regulatorio), pero debe justificarse como habilitadora, límite o gobierno, y no con un ahorro o un ingreso que no va a producir.
+> **Por qué importa.** Si un caso de uso de IA no mueve ningún indicador de estas cuatro esferas, no genera valor directo. Puede ser necesaria (una plataforma de datos, un control regulatorio), pero debe justificarse como habilitadora, límite o gobierno, y no con un ahorro o un ingreso que no va a producir.
 
 ---
 
@@ -144,7 +144,7 @@ El fabricante usa IA para **optimizar** las pruebas de calidad de sus equipos y 
 - Se anuncian funcionalidades con IA sin medir su uso real.
 - El coste de IA por unidad de servicio no se conoce o crece más rápido que los ingresos del producto.
 - No existe responsable de producto que responda del comportamiento de la IA ante el cliente.
-- Las iniciativas de nuevo producto se evalúan con el mismo plazo de retorno que las de eficiencia y se paran antes de obtener evidencia de mercado.
+- Los casos de uso de nuevo producto se evalúan con el mismo plazo de retorno que los de eficiencia y se paran antes de obtener evidencia de mercado.
 
 ### Cómo se mide
 
@@ -172,7 +172,7 @@ Las personas ocupan **tres papeles a la vez**. Olvidar cualquiera de ellos produ
 |---|---|---|---|
 | **Receptoras** | La IA les cambia herramientas, procesos y expectativas de productividad, sin que lo hayan elegido. | Gestión del cambio, formación y alfabetización en IA adecuada a cada rol. | La adopción se estanca y la inversión queda como coste. |
 | **Sujetos** | La IA puede reestructurar, reasignar o eliminar puestos. | Decisión explícita de la dirección y del consejo, diálogo con la representación de los trabajadores cuando proceda y trato responsable. | Rechazo, pérdida de confianza, conflicto y riesgo reputacional. |
-| **Promotoras** | Quien mejor conoce un proceso puede identificar usos de IA que nadie externo vería. | Un canal para proponer iniciativas que entren en el registro y compitan en la cartera en igualdad de condiciones. | Se pierde la fuente de ideas más cercana al trabajo real y crece el uso no autorizado de herramientas de IA. |
+| **Promotoras** | Quien mejor conoce un proceso puede identificar usos de IA que nadie externo vería. | Un canal para proponer casos de uso que entren en el registro y compitan en la cartera en igualdad de condiciones. | Se pierde la fuente de ideas más cercana al trabajo real y crece el uso no autorizado de herramientas de IA. |
 
 > **Por qué importa.** El papel de promotoras es la fuente de valor más infravalorada. Las personas que hacen el trabajo cada día saben dónde está el esfuerzo inútil y qué información les falta para decidir mejor. Si no hay un canal para que esas ideas lleguen a la cartera, se pierden o se convierten en usos no controlados.
 
@@ -184,7 +184,7 @@ Las personas ocupan **tres papeles a la vez**. Olvidar cualquiera de ellos produ
 | Copilotos y asistentes que cambian el contenido del puesto. | El conocimiento de la organización como activo: es la esfera 06. |
 | Formación, alfabetización en IA y reciclaje profesional. | |
 | Rediseño de roles y de estructuras organizativas. | |
-| Iniciativas de IA propuestas por los propios empleados. | |
+| Casos de uso de IA propuestas por los propios empleados. | |
 
 ### Ejemplos por nivel de ambición
 
@@ -205,21 +205,21 @@ La compañía despliega un asistente de redacción para toda la plantilla (**Opt
 - ¿La IA sustituye, aumenta o reorganiza el trabajo de las personas? Esa respuesta define la cultura, la marca como empleador y la retención de talento.
 - ¿Qué ocurre con la capacidad liberada: se convierte en menor coste, se reasigna o simplemente desaparece?
 - ¿Tienen las personas que usan o supervisan IA la formación adecuada a su rol?
-- ¿Qué proporción de las iniciativas nace de los propios empleados?
+- ¿Qué proporción de los casos de uso nace de los propios empleados?
 
 ### Señales de alerta
 
 - Se informa de horas liberadas sin indicar si se han convertido en menor coste o se han reasignado.
 - Se mide el número de licencias asignadas y no el uso efectivo.
 - Las decisiones sobre puestos se toman como consecuencia técnica de un proyecto, sin decisión explícita de la dirección.
-- No existe plan de adopción en las iniciativas de Aumentar o Transformar.
+- No existe plan de adopción en los casos de uso de Aumentar o Transformar.
 - La rotación de los colectivos afectados crece sin que nadie la analice.
 
 ### Cómo se mide
 
-Los indicadores de referencia son la adopción efectiva, la capacidad liberada materializada y reasignada, la alfabetización en IA por rol, los roles rediseñados y las iniciativas promovidas por empleados. Sus fórmulas están en [SEVEN-G 10](../../../SEVEN-G/html/es/10_SEVEN-G_Mapa_de_esferas_y_niveles_de_ambicion.html), sección 5.3, y su gestión en [SEVEN-G 50 · Personas y organización](../../../SEVEN-G/html/es/50_SEVEN-G_Personas_y_organizacion.html).
+Los indicadores de referencia son la adopción efectiva, la capacidad liberada materializada y reasignada, la alfabetización en IA por rol, los roles rediseñados y los casos de uso promovidos por empleados. Sus fórmulas están en [SEVEN-G 10](../../../SEVEN-G/html/es/10_SEVEN-G_Mapa_de_esferas_y_niveles_de_ambicion.html), sección 5.3, y su gestión en [SEVEN-G 50 · Personas y organización](../../../SEVEN-G/html/es/50_SEVEN-G_Personas_y_organizacion.html).
 
-**Relación con otras esferas.** Personas es casi siempre **esfera secundaria** de las iniciativas de Aumentar o Transformar que cambian roles, aunque su esfera principal sea Cliente u Operaciones. También se relaciona con Conocimiento (06), porque lo que saben las personas es parte del activo que la IA puede preservar o perder.
+**Relación con otras esferas.** Personas es casi siempre **esfera secundaria** de los casos de uso de Aumentar o Transformar que cambian roles, aunque su esfera principal sea Cliente u Operaciones. También se relaciona con Conocimiento (06), porque lo que saben las personas es parte del activo que la IA puede preservar o perder.
 
 ---
 
@@ -231,7 +231,7 @@ Los indicadores de referencia son la adopción efectiva, la capacidad liberada m
 
 La esfera Operaciones reúne la IA aplicada a **procesos internos, cadena de suministro, producción, mantenimiento, back office, control del fraude y riesgos operativos**.
 
-> **Por qué importa.** Operaciones es la esfera con el retorno más fácil de demostrar y la que concentra la mayor parte de las primeras iniciativas. Esa facilidad es a la vez su ventaja y su trampa: una cartera puede llenarse de automatizaciones de tareas aisladas que suman horas liberadas pero no cambian el coste real ni el diseño de los procesos.
+> **Por qué importa.** Operaciones es la esfera con el retorno más fácil de demostrar y la que concentra la mayor parte de los primeros casos de uso. Esa facilidad es a la vez su ventaja y su trampa: una cartera puede llenarse de automatizaciones de tareas aisladas que suman horas liberadas pero no cambian el coste real ni el diseño de los procesos.
 
 ### Qué cubre y qué no
 
@@ -256,7 +256,7 @@ La esfera Operaciones reúne la IA aplicada a **procesos internos, cadena de sum
 
 *Distribuidora ficticia de productos de consumo.*
 
-La distribuidora tiene once iniciativas en Operaciones, todas de **Optimizar**: lectura de albaranes, conciliación de facturas, previsión de demanda por tienda y otras. En la revisión anual descubre que la suma de "horas liberadas" declaradas equivale a decenas de puestos, pero el coste real del área no ha bajado. Las automatizaciones habían acelerado pasos aislados y el trabajo se había acumulado en las excepciones. La dirección decide **rediseñar de extremo a extremo** el proceso de aprovisionamiento: el sistema propone y ejecuta los pedidos rutinarios dentro de límites aprobados y los compradores se dedican a negociación y excepciones (**Aumentar**, con posible evolución a **Transformar** si el cambio alcanza a toda la función de compras). El consejo pregunta qué ocurre si el sistema falla en plena campaña y si existe un plan de reversión probado.
+La distribuidora tiene once casos de uso en Operaciones, todos de **Optimizar**: lectura de albaranes, conciliación de facturas, previsión de demanda por tienda y otras. En la revisión anual descubre que la suma de "horas liberadas" declaradas equivale a decenas de puestos, pero el coste real del área no ha bajado. Las automatizaciones habían acelerado pasos aislados y el trabajo se había acumulado en las excepciones. La dirección decide **rediseñar de extremo a extremo** el proceso de aprovisionamiento: el sistema propone y ejecuta los pedidos rutinarios dentro de límites aprobados y los compradores se dedican a negociación y excepciones (**Aumentar**, con posible evolución a **Transformar** si el cambio alcanza a toda la función de compras). El consejo pregunta qué ocurre si el sistema falla en plena campaña y si existe un plan de reversión probado.
 
 ### Preguntas para el consejo
 
@@ -286,9 +286,9 @@ Las esferas de valor se leen como un conjunto. Tres patrones aparecen con frecue
 
 | Patrón | Cómo se reconoce en el mapa | Qué suele significar | Pregunta para el consejo |
 |---|---|---|---|
-| **Eficiencia interna** | La mayoría de las iniciativas en 04 y en Optimizar; 01 y 02 casi vacías. | La IA se usa para reducir coste, no para competir. | ¿Es esa nuestra estrategia o es la opción más fácil de justificar? |
-| **Escaparate** | Iniciativas visibles en 01 y 02 sin uso medido; pocas en 03 y 04. | La IA se usa para comunicar, no para cambiar. | ¿Qué valor validado tienen las iniciativas que anunciamos? |
-| **Personas olvidadas** | Iniciativas de Aumentar o Transformar en 01, 02 o 04 sin 03 como esfera secundaria. | Se cambian roles sin plan de adopción ni decisión explícita. | ¿Quién ha decidido cómo cambia el trabajo de las personas afectadas? |
+| **Eficiencia interna** | La mayoría de los casos de uso en 04 y en Optimizar; 01 y 02 casi vacías. | La IA se usa para reducir coste, no para competir. | ¿Es esa nuestra estrategia o es la opción más fácil de justificar? |
+| **Escaparate** | Casos de uso visibles en 01 y 02 sin uso medido; pocos en 03 y 04. | La IA se usa para comunicar, no para cambiar. | ¿Qué valor validado tienen los casos de uso que anunciamos? |
+| **Personas olvidadas** | Casos de uso de Aumentar o Transformar en 01, 02 o 04 sin 03 como esfera secundaria. | Se cambian roles sin plan de adopción ni decisión explícita. | ¿Quién ha decidido cómo cambia el trabajo de las personas afectadas? |
 
 > **Por qué importa.** Ninguna esfera cuenta la historia completa por separado. Mirarlas juntas permite al consejo distinguir una estrategia deliberada de un conjunto de proyectos que se han ido acumulando.
 
@@ -299,7 +299,7 @@ Las esferas de valor se leen como un conjunto. Tres patrones aparecen con frecue
 | Documento | Relación |
 |---|---|
 | **documento 00 · Qué es SPHERES y para qué sirve** | Presentación del mapa completo. |
-| **documento 01 · Niveles de ambición** | Cómo se clasifica el nivel de cada iniciativa. |
+| **documento 01 · Niveles de ambición** | Cómo se clasifica el nivel de cada caso de uso. |
 | **documento 03 · Esferas habilitadoras** | Datos, Conocimiento y Decisión, que condicionan el valor de estas cuatro esferas. |
 | **documento 05 · Conversación con el consejo** | Cómo presentar estas esferas en una sesión de sesenta minutos. |
 | [SEVEN-G 10 · Mapa de esferas y niveles de ambición](../../../SEVEN-G/html/es/10_SEVEN-G_Mapa_de_esferas_y_niveles_de_ambicion.html) | Reglas de clasificación e indicadores con fórmula. |

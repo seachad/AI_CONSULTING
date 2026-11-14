@@ -51,7 +51,7 @@ Completion rules:
 | Data cut-off date | | D−20. Every figure carries it. |
 | T17 dashboard data fingerprint | | That of the data file used. If the dashboard is regenerated after submission, this is reported. |
 | Comparison snapshot | | Saved snapshot from the previous session. |
-| Perimeter | | Companies, units and initiatives included; changes of perimeter since the previous session. |
+| Perimeter | | Companies, units and use cases included; changes of perimeter since the previous session. |
 | Pack version | | |
 | Prepared by | | AI Office. |
 
@@ -79,7 +79,7 @@ Completion rules:
 |---|---|---|
 | **Main message** | | Three lines at most. It starts with "Yes", "Yes, with one condition: …", "Not yet, because … is missing" or "No, because …" and answers "is what was decided being delivered?". |
 | **Key figures** | | Efficiencies, return, recurring cost and annual net value; validated proportion; released capacity not realised, shown separately; investment executed against budget. Value summary in section 7. |
-| **Portfolio** | | Initiatives by phase and status; in production; stopped and retired in the quarter; stalled. |
+| **Portfolio** | | Use cases by phase and status; in production; stopped and retired in the quarter; stalled. |
 | **Risk** | | Number of Critical and High residual risks; S1 and S2 incidents; open major and critical nonconformities. Number only; detail in section 9. |
 | **Decisions requested** | | DEC code and one line per decision. If there are none, this is stated explicitly. |
 | **Recommendations** | | Open, overdue, closed in the quarter and discrepancies between declared and assessed. |
@@ -166,7 +166,7 @@ Model in 40 §11.2. Cut-off date and source for every figure; totals calculated 
 | Reassigned capacity (not added) | | | | |
 | Use cases with negative annual net value | … of … | | | Listed individually. |
 | Use cases with no return data | … of … | | | |
-| Annual net value excluding cross-cutting initiatives and enabling platforms | | | | 40 §7.2 and §11.1, rule 10. |
+| Annual net value excluding cross-unit use cases and enabling platforms | | | | 40 §7.2 and §11.1, rule 10. |
 
 | Field | Content | Guidance |
 |---|---|---|
@@ -196,18 +196,18 @@ The pack does not reproduce the dashboard; it indicates the view (60 §10.1) and
 
 ### 9.1 Risks
 
-| Initiative or system | Typical risk (RT-XXX-NN) | Inherent level | Residual level | Owner | Controls | Accepted by and until | Next review |
+| Use case or system | Typical risk (RT-XXX-NN) | Inherent level | Residual level | Owner | Controls | Accepted by and until | Next review |
 |---|---|---|---|---|---|---|---|
 | | | | | | | | |
 
 | Field | Content | Guidance |
 |---|---|---|
-| Concentration | | Risks affecting several initiatives: same supplier, same data, same type of agent. |
+| Concentration | | Risks affecting several use cases: same supplier, same data, same type of agent. |
 | Regulatory changes | | New or amended obligations with an effect on the portfolio, with the date consulted (document 34). |
 
 ### 9.2 Incidents and nonconformities
 
-| Code | Type | Severity or grade | System and initiative | Date | Containment and status | Notifications and time limit | Lessons and actions |
+| Code | Type | Severity or grade | System and use case | Date | Containment and status | Notifications and time limit | Lessons and actions |
 |---|---|---|---|---|---|---|---|
 | | INC · NC | S1–S4 · minor, major or critical | | | | | |
 
@@ -298,9 +298,9 @@ Sections 2, 5, 11 and 12 of this template are used and blocks 4 to 10 are replac
 |---|---|---|---|
 | Maturity | Level by dimension and overall level using the rule in document 11, against the previous year and with evidence for each change. | T15 | |
 | Transformation index | Eight signals and profile; signals with no data identified. | T14 | |
-| Delivery of the thesis | Target against actual ambition per sphere; Transform initiatives approved, in production, stopped and retired. | T01, T16 | |
+| Delivery of the thesis | Target against actual ambition per sphere; Transform use cases approved, in production, stopped and retired. | T01, T16 | |
 | Value for the year | Annual net value by ambition level, validated proportion, released capacity realised and not realised. | T12 | |
-| Governance agility | Idea–approval–production times by risk and ambition; stalled initiatives; conversion per *gate*. | T01 | |
+| Governance agility | Idea–approval–production times by risk and ambition; stalled use cases; conversion per *gate*. | T01 | |
 | Lessons learned | Stop and retirement reasons; closed recommendations and their effect. | T01, T18 | |
 | Proposed adjustments | Changes to the thesis, ambition, appetite, thresholds and time limits for the new cycle. | AI Committee with internal audit | |
 

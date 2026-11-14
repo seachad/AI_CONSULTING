@@ -32,7 +32,7 @@
 Completion rules:
 
 - **Cost is not reduced:** it is charged in full from day one; an unknown cost is "no data" and so is the net value (42 §2).
-- **No tag, no resource:** each resource, model access key and licence carries the tag of its initiative (42 §7). Tagging is verified at G5.
+- **No tag, no resource:** each resource, model access key and licence carries the tag of its use case (42 §7). Tagging is verified at G5.
 - **Allocation keys are not changed mid-year** except in the event of an error, and the change is recorded.
 - **The cascade reduces cost, not controls:** no degradation deactivates filters, human oversight, agent limits or records (52 §10.3, rule 6).
 - The thresholds in this template are indicative; the company sets them at C2 (document 13).
@@ -43,7 +43,7 @@ Completion rules:
 
 | Field | Content | Guidance |
 |---|---|---|
-| Initiative code | | IA-AAAA-NNN (T01). In sections 9 and 10, "portfolio" or the platform (`PLAT-` in the tag, 42 §7.1). |
+| Use case code | | IA-AAAA-NNN (T01). In sections 9 and 10, "portfolio" or the platform (`PLAT-` in the tag, 42 §7.1). |
 | AI systems | | SIA-AAAA-NNN (P05). |
 | Type of system | | Predictive ML · Generative AI · Agent · Embedded third-party AI. |
 | Intensity | | Lite · Enterprise. |
@@ -175,7 +175,7 @@ When a stop or a retirement is recorded in T01 and T13 (42 §10).
 | Approved budget | | |
 | Spent up to the decision (sunk cost) | | Plays no part in the decision; recorded for lessons. |
 | Non-cancellable commitments | | Reported separately; their reuse is sought. |
-| Cost of stopping (closure, penalties, retention or deletion) | | Cost of the initiative. |
+| Cost of stopping (closure, penalties, retention or deletion) | | Cost of the use case. |
 | **Avoided investment = approved − spent − commitments** | | IND-COS-10. Does not add to value. |
 | Estimated avoided recurring cost | | Estimated. Does not add to value. |
 
@@ -211,7 +211,7 @@ Formal criteria in document 21 (G3.04, G4.08, G4.16, G5.16, R6.03 and G7.05); ru
 | Reconciles | Management control | | | |
 | Verifies | AI Office (Lite) · AI Auditor (Enterprise) | | | |
 
-Segregation of duties: whoever operates the system does not approve their own budget supplement; management control approves the keys and reconciles, but does not take part in building the initiatives.
+Segregation of duties: whoever operates the system does not approve their own budget supplement; management control approves the keys and reconciles, but does not take part in building the use cases.
 
 ---
 

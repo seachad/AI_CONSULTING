@@ -43,7 +43,7 @@ It does not replace the minutes, which are the corporate record, or the lifecycl
 | 3 | **No evidence, no compliance** | A recommendation can only be assessed as conformant if there is linked, dated and versioned evidence. |
 | 4 | **Nothing is closed silently** | Closure and discarding are accepted by the body that issued the recommendation, with a record. |
 | 5 | **Every change is an event** | Changes of status, date, recipient or text are recorded with date, author and reason. |
-| 6 | **Linked to measurement** | Each recommendation indicates the block of the board dashboard or the item of data in the initiative register where its effect is checked. |
+| 6 | **Linked to measurement** | Each recommendation indicates the block of the board dashboard or the item of data in the use case register where its effect is checked. |
 | 7 | **A single data model** | The register is the *Recommendation* entity of the common model (03 §4); it is fed by and feeds the other tools. |
 
 ---
@@ -67,7 +67,7 @@ The board dashboard data schema (`motor/ESQUEMA.md` in the demonstrations reposi
 4. **A recommendation that is split** keeps its identifier in the main part; the new parts receive new identifiers and are linked to the original.
 5. **A substantially reformulated recommendation** is closed as *Superseded* and a new linked one is recorded. Minor wording changes are recorded as an event without changing the code.
 6. **The correspondence with previous identifiers** (for example, `R-NN` from a previous tool) is kept in the *previous identifier* field.
-7. **Initiatives** keep their own `IA-AAAA-NNN` code (document 03); incidents and nonconformities, `INC-AAAA-NNN` and `NC-AAAA-NNN`.
+7. **Use cases** keep their own `IA-AAAA-NNN` code (document 03); incidents and nonconformities, `INC-AAAA-NNN` and `NC-AAAA-NNN`.
 
 ---
 
@@ -98,7 +98,7 @@ The board dashboard data schema (`motor/ESQUEMA.md` in the demonstrations reposi
 | | Assessment comment | Reason for the assessment, especially if it is nonconformant. | If nonconformant | Independent assessor |
 | **Closure** | Situation | Open · Closed · Discarded · Superseded. | Yes | System, with the body's acceptance |
 | | Closure date and body | Who accepted the closure or discarding and when. | On closure | Board secretariat |
-| **Links** | Initiatives | IA-AAAA-NNN codes affected. | If any | AI Office |
+| **Links** | Use cases | IA-AAAA-NNN codes affected. | If any | AI Office |
 | | Systems, incidents and nonconformities | INC-AAAA-NNN, NC-AAAA-NNN, inventory systems. | If any | AI Office |
 | | Decisions | Related DEC-AAAA-NNN. | If any | Board secretariat |
 | | Dashboard block | Block of the board dashboard where the effect is measured (section 11). | Recommended | AI Office |
@@ -221,7 +221,7 @@ A recommendation is closed when three conditions are met at the same time: decla
 
 ### 9.2 Discarding
 
-Discarding is legitimate when the recommendation has lost its purpose (change of strategy, retired initiative, alternative solution) or when its cost clearly exceeds its benefit. It requires a reason, an alternative if one exists and the express acceptance of the issuing body. A discarded recommendation does not disappear from the register or from the indicators.
+Discarding is legitimate when the recommendation has lost its purpose (change of strategy, retired use case, alternative solution) or when its cost clearly exceeds its benefit. It requires a reason, an alternative if one exists and the express acceptance of the issuing body. A discarded recommendation does not disappear from the register or from the indicators.
 
 ### 9.3 Rescheduling
 
@@ -246,7 +246,7 @@ When the issuing body substantially reformulates a recommendation, the original 
 | Decision | Recording |
 |---|---|
 | Approval of the AI thesis, ambition by sphere, risk appetite, corporate policy and framework budget (C2). | Mandatory |
-| Approval of Transform initiatives at G2 and of their scaling at G7. | Mandatory |
+| Approval of Transform use cases at G2 and of their scaling at G7. | Mandatory |
 | Exceptional acceptance of Critical residual risks. | Mandatory |
 | Decisions of the annual review (C5): adjustments to the thesis, thresholds and time limits. | Mandatory |
 | Notings of stops, retirements, S1 incidents and critical nonconformities. | Mandatory |
@@ -280,14 +280,14 @@ When the issuing body substantially reformulates a recommendation, the original 
 
 ---
 
-## 11. Links with initiatives and with the dashboard
+## 11. Links with use cases and with the dashboard
 
-### 11.1 With the initiative register
+### 11.1 With the use case register
 
-- Every recommendation or decision affecting specific initiatives links their IA-AAAA-NNN codes.
-- The record of each initiative in the register (T01) shows the recommendations and decisions affecting it, with their status and assessment.
-- An initiative **cannot pass a *gate*** if it is linked to a board decision with expired conditions that affect that *gate*.
-- When an initiative is stopped or retired, the recommendations that depend solely on it are proposed for discarding or closure.
+- Every recommendation or decision affecting specific use cases links their IA-AAAA-NNN codes.
+- The record of each use case in the register (T01) shows the recommendations and decisions affecting it, with their status and assessment.
+- A use case **cannot pass a *gate*** if it is linked to a board decision with expired conditions that affect that *gate*.
+- When a use case is stopped or retired, the recommendations that depend solely on it are proposed for discarding or closure.
 
 ### 11.2 With the board dashboard
 
@@ -349,21 +349,21 @@ The engine files published in that repository are **a copy of their private sour
 | **Data source** | Demonstration data generated with the dashboard | *Recommendation* entity of the common model, integrated with T01 | Integration in tool wave 1 (03 §6). |
 | **Terminology** | Designed for tracking the recommendations of an advisory body | Generic for any issuing body | Configurable texts. |
 
-Priority: tool wave 1 (03 §6), together with connecting the T17 dashboard to the initiative register. Until the adaptation is available, the register can be kept with template P69, prepared as a spreadsheet with the fields in sections 4 and 10.
+Priority: tool wave 1 (03 §6), together with connecting the T17 dashboard to the use case register. Until the adaptation is available, the register can be kept with template P69, prepared as a spreadsheet with the fields in sections 4 and 10.
 
 ### 12.3 Status of the adaptation (version 0.1)
 
-From schema 0.5 of the initiative register, **T18 is a T01 module** ("Board (T18)" view), with a single data model (03 §4):
+From schema 0.5 of the use case register, **T18 is a T01 module** ("Board (T18)" view), with a single data model (03 §4):
 
 | Aspect | Available | Pending |
 |---|---|---|
 | **Identifiers** | `REC-YYYY-NNN` and `DEC-YYYY-NNN`, sequential by year and never reset. | Previous identifier of migrated records. |
-| **Decisions** | Body, minutes reference, type, subject, text, outcome, linked initiatives and recommendations, investment cap and stage, stage decision, validity, owner and spheres with Transform as target (section 10.2). | Conditions with owner and time limit, and their follow-up. |
-| **Recommendations** | Text, addressee, status (open, in progress, closed, discarded), evidence and linked initiatives. | Compliance criterion, original and current dates, rescheduling, independent assessment, history and the alerts in section 5. |
+| **Decisions** | Body, minutes reference, type, subject, text, outcome, linked use cases and recommendations, investment cap and stage, stage decision, validity, owner and spheres with Transform as target (section 10.2). | Conditions with owner and time limit, and their follow-up. |
+| **Recommendations** | Text, addressee, status (open, in progress, closed, discarded), evidence and linked use cases. | Compliance criterion, original and current dates, rescheduling, independent assessment, history and the alerts in section 5. |
 | **Transformation index** | Decisions feed signal 8 and condition IT-D1 of document 12 in the T14 calculator. | — |
 | **Board dashboard** | The T17 connector generates the register page from the recommendations in T01. | Decisions in the dashboard. |
 
-**Why it matters.** Board decisions no longer live only in the minutes: they are linked to initiatives and recommendations, and the transformation index can check with data whether the board decides on, funds and oversees Transform bets. What is pending is still kept with template P69.
+**Why it matters.** Board decisions no longer live only in the minutes: they are linked to use cases and recommendations, and the transformation index can check with data whether the board decides on, funds and oversees Transform bets. What is pending is still kept with template P69.
 
 ---
 
@@ -380,7 +380,7 @@ From schema 0.5 of the initiative register, **T18 is a T01 module** ("Board (T18
 | Recipient or owner | Management control department | People department | Sales department |
 | Original · current date | 30-06 · 30-09 (1 rescheduling) | 30-11 · 30-11 | Condition: 60 days from the decision |
 | Declared status | Met | In progress | Condition in progress |
-| Evidence | Management control validation report (version 2); value table per use case in the initiative register. | Draft position (version 1). | — |
+| Evidence | Management control validation report (version 2); value table per use case in the register. | Draft position (version 1). | — |
 | Assessment | Conformant with observations: two generative AI use cases keep their value as declared. | Not assessed | — |
 | Situation | Closure proposed at the December session; observation recorded as REC-2026-017. | Open | In force |
 | Links | Dashboard block: Value versus potential | Dashboard block: Trend and adoption | IA-2026-018 · REC-2026-006 |
@@ -391,7 +391,7 @@ From schema 0.5 of the initiative register, **T18 is a T01 module** ("Board (T18
 
 | Code | Name | Use in this document |
 |---|---|---|
-| T01 | Initiative register | IA-AAAA-NNN links and events. |
+| T01 | Use case register | IA-AAAA-NNN links and events. |
 | T03 | Gate manager | Link between board decisions and *gate* decisions. |
 | T08 | Nonconformity and incident register | INC and NC links. |
 | T17 | Board AI dashboard | Blocks where the effect of each recommendation is checked. |
@@ -409,7 +409,7 @@ From schema 0.5 of the initiative register, **T18 is a T01 module** ("Board (T18
 | **00 · What SEVEN-G is and how it helps companies** | Recommendations register as a measurement component and tool. |
 | **01 · Foundational methodology** | Decision rules, iteration limit, bodies. |
 | **02 · Glossary and conventions** | Incorporation of the DEC-AAAA-NNN code and of the statuses. |
-| **03 · Tools and initiative register** | Data model (*Recommendation* entity), T17, T18 and build order. |
+| **03 · Tools and use case register** | Data model (*Recommendation* entity), T17, T18 and build order. |
 | **38 · AI audit framework** | Independent assessment and conformity scale. |
 | **60 · Board pack** | Extract from the register in each pack and decision format. |
 | **61 · Board conversation guide** | Recording after each session. |
@@ -420,5 +420,5 @@ From schema 0.5 of the initiative register, **T18 is a T01 module** ("Board (T18
 
 | Version | Date | Changes |
 |---|---|---|
-| 0.1 | 16-09-2026 | First version. Defines persistent identifiers REC-AAAA-NNN and, as a proposal, DEC-AAAA-NNN; fields, declared statuses, independent assessment, evidence, lifecycle, closure, board decisions, links with initiatives and the dashboard, indicators and pending adaptation of tool T18. |
+| 0.1 | 16-09-2026 | First version. Defines persistent identifiers REC-AAAA-NNN and, as a proposal, DEC-AAAA-NNN; fields, declared statuses, independent assessment, evidence, lifecycle, closure, board decisions, links with use cases and the dashboard, indicators and pending adaptation of tool T18. |
 | 0.2 | 28-09-2026 | The decision approving the C2 thesis records the target ambition of each sphere (§10.2), which the board dashboard uses in the impact map (60 §10.5). |

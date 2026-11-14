@@ -51,7 +51,7 @@ Reglas de cumplimentación:
 | Fecha de corte de datos | | D−20. Todas las cifras la llevan. |
 | Huella de datos del panel T17 | | La del fichero de datos usado. Si el panel se regenera tras el envío, se informa. |
 | Foto de comparación | | Foto guardada de la sesión anterior. |
-| Perímetro | | Sociedades, unidades e iniciativas incluidas; cambios de perímetro respecto a la sesión anterior. |
+| Perímetro | | Sociedades, unidades e casos de uso incluidos; cambios de perímetro respecto a la sesión anterior. |
 | Versión del paquete | | |
 | Preparado por | | Oficina de IA. |
 
@@ -79,7 +79,7 @@ Reglas de cumplimentación:
 |---|---|---|
 | **Mensaje principal** | | Tres líneas como máximo. Empieza con «Sí», «Sí, con una condición: …», «Todavía no, porque falta …» o «No, porque …» y responde a «¿se cumple lo decidido?». |
 | **Cifras clave** | | Eficiencias, retorno, coste recurrente y neto anual; proporción validada; capacidad liberada no materializada aparte; inversión ejecutada frente a presupuesto. Resumen de valor en la sección 7. |
-| **Cartera** | | Iniciativas por fase y estado; en producción; paradas y retiradas del trimestre; estancadas. |
+| **Cartera** | | Casos de uso por fase y estado; en producción; parados y retirados del trimestre; estancados. |
 | **Riesgo** | | Número de riesgos residuales Crítico y Alto; incidentes S1 y S2; no conformidades mayores y críticas abiertas. Solo número; el detalle en la sección 9. |
 | **Decisiones solicitadas** | | Código DEC y una línea por decisión. Si no hay, se dice expresamente. |
 | **Recomendaciones** | | Abiertas, vencidas, cerradas en el trimestre y discrepancias entre lo declarado y lo valorado. |
@@ -166,7 +166,7 @@ Modelo de 40 §11.2. Fecha de corte y fuente en cada cifra; totales calculados a
 | Capacidad reasignada (no suma) | | | | |
 | Casos con neto anual negativo | … de … | | | Se listan individualmente. |
 | Casos sin dato de retorno | … de … | | | |
-| Neto anual sin iniciativas transversales ni plataformas habilitadoras | | | | 40 §7.2 y §11.1, regla 10. |
+| Neto anual sin casos de uso transversales ni plataformas habilitadoras | | | | 40 §7.2 y §11.1, regla 10. |
 
 | Campo | Contenido | Guía |
 |---|---|---|
@@ -196,18 +196,18 @@ El paquete no reproduce el panel; indica la vista (60 §10.1) y añade una lectu
 
 ### 9.1 Riesgos
 
-| Iniciativa o sistema | Riesgo tipo (RT-XXX-NN) | Nivel inherente | Nivel residual | Responsable | Controles | Aceptado por y hasta | Próxima revisión |
+| Caso de uso o sistema | Riesgo tipo (RT-XXX-NN) | Nivel inherente | Nivel residual | Responsable | Controles | Aceptado por y hasta | Próxima revisión |
 |---|---|---|---|---|---|---|---|
 | | | | | | | | |
 
 | Campo | Contenido | Guía |
 |---|---|---|
-| Concentración | | Riesgos que afectan a varias iniciativas: mismo proveedor, mismos datos, mismo tipo de agente. |
+| Concentración | | Riesgos que afectan a varios casos de uso: mismo proveedor, mismos datos, mismo tipo de agente. |
 | Cambios regulatorios | | Obligaciones nuevas o modificadas con efecto en la cartera, con fecha de consulta (documento 34). |
 
 ### 9.2 Incidentes y no conformidades
 
-| Código | Tipo | Severidad o grado | Sistema e iniciativa | Fecha | Contención y estado | Notificaciones y plazo | Lecciones y acciones |
+| Código | Tipo | Severidad o grado | Sistema e caso de uso | Fecha | Contención y estado | Notificaciones y plazo | Lecciones y acciones |
 |---|---|---|---|---|---|---|---|
 | | INC · NC | S1–S4 · menor, mayor o crítica | | | | | |
 
@@ -298,9 +298,9 @@ Se usan las secciones 2, 5, 11 y 12 de esta plantilla y se sustituyen los bloque
 |---|---|---|---|
 | Madurez | Nivel por dimensión y global con la regla del documento 11, frente al año anterior y con evidencia de cada cambio. | T15 | |
 | Índice de transformación | Ocho señales y perfil; señales sin dato identificadas. | T14 | |
-| Cumplimiento de la tesis | Ambición objetivo frente a real por esfera; Transformar aprobadas, en producción, paradas y retiradas. | T01, T16 | |
+| Cumplimiento de la tesis | Ambición objetivo frente a real por esfera; casos de uso de Transformar aprobados, en producción, parados y retirados. | T01, T16 | |
 | Valor del ejercicio | Neto anual por nivel de ambición, proporción validada, capacidad liberada materializada y no materializada. | T12 | |
-| Agilidad del gobierno | Tiempos idea–aprobación–producción por riesgo y ambición; estancadas; conversión por *gate*. | T01 | |
+| Agilidad del gobierno | Tiempos idea–aprobación–producción por riesgo y ambición; casos de uso estancados; conversión por *gate*. | T01 | |
 | Lecciones aprendidas | Motivos de parada y retirada; recomendaciones cerradas y su efecto. | T01, T18 | |
 | Propuesta de ajustes | Cambios de tesis, ambición, apetito, umbrales y plazos para el nuevo ciclo. | Comité de IA con auditoría interna | |
 

@@ -67,6 +67,11 @@ $ErrorActionPreference = 'Stop'
 $repo     = Split-Path -Parent (Split-Path -Parent $PSScriptRoot)
 $template = Get-Content (Join-Path $PSScriptRoot 'plantilla.html') -Raw -Encoding utf8
 $css      = Get-Content (Join-Path $PSScriptRoot 'estilo.css') -Raw -Encoding utf8
+# Anclas antiguas (D181): cuando un título cambia de texto, su ancla cambia. anclas_alias.json guarda, por ancla nueva, las antiguas;
+# el título lleva además un <span id="antigua"> vacío para que los enlaces externos a la sección sigan llegando a ella (D53).
+$anclasAlias = @{}
+$fAlias = Join-Path $PSScriptRoot 'anclas_alias.json'
+if (Test-Path $fAlias) { (Get-Content $fAlias -Raw -Encoding utf8 | ConvertFrom-Json).PSObject.Properties | ForEach-Object { $anclasAlias[$_.Name] = @($_.Value) } }
 $todos    = @('es', 'en')
 $herrRaiz = Join-Path $repo 'SEVEN-G\herramientas'
 
@@ -83,8 +88,8 @@ $configuracion = @{
     en = @{ T_TT_INICIO = 'Go to the SEVEN-G home: what it is and what it is for'; T_METODOLOGIA = 'SEVEN-G methodology'
             Indice = 'SEVEN-G Library'; IndiceSub = 'Documents, templates and tools of the framework for value, governance and transformation with AI' }
     bloques = @{
-      es = [ordered]@{ A = 'A · Fundamentos'; B = 'B · Estrategia y cartera'; C = 'C · Ciclo de vida de la iniciativa'; D = 'D · Gobierno, riesgo y cumplimiento'; E = 'E · Medición y valor'; F = 'F · Personas, datos y operación'; G = 'G · Consejo'; H = 'H · Plantillas'; I = 'I · Herramientas'; J = 'J · Adopción del marco'; K = 'K · Curso' }
-      en = [ordered]@{ A = 'A · Foundations'; B = 'B · Strategy and portfolio'; C = 'C · Initiative lifecycle'; D = 'D · Governance, risk and compliance'; E = 'E · Measurement and value'; F = 'F · People, data and operations'; G = 'G · Board'; H = 'H · Templates'; I = 'I · Tools'; J = 'J · Framework adoption'; K = 'K · Course' }
+      es = [ordered]@{ A = 'A · Fundamentos'; B = 'B · Estrategia y cartera'; C = 'C · Ciclo de vida del caso de uso'; D = 'D · Gobierno, riesgo y cumplimiento'; E = 'E · Medición y valor'; F = 'F · Personas, datos y operación'; G = 'G · Consejo'; H = 'H · Plantillas'; I = 'I · Herramientas'; J = 'J · Adopción del marco'; K = 'K · Curso' }
+      en = [ordered]@{ A = 'A · Foundations'; B = 'B · Strategy and portfolio'; C = 'C · Use case lifecycle'; D = 'D · Governance, risk and compliance'; E = 'E · Measurement and value'; F = 'F · People, data and operations'; G = 'G · Board'; H = 'H · Templates'; I = 'I · Tools'; J = 'J · Framework adoption'; K = 'K · Course' }
     }
     Bloque = {
       param([string]$rel)
@@ -766,11 +771,15 @@ function NombrePrimero([string]$texto) {
     # ---- Secciones numeradas, identificadores e índice ----
     $usados = @{}
     function IdUnico([string]$base) { $id = $base; $n = 2; while ($usados.ContainsKey($id)) { $id = "$base-$n"; $n++ }; $usados[$id] = 1; $id }
+    function AliasAncla([string]$id) {
+      if (-not $anclasAlias.ContainsKey($id)) { return '' }
+      -join ($anclasAlias[$id] | Where-Object { -not $usados.ContainsKey($_) } | ForEach-Object { $usados[$_] = 1; "<span id=""$_"" class=""ancla-antigua""></span>" })
+    }
     $indice = [Collections.Generic.List[string]]::new()
     $body = [regex]::Replace($body, '(?s)<h([23])(?:\s+id="[^"]*")?>(.*?)</h\1>', {
       param($h)
       $nivel = $h.Groups[1].Value; $texto = $h.Groups[2].Value.Trim()
-      if ($nivel -eq '3') { return "<h3 id=""$(IdUnico (Slug $texto))"">$(NombrePrimero $texto)</h3>" }
+      if ($nivel -eq '3') { $id3 = IdUnico (Slug $texto); return "<h3 id=""$id3"">$(AliasAncla $id3)$(NombrePrimero $texto)</h3>" }
       $num = ''
       $nm = [regex]::Match($texto, '^(\d+)\.\s*(.*)$', 'Singleline')
       if ($nm.Success) { $num = '{0:D2}' -f [int]$nm.Groups[1].Value; $texto = $nm.Groups[2].Value }
@@ -778,7 +787,7 @@ function NombrePrimero([string]$texto) {
       $textoVisible = NombrePrimero $texto
       $indice.Add("<li><a href=""#$id""><span>$num</span>$(Limpiar $textoVisible)</a></li>")
       $ante = if ($num) { "<span class=""antetitulo"">$num</span>" } else { '' }
-      "<h2 id=""$id"">$ante$textoVisible</h2>"
+      "<h2 id=""$id"">$(AliasAncla $id)$ante$textoVisible</h2>"
     })
     $indiceHtml = if ($indice.Count -ge 4) { "<nav class=""indice""><div class=""indice-in""><h2>$($t.EnEsteDocumento)</h2><ol>$($indice -join '')</ol></div></nav>" } else { '' }
 

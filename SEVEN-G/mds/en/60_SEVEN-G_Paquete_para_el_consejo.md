@@ -16,7 +16,7 @@
 
 > **Legal notice and disclaimer.** SEVEN-G is a reference methodological framework provided "as is" and for information purposes only. It does not constitute legal, regulatory, financial or professional advice, nor does it guarantee compliance with any law or standard. References to general regulation (such as the EU AI Act, the GDPR, DORA or NIS2), to technical standards and to regulation specific to each sector or jurisdiction may be incomplete, may not apply to a particular case or may become out of date as a result of regulatory changes, interpretations or supervisory positions after their consultation date. **Each organisation that uses SEVEN-G is solely responsible for identifying the regulation that applies to it, verifying that it is current and certifying its own regulatory compliance**, with the appropriate qualified advice. This methodology is a generic, free aid shared with the community so that nobody has to start from scratch; each person or organisation can and should adapt it to its own use. It must not be inferred that its legally sensitive parts have been reviewed by legal counsel: those reviews, for each company or sector, are the ultimate responsibility of the company, consultant or organisation that uses it. Although every effort is made to keep it up to date, some regulation may have changed without being reflected here. To the fullest extent permitted by law, the author accepts no responsibility whatsoever for the effects of its application in any organisation or for its full applicability. The methodology does not grant certification of any kind. The author accepts no liability for any use made of this content or for any decisions taken on the basis of it. The data, figures, companies and cases in the examples are fictitious or illustrative.
 
-<!-- esencial: siempre | The board receives AI information at least every quarter, with figures that comply with the measurement rules and decisions in a clear format. In Lite scope the pack is aggregated; in Enterprise scope it carries detail per Enterprise initiative. -->
+<!-- esencial: siempre | The board receives AI information at least every quarter, with figures that comply with the measurement rules and decisions in a clear format. In Lite scope the pack is aggregated; in Enterprise scope it carries detail per Enterprise use case. -->
 
 ## 1. Purpose and scope
 
@@ -39,7 +39,7 @@ It does not replace corporate documentation (agenda, minutes, committee reports)
 |---|---|---|
 | 1 | **Decision before information** | The pack starts with what the board has to decide. Anything that does not lead to a decision or to specific oversight goes to the annexes. |
 | 2 | **Business, not technology** | The discussion is about value, risk, accountability and competitive advantage. Technical terms are translated (document 61, section 3). |
-| 3 | **Evidence, not declaration** | Every figure has a formula and a validation status; every relevant statement links to its evidence in the initiative register (T01). |
+| 3 | **Evidence, not declaration** | Every figure has a formula and a validation status; every relevant statement links to its evidence in the use case register (T01). |
 | 4 | **A single source of data** | The pack, the board dashboard (T17) and the recommendations register (T18) come from the same data model and the same cut-off date. Figures are not reworked by hand. |
 | 5 | **Comparable over time** | Same perimeter, same definitions and comparison with the previous session. Changes of criteria are declared. |
 | 6 | **Brief** | One-page summary; at most three use cases in detail per session; the rest in the dashboard. |
@@ -57,7 +57,7 @@ It answers one question: **is what was decided being delivered, and what does th
 | Block | Minimum content | Source |
 |---|---|---|
 | **One-page summary** | Main message, key figures with the validated proportion, decisions requested, main risks, changes since the previous session. | T01, T12, T17 |
-| **Decisions requested** | Decision sheets (section 5), in particular Transform initiatives at G2 and Transform scaling at G7. | T03 |
+| **Decisions requested** | Decision sheets (section 5), in particular Transform use cases at G2 and Transform scaling at G7. | T03 |
 | **Dashboard** | Portfolio and value; risk and compliance; agility; adoption. View indicated in section 10. | T17 |
 | **Risks** | High and Critical residual risks in the portfolio, risk concentration, risks accepted outside threshold. | T06 |
 | **Incidents and nonconformities** | S1 and S2 incidents in the quarter; open major and critical nonconformities; status of their containment and corrective action. | T08 |
@@ -87,9 +87,9 @@ It answers: **have we made progress, and are we transforming or merely becoming 
 |---|---|
 | **Maturity** | Level by dimension and overall level using the rule in document 11, compared with the previous year and with the evidence justifying each change. |
 | **Transformation index** | Score for the eight signals and resulting profile; signals with no data identified as such. |
-| **Delivery of the thesis** | Target ambition against actual ambition per sphere; Transform initiatives approved, in production, stopped and retired. |
+| **Delivery of the thesis** | Target ambition against actual ambition per sphere; Transform use cases approved, in production, stopped and retired. |
 | **Value for the year** | Annual net value by ambition level, validated proportion, released capacity realised and not realised. |
-| **Governance agility** | Time from idea to approval and to production by risk level and ambition level; stalled initiatives; conversion per *gate*. |
+| **Governance agility** | Time from idea to approval and to production by risk level and ambition level; stalled use cases; conversion per *gate*. |
 | **Lessons learned** | Stop and retirement reasons; closed recommendations and their effect. |
 | **Proposed adjustments** | Changes to the thesis, ambition, risk appetite, thresholds and reference time limits for the new cycle. |
 
@@ -101,7 +101,7 @@ The annual review should involve internal audit (01 §5.1).
 |---|---|---|---|
 | **S1** incident (includes possible serious incidents under regulation) | Chair of the board committee; information to the full board | As soon as the severity is confirmed, without waiting for the quarterly pack | Facts, affected parties, containment, notifications made or pending, decisions required. |
 | **Critical** nonconformity | Board committee | Within the containment time limit (01 §12) | Description, containment, action plan, owner. |
-| Unscheduled **Transform** initiative at G2 or scaling at G7 | Full board | Before committing investment | Decision sheet. |
+| Unscheduled **Transform** use case at G2 or scaling at G7 | Full board | Before committing investment | Decision sheet. |
 | Request to accept a **Critical** residual risk | Full board or board committee | Before G3 or G5 | Decision sheet with analysis of alternatives and a time limit on the acceptance. |
 
 ---
@@ -126,10 +126,10 @@ The annual review should involve internal audit (01 §5.1).
 
 | Field | Content | Guidance |
 |---|---|---|
-| **Main message** | Three lines at most, using one of the four response formats (document 61, section 4). | Answers "is what was decided being delivered?". Example: *"Yes, with one condition: validated value has risen, but two high-risk initiatives still lack an impact assessment."* |
+| **Main message** | Three lines at most, using one of the four response formats (document 61, section 4). | Answers "is what was decided being delivered?". Example: *"Yes, with one condition: validated value has risen, but two high-risk use cases still lack an impact assessment."* |
 | **Key figures** | Efficiencies, return, recurring cost and annual net value; validated proportion; released capacity not realised (shown separately); investment executed against budget. | Rules in section 8. |
 | **Operational outcome** | Use cases in use with operational indicators: how many are on target, how many below and how many without an indicator; non-quantified value at medium or high level. | Document 40 §11.1, rule 11: not translated into euros nor added to the key figures. |
-| **Portfolio** | Initiatives by phase and status; in production; stopped and retired in the quarter; stalled. | From T01. |
+| **Portfolio** | Use cases by phase and status; in production; stopped and retired in the quarter; stalled. | From T01. |
 | **Risk** | Critical and High residual risks; S1 and S2 incidents; open major and critical nonconformities. | Number and link only; detail in sections 5 and 6. |
 | **What holds back scaling** | The three barriers to start with (FE-1 to FE-6), with what they block, what to do, who and the annual value at stake. | Reading of §10.4, from T17. If an action needs a decision, it moves to «Decisions requested». |
 | **Decisions requested** | List with code and one line per decision. | If there are no decisions, this is stated explicitly. |
@@ -143,10 +143,10 @@ The annual review should involve internal audit (01 §5.1).
 | Main message | Yes, with one condition: that the customer service agent is not extended until it passes the prompt injection test. The portfolio is within budget and validated value rises from 41% to 58%. |
 | Key figures | Efficiencies €3.9M · Return €1.6M · Recurring cost €1.3M · **Annual net value €4.2M** · Validated proportion 58% (€3.2M of €5.5M) · Released capacity not realised €1.1M (not added) · Investment executed €2.4M of €3.0M budgeted. |
 | Operational outcome | 14 use cases in use: 9 on their operational target, 3 below and 2 without an indicator. 2 use cases with high non-quantified value (customer experience). |
-| Portfolio | 31 initiatives: 6 in phases 0–2, 7 in phases 3–5, 14 in production, 4 at G7. In the quarter: 1 stopped at G3 (unacceptable risk), 1 retired (replaced by another solution). 3 stalled. |
+| Portfolio | 31 use cases: 6 in phases 0–2, 7 in phases 3–5, 14 in production, 4 at G7. In the quarter: 1 stopped at G3 (unacceptable risk), 1 retired (replaced by another solution). 3 stalled. |
 | Risk | 0 Critical residual risks · 4 High · 1 S2 incident · 1 open major nonconformity. |
-| What holds back scaling | 1) FE-3 · Risk and compliance not closed: blocks G5 in 2 initiatives; complete their impact assessments before the next AI Committee meeting (risk owner). 2) FE-1 · Value is not proven: €1.4M in use not validated; validation by management control before quarter-end. 3) FE-2 · Cases do not move forward: 3 overdue; early *gate* at the next monthly meeting. |
-| Decisions requested | DEC-2026-014 · Authorise the value hypothesis of a Transform initiative (G2). DEC-2026-015 · Take note of the stopping of an initiative at G3. |
+| What holds back scaling | 1) FE-3 · Risk and compliance not closed: blocks G5 in 2 use cases; complete their impact assessments before the next AI Committee meeting (risk owner). 2) FE-1 · Value is not proven: €1.4M in use not validated; validation by management control before quarter-end. 3) FE-2 · Cases do not move forward: 3 overdue; early *gate* at the next monthly meeting. |
+| Decisions requested | DEC-2026-014 · Authorise the value hypothesis of a Transform use case (G2). DEC-2026-015 · Take note of the stopping of a use case at G3. |
 | Recommendations | 12 open · 2 overdue · 3 closed with a conformant assessment · 1 discrepancy (declared met, assessed as nonconformant). |
 | Changes | The validated proportion rises owing to management control's validation of two use cases; the internal queries assistant is retired (no usage). |
 
@@ -158,7 +158,7 @@ Types of decision:
 
 | Type | Meaning | Example |
 |---|---|---|
-| **Approve** | The body takes the decision. | AI thesis, risk appetite, Transform initiative at G2. |
+| **Approve** | The body takes the decision. | AI thesis, risk appetite, Transform use case at G2. |
 | **Authorise with limits** | A stage is approved with an investment limit, deadline and stop criteria. | First stage of a Transform bet. |
 | **Accept a risk** | Exceptionally, a residual risk above the threshold is accepted, within the approved appetite and for a limited time. | Critical residual risk with a reduction plan. |
 | **Take note** | The body is informed of a decision taken by whoever is competent. | Stop or retirement decided by the AI Committee. |
@@ -174,8 +174,8 @@ The pack does not reproduce the dashboard: it indicates the view to be consulted
 
 | Field | Content |
 |---|---|
-| Critical and High residual risks | Typical risk code (RT-XXX-NN), initiative or system, inherent and residual level, owner, controls and review date. |
-| Concentration | Risks affecting several initiatives (same supplier, same data, same type of agent). |
+| Critical and High residual risks | Typical risk code (RT-XXX-NN), use case or system, inherent and residual level, owner, controls and review date. |
+| Concentration | Risks affecting several use cases (same supplier, same data, same type of agent). |
 | Accepted risks | Risks accepted above the ordinary level, who accepted them and until when. |
 | Exposure to AI-enabled attacks | Main indicators for the security sphere (document 35). |
 | Regulatory changes | New or amended obligations with an effect on the portfolio, with the date consulted. |
@@ -193,7 +193,7 @@ Scales and levels: those in the common specification (probability 1–5, impact 
 | **Major** nonconformities | Individually if they are open beyond their time limit; aggregated in all other cases. |
 | **Minor** nonconformities | Number only. |
 
-For each individual incident: code INC-AAAA-NNN, system and initiative, date, severity, origin, affected parties, time to detect and to contain, notifications to authorities and their time limit, lessons and actions.
+For each individual incident: code INC-AAAA-NNN, system and use case, date, severity, origin, affected parties, time to detect and to contain, notifications to authorities and their time limit, lessons and actions.
 
 ### 4.7 Recommendations and commitments
 
@@ -245,9 +245,9 @@ Full inventory, value detail by use case, funnel metrics, full recommendations r
 | Field | Content |
 |---|---|
 | Code | DEC-2026-014 |
-| What is requested | Authorise the first stage of initiative IA-2026-018 "Subscription maintenance service based on failure prediction", with an investment limit of €400,000 and a continuity decision within nine months. |
+| What is requested | Authorise the first stage of use case IA-2026-018 "Subscription maintenance service based on failure prediction", with an investment limit of €400,000 and a continuity decision within nine months. |
 | Type | Authorise with limits |
-| Body | Full board (Transform initiative at G2) |
+| Body | Full board (Transform use case at G2) |
 | Management's response | Yes, with one condition: that in the first stage the service is offered only to customers who expressly accept a pilot with no minimum term commitment. |
 | Context | Today, equipment is sold and repaired when it fails. The proposal is to sell guaranteed availability by subscription, supported by a model that anticipates failures. Sphere 02 · Product and service. Transform: it changes the value proposition and creates revenue that did not previously exist. Phase 2. |
 | Options | A) Authorise stage 1. B) Authorise only a market study without building (lower cost, one-year delay). C) Do not authorise. |
@@ -271,7 +271,7 @@ The specific allocation depends on the articles of association, the board regula
 | AI thesis, ambition per sphere, risk appetite (C2) | **Approves** | Reports on risks beforehand | Proposes |
 | Corporate AI policy | **Approves** | Reports | Proposes |
 | AI framework budget | **Approves** | — | Proposes |
-| Transform initiatives: G2 and scaling at G7 | **Approves** | — | Verifies and proposes |
+| Transform use cases: G2 and scaling at G7 | **Approves** | — | Verifies and proposes |
 | Annual review: maturity, transformation index, delivery of the thesis (C5) | **Assesses and decides adjustments** | Reports on risks and audit | Prepares with internal audit |
 | Quarterly summary and dashboard (C4) | **Oversees** | Oversees the risk block in detail | Prepares |
 | Critical residual risks: exceptional acceptance | **Decides** or expressly delegates | **Decides** if it holds the delegation | Escalates |
@@ -337,7 +337,7 @@ The ten value measurement rules (00 §6) apply without exception. In the pack th
 | 7 | **Prioritise by additional net value per euro** | Expected additional annual net value ÷ additional investment required, use case by use case. | "Portfolio ROI: 250%" | Table of use cases ordered by additional net value per euro, with negative ones visible |
 | 8 | **Negatives visible** | Use cases with negative net value are listed, not offset in aggregates. The payback period for the whole portfolio is not presented. | "The portfolio pays back in 14 months" | "3 use cases in production with negative net value: …" |
 | 9 | **Same perimeter for comparison** | Variations are calculated on the same set of use cases, or the change of perimeter is explained. | "Value rises by 40%" (with new use cases) | "Value rises by 12% in the same use cases; new use cases contribute €0.6M" |
-| 10 | **Cut-off date and source** | Every figure carries the cut-off date and the source system. | Undated figures | "Data as at 30 June; source: initiative register" |
+| 10 | **Cut-off date and source** | Every figure carries the cut-off date and the source system. | Undated figures | "Data as at 30 June; source: use case register" |
 | 11 | **Consistent rounding** | Millions with one decimal place or thousands with no decimal places; totals are calculated before rounding. | Totals that do not add up | Rounding note where appropriate |
 | 12 | **No external references without a source** | Figures are not compared with "the market" or "the sector" without a verifiable, dated source. | "We are above the sector average" | Omitted or the source is cited |
 
@@ -349,7 +349,7 @@ Example figures included in training or demonstration materials are marked as **
 
 ### 9.1 What a programme is
 
-A **programme** is a grouping of initiatives with a common objective, a sponsor and a budget (*Programme* tag in the initiative register, 03 §3.3). The board does not oversee thirty initiatives; it oversees a few programmes and drills down into the detail when the traffic light indicates it.
+A **programme** is a grouping of use cases with a common objective, a sponsor and a budget (*Programme* tag in the use case register, 03 §3.3). The board does not oversee thirty use cases; it oversees a few programmes and drills down into the detail when the traffic light indicates it.
 
 ### 9.2 Axes and statuses
 
@@ -357,7 +357,7 @@ The traffic light in document 14 (§12) is used: each programme is assessed on *
 
 | Axis | Green | Amber | Red |
 |---|---|---|---|
-| **Schedule** | No stalled initiatives; milestones on time. | One stalled initiative or one milestone delayed by up to one phase reference time limit. | Several stalled or a critical milestone with a longer delay. |
+| **Schedule** | No stalled use cases; milestones on time. | One stalled use case or one milestone delayed by up to one phase reference time limit. | Several stalled or a critical milestone with a longer delay. |
 | **Cost** | Deviation from the approved tranches of up to 10%. | From 10% to 25%. | More than 25% or without approval. |
 | **Value** | Realised value equal to or greater than 90% of that forecast to date, with validated or declared status. | From 60% to 90%, or estimated only. | Less than 60%, or hypothesis refuted with no decision. |
 | **Risk** | No residual risks outside appetite and no open S1–S2 incidents. | High risk with mitigation on schedule or S2 incident being managed. | Risk outside appetite, S1 incident or open critical nonconformity. |
@@ -423,7 +423,7 @@ Rules of use:
 
 ### 10.3 Pending adaptations
 
-Tool T17 is fed from the initiative register (T01) through its connector (03 §5.4): it shows the funnel by lifecycle **phase and status**, links each use case to its IA-AAAA-NNN code and generates the recommendations register of document 62. It also shows the executive reading **«What holds back scaling»** (§10.4), the **map of spheres × ambition levels** (T16, §10.5) and the **realisation plan with its tranches and the non-quantified value** (§10.6). Grouping by **programme** with the traffic light in section 9 is not part of the dashboard: it is calculated with the rules of 14 §12 and annexed to the pack with P67, and board decisions are recorded in P69. The dashboard takes the C2 target ambition per sphere from the thesis approved in the T01 register (board decision with its target ambition per sphere, 62 §10.2) and, only if the register does not carry it, from its general configuration.
+Tool T17 is fed from the use case register (T01) through its connector (03 §5.4): it shows the funnel by lifecycle **phase and status**, links each use case to its IA-AAAA-NNN code and generates the recommendations register of document 62. It also shows the executive reading **«What holds back scaling»** (§10.4), the **map of spheres × ambition levels** (T16, §10.5) and the **realisation plan with its tranches and the non-quantified value** (§10.6). Grouping by **programme** with the traffic light in section 9 is not part of the dashboard: it is calculated with the rules of 14 §12 and annexed to the pack with P67, and board decisions are recorded in P69. The dashboard takes the C2 target ambition per sphere from the thesis approved in the T01 register (board decision with its target ambition per sphere, 62 §10.2) and, only if the register does not carry it, from its general configuration.
 
 The engine files published in the demonstrations repository are copies from their source project: adaptations are made at source and published again.
 
@@ -438,7 +438,7 @@ Many companies today have AI cases that work and still cannot scale them. The da
 | **FE-1** | Value is not proven | In use with unvalidated value; in use with negative annual net; released capacity not materialised. | No plausible value; hypothesis refuted; cost higher than value. | D7 at level 2 or below; the index does not meet B2; alerts «efficiency not materialised» and «fragile transformation». | G7 · Scale (G7.01). | Validate the value of the cases in use and close their benefits realisation plan (P62); take those with negative net to G7. | Management control and business benefit owner. | Documents 40 and 43; 21 (G7). |
 | **FE-2** | Cases do not move forward | In progress over the day limit of their stage, or close to it. | — | D2 at level 2 or below; the index does not meet B3; alert «stalled bets». | — | Take the overdue cases to their gate and decide: continue with a date, pivot or stop. | AI Committee. | 14 §8; 20 §11. |
 | **FE-3** | Risk and compliance not closed | In the last stage before production with pending controls; in use with pending controls; without the company's regulatory classification. | Unacceptable risk; regulation. | D6 at level 2 or below, or D6 caps the overall level (11 §5); alert «change without oversight». | G5 · go-live; the overall maturity level if D6 caps it. | Complete the classification and controls before G5; open a nonconformity for cases in use without them. | Risk and compliance owner. | Documents 32, 33 and 35; 21 (G5); 37. |
-| **FE-4** | People do not adopt it | Cross-cutting initiatives with units below the adoption threshold. | No adoption. | D5 at level 2 or below. | — | Adoption plan in the units below the threshold; withdraw or reassign unused licences. | Business benefit owner and People. | Document 23; 40 §7.2. |
+| **FE-4** | People do not adopt it | Cross-cutting use cases with units below the adoption threshold. | No adoption. | D5 at level 2 or below. | — | Adoption plan in the units below the threshold; withdraw or reassign unused licences. | Business benefit owner and People. | Document 23; 40 §7.2. |
 | **FE-5** | Data and technology are not ready | — | Insufficient data; technically unfeasible. | D3 or D4 at level 2 or below. | — | Secure data quality, access and ownership before phase 3 (P64) and the platform the cases need. | Data owner and technology owner. | Documents 51 and 52. |
 | **FE-6** | Lack of direction and governance | Active cases without a business benefit owner or without a description of what they are and what they are for. | Change of strategic priority. | D1 at level 2 or below, or D1 caps the overall level; the index does not meet B1; alerts «transformation without the board» and ambition over-declaration. | The overall maturity level if D1 caps it. | Approve in C2 the thesis and the ambition per sphere and give each case a business owner and a defensible description. | Senior management and board. | Documents 13 and 30. |
 
@@ -458,9 +458,9 @@ In the quarterly pack, the reading feeds the «What holds back scaling» field o
 
 ### 10.5 Where the impact is: spheres × ambition levels in the dashboard (T16)
 
-The dashboard includes the **portfolio heat map** (tool T16) with the rules of document 10 §8: value spheres 01 to 07 in rows, Optimise, Augment and Transform in columns, enablement band (spheres 08 and 09) separately; in each cell, initiatives (and how many in production), investment and annual recurring cost, annual net and validated value; colour by share of investment and cost; gap, off-thesis, no-evidence and secondary marks. A selector switches the rows to business units. Clicking a cell shows its initiatives.
+The dashboard includes the **portfolio heat map** (tool T16) with the rules of document 10 §8: value spheres 01 to 07 in rows, Optimise, Augment and Transform in columns, enablement band (spheres 08 and 09) separately; in each cell, use cases (and how many in production), investment and annual recurring cost, annual net and validated value; colour by share of investment and cost; gap, off-thesis, no-evidence and secondary marks. A selector switches the rows to business units. Clicking a cell shows its use cases.
 
-> **Why it matters.** The board needs to see at a glance where the company is playing with AI and where it is not: whether investment is concentrated on efficiency in a single area, which spheres have no activity and whether the ambition approved in C2 has initiatives delivering it. Without that view, each case is discussed on its own and nobody sees the whole.
+> **Why it matters.** The board needs to see at a glance where the company is playing with AI and where it is not: whether investment is concentrated on efficiency in a single area, which spheres have no activity and whether the ambition approved in C2 has use cases delivering it. Without that view, each case is discussed on its own and nobody sees the whole.
 
 Rules of use:
 
@@ -470,13 +470,13 @@ Rules of use:
 
 ### 10.6 Realisation plan, funding tranches and non-quantified value in the dashboard
 
-The dashboard shows each use case's benefits realisation plan (document 43 §4.1) as recorded in T01 (`plan_realizacion`) and its non-quantified value (`no_cuantificado`, document 40 rule 7). It estimates nothing: an initiative without a recorded plan has no curve and is counted as «no realisation plan» (document 40, rule 8).
+The dashboard shows each use case's benefits realisation plan (document 43 §4.1) as recorded in T01 (`plan_realizacion`) and its non-quantified value (`no_cuantificado`, document 40 rule 7). It estimates nothing: a use case without a recorded plan has no curve and is counted as «no realisation plan» (document 40, rule 8).
 
 > **Why it matters.** The board approves investment in tranches, but usually sees value as an annual steady-state figure. Without the curve it does not know when the value arrives, how much money still has to be put in or whether what has been captured is on the approved pace. And if what cannot be translated into euros is not kept apart, a case kept for reputation or as a strategic option looks like a loss-making case, or is inflated with figures nobody can prove.
 
 | Card or section | What it shows | Rules |
 |---|---|---|
-| **Realisation plan: curve and tranches** (portfolio and value) | Sum of the curves of the use cases with a plan, by year, half-year or quarter: tranche investment, value, recurring cost, net and cumulative. Figures: investment in the next twelve months, cash still needed, use cases with NPV ≥ 0 out of those with a plan, cumulative realisation (F10) and plans recorded out of the initiatives in phases 3 to 7. | NPV (F7) of each use case with the H and r of C2 (40 §8.2). Realisation against the approved reference, in total and validated only, with the IND-VAL-14 thresholds (≥ 90%, 70–90%, < 70%; 43 §9.1). The portfolio payback period is not given: aggregates hide use cases with negative value (40 rule 9). |
+| **Realisation plan: curve and tranches** (portfolio and value) | Sum of the curves of the use cases with a plan, by year, half-year or quarter: tranche investment, value, recurring cost, net and cumulative. Figures: investment in the next twelve months, cash still needed, use cases with NPV ≥ 0 out of those with a plan, cumulative realisation (F10) and plans recorded out of the use cases in phases 3 to 7. | NPV (F7) of each use case with the H and r of C2 (40 §8.2). Realisation against the approved reference, in total and validated only, with the IND-VAL-14 thresholds (≥ 90%, 70–90%, < 70%; 43 §9.1). The portfolio payback period is not given: aggregates hide use cases with negative value (40 rule 9). |
 | **Pending funding tranches** (portfolio and value) | Committed or planned tranches of each use case with date, amount, *gate* that releases them and pass condition, and the annual net value each tranche unlocks per euro invested (F3 of the tranche). | A tranche without a pass condition is flagged (14 §6.2). Optional tranches are shown but do not add up. |
 | **Non-quantified value** (portfolio and value) | For each use case, each dimension with its level 0–3 and its metric (baseline, target and current value); use cases «sustained by non-quantified value». | It is never translated into euros and never adds to net value (40 rule 7 and §5.3); without a metric it does not count. A use case in production (phases 6 and 7) with non-quantified value of medium or high level and a negative NPV, or without a plan that demonstrates it, is flagged as sustained by non-quantified value and needs its next R6 dated. In phases 3 to 5 it is not flagged: the option value of Transform is governed by its stages, milestones and *gates* (40 §8.3). |
 | **Realisation plan** (use case record) | NPV (F7), payback period (F9, informative), maximum cash need and cash still needed, realisation (F10) in total and validated only, curve chart and tranches with their *gate* and pass condition; below, the use case's non-quantified value. | Only if the use case has a recorded plan; otherwise, «no realisation plan». |
@@ -514,7 +514,7 @@ The checklist is applied with P67 §12.
 
 | Code | Name | Use in this document |
 |---|---|---|
-| T01 | Initiative register | Source for portfolio, phases, statuses, programmes and value. |
+| T01 | Use case register | Source for portfolio, phases, statuses, programmes and value. |
 | T03 | *Gate* manager | Evidence and verification of the decisions requested. |
 | T06 | Risk matrix and register | Risks section. |
 | T08 | Nonconformity and incident register | Incidents and nonconformities section. |
@@ -537,7 +537,7 @@ The checklist is applied with P67 §12.
 |---|---|
 | **00 · What SEVEN-G is and how it helps companies** | Value measurement rules and transformation index. |
 | **01 · Foundational methodology** | Corporate cycle, governance calendar, bodies, nonconformities. |
-| **03 · Tools and initiative register** | Data model, funnel metrics, T17 and T18. |
+| **03 · Tools and use case register** | Data model, funnel metrics, T17 and T18. |
 | **10 · Sphere map and ambition levels** | Rules of the portfolio heat map (T16) shown by the dashboard (§10.5). |
 | **11 · Maturity model** | Content of C1 and C5; company signals in «What holds back scaling» (§10.4). |
 | **12 · Transformation index** | Signals and profiles for the annual pack. |

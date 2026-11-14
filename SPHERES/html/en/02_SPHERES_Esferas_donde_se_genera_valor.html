@@ -374,6 +374,13 @@ blockquote.aviso-legal strong { color: var(--negro); }
 .dz-card-titulo { font: 700 19px/1.2 var(--serif); color: var(--negro); margin: 0 0 6px; }
 .dz-card-texto { font: 400 13.5px/1.4 var(--sans); color: var(--tinta-2); margin: 0 0 12px; flex: 1; }
 .dz-card .dz-item { background: var(--papel); }
+/* documento 00 de cada marco: sus presentaciones en slides (1, 5, 10 y 20 en tarjetas de dos columnas; el curso, de cuatro) */
+@media (min-width: 900px) { .dz-card[data-grupo="slides-curso"] { grid-column: span 4; } .dz-card[data-grupo="slides-otros"] { grid-column: span 3; } }
+.dz-card[data-grupo="slides-curso"] { border-top-color: var(--teal); }
+.dz-card[data-grupo="slides-curso"] .dz-card-rotulo { color: var(--teal); }
+.dz-card[data-grupo="slides-otros"] { border-top-color: var(--oxford); }
+.dz-card[data-grupo="slides-otros"] .dz-card-rotulo { color: var(--oxford); }
+.descargas-zona[id] { scroll-margin-top: 72px; }
 .dz-grupo { font: 700 12px/1.2 var(--sans); letter-spacing: .08em; text-transform: uppercase; color: var(--tinta-2); margin: 8px 0 -2px; padding-top: 10px; border-top: 1px solid var(--regla); }
 .dz-grupo:first-child { margin-top: 0; padding-top: 0; border-top: 0; }
 @media print { .descargas-zona { display: none !important; } }
@@ -523,7 +530,7 @@ h2 .codigo, h3 .codigo { font-weight: 400; }
 <p>Each sphere is presented with the same structure: what it is, why it matters, what it covers and what it does not, examples by ambition level, an illustrative case, questions for the board, warning signs and how it is measured.</p>
 <p><strong>The examples are generic and illustrative.</strong> They are neither recommendations nor market references, and any company or figure that appears is fictitious.</p>
 <blockquote>
-<p><strong>Why it matters.</strong> If an AI initiative does not move any indicator in these four spheres, it does not create direct value. It may be necessary (a data platform, a regulatory control), but it must be justified as an enabler, a boundary or governance, and not with savings or revenue that it will not produce.</p>
+<p><strong>Why it matters.</strong> If an AI use case does not move any indicator in these four spheres, it does not create direct value. It may be necessary (a data platform, a regulatory control), but it must be justified as an enabler, a boundary or governance, and not with savings or revenue that it will not produce.</p>
 </blockquote>
 <hr />
 <h2 id="sphere-01-customer"><span class="antetitulo">02</span>Sphere 01 · Customer</h2>
@@ -718,7 +725,7 @@ h2 .codigo, h3 .codigo { font-weight: 400; }
 <li>AI features are announced without measuring their actual usage.</li>
 <li>The AI cost per unit of service is unknown or grows faster than the product's revenue.</li>
 <li>There is no product owner accountable to the customer for the behaviour of the AI.</li>
-<li>New product initiatives are assessed with the same payback period as efficiency initiatives and are stopped before market evidence is obtained.</li>
+<li>New product use cases are assessed with the same payback period as efficiency use cases and are stopped before market evidence is obtained.</li>
 </ul>
 <h3 id="how-it-is-measured-2">How it is measured</h3>
 <p>The reference indicators are AI-enabled revenue, use of AI features, reduction in time to launch, AI cost per unit of service, margin of the AI-enabled offering and defects contained before launch. Their formulas are in <a href="../../../SEVEN-G/html/en/10_SEVEN-G_Mapa_de_esferas_y_niveles_de_ambicion.html">SEVEN-G 10</a>, section 5.2.</p>
@@ -758,7 +765,7 @@ h2 .codigo, h3 .codigo { font-weight: 400; }
 <tr>
 <td><strong>Promoters</strong></td>
 <td>Those who know a process best can identify uses of AI that no outsider would see.</td>
-<td>A channel for proposing initiatives that enter the register and compete in the portfolio on an equal footing.</td>
+<td>A channel for proposing use cases that enter the register and compete in the portfolio on an equal footing.</td>
 <td>The source of ideas closest to real work is lost and unauthorised use of AI tools grows.</td>
 </tr>
 </tbody>
@@ -792,7 +799,7 @@ h2 .codigo, h3 .codigo { font-weight: 400; }
 <td></td>
 </tr>
 <tr>
-<td>AI initiatives proposed by employees themselves.</td>
+<td>AI use cases proposed by employees themselves.</td>
 <td></td>
 </tr>
 </tbody>
@@ -832,26 +839,26 @@ h2 .codigo, h3 .codigo { font-weight: 400; }
 <li>Does AI replace, augment or reorganise people's work? That answer defines the culture, the employer brand and talent retention.</li>
 <li>What happens to released capacity: does it become lower cost, is it reassigned or does it simply disappear?</li>
 <li>Do the people who use or oversee AI have training appropriate to their role?</li>
-<li>What proportion of initiatives originates from employees themselves?</li>
+<li>What proportion of use cases originates from employees themselves?</li>
 </ul>
 <h3 id="warning-signs-3">Warning signs</h3>
 <ul>
 <li>Released hours are reported without stating whether they have become lower cost or have been reassigned.</li>
 <li>The number of assigned licences is measured, not actual usage.</li>
 <li>Decisions on jobs are taken as a technical consequence of a project, without an explicit management decision.</li>
-<li>There is no adoption plan in Augment or Transform initiatives.</li>
+<li>There is no adoption plan in Augment or Transform use cases.</li>
 <li>Turnover in the affected groups rises without anyone analysing it.</li>
 </ul>
 <h3 id="how-it-is-measured-3">How it is measured</h3>
-<p>The reference indicators are effective adoption, realised and reassigned released capacity, AI literacy by role, redesigned roles and employee-promoted initiatives. Their formulas are in <a href="../../../SEVEN-G/html/en/10_SEVEN-G_Mapa_de_esferas_y_niveles_de_ambicion.html">SEVEN-G 10</a>, section 5.3, and their management in <a href="../../../SEVEN-G/html/en/50_SEVEN-G_Personas_y_organizacion.html">SEVEN-G 50 · People and organisation</a>.</p>
-<p><strong>Relationship with other spheres.</strong> People is almost always the <strong>secondary sphere</strong> of Augment or Transform initiatives that change roles, even when their primary sphere is Customer or Operations. It is also related to Knowledge (06), because what people know is part of the asset that AI can preserve or lose.</p>
+<p>The reference indicators are effective adoption, realised and reassigned released capacity, AI literacy by role, redesigned roles and employee-promoted use cases. Their formulas are in <a href="../../../SEVEN-G/html/en/10_SEVEN-G_Mapa_de_esferas_y_niveles_de_ambicion.html">SEVEN-G 10</a>, section 5.3, and their management in <a href="../../../SEVEN-G/html/en/50_SEVEN-G_Personas_y_organizacion.html">SEVEN-G 50 · People and organisation</a>.</p>
+<p><strong>Relationship with other spheres.</strong> People is almost always the <strong>secondary sphere</strong> of Augment or Transform use cases that change roles, even when their primary sphere is Customer or Operations. It is also related to Knowledge (06), because what people know is part of the asset that AI can preserve or lose.</p>
 <hr />
 <h2 id="sphere-04-operations"><span class="antetitulo">05</span>Sphere 04 · Operations</h2>
 <p><strong>Motto:</strong> processes, value chain and efficiency.</p>
 <h3 id="what-it-is-4">What it is</h3>
 <p>The Operations sphere brings together AI applied to <strong>internal processes, supply chain, production, maintenance, back office, fraud control and operational risks</strong>.</p>
 <blockquote>
-<p><strong>Why it matters.</strong> Operations is the sphere with the easiest return to demonstrate and the one that accounts for most early initiatives. That ease is both its advantage and its trap: a portfolio can fill up with isolated task automations that add up released hours but do not change actual cost or the design of processes.</p>
+<p><strong>Why it matters.</strong> Operations is the sphere with the easiest return to demonstrate and the one that accounts for most early use cases. That ease is both its advantage and its trap: a portfolio can fill up with isolated task automations that add up released hours but do not change actual cost or the design of processes.</p>
 </blockquote>
 <h3 id="what-it-covers-and-what-it-does-not-4">What it covers and what it does not</h3>
 <div class="tabla"><table>
@@ -917,7 +924,7 @@ h2 .codigo, h3 .codigo { font-weight: 400; }
 </table></div>
 <h3 id="illustrative-case-4">Illustrative case</h3>
 <p><em>Fictitious distributor of consumer products.</em></p>
-<p>The distributor has eleven initiatives in Operations, all of them <strong>Optimise</strong>: reading delivery notes, invoice reconciliation, demand forecasting by store and others. In the annual review it discovers that the sum of declared &quot;released hours&quot; is equivalent to dozens of jobs, but the actual cost of the area has not fallen. The automations had sped up isolated steps and the work had piled up in the exceptions. Management decides to <strong>redesign the procurement process end to end</strong>: the system proposes and executes routine orders within approved limits and buyers focus on negotiation and exceptions (<strong>Augment</strong>, with a possible evolution to <strong>Transform</strong> if the change extends to the entire purchasing function). The board asks what happens if the system fails in the middle of a peak season and whether there is a tested rollback plan.</p>
+<p>The distributor has eleven use cases in Operations, all of them <strong>Optimise</strong>: reading delivery notes, invoice reconciliation, demand forecasting by store and others. In the annual review it discovers that the sum of declared &quot;released hours&quot; is equivalent to dozens of jobs, but the actual cost of the area has not fallen. The automations had sped up isolated steps and the work had piled up in the exceptions. Management decides to <strong>redesign the procurement process end to end</strong>: the system proposes and executes routine orders within approved limits and buyers focus on negotiation and exceptions (<strong>Augment</strong>, with a possible evolution to <strong>Transform</strong> if the change extends to the entire purchasing function). The board asks what happens if the system fails in the middle of a peak season and whether there is a tested rollback plan.</p>
 <h3 id="questions-for-the-board-4">Questions for the board</h3>
 <ul>
 <li>Which processes have a demonstrable return within the horizon we have set, and which require a complete redesign?</li>
@@ -950,19 +957,19 @@ h2 .codigo, h3 .codigo { font-weight: 400; }
 <tbody>
 <tr>
 <td><strong>Internal efficiency</strong></td>
-<td>Most initiatives in 04 and in Optimise; 01 and 02 almost empty.</td>
+<td>Most use cases in 04 and in Optimise; 01 and 02 almost empty.</td>
 <td>AI is used to reduce cost, not to compete.</td>
 <td>Is that our strategy or is it the easiest option to justify?</td>
 </tr>
 <tr>
 <td><strong>Shop window</strong></td>
-<td>Visible initiatives in 01 and 02 with no measured usage; few in 03 and 04.</td>
+<td>Visible use cases in 01 and 02 with no measured usage; few in 03 and 04.</td>
 <td>AI is used to communicate, not to change.</td>
-<td>What validated value do the initiatives we announce have?</td>
+<td>What validated value do the use cases we announce have?</td>
 </tr>
 <tr>
 <td><strong>Forgotten people</strong></td>
-<td>Augment or Transform initiatives in 01, 02 or 04 without 03 as secondary sphere.</td>
+<td>Augment or Transform use cases in 01, 02 or 04 without 03 as secondary sphere.</td>
 <td>Roles are changed without an adoption plan or an explicit decision.</td>
 <td>Who has decided how the work of the people affected changes?</td>
 </tr>
@@ -987,7 +994,7 @@ h2 .codigo, h3 .codigo { font-weight: 400; }
 </tr>
 <tr>
 <td><strong><a href="01_SPHERES_Niveles_de_ambicion.html" title="Document 01 &#183; SEVEN-G foundational methodology">document 01</a> · Ambition levels</strong></td>
-<td>How the level of each initiative is classified.</td>
+<td>How the level of each use case is classified.</td>
 </tr>
 <tr>
 <td><strong><a href="03_SPHERES_Esferas_habilitadoras.html" title="Document 03 &#183; SEVEN-G tools and initiative register">document 03</a> · Enabling spheres</strong></td>
@@ -1027,7 +1034,7 @@ h2 .codigo, h3 .codigo { font-weight: 400; }
 </table></div>
 
 </main>
-<footer class="pie"><div><span>© 2026 Fernando García Varela · SPHERES methodology</span><span>Generated on 19-10-2026</span></div><p class="pie-ia">Content generated and typeset with AI support under the author&#39;s editorial supervision.</p></footer>
+<footer class="pie"><div><span>© 2026 Fernando García Varela · SPHERES methodology</span><span>Generated on 14-11-2026</span></div><p class="pie-ia">Content generated and typeset with AI support under the author&#39;s editorial supervision.</p></footer>
 <script src="../../../SEVEN-G/html/en/codigos.js" defer></script>
 
 <script>

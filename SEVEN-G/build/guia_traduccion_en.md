@@ -35,7 +35,7 @@ Uso interno del generador. Todas las traducciones al inglés deben seguir esta g
 | intensidad Lite / Enterprise | Lite / Enterprise intensity |
 | ciclo corporativo | corporate cycle |
 | C1 Diagnóstico · C2 Dirección · C3 Cartera · C4 Supervisión · C5 Revisión | C1 Diagnosis · C2 Direction · C3 Portfolio · C4 Oversight · C5 Review |
-| ciclo de vida de la iniciativa | initiative lifecycle |
+| ciclo de vida del caso de uso | use case lifecycle |
 | 0 Contexto y restricciones | 0 Context and constraints |
 | 1 Descubrimiento de oportunidades | 1 Opportunity discovery |
 | 2 Hipótesis de valor | 2 Value hypothesis |
@@ -57,9 +57,9 @@ Uso interno del generador. Todas las traducciones al inglés deben seguir esta g
 | segunda línea · tercera línea | second line · third line |
 | tesis de IA · apetito de riesgo | AI thesis · risk appetite |
 | cartera | portfolio |
-| iniciativa · caso de uso · sistema de IA | initiative · use case · AI system |
+| caso de uso · caso de uso transversal · nivel caso de uso · equipo del caso de uso · roles del caso de uso · sistema de IA (no se usa «iniciativa», nombre anterior de «caso de uso») | use case · cross-unit use case · use case level · use case team · use case roles · AI system (do not use “initiative”, the former name of “use case”) |
 | inventario de sistemas de IA | AI system inventory |
-| registro de iniciativas | initiative register |
+| registro de casos de uso | use case register |
 | índice de transformación | transformation index |
 | Exploración dispersa · Eficiencia táctica · Eficiencia a escala · Transformación en curso · Transformación declarada, no evidenciada | Scattered exploration · Tactical efficiency · Efficiency at scale · Transformation under way · Declared but unevidenced transformation |
 | valor validado · declarado · estimado | validated · declared · estimated value |
@@ -95,7 +95,7 @@ Uso interno del generador. Todas las traducciones al inglés deben seguir esta g
 | Función CSF · área de enfoque (Secure, Defend, Thwart: no se traducen) | CSF function · focus area (Secure, Defend, Thwart) |
 | declaración de aplicabilidad | statement of applicability |
 | Borrador (estado de una fuente) | Draft (source status) |
-| plazo de referencia · estancada | reference time limit · stalled |
+| plazo de referencia · estancado | reference time limit · stalled |
 | Registrada · En fase · Pendiente de gate · En espera · En producción · Pendiente de G7 · Parada · Retirada | Registered · In phase · Awaiting gate · On hold · In production · Awaiting G7 · Stopped · Retired |
 | Cumple · No cumple · No aplica · Pendiente | Met · Not met · Not applicable · Pending |
 | taxonomía controlada · etiquetas | controlled taxonomy · tags |
@@ -122,7 +122,7 @@ Uso interno del generador. Todas las traducciones al inglés deben seguir esta g
 | inyección de instrucciones | prompt injection |
 | vigilancia posterior a la comercialización | post-market monitoring |
 | tiempo en fase · tiempo de decisión · condiciones vencidas | time in phase · decision time · expired conditions |
-| ficha (de la iniciativa) · tablero (vista) | (initiative) record · Kanban board |
+| ficha (del caso de uso) · tablero (vista) | (use case) record · Kanban board |
 | ola · días hábiles | wave · working days |
 | A0 Asistencia · A1 Recomendación · A2 Actuación supervisada · A3 Actuación autónoma | A0 Assistance · A1 Recommendation · A2 Supervised action · A3 Autonomous action |
 | S1 Crítica · S2 Alta · S3 Media · S4 Baja (severidad) | S1 Critical · S2 High · S3 Medium · S4 Low |
@@ -136,7 +136,7 @@ Uso interno del generador. Todas las traducciones al inglés deben seguir esta g
 | Evaluación de impacto relativa a la protección de datos (EIPD) | data protection impact assessment (DPIA) |
 | conformidad de riesgos | risk clearance |
 | firma multinivel con capacidad de veto | multi-level sign-off with veto power |
-| carta de la iniciativa | initiative charter |
+| carta del caso de uso | use case charter |
 | lienzo de hipótesis de valor | value hypothesis canvas |
 | panel (de IA para el) consejo | board (AI) dashboard |
 | separación de funciones | segregation of duties |

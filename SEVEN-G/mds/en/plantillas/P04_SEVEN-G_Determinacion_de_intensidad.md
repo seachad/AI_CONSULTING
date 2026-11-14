@@ -1,6 +1,6 @@
 # Intensity determination
 
-**Decides, using eight yes-or-no questions, whether the initiative is governed at Lite or Enterprise intensity, and records the justification.**
+**Decides, using eight yes-or-no questions, whether the use case is governed at Lite or Enterprise intensity, and records the justification.**
 
 | | |
 |---|---|
@@ -31,7 +31,7 @@ Completion rules:
 - **A single Enterprise criterion is enough for that intensity to apply** (01 §9.1).
 - Every answer, whether "Yes" or "No", is justified with facts and, where available, with linked evidence.
 - In this template, a "Pending" answer counts as "Yes" until it is resolved, with an owner and a date. This prevents progressing with less control owing to a lack of information. It is a prudential rule proposed by the template, which document 21 should confirm.
-- Intensity cannot be lowered to speed up a *gate*. An initiative that meets no criterion may voluntarily apply Enterprise.
+- Intensity cannot be lowered to speed up a *gate*. A use case that meets no criterion may voluntarily apply Enterprise.
 
 ---
 
@@ -39,8 +39,8 @@ Completion rules:
 
 | Field | Content | Guidance |
 |---|---|---|
-| Initiative code | | IA-AAAA-NNN. |
-| Initiative name | | |
+| Use case code | | IA-AAAA-NNN. |
+| Use case name | | |
 | Timing of the determination | | Phase 0 · G3 · R6 · Relevant change. |
 | Previously determined intensity | | Lite · Enterprise · None (first determination). |
 | Document version | | |
@@ -53,7 +53,7 @@ Completion rules:
 
 | Source | Reference | Guidance |
 |---|---|---|
-| Initiative charter | P01 | Scope and exposure. |
+| Use case charter | P01 | Scope and exposure. |
 | Context and constraints statement | P02 | Data, maximum autonomy, critical function. |
 | Inventory record | P05 | Technology, exposure, autonomy, regulatory role. |
 | Ambition classification | P07 | Criterion 7. |
@@ -74,7 +74,7 @@ Answer the eight questions. Reference: 01 §9.2.
 | 4 | Agents capable of acting | Does the system execute actions, such as writing to systems, sending communications or making payments, without a person validating each action before it is executed (A2 or A3), and do those actions have an effect on third parties, money, personal data or production systems? | Yes · No · Pending | | Autonomy level in P05 |
 | 5 | Specially protected data | Does it process special categories of personal data or critical confidential information? | Yes · No · Pending | | P02 §6 |
 | 6 | Critical function | Does it support a critical or important business function, or one subject to sector-specific operational resilience regulation? | Yes · No · Pending | | |
-| 7 | Transform level | Is the initiative classified as Transform? | Yes · No | | P07 |
+| 7 | Transform level | Is the use case classified as Transform? | Yes · No | | P07 |
 | 8 | Investment | Does the planned investment exceed the threshold approved by the board in C2? | Yes · No · Pending | State the threshold and the estimated investment. | P01 §7 |
 
 Guidance for the questions that raise the most doubts:
@@ -87,7 +87,7 @@ Guidance for the questions that raise the most doubts:
 | 4 | The answer is "Yes" when the autonomy level is A2 (Supervised action) or A3 (Autonomous action) and the actions have an effect on third parties, money, personal data or production systems (01 §9.2; autonomy levels in document 35). With A0 or A1, or with A2 or A3 without that effect, the answer is "No" and it is justified. |
 | 5 | Special categories include, among others, health data, biometric data for identification purposes, ethnic origin, political opinions, religious beliefs, trade union membership, sex life or sexual orientation. Data relating to criminal convictions and offences should be treated with the same criterion. |
 | 6 | For entities subject to DORA, the critical or important functions that the entity has identified are considered. |
-| 8 | The total planned investment in the initiative is considered, not only the budget authorised at G0. |
+| 8 | The total planned investment in the use case is considered, not only the budget authorised at G0. |
 
 ---
 
@@ -110,7 +110,7 @@ In a spreadsheet: `=IF(COUNTIF(answer_range,"No")=8,"Lite","Enterprise")`.
 
 ### 5.1 Eligibility for Express
 
-Only if all eight Enterprise criteria are "No". The initiative is **Express** when all six conditions are "Yes" and the risk function (in small companies, the AI Office) confirms it; otherwise it is **Lite** (01 §9.4).
+Only if all eight Enterprise criteria are "No". The use case is **Express** when all six conditions are "Yes" and the risk function (in small companies, the AI Office) confirms it; otherwise it is **Lite** (01 §9.4).
 
 | No. | Condition | Answer (Yes · No · Pending) | Justification and source |
 |---|---|---|---|
@@ -122,7 +122,7 @@ Only if all eight Enterprise criteria are "No". The initiative is **Express** wh
 | E6 | If an AI supplier is involved, it is already approved (current P55). | | |
 | | **Eligibility confirmed by** | Name and role (risk function or AI Office) | Date |
 
-If any condition later ceases to be met or an Enterprise criterion appears, section 7 is completed and the initiative moves to Lite or Enterprise.
+If any condition later ceases to be met or an Enterprise criterion appears, section 7 is completed and the use case moves to Lite or Enterprise.
 
 ---
 
@@ -138,13 +138,13 @@ Reference: 01 §9.3 and, for verification and decision, 01 §7.5.
 | Decision | Sponsor, with risk clearance at G3, G4 and G5 | Sponsor, with risk clearance at G3, G4 and G5 | AI Committee; board for Transform |
 | Go-live | Risk clearance | Risk clearance | Multi-level sign-off with veto |
 | Continuity review | Annual | Half-yearly | Quarterly |
-| Visibility | Aggregated board dashboard | Aggregated board dashboard | Board dashboard by initiative |
+| Visibility | Aggregated board dashboard | Aggregated board dashboard | Board dashboard by use case |
 
 ---
 
 ## 7. Change of intensity
 
-Complete only if the result differs from the previous determination. It is mandatory at both intensities: the move from Lite to Enterprise is recorded precisely while the initiative is still Lite.
+Complete only if the result differs from the previous determination. It is mandatory at both intensities: the move from Lite to Enterprise is recorded precisely while the use case is still Lite.
 
 | Date | From | To | Criterion that changes | Evidence to be completed | *Gates* affected | Recorded by |
 |---|---|---|---|---|---|---|

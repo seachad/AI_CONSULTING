@@ -37,7 +37,7 @@ Rules:
 
 | Field | Content | Guidance |
 |---|---|---|
-| Initiative code | | IA-AAAA-NNN (T01). |
+| Use case code | | IA-AAAA-NNN (T01). |
 | AI system(s) | | Identifier in the inventory (T02). |
 | System version covered by the plan | | Version of model, prompts and configuration (P16). |
 | Autonomy level | | A0 · A1 · A2 · A3 (P17). |

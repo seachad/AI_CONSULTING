@@ -1,10 +1,10 @@
-# Adopción y cambio en la iniciativa
+# Adopción y cambio en el caso de uso
 
 **Cómo conseguir que la IA se use, que la capacidad liberada se convierta en valor y que las personas sepan trabajar con ella**
 
 | | |
 |---|---|
-| Documento | Documento 23 · Adopción y cambio en la iniciativa |
+| Documento | Documento 23 · Adopción y cambio en el caso de uso |
 | Versión | 0.1 (borrador de trabajo) |
 | Fecha | 16-09-2026 |
 | Autor | Fernando García Varela |
@@ -16,11 +16,11 @@
 
 > **Aviso legal y exención de responsabilidad.** SEVEN-G es un marco metodológico de referencia que se ofrece «tal cual» y con fines exclusivamente informativos. No constituye asesoramiento jurídico, regulatorio, financiero ni profesional, ni garantiza el cumplimiento de ninguna norma. Las referencias a regulación general (como el Reglamento Europeo de IA, el RGPD, DORA o NIS2), a normas técnicas y a regulación específica de cada sector o jurisdicción pueden ser incompletas, no aplicar a un caso concreto o quedar desactualizadas por cambios normativos, interpretaciones o criterios de las autoridades posteriores a su fecha de consulta. **Cada organización que use SEVEN-G es la única responsable de identificar la normativa que le aplica, verificar su vigencia y certificar su propio cumplimiento regulatorio**, con el asesoramiento cualificado que corresponda. Esta metodología es una ayuda genérica y gratuita, compartida con la comunidad para que nadie tenga que empezar desde cero; cada persona u organización puede y debe adaptarla a su propio uso. No debe entenderse que sus partes jurídicamente sensibles hayan sido revisadas por una asesoría jurídica: esas revisiones, para cada empresa o sector, son responsabilidad última de la empresa, el consultor o la organización que la use. Aunque se procura mantenerla al día, alguna norma puede haber cambiado sin que se recoja aquí. En la máxima medida permitida por la ley, el autor no asume responsabilidad alguna por los efectos de su aplicación en ninguna organización ni por su aplicabilidad completa. La metodología no otorga certificación de ningún tipo. El autor no asume responsabilidad alguna por el uso que se haga de este contenido ni por las decisiones que se adopten con él. Los datos, cifras, compañías y casos de los ejemplos son ficticios o ilustrativos.
 
-<!-- esencial: recomendado | El plan de adopción (P20) es evidencia obligatoria desde la fase 4 y la adopción se comprueba en G5 y G7. El resto —modelo de cambio, análisis de impacto en roles, comunicación— es guía que se usa en proporción al efecto de la iniciativa sobre las personas. -->
+<!-- esencial: recomendado | El plan de adopción (P20) es evidencia obligatoria desde la fase 4 y la adopción se comprueba en G5 y G7. El resto —modelo de cambio, análisis de impacto en roles, comunicación— es guía que se usa en proporción al efecto del caso de uso sobre las personas. -->
 
 ## 1. Objeto y alcance
 
-Este documento define cómo se planifica, se mide y se decide la adopción de una iniciativa de IA. Cubre un hueco del material anterior del marco: la fase 5 validaba el valor, pero no trataba de forma explícita la adopción real, la reasignación de la capacidad liberada ni la formación, que son condiciones para que el valor se materialice.
+Este documento define cómo se planifica, se mide y se decide la adopción de un caso de uso de IA. Cubre un hueco del material anterior del marco: la fase 5 validaba el valor, pero no trataba de forma explícita la adopción real, la reasignación de la capacidad liberada ni la formación, que son condiciones para que el valor se materialice.
 
 **Qué cubre**
 
@@ -70,7 +70,7 @@ flowchart LR
   class NA ko
 ```
 
-Tres consecuencias para el gobierno de la iniciativa:
+Tres consecuencias para el gobierno del caso de uso:
 
 1. **Disponibilidad no es adopción, y adopción no es valor.** Los informes distinguen usuarios con acceso, usuarios activos, uso efectivo en el proceso y resultado medido.
 2. **La capacidad liberada no suma como ahorro** hasta que se materializa o se reasigna de forma explícita (regla 3 de medición, 00 §6). Se informa por separado.
@@ -242,7 +242,7 @@ Una reasignación solo se reconoce si registra en P20:
 | Indicador de resultado | Cómo se sabrá que la actividad destino produce efecto (por ejemplo, casos complejos resueltos, visitas comerciales, tiempo de respuesta). |
 | Revisión | En qué R6 se comprueba. |
 
-El valor de la actividad destino **no se suma como eficiencia** de la iniciativa. Si produce retorno medible, se registra como retorno en el caso al que se atribuya, una sola vez (regla 5 de medición).
+El valor de la actividad destino **no se suma como eficiencia** del caso de uso. Si produce retorno medible, se registra como retorno en el caso al que se atribuya, una sola vez (regla 5 de medición).
 
 ### 7.5 Tasas e información
 
@@ -275,7 +275,7 @@ Destino decidido en la fase 4 y ejecutado en la fase 6: no se renueva un contrat
 
 El artículo 4 del Reglamento Europeo de IA obliga a proveedores y responsables del despliegue a adoptar medidas para garantizar, en la mayor medida posible, un nivel suficiente de alfabetización en IA de su personal y de otras personas que operen o usen sistemas de IA en su nombre, teniendo en cuenta sus conocimientos, experiencia y formación y el contexto de uso. Es aplicable desde el 2 de febrero de 2025. El Reglamento (UE) 2026/1744 (ómnibus digital sobre IA) ha modificado su redacción, que pasa a exigir medidas para *apoyar* el desarrollo de la alfabetización en IA sin fijar un nivel; el detalle y su estado de verificación, a fecha de consulta de septiembre de 2026, están en el documento 34 (§3.5).
 
-Con independencia de la evolución normativa, **SEVEN-G exige formación en cada iniciativa porque el valor depende de ella**. La alfabetización general de la plantilla se gobierna en el documento 31; este documento trata la formación específica de la iniciativa.
+Con independencia de la evolución normativa, **SEVEN-G exige formación en cada caso de uso porque el valor depende de ella**. La alfabetización general de la plantilla se gobierna en el documento 31; este documento trata la formación específica del caso de uso.
 
 ### 8.2 Formación por público
 
@@ -324,7 +324,7 @@ Los usuarios clave **deberían** participar en el diseño de la experiencia de u
 
 ### 9.3 Representación de los trabajadores
 
-Cuando la iniciativa afecta a condiciones de trabajo, a decisiones sobre empleo o a la supervisión del desempeño, la compañía debe cumplir los derechos de información y consulta aplicables. Entre las referencias vigentes a la fecha de consulta:
+Cuando el caso de uso afecta a condiciones de trabajo, a decisiones sobre empleo o a la supervisión del desempeño, la compañía debe cumplir los derechos de información y consulta aplicables. Entre las referencias vigentes a la fecha de consulta:
 
 - El **artículo 26.7 del Reglamento Europeo de IA**: los responsables del despliegue que sean empleadores informan a los representantes de los trabajadores y a los trabajadores afectados antes de poner en servicio o utilizar un sistema de IA de alto riesgo en el lugar de trabajo.
 - En España, el **artículo 64.4.d) del Estatuto de los Trabajadores**: derecho del comité de empresa a ser informado de los parámetros, reglas e instrucciones de los algoritmos o sistemas de IA que afectan a decisiones que pueden incidir en las condiciones de trabajo, el acceso y mantenimiento del empleo, incluida la elaboración de perfiles.
@@ -356,7 +356,7 @@ Los códigos `IND-` son los del catálogo (documento 41); los `PER-` son los pro
 | 4 | **Continuidad del uso** | Usuarios activos en el periodo que también lo fueron en el anterior ÷ usuarios activos del periodo anterior | Propuesta | M | Fase 6: refuerzo; detecta abandono tras el lanzamiento. |
 | 5 | **Tasa de anulación humana** | Recomendaciones o resultados rechazados o modificados por la persona ÷ recomendaciones o resultados revisados | PER-10 (complementa IND-ADO-04) | M | G5 y R6: calibración de la confianza. |
 | 6 | **Tiempo de revisión por caso** | Mediana del tiempo de revisión humana por caso revisado, con percentil 80 | Propuesta | M | R6: detección de aprobación rutinaria (RT-ORG-04). |
-| 7 | **Cobertura de formación** | Personas con acceso o función de supervisión con formación registrada y evaluada antes del acceso ÷ personas con acceso o función de supervisión | IND-ADO-05 (nivel iniciativa) · PER-02 · PER-03 | M | G5 y R6: condición de acceso. |
+| 7 | **Cobertura de formación** | Personas con acceso o función de supervisión con formación registrada y evaluada antes del acceso ÷ personas con acceso o función de supervisión | IND-ADO-05 (nivel caso de uso) · PER-02 · PER-03 | M | G5 y R6: condición de acceso. |
 | 8 | **Percepción de los usuarios** | Respuestas favorables en las preguntas de utilidad, confianza, apoyo, carga y autonomía (P44) ÷ respuestas válidas | PER-15 | Fase 5, a los 3 meses y en R6 Enterprise | Deseo y refuerzo; alerta temprana de rechazo. |
 | 9 | **Tasa de aplicación de la capacidad liberada** | (Horas materializadas + horas reasignadas explícitamente) ÷ horas liberadas medidas | IND-VAL-08 + IND-VAL-09 · PER-04 + PER-05 | T | R6 y G7: conversión en valor (sección 7.5). |
 | 10 | **Roles actualizados** | Puestos afectados con descripción y objetivos actualizados ÷ puestos afectados según el análisis de impacto | PER-13 · IND-ADO-06 | S | G7 en Aumentar y Transformar; señal 5. |
@@ -381,10 +381,10 @@ Notas:
 ### 10.4 Objetivos y umbrales
 
 - El **objetivo de adopción** se fija en la fase 2 (G2.10): obligatorio en Aumentar, recomendado en Optimizar.
-- En la fase 4 se fijan en P20, para cada indicador seleccionado, la línea base, el objetivo, el plazo y el **umbral mínimo** para G5 y para G7. Los umbrales se fijan antes de conocer los resultados y no se relajan durante la fase sin aprobación del órgano que autorizó la iniciativa (01 §7.4, regla 6).
+- En la fase 4 se fijan en P20, para cada indicador seleccionado, la línea base, el objetivo, el plazo y el **umbral mínimo** para G5 y para G7. Los umbrales se fijan antes de conocer los resultados y no se relajan durante la fase sin aprobación del órgano que autorizó el caso de uso (01 §7.4, regla 6).
 - El seguimiento es mensual durante los primeros seis meses de producción y después se presenta en cada R6 (R6.14).
-- Un uso efectivo inferior al umbral durante dos periodos consecutivos activa revisión en R6 y puede motivar adelantar G7. Si la iniciativa se para o se retira por esta causa, el motivo codificado es **Sin adopción** (documento 03).
-- Los umbrales son propios de cada iniciativa. SEVEN-G no fija valores de referencia de adopción.
+- Un uso efectivo inferior al umbral durante dos periodos consecutivos activa revisión en R6 y puede motivar adelantar G7. Si el caso de uso se para o se retira por esta causa, el motivo codificado es **Sin adopción** (documento 03).
+- Los umbrales son propios de cada caso de uso. SEVEN-G no fija valores de referencia de adopción.
 
 ### 10.5 Correspondencia con los documentos 40, 41 y 50
 
@@ -479,7 +479,7 @@ Todo riesgo Alto o Crítico en tratamiento tiene plan de contingencia (documento
 
 ### 12.3 Coste de la adopción
 
-La formación, la comunicación, el soporte, el tiempo de los usuarios durante el aprendizaje y la pérdida temporal de productividad son costes de la iniciativa. Se estiman en la fase 3 en la categoría *adopción y formación* del documento 42 y forman parte de la inversión inicial (40 §8.2). Omitirlos infla el valor neto esperado y es una causa frecuente de adopción insuficiente por falta de recursos.
+La formación, la comunicación, el soporte, el tiempo de los usuarios durante el aprendizaje y la pérdida temporal de productividad son costes del caso de uso. Se estiman en la fase 3 en la categoría *adopción y formación* del documento 42 y forman parte de la inversión inicial (40 §8.2). Omitirlos infla el valor neto esperado y es una causa frecuente de adopción insuficiente por falta de recursos.
 
 ---
 
@@ -498,7 +498,7 @@ La formación, la comunicación, el soporte, el tiempo de los usuarios durante e
 | **Oficina de IA · auditor de IA** | Verifican P20 y los criterios de adopción en los *gates*; consolidan las lecciones sobre adopción para la cartera. |
 | **Comité de IA** | Revisa la adopción agregada de la cartera y las decisiones de destino de capacidad pendientes. |
 
-Nadie verifica ni decide sobre la adopción de su propia iniciativa (01 §7.4, regla 1).
+Nadie verifica ni decide sobre la adopción de su propio caso de uso (01 §7.4, regla 1).
 
 ### 13.2 Lite y Enterprise
 
@@ -511,7 +511,7 @@ Nadie verifica ni decide sobre la adopción de su propia iniciativa (01 §7.4, r
 | **Información a la representación** | Igual en ambas intensidades cuando es obligatoria. | Igual en ambas intensidades cuando es obligatoria. |
 | **Seguimiento** | Mensual en los primeros seis meses; después, en R6 semestral. | Mensual en los primeros seis meses; después, en R6 trimestral, con informe al comité de IA. |
 
-Las iniciativas de Aumentar y Transformar tienen siempre plan de adopción y de personas, con independencia de la intensidad (01 §3, principio 10).
+Los casos de uso de Aumentar y Transformar tienen siempre plan de adopción y de personas, con independencia de la intensidad (01 §3, principio 10).
 
 ---
 
@@ -520,7 +520,7 @@ Las iniciativas de Aumentar y Transformar tienen siempre plan de adopción y de 
 | Código | Nombre | Uso en este documento |
 |---|---|---|
 | **P20** | Plan de adopción y capacidad | Evidencia principal: análisis de impacto, objetivos e indicadores de adopción, formación, comunicación, destino de la capacidad liberada y seguimiento. |
-| **T20** | Plan de adopción y capacidad | Herramienta de la plantilla P20 y registro de capacidad liberada; alimenta T12 y el registro de iniciativas (T01). |
+| **T20** | Plan de adopción y capacidad | Herramienta de la plantilla P20 y registro de capacidad liberada; alimenta T12 y el registro de casos de uso (T01). |
 | **P08 · P09** | Lienzo de hipótesis de valor · Línea base | Objetivo de adopción (G2.10) y tiempos de referencia por tarea. |
 | **P10 · P12** | Evaluación de viabilidad · Matriz y registro de riesgos | Análisis preliminar de impacto, costes de adopción y riesgos organizativos. |
 | **P17** | Diseño de gobierno y supervisión humana | Supervisores designados y carga de supervisión. La ficha informativa y el registro de información a la representación están en P46. |
@@ -540,7 +540,7 @@ Nota de coherencia: en P20 (sección 4), el indicador denominado *uso efectivo* 
 |---|---|
 | **00 · Qué es y para qué sirve** | Regla 3 de medición y señales 3 y 5 del índice de transformación. |
 | **01 · Metodología fundacional** | Principio 10, fases 4 a 7 (§6), criterios por nivel de ambición (§7.6) y responsabilidad del responsable de producto sobre la adopción (§8.1). |
-| **03 · Herramientas y registro de iniciativas** | Herramienta T20 y motivo codificado *Sin adopción*. |
+| **03 · Herramientas y registro de casos de uso** | Herramienta T20 y motivo codificado *Sin adopción*. |
 | **11 · Modelo de madurez** | Dimensión D5 Personas y adopción. |
 | **12 · Índice de transformación** | Umbrales de las señales 3 (materialización) y 5 (modelo operativo). |
 | **20 · Manuales de fase** | Secuencia completa de actividades de cada fase. |

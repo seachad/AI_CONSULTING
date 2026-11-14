@@ -22,7 +22,7 @@
 | **Who completes it** | AI Operations Owner, with the AI Technical Owner and the AI Product Owner (adoption and value metrics). |
 | **Who verifies it** | AI Office at Lite intensity; AI Auditor at Enterprise intensity. |
 | **At which *gate* it is reviewed** | G4 (design), G5 (tested configuration) and R6 (currency of thresholds). |
-| **Lite versus Enterprise** | Lite may omit the fields marked **(Enterprise)**. Every initiative in production must monitor, as a minimum, performance, availability, cost and the human oversight indicators of P17. |
+| **Lite versus Enterprise** | Lite may omit the fields marked **(Enterprise)**. Every use case in production must monitor, as a minimum, performance, availability, cost and the human oversight indicators of P17. |
 | **Relationship** | P09 Baseline · P16 Lineage (drift reference) · P17 Oversight indicators · P18 Action log · P19 Rollback triggers · P24 Operations manual · P26 Incident response · P28 Value tracking · documents 41 (Indicator catalogue) and 52. |
 
 Rules:
@@ -38,7 +38,7 @@ Rules:
 
 | Field | Content | Guidance |
 |---|---|---|
-| Initiative code | | IA-AAAA-NNN (T01). |
+| Use case code | | IA-AAAA-NNN (T01). |
 | AI system(s) | | Identifier in the inventory (T02). |
 | Technology | | Predictive ML · Generative AI · Agent · Language and document processing · Vision · Optimisation · Embedded third-party AI · Rules (not AI). |
 | Intensity | | Lite · Enterprise. |

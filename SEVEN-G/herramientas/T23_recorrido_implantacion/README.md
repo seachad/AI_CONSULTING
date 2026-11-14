@@ -10,7 +10,7 @@ Aplica el **documento 96** (Puntos de partida y recorrido de implantación): un 
 2. **Punto de partida**: responda las doce preguntas. Q01 admite varias respuestas; si marca IA generativa, indique si hay uno o más sistemas en producción (lo necesita la condición de PP-E en 96 §2.2). La tabla «Por qué este resultado» recorre la regla en su orden (PP-F, PP-E, PP-D, PP-C, PP-B, PP-A) con las respuestas usadas; la de modificadores dice qué respuesta activa cada uno (Q07 → MP1, Q08 sí o no se sabe → MP2, Q09 → MP3, Q05 parcial o formal → MP4, Q10 no → MP5).
 3. **Recorrido**: los hitos de cada etapa ordenados por prioridad (1, 2, C, D, 3, ·). La prioridad de un hito es la más urgente entre el arquetipo principal y sus rasgos (96 §4.3, regla 5) y se ajusta con 96 §4.2: MP1 o MP2 pasan HI-05 y HI-10 a 1; MP2 pasa HI-19 a 1; con MP4, los hitos cubiertos por el gobierno existente (por defecto HI-08 y HI-20; se puede marcar cualquiera) pasan a C; Q04 en «sí» o «no se sabe» pasa HI-02 y HI-03 a 1 (96 §2.4). Con MP5 el recorrido queda bloqueado hasta cumplir HI-01 (condición previa, no un hito más). Cada hito explica de dónde sale su prioridad.
 4. **Estado de cada hito**: pendiente, en curso, cumplido o convalidado (C). Si hay en este navegador un diagnóstico de T15 con una evaluación **verificada** (o independiente), un hito cuyas preguntas del documento 11 están todas en «Sí» en la más reciente aparece **«cumplido según T15»** (96 §4.3, regla 4). Un estado marcado a mano **no se pisa nunca** (D100, D102): se muestra junto a lo que dice T15 y puede quitarse para volver al automático. Un autodiagnóstico se muestra, pero no marca hitos.
-5. **Con el registro T01** (D100): servida desde el sitio, T23 encuentra el registro que T01 tiene guardado y ofrece **«Proponer respuestas desde el registro T01»** para Q01 a Q03: tipos de sistemas de las iniciativas en uso (fase 6 o 7, sin parar ni retirar) según `clasificacion.tecnologia` y `clasificacion.autonomia`, y pilotos en curso (fases 1 a 5) y cuántos son de IA generativa. Las respuestas propuestas se marcan «desde T01» y se pueden editar; una respuesta manual no se sustituye.
+5. **Con el registro T01** (D100): servida desde el sitio, T23 encuentra el registro que T01 tiene guardado y ofrece **«Proponer respuestas desde el registro T01»** para Q01 a Q03: tipos de sistemas de los casos de uso en producción (fase 6 o 7, sin parar ni retirar) según `clasificacion.tecnologia` y `clasificacion.autonomia`, y pilotos en curso (fases 1 a 5) y cuántos son de IA generativa. Las respuestas propuestas se marcan «desde T01» y se pueden editar; una respuesta manual no se sustituye.
 6. **Por rol** y **Plan**: la tabla de 96 §5 con la prioridad y el estado de cada hito; el plan para el comité de IA y la dirección se imprime o se guarda como PDF desde el navegador. «Exportar el recorrido (CSV)» (separador «;», UTF-8).
 7. **Datos**: exportar e importar el JSON de T23 (respuestas, estados, notas y el resultado calculado).
 
@@ -22,13 +22,13 @@ Cada vista lleva junto a su título un botón **«?»** que explica, en el idiom
 
 ## Correspondencia de T01 con Q01
 
-| `clasificacion.tecnologia` de una iniciativa en uso | Respuesta de Q01 |
+| `clasificacion.tecnologia` de un caso de uso en producción | Respuesta de Q01 |
 |---|---|
 | `reglas` | reglas o RPA |
 | `ia_terceros_embebida` | IA de terceros incluida en productos o asistentes |
 | `ml_predictivo`, `vision`, `optimizacion`, `lenguaje_documentos` | ML predictivo, visión u optimización |
 | `ia_generativa`, o `agente` con autonomía A0 o A1 | IA generativa integrada en procesos |
-| `agente` con autonomía A2 o A3, o cualquier iniciativa en uso con autonomía A2 o A3 | agentes que ejecutan acciones (A2/A3) |
+| `agente` con autonomía A2 o A3, o cualquier caso de uso en producción con autonomía A2 o A3 | agentes que ejecutan acciones (A2/A3) |
 
 ## Ficheros
 

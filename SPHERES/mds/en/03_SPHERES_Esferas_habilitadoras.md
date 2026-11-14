@@ -23,19 +23,19 @@ Spheres **05 Data, 06 Knowledge and 07 Decision** do not create value in themsel
 
 | Sphere | What it enables | What happens if it fails |
 |---|---|---|
-| **05 · Data** | AI systems have raw material that is available, reliable and legitimately usable. | Initiatives are delayed, stopped or run on data they should not use. |
+| **05 · Data** | AI systems have raw material that is available, reliable and legitimately usable. | Use cases are delayed, stopped or run on data they should not use. |
 | **06 · Knowledge** | What the organisation knows is accessible and does not depend on a few people. | Assistants give poor answers, and critical know-how is lost when someone leaves. |
 | **07 · Decision** | It is clear what AI decides, what a person validates and what is never delegated. | Delegation happens by default, without real oversight or traceability. |
 
 It is in these spheres **that the uncomfortable questions arise**. Talking about opportunities in Customer or in Product is easy; acknowledging that nobody knows what data the company has, that critical knowledge is in the heads of three people or that a system already sets prices without anyone having decided it, is not.
 
-> **Why it matters.** An ambition to Transform in a value sphere without sufficient capability in Data, Knowledge and Decision **is a sign of risk, not of boldness**. Most delays and failures of AI initiatives are not due to the model, but to unavailable data, undocumented knowledge or decisions without rules. Diagnosing the enablers before setting the ambition avoids promising what the organisation cannot sustain.
+> **Why it matters.** An ambition to Transform in a value sphere without sufficient capability in Data, Knowledge and Decision **is a sign of risk, not of boldness**. Most delays and failures of AI use cases are not due to the model, but to unavailable data, undocumented knowledge or decisions without rules. Diagnosing the enablers before setting the ambition avoids promising what the organisation cannot sustain.
 
 ### When an enabler is the primary sphere
 
-The fact that an initiative **uses** data, knowledge or decisions does not place it in these spheres: almost all AI initiatives use them. An enabler is the **primary sphere** only when the main outcome of the initiative is **the enabling capability itself**.
+The fact that a use case **uses** data, knowledge or decisions does not place it in these spheres: almost all AI use cases use them. An enabler is the **primary sphere** only when the main outcome of the use case is **the enabling capability itself**.
 
-| Initiative (illustrative) | Primary sphere | Reason |
+| Use case (illustrative) | Primary sphere | Reason |
 |---|---|---|
 | Common data platform for several AI use cases. | 05 · Data | The outcome is the capability; the value of the use cases that use it is allocated to those use cases. |
 | Product recommender that uses behavioural data. | 01 · Customer | The main metric is conversion, even though it depends on the data. |
@@ -77,25 +77,25 @@ The Data sphere brings together the **availability, quality, cataloguing, lineag
 
 *Fictitious regional insurance company.*
 
-Management approves three Customer initiatives: a churn risk model, a coverage recommender and an assistant for sales agents. Four months later, all three are stalled in the same phase. The reason is not technical: data on customer interactions is spread across four systems, has no owner, and nobody has confirmed whether the consent under which it was obtained allows it to be used for these purposes. The company decides to open an initiative with **Data** as the primary sphere (**Optimise** level): a catalogue of customer data with an owner, quality rules and a documented legal basis for each use. Only when that initiative reaches its first milestone are the Customer initiatives resumed. At the next review, the board sets **Augment** as the ambition for the Data sphere and asks for a quarterly indicator of initiatives blocked by data.
+Management approves three Customer use cases: a churn risk model, a coverage recommender and an assistant for sales agents. Four months later, all three are stalled in the same phase. The reason is not technical: data on customer interactions is spread across four systems, has no owner, and nobody has confirmed whether the consent under which it was obtained allows it to be used for these purposes. The company decides to open a use case with **Data** as the primary sphere (**Optimise** level): a catalogue of customer data with an owner, quality rules and a documented legal basis for each use. Only when that use case reaches its first milestone are the Customer use cases resumed. At the next review, the board sets **Augment** as the ambition for the Data sphere and asks for a quarterly indicator of use cases blocked by data.
 
 ### Questions for the board
 
 - Do we know what data we have, where it is, who is accountable for its quality and whether we can legally use it for AI?
-- How many initiatives are delayed or stopped for lack of data?
+- How many use cases are delayed or stopped for lack of data?
 - Have we documented where the data used by each system in production to make decisions comes from?
 - Is our data an advantage that a competitor cannot replicate?
 
 ### Warning signs
 
-- Initiatives that reach the build phase without having confirmed access to the data.
+- Use cases that reach the build phase without having confirmed access to the data.
 - Personal data used to train or feed systems without a documented legal basis.
 - Critical datasets without an identified owner.
 - Systems in production without data and model lineage.
 
 ### How it is measured
 
-The reference indicators are catalogue coverage, quality of critical data, documented legal basis, documented lineage, time to data access and initiatives blocked by data. Their formulas are in [SEVEN-G 10 · Sphere map and ambition levels](../../../SEVEN-G/html/en/10_SEVEN-G_Mapa_de_esferas_y_niveles_de_ambicion.html), section 5.5, and their governance in [SEVEN-G 51 · Data and knowledge for AI](../../../SEVEN-G/html/en/51_SEVEN-G_Datos_y_conocimiento.html).
+The reference indicators are catalogue coverage, quality of critical data, documented legal basis, documented lineage, time to data access and use cases blocked by data. Their formulas are in [SEVEN-G 10 · Sphere map and ambition levels](../../../SEVEN-G/html/en/10_SEVEN-G_Mapa_de_esferas_y_niveles_de_ambicion.html), section 5.5, and their governance in [SEVEN-G 51 · Data and knowledge for AI](../../../SEVEN-G/html/en/51_SEVEN-G_Datos_y_conocimiento.html).
 
 ---
 
@@ -134,7 +134,7 @@ The difference from the Data sphere is one of nature: data records facts; knowle
 
 *Fictitious engineering firm specialising in industrial installations.*
 
-The company identifies that the design of one type of installation depends on two engineers close to retirement. It launches an **Augment** initiative in Knowledge: structured sessions in which an assistant interviews the experts about real design decisions, contrasts them with archived projects and builds a base of criteria reviewed by the experts themselves. The result is an assistant that younger engineers consult before each design. Management sets two conditions: that a sample of the answers be reviewed by experts every quarter to measure their accuracy, and that the assistant respect the access permissions for each customer's projects.
+The company identifies that the design of one type of installation depends on two engineers close to retirement. It launches an **Augment** use case in Knowledge: structured sessions in which an assistant interviews the experts about real design decisions, contrasts them with archived projects and builds a base of criteria reviewed by the experts themselves. The result is an assistant that younger engineers consult before each design. Management sets two conditions: that a sample of the answers be reviewed by experts every quarter to measure their accuracy, and that the assistant respect the access permissions for each customer's projects.
 
 ### Questions for the board
 
@@ -232,9 +232,9 @@ Before setting an ambition to Augment or Transform in any value sphere, it is ad
 
 | # | Question | Sphere | If the answer is no |
 |---|---|---|---|
-| 1 | Has the data the ambition requires been identified, with an owner and a legal basis? | 05 | Open a Data initiative first or reduce the ambition. |
+| 1 | Has the data the ambition requires been identified, with an owner and a legal basis? | 05 | Open a Data use case first or reduce the ambition. |
 | 2 | Has the quality of that data been checked on a real sample? | 05 | Set quality thresholds and measure them before building. |
-| 3 | Is the knowledge on which the initiative depends documented and accessible? | 06 | Capture the critical knowledge and assign who verifies the answers. |
+| 3 | Is the knowledge on which the use case depends documented and accessible? | 06 | Capture the critical knowledge and assign who verifies the answers. |
 | 4 | Has it been defined which decisions the system will make or recommend and at what autonomy level? | 07 | Define decision types, A0–A3 level and oversight before deploying. |
 | 5 | Can what the system does be reconstructed and, if necessary, stopped? | 07 | Design traceability and a kill switch as requirements, not as enhancements. |
 
@@ -246,10 +246,10 @@ flowchart LR
   B -->|"Yes"| C["Five questions on Data, Knowledge and Decision"]
   C --> D{"Is any answer no?"}
   D -->|"No"| OK2["Sustainable ambition"]
-  D -->|"Yes"| E["Prior enabling initiative or lower ambition"]
+  D -->|"Yes"| E["Prior enabling use case or lower ambition"]
 ```
 
-> **Why it matters.** This diagnosis is cheap and quick, and it avoids the most costly mistake in AI portfolios: approving ambitious initiatives that are stopped months later for reasons that could have been known from day one.
+> **Why it matters.** This diagnosis is cheap and quick, and it avoids the most costly mistake in AI portfolios: approving ambitious use cases that are stopped months later for reasons that could have been known from day one.
 
 ---
 

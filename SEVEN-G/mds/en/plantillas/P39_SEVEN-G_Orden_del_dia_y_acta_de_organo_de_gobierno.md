@@ -14,7 +14,7 @@
 
 > **Legal notice and disclaimer.** SEVEN-G is a reference methodological framework provided "as is" and for information purposes only. It does not constitute legal, regulatory, financial or professional advice, nor does it guarantee compliance with any law or standard. References to general regulation (such as the EU AI Act, the GDPR, DORA or NIS2), to technical standards and to regulation specific to each sector or jurisdiction may be incomplete, may not apply to a particular case or may become out of date as a result of regulatory changes, interpretations or supervisory positions after their consultation date. **Each organisation that uses SEVEN-G is solely responsible for identifying the regulation that applies to it, verifying that it is current and certifying its own regulatory compliance**, with the appropriate qualified advice. This methodology is a generic, free aid shared with the community so that nobody has to start from scratch; each person or organisation can and should adapt it to its own use. It must not be inferred that its legally sensitive parts have been reviewed by legal counsel: those reviews, for each company or sector, are the ultimate responsibility of the company, consultant or organisation that uses it. Although every effort is made to keep it up to date, some regulation may have changed without being reflected here. To the fullest extent permitted by law, the author accepts no responsibility whatsoever for the effects of its application in any organisation or for its full applicability. The methodology does not grant certification of any kind. The author accepts no liability for any use made of this content or for any decisions taken on the basis of it. The data, figures, companies and cases in the examples are fictitious or illustrative.
 
-> **Why it matters.** The minutes are the evidence that the competent body decided, with a quorum, with no undeclared conflicts and with the clearance that was required. They are required by maturity (11, D1.02, D1.03, D1.07 and D1.09) and by criteria G2.12 and G7.09 of document 21 for Transform initiatives. Without them, a board decision cannot be linked to the *gate* decision (P29) or to the recommendations and decisions register (document 62), and traceability breaks down.
+> **Why it matters.** The minutes are the evidence that the competent body decided, with a quorum, with no undeclared conflicts and with the clearance that was required. They are required by maturity (11, D1.02, D1.03, D1.07 and D1.09) and by criteria G2.12 and G7.09 of document 21 for Transform use cases. Without them, a board decision cannot be linked to the *gate* decision (P29) or to the recommendations and decisions register (document 62), and traceability breaks down.
 
 ## 1. Instructions for use
 
@@ -62,10 +62,10 @@ Start from the body's model and adjust it to the meeting.
 
 | Body and moment | Model items | Source |
 |---|---|---|
-| **Board · annual (C2 or C5)** | 1. Maturity, transformation index and validated versus declared value. 2. AI thesis and ambition per sphere. 3. Risk appetite and thresholds. 4. Transform initiatives (a maximum of three in detail). 5. Previous recommendations. 6. Resolutions. | 30 §3.1 |
+| **Board · annual (C2 or C5)** | 1. Maturity, transformation index and validated versus declared value. 2. AI thesis and ambition per sphere. 3. Risk appetite and thresholds. 4. Transform use cases (a maximum of three in detail). 5. Previous recommendations. 6. Resolutions. | 30 §3.1 |
 | **Board · quarterly (C4)** | 1. Changes in the dashboard. 2. S1 and S2 incidents, and critical nonconformities. 3. Relevant *gate* decisions and retirements. 4. Risks outside appetite. 5. Open and overdue recommendations. | 30 §3.1; 61 §8.5 |
 | **Board committee · quarterly** | 1. High and Critical risks, and concentrations. 2. Regulatory compliance and regulatory changes. 3. Incidents and major and critical nonconformities. 4. Audits and follow-up of findings. 5. Escalated matters. 6. Exceptions for the quarter. | 30 §3.2; P42 |
-| **AI Committee · monthly** | 1. Funnel: registrations, phase changes, stalled initiatives. 2. *Gates* with verification completed. 3. Value and cost deviations. 4. High and Critical risks, and concentration. 5. Incidents, nonconformities and expired conditions. 6. Retirements and lapsed R6 reviews. 7. Corporate and unauthorised use (T21). 8. Exceptions. 9. Matters to escalate. | 30 §3.3; 14 §7.1 |
+| **AI Committee · monthly** | 1. Funnel: registrations, phase changes, stalled use cases. 2. *Gates* with verification completed. 3. Value and cost deviations. 4. High and Critical risks, and concentration. 5. Incidents, nonconformities and expired conditions. 6. Retirements and lapsed R6 reviews. 7. Corporate and unauthorised use (T21). 8. Exceptions. 9. Matters to escalate. | 30 §3.3; 14 §7.1 |
 | **AI Committee · quarterly portfolio review** | Ambition balance · risk and concentration · value · programme traffic light · retirements · budget and capacity · report to the board (C4). | 14 §7.2 |
 
 ### 3.2 Agenda for this meeting
@@ -77,7 +77,7 @@ The first item is always the follow-up of previous resolutions (61 §8.4).
 | 1 | Follow-up of previous resolutions | Information | Secretariat | Section 6 | |
 | 2 | | Information · Decision · Take note | | P29, P42, decision sheet (60 §5)… | |
 | 3 | | | | | |
-| *(illustrative example)* 2 | Authorise the first stage of a Transform initiative (G2) | Decision | AI Sponsor | Sheet DEC-2026-014; P29 verified by the AI Auditor | 15 min |
+| *(illustrative example)* 2 | Authorise the first stage of a Transform use case (G2) | Decision | AI Sponsor | Sheet DEC-2026-014; P29 verified by the AI Auditor | 15 min |
 
 ---
 
@@ -102,7 +102,7 @@ At the start of the meeting, each attendee declares any conflicts relating to th
 | Item | Person | Conflict declared | Type (Actual · Potential · Apparent) | Measure | Counts towards the quorum for the item (Yes · No) |
 |---|---|---|---|---|---|
 | | | | | Abstention · Absence from the debate · Replacement | |
-| *(illustrative example)* 2 | Person F | Sponsors initiative IA-2026-018 | Actual | Abstention (I-6) | No |
+| *(illustrative example)* 2 | Person F | Sponsors use case IA-2026-018 | Actual | Abstention (I-6) | No |
 
 ---
 
@@ -129,7 +129,7 @@ The text of the resolution must be capable of being complied with or checked exa
 
 Only in the AI Committee and, for Transform, in the board or its board committee (G2.12, G7.09).
 
-| Initiative | *Gate* | Iteration | Outcome | P29 record | Verifier | Document 21 criterion | Resolution no. |
+| Use case | *Gate* | Iteration | Outcome | P29 record | Verifier | Document 21 criterion | Resolution no. |
 |---|---|---|---|---|---|---|---|
 | IA-AAAA-NNN | | | Proceed · Proceed with conditions · Iterate · Pivot · Stop · Scale · Retire | Reference | | G2.12 · G7.09 · others | |
 

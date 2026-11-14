@@ -1,6 +1,6 @@
 # AI risk methodology
 
-**How AI risks are identified, assessed, treated, monitored and reported in each initiative and in the portfolio**
+**How AI risks are identified, assessed, treated, monitored and reported in each use case and in the portfolio**
 
 | | |
 |---|---|
@@ -16,16 +16,16 @@
 
 > **Legal notice and disclaimer.** SEVEN-G is a reference methodological framework provided "as is" and for information purposes only. It does not constitute legal, regulatory, financial or professional advice, nor does it guarantee compliance with any law or standard. References to general regulation (such as the EU AI Act, the GDPR, DORA or NIS2), to technical standards and to regulation specific to each sector or jurisdiction may be incomplete, may not apply to a particular case or may become out of date as a result of regulatory changes, interpretations or supervisory positions after their consultation date. **Each organisation that uses SEVEN-G is solely responsible for identifying the regulation that applies to it, verifying that it is current and certifying its own regulatory compliance**, with the appropriate qualified advice. This methodology is a generic, free aid shared with the community so that nobody has to start from scratch; each person or organisation can and should adapt it to its own use. It must not be inferred that its legally sensitive parts have been reviewed by legal counsel: those reviews, for each company or sector, are the ultimate responsibility of the company, consultant or organisation that uses it. Although every effort is made to keep it up to date, some regulation may have changed without being reflected here. To the fullest extent permitted by law, the author accepts no responsibility whatsoever for the effects of its application in any organisation or for its full applicability. The methodology does not grant certification of any kind. The author accepts no liability for any use made of this content or for any decisions taken on the basis of it. The data, figures, companies and cases in the examples are fictitious or illustrative.
 
-<!-- esencial: siempre | Risk register for each initiative from phase 3, with the 5 × 5 scale, inherent and residual risk, and acceptance by the body that corresponds to its level. A Critical residual risk without board approval blocks G3 and G5. Portfolio risk and key risk indicators are applied in proportion to the size of the portfolio. -->
+<!-- esencial: siempre | Risk register for each use case from phase 3, with the 5 × 5 scale, inherent and residual risk, and acceptance by the body that corresponds to its level. A Critical residual risk without board approval blocks G3 and G5. Portfolio risk and key risk indicators are applied in proportion to the size of the portfolio. -->
 
 ## 1. Purpose and scope
 
-This document defines the methodology with which an organisation that applies SEVEN-G manages the risks of its AI systems and initiatives. It is the reference for the framework's risk scales: documents 13 (risk appetite), 14 (portfolio), 21 (*gate* criteria), 35 (security), 36 (third parties), templates P12 and P13 and tool T06 use exactly the scales and levels set here.
+This document defines the methodology with which an organisation that applies SEVEN-G manages the risks of its AI systems and use cases. It is the reference for the framework's risk scales: documents 13 (risk appetite), 14 (portfolio), 21 (*gate* criteria), 35 (security), 36 (third parties), templates P12 and P13 and tool T06 use exactly the scales and levels set here.
 
 ### 1.1 What it covers
 
 - The six-step risk management process: identify, analyse, evaluate, treat, monitor and report.
-- Its application at the framework's two levels: the **initiative** (phases 0–7) and the **portfolio** (corporate cycle C1–C5).
+- Its application at the framework's two levels: the **use case** (phases 0–7) and the **portfolio** (corporate cycle C1–C5).
 - The likelihood and impact scales, the 5 × 5 matrix and the risk levels.
 - Inherent and residual risk, and the assessment of control effectiveness.
 - Risk acceptance, escalation and the risk register.
@@ -56,7 +56,7 @@ This document does not constitute legal advice.
 | 3 | **The worst impact axis is assessed** | Impact is the highest of the five axes; it is not averaged. |
 | 4 | **Every risk has an owner** | Without a named owner, the risk is not registered. |
 | 5 | **Those who build do not accept their own risk** | Acceptance follows the scale in section 7 and respects segregation of duties (01 §8). |
-| 6 | **Risk is systemic** | In addition to the risk of each initiative, portfolio concentration and correlation are managed (principle 5 of 01 §3). |
+| 6 | **Risk is systemic** | In addition to the risk of each use case, portfolio concentration and correlation are managed (principle 5 of 01 §3). |
 | 7 | **The register is living** | It is updated at every *gate*, at every continuity review, after every incident and whenever there is a relevant change. |
 
 ---
@@ -84,13 +84,13 @@ flowchart LR
 | Step | What is done | Output | Owner |
 |---|---|---|---|
 | **1. Identify** | Go through the catalogue of typical risks (section 9), the phase 0 context, the regulatory classification, the architecture and the suppliers. Describe each risk as **cause → event → consequence**. | List of risks with the associated RT code. | AI Product Owner with the AI Technical Owner; facilitated by the AI Risk Owner. |
-| **2. Analyse** | Estimate inherent likelihood and impact using the scales in section 4, justifying the determining impact axis. Identify existing controls. | Inherent level per risk. | Initiative team. |
+| **2. Analyse** | Estimate inherent likelihood and impact using the scales in section 4, justifying the determining impact axis. Identify existing controls. | Inherent level per risk. | Use case team. |
 | **3. Evaluate** | Compare with the appetite and tolerances (document 13). Decide which risks require treatment and in what order. | Prioritisation and proposed response. | AI Risk Owner. |
 | **4. Treat** | Choose the response (avoid, mitigate, transfer, accept), design and apply controls, estimate the target residual and obtain acceptance of the residual. | Mitigation and contingency plan (P13); acceptance decision. | Risk owner; acceptance by whoever is competent under section 7. |
 | **5. Monitor** | Verify the effectiveness of controls, monitor key risk indicators, review at the frequency set for the level and when triggers occur. | Updated register; verified residual. | AI Operations Owner and risk owner; verified by the AI Auditor at the *gates*. |
 | **6. Report** | Present the risk profile to the body that decides the *gate* and, in aggregate, to the AI Committee and the board. | Risk information in P29, board dashboard (T17). | AI Office with the AI Risk Owner. |
 
-### 3.1 In the initiative lifecycle
+### 3.1 In the use case lifecycle
 
 | Phase or gate | Risk activity | Evidence |
 |---|---|---|
@@ -119,11 +119,11 @@ flowchart LR
 
 ### 4.1 Likelihood
 
-Likelihood is estimated for the initiative's horizon or, for systems in production, for the following twelve months. The frequency reference is used for recurring events and the percentage reference for one-off events.
+Likelihood is estimated for the use case's horizon or, for systems in production, for the following twelve months. The frequency reference is used for recurring events and the percentage reference for one-off events.
 
 | Likelihood | Name | Indicative reference |
 |---|---|---|
-| **1** | Rare | Less than once in 5 years or < 5 % over the initiative's horizon |
+| **1** | Rare | Less than once in 5 years or < 5 % over the use case's horizon |
 | **2** | Unlikely | Once every 2–5 years or 5–20 % |
 | **3** | Possible | Once every 1–2 years or 20–50 % |
 | **4** | Likely | Several times a year or 50–80 % |
@@ -171,7 +171,7 @@ Rules of use:
 
 | Concept | Definition |
 |---|---|
-| **Inherent risk** | Level of the risk without considering controls specific to the initiative. General corporate controls are only considered if they are tested and documented in the company. |
+| **Inherent risk** | Level of the risk without considering controls specific to the use case. General corporate controls are only considered if they are tested and documented in the company. |
 | **Target residual risk** | Level expected after applying the planned controls. It is used at G3 and G4. |
 | **Verified residual risk** | Level after checking the effectiveness of the controls with evidence. It is the level required at G5 and monitored at R6. |
 
@@ -228,7 +228,7 @@ Every High or Critical risk under treatment **must** have a **contingency plan**
 
 Rules:
 
-- No one accepts a risk of an initiative they are building (01 §8.2).
+- No one accepts a risk of a use case they are building (01 §8.2).
 - Acceptance expires when the level, the system, the supplier, the model, the regulatory classification or the autonomy level changes, and in any case on the recorded validity date.
 - Accepting a risk does not exempt compliance with regulation: a legal breach is not accepted as a risk; it is corrected.
 
@@ -263,7 +263,7 @@ The risk register is the "Risk matrix and register" evidence of 01 §6.10. It is
 
 | Block | Field | Content |
 |---|---|---|
-| **Identification** | Identifier | Initiative code and sequential number (illustrative: IA-2026-014 · R03); for portfolio risks, scope "Portfolio". |
+| **Identification** | Identifier | Use case code and sequential number (illustrative: IA-2026-014 · R03); for portfolio risks, scope "Portfolio". |
 | | Typical risk | Catalogue code `RT-<CAT>-NN`, or "Specific" if there is no equivalent. |
 | | Category | EST, TEC, DAT, ECO, LEG, ORG, REP, GEN, SEG or TER. |
 | | Title and description | Cause → event → consequence, in plain language. |
@@ -290,13 +290,13 @@ The risk register is the "Risk matrix and register" evidence of 01 §6.10. It is
 
 ### 8.2 Register quality
 
-The verifier checks, as a minimum: that all Medium or higher risks have an owner, a control and a residual; that the justification of likelihood and impact is traceable; that acceptances are signed by the competent person and are current; that the typical risks applicable to the initiative's technology and classification have been considered (included or discarded with a reason); and that the register existed before the *gate* (01 §7.4, rule 3). The specific criteria are in documents 21 and 22.
+The verifier checks, as a minimum: that all Medium or higher risks have an owner, a control and a residual; that the justification of likelihood and impact is traceable; that acceptances are signed by the competent person and are current; that the typical risks applicable to the use case's technology and classification have been considered (included or discarded with a reason); and that the register existed before the *gate* (01 §7.4, rule 3). The specific criteria are in documents 21 and 22.
 
 ---
 
 ## 9. Catalogue of typical risks
 
-The catalogue is a starting list, not an exhaustive one. In phase 3, the team **must** review at least the typical risks in the categories that apply to its technology and exposure, and record those discarded with a reason. Each company **may** extend the catalogue with sequential codes and **must** declare those it adds. To carry out that review, the Excel of the use case generated by T06 lists the typical risks that apply to the profile of the initiative (technology, exposure, autonomy, regulatory classification, ambition and third parties) and have no registered risk with their code, with a proposed mitigation and contingency for each one and columns to include or discard it with a reason.
+The catalogue is a starting list, not an exhaustive one. In phase 3, the team **must** review at least the typical risks in the categories that apply to its technology and exposure, and record those discarded with a reason. Each company **may** extend the catalogue with sequential codes and **must** declare those it adds. To carry out that review, the Excel of the use case generated by T06 lists the typical risks that apply to the profile of the use case (technology, exposure, autonomy, regulatory classification, ambition and third parties) and have no registered risk with their code, with a proposed mitigation and contingency for each one and columns to include or discard it with a reason.
 
 The *Phase* column indicates where the risk is identified and where it is mainly treated; controls with a SEG or AG code are described in document 35.
 
@@ -304,12 +304,12 @@ The *Phase* column indicates where the risk is identified and where it is mainly
 
 | Code | Risk and description | Typical causes | Typical controls | Phase |
 |---|---|---|---|---|
-| **RT-EST-01** | **Misalignment with the AI thesis.** The initiative does not contribute to the ambition or the spheres approved in C2. | Technology-driven origin; weak sponsorship; no screening. | Fit with the thesis at G0; sphere classification (P07); prioritisation in C3. | 0–1 |
+| **RT-EST-01** | **Misalignment with the AI thesis.** The use case does not contribute to the ambition or the spheres approved in C2. | Technology-driven origin; weak sponsorship; no screening. | Fit with the thesis at G0; sphere classification (P07); prioritisation in C3. | 0–1 |
 | **RT-EST-02** | **Declared but unevidenced ambition.** What is Optimise is presented as Augment or Transform, and decisions are made with wrong expectations. | Incentives to "transform"; ambiguous criteria. | Five classification questions (T05); confirmation in phase 2; review at G7. | 1, 2, 7 |
 | **RT-EST-03** | **Missed opportunity.** The decision process is so slow that the advantage is lost. | Long *gate* time limits; the same return criterion for all bets. | Reference time limits (03 §3.6); criteria by ambition (01 §7.6); agility metrics. | C3, all |
 | **RT-EST-04** | **Technology lock-in.** The chosen platform or model is superseded and changing is costly. | Dependence on proprietary features; tightly coupled architecture. | Model abstraction layer; portability of data and prompts; review at R6. | 4, 6 |
-| **RT-EST-05** | **Withdrawal of sponsorship or funding.** The initiative loses support before demonstrating value. | Changes in leadership; value not visible in time. | Stage-gated funding; learning milestones; stop criteria set in advance. | 0, C3 |
-| **RT-EST-06** | **Portfolio concentration in a single bet.** A single initiative or platform concentrates investment or expected value. | Large bets without limits per stage. | Concentration limits in the appetite (13); quarterly review. | C3, C4 |
+| **RT-EST-05** | **Withdrawal of sponsorship or funding.** The use case loses support before demonstrating value. | Changes in leadership; value not visible in time. | Stage-gated funding; learning milestones; stop criteria set in advance. | 0, C3 |
+| **RT-EST-06** | **Portfolio concentration in a single bet.** A single use case or platform concentrates investment or expected value. | Large bets without limits per stage. | Concentration limits in the appetite (13); quarterly review. | C3, C4 |
 
 ### 9.2 Technical (TEC)
 
@@ -369,7 +369,7 @@ The *Phase* column indicates where the risk is identified and where it is mainly
 | **RT-ORG-05** | **Unauthorised use of AI (*shadow AI*).** Employees use unapproved tools with company data. | Lack of approved alternatives; policy not known. | Acceptable use policy (31); corporate alternatives; detection (T21). | C1, C4 |
 | **RT-ORG-06** | **Roles without segregation of duties.** Those who build also verify, accept risks or decide. | Small teams; roles not assigned. | Role register (P03); incompatibilities (01 §8.2). | 0 |
 | **RT-ORG-07** | **Failure to inform and consult.** Workers' representatives or affected workers do not receive, before use, the required information or consultation on a system that affects working conditions or employment. | Late or missing legal analysis; changes in parameters, rules or purpose not communicated. | Information and consultation process (50 §7.2) and information sheet (50 §7.3); no *Proceed* or *Proceed with conditions* at G5 without evidence that information has been provided; IND-ADO-12 (41). | 3–5, 6 |
-| **RT-ORG-08** | **Labour dispute.** The introduction of AI gives rise to collective consultations, complaints or disputes that delay, condition or block the initiative. | Late or ambiguous communication; effect on employment without dialogue; destinations of released capacity decided without participation. | Position on AI and work approved in C2 (13); effect assessment (50 §3.4); dialogue with workers' representatives and internal communication (50 §7 and §10); senior management decision on relevant PER-D1 destinations. | 2–5, 7 |
+| **RT-ORG-08** | **Labour dispute.** The introduction of AI gives rise to collective consultations, complaints or disputes that delay, condition or block the use case. | Late or ambiguous communication; effect on employment without dialogue; destinations of released capacity decided without participation. | Position on AI and work approved in C2 (13); effect assessment (50 §3.4); dialogue with workers' representatives and internal communication (50 §7 and §10); senior management decision on relevant PER-D1 destinations. | 2–5, 7 |
 | **RT-ORG-09** | **Deterioration of wellbeing.** Work intensification, excessive monitoring, loss of autonomy or oversight workload harm the health and engagement of the people affected. | Objectives and workloads not reviewed after AI; usage data used to monitor people; excessive review volumes. | Review of the occupational risk assessment, including psychosocial risks, and purpose limitation (50 §9.2); oversight design (P17); pulse survey (IND-ADO-15, 41). | 4–6 |
 
 ### 9.7 Reputational (REP)
@@ -426,7 +426,7 @@ The *Phase* column indicates where the risk is identified and where it is mainly
 
 ## 10. Portfolio risk
 
-The risks of initiatives do not simply add up: they interact. The AI Committee **must** review the portfolio, at least quarterly, with three analyses.
+The risks of use cases do not simply add up: they interact. The AI Committee **must** review the portfolio, at least quarterly, with three analyses.
 
 ### 10.1 Concentration
 
@@ -450,7 +450,7 @@ For each common cause, the AI Office **should** build a **portfolio scenario** a
 1. Unavailability of the main model provider for several days.
 2. Change in the behaviour of a foundation model used by several systems.
 3. Exploited vulnerability in a common agent component (connector, tool server, library).
-4. Regulatory reclassification of a type of use present in several initiatives.
+4. Regulatory reclassification of a type of use present in several use cases.
 5. Data breach in a shared knowledge base.
 
 ### 10.3 Supplier dependency
@@ -511,8 +511,8 @@ The report to the board uses business language: what can happen, whom it affects
 | **P12** | Risk matrix and register | Register with the fields in section 8, inherent and residual heat map. Phases 3, 5 and 6. |
 | **P13** | Mitigation and contingency plan | Treatment actions, target residual, contingencies and triggers (sections 5–7). Phase 3. |
 | **P42** | Quarterly second-line report | Quarterly portfolio risk reporting to the board committee (sections 10–12). |
-| **T06** | Risk matrix and register | Calculation of levels with the extreme impact rule, inherent and residual 5 × 5 matrix for each initiative and for the portfolio, control effectiveness, acceptance by the body for its level, observations from sections 4 to 8 (Critical residual without approval, High without contingency, acceptance expired or insufficient, review overdue), CSV export and **Excel of the use case**: matrix, register, mitigation plan (P13 §4) and contingency plan (P13 §6) proposed for each risk from the catalogue in section 9 according to its typical risk, and the typical risks that apply to the profile of the initiative and are not registered, to include or discard with a reason (section 8.2); the proposals are a starting point and do not replace the decision of the competent body. "Risks" view of the T01 register. Portfolio concentration and correlation (section 10) are analysed with P12 §7. |
-| T01 · T02 · T08 · T09 · T17 | Initiative register, inventory, incidents, suppliers and board dashboard | Sources and destinations of risk data. |
+| **T06** | Risk matrix and register | Calculation of levels with the extreme impact rule, inherent and residual 5 × 5 matrix for each use case and for the portfolio, control effectiveness, acceptance by the body for its level, observations from sections 4 to 8 (Critical residual without approval, High without contingency, acceptance expired or insufficient, review overdue), CSV export and **Excel of the use case**: matrix, register, mitigation plan (P13 §4) and contingency plan (P13 §6) proposed for each risk from the catalogue in section 9 according to its typical risk, and the typical risks that apply to the profile of the use case and are not registered, to include or discard with a reason (section 8.2); the proposals are a starting point and do not replace the decision of the competent body. "Risks" view of the T01 register. Portfolio concentration and correlation (section 10) are analysed with P12 §7. |
+| T01 · T02 · T08 · T09 · T17 | Use case register, inventory, incidents, suppliers and board dashboard | Sources and destinations of risk data. |
 
 ---
 

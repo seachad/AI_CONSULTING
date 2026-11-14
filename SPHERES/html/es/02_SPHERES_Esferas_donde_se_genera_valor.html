@@ -374,6 +374,13 @@ blockquote.aviso-legal strong { color: var(--negro); }
 .dz-card-titulo { font: 700 19px/1.2 var(--serif); color: var(--negro); margin: 0 0 6px; }
 .dz-card-texto { font: 400 13.5px/1.4 var(--sans); color: var(--tinta-2); margin: 0 0 12px; flex: 1; }
 .dz-card .dz-item { background: var(--papel); }
+/* documento 00 de cada marco: sus presentaciones en slides (1, 5, 10 y 20 en tarjetas de dos columnas; el curso, de cuatro) */
+@media (min-width: 900px) { .dz-card[data-grupo="slides-curso"] { grid-column: span 4; } .dz-card[data-grupo="slides-otros"] { grid-column: span 3; } }
+.dz-card[data-grupo="slides-curso"] { border-top-color: var(--teal); }
+.dz-card[data-grupo="slides-curso"] .dz-card-rotulo { color: var(--teal); }
+.dz-card[data-grupo="slides-otros"] { border-top-color: var(--oxford); }
+.dz-card[data-grupo="slides-otros"] .dz-card-rotulo { color: var(--oxford); }
+.descargas-zona[id] { scroll-margin-top: 72px; }
 .dz-grupo { font: 700 12px/1.2 var(--sans); letter-spacing: .08em; text-transform: uppercase; color: var(--tinta-2); margin: 8px 0 -2px; padding-top: 10px; border-top: 1px solid var(--regla); }
 .dz-grupo:first-child { margin-top: 0; padding-top: 0; border-top: 0; }
 @media print { .descargas-zona { display: none !important; } }
@@ -523,7 +530,7 @@ h2 .codigo, h3 .codigo { font-weight: 400; }
 <p>Cada esfera se presenta con la misma estructura: qué es, por qué importa, qué cubre y qué no, ejemplos por nivel de ambición, un caso ilustrativo, preguntas para el consejo, señales de alerta y cómo se mide.</p>
 <p><strong>Los ejemplos son genéricos e ilustrativos.</strong> No son recomendaciones ni referencias de mercado, y cualquier compañía o cifra que aparezca es ficticia.</p>
 <blockquote>
-<p><strong>Por qué importa.</strong> Si una iniciativa de IA no mueve ningún indicador de estas cuatro esferas, no genera valor directo. Puede ser necesaria (una plataforma de datos, un control regulatorio), pero debe justificarse como habilitadora, límite o gobierno, y no con un ahorro o un ingreso que no va a producir.</p>
+<p><strong>Por qué importa.</strong> Si un caso de uso de IA no mueve ningún indicador de estas cuatro esferas, no genera valor directo. Puede ser necesaria (una plataforma de datos, un control regulatorio), pero debe justificarse como habilitadora, límite o gobierno, y no con un ahorro o un ingreso que no va a producir.</p>
 </blockquote>
 <hr />
 <h2 id="esfera-01-cliente"><span class="antetitulo">02</span>Esfera 01 · Cliente</h2>
@@ -718,7 +725,7 @@ h2 .codigo, h3 .codigo { font-weight: 400; }
 <li>Se anuncian funcionalidades con IA sin medir su uso real.</li>
 <li>El coste de IA por unidad de servicio no se conoce o crece más rápido que los ingresos del producto.</li>
 <li>No existe responsable de producto que responda del comportamiento de la IA ante el cliente.</li>
-<li>Las iniciativas de nuevo producto se evalúan con el mismo plazo de retorno que las de eficiencia y se paran antes de obtener evidencia de mercado.</li>
+<li>Los casos de uso de nuevo producto se evalúan con el mismo plazo de retorno que los de eficiencia y se paran antes de obtener evidencia de mercado.</li>
 </ul>
 <h3 id="como-se-mide-2">Cómo se mide</h3>
 <p>Los indicadores de referencia son los ingresos habilitados por IA, el uso de las funcionalidades con IA, la reducción del tiempo de lanzamiento, el coste de IA por unidad de servicio, el margen de la oferta con IA y los defectos contenidos antes del lanzamiento. Sus fórmulas están en <a href="../../../SEVEN-G/html/es/10_SEVEN-G_Mapa_de_esferas_y_niveles_de_ambicion.html">SEVEN-G 10</a>, sección 5.2.</p>
@@ -758,7 +765,7 @@ h2 .codigo, h3 .codigo { font-weight: 400; }
 <tr>
 <td><strong>Promotoras</strong></td>
 <td>Quien mejor conoce un proceso puede identificar usos de IA que nadie externo vería.</td>
-<td>Un canal para proponer iniciativas que entren en el registro y compitan en la cartera en igualdad de condiciones.</td>
+<td>Un canal para proponer casos de uso que entren en el registro y compitan en la cartera en igualdad de condiciones.</td>
 <td>Se pierde la fuente de ideas más cercana al trabajo real y crece el uso no autorizado de herramientas de IA.</td>
 </tr>
 </tbody>
@@ -792,7 +799,7 @@ h2 .codigo, h3 .codigo { font-weight: 400; }
 <td></td>
 </tr>
 <tr>
-<td>Iniciativas de IA propuestas por los propios empleados.</td>
+<td>Casos de uso de IA propuestas por los propios empleados.</td>
 <td></td>
 </tr>
 </tbody>
@@ -832,26 +839,26 @@ h2 .codigo, h3 .codigo { font-weight: 400; }
 <li>¿La IA sustituye, aumenta o reorganiza el trabajo de las personas? Esa respuesta define la cultura, la marca como empleador y la retención de talento.</li>
 <li>¿Qué ocurre con la capacidad liberada: se convierte en menor coste, se reasigna o simplemente desaparece?</li>
 <li>¿Tienen las personas que usan o supervisan IA la formación adecuada a su rol?</li>
-<li>¿Qué proporción de las iniciativas nace de los propios empleados?</li>
+<li>¿Qué proporción de los casos de uso nace de los propios empleados?</li>
 </ul>
 <h3 id="senales-de-alerta-3">Señales de alerta</h3>
 <ul>
 <li>Se informa de horas liberadas sin indicar si se han convertido en menor coste o se han reasignado.</li>
 <li>Se mide el número de licencias asignadas y no el uso efectivo.</li>
 <li>Las decisiones sobre puestos se toman como consecuencia técnica de un proyecto, sin decisión explícita de la dirección.</li>
-<li>No existe plan de adopción en las iniciativas de Aumentar o Transformar.</li>
+<li>No existe plan de adopción en los casos de uso de Aumentar o Transformar.</li>
 <li>La rotación de los colectivos afectados crece sin que nadie la analice.</li>
 </ul>
 <h3 id="como-se-mide-3">Cómo se mide</h3>
-<p>Los indicadores de referencia son la adopción efectiva, la capacidad liberada materializada y reasignada, la alfabetización en IA por rol, los roles rediseñados y las iniciativas promovidas por empleados. Sus fórmulas están en <a href="../../../SEVEN-G/html/es/10_SEVEN-G_Mapa_de_esferas_y_niveles_de_ambicion.html">SEVEN-G 10</a>, sección 5.3, y su gestión en <a href="../../../SEVEN-G/html/es/50_SEVEN-G_Personas_y_organizacion.html">SEVEN-G 50 · Personas y organización</a>.</p>
-<p><strong>Relación con otras esferas.</strong> Personas es casi siempre <strong>esfera secundaria</strong> de las iniciativas de Aumentar o Transformar que cambian roles, aunque su esfera principal sea Cliente u Operaciones. También se relaciona con Conocimiento (06), porque lo que saben las personas es parte del activo que la IA puede preservar o perder.</p>
+<p>Los indicadores de referencia son la adopción efectiva, la capacidad liberada materializada y reasignada, la alfabetización en IA por rol, los roles rediseñados y los casos de uso promovidos por empleados. Sus fórmulas están en <a href="../../../SEVEN-G/html/es/10_SEVEN-G_Mapa_de_esferas_y_niveles_de_ambicion.html">SEVEN-G 10</a>, sección 5.3, y su gestión en <a href="../../../SEVEN-G/html/es/50_SEVEN-G_Personas_y_organizacion.html">SEVEN-G 50 · Personas y organización</a>.</p>
+<p><strong>Relación con otras esferas.</strong> Personas es casi siempre <strong>esfera secundaria</strong> de los casos de uso de Aumentar o Transformar que cambian roles, aunque su esfera principal sea Cliente u Operaciones. También se relaciona con Conocimiento (06), porque lo que saben las personas es parte del activo que la IA puede preservar o perder.</p>
 <hr />
 <h2 id="esfera-04-operaciones"><span class="antetitulo">05</span>Esfera 04 · Operaciones</h2>
 <p><strong>Lema:</strong> procesos, cadena de valor y eficiencia.</p>
 <h3 id="que-es-4">Qué es</h3>
 <p>La esfera Operaciones reúne la IA aplicada a <strong>procesos internos, cadena de suministro, producción, mantenimiento, back office, control del fraude y riesgos operativos</strong>.</p>
 <blockquote>
-<p><strong>Por qué importa.</strong> Operaciones es la esfera con el retorno más fácil de demostrar y la que concentra la mayor parte de las primeras iniciativas. Esa facilidad es a la vez su ventaja y su trampa: una cartera puede llenarse de automatizaciones de tareas aisladas que suman horas liberadas pero no cambian el coste real ni el diseño de los procesos.</p>
+<p><strong>Por qué importa.</strong> Operaciones es la esfera con el retorno más fácil de demostrar y la que concentra la mayor parte de los primeros casos de uso. Esa facilidad es a la vez su ventaja y su trampa: una cartera puede llenarse de automatizaciones de tareas aisladas que suman horas liberadas pero no cambian el coste real ni el diseño de los procesos.</p>
 </blockquote>
 <h3 id="que-cubre-y-que-no-4">Qué cubre y qué no</h3>
 <div class="tabla"><table>
@@ -917,7 +924,7 @@ h2 .codigo, h3 .codigo { font-weight: 400; }
 </table></div>
 <h3 id="caso-ilustrativo-4">Caso ilustrativo</h3>
 <p><em>Distribuidora ficticia de productos de consumo.</em></p>
-<p>La distribuidora tiene once iniciativas en Operaciones, todas de <strong>Optimizar</strong>: lectura de albaranes, conciliación de facturas, previsión de demanda por tienda y otras. En la revisión anual descubre que la suma de &quot;horas liberadas&quot; declaradas equivale a decenas de puestos, pero el coste real del área no ha bajado. Las automatizaciones habían acelerado pasos aislados y el trabajo se había acumulado en las excepciones. La dirección decide <strong>rediseñar de extremo a extremo</strong> el proceso de aprovisionamiento: el sistema propone y ejecuta los pedidos rutinarios dentro de límites aprobados y los compradores se dedican a negociación y excepciones (<strong>Aumentar</strong>, con posible evolución a <strong>Transformar</strong> si el cambio alcanza a toda la función de compras). El consejo pregunta qué ocurre si el sistema falla en plena campaña y si existe un plan de reversión probado.</p>
+<p>La distribuidora tiene once casos de uso en Operaciones, todos de <strong>Optimizar</strong>: lectura de albaranes, conciliación de facturas, previsión de demanda por tienda y otras. En la revisión anual descubre que la suma de &quot;horas liberadas&quot; declaradas equivale a decenas de puestos, pero el coste real del área no ha bajado. Las automatizaciones habían acelerado pasos aislados y el trabajo se había acumulado en las excepciones. La dirección decide <strong>rediseñar de extremo a extremo</strong> el proceso de aprovisionamiento: el sistema propone y ejecuta los pedidos rutinarios dentro de límites aprobados y los compradores se dedican a negociación y excepciones (<strong>Aumentar</strong>, con posible evolución a <strong>Transformar</strong> si el cambio alcanza a toda la función de compras). El consejo pregunta qué ocurre si el sistema falla en plena campaña y si existe un plan de reversión probado.</p>
 <h3 id="preguntas-para-el-consejo-4">Preguntas para el consejo</h3>
 <ul>
 <li>¿Qué procesos tienen un retorno demostrable dentro del horizonte que hemos fijado y cuáles requieren un rediseño completo?</li>
@@ -950,19 +957,19 @@ h2 .codigo, h3 .codigo { font-weight: 400; }
 <tbody>
 <tr>
 <td><strong>Eficiencia interna</strong></td>
-<td>La mayoría de las iniciativas en 04 y en Optimizar; 01 y 02 casi vacías.</td>
+<td>La mayoría de los casos de uso en 04 y en Optimizar; 01 y 02 casi vacías.</td>
 <td>La IA se usa para reducir coste, no para competir.</td>
 <td>¿Es esa nuestra estrategia o es la opción más fácil de justificar?</td>
 </tr>
 <tr>
 <td><strong>Escaparate</strong></td>
-<td>Iniciativas visibles en 01 y 02 sin uso medido; pocas en 03 y 04.</td>
+<td>Casos de uso visibles en 01 y 02 sin uso medido; pocos en 03 y 04.</td>
 <td>La IA se usa para comunicar, no para cambiar.</td>
-<td>¿Qué valor validado tienen las iniciativas que anunciamos?</td>
+<td>¿Qué valor validado tienen los casos de uso que anunciamos?</td>
 </tr>
 <tr>
 <td><strong>Personas olvidadas</strong></td>
-<td>Iniciativas de Aumentar o Transformar en 01, 02 o 04 sin 03 como esfera secundaria.</td>
+<td>Casos de uso de Aumentar o Transformar en 01, 02 o 04 sin 03 como esfera secundaria.</td>
 <td>Se cambian roles sin plan de adopción ni decisión explícita.</td>
 <td>¿Quién ha decidido cómo cambia el trabajo de las personas afectadas?</td>
 </tr>
@@ -987,7 +994,7 @@ h2 .codigo, h3 .codigo { font-weight: 400; }
 </tr>
 <tr>
 <td><strong><a href="01_SPHERES_Niveles_de_ambicion.html" title="Documento 01 &#183; Metodolog&#237;a fundacional de SEVEN-G">documento 01</a> · Niveles de ambición</strong></td>
-<td>Cómo se clasifica el nivel de cada iniciativa.</td>
+<td>Cómo se clasifica el nivel de cada caso de uso.</td>
 </tr>
 <tr>
 <td><strong><a href="03_SPHERES_Esferas_habilitadoras.html" title="Documento 03 &#183; Herramientas de SEVEN-G y registro de iniciativas">documento 03</a> · Esferas habilitadoras</strong></td>
@@ -1027,7 +1034,7 @@ h2 .codigo, h3 .codigo { font-weight: 400; }
 </table></div>
 
 </main>
-<footer class="pie"><div><span>© 2026 Fernando García Varela · Metodolog&#237;a SPHERES</span><span>Generado el 19-10-2026</span></div><p class="pie-ia">Contenido generado y maquetado con apoyo de IA bajo supervisi&#243;n editorial del autor.</p></footer>
+<footer class="pie"><div><span>© 2026 Fernando García Varela · Metodolog&#237;a SPHERES</span><span>Generado el 14-11-2026</span></div><p class="pie-ia">Contenido generado y maquetado con apoyo de IA bajo supervisi&#243;n editorial del autor.</p></footer>
 <script src="../../../SEVEN-G/html/es/codigos.js" defer></script>
 
 <script>

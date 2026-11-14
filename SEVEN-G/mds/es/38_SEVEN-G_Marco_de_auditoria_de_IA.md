@@ -16,13 +16,13 @@
 
 > **Aviso legal y exención de responsabilidad.** SEVEN-G es un marco metodológico de referencia que se ofrece «tal cual» y con fines exclusivamente informativos. No constituye asesoramiento jurídico, regulatorio, financiero ni profesional, ni garantiza el cumplimiento de ninguna norma. Las referencias a regulación general (como el Reglamento Europeo de IA, el RGPD, DORA o NIS2), a normas técnicas y a regulación específica de cada sector o jurisdicción pueden ser incompletas, no aplicar a un caso concreto o quedar desactualizadas por cambios normativos, interpretaciones o criterios de las autoridades posteriores a su fecha de consulta. **Cada organización que use SEVEN-G es la única responsable de identificar la normativa que le aplica, verificar su vigencia y certificar su propio cumplimiento regulatorio**, con el asesoramiento cualificado que corresponda. Esta metodología es una ayuda genérica y gratuita, compartida con la comunidad para que nadie tenga que empezar desde cero; cada persona u organización puede y debe adaptarla a su propio uso. No debe entenderse que sus partes jurídicamente sensibles hayan sido revisadas por una asesoría jurídica: esas revisiones, para cada empresa o sector, son responsabilidad última de la empresa, el consultor o la organización que la use. Aunque se procura mantenerla al día, alguna norma puede haber cambiado sin que se recoja aquí. En la máxima medida permitida por la ley, el autor no asume responsabilidad alguna por los efectos de su aplicación en ninguna organización ni por su aplicabilidad completa. La metodología no otorga certificación de ningún tipo. El autor no asume responsabilidad alguna por el uso que se haga de este contenido ni por las decisiones que se adopten con él. Los datos, cifras, compañías y casos de los ejemplos son ficticios o ilustrativos.
 
-<!-- esencial: enterprise | Marco completo de auditoría —plan anual, programa de trabajo, informe y seguimiento— en alcance Enterprise. En alcance Lite basta la revisión semestral por muestreo de las puertas Lite, más el auditor de IA en todas las puertas de las iniciativas Enterprise. -->
+<!-- esencial: enterprise | Marco completo de auditoría —plan anual, programa de trabajo, informe y seguimiento— en alcance Enterprise. En alcance Lite basta la revisión semestral por muestreo de las puertas Lite, más el auditor de IA en todas las puertas de los casos de uso Enterprise. -->
 
 ## 1. Objeto y alcance
 
 Este documento define cómo se audita la inteligencia artificial en una compañía que aplica SEVEN-G. Su finalidad es dar **aseguramiento objetivo** de que:
 
-- las iniciativas cumplen el ciclo de vida, las evidencias obligatorias y las reglas de decisión;
+- los casos de uso cumplen el ciclo de vida, las evidencias obligatorias y las reglas de decisión;
 - los sistemas en producción siguen bajo control y aportan el valor declarado con el estado de validación correcto;
 - el marco está implantado en la compañía y funciona de forma eficaz;
 - los terceros que prestan servicios de IA cumplen lo exigido;
@@ -61,8 +61,8 @@ Se aplica a los auditores de IA, a la función de auditoría interna y a los aud
 
 | Nivel | Requisito | Cómo se comprueba |
 |---|---|---|
-| **Organizativa** | La función que aporta auditores de IA depende funcionalmente de la comisión delegada del consejo (documento 30 §3.5), no de áreas que patrocinen iniciativas. | Estatuto de auditoría interna; organigrama. |
-| **Individual** | El auditor no ha tenido rol en la iniciativa ni en el diseño, construcción u operación del sistema; no depende jerárquicamente del patrocinador; no ha asesorado sobre los controles auditados en los doce meses anteriores (30, incompatibilidad I-10). | Declaración de independencia firmada antes de cada encargo (P41, modelo B). |
+| **Organizativa** | La función que aporta auditores de IA depende funcionalmente de la comisión delegada del consejo (documento 30 §3.5), no de áreas que patrocinen casos de uso. | Estatuto de auditoría interna; organigrama. |
+| **Individual** | El auditor no ha tenido rol en el caso de uso ni en el diseño, construcción u operación del sistema; no depende jerárquicamente del patrocinador; no ha asesorado sobre los controles auditados en los doce meses anteriores (30, incompatibilidad I-10). | Declaración de independencia firmada antes de cada encargo (P41, modelo B). |
 | **Económica** | Un auditor externo no audita soluciones que ha diseñado, implantado o vendido, ni productos de empresas vinculadas (30, I-11). La retribución no depende del resultado. | Declaración de relaciones con proveedores; revisión de contratos. |
 | **Rotación** | Se recomienda que un mismo auditor principal no audite el mismo sistema Enterprise más de [tres] ejercicios consecutivos. | Registro de asignaciones en T01. |
 | **Expertos técnicos** | El auditor puede apoyarse en expertos (ciencia de datos, seguridad ofensiva, jurídico). Los expertos deben cumplir los mismos requisitos de independencia respecto del objeto auditado y trabajan bajo la dirección del auditor, que responde de la conclusión. | Declaración del experto; programa de trabajo con su alcance. |
@@ -71,8 +71,8 @@ Se aplica a los auditores de IA, a la función de auditoría interna y a los aud
 
 | Amenaza | Ejemplo ilustrativo | Salvaguarda |
 |---|---|---|
-| Autorrevisión | El auditor participó en el diseño del plan de reversión. | Sustitución del auditor para esa iniciativa. |
-| Interés propio | Objetivos del auditor ligados al número de iniciativas en producción. | Objetivos basados en calidad y cobertura del plan. |
+| Autorrevisión | El auditor participó en el diseño del plan de reversión. | Sustitución del auditor para ese caso de uso. |
+| Interés propio | Objetivos del auditor ligados al número de casos de uso en producción. | Objetivos basados en calidad y cobertura del plan. |
 | Familiaridad | El auditor lleva años trabajando con el equipo técnico. | Rotación; revisión de calidad por otro auditor. |
 | Intimidación | Presión del patrocinador para cerrar un *gate* antes de una fecha. | Escalado a la comisión delegada (30, E-13); plazos de verificación protegidos. |
 | Dependencia del auditado para la evidencia técnica | El auditor solo dispone de las métricas que calcula el equipo. | Reejecución independiente o acceso directo a datos y registros. |
@@ -103,10 +103,10 @@ Si la independencia se ve comprometida, el auditor lo comunica antes de iniciar 
 
 | Tipo | Objeto | Cuándo | Quién | Criterios | Resultado |
 |---|---|---|---|---|---|
-| **De *gate*** | Evidencias y resultados de una fase antes de la decisión. | En todos los *gates* Enterprise; por muestreo en Lite. | Auditor de IA asignado a la iniciativa. | Criterios `G<n>.<nn>` del documento 21 y listas `LV-G<n>` del documento 22. | Resultado de verificación que se aporta al órgano que decide. |
+| **De *gate*** | Evidencias y resultados de una fase antes de la decisión. | En todos los *gates* Enterprise; por muestreo en Lite. | Auditor de IA asignado al caso de uso. | Criterios `G<n>.<nn>` del documento 21 y listas `LV-G<n>` del documento 22. | Resultado de verificación que se aporta al órgano que decide. |
 | **De continuidad** | Funcionamiento eficaz de los controles de un sistema en producción durante un periodo, y veracidad de la información de R6. | En las R6 Enterprise (al menos una al año en profundidad) y según el plan en Lite. | Auditor de IA. | Criterios `R6.<nn>` del documento 21; manual de operación; hipótesis de valor. | Resultado que se aporta a R6 o adelanta G7. |
 | **Del marco en la compañía** | Diseño y eficacia del gobierno de la IA: órganos, inventario, registro, políticas, riesgos, medición, no conformidades. Incluye la auditoría de la declaración de aplicación (sección 11). | Anual, en C5; antes de la primera declaración de aplicación. | Auditoría interna o auditor externo. | 01 completo; documentos 30, 31, 32, 33, 37 y 40; política corporativa aprobada. | Informe a la comisión delegada y al consejo. |
-| **Temática** | Un riesgo o control transversal a varias iniciativas. | Según el plan anual. | Auditor principal con expertos. | Requisitos del tema en la biblioteca SEVEN-G y regulación aplicable. | Informe con conclusión por tema y hallazgos por sistema. |
+| **Temática** | Un riesgo o control transversal a varios casos de uso. | Según el plan anual. | Auditor principal con expertos. | Requisitos del tema en la biblioteca SEVEN-G y regulación aplicable. | Informe con conclusión por tema y hallazgos por sistema. |
 | **De proveedor** | Cumplimiento por un tercero de los requisitos contractuales y del nivel de exigencia N1–N3. | N3: al menos anual; N2: según riesgo; N1: por excepción. | Auditor de IA o de terceros; puede apoyarse en informes independientes. | Contrato; documento 36; evaluación P14. | Informe que alimenta la reevaluación del proveedor. |
 
 Además, se realizan **auditorías de seguimiento** (verificación de acciones correctivas) y **reauditorías** (repetición total o parcial tras un resultado No conforme), descritas en la sección 10.
@@ -130,12 +130,12 @@ Además, se realizan **auditorías de seguimiento** (verificación de acciones c
 
 ### 5.1 Universo auditable
 
-El universo auditable se construye a partir del **inventario de sistemas de IA** (T02, documento 32) y del **registro de iniciativas** (T01), y se completa con:
+El universo auditable se construye a partir del **inventario de sistemas de IA** (T02, documento 32) y del **registro de casos de uso** (T01), y se completa con:
 
 | Unidad auditable | Fuente |
 |---|---|
 | Cada sistema de IA en desarrollo, piloto o producción | T02 |
-| Cada iniciativa con *gates* previstos en el ejercicio | T01 |
+| Cada caso de uso con *gates* previstos en el ejercicio | T01 |
 | Cada proveedor de IA con nivel N2 o N3 | T09 |
 | Los procesos del marco: ciclo corporativo, gestión de cartera, inventario, riesgos, medición, no conformidades, políticas y alfabetización | Documentos 01, 14, 31, 32, 33, 37, 40 |
 | Los temas transversales identificados por la segunda línea o por incidentes | Informes de riesgos; T08 |
@@ -170,7 +170,7 @@ Cada sistema del universo se puntúa con los factores siguientes. La tabla es **
 
 | Bloque | Contenido | Regla de cobertura |
 |---|---|---|
-| Auditorías de *gate* Enterprise | Previsión de *gates* por iniciativa según T01. | 100 %. |
+| Auditorías de *gate* Enterprise | Previsión de *gates* por caso de uso según T01. | 100 %. |
 | Auditorías de *gate* Lite | Muestra de *gates* Lite del ejercicio. | Según 21 §10.3. |
 | Auditorías de continuidad | Sistemas de prioridad Alta y los de prioridad Media que corresponda por rotación. | Sección 5.2. |
 | Auditoría del marco | Incluye la declaración de aplicación. | Anual. |
@@ -347,9 +347,9 @@ La clasificación definitiva y el proceso de contención, causa raíz, acción c
 **Reglas de agregación**
 
 1. Varias no conformidades menores sobre **el mismo requisito en el mismo sistema** que, en conjunto, afectan a la decisión o al control, se clasifican como una **mayor**.
-2. La misma no conformidad menor repetida en **tres o más iniciativas** en un ejercicio indica un fallo del marco y se registra, además, como **mayor en la auditoría del marco**.
+2. La misma no conformidad menor repetida en **tres o más casos de uso** en un ejercicio indica un fallo del marco y se registra, además, como **mayor en la auditoría del marco**.
 3. Una no conformidad mayor **no corregida en plazo** se reclasifica como crítica si el riesgo que controla es Alto o Crítico.
-4. **Reincidencia:** una no conformidad menor que se repite **tres veces en doce meses** en la misma iniciativa o proceso se clasifica como **mayor** (37 §3.3).
+4. **Reincidencia:** una no conformidad menor que se repite **tres veces en doce meses** en el mismo caso de uso o proceso se clasifica como **mayor** (37 §3.3).
 
 ### 8.2 Resultado de la auditoría
 
@@ -361,7 +361,7 @@ La clasificación definitiva y el proceso de contención, causa raíz, acción c
 
 Además de lo anterior, y aunque el resultado sea Conforme con observaciones, **no se admite Continuar con condiciones** cuando la no conformidad menor afecta a controles críticos de seguridad, cumplimiento legal o supervisión humana (01 §7.3); en ese caso el auditor lo indica expresamente.
 
-El resultado de auditoría **no es la decisión del *gate***: es la verificación sobre la que decide el órgano competente. El auditor no recomienda si la iniciativa debe continuar por su valor de negocio.
+El resultado de auditoría **no es la decisión del *gate***: es la verificación sobre la que decide el órgano competente. El auditor no recomienda si el caso de uso debe continuar por su valor de negocio.
 
 ---
 
@@ -371,7 +371,7 @@ El resultado de auditoría **no es la decisión del *gate***: es la verificació
 
 | # | Sección | Contenido |
 |---|---|---|
-| 1 | **Identificación** | Código de auditoría (se propone `AUD-AAAA-NNN`), tipo, objeto (sistema `SIA-AAAA-NNN`, iniciativa `IA-AAAA-NNN`, proveedor o proceso), periodo auditado, fechas, auditor principal, expertos, destinatarios, versión del informe. |
+| 1 | **Identificación** | Código de auditoría (se propone `AUD-AAAA-NNN`), tipo, objeto (sistema `SIA-AAAA-NNN`, caso de uso `IA-AAAA-NNN`, proveedor o proceso), periodo auditado, fechas, auditor principal, expertos, destinatarios, versión del informe. |
 | 2 | **Resumen para la dirección** | Resultado (Conforme, Conforme con observaciones, No conforme); número de hallazgos por clase; tres mensajes principales en lenguaje no técnico; riesgos para la compañía si no se actúa. |
 | 3 | **Objetivo, alcance y criterios** | Qué se auditó y qué no; criterios aplicados (códigos `G<n>.<nn>`, `R6.<nn>`, documentos y normas). |
 | 4 | **Limitaciones** | Información no disponible, accesos denegados, pruebas no realizadas y su efecto en la conclusión. |
@@ -429,7 +429,7 @@ Reglas:
 1. **Cerrar no es implantar.** Una acción implantada sin evidencia de eficacia no cierra una no conformidad mayor o crítica.
 2. **Acciones vencidas.** Se escalan según 30 §8.2 y figuran en el informe trimestral a la comisión delegada.
 3. **Aceptación del riesgo en lugar de corregir.** Solo es posible si el órgano con nivel suficiente (30 §7.2) acepta expresamente el riesgo residual y el incumplimiento no es legal; el auditor registra la aceptación y cierra el hallazgo como "riesgo aceptado", no como "corregido".
-4. **Reauditoría en *gates*.** Tras un No conforme en un *gate*, la solicitud vuelve al equipo sin decisión y, una vez corregidas las evidencias, la iniciativa vuelve a solicitar el *gate*; la nueva verificación cuenta como iteración (01 §7.4, regla 5).
+4. **Reauditoría en *gates*.** Tras un No conforme en un *gate*, la solicitud vuelve al equipo sin decisión y, una vez corregidas las evidencias, el caso de uso vuelve a solicitar el *gate*; la nueva verificación cuenta como iteración (01 §7.4, regla 5).
 
 ---
 
@@ -448,21 +448,21 @@ Una compañía puede declarar que aplica SEVEN-G cuando cumple las catorce regla
 | Regla del núcleo (01 §14.1) | Evidencias requeridas | Pruebas mínimas | Clasificación si no se cumple |
 |---|---|---|---|
 | **N-01** Inventario completo con clasificación regulatoria, intensidad y responsable. | T02; indicadores de calidad (32 §8). | Conciliación del inventario con fuentes independientes (32 §9); muestra de fichas (95 %/10 %: 29) frente a la realidad. | Mayor; crítica si hay sistemas de alto riesgo sin inventariar |
-| **N-02** Registro de iniciativas con la trazabilidad de 01 §6.11. | T01. | Muestra de iniciativas con eventos de fase y *gate*; ninguna con presupuesto consumido antes de su alta. | Mayor |
-| **N-03** Intensidad determinada en cada iniciativa y revisada en G3 y en cada R6. | T01 (P04). | Análisis del total: iniciativas sin intensidad; muestra de P04 frente a los ocho criterios Enterprise. | Mayor |
-| **N-04** Todas las iniciativas nuevas recorren el ciclo con *gates* registrados. | T01, T03, P29. | Análisis del total: iniciativas dadas de alta tras la adopción sin G0 o con saltos de fase; muestra de *gates* con pruebas de la sección 6.2 (incluida anterioridad). | Mayor; crítica si hay sistemas en producción sin G5 |
+| **N-02** Registro de casos de uso con la trazabilidad de 01 §6.11. | T01. | Muestra de casos de uso con eventos de fase y *gate*; ninguno con presupuesto consumido antes de su alta. | Mayor |
+| **N-03** Intensidad determinada en cada caso de uso y revisada en G3 y en cada R6. | T01 (P04). | Análisis del total: casos de uso sin intensidad; muestra de P04 frente a los ocho criterios Enterprise. | Mayor |
+| **N-04** Todos los casos de uso nuevos recorren el ciclo con *gates* registrados. | T01, T03, P29. | Análisis del total: casos de uso dados de alta tras la adopción sin G0 o con saltos de fase; muestra de *gates* con pruebas de la sección 6.2 (incluida anterioridad). | Mayor; crítica si hay sistemas en producción sin G5 |
 | **N-05** G3 decidido siempre por separado. | T01 (decisiones de G3). | Análisis del total: decisiones de G3 en la misma sesión que otra puerta. | Mayor |
-| **N-06** Roles y órganos asignados con las incompatibilidades de 01 §8.2. | Mandatos (documento 30); P03 de las iniciativas. | Revisión de mandatos; análisis del total de asignaciones en T01 para detectar incompatibilidades. | Mayor |
+| **N-06** Roles y órganos asignados con las incompatibilidades de 01 §8.2. | Mandatos (documento 30); P03 de los casos de uso. | Revisión de mandatos; análisis del total de asignaciones en T01 para detectar incompatibilidades. | Mayor |
 | **N-07** Validación dual y evidencia anterior a la decisión. | T01 (verificador, fechas de solicitud, de evidencia y de decisión). | Muestra de *gates*: verificador distinto del decisor y del equipo; evidencias fechadas antes de la solicitud (EV.05). | Mayor; crítica si hay documentación elaborada a posteriori |
 | **N-08** Ningún criterio «Sí ◆» admitido como condición. | T01, T03. | Análisis del total de condiciones: ninguna sobre un criterio «Sí ◆». | Crítica |
-| **N-09** Hipótesis de valor con línea base y criterios de parada antes de la viabilidad. | P08, P09; T11. | Muestra de iniciativas en fase 3 o posterior: hipótesis falsable, línea base y criterio de parada fechados antes de G2. | Mayor |
+| **N-09** Hipótesis de valor con línea base y criterios de parada antes de la viabilidad. | P08, P09; T11. | Muestra de casos de uso en fase 3 o posterior: hipótesis falsable, línea base y criterio de parada fechados antes de G2. | Mayor |
 | **N-10** Clasificación regulatoria y registro de riesgos antes de diseñar; ningún Crítico sin aprobación del consejo. | P11, P12; T06. | Análisis del total de riesgos residuales Críticos y sus aprobaciones; muestra de clasificaciones fechadas antes de G3. | Crítica si hay un Crítico sin aprobación; mayor en lo demás |
 | **N-11** Reversión probada y revisión de continuidad vigente en producción; regularización de lo anterior en el plazo de C2. | T01; P19; actas de R6; lista de regularización. | Análisis del total de fechas de R6 frente a la periodicidad; muestra de R6 y de pruebas de reversión; avance de la regularización frente al plazo. | Mayor |
 | **N-12** C1 y C2 completados; tesis, ambición por esfera y apetito de riesgo aprobados por el consejo; información de IA al menos trimestral. | Actas del consejo; documento de tesis y apetito (documento 13); diagnóstico de C1. | Revisión de actas y fechas; coherencia de los umbrales usados en la cartera con los aprobados. | Crítica (no puede declararse) |
 | **N-13** Reglas de medición del valor aplicadas e información al consejo con el panel. | Panel del consejo; T12; actas. | Muestra de casos: fórmula, estado de validación, capacidad liberada, atribución única (reglas de 00 §6); comprobación de que el consejo recibe el panel en C4. | Mayor |
 | **N-14** No conformidades gestionadas con el proceso de 01 §12. | T08; informes a la comisión delegada. | Análisis del total de no conformidades: clasificación, plazos de contención y plan, cierre con eficacia. | Mayor |
 
-La regularización de las iniciativas anteriores a la adopción, en el plazo aprobado en C2, forma parte de N-11.
+La regularización de los casos de uso anteriores a la adopción, en el plazo aprobado en C2, forma parte de N-11.
 
 ### 11.3 Conclusión y uso de la declaración
 
@@ -517,7 +517,7 @@ ISO/IEC 42001:2023 establece requisitos para un sistema de gestión de la IA. Su
 | Código | Nombre | Uso en este documento |
 |---|---|---|
 | **T02** | Inventario de sistemas de IA | Universo auditable y priorización. |
-| **T01** | Registro de iniciativas | Previsión de *gates*, eventos, asignación y rotación de auditores. |
+| **T01** | Registro de casos de uso | Previsión de *gates*, eventos, asignación y rotación de auditores. |
 | **T03** | Gestor de *gates* | Resultado de verificación por criterio y bloqueo de decisiones ante No conforme. |
 | **T08** | Registro de no conformidades e incidentes | Alta y seguimiento de no conformidades derivadas de auditoría. |
 | **T09** | Registro de proveedores de IA | Universo y resultados de auditorías de proveedor. |
@@ -542,7 +542,7 @@ ISO/IEC 42001:2023 establece requisitos para un sistema de gestión de la IA. Su
 | Documento | Relación |
 |---|---|
 | **01 · Metodología fundacional** | Validación dual, reglas de decisión, no conformidades y declaración de aplicación (§14). |
-| **03 · Herramientas y registro de iniciativas** | Plazos de decisión de *gate* y datos del registro. |
+| **03 · Herramientas y registro de casos de uso** | Plazos de decisión de *gate* y datos del registro. |
 | **21 · Criterios de *gate* y auditoría** | Criterios `G<n>.<nn>` y `R6.<nn>` que se verifican. |
 | **22 · Listas de verificación por *gate*** | Controles binarios `LV-G<n>`. |
 | **30 · Modelo de gobierno** | Independencia de la tercera línea, incompatibilidades, escalado. |

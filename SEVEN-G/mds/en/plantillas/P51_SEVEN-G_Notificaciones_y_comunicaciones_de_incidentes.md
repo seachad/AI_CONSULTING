@@ -47,7 +47,7 @@ This template does not constitute legal advice (reference consultation date of t
 | Field | Content | Guidance |
 |---|---|---|
 | Incident | | INC-AAAA-NNN (P27, T08). |
-| System and initiative | | SIA-AAAA-NNN · IA-AAAA-NNN. |
+| System and use case | | SIA-AAAA-NNN · IA-AAAA-NNN. |
 | Current severity | | S1 · S2 · S3 · S4 (37 §4.2). |
 | Date and time of detection | | Start of the clocks. |
 | Company's role in relation to the system | | Provider · Deployer · Both (P11, document 34). |

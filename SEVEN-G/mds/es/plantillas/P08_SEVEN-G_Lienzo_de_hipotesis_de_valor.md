@@ -1,6 +1,6 @@
 # Lienzo de hipótesis de valor
 
-**Formula el valor esperado de la iniciativa como una hipótesis falsable, medible y expresada en dinero, con su método de atribución y sus criterios de parada fijados antes de invertir.**
+**Formula el valor esperado del caso de uso como una hipótesis falsable, medible y expresada en dinero, con su método de atribución y sus criterios de parada fijados antes de invertir.**
 
 | | |
 |---|---|
@@ -32,7 +32,7 @@ Reglas que se aplican (00 §6):
 - Se separan **eficiencias**, **retorno** y **coste recurrente**. **Valor neto anual = eficiencias + retorno − coste recurrente.**
 - La **capacidad liberada no suma** hasta que se materializa o se reasigna de forma explícita.
 - Cada euro se atribuye a **un solo caso**; si hay resultados compartidos, se declara el reparto.
-- **Una hipótesis que no puede fallar no es válida.** Los criterios de parada no pueden relajarse después sin aprobación del órgano que autorizó la iniciativa (01 §7.4).
+- **Una hipótesis que no puede fallar no es válida.** Los criterios de parada no pueden relajarse después sin aprobación del órgano que autorizó el caso de uso (01 §7.4).
 
 Las cifras de los ejemplos son **ficticias**.
 
@@ -42,8 +42,8 @@ Las cifras de los ejemplos son **ficticias**.
 
 | Campo | Contenido | Guía |
 |---|---|---|
-| Código de la iniciativa | | IA-AAAA-NNN. |
-| Nombre de la iniciativa | | |
+| Código del caso de uso | | IA-AAAA-NNN. |
+| Nombre del caso de uso | | |
 | Nivel de ambición confirmado | | Optimizar · Aumentar · Transformar (P07, columna Confirmada). |
 | Esfera principal | | Taxonomía de 03 §3.3. |
 | Intensidad | | Lite · Enterprise. |
@@ -112,7 +112,7 @@ Prueba de falsabilidad:
 | Amenazas a la validez | | Estacionalidad, cambios simultáneos en el proceso, efecto novedad, selección de casos favorables. |
 | Cómo se controlan | | Medidas para neutralizar cada amenaza. |
 | Quién valida la medición | | Control de gestión o auditoría (condición para el estado *validado*). |
-| Reparto con otras iniciativas | | Si otra iniciativa contribuye al mismo resultado, porcentaje atribuido a cada una y criterio (regla 5). |
+| Reparto con otros casos de uso | | Si otro caso de uso contribuye al mismo resultado, porcentaje atribuido a cada uno y criterio (regla 5). |
 
 ---
 

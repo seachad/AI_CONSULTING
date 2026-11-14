@@ -62,7 +62,7 @@ The AI Reviewer reduces the risk, but two artificial intelligences can coincide 
 |---|---|
 | All SPAD work | At least one person reviews and leaves a record (reviewer, date, outcome), normally in version control. |
 | Sensitive code (authentication, authorisation, payments, personal data), limits on agent actions, decisions about people or critical production systems | **Second human review** by a person who did not orchestrate the generation. |
-| SEVEN-G initiative with Enterprise intensity | The requirements of SEVEN-G 53 §7 also apply. |
+| SEVEN-G use case with Enterprise intensity | The requirements of SEVEN-G 53 §7 also apply. |
 
 > **Why it matters.** Segregation of duties between artificial intelligences is necessary but not sufficient: the one who answers to the organisation for the code being correct is a person, and that responsibility cannot be delegated to a tool.
 
@@ -163,7 +163,7 @@ Not all work needs eleven separate artefacts. The reduced version groups phases 
 
 | Criterion for using the reduced version | Criterion that requires the complete version |
 |---|---|
-| Bounded change in one component, with no personal data or money and no effect on decisions about people. | Sensitive code, agents with A2 or A3 autonomy, critical production systems, SEVEN-G Enterprise initiative. |
+| Bounded change in one component, with no personal data or money and no effect on decisions about people. | Sensitive code, agents with A2 or A3 autonomy, critical production systems, SEVEN-G Enterprise use case. |
 | Team of one or two people and a single model. | Several teams or model providers. |
 | No external audit obligations on the development. | Regulated sector with development traceability requirements. |
 

@@ -1,14 +1,14 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$id": "https://seachad.com/seven-g/herramientas/T01/esquema_registro.schema.json",
-  "title": "SEVEN-G · T01 Registro de iniciativas · Modelo de datos común",
+  "title": "SEVEN-G · T01 Registro de casos de uso · Modelo de datos común",
   "description": "Modelo de datos común de las herramientas SEVEN-G (documento 03 §4). Un único fichero JSON contiene la configuración, las personas y todas las entidades. null significa «sin dato» y nunca equivale a cero. Fechas AAAA-MM-DD. Importes en la moneda de meta.moneda.",
   "type": "object",
   "required": ["version_esquema", "meta", "personas", "iniciativas", "eventos", "decisiones_gate", "condiciones", "evidencias", "valores"],
   "additionalProperties": false,
   "properties": {
     "$schema": { "type": "string" },
-    "version_esquema": { "enum": ["0.1", "0.2", "0.3", "0.4", "0.5", "0.6", "0.7", "0.8"], "description": "0.2 añade a 0.1 solo campos opcionales para el panel del consejo (T17): iniciativas[].panel, valores[].concepto y meta.panel. 0.3 añade solo campos opcionales para las iniciativas transversales y las plataformas habilitadoras (documento 40 §7.2): iniciativas[].alcance y valores[].area. 0.4 añade solo campos opcionales a riesgos[] para la matriz y registro de riesgos (T06, documento 33 §8.1): eje del impacto, controles y su eficacia, valoración residual objetivo o verificada, contingencia, estado, tendencia, próxima revisión y aceptación. 0.5 añade solo campos opcionales para el índice de transformación (T14, documento 12) y el registro del consejo (T18, documento 62): iniciativas[].indice (verificación de IT-P2 e IT-P3, supervisión humana verificada, unidad completa rediseñada y capacidad liberada, materializada y reasignada), valores[].oferta_habilitada_ia, meta.indice (ingresos totales e IT-D3) y decisiones_consejo[] (DEC). 0.6 añade solo la lista opcional madurez[] (resumen de cada diagnóstico de madurez, documento 11, que escribe T15 y lee el panel T17). 0.7 añade solo madurez[].perfiles (resumen de los perfiles NIST de cada diagnóstico, D115). 0.8 añade solo madurez[].lentes (madurez en tres lentes de cada diagnóstico: huella tecnológica HT0–HT5, alcance del impacto IM1–IM4, gobierno mínimo exigible y alertas, documentos 11 §7.6 y 12 §3.7, D120). Un fichero 0.1 a 0.7 es un 0.8 válido." },
+    "version_esquema": { "enum": ["0.1", "0.2", "0.3", "0.4", "0.5", "0.6", "0.7", "0.8"], "description": "0.2 añade a 0.1 solo campos opcionales para el panel del consejo (T17): iniciativas[].panel, valores[].concepto y meta.panel. 0.3 añade solo campos opcionales para los casos de uso transversales y las plataformas habilitadoras (documento 40 §7.2): iniciativas[].alcance y valores[].area. 0.4 añade solo campos opcionales a riesgos[] para la matriz y registro de riesgos (T06, documento 33 §8.1): eje del impacto, controles y su eficacia, valoración residual objetivo o verificada, contingencia, estado, tendencia, próxima revisión y aceptación. 0.5 añade solo campos opcionales para el índice de transformación (T14, documento 12) y el registro del consejo (T18, documento 62): iniciativas[].indice (verificación de IT-P2 e IT-P3, supervisión humana verificada, unidad completa rediseñada y capacidad liberada, materializada y reasignada), valores[].oferta_habilitada_ia, meta.indice (ingresos totales e IT-D3) y decisiones_consejo[] (DEC). 0.6 añade solo la lista opcional madurez[] (resumen de cada diagnóstico de madurez, documento 11, que escribe T15 y lee el panel T17). 0.7 añade solo madurez[].perfiles (resumen de los perfiles NIST de cada diagnóstico, D115). 0.8 añade solo madurez[].lentes (madurez en tres lentes de cada diagnóstico: huella tecnológica HT0–HT5, alcance del impacto IM1–IM4, gobierno mínimo exigible y alertas, documentos 11 §7.6 y 12 §3.7, D120). Un fichero 0.1 a 0.7 es un 0.8 válido." },
     "aviso_legal": { "type": "string", "description": "Aviso legal y exención de responsabilidad de SEVEN-G y de la herramienta (en el idioma de la interfaz al exportar). Opcional al importar; la exportación del JSON completo siempre lo incluye." },
     "meta": { "$ref": "#/$defs/meta" },
     "personas": { "type": "array", "items": { "$ref": "#/$defs/persona" } },
@@ -43,7 +43,7 @@
     "esfera": { "enum": ["01", "02", "03", "04", "05", "06", "07", "08", "09"], "description": "01 Cliente · 02 Producto y servicio · 03 Personas · 04 Operaciones · 05 Datos · 06 Conocimiento · 07 Decisión · 08 Regulación, ética y responsabilidad · 09 Gobierno de la IA" },
     "ambicion": { "enum": ["optimizar", "aumentar", "transformar"] },
     "ambicion_o_nula": { "enum": ["optimizar", "aumentar", "transformar", null] },
-    "intensidad": { "enum": ["lite", "enterprise", "express"], "description": "express desde D147 (opcional): iniciativa interna, reversible, A0–A1, sin datos sensibles y bajo el umbral Express de C2; mismas puertas que Lite con la lista reducida de criterios (21 §2.5)." },
+    "intensidad": { "enum": ["lite", "enterprise", "express"], "description": "express desde D147 (opcional): caso de uso interno, reversible, A0–A1, sin datos sensibles y bajo el umbral Express de C2; mismas puertas que Lite con la lista reducida de criterios (21 §2.5)." },
     "regulatoria": { "enum": ["prohibido", "alto_riesgo", "transparencia", "riesgo_minimo", "fuera_ambito", "pendiente"], "description": "Prohibido · Alto riesgo · Obligaciones de transparencia · Riesgo mínimo · Fuera de ámbito · Pendiente de clasificar" },
     "tecnologia": { "enum": ["ml_predictivo", "ia_generativa", "agente", "lenguaje_documentos", "vision", "optimizacion", "ia_terceros_embebida", "reglas"], "description": "ML predictivo · IA generativa · Agente · Procesamiento de lenguaje y documentos · Visión · Optimización · IA de terceros embebida · Reglas (no es IA)" },
     "exposicion": { "enum": ["interna", "empleados", "clientes_indirecta", "clientes_directa"] },
@@ -100,11 +100,11 @@
             "plazos_fase": { "type": "object", "required": ["lite", "enterprise"], "additionalProperties": false, "properties": { "lite": { "$ref": "#/$defs/plazos" }, "enterprise": { "$ref": "#/$defs/plazos" }, "express": { "$ref": "#/$defs/plazos" } } },
             "plazo_decision_dias_habiles": { "type": "object", "required": ["lite", "enterprise"], "properties": { "lite": { "type": "integer" }, "enterprise": { "type": "integer" } } },
             "revision_continuidad_dias": { "type": "object", "required": ["lite", "enterprise"], "properties": { "lite": { "type": "integer" }, "enterprise": { "type": "integer" } } },
-            "historial_minimo_ponderado": { "type": "integer", "minimum": 1, "description": "Iniciativas resueltas (en producción o cerradas) que han pasado por una fase necesarias para mostrar su probabilidad histórica y el valor ponderado." },
+            "historial_minimo_ponderado": { "type": "integer", "minimum": 1, "description": "Casos de uso resueltos (en producción o cerrados) que han pasado por una fase necesarias para mostrar su probabilidad histórica y el valor ponderado." },
             "umbral_inversion_enterprise": { "$ref": "#/$defs/importe" },
-            "umbral_express": { "$ref": "#/$defs/importe", "description": "Inversión más coste anual por debajo del cual una iniciativa puede ser Express, aprobado en C2 (D147)." },
+            "umbral_express": { "$ref": "#/$defs/importe", "description": "Inversión más coste anual por debajo del cual un caso de uso puede ser Express, aprobado en C2 (D147)." },
             "coste_hora_gobierno": { "$ref": "#/$defs/importe", "description": "Coste por hora de gobierno aprobado en C2 para valorar las horas declaradas (41 IND-COS-13; D148)." },
-            "objetivo_coste_gobierno_pct": { "type": "object", "additionalProperties": false, "description": "Objetivo de proporcionalidad: coste del gobierno de una iniciativa sobre su inversión, en %, por intensidad (01 §3 principio 11; D148). Valores de partida, a calibrar en C5.", "properties": { "express": { "type": "number" }, "lite": { "type": "number" }, "enterprise": { "type": "number" } } }
+            "objetivo_coste_gobierno_pct": { "type": "object", "additionalProperties": false, "description": "Objetivo de proporcionalidad: coste del gobierno de un caso de uso sobre su inversión, en %, por intensidad (01 §3 principio 11; D148). Valores de partida, a calibrar en C5.", "properties": { "express": { "type": "number" }, "lite": { "type": "number" }, "enterprise": { "type": "number" } } }
           }
         }
       }
@@ -299,7 +299,7 @@
             "complejidad": { "enum": ["baja", "media", "alta", null], "description": "Fija el límite de días en desarrollo del panel (config_panel.json, ciclo_vida.dias_limite)." },
             "prioridad": { "enum": ["alta", "media", "baja", null] },
             "plazo_potencial": { "type": ["string", "null"], "pattern": "^\\d{4}-(0[1-9]|1[0-2])$", "description": "Mes (AAAA-MM) en que se prevé alcanzar el valor esperado." },
-            "observaciones_consejo": { "$ref": "#/$defs/texto_o_nulo", "description": "Observaciones del consejo asesor sobre la iniciativa." },
+            "observaciones_consejo": { "$ref": "#/$defs/texto_o_nulo", "description": "Observaciones del consejo asesor sobre el caso de uso." },
             "controles": {
               "type": "object",
               "additionalProperties": false,
@@ -335,7 +335,7 @@
           }
         },
         "resultado_operativo": {
-          "description": "D150. Resultado operativo (documento 40 §11.1, regla 11): indicadores físicos de la iniciativa (documento 41) con su línea base, su objetivo y su valor actual. Es una de las tres perspectivas que se presentan en paralelo con el valor económico y la exposición al riesgo; nunca se traduce a euros ni suma en el neto. Opcional.",
+          "description": "D150. Resultado operativo (documento 40 §11.1, regla 11): indicadores físicos del caso de uso (documento 41) con su línea base, su objetivo y su valor actual. Es una de las tres perspectivas que se presentan en paralelo con el valor económico y la exposición al riesgo; nunca se traduce a euros ni suma en el neto. Opcional.",
           "type": "array",
           "items": {
             "type": "object",
@@ -358,7 +358,7 @@
         "etiquetas_libres": { "type": "array", "uniqueItems": true, "items": { "type": "string" } },
         "sistemas": { "type": "array", "uniqueItems": true, "items": { "$ref": "#/$defs/id_sistema" } },
         "indice": {
-          "description": "Esquema 0.5. Evidencia de la iniciativa para el índice de transformación (documento 12 §4.4): verificación de IT-P2 e IT-P3 en un gate, unidad organizativa completa rediseñada y capacidad (T20).",
+          "description": "Esquema 0.5. Evidencia del caso de uso para el índice de transformación (documento 12 §4.4): verificación de IT-P2 e IT-P3 en un gate, unidad organizativa completa rediseñada y capacidad (T20).",
           "type": ["object", "null"],
           "additionalProperties": false,
           "properties": {
@@ -382,13 +382,13 @@
       }
     },
     "alcance": {
-      "description": "Alcance de la iniciativa (esquema 0.3, documento 40 §7.2). Opcional; null o ausente = iniciativa de una unidad. «transversal»: herramienta que usan varias unidades de negocio (por ejemplo, un asistente generativo en la suite ofimática); se mide por unidad con la escalera coste → adopción → capacidad liberada → valor materializado. «plataforma»: capacidad habilitadora (datos, conocimiento, decisión) cuyo valor se imputa a los casos que la usan (documento 10 §4.1, regla 3).",
+      "description": "Alcance del caso de uso (esquema 0.3, documento 40 §7.2). Opcional; null o ausente = caso de uso de una unidad. «transversal»: herramienta que usan varias unidades de negocio (por ejemplo, un asistente generativo en la suite ofimática); se mide por unidad con la escalera coste → adopción → capacidad liberada → valor materializado. «plataforma»: capacidad habilitadora (datos, conocimiento, decisión) cuyo valor se imputa a los casos que la usan (documento 10 §4.1, regla 3).",
       "type": ["object", "null"],
       "required": ["tipo"],
       "additionalProperties": false,
       "properties": {
         "tipo": { "enum": ["unidad", "transversal", "plataforma"] },
-        "habilita": { "type": "array", "uniqueItems": true, "items": { "$ref": "#/$defs/id_iniciativa" }, "description": "Plataforma: iniciativas que la usan y a las que se imputa su valor." },
+        "habilita": { "type": "array", "uniqueItems": true, "items": { "$ref": "#/$defs/id_iniciativa" }, "description": "Plataforma: casos de uso que la usan y a los que se imputa su valor." },
         "umbral_adopcion_pct": { "type": ["number", "null"], "minimum": 0, "maximum": 100, "description": "Criterio de parada o de retirada de licencias: porcentaje mínimo de licencias activas sobre asignadas en cada unidad en uso. null = sin umbral." },
         "reparto": {
           "type": "array",
@@ -456,7 +456,7 @@
         "antes": {},
         "despues": {},
         "cifras": {
-          "description": "Cifras de la iniciativa en el momento del evento (opcional; la herramienta las guarda en alta, entrada_fase, parada y retirada): suma de los importes esperados y realizados por tipo. null = sin dato. Conserva cómo cambian el coste, las eficiencias y el retorno con cada cambio de estado; el panel del consejo (T17) las muestra en el ciclo de vida del caso.",
+          "description": "Cifras del caso de uso en el momento del evento (opcional; la herramienta las guarda en alta, entrada_fase, parada y retirada): suma de los importes esperados y realizados por tipo. null = sin dato. Conserva cómo cambian el coste, las eficiencias y el retorno con cada cambio de estado; el panel del consejo (T17) las muestra en el ciclo de vida del caso.",
           "type": ["object", "null"],
           "additionalProperties": false,
           "properties": { "esperado": { "$ref": "#/$defs/cifras_momento" }, "realizado": { "$ref": "#/$defs/cifras_momento" } }
@@ -580,7 +580,7 @@
           "description": "Línea del panel del consejo (T17) en la que suma el importe. Solo para eficiencias (personas, herramientas, siniestros, operativo, penalizaciones) y retorno (venta_nueva, venta_cruzada, retencion, precio_margen, cobros, otros). null o ausente = sin desglosar (operativo u otros).",
           "enum": ["personas", "herramientas", "siniestros", "operativo", "penalizaciones", "venta_nueva", "venta_cruzada", "retencion", "precio_margen", "cobros", "otros", null]
         },
-        "area": { "$ref": "#/$defs/texto_o_nulo", "description": "Unidad de negocio a la que se imputa el importe (esquema 0.3; iniciativas transversales). null o ausente = toda la iniciativa. El total de la iniciativa es la suma de sus unidades; lo que no se pueda imputar a una unidad (por ejemplo, el gobierno común) va sin area." },
+        "area": { "$ref": "#/$defs/texto_o_nulo", "description": "Unidad de negocio a la que se imputa el importe (esquema 0.3; casos de uso transversales). null o ausente = todo el caso de uso. El total del caso de uso es la suma de sus unidades; lo que no se pueda imputar a una unidad (por ejemplo, el gobierno común) va sin area." },
         "oferta_habilitada_ia": { "type": ["boolean", "null"], "description": "Esquema 0.5. Retorno de una oferta, canal o servicio que no existiría sin la IA (prueba contrafactual; señal 6 del documento 12). Las mejoras de conversión o retención de la oferta existente no cuentan." }
       }
     },
@@ -816,7 +816,7 @@
           }
         },
         "perfiles": { "type": "object", "description": "Esquema 0.7 (D115): resumen de los perfiles NIST derivados del cuestionario (11 §7.5) que escribe T15; nunca las respuestas.", "properties": { "ai_rmf": { "type": "object", "properties": { "funciones": { "type": "array", "items": { "type": "object", "properties": { "funcion": { "type": "string" } } } }, "total": { "type": "object", "properties": { "subcategorias": { "type": "integer" }, "con_nivel": { "type": "integer" }, "minimo": { "type": ["integer", "null"], "minimum": 0, "maximum": 5 }, "frecuente": { "type": ["integer", "null"] }, "con_objetivo": { "type": "integer" }, "con_brecha": { "type": "integer" } } } } }, "csf": { "type": "object", "properties": { "funciones": { "type": "array", "items": { "type": "object", "properties": { "funcion": { "type": "string" } } } }, "areas": { "type": "array", "items": { "type": "object", "properties": { "area": { "enum": ["S", "D", "T"] } } } }, "total": { "type": "object", "properties": { "subcategorias": { "type": "integer" }, "con_nivel": { "type": "integer" }, "minimo": { "type": ["integer", "null"], "minimum": 0, "maximum": 5 }, "frecuente": { "type": ["integer", "null"] }, "con_objetivo": { "type": "integer" }, "con_brecha": { "type": "integer" } } } } } } },
-        "lentes": { "type": "object", "description": "Esquema 0.8 (D120): madurez en tres lentes (11 §7.6, 12 §3.7) que escribe T15 a la fecha de corte del diagnóstico; la huella y el alcance no suben ni bajan el nivel de madurez. Solo agregados, nunca las iniciativas.", "properties": { "fuente": { "enum": ["t01", "manual"], "description": "t01: calculada desde el registro; manual: introducida a mano en T15 sin registro." }, "huella": { "type": ["object", "null"], "properties": { "nivel": { "type": ["string", "null"], "pattern": "^HT[0-5]$", "description": "Nivel más alto en uso (iniciativas en las fases 6 y 7 sin cerrar)." }, "amplitud": { "type": ["integer", "null"], "description": "Tipos de tecnología distintos en uso." }, "tipos": { "type": "array", "items": { "$ref": "#/$defs/tecnologia" } }, "sistemas_en_uso": { "type": ["integer", "null"] }, "iniciativas_en_uso": { "type": ["integer", "null"] }, "pilotos": { "type": ["integer", "null"], "description": "Iniciativas en exploración (fases 1 a 5)." }, "nivel_exploracion": { "type": ["string", "null"], "description": "Huella más exigente entre las iniciativas en exploración." } } }, "alcance": { "type": ["object", "null"], "description": "Iniciativas en uso por nivel de alcance.", "properties": { "IM1": { "type": "integer", "minimum": 0 }, "IM2": { "type": "integer", "minimum": 0 }, "IM3": { "type": "integer", "minimum": 0 }, "IM4": { "type": "integer", "minimum": 0 } } }, "exigible": { "type": "object", "description": "Gobierno mínimo exigible por la huella en uso, por dimensión.", "properties": { "D1": { "type": "integer" }, "D3": { "type": "integer" }, "D4": { "type": "integer" }, "D5": { "type": "integer" }, "D6": { "type": "integer" } } }, "alertas": { "type": "array", "items": { "type": "object", "required": ["codigo", "gravedad"], "properties": { "codigo": { "enum": ["adopcion_por_delante", "gobierno_sin_uso", "transformacion_sin_personas"] }, "gravedad": { "enum": ["alta", "media"] }, "dimension": { "type": "string", "pattern": "^D[1-7]$" }, "minimo": { "type": "integer" }, "maximo": { "type": "integer" }, "nivel": { "type": "integer" } } } } } },
+        "lentes": { "type": "object", "description": "Esquema 0.8 (D120): madurez en tres lentes (11 §7.6, 12 §3.7) que escribe T15 a la fecha de corte del diagnóstico; la huella y el alcance no suben ni bajan el nivel de madurez. Solo agregados, nunca los casos de uso.", "properties": { "fuente": { "enum": ["t01", "manual"], "description": "t01: calculada desde el registro; manual: introducida a mano en T15 sin registro." }, "huella": { "type": ["object", "null"], "properties": { "nivel": { "type": ["string", "null"], "pattern": "^HT[0-5]$", "description": "Nivel más alto en uso (casos de uso en las fases 6 y 7 sin cerrar)." }, "amplitud": { "type": ["integer", "null"], "description": "Tipos de tecnología distintos en uso." }, "tipos": { "type": "array", "items": { "$ref": "#/$defs/tecnologia" } }, "sistemas_en_uso": { "type": ["integer", "null"] }, "iniciativas_en_uso": { "type": ["integer", "null"] }, "pilotos": { "type": ["integer", "null"], "description": "Casos de uso en exploración (fases 1 a 5)." }, "nivel_exploracion": { "type": ["string", "null"], "description": "Huella más exigente entre los casos de uso en exploración." } } }, "alcance": { "type": ["object", "null"], "description": "Casos de uso en producción por nivel de alcance.", "properties": { "IM1": { "type": "integer", "minimum": 0 }, "IM2": { "type": "integer", "minimum": 0 }, "IM3": { "type": "integer", "minimum": 0 }, "IM4": { "type": "integer", "minimum": 0 } } }, "exigible": { "type": "object", "description": "Gobierno mínimo exigible por la huella en uso, por dimensión.", "properties": { "D1": { "type": "integer" }, "D3": { "type": "integer" }, "D4": { "type": "integer" }, "D5": { "type": "integer" }, "D6": { "type": "integer" } } }, "alertas": { "type": "array", "items": { "type": "object", "required": ["codigo", "gravedad"], "properties": { "codigo": { "enum": ["adopcion_por_delante", "gobierno_sin_uso", "transformacion_sin_personas"] }, "gravedad": { "enum": ["alta", "media"] }, "dimension": { "type": "string", "pattern": "^D[1-7]$" }, "minimo": { "type": "integer" }, "maximo": { "type": "integer" }, "nivel": { "type": "integer" } } } } } },
         "fuente": { "$ref": "#/$defs/texto_o_nulo", "description": "T15." },
         "exportado": { "$ref": "#/$defs/fecha_o_nula" },
         "incorporado": { "$ref": "#/$defs/fecha_o_nula" }

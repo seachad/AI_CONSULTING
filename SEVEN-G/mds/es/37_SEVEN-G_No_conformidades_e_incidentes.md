@@ -25,7 +25,7 @@ Este documento establece dos procesos conectados:
 1. El **proceso de no conformidades**, que trata cualquier incumplimiento de un requisito obligatorio del marco (01 §12).
 2. El **proceso de incidentes de IA**, que trata cualquier suceso en el que un sistema de IA causa, o puede causar, un daño o una interrupción, incluidos los que obligan a notificar a autoridades.
 
-Se aplica a todos los sistemas del inventario —propios, de terceros y de uso corporativo— y a todas las iniciativas, con independencia de su intensidad. Complementa, sin sustituirlos, los procesos corporativos de gestión de incidentes de seguridad, de brechas de datos personales y de continuidad de negocio: cuando un incidente de IA es también un incidente de seguridad o una brecha, se gestiona **una sola vez**, con un único coordinador y con las especificidades de IA de este documento.
+Se aplica a todos los sistemas del inventario —propios, de terceros y de uso corporativo— y a todos los casos de uso, con independencia de su intensidad. Complementa, sin sustituirlos, los procesos corporativos de gestión de incidentes de seguridad, de brechas de datos personales y de continuidad de negocio: cuando un incidente de IA es también un incidente de seguridad o una brecha, se gestiona **una sola vez**, con un único coordinador y con las especificidades de IA de este documento.
 
 ### 1.1 Definiciones
 
@@ -73,7 +73,7 @@ Este documento no constituye asesoramiento jurídico. La decisión de notificar 
 
 ### 3.1 Detección
 
-Una no conformidad puede detectarse en: verificaciones de *gate* por el auditor de IA o la oficina de IA; revisiones de continuidad (R6); auditorías internas o externas; alertas del registro de iniciativas (condiciones vencidas, evidencias pendientes, revisiones caducadas); pruebas de eficacia de controles (33 §5.3); análisis de incidentes; detección de uso no autorizado de IA; comunicaciones de empleados, clientes, proveedores o supervisores. Cualquier persona **puede** comunicar una posible no conformidad; la oficina de IA **debe** registrarla o motivar por qué no lo es.
+Una no conformidad puede detectarse en: verificaciones de *gate* por el auditor de IA o la oficina de IA; revisiones de continuidad (R6); auditorías internas o externas; alertas del registro de casos de uso (condiciones vencidas, evidencias pendientes, revisiones caducadas); pruebas de eficacia de controles (33 §5.3); análisis de incidentes; detección de uso no autorizado de IA; comunicaciones de empleados, clientes, proveedores o supervisores. Cualquier persona **puede** comunicar una posible no conformidad; la oficina de IA **debe** registrarla o motivar por qué no lo es.
 
 ### 3.2 Registro
 
@@ -84,7 +84,7 @@ Toda no conformidad se registra en **T08** (plantilla P50) con el código **NC-A
 | Código | NC-AAAA-NNN |
 | Requisito incumplido | Documento, sección y texto del requisito; criterio de *gate* (`G<n>.<nn>`) o control (SEG, AG) si aplica. |
 | Descripción | Qué se ha observado, con evidencia objetiva. |
-| Alcance | Iniciativa (IA-AAAA-NNN), sistema, proveedor, área. |
+| Alcance | Caso de uso (IA-AAAA-NNN), sistema, proveedor, área. |
 | Detección | Fecha, fuente y persona que detecta. |
 | Tipo | Menor, mayor o crítica, con justificación (3.3). |
 | Responsable de la acción | Persona nominal, distinta del auditor que cerrará. |
@@ -108,14 +108,14 @@ Toda no conformidad se registra en **T08** (plantilla P50) con el código **NC-A
 
 Reglas de clasificación:
 
-- **Reincidencia:** una no conformidad menor que se repite tres veces en doce meses en la misma iniciativa o proceso se clasifica como mayor; una mayor repetida en doce meses, como crítica si afecta a sistemas en producción.
+- **Reincidencia:** una no conformidad menor que se repite tres veces en doce meses en el mismo caso de uso o proceso se clasifica como mayor; una mayor repetida en doce meses, como crítica si afecta a sistemas en producción.
 - **Acumulación:** varias no conformidades de la misma causa se tratan con un único análisis, pero se registran por separado.
 - **Uso no autorizado de IA:** se clasifica según los datos y usos implicados; es mayor, como mínimo, si implica datos personales o confidenciales.
 - El tipo lo propone quien detecta y lo confirma el auditor de IA; la discrepancia la resuelve el comité de IA.
 
 ### 3.4 Contención
 
-La contención limita el efecto mientras se analiza la causa. Opciones, de menor a mayor intensidad: restricción de uso o de alcance; validación humana adicional temporal; bajada del nivel de autonomía; suspensión de una capacidad con el interruptor de parada; suspensión del sistema con proceso alternativo; retirada de producción. Si la no conformidad invalida un *gate*, la iniciativa vuelve al estado anterior a ese *gate* hasta su corrección. Toda contención queda registrada con fecha, decisor y efecto.
+La contención limita el efecto mientras se analiza la causa. Opciones, de menor a mayor intensidad: restricción de uso o de alcance; validación humana adicional temporal; bajada del nivel de autonomía; suspensión de una capacidad con el interruptor de parada; suspensión del sistema con proceso alternativo; retirada de producción. Si la no conformidad invalida un *gate*, el caso de uso vuelve al estado anterior a ese *gate* hasta su corrección. Toda contención queda registrada con fecha, decisor y efecto.
 
 ### 3.5 Análisis de causa raíz
 
@@ -143,7 +143,7 @@ Una causa raíz es válida cuando: explica todos los hechos observados; al elimi
 |---|---|---|
 | **Corrección** | Subsanar el hecho concreto. | Completar la evidencia; revocar el permiso excesivo. |
 | **Acción correctiva** | Eliminar la causa raíz para que no se repita. | Añadir el criterio de cambio relevante a P24 y a T03. |
-| **Acción preventiva** | Evitar que la misma causa produzca el fallo en otros sistemas o iniciativas. | Revisar todos los sistemas en producción con la nueva definición. |
+| **Acción preventiva** | Evitar que la misma causa produzca el fallo en otros sistemas o casos de uso. | Revisar todos los sistemas en producción con la nueva definición. |
 
 Cada acción tiene responsable, plazo, criterio de eficacia y evidencia esperada. El plan lo aprueba el comité de IA en las críticas, el responsable de riesgos de IA en las mayores y la oficina de IA en las menores. Una acción que depende de otra área se acuerda con su responsable antes de aprobar el plan.
 
@@ -275,7 +275,7 @@ La parada activa el proceso alternativo previsto en el plan de reversión (P19) 
 
 **7. Análisis posterior.** Cronología; causa inmediata y causa raíz (3.5); eficacia de controles y de la respuesta; cumplimiento de plazos; daño y coste con su estado de validación; riesgos del registro que debían haberlo previsto; acciones. Se realiza sin buscar culpables y lo revisa el responsable de riesgos de IA.
 
-**8. Lecciones.** Actualización del registro de riesgos (33), de los controles (35), de los proveedores (36), de las plantillas y de los escenarios de prueba; apertura de no conformidades cuando proceda (sección 6); comunicación de lecciones a otras iniciativas con tecnología o proveedores comunes.
+**8. Lecciones.** Actualización del registro de riesgos (33), de los controles (35), de los proveedores (36), de las plantillas y de los escenarios de prueba; apertura de no conformidades cuando proceda (sección 6); comunicación de lecciones a otros casos de uso con tecnología o proveedores comunes.
 
 ---
 
@@ -325,7 +325,7 @@ Se implanta con la plantilla **P27** y la herramienta **T08**, con el código **
 
 | Bloque | Campos |
 |---|---|
-| **Identificación** | Código; título; descripción comprensible; sistema e iniciativa; proveedor implicado. |
+| **Identificación** | Código; título; descripción comprensible; sistema e caso de uso; proveedor implicado. |
 | **Clasificación** | Tipo (4.1); severidad inicial y final con justificación; origen (atacante externo, agente propio manipulado, proveedor, interno, fallo técnico). |
 | **Tiempos** | Fecha y hora de inicio estimado, detección, triaje, contención, recuperación y cierre; horas hasta detectar, contener y resolver. |
 | **Afectación** | Personas afectadas (número y tipo); datos personales afectados (sí o no, categorías); procesos y funciones; impacto por eje (33 §4.2). |

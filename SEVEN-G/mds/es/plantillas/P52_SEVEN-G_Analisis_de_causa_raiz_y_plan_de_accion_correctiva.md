@@ -34,7 +34,7 @@ Reglas de cumplimentación:
 - **Sin culpables, con responsables.** Se buscan causas en el sistema de gestión, no personas a las que atribuir el fallo. «Error humano» no es una causa raíz final: se pregunta por qué el sistema permitió o no detectó ese error.
 - Antes de analizar se comprueba que las evidencias del momento del incidente están conservadas (37 §2, principio 7).
 - Varias no conformidades de la misma causa se analizan en una sola hoja, pero cada una conserva su código (37 §3.3).
-- Toda acción valora si el mismo fallo existe en otros sistemas o iniciativas (principio «corregir aquí y en todas partes»).
+- Toda acción valora si el mismo fallo existe en otros sistemas o casos de uso (principio «corregir aquí y en todas partes»).
 
 ---
 
@@ -44,7 +44,7 @@ Reglas de cumplimentación:
 |---|---|---|
 | Objeto del análisis | | NC-AAAA-NNN · INC-AAAA-NNN (uno o varios). |
 | Tipo o severidad | | Menor · Mayor · Crítica / S1 · S2 · S3 · S4. |
-| Sistema e iniciativa | | SIA-AAAA-NNN · IA-AAAA-NNN. |
+| Sistema e caso de uso | | SIA-AAAA-NNN · IA-AAAA-NNN. |
 | Facilitador | | Rol y nombre; ajeno al equipo cuando se recomiende. |
 | Participantes | | Roles, no solo nombres. |
 | Fecha de inicio y fecha límite | | Según 37 §3.10 o §4.3. |
@@ -117,7 +117,7 @@ Se exploran las causas posibles por categoría con las preguntas guía de 37 §3
 |---|---|---|
 | Causa raíz confirmada | | Una frase. Si hay varias, se numeran. |
 | ¿Existía el riesgo en el registro? | | Sí (IA-AAAA-NNN · R*nn*, pasa a *Materializado* y se revalora, 33 §7.2) · No (se añade a P12). |
-| Otros sistemas o iniciativas expuestos a la misma causa | | Mismo proveedor, modelo, datos, plantilla o proceso. |
+| Otros sistemas o casos de uso expuestos a la misma causa | | Mismo proveedor, modelo, datos, plantilla o proceso. |
 
 ---
 
@@ -133,7 +133,7 @@ Solo para incidentes (37 §4.5, fase 7). Se completa además de las secciones 3 
 | Daño y coste | | Importe y estado (validado · declarado · estimado), o *Sin dato*. |
 | Eficacia de los controles | | Controles SEG y AG que funcionaron o fallaron. |
 | Decisiones tomadas bajo presión | | Qué información faltaba y cómo se decidió; sin juicio sobre las personas. |
-| Lecciones para otras iniciativas **(Enterprise)** | | Iniciativas con tecnología o proveedores comunes a las que se comunican. |
+| Lecciones para otros casos de uso **(Enterprise)** | | Casos de uso con tecnología o proveedores comunes a los que se comunican. |
 | ¿Procede abrir no conformidades? | | Si el incidente revela un requisito incumplido o si la gestión incumplió el proceso (37 §6); códigos NC abiertos en P50. |
 
 ---
@@ -178,7 +178,7 @@ Criterios formales en el documento 21 (R6.06, R6.15 y G7.04) y método en 37 §3
 | 1 | La cronología se basa en evidencias conservadas del momento del hecho. | Cumple · No cumple · No aplica · Pendiente |
 | 2 | Se distingue causa inmediata de causa raíz. | |
 | 3 | La causa raíz cumple las cuatro condiciones de validez y no termina en «error humano». | |
-| 4 | Se ha comprobado si otros sistemas o iniciativas están expuestos a la misma causa. | |
+| 4 | Se ha comprobado si otros sistemas o casos de uso están expuestos a la misma causa. | |
 | 5 | Cada acción tiene tipo, responsable, plazo, criterio de eficacia y evidencia esperada. | |
 | 6 | Hay al menos una acción correctiva por cada causa raíz; la corrección sola no basta. | |
 | 7 | El registro de riesgos y los controles afectados se han actualizado. | |

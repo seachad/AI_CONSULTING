@@ -39,8 +39,8 @@ This template does not constitute legal advice. Obligations regarding human over
 
 | Field | Content | Guidance |
 |---|---|---|
-| Initiative code | | IA-AAAA-NNN (T01). |
-| Initiative name | | |
+| Use case code | | IA-AAAA-NNN (T01). |
+| Use case name | | |
 | AI system(s) | | Identifier in the inventory (T02). |
 | Intensity | | Lite · Enterprise. |
 | Ambition level | | Optimise · Augment · Transform. |

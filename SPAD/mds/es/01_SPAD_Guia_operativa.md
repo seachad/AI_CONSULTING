@@ -62,7 +62,7 @@ La IA revisora reduce el riesgo, pero dos inteligencias artificiales pueden coin
 |---|---|
 | Todo trabajo SPAD | Al menos una persona revisa y deja registro (revisor, fecha, resultado), normalmente en el control de versiones. |
 | Código sensible (autenticación, autorización, pagos, datos personales), límites de actuación de agentes, decisiones sobre personas o sistemas de producción críticos | **Segunda revisión humana** por una persona que no orquestó la generación. |
-| Iniciativa SEVEN-G con intensidad Enterprise | Se aplican además los requisitos de SEVEN-G 53 §7. |
+| Caso de uso SEVEN-G con intensidad Enterprise | Se aplican además los requisitos de SEVEN-G 53 §7. |
 
 > **Por qué importa.** La separación de funciones entre inteligencias artificiales es necesaria, pero no suficiente: quien responde ante la organización de que el código es correcto es una persona, y esa responsabilidad no se puede delegar en una herramienta.
 
@@ -163,7 +163,7 @@ No todo trabajo necesita once artefactos separados. La versión reducida agrupa 
 
 | Criterio para usar la versión reducida | Criterio que obliga a la versión completa |
 |---|---|
-| Cambio acotado en un componente, sin datos personales ni dinero, sin efecto sobre decisiones sobre personas. | Código sensible, agentes con autonomía A2 o A3, sistemas de producción críticos, iniciativa SEVEN-G Enterprise. |
+| Cambio acotado en un componente, sin datos personales ni dinero, sin efecto sobre decisiones sobre personas. | Código sensible, agentes con autonomía A2 o A3, sistemas de producción críticos, caso de uso SEVEN-G Enterprise. |
 | Equipo de una o dos personas y un solo modelo. | Varios equipos o proveedores de modelos. |
 | Sin obligaciones de auditoría externa sobre el desarrollo. | Sector regulado con exigencias de trazabilidad del desarrollo. |
 

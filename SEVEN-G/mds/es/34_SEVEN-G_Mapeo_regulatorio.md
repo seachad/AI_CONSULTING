@@ -42,7 +42,7 @@ Todas las tablas de mapeo usan las mismas columnas:
 | **Artículo o cláusula** | Referencia exacta en la norma. |
 | **A quién aplica** | Operador u organización obligada (por ejemplo, proveedor, responsable del despliegue, responsable del tratamiento, entidad financiera). |
 | **Fase o etapa SEVEN-G** | Fase del ciclo de vida (0–7), puerta (G0–G5, R6, G7) o etapa del ciclo corporativo (C1–C5). |
-| **Rol responsable** | Rol de iniciativa u órgano de SEVEN-G (01 §8; documento 30). La asesoría jurídica y el delegado de protección de datos forman parte de la segunda línea. |
+| **Rol responsable** | Rol de caso de uso u órgano de SEVEN-G (01 §8; documento 30). La asesoría jurídica y el delegado de protección de datos forman parte de la segunda línea. |
 | **Evidencia** | Plantilla P01–P31 o documento de la biblioteca donde queda la prueba. |
 | **Herramienta** | Herramienta T01–T22 donde se registra (documento 03). |
 
@@ -108,12 +108,12 @@ El Reglamento (UE) 2024/1689 entró en vigor el 1 de agosto de 2024 y se aplica 
 | Fecha | Qué se aplica | Estado de verificación | Consecuencia en SEVEN-G |
 |---|---|---|---|
 | **1-08-2024** | Entrada en vigor del Reglamento. | Verificado (oficial) | — |
-| **2-02-2025** | Disposiciones generales (definiciones y alfabetización en IA, art. 4) y prácticas prohibidas (art. 5). | Verificado (oficial) | Ninguna iniciativa con práctica prohibida supera G3. Formación y política de uso (documentos 31 y 50). |
+| **2-02-2025** | Disposiciones generales (definiciones y alfabetización en IA, art. 4) y prácticas prohibidas (art. 5). | Verificado (oficial) | Ningún caso de uso con práctica prohibida supera G3. Formación y política de uso (documentos 31 y 50). |
 | **2-08-2025** | Obligaciones de proveedores de modelos de IA de uso general (capítulo V); gobernanza; autoridades nacionales; régimen sancionador (salvo multas a proveedores de modelos de uso general). | Verificado (oficial) | Requisitos de información a proveedores de modelos (P14, T09). |
 | **2-08-2026** | Aplicación general del Reglamento, incluidas las obligaciones de transparencia del art. 50 y las facultades de ejecución de la Comisión sobre modelos de uso general. | Verificado (oficial) | Obligaciones del art. 50 exigibles para sistemas en producción: revisar en R6. |
 | **2-12-2026** | Nuevas prohibiciones añadidas al art. 5 por el ómnibus (generación de material íntimo no consentido y de material de abuso sexual infantil). Fin del periodo transitorio del marcado legible por máquina del art. 50.2 para sistemas introducidos en el mercado antes del 2-08-2026. | Verificado (oficial): art. 5.1, letras b bis) y b ter), y apartados 1 bis y 1 ter; el plazo del art. 50.2 lo fija el nuevo art. 111.4 | Incorporar al cuestionario T07 y a las pruebas de la fase 5 de sistemas generativos. |
 | **2-08-2027** | Obligación de los Estados miembros de tener operativo al menos un espacio controlado de pruebas nacional (antes 2-08-2026). Plazo para modelos de uso general introducidos antes del 2-08-2025 (art. 111.3). | Verificado (oficial) el espacio de pruebas; art. 111.3 según texto original, sin cambios conocidos | — |
-| **2-12-2027** | Requisitos y obligaciones de los **sistemas de alto riesgo del art. 6.2 y el anexo III** (antes 2-08-2026). | Verificado (oficial) | Iniciativas con puesta en producción prevista después de esta fecha deben diseñarse ya con los requisitos (G4). |
+| **2-12-2027** | Requisitos y obligaciones de los **sistemas de alto riesgo del art. 6.2 y el anexo III** (antes 2-08-2026). | Verificado (oficial) | Casos de uso con puesta en producción prevista después de esta fecha deben diseñarse ya con los requisitos (G4). |
 | **2-08-2028** | Requisitos de los **sistemas de alto riesgo del art. 6.1 y el anexo I** (productos regulados; antes 2-08-2027). | Verificado (oficial) | Ídem para productos regulados. |
 
 **Sistemas ya en el mercado.** Por el art. 111, los sistemas de alto riesgo anteriores a la fecha de aplicación solo quedan sujetos si sufren cambios significativos de diseño, con reglas propias para autoridades públicas; tras el ómnibus, el art. 111.2 mantiene que solo quedan sujetos si sufren cambios significativos de diseño, y los destinados a autoridades públicas deben cumplir a más tardar el 2-08-2030 (verificado en EUR-Lex). SEVEN-G no usa esta excepción para rebajar controles (01 §14).
@@ -130,7 +130,7 @@ El Reglamento (UE) 2024/1689 entró en vigor el 1 de agosto de 2024 y se aplica 
 | Registro en la base de datos de la UE: se mantiene, con información simplificada, para sistemas del anexo III que el proveedor considera no de alto riesgo | Arts. 6.3 y 49.2; anexo VIII, sección B (modificada) | Con el alto riesgo | Verificado (oficial) | P11 conserva la documentación de la excepción del art. 6.3. |
 | Medidas de apoyo a pymes extendidas a pequeñas empresas de mediana capitalización | Varias disposiciones | Desde la entrada en vigor del ómnibus | Verificado (oficial) | Relevante para la intensidad de la documentación; no rebaja criterios de SEVEN-G. |
 | Supervisión reforzada de la Oficina Europea de IA sobre sistemas basados en modelos de uso general del mismo proveedor y sobre sistemas integrados en plataformas y buscadores de muy gran tamaño | Art. 75 | Desde la entrada en vigor del ómnibus | Verificado (oficial) en lo esencial | Identificar la autoridad competente en P11. |
-| Espacios controlados de pruebas: plazo nacional a 2-08-2027 y posible espacio de ámbito UE | Art. 57 | 2-08-2027 | Verificado (oficial) | Opción para iniciativas en fase 3–5 (sección 8). |
+| Espacios controlados de pruebas: plazo nacional a 2-08-2027 y posible espacio de ámbito UE | Art. 57 | 2-08-2027 | Verificado (oficial) | Opción para casos de uso en fase 3–5 (sección 8). |
 | Máquinas: los sistemas de IA en máquinas pasan a tratarse principalmente mediante el Reglamento (UE) 2023/1230; definición de componente de seguridad acotada | Art. 3.14 (sustituido) y anexo I (el Reglamento (UE) 2023/1230 pasa a la sección B) | Según el art. 113 modificado | Verificado (oficial) | Solo relevante para fabricantes de productos. |
 | Plantilla del plan de vigilancia posterior a la comercialización | Art. 72.3 (sustituido) | Orientaciones con plantilla a más tardar el 2-09-2027 | Verificado (oficial): el acto de ejecución se sustituye por orientaciones de la Comisión | P25 y P26 no dependen del formato final. |
 
@@ -170,7 +170,7 @@ El Reglamento (UE) 2024/1689 entró en vigor el 1 de agosto de 2024 y se aplica 
 
 | Obligación / requisito | Artículo o cláusula | A quién aplica | Fase o etapa SEVEN-G | Rol responsable | Evidencia (P-código o documento) | Herramienta |
 |---|---|---|---|---|---|---|
-| Adoptar medidas para apoyar el desarrollo de la alfabetización en IA del personal y de quienes operan o usan sistemas por cuenta de la compañía, según su conocimiento, experiencia y contexto de uso | Art. 4 (redacción del Reglamento (UE) 2026/1744) | Proveedores y responsables del despliegue | C2 (política), C3 (plan), fases 4–6 por iniciativa | Alta dirección; Oficina de IA; responsable de personas | Documento 31 (política), documento 50, P20 | T20 |
+| Adoptar medidas para apoyar el desarrollo de la alfabetización en IA del personal y de quienes operan o usan sistemas por cuenta de la compañía, según su conocimiento, experiencia y contexto de uso | Art. 4 (redacción del Reglamento (UE) 2026/1744) | Proveedores y responsables del despliegue | C2 (política), C3 (plan), fases 4–6 por caso de uso | Alta dirección; Oficina de IA; responsable de personas | Documento 31 (política), documento 50, P20 | T20 |
 | Formación específica de quienes usan o supervisan cada sistema | Art. 4; art. 26.2 para alto riesgo | Responsables del despliegue | 4 (diseño), 5 (formación de usuarios) | Responsable de producto | P17, P20, P21 | T20 |
 | Seguimiento de la cobertura de formación y del uso corporativo de IA | Art. 4 | Proveedores y responsables del despliegue | C4 | Oficina de IA | Panel del consejo (documento 60) | T17, T21 |
 
@@ -184,7 +184,7 @@ El Reglamento (UE) 2024/1689 entró en vigor el 1 de agosto de 2024 y se aplica 
 | Registrar la excepción en la base de datos de la UE | Art. 49.2 | Proveedores | 5 (antes de G5) | Responsable técnico | P11, P23 | T02 |
 | Revisar la clasificación ante cambios de finalidad, alcance, datos o autonomía | Arts. 6 y 25 | Proveedores y responsables del despliegue | R6, G7 y cada cambio | Responsable de riesgos | P11, P27 | T07, T08 |
 
-**Áreas del anexo III** (señales de alerta en la fase 1): 1 biometría · 2 infraestructuras críticas · 3 educación y formación profesional · 4 empleo, gestión de trabajadores y acceso al autoempleo · 5 acceso a servicios privados esenciales y a servicios y prestaciones públicos esenciales (incluidas la evaluación de solvencia y la puntuación crediticia, salvo detección de fraude, y la evaluación de riesgos y fijación de precios en seguros de vida y salud) · 6 garantía del cumplimiento del Derecho · 7 migración, asilo y control fronterizo · 8 administración de justicia y procesos democráticos. Cualquier iniciativa con una de estas señales debe tratarse como Enterprise desde la fase 0 hasta que P11 concluya lo contrario (01 §9.2).
+**Áreas del anexo III** (señales de alerta en la fase 1): 1 biometría · 2 infraestructuras críticas · 3 educación y formación profesional · 4 empleo, gestión de trabajadores y acceso al autoempleo · 5 acceso a servicios privados esenciales y a servicios y prestaciones públicos esenciales (incluidas la evaluación de solvencia y la puntuación crediticia, salvo detección de fraude, y la evaluación de riesgos y fijación de precios en seguros de vida y salud) · 6 garantía del cumplimiento del Derecho · 7 migración, asilo y control fronterizo · 8 administración de justicia y procesos democráticos. Cualquier caso de uso con una de estas señales debe tratarse como Enterprise desde la fase 0 hasta que P11 concluya lo contrario (01 §9.2).
 
 ### 3.7 Requisitos de los sistemas de alto riesgo (arts. 9 a 15)
 
@@ -241,7 +241,7 @@ El Reglamento (UE) 2024/1689 entró en vigor el 1 de agosto de 2024 y se aplica 
 | Notificar los resultados a la autoridad de vigilancia del mercado con el formulario previsto | Art. 27.3 | Mismos | 5 (antes de G5) | Responsable de riesgos | P11, P48, P23 | T07 |
 | Complementar, sin duplicar, la evaluación de impacto en protección de datos, a la que el art. 27.4 modificado permite remitirse | Art. 27.4; RGPD art. 35 | Mismos | 3 | Responsable de riesgos; delegado de protección de datos | P11, P48, P47 | T07 |
 
-Se aplica con el alto riesgo (2-12-2027 para el anexo III); la plantilla de la Oficina Europea de IA está **pendiente de confirmar**. Toda iniciativa Enterprise con decisiones sobre personas debería aplicar este contenido en P11 y P48 aunque no esté obligada.
+Se aplica con el alto riesgo (2-12-2027 para el anexo III); la plantilla de la Oficina Europea de IA está **pendiente de confirmar**. Todo caso de uso Enterprise con decisiones sobre personas debería aplicar este contenido en P11 y P48 aunque no esté obligada.
 
 ### 3.11 Transparencia (art. 50)
 
@@ -343,7 +343,7 @@ ISO/IEC 42001:2023 (publicada en diciembre de 2023; a fecha de consulta, 25-09-2
 | Toma de conciencia | 7.3 | Organización | C2–C4 | Oficina de IA | Documentos 31 y 50 | T20, T21 |
 | Comunicación | 7.4 | Organización | C4 | Oficina de IA | Documento 60 | T17 |
 | Información documentada | 7.5 | Organización | Todas | Oficina de IA | Registro de evidencias (03 §4) | T01, T03 |
-| Planificación y control operacional | 8.1 | Organización | Fases 0–7 | Responsables de la iniciativa | Documento 20; P29 | T01, T03 |
+| Planificación y control operacional | 8.1 | Organización | Fases 0–7 | Responsables del caso de uso | Documento 20; P29 | T01, T03 |
 | Evaluación de riesgos de IA a intervalos planificados | 8.2 | Organización | Fase 3; R6 | Responsable de riesgos | P12 | T06 |
 | Tratamiento de riesgos de IA | 8.3 | Organización | Fases 3–6 | Responsable de riesgos | P13 | T06 |
 | Evaluación de impacto de los sistemas de IA a intervalos planificados | 8.4 | Organización | Fase 3; R6 | Responsable de riesgos | P11 | T07 |
@@ -679,7 +679,7 @@ Según el proyecto publicado en el Boletín Oficial de las Cortes Generales, la 
 |---|---|---|---|---|---|---|
 | Identificar la autoridad de vigilancia del mercado competente para cada sistema (AESIA o autoridad sectorial) | RD 729/2023; proyecto de ley orgánica (pendiente) | Proveedores y responsables del despliegue en España | Fase 3 | Responsable de riesgos; asesoría jurídica | P11 | T07 |
 | Canalizar notificaciones de incidentes graves y de evaluaciones de impacto en derechos fundamentales a la autoridad competente | Reglamento de IA arts. 27.3 y 73; normativa nacional pendiente | Proveedores y responsables del despliegue | Fases 5–6 | Responsable de riesgos | P11, P26, P27 | T08 |
-| Valorar la participación en un entorno controlado de pruebas cuando la iniciativa sea de alto riesgo y la viabilidad regulatoria sea incierta | RD 817/2023; Reglamento de IA arts. 57–59 | Proveedores y responsables del despliegue | Fase 3 (decisión), fases 4–5 (ejecución) | Patrocinador; Responsable de riesgos | P10, P13 | T01 |
+| Valorar la participación en un entorno controlado de pruebas cuando el caso de uso sea de alto riesgo y la viabilidad regulatoria sea incierta | RD 817/2023; Reglamento de IA arts. 57–59 | Proveedores y responsables del despliegue | Fase 3 (decisión), fases 4–5 (ejecución) | Patrocinador; Responsable de riesgos | P10, P13 | T01 |
 | Usar las guías de AESIA como referencia de los requisitos técnicos | Guías AESIA (diciembre de 2025) | Proveedores y responsables del despliegue | Fases 3–6 | Responsable técnico; Responsable de riesgos | P11, P15, P18, P22 | T07, T03 |
 | Vigilar la tramitación de la ley orgánica y actualizar este mapeo cuando se publique en el BOE | Expediente 121/000096 | Oficina de IA | Sección 10 | Oficina de IA; asesoría jurídica | Documento 34 | T07 |
 
@@ -828,9 +828,9 @@ Generado desde `crosswalk.json` (versión 1, 01-10-2026; versión del núcleo 1)
 |---|---|
 | **Oficina de IA** | Es la propietaria del documento 34 y de la herramienta T07. Mantiene la vigilancia normativa, prepara las propuestas de cambio y comunica los cambios aprobados. |
 | **Segunda línea** (cumplimiento, asesoría jurídica, delegado de protección de datos, seguridad de la información) | Valida el contenido jurídico de cada cambio y su interpretación. Ningún cambio de fecha, artículo o criterio se publica sin su validación. |
-| **Comité de IA** | Aprueba los cambios con impacto en iniciativas, *gates* o intensidad, y decide las reclasificaciones de la cartera. |
+| **Comité de IA** | Aprueba los cambios con impacto en casos de uso, *gates* o intensidad, y decide las reclasificaciones de la cartera. |
 | **Comisión delegada del consejo** | Recibe trimestralmente el resumen de cambios regulatorios relevantes (C4). |
-| **Tercera línea** | Verifica al menos una vez al año que el mapeo está actualizado y que los cambios se han aplicado a las iniciativas afectadas. |
+| **Tercera línea** | Verifica al menos una vez al año que el mapeo está actualizado y que los cambios se han aplicado a los casos de uso afectados. |
 
 ### 10.2 Disparadores y periodicidad
 
@@ -840,7 +840,7 @@ Generado desde `crosswalk.json` (versión 1, 01-10-2026; versión del núcleo 1)
 | Directrices, códigos de práctica, plantillas o actos de ejecución de la Comisión | Directrices finales sobre alto riesgo; plantilla de incidentes graves | 20 días hábiles |
 | Normas armonizadas o revisiones de normas técnicas | Normas de CEN-CENELEC JTC 21; revisión de ISO/IEC 42001; revisión del NIST AI RMF | 30 días hábiles |
 | Guías de autoridades nacionales o del CEPD; sentencias del TJUE | Guías AESIA; directrices del CEPD en versión final | 20 días hábiles |
-| Fecha de aplicación próxima | Seis meses antes de cada fecha del calendario de la sección 3.1 | Revisión de las iniciativas afectadas |
+| Fecha de aplicación próxima | Seis meses antes de cada fecha del calendario de la sección 3.1 | Revisión de los casos de uso afectados |
 | Revisión ordinaria | Vigilancia mensual; revisión formal trimestral (C4); revisión completa anual (C5) | Según calendario |
 
 ### 10.3 Pasos
@@ -850,9 +850,9 @@ Generado desde `crosswalk.json` (versión 1, 01-10-2026; versión del núcleo 1)
 | 1 | Detectar el cambio y registrarlo con fuente oficial y fecha de consulta | Oficina de IA | Entrada en el registro de cambios del mapeo |
 | 2 | Analizar el impacto: filas afectadas, preguntas de T07, criterios de *gate* (documento 21), plantillas y sistemas del inventario | Oficina de IA con segunda línea | Nota de impacto |
 | 3 | Validar la interpretación jurídica | Segunda línea | Conformidad registrada |
-| 4 | Aprobar el cambio si afecta a iniciativas, intensidad o *gates* | Comité de IA | P29 o acta del comité |
+| 4 | Aprobar el cambio si afecta a casos de uso, intensidad o *gates* | Comité de IA | P29 o acta del comité |
 | 5 | Actualizar el documento 34 (nueva versión), T07 y, en su caso, las plantillas | Oficina de IA | Control de versiones |
-| 6 | Reclasificar los sistemas afectados y abrir las acciones en las iniciativas (evento de cambio de clasificación en T01) | Responsables de riesgos de cada iniciativa | P11 actualizada; evento en T01 |
+| 6 | Reclasificar los sistemas afectados y abrir las acciones en los casos de uso (evento de cambio de clasificación en T01) | Responsables de riesgos de cada caso de uso | P11 actualizada; evento en T01 |
 | 7 | Comunicar a los equipos y, si es relevante, a la comisión delegada | Oficina de IA | Informe C4 |
 | 8 | Verificar la aplicación en la siguiente revisión anual | Tercera línea | Informe de auditoría (documento 38) |
 

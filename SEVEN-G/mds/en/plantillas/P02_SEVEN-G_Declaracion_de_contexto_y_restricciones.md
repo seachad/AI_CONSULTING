@@ -1,6 +1,6 @@
 # Context and constraints statement
 
-**Records in writing, before investing, the strategic, regulatory, ethical, data, economic and organisational framework within which the initiative must be developed.**
+**Records in writing, before investing, the strategic, regulatory, ethical, data, economic and organisational framework within which the use case must be developed.**
 
 | | |
 |---|---|
@@ -18,17 +18,17 @@
 
 | Aspect | Guidance |
 |---|---|
-| **When it is used** | In phase 0, together with the initiative charter (P01). It is reviewed at G3 and whenever a relevant constraint changes (regulation, budget, supplier, data). |
+| **When it is used** | In phase 0, together with the use case charter (P01). It is reviewed at G3 and whenever a relevant constraint changes (regulation, budget, supplier, data). |
 | **Who completes it** | The AI Product Owner. They consult the risk owner, data protection, information security and legal counsel. |
 | **Who verifies it** | Lite: AI Office. Enterprise: AI Auditor. |
 | **Who decides** | It is approved with G0: sponsor (Lite) · AI Committee (Enterprise). |
 | **Gate at which it is reviewed** | G0 · Authorisation; checked again at G3 · Feasibility. |
-| **Tool** | T01 · Initiative register (link as G0 evidence). |
+| **Tool** | T01 · Use case register (link as G0 evidence). |
 | **Lite versus Enterprise** | Lite may omit the fields marked **(Enterprise)**. In Lite, constraints that do not apply are marked "Not applicable" with a one-line reason. |
 
 Completion rules:
 
-- A constraint is something the initiative **cannot change**. If it can be negotiated, it is an assumption and goes in section 10.
+- A constraint is something the use case **cannot change**. If it can be negotiated, it is an assumption and goes in section 10.
 - This statement does not replace the regulatory classification (P11) or the risk matrix (P12): it identifies what is known in phase 0 so that it is not discovered late.
 - *This document does not constitute legal advice.* The applicability of each regulation must be confirmed by whoever has legal competence in the company. Regulatory references consulted in September 2026; their currency must be verified.
 
@@ -38,8 +38,8 @@ Completion rules:
 
 | Field | Content | Guidance |
 |---|---|---|
-| Initiative code | | IA-AAAA-NNN. |
-| Initiative name | | Same as in P01. |
+| Use case code | | IA-AAAA-NNN. |
+| Use case name | | Same as in P01. |
 | Document version | | |
 | Date | | DD-MM-AAAA. |
 | Author | | Name and role. |
@@ -52,11 +52,11 @@ Completion rules:
 
 | Field | Content | Guidance |
 |---|---|---|
-| Applicable AI thesis | | Extract from or reference to the thesis approved in C2 that supports the initiative. |
+| Applicable AI thesis | | Extract from or reference to the thesis approved in C2 that supports the use case. |
 | Ambition approved for the sphere | | Ambition level set by the board in C2 for the primary sphere. |
-| Applicable risk appetite | | C2 limits affecting this initiative: acceptable residual risk level, maximum autonomy, customer exposure, economic thresholds. |
+| Applicable risk appetite | | C2 limits affecting this use case: acceptable residual risk level, maximum autonomy, customer exposure, economic thresholds. |
 | Current state of the process | | How it is done today, with what resources and with what known problems. |
-| Existing initiatives or systems | | Other AI systems in the inventory that already cover part of the process. |
+| Existing use cases or systems | | Other AI systems in the inventory that already cover part of the process. |
 | Return horizon set in C2 **(Enterprise)** | | Period within which the expected net value must be positive for Optimise and Augment. |
 
 ---
@@ -65,7 +65,7 @@ Completion rules:
 
 State for each reference whether it applies. "To be determined" requires it to be resolved before G3.
 
-| Reference | Does it apply? | Reason | Implication for the initiative | Who confirms it |
+| Reference | Does it apply? | Reason | Implication for the use case | Who confirms it |
 |---|---|---|---|---|
 | EU AI Act (Regulation (EU) 2024/1689) | Yes · No · To be determined | | Classification and obligations according to the company's role (P11). | |
 | GDPR (Regulation (EU) 2016/679) and national data protection legislation | | | Legal basis, minimisation, data protection impact assessment, automated decision-making. | |
@@ -89,7 +89,7 @@ State for each reference whether it applies. "To be determined" requires it to b
 | Vulnerable persons or groups | | Minors, older people, persons with disabilities, situations of financial hardship. |
 | Minimum human oversight required | | Which decisions must always remain in the hands of a person. |
 | Maximum autonomy permitted | | A0 Assistance · A1 Recommendation · A2 Supervised action · A3 Autonomous action (document 35). |
-| Red lines | | What the initiative will not do under any circumstances. *Illustrative example: the assistant will not modify orders or issue refunds.* |
+| Red lines | | What the use case will not do under any circumstances. *Illustrative example: the assistant will not modify orders or issue refunds.* |
 
 ---
 

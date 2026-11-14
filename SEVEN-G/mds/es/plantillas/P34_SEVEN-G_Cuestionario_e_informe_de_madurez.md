@@ -204,7 +204,7 @@ Tamaño mínimo (11 §4.6): población de 1–5, todas; de 6–20, 5; de 21–60
 | Preguntas | Población | Tamaño mínimo | Tamaño | Selección y estratificación |
 |---|---|---|---|---|
 | | | | | |
-| *(ejemplo ilustrativo)* D1.08, D2.05, D2.06, D2.08 | 22 iniciativas activas | 8 | 8 | Dos Enterprise, tres en producción, dos de Aumentar, una de terceros y una de IA generativa. |
+| *(ejemplo ilustrativo)* D1.08, D2.05, D2.06, D2.08 | 22 casos de uso activos | 8 | 8 | Dos Enterprise, tres en producción, dos de Aumentar, uno de terceros y uno de IA generativa. |
 
 ### 4.3 Verificación independiente
 

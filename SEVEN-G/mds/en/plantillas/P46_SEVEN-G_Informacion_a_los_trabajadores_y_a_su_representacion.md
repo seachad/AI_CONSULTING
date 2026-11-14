@@ -42,7 +42,7 @@ Completion rules:
 
 | Field | Content | Guidance |
 |---|---|---|
-| Initiative code | | IA-AAAA-NNN. |
+| Use case code | | IA-AAAA-NNN. |
 | AI system | | SIA-AAAA-NNN (P05). |
 | System name | | Functional name. |
 | Intensity and regulatory classification | | P04 and P11. |

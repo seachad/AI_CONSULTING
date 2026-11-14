@@ -1,6 +1,6 @@
 # Casos de aplicación
 
-**Ocho compañías ficticias recorren el ciclo corporativo y el ciclo de vida de sus iniciativas**
+**Ocho compañías ficticias recorren el ciclo corporativo y el ciclo de vida de sus casos de uso**
 
 | | |
 |---|---|
@@ -10,22 +10,22 @@
 | Autor | Fernando García Varela |
 | Estado | Borrador para revisión. Todos los casos, compañías, personas y cifras son ficticios. |
 
-<!-- cifras: 8 | casos ficticios ; 21 | iniciativas con recorrido de gates ; 7 | paradas fundamentadas ; 5 | retiradas registradas -->
+<!-- cifras: 8 | casos ficticios ; 21 | casos de uso con recorrido de gates ; 7 | paradas fundamentadas ; 5 | retiradas registradas -->
 
 ---
 
 > **Aviso legal y exención de responsabilidad.** SEVEN-G es un marco metodológico de referencia que se ofrece «tal cual» y con fines exclusivamente informativos. No constituye asesoramiento jurídico, regulatorio, financiero ni profesional, ni garantiza el cumplimiento de ninguna norma. Las referencias a regulación general (como el Reglamento Europeo de IA, el RGPD, DORA o NIS2), a normas técnicas y a regulación específica de cada sector o jurisdicción pueden ser incompletas, no aplicar a un caso concreto o quedar desactualizadas por cambios normativos, interpretaciones o criterios de las autoridades posteriores a su fecha de consulta. **Cada organización que use SEVEN-G es la única responsable de identificar la normativa que le aplica, verificar su vigencia y certificar su propio cumplimiento regulatorio**, con el asesoramiento cualificado que corresponda. Esta metodología es una ayuda genérica y gratuita, compartida con la comunidad para que nadie tenga que empezar desde cero; cada persona u organización puede y debe adaptarla a su propio uso. No debe entenderse que sus partes jurídicamente sensibles hayan sido revisadas por una asesoría jurídica: esas revisiones, para cada empresa o sector, son responsabilidad última de la empresa, el consultor o la organización que la use. Aunque se procura mantenerla al día, alguna norma puede haber cambiado sin que se recoja aquí. En la máxima medida permitida por la ley, el autor no asume responsabilidad alguna por los efectos de su aplicación en ninguna organización ni por su aplicabilidad completa. La metodología no otorga certificación de ningún tipo. El autor no asume responsabilidad alguna por el uso que se haga de este contenido ni por las decisiones que se adopten con él. Los datos, cifras, compañías y casos de los ejemplos son ficticios o ilustrativos.
 
 > **AVISO: TODO EL CONTENIDO DE ESTE DOCUMENTO ES FICTICIO.**
-> Las compañías, sus órganos, personas, sistemas, iniciativas, decisiones, fechas y cifras son **inventados** para ilustrar cómo se aplica SEVEN-G. No describen a ninguna organización real, no proceden de trabajos con clientes y **no son referencias de mercado, benchmarks ni resultados esperables**. Los casos son coherentes con los sectores de las demostraciones del panel del consejo (energía, logística, sanidad, retail, sector público, agroalimentación, hospitality e industria), pero no reproducen sus datos. Cualquier parecido con una organización real es casual.
+> Las compañías, sus órganos, personas, sistemas, casos de uso, decisiones, fechas y cifras son **inventados** para ilustrar cómo se aplica SEVEN-G. No describen a ninguna organización real, no proceden de trabajos con clientes y **no son referencias de mercado, benchmarks ni resultados esperables**. Los casos son coherentes con los sectores de las demostraciones del panel del consejo (energía, logística, sanidad, retail, sector público, agroalimentación, hospitality e industria), pero no reproducen sus datos. Cualquier parecido con una organización real es casual.
 
 ---
 
-<!-- esencial: consulta | Casos de aplicación ficticios, de compañías grandes y medianas, con iniciativas Lite y Enterprise. Se leen como ejemplo; no crean reglas. -->
+<!-- esencial: consulta | Casos de aplicación ficticios, de compañías grandes y medianas, con casos de uso Lite y Enterprise. Se leen como ejemplo; no crean reglas. -->
 
 ## 1. Objeto y alcance
 
-Este documento muestra, con ocho casos ficticios, cómo se aplican en la práctica las piezas de SEVEN-G: diagnóstico de madurez, índice de transformación, decisiones del consejo, recorrido de las iniciativas por sus *gates*, medición del valor con fórmulas y estados, paradas y retiradas.
+Este documento muestra, con ocho casos ficticios, cómo se aplican en la práctica las piezas de SEVEN-G: diagnóstico de madurez, índice de transformación, decisiones del consejo, recorrido de los casos de uso por sus *gates*, medición del valor con fórmulas y estados, paradas y retiradas.
 
 Se usa para:
 
@@ -45,7 +45,7 @@ Convenciones de los casos:
 
 ## 2. Resumen de los casos
 
-| Caso | Compañía ficticia | Madurez global inicial | Perfil inicial | Iniciativas del caso | Resultados de *gate* destacados |
+| Caso | Compañía ficticia | Madurez global inicial | Perfil inicial | Casos de uso del caso | Resultados de *gate* destacados |
 |---|---|---|---|---|---|
 | **1** | Grupo energético E | 2 | Eficiencia táctica | 3 | Escalar · Parar en G3 (Transformar) · Retirar |
 | **2** | Operador logístico L | 2 | Eficiencia a escala | 3 | Escalar · Parar en G5 (Transformar) · Iterar en G3 |
@@ -89,7 +89,7 @@ Grupo ficticio con distribución eléctrica, generación renovable, comercializa
 | DEC-2027-004 | Pleno (2T27) | Autorizar la etapa 1 de IA-2027-007 con límite de 250.000 €. |
 | DEC-2027-009 | Pleno (3T27) | Tomar conocimiento de la parada de IA-2027-007 en G3. |
 
-### 3.4 Iniciativas
+### 3.4 Casos de uso
 
 **IA-2027-003 · Predicción de averías en transformadores.** Optimizar · Enterprise (función crítica) · Autonomía A1: el sistema recomienda qué transformadores sustituir y planificación decide.
 
@@ -121,7 +121,7 @@ Valor tras doce meses en producción:
 | G2 | 2T27 | Continuar | Comité de IA y **pleno** (DEC-2027-004) | Etapa 1 con límite de 250.000 €; criterio de parada: riesgo residual Crítico no aceptable dentro del apetito. |
 | G3 | 3T27 | **Parar** | Comité de IA | Las órdenes ejecutadas en el mercado no se pueden revertir. Riesgo residual con controles: probabilidad 4 × impacto 4 = 16, **Crítico**, fuera del apetito aprobado. Motivo codificado: *Riesgo inaceptable*. |
 
-Inversión consumida: 85.000 € de los 250.000 € de la etapa. La idea de optimizar la carga de baterías se registró como iniciativa distinta, IA-2027-014, de nivel Optimizar y autonomía A1 (el sistema recomienda y el operador decide), con otra hipótesis de valor y otro patrocinador.
+Inversión consumida: 85.000 € de los 250.000 € de la etapa. La idea de optimizar la carga de baterías se registró como caso de uso distinta, IA-2027-014, de nivel Optimizar y autonomía A1 (el sistema recomienda y el operador decide), con otra hipótesis de valor y otro patrocinador.
 
 **IA-2027-001 · Asistente conversacional de averías (versión 1).** Sistema en producción antes de adoptar el marco; regularizado con una revisión equivalente a G7 (01 §14).
 
@@ -147,7 +147,7 @@ D1, D2 y D6 suben un nivel y D7 sube dos, pero el nivel global no cambia por la 
 
 ### 3.6 Lecciones
 
-1. **Parar una apuesta de Transformar en G3 es un resultado del método.** Se consumieron 85.000 € y se evitó comprometer el resto; la parte viable siguió como otra iniciativa.
+1. **Parar una apuesta de Transformar en G3 es un resultado del método.** Se consumieron 85.000 € y se evitó comprometer el resto; la parte viable siguió como otro caso de uso.
 2. **Regularizar lo heredado revela valores negativos.** El asistente de averías solo parecía rentable porque su valor era declarado.
 3. **El nivel global se lee junto a las dimensiones.** Un global que no se mueve puede esconder avances reales y una dimensión rezagada.
 
@@ -184,7 +184,7 @@ Operador ficticio con transporte por carretera, almacenes, reparto de última mi
 | DEC-2027-015 | Pleno (2T27) | Autorizar la etapa 1 de IA-2027-015 con límite de 180.000 € y criterios de parada. |
 | DEC-2028-003 | Pleno (1T28) | Tomar conocimiento de la parada de IA-2027-015; no relajar los criterios de parada. |
 
-### 4.4 Iniciativas
+### 4.4 Casos de uso
 
 **IA-2027-012 · Optimización de rutas de última milla.** Optimizar · Lite · Autonomía A1.
 
@@ -217,7 +217,7 @@ Valor tras doce meses:
 | G4 | 3T27 | Continuar | Comité de IA | Límite por carga, registro de acciones e interruptor de parada diseñados. |
 | G5 | 1T28 | **Parar** | Comité de IA | Piloto con asignación aleatoria: 520 cargas con el agente y 510 de control. Mejora del margen: 0,6 puntos (por debajo de 1,0). Errores: 0,8 %. Motivo codificado: *Hipótesis refutada*. |
 
-Retorno medido en el piloto: 520 cargas × 1.900 € de ingreso medio × 0,6 % = 5.928 € (validado). Inversión consumida: 165.000 €. El equipo pidió una iteración más con un umbral de 0,5 puntos; el comité lo elevó al pleno porque los criterios de parada solo puede relajarlos el órgano que autorizó la iniciativa (01 §7.4, regla 6), y el pleno decidió no relajarlos (DEC-2028-003).
+Retorno medido en el piloto: 520 cargas × 1.900 € de ingreso medio × 0,6 % = 5.928 € (validado). Inversión consumida: 165.000 €. El equipo pidió una iteración más con un umbral de 0,5 puntos; el comité lo elevó al pleno porque los criterios de parada solo puede relajarlos el órgano que autorizó el caso de uso (01 §7.4, regla 6), y el pleno decidió no relajarlos (DEC-2028-003).
 
 **IA-2027-018 · Evaluación de conducción de riesgo con telemetría.** Aumentar · Enterprise (decisiones sobre personas) · Autonomía A1: recomienda formación, sin sanciones.
 
@@ -270,7 +270,7 @@ Grupo hospitalario privado ficticio con un hospital de referencia, una red de cl
 | REC-2027-022 | Comisión delegada | Muestreo semanal de notas generadas, revisadas por un segundo médico, con tasa de corrección informada al comité. |
 | DEC-2027-025 | Pleno (3T27) | Autorizar la etapa 1 de IA-2027-026 con límite de 150.000 €, como excepción acotada a la tesis por no ser diagnóstico clínico. |
 
-### 5.4 Iniciativas
+### 5.4 Casos de uso
 
 **IA-2027-021 · Documentación clínica automática en consulta.** Aumentar · Enterprise (datos de salud) · Autonomía A0: el sistema redacta la nota; el médico la revisa y la firma. Clasificación regulatoria realizada con criterio jurídico.
 
@@ -300,7 +300,7 @@ Valor tras doce meses:
 | *Gate* | Momento | Resultado | Decide | Motivo |
 |---|---|---|---|---|
 | R6 | 2T27 | Adelanta G7 | Comité de IA | Primera prueba de sesgo: sensibilidad de 0,71 en el conjunto, pero de 0,52 en pacientes mayores de 80 años, el grupo con más reingresos. |
-| G7 | 2T27 | **Retirar** | Comité de IA | Motivo codificado: *Riesgo inaceptable*. Sustituto temporal: seguimiento telefónico por criterio de enfermería. Modelo archivado sin posibilidad de reutilización. Comunicación a las unidades clínicas. Nueva iniciativa IA-2027-024 en fase 2 con la prueba de sesgo por edad como criterio de G5. |
+| G7 | 2T27 | **Retirar** | Comité de IA | Motivo codificado: *Riesgo inaceptable*. Sustituto temporal: seguimiento telefónico por criterio de enfermería. Modelo archivado sin posibilidad de reutilización. Comunicación a las unidades clínicas. Nuevo caso de uso IA-2027-024 en fase 2 con la prueba de sesgo por edad como criterio de G5. |
 
 El valor que se atribuía al sistema (1,4 M€ de reingresos evitados) nunca tuvo grupo de control y figuraba como declarado.
 
@@ -351,10 +351,10 @@ Grupo ficticio de distribución alimentaria con supermercados, tienda online y l
 |---|---|---|
 | DEC-2027-031 | Pleno (C2) | Tesis: Transformar en 02 Producto y servicio (cesta recurrente por suscripción); Optimizar en 04 Operaciones (reposición y merma); Aumentar en 03 Personas. Apetito: precios con mínimos por categoría y revisión humana de cambios superiores al 10 %. |
 | DEC-2027-032 | Pleno (1T27) | Autorizar la etapa 1 de IA-2027-031 con límite de 600.000 €. |
-| REC-2027-035 | Comisión delegada | Crear una iniciativa de datos para estructurar las condiciones de los acuerdos con proveedores antes de proponer nuevos agentes de compras. |
+| REC-2027-035 | Comisión delegada | Crear un caso de uso de datos para estructurar las condiciones de los acuerdos con proveedores antes de proponer nuevos agentes de compras. |
 | DEC-2028-030 | Pleno (4T28) | Escalar IA-2027-031 a todas las regiones y ampliar la previsión de demanda de frescos, en ese orden de ejecución. |
 
-### 6.4 Iniciativas
+### 6.4 Casos de uso
 
 **IA-2027-031 · Cesta recurrente personalizada por suscripción.** Transformar · Enterprise · Autonomía A1: el sistema propone la cesta y el cliente la confirma.
 
@@ -407,7 +407,7 @@ Inversión consumida: 60.000 €. En respuesta a REC-2027-035 se registró IA-20
 1. **Transformar con hitos y grupo de control produce retorno defendible.** El escalado se aprobó sobre importes validados, no sobre promesas.
 2. **El neto adicional por euro ordena, pero no sustituye a la tesis.** El consejo decidió conscientemente y dejó registrado el motivo.
 3. **Los agregados esconden negativos.** El precio dinámico parecía rentable dentro del total de la cartera.
-4. **Un agente sin datos es un riesgo, no una oportunidad.** La parada generó una iniciativa de datos.
+4. **Un agente sin datos es un riesgo, no una oportunidad.** La parada generó un caso de uso de datos.
 
 ---
 
@@ -421,7 +421,7 @@ Administración territorial ficticia con atención ciudadana, tributos, urbanism
 
 | Dimensión | Nivel | Evidencia principal |
 |---|---|---|
-| D1 · Estrategia y gobierno | 1 | Iniciativas aisladas por servicio; sin órgano con mandato sobre IA. |
+| D1 · Estrategia y gobierno | 1 | Casos de uso aislados por servicio; sin órgano con mandato sobre IA. |
 | D2 · Valor y cartera | 1 | Sin cartera. |
 | D3 · Datos y conocimiento | 2 | Responsables de datos en tributos y padrón. |
 | D4 · Tecnología y operación | 2 | Operación de sistemas propios estable; herramientas de proveedores sin control. |
@@ -440,7 +440,7 @@ Administración territorial ficticia con atención ciudadana, tributos, urbanism
 | DEC-2027-041 | Órgano de gobierno (tercer mes, 3T27) | Tesis: Optimizar en 04 Operaciones (tramitación). No se despliegan sistemas que influyan en decisiones sobre personas hasta que D6 alcance el nivel 3, salvo con evaluación de impacto y motivación individual comprensible. Comisión de transformación digital con funciones de comité de IA. |
 | REC-2028-004 | Órgano de gobierno | Incluir en los pliegos de contratación de sistemas con IA la obligación del proveedor de permitir explicar los resultados a cada persona afectada y de facilitar pruebas de sesgo. |
 
-### 7.4 Iniciativas
+### 7.4 Casos de uso
 
 **IA-2027-040 · Asistente conversacional de la web (versión 0).** Contratado por un servicio y en producción sin *gate*.
 
@@ -448,7 +448,7 @@ Administración territorial ficticia con atención ciudadana, tributos, urbanism
 |---|---|---|
 | 2T27 | **NC-2027-001, crítica**: sistema en producción sin *gate* aprobado y sin aviso de que se habla con una IA. Contención en 48 horas: aviso visible y limitación a información general sin datos personales. | Comisión de transformación digital; informada la comisión delegada |
 | 2T27 | Muestra de 400 conversaciones: 9 % de respuestas incorrectas sobre plazos de trámites. Contrato sin cláusulas sobre el uso de los datos por el proveedor. | Oficina de IA |
-| 3T27 · G7 | **Retirar.** Motivo codificado: *Riesgo inaceptable*. Sustituto: preguntas frecuentes revisadas. Conversaciones suprimidas según la política de retención. Coste recurrente evitado: 70.000 € al año. Nueva iniciativa IA-2027-047 en fase 1, por el ciclo completo. | Comisión de transformación digital |
+| 3T27 · G7 | **Retirar.** Motivo codificado: *Riesgo inaceptable*. Sustituto: preguntas frecuentes revisadas. Conversaciones suprimidas según la política de retención. Coste recurrente evitado: 70.000 € al año. Nuevo caso de uso IA-2027-047 en fase 1, por el ciclo completo. | Comisión de transformación digital |
 
 **IA-2027-041 · Clasificación y reparto de escritos del registro.** Optimizar · Lite · Autonomía A1: propone el servicio competente y el personal del registro lo confirma; los escritos de baja confianza se revisan uno a uno.
 
@@ -518,7 +518,7 @@ Cooperativa regional ficticia con 260 empleados, 11 centros de recepción, logí
 | DEC-2027-051 | Junta (C2) | Tesis: Optimizar en 04 Operaciones y en 05 Datos/logística; no se aprueba la IA en decisiones sobre compra ni sobre personas hasta tener línea base y controles. |
 | DEC-2027-053 | Junta | Autorizar la etapa 1 de IA-2027-052 con límite de 90.000 €. |
 
-### 8.4 Iniciativas
+### 8.4 Casos de uso
 
 **IA-2027-052 · Predicción de demanda por centro y producto.** Optimizar · Lite · Autonomía A1.
 
@@ -529,7 +529,7 @@ Cooperativa regional ficticia con 260 empleados, 11 centros de recepción, logí
 | G4 | 2T27 | Continuar | Junta | Reversión a la planificación manual probada. |
 | G5 | 4T27 | **Parar** | Junta | Se detectó que los proveedores externos tenían varios patrones distintos de pedido y la serie histórica estaba incompleta; la precisión cayó por debajo del umbral en dos centros. Motivo codificado: *Datos insuficientes*. |
 
-Valor estimado antes del cierre del piloto: 124.000 € de ahorro en margen perdido y merma evitada; coste recurrente previsión 55.000 €. La iniciativa se archivó y la cooperativa dedicó el siguiente trimestre a un proyecto de datos de compra y logística para homogeneizar los flujos.
+Valor estimado antes del cierre del piloto: 124.000 € de ahorro en margen perdido y merma evitada; coste recurrente previsión 55.000 €. El caso de uso se archivó y la cooperativa dedicó el siguiente trimestre a un proyecto de datos de compra y logística para homogeneizar los flujos.
 
 **IA-2027-055 · Asistente de trazabilidad de calidad y lote.** Aumentar · Lite · Autonomía A0.
 
@@ -542,7 +542,7 @@ Valor estimado antes del cierre del piloto: 124.000 € de ahorro en margen perd
 ### 8.5 Lecciones
 
 1. **Las medianas suelen tener buenos datos operativos, pero no siempre homogéneos.** La precisión no falló por técnica, sino por calidad del dato.
-2. **Un proyecto de datos puede ser la iniciativa más valiosa.** La cooperativa aprendió que la previsión requiere ordenación antes de automatizar.
+2. **Un proyecto de datos puede ser el caso de uso más valioso.** La cooperativa aprendió que la previsión requiere ordenación antes de automatizar.
 3. **La IA útil para una cooperativa no tiene por qué ser de gran escala.** Basta con un problema claro, una línea base y una reversión pronta.
 
 ---
@@ -576,7 +576,7 @@ Cadena ficticia de 7 hoteles, 4.000 camas y 600 empleados. Tiene un equipo peque
 | DEC-2027-061 | Consejo de dirección | Tesis: Optimizar en 04 Operaciones y 03 Personas; Aumentar en 01 Cliente. No se automatizan decisiones sobre precios ni devoluciones sin revisión humana. |
 | DEC-2027-062 | Consejo de dirección | Autorizar la etapa 1 de IA-2027-060 con límite de 65.000 €. |
 
-### 9.4 Iniciativas
+### 9.4 Casos de uso
 
 **IA-2027-060 · Optimización de precios y disponibilidad de habitaciones.** Optimizar · Lite · Autonomía A1.
 
@@ -634,7 +634,7 @@ Fabricante ficticio de componentes metálicos para la industria del automóvil y
 | DEC-2027-072 | Consejo de dirección | Autorizar la etapa 1 de IA-2027-070 con límite de 180.000 €. |
 | DEC-2028-010 | Consejo de dirección | Parar IA-2027-074 en G5 por riesgo de cumplimiento tributario y de gestión de pedidos. |
 
-### 10.4 Iniciativas
+### 10.4 Casos de uso
 
 **IA-2027-070 · Mantenimiento predictivo de equipos críticos.** Optimizar · Enterprise · Autonomía A1.
 
@@ -656,7 +656,7 @@ Valor con doce meses: 280.000 € de pérdidas evitadas; coste recurrente 120.00
 | G4 | 4T27 | Continuar | Dirección | Hito de margen previo al servicio. |
 | G5 | 2T28 | **Parar** | Consejo | Se detectó un problema de trazabilidad y del tratamiento de proveedor, con riesgo de incumplimiento en el servicio más crítico. Motivo codificado: *Riesgo de cumplimiento*. |
 
-Inversión consumida: 145.000 €. Se reformuló la iniciativa como un asistente de ayuda interna, no como un agente de decisión.
+Inversión consumida: 145.000 €. Se reformuló el caso de uso como un asistente de ayuda interna, no como un agente de decisión.
 
 ### 10.5 Lecciones
 
@@ -687,7 +687,7 @@ Inversión consumida: 145.000 €. Se reformuló la iniciativa como un asistente
 | 1 | ¿Qué habría pasado si el consejo hubiera aceptado el riesgo Crítico de las baterías para no perder la oportunidad? ¿Qué debería constar en esa decisión? |
 | 2 | El equipo del agente de cargas pedía rebajar el criterio de parada a 0,5 puntos. ¿Qué argumentos tendría el consejo a favor y en contra? |
 | 3 | Con un neto validado negativo y un neto total positivo, ¿escalaría la documentación clínica automática? ¿Con qué condición? |
-| 4 | ¿Es coherente financiar primero la iniciativa con menor neto adicional por euro? ¿Cómo se explica al mercado y a la plantilla? |
+| 4 | ¿Es coherente financiar primero el caso de uso con menor neto adicional por euro? ¿Cómo se explica al mercado y a la plantilla? |
 | 5 | ¿Cómo adaptaría la señal "ingresos habilitados por IA" del índice de transformación a una administración pública? |
 | 6 | ¿Qué cambio de gobierno de datos haría falta antes de volver a intentar la previsión por centro? |
 | 7 | ¿Qué umbral de revisión humana es razonable para una cadena hotelera sin gran estructura de IA? |
@@ -699,10 +699,10 @@ Inversión consumida: 145.000 €. Se reformuló la iniciativa como un asistente
 
 | Código | Nombre | Uso en los casos |
 |---|---|---|
-| T01 | Registro de iniciativas | Recorrido de *gates*, estados y motivos codificados. |
+| T01 | Registro de casos de uso | Recorrido de *gates*, estados y motivos codificados. |
 | T02 | Inventario de sistemas de IA | Hallazgos iniciales de los casos 1 y 5. |
 | T03 | Gestor de *gates* | Decisiones y condiciones. |
-| T05 | Clasificador de ambición | Nivel de ambición de cada iniciativa. |
+| T05 | Clasificador de ambición | Nivel de ambición de cada caso de uso. |
 | T12 | Seguimiento de realización de valor | Tablas de valor con estado. |
 | T14 | Calculadora del índice de transformación | Perfiles de cada compañía. |
 | T15 | Diagnóstico de madurez | Tablas D1–D7. |
@@ -734,4 +734,4 @@ Inversión consumida: 145.000 €. Se reformuló la iniciativa como un asistente
 
 | Versión | Fecha | Cambios |
 |---|---|---|
-| 0.1 | 16-09-2026 | Primera versión. Cinco casos ficticios (energía, logística, sanidad, retail y sector público) con diagnóstico de madurez, índice de transformación, decisiones del consejo, recorrido de quince iniciativas por sus *gates*, valor con fórmulas y estados, cinco paradas, cuatro retiradas y lecciones. Sustituye los casos de ejemplo del material anterior, que contenían resultados no demostrables. |
+| 0.1 | 16-09-2026 | Primera versión. Cinco casos ficticios (energía, logística, sanidad, retail y sector público) con diagnóstico de madurez, índice de transformación, decisiones del consejo, recorrido de quince casos de uso por sus *gates*, valor con fórmulas y estados, cinco paradas, cuatro retiradas y lecciones. Sustituye los casos de ejemplo del material anterior, que contenían resultados no demostrables. |

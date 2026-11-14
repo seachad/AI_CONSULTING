@@ -1,6 +1,6 @@
 # Metodología de riesgos de IA
 
-**Cómo se identifican, valoran, tratan, siguen e informan los riesgos de la IA en cada iniciativa y en la cartera**
+**Cómo se identifican, valoran, tratan, siguen e informan los riesgos de la IA en cada caso de uso y en la cartera**
 
 | | |
 |---|---|
@@ -16,16 +16,16 @@
 
 > **Aviso legal y exención de responsabilidad.** SEVEN-G es un marco metodológico de referencia que se ofrece «tal cual» y con fines exclusivamente informativos. No constituye asesoramiento jurídico, regulatorio, financiero ni profesional, ni garantiza el cumplimiento de ninguna norma. Las referencias a regulación general (como el Reglamento Europeo de IA, el RGPD, DORA o NIS2), a normas técnicas y a regulación específica de cada sector o jurisdicción pueden ser incompletas, no aplicar a un caso concreto o quedar desactualizadas por cambios normativos, interpretaciones o criterios de las autoridades posteriores a su fecha de consulta. **Cada organización que use SEVEN-G es la única responsable de identificar la normativa que le aplica, verificar su vigencia y certificar su propio cumplimiento regulatorio**, con el asesoramiento cualificado que corresponda. Esta metodología es una ayuda genérica y gratuita, compartida con la comunidad para que nadie tenga que empezar desde cero; cada persona u organización puede y debe adaptarla a su propio uso. No debe entenderse que sus partes jurídicamente sensibles hayan sido revisadas por una asesoría jurídica: esas revisiones, para cada empresa o sector, son responsabilidad última de la empresa, el consultor o la organización que la use. Aunque se procura mantenerla al día, alguna norma puede haber cambiado sin que se recoja aquí. En la máxima medida permitida por la ley, el autor no asume responsabilidad alguna por los efectos de su aplicación en ninguna organización ni por su aplicabilidad completa. La metodología no otorga certificación de ningún tipo. El autor no asume responsabilidad alguna por el uso que se haga de este contenido ni por las decisiones que se adopten con él. Los datos, cifras, compañías y casos de los ejemplos son ficticios o ilustrativos.
 
-<!-- esencial: siempre | Registro de riesgos de cada iniciativa desde la fase 3, con la escala 5 × 5, riesgo inherente y residual, y aceptación por el órgano que corresponde a su nivel. Un riesgo residual Crítico sin aprobación del consejo bloquea G3 y G5. El riesgo de cartera y los indicadores de riesgo clave se aplican en proporción al tamaño de la cartera. -->
+<!-- esencial: siempre | Registro de riesgos de cada caso de uso desde la fase 3, con la escala 5 × 5, riesgo inherente y residual, y aceptación por el órgano que corresponde a su nivel. Un riesgo residual Crítico sin aprobación del consejo bloquea G3 y G5. El riesgo de cartera y los indicadores de riesgo clave se aplican en proporción al tamaño de la cartera. -->
 
 ## 1. Objeto y alcance
 
-Este documento define la metodología con la que una organización que aplica SEVEN-G gestiona los riesgos de sus sistemas e iniciativas de IA. Es la referencia de las escalas de riesgo del marco: los documentos 13 (apetito de riesgo), 14 (cartera), 21 (criterios de *gate*), 35 (seguridad), 36 (terceros), las plantillas P12 y P13 y la herramienta T06 usan exactamente las escalas y niveles que aquí se fijan.
+Este documento define la metodología con la que una organización que aplica SEVEN-G gestiona los riesgos de sus sistemas e casos de uso de IA. Es la referencia de las escalas de riesgo del marco: los documentos 13 (apetito de riesgo), 14 (cartera), 21 (criterios de *gate*), 35 (seguridad), 36 (terceros), las plantillas P12 y P13 y la herramienta T06 usan exactamente las escalas y niveles que aquí se fijan.
 
 ### 1.1 Qué cubre
 
 - El proceso de gestión del riesgo en seis pasos: identificar, analizar, evaluar, tratar, seguir e informar.
-- Su aplicación en los dos niveles del marco: la **iniciativa** (fases 0–7) y la **cartera** (ciclo corporativo C1–C5).
+- Su aplicación en los dos niveles del marco: la **caso de uso** (fases 0–7) y la **cartera** (ciclo corporativo C1–C5).
 - Las escalas de probabilidad e impacto, la matriz 5 × 5 y los niveles de riesgo.
 - El riesgo inherente y residual, y la valoración de la eficacia de los controles.
 - La aceptación, el escalado y el registro de riesgos.
@@ -56,7 +56,7 @@ Este documento no constituye asesoramiento jurídico.
 | 3 | **Se valora el peor eje de impacto** | El impacto es el mayor de los cinco ejes; no se promedia. |
 | 4 | **Todo riesgo tiene un responsable** | Sin responsable nominal el riesgo no está registrado. |
 | 5 | **Quien construye no acepta su propio riesgo** | La aceptación sigue la escala de la sección 7 y respeta la separación de funciones (01 §8). |
-| 6 | **El riesgo es sistémico** | Además del riesgo de cada iniciativa, se gestiona la concentración y la correlación de la cartera (principio 5 de 01 §3). |
+| 6 | **El riesgo es sistémico** | Además del riesgo de cada caso de uso, se gestiona la concentración y la correlación de la cartera (principio 5 de 01 §3). |
 | 7 | **El registro está vivo** | Se actualiza en cada *gate*, en cada revisión de continuidad, tras cada incidente y ante cada cambio relevante. |
 
 ---
@@ -84,13 +84,13 @@ flowchart LR
 | Paso | Qué se hace | Resultado | Responsable |
 |---|---|---|---|
 | **1. Identificar** | Recorrer el catálogo de riesgos tipo (sección 9), el contexto de la fase 0, la clasificación regulatoria, la arquitectura y los proveedores. Describir cada riesgo como **causa → evento → consecuencia**. | Lista de riesgos con código RT asociado. | Responsable de producto con el responsable técnico; facilita el responsable de riesgos. |
-| **2. Analizar** | Estimar probabilidad e impacto inherentes con las escalas de la sección 4, justificando el eje de impacto determinante. Identificar controles existentes. | Nivel inherente por riesgo. | Equipo de la iniciativa. |
+| **2. Analizar** | Estimar probabilidad e impacto inherentes con las escalas de la sección 4, justificando el eje de impacto determinante. Identificar controles existentes. | Nivel inherente por riesgo. | Equipo del caso de uso. |
 | **3. Evaluar** | Comparar con el apetito y las tolerancias (documento 13). Decidir qué riesgos requieren tratamiento y en qué orden. | Priorización y propuesta de respuesta. | Responsable de riesgos de IA. |
 | **4. Tratar** | Elegir la respuesta (evitar, mitigar, transferir, aceptar), diseñar y aplicar controles, estimar el residual objetivo y obtener la aceptación del residual. | Plan de mitigación y contingencia (P13); decisión de aceptación. | Responsable del riesgo; acepta quien corresponda según la sección 7. |
 | **5. Seguir** | Verificar la eficacia de los controles, vigilar indicadores de riesgo clave, revisar con la periodicidad del nivel y ante disparadores. | Registro actualizado; residual verificado. | Responsable de operación y responsable del riesgo; verifica el auditor de IA en los *gates*. |
 | **6. Informar** | Presentar el perfil de riesgo al órgano que decide el *gate* y, agregado, al comité de IA y al consejo. | Información de riesgo en P29, panel del consejo (T17). | Oficina de IA con el responsable de riesgos. |
 
-### 3.1 En el ciclo de vida de la iniciativa
+### 3.1 En el ciclo de vida del caso de uso
 
 | Fase o puerta | Actividad de riesgo | Evidencia |
 |---|---|---|
@@ -119,11 +119,11 @@ flowchart LR
 
 ### 4.1 Probabilidad
 
-La probabilidad se estima para el horizonte de la iniciativa o, en sistemas en producción, para los doce meses siguientes. Se usa la referencia de frecuencia para eventos recurrentes y la de porcentaje para eventos únicos.
+La probabilidad se estima para el horizonte del caso de uso o, en sistemas en producción, para los doce meses siguientes. Se usa la referencia de frecuencia para eventos recurrentes y la de porcentaje para eventos únicos.
 
 | Probabilidad | Nombre | Referencia orientativa |
 |---|---|---|
-| **1** | Rara | Menos de una vez en 5 años o < 5 % en el horizonte de la iniciativa |
+| **1** | Rara | Menos de una vez en 5 años o < 5 % en el horizonte del caso de uso |
 | **2** | Improbable | Una vez cada 2–5 años o 5–20 % |
 | **3** | Posible | Una vez cada 1–2 años o 20–50 % |
 | **4** | Probable | Varias veces al año o 50–80 % |
@@ -171,7 +171,7 @@ Reglas de uso:
 
 | Concepto | Definición |
 |---|---|
-| **Riesgo inherente** | Nivel del riesgo sin considerar controles específicos de la iniciativa. Los controles corporativos generales solo se consideran si están probados y documentados en la compañía. |
+| **Riesgo inherente** | Nivel del riesgo sin considerar controles específicos del caso de uso. Los controles corporativos generales solo se consideran si están probados y documentados en la compañía. |
 | **Riesgo residual objetivo** | Nivel esperado tras aplicar los controles previstos. Se usa en G3 y G4. |
 | **Riesgo residual verificado** | Nivel tras comprobar con evidencia la eficacia de los controles. Es el que se exige en G5 y se sigue en R6. |
 
@@ -228,7 +228,7 @@ Todo riesgo Alto o Crítico en tratamiento **debe** tener **plan de contingencia
 
 Reglas:
 
-- Nadie acepta un riesgo de una iniciativa en la que construye (01 §8.2).
+- Nadie acepta un riesgo de un caso de uso en el que construye (01 §8.2).
 - La aceptación caduca al cambiar el nivel, el sistema, el proveedor, el modelo, la clasificación regulatoria o el nivel de autonomía, y en todo caso en la fecha de vigencia registrada.
 - Aceptar un riesgo no exime de cumplir la regulación: un incumplimiento legal no se acepta como riesgo, se corrige.
 
@@ -263,7 +263,7 @@ El registro de riesgos es la evidencia "Matriz y registro de riesgos" de 01 §6.
 
 | Bloque | Campo | Contenido |
 |---|---|---|
-| **Identificación** | Identificador | Código de la iniciativa y número correlativo (ilustrativo: IA-2026-014 · R03); para riesgos de cartera, ámbito "Cartera". |
+| **Identificación** | Identificador | Código del caso de uso y número correlativo (ilustrativo: IA-2026-014 · R03); para riesgos de cartera, ámbito "Cartera". |
 | | Riesgo tipo | Código `RT-<CAT>-NN` del catálogo, o "Específico" si no hay equivalente. |
 | | Categoría | EST, TEC, DAT, ECO, LEG, ORG, REP, GEN, SEG o TER. |
 | | Título y descripción | Causa → evento → consecuencia, en lenguaje comprensible. |
@@ -290,13 +290,13 @@ El registro de riesgos es la evidencia "Matriz y registro de riesgos" de 01 §6.
 
 ### 8.2 Calidad del registro
 
-El verificador comprueba, como mínimo: que todos los riesgos Medio o superiores tienen responsable, control y residual; que la justificación de probabilidad e impacto es trazable; que las aceptaciones las firma quien corresponde y están vigentes; que los riesgos tipo aplicables a la tecnología y a la clasificación de la iniciativa se han considerado (incluidos o descartados con motivo); y que el registro existía antes del *gate* (01 §7.4, regla 3). Los criterios concretos están en los documentos 21 y 22.
+El verificador comprueba, como mínimo: que todos los riesgos Medio o superiores tienen responsable, control y residual; que la justificación de probabilidad e impacto es trazable; que las aceptaciones las firma quien corresponde y están vigentes; que los riesgos tipo aplicables a la tecnología y a la clasificación del caso de uso se han considerado (incluidos o descartados con motivo); y que el registro existía antes del *gate* (01 §7.4, regla 3). Los criterios concretos están en los documentos 21 y 22.
 
 ---
 
 ## 9. Catálogo de riesgos tipo
 
-El catálogo es una lista de partida, no exhaustiva. En la fase 3, el equipo **debe** revisar al menos los riesgos tipo de las categorías que aplican a su tecnología y exposición, y registrar los descartados con motivo. Cada compañía **puede** ampliar el catálogo con códigos correlativos y **debe** declarar los que añade. Para hacer esa revisión, el Excel del caso que genera T06 lista los riesgos tipo que aplican al perfil de la iniciativa (tecnología, exposición, autonomía, clasificación regulatoria, ambición y terceros) y no tienen un riesgo registrado con su código, con una propuesta de mitigación y de contingencia por cada uno y columnas para incluirlo o descartarlo con motivo.
+El catálogo es una lista de partida, no exhaustiva. En la fase 3, el equipo **debe** revisar al menos los riesgos tipo de las categorías que aplican a su tecnología y exposición, y registrar los descartados con motivo. Cada compañía **puede** ampliar el catálogo con códigos correlativos y **debe** declarar los que añade. Para hacer esa revisión, el Excel del caso que genera T06 lista los riesgos tipo que aplican al perfil del caso de uso (tecnología, exposición, autonomía, clasificación regulatoria, ambición y terceros) y no tienen un riesgo registrado con su código, con una propuesta de mitigación y de contingencia por cada uno y columnas para incluirlo o descartarlo con motivo.
 
 La columna *Fase* indica dónde se identifica y dónde se trata principalmente; los controles con código SEG o AG se describen en el documento 35.
 
@@ -304,12 +304,12 @@ La columna *Fase* indica dónde se identifica y dónde se trata principalmente; 
 
 | Código | Riesgo y descripción | Causas típicas | Controles tipo | Fase |
 |---|---|---|---|---|
-| **RT-EST-01** | **Desalineación con la tesis de IA.** La iniciativa no contribuye a la ambición ni a las esferas aprobadas en C2. | Origen tecnológico; patrocinio débil; ausencia de filtro. | Encaje con la tesis en G0; clasificación de esfera (P07); priorización en C3. | 0–1 |
+| **RT-EST-01** | **Desalineación con la tesis de IA.** El caso de uso no contribuye a la ambición ni a las esferas aprobadas en C2. | Origen tecnológico; patrocinio débil; ausencia de filtro. | Encaje con la tesis en G0; clasificación de esfera (P07); priorización en C3. | 0–1 |
 | **RT-EST-02** | **Ambición declarada no evidenciada.** Se presenta como Aumentar o Transformar lo que es Optimizar, y se decide con expectativas erróneas. | Incentivos a "transformar"; criterios ambiguos. | Cinco preguntas de clasificación (T05); confirmación en fase 2; revisión en G7. | 1, 2, 7 |
 | **RT-EST-03** | **Pérdida de oportunidad.** El proceso de decisión es tan lento que la ventaja se pierde. | Plazos de *gate* largos; mismo criterio de retorno para todas las apuestas. | Plazos de referencia (03 §3.6); criterios por ambición (01 §7.6); métricas de agilidad. | C3, todas |
 | **RT-EST-04** | **Bloqueo tecnológico.** Plataforma o modelo elegidos quedan superados y el cambio es costoso. | Dependencia de funciones propietarias; arquitectura acoplada. | Capa de abstracción de modelos; portabilidad de datos e instrucciones; revisión en R6. | 4, 6 |
-| **RT-EST-05** | **Retirada de patrocinio o de financiación.** La iniciativa pierde apoyo antes de demostrar valor. | Cambios de dirección; valor no visible a tiempo. | Financiación por etapas; hitos de aprendizaje; criterios de parada previos. | 0, C3 |
-| **RT-EST-06** | **Concentración de la cartera en una apuesta.** Una sola iniciativa o plataforma concentra inversión o valor esperado. | Apuestas grandes sin límites por etapa. | Límites de concentración en el apetito (13); revisión trimestral. | C3, C4 |
+| **RT-EST-05** | **Retirada de patrocinio o de financiación.** El caso de uso pierde apoyo antes de demostrar valor. | Cambios de dirección; valor no visible a tiempo. | Financiación por etapas; hitos de aprendizaje; criterios de parada previos. | 0, C3 |
+| **RT-EST-06** | **Concentración de la cartera en una apuesta.** Un solo caso de uso o plataforma concentra inversión o valor esperado. | Apuestas grandes sin límites por etapa. | Límites de concentración en el apetito (13); revisión trimestral. | C3, C4 |
 
 ### 9.2 Técnico (TEC)
 
@@ -369,7 +369,7 @@ La columna *Fase* indica dónde se identifica y dónde se trata principalmente; 
 | **RT-ORG-05** | **Uso no autorizado de IA (*shadow AI*).** Empleados usan herramientas no aprobadas con datos de la compañía. | Falta de alternativas aprobadas; política desconocida. | Política de uso aceptable (31); alternativas corporativas; detección (T21). | C1, C4 |
 | **RT-ORG-06** | **Roles sin separación de funciones.** Quien construye verifica, acepta riesgos o decide. | Equipos pequeños; roles no asignados. | Registro de roles (P03); incompatibilidades (01 §8.2). | 0 |
 | **RT-ORG-07** | **Incumplimiento de información y consulta.** La representación de los trabajadores o los trabajadores afectados no reciben, antes del uso, la información o la consulta exigibles sobre un sistema que incide en las condiciones de trabajo o en el empleo. | Análisis jurídico tardío o ausente; cambios de parámetros, reglas o finalidad no comunicados. | Proceso de información y consulta (50 §7.2) y ficha informativa (50 §7.3); G5 sin *Continuar* ni *Continuar con condiciones* sin evidencia de la información; IND-ADO-12 (41). | 3–5, 6 |
-| **RT-ORG-08** | **Conflicto laboral.** La introducción de la IA genera consultas, reclamaciones o conflictos colectivos que retrasan, condicionan o bloquean la iniciativa. | Comunicación tardía o ambigua; efecto sobre el empleo sin diálogo; destinos de la capacidad liberada decididos sin participación. | Posición sobre IA y trabajo aprobada en C2 (13); evaluación de efecto (50 §3.4); diálogo con la representación y comunicación interna (50 §7 y §10); decisión de la alta dirección en destinos PER-D1 relevantes. | 2–5, 7 |
+| **RT-ORG-08** | **Conflicto laboral.** La introducción de la IA genera consultas, reclamaciones o conflictos colectivos que retrasan, condicionan o bloquean el caso de uso. | Comunicación tardía o ambigua; efecto sobre el empleo sin diálogo; destinos de la capacidad liberada decididos sin participación. | Posición sobre IA y trabajo aprobada en C2 (13); evaluación de efecto (50 §3.4); diálogo con la representación y comunicación interna (50 §7 y §10); decisión de la alta dirección en destinos PER-D1 relevantes. | 2–5, 7 |
 | **RT-ORG-09** | **Deterioro del bienestar.** Intensificación del trabajo, vigilancia excesiva, pérdida de autonomía o carga de supervisión dañan la salud y el compromiso de las personas afectadas. | Objetivos y cargas no revisados tras la IA; datos de uso empleados para controlar a personas; volúmenes de revisión excesivos. | Revisión de la evaluación de riesgos laborales, incluidos los psicosociales, y limitación de finalidad (50 §9.2); diseño de la supervisión (P17); encuesta de pulso (IND-ADO-15, 41). | 4–6 |
 
 ### 9.7 Reputacional (REP)
@@ -426,7 +426,7 @@ La columna *Fase* indica dónde se identifica y dónde se trata principalmente; 
 
 ## 10. Riesgo de cartera
 
-Los riesgos de las iniciativas no se suman: interactúan. El comité de IA **debe** revisar la cartera, al menos trimestralmente, con tres análisis.
+Los riesgos de los casos de uso no se suman: interactúan. El comité de IA **debe** revisar la cartera, al menos trimestralmente, con tres análisis.
 
 ### 10.1 Concentración
 
@@ -450,7 +450,7 @@ Para cada causa común, la oficina de IA **debería** construir un **escenario d
 1. Indisponibilidad durante varios días del principal proveedor de modelos.
 2. Cambio de comportamiento de un modelo base usado por varios sistemas.
 3. Vulnerabilidad explotada en un componente común de agentes (conector, servidor de herramientas, biblioteca).
-4. Reclasificación regulatoria de un tipo de uso presente en varias iniciativas.
+4. Reclasificación regulatoria de un tipo de uso presente en varios casos de uso.
 5. Brecha de datos en una base de conocimiento compartida.
 
 ### 10.3 Dependencia de proveedores
@@ -511,8 +511,8 @@ El informe al consejo usa lenguaje de negocio: qué puede pasar, a quién afecta
 | **P12** | Matriz y registro de riesgos | Registro con los campos de la sección 8, mapa de calor inherente y residual. Fases 3, 5 y 6. |
 | **P13** | Plan de mitigación y contingencia | Acciones de tratamiento, residual objetivo, contingencias y disparadores (secciones 5–7). Fase 3. |
 | **P42** | Informe trimestral de segunda línea | Información trimestral de riesgos de la cartera a la comisión delegada (secciones 10–12). |
-| **T06** | Matriz y registro de riesgos | Cálculo de niveles con la regla de impacto extremo, matriz 5 × 5 inherente y residual de cada iniciativa y de la cartera, eficacia de controles, aceptación por el órgano de su nivel, observaciones de las secciones 4 a 8 (residual Crítico sin aprobación, Alto sin contingencia, aceptación caducada o insuficiente, revisión vencida), exportación CSV y **Excel del caso**: matriz, registro, plan de mitigación (P13 §4) y plan de contingencia (P13 §6) propuestos para cada riesgo a partir del catálogo de la sección 9 según su riesgo tipo, y los riesgos tipo que aplican al perfil de la iniciativa y no están registrados, para incluirlos o descartarlos con motivo (sección 8.2); las propuestas son un punto de partida, no sustituyen la decisión del órgano competente. Vista «Riesgos» del registro T01. La concentración y la correlación de la cartera (sección 10) se analizan con P12 §7. |
-| T01 · T02 · T08 · T09 · T17 | Registro de iniciativas, inventario, incidentes, proveedores y panel del consejo | Fuentes y destinos de datos de riesgo. |
+| **T06** | Matriz y registro de riesgos | Cálculo de niveles con la regla de impacto extremo, matriz 5 × 5 inherente y residual de cada caso de uso y de la cartera, eficacia de controles, aceptación por el órgano de su nivel, observaciones de las secciones 4 a 8 (residual Crítico sin aprobación, Alto sin contingencia, aceptación caducada o insuficiente, revisión vencida), exportación CSV y **Excel del caso**: matriz, registro, plan de mitigación (P13 §4) y plan de contingencia (P13 §6) propuestos para cada riesgo a partir del catálogo de la sección 9 según su riesgo tipo, y los riesgos tipo que aplican al perfil del caso de uso y no están registrados, para incluirlos o descartarlos con motivo (sección 8.2); las propuestas son un punto de partida, no sustituyen la decisión del órgano competente. Vista «Riesgos» del registro T01. La concentración y la correlación de la cartera (sección 10) se analizan con P12 §7. |
+| T01 · T02 · T08 · T09 · T17 | Registro de casos de uso, inventario, incidentes, proveedores y panel del consejo | Fuentes y destinos de datos de riesgo. |
 
 ---
 

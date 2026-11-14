@@ -1,10 +1,10 @@
-# Adoption and change in the initiative
+# Adoption and change in the use case
 
 **How to ensure that AI is used, that released capacity is turned into value and that people know how to work with it**
 
 | | |
 |---|---|
-| Document | Document 23 · Adoption and change in the initiative |
+| Document | Document 23 · Adoption and change in the use case |
 | Version | 0.1 (working draft) |
 | Date | 16-09-2026 |
 | Author | Fernando García Varela |
@@ -16,11 +16,11 @@
 
 > **Legal notice and disclaimer.** SEVEN-G is a reference methodological framework provided "as is" and for information purposes only. It does not constitute legal, regulatory, financial or professional advice, nor does it guarantee compliance with any law or standard. References to general regulation (such as the EU AI Act, the GDPR, DORA or NIS2), to technical standards and to regulation specific to each sector or jurisdiction may be incomplete, may not apply to a particular case or may become out of date as a result of regulatory changes, interpretations or supervisory positions after their consultation date. **Each organisation that uses SEVEN-G is solely responsible for identifying the regulation that applies to it, verifying that it is current and certifying its own regulatory compliance**, with the appropriate qualified advice. This methodology is a generic, free aid shared with the community so that nobody has to start from scratch; each person or organisation can and should adapt it to its own use. It must not be inferred that its legally sensitive parts have been reviewed by legal counsel: those reviews, for each company or sector, are the ultimate responsibility of the company, consultant or organisation that uses it. Although every effort is made to keep it up to date, some regulation may have changed without being reflected here. To the fullest extent permitted by law, the author accepts no responsibility whatsoever for the effects of its application in any organisation or for its full applicability. The methodology does not grant certification of any kind. The author accepts no liability for any use made of this content or for any decisions taken on the basis of it. The data, figures, companies and cases in the examples are fictitious or illustrative.
 
-<!-- esencial: recomendado | The adoption plan (P20) is mandatory evidence from phase 4 and adoption is checked at G5 and G7. The rest —change model, role impact analysis, communication— is guidance used in proportion to the initiative's effect on people. -->
+<!-- esencial: recomendado | The adoption plan (P20) is mandatory evidence from phase 4 and adoption is checked at G5 and G7. The rest —change model, role impact analysis, communication— is guidance used in proportion to the use case's effect on people. -->
 
 ## 1. Purpose and scope
 
-This document defines how the adoption of an AI initiative is planned, measured and decided. It fills a gap in the framework's previous material: phase 5 validated value, but did not explicitly address actual adoption, the reassignment of released capacity or training, which are conditions for value to materialise.
+This document defines how the adoption of an AI use case is planned, measured and decided. It fills a gap in the framework's previous material: phase 5 validated value, but did not explicitly address actual adoption, the reassignment of released capacity or training, which are conditions for value to materialise.
 
 **What it covers**
 
@@ -70,7 +70,7 @@ flowchart LR
   class NA ko
 ```
 
-Three consequences for the governance of the initiative:
+Three consequences for the governance of the use case:
 
 1. **Availability is not adoption, and adoption is not value.** Reports distinguish users with access, active users, effective use in the process and measured result.
 2. **Released capacity does not count as savings** until it is materialised or explicitly reassigned (measurement rule 3, 00 §6). It is reported separately.
@@ -242,7 +242,7 @@ A reassignment is only recognised if it records the following in P20:
 | Outcome indicator | How it will be known that the destination activity produces an effect (for example, complex cases resolved, sales visits, response time). |
 | Review | At which R6 it is checked. |
 
-The value of the destination activity **is not added as an efficiency** of the initiative. If it produces measurable return, it is recorded as return in the use case to which it is attributed, only once (measurement rule 5).
+The value of the destination activity **is not added as an efficiency** of the use case. If it produces measurable return, it is recorded as return in the use case to which it is attributed, only once (measurement rule 5).
 
 ### 7.5 Rates and reporting
 
@@ -275,7 +275,7 @@ Destination decided in phase 4 and carried out in phase 6: a temporary contract 
 
 Article 4 of the EU AI Act requires providers and deployers to take measures to ensure, to their best extent, a sufficient level of AI literacy among their staff and other persons dealing with the operation and use of AI systems on their behalf, taking into account their technical knowledge, experience, education and training and the context of use. It has applied since 2 February 2025. Regulation (EU) 2026/1744 (Digital Omnibus on AI) has amended its wording, which now requires measures to *support* the development of AI literacy without setting a level; the details and their verification status, as at the consultation date of September 2026, are in document 34 (§3.5).
 
-Regardless of regulatory developments, **SEVEN-G requires training in each initiative because value depends on it**. General AI literacy across the workforce is governed in document 31; this document addresses training specific to the initiative.
+Regardless of regulatory developments, **SEVEN-G requires training in each use case because value depends on it**. General AI literacy across the workforce is governed in document 31; this document addresses training specific to the use case.
 
 ### 8.2 Training by audience
 
@@ -324,7 +324,7 @@ Key users **should** take part in designing the user experience, in defining hum
 
 ### 9.3 Workers' representatives
 
-When the initiative affects working conditions, decisions on employment or performance monitoring, the company must comply with the applicable information and consultation rights. Among the references in force at the consultation date:
+When the use case affects working conditions, decisions on employment or performance monitoring, the company must comply with the applicable information and consultation rights. Among the references in force at the consultation date:
 
 - **Article 26(7) of the EU AI Act**: deployers who are employers inform workers' representatives and the affected workers before putting into service or using a high-risk AI system in the workplace.
 - In Spain, **Article 64.4.d) of the Workers' Statute** (Estatuto de los Trabajadores): the right of the works council to be informed of the parameters, rules and instructions on which the algorithms or AI systems are based that affect decisions that may have an impact on working conditions, access to and retention of employment, including profiling.
@@ -356,7 +356,7 @@ The `IND-` codes are those of the catalogue (document 41); the `PER-` codes are 
 | 4 | **Continuity of use** | Active users in the period who were also active in the previous period ÷ active users in the previous period | Proposal | M | Phase 6: reinforcement; detects abandonment after launch. |
 | 5 | **Human override rate** | Recommendations or results rejected or modified by the person ÷ recommendations or results reviewed | PER-10 (complements IND-ADO-04) | M | G5 and R6: calibration of trust. |
 | 6 | **Review time per case** | Median human review time per case reviewed, with 80th percentile | Proposal | M | R6: detection of rubber-stamp approval (RT-ORG-04). |
-| 7 | **Training coverage** | People with access or an oversight role with training recorded and assessed before access ÷ people with access or an oversight role | IND-ADO-05 (initiative level) · PER-02 · PER-03 | M | G5 and R6: access condition. |
+| 7 | **Training coverage** | People with access or an oversight role with training recorded and assessed before access ÷ people with access or an oversight role | IND-ADO-05 (use case level) · PER-02 · PER-03 | M | G5 and R6: access condition. |
 | 8 | **User perception** | Favourable responses to the questions on usefulness, trust, support, workload and autonomy (P44) ÷ valid responses | PER-15 | Phase 5, at 3 months and at Enterprise R6 | Desire and reinforcement; early warning of rejection. |
 | 9 | **Released capacity application rate** | (Materialised hours + explicitly reassigned hours) ÷ measured released hours | IND-VAL-08 + IND-VAL-09 · PER-04 + PER-05 | Q | R6 and G7: conversion into value (section 7.5). |
 | 10 | **Updated roles** | Affected positions with updated description and objectives ÷ affected positions according to the impact analysis | PER-13 · IND-ADO-06 | S | G7 in Augment and Transform; signal 5. |
@@ -381,10 +381,10 @@ Notes:
 ### 10.4 Targets and thresholds
 
 - The **adoption target** is set in phase 2 (G2.10): mandatory in Augment, recommended in Optimise.
-- In phase 4, the baseline, target, time frame and **minimum threshold** for G5 and for G7 are set in P20 for each selected indicator. Thresholds are set before the results are known and are not relaxed during the phase without the approval of the body that authorised the initiative (01 §7.4, rule 6).
+- In phase 4, the baseline, target, time frame and **minimum threshold** for G5 and for G7 are set in P20 for each selected indicator. Thresholds are set before the results are known and are not relaxed during the phase without the approval of the body that authorised the use case (01 §7.4, rule 6).
 - Tracking is monthly during the first six months of production and is then presented at each R6 (R6.14).
-- Effective use below the threshold for two consecutive periods triggers a review at R6 and may justify bringing G7 forward. If the initiative is stopped or retired for this reason, the coded reason is **No adoption** (document 03).
-- Thresholds are specific to each initiative. SEVEN-G does not set adoption reference values.
+- Effective use below the threshold for two consecutive periods triggers a review at R6 and may justify bringing G7 forward. If the use case is stopped or retired for this reason, the coded reason is **No adoption** (document 03).
+- Thresholds are specific to each use case. SEVEN-G does not set adoption reference values.
 
 ### 10.5 Correspondence with documents 40, 41 and 50
 
@@ -479,7 +479,7 @@ Every High or Critical risk under treatment has a contingency plan (document 33)
 
 ### 12.3 Cost of adoption
 
-Training, communication, support, users' time during learning and the temporary loss of productivity are costs of the initiative. They are estimated in phase 3 in the *adoption and training* category of document 42 and form part of the initial investment (40 §8.2). Omitting them inflates the expected net value and is a frequent cause of insufficient adoption due to lack of resources.
+Training, communication, support, users' time during learning and the temporary loss of productivity are costs of the use case. They are estimated in phase 3 in the *adoption and training* category of document 42 and form part of the initial investment (40 §8.2). Omitting them inflates the expected net value and is a frequent cause of insufficient adoption due to lack of resources.
 
 ---
 
@@ -498,7 +498,7 @@ Training, communication, support, users' time during learning and the temporary 
 | **AI Office · AI Auditor** | Verify P20 and the adoption criteria at the *gates*; consolidate lessons on adoption for the portfolio. |
 | **AI Committee** | Reviews aggregate portfolio adoption and pending capacity destination decisions. |
 
-No one verifies or decides on the adoption of their own initiative (01 §7.4, rule 1).
+No one verifies or decides on the adoption of their own use case (01 §7.4, rule 1).
 
 ### 13.2 Lite and Enterprise
 
@@ -511,7 +511,7 @@ No one verifies or decides on the adoption of their own initiative (01 §7.4, ru
 | **Information to representatives** | The same at both intensities when mandatory. | The same at both intensities when mandatory. |
 | **Tracking** | Monthly in the first six months; thereafter, at the six-monthly R6. | Monthly in the first six months; thereafter, at the quarterly R6, with a report to the AI Committee. |
 
-Augment and Transform initiatives always have an adoption and people plan, regardless of intensity (01 §3, principle 10).
+Augment and Transform use cases always have an adoption and people plan, regardless of intensity (01 §3, principle 10).
 
 ---
 
@@ -520,7 +520,7 @@ Augment and Transform initiatives always have an adoption and people plan, regar
 | Code | Name | Use in this document |
 |---|---|---|
 | **P20** | Adoption and capacity plan | Main evidence: impact analysis, adoption targets and indicators, training, communication, destination of released capacity and tracking. |
-| **T20** | Adoption and capacity plan | Tool for template P20 and released capacity register; feeds T12 and the initiative register (T01). |
+| **T20** | Adoption and capacity plan | Tool for template P20 and released capacity register; feeds T12 and the use case register (T01). |
 | **P08 · P09** | Value hypothesis canvas · Baseline | Adoption target (G2.10) and reference times per task. |
 | **P10 · P12** | Feasibility assessment · Risk matrix and register | Preliminary impact analysis, adoption costs and organisational risks. |
 | **P17** | Governance and human oversight design | Designated overseers and oversight workload. The information sheet and the register of information to representatives are in P46. |
@@ -540,7 +540,7 @@ Consistency note: in P20 (section 4), the indicator called *effective use* corre
 |---|---|
 | **00 · What SEVEN-G is and how it helps companies** | Measurement rule 3 and signals 3 and 5 of the transformation index. |
 | **01 · Foundational methodology** | Principle 10, phases 4 to 7 (§6), criteria by ambition level (§7.6) and the product owner's responsibility for adoption (§8.1). |
-| **03 · Tools and initiative register** | Tool T20 and coded reason *No adoption*. |
+| **03 · Tools and use case register** | Tool T20 and coded reason *No adoption*. |
 | **11 · Maturity model** | Dimension D5 People and adoption. |
 | **12 · Transformation index** | Thresholds for signals 3 (materialisation) and 5 (operating model). |
 | **20 · Phase manuals** | Full sequence of activities for each phase. |

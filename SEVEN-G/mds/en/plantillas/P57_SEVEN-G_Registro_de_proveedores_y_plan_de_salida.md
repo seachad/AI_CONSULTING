@@ -56,7 +56,7 @@ Completion rules:
 
 ### 3.1 Identification and service
 
-| Code | Legal name · group · country | Type of third party (36 §1.1) | Service (plain-language description) | Models and versions | Type of sourcing | Systems and initiatives | Relationship manager |
+| Code | Legal name · group · country | Type of third party (36 §1.1) | Service (plain-language description) | Models and versions | Type of sourcing | Systems and use cases | Relationship manager |
 |---|---|---|---|---|---|---|---|
 | PRV-AAAA-NNN | | | | | Build on · Buy · Adapt · Partner | SIA-AAAA-NNN · IA-AAAA-NNN | |
 | *(illustrative example)* PRV-2026-003 | Supplier Alfa, S.A. (fictitious) · Alfa Group · Ireland | Model provider | Language model via programming interface for the enquiries assistant | General model, version pinned 2026-06 | Build on | SIA-2026-007 · IA-2026-012 | Technical owner in the customer area |

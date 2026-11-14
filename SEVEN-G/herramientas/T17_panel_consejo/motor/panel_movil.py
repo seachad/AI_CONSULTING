@@ -134,7 +134,7 @@ function curvaMini(G, hoyEt){
   const W = 340, H = 120, l = 4, r = 4, t = 8, b = 18, n = G.length, bw = (W - l - r) / n;
   const vals = G.flatMap(g => [g.acum, -g.inv, 0]), mx = Math.max(...vals), mn = Math.min(...vals), rg = (mx - mn) || 1;
   const y = v => t + (H - t - b) * (mx - v) / rg, cx = i => l + bw * (i + .5), paso = Math.ceil(n / 6);
-  let s = `<svg viewBox="0 0 ${W} ${H}" width="100%" role="img" aria-label="Neto acumulado de las iniciativas con plan de realización">`;
+  let s = `<svg viewBox="0 0 ${W} ${H}" width="100%" role="img" aria-label="Neto acumulado de los casos de uso con plan de realización">`;
   G.forEach((g, i) => { if (g.periodo === hoyEt) s += `<rect x="${l + bw*i}" y="${t}" width="${bw}" height="${H-t-b}" fill="var(--grid)" opacity=".6"/>`;
     if (g.inv) s += `<rect x="${cx(i) - Math.min(8, bw*.3)}" y="${y(0)}" width="${Math.min(16, bw*.6)}" height="${Math.max(1, y(-g.inv) - y(0))}" fill="var(--s2)"/>`;
     if (i % paso === 0) s += `<text x="${cx(i)}" y="${H-4}" text-anchor="middle" style="font-size:10px;fill:var(--muted)">${esc(g.periodo)}</text>`; });
@@ -147,11 +147,11 @@ function renderCurva(){
   document.querySelectorAll("#gran button").forEach(b => b.classList.toggle("on", b.dataset.g === state.gran));
   const cfg = cfgCurva(), deben = CASES.filter(debePlan), con = deben.filter(c => curva(c)), cc = curvaCartera(CASES);
   const nivPlan = nivelKPI("planes_realizacion_pct", deben.length ? 100 * con.length / deben.length : null);
-  const planes = `<div class="tile ${nivPlan}"><div class="k">Planes de realización</div><div class="v">${con.length} <span style="font-size:13px;font-weight:500">de ${deben.length}</span></div><div class="d">iniciativas en fases 3 a 7 · ${umbralTxt("planes_realizacion_pct")}</div></div>`;
-  if (!cc){ $("curva").innerHTML = `<div class="empty">Ninguna iniciativa tiene plan de realización en T01: no se estima nada.</div><div class="grid">${planes}</div>`; return; }
+  const planes = `<div class="tile ${nivPlan}"><div class="k">Planes de realización</div><div class="v">${con.length} <span style="font-size:13px;font-weight:500">de ${deben.length}</span></div><div class="d">casos de uso en fases 3 a 7 · ${umbralTxt("planes_realizacion_pct")}</div></div>`;
+  if (!cc){ $("curva").innerHTML = `<div class="empty">Ningún caso de uso tiene plan de realización en T01: no se estima nada.</div><div class="grid">${planes}</div>`; return; }
   const G = agruparCurva(cc.serie, state.gran, cc.q0, cc.q1), hoyEt = etiquetaQ(cc.hoy, state.gran), cs = con.map(curva), vans = cs.filter(c => c.van_f7 != null);
   const dv = cs.filter(c => c.desviacion && c.desviacion.plan), dR = sum(dv.map(c => c.desviacion.real)), dP = sum(dv.map(c => c.desviacion.plan)), dPct = dP ? 100 * dR / dP : null;
-  $("curva").innerHTML = `<div class="curva">${curvaMini(G, hoyEt)}<div class="d">Neto acumulado (línea) e inversión por tramos (barras) de las iniciativas con plan, por ${GRAN[state.gran].toLowerCase()}; sin plan no se estima.</div></div>
+  $("curva").innerHTML = `<div class="curva">${curvaMini(G, hoyEt)}<div class="d">Neto acumulado (línea) e inversión por tramos (barras) de los casos de uso con plan, por ${GRAN[state.gran].toLowerCase()}; sin plan no se estima.</div></div>
    <div class="grid">
     <div class="tile"><div class="k">Inversión próximos 12 meses</div><div class="v">${fmt(cc.inv_12m)}</div><div class="d">tramos comprometidos o previstos</div></div>
     <div class="tile"><div class="k">Caja que falta por delante</div><div class="v">${fmt(cc.caja_futura)}</div><div class="d">antes de que el acumulado suba</div></div>
@@ -185,14 +185,14 @@ function alertas(){
   // plan de realización (D135; mismos cálculos que el panel completo): planes que faltan, tramos sin condición de paso, realización F10
   // por debajo de la tolerancia e iniciativas en producción sostenidas por valor no cuantificado sin la próxima R6 al día
   const deben = CASES.filter(debePlan), conPlan = deben.filter(c => curva(c)), nP = nivelKPI("planes_realizacion_pct", deben.length ? 100 * conPlan.length / deben.length : null);
-  if (nP === "rojo" || nP === "amarillo") out.push([nP, `Solo <b>${conPlan.length} de ${deben.length}</b> iniciativas en fases 3 a 7 tienen plan de realización en T01 (${umbralTxt("planes_realizacion_pct")}); sin plan no se estima su curva.`]);
+  if (nP === "rojo" || nP === "amarillo") out.push([nP, `Solo <b>${conPlan.length} de ${deben.length}</b> casos de uso en fases 3 a 7 tienen plan de realización en T01 (${umbralTxt("planes_realizacion_pct")}); sin plan no se estima su curva.`]);
   const hoyQ = trimestre(String(META().generado || "").slice(0,10)) || 0;
   const t12 = conPlan.flatMap(c => curva(c).tramos).filter(x => ["comprometido","previsto"].includes(x.situacion) && x.q > hoyQ && x.q <= hoyQ + 4), sinCond = t12.filter(x => !x.condicion_paso);
   if (sinCond.length) out.push(["amarillo", `<b>${sinCond.length}</b> ${sinCond.length===1?"tramo de financiación":"tramos de financiación"} en los próximos 12 meses (${fmt(sum(sinCond.map(x=>x.importe)))}) sin condición de paso.`]);
   const dvs = conPlan.map(curva).filter(c => c.desviacion && c.desviacion.plan), dvR = sum(dvs.map(c=>c.desviacion.real)), dvP = sum(dvs.map(c=>c.desviacion.plan)), nDv = dvP ? nivelKPI("realizacion_pct", 100*dvR/dvP) : "";
   if (nDv === "rojo" || nDv === "amarillo") out.push([nDv, `Realización acumulada (F10) del <b>${Math.round(100*dvR/dvP)} %</b> frente a la curva de referencia (${umbralTxt("realizacion_pct")}).`]);
   const sost = CASES.filter(c => noMonetario(c).aviso);
-  if (sost.length) out.push(["amarillo", `<b>${sost.length}</b> ${sost.length===1?"iniciativa en producción sostenida":"iniciativas en producción sostenidas"} por valor no cuantificado sin la próxima R6 fechada o con la fecha vencida.`]);
+  if (sost.length) out.push(["amarillo", `<b>${sost.length}</b> ${sost.length===1?"caso de uso en producción sostenido":"casos de uso en producción sostenidos"} por valor no cuantificado sin la próxima R6 fechada o con la fecha vencida.`]);
   // primero lo más grave: rojo y brechas, después amarillo y el resto (orden estable dentro de cada grupo)
   const peso = cls => cls==="rojo" || cls==="bad" ? 0 : cls==="amarillo" ? 1 : 2;
   return out.map((a,i)=>[a,i]).sort((x,y)=>peso(x[0][0])-peso(y[0][0]) || x[1]-y[1]).map(x=>x[0]).slice(0, 8);
@@ -298,7 +298,7 @@ function render(){
       $("madurez").innerHTML += `<div class="list" id="madurez-lentes" style="margin-top:10px">` +
         lin("Lente 1 · Capacidad de gobierno", ng == null ? "—" : ng, "nivel global de madurez (0–5)") +
         lin("Lente 2 · Huella tecnológica", hu && hu.nivel ? esc(hu.nivel) : "—", hu && hu.nivel ? `${HTM[hu.nivel] || ""}${hu.pilotos != null ? ` · ${hu.pilotos} en exploración` : ""}${le.exigible && Object.keys(le.exigible).length ? ` · exige ${Object.keys(le.exigible).map(d=>`${esc(d)} ≥ ${le.exigible[d]}`).join(", ")}` : ""}` : "sin dato") +
-        lin("Lente 3 · Alcance del impacto", al ? Object.keys(al).reduce((s,k)=>s+(Number(al[k])||0), 0) : "—", al ? `iniciativas en uso: ${Object.keys(al).map(k=>`${esc(k)} ${al[k]}`).join(" · ")} (IM1 tarea · IM2 proceso · IM3 personas · IM4 negocio)` : "sin dato") +
+        lin("Lente 3 · Alcance del impacto", al ? Object.keys(al).reduce((s,k)=>s+(Number(al[k])||0), 0) : "—", al ? `casos de uso en producción: ${Object.keys(al).map(k=>`${esc(k)} ${al[k]}`).join(" · ")} (IM1 tarea · IM2 proceso · IM3 personas · IM4 negocio)` : "sin dato") +
         `</div>` + ((le.alertas||[]).length ? le.alertas.map(a=>`<div class="alert ${a.gravedad === "alta" ? "bad" : ""}" style="margin-top:8px" data-alerta="${esc(a.codigo||"")}">${ALM[a.codigo] || esc(a.codigo||"")} (gravedad ${a.gravedad === "alta" ? "alta" : "media"})${a.dimension ? `: ${esc(a.dimension)} en ${a.nivel}${a.minimo != null ? `, la huella exige ${a.minimo}` : ""}` : ""}.</div>`).join("") : ""); }
     if (pfs.length) $("madurez").innerHTML += `<div class="list" id="madurez-perfiles" style="margin-top:10px">${pfs.map(k=>{ const g = md.perfiles[k].total; return `<div class="row" style="cursor:default"><div style="flex:1;min-width:0"><div class="n">${PMD[k]}</div><div class="m">${g.con_nivel} de ${g.subcategorias} subcategorías con nivel · ${g.con_brecha} con brecha</div></div><div class="r"><b>${g.minimo == null ? "—" : g.minimo}</b><div class="m">nivel mínimo</div></div></div>`; }).join("")}</div>`;
   }

@@ -87,7 +87,7 @@ La respuesta introduce decisiones técnicas no documentadas en el plan aprobado,
 
 Se genera o modifica código cuando no existe un plan aprobado, no se ha ejecutado la revisión del plan o del código, o una revisión anterior devolvió NO-GO y aun así se implementa.
 
-**Acción:** descartar todo el código generado y volver a la fase correcta. Si ese código llegara a producción dentro de una iniciativa SEVEN-G, es una **no conformidad mayor** ([SEVEN-G 53](../../../SEVEN-G/html/es/53_SEVEN-G_Construccion_de_soluciones_con_IA.html), sección 6).
+**Acción:** descartar todo el código generado y volver a la fase correcta. Si ese código llegara a producción dentro de un caso de uso SEVEN-G, es una **no conformidad mayor** ([SEVEN-G 53](../../../SEVEN-G/html/es/53_SEVEN-G_Construccion_de_soluciones_con_IA.html), sección 6).
 
 ### 3.5 Autoaprobación
 

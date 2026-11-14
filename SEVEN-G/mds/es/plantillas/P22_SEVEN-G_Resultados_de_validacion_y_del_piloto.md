@@ -28,7 +28,7 @@
 
 Reglas:
 
-- **Los umbrales se fijaron antes.** Las métricas, umbrales de éxito y criterios de parada son los aprobados en la fase 2 (P08). No pueden relajarse para evitar una decisión de parar sin aprobación del órgano que autorizó la iniciativa (01 §7.4, regla 6).
+- **Los umbrales se fijaron antes.** Las métricas, umbrales de éxito y criterios de parada son los aprobados en la fase 2 (P08). No pueden relajarse para evitar una decisión de parar sin aprobación del órgano que autorizó el caso de uso (01 §7.4, regla 6).
 - **La producción es la única verdad.** Los resultados de laboratorio no sustituyen al piloto en condiciones reales.
 - Todo importe tiene fórmula, es incremental frente a la línea base o el grupo de control y tiene estado (reglas 1 y 2 de medición).
 - La extrapolación anual de un piloto es siempre **estimada** hasta que se mide en producción.
@@ -39,7 +39,7 @@ Reglas:
 
 | Campo | Contenido | Guía |
 |---|---|---|
-| Código de la iniciativa | | IA-AAAA-NNN (T01). |
+| Código del caso de uso | | IA-AAAA-NNN (T01). |
 | Sistema(s) de IA y versión probada | | Identificador (T02) y versión (P16). |
 | Nivel de ambición | | Optimizar · Aumentar · Transformar. |
 | Intensidad | | Lite · Enterprise. |
@@ -135,7 +135,7 @@ Toda prueba *No superada* indica su tratamiento y si bloquea la puesta en produc
 | | | | |
 | | | | |
 
-Si algún criterio se ha activado, el equipo debe recomendar **Parar** o justificar ante el órgano que autorizó la iniciativa por qué propone otro resultado.
+Si algún criterio se ha activado, el equipo debe recomendar **Parar** o justificar ante el órgano que autorizó el caso de uso por qué propone otro resultado.
 
 ---
 

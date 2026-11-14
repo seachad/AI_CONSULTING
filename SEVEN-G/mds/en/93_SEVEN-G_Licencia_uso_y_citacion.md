@@ -255,7 +255,7 @@ Anyone who distributes a copy, adaptation or translation of SEVEN-G must retain,
 
 ## 12. Contact
 
-Queries about the use of the framework, improvement proposals, error reports and requests for support are addressed to the author, **Fernando García Varela**, through his professional LinkedIn profile: <https://www.linkedin.com/in/fernandogarciavarela/>. The reasons why the framework is open and free of charge are explained in document 04, including that the site never reaches out on its own initiative to whoever visits it.
+Queries about the use of the framework, improvement proposals, error reports and requests for support are addressed to the author, **Fernando García Varela**, through his professional LinkedIn profile: <https://www.linkedin.com/in/fernandogarciavarela/>. The reasons why the framework is open and free of charge are explained in document 04, including that the site never reaches out to whoever visits it of its own accord.
 
 It is not necessary to ask permission for any use that complies with the licence. Contacting the author does not make a use endorsed.
 

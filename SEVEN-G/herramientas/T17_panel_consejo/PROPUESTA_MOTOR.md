@@ -96,7 +96,7 @@ Calculado por T01 (o por el conector) a la fecha de corte; el panel lo muestra y
 }
 ```
 
-Vista en el panel completo: nuevo bloque «Embudo y *gates*» (barras por fase con desglose por estado, estancadas, *gates* pendientes fuera de plazo, conversión por *gate*, condiciones vencidas). Móvil: una línea en «Alertas» (estancadas, *gates* fuera de plazo, condiciones vencidas). `seguimiento.agilidad` sigue existiendo; si hay `embudo`, sus mosaicos toman `tiempo_decision` y `tiempo_hasta_produccion`.
+Vista en el panel completo: nuevo bloque «Embudo y *gates*» (barras por fase con desglose por estado, casos estancados, *gates* pendientes fuera de plazo, conversión por *gate*, condiciones vencidas). Móvil: una línea en «Alertas» (casos estancados, *gates* fuera de plazo, condiciones vencidas). `seguimiento.agilidad` sigue existiendo; si hay `embudo`, sus mosaicos toman `tiempo_decision` y `tiempo_hasta_produccion`.
 
 ## 5. Mapa esferas × ambición (10 §8, T16)
 

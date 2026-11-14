@@ -14,7 +14,7 @@
 
 > **Aviso legal y exención de responsabilidad.** SEVEN-G es un marco metodológico de referencia que se ofrece «tal cual» y con fines exclusivamente informativos. No constituye asesoramiento jurídico, regulatorio, financiero ni profesional, ni garantiza el cumplimiento de ninguna norma. Las referencias a regulación general (como el Reglamento Europeo de IA, el RGPD, DORA o NIS2), a normas técnicas y a regulación específica de cada sector o jurisdicción pueden ser incompletas, no aplicar a un caso concreto o quedar desactualizadas por cambios normativos, interpretaciones o criterios de las autoridades posteriores a su fecha de consulta. **Cada organización que use SEVEN-G es la única responsable de identificar la normativa que le aplica, verificar su vigencia y certificar su propio cumplimiento regulatorio**, con el asesoramiento cualificado que corresponda. Esta metodología es una ayuda genérica y gratuita, compartida con la comunidad para que nadie tenga que empezar desde cero; cada persona u organización puede y debe adaptarla a su propio uso. No debe entenderse que sus partes jurídicamente sensibles hayan sido revisadas por una asesoría jurídica: esas revisiones, para cada empresa o sector, son responsabilidad última de la empresa, el consultor o la organización que la use. Aunque se procura mantenerla al día, alguna norma puede haber cambiado sin que se recoja aquí. En la máxima medida permitida por la ley, el autor no asume responsabilidad alguna por los efectos de su aplicación en ninguna organización ni por su aplicabilidad completa. La metodología no otorga certificación de ningún tipo. El autor no asume responsabilidad alguna por el uso que se haga de este contenido ni por las decisiones que se adopten con él. Los datos, cifras, compañías y casos de los ejemplos son ficticios o ilustrativos.
 
-> **Por qué importa.** Sin una revisión anual con evidencia, la tesis se renueva por inercia, los umbrales iniciales nunca se contrastan con datos propios y los mismos errores se repiten en iniciativas nuevas. C5 es el momento en que el consejo comprueba si lo decidido en C2 se ha cumplido y ajusta la dirección con lo aprendido. Es la evidencia de las preguntas de nivel 5 de la dimensión D1 del documento 11 (D1.11 y D1.12) y del ciclo de mejora que exige un sistema de gestión.
+> **Por qué importa.** Sin una revisión anual con evidencia, la tesis se renueva por inercia, los umbrales iniciales nunca se contrastan con datos propios y los mismos errores se repiten en casos de uso nuevos. C5 es el momento en que el consejo comprueba si lo decidido en C2 se ha cumplido y ajusta la dirección con lo aprendido. Es la evidencia de las preguntas de nivel 5 de la dimensión D1 del documento 11 (D1.11 y D1.12) y del ciclo de mejora que exige un sistema de gestión.
 
 ## 1. Instrucciones de uso
 
@@ -24,7 +24,7 @@
 | **Quién la rellena** | La oficina de IA con auditoría interna (01 §5.1); control de gestión aporta valor y coste; el comité de IA y la oficina de IA completan su autoevaluación (sección 11). |
 | **Quién la verifica** | Auditoría interna o el auditor de IA, que comprueba además que la recalibración de umbrales no se propone para mejorar el resultado del año (12 §8, paso 4). |
 | **Quién decide o aprueba** | El consejo (01 §5.1). La madurez, el índice y los ajustes propuestos se llevan a la sesión anual del consejo (30 §3.1). |
-| **Etapa del ciclo corporativo** | C5 · Revisión. Entradas: P35 vigente, P36, los paquetes trimestrales de C4 y las revisiones de valor de las iniciativas. Salida: propuesta para el siguiente C2 (P35 nueva versión). |
+| **Etapa del ciclo corporativo** | C5 · Revisión. Entradas: P35 vigente, P36, los paquetes trimestrales de C4 y las revisiones de valor de los casos de uso. Salida: propuesta para el siguiente C2 (P35 nueva versión). |
 | **Herramientas** | T15 (madurez), T14 (índice), T01 (métricas del embudo y cohortes), T12 y T13 (valor y coste), T17 (panel), T18 (recomendaciones y decisiones), T22 (retiradas y lecciones). |
 | **Documentos de referencia** | 01 §5.1; 11 §7.1 y D1; 12 §7 y §8; 13 §13; 03 §3.5 y §3.6; 14 §10.8; 43 §8.3; 30 §12. |
 | **Lite frente a Enterprise** | Ambos alcances usan todas las secciones. Los bloques marcados **(Enterprise)** pueden omitirse con alcance Lite. En Lite, las etapas pueden comprimirse (90 §6.1). |
@@ -34,7 +34,7 @@ Reglas de cumplimentación:
 - La madurez se evalúa con **la misma versión del cuestionario** que en la evaluación anterior, o con tabla de correspondencia (11 §6).
 - El índice se calcula con los umbrales vigentes; si se aprueban umbrales nuevos, se recalcula el periodo anterior y se publican ambos resultados (12 §8).
 - Los importes llevan estado: validado, declarado o estimado. «Sin dato» se muestra como tal.
-- Las lecciones se consolidan por motivo codificado, no por iniciativa.
+- Las lecciones se consolidan por motivo codificado, no por caso de uso.
 
 ---
 
@@ -158,7 +158,7 @@ Definiciones de 03 §3.5. Mediana y percentil 80 cuando proceda.
 | Tiempo hasta producción (registro → G3 → G5) | | | |
 | Conversión por *gate* | | | |
 | Iteraciones por *gate* | | | |
-| Iniciativas estancadas | | | |
+| Casos de uso estancados | | | |
 | Condiciones vencidas | | | |
 | Motivos de parada y retirada (distribución) | | | |
 | Mezcla de ambición por fase | | | |
@@ -166,7 +166,7 @@ Definiciones de 03 §3.5. Mediana y percentil 80 cuando proceda.
 
 ### 7.2 Cohortes por trimestre de registro
 
-| Cohorte | Registradas | Superaron G2 | Superaron G3 | Llegaron a G5 | Paradas o retiradas | Mediana de días hasta producción | En espera o estancadas |
+| Cohorte | Registrados | Superaron G2 | Superaron G3 | Llegaron a G5 | Parados o retirados | Mediana de días hasta producción | En espera o estancados |
 |---|---|---|---|---|---|---|---|
 | | | | | | | | |
 | *(ejemplo ilustrativo)* 1T 2027 | 9 | 6 | 4 | 3 | 3 | 210 | 1 |
@@ -190,7 +190,7 @@ Definiciones de 03 §3.5. Mediana y percentil 80 cuando proceda.
 
 Fuentes: notas de lecciones de cada retirada y de cada parada en G3 o posterior (14 §10.8) e informes de las revisiones a 6 y 12 meses (43 §8.3). La oficina de IA las consolida **por motivo codificado**.
 
-| Motivo codificado (03 §3.3) | Nº de iniciativas | Códigos IA-AAAA-NNN | Señal temprana que lo anunciaba y cuándo se vio | Inversión y coste total frente a valor realizado | Cambio propuesto (criterios de entrada, plantillas o umbrales) | Decisión |
+| Motivo codificado (03 §3.3) | Nº de casos de uso | Códigos IA-AAAA-NNN | Señal temprana que lo anunciaba y cuándo se vio | Inversión y coste total frente a valor realizado | Cambio propuesto (criterios de entrada, plantillas o umbrales) | Decisión |
 |---|---|---|---|---|---|---|
 | Hipótesis refutada | | | | | | |
 | Coste superior al valor | | | | | | |
@@ -233,7 +233,7 @@ El comité de IA y la oficina de IA evalúan su propia eficacia al menos una vez
 | ¿Se han cerrado en plazo las recomendaciones del consejo asignadas (T18)? | | | | T18 |
 | ¿Hay excepciones vencidas sin cierre (30 §7.4)? | | | | Registro de excepciones |
 | ¿Ha verificado la oficina de IA algún *gate* en el que participara? | — | | — | T03 |
-| ¿Se ha parado o retirado alguna iniciativa con motivo codificado en el año? | | | | T01; T22 |
+| ¿Se ha parado o retirado algún caso de uso con motivo codificado en el año? | | | | T01; T22 |
 | Valoración global (Eficaz · Eficaz con mejoras · No eficaz) | | | | |
 
 ### 11.2 Plan de mejora

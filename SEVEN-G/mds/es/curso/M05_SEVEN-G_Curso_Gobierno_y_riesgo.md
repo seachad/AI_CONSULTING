@@ -18,14 +18,14 @@
 
 ## 1. Objetivo
 
-Al terminar sabrá explicar la separación de funciones del marco, asignar los roles de una iniciativa sin incompatibilidades y leer un registro de riesgos: nivel inherente, residual y órgano que puede aceptarlo.
+Al terminar sabrá explicar la separación de funciones del marco, asignar los roles de un caso de uso sin incompatibilidades y leer un registro de riesgos: nivel inherente, residual y órgano que puede aceptarlo.
 
 ---
 
 ## 2. Ideas clave
 
 1. **Nadie se aprueba a sí mismo.** Quien construye no verifica ni decide su propio trabajo; la conformidad de riesgos es independiente del equipo; el consejo aprueba la dirección y el apetito de riesgo.
-2. **No hace falta crear órganos nuevos.** En una compañía mediana bastan el comité de dirección con un punto mensual de IA, una oficina de IA de una persona y un auditor independiente para las iniciativas Enterprise.
+2. **No hace falta crear órganos nuevos.** En una compañía mediana bastan el comité de dirección con un punto mensual de IA, una oficina de IA de una persona y un auditor independiente para los casos de uso Enterprise.
 3. **Riesgo = probabilidad × impacto**, de 1 a 25, en cuatro niveles. Se valora antes de los controles (inherente) y después (residual).
 4. **Cada nivel tiene su órgano de aceptación.** Un riesgo residual Crítico solo lo acepta el consejo; sin esa aprobación, bloquea G3 y G5.
 
@@ -35,7 +35,7 @@ Al terminar sabrá explicar la separación de funciones del marco, asignar los r
 
 | Paso | Qué abrir | Qué mirar |
 |---|---|---|
-| 1 | documento 01, sección 8 | Roles de la iniciativa, incompatibilidades y órganos de la compañía. |
+| 1 | documento 01, sección 8 | Roles del caso de uso, incompatibilidades y órganos de la compañía. |
 | 2 | documento 30, sección 11 | La adaptación a organizaciones pequeñas. |
 | 3 | documento 33, secciones 4 a 7 | Escalas, riesgo inherente y residual, respuestas y aceptación. |
 | 4 | documento 32, sección 5 | El árbol de clasificación regulatoria: se hace antes de diseñar. |
@@ -45,16 +45,16 @@ Al terminar sabrá explicar la separación de funciones del marco, asignar los r
 
 ## 4. Ejercicio
 
-En la vista de riesgos del registro de ejemplo, pulse la celda con el riesgo residual más alto. ¿Qué iniciativa es, quién lo ha aceptado y tiene plan de contingencia? Después cambie a riesgo inherente y observe cuánto reducen el riesgo los controles: ¿es creíble esa reducción?
+En la vista de riesgos del registro de ejemplo, pulse la celda con el riesgo residual más alto. ¿Qué caso de uso es, quién lo ha aceptado y tiene plan de contingencia? Después cambie a riesgo inherente y observe cuánto reducen el riesgo los controles: ¿es creíble esa reducción?
 
 ---
 
 ## 5. Autocomprobación
 
-1. ¿Puede el patrocinador ser también el responsable de riesgos de su iniciativa?
+1. ¿Puede el patrocinador ser también el responsable de riesgos de su caso de uso?
 2. ¿Quién acepta un riesgo residual Alto?
 3. ¿En qué fase debe existir ya el registro de riesgos?
-4. ¿Qué pasa con una iniciativa Lite que empieza a tratar datos especialmente protegidos?
+4. ¿Qué pasa con un caso de uso Lite que empieza a tratar datos especialmente protegidos?
 
 ---
 

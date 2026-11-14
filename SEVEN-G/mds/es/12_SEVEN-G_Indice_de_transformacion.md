@@ -1,6 +1,6 @@
 # Índice de transformación
 
-**Cómo saber, con evidencia, si una iniciativa y una compañía se transforman con IA o solo se eficientan**
+**Cómo saber, con evidencia, si un caso de uso y una compañía se transforman con IA o solo se eficientan**
 
 | | |
 |---|---|
@@ -16,13 +16,13 @@
 
 > **Aviso legal y exención de responsabilidad.** SEVEN-G es un marco metodológico de referencia que se ofrece «tal cual» y con fines exclusivamente informativos. No constituye asesoramiento jurídico, regulatorio, financiero ni profesional, ni garantiza el cumplimiento de ninguna norma. Las referencias a regulación general (como el Reglamento Europeo de IA, el RGPD, DORA o NIS2), a normas técnicas y a regulación específica de cada sector o jurisdicción pueden ser incompletas, no aplicar a un caso concreto o quedar desactualizadas por cambios normativos, interpretaciones o criterios de las autoridades posteriores a su fecha de consulta. **Cada organización que use SEVEN-G es la única responsable de identificar la normativa que le aplica, verificar su vigencia y certificar su propio cumplimiento regulatorio**, con el asesoramiento cualificado que corresponda. Esta metodología es una ayuda genérica y gratuita, compartida con la comunidad para que nadie tenga que empezar desde cero; cada persona u organización puede y debe adaptarla a su propio uso. No debe entenderse que sus partes jurídicamente sensibles hayan sido revisadas por una asesoría jurídica: esas revisiones, para cada empresa o sector, son responsabilidad última de la empresa, el consultor o la organización que la use. Aunque se procura mantenerla al día, alguna norma puede haber cambiado sin que se recoja aquí. En la máxima medida permitida por la ley, el autor no asume responsabilidad alguna por los efectos de su aplicación en ninguna organización ni por su aplicabilidad completa. La metodología no otorga certificación de ningún tipo. El autor no asume responsabilidad alguna por el uso que se haga de este contenido ni por las decisiones que se adopten con él. Los datos, cifras, compañías y casos de los ejemplos son ficticios o ilustrativos.
 
-<!-- esencial: siempre | Cálculo del índice de transformación de la compañía en C1 y en cada C5, con las condiciones de base y las ocho señales; «sin dato» nunca cuenta como evidencia. La clasificación de la ambición de cada iniciativa (sección 3) se aplica siempre. -->
+<!-- esencial: siempre | Cálculo del índice de transformación de la compañía en C1 y en cada C5, con las condiciones de base y las ocho señales; «sin dato» nunca cuenta como evidencia. La clasificación de la ambición de cada caso de uso (sección 3) se aplica siempre. -->
 
 ## 1. Objeto y alcance
 
 Este documento desarrolla la sección 5 del documento 00. Define dos instrumentos conectados:
 
-1. **La clasificación de ambición de cada iniciativa** (Optimizar, Aumentar o Transformar): cinco preguntas, reglas de decisión, tratamiento de los casos dudosos, responsables y ciclo de ambición propuesta, confirmada y real.
+1. **La clasificación de ambición de cada caso de uso** (Optimizar, Aumentar o Transformar): cinco preguntas, reglas de decisión, tratamiento de los casos dudosos, responsables y ciclo de ambición propuesta, confirmada y real.
 2. **El índice de transformación de la compañía**: ocho señales con fórmula, fuente de datos y puntuación de 0 a 3; condiciones de base; reglas para asignar uno de los cinco perfiles; tratamiento del "sin dato"; periodicidad; calibración; ejemplo completo y limitaciones.
 
 Se aplica en las fases 1, 2 y 7 del ciclo de vida y en las etapas C1, C4 y C5 del ciclo corporativo. Las herramientas asociadas son el clasificador de ambición (T05) y la calculadora del índice (T14); la evidencia de la clasificación se documenta con la plantilla P07.
@@ -39,7 +39,7 @@ El índice no es un juicio de valor. **La eficiencia es un resultado legítimo**
 
 ---
 
-## 3. Clasificación de la ambición de una iniciativa
+## 3. Clasificación de la ambición de un caso de uso
 
 ### 3.1 Las cinco preguntas
 
@@ -59,18 +59,18 @@ Las reglas se aplican **en orden**. La primera que se cumple determina el nivel,
 
 | Regla | Condición | Resultado |
 |---|---|---|
-| **1 · Optimizar por defecto** | IT-P1, IT-P2, IT-P3 y IT-P4 son **no**. | **Optimizar**, con independencia de cómo se haya presentado la iniciativa. |
+| **1 · Optimizar por defecto** | IT-P1, IT-P2, IT-P3 y IT-P4 son **no**. | **Optimizar**, con independencia de cómo se haya presentado el caso de uso. |
 | **2 · Nuevos ingresos** | IT-P4 es **sí**. | **Transformar**. |
 | **3 · Nueva propuesta de valor** | IT-P1 es **sí**. | **Transformar**. |
 | **4 · Nuevo modelo operativo** | IT-P2 y IT-P3 son **sí** y el cambio afecta a una unidad organizativa completa o a un proceso central del negocio (no a un proceso de soporte parcial). | **Transformar**. |
 | **5 · Aumento** | IT-P2 o IT-P3 son **sí** y no se cumple la regla 4. | **Aumentar**. |
 | **6 · Contraste con IT-P5** | El resultado es Aumentar o Transformar y IT-P5 es **sí**. | Incoherencia: se revisan las respuestas. Si persiste, se asigna el nivel inmediatamente inferior y se registra el motivo. |
-| **7 · Dependencia en Optimizar** | El resultado es Optimizar y IT-P5 es **no**. | El nivel no cambia. Se comprueba si la iniciativa soporta una función crítica (criterio Enterprise del documento 01, sección 9.2). |
+| **7 · Dependencia en Optimizar** | El resultado es Optimizar y IT-P5 es **no**. | El nivel no cambia. Se comprueba si el caso de uso soporta una función crítica (criterio Enterprise del documento 01, sección 9.2). |
 | **8 · Prudencia ante la duda** | Tras aplicar las reglas persiste una duda razonable entre dos niveles. | Se asigna el **nivel inferior**. Quien propone el superior aporta la evidencia que resuelva la duda. La duda **no rebaja los controles**: si afecta a un criterio Enterprise, se aplica Enterprise. |
-| **9 · Iniciativas mixtas** | La iniciativa tiene componentes de distinto nivel. | Se divide en iniciativas separadas o se clasifica según el componente que concentra más de la mitad de la inversión. No se promedian niveles. |
+| **9 · Casos de uso mixtos** | El caso de uso tiene componentes de distinto nivel. | Se divide en casos de uso separados o se clasifica según el componente que concentra más de la mitad de la inversión. No se promedian niveles. |
 | **10 · Irrelevancia de la forma** | — | No influyen en el nivel la tecnología (IA generativa, agentes), el importe de la inversión, la novedad técnica ni la denominación del programa. |
 
-<!-- grafico: Clasificación de la ambición de una iniciativa | Las reglas se aplican en orden y se contrastan con la pregunta 5 -->
+<!-- grafico: Clasificación de la ambición de un caso de uso | Las reglas se aplican en orden y se contrastan con la pregunta 5 -->
 ```mermaid
 flowchart TD
   A["Respuestas IT-P1 a IT-P5 con evidencia"] --> B{"¿IT-P1 a IT-P4 son todas no?"}
@@ -105,7 +105,7 @@ flowchart TD
 | Rediseño de la función de planificación: decisiones de asignación que pasan a un sistema A2 y planificadores que supervisan excepciones | **Transformar** (regla 4) | IT-P2 y IT-P3 sí sobre una unidad completa. Si solo afecta a una parte de la planificación, **Aumentar**. |
 | Precio dinámico con IA para la oferta existente | **Aumentar** o **Transformar** | Si el cliente recibe una forma de precio nueva (IT-P1 sí), Transformar; si solo se ajustan tarifas dentro del modelo actual, Aumentar (IT-P3: la decisión pasa a un sistema). |
 | Servicio de pago para clientes basado en un modelo propio | **Transformar** (regla 2) | Ingresos que no existían (IT-P4 sí). |
-| Plataforma común de datos para varias iniciativas | **Optimizar** por defecto | Se clasifica por su efecto propio. No hereda la ambición de las iniciativas que habilita; su contribución se declara como dependencia. |
+| Plataforma común de datos para varios casos de uso | **Optimizar** por defecto | Se clasifica por su efecto propio. No hereda la ambición de los casos de uso que habilita; su contribución se declara como dependencia. |
 | Piloto exploratorio de una idea de nuevo servicio | Según la hipótesis a escala | Se clasifica por lo que cambiaría si tuviera éxito; la ambición real se evalúa en G7. |
 | Sistema de IA para vigilar obligaciones regulatorias (esfera principal 08) | **Optimizar** por lo general | Se clasifica como cualquier otra; su nivel no califica la esfera 08 (documento 10, sección 4.2). |
 
@@ -121,11 +121,11 @@ Criterios para registrar la **ambición real** (coherentes con los criterios de 
 
 | Ambición real | Evidencia mínima |
 |---|---|
-| **Transformar** | Retorno validado atribuible a la iniciativa, o cambio de la oferta o del modelo operativo verificado (IT-P1, IT-P4 o regla 4 comprobados con hechos). |
+| **Transformar** | Retorno validado atribuible al caso de uso, o cambio de la oferta o del modelo operativo verificado (IT-P1, IT-P4 o regla 4 comprobados con hechos). |
 | **Aumentar** | Adopción efectiva igual o superior al objetivo de la hipótesis, mejora de rendimiento medida y cambio de rol o capacidad reasignada verificados. |
 | **Optimizar** | Cualquier otro caso con valor medido. |
 
-Si la iniciativa se **para antes de G5**, no se registra ambición real: se conserva la confirmada y la parada cuenta en la señal 7.
+Si el caso de uso se **para antes de G5**, no se registra ambición real: se conserva la confirmada y la parada cuenta en la señal 7.
 
 ### 3.5 Quién clasifica, confirma y revisa
 
@@ -135,9 +135,9 @@ Si la iniciativa se **para antes de G5**, no se registra ambición real: se cons
 | **Fase 2 · Confirmación (Lite)** | Responsable de producto de IA | Oficina de IA | Patrocinador, en G2 | Si el nivel confirmado es Transformar, la intensidad pasa a Enterprise. |
 | **Fase 2 · Confirmación (Enterprise)** | Responsable de producto de IA | Auditor de IA | Comité de IA, en G2 | Transformar requiere además aprobación del consejo. |
 | **R6 · Revisión de continuidad** | Responsable de producto de IA | Oficina de IA o auditor de IA | Órgano de R6 | Si hay indicios de que el nivel real difiere del confirmado, se adelanta G7. |
-| **Fase 7 · Ambición real** | Responsable de producto de IA, con datos de T12 | Oficina de IA (Lite) o auditor de IA (Enterprise) | Órgano de G7 | Escalar una iniciativa con ambición real Transformar requiere aprobación del consejo. |
+| **Fase 7 · Ambición real** | Responsable de producto de IA, con datos de T12 | Oficina de IA (Lite) o auditor de IA (Enterprise) | Órgano de G7 | Escalar un caso de uso con ambición real Transformar requiere aprobación del consejo. |
 
-Nadie verifica ni decide sobre la clasificación de su propia iniciativa (documento 01, sección 7.4).
+Nadie verifica ni decide sobre la clasificación de su propio caso de uso (documento 01, sección 7.4).
 
 ### 3.6 Qué hacer si la ambición real difiere de la declarada
 
@@ -145,23 +145,23 @@ Nadie verifica ni decide sobre la clasificación de su propia iniciativa (docume
 |---|---|---|
 | **Real inferior a la confirmada** | 1) Registrar el cambio como evento con motivo. 2) Recalcular el mapa de calor y el índice. 3) Analizar la causa: sobredeclaración inicial, ejecución incompleta o cambio de alcance. 4) En G7, elegir entre **Iterar** para alcanzar el nivel confirmado, con nuevo plazo y límite de inversión, o **aceptar el nivel real** y evaluar la continuidad con los criterios de ese nivel (por ejemplo, ahorro materializado si pasa a Optimizar). 5) Revisar si la intensidad Enterprise sigue justificada por otro criterio. 6) Registrar las lecciones aprendidas. | Órgano de G7; si la confirmada era Transformar, se informa al consejo en la siguiente sesión de C4. |
 | **Real superior a la confirmada** | Se trata como una nueva clasificación: se aplican los criterios y aprobaciones del nuevo nivel antes de escalar. Si alcanza Transformar, se requiere aprobación del consejo y se aplica Enterprise. | Órgano de G7; consejo si alcanza Transformar. |
-| **Operación como Transformar sin aprobación** | Si la iniciativa ya ha introducido cambios propios de Transformar sin la aprobación del consejo, se abre una **no conformidad mayor** y se regulariza en el plazo aprobado en C2. | Comité de IA. |
+| **Operación como Transformar sin aprobación** | Si el caso de uso ya ha introducido cambios propios de Transformar sin la aprobación del consejo, se abre una **no conformidad mayor** y se regulariza en el plazo aprobado en C2. | Comité de IA. |
 | **Clasificación sin respuestas o sin evidencia** | **No conformidad menor**, que debe corregirse antes del siguiente *gate*. | Oficina de IA. |
 | **Clasificación modificada para eludir un control o una aprobación** | **No conformidad mayor**. | Comité de IA. |
 
 La diferencia entre ambición confirmada y real **no es en sí una no conformidad**: las apuestas pueden no cumplirse. Lo que se controla es su frecuencia:
 
-**Tasa de sobredeclaración de ambición** = iniciativas con ambición real inferior a la confirmada ÷ iniciativas con ambición real registrada × 100, en los últimos 24 meses.
+**Tasa de sobredeclaración de ambición** = casos de uso con ambición real inferior a la confirmada ÷ casos de uso con ambición real registrada × 100, en los últimos 24 meses.
 
 | Valor (a calibrar) | Actuación |
 |---|---|
 | 30 % o más en el conjunto de la cartera | Alerta al comité de IA y revisión de la calidad de la clasificación en la fase 2. |
-| 50 % o más en las iniciativas confirmadas como Transformar | Se informa al consejo y se tiene en cuenta en la lectura del perfil (sección 5.3). |
+| 50 % o más en los casos de uso confirmados como Transformar | Se informa al consejo y se tiene en cuenta en la lectura del perfil (sección 5.3). |
 
 
 ### 3.7 Alcance del impacto (IM1–IM4)
 
-Las cinco preguntas de la sección 3.1 dicen también **a qué afecta** cada iniciativa. Esa lectura se resume en cuatro niveles de alcance, sin preguntas nuevas, y es la tercera lente de la madurez (11 §7.6). Se aplica a las iniciativas en uso y solo con respuestas verificadas (sección 3.4): una respuesta sin evidencia cuenta como «no».
+Las cinco preguntas de la sección 3.1 dicen también **a qué afecta** cada caso de uso. Esa lectura se resume en cuatro niveles de alcance, sin preguntas nuevas, y es la tercera lente de la madurez (11 §7.6). Se aplica a los casos de uso en uso y solo con respuestas verificadas (sección 3.4): una respuesta sin evidencia cuenta como «no».
 
 | Nivel | Alcance | Condición | Ambición típica |
 |---|---|---|---|
@@ -170,9 +170,9 @@ Las cinco preguntas de la sección 3.1 dicen también **a qué afecta** cada ini
 | **IM3** | Personas y organización | IT-P3 = sí: cambian los roles, la estructura o quién toma qué decisiones | Aumentar o Transformar |
 | **IM4** | Modelo de negocio | IT-P1 o IT-P4 = sí: cambia la propuesta de valor al cliente o hay ingresos, servicios o mercados nuevos | Transformar |
 
-Se asigna el nivel más alto cuya condición se cumple. En la compañía se muestra la **distribución** de las iniciativas en uso por nivel junto con el perfil del índice (sección 5): así se ve, sin un número nuevo, si la IA solo mejora tareas, si ya rediseña procesos, si cambia el trabajo de las personas o si toca el modelo de negocio. La ambición típica es orientativa: el nivel lo dan las respuestas, no la etiqueta de ambición.
+Se asigna el nivel más alto cuya condición se cumple. En la compañía se muestra la **distribución** de los casos de uso en uso por nivel junto con el perfil del índice (sección 5): así se ve, sin un número nuevo, si la IA solo mejora tareas, si ya rediseña procesos, si cambia el trabajo de las personas o si toca el modelo de negocio. La ambición típica es orientativa: el nivel lo dan las respuestas, no la etiqueta de ambición.
 
-> **Por qué importa.** «Optimizar» y «Transformar» son etiquetas que se declaran; el alcance del impacto sale de lo que ha cambiado de verdad. Una cartera con todas las iniciativas en IM1 no está transformando la compañía, aunque la tesis lo diga, y una iniciativa en IM3 sin plan de personas es una alerta (11 §7.6).
+> **Por qué importa.** «Optimizar» y «Transformar» son etiquetas que se declaran; el alcance del impacto sale de lo que ha cambiado de verdad. Una cartera con todos los casos de uso en IM1 no está transformando la compañía, aunque la tesis lo diga, y un caso de uso en IM3 sin plan de personas es una alerta (11 §7.6).
 
 ---
 
@@ -195,9 +195,9 @@ La **suma** (0 a 24) se muestra como referencia, pero **el perfil no se asigna p
 
 | Aspecto | Regla |
 |---|---|
-| **Iniciativas incluidas** | Todas las del registro de iniciativas (T01) cuya esfera principal es 01 a 07. Las de esfera principal 08 o 09 se excluyen de las señales 1, 2 y 7 y se informan aparte como inversión en habilitación de gobierno y cumplimiento (documento 10, sección 4.2). |
-| **Uso corporativo de IA de propósito general** | Su coste cuenta en la señal 1 como **Optimizar**, salvo que forme parte de una iniciativa con ambición confirmada superior y plan de adopción aprobado. |
-| **Nivel de ambición usado** | Real si existe; si no, confirmada. Las iniciativas con solo ambición propuesta se cuentan como **sin clasificar**. |
+| **Casos de uso incluidos** | Todos los del registro de casos de uso (T01) cuya esfera principal es 01 a 07. Los de esfera principal 08 o 09 se excluyen de las señales 1, 2 y 7 y se informan aparte como inversión en habilitación de gobierno y cumplimiento (documento 10, sección 4.2). |
+| **Uso corporativo de IA de propósito general** | Su coste cuenta en la señal 1 como **Optimizar**, salvo que forme parte de un caso de uso con ambición confirmada superior y plan de adopción aprobado. |
+| **Nivel de ambición usado** | Real si existe; si no, confirmada. Los casos de uso con solo ambición propuesta se cuentan como **sin clasificar**. |
 | **Ventana** | Doce meses móviles hasta la fecha de corte, salvo la señal 7 (veinticuatro meses). |
 | **Estado de los importes** | Las señales de valor (2, 3 y 6) usan solo importes **validados**. |
 | **Moneda y coste** | "Coste de la cartera" = inversión de construcción ejecutada en la ventana + coste recurrente de la ventana, según las categorías del documento 42. |
@@ -208,9 +208,9 @@ Tres condiciones que no puntúan, pero que los perfiles exigen:
 
 | Código | Condición | Fórmula | Umbral inicial (a calibrar) |
 |---|---|---|---|
-| **B1** | Cartera gobernada | Iniciativas activas con fase, *gates* registrados y ambición confirmada ÷ iniciativas activas × 100 | 80 % o más |
+| **B1** | Cartera gobernada | Casos de uso activos con fase, *gates* registrados y ambición confirmada ÷ casos de uso activos × 100 | 80 % o más |
 | **B2** | Proporción de valor validado | Valor realizado validado ÷ valor realizado total (validado + declarado + estimado) × 100 | 50 % o más |
-| **B3** | Escala en producción | Número de iniciativas de esferas 01 a 07 en producción | 5 o más (ajustable al tamaño de la compañía en C2) |
+| **B3** | Escala en producción | Número de casos de uso de esferas 01 a 07 en producción | 5 o más (ajustable al tamaño de la compañía en C2) |
 
 ### 4.4 Las ocho señales
 
@@ -220,8 +220,8 @@ Tres condiciones que no puntúan, pero que los perfiles exigen:
 |---|---|
 | **Qué mide** | Peso de las apuestas de Aumentar y Transformar en el coste de la cartera. |
 | **Fórmula** | IT-S1 = coste de la cartera en Aumentar y Transformar ÷ coste total de la cartera × 100. Se informa además el peso de Transformar por separado. |
-| **Fuente** | T01: nivel de ambición, esfera principal; T12 y T13: inversión y coste recurrente por iniciativa. |
-| **0** | No hay cartera registrada, o más del 30 % del coste corresponde a iniciativas sin clasificar. |
+| **Fuente** | T01: nivel de ambición, esfera principal; T12 y T13: inversión y coste recurrente por caso de uso. |
+| **0** | No hay cartera registrada, o más del 30 % del coste corresponde a casos de uso sin clasificar. |
 | **1** | Menos del 20 %. |
 | **2** | Del 20 % al 40 %, o 40 % o más con Transformar por debajo del 10 %. |
 | **3** | 40 % o más, con Transformar en el 10 % o más. |
@@ -235,8 +235,8 @@ Tres condiciones que no puntúan, pero que los perfiles exigen:
 | **Fuente** | T12: importes por tipo (eficiencia, retorno) con estado validado. La capacidad liberada no suma (regla 3 de medición). |
 | **0** | No hay valor validado. |
 | **1** | Menos del 10 %. |
-| **2** | Del 10 % al 30 %, o 30 % o más procedente de una sola iniciativa. |
-| **3** | 30 % o más, procedente de al menos dos iniciativas. |
+| **2** | Del 10 % al 30 %, o 30 % o más procedente de un solo caso de uso. |
+| **3** | 30 % o más, procedente de al menos dos casos de uso. |
 
 #### Señal 3 · Materialización
 
@@ -255,9 +255,9 @@ Tres condiciones que no puntúan, pero que los perfiles exigen:
 | | |
 |---|---|
 | **Qué mide** | Procesos rediseñados de extremo a extremo frente a tareas automatizadas. |
-| **Fórmula** | IT-S4 = iniciativas en producción con IT-P2 = sí verificada en G5 o G7 ÷ iniciativas en producción × 100. |
+| **Fórmula** | IT-S4 = casos de uso en producción con IT-P2 = sí verificada en G5 o G7 ÷ casos de uso en producción × 100. |
 | **Fuente** | T01: respuestas a IT-P2 con estado de verificación; T03: resultado de G5 y G7. |
-| **0** | No hay iniciativas en producción, o la verificación de IT-P2 falta en más del 30 % de ellas. |
+| **0** | No hay casos de uso en producción, o la verificación de IT-P2 falta en más del 30 % de ellos. |
 | **1** | Menos del 15 %. |
 | **2** | Del 15 % al 35 %. |
 | **3** | 35 % o más. |
@@ -267,9 +267,9 @@ Tres condiciones que no puntúan, pero que los perfiles exigen:
 | | |
 |---|---|
 | **Qué mide** | Cambios en roles, estructura y reparto de decisiones entre personas y sistemas, con supervisión definida. |
-| **Fórmula** | IT-S5 = iniciativas en producción con IT-P3 = sí verificada y diseño de supervisión humana verificado (P17) ÷ iniciativas en producción × 100. |
+| **Fórmula** | IT-S5 = casos de uso en producción con IT-P3 = sí verificada y diseño de supervisión humana verificado (P17) ÷ casos de uso en producción × 100. |
 | **Fuente** | T01: respuestas a IT-P3 verificadas; evidencia P17; T20: roles rediseñados; registro de unidades organizativas rediseñadas. |
-| **0** | No hay iniciativas en producción. |
+| **0** | No hay casos de uso en producción. |
 | **1** | Menos del 10 %. |
 | **2** | Del 10 % al 25 %, o 25 % o más sin ninguna unidad organizativa completa rediseñada. |
 | **3** | 25 % o más, con al menos una unidad organizativa completa rediseñada. |
@@ -296,13 +296,13 @@ Estos umbrales dependen mucho del sector y del tamaño. La compañía **puede** 
 | | |
 |---|---|
 | **Qué mide** | Si las apuestas de Aumentar y Transformar llegan a producción en proporción y tiempo comparables al resto. |
-| **Fórmulas** | **Tasa de llegada** de un grupo = iniciativas que superaron G2 en los últimos 24 meses y alcanzaron G5 ÷ iniciativas del mismo grupo con resultado (alcanzaron G5, se pararon o están estancadas más del doble de la suma de los plazos de referencia de las fases 3 a 5). **Conversión relativa** CR = tasa de llegada de Aumentar y Transformar ÷ tasa de llegada de Optimizar. **Tiempo relativo** TR = mediana de días de G2 a G5 en Aumentar y Transformar ÷ misma mediana en Optimizar. |
-| **Sin base de comparación** | Si no hay iniciativas de Optimizar con resultado, CR se sustituye por la tasa de llegada de Aumentar y Transformar ÷ 0,6, y TR por la mediana real ÷ la suma de los plazos de referencia de las fases 3 a 5 (documento 03, sección 3.6). |
+| **Fórmulas** | **Tasa de llegada** de un grupo = casos de uso que superaron G2 en los últimos 24 meses y alcanzaron G5 ÷ casos de uso del mismo grupo con resultado (alcanzaron G5, se pararon o están estancados más del doble de la suma de los plazos de referencia de las fases 3 a 5). **Conversión relativa** CR = tasa de llegada de Aumentar y Transformar ÷ tasa de llegada de Optimizar. **Tiempo relativo** TR = mediana de días de G2 a G5 en Aumentar y Transformar ÷ misma mediana en Optimizar. |
+| **Sin base de comparación** | Si no hay casos de uso de Optimizar con resultado, CR se sustituye por la tasa de llegada de Aumentar y Transformar ÷ 0,6, y TR por la mediana real ÷ la suma de los plazos de referencia de las fases 3 a 5 (documento 03, sección 3.6). |
 | **Fuente** | T01 y T03: fechas de G2 y G5, estados, motivos de parada, plazos de referencia. |
 | **0** | No hay *gates* registrados en la ventana. |
-| **1** | Ninguna iniciativa de Aumentar o Transformar ha superado G2 en la ventana, o CR es inferior a 0,5. |
-| **2** | CR de 0,5 o más sin cumplir el nivel 3, o menos de tres iniciativas de Aumentar o Transformar con resultado. |
-| **3** | CR de 0,8 o más, TR de 2,0 o menos y al menos tres iniciativas de Aumentar o Transformar con resultado. |
+| **1** | Ningún caso de uso de Aumentar o Transformar ha superado G2 en la ventana, o CR es inferior a 0,5. |
+| **2** | CR de 0,5 o más sin cumplir el nivel 3, o menos de tres casos de uso de Aumentar o Transformar con resultado. |
+| **3** | CR de 0,8 o más, TR de 2,0 o menos y al menos tres casos de uso de Aumentar o Transformar con resultado. |
 
 #### Señal 8 · Decisión del consejo
 
@@ -323,7 +323,7 @@ Estos umbrales dependen mucho del sector y del tamaño. La compañía **puede** 
 | Señal | 0 | 1 | 2 | 3 |
 |---|---|---|---|---|
 | 1 · Inversión en Aumentar y Transformar | Sin cartera o > 30 % sin clasificar | < 20 % | 20–40 % | ≥ 40 % y Transformar ≥ 10 % |
-| 2 · Retorno en el valor validado | Sin valor validado | < 10 % | 10–30 % | ≥ 30 % y ≥ 2 iniciativas |
+| 2 · Retorno en el valor validado | Sin valor validado | < 10 % | 10–30 % | ≥ 30 % y ≥ 2 casos de uso |
 | 3 · Capacidad convertida | No se mide | < 30 % | ≥ 30 % | ≥ 60 % y reasignada ≥ mitad |
 | 4 · Procesos de extremo a extremo | Sin producción | < 15 % | 15–35 % | ≥ 35 % |
 | 5 · Cambio de modelo operativo | Sin producción | < 10 % | 10–25 % | ≥ 25 % y una unidad completa |
@@ -346,7 +346,7 @@ Existe **declaración de transformación** (D = sí) cuando se cumple al menos u
 | # | Condición | Evidencia |
 |---|---|---|
 | IT-D1 | La tesis de IA aprobada en C2 fija **Transformar** como ambición objetivo en al menos una esfera. | Documento de decisión de C2 (T19). |
-| IT-D2 | Las iniciativas con ambición confirmada Transformar suponen el **10 % o más** del coste de la cartera. | T01, señal 1. |
+| IT-D2 | Los casos de uso con ambición confirmada Transformar suponen el **10 % o más** del coste de la cartera. | T01, señal 1. |
 | IT-D3 | El plan estratégico, los informes al consejo, el informe anual u otras comunicaciones de la compañía presentan la IA como **transformación del negocio**. | Documentos citados, con fecha. |
 
 ### 5.2 Reglas de asignación
@@ -359,7 +359,7 @@ Las reglas se aplican en dos pasos.
 |---|---|---|
 | 1 | **Transformación en curso** | B1 y B2 · IT-S8 ≥ 2 · IT-S7 ≥ 2 · IT-S2 ≥ 2 o IT-S6 ≥ 2 · IT-S4 ≥ 2 o IT-S5 ≥ 2 · suma de señales ≥ 14 |
 | 2 | **Eficiencia a escala** | B1, B2 y B3 · IT-S3 ≥ 2 |
-| 3 | **Eficiencia táctica** | Al menos una iniciativa en producción con valor medido, en cualquier estado |
+| 3 | **Eficiencia táctica** | Al menos un caso de uso en producción con valor medido, en cualquier estado |
 | 4 | **Exploración dispersa** | Ninguna de las anteriores |
 
 **Paso 2 · Contraste con la declaración.** Si **D = sí** y el perfil evidenciado **no** es Transformación en curso, el perfil asignado es **Transformación declarada, no evidenciada**, y se informa el perfil evidenciado como **perfil subyacente**. En cualquier otro caso, el perfil asignado es el evidenciado.
@@ -393,7 +393,7 @@ flowchart LR
 | **Eficiencia no materializada** | IT-S1 = 1 y IT-S3 = 1. | Cartera de eficiencia cuyo ahorro no llega a la cuenta de resultados. |
 | **Apuestas atascadas** | IT-S1 ≥ 2 y IT-S7 = 1. | Se invierte en Aumentar y Transformar, pero no llega a producción. |
 | **Transformación sin consejo** | IT-S2 ≥ 2 o IT-S6 ≥ 2, con IT-S8 ≤ 1. | Hay cambio real que el consejo no decide ni supervisa. |
-| **Cambio sin supervisión** | Iniciativas excluidas de la señal 5 por falta de supervisión humana definida. | Riesgo de gobierno: se delegan decisiones sin control. |
+| **Cambio sin supervisión** | Casos de uso excluidos de la señal 5 por falta de supervisión humana definida. | Riesgo de gobierno: se delegan decisiones sin control. |
 
 ---
 
@@ -445,24 +445,24 @@ Reglas de calibración:
 
 *Compañía ficticia. Todos los datos son ilustrativos y coinciden con el ejemplo de mapa de calor del documento 10, sección 8.2.*
 
-**Contexto.** Compañía industrial con 400 M€ de ingresos anuales. Tiene 17 iniciativas activas en esferas 01 a 07 (14 de Optimizar, 2 de Aumentar y 1 de Transformar) y 2 iniciativas en la banda de habilitación (esferas 08 y 09). Catorce están en producción: las 12 de Optimizar que han superado G5 y las 2 de Aumentar. La de Transformar (un servicio nuevo en la esfera 02) está en fase 5, con un piloto comercial. La tesis de IA aprobada en C2 fija Transformar como ambición objetivo para Producto y servicio, y el plan estratégico describe la IA como "palanca de transformación".
+**Contexto.** Compañía industrial con 400 M€ de ingresos anuales. Tiene 17 casos de uso activos en esferas 01 a 07 (14 de Optimizar, 2 de Aumentar y 1 de Transformar) y 2 casos de uso en la banda de habilitación (esferas 08 y 09). Catorce están en producción: los 12 de Optimizar que han superado G5 y los 2 de Aumentar. El de Transformar (un servicio nuevo en la esfera 02) está en fase 5, con un piloto comercial. La tesis de IA aprobada en C2 fija Transformar como ambición objetivo para Producto y servicio, y el plan estratégico describe la IA como "palanca de transformación".
 
 **Condiciones de base**
 
 | Condición | Datos | Resultado |
 |---|---|---|
-| B1 · Cartera gobernada | 15 de 17 iniciativas activas con fase, *gates* y ambición confirmada = 88 % | Cumple (≥ 80 %) |
+| B1 · Cartera gobernada | 15 de 17 casos de uso activos con fase, *gates* y ambición confirmada = 88 % | Cumple (≥ 80 %) |
 | B2 · Valor validado | 1,96 M€ validados de 3,30 M€ de valor realizado = 59 % | Cumple (≥ 50 %) |
-| B3 · Escala | 14 iniciativas en producción | Cumple (≥ 5) |
+| B3 · Escala | 14 casos de uso en producción | Cumple (≥ 5) |
 
 **Señales**
 
 | Señal | Datos | Cálculo | Puntuación |
 |---|---|---|---|
 | 1 · Inversión | Coste de la cartera 4,00 M€: Optimizar 3,00; Aumentar 0,70; Transformar 0,30 | (0,70 + 0,30) ÷ 4,00 = 25 %; Transformar 7,5 % | **2** |
-| 2 · Valor | Eficiencias validadas materializadas 1,80 M€; retorno validado 0,16 M€ (0,12 de una iniciativa de Aumentar en Cliente y 0,04 del piloto de Transformar) | 0,16 ÷ 1,96 = 8,2 % | **1** |
+| 2 · Valor | Eficiencias validadas materializadas 1,80 M€; retorno validado 0,16 M€ (0,12 de un caso de uso de Aumentar en Cliente y 0,04 del piloto de Transformar) | 0,16 ÷ 1,96 = 8,2 % | **1** |
 | 3 · Materialización | 60.000 h liberadas; 9.000 h materializadas; 12.000 h reasignadas | 21.000 ÷ 60.000 = 35 % | **2** |
-| 4 · Profundidad | 2 de 14 iniciativas en producción con IT-P2 verificada | 14,3 % | **1** |
+| 4 · Profundidad | 2 de 14 casos de uso en producción con IT-P2 verificada | 14,3 % | **1** |
 | 5 · Modelo operativo | 1 de 14 con IT-P3 y supervisión verificadas; ninguna unidad completa | 7,1 % | **1** |
 | 6 · Ingresos habilitados | 0,04 M€ validados del piloto comercial sobre 400 M€ | 0,01 % | **1** |
 | 7 · Paso a producción | Aumentar y Transformar: 5 con resultado, 2 en producción (40 %). Optimizar: 14 con resultado, 10 en producción (71 %). Medianas G2→G5: 230 y 120 días | CR = 0,40 ÷ 0,71 = 0,56; TR = 1,9 | **2** |
@@ -482,7 +482,7 @@ Cobertura del índice: 8 de 8 señales con dato.
 
 **Perfil asignado: Transformación declarada, no evidenciada. Perfil subyacente: Eficiencia a escala.**
 
-Alertas complementarias: ninguna de las de la sección 5.3 se activa. La tasa de sobredeclaración no es aún calculable para Transformar (ninguna iniciativa con ambición real registrada).
+Alertas complementarias: ninguna de las de la sección 5.3 se activa. La tasa de sobredeclaración no es aún calculable para Transformar (ningún caso de uso con ambición real registrada).
 
 **Mensaje al consejo** (formato del documento 60): *"Todavía no, porque falta evidencia de retorno y de cambio en procesos y roles. La compañía gobierna bien una cartera de eficiencia con valor validado, pero la transformación declarada descansa en una sola apuesta en piloto. Para evidenciar transformación harían falta, como mínimo: retorno validado de al menos 0,20 M€ o ingresos habilitados de al menos 2 M€; al menos tres procesos rediseñados de extremo a extremo en producción; y revisión trimestral de la apuesta por el consejo."*
 
@@ -511,7 +511,7 @@ No se presenta el índice como una nota ni se compara con otras compañías (sec
 | No mide el valor absoluto ni la rentabilidad de la IA. | Un perfil de transformación no implica que la cartera sea rentable. | Se lee junto al valor neto anual y al neto adicional por euro (documento 40). |
 | No es comparable entre sectores ni entre compañías de tamaño muy distinto. | Uso indebido como clasificación de mercado. | Se usa solo para seguir la evolución de la propia compañía. |
 | Es un indicador retardado. | Las decisiones de transformación tardan en reflejarse en las señales 2, 5 y 6. | Lectura de tendencia trimestral; la señal 8 anticipa. |
-| Con pocas iniciativas los porcentajes son volátiles. | Una sola iniciativa cambia una puntuación. | Condición B3, mínimos de recuento en las señales 2 y 7, perfil provisional. |
+| Con pocos casos de uso los porcentajes son volátiles. | Un solo caso de uso cambia una puntuación. | Condición B3, mínimos de recuento en las señales 2 y 7, perfil provisional. |
 | Solo observa la transformación asociada a la IA. | Una compañía puede transformarse por otras vías. | El índice no pretende medir la transformación global de la compañía. |
 | No sustituye al diagnóstico de madurez. | Perfil y madurez pueden divergir. | Se presentan juntos en C1 y C5 (documento 11). |
 
@@ -521,11 +521,11 @@ No se presenta el índice como una nota ni se compara con otras compañías (sec
 
 | Código | Nombre | Uso en este documento |
 |---|---|---|
-| **T01** | Registro de iniciativas | Campos: respuestas IT-P1–IT-P5 con evidencia y estado de verificación; ambición propuesta, confirmada y real con fecha y motivo; esfera principal; fechas de *gates*; estados; motivos de parada; origen de la iniciativa. Desde el esquema 0.5: verificación de IT-P2 e IT-P3 en un *gate* con supervisión humana verificada, unidad completa rediseñada, capacidad liberada, materializada y reasignada, oferta habilitada por IA en los importes e ingresos totales e IT-D3 de la compañía. |
+| **T01** | Registro de casos de uso | Campos: respuestas IT-P1–IT-P5 con evidencia y estado de verificación; ambición propuesta, confirmada y real con fecha y motivo; esfera principal; fechas de *gates*; estados; motivos de parada; origen del caso de uso. Desde el esquema 0.5: verificación de IT-P2 e IT-P3 en un *gate* con supervisión humana verificada, unidad completa rediseñada, capacidad liberada, materializada y reasignada, oferta habilitada por IA en los importes e ingresos totales e IT-D3 de la compañía. |
 | **T03** | Gestor de *gates* | Verificación de la clasificación en G2 y G7; aprobaciones del consejo. |
 | **T05** | Clasificador de ambición | Aplica las cinco preguntas y las reglas 1 a 10; registra el resultado y las incoherencias. |
 | **T12** | Seguimiento de realización de valor | Importes por tipo y estado; capacidad liberada y materializada; ingresos habilitados por IA. |
-| **T13** | Calculadora de costes por caso | Inversión y coste recurrente de cada iniciativa (señal 1). |
+| **T13** | Calculadora de costes por caso | Inversión y coste recurrente de cada caso de uso (señal 1). |
 | **T14** | Calculadora del índice de transformación | Calcula condiciones de base, señales, perfil, alertas, cobertura, qué movería el perfil y evolución; conserva la versión de umbrales. Parte del JSON del registro T01: con el esquema 0.5 calcula desde él las ocho señales y las condiciones IT-D1 e IT-D3; lo que el registro no contenga se completa a mano. Exporta su resultado para el panel del consejo. |
 | **T17** | Panel de IA para el consejo | Tarjeta «Índice de transformación de la compañía» en «Cartera y valor»: perfil, condiciones de base, señales, tendencia, alertas y qué movería el perfil, a partir del resultado exportado por T14. |
 | **T18** | Registro de recomendaciones del consejo | Vista «Consejo (T18)» del registro T01: las decisiones del consejo (tesis, apuestas de Transformar con límite por etapa, revisiones y decisiones de etapa) son la fuente de la señal 8 y de IT-D1. |
@@ -541,7 +541,7 @@ No se presenta el índice como una nota ni se compara con otras compañías (sec
 |---|---|
 | **00 · Qué es SEVEN-G y para qué sirve** | Sección 5, que este documento desarrolla; reglas de medición. |
 | **01 · Metodología fundacional** | Criterios de *gate* por nivel de ambición, aprobación del consejo en Transformar, intensidad. |
-| **03 · Herramientas y registro de iniciativas** | Campos, eventos, métricas del embudo y plazos de referencia usados en las señales. |
+| **03 · Herramientas y registro de casos de uso** | Campos, eventos, métricas del embudo y plazos de referencia usados en las señales. |
 | **10 · Mapa de esferas y niveles de ambición** | Definición de los niveles, esferas y exclusión de 08 y 09. |
 | **11 · Modelo de madurez** | Diagnóstico complementario en C1 y C5. |
 | **13 · Tesis de IA, ambición y apetito de riesgo** | Declaración de ambición (condición IT-D1), equilibrio objetivo de cartera y umbral B3. |

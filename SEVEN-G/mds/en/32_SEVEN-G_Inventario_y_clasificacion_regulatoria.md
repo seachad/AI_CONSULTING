@@ -60,7 +60,7 @@ Regulation (EU) 2026/1744 (Digital Omnibus on AI) was published in the Official 
 
 | Type of use | What is recorded | Unit of record | Level of detail |
 |---|---|---|---|
-| **AI initiative** | Each system that forms part of an in-house initiative: predictive models, generative AI solutions, agents, AI-enabled automations developed or adapted by the company. | One record per deployed system. An initiative may have several systems and a system may serve several initiatives. | Full. |
+| **AI use case** | Each system that forms part of an in-house use case: predictive models, generative AI solutions, agents, AI-enabled automations developed or adapted by the company. | One record per deployed system. A use case may have several systems and a system may serve several use cases. | Full. |
 | **Third-party AI embedded in processes** | Supplier software with AI functions that play a part in decisions, operations or customer relationships. | One record per AI function with a distinct purpose within the product. | Full. |
 | **Corporate use of general-purpose AI** | Assistants, productivity suites and tools in the authorised catalogue (document 31). | One record per authorised tool; specific uses are not recorded individually unless they move to the full cycle. | Reduced, with licences and conditions. |
 | **Unauthorised use** | Tools detected without approval. | One record per tool and detection scope. | Minimum, until regularised. |
@@ -95,14 +95,14 @@ Regulation (EU) 2026/1744 (Digital Omnibus on AI) was published in the Official 
 | System code | Persistent identifier. | Text | Yes | `SIA-AAAA-NNN` |
 | Name | Name used in the company. | Text | Yes | — |
 | What it is and what it is used for | Explanation understandable to a non-specialist (measurement rule 10). | Long text | Yes | One or two sentences |
-| Type of use | Type in 01 §1.2. | List | Yes | AI initiative · Third-party AI embedded in processes · Corporate use of general-purpose AI · Unauthorised use |
-| Linked initiatives | Initiatives in the register that use the system. | Multiple reference | Cond.: initiative and embedded third-party AI types | `IA-AAAA-NNN` |
+| Type of use | Type in 01 §1.2. | List | Yes | AI use case · Third-party AI embedded in processes · Corporate use of general-purpose AI · Unauthorised use |
+| Linked use cases | Use cases in the register that use the system. | Multiple reference | Cond.: use case and embedded third-party AI types | `IA-AAAA-NNN` |
 | Responsible area | Unit that uses the system and is accountable for it. | List (company catalogue) | Yes | — |
 | Legal entity | Group company that deploys it. | List | Cond.: groups | — |
 | Registration date | Date of registration in the inventory. | Date | Yes | — |
 | Registration origin | How it reached the inventory. | List | Yes | Phase 0 · C1 Diagnosis · Procurement or renewal · Technical detection · Internal report · Audit · Supplier notice |
-| System owner | Person accountable for the use: the initiative's AI Product Owner or, for corporate use, the designated service owner. | Person | Yes (except unauthorised use: owner of the regularisation) | — |
-| Sponsor | AI Sponsor. | Person | Cond.: initiative and embedded third-party AI types | — |
+| System owner | Person accountable for the use: the use case's AI Product Owner or, for corporate use, the designated service owner. | Person | Yes (except unauthorised use: owner of the regularisation) | — |
+| Sponsor | AI Sponsor. | Person | Cond.: use case and embedded third-party AI types | — |
 | Technical owner | AI Technical Owner. | Person | Cond.: in development or production | — |
 | Operations owner | AI Operations Owner. | Person | Cond.: in production | — |
 | Risk owner | AI Risk Owner. | Person | Yes, from the provisional classification | — |
@@ -111,11 +111,11 @@ Regulation (EU) 2026/1744 (Digital Omnibus on AI) was published in the Official 
 
 | Field | Description | Type | Mandatory | Values |
 |---|---|---|---|---|
-| System status | Status of the system (distinct from the initiative status in 03 §3.2). | List | Yes | Under evaluation · In development · Pilot · In production · Suspended · Retired · Blocked |
+| System status | Status of the system (distinct from the use case status in 03 §3.2). | List | Yes | Under evaluation · In development · Pilot · In production · Suspended · Retired · Blocked |
 | Technology | Taxonomy in 03 §3.3. | Multiple list | Yes | Predictive ML · Generative AI · Agent · Language and document processing · Vision · Optimisation · Embedded third-party AI · Rules (not AI) |
 | Exposure | Taxonomy in 03 §3.3. | List | Yes | Internal · Employees · Customers indirectly · Customers or external persons directly |
-| Primary sphere | Taxonomy in 03 §3.3. | List | Cond.: initiative and embedded third-party AI types | 01 Customer … 09 AI governance |
-| Intensity | Lite or Enterprise (01 §9). | List | Cond.: initiative and embedded third-party AI types | Lite · Enterprise |
+| Primary sphere | Taxonomy in 03 §3.3. | List | Cond.: use case and embedded third-party AI types | 01 Customer … 09 AI governance |
+| Intensity | Lite or Enterprise (01 §9). | List | Cond.: use case and embedded third-party AI types | Lite · Enterprise |
 | Autonomy | Level in the common specification (§5.4). | List | Yes | A0 Assistance · A1 Recommendation · A2 Supervised action · A3 Autonomous action |
 | Actions it can execute | For A2 and A3. | Multiple list | Cond.: A2 or A3 | Read · Write to systems · External communications · Payments or financial commitments · Changes to production systems |
 | Decisions about people | Whether the output significantly influences decisions about people. | Yes/No | Yes | — |
@@ -191,7 +191,7 @@ Common statuses: **Done · Pending · Not applicable**, consistent with the boar
 
 ### 3.7 Minimum fields by type of use
 
-| Block | Initiative | Embedded third-party AI | Corporate use | Unauthorised use |
+| Block | Use case | Embedded third-party AI | Corporate use | Unauthorised use |
 |---|---|---|---|---|
 | Identification and owners | Full | Full | Without sponsor | Code, name, what it is, type, area, registration, origin, owner of the regularisation |
 | Technical and usage description | Full | Full | Status, technology, exposure, autonomy, licences, category | Status, technology, autonomy |
@@ -280,7 +280,7 @@ After steps 1 to 7, the tree continues with two steps that do not change the cat
 |---|---|---|---|---|
 | **1** | Is it an **AI system** under Article 3(1)? | Check whether it is a machine-based system that, with some level of autonomy, **infers** from the input it receives how to generate outputs (predictions, content, recommendations or decisions) that can influence physical or virtual environments. Use the Commission guidelines on the definition of an AI system. Systems based solely on rules defined by people to execute operations automatically do not usually meet the definition. | Description of how it works; technique used; reasoned conclusion. | No → **Out of scope** (technology "Rules (not AI)"). Uncertain → legal review. Yes → step 2. |
 | **2** | Does an **exclusion** under Article 2 apply? | Review, among others: exclusively military, defence or national security purposes (2(3)); scientific research and development as the sole purpose (2(6)); research, testing or development activities prior to placing on the market or putting into service, except testing in real-world conditions (2(8)); free and open-source licences, subject to the exceptions in Article 2(12). | Exclusion applied and reason. | Yes → **Out of scope** (it remains in the inventory and is reviewed if the use changes). No → step 3. |
-| **3** | Is it a **prohibited practice** under Article 5? | Compare against each case in Article 5(1): subliminal, manipulative or deceptive techniques that distort behaviour causing harm; exploitation of vulnerabilities due to age, disability or social or economic situation; social scoring leading to detrimental treatment; prediction of the risk of committing a criminal offence based solely on profiling or personality traits; creation or expansion of facial recognition databases through untargeted scraping; inference of emotions in the workplace or in educational institutions, except for medical or safety reasons; biometric categorisation to infer sensitive characteristics; real-time remote biometric identification in publicly accessible spaces for law enforcement purposes outside the permitted cases; and the prohibition added by Regulation (EU) 2026/1744 on the generation of non-consensual sexually explicit content or child sexual abuse material (applicable from 2-12-2026). Use the Commission guidelines on prohibited practices. | Analysis of each point with a conclusion. | Yes → **Prohibited**: the initiative does not go beyond phase 3; if the system is in use, immediate suspension and critical nonconformity. No → step 4. |
+| **3** | Is it a **prohibited practice** under Article 5? | Compare against each case in Article 5(1): subliminal, manipulative or deceptive techniques that distort behaviour causing harm; exploitation of vulnerabilities due to age, disability or social or economic situation; social scoring leading to detrimental treatment; prediction of the risk of committing a criminal offence based solely on profiling or personality traits; creation or expansion of facial recognition databases through untargeted scraping; inference of emotions in the workplace or in educational institutions, except for medical or safety reasons; biometric categorisation to infer sensitive characteristics; real-time remote biometric identification in publicly accessible spaces for law enforcement purposes outside the permitted cases; and the prohibition added by Regulation (EU) 2026/1744 on the generation of non-consensual sexually explicit content or child sexual abuse material (applicable from 2-12-2026). Use the Commission guidelines on prohibited practices. | Analysis of each point with a conclusion. | Yes → **Prohibited**: the use case does not go beyond phase 3; if the system is in use, immediate suspension and critical nonconformity. No → step 4. |
 | **4** | Is it **high-risk under Annex I** (Article 6(1))? | Two cumulative conditions: the system is a safety component of a product, or is itself a product, covered by the Union harmonisation legislation listed in Annex I; and that product is required to undergo a third-party conformity assessment under that legislation. | Applicable legislation and the product's assessment procedure. | Yes → **High risk** (Annex I; obligations from 2-8-2028) and step 7. No → step 5. |
 | **5** | Is its **intended purpose** listed in **Annex III** (Article 6(2))? | Compare the purpose with the eight areas of Annex III and their points. In private companies, pay attention to: 1 (biometrics), 2 (safety components of critical infrastructure), 3 (education and vocational training), 4 (recruitment and selection; decisions on working conditions, promotion, termination, task allocation based on behaviour or traits, and monitoring and evaluation of performance), 5(b) (creditworthiness and credit scoring, except for the detection of financial fraud), 5(c) (risk assessment and pricing in life and health insurance). | Annex III point and letter, or conclusion that it does not apply. | No → step 7. Yes → step 6. |
 | **6** | Does the **Article 6(3) exception** apply? | The Annex III system is not considered high-risk if it does not pose a significant risk of harm to health, safety or fundamental rights, including by not materially influencing the outcome of decision-making, and it meets at least one condition: a) narrow procedural task; b) improvement of the result of a previously completed human activity; c) detection of decision-making patterns or deviations without replacing or influencing the previously completed human assessment without proper human review; d) preparatory task to an assessment relevant for the purposes of the Annex III use cases. It **never** applies if the system performs profiling of natural persons. Use the Commission guidelines on the application of Article 6 provided for in paragraph 5 thereof, when available in their current version. | Condition applied, analysis of influence on the decision, confirmation that no profiling is performed. If the company is the provider: assessment documented before putting into service and registration (Articles 6(4) and 49(2)). | No → **High risk** (Annex III; obligations from 2-12-2027) and step 7. Yes → step 7 with the exception documented. |
@@ -374,7 +374,7 @@ After steps 1 to 7, the tree continues with two steps that do not change the cat
 | 2 | Create the record with the minimum fields for the type of use and assign code `SIA-AAAA-NNN`. | AI Office | 5 working days from identification | P05 record in T02 |
 | 3 | Designate the system owner and the risk owner. | Area and second line | Upon registration | P05 record |
 | 4 | Provisional classification (steps 1–7 of the tree) with T07. | AI Risk Owner | 10 working days from registration | Provisional classification in P11 |
-| 5 | Determine intensity (P04) and link to the initiative, where applicable. | Sponsor, verified | In phase 0 | P04 |
+| 5 | Determine intensity (P04) and link to the use case, where applicable. | Sponsor, verified | In phase 0 | P04 |
 | 6 | If it is unauthorised use: open a nonconformity and a regularisation plan (document 31 §5). | AI Office | Upon registration | Record in T08 |
 | 7 | Final classification with legal review and assessment plan. | AI Risk Owner | Before G3 | Final P11 |
 | 8 | Verification of the record. | AI Auditor (Enterprise) or AI Office (Lite) | At G0 and G3 | Verification record |
@@ -426,7 +426,7 @@ The targets are reference values to start with; the company sets them in C2 and 
 
 1. **A system in production without a complete record and final classification** is a major nonconformity; if it is also high-risk or prohibited, it is critical.
 2. **Records are not filled in with undeclared estimates.** "No data" is recorded as such.
-3. **Mandatory reconciliation** between T02 (systems) and T01 (initiatives): every initiative in phases 4–7 must have at least one linked system, and every system of the initiative type must have an initiative.
+3. **Mandatory reconciliation** between T02 (systems) and T01 (use cases): every use case in phases 4–7 must have at least one linked system, and every system of the use case type must have a use case.
 4. **Named owner**, not a generic area.
 5. **History retained**: changes do not overwrite without recording the previous value.
 
@@ -441,7 +441,7 @@ The inventory is only reliable if it is checked against independent sources. The
 | Application register and enterprise architecture | Applications with uninventoried AI components. | Technology |
 | Contracts, procurement and renewals | Products and services with AI functions; clauses on AI or on the use of data for training. | Procurement |
 | AI supplier register (T09) and ICT third-party provider register (DORA, where applicable) | Suppliers with AI services without a linked system. | Second line |
-| Cloud billing and model API consumption | Consumption of model services or AI platforms without an associated initiative. | Finance and technology |
+| Cloud billing and model API consumption | Consumption of model services or AI platforms without an associated use case. | Finance and technology |
 | Code repositories and data platforms | Projects that use AI libraries or services, deployed models. | Technology |
 | Records of processing activities (GDPR, Article 30) | Processing operations that mention profiling, scoring, automation or AI. | Data protection |
 | Browsing, data loss prevention and device management logs | Unauthorised use (document 31 §5.2). | Security |
@@ -474,7 +474,7 @@ The result of the reconciliation feeds indicator Q7 and is reported to the AI Co
 | **P47** | Data protection impact assessment | Assessment required under section 6.1. |
 | **P48** | Fundamental rights impact assessment | Assessment and notification required under section 6.2. |
 | **P42** | Quarterly second-line report | Reports the reconciliation of section 9 and indicator Q7 to the AI Committee. |
-| **T01** | Initiative register | System–initiative link and classification change events. |
+| **T01** | Use case register | System–use case link and classification change events. |
 | **T04** | Intensity determination | Uses the classification and autonomy from the inventory. |
 | **T09** | AI supplier register | Linked suppliers and general-purpose models. |
 | **T17** | Board AI dashboard | Receives the classification and control status (section 3.8). |
@@ -487,7 +487,7 @@ The result of the reconciliation feeds indicator Q7 and is reported to the AI Co
 | Document | Relationship |
 |---|---|
 | **01 · Foundational methodology** | Types of use (§1.2), phase 0 and phase 3, Enterprise criteria, declaration of application (§14). |
-| **03 · Tools and initiative register** | Controlled taxonomy, data model and events. |
+| **03 · Tools and use case register** | Controlled taxonomy, data model and events. |
 | **21 · *Gate* and audit criteria** | G0 and G3 criteria on inventory and classification. |
 | **30 · Governance model** | Responsibilities for the inventory and classification. |
 | **31 · Corporate policy and acceptable use** | Corporate use, embedded AI and unauthorised use. |

@@ -32,7 +32,7 @@
 Reglas de cumplimentación:
 
 - El mandato **no sustituye** a la decisión de C2: autoriza a preparar el diagnóstico y la propuesta que el consejo aprobará después (documento 13).
-- El alcance de implantación se elige con los criterios de 90 §2.2 y **no sustituye** a la intensidad de cada iniciativa.
+- El alcance de implantación se elige con los criterios de 90 §2.2 y **no sustituye** a la intensidad de cada caso de uso.
 - El inventario abarca **toda la compañía** aunque el perímetro de implantación sea menor (90 §2.3).
 - No se declara una moratoria general de la IA: solo se detiene lo que el diagnóstico identifique como riesgo inaceptable.
 - Las fechas se escriben en formato DD-MM-AAAA.
@@ -120,7 +120,7 @@ SEVEN-G puede adoptarse de forma **integral** o **modular** por componentes (01 
 
 | Función | Representante | Dedicación asignada | Aporta |
 |---|---|---|---|
-| Negocio | | | Iniciativas, valor y oportunidades por esfera. |
+| Negocio | | | Casos de uso, valor y oportunidades por esfera. |
 | Tecnología | | | Sistemas, arquitectura y operación. |
 | Datos | | | Fuentes, calidad y base legal. |
 | Riesgos y cumplimiento | | | Metodología de riesgos, clasificación y apetito. |
@@ -160,7 +160,7 @@ El detalle semana a semana está en 90 §4. Aquí se fijan las fechas de la comp
 | Campo | Contenido | Guía |
 |---|---|---|
 | Fecha reservada de la sesión del consejo | | Semanas 12–13. |
-| Plan si el consejo no aprueba C2 en la semana 12 | | Criterios provisionales aprobados por el comité, sin aprobar iniciativas de Transformar, y aprobación en la siguiente sesión (90 §4.4). |
+| Plan si el consejo no aprueba C2 en la semana 12 | | Criterios provisionales aprobados por el comité, sin aprobar casos de uso de Transformar, y aprobación en la siguiente sesión (90 §4.4). |
 
 ---
 
@@ -186,9 +186,9 @@ Definiciones de 90 §9. Los objetivos los fija la compañía; los de 90 §9 son 
 | Indicador | Objetivo a 90 días | Objetivo a 12 meses | Fuente | Responsable |
 |---|---|---|---|---|
 | Cobertura del inventario (áreas con declaración de completitud ÷ total) | | | T02 | |
-| Iniciativas nuevas con G0 previo al gasto | | | T01 | |
+| Casos de uso nuevos con G0 previo al gasto | | | T01 | |
 | Sistemas con criterios Enterprise clasificados | | | T02 | |
-| Regularización de iniciativas en producción | | | T01 | |
+| Regularización de casos de uso en producción | | | T01 | |
 | Roles sin incompatibilidades | | | T01 | |
 | Tiempo de decisión de *gates* frente al plazo de referencia | | | T01 | |
 | R6 vigentes | | | T01 | |
@@ -214,7 +214,7 @@ Se completa en la semana 13 (90 §4.5).
 | 6 | *Gates*, plazos de referencia y proceso de no conformidades operativos. | T03; T08. | |
 | 7 | Panel del consejo y registro de recomendaciones con datos reales. | T17; T18. | |
 | 8 | Primera cartera priorizada y plan de regularización con plazos. | P36; acta del comité. | |
-| 9 | Toda iniciativa nueva pasa por G0 antes de consumir presupuesto desde la semana 13. | T01. | |
+| 9 | Todo caso de uso nuevo pasa por G0 antes de consumir presupuesto desde la semana 13. | T01. | |
 
 ---
 
@@ -238,7 +238,7 @@ Se completa en la semana 13 (90 §4.5).
 | Áreas con declaración firmada | |
 | Cobertura del inventario (%) | |
 | Sistemas dados de alta en T02 (códigos SIA-AAAA-NNN) | |
-| Casos de uso no autorizado registrados como no conformidad (NC-AAAA-NNN) | |
+| Usos no autorizados registrados como no conformidad (NC-AAAA-NNN) | |
 
 ---
 

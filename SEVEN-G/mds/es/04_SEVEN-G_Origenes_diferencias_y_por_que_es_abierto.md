@@ -42,7 +42,7 @@ Esto no significa que el marco parta de cero. Reúne **disciplinas de gestión q
 
 | Enfoque habitual | Carencia | Respuesta de SEVEN-G | Dónde está |
 |---|---|---|---|
-| **Experimentar primero y buscar el valor después.** Se empieza por la tecnología disponible y se busca un problema al que aplicarla. | Pilotos que funcionan pero no resuelven nada que el negocio esté dispuesto a pagar. | Ninguna iniciativa pasa de la fase 2 sin una hipótesis de valor falsable, con línea base, método de atribución y criterios de parada fijados de antemano. | documento 01, sección 6; documento 40 |
+| **Experimentar primero y buscar el valor después.** Se empieza por la tecnología disponible y se busca un problema al que aplicarla. | Pilotos que funcionan pero no resuelven nada que el negocio esté dispuesto a pagar. | Ningún caso de uso pasa de la fase 2 sin una hipótesis de valor falsable, con línea base, método de atribución y criterios de parada fijados de antemano. | documento 01, sección 6; documento 40 |
 | **El prototipo como destino.** El éxito se mide por la demostración, no por la operación. | Muchos pilotos y pocos casos en producción; coste recurrente sin retorno. | «La producción es la única verdad»: el valor solo se valida en condiciones reales, con firma de puesta en producción, plan de reversión probado y revisión periódica de continuidad. | documento 01, secciones 3 y 7; documento 52 |
 | **Nadie puede parar.** No existen criterios para iterar, pivotar o retirar. | Carteras que solo crecen y concentran riesgo. | Puertas de decisión con cinco resultados posibles, límite de iteraciones, una puerta principal de parada (G3) y procedimiento de retirada. Parar a tiempo es un buen resultado. | documento 21; documento 14, sección 10 |
 | **El valor se declara.** Las horas liberadas se suman como ahorro y nadie las comprueba. | Cifras que no resisten una auditoría y decisiones de inversión mal fundadas. | Diez reglas de medición; cada importe lleva fórmula y estado (validado, declarado o estimado); la capacidad liberada no suma hasta que se materializa. | documento 40; documento 43 |
@@ -58,7 +58,7 @@ SEVEN-G no apareció de una vez: creció a partir de un trabajo de investigació
 | Cuándo | Qué se incorporó |
 |---|---|
 | Febrero de 2025 | Investigación inicial: estado de la gobernanza de la IA en las organizaciones y comparativa de metodologías y marcos existentes en el mercado (marcos de gestión de riesgos, normas de gestión de IA, prácticas internas de consultoras). Sin versión publicada todavía. |
-| Marzo de 2025 | Primeros borradores del ciclo de vida de la iniciativa y de las puertas de decisión, partiendo de la disciplina de inversión por fases y de la gestión comercial del embudo (sección 4). |
+| Marzo de 2025 | Primeros borradores del ciclo de vida del caso de uso y de las puertas de decisión, partiendo de la disciplina de inversión por fases y de la gestión comercial del embudo (sección 4). |
 | Abril de 2025 | **Versión 0.1** (primera versión interna): fases 0–7, puertas G0–G7 con sus cinco resultados posibles y primer borrador del mapa de esferas de impacto. |
 | Mayo de 2025 | Primer modelo de gobierno (consejo, comité de IA, tres líneas de defensa) y primeras plantillas de evidencia. |
 | Junio de 2025 | Reglas de medición del valor (estados validado, declarado y estimado) y primer borrador del índice de transformación. |
@@ -66,10 +66,10 @@ SEVEN-G no apareció de una vez: creció a partir de un trabajo de investigació
 | Agosto de 2025 | Primeras pruebas del marco con casos de uso reales, anonimizados; ajuste de puertas y reglas de medición con esa experiencia. |
 | **Septiembre de 2025** | **Primera publicación pública** del marco (documento de presentación y biblioteca inicial en español). |
 | Octubre de 2025 | Traducción al inglés de la biblioteca inicial; guía de traducción y glosario común. |
-| Noviembre de 2025 | Catálogo de herramientas (T01–T22) y primer diseño del registro de iniciativas (T01). |
+| Noviembre de 2025 | Catálogo de herramientas (T01–T22) y primer diseño del registro de casos de uso (T01). |
 | Diciembre de 2025 | Modelo de madurez (siete dimensiones) y primer cuestionario de diagnóstico. |
 | Enero de 2026 | Metodología de riesgos ampliada a IA generativa y agentes; niveles de autonomía A0–A3. |
-| Febrero de 2026 | Primer panel de IA para el consejo (T17), conectado al registro de iniciativas. |
+| Febrero de 2026 | Primer panel de IA para el consejo (T17), conectado al registro de casos de uso. |
 | Marzo de 2026 | Controles específicos de IA generativa: deriva de uso, sesgo con pares contrafactuales, cascada de degradación por coste. |
 | Abril de 2026 | Guía de implantación y primera calibración del alcance Lite y Enterprise por compañía. |
 | Mayo de 2026 | Marco de auditoría de IA y plantilla de declaración de aplicación. |
@@ -103,23 +103,23 @@ Ninguna de estas disciplinas se sustituye. Una compañía que ya tiene su gesti�
 
 ### 4.1 La idea
 
-Una dirección comercial no gestiona sus oportunidades de memoria: las registra, sabe en qué etapa está cada una, cuánto tiempo lleva en ella, qué le falta para avanzar, cuánto vale y por qué se perdieron las que se perdieron. SEVEN-G aplica esa misma disciplina a las iniciativas de IA. **Para llegar a producción hay que atravesar un conjunto obligatorio de estados**, y la cartera se lee como un embudo.
+Una dirección comercial no gestiona sus oportunidades de memoria: las registra, sabe en qué etapa está cada una, cuánto tiempo lleva en ella, qué le falta para avanzar, cuánto vale y por qué se perdieron las que se perdieron. SEVEN-G aplica esa misma disciplina a los casos de uso de IA. **Para llegar a producción hay que atravesar un conjunto obligatorio de estados**, y la cartera se lee como un embudo.
 
-> **Por qué importa.** Casi ninguna compañía sabe cuánto tarda en llevar una idea de IA a producción, en qué fase se atascan sus iniciativas ni por qué se pararon las que se pararon. Un equipo comercial sin esos datos no sabría gestionar sus ventas; una cartera de IA sin ellos no aprende.
+> **Por qué importa.** Casi ninguna compañía sabe cuánto tarda en llevar una idea de IA a producción, en qué fase se atascan sus casos de uso ni por qué se pararon los que se pararon. Un equipo comercial sin esos datos no sabría gestionar sus ventas; una cartera de IA sin ellos no aprende.
 
 ### 4.2 Qué se toma
 
 | En la gestión comercial | En SEVEN-G | Dónde está |
 |---|---|---|
-| Oportunidad registrada | Iniciativa dada de alta en el registro, con código único y responsables. | documento 03, sección 3 |
+| Oportunidad registrada | Caso de uso dado de alta en el registro, con código único y responsables. | documento 03, sección 3 |
 | Etapas del embudo | Fases 0 a 7 y, en el panel del consejo, etapas agrupadas. | documento 01, sección 6 |
 | Requisitos para pasar de etapa | Criterios de cada puerta, con estado y evidencia. | documento 21 |
 | Días en la etapa | Tiempo en fase y tiempo de decisión de cada puerta. | documento 03, sección 3.5 |
-| Oportunidades estancadas | Iniciativas que superan el plazo de referencia de su fase. | documento 03, sección 3.6; documento 14, sección 8 |
+| Oportunidades estancadas | Casos de uso que superan el plazo de referencia de su fase. | documento 03, sección 3.6; documento 14, sección 8 |
 | Conversión entre etapas | Proporción que continúa, itera, pivota o para en cada puerta. | documento 03, sección 3.5 |
 | Motivo de pérdida | Motivo codificado de parada o de retirada, con lo aprendido. | documento 03, sección 3.3 |
 | Previsión ponderada | Valor ponderado de la cartera con la probabilidad histórica propia. | documento 03, sección 3.5 |
-| Panel de dirección comercial | Registro de iniciativas T01 y panel del consejo T17. | documento 60 |
+| Panel de dirección comercial | Registro de casos de uso T01 y panel del consejo T17. | documento 60 |
 
 ### 4.3 El control de tiempos
 
@@ -130,13 +130,13 @@ El registro guarda la fecha de entrada y de salida de cada fase, los periodos en
 - **Tiempo hasta producción**: la velocidad real de la cartera, de la idea a G3 y de G3 a producción.
 - **Tiempo en espera**, separado del anterior, para distinguir los retrasos propios de las dependencias externas.
 
-La compañía aprueba en C2 los **plazos de referencia por fase** y los recalibra cada año con sus datos. Una iniciativa que los supera se marca como estancada y la revisa el comité de IA. El plazo no obliga a aprobar antes: obliga a decidir —continuar, esperar con motivo o parar— en lugar de dejar que la iniciativa consuma presupuesto sin que nadie lo decida.
+La compañía aprueba en C2 los **plazos de referencia por fase** y los recalibra cada año con sus datos. Un caso de uso que los supera se marca como estancado y lo revisa el comité de IA. El plazo no obliga a aprobar antes: obliga a decidir —continuar, esperar con motivo o parar— en lugar de dejar que el caso de uso consuma presupuesto sin que nadie lo decida.
 
 ### 4.4 En qué se aparta SEVEN-G de un embudo comercial
 
 | En un embudo comercial | En SEVEN-G |
 |---|---|
-| Se busca la **máxima conversión**: cada oportunidad perdida es un ingreso perdido. | **No se busca convertir más.** Parar en G3 una iniciativa inviable es un buen resultado, porque evita el coste de construirla. Una conversión cercana al 100 % indica puertas blandas, no una buena cartera. |
+| Se busca la **máxima conversión**: cada oportunidad perdida es un ingreso perdido. | **No se busca convertir más.** Parar en G3 un caso de uso inviable es un buen resultado, porque evita el coste de construirlo. Una conversión cercana al 100 % indica puertas blandas, no una buena cartera. |
 | Quien lleva la oportunidad la empuja y suele ser quien informa de su avance. | Quien construye **no verifica ni decide** su propio avance. El estado de cada criterio lo fija un verificador independiente. |
 | La probabilidad de cierre la estima el comercial. | La probabilidad de llegar a producción es **histórica y propia**, y el valor ponderado solo se muestra cuando hay historial suficiente. |
 | La venta cierra el ciclo. | La puesta en producción **abre** otro: operación, revisión de continuidad y decisión de escalar, iterar o retirar. Un caso en uso puede desengancharse, y también se aprende de ello. |
@@ -149,21 +149,21 @@ La compañía aprueba en C2 los **plazos de referencia por fase** y los recalibr
 1. **Parte del valor de negocio, no de la tecnología.** Es agnóstico de sector, de proveedor y de técnica.
 2. **Une en un solo sistema lo que suele estar separado**: ciclo de vida, gobierno, riesgo, cumplimiento, medición y consejo comparten registro, códigos y lenguaje.
 3. **Llega hasta el consejo.** No es solo un método para equipos: da a los órganos de gobierno decisiones, un panel y un registro de lo decidido.
-4. **Distingue eficiencia de transformación** con criterios verificables, en cada iniciativa y en la compañía.
+4. **Distingue eficiencia de transformación** con criterios verificables, en cada caso de uso y en la compañía.
 5. **Hace de parar una decisión normal**, con criterios fijados antes de empezar y motivos que se conservan para aprender.
 6. **Mide el propio sistema de decisión**: tiempos, conversión, iteraciones y condiciones vencidas.
 7. **Exige evidencia, no declaración**, y separa a quien construye de quien verifica y de quien decide.
-8. **Es proporcional**: intensidad Lite o Enterprise por iniciativa y alcance de implantación por compañía (documento 94).
+8. **Es proporcional**: intensidad Lite o Enterprise por caso de uso y alcance de implantación por compañía (documento 94).
 9. **Es compatible y modular**: convive con los marcos y órganos que la compañía ya tiene y puede adoptarse por componentes.
 10. **Es abierto**: se puede usar, adaptar y redistribuir sin pedir permiso ni pagar (sección 6).
 
 ### 5.1 Frente a los estándares: SEVEN-G como modelo operativo de IA
 
-Los estándares dicen qué debe existir; SEVEN-G es la capa operativa que lo hace funcionar iniciativa a iniciativa y cartera a cartera, con disciplina de inversión y valor. La tabla resume qué aporta cada referencia y qué añade el marco; el detalle, requisito a requisito y con su cobertura, está en el crosswalk del documento 34 (sección 9.1).
+Los estándares dicen qué debe existir; SEVEN-G es la capa operativa que lo hace funcionar caso de uso a caso de uso y cartera a cartera, con disciplina de inversión y valor. La tabla resume qué aporta cada referencia y qué añade el marco; el detalle, requisito a requisito y con su cobertura, está en el crosswalk del documento 34 (sección 9.1).
 
 | Referencia | Qué aporta | Qué añade SEVEN-G |
 |---|---|---|
-| **ISO/IEC 42001** | Los requisitos de un sistema de gestión de la IA, certificable por una entidad acreditada. | El ciclo de vida de cada iniciativa con puertas y criterios verificables, la cartera como embudo, la medición del valor con estado y el paquete para el consejo; las evidencias que pide una auditoría ya quedan preparadas (P74). |
+| **ISO/IEC 42001** | Los requisitos de un sistema de gestión de la IA, certificable por una entidad acreditada. | El ciclo de vida de cada caso de uso con puertas y criterios verificables, la cartera como embudo, la medición del valor con estado y el paquete para el consejo; las evidencias que pide una auditoría ya quedan preparadas (P74). |
 | **ISO/IEC 38507** | Las responsabilidades del órgano de gobierno sobre el uso de la IA. | Qué decide el consejo y cuándo (G2 y G7 de Transformar), con qué información (panel y paquete trimestral) y dónde queda lo decidido (registro de decisiones y recomendaciones). |
 | **ISO/IEC 23894** | El proceso de gestión del riesgo de la IA. | Una escala común de 5 × 5, setenta y un riesgos tipo, la aceptación por el órgano de su nivel y la conexión con las puertas: sin riesgos valorados no se pasa G3. |
 | **ISO/IEC 42005** | Cómo evaluar el impacto de un sistema de IA en personas y en la sociedad. | Cuándo se exige (criterios Enterprise y clasificación regulatoria), con qué plantilla y en qué puerta se verifica. |
@@ -190,7 +190,7 @@ Lo que SEVEN-G no es: una alternativa a ISO/IEC 42001, una certificación ni alg
 |---|---|
 | ¿Hay que pagar por usar SEVEN-G? | No. Ni los documentos, ni las plantillas, ni las herramientas. |
 | ¿Hay que registrarse o dar un correo para usar el sitio? | No. Todo se lee, se usa y se descarga sin cuenta ni registro. |
-| ¿El sitio envía correos o busca captar contactos? | No. Desde aquí nunca se envía un correo ni ninguna comunicación buscando engagement; el contacto con el autor es siempre iniciativa de quien lo decide (sección 7). |
+| ¿El sitio envía correos o busca captar contactos? | No. Desde aquí nunca se envía un correo ni ninguna comunicación buscando engagement; el contacto con el autor parte siempre de quien lo decide (sección 7). |
 | ¿El sitio mide las visitas? | Sí, solo de forma agregada: cuántas visitas tiene cada página, desde qué país y con qué tipo de dispositivo, con [Umami](https://umami.is/), una herramienta de código abierto que no usa *cookies*, no guarda datos personales ni direcciones IP y no sigue a nadie entre sitios; respeta la señal «No rastrear» del navegador. Sirve para saber qué documentos se leen. La página de comunidad no se mide. Lo que se introduce en las herramientas nunca llega a ningún servidor: se guarda solo en el navegador de quien lo introduce; el documento 95 explica dónde están esos datos, qué sale del navegador y cómo instalar el sitio en un servidor propio. |
 | ¿Hay que pedir permiso? | No, mientras se cumpla la licencia. |
 | ¿Se puede adaptar a la compañía? | Sí: cambiar umbrales, traducir, integrar las plantillas en los sistemas propios. |
@@ -223,7 +223,7 @@ Mientras el marco esté en la versión 0.x, sus páginas principales llevan el a
 
 Para consultas sobre el marco, propuestas de mejora, comunicación de errores o solicitudes de acompañamiento: **Fernando García Varela**, en su perfil profesional de LinkedIn: <https://www.linkedin.com/in/fernandogarciavarela/>. **SEVEN-G es un nombre y una marca de Fernando García Varela** (documento 93, sección 7).
 
-No es necesario contactar ni pedir permiso para ningún uso que cumpla la licencia; el sitio no lo pide en ningún momento y nunca contacta por iniciativa propia a quien lo visita. Contactar con el autor no convierte un uso en respaldado (documento 93, sección 7).
+No es necesario contactar ni pedir permiso para ningún uso que cumpla la licencia; el sitio no lo pide en ningún momento y nunca contacta por su cuenta a quien lo visita. Contactar con el autor no convierte un uso en respaldado (documento 93, sección 7).
 
 ---
 
@@ -231,7 +231,7 @@ No es necesario contactar ni pedir permiso para ningún uso que cumpla la licenc
 
 | Código | Nombre | Relación con este documento |
 |---|---|---|
-| T01 | Registro de iniciativas | Aplica la gestión del embudo: fases, tiempos, criterios, motivos de parada y valor. |
+| T01 | Registro de casos de uso | Aplica la gestión del embudo: fases, tiempos, criterios, motivos de parada y valor. |
 | T17 | Panel de IA para el consejo | Muestra el embudo, los casos que salieron de él y por qué. |
 | P29 | Registro de decisión de *gate* | Conserva el resultado y el motivo de cada decisión. |
 | P30 | Decisión de escalado o retirada | Recoge las lecciones aprendidas de cada retirada. |
@@ -244,11 +244,11 @@ No es necesario contactar ni pedir permiso para ningún uso que cumpla la licenc
 |---|---|
 | **00 · Qué es SEVEN-G y para qué sirve** | El problema que resuelve el marco y sus principios. |
 | **01 · Metodología fundacional** | Compatibilidad y adopción modular (sección 1.2), trazabilidad del ciclo de vida (sección 6.11) y normas de referencia (sección 13). |
-| **03 · Herramientas y registro de iniciativas** | La analogía con un CRM, las métricas del embudo y los plazos de referencia (sección 3). |
-| **14 · Gestión de cartera** | Iniciativas estancadas y procedimiento de retirada. |
+| **03 · Herramientas y registro de casos de uso** | La analogía con un CRM, las métricas del embudo y los plazos de referencia (sección 3). |
+| **14 · Gestión de cartera** | Casos de uso estancados y procedimiento de retirada. |
 | **91 · Guía para consultores** | Modelos de acompañamiento y transferencia a la compañía. |
 | **93 · Licencia, uso por terceros y citación** | Texto completo sobre licencias, nombre, obras derivadas y exención de responsabilidad. |
-| **94 · Matriz de obligatoriedad y lectura por capas** | Qué es obligatorio siempre y qué depende de cada compañía e iniciativa. |
+| **94 · Matriz de obligatoriedad y lectura por capas** | Qué es obligatorio siempre y qué depende de cada compañía y caso de uso. |
 
 ---
 

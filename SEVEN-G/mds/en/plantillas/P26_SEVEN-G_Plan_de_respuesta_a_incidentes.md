@@ -41,7 +41,7 @@ This template does not constitute legal advice. Reporting obligations and their 
 
 | Field | Content | Guidance |
 |---|---|---|
-| Initiative code | | IA-AAAA-NNN (T01). |
+| Use case code | | IA-AAAA-NNN (T01). |
 | AI system(s) | | Identifier in the inventory (T02). |
 | Regulatory classification | | Prohibited · High risk · Transparency obligations · Minimal risk · Out of scope · Pending classification. |
 | Role of the company in relation to the system | | Provider · Deployer · Both · To be determined. It determines the reporting obligations (document 34). |

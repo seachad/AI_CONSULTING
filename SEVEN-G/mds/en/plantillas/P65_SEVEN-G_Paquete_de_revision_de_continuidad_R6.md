@@ -42,7 +42,7 @@ Completion rules:
 
 | Field | Content | Guidance |
 |---|---|---|
-| Initiative code | | IA-AAAA-NNN (T01). |
+| Use case code | | IA-AAAA-NNN (T01). |
 | AI systems | | SIA-AAAA-NNN (P05). |
 | Type of system and autonomy level | | Predictive ML · Generative AI · Agent; A0–A3. |
 | Intensity, ambition level and regulatory classification | | P04, P07, P11. |

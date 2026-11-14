@@ -24,7 +24,7 @@
 
 This document is the **single source** of SEVEN-G's terms, scales, closed lists, codes and drafting conventions. It brings together the definitions used by the foundational methodology (document 01), the topic documents, templates P01–P31 and tools T01–T22, and sets their official equivalent in English and in Spanish.
 
-Its purpose is to ensure that a given term means the same thing in a phase manual, in a *gate* criterion, in a template, in the initiative register and in the board dashboard. Without a common vocabulary it is not possible to aggregate the portfolio, compare periods or audit decisions.
+Its purpose is to ensure that a given term means the same thing in a phase manual, in a *gate* criterion, in a template, in the use case register and in the board dashboard. Without a common vocabulary it is not possible to aggregate the portfolio, compare periods or audit decisions.
 
 ### 1.2 Rules of use
 
@@ -52,7 +52,7 @@ SEVEN-G applies the principle of **AI self-consulting**: the company must be abl
 
 This principle exists for four practical reasons:
 
-1. **Continuity.** Initiatives last longer than projects and longer than the teams that launched them.
+1. **Continuity.** Use cases last longer than projects and longer than the teams that launched them.
 2. **Traceability.** The board, audit and risk functions must understand why each step was decided.
 3. **Scalability.** Without stable definitions it is not possible to compare portfolios, periods and business units.
 4. **Transferability.** The framework must work even if tools, models or consulting firms change.
@@ -113,7 +113,7 @@ Negative forms follow the same logic: **must not** prohibits; **should not** adv
 
 ### 2.4 Cross-references: name first, code second
 
-**Rule R16.** Every element of the framework that has a code (document, template, tool, course module, phase, gate, checklist, criterion, milestone, maturity dimension, corporate cycle, profile, archetype, modifier, core rule, indicator, risk type or control) is cited by its **canonical name** followed by its **code in brackets**: *the feasibility gate (G3)*, *the initiative register (T01)*, *the risk matrix and register (P12)*, *the value measurement rules (document 40)*. In the HTML version the code is the link to where the element is explained. A new reader understands the sentence without knowing the code; a regular reader still has the code to look it up.
+**Rule R16.** Every element of the framework that has a code (document, template, tool, course module, phase, gate, checklist, criterion, milestone, maturity dimension, corporate cycle, profile, archetype, modifier, core rule, indicator, risk type or control) is cited by its **canonical name** followed by its **code in brackets**: *the feasibility gate (G3)*, *the use case register (T01)*, *the risk matrix and register (P12)*, *the value measurement rules (document 40)*. In the HTML version the code is the link to where the element is explained. A new reader understands the sentence without knowing the code; a regular reader still has the code to look it up.
 
 - **First mention in each section**: name (code). **Later mentions** in the same section: the name alone.
 - **The code stands alone** only in tables whose first column is an identifier (catalogues of criteria, controls, indicators and risk types) and inside the tools and registers, where the code is the data.
@@ -121,7 +121,7 @@ Negative forms follow the same logic: **must not** prohibits; **should not** adv
 
 | Form | Meaning | Example |
 |---|---|---|
-| **name (code)** | Framework element by its canonical name, with the code in brackets at the first mention in the section. | the feasibility gate (G3) · the AI system inventory (T02) · the initiative charter (P01) |
+| **name (code)** | Framework element by its canonical name, with the code in brackets at the first mention in the section. | the feasibility gate (G3) · the AI system inventory (T02) · the use case charter (P01) |
 | **what is there (NN §x.y)** | Section x.y of document NN, preceded by what the reader will find. | the possible outcomes of a gate (01 §7.3) |
 | **document name (document NN)** | Entire document. | the value measurement rules (document 40) |
 | **measurement rule n** | Rule n of 00 §6, developed in 40 §3. | measurement rule 8 |
@@ -149,25 +149,25 @@ Alphabetical order by English term. The full scales are in section 4 and the cod
 | **Agents with the ability to act** | Enterprise criterion: system with autonomy A2 or A3 whose actions have an effect on third parties, money, personal data or production systems. | 01 §9.2; 35 §5.2 | Agentes con capacidad de actuar |
 | **AI and data factory** | Single unit that brings together the AI teams, the platform, data, model operations and the inventory, and provides that capacity to every value chain with controls built into the platform. It answers for capacity, not for the value of each process. Organisational proposal, not a mandatory body. | 54 §9.5–§9.7 | fábrica de IA y datos |
 | **AI audit** | Independent examination of evidence, controls or the framework. Types: *gate* audit, continuity audit, framework audit of the company, thematic audit and supplier audit; in addition, follow-up audits and re-audits. | 38 §4; 21 §10 | Auditoría de IA |
-| **AI Auditor** | Control role that verifies the evidence at all Enterprise *gates* and by sampling in Lite, and closes nonconformities. It cannot take part in the design, build or operation of the initiative or report hierarchically to its sponsor. It may come from internal audit or be external. | 01 §8.1; 38 §3 | Auditor de IA |
+| **AI Auditor** | Control role that verifies the evidence at all Enterprise *gates* and by sampling in Lite, and closes nonconformities. It cannot take part in the design, build or operation of the use case or report hierarchically to its sponsor. It may come from internal audit or be external. | 01 §8.1; 38 §3 | Auditor de IA |
 | **AI Committee** | Senior management body covering business, technology, data, risk, compliance, security, data protection and people, which manages the portfolio, decides Enterprise *gates* and retirements, accepts High risks and escalates to the board as appropriate. It meets monthly. It may be an existing committee with an extended mandate. | 01 §8.3; 30 §3.3 | Comité de IA |
 | **AI incident** | Event in which an AI system, through its operation, failure, manipulation or use, causes or may cause harm to people, to the company or to third parties, or interrupts or degrades a process, even if the system remains available. It is classified by severity S1–S4. | 37 §1.1; 52 §7.1 | Incidente de IA |
-| **AI literacy** | Sufficient level of AI knowledge among staff and other persons who operate or use AI systems on the company's behalf (EU AI Act, Article 4). In SEVEN-G it is a C2 requirement (corporate policy) and evidence for each initiative (capability plan in P20), organised by profiles (PER-PA to PER-PF, document 50 §5.2). | 31 §6; 50 §5; 23 §8 | Alfabetización en IA |
-| **AI Office** | Internal methodology, portfolio and measurement unit that maintains the inventory, verifies the gate criteria in Lite-intensity initiatives (in Enterprise-intensity initiatives the AI Auditor verifies them), consolidates measurement and prepares information for the bodies. It must not be confused with the European AI Office. | 01 §8.3; 30 §1.2 | Oficina de IA |
+| **AI literacy** | Sufficient level of AI knowledge among staff and other persons who operate or use AI systems on the company's behalf (EU AI Act, Article 4). In SEVEN-G it is a C2 requirement (corporate policy) and evidence for each use case (capability plan in P20), organised by profiles (PER-PA to PER-PF, document 50 §5.2). | 31 §6; 50 §5; 23 §8 | Alfabetización en IA |
+| **AI Office** | Internal methodology, portfolio and measurement unit that maintains the inventory, verifies the gate criteria in Lite-intensity use cases (in Enterprise-intensity use cases the AI Auditor verifies them), consolidates measurement and prepares information for the bodies. It must not be confused with the European AI Office. | 01 §8.3; 30 §1.2 | Oficina de IA |
 | **AI Operations Owner** | Building role: accountable for stability, monitoring, incidents and changes in production. It cannot verify evidence of its own operation. | 01 §8.1 | Responsable de operación de IA |
-| **AI Product Owner** | Building role: accountable for the value hypothesis, actual use and adoption. It cannot verify evidence or decide *gates* of its initiative. | 01 §8.1 | Responsable de producto de IA |
+| **AI Product Owner** | Building role: accountable for the value hypothesis, actual use and adoption. It cannot verify evidence or decide *gates* of its use case. | 01 §8.1 | Responsable de producto de IA |
 | **AI reviewer** | AI tool that reviews plans, code, tests or security within the building team (SEVEN-G name for the SPAD *AI Auditor* role). It approves nothing and is not the AI Auditor. | 53 §5 | IA revisora |
-| **AI Risk Owner** | Control role: accountable for the assessment and monitoring of risks and compliance, and issues risk clearance. It cannot be part of the team that builds the initiative. | 01 §8.1 | Responsable de riesgos de IA |
+| **AI Risk Owner** | Control role: accountable for the assessment and monitoring of risks and compliance, and issues risk clearance. It cannot be part of the team that builds the use case. | 01 §8.1 | Responsable de riesgos de IA |
 | **AI security control (SEG) · agent control (AG)** | Catalogues of coded controls: SEG-01 to SEG-27 for AI systems (SEG-21 to SEG-25, use of AI in cyber defence; SEG-26, corporate AI gateway; SEG-27, corporate agent test bench) and AG-01 to AG-20 for agents, with mandatory minimums by autonomy level. | 35 §5–7 | Control de seguridad de IA (SEG) · control de agentes (AG) |
-| **AI Sponsor** | Deciding role: accountable for value and investment, and champions the initiative before the bodies. It cannot verify evidence or act as risk owner or auditor of its initiative. | 01 §8.1 | Patrocinador de IA |
+| **AI Sponsor** | Deciding role: accountable for value and investment, and champions the use case before the bodies. It cannot verify evidence or act as risk owner or auditor of its use case. | 01 §8.1 | Patrocinador de IA |
 | **AI supplier (third party)** | Third party that supplies models, platforms, software with AI features or services that use them, managed with requirement levels N1–N3. | 36 | Proveedor de IA (tercero) |
 | **AI system** | Machine-based system that, with varying levels of autonomy, infers from the input it receives how to generate outputs—predictions, content, recommendations or decisions—that can influence physical or virtual environments. It is aligned with the EU AI Act definition and is identified in the inventory with the code SIA-AAAA-NNN. | 01 §4; 32 §2 | Sistema de IA |
-| **AI system inventory** | Register of all the company's AI systems of the four usage types (initiatives, embedded third-party AI, corporate use and unauthorised use), with regulatory classification, intensity, autonomy and owner. | 01 §14; 32; T02 | Inventario de sistemas de IA |
-| **AI Technical Owner** | Building role: accountable for the solution, data, models and their technical documentation. It cannot verify evidence or decide *gates* of its initiative. | 01 §8.1 | Responsable técnico de IA |
-| **AI thesis** | Brief statement approved by the board in C2 that explains why AI matters to the company, where it wants to use it, with what ambition and what it will not do. It must be usable to say no to an initiative. | 13 §3 | Tesis de IA |
+| **AI system inventory** | Register of all the company's AI systems of the four usage types (use cases, embedded third-party AI, corporate use and unauthorised use), with regulatory classification, intensity, autonomy and owner. | 01 §14; 32; T02 | Inventario de sistemas de IA |
+| **AI Technical Owner** | Building role: accountable for the solution, data, models and their technical documentation. It cannot verify evidence or decide *gates* of its use case. | 01 §8.1 | Responsable técnico de IA |
+| **AI thesis** | Brief statement approved by the board in C2 that explains why AI matters to the company, where it wants to use it, with what ambition and what it will not do. It must be usable to say no to a use case. | 13 §3 | Tesis de IA |
 | **AI-first** | Company in which each process is designed on the assumption that AI does the work or proposes the decision, and people set the objective, decide on the exceptions and answer for the result: "AI by default, people where it matters". It is checked with six tests. It does not mean creating an AI function. | 54 §9.1–§9.2 | IA-first |
-| **Ambition lane** | Grouping of the portfolio by confirmed ambition level (Optimise, Augment, Transform), with its own budget envelope and prioritisation criteria. Initiatives compete only within their lane. | 14 §4 | Carril de ambición |
-| **Ambition level** | Type of bet of an initiative: Optimise, Augment or Transform. It is not a ladder: they are three bets with different cost, risk, time frame and organisational resistance. Each initiative has a single level. | 01 §4; 10 §3; 12 §3 | Nivel de ambición |
+| **Ambition lane** | Grouping of the portfolio by confirmed ambition level (Optimise, Augment, Transform), with its own budget envelope and prioritisation criteria. Use cases compete only within their lane. | 14 §4 | Carril de ambición |
+| **Ambition level** | Type of bet of a use case: Optimise, Augment or Transform. It is not a ladder: they are three bets with different cost, risk, time frame and organisational resistance. Each use case has a single level. | 01 §4; 10 §3; 12 §3 | Nivel de ambición |
 | **Annual net value** | Materialised efficiencies + return − recurring cost (F2). Non-materialised released capacity is excluded. | 00 rule 6; 40 F2 | Valor neto anual |
 | **Annual value at stake** | In the «What holds back scaling» reading, potential efficiencies plus return (or current ones, if there is no potential) of the cases affected by a barrier. Declared, not validated: it ranks the barriers and is never presented as realised value nor added to the net. | 60 §10.4 | Valor anual en juego |
 | **Attribution method** | Procedure for isolating the effect of AI: randomised control group, A/B test, difference-in-differences, adjusted before-and-after comparison or, as a last resort, expert estimate. It is approved at G2 and determines the maximum status the value can reach. | 01 §6.4; 40 §7 | Método de atribución |
@@ -179,15 +179,15 @@ Alphabetical order by English term. The full scales are in section 4 and the cod
 
 | Term | Definition in SEVEN-G | Reference document | Spanish term |
 |---|---|---|---|
-| **Baseline** | Measurement of the situation without the initiative (cost, time, errors, conversion or another metric) against which the incremental effect is calculated. It must be measured, not estimated, unless justified. | 01 §6.4; 40 §3.1; P09 | Línea base |
+| **Baseline** | Measurement of the situation without the use case (cost, time, errors, conversion or another metric) against which the incremental effect is calculated. It must be measured, not estimated, unless justified. | 01 §6.4; 40 §3.1; P09 | Línea base |
 | **Baseline conditions** | Conditions that do not score in the transformation index but are required by the profiles: B1 governed portfolio, B2 proportion of validated value and B3 scale in production. | 12 §4.3 | Condiciones de base |
 | **Benefits realisation plan** | Plan signed by the business owner of the benefit, in draft at G3 and complete at G4, that sets out how, when and with which enabling changes the expected value will be materialised. Its realisation curve, its funding tranches with their pass condition, its approved reference and the realised value by period are recorded in T01 (`plan_realizacion`) and shown by the board dashboard. | 43 §4; 60 §10.6 | Plan de realización de beneficios |
 | **Blocking criterion** | *Gate* criterion with mandatory status *Yes* or *Yes ◆* that is *Not met* or *Pending*. While any remains, neither Proceed nor Proceed with conditions is possible. | 21 §5.1 | Bloqueante (criterio) |
-| **Board AI dashboard** | Board oversight tool fed by the initiative register: inventory, validated versus declared value, cost, compliance, incidents, exposure to AI-enabled attacks, agents, adoption, agility and distribution by ambition. | 00 §4.6; 60; T17 | Panel de IA del consejo |
+| **Board AI dashboard** | Board oversight tool fed by the use case register: inventory, validated versus declared value, cost, compliance, incidents, exposure to AI-enabled attacks, agents, adoption, agility and distribution by ambition. | 00 §4.6; 60; T17 | Panel de IA del consejo |
 | **Board committee** | Committee of the board (audit, risk or technology) that oversees, on a quarterly basis, risks, regulatory compliance, incidents, major and critical nonconformities and AI audits. | 01 §5.2; 30 §3.2 | Comisión delegada |
-| **Board (of directors)** | Body that approves the AI thesis, the ambition, the risk appetite and Transform initiatives (at G2 and when scaling at G7), oversees quarterly and reviews progress annually. It may act through its board committee. | 01 §8.3; 30 §3.1 | Consejo (de administración) |
+| **Board (of directors)** | Body that approves the AI thesis, the ambition, the risk appetite and Transform use cases (at G2 and when scaling at G7), oversees quarterly and reviews progress annually. It may act through its board committee. | 01 §8.3; 30 §3.1 | Consejo (de administración) |
 | **Board recommendation** | Recommendation or request of the board or its board committee with a persistent code REC-AAAA-NNN, recipient, committed date, declared status, evidence and independent assessment. | 62 §3–6; T18 | Recomendación del consejo |
-| **Bring G7 forward** | R6 outcome when the initiative shows relevant deviations in value, risk or compliance: G7 is opened without waiting for the calendar. | 01 §7.3; 21 §5.3 | Adelantar G7 |
+| **Bring G7 forward** | R6 outcome when the use case shows relevant deviations in value, risk or compliance: G7 is opened without waiting for the calendar. | 01 §7.3; 21 §5.3 | Adelantar G7 |
 | **Business owner of the benefit** | Executive of the area in which the benefit arises. Signs the realisation plan, executes the materialisation and declares the realised value. Cannot validate their own value. May be the same person as the sponsor. | 43 §3.2 | Responsable de negocio del beneficio |
 
 ### 3.3 C
@@ -200,11 +200,11 @@ Alphabetical order by English term. The full scales are in section 4 and the cod
 | **Compliance (value type)** | Ability to meet a regulatory or contractual obligation. It is reported separately and does not add to net value unless it replaces an actual compliance cost measured with a formula; it is then an efficiency. | 40 §5.2 | Cumplimiento (tipo de valor) |
 | **Condition** | Requirement imposed in a *Proceed with conditions* outcome, linked to a *Conditionable* criterion, with a time limit, owner and means of verification. It is checked at the latest at the next *gate*. An expired unmet condition turns the outcome into Iterate. | 01 §7.3–7.4; 21 §3.2 | Condición; condiciones vencidas |
 | **Conditionable criterion** | Mandatory *gate* criterion whose shortfall is not critical and whose evidence exists, and which therefore allows Proceed with conditions. | 21 §2.2 | Condicionable (criterio) |
-| **Context and constraints statement** | Phase 0 evidence that declares the initiative's regulatory, ethical, data, budget and time constraints. | 01 §6.2; P02 | Declaración de contexto y restricciones |
-| **Controlled taxonomy** | Closed lists of initiative register tags (sphere, ambition level, intensity, regulatory classification, technology, exposure, value type and stop or retirement reason) that make it possible to filter, compare and aggregate the portfolio. | 03 §3.3; section 5 | Taxonomía controlada |
+| **Context and constraints statement** | Phase 0 evidence that declares the use case's regulatory, ethical, data, budget and time constraints. | 01 §6.2; P02 | Declaración de contexto y restricciones |
+| **Controlled taxonomy** | Closed lists of use case register tags (sphere, ambition level, intensity, regulatory classification, technology, exposure, value type and stop or retirement reason) that make it possible to filter, compare and aggregate the portfolio. | 03 §3.3; section 5 | Taxonomía controlada |
 | **Core (SEVEN-G core)** | Minimum, stable set of fourteen rules (N-01 to N-14) that distinguishes applying SEVEN-G from using some of its templates: inventory, register, intensity, gates, G3 separately, segregation of duties, dual validation, "Yes ◆" criteria, value hypothesis, risks, rollback and continuity, board, measurement and nonconformities. It is the same for every company, intensity and scope, has its own version and only changes by express decision of the author. | 01 §14.1; 94 §3 | Núcleo de SEVEN-G |
 | **Corporate agent test bench** | Versioned library of adversarial scenarios, derived from the threat model and from the company's own incidents, that tests agents and assistants through all their channels, tools and connectors with simulated users, built into the deployment pipeline: at A2 and A3 it runs at every deployment and a successful critical scenario blocks deployment; at A0 and A1, before G5 and after relevant changes (SEG-27). | 35 §6, §8 | Banco de pruebas corporativo de agentes |
-| **Corporate AI gateway** | Common control point, outside the model, through which all traffic to models passes: input, output and context filters, leakage prevention, quotas, approved models, logging with a correlation identifier and, for agents, the intent decision point, with the same measured configuration for every initiative (SEG-26). It fails closed for sensitive actions and degraded for queries. | 35 §6 | Pasarela corporativa de IA |
+| **Corporate AI gateway** | Common control point, outside the model, through which all traffic to models passes: input, output and context filters, leakage prevention, quotas, approved models, logging with a correlation identifier and, for agents, the intent decision point, with the same measured configuration for every use case (SEG-26). It fails closed for sensitive actions and degraded for queries. | 35 §6 | Pasarela corporativa de IA |
 | **Corporate cycle** | Company level of the framework: five annual stages with continuous oversight (C1 Diagnosis, C2 Direction, C3 Portfolio, C4 Oversight, C5 Review) through which the board and senior management govern AI. | 01 §5 | Ciclo corporativo |
 | **Corporate use of general-purpose AI** | AI assistants and productivity suites used by employees. It is governed with the inventory, the acceptable use policy, training and technical controls, and moves to the full lifecycle if it meets any Enterprise criterion. | 01 §1.2; 31 §5 | Uso corporativo de IA de propósito general |
 | **Coverage crosswalk** | Table showing, for each requirement of a standard or regulation (ISO/IEC 42001, 38507, 23894, 42005, NIST AI RMF, EU AI Act), where SEVEN-G covers it, with which core rule and which evidence, and its coverage: direct, partial, requires external control or not covered. It is generated from a versioned data file; it is not a certification or a declaration of conformity. | 34 §9.1 | crosswalk de cobertura |
@@ -218,7 +218,7 @@ Alphabetical order by English term. The full scales are in section 4 and the cod
 | Term | Definition in SEVEN-G | Reference document | Spanish term |
 |---|---|---|---|
 | **Data protection impact assessment (DPIA)** | Assessment required by the GDPR (Article 35) when processing is likely to result in a high risk to the rights and freedoms of individuals. | 32 §6.1; P11 | Evaluación de impacto en protección de datos (EIPD) |
-| **Decision gate (*gate*)** | Point at the end of a phase at which the competent body decides, on verified evidence, whether the initiative proceeds and under what conditions. Gates: G0 Authorisation, G1 Opportunity, G2 Hypothesis, G3 Feasibility, G4 Design, G5 Go-live, R6 Continuity review and G7 Scale or retire. | 01 §4, §7 | *Gate* (puerta de decisión) |
+| **Decision gate (*gate*)** | Point at the end of a phase at which the competent body decides, on verified evidence, whether the use case proceeds and under what conditions. Gates: G0 Authorisation, G1 Opportunity, G2 Hypothesis, G3 Feasibility, G4 Design, G5 Go-live, R6 Continuity review and G7 Scale or retire. | 01 §4, §7 | *Gate* (puerta de decisión) |
 | **Decisions about people** | Enterprise criterion: the system's output significantly influences decisions that affect people (employment, credit, insurance, access to services, among others). Their maximum autonomy is limited by type of decision. | 01 §9.2; 50 §8 | Decisiones sobre personas |
 | **Declaration of application** | Statement by a company that it applies SEVEN-G because it meets the fourteen core rules (01 §14.1). It is a **verifiable self-declaration** subject to audit, not a certification: in version 0.x there is no official certification of the framework. | 01 §14; 38 §11; 93 §7.3 | Declaración de aplicación |
 | **Declared** | Status of the amount assigned by the area responsible for the benefit, with the sponsor's agreement, with formula, source, period and attribution method. Indicative expiry of 6 months without validation. | 01 §11; 40 §4.1 | Declarado |
@@ -234,13 +234,13 @@ Alphabetical order by English term. The full scales are in section 4 and the cod
 | **End-to-end value chain** | Complete process that creates a result for the customer or the company and crosses several functions (for example, order to cash). In an AI-first company it has an owning pair —a business lead and a technology partner with the same objectives— that answers for its result, with a budget in tranches and its own agents. Organisational proposal, not a mandatory body. | 54 §9.6–§9.7 | cadena de valor de punta a punta |
 | **Enterprise criteria** | Eight criteria, any one of which determines Enterprise intensity: high regulatory risk, decisions about people, direct exposure, agents with the ability to act, specially protected data, critical function, Transform level and investment above the C2 threshold. | 01 §9.2 | Criterios Enterprise |
 | **Enterprise (intensity)** | Intensity with all *gates* held separately, full templates, verification by the AI Auditor at all *gates*, decision by the AI Committee (the board in Transform), multi-level sign-off with veto and quarterly R6. It applies if at least one Enterprise criterion is met. | 01 §9 | Enterprise (intensidad) |
-| **Enterprise investment threshold** | Total three-year cost of an initiative (build plus expected recurring cost for the first three years) above which the initiative is Enterprise. It is approved by the board in C2. Splitting an initiative to stay below it is a major nonconformity. | 01 §9.2; 13 §6 | Umbral de inversión Enterprise |
+| **Enterprise investment threshold** | Total three-year cost of a use case (build plus expected recurring cost for the first three years) above which the use case is Enterprise. It is approved by the board in C2. Splitting a use case to stay below it is a major nonconformity. | 01 §9.2; 13 §6 | Umbral de inversión Enterprise |
 | **Estimated** | Status of the amount assigned by the AI Committee, the board or an assessment team when the area provides no data or to contrast a declared figure. It does not substantiate any realised value criterion. Indicative expiry of 6 months. | 01 §11; 40 §4.1 | Estimado |
 | **EU AI Act** | Regulation (EU) 2024/1689, as amended. Its mapping to phases, roles and evidence, and the status of its application dates, are set out in document 34. | 34 §3 | Reglamento Europeo de IA |
 | **European AI Office** | Body of the European Commission provided for in Regulation (EU) 2024/1689. | 30 §1.2; 34 §1.3 | Oficina Europea de IA |
 | **Evidence** | Verifiable document, record or result that demonstrates that a criterion is met. It has an author, date, version and verification, and must exist before the *gate*. | 01 §4, §7.4 | Evidencia; evidencias obligatorias |
 | **Exit criterion** | Condition that must be met at the end of a phase in order to request its *gate*. | 01 §6.2–6.9 | Criterio de salida |
-| **Express (intensity)** | Intensity for initiatives with no Enterprise criterion that, in addition, are for internal use, reversible, with autonomy A0 or A1, without sensitive data and below the C2 Express threshold, with eligibility confirmed by the risk function. Same gates as Lite, G3 separately (may be resolved in writing), reduced list of criteria (21 §2.5), living record and annual R6; if eligibility ceases to be met, it moves to Lite or Enterprise. | 01 §9.4; 21 §2.5 | Intensidad Express |
+| **Express (intensity)** | Intensity for use cases with no Enterprise criterion that, in addition, are for internal use, reversible, with autonomy A0 or A1, without sensitive data and below the C2 Express threshold, with eligibility confirmed by the risk function. Same gates as Lite, G3 separately (may be resolved in writing), reduced list of criteria (21 §2.5), living record and annual R6; if eligibility ceases to be met, it moves to Lite or Enterprise. | 01 §9.4; 21 §2.5 | Intensidad Express |
 | **Extreme impact rule** | A risk with impact 5 on the people and rights axis or on the regulatory axis is treated, for acceptance purposes, as at least High, even if its likelihood is 1. | 33 §4.3 | Regla de impacto extremo |
 
 ### 3.6 F
@@ -250,8 +250,8 @@ Alphabetical order by English term. The full scales are in section 4 and the cod
 | **Falsifiable value hypothesis** | Statement of the expected value with main metric, measured baseline, target, success threshold, attribution method, monetary value with formula and stop criteria. A hypothesis that cannot fail is not valid. | 01 §6.4; P08 | Hipótesis de valor falsable |
 | **Finding** | Result of a verification or audit classified as an observation or as a minor, major or critical nonconformity. | 21 §10.5; 38 §8.1 | Hallazgo |
 | **Fundamental rights impact assessment** | Assessment that the EU AI Act requires of certain deployers of high-risk systems before putting them into use (Article 27). | 32 §6.2; P11 | Evaluación de impacto en derechos fundamentales |
-| **Funding tranche** | Part of an initiative's budget released after a *gate*: tranche 1 (phases 0–3) after G0, tranche 2 (phases 4–5) after G3, tranche 3 (operation) after G5; in Transform, each approved stage is a tranche. Each tranche is recorded in the T01 realisation plan with its date, amount, the *gate* that releases it and its pass condition. | 14 §6.2; 43 §4.1 | Tramo de financiación |
-| **Funnel** | Way of managing the portfolio as a sales process: initiatives by phase and status, times, conversion per *gate*, stalled initiatives and stop reasons. | 01 §6.11; 03 §3.5 | Embudo |
+| **Funding tranche** | Part of a use case's budget released after a *gate*: tranche 1 (phases 0–3) after G0, tranche 2 (phases 4–5) after G3, tranche 3 (operation) after G5; in Transform, each approved stage is a tranche. Each tranche is recorded in the T01 realisation plan with its date, amount, the *gate* that releases it and its pass condition. | 14 §6.2; 43 §4.1 | Tramo de financiación |
+| **Funnel** | Way of managing the portfolio as a sales process: use cases by phase and status, times, conversion per *gate*, stalled use cases and stop reasons. | 01 §6.11; 03 §3.5 | Embudo |
 
 ### 3.7 G
 
@@ -263,7 +263,7 @@ Alphabetical order by English term. The full scales are in section 4 and the cod
 | ***Gate* outcome** | Decision adopted at a gate, from a closed list that depends on the gate (section 4.1). | 01 §7.3; 21 §5.3 | Resultado de *gate* |
 | **General-purpose AI model** | Model trained with large volumes of data, capable of performing a wide range of tasks and of being integrated into other systems. It is not in itself an AI system; the systems that integrate it are. | 32 §2.2, §4.2 | Modelo de IA de uso general |
 | **Generative AI** | Systems that generate content (text, image, audio, code) from instructions and context. It is a value of the technology tag and triggers the [GEN] criteria. | 03 §3.3; 21 §2.3; 35 | IA generativa |
-| **Governance and compliance enablement band** | Separate presentation, in the heat map, of the investment in initiatives whose primary sphere is 08 or 09. It is excluded from signals 1, 2 and 7 of the transformation index. | 10 §4.2; 12 §4.2 | Banda de habilitación de gobierno y cumplimiento |
+| **Governance and compliance enablement band** | Separate presentation, in the heat map, of the investment in use cases whose primary sphere is 08 or 09. It is excluded from signals 1, 2 and 7 of the transformation index. | 10 §4.2; 12 §4.2 | Banda de habilitación de gobierno y cumplimiento |
 | **Grades of spheres 08 and 09** | Specific scale used to assess the dimensions of spheres 08 and 09: Absent, Basic, Systematic, Advanced (section 4.10). They are neither maturity levels nor ambition levels. | 10 §4.2 | Grados de las esferas 08 y 09 (Ausente · Básico · Sistemático · Avanzado) |
 | **Guardrail effectiveness** | Proportion of corporate test bench scenarios that the filters, the gateway and intent control detect or block, read together with false positives on legitimate traffic and deactivations in the period (OPE-21, IND-OPE-27). | 52 §5.2; 41 §11.1 | Eficacia de los guardarraíles |
 
@@ -281,22 +281,19 @@ Alphabetical order by English term. The full scales are in section 4 and the cod
 | Term | Definition in SEVEN-G | Reference document | Spanish term |
 |---|---|---|---|
 | **Impact map · sphere map** | Component A of the framework: nine spheres of impact and three ambition levels to decide where and with what ambition to use AI without talking about technology. | 00 §4.1; 10 | Mapa de impacto · mapa de esferas |
-| **Impact reach** | Reading of what an initiative in use affects, according to the verified questions IT-P1 to IT-P4: IM1 task, IM2 process, IM3 people and organisation, IM4 business model. It is the third lens of maturity; it adds no questions. | 12 §3.7; 11 §7.6 | alcance del impacto |
+| **Impact reach** | Reading of what a use case in use affects, according to the verified questions IT-P1 to IT-P4: IM1 task, IM2 process, IM3 people and organisation, IM4 business model. It is the third lens of maturity; it adds no questions. | 12 §3.7; 11 §7.6 | alcance del impacto |
 | **Implementation journey** | Order in which a company achieves the implementation milestones according to its starting point, in five stages (Start, Organise, Govern, Measure, Scale and review). Computed by tool T23. | 96 §3–§4; 90 | recorrido de implantación |
 | **Implementation milestone** | Each of the 22 results of the implementation journey (HI-01 to HI-22), with who leads it, its evidence and the document 11 question that attests it; it is achieved when that question is "Yes" in a verified assessment. | 96 §4 | hito de implantación |
-| **Implementation scope** | The company's decision, Lite or Enterprise, on how it organises its bodies and its verification to apply SEVEN-G. It does not replace the intensity of each initiative: in a company with Lite scope, any initiative that meets an Enterprise criterion is managed with Enterprise intensity. | 90 §2 | Alcance de implantación |
+| **Implementation scope** | The company's decision, Lite or Enterprise, on how it organises its bodies and its verification to apply SEVEN-G. It does not replace the intensity of each use case: in a company with Lite scope, any use case that meets an Enterprise criterion is managed with Enterprise intensity. | 90 §2 | Alcance de implantación |
 | **Index signals** | Eight observable signals of the transformation index (codes IT-S1 to IT-S8): 1 investment mix, 2 value mix, 3 materialisation, 4 depth of change, 5 operating model, 6 AI-enabled revenue, 7 progression to production, 8 board decision. Each scores from 0 to 3. | 00 §5.3; 12 §4.4 | Señales del índice |
-| **Inherent risk** | Level of risk without considering the initiative's specific controls. | 33 §5.1 | Riesgo inherente |
+| **Inherent risk** | Level of risk without considering the use case's specific controls. | 33 §5.1 | Riesgo inherente |
 | **Initial investment (I)** | Build cost plus initial adoption cost, incurred once. It does not include recurring cost. | 40 §8.2; 42 | Inversión inicial (I) |
-| **Initiative** | Body of work that pursues a value hypothesis through one or more AI systems. It is the unit that goes through the lifecycle and is identified with the code IA-AAAA-NNN. | 01 §4; 03 §3.3 | Iniciativa |
-| **Initiative charter** | Phase 0 evidence that identifies the initiative, its objective, its sponsor and its fit with the AI thesis. | 01 §6.2; P01 | Carta de la iniciativa |
-| **Initiative lifecycle** | Initiative level of the framework: phases 0 to 7, each closed by a decision gate (R6 in phase 6). | 01 §6 | Ciclo de vida de la iniciativa |
-| **Initiative register** | Central tool (T01) that manages the portfolio as a funnel: phase and status, dated events, criteria for each *gate*, conditions, controlled taxonomy tags, value and stop reasons. | 01 §6.11; 03 §3 | Registro de iniciativas |
-| **Intensity** | Level of rigour with which the lifecycle is applied to an initiative: Express, Lite or Enterprise. It is determined in phase 0 and reviewed at G3 and at each R6. | 01 §4, §9 | Intensidad |
+| **Initiative** | Former name of “use case”. Not used. | 01 §4 | Iniciativa |
+| **Intensity** | Level of rigour with which the lifecycle is applied to a use case: Express, Lite or Enterprise. It is determined in phase 0 and reviewed at G3 and at each R6. | 01 §4, §9 | Intensidad |
 | **Intensity determination** | Phase 0 evidence, reviewed at G3 and at each R6, that records whether any Enterprise criterion is met and the resulting intensity. | 01 §9.1; P04; T04 | Determinación de intensidad |
 | **Intent-based access control** | Mechanism that ensures that every action of an agent is traceable to an authorised intent: a mandate with objective, tools, data and limits; a decision point external to the model that checks each action; an ephemeral permission limited to that action; and a record of the action with the intent identifier. | 35 §4.4 | Control de intención |
 | **Inventory registration** | Phase 0 evidence: registration of the system in the AI system inventory (T02) with its code SIA-AAAA-NNN and the minimum fields for its usage type. | 01 §6.2; 32 §7.1; P05 | Alta en el inventario |
-| **Iterate** | *Gate* outcome: results are insufficient but the hypothesis remains plausible; the phase activities are repeated and the initiative returns to the same *gate*. After two iterations, the higher body decides. At G7, keeping the initiative unchanged is recorded as Iterate with a return to phase 6. | 01 §7.3–7.4; 21 §5.3 | Iterar |
+| **Iterate** | *Gate* outcome: results are insufficient but the hypothesis remains plausible; the phase activities are repeated and the use case returns to the same *gate*. After two iterations, the higher body decides. At G7, keeping the use case unchanged is recorded as Iterate with a return to phase 6. | 01 §7.3–7.4; 21 §5.3 | Iterar |
 | **Kill switch** | Mechanism to stop an entire agent or a specific capability immediately without deploying code. When activated, it revokes credentials, blocks new actions, preserves logs and activates the fallback process. It is tested before G5 and periodically. | 35 §4.7 | Interruptor de parada |
 
 ### 3.10 L
@@ -305,9 +302,9 @@ Alphabetical order by English term. The full scales are in section 4 and the cod
 |---|---|---|---|
 | **Learning milestones** | Verifiable intermediate results that a Transform bet must achieve at each stage in order to release the next. | 01 §6.4, §7.6; 13 §7; 14 §6.2 | Hitos de aprendizaje |
 | **Least privilege** | Principle whereby an agent only has a closed list of the tools, operations and data it needs, with read and write access authorised separately. | 35 §4.2 | Mínimo privilegio |
-| **Lifecycle phases** | 0 Context and constraints · 1 Opportunity discovery · 2 Value hypothesis · 3 Feasibility and risk · 4 Solution design · 5 Delivery and validation · 6 Operation and governance · 7 Evolution or retirement. Phase 0 is enabling: without an approved G0 the initiative cannot consume budget or access production data. | 01 §6.1; 20 | Fases del ciclo de vida (0 Contexto y restricciones · 1 Descubrimiento de oportunidades · 2 Hipótesis de valor · 3 Viabilidad y riesgo · 4 Diseño de la solución · 5 Entrega y validación · 6 Operación y gobierno · 7 Evolución o retirada) |
-| **Lite (intensity)** | Intensity for initiatives that do not meet any Enterprise criterion: G0–G2 and G4–G5 may be grouped, simplified templates, verification by the AI Office, decision by the sponsor (with risk clearance at G3, G4 and G5) and half-yearly R6. | 01 §7.5, §9.3 | Lite (intensidad) |
-| **Living record** | Single piece of evidence of an Express initiative (Express section of P01) that gathers context, opportunity, value hypothesis, risk, owners, test, approval and rollback, and is updated at each gate; evidence the company already has is referenced (21 §4.3). | 01 §9.4; P01 | Ficha viva |
+| **Lifecycle phases** | 0 Context and constraints · 1 Opportunity discovery · 2 Value hypothesis · 3 Feasibility and risk · 4 Solution design · 5 Delivery and validation · 6 Operation and governance · 7 Evolution or retirement. Phase 0 is enabling: without an approved G0 the use case cannot consume budget or access production data. | 01 §6.1; 20 | Fases del ciclo de vida (0 Contexto y restricciones · 1 Descubrimiento de oportunidades · 2 Hipótesis de valor · 3 Viabilidad y riesgo · 4 Diseño de la solución · 5 Entrega y validación · 6 Operación y gobierno · 7 Evolución o retirada) |
+| **Lite (intensity)** | Intensity for use cases that do not meet any Enterprise criterion: G0–G2 and G4–G5 may be grouped, simplified templates, verification by the AI Office, decision by the sponsor (with risk clearance at G3, G4 and G5) and half-yearly R6. | 01 §7.5, §9.3 | Lite (intensidad) |
+| **Living record** | Single piece of evidence of an Express use case (Express section of P01) that gathers context, opportunity, value hypothesis, risk, owners, test, approval and rollback, and is updated at each gate; evidence the company already has is referenced (21 §4.3). | 01 §9.4; P01 | Ficha viva |
 
 ### 3.11 M
 
@@ -316,7 +313,7 @@ Alphabetical order by English term. The full scales are in section 4 and the cod
 | **Main stop gate** | G3 · Feasibility, the gate at which the decision to stop before investing in the build is concentrated. | 01 §6.5 | Principal puerta de parada |
 | **Major ICT-related incident · significant incident** | Incidents that meet, respectively, the classification criteria of DORA or of Article 23(3) of NIS2 as transposed. Where they apply, they are S1. | 37 §1.1 | Incidente grave relacionado con las TIC · incidente significativo |
 | **Materialised capacity** | Part of released capacity that is converted into a verifiable lower actual cost or into a budgeted avoided cost. It is the only part that counts as efficiency. | 23 §7.1; 40 F5 | Capacidad materializada |
-| **Materiality threshold** | Amount (M) set by the company in C2 in proportion to its size, above which an initiative is reported individually to the board, and which serves as a reference for the economic axis of risk impact. | 13 §6; 33 §4.2 | Materialidad (umbral de) |
+| **Materiality threshold** | Amount (M) set by the company in C2 in proportion to its size, above which a use case is reported individually to the board, and which serves as a reference for the economic axis of risk impact. | 13 §6; 33 §4.2 | Materialidad (umbral de) |
 | **Maturity** | Degree to which the company has AI practices that are defined, applied, measured and improved, assessed with evidence across seven dimensions (D1–D7) and six levels (0–5). | 00 §4.5; 11 | Madurez |
 | **Maturity dimension** | Each of the seven areas (D1–D7) in which the company's maturity is assessed with cumulative criteria and observable evidence. | 11 §2.1 | Dimensión de madurez |
 | **Minor · significant · substantial change** | Classes of change to a system in production. **Minor**: does not alter behaviour or controls. **Significant**: alters behaviour within the approved purpose, scope, autonomy and risks, and requires regression evaluation, updating of the documentation and a report at the next R6. **Substantial**: alters the approved purpose, scope, autonomy, data, critical controls or risk profile, and requires a return to the relevant *gate*. | 52 §6 | Cambio menor · significativo · sustancial |
@@ -352,22 +349,22 @@ Alphabetical order by English term. The full scales are in section 4 and the cod
 |---|---|---|---|
 | **Pass condition** | Milestone that must be met to release a funding tranche (in Transform, the stage's learning milestone). It is recorded with the tranche in the T01 realisation plan; the board dashboard flags the tranches that lack one. | 14 §6.2; 43 §4.1 | Condición de paso |
 | **Payback period · ROI** | **Informative** economic indicators, without thresholds of their own: the year in which cumulative annual net value equals the initial investment (F9), and return on the initial investment, always calculated on annual net value (F8). They are not a G3 threshold: the payback periods by ambition level in document 13 §7 are informative references. | 40 §6, §8.3; 13 §7 | Plazo de recuperación · ROI |
-| **Pivot** | Outcome of G1, G2 or G3: the hypothesis does not hold, but there is a reasonable alternative; the initiative returns to phase 2 with a new hypothesis, keeping the approved context. | 01 §7.3 | Pivotar |
-| **Portfolio** | Set of authorised initiatives, with their budget, priority and ambition balance. It is managed as a funnel. | 01 §4; 14 | Cartera |
-| **Portfolio risk** | Risk arising from the aggregation of initiatives: concentration, correlation and dependence on suppliers. It is reviewed by the AI Committee. | 01 §3 principle 5; 33 §10 | Riesgo de cartera |
+| **Pivot** | Outcome of G1, G2 or G3: the hypothesis does not hold, but there is a reasonable alternative; the use case returns to phase 2 with a new hypothesis, keeping the approved context. | 01 §7.3 | Pivotar |
+| **Portfolio** | Set of authorised use cases, with their budget, priority and ambition balance. It is managed as a funnel. | 01 §4; 14 | Cartera |
+| **Portfolio risk** | Risk arising from the aggregation of use cases: concentration, correlation and dependence on suppliers. It is reviewed by the AI Committee. | 01 §3 principle 5; 33 §10 | Riesgo de cartera |
 | **Post-market monitoring** | Documented system with which the provider of a high-risk system collects and analyses data on its performance throughout its lifetime (EU AI Act, Article 72). The deployer monitors operation in accordance with the instructions for use and informs the provider (Article 26(5)). It is the single term used in the library; "post-production monitoring" and "post-commercialisation monitoring" are not used. | 52 §9; 34 §3.14 | Vigilancia posterior a la comercialización |
 | **Potential value** | Value that has not yet occurred. It is only a data point if it is accompanied by its additional investment, its hypothesis and its time frame; it is used for prioritisation and never adds to realised net value. | 00 rule 4; 40 §5.3 | Valor potencial |
-| **Primary sphere · secondary sphere** | The **primary** sphere is mandatory and is the one in which the main metric of the value hypothesis is measured; it receives all the investment and value. The **secondary** sphere is optional, at most one, only if there is a second measurable effect with an indicator of that sphere, and it carries no amounts. Spheres 08 and 09 are only primary or secondary when the purpose of the initiative is compliance or governance. | 10 §4.1–4.2 | Esfera principal · esfera secundaria |
+| **Primary sphere · secondary sphere** | The **primary** sphere is mandatory and is the one in which the main metric of the value hypothesis is measured; it receives all the investment and value. The **secondary** sphere is optional, at most one, only if there is a second measurable effect with an indicator of that sphere, and it carries no amounts. Spheres 08 and 09 are only primary or secondary when the purpose of the use case is compliance or governance. | 10 §4.1–4.2 | Esfera principal · esfera secundaria |
 | **Principle · practice · instrument** | Three kinds of content in the library. **Mandatory principle**: a core rule (N-01 to N-14), always met. **Practice**: a way of meeting the core developed by the documents, mandatory according to its level and trigger or recommended. **Instrument**: a template or tool that makes the practice easier; what is mandatory is the evidence it organises, not its format. | 94 §2.3 | Principio obligatorio · práctica · instrumento |
-| **Proceed** | *Gate* outcome: all criteria are met and all evidence is verified; the initiative moves to the next phase. | 01 §7.3 | Continuar |
+| **Proceed** | *Gate* outcome: all criteria are met and all evidence is verified; the use case moves to the next phase. | 01 §7.3 | Continuar |
 | **Proceed with conditions** | *Gate* or R6 outcome: the essential criteria are met and non-critical aspects remain pending, with explicit conditions, time limit and owner. It is not accepted for critical security, legal compliance or human oversight controls. | 01 §7.3 | Continuar con condiciones |
-| **Proceed with operation** | R6 outcome: the initiative continues to deliver value under control and remains in production until the next review. | 01 §7.3; 21 §5.3 | Continuar la operación |
-| **Programme** | Grouping of related initiatives by means of the free tag "Programme", whose status is summarised in a traffic light. | 14 §12 | Programa |
+| **Proceed with operation** | R6 outcome: the use case continues to deliver value under control and remains in production until the next review. | 01 §7.3; 21 §5.3 | Continuar la operación |
+| **Programme** | Grouping of related use cases by means of the free tag "Programme", whose status is summarised in a traffic light. | 14 §12 | Programa |
 | **Programme traffic light** | Summary of a programme's status using the worst colour across six axes (time, cost, value, risk, governance, adoption). An axis with no data is shown in grey and the programme cannot be green. | 14 §12 | Semáforo de programas |
 | **Prohibited practice** | Use of AI prohibited by Article 5 of the EU AI Act. It is not assessed as a risk or accepted: it is avoided, and at G3 it requires Stop. | 01 §6.5; 33 §4.3; 21 G3.08 | Práctica prohibida |
 | **Prompt injection** | Attack that introduces instructions to alter the intended behaviour of a generative AI system or an agent. It is **direct** when the user introduces it and **indirect** when it is hidden in content the system reads (documents, emails, websites, tool responses). Its controls must be checked with adversarial testing. | 35 §3.1; 33 §5.3 | Inyección de instrucciones |
-| **Proportionality** | Principle 11 of the framework: governance effort matches each initiative's risk, materiality and reversibility. No evidence is requested twice, no decision needs more participants than segregation of duties requires and no initiative bears a disproportionate governance cost; the core is never reduced. | 01 §3; 94 §2.3 | Proporcionalidad |
-| **Proposed, confirmed and actual ambition** | Three moments in the ambition classification of an initiative: **proposed** in phase 1, **confirmed** at G2 on the basis of the value hypothesis and **actual** at G7 (and, where appropriate, at R6) according to the evidence in production. | 12 §3.4; 03 §3.3 | Ambición propuesta, confirmada y real |
+| **Proportionality** | Principle 11 of the framework: governance effort matches each use case's risk, materiality and reversibility. No evidence is requested twice, no decision needs more participants than segregation of duties requires and no use case bears a disproportionate governance cost; the core is never reduced. | 01 §3; 94 §2.3 | Proporcionalidad |
+| **Proposed, confirmed and actual ambition** | Three moments in the ambition classification of a use case: **proposed** in phase 1, **confirmed** at G2 on the basis of the value hypothesis and **actual** at G7 (and, where appropriate, at R6) according to the evidence in production. | 12 §3.4; 03 §3.3 | Ambición propuesta, confirmada y real |
 | **Provider (regulatory role)** | Under the EU AI Act, a person or entity that develops an AI system or a general-purpose AI model, or has one developed, and places it on the market or puts it into service under its own name or trademark (Article 3(3)). A deployer becomes a provider if it puts its name or trademark on the system, makes a substantial modification or changes its purpose in such a way that the system becomes high-risk (Article 25(1)). | 32 §4 | Proveedor (rol regulatorio) |
 
 ### 3.15 R
@@ -380,19 +377,19 @@ Alphabetical order by English term. The full scales are in section 4 and the cod
 | **Re-audit** | Full or partial repetition of an audit after a Nonconformant outcome or to verify the closure of critical and major nonconformities. | 37 §3.9; 38 §10 | Reauditoría |
 | **Recurring cost** | Full annual cost of operating a use case, direct and allocated shared cost, across the nine cost categories. It is always deducted in full, regardless of its status. | 00 rule 6; 40 §5.1; 42 §4 | Coste recurrente |
 | **Red lines** | Uses of AI that the company does not develop, procure, deploy or use under any circumstances, defined in its corporate policy. They admit no exceptions. | 31 §3.7 | Líneas rojas |
-| **Reference time limit** | Indicative duration of each phase and of a *gate* decision, approved in C2; exceeding it marks the initiative as stalled. | 01 §6.11; 03 §3.6 | Plazo de referencia |
-| **Regularisation** | Process whereby initiatives in production that predate the adoption of the framework, or unauthorised uses detected, are brought into the framework through a review equivalent to G7 or through their authorisation, replacement or blocking. | 01 §1.2, §14; 14 §11; 31 §5.5 | Regularización |
+| **Reference time limit** | Indicative duration of each phase and of a *gate* decision, approved in C2; exceeding it marks the use case as stalled. | 01 §6.11; 03 §3.6 | Plazo de referencia |
+| **Regularisation** | Process whereby use cases in production that predate the adoption of the framework, or unauthorised uses detected, are brought into the framework through a review equivalent to G7 or through their authorisation, replacement or blocking. | 01 §1.2, §14; 14 §11; 31 §5.5 | Regularización |
 | **Regulatory classification** | Determination, with qualified legal judgement, of the system's category under the applicable regulation (Prohibited, High risk, Transparency obligations, Minimal risk, Out of scope, Pending classification) and of the company's role. It is provisional in phase 0 and final in phase 3. | 01 §6.5; 32 §3.4 and §5; P11 | Clasificación regulatoria |
 | **Released capacity** | Working hours that are no longer needed to handle the same volume with the same quality, net of the new work introduced by AI (formula F4). It **does not add up as savings** until it is materialised; it is reported separately. Released capacity = materialised + reassigned + unapplied. Its five destinations (PER-D1 Materialise, PER-D2 Reassign, PER-D3 Absorb growth, PER-D4 Reinvest in quality, service or compliance, PER-D5 No decision) are grouped into those three parts in accordance with 23 §10.5. | 00 rule 3; 23 §7.1, §10.5; 40 §5.3; 50 §6.2 | Capacidad liberada |
 | **Residual risk** | Level of risk with controls. **Target**: expected after applying the planned controls (G3 and G4). **Verified**: after checking the effectiveness of the controls with evidence (G5 and R6). | 33 §5.1 | Riesgo residual; riesgo residual objetivo · verificado |
 | **Retire** | G7 outcome: value is not sustained, risk has increased or there is a better alternative. Retirement is planned and recorded with date, reason, body, replacement, treatment of data and models, and communication to those affected. | 01 §6.9, §7.3; 14 §10 | Retirar |
-| **Return** | Additive value type: additional revenue or margin attributable to the initiative (new sales, cross-selling, retention, price, new services), preferably valued as margin. | 00 rule 6; 40 §5.1 | Retorno |
+| **Return** | Additive value type: additional revenue or margin attributable to the use case (new sales, cross-selling, retention, price, new services), preferably valued as margin. | 00 rule 6; 40 §5.1 | Retorno |
 | **Risk acceptance** | Recorded decision, with validity period and conditions, whereby the competent level assumes a residual risk within the risk appetite. Low: product owner · Medium: sponsor with risk clearance from the risk owner · High: AI Committee · Critical: not accepted; exceptionally, only the board or its board committee. It lapses if the level, system, supplier, model, regulatory classification or autonomy changes. | 33 §7.1; 13 §5.2 | Aceptación del riesgo |
 | **Risk appetite** | Amount and type of risk the company is willing to take on to achieve its objectives with AI. It is declared by risk category with a grade (Averse, Cautious, Moderate, Open), tolerance metrics and limits, and is approved by the board in C2. The grade may tighten the general acceptance rule, never relax it. | 13 §5 | Apetito de riesgo |
 | **Risk appetite grade** | The company's position towards risk in each category: Averse, Cautious, Moderate or Open (section 4.8). | 13 §5.2 | Grado de apetito |
 | **Risk clearance** | Pronouncement by the AI Risk Owner that enables the sponsor's decision at G3, G4 and G5 in Lite intensity and the acceptance of Medium residual risks. Whoever issues it cannot be part of the building team or verify the evidence for the same *gate*. | 01 §7.5, §8.1 | Conformidad de riesgos |
 | **Risk level** | Product of likelihood and impact in the 5 × 5 matrix: Low, Medium, High or Critical. | 33 §4.3 | Nivel de riesgo |
-| **Role assignment record** | Phase 0 evidence that assigns the initiative's six roles and checks their incompatibilities. | 01 §6.2, §8.2; P03 | Registro de asignación de roles |
+| **Role assignment record** | Phase 0 evidence that assigns the use case's six roles and checks their incompatibilities. | 01 §6.2, §8.2; P03 | Registro de asignación de roles |
 | **Rollback plan** | Plan to return to a previous safe situation (previous version, non-AI alternative, reduced autonomy or scope) if the solution fails. It must be tested before go-live. | 01 §3 principle 4, §6.6–6.7; P19; 52 §10 | Plan de reversión |
 
 ### 3.16 S
@@ -408,20 +405,20 @@ Alphabetical order by English term. The full scales are in section 4 and the cod
 | **Severity (of an incident)** | Seriousness of an AI incident on four levels, S1 Critical to S4 Low, assigned at triage using the most serious criterion met. It is independent of the nonconformity scale. | 37 §4.2 | Severidad (de incidente) |
 | **Sphere** | Domain of AI impact in the organisation. There are nine, grouped into where value is created (01–04), enablers (05–07), boundaries (08) and meta-sphere (09). | 01 §4; 10 §2 | Esfera |
 | **Sphere × level heat map** | Portfolio view with investment, recurring cost and value by primary sphere and ambition level; rows 08 and 09 show grades by dimension. | 10 §8; T16 | Mapa de calor esferas × niveles |
-| **Stalled (initiative)** | Initiative that exceeds the reference time limit for its phase approved in C2. It is flagged and reviewed by the AI Committee. | 01 §6.11; 03 §3.6 | Estancada (iniciativa) |
+| **Stalled (use case)** | Use case that exceeds the reference time limit for its phase approved in C2. It is flagged and reviewed by the AI Committee. | 01 §6.11; 03 §3.6 | Estancado (caso de uso) |
 | **Starting-point archetype** | One of the six typical starting points of a company implementing SEVEN-G (PP-A Ground zero · PP-B Third-party AI user · PP-C Automator · PP-D In-house AI in production · PP-E Many pilots · PP-F At scale), assigned with the questionnaire and rule of document 96. It changes the order and calendar of the journey, never what is required in the end. | 96 §2 | arquetipo de punto de partida |
 | **Starting-point modifier** | Circumstance that adjusts the implementation journey without changing the archetype: MP1 regulated sector, MP2 decisions about people or high risk, MP3 Enterprise scope, MP4 reusable existing governance, MP5 no sponsor in senior management (blocks the journey). | 96 §2.3 | modificador de punto de partida |
-| **Stop** | *Gate* outcome: there is no plausible value, feasibility is not demonstrated or the risk is unacceptable. The initiative is closed with a coded reason and lessons learned. A well-founded stop is a valid outcome. | 01 §7.3 | Parar |
-| **Stop criteria** | Conditions set in phase 2, before investing, whose fulfilment requires Stop to be proposed. They cannot be relaxed during the phase without the approval of the body that authorised the initiative. | 01 §6.4, §7.4 | Criterios de parada |
+| **Stop** | *Gate* outcome: there is no plausible value, feasibility is not demonstrated or the risk is unacceptable. The use case is closed with a coded reason and lessons learned. A well-founded stop is a valid outcome. | 01 §7.3 | Parar |
+| **Stop criteria** | Conditions set in phase 2, before investing, whose fulfilment requires Stop to be proposed. They cannot be relaxed during the phase without the approval of the body that authorised the use case. | 01 §6.4, §7.4 | Criterios de parada |
 | **Stop or retirement reason** | Coded reason, from a closed list, recorded for every stop or retirement. | 01 §6.11; 03 §3.3 | Motivo de parada o retirada |
-| **Sustained by non-quantified value** | Situation of an initiative in production (phases 6 and 7) whose case rests on non-quantified value of medium or high level, with a metric, while its NPV (F7) is negative or is not demonstrated by a realisation plan. It is shown as such in the board dashboard and needs the date of its next R6; the dashboard warns if it is missing or overdue. In phases 3 to 5 it is not flagged: the option value of Transform is governed by its stages, milestones and *gates*. | 40 §3.7, §8.3; 60 §10.6 | Sostenido por valor no cuantificado |
+| **Sustained by non-quantified value** | Situation of a use case in production (phases 6 and 7) whose case rests on non-quantified value of medium or high level, with a metric, while its NPV (F7) is negative or is not demonstrated by a realisation plan. It is shown as such in the board dashboard and needs the date of its next R6; the dashboard warns if it is missing or overdue. In phases 3 to 5 it is not flagged: the option value of Transform is governed by its stages, milestones and *gates*. | 40 §3.7, §8.3; 60 §10.6 | Sostenido por valor no cuantificado |
 
 ### 3.17 T
 
 | Term | Definition in SEVEN-G | Reference document | Spanish term |
 |---|---|---|---|
 | **Technology footprint** | Descriptive lens of maturity stating what AI the company has in use, in order of governance demand (HT0 no AI in use to HT5 agents that act). It does not score in maturity, but sets the minimum governance required per dimension and triggers the "adoption ahead of governance" alert. | 11 §7.6 | huella tecnológica |
-| **Template** | Standard Block H document: P01–P31 for preparing the initiative's mandatory evidence P32–P71 for the registers, reports and decisions of the company, the board, compliance, third parties, audit and framework implementation, and P72–P74 for the NIST profiles and the ISO/IEC 42001 statement of applicability. Each has an editable Word version. | 01 §6.10; 03 §5 | Plantilla |
+| **Template** | Standard Block H document: P01–P31 for preparing the use case's mandatory evidence; P32–P71 for the registers, reports and decisions of the company, the board, compliance, third parties, audit and framework implementation, and P72–P74 for the NIST profiles and the ISO/IEC 42001 statement of applicability. Each has an editable Word version. | 01 §6.10; 03 §5 | Plantilla |
 | **Third-party AI embedded in processes** | Supplier software with AI features that take part in decisions, operations or customer relations. It goes through the full lifecycle, with the design and delivery phases focused on the selection, integration, contract and controls of the supplier. | 01 §1.2; 32 §2.1 | IA de terceros integrada en procesos |
 | **Third-party requirement level** | Degree of due diligence, contract, monitoring and exit required for each relationship between a supplier and a service: N1 Standard, N2 Enhanced or N3 Critical, determined by the highest factor among criticality, data, autonomy and substitutability. | 36 §4 | Nivel de exigencia a terceros |
 | **Three perspectives of the use case** | Presentation rule: each use case is shown with its economic value (in euros, with its status), its operational outcome (physical indicators with baseline, target and current value) and its risk exposure (main residual, open High and Critical risks, open incidents and nonconformities), side by side, without merging them or translating one into another. | 40 §11.1 (rule 11) | tres perspectivas del caso |
@@ -429,17 +426,20 @@ Alphabetical order by English term. The full scales are in section 4 and the cod
 | **Time in phase · decision time** | **Time in phase**: days between entry into and exit from the phase, excluding time on hold. **Decision time**: days between the *gate* request and the decision. | 03 §3.5; 41 | Tiempo en fase · tiempo de decisión |
 | **Tool and connector poisoning** | Threat to agents: the description of a tool or connector carries hidden instructions, the tool changes after approval, requests excessive scopes or is installed without control. It is handled with AG-13 (description reviewed, version pinned and new approval on changes) and with the test bench (SEG-27). | 35 §3.2, §7 | Envenenamiento de herramientas y conectores |
 | **Transform** | Ambition level that changes what is offered, how the company competes or how it is organised. Value lies mainly in return and in changes to the operating model. It is always Enterprise and requires board approval at G2 and when scaling at G7. | 00 §4.1; 01 §7.5; 10 §3 | Transformar |
-| **Transformation declaration** | Situation in which the company claims to be transforming itself with AI: its thesis sets Transform as the target ambition in some sphere, initiatives confirmed as Transform account for 10% or more of portfolio cost, or its communications present AI as business transformation (conditions IT-D1 to IT-D3). If it exists and the evidenced profile is not Transformation under way, the profile assigned is Declared but unevidenced transformation. | 12 §5.1–5.2 | Declaración de transformación |
+| **Transformation declaration** | Situation in which the company claims to be transforming itself with AI: its thesis sets Transform as the target ambition in some sphere, use cases confirmed as Transform account for 10% or more of portfolio cost, or its communications present AI as business transformation (conditions IT-D1 to IT-D3). If it exists and the evidenced profile is not Transformation under way, the profile assigned is Declared but unevidenced transformation. | 12 §5.1–5.2 | Declaración de transformación |
 | **Transformation index** | Instrument that places the company in one of five profiles between efficiency and transformation, with eight signals scored from 0 to 3, three baseline conditions and a cross-check against the transformation declaration. The profile is not assigned by the sum of points. | 00 §5.3; 12 §4–5 | Índice de transformación |
 | **Transformation profile** | One of the five profiles of the transformation index (section 4.16). The **evidenced profile** results from the signals and baseline conditions; if there is an unevidenced transformation declaration, it is reported as the **underlying profile**. | 00 §5.3; 12 §5 | Perfil de transformación; perfil evidenciado · subyacente |
-| **Typical risk** | Reference risk in the catalogue, coded RT-\<CAT\>-NN, which serves as a starting point for identifying the specific risks of each initiative. | 33 §9 | Riesgo tipo |
+| **Typical risk** | Reference risk in the catalogue, coded RT-\<CAT\>-NN, which serves as a starting point for identifying the specific risks of each use case. | 33 §9 | Riesgo tipo |
 
 ### 3.18 U
 
 | Term | Definition in SEVEN-G | Reference document | Spanish term |
 |---|---|---|---|
 | **Unauthorised use (*shadow AI*)** | Use of AI tools without approval, with personal accounts, extensions or features activated without permission. It is detected, recorded and regularised (authorisation, replacement or blocking) as a nonconformity; it is at least major if it involves personal or confidential data. | 01 §1.2; 31 §5; 37 §3.3 | Uso no autorizado (*shadow AI*) |
-| **Use case** | Specific application of an AI system to a process or decision. An initiative may include several use cases. | 01 §4; P31 | Caso de uso |
+| **Use case** | Application of AI to a process, a product or a decision that pursues a value hypothesis through one or more AI systems. It is the unit that goes through the lifecycle and is identified with the code IA-AAAA-NNN. Until the November 2026 version it was called “initiative”. | 01 §4; 03 §3.3; P31 | Caso de uso |
+| **Use case charter** | Phase 0 evidence that identifies the use case, its objective, its sponsor and its fit with the AI thesis. | 01 §6.2; P01 | Carta del caso de uso |
+| **Use case lifecycle** | Use case level of the framework: phases 0 to 7, each closed by a decision gate (R6 in phase 6). | 01 §6 | Ciclo de vida del caso de uso |
+| **Use case register** | Central tool (T01) that manages the portfolio as a funnel: phase and status, dated events, criteria for each *gate*, conditions, controlled taxonomy tags, value and stop reasons. | 01 §6.11; 03 §3 | Registro de casos de uso |
 
 ### 3.19 V–Y
 
@@ -454,7 +454,7 @@ Alphabetical order by English term. The full scales are in section 4 and the cod
 | **Verified · independent maturity assessment** | **Verified**: carried out by the AI Office assessment team with independent verification of a sample; it is the minimum in C1 and C5. **Independent**: carried out by the third line or by an external assessor with no involvement in the implementation. **Self-assessment** does not produce a valid level. | 11 §4.1 | Evaluación de madurez verificada · independiente |
 | **Verifier · decision-maker** | **Verifier**: whoever checks that the evidence for a *gate* is complete and valid (AI Office in Lite, AI Auditor in Enterprise); does not decide. **Decision-maker**: body or role that adopts the outcome; cannot have provided evidence. | 01 §7.1, §7.5 | Verificador · decisor |
 | **Veto** | Reasoned pronouncement by a signatory of the G5 multi-level sign-off that prevents Proceed and Proceed with conditions. The AI Committee cannot lift it by majority; it can only be lifted by whoever issued it or their formal substitute in the second line. | 21 §9.2 | Veto |
-| **Weighted portfolio value** | Sum of the expected value of the initiatives multiplied by the company's own historical probability of reaching production from their current phase. It is only shown when there is sufficient history. | 03 §3.5 | Valor ponderado de la cartera |
+| **Weighted portfolio value** | Sum of the expected value of the use cases multiplied by the company's own historical probability of reaching production from their current phase. It is only shown when there is sufficient history. | 03 §3.5 | Valor ponderado de la cartera |
 | **Yes ◆** | Mandatory status of a *gate* criterion that is also a critical security, legal compliance or human oversight control. It is never accepted as a condition and at Enterprise G5 it grounds the veto. | 21 §2.2 | Sí ◆ |
 
 ---
@@ -469,12 +469,12 @@ The scales in this section are closed lists. Thresholds marked as indicative are
 |---|---|---|---|---|
 | **Proceed** | G0–G5 | All criteria are met and all evidence is verified. | Moves to the next phase. | Continuar |
 | **Proceed with conditions** | G0–G5 and R6 | The essential criteria are met; non-critical aspects remain. | Moves forward with explicit conditions, time limit and owner. Not accepted for critical controls. | Continuar con condiciones |
-| **Iterate** | G0–G5 and G7 | Insufficient results, plausible hypothesis. | The phase is repeated and the initiative returns to the same *gate*. At G7, keeping the initiative unchanged is Iterate with a return to phase 6. | Iterar |
+| **Iterate** | G0–G5 and G7 | Insufficient results, plausible hypothesis. | The phase is repeated and the use case returns to the same *gate*. At G7, keeping the use case unchanged is Iterate with a return to phase 6. | Iterar |
 | **Pivot** | G1, G2 and G3 | The hypothesis does not hold, but there is a reasonable alternative. | Return to phase 2 with a new hypothesis. | Pivotar |
 | **Stop** | G0–G5 | There is no plausible value, feasibility is not demonstrated or the risk is unacceptable. | Closure with a coded reason and lessons learned. | Parar |
 | **Scale** | G7 | Value demonstrated and risk controlled. | New phase 0 for the extended scope. | Escalar |
 | **Retire** | G7 | Value is not sustained, risk has increased or there is a better alternative. | Planned and recorded retirement. | Retirar |
-| **Proceed with operation** | R6 | The initiative continues to deliver value under control. | Remains in production. | Continuar la operación |
+| **Proceed with operation** | R6 | The use case continues to deliver value under control. | Remains in production. | Continuar la operación |
 | **Bring G7 forward** | R6 | Relevant deviations in value, risk or compliance. | G7 is opened without waiting for the calendar. | Adelantar G7 |
 
 Outcomes permitted by gate:
@@ -483,13 +483,13 @@ Outcomes permitted by gate:
 |---|---|
 | G0 | Proceed · Proceed with conditions · Iterate · Stop |
 | G1, G2, G3 | Proceed · Proceed with conditions · Iterate · Pivot · Stop (G3: Stop is mandatory if there is a prohibited practice) |
-| G4, G5 | Proceed · Proceed with conditions · Iterate · Stop (G5: the initiative does not proceed with a standing veto) |
+| G4, G5 | Proceed · Proceed with conditions · Iterate · Stop (G5: the use case does not proceed with a standing veto) |
 | R6 | Proceed with operation · Proceed with conditions · Bring G7 forward |
 | G7 | Scale · Iterate · Retire |
 
 The immediate suspension of a system is not a *gate* or R6 outcome: it is triggered at any time through the incident or nonconformity process.
 
-### 4.2 Initiative statuses
+### 4.2 Use case statuses
 
 | Status | Meaning | Counts towards time in phase | Spanish |
 |---|---|---|---|
@@ -502,7 +502,7 @@ The immediate suspension of a system is not a *gate* or R6 outcome: it is trigge
 | **Stopped** | Halted at a *gate* with a coded reason. | Closure | Parada |
 | **Retired** | Retired after G7 with the retirement plan executed. | Closure | Retirada |
 
-The status of an initiative is different from the status of each system in the inventory (Under evaluation · In development · Pilot · In production · Suspended · Retired · Blocked; document 32 §3.3).
+The status of a use case is different from the status of each system in the inventory (Under evaluation · In development · Pilot · In production · Suspended · Retired · Blocked; document 32 §3.3).
 
 ### 4.3 Statuses and mandatory status of *gate* criteria
 
@@ -552,11 +552,11 @@ Classification statuses: **Proposed** (phase 1) · **Confirmed** (G2) · **Actua
 
 ### 4.7 Risk
 
-**Likelihood** (horizon of the initiative or twelve months in production):
+**Likelihood** (horizon of the use case or twelve months in production):
 
 | Value | Name | Indicative reference | Spanish |
 |---|---|---|---|
-| 1 | **Rare** | Less than once in 5 years or < 5% over the initiative's horizon. | Rara |
+| 1 | **Rare** | Less than once in 5 years or < 5% over the use case's horizon. | Rara |
 | 2 | **Unlikely** | Once every 2–5 years or 5–20%. | Improbable |
 | 3 | **Possible** | Once every 1–2 years or 20–50%. | Posible |
 | 4 | **Likely** | Several times a year or 50–80%. | Probable |
@@ -599,7 +599,7 @@ Classification statuses: **Proposed** (phase 1) · **Confirmed** (G2) · **Actua
 | **High** | AI Committee, with a treatment plan and validity until the next R6. |
 | **Critical** | **Not accepted.** Exceptionally, only the board or its board committee, within the appetite approved in C2. Without that approval it blocks G3 and G5. |
 
-Nobody accepts a risk of an initiative in which they are building. An impact of 5 on people and rights or on the regulatory axis is treated as at least High for acceptance purposes.
+Nobody accepts a risk of a use case they take part in building. An impact of 5 on people and rights or on the regulatory axis is treated as at least High for acceptance purposes.
 
 **Control effectiveness**:
 
@@ -692,7 +692,7 @@ Indicative response times and regulatory notifications are set out in document 3
 | **Major** | Affects the validity of a decision, segregation of duties or a relevant control, without immediate serious harm. | Maximum 10 days. | Maximum 30 days. | AI Committee. | no conformidad mayor |
 | **Minor** | Isolated breach with no impact on decisions or relevant controls. | Not required. | Before the next *gate* or review. | AI Office. | no conformidad menor |
 
-The time limits are reference values and the company may adjust them in C2 without exceeding those of the applicable regulation. The full process is in document 37 §3. **Recurrence:** a minor nonconformity repeated three times in twelve months in the same initiative or process is classified as major (37 §3.3; 21 §10.5; 38 §8.1).
+The time limits are reference values and the company may adjust them in C2 without exceeding those of the applicable regulation. The full process is in document 37 §3. **Recurrence:** a minor nonconformity repeated three times in twelve months in the same use case or process is classified as major (37 §3.3; 21 §10.5; 38 §8.1).
 
 ### 4.14 Third-party requirements
 
@@ -712,7 +712,7 @@ The level is the highest resulting from any of the four factors and is determine
 | **Conformant with observations** | Shortcomings that do not affect *Yes* criteria or the validity of the evidence. It moves on to the decision-maker with observations, which may become conditions. | Observations and minor nonconformities. | Conforme con observaciones |
 | **Nonconformant** | Some mandatory evidence is missing or some evidence is not valid. The request returns to the team without a decision. | At least one major or critical nonconformity. | No conforme |
 
-A *Conformant* outcome does not mean that the initiative should proceed: it means that the body can decide on a verified basis. With a *Nonconformant* outcome in the verification of a *gate*, the request returns to the team without a decision (01 §7.4, rule 2): the body does not decide Proceed, Proceed with conditions, Iterate, Pivot or Stop on unverified evidence, unless the team withdraws the request and proposes to stop (21 §10.2; 38 §8.2). Finding classes: Observation · Minor · major · critical nonconformity.
+A *Conformant* outcome does not mean that the use case should proceed: it means that the body can decide on a verified basis. With a *Nonconformant* outcome in the verification of a *gate*, the request returns to the team without a decision (01 §7.4, rule 2): the body does not decide Proceed, Proceed with conditions, Iterate, Pivot or Stop on unverified evidence, unless the team withdraws the request and proposes to stop (21 §10.2; 38 §8.2). Finding classes: Observation · Minor · major · critical nonconformity.
 
 ### 4.16 Transformation index: scoring and profiles
 
@@ -768,7 +768,7 @@ Calculated alerts, which are not statuses: Overdue · Not updated · Awaiting as
 
 Faithful copy of 03 §3.3. Any change to these lists is made at the same time in both documents and in tools T01–T05.
 
-**Initiative record**
+**Use case record**
 
 | Block | Main fields |
 |---|---|
@@ -778,7 +778,7 @@ Faithful copy of 03 §3.3. Any change to these lists is made at the same time in
 | **Lifecycle** | Current phase, status, phase entry date, reference time limit, current iteration. |
 | **Value** | Expected value (efficiencies, return, recurring cost) with formula; realised value with validated, declared or estimated status; investment made and pending. |
 | **Risk and compliance** | Main residual risk level, impact assessments carried out, open conditions, open nonconformities, incidents. |
-| **Free tags** | Programme, strategic initiative, internal customer or other company-specific groupings. |
+| **Free tags** | Programme, strategic use case, internal customer or other company-specific groupings. |
 
 **Controlled taxonomy**
 
@@ -822,13 +822,13 @@ Spanish equivalents of the taxonomy values:
 | **Principles** | 1–11 | Framework principles. | 01 §3 | principle 7 |
 | **Spheres** | 01–09 (E01–E09 in indicator columns) | Spheres of the impact map. | 10 §2 | 04 Operations |
 | **C1–C5** | C + number | Corporate cycle stages: Diagnosis, Direction, Portfolio, Oversight, Review. | 01 §5.1 | C2 |
-| **Phases 0–7** | Number (F0–F7 in indicator columns) | Initiative lifecycle phases. | 01 §6.1 | phase 3 |
+| **Phases 0–7** | Number (F0–F7 in indicator columns) | Use case lifecycle phases. | 01 §6.1 | phase 3 |
 | **G0–G5 · R6 · G7** | G + number; R6 for the continuity review | Decision gates: Authorisation, Opportunity, Hypothesis, Feasibility, Design, Go-live, Continuity review, Scale or retire. There is no G6. | 01 §6.1 | G3 |
 | **G\<n\>.\<nn\> · R6.\<nn\>** | Gate + point + two digits | *Gate* criteria. A code is not reused even if the criterion is withdrawn. | 21 §2.1 | G3.08 · R6.04 |
 | **LV-G\<n\> · LV-R6 · LV-EV · LV-AG** | LV + hyphen + scope | Checklists by gate, for evidence validation and for agents. | 22 §1 | LV-G5 |
 | **EV.01–EV.14** | EV + point + two digits | Valid evidence rules. | 21 §4.1; 22 §11 | EV.05 |
 | **T01–T23** | T + two digits | Framework tools. | 03 §5 | T01 |
-| **P01–P74** | P + two digits | Block H templates: P01–P31 per initiative (01 §6.10); P32–P71 for the company, board, compliance, third parties, audit and implementation; P72–P74, NIST profiles and ISO/IEC 42001 statement of applicability (34 §4–§5). | Block H; 01 §6.10 | P29 |
+| **P01–P74** | P + two digits | Block H templates: P01–P31 per use case (01 §6.10); P32–P71 for the company, board, compliance, third parties, audit and implementation; P72–P74, NIST profiles and ISO/IEC 42001 statement of applicability (34 §4–§5). | Block H; 01 §6.10 | P29 |
 | **D1–D7** | D + number | Maturity dimensions. | 11 §2.1 | D6 |
 | **Maturity levels 0–5** | Whole number | Maturity levels. | 11 §2.2 | level 3 |
 | **S1–S4** | S + number | AI incident severity. | 37 §4.2 | S1 |
@@ -842,14 +842,14 @@ Spanish equivalents of the taxonomy values:
 | **MP1–MP5** | MP + number | Starting-point modifiers. | 96 §2.3 | MP2 |
 | **HI-01–HI-22** | HI + hyphen + two digits | Implementation journey milestones. | 96 §4.1 | HI-09 |
 | **HT0–HT5** | HT + number | Technology footprint levels; descriptive, they are not maturity levels. | 11 §7.6 | HT4 |
-| **IM1–IM4** | IM + number | Impact reach levels of an initiative in use. | 12 §3.7 | IM3 |
+| **IM1–IM4** | IM + number | Impact reach levels of a use case in use. | 12 §3.7 | IM3 |
 | **RT-\<CAT\>-NN** | RT + three-letter category + two digits | Typical risks in the catalogue (70 in version 0.1): EST 6 · TEC 8 · DAT 6 · ECO 5 · LEG 8 · ORG 9 · REP 5 · GEN 9 · SEG 7 · TER 7. | 33 §9 | RT-GEN-01 |
 | **SEG-01–SEG-27** | SEG + hyphen + two digits | AI security controls. | 35 §6 | SEG-02 |
 | **AG-01–AG-20** | AG + hyphen + two digits | Agent controls. | 35 §7 | AG-09 |
 | **IND-\<FAM\>-NN** | IND + three-letter family + two digits | Catalogue indicators (165 in 13 families): VAL, COS, EMB, AGI, RIE, OPE, ADO, DAT, CLI, TRA, MAD, CON (board) and PRO (processes and decision-making). A code is not reused. | 41 §2 and §4 | IND-VAL-05 |
 | **IE\<sphere\>.\<nn\>** | IE + two-digit sphere + point + two digits | Indicators by sphere, provisional until they are consolidated in document 41. | 10 §5–7 | IE01.04 |
-| **IA-AAAA-NNN** | Year of registration + sequential number | Initiatives. | 03 §3.3 | IA-2026-014 |
-| **IA-AAAA-NNN · Rnn** | Initiative code + R + two digits | Specific risk of an initiative. | 33 §8.1 | IA-2026-014 · R03 |
+| **IA-AAAA-NNN** | Year of registration + sequential number | Use cases. | 03 §3.3 | IA-2026-014 |
+| **IA-AAAA-NNN · Rnn** | Use case code + R + two digits | Specific risk of a use case. | 33 §8.1 | IA-2026-014 · R03 |
 | **SIA-AAAA-NNN** | Year of registration + sequential number that is neither restarted nor reused | AI systems in the inventory. | 32 §3.1 | SIA-2026-021 |
 | **REC-AAAA-NNN** | Year + sequential number without restart | Recommendations and requests of the board or its board committee. | 62 §3 | REC-2026-007 |
 | **DEC-AAAA-NNN** | Year + sequential number without restart | Decisions of the board or its board committee. | 62 §3 | DEC-2026-014 |
@@ -870,7 +870,7 @@ Common rules:
 1. **Persistence.** Codes are neither reused nor restarted. A retired element keeps its code with the status retired.
 2. **Year.** In codes with AAAA, the year is that of registration or detection and does not change even if the element continues into subsequent years.
 3. **Sequential numbers.** NNN is a three-digit sequential number per code type and company.
-4. **Separators.** A hyphen between the parts of an identifier (IA-2026-014), a point between gate and criterion (G3.08) and a middle dot with spaces to link a risk to its initiative (IA-2026-014 · R03).
+4. **Separators.** A hyphen between the parts of an identifier (IA-2026-014), a point between gate and criterion (G3.08) and a middle dot with spaces to link a risk to its use case (IA-2026-014 · R03).
 5. **Previous codes.** If the company had previous identifiers, they are kept in a previous identifier field.
 
 ### 6.2 Prefixed codes and locally used numbering
@@ -898,7 +898,7 @@ In new versions, documents **should** replace the numbering that remains local w
 
 | Block | Name | Numbering | Content |
 |---|---|---|---|
-| **A** | Foundations | 00–03 | Overview, foundational methodology, glossary, tools and initiative register. |
+| **A** | Foundations | 00–03 | Overview, foundational methodology, glossary, tools and use case register. |
 | **B** | Strategy and portfolio | 10–14 | Sphere map, maturity, transformation index, thesis and risk appetite, portfolio. |
 | **C** | Lifecycle | 20–23 | Phase manuals, *gate* and audit criteria, checklists, adoption. |
 | **D** | Governance, risk and compliance | 30–38 | Governance, policy, inventory, risks, regulation, security, third parties, nonconformities, audit. |
@@ -916,7 +916,7 @@ In new versions, documents **should** replace the numbering that remains local w
 | 00 | What SEVEN-G is and how it helps companies | A |
 | 01 | SEVEN-G foundational methodology | A |
 | 02 | SEVEN-G glossary and conventions | A |
-| 03 | SEVEN-G tools and initiative register | A |
+| 03 | SEVEN-G tools and use case register | A |
 | 10 | Sphere map and ambition levels | B |
 | 11 | Maturity model | B |
 | 12 | Transformation index | B |
@@ -925,7 +925,7 @@ In new versions, documents **should** replace the numbering that remains local w
 | 20 | Phase manuals | C |
 | 21 | Gate and audit criteria | C |
 | 22 | Checklists by gate | C |
-| 23 | Adoption and change in the initiative | C |
+| 23 | Adoption and change in the use case | C |
 | 30 | Governance model | D |
 | 31 | Corporate AI policy and acceptable use policy | D |
 | 32 | AI system inventory and regulatory classification | D |
@@ -955,7 +955,7 @@ In new versions, documents **should** replace the numbering that remains local w
 
 | Code | Title | Phase | Code | Title | Phase |
 |---|---|---|---|---|---|
-| P01 | Initiative charter | 0 | P17 | Governance and human oversight design | 4 |
+| P01 | Use case charter | 0 | P17 | Governance and human oversight design | 4 |
 | P02 | Context and constraints statement | 0 | P18 | Security design (including agents) | 4 |
 | P03 | Role assignment record | 0 | P19 | Rollback plan and test | 4, 5 |
 | P04 | Intensity determination | 0, G3, R6 | P20 | Adoption and capacity plan | 4–7 |
@@ -983,7 +983,7 @@ File names: `NN_SEVEN-G_<Nombre_con_guiones_bajos>.md` for documents and `planti
 | **AESIA** | Spanish Agency for the Supervision of Artificial Intelligence | Spanish supervisory authority for AI (document 34). |
 | **AI** | Artificial intelligence | In Spanish, IA. |
 | **API** | Application programming interface | Usual way of consuming third-party models. |
-| **CRM** | Customer relationship management system | Analogy for the initiative register (03 §3.1). |
+| **CRM** | Customer relationship management system | Analogy for the use case register (03 §3.1). |
 | **DORA** | Regulation (EU) 2022/2554 on digital operational resilience for the financial sector | Not translated. |
 | **DPIA** | Data protection impact assessment | GDPR, Article 35. In Spanish, EIPD. |
 | **EBITDA** | Earnings before interest, taxes, depreciation and amortisation | Illustrative reference for materiality and investment thresholds (13 §6). |
@@ -1015,7 +1015,7 @@ Framework abbreviations that are not general acronyms: **€k** thousands of eur
 
 | Code | Tool or template | Relationship with this document |
 |---|---|---|
-| **T01** | Initiative register | Implements the controlled taxonomy (section 5), initiative and criterion statuses (sections 4.2 and 4.3), *gate* outcomes (4.1) and IA-AAAA-NNN codes. First tool of wave 1, built after this document. |
+| **T01** | Use case register | Implements the controlled taxonomy (section 5), use case and criterion statuses (sections 4.2 and 4.3), *gate* outcomes (4.1) and IA-AAAA-NNN codes. First tool of wave 1, built after this document. |
 | **T02** | AI system inventory | Uses the SIA-AAAA-NNN codes, regulatory classification and autonomy A0–A3. |
 | **T03** | *Gate* manager | Uses the G\<n\>.\<nn\> and R6.\<nn\> codes, the mandatory status of criteria, the EV rules and the outcomes permitted by gate. |
 | **T04** | Intensity determination | Uses the Enterprise criteria and the scale in section 4.6. |
@@ -1033,7 +1033,7 @@ Tools display the values of closed lists in Spanish and English using the equiva
 |---|---|
 | **00 · What SEVEN-G is and how it helps companies** | Presentation concepts, measurement rules, transformation index and profiles. |
 | **01 · Foundational methodology** | Normative reference from which the definitions of model, phases, *gates*, roles, intensity, risks and nonconformities derive. |
-| **03 · Tools and initiative register** | Controlled taxonomy, statuses, events and funnel metrics reproduced in this glossary. |
+| **03 · Tools and use case register** | Controlled taxonomy, statuses, events and funnel metrics reproduced in this glossary. |
 | **10, 11, 12 and 13** | Spheres and grades, maturity, transformation index, thesis and risk appetite. |
 | **21 and 22** | *Gate* criteria, mandatory status, evidence rules, verification outcomes and checklists. |
 | **32, 33, 35, 36 and 37** | Inventory and regulatory roles, risk scales, autonomy and controls, third-party requirements, severity and nonconformities. |

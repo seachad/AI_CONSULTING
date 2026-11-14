@@ -24,9 +24,9 @@ This document establishes how the cost of artificial intelligence is calculated,
 
 It applies to:
 
-- Every initiative in the register (T01), from the cost estimate in phase 3 through to retirement.
+- Every use case in the register (T01), from the cost estimate in phase 3 through to retirement.
 - Costs shared by several use cases: productivity suites with AI, model platforms, compute, data platforms and common teams.
-- Corporate use of general-purpose AI, which has a cost even though it is not an initiative (01 §1.2).
+- Corporate use of general-purpose AI, which has a cost even though it is not a use case (01 §1.2).
 
 The figures in the examples are **fictitious and illustrative**.
 
@@ -40,7 +40,7 @@ The figures in the examples are **fictitious and illustrative**.
 | 2 | **Incremental cost for deciding** | To decide on an additional investment (additional net value per euro, document 40 F3), the cost that changes with the decision is used. A shared cost that will exist in any case is not incremental. Both views are calculated and identified. |
 | 3 | **Cost is not reduced** | The cost is charged in full from day one, whether or not the value has been validated. An unknown cost is shown as "no data", and so is the net value. |
 | 4 | **A single source of truth** | The T13 cost is reconciled with accounting every month. Differences are explained or corrected. |
-| 5 | **Tagging from day one** | No cloud resource, model access key or licence is created without the tag of the initiative or corporate use to which it belongs. |
+| 5 | **Tagging from day one** | No cloud resource, model access key or licence is created without the tag of the use case or corporate use to which it belongs. |
 | 6 | **Declared and stable allocation keys** | Each shared cost has a key approved by management control. It is not changed mid-year except in the event of an error, and the change is recorded. |
 | 7 | **Consumption is governed before it is invoiced** | Variable model and compute costs have a budget, forecast, alerts and technical limits, especially for agents. |
 
@@ -137,7 +137,7 @@ Each cost is charged using the first possible method in this list, in this order
 | **Shared licences** (productivity suites with AI) | Licences assigned to the group that uses the use case for that purpose | Active users of the use case ÷ total active users | General-use licences, which are charged to corporate use of general-purpose AI |
 | **Model consumption** (model gateway or platform) | Consumption measured by access key or tag of the use case | Calls or transactions per use case | Platform testing consumption, which is charged to the platform |
 | **Compute** (graphics processors, clusters) | Compute hours per tagged job | Execution time per use case | Idle capacity, which is reported separately |
-| **Shared platforms** (data, model operations, agents) | Platform consumption units per use case | No. of models, agents or flows in production per use case | Build cost of the platform itself, which has its own initiative |
+| **Shared platforms** (data, model operations, agents) | Platform consumption units per use case | No. of models, agents or flows in production per use case | Build cost of the platform itself, which has its own use case |
 | **Shared teams** (AI Office, platform team, risk review) | Hours charged per use case | Use cases weighted by intensity (Enterprise 2, Lite 1) | The corporate overhead portion (section 6.1) |
 
 ### 6.3 Untagged consumption
@@ -212,7 +212,7 @@ To calculate the additional net value per euro of an extension of use case D, th
 
 | Tag | Value | Example |
 |---|---|---|
-| `iniciativa` | Initiative code, or `CORP-IA` for corporate use, or `PLAT-<nombre>` for shared platforms | `IA-2026-014` |
+| `iniciativa` | Use case code, or `CORP-IA` for corporate use, or `PLAT-<nombre>` for shared platforms | `IA-2026-014` |
 | `sistema` | System identifier in the inventory (T02) | T02 identifier |
 | `entorno` | development · testing · pre-production · production | `produccion` |
 | `fase` | 0–7 of the lifecycle | `5` |
@@ -310,23 +310,23 @@ The reduction in process cost (480,000 − 350,000 = €130,000) is **potential 
 
 ## 10. Cost of stop decisions
 
-Stopping or retiring an initiative is a valid outcome of the method (01 §7.3). So that those who stop are not penalised financially, and so that the board can see the effect of these decisions, the following magnitudes are recorded in T01 and T13 when the stop or retirement is registered:
+Stopping or retiring a use case is a valid outcome of the method (01 §7.3). So that those who stop are not penalised financially, and so that the board can see the effect of these decisions, the following magnitudes are recorded in T01 and T13 when the stop or retirement is registered:
 
 | Magnitude | Definition | Treatment |
 |---|---|---|
 | **Sunk cost** | The amount spent up to the decision. | It plays no part in the decision: it can no longer be recovered. It is recorded for lessons learned. |
 | **Non-cancellable commitments** | Future payments that will be made in any case (for example, annual licences already signed). | Reported separately; their reuse in other use cases is sought. |
-| **Cost of stopping** | Costs caused by the decision: closure, retirement, early cancellation penalties, retention or deletion of data and models. | Recorded as a cost of the initiative. |
+| **Cost of stopping** | Costs caused by the decision: closure, retirement, early cancellation penalties, retention or deletion of data and models. | Recorded as a cost of the use case. |
 | **Avoided investment** | Approved budget − spent − non-cancellable commitments. | Reported in the portfolio (IND-COS-10). **It does not add to value.** |
 | **Expected avoided recurring cost** | Recurring cost that would have been incurred in production. | Reported as estimated. It does not add to value. |
 
-**Illustrative example.** Initiative stopped at G3. Approved budget: €400,000. Spent: €45,000. Non-cancellable commitments: €20,000. Penalty for cancelling a services contract: €8,000. Closure cost: €5,000.
+**Illustrative example.** Use case stopped at G3. Approved budget: €400,000. Spent: €45,000. Non-cancellable commitments: €20,000. Penalty for cancelling a services contract: €8,000. Closure cost: €5,000.
 
 - Cost of stopping: 8,000 + 5,000 = **€13,000**.
 - Avoided investment: 400,000 − 45,000 − 20,000 = **€335,000**.
 - Avoided future spend net of the cost of stopping (for information): 335,000 − 13,000 = **€322,000**.
 
-A stopped initiative is never delayed to avoid recognising the sunk cost. If the stop criteria are met, 01 §7.4, rule 6 applies.
+A stopped use case is never delayed to avoid recognising the sunk cost. If the stop criteria are met, 01 §7.4, rule 6 applies.
 
 ---
 
@@ -336,9 +336,9 @@ A stopped initiative is never delayed to avoid recognising the sunk cost. If the
 
 | Element | Rule |
 |---|---|
-| **Cost object** | Each initiative has a cost object in accounting (internal order, project or cost centre) with its IA-AAAA-NNN code. Corporate use and platforms have their own. |
-| **Internal hours** | People working on initiatives charge hours to the cost object. Management control sets the full hourly cost by professional category. |
-| **Contracts** | Purchase orders and contracts carry the initiative or platform code. |
+| **Cost object** | Each use case has a cost object in accounting (internal order, project or cost centre) with its IA-AAAA-NNN code. Corporate use and platforms have their own. |
+| **Internal hours** | People working on use cases charge hours to the cost object. Management control sets the full hourly cost by professional category. |
+| **Contracts** | Purchase orders and contracts carry the use case or platform code. |
 | **Shared costs** | They are recorded in their platform cost object and allocated using the keys in section 6 at the close. |
 
 ### 11.2 Calendar
@@ -385,7 +385,7 @@ Minimum T13 validations: no amount without a category and component; no shared c
 | Code | Name | Use in this document |
 |---|---|---|
 | **T13** | Cost calculator per use case | Main tool of this document. |
-| **T01** | Initiative register | Costs per use case, alert events, stops. |
+| **T01** | Use case register | Costs per use case, alert events, stops. |
 | **T02** | AI system inventory | System identifier for tagging. |
 | **T11** | Value hypothesis canvas and calculator | Use of the initial investment and recurring cost in F2, F3 and F7–F9. |
 | **T12** | Value realisation tracking | Actual recurring cost in net value per period. |
@@ -405,7 +405,7 @@ Minimum T13 validations: no amount without a category and component; no shared c
 | Document | Relationship |
 |---|---|
 | **01 · Foundational methodology** | Full costs in phase 3 (§6.5), stop and retire outcomes (§7.3). |
-| **03 · Tools and initiative register** | Definition of T13 and common data model. |
+| **03 · Tools and use case register** | Definition of T13 and common data model. |
 | **13 · AI thesis and risk appetite** | Framework budget, horizon, rate and alert thresholds. |
 | **14 · Portfolio management** | Portfolio budget and shared platforms. |
 | **35 · AI and agent security** | Agent identity, limits and kill switch. |

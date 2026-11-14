@@ -25,7 +25,7 @@
 | **Who verifies it** | The AI Office checks that it can operate each capability without the third party; management control, the portfolio figures; the AI Risk Owner, the open risks note. |
 | **Who decides or approves** | Whoever commissioned the service (P70, section 11) accepts the exit; in M5, the AI Committee approves the transfer plan and its annual review. |
 | **Stage or point** | End of the engagement; in M5, each annual review of the service and before C5. |
-| **Tool** | T01 · Initiative register (complete JSON of the register), T17 · Board AI dashboard (data file and fingerprint), T18 · Board recommendations register; and any others used (T02, T03, T06, T14, T15). |
+| **Tool** | T01 · Use case register (complete JSON of the register), T17 · Board AI dashboard (data file and fingerprint), T18 · Board recommendations register; and any others used (T02, T03, T06, T14, T15). |
 | **Reference document** | Document 91 (§3 principles, §4.6 M5, §5.3 cooling-off period, §7 quality and exit); document 90 (6 to 18-month roadmap). |
 | **Lite versus Enterprise** | The same in both. In M1 the transfer may be limited to section 4 and the internal owners in section 9. |
 
@@ -64,7 +64,7 @@ Method: **The third party does it** (the company observes) → **The company doe
 | # | Capability | Receiving internal role | Current situation | Next method | Milestone and date | Evidence that the company does it alone | Status |
 |---|---|---|---|---|---|---|---|
 | 1 *(illustrative example)* | Prepare the quarterly pack (P67) | AI Office | The company does it with support | The company does it alone | Pack for the first quarter of 2027 · 15-03-2027 | Pack submitted at D−7 prepared by the AI Office; the third party only reviewed it | In progress |
-| 2 | Maintain the initiative register and the inventory (T01, T02) | | | | | | |
+| 2 | Maintain the use case register and the inventory (T01, T02) | | | | | | |
 | 3 | Prepare *gate* evidence with the teams (P29, T03) | | | | | | |
 | 4 | Calculate funnel and agility metrics | | | | | | |
 | 5 | Update the board dashboard and save the snapshot of each session (T17) | | | | | | |
@@ -104,7 +104,7 @@ Each deliverable states the SEVEN-G version, the adaptations and credit for auth
 
 | Tool | Schema or tool version | Data file delivered | Last update | How it is updated or regenerated | Internal owner | Pending items |
 |---|---|---|---|---|---|---|
-| T01 · Initiative register | | Complete JSON of the register | | | | |
+| T01 · Use case register | | Complete JSON of the register | | | | |
 | T02 · AI system inventory | | | | | | |
 | T06 · Risk matrix and register | | CSV or JSON export from T01 | | | | |
 | T17 · Board AI dashboard | | Dashboard data file and fingerprint | | | | |
@@ -137,8 +137,8 @@ Data at the stated cut-off date, with the source (T01, T12) and the rules in doc
 | Field | Content | Guidance |
 |---|---|---|
 | Cut-off date | | |
-| Initiatives by phase and status | | Phases 0–2, 3–5, in production, at G7; stopped and retired. |
-| Stalled initiatives and expired conditions | | With code. |
+| Use cases by phase and status | | Phases 0–2, 3–5, in production, at G7; stopped and retired. |
+| Stalled use cases and expired conditions | | With code. |
 | Overdue R6 in production | | |
 | Annual net value and validated proportion | | Efficiencies, return and recurring cost separately; released capacity shown separately. |
 | Use cases with negative annual net value | | Individually. |
@@ -160,7 +160,7 @@ Extract from P69. If the third party was the assessor of any recommendation, a n
 
 ## 8. Open risks note
 
-| # | Risk | Initiative or area | Residual level | Internal owner | Next review | Observation |
+| # | Risk | Use case or area | Residual level | Internal owner | Next review | Observation |
 |---|---|---|---|---|---|---|
 | 1 *(illustrative example)* | The AI Office does not yet have a second person trained in maintaining the register | Transfer | Medium | Head of the AI Office | 30-04-2027 | Training of a deputy included in the annual plan |
 | | | | | | | |

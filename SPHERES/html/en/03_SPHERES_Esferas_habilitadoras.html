@@ -374,6 +374,13 @@ blockquote.aviso-legal strong { color: var(--negro); }
 .dz-card-titulo { font: 700 19px/1.2 var(--serif); color: var(--negro); margin: 0 0 6px; }
 .dz-card-texto { font: 400 13.5px/1.4 var(--sans); color: var(--tinta-2); margin: 0 0 12px; flex: 1; }
 .dz-card .dz-item { background: var(--papel); }
+/* documento 00 de cada marco: sus presentaciones en slides (1, 5, 10 y 20 en tarjetas de dos columnas; el curso, de cuatro) */
+@media (min-width: 900px) { .dz-card[data-grupo="slides-curso"] { grid-column: span 4; } .dz-card[data-grupo="slides-otros"] { grid-column: span 3; } }
+.dz-card[data-grupo="slides-curso"] { border-top-color: var(--teal); }
+.dz-card[data-grupo="slides-curso"] .dz-card-rotulo { color: var(--teal); }
+.dz-card[data-grupo="slides-otros"] { border-top-color: var(--oxford); }
+.dz-card[data-grupo="slides-otros"] .dz-card-rotulo { color: var(--oxford); }
+.descargas-zona[id] { scroll-margin-top: 72px; }
 .dz-grupo { font: 700 12px/1.2 var(--sans); letter-spacing: .08em; text-transform: uppercase; color: var(--tinta-2); margin: 8px 0 -2px; padding-top: 10px; border-top: 1px solid var(--regla); }
 .dz-grupo:first-child { margin-top: 0; padding-top: 0; border-top: 0; }
 @media print { .descargas-zona { display: none !important; } }
@@ -501,7 +508,7 @@ h2 .codigo, h3 .codigo { font-weight: 400; }
 <tr>
 <td><strong>05 · Data</strong></td>
 <td>AI systems have raw material that is available, reliable and legitimately usable.</td>
-<td>Initiatives are delayed, stopped or run on data they should not use.</td>
+<td>Use cases are delayed, stopped or run on data they should not use.</td>
 </tr>
 <tr>
 <td><strong>06 · Knowledge</strong></td>
@@ -517,14 +524,14 @@ h2 .codigo, h3 .codigo { font-weight: 400; }
 </table></div>
 <p>It is in these spheres <strong>that the uncomfortable questions arise</strong>. Talking about opportunities in Customer or in Product is easy; acknowledging that nobody knows what data the company has, that critical knowledge is in the heads of three people or that a system already sets prices without anyone having decided it, is not.</p>
 <blockquote>
-<p><strong>Why it matters.</strong> An ambition to Transform in a value sphere without sufficient capability in Data, Knowledge and Decision <strong>is a sign of risk, not of boldness</strong>. Most delays and failures of AI initiatives are not due to the model, but to unavailable data, undocumented knowledge or decisions without rules. Diagnosing the enablers before setting the ambition avoids promising what the organisation cannot sustain.</p>
+<p><strong>Why it matters.</strong> An ambition to Transform in a value sphere without sufficient capability in Data, Knowledge and Decision <strong>is a sign of risk, not of boldness</strong>. Most delays and failures of AI use cases are not due to the model, but to unavailable data, undocumented knowledge or decisions without rules. Diagnosing the enablers before setting the ambition avoids promising what the organisation cannot sustain.</p>
 </blockquote>
 <h3 id="when-an-enabler-is-the-primary-sphere">When an enabler is the primary sphere</h3>
-<p>The fact that an initiative <strong>uses</strong> data, knowledge or decisions does not place it in these spheres: almost all AI initiatives use them. An enabler is the <strong>primary sphere</strong> only when the main outcome of the initiative is <strong>the enabling capability itself</strong>.</p>
+<p>The fact that a use case <strong>uses</strong> data, knowledge or decisions does not place it in these spheres: almost all AI use cases use them. An enabler is the <strong>primary sphere</strong> only when the main outcome of the use case is <strong>the enabling capability itself</strong>.</p>
 <div class="tabla"><table>
 <thead>
 <tr>
-<th>Initiative (illustrative)</th>
+<th>Use case (illustrative)</th>
 <th>Primary sphere</th>
 <th>Reason</th>
 </tr>
@@ -624,23 +631,23 @@ h2 .codigo, h3 .codigo { font-weight: 400; }
 </table></div>
 <h3 id="illustrative-case">Illustrative case</h3>
 <p><em>Fictitious regional insurance company.</em></p>
-<p>Management approves three Customer initiatives: a churn risk model, a coverage recommender and an assistant for sales agents. Four months later, all three are stalled in the same phase. The reason is not technical: data on customer interactions is spread across four systems, has no owner, and nobody has confirmed whether the consent under which it was obtained allows it to be used for these purposes. The company decides to open an initiative with <strong>Data</strong> as the primary sphere (<strong>Optimise</strong> level): a catalogue of customer data with an owner, quality rules and a documented legal basis for each use. Only when that initiative reaches its first milestone are the Customer initiatives resumed. At the next review, the board sets <strong>Augment</strong> as the ambition for the Data sphere and asks for a quarterly indicator of initiatives blocked by data.</p>
+<p>Management approves three Customer use cases: a churn risk model, a coverage recommender and an assistant for sales agents. Four months later, all three are stalled in the same phase. The reason is not technical: data on customer interactions is spread across four systems, has no owner, and nobody has confirmed whether the consent under which it was obtained allows it to be used for these purposes. The company decides to open a use case with <strong>Data</strong> as the primary sphere (<strong>Optimise</strong> level): a catalogue of customer data with an owner, quality rules and a documented legal basis for each use. Only when that use case reaches its first milestone are the Customer use cases resumed. At the next review, the board sets <strong>Augment</strong> as the ambition for the Data sphere and asks for a quarterly indicator of use cases blocked by data.</p>
 <h3 id="questions-for-the-board">Questions for the board</h3>
 <ul>
 <li>Do we know what data we have, where it is, who is accountable for its quality and whether we can legally use it for AI?</li>
-<li>How many initiatives are delayed or stopped for lack of data?</li>
+<li>How many use cases are delayed or stopped for lack of data?</li>
 <li>Have we documented where the data used by each system in production to make decisions comes from?</li>
 <li>Is our data an advantage that a competitor cannot replicate?</li>
 </ul>
 <h3 id="warning-signs">Warning signs</h3>
 <ul>
-<li>Initiatives that reach the build phase without having confirmed access to the data.</li>
+<li>Use cases that reach the build phase without having confirmed access to the data.</li>
 <li>Personal data used to train or feed systems without a documented legal basis.</li>
 <li>Critical datasets without an identified owner.</li>
 <li>Systems in production without data and model lineage.</li>
 </ul>
 <h3 id="how-it-is-measured">How it is measured</h3>
-<p>The reference indicators are catalogue coverage, quality of critical data, documented legal basis, documented lineage, time to data access and initiatives blocked by data. Their formulas are in <a href="../../../SEVEN-G/html/en/10_SEVEN-G_Mapa_de_esferas_y_niveles_de_ambicion.html">SEVEN-G 10 · Sphere map and ambition levels</a>, section 5.5, and their governance in <a href="../../../SEVEN-G/html/en/51_SEVEN-G_Datos_y_conocimiento.html">SEVEN-G 51 · Data and knowledge for AI</a>.</p>
+<p>The reference indicators are catalogue coverage, quality of critical data, documented legal basis, documented lineage, time to data access and use cases blocked by data. Their formulas are in <a href="../../../SEVEN-G/html/en/10_SEVEN-G_Mapa_de_esferas_y_niveles_de_ambicion.html">SEVEN-G 10 · Sphere map and ambition levels</a>, section 5.5, and their governance in <a href="../../../SEVEN-G/html/en/51_SEVEN-G_Datos_y_conocimiento.html">SEVEN-G 51 · Data and knowledge for AI</a>.</p>
 <hr />
 <h2 id="sphere-06-knowledge"><span class="antetitulo">03</span>Sphere 06 · Knowledge</h2>
 <p><strong>Motto:</strong> organisational memory and collective intelligence.</p>
@@ -714,7 +721,7 @@ h2 .codigo, h3 .codigo { font-weight: 400; }
 </table></div>
 <h3 id="illustrative-case-2">Illustrative case</h3>
 <p><em>Fictitious engineering firm specialising in industrial installations.</em></p>
-<p>The company identifies that the design of one type of installation depends on two engineers close to retirement. It launches an <strong>Augment</strong> initiative in Knowledge: structured sessions in which an assistant interviews the experts about real design decisions, contrasts them with archived projects and builds a base of criteria reviewed by the experts themselves. The result is an assistant that younger engineers consult before each design. Management sets two conditions: that a sample of the answers be reviewed by experts every quarter to measure their accuracy, and that the assistant respect the access permissions for each customer's projects.</p>
+<p>The company identifies that the design of one type of installation depends on two engineers close to retirement. It launches an <strong>Augment</strong> use case in Knowledge: structured sessions in which an assistant interviews the experts about real design decisions, contrasts them with archived projects and builds a base of criteria reviewed by the experts themselves. The result is an assistant that younger engineers consult before each design. Management sets two conditions: that a sample of the answers be reviewed by experts every quarter to measure their accuracy, and that the assistant respect the access permissions for each customer's projects.</p>
 <h3 id="questions-for-the-board-2">Questions for the board</h3>
 <ul>
 <li>How much critical knowledge depends on a few people and is not available to the organisation?</li>
@@ -884,7 +891,7 @@ h2 .codigo, h3 .codigo { font-weight: 400; }
 <td>1</td>
 <td>Has the data the ambition requires been identified, with an owner and a legal basis?</td>
 <td>05</td>
-<td>Open a Data initiative first or reduce the ambition.</td>
+<td>Open a Data use case first or reduce the ambition.</td>
 </tr>
 <tr>
 <td>2</td>
@@ -894,7 +901,7 @@ h2 .codigo, h3 .codigo { font-weight: 400; }
 </tr>
 <tr>
 <td>3</td>
-<td>Is the knowledge on which the initiative depends documented and accessible?</td>
+<td>Is the knowledge on which the use case depends documented and accessible?</td>
 <td>06</td>
 <td>Capture the critical knowledge and assign who verifies the answers.</td>
 </tr>
@@ -918,10 +925,10 @@ h2 .codigo, h3 .codigo { font-weight: 400; }
   B -->|"Yes"| C["Five questions on Data, Knowledge and Decision"]
   C --> D{"Is any answer no?"}
   D -->|"No"| OK2["Sustainable ambition"]
-  D -->|"Yes"| E["Prior enabling initiative or lower ambition"]
+  D -->|"Yes"| E["Prior enabling use case or lower ambition"]
 </pre></div><div class="g-fuente">Source: SPHERES</div></figure>
 <blockquote>
-<p><strong>Why it matters.</strong> This diagnosis is cheap and quick, and it avoids the most costly mistake in AI portfolios: approving ambitious initiatives that are stopped months later for reasons that could have been known from day one.</p>
+<p><strong>Why it matters.</strong> This diagnosis is cheap and quick, and it avoids the most costly mistake in AI portfolios: approving ambitious use cases that are stopped months later for reasons that could have been known from day one.</p>
 </blockquote>
 <hr />
 <h2 id="related-documents"><span class="antetitulo">06</span>Related documents</h2>
@@ -983,7 +990,7 @@ h2 .codigo, h3 .codigo { font-weight: 400; }
 </table></div>
 
 </main>
-<footer class="pie"><div><span>© 2026 Fernando García Varela · SPHERES methodology</span><span>Generated on 19-10-2026</span></div><p class="pie-ia">Content generated and typeset with AI support under the author&#39;s editorial supervision.</p></footer>
+<footer class="pie"><div><span>© 2026 Fernando García Varela · SPHERES methodology</span><span>Generated on 14-11-2026</span></div><p class="pie-ia">Content generated and typeset with AI support under the author&#39;s editorial supervision.</p></footer>
 <script src="../../../SEVEN-G/html/en/codigos.js" defer></script>
 
 <script>

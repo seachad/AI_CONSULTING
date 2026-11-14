@@ -12,7 +12,7 @@
   ],
   "herramientas": {
     "T01": {
-      "nombre": "Registro de iniciativas",
+      "nombre": "Registro de casos de uso",
       "almacenamiento": "seveng-t01-datos-v1",
       "propio": "todo el registro (esquema 0.8)",
       "abre": {
@@ -86,7 +86,7 @@
       ],
       "propio": ["evaluaciones[] (respuestas, evidencias, verificación, entrevistas, muestras, pesos, objetivos, mensajes, acciones y, desde el esquema 0.7, objetivos y niveles propios de los perfiles NIST; huella y alcance introducidos a mano, lentes_manual, cuando no hay registro)", "lentes.json (umbrales de la vista «Tres lentes», extraídos de 11 §7.6 y 12 §3.7)"],
       "actualiza_desde_t01": false,
-      "nota": "Las respuestas y las evidencias se quedan en T15; al registro solo va el resumen (nivel global, media, límite, nivel por dimensión y, desde el esquema 0.7, el resumen de los perfiles NIST por función y área, D115, y, desde el 0.8, las tres lentes: huella tecnológica HT0–HT5, alcance IM1–IM4, mínimo exigible y alertas, D120). La huella y el alcance se calculan desde el registro a la fecha de corte de cada diagnóstico (iniciativas en fases 6 y 7 sin cerrar, reconstruidas con las entradas en fase y los cierres) y no cambian el nivel de madurez. La muestra estratificada de iniciativas se propone desde el registro (11 §4.6) y la selecciona el equipo evaluador."
+      "nota": "Las respuestas y las evidencias se quedan en T15; al registro solo va el resumen (nivel global, media, límite, nivel por dimensión y, desde el esquema 0.7, el resumen de los perfiles NIST por función y área, D115, y, desde el 0.8, las tres lentes: huella tecnológica HT0–HT5, alcance IM1–IM4, mínimo exigible y alertas, D120). La huella y el alcance se calculan desde el registro a la fecha de corte de cada diagnóstico (casos de uso en fases 6 y 7 sin cerrar, reconstruidos con las entradas en fase y los cierres) y no cambian el nivel de madurez. La muestra estratificada de casos de uso se propone desde el registro (11 §4.6) y la selecciona el equipo evaluador."
     },
     "T17": {
       "nombre": "Panel de IA para el consejo (generador)",
@@ -108,7 +108,7 @@
       "lee_de_t14": ["JSON exportado por la calculadora (--indice): perfil, señales, alertas y qué movería el perfil"],
       "escribe_en_t01": [],
       "propio": ["config_panel.json (umbrales, ciclo de vida, navegación)", "JSON del panel (motor/ESQUEMA.md), panel completo, móvil y registro de recomendaciones"],
-      "nota": "No lee riesgos[] (usa el riesgo residual principal de cada iniciativa) ni la evidencia del índice de las iniciativas (esa la calcula T14)."
+      "nota": "No lee riesgos[] (usa el riesgo residual principal de cada caso de uso) ni la evidencia del índice de los casos de uso (esa la calcula T14)."
     },
     "T06": {
       "nombre": "Matriz y registro de riesgos",
@@ -138,7 +138,7 @@
       "escribe_en_t01": [],
       "propio": ["respuestas (Q01–Q12, con fuente manual o t01)", "hitos (estado, fecha, nota y cubierto por el gobierno previo)", "recorrido.json (arquetipos, regla, modificadores, cuestionario, etapas, hitos, prioridades y roles, extraídos del documento 96)"],
       "actualiza_desde_t01": true,
-      "nota": "Propone Q01 a Q03 desde el registro (iniciativas en uso: fase 6 o 7 sin parar ni retirar; pilotos: fases 1 a 5); una respuesta manual no se sustituye. Un hito se marca cumplido según T15 cuando todas sus preguntas del documento 11 están en «Sí» en la evaluación verificada o independiente más reciente; un estado manual no se pisa. No escribe en T01 ni en T15."
+      "nota": "Propone Q01 a Q03 desde el registro (casos de uso en producción: fase 6 o 7 sin parar ni retirar; pilotos: fases 1 a 5); una respuesta manual no se sustituye. Un hito se marca cumplido según T15 cuando todas sus preguntas del documento 11 están en «Sí» en la evaluación verificada o independiente más reciente; un estado manual no se pisa. No escribe en T01 ni en T15."
     }
   }
 }

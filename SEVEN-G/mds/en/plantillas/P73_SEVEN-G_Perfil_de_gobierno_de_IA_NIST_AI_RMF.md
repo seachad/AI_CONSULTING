@@ -27,7 +27,7 @@
 | **Stage of the corporate cycle** | C1 and C5 (current profile), C2 (target profile), C4 (monitoring of actions). |
 | **Tool** | T15 · Maturity assessment calculates this profile in its "AI RMF profile" view: level derived from the questionnaire, own levels, targets, gap, equivalent *tier* and CSV export, and saves its summary into the T01 register. This template is its paper or Word equivalent. |
 | **Reference document** | Document 34 §5.4 (subcategories, coverage in SEVEN-G and associated questions); document 11 §2.2 (levels and equivalence with *tiers*) and §7.5 (derivation rule). |
-| **Lite versus Enterprise** | In Lite scope the company may select only the GOVERN subcategories and those that correspond to its Enterprise initiatives, and leave the others out of the profile with a reason. |
+| **Lite versus Enterprise** | In Lite scope the company may select only the GOVERN subcategories and those that correspond to its Enterprise use cases, and leave the others out of the profile with a reason. |
 
 Completion rules:
 
@@ -126,7 +126,7 @@ Completion rules:
 | MEASURE 4.1 | Own (D7) | | | | | | |
 | MEASURE 4.2 | D7 · D7.09 | | | | | | |
 | MEASURE 4.3 | D2 · D2.10; D7 · D7.09 | | | | | | |
-| *(illustrative example)* MEASURE 2.11 | Own (D6) | 2 | Bias tests with counterfactual pairs in two of five initiatives with decisions about people (P22, 06-2026). | 3 | 1 | 2 | AM-2026-03 |
+| *(illustrative example)* MEASURE 2.11 | Own (D6) | 2 | Bias tests with counterfactual pairs in two of five use cases with decisions about people (P22, 06-2026). | 3 | 1 | 2 | AM-2026-03 |
 
 ## 6. MANAGE
 
@@ -190,7 +190,7 @@ Actions are added to the improvement plan of the maturity report (P34 §6.6) wit
 | Code | Subcategories | Action | Owner | Deadline | Closure criterion |
 |---|---|---|---|---|---|
 | AM-YYYY-NN | | | | | |
-| *(illustrative example)* AM-2026-03 | MEASURE 2.11 | Apply bias tests with counterfactual pairs to all initiatives with decisions about people, with a threshold in P17. | AI Risk Owner | 31-12-2026 | Subcategory at level 3 with verified evidence in the next assessment. |
+| *(illustrative example)* AM-2026-03 | MEASURE 2.11 | Apply bias tests with counterfactual pairs to all use cases with decisions about people, with a threshold in P17. | AI Risk Owner | 31-12-2026 | Subcategory at level 3 with verified evidence in the next assessment. |
 
 ---
 

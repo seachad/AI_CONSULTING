@@ -14,7 +14,7 @@
 
 > **Legal notice and disclaimer.** SEVEN-G is a reference methodological framework provided "as is" and for information purposes only. It does not constitute legal, regulatory, financial or professional advice, nor does it guarantee compliance with any law or standard. References to general regulation (such as the EU AI Act, the GDPR, DORA or NIS2), to technical standards and to regulation specific to each sector or jurisdiction may be incomplete, may not apply to a particular case or may become out of date as a result of regulatory changes, interpretations or supervisory positions after their consultation date. **Each organisation that uses SEVEN-G is solely responsible for identifying the regulation that applies to it, verifying that it is current and certifying its own regulatory compliance**, with the appropriate qualified advice. This methodology is a generic, free aid shared with the community so that nobody has to start from scratch; each person or organisation can and should adapt it to its own use. It must not be inferred that its legally sensitive parts have been reviewed by legal counsel: those reviews, for each company or sector, are the ultimate responsibility of the company, consultant or organisation that uses it. Although every effort is made to keep it up to date, some regulation may have changed without being reflected here. To the fullest extent permitted by law, the author accepts no responsibility whatsoever for the effects of its application in any organisation or for its full applicability. The methodology does not grant certification of any kind. The author accepts no liability for any use made of this content or for any decisions taken on the basis of it. The data, figures, companies and cases in the examples are fictitious or illustrative.
 
-> **Why it matters.** Without an evidence-based annual review, the thesis is renewed out of inertia, the initial thresholds are never tested against the company's own data and the same mistakes are repeated in new initiatives. C5 is the moment when the board checks whether what was decided in C2 has been achieved and adjusts direction with what has been learned. It is the evidence for the level 5 questions of dimension D1 in document 11 (D1.11 and D1.12) and for the improvement cycle that a management system requires.
+> **Why it matters.** Without an evidence-based annual review, the thesis is renewed out of inertia, the initial thresholds are never tested against the company's own data and the same mistakes are repeated in new use cases. C5 is the moment when the board checks whether what was decided in C2 has been achieved and adjusts direction with what has been learned. It is the evidence for the level 5 questions of dimension D1 in document 11 (D1.11 and D1.12) and for the improvement cycle that a management system requires.
 
 ## 1. Instructions for use
 
@@ -24,7 +24,7 @@
 | **Who completes it** | The AI Office with internal audit (01 §5.1); management control provides value and cost; the AI Committee and the AI Office complete their self-assessment (section 11). |
 | **Who verifies it** | Internal audit or the AI Auditor, who also checks that the recalibration of thresholds is not proposed to improve the year's result (12 §8, step 4). |
 | **Who decides or approves** | The board (01 §5.1). Maturity, the index and the proposed adjustments are taken to the board's annual session (30 §3.1). |
-| **Corporate cycle stage** | C5 · Review. Inputs: current P35, P36, the quarterly C4 packs and the value reviews of the initiatives. Output: proposal for the next C2 (new version of P35). |
+| **Corporate cycle stage** | C5 · Review. Inputs: current P35, P36, the quarterly C4 packs and the value reviews of the use cases. Output: proposal for the next C2 (new version of P35). |
 | **Tools** | T15 (maturity), T14 (index), T01 (funnel metrics and cohorts), T12 and T13 (value and cost), T17 (dashboard), T18 (recommendations and decisions), T22 (retirements and lessons). |
 | **Reference documents** | 01 §5.1; 11 §7.1 and D1; 12 §7 and §8; 13 §13; 03 §3.5 and §3.6; 14 §10.8; 43 §8.3; 30 §12. |
 | **Lite versus Enterprise** | Both scopes use all sections. Blocks marked **(Enterprise)** may be omitted in a Lite scope. In Lite, the stages may be compressed (90 §6.1). |
@@ -34,7 +34,7 @@ Completion rules:
 - Maturity is assessed with **the same questionnaire version** as in the previous assessment, or with a correspondence table (11 §6).
 - The index is calculated with the thresholds in force; if new thresholds are approved, the previous period is recalculated and both results are published (12 §8).
 - Amounts carry a status: validated, declared or estimated. "No data" is shown as such.
-- Lessons are consolidated by coded reason, not by initiative.
+- Lessons are consolidated by coded reason, not by use case.
 
 ---
 
@@ -158,7 +158,7 @@ Definitions in 03 §3.5. Median and 80th percentile where appropriate.
 | Time to production (registration → G3 → G5) | | | |
 | Conversion per *gate* | | | |
 | Iterations per *gate* | | | |
-| Stalled initiatives | | | |
+| Stalled use cases | | | |
 | Expired conditions | | | |
 | Stop and retirement reasons (distribution) | | | |
 | Ambition mix by phase | | | |
@@ -190,13 +190,13 @@ Definitions in 03 §3.5. Median and 80th percentile where appropriate.
 
 Sources: lessons notes from each retirement and from each stop at G3 or later (14 §10.8) and reports from the 6- and 12-month reviews (43 §8.3). The AI Office consolidates them **by coded reason**.
 
-| Coded reason (03 §3.3) | No. of initiatives | Codes IA-AAAA-NNN | Early signal that foreshadowed it and when it was noticed | Total investment and cost against realised value | Proposed change (entry criteria, templates or thresholds) | Decision |
+| Coded reason (03 §3.3) | No. of use cases | Codes IA-AAAA-NNN | Early signal that foreshadowed it and when it was noticed | Total investment and cost against realised value | Proposed change (entry criteria, templates or thresholds) | Decision |
 |---|---|---|---|---|---|---|
 | Hypothesis refuted | | | | | | |
 | Cost exceeds value | | | | | | |
 | No adoption | | | | | | |
 | Insufficient data | | | | | | |
-| *(illustrative example)* No adoption | 2 | IA-2027-011, IA-2027-015 | Active users below 50 % at the 6-month review | €0.62M against €0.05M declared | Require an adoption plan approved before G4 also in Optimise initiatives that change tasks | Pending committee decision |
+| *(illustrative example)* No adoption | 2 | IA-2027-011, IA-2027-015 | Active users below 50 % at the 6-month review | €0.62M against €0.05M declared | Require an adoption plan approved before G4 also in Optimise use cases that change tasks | Pending committee decision |
 
 All reasons with at least one case are included.
 
@@ -233,7 +233,7 @@ The AI Committee and the AI Office assess their own effectiveness at least once 
 | Have the assigned board recommendations been closed on time (T18)? | | | | T18 |
 | Are there expired exceptions that have not been closed (30 §7.4)? | | | | Exceptions register |
 | Has the AI Office verified any *gate* in which it took part? | — | | — | T03 |
-| Has any initiative been stopped or retired with a coded reason during the year? | | | | T01; T22 |
+| Has any use case been stopped or retired with a coded reason during the year? | | | | T01; T22 |
 | Overall assessment (Effective · Effective with improvements · Not effective) | | | | |
 
 ### 11.2 Improvement plan

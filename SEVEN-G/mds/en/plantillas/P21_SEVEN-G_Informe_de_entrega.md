@@ -37,8 +37,8 @@ Rules:
 
 | Field | Content | Guidance |
 |---|---|---|
-| Initiative code | | IA-AAAA-NNN (T01). |
-| Initiative name | | |
+| Use case code | | IA-AAAA-NNN (T01). |
+| Use case name | | |
 | AI system(s) | | Identifier in the inventory (T02). |
 | Version delivered | | Version of model, prompts and configuration (P16). |
 | Intensity | | Lite · Enterprise. |

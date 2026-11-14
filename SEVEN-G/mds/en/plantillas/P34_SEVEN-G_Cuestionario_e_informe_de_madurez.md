@@ -204,7 +204,7 @@ Minimum size (11 §4.6): population of 1–5, all; 6–20, 5; 21–60, 8; more t
 | Questions | Population | Minimum size | Size | Selection and stratification |
 |---|---|---|---|---|
 | | | | | |
-| *(illustrative example)* D1.08, D2.05, D2.06, D2.08 | 22 active initiatives | 8 | 8 | Two Enterprise, three in production, two Augment, one third-party and one generative AI. |
+| *(illustrative example)* D1.08, D2.05, D2.06, D2.08 | 22 active use cases | 8 | 8 | Two Enterprise, three in production, two Augment, one third-party and one generative AI. |
 
 ### 4.3 Independent verification
 

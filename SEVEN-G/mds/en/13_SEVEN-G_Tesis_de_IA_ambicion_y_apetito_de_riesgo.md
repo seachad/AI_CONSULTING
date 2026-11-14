@@ -16,7 +16,7 @@
 
 > **Legal notice and disclaimer.** SEVEN-G is a reference methodological framework provided "as is" and for information purposes only. It does not constitute legal, regulatory, financial or professional advice, nor does it guarantee compliance with any law or standard. References to general regulation (such as the EU AI Act, the GDPR, DORA or NIS2), to technical standards and to regulation specific to each sector or jurisdiction may be incomplete, may not apply to a particular case or may become out of date as a result of regulatory changes, interpretations or supervisory positions after their consultation date. **Each organisation that uses SEVEN-G is solely responsible for identifying the regulation that applies to it, verifying that it is current and certifying its own regulatory compliance**, with the appropriate qualified advice. This methodology is a generic, free aid shared with the community so that nobody has to start from scratch; each person or organisation can and should adapt it to its own use. It must not be inferred that its legally sensitive parts have been reviewed by legal counsel: those reviews, for each company or sector, are the ultimate responsibility of the company, consultant or organisation that uses it. Although every effort is made to keep it up to date, some regulation may have changed without being reflected here. To the fullest extent permitted by law, the author accepts no responsibility whatsoever for the effects of its application in any organisation or for its full applicability. The methodology does not grant certification of any kind. The author accepts no liability for any use made of this content or for any decisions taken on the basis of it. The data, figures, companies and cases in the examples are fictitious or illustrative.
 
-<!-- esencial: siempre | The C2 decision, approved by the board: AI thesis, ambition per sphere, risk appetite, Enterprise investment threshold, reference time limits, nonconformity time limits, red lines and framework budget. Without an approved C2, no Transform initiatives are approved. Each company sets its own numerical values. -->
+<!-- esencial: siempre | The C2 decision, approved by the board: AI thesis, ambition per sphere, risk appetite, Enterprise investment threshold, reference time limits, nonconformity time limits, red lines and framework budget. Without an approved C2, no Transform use cases are approved. Each company sets its own numerical values. -->
 
 ## 1. Purpose and scope
 
@@ -38,14 +38,14 @@ The document also contains reference regulatory content. **This document does no
 
 | # | Component | What it sets | Who uses it afterwards | Section |
 |---|---|---|---|---|
-| 1 | **AI thesis** | Why and for what purpose the company uses AI, and what it will not do. | All initiatives (fit at G0); C3; C5. | 3 |
+| 1 | **AI thesis** | Why and for what purpose the company uses AI, and what it will not do. | All use cases (fit at G0); C3; C5. | 3 |
 | 2 | **Ambition per sphere** | Priority and target ambition in spheres 01–07; target grade in 08 and 09. | C3; heat map (T16); index (condition IT-D1). | 4 |
 | 3 | **Risk appetite** | Appetite by category, tolerance metrics and escalation. | Phase 3; risk acceptance; AI Committee; C4. | 5 |
 | 4 | **Economic impact thresholds** | Economic impact scale 1–5 proportionate to size. | Risk matrix (T06, document 33). | 5.4 |
-| 5 | **Enterprise investment threshold** and materiality threshold | When an initiative is Enterprise by virtue of investment and when it is reported individually to the board. | Phase 0 (T04); C4. | 6 |
+| 5 | **Enterprise investment threshold** and materiality threshold | When a use case is Enterprise by virtue of investment and when it is reported individually to the board. | Phase 0 (T04); C4. | 6 |
 | 6 | **Return horizon** | Required return period by ambition level. | G2, G3, G5, G7. | 7 |
 | 7 | **Target portfolio balance** | Investment bands by ambition level. | C3; C4; document 14. | 8 |
-| 8 | **Reference time limits** | Time limit per phase and for a *gate* decision; R6 frequency; regularisation. | Initiative register (T01); stall alerts. | 9 |
+| 8 | **Reference time limits** | Time limit per phase and for a *gate* decision; R6 frequency; regularisation. | Use case register (T01); stall alerts. | 9 |
 | 9 | **Nonconformity and incident time limits** | Containment, action plan and internal communication. | Document 37; T08. | 10 |
 | 10 | **Red lines** | Prohibited practices, decisions that are never delegated and the company's own red lines. | Phases 0, 3 and 4; T07; T10. | 11 |
 | 11 | **Framework budget** | Annual amount, envelopes and reallocation rules. | C3; AI Committee. | 12 |
@@ -78,7 +78,7 @@ flowchart LR
 
 ### 3.1 What it is
 
-The AI thesis is a short statement (two to four pages) in which the board explains **why AI matters to the company, where it wants to use it, with what ambition and what it will not do**. It is neither a project plan nor a technology catalogue. It must be readable in ten minutes and usable to say no to an initiative.
+The AI thesis is a short statement (two to four pages) in which the board explains **why AI matters to the company, where it wants to use it, with what ambition and what it will not do**. It is neither a project plan nor a technology catalogue. It must be readable in ten minutes and usable to say no to a use case.
 
 ### 3.2 Structure
 
@@ -100,7 +100,7 @@ An AI thesis is adequate if:
 - **It contains renunciations.** A thesis that declares all spheres to be priorities does not guide any decision.
 - **It is consistent with the budget.** An ambition to Transform without an investment envelope for staged bets is an unbacked statement (and triggers condition IT-D1 in document 12 without evidence to support it).
 - **It is verifiable.** Section 8 uses framework indicators with current value, target and horizon.
-- **It is consistent with capacity.** The ambition in the value spheres does not exceed what the enabling spheres can support within the horizon, or it includes the initiatives that close that gap.
+- **It is consistent with capacity.** The ambition in the value spheres does not exceed what the enabling spheres can support within the horizon, or it includes the use cases that close that gap.
 - **It takes a position on people.** Avoiding the question does not resolve it: it delegates it to each project.
 
 ### 3.4 Illustrative extract
@@ -121,7 +121,7 @@ For each value and enabling sphere (01 to 07):
 |---|---|---|
 | **Priority** | High · Medium · Low · Non-priority | There should be at most three high-priority spheres. |
 | **Target ambition** | Optimise · Augment · Transform | Highest level the company wants to reach in the sphere within the horizon. |
-| **Horizon** | Months | Time limit for having at least one initiative at the target level in production. |
+| **Horizon** | Months | Time limit for having at least one use case at the target level in production. |
 | **Main indicator** | An indicator from document 10 | With current value (or "no data") and target value. |
 | **Owner** | Member of senior management | Accountable to the board for the ambition in the sphere. |
 
@@ -130,10 +130,10 @@ For spheres 08 and 09, instead of an ambition, the **target grade per dimension*
 ### 4.2 Rules
 
 1. The target ambition **must** be based on the current sphere map from C1: the level achieved and the level in the portfolio for each sphere are indicated.
-2. A sphere with a **Transform** ambition must have an envelope in the framework budget and, within the horizon, at least one candidate initiative.
+2. A sphere with a **Transform** ambition must have an envelope in the framework budget and, within the horizon, at least one candidate use case.
 3. An ambition to Augment or Transform in value spheres **should** be accompanied by a sufficient grade or ambition in the enabling spheres on which it depends.
-4. Spheres 08 and 09 **must** have at least a **Systematic** target grade in Compliance and in Structure when the company has high-risk systems or Enterprise initiatives.
-5. "Non-priority" spheres may have initiatives, but their combined cost should not exceed the limit on off-thesis investment set in the strategic appetite (section 5.3).
+4. Spheres 08 and 09 **must** have at least a **Systematic** target grade in Compliance and in Structure when the company has high-risk systems or Enterprise use cases.
+5. "Non-priority" spheres may have use cases, but their combined cost should not exceed the limit on off-thesis investment set in the strategic appetite (section 5.3).
 
 ### 4.3 Illustrative example
 
@@ -145,7 +145,7 @@ For spheres 08 and 09, instead of an ambition, the **target grade per dimension*
 | 02 · Product and service | High | Transform | 24 months | IE02.01 AI-enabled revenue: 0.01% → 0.5% |
 | 03 · People | High | Augment | 18 months | IE03.03 Reassigned capacity: 20% → 50% |
 | 04 · Operations | High | Optimise | 12 months | IE04.06 Validated materialised savings: €1.80M → €2.50M |
-| 05 · Data | Medium | Augment | 18 months | IE05.06 Initiatives blocked by data: no data → < 20% |
+| 05 · Data | Medium | Augment | 18 months | IE05.06 Use cases blocked by data: no data → < 20% |
 | 06 · Knowledge | Medium | Augment | 24 months | IE06.02 Concentration of knowledge: no data → < 30% |
 | 07 · Decision | Low | Optimise | 24 months | IE07.01 Decisions with assigned autonomy: no data → 100% |
 
@@ -191,7 +191,7 @@ A Critical residual risk without the exceptional approval provided for **blocks 
 | **EST** | Strategic | Moderate (Open in staged Transform bets) | We take on risk to build advantage, always within the thesis and with the ability to stop. |
 | **TEC** | Technical | Moderate | We accept imperfections in systems with human oversight; not in systems that act without it. |
 | **DAT** | Data | Cautious | We do not use data without a legal basis or without a quality owner. |
-| **ECO** | Economic | Moderate | We accept that some initiatives may not generate value, but not that they continue without evidence. |
+| **ECO** | Economic | Moderate | We accept that some use cases may not generate value, but not that they continue without evidence. |
 | **LEG** | Legal and compliance | Averse | Zero tolerance for prohibited practices and breached regulatory obligations. |
 | **ORG** | Organisational | Moderate | We accept the effort of change; we do not accept changes without a plan for people. |
 | **REP** | Reputational | Cautious | We do not expose customers to systems that we cannot explain, oversee and correct. |
@@ -204,7 +204,7 @@ A Critical residual risk without the exceptional approval provided for **blocks 
 | Category | Metric | Formula | Tolerance (amber) | Limit (red) |
 |---|---|---|---|---|
 | EST | Off-thesis investment | Cost in non-priority spheres ÷ portfolio cost × 100 | > 10% | > 20% |
-| EST | Concentration in one initiative | Cost of the largest initiative ÷ portfolio cost × 100 | > 25% | > 40% |
+| EST | Concentration in one use case | Cost of the largest use case ÷ portfolio cost × 100 | > 25% | > 40% |
 | EST | Deviation from portfolio balance | Consecutive quarters outside the bands in section 8 | 1 | 2 |
 | TEC | Degradation without action | Systems in production below their performance threshold for more than 30 days without recorded action | 1 | 2, or 1 Enterprise |
 | TEC | Serious technical incidents | S1 or S2 incidents with a technical cause in the quarter | 1 S2 | 1 S1 or 3 S2 |
@@ -212,15 +212,15 @@ A Critical residual risk without the exceptional approval provided for **blocks 
 | DAT | Personal data without a legal basis | Datasets used in AI without a documented legal basis (IE05.03) | — | ≥ 1 |
 | DAT | Lineage in Enterprise | Enterprise systems with verified lineage ÷ Enterprise systems × 100 | < 100% | < 90% |
 | DAT | Blocking due to data | IE05.06 | > 25% | > 40% |
-| ECO | Recurring cost deviation | Initiatives with actual recurring cost > 115% of that approved at G3 | 1 | 1 with deviation > 130% |
+| ECO | Recurring cost deviation | Use cases with actual recurring cost > 115% of that approved at G3 | 1 | 1 with deviation > 130% |
 | ECO | Validated value | Condition B2 in document 12 | < 50% | < 30% |
-| ECO | Negative net value without a decision | Initiatives with negative annual net value more than 12 months after G5 without a G7 decision | 1 | 2 |
-| LEG | Prohibited practices | Systems or initiatives that constitute a prohibited practice | — | ≥ 1 |
+| ECO | Negative net value without a decision | Use cases with negative annual net value more than 12 months after G5 without a G7 decision | 1 | 2 |
+| LEG | Prohibited practices | Systems or use cases that constitute a prohibited practice | — | ≥ 1 |
 | LEG | Required assessments | High-risk systems in production without the required assessments | — | ≥ 1 |
 | LEG | Pending classification | Systems "Pending classification" for more than 90 days | 1 | 3, or 1 in production |
 | LEG | Critical nonconformities | Critical nonconformities open beyond their time limit | — | ≥ 1 |
 | ORG | Adoption | Effective adoption six months after G5 ÷ hypothesis target × 100 | < 80% | < 50% |
-| ORG | Adoption plan | Augment or Transform initiatives in phase 4 or later without an adoption plan | — | ≥ 1 |
+| ORG | Adoption plan | Augment or Transform use cases in phase 4 or later without an adoption plan | — | ≥ 1 |
 | ORG | Unconverted capacity | Capacity released more than 12 months ago that has been neither materialised nor reassigned ÷ released capacity × 100 | > 50% | > 70% |
 | REP | Visible incidents | S1 or S2 incidents with customer or public exposure in the quarter | 1 S2 | 1 S1 or 2 S2 |
 | REP | AI-related complaints | Quarterly change in IE01.06 | > +25% | > +50% |
@@ -275,18 +275,18 @@ Amounts are rounded and reviewed annually in C5. The anchors for the other four 
 
 | Threshold | Definition | Illustrative rule | Example (EBITDA €50M) |
 |---|---|---|---|
-| **Enterprise investment threshold** | Total three-year cost of the initiative: build + expected recurring cost for the first three years. If it exceeds the threshold, the initiative is Enterprise (document 01, section 9.2). | 0.5% of EBITDA | €250k |
-| **Express threshold** | Total three-year cost below which an initiative that meets the other conditions in 01 §9.4 may have Express intensity. | 0.05% of EBITDA | €25k |
-| **Cost per governance hour and proportionality targets** | Cost per hour used to value the declared governance hours and maximum cost of governance of an initiative over its investment, by intensity (principle 11; 41 IND-COS-12 to 14). They are reviewed in C5 with the measured data. | Average cost per hour of the profiles involved; Express 5%, Lite 10%, Enterprise 15% (starting values) | €70/h |
-| **Materiality for the board** | Initiatives reported individually on the board dashboard, in addition to all Transform initiatives and those with High residual risk. | 2% of EBITDA | €1M |
+| **Enterprise investment threshold** | Total three-year cost of the use case: build + expected recurring cost for the first three years. If it exceeds the threshold, the use case is Enterprise (document 01, section 9.2). | 0.5% of EBITDA | €250k |
+| **Express threshold** | Total three-year cost below which a use case that meets the other conditions in 01 §9.4 may have Express intensity. | 0.05% of EBITDA | €25k |
+| **Cost per governance hour and proportionality targets** | Cost per hour used to value the declared governance hours and maximum cost of governance of a use case over its investment, by intensity (principle 11; 41 IND-COS-12 to 14). They are reviewed in C5 with the measured data. | Average cost per hour of the profiles involved; Express 5%, Lite 10%, Enterprise 15% (starting values) | €70/h |
+| **Materiality for the board** | Use cases reported individually on the board dashboard, in addition to all Transform use cases and those with High residual risk. | 2% of EBITDA | €1M |
 | **Board approval by amount** (optional) | The company **may** require board approval above a certain amount, in accordance with its internal delegation rules. | According to internal rules | — |
-| **Minimum scale in production (B3)** | Number of initiatives in production that the transformation index requires for Efficiency at scale (document 12). | 5 by default; adjustable to size | 5 |
+| **Minimum scale in production (B3)** | Number of use cases in production that the transformation index requires for Efficiency at scale (document 12). | 5 by default; adjustable to size | 5 |
 
 Rules:
 
-- **Aggregation.** Initiatives that share an objective, sponsor and platform, or that are stages of the same bet, are added together to apply the thresholds. Splitting an initiative to stay below a threshold is a **major nonconformity**.
+- **Aggregation.** Use cases that share an objective, sponsor and platform, or that are stages of the same bet, are added together to apply the thresholds. Splitting a use case to stay below a threshold is a **major nonconformity**.
 - **Review.** If during execution the total three-year cost exceeds the threshold, the intensity is reviewed at the next *gate* or in R6.
-- **Minimum intensity.** The economic threshold only adds one criterion: an initiative below the threshold may be Enterprise by virtue of any other criterion.
+- **Minimum intensity.** The economic threshold only adds one criterion: a use case below the threshold may be Enterprise by virtue of any other criterion.
 
 ---
 
@@ -304,13 +304,13 @@ Rules:
 
 - The horizon applies to the **confirmed level** at G2. If the actual ambition turns out to be lower, the horizon for the actual level is applied at G7 (document 12, section 3.6).
 - An expired horizon without the criterion being met **brings G7 forward**.
-- Initiatives for mandatory compliance or for reducing a significant risk may be justified by **avoided risk** or **compliance**, which are not added to value unless they are translated into money with a formula.
+- Use cases for mandatory compliance or for reducing a significant risk may be justified by **avoided risk** or **compliance**, which are not added to value unless they are translated into money with a formula.
 
 ---
 
 ## 8. Target portfolio balance by ambition
 
-The balance is expressed as **bands** of the proportion of portfolio cost (investment executed plus recurring cost over the last 12 months, excluding initiatives with primary sphere 08 or 09), using the same formula as signal 1 of the transformation index.
+The balance is expressed as **bands** of the proportion of portfolio cost (investment executed plus recurring cost over the last 12 months, excluding use cases with primary sphere 08 or 09), using the same formula as signal 1 of the transformation index.
 
 *Illustrative reference stances. The company chooses one or sets its own bands.*
 
@@ -324,21 +324,21 @@ Rules:
 
 1. If the thesis sets **Transform** as the target ambition in any sphere, the Transform band **cannot start at 0%** beyond the first year, or the company will be declaring a transformation without funding it.
 2. The balance is measured quarterly in C4. Being outside the band for one quarter is amber; for two quarters, red (EST metric in section 5.3).
-3. Correction is made in C3 by prioritising initiatives, not by reclassifying existing ones. Reclassifying to get within the band without evidence is a major nonconformity (document 12, section 3.6).
+3. Correction is made in C3 by prioritising use cases, not by reclassifying existing ones. Reclassifying to get within the band without evidence is a major nonconformity (document 12, section 3.6).
 4. Investment in governance and compliance enablement (spheres 08 and 09) is budgeted in its own envelope (section 12).
 
 ---
 
 ## 9. Reference time limits
 
-The board approves the lifecycle reference time limits, which the initiative register uses to flag stalled initiatives. The indicative starting values are in **document 03, section 3.6**, and are recalibrated in C5 with the company's own data. The C2 decision includes:
+The board approves the lifecycle reference time limits, which the use case register uses to flag stalled use cases. The indicative starting values are in **document 03, section 3.6**, and are recalibrated in C5 with the company's own data. The C2 decision includes:
 
 | Time limit | Indicative value | Source |
 |---|---|---|
 | Time limit per phase (0, 1, 2, 3, 4, 5 and 7), Lite and Enterprise | Table in document 03, section 3.6 | 03 |
 | *Gate* decision from request | 5 working days (Lite) · 10 working days (Enterprise) | 03 |
 | Frequency of the continuity review (R6) | At least every six months (Lite) · at least quarterly (Enterprise) | 01, section 6.8 |
-| Regularisation of initiatives in production prior to adoption of the framework | 12 months (illustrative value) | 01, section 14 |
+| Regularisation of use cases in production prior to adoption of the framework | 12 months (illustrative value) | 01, section 14 |
 | Regulatory classification of an inventoried system | 90 days (illustrative value) | Section 5.3 |
 | Maximum time limit for a *gate* condition | Until the next *gate*; 90 days in R6 (illustrative value) | 01, section 7.4 |
 
@@ -395,7 +395,7 @@ Article 5 of the EU AI Act prohibits certain practices, applicable since 2 Febru
 - Biometric categorisation to infer race, political opinions, trade union membership, religious or philosophical beliefs, sex life or sexual orientation, with the exceptions provided for.
 - Real-time remote biometric identification in publicly accessible spaces for law enforcement purposes, save for the exceptions provided for.
 
-Treatment in SEVEN-G: **zero tolerance**. No initiative that may constitute a prohibited practice passes phase 3 (document 01, section 6.5); if one is detected in production, it is a critical nonconformity and the system is stopped. The interpretation of each case requires qualified legal judgement.
+Treatment in SEVEN-G: **zero tolerance**. No use case that may constitute a prohibited practice passes phase 3 (document 01, section 6.5); if one is detected in production, it is a critical nonconformity and the system is stopped. The interpretation of each case requires qualified legal judgement.
 
 ### 11.2 What is never delegated to AI
 
@@ -428,16 +428,16 @@ Red lines are incorporated into the questionnaires for intensity (T04), regulato
 
 ## 12. Framework budget
 
-The framework budget is the annual amount that the board authorises for AI and the rules by which it is allocated. It does not replace the budget of each initiative, which is approved at its *gate*.
+The framework budget is the annual amount that the board authorises for AI and the rules by which it is allocated. It does not replace the budget of each use case, which is approved at its *gate*.
 
 | Envelope | Content | Rule |
 |---|---|---|
-| **Optimise** | Build of optimisation initiatives. | Within the band in section 8. |
-| **Augment** | Build and adoption of augmentation initiatives. | Within the band in section 8. |
+| **Optimise** | Build of optimisation use cases. | Within the band in section 8. |
+| **Augment** | Build and adoption of augmentation use cases. | Within the band in section 8. |
 | **Staged Transform** | Approved stages of transformation bets. | Released stage by stage after the competent body's decision on the milestones. |
-| **Enablement** | Data, common platform, governance and compliance (including initiatives in spheres 08 and 09) and AI initiatives for IT and cyber defence (40 §7.3). | Justified by the spheres it enables. |
+| **Enablement** | Data, common platform, governance and compliance (including use cases in spheres 08 and 09) and AI use cases for IT and cyber defence (40 §7.3). | Justified by the spheres it enables. |
 | **Committed recurring cost** | Operation of systems in production. | Budgeted in full; it does not compete with build. |
-| **Adoption and training** | AI literacy, role-based training and change management not charged to initiatives. | It should be explicit, not residual. |
+| **Adoption and training** | AI literacy, role-based training and change management not charged to use cases. | It should be explicit, not residual. |
 | **Contingency** | Unforeseen events and unplanned opportunities. | Allocated by the AI Committee, with a record. |
 
 Spending is also reported by the **cost categories** in document 42: licences · model consumption · compute and infrastructure · data · build staff · operations staff · suppliers and services · control and compliance · adoption and training.
@@ -629,7 +629,7 @@ The annex is completed with template P35.
 | Phase 7 | | | |
 | *Gate* decision | | | Working days. |
 | R6 frequency | | | No longer than every six months (Lite) or quarterly (Enterprise). |
-| Regularisation of earlier initiatives | | | Months. |
+| Regularisation of earlier use cases | | | Months. |
 | Pending regulatory classification | | | Days. |
 
 ### L. Nonconformity and incident time limits
@@ -697,7 +697,7 @@ The annex is completed with template P35.
 | Code | Name | Use in this document |
 |---|---|---|
 | **T19** | AI thesis and risk appetite template | Board decision document (annex). |
-| **T01** | Initiative register | Receives reference time limits, portfolio bands and horizons. |
+| **T01** | Use case register | Receives reference time limits, portfolio bands and horizons. |
 | **T04** | Intensity determination | Receives the Enterprise investment threshold and the red lines. |
 | **T06** | Risk matrix and register | Receives the economic impact thresholds and the appetite grades. |
 | **T08** | Nonconformity and incident register | Receives the approved time limits. |
@@ -717,7 +717,7 @@ The annex is completed with template P35.
 | Document | Relationship |
 |---|---|
 | **01 · Foundational methodology** | Stage C2, Enterprise criteria, *gate* criteria by ambition, nonconformity time limits. |
-| **03 · Tools and initiative register** | Indicative reference time limits (section 3.6) and tool T19. |
+| **03 · Tools and use case register** | Indicative reference time limits (section 3.6) and tool T19. |
 | **10 · Sphere map and ambition levels** | Spheres, levels, grades for 08 and 09 and main indicators. |
 | **11 · Maturity model** | Target maturity in the thesis. |
 | **12 · Transformation index** | Target profile, condition IT-D1, threshold B3 and signal 1. |
@@ -739,4 +739,4 @@ The annex is completed with template P35.
 |---|---|---|
 | 0.1 | 16-09-2026 | First version. Defines the twelve components of the C2 decision: structure of the AI thesis, ambition per sphere, appetite grades and tolerance metrics for the ten risk categories, proportionate economic impact thresholds, Enterprise investment and materiality thresholds, return horizon by level, portfolio balance bands, time limits, red lines, framework budget and review. Includes as an annex the board decision document template (T19). |
 | 0.2 | 01-10-2026 | Section 6 and block H: Express threshold (01 §9.4), cost per governance hour and proportionality targets by intensity (41 IND-COS-12 to 14). |
-| 0.3 | 19-10-2026 | Section 12: the enablement envelope includes AI initiatives for IT and cyber defence (40 §7.3) (D159). |
+| 0.3 | 19-10-2026 | Section 12: the enablement envelope includes AI use cases for IT and cyber defence (40 §7.3) (D159). |

@@ -1,6 +1,6 @@
 # Matriz de obligatoriedad y lectura por capas
 
-**Qué es obligatorio siempre, qué depende de la compañía o de la iniciativa, qué puede agruparse y qué nunca se omite**
+**Qué es obligatorio siempre, qué depende de la compañía o del caso de uso, qué puede agruparse y qué nunca se omite**
 
 | | |
 |---|---|
@@ -24,7 +24,7 @@ No todas las compañías tienen la misma capacidad de esfuerzo ni la misma expos
 
 Este documento reúne en un solo lugar lo que otros documentos establecen sobre proporcionalidad:
 
-- la **intensidad** de cada iniciativa, Express, Lite o Enterprise (documento 01, sección 9);
+- la **intensidad** de cada caso de uso, Express, Lite o Enterprise (documento 01, sección 9);
 - el **alcance de implantación** de la compañía, Lite o Enterprise, y su ruta mínima (documento 90, sección 2);
 - la **obligatoriedad de cada criterio** de puerta y su aplicación en Lite (documento 21, sección 2);
 - los **ámbitos** que solo aplican a ciertas tecnologías: IA generativa, agentes y terceros (documento 21, sección 2.3).
@@ -42,17 +42,17 @@ No crea reglas nuevas. Si una fila de este documento discrepa de su documento de
 | Capa | Qué contiene | Para quién |
 |---|---|---|
 | **1 · Esencial** | Lo que toda compañía aplica, sea cual sea su tamaño: los elementos de nivel *Siempre*. Cada documento lo resume en su recuadro **«Lo esencial»**, tras el aviso legal. | Toda compañía, desde el primer día. |
-| **2 · Condicional** | Módulos que se activan cuando se da un disparador (sección 4): niveles *Enterprise* y *Condicional*. | La compañía o la iniciativa que cumple el disparador. |
+| **2 · Condicional** | Módulos que se activan cuando se da un disparador (sección 4): niveles *Enterprise* y *Condicional*. | La compañía o el caso de uso que cumple el disparador. |
 | **3 · Completa** | Guías de trabajo, catálogos, ejemplos y material de referencia: niveles *Recomendado* y *Consulta*. | Quien necesita profundizar en un tema. |
 
-Una compañía mediana con iniciativas Lite trabaja en la capa 1 y entra en la capa 2 solo por donde sus iniciativas la llevan. Un grupo regulado con alcance Enterprise aplica las capas 1 y 2 casi completas. La capa 3 está disponible para todos.
+Una compañía mediana con casos de uso Lite trabaja en la capa 1 y entra en la capa 2 solo por donde sus casos de uso la llevan. Un grupo regulado con alcance Enterprise aplica las capas 1 y 2 casi completas. La capa 3 está disponible para todos.
 
 ### 2.2 Cinco niveles de obligatoriedad
 
 | Nivel | Significado | Vocabulario de 01 |
 |---|---|---|
-| **Siempre** | Obligatorio en toda compañía y en toda iniciativa, Lite o Enterprise. En Lite puede simplificarse; no omitirse. | debe |
-| **Enterprise** | Obligatorio completo cuando la iniciativa tiene intensidad Enterprise o la compañía tiene alcance Enterprise. En Lite existe una versión reducida, que se indica. | debe, con esa condición |
+| **Siempre** | Obligatorio en toda compañía y en todo caso de uso, Lite o Enterprise. En Lite puede simplificarse; no omitirse. | debe |
+| **Enterprise** | Obligatorio completo cuando el caso de uso tiene intensidad Enterprise o la compañía tiene alcance Enterprise. En Lite existe una versión reducida, que se indica. | debe, con esa condición |
 | **Condicional** | Obligatorio solo cuando se da su disparador. Sin disparador, no aplica y se registra así. | debe, con esa condición |
 | **Recomendado** | Guía de trabajo o buena práctica. Puede omitirse con justificación. Lo obligatorio que desarrolla ya está recogido en otro documento o en una plantilla. | debería |
 | **Consulta** | Material de referencia: glosario, catálogos, ejemplos, explicaciones. | puede |
@@ -65,25 +65,25 @@ La biblioteca distingue tres clases de contenido, para que el núcleo sea peque�
 
 | Clase | Qué es | Dónde está | Qué se exige |
 |---|---|---|---|
-| **Principio obligatorio** | Condición necesaria para decir que se aplica SEVEN-G: las catorce reglas del núcleo (N-01 a N-14). | Documento 01, sección 14.1; sección 3 de este documento | Se cumple siempre, en toda compañía e iniciativa. |
+| **Principio obligatorio** | Condición necesaria para decir que se aplica SEVEN-G: las catorce reglas del núcleo (N-01 a N-14). | Documento 01, sección 14.1; sección 3 de este documento | Se cumple siempre, en toda compañía y en todo caso de uso. |
 | **Práctica** | Forma de cumplir el núcleo: criterios de puerta, reglas de medición, procedimientos de riesgo, operación, auditoría… Es **obligatoria** cuando su nivel es *Siempre*, *Enterprise* o *Condicional* y se da su condición, y **recomendada** en los niveles *Recomendado* y *Consulta*. | Documentos numerados (sección 6) | Lo que dice su nivel. |
 | **Instrumento** | Plantilla o herramienta que facilita la práctica. **Lo obligatorio es la evidencia que ordena, no su formato**: una evidencia que la compañía ya tiene (un caso de negocio, una evaluación de impacto, un contrato) sirve si cubre lo que pide el criterio (documento 21, sección 4). | Plantillas (sección 7) y herramientas (sección 8) | Que la evidencia exista y se pueda verificar. |
 
-El principio 11 de 01 §3, **proporcionalidad**, gobierna cómo se aplica todo lo que no es núcleo: ninguna evidencia se pide dos veces, ninguna decisión necesita más participantes de los que exige la separación de funciones y ninguna iniciativa soporta un coste de gobierno desproporcionado a su riesgo y materialidad.
+El principio 11 de 01 §3, **proporcionalidad**, gobierna cómo se aplica todo lo que no es núcleo: ninguna evidencia se pide dos veces, ninguna decisión necesita más participantes de los que exige la separación de funciones y ningún caso de uso soporta un coste de gobierno desproporcionado a su riesgo y materialidad.
 
 ---
 
 ## 3. Lo que nunca se omite
 
-Estas catorce reglas son el **núcleo de SEVEN-G** (documento 01, sección 14.1): valen para cualquier compañía, con cualquier alcance y en cualquier iniciativa, y son las que distinguen aplicar SEVEN-G de usar algunas de sus plantillas. Se repiten aquí para tenerlas a mano; si difieren, prevalece el documento 01.
+Estas catorce reglas son el **núcleo de SEVEN-G** (documento 01, sección 14.1): valen para cualquier compañía, con cualquier alcance y en cualquier caso de uso, y son las que distinguen aplicar SEVEN-G de usar algunas de sus plantillas. Se repiten aquí para tenerlas a mano; si difieren, prevalece el documento 01.
 
 <!-- tabla: codigo-primero -->
 | Código | Regla | Origen |
 |---|---|---|
 | **N-01** | **Inventario completo** de los sistemas de IA —propios, de terceros, de uso corporativo y no autorizados— con responsable, clasificación regulatoria e intensidad. | documento 32; documento 90, sección 2.4 |
-| **N-02** | **Toda iniciativa se registra** antes de consumir presupuesto, con sus fechas por fase, decisiones, criterios y motivo de cierre (trazabilidad de 01 §6.11). | documento 01, sección 6.11; documento 03 |
-| **N-03** | **La intensidad se determina en cada iniciativa** en la fase 0 y se revisa en G3 y en cada R6. Basta un criterio Enterprise. | documento 01, sección 9 |
-| **N-04** | **Ninguna fase ni puerta se salta**: toda iniciativa pasa por todas las puertas de su ciclo de vida y cada una queda registrada con sus criterios y su resultado. Qué criterios se evalúan y qué sesiones pueden agruparse depende de la intensidad. | documento 01, secciones 7 y 9; documento 21, sección 3.4 |
+| **N-02** | **Todo caso de uso se registra** antes de consumir presupuesto, con sus fechas por fase, decisiones, criterios y motivo de cierre (trazabilidad de 01 §6.11). | documento 01, sección 6.11; documento 03 |
+| **N-03** | **La intensidad se determina en cada caso de uso** en la fase 0 y se revisa en G3 y en cada R6. Basta un criterio Enterprise. | documento 01, sección 9 |
+| **N-04** | **Ninguna fase ni puerta se salta**: todo caso de uso pasa por todas las puertas de su ciclo de vida y cada una queda registrada con sus criterios y su resultado. Qué criterios se evalúan y qué sesiones pueden agruparse depende de la intensidad. | documento 01, secciones 7 y 9; documento 21, sección 3.4 |
 | **N-05** | **G3 se decide siempre por separado**: es la principal puerta de parada. | documento 01, sección 6.1; documento 90, sección 2.4 |
 | **N-06** | **Separación de funciones**: roles y órganos asignados con las incompatibilidades de 01 §8.2; quien construye no verifica ni decide su propio trabajo, y la conformidad de riesgos es independiente del equipo. | documento 01, sección 8; documento 30 |
 | **N-07** | **Validación dual y evidencia anterior a la decisión**: sin evidencia verificada no hay decisión. | documento 01, sección 7.2; documento 21, secciones 3 y 4 |
@@ -99,7 +99,7 @@ Estas catorce reglas son el **núcleo de SEVEN-G** (documento 01, sección 14.1)
 
 ## 4. Disparadores
 
-Un disparador es una circunstancia verificable de la compañía o de la iniciativa que activa un módulo. Los ocho primeros son los criterios Enterprise de 01 §9.2: cualquiera de ellos da intensidad Enterprise a la iniciativa.
+Un disparador es una circunstancia verificable de la compañía o del caso de uso que activa un módulo. Los ocho primeros son los criterios Enterprise de 01 §9.2: cualquiera de ellos da intensidad Enterprise al caso de uso.
 
 | # | Disparador | Qué activa |
 |---|---|---|
@@ -115,11 +115,11 @@ Un disparador es una circunstancia verificable de la compañía o de la iniciati
 | 10 | **Agentes con autonomía A1** (criterios con etiqueta AG) | Criterios AG del documento 21 · controles mínimos por autonomía del documento 35 |
 | 11 | Interviene un **proveedor de IA** (criterios con etiqueta TER), también IA embebida en software contratado | documento 36 · P14 · P55, P56 y P57 según el nivel N1 a N3 |
 | 12 | Se tratan **datos personales** | documento 34 (RGPD) · P47 cuando el tratamiento lo exige · documento 51 |
-| 13 | La iniciativa **cambia el trabajo** de las personas o libera capacidad | documento 50 · documento 23 completo · P46 |
+| 13 | El caso de uso **cambia el trabajo** de las personas o libera capacidad | documento 50 · documento 23 completo · P46 |
 | 14 | La solución se construye con **código generado con IA** | documento 53 · P66 |
 | 15 | La compañía cumple un criterio de **alcance Enterprise** (90 §2.2) | Comité de IA con sesión propia · auditor en cada puerta Enterprise · documento 38 completo · P42 · madurez independiente cada dos años |
 
-Una apuesta de Transformar aislada hace Enterprise a esa iniciativa, pero **no cambia el alcance de la compañía** (documento 90, sección 2.2).
+Una apuesta de Transformar aislada hace Enterprise a ese caso de uso, pero **no cambia el alcance de la compañía** (documento 90, sección 2.2).
 
 ---
 
@@ -136,12 +136,12 @@ Una apuesta de Transformar aislada hace Enterprise a esa iniciativa, pero **no c
 | **6 · Operación → R6** | No | Revisión de continuidad **semestral**. | Revisión **trimestral**. |
 | **7 · Evolución o retirada → G7** | No. Se convoca cuando se propone escalar o retirar, o cuando R6 lo adelanta | Decide el patrocinador. | Decide el comité de IA; el consejo, si se escala una apuesta de Transformar. |
 
-**En intensidad Express** (01 §9.4) las puertas se agrupan como en Lite y G3 sigue por separado, pero puede resolverse por escrito con la conformidad de riesgos registrada; cada puerta se evalúa con la lista reducida de 21 §2.5 (todos los «Sí ◆» que apliquen y los criterios que sostienen el núcleo) y la revisión de continuidad es anual. Si aparece un criterio Enterprise o deja de cumplirse la elegibilidad, la iniciativa pasa a Lite o a Enterprise.
+**En intensidad Express** (01 §9.4) las puertas se agrupan como en Lite y G3 sigue por separado, pero puede resolverse por escrito con la conformidad de riesgos registrada; cada puerta se evalúa con la lista reducida de 21 §2.5 (todos los «Sí ◆» que apliquen y los criterios que sostienen el núcleo) y la revisión de continuidad es anual. Si aparece un criterio Enterprise o deja de cumplirse la elegibilidad, el caso de uso pasa a Lite o a Enterprise.
 
 **Tres situaciones que parecen saltos y no lo son:**
 
 - **Sistemas que ya estaban en producción** antes de implantar el marco. No recorren las fases hacia atrás: se sitúan en la fase que acreditan sus evidencias reales y pasan una revisión equivalente a G7, con documentación identificada como de regularización (documento 14, sección 11; documento 90, sección 5).
-- **Uso corporativo de herramientas de IA de propósito general.** No es una iniciativa con fases: se gobierna con la política de uso aceptable, el catálogo de herramientas autorizadas y el inventario (documento 31, sección 5).
+- **Uso corporativo de herramientas de IA de propósito general.** No es un caso de uso con fases: se gobierna con la política de uso aceptable, el catálogo de herramientas autorizadas y el inventario (documento 31, sección 5).
 - **Una oportunidad que llega ya muy definida.** Las fases 1 y 2 pueden ser breves, pero sus evidencias —alternativas sin IA, hipótesis falsable, línea base, criterios de parada— siguen siendo las que permiten parar más adelante.
 
 ---
@@ -155,17 +155,17 @@ Cada documento muestra este mismo nivel en su recuadro «Lo esencial», con la p
 | 00 | [Qué es SEVEN-G y para qué sirve a las empresas](00_SEVEN-G_Que_es_y_para_que_sirve.html) | **Siempre** | Todos |
 | 01 | [Metodología fundacional de SEVEN-G](01_SEVEN-G_Metodologia_fundacional.html) | **Siempre** | Dirección, oficina de IA, riesgos, auditoría |
 | 02 | [Glosario y convenciones de SEVEN-G](02_SEVEN-G_Glosario_y_convenciones.html) | **Consulta** | Todos |
-| 03 | [Herramientas de SEVEN-G y registro de iniciativas](03_SEVEN-G_Herramientas_y_registro_de_iniciativas.html) | **Siempre** | Oficina de IA |
+| 03 | [Herramientas de SEVEN-G y registro de casos de uso](03_SEVEN-G_Herramientas_y_registro_de_iniciativas.html) | **Siempre** | Oficina de IA |
 | 04 | [De dónde viene SEVEN-G, en qué se diferencia y por qué es abierto](04_SEVEN-G_Origenes_diferencias_y_por_que_es_abierto.html) | **Consulta** | Todos |
 | 10 | [Mapa de esferas y niveles de ambición](10_SEVEN-G_Mapa_de_esferas_y_niveles_de_ambicion.html) | **Siempre** | Dirección, oficina de IA, negocio |
 | 11 | [Modelo de madurez](11_SEVEN-G_Modelo_de_madurez.html) | **Siempre** | Oficina de IA, auditoría |
 | 12 | [Índice de transformación](12_SEVEN-G_Indice_de_transformacion.html) | **Siempre** | Consejo, dirección, oficina de IA |
 | 13 | [Tesis de IA, ambición y apetito de riesgo](13_SEVEN-G_Tesis_de_IA_ambicion_y_apetito_de_riesgo.html) | **Siempre** | Consejo, alta dirección |
 | 14 | [Gestión de cartera](14_SEVEN-G_Gestion_de_cartera.html) | **Siempre** | Comité de IA, oficina de IA |
-| 20 | [Manuales de fase](20_SEVEN-G_Manuales_de_fase.html) | **Recomendado** | Equipos de iniciativa |
+| 20 | [Manuales de fase](20_SEVEN-G_Manuales_de_fase.html) | **Recomendado** | Equipos de caso de uso |
 | 21 | [Criterios de gate y de auditoría](21_SEVEN-G_Criterios_de_gate_y_auditoria.html) | **Siempre** | Oficina de IA, verificadores, decisores |
-| 22 | [Listas de verificación por gate](22_SEVEN-G_Listas_de_verificacion_por_gate.html) | **Recomendado** | Verificadores, equipos de iniciativa |
-| 23 | [Adopción y cambio en la iniciativa](23_SEVEN-G_Adopcion_y_cambio.html) | **Recomendado** | Responsables de producto, personas |
+| 22 | [Listas de verificación por gate](22_SEVEN-G_Listas_de_verificacion_por_gate.html) | **Recomendado** | Verificadores, equipos de caso de uso |
+| 23 | [Adopción y cambio en el caso de uso](23_SEVEN-G_Adopcion_y_cambio.html) | **Recomendado** | Responsables de producto, personas |
 | 30 | [Modelo de gobierno](30_SEVEN-G_Modelo_de_gobierno.html) | **Siempre** | Dirección, secretaría del consejo, oficina de IA |
 | 31 | [Política corporativa de IA y política de uso aceptable](31_SEVEN-G_Politica_corporativa_y_uso_aceptable.html) | **Siempre** | Dirección, cumplimiento, personas |
 | 32 | [Inventario de sistemas de IA y clasificación regulatoria](32_SEVEN-G_Inventario_y_clasificacion_regulatoria.html) | **Siempre** | Oficina de IA, riesgos, cumplimiento |
@@ -203,7 +203,7 @@ Que un documento sea *Siempre* no obliga a leerlo entero: diecinueve documentos 
 
 ### 7.1 Evidencias del ciclo de vida (P01–P31)
 
-**Ninguna evidencia obligatoria se omite en Lite: se simplifica.** En Express, la ficha viva de P01 reúne la evidencia de las fases 0 a 5 y las evidencias que la compañía ya tiene se referencian (21 §4.3). Cada plantilla marca con *(Enterprise)* los campos que una iniciativa Lite puede dejar sin rellenar.
+**Ninguna evidencia obligatoria se omite en Lite: se simplifica.** En Express, la ficha viva de P01 reúne la evidencia de las fases 0 a 5 y las evidencias que la compañía ya tiene se referencian (21 §4.3). Cada plantilla marca con *(Enterprise)* los campos que un caso de uso Lite puede dejar sin rellenar.
 
 | Plantillas | Nivel | Nota |
 |---|---|---|
@@ -225,7 +225,7 @@ Que un documento sea *Siempre* no obliga a leerlo entero: diecinueve documentos 
 | P38 (reglamento o mandato de los órganos) | **Siempre** | En alcance Lite, mandato ampliado de los órganos existentes. |
 | P39 (orden del día y acta) · P44 (encuesta de uso) · P68 (notas de sesión del consejo) | **Recomendado** | La compañía puede usar sus propios formatos. |
 | P40 (excepciones) | **Condicional** | Cuando se solicita una excepción. |
-| P41 (independencia y conflictos de interés) | **Condicional** | Verificadores y auditores de iniciativas Enterprise, y acompañamiento externo. |
+| P41 (independencia y conflictos de interés) | **Condicional** | Verificadores y auditores de casos de uso Enterprise, y acompañamiento externo. |
 | P42 (informe trimestral de segunda línea) | **Enterprise** | Disparador 15. En alcance Lite, su contenido va en el punto de IA del comité de dirección. |
 | P43 (herramientas autorizadas) · P45 (alfabetización y formación) | **Siempre** | — |
 | P46 (información a los trabajadores) | **Condicional** | Disparadores 2 o 13, cuando la ley exige informar o consultar. |
@@ -251,9 +251,9 @@ Ninguna herramienta es obligatoria como aplicación: lo obligatorio es el regist
 
 | Herramienta | Nivel de lo que contiene | Nota |
 |---|---|---|
-| T01 · Registro de iniciativas (con T02 inventario, T03 puertas, T04 intensidad, T05 ambición, T06 riesgos y T18 consejo) | **Siempre** | Es la pieza central: el resto de herramientas lee sus datos. |
+| T01 · Registro de casos de uso (con T02 inventario, T03 puertas, T04 intensidad, T05 ambición, T06 riesgos y T18 consejo) | **Siempre** | Es la pieza central: el resto de herramientas lee sus datos. |
 | T14 · Índice de transformación · T15 · Diagnóstico de madurez | **Siempre** | En C1 y en cada C5. |
-| T17 · Panel del consejo | **Siempre** | Agregado en alcance Lite; por iniciativa para las Enterprise. |
+| T17 · Panel del consejo | **Siempre** | Agregado en alcance Lite; por caso de uso para los Enterprise. |
 | T11 · Calculadora de valor (con T13 costes) | **Recomendado** | Las fórmulas del documento 40 son obligatorias; la calculadora, una ayuda. |
 | T23 · Recorrido de implantación | **Recomendado** | Ordena la implantación según el punto de partida (documento 96); lo obligatorio sigue siendo lo del documento 90. |
 | Resto del catálogo | Según su procedimiento | Se aplican con la plantilla o el documento que indica el catálogo del documento 03. |
@@ -268,7 +268,7 @@ Ninguna herramienta es obligatoria como aplicación: lo obligatorio es el regist
 | **Alta dirección y comité de IA** | Documentos 00 y 01 · documento 90 (sección 2) · este documento | documento 13 · documento 14 · documento 40 |
 | **Responsable u oficina de IA** | Todo lo anterior · documento 03 · documento 21 · documento 30 (sección 11 en Lite) | Los documentos de nivel *Siempre* según avance el plan de 90 días |
 | **Riesgos, cumplimiento y auditoría** | Documento 01 (secciones 7 a 12) · documento 21 · documento 32 · documento 33 · documento 37 | documento 34 · documento 35 · documento 36 · documento 38, según los disparadores |
-| **Equipo de una iniciativa** | Documento 01 (sección 6) · la fase que toca del documento 20 · las plantillas de esa fase | documento 22 · documento 40 |
+| **Equipo de un caso de uso** | Documento 01 (sección 6) · la fase que toca del documento 20 · las plantillas de esa fase | documento 22 · documento 40 |
 | **Consultor** | Documentos 00, 01 y 04 · documento 91 · documento 93 | documento 90 · documento 92 |
 
 El [curso de SEVEN-G](curso/M00_SEVEN-G_Curso_Guia_del_curso.html) recorre estos mismos itinerarios con módulos breves, ejercicios sobre los datos de ejemplo y preguntas de autocomprobación.
@@ -279,9 +279,9 @@ El [curso de SEVEN-G](curso/M00_SEVEN-G_Curso_Guia_del_curso.html) recorre estos
 
 | Código | Nombre | Relación |
 |---|---|---|
-| P04 | Determinación de intensidad | Registra qué criterios Enterprise cumple cada iniciativa. |
-| T04 | Determinación de intensidad (módulo de T01) | Aplica los criterios de 01 §9.2 en el alta de la iniciativa. |
-| T03 | Gestor de *gates* (módulo de T01) | Muestra, para cada puerta, los criterios que aplican según la intensidad y las etiquetas de la iniciativa. |
+| P04 | Determinación de intensidad | Registra qué criterios Enterprise cumple cada caso de uso. |
+| T04 | Determinación de intensidad (módulo de T01) | Aplica los criterios de 01 §9.2 en el alta del caso de uso. |
+| T03 | Gestor de *gates* (módulo de T01) | Muestra, para cada puerta, los criterios que aplican según la intensidad y las etiquetas del caso de uso. |
 | P32 | Mandato de implantación | Fija el alcance de implantación de la compañía. |
 
 ---

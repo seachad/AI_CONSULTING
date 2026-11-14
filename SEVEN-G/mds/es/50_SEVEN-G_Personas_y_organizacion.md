@@ -16,13 +16,13 @@
 
 > **Aviso legal y exención de responsabilidad.** SEVEN-G es un marco metodológico de referencia que se ofrece «tal cual» y con fines exclusivamente informativos. No constituye asesoramiento jurídico, regulatorio, financiero ni profesional, ni garantiza el cumplimiento de ninguna norma. Las referencias a regulación general (como el Reglamento Europeo de IA, el RGPD, DORA o NIS2), a normas técnicas y a regulación específica de cada sector o jurisdicción pueden ser incompletas, no aplicar a un caso concreto o quedar desactualizadas por cambios normativos, interpretaciones o criterios de las autoridades posteriores a su fecha de consulta. **Cada organización que use SEVEN-G es la única responsable de identificar la normativa que le aplica, verificar su vigencia y certificar su propio cumplimiento regulatorio**, con el asesoramiento cualificado que corresponda. Esta metodología es una ayuda genérica y gratuita, compartida con la comunidad para que nadie tenga que empezar desde cero; cada persona u organización puede y debe adaptarla a su propio uso. No debe entenderse que sus partes jurídicamente sensibles hayan sido revisadas por una asesoría jurídica: esas revisiones, para cada empresa o sector, son responsabilidad última de la empresa, el consultor o la organización que la use. Aunque se procura mantenerla al día, alguna norma puede haber cambiado sin que se recoja aquí. En la máxima medida permitida por la ley, el autor no asume responsabilidad alguna por los efectos de su aplicación en ninguna organización ni por su aplicabilidad completa. La metodología no otorga certificación de ningún tipo. El autor no asume responsabilidad alguna por el uso que se haga de este contenido ni por las decisiones que se adopten con él. Los datos, cifras, compañías y casos de los ejemplos son ficticios o ilustrativos.
 
-<!-- esencial: condicional | Disparador: la iniciativa cambia el trabajo de las personas, libera capacidad o interviene en decisiones sobre personas. Límites que no se relajan: autonomía máxima A1 en selección y evaluación, y A0 en disciplina y despido; información a la plantilla y a su representación cuando la ley la exige. -->
+<!-- esencial: condicional | Disparador: el caso de uso cambia el trabajo de las personas, libera capacidad o interviene en decisiones sobre personas. Límites que no se relajan: autonomía máxima A1 en selección y evaluación, y A0 en disciplina y despido; información a la plantilla y a su representación cuando la ley la exige. -->
 
 ## 1. Objeto y alcance
 
 Este documento desarrolla la **esfera 03 · Personas** del mapa de impacto y el principio 10 del marco (*las personas en el centro del cambio*). Establece cómo una organización que aplica SEVEN-G debe:
 
-- Evaluar, iniciativa por iniciativa, si la IA **sustituye, aumenta o reorganiza** el trabajo.
+- Evaluar, caso de uso por caso de uso, si la IA **sustituye, aumenta o reorganiza** el trabajo.
 - Definir los **roles y capacidades** que la IA exige, desde el consejo hasta los equipos.
 - Planificar la **alfabetización en IA** y las capacidades por perfil.
 - Decidir, registrar y seguir el destino de la **capacidad liberada**.
@@ -31,7 +31,7 @@ Este documento desarrolla la **esfera 03 · Personas** del mapa de impacto y el 
 - Proteger el **bienestar, la autonomía** y la calidad de la supervisión humana.
 - Comunicar internamente con coherencia y medir todo lo anterior con **indicadores con fórmula**.
 
-**Alcance.** Se aplica a todas las iniciativas de IA y a los usos corporativos de IA de propósito general que afectan al trabajo de los empleados, a sus condiciones laborales o a decisiones sobre candidatos y empleados. La gestión del cambio y la adopción se desarrollan en el documento 23; las reglas de uso aceptable de la IA por los empleados, en el documento 31. Este documento no las repite: fija lo que es específico de las personas y de la organización.
+**Alcance.** Se aplica a todos los casos de uso de IA y a los usos corporativos de IA de propósito general que afectan al trabajo de los empleados, a sus condiciones laborales o a decisiones sobre candidatos y empleados. La gestión del cambio y la adopción se desarrollan en el documento 23; las reglas de uso aceptable de la IA por los empleados, en el documento 31. Este documento no las repite: fija lo que es específico de las personas y de la organización.
 
 **Límites.** Las referencias normativas laborales se limitan a España y a la Unión Europea, con la fecha de consulta indicada. **Otras jurisdicciones tienen reglas distintas** y deben incorporarse en la declaración de contexto (fase 0). Este documento no constituye asesoramiento jurídico.
 
@@ -43,7 +43,7 @@ Este documento desarrolla la **esfera 03 · Personas** del mapa de impacto y el 
 
 > **¿La IA sustituye, aumenta o reorganiza el trabajo de las personas?**
 
-La respuesta no es técnica. Define la cultura, la propuesta al empleado, la capacidad de atraer y retener talento y la relación con la representación de los trabajadores. Por eso SEVEN-G exige que la compañía adopte en **C2** una **posición explícita** sobre el efecto que busca en el trabajo (documento 13) y que cada iniciativa la respete o justifique la excepción.
+La respuesta no es técnica. Define la cultura, la propuesta al empleado, la capacidad de atraer y retener talento y la relación con la representación de los trabajadores. Por eso SEVEN-G exige que la compañía adopte en **C2** una **posición explícita** sobre el efecto que busca en el trabajo (documento 13) y que cada caso de uso la respete o justifique la excepción.
 
 ### 2.2 Los tres papeles del empleado ante la IA
 
@@ -51,7 +51,7 @@ La respuesta no es técnica. Define la cultura, la propuesta al empleado, la cap
 |---|---|---|
 | **Receptor** | La IA le cambia herramientas, procesos y expectativas de productividad sin que lo haya elegido. | Formación, acompañamiento, tiempo para aprender y canales para señalar problemas (documento 23). |
 | **Sujeto** | La IA puede reorganizar, reasignar o eliminar tareas o puestos, o intervenir en decisiones sobre su empleo. | Evaluación de efecto, información y consulta, controles en decisiones sobre personas y trato justo en la transición (secciones 3, 7 y 8). |
-| **Promotor** | Conoce su proceso mejor que nadie y puede proponer usos de IA que nadie externo vería. | Canal de propuestas conectado al registro de iniciativas (T01), reconocimiento y reglas de uso claras (documento 31). |
+| **Promotor** | Conoce su proceso mejor que nadie y puede proponer usos de IA que nadie externo vería. | Canal de propuestas conectado al registro de casos de uso (T01), reconocimiento y reglas de uso claras (documento 31). |
 
 Un mismo empleado puede ocupar los tres papeles a la vez. Los planes de personas deben tratar los tres y no solo el primero.
 
@@ -67,7 +67,7 @@ Los ejemplos son **ilustrativos** y no implican recomendación.
 
 ### 2.4 Qué se evalúa en la esfera 03
 
-Se evalúan siete dimensiones, cada una con su evidencia e indicadores (sección 11): **posición** aprobada en C2; **efecto por iniciativa** (P20, PER-01); **capacidades** (PER-02, PER-03); **capacidad liberada** (PER-04 a PER-06); **relaciones laborales** (PER-08); **decisiones sobre personas** (P11, P17, PER-09 a PER-12); y **bienestar** (PER-15).
+Se evalúan siete dimensiones, cada una con su evidencia e indicadores (sección 11): **posición** aprobada en C2; **efecto por caso de uso** (P20, PER-01); **capacidades** (PER-02, PER-03); **capacidad liberada** (PER-04 a PER-06); **relaciones laborales** (PER-08); **decisiones sobre personas** (P11, P17, PER-09 a PER-12); y **bienestar** (PER-15).
 
 Los indicadores de la sección 11 alimentan la dimensión **D5 Personas y adopción** del modelo de madurez (documento 11) y las señales **3 · Materialización** y **5 · Modelo operativo** del índice de transformación (documento 12).
 
@@ -83,9 +83,9 @@ Los indicadores de la sección 11 alimentan la dimensión **D5 Personas y adopci
 | **Aumenta** | La persona sigue haciendo el trabajo, pero con mayor calidad, alcance o velocidad gracias al sistema. | Mejora de rendimiento por persona; nuevas tareas antes imposibles. |
 | **Reorganiza** | Cambian los roles, la secuencia del proceso, la estructura del equipo o el reparto de decisiones entre personas y sistemas. | Nuevas descripciones de puesto; cambios de dependencia; puntos de supervisión humana nuevos. |
 
-Una iniciativa suele combinar efectos. Se registra **el efecto sobre cada tarea** y el **efecto dominante** sobre cada colectivo afectado.
+Un caso de uso suele combinar efectos. Se registra **el efecto sobre cada tarea** y el **efecto dominante** sobre cada colectivo afectado.
 
-El efecto sobre el trabajo **no es lo mismo que el nivel de ambición**. Una iniciativa de Optimizar puede sustituir muchas tareas; una de Transformar puede no reducir ninguna dotación. Las dos clasificaciones se registran por separado.
+El efecto sobre el trabajo **no es lo mismo que el nivel de ambición**. Un caso de uso de Optimizar puede sustituir muchas tareas; uno de Transformar puede no reducir ninguna dotación. Las dos clasificaciones se registran por separado.
 
 ### 3.2 Unidad de análisis
 
@@ -95,7 +95,7 @@ El efecto se evalúa en tres niveles, de lo concreto a lo agregado:
 2. **Puesto o rol.** Qué proporción del tiempo del puesto se ve afectada y cómo cambian sus responsabilidades, su autonomía y su supervisión.
 3. **Colectivo y organización.** Cuántas personas, en qué áreas, centros y categorías, y con qué efecto previsible en dotación, estructura, cualificación requerida y condiciones de trabajo.
 
-### 3.3 Cómo se evalúa por iniciativa
+### 3.3 Cómo se evalúa por caso de uso
 
 | Fase | Actividad | Resultado registrado |
 |---|---|---|
@@ -123,7 +123,7 @@ El responsable de producto realiza la evaluación; el patrocinador responde de e
 
 ### 3.5 Regla de intensidad
 
-El efecto sobre el trabajo no crea por sí solo un criterio Enterprise, pero **debe revisarse la intensidad** (T04) cuando la evaluación detecta decisiones sobre personas, cambios significativos en condiciones de trabajo o reducciones de dotación. En esos casos la iniciativa **debería** tratarse como Enterprise aunque no cumpla otro criterio, y si se mantiene en Lite se registra la justificación.
+El efecto sobre el trabajo no crea por sí solo un criterio Enterprise, pero **debe revisarse la intensidad** (T04) cuando la evaluación detecta decisiones sobre personas, cambios significativos en condiciones de trabajo o reducciones de dotación. En esos casos el caso de uso **debería** tratarse como Enterprise aunque no cumpla otro criterio, y si se mantiene en Lite se registra la justificación.
 
 ---
 
@@ -139,7 +139,7 @@ El efecto sobre el trabajo no crea por sí solo un criterio Enterprise, pero **d
 | **Oficina de IA** | Mantiene el método de evaluación de efecto y consolida indicadores y registro de capacidad liberada. |
 | **Dirección de personas** | Corresponsable de la evaluación de efecto, del plan de capacidades y de la relación con la representación. |
 | **Mandos intermedios** | Rediseñan el trabajo diario, lideran equipos mixtos persona-sistema y ejecutan la reasignación. |
-| **Equipos de iniciativa** | Construyen y operan con criterio sobre el efecto en las personas. |
+| **Equipos de caso de uso** | Construyen y operan con criterio sobre el efecto en las personas. |
 | **Usuarios y supervisores humanos** | Usan el sistema y validan, corrigen o interrumpen sus resultados con autoridad para discrepar. |
 | **Representación de los trabajadores** | Recibe información comprensible y participa en consulta cuando proceda (sección 7). |
 
@@ -175,14 +175,14 @@ Los roles de SEVEN-G (documento 01 §8) no cambian. Las funciones siguientes **p
 |---|---|---|
 | Autonomía y confianza | Dé objetivos de resultado y deje al equipo decidir cómo llega a ellos. Controle en las puertas, no en cada tarea. | Fases y puertas (documento 01); separación de funciones (documento 30) |
 | Retribución competitiva | Compare la retribución con el mercado técnico, no solo con la tabla interna de su sector. | Posición sobre personas de la tesis de IA (documento 13) |
-| Problemas reales | Asigne a las personas a iniciativas con patrocinador, hipótesis de valor y fecha de decisión. Pare pronto lo que no va a llegar. | Embudo de la cartera (documento 14); puerta de viabilidad (G3) |
+| Problemas reales | Asigne a las personas a casos de uso con patrocinador, hipótesis de valor y fecha de decisión. Pare pronto lo que no va a llegar. | Embudo de la cartera (documento 14); puerta de viabilidad (G3) |
 
 **Seis palancas.** Ninguna funciona sola. Las seis juntas dan a la persona carrera, proyectos y reconocimiento.
 
 | # | Palanca | Qué hacer | Ejemplo comprobado o apoyo |
 |---|---|---|---|
 | 1 | **Carrera técnica paralela a la de gestión** | Defina niveles técnicos con sus expectativas, hasta un nivel equivalente al de dirección. Una persona puede crecer en retribución y en influencia sin gestionar personas. Publique los niveles dentro de la compañía. | El marco de carrera de ingeniería de Dropbox es público: tiene niveles técnicos de IC1 a IC7 (el último, «Senior Principal») y niveles de gestión de M3 a M7, con las expectativas de cada nivel. |
-| 2 | **Proyectos que llegan a producción** | Dé a los perfiles técnicos iniciativas que pueden llegar a uso real. Mida cuántas llegan. Rote a las personas entre iniciativas para que no queden años en pilotos. | El embudo de SEVEN-G muestra qué llega a producción y por qué se para lo demás (documento 14). |
+| 2 | **Proyectos que llegan a producción** | Dé a los perfiles técnicos casos de uso que pueden llegar a uso real. Mida cuántos llegan. Rote a las personas entre casos de uso para que no queden años en pilotos. | El embudo de SEVEN-G muestra qué llega a producción y por qué se para lo demás (documento 14). |
 | 3 | **Trabajo visible: publicar código abierto** | Publique las herramientas genéricas que la compañía construye. La persona firma su trabajo, la comunidad lo revisa y el mercado ve qué se hace dentro. Es también una forma de atraer candidatos. | La organización de Inditex en GitHub publica herramientas con licencia abierta, entre ellas servidores para conectar modelos de IA con otras aplicaciones. La organización de Santander en GitHub publica herramientas de IA, entre ellas un generador de datos sintéticos de fraude para evaluar modelos y utilidades de guardarraíles. |
 | 4 | **Formación continua y comunidades de práctica** | Reserve tiempo de trabajo para aprender. Cree comunidades por especialidad, con una persona responsable. Pague certificaciones y asistencia a congresos a cambio de compartir lo aprendido. | La alfabetización en IA es una obligación para toda compañía que usa IA (Reglamento Europeo de IA, artículo 4). El plan de capacidades por perfil está en la sección 5. |
 | 5 | **Movilidad interna y roles nuevos** | Ofrezca primero a las personas de la compañía los roles nuevos: supervisor humano, responsable de conocimiento, dueño de agente. Quien conoce el negocio y aprende IA es más difícil de sustituir que quien solo conoce IA. | Roles de la sección 4.2; destinos de la capacidad liberada (sección 6); roles de una compañía IA-first (documento 54, sección 9). |
@@ -211,7 +211,7 @@ Los roles de SEVEN-G (documento 01 §8) no cambian. Las funciones siguientes **p
 |---|---|---|
 | Rotación voluntaria de perfiles técnicos de IA | Salidas voluntarias en 12 meses ÷ plantilla media de esos perfiles | Si la compañía retiene. |
 | Perfiles técnicos con nivel en la carrera técnica | Personas con nivel asignado ÷ total de perfiles técnicos | Si la carrera técnica existe de verdad. |
-| Trabajo técnico que llega a producción | Iniciativas en producción ÷ iniciativas que pasaron la puerta de viabilidad (G3) | Si los proyectos son reales. |
+| Trabajo técnico que llega a producción | Casos de uso en producción ÷ casos de uso que pasaron la puerta de viabilidad (G3) | Si los proyectos son reales. |
 | Tiempo de cobertura de vacantes técnicas | Días entre la apertura y la incorporación | Si la compañía atrae. |
 | Vacantes de roles nuevos cubiertas con personas de la compañía | Vacantes cubiertas internamente ÷ vacantes de roles nuevos | Si hay movilidad interna. |
 
@@ -248,7 +248,7 @@ El informe del Foro Económico Mundial se leyó en su sitio oficial el 13-11-202
 
 El Reglamento Europeo de IA exige a proveedores y responsables del despliegue adoptar medidas para apoyar el desarrollo de la **alfabetización en IA** de su personal y de otras personas que operan o usan sistemas de IA en su nombre (art. 4, aplicable desde el 2 de febrero de 2025; con la redacción del Reglamento (UE) 2026/1744 no se exige un nivel concreto, pero la política y el plan de formación siguen siendo evidencia). Para los sistemas de alto riesgo, los responsables del despliegue deben encomendar la supervisión humana a personas con la **competencia, formación y autoridad necesarias** (art. 26.2). Las modificaciones del Reglamento (UE) 2026/1744 (ómnibus digital sobre IA, en vigor desde el 27 de julio de 2026) y el calendario de aplicación se detallan en el documento 34 (§3.1 y §3.2).
 
-SEVEN-G trata la alfabetización como un **requisito de C2** (política, documento 31) y como una **evidencia por iniciativa** (plan de capacidades en P20).
+SEVEN-G trata la alfabetización como un **requisito de C2** (política, documento 31) y como una **evidencia por caso de uso** (plan de capacidades en P20).
 
 ### 5.2 Perfiles y contenidos
 
@@ -258,10 +258,10 @@ SEVEN-G trata la alfabetización como un **requisito de C2** (política, documen
 | **PER-PB · Mandos intermedios** | Lo anterior aplicado al área; evaluación de efecto; supervisión humana; transición y comunicación. | Formación y participación en una evaluación de efecto. |
 | **PER-PC · Todos los empleados** | Qué es y qué no es la IA; uso aceptable (documento 31); datos que no se introducen; verificar resultados; informar de problemas. | Formación antes del acceso; renovación periódica. |
 | **PER-PD · Usuarios y supervisores de un sistema** | Finalidad y límites; interpretación de resultados; sesgo de automatización; cómo discrepar o interrumpir; incidentes. | Formación del sistema y prueba práctica antes de supervisar. |
-| **PER-PE · Equipos que construyen y operan** | Ciclo de vida SEVEN-G; documentos 35, 51 y 52; pruebas de sesgo y robustez. | Aplicación acreditada en una iniciativa. |
+| **PER-PE · Equipos que construyen y operan** | Ciclo de vida SEVEN-G; documentos 35, 51 y 52; pruebas de sesgo y robustez. | Aplicación acreditada en un caso de uso. |
 | **PER-PF · Control y personas** | Riesgos; clasificación regulatoria; decisiones sobre personas; auditoría; información a la representación. | Participación supervisada en *gates*. |
 
-### 5.3 Plan de capacidades por iniciativa
+### 5.3 Plan de capacidades por caso de uso
 
 El plan forma parte de P20 y **debe** incluir, para cada colectivo afectado: colectivo y número de personas; capacidades requeridas (técnicas, de supervisión, de proceso, de relación con el cliente); brecha actual medida; acción (formación, práctica acompañada, rotación, recualificación); horas reservadas dentro de la jornada; momento (usuarios y supervisores antes del piloto, resto antes de producción); responsable; y criterio de suficiencia con su evidencia.
 
@@ -331,7 +331,7 @@ El registro se mantiene en T20 y alimenta T12 (seguimiento de valor).
 
 | Campo | Guía |
 |---|---|
-| Iniciativa (IA-AAAA-NNN) y periodo | Mes o trimestre. |
+| Caso de uso (IA-AAAA-NNN) y periodo | Mes o trimestre. |
 | Colectivo o área | Área, categoría, centro; sin datos individuales. |
 | Horas liberadas medidas y equivalente a jornada completa | Tiempo por tarea × volumen frente a línea base. |
 | Estado de la medición | Validado · declarado · estimado (regla 2). |
@@ -347,7 +347,7 @@ El registro se mantiene en T20 y alimenta T12 (seguimiento de valor).
 1. Las horas liberadas **medidas** se informan siempre, aunque no tengan destino.
 2. La capacidad en **PER-D5 con más de 90 días** (plazo orientativo, se fija en C2) genera alerta en T01 y se revisa en R6.
 3. Una reasignación **PER-D2 sin actividad destino verificable** se reclasifica como PER-D5.
-4. La reasignación no puede presentarse como materialización ni sumarse dos veces (en la iniciativa origen y en la actividad destino).
+4. La reasignación no puede presentarse como materialización ni sumarse dos veces (en el caso de uso origen y en la actividad destino).
 5. Los informes al consejo muestran las horas liberadas, materializadas, reasignadas y sin decisión por separado.
 
 ---
@@ -361,7 +361,7 @@ Consulta realizada en septiembre de 2026. Debe verificarse la vigencia antes de 
 | Referencia | Contenido relevante para este documento |
 |---|---|
 | **Estatuto de los Trabajadores, art. 64.4.d)** (introducido por el Real Decreto-ley 9/2021 y la Ley 12/2021) | El comité de empresa tiene derecho a ser informado por la empresa de *"los parámetros, reglas e instrucciones en los que se basan los algoritmos o sistemas de inteligencia artificial que afectan a la toma de decisiones que pueden incidir en las condiciones de trabajo, el acceso y mantenimiento del empleo, incluida la elaboración de perfiles"*. Los delegados sindicales pueden tener derechos equivalentes en los términos de la Ley Orgánica de Libertad Sindical. |
-| **Estatuto de los Trabajadores, art. 64** (resto) y convenio colectivo aplicable | Derechos generales de información y consulta sobre cambios en la organización del trabajo, que pueden activarse por iniciativas de IA aunque no sean algoritmos de decisión. El convenio puede ampliar obligaciones. |
+| **Estatuto de los Trabajadores, art. 64** (resto) y convenio colectivo aplicable | Derechos generales de información y consulta sobre cambios en la organización del trabajo, que pueden activarse por casos de uso de IA aunque no sean algoritmos de decisión. El convenio puede ampliar obligaciones. |
 | **Reglamento Europeo de IA, art. 26.7** | Antes de poner en servicio o utilizar un sistema de IA de alto riesgo en el lugar de trabajo, los responsables del despliegue que sean empleadores deben informar a los representantes de los trabajadores y a los trabajadores afectados. |
 | **Reglamento Europeo de IA, anexo III, punto 4** | Sistemas de alto riesgo en empleo y gestión de trabajadores (sección 8). |
 | **Reglamento Europeo de IA, art. 5.1.f)** | Prohibición de sistemas de reconocimiento de emociones en el lugar de trabajo, salvo por motivos médicos o de seguridad. |
@@ -415,7 +415,7 @@ El Reglamento Europeo de IA clasifica como de **alto riesgo** (anexo III, punto 
 
 Las obligaciones para estos sistemas se aplican desde el 2 de diciembre de 2027, tras el aplazamiento introducido por el Reglamento (UE) 2026/1744 (calendario en el documento 34 §3.1). La clasificación concreta de cada sistema y sus excepciones requieren criterio jurídico (documentos 32 y 34).
 
-Con independencia de la clasificación regulatoria, en SEVEN-G **toda iniciativa que influye de forma significativa en decisiones sobre candidatos o empleados cumple el criterio Enterprise "decisiones sobre personas"** (01 §9.2).
+Con independencia de la clasificación regulatoria, en SEVEN-G **todo caso de uso que influye de forma significativa en decisiones sobre candidatos o empleados cumple el criterio Enterprise "decisiones sobre personas"** (01 §9.2).
 
 ### 8.2 Autonomía máxima por tipo de decisión
 
@@ -475,7 +475,7 @@ El Reglamento Europeo de IA reconoce además, en determinadas condiciones, el **
 
 ### 9.2 Controles
 
-1. **Evaluación de riesgos laborales.** Cuando una iniciativa cambia ritmo, contenido o control del trabajo, la evaluación de riesgos laborales, incluidos los psicosociales, **debe** revisarse con el servicio de prevención.
+1. **Evaluación de riesgos laborales.** Cuando un caso de uso cambia ritmo, contenido o control del trabajo, la evaluación de riesgos laborales, incluidos los psicosociales, **debe** revisarse con el servicio de prevención.
 2. **Limitación de finalidad.** Los datos de uso de los sistemas no se emplean para evaluar individualmente a las personas salvo que esa finalidad esté declarada, sea lícita y haya sido informada.
 3. **Diseño de la supervisión.** P17 fija volumen máximo razonable de revisiones por persona, tiempo mínimo esperado por caso cuando proceda, muestreo de control de calidad de la revisión y rotación.
 4. **Margen de criterio.** Se documenta cuándo la persona puede apartarse de la propuesta del sistema sin necesidad de justificarlo más que brevemente, y se protege a quien lo hace de buena fe.
@@ -515,7 +515,7 @@ Los códigos son provisionales hasta su consolidación en el catálogo de indica
 
 | Código | Indicador | Fórmula | Frecuencia | Fuente | Referencia orientativa |
 |---|---|---|---|---|---|
-| **PER-01** | Cobertura de la evaluación de efecto | Iniciativas en fase 3 o posterior con evaluación de efecto registrada ÷ iniciativas en fase 3 o posterior | Trimestral | T01, T20 | 100 % |
+| **PER-01** | Cobertura de la evaluación de efecto | Casos de uso en fase 3 o posterior con evaluación de efecto registrada ÷ casos de uso en fase 3 o posterior | Trimestral | T01, T20 | 100 % |
 | **PER-02** | Alfabetización por perfil | Personas del perfil con formación vigente ÷ personas del perfil | Trimestral | Sistema de formación | 100 % antes del acceso o del ejercicio del rol (IND-ADO-05); renovación vigente de PER-PC ≥ 90 % (umbral de alerta, a calibrar); PER-PA y PER-PD 100 % |
 | **PER-03** | Supervisores cualificados | Sistemas A1–A3 en producción cuyos supervisores designados tienen formación PER-PD registrada ÷ sistemas A1–A3 en producción | Trimestral | T02, formación | 100 % |
 | **PER-04** | Capacidad liberada materializada | Horas liberadas materializadas (PER-D1) ÷ horas liberadas medidas | Trimestral | T20 | Según hipótesis |
@@ -528,7 +528,7 @@ Los códigos son provisionales hasta su consolidación en el catálogo de indica
 | **PER-11** | Ratio de impacto adverso | Tasa de resultado favorable del grupo con menor tasa ÷ tasa del grupo con mayor tasa | En cada validación y trimestral | Pruebas de sesgo | Indicio si < 0,8 (sección 8.4) |
 | **PER-12** | Impugnaciones de decisiones asistidas | Solicitudes de revisión o reclamaciones ÷ decisiones comunicadas; y proporción estimadas | Trimestral | Canal de reclamaciones | Tendencia y causas |
 | **PER-13** | Roles rediseñados | Puestos afectados con descripción y objetivos actualizados ÷ puestos afectados según la evaluación de efecto | Semestral | Dirección de personas | 100 % antes de G7 en Aumentar y Transformar |
-| **PER-14** | Propuestas de empleados | Iniciativas registradas en T01 originadas en propuestas de empleados ÷ iniciativas registradas; y tasa de paso de G1 | Semestral | T01 | Tendencia |
+| **PER-14** | Propuestas de empleados | Casos de uso registrados en T01 originados en propuestas de empleados ÷ casos de uso registrados; y tasa de paso de G1 | Semestral | T01 | Tendencia |
 | **PER-15** | Percepción de los colectivos afectados | Respuestas favorables en las preguntas de utilidad, confianza, apoyo, carga y autonomía (P44) ÷ respuestas válidas | En fase 5, a los 3 meses y en R6 Enterprise | Encuesta de pulso | Tendencia; acción si empeora |
 
 **Relación con el índice de transformación.** PER-04 y PER-05 alimentan la señal 3 (materialización); PER-13 alimenta la señal 5 (modelo operativo).
@@ -615,4 +615,4 @@ La **ficha informativa para la representación** (sección 7.3) y el registro de
 | 0.4 | 13-11-2026 | Sección 4.3: el informe «Future of Jobs Report 2025» del Foro Económico Mundial pasa a fuente comprobada (conclusiones principales leídas en su sitio oficial con un navegador normal) y se dice qué se toma de él. |
 | 0.3 | 13-11-2026 | Sección 4.3: el informe «Employment Outlook 2023» de la OCDE pasa a fuente comprobada (leído en su PDF oficial) y se dice qué se toma de él. El informe del Foro Económico Mundial sigue sin comprobar tras un segundo intento. |
 | 0.2 | 13-11-2026 | Nueva sección 4.3, «Atraer, desarrollar y retener el talento técnico»: causas de la pérdida de talento, qué valora un perfil técnico, seis palancas con ejemplos comprobados (carrera técnica paralela, proyectos que llegan a producción, publicación de código abierto, formación, movilidad interna y reconocimiento), reglas para publicar código con control, señales, indicadores orientativos, preguntas para la dirección y fuentes. Propuesta del autor: no añade reglas ni evidencias. |
-| 0.1 | 16-09-2026 | Primera versión. Desarrolla la esfera 03 con indicadores; la evaluación del efecto sobre el trabajo por iniciativa; roles y capacidades del consejo a los equipos; el plan de alfabetización por perfil; el proceso de decisión, registro y seguimiento de la capacidad liberada con cinco destinos; información y consulta con referencia al art. 64.4.d) del Estatuto de los Trabajadores y al Reglamento Europeo de IA; autonomía máxima y controles en decisiones sobre personas; bienestar y supervisión; comunicación interna; quince indicadores con fórmula y diez riesgos organizativos tipo. Ajustes de coherencia con 01 (separación de funciones en Lite, resultados de R6, criterio de agentes) y con 34 y 37; riesgos alineados con los códigos del documento 33; los tres riesgos propuestos se incorporan a 33 como RT-ORG-07 a RT-ORG-09. |
+| 0.1 | 16-09-2026 | Primera versión. Desarrolla la esfera 03 con indicadores; la evaluación del efecto sobre el trabajo por caso de uso; roles y capacidades del consejo a los equipos; el plan de alfabetización por perfil; el proceso de decisión, registro y seguimiento de la capacidad liberada con cinco destinos; información y consulta con referencia al art. 64.4.d) del Estatuto de los Trabajadores y al Reglamento Europeo de IA; autonomía máxima y controles en decisiones sobre personas; bienestar y supervisión; comunicación interna; quince indicadores con fórmula y diez riesgos organizativos tipo. Ajustes de coherencia con 01 (separación de funciones en Lite, resultados de R6, criterio de agentes) y con 34 y 37; riesgos alineados con los códigos del documento 33; los tres riesgos propuestos se incorporan a 33 como RT-ORG-07 a RT-ORG-09. |

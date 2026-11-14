@@ -1,6 +1,6 @@
 # Clasificación de esfera y ambición
 
-**Clasifica la iniciativa en una esfera de impacto y en un nivel de ambición con cinco preguntas verificables, y compara la clasificación propuesta, la confirmada y la real.**
+**Clasifica el caso de uso en una esfera de impacto y en un nivel de ambición con cinco preguntas verificables, y compara la clasificación propuesta, la confirmada y la real.**
 
 | | |
 |---|---|
@@ -29,7 +29,7 @@
 Reglas de cumplimentación:
 
 - La ambición no la determina la tecnología, sino **qué cambia en el negocio y dónde aparece el valor** (00 §5.1).
-- Si las preguntas 1 a 4 son negativas, la iniciativa es de **Optimizar**, con independencia de cómo se haya presentado (00 §5.2).
+- Si las preguntas 1 a 4 son negativas, el caso de uso es de **Optimizar**, con independencia de cómo se haya presentado (00 §5.2).
 - Las respuestas de la columna Real se basan en evidencia de operación, no en intenciones.
 
 ---
@@ -38,8 +38,8 @@ Reglas de cumplimentación:
 
 | Campo | Contenido | Guía |
 |---|---|---|
-| Código de la iniciativa | | IA-AAAA-NNN. |
-| Nombre de la iniciativa | | |
+| Código del caso de uso | | IA-AAAA-NNN. |
+| Nombre del caso de uso | | |
 | Versión del documento | | |
 | Fecha de la última columna rellenada | | DD-MM-AAAA. |
 | Autor | | Nombre y rol. |
@@ -99,7 +99,7 @@ Aplique los pasos en orden:
 | 1 | Las preguntas 1, 2, 3 y 4 son "No". | **Optimizar** (regla de 00 §5.2). |
 | 2 | La pregunta 1 o la 4 es "Sí". | **Transformar**. |
 | 3 | Las preguntas 1 y 4 son "No" y la 2 o la 3 es "Sí". | **Aumentar**, salvo que el rediseño o el cambio organizativo altere cómo compite o cómo se organiza la compañía; en ese caso, **Transformar** con justificación expresa. |
-| 4 | Comprobación de coherencia con la pregunta 5. | Si la 5 es "Sí" y el resultado es Transformar, hay incoherencia: se justifica o se reclasifica. Si la 5 es "No" y el resultado es Optimizar, se revisa si la iniciativa soporta una función crítica (P04, criterio 6). |
+| 4 | Comprobación de coherencia con la pregunta 5. | Si la 5 es "Sí" y el resultado es Transformar, hay incoherencia: se justifica o se reclasifica. Si la 5 es "No" y el resultado es Optimizar, se revisa si el caso de uso soporta una función crítica (P04, criterio 6). |
 
 Los pasos 2 a 4 son la regla operativa de esta plantilla para las preguntas que 00 §5.2 deja abiertas ("Aumentar o Transformar"). El documento 12 puede calibrarla.
 
@@ -135,9 +135,9 @@ Si el nivel declarado no coincide con el de la regla, prevalece el de la regla s
 | Evidencia del nivel real | | Valor validado por tipo, cambios de proceso y de roles, ingresos atribuibles. |
 | Causa de la discrepancia | | Alcance reducido, adopción parcial, cambio de estrategia, clasificación inicial optimista. |
 | Efecto en el índice de transformación | | Señales afectadas (00 §5.3), en especial composición del valor, profundidad del cambio, modelo operativo y paso a producción. |
-| Lección para la cartera | | Qué debe cambiar en la clasificación de futuras iniciativas. |
+| Lección para la cartera | | Qué debe cambiar en la clasificación de futuros casos de uso. |
 
-Una iniciativa confirmada como Transformar cuya clasificación real es Optimizar contribuye al perfil "Transformación declarada, no evidenciada" y debe comunicarse al comité de IA.
+Un caso de uso confirmado como Transformar cuya clasificación real es Optimizar contribuye al perfil "Transformación declarada, no evidenciada" y debe comunicarse al comité de IA.
 
 ---
 
@@ -147,7 +147,7 @@ Una iniciativa confirmada como Transformar cuya clasificación real es Optimizar
 |---|---|---|---|---|---|
 | | Esfera · Ambición | | | | |
 
-Cada cambio genera un evento de cambio de clasificación en el registro de iniciativas (03 §3.3) y obliga a revisar P04.
+Cada cambio genera un evento de cambio de clasificación en el registro de casos de uso (03 §3.3) y obliga a revisar P04.
 
 ---
 

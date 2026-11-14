@@ -255,7 +255,7 @@ Quien distribuya una copia, adaptación o traducción de SEVEN-G debe conservar,
 
 ## 12. Contacto
 
-Las consultas sobre el uso del marco, las propuestas de mejora, las comunicaciones de errores y las solicitudes de acompañamiento se dirigen al autor, **Fernando García Varela**, a través de su perfil profesional de LinkedIn: <https://www.linkedin.com/in/fernandogarciavarela/>. Los motivos por los que el marco es abierto y gratuito se explican en el documento 04, incluido que el sitio nunca contacta por iniciativa propia a quien lo visita.
+Las consultas sobre el uso del marco, las propuestas de mejora, las comunicaciones de errores y las solicitudes de acompañamiento se dirigen al autor, **Fernando García Varela**, a través de su perfil profesional de LinkedIn: <https://www.linkedin.com/in/fernandogarciavarela/>. Los motivos por los que el marco es abierto y gratuito se explican en el documento 04, incluido que el sitio nunca contacta por su cuenta a quien lo visita.
 
 No es necesario pedir permiso para ningún uso que cumpla la licencia. Contactar con el autor no convierte un uso en respaldado.
 

@@ -32,7 +32,7 @@ Reglas de la firma:
 2. **El veto bloquea** la puesta en producción. No puede ser anulado por el patrocinador ni por el comité de IA; solo se levanta cuando quien lo emitió (o quien le sustituya formalmente en su función) registra una nueva firma tras resolverse el motivo. La discrepancia persistente sobre un veto debería elevarse al órgano superior, que puede decidir no poner en producción, pero no sustituir la firma.
 3. **Conforme con condiciones** solo cabe sobre aspectos no críticos. Si la condición afecta a un control crítico de seguridad, cumplimiento legal o supervisión humana, el sentido debe ser Veto (01 §7.3).
 4. Cada firmante revisa las evidencias de su ámbito; firmar sin haberlas revisado es una no conformidad.
-5. Los firmantes de la segunda línea no forman parte del equipo que construye la iniciativa (01 §8.1 y §8.3).
+5. Los firmantes de la segunda línea no forman parte del equipo que construye el caso de uso (01 §8.1 y §8.3).
 6. Un riesgo residual **Crítico** sin aprobación expresa del consejo o de su comisión delegada bloquea G5 (documento 33).
 
 Esta plantilla no constituye asesoramiento jurídico.
@@ -43,8 +43,8 @@ Esta plantilla no constituye asesoramiento jurídico.
 
 | Campo | Contenido | Guía |
 |---|---|---|
-| Código de la iniciativa | | IA-AAAA-NNN (T01). |
-| Nombre de la iniciativa | | |
+| Código del caso de uso | | IA-AAAA-NNN (T01). |
+| Nombre del caso de uso | | |
 | Sistema(s) de IA | | Identificador en el inventario (T02). |
 | Intensidad | | Lite · Enterprise. |
 | Nivel de ambición | | Optimizar · Aumentar · Transformar. |

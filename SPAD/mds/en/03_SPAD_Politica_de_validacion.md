@@ -87,7 +87,7 @@ The response introduces technical decisions not documented in the approved plan,
 
 Code is generated or modified when no approved plan exists, the plan review or the code review has not been executed, or a previous review returned NO-GO and implementation proceeds anyway.
 
-**Action:** discard all the generated code and return to the correct phase. If that code were to reach production within a SEVEN-G initiative, it is a **major nonconformity** ([SEVEN-G 53](../../../SEVEN-G/html/en/53_SEVEN-G_Construccion_de_soluciones_con_IA.html), section 6).
+**Action:** discard all the generated code and return to the correct phase. If that code were to reach production within a SEVEN-G use case, it is a **major nonconformity** ([SEVEN-G 53](../../../SEVEN-G/html/en/53_SEVEN-G_Construccion_de_soluciones_con_IA.html), section 6).
 
 ### 3.5 Self-approval
 

@@ -14,7 +14,7 @@
 
 > **Aviso legal y exención de responsabilidad.** SEVEN-G es un marco metodológico de referencia que se ofrece «tal cual» y con fines exclusivamente informativos. No constituye asesoramiento jurídico, regulatorio, financiero ni profesional, ni garantiza el cumplimiento de ninguna norma. Las referencias a regulación general (como el Reglamento Europeo de IA, el RGPD, DORA o NIS2), a normas técnicas y a regulación específica de cada sector o jurisdicción pueden ser incompletas, no aplicar a un caso concreto o quedar desactualizadas por cambios normativos, interpretaciones o criterios de las autoridades posteriores a su fecha de consulta. **Cada organización que use SEVEN-G es la única responsable de identificar la normativa que le aplica, verificar su vigencia y certificar su propio cumplimiento regulatorio**, con el asesoramiento cualificado que corresponda. Esta metodología es una ayuda genérica y gratuita, compartida con la comunidad para que nadie tenga que empezar desde cero; cada persona u organización puede y debe adaptarla a su propio uso. No debe entenderse que sus partes jurídicamente sensibles hayan sido revisadas por una asesoría jurídica: esas revisiones, para cada empresa o sector, son responsabilidad última de la empresa, el consultor o la organización que la use. Aunque se procura mantenerla al día, alguna norma puede haber cambiado sin que se recoja aquí. En la máxima medida permitida por la ley, el autor no asume responsabilidad alguna por los efectos de su aplicación en ninguna organización ni por su aplicabilidad completa. La metodología no otorga certificación de ningún tipo. El autor no asume responsabilidad alguna por el uso que se haga de este contenido ni por las decisiones que se adopten con él. Los datos, cifras, compañías y casos de los ejemplos son ficticios o ilustrativos.
 
-> **Por qué importa.** Lo que el consejo decide y encarga solo se cumple si alguien lo sigue con código, responsable, fecha y evidencia, y si quien lo valora no es quien lo ejecuta. Este registro separa lo que el destinatario **declara** de lo que se ha **verificado**, conserva la fecha original aunque se reprograme y enlaza cada decisión con su iniciativa y su *gate*. Es la «hoja de cálculo de respaldo» que cita el documento 62 mientras T18 no cubre todos sus campos; sin él, el seguimiento depende de la memoria de las actas y las discrepancias no llegan al consejo.
+> **Por qué importa.** Lo que el consejo decide y encarga solo se cumple si alguien lo sigue con código, responsable, fecha y evidencia, y si quien lo valora no es quien lo ejecuta. Este registro separa lo que el destinatario **declara** de lo que se ha **verificado**, conserva la fecha original aunque se reprograme y enlaza cada decisión con su caso de uso y su *gate*. Es la «hoja de cálculo de respaldo» que cita el documento 62 mientras T18 no cubre todos sus campos; sin él, el seguimiento depende de la memoria de las actas y las discrepancias no llegan al consejo.
 
 ## 1. Instrucciones de uso
 
@@ -75,7 +75,7 @@ Reglas de cumplimentación:
 
 ### 4.1 Decisiones
 
-| Código | Órgano | Fecha de la sesión | Referencia del acta | Tipo | Texto de la decisión | Ficha de decisión | Resultado | Límites | Vigencia | Responsable de ejecución | Iniciativas | Otros vínculos | Fecha de revisión |
+| Código | Órgano | Fecha de la sesión | Referencia del acta | Tipo | Texto de la decisión | Ficha de decisión | Resultado | Límites | Vigencia | Responsable de ejecución | Casos de uso | Otros vínculos | Fecha de revisión |
 |---|---|---|---|---|---|---|---|---|---|---|---|---|---|
 | DEC-2026-014 *(ejemplo ilustrativo)* | Pleno | 24-09-2026 | Acta 09/2026, punto 4 | Autorizar con límites | Autorizar la etapa 1 de IA-2026-018 con límite de 400.000 € y decisión de continuidad en nueve meses. | P67, ficha DEC-2026-014 | Aprobada con condiciones | 400.000 €; etapa 1; nueve meses | 24-06-2027 | Dirección comercial | IA-2026-018 | REC-2026-006; P29 G2 de IA-2026-018 | 10-12-2026 |
 | | | | | | | | | | | | | | |
@@ -92,7 +92,7 @@ Una fila por condición.
 | DEC-2026-014 *(ejemplo ilustrativo)* | 1 | Contrato piloto aprobado por asesoría jurídica antes de la primera firma. | Dirección comercial | 23-11-2026 | En curso | | | |
 | | | | | | | | | |
 
-Estado: Pendiente · En curso · Cumplida · Vencida. Una condición vencida se informa al órgano, que decide si la decisión sigue vigente; una iniciativa no supera un *gate* con condiciones vencidas de una decisión del consejo que le afecten (62 §10.3 y §11.1). Una aceptación de riesgo caduca en su vigencia y el riesgo vuelve a bloquear el *gate*.
+Estado: Pendiente · En curso · Cumplida · Vencida. Una condición vencida se informa al órgano, que decide si la decisión sigue vigente; un caso de uso no supera un *gate* con condiciones vencidas de una decisión del consejo que le afecten (62 §10.3 y §11.1). Una aceptación de riesgo caduca en su vigencia y el riesgo vuelve a bloquear el *gate*.
 
 ---
 
@@ -122,7 +122,7 @@ Para dar de alta o revisar una recomendación con todos sus campos (62 §4). Sus
 | | Valorador, fecha y comentario | | Comentario obligatorio si no es conforme. |
 | Cierre | Situación | | Abierta · Cerrada · Descartada · Sustituida. |
 | | Fecha, órgano y acta de cierre | | Quién aceptó el cierre o el descarte. |
-| Vínculos | Iniciativas; INC, NC y sistemas; DEC | | IA-AAAA-NNN, INC-AAAA-NNN, NC-AAAA-NNN, SIA-AAAA-NNN, DEC-AAAA-NNN. |
+| Vínculos | Casos de uso; INC, NC y sistemas; DEC | | IA-AAAA-NNN, INC-AAAA-NNN, NC-AAAA-NNN, SIA-AAAA-NNN, DEC-AAAA-NNN. |
 | | Bloque del panel | | Bloque de T17 donde se mide el efecto (62 §11.2). |
 
 *(ejemplo ilustrativo)* Texto: «Desagregar el valor de cada caso en producción en eficiencias, retorno y coste recurrente, con validación de control de gestión, antes del cierre del ejercicio.» Criterio de cumplimiento: «Todos los casos en producción con los tres componentes y su estado; informe de control de gestión».
@@ -147,7 +147,7 @@ Para dar de alta o revisar una recomendación con todos sus campos (62 §4). Sus
 
 ### 6.3 Cierre y vínculos
 
-| Código | Situación | Fecha de cierre | Órgano y acta de cierre | Iniciativas | INC, NC y sistemas | DEC | Bloque del panel | Recomendación que la sustituye o deriva |
+| Código | Situación | Fecha de cierre | Órgano y acta de cierre | Casos de uso | INC, NC y sistemas | DEC | Bloque del panel | Recomendación que la sustituye o deriva |
 |---|---|---|---|---|---|---|---|---|
 | REC-2026-003 *(ejemplo ilustrativo)* | Abierta (cierre propuesto) | | | Todas en producción | | | Valor frente a potencial | REC-2026-017 (observación) |
 | | | | | | | | | |

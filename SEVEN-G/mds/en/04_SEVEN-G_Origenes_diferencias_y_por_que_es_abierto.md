@@ -42,7 +42,7 @@ This does not mean that the framework starts from scratch. It brings together **
 
 | Usual approach | Shortcoming | SEVEN-G's response | Where it is |
 |---|---|---|---|
-| **Experiment first and look for value later.** Work starts from the available technology and looks for a problem to apply it to. | Pilots that work but solve nothing the business is willing to pay for. | No initiative goes beyond phase 2 without a falsifiable value hypothesis, with a baseline, an attribution method and stop criteria set in advance. | document 01, section 6; document 40 |
+| **Experiment first and look for value later.** Work starts from the available technology and looks for a problem to apply it to. | Pilots that work but solve nothing the business is willing to pay for. | No use case goes beyond phase 2 without a falsifiable value hypothesis, with a baseline, an attribution method and stop criteria set in advance. | document 01, section 6; document 40 |
 | **The prototype as the destination.** Success is measured by the demonstration, not by operation. | Many pilots and few cases in production; recurring cost with no return. | "Production is the only truth": value is validated only under real conditions, with go-live sign-off, a tested rollback plan and periodic continuity review. | document 01, sections 3 and 7; document 52 |
 | **Nobody can stop.** There are no criteria to iterate, pivot or retire. | Portfolios that only grow and concentrate risk. | Decision gates with five possible outcomes, a limit on iterations, a main stop gate (G3) and a retirement procedure. Stopping in time is a good outcome. | document 21; document 14, section 10 |
 | **Value is declared.** Released hours are added up as savings and nobody checks them. | Figures that do not withstand an audit and poorly founded investment decisions. | Ten measurement rules; every amount carries a formula and a status (validated, declared or estimated); released capacity does not count until it is materialised. | document 40; document 43 |
@@ -58,7 +58,7 @@ SEVEN-G did not appear all at once: it grew out of earlier research work and has
 | When | What was added |
 |---|---|
 | February 2025 | Initial research: the state of AI governance in organisations and a comparison of existing market methodologies and frameworks (risk management frameworks, AI management standards, internal consultancy practices). No published version yet. |
-| March 2025 | First drafts of the initiative lifecycle and the decision gates, drawing on the discipline of phased investment and on sales-funnel management (section 4). |
+| March 2025 | First drafts of the use case lifecycle and the decision gates, drawing on the discipline of phased investment and on sales-funnel management (section 4). |
 | April 2025 | **Version 0.1** (first internal version): phases 0–7, gates G0–G7 with their five possible outcomes, and a first draft of the impact sphere map. |
 | May 2025 | First governance model (board, AI committee, three lines of defence) and first evidence templates. |
 | June 2025 | Value measurement rules (validated, declared and estimated statuses) and a first draft of the transformation index. |
@@ -66,10 +66,10 @@ SEVEN-G did not appear all at once: it grew out of earlier research work and has
 | August 2025 | First trials of the framework with real, anonymised use cases; gates and measurement rules adjusted from that experience. |
 | **September 2025** | **First public release** of the framework (overview document and initial library in Spanish). |
 | October 2025 | English translation of the initial library; translation guide and shared glossary. |
-| November 2025 | Tool catalogue (T01–T22) and first design of the initiative register (T01). |
+| November 2025 | Tool catalogue (T01–T22) and first design of the use case register (T01). |
 | December 2025 | Maturity model (seven dimensions) and first diagnostic questionnaire. |
 | January 2026 | Risk methodology extended to generative AI and agents; autonomy levels A0–A3. |
-| February 2026 | First AI board dashboard (T17), connected to the initiative register. |
+| February 2026 | First AI board dashboard (T17), connected to the use case register. |
 | March 2026 | Generative-AI-specific controls: usage drift, bias testing with counterfactual pairs, cost degradation cascade. |
 | April 2026 | Implementation guide and first calibration of Lite and Enterprise scope per company. |
 | May 2026 | AI audit framework and declaration-of-application template. |
@@ -103,23 +103,23 @@ None of these disciplines is replaced. A company that already has its risk manag
 
 ### 4.1 The idea
 
-A sales organisation does not manage its opportunities from memory: it records them, knows which stage each one is in, how long it has been there, what it needs to move forward, how much it is worth and why the lost ones were lost. SEVEN-G applies that same discipline to AI initiatives. **To reach production, a mandatory set of states has to be passed through**, and the portfolio is read as a funnel.
+A sales organisation does not manage its opportunities from memory: it records them, knows which stage each one is in, how long it has been there, what it needs to move forward, how much it is worth and why the lost ones were lost. SEVEN-G applies that same discipline to AI use cases. **To reach production, a mandatory set of states has to be passed through**, and the portfolio is read as a funnel.
 
-> **Why it matters.** Hardly any company knows how long it takes to bring an AI idea to production, in which phase its initiatives get stuck or why the stopped ones were stopped. A sales team without that data could not manage its sales; an AI portfolio without it does not learn.
+> **Why it matters.** Hardly any company knows how long it takes to bring an AI idea to production, in which phase its use cases get stuck or why the stopped ones were stopped. A sales team without that data could not manage its sales; an AI portfolio without it does not learn.
 
 ### 4.2 What is taken
 
 | In sales management | In SEVEN-G | Where it is |
 |---|---|---|
-| Recorded opportunity | Initiative registered in the register, with a unique code and owners. | document 03, section 3 |
+| Recorded opportunity | Use case registered in the register, with a unique code and owners. | document 03, section 3 |
 | Funnel stages | Phases 0 to 7 and, in the board dashboard, grouped stages. | document 01, section 6 |
 | Requirements to move to the next stage | Criteria of each gate, with status and evidence. | document 21 |
 | Days in stage | Time in phase and decision time of each gate. | document 03, section 3.5 |
-| Stalled opportunities | Initiatives that exceed the reference time limit of their phase. | document 03, section 3.6; document 14, section 8 |
+| Stalled opportunities | Use cases that exceed the reference time limit of their phase. | document 03, section 3.6; document 14, section 8 |
 | Conversion between stages | Proportion that proceeds, iterates, pivots or stops at each gate. | document 03, section 3.5 |
 | Loss reason | Coded stop or retirement reason, with what was learnt. | document 03, section 3.3 |
 | Weighted forecast | Weighted portfolio value using the company's own historical probability. | document 03, section 3.5 |
-| Sales management dashboard | Initiative register T01 and board dashboard T17. | document 60 |
+| Sales management dashboard | Use case register T01 and board dashboard T17. | document 60 |
 
 ### 4.3 Time control
 
@@ -130,13 +130,13 @@ The register keeps the entry and exit date of each phase, the periods on hold wi
 - **Time to production**: the real speed of the portfolio, from idea to G3 and from G3 to production.
 - **Time on hold**, separate from the above, to distinguish the company's own delays from external dependencies.
 
-The company approves the **reference time limits per phase** in C2 and recalibrates them every year with its own data. An initiative that exceeds them is flagged as stalled and reviewed by the AI Committee. The time limit does not require earlier approval: it requires a decision —proceed, wait with a reason or stop— instead of letting the initiative consume budget without anyone deciding so.
+The company approves the **reference time limits per phase** in C2 and recalibrates them every year with its own data. A use case that exceeds them is flagged as stalled and reviewed by the AI Committee. The time limit does not require earlier approval: it requires a decision —proceed, wait with a reason or stop— instead of letting the use case consume budget without anyone deciding so.
 
 ### 4.4 Where SEVEN-G departs from a sales funnel
 
 | In a sales funnel | In SEVEN-G |
 |---|---|
-| The aim is **maximum conversion**: every lost opportunity is lost revenue. | **The aim is not to convert more.** Stopping an unfeasible initiative at G3 is a good outcome, because it avoids the cost of building it. A conversion close to 100% points to soft gates, not to a good portfolio. |
+| The aim is **maximum conversion**: every lost opportunity is lost revenue. | **The aim is not to convert more.** Stopping an unfeasible use case at G3 is a good outcome, because it avoids the cost of building it. A conversion close to 100% points to soft gates, not to a good portfolio. |
 | Whoever owns the opportunity pushes it and is usually the one who reports its progress. | Whoever builds **neither verifies nor decides** their own progress. The status of each criterion is set by an independent verifier. |
 | The probability of closing is estimated by the salesperson. | The probability of reaching production is **historical and the company's own**, and the weighted value is shown only when there is sufficient history. |
 | The sale closes the cycle. | Go-live **opens** another one: operation, continuity review and the decision to scale, iterate or retire. A case in use can be disengaged, and that is also learnt from. |
@@ -149,21 +149,21 @@ The company approves the **reference time limits per phase** in C2 and recalibra
 1. **It starts from business value, not from technology.** It is sector-, supplier- and technique-agnostic.
 2. **It joins in a single system what is usually separate**: lifecycle, governance, risk, compliance, measurement and board share a register, codes and language.
 3. **It reaches the board.** It is not only a method for teams: it gives governance bodies decisions, a dashboard and a register of what was decided.
-4. **It distinguishes efficiency from transformation** with verifiable criteria, in each initiative and in the company.
+4. **It distinguishes efficiency from transformation** with verifiable criteria, in each use case and in the company.
 5. **It makes stopping a normal decision**, with criteria set before starting and reasons that are kept in order to learn.
 6. **It measures the decision system itself**: times, conversion, iterations and expired conditions.
 7. **It requires evidence, not declaration**, and separates whoever builds from whoever verifies and from whoever decides.
-8. **It is proportionate**: Lite or Enterprise intensity per initiative and implementation scope per company (document 94).
+8. **It is proportionate**: Lite or Enterprise intensity per use case and implementation scope per company (document 94).
 9. **It is compatible and modular**: it coexists with the frameworks and bodies the company already has and can be adopted by components.
 10. **It is open**: it can be used, adapted and redistributed without asking permission or paying (section 6).
 
 ### 5.1 Compared with the standards: SEVEN-G as an AI operating model
 
-Standards say what must exist; SEVEN-G is the operating layer that makes it work initiative by initiative and portfolio by portfolio, with investment and value discipline. The table summarises what each reference provides and what the framework adds; the detail, requirement by requirement and with its coverage, is in the crosswalk of document 34 (section 9.1).
+Standards say what must exist; SEVEN-G is the operating layer that makes it work use case by use case and portfolio by portfolio, with investment and value discipline. The table summarises what each reference provides and what the framework adds; the detail, requirement by requirement and with its coverage, is in the crosswalk of document 34 (section 9.1).
 
 | Reference | What it provides | What SEVEN-G adds |
 |---|---|---|
-| **ISO/IEC 42001** | The requirements of an AI management system, certifiable by an accredited body. | The lifecycle of each initiative with gates and verifiable criteria, the portfolio as a funnel, value measurement with status and the board pack; the evidence an audit asks for is already prepared (P74). |
+| **ISO/IEC 42001** | The requirements of an AI management system, certifiable by an accredited body. | The lifecycle of each use case with gates and verifiable criteria, the portfolio as a funnel, value measurement with status and the board pack; the evidence an audit asks for is already prepared (P74). |
 | **ISO/IEC 38507** | The responsibilities of the governing body over the use of AI. | What the board decides and when (G2 and G7 for Transform), with what information (dashboard and quarterly pack) and where decisions are recorded (register of decisions and recommendations). |
 | **ISO/IEC 23894** | The AI risk management process. | A common 5 × 5 scale, seventy-one standard risks, acceptance by the body of the right level and the link with the gates: without assessed risks, G3 is not passed. |
 | **ISO/IEC 42005** | How to assess the impact of an AI system on people and society. | When it is required (Enterprise criteria and regulatory classification), with which template and at which gate it is verified. |
@@ -190,7 +190,7 @@ What SEVEN-G is not: an alternative to ISO/IEC 42001, a certification or anythin
 |---|---|
 | Does SEVEN-G have to be paid for? | No. Neither the documents, nor the templates, nor the tools. |
 | Do you have to register or give an email to use the site? | No. Everything is read, used and downloaded without an account or registration. |
-| Does the site send emails or try to capture contacts? | No. It never sends an email or any communication seeking engagement; contacting the author is always the visitor's own initiative (section 7). |
+| Does the site send emails or try to capture contacts? | No. It never sends an email or any communication seeking engagement; contacting the author is always the visitor's own choice (section 7). |
 | Does the site measure visits? | Yes, only in aggregate: how many visits each page gets, from which country and on what type of device, with [Umami](https://umami.is/), an open-source tool that uses no cookies, stores no personal data or IP addresses and does not follow anyone across sites; it honours the browser's "Do Not Track" signal. It is used to know which documents are read. The community page is not measured. What is entered into the tools never reaches any server: it is stored only in the browser of whoever enters it; document 95 explains where that data is, what leaves the browser and how to install the site on your own server. |
 | Does permission have to be requested? | No, as long as the licence is complied with. |
 | Can it be adapted to the company? | Yes: change thresholds, translate, integrate the templates into the company's own systems. |
@@ -223,7 +223,7 @@ While the framework is at version 0.x, its main pages carry the **"Version 0.x, 
 
 For queries about the framework, improvement proposals, error reports or requests for support: **Fernando García Varela**, on his professional LinkedIn profile: <https://www.linkedin.com/in/fernandogarciavarela/>. **SEVEN-G is a name and trademark of Fernando García Varela** (document 93, section 7).
 
-There is no need to get in touch or ask permission for any use that complies with the licence; the site never asks for it and never reaches out on its own initiative to whoever visits it. Contacting the author does not turn a use into an endorsed one (document 93, section 7).
+There is no need to get in touch or ask permission for any use that complies with the licence; the site never asks for it and never reaches out of its own accord to whoever visits it. Contacting the author does not turn a use into an endorsed one (document 93, section 7).
 
 ---
 
@@ -231,7 +231,7 @@ There is no need to get in touch or ask permission for any use that complies wit
 
 | Code | Name | Relationship with this document |
 |---|---|---|
-| T01 | Initiative register | Applies funnel management: phases, times, criteria, stop reasons and value. |
+| T01 | Use case register | Applies funnel management: phases, times, criteria, stop reasons and value. |
 | T17 | Board AI dashboard | Shows the funnel, the cases that left it and why. |
 | P29 | *Gate* decision record | Keeps the outcome and the reason for each decision. |
 | P30 | Scale or retire decision | Records the lessons learnt from each retirement. |
@@ -244,11 +244,11 @@ There is no need to get in touch or ask permission for any use that complies wit
 |---|---|
 | **00 · What SEVEN-G is and how it helps companies** | The problem the framework solves and its principles. |
 | **01 · Foundational methodology** | Compatibility and modular adoption (section 1.2), lifecycle traceability (section 6.11) and reference standards (section 13). |
-| **03 · Tools and initiative register** | The CRM analogy, funnel metrics and reference time limits (section 3). |
-| **14 · Portfolio management** | Stalled initiatives and retirement procedure. |
+| **03 · Tools and use case register** | The CRM analogy, funnel metrics and reference time limits (section 3). |
+| **14 · Portfolio management** | Stalled use cases and retirement procedure. |
 | **91 · Guide for consultants** | Support models and transfer to the company. |
 | **93 · Licence, third-party use and citation** | Full text on licences, name, derivative works and disclaimer. |
-| **94 · Obligation matrix and layered reading** | What is always mandatory and what depends on each company and initiative. |
+| **94 · Obligation matrix and layered reading** | What is always mandatory and what depends on each company and use case. |
 
 ---
 

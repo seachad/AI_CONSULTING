@@ -18,12 +18,12 @@
 
 | Aspecto | Indicación |
 |---|---|
-| **Cuándo se usa** | Se crea en la fase 1, cuando la oportunidad se incorpora a la cartera, y se actualiza al cierre de cada fase hasta la 7. Es la descripción que alimenta el registro de iniciativas, la cartera y el panel del consejo. |
+| **Cuándo se usa** | Se crea en la fase 1, cuando la oportunidad se incorpora a la cartera, y se actualiza al cierre de cada fase hasta la 7. Es la descripción que alimenta el registro de casos de uso, la cartera y el panel del consejo. |
 | **Quién la rellena** | Responsable de producto de IA. |
 | **Quién la verifica** | Oficina de IA, que comprueba sobre todo la claridad del lenguaje y la coherencia de los datos con las demás evidencias. |
-| **En qué *gate* se revisa** | En todos, como resumen de la iniciativa (G1 a G7). |
+| **En qué *gate* se revisa** | En todos, como resumen del caso de uso (G1 a G7). |
 | **Lite frente a Enterprise** | Lite puede omitir los campos marcados **(Enterprise)**. |
-| **Herramienta** | T01 Registro de iniciativas (campo "descripción comprensible", 03 §3.3). |
+| **Herramienta** | T01 Registro de casos de uso (campo "descripción comprensible", 03 §3.3). |
 | **Relación** | P06 Cartera de oportunidades · P07 Clasificación de esfera y ambición · P08 Lienzo de hipótesis de valor · P12 Registro de riesgos · P17 Supervisión humana · P28 Seguimiento de valor · documentos 10, 40 y 60. |
 
 Reglas:
@@ -31,7 +31,7 @@ Reglas:
 - Aplica la **regla 10 de medición**: cada caso explica qué es y para qué se usa, en lenguaje comprensible para quien no es especialista (00 §6).
 - Prueba de claridad: un consejero sin formación técnica debe poder explicar el caso tras leer el bloque 3. Sin siglas técnicas ni nombres de productos salvo que sean imprescindibles.
 - Los datos de valor, riesgo y situación **no se redactan de nuevo**: se toman de las evidencias correspondientes y se citan. Si difieren, prevalece la evidencia verificada.
-- Una iniciativa puede incluir varios casos de uso; se rellena una ficha por caso.
+- Si un caso de uso incluye varias aplicaciones, se rellena una ficha por aplicación.
 
 ---
 
@@ -39,8 +39,8 @@ Reglas:
 
 | Campo | Contenido | Guía |
 |---|---|---|
-| Código de la iniciativa | | IA-AAAA-NNN (T01). |
-| Caso de uso | | Nombre corto y número de caso dentro de la iniciativa (por ejemplo, "caso 1"). |
+| Código del caso de uso | | IA-AAAA-NNN (T01). |
+| Aplicación | | Nombre corto y número de la aplicación dentro del caso de uso (por ejemplo, "aplicación 1"). Si solo hay una, se deja en blanco. |
 | Sistema(s) de IA | | Identificador en el inventario (T02), cuando exista. |
 | Área responsable | | |
 | Versión de la ficha | | |
@@ -154,7 +154,7 @@ Máximo cinco, tomados de P12. **Nivel residual:** Bajo · Medio · Alto · Crí
 | Campo | Contenido | Guía |
 |---|---|---|
 | Fase actual | | 0 a 7. |
-| Estado | | Registrada · En fase · Pendiente de gate · En espera · En producción · Pendiente de G7 · Parada · Retirada (03 §3.2). |
+| Estado | | Registrado · En fase · Pendiente de gate · En espera · En producción · Pendiente de G7 · Parado · Retirado (03 §3.2). |
 | Último *gate* y resultado | | Por ejemplo, G3 · Continuar con condiciones · fecha (P29). |
 | Condiciones abiertas | | Número y vencimiento más próximo. |
 | Incidentes y no conformidades abiertas **(Enterprise)** | | Códigos INC y NC. |

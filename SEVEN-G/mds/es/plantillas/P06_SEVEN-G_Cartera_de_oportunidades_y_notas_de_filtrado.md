@@ -23,7 +23,7 @@
 | **Quién la verifica** | Lite: oficina de IA. Enterprise: auditor de IA. |
 | **Quién decide** | Lite: patrocinador. Enterprise: patrocinador, informando al comité de IA. |
 | **Gate en que se revisa** | G1 · Oportunidad. |
-| **Herramienta** | T01 · Registro de iniciativas (las oportunidades que avanzan quedan vinculadas a la iniciativa). |
+| **Herramienta** | T01 · Registro de casos de uso (las oportunidades que avanzan quedan vinculadas al caso de uso). |
 | **Lite frente a Enterprise** | Lite puede omitir los campos y bloques marcados **(Enterprise)**. El filtrado y las alternativas sin IA son obligatorios en ambas. |
 
 Reglas de cumplimentación:
@@ -39,8 +39,8 @@ Reglas de cumplimentación:
 
 | Campo | Contenido | Guía |
 |---|---|---|
-| Código de la iniciativa | | IA-AAAA-NNN. |
-| Nombre de la iniciativa | | |
+| Código del caso de uso | | IA-AAAA-NNN. |
+| Nombre del caso de uso | | |
 | Versión del documento | | |
 | Fecha | | DD-MM-AAAA. |
 | Autor | | Nombre y rol. |

@@ -65,7 +65,7 @@ flowchart LR
   class L,J,D,P local
 ```
 
-> **Por qué importa.** Una herramienta que funciona sin servidor no puede perder datos en el servidor, no exige contratar nada y no obliga a la compañía a fiarse de un tercero para custodiar su cartera de iniciativas. A cambio, la custodia es suya: si los datos solo están en un navegador, la copia de seguridad la hace quien los introduce (sección 3.4).
+> **Por qué importa.** Una herramienta que funciona sin servidor no puede perder datos en el servidor, no exige contratar nada y no obliga a la compañía a fiarse de un tercero para custodiar su cartera de casos de uso. A cambio, la custodia es suya: si los datos solo están en un navegador, la copia de seguridad la hace quien los introduce (sección 3.4).
 
 ---
 
@@ -73,7 +73,7 @@ flowchart LR
 
 ### 3.1 En el navegador, no en el servidor
 
-Cuando abre una herramienta por primera vez, el navegador copia los datos de demostración a su **almacenamiento local** (*localStorage*), una zona que cada navegador reserva por sitio en el propio equipo. Desde ese momento, cada cambio que hace —una iniciativa nueva, una decisión de puerta, un riesgo, un cálculo— se guarda ahí, al instante y sin que nada viaje por la red.
+Cuando abre una herramienta por primera vez, el navegador copia los datos de demostración a su **almacenamiento local** (*localStorage*), una zona que cada navegador reserva por sitio en el propio equipo. Desde ese momento, cada cambio que hace —un caso de uso nuevo, una decisión de puerta, un riesgo, un cálculo— se guarda ahí, al instante y sin que nada viaje por la red.
 
 Ese es el primero de los tres lugares posibles. El botón **«Datos: …»** de la barra de cada herramienta dice cuál está en uso y abre el diálogo **«Dónde están mis datos»** para cambiarlo (documento 03 §2.1):
 
@@ -87,7 +87,7 @@ En el navegador, cada herramienta usa su propia clave:
 
 | Herramienta | Clave del almacenamiento local |
 |---|---|
-| T01 · Registro de iniciativas | `seveng-t01-datos-v1` |
+| T01 · Registro de casos de uso | `seveng-t01-datos-v1` |
 | T11 · Calculadora de hipótesis de valor (con T13) | `seveng-t11-datos-v1` |
 | T14 · Calculadora del índice de transformación | `seveng-t14-datos-v1` |
 | T15 · Diagnóstico de madurez | `seveng-t15-datos-v1` |
@@ -118,7 +118,7 @@ Para que la afirmación anterior sea verificable, esta es la lista completa de l
 | **Tipografías** | Al abrir los documentos, la portada y la entrada del sitio. Las herramientas y los paneles **no cargan ningún recurso externo**. | A los servidores de Google Fonts. | La petición de la fuente tipográfica, que como toda petición web incluye la dirección IP de quien la hace. Ningún dato de las herramientas. En una instalación propia se puede quitar (sección 4.4). |
 | **Las peticiones de páginas** | Siempre, como en cualquier sitio web. | Al servidor que aloja el sitio (GitHub Pages en el sitio público; el suyo en una instalación propia). | La página pedida y la dirección IP, en los registros del servidor, según la política de quien lo aloja. Nunca el contenido de las herramientas. |
 
-Nada más. No hay cuentas, formularios de contacto, boletines ni píxeles de seguimiento, y el sitio no contacta a nadie por iniciativa propia (documento 04 §6.2).
+Nada más. No hay cuentas, formularios de contacto, boletines ni píxeles de seguimiento, y el sitio no contacta a nadie por su cuenta (documento 04 §6.2).
 
 ### 3.4 Copia de seguridad y traslado entre equipos
 
@@ -217,7 +217,7 @@ Lista de comprobación por cliente:
 | Paso | Qué hacer | Dónde |
 |---|---|---|
 | 1 | Un origen por cliente: subdominio, dominio o puerto propio. | Servidor web. |
-| 2 | Un registro que arranque con los datos del cliente y no con la demostración: en la copia del cliente, la carpeta `SEVEN-G/herramientas/datos/` con su `T01_registro.json` exportado (y, si los usa, `T11_calculadora.json`, `T14_indice.json` y `T15_madurez.json`); las herramientas los cargan en lugar de la demostración. Alternativa sin carpeta de datos: construir `registro.html` a partir del JSON del cliente; con `meta.datos_ilustrativos` ausente o `false` desaparece la banda de «iniciativas de ejemplo». | Carpeta `datos/` de la copia, o `pwsh -File build_registro.ps1 -Datos <cliente.json> -Salida <registro.html>` en `SEVEN-G/herramientas/T01_registro_iniciativas`. |
+| 2 | Un registro que arranque con los datos del cliente y no con la demostración: en la copia del cliente, la carpeta `SEVEN-G/herramientas/datos/` con su `T01_registro.json` exportado (y, si los usa, `T11_calculadora.json`, `T14_indice.json` y `T15_madurez.json`); las herramientas los cargan en lugar de la demostración. Alternativa sin carpeta de datos: construir `registro.html` a partir del JSON del cliente; con `meta.datos_ilustrativos` ausente o `false` desaparece la banda de «casos de uso de ejemplo». | Carpeta `datos/` de la copia, o `pwsh -File build_registro.ps1 -Datos <cliente.json> -Salida <registro.html>` en `SEVEN-G/herramientas/T01_registro_iniciativas`. |
 | 3 | El panel del consejo del cliente se regenera solo en el navegador desde ese `T01_registro.json` (clave `datos_t01` de `config_panel.json`) o desde el registro guardado en el navegador. Solo si quiere publicarlo como ficheros estáticos para enviarlos, genérelo con T17 en Python, con el nombre y las siglas del cliente y una copia propia de `config_panel.json` (umbrales, ciclo de vida, enlaces de vuelta al sitio, `codigos`). | `uv run python t01_a_panel.py --t01 <cliente.json> --salida <carpeta> --organizacion "<Cliente>" --sigla <CA>` |
 | 4 | Los datos del cliente, fuera del repositorio y de la carpeta publicada: los JSON exportados y los paneles generados se guardan en el repositorio documental del cliente o de la consultora, con su control de acceso. | Gestión documental. |
 | 5 | Comunidad y medición: decidir si la página de comunidad sigue apuntando al proyecto público (recomendado) y no activar ninguna medición sobre los usuarios del cliente sin su consentimiento (sección 4.3). | `comunidad/index.html`, `analitica.json`. |
@@ -261,7 +261,7 @@ Un *partner* que quiera publicar su versión adaptada puede hacer un *fork* del 
 
 | Código | Nombre | Relación con este documento |
 |---|---|---|
-| T01 | Registro de iniciativas | Guarda los datos en el navegador; exporta e importa el JSON completo; construcción con datos propios (`build_registro.ps1 -Datos`). |
+| T01 | Registro de casos de uso | Guarda los datos en el navegador; exporta e importa el JSON completo; construcción con datos propios (`build_registro.ps1 -Datos`). |
 | T11, T14, T15 | Calculadora de valor, índice de transformación y diagnóstico de madurez | Mismo funcionamiento; leen el registro T01 del mismo navegador. |
 | T17 | Panel de IA para el consejo | Se regenera en el navegador desde el registro T01; el generador en Python es opcional y sus ficheros contienen los datos. |
 | P70 | Propuesta y carta de encargo | Donde una consultora deja constancia de dónde se alojan la instalación y los datos del cliente. |
@@ -272,7 +272,7 @@ Un *partner* que quiera publicar su versión adaptada puede hacer un *fork* del 
 
 | Documento | Relación |
 |---|---|
-| **03 · Herramientas y registro de iniciativas** | Principios de diseño de las herramientas (§2: sin servidor, datos de la compañía, códigos navegables), dónde viven los datos de las herramientas y cómo montar la copia de la compañía (§2.1) y mapa de datos entre herramientas (§4.1). |
+| **03 · Herramientas y registro de casos de uso** | Principios de diseño de las herramientas (§2: sin servidor, datos de la compañía, códigos navegables), dónde viven los datos de las herramientas y cómo montar la copia de la compañía (§2.1) y mapa de datos entre herramientas (§4.1). |
 | **04 · De dónde viene SEVEN-G y por qué es abierto** | Qué hace y qué no hace el sitio con quien lo visita (§6.2) y historial de versiones del marco (§2.3). |
 | **90 · Guía de implantación** | Requisitos previos y plan de 90 días de una compañía. |
 | **91 · Guía para consultores** | Uso del marco por terceros, independencia y uso del nombre. |

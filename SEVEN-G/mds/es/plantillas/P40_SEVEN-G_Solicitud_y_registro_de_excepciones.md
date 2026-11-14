@@ -25,7 +25,7 @@
 | **Quién la verifica** | La oficina de IA comprueba la admisibilidad y la completitud; la segunda línea valora el riesgo y emite conformidad cuando se exige. |
 | **Quién decide o aprueba** | El órgano de la matriz de delegación de 30 §7.4, según el tipo. Quien propone no aprueba (30, I-9). |
 | **Etapa, *gate* o momento** | En cualquier momento; se revisan las vigentes en cada sesión mensual del comité de IA y se informan trimestralmente a la comisión delegada (C4). |
-| **Herramienta** | T01 · Registro de iniciativas (excepciones vinculadas a iniciativas y decisiones, 30 §13). |
+| **Herramienta** | T01 · Registro de casos de uso (excepciones vinculadas a casos de uso y decisiones, 30 §13). |
 | **Documento de referencia** | 30 §7.4 y §8.3; 31 §3.7, §3.8 y §4; 37 §3. |
 
 Reglas de cumplimentación:
@@ -45,7 +45,7 @@ Reglas de cumplimentación:
 | Fecha de solicitud | | DD-MM-AAAA. |
 | Solicitante y área | | |
 | Tipo de excepción | | Metodológica menor · De política de uso · De requisito del ciclo de vida · De umbral corporativo (30 §7.4). |
-| Ámbito | | Iniciativa (IA-AAAA-NNN), sistema (SIA-AAAA-NNN), herramienta, área o compañía. |
+| Ámbito | | Caso de uso (IA-AAAA-NNN), sistema (SIA-AAAA-NNN), herramienta, área o compañía. |
 | Excepción anterior enlazada | | Si es una prórroga. |
 
 ---

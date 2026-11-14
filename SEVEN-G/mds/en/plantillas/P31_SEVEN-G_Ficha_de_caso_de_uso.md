@@ -18,12 +18,12 @@
 
 | Aspect | Guidance |
 |---|---|
-| **When it is used** | It is created in phase 1, when the opportunity is added to the portfolio, and updated at the close of each phase up to phase 7. It is the description that feeds the initiative register, the portfolio and the board dashboard. |
+| **When it is used** | It is created in phase 1, when the opportunity is added to the portfolio, and updated at the close of each phase up to phase 7. It is the description that feeds the use case register, the portfolio and the board dashboard. |
 | **Who completes it** | AI Product Owner. |
 | **Who verifies it** | AI Office, which checks above all the clarity of the language and the consistency of the data with the other evidence. |
-| **At which *gate* it is reviewed** | At all of them, as a summary of the initiative (G1 to G7). |
+| **At which *gate* it is reviewed** | At all of them, as a summary of the use case (G1 to G7). |
 | **Lite versus Enterprise** | Lite may omit the fields marked **(Enterprise)**. |
-| **Tool** | T01 Initiative register ("plain-language description" field, 03 §3.3). |
+| **Tool** | T01 Use case register ("plain-language description" field, 03 §3.3). |
 | **Relationship** | P06 Opportunity portfolio · P07 Sphere and ambition classification · P08 Value hypothesis canvas · P12 Risk register · P17 Human oversight · P28 Value tracking · documents 10, 40 and 60. |
 
 Rules:
@@ -31,7 +31,7 @@ Rules:
 - **Measurement rule 10** applies: each use case explains what it is and what it is used for, in language that non-specialists can understand (00 §6).
 - Clarity test: a board member without technical training must be able to explain the use case after reading block 3. No technical acronyms or product names unless they are essential.
 - Value, risk and status data **are not rewritten**: they are taken from the corresponding evidence and cited. If they differ, the verified evidence prevails.
-- An initiative may include several use cases; one record is completed per use case.
+- If a use case includes several applications, one record is completed per application.
 
 ---
 
@@ -39,8 +39,8 @@ Rules:
 
 | Field | Content | Guidance |
 |---|---|---|
-| Initiative code | | IA-AAAA-NNN (T01). |
-| Use case | | Short name and use case number within the initiative (for example, "use case 1"). |
+| Use case code | | IA-AAAA-NNN (T01). |
+| Application | | Short name and number of the application within the use case (for example, "application 1"). Leave blank if there is only one. |
 | AI system(s) | | Identifier in the inventory (T02), where it exists. |
 | Responsible area | | |
 | Record version | | |

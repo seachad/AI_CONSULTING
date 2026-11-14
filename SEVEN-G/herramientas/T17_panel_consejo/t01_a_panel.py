@@ -83,13 +83,13 @@ def cargar_motor(panel=None):
 
 VERSION_CONECTOR = "2.1"
 ESQUEMAS_T01 = ("0.1", "0.2", "0.3", "0.4", "0.5", "0.6", "0.7", "0.8")   # 0.6 (D100): lista opcional madurez[] escrita por T15 -> bloque «madurez» del panel
-FUENTE_T01 = "Registro de iniciativas T01"
+FUENTE_T01 = "Registro de casos de uso T01"
 
 # ---------------------------------------------------------------- listas cerradas de T01 y su etiqueta en el panel
 FASES = {0: "Contexto y restricciones", 1: "Descubrimiento", 2: "Hipótesis de valor", 3: "Viabilidad y riesgo", 4: "Diseño de la solución",
          5: "Entrega y validación", 6: "Operación y gobierno", 7: "Evolución o retirada"}
-ESTADOS_T01 = {"registrada": "Registrada", "en_fase": "En fase", "pendiente_gate": "Pendiente de gate", "en_espera": "En espera",
-               "en_produccion": "En producción", "pendiente_g7": "Pendiente de G7", "parada": "Parada", "retirada": "Retirada"}
+ESTADOS_T01 = {"registrada": "Registrado", "en_fase": "En fase", "pendiente_gate": "Pendiente de gate", "en_espera": "En espera",
+               "en_produccion": "En producción", "pendiente_g7": "Pendiente de G7", "parada": "Parado", "retirada": "Retirado"}
 ESFERAS = {"01": "01 Cliente", "02": "02 Producto y servicio", "03": "03 Personas", "04": "04 Operaciones", "05": "05 Datos", "06": "06 Conocimiento",
            "07": "07 Decisión", "08": "08 Regulación, ética y responsabilidad", "09": "09 Gobierno de la IA"}
 AMBICION = {"optimizar": "Optimizar", "aumentar": "Aumentar", "transformar": "Transformar"}
@@ -139,16 +139,16 @@ ESTADO_REC = {"abierta": "pendiente", "en_curso": "en_curso", "cerrada": "cumpli
 ANCLAS = {"inventario": ["cards", "Inventario"], "movimientos": ["cart1", "Movimientos del periodo"], "valor": ["c1", "Eficiencias, retorno y coste"],
           "semaforo": ["rie1", "Semáforo regulatorio"], "incidentes": ["rie2", "Incidentes y brechas"]}
 GLOSARIO_SEVEN_G = [
-    ["SEVEN-G", "SEVEN-G", "Metodología de gobierno de la IA", "Marco con el que se registran las iniciativas: fases 0 a 7, puertas de decisión (gates), ambición e intensidad.", False],
-    ["SEVEN-G", "T01", "Registro de iniciativas", "Herramienta de SEVEN-G de la que salen los datos de este panel: fases, estados, eventos, gates, valor e incidentes.", True],
+    ["SEVEN-G", "SEVEN-G", "Metodología de gobierno de la IA", "Marco con el que se registran los casos de uso: fases 0 a 7, puertas de decisión (gates), ambición e intensidad.", False],
+    ["SEVEN-G", "T01", "Registro de casos de uso","Herramienta de SEVEN-G de la que salen los datos de este panel: fases, estados, eventos, gates, valor e incidentes.", True],
     ["SEVEN-G", "G3", "Gate de viabilidad y riesgo", "Puerta de decisión que aprueba construir. En este panel, su fecha es la de aprobación.", True],
     ["SEVEN-G", "G5", "Gate de paso a producción", "Puerta de decisión que autoriza operar. En este panel, su fecha es la de puesta en producción.", True],
-    ["SEVEN-G", "R6", "Revisión de continuidad", "Revisión periódica de una iniciativa en producción: continuar, continuar con condiciones o adelantar G7. Cuenta como reevaluación.", False],
-    ["SEVEN-G", "Ambición", "Optimizar, Aumentar o Transformar", "Nivel de ambición de la iniciativa: se usa la real si existe; si no, la confirmada; si no, la propuesta.", False],
+    ["SEVEN-G", "R6", "Revisión de continuidad", "Revisión periódica de un caso de uso en producción: continuar, continuar con condiciones o adelantar G7. Cuenta como reevaluación.", False],
+    ["SEVEN-G", "Ambición", "Optimizar, Aumentar o Transformar", "Nivel de ambición del caso de uso: se usa la real si existe; si no, la confirmada; si no, la propuesta.", False],
     ["SEVEN-G", "Embudo", "Etapas del panel y fases de SEVEN-G", "Propuesto = fases 0 y 1 · Hipótesis de valor = fase 2 · POC = fase 3 (viabilidad y riesgo) · En desarrollo = fases 4 y 5 · "
      "En uso = fases 6 y 7. Una parada en las fases 0-1 figura como No aprobado; en las fases 2-5, como Descartado; una retirada, como Desenganchado. "
      "Las fechas de cada cambio salen de los eventos de T01.", False],
-    ["SEVEN-G", "Transversal", "Iniciativa transversal", "Herramienta que usan varias unidades de negocio (por ejemplo, un asistente generativo en la suite ofimática). "
+    ["SEVEN-G", "Transversal", "Caso de uso transversal","Herramienta que usan varias unidades de negocio (por ejemplo, un asistente generativo en la suite ofimática). "
      "Se mide por unidad con una escalera: coste, adopción, capacidad liberada declarada (no suma) y valor materializado (documento 40 §7.2).", True],
     ["SEVEN-G", "Plataforma", "Plataforma habilitadora", "Capacidad común (datos, conocimiento, decisión) cuyo valor se imputa a los casos que la usan; "
      "en la plataforma solo cuenta su coste (documento 10 §4.1, regla 3).", False],
@@ -349,7 +349,7 @@ def economia(ix, ini, cerrado, moneda):
     if V("realizado", "inversion"):
         construccion = item(V("realizado", "inversion"))
     elif inv_ficha.get("realizada") is not None:
-        construccion = ECO.item(inv_ficha["realizada"], "Inversión realizada según la ficha de la iniciativa", "declarado", FUENTE_T01)
+        construccion = ECO.item(inv_ficha["realizada"], "Inversión realizada según la ficha del caso de uso", "declarado", FUENTE_T01)
     else:
         construccion = item(V("esperado", "inversion"))
     notas = [f"SEVEN-G T01 · fase {ini['ciclo']['fase']} ({FASES.get(ini['ciclo']['fase'])}) · {ESTADOS_T01.get(ini['ciclo']['estado'])}"]
@@ -361,12 +361,12 @@ def economia(ix, ini, cerrado, moneda):
     if cerrado:
         registrados = [f"{v['momento']} {v['tipo']} {_euros(v.get('importe'))}" for v in ix.valores.get(iid, []) if v["tipo"] in ("eficiencias", "retorno", "capacidad_liberada", "coste_recurrente")]
         if registrados:
-            notas.append("Iniciativa cerrada: sus importes de T01 no suman en el panel (" + "; ".join(registrados) + ")")
+            notas.append("Caso de uso cerrado: sus importes de T01 no suman en el panel (" + "; ".join(registrados) + ")")
     else:
         inv["recurrente_anual"] = item(V("realizado", "coste_recurrente"))
         inv["recurrente_potencial"] = item(V("esperado", "coste_recurrente"))
         if inv_ficha.get("pendiente") is not None:
-            inv["adicional_potencial"] = ECO.item(inv_ficha["pendiente"], "Inversión pendiente según la ficha de la iniciativa", "declarado", FUENTE_T01)
+            inv["adicional_potencial"] = ECO.item(inv_ficha["pendiente"], "Inversión pendiente según la ficha del caso de uso", "declarado", FUENTE_T01)
         # una línea por concepto (campo opcional «concepto» de cada importe; sin él, operativo u otros)
         for tipo, destino in (("eficiencias", ef), ("retorno", rt)):
             for concepto in ix.conceptos(iid, tipo):
@@ -645,10 +645,10 @@ def convertir(t01, sigla=None, organizacion=None, prefijo="t01_", enlaces_pie=""
     casos = [caso(ix, i, org, moneda, ciclo_vida) for i in t01["iniciativas"]]
     aviso = PUB.AVISO_LEGAL if ficticio else PUB.AVISO_LEGAL_DATOS_PROPIOS
     textos = {
-        "aviso_previo": ("<b>Datos ficticios</b> del registro de iniciativas T01 de SEVEN-G. " if ficticio else "Datos del registro de iniciativas T01 de SEVEN-G. "),
+        "aviso_previo": ("<b>Datos ficticios</b> del registro de casos de uso T01 de SEVEN-G. " if ficticio else "Datos del registro de casos de uso T01 de SEVEN-G. "),
         "aviso_valor": (f"Los importes salen del registro T01 con su estado: validado, declarado o estimado (en el panel, «estimado» figura como estimación del {sigla}, "
-                        f"pero en T01 lo estima el equipo de la iniciativa). Actual = realizado; potencial = esperado. Lo que T01 no registra queda «sin dato», nunca a cero."),
-        "pie": (f"Panel generado desde el registro de iniciativas T01 de SEVEN-G (corte {_fecha_txt(corte)}) con el conector T17 (t01_a_panel.py)"
+                        f"pero en T01 lo estima el equipo del caso de uso). Actual = realizado; potencial = esperado. Lo que T01 no registra queda «sin dato», nunca a cero."),
+        "pie": (f"Panel generado desde el registro de casos de uso T01 de SEVEN-G (corte {_fecha_txt(corte)}) con el conector T17 (t01_a_panel.py)"
                 + (f" · {org} y sus personas son ficticios" if ficticio else "") + (f" · {enlaces_pie}" if enlaces_pie else "") + "<br>" + PUB.pie_autoria()),
         "movimientos_vacio": "El registro T01 no tiene altas, paradas, retiradas ni revisiones de continuidad.",
         "agilidad_sin_fechas": "Faltan fechas de registro, G3 o G5 en el registro T01: no se puede medir la agilidad.",
@@ -669,8 +669,8 @@ def convertir(t01, sigla=None, organizacion=None, prefijo="t01_", enlaces_pie=""
                                   "Aviso legal: «tal cual» y con fines informativos; no es asesoramiento jurídico, regulatorio ni financiero ni garantiza el cumplimiento de ninguna norma.")
     datos = {
         "meta": {"esquema": "ESQUEMA.md", "version_datos": 6, "generado": corte, "ejercicio_valor": anio,
-                 "periodo": {"etiqueta": f"Registro de iniciativas T01 · corte {_fecha_txt(corte)}", "trimestre": f"{(int(corte[5:7]) - 1) // 3 + 1}T {anio}", "anterior": None},
-                 "fuentes": {"t01": f"Registro de iniciativas T01 de SEVEN-G (esquema {t01.get('version_esquema')})"},
+                 "periodo": {"etiqueta": f"Registro de casos de uso T01 · corte {_fecha_txt(corte)}", "trimestre": f"{(int(corte[5:7]) - 1) // 3 + 1}T {anio}", "anterior": None},
+                 "fuentes": {"t01": f"Registro de casos de uso T01 de SEVEN-G (esquema {t01.get('version_esquema')})"},
                  "organizacion": org, "consejo_sigla": sigla, "compania_principal": org, "prefijo_ficheros": prefijo,
                  "mostrar_refs": False, "leer_json_servidor": False, "textos": textos, "glosario_extra": GLOSARIO_SEVEN_G, "demo": ficticio, "industria": None,
                  **config,   # umbrales_kpi y ciclo_vida (config_panel.json), como en el patrón del panel: la configuración general viaja en meta
@@ -770,13 +770,13 @@ def datos_registro(t01, panel_data, slug):
         inis = [ix.ini[i] for i in r.get("iniciativas") or [] if i in ix.ini]
         esferas = sorted({ESFERAS.get(i["clasificacion"].get("esfera_principal")) for i in inis} - {None})
         recs.append({"id": r["id"], "sesion": ses_de[r.get("fecha") or ""], "ambito": " · ".join(esferas) or "General",
-                     "texto": r["texto"] + (f" (iniciativas: {', '.join(r['iniciativas'])})" if r.get("iniciativas") else ""),
+                     "texto": r["texto"] + (f" (casos de uso: {', '.join(r['iniciativas'])})" if r.get("iniciativas") else ""),
                      "destinatario": r.get("destinatario") or "sin dato", "estado": ESTADO_REC.get(r["estado"], "pendiente"),
                      "fecha": "sin dato (T01 no registra fecha comprometida)", "evidencia": r.get("evidencia") or "sin dato",
                      "valoracion": "sin dato (T01 no registra la valoración del consejo asesor)", "panel": "inventario" if inis else None})
     n = {e: sum(1 for r in recs if r["estado"] == e) for e in ("cumplida", "en_curso", "pendiente", "descartada")}
     slots = PUB.DL.SLOTS
-    return {"slug": slug, "industria": "Registro de iniciativas T01 de SEVEN-G", "grupo": meta["organizacion"], "consejo": meta["consejo_sigla"],
+    return {"slug": slug, "industria": "Registro de casos de uso T01 de SEVEN-G", "grupo": meta["organizacion"], "consejo": meta["consejo_sigla"],
             "hoy": meta["generado"], "hoy_txt": _fecha_txt(meta["generado"]), "sesiones": sesiones, "recs": recs, "kpi": {"recs": n},
             "pal": {"states": slots[:4], "s1": slots[2], "s2": slots[0], "s3": slots[1], "s4": slots[3]}}
 
@@ -789,7 +789,7 @@ def generar_desde_t01(t01, salida, sigla=None, organizacion=None, prefijo="t01_"
     bloque «indice» al panel (tarjeta «Índice de transformación» en «Cartera y valor")."""
     cargar_motor(panel)
     reg_nombre = f"{prefijo}Registro_Recomendaciones.html" if t01.get("recomendaciones") else None
-    enlaces = " · ".join(x for x in ((f'<a href="{enlace_registro}">registro de iniciativas T01</a>' if enlace_registro else ""),
+    enlaces = " · ".join(x for x in ((f'<a href="{enlace_registro}">registro de casos de uso T01</a>' if enlace_registro else ""),
                                      (f'<a href="{reg_nombre}">registro de recomendaciones</a>' if reg_nombre else ""),
                                      (f'<a href="{enlace_portada}">página del conector T17</a>' if enlace_portada else "")) if x)
     data = convertir(t01, sigla, organizacion, prefijo, enlaces, demo)
@@ -821,7 +821,7 @@ def generar_desde_t01(t01, salida, sigla=None, organizacion=None, prefijo="t01_"
         p["sitio"] = (data["meta"].get("navegacion") or {}).get("sitio") or None
         p["tema_sitio"] = (data["meta"].get("navegacion") or {}).get("tema_sitio") or None
         aviso = PUB.AVISO_LEGAL if ficticio else PUB.AVISO_LEGAL_DATOS_PROPIOS
-        pie = (f"Registro de recomendaciones generado desde el registro de iniciativas T01 de SEVEN-G · {p['grupo']}"
+        pie = (f"Registro de recomendaciones generado desde el registro de casos de uso T01 de SEVEN-G · {p['grupo']}"
                + (" y sus personas son ficticios" if ficticio else "") + f' · <a href="{os.path.basename(completo)}">ver el panel de IA del Consejo</a>'
                + (f' · <a href="{enlace_portada}">página del conector T17</a>' if enlace_portada else "") + f" · generado el {datetime.date.today().strftime('%d-%m-%Y')}")
         page = PUB.pagina_registro(p, os.path.basename(completo), ANCLAS, footer=pie, footer_sufijo="<br>" + PUB.pie_autoria() + "<br>" + aviso)

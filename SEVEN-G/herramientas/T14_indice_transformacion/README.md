@@ -7,7 +7,7 @@ Aplica el **documento 12** (Índice de transformación): calcula las condiciones
 ## Cómo se usa
 
 1. Abra `indice.html` en el navegador (no necesita servidor ni instalación). Arranca con tres cálculos de ejemplo ficticios de la misma compañía que el registro de demostración de T01: el de septiembre de 2026 está calculado desde ese registro (es el que muestra el panel del consejo de ejemplo) y el de junio de 2026 reproduce el ejemplo completo del documento 12, sección 9.
-2. **Desde el registro T01, sin ficheros** (D100): el registro de iniciativas es la fuente de verdad. Servidas desde el sitio, las herramientas comparten el almacenamiento local del navegador, así que T14 encuentra el registro que T01 tiene guardado y lo dice en la cabecera del cálculo («Registro T01 en este navegador: compañía, iniciativas, fecha»). «Nuevo cálculo desde este registro» lo crea a la fecha que se indique; el enlace «Calcular el índice con este registro» de la vista Consejo de T01 abre T14 con el cálculo ya creado (o lo actualiza si ya existe uno de esa fecha). Un T14 recién abierto con un registro real crea el cálculo solo y toma la compañía del registro. Si el registro no está en el navegador (o se abre T14como fichero suelto), «Cargar un fichero de T01…» hace lo mismo con el JSON completo exportado por T01.
+2. **Desde el registro T01, sin ficheros** (D100): el registro de casos de uso es la fuente de verdad. Servidas desde el sitio, las herramientas comparten el almacenamiento local del navegador, así que T14 encuentra el registro que T01 tiene guardado y lo dice en la cabecera del cálculo («Registro T01 en este navegador: compañía, casos de uso, fecha»). «Nuevo cálculo desde este registro» lo crea a la fecha que se indique; el enlace «Calcular el índice con este registro» de la vista Consejo de T01 abre T14 con el cálculo ya creado (o lo actualiza si ya existe uno de esa fecha). Un T14 recién abierto con un registro real crea el cálculo solo y toma la compañía del registro. Si el registro no está en el navegador (o se abre T14como fichero suelto), «Cargar un fichero de T01…» hace lo mismo con el JSON completo exportado por T01.
 3. **Actualizar este cálculo desde el registro**: vuelve a leer el registro y renueva solo los datos que siguen marcados «desde T01» (o que estaban sin dato); lo corregido a mano se conserva. T14 calcula lo que el registro contiene (marcado en verde) y deja vacío lo que hay que completar a mano.
 3. Complete los datos que faltan. Lo que se deja vacío cuenta como **sin dato**: puntúa 0, nunca se estima y reduce la cobertura. Con menos de 6 de 8 señales con dato, el perfil es **provisional**.
 4. Anote en «Acciones» el responsable y el plazo de cada condición de «Qué movería el perfil» y el plan de datos (documento 12, sección 10). «Imprimir informe» da la hoja para el consejo.
@@ -19,18 +19,18 @@ Los datos se guardan solo en el navegador que se usa (almacenamiento local). No 
 
 | Dato | Desde T01 | Observaciones |
 |---|---|---|
-| B1, B3, producción con valor | Sí | Activas = no paradas ni retiradas; gobernadas = con decisión de *gate* y ambición confirmada o real. |
-| B2, señal 2 | Sí | Último importe realizado de cada tipo por iniciativa y área en los 12 meses anteriores a la fecha de corte. |
-| Señal 1 | Sí (aproximación) | Inversión realizada acumulada de cada iniciativa + último coste recurrente realizado. Nivel: real si existe; si no, confirmada; sin ninguna, «sin clasificar». |
-| Señal 7 | Sí | G2 superado en 24 meses; resultado = G5, parada o estancada más del doble de los plazos de referencia de las fases 3 a 5 (configuración de T01). |
-| Sobredeclaración | Sí | Iniciativas con ambición real inferior a la confirmada. |
-| Señal 3 | Sí, con el esquema 0.5 | Suma de la capacidad de cada iniciativa (`indice.capacidad`: horas liberadas, materializadas y reasignadas; T20). |
+| B1, B3, producción con valor | Sí | Activos = no parados ni retirados; gobernados = con decisión de *gate* y ambición confirmada o real. |
+| B2, señal 2 | Sí | Último importe realizado de cada tipo por caso de uso y área en los 12 meses anteriores a la fecha de corte. |
+| Señal 1 | Sí (aproximación) | Inversión realizada acumulada de cada caso de uso + último coste recurrente realizado. Nivel: real si existe; si no, confirmada; sin ninguna, «sin clasificar». |
+| Señal 7 | Sí | G2 superado en 24 meses; resultado = G5, parado o estancado más del doble de los plazos de referencia de las fases 3 a 5 (configuración de T01). |
+| Sobredeclaración | Sí | Casos de uso con ambición real inferior a la confirmada. |
+| Señal 3 | Sí, con el esquema 0.5 | Suma de la capacidad de cada caso de uso (`indice.capacidad`: horas liberadas, materializadas y reasignadas; T20). |
 | Señales 4 y 5 | Sí, con el esquema 0.5 | Verificación de IT-P2 e IT-P3 en un *gate* (`indice.itp2`, `indice.itp3`), supervisión humana verificada y unidad completa rediseñada. Sin verificar = respuesta afirmativa sin verificación concluida (las negativas no se verifican). |
 | Señal 6 | Sí, con el esquema 0.5 | Último retorno realizado y validado con `oferta_habilitada_ia` en los 12 meses, sobre `meta.indice.ingresos_totales`. |
 | Señal 8 e IT-D1 | Sí, con el esquema 0.5 | Decisiones del consejo (`decisiones_consejo`, vista Consejo de T01): tesis aprobada y sus esferas con Transformar, apuestas de Transformar aprobadas en 12 meses con o sin límite por etapa, revisiones y decisiones de etapa. |
 | IT-D3 | Sí, con el esquema 0.5 | `meta.indice.it_d3` y su evidencia. |
 
-Con un registro anterior al esquema 0.5, las señales 3 a 6 y 8 y las condiciones IT-D1 e IT-D3 quedan «sin dato» y se completan a mano. Solo cuentan las iniciativas de las esferas 01 a 07 (documento 12, sección 4.2).
+Con un registro anterior al esquema 0.5, las señales 3 a 6 y 8 y las condiciones IT-D1 e IT-D3 quedan «sin dato» y se completan a mano. Solo cuentan los casos de uso de las esferas 01 a 07 (documento 12, sección 4.2).
 
 ## Cálculo desde T01 sin abrir el navegador
 

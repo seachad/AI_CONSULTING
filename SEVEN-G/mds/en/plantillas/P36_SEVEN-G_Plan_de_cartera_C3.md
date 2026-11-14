@@ -23,7 +23,7 @@
 | **When it is used** | In C3: in the first implementation, in weeks 11–12 (90 §4.4); thereafter, every year after C2 or C5. It is updated at each quarterly portfolio review (14 §7.2). |
 | **Who completes it** | The AI Office prepares it; management control provides amounts and consumption; the AI Risk Owner provides limits and concentration; sponsors provide the entry records. |
 | **Who verifies it** | The AI Office checks the calculation and the second line the risk limits; the AI Auditor reviews the application of the method by sampling **(Enterprise)**. |
-| **Who decides or approves** | The AI Committee. The board approves Transform initiatives and any transfer out of their envelope (14 §2.1). |
+| **Who decides or approves** | The AI Committee. The board approves Transform use cases and any transfer out of their envelope (14 §2.1). |
 | **Corporate cycle stage** | C3 · Portfolio, with monitoring in C4. Inputs: P33 (C1) and P35 (C2). |
 | **Tools** | T01 (entry record, scoring, lanes, tranches, alerts, "Programme" and "Regularisation" tags), T16 (balance by sphere), T22 (retirements), T06 (risk concentration). |
 | **Reference document** | Document 14 (full method); 01 §5.1; 90 §4.4 and §5. |
@@ -31,7 +31,7 @@
 
 Completion rules:
 
-- **Each ambition competes with its peers.** Initiatives are scored and ranked only within their lane (14 §4.4).
+- **Each ambition competes with its peers.** Use cases are scored and ranked only within their lane (14 §4.4).
 - **No data is not a measured zero.** A criterion with no data scores 0 and is shown as "no data"; with no data on additional net value per euro, G2 cannot be passed (14 §4.3).
 - **The order may be altered** with a written justification recorded in T01; if it affects the Transform lane, the board is informed.
 - **Funding is staged.** Money is released *gate* by *gate* in tranches (14 §6.2).
@@ -62,10 +62,10 @@ Amounts approved in the C2 framework budget (P35, section 11) and their C3 struc
 |---|---|---|---|---|---|
 | Committed recurring cost | | | | — | |
 | Optimise envelope (tranches 2 and 3) | | | | | |
-| Augment envelope (tranches 2 and 3, including each initiative's adoption) | | | | | |
+| Augment envelope (tranches 2 and 3, including each use case's adoption) | | | | | |
 | Staged Transform envelope | | | | | Only stages approved by the board. |
 | Enablement (data, platform, spheres 08 and 09) | | | | — | |
-| Adoption and training not charged to initiatives | | | | — | |
+| Adoption and training not charged to use cases | | | | — | |
 | Contingency | | | | — | Includes the discovery reserve (tranche 1, phases 0–3), the retirement and regularisation reserve and approved deviations (14 §6.1). |
 | **Total** | | | | | |
 
@@ -99,7 +99,7 @@ Spreadsheet formulas (illustrative columns: C = additional net value per euro, H
 
 They are recorded with a reason and do not enter prioritisation (14 §3.3 and §4.1).
 
-| Initiative (IA-AAAA-NNN) | Filter | Treatment |
+| Use case (IA-AAAA-NNN) | Filter | Treatment |
 |---|---|---|
 | | Prohibited practice · Duplicate · Does not require AI · Outside the appetite · Transform without senior management sponsorship · Critical residual risk without board approval | |
 
@@ -109,7 +109,7 @@ One table per lane: Optimise, Augment and Transform.
 
 **Lane:** ______
 
-| Initiative | Additional net value per euro | Multiple | Net | Thesis | Ambition | Risk | Data | Capacity | Score | Rank | Change of order and justification |
+| Use case | Additional net value per euro | Multiple | Net | Thesis | Ambition | Risk | Data | Capacity | Score | Rank | Change of order and justification |
 |---|---|---|---|---|---|---|---|---|---|---|---|
 | | | | | | | | | | | | |
 | | | | | | | | | | | | |
@@ -119,7 +119,7 @@ In Transform, additional net value per euro is calculated and shown, but it is n
 
 ### 4.4 Allocation by tranche
 
-| Initiative | Lane | Tranche (1 · 2 · 3 · Scaling · Transform stage) | Amount | Released after | Status (Pending · Released · Consumed) |
+| Use case | Lane | Tranche (1 · 2 · 3 · Scaling · Transform stage) | Amount | Released after | Status (Pending · Released · Consumed) |
 |---|---|---|---|---|---|
 | | | | | | |
 
@@ -141,12 +141,12 @@ The AI Office maintains the plan (14 §6.3). Units: full-time equivalents per qu
 | Adoption | | | | | | |
 | *Gate* verification and decision | | | | | | Decision time against the reference time limit (03 §3.6). |
 
-### 5.2 Limit on simultaneous initiatives
+### 5.2 Limit on simultaneous use cases
 
 | Field | Content | Guidance |
 |---|---|---|
-| Limit on initiatives in phases 3 to 5 | | Once the limit is exceeded, no new initiatives enter phase 4 until one passes G5 or is stopped. |
-| Initiatives currently in phases 3 to 5 | | |
+| Limit on use cases in phases 3 to 5 | | Once the limit is exceeded, no new use cases enter phase 4 until one passes G5 or is stopped. |
+| Use cases currently in phases 3 to 5 | | |
 
 ---
 
@@ -154,11 +154,11 @@ The AI Office maintains the plan (14 §6.3). Units: full-time equivalents per qu
 
 ### 6.1 Portfolio risk limits
 
-They translate the C2 appetite (14 §5.2). Exceeding a limit does not stop initiatives under way, but it prevents new ones from entering the affected category.
+They translate the C2 appetite (14 §5.2). Exceeding a limit does not stop use cases under way, but it prevents new ones from entering the affected category.
 
 | Limit | Value set | Current value | Status (Within · Exceeded) | Measure or escalation |
 |---|---|---|---|---|
-| Initiatives in production with accepted High residual risk | | | | |
+| Use cases in production with accepted High residual risk | | | | |
 | High regulatory risk systems simultaneously in phases 4–5 | | | | |
 | A2 or A3 agents in production (requires level 3 in D4 and D6) | | | | |
 | Investment in systems with direct exposure without independent assessment | | | | |
@@ -194,7 +194,7 @@ The ambition mix by phase is also reviewed (03 §3.5): a portfolio that is balan
 |---|---|---|---|
 | Annual (C3) | Construction or renewal of the portfolio. | | AI Committee |
 | Quarterly | Balance, concentration, programmes, retirements, budget; report to the board in C4. | | AI Committee |
-| Monthly | Funnel, stalled initiatives, expired conditions, holds and new entries. | | AI Committee |
+| Monthly | Funnel, stalled use cases, expired conditions, holds and new entries. | | AI Committee |
 | Ongoing | Registrations, T01 alerts and preparation of information. | — | AI Office |
 
 ---
@@ -212,14 +212,14 @@ Rules and initial thresholds in 14 §12: the programme's colour is the worst of 
 
 ## 9. Regularisation plan
 
-Systems and initiatives pre-dating the framework (14 §11; 90 §5). First those that meet any Enterprise criterion. Reference time limit: six months from C2 approval for those with Enterprise criteria; 12 months for the rest, unless other time limits are approved in C2.
+Systems and use cases pre-dating the framework (14 §11; 90 §5). First those that meet any Enterprise criterion. Reference time limit: six months from C2 approval for those with Enterprise criteria; 12 months for the rest, unless other time limits are approved in C2.
 
 | Code (IA- · SIA-) | Name | Actual status (Idea · Pilot · Under construction · In production · Corporate use · Unauthorised use) | Enterprise criteria | Order | Treatment | Minimum evidence | Time limit | Owner | Review date | Outcome |
 |---|---|---|---|---|---|---|---|---|---|---|
 | | | | | | | | | | | |
 | *(illustrative example)* SIA-2026-004 | Enquiries assistant | In production | Direct exposure | 1 | Review equivalent to G7 | P31, P03, P04, P11, P12, P28, P24, P25, P19 | 6 months from C2 | Head of customer service | 15-03-2027 | Pending |
 
-Rules (14 §11.2): the scope is not extended during regularisation; an initiative in production that has not been regularised when the time limit expires is a major nonconformity and, if it meets Enterprise criteria without a regulatory classification, a critical one. Unauthorised use is regularised as a nonconformity: authorise, replace or block.
+Rules (14 §11.2): the scope is not extended during regularisation; a use case in production that has not been regularised when the time limit expires is a major nonconformity and, if it meets Enterprise criteria without a regulatory classification, a critical one. Unauthorised use is regularised as a nonconformity: authorise, replace or block.
 
 ---
 
@@ -228,10 +228,10 @@ Rules (14 §11.2): the scope is not extended during regularisation; an initiativ
 | # | Check | Status |
 |---|---|---|
 | 1 | The portfolio is prioritised with a documented method that uses additional net value per euro and ambition balance, approved by the committee (question D2.07 in document 11). | Met · Not met · Not applicable · Pending |
-| 2 | Each lane has its envelope and initiatives compete only within it; there are no transfers out of the Transform envelope without board approval. | |
+| 2 | Each lane has its envelope and use cases compete only within it; there are no transfers out of the Transform envelope without board approval. | |
 | 3 | The scores can be reproduced with the formula; "no data" entries are recorded as such. | |
 | 4 | Changes to the order have a recorded written justification. | |
-| 5 | There is a capacity plan for scarce profiles and a limit on simultaneous initiatives in phases 3 to 5. | |
+| 5 | There is a capacity plan for scarce profiles and a limit on simultaneous use cases in phases 3 to 5. | |
 | 6 | Portfolio and concentration limits have a set value and a current situation. | |
 | 7 | The regularisation plan has time limits, owners and an order by risk (90 §4.5, criterion 8). | |
 | 8 | The committee reviews the funnel monthly and the balance quarterly, with recorded decisions (question D2.09). | |
@@ -247,9 +247,9 @@ Rules (14 §11.2): the scope is not extended during regularisation; an initiativ
 | Provides limits and concentration | AI Risk Owner (second line) | | | |
 | Verifies the method **(Enterprise)** | AI Auditor | | | |
 | Approves the portfolio | AI Committee | | | Reference to the minutes |
-| Approves Transform initiatives and transfers out of their envelope | Board | | | DEC-AAAA-NNN |
+| Approves Transform use cases and transfers out of their envelope | Board | | | DEC-AAAA-NNN |
 
-Segregation of duties: a committee member who sponsors an initiative abstains from its prioritisation and does not count towards the quorum for that item (30 §3.3).
+Segregation of duties: a committee member who sponsors a use case abstains from its prioritisation and does not count towards the quorum for that item (30 §3.3).
 
 ---
 

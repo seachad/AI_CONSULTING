@@ -44,7 +44,7 @@ Completion rules:
 
 | Field | Content | Guidance |
 |---|---|---|
-| Initiative code | | IA-AAAA-NNN. |
+| Use case code | | IA-AAAA-NNN. |
 | AI systems included | | SIA-AAAA-NNN from P05 (T02). |
 | Name of the processing operation | | As it appears, or will appear, in the record of processing activities (GDPR, Article 30). |
 | Controller | | Group company that determines the purposes and means. |
@@ -194,7 +194,7 @@ A measure only reduces the residual risk if it exists and works (P12). "Planned"
 | Assessment | Applies? | How it is coordinated |
 |---|---|---|
 | Fundamental rights impact assessment (P48) | Yes · No | It complements the DPIA without duplicating it (Article 27.4 of the AI Act): the description of the processing and the data protection risks are reused. |
-| Initiative risk register (P12) | Yes | Risks E.. of Medium level or above appear in P12. |
+| Use case risk register (P12) | Yes | Risks E.. of Medium level or above appear in P12. |
 | Security design (P18) | | Technical data security measures. |
 | Sector-specific or third-party assessments **(Enterprise)** | | DORA, NIS2 or others (P11 §9.3). |
 

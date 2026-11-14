@@ -56,7 +56,7 @@ Reglas de cumplimentación:
 
 ### 3.1 Identificación y servicio
 
-| Código | Razón social · grupo · país | Tipo de tercero (36 §1.1) | Servicio (descripción comprensible) | Modelos y versiones | Tipo de contratación | Sistemas e iniciativas | Gestor de la relación |
+| Código | Razón social · grupo · país | Tipo de tercero (36 §1.1) | Servicio (descripción comprensible) | Modelos y versiones | Tipo de contratación | Sistemas e casos de uso | Gestor de la relación |
 |---|---|---|---|---|---|---|---|
 | PRV-AAAA-NNN | | | | | Construir sobre · Comprar · Adaptar · Aliarse | SIA-AAAA-NNN · IA-AAAA-NNN | |
 | *(ejemplo ilustrativo)* PRV-2026-003 | Proveedor Alfa, S.A. (ficticio) · Grupo Alfa · Irlanda | Proveedor de modelos | Modelo de lenguaje por interfaz de programación para el asistente de consultas | Modelo general, versión fijada 2026-06 | Construir sobre | SIA-2026-007 · IA-2026-012 | Responsable técnico del área de clientes |

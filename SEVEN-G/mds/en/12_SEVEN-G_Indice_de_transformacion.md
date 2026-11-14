@@ -1,6 +1,6 @@
 # Transformation index
 
-**How to know, with evidence, whether an initiative and a company are being transformed by AI or are merely becoming more efficient**
+**How to know, with evidence, whether a use case and a company are being transformed by AI or are merely becoming more efficient**
 
 | | |
 |---|---|
@@ -16,13 +16,13 @@
 
 > **Legal notice and disclaimer.** SEVEN-G is a reference methodological framework provided "as is" and for information purposes only. It does not constitute legal, regulatory, financial or professional advice, nor does it guarantee compliance with any law or standard. References to general regulation (such as the EU AI Act, the GDPR, DORA or NIS2), to technical standards and to regulation specific to each sector or jurisdiction may be incomplete, may not apply to a particular case or may become out of date as a result of regulatory changes, interpretations or supervisory positions after their consultation date. **Each organisation that uses SEVEN-G is solely responsible for identifying the regulation that applies to it, verifying that it is current and certifying its own regulatory compliance**, with the appropriate qualified advice. This methodology is a generic, free aid shared with the community so that nobody has to start from scratch; each person or organisation can and should adapt it to its own use. It must not be inferred that its legally sensitive parts have been reviewed by legal counsel: those reviews, for each company or sector, are the ultimate responsibility of the company, consultant or organisation that uses it. Although every effort is made to keep it up to date, some regulation may have changed without being reflected here. To the fullest extent permitted by law, the author accepts no responsibility whatsoever for the effects of its application in any organisation or for its full applicability. The methodology does not grant certification of any kind. The author accepts no liability for any use made of this content or for any decisions taken on the basis of it. The data, figures, companies and cases in the examples are fictitious or illustrative.
 
-<!-- esencial: siempre | Calculation of the company's transformation index at C1 and at each C5, with the base conditions and the eight signals; 'no data' never counts as evidence. The classification of each initiative's ambition (section 3) always applies. -->
+<!-- esencial: siempre | Calculation of the company's transformation index at C1 and at each C5, with the base conditions and the eight signals; 'no data' never counts as evidence. The classification of each use case's ambition (section 3) always applies. -->
 
 ## 1. Purpose and scope
 
 This document develops section 5 of document 00. It defines two connected instruments:
 
-1. **The ambition classification of each initiative** (Optimise, Augment or Transform): five questions, decision rules, treatment of borderline cases, owners and the cycle of proposed, confirmed and actual ambition.
+1. **The ambition classification of each use case** (Optimise, Augment or Transform): five questions, decision rules, treatment of borderline cases, owners and the cycle of proposed, confirmed and actual ambition.
 2. **The company transformation index**: eight signals with formula, data source and a score from 0 to 3; baseline conditions; rules for assigning one of the five profiles; treatment of "no data"; frequency; calibration; a complete example and limitations.
 
 It applies in phases 1, 2 and 7 of the lifecycle and in stages C1, C4 and C5 of the corporate cycle. The associated tools are the ambition classifier (T05) and the index calculator (T14); the evidence for the classification is documented with template P07.
@@ -39,7 +39,7 @@ The index is not a value judgement. **Efficiency is a legitimate outcome**, and 
 
 ---
 
-## 3. Ambition classification of an initiative
+## 3. Ambition classification of a use case
 
 ### 3.1 The five questions
 
@@ -59,18 +59,18 @@ The rules are applied **in order**. The first one that is met determines the lev
 
 | Rule | Condition | Result |
 |---|---|---|
-| **1 · Optimise by default** | IT-P1, IT-P2, IT-P3 and IT-P4 are **no**. | **Optimise**, regardless of how the initiative has been presented. |
+| **1 · Optimise by default** | IT-P1, IT-P2, IT-P3 and IT-P4 are **no**. | **Optimise**, regardless of how the use case has been presented. |
 | **2 · New revenue** | IT-P4 is **yes**. | **Transform**. |
 | **3 · New value proposition** | IT-P1 is **yes**. | **Transform**. |
 | **4 · New operating model** | IT-P2 and IT-P3 are **yes** and the change affects an entire organisational unit or a core business process (not a partial support process). | **Transform**. |
 | **5 · Augmentation** | IT-P2 or IT-P3 is **yes** and rule 4 is not met. | **Augment**. |
 | **6 · Cross-check with IT-P5** | The result is Augment or Transform and IT-P5 is **yes**. | Inconsistency: the answers are reviewed. If it persists, the next lower level is assigned and the reason is recorded. |
-| **7 · Dependency in Optimise** | The result is Optimise and IT-P5 is **no**. | The level does not change. It is checked whether the initiative supports a critical function (Enterprise criterion in document 01, section 9.2). |
+| **7 · Dependency in Optimise** | The result is Optimise and IT-P5 is **no**. | The level does not change. It is checked whether the use case supports a critical function (Enterprise criterion in document 01, section 9.2). |
 | **8 · Prudence in case of doubt** | After applying the rules, reasonable doubt persists between two levels. | The **lower level** is assigned. Whoever proposes the higher level provides the evidence to resolve the doubt. The doubt **does not lower the controls**: if it affects an Enterprise criterion, Enterprise applies. |
-| **9 · Mixed initiatives** | The initiative has components at different levels. | It is split into separate initiatives or classified according to the component that accounts for more than half of the investment. Levels are not averaged. |
+| **9 · Mixed use cases** | The use case has components at different levels. | It is split into separate use cases or classified according to the component that accounts for more than half of the investment. Levels are not averaged. |
 | **10 · Irrelevance of form** | — | The level is not influenced by the technology (generative AI, agents), the amount of investment, the technical novelty or the name of the programme. |
 
-<!-- grafico: Ambition classification of an initiative | The rules are applied in order and cross-checked against question 5 -->
+<!-- grafico: Ambition classification of a use case | The rules are applied in order and cross-checked against question 5 -->
 ```mermaid
 flowchart TD
   A["Answers IT-P1 to IT-P5 with evidence"] --> B{"Are IT-P1 to IT-P4 all no?"}
@@ -105,7 +105,7 @@ flowchart TD
 | Redesign of the planning function: allocation decisions move to an A2 system and planners oversee exceptions | **Transform** (rule 4) | IT-P2 and IT-P3 yes across an entire unit. If it only affects part of planning, **Augment**. |
 | AI-driven dynamic pricing for the existing offering | **Augment** or **Transform** | If the customer receives a new form of pricing (IT-P1 yes), Transform; if rates are merely adjusted within the current model, Augment (IT-P3: the decision moves to a system). |
 | Paid service for customers based on a proprietary model | **Transform** (rule 2) | Revenue that did not exist (IT-P4 yes). |
-| Common data platform for several initiatives | **Optimise** by default | It is classified by its own effect. It does not inherit the ambition of the initiatives it enables; its contribution is declared as a dependency. |
+| Common data platform for several use cases | **Optimise** by default | It is classified by its own effect. It does not inherit the ambition of the use cases it enables; its contribution is declared as a dependency. |
 | Exploratory pilot of a new service idea | According to the hypothesis at scale | It is classified by what would change if it succeeded; the actual ambition is assessed at G7. |
 | AI system for monitoring regulatory obligations (primary sphere 08) | **Optimise** as a general rule | It is classified like any other; its level does not qualify sphere 08 (document 10, section 4.2). |
 
@@ -121,11 +121,11 @@ Criteria for recording the **actual ambition** (consistent with the G7 criteria 
 
 | Actual ambition | Minimum evidence |
 |---|---|
-| **Transform** | Validated return attributable to the initiative, or a verified change in the offering or the operating model (IT-P1, IT-P4 or rule 4 confirmed by facts). |
+| **Transform** | Validated return attributable to the use case, or a verified change in the offering or the operating model (IT-P1, IT-P4 or rule 4 confirmed by facts). |
 | **Augment** | Effective adoption equal to or above the target in the hypothesis, measured performance improvement and verified change of role or reassigned capacity. |
 | **Optimise** | Any other case with measured value. |
 
-If the initiative is **stopped before G5**, no actual ambition is recorded: the confirmed ambition is retained and the stop counts in signal 7.
+If the use case is **stopped before G5**, no actual ambition is recorded: the confirmed ambition is retained and the stop counts in signal 7.
 
 ### 3.5 Who classifies, confirms and reviews
 
@@ -135,9 +135,9 @@ If the initiative is **stopped before G5**, no actual ambition is recorded: the 
 | **Phase 2 · Confirmation (Lite)** | AI Product Owner | AI Office | Sponsor, at G2 | If the confirmed level is Transform, the intensity becomes Enterprise. |
 | **Phase 2 · Confirmation (Enterprise)** | AI Product Owner | AI Auditor | AI Committee, at G2 | Transform also requires board approval. |
 | **R6 · Continuity review** | AI Product Owner | AI Office or AI Auditor | R6 body | If there are indications that the actual level differs from the confirmed level, G7 is brought forward. |
-| **Phase 7 · Actual ambition** | AI Product Owner, with data from T12 | AI Office (Lite) or AI Auditor (Enterprise) | G7 body | Scaling an initiative with an actual ambition of Transform requires board approval. |
+| **Phase 7 · Actual ambition** | AI Product Owner, with data from T12 | AI Office (Lite) or AI Auditor (Enterprise) | G7 body | Scaling a use case with an actual ambition of Transform requires board approval. |
 
-No one verifies or decides on the classification of their own initiative (document 01, section 7.4).
+No one verifies or decides on the classification of their own use case (document 01, section 7.4).
 
 ### 3.6 What to do if the actual ambition differs from the declared ambition
 
@@ -145,23 +145,23 @@ No one verifies or decides on the classification of their own initiative (docume
 |---|---|---|
 | **Actual lower than confirmed** | 1) Record the change as an event with its reason. 2) Recalculate the heat map and the index. 3) Analyse the cause: initial overstatement, incomplete execution or change of scope. 4) At G7, choose between **Iterate** to reach the confirmed level, with a new time limit and investment cap, or **accept the actual level** and assess continuity against the criteria for that level (for example, materialised savings if it moves to Optimise). 5) Review whether Enterprise intensity is still justified by another criterion. 6) Record the lessons learned. | G7 body; if the confirmed ambition was Transform, the board is informed at the next C4 session. |
 | **Actual higher than confirmed** | It is treated as a new classification: the criteria and approvals for the new level are applied before scaling. If it reaches Transform, board approval is required and Enterprise applies. | G7 body; the board if it reaches Transform. |
-| **Operating as Transform without approval** | If the initiative has already introduced changes typical of Transform without board approval, a **major nonconformity** is raised and regularised within the time limit approved in C2. | AI Committee. |
+| **Operating as Transform without approval** | If the use case has already introduced changes typical of Transform without board approval, a **major nonconformity** is raised and regularised within the time limit approved in C2. | AI Committee. |
 | **Classification without answers or without evidence** | **Minor nonconformity**, which must be corrected before the next *gate*. | AI Office. |
 | **Classification modified to circumvent a control or an approval** | **Major nonconformity**. | AI Committee. |
 
 The difference between confirmed and actual ambition **is not in itself a nonconformity**: bets may not pay off. What is controlled is how often this happens:
 
-**Ambition overstatement rate** = initiatives with actual ambition lower than confirmed ÷ initiatives with recorded actual ambition × 100, over the last 24 months.
+**Ambition overstatement rate** = use cases with actual ambition lower than confirmed ÷ use cases with recorded actual ambition × 100, over the last 24 months.
 
 | Value (to be calibrated) | Action |
 |---|---|
 | 30% or more across the portfolio as a whole | Alert to the AI Committee and review of the quality of classification in phase 2. |
-| 50% or more among initiatives confirmed as Transform | The board is informed and it is taken into account when reading the profile (section 5.3). |
+| 50% or more among use cases confirmed as Transform | The board is informed and it is taken into account when reading the profile (section 5.3). |
 
 
 ### 3.7 Impact reach (IM1–IM4)
 
-The five questions in section 3.1 also say **what** each initiative **affects**. That reading is summarised in four reach levels, with no new questions, and it is the third lens of maturity (11 §7.6). It applies to initiatives in use and only with verified answers (section 3.4): an answer without evidence counts as "no".
+The five questions in section 3.1 also say **what** each use case **affects**. That reading is summarised in four reach levels, with no new questions, and it is the third lens of maturity (11 §7.6). It applies to use cases in use and only with verified answers (section 3.4): an answer without evidence counts as "no".
 
 | Level | Reach | Condition | Typical ambition |
 |---|---|---|---|
@@ -170,9 +170,9 @@ The five questions in section 3.1 also say **what** each initiative **affects**.
 | **IM3** | People and organisation | IT-P3 = yes: roles, structure or who takes which decisions change | Augment or Transform |
 | **IM4** | Business model | IT-P1 or IT-P4 = yes: the value proposition to the customer changes or there are new revenues, services or markets | Transform |
 
-The highest level whose condition is met is assigned. At company level, the **distribution** of initiatives in use by level is shown alongside the index profile (section 5): this shows, without a new number, whether AI only improves tasks, whether it already redesigns processes, whether it changes people's work or whether it touches the business model. The typical ambition is indicative: the level is given by the answers, not by the ambition label.
+The highest level whose condition is met is assigned. At company level, the **distribution** of use cases in use by level is shown alongside the index profile (section 5): this shows, without a new number, whether AI only improves tasks, whether it already redesigns processes, whether it changes people's work or whether it touches the business model. The typical ambition is indicative: the level is given by the answers, not by the ambition label.
 
-> **Why it matters.** "Optimise" and "Transform" are labels that are declared; impact reach comes from what has actually changed. A portfolio with every initiative at IM1 is not transforming the company, even if the thesis says so, and an initiative at IM3 without a people plan is an alert (11 §7.6).
+> **Why it matters.** "Optimise" and "Transform" are labels that are declared; impact reach comes from what has actually changed. A portfolio with every use case at IM1 is not transforming the company, even if the thesis says so, and a use case at IM3 without a people plan is an alert (11 §7.6).
 
 ---
 
@@ -195,9 +195,9 @@ The **sum** (0 to 24) is shown for reference, but **the profile is not assigned 
 
 | Aspect | Rule |
 |---|---|
-| **Initiatives included** | All those in the initiative register (T01) whose primary sphere is 01 to 07. Those with primary sphere 08 or 09 are excluded from signals 1, 2 and 7 and reported separately as investment in governance and compliance enablement (document 10, section 4.2). |
-| **Corporate use of general-purpose AI** | Its cost counts in signal 1 as **Optimise**, unless it forms part of an initiative with a higher confirmed ambition and an approved adoption plan. |
-| **Ambition level used** | Actual if it exists; otherwise, confirmed. Initiatives with only a proposed ambition are counted as **unclassified**. |
+| **Use cases included** | All those in the use case register (T01) whose primary sphere is 01 to 07. Those with primary sphere 08 or 09 are excluded from signals 1, 2 and 7 and reported separately as investment in governance and compliance enablement (document 10, section 4.2). |
+| **Corporate use of general-purpose AI** | Its cost counts in signal 1 as **Optimise**, unless it forms part of a use case with a higher confirmed ambition and an approved adoption plan. |
+| **Ambition level used** | Actual if it exists; otherwise, confirmed. Use cases with only a proposed ambition are counted as **unclassified**. |
 | **Window** | Rolling twelve months up to the cut-off date, except for signal 7 (twenty-four months). |
 | **Status of amounts** | The value signals (2, 3 and 6) use only **validated** amounts. |
 | **Currency and cost** | "Portfolio cost" = build investment executed in the window + recurring cost for the window, according to the categories in document 42. |
@@ -208,9 +208,9 @@ Three conditions that are not scored but are required by the profiles:
 
 | Code | Condition | Formula | Initial threshold (to be calibrated) |
 |---|---|---|---|
-| **B1** | Governed portfolio | Active initiatives with phase, recorded *gates* and confirmed ambition ÷ active initiatives × 100 | 80% or more |
+| **B1** | Governed portfolio | Active use cases with phase, recorded *gates* and confirmed ambition ÷ active use cases × 100 | 80% or more |
 | **B2** | Proportion of validated value | Validated realised value ÷ total realised value (validated + declared + estimated) × 100 | 50% or more |
-| **B3** | Scale in production | Number of initiatives in spheres 01 to 07 in production | 5 or more (adjustable to the size of the company in C2) |
+| **B3** | Scale in production | Number of use cases in spheres 01 to 07 in production | 5 or more (adjustable to the size of the company in C2) |
 
 ### 4.4 The eight signals
 
@@ -220,8 +220,8 @@ Three conditions that are not scored but are required by the profiles:
 |---|---|
 | **What it measures** | Weight of Augment and Transform bets in the portfolio cost. |
 | **Formula** | IT-S1 = portfolio cost in Augment and Transform ÷ total portfolio cost × 100. The weight of Transform is also reported separately. |
-| **Source** | T01: ambition level, primary sphere; T12 and T13: investment and recurring cost per initiative. |
-| **0** | There is no registered portfolio, or more than 30% of the cost corresponds to unclassified initiatives. |
+| **Source** | T01: ambition level, primary sphere; T12 and T13: investment and recurring cost per use case. |
+| **0** | There is no registered portfolio, or more than 30% of the cost corresponds to unclassified use cases. |
 | **1** | Less than 20%. |
 | **2** | From 20% to 40%, or 40% or more with Transform below 10%. |
 | **3** | 40% or more, with Transform at 10% or more. |
@@ -235,8 +235,8 @@ Three conditions that are not scored but are required by the profiles:
 | **Source** | T12: amounts by type (efficiency, return) with validated status. Released capacity does not count (measurement rule 3). |
 | **0** | There is no validated value. |
 | **1** | Less than 10%. |
-| **2** | From 10% to 30%, or 30% or more coming from a single initiative. |
-| **3** | 30% or more, coming from at least two initiatives. |
+| **2** | From 10% to 30%, or 30% or more coming from a single use case. |
+| **3** | 30% or more, coming from at least two use cases. |
 
 #### Signal 3 · Materialisation
 
@@ -255,9 +255,9 @@ Three conditions that are not scored but are required by the profiles:
 | | |
 |---|---|
 | **What it measures** | Processes redesigned end to end as opposed to automated tasks. |
-| **Formula** | IT-S4 = initiatives in production with IT-P2 = yes verified at G5 or G7 ÷ initiatives in production × 100. |
+| **Formula** | IT-S4 = use cases in production with IT-P2 = yes verified at G5 or G7 ÷ use cases in production × 100. |
 | **Source** | T01: answers to IT-P2 with verification status; T03: result of G5 and G7. |
-| **0** | There are no initiatives in production, or the verification of IT-P2 is missing in more than 30% of them. |
+| **0** | There are no use cases in production, or the verification of IT-P2 is missing in more than 30% of them. |
 | **1** | Less than 15%. |
 | **2** | From 15% to 35%. |
 | **3** | 35% or more. |
@@ -267,9 +267,9 @@ Three conditions that are not scored but are required by the profiles:
 | | |
 |---|---|
 | **What it measures** | Changes in roles, structure and the allocation of decisions between people and systems, with defined oversight. |
-| **Formula** | IT-S5 = initiatives in production with IT-P3 = yes verified and human oversight design verified (P17) ÷ initiatives in production × 100. |
+| **Formula** | IT-S5 = use cases in production with IT-P3 = yes verified and human oversight design verified (P17) ÷ use cases in production × 100. |
 | **Source** | T01: verified answers to IT-P3; P17 evidence; T20: redesigned roles; register of redesigned organisational units. |
-| **0** | There are no initiatives in production. |
+| **0** | There are no use cases in production. |
 | **1** | Less than 10%. |
 | **2** | From 10% to 25%, or 25% or more without any entire organisational unit redesigned. |
 | **3** | 25% or more, with at least one entire organisational unit redesigned. |
@@ -296,13 +296,13 @@ These thresholds depend heavily on sector and size. The company **may** adjust t
 | | |
 |---|---|
 | **What it measures** | Whether Augment and Transform bets reach production in a proportion and time comparable to the rest. |
-| **Formulas** | **Arrival rate** of a group = initiatives that passed G2 in the last 24 months and reached G5 ÷ initiatives in the same group with an outcome (reached G5, were stopped or have been stalled for more than twice the sum of the reference time limits for phases 3 to 5). **Relative conversion** CR = arrival rate for Augment and Transform ÷ arrival rate for Optimise. **Relative time** TR = median days from G2 to G5 in Augment and Transform ÷ the same median in Optimise. |
-| **No basis for comparison** | If there are no Optimise initiatives with an outcome, CR is replaced by the arrival rate for Augment and Transform ÷ 0.6, and TR by the actual median ÷ the sum of the reference time limits for phases 3 to 5 (document 03, section 3.6). |
+| **Formulas** | **Arrival rate** of a group = use cases that passed G2 in the last 24 months and reached G5 ÷ use cases in the same group with an outcome (reached G5, were stopped or have been stalled for more than twice the sum of the reference time limits for phases 3 to 5). **Relative conversion** CR = arrival rate for Augment and Transform ÷ arrival rate for Optimise. **Relative time** TR = median days from G2 to G5 in Augment and Transform ÷ the same median in Optimise. |
+| **No basis for comparison** | If there are no Optimise use cases with an outcome, CR is replaced by the arrival rate for Augment and Transform ÷ 0.6, and TR by the actual median ÷ the sum of the reference time limits for phases 3 to 5 (document 03, section 3.6). |
 | **Source** | T01 and T03: G2 and G5 dates, statuses, stop reasons, reference time limits. |
 | **0** | There are no *gates* recorded in the window. |
-| **1** | No Augment or Transform initiative has passed G2 in the window, or CR is below 0.5. |
-| **2** | CR of 0.5 or more without meeting level 3, or fewer than three Augment or Transform initiatives with an outcome. |
-| **3** | CR of 0.8 or more, TR of 2.0 or less and at least three Augment or Transform initiatives with an outcome. |
+| **1** | No Augment or Transform use case has passed G2 in the window, or CR is below 0.5. |
+| **2** | CR of 0.5 or more without meeting level 3, or fewer than three Augment or Transform use cases with an outcome. |
+| **3** | CR of 0.8 or more, TR of 2.0 or less and at least three Augment or Transform use cases with an outcome. |
 
 #### Signal 8 · Board decision
 
@@ -323,7 +323,7 @@ These thresholds depend heavily on sector and size. The company **may** adjust t
 | Signal | 0 | 1 | 2 | 3 |
 |---|---|---|---|---|
 | 1 · Investment in Augment and Transform | No portfolio or > 30% unclassified | < 20% | 20–40% | ≥ 40% and Transform ≥ 10% |
-| 2 · Return within validated value | No validated value | < 10% | 10–30% | ≥ 30% and ≥ 2 initiatives |
+| 2 · Return within validated value | No validated value | < 10% | 10–30% | ≥ 30% and ≥ 2 use cases |
 | 3 · Converted capacity | Not measured | < 30% | ≥ 30% | ≥ 60% and reassigned ≥ half |
 | 4 · End-to-end processes | No production | < 15% | 15–35% | ≥ 35% |
 | 5 · Change in operating model | No production | < 10% | 10–25% | ≥ 25% and one entire unit |
@@ -346,7 +346,7 @@ There is a **transformation declaration** (D = yes) when at least one of these c
 | # | Condition | Evidence |
 |---|---|---|
 | IT-D1 | The AI thesis approved in C2 sets **Transform** as the target ambition in at least one sphere. | C2 decision document (T19). |
-| IT-D2 | Initiatives with a confirmed ambition of Transform account for **10% or more** of the portfolio cost. | T01, signal 1. |
+| IT-D2 | Use cases with a confirmed ambition of Transform account for **10% or more** of the portfolio cost. | T01, signal 1. |
 | IT-D3 | The strategic plan, reports to the board, the annual report or other company communications present AI as **business transformation**. | Documents cited, with date. |
 
 ### 5.2 Assignment rules
@@ -359,7 +359,7 @@ The rules are applied in two steps.
 |---|---|---|
 | 1 | **Transformation under way** | B1 and B2 · IT-S8 ≥ 2 · IT-S7 ≥ 2 · IT-S2 ≥ 2 or IT-S6 ≥ 2 · IT-S4 ≥ 2 or IT-S5 ≥ 2 · sum of signals ≥ 14 |
 | 2 | **Efficiency at scale** | B1, B2 and B3 · IT-S3 ≥ 2 |
-| 3 | **Tactical efficiency** | At least one initiative in production with measured value, in any status |
+| 3 | **Tactical efficiency** | At least one use case in production with measured value, in any status |
 | 4 | **Scattered exploration** | None of the above |
 
 **Step 2 · Cross-check against the declaration.** If **D = yes** and the evidenced profile is **not** Transformation under way, the assigned profile is **Declared but unevidenced transformation**, and the evidenced profile is reported as the **underlying profile**. In any other case, the assigned profile is the evidenced profile.
@@ -393,7 +393,7 @@ flowchart LR
 | **Unmaterialised efficiency** | IT-S1 = 1 and IT-S3 = 1. | Efficiency portfolio whose savings do not reach the income statement. |
 | **Stuck bets** | IT-S1 ≥ 2 and IT-S7 = 1. | There is investment in Augment and Transform, but it does not reach production. |
 | **Transformation without the board** | IT-S2 ≥ 2 or IT-S6 ≥ 2, with IT-S8 ≤ 1. | There is real change that the board neither decides on nor oversees. |
-| **Change without oversight** | Initiatives excluded from signal 5 for lack of defined human oversight. | Governance risk: decisions are delegated without control. |
+| **Change without oversight** | Use cases excluded from signal 5 for lack of defined human oversight. | Governance risk: decisions are delegated without control. |
 
 ---
 
@@ -445,24 +445,24 @@ Calibration rules:
 
 *Fictitious company. All data are illustrative and match the heat map example in document 10, section 8.2.*
 
-**Context.** Industrial company with €400M in annual revenue. It has 17 active initiatives in spheres 01 to 07 (14 Optimise, 2 Augment and 1 Transform) and 2 initiatives in the enablement band (spheres 08 and 09). Fourteen are in production: the 12 Optimise initiatives that have passed G5 and the 2 Augment initiatives. The Transform initiative (a new service in sphere 02) is in phase 5, with a commercial pilot. The AI thesis approved in C2 sets Transform as the target ambition for Product and service, and the strategic plan describes AI as a "transformation lever".
+**Context.** Industrial company with €400M in annual revenue. It has 17 active use cases in spheres 01 to 07 (14 Optimise, 2 Augment and 1 Transform) and 2 use cases in the enablement band (spheres 08 and 09). Fourteen are in production: the 12 Optimise use cases that have passed G5 and the 2 Augment use cases. The Transform use case (a new service in sphere 02) is in phase 5, with a commercial pilot. The AI thesis approved in C2 sets Transform as the target ambition for Product and service, and the strategic plan describes AI as a "transformation lever".
 
 **Baseline conditions**
 
 | Condition | Data | Result |
 |---|---|---|
-| B1 · Governed portfolio | 15 of 17 active initiatives with phase, *gates* and confirmed ambition = 88% | Met (≥ 80%) |
+| B1 · Governed portfolio | 15 of 17 active use cases with phase, *gates* and confirmed ambition = 88% | Met (≥ 80%) |
 | B2 · Validated value | €1.96M validated out of €3.30M of realised value = 59% | Met (≥ 50%) |
-| B3 · Scale | 14 initiatives in production | Met (≥ 5) |
+| B3 · Scale | 14 use cases in production | Met (≥ 5) |
 
 **Signals**
 
 | Signal | Data | Calculation | Score |
 |---|---|---|---|
 | 1 · Investment | Portfolio cost €4.00M: Optimise 3.00; Augment 0.70; Transform 0.30 | (0.70 + 0.30) ÷ 4.00 = 25%; Transform 7.5% | **2** |
-| 2 · Value | Materialised validated efficiencies €1.80M; validated return €0.16M (0.12 from an Augment initiative in Customer and 0.04 from the Transform pilot) | 0.16 ÷ 1.96 = 8.2% | **1** |
+| 2 · Value | Materialised validated efficiencies €1.80M; validated return €0.16M (0.12 from an Augment use case in Customer and 0.04 from the Transform pilot) | 0.16 ÷ 1.96 = 8.2% | **1** |
 | 3 · Materialisation | 60,000 h released; 9,000 h materialised; 12,000 h reassigned | 21,000 ÷ 60,000 = 35% | **2** |
-| 4 · Depth | 2 of 14 initiatives in production with IT-P2 verified | 14.3% | **1** |
+| 4 · Depth | 2 of 14 use cases in production with IT-P2 verified | 14.3% | **1** |
 | 5 · Operating model | 1 of 14 with IT-P3 and oversight verified; no entire unit | 7.1% | **1** |
 | 6 · Enabled revenue | €0.04M validated from the commercial pilot out of €400M | 0.01% | **1** |
 | 7 · Progression to production | Augment and Transform: 5 with an outcome, 2 in production (40%). Optimise: 14 with an outcome, 10 in production (71%). G2→G5 medians: 230 and 120 days | CR = 0.40 ÷ 0.71 = 0.56; TR = 1.9 | **2** |
@@ -482,7 +482,7 @@ Index coverage: 8 out of 8 signals with data.
 
 **Assigned profile: Declared but unevidenced transformation. Underlying profile: Efficiency at scale.**
 
-Complementary alerts: none of those in section 5.3 is triggered. The overstatement rate cannot yet be calculated for Transform (no initiative with recorded actual ambition).
+Complementary alerts: none of those in section 5.3 is triggered. The overstatement rate cannot yet be calculated for Transform (no use case with recorded actual ambition).
 
 **Message to the board** (document 60 format): *"Not yet, because evidence of return and of change in processes and roles is missing. The company governs an efficiency portfolio with validated value well, but the declared transformation rests on a single bet at pilot stage. To evidence transformation, the following would be needed as a minimum: validated return of at least €0.20M or enabled revenue of at least €2M; at least three processes redesigned end to end in production; and quarterly review of the bet by the board."*
 
@@ -511,7 +511,7 @@ The index is not presented as a grade, nor is it compared with other companies (
 | It does not measure the absolute value or the profitability of AI. | A transformation profile does not imply that the portfolio is profitable. | It is read alongside annual net value and additional net value per euro (document 40). |
 | It is not comparable across sectors or between companies of very different size. | Misuse as a market ranking. | It is used only to track the company's own evolution. |
 | It is a lagging indicator. | Transformation decisions take time to be reflected in signals 2, 5 and 6. | Quarterly trend reading; signal 8 is a leading indicator. |
-| With few initiatives, percentages are volatile. | A single initiative changes a score. | Condition B3, minimum counts in signals 2 and 7, provisional profile. |
+| With few use cases, percentages are volatile. | A single use case changes a score. | Condition B3, minimum counts in signals 2 and 7, provisional profile. |
 | It only observes transformation associated with AI. | A company may transform through other routes. | The index does not claim to measure the company's overall transformation. |
 | It does not replace the maturity diagnosis. | Profile and maturity may diverge. | They are presented together in C1 and C5 (document 11). |
 
@@ -521,11 +521,11 @@ The index is not presented as a grade, nor is it compared with other companies (
 
 | Code | Name | Use in this document |
 |---|---|---|
-| **T01** | Initiative register | Fields: answers IT-P1–IT-P5 with evidence and verification status; proposed, confirmed and actual ambition with date and reason; primary sphere; *gate* dates; statuses; stop reasons; origin of the initiative. From schema 0.5: verification of IT-P2 and IT-P3 at a *gate* with verified human oversight, entire unit redesigned, released, materialised and reassigned capacity, AI-enabled offering in the amounts, and company total revenue and IT-D3. |
+| **T01** | Use case register | Fields: answers IT-P1–IT-P5 with evidence and verification status; proposed, confirmed and actual ambition with date and reason; primary sphere; *gate* dates; statuses; stop reasons; origin of the use case. From schema 0.5: verification of IT-P2 and IT-P3 at a *gate* with verified human oversight, entire unit redesigned, released, materialised and reassigned capacity, AI-enabled offering in the amounts, and company total revenue and IT-D3. |
 | **T03** | Gate manager | Verification of the classification at G2 and G7; board approvals. |
 | **T05** | Ambition classifier | Applies the five questions and rules 1 to 10; records the result and inconsistencies. |
 | **T12** | Value realisation tracking | Amounts by type and status; released and materialised capacity; AI-enabled revenue. |
-| **T13** | Cost calculator per use case | Investment and recurring cost of each initiative (signal 1). |
+| **T13** | Cost calculator per use case | Investment and recurring cost of each use case (signal 1). |
 | **T14** | Transformation index calculator | Calculates baseline conditions, signals, profile, alerts, coverage, what would move the profile and evolution; retains the threshold version. It starts from the T01 register JSON: with schema 0.5 it calculates from it the eight signals and conditions IT-D1 and IT-D3; whatever the register does not contain is completed manually. It exports its result for the board dashboard. |
 | **T17** | Board AI dashboard | "Company transformation index" card in "Portfolio and value": profile, baseline conditions, signals, trend, alerts and what would move the profile, from the result exported by T14. |
 | **T18** | Board recommendations register | "Board (T18)" view of the T01 register: board decisions (thesis, Transform bets with a cap per stage, reviews and stage decisions) are the source of signal 8 and IT-D1. |
@@ -541,7 +541,7 @@ The index is not presented as a grade, nor is it compared with other companies (
 |---|---|
 | **00 · What SEVEN-G is and how it helps companies** | Section 5, which this document develops; measurement rules. |
 | **01 · Foundational methodology** | *Gate* criteria by ambition level, board approval for Transform, intensity. |
-| **03 · Tools and initiative register** | Fields, events, funnel metrics and reference time limits used in the signals. |
+| **03 · Tools and use case register** | Fields, events, funnel metrics and reference time limits used in the signals. |
 | **10 · Sphere map and ambition levels** | Definition of the levels and spheres, and exclusion of 08 and 09. |
 | **11 · Maturity model** | Complementary diagnosis in C1 and C5. |
 | **13 · AI thesis, ambition and risk appetite** | Ambition declaration (condition IT-D1), target portfolio balance and threshold B3. |

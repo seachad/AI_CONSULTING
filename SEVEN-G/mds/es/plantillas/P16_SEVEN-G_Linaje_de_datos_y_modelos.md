@@ -41,8 +41,8 @@ Esta plantilla no constituye asesoramiento jurídico. La base legal del tratamie
 
 | Campo | Contenido | Guía |
 |---|---|---|
-| Código de la iniciativa | | IA-AAAA-NNN del registro de iniciativas (T01). |
-| Nombre de la iniciativa | | Nombre corto y comprensible. |
+| Código del caso de uso | | IA-AAAA-NNN del registro de casos de uso (T01). |
+| Nombre del caso de uso | | Nombre corto y comprensible. |
 | Sistema(s) de IA | | Identificador en el inventario de sistemas de IA (T02, P05). |
 | Intensidad | | Lite · Enterprise (P04). |
 | Clasificación regulatoria | | Prohibido · Alto riesgo · Obligaciones de transparencia · Riesgo mínimo · Fuera de ámbito · Pendiente de clasificar (P11). |

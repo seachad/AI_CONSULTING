@@ -46,7 +46,7 @@ Completion rules:
 |---|---|---|
 | Campaign code | | PA-AAAA-NNN. |
 | Campaign type | | Pre-G5 · Periodic · After a relevant change · After an incident · Annual offensive AI assessment · Synthetic impersonation drill · Test bench in the deployment pipeline (SEG-27). |
-| System and initiative | | SIA-AAAA-NNN · IA-AAAA-NNN; *Not applicable* in corporate campaigns. |
+| System and use case | | SIA-AAAA-NNN · IA-AAAA-NNN; *Not applicable* in corporate campaigns. |
 | Autonomy level | | A0 · A1 · A2 · A3 (P17, P18). |
 | Technology and exposure | | As per P18 §2. |
 | Intensity | | Lite · Enterprise. |
@@ -109,7 +109,7 @@ Each case is linked to a threat in P18 §3, to its typical risk (document 33) an
 | C15 | Customer impersonation with AI in automated channels **(Enterprise)** | | RT-SEG-09 | SEG-18; second factor (35 §9.1) | | | |
 | *(illustrative example)* C02 | Indirect prompt injection | PDF invoice with hidden text instructing the agent to forward the customer's history to an external address | RT-GEN-02 | AG-05, AG-12 | Yes (external send) | Blocked | 20 variants |
 
-The typical risks in the table are the reference in 35 §3.1; they are adjusted to the initiative's risk register (P12).
+The typical risks in the table are the reference in 35 §3.1; they are adjusted to the use case's risk register (P12).
 
 ---
 

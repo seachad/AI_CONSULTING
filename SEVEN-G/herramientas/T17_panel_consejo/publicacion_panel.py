@@ -31,7 +31,7 @@ AUTOR = "Fernando García Varela"
 METODOLOGIA = "SEVEN-G"
 REPO_ORIGEN_MOTOR = "https://github.com/Seachad-TEAM/AI_en_el_consejo"   # origen del motor del panel (codigo MIT); desde el 17-09-2026 se mantiene en ./motor
 
-AVISO_LEGAL = ("<b>Aviso legal.</b> Demostración con datos ficticios del registro de iniciativas T01 de SEVEN-G, ofrecida «tal cual» y con fines "
+AVISO_LEGAL = ("<b>Aviso legal.</b> Demostración con datos ficticios del registro de casos de uso T01 de SEVEN-G, ofrecida «tal cual» y con fines "
                "informativos. No constituye asesoramiento jurídico, regulatorio ni financiero ni garantiza el cumplimiento de ninguna norma. "
                "Las clasificaciones y referencias a regulación general o sectorial pueden quedar desactualizadas: cada organización es la única "
                "responsable de verificar la normativa que le aplica y certificar su propio cumplimiento regulatorio. Esta metodología es una ayuda genérica y gratuita, compartida con la comunidad para que nadie tenga que empezar desde cero; cada persona u organización puede y debe adaptarla a su propio uso. No debe entenderse que sus partes jurídicamente sensibles hayan sido revisadas por una asesoría jurídica: esas revisiones, para cada empresa o sector, son responsabilidad última de la empresa, el consultor o la organización que la use. Aunque se procura mantenerla al día, alguna norma puede haber cambiado sin que se recoja aquí. En la máxima medida permitida por la ley, el autor no asume responsabilidad alguna por los efectos de su aplicación en ninguna organización ni por su aplicabilidad completa. La metodología no otorga certificación de ningún tipo. El autor no asume "
@@ -39,7 +39,7 @@ AVISO_LEGAL = ("<b>Aviso legal.</b> Demostración con datos ficticios del regist
 AVISO_LEGAL_CORTO = ("Aviso legal: datos ficticios, «tal cual» y con fines informativos; no es asesoramiento jurídico, regulatorio ni financiero ni "
                      "garantiza el cumplimiento de ninguna norma. Cada organización verifica la normativa que le aplica.")
 # variante para paneles generados con datos propios (sin «datos ficticios»)
-AVISO_LEGAL_DATOS_PROPIOS = ("<b>Aviso legal.</b> Panel generado desde el registro de iniciativas T01 de SEVEN-G con el motor de AI en el Consejo, "
+AVISO_LEGAL_DATOS_PROPIOS = ("<b>Aviso legal.</b> Panel generado desde el registro de casos de uso T01 de SEVEN-G con el motor de AI en el Consejo, "
                              "ofrecido «tal cual» y con fines informativos. No constituye asesoramiento jurídico, regulatorio ni financiero ni "
                              "garantiza el cumplimiento de ninguna norma. Las clasificaciones y referencias a regulación general o sectorial pueden "
                              "quedar desactualizadas: cada organización es la única responsable de verificar la normativa que le aplica y certificar "

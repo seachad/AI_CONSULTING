@@ -32,7 +32,7 @@
 Completion rules:
 
 - The mandate **does not replace** the C2 decision: it authorises the preparation of the diagnosis and of the proposal that the board will subsequently approve (document 13).
-- The implementation scope is chosen using the criteria in 90 §2.2 and **does not replace** the intensity of each initiative.
+- The implementation scope is chosen using the criteria in 90 §2.2 and **does not replace** the intensity of each use case.
 - The inventory covers **the whole company** even if the implementation perimeter is smaller (90 §2.3).
 - No general AI moratorium is declared: only what the diagnosis identifies as unacceptable risk is stopped.
 - Dates are written in DD-MM-YYYY format.
@@ -120,7 +120,7 @@ SEVEN-G may be adopted **in full** or **modularly** by components (01 §1.2). Mo
 
 | Function | Representative | Allocated dedication | Contributes |
 |---|---|---|---|
-| Business | | | Initiatives, value and opportunities by sphere. |
+| Business | | | Use cases, value and opportunities by sphere. |
 | Technology | | | Systems, architecture and operation. |
 | Data | | | Sources, quality and legal basis. |
 | Risk and compliance | | | Risk methodology, classification and appetite. |
@@ -160,7 +160,7 @@ The week-by-week detail is in 90 §4. The company's dates are set here.
 | Field | Content | Guidance |
 |---|---|---|
 | Reserved date of the board session | | Weeks 12–13. |
-| Plan if the board does not approve C2 in week 12 | | Provisional criteria approved by the committee, with no Transform initiatives approved, and approval at the next session (90 §4.4). |
+| Plan if the board does not approve C2 in week 12 | | Provisional criteria approved by the committee, with no Transform use cases approved, and approval at the next session (90 §4.4). |
 
 ---
 
@@ -186,9 +186,9 @@ Definitions in 90 §9. The targets are set by the company; those in 90 §9 are i
 | Indicator | 90-day target | 12-month target | Source | Owner |
 |---|---|---|---|---|
 | Inventory coverage (areas with a completeness statement ÷ total) | | | T02 | |
-| New initiatives with G0 prior to spending | | | T01 | |
+| New use cases with G0 prior to spending | | | T01 | |
 | Systems with Enterprise criteria classified | | | T02 | |
-| Regularisation of initiatives in production | | | T01 | |
+| Regularisation of use cases in production | | | T01 | |
 | Roles without incompatibilities | | | T01 | |
 | *Gate* decision time against the reference time limit | | | T01 | |
 | Current R6 | | | T01 | |
@@ -214,7 +214,7 @@ Completed in week 13 (90 §4.5).
 | 6 | *Gates*, reference time limits and nonconformity process operational. | T03; T08. | |
 | 7 | Board dashboard and register of recommendations with real data. | T17; T18. | |
 | 8 | First prioritised portfolio and regularisation plan with time limits. | P36; committee minutes. | |
-| 9 | Every new initiative goes through G0 before consuming budget from week 13. | T01. | |
+| 9 | Every new use case goes through G0 before consuming budget from week 13. | T01. | |
 
 ---
 

@@ -47,7 +47,7 @@ Esta plantilla no constituye asesoramiento jurídico (fecha de consulta de refer
 | Campo | Contenido | Guía |
 |---|---|---|
 | Incidente | | INC-AAAA-NNN (P27, T08). |
-| Sistema e iniciativa | | SIA-AAAA-NNN · IA-AAAA-NNN. |
+| Sistema e caso de uso | | SIA-AAAA-NNN · IA-AAAA-NNN. |
 | Severidad actual | | S1 · S2 · S3 · S4 (37 §4.2). |
 | Fecha y hora de detección | | Inicio de los relojes. |
 | Papel de la compañía respecto al sistema | | Proveedor · Responsable del despliegue · Ambos (P11, documento 34). |

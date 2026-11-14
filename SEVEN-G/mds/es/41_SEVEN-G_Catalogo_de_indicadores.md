@@ -1,6 +1,6 @@
 # Catálogo de indicadores
 
-**Indicadores con código, fórmula, fuente y responsable para medir la IA de la iniciativa al consejo**
+**Indicadores con código, fórmula, fuente y responsable para medir la IA del caso de uso al consejo**
 
 | | |
 |---|---|
@@ -26,7 +26,7 @@ El catálogo:
 
 - Aplica las reglas de medición del documento 40 y usa sus fórmulas oficiales (F1–F10).
 - Recoge las métricas del embudo del documento 03 §3.5 y las ocho señales del índice de transformación del documento 00 §5.3.
-- Alimenta el registro de iniciativas (T01), el seguimiento de valor (T12), la calculadora de costes (T13), el índice de transformación (T14), el diagnóstico de madurez (T15) y el panel del consejo (T17).
+- Alimenta el registro de casos de uso (T01), el seguimiento de valor (T12), la calculadora de costes (T13), el índice de transformación (T14), el diagnóstico de madurez (T15) y el panel del consejo (T17).
 - Marca un **conjunto mínimo recomendado para la intensidad Lite**.
 
 Ninguna compañía necesita todos los indicadores. Se seleccionan en C2 según la tesis de IA, la cartera y la intensidad, y la selección se registra.
@@ -52,7 +52,7 @@ Ninguna compañía necesita todos los indicadores. Se seleccionan en C2 según l
 |---|---|
 | **Per.** (periodicidad) | **M** mensual · **T** trimestral · **S** semestral · **A** anual · **G** en cada *gate* o evento |
 | **Resp.** (responsable) | **PAT** patrocinador · **RN** responsable de negocio del beneficio · **RP** responsable de producto de IA · **RT** responsable técnico · **RO** responsable de operación · **RR** responsable de riesgos · **AUD** auditor de IA · **OIA** oficina de IA · **CG** control de gestión · **CIA** comité de IA · **SEG** seguridad de la información · **DAT** propietario de los datos · **PER** función de personas · **SEC** secretaría del consejo |
-| **Nivel** | **I** iniciativa · **Ca** cartera · **Co** compañía · **Cj** consejo |
+| **Nivel** | **I** caso de uso · **Ca** cartera · **Co** compañía · **Cj** consejo |
 | **Aplicación** | Fases **F0–F7**, *gates* **G0–G7**, etapas **C1–C5**, esferas **E01–E09** y ambición **Opt** (Optimizar), **Aum** (Aumentar), **Tra** (Transformar). "Todas" si aplica en general. |
 | **Fuente** | Herramienta del documento 03 (T01–T22) y, cuando existe, campo del panel del consejo (T17) entre comillas invertidas. |
 | **Lite** | **●** forma parte del conjunto mínimo recomendado para Lite (sección 19). |
@@ -94,7 +94,7 @@ Cada indicador del catálogo, y cualquier indicador propio que añada la compañ
 | Fuente | Herramienta, campo y sistema de origen. |
 | Periodicidad | Frecuencia de cálculo y de revisión. |
 | Responsable | Quién lo calcula y quién responde del resultado. |
-| Nivel | Iniciativa, cartera, compañía o consejo. |
+| Nivel | Caso de uso, cartera, compañía o consejo. |
 | Aplicación | Fase, etapa, esfera y ambición. |
 | Umbral | Valor aprobado en C2 o "a fijar"; lectura de semáforo si procede. |
 | Indicador de contraste | Indicador con el que debe leerse. |
@@ -137,13 +137,13 @@ Cada indicador del catálogo, y cualquier indicador propio que añada la compañ
 | IND-COS-04 | **Desviación presupuestaria.** Diferencia entre coste real y presupuesto. | (Coste real − presupuesto) ÷ presupuesto | % | T13 · contabilidad | M | CG | I · Ca | F3–F7 | A fijar | |
 | IND-COS-05 | **Coste por unidad de resultado.** Coste de producir una unidad de resultado útil. | Coste recurrente del periodo ÷ unidades de resultado útil (42 §9) | € por unidad | T13 · sistema de origen | M | RP | I | F5–F7 | ≤ coste unitario de la línea base (Opt) | ● |
 | IND-COS-06 | **Consumo frente a presupuesto.** Consumo de modelos y cómputo acumulado frente al presupuesto. | Consumo acumulado ÷ presupuesto del periodo | % | T13 · facturación del proveedor | M (diario en agentes) | RO | I · Ca | F5–F7 · IA generativa, agentes | Alertas al 50, 80 y 100 % (42 §8) | ● |
-| IND-COS-07 | **Coste etiquetado.** Coste de nube e IA con etiqueta de iniciativa válida. | Coste con etiqueta válida ÷ coste total de nube e IA | % | Facturación de nube · T13 | M | OIA | Co | C4 | A fijar | |
+| IND-COS-07 | **Coste etiquetado.** Coste de nube e IA con etiqueta de caso de uso válida. | Coste con etiqueta válida ÷ coste total de nube e IA | % | Facturación de nube · T13 | M | OIA | Co | C4 | A fijar | |
 | IND-COS-08 | **Coste no atribuido.** Coste de IA no imputado a casos ni a uso corporativo. | Coste no atribuido ÷ coste total de IA | % | T13 | T | CG | Co · Cj | C4 | A fijar | |
 | IND-COS-09 | **Coste de licencias ociosas.** Licencias pagadas sin uso en el periodo. | Licencias asignadas sin uso × coste unitario | € | T21 · `adopcion` (licencias) | M | OIA | Co | C4 | A fijar | |
-| IND-COS-10 | **Inversión evitada por paradas.** Presupuesto aprobado no comprometido de iniciativas paradas o retiradas. | Σ presupuesto aprobado − Σ comprometido, en iniciativas paradas (42 §10) | € | T01 · T13 | T | OIA | Ca · Cj | C4, C5 | Informativo; no suma en valor | |
+| IND-COS-10 | **Inversión evitada por paradas.** Presupuesto aprobado no comprometido de casos de uso parados o retirados. | Σ presupuesto aprobado − Σ comprometido, en casos de uso parados (42 §10) | € | T01 · T13 | T | OIA | Ca · Cj | C4, C5 | Informativo; no suma en valor | |
 | IND-COS-11 | **Coste de IA de la compañía.** Coste total de IA, incluido el uso corporativo. | Σ coste recurrente + Σ inversión del ejercicio de todos los sistemas | €/año | T13 | T | CG | Co · Cj | C1, C4 | Presupuesto marco de C2 | ● |
-| IND-COS-12 | **Horas de gobierno por iniciativa.** Horas declaradas para preparar y verificar la evidencia, reunirse y registrar las decisiones de *gate* de una iniciativa. Mide el coste del propio método; no se reparte en el coste del caso (42 §4). | Σ horas declaradas en las decisiones de *gate* (`decisiones_gate[].horas_gobierno`) | horas | T01 · T17 `seveng.gobierno` | G · A | OIA | I · Ca | Todas · por intensidad | Mediana por intensidad, a calibrar | |
-| IND-COS-13 | **Coste del gobierno sobre la inversión.** Proporcionalidad del gobierno (principio 11). | Horas declaradas × coste por hora de C2 ÷ inversión de la iniciativa | % | T01 · T17 | A | OIA | I · Ca · Cj | Todas · por intensidad | Express 5 % · Lite 10 % · Enterprise 15 % (13 §6; valores de partida, a calibrar en C5) | |
+| IND-COS-12 | **Horas de gobierno por caso de uso.** Horas declaradas para preparar y verificar la evidencia, reunirse y registrar las decisiones de *gate* de un caso de uso. Mide el coste del propio método; no se reparte en el coste del caso (42 §4). | Σ horas declaradas en las decisiones de *gate* (`decisiones_gate[].horas_gobierno`) | horas | T01 · T17 `seveng.gobierno` | G · A | OIA | I · Ca | Todas · por intensidad | Mediana por intensidad, a calibrar | |
+| IND-COS-13 | **Coste del gobierno sobre la inversión.** Proporcionalidad del gobierno (principio 11). | Horas declaradas × coste por hora de C2 ÷ inversión del caso de uso | % | T01 · T17 | A | OIA | I · Ca · Cj | Todas · por intensidad | Express 5 % · Lite 10 % · Enterprise 15 % (13 §6; valores de partida, a calibrar en C5) | |
 | IND-COS-14 | **Evidencias referenciadas.** Parte de la evidencia que se toma de lo que la compañía ya tiene en lugar de copiarse en una plantilla (21 §4.3). | Evidencias con origen «referencia» ÷ evidencias | % | T01 | T | OIA | Ca · Co | G0–G7 | A fijar; creciente en grandes compañías | |
 
 ---
@@ -153,18 +153,18 @@ Cada indicador del catálogo, y cualquier indicador propio que añada la compañ
 | Código | Indicador y definición | Fórmula | Unidad | Fuente | Per. | Resp. | Nivel | Aplicación | Umbral orientativo | Lite |
 |---|---|---|---|---|---|---|---|---|---|---|
 | IND-EMB-01 | **Tiempo en fase.** Días en cada fase sin contar la espera. | Fecha de salida − fecha de entrada − días en espera; mediana y P80 | días | T01 (eventos) | M | OIA | Ca | F0–F5, F7 | Plazos de 03 §3.6 | |
-| IND-EMB-02 | **Iniciativas estancadas.** Iniciativas que superan el plazo de referencia de su fase. | Nº con tiempo en fase > plazo de referencia | nº | T01 | M | OIA | Ca | Todas | 0 sin revisión del comité | ● |
+| IND-EMB-02 | **Casos de uso estancados.** Casos de uso que superan el plazo de referencia de su fase. | Nº con tiempo en fase > plazo de referencia | nº | T01 | M | OIA | Ca | Todas | 0 sin revisión del comité | ● |
 | IND-EMB-03 | **Conversión por gate.** Proporción de decisiones favorables en cada *gate*. | (Continuar + Continuar con condiciones) ÷ decisiones del *gate* | % | T03 | T | OIA | Ca | G0–G7 | Informativo | |
 | IND-EMB-04 | **Iteraciones por gate.** Iteraciones medias antes de la decisión. | Σ iteraciones ÷ nº de decisiones del *gate* | nº | T03 | T | OIA | Ca | G0–G7 | ≤ 2 (01 §7.4) | |
 | IND-EMB-05 | **Tiempo en espera.** Días detenida por causa externa, por motivo. | Σ días en estado En espera, por motivo | días | T01 | M | OIA | Ca | Todas | Informativo | |
 | IND-EMB-06 | **Motivos de parada y retirada.** Distribución de motivos codificados. | Paradas y retiradas por motivo ÷ total de paradas y retiradas | % | T01 | S | CIA | Ca | C5 | Informativo | |
 | IND-EMB-07 | **Cumplimiento de gates.** Criterios que se cumplen sobre los aplicables. | Criterios Cumple ÷ (criterios aplicables) | % | T03 | G | AUD | I · Ca | G0–G7 | 100 % de obligatorios para Continuar | |
 | IND-EMB-08 | **Condiciones vencidas.** Condiciones abiertas fuera de plazo. | Nº de condiciones abiertas con fecha límite superada | nº | T03 | M | CIA | Ca · Cj | G0–G7 | 0 | ● |
-| IND-EMB-09 | **Valor por fase.** Valor neto anual esperado de las iniciativas en cada fase. | Σ valor neto anual esperado por fase | € | T01 | T | OIA | Ca · Cj | C3, C4 | Informativo | |
+| IND-EMB-09 | **Valor por fase.** Valor neto anual esperado de los casos de uso en cada fase. | Σ valor neto anual esperado por fase | € | T01 | T | OIA | Ca · Cj | C3, C4 | Informativo | |
 | IND-EMB-10 | **Valor ponderado.** Valor esperado ajustado por la probabilidad histórica de llegar a producción. | Σ valor esperado × probabilidad histórica desde la fase actual (IND-EMB-12) | € | T01 | T | OIA | Cj | C4 | Solo con historial suficiente | |
-| IND-EMB-11 | **Mezcla de ambición por fase.** Distribución de la ambición en cada fase. | Iniciativas de cada nivel en la fase ÷ iniciativas en la fase | % | T01 | T | OIA | Ca · Cj | C3, C4 | Informativo (señal 7) | |
-| IND-EMB-12 | **Probabilidad histórica de llegar a producción.** Tasa histórica de paso a G5 desde cada fase. | Iniciativas que alcanzaron G5 desde la fase f ÷ iniciativas que pasaron por f (cohortes cerradas) | % | T01 | S | OIA | Ca | C3, C5 | Informativo | |
-| IND-EMB-13 | **Capacidad de parar.** Iniciativas que se paran o retiran con motivo codificado frente a las que reciben decisión de *gate*. | Iniciativas paradas o retiradas con motivo codificado en 12 meses ÷ iniciativas con decisión de *gate* en 12 meses | % | T01 · T03 | A definir por la compañía | A definir por la compañía | Ca · Cj | C4, C5 · E09 | A definir por la compañía | |
+| IND-EMB-11 | **Mezcla de ambición por fase.** Distribución de la ambición en cada fase. | Casos de uso de cada nivel en la fase ÷ casos de uso en la fase | % | T01 | T | OIA | Ca · Cj | C3, C4 | Informativo (señal 7) | |
+| IND-EMB-12 | **Probabilidad histórica de llegar a producción.** Tasa histórica de paso a G5 desde cada fase. | Casos de uso que alcanzaron G5 desde la fase f ÷ casos de uso que pasaron por f (cohortes cerradas) | % | T01 | S | OIA | Ca | C3, C5 | Informativo | |
+| IND-EMB-13 | **Capacidad de parar.** Casos de uso que se paran o retiran con motivo codificado frente a los que reciben decisión de *gate*. | Casos de uso parados o retirados con motivo codificado en 12 meses ÷ casos de uso con decisión de *gate* en 12 meses | % | T01 · T03 | A definir por la compañía | A definir por la compañía | Ca · Cj | C4, C5 · E09 | A definir por la compañía | |
 
 ---
 
@@ -179,7 +179,7 @@ Definiciones de los tramos en el documento 40 §9. Todos se segmentan por nivel 
 | IND-AGI-03 | **Idea → producción.** Tiempo total hasta producción. | Fecha de G5 favorable − fecha de registro − días en espera; mediana y P80 | días | T01 | T | OIA | Ca · Cj | F0–F5 | Lite 150 · Enterprise 260 (orientativo) | |
 | IND-AGI-04 | **Tiempo de decisión.** Días entre la solicitud y la decisión de un *gate*. | Fecha de decisión − fecha de solicitud; mediana y P80 | días hábiles | T03 | M | CIA | Ca · Cj | G0–G7 | Lite 5 · Enterprise 10 | |
 | IND-AGI-05 | **Decisiones en plazo.** Decisiones de *gate* tomadas dentro del plazo aprobado. | Decisiones en plazo ÷ decisiones | % | T03 · `agilidad.sla_dias_por_tier` | T | CIA | Cj | G0–G7 | A fijar | |
-| IND-AGI-06 | **Pendientes de análisis de riesgo.** Iniciativas registradas sin evaluación de riesgos iniciada dentro del plazo. | Nº de iniciativas con días desde registro > plazo y sin evaluación iniciada | nº | T01 · T06 · `agilidad.backlog_sin_analisis` | M | RR | Ca · Cj | F0–F3 | 0 fuera de plazo | |
+| IND-AGI-06 | **Pendientes de análisis de riesgo.** Casos de uso registrados sin evaluación de riesgos iniciada dentro del plazo. | Nº de casos de uso con días desde registro > plazo y sin evaluación iniciada | nº | T01 · T06 · `agilidad.backlog_sin_analisis` | M | RR | Ca · Cj | F0–F3 | 0 fuera de plazo | |
 
 ---
 
@@ -200,8 +200,8 @@ Definiciones de los tramos en el documento 40 §9. Todos se segmentan por nivel 
 | IND-RIE-11 | **Proveedores críticos evaluados.** Proveedores de nivel N3 con evaluación y estrategia de salida vigentes. | Proveedores N3 con evaluación vigente y estrategia de salida ÷ proveedores N3 | % | T09 · `proveedor_dora` | S | RR | Co · Cj | F3 · C4 | 100 % | |
 | IND-RIE-12 | **Análisis de cambios regulatorios en plazo.** Cambios regulatorios relevantes con análisis de impacto dentro del plazo fijado. | Cambios regulatorios relevantes con análisis de impacto dentro del plazo fijado ÷ cambios regulatorios relevantes identificados | % | A definir por la compañía | A definir por la compañía | A definir por la compañía | Co · Cj | C4 · E08 | A definir por la compañía | |
 | IND-RIE-13 | **Adaptación anticipada.** Obligaciones de aplicación futura con plan de adaptación aprobado. | Obligaciones con fecha de aplicación futura con plan de adaptación aprobado ÷ obligaciones con fecha de aplicación en los próximos 24 meses | % | A definir por la compañía | A definir por la compañía | A definir por la compañía | Co · Cj | C2, C4 · E08 | A definir por la compañía | |
-| IND-RIE-14 | **Revisión ética aplicada.** Iniciativas que requieren revisión ética y la tienen registrada antes de G3. | Iniciativas que requieren revisión ética y la tienen registrada antes de G3 ÷ iniciativas que la requieren | % | A definir por la compañía | A definir por la compañía | A definir por la compañía | Ca · Cj | F3 · G3 · E08 | A definir por la compañía | |
-| IND-RIE-15 | **Capacidad efectiva de veto.** Iniciativas modificadas o paradas por decisión del órgano ético. | Nº de iniciativas modificadas o paradas por decisión del órgano ético en los últimos 12 meses, informado junto al número de iniciativas revisadas | nº | A definir por la compañía | A definir por la compañía | A definir por la compañía | Co · Cj | C4, C5 · E08 | A definir por la compañía | |
+| IND-RIE-14 | **Revisión ética aplicada.** Casos de uso que requieren revisión ética y la tienen registrada antes de G3. | Casos de uso que requieren revisión ética y la tienen registrada antes de G3 ÷ casos de uso que la requieren | % | A definir por la compañía | A definir por la compañía | A definir por la compañía | Ca · Cj | F3 · G3 · E08 | A definir por la compañía | |
+| IND-RIE-15 | **Capacidad efectiva de veto.** Casos de uso modificados o parados por decisión del órgano ético. | Nº de casos de uso modificados o parados por decisión del órgano ético en los últimos 12 meses, informado junto al número de casos de uso revisados | nº | A definir por la compañía | A definir por la compañía | A definir por la compañía | Co · Cj | C4, C5 · E08 | A definir por la compañía | |
 | IND-RIE-16 | **Transparencia pública.** Sistemas con exposición directa a personas descritos en la información pública de la compañía. | Sistemas con exposición directa a personas descritos en la información pública de la compañía ÷ sistemas con exposición directa | % | A definir por la compañía | A definir por la compañía | A definir por la compañía | Co · Cj | C4 · E08 | A definir por la compañía | |
 | IND-RIE-17 | **Concentración en el proveedor principal de modelos.** Peso del proveedor principal en el gasto en modelos. | Gasto en el proveedor principal de modelos ÷ gasto total en modelos | % | A definir por la compañía | A definir por la compañía | A definir por la compañía | Co · Cj | C3, C4 · E09 | A definir por la compañía | |
 
@@ -269,10 +269,10 @@ Definiciones de los tramos en el documento 40 §9. Todos se segmentan por nivel 
 | IND-ADO-03 | **Tasa de uso en el proceso.** Transacciones en que se usa la IA. | Transacciones con IA ÷ transacciones elegibles | % | Sistema de origen | M | RP | I | F5–F7 | Hipótesis de G2 | ● |
 | IND-ADO-04 | **Aceptación de propuestas.** Propuestas del sistema aceptadas sin cambios. | Propuestas aceptadas sin cambios ÷ propuestas | % | Registros | M | RP | I | F6 · A1 | Informativo; valores extremos se analizan con OPE-08 | |
 | IND-ADO-05 | **Alfabetización en IA.** Personas del colectivo obligado con formación completada. | Personas formadas ÷ personas del colectivo obligado | % | T20 · función de personas | T | PER | Co · Cj | C2, C4 · E03 | 100 % del colectivo obligado antes del acceso o del ejercicio del rol; renovación vigente de PER-PC ≥ 90 % (umbral de alerta, a calibrar) | ● |
-| IND-ADO-06 | **Roles rediseñados.** Puestos con funciones rediseñadas formalmente por la IA. | Puestos rediseñados ÷ puestos afectados por iniciativas en producción | % | T20 · función de personas | S | PER | I · Co | F6–F7 · E03 · Aum, Tra | Informativo (señal 5) | |
+| IND-ADO-06 | **Roles rediseñados.** Puestos con funciones rediseñadas formalmente por la IA. | Puestos rediseñados ÷ puestos afectados por casos de uso en producción | % | T20 · función de personas | S | PER | I · Co | F6–F7 · E03 · Aum, Tra | Informativo (señal 5) | |
 | IND-ADO-07 | **Capacidades críticas de IA cubiertas.** Puestos críticos de IA cubiertos. | Puestos críticos cubiertos ÷ puestos críticos necesarios | % | Función de personas · `adopcion` (vacantes) | S | PER | Co | C1, C4 | A fijar | |
-| IND-ADO-08 | **Iniciativas promovidas por empleados.** Peso de las propuestas de empleados en el registro y su paso por G1. | Iniciativas registradas originadas en propuestas de empleados ÷ iniciativas registradas; e iniciativas de origen empleado que superan G1 ÷ iniciativas de origen empleado registradas | % | T01 (campo de origen) | S | A definir por la compañía | Ca · Co | F1 · G1 · E03 | Tendencia | |
-| IND-ADO-09 | **Cobertura de la evaluación de efecto.** Iniciativas con evaluación del efecto sobre el trabajo registrada. | Iniciativas en fase 3 o posterior con evaluación de efecto registrada ÷ iniciativas en fase 3 o posterior | % | T01 · T20 | T | A definir por la compañía | Ca | F3–F7 · E03 | 100 % | |
+| IND-ADO-08 | **Casos de uso promovidos por empleados.** Peso de las propuestas de empleados en el registro y su paso por G1. | Casos de uso registrados originados en propuestas de empleados ÷ casos de uso registrados; y casos de uso de origen empleado que superan G1 ÷ casos de uso de origen empleado registrados | % | T01 (campo de origen) | S | A definir por la compañía | Ca · Co | F1 · G1 · E03 | Tendencia | |
+| IND-ADO-09 | **Cobertura de la evaluación de efecto.** Casos de uso con evaluación del efecto sobre el trabajo registrada. | Casos de uso en fase 3 o posterior con evaluación de efecto registrada ÷ casos de uso en fase 3 o posterior | % | T01 · T20 | T | A definir por la compañía | Ca | F3–F7 · E03 | 100 % | |
 | IND-ADO-10 | **Supervisores cualificados.** Sistemas cuyos supervisores designados tienen registrada la formación de supervisión. | Sistemas A1–A3 en producción cuyos supervisores designados tienen formación PER-PD registrada ÷ sistemas A1–A3 en producción | % | T02 · sistema de formación | T | A definir por la compañía | I · Co | F5–F6 · A1–A3 | 100 % | |
 | IND-ADO-11 | **Capacidad liberada sin decisión.** Horas liberadas sin destino decidido fuera del plazo de C2. | Horas en PER-D5 con antigüedad superior al plazo de C2 ÷ horas liberadas medidas | % | T20 | T | A definir por la compañía | I · Ca | F6–F7 · E03 · Opt, Aum | Tendencia decreciente | |
 | IND-ADO-12 | **Información previa a la representación.** Sistemas con efecto en condiciones de trabajo o empleo informados antes de su uso. | Sistemas con efecto en condiciones de trabajo o empleo informados antes de su uso ÷ sistemas con ese efecto | % | Registro de información (documento 50 §7.2) | T | A definir por la compañía | Co · Cj | F4–F5 · G5 · E03 | 100 % | |
@@ -296,7 +296,7 @@ Definiciones de los tramos en el documento 40 §9. Todos se segmentan por nivel 
 | IND-DAT-08 | **Calidad por dimensión.** Registros que superan las reglas de cada dimensión de calidad. | Registros que superan las reglas de la dimensión ÷ registros evaluados, por conjunto y dimensión | % | Monitorización de calidad | Según frecuencia de carga | A definir por la compañía | I | F3–F6 · E05 | Umbral fijado por caso en fase 3 | |
 | IND-DAT-09 | **Cumplimiento de retención.** Conjuntos con plazo de retención definido y aplicado. | Conjuntos con plazo de retención definido y aplicado ÷ conjuntos usados por IA | % | Catálogo de datos | S | A definir por la compañía | Co | F4–F7 · E05 | 100 % | |
 | IND-DAT-10 | **Incidentes con causa en datos.** Incidentes de IA cuya causa raíz está en los datos. | Incidentes de IA cuya causa raíz es de datos ÷ incidentes de IA cerrados | % | T08 | T | A definir por la compañía | Ca · Co | F6 · E05 | Tendencia decreciente | |
-| IND-DAT-11 | **Tiempo de acceso a los datos.** Días hasta disponer de los datos que solicita una iniciativa. | Mediana de días entre la solicitud de acceso a datos de una iniciativa y su disponibilidad en el entorno autorizado | días | T01 (eventos) · solicitudes de acceso | T | A definir por la compañía | Ca · Co | F2–F4 · E05 | Tendencia decreciente | |
+| IND-DAT-11 | **Tiempo de acceso a los datos.** Días hasta disponer de los datos que solicita un caso de uso. | Mediana de días entre la solicitud de acceso a datos de un caso de uso y su disponibilidad en el entorno autorizado | días | T01 (eventos) · solicitudes de acceso | T | A definir por la compañía | Ca · Co | F2–F4 · E05 | Tendencia decreciente | |
 | IND-DAT-12 | **Datos sintéticos validados.** Conjuntos sintéticos en uso con validación de utilidad y privacidad. | Conjuntos sintéticos en uso con validación de utilidad y privacidad registrada ÷ conjuntos sintéticos en uso | % | Catálogo de datos | S | A definir por la compañía | I · Co | F4–F6 · E05 | 100 % | |
 | IND-DAT-13 | **Fuentes de conocimiento con responsable.** Fuentes conectadas a IA con responsable de contenido. | Fuentes de conocimiento conectadas a IA con responsable de contenido ÷ fuentes conectadas | % | Inventario de fuentes | T | A definir por la compañía | Co | F4–F6 · E06 · IA generativa | 100 % | |
 | IND-DAT-14 | **Uso de contenido caducado.** Respuestas que citan documentos fuera de vigencia. | Respuestas muestreadas que citan documentos fuera de vigencia ÷ respuestas muestreadas con cita | % | Evaluación continua | M | A definir por la compañía | I | F6 · E06 · IA generativa | Próximo a 0 % | |
@@ -334,10 +334,10 @@ Las ocho señales del documento 00 §5.3. La puntuación 0–3 de cada señal, s
 | IND-TRA-01 | **Señal 1 · Composición de la inversión.** Peso de Aumentar y Transformar en el gasto de IA. | (Coste recurrente + inversión) de Aum y Tra ÷ (coste recurrente + inversión) total | % | T01 · T13 | A | OIA | Co · Cj | C1, C5 | Documento 12 | ● |
 | IND-TRA-02 | **Señal 2 · Composición del valor.** Peso del retorno en el valor validado. | Retorno validado ÷ (eficiencias validadas + retorno validado) | % | T12 | A | CG | Co · Cj | C1, C5 | Documento 12 | ● |
 | IND-TRA-03 | **Señal 3 · Materialización.** Capacidad liberada convertida en ahorro o reasignada. | (Horas materializadas + horas reasignadas) ÷ horas liberadas netas de la cartera | % | T12 · T20 | A | OIA | Co · Cj | C1, C5 | Documento 12 | |
-| IND-TRA-04 | **Señal 4 · Profundidad del cambio.** Iniciativas que rediseñan procesos de extremo a extremo. | Iniciativas en producción con rediseño de extremo a extremo ÷ iniciativas en producción | % | T05 (pregunta 2) | A | OIA | Co · Cj | C1, C5 | Documento 12 | |
-| IND-TRA-05 | **Señal 5 · Modelo operativo.** Iniciativas con cambio verificado de roles, estructura o decisiones. | Iniciativas Aum y Tra en producción con cambio verificado y supervisión definida ÷ iniciativas Aum y Tra en producción | % | T05 (pregunta 3) · T20 | A | OIA | Co · Cj | C1, C5 | Documento 12 | |
+| IND-TRA-04 | **Señal 4 · Profundidad del cambio.** Casos de uso que rediseñan procesos de extremo a extremo. | Casos de uso en producción con rediseño de extremo a extremo ÷ casos de uso en producción | % | T05 (pregunta 2) | A | OIA | Co · Cj | C1, C5 | Documento 12 | |
+| IND-TRA-05 | **Señal 5 · Modelo operativo.** Casos de uso con cambio verificado de roles, estructura o decisiones. | Casos de uso Aum y Tra en producción con cambio verificado y supervisión definida ÷ casos de uso Aum y Tra en producción | % | T05 (pregunta 3) · T20 | A | OIA | Co · Cj | C1, C5 | Documento 12 | |
 | IND-TRA-06 | **Señal 6 · Ingresos habilitados por IA.** Ingresos que no existirían sin IA. | Ingresos de productos, servicios o canales que no existirían sin IA ÷ ingresos totales | % | Contabilidad · T01 | A | CG | Co · Cj | C1, C5 · E02 | Documento 12 | |
-| IND-TRA-07 | **Señal 7 · Paso a producción.** Llegada a producción de las apuestas de mayor ambición. | Iniciativas Aum y Tra que alcanzan G5 ÷ las que superaron G2 (cohorte cerrada); y mediana idea → producción Aum y Tra ÷ mediana de Opt | % · ratio | T01 | A | OIA | Co · Cj | C1, C5 | Documento 12 | |
+| IND-TRA-07 | **Señal 7 · Paso a producción.** Llegada a producción de las apuestas de mayor ambición. | Casos de uso Aum y Tra que alcanzan G5 ÷ los que superaron G2 (cohorte cerrada); y mediana idea → producción Aum y Tra ÷ mediana de Opt | % · ratio | T01 | A | OIA | Co · Cj | C1, C5 | Documento 12 | |
 | IND-TRA-08 | **Señal 8 · Decisión del consejo.** Decisiones de transformación adoptadas y seguidas. | Nº de decisiones de Tra adoptadas por el consejo con seguimiento en el registro | nº | T18 | A | SEC | Cj | C2, C5 | Documento 12 | |
 | IND-TRA-09 | **Perfil de transformación.** Posición de la compañía entre eficiencia y transformación. | Puntuación 0–3 de cada señal y perfil resultante (documento 12) | perfil | T14 | A | OIA | Co · Cj | C1, C5 | — | |
 
@@ -389,7 +389,7 @@ Una compañía que aplica SEVEN-G con intensidad Lite debería empezar con estos
 |---|---|---|
 | Valor | IND-VAL-01, 05, 08, 10, 14, 15 | ¿Aporta valor neto, cuánto está validado, se materializa, dónde invertir y qué casos no se sostienen? |
 | Coste | IND-COS-01, 05, 06, 11 | ¿Cuánto cuesta cada caso y la IA en su conjunto, y está controlado el consumo? |
-| Embudo | IND-EMB-02, 08 | ¿Hay iniciativas atascadas o condiciones sin cumplir? |
+| Embudo | IND-EMB-02, 08 | ¿Hay casos de uso atascados o condiciones sin cumplir? |
 | Agilidad | IND-AGI-01, 02 | ¿Cuánto tardamos en aprobar y en llevar a producción? |
 | Riesgo y cumplimiento | IND-RIE-01, 02, 07, 09, 10 | ¿Sabemos qué IA tenemos, está toda aprobada, qué incidentes hay, se revisa y hay uso no autorizado? |
 | Operación | IND-OPE-01 | ¿Los sistemas funcionan dentro de lo aprobado? |
@@ -398,7 +398,7 @@ Una compañía que aplica SEVEN-G con intensidad Lite debería empezar con estos
 | Madurez | IND-MAD-01 | ¿Dónde estamos? |
 | Consejo | IND-CON-02 | ¿Se cumplen las recomendaciones del consejo? |
 
-Cuando una iniciativa pasa a Enterprise se añaden, como mínimo, los indicadores de riesgo IND-RIE-03, 04 y 11 y, según la tecnología, los de las secciones 11.2 a 11.4.
+Cuando un caso de uso pasa a Enterprise se añaden, como mínimo, los indicadores de riesgo IND-RIE-03, 04 y 11 y, según la tecnología, los de las secciones 11.2 a 11.4.
 
 ---
 
@@ -442,7 +442,7 @@ Los documentos 10, 50, 51 y 52 usan códigos provisionales de indicadores. Esta 
 | IE03.03 | Capacidad liberada reasignada | IND-VAL-09 |
 | IE03.04 | Alfabetización en IA por rol | IND-ADO-05 |
 | IE03.05 | Roles rediseñados | IND-ADO-06 |
-| IE03.06 | Iniciativas promovidas por empleados | IND-ADO-08 (incorporado) |
+| IE03.06 | Casos de uso promovidos por empleados | IND-ADO-08 (incorporado) |
 | IE04.01 | Reducción del tiempo de ciclo | IND-PRO-01 (incorporado) |
 | IE04.02 | Variación del coste unitario | IND-PRO-02 (incorporado) |
 | IE04.03 | Procesamiento directo | IND-OPE-05 |
@@ -454,7 +454,7 @@ Los documentos 10, 50, 51 y 52 usan códigos provisionales de indicadores. Esta 
 | IE05.03 | Base legal documentada | IND-DAT-03 |
 | IE05.04 | Linaje documentado | IND-DAT-04 |
 | IE05.05 | Tiempo de acceso a los datos | IND-DAT-11 (incorporado) |
-| IE05.06 | Iniciativas bloqueadas por datos | IND-EMB-05 e IND-EMB-06 (relacionado, motivo datos) |
+| IE05.06 | Casos de uso bloqueados por datos | IND-EMB-05 e IND-EMB-06 (relacionado, motivo datos) |
 | IE06.01 | Cobertura del conocimiento crítico | IND-DAT-06 |
 | IE06.02 | Concentración del conocimiento | IND-DAT-16 (incorporado) |
 | IE06.03 | Exactitud verificada | IND-OPE-07 |
@@ -554,7 +554,7 @@ Los documentos 10, 50, 51 y 52 usan códigos provisionales de indicadores. Esta 
 
 | Código | Nombre | Uso en este documento |
 |---|---|---|
-| **T01** | Registro de iniciativas | Fuente principal: fases, eventos, etiquetas, valor. |
+| **T01** | Registro de casos de uso | Fuente principal: fases, eventos, etiquetas, valor. |
 | **T02 · T03** | Inventario · Gestor de *gates* | Cobertura, *gates*, condiciones, revisiones de continuidad. |
 | **T06 · T07 · T08 · T09 · T10** | Riesgos · clasificador regulatorio · no conformidades e incidentes · proveedores · seguridad de agentes | Indicadores RIE y OPE de agentes. |
 | **T11 · T12 · T13** | Hipótesis de valor · seguimiento de valor · costes por caso | Indicadores VAL y COS. |
@@ -570,7 +570,7 @@ Los documentos 10, 50, 51 y 52 usan códigos provisionales de indicadores. Esta 
 | Documento | Relación |
 |---|---|
 | **00 · Qué es SEVEN-G y para qué sirve** | Reglas de medición y ocho señales de transformación. |
-| **03 · Herramientas y registro de iniciativas** | Métricas del embudo, plazos de referencia y fuentes. |
+| **03 · Herramientas y registro de casos de uso** | Métricas del embudo, plazos de referencia y fuentes. |
 | **10, 50, 51 y 52 · Esferas, personas, datos y operación** | Códigos provisionales IE, PER, DAT, CNC y OPE (sección 21). |
 | **11 · Modelo de madurez** | Criterios y cálculo del nivel. |
 | **12 · Índice de transformación** | Puntuación de las señales y perfiles. |
@@ -590,5 +590,5 @@ Los documentos 10, 50, 51 y 52 usan códigos provisionales de indicadores. Esta 
 |---|---|---|
 | 0.1 | 16-09-2026 | Primera versión. Catálogo de 156 indicadores en 13 familias con código, fórmula, unidad, fuente, periodicidad, responsable, nivel, aplicación y umbral orientativo; conjunto mínimo Lite de 26 indicadores; selección orientativa para el panel del consejo. Ajustes de coherencia con 01 (separación de funciones en Lite, resultados de R6, criterio de agentes) y con 34 y 37; correspondencia de códigos provisionales de los documentos 10, 50, 51 y 52 (sección 21). Incorporados al catálogo los 47 indicadores provisionales que no tenían equivalente (familias EMB, RIE, OPE, ADO, DAT y CLI, y nueva familia PRO · Procesos y decisión, sección 18); prefijo provisional de conocimiento del documento 51 renombrado de CON- a CNC-. |
 | 0.1 | 18-09-2026 | Tres indicadores nuevos de operación (159 en total): IND-OPE-24 consultas fuera del alcance validado (deriva de uso), IND-OPE-25 respuestas desiguales en pares contrafactuales (sesgo en IA generativa) e IND-OPE-26 modo degradado por coste; correspondencia con OPE-18 a OPE-20 del documento 52. |
-| 0.2 | 01-10-2026 | Tres indicadores del coste del propio gobierno (162 en total): IND-COS-12 horas de gobierno por iniciativa, IND-COS-13 coste del gobierno sobre la inversión con objetivos por intensidad e IND-COS-14 evidencias referenciadas. El tiempo de cada puerta ya lo mide IND-AGI-04. |
+| 0.2 | 01-10-2026 | Tres indicadores del coste del propio gobierno (162 en total): IND-COS-12 horas de gobierno por caso de uso, IND-COS-13 coste del gobierno sobre la inversión con objetivos por intensidad e IND-COS-14 evidencias referenciadas. El tiempo de cada puerta ya lo mide IND-AGI-04. |
 | 0.3 | 19-10-2026 | Tres indicadores de operación (165 en total): IND-OPE-27 eficacia de los guardarraíles, IND-OPE-28 cobertura de trazas de extremo a extremo e IND-OPE-29 recuperación ante la caída del proveedor de modelos; correspondencia con OPE-21 a OPE-23 del documento 52 (D159). |

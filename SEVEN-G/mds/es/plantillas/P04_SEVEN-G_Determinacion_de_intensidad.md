@@ -1,6 +1,6 @@
 # Determinación de intensidad
 
-**Decide, con ocho preguntas de sí o no, si la iniciativa se gobierna con intensidad Lite o Enterprise y deja registrada la justificación.**
+**Decide, con ocho preguntas de sí o no, si el caso de uso se gobierna con intensidad Lite o Enterprise y deja registrada la justificación.**
 
 | | |
 |---|---|
@@ -31,7 +31,7 @@ Reglas de cumplimentación:
 - **Basta un criterio Enterprise para aplicar esa intensidad** (01 §9.1).
 - Toda respuesta, sea "Sí" o "No", se justifica con hechos y, cuando exista, con evidencia enlazada.
 - En esta plantilla, una respuesta "Pendiente" cuenta como "Sí" hasta que se resuelva, con responsable y fecha. Así se evita avanzar con menos control por falta de información. Es una regla de prudencia propuesta por la plantilla que el documento 21 debería confirmar.
-- La intensidad no puede rebajarse para acelerar un *gate*. Una iniciativa sin ningún criterio puede aplicar voluntariamente Enterprise.
+- La intensidad no puede rebajarse para acelerar un *gate*. Un caso de uso sin ningún criterio puede aplicar voluntariamente Enterprise.
 
 ---
 
@@ -39,8 +39,8 @@ Reglas de cumplimentación:
 
 | Campo | Contenido | Guía |
 |---|---|---|
-| Código de la iniciativa | | IA-AAAA-NNN. |
-| Nombre de la iniciativa | | |
+| Código del caso de uso | | IA-AAAA-NNN. |
+| Nombre del caso de uso | | |
 | Momento de la determinación | | Fase 0 · G3 · R6 · Cambio relevante. |
 | Intensidad determinada anteriormente | | Lite · Enterprise · Ninguna (primera determinación). |
 | Versión del documento | | |
@@ -53,7 +53,7 @@ Reglas de cumplimentación:
 
 | Fuente | Referencia | Guía |
 |---|---|---|
-| Carta de la iniciativa | P01 | Alcance y exposición. |
+| Carta del caso de uso | P01 | Alcance y exposición. |
 | Declaración de contexto y restricciones | P02 | Datos, autonomía máxima, función crítica. |
 | Ficha de inventario | P05 | Tecnología, exposición, autonomía, rol regulatorio. |
 | Clasificación de ambición | P07 | Criterio 7. |
@@ -74,7 +74,7 @@ Responda a las ocho preguntas. Referencia: 01 §9.2.
 | 4 | Agentes con capacidad de actuar | ¿El sistema ejecuta acciones, como escribir en sistemas, enviar comunicaciones o realizar pagos, sin que una persona valide cada acción antes de ejecutarla (A2 o A3), y esas acciones tienen efecto sobre terceros, dinero, datos personales o sistemas de producción? | Sí · No · Pendiente | | Nivel de autonomía en P05 |
 | 5 | Datos especialmente protegidos | ¿Trata categorías especiales de datos personales o información confidencial crítica? | Sí · No · Pendiente | | P02 §6 |
 | 6 | Función crítica | ¿Soporta una función crítica o importante del negocio, o sujeta a regulación sectorial de resiliencia operativa? | Sí · No · Pendiente | | |
-| 7 | Nivel Transformar | ¿La iniciativa está clasificada como Transformar? | Sí · No | | P07 |
+| 7 | Nivel Transformar | ¿El caso de uso está clasificado como Transformar? | Sí · No | | P07 |
 | 8 | Inversión | ¿La inversión prevista supera el umbral aprobado por el consejo en C2? | Sí · No · Pendiente | Indicar umbral e inversión estimada. | P01 §7 |
 
 Guía para las preguntas que más dudas generan:
@@ -87,7 +87,7 @@ Guía para las preguntas que más dudas generan:
 | 4 | Se responde "Sí" cuando el nivel de autonomía es A2 (Actuación supervisada) o A3 (Actuación autónoma) y las acciones tienen efecto sobre terceros, dinero, datos personales o sistemas de producción (01 §9.2; niveles de autonomía en el documento 35). Con A0 o A1, o con A2 o A3 sin ese efecto, se responde "No" y se justifica. |
 | 5 | Categorías especiales son, entre otras, datos de salud, biométricos para identificar, origen étnico, opiniones políticas, convicciones religiosas, afiliación sindical, vida u orientación sexual. Los datos sobre condenas e infracciones penales deberían tratarse con el mismo criterio. |
 | 6 | Para entidades sujetas a DORA, se consideran las funciones esenciales o importantes que la entidad haya identificado (terminología oficial de DORA en español). |
-| 8 | Se considera la inversión total prevista de la iniciativa, no solo el presupuesto autorizado en G0. |
+| 8 | Se considera la inversión total prevista del caso de uso, no solo el presupuesto autorizado en G0. |
 
 ---
 
@@ -110,7 +110,7 @@ En una hoja de cálculo: `=SI(CONTAR.SI(rango_respuestas;"No")=8;"Lite";"Enterpr
 
 ### 5.1 Elegibilidad para Express
 
-Solo si los ocho criterios Enterprise están en «No». La iniciativa es **Express** cuando las seis condiciones están en «Sí» y la función de riesgos (en compañías pequeñas, la oficina de IA) lo confirma; si no, es **Lite** (01 §9.4).
+Solo si los ocho criterios Enterprise están en «No». El caso de uso es **Express** cuando las seis condiciones están en «Sí» y la función de riesgos (en compañías pequeñas, la oficina de IA) lo confirma; si no, es **Lite** (01 §9.4).
 
 | Nº | Condición | Respuesta (Sí · No · Pendiente) | Justificación y fuente |
 |---|---|---|---|
@@ -122,7 +122,7 @@ Solo si los ocho criterios Enterprise están en «No». La iniciativa es **Expre
 | E6 | Si interviene un proveedor de IA, ya está homologado (P55 vigente). | | |
 | | **Confirma la elegibilidad** | Nombre y rol (función de riesgos u oficina de IA) | Fecha |
 
-Si más adelante deja de cumplirse cualquier condición o aparece un criterio Enterprise, se rellena la sección 7 y la iniciativa pasa a Lite o a Enterprise.
+Si más adelante deja de cumplirse cualquier condición o aparece un criterio Enterprise, se rellena la sección 7 y el caso de uso pasa a Lite o a Enterprise.
 
 ---
 
@@ -138,13 +138,13 @@ Referencia: 01 §9.3 y, para verificación y decisión, 01 §7.5.
 | Decisión | Patrocinador, con conformidad de riesgos en G3, G4 y G5 | Patrocinador, con conformidad de riesgos en G3, G4 y G5 | Comité de IA; consejo en Transformar |
 | Puesta en producción | Conformidad de riesgos | Conformidad de riesgos | Firma multinivel con veto |
 | Revisión de continuidad | Anual | Semestral | Trimestral |
-| Visibilidad | Panel del consejo agregado | Panel del consejo agregado | Panel del consejo por iniciativa |
+| Visibilidad | Panel del consejo agregado | Panel del consejo agregado | Panel del consejo por caso de uso |
 
 ---
 
 ## 7. Cambio de intensidad
 
-Rellenar solo si el resultado difiere de la determinación anterior. Es obligatorio en las dos intensidades: el paso de Lite a Enterprise se registra precisamente cuando la iniciativa aún es Lite.
+Rellenar solo si el resultado difiere de la determinación anterior. Es obligatorio en las dos intensidades: el paso de Lite a Enterprise se registra precisamente cuando el caso de uso aún es Lite.
 
 | Fecha | De | A | Criterio que cambia | Evidencias que deben completarse | *Gates* afectados | Registrado por |
 |---|---|---|---|---|---|---|

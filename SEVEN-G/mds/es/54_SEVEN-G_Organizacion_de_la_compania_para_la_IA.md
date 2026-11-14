@@ -105,7 +105,7 @@ Esta sección describe **patrones observados** en la práctica. No es un estudio
 | **Dirección de sistemas o de tecnología** (CIO, CTO) | Plataformas, modelos, integración, seguridad técnica, proveedores, coste de infraestructura. Es quien más rápido puede construir. | La hipótesis de valor y la adopción: entrega sistemas que funcionan y nadie usa; mide actividad, no beneficio. |
 | **Dirección de seguridad** (CISO, CSO) | Seguridad del modelo y del dato, identidades, accesos, ataques con IA y contra la IA, incidentes. | Se incorpora tarde, cuando la solución ya está elegida; sin criterios previos solo puede vetar. |
 | **Dirección de datos** (CDO) | Calidad, linaje, permisos de uso, gobierno del dato, a veces analítica avanzada. | Confunde el gobierno del dato con el gobierno de la IA: son distintos y complementarios (documento 51). |
-| **Dirección de transformación o de digital** | Cartera de iniciativas, gestión del cambio, relación con el negocio, medición de beneficios. | Rara vez tiene autoridad sobre tecnología ni sobre control; depende de convencer. |
+| **Dirección de transformación o de digital** | Cartera de casos de uso, gestión del cambio, relación con el negocio, medición de beneficios. | Rara vez tiene autoridad sobre tecnología ni sobre control; depende de convencer. |
 | **Dirección de IA** (CAIO), cuando existe | Estrategia de IA, oficina de IA, casos de uso, relación con proveedores de modelos. | Si además construye y además controla, rompe la separación de funciones; si no tiene presupuesto, es un rol de evangelización. |
 | **Dirección financiera** (CFO) | Presupuesto, inversión, medición del retorno, control de gestión, coste recurrente. | Aplica criterios de retorno de proyecto a apuestas de transformación y las bloquea (documento 14, sección 4.4). |
 | **Asesoría jurídica, cumplimiento y protección de datos** | Clasificación regulatoria, evaluaciones de impacto, contratos con proveedores, transparencia. | Llega a la última fase; sin clasificación temprana, el rediseño es caro (documento 32). |
@@ -119,7 +119,7 @@ Esta sección describe **patrones observados** en la práctica. No es un estudio
 |---|---|---|---|
 | **A · Tecnología lidera** | La IA es un programa de la dirección de sistemas; el negocio aporta casos y valida. | La madurez técnica es baja y hay que construir la base: plataforma, datos, seguridad. | Se mide en modelos desplegados; el beneficio no tiene dueño y la adopción no ocurre. |
 | **B · Transformación lidera** | La IA es una línea de la agenda de transformación, con cartera y gestión del cambio. | Hay una cartera transversal y el problema principal es priorizar y hacer que se adopte. | No hay autoridad técnica ni de control: la cartera avanza en papel y se atasca en producción. |
-| **C · Oficina de IA, con o sin dirección de IA** | Existe una función central de método, inventario, medición y apoyo; el negocio patrocina y tecnología construye. | Hay suficientes iniciativas para que el método rinda y la función central tiene presupuesto y acceso a los órganos. | La oficina también construye y también controla: se queda sin independencia y se convierte en un cuello de botella. |
+| **C · Oficina de IA, con o sin dirección de IA** | Existe una función central de método, inventario, medición y apoyo; el negocio patrocina y tecnología construye. | Hay suficientes casos de uso para que el método rinda y la función central tiene presupuesto y acceso a los órganos. | La oficina también construye y también controla: se queda sin independencia y se convierte en un cuello de botella. |
 | **D · Federado de hecho** | Cada área compra y prueba por su cuenta; hay decenas de usos y ningún inventario. | Nunca de forma estable; sirve para descubrir demanda real durante unos meses. | Aparece el primer incidente, la primera auditoría o la primera factura de consumo: nadie sabe cuántos sistemas hay ni qué datos tocan. |
 
 En la práctica, la mayoría de las compañías se reconocen en una mezcla: un patrón oficial y el patrón D como realidad de fondo. El primer trabajo de implantación suele ser **hacer visible lo que ya existe** (censo e inventario, documento 32 y documento 14, sección 11) antes de decidir estructura.
@@ -128,7 +128,7 @@ En la práctica, la mayoría de las compañías se reconocen en una mezcla: un p
 
 Cuatro preguntas ayudan a decidirlo mejor que el debate sobre la moda del cargo:
 
-1. ¿Hay **más iniciativas de las que un comité puede seguir** una vez al mes sin perder el detalle?
+1. ¿Hay **más casos de uso de los que un comité puede seguir** una vez al mes sin perder el detalle?
 2. ¿Hay **más de una unidad** que compite por la misma capacidad técnica o por el mismo presupuesto?
 3. ¿La compañía tiene o tendrá **sistemas de alto riesgo, agentes con autonomía o exposición directa** a clientes?
 4. ¿Alguien puede hoy responder en una semana **cuántos sistemas de IA hay, qué datos usan y cuánto cuestan**?
@@ -154,14 +154,14 @@ Es la pregunta más frecuente y tiene una respuesta de principio: **el gobierno 
 
 En las tres primeras opciones, el consejo conserva lo que no puede delegar: aprobar la tesis y el apetito de riesgo, aprobar las apuestas de Transformar y supervisar los resultados (documento 30, sección 3.1). La regulación refuerza esta idea en los sectores donde ya existe una responsabilidad expresa del órgano de administración sobre riesgos tecnológicos y de resiliencia, como en el Reglamento (UE) 2022/2554 (DORA) o en la Directiva (UE) 2022/2555 (NIS2), y, para todos los sectores, en el Reglamento Europeo de IA, que exige encargar la supervisión humana de los sistemas de alto riesgo a personas con competencia, formación y autoridad (artículo 26). Los supervisores sectoriales publican además sus expectativas sobre gobierno de la IA; un ejemplo, en seguros, es el Dictamen de EIOPA sobre gobierno y gestión del riesgo de la IA (documento 34).
 
-> **Por qué importa.** La ubicación del gobierno determina qué ocurre el día que una iniciativa importante no supera una puerta. Si el que decide parar depende del que tiene que entregar, no se para nunca.
+> **Por qué importa.** La ubicación del gobierno determina qué ocurre el día que un caso de uso importante no supera una puerta. Si el que decide parar depende del que tiene que entregar, no se para nunca.
 
 ### 3.5 Seis señales de que la organización está mal montada
 
 1. Nadie puede decir en una semana cuántos sistemas de IA hay en producción.
 2. Las cifras de ahorro que se presentan al comité no las ha comprobado nadie fuera del equipo que las produce.
 3. La segunda línea solo aparece al final, y entonces solo puede aprobar o vetar.
-4. Ninguna iniciativa se ha parado nunca por criterio; solo por falta de presupuesto o de gente.
+4. Ningún caso de uso se ha parado nunca por criterio; solo por falta de presupuesto o de gente.
 5. El consejo ve demostraciones de producto y no ve cartera, riesgos ni valor validado.
 6. La misma persona propone, aprueba y declara el beneficio.
 
@@ -218,7 +218,7 @@ flowchart LR
   S8["8 · Ecosistema<br>proveedores, startups y capital riesgo"]
   P["Puerta de entrada única<br>ficha mínima + patrocinador de negocio<br>documento 14, sección 3.2"]
   FIL{"Filtros previos<br>prohibido, duplicado,<br>no necesita IA,<br>fuera de apetito"}
-  REG["Registro de iniciativas T01<br>estado: Registrada"]
+  REG["Registro de casos de uso T01<br>estado: Registrado"]
   CAR["Cartera priorizada<br>comité de IA, etapa C3"]
   NO["No entra<br>se registra con motivo"]
   S1 --> P
@@ -243,9 +243,9 @@ flowchart LR
 
 ### 5.2 La puerta de entrada es una sola
 
-Venga de donde venga, una iniciativa entra por el mismo sitio: la **ficha mínima de entrada** del documento 14, sección 3.2 (descripción comprensible, patrocinador y responsable de producto, esfera y ambición propuestas, orden de magnitud del valor, inversión hasta G3, encaje con la tesis y criterios Enterprise previsibles), los **filtros previos** de la sección 3.3 y las **ventanas de entrada** de la sección 3.4. Lo que no entra se registra con su motivo: un «no» sin registro se vuelve a proponer tres meses después.
+Venga de donde venga, un caso de uso entra por el mismo sitio: la **ficha mínima de entrada** del documento 14, sección 3.2 (descripción comprensible, patrocinador y responsable de producto, esfera y ambición propuestas, orden de magnitud del valor, inversión hasta G3, encaje con la tesis y criterios Enterprise previsibles), los **filtros previos** de la sección 3.3 y las **ventanas de entrada** de la sección 3.4. Lo que no entra se registra con su motivo: un «no» sin registro se vuelve a proponer tres meses después.
 
-**Regla del patrocinador.** Toda iniciativa necesita un patrocinador de negocio. Una propuesta de un proveedor, del ecosistema o del área técnica **sin patrocinador interno no entra**, por buena que parezca.
+**Regla del patrocinador.** Todo caso de uso necesita un patrocinador de negocio. Una propuesta de un proveedor, del ecosistema o del área técnica **sin patrocinador interno no entra**, por buena que parezca.
 
 ### 5.3 Las tres fuentes que más problemas dan
 
@@ -255,15 +255,15 @@ Venga de donde venga, una iniciativa entra por el mismo sitio: la **ficha mínim
 | **Uso no autorizado** (IA en la sombra) | Ocurre igualmente; prohibirlo sin alternativa lo esconde. | Alternativa corporativa utilizable, política de uso aceptable y canal de amnistía para aflorar usos: regularización del documento 14, sección 11, y documento 31. |
 | **La prueba de concepto regalada** | Sin coste aparente, consume datos, tiempo y credibilidad, y crea dependencia. | Patrocinador, criterios de éxito y de parada por escrito antes de empezar, datos acotados y coste de salida estimado desde el primer día. |
 
-> **Por qué importa.** Las tres fuentes anteriores comparten una característica: **entran sin pasar por la puerta**. La mayor parte del riesgo regulatorio y de seguridad de una compañía no está en las iniciativas de su cartera, sino en lo que nunca llegó a ella.
+> **Por qué importa.** Las tres fuentes anteriores comparten una característica: **entran sin pasar por la puerta**. La mayor parte del riesgo regulatorio y de seguridad de una compañía no está en los casos de uso de su cartera, sino en lo que nunca llegó a ella.
 
 ---
 
 ## 6. Cómo se gobierna lo que ha entrado
 
-El recorrido es el del marco: la cartera se gestiona como un embudo y cada iniciativa atraviesa fases con puertas de decisión. Lo que aquí se añade es **quién decide en cada punto** y con qué grado de delegación.
+El recorrido es el del marco: la cartera se gestiona como un embudo y cada caso de uso atraviesa fases con puertas de decisión. Lo que aquí se añade es **quién decide en cada punto** y con qué grado de delegación.
 
-<!-- grafico: Circuito de gobierno de una iniciativa | De la propuesta a la operación, con quién decide en cada puerta -->
+<!-- grafico: Circuito de gobierno de un caso de uso | De la propuesta a la operación, con quién decide en cada puerta -->
 ```mermaid
 flowchart TB
   E["Entrada: ficha mínima y patrocinador"]
@@ -302,15 +302,15 @@ flowchart TB
 | Decisión | Quién decide (referencia) | Qué no puede delegarse |
 |---|---|---|
 | Entrada y prioridad en la cartera | Comité de IA, en su revisión mensual (documento 14, sección 7.1). | — |
-| *Gates* de iniciativas Lite | Según la matriz de delegación del documento 30, sección 7. | La verificación la hace alguien distinto de quien construye. |
-| *Gates* de iniciativas Enterprise | Comité de IA, con la segunda línea presente. | La conformidad de riesgo y cumplimiento. |
+| *Gates* de casos de uso Lite | Según la matriz de delegación del documento 30, sección 7. | La verificación la hace alguien distinto de quien construye. |
+| *Gates* de casos de uso Enterprise | Comité de IA, con la segunda línea presente. | La conformidad de riesgo y cumplimiento. |
 | Aprobación de Transformar en G2 y del escalado en G7 | Consejo (documento 30, sección 3.1). | No se delega. |
-| Aceptación de riesgo residual | El órgano que corresponde al nivel del riesgo (documento 33). | Nunca quien construye la iniciativa. |
+| Aceptación de riesgo residual | El órgano que corresponde al nivel del riesgo (documento 33). | Nunca quien construye el caso de uso. |
 | Puesta en producción Enterprise | Firma multinivel en G5, con la segunda línea. | La firma de control. |
-| Parada, pivote y retirada | Comité de IA; el consejo en las de Transformar (documento 14, sección 10). | El motivo se registra siempre. |
+| Parada, pivote y retirada | Comité de IA; el consejo en los casos de uso de Transformar (documento 14, sección 10). | El motivo se registra siempre. |
 | Excepciones a la política | Órgano previsto en P40, con caducidad. | Una excepción sin fecha de fin no es una excepción. |
 
-**El papel de la oficina de IA** en este circuito es el de motor, no el de decisor: prepara las decisiones, comprueba que la evidencia existe antes de convocar la puerta, mantiene el registro y avisa de lo que se ha quedado atascado (iniciativas estancadas, condiciones vencidas, documento 14, sección 8).
+**El papel de la oficina de IA** en este circuito es el de motor, no el de decisor: prepara las decisiones, comprueba que la evidencia existe antes de convocar la puerta, mantiene el registro y avisa de lo que se ha quedado atascado (casos de uso estancados, condiciones vencidas, documento 14, sección 8).
 
 ---
 
@@ -323,7 +323,7 @@ Cada nivel recibe menos detalle y más consecuencia. Lo que no cambia en ningún
 <!-- grafico: Cómo llega al consejo la información de la IA | Qué ve cada nivel, con qué frecuencia y con qué herramienta -->
 ```mermaid
 flowchart BT
-  EQ["Equipos de iniciativa<br>evidencias y eventos en T01<br>continuo"]
+  EQ["Equipos de caso de uso<br>evidencias y eventos en T01<br>continuo"]
   OF["Oficina de IA<br>consolida cartera, riesgos,<br>coste y valor · continuo"]
   CIA["Comité de IA<br>cartera, gates, alertas<br>mensual"]
   CD["Comisión delegada<br>riesgos, incidentes, auditoría<br>trimestral"]
@@ -344,16 +344,16 @@ flowchart BT
 
 | Nivel | Qué recibe | Cada cuánto | Con qué |
 |---|---|---|---|
-| **Equipo de iniciativa** | Sus evidencias, criterios de la puerta siguiente, riesgos abiertos y cifras propias. | Continuo | T01, T03, T06 |
+| **Equipo de caso de uso** | Sus evidencias, criterios de la puerta siguiente, riesgos abiertos y cifras propias. | Continuo | T01, T03, T06 |
 | **Oficina de IA** | Cartera completa, tiempos por fase, evidencias que faltan, coste y consumo, alertas. | Continuo | T01, T11, T13 |
-| **Comité de IA** | Cartera priorizada, decisiones de puerta pendientes, iniciativas estancadas, riesgos Altos, retiradas. | Mensual | T01, T06, P36 |
+| **Comité de IA** | Cartera priorizada, decisiones de puerta pendientes, casos de uso estancados, riesgos Altos, retiradas. | Mensual | T01, T06, P36 |
 | **Comisión delegada** | Riesgos fuera de apetito, incidentes, no conformidades mayores y críticas, resultados de auditoría, excepciones vigentes. | Trimestral | P42, documento 37, documento 38 |
 | **Consejo** | Embudo de la cartera, valor validado frente a declarado, madurez, índice de transformación, apuestas de Transformar y recomendaciones abiertas. | Trimestral y anual | Panel T17, T14, T15, T18, paquete P67 y documento 60 |
 
 ### 7.3 Tres reglas de la información al consejo
 
 1. **Ninguna cifra sin estado ni fórmula.** Un ahorro declarado y uno validado no se suman en la misma línea (documento 40).
-2. **El consejo ve el embudo completo, no solo lo que va bien**: las iniciativas que no superaron cada etapa y por qué, y las que se han desenganchado después de estar en uso. Es la parte que más enseña.
+2. **El consejo ve el embudo completo, no solo lo que va bien**: los casos de uso que no superaron cada etapa y por qué, y los que se han desenganchado después de estar en uso. Es la parte que más enseña.
 3. **Las alertas no esperan al calendario.** Los incidentes graves, los riesgos fuera de apetito y las no conformidades críticas suben cuando ocurren (documento 37).
 
 > **Por qué importa.** Un consejo que solo ve demostraciones no puede ejercer su responsabilidad de supervisión: no sabe cuánto cuesta la cartera, qué riesgos ha aceptado la compañía ni qué parte del valor anunciado se ha materializado.
@@ -403,7 +403,7 @@ flowchart BT
 
 | Escenario | En qué consiste | Cuándo es probable | Señal de que va por ahí |
 |---|---|---|---|
-| **1 · Silos reforzados** | Cada función usa IA dentro de su perímetro y las fronteras no se mueven. | Sectores muy regulados o con procesos muy separados. | Muchas iniciativas, ninguna entre áreas. |
+| **1 · Silos reforzados** | Cada función usa IA dentro de su perímetro y las fronteras no se mueven. | Sectores muy regulados o con procesos muy separados. | Muchos casos de uso, ninguno entre áreas. |
 | **2 · Capa central de IA** | Una plataforma y un equipo centrales sirven a todas las áreas; el organigrama no cambia. | Compañías con fuerte cultura corporativa y necesidad de control. | El catálogo de componentes compartidos crece y las áreas dejan de contratar por su cuenta. |
 | **3 · Organización por procesos con equipos mixtos** | El trabajo se organiza en cadenas extremo a extremo, con personas y agentes, y dueños de resultado. | Cuando el coste de coordinación entre silos supera al de reorganizar. | Aparecen dueños de proceso con presupuesto y con objetivos de resultado. |
 | **4 · Red gobernada de agentes** | Buena parte de la ejecución la realizan agentes coordinados; las personas fijan objetivos, excepciones y control. | Solo tras madurez alta en datos, seguridad y control. | Existe inventario de agentes con responsable, límites y baja, igual que un registro de empleados. |
@@ -712,24 +712,24 @@ Para el consejo, el comité de dirección o una sesión de trabajo. No tienen re
 
 1. ¿Quién ejerce hoy cada una de las seis funciones de la sección 2 y cuáles están vacías?
 2. ¿Hay alguien que ejerza a la vez construcción y control? ¿Desde cuándo?
-3. Si mañana hay que parar una iniciativa importante, ¿quién firma esa decisión?
+3. Si mañana hay que parar un caso de uso importante, ¿quién firma esa decisión?
 
 **Sobre la demanda**
 
-4. ¿De cuál de las ocho fuentes vienen las iniciativas que tenemos en curso? ¿Hay alguna fuente que no aparezca nunca?
+4. ¿De cuál de las ocho fuentes vienen los casos de uso que tenemos en curso? ¿Hay alguna fuente que no aparezca nunca?
 5. ¿Cuántos sistemas de IA se han activado en productos que ya teníamos contratados, sin decisión expresa?
 6. ¿Qué hacemos hoy con el uso de IA que los empleados ya practican por su cuenta?
 
 **Sobre el gobierno**
 
-7. ¿Cuántas iniciativas se han parado por criterio en los últimos doce meses? Si ninguna, ¿por qué?
+7. ¿Cuántos casos de uso se han parado por criterio en los últimos doce meses? Si ninguno, ¿por qué?
 8. ¿La segunda línea participa desde la fase 0 o aparece en la puerta final?
 9. ¿Qué excepciones a la política están vigentes y cuándo caducan?
 
 **Sobre la información**
 
 10. ¿Qué parte del valor que presentamos está validado, qué parte declarado y qué parte estimado?
-11. ¿El consejo ve las iniciativas que no salieron y por qué?
+11. ¿El consejo ve los casos de uso que no salieron y por qué?
 12. ¿Cuánto cuesta al año la cartera de IA, incluido el consumo y el coste recurrente?
 
 **Sobre el futuro**
@@ -753,8 +753,8 @@ La secuencia de implantación está en el documento 90. En términos de organiza
 1. **Censo e inventario** de lo que ya existe, incluido lo que entró sin pasar por la puerta (documento 32; documento 14, sección 11).
 2. **Asignar las seis funciones** con nombre y apellidos, aunque se concentren en pocas personas (P38).
 3. **Abrir la puerta de entrada única** y publicar la ficha mínima, para que la demanda deje de entrar por los lados (documento 14, sección 3).
-4. **Fijar la información al consejo** antes de tener muchas iniciativas: es más fácil empezar a medir con cinco que con cincuenta (documento 60).
-5. **Revisar la estructura a los seis meses** con datos propios: cuántas iniciativas, de qué fuentes, cuántas paradas, cuánto coste. La estructura se decide mejor con esa información que con una comparación de organigramas ajenos.
+4. **Fijar la información al consejo** antes de tener muchos casos de uso: es más fácil empezar a medir con cinco que con cincuenta (documento 60).
+5. **Revisar la estructura a los seis meses** con datos propios: cuántos casos de uso, de qué fuentes, cuántas paradas, cuánto coste. La estructura se decide mejor con esa información que con una comparación de organigramas ajenos.
 
 ---
 
@@ -762,9 +762,9 @@ La secuencia de implantación está en el documento 90. En términos de organiza
 
 | Código | Nombre | Uso en este documento |
 |---|---|---|
-| **T01** | Registro de iniciativas | Puerta de entrada única, estado de cada iniciativa y origen de toda la información posterior. |
+| **T01** | Registro de casos de uso | Puerta de entrada única, estado de cada caso de uso y origen de toda la información posterior. |
 | **T02** | Inventario de sistemas de IA | Censo de lo que ya existe, incluida la IA incorporada a productos contratados. |
-| **T06** | Matriz y registro de riesgos | Riesgos por iniciativa y su aceptación por el órgano que corresponde. |
+| **T06** | Matriz y registro de riesgos | Riesgos por caso de uso y su aceptación por el órgano que corresponde. |
 | **T14 · T15** | Índice de transformación y diagnóstico de madurez | Lectura de conjunto para el consejo y para la revisión anual. |
 | **T17 · T18** | Panel del consejo y registro de recomendaciones | Información periódica al consejo y seguimiento de sus acuerdos. |
 | **P38** | Reglamento de los órganos y nombramiento del responsable de IA | Asignación escrita de órganos y funciones. |
@@ -781,7 +781,7 @@ La secuencia de implantación está en el documento 90. En términos de organiza
 
 | Documento | Relación |
 |---|---|
-| **01 · Metodología fundacional** | Roles de la iniciativa, separación de funciones, fases, puertas e intensidad. |
+| **01 · Metodología fundacional** | Roles del caso de uso, separación de funciones, fases, puertas e intensidad. |
 | **13 · Tesis de IA, ambición y apetito de riesgo** | Lo que el consejo aprueba y que da contenido a la función de dirección. |
 | **14 · Gestión de cartera** | Canales de entrada, ficha mínima, filtros, priorización y retirada. |
 | **20 y 21 · Fases y criterios de *gate*** | Qué se hace en cada fase y qué se verifica en cada puerta. |

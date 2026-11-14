@@ -25,7 +25,7 @@
 | **Quién la verifica** | La oficina de IA comprueba que puede operar cada capacidad sin el tercero; control de gestión, las cifras de la cartera; el responsable de riesgos de IA, la nota de riesgos abiertos. |
 | **Quién decide o aprueba** | Quien encargó el servicio (P70, sección 11) acepta la salida; en M5, el comité de IA aprueba el plan de transferencia y su revisión anual. |
 | **Etapa o momento** | Final del encargo; en M5, cada revisión anual del servicio y antes de C5. |
-| **Herramienta** | T01 · Registro de iniciativas (JSON completo del registro), T17 · Panel de IA para el consejo (fichero de datos y huella), T18 · Registro de recomendaciones del consejo; y las demás que se hayan usado (T02, T03, T06, T14, T15). |
+| **Herramienta** | T01 · Registro de casos de uso (JSON completo del registro), T17 · Panel de IA para el consejo (fichero de datos y huella), T18 · Registro de recomendaciones del consejo; y las demás que se hayan usado (T02, T03, T06, T14, T15). |
 | **Documento de referencia** | Documento 91 (§3 principios, §4.6 M5, §5.3 periodo de separación, §7 calidad y salida); documento 90 (hoja de ruta de 6 a 18 meses). |
 | **Lite frente a Enterprise** | Igual en ambos. En M1 la transferencia puede limitarse a la sección 4 y a los responsables internos de la sección 9. |
 
@@ -64,7 +64,7 @@ Método: **Hace el tercero** (la compañía observa) → **Hace la compañía co
 | # | Capacidad | Rol interno receptor | Situación actual | Método siguiente | Hito y fecha | Evidencia de que la compañía lo hace sola | Estado |
 |---|---|---|---|---|---|---|---|
 | 1 *(ejemplo ilustrativo)* | Preparar el paquete trimestral (P67) | Oficina de IA | Hace la compañía con apoyo | Hace la compañía sola | Paquete del primer trimestre de 2027 · 15-03-2027 | Paquete enviado en D−7 preparado por la oficina de IA; el tercero solo revisó | En curso |
-| 2 | Mantener el registro de iniciativas y el inventario (T01, T02) | | | | | | |
+| 2 | Mantener el registro de casos de uso y el inventario (T01, T02) | | | | | | |
 | 3 | Preparar evidencias de *gate* con los equipos (P29, T03) | | | | | | |
 | 4 | Calcular las métricas del embudo y de agilidad | | | | | | |
 | 5 | Actualizar el panel del consejo y guardar la foto de cada sesión (T17) | | | | | | |
@@ -104,7 +104,7 @@ Cada entregable indica la versión de SEVEN-G, las adaptaciones y el reconocimie
 
 | Herramienta | Versión del esquema o de la herramienta | Fichero de datos entregado | Última actualización | Cómo se actualiza o se regenera | Responsable interno | Pendientes |
 |---|---|---|---|---|---|---|
-| T01 · Registro de iniciativas | | JSON completo del registro | | | | |
+| T01 · Registro de casos de uso | | JSON completo del registro | | | | |
 | T02 · Inventario de sistemas de IA | | | | | | |
 | T06 · Matriz y registro de riesgos | | Exportación CSV o JSON de T01 | | | | |
 | T17 · Panel de IA para el consejo | | Fichero de datos del panel y huella | | | | |
@@ -137,8 +137,8 @@ Datos a la fecha de corte indicada, con la fuente (T01, T12) y las reglas del do
 | Campo | Contenido | Guía |
 |---|---|---|
 | Fecha de corte | | |
-| Iniciativas por fase y estado | | Fases 0–2, 3–5, en producción, en G7; paradas y retiradas. |
-| Estancadas y condiciones vencidas | | Con código. |
+| Casos de uso por fase y estado | | Fases 0–2, 3–5, en producción, en G7; parados y retirados. |
+| Casos de uso estancados y condiciones vencidas | | Con código. |
 | R6 vencidas en producción | | |
 | Valor neto anual y proporción validada | | Eficiencias, retorno y coste recurrente por separado; capacidad liberada aparte. |
 | Casos con neto anual negativo | | Individualmente. |
@@ -160,7 +160,7 @@ Extracto de P69. Si el tercero era valorador de alguna recomendación, se design
 
 ## 8. Nota de riesgos abiertos
 
-| # | Riesgo | Iniciativa o ámbito | Nivel residual | Responsable interno | Próxima revisión | Observación |
+| # | Riesgo | Caso de uso o ámbito | Nivel residual | Responsable interno | Próxima revisión | Observación |
 |---|---|---|---|---|---|---|
 | 1 *(ejemplo ilustrativo)* | La oficina de IA no dispone todavía de una segunda persona formada en el mantenimiento del registro | Transferencia | Medio | Dirección de la oficina de IA | 30-04-2027 | Formación de un suplente incluida en el plan anual |
 | | | | | | | |

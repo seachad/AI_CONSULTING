@@ -21,7 +21,7 @@
 | Aspecto | Indicación |
 |---|---|
 | **Cuándo se usa** | Se elabora en borrador en la fase 3, se completa en la fase 4 y se ajusta en la fase 5 con los resultados del piloto (43 §4.2). Es la referencia del seguimiento por periodo (P28) y de las revisiones a 6 y 12 meses (43 §8). |
-| **Quién la rellena** | El responsable de negocio del beneficio, con el responsable de producto de IA. En iniciativas transversales, cada unidad rellena su bloque de la sección 11. |
+| **Quién la rellena** | El responsable de negocio del beneficio, con el responsable de producto de IA. En casos de uso transversales, cada unidad rellena su bloque de la sección 11. |
 | **Quién la verifica** | Control de gestión revisa el cálculo en G3. La oficina de IA verifica en G4 (Lite y Enterprise); el auditor de IA verifica en G5 en Enterprise (43 §2.1 y §4.2). |
 | **Quién decide o aprueba** | Firman el responsable de negocio (G3) y, desde G4, también el patrocinador de IA. El *gate* lo decide el órgano de 01 §7.5. |
 | **Etapa, *gate* o momento** | Evidencia de G3 (borrador) y G4 (completo); vigente en G5; referencia en R6 y G7. |
@@ -31,7 +31,7 @@
 
 Reglas de cumplimentación:
 
-- **La hipótesis aprobada en G2 y revisada en G3 es la referencia.** El plan no la cambia; cambiarla exige aprobación del órgano que autorizó la iniciativa (01 §7.4, regla 6).
+- **La hipótesis aprobada en G2 y revisada en G3 es la referencia.** El plan no la cambia; cambiarla exige aprobación del órgano que autorizó el caso de uso (01 §7.4, regla 6).
 - **Eficiencias y retorno no se mezclan** en una misma línea de beneficio (40 §5.1). Cada línea tiene fórmula F1 (unidades incrementales × valor unitario).
 - **La curva no supone el régimen desde el primer periodo:** refleja la rampa de adopción.
 - **La capacidad liberada no es beneficio** hasta que se materializa o se reasigna con una palanca de 43 §7.2 (regla 3).
@@ -44,11 +44,11 @@ Reglas de cumplimentación:
 
 | Campo | Contenido | Guía |
 |---|---|---|
-| Código de la iniciativa | | IA-AAAA-NNN (T01). |
-| Nombre de la iniciativa | | |
+| Código del caso de uso | | IA-AAAA-NNN (T01). |
+| Nombre del caso de uso | | |
 | Nivel de ambición | | Optimizar · Aumentar · Transformar (P07). |
 | Intensidad | | Lite · Enterprise (P04). |
-| Tipo de iniciativa | | Caso de negocio · Transversal · Plataforma habilitadora (40 §7.2). Una plataforma habilitadora no tiene líneas de beneficio propias: su valor se imputa a los casos que la usan. |
+| Tipo de caso de uso | | Caso de negocio · Transversal · Plataforma habilitadora (40 §7.2). Una plataforma habilitadora no tiene líneas de beneficio propias: su valor se imputa a los casos que la usan. |
 | Estado del plan | | Borrador (G3) · Completo (G4) · Vigente (G5) · Revisado (R6, 6 o 12 meses) · Sustituido. |
 | Versión del documento | | |
 | Autor | | Rol y nombre. |
@@ -159,14 +159,14 @@ Palancas: reducción de externalización · eliminación de horas extraordinaria
 | Casos o programas que comparten proceso, población o métrica | | Incluidos los programas sin IA (43 §6.1). |
 | Método de reparto y clave propuesta | | Medición conjunta · Incremental secuencial · Reparto acordado previo (43 §6.2); aprobada por control de gestión (IND-VAL-18). |
 | Riesgos para la realización **(Enterprise)** | | Qué puede impedir que llegue el beneficio, con su número en P12 (T06). |
-| Dependencias **(Enterprise)** | | Otras iniciativas, proveedores o proyectos. |
+| Dependencias **(Enterprise)** | | Otros casos de uso, proveedores o proyectos. |
 | Criterios de parada | | Los de G2, sin relajar. Umbral y periodo en que se evalúan. |
 
 ---
 
-## 11. Iniciativas transversales: realización por unidad
+## 11. Casos de uso transversales: realización por unidad
 
-Solo si el tipo de iniciativa es *Transversal* (40 §7.2 y 43 §6.4). Un solo plan, con un bloque por unidad. Cada peldaño de la escalera solo cuenta si se cumple el anterior; solo el valor materializado suma en el neto.
+Solo si el tipo de caso de uso es *Transversal* (40 §7.2 y 43 §6.4). Un solo plan, con un bloque por unidad. Cada peldaño de la escalera solo cuenta si se cumple el anterior; solo el valor materializado suma en el neto.
 
 | Campo | Contenido | Guía |
 |---|---|---|
@@ -179,7 +179,7 @@ Solo si el tipo de iniciativa es *Transversal* (40 §7.2 y 43 §6.4). Un solo pl
 |---|---|---|---|---|---|---|---|
 | *(ejemplo ilustrativo)* Finanzas | Director financiero | En uso | 324.000 | 792 / 900 (88 %) | 7.200 | Reducción de externalización | 540.000 · Validado |
 | *(ejemplo ilustrativo)* Comercial | Directora comercial | En uso | 432.000 | 624 / 1.200 (52 %) | 5.100 | Sin palanca | — (bajo el umbral) |
-| | | Piloto · En uso · Retirada | | | | | |
+| | | Piloto · En uso · Retirado | | | | | |
 
 La capacidad liberada declarada nunca se valida ni suma (peldaño 3). Lo que ya reclama un caso propio de la unidad sobre el mismo proceso no se cuenta otra vez.
 
@@ -239,7 +239,7 @@ Criterios formales en el documento 21 (G2.06, G3.05, G4.11, G5.10, G5.21, R6.02,
 | 5 | El plan de materialización asigna un único destino a cada hora y no suma capacidad sin destino. | |
 | 6 | Hay indicadores adelantados y de resultado con fuente. | |
 | 7 | Los solapes están identificados y la clave de reparto propuesta. | |
-| 8 | En transversales, cada unidad tiene responsable, umbral de adopción y escalera completa. | |
+| 8 | En casos de uso transversales, cada unidad tiene responsable, umbral de adopción y escalera completa. | |
 | 9 | Las revisiones a 6 y 12 meses están fechadas y, cuando se han celebrado, su informe consta con acciones. | |
 
 ---
@@ -270,4 +270,4 @@ Separación de funciones: quien firma el plan y declara el valor no lo valida; e
 
 | Versión | Fecha | Cambios |
 |---|---|---|
-| 0.1 | 19-09-2026 | Primera versión. Recoge el contenido del plan de 43 §4.1, la realización por unidad de las iniciativas transversales (40 §7.2 y 43 §6.4) y el informe de revisión a 6 y 12 meses (43 §8). |
+| 0.1 | 19-09-2026 | Primera versión. Recoge el contenido del plan de 43 §4.1, la realización por unidad de los casos de uso transversales (40 §7.2 y 43 §6.4) y el informe de revisión a 6 y 12 meses (43 §8). |

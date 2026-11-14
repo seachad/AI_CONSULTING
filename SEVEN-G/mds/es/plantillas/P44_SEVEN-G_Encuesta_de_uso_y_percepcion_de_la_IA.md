@@ -24,7 +24,7 @@
 | **Quién la rellena** | Anual: todos los empleados y colaboradores con acceso a medios de la compañía; la diseña y analiza la oficina de IA. Pulso: los colectivos afectados por el sistema (usuarios, supervisores designados y mandos); la prepara y analiza el responsable de producto de IA con la función de personas. |
 | **Quién la verifica** | Anual: auditor de IA o auditoría interna, por muestreo (documento 38). Pulso: oficina de IA en Lite; auditor de IA en Enterprise, como parte de P20. |
 | **Quién decide o aprueba** | Anual: el comité de IA recibe los resultados y aprueba las acciones (catálogo, formación, regularización). Pulso: el patrocinador de IA aprueba el plan de acción; el órgano del *gate* valora los resultados en G5, R6 y G7. |
-| **Etapa, *gate* o momento** | Anual: C4 (monitor T21) y C5. Pulso: G5, R6 y G7 de la iniciativa. |
+| **Etapa, *gate* o momento** | Anual: C4 (monitor T21) y C5. Pulso: G5, R6 y G7 del caso de uso. |
 | **Herramienta** | Anual: T21 · Monitor de uso corporativo de IA. Pulso: T20 · Plan de adopción y capacidad. |
 | **Documento de referencia** | Anual: 31 §5.2 a §5.5; 32 §9. Pulso: 23 §10; 50 §9 a §11; 41 (IND-ADO-15). |
 | **Lite frente a Enterprise** | Anual: obligatoria en ambos alcances de implantación (90 §2.1). Pulso: obligatorio en Enterprise (23 §13.2); en Lite debería aplicarse en la fase 5 y a los tres meses cuando el sistema cambia el trabajo de un colectivo. |
@@ -44,7 +44,7 @@ Reglas de cumplimentación:
 | Campo | Contenido | Guía |
 |---|---|---|
 | Tipo de encuesta | | Anual de uso · Pulso de percepción. |
-| Perímetro o iniciativa | | Compañía o perímetro (encuesta anual); código IA-AAAA-NNN y sistemas SIA-AAAA-NNN (pulso). |
+| Perímetro o caso de uso | | Compañía o perímetro (encuesta anual); código IA-AAAA-NNN y sistemas SIA-AAAA-NNN (pulso). |
 | Momento | | Año (anual); fase 5 · tres meses · R6 (pulso). |
 | Periodo de respuesta | | DD-MM-AAAA a DD-MM-AAAA. |
 | Población objetivo | | Número de personas y colectivos. |
@@ -109,7 +109,7 @@ Todas las preguntas cerradas de valoración usan la misma escala, redactadas en 
 | Hallazgo | Tratamiento |
 |---|---|
 | Herramienta no catalogada citada | Registro en T02 como uso no autorizado, por herramienta y ámbito, sin identificar personas (31 §5.3; 32 §2.1), y regularización (31 §5.5). |
-| Necesidad no cubierta recurrente | Evaluación como solicitud (P43, sección 4) o como oportunidad en el registro de iniciativas (T01). |
+| Necesidad no cubierta recurrente | Evaluación como solicitud (P43, sección 4) o como oportunidad en el registro de casos de uso (T01). |
 | Conocimiento bajo de la política o del canal | Refuerzo de la formación F1 (P45) y de la comunicación. |
 | Agentes personales no autorizados | Revisión de la autorización por nivel de autonomía (31 §4.7). |
 

@@ -65,7 +65,7 @@ flowchart LR
   class L,J,D,P local
 ```
 
-> **Why it matters.** A tool that works without a server cannot lose data on the server, requires no subscription and does not force the company to trust a third party with the custody of its initiative portfolio. In exchange, custody is yours: if the data is only in a browser, the backup is made by whoever enters it (section 3.4).
+> **Why it matters.** A tool that works without a server cannot lose data on the server, requires no subscription and does not force the company to trust a third party with the custody of its use case portfolio. In exchange, custody is yours: if the data is only in a browser, the backup is made by whoever enters it (section 3.4).
 
 ---
 
@@ -73,7 +73,7 @@ flowchart LR
 
 ### 3.1 In the browser, not on the server
 
-When you open a tool for the first time, the browser copies the demonstration data into its **local storage** (*localStorage*), an area each browser reserves per site on the computer itself. From then on, every change you make —a new initiative, a gate decision, a risk, a calculation— is saved there, instantly and without anything travelling over the network.
+When you open a tool for the first time, the browser copies the demonstration data into its **local storage** (*localStorage*), an area each browser reserves per site on the computer itself. From then on, every change you make —a new use case, a gate decision, a risk, a calculation— is saved there, instantly and without anything travelling over the network.
 
 That is the first of three possible places. The **"Datos: …"** button in the bar of each tool says which one is in use and opens the **"Dónde están mis datos"** (Where is my data) dialog to change it (document 03 §2.1):
 
@@ -87,7 +87,7 @@ In the browser, each tool uses its own key:
 
 | Tool | Local storage key |
 |---|---|
-| T01 · Initiative register | `seveng-t01-datos-v1` |
+| T01 · Use case register | `seveng-t01-datos-v1` |
 | T11 · Value hypothesis calculator (with T13) | `seveng-t11-datos-v1` |
 | T14 · Transformation index calculator | `seveng-t14-datos-v1` |
 | T15 · Maturity diagnosis | `seveng-t15-datos-v1` |
@@ -118,7 +118,7 @@ So that the statement above can be verified, this is the complete list of what t
 | **Fonts** | When opening the documents, the home page and the site's entry page. The tools and the dashboards **load no external resource**. | To the Google Fonts servers. | The request for the font, which like any web request includes the IP address of whoever makes it. No data from the tools. In your own installation it can be removed (section 4.4). |
 | **Page requests** | Always, as on any website. | To the server hosting the site (GitHub Pages on the public site; yours in your own installation). | The page requested and the IP address, in the server logs, under the policy of whoever hosts it. Never the content of the tools. |
 
-Nothing else. There are no accounts, contact forms, newsletters or tracking pixels, and the site never contacts anyone on its own initiative (document 04 §6.2).
+Nothing else. There are no accounts, contact forms, newsletters or tracking pixels, and the site never contacts anyone of its own accord (document 04 §6.2).
 
 ### 3.4 Backup and moving between computers
 
@@ -217,7 +217,7 @@ Checklist per client:
 | Step | What to do | Where |
 |---|---|---|
 | 1 | One origin per client: its own subdomain, domain or port. | Web server. |
-| 2 | A register that starts with the client's data and not with the demonstration: in the client's copy, the folder `SEVEN-G/herramientas/datos/` with its exported `T01_registro.json` (and, if used, `T11_calculadora.json`, `T14_indice.json` and `T15_madurez.json`); the tools load them instead of the demonstration. Alternative without a data folder: build `registro.html` from the client's JSON; with `meta.datos_ilustrativos` absent or `false` the "example initiatives" band disappears. | `datos/` folder of the copy, or `pwsh -File build_registro.ps1 -Datos <client.json> -Salida <registro.html>` in `SEVEN-G/herramientas/T01_registro_iniciativas`. |
+| 2 | A register that starts with the client's data and not with the demonstration: in the client's copy, the folder `SEVEN-G/herramientas/datos/` with its exported `T01_registro.json` (and, if used, `T11_calculadora.json`, `T14_indice.json` and `T15_madurez.json`); the tools load them instead of the demonstration. Alternative without a data folder: build `registro.html` from the client's JSON; with `meta.datos_ilustrativos` absent or `false` the "example use cases" band disappears. | `datos/` folder of the copy, or `pwsh -File build_registro.ps1 -Datos <client.json> -Salida <registro.html>` in `SEVEN-G/herramientas/T01_registro_iniciativas`. |
 | 3 | The client's board dashboard regenerates itself in the browser from that `T01_registro.json` (`datos_t01` key of `config_panel.json`) or from the register stored in the browser. Only if you want to publish it as static files to send, generate it with T17 in Python, with the client's name and acronym and its own copy of `config_panel.json` (thresholds, lifecycle, links back to the site, `codigos`). | `uv run python t01_a_panel.py --t01 <client.json> --salida <folder> --organizacion "<Client>" --sigla <CA>` |
 | 4 | The client's data, outside the repository and the published folder: the exported JSON files and the generated dashboards are kept in the client's or the consultancy's document repository, with its access control. | Document management. |
 | 5 | Community and measurement: decide whether the community page keeps pointing to the public project (recommended) and do not activate any measurement of the client's users without their consent (section 4.3). | `comunidad/index.html`, `analitica.json`. |
@@ -261,7 +261,7 @@ A partner wanting to publish its adapted version can fork the repository on GitH
 
 | Code | Name | Relationship with this document |
 |---|---|---|
-| T01 | Initiative register | Stores the data in the browser; exports and imports the full JSON; build with your own data (`build_registro.ps1 -Datos`). |
+| T01 | Use case register | Stores the data in the browser; exports and imports the full JSON; build with your own data (`build_registro.ps1 -Datos`). |
 | T11, T14, T15 | Value calculator, transformation index and maturity diagnosis | Same operation; they read the T01 register of the same browser. |
 | T17 | AI dashboard for the board | Regenerates itself in the browser from the T01 register; the Python generator is optional and its files contain the data. |
 | P70 | Proposal and engagement letter | Where a consultancy records where the client's installation and data are hosted. |
@@ -272,7 +272,7 @@ A partner wanting to publish its adapted version can fork the repository on GitH
 
 | Document | Relationship |
 |---|---|
-| **03 · Tools and initiative register** | Tool design principles (§2: no server, the company's data, navigable codes), where the tools' data lives and how to set up the company's copy (§2.1) and data map between tools (§4.1). |
+| **03 · Tools and use case register** | Tool design principles (§2: no server, the company's data, navigable codes), where the tools' data lives and how to set up the company's copy (§2.1) and data map between tools (§4.1). |
 | **04 · Where SEVEN-G comes from and why it is open** | What the site does and does not do with those who visit it (§6.2) and the framework's version history (§2.3). |
 | **90 · Implementation guide** | Prerequisites and a company's 90-day plan. |
 | **91 · Guide for consultants** | Use of the framework by third parties, independence and use of the name. |

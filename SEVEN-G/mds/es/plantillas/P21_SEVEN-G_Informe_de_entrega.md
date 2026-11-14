@@ -37,8 +37,8 @@ Reglas:
 
 | Campo | Contenido | Guía |
 |---|---|---|
-| Código de la iniciativa | | IA-AAAA-NNN (T01). |
-| Nombre de la iniciativa | | |
+| Código del caso de uso | | IA-AAAA-NNN (T01). |
+| Nombre del caso de uso | | |
 | Sistema(s) de IA | | Identificador en el inventario (T02). |
 | Versión entregada | | Versión de modelo, instrucciones y configuración (P16). |
 | Intensidad | | Lite · Enterprise. |

@@ -39,7 +39,7 @@ Completion rules:
 
 | Field | Content | Guidance |
 |---|---|---|
-| Initiative code | | IA-AAAA-NNN. |
+| Use case code | | IA-AAAA-NNN. |
 | AI systems covered | | Codes from P05. |
 | Regulatory classification and intensity | | From P11 and P04. |
 | Autonomy level | | A0 · A1 · A2 · A3. |

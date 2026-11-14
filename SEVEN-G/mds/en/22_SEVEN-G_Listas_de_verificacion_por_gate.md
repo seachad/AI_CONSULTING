@@ -38,7 +38,7 @@ Each item carries the **criterion code** from document 21 (G3.07, R6.11…) or t
 |---|---|---|
 | **Verifier** (01 §7.5: AI Office in Lite; AI Auditor in Enterprise) | After the *gate* request and before the decision. | Check criteria and evidence and issue the verification opinion. |
 | **AI Auditor** | In the subsequent audit, on the sample (21 §10.3). | Re-perform the verification and compare it with what was recorded. |
-| **Initiative team** | Before requesting the *gate*. | Self-assess. Its self-assessment does not replace verification. |
+| **Use case team** | Before requesting the *gate*. | Self-assess. Its self-assessment does not replace verification. |
 
 ### 2.2 How to verify
 
@@ -275,13 +275,13 @@ Applied to **each piece of evidence** linked in the *gate* request, before revie
 
 | ☐ | Code | Question | Where to look | If the answer is no |
 |---|---|---|---|---|
-| ☐ | EV.01 | Does the evidence identify the initiative, the source template or record and the title? | Evidence cover page | Pending |
+| ☐ | EV.01 | Does the evidence identify the use case, the source template or record and the title? | Evidence cover page | Pending |
 | ☐ | EV.02 | Is the author recorded with their role? | Evidence record | Pending |
 | ☐ | EV.03 | Are the date of preparation and the date of last modification recorded? | Record · repository history | Pending |
 | ☐ | EV.04 | Is the version linked in the request the version reviewed? | T03 · repository | Pending |
 | ☐ | EV.05 | Is the date prior to the *gate* request, and is the activity described prior to the decision? | Repository history · T01 events | Not valid · major nonconformity |
 | ☐ | EV.06 | Is it in the repository with version history and a link accessible from T01 or T03? | Repository · T03 | Pending |
-| ☐ | EV.07 | Does it relate to this initiative, its scope and the system version, or is its reuse justified? | Content · P15 (version) | Not valid |
+| ☐ | EV.07 | Does it relate to this use case, its scope and the system version, or is its reuse justified? | Content · P15 (version) | Not valid |
 | ☐ | EV.08 | If it supports results, does it have a source, period, reproducible method and, for amounts, formula and status? | Content · T11 · T12 | Not valid |
 | ☐ | EV.09 | Is it approved by the appropriate person, and are author, verifier and decision-maker different people? | Record · P03 · P29 | Not valid · major nonconformity if there is self-approval |
 | ☐ | EV.10 | Are the mandatory fields complete —in the template or in the referenced evidence with its annex (21 §4.3)—, with an explicit "no data" where information is missing? | Template | Pending |
@@ -348,7 +348,7 @@ An unchecked mandatory item in LV-AG is equivalent to *Not met* for the criterio
 |---|---|---|
 | **T03** | *Gate* manager | Loads the checklists, records the status of each item, calculates the degree of compliance and applies the blocking rule. |
 | **T10** | Agent security assessment | Implements LV-AG within T03. |
-| **T01 · T08** | Initiative register · Nonconformities and incidents | Events to check prior existence; register of findings. |
+| **T01 · T08** | Use case register · Nonconformities and incidents | Events to check prior existence; register of findings. |
 | **P29** | *Gate* decision record | Records the result of the checklists and the verification opinion. |
 | **P23** | Go-live sign-off | Check of the LV-G5 sign-offs. |
 | **P01–P31** | Block H templates | Where to look for each piece of evidence. |
@@ -360,7 +360,7 @@ An unchecked mandatory item in LV-AG is equivalent to *Not met* for the criterio
 | Document | Relationship |
 |---|---|
 | **01 · Foundational methodology** | Gates, decision rules, roles and intensity. |
-| **03 · Tools and initiative register** | Criterion statuses and tools T03 and T10. |
+| **03 · Tools and use case register** | Criterion statuses and tools T03 and T10. |
 | **21 · *Gate* and audit criteria** | Criteria, evidence rules, multi-level sign-off and audit criteria to which all the codes refer. |
 | **35 · AI and agent security** | Agent controls developed by LV-AG. |
 | **37 · Nonconformities and incidents** | Handling of findings. |

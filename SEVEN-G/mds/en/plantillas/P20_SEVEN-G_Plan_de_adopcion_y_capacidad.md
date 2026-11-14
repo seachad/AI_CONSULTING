@@ -22,7 +22,7 @@
 | **Who completes it** | AI Product Owner, with the user area and the people function. |
 | **Who verifies it** | AI Office under Lite; AI Auditor under Enterprise. |
 | **At which *gate* it is reviewed** | G4 (plan), G5 (adoption in the pilot), R6 (monitoring) and G7 (capacity materialised or reallocated). |
-| **Lite versus Enterprise** | Lite may omit the fields marked **(Enterprise)**. Augment and Transform initiatives must have an adoption and people plan (01 §3, principle 10). |
+| **Lite versus Enterprise** | Lite may omit the fields marked **(Enterprise)**. Augment and Transform use cases must have an adoption and people plan (01 §3, principle 10). |
 | **Tool** | T20 Adoption and capacity plan. |
 | **Relationship** | P17 Human oversight · P22 Pilot results · P28 Value realisation monitoring · P31 Use case record · documents 23 (Adoption and change) and 50 (People and organisation). |
 
@@ -37,8 +37,8 @@ Rules:
 
 | Field | Content | Guidance |
 |---|---|---|
-| Initiative code | | IA-AAAA-NNN (T01). |
-| Initiative name | | |
+| Use case code | | IA-AAAA-NNN (T01). |
+| Use case name | | |
 | Ambition level | | Optimise · Augment · Transform. |
 | Intensity | | Lite · Enterprise. |
 | User area or areas | | |

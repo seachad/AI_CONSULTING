@@ -44,7 +44,7 @@ Reglas de cumplimentación:
 
 | Campo | Contenido | Guía |
 |---|---|---|
-| Ámbito del inventario | | Sistema (SIA-AAAA-NNN) · Iniciativa (IA-AAAA-NNN) · Compañía. |
+| Ámbito del inventario | | Sistema (SIA-AAAA-NNN) · Caso de uso (IA-AAAA-NNN) · Compañía. |
 | Nivel de autonomía | | A0 · A1 · A2 · A3. Determina la frecuencia de revisión AG-20. |
 | Intensidad | | Lite · Enterprise. |
 | Responsable del inventario | | Responsable técnico de IA. |

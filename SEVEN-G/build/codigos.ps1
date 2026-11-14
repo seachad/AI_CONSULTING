@@ -269,7 +269,7 @@ foreach ($lang in $Idiomas) {
   }
   function destino(h) { try { return new URL(h, BASE).href; } catch (e) { return h; } }
   // un código escrito tal cual («documento 40», «P12», «G3.05», «RT-GEN-01») -> la entrada del índice donde se explica, o null.
-  // Solo lo exacto y los patrones que no son identificadores de registros (una iniciativa IA-2026-014 no es un concepto del marco).
+  // Solo lo exacto y los patrones que no son identificadores de registros (un caso de uso IA-2026-014 no es un concepto del marco).
   function resolver(texto) {
     var k = normalizar(texto), ex = DATOS.exactos[k];
     if (ex && ex.length) return ex[0];

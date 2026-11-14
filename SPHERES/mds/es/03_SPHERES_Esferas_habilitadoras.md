@@ -23,19 +23,19 @@ Las esferas **05 Datos, 06 Conocimiento y 07 Decisión** no generan valor por s�
 
 | Esfera | Qué habilita | Qué ocurre si falla |
 |---|---|---|
-| **05 · Datos** | Que los sistemas de IA tengan materia prima disponible, fiable y de uso legítimo. | Las iniciativas se retrasan, se paran o funcionan con datos que no deberían usar. |
+| **05 · Datos** | Que los sistemas de IA tengan materia prima disponible, fiable y de uso legítimo. | Los casos de uso se retrasan, se paran o funcionan con datos que no deberían usar. |
 | **06 · Conocimiento** | Que lo que sabe la organización esté accesible y no dependa de pocas personas. | Los asistentes responden mal, y el saber crítico se pierde cuando alguien se va. |
 | **07 · Decisión** | Que esté claro qué decide la IA, qué valida una persona y qué no se delega nunca. | Se delega por defecto, sin supervisión real ni trazabilidad. |
 
 Es en estas esferas **donde aparecen las preguntas incómodas**. Hablar de oportunidades en Cliente o en Producto es fácil; reconocer que no se sabe qué datos se tienen, que el conocimiento crítico está en la cabeza de tres personas o que un sistema ya fija precios sin que nadie lo haya decidido, no lo es.
 
-> **Por qué importa.** Una ambición de Transformar en una esfera de valor sin capacidad suficiente en Datos, Conocimiento y Decisión **es una señal de riesgo, no de audacia**. La mayor parte de los retrasos y fracasos de las iniciativas de IA no se deben al modelo, sino a datos no disponibles, conocimiento no documentado o decisiones sin reglas. Diagnosticar las habilitadoras antes de fijar la ambición evita prometer lo que la organización no puede sostener.
+> **Por qué importa.** Una ambición de Transformar en una esfera de valor sin capacidad suficiente en Datos, Conocimiento y Decisión **es una señal de riesgo, no de audacia**. La mayor parte de los retrasos y fracasos de los casos de uso de IA no se deben al modelo, sino a datos no disponibles, conocimiento no documentado o decisiones sin reglas. Diagnosticar las habilitadoras antes de fijar la ambición evita prometer lo que la organización no puede sostener.
 
 ### Cuándo una habilitadora es esfera principal
 
-Que una iniciativa **use** datos, conocimiento o decisiones no la sitúa en estas esferas: casi todas las iniciativas de IA los usan. Una habilitadora es la **esfera principal** solo cuando el resultado principal de la iniciativa es **la propia capacidad habilitadora**.
+Que un caso de uso **use** datos, conocimiento o decisiones no lo sitúa en estas esferas: casi todos los casos de uso de IA los usan. Una habilitadora es la **esfera principal** solo cuando el resultado principal del caso de uso es **la propia capacidad habilitadora**.
 
-| Iniciativa (ilustrativa) | Esfera principal | Motivo |
+| Caso de uso (ilustrativo) | Esfera principal | Motivo |
 |---|---|---|
 | Plataforma común de datos para varios casos de IA. | 05 · Datos | El resultado es la capacidad; el valor de los casos que la usan se imputa a esos casos. |
 | Recomendador de productos que usa datos de comportamiento. | 01 · Cliente | La métrica principal es la conversión, aunque dependa de los datos. |
@@ -77,25 +77,25 @@ La esfera Datos reúne la **disponibilidad, calidad, catalogación, linaje, base
 
 *Aseguradora ficticia de ámbito regional.*
 
-La dirección aprueba tres iniciativas de Cliente: un modelo de riesgo de abandono, un recomendador de coberturas y un asistente para agentes comerciales. A los cuatro meses, las tres están paradas en la misma fase. El motivo no es técnico: los datos de interacciones con clientes están repartidos en cuatro sistemas, no tienen responsable, y nadie ha confirmado si el consentimiento con el que se obtuvieron permite usarlos para estos fines. La compañía decide abrir una iniciativa con esfera principal **Datos** (nivel **Optimizar**): catálogo de los datos de clientes con responsable, reglas de calidad y base legal documentada para cada uso. Solo cuando esa iniciativa alcanza su primer hito se reanudan las de Cliente. En la siguiente revisión, el consejo fija **Aumentar** como ambición de la esfera Datos y pide un indicador trimestral de iniciativas bloqueadas por datos.
+La dirección aprueba tres casos de uso de Cliente: un modelo de riesgo de abandono, un recomendador de coberturas y un asistente para agentes comerciales. A los cuatro meses, los tres están parados en la misma fase. El motivo no es técnico: los datos de interacciones con clientes están repartidos en cuatro sistemas, no tienen responsable, y nadie ha confirmado si el consentimiento con el que se obtuvieron permite usarlos para estos fines. La compañía decide abrir un caso de uso con esfera principal **Datos** (nivel **Optimizar**): catálogo de los datos de clientes con responsable, reglas de calidad y base legal documentada para cada uso. Solo cuando ese caso de uso alcanza su primer hito se reanudan los de Cliente. En la siguiente revisión, el consejo fija **Aumentar** como ambición de la esfera Datos y pide un indicador trimestral de casos de uso bloqueados por datos.
 
 ### Preguntas para el consejo
 
 - ¿Sabemos qué datos tenemos, dónde están, quién responde de su calidad y si podemos usarlos legalmente para IA?
-- ¿Cuántas iniciativas se retrasan o se paran por falta de datos?
+- ¿Cuántos casos de uso se retrasan o se paran por falta de datos?
 - ¿Tenemos documentado de dónde vienen los datos con los que decide cada sistema en producción?
 - ¿Nuestros datos son una ventaja que un competidor no puede replicar?
 
 ### Señales de alerta
 
-- Iniciativas que llegan a la fase de construcción sin haber confirmado el acceso a los datos.
+- Casos de uso que llegan a la fase de construcción sin haber confirmado el acceso a los datos.
 - Datos personales usados para entrenar o alimentar sistemas sin base legal documentada.
 - Conjuntos de datos críticos sin responsable identificado.
 - Sistemas en producción sin linaje de datos y modelos.
 
 ### Cómo se mide
 
-Los indicadores de referencia son la cobertura del catálogo, la calidad de los datos críticos, la base legal documentada, el linaje documentado, el tiempo de acceso a los datos y las iniciativas bloqueadas por datos. Sus fórmulas están en [SEVEN-G 10 · Mapa de esferas y niveles de ambición](../../../SEVEN-G/html/es/10_SEVEN-G_Mapa_de_esferas_y_niveles_de_ambicion.html), sección 5.5, y su gobierno en [SEVEN-G 51 · Datos y conocimiento](../../../SEVEN-G/html/es/51_SEVEN-G_Datos_y_conocimiento.html).
+Los indicadores de referencia son la cobertura del catálogo, la calidad de los datos críticos, la base legal documentada, el linaje documentado, el tiempo de acceso a los datos y los casos de uso bloqueados por datos. Sus fórmulas están en [SEVEN-G 10 · Mapa de esferas y niveles de ambición](../../../SEVEN-G/html/es/10_SEVEN-G_Mapa_de_esferas_y_niveles_de_ambicion.html), sección 5.5, y su gobierno en [SEVEN-G 51 · Datos y conocimiento](../../../SEVEN-G/html/es/51_SEVEN-G_Datos_y_conocimiento.html).
 
 ---
 
@@ -134,7 +134,7 @@ La diferencia con la esfera Datos es de naturaleza: los datos registran hechos; 
 
 *Ingeniería ficticia especializada en instalaciones industriales.*
 
-La compañía identifica que el diseño de un tipo de instalación depende de dos ingenieros cercanos a la jubilación. Pone en marcha una iniciativa de **Aumentar** en Conocimiento: sesiones estructuradas en las que un asistente entrevista a los expertos sobre decisiones de diseño reales, las contrasta con los proyectos archivados y construye una base de criterios revisada por ellos mismos. El resultado es un asistente que los ingenieros más jóvenes consultan antes de cada diseño. La dirección establece dos condiciones: que una muestra de las respuestas sea revisada por expertos cada trimestre para medir su exactitud, y que el asistente respete los permisos de acceso a los proyectos de cada cliente.
+La compañía identifica que el diseño de un tipo de instalación depende de dos ingenieros cercanos a la jubilación. Pone en marcha un caso de uso de **Aumentar** en Conocimiento: sesiones estructuradas en las que un asistente entrevista a los expertos sobre decisiones de diseño reales, las contrasta con los proyectos archivados y construye una base de criterios revisada por ellos mismos. El resultado es un asistente que los ingenieros más jóvenes consultan antes de cada diseño. La dirección establece dos condiciones: que una muestra de las respuestas sea revisada por expertos cada trimestre para medir su exactitud, y que el asistente respete los permisos de acceso a los proyectos de cada cliente.
 
 ### Preguntas para el consejo
 
@@ -232,9 +232,9 @@ Antes de fijar una ambición de Aumentar o Transformar en cualquier esfera de va
 
 | # | Pregunta | Esfera | Si la respuesta es no |
 |---|---|---|---|
-| 1 | ¿Están identificados, con responsable y base legal, los datos que necesita la ambición? | 05 | Abrir antes una iniciativa de Datos o reducir la ambición. |
+| 1 | ¿Están identificados, con responsable y base legal, los datos que necesita la ambición? | 05 | Abrir antes un caso de uso de Datos o reducir la ambición. |
 | 2 | ¿Se ha comprobado la calidad de esos datos sobre una muestra real? | 05 | Fijar umbrales de calidad y medirlos antes de construir. |
-| 3 | ¿Está documentado y accesible el conocimiento del que depende la iniciativa? | 06 | Capturar el conocimiento crítico y asignar quién verifica las respuestas. |
+| 3 | ¿Está documentado y accesible el conocimiento del que depende el caso de uso? | 06 | Capturar el conocimiento crítico y asignar quién verifica las respuestas. |
 | 4 | ¿Está definido qué decisiones tomará o recomendará el sistema y con qué nivel de autonomía? | 07 | Definir tipos de decisión, nivel A0–A3 y supervisión antes de desplegar. |
 | 5 | ¿Se puede reconstruir y, si hace falta, parar lo que haga el sistema? | 07 | Diseñar trazabilidad e interruptor de parada como requisitos, no como mejoras. |
 
@@ -246,10 +246,10 @@ flowchart LR
   B -->|"Sí"| C["Cinco preguntas sobre Datos, Conocimiento y Decisión"]
   C --> D{"¿Alguna respuesta es no?"}
   D -->|"No"| OK2["Ambición sostenible"]
-  D -->|"Sí"| E["Iniciativa habilitadora previa o ambición menor"]
+  D -->|"Sí"| E["Caso de uso habilitador previo o ambición menor"]
 ```
 
-> **Por qué importa.** Este diagnóstico es barato y rápido, y evita el error más costoso de las carteras de IA: aprobar iniciativas ambiciosas que se paran meses después por causas que podían conocerse desde el primer día.
+> **Por qué importa.** Este diagnóstico es barato y rápido, y evita el error más costoso de las carteras de IA: aprobar casos de uso ambiciosos que se paran meses después por causas que podían conocerse desde el primer día.
 
 ---
 

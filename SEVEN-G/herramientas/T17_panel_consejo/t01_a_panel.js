@@ -17,13 +17,13 @@
 'use strict';
 const VERSION_CONECTOR = "2.1";
 const ESQUEMAS_T01 = ["0.1", "0.2", "0.3", "0.4", "0.5", "0.6", "0.7", "0.8"];
-const FUENTE_T01 = "Registro de iniciativas T01";
+const FUENTE_T01 = "Registro de casos de uso T01";
 const RUTA_CONECTOR = "SEVEN-G/herramientas/T17_panel_consejo/t01_a_panel.js";
 
 const FASES = {0: "Contexto y restricciones", 1: "Descubrimiento", 2: "Hipótesis de valor", 3: "Viabilidad y riesgo", 4: "Diseño de la solución",
   5: "Entrega y validación", 6: "Operación y gobierno", 7: "Evolución o retirada"};
-const ESTADOS_T01 = {registrada: "Registrada", en_fase: "En fase", pendiente_gate: "Pendiente de gate", en_espera: "En espera",
-  en_produccion: "En producción", pendiente_g7: "Pendiente de G7", parada: "Parada", retirada: "Retirada"};
+const ESTADOS_T01 = {registrada: "Registrado", en_fase: "En fase", pendiente_gate: "Pendiente de gate", en_espera: "En espera",
+  en_produccion: "En producción", pendiente_g7: "Pendiente de G7", parada: "Parado", retirada: "Retirado"};
 const ESFERAS = {"01": "01 Cliente", "02": "02 Producto y servicio", "03": "03 Personas", "04": "04 Operaciones", "05": "05 Datos", "06": "06 Conocimiento",
   "07": "07 Decisión", "08": "08 Regulación, ética y responsabilidad", "09": "09 Gobierno de la IA"};
 const AMBICION = {optimizar: "Optimizar", aumentar: "Aumentar", transformar: "Transformar"};
@@ -63,30 +63,30 @@ const CICLO_POR_DEFECTO = {
 };
 const CONTINUAN = ["continuar", "continuar_condiciones"];
 const GLOSARIO_SEVEN_G = [
-  ["SEVEN-G", "SEVEN-G", "Metodología de gobierno de la IA", "Marco con el que se registran las iniciativas: fases 0 a 7, puertas de decisión (gates), ambición e intensidad.", false],
-  ["SEVEN-G", "T01", "Registro de iniciativas", "Herramienta de SEVEN-G de la que salen los datos de este panel: fases, estados, eventos, gates, valor e incidentes.", true],
+  ["SEVEN-G", "SEVEN-G", "Metodología de gobierno de la IA", "Marco con el que se registran los casos de uso: fases 0 a 7, puertas de decisión (gates), ambición e intensidad.", false],
+  ["SEVEN-G", "T01", "Registro de casos de uso","Herramienta de SEVEN-G de la que salen los datos de este panel: fases, estados, eventos, gates, valor e incidentes.", true],
   ["SEVEN-G", "G3", "Gate de viabilidad y riesgo", "Puerta de decisión que aprueba construir. En este panel, su fecha es la de aprobación.", true],
   ["SEVEN-G", "G5", "Gate de paso a producción", "Puerta de decisión que autoriza operar. En este panel, su fecha es la de puesta en producción.", true],
-  ["SEVEN-G", "R6", "Revisión de continuidad", "Revisión periódica de una iniciativa en producción: continuar, continuar con condiciones o adelantar G7. Cuenta como reevaluación.", false],
-  ["SEVEN-G", "Ambición", "Optimizar, Aumentar o Transformar", "Nivel de ambición de la iniciativa: se usa la real si existe; si no, la confirmada; si no, la propuesta.", false],
+  ["SEVEN-G", "R6", "Revisión de continuidad", "Revisión periódica de un caso de uso en producción: continuar, continuar con condiciones o adelantar G7. Cuenta como reevaluación.", false],
+  ["SEVEN-G", "Ambición", "Optimizar, Aumentar o Transformar", "Nivel de ambición del caso de uso: se usa la real si existe; si no, la confirmada; si no, la propuesta.", false],
   ["SEVEN-G", "Embudo", "Etapas del panel y fases de SEVEN-G", "Propuesto = fases 0 y 1 · Hipótesis de valor = fase 2 · POC = fase 3 (viabilidad y riesgo) · En desarrollo = fases 4 y 5 · " +
     "En uso = fases 6 y 7. Una parada en las fases 0-1 figura como No aprobado; en las fases 2-5, como Descartado; una retirada, como Desenganchado. " +
     "Las fechas de cada cambio salen de los eventos de T01.", false],
-  ["SEVEN-G", "Transversal", "Iniciativa transversal", "Herramienta que usan varias unidades de negocio (por ejemplo, un asistente generativo en la suite ofimática). " +
+  ["SEVEN-G", "Transversal", "Caso de uso transversal","Herramienta que usan varias unidades de negocio (por ejemplo, un asistente generativo en la suite ofimática). " +
     "Se mide por unidad con una escalera: coste, adopción, capacidad liberada declarada (no suma) y valor materializado (documento 40 §7.2).", true],
   ["SEVEN-G", "Plataforma", "Plataforma habilitadora", "Capacidad común (datos, conocimiento, decisión) cuyo valor se imputa a los casos que la usan; " +
     "en la plataforma solo cuenta su coste (documento 10 §4.1, regla 3).", false]
 ];
 // textos comunes de lo publicado (publicacion_panel.py)
 const AUTOR = "Fernando García Varela", METODOLOGIA = "SEVEN-G", REPO_ORIGEN_MOTOR = "https://github.com/Seachad-TEAM/AI_en_el_consejo";
-const AVISO_LEGAL = "<b>Aviso legal.</b> Demostración con datos ficticios del registro de iniciativas T01 de SEVEN-G, ofrecida «tal cual» y con fines " +
+const AVISO_LEGAL = "<b>Aviso legal.</b> Demostración con datos ficticios del registro de casos de uso T01 de SEVEN-G, ofrecida «tal cual» y con fines " +
   "informativos. No constituye asesoramiento jurídico, regulatorio ni financiero ni garantiza el cumplimiento de ninguna norma. " +
   "Las clasificaciones y referencias a regulación general o sectorial pueden quedar desactualizadas: cada organización es la única " +
   "responsable de verificar la normativa que le aplica y certificar su propio cumplimiento regulatorio. Esta metodología es una ayuda genérica y gratuita, compartida con la comunidad para que nadie tenga que empezar desde cero; cada persona u organización puede y debe adaptarla a su propio uso. No debe entenderse que sus partes jurídicamente sensibles hayan sido revisadas por una asesoría jurídica: esas revisiones, para cada empresa o sector, son responsabilidad última de la empresa, el consultor o la organización que la use. Aunque se procura mantenerla al día, alguna norma puede haber cambiado sin que se recoja aquí. En la máxima medida permitida por la ley, el autor no asume responsabilidad alguna por los efectos de su aplicación en ninguna organización ni por su aplicabilidad completa. La metodología no otorga certificación de ningún tipo. El autor no asume " +
   "responsabilidad por su uso.";
 const AVISO_LEGAL_CORTO = "Aviso legal: datos ficticios, «tal cual» y con fines informativos; no es asesoramiento jurídico, regulatorio ni financiero ni " +
   "garantiza el cumplimiento de ninguna norma. Cada organización verifica la normativa que le aplica.";
-const AVISO_LEGAL_DATOS_PROPIOS = "<b>Aviso legal.</b> Panel generado desde el registro de iniciativas T01 de SEVEN-G con el motor de AI en el Consejo, " +
+const AVISO_LEGAL_DATOS_PROPIOS = "<b>Aviso legal.</b> Panel generado desde el registro de casos de uso T01 de SEVEN-G con el motor de AI en el Consejo, " +
   "ofrecido «tal cual» y con fines informativos. No constituye asesoramiento jurídico, regulatorio ni financiero ni " +
   "garantiza el cumplimiento de ninguna norma. Las clasificaciones y referencias a regulación general o sectorial pueden " +
   "quedar desactualizadas: cada organización es la única responsable de verificar la normativa que le aplica y certificar " +
@@ -218,7 +218,7 @@ function economia(ix, ini, cerrado, moneda) {
   const invFicha = get(ini, "inversion") || {};
   let construccion;
   if (V("realizado", "inversion")) construccion = itemDe(V("realizado", "inversion"));
-  else if (hay(get(invFicha, "realizada"))) construccion = item(invFicha.realizada, "Inversión realizada según la ficha de la iniciativa", "declarado", FUENTE_T01);
+  else if (hay(get(invFicha, "realizada"))) construccion = item(invFicha.realizada, "Inversión realizada según la ficha del caso de uso", "declarado", FUENTE_T01);
   else construccion = itemDe(V("esperado", "inversion"));
   const notas = ["SEVEN-G T01 · fase " + ini.ciclo.fase + " (" + FASES[ini.ciclo.fase] + ") · " + ESTADOS_T01[ini.ciclo.estado]];
   for (const m of ["realizado", "esperado"]) for (const t of ["riesgo_evitado", "cumplimiento"]) { const v = V(m, t); if (v) notas.push(TIPO_VALOR[t] + " " + v.momento + ": " + euros(get(v, "importe")) + " (" + v.estado + "; no suma en el neto)"); }
@@ -226,11 +226,11 @@ function economia(ix, ini, cerrado, moneda) {
   const ef = [], rt = [];
   if (cerrado) {
     const registrados = (ix.valores[iid] || []).filter(v => ["eficiencias", "retorno", "capacidad_liberada", "coste_recurrente"].includes(v.tipo)).map(v => v.momento + " " + v.tipo + " " + euros(get(v, "importe")));
-    if (registrados.length) notas.push("Iniciativa cerrada: sus importes de T01 no suman en el panel (" + registrados.join("; ") + ")");
+    if (registrados.length) notas.push("Caso de uso cerrado: sus importes de T01 no suman en el panel (" + registrados.join("; ") + ")");
   } else {
     inv.recurrente_anual = itemDe(V("realizado", "coste_recurrente"));
     inv.recurrente_potencial = itemDe(V("esperado", "coste_recurrente"));
-    if (hay(get(invFicha, "pendiente"))) inv.adicional_potencial = item(invFicha.pendiente, "Inversión pendiente según la ficha de la iniciativa", "declarado", FUENTE_T01);
+    if (hay(get(invFicha, "pendiente"))) inv.adicional_potencial = item(invFicha.pendiente, "Inversión pendiente según la ficha del caso de uso", "declarado", FUENTE_T01);
     for (const [tipo, destino] of [["eficiencias", ef], ["retorno", rt]])
       for (const concepto of ix.conceptos(iid, tipo)) destino.push({concepto, actual: itemDe(ix.valor(iid, "realizado", tipo, concepto)), potencial: itemDe(ix.valor(iid, "esperado", tipo, concepto))});
     const a = V("realizado", "capacidad_liberada"), p = V("esperado", "capacidad_liberada");
@@ -449,10 +449,10 @@ function convertir(t01, op) {
   const aviso = ficticio ? AVISO_LEGAL : AVISO_LEGAL_DATOS_PROPIOS;
   const conector = op.conector_txt || "el conector T17 (t01_a_panel.js, en el navegador)";
   const textos = {
-    aviso_previo: aviso + " " + (ficticio ? "<b>Datos ficticios</b> del registro de iniciativas T01 de SEVEN-G. " : "Datos del registro de iniciativas T01 de SEVEN-G. "),
+    aviso_previo: aviso + " " + (ficticio ? "<b>Datos ficticios</b> del registro de casos de uso T01 de SEVEN-G. " : "Datos del registro de casos de uso T01 de SEVEN-G. "),
     aviso_valor: "Los importes salen del registro T01 con su estado: validado, declarado o estimado (en el panel, «estimado» figura como estimación del " + sigla + ", " +
-      "pero en T01 lo estima el equipo de la iniciativa). Actual = realizado; potencial = esperado. Lo que T01 no registra queda «sin dato», nunca a cero.",
-    pie: "Panel generado desde el registro de iniciativas T01 de SEVEN-G (corte " + fechaTxt(corte) + ") con " + conector +
+      "pero en T01 lo estima el equipo del caso de uso). Actual = realizado; potencial = esperado. Lo que T01 no registra queda «sin dato», nunca a cero.",
+    pie: "Panel generado desde el registro de casos de uso T01 de SEVEN-G (corte " + fechaTxt(corte) + ") con " + conector +
       (ficticio ? " · " + org + " y sus personas son ficticios" : "") + (enlacesPie ? " · " + enlacesPie : "") + "<br>" + pieAutoria() + "<br>" + (ficticio ? AVISO_LEGAL_CORTO : AVISO_CORTO_PROPIOS),
     movimientos_vacio: "El registro T01 no tiene altas, paradas, retiradas ni revisiones de continuidad.",
     agilidad_sin_fechas: "Faltan fechas de registro, G3 o G5 en el registro T01: no se puede medir la agilidad.",
@@ -465,8 +465,8 @@ function convertir(t01, op) {
     ret_cobros: "Cobros recuperados", ret_otros: "Otro retorno (o retorno sin desglosar en T01)"
   };
   const meta = {esquema: "ESQUEMA.md", version_datos: 6, generado: corte, ejercicio_valor: anio,
-    periodo: {etiqueta: "Registro de iniciativas T01 · corte " + fechaTxt(corte), trimestre: (Math.floor((parseInt(corte.slice(5, 7), 10) - 1) / 3) + 1) + "T " + anio, anterior: null},
-    fuentes: {t01: "Registro de iniciativas T01 de SEVEN-G (esquema " + get(t01, "version_esquema") + ")"},
+    periodo: {etiqueta: "Registro de casos de uso T01 · corte " + fechaTxt(corte), trimestre: (Math.floor((parseInt(corte.slice(5, 7), 10) - 1) / 3) + 1) + "T " + anio, anterior: null},
+    fuentes: {t01: "Registro de casos de uso T01 de SEVEN-G (esquema " + get(t01, "version_esquema") + ")"},
     organizacion: org, consejo_sigla: sigla, compania_principal: org, prefijo_ficheros: prefijo,
     mostrar_refs: false, leer_json_servidor: false, textos, glosario_extra: GLOSARIO_SEVEN_G, demo: ficticio, industria: null};
   for (const k of Object.keys(config)) meta[k] = config[k];

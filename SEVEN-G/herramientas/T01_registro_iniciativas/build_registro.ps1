@@ -1,5 +1,5 @@
 <#
-  T01 · Registro de iniciativas · construcción de registro.html desde sus fuentes JSON.
+  T01 · Registro de casos de uso · construcción de registro.html desde sus fuentes JSON.
 
   Uso:          pwsh -File SEVEN-G/herramientas/T01_registro_iniciativas/build_registro.ps1 [-Datos <registro.json>] [-Salida <fichero.html>]
 
@@ -14,7 +14,7 @@
   abriendo el fichero desde el disco. Con -Datos se construye un registro que arranca con otro JSON (por ejemplo, el registro
   exportado por una organización) en lugar de la demostración.
 
-  El script valida que los JSON se pueden leer, que el catálogo tiene códigos únicos y que cada iniciativa, evento y decisión
+  El script valida que los JSON se pueden leer, que el catálogo tiene códigos únicos y que cada caso de uso, evento y decisión
   del registro apunta a entidades que existen. No modifica las fuentes.
 #>
 param(
@@ -55,10 +55,10 @@ foreach ($k in 'version_esquema', 'meta', 'personas', 'iniciativas', 'eventos', 
 $ids = @{}; foreach ($i in $reg.iniciativas) { $ids[$i.id] = $true }
 $codigos = @{}; foreach ($c in $cat) { $codigos[$c.c] = $true }
 $errores = [Collections.Generic.List[string]]::new()
-foreach ($e in $reg.eventos)         { if ($e.iniciativa -and -not $ids[$e.iniciativa]) { $errores.Add("evento $($e.id): iniciativa $($e.iniciativa) inexistente") } }
-foreach ($v in $reg.valores)         { if (-not $ids[$v.iniciativa]) { $errores.Add("valor $($v.id): iniciativa $($v.iniciativa) inexistente") } }
+foreach ($e in $reg.eventos)         { if ($e.iniciativa -and -not $ids[$e.iniciativa]) { $errores.Add("evento $($e.id): caso de uso $($e.iniciativa) inexistente") } }
+foreach ($v in $reg.valores)         { if (-not $ids[$v.iniciativa]) { $errores.Add("valor $($v.id): caso de uso $($v.iniciativa) inexistente") } }
 foreach ($d in $reg.decisiones_gate) {
-  if (-not $ids[$d.iniciativa]) { $errores.Add("decisión $($d.id): iniciativa $($d.iniciativa) inexistente") }
+  if (-not $ids[$d.iniciativa]) { $errores.Add("decisión $($d.id): caso de uso $($d.iniciativa) inexistente") }
   foreach ($c in $d.criterios) { if (-not $codigos[$c.codigo]) { $errores.Add("decisión $($d.id): criterio $($c.codigo) no está en el catálogo") } }
 }
 # esquema 0.5: decisiones del consejo (documento 62) y evidencia del índice de transformación
@@ -66,7 +66,7 @@ $recs = @{}; foreach ($r in @($reg.recomendaciones)) { if ($r) { $recs[$r.id] = 
 $pers = @{}; foreach ($p in $reg.personas) { $pers[$p.id] = $true }
 foreach ($d in @($reg.decisiones_consejo)) {
   if (-not $d) { continue }
-  foreach ($i in @($d.iniciativas)) { if ($i -and -not $ids[$i]) { $errores.Add("decisión del consejo $($d.id): iniciativa $i inexistente") } }
+  foreach ($i in @($d.iniciativas)) { if ($i -and -not $ids[$i]) { $errores.Add("decisión del consejo $($d.id): caso de uso $i inexistente") } }
   foreach ($r in @($d.recomendaciones)) { if ($r -and -not $recs[$r]) { $errores.Add("decisión del consejo $($d.id): recomendación $r inexistente") } }
 }
 foreach ($i in $reg.iniciativas) { foreach ($k in 'itp2', 'itp3') { $v = $i.indice.$k; if ($v -and $v.verificador -and -not $pers[$v.verificador]) { $errores.Add("$($i.id): indice.$k.verificador $($v.verificador) inexistente") } } }
@@ -100,7 +100,7 @@ foreach ($r in $cr.riesgos) {
   if ($ap -is [array]) { foreach ($cond in $ap) { foreach ($k in $cond.PSObject.Properties.Name) { if ($k -notin $condValidas) { throw "catalogo_riesgos.json $($r.c): condición desconocida «$k»" } } } }
   if ($r.tc -notin 'preventivo', 'detectivo', 'correctivo', 'transferencia') { throw "catalogo_riesgos.json $($r.c): tipo de control «$($r.tc)» no válido" }
   if ($r.red -notin 'probabilidad', 'impacto', 'ambos') { throw "catalogo_riesgos.json $($r.c): «red» debe ser probabilidad, impacto o ambos" }
-  if ($r.act -notin 'patrocinador', 'producto', 'tecnico', 'operacion', 'riesgos', 'auditor') { throw "catalogo_riesgos.json $($r.c): «act» debe ser un rol de la iniciativa" }
+  if ($r.act -notin 'patrocinador', 'producto', 'tecnico', 'operacion', 'riesgos', 'auditor') { throw "catalogo_riesgos.json $($r.c): «act» debe ser un rol del caso de uso" }
   foreach ($l in 'es', 'en') { if (-not $r.mit.$l -or -not $r.cont.$l.dis -or -not $r.cont.$l.acc) { throw "catalogo_riesgos.json $($r.c): faltan la mitigación o la contingencia (dis, acc) en $l" } }
 }
 $catalogoRiesgos = @(foreach ($r in $cr.riesgos) {
@@ -138,5 +138,5 @@ $html = $html.Replace('__AYUDA__', 'const AYUDA_HERR = ' + [IO.File]::ReadAllTex
 $html = $html.Replace('<!doctype html>', "<!doctype html>`n<!-- GENERADO por build_registro.ps1 desde _fuentes/registro.plantilla.html, catalogo_criterios.json y $(Split-Path $Datos -Leaf). No editar a mano. -->")
 [IO.File]::WriteAllText($Salida, $html, [Text.UTF8Encoding]::new($false))
 "registro:   $Salida ($([math]::Round((Get-Item $Salida).Length / 1KB)) KB)"
-"datos:      $(Split-Path $Datos -Leaf) · $($reg.iniciativas.Count) iniciativas · $($reg.eventos.Count) eventos · $($reg.decisiones_gate.Count) decisiones de gate · esquema $($reg.version_esquema)"
+"datos:      $(Split-Path $Datos -Leaf) · $($reg.iniciativas.Count) casos de uso · $($reg.eventos.Count) eventos · $($reg.decisiones_gate.Count) decisiones de gate · esquema $($reg.version_esquema)"
 "catálogo:   $($cat.Count) criterios · $($catalogoRiesgos.Count) riesgos tipo (documento 33 §9 + catalogo_riesgos.json)"

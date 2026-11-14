@@ -93,7 +93,7 @@ Fuente: T02 y las declaraciones de completitud del anexo de P32.
 
 | Tipo (01 §1.3) | Idea | Piloto | En construcción | En producción | Total |
 |---|---|---|---|---|---|
-| Iniciativas de IA propias | | | | | |
+| Casos de uso de IA propias | | | | | |
 | IA de terceros integrada en procesos | | | | | |
 | Uso corporativo de IA de propósito general | | | | | |
 | Uso no autorizado detectado | | | | | |
@@ -149,9 +149,9 @@ Construido con las reglas de 10 §8.1 y 10 §9.1. Importes en euros del periodo.
 | 06 · Conocimiento | | | | | | |
 | 07 · Decisión | | | | | | |
 | Banda de habilitación (08 y 09) | | | | — | — | |
-| *(ejemplo ilustrativo)* 04 · Operaciones | 6 iniciativas · 1,60 M€ · Alta | — | — | Optimizar | Optimizar | Sin evidencia en 2 iniciativas |
+| *(ejemplo ilustrativo)* 04 · Operaciones | 6 casos de uso · 1,60 M€ · Alta | — | — | Optimizar | Optimizar | Sin evidencia en 2 casos de uso |
 
-Contenido de cada celda: número de iniciativas (total y en producción) · inversión y coste recurrente · valor neto anual validado · color (Sin actividad, Baja, Media, Alta). Marcas: Brecha · Fuera de tesis · Sin evidencia · Secundaria (en C1 aún no hay objetivos de C2: la marca Brecha se añade en C3).
+Contenido de cada celda: número de casos de uso (total y en producción) · inversión y coste recurrente · valor neto anual validado · color (Sin actividad, Baja, Media, Alta). Marcas: Brecha · Fuera de tesis · Sin evidencia · Secundaria (en C1 aún no hay objetivos de C2: la marca Brecha se añade en C3).
 
 | Esfera | Dimensión | Grado actual (Ausente · Básico · Sistemático · Avanzado) | Indicadores que lo sustentan |
 |---|---|---|---|
@@ -220,7 +220,7 @@ Reglas de medición de los documentos 40 y 42. Importes anuales del periodo.
 
 Se elabora en el mes 2 con talleres por esfera (01 §5.3; 90 §4.3) y se incorpora como nueva versión del informe. Es la base del hito 2. Los riesgos usan la escala del documento 33 (nivel = probabilidad × impacto: Bajo 1–4, Medio 5–9, Alto 10–15, Crítico 16–25).
 
-| Nº | Esfera | Tipo (Riesgo · Oportunidad) | Descripción | Sistemas o iniciativas (SIA- o IA-) | Nivel de riesgo o ambición propuesta | Impacto económico y estado | Responsable | Plazo | Siguiente paso |
+| Nº | Esfera | Tipo (Riesgo · Oportunidad) | Descripción | Sistemas o casos de uso (SIA- o IA-) | Nivel de riesgo o ambición propuesta | Impacto económico y estado | Responsable | Plazo | Siguiente paso |
 |---|---|---|---|---|---|---|---|---|---|
 | 01 | | | | | | | | | |
 | 02 | | | | | | | | | |

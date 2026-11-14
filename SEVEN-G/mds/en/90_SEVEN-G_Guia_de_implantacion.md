@@ -33,7 +33,7 @@ This document does not constitute legal advice.
 | Milestone | What has been achieved |
 |---|---|
 | **Day 90** | Diagnosis with evidence (C1), direction proposed or approved (C2), first portfolio (C3), bodies, roles, *gates*, metrics and reporting cadence up and running. |
-| **Months 4–18** | The framework operates on a steady-state basis: new initiatives go through the lifecycle, existing ones are regularised, the board exercises oversight with the dashboard. |
+| **Months 4–18** | The framework operates on a steady-state basis: new use cases go through the lifecycle, existing ones are regularised, the board exercises oversight with the dashboard. |
 | **Declaration of application** | The fourteen core rules (01 §14.1) are met, substantiated with the **(§14)** questions of document 11 in a verified assessment and with the audit in 38 §11. |
 
 ---
@@ -42,7 +42,7 @@ This document does not constitute legal advice.
 
 ### 2.1 Company-level Lite or Enterprise
 
-The **implementation scope** is a company decision on how it organises its governance. **It does not replace the intensity of each initiative**: in a company with a Lite scope, any initiative that meets a criterion in 01 §9.2 is managed with Enterprise intensity.
+The **implementation scope** is a company decision on how it organises its governance. **It does not replace the intensity of each use case**: in a company with a Lite scope, any use case that meets a criterion in 01 §9.2 is managed with Enterprise intensity.
 
 | Aspect | Lite scope | Enterprise scope |
 |---|---|---|
@@ -52,7 +52,7 @@ The **implementation scope** is a company decision on how it organises its gover
 | **AI Office** | One person with part-time dedication and occasional support. | Methodology, portfolio and measurement team. |
 | **AI Auditor** | Internal audit or external auditor, by sampling in Lite and at every Enterprise *gate*. | Third line with assigned AI Auditors. |
 | **Maturity** | Verified assessment. | Verified assessment and, at least every two years, an independent one (document 11). |
-| **Board dashboard** | Aggregated. | By initiative for Enterprise initiatives. |
+| **Board dashboard** | Aggregated. | By use case for Enterprise ones. |
 | **Indicative horizon up to 01 §14** | 6 to 12 months. | 12 to 18 months. |
 
 **Size does not determine the scope**: the criteria in section 2.2 do. A medium-sized company without sector-specific supervision or high-risk systems applies a Lite scope; a small company subject to prudential supervision applies an Enterprise scope. Both scopes apply the same lifecycle, the same evidence and the same segregation of duties rules; what changes is how the bodies and verification are organised.
@@ -67,7 +67,7 @@ An **Enterprise scope** is chosen if at least one of these criteria is met; othe
 4. It operates as a group with several companies or countries that must follow a common framework.
 5. The approved or planned portfolio includes several simultaneous Transform bets (indicatively, three or more; value to be calibrated in C2).
 
-**A single Transform bet does not change the scope.** That initiative is managed with Enterprise intensity (01 §9.2) and the board approves it at G2 and, if it scales, at G7 (01 §7.5); the rest of the portfolio remains in a Lite scope. The scope is reviewed at each annual review (C5), or earlier if the company comes to meet any of these criteria.
+**A single Transform bet does not change the scope.** That use case is managed with Enterprise intensity (01 §9.2) and the board approves it at G2 and, if it scales, at G7 (01 §7.5); the rest of the portfolio remains in a Lite scope. The scope is reviewed at each annual review (C5), or earlier if the company comes to meet any of these criteria.
 
 ### 2.3 Perimeter
 
@@ -75,7 +75,7 @@ The perimeter may be the whole company or a part of it (a subsidiary, a country,
 
 ### 2.4 Minimum path in a Lite scope
 
-> **Why it matters.** A medium-sized company does not need to go through the whole library to get started. It needs to know what is mandatory from day one, what is added only when an Enterprise initiative appears and what it can consult when needed. Without that path, the framework looks heavier than it is and the company ends up applying Enterprise to everything or applying nothing.
+> **Why it matters.** A medium-sized company does not need to go through the whole library to get started. It needs to know what is mandatory from day one, what is added only when an Enterprise use case appears and what it can consult when needed. Without that path, the framework looks heavier than it is and the company ends up applying Enterprise to everything or applying nothing.
 
 **Mandatory from the start**
 
@@ -85,26 +85,26 @@ The perimeter may be the whole company or a part of it (a subsidiary, a country,
 | **Three safeguards** | Those who build do not verify or decide on their own work; the risk clearance is issued by someone independent of the team; the board approves the direction and the risk appetite. | 30 §11 |
 | **Bodies** | Board with an AI item at least quarterly; executive committee with a monthly AI item; AI Office of one part-time person. | 01 §5.2; 30 §11; section 7 |
 | **Inventory** | All AI systems —in-house, third-party, corporate use and unauthorised use— with a completeness statement. It is not reduced in Lite. | 32; P05; T01 |
-| **Intensity** | Determination for each initiative: in phase 0, at G3 and at each R6. | 01 §9; P04; T04 |
-| **Express initiatives** | Small, internal and reversible ones that meet the eligibility in 01 §9.4 go through the same gates with the reduced list of criteria and a living record; the Express threshold is approved in C2. | 01 §9.4; 21 §2.5; P01 §14; P04 §5.1 |
-| **Evidence for a Lite initiative** | The evidence that the *gate* criteria mark "Yes" or "Simpl." in the Lite column, with templates without the *(Enterprise)* fields. No mandatory evidence is omitted: it is simplified. | 01 §6.10; 21 §2.1; P01–P31 |
+| **Intensity** | Determination for each use case: in phase 0, at G3 and at each R6. | 01 §9; P04; T04 |
+| **Express use cases** | Small, internal and reversible ones that meet the eligibility in 01 §9.4 go through the same gates with the reduced list of criteria and a living record; the Express threshold is approved in C2. | 01 §9.4; 21 §2.5; P01 §14; P04 §5.1 |
+| **Evidence for a Lite use case** | The evidence that the *gate* criteria mark "Yes" or "Simpl." in the Lite column, with templates without the *(Enterprise)* fields. No mandatory evidence is omitted: it is simplified. | 01 §6.10; 21 §2.1; P01–P31 |
 | **Gates** | G0–G2 in one session, G3 separately, G4–G5 in one session, half-yearly R6 and G7. Each gate keeps its criteria and its record in P29. | 21 §3.4 |
 | **Verification and decision** | The AI Office verifies; the sponsor decides, with risk clearance at G3, G4 and G5; the AI Auditor reviews a sample of Lite *gates* every half-year. | 01 §9.3; 21 §10.3 |
 | **Risks** | Risk register from phase 3 with the scale in document 33. | 33; P12; T06 |
 | **Value** | Measurement rules, baseline and tracking of realised value; aggregated board dashboard. | 40; P09; P28; T17 |
 | **Diagnosis** | Maturity with a verified assessment and transformation index at C1 and at each C5. | 11; 12; T15; T14 |
 
-**Added only when an initiative meets an Enterprise criterion**
+**Added only when a use case meets an Enterprise criterion**
 
 | What is added | Reference |
 |---|---|
 | Separate gates, full templates and decision by the AI Committee (by the board for Transform). | 01 §7.5, §9.3 |
-| AI Auditor at every *gate* of that initiative, external if there is nobody independent in-house. | 01 §9.3; 38 |
+| AI Auditor at every *gate* of that use case, external if there is nobody independent in-house. | 01 §9.3; 38 |
 | Multi-level sign-off with veto for go-live and quarterly R6. | 21 §9; P23 |
-| Visibility by initiative in the board dashboard. | 60; T17 |
+| Visibility by use case in the board dashboard. | 60; T17 |
 | Depending on the criterion met: regulatory classification and impact assessments; security of A2 or A3 agents; N2 or N3 requirements for suppliers. | 32, 34, P11; 35, P18; 36, P14 |
 
-The rest of the library is consulted when needed: ambition and portfolio (10, 13, 14), phase manuals and checklists (20, 22), adoption and people (23, 50), policies (31), incidents (37), indicators and costs (41, 42, 43), data, operation and construction (51, 52, 53), board (60, 61, 62) and application cases (92), which includes Lite initiatives of medium-sized companies.
+The rest of the library is consulted when needed: ambition and portfolio (10, 13, 14), phase manuals and checklists (20, 22), adoption and people (23, 50), policies (31), incidents (37), indicators and costs (41, 42, 43), data, operation and construction (51, 52, 53), board (60, 61, 62) and application cases (92), which includes Lite use cases of medium-sized companies.
 
 
 The matrix in document 94 extends this path to the whole library: it gives the obligation level of each document, template and tool, the triggers that activate each module and what can be grouped at the gates; each document summarises its minimum part in its "The essentials" box. The [SEVEN-G course](curso/M00_SEVEN-G_Curso_Guia_del_curso.html) follows the same path in short modules.
@@ -171,13 +171,13 @@ Each milestone is accepted by the implementation sponsor together with the AI Co
 
 | Week | Activities and deliverables | Owner | Documents, templates and tools | Completion criterion |
 |---|---|---|---|---|
-| **9 · Bodies and roles** | Mandates of the AI Committee, the AI Office and the board committee (P38); roles in 01 §8 in existing initiatives with an incompatibility check; AI Auditor designated. | Sponsor; board secretariat | 01 §8, 30; P03; T01 | Mandates drafted; roles assigned without incompatibilities. |
+| **9 · Bodies and roles** | Mandates of the AI Committee, the AI Office and the board committee (P38); roles in 01 §8 in existing use cases with an incompatibility check; AI Auditor designated. | Sponsor; board secretariat | 01 §8, 30; P03; T01 | Mandates drafted; roles assigned without incompatibilities. |
 | **10 · Gates and policies** | *Gate* criteria (21) and checklists (22) adopted; equivalences between the evidence the company already produces and the templates it covers (21 §4.3), so that it is referenced rather than copied; reference time limits; corporate and acceptable use policy; nonconformity process. | AI Office; compliance | 21, 22, 31, 37; P04, P29; T03, T08 | *Gate* manager configured; policies in final draft. |
 | **11 · Metrics, reporting and portfolio** | Measurement rules adopted; first version of the board dashboard; register of recommendations; reporting calendar (01 §5.2); first prioritised portfolio with envelopes, tranches and regularisation plan. | AI Office; management control; committee | 40, 60, 62, 14; P28; T17, T18, T01, T16 | Dashboard generated with inventory data; portfolio with scoring and owners. |
 | **12 · Approvals** | The board approves the thesis, ambition per sphere, risk appetite, thresholds and corporate policy (C2). The committee approves the portfolio, *gates*, metrics and regularisation plan (C3). | Sponsor; AI Committee; board | 13, 14, 31 | Minutes with the approvals. |
 | **13 · Steady state** | First ordinary meeting of the committee; first *gates* under the new model; 6–18-month roadmap approved; lessons from the implementation; communication to the organisation. | Implementation lead | 90; T01, T03 | **Milestone 3:** criteria in section 4.5 met. |
 
-If the board cannot approve C2 in week 12, the portfolio operates with provisional criteria approved by the committee, **no Transform initiatives are approved** and approval is taken to the next board session.
+If the board cannot approve C2 in week 12, the portfolio operates with provisional criteria approved by the committee, **no Transform use cases are approved** and approval is taken to the next board session.
 
 ### 4.5 Completion criteria for the 90 days
 
@@ -191,11 +191,11 @@ If the board cannot approve C2 in week 12, the portfolio operates with provision
 | 6 | *Gates*, reference time limits and nonconformity process operational. | T03; T08. |
 | 7 | Board dashboard and register of recommendations with real data. | T17; T18. |
 | 8 | First prioritised portfolio and regularisation plan with time limits. | Committee minutes; T01. |
-| 9 | Every new initiative goes through G0 before consuming budget from week 13. | T01. |
+| 9 | Every new use case goes through G0 before consuming budget from week 13. | T01. |
 
 ---
 
-## 5. Regularisation of existing initiatives and systems
+## 5. Regularisation of existing use cases and systems
 
 The full procedure is in document 14, section 11. In the implementation journey it is milestone HI-12, whose priority depends on the starting point (document 96). During implementation it is applied as follows:
 
@@ -203,7 +203,7 @@ The full procedure is in document 14, section 11. In the implementation journey 
 |---|---|---|
 | **Systems in production with Enterprise criteria** | Classification in month 2; review equivalent to G7 within six months of C2. | First those that are high-risk, involve decisions about people, direct exposure and agents that act. |
 | **Other systems in production** | Within 12 months of C2. | Review equivalent to G7 with simplified evidence. |
-| **Initiatives under construction or in pilot** | From week 13. | They are placed in the phase that corresponds to their actual evidence and pass the next *gate*. |
+| **Use cases under construction or in pilot** | From week 13. | They are placed in the phase that corresponds to their actual evidence and pass the next *gate*. |
 | **Corporate use of general-purpose AI** | Inventory in month 1; acceptable use policy in month 3. | Authorise, replace or block; training and technical controls. |
 | **Unauthorised use detected** | From month 1. | Nonconformity with containment proportionate to the risk; authorise, replace or block (01 §1.2). |
 
@@ -217,8 +217,8 @@ Regularisation documentation is identified as such and bears its actual date. It
 
 | Period | Objective | Outcomes |
 |---|---|---|
-| **Months 4–6 · Consolidation** | Ensure the lifecycle works with all new initiatives. | Complete register; first verified *gates*; regularisation of priority systems; first quarterly board review with the dashboard; training in SEVEN-G roles; AI literacy programme under way. |
-| **Months 7–12 · Extension** | Ensure everything that exists is within the framework. | Complete regularisation; current R6 in all initiatives in production; nonconformities managed with time limits; costs per use case; first audit of the framework by the third line in an Enterprise scope. |
+| **Months 4–6 · Consolidation** | Ensure the lifecycle works with all new use cases. | Complete register; first verified *gates*; regularisation of priority systems; first quarterly board review with the dashboard; training in SEVEN-G roles; AI literacy programme under way. |
+| **Months 7–12 · Extension** | Ensure everything that exists is within the framework. | Complete regularisation; current R6 in all use cases in production; nonconformities managed with time limits; costs per use case; first audit of the framework by the third line in an Enterprise scope. |
 | **Months 13–18 · First review (C5)** | Check progress and adjust direction. | Maturity verified with the same questionnaire; transformation index recalculated; thesis reviewed; recalibration of time limits and thresholds; declaration of application where appropriate. |
 
 In a Lite scope, the stages may be compressed to reach the declaration between months 6 and 12.
@@ -229,7 +229,7 @@ In a Lite scope, the stages may be compressed to reach the declaration between m
 |---|---|---|---|
 | N-12 · C1 and C2 completed with board approval | D1.05 | Month 3 / month 3–4 | Sponsor |
 | N-01 · Inventory with classification, intensity and owner | D6.05 | Month 6 / month 9 | AI Office; AI Risk Owner |
-| N-02 · Initiative register with traceability | D2.05 | Month 3 / month 4 | AI Office |
+| N-02 · Use case register with traceability | D2.05 | Month 3 / month 4 | AI Office |
 | N-06 · Roles and bodies with incompatibilities | D1.07, D1.08 | Month 3 / month 4 | AI Committee |
 | N-03, N-04, N-05, N-07, N-08 · Intensity, *gates* recorded with G3 separately, dual validation and "Yes ◆" | D2.06 | Month 4 / month 6 | AI Office |
 | N-09, N-10 · Value hypothesis, classification and risk register | — | Month 4 / month 6 | AI Office; AI Risk Owner |
@@ -249,13 +249,13 @@ SEVEN-G does not require new structures to be created. In a small organisation, 
 |---|---|---|
 | **Board or board committee** | The board or its audit or risk committee. | AI as a recurring item, at least quarterly. |
 | **AI Committee** | Management committee with an extended mandate. | Monthly session with its own AI agenda. |
-| **AI Office** | One person with part-time dedication (for example, from strategy, transformation or management control). | Cannot verify initiatives in which they take part. |
+| **AI Office** | One person with part-time dedication (for example, from strategy, transformation or management control). | Cannot verify use cases in which they take part. |
 | **Sponsor** | Head of the area that obtains the value. | In Lite, may combine the product, technical and operations roles. |
 | **Product, Technical and Operations Owners** | People from the area or the supplier, with an internal owner. | Compatible with each other. |
 | **AI Risk Owner** | Head of compliance, risk or security who does not take part in the construction. | Incompatible with the sponsor and with whoever builds. |
-| **AI Auditor** | Internal audit or external auditor. In Lite, may be the same person as the AI Risk Owner. | In Enterprise initiatives, must be different from the AI Risk Owner: if there is no other person, an external auditor. |
+| **AI Auditor** | Internal audit or external auditor. In Lite, may be the same person as the AI Risk Owner. | In Enterprise use cases, must be different from the AI Risk Owner: if there is no other person, an external auditor. |
 
-**Practical minimum: three different people** —whoever drives and builds, whoever controls risks and verifies in Lite, and the AI Office—, plus an external auditor for Enterprise initiatives.
+**Practical minimum: three different people** —whoever drives and builds, whoever controls risks and verifies in Lite, and the AI Office—, plus an external auditor for Enterprise use cases.
 
 ---
 
@@ -266,7 +266,7 @@ SEVEN-G does not require new structures to be created. In a small organisation, 
 | Starting by buying or building tools. | Empty registers and technical discussion instead of decisions. | Spreadsheet with the model in 03 until the process is working. |
 | Diagnosis by self-assessment. | Inflated maturity that does not withstand the first audit. | Verified assessment with sampling (document 11). |
 | Creating a parallel governance structure. | Duplicated committees and internal rejection. | Extend the mandate of existing bodies (01 §8.3). |
-| Applying Enterprise to everything. | Slowness and flight towards unauthorised use. | Intensity by initiative with the criteria in 01 §9. |
+| Applying Enterprise to everything. | Slowness and flight towards unauthorised use. | Intensity by use case with the criteria in 01 §9. |
 | General AI moratorium during implementation. | Loss of support and of opportunities. | Stop only what the diagnosis flags as unacceptable risk. |
 | Not reserving the board session from the outset. | C2 not approved and portfolio without direction. | Reservation in week 1. |
 | Forgetting corporate use and unauthorised use. | Partial inventory and invisible risk. | Census from procurement, licences and security in week 2. |
@@ -286,12 +286,12 @@ The targets are indicative and are set by the company in its plan.
 | Indicator | Definition | 90-day target | 12-month target | Source |
 |---|---|---|---|---|
 | Inventory coverage | Areas in the perimeter with a completeness statement ÷ total. | 100 % | 100 % reviewed during the year | T02 |
-| New initiatives with G0 prior to spending | New initiatives with G0 before the first expenditure ÷ new initiatives. | 100 % from week 13 | 100 % | T01 |
+| New use cases with G0 prior to spending | New use cases with G0 before the first expenditure ÷ new use cases. | 100 % from week 13 | 100 % | T01 |
 | Systems with Enterprise criteria classified | Classified ÷ systems with Enterprise criteria. | All with classification or date | 100 % | T02 |
-| Regularisation | Initiatives in production regularised ÷ total predating the framework. | Plan approved | 100 % | T01 |
-| Roles without incompatibilities | Active initiatives without incompatibilities ÷ total. | 100 % | 100 % | T01 |
+| Regularisation | Use cases in production regularised ÷ total predating the framework. | Plan approved | 100 % | T01 |
+| Roles without incompatibilities | Active use cases without incompatibilities ÷ total. | 100 % | 100 % | T01 |
 | *Gate* decision time | Median against the reference time limit (03 §3.6). | — | Within the time limit | T01 |
-| Current R6 | Initiatives in production with a current R6 ÷ total. | — | 100 % | T01 |
+| Current R6 | Use cases in production with a current R6 ÷ total. | — | 100 % | T01 |
 | Amounts with status | Amounts with formula and status ÷ amounts reported. | 100 % in the C1 report | 100 % | T12 |
 | Proportion of validated value | Validated value ÷ total value reported. | Baseline | Target set in C2 | T12, T17 |
 | Overdue nonconformities | Open with an expired time limit. | Baseline | 0 critical; major ones decreasing | T08 |
@@ -307,7 +307,7 @@ The targets are indicative and are set by the company in its plan.
 | **Month 1** | T23 (starting point and journey); T01, T02, T04 (inventory and register); T15 (maturity); T14 (index); T16 (sphere map); T12 (current value). | P32, P33, P34, P05 |
 | **Month 2** | T06 (risks); T07 (regulatory classification); T05 (ambition); T19 (thesis and appetite). | P35, P43, P06, P07, P11, P12, P31 |
 | **Month 3** | T03 (*gates*); T08 (nonconformities); T17 (dashboard); T18 (recommendations); T01 and T16 (portfolio). | P36, P38, P39, P40, P41, P03, P04, P28, P29 |
-| **Months 4–18** | All of the above; T09, T10, T11, T13, T20, T21, T22 as the portfolio progresses. | P01–P31 according to the phase of each initiative; P42 and P67 every quarter; P37 in C5; the rest of P32–P74 when applicable |
+| **Months 4–18** | All of the above; T09, T10, T11, T13, T20, T21, T22 as the portfolio progresses. | P01–P31 according to the phase of each use case; P42 and P67 every quarter; P37 in C5; the rest of P32–P74 when applicable |
 
 Tools without an application of their own are applied with the template or document indicated in the catalogue in 03. A company that prefers not to use T01 may keep the register in a spreadsheet with the fields of the data model in 03 §4.
 
@@ -319,7 +319,7 @@ Tools without an application of their own are applied with the template or docum
 |---|---|
 | **00 · What SEVEN-G is** | Overview, first implementation and measurement rules. |
 | **01 · Foundational methodology** | Corporate cycle (§5), first implementation (§5.3), roles (§8), intensity (§9), nonconformities (§12) and declaration of application (§14). |
-| **03 · Tools and initiative register** | Register, data model, reference time limits and tool catalogue. |
+| **03 · Tools and use case register** | Register, data model, reference time limits and tool catalogue. |
 | **10, 12 and 13** | Sphere map, transformation index, thesis and risk appetite. |
 | **11 · Maturity model** | Month 1 diagnosis and substantiation of 01 §14. |
 | **14 · Portfolio management** | First portfolio and regularisation. |
@@ -339,4 +339,4 @@ Tools without an application of their own are applied with the template or docum
 | 0.1 | 19-09-2026 | The minimum path (2.4) refers to the obligation matrix (document 94), to the "The essentials" box of each document and to the course. |
 | 0.1 | 28-09-2026 | Reference to document 96 (starting point and implementation journey) in §1, §5, §10 and §11; tool T23 in month 1. |
 | 0.2 | 01-10-2026 | Path to the SEVEN-G core (section 6.2) and implementation indicator on the fourteen rules (section 9); equivalences of corporate evidence in week 10 (21 §4.3). |
-| 0.3 | 01-10-2026 | Express initiatives in the minimum path (section 2.4). |
+| 0.3 | 01-10-2026 | Express use cases in the minimum path (section 2.4). |

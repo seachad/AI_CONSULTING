@@ -92,7 +92,7 @@ Este documento no constituye asesoramiento jurídico. El contenido contractual d
 Reglas:
 
 1. La decisión se documenta en la evaluación de viabilidad (P10) de la fase 3 con los criterios de la tabla y el coste total a tres años según las categorías del documento 42, incluido el **coste de salida**.
-2. En iniciativas de **Optimizar**, comprar debería ser la opción de partida salvo razón documentada. En **Transformar**, la dependencia de un tercero en la capacidad diferencial debe justificarse ante el órgano que aprueba la apuesta.
+2. En casos de uso de **Optimizar**, comprar debería ser la opción de partida salvo razón documentada. En **Transformar**, la dependencia de un tercero en la capacidad diferencial debe justificarse ante el órgano que aprueba la apuesta.
 3. **Construir sobre modelos de terceros no elimina la dependencia**: se aplica este documento al proveedor del modelo.
 4. Si la compañía modifica sustancialmente un sistema de alto riesgo de un tercero, cambia su finalidad o lo comercializa con su nombre, puede pasar a ser **proveedor** a efectos del Reglamento de IA (art. 25.1), con las obligaciones correspondientes. Esta consecuencia se analiza antes de decidir adaptar.
 
@@ -127,7 +127,7 @@ Los plazos de sustituibilidad son orientativos y se aprueban en C2 (documento 13
 | **Incidentes** | Según condiciones del proveedor, verificadas. | Notificación sin dilación indebida con plazo compatible con las obligaciones propias. | Notificación en un plazo máximo acordado (orientativamente 24 horas o menos desde la detección) y cooperación en la respuesta y en las notificaciones regulatorias. |
 | **Registro** | T09. | T09. | T09 y, si aplica DORA, registro de información. |
 
-Un proveedor N3 implica normalmente intensidad **Enterprise** en las iniciativas que lo usan (01 §9.2).
+Un proveedor N3 implica normalmente intensidad **Enterprise** en los casos de uso que lo usan (01 §9.2).
 
 ### 4.3 Contenido del cuestionario de diligencia debida
 
@@ -259,7 +259,7 @@ Muchas aplicaciones de negocio incorporan funciones de IA mediante actualizacion
 | **1. Identificar** | Cuestionario (P55, anexo A) a los proveedores de software vigentes sobre funciones de IA existentes y previstas; revisión de notas de versión; revisión de configuraciones. Se prioriza el software que trata datos personales o confidenciales o que interviene en decisiones. | Oficina de IA con compras y tecnología |
 | **2. Inventariar** | Alta de cada función de IA relevante en el inventario (T02), vinculada al proveedor en T09, con etiqueta de tecnología "IA de terceros embebida". | Oficina de IA |
 | **3. Clasificar** | Determinar si es uso corporativo de propósito general o IA que interviene en decisiones, operaciones o relación con clientes; nivel N; criterios Enterprise; clasificación regulatoria. | Responsable de riesgos de IA |
-| **4. Decidir** | Mantener desactivada, activar con controles o activar como iniciativa con ciclo completo. | Según 4.2 y 01 §1.2 |
+| **4. Decidir** | Mantener desactivada, activar con controles o activar como caso de uso con ciclo completo. | Según 4.2 y 01 §1.2 |
 | **5. Contratar** | Adenda (P56 §8) con las cláusulas 1, 3, 8 y 13 como mínimo y las que correspondan al nivel. | Jurídico y compras |
 | **6. Vigilar** | Revisión de actualizaciones y cambios de configuración en cada R6 o, en su defecto, semestral. | Gestor de la relación |
 
@@ -278,7 +278,7 @@ El registro de proveedores es la herramienta **T09**, sobre la entidad *Proveedo
 | Bloque | Campos |
 |---|---|
 | **Identificación** | Identificador interno; razón social; grupo; país; tipo de tercero (1.1); gestor interno de la relación. |
-| **Servicio** | Descripción comprensible; modelos y versiones; tipo de contratación (construir sobre, comprar, adaptar, aliarse); sistemas e iniciativas vinculados (IA-AAAA-NNN). |
+| **Servicio** | Descripción comprensible; modelos y versiones; tipo de contratación (construir sobre, comprar, adaptar, aliarse); sistemas e casos de uso vinculados (IA-AAAA-NNN). |
 | **Clasificación** | Nivel N1–N3 con el valor de cada factor y justificación; función crítica o importante (sí o no); nivel de autonomía máximo; rol regulatorio del proveedor y de la compañía. |
 | **Datos** | Categorías de datos; datos personales (sí o no); ubicación; transferencias y garantía; retención; uso para entrenamiento (excluido, autorizado o sin verificar). |
 | **Cadena** | Subencargados con ubicación y función; subcontratación de funciones críticas. |

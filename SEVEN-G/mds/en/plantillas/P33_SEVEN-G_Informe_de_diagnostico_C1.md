@@ -93,7 +93,7 @@ Source: T02 and the completeness statements in the annex to P32.
 
 | Type (01 §1.3) | Idea | Pilot | Under construction | In production | Total |
 |---|---|---|---|---|---|
-| In-house AI initiatives | | | | | |
+| In-house AI use cases | | | | | |
 | Third-party AI embedded in processes | | | | | |
 | Corporate use of general-purpose AI | | | | | |
 | Unauthorised use detected | | | | | |
@@ -149,9 +149,9 @@ Built with the rules in 10 §8.1 and 10 §9.1. Amounts in euros for the period.
 | 06 · Knowledge | | | | | | |
 | 07 · Decision | | | | | | |
 | Enablement band (08 and 09) | | | | — | — | |
-| *(illustrative example)* 04 · Operations | 6 initiatives · €1.60M · High | — | — | Optimise | Optimise | No evidence in 2 initiatives |
+| *(illustrative example)* 04 · Operations | 6 use cases · €1.60M · High | — | — | Optimise | Optimise | No evidence in 2 use cases |
 
-Content of each cell: number of initiatives (total and in production) · investment and recurring cost · validated annual net value · colour (No activity, Low, Medium, High). Markers: Gap · Outside the thesis · No evidence · Secondary (in C1 there are no C2 targets yet: the Gap marker is added in C3).
+Content of each cell: number of use cases (total and in production) · investment and recurring cost · validated annual net value · colour (No activity, Low, Medium, High). Markers: Gap · Outside the thesis · No evidence · Secondary (in C1 there are no C2 targets yet: the Gap marker is added in C3).
 
 | Sphere | Dimension | Current grade (Absent · Basic · Systematic · Advanced) | Supporting indicators |
 |---|---|---|---|
@@ -220,7 +220,7 @@ Measurement rules in documents 40 and 42. Annual amounts for the period.
 
 Prepared in month 2 through workshops by sphere (01 §5.3; 90 §4.3) and incorporated as a new version of the report. It is the basis of milestone 2. Risks use the scale in document 33 (level = likelihood × impact: Low 1–4, Medium 5–9, High 10–15, Critical 16–25).
 
-| No. | Sphere | Type (Risk · Opportunity) | Description | Systems or initiatives (SIA- or IA-) | Risk level or proposed ambition | Economic impact and status | Owner | Timeframe | Next step |
+| No. | Sphere | Type (Risk · Opportunity) | Description | Systems or use cases (SIA- or IA-) | Risk level or proposed ambition | Economic impact and status | Owner | Timeframe | Next step |
 |---|---|---|---|---|---|---|---|---|---|
 | 01 | | | | | | | | | |
 | 02 | | | | | | | | | |

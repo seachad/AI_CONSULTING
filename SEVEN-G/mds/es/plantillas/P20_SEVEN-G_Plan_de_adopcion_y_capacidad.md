@@ -22,7 +22,7 @@
 | **Quién la rellena** | Responsable de producto de IA, con el área usuaria y la función de personas. |
 | **Quién la verifica** | Oficina de IA en Lite; auditor de IA en Enterprise. |
 | **En qué *gate* se revisa** | G4 (plan), G5 (adopción en el piloto), R6 (seguimiento) y G7 (capacidad materializada o reasignada). |
-| **Lite frente a Enterprise** | Lite puede omitir los campos marcados **(Enterprise)**. Las iniciativas de Aumentar y Transformar deben tener plan de adopción y de personas (01 §3, principio 10). |
+| **Lite frente a Enterprise** | Lite puede omitir los campos marcados **(Enterprise)**. Los casos de uso de Aumentar y Transformar deben tener plan de adopción y de personas (01 §3, principio 10). |
 | **Herramienta** | T20 Plan de adopción y capacidad. |
 | **Relación** | P17 Supervisión humana · P22 Resultados del piloto · P28 Seguimiento de realización de valor · P31 Ficha de caso de uso · documentos 23 (Adopción y cambio) y 50 (Personas y organización). |
 
@@ -37,8 +37,8 @@ Reglas:
 
 | Campo | Contenido | Guía |
 |---|---|---|
-| Código de la iniciativa | | IA-AAAA-NNN (T01). |
-| Nombre de la iniciativa | | |
+| Código del caso de uso | | IA-AAAA-NNN (T01). |
+| Nombre del caso de uso | | |
 | Nivel de ambición | | Optimizar · Aumentar · Transformar. |
 | Intensidad | | Lite · Enterprise. |
 | Área o áreas usuarias | | |

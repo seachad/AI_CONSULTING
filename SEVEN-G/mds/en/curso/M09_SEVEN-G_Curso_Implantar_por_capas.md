@@ -24,7 +24,7 @@ By the end you will be able to choose your company's implementation scope, disti
 
 ## 2. Key ideas
 
-1. **Two different proportionality decisions.** *Intensity* (Express, Lite or Enterprise) belongs to each initiative; *implementation scope* (Lite or Enterprise) belongs to the company. Size decides neither.
+1. **Two different proportionality decisions.** *Intensity* (Express, Lite or Enterprise) belongs to each use case; *implementation scope* (Lite or Enterprise) belongs to the company. Size decides neither.
 2. **A single library, three layers.** Essential (what every company applies), conditional (what a trigger activates) and complete (guides and reference). There are no reduced versions of the documents.
 3. **No phase or gate is skipped.** In Lite they are grouped —G0 to G2 in one session, G4 and G5 in another— and the evidence is simplified. G3 always goes separately.
 4. **The starting point changes the order, not the destination.** A company with no AI, another with predictive models in production and another with many pilots start with different milestones (document 96), but reach the same fourteen-rule core (01 §14.1).
@@ -39,7 +39,7 @@ By the end you will be able to choose your company's implementation scope, disti
 |---|---|---|
 | 1 | document 94, sections 2 and 3 | The three layers, the five levels, the fourteen-rule core that is never omitted (N-01 to N-14) and the difference between principle, practice and instrument. |
 | 2 | document 94, section 4 | The triggers: which ones occur in your company? |
-| 3 | document 01, section 9 | The Enterprise criteria of an initiative. |
+| 3 | document 01, section 9 | The Enterprise criteria of a use case. |
 | 4 | document 90, section 2 | Company Lite or Enterprise scope and minimum path in Lite. |
 | 5 | document 90, section 4 | The 90-day plan, week by week, and its completion criteria. |
 | 6 | document 90, section 8 | Common mistakes. The first: starting by buying or building tools. |
@@ -62,7 +62,7 @@ By the end you will be able to choose your company's implementation scope, disti
 ## 5. Self-check
 
 1. A medium-sized company launches a single Transform bet. Does its implementation scope change?
-2. Which gates can be grouped in a Lite initiative?
+2. Which gates can be grouped in a Lite use case?
 3. Is the AI system inventory reduced in Lite scope?
 4. Is it mandatory to use the T01 application?
 5. A company has agents with A2 autonomy in production and D6 at level 2. Is it more mature than another that only has predictive models and D6 at level 3?
@@ -73,4 +73,4 @@ By the end you will be able to choose your company's implementation scope, disti
 
 You have finished the course. Go back to the [course guide](M00_SEVEN-G_Curso_Guia_del_curso.html) to see other paths, or start with document 90. If you need support, document 91 describes the possible models and document 04 indicates how to contact the author; using the framework does not oblige anyone to hire anybody.
 
-**Answers.** 1) No: that initiative is Enterprise and is approved by the board, but the company's scope remains Lite. 2) G0, G1 and G2 in one session, and G4 and G5 in another; G3 always separately. 3) No: it covers all systems, including third-party and unauthorised ones. 4) No: what is mandatory is the register; it can be kept in a spreadsheet with the data model of document 03. 5) No. The technology footprint does not add maturity: the first company is at HT5, which requires D6 at 3, and it has the high-severity "adoption ahead of governance" alert (11 §7.6).
+**Answers.** 1) No: that use case is Enterprise and is approved by the board, but the company's scope remains Lite. 2) G0, G1 and G2 in one session, and G4 and G5 in another; G3 always separately. 3) No: it covers all systems, including third-party and unauthorised ones. 4) No: what is mandatory is the register; it can be kept in a spreadsheet with the data model of document 03. 5) No. The technology footprint does not add maturity: the first company is at HT5, which requires D6 at 3, and it has the high-severity "adoption ahead of governance" alert (11 §7.6).

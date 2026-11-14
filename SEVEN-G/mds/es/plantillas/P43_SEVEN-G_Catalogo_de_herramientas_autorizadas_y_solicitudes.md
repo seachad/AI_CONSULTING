@@ -24,7 +24,7 @@
 | **Quién la rellena** | La oficina de IA mantiene el catálogo y evalúa las solicitudes, con seguridad de la información, protección de datos y compras. El empleado rellena la solicitud (sección 4.1) y la comunicación (sección 5.1). |
 | **Quién la verifica** | El auditor de IA o la auditoría interna, por muestreo, dentro del plan de auditoría (documento 38). |
 | **Quién decide o aprueba** | La alta y los cambios de categoría los decide la oficina de IA, o el comité de IA si la herramienta cumple un criterio Enterprise (31 §5.5; 30 §7.5). El bloqueo lo decide seguridad de la información con la oficina de IA. |
-| **Etapa del ciclo corporativo, *gate* o momento** | C2 (catálogo inicial con la política), C4 (monitor T21 revisado por el comité de IA) y C5 (revisión anual). En una iniciativa, G3 y G5 comprueban que las herramientas usadas figuran en el catálogo o en el inventario. |
+| **Etapa del ciclo corporativo, *gate* o momento** | C2 (catálogo inicial con la política), C4 (monitor T21 revisado por el comité de IA) y C5 (revisión anual). En un caso de uso, G3 y G5 comprueban que las herramientas usadas figuran en el catálogo o en el inventario. |
 | **Herramienta** | T21 · Monitor de uso corporativo de IA (catálogo, solicitudes pendientes y tiempo de respuesta). Cada herramienta autorizada se registra en T02 (P05); las comunicaciones que resultan incidentes o no conformidades, en T08 (P27). |
 | **Documento de referencia** | 31 §4.2, §4.3, §4.7, §4.8 y §5 (incluidas §5.2 a §5.7); 32 §2.1 y §3.3; 37 §4; P05; P14. |
 | **Lite frente a Enterprise** | El catálogo, la solicitud y la comunicación son obligatorios en ambos alcances de implantación (90 §2.1). En alcance Lite pueden omitirse los campos marcados **(Enterprise)**. |
@@ -34,7 +34,7 @@ Reglas de cumplimentación:
 - **Una fila por herramienta y edición.** La versión corporativa y la gratuita o personal de una misma herramienta son entradas distintas; la personal figura como *No autorizada* (31 §4.2.3).
 - **Toda herramienta del catálogo tiene código de inventario** SIA-AAAA-NNN con tipo de uso *Uso corporativo de IA de propósito general* (32 §2.1). Sin alta en T02 no hay alta en el catálogo.
 - Los niveles de información son los de la clasificación de la compañía (en los modelos del documento 31: [Pública] · [Interna] · [Confidencial] · [Restringida]). Las siete categorías de 31 §4.3 están prohibidas salvo que la fila lo autorice de forma expresa.
-- Una herramienta que cumple un criterio Enterprise, se configura para actuar (A2 o A3) o se integra en un proceso compartido no se resuelve aquí: pasa al ciclo completo como iniciativa (31 §3.6 y §5.1).
+- Una herramienta que cumple un criterio Enterprise, se configura para actuar (A2 o A3) o se integra en un proceso compartido no se resuelve aquí: pasa al ciclo completo como caso de uso (31 §3.6 y §5.1).
 
 ---
 
@@ -120,7 +120,7 @@ Marque en cada celda: **Permitido** · **Con condiciones** (indique cuáles) · 
 |---|---|---|
 | ¿Existe alternativa en el catálogo? | | Si existe y cubre la necesidad, se propone *Remitir al catálogo*. |
 | Clasificación preliminar | | Tipo de uso, clasificación regulatoria provisional, exposición y autonomía (32 §3.3 y §3.4). |
-| ¿Cumple algún criterio Enterprise? | | Los ocho de 31 §3.5. Si alguno se cumple, se propone *Tratar como iniciativa* y decide el comité de IA. |
+| ¿Cumple algún criterio Enterprise? | | Los ocho de 31 §3.5. Si alguno se cumple, se propone *Tratar como caso de uso* y decide el comité de IA. |
 | Evaluación del proveedor | | P14 con nivel N1 · N2 · N3 (documento 36). |
 | Condiciones contractuales | | Uso de los datos para entrenar, localización, subencargados, registros y responsabilidad (31 §5.6, paso 4). |
 | Protección de datos y seguridad | | Necesidad de evaluación de impacto en protección de datos (RGPD); controles del documento 35. |
@@ -131,7 +131,7 @@ Marque en cada celda: **Permitido** · **Con condiciones** (indique cuáles) · 
 
 | Campo | Contenido | Guía |
 |---|---|---|
-| Resolución | | Autorizar · Autorizar con restricciones · Remitir al catálogo · Denegar · Tratar como iniciativa (fase 0, T01). |
+| Resolución | | Autorizar · Autorizar con restricciones · Remitir al catálogo · Denegar · Tratar como caso de uso (fase 0, T01). |
 | Motivo | | Obligatorio en todos los casos. |
 | Decide | | Oficina de IA; comité de IA si hay criterio Enterprise. Nunca el solicitante. |
 | Fecha de resolución y días hábiles transcurridos | | Frente al plazo de la sección 2. |
@@ -185,7 +185,7 @@ Los datos se presentan agregados por área (31 §7.2). *Sin dato* no es cero.
 | Composición del catálogo | Herramientas autorizadas, con restricciones y no autorizadas | Mensual |
 | Solicitudes pendientes | Solicitudes sin resolución al cierre del periodo | Mensual |
 | Tiempo medio de respuesta | Media de días hábiles entre solicitud y resolución, frente al plazo de la sección 2 | Mensual |
-| Resoluciones por tipo | Autorizar · con restricciones · remitir · denegar · iniciativa | Trimestral |
+| Resoluciones por tipo | Autorizar · con restricciones · remitir · denegar · caso de uso | Trimestral |
 | Comunicaciones por tipo y clasificación | Recuento de la sección 5.3 | Mensual |
 | IA embebida pendiente de decisión | Funciones en estado *En evaluación* | Trimestral |
 
@@ -199,7 +199,7 @@ Los datos se presentan agregados por área (31 §7.2). *Sin dato* no es cero.
 | 2 | Cada herramienta autorizada tiene código SIA en el inventario y evaluación del proveedor (pregunta D6.03 del documento 11). | |
 | 3 | Cada fila indica finalidades, colectivos, autonomía máxima, condiciones y nivel máximo de información. | |
 | 4 | Las solicitudes tienen resolución motivada, decidida por quien corresponde y dentro de plazo, o la demora está explicada. | |
-| 5 | Ninguna herramienta con criterio Enterprise o autonomía A2 o A3 sobre terceros figura como uso corporativo sin iniciativa. | |
+| 5 | Ninguna herramienta con criterio Enterprise o autonomía A2 o A3 sobre terceros figura como uso corporativo sin caso de uso. | |
 | 6 | Cada comunicación tiene triaje y, si procede, código INC o NC vinculado en T08. | |
 | 7 | El comité de IA revisa estos indicadores en el monitor T21 (pregunta D6.09 del documento 11). | |
 

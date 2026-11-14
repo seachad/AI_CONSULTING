@@ -32,7 +32,7 @@ Each sphere is presented with the same structure: what it is, why it matters, wh
 
 **The examples are generic and illustrative.** They are neither recommendations nor market references, and any company or figure that appears is fictitious.
 
-> **Why it matters.** If an AI initiative does not move any indicator in these four spheres, it does not create direct value. It may be necessary (a data platform, a regulatory control), but it must be justified as an enabler, a boundary or governance, and not with savings or revenue that it will not produce.
+> **Why it matters.** If an AI use case does not move any indicator in these four spheres, it does not create direct value. It may be necessary (a data platform, a regulatory control), but it must be justified as an enabler, a boundary or governance, and not with savings or revenue that it will not produce.
 
 ---
 
@@ -144,7 +144,7 @@ The manufacturer uses AI to **optimise** the quality testing of its equipment an
 - AI features are announced without measuring their actual usage.
 - The AI cost per unit of service is unknown or grows faster than the product's revenue.
 - There is no product owner accountable to the customer for the behaviour of the AI.
-- New product initiatives are assessed with the same payback period as efficiency initiatives and are stopped before market evidence is obtained.
+- New product use cases are assessed with the same payback period as efficiency use cases and are stopped before market evidence is obtained.
 
 ### How it is measured
 
@@ -172,7 +172,7 @@ People play **three roles at the same time**. Forgetting any of them causes a di
 |---|---|---|---|
 | **Recipients** | AI changes their tools, processes and productivity expectations, without them having chosen it. | Change management, training and AI literacy appropriate to each role. | Adoption stalls and the investment remains a cost. |
 | **Subjects** | AI can restructure, reassign or eliminate jobs. | Explicit decision by management and the board, dialogue with employee representatives where appropriate, and responsible treatment. | Rejection, loss of trust, conflict and reputational risk. |
-| **Promoters** | Those who know a process best can identify uses of AI that no outsider would see. | A channel for proposing initiatives that enter the register and compete in the portfolio on an equal footing. | The source of ideas closest to real work is lost and unauthorised use of AI tools grows. |
+| **Promoters** | Those who know a process best can identify uses of AI that no outsider would see. | A channel for proposing use cases that enter the register and compete in the portfolio on an equal footing. | The source of ideas closest to real work is lost and unauthorised use of AI tools grows. |
 
 > **Why it matters.** The promoter role is the most undervalued source of value. The people who do the work every day know where the wasted effort lies and what information they lack to make better decisions. If there is no channel for those ideas to reach the portfolio, they are lost or turn into uncontrolled uses.
 
@@ -184,7 +184,7 @@ People play **three roles at the same time**. Forgetting any of them causes a di
 | Copilots and assistants that change the content of the job. | The organisation's knowledge as an asset: that is sphere 06. |
 | Training, AI literacy and professional reskilling. | |
 | Redesign of roles and organisational structures. | |
-| AI initiatives proposed by employees themselves. | |
+| AI use cases proposed by employees themselves. | |
 
 ### Examples by ambition level
 
@@ -205,21 +205,21 @@ The company deploys a writing assistant for the entire workforce (**Optimise**) 
 - Does AI replace, augment or reorganise people's work? That answer defines the culture, the employer brand and talent retention.
 - What happens to released capacity: does it become lower cost, is it reassigned or does it simply disappear?
 - Do the people who use or oversee AI have training appropriate to their role?
-- What proportion of initiatives originates from employees themselves?
+- What proportion of use cases originates from employees themselves?
 
 ### Warning signs
 
 - Released hours are reported without stating whether they have become lower cost or have been reassigned.
 - The number of assigned licences is measured, not actual usage.
 - Decisions on jobs are taken as a technical consequence of a project, without an explicit management decision.
-- There is no adoption plan in Augment or Transform initiatives.
+- There is no adoption plan in Augment or Transform use cases.
 - Turnover in the affected groups rises without anyone analysing it.
 
 ### How it is measured
 
-The reference indicators are effective adoption, realised and reassigned released capacity, AI literacy by role, redesigned roles and employee-promoted initiatives. Their formulas are in [SEVEN-G 10](../../../SEVEN-G/html/en/10_SEVEN-G_Mapa_de_esferas_y_niveles_de_ambicion.html), section 5.3, and their management in [SEVEN-G 50 · People and organisation](../../../SEVEN-G/html/en/50_SEVEN-G_Personas_y_organizacion.html).
+The reference indicators are effective adoption, realised and reassigned released capacity, AI literacy by role, redesigned roles and employee-promoted use cases. Their formulas are in [SEVEN-G 10](../../../SEVEN-G/html/en/10_SEVEN-G_Mapa_de_esferas_y_niveles_de_ambicion.html), section 5.3, and their management in [SEVEN-G 50 · People and organisation](../../../SEVEN-G/html/en/50_SEVEN-G_Personas_y_organizacion.html).
 
-**Relationship with other spheres.** People is almost always the **secondary sphere** of Augment or Transform initiatives that change roles, even when their primary sphere is Customer or Operations. It is also related to Knowledge (06), because what people know is part of the asset that AI can preserve or lose.
+**Relationship with other spheres.** People is almost always the **secondary sphere** of Augment or Transform use cases that change roles, even when their primary sphere is Customer or Operations. It is also related to Knowledge (06), because what people know is part of the asset that AI can preserve or lose.
 
 ---
 
@@ -231,7 +231,7 @@ The reference indicators are effective adoption, realised and reassigned release
 
 The Operations sphere brings together AI applied to **internal processes, supply chain, production, maintenance, back office, fraud control and operational risks**.
 
-> **Why it matters.** Operations is the sphere with the easiest return to demonstrate and the one that accounts for most early initiatives. That ease is both its advantage and its trap: a portfolio can fill up with isolated task automations that add up released hours but do not change actual cost or the design of processes.
+> **Why it matters.** Operations is the sphere with the easiest return to demonstrate and the one that accounts for most early use cases. That ease is both its advantage and its trap: a portfolio can fill up with isolated task automations that add up released hours but do not change actual cost or the design of processes.
 
 ### What it covers and what it does not
 
@@ -256,7 +256,7 @@ The Operations sphere brings together AI applied to **internal processes, supply
 
 *Fictitious distributor of consumer products.*
 
-The distributor has eleven initiatives in Operations, all of them **Optimise**: reading delivery notes, invoice reconciliation, demand forecasting by store and others. In the annual review it discovers that the sum of declared "released hours" is equivalent to dozens of jobs, but the actual cost of the area has not fallen. The automations had sped up isolated steps and the work had piled up in the exceptions. Management decides to **redesign the procurement process end to end**: the system proposes and executes routine orders within approved limits and buyers focus on negotiation and exceptions (**Augment**, with a possible evolution to **Transform** if the change extends to the entire purchasing function). The board asks what happens if the system fails in the middle of a peak season and whether there is a tested rollback plan.
+The distributor has eleven use cases in Operations, all of them **Optimise**: reading delivery notes, invoice reconciliation, demand forecasting by store and others. In the annual review it discovers that the sum of declared "released hours" is equivalent to dozens of jobs, but the actual cost of the area has not fallen. The automations had sped up isolated steps and the work had piled up in the exceptions. Management decides to **redesign the procurement process end to end**: the system proposes and executes routine orders within approved limits and buyers focus on negotiation and exceptions (**Augment**, with a possible evolution to **Transform** if the change extends to the entire purchasing function). The board asks what happens if the system fails in the middle of a peak season and whether there is a tested rollback plan.
 
 ### Questions for the board
 
@@ -286,9 +286,9 @@ The value spheres are read as a whole. Three patterns appear frequently:
 
 | Pattern | How it is recognised on the map | What it usually means | Question for the board |
 |---|---|---|---|
-| **Internal efficiency** | Most initiatives in 04 and in Optimise; 01 and 02 almost empty. | AI is used to reduce cost, not to compete. | Is that our strategy or is it the easiest option to justify? |
-| **Shop window** | Visible initiatives in 01 and 02 with no measured usage; few in 03 and 04. | AI is used to communicate, not to change. | What validated value do the initiatives we announce have? |
-| **Forgotten people** | Augment or Transform initiatives in 01, 02 or 04 without 03 as secondary sphere. | Roles are changed without an adoption plan or an explicit decision. | Who has decided how the work of the people affected changes? |
+| **Internal efficiency** | Most use cases in 04 and in Optimise; 01 and 02 almost empty. | AI is used to reduce cost, not to compete. | Is that our strategy or is it the easiest option to justify? |
+| **Shop window** | Visible use cases in 01 and 02 with no measured usage; few in 03 and 04. | AI is used to communicate, not to change. | What validated value do the use cases we announce have? |
+| **Forgotten people** | Augment or Transform use cases in 01, 02 or 04 without 03 as secondary sphere. | Roles are changed without an adoption plan or an explicit decision. | Who has decided how the work of the people affected changes? |
 
 > **Why it matters.** No sphere tells the whole story on its own. Looking at them together allows the board to distinguish a deliberate strategy from a set of projects that have simply accumulated.
 
@@ -299,7 +299,7 @@ The value spheres are read as a whole. Three patterns appear frequently:
 | Document | Relationship |
 |---|---|
 | **document 00 · What SPHERES is and how it helps** | Presentation of the complete map. |
-| **document 01 · Ambition levels** | How the level of each initiative is classified. |
+| **document 01 · Ambition levels** | How the level of each use case is classified. |
 | **document 03 · Enabling spheres** | Data, Knowledge and Decision, which condition the value of these four spheres. |
 | **document 05 · Conversation with the board** | How to present these spheres in a sixty-minute session. |
 | [SEVEN-G 10 · Sphere map and ambition levels](../../../SEVEN-G/html/en/10_SEVEN-G_Mapa_de_esferas_y_niveles_de_ambicion.html) | Classification rules and indicators with formulas. |

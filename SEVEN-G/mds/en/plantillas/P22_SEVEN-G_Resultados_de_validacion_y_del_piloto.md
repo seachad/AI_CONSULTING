@@ -28,7 +28,7 @@
 
 Rules:
 
-- **The thresholds were set beforehand.** The metrics, success thresholds and stop criteria are those approved in phase 2 (P08). They cannot be relaxed to avoid a decision to stop without approval from the body that authorised the initiative (01 §7.4, rule 6).
+- **The thresholds were set beforehand.** The metrics, success thresholds and stop criteria are those approved in phase 2 (P08). They cannot be relaxed to avoid a decision to stop without approval from the body that authorised the use case (01 §7.4, rule 6).
 - **Production is the only truth.** Laboratory results do not replace the pilot under real conditions.
 - Every amount has a formula, is incremental against the baseline or the control group and has a status (measurement rules 1 and 2).
 - The annual extrapolation of a pilot is always **estimated** until it is measured in production.
@@ -39,7 +39,7 @@ Rules:
 
 | Field | Content | Guidance |
 |---|---|---|
-| Initiative code | | IA-AAAA-NNN (T01). |
+| Use case code | | IA-AAAA-NNN (T01). |
 | AI system(s) and version tested | | Identifier (T02) and version (P16). |
 | Ambition level | | Optimise · Augment · Transform. |
 | Intensity | | Lite · Enterprise. |
@@ -135,7 +135,7 @@ Every *Failed* test indicates its treatment and whether it blocks go-live:
 | | | | |
 | | | | |
 
-If any criterion has been triggered, the team must recommend **Stop** or justify to the body that authorised the initiative why it proposes a different result.
+If any criterion has been triggered, the team must recommend **Stop** or justify to the body that authorised the use case why it proposes a different result.
 
 ---
 

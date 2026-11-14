@@ -1,6 +1,6 @@
 # Portfolio management
 
-**How the company's AI initiatives are selected, prioritised, balanced, reviewed and retired**
+**How the company's AI use cases are selected, prioritised, balanced, reviewed and retired**
 
 | | |
 |---|---|
@@ -16,13 +16,13 @@
 
 > **Legal notice and disclaimer.** SEVEN-G is a reference methodological framework provided "as is" and for information purposes only. It does not constitute legal, regulatory, financial or professional advice, nor does it guarantee compliance with any law or standard. References to general regulation (such as the EU AI Act, the GDPR, DORA or NIS2), to technical standards and to regulation specific to each sector or jurisdiction may be incomplete, may not apply to a particular case or may become out of date as a result of regulatory changes, interpretations or supervisory positions after their consultation date. **Each organisation that uses SEVEN-G is solely responsible for identifying the regulation that applies to it, verifying that it is current and certifying its own regulatory compliance**, with the appropriate qualified advice. This methodology is a generic, free aid shared with the community so that nobody has to start from scratch; each person or organisation can and should adapt it to its own use. It must not be inferred that its legally sensitive parts have been reviewed by legal counsel: those reviews, for each company or sector, are the ultimate responsibility of the company, consultant or organisation that uses it. Although every effort is made to keep it up to date, some regulation may have changed without being reflected here. To the fullest extent permitted by law, the author accepts no responsibility whatsoever for the effects of its application in any organisation or for its full applicability. The methodology does not grant certification of any kind. The author accepts no liability for any use made of this content or for any decisions taken on the basis of it. The data, figures, companies and cases in the examples are fictitious or illustrative.
 
-<!-- esencial: siempre | Prioritised portfolio (C3), monthly committee review, handling of stalled initiatives and expired conditions, retirement procedure and regularisation of what existed before the framework. Weights and thresholds are each company's own; retirement and regularisation are not omitted. -->
+<!-- esencial: siempre | Prioritised portfolio (C3), monthly committee review, handling of stalled use cases and expired conditions, retirement procedure and regularisation of what existed before the framework. Weights and thresholds are each company's own; retirement and regularisation are not omitted. -->
 
 ## 1. Purpose and scope
 
-This document develops stage **C3 · Portfolio** of the corporate cycle (01 §5.1) and ongoing portfolio management in **C4 · Oversight**. It defines how initiatives enter, how they are prioritised and funded, how the balance of ambition and risk is maintained, how the portfolio is reviewed, how stalled initiatives are handled, how an initiative is retired and how initiatives that pre-date the adoption of the framework are regularised.
+This document develops stage **C3 · Portfolio** of the corporate cycle (01 §5.1) and ongoing portfolio management in **C4 · Oversight**. It defines how use cases enter, how they are prioritised and funded, how the balance of ambition and risk is maintained, how the portfolio is reviewed, how stalled use cases are handled, how a use case is retired and how use cases that pre-date the adoption of the framework are regularised.
 
-It applies to all initiatives in the register (T01): in-house initiatives, third-party AI embedded in processes and corporate use of general-purpose AI that meets any Enterprise criterion (01 §1.2). The main tools are **T01 · Initiative register**, **T16 · Portfolio sphere map** and **T22 · Retirement manager**.
+It applies to all use cases in the register (T01): in-house use cases, third-party AI embedded in processes and corporate use of general-purpose AI that meets any Enterprise criterion (01 §1.2). The main tools are **T01 · Use case register**, **T16 · Portfolio sphere map** and **T22 · Retirement manager**.
 
 This document does not constitute legal advice.
 
@@ -31,8 +31,8 @@ This document does not constitute legal advice.
 1. **The portfolio executes the thesis.** What is funded is what fits the AI thesis, the ambition per sphere and the risk appetite approved in C2.
 2. **Each ambition competes with its peers.** A transformation bet does not compete for the same budget or on the same criteria as an optimisation.
 3. **Funding is staged.** Money is released *gate* by *gate*; no one receives the full budget on entry.
-4. **Finish before starting.** Capacity is allocated first to advanced initiatives that meet their criteria.
-5. **Risk adds up.** The portfolio has concentration limits, in addition to the limits of each initiative (principle 5 in 01 §3).
+4. **Finish before starting.** Capacity is allocated first to advanced use cases that meet their criteria.
+5. **Risk adds up.** The portfolio has concentration limits, in addition to the limits of each use case (principle 5 in 01 §3).
 6. **Retiring is managing.** A planned retirement frees up resources and reduces risk; it is not a failure of the team.
 
 ---
@@ -48,7 +48,7 @@ This document does not constitute legal advice.
 | **Mandatory outputs** (01 §5.1) | Prioritised portfolio with ambition level, sphere, intensity, budget and owners; retirement criteria; available capacity. |
 | **Outputs of this document** | Budget envelopes per lane; prioritisation table; capacity plan; concentration limits applied; regularisation plan; review calendar. They are documented with the C3 portfolio plan (P36). |
 | **Owner** | AI Committee, with preparation by the AI Office. |
-| **Approves** | AI Committee. The board approves Transform initiatives and any transfer out of their envelope. |
+| **Approves** | AI Committee. The board approves Transform use cases and any transfer out of their envelope. |
 
 ### 2.2 Calendar
 
@@ -56,8 +56,8 @@ This document does not constitute legal advice.
 |---|---|---|
 | **Annual (C3)** | Building or renewing the portfolio after C2 or C5: envelopes, full prioritisation, capacity, limits. | AI Committee; board for Transform |
 | **Quarterly** | Review of balance, concentration, programmes and retirements; report to the board in C4. | AI Committee |
-| **Monthly** | Monitoring of the funnel, stalled initiatives, expired conditions, holds and new entries. | AI Committee |
-| **Continuous** | Registration of initiatives, T01 alerts, preparation of information. | AI Office |
+| **Monthly** | Monitoring of the funnel, stalled use cases, expired conditions, holds and new entries. | AI Committee |
+| **Continuous** | Registration of use cases, T01 alerts, preparation of information. | AI Office |
 
 ### 2.3 Responsibilities
 
@@ -75,15 +75,15 @@ This document does not constitute legal advice.
 
 ---
 
-## 3. Entry of initiatives into the portfolio
+## 3. Entry of use cases into the portfolio
 
 ### 3.1 Channels
 
-Initiatives may come from business areas, from challenges set by the board or management, from the AI Office or from supplier proposals. **Every initiative needs a business sponsor**: a supplier proposal without an internal sponsor does not enter. Document 54, section 5, sets out the eight sources use cases come from, the typical bias of each and what each lacks before entering.
+Use cases may come from business areas, from challenges set by the board or management, from the AI Office or from supplier proposals. **Every use case needs a business sponsor**: a supplier proposal without an internal sponsor does not enter. Document 54, section 5, sets out the eight sources use cases come from, the typical bias of each and what each lacks before entering.
 
 ### 3.2 Minimum entry record
 
-To move from *Registered* to phase 0 (03 §3.2), the initiative provides:
+To move from *Registered* to phase 0 (03 §3.2), the use case provides:
 
 | Field | Requirement |
 |---|---|
@@ -97,12 +97,12 @@ To move from *Registered* to phase 0 (03 §3.2), the initiative provides:
 
 ### 3.3 Preliminary filters
 
-The following do not enter the portfolio, and are recorded with the reason: **practices prohibited** by regulation; initiatives that **duplicate** an existing one (they are merged); those that **do not require AI** (they are referred to the alternative); those that fall **outside the approved risk appetite**; and **Transform initiatives without senior management sponsorship**.
+The following do not enter the portfolio, and are recorded with the reason: **practices prohibited** by regulation; use cases that **duplicate** an existing one (they are merged); those that **do not require AI** (they are referred to the alternative); those that fall **outside the approved risk appetite**; and **Transform use cases without senior management sponsorship**.
 
 ### 3.4 Entry windows
 
 - **Optimise and Augment with Lite intensity:** continuous entry; the AI Committee is made aware of them at its monthly meeting.
-- **Enterprise and Transform:** entry at the committee's monthly review, with full prioritisation (section 4). Transform initiatives are escalated to the board at its next quarterly session.
+- **Enterprise and Transform:** entry at the committee's monthly review, with full prioritisation (section 4). Transform use cases are escalated to the board at its next quarterly session.
 
 ---
 
@@ -131,11 +131,11 @@ The **additional net value per euro** (expected additional annual net value ÷ a
 | **Capacity** | Team, supplier and adoption capacity of the receiving area. | 10 | 15 | 15 |
 | **Total** | | **100** | **100** | **100** |
 
-**Initiative score (0–100) = Σ (weight × criterion score) ÷ 5.**
+**Use case score (0–100) = Σ (weight × criterion score) ÷ 5.**
 
 ### 4.3 Scoring scales
 
-All scales run from 1 to 5. A criterion **with no data scores 0 and is shown as "no data"** (rule 8); an initiative with no data on additional net value per euro cannot pass G2.
+All scales run from 1 to 5. A criterion **with no data scores 0 and is shown as "no data"** (rule 8); a use case with no data on additional net value per euro cannot pass G2.
 
 **Additional net value per euro.** The **multiple over the horizon** is used = additional net value per euro × C2 return horizon in years. A multiple of 1 means that the additional investment is recovered within the horizon, undiscounted. It is a **prioritisation** criterion, not a feasibility criterion: economic feasibility at G3 is decided solely by NPV ≥ 0 with the horizon and rate set in C2 (document 40, section 8.3; 01 §7.6).
 
@@ -151,7 +151,7 @@ Initial thresholds, to be calibrated. If after G2 the amount is still only *esti
 
 | Score | Fit with the thesis | Contribution to ambition | Expected residual risk | Data dependency | Capacity |
 |---|---|---|---|---|---|
-| **5** | Explicit thesis objective in a priority sphere. | Fills a gap: sphere with a set ambition and no initiatives at that level. | Low | Data available, quality verified and legal basis confirmed. | Team and supplier assigned; receiving area with adoption capacity. |
+| **5** | Explicit thesis objective in a priority sphere. | Fills a gap: sphere with a set ambition and no use cases at that level. | Low | Data available, quality verified and legal basis confirmed. | Team and supplier assigned; receiving area with adoption capacity. |
 | **4** | Explicit objective in a non-priority sphere. | Reinforces a level below its target. | — | Available with minor adjustments. | Team assigned; supplier being selected. |
 | **3** | Permitted sphere without an explicit objective. | Neutral. | Medium | Require planned preparation within phase 3. | Capacity available in the following quarter. |
 | **2** | Indirect fit. | Adds to a level already at its target. | — | Not available, but obtainable with identified data work. | Capacity available in two quarters or dependent on hiring. |
@@ -161,22 +161,22 @@ Critical residual risk is not scored: it is an eliminatory filter unless there i
 
 ### 4.4 Rules to prevent return from blocking transformation
 
-1. **Separate envelopes.** C2 sets the proportion of the framework budget for each lane. Initiatives compete only within their lane.
-2. **Own criteria.** Transform initiatives are decided using the criteria in 01 §7.6: learning milestones, investment cap per stage, stop criteria and documented option value; not with a threshold of additional net value per euro.
+1. **Separate envelopes.** C2 sets the proportion of the framework budget for each lane. Use cases compete only within their lane.
+2. **Own criteria.** Transform use cases are decided using the criteria in 01 §7.6: learning milestones, investment cap per stage, stop criteria and documented option value; not with a threshold of additional net value per euro.
 3. **No silent transfers.** The Transform envelope is not reallocated to other lanes without board approval. The unused envelope is reported to the board, because it is a signal of the transformation index (signal 1).
 4. **Stopping on pre-agreed criteria.** A Transform bet is stopped only on its stop criteria or on grounds of risk, not by being compared mid-stage with optimisations offering immediate return.
 5. **Market evidence at the right time.** Transform is not required to have validated value before G5; at G5 it is required to provide market or customer evidence.
 
 And, conversely, to prevent "Transform" from becoming a refuge:
 
-6. **Verified classification.** An initiative presented as Transform that answers no to questions 1 to 4 in 00 §5.2 is reclassified and changes lane.
+6. **Verified classification.** A use case presented as Transform that answers no to questions 1 to 4 in 00 §5.2 is reclassified and changes lane.
 7. **No milestones, no bet.** A Transform proposal without learning milestones, a cap per stage and stop criteria does not enter prioritisation.
 
 ### 4.5 Illustrative example
 
 *Illustrative data. Optimise lane; C2 return horizon: 2 years.*
 
-| Initiative | Additional net value per euro | Multiple | Net | Thesis | Ambition | Risk | Data | Capacity | Score |
+| Use case | Additional net value per euro | Multiple | Net | Thesis | Ambition | Risk | Data | Capacity | Score |
 |---|---|---|---|---|---|---|---|---|---|
 | IA-2026-014 Complaint classification | 1.6 | 3.2 | 5 | 4 | 3 | 5 | 4 | 4 | **90** |
 | IA-2026-021 Invoice reconciliation | 0.9 | 1.8 | 3 | 5 | 3 | 5 | 5 | 3 | **78** |
@@ -206,13 +206,13 @@ The C2 risk appetite is translated into **portfolio limits**, which the committe
 
 | Limit | Example wording |
 |---|---|
-| High residual risk | Maximum number of initiatives in production with accepted High residual risk. |
+| High residual risk | Maximum number of use cases in production with accepted High residual risk. |
 | High regulatory risk systems | Maximum number simultaneously in phases 4–5, according to control capacity. |
 | Autonomy | Agents with A2 or A3 autonomy in production only with level 3 in D4 and D6 (document 11). |
 | Direct exposure | Maximum proportion of investment in systems with direct exposure without independent assessment. |
 | Suppliers | See section 9. |
 
-Exceeding a limit does not stop initiatives under way, but it prevents new ones from entering the affected category until the committee approves a measure or the board modifies the appetite.
+Exceeding a limit does not stop use cases under way, but it prevents new ones from entering the affected category until the committee approves a measure or the board modifies the appetite.
 
 ---
 
@@ -222,13 +222,13 @@ Exceeding a limit does not stop initiatives under way, but it prevents new ones 
 
 | Item | Content |
 |---|---|
-| **Committed recurring cost** | Operating cost of initiatives in production. It is reserved first: each go-live reduces the budget available for new initiatives in subsequent years. |
+| **Committed recurring cost** | Operating cost of use cases in production. It is reserved first: each go-live reduces the budget available for new use cases in subsequent years. |
 | **Optimise envelope** | Tranches 2 and 3 of its lane. |
-| **Augment envelope** | Tranches 2 and 3 of its lane, including the adoption specific to each initiative. |
+| **Augment envelope** | Tranches 2 and 3 of its lane, including the adoption specific to each use case. |
 | **Staged Transform envelope** | Stages approved by the board, each with its cap per stage. |
-| **Enablement** | Data, common platform, governance and compliance, including initiatives in spheres 08 and 09. |
-| **Adoption and training** | AI literacy, role-based training and change management not charged to initiatives. |
-| **Contingency** | Includes the **discovery reserve** (tranche 1 of all initiatives, phases 0–3, before their lane is confirmed), the **retirement reserve** (retirements and regularisation) and approved deviations. Allocated by the AI Committee with a record. |
+| **Enablement** | Data, common platform, governance and compliance, including use cases in spheres 08 and 09. |
+| **Adoption and training** | AI literacy, role-based training and change management not charged to use cases. |
+| **Contingency** | Includes the **discovery reserve** (tranche 1 of all use cases, phases 0–3, before their lane is confirmed), the **retirement reserve** (retirements and regularisation) and approved deviations. Allocated by the AI Committee with a record. |
 
 The items are the seven envelopes of the framework budget approved by the board in C2 (13 §12); this section sets how the portfolio uses them. The portfolio plan records them in P36 §3.
 
@@ -243,13 +243,13 @@ The items are the seven envelopes of the framework budget approved by the board 
 
 In Transform, each approved stage is a tranche with its learning milestone; the next stage is not released until the milestone has been met. A deviation of more than 10% over the approved tranche requires approval from the body that decided the *gate*.
 
-The tranches of each initiative are recorded in T01, in the realisation plan (`plan_realizacion.tramos`), with their date, amount, the *gate* that releases them and their **pass condition**, the milestone that must be met to release them (document 43 §4.1). Only investments are recorded as tranches: 1 · discovery and feasibility, 2 · design and delivery, scaling and, in Transform, each stage. Tranche 3 · operation is not recorded as a tranche: it is the recurring cost, which the realisation curve already deducts. The board dashboard (T17) lists the pending tranches, flags those without a pass condition and shows the annual net value each tranche unlocks per euro invested (F3 of the tranche, document 40 rule 9).
+The tranches of each use case are recorded in T01, in the realisation plan (`plan_realizacion.tramos`), with their date, amount, the *gate* that releases them and their **pass condition**, the milestone that must be met to release them (document 43 §4.1). Only investments are recorded as tranches: 1 · discovery and feasibility, 2 · design and delivery, scaling and, in Transform, each stage. Tranche 3 · operation is not recorded as a tranche: it is the recurring cost, which the realisation curve already deducts. The board dashboard (T17) lists the pending tranches, flags those without a pass condition and shows the annual net value each tranche unlocks per euro invested (F3 of the tranche, document 40 rule 9).
 
 ### 6.3 Capacity
 
 - The AI Office maintains a **capacity plan** for scarce profiles: technical owners, data, risk, AI Auditor, security and adoption.
-- The committee sets a **limit on simultaneous initiatives in phases 3 to 5** according to that capacity. Once the limit is exceeded, no new initiatives enter phase 4 until one passes G5 or is stopped.
-- The capacity to **verify and decide** is also capacity: if the *gate* decision time exceeds its reference time limit (03 §3.6), the committee strengthens verification before admitting more initiatives.
+- The committee sets a **limit on simultaneous use cases in phases 3 to 5** according to that capacity. Once the limit is exceeded, no new use cases enter phase 4 until one passes G5 or is stopped.
+- The capacity to **verify and decide** is also capacity: if the *gate* decision time exceeds its reference time limit (03 §3.6), the committee strengthens verification before admitting more use cases.
 
 ---
 
@@ -260,7 +260,7 @@ The tranches of each initiative are recorded in T01, in the realisation plan (`p
 | Item | Source | Possible decision |
 |---|---|---|
 | New entries and Enterprise *gates* | T01, T03 | Admit, prioritise, decide *gates*. |
-| Stalled initiatives, expired conditions and holds | T01 alerts | Section 8. |
+| Stalled use cases, expired conditions and holds | T01 alerts | Section 8. |
 | Cost and value deviations | T12, T13 | Conditions, early R6. |
 | Incidents and major or critical nonconformities | T08 | Containment, stop, retirement. |
 | Funnel metrics: time in phase, decision time, conversion | T01 | Measures on bottlenecks. |
@@ -279,7 +279,7 @@ The tranches of each initiative are recorded in T01, in the realisation plan (`p
 
 ---
 
-## 8. Stalled initiatives, expired conditions and initiatives on hold
+## 8. Stalled use cases, expired conditions and use cases on hold
 
 The definitions and metrics are those in 03 §3.5 and §3.6.
 
@@ -295,18 +295,18 @@ The definitions and metrics are those in 03 §3.5 and §3.6.
 
 ## 9. Risk concentration and supplier dependency
 
-The committee analyses quarterly whether several initiatives could fail for the same cause.
+The committee analyses quarterly whether several use cases could fail for the same cause.
 
 | Type of concentration | What is measured | Warning signal (to be set in C2) |
 |---|---|---|
-| **Supplier** | Proportion of initiatives in production, recurring cost and critical functions that depend on the same supplier. | One supplier supports several critical functions or exceeds the set proportion. |
-| **Foundation model** | Initiatives that depend on the same general-purpose AI model or its version. | Announced change or withdrawal of the model affecting several initiatives. |
-| **Data** | Initiatives that depend on the same dataset or knowledge source. | Source with quality issues or a legal basis under review. |
-| **People** | Initiatives that depend on the same key people. | One person is indispensable to several initiatives. |
-| **Typical risk** | High residual risks with the same `RT-XXX-NN` code. | Same High risk in several initiatives. |
+| **Supplier** | Proportion of use cases in production, recurring cost and critical functions that depend on the same supplier. | One supplier supports several critical functions or exceeds the set proportion. |
+| **Foundation model** | Use cases that depend on the same general-purpose AI model or its version. | Announced change or withdrawal of the model affecting several use cases. |
+| **Data** | Use cases that depend on the same dataset or knowledge source. | Source with quality issues or a legal basis under review. |
+| **People** | Use cases that depend on the same key people. | One person is indispensable to several use cases. |
+| **Typical risk** | High residual risks with the same `RT-XXX-NN` code. | Same High risk in several use cases. |
 | **Sphere or area** | Concentrated investment and exposure. | Deviation from the ambition per sphere. |
 
-**Measures.** Suppliers with requirement level **N3** (document 36) must have a tested exit plan or, at least, a documented one with an estimated cost, which is incorporated into the initiative's net value. In entities subject to DORA, ICT services supporting critical or important functions require exit strategies (Article 28 of Regulation (EU) 2022/2554). A significant change in the supplier or the foundation model triggers an extraordinary R6 of the affected initiatives.
+**Measures.** Suppliers with requirement level **N3** (document 36) must have a tested exit plan or, at least, a documented one with an estimated cost, which is incorporated into the use case's net value. In entities subject to DORA, ICT services supporting critical or important functions require exit strategies (Article 28 of Regulation (EU) 2022/2554). A significant change in the supplier or the foundation model triggers an extraordinary R6 of the affected use cases.
 
 ---
 
@@ -327,14 +327,14 @@ Retirement is a G7 outcome (01 §6.9 and §7.3). Every retirement must record th
 | Technology or supplier | End of support, withdrawal of the foundation model or unacceptable contractual change. | Technically unfeasible |
 | Strategy | The revised thesis no longer includes the sphere or objective. | Change in strategic priority |
 
-When risk so requires, the initiative is **halted immediately** using the kill switch or the rollback plan (P19) and the formal G7 is held afterwards, within a maximum of 10 working days.
+When risk so requires, the use case is **halted immediately** using the kill switch or the rollback plan (P19) and the formal G7 is held afterwards, within a maximum of 10 working days.
 
 ### 10.2 Owners
 
 | Role | Responsibility in the retirement |
 |---|---|
 | **AI Sponsor** | Proposes or accepts the retirement; decides in Lite; is accountable for the replacement and the financial close. |
-| **AI Committee** | Decides in Enterprise; informs the board when a Transform initiative or one supporting a critical function is retired. |
+| **AI Committee** | Decides in Enterprise; informs the board when a Transform use case or one supporting a critical function is retired. |
 | **AI Product Owner** | Draws up the retirement plan; leads the transition and communication to users. |
 | **AI Technical Owner** | Deactivation, dismantling of integrations, archiving of models and documentation. |
 | **AI Operations Owner** | Carries out the deactivation, revokes identities and permissions, monitors until closure. |
@@ -373,7 +373,7 @@ Reference time limits: retirement plan approved within 15 days (Lite) or 30 days
 
 | Block | Content |
 |---|---|
-| Decision | Initiative code, G7 date, body, coded reason, scope (full or partial). |
+| Decision | Use case code, G7 date, body, coded reason, scope (full or partial). |
 | Schedule | Change freeze date, parallel running period, deactivation date, closure date. |
 | Replacement | Solution that takes over the function, acceptance criteria and capacity required (10.6). |
 | Those affected | Users, customers or people affected, areas, suppliers, authorities where applicable. |
@@ -394,7 +394,7 @@ Reference time limits: retirement plan approved within 15 days (Lite) or 30 days
 | **Instructions, knowledge bases and indexes** | Archiving if they support decisions that may be challenged; otherwise, recorded deletion. |
 | **Identities, credentials and permissions of agents and integrations** | Revocation **before** or at the same time as deactivation. No identity may remain active. |
 | **Decisions made with the system** | Retention of the traceability needed to handle claims and the rights of individuals. |
-| **Inventory and register** | T02 moves the system to "retired"; T01 moves the initiative to *Retired* with the closure date. |
+| **Inventory and register** | T02 moves the system to "retired"; T01 moves the use case to *Retired* with the closure date. |
 
 ### 10.6 Replacement and continuity
 
@@ -439,9 +439,9 @@ The retirement of an AI tool for corporate use follows steps 3 to 10 with a simp
 
 ---
 
-## 11. Regularisation of initiatives pre-dating the framework
+## 11. Regularisation of use cases pre-dating the framework
 
-Initiatives in production prior to the adoption of SEVEN-G must be regularised within the time limit approved in C2, by undergoing a continuity review equivalent to G7 (01 §14).
+Use cases in production prior to the adoption of SEVEN-G must be regularised within the time limit approved in C2, by undergoing a continuity review equivalent to G7 (01 §14).
 
 ### 11.1 Steps
 
@@ -456,26 +456,26 @@ Initiatives in production prior to the adoption of SEVEN-G must be regularised w
 | **Pilot** | It is assessed at G3 with the pilot results. | Continue; iterate; stop. |
 | **Idea** | Ordinary entry (section 3). | — |
 
-4. **Recording.** Each regularised initiative carries the free tag "Regularisation" and the date of its review.
+4. **Recording.** Each regularised use case carries the free tag "Regularisation" and the date of its review.
 
 ### 11.2 Rules
 
 - Regularisation documentation is identified as such, with the date on which it is prepared. It does not attest to past *gates* and cannot be presented as earlier documentation: doing so is a major nonconformity (01 §7.4, rule 3).
-- Reference time limit: initiatives with Enterprise criteria, six months from the approval of C2; the rest, 12 months. The company may set others in C2.
-- An initiative in production that has not been regularised when the time limit expires is a major nonconformity; if it meets Enterprise criteria and has no regulatory classification, a critical one.
-- The scope of the initiative is not extended during regularisation.
+- Reference time limit: use cases with Enterprise criteria, six months from the approval of C2; the rest, 12 months. The company may set others in C2.
+- A use case in production that has not been regularised when the time limit expires is a major nonconformity; if it meets Enterprise criteria and has no regulatory classification, a critical one.
+- The scope of the use case is not extended during regularisation.
 
 ---
 
 ## 12. Programme traffic light
 
-A **programme** groups related initiatives using the free tag "Programme" (03 §3.3). The traffic light summarises its status for the committee and the board.
+A **programme** groups related use cases using the free tag "Programme" (03 §3.3). The traffic light summarises its status for the committee and the board.
 
 ### 12.1 Axes and initial thresholds
 
 | Axis | Green | Amber | Red |
 |---|---|---|---|
-| **Schedule** | No stalled initiatives; milestones on schedule. | One stalled initiative or a milestone delayed by up to one phase reference time limit. | Several stalled initiatives or a critical milestone with a longer delay. |
+| **Schedule** | No stalled use cases; milestones on schedule. | One stalled use case or a milestone delayed by up to one phase reference time limit. | Several stalled use cases or a critical milestone with a longer delay. |
 | **Cost** | Deviation over the approved tranches of up to 10%. | From 10% to 25%. | More than 25% or without approval. |
 | **Value** | Realised value equal to or above 90% of the amount forecast to date, with validated or declared status. | From 60% to 90%, or estimated only. | Less than 60%, or hypothesis refuted without a decision. |
 | **Risk** | No residual risks outside the appetite and no open S1–S2 incidents. | High risk with mitigation on schedule or an S2 incident being managed. | Risk outside the appetite, S1 incident or open critical nonconformity. |
@@ -498,7 +498,7 @@ Initial thresholds, to be calibrated in C5.
 
 | Code | Use in this document |
 |---|---|
-| **T01 · Initiative register** | Entry record, alerts for stalled initiatives, holds and conditions, "Programme" and "Regularisation" tags. The prioritisation score, lanes and tranches, the regularisation plan and the programme traffic light are prepared with P36 (C3 portfolio plan), with columns ready for a spreadsheet; the traffic light is presented to the board in P67. |
+| **T01 · Use case register** | Entry record, alerts for stalled use cases, holds and conditions, "Programme" and "Regularisation" tags. The prioritisation score, lanes and tranches, the regularisation plan and the programme traffic light are prepared with P36 (C3 portfolio plan), with columns ready for a spreadsheet; the traffic light is presented to the board in P67. |
 | **T16 · Portfolio sphere map** | Ambition balance per sphere with investment, recurring cost and value. |
 | **T22 · Retirement manager** | Retirement plan, replacement, data and models, access, communication, closure verification and retirement register (section 10.9). |
 | T02, T03, T04, T05, T06, T08, T09, T12, T13, T14, T17, T18 | Inventory, *gates*, intensity, ambition, risks, nonconformities, suppliers, value, costs, transformation index, dashboard and recommendations. |
@@ -515,7 +515,7 @@ Initial thresholds, to be calibrated in C5.
 |---|---|
 | **00 · What SEVEN-G is** | Value measurement rules (§6) and ambition classification (§5.2). |
 | **01 · Foundational methodology** | C3 (§5.1), phase 7 (§6.9), *gate* outcomes and rules (§7), principles, declaration of application (§14). |
-| **03 · Tools and initiative register** | Statuses, taxonomy, coded reasons, funnel metrics and reference time limits. |
+| **03 · Tools and use case register** | Statuses, taxonomy, coded reasons, funnel metrics and reference time limits. |
 | **10 · Sphere map** | Ambition per sphere. |
 | **11 · Maturity model** | Dimension D2 and maturity requirements for agents and Transform. |
 | **12 · Transformation index** | Signals affected by the portfolio balance. |
@@ -531,5 +531,5 @@ Initial thresholds, to be calibrated in C5.
 
 | Version | Date | Changes |
 |---|---|---|
-| 0.1 | 16-09-2026 | First version. Develops C3; defines portfolio entry, prioritisation by ambition lanes with six criteria, rules to avoid blocking transformation, balance of ambition and risk, tranche-based budget, monthly and quarterly reviews, treatment of stalled initiatives and holds, concentration, full retirement procedure with register, regularisation and programme traffic light. |
+| 0.1 | 16-09-2026 | First version. Develops C3; defines portfolio entry, prioritisation by ambition lanes with six criteria, rules to avoid blocking transformation, balance of ambition and risk, tranche-based budget, monthly and quarterly reviews, treatment of stalled use cases and holds, concentration, full retirement procedure with register, regularisation and programme traffic light. |
 | 0.2 | 28-09-2026 | Funding tranches are recorded in T01 (`plan_realizacion.tramos`) with gate, amount and pass condition, and the board dashboard lists the pending ones with the annual net value each one unlocks per euro (§6.2; D135). |

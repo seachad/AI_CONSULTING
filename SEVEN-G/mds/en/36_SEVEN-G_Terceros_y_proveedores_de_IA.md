@@ -92,7 +92,7 @@ This document does not constitute legal advice. Contractual content must be revi
 Rules:
 
 1. The decision is documented in the phase 3 feasibility assessment (P10) using the criteria in the table and the three-year total cost according to the categories in document 42, including the **exit cost**.
-2. In **Optimise** initiatives, buying should be the starting option unless there is a documented reason otherwise. In **Transform**, dependency on a third party for the differentiating capability must be justified to the body that approves the bet.
+2. In **Optimise** use cases, buying should be the starting option unless there is a documented reason otherwise. In **Transform**, dependency on a third party for the differentiating capability must be justified to the body that approves the bet.
 3. **Building on third-party models does not eliminate dependency**: this document applies to the model provider.
 4. If the company substantially modifies a third party's high-risk system, changes its intended purpose or places it on the market under its own name, it may become a **provider** for the purposes of the AI Act (Art. 25(1)), with the corresponding obligations. This consequence is analysed before deciding to adapt.
 
@@ -127,7 +127,7 @@ The substitutability time frames are indicative and are approved in C2 (document
 | **Incidents** | According to the supplier's terms, verified. | Notification without undue delay within a time limit compatible with the company's own obligations. | Notification within an agreed maximum time limit (indicatively 24 hours or less from detection) and cooperation in the response and in regulatory notifications. |
 | **Register** | T09. | T09. | T09 and, if DORA applies, the register of information. |
 
-An N3 supplier normally implies **Enterprise** intensity for the initiatives that use it (01 §9.2).
+An N3 supplier normally implies **Enterprise** intensity for the use cases that use it (01 §9.2).
 
 ### 4.3 Content of the due diligence questionnaire
 
@@ -259,7 +259,7 @@ Many business applications incorporate AI features through updates, sometimes en
 | **1. Identify** | Questionnaire (P55, annex A) to current software suppliers on existing and planned AI features; review of release notes; review of configurations. Priority is given to software that processes personal or confidential data or that plays a part in decisions. | AI Office with procurement and technology |
 | **2. Inventory** | Registration of each relevant AI feature in the inventory (T02), linked to the supplier in T09, with the technology tag "Embedded third-party AI". | AI Office |
 | **3. Classify** | Determine whether it is general-purpose corporate use or AI that plays a part in decisions, operations or customer relationships; N level; Enterprise criteria; regulatory classification. | AI Risk Owner |
-| **4. Decide** | Keep disabled, enable with controls or enable as an initiative with the full lifecycle. | According to 4.2 and 01 §1.2 |
+| **4. Decide** | Keep disabled, enable with controls or enable as a use case with the full lifecycle. | According to 4.2 and 01 §1.2 |
 | **5. Contract** | Addendum (P56 §8) with clauses 1, 3, 8 and 13 as a minimum and those corresponding to the level. | Legal and procurement |
 | **6. Monitor** | Review of updates and configuration changes at every R6 or, failing that, half-yearly. | Relationship manager |
 
@@ -278,7 +278,7 @@ The supplier register is tool **T09**, built on the *Supplier* entity of the com
 | Block | Fields |
 |---|---|
 | **Identification** | Internal identifier; legal name; group; country; type of third party (1.1); internal relationship manager. |
-| **Service** | Plain-language description; models and versions; type of sourcing (build on, buy, adapt, partner); linked systems and initiatives (IA-AAAA-NNN). |
+| **Service** | Plain-language description; models and versions; type of sourcing (build on, buy, adapt, partner); linked systems and use cases (IA-AAAA-NNN). |
 | **Classification** | N1–N3 level with the value of each factor and justification; critical or important function (yes or no); maximum autonomy level; regulatory role of the supplier and of the company. |
 | **Data** | Data categories; personal data (yes or no); location; transfers and safeguard; retention; use for training (excluded, authorised or unverified). |
 | **Chain** | Sub-processors with location and function; subcontracting of critical functions. |

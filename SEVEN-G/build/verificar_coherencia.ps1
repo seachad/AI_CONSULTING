@@ -242,7 +242,7 @@ try {
     if (-not (Test-Path $f)) { continue }
     # D73: antes del mapa, el diagrama conceptual del flujo (puertas, iterar, pivotar, parar y bucle de operación)
     $html00 = [IO.File]::ReadAllText($f)
-    if ($html00 -notmatch '<div class="g-titulo">(Cómo fluye una iniciativa por SEVEN-G|How an initiative flows through SEVEN-G)</div>' -or $html00.IndexOf('g-titulo">Cómo fluye') + $html00.IndexOf('g-titulo">How an initiative flows') + 1 -gt $html00.IndexOf('<figure class="grafico mapa-uso">')) { Mal "00 [$lang]: falta el diagrama de flujo (<!-- figura: flujo-uso -->) antes del mapa de uso"; $mapaMal++ }
+    if ($html00 -notmatch '<div class="g-titulo">(Cómo fluye un caso de uso por SEVEN-G|How a use case flows through SEVEN-G)</div>' -or $html00.IndexOf('g-titulo">Cómo fluye') + $html00.IndexOf('g-titulo">How a use case flows') + 1 -gt $html00.IndexOf('<figure class="grafico mapa-uso">')) { Mal "00 [$lang]: falta el diagrama de flujo (<!-- figura: flujo-uso -->) antes del mapa de uso"; $mapaMal++ }
     if ($html00 -notmatch 'class="mu-bucle"' -or $html00 -notmatch 'class="mu-cel mu-sal"') { Mal "00 [$lang]: el mapa de uso no muestra las salidas de las puertas ni el bucle de operación"; $mapaMal++ }
     $mapa = [regex]::Match([IO.File]::ReadAllText($f), '(?s)<figure class="grafico mapa-uso">.*?</figure>').Value
     if (-not $mapa) { Mal "00 [$lang]: falta el mapa de uso (<!-- figura: mapa-uso -->)"; $mapaMal++; continue }
@@ -1881,8 +1881,8 @@ try {
   # ---- 43. posicionamiento como modelo operativo (D151)
   Write-Host '43. Posicionamiento: los estándares dicen qué debe existir; SEVEN-G lo hace funcionar (D151)'
   $mal43 = 0
-  $txt43 = @{ es = @('### 5.1 Frente a los estándares', '**Qué es frente a los estándares.**', 'Alternativa a ISO/IEC 42001', 'capa operativa que lo hace funcionar', '#9-1-crosswalk-de-cobertura');
-              en = @('### 5.1 Compared with the standards', '**What it is compared with the standards.**', 'Alternative to ISO/IEC 42001', 'operating layer that makes it work', '#9-1-coverage-crosswalk') }
+  $txt43 = @{ es = @('### 5.1 Frente a los estándares', '**Qué es frente a los estándares.**', 'Alternativa a ISO/IEC 42001', 'lo hace funcionar caso a caso', '#9-1-crosswalk-de-cobertura');
+              en = @('### 5.1 Compared with the standards', '**What it is compared with the standards.**', 'Alternative to ISO/IEC 42001', 'makes it work use case by use case', '#9-1-coverage-crosswalk') }
   foreach ($lg in 'es', 'en') {
     $md = Join-Path $repo "SEVEN-G\mds\$lg"
     $d04 = [IO.File]::ReadAllText((Get-ChildItem $md -Filter '04_SEVEN-G_*.md').FullName)
@@ -1951,9 +1951,9 @@ try {
   $mal45 = 0
   $md45 = { param($lg, $pfx) [IO.File]::ReadAllText((Get-ChildItem (Join-Path $repo "SEVEN-G\mds\$lg") -File -Filter "$($pfx)_SEVEN-G_*.md" | Select-Object -First 1).FullName) }
   $tx45 = @{
-    es = @{ amen = '| **Envenenamiento de herramientas y conectores** |'; supl = '| **Suplantación del cliente con IA** |'; deriv = '**Derivación inmediata a una persona.**'; trazas = '**Trazas de extremo a extremo.**'; ope21 = '| **OPE-21** | Eficacia de los guardarraíles |'; cap = '| Capacidad | Qué es | Cuándo se usa | Cómo se mide |'; s73 = '### 7.3 Iniciativas de IA para TI y ciberdefensa'; probar = '| 8 | **Probar también es usar** |'
+    es = @{ amen = '| **Envenenamiento de herramientas y conectores** |'; supl = '| **Suplantación del cliente con IA** |'; deriv = '**Derivación inmediata a una persona.**'; trazas = '**Trazas de extremo a extremo.**'; ope21 = '| **OPE-21** | Eficacia de los guardarraíles |'; cap = '| Capacidad | Qué es | Cuándo se usa | Cómo se mide |'; s73 = '### 7.3 Casos de uso de IA para TI y ciberdefensa'; probar = '| 8 | **Probar también es usar** |'
             terminos = @('Pasarela corporativa de IA', 'Banco de pruebas corporativo de agentes', 'Envenenamiento de herramientas y conectores', 'Eficacia de los guardarraíles') }
-    en = @{ amen = '| **Tool and connector poisoning** |'; supl = '| **Customer impersonation with AI** |'; deriv = '**Immediate handover to a person.**'; trazas = '**End-to-end traces.**'; ope21 = '| **OPE-21** | Guardrail effectiveness |'; cap = '| Capability | What it is | When it is used | How it is measured |'; s73 = '### 7.3 AI initiatives for IT and cyber defence'; probar = '| 8 | **Testing is also using** |'
+    en = @{ amen = '| **Tool and connector poisoning** |'; supl = '| **Customer impersonation with AI** |'; deriv = '**Immediate handover to a person.**'; trazas = '**End-to-end traces.**'; ope21 = '| **OPE-21** | Guardrail effectiveness |'; cap = '| Capability | What it is | When it is used | How it is measured |'; s73 = '### 7.3 AI use cases for IT and cyber defence'; probar = '| 8 | **Testing is also using** |'
             terminos = @('Corporate AI gateway', 'Corporate agent test bench', 'Tool and connector poisoning', 'Guardrail effectiveness') } }
   foreach ($lg in 'es', 'en') {
     $t = $tx45[$lg]
@@ -2151,6 +2151,63 @@ try {
     }
   }
   if (-not $mal47) { Ok "dos niveles en la portada (ES/EN), slides de SEVEN-G, SPHERES y áreas sin SPAD, sección «Para qué le sirve a una compañía» en el 00 de SPAD y $nTar47 enlaces de slides en las tarjetas de área de la entrada y la portada" }
+
+  # ---- 48. «Caso de uso», nunca «iniciativa» (D181): el término no vuelve a lo publicado.
+  # Se admiten solo claves, rutas, anclas, identificadores y código (no son texto visible) y la fila de remisión del glosario.
+  Write-Host '48. «Caso de uso» en lugar de «iniciativa» en todo lo publicado (D181)'
+  $mal48 = [Collections.Generic.List[string]]::new()
+  function TextoVisible48([string]$t, [string]$tipo) {
+    if ($tipo -eq 'md') {
+      $t = [regex]::Replace($t, '(?s)```.*?```', ' ')
+      $t = [regex]::Replace($t, '`[^`\n]*`', ' ')
+      $t = [regex]::Replace($t, '\]\([^)\s]*\)', ']')
+      $t = [regex]::Replace($t, '(?m)^\|\s*\*\*(Iniciativa|Initiative)\*\*\s*\|.*$', ' ')   # fila de remisión del glosario
+    }
+    if ($tipo -eq 'html') {
+      $t = [regex]::Replace($t, '(?is)<(script|style|code|pre)\b.*?</\1>', ' ')
+      $t = [regex]::Replace($t, '(?s)<!--.*?-->', ' ')
+      $t = [regex]::Replace($t, '(?i)<tr[^>]*>\s*<td[^>]*>\s*<strong>(Iniciativa|Initiative)</strong>.*?</tr>', ' ')
+      # el texto visible de los atributos title, alt y aria-label también cuenta
+      $attr = ([regex]::Matches($t, '(?i)\s(?:title|alt|aria-label)="([^"]*)"') | ForEach-Object { $_.Groups[1].Value }) -join ' '
+      $t = [regex]::Replace($t, '<[^>]+>', ' ') + ' ' + $attr
+    }
+    $t = [regex]::Replace($t, 'https?://\S+', ' ')
+    $t = [regex]::Replace($t, 'Agentic Security Initiative', ' ')   # nombre propio de un proyecto de OWASP
+    $t = [regex]::Replace($t, '(?i)(«|“|&laquo;|&ldquo;)(iniciativa|initiative)(»|”|&raquo;|&rdquo;)', ' ')   # mención del nombre anterior, entre comillas
+    $t = [regex]::Replace($t, '[#\w./-]*[#_/\\][\w./-]*', ' ')          # rutas, anclas y claves con _ / #
+    $t = [regex]::Replace($t, '(?i)(iniciativ|initiativ)\w*(?=\[|\.\w|=)', ' ')
+    return $t
+  }
+  function Revisar48([string]$rel, [string]$texto, [string]$tipo) {
+    $v = TextoVisible48 $texto $tipo
+    $ms = [regex]::Matches($v, '(?i)[^\n]{0,40}\b(iniciativ|initiativ)\w*[^\n]{0,30}')
+    if ($ms.Count) { $mal48.Add("$rel ($($ms.Count)): «$($ms[0].Value.Trim())»") }
+  }
+  $md48 = Get-ChildItem -Path (Join-Path $repo 'SEVEN-G\mds'), (Join-Path $repo 'SPHERES\mds'), (Join-Path $repo 'SPAD\mds') -Recurse -Filter '*.md' -File |
+    Where-Object { $_.FullName -notmatch '[\\/]_trabajo[\\/]' }
+  foreach ($f in $md48) { Revisar48 $f.FullName.Substring($repo.Length + 1) ([IO.File]::ReadAllText($f.FullName)) 'md' }
+  $html48 = @(Get-ChildItem -Path (Join-Path $repo 'SEVEN-G\build\componentes') -Recurse -File) +
+    @(Get-ChildItem -Path (Join-Path $repo 'SEVEN-G\html') -Recurse -Filter '*.html' -File | Where-Object { $_.FullName -match '[\\/](entrada|areas|preguntas)[\\/]' }) +
+    @(Get-Item (Join-Path $repo 'index.html'), (Join-Path $repo 'en\index.html'))
+  foreach ($f in $html48) { Revisar48 $f.FullName.Substring($repo.Length + 1) ([IO.File]::ReadAllText($f.FullName)) 'html' }
+  # JSON de contenido: se miran solo los valores de texto (no las claves)
+  $json48 = @('SEVEN-G\build\temas.json', 'SEVEN-G\build\preguntas.json', 'SEVEN-G\build\nombres.json', 'presentaciones\terminos.json') | ForEach-Object { Join-Path $repo $_ }
+  $json48 += @(Get-ChildItem (Join-Path $repo 'presentaciones\fuentes') -Recurse -Filter '*.json' -File | ForEach-Object FullName)
+  $json48 += @(Get-ChildItem (Join-Path $repo 'SEVEN-G\herramientas') -Recurse -Filter 'ayuda.json' -File | ForEach-Object FullName)
+  foreach ($f in $json48) {
+    if (-not (Test-Path $f)) { continue }
+    $vals = ([regex]::Matches([IO.File]::ReadAllText($f), '"((?:[^"\\]|\\.)*)"\s*(?=[,\]\}\r\n])') | ForEach-Object { $_.Groups[1].Value } | Where-Object { $_ -match '\s' }) -join "`n"
+    Revisar48 $f.Substring($repo.Length + 1) $vals 'json'
+  }
+  # Interfaz de las herramientas: cadenas con espacios (texto visible) en sus plantillas y en la ayuda del panel
+  $herr48 = @(Get-ChildItem (Join-Path $repo 'SEVEN-G\herramientas') -Recurse -File -Include '*.plantilla.html', 'ayuda_textos.py' |
+    Where-Object { $_.FullName -notmatch '[\\/](ejemplo|galeria)[\\/](salida|[a-z]+[\\/])' })
+  foreach ($f in $herr48) {
+    $vals = ([regex]::Matches([IO.File]::ReadAllText($f.FullName), '(?<q>[''"])((?:(?!\k<q>)[^\\\r\n]|\\.){3,})\k<q>') | ForEach-Object { $_.Groups[2].Value } | Where-Object { $_ -match '\s' }) -join "`n"
+    Revisar48 $f.FullName.Substring($repo.Length + 1) $vals 'json'
+  }
+  if ($mal48.Count) { Mal "«iniciativa» o «initiative» en texto publicado (D181: se dice «caso de uso» / «use case»; solo se admiten claves, rutas, anclas y la fila de remisión del glosario) en $($mal48.Count) ficheros: $(($mal48 | Select-Object -First 15) -join ' · ')$(if ($mal48.Count -gt 15) { " … y $($mal48.Count - 15) más" })" }
+  else { Ok "«caso de uso» en $($md48.Count) Markdown, $($html48.Count) páginas y componentes, $($json48.Count) JSON de contenido y $($herr48.Count) interfaces de herramientas, sin «iniciativa» ni «initiative» visibles" }
 }
 finally { Remove-Item $tmp -Recurse -Force -Confirm:$false -ErrorAction SilentlyContinue }
 

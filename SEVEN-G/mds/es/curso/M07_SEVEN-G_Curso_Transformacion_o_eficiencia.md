@@ -36,7 +36,7 @@ Al terminar sabrá leer el índice de transformación de una compañía, explica
 | Paso | Qué abrir | Qué mirar |
 |---|---|---|
 | 1 | documento 00, sección 5 | El principio y los cinco perfiles. |
-| 2 | documento 12, secciones 3 y 4 | Las preguntas que clasifican la ambición de una iniciativa y las ocho señales del índice. |
+| 2 | documento 12, secciones 3 y 4 | Las preguntas que clasifican la ambición de un caso de uso y las ocho señales del índice. |
 | 3 | documento 12, sección 9 | El ejemplo ilustrativo completo. |
 | 4 | T14 | El mismo ejemplo calculado, con «qué movería el perfil». |
 | 5 | T17 | La tarjeta del índice en el panel del consejo de ejemplo. |

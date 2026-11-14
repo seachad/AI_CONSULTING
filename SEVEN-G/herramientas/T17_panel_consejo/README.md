@@ -8,7 +8,7 @@ Todo lo que genera el conector (panel completo, panel móvil y registro de recom
 
 ---
 
-Convierte el **JSON completo** que exporta el registro de iniciativas **T01** de SEVEN-G (esquema `esquema_registro.schema.json`, versiones `0.1` a `0.8`; la 0.8 añade a cada diagnóstico la madurez en tres lentes —huella tecnológica, alcance del impacto, mínimo exigible y alertas—, que la tarjeta de madurez muestra en la tabla «Madurez en tres lentes» y el móvil con una línea por lente, D120; la 0.7 añade a cada diagnóstico el resumen de los perfiles NIST, que la tarjeta de madurez muestra en su propia tabla, D115; la 0.4 añade campos de los riesgos y la 0.5 la evidencia del índice y las decisiones del consejo, que el conector no lee; la 0.6 la lista `madurez[]` que escribe T15 y que el conector lleva al bloque opcional `madurez` del panel, tarjeta «Madurez de la compañía (D1–D7)» en «Cartera y valor» y bloque del panel móvil, D100) en el JSON del panel (`motor/ESQUEMA.md`) y genera con el motor del panel, incluido en `motor/`:
+Convierte el **JSON completo** que exporta el registro de casos de uso **T01** de SEVEN-G (esquema `esquema_registro.schema.json`, versiones `0.1` a `0.8`; la 0.8 añade a cada diagnóstico la madurez en tres lentes —huella tecnológica, alcance del impacto, mínimo exigible y alertas—, que la tarjeta de madurez muestra en la tabla «Madurez en tres lentes» y el móvil con una línea por lente, D120; la 0.7 añade a cada diagnóstico el resumen de los perfiles NIST, que la tarjeta de madurez muestra en su propia tabla, D115; la 0.4 añade campos de los riesgos y la 0.5 la evidencia del índice y las decisiones del consejo, que el conector no lee; la 0.6 la lista `madurez[]` que escribe T15 y que el conector lleva al bloque opcional `madurez` del panel, tarjeta «Madurez de la compañía (D1–D7)» en «Cartera y valor» y bloque del panel móvil, D100) en el JSON del panel (`motor/ESQUEMA.md`) y genera con el motor del panel, incluido en `motor/`:
 
 - el **panel completo** y el **panel móvil** (T17), sincronizados (misma huella de datos);
 - el **JSON del panel**, para inspeccionarlo o guardarlo como foto con `motor/snapshot.py`;
@@ -29,10 +29,10 @@ flowchart LR
   D --> H["motor/snapshot.py<br>foto de cada sesión"]
 ```
 
-- **El registro T01 es la única entrada de datos.** Cada iniciativa se da de alta en T01 como una oportunidad en un CRM; el conector no añade ni estima nada.
+- **El registro T01 es la única entrada de datos.** Cada caso de uso se da de alta en T01 como una oportunidad en un CRM; el conector no añade ni estima nada.
 - **`config_panel.json` es la configuración general** del panel: umbrales del semáforo de los indicadores (`umbrales_kpi`) y reglas del ciclo de vida (`ciclo_vida`: etapas del embudo, salidas, límites de días por etapa y correspondencia con las fases 0–7 de SEVEN-G). El conector la copia en `meta`; las claves que empiezan por `_` son comentarios.
 - **Todo lo que muestra el panel sale del JSON del panel**; los HTML nunca se editan a mano y se pueden reconstruir en cualquier momento desde el registro.
-- **Por qué importa.** El consejo ve el mismo dato que gestiona la Oficina de IA: una iniciativa que entra en una fase, supera un *gate* o se para en T01 se mueve por el embudo del panel con la fecha real del evento, sin doble captura ni cifras escritas a mano.
+- **Por qué importa.** El consejo ve el mismo dato que gestiona la Oficina de IA: un caso de uso que entra en una fase, supera un *gate* o se para en T01 se mueve por el embudo del panel con la fecha real del evento, sin doble captura ni cifras escritas a mano.
 
 [English version](README_en.md) · [Página del conector](index.html)
 
@@ -87,7 +87,7 @@ El conector no escribe `__pycache__` (`sys.dont_write_bytecode`).
 
 ## Demo
 
-`uv run python t01_a_panel.py` sin argumentos convierte `../T01_registro_iniciativas/datos_demo.json` (compañía, personas y proveedores ficticios) en `ejemplo/salida/` y enlaza los pies a `index.html` y al registro T01. Es el panel de ejemplo que abren el registro de iniciativas (cabecera y banda de «iniciativas de ejemplo») y la página del conector. Si cambian los datos de demostración o `config_panel.json`, se regenera. Nunca se editan a mano los HTML generados.
+`uv run python t01_a_panel.py` sin argumentos convierte `../T01_registro_iniciativas/datos_demo.json` (compañía, personas y proveedores ficticios) en `ejemplo/salida/` y enlaza los pies a `index.html` y al registro T01. Es el panel de ejemplo que abren el registro de casos de uso (cabecera y banda de «casos de uso de ejemplo») y la página del conector. Si cambian los datos de demostración o `config_panel.json`, se regenera. Nunca se editan a mano los HTML generados.
 
 ## Galería de ejemplos por sector (D136)
 
@@ -114,7 +114,7 @@ El estado de cada caso es una etapa del embudo o una salida, definidas en `confi
 | 4 Diseño de la solución · 5 Entrega y validación | `En desarrollo` | Superado G3: se diseña, construye y valida. |
 | 6 Operación y gobierno · 7 Evolución o retirada | `En uso` | Superado G5: está operando. Es una de las dos terminales paralelas del embudo, junto con `Desenganchado` cuando se retira. |
 
-Una iniciativa cerrada (estado `parada` o `retirada`, o con `cierre`) pasa a la salida prevista para la etapa en la que estaba. En la práctica, `En uso` y `Desenganchado` son terminales paralelos del embudo: uno representa producción y el otro retirada, no una progresión lineal dentro del embudo:
+Un caso de uso cerrado (estado `parada` o `retirada`, o con `cierre`) pasa a la salida prevista para la etapa en la que estaba. En la práctica, `En uso` y `Desenganchado` son terminales paralelos del embudo: uno representa producción y el otro retirada, no una progresión lineal dentro del embudo:
 
 | Cierre en T01 | Salida del panel |
 |---|---|
@@ -122,7 +122,7 @@ Una iniciativa cerrada (estado `parada` o `retirada`, o con `cierre`) pasa a la 
 | Parada en las fases 2–5 | `Descartado` |
 | Retirada (o parada) en las fases 6–7 | `Desenganchado` |
 
-**Ciclo de vida como en un CRM (`reporte_compania.historial_estados`).** El conector genera un cambio de estado por cada vez que la iniciativa entra en una etapa: el alta (fecha de registro), cada evento `entrada_fase` de T01 —incluidas las vueltas atrás por pivotar o iterar, que el panel señala— y, si está cerrada, la fecha del cierre. Las entradas consecutivas en la misma etapa se agrupan (fases 0 y 1, 4 y 5, 6 y 7). Con ese historial el panel calcula el tiempo en cada etapa (media, mediana y desviación de cada caso), la conversión a producción, los casos atascados frente a `ciclo_vida.dias_limite` y las entradas, ganados y perdidos por trimestre. El último estado del historial coincide siempre con el estado del caso.
+**Ciclo de vida como en un CRM (`reporte_compania.historial_estados`).** El conector genera un cambio de estado por cada vez que el caso de uso entra en una etapa: el alta (fecha de registro), cada evento `entrada_fase` de T01 —incluidas las vueltas atrás por pivotar o iterar, que el panel señala— y, si está cerrada, la fecha del cierre. Las entradas consecutivas en la misma etapa se agrupan (fases 0 y 1, 4 y 5, 6 y 7). Con ese historial el panel calcula el tiempo en cada etapa (media, mediana y desviación de cada caso), la conversión a producción, los casos atascados frente a `ciclo_vida.dias_limite` y las entradas, ganados y perdidos por trimestre. El último estado del historial coincide siempre con el estado del caso.
 
 La fase y el estado originales se conservan en `casos[].seveng`.
 
@@ -149,14 +149,14 @@ Con `iniciativas[].resultado_operativo` de T01 (indicadores físicos del documen
 | `organizacion`, `compania_principal` | `--organizacion` o `meta.organizacion` | |
 | `consejo_sigla` | `--sigla`; si no, `meta.panel.consejo_sigla` | Por defecto «consejo asesor». |
 | `navegacion`, `umbrales_kpi`, `ciclo_vida` | `config_panel.json` | Configuración general del panel, copiada tal cual (sin las claves de comentario `_…`). `ciclo_vida.fases_seven_g` la usa el conector; el motor la ignora. |
-| `generado`, `ejercicio_valor`, `periodo` | `meta.fecha_referencia` (o `meta.generado`) | Etiqueta «Registro de iniciativas T01 · corte dd-mm-aaaa»; trimestre calculado de la fecha. `periodo.anterior` sin dato. |
+| `generado`, `ejercicio_valor`, `periodo` | `meta.fecha_referencia` (o `meta.generado`) | Etiqueta «Registro de casos de uso T01 · corte dd-mm-aaaa»; trimestre calculado de la fecha. `periodo.anterior` sin dato. |
 | `prefijo_ficheros` | `--prefijo` | |
 | `demo` | `meta.datos_ilustrativos` | |
 | `textos` | Generados por el conector | Aviso legal, aviso de valor, pie con autoría, textos de «sin dato» y rótulos de los conceptos de eficiencias y retorno neutros respecto al sector. |
 | `glosario_extra` | Generado por el conector | SEVEN-G, T01, G3, G5, R6, ambición y correspondencia entre etapas del embudo y fases. |
 | `origen` | `version_esquema` y versión del conector | Bloque propio; el panel no lo lee. |
 
-### `casos[]` (una por iniciativa)
+### `casos[]` (uno por caso de uso)
 
 | Panel | Origen en T01 | Nota |
 |---|---|---|
@@ -174,7 +174,7 @@ Con `iniciativas[].resultado_operativo` de T01 (indicadores físicos del documen
 | `tags.funcion` | `clasificacion.esfera_principal` | «04 Operaciones», etc. |
 | `tags.ambicion` | `ambicion_real`, si no `ambicion_confirmada`, si no `ambicion_propuesta` | Optimizar · Aumentar · Transformar. |
 | `tags.prioridad` | `panel.prioridad` | Alta · Media · Baja; sin dato si no se informa. |
-| `tags.alcance`, `alcance` | `alcance` (esquema 0.3) | Solo en iniciativas transversales (`Transversal`) y plataformas (`Plataforma habilitadora`); las de una unidad no llevan ni la etiqueta ni el bloque. `alcance.unidades` lleva por unidad de negocio el despliegue y la adopción de `alcance.reparto` y el coste, el valor materializado (y cuánto está validado) y la capacidad liberada de los importes con esa `area` (el más reciente por tipo y concepto); una fila sin unidad recoge lo común. En una transversal, `unidad` pasa a «Varias unidades (transversal)». |
+| `tags.alcance`, `alcance` | `alcance` (esquema 0.3) | Solo en casos de uso transversales (`Transversal`) y plataformas (`Plataforma habilitadora`); los de una unidad no llevan ni la etiqueta ni el bloque. `alcance.unidades` lleva por unidad de negocio el despliegue y la adopción de `alcance.reparto` y el coste, el valor materializado (y cuánto está validado) y la capacidad liberada de los importes con esa `area` (el más reciente por tipo y concepto); una fila sin unidad recoge lo común. En un caso de uso transversal, `unidad` pasa a «Varias unidades (transversal)». |
 | `detalle.tipo` | `clasificacion.tecnologia` (todas) | |
 | `detalle.proveedores` | `clasificacion.proveedores` → `proveedores[].nombre` | |
 | `detalle.valor_tipo` | `clasificacion.tipo_valor` | |
@@ -185,7 +185,7 @@ Con `iniciativas[].resultado_operativo` de T01 (indicadores físicos del documen
 
 ### `casos[].economia`
 
-Cada importe de `valores` pasa a un *item* con `importe`, `formula`, `estado`, `fuente` y `fecha`; `atribucion` e `hipotesis` quedan sin dato. Si hay varios importes del mismo momento y tipo, se usa el más reciente; si llevan unidad de negocio (`area`, esquema 0.3), el más reciente de cada unidad, y se suman con el estado más prudente de los sumados y una fórmula que enumera las unidades. Estado: `validado` y `declarado` iguales; `estimado` → `estimado_cati` (clave heredada del motor; en T01 lo estima el equipo de la iniciativa, no el consejo asesor, y el aviso del panel lo explica).
+Cada importe de `valores` pasa a un *item* con `importe`, `formula`, `estado`, `fuente` y `fecha`; `atribucion` e `hipotesis` quedan sin dato. Si hay varios importes del mismo momento y tipo, se usa el más reciente; si llevan unidad de negocio (`area`, esquema 0.3), el más reciente de cada unidad, y se suman con el estado más prudente de los sumados y una fórmula que enumera las unidades. Estado: `validado` y `declarado` iguales; `estimado` → `estimado_cati` (clave heredada del motor; en T01 lo estima el equipo del caso de uso, no el consejo asesor, y el aviso del panel lo explica).
 
 | Panel | Origen en T01 | Nota |
 |---|---|---|
@@ -200,10 +200,10 @@ Cada importe de `valores` pasa a un *item* con `importe`, `formula`, `estado`, `
 | `hipotesis_potencial` | Fórmulas de los valores esperados | |
 | `nota_caso` | Fase y estado de T01; importes de `riesgo_evitado` y `cumplimiento` | Se informan como texto: no suman en el neto (regla de T01). |
 | `moneda` | `meta.moneda` | |
-| `plazo_potencial` | `panel.plazo_potencial` (`AAAA-MM`) | Sin dato si no se informa o si la iniciativa está cerrada. |
+| `plazo_potencial` | `panel.plazo_potencial` (`AAAA-MM`) | Sin dato si no se informa o si el caso de uso está cerrado. |
 | `clave_reparto` | `alcance.tipo` | Transversal: coste por licencias de cada unidad y gobierno común sin unidad. Plataforma: su valor se imputa a los casos que la usan y `comparte_valor_con` lleva `alcance.habilita`. En las demás, sin dato y `comparte_valor_con` vacío. |
 
-En las iniciativas **cerradas** (paradas o retiradas) solo se conserva la construcción; sus demás importes se citan en `nota_caso` y no suman en el panel.
+En los casos de uso **cerrados** (parados o retirados) solo se conserva la construcción; sus demás importes se citan en `nota_caso` y no suman en el panel.
 
 ### `casos[].reporte_compania`
 
@@ -219,7 +219,7 @@ En las iniciativas **cerradas** (paradas o retiradas) solo se conserva la constr
 | `fechas.ultima_revision` | Última decisión de R6 | |
 | `fechas.retirada` | `cierre.fecha` | Fecha de parada o de retirada. |
 | `retirada` | `cierre`: tipo, *gate*, motivo codificado y comentario; `organo`; `sustituto`; `lecciones` | El embudo muestra en la tarjeta de cada caso perdido o desenganchado **por qué** salió y **qué se aprendió**; si el motivo no consta, lo señala. |
-| `historial_estados` | `fecha_registro`, eventos `entrada_fase` y `cierre.fecha` | Ver «Estado del panel». Fuente de cada cambio: «Registro de iniciativas T01»; la nota indica la fase o el cierre. Cada cambio lleva `cifras` (`previsto` y `actual`: inversión, coste recurrente, eficiencias y retorno) tomadas de `eventos[].cifras`. El embudo muestra en cada etapa y tarjeta las cifras de sus casos —lo actual y, si el caso aún no produce, lo previsto, marcado «prev.»—, también en la tabla que se abre al pulsar una etapa y en el ciclo de vida de la ficha. |
+| `historial_estados` | `fecha_registro`, eventos `entrada_fase` y `cierre.fecha` | Ver «Estado del panel». Fuente de cada cambio: «Registro de casos de uso T01»; la nota indica la fase o el cierre. Cada cambio lleva `cifras` (`previsto` y `actual`: inversión, coste recurrente, eficiencias y retorno) tomadas de `eventos[].cifras`. El embudo muestra en cada etapa y tarjeta las cifras de sus casos —lo actual y, si el caso aún no produce, lo previsto, marcado «prev.»—, también en la tabla que se abre al pulsar una etapa y en el ciclo de vida de la ficha. |
 | `complejidad` | `panel.complejidad` | `baja` · `media` · `alta`; sin dato se aplica el límite `sin_dato` de `ciclo_vida.dias_limite`. |
 | `tier_riesgo` | `riesgo_residual_principal` | `critico` → `alto`. |
 | `clasificacion_ria` | `clasificacion.regulatoria` | `riesgo_minimo` → `minimo` · `fuera_ambito` → `no_es_ia` · `pendiente` → sin dato. |
@@ -252,17 +252,17 @@ Vacío: T01 no guarda fotos del panel. Al cierre de cada sesión, desde esta car
 
 | Registro | Origen en T01 | Nota |
 |---|---|---|
-| `id`, `texto`, `destinatario` | `recomendaciones[]` | Al texto se añaden las iniciativas vinculadas. |
+| `id`, `texto`, `destinatario` | `recomendaciones[]` | Al texto se añaden los casos de uso vinculados. |
 | `estado` | `estado` | `abierta` → pendiente · `en_curso` → en curso · `cerrada` → cumplida · `descartada`. |
 | Sesión | `fecha` | Una sesión por fecha distinta. |
-| Ámbito | Esfera principal de las iniciativas vinculadas | «General» si no hay. |
+| Ámbito | Esfera principal de los casos de uso vinculados | «General» si no hay. |
 | Evidencia | `evidencia` | |
-| Enlace al panel | Inventario, si hay iniciativas vinculadas | |
+| Enlace al panel | Inventario, si hay casos de uso vinculados | |
 | Fecha comprometida, valoración del consejo asesor | — | Sin dato. |
 
 ## Qué de T01 no llega al panel
 
-Decisiones y criterios de *gate*, condiciones, evidencias, iteraciones, esperas, plazos y estancadas, T04 y T05, métricas del embudo (conversión, tiempo de decisión, valor ponderado, cohortes), riesgos, no conformidades, proveedores (salvo el nombre), sistemas (salvo su código en `seveng`) y personas (salvo los nombres de responsables y decisores). El motor no tiene dónde mostrarlos. Las esperas tampoco: el panel cuenta el tiempo en cada etapa sin descontarlas, mientras que el análisis de T01 sí las descuenta. La fase, el estado, la intensidad, las esferas y la ambición viajan en `casos[].seveng` (`PROPUESTA_MOTOR.md`).
+Decisiones y criterios de *gate*, condiciones, evidencias, iteraciones, esperas, plazos y casos de uso estancados, T04 y T05, métricas del embudo (conversión, tiempo de decisión, valor ponderado, cohortes), riesgos, no conformidades, proveedores (salvo el nombre), sistemas (salvo su código en `seveng`) y personas (salvo los nombres de responsables y decisores). El motor no tiene dónde mostrarlos. Las esperas tampoco: el panel cuenta el tiempo en cada etapa sin descontarlas, mientras que el análisis de T01 sí las descuenta. La fase, el estado, la intensidad, las esferas y la ambición viajan en `casos[].seveng` (`PROPUESTA_MOTOR.md`).
 
 ## Limitaciones conocidas
 

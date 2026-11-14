@@ -25,7 +25,7 @@
 | **Who verifies it** | The AI Office checks admissibility and completeness; the second line assesses the risk and issues clearance where required. |
 | **Who decides or approves** | The body in the delegation matrix of 30 §7.4, according to the type. Whoever proposes does not approve (30, I-9). |
 | **Stage, *gate* or moment** | At any time; those in force are reviewed at each monthly meeting of the AI Committee and reported quarterly to the board committee (C4). |
-| **Tool** | T01 · Initiative register (exceptions linked to initiatives and decisions, 30 §13). |
+| **Tool** | T01 · Use case register (exceptions linked to use cases and decisions, 30 §13). |
 | **Reference document** | 30 §7.4 and §8.3; 31 §3.7, §3.8 and §4; 37 §3. |
 
 Completion rules:
@@ -45,7 +45,7 @@ Completion rules:
 | Date of request | | DD-MM-AAAA. |
 | Requester and area | | |
 | Type of exception | | Minor methodological · Use policy · Lifecycle requirement · Corporate threshold (30 §7.4). |
-| Scope | | Initiative (IA-AAAA-NNN), system (SIA-AAAA-NNN), tool, area or company. |
+| Scope | | Use case (IA-AAAA-NNN), system (SIA-AAAA-NNN), tool, area or company. |
 | Linked previous exception | | If it is an extension. |
 
 ---

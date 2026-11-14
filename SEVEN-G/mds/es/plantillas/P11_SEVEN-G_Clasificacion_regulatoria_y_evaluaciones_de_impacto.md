@@ -10,7 +10,7 @@
 | Autor | Fernando García Varela |
 | Estado | Borrador para revisión. |
 
-> *Este documento no constituye asesoramiento jurídico.* La clasificación debe realizarse con criterio jurídico cualificado (01 §13). Referencias consultadas en septiembre de 2026. El Reglamento Europeo de IA (Reglamento (UE) 2024/1689) se aplica de forma escalonada y existen iniciativas de modificación del calendario de algunas obligaciones: verifíquense el calendario y el texto vigentes.
+> *Este documento no constituye asesoramiento jurídico.* La clasificación debe realizarse con criterio jurídico cualificado (01 §13). Referencias consultadas en septiembre de 2026. El Reglamento Europeo de IA (Reglamento (UE) 2024/1689) se aplica de forma escalonada y existen propuestas de modificación del calendario de algunas obligaciones: verifíquense el calendario y el texto vigentes.
 
 ---
 
@@ -40,7 +40,7 @@ Reglas de cumplimentación:
 
 | Campo | Contenido | Guía |
 |---|---|---|
-| Código de la iniciativa | | IA-AAAA-NNN. |
+| Código del caso de uso | | IA-AAAA-NNN. |
 | Código y nombre del sistema | | De P05. |
 | Finalidad prevista | | Copiar de P05. La clasificación vale solo para esta finalidad. |
 | Versión del documento | | |

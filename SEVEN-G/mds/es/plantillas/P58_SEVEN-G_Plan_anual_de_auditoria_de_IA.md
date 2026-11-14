@@ -25,7 +25,7 @@
 | **Quién la verifica** | La revisión de calidad de auditoría interna comprueba el universo y las puntuaciones antes de presentar el plan. |
 | **Quién decide o aprueba** | La comisión delegada del consejo (38 §5.3; documento 30 §7.5). Si la auditoría de IA se integra en el plan de auditoría interna corporativa, se aprueba de forma conjunta o coordinada (38 §12.2). |
 | **Etapa del ciclo corporativo** | Preparación tras C5; aprobación antes del inicio del ejercicio; seguimiento trimestral de su ejecución junto con la supervisión C4. |
-| **Herramienta** | No tiene herramienta propia. El universo se extrae de T02 (inventario), T01 (registro de iniciativas) y T09 (proveedores); los hallazgos abiertos, de T08. Las fórmulas de la sección 4 permiten llevarla a una hoja de cálculo. |
+| **Herramienta** | No tiene herramienta propia. El universo se extrae de T02 (inventario), T01 (registro de casos de uso) y T09 (proveedores); los hallazgos abiertos, de T08. Las fórmulas de la sección 4 permiten llevarla a una hoja de cálculo. |
 | **Documento de referencia** | Documento 38 §4, §5 y §12; documento 21 §10.3 (muestra de *gates*); documento 43 §12 (auditoría del valor). |
 | **Lite frente a Enterprise** | Los *gates* Enterprise se verifican todos; los *gates* Lite se auditan por muestra (21 §10.3: al menos el 10 % con un mínimo de tres, incluido al menos un G5). La intensidad es además un factor de la puntuación. |
 
@@ -56,11 +56,11 @@ Reglas de cumplimentación:
 
 ## 3. Universo auditable
 
-Se numera cada unidad de forma correlativa dentro del plan (U01, U02…). Una unidad es un sistema, una iniciativa, un proveedor, un proceso del marco o un tema transversal (38 §5.1).
+Se numera cada unidad de forma correlativa dentro del plan (U01, U02…). Una unidad es un sistema, un caso de uso, un proveedor, un proceso del marco o un tema transversal (38 §5.1).
 
 | Nº | Tipo de unidad | Código | Nombre | Fuente | Responsable | Estado o fase | Última auditoría (código y fecha) |
 |---|---|---|---|---|---|---|---|
-| U01 | Sistema · Iniciativa · Proveedor · Proceso · Tema | SIA-AAAA-NNN · IA-AAAA-NNN · código de T09 · nombre del proceso | | T02 · T01 · T09 · Documento · Informe de riesgos · T08 | | | |
+| U01 | Sistema · Caso de uso · Proveedor · Proceso · Tema | SIA-AAAA-NNN · IA-AAAA-NNN · código de T09 · nombre del proceso | | T02 · T01 · T09 · Documento · Informe de riesgos · T08 | | | |
 | U02 | | | | | | | |
 | U03 | | | | | | | |
 | *(ejemplo ilustrativo)* U01 | Sistema | SIA-2026-014 | Asistente de consultas de clientes | T02 | Responsable de operación de IA del área de clientes | En producción | Nunca auditado |
@@ -71,7 +71,7 @@ Unidades que deben figurar como mínimo:
 | Unidad | Fuente | ¿Incluidas todas? (Sí · No) | Si No, motivo |
 |---|---|---|---|
 | Cada sistema de IA en desarrollo, piloto o producción | T02 | | |
-| Cada iniciativa con *gates* planificados en el ejercicio | T01 | | |
+| Cada caso de uso con *gates* planificados en el ejercicio | T01 | | |
 | Cada proveedor de IA con nivel N2 o N3 | T09 | | |
 | Procesos del marco: ciclo corporativo, gestión de cartera, inventario, riesgos, medición, no conformidades, políticas y alfabetización | Documentos 01, 14, 31, 32, 33, 37 y 40 | | |
 | Temas transversales identificados por la segunda línea o por incidentes | Informes de riesgos; T08 | | |
@@ -203,7 +203,7 @@ Grado de ejecución = trabajos terminados ÷ trabajos planificados hasta la fech
 
 | # | Comprobación | Estado |
 |---|---|---|
-| 1 | El universo incluye todos los sistemas de T02, las iniciativas con *gates* del ejercicio, los proveedores N2 y N3 y los procesos del marco. | Cumple · No cumple · No aplica · Pendiente |
+| 1 | El universo incluye todos los sistemas de T02, los casos de uso con *gates* del ejercicio, los proveedores N2 y N3 y los procesos del marco. | Cumple · No cumple · No aplica · Pendiente |
 | 2 | Cada sistema tiene los nueve factores puntuados con datos de la fecha de corte y la prioridad forzada aplicada cuando corresponde. | |
 | 3 | Todos los sistemas de prioridad Alta tienen trabajo en el ejercicio o figuran como limitación aprobada. | |
 | 4 | La auditoría del marco, con la declaración de aplicación, y la auditoría del valor están planificadas antes de C5. | |
@@ -225,7 +225,7 @@ La pregunta D6.10 del documento 11 (auditoría del marco en los últimos 12 mese
 | Revisa la calidad | Revisión de calidad de auditoría interna | | | |
 | Aprueba | Comisión delegada del consejo | | | |
 
-Separación de funciones: la oficina de IA aporta los datos, pero no decide qué se audita ni puntúa las unidades; ningún área que patrocine iniciativas aprueba el plan.
+Separación de funciones: la oficina de IA aporta los datos, pero no decide qué se audita ni puntúa las unidades; ningún área que patrocine casos de uso aprueba el plan.
 
 ---
 

@@ -31,7 +31,7 @@ El documento contiene las siete dimensiones y los seis niveles, la rúbrica y el
 | La capacidad de la organización —órganos, prácticas, controles, datos, personas y medición— para decidir, construir, operar y supervisar la IA con control. | Cuánta IA usa la compañía ni lo avanzada que es su tecnología. Se muestra aparte, como huella tecnológica (sección 7.6), que no puntúa pero fija el gobierno mínimo exigible. |
 | Si esa capacidad está implantada y funciona, con evidencia observable. | Si la compañía se transforma o solo se eficienta: eso lo mide el índice de transformación (documento 12). |
 | El avance de la compañía en el tiempo con un método constante. | La posición frente a otras compañías. SEVEN-G no publica comparativas de mercado. |
-| La madurez del conjunto de la compañía o de un perímetro declarado. | La calidad de una iniciativa concreta: eso lo deciden los *gates*. |
+| La madurez del conjunto de la compañía o de un perímetro declarado. | La calidad de un caso de uso concreto: eso lo deciden los *gates*. |
 
 El modelo no es una certificación. Un resultado de madurez no sustituye a la auditoría del marco (documento 38) ni acredita el cumplimiento regulatorio. Este documento no constituye asesoramiento jurídico.
 
@@ -53,7 +53,7 @@ El modelo no es una certificación. Un resultado de madurez no sustituye a la au
 | Código | Dimensión | Pregunta que responde | Esferas y documentos relacionados |
 |---|---|---|---|
 | **D1** | **Estrategia y gobierno** | ¿Decide la compañía sobre la IA con tesis, órganos, roles y supervisión del consejo? | Esfera 09 · documentos 13, 30, 31, 60, 62 |
-| **D2** | **Valor y cartera** | ¿Selecciona, prioriza, controla y retira las iniciativas con un ciclo de vida trazado? | Esferas 01–04 · documentos 03, 14, 20, 21 |
+| **D2** | **Valor y cartera** | ¿Selecciona, prioriza, controla y retira los casos de uso con un ciclo de vida trazado? | Esferas 01–04 · documentos 03, 14, 20, 21 |
 | **D3** | **Datos y conocimiento** | ¿Tiene datos y conocimiento con propietario, calidad, base legal y linaje para usarlos en IA? | Esferas 05 y 06 · documento 51 |
 | **D4** | **Tecnología y operación** | ¿Opera la IA en producción con estabilidad, monitorización, reversibilidad y costes conocidos? | Esfera 04 · documentos 42, 52, 53 |
 | **D5** | **Personas y adopción** | ¿Prepara a las personas, consigue uso real y gestiona el efecto de la IA en el trabajo? | Esfera 03 · documentos 23, 50 |
@@ -67,7 +67,7 @@ El modelo no es una certificación. Un resultado de madurez no sustituye a la au
 | **0** | **Inexistente** | No hay práctica reconocible ni responsable. | No se cumplen todos los criterios del nivel 1. |
 | **1** | **Inicial** | Prácticas aisladas que dependen de personas concretas. | Hay responsables identificados y alguna constancia escrita, sin método común. |
 | **2** | **En desarrollo** | La práctica está definida en parte y se aplica en algunos casos o áreas. | Documentos aprobados y registros iniciados, con cobertura incompleta. |
-| **3** | **Definido** | La práctica es común, está aprobada y se aplica a todo el perímetro evaluado. | Evidencias sistemáticas en todas las iniciativas o sistemas que corresponden. |
+| **3** | **Definido** | La práctica es común, está aprobada y se aplica a todo el perímetro evaluado. | Evidencias sistemáticas en todos los casos de uso o sistemas que corresponden. |
 | **4** | **Gestionado** | La práctica se mide con indicadores, se revisa con datos y se actúa sobre las desviaciones. | Series de indicadores y decisiones registradas durante al menos **dos trimestres consecutivos**. |
 | **5** | **Optimizado** | La práctica mejora de forma continua con datos propios. | Al menos **un ciclo C5 completo** con cambios decididos a partir de evidencia y ya aplicados. |
 
@@ -103,7 +103,7 @@ El nivel 0 no tiene criterios propios. Los requisitos temporales de los niveles 
 
 ### 3.2 D1 · Estrategia y gobierno
 
-**Alcance.** Tesis de IA, ambición por esfera y apetito de riesgo; política corporativa y de uso aceptable; órganos (consejo o comisión delegada, comité de IA, oficina de IA); roles de iniciativa y separación de funciones; ciclo corporativo C1–C5; supervisión del consejo y seguimiento de sus recomendaciones. **Se entrevista a:** presidencia o consejero delegado, miembro del consejo o de la comisión delegada, presidencia del comité de IA, responsable de la oficina de IA, secretaría del consejo.
+**Alcance.** Tesis de IA, ambición por esfera y apetito de riesgo; política corporativa y de uso aceptable; órganos (consejo o comisión delegada, comité de IA, oficina de IA); roles de caso de uso y separación de funciones; ciclo corporativo C1–C5; supervisión del consejo y seguimiento de sus recomendaciones. **Se entrevista a:** presidencia o consejero delegado, miembro del consejo o de la comisión delegada, presidencia del comité de IA, responsable de la oficina de IA, secretaría del consejo.
 
 | Nivel | Criterios observables | Evidencias exigidas |
 |---|---|---|
@@ -122,7 +122,7 @@ El nivel 0 no tiene criterios propios. Los requisitos temporales de los niveles 
 | D1.05 | ¿Ha aprobado el consejo la tesis de IA, el nivel de ambición por esfera y el apetito de riesgo a partir de un diagnóstico C1? **(§14)** | 3 | Acta del consejo; tesis aprobada; informe C1 (P33). |
 | D1.06 | ¿Están aprobados los umbrales de C2: criterio de inversión Enterprise, horizonte de retorno, plazos de referencia por fase y plazos de no conformidades? | 3 | Documento de umbrales con su aprobación (P35). |
 | D1.07 | ¿Están constituidos el comité de IA, la oficina de IA y la comisión delegada con las funciones de 01 §8.3, y se reúnen según el calendario de 01 §5.2? **(§14)** | 3 | Mandatos (P38); actas de los últimos seis meses. |
-| D1.08 | ¿Tienen todas las iniciativas activas asignados los roles de 01 §8.1, sin ninguna incompatibilidad de 01 §8.2? **(§14)** | 3 | Muestra de P03; comprobación en T01. |
+| D1.08 | ¿Tienen todos los casos de uso activos asignados los roles de 01 §8.1, sin ninguna incompatibilidad de 01 §8.2? **(§14)** | 3 | Muestra de P03; comprobación en T01. |
 | D1.09 | ¿Revisa el consejo o su comisión delegada el panel de IA al menos trimestralmente, con constancia en acta durante dos trimestres consecutivos? | 4 | Paneles (T17); actas. |
 | D1.10 | ¿Se siguen las recomendaciones del consejo con identificador persistente, responsable, plazo, estado y evidencia, y se mide el tiempo de decisión de los órganos? | 4 | Registro de recomendaciones (T18); métricas de tiempo de decisión (T01). |
 | D1.11 | ¿Se ha revisado la tesis de IA en una C5 con la evidencia de madurez, índice de transformación y cartera, y se han aplicado los cambios aprobados? | 5 | Informe C5 (P37); tesis versionada; acta del consejo. |
@@ -130,28 +130,28 @@ El nivel 0 no tiene criterios propios. Los requisitos temporales de los niveles 
 
 ### 3.3 D2 · Valor y cartera
 
-**Alcance.** Registro de iniciativas y gestión del embudo; ciclo de vida con *gates*; priorización y equilibrio de ambición; presupuesto por etapas; hipótesis de valor y criterios de parada; seguimiento del valor realizado; paradas y retiradas. **Se entrevista a:** comité de IA, oficina de IA, patrocinadores y responsables de producto de una muestra de iniciativas, control de gestión.
+**Alcance.** Registro de casos de uso y gestión del embudo; ciclo de vida con *gates*; priorización y equilibrio de ambición; presupuesto por etapas; hipótesis de valor y criterios de parada; seguimiento del valor realizado; paradas y retiradas. **Se entrevista a:** comité de IA, oficina de IA, patrocinadores y responsables de producto de una muestra de casos de uso, control de gestión.
 
 | Nivel | Criterios observables | Evidencias exigidas |
 |---|---|---|
-| **1** | Hay una relación de iniciativas de IA con responsable. Alguna iniciativa tiene un objetivo de negocio escrito antes de construir. | Relación fechada; propuesta o ficha anterior al inicio. |
-| **2** | Registro de iniciativas con fase, estado y responsable que cubre las iniciativas conocidas. Hay decisiones de *gate* documentadas en parte de las iniciativas. | Registro; registros de decisión de *gate* (P29). |
-| **3** | Todas las iniciativas nuevas están en el registro con la trazabilidad de 01 §6.11 y recorren los *gates*. Cartera priorizada con método documentado. Hipótesis falsables y criterios de parada antes de invertir. | Registro con eventos (T01); P29 anteriores al gasto; acta de cartera; P07, P08, P09. |
-| **4** | Métricas del embudo revisadas mensualmente y equilibrio de cartera trimestralmente durante dos trimestres. Valor realizado frente a hipótesis en todas las iniciativas en producción. Paradas y retiradas ejecutadas con procedimiento. | Informes y actas; P28; registro de retiradas (T22). |
+| **1** | Hay una relación de casos de uso de IA con responsable. Algún caso de uso tiene un objetivo de negocio escrito antes de construir. | Relación fechada; propuesta o ficha anterior al inicio. |
+| **2** | Registro de casos de uso con fase, estado y responsable que cubre los casos de uso conocidos. Hay decisiones de *gate* documentadas en parte de los casos de uso. | Registro; registros de decisión de *gate* (P29). |
+| **3** | Todos los casos de uso nuevos están en el registro con la trazabilidad de 01 §6.11 y recorren los *gates*. Cartera priorizada con método documentado. Hipótesis falsables y criterios de parada antes de invertir. | Registro con eventos (T01); P29 anteriores al gasto; acta de cartera; P07, P08, P09. |
+| **4** | Métricas del embudo revisadas mensualmente y equilibrio de cartera trimestralmente durante dos trimestres. Valor realizado frente a hipótesis en todos los casos de uso en producción. Paradas y retiradas ejecutadas con procedimiento. | Informes y actas; P28; registro de retiradas (T22). |
 | **5** | Probabilidad histórica y valor ponderado calculados con datos propios. Criterios de entrada o priorización modificados a partir de motivos de parada y cohortes. | Análisis en T01; método versionado; informe C5. |
 
 | Código | Pregunta | Nivel | Evidencia requerida |
 |---|---|---|---|
-| D2.01 | ¿Existe una relación de las iniciativas de IA en curso con un responsable identificado para cada una? | 1 | Relación fechada. |
-| D2.02 | ¿Tiene al menos una iniciativa un objetivo de negocio escrito con fecha anterior al inicio de la construcción? | 1 | Propuesta o ficha fechada. |
-| D2.03 | ¿Mantiene la compañía un registro de iniciativas con fase, estado y responsable que cubre todas las iniciativas conocidas? | 2 | Registro; contraste con el inventario (T02). |
-| D2.04 | ¿Hay decisiones de *gate* documentadas, con decisor y resultado, en parte de las iniciativas de los últimos 12 meses? | 2 | Registros de decisión de *gate* (P29). |
-| D2.05 | ¿Están todas las iniciativas nuevas registradas con fechas de fase, esperas, *gates*, criterios, condiciones, etiquetas y motivos de parada (01 §6.11)? **(§14)** | 3 | Muestra de fichas con historial de eventos en T01. |
-| D2.06 | ¿Recorren todas las iniciativas nuevas el ciclo de vida con sus *gates* registrados antes de consumir presupuesto de la fase siguiente? **(§14)** | 3 | Muestra: P29 con fecha anterior al gasto. |
+| D2.01 | ¿Existe una relación de los casos de uso de IA en curso con un responsable identificado para cada uno? | 1 | Relación fechada. |
+| D2.02 | ¿Tiene al menos un caso de uso un objetivo de negocio escrito con fecha anterior al inicio de la construcción? | 1 | Propuesta o ficha fechada. |
+| D2.03 | ¿Mantiene la compañía un registro de casos de uso con fase, estado y responsable que cubre todos los casos de uso conocidos? | 2 | Registro; contraste con el inventario (T02). |
+| D2.04 | ¿Hay decisiones de *gate* documentadas, con decisor y resultado, en parte de los casos de uso de los últimos 12 meses? | 2 | Registros de decisión de *gate* (P29). |
+| D2.05 | ¿Están todos los casos de uso nuevos registrados con fechas de fase, esperas, *gates*, criterios, condiciones, etiquetas y motivos de parada (01 §6.11)? **(§14)** | 3 | Muestra de fichas con historial de eventos en T01. |
+| D2.06 | ¿Recorren todos los casos de uso nuevos el ciclo de vida con sus *gates* registrados antes de consumir presupuesto de la fase siguiente? **(§14)** | 3 | Muestra: P29 con fecha anterior al gasto. |
 | D2.07 | ¿Se prioriza la cartera con un método documentado que usa el neto adicional por euro y el equilibrio de ambición, aprobado por el comité de IA? | 3 | Método (documento 14 o equivalente); acta de aprobación de la cartera. |
-| D2.08 | ¿Tienen todas las iniciativas que superan G2 hipótesis falsable, línea base, ambición confirmada y criterios de parada fijados antes de invertir? | 3 | Muestra de P07, P08 y P09. |
+| D2.08 | ¿Tienen todos los casos de uso que superan G2 hipótesis falsable, línea base, ambición confirmada y criterios de parada fijados antes de invertir? | 3 | Muestra de P07, P08 y P09. |
 | D2.09 | ¿Revisa el comité de IA mensualmente las métricas del embudo (estancadas, condiciones vencidas, conversión) y trimestralmente el equilibrio de la cartera, con decisiones registradas? | 4 | Informes y actas de dos trimestres. |
-| D2.10 | ¿Se compara en cada R6 el valor realizado con la hipótesis en todas las iniciativas en producción, y se ejecutan las paradas y retiradas decididas con el procedimiento del documento 14? | 4 | P28; P30; registro de retiradas (T22). |
+| D2.10 | ¿Se compara en cada R6 el valor realizado con la hipótesis en todos los casos de uso en producción, y se ejecutan las paradas y retiradas decididas con el procedimiento del documento 14? | 4 | P28; P30; registro de retiradas (T22). |
 | D2.11 | ¿Calcula la compañía la probabilidad histórica de llegar a producción desde cada fase y el valor ponderado de la cartera con datos propios? | 5 | Análisis en T01 con historial suficiente. |
 | D2.12 | ¿Se han modificado los criterios de entrada o de priorización a partir de los motivos de parada y del análisis de cohortes, con mejora observable? | 5 | Método versionado; análisis de cohortes. |
 
@@ -162,25 +162,25 @@ El nivel 0 no tiene criterios propios. Los requisitos temporales de los niveles 
 | Nivel | Criterios observables | Evidencias exigidas |
 |---|---|---|
 | **1** | Se conocen las fuentes de datos de los sistemas de IA en producción y hay personas de referencia para las principales. | Relación de fuentes por sistema; personas de referencia. |
-| **2** | Registro de conjuntos de datos y fuentes de conocimiento usados por IA, con propietario. Calidad y base legal revisadas en parte de las iniciativas. | Registro o catálogo; revisiones fechadas. |
-| **3** | Propietario formal por conjunto. Base legal, minimización y evaluaciones de impacto verificadas en fase 3. Linaje en todas las iniciativas Enterprise. Fuentes de conocimiento con propietario, vigencia, permisos y derechos. | Nombramientos; P11; P16; registro de fuentes de conocimiento. |
+| **2** | Registro de conjuntos de datos y fuentes de conocimiento usados por IA, con propietario. Calidad y base legal revisadas en parte de los casos de uso. | Registro o catálogo; revisiones fechadas. |
+| **3** | Propietario formal por conjunto. Base legal, minimización y evaluaciones de impacto verificadas en fase 3. Linaje en todos los casos de uso Enterprise. Fuentes de conocimiento con propietario, vigencia, permisos y derechos. | Nombramientos; P11; P16; registro de fuentes de conocimiento. |
 | **4** | Calidad de datos monitorizada en producción con umbrales, alertas e incidencias durante dos trimestres. Retrasos atribuibles a datos medidos. Plan para el conocimiento crítico. | Configuración (P25); registro de incidencias; métricas en T01; plan. |
-| **5** | Datos y conocimiento reutilizados entre iniciativas con uso medido. Coste y tiempo de preparación de datos medidos y en mejora durante dos ciclos. | Registro de reutilización; series de indicadores (T13). |
+| **5** | Datos y conocimiento reutilizados entre casos de uso con uso medido. Coste y tiempo de preparación de datos medidos y en mejora durante dos ciclos. | Registro de reutilización; series de indicadores (T13). |
 
 | Código | Pregunta | Nivel | Evidencia requerida |
 |---|---|---|---|
 | D3.01 | ¿Puede la compañía identificar las fuentes de datos que usa cada sistema de IA en producción? | 1 | Relación de fuentes por sistema. |
 | D3.02 | ¿Hay una persona de referencia para cada fuente de datos principal usada por la IA? | 1 | Relación con responsables. |
 | D3.03 | ¿Existe un registro de conjuntos de datos y fuentes de conocimiento usados por la IA, con propietario asignado? | 2 | Registro o catálogo. |
-| D3.04 | ¿Se han revisado la calidad y la base legal de los datos antes de construir en parte de las iniciativas de los últimos 12 meses? | 2 | Informes de revisión fechados. |
+| D3.04 | ¿Se han revisado la calidad y la base legal de los datos antes de construir en parte de los casos de uso de los últimos 12 meses? | 2 | Informes de revisión fechados. |
 | D3.05 | ¿Tiene cada conjunto de datos usado por IA en producción un propietario formal con responsabilidades de calidad y de acceso? | 3 | Nombramientos; política de datos. |
 | D3.06 | ¿Se verifican en la fase 3, para todos los datos personales, la base legal, la minimización y, cuando procede, la evaluación de impacto en protección de datos? | 3 | Muestra de P11 y de evaluaciones. |
-| D3.07 | ¿Tienen todas las iniciativas Enterprise linaje de datos y modelos documentado y actualizado tras el último cambio? | 3 | Muestra de P16. |
+| D3.07 | ¿Tienen todos los casos de uso Enterprise linaje de datos y modelos documentado y actualizado tras el último cambio? | 3 | Muestra de P16. |
 | D3.08 | ¿Tienen las fuentes de conocimiento usadas por IA generativa y agentes propietario, fecha de vigencia, permisos de acceso coherentes con los usuarios y derechos de uso verificados? **(si aplica)** | 3 | Registro de fuentes; configuración de permisos; licencias o contratos. |
 | D3.09 | ¿Se monitoriza la calidad de los datos de entrada en producción con umbrales y alertas, y se registran y resuelven las incidencias? | 4 | P25; registro de incidencias de dos trimestres. |
 | D3.10 | ¿Se miden las esperas y paradas atribuibles a datos, y existe un plan aprobado para el conocimiento crítico que depende de pocas personas? | 4 | Métricas en T01; plan con responsables. |
-| D3.11 | ¿Se reutilizan conjuntos de datos preparados o fuentes de conocimiento entre iniciativas, con uso medido? | 5 | Registro de reutilización. |
-| D3.12 | ¿Se miden el coste y el tiempo de preparación de datos por iniciativa, con mejora durante al menos dos ciclos anuales? | 5 | Series de indicadores (T13). |
+| D3.11 | ¿Se reutilizan conjuntos de datos preparados o fuentes de conocimiento entre casos de uso, con uso medido? | 5 | Registro de reutilización. |
+| D3.12 | ¿Se miden el coste y el tiempo de preparación de datos por caso de uso, con mejora durante al menos dos ciclos anuales? | 5 | Series de indicadores (T13). |
 
 ### 3.5 D4 · Tecnología y operación
 
@@ -202,7 +202,7 @@ El nivel 0 no tiene criterios propios. Los requisitos temporales de los niveles 
 | D4.04 | ¿Se monitorizan al menos la disponibilidad y los errores de los sistemas de IA en producción, y se registran los cambios? | 2 | Configuración de monitorización; registro de cambios. |
 | D4.05 | ¿Tienen todos los sistemas en producción responsable de operación, manual de operación y monitorización de rendimiento y degradación con alertas? | 3 | Muestra de P24 y P25. |
 | D4.06 | ¿Tienen todos los sistemas en producción un plan de reversión probado antes de la puesta en producción y, cuando actúan con autonomía A2 o A3, un interruptor de parada probado? | 3 | Muestra de P19 con resultado de la prueba; T10. |
-| D4.07 | ¿Tienen todas las iniciativas en producción la revisión de continuidad (R6) vigente según su intensidad? **(§14)** | 3 | Fecha de la última R6 frente a su periodicidad en T01. |
+| D4.07 | ¿Tienen todos los casos de uso en producción la revisión de continuidad (R6) vigente según su intensidad? **(§14)** | 3 | Fecha de la última R6 frente a su periodicidad en T01. |
 | D4.08 | ¿Se evalúan los sistemas de IA generativa y los agentes con un conjunto de pruebas definido antes de cada cambio de modelo, instrucciones o herramientas, y se conservan sus registros de actividad? **(si aplica)** | 3 | Informes de evaluación; política de conservación de registros. |
 | D4.09 | ¿Se revisan mensualmente indicadores operativos (disponibilidad, degradación, incidentes, tiempo de restauración) con acciones registradas? | 4 | Informes de dos trimestres. |
 | D4.10 | ¿Se conoce el coste recurrente real de cada caso en producción, con reparto de licencias, consumo de modelos, cómputo y personas? | 4 | Informe de costes (T13) de dos trimestres. |
@@ -217,25 +217,25 @@ El artículo 4 del Reglamento Europeo de IA exige a proveedores y responsables d
 
 | Nivel | Criterios observables | Evidencias exigidas |
 |---|---|---|
-| **1** | Ha habido acciones de formación o sensibilización sobre IA. Alguna iniciativa que cambia el trabajo cuenta con el área usuaria. | Registros de asistencia; actas o carta de iniciativa. |
-| **2** | Programa de alfabetización aprobado. Planes de adopción en parte de las iniciativas. | Programa; P20. |
-| **3** | Alfabetización adecuada a su función de todo el personal que usa o supervisa IA. Formación de los roles SEVEN-G. Plan de adopción en todas las iniciativas de Aumentar y Transformar. Capacidad liberada registrada aparte. Información y consulta cuando se exige. | Registro de formación por colectivo; P20 anteriores a G4; T12 o T20; actas. |
+| **1** | Ha habido acciones de formación o sensibilización sobre IA. Algún caso de uso que cambia el trabajo cuenta con el área usuaria. | Registros de asistencia; actas o carta de caso de uso. |
+| **2** | Programa de alfabetización aprobado. Planes de adopción en parte de los casos de uso. | Programa; P20. |
+| **3** | Alfabetización adecuada a su función de todo el personal que usa o supervisa IA. Formación de los roles SEVEN-G. Plan de adopción en todos los casos de uso de Aumentar y Transformar. Capacidad liberada registrada aparte. Información y consulta cuando se exige. | Registro de formación por colectivo; P20 anteriores a G4; T12 o T20; actas. |
 | **4** | Adopción real y destino de la capacidad liberada medidos durante dos trimestres. | Indicadores de uso; informes de T20. |
 | **5** | Roles o estructuras rediseñados con supervisión y evaluación posterior. Dependencia de externos en capacidades críticas reducida de forma medida. | Organigramas y descripciones de puesto; evaluación; series de indicadores. |
 
 | Código | Pregunta | Nivel | Evidencia requerida |
 |---|---|---|---|
 | D5.01 | ¿Se ha realizado alguna acción de formación o sensibilización sobre IA en los últimos 12 meses? | 1 | Registros de asistencia. |
-| D5.02 | ¿Participa el área usuaria o recursos humanos en alguna iniciativa que cambia el trabajo de las personas? | 1 | Actas; carta de la iniciativa (P01). |
+| D5.02 | ¿Participa el área usuaria o recursos humanos en algún caso de uso que cambia el trabajo de las personas? | 1 | Actas; carta del caso de uso (P01). |
 | D5.03 | ¿Existe un programa de alfabetización en IA aprobado, con destinatarios, contenidos y calendario? | 2 | Programa aprobado. |
-| D5.04 | ¿Tienen parte de las iniciativas un plan de adopción con formación y comunicación? | 2 | P20. |
+| D5.04 | ¿Tienen parte de los casos de uso un plan de adopción con formación y comunicación? | 2 | P20. |
 | D5.05 | ¿Ha recibido todo el personal que usa o supervisa sistemas de IA una formación de alfabetización adecuada a su función, con registro? | 3 | Registro de formación; cobertura por colectivo. |
 | D5.06 | ¿Han recibido formación sobre sus responsabilidades las personas con roles SEVEN-G (patrocinadores, responsables de riesgos, auditores de IA, miembros del comité)? | 3 | Registro de formación por rol. |
-| D5.07 | ¿Tienen todas las iniciativas de Aumentar y Transformar plan de adopción y de personas aprobado antes de G4? | 3 | Muestra de P20 con fecha. |
+| D5.07 | ¿Tienen todos los casos de uso de Aumentar y Transformar plan de adopción y de personas aprobado antes de G4? | 3 | Muestra de P20 con fecha. |
 | D5.08 | ¿Se registra la capacidad liberada separada del ahorro y se informa y consulta a la representación de los trabajadores cuando la normativa o los acuerdos lo exigen? | 3 | Registros en T12 o T20; actas o comunicaciones. |
-| D5.09 | ¿Se mide la adopción real (usuarios activos y uso frente a lo previsto) de todas las iniciativas en producción? | 4 | Indicadores de dos trimestres. |
+| D5.09 | ¿Se mide la adopción real (usuarios activos y uso frente a lo previsto) de todos los casos de uso en producción? | 4 | Indicadores de dos trimestres. |
 | D5.10 | ¿Se sigue trimestralmente qué capacidad liberada se ha materializado como menor coste o se ha reasignado, con destino explícito? | 4 | Informes de T20 o T12. |
-| D5.11 | ¿Se han rediseñado roles o estructuras a raíz de iniciativas de IA, con supervisión definida y evaluación posterior? | 5 | Organigramas; descripciones de puesto; evaluación. |
+| D5.11 | ¿Se han rediseñado roles o estructuras a raíz de casos de uso de IA, con supervisión definida y evaluación posterior? | 5 | Organigramas; descripciones de puesto; evaluación. |
 | D5.12 | ¿Se ha reducido de forma medida la dependencia de proveedores externos en las capacidades de IA que la tesis define como internas? | 5 | Series de indicadores; plan de capacidades. |
 
 ### 3.7 D6 · Riesgo, seguridad y cumplimiento
@@ -245,8 +245,8 @@ El artículo 4 del Reglamento Europeo de IA exige a proveedores y responsables d
 | Nivel | Criterios observables | Evidencias exigidas |
 |---|---|---|
 | **1** | Asesoría jurídica, cumplimiento o seguridad se consultan antes de usar IA en parte de los casos. Algún riesgo de IA figura en el registro de riesgos. | Informes o consultas formales fechadas; registro corporativo de riesgos. |
-| **2** | Inventario iniciado que incluye sistemas propios, de terceros y uso corporativo. Responsable de riesgos de IA independiente de quien construye. Riesgos evaluados en parte de las iniciativas. | Inventario (T02); nombramiento; matrices de riesgo. |
-| **3** | Inventario completo con clasificación, intensidad y responsable, y prácticas prohibidas descartadas. Matriz y evaluaciones de impacto en todas las iniciativas desde fase 3. Proceso de no conformidades de 01 §12. Proveedores evaluados y controles de agentes. | T02, P05, P11, P12; registro T08; P14, P18, T09, T10. |
+| **2** | Inventario iniciado que incluye sistemas propios, de terceros y uso corporativo. Responsable de riesgos de IA independiente de quien construye. Riesgos evaluados en parte de los casos de uso. | Inventario (T02); nombramiento; matrices de riesgo. |
+| **3** | Inventario completo con clasificación, intensidad y responsable, y prácticas prohibidas descartadas. Matriz y evaluaciones de impacto en todos los casos de uso desde fase 3. Proceso de no conformidades de 01 §12. Proveedores evaluados y controles de agentes. | T02, P05, P11, P12; registro T08; P14, P18, T09, T10. |
 | **4** | Concentración de riesgos revisada trimestralmente e indicadores de control en la comisión delegada durante dos trimestres. Auditoría del marco por la tercera línea en los últimos 12 meses. Pruebas de seguridad específicas periódicas. | Actas; informes; informe de auditoría; informes de pruebas. |
 | **5** | Eficacia de controles clave comprobada con simulacros. Reincidencia de no conformidades reducida. Obligaciones nuevas incorporadas antes de su fecha de aplicación. | Informes de simulacro; series por causa; mapeo regulatorio versionado. |
 
@@ -255,9 +255,9 @@ El artículo 4 del Reglamento Europeo de IA exige a proveedores y responsables d
 | D6.01 | ¿Se consulta a asesoría jurídica, cumplimiento o seguridad antes de poner en uso sistemas de IA, al menos en parte de los casos? | 1 | Informes o consultas formales fechadas. |
 | D6.02 | ¿Figura algún riesgo de IA en el registro de riesgos de la compañía? | 1 | Registro corporativo de riesgos. |
 | D6.03 | ¿Existe un inventario de sistemas de IA iniciado que incluye sistemas propios, de terceros y uso corporativo de IA de propósito general? | 2 | Inventario (T02). |
-| D6.04 | ¿Hay un responsable de riesgos de IA nombrado, independiente de los equipos que construyen, y se evalúan los riesgos en parte de las iniciativas? | 2 | Nombramiento; matrices de riesgo. |
+| D6.04 | ¿Hay un responsable de riesgos de IA nombrado, independiente de los equipos que construyen, y se evalúan los riesgos en parte de los casos de uso? | 2 | Nombramiento; matrices de riesgo. |
 | D6.05 | ¿Incluye el inventario todos los sistemas de IA con clasificación regulatoria, intensidad y responsable, y se ha descartado de forma documentada el uso de prácticas prohibidas? **(§14)** | 3 | T02; P05; P11; declaración de completitud firmada por cada área (P32, anexo). |
-| D6.06 | ¿Tienen todas las iniciativas en fase 3 o posterior matriz y registro de riesgos con la escala del documento 33, y las evaluaciones de impacto aplicables? | 3 | Muestra de P12 y P11. |
+| D6.06 | ¿Tienen todos los casos de uso en fase 3 o posterior matriz y registro de riesgos con la escala del documento 33, y las evaluaciones de impacto aplicables? | 3 | Muestra de P12 y P11. |
 | D6.07 | ¿Se gestionan las no conformidades con el proceso de 01 §12: clasificación, contención, causa raíz, acción correctiva, cierre y plazos? **(§14)** | 3 | Registro (T08); muestra de expedientes. |
 | D6.08 | ¿Se evalúan los proveedores de IA con los niveles N1–N3 y tienen los agentes con autonomía A2 o A3 identidad propia, permisos mínimos, interruptor de parada y pruebas de inyección de instrucciones antes de producción? **(si aplica, en la parte de agentes)** | 3 | P14; T09; P18; T10. |
 | D6.09 | ¿Revisa el comité de IA trimestralmente la concentración de riesgos de la cartera, y recibe la comisión delegada indicadores de no conformidades, incidentes S1–S4 y uso no autorizado detectado? | 4 | Actas e informes de dos trimestres. |
@@ -271,18 +271,18 @@ El artículo 4 del Reglamento Europeo de IA exige a proveedores y responsables d
 
 | Nivel | Criterios observables | Evidencias exigidas |
 |---|---|---|
-| **1** | Alguna iniciativa declara por escrito beneficios esperados u obtenidos. Hay una cifra identificable de coste de la IA. | Propuestas o informes; presupuesto. |
-| **2** | Parte de las iniciativas tiene línea base medida y valor con fórmula. La dirección recibe un informe periódico de IA. | P08, P09; informes de dos periodos. |
+| **1** | Algún caso de uso declara por escrito beneficios esperados u obtenidos. Hay una cifra identificable de coste de la IA. | Propuestas o informes; presupuesto. |
+| **2** | Parte de los casos de uso tiene línea base medida y valor con fórmula. La dirección recibe un informe periódico de IA. | P08, P09; informes de dos periodos. |
 | **3** | Las reglas de medición se aplican a todos los importes. El consejo recibe el panel con la proporción de valor validado. Las evidencias son trazables y verificadas. El índice de transformación está calculado. | T12; panel (T17) y acta; muestra en T03; resultado de T14. |
 | **4** | Validación independiente del valor en cada periodo, agilidad medida por riesgo y ambición y medición auditada por muestreo, durante dos trimestres. | Informes de validación; P28; métricas de T01; informe de auditoría. |
 | **5** | Umbrales recalibrados con datos propios. Series de valor y coste de dos ciclos usadas en la planificación financiera. | Acta de C5; parámetros versionados; presupuesto. |
 
 | Código | Pregunta | Nivel | Evidencia requerida |
 |---|---|---|---|
-| D7.01 | ¿Declara alguna iniciativa por escrito beneficios esperados u obtenidos? | 1 | Propuesta o informe. |
+| D7.01 | ¿Declara algún caso de uso por escrito beneficios esperados u obtenidos? | 1 | Propuesta o informe. |
 | D7.02 | ¿Existe una cifra identificable del coste o de la inversión de la compañía en IA? | 1 | Presupuesto o informe. |
-| D7.03 | ¿Tienen parte de las iniciativas línea base medida y valor expresado con fórmula? | 2 | P09; P08. |
-| D7.04 | ¿Recibe la dirección un informe periódico sobre la IA con iniciativas, costes y resultados? | 2 | Informes de dos periodos. |
+| D7.03 | ¿Tienen parte de los casos de uso línea base medida y valor expresado con fórmula? | 2 | P09; P08. |
+| D7.04 | ¿Recibe la dirección un informe periódico sobre la IA con casos de uso, costes y resultados? | 2 | Informes de dos periodos. |
 | D7.05 | ¿Tienen todos los importes fórmula, carácter incremental y estado, con eficiencias, retorno y coste recurrente separados y la capacidad liberada informada aparte? **(§14)** | 3 | Muestra en T12; informe al consejo. |
 | D7.06 | ¿Reporta la compañía al consejo con el panel de supervisión, mostrando la proporción de valor validado y los datos ausentes como "sin dato"? **(§14)** | 3 | Panel (T17); acta. |
 | D7.07 | ¿Tienen las evidencias de los *gates* autor, fecha, versión y verificación, y comprueba el verificador que no se han elaborado a posteriori? | 3 | Muestra en T03; informes del verificador. |
@@ -357,7 +357,7 @@ Una evidencia es válida si **existe**, es **trazable** (autor, fecha y versión
 
 ### 4.6 Muestreo de evidencias
 
-Las preguntas sobre prácticas que deben aplicarse a "todas" las iniciativas o sistemas se verifican sobre una muestra del registro (T01) o del inventario (T02):
+Las preguntas sobre prácticas que deben aplicarse a "todos" los casos de uso o sistemas se verifican sobre una muestra del registro (T01) o del inventario (T02):
 
 | Población en el perímetro | Tamaño mínimo de la muestra |
 |---|---|
@@ -366,7 +366,7 @@ Las preguntas sobre prácticas que deben aplicarse a "todas" las iniciativas o s
 | 21–60 | 8 |
 | Más de 60 | 12 |
 
-La muestra es **estratificada**: incluye, si existen, al menos una iniciativa Enterprise, una en producción, una de Aumentar o Transformar, una de terceros y una de IA generativa o agentes. La selecciona el equipo evaluador, no el área evaluada.
+La muestra es **estratificada**: incluye, si existen, al menos un caso de uso Enterprise, uno en producción, uno de Aumentar o Transformar, uno de terceros y uno de IA generativa o agentes. La selecciona el equipo evaluador, no el área evaluada.
 
 El verificador independiente revisa **todas** las respuestas "Sí" de D1 y D6 (por su efecto en el nivel global), todas las preguntas **(§14)** y al menos el 25 % de las demás respuestas "Sí", elegidas por él.
 
@@ -430,7 +430,7 @@ La madurez mide la **capacidad** de gobernar y capturar valor; el índice mide *
 
 ### 7.3 Con la declaración de aplicación (01 §14)
 
-Las diez preguntas **(§14)** acreditan las reglas del núcleo de SEVEN-G (01 §14.1) que tienen pregunta: N-01, N-02, N-04, N-06 y N-11 a N-14; las demás (N-03, N-05 y N-07 a N-10) las comprueba la auditoría de la declaración sobre el registro (38 §11.2). Una compañía puede declarar que aplica SEVEN-G cuando **todas ellas están en "Sí" en una evaluación verificada** y las iniciativas previas al marco se están regularizando dentro del plazo aprobado en C2. Como todas son de nivel 3, **una compañía con nivel 3 verificado en D1, D2, D4, D6 y D7 cumple esas reglas**; la declaración se basa, no obstante, en las preguntas y no en el nivel global.
+Las diez preguntas **(§14)** acreditan las reglas del núcleo de SEVEN-G (01 §14.1) que tienen pregunta: N-01, N-02, N-04, N-06 y N-11 a N-14; las demás (N-03, N-05 y N-07 a N-10) las comprueba la auditoría de la declaración sobre el registro (38 §11.2). Una compañía puede declarar que aplica SEVEN-G cuando **todas ellas están en "Sí" en una evaluación verificada** y los casos de uso previos al marco se están regularizando dentro del plazo aprobado en C2. Como todas son de nivel 3, **una compañía con nivel 3 verificado en D1, D2, D4, D6 y D7 cumple esas reglas**; la declaración se basa, no obstante, en las preguntas y no en el nivel global.
 
 ### 7.4 Con el panel y los órganos
 
@@ -457,18 +457,18 @@ El nivel de madurez responde a una sola pregunta: **¿gobierna la compañía la 
 | Lente | Pregunta | Escala | Dónde se define | Cómo se obtiene |
 |---|---|---|---|---|
 | **1 · Capacidad de gobierno** | ¿Lo hace con control? | 0–5 por dimensión D1–D7 y global | Secciones 2 a 5 | Cuestionario verificado (T15) |
-| **2 · Huella tecnológica** | ¿Qué IA tiene en uso y cuánta exigencia de gobierno supone? | HT0–HT5, descriptiva: no es una nota | Esta sección | Tecnología y autonomía de las iniciativas en uso del registro T01; sin registro, la pregunta Q01 del documento 96 |
-| **3 · Alcance del impacto** | ¿A qué afecta: tareas, procesos, personas y organización, modelo de negocio? | IM1–IM4 por iniciativa y su distribución en la compañía | Documento 12 §3.7 | Ambición real y preguntas IT-P1 a IT-P4 verificadas de las iniciativas en uso |
+| **2 · Huella tecnológica** | ¿Qué IA tiene en uso y cuánta exigencia de gobierno supone? | HT0–HT5, descriptiva: no es una nota | Esta sección | Tecnología y autonomía de los casos de uso en uso del registro T01; sin registro, la pregunta Q01 del documento 96 |
+| **3 · Alcance del impacto** | ¿A qué afecta: tareas, procesos, personas y organización, modelo de negocio? | IM1–IM4 por caso de uso y su distribución en la compañía | Documento 12 §3.7 | Ambición real y preguntas IT-P1 a IT-P4 verificadas de los casos de uso en uso |
 
 **La tecnología no sube ni baja el nivel de madurez.** Sumarla premiaría adoptar por delante del gobierno: una compañía con modelos predictivos bien gobernados es más madura que otra con IA generativa sin control. Lo que hace la huella es **fijar el gobierno mínimo que se exige**, con el mismo espíritu que los objetivos por ambición de la sección 8, y disparar alertas cuando no se alcanza.
 
 #### Huella tecnológica
 
-Se informa el **nivel más alto en uso** (iniciativas en las fases 6 y 7 sin cerrar) y la **amplitud** (tipos de tecnología distintos y número de sistemas en uso). Los pilotos se muestran aparte, como «en exploración». El orden es de **exigencia de gobierno creciente**, no de «mejor tecnología».
+Se informa el **nivel más alto en uso** (casos de uso en las fases 6 y 7 sin cerrar) y la **amplitud** (tipos de tecnología distintos y número de sistemas en uso). Los pilotos se muestran aparte, como «en exploración». El orden es de **exigencia de gobierno creciente**, no de «mejor tecnología».
 
 | Nivel | Nombre | Qué hay en uso | Tecnología en el registro T01 |
 |---|---|---|---|
-| **HT0** | Sin IA en uso | Nada en producción (puede haber uso no autorizado) | Sin iniciativas en uso |
+| **HT0** | Sin IA en uso | Nada en producción (puede haber uso no autorizado) | Sin casos de uso en uso |
 | **HT1** | Automatización sin aprendizaje | Reglas o RPA. No es IA a efectos del inventario (documento 32), pero se registra como contexto | `reglas` |
 | **HT2** | IA de terceros incluida | Asistentes corporativos, SaaS o productos con IA; la compañía no construye | `ia_terceros_embebida` |
 | **HT3** | Modelos predictivos propios | ML predictivo, visión u optimización con aprendizaje | `ml_predictivo`, `vision`, `optimizacion` |
@@ -493,9 +493,9 @@ Desde HT2, D5 recoge la alfabetización de quienes usan la IA, que el Reglamento
 
 | Alerta | Cuándo salta | Gravedad | Qué pide |
 |---|---|---|---|
-| **Adopción por delante del gobierno** | Alguna dimensión por debajo del mínimo exigible por la huella en uso | Alta si es D1 o D6; media en las demás | Acciones prioritarias en el plan de mejora (P34 §6.6). Mientras D6 esté por debajo, ninguna iniciativa nueva de ese nivel de huella debería superar G5 sin una condición explícita de mejora, plazo y responsable |
-| **Gobierno sin uso** | Nivel global 3 o superior con huella HT1 o inferior, o ninguna iniciativa en uso doce meses después de C2 | Media | Revisar la cartera y el embudo (documento 14; D2.09): el marco no debe convertirse en burocracia sin valor |
-| **Transformación sin personas** | Alguna iniciativa en uso con alcance IM3 o IM4 y D5 en 2 o menos | Alta | Plan de adopción y de personas (documentos 23 y 50; D5.07 y D5.08) antes del siguiente *gate* |
+| **Adopción por delante del gobierno** | Alguna dimensión por debajo del mínimo exigible por la huella en uso | Alta si es D1 o D6; media en las demás | Acciones prioritarias en el plan de mejora (P34 §6.6). Mientras D6 esté por debajo, ningún caso de uso nuevo de ese nivel de huella debería superar G5 sin una condición explícita de mejora, plazo y responsable |
+| **Gobierno sin uso** | Nivel global 3 o superior con huella HT1 o inferior, o ningún caso de uso en uso doce meses después de C2 | Media | Revisar la cartera y el embudo (documento 14; D2.09): el marco no debe convertirse en burocracia sin valor |
+| **Transformación sin personas** | Algún caso de uso en uso con alcance IM3 o IM4 y D5 en 2 o menos | Alta | Plan de adopción y de personas (documentos 23 y 50; D5.07 y D5.08) antes del siguiente *gate* |
 
 La lectura cruzada con el índice de transformación (sección 7.2 y 12 §5.3) se mantiene y se muestra junto a estas alertas. T15 presenta las tres lentes en su vista «Tres lentes», guarda su resumen en el registro T01 y el panel del consejo (T17) lo muestra en la tarjeta de madurez.
 
@@ -526,7 +526,7 @@ El consejo no debería aprobar apuestas de Transformar en G2 con D1 o D6 inferio
 | Dimensión | Nivel | Avance al siguiente | Criterio bloqueante principal |
 |---|---|---|---|
 | D1 · Estrategia y gobierno | 3 | 25 % | D1.09: el panel solo se ha revisado en un trimestre. |
-| D2 · Valor y cartera | 3 | 50 % | D2.10: dos iniciativas en producción sin comparación con su hipótesis. |
+| D2 · Valor y cartera | 3 | 50 % | D2.10: dos casos de uso en producción sin comparación con su hipótesis. |
 | D3 · Datos y conocimiento | 3 | 0 % | D3.09: sin monitorización de calidad en producción. |
 | D4 · Tecnología y operación | 4 | 25 % | D4.11: sin medición por cohortes. |
 | D5 · Personas y adopción | 3 | 50 % | D5.10: la capacidad liberada no tiene destino registrado. |
@@ -560,7 +560,7 @@ El consejo no debería aprobar apuestas de Transformar en G2 con D1 o D6 inferio
 |---|---|
 | **00 · Qué es SEVEN-G** | Madurez con evidencia observable (§3.3 y §4.5). |
 | **01 · Metodología fundacional** | C1 y C5 (§5), roles (§8), no conformidades (§12) y declaración de aplicación (§14). |
-| **03 · Herramientas y registro de iniciativas** | T15 y fuentes de evidencia. |
+| **03 · Herramientas y registro de casos de uso** | T15 y fuentes de evidencia. |
 | **12 · Índice de transformación** | Lectura cruzada. |
 | **13 · Tesis de IA y apetito de riesgo** | Objetivos de madurez y pesos. |
 | **14 · Gestión de cartera** | Método de priorización y retiradas (D2). |

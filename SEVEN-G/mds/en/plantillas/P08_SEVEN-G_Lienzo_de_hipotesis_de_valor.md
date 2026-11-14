@@ -1,6 +1,6 @@
 # Value hypothesis canvas
 
-**Formulates the initiative's expected value as a falsifiable, measurable hypothesis expressed in money, with its attribution method and stop criteria set before investing.**
+**Formulates the use case's expected value as a falsifiable, measurable hypothesis expressed in money, with its attribution method and stop criteria set before investing.**
 
 | | |
 |---|---|
@@ -32,7 +32,7 @@ Rules that apply (00 §6):
 - **Efficiencies**, **return** and **recurring cost** are kept separate. **Annual net value = efficiencies + return − recurring cost.**
 - **Released capacity does not count** until it is realised or explicitly reassigned.
 - Each euro is attributed to **a single case**; if there are shared outcomes, the allocation is declared.
-- **A hypothesis that cannot fail is not valid.** The stop criteria may not be relaxed afterwards without the approval of the body that authorised the initiative (01 §7.4).
+- **A hypothesis that cannot fail is not valid.** The stop criteria may not be relaxed afterwards without the approval of the body that authorised the use case (01 §7.4).
 
 The figures in the examples are **fictitious**.
 
@@ -42,8 +42,8 @@ The figures in the examples are **fictitious**.
 
 | Field | Content | Guidance |
 |---|---|---|
-| Initiative code | | IA-AAAA-NNN. |
-| Initiative name | | |
+| Use case code | | IA-AAAA-NNN. |
+| Use case name | | |
 | Confirmed ambition level | | Optimise · Augment · Transform (P07, Confirmed column). |
 | Primary sphere | | Taxonomy in 03 §3.3. |
 | Intensity | | Lite · Enterprise. |
@@ -112,7 +112,7 @@ Falsifiability test:
 | Threats to validity | | Seasonality, simultaneous changes in the process, novelty effect, selection of favourable cases. |
 | How they are controlled | | Measures to neutralise each threat. |
 | Who validates the measurement | | Management control or audit (condition for *validated* status). |
-| Allocation with other initiatives | | If another initiative contributes to the same outcome, percentage attributed to each and criterion (rule 5). |
+| Allocation with other use cases | | If another use case contributes to the same outcome, percentage attributed to each and criterion (rule 5). |
 
 ---
 

@@ -16,7 +16,7 @@
 
 > **Aviso legal y exención de responsabilidad.** SEVEN-G es un marco metodológico de referencia que se ofrece «tal cual» y con fines exclusivamente informativos. No constituye asesoramiento jurídico, regulatorio, financiero ni profesional, ni garantiza el cumplimiento de ninguna norma. Las referencias a regulación general (como el Reglamento Europeo de IA, el RGPD, DORA o NIS2), a normas técnicas y a regulación específica de cada sector o jurisdicción pueden ser incompletas, no aplicar a un caso concreto o quedar desactualizadas por cambios normativos, interpretaciones o criterios de las autoridades posteriores a su fecha de consulta. **Cada organización que use SEVEN-G es la única responsable de identificar la normativa que le aplica, verificar su vigencia y certificar su propio cumplimiento regulatorio**, con el asesoramiento cualificado que corresponda. Esta metodología es una ayuda genérica y gratuita, compartida con la comunidad para que nadie tenga que empezar desde cero; cada persona u organización puede y debe adaptarla a su propio uso. No debe entenderse que sus partes jurídicamente sensibles hayan sido revisadas por una asesoría jurídica: esas revisiones, para cada empresa o sector, son responsabilidad última de la empresa, el consultor o la organización que la use. Aunque se procura mantenerla al día, alguna norma puede haber cambiado sin que se recoja aquí. En la máxima medida permitida por la ley, el autor no asume responsabilidad alguna por los efectos de su aplicación en ninguna organización ni por su aplicabilidad completa. La metodología no otorga certificación de ningún tipo. El autor no asume responsabilidad alguna por el uso que se haga de este contenido ni por las decisiones que se adopten con él. Los datos, cifras, compañías y casos de los ejemplos son ficticios o ilustrativos.
 
-<!-- esencial: siempre | Desde que una iniciativa entra en producción: manual de operación, monitorización y alertas, gestión de cambios y de incidentes, plan de reversión y revisión de continuidad R6 (semestral en Lite, trimestral en Enterprise). La sección 14 resume qué cambia entre Lite y Enterprise. -->
+<!-- esencial: siempre | Desde que un caso de uso entra en producción: manual de operación, monitorización y alertas, gestión de cambios y de incidentes, plan de reversión y revisión de continuidad R6 (semestral en Lite, trimestral en Enterprise). La sección 14 resume qué cambia entre Lite y Enterprise. -->
 
 ## 1. Objeto y alcance
 
@@ -576,7 +576,7 @@ La decisión de retirar se toma en G7 y se documenta en P30; la gestión se apoy
 6. **Modelos, instrucciones e índices:** archivo de la versión final cuando proceda; eliminación de índices derivados de fuentes con datos personales; P16 en estado *retirado*.
 7. **Registros:** se conservan hasta el fin de su plazo (sección 11.2); nunca se eliminan con la retirada.
 8. **Proveedores:** baja de servicios, confirmación de eliminación de datos por el proveedor, cierre de licencias y consumos (documento 36).
-9. **Inventario y registro:** estado *Retirada* en T01 y T02 con fecha, motivo codificado, órgano que decide y sustituto.
+9. **Inventario y registro:** estado *Retirado* en T01 y T02 con fecha, motivo codificado, órgano que decide y sustituto.
 10. **Verificación posterior:** tras un periodo definido, comprobar que no quedan accesos, costes ni procesos dependientes; nota de cierre verificada por el auditor de IA en Enterprise.
 
 ---

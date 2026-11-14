@@ -28,7 +28,7 @@
 
 Reglas de cumplimentación:
 
-- **Una ficha por sistema de IA.** Una iniciativa puede tener varios sistemas y un sistema puede servir a varias iniciativas.
+- **Una ficha por sistema de IA.** Un caso de uso puede tener varios sistemas y un sistema puede servir a varios casos de uso.
 - Los campos de clasificación usan **literalmente** la taxonomía controlada de 03 §3.3.
 - "Sin dato" no es cero: lo que todavía no se conoce se marca "sin dato" con la fase en que se completará.
 
@@ -40,7 +40,7 @@ Reglas de cumplimentación:
 |---|---|---|
 | Código del sistema | | Código persistente asignado por el inventario según el documento 32. |
 | Nombre del sistema | | Nombre funcional, no el nombre comercial del producto. |
-| Iniciativas asociadas | | Códigos IA-AAAA-NNN. Vacío solo en uso corporativo o uso no autorizado. |
+| Casos de uso asociadas | | Códigos IA-AAAA-NNN. Vacío solo en uso corporativo o uso no autorizado. |
 | Versión de la ficha | | |
 | Fecha de alta en el inventario | | DD-MM-AAAA. |
 | Fecha de última actualización | | DD-MM-AAAA. |
@@ -58,7 +58,7 @@ Reglas de cumplimentación:
 | Área usuaria | | |
 | Usuarios | | Perfiles y número aproximado. |
 | Situación del sistema | | Previsto · En construcción o integración · En piloto · En producción · Suspendido · Retirado. Lista propuesta, a confirmar en el documento 32. |
-| Fase y estado de la iniciativa | | Fase 0–7 y estado (03 §3.2): Registrada · En fase · Pendiente de gate · En espera · En producción · Pendiente de G7 · Parada · Retirada. |
+| Fase y estado del caso de uso | | Fase 0–7 y estado (03 §3.2): Registrado · En fase · Pendiente de gate · En espera · En producción · Pendiente de G7 · Parado · Retirado. |
 | Fecha de puesta en producción | | |
 
 ---
@@ -67,7 +67,7 @@ Reglas de cumplimentación:
 
 | Campo | Contenido | Guía |
 |---|---|---|
-| Tipo de uso de IA | | Iniciativa de IA · IA de terceros integrada en procesos · Uso corporativo de IA de propósito general · Uso no autorizado (01 §1.2). |
+| Tipo de uso de IA | | Caso de uso de IA · IA de terceros integrada en procesos · Uso corporativo de IA de propósito general · Uso no autorizado (01 §1.2). |
 | Esfera principal | | 01 Cliente · 02 Producto y servicio · 03 Personas · 04 Operaciones · 05 Datos · 06 Conocimiento · 07 Decisión · 08 Regulación, ética y responsabilidad · 09 Gobierno de la IA |
 | Esfera secundaria | | Misma lista o "ninguna". |
 | Nivel de ambición | | Optimizar · Aumentar · Transformar. |
@@ -190,7 +190,7 @@ Los criterios formales están en el documento 21 (ver criterios G0.xx y R6.xx) y
 
 | # | Comprobación | Estado |
 |---|---|---|
-| 1 | Existe una ficha por cada sistema de la iniciativa. | Cumple · No cumple · No aplica · Pendiente |
+| 1 | Existe una ficha por cada sistema del caso de uso. | Cumple · No cumple · No aplica · Pendiente |
 | 2 | Las etiquetas usan literalmente la taxonomía controlada. | |
 | 3 | La finalidad prevista es concreta y tiene límites. | |
 | 4 | El rol regulatorio está justificado y es coherente con P11. | |

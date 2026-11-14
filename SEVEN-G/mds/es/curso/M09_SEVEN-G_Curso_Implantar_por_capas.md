@@ -24,7 +24,7 @@ Al terminar sabrá elegir el alcance de implantación de su compañía, distingu
 
 ## 2. Ideas clave
 
-1. **Dos decisiones de proporcionalidad distintas.** La *intensidad* (Express, Lite o Enterprise) es de cada iniciativa; el *alcance de implantación* (Lite o Enterprise) es de la compañía. El tamaño no decide ninguna de las dos.
+1. **Dos decisiones de proporcionalidad distintas.** La *intensidad* (Express, Lite o Enterprise) es de cada caso de uso; el *alcance de implantación* (Lite o Enterprise) es de la compañía. El tamaño no decide ninguna de las dos.
 2. **Una sola biblioteca, tres capas.** Esencial (lo que aplica toda compañía), condicional (lo que activa un disparador) y completa (guías y consulta). No hay versiones reducidas de los documentos.
 3. **Ninguna fase ni puerta se salta.** En Lite se agrupan —G0 a G2 en una sesión, G4 y G5 en otra— y las evidencias se simplifican. G3 va siempre por separado.
 4. **El punto de partida cambia el orden, no el destino.** Una compañía sin IA, otra con modelos predictivos en producción y otra con muchos pilotos empiezan por hitos distintos (documento 96), pero llegan al mismo núcleo de catorce reglas (01 §14.1).
@@ -39,7 +39,7 @@ Al terminar sabrá elegir el alcance de implantación de su compañía, distingu
 |---|---|---|
 | 1 | documento 94, secciones 2 y 3 | Las tres capas, los cinco niveles, el núcleo de catorce reglas que nunca se omiten (N-01 a N-14) y la diferencia entre principio, práctica e instrumento. |
 | 2 | documento 94, sección 4 | Los disparadores: ¿cuáles se dan en su compañía? |
-| 3 | documento 01, sección 9 | Los criterios Enterprise de una iniciativa. |
+| 3 | documento 01, sección 9 | Los criterios Enterprise de un caso de uso. |
 | 4 | documento 90, sección 2 | Alcance Lite o Enterprise de compañía y ruta mínima en Lite. |
 | 5 | documento 90, sección 4 | El plan de 90 días, semana a semana, y sus criterios de finalización. |
 | 6 | documento 90, sección 8 | Los errores frecuentes. El primero: empezar por comprar o construir herramientas. |
@@ -62,7 +62,7 @@ Al terminar sabrá elegir el alcance de implantación de su compañía, distingu
 ## 5. Autocomprobación
 
 1. Una compañía mediana lanza una única apuesta de Transformar. ¿Cambia su alcance de implantación?
-2. ¿Qué puertas pueden agruparse en una iniciativa Lite?
+2. ¿Qué puertas pueden agruparse en un caso de uso Lite?
 3. ¿Se reduce el inventario de sistemas de IA en alcance Lite?
 4. ¿Es obligatorio usar la aplicación T01?
 5. Una compañía tiene agentes con autonomía A2 en producción y D6 en nivel 2. ¿Es más madura que otra que solo tiene modelos predictivos y D6 en nivel 3?
@@ -73,4 +73,4 @@ Al terminar sabrá elegir el alcance de implantación de su compañía, distingu
 
 Ha terminado el curso. Vuelva a la [guía del curso](M00_SEVEN-G_Curso_Guia_del_curso.html) para ver otros itinerarios, o empiece por el documento 90. Si necesita acompañamiento, el documento 91 describe los modelos posibles y el documento 04 indica cómo contactar con el autor; usar el marco no obliga a contratar a nadie.
 
-**Respuestas.** 1) No: esa iniciativa es Enterprise y la aprueba el consejo, pero el alcance de la compañía sigue siendo Lite. 2) G0, G1 y G2 en una sesión, y G4 y G5 en otra; G3 siempre por separado. 3) No: abarca todos los sistemas, también los de terceros y los no autorizados. 4) No: lo obligatorio es el registro; puede llevarse en una hoja de cálculo con el modelo de datos del documento 03. 5) No. La huella tecnológica no suma madurez: la primera compañía está en HT5, que exige D6 en 3, y tiene la alerta «adopción por delante del gobierno» de gravedad alta (11 §7.6).
+**Respuestas.** 1) No: ese caso de uso es Enterprise y lo aprueba el consejo, pero el alcance de la compañía sigue siendo Lite. 2) G0, G1 y G2 en una sesión, y G4 y G5 en otra; G3 siempre por separado. 3) No: abarca todos los sistemas, también los de terceros y los no autorizados. 4) No: lo obligatorio es el registro; puede llevarse en una hoja de cálculo con el modelo de datos del documento 03. 5) No. La huella tecnológica no suma madurez: la primera compañía está en HT5, que exige D6 en 3, y tiene la alerta «adopción por delante del gobierno» de gravedad alta (11 §7.6).

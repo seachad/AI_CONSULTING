@@ -14,7 +14,7 @@
 
 > **Aviso legal y exención de responsabilidad.** SEVEN-G es un marco metodológico de referencia que se ofrece «tal cual» y con fines exclusivamente informativos. No constituye asesoramiento jurídico, regulatorio, financiero ni profesional, ni garantiza el cumplimiento de ninguna norma. Las referencias a regulación general (como el Reglamento Europeo de IA, el RGPD, DORA o NIS2), a normas técnicas y a regulación específica de cada sector o jurisdicción pueden ser incompletas, no aplicar a un caso concreto o quedar desactualizadas por cambios normativos, interpretaciones o criterios de las autoridades posteriores a su fecha de consulta. **Cada organización que use SEVEN-G es la única responsable de identificar la normativa que le aplica, verificar su vigencia y certificar su propio cumplimiento regulatorio**, con el asesoramiento cualificado que corresponda. Esta metodología es una ayuda genérica y gratuita, compartida con la comunidad para que nadie tenga que empezar desde cero; cada persona u organización puede y debe adaptarla a su propio uso. No debe entenderse que sus partes jurídicamente sensibles hayan sido revisadas por una asesoría jurídica: esas revisiones, para cada empresa o sector, son responsabilidad última de la empresa, el consultor o la organización que la use. Aunque se procura mantenerla al día, alguna norma puede haber cambiado sin que se recoja aquí. En la máxima medida permitida por la ley, el autor no asume responsabilidad alguna por los efectos de su aplicación en ninguna organización ni por su aplicabilidad completa. La metodología no otorga certificación de ningún tipo. El autor no asume responsabilidad alguna por el uso que se haga de este contenido ni por las decisiones que se adopten con él. Los datos, cifras, compañías y casos de los ejemplos son ficticios o ilustrativos.
 
-> **Por qué importa.** El acta es la evidencia de que el órgano competente decidió, con quórum, sin conflictos no declarados y con la conformidad que se exigía. La piden la madurez (11, D1.02, D1.03, D1.07 y D1.09) y los criterios G2.12 y G7.09 del documento 21 en las iniciativas de Transformar. Sin ella, una decisión del consejo no puede enlazarse con la decisión de *gate* (P29) ni con el registro de recomendaciones y decisiones (documento 62), y la trazabilidad se rompe.
+> **Por qué importa.** El acta es la evidencia de que el órgano competente decidió, con quórum, sin conflictos no declarados y con la conformidad que se exigía. La piden la madurez (11, D1.02, D1.03, D1.07 y D1.09) y los criterios G2.12 y G7.09 del documento 21 en los casos de uso de Transformar. Sin ella, una decisión del consejo no puede enlazarse con la decisión de *gate* (P29) ni con el registro de recomendaciones y decisiones (documento 62), y la trazabilidad se rompe.
 
 ## 1. Instrucciones de uso
 
@@ -62,10 +62,10 @@ Se parte del modelo del órgano y se ajusta a la sesión.
 
 | Órgano y momento | Puntos tipo | Fuente |
 |---|---|---|
-| **Consejo · anual (C2 o C5)** | 1. Madurez, índice de transformación y valor validado frente a declarado. 2. Tesis de IA y ambición por esfera. 3. Apetito de riesgo y umbrales. 4. Iniciativas de Transformar (máximo tres en detalle). 5. Recomendaciones anteriores. 6. Acuerdos. | 30 §3.1 |
+| **Consejo · anual (C2 o C5)** | 1. Madurez, índice de transformación y valor validado frente a declarado. 2. Tesis de IA y ambición por esfera. 3. Apetito de riesgo y umbrales. 4. Casos de uso de Transformar (máximo tres en detalle). 5. Recomendaciones anteriores. 6. Acuerdos. | 30 §3.1 |
 | **Consejo · trimestral (C4)** | 1. Cambios en el panel. 2. Incidentes S1 y S2, y no conformidades críticas. 3. Decisiones de *gate* relevantes y retiradas. 4. Riesgos fuera de apetito. 5. Recomendaciones abiertas y vencidas. | 30 §3.1; 61 §8.5 |
 | **Comisión delegada · trimestral** | 1. Riesgos Altos y Críticos, y concentraciones. 2. Cumplimiento regulatorio y cambios normativos. 3. Incidentes y no conformidades mayores y críticas. 4. Auditorías y seguimiento de hallazgos. 5. Asuntos elevados. 6. Excepciones del trimestre. | 30 §3.2; P42 |
-| **Comité de IA · mensual** | 1. Embudo: altas, cambios de fase, estancadas. 2. *Gates* con verificación completada. 3. Desviaciones de valor y coste. 4. Riesgos Altos y Críticos, y concentración. 5. Incidentes, no conformidades y condiciones vencidas. 6. Retiradas y R6 caducadas. 7. Uso corporativo y no autorizado (T21). 8. Excepciones. 9. Asuntos para elevar. | 30 §3.3; 14 §7.1 |
+| **Comité de IA · mensual** | 1. Embudo: altas, cambios de fase, casos de uso estancados. 2. *Gates* con verificación completada. 3. Desviaciones de valor y coste. 4. Riesgos Altos y Críticos, y concentración. 5. Incidentes, no conformidades y condiciones vencidas. 6. Retiradas y R6 caducadas. 7. Uso corporativo y no autorizado (T21). 8. Excepciones. 9. Asuntos para elevar. | 30 §3.3; 14 §7.1 |
 | **Comité de IA · revisión trimestral de cartera** | Equilibrio de ambición · riesgo y concentración · valor · semáforo de programas · retiradas · presupuesto y capacidad · informe al consejo (C4). | 14 §7.2 |
 
 ### 3.2 Orden del día de esta sesión
@@ -77,7 +77,7 @@ El primer punto es siempre el seguimiento de acuerdos anteriores (61 §8.4).
 | 1 | Seguimiento de acuerdos anteriores | Información | Secretaría | Sección 6 | |
 | 2 | | Información · Decisión · Toma de conocimiento | | P29, P42, ficha de decisión (60 §5)… | |
 | 3 | | | | | |
-| *(ejemplo ilustrativo)* 2 | Autorizar la primera etapa de una iniciativa de Transformar (G2) | Decisión | Patrocinador de IA | Ficha DEC-2026-014; P29 verificado por el auditor de IA | 15 min |
+| *(ejemplo ilustrativo)* 2 | Autorizar la primera etapa de un caso de uso de Transformar (G2) | Decisión | Patrocinador de IA | Ficha DEC-2026-014; P29 verificado por el auditor de IA | 15 min |
 
 ---
 
@@ -102,7 +102,7 @@ Al inicio de la sesión, cada asistente declara los conflictos relativos a los p
 | Punto | Persona | Conflicto declarado | Tipo (Real · Potencial · Aparente) | Medida | Computa para el quórum del punto (Sí · No) |
 |---|---|---|---|---|---|
 | | | | | Abstención · Ausencia del debate · Sustitución | |
-| *(ejemplo ilustrativo)* 2 | Persona F | Patrocina la iniciativa IA-2026-018 | Real | Abstención (I-6) | No |
+| *(ejemplo ilustrativo)* 2 | Persona F | Patrocina el caso de uso IA-2026-018 | Real | Abstención (I-6) | No |
 
 ---
 
@@ -129,7 +129,7 @@ El texto del acuerdo debe poder cumplirse o comprobarse tal como está escrito (
 
 Solo en el comité de IA y, para Transformar, en el consejo o su comisión (G2.12, G7.09).
 
-| Iniciativa | *Gate* | Iteración | Resultado | Registro P29 | Verificador | Criterio del documento 21 | Acuerdo nº |
+| Caso de uso | *Gate* | Iteración | Resultado | Registro P29 | Verificador | Criterio del documento 21 | Acuerdo nº |
 |---|---|---|---|---|---|---|---|
 | IA-AAAA-NNN | | | Continuar · Continuar con condiciones · Iterar · Pivotar · Parar · Escalar · Retirar | Referencia | | G2.12 · G7.09 · otros | |
 

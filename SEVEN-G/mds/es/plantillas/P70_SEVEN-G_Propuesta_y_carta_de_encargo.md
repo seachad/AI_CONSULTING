@@ -26,7 +26,7 @@
 | **Quién la rellena** | El tercero (consultora, firma de auditoría, asesor independiente o equipo de otra sociedad del grupo) redacta la propuesta; la compañía completa sus roles, requisitos y datos. |
 | **Quién la verifica** | Un revisor de calidad del tercero no implicado en la propuesta (91 §7.1, compromiso 5); por la compañía, quien encarga y, en las cláusulas, su asesoría jurídica. |
 | **Quién decide o aprueba** | Alta dirección que encarga (M1, M2, M5); comisión delegada o auditoría interna (M3); presidencia del consejo o de la comisión delegada (M4). |
-| **Etapa o momento** | M1: C1 · M2: C1 a C3 y fase 0 de las iniciativas prioritarias · M3: verificación de 01 §14 · M4: C2, C4 y C5 · M5: C3, C4 y ciclo de vida (91 §4.1). |
+| **Etapa o momento** | M1: C1 · M2: C1 a C3 y fase 0 de los casos de uso prioritarias · M3: verificación de 01 §14 · M4: C2, C4 y C5 · M5: C3, C4 y ciclo de vida (91 §4.1). |
 | **Herramienta** | No tiene herramienta propia. Los entregables usan T01, T02, T14, T15, T16, T17, T18 y T19 según el modelo. |
 | **Documento de referencia** | Documento 91 (modelos, independencia, uso del nombre, calidad, lo que no se debe prometer); documento 93 (licencia, cita y aviso); documento 90 (plan de 90 días y requisitos previos). |
 | **Lite frente a Enterprise** | El alcance de implantación Lite o Enterprise de la compañía (90 §2) se indica en la sección 2 y ajusta el calendario y los entregables. |
@@ -49,7 +49,7 @@ Reglas de cumplimentación:
 | Tercero | [Tercero] | Denominación y, si pertenece a un grupo, entidades vinculadas. |
 | Modelo de acompañamiento | [M1 · M2 · M3 · M4 · M5] | 91 §4. |
 | Alcance de implantación de la compañía | [Lite · Enterprise] | 90 §2. |
-| Perímetro | [Sociedades, áreas, iniciativas y sistemas] | Define el «ámbito» a efectos de independencia (91 §5.2). |
+| Perímetro | [Sociedades, áreas, casos de uso y sistemas] | Define el «ámbito» a efectos de independencia (91 §5.2). |
 | Versión de SEVEN-G aplicada | 0.1 · [fecha] | Y adaptaciones previstas (91 §2.2). |
 | Fecha de la propuesta y validez | [DD-MM-AAAA] · [días] | |
 | Versión | | |
@@ -77,7 +77,7 @@ Complete solo la fila del modelo elegido y detalle las adaptaciones.
 | **M2 · Implantación de 90 días** | Mes 1 diagnóstico; mes 2 riesgos y oportunidades por esfera y propuesta de tesis, ambición y apetito; mes 3 estructura de gobierno, cartera inicial, registros en funcionamiento y primer paquete. | Verificación independiente de *gates* que el tercero ayude a preparar; decisiones de los órganos. | [ ] |
 | **M3 · Auditoría independiente** | Las catorce reglas del núcleo (01 §14.1); muestreo de decisiones de *gate*; inventario y clasificación; reglas de medición en el paquete; proceso de no conformidades; registro de recomendaciones e independencia de las valoraciones. | Diseñar o implantar correcciones; emitir certificaciones. | [ ] |
 | **M4 · Asesoramiento al consejo** | Preparación de sesiones (documento 61); revisión del paquete antes del envío; recomendaciones; valoraciones independientes encargadas; apoyo en C2 y C5; formación del consejo. | Gestión de la IA de la compañía; preparación del paquete que revisa; selección de proveedores. | [ ] |
-| **M5 · Acompañamiento continuo** | Apoyo a la oficina de IA: registro e inventario, evidencias con los equipos, métricas del embudo, paquete trimestral, apoyo a R6 y a C5. | Verificación de *gates* de iniciativas en las que participa; decisiones; valoración de recomendaciones cuya ejecución apoya. | [ ] |
+| **M5 · Acompañamiento continuo** | Apoyo a la oficina de IA: registro e inventario, evidencias con los equipos, métricas del embudo, paquete trimestral, apoyo a R6 y a C5. | Verificación de *gates* de casos de uso en las que participa; decisiones; valoración de recomendaciones cuya ejecución apoya. | [ ] |
 
 ---
 
@@ -93,7 +93,7 @@ Complete solo la fila del modelo elegido y detalle las adaptaciones.
 | 6 | Política corporativa de IA | M2 | Documento 31 | [ ] | [ ] | [ ] |
 | 7 | Modelo de gobierno con asignación de roles | M2 | Documento 30; P03; P38 | [ ] | [ ] | [ ] |
 | 8 | Cartera priorizada y plan de regularización | M2 | P36; T01 | [ ] | [ ] | [ ] |
-| 9 | Registro de iniciativas y de recomendaciones con datos reales | M2 | T01; T18; P69 | JSON u hoja de cálculo | [ ] | [ ] |
+| 9 | Registro de casos de uso y de recomendaciones con datos reales | M2 | T01; T18; P69 | JSON u hoja de cálculo | [ ] | [ ] |
 | 10 | Primer paquete trimestral | M2 | P67; T17 | [ ] | [ ] | [ ] |
 | 11 | Plan de auditoría, papeles de trabajo e informe con conclusión | M3 | P59; P60; P29 (muestreo) | [ ] | [ ] | [ ] |
 | 12 | No conformidades clasificadas y recomendaciones para el registro | M3 | P50; P69 | [ ] | [ ] | [ ] |

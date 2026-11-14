@@ -1,10 +1,10 @@
-# Carta de la iniciativa
+# Carta del caso de uso
 
-**Autoriza formalmente una iniciativa de IA y fija su objetivo, alcance, ambición preliminar, presupuesto y responsables.**
+**Autoriza formalmente un caso de uso de IA y fija su objetivo, alcance, ambición preliminar, presupuesto y responsables.**
 
 | | |
 |---|---|
-| Documento | Plantilla P01 · Carta de la iniciativa |
+| Documento | Plantilla P01 · Carta del caso de uso |
 | Versión | 0.2 (borrador de trabajo) |
 | Fecha | 01-10-2026 |
 | Autor | Fernando García Varela |
@@ -23,13 +23,13 @@
 | **Quién la verifica** | Lite: oficina de IA. Enterprise: auditor de IA. |
 | **Quién decide** | Lite: patrocinador de IA. Enterprise: comité de IA. |
 | **Gate en que se revisa** | G0 · Autorización. |
-| **Herramienta** | T01 · Registro de iniciativas (los campos de identificación y clasificación alimentan la ficha de la iniciativa). |
+| **Herramienta** | T01 · Registro de casos de uso (los campos de identificación y clasificación alimentan la ficha del caso de uso). |
 | **Lite frente a Enterprise** | Lite puede omitir los campos marcados **(Enterprise)**. El resto es obligatorio en ambas intensidades. |
 | **Plantillas relacionadas** | P02 (restricciones), P03 (roles), P04 (intensidad), P05 (inventario), P07 (ambición), P29 (decisión de *gate*), P31 (ficha de caso de uso). |
 
 Reglas de cumplimentación:
 
-- Sin G0 aprobado la iniciativa no está autorizada: no puede consumir presupuesto ni acceder a datos de producción (01 §6.2).
+- Sin G0 aprobado el caso de uso no está autorizado: no puede consumir presupuesto ni acceder a datos de producción (01 §6.2).
 - Las cifras de esta carta son órdenes de magnitud y se marcan como *estimadas*. El compromiso de valor se formula en P08.
 - "Sin dato" no es cero: si un campo no se conoce, se escribe "sin dato" y se indica cuándo se obtendrá.
 - Las filas y textos marcados *(ejemplo ilustrativo)* son ficticios y deben borrarse antes de presentar la carta.
@@ -40,13 +40,13 @@ Reglas de cumplimentación:
 
 | Campo | Contenido | Guía |
 |---|---|---|
-| Código de la iniciativa | | Formato IA-AAAA-NNN, asignado por el registro de iniciativas (T01). No se reutiliza. |
-| Nombre de la iniciativa | | Nombre breve y descriptivo, sin siglas internas. |
+| Código del caso de uso | | Formato IA-AAAA-NNN, asignado por el registro de casos de uso (T01). No se reutiliza. |
+| Nombre del caso de uso | | Nombre breve y descriptivo, sin siglas internas. |
 | Área promotora | | Unidad de negocio que tiene la necesidad. |
 | Versión del documento | | 0.1, 0.2… mientras es borrador; 1.0 cuando se presenta a G0. |
 | Fecha | | DD-MM-AAAA. |
 | Autor | | Nombre y rol en SEVEN-G. |
-| Fase y estado | | Fase 0 · Registrada o En fase (03 §3.2). |
+| Fase y estado | | Fase 0 · Registrado o En fase (03 §3.2). |
 | Ubicación de la evidencia | | Enlace al repositorio documental de la compañía. |
 
 ---
@@ -60,7 +60,7 @@ Reglas de cumplimentación:
 | Proceso o decisión afectada | | Proceso de negocio, tarea o decisión concreta. |
 | Personas afectadas | | Usuarios internos, clientes u otras personas externas, y cómo les afecta. |
 | Por qué ahora | | Motivo de oportunidad o de urgencia. |
-| Consecuencia de no actuar | | Qué ocurre si la iniciativa no se autoriza. |
+| Consecuencia de no actuar | | Qué ocurre si el caso de uso no se autoriza. |
 
 ---
 
@@ -68,14 +68,14 @@ Reglas de cumplimentación:
 
 | Campo | Contenido | Guía |
 |---|---|---|
-| Objetivo de la iniciativa | | Resultado de negocio que se persigue, en una frase. Las métricas y umbrales se fijan en P08. |
+| Objetivo del caso de uso | | Resultado de negocio que se persigue, en una frase. Las métricas y umbrales se fijan en P08. |
 | Encaje con la tesis de IA | | Referencia a la tesis de IA y a la ambición aprobada en C2 para la esfera. |
 | Esfera principal | | 01 Cliente · 02 Producto y servicio · 03 Personas · 04 Operaciones · 05 Datos · 06 Conocimiento · 07 Decisión · 08 Regulación, ética y responsabilidad · 09 Gobierno de la IA |
 | Esfera secundaria | | Misma lista, o "ninguna". |
 | Nivel de ambición preliminar | | Optimizar · Aumentar · Transformar. Se clasifica formalmente con P07 en la fase 1. |
-| Tipo de uso de IA | | Iniciativa de IA · IA de terceros integrada en procesos · Uso corporativo de IA de propósito general · Regularización de uso no autorizado (01 §1.2). |
+| Tipo de uso de IA | | Caso de uso de IA · IA de terceros integrada en procesos · Uso corporativo de IA de propósito general · Regularización de uso no autorizado (01 §1.2). |
 | Inclusión en la cartera (C3) | | Sí · No. Si no figura en la cartera priorizada, justificar por qué se propone fuera de ciclo. |
-| Iniciativas relacionadas **(Enterprise)** | | Códigos IA-AAAA-NNN con dependencias o resultados compartidos. Si comparten valor, se declarará el reparto en P08 (regla 5). |
+| Casos de uso relacionadas **(Enterprise)** | | Códigos IA-AAAA-NNN con dependencias o resultados compartidos. Si comparten valor, se declarará el reparto en P08 (regla 5). |
 
 ---
 
@@ -136,7 +136,7 @@ El detalle, las incompatibilidades y los sustitutos se registran en P03.
 | Campo | Contenido | Guía |
 |---|---|---|
 | Restricciones principales | | Resumen de P02: regulatorias, éticas, de datos, presupuestarias, de plazo y tecnológicas. |
-| Líneas rojas | | Lo que la iniciativa no hará en ningún caso. |
+| Líneas rojas | | Lo que el caso de uso no hará en ningún caso. |
 | Intensidad determinada | | Express · Lite · Enterprise, con el criterio o la elegibilidad que la determina (P04). Si es Express, se rellena además la sección 14. |
 | Clasificación regulatoria preliminar | | Prohibido · Alto riesgo · Obligaciones de transparencia · Riesgo mínimo · Fuera de ámbito · Pendiente de clasificar. En fase 0 suele ser "Pendiente de clasificar"; se resuelve en P11. |
 | Alta en el inventario | | Referencia de la ficha P05 y fecha de alta. |
@@ -199,13 +199,13 @@ El verificador comprueba, al menos, lo siguiente. Los criterios formales de G0 e
 | Verifica | Oficina de IA (Lite) · Auditor de IA (Enterprise) | | | |
 | Decide | Patrocinador de IA (Lite) · Comité de IA (Enterprise) | | | |
 
-Separación de funciones: quien verifica no ha elaborado la carta; la fecha de verificación es anterior a la de decisión; en Enterprise el patrocinador presenta, pero no decide sobre su propia iniciativa.
+Separación de funciones: quien verifica no ha elaborado la carta; la fecha de verificación es anterior a la de decisión; en Enterprise el patrocinador presenta, pero no decide sobre su propio caso de uso.
 
 ---
 
 ## 14. Ficha viva (solo intensidad Express)
 
-En una iniciativa Express (01 §9.4) esta sección sustituye a las plantillas de las fases 0 a 5: se rellena por tramos y se actualiza en cada puerta, y la evidencia que la compañía ya tiene se referencia en lugar de copiarse (21 §4.3). Cada fila indica los criterios de la lista reducida (21 §2.5) a los que da evidencia. En Lite y Enterprise esta sección no se usa.
+En un caso de uso Express (01 §9.4) esta sección sustituye a las plantillas de las fases 0 a 5: se rellena por tramos y se actualiza en cada puerta, y la evidencia que la compañía ya tiene se referencia en lugar de copiarse (21 §4.3). Cada fila indica los criterios de la lista reducida (21 §2.5) a los que da evidencia. En Lite y Enterprise esta sección no se usa.
 
 | Bloque | Contenido mínimo | Criterios | Se completa en |
 |---|---|---|---|
@@ -219,7 +219,7 @@ En una iniciativa Express (01 §9.4) esta sección sustituye a las plantillas de
 | **Reversión y operación** | Mecanismo de parada, plan de reversión probado con su tiempo real, plan de incidentes y alfabetización de quien usa el sistema. | G4.09, G5.11, G5.17, G5.19 | Puesta en uso (G4–G5) |
 | **Aprobación** | Fecha y decisión de cada puerta con la conformidad de riesgos en G3, G4 y G5 (en T01). | G5.22, G5.23 | Cada puerta |
 
-> **Por qué importa.** Una iniciativa pequeña que tuviera que rellenar treinta plantillas acabaría sin registrarse. La ficha viva conserva en un solo documento todo lo que el núcleo exige y que una auditoría pide ver, sin pedir nada dos veces.
+> **Por qué importa.** Un caso de uso pequeño que tuviera que rellenar treinta plantillas acabaría sin registrarse. La ficha viva conserva en un solo documento todo lo que el núcleo exige y que una auditoría pide ver, sin pedir nada dos veces.
 
 ---
 
@@ -236,4 +236,4 @@ En una iniciativa Express (01 §9.4) esta sección sustituye a las plantillas de
 | Versión | Fecha | Cambios |
 |---|---|---|
 | 0.1 | 16-09-2026 | Primera versión. Estructura alineada con 01 §6.2 y con la taxonomía controlada de 03 §3.3. |
-| 0.2 | 01-10-2026 | Nueva sección 14, ficha viva de las iniciativas Express (01 §9.4), que sustituye a las plantillas de las fases 0 a 5 con los criterios de la lista reducida (21 §2.5). |
+| 0.2 | 01-10-2026 | Nueva sección 14, ficha viva de los casos de uso Express (01 §9.4), que sustituye a las plantillas de las fases 0 a 5 con los criterios de la lista reducida (21 §2.5). |

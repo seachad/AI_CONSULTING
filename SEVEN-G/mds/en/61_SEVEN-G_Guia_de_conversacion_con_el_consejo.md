@@ -47,7 +47,7 @@ The content of the pack delivered before the session is in document 60.
 | 4 | **Few use cases, well told** | Three use cases in detail at most. The rest are in the dashboard. |
 | 5 | **Say what is not working** | Stops, retirements, incidents and unmaterialised value are presented with the same clarity as successes. |
 | 6 | **Every board question ends up in the register** | If a question cannot be answered in the session, it becomes a recommendation or an assignment with an owner and a date (document 62). |
-| 7 | **Nobody marks their own exam** | Whoever presents an initiative does not assess its compliance; the assessment is made by someone independent. |
+| 7 | **Nobody marks their own exam** | Whoever presents a use case does not assess its compliance; the assessment is made by someone independent. |
 
 ---
 
@@ -70,7 +70,7 @@ The content of the pack delivered before the session is in document 60.
 | "We have launched a PoC" | "We are running a limited three-month trial; in June we will decide whether it continues or stops" | A trial without a decision date is an open-ended cost. |
 | "300% ROI" | "Annual net value of €900,000: efficiencies of €1.1M minus recurring cost of €210,000, validated by management control" | Aggregate ROI hides use cases with negative value and does not say what is validated. |
 | "We have saved 20,000 hours" | "We have released 20,000 hours; of these, 6,000 have been reassigned and none has yet reduced cost" | Released capacity is not a saving until it is materialised. |
-| "Digital transformation with AI" | "This initiative does the same thing at lower cost: it is optimisation" or "This initiative creates a service that did not exist: it is transformation" | The word is used for different things. |
+| "Digital transformation with AI" | "This use case does the same thing at lower cost: it is optimisation" or "This use case creates a service that did not exist: it is transformation" | The word is used for different things. |
 | "Responsible AI" | "Before production we tested whether it treats any group worse; the result is…" | A principle without a verifiable control does not inform. |
 | "Hallucinations" | "Incorrect answers presented as true" | A term that is both technical and colloquial. |
 | "*Prompt* injection" | "Manipulation of the system through instructions hidden in texts or documents" | It describes the risk, not the technique. |
@@ -114,7 +114,7 @@ Rules:
 > **Question:** Can we stop the customer service agent if it starts to fail?
 > **Answer:** Yes. It has a kill switch that diverts all conversations to people; it was tested in the May drill and took four minutes.
 
-> **Question:** Do all the initiatives in production have their continuity review up to date?
+> **Question:** Do all the use cases in production have their continuity review up to date?
 > **Answer:** Yes. All 14 have had a review in the last three months, verified by the AI Auditor; the detail is in the portfolio block of the dashboard.
 
 **"Yes, with one condition: …"**
@@ -139,7 +139,7 @@ Rules:
 > **Answer:** No, because an order executed in the market cannot be reversed and the residual risk is Critical, outside the approved appetite. The alternative is for it to recommend and for an operator to decide.
 
 > **Question:** Can we say that the company is transforming itself with AI?
-> **Answer:** No, because 92% of validated value comes from efficiencies and no Transform initiative has reached production. We are efficient, which is a good outcome, but it is not transformation.
+> **Answer:** No, because 92% of validated value comes from efficiencies and no Transform use case has reached production. We are efficient, which is a good outcome, but it is not transformation.
 
 ### 4.3 Structure of an intervention
 
@@ -187,7 +187,7 @@ The reference questions come from the sphere map (00 §4.1). Each sphere include
 | Sphere | Reference question | Follow-up questions | Evidence to request | Warning signal |
 |---|---|---|---|---|
 | **01 · Customer** | If a competitor knows our customers better because it uses AI better, how long will it take us to lose relevance? | What decisions about customers does a system take or prepare today? Do we know whether it treats any group worse? What part of the customer relationship goes through an assistant? | Use cases by ambition level in the sphere; retention or conversion measured with a control group; fairness tests; rates of referral to people. | All the value declared in the sphere is customer service savings; there is no use case with measured return. |
-| **02 · Product and service** | Are we using AI to protect the current product or to build the next one? | Is there any product or service that exists only thanks to AI? Do protecting and building compete for the same resources? | Transform initiatives in the sphere with their learning milestones and stage limits; AI-enabled revenue. | No Transform bet approved, or bets approved without stop criteria. |
+| **02 · Product and service** | Are we using AI to protect the current product or to build the next one? | Is there any product or service that exists only thanks to AI? Do protecting and building compete for the same resources? | Transform use cases in the sphere with their learning milestones and stage limits; AI-enabled revenue. | No Transform bet approved, or bets approved without stop criteria. |
 | **03 · People** | Does AI replace, augment or reorganise people's work? | What happens to released capacity? Have we informed employee representatives where required? What new roles do we need? | Position approved by management; released capacity materialised and reassigned; training and AI literacy plan; systems that assess employees and their classification. | Released hours presented as savings; no explicit position on the effect on employment. |
 | **04 · Operations** | Which processes have a demonstrable short-term return and which require a complete redesign? | Are tasks being automated or are processes being redesigned end to end? What happens if the system goes down? | Baseline and validated value per process; tested rollback plan; incidents and recovery time. | Many pilots without a decision date; no rollback plan in critical processes. |
 
@@ -195,7 +195,7 @@ The reference questions come from the sphere map (00 §4.1). Each sphere include
 
 | Sphere | Reference question | Follow-up questions | Evidence to request | Warning signal |
 |---|---|---|---|---|
-| **05 · Data** | Do we know what data we have, who is accountable for its quality and whether we can legally use it for AI? | How many initiatives have been stopped or delayed because of data? What data do we share with model suppliers and on what terms? | Data owners by domain; stop reasons due to insufficient data; documented legal basis; data use clauses in contracts. | "Insufficient data" is the most frequent stop reason and there is no initiative to resolve it. |
+| **05 · Data** | Do we know what data we have, who is accountable for its quality and whether we can legally use it for AI? | How many use cases have been stopped or delayed because of data? What data do we share with model suppliers and on what terms? | Data owners by domain; stop reasons due to insufficient data; documented legal basis; data use clauses in contracts. | "Insufficient data" is the most frequent stop reason and there is no use case to resolve it. |
 | **06 · Knowledge** | How much critical knowledge depends on a few people and is not available to the organisation? | If the people who know most left tomorrow, what would be lost? Do internal assistants answer with verifiable sources? | Critical knowledge map; assistants with measurement of correct answers and cited sources. | Internal assistants in use without measurement of the quality of their answers. |
 | **07 · Decision** | What does AI decide alone, what requires human validation and what is never delegated? | Are there systems that act without individual review? Is there a record of what the system recommended and what the person decided? | Inventory with autonomy level A0–A3; approved list of non-delegable decisions; log of agent actions. | There is no list of non-delegable decisions: decisions are being delegated by default. |
 
@@ -216,10 +216,10 @@ Warning signal: the board only hears about regulation when there is a penalty or
 | Assessment axis | Questions | Evidence to request |
 |---|---|---|
 | **Structure** | Who has ultimate responsibility for the AI strategy? Is there a portfolio prioritised by value and risk? Does the board receive regular and understandable information? | Approved AI thesis; AI Committee with a mandate; quarterly pack (document 60). |
-| **Balance between speed and control** | Are there decision gates with a real ability to stop? How long does it take from idea to approval and to production? Has any initiative been stopped? | Register of *gate* decisions; agility metrics by risk level; stop reasons. |
+| **Balance between speed and control** | Are there decision gates with a real ability to stop? How long does it take from idea to approval and to production? Has any use case been stopped? | Register of *gate* decisions; agility metrics by risk level; stop reasons. |
 | **Supplier ecosystem** | Do we depend on a single model supplier? Do we decide to build, buy or partner on a case-by-case basis? Do the contracts protect our data and our intellectual property? Do we understand the cost structure? | Supplier register with criticality and exit strategy; cost per use case with allocation. |
 
-Warning signal: nobody can say when the last initiative was stopped, or why.
+Warning signal: nobody can say when the last use case was stopped, or why.
 
 ---
 
@@ -227,7 +227,7 @@ Warning signal: nobody can say when the last initiative was stopped, or why.
 
 | Stage | Board questions | Evidence that answers them |
 |---|---|---|
-| **C1 · Diagnosis** | How many AI systems do we have, including suppliers' systems and those employees use on their own initiative? What is our real maturity and on what evidence? How much value is validated and how much does AI cost today? Are we efficient or are we transforming? | Inventory; D1–D7 maturity with evidence; value by status and recurring cost; transformation index profile. |
+| **C1 · Diagnosis** | How many AI systems do we have, including suppliers' systems and those employees use of their own accord? What is our real maturity and on what evidence? How much value is validated and how much does AI cost today? Are we efficient or are we transforming? | Inventory; D1–D7 maturity with evidence; value by status and recurring cost; transformation index profile. |
 | **C2 · Direction** | In which spheres do we want to Optimise, Augment or Transform? What risks will we not accept under any circumstances? Above what investment must the board decide? What will we not do with AI? | AI thesis; ambition by sphere; risk appetite and thresholds; corporate policy; framework budget. |
 | **C3 · Portfolio** | What do we fund and what do we stop? Is the portfolio balanced between efficiency and transformation? Where does the next euro deliver most? Do we have the capacity to execute it? | Prioritised portfolio with additional net value per euro; distribution by ambition level; retirement criteria; available capacity. |
 | **C4 · Oversight** | Is what was decided being carried out? What has changed since the last session? What incidents have there been and how were they managed? Which recommendations are overdue? What do we have to decide today? | Quarterly pack; dashboard; register of recommendations and decisions. |
@@ -388,7 +388,7 @@ SEVEN-G provides for the board or its board committee to be able to rely on a **
 ### 10.3 Independence
 
 - **Declaration of interests** at the start of the mandate and whenever it changes: relationships with technology suppliers, consultancies and the company itself (P41, Model C).
-- **Incompatibility** with providing implementation services on the same initiatives they oversee (document 91, section 5).
+- **Incompatibility** with providing implementation services on the same use cases they oversee (document 91, section 5).
 - **Access to information** through the board secretariat and formal channels, not through direct relationships with teams that bypass management.
 - **Confidentiality**: the company's information is not used in any other context.
 
@@ -408,9 +408,9 @@ The EU AI Act includes AI literacy obligations for the staff of providers and de
 | Adding released hours as savings | Inflated value that does not appear in the income statement. | Report released capacity separately. |
 | Answering "it depends" | The board does not know what to decide. | Use one of the four formats. |
 | Hiding stops and incidents | Loss of trust when they become known. | Present them with what was learned. |
-| Calling any initiative transformation | The company believes it is transforming and does not take the decisions that doing so would require. | Classify with the five questions. |
+| Calling any use case transformation | The company believes it is transforming and does not take the decisions that doing so would require. | Classify with the five questions. |
 | Ending the session without recorded decisions | What was discussed depends on the memory of those present. | Record decisions and assignments with code, owner and date. |
-| Having whoever presents an initiative assess its compliance | Self-assessment without credibility. | Independent assessment in the register. |
+| Having whoever presents a use case assess its compliance | Self-assessment without credibility. | Independent assessment in the register. |
 | Comparing with the market without a source | Claims that do not withstand a single question. | Compare with oneself over time or cite verifiable sources. |
 | Talking about models instead of decisions | The board disengages. | Translate using the table in section 3.2. |
 | Requesting approval without options | The board cannot perform its function. | Include at least two options, one of them not doing it or stopping. |

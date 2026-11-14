@@ -16,7 +16,7 @@
 
 > **Legal notice and disclaimer.** SEVEN-G is a reference methodological framework provided "as is" and for information purposes only. It does not constitute legal, regulatory, financial or professional advice, nor does it guarantee compliance with any law or standard. References to general regulation (such as the EU AI Act, the GDPR, DORA or NIS2), to technical standards and to regulation specific to each sector or jurisdiction may be incomplete, may not apply to a particular case or may become out of date as a result of regulatory changes, interpretations or supervisory positions after their consultation date. **Each organisation that uses SEVEN-G is solely responsible for identifying the regulation that applies to it, verifying that it is current and certifying its own regulatory compliance**, with the appropriate qualified advice. This methodology is a generic, free aid shared with the community so that nobody has to start from scratch; each person or organisation can and should adapt it to its own use. It must not be inferred that its legally sensitive parts have been reviewed by legal counsel: those reviews, for each company or sector, are the ultimate responsibility of the company, consultant or organisation that uses it. Although every effort is made to keep it up to date, some regulation may have changed without being reflected here. To the fullest extent permitted by law, the author accepts no responsibility whatsoever for the effects of its application in any organisation or for its full applicability. The methodology does not grant certification of any kind. The author accepts no liability for any use made of this content or for any decisions taken on the basis of it. The data, figures, companies and cases in the examples are fictitious or illustrative.
 
-<!-- esencial: condicional | Trigger: the initiative uses the company's own data to train, fine-tune or feed a system, uses knowledge sources or processes personal data. Data and model lineage (P16) is evidence for every initiative in phase 4. -->
+<!-- esencial: condicional | Trigger: the use case uses the company's own data to train, fine-tune or feed a system, uses knowledge sources or processes personal data. Data and model lineage (P16) is evidence for every use case in phase 4. -->
 
 ## 1. Purpose and scope
 
@@ -48,7 +48,7 @@ This document does not constitute legal advice.
 | **05 · Data** | Do we know what data we have, who is accountable for its quality and whether we can legally use it for AI? |
 | **06 · Knowledge** | How much critical knowledge depends on a few people and is not available to the organisation? |
 
-Both spheres are **enablers**: they rarely generate value on their own, but without them initiatives in spheres 01 to 04 fail or cannot be defended before an auditor or a regulator.
+Both spheres are **enablers**: they rarely generate value on their own, but without them use cases in spheres 01 to 04 fail or cannot be defended before an auditor or a regulator.
 
 ### 2.2 Ambition levels
 
@@ -91,9 +91,9 @@ These dimensions feed **D3 Data and knowledge** in the maturity model (document 
 
 | Role | Responsibility in AI |
 |---|---|
-| **Data owner** (business) | Authorises use for a specific initiative (at G3), defines acceptable quality and is accountable for the purpose. |
+| **Data owner** (business) | Authorises use for a specific use case (at G3), defines acceptable quality and is accountable for the purpose. |
 | **Data custodian** (technology) | Applies access, quality, retention and backup controls; supports the AI Technical Owner. |
-| **AI Technical Owner** | Is accountable for the initiative's data and models, their preparation and their lineage. |
+| **AI Technical Owner** | Is accountable for the use case's data and models, their preparation and their lineage. |
 | **Data protection officer** | Advises and monitors in processing of personal data; consulted on the impact assessment (phases 3–4); data protection takes part in the multi-level go-live sign-off at G5. |
 | **Content or knowledge owner** | Quality, validity and permissions of generative AI sources (document 50, section 4.2). |
 | **AI Risk Owner** | Assesses RT-DAT risks and issues risk clearance. |
@@ -113,7 +113,7 @@ Every dataset used to train, fine-tune, validate, test or feed an AI system in p
 | Quality | Dimensions measured, result and date (section 4.3). |
 | Representativeness and known biases | Populations covered and under-represented; mandatory for high risk (section 6). |
 | Retention | Period and rule for deletion or anonymisation (section 4.5). |
-| Systems using it | Initiatives and model versions; link to P16 and T02. |
+| Systems using it | Use cases and model versions; link to P16 and T02. |
 | Version | Version and freeze date if used for training. |
 
 ### 4.3 Quality
@@ -157,7 +157,7 @@ Every dataset used to train, fine-tune, validate, test or feed an AI system in p
 
 | Phase | What is done with the data | Evidence | Stop question |
 |---|---|---|---|
-| **0 · Context** | Declare known data constraints: protected data, international transfers, secrets, licences. | P02 | Is there a constraint that prevents the initiative? |
+| **0 · Context** | Declare known data constraints: protected data, international transfers, secrets, licences. | P02 | Is there a constraint that prevents the use case? |
 | **1 · Discovery** | Identify what data or knowledge would be needed and whether they exist. | P06 | Does the opportunity depend on data that do not exist? |
 | **2 · Hypothesis** | Confirm that the baseline can be measured with real data. | P09 | Can the baseline be measured? |
 | **3 · Feasibility** | **Availability and quality assessment with real data**; legal basis; third-party rights; representativeness. | P10, P11 | Are there sufficient data, of sufficient quality and legally usable? |
@@ -168,7 +168,7 @@ Every dataset used to train, fine-tune, validate, test or feed an AI system in p
 
 ### 5.2 Phase 3: the assessment that prevents the most stops
 
-SEVEN-G starts from the premise that **lack of data availability or quality** is the main cause of failure of AI initiatives that do not reach production or do not sustain their value. The framework does not base this premise on market figures, but on its logic: a data problem discovered in phase 5 costs the entire build. That is why the assessment is placed in phase 3, before investment in design and build, and indicator DAT-07 makes it possible to test the premise against each company's own data.
+SEVEN-G starts from the premise that **lack of data availability or quality** is the main cause of failure of AI use cases that do not reach production or do not sustain their value. The framework does not base this premise on market figures, but on its logic: a data problem discovered in phase 5 costs the entire build. That is why the assessment is placed in phase 3, before investment in design and build, and indicator DAT-07 makes it possible to test the premise against each company's own data.
 
 **Rule.** The phase 3 data assessment **must** be carried out **with real data** or with a representative sample extracted from the source systems, not with descriptions of what the data should contain. An assessment based only on interviews or data dictionaries does not pass G3.
 
@@ -428,7 +428,7 @@ The codes are provisional; their definitive `IND-` code is shown in the mapping 
 | **DAT-07** | G3 decisions due to data | G3 decisions with an Iterate, Pivot or Stop outcome and the reason *Insufficient data* ÷ G3 decisions | Half-yearly | T01, T03 | For interpretation, not a target: very low may indicate a lax assessment; very high, poor opportunity selection |
 | **DAT-08** | Retention compliance | Datasets with a defined and applied retention period ÷ datasets used by AI | Half-yearly | Catalogue | 100% |
 | **DAT-09** | Incidents caused by data | AI incidents whose root cause lies in data ÷ closed AI incidents | Quarterly | T08 | Decreasing trend |
-| **DAT-10** | Data access time | Median days between a data access request for an initiative and its authorised availability | Quarterly | Access requests | Decreasing trend |
+| **DAT-10** | Data access time | Median days between a data access request for a use case and its authorised availability | Quarterly | Access requests | Decreasing trend |
 | **DAT-11** | Validated synthetic data | Synthetic datasets in use with recorded utility and privacy validation ÷ synthetic datasets in use | Half-yearly | Catalogue | 100% |
 
 ### 12.2 Sphere 06 · Knowledge

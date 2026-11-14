@@ -1,10 +1,10 @@
-# SEVEN-G tools and initiative register
+# SEVEN-G tools and use case register
 
 **The AI portfolio managed as a funnel: phases, timings, compliance and tags**
 
 | | |
 |---|---|
-| Document | Document 03 · Tools and initiative register |
+| Document | Document 03 · Tools and use case register |
 | Version | 0.5 (working draft) |
 | Date | 19-10-2026 |
 | Author | Fernando García Varela |
@@ -16,13 +16,13 @@
 
 > **Legal notice and disclaimer.** SEVEN-G is a reference methodological framework provided "as is" and for information purposes only. It does not constitute legal, regulatory, financial or professional advice, nor does it guarantee compliance with any law or standard. References to general regulation (such as the EU AI Act, the GDPR, DORA or NIS2), to technical standards and to regulation specific to each sector or jurisdiction may be incomplete, may not apply to a particular case or may become out of date as a result of regulatory changes, interpretations or supervisory positions after their consultation date. **Each organisation that uses SEVEN-G is solely responsible for identifying the regulation that applies to it, verifying that it is current and certifying its own regulatory compliance**, with the appropriate qualified advice. This methodology is a generic, free aid shared with the community so that nobody has to start from scratch; each person or organisation can and should adapt it to its own use. It must not be inferred that its legally sensitive parts have been reviewed by legal counsel: those reviews, for each company or sector, are the ultimate responsibility of the company, consultant or organisation that uses it. Although every effort is made to keep it up to date, some regulation may have changed without being reflected here. To the fullest extent permitted by law, the author accepts no responsibility whatsoever for the effects of its application in any organisation or for its full applicability. The methodology does not grant certification of any kind. The author accepts no liability for any use made of this content or for any decisions taken on the basis of it. The data, figures, companies and cases in the examples are fictitious or illustrative.
 
-<!-- esencial: siempre | Every initiative is registered in the initiative register (T01 or a spreadsheet with the data model in section 4), with the dates of each phase, the decision of each gate, the status of each criterion, the conditions, the taxonomy tags and the coded stop or retirement reason. The tool catalogue (section 5) is for consultation. -->
+<!-- esencial: siempre | Every use case is registered in the use case register (T01 or a spreadsheet with the data model in section 4), with the dates of each phase, the decision of each gate, the status of each criterion, the conditions, the taxonomy tags and the coded stop or retirement reason. The tool catalogue (section 5) is for consultation. -->
 
 ## 1. Purpose
 
 This document serves two functions:
 
-1. It defines the **initiative register**, the central SEVEN-G tool. It manages each AI initiative the way a salesperson manages an opportunity in a CRM: it knows which phase the initiative is in, how long it has been there, which criteria it meets and which it does not, what value is expected and why it was stopped if it did not move forward.
+1. It defines the **use case register**, the central SEVEN-G tool. It manages each AI use case the way a salesperson manages an opportunity in a CRM: it knows which phase the use case is in, how long it has been there, which criteria it meets and which it does not, what value is expected and why it was stopped if it did not move forward.
 2. It maintains the framework's **tool catalogue**: which tools exist or are needed, what they are for, at what point in the cycle they are used, which document they depend on and when they should be built.
 
 ---
@@ -55,20 +55,20 @@ The reference applications (T01, T11 with T13, T14 and T15) are published with *
 **How to set up the company copy.**
 
 1. Download the whole site (the published repository or its generated folder) and serve it **over http** from an internal server: any static file server will do; no database or application server is needed. HTML files opened directly (double click) work, but they do not consult the data folder.
-2. Create the folder `SEVEN-G/herramientas/datos/` and put in it the JSON files exported by the tools you use: `T01_registro.json` (initiative register), `T11_calculadora.json` (value hypothesis and costs), `T14_indice.json` (transformation index) and `T15_madurez.json` (maturity diagnosis).
+2. Create the folder `SEVEN-G/herramientas/datos/` and put in it the JSON files exported by the tools you use: `T01_registro.json` (use case register), `T11_calculadora.json` (value hypothesis and costs), `T14_indice.json` (transformation index) and `T15_madurez.json` (maturity diagnosis).
 3. The board dashboard (T17) **regenerates itself in the browser**: it embeds the connector and, served over http, reads `T01_registro.json` from that folder and shows it to the whole company; in each browser where someone works with T01 it shows that browser's register. No Python and nothing to install. Only if the company wants to publish the dashboard as static files (to send them by e-mail, with the no-JavaScript view) does it use the `t01_a_panel.py` generator (Python 3.11 and `uv`, optional).
 4. In each working session: export from the tool and replace the file in the folder. Whoever has changes in their browser or in their file keeps them; the "Where my data is" dialog shows them that the server holds a version and lets them load it.
 5. No data leaves the company: the copy sends nothing to third parties. The aggregated visit measurement (document 04 §6.2) only acts on the public site's domains, never on an internal domain.
 
 ---
 
-## 3. The initiative register
+## 3. The use case register
 
 ### 3.1 The CRM analogy
 
-| In a sales CRM | In the SEVEN-G initiative register |
+| In a sales CRM | In the SEVEN-G use case register |
 |---|---|
-| Opportunity | **AI initiative** |
+| Opportunity | **AI use case** |
 | Funnel stage | **Lifecycle phase** (0–7) |
 | Stage transition | **Decision gate** (*gate*) with recorded outcome |
 | Days in stage | **Time in phase** and decision time for each gate |
@@ -80,13 +80,13 @@ The reference applications (T01, T11 with T13, T14 and T15) are published with *
 | Owner | **Sponsor and product owner** |
 | Account or segment | **Area, sphere, ambition level, technology** and other tags |
 | Activities | Linked **evidence, decisions, conditions, risks and incidents** |
-| Stalled opportunities | **Initiatives that exceed the reference time limit** for their phase |
+| Stalled opportunities | **Use cases that exceed the reference time limit** for their phase |
 
-### 3.2 Initiative statuses
+### 3.2 Use case statuses
 
-In addition to the phase, each initiative has a status that indicates what is happening to it.
+In addition to the phase, each use case has a status that indicates what is happening to it.
 
-<!-- grafico: Initiative statuses | The phase shows where it is; the status, what is happening to it -->
+<!-- grafico: Use case statuses | The phase shows where it is; the status, what is happening to it -->
 ```mermaid
 flowchart LR
   REG["Registered"] --> FASE["In phase"]
@@ -119,7 +119,7 @@ flowchart LR
 
 ### 3.3 What is recorded
 
-**Initiative record**
+**Use case record**
 
 | Block | Main fields |
 |---|---|
@@ -129,7 +129,7 @@ flowchart LR
 | **Lifecycle** | Current phase, status, phase entry date, reference time limit, current iteration. |
 | **Value** | Expected value (efficiencies, return, recurring cost) with formula; realised value with validated, declared or estimated status; investment made and pending. |
 | **Risk and compliance** | Main residual risk level, impact assessments carried out, open conditions, open nonconformities, incidents. |
-| **Free tags** | Programme, strategic initiative, internal customer or other company-specific groupings. |
+| **Free tags** | Programme, strategic use case, internal customer or other company-specific groupings. |
 
 **Controlled taxonomy**
 
@@ -170,14 +170,14 @@ Based on these statuses, the register calculates the **gate compliance rate** (c
 | **Time in phase** | Days between entry into and exit from the phase, excluding time on hold. Median and 80th percentile. | Detect bottlenecks. | AI Office, committee |
 | **Decision time** | Days between the *gate* request and the decision. | Measure the agility of governance itself. | Committee, board |
 | **Time to production** | Days from registration to G5; broken down into idea → feasibility approval (G3) → production. | Measure the real speed of the portfolio. | Committee, board |
-| **Conversion per gate** | Percentage of initiatives that proceed at each *gate* versus those that iterate, pivot or stop. | Know where the portfolio is filtered and whether the filter is in the right place. | Committee |
+| **Conversion per gate** | Percentage of use cases that proceed at each *gate* versus those that iterate, pivot or stop. | Know where the portfolio is filtered and whether the filter is in the right place. | Committee |
 | **Iterations per gate** | Average number of iterations before the decision. | Detect poorly prepared evidence or unclear criteria. | AI Office |
-| **Stalled initiatives** | Initiatives that exceed the reference time limit for their phase. | Act before they turn into cost with no return. | Committee |
+| **Stalled use cases** | Use cases that exceed the reference time limit for their phase. | Act before they turn into cost with no return. | Committee |
 | **Time on hold** | Days on hold and reasons. | Distinguish internal delays from external dependencies. | Committee |
-| **Stop and retirement reasons** | Distribution of the coded reasons. | Learn which types of initiative should not enter the portfolio. | Committee, C5 |
+| **Stop and retirement reasons** | Distribution of the coded reasons. | Learn which types of use case should not enter the portfolio. | Committee, C5 |
 | **Gate compliance** | Average compliance rate and the criteria that block most often. | Improve evidence preparation. | AI Office |
 | **Expired conditions** | Open conditions past their deadline. | Prevent "with conditions" from becoming "without control". | Committee, audit |
-| **Value by phase** | Expected value of the initiatives in each phase. | See where the portfolio's value lies. | Committee, board |
+| **Value by phase** | Expected value of the use cases in each phase. | See where the portfolio's value lies. | Committee, board |
 | **Weighted value** | Sum of the expected value multiplied by the historical probability of reaching production from the current phase. Shown only when there is sufficient history. | Estimate the future value of the portfolio prudently. | Board |
 | **Ambition mix by phase** | Distribution of Optimise, Augment and Transform in each phase. | Detect whether transformation bets get stuck before production (a transformation index signal). | Board |
 | **Cohorts** | The above metrics by quarter of registration. | Check whether the system improves over time. | C5 |
@@ -186,7 +186,7 @@ All metrics can be segmented by any taxonomy tag: sphere, ambition, intensity, t
 
 ### 3.6 Reference time limits per phase
 
-The time limits make it possible to identify stalled initiatives. The company approves them in C2 and recalibrates them in C5 with its own data. The following values are **indicative, as a starting point**:
+The time limits make it possible to identify stalled use cases. The company approves them in C2 and recalibrates them in C5 with its own data. The following values are **indicative, as a starting point**:
 
 | Phase | Lite | Enterprise |
 |---|---|---|
@@ -205,11 +205,11 @@ Phase 6 has no time limit; it is controlled through the frequency of the continu
 
 | View | What it shows |
 |---|---|
-| **Funnel** | Initiatives by phase and status, with time-limit alerts; can be filtered by tags. |
+| **Funnel** | Use cases by phase and status, with time-limit alerts; can be filtered by tags. |
 | **Kanban board** | Cards by phase that move when the *gate* decision is recorded. |
-| **Record** | Initiative data, event timeline, criteria for the current *gate*, conditions, risks and value. |
+| **Record** | Use case data, event timeline, criteria for the current *gate*, conditions, risks and value. |
 | **Pending gates** | Requests awaiting verification or decision, with days elapsed. |
-| **Alerts** | Stalled initiatives, expired conditions, overdue continuity reviews, evidence awaiting verification. |
+| **Alerts** | Stalled use cases, expired conditions, overdue continuity reviews, evidence awaiting verification. |
 | **Analysis** | Funnel metrics, cohorts and segmentation. |
 | **Data** | Import of one or several JSON files (replacing or merging by code) and export of the full register. The full JSON is the input of the board dashboard (T17): the connector converts it into the dashboard JSON, with the funnel and the time spent in each stage taken from the phases and events of the register. |
 
@@ -221,21 +221,21 @@ The model is the foundation of all the tools. Its full specification (fields, ty
 
 | Entity | What it represents | Related to |
 |---|---|---|
-| **Initiative** | The unit that goes through the lifecycle. Its scope states whether it belongs to one business unit, is cross-unit (with roll-out and adoption by unit) or is an enabling platform (with the use cases that rely on it); document 40 §7.2. From T01 schema 0.5, also the evidence for the transformation index: verification of IT-P2 and IT-P3 at a *gate*, verified human oversight, entire organisational unit redesigned and released, materialised and reassigned capacity (12 §4.4). | All the others |
-| **AI system** | Each system in the inventory, in-house or third-party, including corporate use. | Initiatives, suppliers, risks, incidents |
-| **Event** | Any change with date, author and reason. | Initiative |
-| **Gate decision** | Request, verification, decision, outcome and iteration. | Initiative, criteria, conditions |
+| **Use case** | The unit that goes through the lifecycle. Its scope states whether it belongs to one business unit, is cross-unit (with roll-out and adoption by unit) or is an enabling platform (with the use cases that rely on it); document 40 §7.2. From T01 schema 0.5, also the evidence for the transformation index: verification of IT-P2 and IT-P3 at a *gate*, verified human oversight, entire organisational unit redesigned and released, materialised and reassigned capacity (12 §4.4). | All the others |
+| **AI system** | Each system in the inventory, in-house or third-party, including corporate use. | Use cases, suppliers, risks, incidents |
+| **Event** | Any change with date, author and reason. | Use case |
+| **Gate decision** | Request, verification, decision, outcome and iteration. | Use case, criteria, conditions |
 | **Assessed criterion** | Status of each criterion in a *gate* decision. | Gate decision, evidence |
 | **Condition** | Condition imposed with deadline, owner and status. | Gate decision |
-| **Evidence** | Link, type, version, author, date and verification; origin (SEVEN-G template or referenced company evidence, with its source system; 21 §4.3). | Criteria, initiative |
-| **Value** | Amounts by type (efficiency, return, cost), formula, validation status, period and, in cross-unit initiatives, business unit; from schema 0.5, whether the return comes from an AI-enabled offering (signal 6 of 12). From schema 0.8, two optional initiative fields read by the board dashboard: the realisation plan (`plan_realizacion`: status, source and date; curve by period, steady-state date, funding tranches with *gate*, amount and pass condition, approved reference and realised value by period with its status; 43 §4.1) and non-quantified value (`no_cuantificado`: dimension, level 0–3, metric with baseline, target and current value, and reason; never in euros; 40 rule 7). | Initiative |
-| **Risk** | Risk with probability, impact, inherent and residual level, owner and controls; from T01 schema 0.4, also impact axis, control effectiveness, target or verified residual, contingency, status, trend, next review and acceptance (33 §8.1). | Initiative, system |
-| **Nonconformity** | Type, detection, containment, root cause, action, closure. | Initiative, system |
-| **Incident** | Date, severity, detection, containment, notifications. | System, initiative |
-| **Supplier** | Third party, services, criticality, contract, assessment. | Systems, initiatives |
-| **Recommendation** | Board recommendation with persistent identifier, addressee, status and evidence. | Initiatives, systems |
-| **Board decision** | Decision of the board or its committee (DEC-YYYY-NNN) with body, type, subject, outcome, stage investment cap, stage decision, spheres with Transform as target, in the thesis the target ambition of each sphere (optional field `ambicion_objetivo`, read by the dashboard's impact map) and links (62 §10); schema 0.5. It is the source of signal 8 and condition IT-D1 of the index. | Initiatives, recommendations |
-| **Maturity assessment** | Summary of each maturity assessment (EM-YYYY-MM; document 11): cut-off date, mode, questionnaire version, overall level, weighted average, cap by D1 or D6 and level, progress and blocking criteria of each dimension. Since schema 0.7, also the summary of the NIST profiles derived from the questionnaire (AI RMF and CSF 2.0: minimum level, subcategories with a level, with a target and with a gap, by function and, for the CSF, by area; 11 §7.5). Since schema 0.8, also the three-lens maturity at the cut-off date (`lentes`): technology footprint HT0–HT5 in use with its breadth and the pilots in exploration, impact reach of the initiatives in use by IM1–IM4 and the alerts of 11 §7.6 (code, severity and dimension); footprint and reach do not change the level (D120). T15 writes it (answers and evidence stay in T15) and the board dashboard shows it; schemas 0.6 to 0.8. | Company |
+| **Evidence** | Link, type, version, author, date and verification; origin (SEVEN-G template or referenced company evidence, with its source system; 21 §4.3). | Criteria, use case |
+| **Value** | Amounts by type (efficiency, return, cost), formula, validation status, period and, in cross-unit use cases, business unit; from schema 0.5, whether the return comes from an AI-enabled offering (signal 6 of 12). From schema 0.8, two optional use case fields read by the board dashboard: the realisation plan (`plan_realizacion`: status, source and date; curve by period, steady-state date, funding tranches with *gate*, amount and pass condition, approved reference and realised value by period with its status; 43 §4.1) and non-quantified value (`no_cuantificado`: dimension, level 0–3, metric with baseline, target and current value, and reason; never in euros; 40 rule 7). | Use case |
+| **Risk** | Risk with probability, impact, inherent and residual level, owner and controls; from T01 schema 0.4, also impact axis, control effectiveness, target or verified residual, contingency, status, trend, next review and acceptance (33 §8.1). | Use case, system |
+| **Nonconformity** | Type, detection, containment, root cause, action, closure. | Use case, system |
+| **Incident** | Date, severity, detection, containment, notifications. | System, use case |
+| **Supplier** | Third party, services, criticality, contract, assessment. | Systems, use cases |
+| **Recommendation** | Board recommendation with persistent identifier, addressee, status and evidence. | Use cases, systems |
+| **Board decision** | Decision of the board or its committee (DEC-YYYY-NNN) with body, type, subject, outcome, stage investment cap, stage decision, spheres with Transform as target, in the thesis the target ambition of each sphere (optional field `ambicion_objetivo`, read by the dashboard's impact map) and links (62 §10); schema 0.5. It is the source of signal 8 and condition IT-D1 of the index. | Use cases, recommendations |
+| **Maturity assessment** | Summary of each maturity assessment (EM-YYYY-MM; document 11): cut-off date, mode, questionnaire version, overall level, weighted average, cap by D1 or D6 and level, progress and blocking criteria of each dimension. Since schema 0.7, also the summary of the NIST profiles derived from the questionnaire (AI RMF and CSF 2.0: minimum level, subcategories with a level, with a target and with a gap, by function and, for the CSF, by area; 11 §7.5). Since schema 0.8, also the three-lens maturity at the cut-off date (`lentes`): technology footprint HT0–HT5 in use with its breadth and the pilots in exploration, impact reach of the use cases in use by IM1–IM4 and the alerts of 11 §7.6 (code, severity and dimension); footprint and reach do not change the level (D120). T15 writes it (answers and evidence stay in T15) and the board dashboard shows it; schemas 0.6 to 0.8. | Company |
 
 ### 4.1 What each tool reads and writes
 
@@ -243,13 +243,13 @@ The T01 register is the company's **source of truth**: the other tools derive fr
 
 | Tool | Reads from T01 | Returns to T01 | Own to the tool |
 |---|---|---|---|
-| **T11** (with T13) | Initiative (name, ambition, intensity, phase, spent and pending investment) and the expected amounts recorded. A use case created from the register is **refreshed** when it is read again: identification, the amounts still "from T01" and new amounts are renewed; a line corrected by hand or broken down into units × unit value is kept. | The expected amounts of the use case (efficiencies, return, released capacity, recurring cost and investment), as expected with source T11, plus an edit event. | Parameters (horizon, rate, hourly cost), broken-down value lines, ramp-up, stop criteria, stages, costs per use case and reconciliation. |
-| **T14** | Portfolio (phases, statuses, ambition, spheres, *gates*), realised and validated amounts, investment, index evidence of each initiative, company data (revenue, IT-D3) and board decisions. A calculation made from the register is **refreshed** when it is read again: only the figures still marked "from T01" are renewed. | Nothing. Its result goes to the board dashboard (T17) and it leaves the profile of the latest calculation for the cross-reading in T15. | Threshold versions, calculations with the origin mark of each figure, notes and actions. |
-| **T15** | Company and a stratified sample of initiatives (Enterprise, in production, Augment or Transform, third party, generative AI or agents; 11 §4.6). From T14, the profile of the latest calculation. For the three lenses: registration date, phase, technology, autonomy, actual ambition, closure and verification of IT-P2 and IT-P3 of each initiative, the phase entries and the thesis approved by the board (C2 date). | The summary of each assessment (`madurez[]`): overall level, average, cap by D1 or D6, level by dimension and summary of the NIST profiles (`madurez[].perfiles`) and of the three lenses (`madurez[].lentes`); never the answers. | Answers, evidence, verification, interviews, samples, weights, targets, messages, improvement plan, the target and own levels of the NIST profiles and the footprint and reach entered by hand when there is no register. |
-| **T17** (generator) | The full JSON of the register: initiatives, lifecycle, amounts, incidents, recommendations and the most recent maturity assessment; the realisation plan (`plan_realizacion`) and non-quantified value (`no_cuantificado`) of each initiative, with the date of its next review (`ciclo.proxima_revision`); from T14, the exported index. | Nothing. | Dashboard configuration (thresholds, lifecycle, navigation) and the generated dashboards. |
-| **T06** | It is a view of the register itself. For the **Excel of the use case** (matrix, register, proposed mitigation and contingency plans and typical risks to consider) it reads, besides the initiative's risks, its classification (technology, exposure, autonomy, regulatory classification, ambition, intensity and providers), its impact assessments, its systems and its owners. | Nothing: the Excel is a downloaded file with the generation date and time; whatever the team decides in it is recorded on the "Risks" tab. | The catalogue of typical risks with the applicability rules and the mitigation and contingency proposals per RT code (`catalogo_riesgos.json`; the text of each typical risk is read from document 33 §9 when the tool is generated). |
+| **T11** (with T13) | Use case (name, ambition, intensity, phase, spent and pending investment) and the expected amounts recorded. A use case created from the register is **refreshed** when it is read again: identification, the amounts still "from T01" and new amounts are renewed; a line corrected by hand or broken down into units × unit value is kept. | The expected amounts of the use case (efficiencies, return, released capacity, recurring cost and investment), as expected with source T11, plus an edit event. | Parameters (horizon, rate, hourly cost), broken-down value lines, ramp-up, stop criteria, stages, costs per use case and reconciliation. |
+| **T14** | Portfolio (phases, statuses, ambition, spheres, *gates*), realised and validated amounts, investment, index evidence of each use case, company data (revenue, IT-D3) and board decisions. A calculation made from the register is **refreshed** when it is read again: only the figures still marked "from T01" are renewed. | Nothing. Its result goes to the board dashboard (T17) and it leaves the profile of the latest calculation for the cross-reading in T15. | Threshold versions, calculations with the origin mark of each figure, notes and actions. |
+| **T15** | Company and a stratified sample of use cases (Enterprise, in production, Augment or Transform, third party, generative AI or agents; 11 §4.6). From T14, the profile of the latest calculation. For the three lenses: registration date, phase, technology, autonomy, actual ambition, closure and verification of IT-P2 and IT-P3 of each use case, the phase entries and the thesis approved by the board (C2 date). | The summary of each assessment (`madurez[]`): overall level, average, cap by D1 or D6, level by dimension and summary of the NIST profiles (`madurez[].perfiles`) and of the three lenses (`madurez[].lentes`); never the answers. | Answers, evidence, verification, interviews, samples, weights, targets, messages, improvement plan, the target and own levels of the NIST profiles and the footprint and reach entered by hand when there is no register. |
+| **T17** (generator) | The full JSON of the register: use cases, lifecycle, amounts, incidents, recommendations and the most recent maturity assessment; the realisation plan (`plan_realizacion`) and non-quantified value (`no_cuantificado`) of each use case, with the date of its next review (`ciclo.proxima_revision`); from T14, the exported index. | Nothing. | Dashboard configuration (thresholds, lifecycle, navigation) and the generated dashboards. |
+| **T06** | It is a view of the register itself. For the **Excel of the use case** (matrix, register, proposed mitigation and contingency plans and typical risks to consider) it reads, besides the use case's risks, its classification (technology, exposure, autonomy, regulatory classification, ambition, intensity and providers), its impact assessments, its systems and its owners. | Nothing: the Excel is a downloaded file with the generation date and time; whatever the team decides in it is recorded on the "Risks" tab. | The catalogue of typical risks with the applicability rules and the mitigation and contingency proposals per RT code (`catalogo_riesgos.json`; the text of each typical risk is read from document 33 §9 when the tool is generated). |
 | **T18** | It is a view of the register itself. | — | — |
-| **T23** | Technology and autonomy of the initiatives in use and the pilots under way, to propose answers Q01 to Q03 of the questionnaire (marked "from T01" and editable). From T15, the answers of the most recent assessment, to mark milestones as achieved. | Nothing. | Questionnaire, archetype, status of each milestone and notes. |
+| **T23** | Technology and autonomy of the use cases in use and the pilots under way, to propose answers Q01 to Q03 of the questionnaire (marked "from T01" and editable). From T15, the answers of the most recent assessment, to mark milestones as achieved. | Nothing. | Questionnaire, archetype, status of each milestone and notes. |
 
 **Why it matters.** Without a source of truth, each tool ends up with its own version of the company: the transformation index computed with one portfolio, the board dashboard with another and maturity with a third. Establishing that everything derives from T01, that each figure carries its origin and that manual corrections are not overwritten means the board, the AI Office and the consultant read the same company in every tool.
 
@@ -264,7 +264,7 @@ The T01 register is the company's **source of truth**: the other tools derive fr
 
 | Code | Tool | Purpose | Where it is used | Format | Depends on | Priority | Status |
 |---|---|---|---|---|---|---|---|
-| **T01** | **Initiative register** | CRM-style funnel: phases, statuses, events, tags, value and metrics. | Entire cycle; C3 and C4 | HTML + JSON; export to spreadsheet | 01, 02 | 1 | Available v0.1 |
+| **T01** | **Use case register** | CRM-style funnel: phases, statuses, events, tags, value and metrics. | Entire cycle; C3 and C4 | HTML + JSON; export to spreadsheet | 01, 02 | 1 | Available v0.1 |
 | **T02** | AI system inventory | Register of all systems, including third-party systems and corporate use. | C1, phase 0, C4 | T01 module | 01, 32 | 1 | Available v0.1 |
 | **T03** | Gate manager | Criteria with status, evidence, verification, decision and conditions. | All *gates* | T01 module | 01, 21, 22 | 1 | Available v0.1 (128 criteria from document 21) |
 | **T04** | Intensity determination | Express, Lite or Enterprise questionnaire (Enterprise criteria and Express eligibility) with recorded result. | Phase 0, G3, R6 | T01 module | 01 | 1 | Available v0.1 |
@@ -284,8 +284,8 @@ The T01 register is the company's **source of truth**: the other tools derive fr
 
 | Code | Tool | Purpose | Where it is used | Format | Depends on | Priority | Status |
 |---|---|---|---|---|---|---|---|
-| **T11** | Value hypothesis canvas and calculator | Baseline, value lines with formula (F1), annual net value, NPV, ROI, payback and F3 with the C2 horizon and rate; scenarios; C2 economic criterion as information; imports the initiative from T01. Documented with P08, P09 and P10. | Phases 2, 3 and 7 | HTML + JSON; CSV export | 40 | 2 | Available v0.1 |
-| **T12** | Value realisation tracking | Validated, declared and estimated value by period and by use case; realisation plan with curve, funding tranches and pass condition, and realisation against the approved reference. | Phases 3–7, C4 | T01 module (`plan_realizacion` block, schema 0.8) and "Realisation plan: curve and tranches" card in T17 | 40, 43 | 2 | Applied with P28 and P62 (benefits realisation plan). It is not a separate application: the plan is recorded in the `plan_realizacion` block of each T01 initiative and the board dashboard shows it (43 §4.1, 60 §10.6) |
+| **T11** | Value hypothesis canvas and calculator | Baseline, value lines with formula (F1), annual net value, NPV, ROI, payback and F3 with the C2 horizon and rate; scenarios; C2 economic criterion as information; imports the use case from T01. Documented with P08, P09 and P10. | Phases 2, 3 and 7 | HTML + JSON; CSV export | 40 | 2 | Available v0.1 |
+| **T12** | Value realisation tracking | Validated, declared and estimated value by period and by use case; realisation plan with curve, funding tranches and pass condition, and realisation against the approved reference. | Phases 3–7, C4 | T01 module (`plan_realizacion` block, schema 0.8) and "Realisation plan: curve and tranches" card in T17 | 40, 43 | 2 | Applied with P28 and P62 (benefits realisation plan). It is not a separate application: the plan is recorded in the `plan_realizacion` block of each T01 use case and the board dashboard shows it (43 §4.1, 60 §10.6) |
 | **T13** | Cost calculator per use case | Full and incremental cost, total cost of ownership, allocation of shared costs, consumption forecast with alerts, cost per unit, cost of stopping and reconciliation. Documented with P10 and P63. | Phases 3 and 6 | Module of T11 ("Cost per use case" view); CSV export | 42 | 3 | Available v0.1 |
 | **T14** | Transformation index calculator | Baseline conditions, eight signals, company profile, alerts, coverage and evolution, with threshold version; starts from the T01 register JSON, from which it calculates the eight signals when it holds the schema 0.5 evidence, and its result feeds the index card of the board dashboard (T17). | C1, C4, C5 | HTML + JSON | 12 | 2 | Available v0.1 |
 
@@ -304,7 +304,7 @@ The T01 register is the company's **source of truth**: the other tools derive fr
 
 | Code | Tool | Purpose | Where it is used | Format | Depends on | Priority | Status |
 |---|---|---|---|---|---|---|---|
-| **T20** | Adoption and capacity plan | Adoption, training and reassignment of released capacity. | Phases 4–7 | Template and T01 module | 23, 50 | 3 | Applied with P20 and P45 (AI literacy and training plan and register); the released, materialised and reassigned capacity of each initiative is recorded in T01 (schema 0.5) |
+| **T20** | Adoption and capacity plan | Adoption, training and reassignment of released capacity. | Phases 4–7 | Template and T01 module | 23, 50 | 3 | Applied with P20 and P45 (AI literacy and training plan and register); the released, materialised and reassigned capacity of each use case is recorded in T01 (schema 0.5) |
 | **T21** | Corporate AI use monitor | Assigned and active licences, unauthorised use, data leakage controls. | C4 | Board dashboard view | 31 | 3 | Applied with P43 (catalogue of authorised tools and requests) |
 | **T22** | Retirement manager | Retirement plan, replacement, data and models, communication. | Phase 7 | T01 module | 14 | 3 | Applied with P30 |
 
@@ -339,7 +339,7 @@ Working rule: **every document that defines a process involving a register, a ca
 
 | Version | Date | Changes |
 |---|---|---|
-| 0.1 | 16-09-2026 | First version. Defines the initiative register as a managed funnel, with its taxonomy, events, metrics and reference time limits; the common data model; the catalogue of 22 tools; and the build order. |
+| 0.1 | 16-09-2026 | First version. Defines the use case register as a managed funnel, with its taxonomy, events, metrics and reference time limits; the common data model; the catalogue of 22 tools; and the build order. |
 | 0.2 | 19-09-2026 | Catalogue brought up to date: T11 (with T13 as a module) and T15 available; tools without an application of their own are applied with their corresponding templates P32–P71 (D68). |
 | 0.3 | 28-09-2026 | Tool T23 · Implementation journey (document 96) in the catalogue (§5.4), in the data map (§4.1) and in wave 3; "Three lenses" view of T15 and schema 0.8 of the register (§4 and §4.1). |
 | 0.4 | 28-09-2026 | T12 is implemented as the `plan_realizacion` block of T01 plus the "Realisation plan: curve and tranches" card of T17 (§5.3); optional fields `plan_realizacion` and `no_cuantificado` of schema 0.8 (§4) and their reading by T17 (§4.1 and §5.4) (D135). |

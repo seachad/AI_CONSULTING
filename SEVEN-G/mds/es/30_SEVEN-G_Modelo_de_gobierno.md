@@ -50,7 +50,7 @@ flowchart TB
   AD["Alta dirección"]
   CIA["Comité de IA"]
   OIA["Oficina de IA"]
-  EQ["Equipos de iniciativa: patrocinador, producto, técnico y operación"]
+  EQ["Equipos de cada caso de uso: patrocinador, producto, técnico y operación"]
   L2["Segunda línea: riesgos, cumplimiento, seguridad y protección de datos"]
   L3["Tercera línea: auditoría interna y auditores de IA"]
   CA -->|"Tesis, ambición y apetito de riesgo"| AD
@@ -92,11 +92,11 @@ Los mandatos son **modelos para adaptar**. La compañía los aprueba en C2 y los
 | Elemento | Contenido tipo |
 |---|---|
 | **Mandato** | Ejercer la responsabilidad última sobre la estrategia, el apetito de riesgo y la supervisión de la IA. |
-| **Funciones** | Aprobar la tesis de IA, la ambición por esfera y el apetito de riesgo con sus umbrales (C2). Aprobar la política corporativa de IA (documento 31). Aprobar las iniciativas de Transformar en G2 y su escalado en G7. Decidir, de forma excepcional, la aceptación de riesgos residuales Críticos dentro del apetito. Supervisar el panel del consejo (C4). Revisar madurez, índice de transformación y tesis (C5). |
+| **Funciones** | Aprobar la tesis de IA, la ambición por esfera y el apetito de riesgo con sus umbrales (C2). Aprobar la política corporativa de IA (documento 31). Aprobar los casos de uso de Transformar en G2 y su escalado en G7. Decidir, de forma excepcional, la aceptación de riesgos residuales Críticos dentro del apetito. Supervisar el panel del consejo (C4). Revisar madurez, índice de transformación y tesis (C5). |
 | **Composición** | Pleno. Puede apoyarse en un consejero con experiencia en IA o en un asesor externo sin voto. |
 | **Quórum** | El de sus estatutos y reglamento. |
 | **Periodicidad** | Una sesión anual con punto monográfico y un punto trimestral de supervisión, que puede delegar en la comisión. |
-| **Orden del día tipo (anual)** | 1. Madurez, índice de transformación y valor validado frente a declarado. 2. Tesis de IA y ambición por esfera. 3. Apetito de riesgo y umbrales (intensidad Enterprise, inversión, horizonte de retorno, regularización). 4. Iniciativas de Transformar (máximo tres en detalle). 5. Recomendaciones anteriores. 6. Acuerdos. |
+| **Orden del día tipo (anual)** | 1. Madurez, índice de transformación y valor validado frente a declarado. 2. Tesis de IA y ambición por esfera. 3. Apetito de riesgo y umbrales (intensidad Enterprise, inversión, horizonte de retorno, regularización). 4. Casos de uso de Transformar (máximo tres en detalle). 5. Recomendaciones anteriores. 6. Acuerdos. |
 | **Orden del día tipo (trimestral)** | 1. Cambios en el panel. 2. Incidentes S1 y S2, y no conformidades críticas. 3. Decisiones de *gate* relevantes y retiradas. 4. Riesgos fuera de apetito. 5. Recomendaciones abiertas y vencidas. |
 | **Registro** | Acta y alta de cada acuerdo en el registro de recomendaciones y decisiones (T18). |
 
@@ -117,14 +117,14 @@ La compañía designa la comisión que supervisa la IA: **auditoría**, **riesgo
 | Elemento | Contenido tipo |
 |---|---|
 | **Mandato** | Gestionar la cartera de IA dentro de la tesis, la ambición y el apetito aprobados, y decidir lo que el consejo le delega. |
-| **Funciones** | Aprobar el diagnóstico de C1 y la cartera de C3. Decidir los *gates* Enterprise (01 §7.5). Aceptar riesgos residuales Altos. Revisar la concentración de riesgos (principio 5). Decidir retiradas. Revisar iniciativas estancadas, condiciones vencidas y decisiones elevadas tras dos iteraciones. Aprobar la política de uso aceptable y las excepciones de su nivel. Elevar lo que supere su delegación. |
+| **Funciones** | Aprobar el diagnóstico de C1 y la cartera de C3. Decidir los *gates* Enterprise (01 §7.5). Aceptar riesgos residuales Altos. Revisar la concentración de riesgos (principio 5). Decidir retiradas. Revisar casos de uso estancados, condiciones vencidas y decisiones elevadas tras dos iteraciones. Aprobar la política de uso aceptable y las excepciones de su nivel. Elevar lo que supere su delegación. |
 | **Presidencia** | Un miembro de la alta dirección con autoridad sobre la cartera. No debería presidirlo quien patrocine la mayor parte de la cartera. |
 | **Miembros con voto** | Alta dirección de negocio (al menos dos áreas), tecnología, datos y personas. |
 | **Miembros con voz y conformidad** | Riesgos, cumplimiento, seguridad de la información y protección de datos. Su conformidad es necesaria en su ámbito, pero no votan la decisión de negocio (sección 8.3). |
 | **Invitados permanentes** | Responsable de la Oficina de IA (secretario, sin voto); auditoría interna como observador. |
 | **Quórum** | Mayoría de los miembros con voto, incluida la presidencia o su suplente, y **al menos un representante de la segunda línea**. Sin segunda línea no se deciden G3, G5, aceptaciones de riesgo ni excepciones. |
 | **Acuerdos** | Por consenso; si no lo hay, por mayoría de votos presentes, con voto de calidad de la presidencia. |
-| **Abstención obligatoria** | Quien tenga rol de patrocinio o construcción en la iniciativa se abstiene y no computa para el quórum de ese punto (01 §7.4, regla 1). |
+| **Abstención obligatoria** | Quien tenga rol de patrocinio o construcción en el caso de uso se abstiene y no computa para el quórum de ese punto (01 §7.4, regla 1). |
 | **Periodicidad** | Mensual; extraordinaria para *gates* urgentes o incidentes S1. Se admite decisión por escrito para *gates* sin debate, con las mismas reglas. |
 | **Orden del día tipo** | 1. Embudo: altas, cambios de fase, estancadas (documento 03). 2. *Gates* con verificación completada. 3. Desviaciones de valor y coste. 4. Riesgos Altos y Críticos, y concentración por esfera, proveedor o tecnología. 5. Incidentes, no conformidades y condiciones vencidas. 6. Retiradas y R6 caducadas. 7. Uso corporativo y no autorizado (T21). 8. Excepciones. 9. Asuntos para elevar. |
 | **Registro** | Acta con acuerdos numerados; cada decisión de *gate* en T03 con P29. |
@@ -134,10 +134,10 @@ La compañía designa la comisión que supervisa la IA: **auditoría**, **riesgo
 | Elemento | Contenido tipo |
 |---|---|
 | **Mandato** | Hacer que el marco funcione: metodología, inventario, información fiable y soporte a los equipos. |
-| **Funciones** | Mantener el inventario (documento 32, T02) y el registro de iniciativas (T01). Custodiar metodología, plantillas y listas de verificación. Verificar los *gates* Lite en los que no haya participado. Consolidar la medición con control de gestión (documento 40). Preparar la información de los órganos. Coordinar la alfabetización en IA y la regularización del uso no autorizado (documento 31). Liderar C1 y C5. |
+| **Funciones** | Mantener el inventario (documento 32, T02) y el registro de casos de uso (T01). Custodiar metodología, plantillas y listas de verificación. Verificar los *gates* Lite en los que no haya participado. Consolidar la medición con control de gestión (documento 40). Preparar la información de los órganos. Coordinar la alfabetización en IA y la regularización del uso no autorizado (documento 31). Liderar C1 y C5. |
 | **Composición** | Responsable de la Oficina y equipo reducido de metodología, cartera y medición. En organizaciones pequeñas, una persona a tiempo parcial (sección 11). |
 | **Dependencia** | De la presidencia del comité de IA o de un directivo que no sea patrocinador habitual. |
-| **Límite** | Si la Oficina construye soluciones, no verifica esas iniciativas: la verificación pasa a la segunda línea o al auditor de IA. |
+| **Límite** | Si la Oficina construye soluciones, no verifica esos casos de uso: la verificación pasa a la segunda línea o al auditor de IA. |
 
 ### 3.5 Segunda y tercera línea
 
@@ -151,17 +151,17 @@ La compañía designa la comisión que supervisa la IA: **auditoría**, **riesgo
 
 ---
 
-## 4. Roles de la iniciativa: descripciones de puesto
+## 4. Roles del caso de uso: descripciones de puesto
 
-Los seis roles son **funciones, no puestos**: una persona los asume para una iniciativa además de su puesto. Las dedicaciones son **orientativas** para empezar y deben calibrarse en C5 con datos propios.
+Los seis roles son **funciones, no puestos**: una persona los asume para un caso de uso además de su puesto. Las dedicaciones son **orientativas** para empezar y deben calibrarse en C5 con datos propios.
 
 | Rol | Misión y responsabilidades clave | Competencias | Perfil habitual | Dedicación orientativa (Lite · Enterprise) |
 |---|---|---|---|---|
 | **Patrocinador de IA** | Responde del valor y la inversión. Compromete presupuesto y personas; aprueba hipótesis y criterios de parada; decide *gates* Lite (01 §7.5); acepta riesgos Medios con conformidad de riesgos; asegura que la capacidad liberada se materializa; propone la retirada cuando el valor no se sostiene. | Negocio afectado; lectura de hipótesis e indicadores; riesgos de IA a nivel directivo (perfil F7 del documento 31); capacidad de parar. | Dirección del área que recibe el valor. | 2–4 h/mes · 4–8 h/mes más preparación de *gates* |
 | **Responsable de producto de IA** | Responde de la hipótesis de valor, el uso real y la adopción. Redacta carta e hipótesis; mide línea base y piloto; prepara evidencias de fases 0, 1, 2 y 7; acepta riesgos Bajos con registro; coordina la adopción (documento 23); mantiene la ficha en T01. | Gestión de producto; diseño de experimentos y atribución; procesos; comunicación con usuarios; límites de la IA generativa. | Negocio, con experiencia en producto, procesos o transformación. | 10–30 % en fases activas · 50–100 % en fases 2–5 y 20–40 % en operación |
-| **Responsable técnico de IA** | Responde de la solución, los datos, los modelos y la documentación técnica. Evalúa viabilidad técnica y de datos; diseña arquitectura, linaje, seguridad y reversión; dirige construcción o integración y pruebas. Forma parte del equipo: no verifica ni decide *gates* de su iniciativa (01 §8.1). | Ingeniería de datos y modelos; evaluación de IA generativa y agentes; seguridad de aplicaciones; integración; requisitos técnicos del Reglamento de IA según clasificación. | Arquitecto o jefe técnico de tecnología o datos. | 20–50 % en fases 3–5 · 50–100 % en fases 3–5 |
+| **Responsable técnico de IA** | Responde de la solución, los datos, los modelos y la documentación técnica. Evalúa viabilidad técnica y de datos; diseña arquitectura, linaje, seguridad y reversión; dirige construcción o integración y pruebas. Forma parte del equipo: no verifica ni decide *gates* de su caso de uso (01 §8.1). | Ingeniería de datos y modelos; evaluación de IA generativa y agentes; seguridad de aplicaciones; integración; requisitos técnicos del Reglamento de IA según clasificación. | Arquitecto o jefe técnico de tecnología o datos. | 20–50 % en fases 3–5 · 50–100 % en fases 3–5 |
 | **Responsable de operación de IA** | Responde de la estabilidad, la monitorización, los incidentes y los cambios. Prepara manual y monitorización; activa el interruptor de parada cuando procede; gestiona incidentes (documento 37) y cambios; aporta datos a R6. | Operación de servicios; observabilidad de modelos (degradación, deriva, coste); incidentes; control de cambios. | Responsable de la plataforma o del servicio de negocio. | 5–10 % en operación · 20–50 % en operación, con guardia en sistemas críticos |
-| **Responsable de riesgos de IA** | Responde de la evaluación y el seguimiento de riesgos y cumplimiento. Coordina clasificación regulatoria y evaluaciones de impacto; valora riesgos inherentes y residuales; emite conformidad en G3, G4 y G5 Lite (sin verificarlos, 01 §7.5); propone la aceptación al nivel que corresponde; coordina la firma multinivel. | Gestión de riesgos; Reglamento de IA, RGPD y normativa sectorial; riesgos de IA generativa y agentes; independencia de criterio. | Segunda línea (riesgos, cumplimiento o protección de datos). | 1–3 días por iniciativa en fase 3 · 10–30 % en fases 3–5 |
+| **Responsable de riesgos de IA** | Responde de la evaluación y el seguimiento de riesgos y cumplimiento. Coordina clasificación regulatoria y evaluaciones de impacto; valora riesgos inherentes y residuales; emite conformidad en G3, G4 y G5 Lite (sin verificarlos, 01 §7.5); propone la aceptación al nivel que corresponde; coordina la firma multinivel. | Gestión de riesgos; Reglamento de IA, RGPD y normativa sectorial; riesgos de IA generativa y agentes; independencia de criterio. | Segunda línea (riesgos, cumplimiento o protección de datos). | 1–3 días por caso de uso en fase 3 · 10–30 % en fases 3–5 |
 | **Auditor de IA** | Verifica con independencia que las evidencias existen, son válidas y se elaboraron a tiempo. Verifica *gates* Enterprise y muestras Lite; emite Conforme, Conforme con observaciones o No conforme; registra no conformidades y verifica su cierre. | Auditoría y muestreo; SEVEN-G; lectura crítica de evaluaciones de modelos y agentes; conocimiento regulatorio; escepticismo profesional (38 §3). | Auditoría interna o auditor externo supervisado por ella. | Según plan de muestreo · 1–3 días por *gate* más continuidad |
 
 **Roles de apoyo de los órganos**
@@ -177,13 +177,13 @@ Los seis roles son **funciones, no puestos**: una persona los asume para una ini
 
 ## 5. Incompatibilidades
 
-### 5.1 Entre roles de la iniciativa (01 §8.2, obligatorias)
+### 5.1 Entre roles del caso de uso (01 §8.2, obligatorias)
 
 | # | Regla | Intensidad |
 |---|---|---|
-| I-1 | El responsable de riesgos no puede ser patrocinador, producto, técnico ni operación de la misma iniciativa. | Todas |
-| I-2 | El auditor de IA no puede asumir ningún otro rol en la misma iniciativa. | Todas |
-| I-3 | Responsable de riesgos y auditor de IA de una iniciativa no pueden ser la misma persona. | Enterprise |
+| I-1 | El responsable de riesgos no puede ser patrocinador, producto, técnico ni operación del mismo caso de uso. | Todas |
+| I-2 | El auditor de IA no puede asumir ningún otro rol en el mismo caso de uso. | Todas |
+| I-3 | Responsable de riesgos y auditor de IA de un caso de uso no pueden ser la misma persona. | Enterprise |
 | I-4 | El patrocinador no puede ser a la vez producto, técnico u operación. | Enterprise (compatible en Lite) |
 | I-5 | El auditor de IA no puede depender jerárquicamente del patrocinador. | Todas |
 
@@ -191,12 +191,12 @@ Los seis roles son **funciones, no puestos**: una persona los asume para una ini
 
 | # | Regla |
 |---|---|
-| I-6 | Un miembro del comité de IA con rol de patrocinio o construcción en una iniciativa se abstiene en sus decisiones. |
+| I-6 | Un miembro del comité de IA con rol de patrocinio o construcción en un caso de uso se abstiene en sus decisiones. |
 | I-7 | Quien verifica un *gate* no participa en su decisión. |
-| I-8 | La Oficina de IA no verifica iniciativas en cuyo diseño, construcción u operación haya participado. |
+| I-8 | La Oficina de IA no verifica casos de uso en cuyo diseño, construcción u operación haya participado. |
 | I-9 | Quien propone una excepción no la aprueba. |
 | I-10 | Auditoría interna no audita actividades de las que haya sido responsable o sobre cuyos controles haya asesorado en los doce meses anteriores. |
-| I-11 | Un proveedor de la solución no audita la iniciativa en la que participa ni evalúa su propio producto. |
+| I-11 | Un proveedor de la solución no audita el caso de uso en el que participa ni evalúa su propio producto. |
 
 Incumplir una incompatibilidad es **no conformidad mayor** (autoaprobación, 01 §12). Si afectó a G3 o G5, la verificación y la decisión se repiten.
 
@@ -322,7 +322,7 @@ Toda excepción se registra en P40 (EXC-AAAA-NNN) con justificación, riesgo, me
 | Activar funciones de IA en software de terceros contratado | Propietario del sistema con la Oficina de IA | Seguridad y protección de datos | Registro en T02 |
 | Cambiar la clasificación regulatoria de un sistema | Responsable de riesgos | Asesoría jurídica | Comité de IA |
 | Elevar la autonomía a A2 o A3 | Comité de IA | Seguridad (documento 35) | Comisión delegada si hay exposición directa |
-| Relajar criterios de parada | Órgano que autorizó la iniciativa (01 §7.4, regla 6) | Oficina de IA | Comité de IA |
+| Relajar criterios de parada | Órgano que autorizó el caso de uso (01 §7.4, regla 6) | Oficina de IA | Comité de IA |
 | Contratar un proveedor N3 | Comité de IA | Segunda línea (documento 36) | Comisión delegada |
 | Cerrar una no conformidad crítica | Comité de IA, tras verificación del auditor | — | Comisión delegada |
 | Aprobar el plan anual de auditoría de IA | Comisión delegada | Propuesta de la tercera línea | Consejo |
@@ -357,7 +357,7 @@ Los plazos de incidentes son los tiempos de respuesta orientativos del documento
 | E-8 | Riesgo residual **Crítico** identificado | Comité de IA; después, comisión o consejo si se propone aceptarlo | Comité: 5 días hábiles | Evitar, mitigar o proponer aceptación excepcional. |
 | E-9 | Riesgo residual **Alto** nuevo o agravado en producción | Comité de IA | Siguiente sesión, máximo 30 días | Aceptar o exigir mitigación. |
 | E-10 | *Gate* con **dos iteraciones** sin resolver | Órgano superior al que decide | Siguiente sesión del órgano superior | Decidir o fijar condiciones. |
-| E-11 | Iniciativa **estancada** o *gate* fuera del plazo de decisión (03 §3.6) | Comité de IA | Revisión mensual | Desbloquear, poner en espera con motivo o parar. |
+| E-11 | Caso de uso **estancado** o *gate* fuera del plazo de decisión (03 §3.6) | Comité de IA | Revisión mensual | Desbloquear, poner en espera con motivo o parar. |
 | E-12 | **Condición vencida** | Órgano que la impuso | 5 días hábiles | El resultado pasa a Iterar (01 §7.4, regla 4). |
 | E-13 | **Desacuerdo** entre comité de IA y segunda línea | Comisión delegada | Siguiente sesión; extraordinaria en 10 días hábiles si bloquea una puesta en producción | Resolver (sección 8.3). |
 | E-14 | **Requerimiento** de autoridad, reclamación formal o crisis de reputación vinculada a un sistema de IA | Asesoría jurídica, responsable de riesgos y presidencia del comité | Máximo 48 horas | Respuesta coordinada y valoración de suspensión. |
@@ -383,10 +383,10 @@ SEVEN-G sigue la lógica del modelo de las tres líneas del Instituto de Auditor
 
 | Línea | Quién en SEVEN-G | Qué hace sobre la IA | Qué no hace |
 |---|---|---|---|
-| **Órgano de gobierno** | Consejo y comisión delegada | Fija dirección y apetito; aprueba Transformar; supervisa. | Gestionar iniciativas ni decidir *gates* ordinarios. |
-| **Primera línea** | Patrocinador, producto, técnico, operación; áreas usuarias; Oficina de IA en su gestión de cartera | Gestiona los riesgos de sus iniciativas y sistemas; aplica controles; mantiene evidencias; opera. | Verificar sus propias evidencias; aceptar riesgos por encima de su nivel. |
+| **Órgano de gobierno** | Consejo y comisión delegada | Fija dirección y apetito; aprueba Transformar; supervisa. | Gestionar casos de uso ni decidir *gates* ordinarios. |
+| **Primera línea** | Patrocinador, producto, técnico, operación; áreas usuarias; Oficina de IA en su gestión de cartera | Gestiona los riesgos de sus casos de uso y sistemas; aplica controles; mantiene evidencias; opera. | Verificar sus propias evidencias; aceptar riesgos por encima de su nivel. |
 | **Segunda línea** | Riesgos, cumplimiento, seguridad, protección de datos; responsables de riesgos de IA | Metodología y mapeo regulatorio; cuestionamiento; conformidades; firma; supervisión de la cartera de riesgos. | Construir soluciones; decidir el valor de negocio. |
-| **Tercera línea** | Auditoría interna y auditores de IA | Verificación de *gates* Enterprise; auditoría del marco, continuidad y temas; informe independiente a la comisión. | Diseñar controles que después audita; participar en iniciativas. |
+| **Tercera línea** | Auditoría interna y auditores de IA | Verificación de *gates* Enterprise; auditoría del marco, continuidad y temas; informe independiente a la comisión. | Diseñar controles que después audita; participar en casos de uso. |
 | **Aseguramiento externo** | Auditor externo, entidad de certificación ISO/IEC 42001, organismo notificado cuando lo exija el Reglamento | Opinión o certificación independiente. | Sustituir responsabilidades internas. |
 
 **Situaciones frontera**
@@ -408,7 +408,7 @@ SEVEN-G sigue la lógica del modelo de las tres líneas del Instituto de Auditor
 | **Comité de transformación o estrategia digital** | Comité de IA. | Incorporar riesgos, cumplimiento, protección de datos y personas con conformidad. |
 | **Comité de riesgos de la dirección** | Revisión de riesgos Altos y de concentración; informe a la comisión. | No decide *gates*. |
 | **Comités de seguridad de la información y de protección de datos** | Firmas de seguridad y protección de datos; agentes y ataques con IA (35); evaluaciones de impacto; uso no autorizado con datos personales. | Registrar firmas en P23; coordinación con la clasificación (32). |
-| **Comité de nuevos productos o de gobernanza de productos** | G2 y G5 de iniciativas con exposición directa a clientes en sectores regulados. | Aplicar los criterios de 21 además de los sectoriales. |
+| **Comité de nuevos productos o de gobernanza de productos** | G2 y G5 de casos de uso con exposición directa a clientes en sectores regulados. | Aplicar los criterios de 21 además de los sectoriales. |
 | **Comités de arquitectura, inversiones o compras** | Revisión técnica de G4; construir, comprar o aliarse; evaluación de proveedores N2 y N3. | La decisión sobre N3 y los *gates* Enterprise siguen en el comité de IA. |
 | **Comité de ética, si existe** | Consulta en casos con impacto en personas o datos sensibles. | Consultivo; no sustituye a la segunda línea. |
 | **Comisión de auditoría o de riesgos del consejo** | Comisión delegada para la IA. | Punto trimestral de IA; coordinación entre ambas en el plan de auditoría. |
@@ -427,16 +427,16 @@ Una organización pequeña o mediana puede aplicar SEVEN-G con una estructura m�
 | **Comité de IA** | Comité de dirección con punto mensual de IA y orden del día propio. |
 | **Oficina de IA** | Una persona con dedicación parcial (orientativamente, 10–30 %) que mantiene inventario, registro y plantillas. |
 | **Segunda línea** | Responsable de cumplimiento, delegado de protección de datos o asesor externo, con conformidad documentada. |
-| **Tercera línea** | Auditor externo o auditoría interna del grupo: revisión anual del marco, muestreo de los *gates* Lite (21 §10.3) y todos los *gates* de las iniciativas Enterprise. |
-| **Roles de iniciativa** | Patrocinador, producto, técnico y operación pueden concentrarse en dos personas en Lite; riesgos y auditor siempre fuera del equipo. |
-| **Intensidad** | Lite por defecto. Una iniciativa con un criterio Enterprise (01 §9.2) se gestiona con intensidad Enterprise completa (01 §9.3): auditor de IA en todos sus *gates* —externo si no hay nadie independiente dentro— y firma multinivel en G5. |
-| **Herramientas** | Registro de iniciativas T01 o, si la compañía prefiere, una hoja de cálculo con el modelo de datos de 03. |
+| **Tercera línea** | Auditor externo o auditoría interna del grupo: revisión anual del marco, muestreo de los *gates* Lite (21 §10.3) y todos los *gates* de los casos de uso Enterprise. |
+| **Roles de caso de uso** | Patrocinador, producto, técnico y operación pueden concentrarse en dos personas en Lite; riesgos y auditor siempre fuera del equipo. |
+| **Intensidad** | Lite por defecto. Un caso de uso con un criterio Enterprise (01 §9.2) se gestiona con intensidad Enterprise completa (01 §9.3): auditor de IA en todos sus *gates* —externo si no hay nadie independiente dentro— y firma multinivel en G5. |
+| **Herramientas** | Registro de casos de uso T01 o, si la compañía prefiere, una hoja de cálculo con el modelo de datos de 03. |
 
 | Situación | Solución aceptable | No aceptable |
 |---|---|---|
 | Solo hay una persona técnica | Es técnico y operación; la Oficina verifica; un asesor externo da la conformidad de riesgos. | Que verifique sus propias evidencias. |
 | No hay auditoría interna | Auditor externo por muestreo anual y en *gates* Enterprise. | Que el patrocinador actúe como auditor. |
-| El director general patrocina todas las iniciativas | Decide los *gates* Lite; los Enterprise los decide el órgano de administración o un comité con al menos un miembro ajeno al patrocinio. | Que decida sus propios *gates* Enterprise. |
+| El director general patrocina todos los casos de uso | Decide los *gates* Lite; los Enterprise los decide el órgano de administración o un comité con al menos un miembro ajeno al patrocinio. | Que decida sus propios *gates* Enterprise. |
 
 ---
 
@@ -444,11 +444,11 @@ Una organización pequeña o mediana puede aplicar SEVEN-G con una estructura m�
 
 | # | Situación | Riesgo | Tratamiento |
 |---|---|---|---|
-| CI-1 | Un miembro del comité patrocina la iniciativa que se decide. | Autoaprobación. | Abstención y registro (I-6). |
+| CI-1 | Un miembro del comité patrocina el caso de uso que se decide. | Autoaprobación. | Abstención y registro (I-6). |
 | CI-2 | La retribución variable del patrocinador depende del valor declarado. | Inflar valor o evitar parar. | Vincular objetivos a valor **validado** (regla 2 de medición). |
 | CI-3 | Un empleado tiene relación con un proveedor evaluado. | Selección sesgada. | Declaración previa a P14 y exclusión. |
 | CI-4 | El auditor procede del equipo constructor o el consultor que diseñó el sistema propone auditarlo. | Autorrevisión. | Enfriamiento de doce meses (I-10); prohibición (I-11). |
-| CI-5 | La Oficina de IA tiene objetivos de volumen de iniciativas en producción. | Verificación laxa. | Objetivos de calidad del inventario, tiempo de decisión y valor validado. |
+| CI-5 | La Oficina de IA tiene objetivos de volumen de casos de uso en producción. | Verificación laxa. | Objetivos de calidad del inventario, tiempo de decisión y valor validado. |
 | CI-6 | Un consejero tiene intereses en un proveedor de IA de la compañía. | Decisión sesgada en Transformar o N3. | Régimen de conflictos del consejo; abstención. |
 
 **Procedimiento.** (1) **Declaración** al asumir el rol (en P03) y cuando surja; los miembros de órganos, anualmente (P41). (2) **Valoración** por la Oficina de IA con cumplimiento: real, potencial o aparente. (3) **Medida**: abstención, sustitución, verificación adicional o régimen del consejo. (4) **Registro** en el registro de declaraciones y abstenciones de P41 y en el acta (P39) o el registro de decisión de *gate* (P29) de la decisión afectada. (5) **Comprobación** por el auditor de IA en cada *gate* Enterprise.
@@ -461,7 +461,7 @@ No declarar un conflicto que haya afectado a una decisión de *gate* es **no con
 
 | Código | Nombre | Uso en este documento |
 |---|---|---|
-| **T01** | Registro de iniciativas | Órganos, personas y decisiones de las iniciativas. |
+| **T01** | Registro de casos de uso | Órganos, personas y decisiones de los casos de uso. |
 | **T03** | Gestor de *gates* | Verificador y decisor por *gate*; bloqueo de autoaprobación. |
 | **T08** | Registro de no conformidades e incidentes | Escalado con plazos y alertas. |
 | **T18** | Registro de recomendaciones del consejo | Acuerdos del consejo y de la comisión delegada. |
@@ -486,7 +486,7 @@ No declarar un conflicto que haya afectado a una decisión de *gate* es **no con
 |---|---|
 | **01 · Metodología fundacional** | Fuente normativa de roles, órganos, incompatibilidades, *gates* y no conformidades. |
 | **54 · Cómo se organiza una compañía para la IA** | Cómo se asignan estos órganos en un organigrama real y qué patrones se ven en el mercado. |
-| **03 · Herramientas y registro de iniciativas** | Registro de decisiones, plazos de referencia e iniciativas estancadas. |
+| **03 · Herramientas y registro de casos de uso** | Registro de decisiones, plazos de referencia e casos de uso estancados. |
 | **13 · Tesis de IA, ambición y apetito de riesgo** | Umbrales de la matriz de delegación. |
 | **21 · Criterios de *gate* y auditoría** | Lo que se verifica y decide en cada *gate*. |
 | **31 · Política corporativa y uso aceptable** | Políticas que aprueban los órganos; perfiles de formación. |
@@ -507,4 +507,4 @@ Este documento no constituye asesoramiento jurídico.
 | Versión | Fecha | Cambios |
 |---|---|---|
 | 0.1 | 16-09-2026 | Primera versión. Desarrolla 01 §8 con mandatos tipo de los órganos, descripciones de puesto de los seis roles, incompatibilidades entre órganos y roles, matrices de responsabilidad por fase, actividad y etapa corporativa, matriz de delegación (*gates*, aceptación de riesgo, suspensiones y retiradas, excepciones), escalado con plazos alineados con el documento 37, modelo de tres líneas, integración en comités existentes, adaptación a organizaciones pequeñas y conflictos de interés. Ajustes de coherencia con 01 (separación de funciones en Lite, resultados de R6, criterio de agentes) y con 34 y 37. |
-| 0.1 | 19-09-2026 | Adaptación a organizaciones pequeñas (11) alineada con 01 §5.2 y §9.3: consejo al menos trimestral, comité mensual y, en las iniciativas Enterprise, auditor de IA en todos los *gates*. |
+| 0.1 | 19-09-2026 | Adaptación a organizaciones pequeñas (11) alineada con 01 §5.2 y §9.3: consejo al menos trimestral, comité mensual y, en los casos de uso Enterprise, auditor de IA en todos los *gates*. |

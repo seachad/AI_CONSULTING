@@ -1,6 +1,6 @@
 # Indicator catalogue
 
-**Indicators with code, formula, source and owner to measure AI from the initiative to the board**
+**Indicators with code, formula, source and owner to measure AI from the use case to the board**
 
 | | |
 |---|---|
@@ -26,7 +26,7 @@ The catalogue:
 
 - Applies the measurement rules in document 40 and uses its official formulas (F1–F10).
 - Includes the funnel metrics in document 03 §3.5 and the eight transformation index signals in document 00 §5.3.
-- Feeds the initiative register (T01), value tracking (T12), the cost calculator (T13), the transformation index (T14), the maturity diagnosis (T15) and the board dashboard (T17).
+- Feeds the use case register (T01), value tracking (T12), the cost calculator (T13), the transformation index (T14), the maturity diagnosis (T15) and the board dashboard (T17).
 - Marks a **recommended minimum set for Lite intensity**.
 
 No company needs all the indicators. They are selected in C2 according to the AI thesis, the portfolio and the intensity, and the selection is recorded.
@@ -52,7 +52,7 @@ No company needs all the indicators. They are selected in C2 according to the AI
 |---|---|
 | **Freq.** (frequency) | **M** monthly · **Q** quarterly · **H** half-yearly · **A** annual · **G** at each *gate* or event |
 | **Resp.** (owner) | **SP** sponsor · **BO** business owner of the benefit · **PO** AI Product Owner · **TO** technical owner · **OO** operations owner · **RO** risk owner · **AUD** AI Auditor · **AIO** AI Office · **MC** management control · **AIC** AI Committee · **ISEC** information security · **DO** data owner · **PPL** people function · **BS** board secretariat |
-| **Level** | **I** initiative · **P** portfolio · **Co** company · **B** board |
+| **Level** | **I** use case · **P** portfolio · **Co** company · **B** board |
 | **Application** | Phases **F0–F7**, *gates* **G0–G7**, stages **C1–C5**, spheres **E01–E09** and ambition **Opt** (Optimise), **Aug** (Augment), **Tra** (Transform). "All" if it applies generally. |
 | **Source** | Tool from document 03 (T01–T22) and, where one exists, board dashboard (T17) field in backticks. |
 | **Lite** | **●** part of the recommended minimum set for Lite (section 19). |
@@ -94,7 +94,7 @@ Each indicator in the catalogue, and any in-house indicator added by the company
 | Source | Tool, field and source system. |
 | Frequency | Frequency of calculation and review. |
 | Owner | Who calculates it and who is accountable for the result. |
-| Level | Initiative, portfolio, company or board. |
+| Level | Use case, portfolio, company or board. |
 | Application | Phase, stage, sphere and ambition. |
 | Threshold | Value approved in C2 or "to be set"; traffic-light reading where appropriate. |
 | Counterpart indicator | Indicator with which it must be read. |
@@ -137,13 +137,13 @@ Each indicator in the catalogue, and any in-house indicator added by the company
 | IND-COS-04 | **Budget variance.** Difference between actual cost and budget. | (Actual cost − budget) ÷ budget | % | T13 · accounting | M | MC | I · P | F3–F7 | To be set | |
 | IND-COS-05 | **Cost per unit of outcome.** Cost of producing one unit of useful outcome. | Recurring cost for the period ÷ units of useful outcome (42 §9) | € per unit | T13 · source system | M | PO | I | F5–F7 | ≤ baseline unit cost (Opt) | ● |
 | IND-COS-06 | **Consumption against budget.** Cumulative model and compute consumption against budget. | Cumulative consumption ÷ budget for the period | % | T13 · supplier billing | M (daily for agents) | OO | I · P | F5–F7 · generative AI, agents | Alerts at 50, 80 and 100% (42 §8) | ● |
-| IND-COS-07 | **Tagged cost.** Cloud and AI cost with a valid initiative tag. | Cost with a valid tag ÷ total cloud and AI cost | % | Cloud billing · T13 | M | AIO | Co | C4 | To be set | |
+| IND-COS-07 | **Tagged cost.** Cloud and AI cost with a valid use case tag. | Cost with a valid tag ÷ total cloud and AI cost | % | Cloud billing · T13 | M | AIO | Co | C4 | To be set | |
 | IND-COS-08 | **Unattributed cost.** AI cost not allocated to use cases or to corporate use. | Unattributed cost ÷ total AI cost | % | T13 | Q | MC | Co · B | C4 | To be set | |
 | IND-COS-09 | **Idle licence cost.** Licences paid for but unused in the period. | Assigned unused licences × unit cost | € | T21 · `adopcion` (licences) | M | AIO | Co | C4 | To be set | |
-| IND-COS-10 | **Investment avoided through stops.** Approved but uncommitted budget of stopped or retired initiatives. | Σ approved budget − Σ committed, in stopped initiatives (42 §10) | € | T01 · T13 | Q | AIO | P · B | C4, C5 | For information; does not add to value | |
+| IND-COS-10 | **Investment avoided through stops.** Approved but uncommitted budget of stopped or retired use cases. | Σ approved budget − Σ committed, in stopped use cases (42 §10) | € | T01 · T13 | Q | AIO | P · B | C4, C5 | For information; does not add to value | |
 | IND-COS-11 | **Company AI cost.** Total AI cost, including corporate use. | Σ recurring cost + Σ investment for the year across all systems | €/year | T13 | Q | MC | Co · B | C1, C4 | C2 framework budget | ● |
-| IND-COS-12 | **Governance hours per initiative.** Hours declared to prepare and verify the evidence, meet and record an initiative's *gate* decisions. It measures the cost of the method itself; it is not allocated to the cost of the case (42 §4). | Σ hours declared in the *gate* decisions (`decisiones_gate[].horas_gobierno`) | hours | T01 · T17 `seveng.gobierno` | G · A | OIA | I · Ca | All · by intensity | Median by intensity, to be calibrated | |
-| IND-COS-13 | **Cost of governance over investment.** Proportionality of governance (principle 11). | Declared hours × C2 cost per hour ÷ the initiative's investment | % | T01 · T17 | A | OIA | I · Ca · Cj | All · by intensity | Express 5% · Lite 10% · Enterprise 15% (13 §6; starting values, to be calibrated in C5) | |
+| IND-COS-12 | **Governance hours per use case.** Hours declared to prepare and verify the evidence, meet and record a use case's *gate* decisions. It measures the cost of the method itself; it is not allocated to the cost of the case (42 §4). | Σ hours declared in the *gate* decisions (`decisiones_gate[].horas_gobierno`) | hours | T01 · T17 `seveng.gobierno` | G · A | OIA | I · Ca | All · by intensity | Median by intensity, to be calibrated | |
+| IND-COS-13 | **Cost of governance over investment.** Proportionality of governance (principle 11). | Declared hours × C2 cost per hour ÷ the use case's investment | % | T01 · T17 | A | OIA | I · Ca · Cj | All · by intensity | Express 5% · Lite 10% · Enterprise 15% (13 §6; starting values, to be calibrated in C5) | |
 | IND-COS-14 | **Referenced evidence.** Share of the evidence taken from what the company already has instead of being copied into a template (21 §4.3). | Evidence with origin "reference" ÷ evidence | % | T01 | Q | OIA | Ca · Co | G0–G7 | To be set; increasing in large companies | |
 
 ---
@@ -153,18 +153,18 @@ Each indicator in the catalogue, and any in-house indicator added by the company
 | Code | Indicator and definition | Formula | Unit | Source | Freq. | Resp. | Level | Application | Indicative threshold | Lite |
 |---|---|---|---|---|---|---|---|---|---|---|
 | IND-EMB-01 | **Time in phase.** Days in each phase excluding time on hold. | Exit date − entry date − days on hold; median and P80 | days | T01 (events) | M | AIO | P | F0–F5, F7 | Time limits in 03 §3.6 | |
-| IND-EMB-02 | **Stalled initiatives.** Initiatives that exceed the reference time limit for their phase. | No. with time in phase > reference time limit | no. | T01 | M | AIO | P | All | 0 without committee review | ● |
+| IND-EMB-02 | **Stalled use cases.** Use cases that exceed the reference time limit for their phase. | No. with time in phase > reference time limit | no. | T01 | M | AIO | P | All | 0 without committee review | ● |
 | IND-EMB-03 | **Conversion per gate.** Proportion of favourable decisions at each *gate*. | (Proceed + Proceed with conditions) ÷ *gate* decisions | % | T03 | Q | AIO | P | G0–G7 | For information | |
 | IND-EMB-04 | **Iterations per gate.** Average iterations before the decision. | Σ iterations ÷ no. of *gate* decisions | no. | T03 | Q | AIO | P | G0–G7 | ≤ 2 (01 §7.4) | |
 | IND-EMB-05 | **Time on hold.** Days halted for an external cause, by reason. | Σ days in On hold status, by reason | days | T01 | M | AIO | P | All | For information | |
 | IND-EMB-06 | **Stop and retirement reasons.** Distribution of coded reasons. | Stops and retirements by reason ÷ total stops and retirements | % | T01 | H | AIC | P | C5 | For information | |
 | IND-EMB-07 | **Gate compliance.** Criteria met out of those applicable. | Criteria Met ÷ (applicable criteria) | % | T03 | G | AUD | I · P | G0–G7 | 100% of mandatory criteria for Proceed | |
 | IND-EMB-08 | **Expired conditions.** Open conditions past their deadline. | No. of open conditions past their deadline | no. | T03 | M | AIC | P · B | G0–G7 | 0 | ● |
-| IND-EMB-09 | **Value by phase.** Expected annual net value of the initiatives in each phase. | Σ expected annual net value by phase | € | T01 | Q | AIO | P · B | C3, C4 | For information | |
+| IND-EMB-09 | **Value by phase.** Expected annual net value of the use cases in each phase. | Σ expected annual net value by phase | € | T01 | Q | AIO | P · B | C3, C4 | For information | |
 | IND-EMB-10 | **Weighted value.** Expected value adjusted by the historical probability of reaching production. | Σ expected value × historical probability from the current phase (IND-EMB-12) | € | T01 | Q | AIO | B | C4 | Only with sufficient history | |
-| IND-EMB-11 | **Ambition mix by phase.** Distribution of ambition in each phase. | Initiatives at each level in the phase ÷ initiatives in the phase | % | T01 | Q | AIO | P · B | C3, C4 | For information (signal 7) | |
-| IND-EMB-12 | **Historical probability of reaching production.** Historical rate of progression to G5 from each phase. | Initiatives that reached G5 from phase f ÷ initiatives that passed through f (closed cohorts) | % | T01 | H | AIO | P | C3, C5 | For information | |
-| IND-EMB-13 | **Ability to stop.** Initiatives stopped or retired with a coded reason compared with those that receive a *gate* decision. | Initiatives stopped or retired with a coded reason in 12 months ÷ initiatives with a *gate* decision in 12 months | % | T01 · T03 | To be defined by the company | To be defined by the company | P · B | C4, C5 · E09 | To be defined by the company | |
+| IND-EMB-11 | **Ambition mix by phase.** Distribution of ambition in each phase. | Use cases at each level in the phase ÷ use cases in the phase | % | T01 | Q | AIO | P · B | C3, C4 | For information (signal 7) | |
+| IND-EMB-12 | **Historical probability of reaching production.** Historical rate of progression to G5 from each phase. | Use cases that reached G5 from phase f ÷ use cases that passed through f (closed cohorts) | % | T01 | H | AIO | P | C3, C5 | For information | |
+| IND-EMB-13 | **Ability to stop.** Use cases stopped or retired with a coded reason compared with those that receive a *gate* decision. | Use cases stopped or retired with a coded reason in 12 months ÷ use cases with a *gate* decision in 12 months | % | T01 · T03 | To be defined by the company | To be defined by the company | P · B | C4, C5 · E09 | To be defined by the company | |
 
 ---
 
@@ -179,7 +179,7 @@ Definitions of the segments are in document 40 §9. All are segmented by residua
 | IND-AGI-03 | **Idea → production.** Total time to production. | Date of favourable G5 − registration date − days on hold; median and P80 | days | T01 | Q | AIO | P · B | F0–F5 | Lite 150 · Enterprise 260 (indicative) | |
 | IND-AGI-04 | **Decision time.** Days between the request and the decision on a *gate*. | Decision date − request date; median and P80 | working days | T03 | M | AIC | P · B | G0–G7 | Lite 5 · Enterprise 10 | |
 | IND-AGI-05 | **Decisions on time.** *Gate* decisions taken within the approved time limit. | Decisions on time ÷ decisions | % | T03 · `agilidad.sla_dias_por_tier` | Q | AIC | B | G0–G7 | To be set | |
-| IND-AGI-06 | **Awaiting risk analysis.** Registered initiatives without a risk assessment started within the time limit. | No. of initiatives with days since registration > time limit and no assessment started | no. | T01 · T06 · `agilidad.backlog_sin_analisis` | M | RO | P · B | F0–F3 | 0 outside the time limit | |
+| IND-AGI-06 | **Awaiting risk analysis.** Registered use cases without a risk assessment started within the time limit. | No. of use cases with days since registration > time limit and no assessment started | no. | T01 · T06 · `agilidad.backlog_sin_analisis` | M | RO | P · B | F0–F3 | 0 outside the time limit | |
 
 ---
 
@@ -200,8 +200,8 @@ Definitions of the segments are in document 40 §9. All are segmented by residua
 | IND-RIE-11 | **Critical suppliers assessed.** N3 suppliers with a current assessment and exit strategy. | N3 suppliers with a current assessment and exit strategy ÷ N3 suppliers | % | T09 · `proveedor_dora` | H | RO | Co · B | F3 · C4 | 100% | |
 | IND-RIE-12 | **Timely analysis of regulatory changes.** Relevant regulatory changes with an impact analysis within the set time limit. | Relevant regulatory changes with an impact analysis within the set time limit ÷ relevant regulatory changes identified | % | To be defined by the company | To be defined by the company | To be defined by the company | Co · B | C4 · E08 | To be defined by the company | |
 | IND-RIE-13 | **Early adaptation.** Obligations with a future application date and an approved adaptation plan. | Obligations with a future application date and an approved adaptation plan ÷ obligations with an application date in the next 24 months | % | To be defined by the company | To be defined by the company | To be defined by the company | Co · B | C2, C4 · E08 | To be defined by the company | |
-| IND-RIE-14 | **Ethical review applied.** Initiatives that require ethical review and have it recorded before G3. | Initiatives that require ethical review and have it recorded before G3 ÷ initiatives that require it | % | To be defined by the company | To be defined by the company | To be defined by the company | P · B | F3 · G3 · E08 | To be defined by the company | |
-| IND-RIE-15 | **Effective veto power.** Initiatives modified or stopped by decision of the ethics body. | No. of initiatives modified or stopped by decision of the ethics body in the last 12 months, reported together with the number of initiatives reviewed | no. | To be defined by the company | To be defined by the company | To be defined by the company | Co · B | C4, C5 · E08 | To be defined by the company | |
+| IND-RIE-14 | **Ethical review applied.** Use cases that require ethical review and have it recorded before G3. | Use cases that require ethical review and have it recorded before G3 ÷ use cases that require it | % | To be defined by the company | To be defined by the company | To be defined by the company | P · B | F3 · G3 · E08 | To be defined by the company | |
+| IND-RIE-15 | **Effective veto power.** Use cases modified or stopped by decision of the ethics body. | No. of use cases modified or stopped by decision of the ethics body in the last 12 months, reported together with the number of use cases reviewed | no. | To be defined by the company | To be defined by the company | To be defined by the company | Co · B | C4, C5 · E08 | To be defined by the company | |
 | IND-RIE-16 | **Public transparency.** Systems with direct exposure to people described in the company's public information. | Systems with direct exposure to people described in the company's public information ÷ systems with direct exposure | % | To be defined by the company | To be defined by the company | To be defined by the company | Co · B | C4 · E08 | To be defined by the company | |
 | IND-RIE-17 | **Concentration in the main model supplier.** Weight of the main supplier in spending on models. | Spending on the main model supplier ÷ total spending on models | % | To be defined by the company | To be defined by the company | To be defined by the company | Co · B | C3, C4 · E09 | To be defined by the company | |
 
@@ -269,10 +269,10 @@ Definitions of the segments are in document 40 §9. All are segmented by residua
 | IND-ADO-03 | **Usage rate in the process.** Transactions in which AI is used. | Transactions with AI ÷ eligible transactions | % | Source system | M | PO | I | F5–F7 | G2 hypothesis | ● |
 | IND-ADO-04 | **Acceptance of proposals.** System proposals accepted without changes. | Proposals accepted without changes ÷ proposals | % | Logs | M | PO | I | F6 · A1 | For information; extreme values are analysed with OPE-08 | |
 | IND-ADO-05 | **AI literacy.** People in the required group who have completed training. | People trained ÷ people in the required group | % | T20 · people function | Q | PPL | Co · B | C2, C4 · E03 | 100% of the required group before access or taking up the role; current renewal of PER-PC ≥ 90% (alert threshold, to be calibrated) | ● |
-| IND-ADO-06 | **Redesigned roles.** Jobs whose functions have been formally redesigned due to AI. | Redesigned jobs ÷ jobs affected by initiatives in production | % | T20 · people function | H | PPL | I · Co | F6–F7 · E03 · Aug, Tra | For information (signal 5) | |
+| IND-ADO-06 | **Redesigned roles.** Jobs whose functions have been formally redesigned due to AI. | Redesigned jobs ÷ jobs affected by use cases in production | % | T20 · people function | H | PPL | I · Co | F6–F7 · E03 · Aug, Tra | For information (signal 5) | |
 | IND-ADO-07 | **Critical AI capabilities covered.** Critical AI positions filled. | Critical positions filled ÷ critical positions needed | % | People function · `adopcion` (vacancies) | H | PPL | Co | C1, C4 | To be set | |
-| IND-ADO-08 | **Employee-promoted initiatives.** Weight of employee proposals in the register and their progression through G1. | Registered initiatives originating from employee proposals ÷ registered initiatives; and employee-originated initiatives that pass G1 ÷ employee-originated initiatives registered | % | T01 (origin field) | H | To be defined by the company | P · Co | F1 · G1 · E03 | Trend | |
-| IND-ADO-09 | **Effect assessment coverage.** Initiatives with a recorded assessment of the effect on work. | Initiatives in phase 3 or later with a recorded effect assessment ÷ initiatives in phase 3 or later | % | T01 · T20 | Q | To be defined by the company | P | F3–F7 · E03 | 100% | |
+| IND-ADO-08 | **Employee-promoted use cases.** Weight of employee proposals in the register and their progression through G1. | Registered use cases originating from employee proposals ÷ registered use cases; and employee-originated use cases that pass G1 ÷ employee-originated use cases registered | % | T01 (origin field) | H | To be defined by the company | P · Co | F1 · G1 · E03 | Trend | |
+| IND-ADO-09 | **Effect assessment coverage.** Use cases with a recorded assessment of the effect on work. | Use cases in phase 3 or later with a recorded effect assessment ÷ use cases in phase 3 or later | % | T01 · T20 | Q | To be defined by the company | P | F3–F7 · E03 | 100% | |
 | IND-ADO-10 | **Qualified overseers.** Systems whose designated overseers have recorded oversight training. | A1–A3 systems in production whose designated overseers have recorded PER-PD training ÷ A1–A3 systems in production | % | T02 · training system | Q | To be defined by the company | I · Co | F5–F6 · A1–A3 | 100% | |
 | IND-ADO-11 | **Released capacity without a decision.** Released hours with no destination decided beyond the C2 time limit. | Hours in PER-D5 older than the C2 time limit ÷ measured released hours | % | T20 | Q | To be defined by the company | I · P | F6–F7 · E03 · Opt, Aug | Decreasing trend | |
 | IND-ADO-12 | **Prior information to workers' representatives.** Systems with an effect on working conditions or employment reported before use. | Systems with an effect on working conditions or employment reported before use ÷ systems with that effect | % | Information record (document 50 §7.2) | Q | To be defined by the company | Co · B | F4–F5 · G5 · E03 | 100% | |
@@ -296,7 +296,7 @@ Definitions of the segments are in document 40 §9. All are segmented by residua
 | IND-DAT-08 | **Quality by dimension.** Records that pass the rules of each quality dimension. | Records that pass the dimension's rules ÷ records assessed, by dataset and dimension | % | Quality monitoring | According to load frequency | To be defined by the company | I | F3–F6 · E05 | Threshold set per use case in phase 3 | |
 | IND-DAT-09 | **Retention compliance.** Datasets with a defined and applied retention period. | Datasets with a defined and applied retention period ÷ datasets used by AI | % | Data catalogue | H | To be defined by the company | Co | F4–F7 · E05 | 100% | |
 | IND-DAT-10 | **Incidents caused by data.** AI incidents whose root cause lies in data. | AI incidents whose root cause lies in data ÷ closed AI incidents | % | T08 | Q | To be defined by the company | P · Co | F6 · E05 | Decreasing trend | |
-| IND-DAT-11 | **Time to data access.** Days until the data requested by an initiative are available. | Median days between a data access request for an initiative and its availability in the authorised environment | days | T01 (events) · access requests | Q | To be defined by the company | P · Co | F2–F4 · E05 | Decreasing trend | |
+| IND-DAT-11 | **Time to data access.** Days until the data requested by a use case are available. | Median days between a data access request for a use case and its availability in the authorised environment | days | T01 (events) · access requests | Q | To be defined by the company | P · Co | F2–F4 · E05 | Decreasing trend | |
 | IND-DAT-12 | **Validated synthetic data.** Synthetic datasets in use with utility and privacy validation. | Synthetic datasets in use with recorded utility and privacy validation ÷ synthetic datasets in use | % | Data catalogue | H | To be defined by the company | I · Co | F4–F6 · E05 | 100% | |
 | IND-DAT-13 | **Knowledge sources with an owner.** Sources connected to AI with a content owner. | Knowledge sources connected to AI with a content owner ÷ connected sources | % | Source inventory | Q | To be defined by the company | Co | F4–F6 · E06 · generative AI | 100% | |
 | IND-DAT-14 | **Use of expired content.** Responses citing documents that are no longer valid. | Sampled responses citing documents that are no longer valid ÷ sampled responses with a citation | % | Continuous evaluation | M | To be defined by the company | I | F6 · E06 · generative AI | Close to 0% | |
@@ -334,10 +334,10 @@ The eight signals in document 00 §5.3. The 0–3 score for each signal, its ini
 | IND-TRA-01 | **Signal 1 · Investment mix.** Weight of Augment and Transform in AI spending. | (Recurring cost + investment) of Aug and Tra ÷ total (recurring cost + investment) | % | T01 · T13 | A | AIO | Co · B | C1, C5 | Document 12 | ● |
 | IND-TRA-02 | **Signal 2 · Value mix.** Weight of return in validated value. | Validated return ÷ (validated efficiencies + validated return) | % | T12 | A | MC | Co · B | C1, C5 | Document 12 | ● |
 | IND-TRA-03 | **Signal 3 · Materialisation.** Released capacity converted into savings or reassigned. | (Realised hours + reassigned hours) ÷ net released hours of the portfolio | % | T12 · T20 | A | AIO | Co · B | C1, C5 | Document 12 | |
-| IND-TRA-04 | **Signal 4 · Depth of change.** Initiatives that redesign processes end to end. | Initiatives in production with end-to-end redesign ÷ initiatives in production | % | T05 (question 2) | A | AIO | Co · B | C1, C5 | Document 12 | |
-| IND-TRA-05 | **Signal 5 · Operating model.** Initiatives with a verified change in roles, structure or decisions. | Aug and Tra initiatives in production with verified change and defined oversight ÷ Aug and Tra initiatives in production | % | T05 (question 3) · T20 | A | AIO | Co · B | C1, C5 | Document 12 | |
+| IND-TRA-04 | **Signal 4 · Depth of change.** Use cases that redesign processes end to end. | Use cases in production with end-to-end redesign ÷ use cases in production | % | T05 (question 2) | A | AIO | Co · B | C1, C5 | Document 12 | |
+| IND-TRA-05 | **Signal 5 · Operating model.** Use cases with a verified change in roles, structure or decisions. | Aug and Tra use cases in production with verified change and defined oversight ÷ Aug and Tra use cases in production | % | T05 (question 3) · T20 | A | AIO | Co · B | C1, C5 | Document 12 | |
 | IND-TRA-06 | **Signal 6 · AI-enabled revenue.** Revenue that would not exist without AI. | Revenue from products, services or channels that would not exist without AI ÷ total revenue | % | Accounting · T01 | A | MC | Co · B | C1, C5 · E02 | Document 12 | |
-| IND-TRA-07 | **Signal 7 · Progression to production.** Arrival in production of the bets with the highest ambition. | Aug and Tra initiatives that reach G5 ÷ those that passed G2 (closed cohort); and median idea → production for Aug and Tra ÷ median for Opt | % · ratio | T01 | A | AIO | Co · B | C1, C5 | Document 12 | |
+| IND-TRA-07 | **Signal 7 · Progression to production.** Arrival in production of the bets with the highest ambition. | Aug and Tra use cases that reach G5 ÷ those that passed G2 (closed cohort); and median idea → production for Aug and Tra ÷ median for Opt | % · ratio | T01 | A | AIO | Co · B | C1, C5 | Document 12 | |
 | IND-TRA-08 | **Signal 8 · Board decision.** Transformation decisions adopted and followed up. | No. of Tra decisions adopted by the board with follow-up in the register | no. | T18 | A | BS | B | C2, C5 | Document 12 | |
 | IND-TRA-09 | **Transformation profile.** Position of the company between efficiency and transformation. | 0–3 score for each signal and resulting profile (document 12) | profile | T14 | A | AIO | Co · B | C1, C5 | — | |
 
@@ -389,7 +389,7 @@ A company that applies SEVEN-G with Lite intensity should start with these 26 in
 |---|---|---|
 | Value | IND-VAL-01, 05, 08, 10, 14, 15 | Does it deliver net value, how much is validated, is it realised, where should we invest and which use cases are not sustainable? |
 | Cost | IND-COS-01, 05, 06, 11 | How much does each use case and AI as a whole cost, and is consumption under control? |
-| Funnel | IND-EMB-02, 08 | Are there stuck initiatives or unmet conditions? |
+| Funnel | IND-EMB-02, 08 | Are there stuck use cases or unmet conditions? |
 | Agility | IND-AGI-01, 02 | How long do we take to approve and to move into production? |
 | Risk and compliance | IND-RIE-01, 02, 07, 09, 10 | Do we know what AI we have, is all of it approved, what incidents are there, is it reviewed and is there unauthorised use? |
 | Operations | IND-OPE-01 | Do the systems perform within what was approved? |
@@ -398,7 +398,7 @@ A company that applies SEVEN-G with Lite intensity should start with these 26 in
 | Maturity | IND-MAD-01 | Where are we? |
 | Board | IND-CON-02 | Are the board's recommendations being implemented? |
 
-When an initiative moves to Enterprise, at least risk indicators IND-RIE-03, 04 and 11 are added and, depending on the technology, those in sections 11.2 to 11.4.
+When a use case moves to Enterprise, at least risk indicators IND-RIE-03, 04 and 11 are added and, depending on the technology, those in sections 11.2 to 11.4.
 
 ---
 
@@ -442,7 +442,7 @@ Documents 10, 50, 51 and 52 use provisional indicator codes. This table maps the
 | IE03.03 | Reassigned released capacity | IND-VAL-09 |
 | IE03.04 | AI literacy by role | IND-ADO-05 |
 | IE03.05 | Redesigned roles | IND-ADO-06 |
-| IE03.06 | Employee-promoted initiatives | IND-ADO-08 (added) |
+| IE03.06 | Employee-promoted use cases | IND-ADO-08 (added) |
 | IE04.01 | Cycle time reduction | IND-PRO-01 (added) |
 | IE04.02 | Change in unit cost | IND-PRO-02 (added) |
 | IE04.03 | Straight-through processing | IND-OPE-05 |
@@ -454,7 +454,7 @@ Documents 10, 50, 51 and 52 use provisional indicator codes. This table maps the
 | IE05.03 | Documented legal basis | IND-DAT-03 |
 | IE05.04 | Documented lineage | IND-DAT-04 |
 | IE05.05 | Time to data access | IND-DAT-11 (added) |
-| IE05.06 | Initiatives blocked by data | IND-EMB-05 and IND-EMB-06 (related, data reason) |
+| IE05.06 | Use cases blocked by data | IND-EMB-05 and IND-EMB-06 (related, data reason) |
 | IE06.01 | Coverage of critical knowledge | IND-DAT-06 |
 | IE06.02 | Knowledge concentration | IND-DAT-16 (added) |
 | IE06.03 | Verified accuracy | IND-OPE-07 |
@@ -554,7 +554,7 @@ Documents 10, 50, 51 and 52 use provisional indicator codes. This table maps the
 
 | Code | Name | Use in this document |
 |---|---|---|
-| **T01** | Initiative register | Main source: phases, events, tags, value. |
+| **T01** | Use case register | Main source: phases, events, tags, value. |
 | **T02 · T03** | Inventory · *Gate* manager | Coverage, *gates*, conditions, continuity reviews. |
 | **T06 · T07 · T08 · T09 · T10** | Risks · regulatory classifier · nonconformities and incidents · suppliers · agent security | RIE indicators and agent OPE indicators. |
 | **T11 · T12 · T13** | Value hypothesis · value tracking · costs per use case | VAL and COS indicators. |
@@ -570,7 +570,7 @@ Documents 10, 50, 51 and 52 use provisional indicator codes. This table maps the
 | Document | Relationship |
 |---|---|
 | **00 · What SEVEN-G is and how it helps companies** | Measurement rules and eight transformation signals. |
-| **03 · Tools and initiative register** | Funnel metrics, reference time limits and sources. |
+| **03 · Tools and use case register** | Funnel metrics, reference time limits and sources. |
 | **10, 50, 51 and 52 · Spheres, people, data and operations** | Provisional codes IE, PER, DAT, CNC and OPE (section 21). |
 | **11 · Maturity model** | Criteria and level calculation. |
 | **12 · Transformation index** | Signal scoring and profiles. |
@@ -590,5 +590,5 @@ Documents 10, 50, 51 and 52 use provisional indicator codes. This table maps the
 |---|---|---|
 | 0.1 | 16-09-2026 | First version. Catalogue of 156 indicators in 13 families with code, formula, unit, source, frequency, owner, level, application and indicative threshold; Lite minimum set of 26 indicators; indicative selection for the board dashboard. Consistency adjustments with 01 (segregation of duties in Lite, R6 outcomes, agent criterion) and with 34 and 37; mapping of provisional codes from documents 10, 50, 51 and 52 (section 21). The 47 provisional indicators that had no equivalent added to the catalogue (families EMB, RIE, OPE, ADO, DAT and CLI, and new family PRO · Processes and decision-making, section 18); provisional knowledge prefix in document 51 renamed from CON- to CNC-. |
 | 0.1 | 18-09-2026 | Three new operations indicators (159 in total): IND-OPE-24 queries outside the validated scope (usage drift), IND-OPE-25 unequal responses in counterfactual pairs (bias in generative AI) and IND-OPE-26 cost-driven degraded mode; correspondence with OPE-18 to OPE-20 in document 52. |
-| 0.2 | 01-10-2026 | Three indicators of the cost of governance itself (162 in total): IND-COS-12 governance hours per initiative, IND-COS-13 cost of governance over investment with targets by intensity and IND-COS-14 referenced evidence. The time of each gate is already measured by IND-AGI-04. |
+| 0.2 | 01-10-2026 | Three indicators of the cost of governance itself (162 in total): IND-COS-12 governance hours per use case, IND-COS-13 cost of governance over investment with targets by intensity and IND-COS-14 referenced evidence. The time of each gate is already measured by IND-AGI-04. |
 | 0.3 | 19-10-2026 | Three operations indicators (165 in total): IND-OPE-27 guardrail effectiveness, IND-OPE-28 end-to-end trace coverage and IND-OPE-29 recovery from model provider outage; correspondence with OPE-21 to OPE-23 in document 52 (D159). |

@@ -25,7 +25,7 @@
 | **Who verifies it** | AI Office in Lite; AI Auditor in Enterprise. The auditor may consult the outputs of the AI Reviewer, but does not base the verification on them alone (53 §5.3). |
 | **Who decides or approves** | Every acceptance of an artefact is recorded by an identified person. The *gate* is decided by the body in 01 §7.5. |
 | **Stage, *gate* or moment** | G4 (plan, rules and test strategy), G5 (reviews, fixes, versions) and R6 (subsequent changes and urgent fixes, 53 §8). |
-| **Tool** | T01 (link from the work topic to the initiative), T02 (build tools inventoried), T06, T08, T09 and T10. |
+| **Tool** | T01 (link from the work topic to the use case), T02 (build tools inventoried), T06, T08, T09 and T10. |
 | **Reference document** | Document 53 (§3.1, §4, §5, §6, §7 and §8). SPAD is an independent methodology referenced from SEVEN-G, not part of it (53 §2.1). |
 | **Lite versus Enterprise** | Lite may omit the fields marked **(Enterprise)** and group the plan, its review, the rules and the test strategy into one artefact, and the implementation, the tests and their review into another (53 §4.3). |
 
@@ -43,12 +43,12 @@ Completion rules:
 
 | Field | Content | Guidance |
 |---|---|---|
-| Initiative code | | IA-AAAA-NNN (T01). |
-| Work topic (*TOPIC*) | | Includes or references the initiative code. |
+| Use case code | | IA-AAAA-NNN (T01). |
+| Work topic (*TOPIC*) | | Includes or references the use case code. |
 | Type of flow | | Main · Legacy code · Security · Debugging · Urgent fix. |
 | Method | | Full SPAD · Reduced SPAD (Lite) · Other documented method. |
 | AI build tools | | Name, provider, version; approved by the company (P14) and inventoried in T02. |
-| Autonomy level of the build agents | | A0–A3 (document 35). If they act on production or personal data at A2 or A3, the initiative is Enterprise. |
+| Autonomy level of the build agents | | A0–A3 (document 35). If they act on production or personal data at A2 or A3, the use case is Enterprise. |
 | Orchestrator and human reviewer | | Designated in P03. |
 | Intensity | | Lite · Enterprise. |
 | Document version, author and date | | DD-MM-AAAA. |

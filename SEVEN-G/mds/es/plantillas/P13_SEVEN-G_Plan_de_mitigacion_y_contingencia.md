@@ -39,7 +39,7 @@ Reglas de cumplimentación:
 
 | Campo | Contenido | Guía |
 |---|---|---|
-| Código de la iniciativa | | IA-AAAA-NNN. |
+| Código del caso de uso | | IA-AAAA-NNN. |
 | Versión de P12 asociada | | El plan corresponde a una versión concreta del registro. |
 | Versión del documento | | |
 | Fecha | | DD-MM-AAAA. |

@@ -1,10 +1,10 @@
-# Initiative charter
+# Use case charter
 
-**Formally authorises an AI initiative and sets its objective, scope, preliminary ambition, budget and owners.**
+**Formally authorises an AI use case and sets its objective, scope, preliminary ambition, budget and owners.**
 
 | | |
 |---|---|
-| Document | Template P01 · Initiative charter |
+| Document | Template P01 · Use case charter |
 | Version | 0.2 (working draft) |
 | Date | 01-10-2026 |
 | Author | Fernando García Varela |
@@ -23,13 +23,13 @@
 | **Who verifies it** | Lite: AI Office. Enterprise: AI Auditor. |
 | **Who decides** | Lite: AI Sponsor. Enterprise: AI Committee. |
 | **Gate at which it is reviewed** | G0 · Authorisation. |
-| **Tool** | T01 · Initiative register (the identification and classification fields feed the initiative record). |
+| **Tool** | T01 · Use case register (the identification and classification fields feed the use case record). |
 | **Lite versus Enterprise** | Lite may omit the fields marked **(Enterprise)**. The rest is mandatory in both intensities. |
 | **Related templates** | P02 (constraints), P03 (roles), P04 (intensity), P05 (inventory), P07 (ambition), P29 (*gate* decision), P31 (use case record). |
 
 Completion rules:
 
-- Without an approved G0 the initiative is not authorised: it may not consume budget or access production data (01 §6.2).
+- Without an approved G0 the use case is not authorised: it may not consume budget or access production data (01 §6.2).
 - The figures in this charter are orders of magnitude and are marked as *estimated*. The value commitment is formulated in P08.
 - "No data" is not zero: if a field is not known, write "no data" and state when it will be obtained.
 - Rows and text marked *(illustrative example)* are fictitious and must be deleted before the charter is submitted.
@@ -40,8 +40,8 @@ Completion rules:
 
 | Field | Content | Guidance |
 |---|---|---|
-| Initiative code | | Format IA-AAAA-NNN, assigned by the initiative register (T01). It is not reused. |
-| Initiative name | | Short, descriptive name, without internal acronyms. |
+| Use case code | | Format IA-AAAA-NNN, assigned by the use case register (T01). It is not reused. |
+| Use case name | | Short, descriptive name, without internal acronyms. |
 | Sponsoring area | | Business unit that has the need. |
 | Document version | | 0.1, 0.2… while in draft; 1.0 when submitted to G0. |
 | Date | | DD-MM-AAAA. |
@@ -60,7 +60,7 @@ Completion rules:
 | Process or decision affected | | Specific business process, task or decision. |
 | People affected | | Internal users, customers or other external persons, and how they are affected. |
 | Why now | | Reason for the opportunity or urgency. |
-| Consequence of not acting | | What happens if the initiative is not authorised. |
+| Consequence of not acting | | What happens if the use case is not authorised. |
 
 ---
 
@@ -68,14 +68,14 @@ Completion rules:
 
 | Field | Content | Guidance |
 |---|---|---|
-| Initiative objective | | Business outcome pursued, in one sentence. Metrics and thresholds are set in P08. |
+| Use case objective | | Business outcome pursued, in one sentence. Metrics and thresholds are set in P08. |
 | Fit with the AI thesis | | Reference to the AI thesis and to the ambition approved in C2 for the sphere. |
 | Primary sphere | | 01 Customer · 02 Product and service · 03 People · 04 Operations · 05 Data · 06 Knowledge · 07 Decision · 08 Regulation, ethics and accountability · 09 AI governance |
 | Secondary sphere | | Same list, or "none". |
 | Preliminary ambition level | | Optimise · Augment · Transform. It is formally classified with P07 in phase 1. |
-| Type of AI use | | AI initiative · Third-party AI embedded in processes · Corporate use of general-purpose AI · Regularisation of unauthorised use (01 §1.2). |
+| Type of AI use | | AI use case · Third-party AI embedded in processes · Corporate use of general-purpose AI · Regularisation of unauthorised use (01 §1.2). |
 | Inclusion in the portfolio (C3) | | Yes · No. If it does not appear in the prioritised portfolio, justify why it is proposed outside the cycle. |
-| Related initiatives **(Enterprise)** | | IA-AAAA-NNN codes with dependencies or shared outcomes. If they share value, the allocation will be declared in P08 (rule 5). |
+| Related use cases **(Enterprise)** | | IA-AAAA-NNN codes with dependencies or shared outcomes. If they share value, the allocation will be declared in P08 (rule 5). |
 
 ---
 
@@ -136,7 +136,7 @@ Details, incompatibilities and substitutes are recorded in P03.
 | Field | Content | Guidance |
 |---|---|---|
 | Main constraints | | Summary of P02: regulatory, ethical, data, budgetary, time and technological. |
-| Red lines | | What the initiative will not do under any circumstances. |
+| Red lines | | What the use case will not do under any circumstances. |
 | Determined intensity | | Express · Lite · Enterprise, with the criterion or eligibility that determines it (P04). If Express, section 14 is also completed. |
 | Preliminary regulatory classification | | Prohibited · High risk · Transparency obligations · Minimal risk · Out of scope · Pending classification. In phase 0 it is usually "Pending classification"; it is resolved in P11. |
 | Inventory registration | | Reference of the P05 record and registration date. |
@@ -199,13 +199,13 @@ The verifier checks at least the following. The formal G0 criteria are in docume
 | Verifies | AI Office (Lite) · AI Auditor (Enterprise) | | | |
 | Decides | AI Sponsor (Lite) · AI Committee (Enterprise) | | | |
 
-Segregation of duties: the verifier has not prepared the charter; the verification date is earlier than the decision date; in Enterprise the sponsor presents, but does not decide on their own initiative.
+Segregation of duties: the verifier has not prepared the charter; the verification date is earlier than the decision date; in Enterprise the sponsor presents, but does not decide on their own use case.
 
 ---
 
 ## 14. Living record (Express intensity only)
 
-In an Express initiative (01 §9.4) this section replaces the templates of phases 0 to 5: it is filled in stages and updated at each gate, and the evidence the company already has is referenced instead of copied (21 §4.3). Each row indicates the criteria of the reduced list (21 §2.5) for which it provides evidence. At Lite and Enterprise this section is not used.
+In an Express use case (01 §9.4) this section replaces the templates of phases 0 to 5: it is filled in stages and updated at each gate, and the evidence the company already has is referenced instead of copied (21 §4.3). Each row indicates the criteria of the reduced list (21 §2.5) for which it provides evidence. At Lite and Enterprise this section is not used.
 
 | Block | Minimum content | Criteria | Completed at |
 |---|---|---|---|
@@ -219,7 +219,7 @@ In an Express initiative (01 §9.4) this section replaces the templates of phase
 | **Rollback and operation** | Stop mechanism, rollback plan tested with its actual time, incident plan and literacy of those who use the system. | G4.09, G5.11, G5.17, G5.19 | Go-live (G4–G5) |
 | **Approval** | Date and decision of each gate with risk clearance at G3, G4 and G5 (in T01). | G5.22, G5.23 | Each gate |
 
-> **Why it matters.** A small initiative that had to fill in thirty templates would end up not being registered. The living record keeps in a single document everything the core requires and an audit asks to see, without asking for anything twice.
+> **Why it matters.** A small use case that had to fill in thirty templates would end up not being registered. The living record keeps in a single document everything the core requires and an audit asks to see, without asking for anything twice.
 
 ---
 
@@ -236,4 +236,4 @@ In an Express initiative (01 §9.4) this section replaces the templates of phase
 | Version | Date | Changes |
 |---|---|---|
 | 0.1 | 16-09-2026 | First version. Structure aligned with 01 §6.2 and with the controlled taxonomy of 03 §3.3. |
-| 0.2 | 01-10-2026 | New section 14, living record of Express initiatives (01 §9.4), which replaces the templates of phases 0 to 5 with the criteria of the reduced list (21 §2.5). |
+| 0.2 | 01-10-2026 | New section 14, living record of Express use cases (01 §9.4), which replaces the templates of phases 0 to 5 with the criteria of the reduced list (21 §2.5). |

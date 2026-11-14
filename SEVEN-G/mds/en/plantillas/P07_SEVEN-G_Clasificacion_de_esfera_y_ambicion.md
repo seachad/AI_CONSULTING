@@ -1,6 +1,6 @@
 # Sphere and ambition classification
 
-**Classifies the initiative into an impact sphere and an ambition level using five verifiable questions, and compares the proposed, confirmed and actual classification.**
+**Classifies the use case into an impact sphere and an ambition level using five verifiable questions, and compares the proposed, confirmed and actual classification.**
 
 | | |
 |---|---|
@@ -29,7 +29,7 @@
 Completion rules:
 
 - Ambition is not determined by the technology, but by **what changes in the business and where the value appears** (00 §5.1).
-- If questions 1 to 4 are negative, the initiative is **Optimise**, regardless of how it has been presented (00 §5.2).
+- If questions 1 to 4 are negative, the use case is **Optimise**, regardless of how it has been presented (00 §5.2).
 - The answers in the Actual column are based on operational evidence, not on intentions.
 
 ---
@@ -38,8 +38,8 @@ Completion rules:
 
 | Field | Content | Guidance |
 |---|---|---|
-| Initiative code | | IA-AAAA-NNN. |
-| Initiative name | | |
+| Use case code | | IA-AAAA-NNN. |
+| Use case name | | |
 | Document version | | |
 | Date of the last column completed | | DD-MM-AAAA. |
 | Author | | Name and role. |
@@ -99,7 +99,7 @@ Apply the steps in order:
 | 1 | Questions 1, 2, 3 and 4 are "No". | **Optimise** (rule in 00 §5.2). |
 | 2 | Question 1 or 4 is "Yes". | **Transform**. |
 | 3 | Questions 1 and 4 are "No" and 2 or 3 is "Yes". | **Augment**, unless the redesign or the organisational change alters how the company competes or how it is organised; in that case, **Transform** with express justification. |
-| 4 | Consistency check against question 5. | If 5 is "Yes" and the result is Transform, there is an inconsistency: it is justified or reclassified. If 5 is "No" and the result is Optimise, check whether the initiative supports a critical function (P04, criterion 6). |
+| 4 | Consistency check against question 5. | If 5 is "Yes" and the result is Transform, there is an inconsistency: it is justified or reclassified. If 5 is "No" and the result is Optimise, check whether the use case supports a critical function (P04, criterion 6). |
 
 Steps 2 to 4 are this template's operational rule for the questions that 00 §5.2 leaves open ("Augment or Transform"). Document 12 may calibrate it.
 
@@ -135,9 +135,9 @@ If the declared level does not match the level from the rule, the rule prevails 
 | Evidence of the actual level | | Validated value by type, process and role changes, attributable revenue. |
 | Cause of the discrepancy | | Reduced scope, partial adoption, change of strategy, optimistic initial classification. |
 | Effect on the transformation index | | Signals affected (00 §5.3), in particular value mix, depth of change, operating model and move to production. |
-| Lesson for the portfolio | | What must change in the classification of future initiatives. |
+| Lesson for the portfolio | | What must change in the classification of future use cases. |
 
-An initiative confirmed as Transform whose actual classification is Optimise contributes to the "Declared but unevidenced transformation" profile and must be reported to the AI Committee.
+A use case confirmed as Transform whose actual classification is Optimise contributes to the "Declared but unevidenced transformation" profile and must be reported to the AI Committee.
 
 ---
 
@@ -147,7 +147,7 @@ An initiative confirmed as Transform whose actual classification is Optimise con
 |---|---|---|---|---|---|
 | | Sphere · Ambition | | | | |
 
-Each change generates a classification change event in the initiative register (03 §3.3) and requires P04 to be reviewed.
+Each change generates a classification change event in the use case register (03 §3.3) and requires P04 to be reviewed.
 
 ---
 

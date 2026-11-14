@@ -1,6 +1,6 @@
 # Application cases
 
-**Eight fictitious companies go through the corporate cycle and the lifecycle of their initiatives**
+**Eight fictitious companies go through the corporate cycle and the lifecycle of their use cases**
 
 | | |
 |---|---|
@@ -10,22 +10,22 @@
 | Author | Fernando García Varela |
 | Status | Draft for review. All cases, companies, people and figures are fictitious. |
 
-<!-- cifras: 8 | fictitious cases ; 21 | initiatives taken through their gates ; 7 | well-founded stops ; 5 | recorded retirements -->
+<!-- cifras: 8 | fictitious cases ; 21 | use cases taken through their gates ; 7 | well-founded stops ; 5 | recorded retirements -->
 
 ---
 
 > **Legal notice and disclaimer.** SEVEN-G is a reference methodological framework provided "as is" and for information purposes only. It does not constitute legal, regulatory, financial or professional advice, nor does it guarantee compliance with any law or standard. References to general regulation (such as the EU AI Act, the GDPR, DORA or NIS2), to technical standards and to regulation specific to each sector or jurisdiction may be incomplete, may not apply to a particular case or may become out of date as a result of regulatory changes, interpretations or supervisory positions after their consultation date. **Each organisation that uses SEVEN-G is solely responsible for identifying the regulation that applies to it, verifying that it is current and certifying its own regulatory compliance**, with the appropriate qualified advice. This methodology is a generic, free aid shared with the community so that nobody has to start from scratch; each person or organisation can and should adapt it to its own use. It must not be inferred that its legally sensitive parts have been reviewed by legal counsel: those reviews, for each company or sector, are the ultimate responsibility of the company, consultant or organisation that uses it. Although every effort is made to keep it up to date, some regulation may have changed without being reflected here. To the fullest extent permitted by law, the author accepts no responsibility whatsoever for the effects of its application in any organisation or for its full applicability. The methodology does not grant certification of any kind. The author accepts no liability for any use made of this content or for any decisions taken on the basis of it. The data, figures, companies and cases in the examples are fictitious or illustrative.
 
 > **NOTICE: ALL THE CONTENT OF THIS DOCUMENT IS FICTITIOUS.**
-> The companies, their bodies, people, systems, initiatives, decisions, dates and figures are **invented** to illustrate how SEVEN-G is applied. They do not describe any real organisation, do not come from client engagements and **are not market references, benchmarks or expected results**. The cases are consistent with the sectors of the board dashboard demonstrations (energy, logistics, healthcare, retail, public sector, agri-food, hospitality and industry), but do not reproduce their data. Any resemblance to a real organisation is coincidental.
+> The companies, their bodies, people, systems, use cases, decisions, dates and figures are **invented** to illustrate how SEVEN-G is applied. They do not describe any real organisation, do not come from client engagements and **are not market references, benchmarks or expected results**. The cases are consistent with the sectors of the board dashboard demonstrations (energy, logistics, healthcare, retail, public sector, agri-food, hospitality and industry), but do not reproduce their data. Any resemblance to a real organisation is coincidental.
 
 ---
 
-<!-- esencial: consulta | Fictitious application cases, from large and medium-sized companies, with Lite and Enterprise initiatives. They are read as examples; they create no rules. -->
+<!-- esencial: consulta | Fictitious application cases, from large and medium-sized companies, with Lite and Enterprise use cases. They are read as examples; they create no rules. -->
 
 ## 1. Purpose and scope
 
-This document uses eight fictitious cases to show how the components of SEVEN-G are applied in practice: maturity diagnosis, transformation index, board decisions, the progression of initiatives through their *gates*, value measurement with formulas and statuses, stops and retirements.
+This document uses eight fictitious cases to show how the components of SEVEN-G are applied in practice: maturity diagnosis, transformation index, board decisions, the progression of use cases through their *gates*, value measurement with formulas and statuses, stops and retirements.
 
 It is used to:
 
@@ -45,7 +45,7 @@ Conventions used in the cases:
 
 ## 2. Summary of the cases
 
-| Case | Fictitious company | Initial overall maturity | Initial profile | Initiatives in the case | Notable *gate* outcomes |
+| Case | Fictitious company | Initial overall maturity | Initial profile | Use cases in the case | Notable *gate* outcomes |
 |---|---|---|---|---|---|
 | **1** | Energy group E | 2 | Tactical efficiency | 3 | Scale · Stop at G3 (Transform) · Retire |
 | **2** | Logistics operator L | 2 | Efficiency at scale | 3 | Scale · Stop at G5 (Transform) · Iterate at G3 |
@@ -89,7 +89,7 @@ Fictitious group with electricity distribution, renewable generation, a retail s
 | DEC-2027-004 | Full board (Q2 27) | Authorise stage 1 of IA-2027-007 with a limit of €250,000. |
 | DEC-2027-009 | Full board (Q3 27) | Take note of the stop of IA-2027-007 at G3. |
 
-### 3.4 Initiatives
+### 3.4 Use cases
 
 **IA-2027-003 · Transformer failure prediction.** Optimise · Enterprise (critical function) · Autonomy A1: the system recommends which transformers to replace and planning decides.
 
@@ -121,7 +121,7 @@ Value after twelve months in production:
 | G2 | Q2 27 | Proceed | AI Committee and **full board** (DEC-2027-004) | Stage 1 with a limit of €250,000; stop criterion: Critical residual risk not acceptable within the appetite. |
 | G3 | Q3 27 | **Stop** | AI Committee | Orders executed in the market cannot be reversed. Residual risk with controls: likelihood 4 × impact 4 = 16, **Critical**, outside the approved appetite. Coded reason: *Unacceptable risk*. |
 
-Investment consumed: €85,000 of the €250,000 for the stage. The idea of optimising battery charging was registered as a separate initiative, IA-2027-014, at the Optimise level and with autonomy A1 (the system recommends and the operator decides), with a different value hypothesis and a different sponsor.
+Investment consumed: €85,000 of the €250,000 for the stage. The idea of optimising battery charging was registered as a separate use case, IA-2027-014, at the Optimise level and with autonomy A1 (the system recommends and the operator decides), with a different value hypothesis and a different sponsor.
 
 **IA-2027-001 · Conversational assistant for outages (version 1).** System in production before the framework was adopted; regularised with a review equivalent to G7 (01 §14).
 
@@ -147,7 +147,7 @@ D1, D2 and D6 rise by one level and D7 by two, but the overall level does not ch
 
 ### 3.6 Lessons
 
-1. **Stopping a Transform bet at G3 is an outcome of the method.** €85,000 was consumed and committing the rest was avoided; the viable part continued as another initiative.
+1. **Stopping a Transform bet at G3 is an outcome of the method.** €85,000 was consumed and committing the rest was avoided; the viable part continued as another use case.
 2. **Regularising legacy systems reveals negative values.** The outage assistant only seemed profitable because its value was declared.
 3. **The overall level is read together with the dimensions.** An overall level that does not move can hide real progress and a lagging dimension.
 
@@ -184,7 +184,7 @@ Fictitious operator with road transport, warehouses, last-mile delivery and cust
 | DEC-2027-015 | Full board (Q2 27) | Authorise stage 1 of IA-2027-015 with a limit of €180,000 and stop criteria. |
 | DEC-2028-003 | Full board (Q1 28) | Take note of the stop of IA-2027-015; do not relax the stop criteria. |
 
-### 4.4 Initiatives
+### 4.4 Use cases
 
 **IA-2027-012 · Last-mile route optimisation.** Optimise · Lite · Autonomy A1.
 
@@ -217,7 +217,7 @@ Value after twelve months:
 | G4 | Q3 27 | Proceed | AI Committee | Limit per load, action log and kill switch designed. |
 | G5 | Q1 28 | **Stop** | AI Committee | Pilot with random assignment: 520 loads with the agent and 510 in the control group. Margin improvement: 0.6 points (below 1.0). Errors: 0.8 %. Coded reason: *Hypothesis refuted*. |
 
-Return measured in the pilot: 520 loads × €1,900 average revenue × 0.6 % = €5,928 (validated). Investment consumed: €165,000. The team asked for one more iteration with a threshold of 0.5 points; the committee escalated it to the full board because stop criteria can only be relaxed by the body that authorised the initiative (01 §7.4, rule 6), and the full board decided not to relax them (DEC-2028-003).
+Return measured in the pilot: 520 loads × €1,900 average revenue × 0.6 % = €5,928 (validated). Investment consumed: €165,000. The team asked for one more iteration with a threshold of 0.5 points; the committee escalated it to the full board because stop criteria can only be relaxed by the body that authorised the use case (01 §7.4, rule 6), and the full board decided not to relax them (DEC-2028-003).
 
 **IA-2027-018 · Assessment of risky driving using telemetry.** Augment · Enterprise (decisions about people) · Autonomy A1: recommends training, no sanctions.
 
@@ -270,7 +270,7 @@ Fictitious private hospital group with a referral hospital, a network of clinics
 | REC-2027-022 | Board committee | Weekly sampling of generated notes, reviewed by a second physician, with the correction rate reported to the committee. |
 | DEC-2027-025 | Full board (Q3 27) | Authorise stage 1 of IA-2027-026 with a limit of €150,000, as a bounded exception to the thesis because it is not clinical diagnosis. |
 
-### 5.4 Initiatives
+### 5.4 Use cases
 
 **IA-2027-021 · Automatic clinical documentation during consultations.** Augment · Enterprise (health data) · Autonomy A0: the system drafts the note; the physician reviews and signs it. Regulatory classification carried out with legal judgement.
 
@@ -300,7 +300,7 @@ Value after twelve months:
 | *Gate* | Timing | Outcome | Decides | Reason |
 |---|---|---|---|---|
 | R6 | Q2 27 | Brings G7 forward | AI Committee | First bias test: sensitivity of 0.71 overall, but 0.52 in patients over 80, the group with the most readmissions. |
-| G7 | Q2 27 | **Retire** | AI Committee | Coded reason: *Unacceptable risk*. Temporary replacement: telephone follow-up based on nursing judgement. Model archived with no possibility of reuse. Communication to the clinical units. New initiative IA-2027-024 in phase 2 with the age bias test as a G5 criterion. |
+| G7 | Q2 27 | **Retire** | AI Committee | Coded reason: *Unacceptable risk*. Temporary replacement: telephone follow-up based on nursing judgement. Model archived with no possibility of reuse. Communication to the clinical units. New use case IA-2027-024 in phase 2 with the age bias test as a G5 criterion. |
 
 The value attributed to the system (€1.4M of readmissions avoided) never had a control group and was recorded as declared.
 
@@ -351,10 +351,10 @@ Fictitious food retail group with supermarkets, an online store and its own logi
 |---|---|---|
 | DEC-2027-031 | Full board (C2) | Thesis: Transform in 02 Product and service (recurring subscription basket); Optimise in 04 Operations (replenishment and shrinkage); Augment in 03 People. Appetite: prices with minimums by category and human review of changes greater than 10 %. |
 | DEC-2027-032 | Full board (Q1 27) | Authorise stage 1 of IA-2027-031 with a limit of €600,000. |
-| REC-2027-035 | Board committee | Create a data initiative to structure the terms of supplier agreements before proposing new procurement agents. |
+| REC-2027-035 | Board committee | Create a data use case to structure the terms of supplier agreements before proposing new procurement agents. |
 | DEC-2028-030 | Full board (Q4 28) | Scale IA-2027-031 to all regions and extend fresh produce demand forecasting, in that order of execution. |
 
-### 6.4 Initiatives
+### 6.4 Use cases
 
 **IA-2027-031 · Personalised recurring subscription basket.** Transform · Enterprise · Autonomy A1: the system proposes the basket and the customer confirms it.
 
@@ -376,7 +376,7 @@ Value in 2028:
 | **Annual net value** | 1,257,088 − 390,000 | **€867,088** | Validated |
 | Scaling | Expected additional net value €1,500,000 ÷ additional investment €1,200,000 | **€1.25 per euro** | Estimated |
 
-The extension of fresh produce demand forecasting (IA-2027-036) offered €3.1 per euro (estimated). The board approved both and decided to execute the fresh produce initiative first: additional net value per euro sets the order of execution, and the recurring basket was kept because of its role in the thesis. The decision and its reason were recorded.
+The extension of fresh produce demand forecasting (IA-2027-036) offered €3.1 per euro (estimated). The board approved both and decided to execute the fresh produce use case first: additional net value per euro sets the order of execution, and the recurring basket was kept because of its role in the thesis. The decision and its reason were recorded.
 
 **IA-2027-034 · Supplier renegotiation agent.** Augment · Enterprise · Planned autonomy A2: it would record terms in the procurement system.
 
@@ -407,7 +407,7 @@ Investment consumed: €60,000. In response to REC-2027-035, IA-2027-039 was reg
 1. **Transforming with milestones and a control group produces a defensible return.** Scaling was approved on validated amounts, not on promises.
 2. **Additional net value per euro sets the order, but does not replace the thesis.** The board decided knowingly and recorded the reason.
 3. **Aggregates hide negatives.** Dynamic pricing seemed profitable within the portfolio total.
-4. **An agent without data is a risk, not an opportunity.** The stop gave rise to a data initiative.
+4. **An agent without data is a risk, not an opportunity.** The stop gave rise to a data use case.
 
 ---
 
@@ -421,7 +421,7 @@ Fictitious regional administration with citizen services, taxation, urban planni
 
 | Dimension | Level | Main evidence |
 |---|---|---|
-| D1 · Strategy and governance | 1 | Isolated initiatives by department; no body with a mandate over AI. |
+| D1 · Strategy and governance | 1 | Isolated use cases by department; no body with a mandate over AI. |
 | D2 · Value and portfolio | 1 | No portfolio. |
 | D3 · Data and knowledge | 2 | Data owners in taxation and the municipal register of residents. |
 | D4 · Technology and operations | 2 | Stable operation of in-house systems; supplier tools without control. |
@@ -440,7 +440,7 @@ Fictitious regional administration with citizen services, taxation, urban planni
 | DEC-2027-041 | Governing body (third month, Q3 27) | Thesis: Optimise in 04 Operations (case processing). Systems that influence decisions about people are not deployed until D6 reaches level 3, except with an impact assessment and an understandable individual statement of reasons. Digital transformation commission with the functions of an AI Committee. |
 | REC-2028-004 | Governing body | Include in the tender specifications for AI-enabled systems the supplier's obligation to allow results to be explained to each affected person and to facilitate bias testing. |
 
-### 7.4 Initiatives
+### 7.4 Use cases
 
 **IA-2027-040 · Website conversational assistant (version 0).** Contracted by a department and in production without a *gate*.
 
@@ -448,7 +448,7 @@ Fictitious regional administration with citizen services, taxation, urban planni
 |---|---|---|
 | Q2 27 | **NC-2027-001, critical**: system in production without an approved *gate* and without a notice that users are talking to an AI. Containment within 48 hours: visible notice and restriction to general information without personal data. | Digital transformation commission; board committee informed |
 | Q2 27 | Sample of 400 conversations: 9 % of answers incorrect about procedural time limits. Contract without clauses on the use of data by the supplier. | AI Office |
-| Q3 27 · G7 | **Retire.** Coded reason: *Unacceptable risk*. Replacement: reviewed frequently asked questions. Conversations deleted in accordance with the retention policy. Recurring cost avoided: €70,000 a year. New initiative IA-2027-047 in phase 1, through the full cycle. | Digital transformation commission |
+| Q3 27 · G7 | **Retire.** Coded reason: *Unacceptable risk*. Replacement: reviewed frequently asked questions. Conversations deleted in accordance with the retention policy. Recurring cost avoided: €70,000 a year. New use case IA-2027-047 in phase 1, through the full cycle. | Digital transformation commission |
 
 **IA-2027-041 · Classification and routing of documents submitted to the registry.** Optimise · Lite · Autonomy A1: it proposes the competent department and registry staff confirm it; low-confidence documents are reviewed one by one.
 
@@ -518,7 +518,7 @@ Fictitious regional cooperative with 260 employees, 11 receiving centres, its ow
 | DEC-2027-051 | General assembly (C2) | Thesis: Optimise in 04 Operations and in 05 Data/logistics; AI in procurement decisions or decisions about people is not approved until there is a baseline and controls. |
 | DEC-2027-053 | General assembly | Authorise stage 1 of IA-2027-052 with a limit of €90,000. |
 
-### 8.4 Initiatives
+### 8.4 Use cases
 
 **IA-2027-052 · Demand forecasting by centre and product.** Optimise · Lite · Autonomy A1.
 
@@ -529,7 +529,7 @@ Fictitious regional cooperative with 260 employees, 11 receiving centres, its ow
 | G4 | Q2 27 | Proceed | General assembly | Rollback to manual planning tested. |
 | G5 | Q4 27 | **Stop** | General assembly | External suppliers were found to have several different ordering patterns and the historical series was incomplete; accuracy fell below the threshold in two centres. Coded reason: *Insufficient data*. |
 
-Estimated value before the pilot closed: €124,000 of savings in lost margin and shrinkage avoided; forecast recurring cost €55,000. The initiative was archived and the cooperative devoted the following quarter to a procurement and logistics data project to standardise the flows.
+Estimated value before the pilot closed: €124,000 of savings in lost margin and shrinkage avoided; forecast recurring cost €55,000. The use case was archived and the cooperative devoted the following quarter to a procurement and logistics data project to standardise the flows.
 
 **IA-2027-055 · Quality and batch traceability assistant.** Augment · Lite · Autonomy A0.
 
@@ -542,7 +542,7 @@ Estimated value before the pilot closed: €124,000 of savings in lost margin an
 ### 8.5 Lessons
 
 1. **Mid-sized companies often have good operational data, but not always consistent data.** Accuracy did not fail for technical reasons but because of data quality.
-2. **A data project can be the most valuable initiative.** The cooperative learnt that forecasting requires putting data in order before automating.
+2. **A data project can be the most valuable use case.** The cooperative learnt that forecasting requires putting data in order before automating.
 3. **Useful AI for a cooperative does not have to be large-scale.** A clear problem, a baseline and a quick rollback are enough.
 
 ---
@@ -576,7 +576,7 @@ Fictitious chain of 7 hotels, 4,000 beds and 600 employees. It has a small digit
 | DEC-2027-061 | Management board | Thesis: Optimise in 04 Operations and 03 People; Augment in 01 Customer. Decisions on prices or refunds are not automated without human review. |
 | DEC-2027-062 | Management board | Authorise stage 1 of IA-2027-060 with a limit of €65,000. |
 
-### 9.4 Initiatives
+### 9.4 Use cases
 
 **IA-2027-060 · Room pricing and availability optimisation.** Optimise · Lite · Autonomy A1.
 
@@ -634,7 +634,7 @@ Fictitious manufacturer of metal components for the automotive and agricultural 
 | DEC-2027-072 | Management board | Authorise stage 1 of IA-2027-070 with a limit of €180,000. |
 | DEC-2028-010 | Management board | Stop IA-2027-074 at G5 due to tax compliance and order management risk. |
 
-### 10.4 Initiatives
+### 10.4 Use cases
 
 **IA-2027-070 · Predictive maintenance of critical equipment.** Optimise · Enterprise · Autonomy A1.
 
@@ -656,7 +656,7 @@ Value at twelve months: €280,000 of losses avoided; recurring cost €120,000;
 | G4 | Q4 27 | Proceed | Management | Margin milestone prior to service. |
 | G5 | Q2 28 | **Stop** | Board | A problem was detected with traceability and with the handling of suppliers, with a risk of non-compliance in the most critical service. Coded reason: *Compliance risk*. |
 
-Investment consumed: €145,000. The initiative was reformulated as an internal support assistant, not as a decision-making agent.
+Investment consumed: €145,000. The use case was reformulated as an internal support assistant, not as a decision-making agent.
 
 ### 10.5 Lessons
 
@@ -677,7 +677,7 @@ Investment consumed: €145,000. The initiative was reformulated as an internal 
 | Released capacity is only value when it materialises or is expressly reassigned. | 2, 3, 5, 6, 7 |
 | The overall maturity level is capped by the weakest governance or risk dimension and is read together with the dimensions. | 1, 2, 3, 6, 8 |
 | Transform bets need milestones, a stage limit and stop criteria that can only be relaxed by whoever authorised them. | 1, 2, 3, 4, 8 |
-| At G3 there is no proceeding with conditions on legal compliance: the initiative iterates or stops. | 2, 3, 5, 7, 8 |
+| At G3 there is no proceeding with conditions on legal compliance: the use case iterates or stops. | 2, 3, 5, 7, 8 |
 | In mid-sized companies, the first decision is not usually "transform" but "put data in order and put controls in place". | 6, 7, 8 |
 
 ### 11.2 Questions for working on the cases
@@ -687,7 +687,7 @@ Investment consumed: €145,000. The initiative was reformulated as an internal 
 | 1 | What would have happened if the board had accepted the Critical risk of the batteries so as not to miss the opportunity? What should have been recorded in that decision? |
 | 2 | The load agent team asked for the stop criterion to be lowered to 0.5 points. What arguments would the board have for and against? |
 | 3 | With a negative validated net value and a positive total net value, would you scale automatic clinical documentation? Under what condition? |
-| 4 | Is it consistent to fund first the initiative with the lower additional net value per euro? How is this explained to the market and to the workforce? |
+| 4 | Is it consistent to fund first the use case with the lower additional net value per euro? How is this explained to the market and to the workforce? |
 | 5 | How would you adapt the "AI-enabled revenue" signal of the transformation index to a public administration? |
 | 6 | What change in data governance would be needed before trying forecasting by centre again? |
 | 7 | What human review threshold is reasonable for a hotel chain without a large AI structure? |
@@ -699,10 +699,10 @@ Investment consumed: €145,000. The initiative was reformulated as an internal 
 
 | Code | Name | Use in the cases |
 |---|---|---|
-| T01 | Initiative register | Progression through *gates*, statuses and coded reasons. |
+| T01 | Use case register | Progression through *gates*, statuses and coded reasons. |
 | T02 | AI system inventory | Initial findings in cases 1 and 5. |
 | T03 | *Gate* manager | Decisions and conditions. |
-| T05 | Ambition classifier | Ambition level of each initiative. |
+| T05 | Ambition classifier | Ambition level of each use case. |
 | T12 | Value realisation tracking | Value tables with status. |
 | T14 | Transformation index calculator | Profiles of each company. |
 | T15 | Maturity diagnosis | D1–D7 tables. |
@@ -734,4 +734,4 @@ Investment consumed: €145,000. The initiative was reformulated as an internal 
 
 | Version | Date | Changes |
 |---|---|---|
-| 0.1 | 16-09-2026 | First version. Five fictitious cases (energy, logistics, healthcare, retail and public sector) with maturity diagnosis, transformation index, board decisions, the progression of fifteen initiatives through their *gates*, value with formulas and statuses, five stops, four retirements and lessons. Replaces the example cases in the previous material, which contained undemonstrable results. |
+| 0.1 | 16-09-2026 | First version. Five fictitious cases (energy, logistics, healthcare, retail and public sector) with maturity diagnosis, transformation index, board decisions, the progression of fifteen use cases through their *gates*, value with formulas and statuses, five stops, four retirements and lessons. Replaces the example cases in the previous material, which contained undemonstrable results. |

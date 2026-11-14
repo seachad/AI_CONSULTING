@@ -21,16 +21,16 @@
 | **Cuándo se usa** | Fase 7 (Evolución o retirada), antes de G7. También cuando una revisión de continuidad R6 adelanta G7 por desviaciones relevantes, y en la regularización de sistemas anteriores a la adopción del marco (01 §14). |
 | **Quién la rellena** | Responsable de producto de IA (evidencia, opciones y lecciones), con el responsable de operación de IA (plan de retirada). |
 | **Quién la verifica** | Oficina de IA en Lite; auditor de IA en Enterprise. |
-| **Quién decide** | Patrocinador en Lite; comité de IA en Enterprise. El escalado de una iniciativa de Transformar requiere además aprobación del consejo (01 §7.5). La decisión se registra en P29. |
+| **Quién decide** | Patrocinador en Lite; comité de IA en Enterprise. El escalado de un caso de uso de Transformar requiere además aprobación del consejo (01 §7.5). La decisión se registra en P29. |
 | **Lite frente a Enterprise** | Lite puede omitir los campos marcados **(Enterprise)**. El plan de retirada (bloque 8) se completa siempre que el resultado sea Retirar. |
 | **Herramienta** | T22 Gestor de retiradas. |
 | **Relación** | P07 Clasificación de ambición (revisión en fase 7) · P12 Registro de riesgos · P16 Linaje · P20 Adopción y capacidad · P27 Registro de incidentes y cambios · P28 Seguimiento de valor · P29 Registro de decisión de *gate* · documento 14 (Gestión de cartera). |
 
 Reglas:
 
-- **Evolucionar o retirar:** ninguna iniciativa permanece en la cartera sin evidencia que lo justifique (01 §3, principio 6).
+- **Evolucionar o retirar:** ningún caso de uso permanece en la cartera sin evidencia que lo justifique (01 §3, principio 6).
 - Toda retirada registra **fecha, motivo, órgano que decide, sustituto si lo hay, tratamiento de datos y modelos, y comunicación a los afectados** (01 §6.9).
-- La iniciativa solo pasa a estado *Retirada* en el registro cuando el plan de retirada está **ejecutado y verificado** (03 §3.2).
+- El caso de uso solo pasa a estado *Retirado* en el registro cuando el plan de retirada está **ejecutado y verificado** (03 §3.2).
 - Una decisión de retirar bien fundamentada es un resultado válido del método.
 
 Esta plantilla no constituye asesoramiento jurídico. La conservación y el borrado de datos deben validarse con protección de datos y asesoría jurídica.
@@ -41,8 +41,8 @@ Esta plantilla no constituye asesoramiento jurídico. La conservación y el borr
 
 | Campo | Contenido | Guía |
 |---|---|---|
-| Código de la iniciativa | | IA-AAAA-NNN (T01). |
-| Nombre de la iniciativa | | |
+| Código del caso de uso | | IA-AAAA-NNN (T01). |
+| Nombre del caso de uso | | |
 | Sistema(s) de IA | | Identificador en el inventario (T02). |
 | Nivel de ambición confirmado | | Optimizar · Aumentar · Transformar. |
 | Intensidad | | Lite · Enterprise. |
@@ -123,7 +123,7 @@ Un potencial de escalado sin inversión adicional, hipótesis y plazo no es un d
 
 | Campo | Contenido | Guía |
 |---|---|---|
-| Alcance ampliado (Escalar) | | Nuevas áreas, países, usuarios, casos o funciones. |
+| Alcance ampliado (Escalar) | | Nuevas áreas, países, usuarios, usos o funciones. |
 | Nueva fase 0 (Escalar) | | El alcance ampliado inicia una nueva fase 0 con su carta (P01); su tratamiento en el registro se rige por el documento 14. |
 | Cambios de intensidad o clasificación previstos (Escalar) | | Por ejemplo, el alcance ampliado introduce exposición directa a clientes. |
 | Fase a la que se vuelve (Iterar) | | Y qué debe cambiar para volver a G7. |
@@ -193,17 +193,17 @@ Un potencial de escalado sin inversión adicional, hipótesis y plazo no es un d
 | Fecha de verificación | | |
 | Verificado por | | Oficina de IA (Lite) · Auditor de IA (Enterprise). |
 | Resultado | | Ejecutada · Ejecutada con pendientes · No ejecutada. |
-| Estado en el registro | | Solo con *Ejecutada* pasa a *Retirada*. |
+| Estado en el registro | | Solo con *Ejecutada* pasa a *Retirado*. |
 
 ---
 
 ## 9. Lecciones aprendidas
 
-**Aplicable a:** Esta iniciativa · Cartera · Marco de gobierno de la compañía.
+**Aplicable a:** Este caso de uso · Cartera · Marco de gobierno de la compañía.
 
 | # | Qué ocurrió | Por qué ocurrió | Qué se hará distinto | Aplicable a | Responsable de incorporarlo | ¿Llevado a C5? (Sí · No) |
 |---|---|---|---|---|---|---|
-| 1 *(ejemplo ilustrativo)* | La adopción se estancó en el 40 % del objetivo | La herramienta añadía un paso al proceso sin eliminar ninguno | Rediseñar el proceso antes de construir en iniciativas de Aumentar | Cartera | Oficina de IA | Sí |
+| 1 *(ejemplo ilustrativo)* | La adopción se estancó en el 40 % del objetivo | La herramienta añadía un paso al proceso sin eliminar ninguno | Rediseñar el proceso antes de construir en casos de uso de Aumentar | Cartera | Oficina de IA | Sí |
 | | | | | | | |
 | | | | | | | |
 
@@ -221,7 +221,7 @@ Criterios formales de G7 en el documento 21; lista LV-G7 en el documento 22.
 | 4 | El resultado es Escalar, Iterar o Retirar, con motivo, y con motivo codificado si es Retirar. | |
 | 5 | El escalado de Transformar tiene aprobación del consejo. | |
 | 6 | El plan de retirada cubre fecha, motivo, órgano, sustituto, datos y modelos, y comunicación. | |
-| 7 | La retirada está verificada antes de marcar la iniciativa como *Retirada*. | |
+| 7 | La retirada está verificada antes de marcar el caso de uso como *Retirado*. | |
 | 8 | Hay lecciones aprendidas con responsable. | |
 
 ---

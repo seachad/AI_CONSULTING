@@ -23,7 +23,7 @@
 | **Cuándo se usa** | En C3: en la primera implantación, en las semanas 11–12 (90 §4.4); después, cada año tras C2 o C5. Se actualiza en cada revisión trimestral de cartera (14 §7.2). |
 | **Quién la rellena** | La oficina de IA prepara; control de gestión aporta importes y consumo; el responsable de riesgos de IA aporta límites y concentración; los patrocinadores aportan las fichas de entrada. |
 | **Quién la verifica** | La oficina de IA comprueba el cálculo y la segunda línea los límites de riesgo; el auditor de IA revisa por muestreo la aplicación del método **(Enterprise)**. |
-| **Quién decide o aprueba** | El comité de IA. El consejo aprueba las iniciativas de Transformar y cualquier trasvase de su sobre (14 §2.1). |
+| **Quién decide o aprueba** | El comité de IA. El consejo aprueba los casos de uso de Transformar y cualquier trasvase de su sobre (14 §2.1). |
 | **Etapa del ciclo corporativo** | C3 · Cartera, con seguimiento en C4. Entradas: P33 (C1) y P35 (C2). |
 | **Herramientas** | T01 (ficha de entrada, puntuación, carriles, tramos, alertas, etiquetas «Programa» y «Regularización»), T16 (equilibrio por esfera), T22 (retiradas), T06 (concentración de riesgos). |
 | **Documento de referencia** | Documento 14 (método completo); 01 §5.1; 90 §4.4 y §5. |
@@ -31,7 +31,7 @@
 
 Reglas de cumplimentación:
 
-- **Cada ambición compite con su igual.** Las iniciativas se puntúan y se ordenan solo dentro de su carril (14 §4.4).
+- **Cada ambición compite con su igual.** Los casos de uso se puntúan y se ordenan solo dentro de su carril (14 §4.4).
 - **Sin dato no es cero medido.** Un criterio sin dato puntúa 0 y se muestra como «sin dato»; con el neto adicional por euro sin dato no se supera G2 (14 §4.3).
 - **El orden puede alterarse** con justificación escrita registrada en T01; si afecta al carril de Transformar, se informa al consejo.
 - **Se financia por etapas.** El dinero se libera *gate* a *gate* por tramos (14 §6.2).
@@ -62,10 +62,10 @@ Importes aprobados en el presupuesto marco de C2 (P35, sección 11) y su estruct
 |---|---|---|---|---|---|
 | Coste recurrente comprometido | | | | — | |
 | Sobre de Optimizar (tramos 2 y 3) | | | | | |
-| Sobre de Aumentar (tramos 2 y 3, incluida la adopción de cada iniciativa) | | | | | |
+| Sobre de Aumentar (tramos 2 y 3, incluida la adopción de cada caso de uso) | | | | | |
 | Sobre de Transformar por etapas | | | | | Solo etapas aprobadas por el consejo. |
 | Habilitación (datos, plataforma, esferas 08 y 09) | | | | — | |
-| Adopción y formación no imputada a iniciativas | | | | — | |
+| Adopción y formación no imputada a casos de uso | | | | — | |
 | Contingencia | | | | — | Incluye la reserva de descubrimiento (tramo 1, fases 0–3), la de retirada y regularización y las desviaciones aprobadas (14 §6.1). |
 | **Total** | | | | | |
 
@@ -99,7 +99,7 @@ Fórmulas para hoja de cálculo (columnas ilustrativas: C = neto adicional por e
 
 Se registran con motivo y no entran en la priorización (14 §3.3 y §4.1).
 
-| Iniciativa (IA-AAAA-NNN) | Filtro | Tratamiento |
+| Caso de uso (IA-AAAA-NNN) | Filtro | Tratamiento |
 |---|---|---|
 | | Práctica prohibida · Duplicada · No requiere IA · Fuera del apetito · Transformar sin patrocinio de la alta dirección · Riesgo residual Crítico sin aprobación del consejo | |
 
@@ -109,7 +109,7 @@ Una tabla por carril: Optimizar, Aumentar y Transformar.
 
 **Carril:** ______
 
-| Iniciativa | Neto adicional por euro | Múltiplo | Neto | Tesis | Ambición | Riesgo | Datos | Capacidad | Puntuación | Orden | Alteración del orden y justificación |
+| Caso de uso | Neto adicional por euro | Múltiplo | Neto | Tesis | Ambición | Riesgo | Datos | Capacidad | Puntuación | Orden | Alteración del orden y justificación |
 |---|---|---|---|---|---|---|---|---|---|---|---|
 | | | | | | | | | | | | |
 | | | | | | | | | | | | |
@@ -119,7 +119,7 @@ En Transformar, el neto adicional por euro se calcula y se muestra, pero no deci
 
 ### 4.4 Asignación por tramos
 
-| Iniciativa | Carril | Tramo (1 · 2 · 3 · Escalado · Etapa de Transformar) | Importe | Se libera tras | Estado (Pendiente · Liberado · Consumido) |
+| Caso de uso | Carril | Tramo (1 · 2 · 3 · Escalado · Etapa de Transformar) | Importe | Se libera tras | Estado (Pendiente · Liberado · Consumido) |
 |---|---|---|---|---|---|
 | | | | | | |
 
@@ -141,12 +141,12 @@ La oficina de IA mantiene el plan (14 §6.3). Unidades: personas equivalentes a 
 | Adopción | | | | | | |
 | Verificación y decisión de *gates* | | | | | | Tiempo de decisión frente al plazo de referencia (03 §3.6). |
 
-### 5.2 Límite de iniciativas simultáneas
+### 5.2 Límite de casos de uso simultáneos
 
 | Campo | Contenido | Guía |
 |---|---|---|
-| Límite de iniciativas en fases 3 a 5 | | Superado el límite, no entran nuevas en fase 4 hasta que alguna pase G5 o se pare. |
-| Iniciativas actualmente en fases 3 a 5 | | |
+| Límite de casos de uso en fases 3 a 5 | | Superado el límite, no entran nuevos en fase 4 hasta que alguno pase G5 o se pare. |
+| Casos de uso actualmente en fases 3 a 5 | | |
 
 ---
 
@@ -154,11 +154,11 @@ La oficina de IA mantiene el plan (14 §6.3). Unidades: personas equivalentes a 
 
 ### 6.1 Límites de riesgo de la cartera
 
-Traducen el apetito de C2 (14 §5.2). Superar un límite no para las iniciativas en curso, pero impide que entren nuevas en la categoría afectada.
+Traducen el apetito de C2 (14 §5.2). Superar un límite no para los casos de uso en curso, pero impide que entren nuevos en la categoría afectada.
 
 | Límite | Valor fijado | Valor actual | Estado (Dentro · Superado) | Medida o elevación |
 |---|---|---|---|---|
-| Iniciativas en producción con riesgo residual Alto aceptado | | | | |
+| Casos de uso en producción con riesgo residual Alto aceptado | | | | |
 | Sistemas de alto riesgo regulatorio simultáneos en fases 4–5 | | | | |
 | Agentes A2 o A3 en producción (requiere nivel 3 en D4 y D6) | | | | |
 | Inversión en sistemas con exposición directa sin evaluación independiente | | | | |
@@ -194,7 +194,7 @@ Se revisa también la mezcla de ambición por fase (03 §3.5): una cartera equil
 |---|---|---|---|
 | Anual (C3) | Construcción o renovación de la cartera. | | Comité de IA |
 | Trimestral | Equilibrio, concentración, programas, retiradas, presupuesto; informe al consejo en C4. | | Comité de IA |
-| Mensual | Embudo, estancadas, condiciones vencidas, esperas y nuevas entradas. | | Comité de IA |
+| Mensual | Embudo, casos de uso estancados, condiciones vencidas, esperas y nuevas entradas. | | Comité de IA |
 | Continuo | Altas, alertas de T01 y preparación de información. | — | Oficina de IA |
 
 ---
@@ -212,14 +212,14 @@ Reglas y umbrales iniciales de 14 §12: el color del programa es el peor de sus 
 
 ## 9. Plan de regularización
 
-Sistemas e iniciativas anteriores al marco (14 §11; 90 §5). Primero los que cumplen algún criterio Enterprise. Plazo de referencia: seis meses desde la aprobación de C2 con criterios Enterprise; 12 meses el resto, salvo otros plazos aprobados en C2.
+Sistemas e casos de uso anteriores al marco (14 §11; 90 §5). Primero los que cumplen algún criterio Enterprise. Plazo de referencia: seis meses desde la aprobación de C2 con criterios Enterprise; 12 meses el resto, salvo otros plazos aprobados en C2.
 
 | Código (IA- · SIA-) | Nombre | Estado real (Idea · Piloto · En construcción · En producción · Uso corporativo · Uso no autorizado) | Criterios Enterprise | Orden | Tratamiento | Evidencias mínimas | Plazo | Responsable | Fecha de revisión | Resultado |
 |---|---|---|---|---|---|---|---|---|---|---|
 | | | | | | | | | | | |
 | *(ejemplo ilustrativo)* SIA-2026-004 | Asistente de consultas | En producción | Exposición directa | 1 | Revisión equivalente a G7 | P31, P03, P04, P11, P12, P28, P24, P25, P19 | 6 meses desde C2 | Directora de atención al cliente | 15-03-2027 | Pendiente |
 
-Reglas (14 §11.2): durante la regularización no se amplía el alcance; una iniciativa en producción no regularizada al vencer el plazo es no conformidad mayor y, si cumple criterios Enterprise sin clasificación regulatoria, crítica. El uso no autorizado se regulariza como no conformidad: autorizar, sustituir o bloquear.
+Reglas (14 §11.2): durante la regularización no se amplía el alcance; un caso de uso en producción no regularizada al vencer el plazo es no conformidad mayor y, si cumple criterios Enterprise sin clasificación regulatoria, crítica. El uso no autorizado se regulariza como no conformidad: autorizar, sustituir o bloquear.
 
 ---
 
@@ -228,10 +228,10 @@ Reglas (14 §11.2): durante la regularización no se amplía el alcance; una ini
 | # | Comprobación | Estado |
 |---|---|---|
 | 1 | La cartera se prioriza con un método documentado que usa el neto adicional por euro y el equilibrio de ambición, aprobado por el comité (pregunta D2.07 del documento 11). | Cumple · No cumple · No aplica · Pendiente |
-| 2 | Cada carril tiene su sobre y las iniciativas solo compiten dentro de él; no hay trasvases del sobre de Transformar sin aprobación del consejo. | |
+| 2 | Cada carril tiene su sobre y los casos de uso solo compiten dentro de él; no hay trasvases del sobre de Transformar sin aprobación del consejo. | |
 | 3 | Las puntuaciones son reproducibles con la fórmula; los «sin dato» constan como tales. | |
 | 4 | Las alteraciones del orden tienen justificación escrita registrada. | |
-| 5 | Hay plan de capacidad de perfiles escasos y límite de iniciativas simultáneas en fases 3 a 5. | |
+| 5 | Hay plan de capacidad de perfiles escasos y límite de casos de uso simultáneos en fases 3 a 5. | |
 | 6 | Los límites de cartera y de concentración tienen valor fijado y situación actual. | |
 | 7 | El plan de regularización tiene plazos, responsables y orden por riesgo (90 §4.5, criterio 8). | |
 | 8 | El comité revisa mensualmente el embudo y trimestralmente el equilibrio, con decisiones registradas (pregunta D2.09). | |
@@ -247,9 +247,9 @@ Reglas (14 §11.2): durante la regularización no se amplía el alcance; una ini
 | Aporta límites y concentración | Responsable de riesgos de IA (segunda línea) | | | |
 | Verifica el método **(Enterprise)** | Auditor de IA | | | |
 | Aprueba la cartera | Comité de IA | | | Referencia del acta |
-| Aprueba las iniciativas de Transformar y trasvases de su sobre | Consejo | | | DEC-AAAA-NNN |
+| Aprueba los casos de uso de Transformar y trasvases de su sobre | Consejo | | | DEC-AAAA-NNN |
 
-Separación de funciones: el miembro del comité que patrocina una iniciativa se abstiene en su priorización y no computa para el quórum de ese punto (30 §3.3).
+Separación de funciones: el miembro del comité que patrocina un caso de uso se abstiene en su priorización y no computa para el quórum de ese punto (30 §3.3).
 
 ---
 

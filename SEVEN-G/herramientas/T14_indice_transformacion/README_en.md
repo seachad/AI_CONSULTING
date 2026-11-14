@@ -7,7 +7,7 @@ Applies **document 12** (Transformation index): it calculates baseline condition
 ## How to use it
 
 1. Open `indice.html` in the browser (no server or installation needed). It starts with three fictitious example calculations of the same company as the T01 demonstration register: the September 2026 one is computed from that register (it is the one the example board dashboard shows) and the June 2026 one reproduces the complete example in document 12, section 9.
-2. **From the T01 register, without files** (D100): the initiative register is the source of truth. Served from the site, the tools share the browser's local storage, so T14 finds the register T01 has saved and says so in the calculation header ("T01 register in this browser: company, initiatives, date"). "New calculation from this register" creates it as at the date given; the link "Calculate the index with this register" in the Board view of T01 opens T14 with the calculation already created (or refreshes it if one of that date exists). A freshly opened T14 with a real register creates the calculation by itself and takes the company from the register. If the register is not in the browser (or T14 is opened as a standalone file), "Load a T01 file…" does the same with the full JSON exported by T01.
+2. **From the T01 register, without files** (D100): the use case register is the source of truth. Served from the site, the tools share the browser's local storage, so T14 finds the register T01 has saved and says so in the calculation header ("T01 register in this browser: company, use cases, date"). "New calculation from this register" creates it as at the date given; the link "Calculate the index with this register" in the Board view of T01 opens T14 with the calculation already created (or refreshes it if one of that date exists). A freshly opened T14 with a real register creates the calculation by itself and takes the company from the register. If the register is not in the browser (or T14 is opened as a standalone file), "Load a T01 file…" does the same with the full JSON exported by T01.
 3. **Refresh this calculation from the register**: reads the register again and renews only the figures still marked "from T01" (or that had no data); manual corrections are kept. T14 calculates what the register contains (marked in green) and leaves empty what has to be completed manually.
 3. Complete the missing data. Whatever is left empty counts as **no data**: it scores 0, is never estimated and reduces coverage. With fewer than 6 out of 8 signals with data, the profile is **provisional**.
 4. Under "Actions", record the owner and time limit of each condition in "What would move the profile" and the data plan (document 12, section 10). "Print report" produces the sheet for the board.
@@ -20,17 +20,17 @@ Data is stored only in the browser used (local storage). Nothing is sent to thir
 | Data | From T01 | Notes |
 |---|---|---|
 | B1, B3, production with value | Yes | Active = not stopped or retired; governed = with a *gate* decision and confirmed or actual ambition. |
-| B2, signal 2 | Yes | Latest realised amount of each type per initiative and area in the 12 months before the cut-off date. |
-| Signal 1 | Yes (approximation) | Cumulative realised investment of each initiative + latest realised recurring cost. Level: actual if it exists; otherwise, confirmed; with neither, "unclassified". |
+| B2, signal 2 | Yes | Latest realised amount of each type per use case and area in the 12 months before the cut-off date. |
+| Signal 1 | Yes (approximation) | Cumulative realised investment of each use case + latest realised recurring cost. Level: actual if it exists; otherwise, confirmed; with neither, "unclassified". |
 | Signal 7 | Yes | G2 passed in 24 months; outcome = G5, stopped or stalled for more than twice the reference times of phases 3 to 5 (T01 configuration). |
-| Overstatement | Yes | Initiatives with an actual ambition lower than the confirmed one. |
-| Signal 3 | Yes, with schema 0.5 | Sum of each initiative's capacity (`indice.capacidad`: released, materialised and reassigned hours; T20). |
+| Overstatement | Yes | Use cases with an actual ambition lower than the confirmed one. |
+| Signal 3 | Yes, with schema 0.5 | Sum of each use case's capacity (`indice.capacidad`: released, materialised and reassigned hours; T20). |
 | Signals 4 and 5 | Yes, with schema 0.5 | Verification of IT-P2 and IT-P3 at a *gate* (`indice.itp2`, `indice.itp3`), verified human oversight and entire unit redesigned. Unverified = yes answer without a completed verification (no answers are not verified). |
 | Signal 6 | Yes, with schema 0.5 | Latest realised and validated return with `oferta_habilitada_ia` in the 12 months, over `meta.indice.ingresos_totales`. |
 | Signal 8 and IT-D1 | Yes, with schema 0.5 | Board decisions (`decisiones_consejo`, T01 Board view): approved thesis and its spheres with Transform, Transform bets approved in 12 months with or without a cap per stage, reviews and stage decisions. |
 | IT-D3 | Yes, with schema 0.5 | `meta.indice.it_d3` and its evidence. |
 
-With a register prior to schema 0.5, signals 3 to 6 and 8 and conditions IT-D1 and IT-D3 are left as "no data" and completed manually. Only initiatives in spheres 01 to 07 count (document 12, section 4.2).
+With a register prior to schema 0.5, signals 3 to 6 and 8 and conditions IT-D1 and IT-D3 are left as "no data" and completed manually. Only use cases in spheres 01 to 07 count (document 12, section 4.2).
 
 ## Calculating from T01 without opening the browser
 

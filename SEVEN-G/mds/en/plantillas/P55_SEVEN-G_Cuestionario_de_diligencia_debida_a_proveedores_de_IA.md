@@ -46,7 +46,7 @@ Completion rules:
 | Supplier–service relationship code | | PRV-AAAA-NNN from the T09 register (P57). |
 | Supplier | | Legal name, group and country of establishment. |
 | Service or component assessed | | Type of third party in 36 §1.1: model provider, platform, software with AI, integrator, data provider, open components, partner. |
-| Linked initiatives and systems | | IA-AAAA-NNN · SIA-AAAA-NNN. |
+| Linked use cases and systems | | IA-AAAA-NNN · SIA-AAAA-NNN. |
 | Requirement level | | N1 Standard · N2 Enhanced · N3 Critical, according to P14 §3. |
 | Reason for the questionnaire | | Initial selection · Reassessment trigger · Renewal · Embedded AI (annex A). |
 | Date sent and date answered | | DD-MM-AAAA. |
@@ -259,7 +259,7 @@ It is sent to current software suppliers to identify existing or planned AI feat
 
 | AI feature | Inventory code (T02) | Personal or confidential data | Plays a part in decisions or acts (A0–A3) | Can it be disabled? | N level | Decision | RT-TER-06 risk recorded |
 |---|---|---|---|---|---|---|---|
-| | SIA-AAAA-NNN | Yes · No | | Yes · No | N1 · N2 · N3 | Keep disabled · Enable with controls · Enable as an initiative | Yes · No |
+| | SIA-AAAA-NNN | Yes · No | | Yes · No | N1 · N2 · N3 | Keep disabled · Enable with controls · Enable as a use case | Yes · No |
 | *(illustrative example)* Automatic summary of case files in the document management system | SIA-2026-014 | Yes | A0 | Yes | N2 | Keep disabled until the AI Committee meeting | No |
 
 Rules in 36 §8.2: features that process personal or confidential data **must** remain disabled until assessed where the configuration allows it; if they cannot be disabled, RT-TER-06 is recorded and a decision is taken at the next AI Committee meeting; a feature that plays a part in decisions about people or acts at level A2 or A3 goes through the full lifecycle.

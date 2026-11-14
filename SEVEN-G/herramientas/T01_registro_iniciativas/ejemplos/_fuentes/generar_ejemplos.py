@@ -1,10 +1,10 @@
 # -*- coding: utf-8 -*-
 """Genera los registros T01 de demostración de la galería de ejemplos por sector (D136).
 
-Cada sector se describe de forma compacta en _fuentes/<sector>.json (compañía ficticia, personas, iniciativas con su fase, valor y
+Cada sector se describe de forma compacta en _fuentes/<sector>.json (compañía ficticia, personas, casos de uso con su fase, valor y
 riesgo principal). Este script despliega esa descripción en un registro T01 completo y coherente (esquema 0.8): eventos de alta y de
 fase, decisiones de gate con todos los criterios del catálogo que aplican a su intensidad, evidencias por plantilla, valores esperados
-y realizados, riesgos con nivel = probabilidad × impacto (documento 33) y cierres de las iniciativas paradas o retiradas.
+y realizados, riesgos con nivel = probabilidad × impacto (documento 33) y cierres de los casos de uso parados o retirados.
 
 Todo es ficticio. El resultado se escribe en ejemplos/<sector>/datos_demo.json y se valida contra esquema_registro.schema.json.
 
@@ -186,14 +186,14 @@ class Generador:
                              "tendencia": "estable", "proxima_revision": fecha(f_alta + dt.timedelta(days=180)), "aceptacion": acept})
         return n_res
 
-    # ---- una iniciativa
+    # ---- un caso de uso
     def iniciativa(self, n, ini):
         alta = dt.date.fromisoformat(ini["alta"])
         ini["id"] = ini.get("id") or f"IA-{alta.year}-{n:03d}"
         ini["resp"] = self.responsables(ini)
         plazos = self.config["plazos_fase"][ini["int"]]
         ritmo = ini.get("ritmo", 1.0)
-        self.evt(iniciativa=ini["id"], fecha=fecha(alta), tipo="alta", autor=ini["resp"]["producto"], motivo="Alta de la iniciativa en el registro.",
+        self.evt(iniciativa=ini["id"], fecha=fecha(alta), tipo="alta", autor=ini["resp"]["producto"], motivo="Alta del caso de uso en el registro.",
                  cifras=self.cifras(ini, 0))
         estado, fase_obj = ini["estado"], ini["fase"]
         f = alta
@@ -389,7 +389,7 @@ def main(argv):
         os.makedirs(destino, exist_ok=True)
         with open(os.path.join(destino, "datos_demo.json"), "w", encoding="utf-8", newline="\n") as f:
             f.write(texto)
-        print(f"{sector}: {len(reg['iniciativas'])} iniciativas, {len(reg['eventos'])} eventos, {len(reg['decisiones_gate'])} decisiones, "
+        print(f"{sector}: {len(reg['iniciativas'])} casos de uso,{len(reg['eventos'])} eventos, {len(reg['decisiones_gate'])} decisiones, "
               f"{len(reg['valores'])} valores, {len(reg['riesgos'])} riesgos -> ejemplos/{sector}/datos_demo.json")
     return 1 if fallos else 0
 

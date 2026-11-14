@@ -105,7 +105,7 @@ This section describes **observed patterns** from practice. It is not a study wi
 | **IT or technology function** (CIO, CTO) | Platforms, models, integration, technical security, suppliers, infrastructure cost. It is the one that can build fastest. | The value hypothesis and adoption: it delivers systems that work and nobody uses; it measures activity, not benefit. |
 | **Security function** (CISO, CSO) | Model and data security, identities, access, attacks with and against AI, incidents. | It comes in late, once the solution has been chosen; with no prior criteria it can only veto. |
 | **Data function** (CDO) | Quality, lineage, permitted use, data governance, sometimes advanced analytics. | It confuses data governance with AI governance: they are different and complementary (document 51). |
-| **Transformation or digital function** | Portfolio of initiatives, change management, relationship with the business, benefit measurement. | It rarely has authority over technology or control; it depends on persuasion. |
+| **Transformation or digital function** | Portfolio of use cases, change management, relationship with the business, benefit measurement. | It rarely has authority over technology or control; it depends on persuasion. |
 | **AI function** (CAIO), where it exists | AI strategy, AI Office, use cases, relationship with model providers. | If it also builds and also controls, it breaks the separation of duties; with no budget, it is an evangelisation role. |
 | **Finance function** (CFO) | Budget, investment, return measurement, management control, recurring cost. | It applies project return criteria to transformation bets and blocks them (document 14, section 4.4). |
 | **Legal, compliance and data protection** | Regulatory classification, impact assessments, supplier contracts, transparency. | It arrives at the last phase; without early classification, redesign is expensive (document 32). |
@@ -119,7 +119,7 @@ This section describes **observed patterns** from practice. It is not a study wi
 |---|---|---|---|
 | **A · Technology leads** | AI is a programme of the IT function; the business contributes cases and validates. | Technical maturity is low and the foundations have to be built: platform, data, security. | Success is measured in models deployed; the benefit has no owner and adoption does not happen. |
 | **B · Transformation leads** | AI is one line of the transformation agenda, with a portfolio and change management. | There is a cross-company portfolio and the main problem is prioritising and making adoption happen. | There is no technical or control authority: the portfolio advances on paper and stalls at production. |
-| **C · AI Office, with or without an AI function** | A central function exists for method, inventory, measurement and support; the business sponsors and technology builds. | There are enough initiatives for the method to pay off and the central function has budget and access to the governing bodies. | The office also builds and also controls: it loses its independence and becomes a bottleneck. |
+| **C · AI Office, with or without an AI function** | A central function exists for method, inventory, measurement and support; the business sponsors and technology builds. | There are enough use cases for the method to pay off and the central function has budget and access to the governing bodies. | The office also builds and also controls: it loses its independence and becomes a bottleneck. |
 | **D · Federated by default** | Each area buys and experiments on its own; there are dozens of uses and no inventory. | Never in a stable way; it serves to discover real demand for a few months. | The first incident, the first audit or the first consumption invoice arrives: nobody knows how many systems exist or which data they touch. |
 
 In practice, most companies recognise themselves in a mixture: an official pattern and pattern D as the underlying reality. The first task in implementation is usually to **make visible what already exists** (census and inventory, document 32 and document 14, section 11) before deciding on structure.
@@ -128,7 +128,7 @@ In practice, most companies recognise themselves in a mixture: an official patte
 
 Four questions help decide this better than the debate about whether the role is fashionable:
 
-1. Are there **more initiatives than a committee can follow** once a month without losing the detail?
+1. Are there **more use cases than a committee can follow** once a month without losing the detail?
 2. Is there **more than one unit** competing for the same technical capacity or the same budget?
 3. Does the company have, or will it have, **high-risk systems, agents with autonomy or direct exposure** to customers?
 4. Can anyone answer within a week **how many AI systems exist, which data they use and how much they cost**?
@@ -154,14 +154,14 @@ This is the most frequent question and it has an answer of principle: **governan
 
 In the first three options the board keeps what it cannot delegate: approving the thesis and the risk appetite, approving Transform bets and overseeing results (document 30, section 3.1). Regulation reinforces this idea in sectors where the management body already has an express responsibility for technology and resilience risks, such as Regulation (EU) 2022/2554 (DORA) or Directive (EU) 2022/2555 (NIS2), and, for all sectors, in the EU AI Act, which requires human oversight of high-risk systems to be assigned to people with competence, training and authority (Article 26). Sector supervisors also publish their expectations on AI governance; one example, in insurance, is the EIOPA Opinion on AI governance and risk management (document 34).
 
-> **Why it matters.** Where governance sits determines what happens on the day an important initiative does not pass a gate. If the person who decides to stop reports to the person who has to deliver, nothing is ever stopped.
+> **Why it matters.** Where governance sits determines what happens on the day an important use case does not pass a gate. If the person who decides to stop reports to the person who has to deliver, nothing is ever stopped.
 
 ### 3.5 Six signals that the organisation is badly set up
 
 1. Nobody can say within a week how many AI systems are in production.
 2. The savings figures presented to the management committee have not been checked by anyone outside the team that produced them.
 3. The second line only appears at the end, and can then only approve or veto.
-4. No initiative has ever been stopped on the merits; only for lack of budget or people.
+4. No use case has ever been stopped on the merits; only for lack of budget or people.
 5. The board sees product demonstrations and does not see portfolio, risks or validated value.
 6. The same person proposes, approves and declares the benefit.
 
@@ -218,7 +218,7 @@ flowchart LR
   S8["8 · Ecosystem<br>suppliers, start-ups and venture capital"]
   P["Single entry point<br>minimum record + business sponsor<br>document 14, section 3.2"]
   FIL{"Prior filters<br>prohibited, duplicate,<br>does not need AI,<br>outside appetite"}
-  REG["Initiative register T01<br>status: Registered"]
+  REG["Use case register T01<br>status: Registered"]
   CAR["Prioritised portfolio<br>AI Committee, stage C3"]
   NO["Does not enter<br>recorded with a reason"]
   S1 --> P
@@ -243,9 +243,9 @@ flowchart LR
 
 ### 5.2 There is a single entry point
 
-Wherever it comes from, an initiative enters through the same place: the **minimum entry record** in document 14, section 3.2 (plain-language description, sponsor and product owner, proposed sphere and ambition, order of magnitude of the value, investment up to G3, fit with the thesis and foreseeable Enterprise criteria), the **prior filters** in section 3.3 and the **entry windows** in section 3.4. Whatever does not enter is recorded with its reason: a "no" that is not recorded comes back three months later.
+Wherever it comes from, a use case enters through the same place: the **minimum entry record** in document 14, section 3.2 (plain-language description, sponsor and product owner, proposed sphere and ambition, order of magnitude of the value, investment up to G3, fit with the thesis and foreseeable Enterprise criteria), the **prior filters** in section 3.3 and the **entry windows** in section 3.4. Whatever does not enter is recorded with its reason: a "no" that is not recorded comes back three months later.
 
-**Sponsor rule.** Every initiative needs a business sponsor. A proposal from a supplier, from the ecosystem or from the technical area **with no internal sponsor does not enter**, however good it looks.
+**Sponsor rule.** Every use case needs a business sponsor. A proposal from a supplier, from the ecosystem or from the technical area **with no internal sponsor does not enter**, however good it looks.
 
 ### 5.3 The three sources that cause most trouble
 
@@ -255,15 +255,15 @@ Wherever it comes from, an initiative enters through the same place: the **minim
 | **Unauthorised use** (shadow AI) | It happens anyway; banning it without an alternative simply hides it. | A usable corporate alternative, an acceptable use policy and an amnesty channel to surface uses: regularisation in document 14, section 11, and document 31. |
 | **The free proof of concept** | With no apparent cost, it consumes data, time and credibility, and creates dependency. | Sponsor, success and stop criteria in writing before starting, bounded data and an exit cost estimated from day one. |
 
-> **Why it matters.** The three sources above share one feature: **they come in without passing through the entry point**. Most of a company's regulatory and security risk does not sit in the initiatives in its portfolio, but in what never reached it.
+> **Why it matters.** The three sources above share one feature: **they come in without passing through the entry point**. Most of a company's regulatory and security risk does not sit in the use cases in its portfolio, but in what never reached it.
 
 ---
 
 ## 6. How what has entered is governed
 
-The route is the framework's own: the portfolio is managed as a funnel and each initiative goes through phases with decision gates. What is added here is **who decides at each point** and with what degree of delegation.
+The route is the framework's own: the portfolio is managed as a funnel and each use case goes through phases with decision gates. What is added here is **who decides at each point** and with what degree of delegation.
 
-<!-- grafico: Governance circuit of an initiative | From proposal to operation, with who decides at each gate -->
+<!-- grafico: Governance circuit of a use case | From proposal to operation, with who decides at each gate -->
 ```mermaid
 flowchart TB
   E["Entry: minimum record and sponsor"]
@@ -302,15 +302,15 @@ flowchart TB
 | Decision | Who decides (reference) | What cannot be delegated |
 |---|---|---|
 | Entry and priority in the portfolio | AI Committee, at its monthly review (document 14, section 7.1). | — |
-| *Gates* for Lite initiatives | According to the delegation matrix in document 30, section 7. | Verification is done by someone other than whoever builds. |
-| *Gates* for Enterprise initiatives | AI Committee, with the second line present. | Risk and compliance conformity. |
+| *Gates* for Lite use cases | According to the delegation matrix in document 30, section 7. | Verification is done by someone other than whoever builds. |
+| *Gates* for Enterprise use cases | AI Committee, with the second line present. | Risk and compliance conformity. |
 | Approval of Transform at G2 and of scaling at G7 | Board (document 30, section 3.1). | Not delegated. |
-| Acceptance of residual risk | The body matching the risk level (document 33). | Never whoever builds the initiative. |
+| Acceptance of residual risk | The body matching the risk level (document 33). | Never whoever builds the use case. |
 | Enterprise go-live | Multi-level sign-off at G5, with the second line. | The control sign-off. |
-| Stop, pivot and retirement | AI Committee; the board for Transform initiatives (document 14, section 10). | The reason is always recorded. |
+| Stop, pivot and retirement | AI Committee; the board for Transform use cases (document 14, section 10). | The reason is always recorded. |
 | Exceptions to the policy | The body set out in P40, with an expiry date. | An exception with no end date is not an exception. |
 
-**The role of the AI Office** in this circuit is that of engine, not decision-maker: it prepares decisions, checks that the evidence exists before convening a gate, maintains the register and flags what has become stuck (stalled initiatives, expired conditions, document 14, section 8).
+**The role of the AI Office** in this circuit is that of engine, not decision-maker: it prepares decisions, checks that the evidence exists before convening a gate, maintains the register and flags what has become stuck (stalled use cases, expired conditions, document 14, section 8).
 
 ---
 
@@ -323,7 +323,7 @@ Each level receives less detail and more consequence. What does not change at an
 <!-- grafico: How AI information reaches the board | What each level sees, how often and with which tool -->
 ```mermaid
 flowchart BT
-  EQ["Initiative teams<br>evidence and events in T01<br>continuous"]
+  EQ["Use case teams<br>evidence and events in T01<br>continuous"]
   OF["AI Office<br>consolidates portfolio, risks,<br>cost and value · continuous"]
   CIA["AI Committee<br>portfolio, gates, alerts<br>monthly"]
   CD["Board committee<br>risks, incidents, audit<br>quarterly"]
@@ -344,16 +344,16 @@ flowchart BT
 
 | Level | What it receives | How often | With what |
 |---|---|---|---|
-| **Initiative team** | Its own evidence, the criteria for the next gate, open risks and its own figures. | Continuous | T01, T03, T06 |
+| **Use case team** | Its own evidence, the criteria for the next gate, open risks and its own figures. | Continuous | T01, T03, T06 |
 | **AI Office** | Full portfolio, time in phase, missing evidence, cost and consumption, alerts. | Continuous | T01, T11, T13 |
-| **AI Committee** | Prioritised portfolio, pending gate decisions, stalled initiatives, High risks, retirements. | Monthly | T01, T06, P36 |
+| **AI Committee** | Prioritised portfolio, pending gate decisions, stalled use cases, High risks, retirements. | Monthly | T01, T06, P36 |
 | **Board committee** | Risks outside appetite, incidents, major and critical nonconformities, audit results, exceptions in force. | Quarterly | P42, document 37, document 38 |
 | **Board** | Portfolio funnel, validated versus declared value, maturity, transformation index, Transform bets and open recommendations. | Quarterly and annual | Dashboard T17, T14, T15, T18, pack P67 and document 60 |
 
 ### 7.3 Three rules for reporting to the board
 
 1. **No figure without a status and a formula.** A declared saving and a validated one are not added in the same line (document 40).
-2. **The board sees the whole funnel, not only what is going well**: the initiatives that did not pass each stage and why, and those that have been disengaged after being in use. That is the part that teaches most.
+2. **The board sees the whole funnel, not only what is going well**: the use cases that did not pass each stage and why, and those that have been disengaged after being in use. That is the part that teaches most.
 3. **Alerts do not wait for the calendar.** Serious incidents, risks outside appetite and critical nonconformities escalate when they occur (document 37).
 
 > **Why it matters.** A board that only sees demonstrations cannot exercise its oversight responsibility: it does not know what the portfolio costs, which risks the company has accepted or how much of the announced value has materialised.
@@ -403,7 +403,7 @@ flowchart BT
 
 | Scenario | What it consists of | When it is likely | Signal that it is heading there |
 |---|---|---|---|
-| **1 · Reinforced silos** | Each function uses AI within its own perimeter and the boundaries do not move. | Highly regulated sectors or ones with very separate processes. | Many initiatives, none across areas. |
+| **1 · Reinforced silos** | Each function uses AI within its own perimeter and the boundaries do not move. | Highly regulated sectors or ones with very separate processes. | Many use cases, none across areas. |
 | **2 · Central AI layer** | A central platform and team serve all areas; the organisation chart does not change. | Companies with a strong corporate culture and a need for control. | The catalogue of shared components grows and areas stop contracting on their own. |
 | **3 · Process-based organisation with mixed teams** | Work is organised into end-to-end chains, with people and agents, and outcome owners. | When the cost of coordinating between silos exceeds the cost of reorganising. | Process owners appear with budget and with outcome objectives. |
 | **4 · Governed network of agents** | Much of the execution is carried out by coordinated agents; people set objectives, exceptions and control. | Only after high maturity in data, security and control. | There is an inventory of agents with an owner, limits and offboarding, just like an employee register. |
@@ -712,24 +712,24 @@ For the board, the management committee or a working session. They have no right
 
 1. Who performs each of the six functions in section 2 today, and which are empty?
 2. Is anyone performing both build and control? Since when?
-3. If an important initiative has to be stopped tomorrow, who signs that decision?
+3. If an important use case has to be stopped tomorrow, who signs that decision?
 
 **On demand**
 
-4. Which of the eight sources do our current initiatives come from? Is there any source that never appears?
+4. Which of the eight sources do our current use cases come from? Is there any source that never appears?
 5. How many AI systems have been enabled in products we already had under contract, with no express decision?
 6. What do we do today about the AI use that employees already practise on their own?
 
 **On governance**
 
-7. How many initiatives have been stopped on the merits in the last twelve months? If none, why?
+7. How many use cases have been stopped on the merits in the last twelve months? If none, why?
 8. Does the second line take part from phase 0 or does it appear at the final gate?
 9. Which exceptions to the policy are in force and when do they expire?
 
 **On reporting**
 
 10. How much of the value we present is validated, how much declared and how much estimated?
-11. Does the board see the initiatives that did not make it, and why?
+11. Does the board see the use cases that did not make it, and why?
 12. How much does the AI portfolio cost per year, including consumption and recurring cost?
 
 **On the future**
@@ -753,8 +753,8 @@ The implementation sequence is in document 90. In organisational terms, the orde
 1. **Census and inventory** of what already exists, including what came in without passing through the entry point (document 32; document 14, section 11).
 2. **Assign the six functions** by name, even if they are concentrated in few people (P38).
 3. **Open the single entry point** and publish the minimum record, so that demand stops coming in through the sides (document 14, section 3).
-4. **Settle the reporting to the board** before there are many initiatives: it is easier to start measuring with five than with fifty (document 60).
-5. **Review the structure after six months** with your own data: how many initiatives, from which sources, how many stopped, how much cost. Structure is better decided with that information than with a comparison of other companies' organisation charts.
+4. **Settle the reporting to the board** before there are many use cases: it is easier to start measuring with five than with fifty (document 60).
+5. **Review the structure after six months** with your own data: how many use cases, from which sources, how many stopped, how much cost. Structure is better decided with that information than with a comparison of other companies' organisation charts.
 
 ---
 
@@ -762,9 +762,9 @@ The implementation sequence is in document 90. In organisational terms, the orde
 
 | Code | Name | Use in this document |
 |---|---|---|
-| **T01** | Initiative register | Single entry point, status of each initiative and origin of all later information. |
+| **T01** | Use case register | Single entry point, status of each use case and origin of all later information. |
 | **T02** | AI system inventory | Census of what already exists, including AI embedded in contracted products. |
-| **T06** | Risk matrix and register | Risks by initiative and their acceptance by the appropriate body. |
+| **T06** | Risk matrix and register | Risks by use case and their acceptance by the appropriate body. |
 | **T14 · T15** | Transformation index and maturity diagnosis | Overall reading for the board and for the annual review. |
 | **T17 · T18** | Board dashboard and recommendations register | Periodic reporting to the board and follow-up of its agreements. |
 | **P38** | Rules of the bodies and appointment of the AI lead | Written assignment of bodies and functions. |
@@ -781,7 +781,7 @@ The implementation sequence is in document 90. In organisational terms, the orde
 
 | Document | Relationship |
 |---|---|
-| **01 · Foundational methodology** | Initiative roles, separation of duties, phases, gates and intensity. |
+| **01 · Foundational methodology** | Use case roles, separation of duties, phases, gates and intensity. |
 | **13 · AI thesis, ambition and risk appetite** | What the board approves, which gives content to the direction function. |
 | **14 · Portfolio management** | Entry channels, minimum record, filters, prioritisation and retirement. |
 | **20 and 21 · Phases and *gate* criteria** | What is done in each phase and what is verified at each gate. |

@@ -29,14 +29,14 @@
 | **Gate or moment** | G3 · Feasibility (determined and started, G3.09); G4 · Design (completed and measures in the design, G4.13); G5 · Go-live (notified, G5.15); R6 (current, R6.08). |
 | **Tool** | T07 · Regulatory classifier (status, date, link and notification date, 32 §3.5). |
 | **Reference document** | 32 §6.2, 34 §3.10 and §8.2, document 33 (risk scales), document 50 §8 (decisions about people). |
-| **Lite versus Enterprise** | When it is mandatory, all its content is mandatory. Every Enterprise initiative with decisions about people **should** apply this content even if not obliged to (34 §3.10); in that voluntary use it may omit section 10. |
+| **Lite versus Enterprise** | When it is mandatory, all its content is mandatory. Every Enterprise use case with decisions about people **should** apply this content even if not obliged to (34 §3.10); in that voluntary use it may omit section 10. |
 
 Completion rules:
 
 - **One assessment per high-risk system and per use.** If the same system (SIA-AAAA-NNN) is used in different processes, all of them are described.
 - The assessment focuses on the **affected persons and groups**, not on the company. It relies on the information that the provider supplies with the instructions for use.
 - **It complements, without duplicating,** the data protection impact assessment (P47): what is already recorded there is referenced (section 11).
-- The AI Act provides for a European AI Office questionnaire for the notification: at the consultation date, the European AI Office template is pending confirmation (34 §3.10). When it becomes available, it is the notification format; **this SEVEN-G template does not replace it**: it serves to prepare the content, integrate it into the initiative lifecycle and keep internal traceability.
+- The AI Act provides for a European AI Office questionnaire for the notification: at the consultation date, the European AI Office template is pending confirmation (34 §3.10). When it becomes available, it is the notification format; **this SEVEN-G template does not replace it**: it serves to prepare the content, integrate it into the use case lifecycle and keep internal traceability.
 - Voluntary use: it may rely on ISO/IEC 42005:2025 (32 §6.2).
 
 ---
@@ -45,7 +45,7 @@ Completion rules:
 
 | Field | Content | Guidance |
 |---|---|---|
-| Initiative code | | IA-AAAA-NNN. |
+| Use case code | | IA-AAAA-NNN. |
 | System code and name | | SIA-AAAA-NNN from P05 (T02). |
 | System provider | | Internal or third party (P14). |
 | Intended purpose | | Copy from P05 and P11. |

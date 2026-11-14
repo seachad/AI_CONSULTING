@@ -33,7 +33,7 @@ Completion rules:
 
 - The audit is identified with **AUD-AAAA-NNN** and each finding with **H-01, H-02…** within the report (38 §9). Every nonconformity is also recorded in T08 with **NC-AAAA-NNN**.
 - Classification follows the **most serious effect** on the decision, people or compliance, and the aggregation and recurrence rules in 38 §8.1 and 21 §10.5 are applied.
-- The audit outcome **is not the *gate* decision**: the auditor does not recommend whether the initiative should proceed on the basis of its business value.
+- The audit outcome **is not the *gate* decision**: the auditor does not recommend whether the use case should proceed on the basis of its business value.
 - Every critical nonconformity is communicated **before the report**, as soon as it is confirmed (30, E-5).
 - The recommendation states **what** must be corrected, not how to design it in detail: the auditor does not design the controls they later audit.
 
@@ -75,7 +75,7 @@ It is recorded in P29 and T03 (38 §9.1): verification outcome, criteria Not met
 | Field | Content | Guidance |
 |---|---|---|
 | Objective | | |
-| What was audited | | Systems, versions, initiatives, *gates*, processes, period. |
+| What was audited | | Systems, versions, use cases, *gates*, processes, period. |
 | What was not audited | | And why. |
 | Criteria applied | | G*n*.*nn* and R6.*nn* codes in document 21, LV checklists in document 22, EV rules, framework documents and applicable standards (for example, the AI Act or the GDPR depending on the system's classification). |
 
@@ -118,7 +118,7 @@ The time limits are for reference; the company may adjust them in C2 without exc
 
 Mandatory in post-*gate* audits and in thematic audits covering several systems (21 §10.7).
 
-| Item (initiative, *gate*, system or supplier) | Outcome | Findings |
+| Item (use case, *gate*, system or supplier) | Outcome | Findings |
 |---|---|---|
 | | Conformant · Conformant with observations · Nonconformant | |
 
@@ -160,11 +160,11 @@ Additional fields in the record:
 
 | Field | Content | Guidance |
 |---|---|---|
-| Initiative, *gate* and iteration | | IA-AAAA-NNN · G*n* · iteration. |
+| Use case, *gate* and iteration | | IA-AAAA-NNN · G*n* · iteration. |
 | Decision audited and date | | Outcome recorded in P29. |
 | Criterion or rule affected | | G*n*.*nn*, R6.*nn* code or EV rule. |
 | Does it invalidate the decision? | | Yes · No. Any finding that invalidates a *gate* decision is, at a minimum, a major nonconformity (21 §10.5). |
-| Effect on the *gate* (21 §10.6) | | Critical: *gate* invalidated · Major that invalidates: the initiative returns to Awaiting gate and is verified again; if it is in production, the AI Committee decides whether to maintain operation with containment · Minor: the decision stands. |
+| Effect on the *gate* (21 §10.6) | | Critical: *gate* invalidated · Major that invalidates: the use case returns to Awaiting gate and is verified again; if it is in production, the AI Committee decides whether to maintain operation with containment · Minor: the decision stands. |
 | Owner | | |
 
 ---

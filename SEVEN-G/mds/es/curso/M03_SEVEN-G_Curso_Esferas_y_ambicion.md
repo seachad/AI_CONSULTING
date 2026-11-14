@@ -10,7 +10,7 @@
 | Autor | Fernando García Varela |
 | Estado | Borrador para revisión. Material de autoaprendizaje: no define reglas del marco; si discrepa de un documento, prevalece el documento. |
 
-<!-- cifras: 20 | minutos ; 9 | esferas de impacto ; 3 | niveles de ambición ; 1 | esfera principal por iniciativa -->
+<!-- cifras: 20 | minutos ; 9 | esferas de impacto ; 3 | niveles de ambición ; 1 | esfera principal por caso de uso -->
 
 ---
 
@@ -18,7 +18,7 @@
 
 ## 1. Objetivo
 
-Al terminar sabrá situar cualquier iniciativa de IA en una esfera y en un nivel de ambición, y entenderá por qué esa clasificación cambia los criterios con los que se la juzga.
+Al terminar sabrá situar cualquier caso de uso de IA en una esfera y en un nivel de ambición, y entenderá por qué esa clasificación cambia los criterios con los que se lo juzga.
 
 ---
 
@@ -45,14 +45,14 @@ Al terminar sabrá situar cualquier iniciativa de IA en una esfera y en un nivel
 
 ## 4. Ejercicio
 
-En el registro de ejemplo (T01), abra la ficha de IA-2026-002 (mantenimiento predictivo como servicio para clientes industriales), clasificada como Transformar, y la de IA-2025-001 (clasificación de facturas), clasificada como Optimizar. Explique en dos frases por qué cada una tiene ese nivel. Después clasifique tres iniciativas reales de su compañía.
+En el registro de ejemplo (T01), abra la ficha de IA-2026-002 (mantenimiento predictivo como servicio para clientes industriales), clasificada como Transformar, y la de IA-2025-001 (clasificación de facturas), clasificada como Optimizar. Explique en dos frases por qué cada una tiene ese nivel. Después clasifique tres casos de uso reales de su compañía.
 
 ---
 
 ## 5. Autocomprobación
 
 1. Un asistente que reduce a la mitad el tiempo de tramitación de un expediente, ¿qué nivel de ambición tiene?
-2. ¿Puede una iniciativa tener dos esferas principales?
+2. ¿Puede un caso de uso tener dos esferas principales?
 3. ¿Quién aprueba una apuesta de Transformar y en qué puertas?
 4. ¿Dónde se imputa el valor de una plataforma que usan varios casos?
 

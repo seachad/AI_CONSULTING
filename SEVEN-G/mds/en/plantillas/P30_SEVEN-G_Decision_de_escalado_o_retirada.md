@@ -21,16 +21,16 @@
 | **When it is used** | Phase 7 (Evolution or retirement), before G7. Also when an R6 continuity review brings G7 forward due to relevant deviations, and in the regularisation of systems pre-dating the adoption of the framework (01 §14). |
 | **Who completes it** | AI Product Owner (evidence, options and lessons), with the AI Operations Owner (retirement plan). |
 | **Who verifies it** | AI Office at Lite intensity; AI Auditor at Enterprise intensity. |
-| **Who decides** | Sponsor at Lite intensity; AI Committee at Enterprise intensity. Scaling a Transform initiative also requires board approval (01 §7.5). The decision is recorded in P29. |
+| **Who decides** | Sponsor at Lite intensity; AI Committee at Enterprise intensity. Scaling a Transform use case also requires board approval (01 §7.5). The decision is recorded in P29. |
 | **Lite versus Enterprise** | Lite may omit the fields marked **(Enterprise)**. The retirement plan (block 8) is always completed when the outcome is Retire. |
 | **Tool** | T22 Retirement manager. |
 | **Relationship** | P07 Ambition classification (review in phase 7) · P12 Risk register · P16 Lineage · P20 Adoption and capacity · P27 Incident and change log · P28 Value tracking · P29 *Gate* decision record · document 14 (Portfolio management). |
 
 Rules:
 
-- **Evolve or retire:** no initiative remains in the portfolio without evidence to justify it (01 §3, principle 6).
+- **Evolve or retire:** no use case remains in the portfolio without evidence to justify it (01 §3, principle 6).
 - Every retirement records the **date, reason, deciding body, replacement if any, treatment of data and models, and communication to those affected** (01 §6.9).
-- The initiative only moves to *Retired* status in the register when the retirement plan has been **executed and verified** (03 §3.2).
+- The use case only moves to *Retired* status in the register when the retirement plan has been **executed and verified** (03 §3.2).
 - A well-founded decision to retire is a valid outcome of the method.
 
 This template does not constitute legal advice. The retention and deletion of data must be validated with data protection and legal counsel.
@@ -41,8 +41,8 @@ This template does not constitute legal advice. The retention and deletion of da
 
 | Field | Content | Guidance |
 |---|---|---|
-| Initiative code | | IA-AAAA-NNN (T01). |
-| Initiative name | | |
+| Use case code | | IA-AAAA-NNN (T01). |
+| Use case name | | |
 | AI system(s) | | Identifier in the inventory (T02). |
 | Confirmed ambition level | | Optimise · Augment · Transform. |
 | Intensity | | Lite · Enterprise. |
@@ -123,7 +123,7 @@ A scaling potential without additional investment, hypothesis and timeframe is n
 
 | Field | Content | Guidance |
 |---|---|---|
-| Extended scope (Scale) | | New areas, countries, users, use cases or functions. |
+| Extended scope (Scale) | | New areas, countries, users, uses or functions. |
 | New phase 0 (Scale) | | The extended scope starts a new phase 0 with its charter (P01); its treatment in the register is governed by document 14. |
 | Planned changes in intensity or classification (Scale) | | For example, the extended scope introduces direct exposure to customers. |
 | Phase to return to (Iterate) | | And what must change in order to return to G7. |
@@ -199,11 +199,11 @@ A scaling potential without additional investment, hypothesis and timeframe is n
 
 ## 9. Lessons learned
 
-**Applicable to:** This initiative · Portfolio · Company governance framework.
+**Applicable to:** This use case · Portfolio · Company governance framework.
 
 | # | What happened | Why it happened | What will be done differently | Applicable to | Owner for incorporating it | Taken to C5? (Yes · No) |
 |---|---|---|---|---|---|---|
-| 1 *(illustrative example)* | Adoption stalled at 40% of the target | The tool added a step to the process without removing any | Redesign the process before building in Augment initiatives | Portfolio | AI Office | Yes |
+| 1 *(illustrative example)* | Adoption stalled at 40% of the target | The tool added a step to the process without removing any | Redesign the process before building in Augment use cases | Portfolio | AI Office | Yes |
 | | | | | | | |
 | | | | | | | |
 
@@ -221,7 +221,7 @@ Formal G7 criteria in document 21; LV-G7 checklist in document 22.
 | 4 | The outcome is Scale, Iterate or Retire, with a reason, and with a coded reason if it is Retire. | |
 | 5 | Scaling in Transform has board approval. | |
 | 6 | The retirement plan covers date, reason, body, replacement, data and models, and communication. | |
-| 7 | The retirement is verified before the initiative is marked as *Retired*. | |
+| 7 | The retirement is verified before the use case is marked as *Retired*. | |
 | 8 | There are lessons learned with an owner. | |
 
 ---

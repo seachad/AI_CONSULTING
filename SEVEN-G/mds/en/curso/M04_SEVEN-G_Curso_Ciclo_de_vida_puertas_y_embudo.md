@@ -1,6 +1,6 @@
 # Module 04 · Lifecycle, gates and funnel
 
-**How an initiative moves forward, what a gate can decide and why the portfolio is managed like a sales funnel**
+**How a use case moves forward, what a gate can decide and why the portfolio is managed like a sales funnel**
 
 | | |
 |---|---|
@@ -18,7 +18,7 @@
 
 ## 1. Objective
 
-By the end you will be able to say which phase an initiative is in, what it is asked for to pass its gate, what the competent body can decide and how the portfolio is read in the initiative register.
+By the end you will be able to say which phase a use case is in, what it is asked for to pass its gate, what the competent body can decide and how the portfolio is read in the use case register.
 
 ---
 
@@ -48,7 +48,7 @@ By the end you will be able to say which phase an initiative is in, what it is a
 
 In the example register (T01):
 
-1. Click a bar of the funnel to filter the initiatives in that phase. Which one has been in its phase the longest?
+1. Click a bar of the funnel to filter the use cases in that phase. Which one has been in its phase the longest?
 2. Open IA-2025-004 (screening of job applications). At which gate was it stopped, for what reason and what was learnt?
 3. Open IA-2025-005. It was not stopped: it was retired after being in use. Why?
 4. Open the example board dashboard (T17) and find those two cases in the funnel exit cards.
@@ -58,7 +58,7 @@ In the example register (T01):
 ## 5. Self-check
 
 1. What two things does dual validation check?
-2. What happens if an initiative iterates twice at the same gate?
+2. What happens if a use case iterates twice at the same gate?
 3. Can "proceed with conditions" be approved on a security criterion marked "Yes ◆"?
 4. Is a 100% conversion at every gate a good sign?
 

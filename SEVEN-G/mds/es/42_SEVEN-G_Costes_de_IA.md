@@ -24,9 +24,9 @@ Este documento establece cómo se calcula, se reparte, se controla y se informa 
 
 Se aplica a:
 
-- Toda iniciativa del registro (T01), desde la estimación de costes de la fase 3 hasta la retirada.
+- Todo caso de uso del registro (T01), desde la estimación de costes de la fase 3 hasta la retirada.
 - Los costes compartidos por varios casos: suites de productividad con IA, plataformas de modelos, cómputo, plataformas de datos y equipos comunes.
-- El uso corporativo de IA de propósito general, que tiene coste aunque no sea una iniciativa (01 §1.2).
+- El uso corporativo de IA de propósito general, que tiene coste aunque no sea un caso de uso (01 §1.2).
 
 Las cifras de los ejemplos son **ficticias e ilustrativas**.
 
@@ -40,7 +40,7 @@ Las cifras de los ejemplos son **ficticias e ilustrativas**.
 | 2 | **Coste incremental para decidir** | Para decidir una inversión adicional (neto adicional por euro, documento 40 F3) se usa el coste que cambia con la decisión. Un coste compartido que existirá igualmente no es incremental. Las dos vistas se calculan y se identifican. |
 | 3 | **El coste no se rebaja** | El coste se imputa completo desde el primer día, esté o no validado el valor. Un coste desconocido se muestra como "sin dato" y el neto también. |
 | 4 | **Una sola fuente de verdad** | El coste de T13 se concilia cada mes con la contabilidad. Las diferencias se explican o se corrigen. |
-| 5 | **Etiquetado desde el primer día** | Ningún recurso de nube, clave de acceso a modelos ni licencia se da de alta sin la etiqueta de la iniciativa o del uso corporativo al que pertenece. |
+| 5 | **Etiquetado desde el primer día** | Ningún recurso de nube, clave de acceso a modelos ni licencia se da de alta sin la etiqueta del caso de uso o del uso corporativo al que pertenece. |
 | 6 | **Claves de reparto declaradas y estables** | Cada coste compartido tiene una clave aprobada por control de gestión. No se cambia a mitad de ejercicio salvo error, y el cambio se registra. |
 | 7 | **El consumo se gobierna antes de facturarse** | Los costes variables de modelos y cómputo tienen presupuesto, previsión, alertas y límites técnicos, especialmente en los agentes. |
 
@@ -137,7 +137,7 @@ El **coste de estructura corporativa** (gobierno, metodología, preparación de 
 | **Licencias compartidas** (suites de productividad con IA) | Licencias asignadas al colectivo que usa el caso para ese fin | Usuarios activos del caso ÷ usuarios activos totales | Licencias de uso general, que se imputan a uso corporativo de IA de propósito general |
 | **Consumo de modelos** (pasarela o plataforma de modelos) | Consumo medido por clave de acceso o etiqueta del caso | Llamadas o transacciones por caso | Consumo de pruebas de la plataforma, que se imputa a la plataforma |
 | **Cómputo** (procesadores gráficos, clústeres) | Horas de cómputo por trabajo etiquetado | Tiempo de ejecución por caso | Capacidad ociosa, que se informa aparte |
-| **Plataformas compartidas** (datos, operación de modelos, agentes) | Unidades de consumo de la plataforma por caso | Nº de modelos, agentes o flujos en producción por caso | Coste de construcción de la propia plataforma, que tiene su propia iniciativa |
+| **Plataformas compartidas** (datos, operación de modelos, agentes) | Unidades de consumo de la plataforma por caso | Nº de modelos, agentes o flujos en producción por caso | Coste de construcción de la propia plataforma, que tiene su propio caso de uso |
 | **Equipos compartidos** (oficina de IA, equipo de plataforma, revisión de riesgos) | Horas imputadas por caso | Casos ponderados por intensidad (Enterprise 2, Lite 1) | La parte de estructura corporativa (sección 6.1) |
 
 ### 6.3 Consumo sin etiquetar
@@ -212,7 +212,7 @@ Para calcular el neto adicional por euro de una ampliación del caso D, el coste
 
 | Etiqueta | Valor | Ejemplo |
 |---|---|---|
-| `iniciativa` | Código de iniciativa, o `CORP-IA` para uso corporativo, o `PLAT-<nombre>` para plataformas compartidas | `IA-2026-014` |
+| `iniciativa` | Código de caso de uso, o `CORP-IA` para uso corporativo, o `PLAT-<nombre>` para plataformas compartidas | `IA-2026-014` |
 | `sistema` | Identificador del sistema en el inventario (T02) | Identificador de T02 |
 | `entorno` | desarrollo · pruebas · preproducción · producción | `produccion` |
 | `fase` | 0–7 del ciclo de vida | `5` |
@@ -310,23 +310,23 @@ La reducción del coste del proceso (480.000 − 350.000 = 130.000 €) es una *
 
 ## 10. Coste de las decisiones de parar
 
-Parar o retirar una iniciativa es un resultado válido del método (01 §7.3). Para que no se penalice económicamente a quien para, y para que el consejo vea el efecto de estas decisiones, se registran las siguientes magnitudes en T01 y T13 al registrar la parada o la retirada:
+Parar o retirar un caso de uso es un resultado válido del método (01 §7.3). Para que no se penalice económicamente a quien para, y para que el consejo vea el efecto de estas decisiones, se registran las siguientes magnitudes en T01 y T13 al registrar la parada o la retirada:
 
 | Magnitud | Definición | Tratamiento |
 |---|---|---|
 | **Coste hundido** | Lo gastado hasta la decisión. | No interviene en la decisión: ya no se puede recuperar. Se registra para lecciones aprendidas. |
 | **Compromisos no cancelables** | Pagos futuros que se producirán igualmente (por ejemplo, licencias anuales ya firmadas). | Se informan aparte; se busca su reutilización en otros casos. |
-| **Coste de parar** | Costes que causa la decisión: cierre, retirada, penalizaciones por cancelación anticipada, conservación o borrado de datos y modelos. | Se registra como coste de la iniciativa. |
+| **Coste de parar** | Costes que causa la decisión: cierre, retirada, penalizaciones por cancelación anticipada, conservación o borrado de datos y modelos. | Se registra como coste del caso de uso. |
 | **Inversión evitada** | Presupuesto aprobado − gastado − compromisos no cancelables. | Se informa en cartera (IND-COS-10). **No suma en el valor.** |
 | **Coste recurrente evitado previsto** | Coste recurrente que se habría incurrido en producción. | Se informa como estimado. No suma en el valor. |
 
-**Ejemplo ilustrativo.** Iniciativa parada en G3. Presupuesto aprobado: 400.000 €. Gastado: 45.000 €. Compromisos no cancelables: 20.000 €. Penalización por cancelar un contrato de servicios: 8.000 €. Coste de cierre: 5.000 €.
+**Ejemplo ilustrativo.** Caso de uso parado en G3. Presupuesto aprobado: 400.000 €. Gastado: 45.000 €. Compromisos no cancelables: 20.000 €. Penalización por cancelar un contrato de servicios: 8.000 €. Coste de cierre: 5.000 €.
 
 - Coste de parar: 8.000 + 5.000 = **13.000 €**.
 - Inversión evitada: 400.000 − 45.000 − 20.000 = **335.000 €**.
 - Gasto futuro evitado neto del coste de parar (informativo): 335.000 − 13.000 = **322.000 €**.
 
-Una iniciativa parada nunca se retrasa para evitar reconocer el coste hundido. Si los criterios de parada se cumplen, se aplica 01 §7.4, regla 6.
+Un caso de uso parado nunca se retrasa para evitar reconocer el coste hundido. Si los criterios de parada se cumplen, se aplica 01 §7.4, regla 6.
 
 ---
 
@@ -336,9 +336,9 @@ Una iniciativa parada nunca se retrasa para evitar reconocer el coste hundido. S
 
 | Elemento | Regla |
 |---|---|
-| **Objeto de coste** | Cada iniciativa tiene un objeto de coste en contabilidad (orden interna, proyecto o centro de coste) con su código IA-AAAA-NNN. El uso corporativo y las plataformas tienen el suyo. |
-| **Horas internas** | Las personas que trabajan en iniciativas imputan horas al objeto de coste. Control de gestión fija el coste horario completo por categoría profesional. |
-| **Contratos** | Los pedidos y contratos llevan el código de iniciativa o de plataforma. |
+| **Objeto de coste** | Cada caso de uso tiene un objeto de coste en contabilidad (orden interna, proyecto o centro de coste) con su código IA-AAAA-NNN. El uso corporativo y las plataformas tienen el suyo. |
+| **Horas internas** | Las personas que trabajan en casos de uso imputan horas al objeto de coste. Control de gestión fija el coste horario completo por categoría profesional. |
+| **Contratos** | Los pedidos y contratos llevan el código de caso de uso o de plataforma. |
 | **Costes compartidos** | Se registran en su objeto de coste de plataforma y se reparten con las claves de la sección 6 en el cierre. |
 
 ### 11.2 Calendario
@@ -385,7 +385,7 @@ Validaciones mínimas de T13: ningún importe sin categoría ni componente; ning
 | Código | Nombre | Uso en este documento |
 |---|---|---|
 | **T13** | Calculadora de costes por caso | Herramienta principal de este documento. |
-| **T01** | Registro de iniciativas | Costes por caso, eventos de alerta, paradas. |
+| **T01** | Registro de casos de uso | Costes por caso, eventos de alerta, paradas. |
 | **T02** | Inventario de sistemas de IA | Identificador de sistema para el etiquetado. |
 | **T11** | Lienzo y calculadora de hipótesis de valor | Uso de la inversión inicial y del coste recurrente en F2, F3 y F7–F9. |
 | **T12** | Seguimiento de realización de valor | Coste recurrente real en el valor neto por periodo. |
@@ -405,7 +405,7 @@ Validaciones mínimas de T13: ningún importe sin categoría ni componente; ning
 | Documento | Relación |
 |---|---|
 | **01 · Metodología fundacional** | Costes completos en fase 3 (§6.5), resultados de parar y retirar (§7.3). |
-| **03 · Herramientas y registro de iniciativas** | Definición de T13 y modelo de datos común. |
+| **03 · Herramientas y registro de casos de uso** | Definición de T13 y modelo de datos común. |
 | **13 · Tesis de IA y apetito de riesgo** | Presupuesto marco, horizonte, tasa y umbrales de alerta. |
 | **14 · Gestión de cartera** | Presupuesto de cartera y plataformas compartidas. |
 | **35 · Seguridad de IA y agentes** | Identidad de los agentes, límites e interruptor de parada. |

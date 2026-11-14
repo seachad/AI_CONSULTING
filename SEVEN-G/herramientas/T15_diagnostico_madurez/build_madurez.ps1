@@ -29,7 +29,7 @@ param(
   -ActualizarLentes (D120): regenera lentes.json desde el documento 11 §7.6 (lentes, huella tecnológica HT0–HT5, gobierno mínimo exigible por
   huella y alertas) y el documento 12 §3.7 (alcance del impacto IM1–IM4), ES/EN. En cada construcción se comprueba que coincide con los
   documentos: si cambia un umbral, una tecnología o una alerta, la construcción falla hasta regenerarlo. Los umbrales nunca se escriben en la plantilla.
-  -RegistroT01 <fichero.json> (D120): registro T01 del que se incrusta un extracto mínimo (iniciativas, entradas en fase, cierres, evidencia
+  -RegistroT01 <fichero.json> (D120): registro T01 del que se incrusta un extracto mínimo (casos de uso, entradas en fase, cierres, evidencia
   del índice y tesis del consejo) para calcular la huella y el alcance cuando no hay registro en el navegador: con los datos de ejemplo de T15
   (y en -Resumen) se usa el registro de demostración de T01. Por defecto, ../T01_registro_iniciativas/datos_demo.json.
 #>

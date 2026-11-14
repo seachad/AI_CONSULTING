@@ -32,7 +32,7 @@ Sign-off rules:
 2. **A veto blocks** the go-live. It cannot be overridden by the sponsor or by the AI Committee; it is lifted only when the person who issued it (or whoever formally replaces them in their function) records a new sign-off once the reason has been resolved. Persistent disagreement over a veto should be escalated to the higher body, which may decide not to go live, but may not substitute the sign-off.
 3. **Favourable with conditions** is only possible on non-critical aspects. If the condition affects a critical control for security, legal compliance or human oversight, the position must be Veto (01 §7.3).
 4. Each signatory reviews the evidence within their remit; signing without having reviewed it is a nonconformity.
-5. Second-line signatories are not part of the team building the initiative (01 §8.1 and §8.3).
+5. Second-line signatories are not part of the team building the use case (01 §8.1 and §8.3).
 6. A **Critical** residual risk without the express approval of the board or its board committee blocks G5 (document 33).
 
 This template does not constitute legal advice.
@@ -43,8 +43,8 @@ This template does not constitute legal advice.
 
 | Field | Content | Guidance |
 |---|---|---|
-| Initiative code | | IA-AAAA-NNN (T01). |
-| Initiative name | | |
+| Use case code | | IA-AAAA-NNN (T01). |
+| Use case name | | |
 | AI system(s) | | Identifier in the inventory (T02). |
 | Intensity | | Lite · Enterprise. |
 | Ambition level | | Optimise · Augment · Transform. |

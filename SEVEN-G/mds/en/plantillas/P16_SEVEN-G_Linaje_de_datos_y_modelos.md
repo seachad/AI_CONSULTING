@@ -41,8 +41,8 @@ This template does not constitute legal advice. The legal basis for processing m
 
 | Field | Content | Guidance |
 |---|---|---|
-| Initiative code | | IA-AAAA-NNN from the initiative register (T01). |
-| Initiative name | | Short, understandable name. |
+| Use case code | | IA-AAAA-NNN from the use case register (T01). |
+| Use case name | | Short, understandable name. |
 | AI system(s) | | Identifier in the AI system inventory (T02, P05). |
 | Intensity | | Lite · Enterprise (P04). |
 | Regulatory classification | | Prohibited · High risk · Transparency obligations · Minimal risk · Out of scope · Pending classification (P11). |

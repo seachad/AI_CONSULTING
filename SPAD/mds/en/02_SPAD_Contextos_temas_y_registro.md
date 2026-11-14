@@ -86,7 +86,7 @@ Each piece of work with SPAD is associated with a **topic** (*TOPIC*): a short i
 | Rule | Detail |
 |---|---|
 | **Format** | `snake_case`, maximum 20 characters, descriptive. |
-| **Represents** | A feature, a fix, an incident or an initiative. |
+| **Represents** | A feature, a fix, an incident or a use case. |
 | **Set** | In phase 0, explicitly (given by the person) or inferred (proposed by the AI and confirmed by the person). |
 | **Persists** | Throughout the work; it does not change midway; it is not reused for another feature. |
 | **Valid examples** | `user_auth`, `pdf_export`, `payment_gateway`, `cache_mem_leak`. |

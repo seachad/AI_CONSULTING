@@ -498,9 +498,24 @@ function Viñetas([object[]]$bullets, [int]$cx, [int]$cy, [int]$max, [int]$min =
   $x = ''
   foreach ($it in $items) {
     $r = ''
-    if ($it[0]) { $r += Run "$($it[0])  " @{ color = $CLARET; tam = $tam; neg = $true } }
     $u = Url $it[2]
-    $r += if ($u) { Run $it[1] @{ color = $OXFORD; tam = $tam; url = $u; sub = $true } } else { Run $it[1] @{ color = $TINTA; tam = $tam } }
+    if ($u -and $it[0]) {
+      # con enlace, solo el rótulo es enlace; la explicación va en texto normal
+      $r += Run $it[0] @{ color = $OXFORD; tam = $tam; neg = $true; url = $u; sub = $true }
+      $r += Run "  $($it[1])" @{ color = $TINTA; tam = $tam }
+    } elseif ($u) {
+      # sin rótulo, el enlace es el comienzo de la frase (hasta « — », «: » o «. ») si no corta un término [..](t:..)
+      $txt = [string]$it[1]; $corte = -1
+      foreach ($sep in ' — ', ': ', '. ') { $p = $txt.IndexOf($sep); if ($p -gt 0 -and $p -le 90 -and ($corte -lt 0 -or $p -lt $corte)) { $corte = $p } }
+      if ($corte -gt 0) { $cab = $txt.Substring(0, $corte); if (([regex]::Matches($cab, '\[')).Count -ne ([regex]::Matches($cab, '\]')).Count -or $cab -match '\]\([^)]*$') { $corte = -1 } }
+      if ($corte -gt 0) {
+        $r += Run $txt.Substring(0, $corte) @{ color = $OXFORD; tam = $tam; url = $u; sub = $true }
+        $r += Run $txt.Substring($corte) @{ color = $TINTA; tam = $tam }
+      } else { $r += Run $txt @{ color = $OXFORD; tam = $tam; url = $u; sub = $true } }
+    } else {
+      if ($it[0]) { $r += Run "$($it[0])  " @{ color = $CLARET; tam = $tam; neg = $true } }
+      $r += Run $it[1] @{ color = $TINTA; tam = $tam }
+    }
     $x += Parr $r @{ bullet = $colorBullet; aft = $aft; ind = 228600 }
   }
   $x

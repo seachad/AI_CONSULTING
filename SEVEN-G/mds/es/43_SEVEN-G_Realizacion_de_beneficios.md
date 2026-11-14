@@ -20,7 +20,7 @@
 
 ## 1. Objeto y alcance
 
-Este documento establece cómo SEVEN-G convierte el valor esperado de una iniciativa en valor realizado y validado, y cómo lo consolida en la cartera y en el panel del consejo. Aplica las reglas y fórmulas del documento 40 y los indicadores del documento 41.
+Este documento establece cómo SEVEN-G convierte el valor esperado de un caso de uso en valor realizado y validado, y cómo lo consolida en la cartera y en el panel del consejo. Aplica las reglas y fórmulas del documento 40 y los indicadores del documento 41.
 
 Responde a seis preguntas:
 
@@ -31,7 +31,7 @@ Responde a seis preguntas:
 5. ¿Qué se hace cuando el valor no llega?
 6. ¿Cómo se consolida y se audita el valor que ve el consejo?
 
-Se aplica a toda iniciativa desde la fase 2 hasta su retirada. En Lite se aplica con el plan y el seguimiento simplificados que se indican en cada sección.
+Se aplica a todo caso de uso desde la fase 2 hasta su retirada. En Lite se aplica con el plan y el seguimiento simplificados que se indican en cada sección.
 
 Las cifras de los ejemplos son **ficticias e ilustrativas**.
 
@@ -74,7 +74,7 @@ flowchart LR
 
 1. **El esperado y el realizado nunca se suman.** Conviven en T12 como columnas distintas.
 2. **El valor esperado no se valida** (documento 40 §4.1). Control de gestión puede revisar su cálculo en G3, pero el estado validado solo se aplica a valor realizado en un periodo cerrado.
-3. **La hipótesis aprobada es la referencia.** El plan de realización, las desviaciones y G7 se miden frente a la hipótesis aprobada en G2 y revisada en G3. Cambiarla exige aprobación del órgano que autorizó la iniciativa (01 §7.4, regla 6).
+3. **La hipótesis aprobada es la referencia.** El plan de realización, las desviaciones y G7 se miden frente a la hipótesis aprobada en G2 y revisada en G3. Cambiarla exige aprobación del órgano que autorizó el caso de uso (01 §7.4, regla 6).
 
 ---
 
@@ -88,12 +88,12 @@ flowchart LR
 
 | Rol | Quién | Responsabilidad en la realización | No puede |
 |---|---|---|---|
-| **Responsable de negocio del beneficio** | Directivo del área en la que se produce el beneficio (el área que ve reducido su coste o aumentados sus ingresos). Puede coincidir con el patrocinador. | Firma el plan de realización; ejecuta los cambios habilitadores y la materialización; declara el valor realizado cada periodo; explica las desviaciones y propone acciones. | Validar su propio valor. Ser el responsable técnico de la iniciativa. |
+| **Responsable de negocio del beneficio** | Directivo del área en la que se produce el beneficio (el área que ve reducido su coste o aumentados sus ingresos). Puede coincidir con el patrocinador. | Firma el plan de realización; ejecuta los cambios habilitadores y la materialización; declara el valor realizado cada periodo; explica las desviaciones y propone acciones. | Validar su propio valor. Ser el responsable técnico del caso de uso. |
 | **Patrocinador de IA** | Según 01 §8.1. | Responde del valor ante los órganos; resuelve conflictos entre áreas; decide acciones dentro de su autoridad. | Validar el valor. |
 | **Responsable de producto de IA** | Según 01 §8.1. | Responde del uso real y de la adopción; mantiene T12 al día; prepara las revisiones. | Declarar valor en nombre del área de negocio. |
-| **Control de gestión** | Función financiera independiente del área. | Valida el valor realizado; fija valores unitarios y costes horarios; aprueba claves de reparto; concilia con contabilidad. | Participar en la construcción de la iniciativa. |
+| **Control de gestión** | Función financiera independiente del área. | Valida el valor realizado; fija valores unitarios y costes horarios; aprueba claves de reparto; concilia con contabilidad. | Participar en la construcción del caso de uso. |
 | **Oficina de IA** | Según 01 §8.3. | Consolida la cartera; detecta solapes; prepara la información del comité y del consejo. | Validar valor. |
-| **Auditor de IA y auditoría interna** | Tercera línea. | Verifica en G5 y G7; audita el valor por muestreo (sección 12). | Participar en la iniciativa. |
+| **Auditor de IA y auditoría interna** | Tercera línea. | Verifica en G5 y G7; audita el valor por muestreo (sección 12). | Participar en el caso de uso. |
 
 ### 3.3 Requisitos del responsable de negocio
 
@@ -109,7 +109,7 @@ flowchart LR
 
 ### 4.1 Contenido
 
-El plan se documenta en la plantilla P62 y se registra en T01, en el bloque `plan_realizacion` de la iniciativa (T12); P28 recoge su seguimiento por periodo. En Lite, los campos marcados como **(Enterprise)** pueden omitirse.
+El plan se documenta en la plantilla P62 y se registra en T01, en el bloque `plan_realizacion` del caso de uso (T12); P28 recoge su seguimiento por periodo. En Lite, los campos marcados como **(Enterprise)** pueden omitirse.
 
 | Bloque | Campo | Guía |
 |---|---|---|
@@ -130,7 +130,7 @@ El plan se documenta en la plantilla P62 y se registra en T01, en el bloque `pla
 | **Riesgos del beneficio** | Qué puede impedir que llegue | Vinculados al registro de riesgos (T06). **(Enterprise)** |
 | **Criterios de parada** | Umbral por debajo del cual se propone iterar o retirar | Los aprobados en G2. |
 | **Revisiones** | Fechas de las revisiones a 6 y 12 meses y de R6 | Según la sección 8. |
-| **Dependencias** | Otras iniciativas, proveedores o proyectos de los que depende | **(Enterprise)** |
+| **Dependencias** | Otros casos de uso, proveedores o proyectos de los que depende | **(Enterprise)** |
 
 **Registro en T01.** El bloque `plan_realizacion` lleva el estado del plan, su fuente y su fecha, y estos campos. El estado del plan solo puede ser estimado o declarado, porque el valor esperado no se valida (sección 2.2, regla 2; documento 40 §4.1); el valor realizado de cada periodo y cada tramo llevan su propio estado, que sí puede ser validado.
 
@@ -144,7 +144,7 @@ El plan se documenta en la plantilla P62 y se registra en T01, en el bloque `pla
 | `real` | Valor realizado de cada periodo con su estado: validado, declarado o estimado (sección 5.2). |
 | `declive` | Opcional: pérdida de valor por año (`pct_anual`) desde un periodo (`desde`), por ejemplo por deriva del modelo o porque la competencia copia la ventaja. |
 
-El panel del consejo (T17) lee este bloque y muestra la curva y los tramos (sección 11.2). Una iniciativa sin plan registrado no tiene curva: el panel no la estima (documento 40, regla 8).
+El panel del consejo (T17) lee este bloque y muestra la curva y los tramos (sección 11.2). Un caso de uso sin plan registrado no tiene curva: el panel no la estima (documento 40, regla 8).
 
 ### 4.2 Aprobación
 
@@ -244,19 +244,19 @@ El coste de un proceso de tramitación se reduce en 500.000 € en el año. Sobr
 4. Reparto proporcional: A = 400.000 × 280/500 = **224.000 €**; B = 400.000 × 220/500 = **176.000 €**.
 5. Comprobación: 100.000 + 224.000 + 176.000 = 500.000 €.
 
-### 6.4 Iniciativas transversales: realización por unidad de negocio
+### 6.4 Casos de uso transversales: realización por unidad de negocio
 
-Una iniciativa transversal (documento 40 §7.2) tiene un solo plan de realización, con un bloque por unidad de negocio:
+Un caso de uso transversal (documento 40 §7.2) tiene un solo plan de realización, con un bloque por unidad de negocio:
 
 | Elemento | Qué se exige |
 |---|---|
 | **Responsables** | El patrocinador es corporativo. Cada unidad nombra su **responsable de negocio del beneficio**, que firma la parte del plan de su unidad y declara cada periodo su coste, su adopción y su valor materializado. |
-| **Coste** | Cada unidad asume sus licencias desde el primer día. Lo común (oficina de adopción, formación continua, revisión de permisos) se registra sin unidad y suma en el coste de la iniciativa. |
+| **Coste** | Cada unidad asume sus licencias desde el primer día. Lo común (oficina de adopción, formación continua, revisión de permisos) se registra sin unidad y suma en el coste del caso de uso. |
 | **Adopción** | Licencias activas sobre asignadas y usuarios activos semanales, tomados de los informes de uso de la plataforma. Por debajo del umbral aprobado en G2, la unidad revisa el despliegue o retira licencias. |
 | **Materialización** | Cada unidad indica la palanca de la sección 7.2 con la que convierte las horas liberadas en menor coste o en capacidad reasignada. Sin palanca, las horas son capacidad liberada y no suman. |
-| **Validación** | Control de gestión valida unidad por unidad. La suma de las unidades y de lo común es el valor de la iniciativa; lo que ya reclama un caso propio de la unidad sobre el mismo proceso no se cuenta otra vez (secciones 6.1 y 6.2). |
+| **Validación** | Control de gestión valida unidad por unidad. La suma de las unidades y de lo común es el valor del caso de uso; lo que ya reclama un caso propio de la unidad sobre el mismo proceso no se cuenta otra vez (secciones 6.1 y 6.2). |
 
-En T01, el despliegue y la adopción de cada unidad se registran en el alcance de la iniciativa y el coste y el valor, como importes con su unidad. El panel del consejo (T17) los muestra por unidad y da el neto de la cartera con y sin las iniciativas transversales.
+En T01, el despliegue y la adopción de cada unidad se registran en el alcance del caso de uso y el coste y el valor, como importes con su unidad. El panel del consejo (T17) los muestra por unidad y da el neto de la cartera con y sin los casos de uso transversales.
 
 ---
 
@@ -284,7 +284,7 @@ La materialización que afecte a personas se planifica con la función de person
 2. **Cada hora tiene un único destino**: materializada, reasignada o sin destino (F5).
 3. **La valoración de la eficiencia es el menor coste real**, no las horas por el coste horario interno. Por eso la tasa de materialización se calcula en horas y la eficiencia en euros de coste real.
 4. **La capacidad sin destino se informa** en cada periodo y en el panel del consejo, separada del neto.
-5. **Capacidad sin destino persistente.** Si tras dos periodos de validación la capacidad sigue sin destino, el comité de IA revisa la hipótesis de valor y el nivel de ambición de la iniciativa.
+5. **Capacidad sin destino persistente.** Si tras dos periodos de validación la capacidad sigue sin destino, el comité de IA revisa la hipótesis de valor y el nivel de ambición del caso de uso.
 
 ### 7.4 Ejemplo ilustrativo
 
@@ -419,7 +419,7 @@ Las reglas de presentación están en el documento 40 §11. Para la realización
 - **Capacidad sin destino** de la cartera y su evolución.
 - **Valor por nivel de ambición**, separando eficiencias y retorno, para las señales 2 y 3 del índice de transformación.
 - **Fotos históricas** que permitan comparar periodos sin reescribir cifras ya presentadas; las correcciones se muestran como ajuste.
-- **Plan de realización: curva y tramos.** Tarjeta con la curva de la cartera por año, semestre o trimestre (suma de los casos con plan registrado), la realización acumulada (F10) frente a la referencia aprobada, en total y solo con validado, con los umbrales de IND-VAL-14 (≥ 90 % dentro de tolerancia, 70–90 % desviación moderada, < 70 % desviación relevante; sección 9.1), y el VAN (F7) de cada caso. Las iniciativas sin plan se muestran como «sin plan de realización» y nunca se estiman (documento 40, regla 8).
+- **Plan de realización: curva y tramos.** Tarjeta con la curva de la cartera por año, semestre o trimestre (suma de los casos con plan registrado), la realización acumulada (F10) frente a la referencia aprobada, en total y solo con validado, con los umbrales de IND-VAL-14 (≥ 90 % dentro de tolerancia, 70–90 % desviación moderada, < 70 % desviación relevante; sección 9.1), y el VAN (F7) de cada caso. Los casos de uso sin plan se muestran como «sin plan de realización» y nunca se estiman (documento 40, regla 8).
 
 ### 11.3 Reglas de agregación
 
@@ -476,7 +476,7 @@ Cuando un hallazgo afecta a cifras ya presentadas al consejo, la oficina de IA p
 | Código | Nombre | Uso en este documento |
 |---|---|---|
 | **T12** | Seguimiento de realización de valor | Plan de realización (bloque `plan_realizacion` de T01), registro por periodo, estados, realización, desviaciones. |
-| **T01** | Registro de iniciativas | Responsables, eventos de revisión, decisiones de R6 y G7; plan de realización con curva, tramos y valor realizado por periodo. |
+| **T01** | Registro de casos de uso | Responsables, eventos de revisión, decisiones de R6 y G7; plan de realización con curva, tramos y valor realizado por periodo. |
 | **T13** | Calculadora de costes por caso | Coste recurrente real. |
 | **T17** | Panel de IA para el consejo | Consolidación y presentación; tarjeta «Plan de realización: curva y tramos». |
 | **T20** | Plan de adopción y capacidad | Materialización y reasignación de la capacidad. |

@@ -36,7 +36,7 @@ By the end you will be able to read a company's transformation index, explain it
 | Step | What to open | What to look at |
 |---|---|---|
 | 1 | document 00, section 5 | The principle and the five profiles. |
-| 2 | document 12, sections 3 and 4 | The questions that classify an initiative's ambition and the eight signals of the index. |
+| 2 | document 12, sections 3 and 4 | The questions that classify a use case's ambition and the eight signals of the index. |
 | 3 | document 12, section 9 | The complete illustrative example. |
 | 4 | T14 | The same example calculated, with "what would move the profile". |
 | 5 | T17 | The index card in the example board dashboard. |

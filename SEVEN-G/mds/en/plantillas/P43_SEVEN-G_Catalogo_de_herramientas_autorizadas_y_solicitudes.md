@@ -24,7 +24,7 @@
 | **Who completes it** | The AI Office maintains the catalogue and assesses requests, with information security, data protection and procurement. The employee completes the request (section 4.1) and the report (section 5.1). |
 | **Who verifies it** | The AI Auditor or internal audit, by sampling, within the audit plan (document 38). |
 | **Who decides or approves** | Additions and changes of category are decided by the AI Office, or by the AI Committee if the tool meets an Enterprise criterion (31 §5.5; 30 §7.5). Blocking is decided by information security with the AI Office. |
-| **Corporate cycle stage, *gate* or moment** | C2 (initial catalogue with the policy), C4 (T21 monitor reviewed by the AI Committee) and C5 (annual review). In an initiative, G3 and G5 check that the tools used are in the catalogue or in the inventory. |
+| **Corporate cycle stage, *gate* or moment** | C2 (initial catalogue with the policy), C4 (T21 monitor reviewed by the AI Committee) and C5 (annual review). In a use case, G3 and G5 check that the tools used are in the catalogue or in the inventory. |
 | **Tool** | T21 · Corporate AI use monitor (catalogue, pending requests and response time). Each authorised tool is registered in T02 (P05); reports that turn out to be incidents or nonconformities, in T08 (P27). |
 | **Reference document** | 31 §4.2, §4.3, §4.7, §4.8 and §5 (including §5.2 to §5.7); 32 §2.1 and §3.3; 37 §4; P05; P14. |
 | **Lite versus Enterprise** | The catalogue, the request and the report are mandatory in both implementation scopes (90 §2.1). In a Lite scope, the fields marked **(Enterprise)** may be omitted. |
@@ -34,7 +34,7 @@ Completion rules:
 - **One row per tool and edition.** The corporate version and the free or personal version of the same tool are separate entries; the personal one is listed as *Not authorised* (31 §4.2.3).
 - **Every tool in the catalogue has an inventory code** SIA-AAAA-NNN with the type of use *Corporate use of general-purpose AI* (32 §2.1). No registration in T02, no entry in the catalogue.
 - The information levels are those of the company's classification (in the models of document 31: [Public] · [Internal] · [Confidential] · [Restricted]). The seven categories of 31 §4.3 are prohibited unless the row expressly authorises them.
-- A tool that meets an Enterprise criterion, is configured to act (A2 or A3) or is integrated into a shared process is not resolved here: it moves to the full cycle as an initiative (31 §3.6 and §5.1).
+- A tool that meets an Enterprise criterion, is configured to act (A2 or A3) or is integrated into a shared process is not resolved here: it moves to the full cycle as a use case (31 §3.6 and §5.1).
 
 ---
 
@@ -120,7 +120,7 @@ Mark each cell: **Permitted** · **With conditions** (state which) · **Not perm
 |---|---|---|
 | Is there an alternative in the catalogue? | | If there is and it meets the need, *Refer to the catalogue* is proposed. |
 | Preliminary classification | | Type of use, provisional regulatory classification, exposure and autonomy (32 §3.3 and §3.4). |
-| Does it meet any Enterprise criterion? | | The eight in 31 §3.5. If any is met, *Treat as an initiative* is proposed and the AI Committee decides. |
+| Does it meet any Enterprise criterion? | | The eight in 31 §3.5. If any is met, *Treat as a use case* is proposed and the AI Committee decides. |
 | Supplier assessment | | P14 with level N1 · N2 · N3 (document 36). |
 | Contractual terms | | Use of the data for training, location, sub-processors, logs and liability (31 §5.6, step 4). |
 | Data protection and security | | Need for a data protection impact assessment (GDPR); controls of document 35. |
@@ -131,7 +131,7 @@ Mark each cell: **Permitted** · **With conditions** (state which) · **Not perm
 
 | Field | Content | Guidance |
 |---|---|---|
-| Resolution | | Authorise · Authorise with restrictions · Refer to the catalogue · Refuse · Treat as an initiative (phase 0, T01). |
+| Resolution | | Authorise · Authorise with restrictions · Refer to the catalogue · Refuse · Treat as a use case (phase 0, T01). |
 | Reason | | Mandatory in all cases. |
 | Decided by | | AI Office; AI Committee if there is an Enterprise criterion. Never the requester. |
 | Date of resolution and working days elapsed | | Against the time limit in section 2. |
@@ -185,7 +185,7 @@ Data are presented aggregated by area (31 §7.2). *No data* is not zero.
 | Catalogue composition | Authorised, restricted and not authorised tools | Monthly |
 | Pending requests | Requests without a resolution at the end of the period | Monthly |
 | Average response time | Average working days between request and resolution, against the time limit in section 2 | Monthly |
-| Resolutions by type | Authorise · with restrictions · refer · refuse · initiative | Quarterly |
+| Resolutions by type | Authorise · with restrictions · refer · refuse · use case | Quarterly |
 | Reports by type and classification | Count from section 5.3 | Monthly |
 | Embedded AI awaiting decision | Functions with status *Under assessment* | Quarterly |
 
@@ -199,7 +199,7 @@ Data are presented aggregated by area (31 §7.2). *No data* is not zero.
 | 2 | Each authorised tool has an SIA code in the inventory and a supplier assessment (question D6.03 of document 11). | |
 | 3 | Each row states purposes, groups, maximum autonomy, conditions and maximum information level. | |
 | 4 | Requests have a reasoned resolution, decided by the appropriate party and within the time limit, or the delay is explained. | |
-| 5 | No tool with an Enterprise criterion or with A2 or A3 autonomy over third parties is listed as corporate use without an initiative. | |
+| 5 | No tool with an Enterprise criterion or with A2 or A3 autonomy over third parties is listed as corporate use without a use case. | |
 | 6 | Each report has been triaged and, where applicable, has an INC or NC code linked in T08. | |
 | 7 | The AI Committee reviews these indicators in the T21 monitor (question D6.09 of document 11). | |
 

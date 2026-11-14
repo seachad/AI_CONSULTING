@@ -1,6 +1,6 @@
 # Obligation matrix and layered reading
 
-**What is always mandatory, what depends on the company or the initiative, what can be grouped and what is never omitted**
+**What is always mandatory, what depends on the company or the use case, what can be grouped and what is never omitted**
 
 | | |
 |---|---|
@@ -24,7 +24,7 @@ Not all companies have the same capacity for effort or the same risk exposure. S
 
 This document brings together in one place what other documents establish about proportionality:
 
-- the **intensity** of each initiative, Express, Lite or Enterprise (document 01, section 9);
+- the **intensity** of each use case, Express, Lite or Enterprise (document 01, section 9);
 - the company's **implementation scope**, Lite or Enterprise, and its minimum path (document 90, section 2);
 - the **obligation of each gate criterion** and its application in Lite (document 21, section 2);
 - the **scopes** that apply only to certain technologies: generative AI, agents and third parties (document 21, section 2.3).
@@ -42,17 +42,17 @@ It creates no new rules. If a row in this document differs from its source docum
 | Layer | What it contains | For whom |
 |---|---|---|
 | **1 · Essential** | What every company applies, whatever its size: the *Always* level items. Each document summarises it in its **"The essentials"** box, after the legal notice. | Every company, from day one. |
-| **2 · Conditional** | Modules that are activated when a trigger occurs (section 4): *Enterprise* and *Conditional* levels. | The company or initiative that meets the trigger. |
+| **2 · Conditional** | Modules that are activated when a trigger occurs (section 4): *Enterprise* and *Conditional* levels. | The company or use case that meets the trigger. |
 | **3 · Complete** | Working guides, catalogues, examples and reference material: *Recommended* and *Reference* levels. | Whoever needs to go deeper into a topic. |
 
-A medium-sized company with Lite initiatives works in layer 1 and enters layer 2 only where its initiatives take it. A regulated group with Enterprise scope applies layers 1 and 2 almost in full. Layer 3 is available to everyone.
+A medium-sized company with Lite use cases works in layer 1 and enters layer 2 only where its use cases take it. A regulated group with Enterprise scope applies layers 1 and 2 almost in full. Layer 3 is available to everyone.
 
 ### 2.2 Five obligation levels
 
 | Level | Meaning | Vocabulary of 01 |
 |---|---|---|
-| **Always** | Mandatory in every company and every initiative, Lite or Enterprise. In Lite it may be simplified; not omitted. | must |
-| **Enterprise** | Mandatory in full when the initiative has Enterprise intensity or the company has Enterprise scope. In Lite there is a reduced version, which is indicated. | must, under that condition |
+| **Always** | Mandatory in every company and every use case, Lite or Enterprise. In Lite it may be simplified; not omitted. | must |
+| **Enterprise** | Mandatory in full when the use case has Enterprise intensity or the company has Enterprise scope. In Lite there is a reduced version, which is indicated. | must, under that condition |
 | **Conditional** | Mandatory only when its trigger occurs. Without a trigger, it does not apply and is recorded as such. | must, under that condition |
 | **Recommended** | Working guide or good practice. It may be omitted with justification. The mandatory content it develops is already covered in another document or in a template. | should |
 | **Reference** | Reference material: glossary, catalogues, examples, explanations. | may |
@@ -65,25 +65,25 @@ The library distinguishes three kinds of content, so that the core is small and 
 
 | Kind | What it is | Where it is | What is required |
 |---|---|---|---|
-| **Mandatory principle** | Necessary condition for saying that SEVEN-G is applied: the fourteen core rules (N-01 to N-14). | Document 01, section 14.1; section 3 of this document | Always met, in every company and initiative. |
+| **Mandatory principle** | Necessary condition for saying that SEVEN-G is applied: the fourteen core rules (N-01 to N-14). | Document 01, section 14.1; section 3 of this document | Always met, in every company and use case. |
 | **Practice** | A way of meeting the core: gate criteria, measurement rules, risk, operation and audit procedures… It is **mandatory** when its level is *Always*, *Enterprise* or *Conditional* and its condition occurs, and **recommended** at the *Recommended* and *Reference* levels. | Numbered documents (section 6) | What its level says. |
 | **Instrument** | A template or tool that makes the practice easier. **What is mandatory is the evidence it organises, not its format**: evidence the company already has (a business case, an impact assessment, a contract) is valid if it covers what the criterion asks for (document 21, section 4). | Templates (section 7) and tools (section 8) | That the evidence exists and can be verified. |
 
-Principle 11 in 01 §3, **proportionality**, governs how everything that is not core is applied: no evidence is requested twice, no decision needs more participants than segregation of duties requires and no initiative bears a governance cost out of proportion to its risk and materiality.
+Principle 11 in 01 §3, **proportionality**, governs how everything that is not core is applied: no evidence is requested twice, no decision needs more participants than segregation of duties requires and no use case bears a governance cost out of proportion to its risk and materiality.
 
 ---
 
 ## 3. What is never omitted
 
-These fourteen rules are the **SEVEN-G core** (document 01, section 14.1): they hold for any company, with any scope and in any initiative, and they are what distinguishes applying SEVEN-G from using some of its templates. They are repeated here for convenience; if they differ, document 01 prevails.
+These fourteen rules are the **SEVEN-G core** (document 01, section 14.1): they hold for any company, with any scope and in any use case, and they are what distinguishes applying SEVEN-G from using some of its templates. They are repeated here for convenience; if they differ, document 01 prevails.
 
 <!-- tabla: codigo-primero -->
 | Code | Rule | Source |
 |---|---|---|
 | **N-01** | **Complete inventory** of AI systems —own, third-party, corporate use and unauthorised— with an owner, regulatory classification and intensity. | document 32; document 90, section 2.4 |
-| **N-02** | **Every initiative is registered** before consuming budget, with its dates per phase, decisions, criteria and closing reason (traceability in 01 §6.11). | document 01, section 6.11; document 03 |
-| **N-03** | **Intensity is determined for each initiative** in phase 0 and reviewed at G3 and at each R6. One Enterprise criterion is enough. | document 01, section 9 |
-| **N-04** | **No phase or gate is skipped**: every initiative goes through all the gates of its lifecycle and each one is recorded with its criteria and its outcome. Which criteria are assessed and which sessions may be grouped depends on the intensity. | document 01, sections 7 and 9; document 21, section 3.4 |
+| **N-02** | **Every use case is registered** before consuming budget, with its dates per phase, decisions, criteria and closing reason (traceability in 01 §6.11). | document 01, section 6.11; document 03 |
+| **N-03** | **Intensity is determined for each use case** in phase 0 and reviewed at G3 and at each R6. One Enterprise criterion is enough. | document 01, section 9 |
+| **N-04** | **No phase or gate is skipped**: every use case goes through all the gates of its lifecycle and each one is recorded with its criteria and its outcome. Which criteria are assessed and which sessions may be grouped depends on the intensity. | document 01, sections 7 and 9; document 21, section 3.4 |
 | **N-05** | **G3 is always decided separately**: it is the main stop gate. | document 01, section 6.1; document 90, section 2.4 |
 | **N-06** | **Segregation of duties**: roles and bodies assigned in line with the incompatibilities in 01 §8.2; whoever builds neither verifies nor decides their own work, and risk clearance is independent of the team. | document 01, section 8; document 30 |
 | **N-07** | **Dual validation and evidence prior to the decision**: without verified evidence there is no decision. | document 01, section 7.2; document 21, sections 3 and 4 |
@@ -99,7 +99,7 @@ These fourteen rules are the **SEVEN-G core** (document 01, section 14.1): they 
 
 ## 4. Triggers
 
-A trigger is a verifiable circumstance of the company or the initiative that activates a module. The first eight are the Enterprise criteria of 01 §9.2: any of them gives the initiative Enterprise intensity.
+A trigger is a verifiable circumstance of the company or the use case that activates a module. The first eight are the Enterprise criteria of 01 §9.2: any of them gives the use case Enterprise intensity.
 
 | # | Trigger | What it activates |
 |---|---|---|
@@ -115,11 +115,11 @@ A trigger is a verifiable circumstance of the company or the initiative that act
 | 10 | **Agents with autonomy A1** (criteria tagged AG) | AG criteria of document 21 · minimum controls per autonomy level of document 35 |
 | 11 | An **AI supplier** is involved (criteria tagged TER), including AI embedded in contracted software | document 36 · P14 · P55, P56 and P57 depending on level N1 to N3 |
 | 12 | **Personal data** is processed | document 34 (GDPR) · P47 when the processing requires it · document 51 |
-| 13 | The initiative **changes people's work** or releases capacity | document 50 · full document 23 · P46 |
+| 13 | The use case **changes people's work** or releases capacity | document 50 · full document 23 · P46 |
 | 14 | The solution is built with **AI-generated code** | document 53 · P66 |
 | 15 | The company meets an **Enterprise scope** criterion (90 §2.2) | AI Committee with its own session · auditor at every Enterprise gate · full document 38 · P42 · independent maturity assessment every two years |
 
-An isolated Transform bet makes that initiative Enterprise, but **does not change the company's scope** (document 90, section 2.2).
+An isolated Transform bet makes that use case Enterprise, but **does not change the company's scope** (document 90, section 2.2).
 
 ---
 
@@ -136,12 +136,12 @@ An isolated Transform bet makes that initiative Enterprise, but **does not chang
 | **6 · Operation → R6** | No | **Six-monthly** continuity review. | **Quarterly** review. |
 | **7 · Evolution or retirement → G7** | No. It is convened when scaling or retirement is proposed, or when R6 brings it forward | The sponsor decides. | The AI Committee decides; the board, if a Transform bet is scaled. |
 
-**At Express intensity** (01 §9.4) gates are grouped as in Lite and G3 remains separate, but it may be resolved in writing with the risk clearance recorded; each gate is assessed with the reduced list in 21 §2.5 (all applicable "Yes ◆" criteria and the criteria that sustain the core) and the continuity review is annual. If an Enterprise criterion appears or eligibility ceases to be met, the initiative moves to Lite or Enterprise.
+**At Express intensity** (01 §9.4) gates are grouped as in Lite and G3 remains separate, but it may be resolved in writing with the risk clearance recorded; each gate is assessed with the reduced list in 21 §2.5 (all applicable "Yes ◆" criteria and the criteria that sustain the core) and the continuity review is annual. If an Enterprise criterion appears or eligibility ceases to be met, the use case moves to Lite or Enterprise.
 
 **Three situations that look like skips and are not:**
 
 - **Systems that were already in production** before the framework was implemented. They do not go back through the phases: they are placed in the phase supported by their real evidence and go through a review equivalent to G7, with documentation identified as regularisation (document 14, section 11; document 90, section 5).
-- **Corporate use of general-purpose AI tools.** This is not an initiative with phases: it is governed through the acceptable use policy, the catalogue of authorised tools and the inventory (document 31, section 5).
+- **Corporate use of general-purpose AI tools.** This is not a use case with phases: it is governed through the acceptable use policy, the catalogue of authorised tools and the inventory (document 31, section 5).
 - **An opportunity that arrives already well defined.** Phases 1 and 2 may be brief, but their evidence —alternatives without AI, falsifiable hypothesis, baseline, stop criteria— remains what makes it possible to stop later on.
 
 ---
@@ -155,17 +155,17 @@ Each document shows this same level in its "The essentials" box, with the minimu
 | 00 | [What SEVEN-G is and how it helps companies](00_SEVEN-G_Que_es_y_para_que_sirve.html) | **Always** | Everyone |
 | 01 | [SEVEN-G foundational methodology](01_SEVEN-G_Metodologia_fundacional.html) | **Always** | Management, AI Office, risk, audit |
 | 02 | [SEVEN-G glossary and conventions](02_SEVEN-G_Glosario_y_convenciones.html) | **Reference** | Everyone |
-| 03 | [SEVEN-G tools and initiative register](03_SEVEN-G_Herramientas_y_registro_de_iniciativas.html) | **Always** | AI Office |
+| 03 | [SEVEN-G tools and use case register](03_SEVEN-G_Herramientas_y_registro_de_iniciativas.html) | **Always** | AI Office |
 | 04 | [Where SEVEN-G comes from, how it differs and why it is open](04_SEVEN-G_Origenes_diferencias_y_por_que_es_abierto.html) | **Reference** | Everyone |
 | 10 | [Sphere map and ambition levels](10_SEVEN-G_Mapa_de_esferas_y_niveles_de_ambicion.html) | **Always** | Management, AI Office, business |
 | 11 | [Maturity model](11_SEVEN-G_Modelo_de_madurez.html) | **Always** | AI Office, audit |
 | 12 | [Transformation index](12_SEVEN-G_Indice_de_transformacion.html) | **Always** | Board, management, AI Office |
 | 13 | [AI thesis, ambition and risk appetite](13_SEVEN-G_Tesis_de_IA_ambicion_y_apetito_de_riesgo.html) | **Always** | Board, senior management |
 | 14 | [Portfolio management](14_SEVEN-G_Gestion_de_cartera.html) | **Always** | AI Committee, AI Office |
-| 20 | [Phase manuals](20_SEVEN-G_Manuales_de_fase.html) | **Recommended** | Initiative teams |
+| 20 | [Phase manuals](20_SEVEN-G_Manuales_de_fase.html) | **Recommended** | Use case teams |
 | 21 | [Gate and audit criteria](21_SEVEN-G_Criterios_de_gate_y_auditoria.html) | **Always** | AI Office, verifiers, decision-makers |
-| 22 | [Checklists by gate](22_SEVEN-G_Listas_de_verificacion_por_gate.html) | **Recommended** | Verifiers, initiative teams |
-| 23 | [Adoption and change in the initiative](23_SEVEN-G_Adopcion_y_cambio.html) | **Recommended** | Product owners, people function |
+| 22 | [Checklists by gate](22_SEVEN-G_Listas_de_verificacion_por_gate.html) | **Recommended** | Verifiers, use case teams |
+| 23 | [Adoption and change in the use case](23_SEVEN-G_Adopcion_y_cambio.html) | **Recommended** | Product owners, people function |
 | 30 | [Governance model](30_SEVEN-G_Modelo_de_gobierno.html) | **Always** | Management, board secretariat, AI Office |
 | 31 | [Corporate AI policy and acceptable use policy](31_SEVEN-G_Politica_corporativa_y_uso_aceptable.html) | **Always** | Management, compliance, people function |
 | 32 | [AI system inventory and regulatory classification](32_SEVEN-G_Inventario_y_clasificacion_regulatoria.html) | **Always** | AI Office, risk, compliance |
@@ -203,7 +203,7 @@ The fact that a document is *Always* does not mean it must be read in full: nine
 
 ### 7.1 Lifecycle evidence (P01–P31)
 
-**No mandatory evidence is omitted in Lite: it is simplified.** At Express, the P01 living record gathers the evidence for phases 0 to 5 and the evidence the company already has is referenced (21 §4.3). Each template marks with *(Enterprise)* the fields that a Lite initiative may leave blank.
+**No mandatory evidence is omitted in Lite: it is simplified.** At Express, the P01 living record gathers the evidence for phases 0 to 5 and the evidence the company already has is referenced (21 §4.3). Each template marks with *(Enterprise)* the fields that a Lite use case may leave blank.
 
 | Templates | Level | Note |
 |---|---|---|
@@ -225,7 +225,7 @@ The fact that a document is *Always* does not mean it must be read in full: nine
 | P38 (rules of procedure or mandate of the bodies) | **Always** | In Lite scope, extended mandate of the existing bodies. |
 | P39 (agenda and minutes) · P44 (usage survey) · P68 (board session notes) | **Recommended** | The company may use its own formats. |
 | P40 (exceptions) | **Conditional** | When an exception is requested. |
-| P41 (independence and conflicts of interest) | **Conditional** | Verifiers and auditors of Enterprise initiatives, and external support. |
+| P41 (independence and conflicts of interest) | **Conditional** | Verifiers and auditors of Enterprise use cases, and external support. |
 | P42 (quarterly second-line report) | **Enterprise** | Trigger 15. In Lite scope, its content goes into the AI item of the management committee. |
 | P43 (authorised tools) · P45 (literacy and training) | **Always** | — |
 | P46 (information to workers) | **Conditional** | Triggers 2 or 13, when the law requires information or consultation. |
@@ -251,9 +251,9 @@ No tool is mandatory as an application: what is mandatory is the register or the
 
 | Tool | Level of what it contains | Note |
 |---|---|---|
-| T01 · Initiative register (with T02 inventory, T03 gates, T04 intensity, T05 ambition, T06 risks and T18 board) | **Always** | It is the central piece: the other tools read its data. |
+| T01 · Use case register (with T02 inventory, T03 gates, T04 intensity, T05 ambition, T06 risks and T18 board) | **Always** | It is the central piece: the other tools read its data. |
 | T14 · Transformation index · T15 · Maturity diagnosis | **Always** | At C1 and at each C5. |
-| T17 · Board dashboard | **Always** | Aggregated in Lite scope; per initiative for Enterprise ones. |
+| T17 · Board dashboard | **Always** | Aggregated in Lite scope; per use case for Enterprise ones. |
 | T11 · Value calculator (with T13 costs) | **Recommended** | The formulas of document 40 are mandatory; the calculator is an aid. |
 | T23 · Implementation journey | **Recommended** | Orders the implementation according to the starting point (document 96); what is mandatory is still what document 90 sets. |
 | Rest of the catalogue | According to its procedure | They are applied with the template or document indicated in the catalogue of document 03. |
@@ -268,7 +268,7 @@ No tool is mandatory as an application: what is mandatory is the register or the
 | **Senior management and AI Committee** | document 00 · document 01 · document 90 (section 2) · this document | document 13 · document 14 · document 40 |
 | **AI lead or AI Office** | All of the above · document 03 · document 21 · document 30 (section 11 in Lite) | The *Always* level documents as the 90-day plan progresses |
 | **Risk, compliance and audit** | document 01 (sections 7 to 12) · document 21 · document 32 · document 33 · document 37 | document 34 · document 35 · document 36 · document 38, depending on the triggers |
-| **Initiative team** | document 01 (section 6) · the relevant phase of document 20 · the templates of that phase | document 22 · document 40 |
+| **Use case team** | document 01 (section 6) · the relevant phase of document 20 · the templates of that phase | document 22 · document 40 |
 | **Consultant** | document 00 · document 01 · document 04 · document 91 · document 93 | document 90 · document 92 |
 
 The [SEVEN-G course](curso/M00_SEVEN-G_Curso_Guia_del_curso.html) follows these same paths with short modules, exercises on the example data and self-check questions.
@@ -279,9 +279,9 @@ The [SEVEN-G course](curso/M00_SEVEN-G_Curso_Guia_del_curso.html) follows these 
 
 | Code | Name | Relationship |
 |---|---|---|
-| P04 | Intensity determination | Records which Enterprise criteria each initiative meets. |
-| T04 | Intensity determination (T01 module) | Applies the criteria of 01 §9.2 when the initiative is registered. |
-| T03 | *Gate* manager (T01 module) | Shows, for each gate, the criteria that apply according to the initiative's intensity and tags. |
+| P04 | Intensity determination | Records which Enterprise criteria each use case meets. |
+| T04 | Intensity determination (T01 module) | Applies the criteria of 01 §9.2 when the use case is registered. |
+| T03 | *Gate* manager (T01 module) | Shows, for each gate, the criteria that apply according to the use case's intensity and tags. |
 | P32 | Implementation mandate | Sets the company's implementation scope. |
 
 ---

@@ -25,7 +25,7 @@
 | **Quién la verifica** | La segunda línea (competencias sobre riesgo, conformidades y excepciones) y asesoría jurídica (encaje con estatutos, reglamento del consejo y legislación societaria aplicable). |
 | **Quién decide o aprueba** | El reglamento del comité de IA y el mandato de la oficina de IA: la alta dirección o el consejo, según el sistema de delegación de la compañía. Las competencias de IA de la comisión delegada y el nombramiento del responsable de IA: el consejo. |
 | **Etapa del ciclo corporativo** | C2 (aprobación junto con la matriz de delegación, 30 §7) y C5 (revisión anual). |
-| **Herramienta** | T01 · Registro de iniciativas: alta de órganos y personas para validar decisor y verificador (30 §10, paso 5). |
+| **Herramienta** | T01 · Registro de casos de uso: alta de órganos y personas para validar decisor y verificador (30 §10, paso 5). |
 | **Documento de referencia** | 30 §3, §4, §6, §7, §12; 01 §8.3; 11 D1.01–D1.03 y D1.07; 90 §4.4. |
 | **Lite frente a Enterprise** | En una compañía con alcance Lite o de tamaño reducido, el comité de IA puede ser el comité de dirección con un punto mensual propio y la oficina de IA una persona a tiempo parcial (30 §11). Las tres garantías irrenunciables de 30 §11 se mantienen en ambos casos. |
 
@@ -71,7 +71,7 @@ Antes de redactar, se asigna cada función de 30 §3 y §7 a un órgano, sin hue
 
 **Artículo 1. Objeto.** El presente reglamento regula la composición, competencias y funcionamiento del Comité de IA de [la Compañía], órgano que gestiona la cartera de inteligencia artificial dentro de la tesis de IA, la ambición por esfera y el apetito de riesgo aprobados por el Consejo de Administración, y decide lo que este le delega.
 
-**Artículo 2. Naturaleza y ámbito.** El Comité es un órgano [de la alta dirección / del comité existente que asume la función]. Su ámbito comprende las iniciativas de IA, la IA de terceros integrada en procesos, el uso corporativo de IA de propósito general y el uso no autorizado, en el perímetro de [perímetro].
+**Artículo 2. Naturaleza y ámbito.** El Comité es un órgano [de la alta dirección / del comité existente que asume la función]. Su ámbito comprende los casos de uso de IA, la IA de terceros integrada en procesos, el uso corporativo de IA de propósito general y el uso no autorizado, en el perímetro de [perímetro].
 
 **Artículo 3. Composición.**
 
@@ -94,9 +94,9 @@ Antes de redactar, se asigna cada función de 30 §3 y §7 a un órgano, sin hue
 | Suspensiones y retiradas | Ratificar suspensiones inmediatas en 2 días hábiles; decidir retiradas planificadas Enterprise y retiradas forzosas; autorizar reanudaciones con conformidad de la segunda línea. | 30 §7.3 |
 | Excepciones | Aprobar las excepciones de requisito del ciclo de vida; proponer al consejo las de umbral corporativo. | 30 §7.4 |
 | Otras | Autorizar herramientas corporativas que cumplan un criterio Enterprise; elevar la autonomía a A2 o A3; contratar proveedores N3; cerrar no conformidades críticas tras verificación del auditor de IA; aprobar la política de uso aceptable. | 30 §7.5 |
-| Seguimiento | Revisar iniciativas estancadas, condiciones vencidas, desviaciones de valor y coste, incidentes y no conformidades. | 14 §7–8 |
+| Seguimiento | Revisar casos de uso estancados, condiciones vencidas, desviaciones de valor y coste, incidentes y no conformidades. | 14 §7–8 |
 
-**Artículo 7. Límites y elevación.** El Comité no aprueba la tesis de IA, el apetito de riesgo, la política corporativa, las iniciativas de Transformar en G2 ni su escalado en G7, ni acepta riesgos residuales Críticos. Eleva al Consejo o a [la Comisión] lo que supere su delegación y, en todo caso, las situaciones de 30 §8.2 que lo requieran. Ninguna práctica prohibida por el artículo 5 del Reglamento (UE) 2024/1689 es aceptable por ningún órgano.
+**Artículo 7. Límites y elevación.** El Comité no aprueba la tesis de IA, el apetito de riesgo, la política corporativa, los casos de uso de Transformar en G2 ni su escalado en G7, ni acepta riesgos residuales Críticos. Eleva al Consejo o a [la Comisión] lo que supere su delegación y, en todo caso, las situaciones de 30 §8.2 que lo requieran. Ninguna práctica prohibida por el artículo 5 del Reglamento (UE) 2024/1689 es aceptable por ningún órgano.
 
 **Artículo 8. Convocatoria.** La secretaría convoca las sesiones ordinarias con al menos [cinco] días hábiles de antelación, con orden del día y documentación (P39). Las extraordinarias, por *gates* urgentes o incidentes S1, pueden convocarse con [24 horas] por cualquier medio que deje constancia.
 
@@ -106,7 +106,7 @@ Antes de redactar, se asigna cada función de 30 §3 y §7 a un órgano, sin hue
 
 **Artículo 11. Decisión por escrito.** Los *gates* sin debate pueden decidirse por escrito, con las mismas reglas de quórum, conformidad y abstención. Cualquier miembro con voto puede pedir que el asunto se trate en sesión.
 
-**Artículo 12. Conflictos de interés y abstención.** Los miembros declaran sus conflictos al incorporarse y cada año (P41), y al inicio de cada sesión respecto de los puntos del orden del día. Quien tenga rol de patrocinio o construcción en una iniciativa se abstiene en sus decisiones (30, I-6). Quien verifica un *gate* no participa en su decisión (I-7). Quien propone una excepción no la aprueba (I-9). La abstención consta en acta y en T01.
+**Artículo 12. Conflictos de interés y abstención.** Los miembros declaran sus conflictos al incorporarse y cada año (P41), y al inicio de cada sesión respecto de los puntos del orden del día. Quien tenga rol de patrocinio o construcción en un caso de uso se abstiene en sus decisiones (30, I-6). Quien verifica un *gate* no participa en su decisión (I-7). Quien propone una excepción no la aprueba (I-9). La abstención consta en acta y en T01.
 
 **Artículo 13. Actas y registro.** De cada sesión se levanta acta con asistentes, quórum, conflictos, deliberación resumida y acuerdos numerados (P39). El acta se aprueba en la misma sesión o en la siguiente. Cada decisión de *gate* se registra en T03 con P29; cada excepción, en el registro de P40.
 
@@ -126,11 +126,11 @@ Antes de redactar, se asigna cada función de 30 §3 y §7 a un órgano, sin hue
 
 **A.1 Objeto.** La Oficina de IA hace que el marco funcione: metodología, inventario, información fiable y soporte a los equipos. Si existe riesgo de confusión con la Oficina Europea de IA, se denomina [Oficina corporativa de IA / Centro de excelencia de IA] (30 §1.2).
 
-**A.2 Funciones.** Mantener el inventario (T02) y el registro de iniciativas (T01); custodiar metodología, plantillas y listas de verificación; verificar los *gates* Lite en los que no haya participado; consolidar la medición con control de gestión; preparar la información de los órganos; coordinar la alfabetización y la regularización del uso no autorizado; liderar C1 y C5; aprobar las excepciones metodológicas menores y de política de uso (30 §7.4).
+**A.2 Funciones.** Mantener el inventario (T02) y el registro de casos de uso (T01); custodiar metodología, plantillas y listas de verificación; verificar los *gates* Lite en los que no haya participado; consolidar la medición con control de gestión; preparar la información de los órganos; coordinar la alfabetización y la regularización del uso no autorizado; liderar C1 y C5; aprobar las excepciones metodológicas menores y de política de uso (30 §7.4).
 
 **A.3 Composición y dependencia.** Responsable de la Oficina, [nombre del cargo], y [número] personas de metodología, cartera y medición. Depende de [la presidencia del Comité de IA / cargo que no sea patrocinador habitual].
 
-**A.4 Límite.** La Oficina no verifica iniciativas en cuyo diseño, construcción u operación haya participado (I-8); en ese caso la verificación pasa a la segunda línea o al auditor de IA.
+**A.4 Límite.** La Oficina no verifica casos de uso en cuyo diseño, construcción u operación haya participado (I-8); en ese caso la verificación pasa a la segunda línea o al auditor de IA.
 
 ---
 

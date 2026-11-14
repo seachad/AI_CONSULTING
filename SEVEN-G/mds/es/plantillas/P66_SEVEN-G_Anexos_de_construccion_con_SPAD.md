@@ -25,7 +25,7 @@
 | **Quién la verifica** | Oficina de IA en Lite; auditor de IA en Enterprise. El auditor puede consultar las salidas de la IA revisora, pero no basa su verificación solo en ellas (53 §5.3). |
 | **Quién decide o aprueba** | Toda aceptación de un artefacto la registra una persona identificada. El *gate* lo decide el órgano de 01 §7.5. |
 | **Etapa, *gate* o momento** | G4 (plan, reglas y estrategia de pruebas), G5 (revisiones, correcciones, versiones) y R6 (cambios y correcciones urgentes posteriores, 53 §8). |
-| **Herramienta** | T01 (enlace del tema de trabajo a la iniciativa), T02 (herramientas de construcción inventariadas), T06, T08, T09 y T10. |
+| **Herramienta** | T01 (enlace del tema de trabajo al caso de uso), T02 (herramientas de construcción inventariadas), T06, T08, T09 y T10. |
 | **Documento de referencia** | Documento 53 (§3.1, §4, §5, §6, §7 y §8). SPAD es una metodología independiente referenciada desde SEVEN-G, no una parte de él (53 §2.1). |
 | **Lite frente a Enterprise** | Lite puede omitir los campos marcados **(Enterprise)** y agrupar en un artefacto el plan, su revisión, las reglas y la estrategia de pruebas, y en otro la implementación, las pruebas y su revisión (53 §4.3). |
 
@@ -43,12 +43,12 @@ Reglas de cumplimentación:
 
 | Campo | Contenido | Guía |
 |---|---|---|
-| Código de la iniciativa | | IA-AAAA-NNN (T01). |
-| Tema de trabajo (*TOPIC*) | | Incluye o referencia el código de la iniciativa. |
+| Código del caso de uso | | IA-AAAA-NNN (T01). |
+| Tema de trabajo (*TOPIC*) | | Incluye o referencia el código del caso de uso. |
 | Tipo de flujo | | Principal · Código heredado · Seguridad · Depuración · Corrección urgente. |
 | Método | | SPAD completo · SPAD reducido (Lite) · Otro método documentado. |
 | Herramientas de IA de construcción | | Nombre, proveedor, versión; aprobadas por la compañía (P14) e inventariadas en T02. |
-| Nivel de autonomía de los agentes de construcción | | A0–A3 (documento 35). Si actúan sobre producción o datos personales en A2 o A3, la iniciativa es Enterprise. |
+| Nivel de autonomía de los agentes de construcción | | A0–A3 (documento 35). Si actúan sobre producción o datos personales en A2 o A3, el caso de uso es Enterprise. |
 | Orquestador y revisor humano | | Designados en P03. |
 | Intensidad | | Lite · Enterprise. |
 | Versión del documento, autor y fecha | | DD-MM-AAAA. |

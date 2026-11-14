@@ -374,6 +374,13 @@ blockquote.aviso-legal strong { color: var(--negro); }
 .dz-card-titulo { font: 700 19px/1.2 var(--serif); color: var(--negro); margin: 0 0 6px; }
 .dz-card-texto { font: 400 13.5px/1.4 var(--sans); color: var(--tinta-2); margin: 0 0 12px; flex: 1; }
 .dz-card .dz-item { background: var(--papel); }
+/* documento 00 de cada marco: sus presentaciones en slides (1, 5, 10 y 20 en tarjetas de dos columnas; el curso, de cuatro) */
+@media (min-width: 900px) { .dz-card[data-grupo="slides-curso"] { grid-column: span 4; } .dz-card[data-grupo="slides-otros"] { grid-column: span 3; } }
+.dz-card[data-grupo="slides-curso"] { border-top-color: var(--teal); }
+.dz-card[data-grupo="slides-curso"] .dz-card-rotulo { color: var(--teal); }
+.dz-card[data-grupo="slides-otros"] { border-top-color: var(--oxford); }
+.dz-card[data-grupo="slides-otros"] .dz-card-rotulo { color: var(--oxford); }
+.descargas-zona[id] { scroll-margin-top: 72px; }
 .dz-grupo { font: 700 12px/1.2 var(--sans); letter-spacing: .08em; text-transform: uppercase; color: var(--tinta-2); margin: 8px 0 -2px; padding-top: 10px; border-top: 1px solid var(--regla); }
 .dz-grupo:first-child { margin-top: 0; padding-top: 0; border-top: 0; }
 @media print { .descargas-zona { display: none !important; } }
@@ -583,12 +590,12 @@ h2 .codigo, h3 .codigo { font-weight: 400; }
 <tbody>
 <tr>
 <td><strong>Two or three weeks before</strong></td>
-<td>Short interviews with the chair, the chief executive and senior business, people, technology and risk management. Preliminary list of known AI initiatives and systems.</td>
+<td>Short interviews with the chair, the chief executive and senior business, people, technology and risk management. Preliminary list of known AI use cases and systems.</td>
 <td>The presenter, with the AI Office if there is one</td>
 </tr>
 <tr>
 <td><strong>Two weeks before</strong></td>
-<td><strong>First preliminary map</strong>: each known initiative is placed in its primary sphere and at its ambition level (<a href="01_SPHERES_Niveles_de_ambicion.html" title="Document 01 &#183; SEVEN-G foundational methodology">document 01</a>). The approximate grades of spheres 08 and 09 are noted (<a href="04_SPHERES_Regulacion_y_gobierno_de_la_IA.html" title="Document 04 &#183; Where SEVEN-G comes from, how it differs and why it is open">document 04</a>). The examples per level are chosen.</td>
+<td><strong>First preliminary map</strong>: each known use case is placed in its primary sphere and at its ambition level (<a href="01_SPHERES_Niveles_de_ambicion.html" title="Document 01 &#183; SEVEN-G foundational methodology">document 01</a>). The approximate grades of spheres 08 and 09 are noted (<a href="04_SPHERES_Regulacion_y_gobierno_de_la_IA.html" title="Document 04 &#183; Where SEVEN-G comes from, how it differs and why it is open">document 04</a>). The examples per level are chosen.</td>
 <td>The presenter</td>
 </tr>
 <tr>
@@ -605,7 +612,7 @@ h2 .codigo, h3 .codigo { font-weight: 400; }
 </table></div>
 <h3 id="how-to-build-the-preliminary-map">How to build the preliminary map</h3>
 <ol>
-<li><strong>Gather the list</strong> of AI initiatives and systems from the interviews, the budgets and the contracts with suppliers. It is common to discover initiatives that management was not aware of.</li>
+<li><strong>Gather the list</strong> of AI use cases and systems from the interviews, the budgets and the contracts with suppliers. It is common to discover use cases that management was not aware of.</li>
 <li><strong>Assign the primary sphere</strong> of each one: the sphere in which its main metric is measured, not the area that sponsors it.</li>
 <li><strong>Assign the ambition level</strong> with the five questions in <a href="01_SPHERES_Niveles_de_ambicion.html" title="Document 01 &#183; SEVEN-G foundational methodology">document 01</a>. In case of doubt, the lower level.</li>
 <li><strong>Diagnose the enablers</strong> with the five quick questions in <a href="03_SPHERES_Esferas_habilitadoras.html" title="Document 03 &#183; SEVEN-G tools and initiative register">document 03</a>.</li>
@@ -693,7 +700,7 @@ h2 .codigo, h3 .codigo { font-weight: 400; }
 <p><strong>What to avoid.</strong> Turning the block into a review of the technology architecture.</p>
 <h3 id="block-04-regulation-ethics-and-accountability">Block 04 · Regulation, ethics and accountability</h3>
 <p><strong>What is presented.</strong> What the <a class="ref-ext" href="https://eur-lex.europa.eu/eli/reg/2024/1689/oj/eng" target="_blank" rel="noopener" title="Regulation (EU) 2024/1689 of the European Parliament and of the Council of 13 June 2024 laying down harmonised rules on artificial intelligence (Artificial Intelligence Act)">EU AI Act</a> requires according to the risk level of each system, data protection in automated decisions and applicable sector regulation, always with the consultation date. The three dimensions: Compliance, Anticipation and Ethical leadership. It is often the topic that concerns the board most.</p>
-<p><strong>What the board is asked.</strong> Do we govern proactively or do we wait for the regulator to force us? Is there anyone with real power to say no to an initiative that is profitable but inappropriate?</p>
+<p><strong>What the board is asked.</strong> Do we govern proactively or do we wait for the regulator to force us? Is there anyone with real power to say no to a use case that is profitable but inappropriate?</p>
 <p><strong>What to avoid.</strong> Presenting regulation as a catalogue of penalties or treating as settled interpretations that require legal judgement.</p>
 <h3 id="block-05-position-on-people">Block 05 · Position on people</h3>
 <p>It is covered in section 6 of this document.</p>
@@ -726,7 +733,7 @@ h2 .codigo, h3 .codigo { font-weight: 400; }
 <tr>
 <td><strong>03 · People</strong></td>
 <td>Does AI replace, augment or reorganise people's work?</td>
-<td>What happens to released capacity? What proportion of initiatives originates from employees themselves?</td>
+<td>What happens to released capacity? What proportion of use cases originates from employees themselves?</td>
 </tr>
 <tr>
 <td><strong>04 · Operations</strong></td>
@@ -736,7 +743,7 @@ h2 .codigo, h3 .codigo { font-weight: 400; }
 <tr>
 <td><strong>05 · Data</strong></td>
 <td>Do we know what data we have, where it is, who is accountable for its quality and whether we can legally use it for AI?</td>
-<td>How many initiatives are delayed for lack of data? Is our data an advantage that is hard to replicate?</td>
+<td>How many use cases are delayed for lack of data? Is our data an advantage that is hard to replicate?</td>
 </tr>
 <tr>
 <td><strong>06 · Knowledge</strong></td>
@@ -756,7 +763,7 @@ h2 .codigo, h3 .codigo { font-weight: 400; }
 <tr>
 <td><strong>09 · AI governance</strong></td>
 <td>Does AI have corporate governance with the same formality as finance, risk or compliance?</td>
-<td>Who is ultimately accountable? Can we stop an initiative that is not working? Do we depend on a single model supplier?</td>
+<td>Who is ultimately accountable? Can we stop a use case that is not working? Do we depend on a single model supplier?</td>
 </tr>
 </tbody>
 </table></div>
@@ -821,7 +828,7 @@ h2 .codigo, h3 .codigo { font-weight: 400; }
 <tr id="cod-month-1">
 <td><strong>Month 1</strong></td>
 <td>Diagnosis</td>
-<td>Complete inventory of initiatives and systems; current map by sphere and level; grades of 08 and 09 with evidence; diagnosis of the enablers.</td>
+<td>Complete inventory of use cases and systems; current map by sphere and level; grades of 08 and 09 with evidence; diagnosis of the enablers.</td>
 <td>Map of the current situation with the &quot;no data&quot; items made explicit.</td>
 </tr>
 <tr id="cod-month-2">
@@ -902,7 +909,7 @@ h2 .codigo, h3 .codigo { font-weight: 400; }
 </tr>
 <tr>
 <td>Declares their interests and relationships with suppliers.</td>
-<td>Oversee initiatives in which they or their organisation provide implementation services.</td>
+<td>Oversee use cases in which they or their organisation provide implementation services.</td>
 </tr>
 </tbody>
 </table></div>
@@ -974,7 +981,7 @@ h2 .codigo, h3 .codigo { font-weight: 400; }
 </tr>
 <tr>
 <td><strong><a href="01_SPHERES_Niveles_de_ambicion.html" title="Document 01 &#183; SEVEN-G foundational methodology">document 01</a> · Ambition levels</strong></td>
-<td>Classification of initiatives for the preliminary map.</td>
+<td>Classification of use cases for the preliminary map.</td>
 </tr>
 <tr>
 <td><strong><a href="02_SPHERES_Esferas_donde_se_genera_valor.html" title="Document 02 &#183; SEVEN-G glossary and conventions">document 02</a> · Spheres where value is created</strong></td>
@@ -1022,7 +1029,7 @@ h2 .codigo, h3 .codigo { font-weight: 400; }
 </table></div>
 <h2 id="external-sources">External sources cited</h2><p class="fuentes-nota">Links to the official or primary source, checked before publication. Always verify the version in force on the date of use.</p><ul class="fuentes-externas"><li><a href="https://eur-lex.europa.eu/eli/reg/2024/1689/oj/eng" target="_blank" rel="noopener">Regulation (EU) 2024/1689 of the European Parliament and of the Council of 13 June 2024 laying down harmonised rules on artificial intelligence (Artificial Intelligence Act)</a><span> · Parlamento Europeo y Consejo de la UE · 13-06-2024</span></li></ul>
 </main>
-<footer class="pie"><div><span>© 2026 Fernando García Varela · SPHERES methodology</span><span>Generated on 19-10-2026</span></div><p class="pie-ia">Content generated and typeset with AI support under the author&#39;s editorial supervision.</p></footer>
+<footer class="pie"><div><span>© 2026 Fernando García Varela · SPHERES methodology</span><span>Generated on 14-11-2026</span></div><p class="pie-ia">Content generated and typeset with AI support under the author&#39;s editorial supervision.</p></footer>
 <script src="../../../SEVEN-G/html/en/codigos.js" defer></script>
 
 <script>

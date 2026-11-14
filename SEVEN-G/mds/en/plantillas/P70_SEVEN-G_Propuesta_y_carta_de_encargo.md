@@ -26,7 +26,7 @@
 | **Who completes it** | The third party (consultancy, audit firm, independent adviser or team from another group company) drafts the proposal; the company completes its roles, prerequisites and data. |
 | **Who verifies it** | A quality reviewer from the third party not involved in the proposal (91 §7.1, commitment 5); for the company, whoever commissions the work and, for the clauses, its legal counsel. |
 | **Who decides or approves** | Senior management commissioning the work (M1, M2, M5); board committee or internal audit (M3); chair of the board or of the board committee (M4). |
-| **Stage or point** | M1: C1 · M2: C1 to C3 and phase 0 of priority initiatives · M3: verification of 01 §14 · M4: C2, C4 and C5 · M5: C3, C4 and lifecycle (91 §4.1). |
+| **Stage or point** | M1: C1 · M2: C1 to C3 and phase 0 of priority use cases · M3: verification of 01 §14 · M4: C2, C4 and C5 · M5: C3, C4 and lifecycle (91 §4.1). |
 | **Tool** | It has no tool of its own. Deliverables use T01, T02, T14, T15, T16, T17, T18 and T19 depending on the model. |
 | **Reference document** | Document 91 (models, independence, use of the name, quality, what must not be promised); document 93 (licence, citation and notice); document 90 (90-day plan and prerequisites). |
 | **Lite versus Enterprise** | The company's Lite or Enterprise implementation scope (90 §2) is stated in section 2 and adjusts the calendar and the deliverables. |
@@ -49,7 +49,7 @@ Completion rules:
 | Third party | [Third party] | Name and, if it belongs to a group, related entities. |
 | Support model | [M1 · M2 · M3 · M4 · M5] | 91 §4. |
 | Company's implementation scope | [Lite · Enterprise] | 90 §2. |
-| Perimeter | [Companies, areas, initiatives and systems] | Defines the "area" for independence purposes (91 §5.2). |
+| Perimeter | [Companies, areas, use cases and systems] | Defines the "area" for independence purposes (91 §5.2). |
 | SEVEN-G version applied | 0.1 · [date] | And planned adaptations (91 §2.2). |
 | Proposal date and validity | [DD-MM-AAAA] · [days] | |
 | Version | | |
@@ -77,7 +77,7 @@ Complete only the row for the chosen model and detail the adaptations.
 | **M2 · 90-day implementation** | Month 1 diagnosis; month 2 risks and opportunities by sphere and proposed thesis, ambition and appetite; month 3 governance structure, initial portfolio, registers in operation and first pack. | Independent verification of *gates* that the third party helps to prepare; decisions of the bodies. | [ ] |
 | **M3 · Independent audit** | The fourteen core rules (01 §14.1); sampling of *gate* decisions; inventory and classification; measurement rules in the pack; nonconformity process; register of recommendations and independence of assessments. | Designing or implementing corrections; issuing certifications. | [ ] |
 | **M4 · Board advisory** | Preparation of sessions (document 61); review of the pack before submission; recommendations; independent assessments commissioned; support for C2 and C5; board training. | Management of the company's AI; preparation of the pack it reviews; supplier selection. | [ ] |
-| **M5 · Ongoing support** | Support to the AI Office: register and inventory, evidence with the teams, funnel metrics, quarterly pack, support for R6 and C5. | Verification of *gates* for initiatives in which it takes part; decisions; assessment of recommendations whose execution it supports. | [ ] |
+| **M5 · Ongoing support** | Support to the AI Office: register and inventory, evidence with the teams, funnel metrics, quarterly pack, support for R6 and C5. | Verification of *gates* for use cases in which it takes part; decisions; assessment of recommendations whose execution it supports. | [ ] |
 
 ---
 
@@ -93,7 +93,7 @@ Complete only the row for the chosen model and detail the adaptations.
 | 6 | Corporate AI policy | M2 | Document 31 | [ ] | [ ] | [ ] |
 | 7 | Governance model with role assignment | M2 | Document 30; P03; P38 | [ ] | [ ] | [ ] |
 | 8 | Prioritised portfolio and regularisation plan | M2 | P36; T01 | [ ] | [ ] | [ ] |
-| 9 | Initiative register and register of recommendations with real data | M2 | T01; T18; P69 | JSON or spreadsheet | [ ] | [ ] |
+| 9 | Use case register and register of recommendations with real data | M2 | T01; T18; P69 | JSON or spreadsheet | [ ] | [ ] |
 | 10 | First quarterly pack | M2 | P67; T17 | [ ] | [ ] | [ ] |
 | 11 | Audit plan, working papers and report with conclusion | M3 | P59; P60; P29 (sampling) | [ ] | [ ] | [ ] |
 | 12 | Classified nonconformities and recommendations for the register | M3 | P50; P69 | [ ] | [ ] | [ ] |

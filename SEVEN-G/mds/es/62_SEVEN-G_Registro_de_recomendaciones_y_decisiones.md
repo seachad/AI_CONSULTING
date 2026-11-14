@@ -43,7 +43,7 @@ No sustituye al acta, que es el documento societario, ni al registro de decision
 | 3 | **Sin evidencia no hay cumplimiento** | Una recomendación solo puede valorarse como conforme si hay evidencia enlazada, fechada y versionada. |
 | 4 | **Nada se cierra en silencio** | El cierre y el descarte los acepta el órgano que emitió la recomendación, con registro. |
 | 5 | **Todo cambio es un evento** | Cambios de estado, fecha, destinatario o texto quedan registrados con fecha, autor y motivo. |
-| 6 | **Vinculado a la medición** | Cada recomendación indica el bloque del panel del consejo o el dato del registro de iniciativas donde se comprueba su efecto. |
+| 6 | **Vinculado a la medición** | Cada recomendación indica el bloque del panel del consejo o el dato del registro de casos de uso donde se comprueba su efecto. |
 | 7 | **Un único modelo de datos** | El registro es la entidad *Recomendación* del modelo común (03 §4); se alimenta y alimenta al resto de herramientas. |
 
 ---
@@ -67,7 +67,7 @@ El esquema de datos del panel del consejo (`motor/ESQUEMA.md` del repositorio de
 4. **Una recomendación que se divide** conserva su identificador en la parte principal; las partes nuevas reciben identificadores nuevos y se enlazan a la original.
 5. **Una recomendación reformulada de forma sustancial** se cierra como *Sustituida* y se registra una nueva enlazada. Los cambios menores de redacción se registran como evento sin cambiar el código.
 6. **La correspondencia con identificadores anteriores** (por ejemplo, `R-NN` de una herramienta previa) se conserva en el campo *identificador anterior*.
-7. **Las iniciativas** mantienen su propio código `IA-AAAA-NNN` (documento 03); los incidentes y no conformidades, `INC-AAAA-NNN` y `NC-AAAA-NNN`.
+7. **Los casos de uso** mantienen su propio código `IA-AAAA-NNN` (documento 03); los incidentes y no conformidades, `INC-AAAA-NNN` y `NC-AAAA-NNN`.
 
 ---
 
@@ -98,7 +98,7 @@ El esquema de datos del panel del consejo (`motor/ESQUEMA.md` del repositorio de
 | | Comentario de valoración | Motivo de la valoración, especialmente si no es conforme. | Si no es conforme | Valorador independiente |
 | **Cierre** | Situación | Abierta · Cerrada · Descartada · Sustituida. | Sí | Sistema, con aceptación del órgano |
 | | Fecha y órgano de cierre | Quién aceptó el cierre o el descarte y cuándo. | Al cerrar | Secretaría del consejo |
-| **Vínculos** | Iniciativas | Códigos IA-AAAA-NNN afectados. | Si existen | Oficina de IA |
+| **Vínculos** | Casos de uso | Códigos IA-AAAA-NNN afectados. | Si existen | Oficina de IA |
 | | Sistemas, incidentes y no conformidades | INC-AAAA-NNN, NC-AAAA-NNN, sistemas del inventario. | Si existen | Oficina de IA |
 | | Decisiones | DEC-AAAA-NNN relacionadas. | Si existen | Secretaría del consejo |
 | | Bloque del panel | Bloque del panel del consejo donde se mide el efecto (sección 11). | Recomendado | Oficina de IA |
@@ -221,7 +221,7 @@ Una recomendación se cierra cuando se cumplen a la vez tres condiciones: estado
 
 ### 9.2 Descarte
 
-El descarte es legítimo cuando la recomendación ha perdido sentido (cambio de estrategia, iniciativa retirada, solución alternativa) o cuando su coste supera claramente su beneficio. Requiere motivo, alternativa si existe y aceptación expresa del órgano emisor. Una recomendación descartada no desaparece del registro ni de los indicadores.
+El descarte es legítimo cuando la recomendación ha perdido sentido (cambio de estrategia, caso de uso retirado, solución alternativa) o cuando su coste supera claramente su beneficio. Requiere motivo, alternativa si existe y aceptación expresa del órgano emisor. Una recomendación descartada no desaparece del registro ni de los indicadores.
 
 ### 9.3 Reprogramación
 
@@ -246,7 +246,7 @@ Cuando el órgano emisor reformula una recomendación de forma sustancial, la or
 | Decisión | Registro |
 |---|---|
 | Aprobación de la tesis de IA, la ambición por esfera, el apetito de riesgo, la política corporativa y el presupuesto marco (C2). | Obligatorio |
-| Aprobación de iniciativas de Transformar en G2 y de su escalado en G7. | Obligatorio |
+| Aprobación de casos de uso de Transformar en G2 y de su escalado en G7. | Obligatorio |
 | Aceptación excepcional de riesgos residuales Crítico. | Obligatorio |
 | Decisiones de la revisión anual (C5): ajustes de tesis, umbrales y plazos. | Obligatorio |
 | Tomas de conocimiento de paradas, retiradas, incidentes S1 y no conformidades críticas. | Obligatorio |
@@ -280,14 +280,14 @@ Cuando el órgano emisor reformula una recomendación de forma sustancial, la or
 
 ---
 
-## 11. Vínculos con las iniciativas y con el panel
+## 11. Vínculos con los casos de uso y con el panel
 
-### 11.1 Con el registro de iniciativas
+### 11.1 Con el registro de casos de uso
 
-- Toda recomendación o decisión que afecta a iniciativas concretas enlaza sus códigos IA-AAAA-NNN.
-- En la ficha de cada iniciativa del registro (T01) aparecen las recomendaciones y decisiones que la afectan, con su estado y valoración.
-- Una iniciativa **no puede superar un *gate*** si tiene vinculada una decisión del consejo con condiciones vencidas que afectan a ese *gate*.
-- Cuando una iniciativa se para o se retira, las recomendaciones que dependen solo de ella se proponen para descarte o cierre.
+- Toda recomendación o decisión que afecta a casos de uso concretos enlaza sus códigos IA-AAAA-NNN.
+- En la ficha de cada caso de uso del registro (T01) aparecen las recomendaciones y decisiones que lo afectan, con su estado y valoración.
+- Un caso de uso **no puede superar un *gate*** si tiene vinculada una decisión del consejo con condiciones vencidas que afectan a ese *gate*.
+- Cuando un caso de uso se para o se retira, las recomendaciones que dependen solo de él se proponen para descarte o cierre.
 
 ### 11.2 Con el panel del consejo
 
@@ -349,21 +349,21 @@ Los ficheros del motor publicados en ese repositorio son **copia de su proyecto 
 | **Fuente de datos** | Datos de demostración generados con el panel | Entidad *Recomendación* del modelo común, integrada con T01 | Integración de la ola 1 de herramientas (03 §6). |
 | **Terminología** | Pensada para el seguimiento de recomendaciones de un órgano asesor | Genérica para cualquier órgano emisor | Textos configurables. |
 
-Prioridad: ola 1 de herramientas (03 §6), junto con la conexión del panel T17 al registro de iniciativas. Hasta que la adaptación esté disponible, el registro puede llevarse con la plantilla P69, preparada como hoja de cálculo con los campos de las secciones 4 y 10.
+Prioridad: ola 1 de herramientas (03 §6), junto con la conexión del panel T17 al registro de casos de uso. Hasta que la adaptación esté disponible, el registro puede llevarse con la plantilla P69, preparada como hoja de cálculo con los campos de las secciones 4 y 10.
 
 ### 12.3 Estado de la adaptación (versión 0.1)
 
-Desde el esquema 0.5 del registro de iniciativas, **T18 es un módulo de T01** (vista «Consejo (T18)»), con un único modelo de datos (03 §4):
+Desde el esquema 0.5 del registro de casos de uso, **T18 es un módulo de T01** (vista «Consejo (T18)»), con un único modelo de datos (03 §4):
 
 | Aspecto | Disponible | Pendiente |
 |---|---|---|
 | **Identificadores** | `REC-AAAA-NNN` y `DEC-AAAA-NNN`, correlativos por año y sin reinicio. | Identificador anterior de registros migrados. |
-| **Decisiones** | Órgano, referencia del acta, tipo, asunto, texto, resultado, iniciativas y recomendaciones vinculadas, límite de inversión y etapa, decisión de etapa, vigencia, responsable y esferas con Transformar como objetivo (sección 10.2). | Condiciones con responsable y plazo, y su seguimiento. |
-| **Recomendaciones** | Texto, destinatario, situación (abierta, en curso, cerrada, descartada), evidencia e iniciativas vinculadas. | Criterio de cumplimiento, fechas original y vigente, reprogramaciones, valoración independiente, historial y alertas de la sección 5. |
+| **Decisiones** | Órgano, referencia del acta, tipo, asunto, texto, resultado, casos de uso y recomendaciones vinculadas, límite de inversión y etapa, decisión de etapa, vigencia, responsable y esferas con Transformar como objetivo (sección 10.2). | Condiciones con responsable y plazo, y su seguimiento. |
+| **Recomendaciones** | Texto, destinatario, situación (abierta, en curso, cerrada, descartada), evidencia y casos de uso vinculados. | Criterio de cumplimiento, fechas original y vigente, reprogramaciones, valoración independiente, historial y alertas de la sección 5. |
 | **Índice de transformación** | Las decisiones alimentan la señal 8 y la condición IT-D1 del documento 12 en la calculadora T14. | — |
 | **Panel del consejo** | El conector de T17 genera la página del registro a partir de las recomendaciones de T01. | Decisiones en el panel. |
 
-**Por qué importa.** Las decisiones del consejo dejan de vivir solo en las actas: quedan enlazadas a las iniciativas y a las recomendaciones, y el índice de transformación puede comprobar con datos si el consejo decide, financia y supervisa las apuestas de Transformar. Lo pendiente sigue llevándose con la plantilla P69.
+**Por qué importa.** Las decisiones del consejo dejan de vivir solo en las actas: quedan enlazadas a los casos de uso y a las recomendaciones, y el índice de transformación puede comprobar con datos si el consejo decide, financia y supervisa las apuestas de Transformar. Lo pendiente sigue llevándose con la plantilla P69.
 
 ---
 
@@ -380,7 +380,7 @@ Desde el esquema 0.5 del registro de iniciativas, **T18 es un módulo de T01** (
 | Destinatario o responsable | Dirección de control de gestión | Dirección de personas | Dirección comercial |
 | Fecha original · vigente | 30-06 · 30-09 (1 reprogramación) | 30-11 · 30-11 | Condición: 60 días desde la decisión |
 | Estado declarado | Cumplida | En curso | Condición en curso |
-| Evidencia | Informe de validación de control de gestión (versión 2); tabla de valor por caso en el registro de iniciativas. | Borrador de posición (versión 1). | — |
+| Evidencia | Informe de validación de control de gestión (versión 2); tabla de valor por caso en el registro de casos de uso. | Borrador de posición (versión 1). | — |
 | Valoración | Conforme con observaciones: dos casos de IA generativa mantienen el valor como declarado. | Sin valorar | — |
 | Situación | Propuesta de cierre en la sesión de diciembre; observación registrada como REC-2026-017. | Abierta | Vigente |
 | Vínculos | Bloque del panel: Valor frente a potencial | Bloque del panel: Tendencia y adopción | IA-2026-018 · REC-2026-006 |
@@ -391,7 +391,7 @@ Desde el esquema 0.5 del registro de iniciativas, **T18 es un módulo de T01** (
 
 | Código | Nombre | Uso en este documento |
 |---|---|---|
-| T01 | Registro de iniciativas | Vínculos IA-AAAA-NNN y eventos. |
+| T01 | Registro de casos de uso | Vínculos IA-AAAA-NNN y eventos. |
 | T03 | Gestor de *gates* | Enlace entre decisiones del consejo y decisiones de *gate*. |
 | T08 | Registro de no conformidades e incidentes | Vínculos INC y NC. |
 | T17 | Panel de IA para el consejo | Bloques donde se comprueba el efecto de cada recomendación. |
@@ -409,7 +409,7 @@ Desde el esquema 0.5 del registro de iniciativas, **T18 es un módulo de T01** (
 | **00 · Qué es SEVEN-G y para qué sirve** | Registro de recomendaciones como componente de medición y herramienta. |
 | **01 · Metodología fundacional** | Reglas de decisión, límite de iteraciones, órganos. |
 | **02 · Glosario y convenciones** | Incorporación del código DEC-AAAA-NNN y de los estados. |
-| **03 · Herramientas y registro de iniciativas** | Modelo de datos (entidad *Recomendación*), T17, T18 y orden de construcción. |
+| **03 · Herramientas y registro de casos de uso** | Modelo de datos (entidad *Recomendación*), T17, T18 y orden de construcción. |
 | **38 · Marco de auditoría de IA** | Valoración independiente y escala de conformidad. |
 | **60 · Paquete para el consejo** | Extracto del registro en cada paquete y formato de decisión. |
 | **61 · Guía de conversación con el consejo** | Registro tras cada sesión. |
@@ -420,5 +420,5 @@ Desde el esquema 0.5 del registro de iniciativas, **T18 es un módulo de T01** (
 
 | Versión | Fecha | Cambios |
 |---|---|---|
-| 0.1 | 16-09-2026 | Primera versión. Define identificadores persistentes REC-AAAA-NNN y, como propuesta, DEC-AAAA-NNN; campos, estados declarados, valoración independiente, evidencia, ciclo de vida, cierre, decisiones del consejo, vínculos con iniciativas y panel, indicadores y adaptación pendiente de la herramienta T18. |
+| 0.1 | 16-09-2026 | Primera versión. Define identificadores persistentes REC-AAAA-NNN y, como propuesta, DEC-AAAA-NNN; campos, estados declarados, valoración independiente, evidencia, ciclo de vida, cierre, decisiones del consejo, vínculos con casos de uso y panel, indicadores y adaptación pendiente de la herramienta T18. |
 | 0.2 | 28-09-2026 | La decisión que aprueba la tesis de C2 registra la ambición objetivo de cada esfera (§10.2), que el panel del consejo usa en el mapa de impacto (60 §10.5). |

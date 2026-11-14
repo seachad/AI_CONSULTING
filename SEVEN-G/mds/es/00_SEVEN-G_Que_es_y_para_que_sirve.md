@@ -26,12 +26,12 @@
 
 **Qué hace, en cuatro ideas**
 
-1. **Ordena la IA de la compañía como una cartera**, no como una lista de proyectos: cada iniciativa se da de alta, se sabe en qué fase está, cuánto cuesta, qué valor se espera de ella y quién responde.
-2. **Pone puertas de decisión entre las fases.** Para avanzar hay que aportar resultados y documentación verificada; si no, la iniciativa se itera, se pivota o se para, y el motivo queda registrado.
+1. **Ordena la IA de la compañía como una cartera**, no como una lista de proyectos: cada caso de uso se da de alta, se sabe en qué fase está, cuánto cuesta, qué valor se espera de él y quién responde.
+2. **Pone puertas de decisión entre las fases.** Para avanzar hay que aportar resultados y documentación verificada; si no, el caso de uso se itera, se pivota o se para, y el motivo queda registrado.
 3. **Separa quién decide, quién construye y quién controla**, y traduce la regulación (Reglamento Europeo de IA, RGPD, DORA, NIS2, ISO/IEC 42001) a fases, roles y evidencias concretas.
 4. **Mide el valor en dinero y con estado** —validado, declarado o estimado— y le dice al consejo, con ocho señales observables, si la compañía se transforma o solo se eficienta.
 
-**Qué es frente a los estándares.** Las normas y la regulación —ISO/IEC 42001, ISO/IEC 38507, ISO/IEC 23894, ISO/IEC 42005, el NIST AI RMF o el Reglamento Europeo de IA— dicen **qué debe existir**: un sistema de gestión, responsabilidades del órgano de gobierno, un proceso de riesgo, evaluaciones de impacto, obligaciones legales. SEVEN-G es la **capa operativa que lo hace funcionar**, iniciativa a iniciativa y cartera a cartera, con disciplina de inversión y de valor: quién decide en cada puerta, con qué evidencia, cuánto cuesta y qué rinde. No es una alternativa a ISO/IEC 42001 ni equivale a una certificación: su crosswalk (documento 34, sección 9.1) dice qué requisito cubre, cuál cubre en parte y cuál exige un control externo.
+**Qué es frente a los estándares.** SEVEN-G es una metodología operativa para transformar la empresa con IA: decide dónde invertir, gobierna cada caso de uso y mide el valor con evidencia. Las normas y la regulación —ISO/IEC 42001, ISO/IEC 38507, ISO/IEC 23894, ISO/IEC 42005, el NIST AI RMF o el Reglamento Europeo de IA— dicen **qué debe existir**: un sistema de gestión, responsabilidades del órgano de gobierno, un proceso de riesgo, evaluaciones de impacto, obligaciones legales. SEVEN-G es la **capa operativa que lo hace funcionar**, caso a caso y cartera a cartera, con disciplina de inversión y de valor: quién decide en cada puerta, con qué evidencia, cuánto cuesta y qué rinde. No es una alternativa a ISO/IEC 42001 ni equivale a una certificación: su crosswalk (documento 34, sección 9.1) dice qué requisito cubre, cuál cubre en parte y cuál exige un control externo.
 
 **Qué se lleva, sin coste**
 
@@ -43,36 +43,36 @@ SEVEN-G no es un folleto que termina en una propuesta comercial: **el material d
 
 **Qué se obtiene, para quien quiere verlo antes de leer**
 
-Dos vistazos, con los datos ficticios de ejemplo: la cartera de iniciativas de IA leída como un embudo (a qué fase llega cada iniciativa, cuántas se pierden en cada una y por qué) y el panel del consejo generado a partir de ese mismo registro (coste, retorno y neto de la cartera). Es a donde lleva usar SEVEN-G: del registro de una iniciativa a una decisión de consejo con evidencia.
+Dos vistazos, con los datos ficticios de ejemplo: la cartera de casos de uso de IA leída como un embudo (a qué fase llega cada caso de uso, cuántos se pierden en cada una y por qué) y el panel del consejo generado a partir de ese mismo registro (coste, retorno y neto de la cartera). Es a donde lleva usar SEVEN-G: del registro de un caso de uso a una decisión de consejo con evidencia.
 
 <!-- figura: embudo-cartera -->
 
 <figure class="grafico">
-<div class="g-titulo">El panel del consejo, generado con los datos de ejemplo del registro de iniciativas</div>
-<div class="g-sub">Vista «Cartera y valor» del panel completo: coste, retorno, neto y validación de la cartera de 15 iniciativas ficticias</div>
+<div class="g-titulo">El panel del consejo, generado con los datos de ejemplo del registro de casos de uso</div>
+<div class="g-sub">Vista «Cartera y valor» del panel completo: coste, retorno, neto y validación de la cartera de 15 casos de uso ficticios</div>
 <div class="g-lienzo ancho"><img src="img/panel-consejo-ejemplo.png" alt="Panel del consejo de SEVEN-G: tarjetas de cartera y valor con 15 casos, 2,4 M€ de costes, 7,3 M€ de retorno total y 4,8 M€ de neto anual, y la lectura «Qué frena el escalado» con los tres frenos por los que empezar; datos ficticios" style="width:100%;height:auto;border:1px solid var(--regla)"></div>
-<div class="g-fuente">Fuente: panel de ejemplo del <a href="../../herramientas/T01_registro_iniciativas/registro.html">registro de iniciativas</a>, generado con el <a href="../../herramientas/T17_panel_consejo/index.html">panel del consejo</a>, datos ficticios</div>
+<div class="g-fuente">Fuente: panel de ejemplo del <a href="../../herramientas/T01_registro_iniciativas/registro.html">registro de casos de uso</a>, generado con el <a href="../../herramientas/T17_panel_consejo/index.html">panel del consejo</a>, datos ficticios</div>
 </figure>
 
 **¿Le sirve?** (a su compañía, o a la consultora o profesional que la asesora)
 
 | Probablemente le sirve si… | Probablemente no le sirve, o todavía no, si… |
 |---|---|
-| Ya tiene iniciativas de IA —pilotos, asistentes generativos, modelos, agentes— y nadie puede decir con evidencia **cuánto cuestan, cuánto aportan y quién responde** de cada una. | Busca una guía técnica para **construir modelos o elegir tecnología**. SEVEN-G gobierna y mide. Construir software con IA es otro problema: lo resuelve SPAD, un método independiente, y el documento 53 es el único puente entre los dos. |
+| Ya tiene casos de uso de IA —pilotos, asistentes generativos, modelos, agentes— y nadie puede decir con evidencia **cuánto cuestan, cuánto aportan y quién responde** de cada uno. | Busca una guía técnica para **construir modelos o elegir tecnología**. SEVEN-G gobierna y mide. Construir software con IA es otro problema: lo resuelve SPAD, un método independiente, y el documento 53 es el único puente entre los dos. |
 | El consejo o la dirección preguntan por la IA y reciben un **inventario de proyectos técnicos** en lugar de decisiones de negocio. | Busca una **certificación o un sello**. No existe: la declaración de aplicación es una autodeclaración verificable por auditoría. |
 | Hay **muchos pilotos y pocos casos en producción**, y ninguna regla para parar lo que no funciona. | Espera **asesoramiento jurídico** o una garantía de cumplimiento. El marco mapea obligaciones a evidencias, pero cada compañía responde de su propio cumplimiento. |
 | Tiene que **demostrar cumplimiento** con evidencias y no con declaraciones. | Solo tiene una o dos pruebas sin presupuesto ni intención de llevarlas a producción. Empiece por la política de uso aceptable (documento 31) y el inventario de sistemas (T02), y vuelva cuando haya una cartera que gobernar. |
-| Es una **compañía mediana** sin equipo de IA: el alcance Lite funciona con el comité de dirección, una persona a tiempo parcial y un auditor externo. | **Nadie en la dirección va a asumir las decisiones.** El marco exige un patrocinador por iniciativa y capacidad real de parar; sin eso, solo produce documentos. |
+| Es una **compañía mediana** sin equipo de IA: el alcance Lite funciona con el comité de dirección, una persona a tiempo parcial y un auditor externo. | **Nadie en la dirección va a asumir las decisiones.** El marco exige un patrocinador por caso de uso y capacidad real de parar; sin eso, solo produce documentos. |
 | Es **consultor o responsable interno** y necesita un método completo que pueda adaptar y aplicar con su propia forma de trabajar, citando la fuente (documento 91). | |
 
-**Qué exige a cambio.** No cuesta dinero, pero sí disciplina: alguien que lo impulse, un registro de iniciativas al día y decisiones que se toman con evidencia delante. Lo innegociable cabe en catorce reglas, el **núcleo** (documento 01, sección 14.1); todo lo demás se aplica en proporción al riesgo y a la materialidad de cada iniciativa (principio 11, documento 94). La adopción puede ser **modular** —empezar solo por el registro, por las puertas de decisión, por la medición del valor o por el panel del consejo— y ampliarse después. La guía de implantación (documento 90) propone un plan de 90 días y una ruta mínima para compañías medianas; el documento 96 y su herramienta, el recorrido de implantación (T23), dicen por dónde empezar según la IA y el gobierno que la compañía ya tiene.
+**Qué exige a cambio.** No cuesta dinero, pero sí disciplina: alguien que lo impulse, un registro de casos de uso al día y decisiones que se toman con evidencia delante. Lo innegociable cabe en catorce reglas, el **núcleo** (documento 01, sección 14.1); todo lo demás se aplica en proporción al riesgo y a la materialidad de cada caso de uso (principio 11, documento 94). La adopción puede ser **modular** —empezar solo por el registro, por las puertas de decisión, por la medición del valor o por el panel del consejo— y ampliarse después. La guía de implantación (documento 90) propone un plan de 90 días y una ruta mínima para compañías medianas; el documento 96 y su herramienta, el recorrido de implantación (T23), dicen por dónde empezar según la IA y el gobierno que la compañía ya tiene.
 
 **Por dónde seguir, según quién sea**
 
 | Si es… | Siga por… |
 |---|---|
 | Miembro del consejo o de la alta dirección | La sección 5 de esta página (transformarse o eficientarse), la [guía de conversación con el consejo](61_SEVEN-G_Guia_de_conversacion_con_el_consejo.html) y el panel del consejo de ejemplo (T17). |
-| Responsable de IA, datos o tecnología | La [metodología fundacional](01_SEVEN-G_Metodologia_fundacional.html), los [manuales de fase](20_SEVEN-G_Manuales_de_fase.html) y el registro de iniciativas (T01). |
+| Responsable de IA, datos o tecnología | La [metodología fundacional](01_SEVEN-G_Metodologia_fundacional.html), los [manuales de fase](20_SEVEN-G_Manuales_de_fase.html) y el registro de casos de uso (T01). |
 | Riesgos, cumplimiento, protección de datos o auditoría | El [mapeo regulatorio](34_SEVEN-G_Mapeo_regulatorio.html), la [metodología de riesgos](33_SEVEN-G_Metodologia_de_riesgos_de_IA.html) y el [marco de auditoría](38_SEVEN-G_Marco_de_auditoria_de_IA.html). |
 | Dirección financiera o control de gestión | Las [reglas de medición del valor](40_SEVEN-G_Reglas_de_medicion_del_valor.html) y la calculadora de valor y costes (T11). |
 | Consultor o responsable de implantar el marco | La [guía de implantación](90_SEVEN-G_Guia_de_implantacion.html), la [guía para consultores](91_SEVEN-G_Guia_para_consultores.html) y los [casos de aplicación](92_SEVEN-G_Casos_de_aplicacion.html). |
@@ -97,14 +97,14 @@ SEVEN-G permite que una organización **implante, gobierne y mida** la inteligen
 
 Las dos cosas son legítimas. El problema aparece cuando se confunden: cuando una cartera de automatizaciones se presenta como transformación, cuando se declaran ahorros que nunca se materializan, o cuando las apuestas que podrían cambiar el negocio se bloquean con los mismos criterios de retorno que un proyecto de recorte de costes.
 
-El objetivo práctico es que el consejo, la alta dirección y los órganos de control entiendan y midan la aportación de la inteligencia empresarial en su compañía, comprendan y contengan sus riesgos y decidan, con disciplina de cartera, en qué iniciativas conviene invertir para mejorar la eficiencia, transformar capacidades y generar impacto real en la cuenta de resultados (P&L).
+El objetivo práctico es que el consejo, la alta dirección y los órganos de control entiendan y midan la aportación de la inteligencia empresarial en su compañía, comprendan y contengan sus riesgos y decidan, con disciplina de cartera, en qué casos de uso conviene invertir para mejorar la eficiencia, transformar capacidades y generar impacto real en la cuenta de resultados (P&L).
 
 > **Titularidad y reutilización.** La propiedad intelectual de la metodología SEVEN-G —sus documentos, plantillas, criterios y herramientas— pertenece a su autor, **Fernando García Varela**. El marco se ofrece como referencia abierta para uso, adaptación y aprendizaje, no como un producto comercial cerrado ni como una versión liberada a clientes o mercados: cualquier organización puede reutilizarlo y adaptarlo, pero ese uso queda sujeto a la licencia de contenidos y de código del proyecto (**CC BY 4.0** para los contenidos, **MIT** para el código; documento 93), que exige reconocer la autoría e indicar los cambios. Usar SEVEN-G, incluida su adaptación conforme a esa licencia, no transfiere la titularidad de la metodología ni otorga exclusividad ni derecho de propiedad sobre la base metodológica a ningún cliente, proveedor o tercero, salvo pacto escrito y específico sobre desarrollos propios.
 
 SEVEN-G aporta cuatro cosas:
 
 1. **Un mapa de dónde y con qué ambición** usar la IA: nueve esferas de impacto y tres niveles de ambición (Optimizar, Aumentar, Transformar).
-2. **Un ciclo de vida controlado** para cada iniciativa, con fases, puertas de decisión (*gates*) auditables y capacidad real de parar o retirar.
+2. **Un ciclo de vida controlado** para cada caso de uso, con fases, puertas de decisión (*gates*) auditables y capacidad real de parar o retirar.
 3. **Un sistema de gobierno** con roles separados, responsabilidades claras y cumplimiento regulatorio mapeado (Reglamento Europeo de IA, ISO/IEC 42001, RGPD, DORA y normativa sectorial).
 4. **Un sistema de medición** con reglas explícitas que separan el valor validado del declarado, la eficiencia del crecimiento y la transformación evidenciada de la transformación anunciada.
 
@@ -114,13 +114,13 @@ Todo ello se acompaña de plantillas, criterios de auditoría y herramientas —
 
 **Cómo se usa SEVEN-G, de un vistazo**
 
-Antes del detalle, el recorrido. Cada iniciativa avanza por fases y, al final de cada una, una puerta de decisión comprueba a la vez el resultado y la documentación (validación dual). Si no se cumple lo que exigen los documentos, la iniciativa no avanza: se itera (como máximo dos veces antes de elevar la decisión), se pivota a una nueva hipótesis o se para, y el motivo queda registrado. Superada la puesta en producción (G5), la iniciativa entra en un bucle de operación con monitorización continua y revisiones periódicas de continuidad (R6), hasta que la puerta G7 decide escalarla, iterarla o retirarla.
+Antes del detalle, el recorrido. Cada caso de uso avanza por fases y, al final de cada una, una puerta de decisión comprueba a la vez el resultado y la documentación (validación dual). Si no se cumple lo que exigen los documentos, el caso de uso no avanza: se itera (como máximo dos veces antes de elevar la decisión), se pivota a una nueva hipótesis o se para, y el motivo queda registrado. Superada la puesta en producción (G5), el caso de uso entra en un bucle de operación con monitorización continua y revisiones periódicas de continuidad (R6), hasta que la puerta G7 decide escalarlo, iterarlo o retirarlo.
 
 <!-- figura: flujo-uso -->
 
-El mapa siguiente reúne en una sola vista cómo se recorre el marco: arriba, el ciclo corporativo en el que la compañía decide y supervisa; en el centro, el ciclo de vida de cada iniciativa, con su etapa del embudo, su fase, su puerta de decisión y las plantillas, documentos y herramientas que se usan en ella; abajo, el gobierno transversal que acompaña a todas las fases. Cada elemento enlaza con el documento, la sección, la plantilla o la herramienta que lo desarrolla.
+El mapa siguiente reúne en una sola vista cómo se recorre el marco: arriba, el ciclo corporativo en el que la compañía decide y supervisa; en el centro, el ciclo de vida de cada caso de uso, con su etapa del embudo, su fase, su puerta de decisión y las plantillas, documentos y herramientas que se usan en ella; abajo, el gobierno transversal que acompaña a todas las fases. Cada elemento enlaza con el documento, la sección, la plantilla o la herramienta que lo desarrolla.
 
-> **Por qué importa.** SEVEN-G tiene muchas piezas, y quien lo usa por primera vez necesita saber qué toca en cada momento y dónde está. El mapa responde a tres preguntas prácticas —en qué fase está una iniciativa, qué hay que aportar para superar su puerta y con qué plantilla o herramienta— y sirve de punto de partida para navegar por la biblioteca sin leerla entera.
+> **Por qué importa.** SEVEN-G tiene muchas piezas, y quien lo usa por primera vez necesita saber qué toca en cada momento y dónde está. El mapa responde a tres preguntas prácticas —en qué fase está un caso de uso, qué hay que aportar para superar su puerta y con qué plantilla o herramienta— y sirve de punto de partida para navegar por la biblioteca sin leerla entera.
 
 <!-- figura: mapa-uso -->
 
@@ -138,7 +138,7 @@ En la mayoría de las organizaciones la IA crece más rápido que su capacidad p
 | **Nadie puede parar un proyecto.** No existen criterios formales para iterar, pivotar o retirar. | Carteras que solo crecen y concentran riesgo. |
 | La responsabilidad está **fragmentada** entre tecnología, negocio, riesgos y cumplimiento. Quien construye también aprueba. | Controles débiles y ausencia de rendición de cuentas. |
 | El **riesgo regulatorio y de seguridad** se aborda tarde: clasificación según el Reglamento de IA, evaluaciones de impacto, proveedores, agentes con permisos excesivos, IA usada por atacantes. | Exposición legal, reputacional y operativa. |
-| Se usa la palabra **"transformación"** para describir iniciativas que hacen lo mismo con menos coste. | La organización cree que se está transformando cuando solo se está eficientando, y no toma las decisiones que exigiría una transformación real. |
+| Se usa la palabra **"transformación"** para describir casos de uso que hacen lo mismo con menos coste. | La organización cree que se está transformando cuando solo se está eficientando, y no toma las decisiones que exigiría una transformación real. |
 
 SEVEN-G parte de una premisa: **estos problemas no son tecnológicos, son de gobierno y de medición**. Por eso el marco se dirige tanto a los equipos que construyen como a quienes deciden y supervisan.
 
@@ -149,7 +149,7 @@ SEVEN-G parte de una premisa: **estos problemas no son tecnológicos, son de gob
 ### 3.1 A implantar la IA
 
 - Identificar oportunidades desde el negocio, no desde la tecnología disponible.
-- Formular cada iniciativa como una **hipótesis de valor falsable**: línea base, objetivo, método de atribución y umbral de éxito definidos antes de invertir.
+- Formular cada caso de uso como una **hipótesis de valor falsable**: línea base, objetivo, método de atribución y umbral de éxito definidos antes de invertir.
 - Recorrer un ciclo de vida con fases y entregables conocidos, desde la definición del contexto hasta la operación, el escalado o la retirada.
 - Decidir con criterios explícitos en cada *gate*: continuar, continuar con condiciones, iterar, pivotar o parar.
 - Pasar de piloto a producción con requisitos de operación, supervisión humana, monitorización y reversibilidad.
@@ -181,7 +181,7 @@ Es la aportación más diferencial del marco y se desarrolla en la sección 5.
 
 ## 4. Cómo está construido el marco
 
-SEVEN-G se organiza en dos niveles de gobierno —el de la **compañía** y el de cada **iniciativa**— y en cuatro componentes que se usan en ambos niveles.
+SEVEN-G se organiza en dos niveles de gobierno —el de la **compañía** y el de cada **caso de uso**— y en cuatro componentes que se usan en ambos niveles.
 
 <!-- figura: arquitectura -->
 
@@ -189,7 +189,7 @@ SEVEN-G se organiza en dos niveles de gobierno —el de la **compañía** y el d
 
 Un consejo no decide sobre casos de uso; decide sobre riesgo, oportunidad, ventaja competitiva y responsabilidad. El mapa de impacto permite hablar de IA **sin hablar de tecnología**.
 
-> **Por qué importa.** Sin mapa de impacto, la cartera se llena de iniciativas técnicamente atractivas pero estratégicamente desordenadas. El mapa obliga a decidir dónde se quiere crear valor, qué ambición se asume y qué no se va a financiar.
+> **Por qué importa.** Sin mapa de impacto, la cartera se llena de casos de uso técnicamente atractivos pero estratégicamente desordenados. El mapa obliga a decidir dónde se quiere crear valor, qué ambición se asume y qué no se va a financiar.
 
 **Nueve esferas**, válidas para cualquier sector:
 
@@ -227,23 +227,23 @@ Es el ciclo en el que el consejo y la alta dirección ejercen su función. Se re
 |---|---|---|
 | **C1 · Diagnóstico** | ¿Dónde estamos? | Madurez por dimensión con evidencia, mapa de esferas actual, perfil de eficiencia–transformación, inventario de sistemas de IA. |
 | **C2 · Dirección** | ¿Dónde queremos jugar y con qué ambición y apetito de riesgo? | Tesis de IA de la compañía, nivel de ambición por esfera, apetito de riesgo, principios y política corporativa. |
-| **C3 · Cartera** | ¿Qué iniciativas financiamos, cuáles paramos y en qué equilibrio? | Cartera priorizada con equilibrio entre niveles de ambición, presupuesto y responsables. |
+| **C3 · Cartera** | ¿Qué casos de uso financiamos, cuáles paramos y en qué equilibrio? | Cartera priorizada con equilibrio entre niveles de ambición, presupuesto y responsables. |
 | **C4 · Supervisión** | ¿Se está cumpliendo lo decidido? | Panel del consejo, registro de recomendaciones, decisiones de *gate* relevantes, incidentes y no conformidades. |
 | **C5 · Revisión** | ¿Hemos avanzado? ¿Nos estamos transformando? | Revisión anual de madurez, del índice de transformación y de la tesis de IA. |
 
 Una primera implantación puede concentrar C1 a C3 en **noventa días**: diagnóstico de madurez (mes 1), mapa de riesgos y oportunidades con responsable e impacto económico (mes 2) y estructura de gobierno con *gates*, métricas y ritmo de reporte (mes 3).
 
-### 4.3 Nivel iniciativa · Ciclo de vida con puertas de decisión
+### 4.3 Nivel caso de uso · Ciclo de vida con puertas de decisión
 
-Cada iniciativa de IA recorre ocho fases. La **fase 0** es habilitante: sin ella la iniciativa no está autorizada. Las **siete fases** siguientes conducen la iniciativa desde la oportunidad hasta el valor demostrado, y la **G** de SEVEN-G expresa que el gobierno está presente en todas ellas.
+Cada caso de uso de IA recorre ocho fases. La **fase 0** es habilitante: sin ella el caso de uso no está autorizado. Las **siete fases** siguientes conducen el caso de uso desde la oportunidad hasta el valor demostrado, y la **G** de SEVEN-G expresa que el gobierno está presente en todas ellas.
 
-> **Por qué importa.** El ciclo de vida evita dos errores caros: poner en producción sin evidencia y mantener iniciativas sin valor por inercia. Las puertas de decisión introducen disciplina de inversión y permiten parar a tiempo.
+> **Por qué importa.** El ciclo de vida evita dos errores caros: poner en producción sin evidencia y mantener casos de uso sin valor por inercia. Las puertas de decisión introducen disciplina de inversión y permiten parar a tiempo.
 
 <!-- figura: ciclo -->
 
 | Fase | Nombre | Objetivo | Evidencias principales |
 |---|---|---|---|
-| 0 | **Contexto y restricciones** | Fijar objetivos estratégicos, restricciones regulatorias, éticas y presupuestarias, y asignar roles. | Carta de la iniciativa, declaración de contexto, registro de asignación de roles. |
+| 0 | **Contexto y restricciones** | Fijar objetivos estratégicos, restricciones regulatorias, éticas y presupuestarias, y asignar roles. | Carta del caso de uso, declaración de contexto, registro de asignación de roles. |
 | 1 | **Descubrimiento de oportunidades** | Identificar oportunidades desde el negocio y descartar las que no requieren IA. | Cartera de oportunidades, notas de filtrado, esfera y nivel de ambición propuestos. |
 | 2 | **Hipótesis de valor** | Formular una hipótesis medible y falsable. Si la hipótesis no puede fallar, no es válida. | Lienzo de hipótesis de valor, métricas de línea base, método de atribución. |
 | 3 | **Viabilidad y riesgo** | Evaluar viabilidad técnica, económica, de datos y de riesgo. Es la principal puerta de parada. | Evaluación de viabilidad, clasificación regulatoria, matriz y registro de riesgos, plan de mitigación. |
@@ -252,15 +252,15 @@ Cada iniciativa de IA recorre ocho fases. La **fase 0** es habilitante: sin ella
 | 6 | **Operación y gobierno** | Operar con estabilidad, vigilar la degradación, responder a incidentes. | Manual de operación, configuración de monitorización y alertas, plan de respuesta a incidentes. |
 | 7 | **Evolución o retirada** | Escalar, iterar o retirar según la evidencia de valor y riesgo. | Seguimiento de realización de valor, registro de decisión de escalado o retirada. |
 
-**La cartera de iniciativas, como un embudo**
+**La cartera de casos de uso, como un embudo**
 
-SEVEN-G entiende el conjunto de iniciativas de IA de la compañía con la misma aproximación que un embudo tradicional de ventas: para llegar a su estadio final —en producción— cada iniciativa ha de atravesar un conjunto obligatorio de estados, y en cada uno puede avanzar, esperar o quedarse fuera. Dar de alta una iniciativa equivale a registrar una oportunidad en un CRM: desde ese momento se sabe en qué etapa está, cuánto tiempo lleva en ella, qué coste, eficiencias y retorno se esperan y, si sale del embudo, por qué salió y qué se aprendió.
+SEVEN-G entiende el conjunto de casos de uso de IA de la compañía con la misma aproximación que un embudo tradicional de ventas: para llegar a su estadio final —en producción— cada caso de uso ha de atravesar un conjunto obligatorio de estados, y en cada uno puede avanzar, esperar o quedarse fuera. Dar de alta un caso de uso equivale a registrar una oportunidad en un CRM: desde ese momento se sabe en qué etapa está, cuánto tiempo lleva en ella, qué coste, eficiencias y retorno se esperan y, si sale del embudo, por qué salió y qué se aprendió.
 
-Las etapas del embudo agrupan las fases del ciclo de vida: **Propuesto** (fases 0 y 1), **Hipótesis de valor** (fase 2), **Prueba de concepto** (fase 3) y **En desarrollo** (fases 4 y 5). El embudo contiene solo las iniciativas en curso. Las que están **En uso** (fases 6 y 7) ya lo han atravesado, y las que se **desenganchan** después de haber estado en uso se siguen aparte, con su motivo.
+Las etapas del embudo agrupan las fases del ciclo de vida: **Propuesto** (fases 0 y 1), **Hipótesis de valor** (fase 2), **Prueba de concepto** (fase 3) y **En desarrollo** (fases 4 y 5). El embudo contiene solo los casos de uso en curso. Los que están **En uso** (fases 6 y 7) ya lo han atravesado, y los que se **desenganchan** después de haber estado en uso se siguen aparte, con su motivo.
 
 <!-- figura: embudo-cartera -->
 
-> **Por qué importa.** El embudo convierte la cartera en algo que el comité de IA y el consejo leen de un vistazo: cuántas iniciativas entran, dónde se atascan, cuántas llegan a producción, qué valor producen y qué se aprende de las que no llegan. Es la vista que comparten el registro de iniciativas (T01) y el panel del consejo (T17).
+> **Por qué importa.** El embudo convierte la cartera en algo que el comité de IA y el consejo leen de un vistazo: cuántos casos de uso entran, dónde se atascan, cuántos llegan a producción, qué valor producen y qué se aprende de los que no llegan. Es la vista que comparten el registro de casos de uso (T01) y el panel del consejo (T17).
 
 **Reglas de las puertas de decisión**
 
@@ -274,17 +274,17 @@ Las etapas del embudo agrupan las fases del ciclo de vida: **Propuesto** (fases 
 
 | Intensidad | Cuándo se aplica | Qué cambia |
 |---|---|---|
-| **Express** | Iniciativas pequeñas de uso interno, reversibles, con autonomía A0 o A1, sin datos sensibles y por debajo del umbral Express de C2, con elegibilidad confirmada por la función de riesgos. | Las mismas puertas con una lista reducida de criterios —todos los de seguridad, cumplimiento y supervisión humana se mantienen—, una ficha viva en lugar de plantillas y revisión anual; G3 sigue por separado. |
-| **Lite** | Iniciativas de bajo riesgo, uso interno, sin decisiones sobre personas ni exposición a clientes, inversión reducida. | *Gates* agrupados, plantillas simplificadas, decisión del patrocinador con registro y verificación de la oficina de IA. |
+| **Express** | Casos de uso pequeños, internos, reversibles, con autonomía A0 o A1, sin datos sensibles y por debajo del umbral Express de C2, con elegibilidad confirmada por la función de riesgos. | Las mismas puertas con una lista reducida de criterios —todos los de seguridad, cumplimiento y supervisión humana se mantienen—, una ficha viva en lugar de plantillas y revisión anual; G3 sigue por separado. |
+| **Lite** | Casos de uso de bajo riesgo, uso interno, sin decisiones sobre personas ni exposición a clientes, inversión reducida. | *Gates* agrupados, plantillas simplificadas, decisión del patrocinador con registro y verificación de la oficina de IA. |
 | **Enterprise** | Sistemas de alto riesgo según la regulación, exposición directa a clientes o personas, decisiones automatizadas, agentes con capacidad de actuar, entornos regulados o inversión significativa. | Todos los *gates* y evidencias, auditoría independiente, visibilidad del comité de IA y, cuando proceda, del consejo. |
 
-La intensidad se decide **iniciativa a iniciativa**. Aparte, cada compañía elige su **alcance de implantación**, también Lite o Enterprise, que decide cómo organiza sus órganos y su verificación: con alcance Lite, una compañía mediana y no regulada gobierna la IA con su comité de dirección, una oficina de IA de una persona a tiempo parcial y un auditor externo, y toda iniciativa que cumple un criterio Enterprise sigue gestionándose con intensidad Enterprise. La guía de implantación (documento 90, sección 2) explica cómo se elige el alcance y cuál es la ruta mínima en alcance Lite.
+La intensidad se decide **caso de uso a caso de uso**. Aparte, cada compañía elige su **alcance de implantación**, también Lite o Enterprise, que decide cómo organiza sus órganos y su verificación: con alcance Lite, una compañía mediana y no regulada gobierna la IA con su comité de dirección, una oficina de IA de una persona a tiempo parcial y un auditor externo, y todo caso de uso que cumple un criterio Enterprise sigue gestionándose con intensidad Enterprise. La guía de implantación (documento 90, sección 2) explica cómo se elige el alcance y cuál es la ruta mínima en alcance Lite.
 
 ### 4.4 Componente B · Sistema de gobierno
 
 > **Por qué importa.** Si no se separan las funciones de decidir, construir y controlar, el marco pierde credibilidad y aumenta el riesgo operativo y regulatorio. Un sistema de gobierno claro acelera las decisiones correctas y reduce el coste de corregir errores.
 
-**Roles de la iniciativa**, con separación de funciones:
+**Roles del caso de uso**, con separación de funciones:
 
 | Función | Rol | Responsabilidad |
 |---|---|---|
@@ -315,10 +315,10 @@ Tres instrumentos:
 
 > **Por qué importa.** Las herramientas convierten el método en operación diaria. Sin plantillas, listas de verificación y registros, el marco queda en intención; con ellas, las decisiones quedan trazadas y repetibles en toda la compañía.
 
-- **Plantillas** para cada evidencia de cada fase: carta de la iniciativa, lienzo de hipótesis de valor, registro de decisión de *gate*, matriz y registro de riesgos, manual de operación, seguimiento de realización de valor, entre otras.
+- **Plantillas** para cada evidencia de cada fase: carta del caso de uso, lienzo de hipótesis de valor, registro de decisión de *gate*, matriz y registro de riesgos, manual de operación, seguimiento de realización de valor, entre otras.
 - **Listas de verificación** por *gate*, que convierten los criterios en controles binarios.
 - **Panel de IA para el consejo**: inventario, valor validado frente a declarado, coste, cumplimiento regulatorio, incidentes, exposición a ataques con IA, identidad y permisos de los agentes, adopción, agilidad y distribución por nivel de ambición. Se genera a partir de un único fichero de datos con esquema documentado, con versión completa y versión móvil sincronizadas.
-- **Registro de iniciativas**, que gestiona la cartera de IA como un embudo: fase y estado de cada iniciativa, tiempo en cada fase, cumplimiento de cada puerta de decisión, etiquetas, valor y motivos de parada (documento 03).
+- **Registro de casos de uso**, que gestiona la cartera de IA como un embudo: fase y estado de cada caso de uso, tiempo en cada fase, cumplimiento de cada puerta de decisión, etiquetas, valor y motivos de parada (documento 03).
 - **Registro de recomendaciones del consejo**, con identificadores que no se reinician, estado declarado, evidencia aportada y valoración independiente.
 - **Demostraciones sectoriales** con datos ficticios (banca, seguros, energía, industria, retail, sanidad, telecomunicaciones, logística, farmacéutica, turismo y sector público).
 
@@ -332,9 +332,9 @@ La eficiencia y la transformación no se distinguen por la tecnología utilizada
 
 SEVEN-G no considera que la eficiencia sea un resultado menor. Muchas compañías deben empezar por ahí y financiar así sus apuestas posteriores. Lo que el marco exige es que **la elección sea consciente, esté medida y la tome quien corresponde**.
 
-### 5.2 Nivel iniciativa · Clasificación de la ambición con criterios verificables
+### 5.2 Nivel caso de uso · Clasificación de la ambición con criterios verificables
 
-Cada iniciativa se clasifica en la fase 1, se confirma en la fase 2 y se revisa en la fase 7 con la evidencia real. La clasificación responde a cinco preguntas:
+Cada caso de uso se clasifica en la fase 1, se confirma en la fase 2 y se revisa en la fase 7 con la evidencia real. La clasificación responde a cinco preguntas:
 
 | # | Pregunta | Si la respuesta es sí, apunta a… |
 |---|---|---|
@@ -344,7 +344,7 @@ Cada iniciativa se clasifica en la fase 1, se confirma en la fase 2 y se revisa 
 | 4 | ¿Genera ingresos, servicios o mercados que no existían? | Transformar |
 | 5 | ¿Podría retirarse sin afectar al modelo de negocio, volviendo simplemente al coste anterior? | Optimizar |
 
-Si las preguntas 1 a 4 se responden negativamente, la iniciativa es de **optimización**, con independencia de cómo se haya presentado. Las iniciativas de **transformación** requieren decisión explícita del consejo o de la alta dirección y se evalúan con criterios de *gate* adaptados: la hipótesis de valor admite mayor incertidumbre, pero exige hitos intermedios de aprendizaje, límites de inversión por etapa y criterios de parada definidos de antemano.
+Si las preguntas 1 a 4 se responden negativamente, el caso de uso es de **optimización**, con independencia de cómo se haya presentado. Los casos de uso de **transformación** requieren decisión explícita del consejo o de la alta dirección y se evalúan con criterios de *gate* adaptados: la hipótesis de valor admite mayor incertidumbre, pero exige hitos intermedios de aprendizaje, límites de inversión por etapa y criterios de parada definidos de antemano.
 
 ### 5.3 Nivel compañía · Índice de transformación
 
@@ -358,7 +358,7 @@ El perfil de la compañía se determina con un conjunto de señales observables,
 | **4. Profundidad del cambio** | Procesos rediseñados de extremo a extremo frente a tareas automatizadas. | Automatización de tareas aisladas. | Procesos rediseñados con nuevos puntos de decisión. |
 | **5. Modelo operativo** | Cambios en roles, estructura y reparto de decisiones entre personas y sistemas, con supervisión definida. | Sin cambios organizativos. | Roles y estructuras rediseñados y decisiones delegadas bajo control. |
 | **6. Ingresos habilitados por IA** | Porcentaje de los ingresos procedente de productos, servicios o canales que no existirían sin IA. | Nulo o marginal. | Relevante y creciente. |
-| **7. Paso a producción** | Proporción de iniciativas de Aumentar y Transformar que llegan a producción y tiempo que tardan. | Las apuestas de mayor ambición se quedan en piloto. | Llegan a producción con tiempos comparables al resto. |
+| **7. Paso a producción** | Proporción de casos de uso de Aumentar y Transformar que llegan a producción y tiempo que tardan. | Las apuestas de mayor ambición se quedan en piloto. | Llegan a producción con tiempos comparables al resto. |
 | **8. Decisión del consejo** | Decisiones de transformación adoptadas explícitamente por el consejo y seguidas en el registro. | La IA se trata como asunto técnico o de eficiencia. | El consejo decide, financia y supervisa apuestas de transformación. |
 
 Con estas señales la compañía se sitúa en uno de cinco perfiles:
@@ -410,12 +410,12 @@ SEVEN-G es **agnóstico de sector y de tecnología**, y escalable: el alcance de
 
 ## 8. Principios del marco
 
-1. **Valor antes que tecnología.** Toda iniciativa se vincula a un resultado de negocio medible.
+1. **Valor antes que tecnología.** Todo caso de uso se vincula a un resultado de negocio medible.
 2. **El gobierno no es opcional.** Se diseña desde el principio y permite ir más rápido con control.
 3. **La producción es la única verdad.** El valor se demuestra en condiciones reales.
 4. **Reversibilidad.** Toda solución puede detenerse, revertirse o retirarse.
 5. **El riesgo es sistémico.** Se gestiona en cartera, no solo caso por caso.
-6. **Evolucionar o retirar.** Ninguna iniciativa permanece en la cartera sin evidencia que lo justifique.
+6. **Evolucionar o retirar.** Ningún caso de uso permanece en la cartera sin evidencia que lo justifique.
 7. **Separación de funciones.** Quien construye no controla y nadie se aprueba a sí mismo.
 8. **Evidencia, no declaración.** Si no está documentado y verificado, no se considera realizado.
 9. **Decisión consciente sobre la ambición.** Eficiencia y transformación se eligen, se miden y se deciden por separado.
@@ -427,7 +427,7 @@ SEVEN-G es **agnóstico de sector y de tecnología**, y escalable: el alcance de
 
 - Una **visión única de su IA**: qué tiene, cuánto cuesta, cuánto aporta con evidencia, qué riesgos asume y quién responde de cada cosa.
 - Un **diagnóstico honesto** de su situación entre la eficiencia y la transformación.
-- Un **sistema de decisión** que permite iniciar, acelerar, condicionar, pivotar y parar iniciativas con criterios conocidos.
+- Un **sistema de decisión** que permite iniciar, acelerar, condicionar, pivotar y parar casos de uso con criterios conocidos.
 - **Cumplimiento regulatorio demostrable**, con evidencias vinculadas a cada obligación.
 - Un **consejo capaz de supervisar la IA** con información comprensible, comparable en el tiempo y verificable.
 - Un **lenguaje común** entre negocio, tecnología, riesgos y consejo.
@@ -440,15 +440,15 @@ La versión 0.1 de SEVEN-G es operativa. Todos los documentos, plantillas y herr
 
 | Bloque | Documentos |
 |---|---|
-| **A · Fundamentos** | [00 · Qué es SEVEN-G y para qué sirve a las empresas](00_SEVEN-G_Que_es_y_para_que_sirve.html) · [01 · Metodología fundacional](01_SEVEN-G_Metodologia_fundacional.html) · [02 · Glosario y convenciones](02_SEVEN-G_Glosario_y_convenciones.html) · [03 · Herramientas de SEVEN-G y registro de iniciativas](03_SEVEN-G_Herramientas_y_registro_de_iniciativas.html) · [04 · De dónde viene SEVEN-G, en qué se diferencia y por qué es abierto](04_SEVEN-G_Origenes_diferencias_y_por_que_es_abierto.html) |
+| **A · Fundamentos** | [00 · Qué es SEVEN-G y para qué sirve a las empresas](00_SEVEN-G_Que_es_y_para_que_sirve.html) · [01 · Metodología fundacional](01_SEVEN-G_Metodologia_fundacional.html) · [02 · Glosario y convenciones](02_SEVEN-G_Glosario_y_convenciones.html) · [03 · Herramientas de SEVEN-G y registro de casos de uso](03_SEVEN-G_Herramientas_y_registro_de_iniciativas.html) · [04 · De dónde viene SEVEN-G, en qué se diferencia y por qué es abierto](04_SEVEN-G_Origenes_diferencias_y_por_que_es_abierto.html) |
 | **B · Estrategia y cartera** | [10 · Mapa de esferas y niveles de ambición](10_SEVEN-G_Mapa_de_esferas_y_niveles_de_ambicion.html) · [11 · Modelo de madurez](11_SEVEN-G_Modelo_de_madurez.html) · [12 · Índice de transformación](12_SEVEN-G_Indice_de_transformacion.html) · [13 · Tesis de IA, ambición y apetito de riesgo](13_SEVEN-G_Tesis_de_IA_ambicion_y_apetito_de_riesgo.html) · [14 · Gestión de cartera](14_SEVEN-G_Gestion_de_cartera.html) |
-| **C · Ciclo de vida** | [20 · Manuales de fase](20_SEVEN-G_Manuales_de_fase.html) · [21 · Criterios de gate y de auditoría](21_SEVEN-G_Criterios_de_gate_y_auditoria.html) · [22 · Listas de verificación por gate](22_SEVEN-G_Listas_de_verificacion_por_gate.html) · [23 · Adopción y cambio en la iniciativa](23_SEVEN-G_Adopcion_y_cambio.html) |
+| **C · Ciclo de vida** | [20 · Manuales de fase](20_SEVEN-G_Manuales_de_fase.html) · [21 · Criterios de gate y de auditoría](21_SEVEN-G_Criterios_de_gate_y_auditoria.html) · [22 · Listas de verificación por gate](22_SEVEN-G_Listas_de_verificacion_por_gate.html) · [23 · Adopción y cambio en el caso de uso](23_SEVEN-G_Adopcion_y_cambio.html) |
 | **D · Gobierno, riesgo y cumplimiento** | [30 · Modelo de gobierno](30_SEVEN-G_Modelo_de_gobierno.html) · [31 · Política corporativa de IA y política de uso aceptable](31_SEVEN-G_Politica_corporativa_y_uso_aceptable.html) · [32 · Inventario de sistemas de IA y clasificación regulatoria](32_SEVEN-G_Inventario_y_clasificacion_regulatoria.html) · [33 · Metodología de riesgos de IA](33_SEVEN-G_Metodologia_de_riesgos_de_IA.html) · [34 · Mapeo regulatorio](34_SEVEN-G_Mapeo_regulatorio.html) · [35 · Seguridad de IA y agentes](35_SEVEN-G_Seguridad_de_IA_y_agentes.html) · [36 · Terceros y proveedores de IA](36_SEVEN-G_Terceros_y_proveedores_de_IA.html) · [37 · No conformidades, incidentes de IA y remediación](37_SEVEN-G_No_conformidades_e_incidentes.html) · [38 · Marco de auditoría de IA](38_SEVEN-G_Marco_de_auditoria_de_IA.html) |
 | **E · Medición y valor** | [40 · Reglas de medición del valor](40_SEVEN-G_Reglas_de_medicion_del_valor.html) · [41 · Catálogo de indicadores](41_SEVEN-G_Catalogo_de_indicadores.html) · [42 · Costes de IA y reparto por caso](42_SEVEN-G_Costes_de_IA.html) · [43 · Realización de beneficios](43_SEVEN-G_Realizacion_de_beneficios.html) |
 | **F · Personas, datos y operación** | [50 · Personas y organización](50_SEVEN-G_Personas_y_organizacion.html) · [51 · Datos y conocimiento para IA](51_SEVEN-G_Datos_y_conocimiento.html) · [52 · Manual de operación de IA](52_SEVEN-G_Manual_de_operacion_de_IA.html) · [53 · Construcción de soluciones con IA](53_SEVEN-G_Construccion_de_soluciones_con_IA.html) · [54 · Cómo se organiza una compañía para la IA](54_SEVEN-G_Organizacion_de_la_compania_para_la_IA.html) |
 | **G · Consejo** | [60 · Paquete para el consejo](60_SEVEN-G_Paquete_para_el_consejo.html) · [61 · Guía de conversación con el consejo](61_SEVEN-G_Guia_de_conversacion_con_el_consejo.html) · [62 · Registro de recomendaciones y decisiones](62_SEVEN-G_Registro_de_recomendaciones_y_decisiones.html) |
 | **H · Plantillas** | 74 plantillas, enlazadas desde el [índice de la biblioteca](index.html) y con versión editable en Word: de P01 a P31, una por cada evidencia obligatoria del ciclo de vida; de P32 a P71, los registros, informes y decisiones de la compañía, el consejo, el cumplimiento, los terceros, la auditoría y la implantación del marco; de P72 a P74, los perfiles de seguridad y de gobierno de la IA con los marcos del NIST y la declaración de aplicabilidad de ISO/IEC 42001. |
-| **I · Herramientas** | Registro de iniciativas T01 (con inventario de sistemas, gestor de *gates*, determinación de intensidad y clasificación de ambición) y conector T17, que alimenta el panel del consejo y el registro de recomendaciones con los datos del registro. |
+| **I · Herramientas** | Registro de casos de uso T01 (con inventario de sistemas, gestor de *gates*, determinación de intensidad y clasificación de ambición) y conector T17, que alimenta el panel del consejo y el registro de recomendaciones con los datos del registro. |
 | **J · Adopción del marco** | [90 · Guía de implantación](90_SEVEN-G_Guia_de_implantacion.html) · [91 · Guía para consultores y modelos de acompañamiento](91_SEVEN-G_Guia_para_consultores.html) · [92 · Casos de aplicación](92_SEVEN-G_Casos_de_aplicacion.html) · [93 · Licencia, uso por terceros y citación](93_SEVEN-G_Licencia_uso_y_citacion.html) · [94 · Matriz de obligatoriedad y lectura por capas](94_SEVEN-G_Matriz_de_obligatoriedad_y_lectura_por_capas.html) · [95 · Dónde están sus datos y cómo instalar SEVEN-G en un servidor propio](95_SEVEN-G_Datos_en_local_e_instalacion_propia.html) · [96 · Puntos de partida y recorrido de implantación](96_SEVEN-G_Puntos_de_partida_y_recorrido_de_implantacion.html) |
 | **K · Curso** | [Curso de SEVEN-G](curso/M00_SEVEN-G_Curso_Guia_del_curso.html): una guía y nueve módulos breves, con ejercicios sobre los datos de ejemplo y preguntas de autocomprobación, para aprender qué es el marco, cómo se usa y cómo moverse por el sitio. No define reglas: cada módulo lleva al documento que la desarrolla. |
 

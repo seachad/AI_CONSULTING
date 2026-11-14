@@ -21,7 +21,7 @@
 | Aspect | Guidance |
 |---|---|
 | **When it is used** | It is drafted in phase 3, completed in phase 4 and adjusted in phase 5 with the pilot results (43 §4.2). It is the reference for tracking by period (P28) and for the 6- and 12-month reviews (43 §8). |
-| **Who completes it** | The business owner of the benefit, with the AI Product Owner. In cross-unit initiatives, each unit completes its block in section 11. |
+| **Who completes it** | The business owner of the benefit, with the AI Product Owner. In cross-unit use cases, each unit completes its block in section 11. |
 | **Who verifies it** | Management control reviews the calculation at G3. The AI Office verifies at G4 (Lite and Enterprise); the AI Auditor verifies at G5 in Enterprise (43 §2.1 and §4.2). |
 | **Who decides or approves** | The business owner signs (G3) and, from G4, the AI Sponsor also signs. The *gate* is decided by the body in 01 §7.5. |
 | **Stage, *gate* or moment** | Evidence for G3 (draft) and G4 (complete); in force at G5; reference at R6 and G7. |
@@ -31,7 +31,7 @@
 
 Completion rules:
 
-- **The hypothesis approved at G2 and revised at G3 is the reference.** The plan does not change it; changing it requires approval from the body that authorised the initiative (01 §7.4, rule 6).
+- **The hypothesis approved at G2 and revised at G3 is the reference.** The plan does not change it; changing it requires approval from the body that authorised the use case (01 §7.4, rule 6).
 - **Efficiencies and return are not mixed** in the same benefit line (40 §5.1). Each line has formula F1 (incremental units × unit value).
 - **The curve does not assume steady state from the first period:** it reflects the adoption ramp-up.
 - **Released capacity is not a benefit** until it is materialised or reassigned with a lever from 43 §7.2 (rule 3).
@@ -44,11 +44,11 @@ Completion rules:
 
 | Field | Content | Guidance |
 |---|---|---|
-| Initiative code | | IA-AAAA-NNN (T01). |
-| Initiative name | | |
+| Use case code | | IA-AAAA-NNN (T01). |
+| Use case name | | |
 | Ambition level | | Optimise · Augment · Transform (P07). |
 | Intensity | | Lite · Enterprise (P04). |
-| Type of initiative | | Business use case · Cross-unit · Enabling platform (40 §7.2). An enabling platform has no benefit lines of its own: its value is attributed to the use cases that use it. |
+| Type of use case | | Business case · Cross-unit · Enabling platform (40 §7.2). An enabling platform has no benefit lines of its own: its value is attributed to the use cases that use it. |
 | Plan status | | Draft (G3) · Complete (G4) · In force (G5) · Reviewed (R6, 6 or 12 months) · Superseded. |
 | Document version | | |
 | Author | | Role and name. |
@@ -159,14 +159,14 @@ Levers: reduction in outsourcing · elimination of overtime or temporary reinfor
 | Use cases or programmes sharing a process, population or metric | | Including programmes without AI (43 §6.1). |
 | Allocation method and proposed key | | Joint measurement · Sequential incremental · Prior agreed allocation (43 §6.2); approved by management control (IND-VAL-18). |
 | Risks to realisation **(Enterprise)** | | What could prevent the benefit from arriving, with its number in P12 (T06). |
-| Dependencies **(Enterprise)** | | Other initiatives, suppliers or projects. |
+| Dependencies **(Enterprise)** | | Other use cases, suppliers or projects. |
 | Stop criteria | | Those from G2, not relaxed. Threshold and period in which they are assessed. |
 
 ---
 
-## 11. Cross-unit initiatives: realisation by unit
+## 11. Cross-unit use cases: realisation by unit
 
-Only if the type of initiative is *Cross-unit* (40 §7.2 and 43 §6.4). A single plan, with one block per unit. Each rung of the ladder only counts if the previous one is met; only materialised value adds to the net value.
+Only if the type of use case is *Cross-unit* (40 §7.2 and 43 §6.4). A single plan, with one block per unit. Each rung of the ladder only counts if the previous one is met; only materialised value adds to the net value.
 
 | Field | Content | Guidance |
 |---|---|---|
@@ -239,7 +239,7 @@ Formal criteria in document 21 (G2.06, G3.05, G4.11, G5.10, G5.21, R6.02, R6.14,
 | 5 | The materialisation plan assigns a single destination to each hour and does not add capacity without a destination. | |
 | 6 | There are leading and outcome indicators with a source. | |
 | 7 | Overlaps are identified and the allocation key proposed. | |
-| 8 | In cross-unit initiatives, each unit has an owner, an adoption threshold and the full ladder. | |
+| 8 | In cross-unit use cases, each unit has an owner, an adoption threshold and the full ladder. | |
 | 9 | The 6- and 12-month reviews are dated and, once held, their report is recorded with actions. | |
 
 ---
@@ -270,4 +270,4 @@ Segregation of duties: whoever signs the plan and declares the value does not va
 
 | Version | Date | Changes |
 |---|---|---|
-| 0.1 | 19-09-2026 | First version. Covers the content of the plan in 43 §4.1, realisation by unit for cross-unit initiatives (40 §7.2 and 43 §6.4) and the 6- and 12-month review report (43 §8). |
+| 0.1 | 19-09-2026 | First version. Covers the content of the plan in 43 §4.1, realisation by unit for cross-unit use cases (40 §7.2 and 43 §6.4) and the 6- and 12-month review report (43 §8). |

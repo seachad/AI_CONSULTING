@@ -23,7 +23,7 @@
 | **Who verifies it** | Lite: AI Office. Enterprise: AI Auditor. |
 | **Who decides** | Lite: sponsor. Enterprise: sponsor, informing the AI Committee. |
 | **Gate at which it is reviewed** | G1 · Opportunity. |
-| **Tool** | T01 · Initiative register (opportunities that proceed are linked to the initiative). |
+| **Tool** | T01 · Use case register (opportunities that proceed are linked to the use case). |
 | **Lite versus Enterprise** | Lite may omit the fields and blocks marked **(Enterprise)**. Screening and non-AI alternatives are mandatory in both. |
 
 Completion rules:
@@ -39,8 +39,8 @@ Completion rules:
 
 | Field | Content | Guidance |
 |---|---|---|
-| Initiative code | | IA-AAAA-NNN. |
-| Initiative name | | |
+| Use case code | | IA-AAAA-NNN. |
+| Use case name | | |
 | Document version | | |
 | Date | | DD-MM-AAAA. |
 | Author | | Name and role. |

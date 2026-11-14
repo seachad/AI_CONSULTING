@@ -24,20 +24,20 @@
    {"texto": "SEVEN-G: qué es y para qué sirve", "href": "../../../../html/es/entrada/index.html", "texto_en": "SEVEN-G: what it is and what it is for", "href_en": "../../../../html/en/entrada/index.html"},
    {"texto": "Biblioteca", "href": "../../../../html/es/index.html", "texto_en": "Library", "href_en": "../../../../html/en/index.html"},
    {"texto": "Curso", "href": "../../../../html/es/curso/M00_SEVEN-G_Curso_Guia_del_curso.html", "texto_en": "Course", "href_en": "../../../../html/en/curso/M00_SEVEN-G_Curso_Guia_del_curso.html"},
-   {"texto": "Registro de iniciativas (T01)", "href": "../../../T01_registro_iniciativas/registro.html", "texto_en": "Initiative register (T01)", "href_en": "../../../T01_registro_iniciativas/registro.html?lang=en"},
+   {"texto": "Registro de casos de uso (T01)", "href": "../../../T01_registro_iniciativas/registro.html", "texto_en": "Use case register (T01)", "href_en": "../../../T01_registro_iniciativas/registro.html?lang=en"},
    {"texto": "Cómo se genera este panel (T17)", "href": "../../index.html", "texto_en": "How this dashboard is generated (T17)", "href_en": "../../index.html?lang=en"}
   ]
  },
  "umbrales_kpi": {
   "_leeme": "Porcentajes. Por debajo de 'amarillo' el indicador se muestra en amarillo; por debajo de 'rojo', en rojo; en otro caso está en objetivo. 'rojo' debe ser menor que 'amarillo'. Valores de partida, a calibrar por cada organización.",
   "valor_validado_pct": {"amarillo": 50, "rojo": 20, "_que_mide": "% del valor actual (eficiencias + retorno) con estado «validado» en T01"},
-  "clasificados_compania_pct": {"amarillo": 80, "rojo": 50, "_que_mide": "% de iniciativas con clasificación regulatoria registrada en T01 (distinta de «pendiente»)"},
-  "controles_completos_pct": {"amarillo": 80, "rojo": 50, "_que_mide": "% de iniciativas con todos los controles hechos o no aplicables"},
-  "planes_realizacion_pct": {"amarillo": 80, "rojo": 50, "_que_mide": "% de iniciativas en fases 3 a 7 con plan de realización registrado en T01 (D135)"},
+  "clasificados_compania_pct": {"amarillo": 80, "rojo": 50, "_que_mide": "% de casos de uso con clasificación regulatoria registrada en T01 (distinta de «pendiente»)"},
+  "controles_completos_pct": {"amarillo": 80, "rojo": 50, "_que_mide": "% de casos de uso con todos los controles hechos o no aplicables"},
+  "planes_realizacion_pct": {"amarillo": 80, "rojo": 50, "_que_mide": "% de casos de uso en fases 3 a 7 con plan de realización registrado en T01 (D135)"},
   "realizacion_pct": {"amarillo": 90, "rojo": 70, "_que_mide": "Realización acumulada F10: valor realizado frente al esperado en la curva de referencia (43 §9.1, IND-VAL-14)"}
  },
  "curva_valor": {
-  "_leeme": "Plan de realización: curva y tramos (D135; 43 §4.1, 14 §6.2, 40 §8). 'granularidad': periodo por defecto de la curva (anual, semestral o trimestral); el panel deja cambiarlo y el cálculo es siempre trimestral. 'horizonte': años que se muestran (el acumulado incluye lo invertido antes). 'estimar_sin_curva': false = una iniciativa sin plan de realización en T01 no tiene curva y figura como «sin plan» (regla 8: nada se estima). 'horizonte_van_anios' y 'tasa_descuento_anual_pct': H y r del VAN F7 aprobados en C2 (40 §8.2); sin tasa, r = 0. Valores del ejemplo, ilustrativos.",
+  "_leeme": "Plan de realización: curva y tramos (D135; 43 §4.1, 14 §6.2, 40 §8). 'granularidad': periodo por defecto de la curva (anual, semestral o trimestral); el panel deja cambiarlo y el cálculo es siempre trimestral. 'horizonte': años que se muestran (el acumulado incluye lo invertido antes). 'estimar_sin_curva': false = un caso de uso sin plan de realización en T01 no tiene curva y figura como «sin plan» (regla 8: nada se estima). 'horizonte_van_anios' y 'tasa_descuento_anual_pct': H y r del VAN F7 aprobados en C2 (40 §8.2); sin tasa, r = 0. Valores del ejemplo, ilustrativos.",
   "granularidad": "anual",
   "horizonte": {"desde": 2025, "hasta": 2030},
   "estimar_sin_curva": false,
@@ -45,8 +45,8 @@
   "tasa_descuento_anual_pct": 8
  },
  "ciclo_vida": {
-  "_leeme": "Ciclo de vida de las iniciativas como en un CRM. 'embudo': etapas en orden. Las dos terminales paralelas del embudo son 'En uso' (en producción) y 'Desenganchado' (retirada). 'salidas': estados de pérdida y desde qué etapas se llega a ellos. 'fecha_de_estado': fecha de reporte_compania.fechas que marca la entrada en cada estado si faltara el historial (el conector siempre lo aporta desde los eventos de T01). 'dias_limite': días máximos en cada estado (un número, o por complejidad: baja, media, alta y sin_dato); los estados sin límite (en producción y salidas) no se ponen. 'aviso_pct_limite': desde qué % del límite se marca en amarillo; por encima del límite, en rojo.",
-  "_fases_seven_g": "Etapa del embudo que corresponde a cada fase de SEVEN-G (0 a 7). La aplica el conector; el motor no la lee. Una iniciativa parada o retirada pasa a la salida prevista en «salidas» para la etapa en la que estaba: parada en fases 0-1 = No aprobado; en fases 2-5 = Descartado; retirada (o parada en fases 6-7) = Desenganchado. La salida Desenganchado es paralela a En uso, no un estado posterior dentro del embudo.",
+  "_leeme": "Ciclo de vida de los casos de uso como en un CRM. 'embudo': etapas en orden. Las dos terminales paralelas del embudo son 'En uso' (en producción) y 'Desenganchado' (retirada). 'salidas': estados de pérdida y desde qué etapas se llega a ellos. 'fecha_de_estado': fecha de reporte_compania.fechas que marca la entrada en cada estado si faltara el historial (el conector siempre lo aporta desde los eventos de T01). 'dias_limite': días máximos en cada estado (un número, o por complejidad: baja, media, alta y sin_dato); los estados sin límite (en producción y salidas) no se ponen. 'aviso_pct_limite': desde qué % del límite se marca en amarillo; por encima del límite, en rojo.",
+  "_fases_seven_g": "Etapa del embudo que corresponde a cada fase de SEVEN-G (0 a 7). La aplica el conector; el motor no la lee. Un caso de uso parado o retirado pasa a la salida prevista en «salidas» para la etapa en la que estaba: parada en fases 0-1 = No aprobado; en fases 2-5 = Descartado; retirada (o parada en fases 6-7) = Desenganchado. La salida Desenganchado es paralela a En uso, no un estado posterior dentro del embudo.",
   "fases_seven_g": {"0": "Propuesto", "1": "Propuesto", "2": "Hipótesis de valor", "3": "POC", "4": "En desarrollo", "5": "En desarrollo", "6": "En uso", "7": "En uso"},
   "_dias_limite": "Valores de partida, a calibrar: suma de los plazos de referencia Enterprise de T01 (meta.configuracion.plazos_fase) de las fases de cada etapa; en desarrollo, por complejidad.",
   "embudo": ["Propuesto", "Hipótesis de valor", "POC", "En desarrollo", "En uso"],

@@ -25,7 +25,7 @@
 | **Who verifies it** | The second line (competences on risk, clearances and exceptions) and legal counsel (fit with the articles of association, the board's rules of procedure and applicable company law). |
 | **Who decides or approves** | The AI Committee's rules and the AI Office mandate: senior management or the board, according to the company's delegation system. The board committee's AI competences and the appointment of the head of AI: the board. |
 | **Corporate cycle stage** | C2 (approval together with the delegation matrix, 30 §7) and C5 (annual review). |
-| **Tool** | T01 · Initiative register: registration of bodies and people to validate decision-maker and verifier (30 §10, step 5). |
+| **Tool** | T01 · Use case register: registration of bodies and people to validate decision-maker and verifier (30 §10, step 5). |
 | **Reference document** | 30 §3, §4, §6, §7, §12; 01 §8.3; 11 D1.01–D1.03 and D1.07; 90 §4.4. |
 | **Lite versus Enterprise** | In a company with Lite scope or of small size, the AI Committee may be the management committee with its own monthly item and the AI Office one part-time person (30 §11). The three non-negotiable safeguards of 30 §11 apply in both cases. |
 
@@ -71,7 +71,7 @@ Before drafting, each function in 30 §3 and §7 is assigned to one body, with n
 
 **Article 1. Purpose.** These rules govern the composition, competences and functioning of the AI Committee of [the Company], the body that manages the artificial intelligence portfolio within the AI thesis, the ambition per sphere and the risk appetite approved by the Board of Directors, and decides what the Board delegates to it.
 
-**Article 2. Nature and scope.** The Committee is a body [of senior management / of the existing committee that takes on the function]. Its scope covers AI initiatives, third-party AI integrated into processes, corporate use of general-purpose AI and unauthorised use, within the perimeter of [perimeter].
+**Article 2. Nature and scope.** The Committee is a body [of senior management / of the existing committee that takes on the function]. Its scope covers AI use cases, third-party AI integrated into processes, corporate use of general-purpose AI and unauthorised use, within the perimeter of [perimeter].
 
 **Article 3. Composition.**
 
@@ -94,9 +94,9 @@ Before drafting, each function in 30 §3 and §7 is assigned to one body, with n
 | Suspensions and retirements | Ratify immediate suspensions within 2 working days; decide planned Enterprise retirements and forced retirements; authorise resumptions with second-line clearance. | 30 §7.3 |
 | Exceptions | Approve lifecycle requirement exceptions; propose corporate threshold exceptions to the board. | 30 §7.4 |
 | Other | Authorise corporate tools that meet an Enterprise criterion; raise autonomy to A2 or A3; contract N3 suppliers; close critical nonconformities after verification by the AI Auditor; approve the acceptable use policy. | 30 §7.5 |
-| Monitoring | Review stalled initiatives, expired conditions, value and cost deviations, incidents and nonconformities. | 14 §7–8 |
+| Monitoring | Review stalled use cases, expired conditions, value and cost deviations, incidents and nonconformities. | 14 §7–8 |
 
-**Article 7. Limits and escalation.** The Committee does not approve the AI thesis, the risk appetite, the corporate policy, Transform initiatives at G2 or their scaling at G7, nor does it accept Critical residual risks. It escalates to the Board or to [the Board Committee] anything that exceeds its delegation and, in any event, the situations in 30 §8.2 that require it. No practice prohibited by Article 5 of Regulation (EU) 2024/1689 is acceptable to any body.
+**Article 7. Limits and escalation.** The Committee does not approve the AI thesis, the risk appetite, the corporate policy, Transform use cases at G2 or their scaling at G7, nor does it accept Critical residual risks. It escalates to the Board or to [the Board Committee] anything that exceeds its delegation and, in any event, the situations in 30 §8.2 that require it. No practice prohibited by Article 5 of Regulation (EU) 2024/1689 is acceptable to any body.
 
 **Article 8. Notice of meetings.** The secretariat convenes ordinary meetings at least [five] working days in advance, with the agenda and documentation (P39). Extraordinary meetings, for urgent *gates* or S1 incidents, may be convened with [24 hours'] notice by any means that leaves a record.
 
@@ -106,7 +106,7 @@ Before drafting, each function in 30 §3 and §7 is assigned to one body, with n
 
 **Article 11. Written decisions.** *Gates* without debate may be decided in writing, under the same rules on quorum, clearance and abstention. Any voting member may ask for the matter to be dealt with in a meeting.
 
-**Article 12. Conflicts of interest and abstention.** Members declare their conflicts on joining and every year (P41), and at the start of each meeting in respect of the agenda items. Anyone with a sponsorship or build role in an initiative abstains from its decisions (30, I-6). Whoever verifies a *gate* does not take part in its decision (I-7). Whoever proposes an exception does not approve it (I-9). Abstentions are recorded in the minutes and in T01.
+**Article 12. Conflicts of interest and abstention.** Members declare their conflicts on joining and every year (P41), and at the start of each meeting in respect of the agenda items. Anyone with a sponsorship or build role in a use case abstains from its decisions (30, I-6). Whoever verifies a *gate* does not take part in its decision (I-7). Whoever proposes an exception does not approve it (I-9). Abstentions are recorded in the minutes and in T01.
 
 **Article 13. Minutes and records.** Minutes are taken of each meeting with attendees, quorum, conflicts, a summary of deliberations and numbered resolutions (P39). The minutes are approved at the same meeting or the next. Each *gate* decision is recorded in T03 with P29; each exception, in the P40 register.
 
@@ -126,11 +126,11 @@ Before drafting, each function in 30 §3 and §7 is assigned to one body, with n
 
 **A.1 Purpose.** The AI Office makes the framework work: methodology, inventory, reliable information and support for teams. If there is a risk of confusion with the European AI Office, it is called [Corporate AI Office / AI Centre of Excellence] (30 §1.2).
 
-**A.2 Functions.** Maintain the inventory (T02) and the initiative register (T01); safeguard the methodology, templates and checklists; verify Lite *gates* in which it has not participated; consolidate measurement with management control; prepare information for the bodies; coordinate literacy and the regularisation of unauthorised use; lead C1 and C5; approve minor methodological and use policy exceptions (30 §7.4).
+**A.2 Functions.** Maintain the inventory (T02) and the use case register (T01); safeguard the methodology, templates and checklists; verify Lite *gates* in which it has not participated; consolidate measurement with management control; prepare information for the bodies; coordinate literacy and the regularisation of unauthorised use; lead C1 and C5; approve minor methodological and use policy exceptions (30 §7.4).
 
 **A.3 Composition and reporting line.** Head of the Office, [position title], and [number] people for methodology, portfolio and measurement. It reports to [the chair of the AI Committee / a position that is not a regular sponsor].
 
-**A.4 Limit.** The Office does not verify initiatives in whose design, build or operation it has participated (I-8); in that case, verification passes to the second line or the AI Auditor.
+**A.4 Limit.** The Office does not verify use cases in whose design, build or operation it has participated (I-8); in that case, verification passes to the second line or the AI Auditor.
 
 ---
 

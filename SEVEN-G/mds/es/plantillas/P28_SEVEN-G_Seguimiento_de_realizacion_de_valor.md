@@ -1,6 +1,6 @@
 # Seguimiento de realización de valor
 
-**Mide, periodo a periodo, el valor que realmente aporta la iniciativa en producción, con fórmula y estado de cada importe, y lo compara con la hipótesis aprobada.**
+**Mide, periodo a periodo, el valor que realmente aporta el caso de uso en producción, con fórmula y estado de cada importe, y lo compara con la hipótesis aprobada.**
 
 | | |
 |---|---|
@@ -43,8 +43,8 @@ Reglas de medición aplicables (00 §6):
 
 | Campo | Contenido | Guía |
 |---|---|---|
-| Código de la iniciativa | | IA-AAAA-NNN (T01). |
-| Nombre de la iniciativa | | |
+| Código del caso de uso | | IA-AAAA-NNN (T01). |
+| Nombre del caso de uso | | |
 | Nivel de ambición | | Optimizar · Aumentar · Transformar (confirmado en fase 2). |
 | Intensidad | | Lite · Enterprise. |
 | Fecha de puesta en producción | | |
@@ -136,7 +136,7 @@ Si no se traduce a dinero con fórmula, no suma en el bloque 5 y se indica "no c
 
 ## 8. Atribución y reparto **(Enterprise)**
 
-| Resultado compartido | Otros casos o iniciativas que contribuyen | Reparto declarado (%) | Criterio de reparto | Aprobado por |
+| Resultado compartido | Otros casos de uso que contribuyen | Reparto declarado (%) | Criterio de reparto | Aprobado por |
 |---|---|---|---|---|
 | | | | | |
 

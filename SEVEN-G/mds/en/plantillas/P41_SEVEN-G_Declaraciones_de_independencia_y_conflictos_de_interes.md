@@ -25,12 +25,12 @@
 | **Who verifies it** | The AI Office with compliance assesses A declarations (30 §12); the head of AI audit, B declarations; the board secretariat or the body commissioning the service, C declarations. |
 | **Who decides or approves** | Whoever assesses decides the measure; if it concerns a director, the board's conflict of interest regime applies (CI-6). |
 | **Stage or moment** | C2 and C5 (annual renewal of A declarations); at each Enterprise *gate* the AI Auditor checks that they are on record (30 §12, step 5). |
-| **Tool** | T01 · Initiative register: conflicts and abstentions alongside the affected decision (30 §13). |
+| **Tool** | T01 · Use case register: conflicts and abstentions alongside the affected decision (30 §13). |
 | **Reference document** | 30 §5.2 and §12; 38 §3.1; 91 §5; 61 §10.3; P03 §8. |
 
 Completion rules:
 
-- Conflicts of the **roles in an initiative** are declared in P03 §8; this template covers **members of bodies**, **auditors** and **third parties**, and consolidates the company register.
+- Conflicts of the **roles in a use case** are declared in P03 §8; this template covers **members of bodies**, **auditors** and **third parties**, and consolidates the company register.
 - **Actual, potential or apparent** conflicts are declared; another person carries out the assessment.
 - A "no conflicts" declaration is also signed and recorded.
 - Proposed code: **DCI-AAAA-NNN** (declaration of conflicts and independence), sequential per year.
@@ -44,7 +44,7 @@ Completion rules:
 | Code | | DCI-AAAA-NNN. |
 | Model | | A Member of a body · B AI Auditor · C Consultant or external adviser. |
 | Declarant and position or organisation | | |
-| Body, engagement or service | | Body of which the declarant is a member; initiative, *gate* or audit; service model M1–M5. |
+| Body, engagement or service | | Body of which the declarant is a member; use case, *gate* or audit; service model M1–M5. |
 | Period covered | | Financial year or duration of the engagement. |
 | Date of the declaration | | DD-MM-AAAA. |
 | Reason | | Joining · Annual renewal · New engagement · Change of situation. |
@@ -57,11 +57,11 @@ For members of the board, the board committee and the AI Committee, and heads of
 
 | # | Question | Yes · No | Details |
 |---|---|---|---|
-| A1 | Do you sponsor or have a build role in any AI initiative decided by the body? (CI-1) | | IA-AAAA-NNN codes. |
-| A2 | Does your variable remuneration depend on the **declared** value of AI initiatives? (CI-2) | | Objective and metric. |
+| A1 | Do you sponsor or have a build role in any AI use case decided by the body? (CI-1) | | IA-AAAA-NNN codes. |
+| A2 | Does your variable remuneration depend on the **declared** value of AI use cases? (CI-2) | | Objective and metric. |
 | A3 | Do you or a related person have an employment, commercial, shareholding or advisory relationship with an AI supplier of the company or one taking part in an assessment? (CI-3, CI-6) | | Supplier and type of relationship. |
 | A4 | Have you participated in the previous twelve months in the design of controls or in the operation of systems that the body oversees? (I-10) | | |
-| A5 | Do you have volume targets for initiatives in production? (CI-5) | | |
+| A5 | Do you have volume targets for use cases in production? (CI-5) | | |
 | A6 | Is there any other circumstance that may affect your impartiality in AI matters? | | |
 
 > **Declaration.** [Full name], member of [body] of [the Company], declares that the above information is complete and truthful, that they will abstain on matters in which they have a conflict and that they will notify [the secretariat of the body] of any change as soon as it occurs. Date and signature.
@@ -74,15 +74,15 @@ Before each engagement, with the levels in 38 §3.1. It is also signed by the te
 
 | # | Requirement | Met (Yes · No) | Details or safeguard |
 |---|---|---|---|
-| B1 | **Organisational.** My function reports functionally to the board committee and not to areas that sponsor the audited initiative. | | |
-| B2 | **Individual.** I have had no role in the initiative or in the design, build or operation of the system. | | |
+| B1 | **Organisational.** My function reports functionally to the board committee and not to areas that sponsor the audited use case. | | |
+| B2 | **Individual.** I have had no role in the use case or in the design, build or operation of the system. | | |
 | B3 | **Individual.** I do not report hierarchically to the sponsor (I-5). | | |
 | B4 | **Individual.** I have not advised on the audited controls in the previous twelve months (I-10). | | |
 | B5 | **Economic.** I do not audit solutions that I or my organisation have designed, implemented or sold, or products of related companies (I-11); my remuneration does not depend on the result. | | |
 | B6 | **Rotation.** I have not been the lead auditor of this Enterprise system for more than [three] consecutive financial years. | | Number of financial years. |
 | B7 | **Threats.** I identify no self-review, self-interest, familiarity, intimidation or dependence on the auditee for technical evidence, or I state the safeguard applied. | | |
 
-> **Declaration.** [Full name], AI Auditor assigned to [engagement or *gate*] of [initiative or system], declares that they meet the above requirements and undertakes to notify the head of AI audit immediately of any circumstance that compromises their independence. Date and signature.
+> **Declaration.** [Full name], AI Auditor assigned to [engagement or *gate*] of [use case or system], declares that they meet the above requirements and undertakes to notify the head of AI audit immediately of any circumstance that compromises their independence. Date and signature.
 
 ---
 
@@ -93,7 +93,7 @@ Minimum content of 91 §5.5, with the situations in 91 §5.4 and 61 §10.3.
 | Field | Content | Guidance |
 |---|---|---|
 | Service requested | | M1 Diagnosis · M2 Implementation · M3 Audit · M4 Board advisory · M5 Ongoing support. |
-| Scope | | Initiatives, systems, processes or registers affected. |
+| Scope | | Use cases, systems, processes or registers affected. |
 | Services provided to the company and its group in the last three years | | Model, scope and dates. |
 | Compatibility according to 91 §5.2 | | Compatible · Compatible with caution · Incompatible, and cooling-off period (91 §5.3). |
 | Relationships with technology or model suppliers | | Alliances, commissions, resale. |
@@ -101,7 +101,7 @@ Minimum content of 91 §5.5, with the situations in 91 §5.4 and 61 §10.3.
 | Sale of own tools | | |
 | People assigned | | And whether any has worked in the company or in the scope during the cooling-off period. |
 | Personal or corporate relationships with directors or executives | | |
-| Director or adviser with AI experience | | Incompatibility with implementation services in the initiatives they oversee; access to information through the board secretariat; confidentiality (61 §10.3). |
+| Director or adviser with AI experience | | Incompatibility with implementation services in the use cases they oversee; access to information through the board secretariat; confidentiality (61 §10.3). |
 
 > **Declaration.** [Organisation or person], in relation to [service] for [the Company], declares that the above information is complete, that none of the incompatibilities in 91 §5.2 applies and that it will notify any change to the body commissioning the service. Date and signature.
 

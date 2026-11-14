@@ -16,7 +16,7 @@
 
 > **Aviso legal y exención de responsabilidad.** SEVEN-G es un marco metodológico de referencia que se ofrece «tal cual» y con fines exclusivamente informativos. No constituye asesoramiento jurídico, regulatorio, financiero ni profesional, ni garantiza el cumplimiento de ninguna norma. Las referencias a regulación general (como el Reglamento Europeo de IA, el RGPD, DORA o NIS2), a normas técnicas y a regulación específica de cada sector o jurisdicción pueden ser incompletas, no aplicar a un caso concreto o quedar desactualizadas por cambios normativos, interpretaciones o criterios de las autoridades posteriores a su fecha de consulta. **Cada organización que use SEVEN-G es la única responsable de identificar la normativa que le aplica, verificar su vigencia y certificar su propio cumplimiento regulatorio**, con el asesoramiento cualificado que corresponda. Esta metodología es una ayuda genérica y gratuita, compartida con la comunidad para que nadie tenga que empezar desde cero; cada persona u organización puede y debe adaptarla a su propio uso. No debe entenderse que sus partes jurídicamente sensibles hayan sido revisadas por una asesoría jurídica: esas revisiones, para cada empresa o sector, son responsabilidad última de la empresa, el consultor o la organización que la use. Aunque se procura mantenerla al día, alguna norma puede haber cambiado sin que se recoja aquí. En la máxima medida permitida por la ley, el autor no asume responsabilidad alguna por los efectos de su aplicación en ninguna organización ni por su aplicabilidad completa. La metodología no otorga certificación de ningún tipo. El autor no asume responsabilidad alguna por el uso que se haga de este contenido ni por las decisiones que se adopten con él. Los datos, cifras, compañías y casos de los ejemplos son ficticios o ilustrativos.
 
-<!-- esencial: siempre | Decisión de C2, que aprueba el consejo: tesis de IA, ambición por esfera, apetito de riesgo, umbral de inversión Enterprise, plazos de referencia, plazos de no conformidades, líneas rojas y presupuesto marco. Sin C2 aprobado no se aprueban iniciativas de Transformar. Los valores numéricos los fija cada compañía. -->
+<!-- esencial: siempre | Decisión de C2, que aprueba el consejo: tesis de IA, ambición por esfera, apetito de riesgo, umbral de inversión Enterprise, plazos de referencia, plazos de no conformidades, líneas rojas y presupuesto marco. Sin C2 aprobado no se aprueban casos de uso de Transformar. Los valores numéricos los fija cada compañía. -->
 
 ## 1. Objeto y alcance
 
@@ -38,14 +38,14 @@ El documento también contiene contenido regulatorio de referencia. **Este docum
 
 | # | Componente | Qué fija | Quién lo usa después | Sección |
 |---|---|---|---|---|
-| 1 | **Tesis de IA** | Por qué y para qué usa la compañía la IA, y qué no hará. | Todas las iniciativas (encaje en G0); C3; C5. | 3 |
+| 1 | **Tesis de IA** | Por qué y para qué usa la compañía la IA, y qué no hará. | Todos los casos de uso (encaje en G0); C3; C5. | 3 |
 | 2 | **Ambición por esfera** | Prioridad y ambición objetivo en las esferas 01–07; grado objetivo en 08 y 09. | C3; mapa de calor (T16); índice (condición IT-D1). | 4 |
 | 3 | **Apetito de riesgo** | Apetito por categoría, métricas de tolerancia y escalado. | Fase 3; aceptación de riesgos; comité de IA; C4. | 5 |
 | 4 | **Umbrales de impacto económico** | Escala económica de impacto 1–5 proporcionada al tamaño. | Matriz de riesgos (T06, documento 33). | 5.4 |
-| 5 | **Umbral de inversión Enterprise** y de materialidad | Cuándo una iniciativa es Enterprise por inversión y cuándo se informa individualmente al consejo. | Fase 0 (T04); C4. | 6 |
+| 5 | **Umbral de inversión Enterprise** y de materialidad | Cuándo un caso de uso es Enterprise por inversión y cuándo se informa individualmente al consejo. | Fase 0 (T04); C4. | 6 |
 | 6 | **Horizonte de retorno** | Plazo de retorno exigible por nivel de ambición. | G2, G3, G5, G7. | 7 |
 | 7 | **Equilibrio objetivo de cartera** | Bandas de inversión por nivel de ambición. | C3; C4; documento 14. | 8 |
-| 8 | **Plazos de referencia** | Plazo por fase y de decisión de *gate*; periodicidad de R6; regularización. | Registro de iniciativas (T01); alertas de estancamiento. | 9 |
+| 8 | **Plazos de referencia** | Plazo por fase y de decisión de *gate*; periodicidad de R6; regularización. | Registro de casos de uso (T01); alertas de estancamiento. | 9 |
 | 9 | **Plazos de no conformidades e incidentes** | Contención, plan de acción y comunicación interna. | Documento 37; T08. | 10 |
 | 10 | **Líneas rojas** | Prácticas prohibidas, decisiones que no se delegan nunca y líneas propias. | Fases 0, 3 y 4; T07; T10. | 11 |
 | 11 | **Presupuesto marco** | Importe anual, sobres y reglas de reasignación. | C3; comité de IA. | 12 |
@@ -78,7 +78,7 @@ flowchart LR
 
 ### 3.1 Qué es
 
-La tesis de IA es una declaración breve (de dos a cuatro páginas) con la que el consejo explica **por qué la IA importa a la compañía, dónde quiere usarla, con qué ambición y qué no hará**. No es un plan de proyectos ni un catálogo de tecnologías. Debe poder leerse en diez minutos y usarse para decir que no a una iniciativa.
+La tesis de IA es una declaración breve (de dos a cuatro páginas) con la que el consejo explica **por qué la IA importa a la compañía, dónde quiere usarla, con qué ambición y qué no hará**. No es un plan de proyectos ni un catálogo de tecnologías. Debe poder leerse en diez minutos y usarse para decir que no a un caso de uso.
 
 ### 3.2 Estructura
 
@@ -100,7 +100,7 @@ Una tesis de IA es adecuada si:
 - **Contiene renuncias.** Una tesis que declara prioritarias todas las esferas no orienta ninguna decisión.
 - **Es coherente con el presupuesto.** Una ambición de Transformar sin sobre de inversión para apuestas por etapas es una declaración sin respaldo (y activa la condición IT-D1 del documento 12 sin evidencia que la sostenga).
 - **Es verificable.** El apartado 8 usa indicadores del marco con valor actual, objetivo y horizonte.
-- **Es coherente con la capacidad.** La ambición en las esferas de valor no supera lo que las esferas habilitadoras pueden soportar en el horizonte, o incluye las iniciativas que cierran esa brecha.
+- **Es coherente con la capacidad.** La ambición en las esferas de valor no supera lo que las esferas habilitadoras pueden soportar en el horizonte, o incluye los casos de uso que cierran esa brecha.
 - **Toma posición sobre las personas.** Evitar la pregunta no la resuelve: la delega en cada proyecto.
 
 ### 3.4 Extracto ilustrativo
@@ -121,7 +121,7 @@ Para cada esfera de valor y habilitadora (01 a 07):
 |---|---|---|
 | **Prioridad** | Alta · Media · Baja · No prioritaria | Debería haber como mucho tres esferas de prioridad alta. |
 | **Ambición objetivo** | Optimizar · Aumentar · Transformar | Máximo nivel que la compañía quiere alcanzar en la esfera dentro del horizonte. |
-| **Horizonte** | Meses | Plazo para tener al menos una iniciativa del nivel objetivo en producción. |
+| **Horizonte** | Meses | Plazo para tener al menos un caso de uso del nivel objetivo en producción. |
 | **Indicador principal** | Un indicador del documento 10 | Con valor actual (o "sin dato") y valor objetivo. |
 | **Responsable** | Miembro de la alta dirección | Responde ante el consejo de la ambición en la esfera. |
 
@@ -130,10 +130,10 @@ Para las esferas 08 y 09, en lugar de ambición se fija el **grado objetivo por 
 ### 4.2 Reglas
 
 1. La ambición objetivo **debe** apoyarse en el mapa de esferas actual de C1: se indica el nivel alcanzado y el nivel en cartera de cada esfera.
-2. Una esfera con ambición **Transformar** debe tener sobre en el presupuesto marco y, en el horizonte, al menos una iniciativa candidata.
+2. Una esfera con ambición **Transformar** debe tener sobre en el presupuesto marco y, en el horizonte, al menos un caso de uso candidato.
 3. Una ambición de Aumentar o Transformar en esferas de valor **debería** ir acompañada de un grado o una ambición suficientes en las esferas habilitadoras de las que depende.
-4. Las esferas 08 y 09 **deben** tener como mínimo grado objetivo **Sistemático** en Cumplimiento y en Estructura cuando la compañía tenga sistemas de alto riesgo o iniciativas Enterprise.
-5. Las esferas "No prioritarias" pueden tener iniciativas, pero su coste conjunto no debería superar el límite de inversión fuera de tesis fijado en el apetito estratégico (sección 5.3).
+4. Las esferas 08 y 09 **deben** tener como mínimo grado objetivo **Sistemático** en Cumplimiento y en Estructura cuando la compañía tenga sistemas de alto riesgo o casos de uso Enterprise.
+5. Las esferas "No prioritarias" pueden tener casos de uso, pero su coste conjunto no debería superar el límite de inversión fuera de tesis fijado en el apetito estratégico (sección 5.3).
 
 ### 4.3 Ejemplo ilustrativo
 
@@ -145,7 +145,7 @@ Para las esferas 08 y 09, en lugar de ambición se fija el **grado objetivo por 
 | 02 · Producto y servicio | Alta | Transformar | 24 meses | IE02.01 Ingresos habilitados por IA: 0,01 % → 0,5 % |
 | 03 · Personas | Alta | Aumentar | 18 meses | IE03.03 Capacidad reasignada: 20 % → 50 % |
 | 04 · Operaciones | Alta | Optimizar | 12 meses | IE04.06 Ahorro materializado validado: 1,80 M€ → 2,50 M€ |
-| 05 · Datos | Media | Aumentar | 18 meses | IE05.06 Iniciativas bloqueadas por datos: sin dato → < 20 % |
+| 05 · Datos | Media | Aumentar | 18 meses | IE05.06 Casos de uso bloqueados por datos: sin dato → < 20 % |
 | 06 · Conocimiento | Media | Aumentar | 24 meses | IE06.02 Concentración del conocimiento: sin dato → < 30 % |
 | 07 · Decisión | Baja | Optimizar | 24 meses | IE07.01 Decisiones con autonomía asignada: sin dato → 100 % |
 
@@ -191,7 +191,7 @@ Un riesgo residual Crítico sin la aprobación excepcional prevista **bloquea G3
 | **EST** | Estratégico | Moderado (Abierto en apuestas de Transformar por etapas) | Asumimos riesgo para construir ventaja, siempre dentro de la tesis y con capacidad de parar. |
 | **TEC** | Técnico | Moderado | Aceptamos imperfecciones en sistemas con supervisión humana; no en sistemas que actúan sin ella. |
 | **DAT** | Datos | Cauteloso | No usamos datos sin base legal ni sin responsable de calidad. |
-| **ECO** | Económico | Moderado | Aceptamos que algunas iniciativas no generen valor, pero no que continúen sin evidencia. |
+| **ECO** | Económico | Moderado | Aceptamos que algunos casos de uso no generen valor, pero no que continúen sin evidencia. |
 | **LEG** | Legal y cumplimiento | Averso | Tolerancia cero con prácticas prohibidas y con obligaciones regulatorias incumplidas. |
 | **ORG** | Organizativo | Moderado | Aceptamos el esfuerzo del cambio; no aceptamos cambios sin plan para las personas. |
 | **REP** | Reputacional | Cauteloso | No exponemos a clientes a sistemas que no podamos explicar, supervisar y corregir. |
@@ -204,7 +204,7 @@ Un riesgo residual Crítico sin la aprobación excepcional prevista **bloquea G3
 | Categoría | Métrica | Fórmula | Tolerancia (ámbar) | Límite (rojo) |
 |---|---|---|---|---|
 | EST | Inversión fuera de tesis | Coste en esferas no prioritarias ÷ coste de la cartera × 100 | > 10 % | > 20 % |
-| EST | Concentración en una iniciativa | Coste de la mayor iniciativa ÷ coste de la cartera × 100 | > 25 % | > 40 % |
+| EST | Concentración en un caso de uso | Coste del mayor caso de uso ÷ coste de la cartera × 100 | > 25 % | > 40 % |
 | EST | Desviación del equilibrio de cartera | Trimestres consecutivos fuera de las bandas de la sección 8 | 1 | 2 |
 | TEC | Degradación sin acción | Sistemas en producción por debajo de su umbral de rendimiento durante más de 30 días sin acción registrada | 1 | 2, o 1 Enterprise |
 | TEC | Incidentes técnicos graves | Incidentes S1 o S2 de causa técnica en el trimestre | 1 S2 | 1 S1 o 3 S2 |
@@ -212,15 +212,15 @@ Un riesgo residual Crítico sin la aprobación excepcional prevista **bloquea G3
 | DAT | Datos personales sin base legal | Conjuntos usados en IA sin base legal documentada (IE05.03) | — | ≥ 1 |
 | DAT | Linaje en Enterprise | Sistemas Enterprise con linaje verificado ÷ sistemas Enterprise × 100 | < 100 % | < 90 % |
 | DAT | Bloqueo por datos | IE05.06 | > 25 % | > 40 % |
-| ECO | Desviación de coste recurrente | Iniciativas con coste recurrente real > 115 % del aprobado en G3 | 1 | 1 con desviación > 130 % |
+| ECO | Desviación de coste recurrente | Casos de uso con coste recurrente real > 115 % del aprobado en G3 | 1 | 1 con desviación > 130 % |
 | ECO | Valor validado | Condición B2 del documento 12 | < 50 % | < 30 % |
-| ECO | Neto negativo sin decisión | Iniciativas con neto anual negativo más de 12 meses después de G5 sin decisión de G7 | 1 | 2 |
-| LEG | Prácticas prohibidas | Sistemas o iniciativas que constituyan una práctica prohibida | — | ≥ 1 |
+| ECO | Neto negativo sin decisión | Casos de uso con neto anual negativo más de 12 meses después de G5 sin decisión de G7 | 1 | 2 |
+| LEG | Prácticas prohibidas | Sistemas o casos de uso que constituyan una práctica prohibida | — | ≥ 1 |
 | LEG | Evaluaciones exigidas | Sistemas de alto riesgo en producción sin las evaluaciones exigidas | — | ≥ 1 |
 | LEG | Clasificación pendiente | Sistemas "Pendiente de clasificar" más de 90 días | 1 | 3, o 1 en producción |
 | LEG | No conformidades críticas | No conformidades críticas abiertas fuera de plazo | — | ≥ 1 |
 | ORG | Adopción | Adopción efectiva seis meses después de G5 ÷ objetivo de la hipótesis × 100 | < 80 % | < 50 % |
-| ORG | Plan de adopción | Iniciativas de Aumentar o Transformar en fase 4 o posterior sin plan de adopción | — | ≥ 1 |
+| ORG | Plan de adopción | Casos de uso de Aumentar o Transformar en fase 4 o posterior sin plan de adopción | — | ≥ 1 |
 | ORG | Capacidad no convertida | Capacidad liberada hace más de 12 meses sin materializar ni reasignar ÷ capacidad liberada × 100 | > 50 % | > 70 % |
 | REP | Incidentes visibles | Incidentes S1 o S2 con exposición a clientes o pública en el trimestre | 1 S2 | 1 S1 o 2 S2 |
 | REP | Reclamaciones por IA | Variación trimestral de IE01.06 | > +25 % | > +50 % |
@@ -275,18 +275,18 @@ Los importes se redondean y se revisan anualmente en C5. Los anclajes de los otr
 
 | Umbral | Definición | Regla ilustrativa | Ejemplo (EBITDA 50 M€) |
 |---|---|---|---|
-| **Umbral de inversión Enterprise** | Coste total a tres años de la iniciativa: construcción + coste recurrente previsto de los tres primeros años. Si lo supera, la iniciativa es Enterprise (documento 01, sección 9.2). | 0,5 % del EBITDA | 250 k€ |
-| **Umbral Express** | Coste total a tres años por debajo del cual una iniciativa que cumple las demás condiciones de 01 §9.4 puede ir con intensidad Express. | 0,05 % del EBITDA | 25 k€ |
-| **Coste por hora de gobierno y objetivos de proporcionalidad** | Coste por hora con el que se valoran las horas de gobierno declaradas y coste máximo del gobierno de una iniciativa sobre su inversión, por intensidad (principio 11; 41 IND-COS-12 a 14). Se revisan en C5 con los datos medidos. | Coste medio por hora de los perfiles que intervienen; Express 5 %, Lite 10 %, Enterprise 15 % (valores de partida) | 70 €/h |
-| **Materialidad para el consejo** | Iniciativas que se informan individualmente en el panel del consejo, además de todas las de Transformar y las que tengan riesgo residual Alto. | 2 % del EBITDA | 1 M€ |
+| **Umbral de inversión Enterprise** | Coste total a tres años del caso de uso: construcción + coste recurrente previsto de los tres primeros años. Si lo supera, el caso de uso es Enterprise (documento 01, sección 9.2). | 0,5 % del EBITDA | 250 k€ |
+| **Umbral Express** | Coste total a tres años por debajo del cual un caso de uso que cumple las demás condiciones de 01 §9.4 puede ir con intensidad Express. | 0,05 % del EBITDA | 25 k€ |
+| **Coste por hora de gobierno y objetivos de proporcionalidad** | Coste por hora con el que se valoran las horas de gobierno declaradas y coste máximo del gobierno de un caso de uso sobre su inversión, por intensidad (principio 11; 41 IND-COS-12 a 14). Se revisan en C5 con los datos medidos. | Coste medio por hora de los perfiles que intervienen; Express 5 %, Lite 10 %, Enterprise 15 % (valores de partida) | 70 €/h |
+| **Materialidad para el consejo** | Casos de uso que se informan individualmente en el panel del consejo, además de todos los de Transformar y los que tengan riesgo residual Alto. | 2 % del EBITDA | 1 M€ |
 | **Aprobación del consejo por importe** (opcional) | La compañía **puede** exigir aprobación del consejo por encima de un importe, de acuerdo con sus reglas internas de delegación. | Según reglas internas | — |
-| **Escala mínima en producción (B3)** | Número de iniciativas en producción que el índice de transformación exige para Eficiencia a escala (documento 12). | 5 por defecto; ajustable al tamaño | 5 |
+| **Escala mínima en producción (B3)** | Número de casos de uso en producción que el índice de transformación exige para Eficiencia a escala (documento 12). | 5 por defecto; ajustable al tamaño | 5 |
 
 Reglas:
 
-- **Agregación.** Las iniciativas que comparten objetivo, patrocinador y plataforma, o que son etapas de una misma apuesta, se suman para aplicar los umbrales. Fragmentar una iniciativa para quedar por debajo de un umbral es una **no conformidad mayor**.
+- **Agregación.** Los casos de uso que comparten objetivo, patrocinador y plataforma, o que son etapas de una misma apuesta, se suman para aplicar los umbrales. Fragmentar un caso de uso para quedar por debajo de un umbral es una **no conformidad mayor**.
 - **Revisión.** Si durante la ejecución el coste total a tres años supera el umbral, la intensidad se revisa en el siguiente *gate* o en R6.
-- **Intensidad mínima.** El umbral económico solo añade un criterio: una iniciativa por debajo del umbral puede ser Enterprise por cualquier otro criterio.
+- **Intensidad mínima.** El umbral económico solo añade un criterio: un caso de uso por debajo del umbral puede ser Enterprise por cualquier otro criterio.
 
 ---
 
@@ -304,13 +304,13 @@ Reglas:
 
 - El horizonte se aplica al **nivel confirmado** en G2. Si la ambición real resulta inferior, en G7 se aplica el horizonte del nivel real (documento 12, sección 3.6).
 - Un horizonte vencido sin cumplir el criterio **adelanta G7**.
-- Las iniciativas de cumplimiento obligatorio o de reducción de un riesgo relevante pueden justificarse por **riesgo evitado** o **cumplimiento**, que no se suman al valor salvo que se traduzcan a dinero con fórmula.
+- Los casos de uso de cumplimiento obligatorio o de reducción de un riesgo relevante pueden justificarse por **riesgo evitado** o **cumplimiento**, que no se suman al valor salvo que se traduzcan a dinero con fórmula.
 
 ---
 
 ## 8. Equilibrio objetivo de cartera por ambición
 
-El equilibrio se expresa como **bandas** de proporción del coste de la cartera (inversión ejecutada más coste recurrente de los últimos 12 meses, sin las iniciativas de esfera principal 08 o 09), con la misma fórmula que la señal 1 del índice de transformación.
+El equilibrio se expresa como **bandas** de proporción del coste de la cartera (inversión ejecutada más coste recurrente de los últimos 12 meses, sin los casos de uso de esfera principal 08 o 09), con la misma fórmula que la señal 1 del índice de transformación.
 
 *Posturas de referencia ilustrativas. La compañía elige una o fija sus propias bandas.*
 
@@ -324,21 +324,21 @@ Reglas:
 
 1. Si la tesis fija **Transformar** como ambición objetivo en alguna esfera, la banda de Transformar **no puede empezar en 0 %** más allá del primer año, o la compañía estará declarando una transformación sin financiarla.
 2. El equilibrio se mide trimestralmente en C4. Estar fuera de banda un trimestre es ámbar; dos trimestres, rojo (métrica EST de la sección 5.3).
-3. La corrección se hace en C3 priorizando iniciativas, no reclasificando las existentes. Reclasificar para entrar en banda sin evidencia es una no conformidad mayor (documento 12, sección 3.6).
+3. La corrección se hace en C3 priorizando casos de uso, no reclasificando los existentes. Reclasificar para entrar en banda sin evidencia es una no conformidad mayor (documento 12, sección 3.6).
 4. La inversión en habilitación de gobierno y cumplimiento (esferas 08 y 09) se presupuesta en un sobre propio (sección 12).
 
 ---
 
 ## 9. Plazos de referencia
 
-El consejo aprueba los plazos de referencia del ciclo de vida, que el registro de iniciativas usa para señalar iniciativas estancadas. Los valores orientativos de partida están en el **documento 03, sección 3.6**, y se recalibran en C5 con datos propios. La decisión de C2 recoge:
+El consejo aprueba los plazos de referencia del ciclo de vida, que el registro de casos de uso usa para señalar casos de uso estancados. Los valores orientativos de partida están en el **documento 03, sección 3.6**, y se recalibran en C5 con datos propios. La decisión de C2 recoge:
 
 | Plazo | Valor orientativo | Fuente |
 |---|---|---|
 | Plazo por fase (0, 1, 2, 3, 4, 5 y 7), Lite y Enterprise | Tabla del documento 03, sección 3.6 | 03 |
 | Decisión de un *gate* desde la solicitud | 5 días hábiles (Lite) · 10 días hábiles (Enterprise) | 03 |
 | Periodicidad de la revisión de continuidad (R6) | Al menos semestral (Lite) · al menos trimestral (Enterprise) | 01, sección 6.8 |
-| Regularización de iniciativas en producción anteriores a la adopción del marco | 12 meses (valor ilustrativo) | 01, sección 14 |
+| Regularización de casos de uso en producción anteriores a la adopción del marco | 12 meses (valor ilustrativo) | 01, sección 14 |
 | Clasificación regulatoria de un sistema inventariado | 90 días (valor ilustrativo) | Sección 5.3 |
 | Plazo máximo de una condición de *gate* | Hasta el siguiente *gate*; 90 días en R6 (valor ilustrativo) | 01, sección 7.4 |
 
@@ -395,7 +395,7 @@ El artículo 5 del Reglamento Europeo de IA prohíbe determinadas prácticas, ap
 - Categorización biométrica para inferir raza, opiniones políticas, afiliación sindical, convicciones religiosas o filosóficas, vida sexual u orientación sexual, con las excepciones previstas.
 - Identificación biométrica remota en tiempo real en espacios de acceso público con fines de garantía del cumplimiento del Derecho, salvo las excepciones previstas.
 
-Tratamiento en SEVEN-G: **tolerancia cero**. Ninguna iniciativa que pueda constituir una práctica prohibida supera la fase 3 (documento 01, sección 6.5); si se detecta en producción, es una no conformidad crítica con parada del sistema. La interpretación de cada supuesto requiere criterio jurídico cualificado.
+Tratamiento en SEVEN-G: **tolerancia cero**. Ningún caso de uso que pueda constituir una práctica prohibida supera la fase 3 (documento 01, sección 6.5); si se detecta en producción, es una no conformidad crítica con parada del sistema. La interpretación de cada supuesto requiere criterio jurídico cualificado.
 
 ### 11.2 Lo que no se delega nunca en IA
 
@@ -428,16 +428,16 @@ Las líneas rojas se incorporan a los cuestionarios de intensidad (T04), clasifi
 
 ## 12. Presupuesto marco
 
-El presupuesto marco es el importe anual que el consejo autoriza para la IA y las reglas con las que se asigna. No sustituye al presupuesto de cada iniciativa, que se aprueba en su *gate*.
+El presupuesto marco es el importe anual que el consejo autoriza para la IA y las reglas con las que se asigna. No sustituye al presupuesto de cada caso de uso, que se aprueba en su *gate*.
 
 | Sobre | Contenido | Regla |
 |---|---|---|
-| **Optimizar** | Construcción de iniciativas de optimización. | Dentro de la banda de la sección 8. |
-| **Aumentar** | Construcción y adopción de iniciativas de aumento. | Dentro de la banda de la sección 8. |
+| **Optimizar** | Construcción de casos de uso de optimización. | Dentro de la banda de la sección 8. |
+| **Aumentar** | Construcción y adopción de casos de uso de aumento. | Dentro de la banda de la sección 8. |
 | **Transformar por etapas** | Etapas aprobadas de las apuestas de transformación. | Se libera etapa a etapa tras la decisión del órgano competente sobre los hitos. |
-| **Habilitación** | Datos, plataforma común, gobierno y cumplimiento (incluidas las iniciativas de esferas 08 y 09) e iniciativas de IA para TI y ciberdefensa (40 §7.3). | Se justifica por las esferas que habilita. |
+| **Habilitación** | Datos, plataforma común, gobierno y cumplimiento (incluidos los casos de uso de esferas 08 y 09) y los casos de uso de IA para TI y ciberdefensa (40 §7.3). | Se justifica por las esferas que habilita. |
 | **Coste recurrente comprometido** | Operación de los sistemas en producción. | Se presupuesta completo; no compite con la construcción. |
-| **Adopción y formación** | Alfabetización en IA, formación por rol y gestión del cambio no imputada a iniciativas. | Debería ser explícito, no residual. |
+| **Adopción y formación** | Alfabetización en IA, formación por rol y gestión del cambio no imputada a casos de uso. | Debería ser explícito, no residual. |
 | **Contingencia** | Imprevistos y oportunidades no previstas. | Asignación por el comité de IA con registro. |
 
 El gasto se informa además por las **categorías de coste** del documento 42: licencias · consumo de modelos · cómputo e infraestructura · datos · personas de construcción · personas de operación · proveedores y servicios · control y cumplimiento · adopción y formación.
@@ -629,7 +629,7 @@ El anexo se cumplimenta con la plantilla P35.
 | Fase 7 | | | |
 | Decisión de *gate* | | | Días hábiles. |
 | Periodicidad de R6 | | | No más larga que semestral (Lite) o trimestral (Enterprise). |
-| Regularización de iniciativas anteriores | | | Meses. |
+| Regularización de casos de uso anteriores | | | Meses. |
 | Clasificación regulatoria pendiente | | | Días. |
 
 ### L. Plazos de no conformidades e incidentes
@@ -697,7 +697,7 @@ El anexo se cumplimenta con la plantilla P35.
 | Código | Nombre | Uso en este documento |
 |---|---|---|
 | **T19** | Plantilla de tesis de IA y apetito de riesgo | Documento de decisión del consejo (anexo). |
-| **T01** | Registro de iniciativas | Recibe plazos de referencia, bandas de cartera y horizontes. |
+| **T01** | Registro de casos de uso | Recibe plazos de referencia, bandas de cartera y horizontes. |
 | **T04** | Determinación de intensidad | Recibe el umbral de inversión Enterprise y las líneas rojas. |
 | **T06** | Matriz y registro de riesgos | Recibe los umbrales de impacto económico y los grados de apetito. |
 | **T08** | Registro de no conformidades e incidentes | Recibe los plazos aprobados. |
@@ -717,7 +717,7 @@ El anexo se cumplimenta con la plantilla P35.
 | Documento | Relación |
 |---|---|
 | **01 · Metodología fundacional** | Etapa C2, criterios Enterprise, criterios de *gate* por ambición, plazos de no conformidades. |
-| **03 · Herramientas y registro de iniciativas** | Plazos de referencia orientativos (sección 3.6) y herramienta T19. |
+| **03 · Herramientas y registro de casos de uso** | Plazos de referencia orientativos (sección 3.6) y herramienta T19. |
 | **10 · Mapa de esferas y niveles de ambición** | Esferas, niveles, grados de 08 y 09 e indicadores principales. |
 | **11 · Modelo de madurez** | Madurez objetivo en la tesis. |
 | **12 · Índice de transformación** | Perfil objetivo, condición IT-D1, umbral B3 y señal 1. |
@@ -739,4 +739,4 @@ El anexo se cumplimenta con la plantilla P35.
 |---|---|---|
 | 0.1 | 16-09-2026 | Primera versión. Define los doce componentes de la decisión de C2: estructura de la tesis de IA, ambición por esfera, grados de apetito y métricas de tolerancia para las diez categorías de riesgo, umbrales de impacto económico proporcionados, umbral de inversión Enterprise y de materialidad, horizonte de retorno por nivel, bandas de equilibrio de cartera, plazos, líneas rojas, presupuesto marco y revisión. Incluye como anexo la plantilla de documento de decisión del consejo (T19). |
 | 0.2 | 01-10-2026 | Sección 6 y bloque H: umbral Express (01 §9.4), coste por hora de gobierno y objetivos de proporcionalidad por intensidad (41 IND-COS-12 a 14). |
-| 0.3 | 19-10-2026 | Sección 12: el sobre de habilitación incluye las iniciativas de IA para TI y ciberdefensa (40 §7.3) (D159). |
+| 0.3 | 19-10-2026 | Sección 12: el sobre de habilitación incluye los casos de uso de IA para TI y ciberdefensa (40 §7.3) (D159). |

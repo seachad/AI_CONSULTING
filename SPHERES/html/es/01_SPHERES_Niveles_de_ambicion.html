@@ -374,6 +374,13 @@ blockquote.aviso-legal strong { color: var(--negro); }
 .dz-card-titulo { font: 700 19px/1.2 var(--serif); color: var(--negro); margin: 0 0 6px; }
 .dz-card-texto { font: 400 13.5px/1.4 var(--sans); color: var(--tinta-2); margin: 0 0 12px; flex: 1; }
 .dz-card .dz-item { background: var(--papel); }
+/* documento 00 de cada marco: sus presentaciones en slides (1, 5, 10 y 20 en tarjetas de dos columnas; el curso, de cuatro) */
+@media (min-width: 900px) { .dz-card[data-grupo="slides-curso"] { grid-column: span 4; } .dz-card[data-grupo="slides-otros"] { grid-column: span 3; } }
+.dz-card[data-grupo="slides-curso"] { border-top-color: var(--teal); }
+.dz-card[data-grupo="slides-curso"] .dz-card-rotulo { color: var(--teal); }
+.dz-card[data-grupo="slides-otros"] { border-top-color: var(--oxford); }
+.dz-card[data-grupo="slides-otros"] .dz-card-rotulo { color: var(--oxford); }
+.descargas-zona[id] { scroll-margin-top: 72px; }
 .dz-grupo { font: 700 12px/1.2 var(--sans); letter-spacing: .08em; text-transform: uppercase; color: var(--tinta-2); margin: 8px 0 -2px; padding-top: 10px; border-top: 1px solid var(--regla); }
 .dz-grupo:first-child { margin-top: 0; padding-top: 0; border-top: 0; }
 @media print { .descargas-zona { display: none !important; } }
@@ -478,21 +485,21 @@ h2 .codigo, h3 .codigo { font-weight: 400; }
     <h1>Niveles de ambici&#243;n</h1>
     <p class="entradilla">Optimizar, Aumentar y Transformar: tres tipos de apuesta con distinto coste, riesgo, plazo y resistencia, y c&#243;mo distinguirlos con evidencia</p>
     <div class="firma"><span><b>Fernando Garc&#237;a Varela</b></span><span>Versión 0.1</span><span>17-09-2026</span><span>En construcci&#243;n</span></div>
-    <div class="cifras"><div class="cifra"><b>3</b><span>niveles de ambici&#243;n</span></div><div class="cifra"><b>5</b><span>preguntas para clasificar</span></div><div class="cifra"><b>1</b><span>nivel por iniciativa</span></div><div class="cifra"><b>3</b><span>criterios de avance distintos</span></div></div>
+    <div class="cifras"><div class="cifra"><b>3</b><span>niveles de ambici&#243;n</span></div><div class="cifra"><b>5</b><span>preguntas para clasificar</span></div><div class="cifra"><b>1</b><span>nivel por caso de uso</span></div><div class="cifra"><b>3</b><span>criterios de avance distintos</span></div></div>
   </div>
 </header>
 <section class="descargas-zona" aria-label="Descargas y herramientas"><div class="dz-in"><div class="dz-bloque"><p class="dz-titulo">Descargas</p><div class="dz-enlaces"><a class="dz-item" href="../../pdf/es/01_SPHERES_Niveles_de_ambicion.pdf" target="_blank" rel="noopener"><span class="dz-tipo">PDF</span><b>Este documento · español</b></a><a class="dz-item" href="../../pdf/en/01_SPHERES_Niveles_de_ambicion.pdf" target="_blank" rel="noopener"><span class="dz-tipo">PDF</span><b>Versión en inglés</b></a><a class="dz-item" href="../en/01_SPHERES_Niveles_de_ambicion.html" hreflang="en"><span class="dz-tipo html">HTML</span><b>Versión en inglés</b></a></div></div></div></section>
-<nav class="indice"><div class="indice-in"><h2>En este documento</h2><ol><li><a href="#objeto"><span>01</span>Objeto</a></li><li><a href="#que-es-un-nivel-de-ambicion"><span>02</span>Qué es un nivel de ambición</a></li><li><a href="#optimizar"><span>03</span>Optimizar</a></li><li><a href="#aumentar"><span>04</span>Aumentar</a></li><li><a href="#transformar"><span>05</span>Transformar</a></li><li><a href="#comparacion-de-los-tres-niveles"><span>06</span>Comparación de los tres niveles</a></li><li><a href="#no-es-una-escalera"><span>07</span>No es una escalera</a></li><li><a href="#como-clasificar-una-iniciativa"><span>08</span>Cómo clasificar una iniciativa</a></li><li><a href="#casos-dudosos"><span>09</span>Casos dudosos</a></li><li><a href="#la-ambicion-de-una-esfera-y-el-equilibrio-de-la-cartera"><span>10</span>La ambición de una esfera y el equilibrio de la cartera</a></li><li><a href="#errores-frecuentes"><span>11</span>Errores frecuentes</a></li><li><a href="#documentos-relacionados"><span>12</span>Documentos relacionados</a></li><li><a href="#control-de-versiones"><span>13</span>Control de versiones</a></li></ol></div></nav>
+<nav class="indice"><div class="indice-in"><h2>En este documento</h2><ol><li><a href="#objeto"><span>01</span>Objeto</a></li><li><a href="#que-es-un-nivel-de-ambicion"><span>02</span>Qué es un nivel de ambición</a></li><li><a href="#optimizar"><span>03</span>Optimizar</a></li><li><a href="#aumentar"><span>04</span>Aumentar</a></li><li><a href="#transformar"><span>05</span>Transformar</a></li><li><a href="#comparacion-de-los-tres-niveles"><span>06</span>Comparación de los tres niveles</a></li><li><a href="#no-es-una-escalera"><span>07</span>No es una escalera</a></li><li><a href="#como-clasificar-un-caso-de-uso"><span>08</span>Cómo clasificar un caso de uso</a></li><li><a href="#casos-dudosos"><span>09</span>Casos dudosos</a></li><li><a href="#la-ambicion-de-una-esfera-y-el-equilibrio-de-la-cartera"><span>10</span>La ambición de una esfera y el equilibrio de la cartera</a></li><li><a href="#errores-frecuentes"><span>11</span>Errores frecuentes</a></li><li><a href="#documentos-relacionados"><span>12</span>Documentos relacionados</a></li><li><a href="#control-de-versiones"><span>13</span>Control de versiones</a></li></ol></div></nav>
 <main class="contenido" id="contenido">
 <blockquote class="aviso-legal plegado">
 <p><strong>Aviso legal y exención de responsabilidad.</strong> SPHERES es una metodología de referencia que se ofrece «tal cual» y con fines exclusivamente informativos. No constituye asesoramiento jurídico, regulatorio, financiero ni profesional, ni garantiza el cumplimiento de ninguna norma. <strong>Cada organización que use SPHERES es la única responsable de identificar la normativa que le aplica, verificar su vigencia y certificar su propio cumplimiento regulatorio</strong>, con el asesoramiento cualificado que corresponda. Esta metodología es una ayuda genérica y gratuita, compartida con la comunidad para que nadie tenga que empezar desde cero; cada persona u organización puede y debe adaptarla a su propio uso. No debe entenderse que sus partes jurídicamente sensibles hayan sido revisadas por una asesoría jurídica: esas revisiones, para cada empresa o sector, son responsabilidad última de la empresa, el consultor o la organización que la use. Aunque se procura mantenerla al día, alguna norma puede haber cambiado sin que se recoja aquí. En la máxima medida permitida por la ley, el autor no asume responsabilidad alguna por los efectos de su aplicación en ninguna organización ni por su aplicabilidad completa. La metodología no otorga certificación de ningún tipo. El autor no asume responsabilidad alguna por el uso que se haga de este contenido ni por las decisiones que se adopten con él. Los datos, cifras, compañías y casos de los ejemplos son ficticios o ilustrativos.</p>
 </blockquote>
 <h2 id="objeto"><span class="antetitulo">01</span>Objeto</h2>
-<p>Este documento explica los <strong>tres niveles de ambición</strong> de SPHERES: qué significa cada uno, qué cambia en la organización, dónde está su valor, qué riesgos tiene, cómo se decide y cómo se reconoce con evidencia. También explica cómo clasificar una iniciativa y cuáles son los errores más frecuentes.</p>
+<p>Este documento explica los <strong>tres niveles de ambición</strong> de SPHERES: qué significa cada uno, qué cambia en la organización, dónde está su valor, qué riesgos tiene, cómo se decide y cómo se reconoce con evidencia. También explica cómo clasificar un caso de uso y cuáles son los errores más frecuentes.</p>
 <p>Los niveles se aplican a las esferas <strong>01 a 07</strong>. Las esferas 08 y 09 se evalúan con grados propios (<a href="04_SPHERES_Regulacion_y_gobierno_de_la_IA.html" title="Documento 04 &#183; De d&#243;nde viene SEVEN-G, en qu&#233; se diferencia y por qu&#233; es abierto">documento 04</a>).</p>
 <hr />
 <h2 id="que-es-un-nivel-de-ambicion"><span class="antetitulo">02</span>Qué es un nivel de ambición</h2>
-<p>Un nivel de ambición describe <strong>lo que una iniciativa de IA cambia en el negocio</strong>. No describe la tecnología que usa, lo que cuesta ni lo novedosa que parece.</p>
+<p>Un nivel de ambición describe <strong>lo que un caso de uso de IA cambia en el negocio</strong>. No describe la tecnología que usa, lo que cuesta ni lo novedosa que parece.</p>
 <figure class="grafico">
   <div class="g-titulo">Tres niveles de ambición</div>
   <div class="g-sub">Tres tipos de apuesta, no una escalera: la inversión, la incertidumbre y la resistencia organizativa crecen de izquierda a derecha</div>
@@ -932,7 +939,7 @@ h2 .codigo, h3 .codigo { font-weight: 400; }
 <p><strong>Por qué importa.</strong> Si los niveles se entendieran como una escalera, cada área intentaría subir de nivel para parecer más avanzada y la clasificación perdería todo valor como información para el consejo. Tratar los niveles como tipos de apuesta permite decidir la combinación adecuada para cada esfera.</p>
 </blockquote>
 <hr />
-<h2 id="como-clasificar-una-iniciativa"><span class="antetitulo">08</span>Cómo clasificar una iniciativa</h2>
+<h2 id="como-clasificar-un-caso-de-uso"><span id="como-clasificar-una-iniciativa" class="ancla-antigua"></span><span class="antetitulo">08</span>Cómo clasificar un caso de uso</h2>
 <p>La clasificación se hace con <strong>cinco preguntas</strong> que se responden sí o no, siempre con evidencia. Una respuesta afirmativa sin evidencia cuenta como no.</p>
 <div class="tabla"><table>
 <thead>
@@ -972,10 +979,10 @@ h2 .codigo, h3 .codigo { font-weight: 400; }
 </table></div>
 <p>Reglas básicas de lectura:</p>
 <ul>
-<li>Si las preguntas 1 a 4 son <strong>no</strong>, la iniciativa es <strong>Optimizar</strong>, se haya presentado como se haya presentado.</li>
-<li>Si la pregunta 1 o la 4 es <strong>sí</strong>, la iniciativa es <strong>Transformar</strong>.</li>
-<li>Si la pregunta 2 o la 3 es <strong>sí</strong>, la iniciativa es <strong>Aumentar</strong>, salvo que el cambio afecte a una unidad organizativa completa o a un proceso central del negocio, en cuyo caso es <strong>Transformar</strong>.</li>
-<li>La pregunta 5 sirve de <strong>contraste</strong>: si una iniciativa clasificada como Aumentar o Transformar podría retirarse sin más consecuencia que volver al coste anterior, las respuestas deben revisarse.</li>
+<li>Si las preguntas 1 a 4 son <strong>no</strong>, el caso de uso es <strong>Optimizar</strong>, se haya presentado como se haya presentado.</li>
+<li>Si la pregunta 1 o la 4 es <strong>sí</strong>, el caso de uso es <strong>Transformar</strong>.</li>
+<li>Si la pregunta 2 o la 3 es <strong>sí</strong>, el caso de uso es <strong>Aumentar</strong>, salvo que el cambio afecte a una unidad organizativa completa o a un proceso central del negocio, en cuyo caso es <strong>Transformar</strong>.</li>
+<li>La pregunta 5 sirve de <strong>contraste</strong>: si un caso de uso clasificado como Aumentar o Transformar podría retirarse sin más consecuencia que volver al coste anterior, las respuestas deben revisarse.</li>
 <li><strong>En caso de duda razonable, se asigna el nivel inferior</strong>, y quien propone el superior aporta la evidencia.</li>
 </ul>
 <figure class="grafico"><div class="g-titulo">Clasificaci&#243;n r&#225;pida</div><div class="g-sub">Las preguntas se responden con evidencia y el resultado se contrasta con la pregunta 5</div><div class="g-lienzo"><pre class="mermaid">flowchart TD
@@ -991,9 +998,9 @@ h2 .codigo, h3 .codigo { font-weight: 400; }
   E -->|"Sí"| R["Revisar respuestas"]
   E -->|"No"| F["Nivel confirmado; en caso de duda, el inferior"]
 </pre></div><div class="g-fuente">Fuente: SPHERES</div></figure>
-<p>Las reglas completas, los casos de contraste y quién clasifica, confirma y revisa el nivel están en <a href="../../../SEVEN-G/html/es/12_SEVEN-G_Indice_de_transformacion.html">SEVEN-G 12 · Índice de transformación</a>, sección 3. En SEVEN-G el nivel se propone al registrar la iniciativa, se confirma antes de invertir en su construcción y se comprueba con evidencia cuando la iniciativa ya produce resultados.</p>
+<p>Las reglas completas, los casos de contraste y quién clasifica, confirma y revisa el nivel están en <a href="../../../SEVEN-G/html/es/12_SEVEN-G_Indice_de_transformacion.html">SEVEN-G 12 · Índice de transformación</a>, sección 3. En SEVEN-G el nivel se propone al registrar el caso de uso, se confirma antes de invertir en su construcción y se comprueba con evidencia cuando el caso de uso ya produce resultados.</p>
 <blockquote>
-<p><strong>Por qué importa.</strong> Cinco preguntas con evidencia sustituyen a la opinión. Dos áreas que presentan iniciativas parecidas obtienen el mismo nivel, y el consejo puede confiar en que el mapa describe la realidad y no el entusiasmo de cada patrocinador.</p>
+<p><strong>Por qué importa.</strong> Cinco preguntas con evidencia sustituyen a la opinión. Dos áreas que presentan casos de uso parecidas obtienen el mismo nivel, y el consejo puede confiar en que el mapa describe la realidad y no el entusiasmo de cada patrocinador.</p>
 </blockquote>
 <hr />
 <h2 id="casos-dudosos"><span class="antetitulo">09</span>Casos dudosos</h2>
@@ -1033,9 +1040,9 @@ h2 .codigo, h3 .codigo { font-weight: 400; }
 <td>El cliente recibe una forma de precio nueva (pregunta 1: sí).</td>
 </tr>
 <tr>
-<td>Plataforma común de datos para varias iniciativas.</td>
+<td>Plataforma común de datos para varios casos de uso.</td>
 <td><strong>Optimizar</strong> por defecto</td>
-<td>Se clasifica por su efecto propio; no hereda la ambición de las iniciativas que habilita.</td>
+<td>Se clasifica por su efecto propio; no hereda la ambición de los casos de uso que habilita.</td>
 </tr>
 <tr>
 <td>Piloto exploratorio de un nuevo servicio.</td>
@@ -1043,7 +1050,7 @@ h2 .codigo, h3 .codigo { font-weight: 400; }
 <td>Se clasifica por su hipótesis; el nivel real se comprueba con evidencia.</td>
 </tr>
 <tr>
-<td>Iniciativa con un componente de Optimizar y otro de Transformar.</td>
+<td>Caso de uso con un componente de Optimizar y otro de Transformar.</td>
 <td><strong>Se divide</strong> o se clasifica por el componente que concentra más de la mitad de la inversión</td>
 <td>Los niveles no se promedian.</td>
 </tr>
@@ -1051,7 +1058,7 @@ h2 .codigo, h3 .codigo { font-weight: 400; }
 </table></div>
 <hr />
 <h2 id="la-ambicion-de-una-esfera-y-el-equilibrio-de-la-cartera"><span class="antetitulo">10</span>La ambición de una esfera y el equilibrio de la cartera</h2>
-<p>Además de clasificar iniciativas, la dirección fija una <strong>ambición objetivo para cada esfera</strong> de la 01 a la 07. Esa ambición no se asigna por opinión: se expresa con las iniciativas que la ejecutan.</p>
+<p>Además de clasificar casos de uso, la dirección fija una <strong>ambición objetivo para cada esfera</strong> de la 01 a la 07. Esa ambición no se asigna por opinión: se expresa con los casos de uso que la ejecutan.</p>
 <div class="tabla"><table>
 <thead>
 <tr>
@@ -1063,12 +1070,12 @@ h2 .codigo, h3 .codigo { font-weight: 400; }
 <tbody>
 <tr>
 <td><strong>Nivel alcanzado</strong></td>
-<td>El nivel más alto con al menos una iniciativa en producción y valor medido.</td>
+<td>El nivel más alto con al menos un caso de uso en producción y valor medido.</td>
 <td>En Cliente, Optimizar: hay un enrutador de consultas con ahorro validado.</td>
 </tr>
 <tr>
 <td><strong>Nivel en cartera</strong></td>
-<td>El nivel más alto con alguna iniciativa aprobada para construirse.</td>
+<td>El nivel más alto con algún caso de uso aprobado para construirse.</td>
 <td>En Cliente, Aumentar: está aprobado un asistente para gestores comerciales.</td>
 </tr>
 <tr>
@@ -1078,8 +1085,8 @@ h2 .codigo, h3 .codigo { font-weight: 400; }
 </tr>
 <tr>
 <td><strong>Brecha</strong></td>
-<td>La ambición objetivo no tiene ninguna iniciativa aprobada que la ejecute.</td>
-<td>En Datos, objetivo Aumentar y ninguna iniciativa aprobada de ese nivel.</td>
+<td>La ambición objetivo no tiene ningún caso de uso aprobado que la ejecute.</td>
+<td>En Datos, objetivo Aumentar y ningún caso de uso aprobado de ese nivel.</td>
 </tr>
 </tbody>
 </table></div>
@@ -1114,7 +1121,7 @@ h2 .codigo, h3 .codigo { font-weight: 400; }
 <td>Revisión independiente del nivel y comprobación posterior con evidencia.</td>
 </tr>
 <tr>
-<td>Aplicar a todas las iniciativas el mismo criterio de retorno.</td>
+<td>Aplicar a todos los casos de uso el mismo criterio de retorno.</td>
 <td>Las apuestas de Transformar se paran antes de aprender.</td>
 <td>Criterios de avance distintos por nivel.</td>
 </tr>
@@ -1191,7 +1198,7 @@ h2 .codigo, h3 .codigo { font-weight: 400; }
 </table></div>
 
 </main>
-<footer class="pie"><div><span>© 2026 Fernando García Varela · Metodolog&#237;a SPHERES</span><span>Generado el 19-10-2026</span></div><p class="pie-ia">Contenido generado y maquetado con apoyo de IA bajo supervisi&#243;n editorial del autor.</p></footer>
+<footer class="pie"><div><span>© 2026 Fernando García Varela · Metodolog&#237;a SPHERES</span><span>Generado el 14-11-2026</span></div><p class="pie-ia">Contenido generado y maquetado con apoyo de IA bajo supervisi&#243;n editorial del autor.</p></footer>
 <script src="../../../SEVEN-G/html/es/codigos.js" defer></script>
 
 <script>

@@ -38,8 +38,8 @@ Reglas de cumplimentación:
 
 | Campo | Contenido | Guía |
 |---|---|---|
-| Código de la iniciativa | | IA-AAAA-NNN. |
-| Nombre de la iniciativa | | |
+| Código del caso de uso | | IA-AAAA-NNN. |
+| Nombre del caso de uso | | |
 | Versión del lienzo asociado | | Versión de P08 a la que corresponde esta línea base. |
 | Versión del documento | | |
 | Fecha | | DD-MM-AAAA. |
@@ -127,7 +127,7 @@ Rellenar si el método de atribución de P08 es grupo de control.
 
 ## 9. Congelación y cambios posteriores
 
-Tras G2, la línea base solo puede modificarse por error material documentado o por cambio en la definición de una métrica, con aprobación del órgano que autorizó la iniciativa. Modificarla para favorecer el resultado es una no conformidad.
+Tras G2, la línea base solo puede modificarse por error material documentado o por cambio en la definición de una métrica, con aprobación del órgano que autorizó el caso de uso. Modificarla para favorecer el resultado es una no conformidad.
 
 | Fecha | Métrica | Valor anterior | Valor nuevo | Motivo | Aprobado por |
 |---|---|---|---|---|---|

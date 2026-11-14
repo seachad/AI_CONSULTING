@@ -14,7 +14,7 @@
 
 > **Aviso legal y exención de responsabilidad.** SEVEN-G es un marco metodológico de referencia que se ofrece «tal cual» y con fines exclusivamente informativos. No constituye asesoramiento jurídico, regulatorio, financiero ni profesional, ni garantiza el cumplimiento de ninguna norma. Las referencias a regulación general (como el Reglamento Europeo de IA, el RGPD, DORA o NIS2), a normas técnicas y a regulación específica de cada sector o jurisdicción pueden ser incompletas, no aplicar a un caso concreto o quedar desactualizadas por cambios normativos, interpretaciones o criterios de las autoridades posteriores a su fecha de consulta. **Cada organización que use SEVEN-G es la única responsable de identificar la normativa que le aplica, verificar su vigencia y certificar su propio cumplimiento regulatorio**, con el asesoramiento cualificado que corresponda. Esta metodología es una ayuda genérica y gratuita, compartida con la comunidad para que nadie tenga que empezar desde cero; cada persona u organización puede y debe adaptarla a su propio uso. No debe entenderse que sus partes jurídicamente sensibles hayan sido revisadas por una asesoría jurídica: esas revisiones, para cada empresa o sector, son responsabilidad última de la empresa, el consultor o la organización que la use. Aunque se procura mantenerla al día, alguna norma puede haber cambiado sin que se recoja aquí. En la máxima medida permitida por la ley, el autor no asume responsabilidad alguna por los efectos de su aplicación en ninguna organización ni por su aplicabilidad completa. La metodología no otorga certificación de ningún tipo. El autor no asume responsabilidad alguna por el uso que se haga de este contenido ni por las decisiones que se adopten con él. Los datos, cifras, compañías y casos de los ejemplos son ficticios o ilustrativos.
 
-> **Por qué importa.** La comisión delegada supervisa la eficacia del control sobre la IA, pero solo puede hacerlo con una visión de conjunto que ninguna iniciativa ofrece por separado: riesgos que se concentran en un proveedor o un modelo, incidentes que se repiten, no conformidades vencidas, excepciones que se eternizan, sistemas que aparecen fuera del inventario o normas que cambian. Este informe es la pieza de la segunda línea en C4 (30 §6.3) y convierte esa visión en decisiones concretas para la comisión.
+> **Por qué importa.** La comisión delegada supervisa la eficacia del control sobre la IA, pero solo puede hacerlo con una visión de conjunto que ningún caso de uso ofrece por separado: riesgos que se concentran en un proveedor o un modelo, incidentes que se repiten, no conformidades vencidas, excepciones que se eternizan, sistemas que aparecen fuera del inventario o normas que cambian. Este informe es la pieza de la segunda línea en C4 (30 §6.3) y convierte esa visión en decisiones concretas para la comisión.
 
 ## 1. Instrucciones de uso
 
@@ -65,7 +65,7 @@ Reglas de cumplimentación:
 
 ### 4.1 Riesgos residuales Críticos y Altos
 
-| Riesgo (iniciativa · Rnn) | Riesgo tipo | Nivel inherente | Nivel residual | Responsable | Controles y eficacia | Aceptado por y vigencia | Próxima revisión |
+| Riesgo (caso de uso · Rnn) | Riesgo tipo | Nivel inherente | Nivel residual | Responsable | Controles y eficacia | Aceptado por y vigencia | Próxima revisión |
 |---|---|---|---|---|---|---|---|
 | IA-AAAA-NNN · R01 | RT-XXX-NN | | Alto · Crítico | | | | |
 
@@ -124,7 +124,7 @@ Umbrales aprobados en C2 (33 §11.2).
 
 Contenido trimestral de 37 §9 y 60 §4.6.
 
-| Código | Sistema e iniciativa | Severidad | Tipo | Fecha | Estado | Notificaciones (régimen, plazo cumplido) | Lecciones y acciones |
+| Código | Sistema e caso de uso | Severidad | Tipo | Fecha | Estado | Notificaciones (régimen, plazo cumplido) | Lecciones y acciones |
 |---|---|---|---|---|---|---|---|
 | INC-AAAA-NNN | | S1 · S2 | | | | | |
 
@@ -194,7 +194,7 @@ Resultado de la conciliación de 32 §9, realizada por la oficina de IA.
 
 Registro de cambios del mapeo (34 §10.3).
 
-| Cambio | Fuente oficial y fecha de consulta | Iniciativas o sistemas afectados | Paso alcanzado (1–8 de 34 §10.3) | Aprobado por el comité (Sí · No · No requerido) | Acción pendiente |
+| Cambio | Fuente oficial y fecha de consulta | Casos de uso o sistemas afectados | Paso alcanzado (1–8 de 34 §10.3) | Aprobado por el comité (Sí · No · No requerido) | Acción pendiente |
 |---|---|---|---|---|---|
 | | | | | | |
 

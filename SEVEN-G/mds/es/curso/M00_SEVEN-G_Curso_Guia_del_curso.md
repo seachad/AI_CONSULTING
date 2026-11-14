@@ -33,12 +33,12 @@ Sigue una regla: **el curso no define ninguna regla del marco**. Cada módulo ex
 | **Objetivo** | Qué sabrá hacer quien termine el módulo. |
 | **Ideas clave** | Tres o cuatro ideas, sin detalle normativo. |
 | **Recorrido guiado** | Qué abrir en el sitio y qué mirar en cada página. |
-| **Ejercicio** | Una práctica de diez minutos con el registro de iniciativas, el panel del consejo o las calculadoras, siempre con datos de ejemplo. |
+| **Ejercicio** | Una práctica de diez minutos con el registro de casos de uso, el panel del consejo o las calculadoras, siempre con datos de ejemplo. |
 | **Autocomprobación** | Cuatro preguntas. Las respuestas están al final del módulo. |
 
 No hay examen, nota ni certificado: SEVEN-G no tiene certificación oficial (documento 93, sección 7).
 
-**Tres cursos en presentación, según quién sea usted.** Los tres explican qué es SEVEN-G, las fases y sus puertas, qué se rellena en cada fase, cómo eso llena el embudo del registro de iniciativas hasta llegar al panel del consejo —con las imágenes del registro, del embudo y del panel comentadas— y dos casos de ejemplo (una iniciativa que se para y otra que llega a producción). Después, cada uno añade lo propio de su público:
+**Tres cursos en presentación, según quién sea usted.** Los tres explican qué es SEVEN-G, las fases y sus puertas, qué se rellena en cada fase, cómo eso llena el embudo del registro de casos de uso hasta llegar al panel del consejo —con las imágenes del registro, del embudo y del panel comentadas— y dos casos de ejemplo (uno que se para y otro que llega a producción). Después, cada uno añade lo propio de su público:
 
 | Curso | Para quién | PowerPoint | PDF |
 |---|---|---|---|
@@ -74,14 +74,14 @@ Las presentaciones pueden adaptarse e impartirse citando la autoría (documento 
 | **Alta dirección y comité de IA** | 01 · 02 · 03 · 04 · 06 · 09 | 2 horas |
 | **Responsable u oficina de IA** | Todos, en orden | 3 a 4 horas |
 | **Riesgos, cumplimiento y auditoría** | 01 · 02 · 04 · 05 · 09 | 2 horas |
-| **Equipo de una iniciativa** | 01 · 02 · 04 · 06 | 1 hora y media |
+| **Equipo de un caso de uso** | 01 · 02 · 04 · 06 | 1 hora y media |
 | **Consultor** | Todos, y después el documento 91 | 4 horas |
 
 ---
 
 ## 5. Antes de empezar
 
-- Abra en otra pestaña el **registro de iniciativas de ejemplo** (T01) y el **panel del consejo de ejemplo** (T17): casi todos los ejercicios los usan. Los datos son ficticios y no salen del navegador.
+- Abra en otra pestaña el **registro de casos de uso de ejemplo** (T01) y el **panel del consejo de ejemplo** (T17): casi todos los ejercicios los usan. Los datos son ficticios y no salen del navegador.
 - Tenga a mano el **glosario** (documento 02) para los términos y códigos.
 - Si va a usar el curso en formación interna, puede adaptarlo: la licencia lo permite citando la autoría (documento 93).
 

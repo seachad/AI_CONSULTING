@@ -1,6 +1,6 @@
 # Módulo 04 · Ciclo de vida, puertas y embudo
 
-**Cómo avanza una iniciativa, qué puede decidir una puerta y por qué la cartera se gestiona como un embudo comercial**
+**Cómo avanza un caso de uso, qué puede decidir una puerta y por qué la cartera se gestiona como un embudo comercial**
 
 | | |
 |---|---|
@@ -18,7 +18,7 @@
 
 ## 1. Objetivo
 
-Al terminar sabrá decir en qué fase está una iniciativa, qué se le pide para superar su puerta, qué puede decidir el órgano competente y cómo se lee la cartera en el registro de iniciativas.
+Al terminar sabrá decir en qué fase está un caso de uso, qué se le pide para superar su puerta, qué puede decidir el órgano competente y cómo se lee la cartera en el registro de casos de uso.
 
 ---
 
@@ -48,7 +48,7 @@ Al terminar sabrá decir en qué fase está una iniciativa, qué se le pide para
 
 En el registro de ejemplo (T01):
 
-1. Pulse una barra del embudo para filtrar las iniciativas de esa fase. ¿Cuál lleva más tiempo en su fase?
+1. Pulse una barra del embudo para filtrar los casos de uso de esa fase. ¿Cuál lleva más tiempo en su fase?
 2. Abra IA-2025-004 (cribado de candidaturas). ¿En qué puerta se paró, con qué motivo y qué se aprendió?
 3. Abra IA-2025-005. No se paró: se retiró tras estar en uso. ¿Por qué?
 4. Abra el panel del consejo de ejemplo (T17) y localice esos dos casos en las tarjetas de salida del embudo.
@@ -58,7 +58,7 @@ En el registro de ejemplo (T01):
 ## 5. Autocomprobación
 
 1. ¿Qué dos cosas comprueba la validación dual?
-2. ¿Qué ocurre si una iniciativa itera dos veces en la misma puerta?
+2. ¿Qué ocurre si un caso de uso itera dos veces en la misma puerta?
 3. ¿Puede aprobarse «continuar con condiciones» sobre un criterio de seguridad marcado «Sí ◆»?
 4. Una conversión del 100 % en todas las puertas, ¿es una buena señal?
 

@@ -42,7 +42,7 @@ All mapping tables use the same columns:
 | **Article or clause** | Exact reference in the regulation or standard. |
 | **Applies to** | Operator or obliged organisation (for example, provider, deployer, controller, financial entity). |
 | **SEVEN-G phase or stage** | Lifecycle phase (0–7), gate (G0–G5, R6, G7) or corporate cycle stage (C1–C5). |
-| **Accountable role** | SEVEN-G initiative role or body (01 §8; document 30). Legal counsel and the data protection officer form part of the second line. |
+| **Accountable role** | SEVEN-G use case role or body (01 §8; document 30). Legal counsel and the data protection officer form part of the second line. |
 | **Evidence** | Template P01–P31 or library document where the proof is held. |
 | **Tool** | Tool T01–T22 where it is recorded (document 03). |
 
@@ -108,12 +108,12 @@ Regulation (EU) 2024/1689 entered into force on 1 August 2024 and applies in sta
 | Date | What applies | Verification status | Consequence in SEVEN-G |
 |---|---|---|---|
 | **1-08-2024** | Entry into force of the Regulation. | Verified (official) | — |
-| **2-02-2025** | General provisions (definitions and AI literacy, Art. 4) and prohibited practices (Art. 5). | Verified (official) | No initiative involving a prohibited practice passes G3. Training and use policy (documents 31 and 50). |
+| **2-02-2025** | General provisions (definitions and AI literacy, Art. 4) and prohibited practices (Art. 5). | Verified (official) | No use case involving a prohibited practice passes G3. Training and use policy (documents 31 and 50). |
 | **2-08-2025** | Obligations of providers of general-purpose AI models (Chapter V); governance; national competent authorities; penalties regime (except fines on providers of general-purpose AI models). | Verified (official) | Information requirements for model providers (P14, T09). |
 | **2-08-2026** | General application of the Regulation, including the transparency obligations of Art. 50 and the Commission's enforcement powers over general-purpose AI models. | Verified (official) | Art. 50 obligations enforceable for systems in production: review in R6. |
 | **2-12-2026** | New prohibitions added to Art. 5 by the omnibus (generation of non-consensual intimate material and child sexual abuse material). End of the transitional period for the machine-readable marking of Art. 50(2) for systems placed on the market before 2-08-2026. | Verified (official): Art. 5(1), points (ba) and (bb), and paragraphs 1a and 1b; the Art. 50(2) deadline is set by new Art. 111(4) | Incorporate into the T07 questionnaire and into phase 5 testing of generative systems. |
 | **2-08-2027** | Obligation for Member States to have at least one national AI regulatory sandbox operational (previously 2-08-2026). Deadline for general-purpose AI models placed on the market before 2-08-2025 (Art. 111(3)). | Verified (official) for the sandbox; Art. 111(3) according to the original text, with no known changes | — |
-| **2-12-2027** | Requirements and obligations for **high-risk AI systems under Art. 6(2) and Annex III** (previously 2-08-2026). | Verified (official) | Initiatives with go-live planned after this date must already be designed with the requirements (G4). |
+| **2-12-2027** | Requirements and obligations for **high-risk AI systems under Art. 6(2) and Annex III** (previously 2-08-2026). | Verified (official) | Use cases with go-live planned after this date must already be designed with the requirements (G4). |
 | **2-08-2028** | Requirements for **high-risk AI systems under Art. 6(1) and Annex I** (regulated products; previously 2-08-2027). | Verified (official) | Likewise for regulated products. |
 
 **Systems already on the market.** Under Art. 111, high-risk AI systems predating the date of application are only subject to the Regulation if they undergo significant changes in their design, with specific rules for public authorities; following the omnibus, Art. 111(2) keeps the rule that they are only subject if they undergo significant changes in their design, and those intended for public authorities must comply by 2-08-2030 at the latest (verified in EUR-Lex). SEVEN-G does not use this exception to lower controls (01 §14).
@@ -130,7 +130,7 @@ Regulation (EU) 2024/1689 entered into force on 1 August 2024 and applies in sta
 | Registration in the EU database: maintained, with simplified information, for Annex III systems that the provider considers not to be high-risk | Arts. 6(3) and 49(2); Annex VIII, Section B (amended) | With the high-risk requirements | Verified (official) | P11 retains the documentation of the Art. 6(3) exception. |
 | SME support measures extended to small mid-cap enterprises | Various provisions | From the entry into force of the omnibus | Verified (official) | Relevant to the intensity of documentation; does not lower SEVEN-G criteria. |
 | Enhanced supervision by the European AI Office of systems based on general-purpose AI models from the same provider and of systems integrated into very large online platforms and search engines | Art. 75 | From the entry into force of the omnibus | Verified (official) in essence | Identify the competent authority in P11. |
-| AI regulatory sandboxes: national deadline moved to 2-08-2027 and possible EU-level sandbox | Art. 57 | 2-08-2027 | Verified (official) | Option for initiatives in phases 3–5 (section 8). |
+| AI regulatory sandboxes: national deadline moved to 2-08-2027 and possible EU-level sandbox | Art. 57 | 2-08-2027 | Verified (official) | Option for use cases in phases 3–5 (section 8). |
 | Machinery: AI systems in machinery come to be dealt with mainly through Regulation (EU) 2023/1230; narrower definition of safety component | Art. 3(14) (replaced) and Annex I (Regulation (EU) 2023/1230 moves to Section B) | According to amended Art. 113 | Verified (official) | Relevant only to product manufacturers. |
 | Template for the post-market monitoring plan | Art. 72(3) (replaced) | Guidance with a template by 2-09-2027 at the latest | Verified (official): the implementing act is replaced by Commission guidance | P25 and P26 do not depend on the final format. |
 
@@ -170,7 +170,7 @@ Regulation (EU) 2024/1689 entered into force on 1 August 2024 and applies in sta
 
 | Obligation / requirement | Article or clause | Applies to | SEVEN-G phase or stage | Accountable role | Evidence (P-code or document) | Tool |
 |---|---|---|---|---|---|---|
-| Take measures to support the development of AI literacy among staff and others operating or using systems on the company's behalf, taking into account their knowledge, experience and context of use | Art. 4 (wording of Regulation (EU) 2026/1744) | Providers and deployers | C2 (policy), C3 (plan), phases 4–6 per initiative | Senior management; AI Office; Head of People | Document 31 (policy), document 50, P20 | T20 |
+| Take measures to support the development of AI literacy among staff and others operating or using systems on the company's behalf, taking into account their knowledge, experience and context of use | Art. 4 (wording of Regulation (EU) 2026/1744) | Providers and deployers | C2 (policy), C3 (plan), phases 4–6 per use case | Senior management; AI Office; Head of People | Document 31 (policy), document 50, P20 | T20 |
 | Specific training for those who use or oversee each system | Art. 4; Art. 26(2) for high risk | Deployers | 4 (design), 5 (user training) | AI Product Owner | P17, P20, P21 | T20 |
 | Monitoring of training coverage and corporate use of AI | Art. 4 | Providers and deployers | C4 | AI Office | Board dashboard (document 60) | T17, T21 |
 
@@ -184,7 +184,7 @@ Regulation (EU) 2024/1689 entered into force on 1 August 2024 and applies in sta
 | Register the exception in the EU database | Art. 49(2) | Providers | 5 (before G5) | AI Technical Owner | P11, P23 | T02 |
 | Review the classification in the event of changes in purpose, scope, data or autonomy | Arts. 6 and 25 | Providers and deployers | R6, G7 and every change | AI Risk Owner | P11, P27 | T07, T08 |
 
-**Annex III areas** (warning signs in phase 1): 1 biometrics · 2 critical infrastructure · 3 education and vocational training · 4 employment, workers' management and access to self-employment · 5 access to and enjoyment of essential private services and essential public services and benefits (including creditworthiness assessment and credit scoring, except fraud detection, and risk assessment and pricing in life and health insurance) · 6 law enforcement · 7 migration, asylum and border control management · 8 administration of justice and democratic processes. Any initiative with one of these signals must be treated as Enterprise from phase 0 until P11 concludes otherwise (01 §9.2).
+**Annex III areas** (warning signs in phase 1): 1 biometrics · 2 critical infrastructure · 3 education and vocational training · 4 employment, workers' management and access to self-employment · 5 access to and enjoyment of essential private services and essential public services and benefits (including creditworthiness assessment and credit scoring, except fraud detection, and risk assessment and pricing in life and health insurance) · 6 law enforcement · 7 migration, asylum and border control management · 8 administration of justice and democratic processes. Any use case with one of these signals must be treated as Enterprise from phase 0 until P11 concludes otherwise (01 §9.2).
 
 ### 3.7 Requirements for high-risk AI systems (Arts. 9 to 15)
 
@@ -241,7 +241,7 @@ Regulation (EU) 2024/1689 entered into force on 1 August 2024 and applies in sta
 | Notify the market surveillance authority of the results using the prescribed form | Art. 27(3) | Same | 5 (before G5) | AI Risk Owner | P11, P48, P23 | T07 |
 | Complement, without duplicating, the data protection impact assessment, to which amended Art. 27(4) allows reference | Art. 27(4); GDPR Art. 35 | Same | 3 | AI Risk Owner; data protection officer | P11, P48, P47 | T07 |
 
-It applies together with the high-risk requirements (2-12-2027 for Annex III); the European AI Office template is **pending confirmation**. Every Enterprise initiative involving decisions about people should apply this content in P11 and P48 even if not obliged to do so.
+It applies together with the high-risk requirements (2-12-2027 for Annex III); the European AI Office template is **pending confirmation**. Every Enterprise use case involving decisions about people should apply this content in P11 and P48 even if not obliged to do so.
 
 ### 3.11 Transparency (Art. 50)
 
@@ -343,7 +343,7 @@ ISO/IEC 42001:2023 (published in December 2023; as at the consultation date, 25-
 | Awareness | 7.3 | Organisation | C2–C4 | AI Office | Documents 31 and 50 | T20, T21 |
 | Communication | 7.4 | Organisation | C4 | AI Office | Document 60 | T17 |
 | Documented information | 7.5 | Organisation | All | AI Office | Evidence register (03 §4) | T01, T03 |
-| Operational planning and control | 8.1 | Organisation | Phases 0–7 | Initiative owners | Document 20; P29 | T01, T03 |
+| Operational planning and control | 8.1 | Organisation | Phases 0–7 | Use case owners | Document 20; P29 | T01, T03 |
 | AI risk assessment at planned intervals | 8.2 | Organisation | Phase 3; R6 | AI Risk Owner | P12 | T06 |
 | AI risk treatment | 8.3 | Organisation | Phases 3–6 | AI Risk Owner | P13 | T06 |
 | AI system impact assessment at planned intervals | 8.4 | Organisation | Phase 3; R6 | AI Risk Owner | P11 | T07 |
@@ -679,7 +679,7 @@ According to the bill published in the Official Gazette of the Cortes Generales,
 |---|---|---|---|---|---|---|
 | Identify the competent market surveillance authority for each system (AESIA or sector authority) | RD 729/2023; draft organic law (pending) | Providers and deployers in Spain | Phase 3 | AI Risk Owner; legal counsel | P11 | T07 |
 | Channel serious incident reports and fundamental rights impact assessments to the competent authority | AI Act Arts. 27(3) and 73; national legislation pending | Providers and deployers | Phases 5–6 | AI Risk Owner | P11, P26, P27 | T08 |
-| Consider participation in an AI regulatory sandbox where the initiative is high-risk and regulatory feasibility is uncertain | RD 817/2023; AI Act Arts. 57–59 | Providers and deployers | Phase 3 (decision), phases 4–5 (execution) | AI Sponsor; AI Risk Owner | P10, P13 | T01 |
+| Consider participation in an AI regulatory sandbox where the use case is high-risk and regulatory feasibility is uncertain | RD 817/2023; AI Act Arts. 57–59 | Providers and deployers | Phase 3 (decision), phases 4–5 (execution) | AI Sponsor; AI Risk Owner | P10, P13 | T01 |
 | Use the AESIA guides as a reference for technical requirements | AESIA guides (December 2025) | Providers and deployers | Phases 3–6 | AI Technical Owner; AI Risk Owner | P11, P15, P18, P22 | T07, T03 |
 | Monitor the legislative process of the organic law and update this mapping when it is published in the BOE | File 121/000096 | AI Office | Section 10 | AI Office; legal counsel | Document 34 | T07 |
 
@@ -828,9 +828,9 @@ Generated from `crosswalk.json` (version 1, 01-10-2026; core version 1). Not edi
 |---|---|
 | **AI Office** | Owns document 34 and tool T07. Maintains regulatory watch, prepares change proposals and communicates approved changes. |
 | **Second line** (compliance, legal counsel, data protection officer, information security) | Validates the legal content of each change and its interpretation. No change of date, article or criterion is published without its validation. |
-| **AI Committee** | Approves changes with an impact on initiatives, *gates* or intensity, and decides portfolio reclassifications. |
+| **AI Committee** | Approves changes with an impact on use cases, *gates* or intensity, and decides portfolio reclassifications. |
 | **Board committee** | Receives a quarterly summary of relevant regulatory changes (C4). |
-| **Third line** | Verifies at least once a year that the mapping is up to date and that the changes have been applied to the affected initiatives. |
+| **Third line** | Verifies at least once a year that the mapping is up to date and that the changes have been applied to the affected use cases. |
 
 ### 10.2 Triggers and frequency
 
@@ -840,7 +840,7 @@ Generated from `crosswalk.json` (version 1, 01-10-2026; core version 1). Not edi
 | Commission guidelines, codes of practice, templates or implementing acts | Final guidelines on high risk; serious incident template | 20 working days |
 | Harmonised standards or revisions of technical standards | CEN-CENELEC JTC 21 standards; revision of ISO/IEC 42001; revision of the NIST AI RMF | 30 working days |
 | Guidance from national authorities or the EDPB; CJEU judgments | AESIA guides; final EDPB guidelines | 20 working days |
-| Upcoming date of application | Six months before each date in the timeline in section 3.1 | Review of the affected initiatives |
+| Upcoming date of application | Six months before each date in the timeline in section 3.1 | Review of the affected use cases |
 | Ordinary review | Monthly watch; formal quarterly review (C4); full annual review (C5) | According to schedule |
 
 ### 10.3 Steps
@@ -850,9 +850,9 @@ Generated from `crosswalk.json` (version 1, 01-10-2026; core version 1). Not edi
 | 1 | Detect the change and record it with the official source and consultation date | AI Office | Entry in the mapping change log |
 | 2 | Analyse the impact: affected rows, T07 questions, *gate* criteria (document 21), templates and inventory systems | AI Office with the second line | Impact note |
 | 3 | Validate the legal interpretation | Second line | Recorded clearance |
-| 4 | Approve the change if it affects initiatives, intensity or *gates* | AI Committee | P29 or committee minutes |
+| 4 | Approve the change if it affects use cases, intensity or *gates* | AI Committee | P29 or committee minutes |
 | 5 | Update document 34 (new version), T07 and, where applicable, the templates | AI Office | Version control |
-| 6 | Reclassify the affected systems and open actions in the initiatives (classification change event in T01) | AI Risk Owners of each initiative | Updated P11; event in T01 |
+| 6 | Reclassify the affected systems and open actions in the use cases (classification change event in T01) | AI Risk Owners of each use case | Updated P11; event in T01 |
 | 7 | Communicate to the teams and, if relevant, to the board committee | AI Office | C4 report |
 | 8 | Verify implementation at the next annual review | Third line | Audit report (document 38) |
 

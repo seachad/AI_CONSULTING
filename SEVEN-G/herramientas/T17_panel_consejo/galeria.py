@@ -129,8 +129,8 @@ def tarjeta(sector, r, lang):
     ruta_m = os.path.join(MERCADO, f"{sector}.json")
     perfil = (json.load(open(ruta_m, encoding="utf-8")).get("perfil_ejemplo") or {}).get(lang, "") if os.path.exists(ruta_m) else ""
     n_prod = sum(1 for i in t01["iniciativas"] if i["ciclo"]["estado"] == "en_produccion")
-    cifra = (f"{r['n']} iniciativas · {n_prod} en producción · neto anual {euros(r['neto'])} · potencial {euros(r['neto_pot'])}" if es else
-             f"{r['n']} initiatives · {n_prod} in production · annual net {euros_en(r['neto'])} · potential {euros_en(r['neto_pot'])}")
+    cifra = (f"{r['n']} casos de uso · {n_prod} en producción · neto anual {euros(r['neto'])} · potencial {euros(r['neto_pot'])}" if es else
+             f"{r['n']} use cases · {n_prod} in production · annual net {euros_en(r['neto'])} · potential {euros_en(r['neto_pot'])}")
     reg = f' · <a href="{b}{os.path.basename(r["registro"])}">{"recomendaciones" if es else "recommendations"}</a>' if r.get("registro") else ""
     return (f'<li><strong>{e(r["organizacion"])}</strong><span class="perfil">{e(perfil)}</span><span class="cifra">{cifra}</span>'
             f'<span class="acc"><a href="{b}{os.path.basename(r["completo"])}">{"panel completo" if es else "full dashboard"}</a> · '

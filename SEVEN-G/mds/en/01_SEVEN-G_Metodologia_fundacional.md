@@ -10,13 +10,13 @@
 | Author | Fernando García Varela |
 | Status | Draft for review. The framework's normative reference document. |
 
-<!-- cifras: 10 | principles ; 2 | governance levels ; 8 | phases per initiative ; 6 | roles with segregation of duties -->
+<!-- cifras: 10 | principles ; 2 | governance levels ; 8 | phases per use case ; 6 | roles with segregation of duties -->
 
 ---
 
 > **Legal notice and disclaimer.** SEVEN-G is a reference methodological framework provided "as is" and for information purposes only. It does not constitute legal, regulatory, financial or professional advice, nor does it guarantee compliance with any law or standard. References to general regulation (such as the EU AI Act, the GDPR, DORA or NIS2), to technical standards and to regulation specific to each sector or jurisdiction may be incomplete, may not apply to a particular case or may become out of date as a result of regulatory changes, interpretations or supervisory positions after their consultation date. **Each organisation that uses SEVEN-G is solely responsible for identifying the regulation that applies to it, verifying that it is current and certifying its own regulatory compliance**, with the appropriate qualified advice. This methodology is a generic, free aid shared with the community so that nobody has to start from scratch; each person or organisation can and should adapt it to its own use. It must not be inferred that its legally sensitive parts have been reviewed by legal counsel: those reviews, for each company or sector, are the ultimate responsibility of the company, consultant or organisation that uses it. Although every effort is made to keep it up to date, some regulation may have changed without being reflected here. To the fullest extent permitted by law, the author accepts no responsibility whatsoever for the effects of its application in any organisation or for its full applicability. The methodology does not grant certification of any kind. The author accepts no liability for any use made of this content or for any decisions taken on the basis of it. The data, figures, companies and cases in the examples are fictitious or illustrative.
 
-<!-- esencial: siempre | The framework's normative reference. What no company may omit: the corporate cycle C1–C5, the eight phases with their gates and evidence (section 6), the gate decision rules (section 7), segregation of duties (section 8), the determination of Lite or Enterprise intensity for each initiative (section 9) and the nonconformity process (section 12). -->
+<!-- esencial: siempre | The framework's normative reference. What no company may omit: the corporate cycle C1–C5, the eight phases with their gates and evidence (section 6), the gate decision rules (section 7), segregation of duties (section 8), the determination of Lite or Enterprise intensity for each use case (section 9) and the nonconformity process (section 12). -->
 
 ## 1. Purpose and scope
 
@@ -27,7 +27,7 @@ This document defines the SEVEN-G model and the rules that an organisation must 
 - The framework model: governance levels, components and the relationship between them.
 - The principles and how they are verified.
 - The corporate cycle, which governs AI in the company.
-- The lifecycle of each initiative, with its phases, evidence and decision gates.
+- The lifecycle of each use case, with its phases, evidence and decision gates.
 - The decision rules, including the differences by ambition level.
 - Roles, bodies and segregation of duties.
 - The application intensity (Lite or Enterprise) and how it is determined.
@@ -45,7 +45,7 @@ Its design is modular: it can be implemented in full or by components. An organi
 
 | Type of AI use | Examples | Treatment in SEVEN-G |
 |---|---|---|
-| **AI initiatives** | Predictive models, generative AI solutions, agents, AI-enabled automations developed or adapted by the company. | Full lifecycle (phases 0–7) at the appropriate intensity. |
+| **AI use cases** | Predictive models, generative AI solutions, agents, AI-enabled automations developed or adapted by the company. | Full lifecycle (phases 0–7) at the appropriate intensity. |
 | **Third-party AI embedded in processes** | Supplier software with AI functions that play a part in decisions, operations or customer relationships. | Full lifecycle; the design and delivery phases focus on the selection, integration, contract and controls of the supplier. |
 | **Corporate use of general-purpose AI** | AI-enabled assistants and productivity suites used by employees. | Inventory, acceptable use policy, training and technical controls. It moves to the full cycle if it meets any Enterprise criterion (section 9). |
 | **Unauthorised use** | AI tools used without approval. | It is detected, recorded and regularised (authorisation, replacement or blocking) as a nonconformity. |
@@ -64,7 +64,7 @@ Its design is modular: it can be implemented in full or by components. An organi
 
 **SEVEN-G** stands for *Seven-phase Enterprise Value & Governance*. The name expresses the three ideas of the framework:
 
-- **Seven value phases** that each initiative goes through, preceded by a phase 0 that authorises it.
+- **Seven value phases** that each use case goes through, preceded by a phase 0 that authorises it.
 - **Enterprise value** as the criterion for all decisions.
 - **Governance** present in every phase and in the company as a whole.
 
@@ -75,13 +75,13 @@ The framework is organised into **two governance levels** and **four cross-cutti
 | Element | What it is | Who uses it |
 |---|---|---|
 | **Corporate cycle** | Diagnosis, direction, portfolio, oversight and review of AI in the company. | Board, senior management, AI Committee. |
-| **Initiative lifecycle** | Phases 0–7 with auditable decision gates. | Initiative teams, risk, AI Auditor, AI Committee. |
-| **A · Impact map** | Nine spheres of impact and three ambition levels. | Board and management to decide where and how much to bet; teams to classify initiatives. |
+| **Use case lifecycle** | Phases 0–7 with auditable decision gates. | Use case teams, risk, AI Auditor, AI Committee. |
+| **A · Impact map** | Nine spheres of impact and three ambition levels. | Board and management to decide where and how much to bet; teams to classify use cases. |
 | **B · Governance system** | Roles, bodies, risks, regulation, third parties and nonconformities. | All levels. |
 | **C · Measurement system** | Value rules, indicators, maturity and transformation index. | Board, AI Committee, management control, teams. |
 | **D · Tools** | Templates, checklists, board dashboard and register of recommendations. | All levels. |
 
-The two cycles are connected: **the corporate cycle authorises and funds** initiatives within a portfolio, and **each initiative reports evidence** that feeds oversight and the annual review.
+The two cycles are connected: **the corporate cycle authorises and funds** use cases within a portfolio, and **each use case reports evidence** that feeds oversight and the annual review.
 
 ---
 
@@ -91,17 +91,17 @@ The principles guide decisions in situations that the rules do not cover. Each p
 
 | # | Principle | What it means in practice | How it is verified |
 |---|---|---|---|
-| 1 | **Value before technology** | Every initiative starts from a business problem or opportunity and is linked to a measurable outcome. | An approved value hypothesis exists before investing in construction. |
-| 2 | **Governance is not optional** | Controls are designed in from the start and make it possible to move faster with less risk. | No initiative under construction lacks an approved phase 0. |
+| 1 | **Value before technology** | Every use case starts from a business problem or opportunity and is linked to a measurable outcome. | An approved value hypothesis exists before investing in construction. |
+| 2 | **Governance is not optional** | Controls are designed in from the start and make it possible to move faster with less risk. | No use case under construction lacks an approved phase 0. |
 | 3 | **Production is the only truth** | Value is demonstrated under real conditions, not in proofs of concept. | Value declared in production has a validation status. |
 | 4 | **Reversibility** | Every solution can be stopped, rolled back or retired without compromising operations. | A tested rollback plan exists before go-live. |
 | 5 | **Risk is systemic** | Risk is managed at portfolio level, as well as case by case. | The AI Committee reviews the concentration of risks in the portfolio. |
-| 6 | **Evolve or retire** | No initiative remains without evidence to justify it. | All initiatives in production have a current continuity review. |
+| 6 | **Evolve or retire** | No use case remains without evidence to justify it. | All use cases in production have a current continuity review. |
 | 7 | **Segregation of duties** | Whoever builds does not control, and no one approves their own work. | *Gate* decisions record a decision-maker and a verifier who are not part of the team. |
 | 8 | **Evidence, not declaration** | What is not documented and verified is not considered done. | Evidence has an author, date, version and verification. |
-| 9 | **A conscious decision on ambition** | Efficiency and transformation are chosen, measured and decided separately. | Every initiative has a classified and confirmed ambition level. |
-| 10 | **People at the centre of change** | AI is also assessed by its effect on work, capabilities and responsibilities. | Augment and Transform initiatives have an adoption and people plan. |
-| 11 | **Proportionality** | Governance effort matches each initiative's risk, materiality and reversibility: no evidence is requested twice, no decision needs more participants than segregation of duties requires and no initiative bears a disproportionate governance cost. What is never reduced is the core (section 14.1). | Each initiative's intensity is determined and justified (section 9); evidence the company already has is referenced instead of copied (document 21, section 4); the cost of governance itself is measured and reviewed in C5 (document 41). |
+| 9 | **A conscious decision on ambition** | Efficiency and transformation are chosen, measured and decided separately. | Every use case has a classified and confirmed ambition level. |
+| 10 | **People at the centre of change** | AI is also assessed by its effect on work, capabilities and responsibilities. | Augment and Transform use cases have an adoption and people plan. |
+| 11 | **Proportionality** | Governance effort matches each use case's risk, materiality and reversibility: no evidence is requested twice, no decision needs more participants than segregation of duties requires and no use case bears a disproportionate governance cost. What is never reduced is the core (section 14.1). | Each use case's intensity is determined and justified (section 9); evidence the company already has is referenced instead of copied (document 21, section 4); the cost of governance itself is measured and reviewed in C5 (document 41). |
 
 ---
 
@@ -112,13 +112,12 @@ The full definitions are in document 02 (Glossary).
 | Concept | Definition in SEVEN-G |
 |---|---|
 | **AI system** | A machine-based system that, with varying levels of autonomy, infers from the input it receives how to generate outputs —predictions, content, recommendations or decisions— that can influence physical or virtual environments. It is aligned with the definition in the EU AI Act. |
-| **Initiative** | A body of work that pursues a value hypothesis through one or more AI systems. It is the unit that goes through the lifecycle. |
-| **Use case** | A specific application of an AI system to a process or decision. An initiative may include several use cases. |
-| **Portfolio** | The set of authorised initiatives, with their budget, priority and balance of ambition. |
+| **Use case** | An application of AI to a process, a product or a decision that pursues a value hypothesis through one or more AI systems. It is the unit that goes through the lifecycle and is identified with the code IA-AAAA-NNN. |
+| **Portfolio** | The set of authorised use cases, with their budget, priority and balance of ambition. |
 | **Sphere** | A domain of AI impact in the organisation. There are nine (document 10). |
 | **Ambition level** | Type of bet: Optimise, Augment or Transform. |
 | **Intensity** | The degree of rigour with which the cycle is applied: Lite or Enterprise. |
-| **Gate** | A decision gate at the end of a phase, at which it is decided whether the initiative proceeds and under what conditions. |
+| **Gate** | A decision gate at the end of a phase, at which it is decided whether the use case proceeds and under what conditions. |
 | **Evidence** | A verifiable document, record or result that demonstrates that a criterion has been met. |
 | **Dual validation** | The rule whereby a *gate* requires both tangible results and verified documentation. |
 | **Nonconformity** | Failure to meet a requirement of the framework, classified as minor, major or critical. |
@@ -135,7 +134,7 @@ The corporate cycle is the mechanism through which the board and senior manageme
 |---|---|---|---|---|
 | **C1 · Diagnosis** | Understand the real situation of AI in the company. | AI system inventory; maturity assessment with evidence; current sphere map; transformation index profile; current validated value and cost. | AI Office | AI Committee; presented to the board |
 | **C2 · Direction** | Decide where to play, with what ambition and with what risk appetite. | AI thesis; ambition level per sphere; risk appetite and thresholds (including those for Enterprise intensity and the return horizon); corporate AI policy; framework budget. | Senior management | Board |
-| **C3 · Portfolio** | Select, prioritise and balance initiatives. | Prioritised portfolio with ambition level, sphere, intensity, budget and owners; retirement criteria; available capacity. | AI Committee | AI Committee; the board approves Transform initiatives |
+| **C3 · Portfolio** | Select, prioritise and balance use cases. | Prioritised portfolio with ambition level, sphere, intensity, budget and owners; retirement criteria; available capacity. | AI Committee | AI Committee; the board approves Transform use cases |
 | **C4 · Oversight** | Check that what was decided is being delivered and act on deviations. | Board dashboard; register of recommendations and decisions; outcomes of relevant *gates*; incidents and nonconformities; main portfolio risks. | AI Office | AI Committee (monthly); board or board committee (quarterly) |
 | **C5 · Review** | Assess progress and adjust direction. | Review of maturity and the transformation index; delivery against the thesis; lessons learned; proposed adjustments for the new cycle. | AI Office with internal audit | Board |
 
@@ -143,7 +142,7 @@ The corporate cycle is the mechanism through which the board and senior manageme
 
 | Body | Frequency | What it reviews |
 |---|---|---|
-| **Board of directors** | Annual (C2, C5) and quarterly (C4) | Thesis, ambition, risk appetite, Transform initiatives, board dashboard, transformation profile. |
+| **Board of directors** | Annual (C2, C5) and quarterly (C4) | Thesis, ambition, risk appetite, Transform use cases, board dashboard, transformation profile. |
 | **Board committee** (audit, risk or technology) | Quarterly | Risks, regulatory compliance, incidents, major and critical nonconformities, audits. |
 | **AI Committee** | Monthly | Portfolio, Enterprise *gates*, value and cost deviations, concentrated risks, retirements. |
 | **AI Office** | Continuous | Inventory, methodology, consolidation of measurement, support for teams, preparation of information. |
@@ -163,9 +162,9 @@ The detail is in document 90 (Implementation guide).
 
 ---
 
-## 6. Initiative level · Lifecycle
+## 6. Use case level · Lifecycle
 
-Each initiative goes through eight phases. At the end of each one there is a decision gate (*gate*); in phase 6 the gate is replaced by a periodic continuity review.
+Each use case goes through eight phases. At the end of each one there is a decision gate (*gate*); in phase 6 the gate is replaced by a periodic continuity review.
 
 <!-- figura: ciclo -->
 
@@ -173,7 +172,7 @@ Each initiative goes through eight phases. At the end of each one there is a dec
 
 | Phase | Name | Question it answers | Decision gate |
 |---|---|---|---|
-| 0 | **Context and constraints** | Is the initiative authorised, and within what framework? | G0 · Authorisation |
+| 0 | **Context and constraints** | Is the use case authorised, and within what framework? | G0 · Authorisation |
 | 1 | **Opportunity discovery** | Is there a business opportunity that requires AI? | G1 · Opportunity |
 | 2 | **Value hypothesis** | What value do we expect, how will we measure it and how will we know it has failed? | G2 · Hypothesis |
 | 3 | **Feasibility and risk** | Is it technically, economically, regulatorily and organisationally feasible, with acceptable risk? | G3 · Feasibility (main stop gate) |
@@ -186,11 +185,11 @@ Each initiative goes through eight phases. At the end of each one there is a dec
 
 | | |
 |---|---|
-| **Objective** | Formally authorise the initiative and set the framework within which it will be developed. |
-| **Activities** | Identify the strategic objective and the sphere; declare regulatory, ethical, data, budgetary and time constraints; assign the roles; determine the intensity (Lite or Enterprise); register the initiative in the inventory. |
-| **Mandatory evidence** | Initiative charter · Context and constraints statement · Role assignment record · Intensity determination · Inventory registration. |
+| **Objective** | Formally authorise the use case and set the framework within which it will be developed. |
+| **Activities** | Identify the strategic objective and the sphere; declare regulatory, ethical, data, budgetary and time constraints; assign the roles; determine the intensity (Lite or Enterprise); register the use case in the inventory. |
+| **Mandatory evidence** | Use case charter · Context and constraints statement · Role assignment record · Intensity determination · Inventory registration. |
 | **Exit criterion** | Committed sponsor, roles assigned without incompatibilities, fit with the AI thesis and the portfolio, and known constraints. |
-| **Specific rule** | Without an approved G0, the initiative is not authorised: it cannot consume budget or access production data. |
+| **Specific rule** | Without an approved G0, the use case is not authorised: it cannot consume budget or access production data. |
 
 ### 6.3 Phase 1 · Opportunity discovery
 
@@ -209,14 +208,14 @@ Each initiative goes through eight phases. At the end of each one there is a dec
 | **Activities** | Define the primary and secondary metrics; measure the baseline; set the target and the success threshold; choose the attribution method (control group, before and after, or another justified method); estimate value in money with a formula; confirm the ambition level; define the stop criteria. |
 | **Mandatory evidence** | Value hypothesis canvas · Baseline metrics · Attribution method · Ambition level confirmation · Stop criteria. |
 | **Exit criterion** | Falsifiable hypothesis, measured baseline (not estimated unless justified), value expressed in money with a formula, and stop criteria defined before investing. |
-| **Specific rule** | In Transform initiatives, the hypothesis may carry greater uncertainty, but must include learning milestones, an investment limit per stage and an explicit decision by the board. |
+| **Specific rule** | In Transform use cases, the hypothesis may carry greater uncertainty, but must include learning milestones, an investment limit per stage and an explicit decision by the board. |
 
 ### 6.5 Phase 3 · Feasibility and risk
 
 | | |
 |---|---|
-| **Objective** | Decide whether the initiative is feasible with acceptable risk. This is the main stop gate of the cycle. |
-| **Activities** | Assess technical feasibility and the availability and quality of the data; estimate full costs (build, recurring and adoption); classify the initiative under the applicable regulation; carry out the relevant impact assessments (data protection, fundamental rights); identify and assess risks; assess suppliers; assess the impact on people. |
+| **Objective** | Decide whether the use case is feasible with acceptable risk. This is the main stop gate of the cycle. |
+| **Activities** | Assess technical feasibility and the availability and quality of the data; estimate full costs (build, recurring and adoption); classify the use case under the applicable regulation; carry out the relevant impact assessments (data protection, fundamental rights); identify and assess risks; assess suppliers; assess the impact on people. |
 | **Mandatory evidence** | Feasibility assessment · Regulatory classification · Applicable impact assessments · Risk matrix and register · Mitigation and contingency plan · Supplier assessment, where there are suppliers. |
 | **Exit criterion** | Feasibility demonstrated with real data; no critical risk without accepted mitigation; regulatory classification carried out with legal judgement; expected net value consistent with the risk appetite and the horizon set in C2. |
 | **Specific rule** | Practices prohibited by regulation do not proceed beyond this phase under any circumstances. |
@@ -238,7 +237,7 @@ Each initiative goes through eight phases. At the end of each one there is a dec
 | **Activities** | Build or integrate the solution; carry out functional, performance, bias, robustness and security testing (including prompt injection testing for generative AI and agents); run a pilot with measurement according to the attribution method; test the rollback plan; train users. |
 | **Mandatory evidence** | Delivery report · Validation and test results · Pilot results against the hypothesis · Rollback plan test · Updated risk register · Go-live sign-off record. |
 | **Exit criterion** | The pilot results meet the success threshold, or do so with accepted conditions; critical controls work; operations are ready. |
-| **Specific rule** | The go-live of an Enterprise initiative requires **multi-level sign-off with veto power**: technical owner, risk and compliance, information security and data protection. Each sign-off is recorded. |
+| **Specific rule** | The go-live of an Enterprise use case requires **multi-level sign-off with veto power**: technical owner, risk and compliance, information security and data protection. Each sign-off is recorded. |
 
 ### 6.8 Phase 6 · Operation and governance
 
@@ -253,7 +252,7 @@ Each initiative goes through eight phases. At the end of each one there is a dec
 
 | | |
 |---|---|
-| **Objective** | Decide, on the basis of evidence, whether the initiative is scaled, iterated or retired. |
+| **Objective** | Decide, on the basis of evidence, whether the use case is scaled, iterated or retired. |
 | **Activities** | Consolidate realised value and its validation status; review the actual ambition level against the declared one; assess accumulated risks; if it is retired, plan the retirement. |
 | **Mandatory evidence** | Value realisation tracking · Scaling or retirement decision record · Lessons learned · Retirement plan, where applicable. |
 | **Possible outcomes** | **Scale** (new phase 0 for the extended scope), **Iterate** (return to the relevant phase; if kept unchanged, return to phase 6) or **Retire**. |
@@ -263,7 +262,7 @@ Each initiative goes through eight phases. At the end of each one there is a dec
 
 | Phase | Mandatory evidence |
 |---|---|
-| 0 | Initiative charter · Context and constraints statement · Role assignment record · Intensity determination · Inventory registration |
+| 0 | Use case charter · Context and constraints statement · Role assignment record · Intensity determination · Inventory registration |
 | 1 | Opportunity portfolio and screening notes · Non-AI alternatives · Proposed sphere and ambition level |
 | 2 | Value hypothesis canvas · Baseline · Attribution method · Ambition confirmation · Stop criteria |
 | 3 | Feasibility assessment · Regulatory classification · Impact assessments · Risk matrix and register · Mitigation and contingency plan · Supplier assessment |
@@ -276,7 +275,7 @@ The templates for each piece of evidence form part of block H of the documentati
 
 ### 6.11 Lifecycle traceability
 
-The AI portfolio is managed as a funnel, in the same way that a sales organisation manages its opportunities. To this end, every initiative must be registered in the **initiative register** (document 03, tool T01), and the register must retain, as a minimum:
+The AI portfolio is managed as a funnel, in the same way that a sales organisation manages its opportunities. To this end, every use case must be registered in the **use case register** (document 03, tool T01), and the register must retain, as a minimum:
 
 - The **entry and exit date of each phase**, and the periods on hold with their reason.
 - The **request, verification and decision for each *gate***, with its outcome, iteration, decision-maker and verifier.
@@ -285,7 +284,7 @@ The AI portfolio is managed as a funnel, in the same way that a sales organisati
 - The **controlled taxonomy tags**: sphere, ambition level, intensity, regulatory classification, technology, exposure and value type.
 - The **coded reason** for every stop or retirement.
 
-In C2 the company approves the **reference time limits per phase** and the maximum decision time for a *gate*. Initiatives that exceed them are flagged as stalled and reviewed by the AI Committee.
+In C2 the company approves the **reference time limits per phase** and the maximum decision time for a *gate*. Use cases that exceed them are flagged as stalled and reviewed by the AI Committee.
 
 ---
 
@@ -327,18 +326,18 @@ Results without documentation, or documentation without results, do not pass the
 
 | Outcome | When it applies | Consequence |
 |---|---|---|
-| **Proceed** | All criteria are met and all evidence is verified. | The initiative moves on to the next phase. |
+| **Proceed** | All criteria are met and all evidence is verified. | The use case moves on to the next phase. |
 | **Proceed with conditions** | The essential criteria are met and non-critical aspects remain pending. | It moves on to the next phase with explicit conditions, a deadline and an owner. The conditions are verified at the next *gate*. Not permitted for critical security, legal compliance or human oversight controls. |
-| **Iterate** | The results are insufficient but the hypothesis remains plausible. | The phase activities are repeated and the initiative returns to the same *gate*. |
-| **Pivot** | The hypothesis does not hold, but a reasonable alternative exists. Only at G1, G2 and G3. | The initiative returns to phase 2 with a new hypothesis, keeping the approved context. |
-| **Stop** | There is no plausible value, feasibility is not demonstrated or the risk is unacceptable. | The initiative is closed, lessons learned are recorded and resources are released. |
+| **Iterate** | The results are insufficient but the hypothesis remains plausible. | The phase activities are repeated and the use case returns to the same *gate*. |
+| **Pivot** | The hypothesis does not hold, but a reasonable alternative exists. Only at G1, G2 and G3. | The use case returns to phase 2 with a new hypothesis, keeping the approved context. |
+| **Stop** | There is no plausible value, feasibility is not demonstrated or the risk is unacceptable. | The use case is closed, lessons learned are recorded and resources are released. |
 | **Scale** | Only at G7: value demonstrated and risk under control. | New phase 0 for the extended scope. |
 | **Retire** | Only at G7: the value is not sustained, the risk has increased or a better alternative exists. | Planned and recorded retirement. |
-| **Proceed with operation · Proceed with conditions · Bring G7 forward** | Only at R6: the initiative keeps delivering value under control, does so with correctable deviations, or shows relevant deviations in value, risk or compliance. | Remains in production; with conditions, deadline and owner; or G7 is opened without waiting for the schedule. |
+| **Proceed with operation · Proceed with conditions · Bring G7 forward** | Only at R6: the use case keeps delivering value under control, does so with correctable deviations, or shows relevant deviations in value, risk or compliance. | Remains in production; with conditions, deadline and owner; or G7 is opened without waiting for the schedule. |
 
 A well-founded decision to **stop** is a valid outcome of the method. Avoiding a bad investment also creates value.
 
-> **In plain words: what does "iterate" mean?** Iterating means repeating the work of the phase the initiative is currently in, without moving on to the next one, because the result does not yet meet the required criterion but the underlying idea still looks valid. It is not starting from scratch (that would be pivoting, with a different hypothesis) and it is not closing the initiative (that would be stopping): it is correcting and trying again at the same point. For example, in phase 2 a value hypothesis is tested and the measured saving falls short of the target, but the team identifies a concrete adjustment (a different user segment, a different process) that could close the gap; instead of moving on to phase 3 with insufficient data, the initiative iterates: it repeats phase 2 with that adjustment and is presented again to the same *gate*. **Why only twice is allowed (rule 5 in section 7.4):** every iteration has a cost in time and budget, and if two attempts to fix the same thing are not enough, that is a sign the problem is not a minor adjustment but something more fundamental (the hypothesis, the design or the sponsorship). That is why, the third time, the decision is no longer made by whoever runs the initiative: it **is escalated to whoever has the authority to decide with more context** (for example, from the sponsor to the AI committee), who assesses whether it is worth iterating again, pivoting to another hypothesis, or stopping.
+> **In plain words: what does "iterate" mean?** Iterating means repeating the work of the phase the use case is currently in, without moving on to the next one, because the result does not yet meet the required criterion but the underlying idea still looks valid. It is not starting from scratch (that would be pivoting, with a different hypothesis) and it is not closing the use case (that would be stopping): it is correcting and trying again at the same point. For example, in phase 2 a value hypothesis is tested and the measured saving falls short of the target, but the team identifies a concrete adjustment (a different user segment, a different process) that could close the gap; instead of moving on to phase 3 with insufficient data, the use case iterates: it repeats phase 2 with that adjustment and is presented again to the same *gate*. **Why only twice is allowed (rule 5 in section 7.4):** every iteration has a cost in time and budget, and if two attempts to fix the same thing are not enough, that is a sign the problem is not a minor adjustment but something more fundamental (the hypothesis, the design or the sponsorship). That is why, the third time, the decision is no longer made by whoever runs the use case: it **is escalated to whoever has the authority to decide with more context** (for example, from the sponsor to the AI committee), who assesses whether it is worth iterating again, pivoting to another hypothesis, or stopping.
 
 ### 7.4 Decision rules
 
@@ -347,7 +346,7 @@ A well-founded decision to **stop** is a valid outcome of the method. Avoiding a
 3. **Evidence must exist before the *gate*.** Documentation produced after the fact to justify progress already made invalidates the *gate* and constitutes a major nonconformity.
 4. **Conditions have a deadline and an owner.** A condition that expires unmet turns the outcome into **Iterate**.
 5. **Iteration limit.** After two iterations at the same *gate*, the decision is escalated to the higher body.
-6. **Stop criteria are set in advance.** They cannot be relaxed during the phase to avoid a decision to stop without the approval of the body that authorised the initiative.
+6. **Stop criteria are set in advance.** They cannot be relaxed during the phase to avoid a decision to stop without the approval of the body that authorised the use case.
 7. **Every decision is recorded** in the *gate* decision record, with outcome, reason, conditions, decision-maker and verifier.
 
 ### 7.5 Who verifies and who decides
@@ -363,11 +362,11 @@ A well-founded decision to **stop** is a valid outcome of the method. Avoiding a
 | **R6 · Continuity** | AI Office | Sponsor | AI Auditor | AI Committee |
 | **G7 · Scale or retire** | AI Office | Sponsor | AI Auditor | AI Committee |
 
-**Transform** initiatives additionally require board approval at G2 (authorisation of the bet) and at G7 when the decision is to scale. At **Lite** intensity, G0, G1 and G2 may be resolved in a single session, as may G4 and G5, provided that each piece of evidence is verified. Under **Lite**, the AI Office verifies the gate; the risk, regulatory classification and supplier evidence (P10 to P14) and the change and validation evidence (P21 and P22) are verified by the AI Risk Owner, unless the AI Risk Owner prepared them: then the AI Office or the AI Auditor verifies them.
+**Transform** use cases additionally require board approval at G2 (authorisation of the bet) and at G7 when the decision is to scale. At **Lite** intensity, G0, G1 and G2 may be resolved in a single session, as may G4 and G5, provided that each piece of evidence is verified. Under **Lite**, the AI Office verifies the gate; the risk, regulatory classification and supplier evidence (P10 to P14) and the change and validation evidence (P21 and P22) are verified by the AI Risk Owner, unless the AI Risk Owner prepared them: then the AI Office or the AI Auditor verifies them.
 
 ### 7.6 Criteria differentiated by ambition level
 
-Applying the same return criteria to an efficiency initiative and to a transformation bet blocks the latter or inflates the former. That is why the key *gates* are assessed differently:
+Applying the same return criteria to an efficiency use case and to a transformation bet blocks the latter or inflates the former. That is why the key *gates* are assessed differently:
 
 | Gate | Optimise | Augment | Transform |
 |---|---|---|---|
@@ -380,16 +379,16 @@ Applying the same return criteria to an efficiency initiative and to a transform
 
 ## 8. Roles, bodies and segregation of duties
 
-### 8.1 Initiative roles
+### 8.1 Use case roles
 
 | Role | Function | Responsibility | Cannot |
 |---|---|---|---|
-| **AI Sponsor** | Decides | Accountable for value and investment; champions the initiative before the decision-making bodies. | Verify evidence or act as risk owner or auditor of their own initiative. |
-| **AI Product Owner** | Builds | Accountable for the value hypothesis, actual use and adoption. | Verify evidence or decide *gates* for their own initiative. |
-| **AI Technical Owner** | Builds | Accountable for the solution, the data, the models and their technical documentation. | Verify evidence or decide *gates* for their own initiative. |
+| **AI Sponsor** | Decides | Accountable for value and investment; champions the use case before the decision-making bodies. | Verify evidence or act as risk owner or auditor of their own use case. |
+| **AI Product Owner** | Builds | Accountable for the value hypothesis, actual use and adoption. | Verify evidence or decide *gates* for their own use case. |
+| **AI Technical Owner** | Builds | Accountable for the solution, the data, the models and their technical documentation. | Verify evidence or decide *gates* for their own use case. |
 | **AI Operations Owner** | Builds | Accountable for stability, monitoring, incidents and changes in production. | Verify evidence of their own operations. |
-| **AI Risk Owner** | Controls | Accountable for the assessment and monitoring of risk and compliance, and issues clearance. | Be part of the team that builds the initiative. |
-| **AI Auditor** | Controls | Verifies evidence at Enterprise *gates* and closes nonconformities. | Take part in the design, construction or operation of the initiative, or report hierarchically to the sponsor. |
+| **AI Risk Owner** | Controls | Accountable for the assessment and monitoring of risk and compliance, and issues clearance. | Be part of the team that builds the use case. |
+| **AI Auditor** | Controls | Verifies evidence at Enterprise *gates* and closes nonconformities. | Take part in the design, construction or operation of the use case, or report hierarchically to the sponsor. |
 
 One person may take on more than one role if the roles are not incompatible (section 8.2). In small organisations, the AI Auditor may be external or come from internal audit.
 
@@ -408,9 +407,9 @@ One person may take on more than one role if the roles are not incompatible (sec
 
 | Body | Indicative composition | Functions in SEVEN-G |
 |---|---|---|
-| **Board of directors** or board committee | Directors; may be supported by a director or adviser with AI experience. | Approves the AI thesis, the ambition, the risk appetite and Transform initiatives; exercises quarterly oversight; reviews progress annually. |
+| **Board of directors** or board committee | Directors; may be supported by a director or adviser with AI experience. | Approves the AI thesis, the ambition, the risk appetite and Transform use cases; exercises quarterly oversight; reviews progress annually. |
 | **AI Committee** | Senior management from business, technology, data, risk, compliance, security, data protection and people. | Manages the portfolio; decides Enterprise *gates*; reviews portfolio risks; decides retirements; escalates to the board as appropriate. |
-| **AI Office** | Small methodology, portfolio and measurement team. | Maintains the inventory and the methodology; verifies the gate criteria in Lite-intensity initiatives (in Enterprise ones the AI Auditor verifies them); consolidates measurement; prepares information for the bodies. |
+| **AI Office** | Small methodology, portfolio and measurement team. | Maintains the inventory and the methodology; verifies the gate criteria in Lite-intensity use cases (in Enterprise ones the AI Auditor verifies them); consolidates measurement; prepares information for the bodies. |
 | **Second line** | Risk, compliance, information security, data protection. | Provides the risk owners; issues clearances; signs off Enterprise go-live. |
 | **Third line** | Internal audit or external auditor. | Provides or supervises the AI Auditors; audits compliance with the framework. |
 
@@ -437,7 +436,7 @@ SEVEN-G does not create a parallel governance structure: the bodies may be exist
 
 ### 9.1 How it is determined
 
-Intensity is determined in phase 0 and reviewed at G3 and at every continuity review. Meeting a single Enterprise criterion is enough for that intensity to apply. With no Enterprise criterion, the initiative is Lite or, if it also meets the conditions in section 9.4 and the risk function confirms it, Express.
+Intensity is determined in phase 0 and reviewed at G3 and at every continuity review. Meeting a single Enterprise criterion is enough for that intensity to apply. With no Enterprise criterion, the use case is Lite or, if it also meets the conditions in section 9.4 and the risk function confirms it, Express.
 
 <!-- figura: intensidad -->
 
@@ -451,7 +450,7 @@ Intensity is determined in phase 0 and reviewed at G3 and at every continuity re
 | **Agents with the ability to act** | The system executes actions —writing to systems, sending communications, making payments— without a person validating each action before it is executed (autonomy A2 or A3, document 35), and those actions affect third parties, money, personal data or production systems. |
 | **Specially protected data** | It processes special categories of personal data or critical confidential information. |
 | **Critical function** | It supports a critical or important business function, or one subject to sector-specific operational resilience regulation. |
-| **Transform level** | The initiative is classified as Transform. |
+| **Transform level** | The use case is classified as Transform. |
 | **Investment** | The investment exceeds the threshold approved by the board in C2. |
 
 ### 9.3 What changes between intensities
@@ -465,17 +464,17 @@ Intensity is determined in phase 0 and reviewed at G3 and at every continuity re
 | **Decision** | Sponsor, with risk clearance at G3, G4 and G5 | Sponsor, with risk clearance at G3, G4 and G5 | AI Committee; board for Transform |
 | **Go-live** | Risk clearance | Risk clearance | Multi-level sign-off with veto |
 | **Continuity review** | Annual | Half-yearly | Quarterly |
-| **Visibility** | Aggregated board dashboard | Aggregated board dashboard | Board dashboard by initiative |
+| **Visibility** | Aggregated board dashboard | Aggregated board dashboard | Board dashboard by use case |
 
 ### 9.4 Express intensity
 
-Express intensity exists so that a small, internal and reversible initiative does not bear the same administrative path as one of hundreds of hours (principle 11, proportionality). **It changes what is assessed at each gate, not which gates there are**: the initiative goes through all the gates with their record (N-04) and G3 is still decided separately (N-05).
+Express intensity exists so that a small, internal and reversible use case does not bear the same administrative path as one of hundreds of hours (principle 11, proportionality). **It changes what is assessed at each gate, not which gates there are**: the use case goes through all the gates with their record (N-04) and G3 is still decided separately (N-05).
 
 **Eligibility.** No Enterprise criterion in section 9.2 and, in addition, all these conditions: internal use (no direct exposure to customers or external people); reversible within days, with no residual effect; autonomy A0 or A1; no special categories of data or critical confidential information; investment plus annual cost below the **Express threshold** approved in C2; and, if an AI supplier is involved, that it is already approved (current P55). **It is confirmed by the risk function** (in small companies, the AI Office), never by the sponsor alone. It is recorded in P04 and in T04.
 
 **Path.** Three decisions with the same gates: *entry* (G0, G1 and G2 in one decision), **G3 separately**, which at Express may be resolved in writing —the sponsor decides with the risk clearance recorded in T01—, and *go-live* (G4 and G5 in one decision). Each gate is assessed with the **reduced list of Express criteria** in document 21 (section 2.5): all applicable "Yes ◆" criteria and those that sustain the core. The evidence is a **living record** (P01, Express section) plus the company evidence that is referenced (21 §4.3). The continuity review is **annual** and may bring G7 forward.
 
-**Automatic exit.** If any Enterprise criterion appears or an eligibility condition ceases to be met, the initiative moves to Lite or Enterprise from that moment, with a classification change event, and the following gates are assessed with the list of its new intensity. The same applies if the annual review does not demonstrate value.
+**Automatic exit.** If any Enterprise criterion appears or an eligibility condition ceases to be met, the use case moves to Lite or Enterprise from that moment, with a classification change event, and the following gates are assessed with the list of its new intensity. The same applies if the annual review does not demonstrate value.
 
 **What does not change.** The whole core (section 14.1): inventory and register, segregation of duties, dual validation with evidence prior to the decision, "Yes ◆" criteria, value hypothesis with baseline and stop criterion, classification and risks, tested rollback.
 
@@ -485,7 +484,7 @@ Express intensity exists so that a small, internal and reversible initiative doe
 
 ## 10. Risks
 
-SEVEN-G manages risks at two levels: in each initiative (phase 3 and continuous monitoring) and in the portfolio (AI Committee). The full methodology is in document 33.
+SEVEN-G manages risks at two levels: in each use case (phase 3 and continuous monitoring) and in the portfolio (AI Committee). The full methodology is in document 33.
 
 | Category | Examples |
 |---|---|
@@ -518,7 +517,7 @@ Measurement is integrated into the lifecycle and the corporate cycle. The value 
 | **Phase 7** | Validated realised value; actual versus declared ambition. | Decide on scaling or retirement. |
 | **C1 and C5** | Maturity with evidence; transformation index; portfolio value and cost. | Diagnose and review direction. |
 | **C4** | Board dashboard; decision agility (time from idea to approval and to production). | Oversee. |
-| **Continuous** | Funnel metrics: time in phase, decision time, conversion per *gate*, iterations, stalled initiatives, expired conditions and stop reasons (document 03). | Manage the portfolio as a funnel and detect bottlenecks. |
+| **Continuous** | Funnel metrics: time in phase, decision time, conversion per *gate*, iterations, stalled use cases, expired conditions and stop reasons (document 03). | Manage the portfolio as a funnel and detect bottlenecks. |
 
 Every declared amount has one of three statuses: **validated** (by management control or audit), **declared** (by the responsible area) or **estimated** (by the committee, the board or the assessment team).
 
@@ -568,9 +567,9 @@ The **core** is the minimum, stable set of rules that distinguishes applying SEV
 | Code | Core rule | Where it is developed |
 |---|---|---|
 | **N-01** | **Complete inventory** of AI systems —own, third-party, corporate use and unauthorised— with an owner, regulatory classification and intensity. | document 32; document 90, section 2.4 |
-| **N-02** | **Every initiative is registered** before consuming budget, with its dates per phase, decisions, criteria and closing reason (traceability in section 6.11). | section 6.11; document 03 |
-| **N-03** | **Intensity is determined for each initiative** in phase 0 and reviewed at G3 and at each R6. One Enterprise criterion is enough. | section 9 |
-| **N-04** | **No phase or gate is skipped**: every initiative goes through all the gates of its lifecycle and each one is recorded with its criteria and its outcome. Which criteria are assessed and which sessions may be grouped depends on the intensity. | sections 7 and 9; document 21, section 3.4 |
+| **N-02** | **Every use case is registered** before consuming budget, with its dates per phase, decisions, criteria and closing reason (traceability in section 6.11). | section 6.11; document 03 |
+| **N-03** | **Intensity is determined for each use case** in phase 0 and reviewed at G3 and at each R6. One Enterprise criterion is enough. | section 9 |
+| **N-04** | **No phase or gate is skipped**: every use case goes through all the gates of its lifecycle and each one is recorded with its criteria and its outcome. Which criteria are assessed and which sessions may be grouped depends on the intensity. | sections 7 and 9; document 21, section 3.4 |
 | **N-05** | **G3 is always decided separately**: it is the main stop gate. | section 6.1; document 90, section 2.4 |
 | **N-06** | **Segregation of duties**: roles and bodies assigned in line with the incompatibilities in section 8.2; whoever builds neither verifies nor decides their own work, and risk clearance is independent of the team. | section 8; document 30 |
 | **N-07** | **Dual validation and evidence prior to the decision**: without verified evidence there is no decision. | section 7.2; document 21, sections 3 and 4 |
@@ -584,7 +583,7 @@ The **core** is the minimum, stable set of rules that distinguishes applying SEV
 
 Core version: **1 (01-10-2026)**. Document 94, section 3, repeats this list for convenience; if they differ, this one prevails.
 
-> **Why it matters.** A framework that grows without a stable core forces people to reread it in full to know what is non-negotiable, and every new document looks like one more obligation. With a small core, a company knows what must never be missing and can apply the rest in proportion to the risk and materiality of each initiative (principle 11), without the library having to stop growing as guidance.
+> **Why it matters.** A framework that grows without a stable core forces people to reread it in full to know what is non-negotiable, and every new document looks like one more obligation. With a small core, a company knows what must never be missing and can apply the rest in proportion to the risk and materiality of each use case (principle 11), without the library having to stop growing as guidance.
 
 ### 14.2 Declaration
 
@@ -598,7 +597,7 @@ An organisation may declare that it applies SEVEN-G when it meets the fourteen c
 |---|---|
 | **00 · What SEVEN-G is and how it helps companies** | Framework overview and value measurement rules. |
 | **02 · Glossary** | Full definitions of the terms. |
-| **03 · Tools and initiative register** | Initiative register, funnel metrics, data model and tool catalogue. |
+| **03 · Tools and use case register** | Use case register, funnel metrics, data model and tool catalogue. |
 | **10 · Sphere map and ambition levels** | Component A. |
 | **11 · Maturity model** | Diagnosis in C1 and C5. |
 | **12 · Transformation index** | Ambition classification and company profile. |

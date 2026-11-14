@@ -22,7 +22,7 @@
 | **Quién la rellena** | Responsable de operación de IA, con el responsable técnico y el responsable de producto de IA (métricas de adopción y valor). |
 | **Quién la verifica** | Oficina de IA en Lite; auditor de IA en Enterprise. |
 | **En qué *gate* se revisa** | G4 (diseño), G5 (configuración probada) y R6 (vigencia de umbrales). |
-| **Lite frente a Enterprise** | Lite puede omitir los campos marcados **(Enterprise)**. Toda iniciativa en producción debe vigilar, como mínimo, rendimiento, disponibilidad, coste y los indicadores de supervisión humana de P17. |
+| **Lite frente a Enterprise** | Lite puede omitir los campos marcados **(Enterprise)**. Todo caso de uso en producción debe vigilar, como mínimo, rendimiento, disponibilidad, coste y los indicadores de supervisión humana de P17. |
 | **Relación** | P09 Línea base · P16 Linaje (referencia de deriva) · P17 Indicadores de supervisión · P18 Registro de acciones · P19 Disparadores de reversión · P24 Manual de operación · P26 Respuesta a incidentes · P28 Seguimiento de valor · documentos 41 (Catálogo de indicadores) y 52. |
 
 Reglas:
@@ -38,7 +38,7 @@ Reglas:
 
 | Campo | Contenido | Guía |
 |---|---|---|
-| Código de la iniciativa | | IA-AAAA-NNN (T01). |
+| Código del caso de uso | | IA-AAAA-NNN (T01). |
 | Sistema(s) de IA | | Identificador en el inventario (T02). |
 | Tecnología | | ML predictivo · IA generativa · Agente · Procesamiento de lenguaje y documentos · Visión · Optimización · IA de terceros embebida · Reglas (no es IA). |
 | Intensidad | | Lite · Enterprise. |

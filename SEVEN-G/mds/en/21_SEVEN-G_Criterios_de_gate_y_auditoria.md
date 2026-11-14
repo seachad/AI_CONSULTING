@@ -16,7 +16,7 @@
 
 > **Legal notice and disclaimer.** SEVEN-G is a reference methodological framework provided "as is" and for information purposes only. It does not constitute legal, regulatory, financial or professional advice, nor does it guarantee compliance with any law or standard. References to general regulation (such as the EU AI Act, the GDPR, DORA or NIS2), to technical standards and to regulation specific to each sector or jurisdiction may be incomplete, may not apply to a particular case or may become out of date as a result of regulatory changes, interpretations or supervisory positions after their consultation date. **Each organisation that uses SEVEN-G is solely responsible for identifying the regulation that applies to it, verifying that it is current and certifying its own regulatory compliance**, with the appropriate qualified advice. This methodology is a generic, free aid shared with the community so that nobody has to start from scratch; each person or organisation can and should adapt it to its own use. It must not be inferred that its legally sensitive parts have been reviewed by legal counsel: those reviews, for each company or sector, are the ultimate responsibility of the company, consultant or organisation that uses it. Although every effort is made to keep it up to date, some regulation may have changed without being reflected here. To the fullest extent permitted by law, the author accepts no responsibility whatsoever for the effects of its application in any organisation or for its full applicability. The methodology does not grant certification of any kind. The author accepts no liability for any use made of this content or for any decisions taken on the basis of it. The data, figures, companies and cases in the examples are fictitious or illustrative.
 
-<!-- esencial: siempre | Criteria for each gate. A Lite initiative applies the criteria marked 'Yes' or 'Simpl.' in the Lite column; an Enterprise one, all of them. The common rules (section 3), valid evidence (section 4) and the 'Yes ◆' criteria are never omitted. Multi-level sign-off (section 9) and the auditor at every gate apply only in Enterprise. -->
+<!-- esencial: siempre | Criteria for each gate. A Lite use case applies the criteria marked 'Yes' or 'Simpl.' in the Lite column; an Enterprise one, all of them. The common rules (section 3), valid evidence (section 4) and the 'Yes ◆' criteria are never omitted. Multi-level sign-off (section 9) and the auditor at every gate apply only in Enterprise. -->
 
 ## 1. Purpose and scope
 
@@ -26,7 +26,7 @@ It develops section 7 of document 01 (Foundational methodology) and may not cont
 
 | Applies to | How |
 |---|---|
-| In-house AI initiatives | All applicable criteria according to intensity, ambition and technology. |
+| In-house AI use cases | All applicable criteria according to intensity, ambition and technology. |
 | Third-party AI integrated into processes | All criteria; those marked [TER] are added, and those relating to design and construction are read as selection, integration, contract and supplier controls. |
 | Corporate use of general-purpose AI | Only if it meets any Enterprise criterion (01 §9.2); otherwise it is governed through the inventory, policy and technical controls. |
 | Systems in production prior to the adoption of the framework | Review equivalent to G7 (01 §14) with the G7 criteria, supplemented by the criteria marked ◆ in G4, G5 and R6 that are applicable. |
@@ -74,11 +74,11 @@ Each criterion is recorded in T03 with one of the four statuses in document 03 �
 
 At Express intensity (01 §9.4) each gate is assessed with a **reduced list** that is not decided case by case but with a fixed rule:
 
-1. **All "Yes ◆" criteria** that apply to the initiative's profile (security, legal compliance, human oversight): N-08 prevents them from being treated as conditions, so they cannot disappear either.
+1. **All "Yes ◆" criteria** that apply to the use case's profile (security, legal compliance, human oversight): N-08 prevents them from being treated as conditions, so they cannot disappear either.
 2. **The criteria that sustain the core** (01 §14.1): G0.01, G0.05, G0.06, G0.07, G0.08 and G0.09 (record, roles, incompatibilities, intensity, register and no budget before the decision); G1.01 and G1.03 (business need and non-AI alternative); G2.01, G2.03, G2.04, G2.06 and G2.08 (falsifiable hypothesis with baseline, target, value with formula and stop criterion); G3.06, G3.11 and G3.13 (stop criteria in force, risks assessed and plan for High risks); G5.09, G5.11, G5.19 and G5.22 (stop criterion not reached, tested rollback, literacy and conditions closed).
 3. **R6 and G7**: the same criteria as in Lite.
 
-The other criteria appear in the decision as *Not applicable*, with the justification "Does not apply at Express intensity (document 21, section 2.5)". Criteria tagged [GEN], [AG] or [TER] follow section 2.3. The gate manager's catalogue carries this list in its Express column. In the typical initiative of the improvement plan's baseline (an internal generative assistant from an approved supplier), the reduced list goes from 90 to 47 criteria, of which 27 are "Yes ◆".
+The other criteria appear in the decision as *Not applicable*, with the justification "Does not apply at Express intensity (document 21, section 2.5)". Criteria tagged [GEN], [AG] or [TER] follow section 2.3. The gate manager's catalogue carries this list in its Express column. In the typical use case of the improvement plan's baseline (an internal generative assistant from an approved supplier), the reduced list goes from 90 to 47 criteria, of which 27 are "Yes ◆".
 
 ---
 
@@ -104,7 +104,7 @@ The seven rules in 01 §7.4 apply, with these operational clarifications:
 3. **Prior existence.** All evidence must be dated before the *gate* request. Corrections requested by the verifier generate a new version before the decision.
 4. **Conditions.** Only on *Conditionable* criteria. Each condition has a time limit, an owner, a linked criterion and a means of verification. An expired condition turns the outcome into **Iterate**.
 5. **Iterations.** After two iterations at the same *gate*, the third decision is taken by the higher body defined in document 30.
-6. **Stop criteria.** They are not relaxed without the approval of the body that authorised the initiative, recorded before the affected decision.
+6. **Stop criteria.** They are not relaxed without the approval of the body that authorised the use case, recorded before the affected decision.
 7. **Record.** Every decision is documented in P29 and generates the corresponding events in T01.
 
 ### 3.3 Meeting the criteria is necessary, not sufficient
@@ -117,7 +117,7 @@ At Lite and Express intensity, G0, G1 and G2 may be resolved in a single session
 
 ### 3.5 Board decisions in Transform
 
-Transform initiatives are always Enterprise (01 §9.2) and require express approval by the board or its board committee at **G2** (authorisation of the bet, criterion G2.12) and at **G7** when the decision is to scale (criterion G7.09). The approval is recorded in P29 with a reference to the minutes or to the register of recommendations and decisions (document 62).
+Transform use cases are always Enterprise (01 §9.2) and require express approval by the board or its board committee at **G2** (authorisation of the bet, criterion G2.12) and at **G7** when the decision is to scale (criterion G7.09). The approval is recorded in P29 with a reference to the minutes or to the register of recommendations and decisions (document 62).
 
 ---
 
@@ -129,13 +129,13 @@ A piece of evidence is valid if it passes the following fourteen rules. Document
 
 | Code | Rule | What is checked | If not met |
 |---|---|---|---|
-| **EV.01** | Identification | Initiative code, template (P) or source record, and title. | Pending |
+| **EV.01** | Identification | Use case code, template (P) or source record, and title. | Pending |
 | **EV.02** | Author | Person and role who prepares it. | Pending |
 | **EV.03** | Date | Date of preparation and of last modification. | Pending |
 | **EV.04** | Version | Version number; the verified version is the one linked in P29. A subsequent change requires new verification. | Pending |
 | **EV.05** | Prior existence | Dated before the *gate* request, and the activity described predates the decision. Documentation prepared after the fact to justify progress already made invalidates the *gate* (01 §7.4). | Not valid · major nonconformity |
 | **EV.06** | Integrity and traceability | Stored in the document repository with version history; link accessible to the verifier and the auditor from T01 or T03. | Pending |
-| **EV.07** | Relevance | It refers to this initiative, its scope and the system version. Reuse of evidence from another initiative is justified. | Not valid |
+| **EV.07** | Relevance | It refers to this use case, its scope and the system version. Reuse of evidence from another use case is justified. | Not valid |
 | **EV.08** | Real data | Where the criterion requires results: reproducible source, period and method; amounts with a formula and status (validated, declared or estimated). | Not valid |
 | **EV.09** | Approval and segregation | Approved by the appropriate person; author, verifier and decision-maker are different people. | Not valid · major nonconformity if there is self-approval |
 | **EV.10** | Completeness | Mandatory fields of the template filled in or covered by referenced evidence (section 4.3); in Lite, those not marked *(Enterprise)*. Missing data are shown as "no data", not as zero. | Pending |
@@ -159,7 +159,7 @@ A piece of referenced evidence is valid if it meets the same rules EV.01–EV.14
 | **Locatable reference** | Source system or repository, identifier or link, version and date, so that the verifier and the auditor can find it without asking for it (EV.06). In T01 it is recorded with origin "reference" and its source system. |
 | **Owner** | Person and role who prepared or approved it in its source process (EV.02). Segregation of duties is checked in the same way (EV.09). |
 | **Coverage** | The verifier compares the evidence with the template it covers and notes what is missing. What is missing is completed in a **short annex** with only those fields, never by copying what is already there. |
-| **Validity and relevance** | It refers to this initiative, its scope and the system version (EV.07); if it is updated in its source process, it is verified again (EV.04). |
+| **Validity and relevance** | It refers to this use case, its scope and the system version (EV.07); if it is updated in its source process, it is verified again (EV.04). |
 
 Usual equivalences (indicative; each company sets them when implementing the framework, document 90):
 
@@ -180,7 +180,7 @@ Usual equivalences (indicative; each company sets them when implementing the fra
 
 No evidence is requested twice: if a piece of data is already in referenced evidence, the template refers to it and does not repeat it.
 
-> **Why it matters.** If every initiative requires copying into the framework's own templates what the company already has, SEVEN-G becomes a parallel document system that nobody maintains and that drifts away from real processes. Referencing turns the framework into an orchestration and traceability layer over existing processes: the verifier checks what exists where it is, and the template only points out what is missing.
+> **Why it matters.** If every use case requires copying into the framework's own templates what the company already has, SEVEN-G becomes a parallel document system that nobody maintains and that drifts away from real processes. Referencing turns the framework into an orchestration and traceability layer over existing processes: the verifier checks what exists where it is, and the template only points out what is missing.
 
 ---
 
@@ -239,7 +239,7 @@ Each gate includes its purpose, who verifies and who decides (01 §7.5), the evi
 
 ### 6.1 G0 · Authorisation
 
-**Purpose.** Formally authorise the initiative and set the framework within which it will be developed. Without an approved G0 the initiative is not authorised: it may not consume budget or access production data.
+**Purpose.** Formally authorise the use case and set the framework within which it will be developed. Without an approved G0 the use case is not authorised: it may not consume budget or access production data.
 
 | | Lite | Enterprise |
 |---|---|---|
@@ -251,13 +251,13 @@ Each gate includes its purpose, who verifies and who decides (01 §7.5), the evi
 | Code | Criterion | Evidence | Mandatory | Lite | Enterprise | Optimise / Augment / Transform (if different) |
 |---|---|---|---|---|---|---|
 | G0.01 | The charter defines the business problem or objective, the scope, the budget for phases 1 to 3 and the signed commitment of the sponsor. | P01 | Yes | Simpl. | Yes | Transform: senior management sponsor. |
-| G0.02 | The initiative fits the AI thesis and the portfolio approved in C2 and C3, with a reference to the sphere and the priority assigned. | P01 | Conditionable | Yes | Yes | Transform: it appears in the portfolio with a board decision expected at G2. |
+| G0.02 | The use case fits the AI thesis and the portfolio approved in C2 and C3, with a reference to the sphere and the priority assigned. | P01 | Conditionable | Yes | Yes | Transform: it appears in the portfolio with a board decision expected at G2. |
 | G0.03 | The context statement sets out the regulatory (including sector-specific), ethical, data, budgetary and time constraints. | P02 | Conditionable | Simpl. | Yes | — |
-| G0.04 | The preliminary screening rules out the initiative pursuing a practice prohibited by applicable regulation. | P02 | Yes ◆ | Yes | Yes | — |
+| G0.04 | The preliminary screening rules out the use case pursuing a practice prohibited by applicable regulation. | P02 | Yes ◆ | Yes | Yes | — |
 | G0.05 | The roles are assigned by name: in Lite, at least sponsor, product, technical and risk (operations, at the latest, at G4); in Enterprise, the six roles in 01 §8.1. | P03 | Yes | Yes | Yes | — |
 | G0.06 | The assignment respects the incompatibilities in 01 §8.2 and the AI auditor does not report hierarchically to the sponsor. | P03 | Yes | Yes | Yes | — |
 | G0.07 | The intensity is determined with the eight Enterprise criteria in 01 §9.2, with a justified answer to each one. | P04 · T04 | Yes | Yes | Yes | Transform: always Enterprise. |
-| G0.08 | The initiative is registered in the register with code IA-AAAA-NNN, and the planned systems appear in the inventory with technology, exposure and supplier. | P05 · T01 · T02 | Yes | Yes | Yes | — |
+| G0.08 | The use case is registered in the register with code IA-AAAA-NNN, and the planned systems appear in the inventory with technology, exposure and supplier. | P05 · T01 · T02 | Yes | Yes | Yes | — |
 | G0.09 | No construction budget has been consumed and no production data have been accessed before the decision. | P01 · T01 | Yes | Yes | Yes | — |
 | G0.10 | If personal data are expected to be processed, the data protection function has been informed. | P02 | Conditionable | Rec. | Yes | — |
 
@@ -316,11 +316,11 @@ Each gate includes its purpose, who verifies and who decides (01 §7.5), the evi
 | G2.12 | Transform: the board or its board committee has expressly approved the bet and this is recorded in the register. | P29 | Yes | — | Yes | Transform only. |
 | G2.13 | The estimated investment up to G5 and the preliminary additional net value per euro are calculated. | P08 · T11 | Conditionable | Simpl. | Yes | Transform: per stage. |
 
-**Specific rules.** If the confirmed ambition becomes Transform, the intensity becomes Enterprise and G2.11 and G2.12 apply before deciding. If an initiative approved as Transform is reclassified to a lower level, the board is informed.
+**Specific rules.** If the confirmed ambition becomes Transform, the intensity becomes Enterprise and G2.11 and G2.12 apply before deciding. If a use case approved as Transform is reclassified to a lower level, the board is informed.
 
 ### 6.4 G3 · Feasibility
 
-**Purpose.** Decide whether the initiative is technically, economically, regulatorily and organisationally feasible with an acceptable risk. It is the **main stop gate** of the lifecycle.
+**Purpose.** Decide whether the use case is technically, economically, regulatorily and organisationally feasible with an acceptable risk. It is the **main stop gate** of the lifecycle.
 
 | | Lite | Enterprise |
 |---|---|---|
@@ -336,7 +336,7 @@ Each gate includes its purpose, who verifies and who decides (01 §7.5), the evi
 | G3.03 | The legal basis for processing personal data and data minimisation are confirmed by the data protection function. | P11 | Yes ◆ | Yes | Yes | — |
 | G3.04 | Full costs are estimated by category: construction, recurring (licences, model consumption, compute, operation) and adoption. | P10 · T13 | Yes | Simpl. | Yes | — |
 | G3.05 | The expected net value is consistent with the risk appetite and the return horizon set in C2, and the benefits realisation plan is in draft with its business owner of the benefit. | P10 · P08 · P62 | Yes | Yes | Yes | Optimise: positive expected annual net value within the horizon. Augment: in addition, feasibility of adoption and of the role change. Transform: feasibility of the first stage, stop criteria per stage and documented option value. |
-| G3.06 | The stop criteria approved at G2 remain in force and have not been relaxed without the approval of the body that authorised the initiative. | P08 · P29 | Yes | Yes | Yes | — |
+| G3.06 | The stop criteria approved at G2 remain in force and have not been relaxed without the approval of the body that authorised the use case. | P08 · P29 | Yes | Yes | Yes | — |
 | G3.07 | The regulatory classification has been carried out with qualified legal judgement, is dated and signed, and states the company's role (provider or deployer). | P11 · T07 | Yes ◆ | Yes | Yes | — |
 | G3.08 | There is no prohibited practice. If there is one, the only possible outcome is Stop. | P11 | Yes ◆ | Yes | Yes | — |
 | G3.09 | It has been determined which impact assessments are required (data protection, fundamental rights, sector-specific), and those required before processing have been carried out or started with completion expected before G4. | P11 | Yes ◆ | Yes | Yes | — |
@@ -415,7 +415,7 @@ Each gate includes its purpose, who verifies and who decides (01 §7.5), the evi
 | G5.06 | [AG] The tests demonstrate that the limits of action and intent-based access control block unauthorised actions and that the kill switch stops the agent and revokes its credentials. | P22 · P19 · T10 | Yes ◆ | Yes | Yes | — |
 | G5.07 | [AG] The autonomy level authorised for production is the one tested; any subsequent increase requires returning to G4 and G5. | P18 · P23 | Yes ◆ | Yes | Yes | — |
 | G5.08 | The pilot has been run with the approved attribution method and its results reach the success threshold or do so with accepted conditions. | P22 · T11 | Conditionable | Yes | Yes | Optimise: efficiency validated against the baseline. Augment: actual adoption and performance improvement measured. Transform: market or customer evidence (use, conversion, initial revenue or verified operational change). |
-| G5.09 | No stop criterion has been reached or, if one has been reached, the body that authorised the initiative has expressly decided to proceed. | P22 · P29 | Yes | Yes | Yes | — |
+| G5.09 | No stop criterion has been reached or, if one has been reached, the body that authorised the use case has expressly decided to proceed. | P22 · P29 | Yes | Yes | Yes | — |
 | G5.10 | There is a plan to realise or reallocate the released capacity, with an owner and a date. | P20 | Conditionable | Yes | Yes | Optimise: realise. Augment: reallocate. Transform: only if there is released capacity. |
 | G5.11 | The rollback plan has been tested and the actual rollback time meets the target. | P19 | Yes | Yes | Yes | — |
 | G5.12 | The risk register is updated with the test results, and the acceptances of residual risk are recorded at the corresponding level (G3.12). | P12 · T06 | Yes ◆ | Yes | Yes | — |
@@ -474,7 +474,7 @@ Each gate includes its purpose, who verifies and who decides (01 §7.5), the evi
 
 ### 6.8 G7 · Scale or retire
 
-**Purpose.** Decide with evidence whether the initiative is scaled, iterated or retired.
+**Purpose.** Decide with evidence whether the use case is scaled, iterated or retired.
 
 | | Lite | Enterprise |
 |---|---|---|
@@ -521,7 +521,7 @@ This table develops 01 §7.6 and brings together the differences that the tables
 ### 7.2 Application rules
 
 1. **The confirmed level applies.** Ambition is proposed at G1, confirmed at G2 and reviewed at G7 (00 §5.2). Between G2 and G7 the criteria are assessed with the level confirmed at G2.
-2. **Criteria are not mixed.** An Optimise initiative cannot justify G3 with option value; a Transform initiative is not required to show positive net value within the C2 horizon at G3, but it is required to have an investment limit and stop criteria per stage.
+2. **Criteria are not mixed.** An Optimise use case cannot justify G3 with option value; a Transform use case is not required to show positive net value within the C2 horizon at G3, but it is required to have an investment limit and stop criteria per stage.
 3. **Reclassification has effects.** Moving up to Transform requires Enterprise intensity and board approval before continuing. Moving down from Transform is reported to the board, and the criteria of the new level apply from that moment.
 4. **Transform stages are controlled.** Before committing the investment for a new stage, the AI Committee should record in P29 that the learning milestones of the previous stage have been reached and that no stop criterion has been triggered, informing the board.
 5. **Released capacity is not savings.** At no level is released capacity that has not been realised or reallocated accepted as realised value at G7 (measurement rule 3, 00 §6).
@@ -607,7 +607,7 @@ The operations owner should also record their acceptance of operations (G5.18), 
 | **Verification at the *gate*** | Verifier under 01 §7.5 (AI Auditor in Enterprise) | Evidence and status of each criterion before the decision. | Verification opinion (10.2) that accompanies the request. |
 | **Subsequent audit** | AI Auditor or third line, according to the audit plan (document 38) | Sample of *gates*, decisions, conditions, operational records and retirements for a period. | Report with an outcome per audited item and classified findings (10.5). |
 
-The AI Auditor may not have taken part in the design, construction or operation of the initiative, nor report hierarchically to its sponsor (01 §8.1).
+The AI Auditor may not have taken part in the design, construction or operation of the use case, nor report hierarchically to its sponsor (01 §8.1).
 
 ### 10.2 Outcomes
 
@@ -617,7 +617,7 @@ The AI Auditor may not have taken part in the design, construction or operation 
 | **Conformant with observations** | Shortfalls that do not affect *Yes* criteria or the validity of the evidence. The request goes to the decision-maker with the observations, which may become conditions. | Findings that do not invalidate the decision: observations and minor nonconformities. |
 | **Nonconformant** | Some mandatory evidence is missing or some evidence is not valid. The request goes back to the team without a decision. | At least one major or critical nonconformity. |
 
-A *Conformant* opinion does not mean that the initiative should proceed: it means that the body can decide on a verified basis.
+A *Conformant* opinion does not mean that the use case should proceed: it means that the body can decide on a verified basis.
 
 ### 10.3 What is sampled
 
@@ -631,9 +631,9 @@ The sizes are **indicative**; the company sets them in C2 or in its audit plan a
 | **Evidence** | Evidence linked to the selected criteria. | Rules EV.01–EV.14 on all evidence for *Yes ◆* criteria; EV.05 and EV.09 on all evidence. | — |
 | **Conditions** | Conditions open and closed in the period. | All expired conditions and a sample of the closed ones. | At least 25% of the closed ones. |
 | **Operational records** | Incidents, changes, human interventions and agent actions of systems in production. | Targeted at S1, S2 and significant changes; random for the rest. | According to the audit plan. |
-| **Stops and retirements** | Initiatives stopped or retired in the period. | Random. | At least one per quarter, if any. |
+| **Stops and retirements** | Use cases stopped or retired in the period. | Random. | At least one per quarter, if any. |
 
-**Targeted selection.** Priority is given to: initiatives with two or more iterations at a *gate*; expired conditions; reference time limits exceeded; changes of intensity from Enterprise to Lite; *Not applicable* on ◆ criteria; decisions taken on the same day as the request; High residual risks; Transform initiatives; A2 or A3 agents; N3 suppliers; systems with incidents in the period.
+**Targeted selection.** Priority is given to: use cases with two or more iterations at a *gate*; expired conditions; reference time limits exceeded; changes of intensity from Enterprise to Lite; *Not applicable* on ◆ criteria; decisions taken on the same day as the request; High residual risks; Transform use cases; A2 or A3 agents; N3 suppliers; systems with incidents in the period.
 
 ### 10.4 Audit tests
 
@@ -664,7 +664,7 @@ Findings are classified using the nonconformity scale in 01 §12, preceded by th
 1. Classification is based on the most serious effect on the decision, people or compliance.
 2. A breach of a *Yes ◆* criterion in a system in production is, at a minimum, a major nonconformity.
 3. Any finding that invalidates a *gate* decision is, at a minimum, a major nonconformity.
-4. A minor nonconformity that recurs three times in twelve months in the same initiative or process is raised to major (37 §3.3).
+4. A minor nonconformity that recurs three times in twelve months in the same use case or process is raised to major (37 §3.3).
 5. The deliberate concealment or alteration of evidence is, at a minimum, a major nonconformity and is reported to the board committee.
 
 ### 10.6 Effects on the decision and time limits
@@ -672,7 +672,7 @@ Findings are classified using the nonconformity scale in 01 §12, preceded by th
 | Type | Effect on the *gate* | Containment | Action plan | Reported to |
 |---|---|---|---|---|
 | **Critical** | The *gate* is invalidated. | Immediate (maximum 48 hours), including stopping the system if necessary. | Maximum 10 days. | AI Committee and board committee. |
-| **Major** | If it invalidates the decision, the initiative returns to *Awaiting gate* and is verified again. If it is already in production, the committee decides whether to maintain operation with containment measures. | Maximum 10 days. | Maximum 30 days. | AI Committee. |
+| **Major** | If it invalidates the decision, the use case returns to *Awaiting gate* and is verified again. If it is already in production, the committee decides whether to maintain operation with containment measures. | Maximum 10 days. | Maximum 30 days. | AI Committee. |
 | **Minor** | The decision stands. | Not required. | Before the next *gate* or review. | AI Office. |
 
 The time limits are reference values and the company may adjust them in C2 without exceeding those established by applicable regulation (01 §12). Each nonconformity is recorded with code NC-AAAA-NNN in T08 and managed through the process in document 37.
@@ -691,7 +691,7 @@ Every *gate* decision and every continuity review is documented in P29 and refle
 
 | Block | Fields | Mandatory |
 |---|---|---|
-| **Identification** | Initiative code (IA-AAAA-NNN); gate; iteration number; intensity; ambition level; technology; autonomy level; suppliers. | Yes |
+| **Identification** | Use case code (IA-AAAA-NNN); gate; iteration number; intensity; ambition level; technology; autonomy level; suppliers. | Yes |
 | **Dates** | Request, verification and decision; deadline according to the reference time limit. | Yes |
 | **Evidence submitted** | For each piece of evidence: P code, version, author, date, link and result of the EV rules. | Yes |
 | **Status of the criteria** | For each criterion: code, status (Met, Not met, Not applicable or Pending), R and D dimensions, linked evidence, comment and justification for *Not applicable*. | Yes |
@@ -726,7 +726,7 @@ No weighted scoring is used: criteria are either met or not, with evidence, and 
 | Document | Relationship |
 |---|---|
 | **01 · Foundational methodology** | Normative reference: phases, gates, decision rules, roles, intensity and nonconformities. |
-| **03 · Tools and initiative register** | Criterion statuses, funnel metrics and tool T03. |
+| **03 · Tools and use case register** | Criterion statuses, funnel metrics and tool T03. |
 | **20 · Phase manuals** | Activities that produce the evidence assessed here. |
 | **22 · *Gate* checklists** | Binary controls with the same codes, and the LV-EV and LV-AG checklists. |
 | **30 · Governance model** | Higher bodies, substitutions and escalation after two iterations. |

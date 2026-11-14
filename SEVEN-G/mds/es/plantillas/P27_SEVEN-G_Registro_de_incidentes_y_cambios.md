@@ -42,7 +42,7 @@ Esta plantilla no constituye asesoramiento jurídico.
 
 | Campo | Contenido | Guía |
 |---|---|---|
-| Código de la iniciativa | | IA-AAAA-NNN (T01). |
+| Código del caso de uso | | IA-AAAA-NNN (T01). |
 | Sistema(s) de IA | | Identificador en el inventario (T02). |
 | Intensidad | | Lite · Enterprise. |
 | Periodo cubierto | | Desde DD-MM-AAAA hasta DD-MM-AAAA. |

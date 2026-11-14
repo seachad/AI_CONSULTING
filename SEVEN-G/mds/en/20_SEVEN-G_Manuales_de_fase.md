@@ -1,6 +1,6 @@
 # Phase manuals
 
-**How each phase of the lifecycle of an AI initiative is carried out, from authorisation to evolution or retirement**
+**How each phase of the lifecycle of an AI use case is carried out, from authorisation to evolution or retirement**
 
 | | |
 |---|---|
@@ -16,11 +16,11 @@
 
 > **Legal notice and disclaimer.** SEVEN-G is a reference methodological framework provided "as is" and for information purposes only. It does not constitute legal, regulatory, financial or professional advice, nor does it guarantee compliance with any law or standard. References to general regulation (such as the EU AI Act, the GDPR, DORA or NIS2), to technical standards and to regulation specific to each sector or jurisdiction may be incomplete, may not apply to a particular case or may become out of date as a result of regulatory changes, interpretations or supervisory positions after their consultation date. **Each organisation that uses SEVEN-G is solely responsible for identifying the regulation that applies to it, verifying that it is current and certifying its own regulatory compliance**, with the appropriate qualified advice. This methodology is a generic, free aid shared with the community so that nobody has to start from scratch; each person or organisation can and should adapt it to its own use. It must not be inferred that its legally sensitive parts have been reviewed by legal counsel: those reviews, for each company or sector, are the ultimate responsibility of the company, consultant or organisation that uses it. Although every effort is made to keep it up to date, some regulation may have changed without being reflected here. To the fullest extent permitted by law, the author accepts no responsibility whatsoever for the effects of its application in any organisation or for its full applicability. The methodology does not grant certification of any kind. The author accepts no liability for any use made of this content or for any decisions taken on the basis of it. The data, figures, companies and cases in the examples are fictitious or illustrative.
 
-<!-- esencial: recomendado | Working guide for each phase: activities, owners, evidence and common mistakes. The mandatory content it develops is in document 01 (phases and evidence) and in document 21 (criteria). Read the phase the initiative is in; the transitions between phases (section 11) are worth knowing from the start. -->
+<!-- esencial: recomendado | Working guide for each phase: activities, owners, evidence and common mistakes. The mandatory content it develops is in document 01 (phases and evidence) and in document 21 (criteria). Read the phase the use case is in; the transitions between phases (section 11) are worth knowing from the start. -->
 
 ## 1. Purpose and scope
 
-This document turns the initiative lifecycle defined in document 01 (section 6) into working instructions. For each phase, from 0 to 7, it sets out what must be done, in what order, who does it, what evidence must exist before the decision gate and how that gate is prepared. It includes the differences by intensity (Lite or Enterprise; at Express, the P01 §14 living record replaces the templates and each gate is assessed with the reduced list in 21 §2.5), by ambition level and by technology, as well as the transitions between phases.
+This document turns the use case lifecycle defined in document 01 (section 6) into working instructions. For each phase, from 0 to 7, it sets out what must be done, in what order, who does it, what evidence must exist before the decision gate and how that gate is prepared. It includes the differences by intensity (Lite or Enterprise; at Express, the P01 §14 living record replaces the templates and each gate is assessed with the reduced list in 21 §2.5), by ambition level and by technology, as well as the transitions between phases.
 
 **What it does not cover and where to find it**
 
@@ -32,7 +32,7 @@ This document turns the initiative lifecycle defined in document 01 (section 6) 
 | Risks, regulation, agent security, third parties and incidents | 33, 34, 35, 36 and 37 |
 | Content of each piece of evidence | Templates P01–P31 |
 
-**Scope.** AI initiatives and third-party AI embedded in processes (01 §1.2). Corporate use of general-purpose AI only goes through these manuals if it meets any Enterprise criterion (01 §9.2); otherwise it is governed through the inventory, the acceptable use policy and training (document 31).
+**Scope.** AI use cases and third-party AI embedded in processes (01 §1.2). Corporate use of general-purpose AI only goes through these manuals if it meets any Enterprise criterion (01 §9.2); otherwise it is governed through the inventory, the acceptable use policy and training (document 31).
 
 This document does not constitute legal advice. The regulatory references were consulted in September 2026 and their validity must be checked in document 34.
 
@@ -79,8 +79,8 @@ Every decision is documented with the ***gate* decision record (P29)** in the *g
 3. **No mandatory evidence, no decision.** T03 does not allow *Proceed* to be recorded with mandatory criteria in *Not met* or *Pending*.
 4. **Conditions have a deadline and an owner** and are not accepted for critical security, legal compliance or human oversight controls. Once expired, the outcome becomes *Iterate*.
 5. **After two iterations at the same *gate***, the decision is escalated to the higher body.
-6. **Stop criteria are not relaxed** without approval from the body that authorised the initiative.
-7. **Intensity only goes up without waiting for a *gate*.** It is determined in phase 0 and reviewed at G3 and at each R6. If an Enterprise criterion appears earlier (for example, Transform ambition or an agent with the capacity to act), the initiative moves to Enterprise at that moment. A return to Lite can only be decided at G3 or R6.
+6. **Stop criteria are not relaxed** without approval from the body that authorised the use case.
+7. **Intensity only goes up without waiting for a *gate*.** It is determined in phase 0 and reviewed at G3 and at each R6. If an Enterprise criterion appears earlier (for example, Transform ambition or an agent with the capacity to act), the use case moves to Enterprise at that moment. A return to Lite can only be decided at G3 or R6.
 8. **Every amount has a formula and a status**, and released capacity is reported separately (measurement rules 1, 2 and 3). P31 is kept in plain language (rule 10).
 9. **Grouping is not omitting.** When G0–G2 or G4–G5 are grouped in Lite, each gate is recorded as a separate decision in T03 and each piece of evidence is verified.
 
@@ -94,24 +94,24 @@ Event types (03 §3.3): registration; entry into and exit from a phase; *gate* r
 
 ### 3.1 Objective
 
-Formally authorise the initiative and set its framework: strategic objective, sphere, constraints, roles, intensity and inventory registration. Question: *is the initiative authorised and within what framework?*
+Formally authorise the use case and set its framework: strategic objective, sphere, constraints, roles, intensity and inventory registration. Question: *is the use case authorised and within what framework?*
 
 ### 3.2 When it starts and when it ends
 
 - **It starts** when an idea recorded in T01 (status *Registered*) has an AI Sponsor who agrees to champion it and a designated AI Product Owner, or when G7 decides to **Scale** (section 11.5).
 - **It ends** with G0: *Proceed*, *Proceed with conditions*, *Iterate* or *Stop*.
-- **Rule:** without G0 the initiative is not authorised; it does not consume budget or access production data (01 §6.2).
+- **Rule:** without G0 the use case is not authorised; it does not consume budget or access production data (01 §6.2).
 
 ### 3.3 Inputs
 
-Registered idea with a plain-language description (T01) · AI thesis, ambition by sphere and risk appetite (C2, document 13) · portfolio, framework budget and Enterprise investment threshold (C3, document 14) · corporate and acceptable use policy (document 31) · inventory and existing initiatives (T02, T01) · regulatory mapping and sector regulations (document 34) · if it comes from scaling, the G7 decision and lessons learned (P30).
+Registered idea with a plain-language description (T01) · AI thesis, ambition by sphere and risk appetite (C2, document 13) · portfolio, framework budget and Enterprise investment threshold (C3, document 14) · corporate and acceptable use policy (document 31) · inventory and existing use cases (T02, T01) · regulatory mapping and sector regulations (document 34) · if it comes from scaling, the G7 decision and lessons learned (P30).
 
 ### 3.4 Step-by-step activities
 
 | # | Activity | Performed by | Involved |
 |---|---|---|---|
 | 1 | Describe the business need and the strategic objective without presupposing the solution; identify the primary and secondary sphere. | Product | Technical, user area |
-| 2 | Check the fit with the thesis, the ambition of the sphere and the portfolio; search T01 and T02 for similar initiatives or systems. | Product | AI Office |
+| 2 | Check the fit with the thesis, the ambition of the sphere and the portfolio; search T01 and T02 for similar use cases or systems. | Product | AI Office |
 | 3 | Declare regulatory, ethical, data (availability, preliminary legal basis, special categories), budgetary, time, technological and supplier constraints. | Product | Risk, Technical, legal counsel |
 | 4 | Preliminary regulatory identification with T07 (possible prohibited practice, high risk, transparency); if no conclusion can be reached, *Pending classification*. | Product | Risk |
 | 5 | Assign the six roles, check incompatibilities (01 §8.2) and obtain express acceptance. The AI Auditor is appointed by the third line, not by the AI Sponsor. | Product | AI Office, third line |
@@ -128,7 +128,7 @@ Sponsor **A** · Product **R** · Technical **C** · Operations **I** · Risk **
 
 | Evidence | Template | Tool |
 |---|---|---|
-| Initiative charter | P01 | T01 |
+| Use case charter | P01 | T01 |
 | Context and constraints statement | P02 | T01 |
 | Role assignment record | P03 | T01 |
 | Intensity determination | P04 | T04 |
@@ -201,7 +201,7 @@ Identify opportunities from the business side within the authorised scope, disca
 
 ### 4.3 Inputs
 
-Evidence and conditions from G0 (P01–P05, T03) · process or decision data: volumes, times, costs, errors (user area, management control) · stopped or retired initiatives with comparable reasons (T01) · sphere map and ambition criteria (documents 10 and 12, T05).
+Evidence and conditions from G0 (P01–P05, T03) · process or decision data: volumes, times, costs, errors (user area, management control) · stopped or retired use cases with comparable reasons (T01) · sphere map and ambition criteria (documents 10 and 12, T05).
 
 ### 4.4 Step-by-step activities
 
@@ -361,7 +361,7 @@ Sponsor **A** · Product **R** · Technical **C** · Operations **I** · Risk **
 - Adding released capacity as savings.
 - Model metrics instead of business metrics.
 - Stop criteria so lax that they are never triggered.
-- Attributing a result that another initiative also claims (measurement rule 5).
+- Attributing a result that another use case also claims (measurement rule 5).
 
 ### 5.13 Events in the register
 
@@ -373,7 +373,7 @@ Entry into phase 2 (flagging the pivot, if any) · confirmed ambition · G2 requ
 
 ### 6.1 Objective
 
-Decide whether the initiative is technically, economically, regulatorily and organisationally feasible with acceptable risk. It is the **main stop gate**: what is not stopped here is stopped later at a higher cost.
+Decide whether the use case is technically, economically, regulatorily and organisationally feasible with acceptable risk. It is the **main stop gate**: what is not stopped here is stopped later at a higher cost.
 
 ### 6.2 When it starts and when it ends
 
@@ -577,7 +577,7 @@ Build or integrate the solution, test it and demonstrate value under real condit
 ### 8.2 When it starts and when it ends
 
 - **It starts** with *Proceed* at G4.
-- **It ends** with G5. With *Proceed* or *Proceed with conditions*, the initiative moves to *In production* and to phase 6.
+- **It ends** with G5. With *Proceed* or *Proceed with conditions*, the use case moves to *In production* and to phase 6.
 - **Rule:** Enterprise go-live requires multi-level sign-off with veto power (01 §6.7).
 
 ### 8.3 Inputs
@@ -720,7 +720,7 @@ Sponsor **I** · Product **C** · Technical **C** · Operations **A/R** · Risk 
 |---|---|---|
 | R6 | Half-yearly; AI Office and AI Sponsor. | Quarterly; AI Auditor and AI Committee. |
 | Monitoring | Performance, cost and usage. | Full, with bias, security and defined on-call cover. |
-| Visibility | Aggregated board dashboard. | Board dashboard by initiative. |
+| Visibility | Aggregated board dashboard. | Board dashboard by use case. |
 
 ### 9.8 Differences by ambition level
 
@@ -769,7 +769,7 @@ Incidents and severity · changes · nonconformities · classification changes �
 
 ### 10.1 Objective
 
-Decide on the basis of evidence whether the initiative is scaled, iterated or retired, and check the actual ambition against the declared ambition. Question: *do we scale, iterate or retire?*
+Decide on the basis of evidence whether the use case is scaled, iterated or retired, and check the actual ambition against the declared ambition. Question: *do we scale, iterate or retire?*
 
 ### 10.2 When it starts and when it ends
 
@@ -791,7 +791,7 @@ Realised value with status and actual costs (P28, T12, T13) · incidents, change
 | 5 | Analyse options: scale (scope, investment, new hypothesis), iterate (to which phase and why; keeping it unchanged is iterating to phase 6) or retire (reason and replacement). | Product | Technical, Operations |
 | 6 | Record the lessons learned. | Product | All roles |
 | 7 | If retirement is proposed, prepare the plan (T22): date, reason, body, replacement, data and models in line with retention obligations, revocation of access and agent identities, contracts, alternative process and communication to those affected. | Product and Operations | Risk, data protection officer |
-| 8 | Prepare the decision (P30), request G7 and, once decided, execute it: register the new initiative, return the initiative to its phase or execute and verify the retirement. | Product | AI Office |
+| 8 | Prepare the decision (P30), request G7 and, once decided, execute it: register the new use case, return the use case to its phase or execute and verify the retirement. | Product | AI Office |
 
 ### 10.5 Roles
 
@@ -853,15 +853,15 @@ If the actual ambition is lower than the declared ambition, it is reclassified i
 
 ### 10.13 Events in the register
 
-*Awaiting G7* · actual ambition · G7 request, verification and decision · board approval where applicable · registration of the linked initiative (Scale) · return to phase (Iterate) · retirement with coded reason.
+*Awaiting G7* · actual ambition · G7 request, verification and decision · board approval where applicable · registration of the linked use case (Scale) · return to phase (Iterate) · retirement with coded reason.
 
 ---
 
 ## 11. Transitions between phases
 
-The cycle is not linear: each gate can send the initiative back to an earlier phase, stop it or open a new cycle.
+The cycle is not linear: each gate can send the use case back to an earlier phase, stop it or open a new cycle.
 
-<!-- grafico: Transitions between phases | What happens to the initiative depending on the outcome of each gate -->
+<!-- grafico: Transitions between phases | What happens to the use case depending on the outcome of each gate -->
 ```mermaid
 flowchart LR
   F["Current phase"] --> G{"Gate"}
@@ -886,27 +886,27 @@ flowchart LR
   class E espera
 ```
 
-**Proceed with conditions.** Each condition is recorded in T03 with a deadline, an owner and the *gate* at which it will be verified. If it expires without being met, the outcome becomes *Iterate* and the initiative returns to the phase of the *gate* that imposed it; if it is already in production, it is dealt with at the next R6 or G7 is brought forward.
+**Proceed with conditions.** Each condition is recorded in T03 with a deadline, an owner and the *gate* at which it will be verified. If it expires without being met, the outcome becomes *Iterate* and the use case returns to the phase of the *gate* that imposed it; if it is already in production, it is dealt with at the next R6 or G7 is brought forward.
 
 ### 11.1 Iterate
 
 - **When:** insufficient results with a hypothesis that is still plausible; at G7, when value or risk justify redoing a part.
-- **What is done:** the activities that did not meet the criterion are repeated, the evidence is versioned again and the initiative returns to the same *gate*. From G7 it returns to phase 2 if the hypothesis changes, to phase 4 if the design changes, to phase 5 if only the construction changes or to phase 6 if the solution is kept unchanged.
+- **What is done:** the activities that did not meet the criterion are repeated, the evidence is versioned again and the use case returns to the same *gate*. From G7 it returns to phase 2 if the hypothesis changes, to phase 4 if the design changes, to phase 5 if only the construction changes or to phase 6 if the solution is kept unchanged.
 - **Limit:** after two iterations at the same *gate*, the higher body decides in accordance with document 30 (in Lite, for example, from the AI Sponsor to the AI Committee).
 - **Record:** time in phase continues to count and T01 increments the iteration counter.
 
 ### 11.2 Pivot
 
 - **When:** only at G1, G2 and G3, when the hypothesis does not hold but there is a reasonable alternative.
-- **What is done:** the initiative enters phase 2 with a new hypothesis and keeps the G0 context. From G1, the alternative must appear in P06 with its filtering notes; from G3, the feasibility and risk findings that remain valid are retained.
-- **Limits:** if the pivot changes sphere, constraints, roles or intensity, P01 to P04 are updated and verified at G2. Stop criteria are not carried over in relaxed form. A second pivot in the same initiative should be escalated to the AI Committee.
+- **What is done:** the use case enters phase 2 with a new hypothesis and keeps the G0 context. From G1, the alternative must appear in P06 with its filtering notes; from G3, the feasibility and risk findings that remain valid are retained.
+- **Limits:** if the pivot changes sphere, constraints, roles or intensity, P01 to P04 are updated and verified at G2. Stop criteria are not carried over in relaxed form. A second pivot in the same use case should be escalated to the AI Committee.
 
 ### 11.3 Stop
 
 - **When:** there is no plausible value, feasibility is not demonstrated, the risk is unacceptable or a stop criterion is triggered.
 - **What is done:** work is closed and budget and people are released; access to data and technical identities are revoked; the T02 record is updated or deregistered; any pilot is withdrawn with its rollback plan; participants are informed and lessons learned are recorded.
 - **Coded reason** (03 §3.3): no plausible value · hypothesis refuted · insufficient data · technically unfeasible · cost higher than value · unacceptable risk · regulation · no adoption · replaced by another solution · change in strategic priority.
-- **Reactivation:** a stopped initiative is not resumed. If circumstances change, it is registered as a new initiative linked to the stopped one, with its own phase 0 and reusing the valid evidence.
+- **Reactivation:** a stopped use case is not resumed. If circumstances change, it is registered as a new use case linked to the stopped one, with its own phase 0 and reusing the valid evidence.
 
 ### 11.4 On hold
 
@@ -920,9 +920,9 @@ A system in production does not move to *On hold*: its suspension is managed wit
 ### 11.5 Scaling as a new phase 0
 
 - **When:** G7 decides to extend the scope (areas, populations, countries, channels, volumes) or to increase autonomy or ambition.
-- **What is done:** the extended scope is registered in T01 as a **new initiative, with its own code, linked to the originating initiative**, and goes through the cycle from phase 0. It may reuse evidence from the originating initiative, identified with its version and verified again. The intensity is determined again.
-- **Originating initiative:** it continues operating with its R6 reviews until the new one absorbs or replaces it; its retirement or integration is then decided at G7.
-- **Value:** the new initiative only declares the incremental value of the extended scope (measurement rule 5).
+- **What is done:** the extended scope is registered in T01 as a **new use case, with its own code, linked to the originating use case**, and goes through the cycle from phase 0. It may reuse evidence from the originating use case, identified with its version and verified again. The intensity is determined again.
+- **Originating use case:** it continues operating with its R6 reviews until the new one absorbs or replaces it; its retirement or integration is then decided at G7.
+- **Value:** the new use case only declares the incremental value of the extended scope (measurement rule 5).
 
 ### 11.6 Retirement
 
@@ -935,10 +935,10 @@ It is decided at G7 and executed with P30 and T22. It records date, reason, deci
 | **Intensity from Lite to Enterprise** | Immediate when the criterion appears; pending work is completed with Enterprise templates and subsequent *gates* are resolved with an Enterprise verifier and decision-maker. |
 | **Intensity from Enterprise to Lite** | Only at G3 or R6, with recorded justification. |
 | **Ambition** | Proposed in phase 1, confirmed in phase 2 and reviewed in phase 7. A change to Transform at any other time requires Enterprise intensity and board approval before proceeding. |
-| **Regulatory classification** | If it becomes high risk or a possible prohibited practice is detected, the initiative returns to phase 3 or, if it is in production, G7 is brought forward. |
+| **Regulatory classification** | If it becomes high risk or a possible prohibited practice is detected, the use case returns to phase 3 or, if it is in production, G7 is brought forward. |
 | **Agent autonomy** | Any increase is a significant change: new risk assessment, intensity review and decision by the competent body before applying it. |
 
-### 11.8 Initiatives predating adoption of the framework
+### 11.8 Use cases predating adoption of the framework
 
 They are regularised within the time limit approved in C2 through a review equivalent to G7 (01 §14). The evidence for phases 6 and 7 is prepared, together with the essential evidence from earlier phases (regulatory classification, risks, rollback plan), expressly identified as produced during regularisation, so it does not constitute documentation produced after the fact within the meaning of 01 §7.4.
 
@@ -950,7 +950,7 @@ The templates for each phase are in the table in section 2.2 and in section 6 of
 
 | Code | Tool | Phases |
 |---|---|---|
-| T01 · T03 | Initiative register · *Gate* manager | All |
+| T01 · T03 | Use case register · *Gate* manager | All |
 | T02 · T04 · T07 | Inventory · Intensity determination · Regulatory classifier | 0, 3, 6 |
 | T05 | Ambition classifier | 1, 2, 7 |
 | T06 · T09 · T13 | Risks · Suppliers · Costs per use case | 3–7 |
@@ -965,7 +965,7 @@ The templates for each phase are in the table in section 2.2 and in section 6 of
 | Document | Relationship |
 |---|---|
 | **01 · Foundational methodology** | Normative reference that these manuals develop. |
-| **03 · Tools and initiative register** | Statuses, events, time limits and tools. |
+| **03 · Tools and use case register** | Statuses, events, time limits and tools. |
 | **12 · Transformation index** | Ambition criteria and effect of actual ambition. |
 | **13 and 14 · AI thesis and portfolio management** | Thresholds, horizon, time limits and retirement criteria. |
 | **21 and 22 · *Gate* criteria and checklists** | `G<n>.<nn>` and `R6.<nn>` criteria and `LV-` controls. |

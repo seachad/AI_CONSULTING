@@ -1,6 +1,6 @@
 # Gestión de cartera
 
-**Cómo se seleccionan, priorizan, equilibran, revisan y retiran las iniciativas de IA de la compañía**
+**Cómo se seleccionan, priorizan, equilibran, revisan y retiran los casos de uso de IA de la compañía**
 
 | | |
 |---|---|
@@ -16,13 +16,13 @@
 
 > **Aviso legal y exención de responsabilidad.** SEVEN-G es un marco metodológico de referencia que se ofrece «tal cual» y con fines exclusivamente informativos. No constituye asesoramiento jurídico, regulatorio, financiero ni profesional, ni garantiza el cumplimiento de ninguna norma. Las referencias a regulación general (como el Reglamento Europeo de IA, el RGPD, DORA o NIS2), a normas técnicas y a regulación específica de cada sector o jurisdicción pueden ser incompletas, no aplicar a un caso concreto o quedar desactualizadas por cambios normativos, interpretaciones o criterios de las autoridades posteriores a su fecha de consulta. **Cada organización que use SEVEN-G es la única responsable de identificar la normativa que le aplica, verificar su vigencia y certificar su propio cumplimiento regulatorio**, con el asesoramiento cualificado que corresponda. Esta metodología es una ayuda genérica y gratuita, compartida con la comunidad para que nadie tenga que empezar desde cero; cada persona u organización puede y debe adaptarla a su propio uso. No debe entenderse que sus partes jurídicamente sensibles hayan sido revisadas por una asesoría jurídica: esas revisiones, para cada empresa o sector, son responsabilidad última de la empresa, el consultor o la organización que la use. Aunque se procura mantenerla al día, alguna norma puede haber cambiado sin que se recoja aquí. En la máxima medida permitida por la ley, el autor no asume responsabilidad alguna por los efectos de su aplicación en ninguna organización ni por su aplicabilidad completa. La metodología no otorga certificación de ningún tipo. El autor no asume responsabilidad alguna por el uso que se haga de este contenido ni por las decisiones que se adopten con él. Los datos, cifras, compañías y casos de los ejemplos son ficticios o ilustrativos.
 
-<!-- esencial: siempre | Cartera priorizada (C3), revisión mensual del comité, tratamiento de las iniciativas estancadas y de las condiciones vencidas, procedimiento de retirada y regularización de lo que existía antes del marco. Los pesos y umbrales son de cada compañía; la retirada y la regularización no se omiten. -->
+<!-- esencial: siempre | Cartera priorizada (C3), revisión mensual del comité, tratamiento de los casos de uso estancados y de las condiciones vencidas, procedimiento de retirada y regularización de lo que existía antes del marco. Los pesos y umbrales son de cada compañía; la retirada y la regularización no se omiten. -->
 
 ## 1. Objeto y alcance
 
-Este documento desarrolla la etapa **C3 · Cartera** del ciclo corporativo (01 §5.1) y la gestión continua de la cartera en **C4 · Supervisión**. Define cómo entran las iniciativas, cómo se priorizan y financian, cómo se mantiene el equilibrio de ambición y de riesgo, cómo se revisa la cartera, cómo se tratan las iniciativas estancadas, cómo se retira una iniciativa y cómo se regularizan las iniciativas anteriores a la adopción del marco.
+Este documento desarrolla la etapa **C3 · Cartera** del ciclo corporativo (01 §5.1) y la gestión continua de la cartera en **C4 · Supervisión**. Define cómo entran los casos de uso, cómo se priorizan y financian, cómo se mantiene el equilibrio de ambición y de riesgo, cómo se revisa la cartera, cómo se tratan los casos de uso estancados, cómo se retira un caso de uso y cómo se regularizan los casos de uso anteriores a la adopción del marco.
 
-Aplica a todas las iniciativas del registro (T01): iniciativas propias, IA de terceros integrada en procesos y uso corporativo de IA de propósito general que cumpla algún criterio Enterprise (01 §1.2). Las herramientas principales son **T01 · Registro de iniciativas**, **T16 · Mapa de esferas de la cartera** y **T22 · Gestor de retiradas**.
+Aplica a todos los casos de uso del registro (T01): casos de uso propios, IA de terceros integrada en procesos y uso corporativo de IA de propósito general que cumpla algún criterio Enterprise (01 §1.2). Las herramientas principales son **T01 · Registro de casos de uso**, **T16 · Mapa de esferas de la cartera** y **T22 · Gestor de retiradas**.
 
 Este documento no constituye asesoramiento jurídico.
 
@@ -31,8 +31,8 @@ Este documento no constituye asesoramiento jurídico.
 1. **La cartera ejecuta la tesis.** Se financia lo que encaja con la tesis de IA, la ambición por esfera y el apetito de riesgo aprobados en C2.
 2. **Cada ambición compite con su igual.** Una apuesta de transformación no compite por el mismo presupuesto ni con los mismos criterios que una optimización.
 3. **Se financia por etapas.** El dinero se libera *gate* a *gate*; nadie recibe el presupuesto completo al entrar.
-4. **Terminar antes que empezar.** La capacidad se asigna primero a las iniciativas avanzadas que cumplen sus criterios.
-5. **El riesgo se suma.** La cartera tiene límites de concentración, además de los límites de cada iniciativa (principio 5 de 01 §3).
+4. **Terminar antes que empezar.** La capacidad se asigna primero a los casos de uso avanzados que cumplen sus criterios.
+5. **El riesgo se suma.** La cartera tiene límites de concentración, además de los límites de cada caso de uso (principio 5 de 01 §3).
 6. **Retirar es gestionar.** Una retirada planificada libera recursos y reduce riesgo; no es un fracaso del equipo.
 
 ---
@@ -48,7 +48,7 @@ Este documento no constituye asesoramiento jurídico.
 | **Resultados obligatorios** (01 §5.1) | Cartera priorizada con nivel de ambición, esfera, intensidad, presupuesto y responsables; criterios de retirada; capacidad disponible. |
 | **Resultados de este documento** | Sobres presupuestarios por carril; tabla de priorización; plan de capacidad; límites de concentración aplicados; plan de regularización; calendario de revisiones. Se documentan con el plan de cartera C3 (P36). |
 | **Responsable** | Comité de IA, con la preparación de la oficina de IA. |
-| **Aprueba** | Comité de IA. El consejo aprueba las iniciativas de Transformar y cualquier trasvase de su sobre. |
+| **Aprueba** | Comité de IA. El consejo aprueba los casos de uso de Transformar y cualquier trasvase de su sobre. |
 
 ### 2.2 Calendario
 
@@ -56,8 +56,8 @@ Este documento no constituye asesoramiento jurídico.
 |---|---|---|
 | **Anual (C3)** | Construcción o renovación de la cartera tras C2 o C5: sobres, priorización completa, capacidad, límites. | Comité de IA; consejo para Transformar |
 | **Trimestral** | Revisión de equilibrio, concentración, programas y retiradas; informe al consejo en C4. | Comité de IA |
-| **Mensual** | Seguimiento del embudo, estancadas, condiciones vencidas, esperas y nuevas entradas. | Comité de IA |
-| **Continuo** | Alta de iniciativas, alertas de T01, preparación de información. | Oficina de IA |
+| **Mensual** | Seguimiento del embudo, estancados, condiciones vencidas, esperas y nuevas entradas. | Comité de IA |
+| **Continuo** | Alta de casos de uso, alertas de T01, preparación de información. | Oficina de IA |
 
 ### 2.3 Responsabilidades
 
@@ -75,15 +75,15 @@ Este documento no constituye asesoramiento jurídico.
 
 ---
 
-## 3. Entrada de iniciativas en la cartera
+## 3. Entrada de casos de uso en la cartera
 
 ### 3.1 Canales
 
-Las iniciativas pueden proceder de las áreas de negocio, de retos planteados por el consejo o la dirección, de la oficina de IA o de propuestas de proveedores. **Toda iniciativa necesita un patrocinador de negocio**: una propuesta de un proveedor sin patrocinador interno no entra. El documento 54, sección 5, detalla las ocho fuentes de las que nacen los casos de uso, el sesgo típico de cada una y lo que le falta antes de entrar.
+Los casos de uso pueden proceder de las áreas de negocio, de retos planteados por el consejo o la dirección, de la oficina de IA o de propuestas de proveedores. **Todo caso de uso necesita un patrocinador de negocio**: una propuesta de un proveedor sin patrocinador interno no entra. El documento 54, sección 5, detalla las ocho fuentes de las que nacen los casos de uso, el sesgo típico de cada una y lo que le falta antes de entrar.
 
 ### 3.2 Ficha mínima de entrada
 
-Para pasar de *Registrada* a fase 0 (03 §3.2), la iniciativa aporta:
+Para pasar de *Registrado* a fase 0 (03 §3.2), el caso de uso aporta:
 
 | Campo | Requisito |
 |---|---|
@@ -97,7 +97,7 @@ Para pasar de *Registrada* a fase 0 (03 §3.2), la iniciativa aporta:
 
 ### 3.3 Filtros previos
 
-No entran en la cartera, y se registran con motivo: las **prácticas prohibidas** por la regulación; las iniciativas **duplicadas** de otra existente (se fusionan); las que **no requieren IA** (se derivan a la alternativa); las que quedan **fuera del apetito de riesgo** aprobado; y las de **Transformar sin patrocinio de la alta dirección**.
+No entran en la cartera, y se registran con motivo: las **prácticas prohibidas** por la regulación; los casos de uso **duplicados** de otro existente (se fusionan); los que **no requieren IA** (se derivan a la alternativa); los que quedan **fuera del apetito de riesgo** aprobado; y los de **Transformar sin patrocinio de la alta dirección**.
 
 ### 3.4 Ventanas de entrada
 
@@ -131,11 +131,11 @@ El **neto adicional por euro** (neto anual adicional esperado ÷ inversión adic
 | **Capacidad** | Equipo, proveedor y capacidad de adopción del área receptora. | 10 | 15 | 15 |
 | **Total** | | **100** | **100** | **100** |
 
-**Puntuación de la iniciativa (0–100) = Σ (peso × puntuación del criterio) ÷ 5.**
+**Puntuación del caso de uso (0–100) = Σ (peso × puntuación del criterio) ÷ 5.**
 
 ### 4.3 Escalas de puntuación
 
-Todas las escalas van de 1 a 5. Un criterio **sin dato puntúa 0 y se muestra como "sin dato"** (regla 8); una iniciativa con el neto adicional por euro sin dato no puede superar G2.
+Todas las escalas van de 1 a 5. Un criterio **sin dato puntúa 0 y se muestra como "sin dato"** (regla 8); un caso de uso con el neto adicional por euro sin dato no puede superar G2.
 
 **Neto adicional por euro.** Se usa el **múltiplo en el horizonte** = neto adicional por euro × horizonte de retorno de C2 en años. Un múltiplo de 1 significa que la inversión adicional se recupera dentro del horizonte, sin descontar. Es un criterio de **priorización**, no de viabilidad: la viabilidad económica en G3 se decide solo con VAN ≥ 0 con el horizonte y la tasa fijados en C2 (documento 40, sección 8.3; 01 §7.6).
 
@@ -151,7 +151,7 @@ Umbrales iniciales, a calibrar. Si después de G2 el importe sigue siendo solo *
 
 | Puntuación | Encaje con la tesis | Contribución a la ambición | Riesgo residual esperado | Dependencia de datos | Capacidad |
 |---|---|---|---|---|---|
-| **5** | Objetivo explícito de la tesis en una esfera prioritaria. | Cubre un hueco: esfera con ambición fijada sin iniciativas de ese nivel. | Bajo | Datos disponibles, calidad verificada y base legal confirmada. | Equipo y proveedor asignados; área receptora con capacidad de adopción. |
+| **5** | Objetivo explícito de la tesis en una esfera prioritaria. | Cubre un hueco: esfera con ambición fijada sin casos de uso de ese nivel. | Bajo | Datos disponibles, calidad verificada y base legal confirmada. | Equipo y proveedor asignados; área receptora con capacidad de adopción. |
 | **4** | Objetivo explícito en esfera no prioritaria. | Refuerza un nivel por debajo de su objetivo. | — | Disponibles con ajustes menores. | Equipo asignado; proveedor en selección. |
 | **3** | Esfera permitida sin objetivo explícito. | Neutra. | Medio | Requieren preparación planificada dentro de la fase 3. | Capacidad disponible en el trimestre siguiente. |
 | **2** | Encaje indirecto. | Añade a un nivel en su objetivo. | — | No disponibles, pero obtenibles con un trabajo de datos identificado. | Capacidad disponible en dos trimestres o dependiente de contratación. |
@@ -161,7 +161,7 @@ El riesgo residual Crítico no puntúa: es un filtro eliminatorio salvo aprobaci
 
 ### 4.4 Reglas para que el retorno no bloquee la transformación
 
-1. **Sobres separados.** C2 fija la proporción del presupuesto marco para cada carril. Las iniciativas solo compiten dentro de su carril.
+1. **Sobres separados.** C2 fija la proporción del presupuesto marco para cada carril. Los casos de uso solo compiten dentro de su carril.
 2. **Criterios propios.** Las de Transformar se deciden con los criterios de 01 §7.6: hitos de aprendizaje, límite de inversión por etapa, criterios de parada y valor de opción documentado; no con un umbral de neto adicional por euro.
 3. **Sin trasvases silenciosos.** El sobre de Transformar no se reasigna a otros carriles sin aprobación del consejo. El sobre no utilizado se informa al consejo, porque es una señal del índice de transformación (señal 1).
 4. **Parada por criterios previos.** Una apuesta de Transformar solo se para por sus criterios de parada o por riesgo, no por compararse a mitad de etapa con optimizaciones de retorno inmediato.
@@ -169,14 +169,14 @@ El riesgo residual Crítico no puntúa: es un filtro eliminatorio salvo aprobaci
 
 Y, en sentido contrario, para que "Transformar" no sirva de refugio:
 
-6. **Clasificación verificada.** Una iniciativa presentada como Transformar que responde negativamente a las preguntas 1 a 4 de 00 §5.2 se reclasifica y cambia de carril.
+6. **Clasificación verificada.** Un caso de uso presentado como Transformar que responde negativamente a las preguntas 1 a 4 de 00 §5.2 se reclasifica y cambia de carril.
 7. **Sin hitos no hay apuesta.** Una propuesta de Transformar sin hitos de aprendizaje, límite por etapa y criterios de parada no entra en la priorización.
 
 ### 4.5 Ejemplo ilustrativo
 
 *Datos ilustrativos. Carril Optimizar; horizonte de retorno de C2: 2 años.*
 
-| Iniciativa | Neto adicional por euro | Múltiplo | Neto | Tesis | Ambición | Riesgo | Datos | Capacidad | Puntuación |
+| Caso de uso | Neto adicional por euro | Múltiplo | Neto | Tesis | Ambición | Riesgo | Datos | Capacidad | Puntuación |
 |---|---|---|---|---|---|---|---|---|---|
 | IA-2026-014 Clasificación de reclamaciones | 1,6 | 3,2 | 5 | 4 | 3 | 5 | 4 | 4 | **90** |
 | IA-2026-021 Conciliación de facturas | 0,9 | 1,8 | 3 | 5 | 3 | 5 | 5 | 3 | **78** |
@@ -206,13 +206,13 @@ El apetito de riesgo de C2 se traduce en **límites de cartera**, que el comité
 
 | Límite | Ejemplo de formulación |
 |---|---|
-| Riesgo residual Alto | Número máximo de iniciativas en producción con riesgo residual Alto aceptado. |
+| Riesgo residual Alto | Número máximo de casos de uso en producción con riesgo residual Alto aceptado. |
 | Sistemas de alto riesgo regulatorio | Número máximo simultáneo en fases 4–5, según la capacidad de control. |
 | Autonomía | Agentes con autonomía A2 o A3 en producción solo con nivel 3 en D4 y D6 (documento 11). |
 | Exposición directa | Proporción máxima de la inversión en sistemas con exposición directa sin evaluación independiente. |
 | Proveedores | Ver sección 9. |
 
-Superar un límite no para las iniciativas en curso, pero impide que entren nuevas en la categoría afectada hasta que el comité apruebe una medida o el consejo modifique el apetito.
+Superar un límite no para los casos de uso en curso, pero impide que entren nuevos en la categoría afectada hasta que el comité apruebe una medida o el consejo modifique el apetito.
 
 ---
 
@@ -222,13 +222,13 @@ Superar un límite no para las iniciativas en curso, pero impide que entren nuev
 
 | Partida | Contenido |
 |---|---|
-| **Coste recurrente comprometido** | Coste de operación de las iniciativas en producción. Se reserva primero: cada puesta en producción reduce el presupuesto disponible para iniciativas nuevas en años siguientes. |
+| **Coste recurrente comprometido** | Coste de operación de los casos de uso en producción. Se reserva primero: cada puesta en producción reduce el presupuesto disponible para casos de uso nuevos en años siguientes. |
 | **Sobre de Optimizar** | Tramos 2 y 3 de su carril. |
-| **Sobre de Aumentar** | Tramos 2 y 3 de su carril, incluida la adopción propia de cada iniciativa. |
+| **Sobre de Aumentar** | Tramos 2 y 3 de su carril, incluida la adopción propia de cada caso de uso. |
 | **Sobre de Transformar por etapas** | Etapas aprobadas por el consejo, con su límite por etapa. |
-| **Habilitación** | Datos, plataforma común, gobierno y cumplimiento, incluidas las iniciativas de las esferas 08 y 09. |
-| **Adopción y formación** | Alfabetización, formación por rol y gestión del cambio no imputadas a iniciativas. |
-| **Contingencia** | Incluye la **reserva de descubrimiento** (tramo 1 de todas las iniciativas, fases 0–3, antes de confirmar su carril), la **reserva de retirada** (retiradas y regularización) y las desviaciones aprobadas. La asigna el comité de IA con registro. |
+| **Habilitación** | Datos, plataforma común, gobierno y cumplimiento, incluidos los casos de uso de las esferas 08 y 09. |
+| **Adopción y formación** | Alfabetización, formación por rol y gestión del cambio no imputadas a casos de uso. |
+| **Contingencia** | Incluye la **reserva de descubrimiento** (tramo 1 de todos los casos de uso, fases 0–3, antes de confirmar su carril), la **reserva de retirada** (retiradas y regularización) y las desviaciones aprobadas. La asigna el comité de IA con registro. |
 
 Las partidas son los siete sobres del presupuesto marco que aprueba el consejo en C2 (13 §12); esta sección fija cómo los usa la cartera. El plan de cartera los recoge en P36 §3.
 
@@ -243,13 +243,13 @@ Las partidas son los siete sobres del presupuesto marco que aprueba el consejo e
 
 En Transformar, cada etapa aprobada es un tramo con su hito de aprendizaje; la siguiente etapa no se libera sin el hito cumplido. Una desviación superior al 10 % sobre el tramo aprobado requiere aprobación del órgano que decidió el *gate*.
 
-Los tramos de cada iniciativa se registran en T01, en el plan de realización (`plan_realizacion.tramos`), con su fecha, su importe, el *gate* que lo libera y su **condición de paso**, el hito que tiene que cumplirse para liberarlo (documento 43 §4.1). Solo se registran como tramos las inversiones: el 1 · descubrimiento y viabilidad, el 2 · diseño y entrega, el escalado y, en Transformar, cada etapa. El tramo 3 · operación no se registra como tramo: es el coste recurrente, que la curva de realización ya resta. El panel del consejo (T17) lista los tramos pendientes, señala los que no tienen condición de paso y muestra el neto anual que desbloquea cada tramo por euro invertido (F3 del tramo, documento 40 regla 9).
+Los tramos de cada caso de uso se registran en T01, en el plan de realización (`plan_realizacion.tramos`), con su fecha, su importe, el *gate* que lo libera y su **condición de paso**, el hito que tiene que cumplirse para liberarlo (documento 43 §4.1). Solo se registran como tramos las inversiones: el 1 · descubrimiento y viabilidad, el 2 · diseño y entrega, el escalado y, en Transformar, cada etapa. El tramo 3 · operación no se registra como tramo: es el coste recurrente, que la curva de realización ya resta. El panel del consejo (T17) lista los tramos pendientes, señala los que no tienen condición de paso y muestra el neto anual que desbloquea cada tramo por euro invertido (F3 del tramo, documento 40 regla 9).
 
 ### 6.3 Capacidad
 
 - La oficina de IA mantiene un **plan de capacidad** de los perfiles escasos: responsables técnicos, datos, riesgos, auditor de IA, seguridad y adopción.
-- El comité fija un **límite de iniciativas simultáneas en fases 3 a 5** según esa capacidad. Superado el límite, no entran nuevas iniciativas en fase 4 hasta que alguna pase G5 o se pare.
-- La capacidad de **verificar y decidir** también es capacidad: si el tiempo de decisión de *gates* supera su plazo de referencia (03 §3.6), el comité refuerza la verificación antes de admitir más iniciativas.
+- El comité fija un **límite de casos de uso simultáneos en fases 3 a 5** según esa capacidad. Superado el límite, no entran nuevos casos de uso en fase 4 hasta que alguno pase G5 o se pare.
+- La capacidad de **verificar y decidir** también es capacidad: si el tiempo de decisión de *gates* supera su plazo de referencia (03 §3.6), el comité refuerza la verificación antes de admitir más casos de uso.
 
 ---
 
@@ -260,7 +260,7 @@ Los tramos de cada iniciativa se registran en T01, en el plan de realización (`
 | Punto | Fuente | Decisión posible |
 |---|---|---|
 | Nuevas entradas y *gates* Enterprise | T01, T03 | Admitir, priorizar, decidir *gates*. |
-| Estancadas, condiciones vencidas y esperas | Alertas de T01 | Sección 8. |
+| Estancados, condiciones vencidas y esperas | Alertas de T01 | Sección 8. |
 | Desviaciones de coste y valor | T12, T13 | Condiciones, R6 anticipada. |
 | Incidentes y no conformidades mayores o críticas | T08 | Contención, parada, retirada. |
 | Métricas del embudo: tiempo en fase, tiempo de decisión, conversión | T01 | Medidas sobre cuellos de botella. |
@@ -279,13 +279,13 @@ Los tramos de cada iniciativa se registran en T01, en el plan de realización (`
 
 ---
 
-## 8. Estancadas, condiciones vencidas y en espera
+## 8. Estancados, condiciones vencidas y en espera
 
 Las definiciones y métricas son las de 03 §3.5 y §3.6.
 
 | Situación | Tratamiento | Plazo |
 |---|---|---|
-| **Estancada** (supera el plazo de referencia de su fase) | El responsable de producto explica causa y plan. El comité decide: plan de recuperación con fecha; nuevo plazo justificado (una sola vez por fase); paso a *En espera* con motivo; *gate* anticipado; o parar. | Explicación en 5 días hábiles; decisión en la siguiente reunión mensual. |
+| **Estancado** (supera el plazo de referencia de su fase) | El responsable de producto explica causa y plan. El comité decide: plan de recuperación con fecha; nuevo plazo justificado (una sola vez por fase); paso a *En espera* con motivo; *gate* anticipado; o parar. | Explicación en 5 días hábiles; decisión en la siguiente reunión mensual. |
 | **Segunda estancada en la misma fase** | *Gate* anticipado con la opción de parar expresamente considerada. | Siguiente reunión mensual. |
 | **Condición vencida** | El resultado del *gate* pasa a **Iterar** (01 §7.4, regla 4). Si la condición afecta a un control relevante, se abre una no conformidad mayor (01 §12). | Automático al vencer. |
 | **En espera** | Requiere motivo codificado y fecha prevista de reanudación. El tiempo en espera no cuenta como tiempo en fase, pero la capacidad asignada se libera. | Revisión en cada reunión mensual. |
@@ -295,18 +295,18 @@ Las definiciones y métricas son las de 03 §3.5 y §3.6.
 
 ## 9. Concentración de riesgos y dependencia de proveedores
 
-El comité analiza trimestralmente si varias iniciativas pueden fallar por la misma causa.
+El comité analiza trimestralmente si varios casos de uso pueden fallar por la misma causa.
 
 | Tipo de concentración | Qué se mide | Señal de alerta (a fijar en C2) |
 |---|---|---|
-| **Proveedor** | Proporción de iniciativas en producción, coste recurrente y funciones críticas que dependen de un mismo proveedor. | Un proveedor soporta varias funciones críticas o supera la proporción fijada. |
-| **Modelo base** | Iniciativas que dependen del mismo modelo de IA de propósito general o de su versión. | Cambio o retirada anunciada del modelo que afecta a varias iniciativas. |
-| **Datos** | Iniciativas que dependen del mismo conjunto de datos o fuente de conocimiento. | Fuente con incidencias de calidad o base legal en revisión. |
-| **Personas** | Iniciativas que dependen de las mismas personas clave. | Una persona es imprescindible en varias iniciativas. |
-| **Riesgo tipo** | Riesgos residuales Altos con el mismo código `RT-XXX-NN`. | Mismo riesgo Alto en varias iniciativas. |
+| **Proveedor** | Proporción de casos de uso en producción, coste recurrente y funciones críticas que dependen de un mismo proveedor. | Un proveedor soporta varias funciones críticas o supera la proporción fijada. |
+| **Modelo base** | Casos de uso que dependen del mismo modelo de IA de propósito general o de su versión. | Cambio o retirada anunciada del modelo que afecta a varios casos de uso. |
+| **Datos** | Casos de uso que dependen del mismo conjunto de datos o fuente de conocimiento. | Fuente con incidencias de calidad o base legal en revisión. |
+| **Personas** | Casos de uso que dependen de las mismas personas clave. | Una persona es imprescindible en varios casos de uso. |
+| **Riesgo tipo** | Riesgos residuales Altos con el mismo código `RT-XXX-NN`. | Mismo riesgo Alto en varios casos de uso. |
 | **Esfera o área** | Inversión y exposición concentradas. | Desviación de la ambición por esfera. |
 
-**Medidas.** Los proveedores con nivel de exigencia **N3** (documento 36) deben tener plan de salida probado o, al menos, documentado y con coste estimado, que se incorpora al neto de la iniciativa. En entidades sujetas a DORA, los servicios TIC que soportan funciones esenciales o importantes requieren estrategias de salida (artículo 28 del Reglamento (UE) 2022/2554). Un cambio relevante del proveedor o del modelo base provoca una R6 extraordinaria de las iniciativas afectadas.
+**Medidas.** Los proveedores con nivel de exigencia **N3** (documento 36) deben tener plan de salida probado o, al menos, documentado y con coste estimado, que se incorpora al neto del caso de uso. En entidades sujetas a DORA, los servicios TIC que soportan funciones esenciales o importantes requieren estrategias de salida (artículo 28 del Reglamento (UE) 2022/2554). Un cambio relevante del proveedor o del modelo base provoca una R6 extraordinaria de los casos de uso afectados.
 
 ---
 
@@ -327,14 +327,14 @@ La retirada es un resultado de G7 (01 §6.9 y §7.3). Toda retirada debe registr
 | Tecnología o proveedor | Fin de soporte, retirada del modelo base o cambio contractual inaceptable. | Inviable técnicamente |
 | Estrategia | La tesis revisada ya no incluye la esfera o el objetivo. | Cambio de prioridad estratégica |
 
-Cuando el riesgo lo exige, la iniciativa se **detiene de inmediato** con el interruptor de parada o el plan de reversión (P19) y el G7 formal se celebra después, en un plazo máximo de 10 días hábiles.
+Cuando el riesgo lo exige, el caso de uso se **detiene de inmediato** con el interruptor de parada o el plan de reversión (P19) y el G7 formal se celebra después, en un plazo máximo de 10 días hábiles.
 
 ### 10.2 Responsables
 
 | Rol | Responsabilidad en la retirada |
 |---|---|
 | **Patrocinador** | Propone o acepta la retirada; decide en Lite; responde del sustituto y del cierre económico. |
-| **Comité de IA** | Decide en Enterprise; informa al consejo cuando se retira una iniciativa de Transformar o que soporta una función crítica. |
+| **Comité de IA** | Decide en Enterprise; informa al consejo cuando se retira un caso de uso de Transformar o que soporta una función crítica. |
 | **Responsable de producto** | Elabora el plan de retirada; dirige la transición y la comunicación a usuarios. |
 | **Responsable técnico** | Desactivación, desmantelamiento de integraciones, archivo de modelos y documentación. |
 | **Responsable de operación** | Ejecuta la desactivación, revoca identidades y permisos, vigila hasta el cierre. |
@@ -373,7 +373,7 @@ Plazos de referencia: plan de retirada aprobado en 15 días (Lite) o 30 días (E
 
 | Bloque | Contenido |
 |---|---|
-| Decisión | Código de la iniciativa, fecha de G7, órgano, motivo codificado, alcance (total o parcial). |
+| Decisión | Código del caso de uso, fecha de G7, órgano, motivo codificado, alcance (total o parcial). |
 | Calendario | Fecha de congelación de cambios, periodo en paralelo, fecha de desactivación, fecha de cierre. |
 | Sustituto | Solución que asume la función, criterios de aceptación y capacidad necesaria (10.6). |
 | Afectados | Usuarios, clientes o personas afectadas, áreas, proveedores, autoridades si procede. |
@@ -394,7 +394,7 @@ Plazos de referencia: plan de retirada aprobado en 15 días (Lite) o 30 días (E
 | **Instrucciones, bases de conocimiento e índices** | Archivo si soportan decisiones reclamables; si no, borrado registrado. |
 | **Identidades, credenciales y permisos de agentes e integraciones** | Revocación **antes** o en el mismo momento de la desactivación. No puede quedar ninguna identidad activa. |
 | **Decisiones tomadas con el sistema** | Conservación de la trazabilidad necesaria para atender reclamaciones y derechos de las personas. |
-| **Inventario y registro** | T02 pasa el sistema a "retirado"; T01 pasa la iniciativa a *Retirada* con la fecha de cierre. |
+| **Inventario y registro** | T02 pasa el sistema a "retirado"; T01 pasa el caso de uso a *Retirado* con la fecha de cierre. |
 
 ### 10.6 Sustituto y continuidad
 
@@ -439,9 +439,9 @@ La retirada de una herramienta de IA de uso corporativo sigue los pasos 3 a 10 c
 
 ---
 
-## 11. Regularización de iniciativas previas al marco
+## 11. Regularización de casos de uso previos al marco
 
-Las iniciativas en producción anteriores a la adopción de SEVEN-G deben regularizarse en el plazo aprobado en C2, pasando por una revisión de continuidad equivalente a G7 (01 §14).
+Los casos de uso en producción anteriores a la adopción de SEVEN-G deben regularizarse en el plazo aprobado en C2, pasando por una revisión de continuidad equivalente a G7 (01 §14).
 
 ### 11.1 Pasos
 
@@ -456,26 +456,26 @@ Las iniciativas en producción anteriores a la adopción de SEVEN-G deben regula
 | **Piloto** | Se evalúa en G3 con los resultados del piloto. | Continuar; iterar; parar. |
 | **Idea** | Entrada ordinaria (sección 3). | — |
 
-4. **Registro.** Cada iniciativa regularizada lleva la etiqueta libre "Regularización" y la fecha de su revisión.
+4. **Registro.** Cada caso de uso regularizado lleva la etiqueta libre "Regularización" y la fecha de su revisión.
 
 ### 11.2 Reglas
 
 - La documentación de regularización se identifica como tal, con la fecha en que se elabora. No acredita *gates* pasados ni puede presentarse como anterior: hacerlo es una no conformidad mayor (01 §7.4, regla 3).
-- Plazo de referencia: iniciativas con criterios Enterprise, seis meses desde la aprobación de C2; resto, 12 meses. La compañía puede fijar otros en C2.
-- Una iniciativa en producción no regularizada al vencer el plazo es una no conformidad mayor; si cumple criterios Enterprise y no tiene clasificación regulatoria, crítica.
-- Durante la regularización no se amplía el alcance de la iniciativa.
+- Plazo de referencia: casos de uso con criterios Enterprise, seis meses desde la aprobación de C2; resto, 12 meses. La compañía puede fijar otros en C2.
+- Un caso de uso en producción no regularizado al vencer el plazo es una no conformidad mayor; si cumple criterios Enterprise y no tiene clasificación regulatoria, crítica.
+- Durante la regularización no se amplía el alcance del caso de uso.
 
 ---
 
 ## 12. Semáforo de programas
 
-Un **programa** agrupa iniciativas relacionadas mediante la etiqueta libre "Programa" (03 §3.3). El semáforo resume su estado para el comité y el consejo.
+Un **programa** agrupa casos de uso relacionados mediante la etiqueta libre "Programa" (03 §3.3). El semáforo resume su estado para el comité y el consejo.
 
 ### 12.1 Ejes y umbrales iniciales
 
 | Eje | Verde | Ámbar | Rojo |
 |---|---|---|---|
-| **Plazo** | Ninguna iniciativa estancada; hitos en fecha. | Una iniciativa estancada o un hito con retraso de hasta un plazo de referencia de fase. | Varias estancadas o hito crítico con retraso mayor. |
+| **Plazo** | Ningún caso de uso estancado; hitos en fecha. | Un caso de uso estancado o un hito con retraso de hasta un plazo de referencia de fase. | Varios estancados o hito crítico con retraso mayor. |
 | **Coste** | Desviación sobre los tramos aprobados de hasta el 10 %. | Del 10 % al 25 %. | Más del 25 % o sin aprobación. |
 | **Valor** | Valor realizado igual o superior al 90 % de lo previsto a la fecha, con estado validado o declarado. | Del 60 % al 90 %, o solo estimado. | Menos del 60 %, o hipótesis refutada sin decisión. |
 | **Riesgo** | Sin riesgos residuales fuera del apetito ni incidentes S1–S2 abiertos. | Riesgo Alto con mitigación en plazo o incidente S2 en gestión. | Riesgo fuera del apetito, incidente S1 o no conformidad crítica abierta. |
@@ -498,7 +498,7 @@ Umbrales iniciales, a calibrar en C5.
 
 | Código | Uso en este documento |
 |---|---|
-| **T01 · Registro de iniciativas** | Ficha de entrada, alertas de estancadas, esperas y condiciones, etiquetas "Programa" y "Regularización". La puntuación de priorización, los carriles y tramos, el plan de regularización y el semáforo de programas se preparan con P36 (plan de cartera C3), con columnas listas para hoja de cálculo; el semáforo se presenta al consejo en P67. |
+| **T01 · Registro de casos de uso** | Ficha de entrada, alertas de casos de uso estancados, esperas y condiciones, etiquetas "Programa" y "Regularización". La puntuación de priorización, los carriles y tramos, el plan de regularización y el semáforo de programas se preparan con P36 (plan de cartera C3), con columnas listas para hoja de cálculo; el semáforo se presenta al consejo en P67. |
 | **T16 · Mapa de esferas de la cartera** | Equilibrio de ambición por esfera con inversión, coste recurrente y valor. |
 | **T22 · Gestor de retiradas** | Plan de retirada, sustituto, datos y modelos, accesos, comunicación, verificación de cierre y registro de retiradas (sección 10.9). |
 | T02, T03, T04, T05, T06, T08, T09, T12, T13, T14, T17, T18 | Inventario, *gates*, intensidad, ambición, riesgos, no conformidades, proveedores, valor, costes, índice de transformación, panel y recomendaciones. |
@@ -515,7 +515,7 @@ Umbrales iniciales, a calibrar en C5.
 |---|---|
 | **00 · Qué es SEVEN-G** | Reglas de medición del valor (§6) y clasificación de ambición (§5.2). |
 | **01 · Metodología fundacional** | C3 (§5.1), fase 7 (§6.9), resultados y reglas de *gate* (§7), principios, declaración de aplicación (§14). |
-| **03 · Herramientas y registro de iniciativas** | Estados, taxonomía, motivos codificados, métricas del embudo y plazos de referencia. |
+| **03 · Herramientas y registro de casos de uso** | Estados, taxonomía, motivos codificados, métricas del embudo y plazos de referencia. |
 | **10 · Mapa de esferas** | Ambición por esfera. |
 | **11 · Modelo de madurez** | Dimensión D2 y requisitos de madurez para agentes y Transformar. |
 | **12 · Índice de transformación** | Señales afectadas por el equilibrio de la cartera. |

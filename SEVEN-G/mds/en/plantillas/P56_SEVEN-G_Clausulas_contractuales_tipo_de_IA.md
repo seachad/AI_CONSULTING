@@ -51,7 +51,7 @@ Completion rules:
 | Critical or important function | | Yes · No. If the company is subject to DORA, see section 6. |
 | Instrument | | New contract · AI annex to an existing contract · Embedded AI addendum · Renewal. |
 | Contract reference | | |
-| Linked initiatives and systems | | IA-AAAA-NNN · SIA-AAAA-NNN. |
+| Linked use cases and systems | | IA-AAAA-NNN · SIA-AAAA-NNN. |
 | Document version and date | | DD-MM-AAAA. |
 
 ---

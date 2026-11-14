@@ -34,7 +34,7 @@ Completion rules:
 - **No blame, but clear accountability.** Causes are sought in the management system, not people to whom the failure can be attributed. "Human error" is not a final root cause: the question is why the system allowed that error or failed to detect it.
 - Before the analysis starts, it is checked that the evidence from the time of the incident has been preserved (37 §2, principle 7).
 - Several nonconformities with the same cause are analysed in a single worksheet, but each keeps its own code (37 §3.3).
-- Every action considers whether the same failure exists in other systems or initiatives (the "correct here and everywhere" principle).
+- Every action considers whether the same failure exists in other systems or use cases (the "correct here and everywhere" principle).
 
 ---
 
@@ -44,7 +44,7 @@ Completion rules:
 |---|---|---|
 | Subject of the analysis | | NC-AAAA-NNN · INC-AAAA-NNN (one or several). |
 | Type or severity | | Minor · Major · Critical / S1 · S2 · S3 · S4. |
-| System and initiative | | SIA-AAAA-NNN · IA-AAAA-NNN. |
+| System and use case | | SIA-AAAA-NNN · IA-AAAA-NNN. |
 | Facilitator | | Role and name; from outside the team where advisable. |
 | Participants | | Roles, not just names. |
 | Start date and deadline | | In accordance with 37 §3.10 or §4.3. |
@@ -117,7 +117,7 @@ Possible causes are explored by category using the guiding questions in 37 §3.5
 |---|---|---|
 | Confirmed root cause | | One sentence. If there are several, they are numbered. |
 | Was the risk in the register? | | Yes (IA-AAAA-NNN · R*nn*, moves to *Materialised* and is reassessed, 33 §7.2) · No (it is added to P12). |
-| Other systems or initiatives exposed to the same cause | | Same supplier, model, data, template or process. |
+| Other systems or use cases exposed to the same cause | | Same supplier, model, data, template or process. |
 
 ---
 
@@ -133,7 +133,7 @@ For incidents only (37 §4.5, phase 7). It is completed in addition to sections 
 | Harm and cost | | Amount and status (validated · declared · estimated), or *No data*. |
 | Effectiveness of controls | | SEG and AG controls that worked or failed. |
 | Decisions taken under pressure | | What information was missing and how the decision was made; without judging the people involved. |
-| Lessons for other initiatives **(Enterprise)** | | Initiatives with shared technology or suppliers to which they are communicated. |
+| Lessons for other use cases **(Enterprise)** | | Use cases with shared technology or suppliers to which they are communicated. |
 | Should nonconformities be opened? | | If the incident reveals a requirement not met or if the management breached the process (37 §6); NC codes opened in P50. |
 
 ---
@@ -178,7 +178,7 @@ Formal criteria in document 21 (R6.06, R6.15 and G7.04) and method in 37 §3.5�
 | 1 | The timeline is based on evidence preserved from the time of the event. | Met · Not met · Not applicable · Pending |
 | 2 | The immediate cause is distinguished from the root cause. | |
 | 3 | The root cause meets the four validity conditions and does not end in "human error". | |
-| 4 | It has been checked whether other systems or initiatives are exposed to the same cause. | |
+| 4 | It has been checked whether other systems or use cases are exposed to the same cause. | |
 | 5 | Each action has a type, an owner, a time limit, an effectiveness criterion and expected evidence. | |
 | 6 | There is at least one corrective action for each root cause; correction alone is not enough. | |
 | 7 | The risk register and the affected controls have been updated. | |

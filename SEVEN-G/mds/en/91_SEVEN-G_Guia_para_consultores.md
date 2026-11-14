@@ -72,7 +72,7 @@ A service that omits any of these rules may draw inspiration from SEVEN-G, but m
 | 2 | **Evidence before opinion** | Conclusions are based on identifiable evidence that the company can review. |
 | 3 | **Capability transfer** | The objective is for the company to be able to govern its AI without depending on the third party. |
 | 4 | **Declared independence** | The third party's interests (suppliers, products, other services to the client) are declared at the outset. |
-| 5 | **Honesty about outcomes** | A low diagnosis, a stopped initiative or unvalidated value are reported in the same way as favourable outcomes. |
+| 5 | **Honesty about outcomes** | A low diagnosis, a stopped use case or unvalidated value are reported in the same way as favourable outcomes. |
 | 6 | **The data belongs to the company** | Registers, data models and deliverables remain in the company's possession, in formats it can maintain. |
 | 7 | **Proportionality** | Lite intensity when it is sufficient; Enterprise when the criteria require it (01 §9). |
 
@@ -85,7 +85,7 @@ A service that omits any of these rules may draw inspiration from SEVEN-G, but m
 | Model | Objective | SEVEN-G stages and phases | Outcome for the board | Indicative duration |
 |---|---|---|---|---|
 | **M1 · Diagnosis** | Understand the real situation of AI in the company. | C1 | Maturity with evidence, transformation profile, inventory, current value and cost. | 4 to 6 weeks |
-| **M2 · 90-day implementation** | Make basic AI governance operational. | C1, C2 and C3; phase 0 of priority initiatives | Thesis, ambition, risk appetite, portfolio and governance structure approved. | 90 days |
+| **M2 · 90-day implementation** | Make basic AI governance operational. | C1, C2 and C3; phase 0 of priority use cases | Thesis, ambition, risk appetite, portfolio and governance structure approved. | 90 days |
 | **M3 · Independent audit** | Give an opinion on whether the company applies the framework and whether its controls work. | Verification of 01 §14, *gates*, registers and nonconformities | Report with a conclusion of Conformant, Conformant with observations or Nonconformant. | Depending on scope and sample |
 | **M4 · Board advisory** | Help the board oversee AI. | C2, C4 and C5 | Questions, review of the pack, recorded recommendations and independent assessments. | Renewable annual mandate |
 | **M5 · Ongoing support** | Support the company in operating the framework. | C3, C4 and lifecycle | Managed portfolio, quarterly packs prepared, funnel metrics. | Renewable period with annual review |
@@ -109,9 +109,9 @@ Durations are indicative and depend on the size of the company, the number of sy
 | | |
 |---|---|
 | **When** | The company has decided to adopt SEVEN-G and wants a first implementation (01 §5.3; document 90). |
-| **Scope** | **Month 1:** diagnosis (M1). **Month 2:** risks and opportunities by sphere with owner, economic impact and timeframe; proposed AI thesis, ambition and risk appetite. **Month 3:** governance structure (bodies, roles, incompatibilities, thresholds, *gates*, reference time limits, metrics and reporting cadence); initial portfolio; initiative register and register of recommendations in operation; first board pack. |
+| **Scope** | **Month 1:** diagnosis (M1). **Month 2:** risks and opportunities by sphere with owner, economic impact and timeframe; proposed AI thesis, ambition and risk appetite. **Month 3:** governance structure (bodies, roles, incompatibilities, thresholds, *gates*, reference time limits, metrics and reporting cadence); initial portfolio; use case register and register of recommendations in operation; first board pack. |
 | **Out of scope** | Independent verification of *gates* that the third party itself helps to prepare; decisions of the bodies. |
-| **Deliverables** | Those of M1 · Proposed AI thesis and risk appetite (T19) · Corporate AI policy (document 31) · Governance model with role assignment · Prioritised portfolio · Initiative register (T01) and register of recommendations (T18) with real data · Regularisation plan for existing systems (01 §14; P36 §9) · First quarterly pack (document 60). |
+| **Deliverables** | Those of M1 · Proposed AI thesis and risk appetite (T19) · Corporate AI policy (document 31) · Governance model with role assignment · Prioritised portfolio · Use case register (T01) and register of recommendations (T18) with real data · Regularisation plan for existing systems (01 §14; P36 §9) · First quarterly pack (document 60). |
 | **Third-party roles** | Implementation director · Specialists in value, risk and regulation, and technology and data · Support to the AI Office · Quality reviewer. |
 | **Company roles** | Executive sponsor of the implementation · Future AI Office (must take part from day one) · AI Committee being set up · Board secretariat · Management control · Risk, compliance, data protection and security · Internal audit (informed). |
 | **Quality criterion** | On completion, the company can operate the cycle without the third party: the AI Office has prepared at least one *gate* decision and the first pack with support, not by delegation. |
@@ -145,8 +145,8 @@ Durations are indicative and depend on the size of the company, the number of sy
 | | |
 |---|---|
 | **When** | The company has implemented the framework and needs additional capacity to operate it while it develops its own. |
-| **Scope** | Support to the AI Office: maintenance of the initiative register and the inventory, preparation of evidence with the teams, calculation of funnel metrics, preparation of the quarterly pack, methodological support for continuity reviews and for C5. |
-| **Out of scope** | Verification of *gates* for initiatives in which the third party takes part; decisions; independent assessment of recommendations whose execution it supports. |
+| **Scope** | Support to the AI Office: maintenance of the use case register and the inventory, preparation of evidence with the teams, calculation of funnel metrics, preparation of the quarterly pack, methodological support for continuity reviews and for C5. |
+| **Out of scope** | Verification of *gates* for use cases in which the third party takes part; decisions; independent assessment of recommendations whose execution it supports. |
 | **Deliverables** | Updated registers · Monthly funnel metrics · Drafts of the quarterly pack for review by the AI Office · Transfer plan (P71) with a date for exit or reduction of the service. |
 | **Third-party roles** | Service lead · Portfolio and measurement analysts. |
 | **Company roles** | AI Office (accountable for the outcome) · AI Committee · Management control. |
@@ -167,10 +167,10 @@ Durations are indicative and depend on the size of the company, the number of sy
 | **M1 · Diagnosis** | — | Compatible | Compatible with caution: the diagnosis cannot be the subject of the audit | Compatible | Compatible |
 | **M2 · Implementation** | Compatible | — | **Incompatible** in the implemented area | **Incompatible** if the adviser assesses recommendations on what was implemented | Compatible |
 | **M3 · Audit** | Compatible | **Incompatible** for correcting what was audited in the same period | — | Compatible with caution: declare the relationship | **Incompatible** in the audited area |
-| **M4 · Board advisory** | Compatible | **Incompatible** in the initiatives it oversees | **Incompatible** if it advised on the audited decisions | — | **Incompatible** |
+| **M4 · Board advisory** | Compatible | **Incompatible** in the use cases it oversees | **Incompatible** if it advised on the audited decisions | — | **Incompatible** |
 | **M5 · Ongoing support** | Compatible | Compatible | **Incompatible** in the supported area | **Incompatible** | — |
 
-"Area" is the set of initiatives, systems, processes or registers affected. The incompatibilities also apply to entities in the same group as the third party and to people who move between organisations.
+"Area" is the set of use cases, systems, processes or registers affected. The incompatibilities also apply to entities in the same group as the third party and to people who move between organisations.
 
 ### 5.3 Cooling-off period
 
@@ -289,7 +289,7 @@ On completion of any model, the third party delivers: registers and data in an o
 | "Implementation in X weeks" without a diagnosis | The time limit depends on the starting point. | "Reference first implementation in ninety days, to be confirmed after the diagnosis." |
 | "Method validated by the author" or "certified by the author" | The licence does not allow endorsement to be suggested. | "Based on SEVEN-G, framework by Fernando García Varela, CC BY 4.0." |
 | "With SEVEN-G you will not need an audit" | The framework requires independent verification. | "SEVEN-G makes auditing easier because it leaves the evidence ready." |
-| "SEVEN-G replaces ISO/IEC 42001" or "with SEVEN-G you already have the certification" | They are different things: the standard says what must exist and is certified; SEVEN-G makes it work in each initiative and does not certify (D25). | "Standards say what must exist; SEVEN-G is the operating layer that makes it work, initiative by initiative, and leaves the evidence ready; the crosswalk in document 34 says what it covers and what it does not." |
+| "SEVEN-G replaces ISO/IEC 42001" or "with SEVEN-G you already have the certification" | They are different things: the standard says what must exist and is certified; SEVEN-G makes it work in each use case and does not certify (D25). | "Standards say what must exist; SEVEN-G is the operating layer that makes it work, use case by use case, and leaves the evidence ready; the crosswalk in document 34 says what it covers and what it does not." |
 
 ---
 
@@ -297,7 +297,7 @@ On completion of any model, the third party delivers: registers and data in an o
 
 | Code | Name | Use in the models |
 |---|---|---|
-| T01 | Initiative register | M2, M5 |
+| T01 | Use case register | M2, M5 |
 | T02 | AI system inventory | M1, M2, M3 |
 | T03 | *Gate* manager | M2, M3, M5 |
 | T14 | Transformation index calculator | M1, M4 (C5) |

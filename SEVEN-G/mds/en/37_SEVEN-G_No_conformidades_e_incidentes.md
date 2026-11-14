@@ -25,7 +25,7 @@ This document establishes two connected processes:
 1. The **nonconformity process**, which deals with any failure to meet a mandatory requirement of the framework (01 §12).
 2. The **AI incident process**, which deals with any event in which an AI system causes, or may cause, harm or disruption, including those that must be reported to the authorities.
 
-It applies to all systems in the inventory —in-house, third-party and corporate-use systems— and to all initiatives, regardless of their intensity. It complements, without replacing, the corporate processes for security incident management, personal data breaches and business continuity: when an AI incident is also a security incident or a breach, it is managed **only once**, with a single coordinator and with the AI-specific elements of this document.
+It applies to all systems in the inventory —in-house, third-party and corporate-use systems— and to all use cases, regardless of their intensity. It complements, without replacing, the corporate processes for security incident management, personal data breaches and business continuity: when an AI incident is also a security incident or a breach, it is managed **only once**, with a single coordinator and with the AI-specific elements of this document.
 
 ### 1.1 Definitions
 
@@ -73,7 +73,7 @@ This document does not constitute legal advice. The decision to report and the c
 
 ### 3.1 Detection
 
-A nonconformity may be detected in: *gate* verifications by the AI Auditor or the AI Office; continuity reviews (R6); internal or external audits; initiative register alerts (expired conditions, pending evidence, overdue reviews); control effectiveness testing (33 §5.3); incident analyses; detection of unauthorised use of AI; reports from employees, customers, suppliers or supervisors. Anyone **may** report a possible nonconformity; the AI Office **must** record it or give reasons why it is not one.
+A nonconformity may be detected in: *gate* verifications by the AI Auditor or the AI Office; continuity reviews (R6); internal or external audits; use case register alerts (expired conditions, pending evidence, overdue reviews); control effectiveness testing (33 §5.3); incident analyses; detection of unauthorised use of AI; reports from employees, customers, suppliers or supervisors. Anyone **may** report a possible nonconformity; the AI Office **must** record it or give reasons why it is not one.
 
 ### 3.2 Recording
 
@@ -84,7 +84,7 @@ Every nonconformity is recorded in **T08** (template P50) with the code **NC-AAA
 | Code | NC-AAAA-NNN |
 | Requirement not met | Document, section and text of the requirement; *gate* criterion (`G<n>.<nn>`) or control (SEG, AG), where applicable. |
 | Description | What has been observed, with objective evidence. |
-| Scope | Initiative (IA-AAAA-NNN), system, supplier, area. |
+| Scope | Use case (IA-AAAA-NNN), system, supplier, area. |
 | Detection | Date, source and person detecting it. |
 | Type | Minor, major or critical, with justification (3.3). |
 | Action owner | Named person, other than the auditor who will close it. |
@@ -108,14 +108,14 @@ Every nonconformity is recorded in **T08** (template P50) with the code **NC-AAA
 
 Classification rules:
 
-- **Recurrence:** a minor nonconformity that recurs three times in twelve months in the same initiative or process is classified as major; a major nonconformity that recurs within twelve months is classified as critical if it affects systems in production.
+- **Recurrence:** a minor nonconformity that recurs three times in twelve months in the same use case or process is classified as major; a major nonconformity that recurs within twelve months is classified as critical if it affects systems in production.
 - **Accumulation:** several nonconformities with the same cause are dealt with in a single analysis but recorded separately.
 - **Unauthorised use of AI:** it is classified according to the data and uses involved; it is at least major if it involves personal or confidential data.
 - The type is proposed by whoever detects the nonconformity and confirmed by the AI Auditor; any disagreement is resolved by the AI Committee.
 
 ### 3.4 Containment
 
-Containment limits the effect while the cause is analysed. Options, from lowest to highest intensity: restriction of use or scope; additional temporary human validation; lowering of the autonomy level; suspension of a capability with the kill switch; suspension of the system with a fallback process; withdrawal from production. If the nonconformity invalidates a *gate*, the initiative returns to the status prior to that *gate* until it is corrected. All containment is recorded with date, decision-maker and effect.
+Containment limits the effect while the cause is analysed. Options, from lowest to highest intensity: restriction of use or scope; additional temporary human validation; lowering of the autonomy level; suspension of a capability with the kill switch; suspension of the system with a fallback process; withdrawal from production. If the nonconformity invalidates a *gate*, the use case returns to the status prior to that *gate* until it is corrected. All containment is recorded with date, decision-maker and effect.
 
 ### 3.5 Root cause analysis
 
@@ -143,7 +143,7 @@ A root cause is valid when: it explains all the facts observed; had it been elim
 |---|---|---|
 | **Correction** | Remedy the specific event. | Complete the evidence; revoke the excessive permission. |
 | **Corrective action** | Eliminate the root cause so that it does not recur. | Add the relevant-change criterion to P24 and T03. |
-| **Preventive action** | Prevent the same cause from producing the failure in other systems or initiatives. | Review all systems in production against the new definition. |
+| **Preventive action** | Prevent the same cause from producing the failure in other systems or use cases. | Review all systems in production against the new definition. |
 
 Each action has an owner, a time limit, an effectiveness criterion and expected evidence. The plan is approved by the AI Committee for critical nonconformities, by the AI Risk Owner for major ones and by the AI Office for minor ones. An action that depends on another area is agreed with its head before the plan is approved.
 
@@ -275,7 +275,7 @@ Shutdown activates the fallback process set out in the rollback plan (P19) and t
 
 **7. Post-incident analysis.** Timeline; immediate cause and root cause (3.5); effectiveness of the controls and of the response; compliance with time limits; harm and cost with their validation status; risks in the register that should have anticipated it; actions. It is carried out without seeking to apportion blame and is reviewed by the AI Risk Owner.
 
-**8. Lessons.** Update of the risk register (33), controls (35), suppliers (36), templates and test scenarios; opening of nonconformities where appropriate (section 6); communication of lessons to other initiatives with shared technology or suppliers.
+**8. Lessons.** Update of the risk register (33), controls (35), suppliers (36), templates and test scenarios; opening of nonconformities where appropriate (section 6); communication of lessons to other use cases with shared technology or suppliers.
 
 ---
 
@@ -325,7 +325,7 @@ It is implemented with template **P27** and tool **T08**, using the code **INC-A
 
 | Block | Fields |
 |---|---|
-| **Identification** | Code; title; understandable description; system and initiative; supplier involved. |
+| **Identification** | Code; title; understandable description; system and use case; supplier involved. |
 | **Classification** | Type (4.1); initial and final severity with justification; origin (external attacker, manipulated in-house agent, supplier, internal, technical failure). |
 | **Times** | Date and time of estimated start, detection, triage, containment, recovery and closure; hours to detect, contain and resolve. |
 | **Impact** | People affected (number and type); personal data affected (yes or no, categories); processes and functions; impact by axis (33 §4.2). |

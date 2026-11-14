@@ -11,7 +11,7 @@
 | Status | Under construction. The current classification rules are in SEVEN-G document 12. |
 | Type | Methodology concept |
 
-<!-- cifras: 3 | ambition levels ; 5 | classification questions ; 1 | level per initiative ; 3 | different progression criteria -->
+<!-- cifras: 3 | ambition levels ; 5 | classification questions ; 1 | level per use case ; 3 | different progression criteria -->
 
 ---
 
@@ -19,7 +19,7 @@
 
 ## 1. Purpose
 
-This document explains the **three ambition levels** of SPHERES: what each one means, what changes in the organisation, where its value lies, what risks it carries, how it is decided and how it is recognised with evidence. It also explains how to classify an initiative and what the most common mistakes are.
+This document explains the **three ambition levels** of SPHERES: what each one means, what changes in the organisation, where its value lies, what risks it carries, how it is decided and how it is recognised with evidence. It also explains how to classify a use case and what the most common mistakes are.
 
 The levels apply to spheres **01 to 07**. Spheres 08 and 09 are assessed with their own grades (document 04).
 
@@ -27,7 +27,7 @@ The levels apply to spheres **01 to 07**. Spheres 08 and 09 are assessed with th
 
 ## 2. What an ambition level is
 
-An ambition level describes **what an AI initiative changes in the business**. It does not describe the technology it uses, what it costs or how novel it appears.
+An ambition level describes **what an AI use case changes in the business**. It does not describe the technology it uses, what it costs or how novel it appears.
 
 <!-- figura: niveles -->
 
@@ -172,7 +172,7 @@ Ambition levels **do not describe the maturity** of the company or a mandatory p
 
 ---
 
-## 8. How to classify an initiative
+## 8. How to classify a use case
 
 Classification is carried out with **five questions** answered yes or no, always with evidence. A yes without evidence counts as no.
 
@@ -186,10 +186,10 @@ Classification is carried out with **five questions** answered yes or no, always
 
 Basic reading rules:
 
-- If questions 1 to 4 are **no**, the initiative is **Optimise**, however it has been presented.
-- If question 1 or 4 is **yes**, the initiative is **Transform**.
-- If question 2 or 3 is **yes**, the initiative is **Augment**, unless the change affects a complete organisational unit or a core business process, in which case it is **Transform**.
-- Question 5 serves as a **cross-check**: if an initiative classified as Augment or Transform could be retired with no consequence other than returning to the previous cost, the answers must be reviewed.
+- If questions 1 to 4 are **no**, the use case is **Optimise**, however it has been presented.
+- If question 1 or 4 is **yes**, the use case is **Transform**.
+- If question 2 or 3 is **yes**, the use case is **Augment**, unless the change affects a complete organisational unit or a core business process, in which case it is **Transform**.
+- Question 5 serves as a **cross-check**: if a use case classified as Augment or Transform could be retired with no consequence other than returning to the previous cost, the answers must be reviewed.
 - **In case of reasonable doubt, the lower level is assigned**, and whoever proposes the higher level provides the evidence.
 
 <!-- grafico: Quick classification | The questions are answered with evidence and the result is cross-checked with question 5 -->
@@ -208,9 +208,9 @@ flowchart TD
   E -->|"No"| F["Level confirmed; in case of doubt, the lower one"]
 ```
 
-The full rules, the cross-check cases and who classifies, confirms and reviews the level are in [SEVEN-G 12 · Transformation index](../../../SEVEN-G/html/en/12_SEVEN-G_Indice_de_transformacion.html), section 3. In SEVEN-G the level is proposed when the initiative is registered, confirmed before investing in building it and checked with evidence once the initiative is producing results.
+The full rules, the cross-check cases and who classifies, confirms and reviews the level are in [SEVEN-G 12 · Transformation index](../../../SEVEN-G/html/en/12_SEVEN-G_Indice_de_transformacion.html), section 3. In SEVEN-G the level is proposed when the use case is registered, confirmed before investing in building it and checked with evidence once the use case is producing results.
 
-> **Why it matters.** Five questions with evidence replace opinion. Two areas that present similar initiatives obtain the same level, and the board can trust that the map describes reality and not the enthusiasm of each sponsor.
+> **Why it matters.** Five questions with evidence replace opinion. Two areas that present similar use cases obtain the same level, and the board can trust that the map describes reality and not the enthusiasm of each sponsor.
 
 ---
 
@@ -225,22 +225,22 @@ The full rules, the cross-check cases and who classifies, confirms and reviews t
 | Agent-based automation of a complete back-office process, with fewer people doing the same thing. | **Optimise** | Reducing the number of people doing the same thing is not a change of role. If the process is redesigned but the roles do not change, it would be Augment. |
 | AI-driven dynamic pricing within current tariffs. | **Augment** | The decision passes to a system under oversight (question 3: yes), but the customer receives the same offering. |
 | Personalised usage-based pricing that the customer chooses as a new option. | **Transform** | The customer receives a new form of pricing (question 1: yes). |
-| Common data platform for several initiatives. | **Optimise** by default | It is classified by its own effect; it does not inherit the ambition of the initiatives it enables. |
+| Common data platform for several use cases. | **Optimise** by default | It is classified by its own effect; it does not inherit the ambition of the use cases it enables. |
 | Exploratory pilot of a new service. | According to what would change at scale | It is classified by its hypothesis; the actual level is checked with evidence. |
-| Initiative with an Optimise component and a Transform component. | **It is split** or classified by the component that accounts for more than half of the investment | Levels are not averaged. |
+| Use case with an Optimise component and a Transform component. | **It is split** or classified by the component that accounts for more than half of the investment | Levels are not averaged. |
 
 ---
 
 ## 10. The ambition of a sphere and portfolio balance
 
-In addition to classifying initiatives, management sets a **target ambition for each sphere** from 01 to 07. That ambition is not assigned by opinion: it is expressed through the initiatives that deliver it.
+In addition to classifying use cases, management sets a **target ambition for each sphere** from 01 to 07. That ambition is not assigned by opinion: it is expressed through the use cases that deliver it.
 
 | Concept | What it is | Illustrative example |
 |---|---|---|
-| **Level achieved** | The highest level with at least one initiative in production and measured value. | In Customer, Optimise: there is an enquiry router with validated savings. |
-| **Level in the portfolio** | The highest level with any initiative approved for building. | In Customer, Augment: an assistant for account managers has been approved. |
+| **Level achieved** | The highest level with at least one use case in production and measured value. | In Customer, Optimise: there is an enquiry router with validated savings. |
+| **Level in the portfolio** | The highest level with any use case approved for building. | In Customer, Augment: an assistant for account managers has been approved. |
 | **Target ambition** | The level that management wants for the sphere within the horizon of its strategy. | In Customer, Augment. |
-| **Gap** | The target ambition has no approved initiative delivering it. | In Data, an Augment target and no approved initiative at that level. |
+| **Gap** | The target ambition has no approved use case delivering it. | In Data, an Augment target and no approved use case at that level. |
 
 A balanced portfolio does **not** spread investment equally across levels. It reflects the strategy: plenty of efficiency where the company competes on cost, Augment bets where talent is the advantage and some Transform bet, bounded and in stages, where the company wants to change its position. Setting and approving the ambition by sphere is described in [SEVEN-G 13 · AI thesis, ambition and risk appetite](../../../SEVEN-G/html/en/13_SEVEN-G_Tesis_de_IA_ambicion_y_apetito_de_riesgo.html).
 
@@ -255,7 +255,7 @@ A balanced portfolio does **not** spread investment equally across levels. It re
 | Classifying by technology ("it uses agents, so it is Transform"). | A portfolio that looks ambitious with no real change. | Apply the five questions with evidence. |
 | Classifying by the amount or by the visibility of the programme. | Transformation criteria are applied to expensive automations. | Remember that the amount does not determine the level. |
 | Moving up a level to obtain funding. | The board approves expectations that will not be met. | Independent review of the level and subsequent checking with evidence. |
-| Applying the same return criterion to all initiatives. | Transform bets are stopped before they learn. | Different progression criteria by level. |
+| Applying the same return criterion to all use cases. | Transform bets are stopped before they learn. | Different progression criteria by level. |
 | Counting released hours as savings in Optimise. | Savings that do not appear in the income statement. | Distinguish released, realised and reassigned capacity. |
 | Measuring the success of Augment by assigned licences. | Investment without any change in the way of working. | Measure active usage and performance improvement. |
 | Setting the ambition of a sphere without looking at the enablers. | Promises that the data or the decision rules cannot sustain. | Read document 03 before setting a high ambition. |

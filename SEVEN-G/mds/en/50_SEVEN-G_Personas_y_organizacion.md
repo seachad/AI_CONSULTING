@@ -16,13 +16,13 @@
 
 > **Legal notice and disclaimer.** SEVEN-G is a reference methodological framework provided "as is" and for information purposes only. It does not constitute legal, regulatory, financial or professional advice, nor does it guarantee compliance with any law or standard. References to general regulation (such as the EU AI Act, the GDPR, DORA or NIS2), to technical standards and to regulation specific to each sector or jurisdiction may be incomplete, may not apply to a particular case or may become out of date as a result of regulatory changes, interpretations or supervisory positions after their consultation date. **Each organisation that uses SEVEN-G is solely responsible for identifying the regulation that applies to it, verifying that it is current and certifying its own regulatory compliance**, with the appropriate qualified advice. This methodology is a generic, free aid shared with the community so that nobody has to start from scratch; each person or organisation can and should adapt it to its own use. It must not be inferred that its legally sensitive parts have been reviewed by legal counsel: those reviews, for each company or sector, are the ultimate responsibility of the company, consultant or organisation that uses it. Although every effort is made to keep it up to date, some regulation may have changed without being reflected here. To the fullest extent permitted by law, the author accepts no responsibility whatsoever for the effects of its application in any organisation or for its full applicability. The methodology does not grant certification of any kind. The author accepts no liability for any use made of this content or for any decisions taken on the basis of it. The data, figures, companies and cases in the examples are fictitious or illustrative.
 
-<!-- esencial: condicional | Trigger: the initiative changes people's work, releases capacity or is involved in decisions about people. Limits that are never relaxed: maximum autonomy A1 in selection and appraisal, and A0 in discipline and dismissal; information to the workforce and its representatives when the law requires it. -->
+<!-- esencial: condicional | Trigger: the use case changes people's work, releases capacity or is involved in decisions about people. Limits that are never relaxed: maximum autonomy A1 in selection and appraisal, and A0 in discipline and dismissal; information to the workforce and its representatives when the law requires it. -->
 
 ## 1. Purpose and scope
 
 This document develops **sphere 03 · People** of the impact map and principle 10 of the framework (*people at the centre of change*). It sets out how an organisation applying SEVEN-G must:
 
-- Assess, initiative by initiative, whether AI **replaces, augments or reorganises** work.
+- Assess, use case by use case, whether AI **replaces, augments or reorganises** work.
 - Define the **roles and capabilities** that AI requires, from the board to the teams.
 - Plan **AI literacy** and capabilities by profile.
 - Decide, record and track the destination of **released capacity**.
@@ -31,7 +31,7 @@ This document develops **sphere 03 · People** of the impact map and principle 1
 - Protect **wellbeing, autonomy** and the quality of human oversight.
 - Communicate internally in a consistent manner and measure all of the above with **indicators with a formula**.
 
-**Scope.** It applies to all AI initiatives and to corporate uses of general-purpose AI that affect employees' work, their working conditions or decisions about candidates and employees. Change management and adoption are developed in document 23; the rules for acceptable use of AI by employees, in document 31. This document does not repeat them: it sets out what is specific to people and to the organisation.
+**Scope.** It applies to all AI use cases and to corporate uses of general-purpose AI that affect employees' work, their working conditions or decisions about candidates and employees. Change management and adoption are developed in document 23; the rules for acceptable use of AI by employees, in document 31. This document does not repeat them: it sets out what is specific to people and to the organisation.
 
 **Limits.** The labour law references are limited to Spain and the European Union, with the consultation date indicated. **Other jurisdictions have different rules** and must be incorporated into the context statement (phase 0). This document does not constitute legal advice.
 
@@ -43,7 +43,7 @@ This document develops **sphere 03 · People** of the impact map and principle 1
 
 > **Does AI replace, augment or reorganise people's work?**
 
-The answer is not technical. It defines the culture, the employee value proposition, the ability to attract and retain talent and the relationship with workers' representatives. That is why SEVEN-G requires the company to adopt at **C2** an **explicit position** on the effect it seeks on work (document 13) and requires each initiative to respect it or justify the exception.
+The answer is not technical. It defines the culture, the employee value proposition, the ability to attract and retain talent and the relationship with workers' representatives. That is why SEVEN-G requires the company to adopt at **C2** an **explicit position** on the effect it seeks on work (document 13) and requires each use case to respect it or justify the exception.
 
 ### 2.2 The three roles of the employee in relation to AI
 
@@ -51,7 +51,7 @@ The answer is not technical. It defines the culture, the employee value proposit
 |---|---|---|
 | **Recipient** | AI changes their tools, processes and productivity expectations without them having chosen it. | Training, support, time to learn and channels to flag problems (document 23). |
 | **Subject** | AI may restructure, reassign or eliminate tasks or jobs, or intervene in decisions about their employment. | Effect assessment, information and consultation, controls on decisions about people and fair treatment in the transition (sections 3, 7 and 8). |
-| **Promoter** | They know their process better than anyone and can propose uses of AI that no outsider would see. | Proposal channel connected to the initiative register (T01), recognition and clear rules of use (document 31). |
+| **Promoter** | They know their process better than anyone and can propose uses of AI that no outsider would see. | Proposal channel connected to the use case register (T01), recognition and clear rules of use (document 31). |
 
 The same employee may occupy all three roles at once. People plans must address all three and not only the first.
 
@@ -67,7 +67,7 @@ The examples are **illustrative** and do not imply a recommendation.
 
 ### 2.4 What is assessed in sphere 03
 
-Seven dimensions are assessed, each with its evidence and indicators (section 11): **position** approved at C2; **effect per initiative** (P20, PER-01); **capabilities** (PER-02, PER-03); **released capacity** (PER-04 to PER-06); **labour relations** (PER-08); **decisions about people** (P11, P17, PER-09 to PER-12); and **wellbeing** (PER-15).
+Seven dimensions are assessed, each with its evidence and indicators (section 11): **position** approved at C2; **effect per use case** (P20, PER-01); **capabilities** (PER-02, PER-03); **released capacity** (PER-04 to PER-06); **labour relations** (PER-08); **decisions about people** (P11, P17, PER-09 to PER-12); and **wellbeing** (PER-15).
 
 The indicators in section 11 feed the **D5 People and adoption** dimension of the maturity model (document 11) and signals **3 · Materialisation** and **5 · Operating model** of the transformation index (document 12).
 
@@ -83,9 +83,9 @@ The indicators in section 11 feed the **D5 People and adoption** dimension of th
 | **Augments** | The person continues to do the work, but with greater quality, reach or speed thanks to the system. | Improved performance per person; new tasks that were previously impossible. |
 | **Reorganises** | Roles, the process sequence, the team structure or the allocation of decisions between people and systems change. | New job descriptions; changes in reporting lines; new human oversight points. |
 
-An initiative usually combines effects. **The effect on each task** and the **dominant effect** on each affected group are recorded.
+A use case usually combines effects. **The effect on each task** and the **dominant effect** on each affected group are recorded.
 
-The effect on work **is not the same as the ambition level**. An Optimise initiative may replace many tasks; a Transform initiative may not reduce staffing at all. The two classifications are recorded separately.
+The effect on work **is not the same as the ambition level**. An Optimise use case may replace many tasks; a Transform use case may not reduce staffing at all. The two classifications are recorded separately.
 
 ### 3.2 Unit of analysis
 
@@ -95,7 +95,7 @@ The effect is assessed at three levels, from the specific to the aggregate:
 2. **Job or role.** What proportion of the job's time is affected and how its responsibilities, autonomy and supervision change.
 3. **Group and organisation.** How many people, in which areas, sites and job categories, and with what foreseeable effect on staffing, structure, required qualifications and working conditions.
 
-### 3.3 How it is assessed per initiative
+### 3.3 How it is assessed per use case
 
 | Phase | Activity | Recorded result |
 |---|---|---|
@@ -123,7 +123,7 @@ The AI Product Owner carries out the assessment; the AI Sponsor is accountable f
 
 ### 3.5 Intensity rule
 
-The effect on work does not in itself create an Enterprise criterion, but **intensity must be reviewed** (T04) when the assessment detects decisions about people, significant changes in working conditions or staffing reductions. In those cases the initiative **should** be treated as Enterprise even if it does not meet any other criterion, and if it remains Lite the justification is recorded.
+The effect on work does not in itself create an Enterprise criterion, but **intensity must be reviewed** (T04) when the assessment detects decisions about people, significant changes in working conditions or staffing reductions. In those cases the use case **should** be treated as Enterprise even if it does not meet any other criterion, and if it remains Lite the justification is recorded.
 
 ---
 
@@ -139,7 +139,7 @@ The effect on work does not in itself create an Enterprise criterion, but **inte
 | **AI Office** | Maintains the effect assessment method and consolidates indicators and the released capacity record. |
 | **People function** | Jointly responsible for the effect assessment, the capability plan and the relationship with workers' representatives. |
 | **Middle managers** | Redesign day-to-day work, lead mixed person–system teams and carry out reassignment. |
-| **Initiative teams** | Build and operate with sound judgement about the effect on people. |
+| **Use case teams** | Build and operate with sound judgement about the effect on people. |
 | **Users and human overseers** | Use the system and validate, correct or interrupt its outputs with authority to disagree. |
 | **Workers' representatives** | Receive understandable information and take part in consultation where appropriate (section 7). |
 
@@ -175,14 +175,14 @@ The SEVEN-G roles (document 01 §8) do not change. The following functions **may
 |---|---|---|
 | Autonomy and trust | Give outcome objectives and let the team decide how to reach them. Control at the gates, not at each task. | Phases and gates (document 01); separation of functions (document 30) |
 | Competitive pay | Compare pay with the technical market, not only with your sector's internal pay scale. | Position on people in the AI thesis (document 13) |
-| Real problems | Assign people to initiatives with a sponsor, a value hypothesis and a decision date. Stop early what will not get there. | Portfolio funnel (document 14); feasibility gate (G3) |
+| Real problems | Assign people to use cases with a sponsor, a value hypothesis and a decision date. Stop early what will not get there. | Portfolio funnel (document 14); feasibility gate (G3) |
 
 **Six levers.** None works alone. Together the six give the person a career, projects and recognition.
 
 | # | Lever | What to do | Checked example or support |
 |---|---|---|---|
 | 1 | **A technical career parallel to management** | Define technical levels with their expectations, up to a level equivalent to director. A person can grow in pay and influence without managing people. Publish the levels inside the company. | The Dropbox Engineering Career Framework is public: it has technical levels from IC1 to IC7 (the last one, "Senior Principal") and management levels from M3 to M7, with the expectations for each level. |
-| 2 | **Projects that reach production** | Give technical profiles initiatives that can reach real use. Measure how many do. Rotate people between initiatives so that nobody spends years on pilots. | The SEVEN-G funnel shows what reaches production and why the rest is stopped (document 14). |
+| 2 | **Projects that reach production** | Give technical profiles use cases that can reach real use. Measure how many do. Rotate people between use cases so that nobody spends years on pilots. | The SEVEN-G funnel shows what reaches production and why the rest is stopped (document 14). |
 | 3 | **Visible work: publishing open source code** | Publish the generic tools the company builds. The person signs their work, the community reviews it and the market sees what is done inside. It is also a way to attract candidates. | Inditex's organisation on GitHub publishes tools under an open licence, among them servers that connect AI models to other applications. Santander's organisation on GitHub publishes AI tools, among them a synthetic fraud data generator for evaluating models and guardrail utilities. |
 | 4 | **Continuous learning and communities of practice** | Reserve working time for learning. Create communities by speciality, each with an accountable person. Pay for certifications and conference attendance in exchange for sharing what was learned. | AI literacy is an obligation for every company that uses AI (EU AI Act, Article 4). The capability plan by profile is in section 5. |
 | 5 | **Internal mobility and new roles** | Offer the new roles to the company's own people first: human supervisor, knowledge owner, agent owner. Someone who knows the business and learns AI is harder to replace than someone who only knows AI. | Roles in section 4.2; destinations of released capacity (section 6); roles of an AI-first company (document 54, section 9). |
@@ -211,7 +211,7 @@ The SEVEN-G roles (document 01 §8) do not change. The following functions **may
 |---|---|---|
 | Voluntary turnover of technical AI profiles | Voluntary departures in 12 months ÷ average headcount of those profiles | Whether the company retains. |
 | Technical profiles with a level on the technical career | People with an assigned level ÷ total technical profiles | Whether the technical career really exists. |
-| Technical work that reaches production | Initiatives in production ÷ initiatives that passed the feasibility gate (G3) | Whether the projects are real. |
+| Technical work that reaches production | Use cases in production ÷ use cases that passed the feasibility gate (G3) | Whether the projects are real. |
 | Time to fill technical vacancies | Days between opening and joining | Whether the company attracts. |
 | New-role vacancies filled with the company's own people | Vacancies filled internally ÷ new-role vacancies | Whether there is internal mobility. |
 
@@ -248,7 +248,7 @@ The World Economic Forum report was read on its official site on 13-11-2026 with
 
 The EU AI Act requires providers and deployers to take measures to support the development of **AI literacy** among their staff and other persons operating or using AI systems on their behalf (Art. 4, applicable since 2 February 2025; under the wording of Regulation (EU) 2026/1744 no specific level is required, but the policy and the training plan remain evidence). For high-risk systems, deployers must assign human oversight to natural persons who have the **necessary competence, training and authority** (Art. 26(2)). The amendments introduced by Regulation (EU) 2026/1744 (Digital Omnibus on AI, in force since 27 July 2026) and the application timeline are detailed in document 34 (§3.1 and §3.2).
 
-SEVEN-G treats literacy as a **C2 requirement** (policy, document 31) and as **evidence per initiative** (capability plan in P20).
+SEVEN-G treats literacy as a **C2 requirement** (policy, document 31) and as **evidence per use case** (capability plan in P20).
 
 ### 5.2 Profiles and content
 
@@ -258,10 +258,10 @@ SEVEN-G treats literacy as a **C2 requirement** (policy, document 31) and as **e
 | **PER-PB · Middle managers** | The above applied to the area; effect assessment; human oversight; transition and communication. | Training and participation in an effect assessment. |
 | **PER-PC · All employees** | What AI is and is not; acceptable use (document 31); data that must not be entered; verifying outputs; reporting problems. | Training before access; periodic renewal. |
 | **PER-PD · Users and overseers of a system** | Purpose and limits; interpretation of outputs; automation bias; how to disagree or interrupt; incidents. | System training and practical test before overseeing. |
-| **PER-PE · Teams that build and operate** | SEVEN-G lifecycle; documents 35, 51 and 52; bias and robustness testing. | Accredited application in an initiative. |
+| **PER-PE · Teams that build and operate** | SEVEN-G lifecycle; documents 35, 51 and 52; bias and robustness testing. | Accredited application in a use case. |
 | **PER-PF · Control and people functions** | Risks; regulatory classification; decisions about people; audit; information to workers' representatives. | Supervised participation in *gates*. |
 
-### 5.3 Capability plan per initiative
+### 5.3 Capability plan per use case
 
 The plan forms part of P20 and **must** include, for each affected group: group and number of people; required capabilities (technical, oversight, process, customer relationship); measured current gap; action (training, supported practice, rotation, reskilling); hours reserved within working time; timing (users and overseers before the pilot, others before production); owner; and sufficiency criterion with its evidence.
 
@@ -331,7 +331,7 @@ The record is kept in T20 and feeds T12 (value tracking).
 
 | Field | Guidance |
 |---|---|
-| Initiative (IA-AAAA-NNN) and period | Month or quarter. |
+| Use case (IA-AAAA-NNN) and period | Month or quarter. |
 | Group or area | Area, job category, site; no individual data. |
 | Measured released hours and full-time equivalent | Time per task × volume against the baseline. |
 | Measurement status | Validated · declared · estimated (rule 2). |
@@ -347,7 +347,7 @@ The record is kept in T20 and feeds T12 (value tracking).
 1. **Measured** released hours are always reported, even if they have no destination.
 2. Capacity in **PER-D5 for more than 90 days** (indicative time limit, set at C2) triggers an alert in T01 and is reviewed at R6.
 3. A **PER-D2 reassignment without a verifiable destination activity** is reclassified as PER-D5.
-4. Reassignment cannot be presented as materialisation or counted twice (in the originating initiative and in the destination activity).
+4. Reassignment cannot be presented as materialisation or counted twice (in the originating use case and in the destination activity).
 5. Reports to the board show released, materialised, reassigned and undecided hours separately.
 
 ---
@@ -361,7 +361,7 @@ Consultation carried out in September 2026. Validity must be verified before app
 | Reference | Content relevant to this document |
 |---|---|
 | **Estatuto de los Trabajadores (Workers' Statute), Article 64.4.d)** (introduced by Real Decreto-ley 9/2021 (Royal Decree-Law 9/2021) and Ley 12/2021 (Law 12/2021)) | The works council has the right to be informed by the company of *"the parameters, rules and instructions on which the algorithms or artificial intelligence systems are based that affect decision-making that may have an impact on working conditions, access to and retention of employment, including profiling"*. Trade union delegates may have equivalent rights under the terms of the Ley Orgánica de Libertad Sindical (Organic Law on Freedom of Association). |
-| **Estatuto de los Trabajadores, Article 64** (remainder) and applicable collective agreement | General information and consultation rights on changes in the organisation of work, which may be triggered by AI initiatives even if they are not decision-making algorithms. The collective agreement may extend obligations. |
+| **Estatuto de los Trabajadores, Article 64** (remainder) and applicable collective agreement | General information and consultation rights on changes in the organisation of work, which may be triggered by AI use cases even if they are not decision-making algorithms. The collective agreement may extend obligations. |
 | **EU AI Act, Art. 26(7)** | Before putting into service or using a high-risk AI system in the workplace, deployers who are employers must inform workers' representatives and the affected workers. |
 | **EU AI Act, Annex III, point 4** | High-risk systems in employment and workers management (section 8). |
 | **EU AI Act, Art. 5(1)(f)** | Prohibition of emotion recognition systems in the workplace, except for medical or safety reasons. |
@@ -415,7 +415,7 @@ The EU AI Act classifies as **high-risk** (Annex III, point 4) systems intended 
 
 The obligations for these systems apply from 2 December 2027, following the postponement introduced by Regulation (EU) 2026/1744 (timeline in document 34 §3.1). The specific classification of each system and its exceptions require legal expertise (documents 32 and 34).
 
-Regardless of the regulatory classification, in SEVEN-G **any initiative that significantly influences decisions about candidates or employees meets the "decisions about people" Enterprise criterion** (01 §9.2).
+Regardless of the regulatory classification, in SEVEN-G **any use case that significantly influences decisions about candidates or employees meets the "decisions about people" Enterprise criterion** (01 §9.2).
 
 ### 8.2 Maximum autonomy by type of decision
 
@@ -475,7 +475,7 @@ The EU AI Act also recognises, under certain conditions, the **right to obtain a
 
 ### 9.2 Controls
 
-1. **Occupational risk assessment.** When an initiative changes the pace, content or monitoring of work, the occupational risk assessment, including psychosocial risks, **must** be reviewed with the occupational health and safety service.
+1. **Occupational risk assessment.** When a use case changes the pace, content or monitoring of work, the occupational risk assessment, including psychosocial risks, **must** be reviewed with the occupational health and safety service.
 2. **Purpose limitation.** System usage data are not used to appraise people individually unless that purpose has been declared, is lawful and has been communicated.
 3. **Oversight design.** P17 sets a reasonable maximum volume of reviews per person, a minimum expected time per case where appropriate, quality control sampling of reviews and rotation.
 4. **Room for judgement.** It is documented when the person may depart from the system's proposal without having to justify it beyond a brief note, and anyone who does so in good faith is protected.
@@ -515,7 +515,7 @@ The codes are provisional until they are consolidated in the indicator catalogue
 
 | Code | Indicator | Formula | Frequency | Source | Indicative reference |
 |---|---|---|---|---|---|
-| **PER-01** | Effect assessment coverage | Initiatives in phase 3 or later with a recorded effect assessment ÷ initiatives in phase 3 or later | Quarterly | T01, T20 | 100% |
+| **PER-01** | Effect assessment coverage | Use cases in phase 3 or later with a recorded effect assessment ÷ use cases in phase 3 or later | Quarterly | T01, T20 | 100% |
 | **PER-02** | Literacy by profile | People in the profile with current training ÷ people in the profile | Quarterly | Training system | 100% before access or taking up the role (IND-ADO-05); current renewal of PER-PC ≥ 90% (alert threshold, to be calibrated); PER-PA and PER-PD 100% |
 | **PER-03** | Qualified overseers | A1–A3 systems in production whose designated overseers have recorded PER-PD training ÷ A1–A3 systems in production | Quarterly | T02, training | 100% |
 | **PER-04** | Released capacity materialised | Released hours materialised (PER-D1) ÷ measured released hours | Quarterly | T20 | As per hypothesis |
@@ -528,7 +528,7 @@ The codes are provisional until they are consolidated in the indicator catalogue
 | **PER-11** | Adverse impact ratio | Favourable outcome rate of the group with the lowest rate ÷ rate of the group with the highest rate | At each validation and quarterly | Bias testing | Indication if < 0.8 (section 8.4) |
 | **PER-12** | Challenges to assisted decisions | Review requests or complaints ÷ decisions communicated; and proportion upheld | Quarterly | Complaints channel | Trend and causes |
 | **PER-13** | Redesigned roles | Affected jobs with updated description and objectives ÷ affected jobs according to the effect assessment | Half-yearly | People function | 100% before G7 in Augment and Transform |
-| **PER-14** | Employee proposals | Initiatives registered in T01 originating from employee proposals ÷ registered initiatives; and G1 pass rate | Half-yearly | T01 | Trend |
+| **PER-14** | Employee proposals | Use cases registered in T01 originating from employee proposals ÷ registered use cases; and G1 pass rate | Half-yearly | T01 | Trend |
 | **PER-15** | Perception of affected groups | Favourable responses to the questions on usefulness, trust, support, workload and autonomy (P44) ÷ valid responses | In phase 5, at 3 months and at Enterprise R6 | Pulse survey | Trend; action if it worsens |
 
 **Relationship with the transformation index.** PER-04 and PER-05 feed signal 3 (materialisation); PER-13 feeds signal 5 (operating model).
@@ -615,4 +615,4 @@ The **information sheet for workers' representatives** (section 7.3) and the reg
 | 0.4 | 13-11-2026 | Section 4.3: the World Economic Forum "Future of Jobs Report 2025" becomes a checked source (key findings read on its official site with an ordinary browser) and the text says what is taken from it. |
 | 0.3 | 13-11-2026 | Section 4.3: the OECD "Employment Outlook 2023" report becomes a checked source (read in its official PDF) and the text says what is taken from it. The World Economic Forum report is still not checked after a second attempt. |
 | 0.2 | 13-11-2026 | New section 4.3, "Attracting, developing and retaining technical talent": causes of talent loss, what a technical profile values, six levers with checked examples (parallel technical career, projects that reach production, publishing open source code, learning, internal mobility and recognition), rules for publishing code with control, signs, indicative indicators, questions for management and sources. The author's proposal: it adds no rules or evidence. |
-| 0.1 | 16-09-2026 | First version. Develops sphere 03 with indicators; the assessment of the effect on work per initiative; roles and capabilities from the board to the teams; the literacy plan by profile; the process for deciding, recording and tracking released capacity with five destinations; information and consultation with reference to Article 64.4.d) of the Estatuto de los Trabajadores and the EU AI Act; maximum autonomy and controls in decisions about people; wellbeing and oversight; internal communication; fifteen indicators with a formula and ten typical organisational risks. Consistency adjustments with 01 (segregation of duties in Lite, R6 outcomes, agents criterion) and with 34 and 37; risks aligned with the codes in document 33; the three proposed risks are added to 33 as RT-ORG-07 to RT-ORG-09. |
+| 0.1 | 16-09-2026 | First version. Develops sphere 03 with indicators; the assessment of the effect on work per use case; roles and capabilities from the board to the teams; the literacy plan by profile; the process for deciding, recording and tracking released capacity with five destinations; information and consultation with reference to Article 64.4.d) of the Estatuto de los Trabajadores and the EU AI Act; maximum autonomy and controls in decisions about people; wellbeing and oversight; internal communication; fifteen indicators with a formula and ten typical organisational risks. Consistency adjustments with 01 (segregation of duties in Lite, R6 outcomes, agents criterion) and with 34 and 37; risks aligned with the codes in document 33; the three proposed risks are added to 33 as RT-ORG-07 to RT-ORG-09. |

@@ -32,7 +32,7 @@
 Reglas de cumplimentación:
 
 - **El coste no se rebaja:** se imputa completo desde el primer día; un coste desconocido es "sin dato" y el neto también (42 §2).
-- **Sin etiqueta no hay recurso:** cada recurso, clave de acceso a modelos y licencia lleva la etiqueta de su iniciativa (42 §7). El etiquetado se verifica en G5.
+- **Sin etiqueta no hay recurso:** cada recurso, clave de acceso a modelos y licencia lleva la etiqueta de su caso de uso (42 §7). El etiquetado se verifica en G5.
 - **Las claves de reparto no se cambian a mitad de ejercicio** salvo error, y el cambio se registra.
 - **La cascada reduce coste, no controles:** ninguna degradación desactiva filtros, supervisión humana, límites de agentes ni registros (52 §10.3, regla 6).
 - Los umbrales de esta plantilla son orientativos; la compañía los fija en C2 (documento 13).
@@ -43,7 +43,7 @@ Reglas de cumplimentación:
 
 | Campo | Contenido | Guía |
 |---|---|---|
-| Código de la iniciativa | | IA-AAAA-NNN (T01). En las secciones 9 y 10, «cartera» o la plataforma (`PLAT-` en la etiqueta, 42 §7.1). |
+| Código del caso de uso | | IA-AAAA-NNN (T01). En las secciones 9 y 10, «cartera» o la plataforma (`PLAT-` en la etiqueta, 42 §7.1). |
 | Sistemas de IA | | SIA-AAAA-NNN (P05). |
 | Tipo de sistema | | ML predictivo · IA generativa · Agente · IA de terceros embebida. |
 | Intensidad | | Lite · Enterprise. |
@@ -175,7 +175,7 @@ Al registrar una parada o una retirada en T01 y T13 (42 §10).
 | Presupuesto aprobado | | |
 | Gastado hasta la decisión (coste hundido) | | No interviene en la decisión; se registra para lecciones. |
 | Compromisos no cancelables | | Se informan aparte; se busca su reutilización. |
-| Coste de parar (cierre, penalizaciones, conservación o borrado) | | Coste de la iniciativa. |
+| Coste de parar (cierre, penalizaciones, conservación o borrado) | | Coste del caso de uso. |
 | **Inversión evitada = aprobado − gastado − compromisos** | | IND-COS-10. No suma en el valor. |
 | Coste recurrente evitado estimado | | Estimado. No suma en el valor. |
 
@@ -211,7 +211,7 @@ Criterios formales en el documento 21 (G3.04, G4.08, G4.16, G5.16, R6.03 y G7.05
 | Concilia | Control de gestión | | | |
 | Verifica | Oficina de IA (Lite) · Auditor de IA (Enterprise) | | | |
 
-Separación de funciones: quien opera el sistema no aprueba su propio suplemento de presupuesto; control de gestión aprueba las claves y concilia, pero no participa en la construcción de las iniciativas.
+Separación de funciones: quien opera el sistema no aprueba su propio suplemento de presupuesto; control de gestión aprueba las claves y concilia, pero no participa en la construcción de los casos de uso.
 
 ---
 

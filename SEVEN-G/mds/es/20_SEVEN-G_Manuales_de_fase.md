@@ -1,6 +1,6 @@
 # Manuales de fase
 
-**Cómo se ejecuta cada fase del ciclo de vida de una iniciativa de IA, desde la autorización hasta la evolución o la retirada**
+**Cómo se ejecuta cada fase del ciclo de vida de un caso de uso de IA, desde la autorización hasta la evolución o la retirada**
 
 | | |
 |---|---|
@@ -16,11 +16,11 @@
 
 > **Aviso legal y exención de responsabilidad.** SEVEN-G es un marco metodológico de referencia que se ofrece «tal cual» y con fines exclusivamente informativos. No constituye asesoramiento jurídico, regulatorio, financiero ni profesional, ni garantiza el cumplimiento de ninguna norma. Las referencias a regulación general (como el Reglamento Europeo de IA, el RGPD, DORA o NIS2), a normas técnicas y a regulación específica de cada sector o jurisdicción pueden ser incompletas, no aplicar a un caso concreto o quedar desactualizadas por cambios normativos, interpretaciones o criterios de las autoridades posteriores a su fecha de consulta. **Cada organización que use SEVEN-G es la única responsable de identificar la normativa que le aplica, verificar su vigencia y certificar su propio cumplimiento regulatorio**, con el asesoramiento cualificado que corresponda. Esta metodología es una ayuda genérica y gratuita, compartida con la comunidad para que nadie tenga que empezar desde cero; cada persona u organización puede y debe adaptarla a su propio uso. No debe entenderse que sus partes jurídicamente sensibles hayan sido revisadas por una asesoría jurídica: esas revisiones, para cada empresa o sector, son responsabilidad última de la empresa, el consultor o la organización que la use. Aunque se procura mantenerla al día, alguna norma puede haber cambiado sin que se recoja aquí. En la máxima medida permitida por la ley, el autor no asume responsabilidad alguna por los efectos de su aplicación en ninguna organización ni por su aplicabilidad completa. La metodología no otorga certificación de ningún tipo. El autor no asume responsabilidad alguna por el uso que se haga de este contenido ni por las decisiones que se adopten con él. Los datos, cifras, compañías y casos de los ejemplos son ficticios o ilustrativos.
 
-<!-- esencial: recomendado | Guía de trabajo de cada fase: actividades, responsables, evidencias y errores frecuentes. Lo obligatorio que desarrolla está en el documento 01 (fases y evidencias) y en el 21 (criterios). Se lee la fase en la que está la iniciativa; las transiciones entre fases (sección 11) conviene conocerlas desde el principio. -->
+<!-- esencial: recomendado | Guía de trabajo de cada fase: actividades, responsables, evidencias y errores frecuentes. Lo obligatorio que desarrolla está en el documento 01 (fases y evidencias) y en el 21 (criterios). Se lee la fase en la que está el caso de uso; las transiciones entre fases (sección 11) conviene conocerlas desde el principio. -->
 
 ## 1. Objeto y alcance
 
-Este documento convierte el ciclo de vida de la iniciativa definido en el documento 01 (sección 6) en instrucciones de trabajo. Para cada fase, de la 0 a la 7, indica qué hay que hacer, en qué orden, quién lo hace, qué evidencias deben existir antes de la puerta de decisión y cómo se prepara esa puerta. Incluye las diferencias por intensidad (Lite o Enterprise; en Express, la ficha viva de P01 §14 sustituye a las plantillas y cada puerta se evalúa con la lista reducida de 21 §2.5), por nivel de ambición y por tecnología, y las transiciones entre fases.
+Este documento convierte el ciclo de vida del caso de uso definido en el documento 01 (sección 6) en instrucciones de trabajo. Para cada fase, de la 0 a la 7, indica qué hay que hacer, en qué orden, quién lo hace, qué evidencias deben existir antes de la puerta de decisión y cómo se prepara esa puerta. Incluye las diferencias por intensidad (Lite o Enterprise; en Express, la ficha viva de P01 §14 sustituye a las plantillas y cada puerta se evalúa con la lista reducida de 21 §2.5), por nivel de ambición y por tecnología, y las transiciones entre fases.
 
 **Qué no cubre y dónde se encuentra**
 
@@ -32,7 +32,7 @@ Este documento convierte el ciclo de vida de la iniciativa definido en el docume
 | Riesgos, regulación, seguridad de agentes, terceros e incidentes | 33, 34, 35, 36 y 37 |
 | Contenido de cada evidencia | Plantillas P01–P31 |
 
-**Ámbito.** Iniciativas de IA e IA de terceros integrada en procesos (01 §1.2). El uso corporativo de IA de propósito general solo recorre estos manuales si cumple algún criterio Enterprise (01 §9.2); en otro caso se gobierna con el inventario, la política de uso aceptable y la formación (documento 31).
+**Ámbito.** Casos de uso de IA e IA de terceros integrada en procesos (01 §1.2). El uso corporativo de IA de propósito general solo recorre estos manuales si cumple algún criterio Enterprise (01 §9.2); en otro caso se gobierna con el inventario, la política de uso aceptable y la formación (documento 31).
 
 Este documento no constituye asesoramiento jurídico. Las referencias regulatorias se han consultado en septiembre de 2026 y su vigencia debe verificarse en el documento 34.
 
@@ -79,8 +79,8 @@ Toda decisión se documenta con el **registro de decisión de *gate* (P29)** en 
 3. **Sin evidencia obligatoria no hay decisión.** T03 no permite registrar *Continuar* con criterios obligatorios en *No cumple* o *Pendiente*.
 4. **Las condiciones tienen plazo y responsable** y no se admiten para controles críticos de seguridad, cumplimiento legal o supervisión humana. Vencidas, el resultado pasa a *Iterar*.
 5. **Tras dos iteraciones en el mismo *gate***, la decisión se eleva al órgano superior.
-6. **Los criterios de parada no se relajan** sin aprobación del órgano que autorizó la iniciativa.
-7. **La intensidad solo sube sin esperar a un *gate*.** Se determina en la fase 0 y se revisa en G3 y en cada R6. Si aparece antes un criterio Enterprise (por ejemplo, ambición Transformar o un agente con capacidad de actuar), la iniciativa pasa a Enterprise en ese momento. La vuelta a Lite solo se decide en G3 o R6.
+6. **Los criterios de parada no se relajan** sin aprobación del órgano que autorizó el caso de uso.
+7. **La intensidad solo sube sin esperar a un *gate*.** Se determina en la fase 0 y se revisa en G3 y en cada R6. Si aparece antes un criterio Enterprise (por ejemplo, ambición Transformar o un agente con capacidad de actuar), el caso de uso pasa a Enterprise en ese momento. La vuelta a Lite solo se decide en G3 o R6.
 8. **Todo importe tiene fórmula y estado**, y la capacidad liberada se informa aparte (reglas 1, 2 y 3 de medición). P31 se mantiene en lenguaje comprensible (regla 10).
 9. **Agrupar no es omitir.** Cuando en Lite se agrupan G0–G2 o G4–G5, cada puerta se registra como decisión separada en T03 y cada evidencia se verifica.
 
@@ -94,24 +94,24 @@ Tipos de evento (03 §3.3): alta; entrada y salida de fase; solicitud de *gate*;
 
 ### 3.1 Objetivo
 
-Autorizar formalmente la iniciativa y fijar su marco: objetivo estratégico, esfera, restricciones, roles, intensidad y alta en el inventario. Pregunta: *¿está autorizada la iniciativa y en qué marco?*
+Autorizar formalmente el caso de uso y fijar su marco: objetivo estratégico, esfera, restricciones, roles, intensidad y alta en el inventario. Pregunta: *¿está autorizada el caso de uso y en qué marco?*
 
 ### 3.2 Cuándo empieza y cuándo termina
 
-- **Empieza** cuando una idea registrada en T01 (estado *Registrada*) tiene un patrocinador que acepta promoverla y un responsable de producto designado, o cuando G7 decide **Escalar** (sección 11.5).
+- **Empieza** cuando una idea registrada en T01 (estado *Registrado*) tiene un patrocinador que acepta promoverla y un responsable de producto designado, o cuando G7 decide **Escalar** (sección 11.5).
 - **Termina** con G0: *Continuar*, *Continuar con condiciones*, *Iterar* o *Parar*.
-- **Regla:** sin G0 la iniciativa no está autorizada; no consume presupuesto ni accede a datos de producción (01 §6.2).
+- **Regla:** sin G0 el caso de uso no está autorizado; no consume presupuesto ni accede a datos de producción (01 §6.2).
 
 ### 3.3 Entradas
 
-Idea registrada con descripción comprensible (T01) · tesis de IA, ambición por esfera y apetito de riesgo (C2, documento 13) · cartera, presupuesto marco y umbral de inversión Enterprise (C3, documento 14) · política corporativa y de uso aceptable (documento 31) · inventario e iniciativas existentes (T02, T01) · mapeo regulatorio y normativa sectorial (documento 34) · si procede de un escalado, decisión de G7 y lecciones aprendidas (P30).
+Idea registrada con descripción comprensible (T01) · tesis de IA, ambición por esfera y apetito de riesgo (C2, documento 13) · cartera, presupuesto marco y umbral de inversión Enterprise (C3, documento 14) · política corporativa y de uso aceptable (documento 31) · inventario e casos de uso existentes (T02, T01) · mapeo regulatorio y normativa sectorial (documento 34) · si procede de un escalado, decisión de G7 y lecciones aprendidas (P30).
 
 ### 3.4 Actividades paso a paso
 
 | # | Actividad | Realiza | Participan |
 |---|---|---|---|
 | 1 | Describir la necesidad de negocio y el objetivo estratégico sin presuponer la solución; identificar la esfera principal y la secundaria. | Producto | Técnico, área usuaria |
-| 2 | Comprobar el encaje con la tesis, la ambición de la esfera y la cartera; buscar en T01 y T02 iniciativas o sistemas similares. | Producto | Oficina de IA |
+| 2 | Comprobar el encaje con la tesis, la ambición de la esfera y la cartera; buscar en T01 y T02 casos de uso o sistemas similares. | Producto | Oficina de IA |
 | 3 | Declarar restricciones regulatorias, éticas, de datos (disponibilidad, base legal preliminar, categorías especiales), presupuestarias, de plazo, tecnológicas y de proveedores. | Producto | Riesgos, Técnico, asesoría jurídica |
 | 4 | Identificación regulatoria preliminar con T07 (posible práctica prohibida, alto riesgo, transparencia); si no puede concluirse, *Pendiente de clasificar*. | Producto | Riesgos |
 | 5 | Asignar los seis roles, comprobar incompatibilidades (01 §8.2) y obtener la aceptación expresa. El auditor lo designa la tercera línea, no el patrocinador. | Producto | Oficina de IA, tercera línea |
@@ -128,7 +128,7 @@ Patrocinador **A** · Producto **R** · Técnico **C** · Operación **I** · Ri
 
 | Evidencia | Plantilla | Herramienta |
 |---|---|---|
-| Carta de la iniciativa | P01 | T01 |
+| Carta del caso de uso | P01 | T01 |
 | Declaración de contexto y restricciones | P02 | T01 |
 | Registro de asignación de roles | P03 | T01 |
 | Determinación de intensidad | P04 | T04 |
@@ -201,7 +201,7 @@ Identificar oportunidades desde el negocio dentro del ámbito autorizado, descar
 
 ### 4.3 Entradas
 
-Evidencias y condiciones de G0 (P01–P05, T03) · datos del proceso o decisión: volúmenes, tiempos, costes, errores (área usuaria, control de gestión) · iniciativas paradas o retiradas con motivos comparables (T01) · mapa de esferas y criterios de ambición (documentos 10 y 12, T05).
+Evidencias y condiciones de G0 (P01–P05, T03) · datos del proceso o decisión: volúmenes, tiempos, costes, errores (área usuaria, control de gestión) · casos de uso parados o retirados con motivos comparables (T01) · mapa de esferas y criterios de ambición (documentos 10 y 12, T05).
 
 ### 4.4 Actividades paso a paso
 
@@ -361,7 +361,7 @@ Patrocinador **A** · Producto **R** · Técnico **C** · Operación **I** · Ri
 - Sumar la capacidad liberada como ahorro.
 - Métricas del modelo en lugar de métricas de negocio.
 - Criterios de parada tan laxos que nunca se activan.
-- Atribuir un resultado que también declara otra iniciativa (regla 5 de medición).
+- Atribuir un resultado que también declara otro caso de uso (regla 5 de medición).
 
 ### 5.13 Eventos en el registro
 
@@ -373,7 +373,7 @@ Entrada en fase 2 (marcando el pivote, si lo hay) · ambición confirmada · sol
 
 ### 6.1 Objetivo
 
-Decidir si la iniciativa es viable técnica, económica, regulatoria y organizativamente con un riesgo aceptable. Es la **principal puerta de parada**: lo que no se detiene aquí se detiene después a un coste mayor.
+Decidir si el caso de uso es viable técnica, económica, regulatoria y organizativamente con un riesgo aceptable. Es la **principal puerta de parada**: lo que no se detiene aquí se detiene después a un coste mayor.
 
 ### 6.2 Cuándo empieza y cuándo termina
 
@@ -577,7 +577,7 @@ Construir o integrar la solución, probarla y demostrar el valor en condiciones 
 ### 8.2 Cuándo empieza y cuándo termina
 
 - **Empieza** con *Continuar* en G4.
-- **Termina** con G5. Con *Continuar* o *Continuar con condiciones*, la iniciativa pasa a *En producción* y a la fase 6.
+- **Termina** con G5. Con *Continuar* o *Continuar con condiciones*, el caso de uso pasa a *En producción* y a la fase 6.
 - **Regla:** la puesta en producción Enterprise requiere firma multinivel con capacidad de veto (01 §6.7).
 
 ### 8.3 Entradas
@@ -720,7 +720,7 @@ Patrocinador **I** · Producto **C** · Técnico **C** · Operación **A/R** · 
 |---|---|---|
 | R6 | Semestral; oficina de IA y patrocinador. | Trimestral; auditor de IA y comité de IA. |
 | Monitorización | Rendimiento, coste y uso. | Completa, con sesgo, seguridad y guardia definida. |
-| Visibilidad | Panel del consejo agregado. | Panel del consejo por iniciativa. |
+| Visibilidad | Panel del consejo agregado. | Panel del consejo por caso de uso. |
 
 ### 9.8 Diferencias por nivel de ambición
 
@@ -769,7 +769,7 @@ Incidentes y severidad · cambios · no conformidades · cambios de clasificaci�
 
 ### 10.1 Objetivo
 
-Decidir con evidencia si la iniciativa se escala, se itera o se retira, y comprobar la ambición real frente a la declarada. Pregunta: *¿escalamos, iteramos o retiramos?*
+Decidir con evidencia si el caso de uso se escala, se itera o se retira, y comprobar la ambición real frente a la declarada. Pregunta: *¿escalamos, iteramos o retiramos?*
 
 ### 10.2 Cuándo empieza y cuándo termina
 
@@ -791,7 +791,7 @@ Valor realizado con estado y costes reales (P28, T12, T13) · incidentes, cambio
 | 5 | Analizar opciones: escalar (alcance, inversión, nueva hipótesis), iterar (a qué fase y por qué; mantener sin cambios es iterar a la fase 6) o retirar (motivo y sustituto). | Producto | Técnico, Operación |
 | 6 | Registrar las lecciones aprendidas. | Producto | Todos los roles |
 | 7 | Si se propone retirar, preparar el plan (T22): fecha, motivo, órgano, sustituto, datos y modelos conforme a las obligaciones de conservación, revocación de accesos e identidades de agentes, contratos, proceso alternativo y comunicación a los afectados. | Producto y Operación | Riesgos, delegado de protección de datos |
-| 8 | Preparar la decisión (P30), solicitar G7 y, tras decidir, ejecutarla: registrar la nueva iniciativa, devolver la iniciativa a su fase o ejecutar y verificar la retirada. | Producto | Oficina de IA |
+| 8 | Preparar la decisión (P30), solicitar G7 y, tras decidir, ejecutarla: registrar el nuevo caso de uso, devolver el caso de uso a su fase o ejecutar y verificar la retirada. | Producto | Oficina de IA |
 
 ### 10.5 Roles
 
@@ -853,29 +853,29 @@ Si la ambición real es inferior a la declarada, se reclasifica en T01. La difer
 
 ### 10.13 Eventos en el registro
 
-*Pendiente de G7* · ambición real · solicitud, verificación y decisión de G7 · aprobación del consejo cuando proceda · alta de la iniciativa vinculada (Escalar) · vuelta a fase (Iterar) · retirada con motivo codificado.
+*Pendiente de G7* · ambición real · solicitud, verificación y decisión de G7 · aprobación del consejo cuando proceda · alta del caso de uso vinculado (Escalar) · vuelta a fase (Iterar) · retirada con motivo codificado.
 
 ---
 
 ## 11. Transiciones entre fases
 
-El ciclo no es lineal: cada puerta puede devolver la iniciativa a una fase anterior, detenerla o abrir un ciclo nuevo.
+El ciclo no es lineal: cada puerta puede devolver el caso de uso a una fase anterior, detenerlo o abrir un ciclo nuevo.
 
-<!-- grafico: Transiciones entre fases | Qué ocurre con la iniciativa según el resultado de cada puerta -->
+<!-- grafico: Transiciones entre fases | Qué ocurre con el caso de uso según el resultado de cada puerta -->
 ```mermaid
 flowchart LR
   F["Fase en curso"] --> G{"Gate"}
   G -->|"Continuar o con condiciones"| S["Fase siguiente"]
   G -->|"Iterar (máximo 2 antes de elevar)"| F
   G -->|"Pivotar (solo G1, G2 y G3)"| F2["Fase 2 con nueva hipótesis"]
-  G -->|"Parar"| P["Parada"]
+  G -->|"Parar"| P["Parado"]
   F -.->|"Causa externa registrada"| E["En espera"]
   E -.->|"Reanudación"| F
   S -.->|"Tras superar G5"| PR["En producción con R6"]
   PR -->|"Momento previsto o desviación"| G7{"G7"}
   G7 -->|"Escalar"| N0["Nueva fase 0"]
   G7 -->|"Iterar"| FX["Fase que corresponda (6 si se mantiene sin cambios)"]
-  G7 -->|"Retirar"| R["Retirada"]
+  G7 -->|"Retirar"| R["Retirado"]
   classDef ok fill:#d9ebe0,stroke:#0d7680,color:#1a1817
   classDef med fill:#f2dfce,stroke:#0f5499,color:#1a1817
   classDef ko fill:#f3d3da,stroke:#990f3d,color:#1a1817
@@ -886,7 +886,7 @@ flowchart LR
   class E espera
 ```
 
-**Continuar con condiciones.** Cada condición se registra en T03 con plazo, responsable y *gate* en que se verificará. Si vence sin cumplirse, el resultado pasa a *Iterar* y la iniciativa vuelve a la fase del *gate* que la impuso; si ya está en producción, se trata en la R6 siguiente o se adelanta G7.
+**Continuar con condiciones.** Cada condición se registra en T03 con plazo, responsable y *gate* en que se verificará. Si vence sin cumplirse, el resultado pasa a *Iterar* y el caso de uso vuelve a la fase del *gate* que la impuso; si ya está en producción, se trata en la R6 siguiente o se adelanta G7.
 
 ### 11.1 Iterar
 
@@ -898,15 +898,15 @@ flowchart LR
 ### 11.2 Pivotar
 
 - **Cuándo:** solo en G1, G2 y G3, cuando la hipótesis no se sostiene pero hay una alternativa razonable.
-- **Qué se hace:** la iniciativa entra en la fase 2 con una nueva hipótesis y conserva el contexto de G0. Desde G1, la alternativa debe figurar en P06 con sus notas de filtrado; desde G3, se conservan los hallazgos de viabilidad y riesgo que sigan siendo válidos.
-- **Límites:** si el pivote cambia esfera, restricciones, roles o intensidad, se actualizan P01 a P04 y se verifican en G2. Los criterios de parada no se trasladan relajados. Un segundo pivote en la misma iniciativa debería elevarse al comité de IA.
+- **Qué se hace:** el caso de uso entra en la fase 2 con una nueva hipótesis y conserva el contexto de G0. Desde G1, la alternativa debe figurar en P06 con sus notas de filtrado; desde G3, se conservan los hallazgos de viabilidad y riesgo que sigan siendo válidos.
+- **Límites:** si el pivote cambia esfera, restricciones, roles o intensidad, se actualizan P01 a P04 y se verifican en G2. Los criterios de parada no se trasladan relajados. Un segundo pivote en el mismo caso de uso debería elevarse al comité de IA.
 
 ### 11.3 Parar
 
 - **Cuándo:** no hay valor plausible, la viabilidad no se demuestra, el riesgo es inaceptable o se activa un criterio de parada.
 - **Qué se hace:** se cierran los trabajos y se liberan presupuesto y personas; se revocan accesos a datos e identidades técnicas; se actualiza o da de baja la ficha de T02; se retira cualquier piloto con su plan de reversión; se informa a los participantes y se registran las lecciones aprendidas.
 - **Motivo codificado** (03 §3.3): sin valor plausible · hipótesis refutada · datos insuficientes · inviable técnicamente · coste superior al valor · riesgo inaceptable · regulación · sin adopción · sustituida por otra solución · cambio de prioridad estratégica.
-- **Reactivación:** una iniciativa parada no se reanuda. Si cambian las circunstancias, se registra como iniciativa nueva vinculada a la parada, con su fase 0 y reutilizando las evidencias válidas.
+- **Reactivación:** un caso de uso parado no se reanuda. Si cambian las circunstancias, se registra como caso de uso nuevo vinculado al parado, con su fase 0 y reutilizando las evidencias válidas.
 
 ### 11.4 En espera
 
@@ -920,13 +920,13 @@ Un sistema en producción no pasa a *En espera*: su suspensión se gestiona con 
 ### 11.5 Escalado como nueva fase 0
 
 - **Cuándo:** G7 decide ampliar el alcance (áreas, poblaciones, países, canales, volúmenes) o aumentar la autonomía o la ambición.
-- **Qué se hace:** el alcance ampliado se registra en T01 como **iniciativa nueva, con código propio, vinculada a la de origen**, y recorre el ciclo desde la fase 0. Puede reutilizar evidencias de la iniciativa de origen, identificadas con su versión y verificadas de nuevo. La intensidad se determina otra vez.
-- **Iniciativa de origen:** sigue operando con sus R6 hasta que la nueva la absorba o sustituya; entonces se decide en G7 su retirada o integración.
-- **Valor:** la nueva iniciativa solo declara el valor incremental del alcance ampliado (regla 5 de medición).
+- **Qué se hace:** el alcance ampliado se registra en T01 como **caso de uso nuevo, con código propio, vinculado al de origen**, y recorre el ciclo desde la fase 0. Puede reutilizar evidencias del caso de uso de origen, identificadas con su versión y verificadas de nuevo. La intensidad se determina otra vez.
+- **Caso de uso de origen:** sigue operando con sus R6 hasta que la nueva la absorba o sustituya; entonces se decide en G7 su retirada o integración.
+- **Valor:** el nuevo caso de uso solo declara el valor incremental del alcance ampliado (regla 5 de medición).
 
 ### 11.6 Retirada
 
-Se decide en G7 y se ejecuta con P30 y T22. Registra fecha, motivo, órgano que decide, sustituto, tratamiento de datos y modelos y comunicación a los afectados (01 §6.9). El estado *Retirada* solo se registra cuando el auditor de IA (Enterprise) o la oficina de IA (Lite) verifican la ejecución del plan, incluidas la revocación de accesos y la actualización del inventario.
+Se decide en G7 y se ejecuta con P30 y T22. Registra fecha, motivo, órgano que decide, sustituto, tratamiento de datos y modelos y comunicación a los afectados (01 §6.9). El estado *Retirado* solo se registra cuando el auditor de IA (Enterprise) o la oficina de IA (Lite) verifican la ejecución del plan, incluidas la revocación de accesos y la actualización del inventario.
 
 ### 11.7 Cambios de clasificación durante el ciclo
 
@@ -935,10 +935,10 @@ Se decide en G7 y se ejecuta con P30 y T22. Registra fecha, motivo, órgano que 
 | **Intensidad de Lite a Enterprise** | Inmediato al aparecer el criterio; lo pendiente se completa con plantillas Enterprise y los *gates* siguientes se resuelven con verificador y decisor Enterprise. |
 | **Intensidad de Enterprise a Lite** | Solo en G3 o R6, con justificación registrada. |
 | **Ambición** | Se propone en fase 1, se confirma en fase 2 y se revisa en fase 7. Un cambio a Transformar en otro momento exige intensidad Enterprise y aprobación del consejo antes de continuar. |
-| **Clasificación regulatoria** | Si pasa a alto riesgo o se detecta una posible práctica prohibida, la iniciativa vuelve a la fase 3 o, si está en producción, se adelanta G7. |
+| **Clasificación regulatoria** | Si pasa a alto riesgo o se detecta una posible práctica prohibida, el caso de uso vuelve a la fase 3 o, si está en producción, se adelanta G7. |
 | **Autonomía de agentes** | Todo aumento es un cambio significativo: nueva evaluación de riesgos, revisión de intensidad y decisión del órgano competente antes de aplicarlo. |
 
-### 11.8 Iniciativas anteriores a la adopción del marco
+### 11.8 Casos de uso anteriores a la adopción del marco
 
 Se regularizan en el plazo aprobado en C2 con una revisión equivalente a G7 (01 §14). Se preparan las evidencias de las fases 6 y 7 y las imprescindibles de fases anteriores (clasificación regulatoria, riesgos, plan de reversión), identificadas expresamente como elaboradas en la regularización, por lo que no constituyen documentación a posteriori en el sentido de 01 §7.4.
 
@@ -950,7 +950,7 @@ Las plantillas de cada fase están en la tabla de la sección 2.2 y en el aparta
 
 | Código | Herramienta | Fases |
 |---|---|---|
-| T01 · T03 | Registro de iniciativas · Gestor de *gates* | Todas |
+| T01 · T03 | Registro de casos de uso · Gestor de *gates* | Todas |
 | T02 · T04 · T07 | Inventario · Determinación de intensidad · Clasificador regulatorio | 0, 3, 6 |
 | T05 | Clasificador de ambición | 1, 2, 7 |
 | T06 · T09 · T13 | Riesgos · Proveedores · Costes por caso | 3–7 |
@@ -965,7 +965,7 @@ Las plantillas de cada fase están en la tabla de la sección 2.2 y en el aparta
 | Documento | Relación |
 |---|---|
 | **01 · Metodología fundacional** | Referencia normativa que estos manuales desarrollan. |
-| **03 · Herramientas y registro de iniciativas** | Estados, eventos, plazos y herramientas. |
+| **03 · Herramientas y registro de casos de uso** | Estados, eventos, plazos y herramientas. |
 | **12 · Índice de transformación** | Criterios de ambición y efecto de la ambición real. |
 | **13 y 14 · Tesis de IA y gestión de cartera** | Umbrales, horizonte, plazos y criterios de retirada. |
 | **21 y 22 · Criterios de *gate* y listas de verificación** | Criterios `G<n>.<nn>`, `R6.<nn>` y controles `LV-`. |

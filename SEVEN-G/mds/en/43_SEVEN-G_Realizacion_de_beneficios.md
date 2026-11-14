@@ -20,7 +20,7 @@
 
 ## 1. Purpose and scope
 
-This document establishes how SEVEN-G converts the expected value of an initiative into realised and validated value, and how it consolidates that value in the portfolio and in the board dashboard. It applies the rules and formulas of document 40 and the indicators of document 41.
+This document establishes how SEVEN-G converts the expected value of a use case into realised and validated value, and how it consolidates that value in the portfolio and in the board dashboard. It applies the rules and formulas of document 40 and the indicators of document 41.
 
 It answers six questions:
 
@@ -31,7 +31,7 @@ It answers six questions:
 5. What is done when the value does not arrive?
 6. How is the value the board sees consolidated and audited?
 
-It applies to every initiative from phase 2 until its retirement. In Lite it applies with the simplified plan and tracking indicated in each section.
+It applies to every use case from phase 2 until its retirement. In Lite it applies with the simplified plan and tracking indicated in each section.
 
 The figures in the examples are **fictitious and illustrative**.
 
@@ -74,7 +74,7 @@ flowchart LR
 
 1. **Expected and realised values are never added together.** They coexist in T12 as separate columns.
 2. **Expected value is not validated** (document 40 §4.1). Management control may review its calculation at G3, but the validated status only applies to realised value in a closed period.
-3. **The approved hypothesis is the reference.** The realisation plan, variances and G7 are measured against the hypothesis approved at G2 and revised at G3. Changing it requires the approval of the body that authorised the initiative (01 §7.4, rule 6).
+3. **The approved hypothesis is the reference.** The realisation plan, variances and G7 are measured against the hypothesis approved at G2 and revised at G3. Changing it requires the approval of the body that authorised the use case (01 §7.4, rule 6).
 
 ---
 
@@ -88,12 +88,12 @@ flowchart LR
 
 | Role | Who | Responsibility in realisation | May not |
 |---|---|---|---|
-| **Business owner of the benefit** | Executive of the area in which the benefit arises (the area whose cost falls or whose revenue rises). May be the same person as the sponsor. | Signs the realisation plan; executes the enabling changes and the materialisation; declares realised value each period; explains variances and proposes actions. | Validate their own value. Be the technical owner of the initiative. |
+| **Business owner of the benefit** | Executive of the area in which the benefit arises (the area whose cost falls or whose revenue rises). May be the same person as the sponsor. | Signs the realisation plan; executes the enabling changes and the materialisation; declares realised value each period; explains variances and proposes actions. | Validate their own value. Be the technical owner of the use case. |
 | **AI Sponsor** | As per 01 §8.1. | Answers for the value before the governing bodies; resolves conflicts between areas; decides actions within their authority. | Validate the value. |
 | **AI Product Owner** | As per 01 §8.1. | Accountable for actual use and adoption; keeps T12 up to date; prepares the reviews. | Declare value on behalf of the business area. |
-| **Management control** | Finance function independent of the area. | Validates realised value; sets unit values and hourly costs; approves allocation keys; reconciles with accounting. | Take part in building the initiative. |
+| **Management control** | Finance function independent of the area. | Validates realised value; sets unit values and hourly costs; approves allocation keys; reconciles with accounting. | Take part in building the use case. |
 | **AI Office** | As per 01 §8.3. | Consolidates the portfolio; detects overlaps; prepares information for the committee and the board. | Validate value. |
-| **AI Auditor and internal audit** | Third line. | Verifies at G5 and G7; audits value by sampling (section 12). | Take part in the initiative. |
+| **AI Auditor and internal audit** | Third line. | Verifies at G5 and G7; audits value by sampling (section 12). | Take part in the use case. |
 
 ### 3.3 Requirements for the business owner
 
@@ -109,7 +109,7 @@ flowchart LR
 
 ### 4.1 Content
 
-The plan is documented in template P62 and recorded in T01, in the initiative's `plan_realizacion` block (T12); P28 captures its tracking by period. In Lite, the fields marked **(Enterprise)** may be omitted.
+The plan is documented in template P62 and recorded in T01, in the use case's `plan_realizacion` block (T12); P28 captures its tracking by period. In Lite, the fields marked **(Enterprise)** may be omitted.
 
 | Block | Field | Guidance |
 |---|---|---|
@@ -130,7 +130,7 @@ The plan is documented in template P62 and recorded in T01, in the initiative's 
 | **Benefit risks** | What could prevent it from arriving | Linked to the risk register (T06). **(Enterprise)** |
 | **Stop criteria** | Threshold below which iterating or retiring is proposed | Those approved at G2. |
 | **Reviews** | Dates of the 6- and 12-month reviews and of R6 | As per section 8. |
-| **Dependencies** | Other initiatives, suppliers or projects on which it depends | **(Enterprise)** |
+| **Dependencies** | Other use cases, suppliers or projects on which it depends | **(Enterprise)** |
 
 **Recording in T01.** The `plan_realizacion` block carries the plan's status, its source and its date, and these fields. The plan's status can only be estimated or declared, because expected value is not validated (section 2.2, rule 2; document 40 §4.1); the realised value for each period and each tranche carry their own status, which may be validated.
 
@@ -144,7 +144,7 @@ The plan is documented in template P62 and recorded in T01, in the initiative's 
 | `real` | Realised value for each period with its status: validated, declared or estimated (section 5.2). |
 | `declive` | Optional: loss of value per year (`pct_anual`) from a period (`desde`), for example because of model drift or because competitors copy the advantage. |
 
-The board dashboard (T17) reads this block and shows the curve and the tranches (section 11.2). An initiative without a recorded plan has no curve: the dashboard does not estimate it (document 40, rule 8).
+The board dashboard (T17) reads this block and shows the curve and the tranches (section 11.2). A use case without a recorded plan has no curve: the dashboard does not estimate it (document 40, rule 8).
 
 ### 4.2 Approval
 
@@ -244,19 +244,19 @@ The cost of a case-processing process falls by €500,000 in the year. A non-AI 
 4. Proportional allocation: A = 400,000 × 280/500 = **€224,000**; B = 400,000 × 220/500 = **€176,000**.
 5. Check: 100,000 + 224,000 + 176,000 = €500,000.
 
-### 6.4 Cross-unit initiatives: realisation by business unit
+### 6.4 Cross-unit use cases: realisation by business unit
 
-A cross-unit initiative (document 40 §7.2) has a single realisation plan, with one block per business unit:
+A cross-unit use case (document 40 §7.2) has a single realisation plan, with one block per business unit:
 
 | Element | What is required |
 |---|---|
 | **Owners** | The sponsor is corporate. Each unit appoints its **business owner of the benefit**, who signs the unit's part of the plan and declares its cost, adoption and realised value every period. |
-| **Cost** | Each unit bears its licences from day one. Shared costs (adoption office, ongoing training, permission review) are recorded without a unit and add to the initiative's cost. |
+| **Cost** | Each unit bears its licences from day one. Shared costs (adoption office, ongoing training, permission review) are recorded without a unit and add to the use case's cost. |
 | **Adoption** | Active over assigned licences and weekly active users, taken from the platform usage reports. Below the threshold approved at G2, the unit reviews the roll-out or withdraws licences. |
 | **Materialisation** | Each unit states the lever from section 7.2 it uses to turn released hours into lower cost or reassigned capacity. Without a lever, the hours are released capacity and do not add up. |
-| **Validation** | Management control validates unit by unit. The sum of the units and of the shared costs is the initiative's value; what a unit's own use case already claims on the same process is not counted again (sections 6.1 and 6.2). |
+| **Validation** | Management control validates unit by unit. The sum of the units and of the shared costs is the use case's value; what a unit's own use case already claims on the same process is not counted again (sections 6.1 and 6.2). |
 
-In T01, each unit's roll-out and adoption are recorded in the initiative's scope, and its cost and value as amounts with their unit. The board dashboard (T17) shows them by unit and gives the portfolio's net value with and without cross-unit initiatives.
+In T01, each unit's roll-out and adoption are recorded in the use case's scope, and its cost and value as amounts with their unit. The board dashboard (T17) shows them by unit and gives the portfolio's net value with and without cross-unit use cases.
 
 ---
 
@@ -284,7 +284,7 @@ Materialisation affecting people is planned with the people function and complie
 2. **Each hour has a single destination**: materialised, reassigned or without destination (F5).
 3. **The efficiency is valued at the lower actual cost**, not at hours multiplied by the internal hourly cost. That is why the materialisation rate is calculated in hours and the efficiency in euros of actual cost.
 4. **Capacity without destination is reported** in each period and in the board dashboard, separately from net value.
-5. **Persistent capacity without destination.** If after two validation periods the capacity still has no destination, the AI Committee reviews the value hypothesis and the ambition level of the initiative.
+5. **Persistent capacity without destination.** If after two validation periods the capacity still has no destination, the AI Committee reviews the value hypothesis and the ambition level of the use case.
 
 ### 7.4 Illustrative example
 
@@ -419,7 +419,7 @@ The presentation rules are in document 40 §11. For benefits realisation, the bo
 - **Capacity without destination** in the portfolio and its evolution.
 - **Value by ambition level**, separating efficiencies and return, for signals 2 and 3 of the transformation index.
 - **Historical snapshots** that allow periods to be compared without rewriting figures already presented; corrections are shown as adjustments.
-- **Realisation plan: curve and tranches.** Card with the portfolio curve by year, half-year or quarter (sum of the use cases with a recorded plan), cumulative realisation (F10) against the approved reference, in total and validated only, with the IND-VAL-14 thresholds (≥ 90% within tolerance, 70–90% moderate variance, < 70% significant variance; section 9.1), and the NPV (F7) of each use case. Initiatives without a plan are shown as "no realisation plan" and are never estimated (document 40, rule 8).
+- **Realisation plan: curve and tranches.** Card with the portfolio curve by year, half-year or quarter (sum of the use cases with a recorded plan), cumulative realisation (F10) against the approved reference, in total and validated only, with the IND-VAL-14 thresholds (≥ 90% within tolerance, 70–90% moderate variance, < 70% significant variance; section 9.1), and the NPV (F7) of each use case. Use cases without a plan are shown as "no realisation plan" and are never estimated (document 40, rule 8).
 
 ### 11.3 Aggregation rules
 
@@ -476,7 +476,7 @@ When a finding affects figures already presented to the board, the AI Office pre
 | Code | Name | Use in this document |
 |---|---|---|
 | **T12** | Value realisation tracking | Realisation plan (`plan_realizacion` block of T01), recording by period, statuses, realisation, variances. |
-| **T01** | Initiative register | Owners, review events, R6 and G7 decisions; realisation plan with curve, tranches and realised value by period. |
+| **T01** | Use case register | Owners, review events, R6 and G7 decisions; realisation plan with curve, tranches and realised value by period. |
 | **T13** | Cost calculator per use case | Actual recurring cost. |
 | **T17** | Board AI dashboard | Consolidation and presentation; "Realisation plan: curve and tranches" card. |
 | **T20** | Adoption and capacity plan | Materialisation and reassignment of capacity. |

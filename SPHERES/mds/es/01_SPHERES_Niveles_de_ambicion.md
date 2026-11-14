@@ -11,7 +11,7 @@
 | Estado | En construcción. Las reglas de clasificación vigentes están en el documento 12 de SEVEN-G. |
 | Tipo | Concepto de la metodología |
 
-<!-- cifras: 3 | niveles de ambición ; 5 | preguntas para clasificar ; 1 | nivel por iniciativa ; 3 | criterios de avance distintos -->
+<!-- cifras: 3 | niveles de ambición ; 5 | preguntas para clasificar ; 1 | nivel por caso de uso ; 3 | criterios de avance distintos -->
 
 ---
 
@@ -19,7 +19,7 @@
 
 ## 1. Objeto
 
-Este documento explica los **tres niveles de ambición** de SPHERES: qué significa cada uno, qué cambia en la organización, dónde está su valor, qué riesgos tiene, cómo se decide y cómo se reconoce con evidencia. También explica cómo clasificar una iniciativa y cuáles son los errores más frecuentes.
+Este documento explica los **tres niveles de ambición** de SPHERES: qué significa cada uno, qué cambia en la organización, dónde está su valor, qué riesgos tiene, cómo se decide y cómo se reconoce con evidencia. También explica cómo clasificar un caso de uso y cuáles son los errores más frecuentes.
 
 Los niveles se aplican a las esferas **01 a 07**. Las esferas 08 y 09 se evalúan con grados propios (documento 04).
 
@@ -27,7 +27,7 @@ Los niveles se aplican a las esferas **01 a 07**. Las esferas 08 y 09 se evalúa
 
 ## 2. Qué es un nivel de ambición
 
-Un nivel de ambición describe **lo que una iniciativa de IA cambia en el negocio**. No describe la tecnología que usa, lo que cuesta ni lo novedosa que parece.
+Un nivel de ambición describe **lo que un caso de uso de IA cambia en el negocio**. No describe la tecnología que usa, lo que cuesta ni lo novedosa que parece.
 
 <!-- figura: niveles -->
 
@@ -172,7 +172,7 @@ Los niveles de ambición **no describen la madurez** de la compañía ni un cami
 
 ---
 
-## 8. Cómo clasificar una iniciativa
+## 8. Cómo clasificar un caso de uso
 
 La clasificación se hace con **cinco preguntas** que se responden sí o no, siempre con evidencia. Una respuesta afirmativa sin evidencia cuenta como no.
 
@@ -186,10 +186,10 @@ La clasificación se hace con **cinco preguntas** que se responden sí o no, sie
 
 Reglas básicas de lectura:
 
-- Si las preguntas 1 a 4 son **no**, la iniciativa es **Optimizar**, se haya presentado como se haya presentado.
-- Si la pregunta 1 o la 4 es **sí**, la iniciativa es **Transformar**.
-- Si la pregunta 2 o la 3 es **sí**, la iniciativa es **Aumentar**, salvo que el cambio afecte a una unidad organizativa completa o a un proceso central del negocio, en cuyo caso es **Transformar**.
-- La pregunta 5 sirve de **contraste**: si una iniciativa clasificada como Aumentar o Transformar podría retirarse sin más consecuencia que volver al coste anterior, las respuestas deben revisarse.
+- Si las preguntas 1 a 4 son **no**, el caso de uso es **Optimizar**, se haya presentado como se haya presentado.
+- Si la pregunta 1 o la 4 es **sí**, el caso de uso es **Transformar**.
+- Si la pregunta 2 o la 3 es **sí**, el caso de uso es **Aumentar**, salvo que el cambio afecte a una unidad organizativa completa o a un proceso central del negocio, en cuyo caso es **Transformar**.
+- La pregunta 5 sirve de **contraste**: si un caso de uso clasificado como Aumentar o Transformar podría retirarse sin más consecuencia que volver al coste anterior, las respuestas deben revisarse.
 - **En caso de duda razonable, se asigna el nivel inferior**, y quien propone el superior aporta la evidencia.
 
 <!-- grafico: Clasificación rápida | Las preguntas se responden con evidencia y el resultado se contrasta con la pregunta 5 -->
@@ -208,9 +208,9 @@ flowchart TD
   E -->|"No"| F["Nivel confirmado; en caso de duda, el inferior"]
 ```
 
-Las reglas completas, los casos de contraste y quién clasifica, confirma y revisa el nivel están en [SEVEN-G 12 · Índice de transformación](../../../SEVEN-G/html/es/12_SEVEN-G_Indice_de_transformacion.html), sección 3. En SEVEN-G el nivel se propone al registrar la iniciativa, se confirma antes de invertir en su construcción y se comprueba con evidencia cuando la iniciativa ya produce resultados.
+Las reglas completas, los casos de contraste y quién clasifica, confirma y revisa el nivel están en [SEVEN-G 12 · Índice de transformación](../../../SEVEN-G/html/es/12_SEVEN-G_Indice_de_transformacion.html), sección 3. En SEVEN-G el nivel se propone al registrar el caso de uso, se confirma antes de invertir en su construcción y se comprueba con evidencia cuando el caso de uso ya produce resultados.
 
-> **Por qué importa.** Cinco preguntas con evidencia sustituyen a la opinión. Dos áreas que presentan iniciativas parecidas obtienen el mismo nivel, y el consejo puede confiar en que el mapa describe la realidad y no el entusiasmo de cada patrocinador.
+> **Por qué importa.** Cinco preguntas con evidencia sustituyen a la opinión. Dos áreas que presentan casos de uso parecidas obtienen el mismo nivel, y el consejo puede confiar en que el mapa describe la realidad y no el entusiasmo de cada patrocinador.
 
 ---
 
@@ -225,22 +225,22 @@ Las reglas completas, los casos de contraste y quién clasifica, confirma y revi
 | Automatización con agentes de un proceso de back office completo, con menos personas haciendo lo mismo. | **Optimizar** | Reducir el número de personas que hacen lo mismo no es cambio de rol. Si el proceso se rediseña pero los roles no cambian, sería Aumentar. |
 | Precio dinámico con IA dentro de las tarifas actuales. | **Aumentar** | La decisión pasa a un sistema con supervisión (pregunta 3: sí), pero el cliente recibe la misma oferta. |
 | Precio personalizado por uso que el cliente elige como nueva modalidad. | **Transformar** | El cliente recibe una forma de precio nueva (pregunta 1: sí). |
-| Plataforma común de datos para varias iniciativas. | **Optimizar** por defecto | Se clasifica por su efecto propio; no hereda la ambición de las iniciativas que habilita. |
+| Plataforma común de datos para varios casos de uso. | **Optimizar** por defecto | Se clasifica por su efecto propio; no hereda la ambición de los casos de uso que habilita. |
 | Piloto exploratorio de un nuevo servicio. | Según lo que cambiaría a escala | Se clasifica por su hipótesis; el nivel real se comprueba con evidencia. |
-| Iniciativa con un componente de Optimizar y otro de Transformar. | **Se divide** o se clasifica por el componente que concentra más de la mitad de la inversión | Los niveles no se promedian. |
+| Caso de uso con un componente de Optimizar y otro de Transformar. | **Se divide** o se clasifica por el componente que concentra más de la mitad de la inversión | Los niveles no se promedian. |
 
 ---
 
 ## 10. La ambición de una esfera y el equilibrio de la cartera
 
-Además de clasificar iniciativas, la dirección fija una **ambición objetivo para cada esfera** de la 01 a la 07. Esa ambición no se asigna por opinión: se expresa con las iniciativas que la ejecutan.
+Además de clasificar casos de uso, la dirección fija una **ambición objetivo para cada esfera** de la 01 a la 07. Esa ambición no se asigna por opinión: se expresa con los casos de uso que la ejecutan.
 
 | Concepto | Qué es | Ejemplo ilustrativo |
 |---|---|---|
-| **Nivel alcanzado** | El nivel más alto con al menos una iniciativa en producción y valor medido. | En Cliente, Optimizar: hay un enrutador de consultas con ahorro validado. |
-| **Nivel en cartera** | El nivel más alto con alguna iniciativa aprobada para construirse. | En Cliente, Aumentar: está aprobado un asistente para gestores comerciales. |
+| **Nivel alcanzado** | El nivel más alto con al menos un caso de uso en producción y valor medido. | En Cliente, Optimizar: hay un enrutador de consultas con ahorro validado. |
+| **Nivel en cartera** | El nivel más alto con algún caso de uso aprobado para construirse. | En Cliente, Aumentar: está aprobado un asistente para gestores comerciales. |
 | **Ambición objetivo** | El nivel que la dirección quiere para la esfera en el horizonte de su estrategia. | En Cliente, Aumentar. |
-| **Brecha** | La ambición objetivo no tiene ninguna iniciativa aprobada que la ejecute. | En Datos, objetivo Aumentar y ninguna iniciativa aprobada de ese nivel. |
+| **Brecha** | La ambición objetivo no tiene ningún caso de uso aprobado que la ejecute. | En Datos, objetivo Aumentar y ningún caso de uso aprobado de ese nivel. |
 
 Una cartera equilibrada **no** reparte la inversión por igual entre niveles. Refleja la estrategia: mucha eficiencia donde la compañía compite en coste, apuestas de Aumentar donde el talento es la ventaja y alguna apuesta de Transformar, acotada y por etapas, donde la compañía quiere cambiar su posición. La fijación y aprobación de la ambición por esfera se describe en [SEVEN-G 13 · Tesis de IA, ambición y apetito de riesgo](../../../SEVEN-G/html/es/13_SEVEN-G_Tesis_de_IA_ambicion_y_apetito_de_riesgo.html).
 
@@ -255,7 +255,7 @@ Una cartera equilibrada **no** reparte la inversión por igual entre niveles. Re
 | Clasificar por la tecnología ("usa agentes, luego es Transformar"). | Cartera aparentemente ambiciosa y sin cambio real. | Aplicar las cinco preguntas con evidencia. |
 | Clasificar por el importe o por la visibilidad del programa. | Se aplican criterios de transformación a automatizaciones caras. | Recordar que el importe no determina el nivel. |
 | Subir de nivel para conseguir financiación. | El consejo aprueba expectativas que no se cumplirán. | Revisión independiente del nivel y comprobación posterior con evidencia. |
-| Aplicar a todas las iniciativas el mismo criterio de retorno. | Las apuestas de Transformar se paran antes de aprender. | Criterios de avance distintos por nivel. |
+| Aplicar a todos los casos de uso el mismo criterio de retorno. | Las apuestas de Transformar se paran antes de aprender. | Criterios de avance distintos por nivel. |
 | Contar horas liberadas como ahorro en Optimizar. | Ahorros que no aparecen en la cuenta de resultados. | Distinguir capacidad liberada, materializada y reasignada. |
 | Medir el éxito de Aumentar por licencias asignadas. | Inversión sin cambio en la forma de trabajar. | Medir uso activo y mejora de rendimiento. |
 | Fijar la ambición de una esfera sin mirar las habilitadoras. | Promesas que los datos o las reglas de decisión no sostienen. | Leer el documento 03 antes de fijar una ambición alta. |

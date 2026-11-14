@@ -44,7 +44,7 @@ Reglas de cumplimentación:
 
 | Campo | Contenido | Guía |
 |---|---|---|
-| Código de la iniciativa | | IA-AAAA-NNN. |
+| Código del caso de uso | | IA-AAAA-NNN. |
 | Sistemas de IA incluidos | | SIA-AAAA-NNN de P05 (T02). |
 | Nombre del tratamiento | | Como figura, o figurará, en el registro de actividades de tratamiento (RGPD, artículo 30). |
 | Responsable del tratamiento | | Sociedad del grupo que decide los fines y medios. |
@@ -194,7 +194,7 @@ Una medida solo reduce el riesgo residual si existe y funciona (P12). Las medida
 | Evaluación | ¿Aplica? | Cómo se coordina |
 |---|---|---|
 | Evaluación de impacto en derechos fundamentales (P48) | Sí · No | La complementa sin duplicarla (artículo 27.4 del Reglamento de IA): se reutilizan la descripción del tratamiento y los riesgos para la protección de datos. |
-| Registro de riesgos de la iniciativa (P12) | Sí | Los riesgos E.. de nivel Medio o superior figuran en P12. |
+| Registro de riesgos del caso de uso (P12) | Sí | Los riesgos E.. de nivel Medio o superior figuran en P12. |
 | Diseño de seguridad (P18) | | Medidas técnicas de seguridad de los datos. |
 | Evaluaciones sectoriales o de terceros **(Enterprise)** | | DORA, NIS2 u otras (P11 §9.3). |
 

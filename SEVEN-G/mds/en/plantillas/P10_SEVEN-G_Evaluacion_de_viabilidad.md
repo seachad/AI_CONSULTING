@@ -1,6 +1,6 @@
 # Feasibility assessment
 
-**Brings together the technical, data, economic, organisational, regulatory and risk evidence needed to decide at G3 whether the initiative proceeds or stops.**
+**Brings together the technical, data, economic, organisational, regulatory and risk evidence needed to decide at G3 whether the use case proceeds or stops.**
 
 | | |
 |---|---|
@@ -39,8 +39,8 @@ Completion rules:
 
 | Field | Content | Guidance |
 |---|---|---|
-| Initiative code | | IA-AAAA-NNN. |
-| Initiative name | | |
+| Use case code | | IA-AAAA-NNN. |
+| Use case name | | |
 | Confirmed ambition level | | Optimise · Augment · Transform. |
 | Intensity | | Lite · Enterprise (reviewed at G3 with P04). |
 | Document version | | |

@@ -20,11 +20,11 @@
 
 | Aspect | Guidance |
 |---|---|
-| **When it is used** | From the moment a possible nonconformity is detected (37 §3.1): in a *gate* verification, an R6, an audit, an initiative register alert, a control test, an incident or a report from anyone. The record remains open until closure and, for critical and major nonconformities, until the re-audit. |
+| **When it is used** | From the moment a possible nonconformity is detected (37 §3.1): in a *gate* verification, an R6, an audit, a use case register alert, a control test, an incident or a report from anyone. The record remains open until closure and, for critical and major nonconformities, until the re-audit. |
 | **Who completes it** | The AI Office records and keeps it. Whoever detects the nonconformity proposes the type; the action owner documents containment, root cause and actions. |
 | **Who verifies it** | The AI Auditor confirms the type, verifies effectiveness and closes it. At Lite intensity, the AI Auditor may close minor nonconformities on the basis of the AI Office's documentary verification (37 §3.8). |
 | **Who decides or approves** | The action plan is approved by the AI Committee (critical), the AI Risk Owner (major) or the AI Office (minor). Disagreements about the type are resolved by the AI Committee. |
-| **Stage, *gate* or moment** | At any point in the initiative lifecycle and the corporate cycle. It is reviewed at R6 (R6.15), at G7 (G7.04), in the C4 quarterly report and in the C5 annual review. |
+| **Stage, *gate* or moment** | At any point in the use case lifecycle and the corporate cycle. It is reviewed at R6 (R6.15), at G7 (G7.04), in the C4 quarterly report and in the C5 annual review. |
 | **Tool** | T08 · Nonconformity and incident register (T01 module), with statuses, time limits, overdue alerts and links. This template is its equivalent in document or spreadsheet format. |
 | **Reference document** | Document 37 §3 (process), §6 (relationship with incidents) and §8–9 (indicators and reporting to the board); 01 §12. |
 | **Lite versus Enterprise** | The process is the same. Lite may omit the fields marked **(Enterprise)**; the root cause for major and critical nonconformities and closure by the AI Auditor are never omitted. |
@@ -50,8 +50,8 @@ Completion rules:
 | Detection source | | *Gate* verification · R6 · Internal audit · External audit · Register alert · Control test · Incident · Unauthorised use of AI · Report from an employee, customer, supplier or supervisor. |
 | Detected by | | Role and name. |
 | Recorded by | | AI Office; date of recording. |
-| Scope | | Initiative (IA-AAAA-NNN), system (SIA-AAAA-NNN), supplier, area or corporate process. |
-| Intensity of the affected initiative | | Lite · Enterprise · Not applicable (corporate process). |
+| Scope | | Use case (IA-AAAA-NNN), system (SIA-AAAA-NNN), supplier, area or corporate process. |
+| Intensity of the affected use case | | Lite · Enterprise · Not applicable (corporate process). |
 | Action owner | | Named person, other than the auditor who will close it. |
 
 ---
@@ -64,7 +64,7 @@ Completion rules:
 | Criterion or control affected | | *Gate* criterion (G*n*.*nn* of document 21), SEG or AG control of document 35, contractual clause or other. |
 | Description of the finding | | What has been observed, with objective evidence. Facts, not opinions. |
 | Evidence | | Reference to the documents, logs or screenshots preserved. |
-| Does it invalidate a *gate*? | | Yes · No. If Yes, the initiative returns to the status prior to that *gate* until it is corrected (37 §3.4). |
+| Does it invalidate a *gate*? | | Yes · No. If Yes, the use case returns to the status prior to that *gate* until it is corrected (37 §3.4). |
 | Linked incident | | INC-AAAA-NNN (P27), if any. The type of the nonconformity is determined by the requirement not met, not by the severity of the incident (37 §6). |
 | Other links **(Enterprise)** | | Risks (IA-AAAA-NNN · R*nn*), *gate* decisions (P29), board recommendations (REC-AAAA-NNN). |
 
@@ -111,7 +111,7 @@ Mandatory for critical and major nonconformities. Options from lowest to highest
 | Immediate cause | | What directly produced the event. |
 | Root cause | | Cause in the management system that can be acted upon. "Human error" is not a final root cause. |
 | Does it meet the four validity conditions? | | Explains all the facts · had it been eliminated the failure would not have occurred or would have been detected · is actionable · does not merely point at a person. Yes · No. |
-| Does the same failure exist in other systems or initiatives? | | Systems reviewed and result. |
+| Does the same failure exist in other systems or use cases? | | Systems reviewed and result. |
 | Reference of the worksheet | | P52, version and date. |
 
 ### 6.2 Actions

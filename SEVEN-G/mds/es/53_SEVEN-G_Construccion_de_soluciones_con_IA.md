@@ -34,7 +34,7 @@ Este documento fija:
 
 ### 1.2 Qué no regula
 
-- La gobernanza de la iniciativa, sus *gates* y su valor: los fija el documento 01.
+- La gobernanza del caso de uso, sus *gates* y su valor: los fija el documento 01.
 - El uso corporativo de asistentes de IA fuera de proyectos: documento 31.
 - La seguridad de agentes en producción: documento 35.
 - La evaluación de proveedores de herramientas de IA: documento 36 y P14.
@@ -43,10 +43,10 @@ Este documento fija:
 
 | Objeto | Qué es | Dónde se gobierna |
 |---|---|---|
-| **El sistema que se construye** | La solución de la iniciativa (puede ser o no un sistema de IA). | Ciclo de vida 0–7, clasificación regulatoria (documento 34), P15–P23. |
+| **El sistema que se construye** | La solución del caso de uso (puede ser o no un sistema de IA). | Ciclo de vida 0–7, clasificación regulatoria (documento 34), P15–P23. |
 | **Las herramientas de IA que ayudan a construirlo** | Asistentes, agentes y modelos usados por el equipo. | Inventario (T02) como uso corporativo o de equipo; política (documento 31); proveedor (P14); este documento. |
 
-Una herramienta de construcción con capacidad de ejecutar acciones en repositorios, entornos o sistemas es un **agente** y se clasifica en los niveles de autonomía A0–A3 (documento 35). Si actúa sobre sistemas de producción o datos personales en nivel A2 o A3, la iniciativa cumple el criterio Enterprise de 01 §9.2.
+Una herramienta de construcción con capacidad de ejecutar acciones en repositorios, entornos o sistemas es un **agente** y se clasifica en los niveles de autonomía A0–A3 (documento 35). Si actúa sobre sistemas de producción o datos personales en nivel A2 o A3, el caso de uso cumple el criterio Enterprise de 01 §9.2.
 
 ---
 
@@ -60,8 +60,8 @@ Una herramienta de construcción con capacidad de ejecutar acciones en repositor
 
 | Aspecto | SEVEN-G | SPAD |
 |---|---|---|
-| Qué gobierna | La iniciativa: valor, riesgo, cumplimiento, decisión. | El trabajo de ingeniería asistido por IA dentro de la construcción. |
-| Unidad | Iniciativa (IA-AAAA-NNN) y sistema de IA. | Tema de trabajo (*TOPIC*): funcionalidad, corrección o cambio. |
+| Qué gobierna | El caso de uso: valor, riesgo, cumplimiento, decisión. | El trabajo de ingeniería asistido por IA dentro de la construcción. |
+| Unidad | Caso de uso (IA-AAAA-NNN) y sistema de IA. | Tema de trabajo (*TOPIC*): funcionalidad, corrección o cambio. |
 | Puertas | *Gates* G0–G5, R6, G7 con decisión de un órgano. | Veredictos técnicos por fase (GO, GO con cambios, NO-GO). |
 | Quién decide | Personas y órganos con separación de funciones. | El humano orquestador valida; las IA producen y revisan. |
 | Evidencia | Plantillas P01–P31 verificadas. | Artefactos por fase agrupados por tema. |
@@ -71,7 +71,7 @@ Una herramienta de construcción con capacidad de ejecutar acciones en repositor
 1. Los veredictos de SPAD **no sustituyen** a ningún *gate* ni a la verificación del Auditor de IA.
 2. Los artefactos de SPAD **son insumos** de las evidencias SEVEN-G; no son evidencias por sí solos hasta que se referencian en la plantilla correspondiente con autor humano, fecha, versión y verificación (01 §7.2).
 3. Algunos materiales de SPAD anteriores a la decisión D09 presentan SPAD como parte de SEVEN-G. Esa relación queda sustituida por la de este documento.
-4. Los materiales de SPAD incluyen cifras de mejora (reducción de retrabajo, incidencias o plazos) y expectativas de retorno. **SEVEN-G no las usa ni las avala**, porque no disponen de respaldo verificable; el valor de una iniciativa se mide con las reglas de 00 §6.
+4. Los materiales de SPAD incluyen cifras de mejora (reducción de retrabajo, incidencias o plazos) y expectativas de retorno. **SEVEN-G no las usa ni las avala**, porque no disponen de respaldo verificable; el valor de un caso de uso se mide con las reglas de 00 §6.
 5. La certificación interna asociada a SPAD no es una evidencia SEVEN-G ni exime de ningún *gate*.
 6. AECF, aplicación de SPAD a una tecnología concreta, tiene la misma consideración de metodología relacionada.
 
@@ -79,8 +79,8 @@ Una herramienta de construcción con capacidad de ejecutar acciones en repositor
 
 | Situación | Uso de SPAD | Requisitos mínimos (sección 7) |
 |---|---|---|
-| Iniciativa Enterprise con construcción asistida por IA | **Debería** usarse SPAD u otro método documentado equivalente. | **Debe** cumplirlos. |
-| Iniciativa Lite con construcción asistida por IA | **Puede** usarse SPAD, en su versión reducida (sección 4.3). | **Debe** cumplirlos en su versión Lite. |
+| Caso de uso Enterprise con construcción asistida por IA | **Debería** usarse SPAD u otro método documentado equivalente. | **Debe** cumplirlos. |
+| Caso de uso Lite con construcción asistida por IA | **Puede** usarse SPAD, en su versión reducida (sección 4.3). | **Debe** cumplirlos en su versión Lite. |
 | Corrección urgente en producción (fase 6) | **Puede** usarse el flujo de corrección urgente de SPAD. | **Debe** cumplirlos, con revisión posterior documentada. |
 | Modificación de código heredado | **Debería** aplicarse la documentación previa del código existente. | **Debe** cumplirlos. |
 | Prototipo desechable sin datos reales ni acceso a producción | No es necesario. | Solo 7.6 (datos y confidencialidad). |
@@ -120,7 +120,7 @@ SPAD exige cargar dos contextos antes de cualquier fase. En SEVEN-G esos context
 | Contexto global | Reglas comunes de artefactos, pruebas, versiones, seguridad y prohibiciones. | Documento 31 (uso aceptable), documento 35 (seguridad), estándares técnicos de la compañía. |
 | Contexto del proyecto | Tecnología, arquitectura, reglas de negocio, cumplimiento y excepciones justificadas. | P02 (contexto y restricciones), P11 (clasificación regulatoria), P15 (arquitectura), P17 (supervisión humana), P18 (seguridad). |
 | Excepciones al contexto global | Deben justificarse, evaluar su riesgo y ser aprobadas en la revisión del plan. | Además, se registran como riesgo en P12 y, si afectan a un control crítico, requieren conformidad del Responsable de riesgos. |
-| Tema de trabajo (*TOPIC*) | Identificador que agrupa los artefactos. | Debe incluir o referenciar el código de la iniciativa (IA-AAAA-NNN) y enlazarse desde T01 (03 §2, principio 4). |
+| Tema de trabajo (*TOPIC*) | Identificador que agrupa los artefactos. | Debe incluir o referenciar el código del caso de uso (IA-AAAA-NNN) y enlazarse desde T01 (03 §2, principio 4). |
 
 ---
 
@@ -223,7 +223,7 @@ SPAD declara inválida, y obliga a descartar y repetir, toda respuesta de IA que
 
 ## 7. Requisitos mínimos de SEVEN-G para código generado con IA
 
-Se aplican a todo código, configuración, consulta, infraestructura como código, prueba o documentación técnica generado total o parcialmente con IA que forme parte de una solución de una iniciativa, con independencia del método de ingeniería.
+Se aplican a todo código, configuración, consulta, infraestructura como código, prueba o documentación técnica generado total o parcialmente con IA que forme parte de una solución de un caso de uso, con independencia del método de ingeniería.
 
 ### 7.1 Revisión humana
 
@@ -234,7 +234,7 @@ Se aplican a todo código, configuración, consulta, infraestructura como códig
 
 ### 7.2 Trazabilidad
 
-- **Debe** poder identificarse qué partes de la solución se generaron con IA, con qué herramienta y en qué tema de trabajo o iniciativa (por ejemplo, mediante metadatos en los cambios o en el informe de entrega).
+- **Debe** poder identificarse qué partes de la solución se generaron con IA, con qué herramienta y en qué tema de trabajo o caso de uso (por ejemplo, mediante metadatos en los cambios o en el informe de entrega).
 - Las decisiones de diseño **deben** constar en P15, no solo en conversaciones con la herramienta.
 - En Enterprise, **deberían** conservarse las instrucciones relevantes y las salidas aceptadas de las fases de plan y revisión, con la política de conservación de la compañía y sin datos personales innecesarios.
 - La versión de cada entrega **debe** vincularse a su plan de reversión (P19).
@@ -266,7 +266,7 @@ Se aplican a todo código, configuración, consulta, infraestructura como códig
 
 - **No deben** introducirse datos personales, secretos, credenciales ni información confidencial en herramientas no aprobadas para ese nivel de información (documento 31).
 - Los datos de prueba **deberían** ser sintéticos o anonimizados; si se usan datos personales, se aplican la base jurídica y las medidas de P11 y P16.
-- La configuración de la herramienta respecto a retención y uso de datos **debe** verificarse antes de su uso en la iniciativa.
+- La configuración de la herramienta respecto a retención y uso de datos **debe** verificarse antes de su uso en el caso de uso.
 
 ### 7.7 Intensidad
 
@@ -305,7 +305,7 @@ Los criterios formales se incorporarán al documento 21. Mientras tanto, el veri
 
 | Código | Uso en este documento |
 |---|---|
-| T01 · Registro de iniciativas | Enlace de los artefactos del tema de trabajo a la iniciativa. |
+| T01 · Registro de casos de uso | Enlace de los artefactos del tema de trabajo al caso de uso. |
 | T02 · Inventario de sistemas de IA | Alta de las herramientas de construcción con IA. |
 | T03 · Gestor de *gates* | Verificación en G4, G5 y R6. |
 | T06 · Matriz y registro de riesgos | Riesgos técnicos y excepciones al contexto global. |

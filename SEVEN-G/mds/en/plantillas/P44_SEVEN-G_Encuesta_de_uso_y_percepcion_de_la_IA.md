@@ -24,7 +24,7 @@
 | **Who completes it** | Annual: all employees and collaborators with access to company resources; the AI Office designs and analyses it. Pulse: the groups affected by the system (users, designated overseers and managers); the AI Product Owner prepares and analyses it with the people function. |
 | **Who verifies it** | Annual: AI Auditor or internal audit, by sampling (document 38). Pulse: AI Office in Lite; AI Auditor in Enterprise, as part of P20. |
 | **Who decides or approves** | Annual: the AI Committee receives the results and approves the actions (catalogue, training, regularisation). Pulse: the AI Sponsor approves the action plan; the *gate* body assesses the results at G5, R6 and G7. |
-| **Stage, *gate* or moment** | Annual: C4 (T21 monitor) and C5. Pulse: G5, R6 and G7 of the initiative. |
+| **Stage, *gate* or moment** | Annual: C4 (T21 monitor) and C5. Pulse: G5, R6 and G7 of the use case. |
 | **Tool** | Annual: T21 · Corporate AI use monitor. Pulse: T20 · Adoption and capacity plan. |
 | **Reference document** | Annual: 31 §5.2 to §5.5; 32 §9. Pulse: 23 §10; 50 §9 to §11; 41 (IND-ADO-15). |
 | **Lite versus Enterprise** | Annual: mandatory in both implementation scopes (90 §2.1). Pulse: mandatory in Enterprise (23 §13.2); in Lite it should be applied in phase 5 and at three months when the system changes the work of a group. |
@@ -44,7 +44,7 @@ Completion rules:
 | Field | Content | Guidance |
 |---|---|---|
 | Survey type | | Annual use · Perception pulse. |
-| Perimeter or initiative | | Company or perimeter (annual survey); code IA-AAAA-NNN and systems SIA-AAAA-NNN (pulse). |
+| Perimeter or use case | | Company or perimeter (annual survey); code IA-AAAA-NNN and systems SIA-AAAA-NNN (pulse). |
 | Moment | | Year (annual); phase 5 · three months · R6 (pulse). |
 | Response period | | DD-MM-AAAA to DD-MM-AAAA. |
 | Target population | | Number of people and groups. |
@@ -109,7 +109,7 @@ All closed rating questions use the same scale and are worded positively so that
 | Finding | Treatment |
 |---|---|
 | Uncatalogued tool cited | Registration in T02 as unauthorised use, by tool and scope, without identifying people (31 §5.3; 32 §2.1), and regularisation (31 §5.5). |
-| Recurrent unmet need | Assessment as a request (P43, section 4) or as an opportunity in the initiative register (T01). |
+| Recurrent unmet need | Assessment as a request (P43, section 4) or as an opportunity in the use case register (T01). |
 | Low knowledge of the policy or of the channel | Reinforcement of F1 training (P45) and of communication. |
 | Unauthorised personal agents | Review of authorisation by autonomy level (31 §4.7). |
 

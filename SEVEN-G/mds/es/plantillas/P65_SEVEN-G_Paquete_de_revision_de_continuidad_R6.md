@@ -42,7 +42,7 @@ Reglas de cumplimentación:
 
 | Campo | Contenido | Guía |
 |---|---|---|
-| Código de la iniciativa | | IA-AAAA-NNN (T01). |
+| Código del caso de uso | | IA-AAAA-NNN (T01). |
 | Sistemas de IA | | SIA-AAAA-NNN (P05). |
 | Tipo de sistema y nivel de autonomía | | ML predictivo · IA generativa · Agente; A0–A3. |
 | Intensidad, nivel de ambición y clasificación regulatoria | | P04, P07, P11. |

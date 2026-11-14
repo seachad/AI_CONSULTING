@@ -31,7 +31,7 @@ The document contains the seven dimensions and the six levels, the rubric and qu
 | The organisation's capability —bodies, practices, controls, data, people and measurement— to decide on, build, operate and oversee AI under control. | How much AI the company uses or how advanced its technology is. It is shown separately, as the technology footprint (section 7.6), which does not score but sets the minimum governance required. |
 | Whether that capability is in place and working, with observable evidence. | Whether the company is transforming or merely becoming more efficient: that is measured by the transformation index (document 12). |
 | The company's progress over time using a consistent method. | Its position relative to other companies. SEVEN-G does not publish market comparisons. |
-| The maturity of the company as a whole or of a declared scope. | The quality of a specific initiative: that is decided by the *gates*. |
+| The maturity of the company as a whole or of a declared scope. | The quality of a specific use case: that is decided by the *gates*. |
 
 The model is not a certification. A maturity result does not replace the framework audit (document 38) or attest to regulatory compliance. This document does not constitute legal advice.
 
@@ -53,7 +53,7 @@ The model is not a certification. A maturity result does not replace the framewo
 | Code | Dimension | Question it answers | Related spheres and documents |
 |---|---|---|---|
 | **D1** | **Strategy and governance** | Does the company make decisions on AI with a thesis, bodies, roles and board oversight? | Sphere 09 · documents 13, 30, 31, 60, 62 |
-| **D2** | **Value and portfolio** | Does it select, prioritise, control and retire initiatives with a traced lifecycle? | Spheres 01–04 · documents 03, 14, 20, 21 |
+| **D2** | **Value and portfolio** | Does it select, prioritise, control and retire use cases with a traced lifecycle? | Spheres 01–04 · documents 03, 14, 20, 21 |
 | **D3** | **Data and knowledge** | Does it have data and knowledge with an owner, quality, legal basis and lineage in order to use them in AI? | Spheres 05 and 06 · document 51 |
 | **D4** | **Technology and operations** | Does it operate AI in production with stability, monitoring, reversibility and known costs? | Sphere 04 · documents 42, 52, 53 |
 | **D5** | **People and adoption** | Does it prepare people, achieve actual usage and manage the effect of AI on work? | Sphere 03 · documents 23, 50 |
@@ -67,7 +67,7 @@ The model is not a certification. A maturity result does not replace the framewo
 | **0** | **Non-existent** | There is no recognisable practice or owner. | Not all the criteria of level 1 are met. |
 | **1** | **Initial** | Isolated practices that depend on specific people. | There are identified owners and some written record, without a common method. |
 | **2** | **Developing** | The practice is partly defined and applied in some cases or areas. | Approved documents and records started, with incomplete coverage. |
-| **3** | **Defined** | The practice is common, approved and applied across the whole assessed scope. | Systematic evidence in all the relevant initiatives or systems. |
+| **3** | **Defined** | The practice is common, approved and applied across the whole assessed scope. | Systematic evidence in all the relevant use cases or systems. |
 | **4** | **Managed** | The practice is measured with indicators, reviewed with data and deviations are acted upon. | Indicator series and decisions recorded for at least **two consecutive quarters**. |
 | **5** | **Optimised** | The practice improves continuously using the company's own data. | At least **one complete C5 cycle** with changes decided on the basis of evidence and already applied. |
 
@@ -103,7 +103,7 @@ Level 0 has no criteria of its own. The time requirements of levels 4 and 5 prev
 
 ### 3.2 D1 · Strategy and governance
 
-**Scope.** AI thesis, ambition by sphere and risk appetite; corporate and acceptable use policy; bodies (board or board committee, AI Committee, AI Office); initiative roles and segregation of duties; corporate cycle C1–C5; board oversight and follow-up of its recommendations. **Interviewees:** chair or chief executive officer, member of the board or of the board committee, chair of the AI Committee, head of the AI Office, board secretary.
+**Scope.** AI thesis, ambition by sphere and risk appetite; corporate and acceptable use policy; bodies (board or board committee, AI Committee, AI Office); use case roles and segregation of duties; corporate cycle C1–C5; board oversight and follow-up of its recommendations. **Interviewees:** chair or chief executive officer, member of the board or of the board committee, chair of the AI Committee, head of the AI Office, board secretary.
 
 | Level | Observable criteria | Required evidence |
 |---|---|---|
@@ -122,7 +122,7 @@ Level 0 has no criteria of its own. The time requirements of levels 4 and 5 prev
 | D1.05 | Has the board approved the AI thesis, the ambition level by sphere and the risk appetite on the basis of a C1 diagnosis? **(§14)** | 3 | Board minutes; approved thesis; C1 report (P33). |
 | D1.06 | Have the C2 thresholds been approved: Enterprise investment criterion, return horizon, reference time limits by phase and nonconformity time limits? | 3 | Thresholds document with its approval (P35). |
 | D1.07 | Have the AI Committee, the AI Office and the board committee been set up with the functions in 01 §8.3, and do they meet according to the calendar in 01 §5.2? **(§14)** | 3 | Mandates (P38); minutes for the last six months. |
-| D1.08 | Do all active initiatives have the roles in 01 §8.1 assigned, without any of the incompatibilities in 01 §8.2? **(§14)** | 3 | Sample of P03; check in T01. |
+| D1.08 | Do all active use cases have the roles in 01 §8.1 assigned, without any of the incompatibilities in 01 §8.2? **(§14)** | 3 | Sample of P03; check in T01. |
 | D1.09 | Does the board or its board committee review the AI dashboard at least quarterly, as recorded in the minutes for two consecutive quarters? | 4 | Dashboards (T17); minutes. |
 | D1.10 | Are the board's recommendations tracked with a persistent identifier, owner, deadline, status and evidence, and is the decision time of the bodies measured? | 4 | Register of recommendations (T18); decision time metrics (T01). |
 | D1.11 | Has the AI thesis been reviewed in a C5 with the evidence on maturity, transformation index and portfolio, and have the approved changes been applied? | 5 | C5 report (P37); versioned thesis; board minutes. |
@@ -130,28 +130,28 @@ Level 0 has no criteria of its own. The time requirements of levels 4 and 5 prev
 
 ### 3.3 D2 · Value and portfolio
 
-**Scope.** Initiative register and funnel management; lifecycle with *gates*; prioritisation and ambition balance; stage-based budgeting; value hypothesis and stop criteria; tracking of realised value; stops and retirements. **Interviewees:** AI Committee, AI Office, sponsors and product owners of a sample of initiatives, management control.
+**Scope.** Use case register and funnel management; lifecycle with *gates*; prioritisation and ambition balance; stage-based budgeting; value hypothesis and stop criteria; tracking of realised value; stops and retirements. **Interviewees:** AI Committee, AI Office, sponsors and product owners of a sample of use cases, management control.
 
 | Level | Observable criteria | Required evidence |
 |---|---|---|
-| **1** | There is a list of AI initiatives with owners. Some initiative has a written business objective before building. | Dated list; proposal or record predating the start. |
-| **2** | Initiative register with phase, status and owner covering the known initiatives. There are documented *gate* decisions in some of the initiatives. | Register; *gate* decision records (P29). |
-| **3** | All new initiatives are in the register with the traceability in 01 §6.11 and go through the *gates*. Portfolio prioritised with a documented method. Falsifiable hypotheses and stop criteria before investing. | Register with events (T01); P29 predating the spending; portfolio minutes; P07, P08, P09. |
-| **4** | Funnel metrics reviewed monthly and portfolio balance quarterly for two quarters. Realised value compared with the hypothesis in all initiatives in production. Stops and retirements carried out according to procedure. | Reports and minutes; P28; retirement register (T22). |
+| **1** | There is a list of AI use cases with owners. Some use case has a written business objective before building. | Dated list; proposal or record predating the start. |
+| **2** | Use case register with phase, status and owner covering the known use cases. There are documented *gate* decisions in some of the use cases. | Register; *gate* decision records (P29). |
+| **3** | All new use cases are in the register with the traceability in 01 §6.11 and go through the *gates*. Portfolio prioritised with a documented method. Falsifiable hypotheses and stop criteria before investing. | Register with events (T01); P29 predating the spending; portfolio minutes; P07, P08, P09. |
+| **4** | Funnel metrics reviewed monthly and portfolio balance quarterly for two quarters. Realised value compared with the hypothesis in all use cases in production. Stops and retirements carried out according to procedure. | Reports and minutes; P28; retirement register (T22). |
 | **5** | Historical probability and weighted value calculated with the company's own data. Entry or prioritisation criteria modified on the basis of stop reasons and cohorts. | Analysis in T01; versioned method; C5 report. |
 
 | Code | Question | Level | Required evidence |
 |---|---|---|---|
-| D2.01 | Is there a list of ongoing AI initiatives with an identified owner for each one? | 1 | Dated list. |
-| D2.02 | Does at least one initiative have a written business objective dated before construction started? | 1 | Dated proposal or record. |
-| D2.03 | Does the company maintain an initiative register with phase, status and owner covering all known initiatives? | 2 | Register; cross-check against the inventory (T02). |
-| D2.04 | Are there documented *gate* decisions, with decision-maker and outcome, in some of the initiatives of the last 12 months? | 2 | *Gate* decision records (P29). |
-| D2.05 | Are all new initiatives registered with phase dates, waiting periods, *gates*, criteria, conditions, tags and stop reasons (01 §6.11)? **(§14)** | 3 | Sample of records with event history in T01. |
-| D2.06 | Do all new initiatives go through the lifecycle with their *gates* recorded before consuming the budget for the next phase? **(§14)** | 3 | Sample: P29 dated before the spending. |
+| D2.01 | Is there a list of ongoing AI use cases with an identified owner for each one? | 1 | Dated list. |
+| D2.02 | Does at least one use case have a written business objective dated before construction started? | 1 | Dated proposal or record. |
+| D2.03 | Does the company maintain a use case register with phase, status and owner covering all known use cases? | 2 | Register; cross-check against the inventory (T02). |
+| D2.04 | Are there documented *gate* decisions, with decision-maker and outcome, in some of the use cases of the last 12 months? | 2 | *Gate* decision records (P29). |
+| D2.05 | Are all new use cases registered with phase dates, waiting periods, *gates*, criteria, conditions, tags and stop reasons (01 §6.11)? **(§14)** | 3 | Sample of records with event history in T01. |
+| D2.06 | Do all new use cases go through the lifecycle with their *gates* recorded before consuming the budget for the next phase? **(§14)** | 3 | Sample: P29 dated before the spending. |
 | D2.07 | Is the portfolio prioritised with a documented method that uses additional net value per euro and ambition balance, approved by the AI Committee? | 3 | Method (document 14 or equivalent); minutes approving the portfolio. |
-| D2.08 | Do all initiatives that pass G2 have a falsifiable hypothesis, baseline, confirmed ambition and stop criteria set before investing? | 3 | Sample of P07, P08 and P09. |
-| D2.09 | Does the AI Committee review funnel metrics (stalled initiatives, expired conditions, conversion) monthly and portfolio balance quarterly, with recorded decisions? | 4 | Reports and minutes for two quarters. |
-| D2.10 | At each R6, is realised value compared with the hypothesis in all initiatives in production, and are the stops and retirements decided carried out using the procedure in document 14? | 4 | P28; P30; retirement register (T22). |
+| D2.08 | Do all use cases that pass G2 have a falsifiable hypothesis, baseline, confirmed ambition and stop criteria set before investing? | 3 | Sample of P07, P08 and P09. |
+| D2.09 | Does the AI Committee review funnel metrics (stalled use cases, expired conditions, conversion) monthly and portfolio balance quarterly, with recorded decisions? | 4 | Reports and minutes for two quarters. |
+| D2.10 | At each R6, is realised value compared with the hypothesis in all use cases in production, and are the stops and retirements decided carried out using the procedure in document 14? | 4 | P28; P30; retirement register (T22). |
 | D2.11 | Does the company calculate, with its own data, the historical probability of reaching production from each phase and the weighted portfolio value? | 5 | Analysis in T01 with sufficient history. |
 | D2.12 | Have the entry or prioritisation criteria been modified on the basis of stop reasons and cohort analysis, with observable improvement? | 5 | Versioned method; cohort analysis. |
 
@@ -162,25 +162,25 @@ Level 0 has no criteria of its own. The time requirements of levels 4 and 5 prev
 | Level | Observable criteria | Required evidence |
 |---|---|---|
 | **1** | The data sources of the AI systems in production are known and there are reference persons for the main ones. | List of sources by system; reference persons. |
-| **2** | Register of datasets and knowledge sources used by AI, with an owner. Quality and legal basis reviewed in some of the initiatives. | Register or catalogue; dated reviews. |
-| **3** | Formal owner for each dataset. Legal basis, minimisation and impact assessments verified in phase 3. Lineage in all Enterprise initiatives. Knowledge sources with an owner, validity, permissions and rights. | Appointments; P11; P16; register of knowledge sources. |
+| **2** | Register of datasets and knowledge sources used by AI, with an owner. Quality and legal basis reviewed in some of the use cases. | Register or catalogue; dated reviews. |
+| **3** | Formal owner for each dataset. Legal basis, minimisation and impact assessments verified in phase 3. Lineage in all Enterprise use cases. Knowledge sources with an owner, validity, permissions and rights. | Appointments; P11; P16; register of knowledge sources. |
 | **4** | Data quality monitored in production with thresholds, alerts and incidents for two quarters. Delays attributable to data measured. Plan for critical knowledge. | Configuration (P25); incident register; metrics in T01; plan. |
-| **5** | Data and knowledge reused across initiatives with measured usage. Data preparation cost and time measured and improving over two cycles. | Reuse register; indicator series (T13). |
+| **5** | Data and knowledge reused across use cases with measured usage. Data preparation cost and time measured and improving over two cycles. | Reuse register; indicator series (T13). |
 
 | Code | Question | Level | Required evidence |
 |---|---|---|---|
 | D3.01 | Can the company identify the data sources used by each AI system in production? | 1 | List of sources by system. |
 | D3.02 | Is there a reference person for each main data source used by AI? | 1 | List with owners. |
 | D3.03 | Is there a register of datasets and knowledge sources used by AI, with an assigned owner? | 2 | Register or catalogue. |
-| D3.04 | Have data quality and legal basis been reviewed before building in some of the initiatives of the last 12 months? | 2 | Dated review reports. |
+| D3.04 | Have data quality and legal basis been reviewed before building in some of the use cases of the last 12 months? | 2 | Dated review reports. |
 | D3.05 | Does each dataset used by AI in production have a formal owner with responsibilities for quality and access? | 3 | Appointments; data policy. |
 | D3.06 | Are the legal basis, minimisation and, where applicable, the data protection impact assessment verified in phase 3 for all personal data? | 3 | Sample of P11 and of assessments. |
-| D3.07 | Do all Enterprise initiatives have documented data and model lineage, updated after the latest change? | 3 | Sample of P16. |
+| D3.07 | Do all Enterprise use cases have documented data and model lineage, updated after the latest change? | 3 | Sample of P16. |
 | D3.08 | Do the knowledge sources used by generative AI and agents have an owner, a validity date, access permissions consistent with the users and verified usage rights? **(if applicable)** | 3 | Register of sources; permissions configuration; licences or contracts. |
 | D3.09 | Is the quality of input data monitored in production with thresholds and alerts, and are incidents recorded and resolved? | 4 | P25; incident register for two quarters. |
 | D3.10 | Are waiting periods and stops attributable to data measured, and is there an approved plan for critical knowledge that depends on a few people? | 4 | Metrics in T01; plan with owners. |
-| D3.11 | Are prepared datasets or knowledge sources reused across initiatives, with measured usage? | 5 | Reuse register. |
-| D3.12 | Are the cost and time of data preparation measured per initiative, with improvement over at least two annual cycles? | 5 | Indicator series (T13). |
+| D3.11 | Are prepared datasets or knowledge sources reused across use cases, with measured usage? | 5 | Reuse register. |
+| D3.12 | Are the cost and time of data preparation measured per use case, with improvement over at least two annual cycles? | 5 | Indicator series (T13). |
 
 ### 3.5 D4 · Technology and operations
 
@@ -202,7 +202,7 @@ Level 0 has no criteria of its own. The time requirements of levels 4 and 5 prev
 | D4.04 | Are at least the availability and errors of AI systems in production monitored, and are changes recorded? | 2 | Monitoring configuration; change log. |
 | D4.05 | Do all systems in production have an operations owner, an operations manual and performance and degradation monitoring with alerts? | 3 | Sample of P24 and P25. |
 | D4.06 | Do all systems in production have a rollback plan tested before go-live and, when they act with A2 or A3 autonomy, a tested kill switch? | 3 | Sample of P19 with the test result; T10. |
-| D4.07 | Do all initiatives in production have a current continuity review (R6) according to their intensity? **(§14)** | 3 | Date of the latest R6 against its periodicity in T01. |
+| D4.07 | Do all use cases in production have a current continuity review (R6) according to their intensity? **(§14)** | 3 | Date of the latest R6 against its periodicity in T01. |
 | D4.08 | Are generative AI systems and agents evaluated with a defined test set before each change of model, instructions or tools, and are their activity logs retained? **(if applicable)** | 3 | Evaluation reports; log retention policy. |
 | D4.09 | Are operational indicators (availability, degradation, incidents, time to restore) reviewed monthly, with recorded actions? | 4 | Reports for two quarters. |
 | D4.10 | Is the actual recurring cost of each use case in production known, with allocation of licences, model consumption, compute and people? | 4 | Cost report (T13) for two quarters. |
@@ -217,25 +217,25 @@ Article 4 of the EU AI Act requires providers and deployers to take measures to 
 
 | Level | Observable criteria | Required evidence |
 |---|---|---|
-| **1** | There have been training or awareness activities on AI. Some initiative that changes work involves the user area. | Attendance records; minutes or initiative charter. |
-| **2** | Approved literacy programme. Adoption plans in some of the initiatives. | Programme; P20. |
-| **3** | AI literacy appropriate to their function for all staff who use or oversee AI. Training for SEVEN-G roles. Adoption plan in all Augment and Transform initiatives. Released capacity recorded separately. Information and consultation where required. | Training register by group; P20 predating G4; T12 or T20; minutes. |
+| **1** | There have been training or awareness activities on AI. Some use case that changes work involves the user area. | Attendance records; minutes or use case charter. |
+| **2** | Approved literacy programme. Adoption plans in some of the use cases. | Programme; P20. |
+| **3** | AI literacy appropriate to their function for all staff who use or oversee AI. Training for SEVEN-G roles. Adoption plan in all Augment and Transform use cases. Released capacity recorded separately. Information and consultation where required. | Training register by group; P20 predating G4; T12 or T20; minutes. |
 | **4** | Actual adoption and use of released capacity measured for two quarters. | Usage indicators; T20 reports. |
 | **5** | Roles or structures redesigned with oversight and subsequent evaluation. Dependence on external parties for critical capabilities reduced in a measured way. | Organisation charts and job descriptions; evaluation; indicator series. |
 
 | Code | Question | Level | Required evidence |
 |---|---|---|---|
 | D5.01 | Has any AI training or awareness activity been carried out in the last 12 months? | 1 | Attendance records. |
-| D5.02 | Does the user area or human resources take part in any initiative that changes people's work? | 1 | Minutes; initiative charter (P01). |
+| D5.02 | Does the user area or human resources take part in any use case that changes people's work? | 1 | Minutes; use case charter (P01). |
 | D5.03 | Is there an approved AI literacy programme, with target audiences, content and schedule? | 2 | Approved programme. |
-| D5.04 | Do some of the initiatives have an adoption plan with training and communication? | 2 | P20. |
+| D5.04 | Do some of the use cases have an adoption plan with training and communication? | 2 | P20. |
 | D5.05 | Have all staff who use or oversee AI systems received literacy training appropriate to their function, with a record? | 3 | Training register; coverage by group. |
 | D5.06 | Have people in SEVEN-G roles (sponsors, risk owners, AI auditors, committee members) received training on their responsibilities? | 3 | Training register by role. |
-| D5.07 | Do all Augment and Transform initiatives have an adoption and people plan approved before G4? | 3 | Sample of dated P20. |
+| D5.07 | Do all Augment and Transform use cases have an adoption and people plan approved before G4? | 3 | Sample of dated P20. |
 | D5.08 | Is released capacity recorded separately from savings, and are employee representatives informed and consulted where regulations or agreements require it? | 3 | Records in T12 or T20; minutes or communications. |
-| D5.09 | Is actual adoption (active users and usage against plan) measured for all initiatives in production? | 4 | Indicators for two quarters. |
+| D5.09 | Is actual adoption (active users and usage against plan) measured for all use cases in production? | 4 | Indicators for two quarters. |
 | D5.10 | Is it tracked quarterly how much released capacity has been realised as lower cost or reassigned, with an explicit destination? | 4 | T20 or T12 reports. |
-| D5.11 | Have roles or structures been redesigned as a result of AI initiatives, with defined oversight and subsequent evaluation? | 5 | Organisation charts; job descriptions; evaluation. |
+| D5.11 | Have roles or structures been redesigned as a result of AI use cases, with defined oversight and subsequent evaluation? | 5 | Organisation charts; job descriptions; evaluation. |
 | D5.12 | Has dependence on external suppliers been reduced in a measured way for the AI capabilities that the thesis defines as internal? | 5 | Indicator series; capability plan. |
 
 ### 3.7 D6 · Risk, security and compliance
@@ -245,8 +245,8 @@ Article 4 of the EU AI Act requires providers and deployers to take measures to 
 | Level | Observable criteria | Required evidence |
 |---|---|---|
 | **1** | Legal counsel, compliance or security are consulted before using AI in some cases. Some AI risk appears in the risk register. | Dated formal reports or consultations; corporate risk register. |
-| **2** | Inventory started that includes in-house systems, third-party systems and corporate use. AI Risk Owner independent of those who build. Risks assessed in some of the initiatives. | Inventory (T02); appointment; risk matrices. |
-| **3** | Complete inventory with classification, intensity and owner, and prohibited practices ruled out. Matrix and impact assessments in all initiatives from phase 3. Nonconformity process in 01 §12. Suppliers assessed and agent controls. | T02, P05, P11, P12; T08 register; P14, P18, T09, T10. |
+| **2** | Inventory started that includes in-house systems, third-party systems and corporate use. AI Risk Owner independent of those who build. Risks assessed in some of the use cases. | Inventory (T02); appointment; risk matrices. |
+| **3** | Complete inventory with classification, intensity and owner, and prohibited practices ruled out. Matrix and impact assessments in all use cases from phase 3. Nonconformity process in 01 §12. Suppliers assessed and agent controls. | T02, P05, P11, P12; T08 register; P14, P18, T09, T10. |
 | **4** | Risk concentration reviewed quarterly and control indicators at the board committee for two quarters. Framework audit by the third line in the last 12 months. Periodic specific security testing. | Minutes; reports; audit report; test reports. |
 | **5** | Effectiveness of key controls tested with drills. Recurrence of nonconformities reduced. New obligations incorporated before their application date. | Drill reports; series by cause; versioned regulatory mapping. |
 
@@ -255,9 +255,9 @@ Article 4 of the EU AI Act requires providers and deployers to take measures to 
 | D6.01 | Are legal counsel, compliance or security consulted before AI systems are put into use, at least in some cases? | 1 | Dated formal reports or consultations. |
 | D6.02 | Does any AI risk appear in the company's risk register? | 1 | Corporate risk register. |
 | D6.03 | Has an AI system inventory been started that includes in-house systems, third-party systems and corporate use of general-purpose AI? | 2 | Inventory (T02). |
-| D6.04 | Has an AI Risk Owner been appointed, independent of the teams that build, and are risks assessed in some of the initiatives? | 2 | Appointment; risk matrices. |
+| D6.04 | Has an AI Risk Owner been appointed, independent of the teams that build, and are risks assessed in some of the use cases? | 2 | Appointment; risk matrices. |
 | D6.05 | Does the inventory include all AI systems with regulatory classification, intensity and owner, and has the use of prohibited practices been ruled out in a documented way? **(§14)** | 3 | T02; P05; P11; statement of completeness signed by each area (P32, annex). |
-| D6.06 | Do all initiatives in phase 3 or later have a risk matrix and register using the scale in document 33, and the applicable impact assessments? | 3 | Sample of P12 and P11. |
+| D6.06 | Do all use cases in phase 3 or later have a risk matrix and register using the scale in document 33, and the applicable impact assessments? | 3 | Sample of P12 and P11. |
 | D6.07 | Are nonconformities managed using the process in 01 §12: classification, containment, root cause, corrective action, closure and time limits? **(§14)** | 3 | Register (T08); sample of case files. |
 | D6.08 | Are AI suppliers assessed with levels N1–N3, and do agents with A2 or A3 autonomy have their own identity, least privilege, a kill switch and prompt injection testing before production? **(if applicable, for the agents part)** | 3 | P14; T09; P18; T10. |
 | D6.09 | Does the AI Committee review the portfolio's risk concentration quarterly, and does the board committee receive indicators on nonconformities, S1–S4 incidents and detected unauthorised use? | 4 | Minutes and reports for two quarters. |
@@ -271,18 +271,18 @@ Article 4 of the EU AI Act requires providers and deployers to take measures to 
 
 | Level | Observable criteria | Required evidence |
 |---|---|---|
-| **1** | Some initiative declares expected or obtained benefits in writing. There is an identifiable figure for the cost of AI. | Proposals or reports; budget. |
-| **2** | Some of the initiatives have a measured baseline and value with a formula. Management receives a periodic AI report. | P08, P09; reports for two periods. |
+| **1** | Some use case declares expected or obtained benefits in writing. There is an identifiable figure for the cost of AI. | Proposals or reports; budget. |
+| **2** | Some of the use cases have a measured baseline and value with a formula. Management receives a periodic AI report. | P08, P09; reports for two periods. |
 | **3** | The measurement rules are applied to all amounts. The board receives the dashboard with the proportion of validated value. Evidence is traceable and verified. The transformation index has been calculated. | T12; dashboard (T17) and minutes; sample in T03; T14 result. |
 | **4** | Independent validation of value in each period, agility measured by risk and ambition, and measurement audited by sampling, for two quarters. | Validation reports; P28; T01 metrics; audit report. |
 | **5** | Thresholds recalibrated with the company's own data. Value and cost series from two cycles used in financial planning. | C5 minutes; versioned parameters; budget. |
 
 | Code | Question | Level | Required evidence |
 |---|---|---|---|
-| D7.01 | Does any initiative declare expected or obtained benefits in writing? | 1 | Proposal or report. |
+| D7.01 | Does any use case declare expected or obtained benefits in writing? | 1 | Proposal or report. |
 | D7.02 | Is there an identifiable figure for the company's cost of or investment in AI? | 1 | Budget or report. |
-| D7.03 | Do some of the initiatives have a measured baseline and value expressed with a formula? | 2 | P09; P08. |
-| D7.04 | Does management receive a periodic report on AI with initiatives, costs and results? | 2 | Reports for two periods. |
+| D7.03 | Do some of the use cases have a measured baseline and value expressed with a formula? | 2 | P09; P08. |
+| D7.04 | Does management receive a periodic report on AI with use cases, costs and results? | 2 | Reports for two periods. |
 | D7.05 | Do all amounts have a formula, incremental nature and status, with efficiencies, return and recurring cost separated and released capacity reported separately? **(§14)** | 3 | Sample in T12; report to the board. |
 | D7.06 | Does the company report to the board with the oversight dashboard, showing the proportion of validated value and missing data as "no data"? **(§14)** | 3 | Dashboard (T17); minutes. |
 | D7.07 | Does *gate* evidence have an author, date, version and verification, and does the verifier check that it was not prepared after the fact? | 3 | Sample in T03; verifier reports. |
@@ -357,7 +357,7 @@ Evidence is valid if it **exists**, is **traceable** (author, date and version),
 
 ### 4.6 Evidence sampling
 
-Questions about practices that must be applied to "all" initiatives or systems are verified on a sample from the register (T01) or the inventory (T02):
+Questions about practices that must be applied to "all" use cases or systems are verified on a sample from the register (T01) or the inventory (T02):
 
 | Population in scope | Minimum sample size |
 |---|---|
@@ -366,7 +366,7 @@ Questions about practices that must be applied to "all" initiatives or systems a
 | 21–60 | 8 |
 | More than 60 | 12 |
 
-The sample is **stratified**: it includes, where they exist, at least one Enterprise initiative, one in production, one Augment or Transform initiative, one third-party initiative and one generative AI or agent initiative. It is selected by the assessment team, not by the assessed area.
+The sample is **stratified**: it includes, where they exist, at least one Enterprise use case, one in production, one Augment or Transform use case, one third-party use case and one generative AI or agent use case. It is selected by the assessment team, not by the assessed area.
 
 The independent verifier reviews **all** "Yes" answers in D1 and D6 (because of their effect on the overall level), all **(§14)** questions and at least 25 % of the other "Yes" answers, chosen by the verifier.
 
@@ -430,7 +430,7 @@ Maturity measures the **capability** to govern and capture value; the index meas
 
 ### 7.3 With the declaration of application (01 §14)
 
-The ten **(§14)** questions substantiate the SEVEN-G core rules (01 §14.1) that have a question: N-01, N-02, N-04, N-06 and N-11 to N-14; the others (N-03, N-05 and N-07 to N-10) are checked by the audit of the declaration on the register (38 §11.2). A company may declare that it applies SEVEN-G when **all of them are "Yes" in a verified assessment** and the initiatives that predate the framework are being regularised within the time limit approved in C2. As all of them are at level 3, **a company with a verified level 3 in D1, D2, D4, D6 and D7 meets those rules**; the declaration is nevertheless based on the questions and not on the overall level.
+The ten **(§14)** questions substantiate the SEVEN-G core rules (01 §14.1) that have a question: N-01, N-02, N-04, N-06 and N-11 to N-14; the others (N-03, N-05 and N-07 to N-10) are checked by the audit of the declaration on the register (38 §11.2). A company may declare that it applies SEVEN-G when **all of them are "Yes" in a verified assessment** and the use cases that predate the framework are being regularised within the time limit approved in C2. As all of them are at level 3, **a company with a verified level 3 in D1, D2, D4, D6 and D7 meets those rules**; the declaration is nevertheless based on the questions and not on the overall level.
 
 ### 7.4 With the dashboard and the bodies
 
@@ -457,18 +457,18 @@ The maturity level answers a single question: **does the company govern AI under
 | Lens | Question | Scale | Where it is defined | How it is obtained |
 |---|---|---|---|---|
 | **1 · Governance capability** | Does it do so under control? | 0–5 by dimension D1–D7 and overall | Sections 2 to 5 | Verified questionnaire (T15) |
-| **2 · Technology footprint** | What AI does it have in use and how much governance does that demand? | HT0–HT5, descriptive: it is not a score | This section | Technology and autonomy of the initiatives in use in the T01 register; without a register, question Q01 of document 96 |
-| **3 · Impact reach** | What does it affect: tasks, processes, people and organisation, business model? | IM1–IM4 by initiative and its distribution across the company | Document 12 §3.7 | Actual ambition and verified questions IT-P1 to IT-P4 of the initiatives in use |
+| **2 · Technology footprint** | What AI does it have in use and how much governance does that demand? | HT0–HT5, descriptive: it is not a score | This section | Technology and autonomy of the use cases in use in the T01 register; without a register, question Q01 of document 96 |
+| **3 · Impact reach** | What does it affect: tasks, processes, people and organisation, business model? | IM1–IM4 by use case and its distribution across the company | Document 12 §3.7 | Actual ambition and verified questions IT-P1 to IT-P4 of the use cases in use |
 
 **Technology does not raise or lower the maturity level.** Adding it would reward adopting ahead of governance: a company with well-governed predictive models is more mature than another with uncontrolled generative AI. What the footprint does is **set the minimum governance that is required**, in the same spirit as the targets by ambition in section 8, and trigger alerts when it is not reached.
 
 #### Technology footprint
 
-The **highest level in use** (initiatives in phases 6 and 7 that have not been closed) and the **breadth** (distinct technology types and number of systems in use) are reported. Pilots are shown separately, as "in exploration". The order is one of **increasing governance demand**, not of "better technology".
+The **highest level in use** (use cases in phases 6 and 7 that have not been closed) and the **breadth** (distinct technology types and number of systems in use) are reported. Pilots are shown separately, as "in exploration". The order is one of **increasing governance demand**, not of "better technology".
 
 | Level | Name | What is in use | Technology in the T01 register |
 |---|---|---|---|
-| **HT0** | No AI in use | Nothing in production (there may be unauthorised use) | No initiatives in use |
+| **HT0** | No AI in use | Nothing in production (there may be unauthorised use) | No use cases in use |
 | **HT1** | Automation without learning | Rules or RPA. It is not AI for inventory purposes (document 32), but it is recorded as context | `reglas` |
 | **HT2** | Third-party AI included | Corporate assistants, SaaS or products with AI; the company does not build | `ia_terceros_embebida` |
 | **HT3** | Own predictive models | Predictive ML, vision or optimisation with learning | `ml_predictivo`, `vision`, `optimizacion` |
@@ -493,9 +493,9 @@ From HT2, D5 covers the literacy of those who use AI, which the EU AI Act requir
 
 | Alert | When it is triggered | Severity | What it calls for |
 |---|---|---|---|
-| **Adoption ahead of governance** | Any dimension below the minimum required by the footprint in use | High if it is D1 or D6; medium for the others | Priority actions in the improvement plan (P34 §6.6). While D6 is below the minimum, no new initiative at that footprint level should pass G5 without an explicit improvement condition, deadline and owner |
-| **Governance without use** | Overall level 3 or higher with footprint HT1 or lower, or no initiative in use twelve months after C2 | Medium | Review the portfolio and the funnel (document 14; D2.09): the framework must not turn into bureaucracy without value |
-| **Transformation without people** | Any initiative in use with reach IM3 or IM4 and D5 at 2 or below | High | Adoption and people plan (documents 23 and 50; D5.07 and D5.08) before the next *gate* |
+| **Adoption ahead of governance** | Any dimension below the minimum required by the footprint in use | High if it is D1 or D6; medium for the others | Priority actions in the improvement plan (P34 §6.6). While D6 is below the minimum, no new use case at that footprint level should pass G5 without an explicit improvement condition, deadline and owner |
+| **Governance without use** | Overall level 3 or higher with footprint HT1 or lower, or no use case in use twelve months after C2 | Medium | Review the portfolio and the funnel (document 14; D2.09): the framework must not turn into bureaucracy without value |
+| **Transformation without people** | Any use case in use with reach IM3 or IM4 and D5 at 2 or below | High | Adoption and people plan (documents 23 and 50; D5.07 and D5.08) before the next *gate* |
 
 The cross-reading with the transformation index (section 7.2 and 12 §5.3) is kept and shown alongside these alerts. T15 presents the three lenses in its "Three lenses" view, saves their summary into the T01 register and the board dashboard (T17) shows it in the maturity card.
 
@@ -526,7 +526,7 @@ The board should not approve Transform bets at G2 with D1 or D6 below 2 unless t
 | Dimension | Level | Progress to the next | Main blocking criterion |
 |---|---|---|---|
 | D1 · Strategy and governance | 3 | 25 % | D1.09: the dashboard has only been reviewed in one quarter. |
-| D2 · Value and portfolio | 3 | 50 % | D2.10: two initiatives in production without comparison with their hypothesis. |
+| D2 · Value and portfolio | 3 | 50 % | D2.10: two use cases in production without comparison with their hypothesis. |
 | D3 · Data and knowledge | 3 | 0 % | D3.09: no quality monitoring in production. |
 | D4 · Technology and operations | 4 | 25 % | D4.11: no measurement by cohort. |
 | D5 · People and adoption | 3 | 50 % | D5.10: released capacity has no recorded destination. |
@@ -560,7 +560,7 @@ The board should not approve Transform bets at G2 with D1 or D6 below 2 unless t
 |---|---|
 | **00 · What SEVEN-G is** | Maturity with observable evidence (§3.3 and §4.5). |
 | **01 · Foundational methodology** | C1 and C5 (§5), roles (§8), nonconformities (§12) and declaration of application (§14). |
-| **03 · Tools and initiative register** | T15 and sources of evidence. |
+| **03 · Tools and use case register** | T15 and sources of evidence. |
 | **12 · Transformation index** | Cross-reading. |
 | **13 · AI thesis and risk appetite** | Maturity targets and weights. |
 | **14 · Portfolio management** | Prioritisation method and retirements (D2). |

@@ -27,9 +27,9 @@
 | **Who verifies it** | The AI Auditor or the third line, who checks the evidence and the implementation status (38 §12.1). A certification audit, where applicable, is carried out by the accredited body. |
 | **Who decides or approves** | Senior management approves the statement, as part of the risk treatment in clause 6.1.3; the AI Committee and the board committee are informed. |
 | **Stage of the corporate cycle** | C2 (approval), C4 (monitoring of implementation status) and C5 (review). |
-| **Tool** | It has no application of its own in version 0.x. The status of the evidence comes from the initiative register (T01), *gate* verification (T03) and the records cited in each row. |
+| **Tool** | It has no application of its own in version 0.x. The status of the evidence comes from the use case register (T01), *gate* verification (T03) and the records cited in each row. |
 | **Reference document** | Document 34 §4 (ISO/IEC 42001: clauses 4 to 10 and Annex A by group) and §5.4 (AI RMF profile); document 38 §12 (relationship with ISO/IEC 42001 and with certification). |
-| **Lite versus Enterprise** | The statement is the same. In Lite scope, evidence may be grouped by process instead of by initiative. |
+| **Lite versus Enterprise** | The statement is the same. In Lite scope, evidence may be grouped by process instead of by use case. |
 
 Completion rules:
 
@@ -49,7 +49,7 @@ Completion rules:
 | Statement identifier and version | | Proposed format DA-YYYY-NN. |
 | Date | | DD-MM-YYYY. |
 | Owner of the statement | | AI Office. |
-| Reference risk assessment and treatment plan | | Document 33; P12 and P13 of the initiatives; P35 (risk appetite). |
+| Reference risk assessment and treatment plan | | Document 33; P12 and P13 of the use cases; P35 (risk appetite). |
 | Reference AI RMF profile, if any | | P73, with its cut-off date. |
 
 ---

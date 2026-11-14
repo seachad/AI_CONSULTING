@@ -38,7 +38,7 @@ Rules:
 
 | Field | Content | Guidance |
 |---|---|---|
-| Initiative code | | IA-AAAA-NNN (T01). |
+| Use case code | | IA-AAAA-NNN (T01). |
 | AI system(s) | | Identifier in the inventory (T02). |
 | Technology | | Predictive ML · Generative AI · Agent · Language and document processing · Vision · Optimisation · Embedded third-party AI · Rules (not AI). |
 | Exposure | | Internal · Employees · Customers indirectly · Customers or external persons directly. |

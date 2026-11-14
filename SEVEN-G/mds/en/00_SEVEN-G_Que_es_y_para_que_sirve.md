@@ -26,12 +26,12 @@
 
 **What it does, in four ideas**
 
-1. **It organises the company's AI as a portfolio**, not as a list of projects: each initiative is registered, and its phase, its cost, the value expected from it and its accountable owner are known.
-2. **It places decision gates between phases.** Moving forward requires results and verified documentation; otherwise the initiative iterates, pivots or stops, and the reason is recorded.
+1. **It organises the company's AI as a portfolio**, not as a list of projects: each use case is registered, and its phase, its cost, the value expected from it and its accountable owner are known.
+2. **It places decision gates between phases.** Moving forward requires results and verified documentation; otherwise the use case iterates, pivots or stops, and the reason is recorded.
 3. **It separates who decides, who builds and who controls**, and translates regulation (EU AI Act, GDPR, DORA, NIS2, ISO/IEC 42001) into specific phases, roles and evidence.
 4. **It measures value in money and with a status** —validated, declared or estimated— and tells the board, with eight observable signals, whether the company is transforming itself or just becoming more efficient.
 
-**What it is compared with the standards.** Standards and regulation —ISO/IEC 42001, ISO/IEC 38507, ISO/IEC 23894, ISO/IEC 42005, the NIST AI RMF or the EU AI Act— say **what must exist**: a management system, responsibilities of the governing body, a risk process, impact assessments, legal obligations. SEVEN-G is the **operating layer that makes it work**, initiative by initiative and portfolio by portfolio, with investment and value discipline: who decides at each gate, with what evidence, what it costs and what it yields. It is not an alternative to ISO/IEC 42001 nor equivalent to a certification: its crosswalk (document 34, section 9.1) says which requirement it covers, which it covers in part and which needs an external control.
+**What it is compared with the standards.** SEVEN-G is an operating methodology for transforming the company with AI: it decides where to invest, governs each use case and measures value with evidence. Standards and regulation —ISO/IEC 42001, ISO/IEC 38507, ISO/IEC 23894, ISO/IEC 42005, the NIST AI RMF or the EU AI Act— say **what must exist**: a management system, responsibilities of the governing body, a risk process, impact assessments, legal obligations. SEVEN-G is the **operating layer that makes it work**, case by case and portfolio by portfolio, with investment and value discipline: who decides at each gate, with what evidence, what it costs and what it yields. It is not an alternative to ISO/IEC 42001 nor equivalent to a certification: its crosswalk (document 34, section 9.1) says which requirement it covers, which it covers in part and which needs an external control.
 
 **What you get, at no cost**
 
@@ -43,36 +43,36 @@ SEVEN-G is not a brochure that ends in a sales proposal: **the working material 
 
 **What you actually get, for anyone who wants to see it before reading**
 
-Two quick views, with the fictitious sample data: the AI initiative portfolio read as a funnel (which phase each initiative reaches, how many are lost at each one and why) and the board dashboard generated from that same register (cost, return and net of the portfolio). This is what using SEVEN-G leads to: from one initiative's register entry to a board decision backed by evidence.
+Two quick views, with the fictitious sample data: the AI use case portfolio read as a funnel (which phase each use case reaches, how many are lost at each one and why) and the board dashboard generated from that same register (cost, return and net of the portfolio). This is what using SEVEN-G leads to: from one use case's register entry to a board decision backed by evidence.
 
 <!-- figura: embudo-cartera -->
 
 <figure class="grafico">
-<div class="g-titulo">The board dashboard, generated from the sample initiative register</div>
-<div class="g-sub">"Portfolio and value" view of the full dashboard: cost, return, net and validation of a portfolio of 15 fictitious initiatives</div>
+<div class="g-titulo">The board dashboard, generated from the sample use case register</div>
+<div class="g-sub">"Portfolio and value" view of the full dashboard: cost, return, net and validation of a portfolio of 15 fictitious use cases</div>
 <div class="g-lienzo ancho"><img src="img/panel-consejo-ejemplo.png" alt="SEVEN-G board dashboard: portfolio and value cards with 15 cases, €2.4M in costs, €7.3M in total return and €4.8M in annual net value, and the «What holds back scaling» reading with the three barriers to start with; fictitious data" style="width:100%;height:auto;border:1px solid var(--regla)"></div>
-<div class="g-fuente">Source: sample dashboard from the <a href="../../herramientas/T01_registro_iniciativas/registro.html">initiative register</a>, generated with the <a href="../../herramientas/T17_panel_consejo/index.html">board dashboard</a>, fictitious data. Screenshot in Spanish</div>
+<div class="g-fuente">Source: sample dashboard from the <a href="../../herramientas/T01_registro_iniciativas/registro.html">use case register</a>, generated with the <a href="../../herramientas/T17_panel_consejo/index.html">board dashboard</a>, fictitious data. Screenshot in Spanish</div>
 </figure>
 
 **Is it useful?** (for your company, or for the consultancy or professional advising it)
 
 | It is probably useful if… | It is probably not useful, or not yet, if… |
 |---|---|
-| You already have AI initiatives —pilots, generative assistants, models, agents— and nobody can say with evidence **how much they cost, how much they contribute and who is accountable** for each one. | You are looking for a technical guide to **build models or choose technology**. SEVEN-G governs and measures. Building software with AI is a different problem: SPAD, an independent method, solves it, and [document 53](53_SEVEN-G_Construccion_de_soluciones_con_IA.html) is the only bridge between the two. |
+| You already have AI use cases —pilots, generative assistants, models, agents— and nobody can say with evidence **how much they cost, how much they contribute and who is accountable** for each one. | You are looking for a technical guide to **build models or choose technology**. SEVEN-G governs and measures. Building software with AI is a different problem: SPAD, an independent method, solves it, and [document 53](53_SEVEN-G_Construccion_de_soluciones_con_IA.html) is the only bridge between the two. |
 | The board or senior management ask about AI and receive an **inventory of technical projects** instead of business decisions. | You are looking for a **certification or a seal**. There is none: the declaration of application is a self-declaration that can be verified by audit. |
 | There are **many pilots and few use cases in production**, and no rule for stopping what does not work. | You expect **legal advice** or a guarantee of compliance. The framework maps obligations to evidence, but each company is responsible for its own compliance. |
 | You have to **demonstrate compliance** with evidence rather than statements. | You only have one or two trials with no budget and no intention of taking them to production. Start with the acceptable use policy ([document 31](31_SEVEN-G_Politica_corporativa_y_uso_aceptable.html)) and the AI system inventory (T02), and come back when there is a portfolio to govern. |
-| You are a **medium-sized company** with no AI team: the Lite scope works with the executive committee, one part-time person and an external auditor. | **Nobody in management is going to own the decisions.** The framework requires a sponsor for each initiative and a real ability to stop; without that, it only produces documents. |
+| You are a **medium-sized company** with no AI team: the Lite scope works with the executive committee, one part-time person and an external auditor. | **Nobody in management is going to own the decisions.** The framework requires a sponsor for each use case and a real ability to stop; without that, it only produces documents. |
 | You are a **consultant or an in-house lead** and need a complete method that you can adapt and apply with your own way of working, citing the source ([document 91](91_SEVEN-G_Guia_para_consultores.html)). | |
 
-**What it asks in return.** It costs no money, but it does take discipline: someone to drive it, an initiative register kept up to date and decisions taken with the evidence on the table. What is non-negotiable fits in fourteen rules, the **core** (document 01, section 14.1); everything else is applied in proportion to the risk and materiality of each initiative (principle 11, document 94). Adoption can be **modular** —starting only with the register, with the decision gates, with value measurement or with the board dashboard— and be extended later. The implementation guide ([document 90](90_SEVEN-G_Guia_de_implantacion.html)) proposes a 90-day plan and a minimum path for medium-sized companies; document 96 and its tool, the implementation journey (T23), say where to start according to the AI and the governance the company already has.
+**What it asks in return.** It costs no money, but it does take discipline: someone to drive it, a use case register kept up to date and decisions taken with the evidence on the table. What is non-negotiable fits in fourteen rules, the **core** (document 01, section 14.1); everything else is applied in proportion to the risk and materiality of each use case (principle 11, document 94). Adoption can be **modular** —starting only with the register, with the decision gates, with value measurement or with the board dashboard— and be extended later. The implementation guide ([document 90](90_SEVEN-G_Guia_de_implantacion.html)) proposes a 90-day plan and a minimum path for medium-sized companies; document 96 and its tool, the implementation journey (T23), say where to start according to the AI and the governance the company already has.
 
 **Where to go next, depending on who you are**
 
 | If you are… | Continue with… |
 |---|---|
 | A member of the board or of senior management | Section 5 of this page (transforming or just becoming more efficient), the [board conversation guide](61_SEVEN-G_Guia_de_conversacion_con_el_consejo.html) and the sample board dashboard (T17). |
-| An AI, data or technology lead | The [foundational methodology](01_SEVEN-G_Metodologia_fundacional.html), the [phase manuals](20_SEVEN-G_Manuales_de_fase.html) and the initiative register (T01). |
+| An AI, data or technology lead | The [foundational methodology](01_SEVEN-G_Metodologia_fundacional.html), the [phase manuals](20_SEVEN-G_Manuales_de_fase.html) and the use case register (T01). |
 | Risk, compliance, data protection or audit | The [regulatory mapping](34_SEVEN-G_Mapeo_regulatorio.html), the [AI risk methodology](33_SEVEN-G_Metodologia_de_riesgos_de_IA.html) and the [AI audit framework](38_SEVEN-G_Marco_de_auditoria_de_IA.html). |
 | Finance or management control | The [value measurement rules](40_SEVEN-G_Reglas_de_medicion_del_valor.html) and the value and cost calculator (T11). |
 | A consultant or the person in charge of implementing the framework | The [implementation guide](90_SEVEN-G_Guia_de_implantacion.html), the [guide for consultants](91_SEVEN-G_Guia_para_consultores.html) and the [application cases](92_SEVEN-G_Casos_de_aplicacion.html). |
@@ -97,14 +97,14 @@ SEVEN-G enables an organisation to **implement, govern and measure** artificial 
 
 Both are legitimate. The problem arises when they are confused: when a portfolio of automations is presented as transformation, when savings are declared that never materialise, or when the bets that could change the business are blocked using the same return criteria as a cost-cutting project.
 
-The practical goal is for boards, senior management and control bodies to understand and measure the contribution of enterprise intelligence in their company, understand and contain its risks, and decide with portfolio discipline which initiatives deserve investment to improve efficiency, transform capabilities and create measurable impact on P&L.
+The practical goal is for boards, senior management and control bodies to understand and measure the contribution of enterprise intelligence in their company, understand and contain its risks, and decide with portfolio discipline which use cases deserve investment to improve efficiency, transform capabilities and create measurable impact on P&L.
 
 > **Ownership and reuse.** The intellectual property of the SEVEN-G methodology — its documents, templates, criteria and tools — belongs to its author, **Fernando García Varela**. The framework is offered as an open reference for use, adaptation and learning, not as a closed commercial product or a version released to clients or markets: any organisation may reuse and adapt it, but that use is subject to the project's content and code licence (**CC BY 4.0** for content, **MIT** for code; document 93), which requires attribution and an indication of any changes made. Using SEVEN-G, including adapting it under that licence, does not transfer ownership of the methodology or confer exclusivity or any ownership right over the base methodology on any client, supplier or third party, except under a specific written agreement covering proprietary developments.
 
 SEVEN-G provides four things:
 
 1. **A map of where and with what ambition** to use AI: nine spheres of impact and three ambition levels (Optimise, Augment, Transform).
-2. **A controlled lifecycle** for each initiative, with phases, auditable decision gates (*gates*) and a real ability to stop or retire.
+2. **A controlled lifecycle** for each use case, with phases, auditable decision gates (*gates*) and a real ability to stop or retire.
 3. **A governance system** with separate roles, clear responsibilities and mapped regulatory compliance (EU AI Act, ISO/IEC 42001, GDPR, DORA and sector-specific regulation).
 4. **A measurement system** with explicit rules that separate validated value from declared value, efficiency from growth, and evidenced transformation from announced transformation.
 
@@ -114,13 +114,13 @@ All of this comes with templates, audit criteria and tools —including an AI da
 
 **How SEVEN-G is used, at a glance**
 
-Before the detail, the route. Each initiative moves through phases and, at the end of each one, a decision gate checks the result and the documentation at the same time (dual validation). If what the documents require is not met, the initiative does not move forward: it iterates (at most twice before the decision is escalated), pivots to a new hypothesis or stops, and the reason is recorded. Once past go-live (G5), the initiative enters an operation loop with continuous monitoring and periodic continuity reviews (R6), until gate G7 decides to scale it, iterate it or retire it.
+Before the detail, the route. Each use case moves through phases and, at the end of each one, a decision gate checks the result and the documentation at the same time (dual validation). If what the documents require is not met, the use case does not move forward: it iterates (at most twice before the decision is escalated), pivots to a new hypothesis or stops, and the reason is recorded. Once past go-live (G5), the use case enters an operation loop with continuous monitoring and periodic continuity reviews (R6), until gate G7 decides to scale it, iterate it or retire it.
 
 <!-- figura: flujo-uso -->
 
-The following map brings together in a single view how the framework is followed: at the top, the corporate cycle in which the company decides and oversees; in the centre, the lifecycle of each initiative, with its funnel stage, its phase, its decision gate and the templates, documents and tools used in it; at the bottom, the cross-cutting governance that accompanies every phase. Each element links to the document, section, template or tool that develops it.
+The following map brings together in a single view how the framework is followed: at the top, the corporate cycle in which the company decides and oversees; in the centre, the lifecycle of each use case, with its funnel stage, its phase, its decision gate and the templates, documents and tools used in it; at the bottom, the cross-cutting governance that accompanies every phase. Each element links to the document, section, template or tool that develops it.
 
-> **Why it matters.** SEVEN-G has many pieces, and a first-time user needs to know what applies at each moment and where to find it. The map answers three practical questions —which phase an initiative is in, what must be provided to pass its gate and with which template or tool— and serves as a starting point to navigate the library without reading all of it.
+> **Why it matters.** SEVEN-G has many pieces, and a first-time user needs to know what applies at each moment and where to find it. The map answers three practical questions —which phase a use case is in, what must be provided to pass its gate and with which template or tool— and serves as a starting point to navigate the library without reading all of it.
 
 <!-- figura: mapa-uso -->
 
@@ -138,7 +138,7 @@ In most organisations, AI grows faster than their capacity to govern it. The sym
 | **No one can stop a project.** There are no formal criteria for iterating, pivoting or retiring. | Portfolios that only grow and concentrate risk. |
 | Accountability is **fragmented** across technology, business, risk and compliance. Whoever builds also approves. | Weak controls and a lack of accountability. |
 | **Regulatory and security risk** is addressed late: classification under the AI Act, impact assessments, suppliers, agents with excessive permissions, AI used by attackers. | Legal, reputational and operational exposure. |
-| The word **"transformation"** is used to describe initiatives that do the same thing at lower cost. | The organisation believes it is transforming when it is only becoming more efficient, and fails to take the decisions that real transformation would require. |
+| The word **"transformation"** is used to describe use cases that do the same thing at lower cost. | The organisation believes it is transforming when it is only becoming more efficient, and fails to take the decisions that real transformation would require. |
 
 SEVEN-G starts from a premise: **these problems are not technological; they are problems of governance and measurement**. That is why the framework is aimed both at the teams that build and at those who decide and oversee.
 
@@ -149,7 +149,7 @@ SEVEN-G starts from a premise: **these problems are not technological; they are 
 ### 3.1 Implementing AI
 
 - Identify opportunities from the business, not from the technology available.
-- Formulate each initiative as a **falsifiable value hypothesis**: baseline, target, attribution method and success threshold defined before investing.
+- Formulate each use case as a **falsifiable value hypothesis**: baseline, target, attribution method and success threshold defined before investing.
 - Follow a lifecycle with known phases and deliverables, from defining the context through to operation, scaling or retirement.
 - Decide with explicit criteria at each *gate*: proceed, proceed with conditions, iterate, pivot or stop.
 - Move from pilot to production with requirements for operation, human oversight, monitoring and reversibility.
@@ -181,7 +181,7 @@ This is the framework's most distinctive contribution and is developed in sectio
 
 ## 4. How the framework is built
 
-SEVEN-G is organised into two levels of governance —the **company** level and the level of each **initiative**— and four components used at both levels.
+SEVEN-G is organised into two levels of governance —the **company** level and the level of each **use case**— and four components used at both levels.
 
 <!-- figura: arquitectura -->
 
@@ -189,7 +189,7 @@ SEVEN-G is organised into two levels of governance —the **company** level and 
 
 A board does not decide on use cases; it decides on risk, opportunity, competitive advantage and accountability. The impact map makes it possible to talk about AI **without talking about technology**.
 
-> **Why it matters.** Without an impact map, the portfolio fills up with technically attractive but strategically unstructured initiatives. The map forces explicit choices on where value should be created, what ambition is acceptable and what should not be funded.
+> **Why it matters.** Without an impact map, the portfolio fills up with technically attractive but strategically unstructured use cases. The map forces explicit choices on where value should be created, what ambition is acceptable and what should not be funded.
 
 **Nine spheres**, valid for any sector:
 
@@ -227,23 +227,23 @@ This is the cycle in which the board and senior management perform their role. I
 |---|---|---|
 | **C1 · Diagnosis** | Where are we? | Maturity by dimension with evidence, current sphere map, efficiency–transformation profile, AI system inventory. |
 | **C2 · Direction** | Where do we want to play, and with what ambition and risk appetite? | The company's AI thesis, ambition level per sphere, risk appetite, principles and corporate policy. |
-| **C3 · Portfolio** | Which initiatives do we fund, which do we stop, and in what balance? | Prioritised portfolio with a balance across ambition levels, budget and owners. |
+| **C3 · Portfolio** | Which use cases do we fund, which do we stop, and in what balance? | Prioritised portfolio with a balance across ambition levels, budget and owners. |
 | **C4 · Oversight** | Is what was decided being delivered? | Board dashboard, register of recommendations, relevant *gate* decisions, incidents and nonconformities. |
 | **C5 · Review** | Have we made progress? Are we transforming? | Annual review of maturity, the transformation index and the AI thesis. |
 
 A first implementation can concentrate C1 to C3 into **ninety days**: maturity diagnosis (month 1), map of risks and opportunities with owners and economic impact (month 2), and a governance structure with *gates*, metrics and reporting cadence (month 3).
 
-### 4.3 Initiative level · Lifecycle with decision gates
+### 4.3 Use case level · Lifecycle with decision gates
 
-Each AI initiative goes through eight phases. **Phase 0** is enabling: without it, the initiative is not authorised. The **seven phases** that follow take the initiative from opportunity to demonstrated value, and the **G** in SEVEN-G expresses that governance is present in all of them.
+Each AI use case goes through eight phases. **Phase 0** is enabling: without it, the use case is not authorised. The **seven phases** that follow take the use case from opportunity to demonstrated value, and the **G** in SEVEN-G expresses that governance is present in all of them.
 
-> **Why it matters.** The lifecycle prevents two expensive errors: moving to production without evidence and keeping value-poor initiatives alive by inertia. Decision gates introduce investment discipline and make timely stopping possible.
+> **Why it matters.** The lifecycle prevents two expensive errors: moving to production without evidence and keeping value-poor use cases alive by inertia. Decision gates introduce investment discipline and make timely stopping possible.
 
 <!-- figura: ciclo -->
 
 | Phase | Name | Objective | Main evidence |
 |---|---|---|---|
-| 0 | **Context and constraints** | Set strategic objectives and regulatory, ethical and budgetary constraints, and assign roles. | Initiative charter, context statement, role assignment record. |
+| 0 | **Context and constraints** | Set strategic objectives and regulatory, ethical and budgetary constraints, and assign roles. | Use case charter, context statement, role assignment record. |
 | 1 | **Opportunity discovery** | Identify opportunities from the business and discard those that do not require AI. | Opportunity portfolio, screening notes, proposed sphere and ambition level. |
 | 2 | **Value hypothesis** | Formulate a measurable and falsifiable hypothesis. If the hypothesis cannot fail, it is not valid. | Value hypothesis canvas, baseline metrics, attribution method. |
 | 3 | **Feasibility and risk** | Assess technical, economic, data and risk feasibility. This is the main stop gate. | Feasibility assessment, regulatory classification, risk matrix and register, mitigation plan. |
@@ -252,21 +252,21 @@ Each AI initiative goes through eight phases. **Phase 0** is enabling: without i
 | 6 | **Operation and governance** | Operate stably, watch for degradation, respond to incidents. | Operations manual, monitoring and alerting configuration, incident response plan. |
 | 7 | **Evolution or retirement** | Scale, iterate or retire based on the evidence of value and risk. | Value realisation tracking, scaling or retirement decision record. |
 
-**The initiative portfolio as a funnel**
+**The use case portfolio as a funnel**
 
-SEVEN-G looks at the company's set of AI initiatives with the same approach as a traditional sales funnel: to reach its final stage —in production— every initiative has to go through a mandatory set of states, and in each of them it can move forward, wait or drop out. Registering an initiative is the equivalent of logging an opportunity in a CRM: from that moment on it is known which stage it is in, how long it has been there, what cost, efficiencies and return are expected and, if it leaves the funnel, why it left and what was learned.
+SEVEN-G looks at the company's set of AI use cases with the same approach as a traditional sales funnel: to reach its final stage —in production— every use case has to go through a mandatory set of states, and in each of them it can move forward, wait or drop out. Registering a use case is the equivalent of logging an opportunity in a CRM: from that moment on it is known which stage it is in, how long it has been there, what cost, efficiencies and return are expected and, if it leaves the funnel, why it left and what was learned.
 
-The funnel stages group the lifecycle phases: **Proposed** (phases 0 and 1), **Value hypothesis** (phase 2), **Proof of concept** (phase 3) and **In development** (phases 4 and 5). The funnel holds only the initiatives in progress. Those **In use** (phases 6 and 7) have already gone through it, and those that are **disengaged** after having been in use are tracked separately, with their reason.
+The funnel stages group the lifecycle phases: **Proposed** (phases 0 and 1), **Value hypothesis** (phase 2), **Proof of concept** (phase 3) and **In development** (phases 4 and 5). The funnel holds only the use cases in progress. Those **In use** (phases 6 and 7) have already gone through it, and those that are **disengaged** after having been in use are tracked separately, with their reason.
 
 <!-- figura: embudo-cartera -->
 
-> **Why it matters.** The funnel turns the portfolio into something the AI committee and the board can read at a glance: how many initiatives come in, where they get stuck, how many reach production, what value they produce and what is learned from those that do not get there. It is the view shared by the initiative register (T01) and the board dashboard (T17).
+> **Why it matters.** The funnel turns the portfolio into something the AI committee and the board can read at a glance: how many use cases come in, where they get stuck, how many reach production, what value they produce and what is learned from those that do not get there. It is the view shared by the use case register (T01) and the board dashboard (T17).
 
 **Decision gate rules**
 
 - Each *gate* is passed through **dual validation**: tangible results and verified documentation.
 - Possible outcomes: **Proceed**, **Proceed with conditions**, **Iterate**, **Pivot** or **Stop**. In phase 7: **Scale**, **Iterate** or **Retire**.
-- If any mandatory evidence is missing, the initiative does not proceed. Partial compliance only allows iterating or proceeding with explicit conditions, a deadline and an owner.
+- If any mandatory evidence is missing, the use case does not proceed. Partial compliance only allows iterating or proceeding with explicit conditions, a deadline and an owner.
 - No one approves their own work. Documentation produced after the fact in order to pass a *gate* invalidates the *gate*.
 - A well-founded decision to stop is a valid outcome of the method: avoiding a bad investment also creates value.
 
@@ -274,17 +274,17 @@ The funnel stages group the lifecycle phases: **Proposed** (phases 0 and 1), **V
 
 | Intensity | When it applies | What changes |
 |---|---|---|
-| **Express** | Small initiatives for internal use, reversible, with autonomy A0 or A1, without sensitive data and below the C2 Express threshold, with eligibility confirmed by the risk function. | The same gates with a reduced list of criteria —all security, compliance and human oversight criteria remain—, a living record instead of templates and an annual review; G3 is still separate. |
-| **Lite** | Low-risk initiatives, internal use, no decisions about people and no customer exposure, limited investment. | Grouped *gates*, simplified templates, decision by the sponsor with a record and verification by the AI Office. |
+| **Express** | Small use cases for internal use, reversible, with autonomy A0 or A1, without sensitive data and below the C2 Express threshold, with eligibility confirmed by the risk function. | The same gates with a reduced list of criteria —all security, compliance and human oversight criteria remain—, a living record instead of templates and an annual review; G3 is still separate. |
+| **Lite** | Low-risk use cases, internal use, no decisions about people and no customer exposure, limited investment. | Grouped *gates*, simplified templates, decision by the sponsor with a record and verification by the AI Office. |
 | **Enterprise** | Systems that are high-risk under regulation, direct exposure to customers or people, automated decisions, agents with the ability to act, regulated environments or significant investment. | All *gates* and evidence, independent audit, visibility for the AI Committee and, where appropriate, for the board. |
 
-Intensity is decided **initiative by initiative**. Separately, each company chooses its **implementation scope**, also Lite or Enterprise, which determines how it organises its bodies and verification: with a Lite scope, a medium-sized, unregulated company governs AI with its executive committee, an AI Office of one part-time person and an external auditor, and any initiative that meets an Enterprise criterion is still managed with Enterprise intensity. The implementation guide (document 90, section 2) explains how the scope is chosen and what the minimum path in a Lite scope is.
+Intensity is decided **use case by use case**. Separately, each company chooses its **implementation scope**, also Lite or Enterprise, which determines how it organises its bodies and verification: with a Lite scope, a medium-sized, unregulated company governs AI with its executive committee, an AI Office of one part-time person and an external auditor, and any use case that meets an Enterprise criterion is still managed with Enterprise intensity. The implementation guide (document 90, section 2) explains how the scope is chosen and what the minimum path in a Lite scope is.
 
 ### 4.4 Component B · Governance system
 
 > **Why it matters.** If decision, build and control duties are not separated, the framework loses credibility and operational and regulatory risk increases. A clear governance system speeds up sound decisions and reduces the cost of correcting errors.
 
-**Initiative roles**, with segregation of duties:
+**Use case roles**, with segregation of duties:
 
 | Function | Role | Responsibility |
 |---|---|---|
@@ -315,10 +315,10 @@ Three instruments:
 
 > **Why it matters.** Tools convert the method into day-to-day operation. Without templates, checklists and registers, the framework remains an intention; with them, decisions become traceable and repeatable across the company.
 
-- **Templates** for each piece of evidence in each phase: initiative charter, value hypothesis canvas, *gate* decision record, risk matrix and register, operations manual, value realisation tracking, among others.
+- **Templates** for each piece of evidence in each phase: use case charter, value hypothesis canvas, *gate* decision record, risk matrix and register, operations manual, value realisation tracking, among others.
 - **Checklists** for each *gate*, which turn the criteria into binary controls.
 - **AI dashboard for the board**: inventory, validated versus declared value, cost, regulatory compliance, incidents, exposure to AI-enabled attacks, agent identity and permissions, adoption, agility and distribution by ambition level. It is generated from a single data file with a documented schema, with synchronised full and mobile versions.
-- **Initiative register**, which manages the AI portfolio as a funnel: phase and status of each initiative, time spent in each phase, compliance with each decision gate, tags, value and stop reasons (document 03).
+- **Use case register**, which manages the AI portfolio as a funnel: phase and status of each use case, time spent in each phase, compliance with each decision gate, tags, value and stop reasons (document 03).
 - **Board recommendations register**, with identifiers that are never reset, declared status, evidence provided and independent assessment.
 - **Sector demonstrations** with fictitious data (banking, insurance, energy, manufacturing, retail, healthcare, telecommunications, logistics, pharmaceuticals, tourism and the public sector).
 
@@ -332,9 +332,9 @@ Efficiency and transformation are not distinguished by the technology used. A ge
 
 SEVEN-G does not regard efficiency as a lesser outcome. Many companies need to start there and use it to fund their later bets. What the framework requires is that **the choice be conscious, measured and made by whoever is responsible for it**.
 
-### 5.2 Initiative level · Classifying ambition with verifiable criteria
+### 5.2 Use case level · Classifying ambition with verifiable criteria
 
-Each initiative is classified in phase 1, confirmed in phase 2 and reviewed in phase 7 against the actual evidence. The classification answers five questions:
+Each use case is classified in phase 1, confirmed in phase 2 and reviewed in phase 7 against the actual evidence. The classification answers five questions:
 
 | # | Question | If the answer is yes, it points to… |
 |---|---|---|
@@ -344,7 +344,7 @@ Each initiative is classified in phase 1, confirmed in phase 2 and reviewed in p
 | 4 | Does it generate revenue, services or markets that did not exist before? | Transform |
 | 5 | Could it be retired without affecting the business model, simply returning to the previous cost? | Optimise |
 
-If questions 1 to 4 are answered in the negative, the initiative is an **optimisation** initiative, regardless of how it has been presented. **Transformation** initiatives require an explicit decision by the board or senior management and are assessed using adapted *gate* criteria: the value hypothesis allows greater uncertainty, but requires intermediate learning milestones, investment limits per stage and stop criteria defined in advance.
+If questions 1 to 4 are answered in the negative, the use case is an **optimisation** use case, regardless of how it has been presented. **Transformation** use cases require an explicit decision by the board or senior management and are assessed using adapted *gate* criteria: the value hypothesis allows greater uncertainty, but requires intermediate learning milestones, investment limits per stage and stop criteria defined in advance.
 
 ### 5.3 Company level · Transformation index
 
@@ -358,7 +358,7 @@ The company's profile is determined by a set of observable signals, all of which
 | **4. Depth of change** | Processes redesigned end to end versus automated tasks. | Automation of isolated tasks. | Redesigned processes with new decision points. |
 | **5. Operating model** | Changes in roles, structure and the allocation of decisions between people and systems, with defined oversight. | No organisational change. | Redesigned roles and structures, and decisions delegated under control. |
 | **6. AI-enabled revenue** | Percentage of revenue coming from products, services or channels that would not exist without AI. | Zero or marginal. | Significant and growing. |
-| **7. Move to production** | Proportion of Augment and Transform initiatives that reach production, and how long they take. | Higher-ambition bets remain at pilot stage. | They reach production in timeframes comparable to the rest. |
+| **7. Move to production** | Proportion of Augment and Transform use cases that reach production, and how long they take. | Higher-ambition bets remain at pilot stage. | They reach production in timeframes comparable to the rest. |
 | **8. Board decision** | Transformation decisions explicitly taken by the board and tracked in the register. | AI is treated as a technical or efficiency matter. | The board decides on, funds and oversees transformation bets. |
 
 With these signals, the company falls into one of five profiles:
@@ -410,12 +410,12 @@ SEVEN-G is **sector- and technology-agnostic**, and scalable: the Lite implement
 
 ## 8. Framework principles
 
-1. **Value before technology.** Every initiative is linked to a measurable business outcome.
+1. **Value before technology.** Every use case is linked to a measurable business outcome.
 2. **Governance is not optional.** It is designed in from the start and makes it possible to move faster with control.
 3. **Production is the only truth.** Value is demonstrated under real conditions.
 4. **Reversibility.** Every solution can be stopped, rolled back or retired.
 5. **Risk is systemic.** It is managed at portfolio level, not only case by case.
-6. **Evolve or retire.** No initiative remains in the portfolio without evidence to justify it.
+6. **Evolve or retire.** No use case remains in the portfolio without evidence to justify it.
 7. **Segregation of duties.** Whoever builds does not control, and no one approves their own work.
 8. **Evidence, not declaration.** If it is not documented and verified, it is not considered done.
 9. **A conscious decision on ambition.** Efficiency and transformation are chosen, measured and decided separately.
@@ -427,7 +427,7 @@ SEVEN-G is **sector- and technology-agnostic**, and scalable: the Lite implement
 
 - A **single view of its AI**: what it has, what it costs, what it contributes with evidence, what risks it takes on and who is accountable for each.
 - An **honest diagnosis** of where it stands between efficiency and transformation.
-- A **decision-making system** that makes it possible to start, accelerate, set conditions for, pivot and stop initiatives using known criteria.
+- A **decision-making system** that makes it possible to start, accelerate, set conditions for, pivot and stop use cases using known criteria.
 - **Demonstrable regulatory compliance**, with evidence linked to each obligation.
 - A **board able to oversee AI** with information that is understandable, comparable over time and verifiable.
 - A **common language** across business, technology, risk and the board.
@@ -440,15 +440,15 @@ SEVEN-G version 0.1 is operational. Every document, template and tool in this ta
 
 | Block | Documents |
 |---|---|
-| **A · Foundations** | [00 · What SEVEN-G is and how it helps companies](00_SEVEN-G_Que_es_y_para_que_sirve.html) · [01 · Foundational methodology](01_SEVEN-G_Metodologia_fundacional.html) · [02 · Glossary and conventions](02_SEVEN-G_Glosario_y_convenciones.html) · [03 · Tools and initiative register](03_SEVEN-G_Herramientas_y_registro_de_iniciativas.html) · [04 · Where SEVEN-G comes from, how it differs and why it is open](04_SEVEN-G_Origenes_diferencias_y_por_que_es_abierto.html) |
+| **A · Foundations** | [00 · What SEVEN-G is and how it helps companies](00_SEVEN-G_Que_es_y_para_que_sirve.html) · [01 · Foundational methodology](01_SEVEN-G_Metodologia_fundacional.html) · [02 · Glossary and conventions](02_SEVEN-G_Glosario_y_convenciones.html) · [03 · Tools and use case register](03_SEVEN-G_Herramientas_y_registro_de_iniciativas.html) · [04 · Where SEVEN-G comes from, how it differs and why it is open](04_SEVEN-G_Origenes_diferencias_y_por_que_es_abierto.html) |
 | **B · Strategy and portfolio** | [10 · Sphere map and ambition levels](10_SEVEN-G_Mapa_de_esferas_y_niveles_de_ambicion.html) · [11 · Maturity model](11_SEVEN-G_Modelo_de_madurez.html) · [12 · Transformation index](12_SEVEN-G_Indice_de_transformacion.html) · [13 · AI thesis, ambition and risk appetite](13_SEVEN-G_Tesis_de_IA_ambicion_y_apetito_de_riesgo.html) · [14 · Portfolio management](14_SEVEN-G_Gestion_de_cartera.html) |
-| **C · Lifecycle** | [20 · Phase manuals](20_SEVEN-G_Manuales_de_fase.html) · [21 · Gate and audit criteria](21_SEVEN-G_Criterios_de_gate_y_auditoria.html) · [22 · Checklists by gate](22_SEVEN-G_Listas_de_verificacion_por_gate.html) · [23 · Adoption and change in the initiative](23_SEVEN-G_Adopcion_y_cambio.html) |
+| **C · Lifecycle** | [20 · Phase manuals](20_SEVEN-G_Manuales_de_fase.html) · [21 · Gate and audit criteria](21_SEVEN-G_Criterios_de_gate_y_auditoria.html) · [22 · Checklists by gate](22_SEVEN-G_Listas_de_verificacion_por_gate.html) · [23 · Adoption and change in the use case](23_SEVEN-G_Adopcion_y_cambio.html) |
 | **D · Governance, risk and compliance** | [30 · Governance model](30_SEVEN-G_Modelo_de_gobierno.html) · [31 · Corporate AI policy and acceptable use policy](31_SEVEN-G_Politica_corporativa_y_uso_aceptable.html) · [32 · AI system inventory and regulatory classification](32_SEVEN-G_Inventario_y_clasificacion_regulatoria.html) · [33 · AI risk methodology](33_SEVEN-G_Metodologia_de_riesgos_de_IA.html) · [34 · Regulatory mapping](34_SEVEN-G_Mapeo_regulatorio.html) · [35 · AI and agent security](35_SEVEN-G_Seguridad_de_IA_y_agentes.html) · [36 · AI third parties and suppliers](36_SEVEN-G_Terceros_y_proveedores_de_IA.html) · [37 · Nonconformities, AI incidents and remediation](37_SEVEN-G_No_conformidades_e_incidentes.html) · [38 · AI audit framework](38_SEVEN-G_Marco_de_auditoria_de_IA.html) |
 | **E · Measurement and value** | [40 · Value measurement rules](40_SEVEN-G_Reglas_de_medicion_del_valor.html) · [41 · Indicator catalogue](41_SEVEN-G_Catalogo_de_indicadores.html) · [42 · AI costs and allocation per use case](42_SEVEN-G_Costes_de_IA.html) · [43 · Benefits realisation](43_SEVEN-G_Realizacion_de_beneficios.html) |
 | **F · People, data and operations** | [50 · People and organisation](50_SEVEN-G_Personas_y_organizacion.html) · [51 · Data and knowledge for AI](51_SEVEN-G_Datos_y_conocimiento.html) · [52 · AI operations manual](52_SEVEN-G_Manual_de_operacion_de_IA.html) · [53 · Building solutions with AI](53_SEVEN-G_Construccion_de_soluciones_con_IA.html) · [54 · How a company organises itself for AI](54_SEVEN-G_Organizacion_de_la_compania_para_la_IA.html) |
 | **G · Board** | [60 · Board pack](60_SEVEN-G_Paquete_para_el_consejo.html) · [61 · Board conversation guide](61_SEVEN-G_Guia_de_conversacion_con_el_consejo.html) · [62 · Recommendations and decisions register](62_SEVEN-G_Registro_de_recomendaciones_y_decisiones.html) |
 | **H · Templates** | 74 templates, linked from the [library index](index.html) and with an editable Word version: from P01 to P31, one for each piece of mandatory evidence in the lifecycle; from P32 to P71, the registers, reports and decisions of the company, the board, compliance, third parties, audit and framework implementation; from P72 to P74, the AI security and governance profiles with the NIST frameworks and the ISO/IEC 42001 statement of applicability. |
-| **I · Tools** | Initiative register T01 (with system inventory, *gate* manager, intensity determination and ambition classification) and connector T17, which feeds the board dashboard and the recommendations register with the register's data. |
+| **I · Tools** | Use case register T01 (with system inventory, *gate* manager, intensity determination and ambition classification) and connector T17, which feeds the board dashboard and the recommendations register with the register's data. |
 | **J · Framework adoption** | [90 · Implementation guide](90_SEVEN-G_Guia_de_implantacion.html) · [91 · Guide for consultants and support models](91_SEVEN-G_Guia_para_consultores.html) · [92 · Application cases](92_SEVEN-G_Casos_de_aplicacion.html) · [93 · Licence, use by third parties and citation](93_SEVEN-G_Licencia_uso_y_citacion.html) · [94 · Obligation matrix and layered reading](94_SEVEN-G_Matriz_de_obligatoriedad_y_lectura_por_capas.html) · [95 · Where your data is and how to install SEVEN-G on your own server](95_SEVEN-G_Datos_en_local_e_instalacion_propia.html) · [96 · Starting points and implementation journey](96_SEVEN-G_Puntos_de_partida_y_recorrido_de_implantacion.html) |
 | **K · Course** | [SEVEN-G course](curso/M00_SEVEN-G_Curso_Guia_del_curso.html): a guide and nine short modules, with exercises on the example data and self-check questions, to learn what the framework is, how it is used and how to find your way around the site. It defines no rules: each module leads to the document that develops it. |
 

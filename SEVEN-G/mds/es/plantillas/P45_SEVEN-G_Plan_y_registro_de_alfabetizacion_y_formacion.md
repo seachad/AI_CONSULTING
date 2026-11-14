@@ -14,17 +14,17 @@
 
 > **Aviso legal y exención de responsabilidad.** SEVEN-G es un marco metodológico de referencia que se ofrece «tal cual» y con fines exclusivamente informativos. No constituye asesoramiento jurídico, regulatorio, financiero ni profesional, ni garantiza el cumplimiento de ninguna norma. Las referencias a regulación general (como el Reglamento Europeo de IA, el RGPD, DORA o NIS2), a normas técnicas y a regulación específica de cada sector o jurisdicción pueden ser incompletas, no aplicar a un caso concreto o quedar desactualizadas por cambios normativos, interpretaciones o criterios de las autoridades posteriores a su fecha de consulta. **Cada organización que use SEVEN-G es la única responsable de identificar la normativa que le aplica, verificar su vigencia y certificar su propio cumplimiento regulatorio**, con el asesoramiento cualificado que corresponda. Esta metodología es una ayuda genérica y gratuita, compartida con la comunidad para que nadie tenga que empezar desde cero; cada persona u organización puede y debe adaptarla a su propio uso. No debe entenderse que sus partes jurídicamente sensibles hayan sido revisadas por una asesoría jurídica: esas revisiones, para cada empresa o sector, son responsabilidad última de la empresa, el consultor o la organización que la use. Aunque se procura mantenerla al día, alguna norma puede haber cambiado sin que se recoja aquí. En la máxima medida permitida por la ley, el autor no asume responsabilidad alguna por los efectos de su aplicación en ninguna organización ni por su aplicabilidad completa. La metodología no otorga certificación de ningún tipo. El autor no asume responsabilidad alguna por el uso que se haga de este contenido ni por las decisiones que se adopten con él. Los datos, cifras, compañías y casos de los ejemplos son ficticios o ilustrativos.
 
-> **Por qué importa.** Sin personas capaces no hay supervisión humana real, verificación de resultados ni detección de usos indebidos (31 §6.1). El plan fija quién debe formarse, en qué y cuándo; el registro demuestra que ha ocurrido. Tres controles dependen de él: nadie recibe licencias de IA sin F1, nadie supervisa un sistema en producción sin F3 y nadie asume un rol de iniciativa sin F4 (31 §6.3). Sin registro por persona, la compañía no puede acreditar en G5 que los supervisores están formados (G5.14) ni responder al consejo con la cobertura real.
+> **Por qué importa.** Sin personas capaces no hay supervisión humana real, verificación de resultados ni detección de usos indebidos (31 §6.1). El plan fija quién debe formarse, en qué y cuándo; el registro demuestra que ha ocurrido. Tres controles dependen de él: nadie recibe licencias de IA sin F1, nadie supervisa un sistema en producción sin F3 y nadie asume un rol de caso de uso sin F4 (31 §6.3). Sin registro por persona, la compañía no puede acreditar en G5 que los supervisores están formados (G5.14) ni responder al consejo con la cobertura real.
 
 ## 1. Instrucciones de uso
 
 | Aspecto | Indicación |
 |---|---|
 | **Cuándo se usa** | El plan se aprueba cada año en C2 junto con la política (31 §6.3) y se revisa en C5. El registro es vivo: se actualiza con cada acción formativa, cada asignación de licencia, supervisión o rol, y cada vencimiento. |
-| **Quién la rellena** | La oficina de IA con la función de personas elabora el plan y mantiene el registro. El responsable de producto de IA aporta la formación específica de cada iniciativa (P20, sección 5). |
-| **Quién la verifica** | Auditor de IA o auditoría interna, por muestreo (documento 38); en cada *gate*, el verificador comprueba la formación de las personas de esa iniciativa. |
+| **Quién la rellena** | La oficina de IA con la función de personas elabora el plan y mantiene el registro. El responsable de producto de IA aporta la formación específica de cada caso de uso (P20, sección 5). |
+| **Quién la verifica** | Auditor de IA o auditoría interna, por muestreo (documento 38); en cada *gate*, el verificador comprueba la formación de las personas de ese caso de uso. |
 | **Quién decide o aprueba** | El plan anual lo aprueba el comité de IA dentro de la dirección aprobada en C2; el presupuesto, en la categoría de coste *adopción y formación* (documento 42). |
-| **Etapa, *gate* o momento** | C2 (plan), C4 (seguimiento en el monitor T21 y en el panel del consejo), C5 (revisión). En la iniciativa: G0 (F4 de los roles), G5 (F3 de los supervisores y formación de usuarios, G5.14 y G5.19) y R6 (vigencia). |
+| **Etapa, *gate* o momento** | C2 (plan), C4 (seguimiento en el monitor T21 y en el panel del consejo), C5 (revisión). En el caso de uso: G0 (F4 de los roles), G5 (F3 de los supervisores y formación de usuarios, G5.14 y G5.19) y R6 (vigencia). |
 | **Herramienta** | T20 · Plan de adopción y capacidad (registro de formación). Los indicadores se muestran en T21 y el registro se vincula a P03 para los roles (31 §6.3). |
 | **Documento de referencia** | 31 §6; 50 §5; 23 §8; 34 §3.5; 41 (IND-ADO-05, IND-ADO-10); 90 §9. |
 | **Lite frente a Enterprise** | El plan y el registro son obligatorios en ambos alcances de implantación (90 §2.1). En alcance Lite pueden omitirse los campos marcados **(Enterprise)**; la condición de F3 para supervisar no se simplifica. |
@@ -64,12 +64,12 @@ Con independencia de ese mínimo, **SEVEN-G exige** un programa por perfiles con
 
 ## 4. Correspondencia de perfiles
 
-| Perfil (31 §6.2) | Perfil (50 §5.2) | Público de la iniciativa (23 §8.2) |
+| Perfil (31 §6.2) | Perfil (50 §5.2) | Público del caso de uso (23 §8.2) |
 |---|---|---|
 | F1 · Todos los empleados y colaboradores con herramientas de IA | PER-PC · Todos los empleados | Personas afectadas del área |
 | F2 · Usuarios intensivos y de agentes personales | PER-PC · Todos los empleados | Usuarios |
 | F3 · Supervisores humanos de sistemas en producción | PER-PD · Usuarios y supervisores de un sistema | Supervisores humanos; usuarios |
-| F4 · Roles de iniciativa | PER-PE · Equipos que construyen y operan | Equipo de operación |
+| F4 · Roles de caso de uso | PER-PE · Equipos que construyen y operan | Equipo de operación |
 | F5 · Construcción técnica | PER-PE · Equipos que construyen y operan | — |
 | F6 · Segunda y tercera línea | PER-PF · Control y personas | — |
 | F7 · Consejo y alta dirección | PER-PA · Consejo y alta dirección | — |
@@ -87,7 +87,7 @@ Los mandos intermedios (PER-PB) reciben F1 y F9, que aplica a su área los conte
 | F1 | | 31 §6.2 | En línea, 60–90 minutos, con evaluación | Al incorporarse y anual | Antes de recibir licencias de IA | | | | Finalización y aceptación de la política |
 | F2 | | | Taller práctico, 3–4 horas | Al asignar licencia o permiso; anual | — | | | | Registro y ejercicio |
 | F3 | | Por sistema | 2–8 horas, con práctica | Antes de producción; ante cambios; anual | Antes de supervisar un sistema en producción | | | | Registro por sistema y prueba práctica |
-| F4 | | | 1 jornada y acompañamiento | Al asumir el rol | Antes de asumir un rol de iniciativa | | | | Registro vinculado a P03 |
+| F4 | | | 1 jornada y acompañamiento | Al asumir el rol | Antes de asumir un rol de caso de uso | | | | Registro vinculado a P03 |
 | F5 | | | 2–3 jornadas | Al incorporarse; anual | — | | | | Registro y ejercicios |
 | F6 | | | 2 jornadas y formación continua | Anual y ante cambios normativos | — | | | | Registro; plan de competencias del auditor de IA |
 | F7 | | | Sesión de 2–3 horas | Anual y al incorporarse al órgano | — | | | | Acta o registro de asistencia |
@@ -97,11 +97,11 @@ Los mandos intermedios (PER-PB) reciben F1 y F9, que aplica a su área los conte
 
 ---
 
-## 6. Formación específica por iniciativa
+## 6. Formación específica por caso de uso
 
-Resumen de la sección 5 de P20 de cada iniciativa, para consolidar la cobertura de la compañía.
+Resumen de la sección 5 de P20 de cada caso de uso, para consolidar la cobertura de la compañía.
 
-| Iniciativa | Sistema | Público (23 §8.2) | Énfasis por tecnología (23 §8.3) | Personas | Fecha prevista | Realizada (Sí · No) |
+| Caso de uso | Sistema | Público (23 §8.2) | Énfasis por tecnología (23 §8.3) | Personas | Fecha prevista | Realizada (Sí · No) |
 |---|---|---|---|---|---|---|
 | IA-AAAA-NNN | SIA-AAAA-NNN | | ML predictivo · IA generativa · Agentes · IA de terceros embebida | | | |
 
@@ -123,7 +123,7 @@ Resumen de la sección 5 de P20 de cada iniciativa, para consolidar la cobertura
 |---|---|---|---|---|---|
 | Cobertura F1 | Personas con F1 vigente ÷ personas con acceso a herramientas de IA | 31 §6.4 | Cercana al 100 % | | Mensual |
 | Cobertura de supervisores | Supervisores con F3 vigente ÷ supervisores asignados a sistemas en producción | 31 §6.4 | 100 % | | Mensual |
-| Cobertura de roles | Personas con rol en iniciativa y F4 ÷ personas con rol | 31 §6.4 | 100 % | | Trimestral |
+| Cobertura de roles | Personas con rol en caso de uso y F4 ÷ personas con rol | 31 §6.4 | 100 % | | Trimestral |
 | Formación vencida | Personas con formación obligatoria vencida | 31 §6.4 | Alerta mensual | | Mensual |
 | Tasa de superación | Evaluaciones superadas ÷ evaluaciones realizadas, por perfil | 31 §6.4 | A fijar por la compañía | | Trimestral |
 | Incidentes por uso indebido | Incidentes y no conformidades con causa raíz «desconocimiento de la política» | 31 §6.4; T08 | Tendencia | | Trimestral |
@@ -163,7 +163,7 @@ Resumen de la sección 5 de P20 de cada iniciativa, para consolidar la cobertura
 | Función | Rol en SEVEN-G | Nombre y cargo | Fecha | Firma o referencia |
 |---|---|---|---|---|
 | Elabora el plan y mantiene el registro | Oficina de IA y función de personas | | | |
-| Aporta la formación de la iniciativa | Responsable de producto de IA | | | |
+| Aporta la formación del caso de uso | Responsable de producto de IA | | | |
 | Aprueba el plan | Comité de IA | | | |
 | Verifica | Auditor de IA o auditoría interna | | | |
 

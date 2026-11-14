@@ -38,7 +38,7 @@ Cada ítem lleva el **código del criterio** del documento 21 (G3.07, R6.11…) 
 |---|---|---|
 | **Verificador** (01 §7.5: oficina de IA en Lite; auditor de IA en Enterprise) | Tras la solicitud del *gate* y antes de la decisión. | Comprobar criterios y evidencias y emitir la opinión de verificación. |
 | **Auditor de IA** | En la auditoría posterior, sobre la muestra (21 §10.3). | Reejecutar la verificación y contrastarla con lo registrado. |
-| **Equipo de la iniciativa** | Antes de solicitar el *gate*. | Autoevaluarse. Su autoevaluación no sustituye a la verificación. |
+| **Equipo del caso de uso** | Antes de solicitar el *gate*. | Autoevaluarse. Su autoevaluación no sustituye a la verificación. |
 
 ### 2.2 Cómo verificar
 
@@ -275,13 +275,13 @@ Se aplica a **cada evidencia** enlazada en la solicitud del *gate*, antes de rev
 
 | ☐ | Código | Pregunta | Dónde mirar | Si la respuesta es no |
 |---|---|---|---|---|
-| ☐ | EV.01 | ¿La evidencia identifica la iniciativa, la plantilla o registro de origen y el título? | Portada de la evidencia | Pendiente |
+| ☐ | EV.01 | ¿La evidencia identifica el caso de uso, la plantilla o registro de origen y el título? | Portada de la evidencia | Pendiente |
 | ☐ | EV.02 | ¿Consta el autor con su rol? | Ficha de la evidencia | Pendiente |
 | ☐ | EV.03 | ¿Constan la fecha de elaboración y la de última modificación? | Ficha · historial del repositorio | Pendiente |
 | ☐ | EV.04 | ¿La versión enlazada en la solicitud es la versión revisada? | T03 · repositorio | Pendiente |
 | ☐ | EV.05 | ¿La fecha es anterior a la solicitud del *gate* y la actividad descrita anterior a la decisión? | Historial del repositorio · eventos de T01 | No válida · no conformidad mayor |
 | ☐ | EV.06 | ¿Está en el repositorio con historial de versiones y enlace accesible desde T01 o T03? | Repositorio · T03 | Pendiente |
-| ☐ | EV.07 | ¿Corresponde a esta iniciativa, su alcance y la versión del sistema, o se justifica su reutilización? | Contenido · P15 (versión) | No válida |
+| ☐ | EV.07 | ¿Corresponde a este caso de uso, su alcance y la versión del sistema, o se justifica su reutilización? | Contenido · P15 (versión) | No válida |
 | ☐ | EV.08 | Si acredita resultados, ¿tiene fuente, periodo, método reproducible y, en importes, fórmula y estado? | Contenido · T11 · T12 | No válida |
 | ☐ | EV.09 | ¿Está aprobada por quien corresponde, y autor, verificador y decisor son personas distintas? | Ficha · P03 · P29 | No válida · no conformidad mayor si hay autoaprobación |
 | ☐ | EV.10 | ¿Están completos los campos obligatorios —en la plantilla o en la evidencia referenciada con su anexo (21 §4.3)—, con "sin dato" explícito donde falte información? | Plantilla | Pendiente |
@@ -348,7 +348,7 @@ Un ítem obligatorio sin marcar en LV-AG equivale a *No cumple* en el criterio a
 |---|---|---|
 | **T03** | Gestor de *gates* | Carga las listas, registra el estado de cada ítem, calcula el grado de cumplimiento y aplica la regla de bloqueo. |
 | **T10** | Evaluación de seguridad de agentes | Implementa LV-AG dentro de T03. |
-| **T01 · T08** | Registro de iniciativas · No conformidades e incidentes | Eventos para comprobar la anterioridad; registro de hallazgos. |
+| **T01 · T08** | Registro de casos de uso · No conformidades e incidentes | Eventos para comprobar la anterioridad; registro de hallazgos. |
 | **P29** | Registro de decisión de *gate* | Recoge el resultado de las listas y la opinión de verificación. |
 | **P23** | Firma de puesta en producción | Comprobación de firmas de LV-G5. |
 | **P01–P31** | Plantillas del bloque H | Dónde mirar cada evidencia. |
@@ -360,7 +360,7 @@ Un ítem obligatorio sin marcar en LV-AG equivale a *No cumple* en el criterio a
 | Documento | Relación |
 |---|---|
 | **01 · Metodología fundacional** | Puertas, reglas de decisión, roles e intensidad. |
-| **03 · Herramientas y registro de iniciativas** | Estados de los criterios y herramientas T03 y T10. |
+| **03 · Herramientas y registro de casos de uso** | Estados de los criterios y herramientas T03 y T10. |
 | **21 · Criterios de *gate* y de auditoría** | Criterios, reglas de evidencia, firma multinivel y criterios de auditoría a los que remiten todos los códigos. |
 | **35 · Seguridad de IA y agentes** | Controles de agentes que desarrolla LV-AG. |
 | **37 · No conformidades e incidentes** | Tratamiento de los hallazgos. |

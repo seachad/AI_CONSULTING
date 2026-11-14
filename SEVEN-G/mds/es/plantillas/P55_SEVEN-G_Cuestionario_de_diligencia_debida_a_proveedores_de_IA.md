@@ -46,7 +46,7 @@ Reglas de cumplimentación:
 | Código de la relación proveedor–servicio | | PRV-AAAA-NNN del registro T09 (P57). |
 | Proveedor | | Razón social, grupo y país de establecimiento. |
 | Servicio o componente evaluado | | Tipo de tercero de 36 §1.1: proveedor de modelos, plataforma, software con IA, integrador, proveedor de datos, componentes abiertos, socio. |
-| Iniciativas y sistemas vinculados | | IA-AAAA-NNN · SIA-AAAA-NNN. |
+| Casos de uso y sistemas vinculados | | IA-AAAA-NNN · SIA-AAAA-NNN. |
 | Nivel de exigencia | | N1 Estándar · N2 Reforzado · N3 Crítico, según P14 §3. |
 | Motivo del cuestionario | | Selección inicial · Disparador de reevaluación · Renovación · IA embebida (anexo A). |
 | Fecha de envío y de respuesta | | DD-MM-AAAA. |
@@ -259,7 +259,7 @@ Se envía a los proveedores de software vigentes para identificar funciones de I
 
 | Función de IA | Código del inventario (T02) | Datos personales o confidenciales | Interviene en decisiones o actúa (A0–A3) | ¿Se puede desactivar? | Nivel N | Decisión | Riesgo RT-TER-06 registrado |
 |---|---|---|---|---|---|---|---|
-| | SIA-AAAA-NNN | Sí · No | | Sí · No | N1 · N2 · N3 | Mantener desactivada · Activar con controles · Activar como iniciativa | Sí · No |
+| | SIA-AAAA-NNN | Sí · No | | Sí · No | N1 · N2 · N3 | Mantener desactivada · Activar con controles · Activar como caso de uso | Sí · No |
 | *(ejemplo ilustrativo)* Resumen automático de expedientes en el gestor documental | SIA-2026-014 | Sí | A0 | Sí | N2 | Mantener desactivada hasta el comité de IA | No |
 
 Reglas de 36 §8.2: las funciones que traten datos personales o confidenciales **deben** permanecer desactivadas hasta su evaluación cuando la configuración lo permita; si no pueden desactivarse, se registra RT-TER-06 y se decide en el siguiente comité de IA; una función que interviene en decisiones sobre personas o actúa con nivel A2 o A3 recorre el ciclo de vida completo.

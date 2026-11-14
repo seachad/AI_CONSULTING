@@ -25,7 +25,7 @@
 | **Who verifies it** | Internal audit's quality review checks the universe and the scores before the plan is presented. |
 | **Who decides or approves** | The board committee (38 §5.3; document 30 §7.5). If AI auditing is integrated into the corporate internal audit plan, it is approved jointly or in a coordinated manner (38 §12.2). |
 | **Corporate cycle stage** | Preparation after C5; approval before the start of the financial year; quarterly monitoring of its completion alongside C4 oversight. |
-| **Tool** | It has no dedicated tool. The universe is extracted from T02 (inventory), T01 (initiative register) and T09 (suppliers); open findings from T08. The formulas in section 4 allow it to be kept in a spreadsheet. |
+| **Tool** | It has no dedicated tool. The universe is extracted from T02 (inventory), T01 (use case register) and T09 (suppliers); open findings from T08. The formulas in section 4 allow it to be kept in a spreadsheet. |
 | **Reference document** | Document 38 §4, §5 and §12; document 21 §10.3 (sample of *gates*); document 43 §12 (value audit). |
 | **Lite versus Enterprise** | All Enterprise *gates* are verified; Lite *gates* are audited by sample (21 §10.3: at least 10 % with a minimum of three, including at least one G5). Intensity is also a scoring factor. |
 
@@ -56,11 +56,11 @@ Completion rules:
 
 ## 3. Audit universe
 
-Each unit is numbered consecutively within the plan (U01, U02…). A unit is a system, an initiative, a supplier, a framework process or a cross-cutting theme (38 §5.1).
+Each unit is numbered consecutively within the plan (U01, U02…). A unit is a system, a use case, a supplier, a framework process or a cross-cutting theme (38 §5.1).
 
 | No. | Unit type | Code | Name | Source | Owner | Status or phase | Last audit (code and date) |
 |---|---|---|---|---|---|---|---|
-| U01 | System · Initiative · Supplier · Process · Theme | SIA-AAAA-NNN · IA-AAAA-NNN · T09 code · process name | | T02 · T01 · T09 · Document · Risk report · T08 | | | |
+| U01 | System · Use case · Supplier · Process · Theme | SIA-AAAA-NNN · IA-AAAA-NNN · T09 code · process name | | T02 · T01 · T09 · Document · Risk report · T08 | | | |
 | U02 | | | | | | | |
 | U03 | | | | | | | |
 | *(illustrative example)* U01 | System | SIA-2026-014 | Customer enquiries assistant | T02 | AI Operations Owner for the customer area | In production | Never audited |
@@ -71,7 +71,7 @@ Units that must be included as a minimum:
 | Unit | Source | All included? (Yes · No) | If No, reason |
 |---|---|---|---|
 | Each AI system in development, pilot or production | T02 | | |
-| Each initiative with *gates* planned in the financial year | T01 | | |
+| Each use case with *gates* planned in the financial year | T01 | | |
 | Each AI supplier with level N2 or N3 | T09 | | |
 | Framework processes: corporate cycle, portfolio management, inventory, risks, measurement, nonconformities, policies and literacy | Documents 01, 14, 31, 32, 33, 37 and 40 | | |
 | Cross-cutting themes identified by the second line or by incidents | Risk reports; T08 | | |
@@ -203,7 +203,7 @@ Degree of completion = completed engagements ÷ engagements planned to date × 1
 
 | # | Check | Status |
 |---|---|---|
-| 1 | The universe includes all systems in T02, the initiatives with *gates* in the year, the N2 and N3 suppliers and the framework processes. | Met · Not met · Not applicable · Pending |
+| 1 | The universe includes all systems in T02, the use cases with *gates* in the year, the N2 and N3 suppliers and the framework processes. | Met · Not met · Not applicable · Pending |
 | 2 | Each system has the nine factors scored with data as at the cut-off date, and forced priority is applied where appropriate. | |
 | 3 | All High-priority systems have an engagement in the year or appear as an approved limitation. | |
 | 4 | The framework audit, including the declaration of application, and the value audit are planned before C5. | |
@@ -225,7 +225,7 @@ Question D6.10 in document 11 (framework audit in the last 12 months) is evidenc
 | Reviews quality | Internal audit quality review | | | |
 | Approves | Board committee | | | |
 
-Segregation of duties: the AI Office provides the data, but does not decide what is audited or score the units; no area that sponsors initiatives approves the plan.
+Segregation of duties: the AI Office provides the data, but does not decide what is audited or score the units; no area that sponsors use cases approves the plan.
 
 ---
 

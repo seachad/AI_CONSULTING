@@ -27,9 +27,9 @@
 | **Quién la verifica** | El auditor de IA o la tercera línea, que comprueba las evidencias y el estado de implantación (38 §12.1). Una auditoría de certificación la hace, si procede, la entidad acreditada. |
 | **Quién decide o aprueba** | La alta dirección aprueba la declaración, como parte del tratamiento de riesgos de la cláusula 6.1.3; se informa al comité de IA y a la comisión delegada. |
 | **Etapa del ciclo corporativo** | C2 (aprobación), C4 (seguimiento del estado de implantación) y C5 (revisión). |
-| **Herramienta** | No tiene aplicación propia en la versión 0.x. El estado de las evidencias sale del registro de iniciativas (T01), de la verificación de *gates* (T03) y de los registros que cita cada fila. |
+| **Herramienta** | No tiene aplicación propia en la versión 0.x. El estado de las evidencias sale del registro de casos de uso (T01), de la verificación de *gates* (T03) y de los registros que cita cada fila. |
 | **Documento de referencia** | Documento 34 §4 (ISO/IEC 42001: cláusulas 4 a 10 y anexo A por grupos) y §5.4 (perfil del AI RMF); documento 38 §12 (relación con ISO/IEC 42001 y con la certificación). |
-| **Lite frente a Enterprise** | La declaración es la misma. En alcance Lite puede agruparse la evidencia por proceso en lugar de por iniciativa. |
+| **Lite frente a Enterprise** | La declaración es la misma. En alcance Lite puede agruparse la evidencia por proceso en lugar de por caso de uso. |
 
 Reglas de cumplimentación:
 
@@ -49,7 +49,7 @@ Reglas de cumplimentación:
 | Identificador y versión de la declaración | | Formato propuesto DA-AAAA-NN. |
 | Fecha | | DD-MM-AAAA. |
 | Responsable de la declaración | | Oficina de IA. |
-| Evaluación de riesgos y plan de tratamiento de referencia | | Documento 33; P12 y P13 de las iniciativas; P35 (apetito de riesgo). |
+| Evaluación de riesgos y plan de tratamiento de referencia | | Documento 33; P12 y P13 de los casos de uso; P35 (apetito de riesgo). |
 | Perfil del AI RMF de referencia, si existe | | P73, con su fecha de corte. |
 
 ---

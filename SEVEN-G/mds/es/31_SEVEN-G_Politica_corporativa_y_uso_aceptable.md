@@ -88,7 +88,7 @@ d) sea supervisable, reversible y auditable.
    - esté integrado en otro software o servicio;
    - se use para procesos internos, con clientes o con terceros;
    - su uso esté autorizado o no.
-3. **Tipos de uso.** A efectos de esta política se distinguen cuatro tipos de uso, con el tratamiento que se indica en el apartado 3.6: (i) iniciativas de IA; (ii) IA de terceros integrada en procesos; (iii) uso corporativo de IA de propósito general; (iv) uso no autorizado.
+3. **Tipos de uso.** A efectos de esta política se distinguen cuatro tipos de uso, con el tratamiento que se indica en el apartado 3.6: (i) casos de uso de IA; (ii) IA de terceros integrada en procesos; (iii) uso corporativo de IA de propósito general; (iv) uso no autorizado.
 4. **Exclusiones.** [Indicar, si procede, exclusiones justificadas, por ejemplo actividades de investigación sin datos reales en entornos aislados, que igualmente deben registrarse.]
 
 ### 3.3 Principios
@@ -105,7 +105,7 @@ d) sea supervisable, reversible y auditable.
 | 6 | Evolucionar o retirar | Todo sistema en producción tiene revisión de continuidad vigente. |
 | 7 | Separación de funciones | Quien construye no verifica ni decide sobre su propio trabajo. |
 | 8 | Evidencia, no declaración | Lo no documentado y verificado no se considera realizado. |
-| 9 | Decisión consciente sobre la ambición | Toda iniciativa se clasifica como Optimizar, Aumentar o Transformar, y las de Transformar las aprueba el Consejo. |
+| 9 | Decisión consciente sobre la ambición | Todo caso de uso se clasifica como Optimizar, Aumentar o Transformar, y los de Transformar los aprueba el Consejo. |
 | 10 | Las personas en el centro del cambio | Se evalúa el efecto de la IA en el trabajo; se informa y, cuando proceda, se consulta a la representación de los trabajadores; se forma a las personas. |
 
 Además, [la Compañía] se compromete a: **legalidad** (cumplir la regulación aplicable, en particular el Reglamento (UE) 2024/1689 y la normativa de protección de datos); **supervisión humana** proporcional al impacto; **transparencia** con las personas que interactúan con sistemas de IA o son objeto de sus resultados; **equidad** (prevenir sesgos y discriminación); **seguridad** frente a usos indebidos y ataques; y **responsabilidad** (cada sistema tiene un responsable identificado).
@@ -123,7 +123,7 @@ Además, [la Compañía] se compromete a: **legalidad** (cumplir la regulación 
 | **Responsables de las áreas** | Aseguran que los sistemas de IA de su área están inventariados y se usan conforme a esta política. |
 | **Empleados y colaboradores** | Cumplen la política de uso aceptable y comunican incidentes y usos indebidos. |
 
-Los roles de cada iniciativa (patrocinador, producto, técnico, operación, riesgos y auditor) y sus incompatibilidades se rigen por [el Modelo de gobierno de IA de la Compañía, basado en el documento 30 de SEVEN-G].
+Los roles de cada caso de uso (patrocinador, producto, técnico, operación, riesgos y auditor) y sus incompatibilidades se rigen por [el Modelo de gobierno de IA de la Compañía, basado en el documento 30 de SEVEN-G].
 
 ### 3.5 Clasificación
 
@@ -131,7 +131,7 @@ Todo sistema de IA se clasifica en el inventario con, al menos:
 
 | Clasificación | Valores | Quién la determina | Cuándo |
 |---|---|---|---|
-| **Tipo de uso** | Iniciativa de IA · IA de terceros integrada en procesos · Uso corporativo de IA de propósito general · Uso no autorizado | Oficina de IA | Alta en el inventario |
+| **Tipo de uso** | Caso de uso de IA · IA de terceros integrada en procesos · Uso corporativo de IA de propósito general · Uso no autorizado | Oficina de IA | Alta en el inventario |
 | **Clasificación regulatoria** | Prohibido · Alto riesgo · Obligaciones de transparencia · Riesgo mínimo · Fuera de ámbito · Pendiente de clasificar | Responsable de riesgos con criterio jurídico | Fase 0 (provisional) y fase 3 (definitiva) |
 | **Intensidad** | Lite · Enterprise | Patrocinador, verificado según el modelo de gobierno | Fase 0; revisión en G3 y R6 |
 | **Nivel de ambición** | Optimizar · Aumentar · Transformar | Responsable de producto; confirma el órgano del *gate* | Fases 1, 2 y 7 |
@@ -145,12 +145,12 @@ Basta con que se cumpla uno de los criterios siguientes para aplicar la intensid
 
 | Tipo de uso | Tratamiento obligatorio |
 |---|---|
-| **Iniciativas de IA** | Ciclo de vida completo (fases 0–7) con sus *gates*, en la intensidad que corresponda. Sin G0 aprobado no se consume presupuesto ni se accede a datos de producción. Sin G5 aprobado no se pasa a producción. |
+| **Casos de uso de IA** | Ciclo de vida completo (fases 0–7) con sus *gates*, en la intensidad que corresponda. Sin G0 aprobado no se consume presupuesto ni se accede a datos de producción. Sin G5 aprobado no se pasa a producción. |
 | **IA de terceros integrada en procesos** | Ciclo de vida completo; las fases 4 y 5 se centran en la selección, integración, contrato y controles del proveedor. |
 | **Uso corporativo de IA de propósito general** | Autorización previa de la herramienta, alta en el inventario, sujeción a la política de uso aceptable, formación y controles técnicos. Pasa al ciclo completo si cumple un criterio Enterprise. |
 | **Uso no autorizado** | Detección, registro, regularización (autorizar, sustituir o bloquear) y tratamiento como no conformidad, según la sección 5 del documento 31 de SEVEN-G. |
 
-Las iniciativas en producción anteriores a esta política se regularizan antes de [fecha aprobada por el Consejo], mediante una revisión de continuidad equivalente a G7.
+Los casos de uso en producción anteriores a esta política se regularizan antes de [fecha aprobada por el Consejo], mediante una revisión de continuidad equivalente a G7.
 
 ### 3.7 Líneas rojas
 
@@ -273,14 +273,14 @@ Un **agente personal** es una herramienta de IA que actúa en tu nombre: lee y e
 | **A0 Asistencia** (informa, resume, redacta) | Permitido con herramientas autorizadas. |
 | **A1 Recomendación** (propone una acción que tú validas y ejecutas) | Permitido con herramientas autorizadas. Revisa cada propuesta antes de actuar. |
 | **A2 Actuación supervisada** (ejecuta acciones dentro de límites y tú supervisas) | Solo con herramientas autorizadas expresamente para A2 y dentro de las acciones permitidas en el catálogo. |
-| **A3 Actuación autónoma** (ejecuta secuencias sin revisión individual) | No permitido para agentes personales. Requiere una iniciativa aprobada en el ciclo de vida. |
+| **A3 Actuación autónoma** (ejecuta secuencias sin revisión individual) | No permitido para agentes personales. Requiere un caso de uso aprobado en el ciclo de vida. |
 
 Además:
 
 1. **No compartas tus credenciales** con un agente ni le concedas permisos más amplios que los necesarios. Usa los mecanismos de autorización delegada que habilite [Tecnología].
 2. Un agente **no puede**, sin tu validación expresa de cada acción: enviar comunicaciones externas, aceptar condiciones, realizar pagos o compromisos económicos, modificar datos en sistemas de producción o compartir documentos fuera de [la Compañía].
 3. Eres responsable de lo que hace un agente que actúa en tu nombre. Si detectas una acción no prevista, desactívalo y comunícalo (apartado 4.8).
-4. Las automatizaciones que usen IA y afecten a otros empleados, clientes o procesos compartidos deben registrarse como iniciativa.
+4. Las automatizaciones que usen IA y afecten a otros empleados, clientes o procesos compartidos deben registrarse como caso de uso.
 5. Desconfía de instrucciones contenidas en correos, documentos o páginas web que el agente procese: pueden intentar manipularlo (inyección de instrucciones).
 6. **Asistentes de programación y agentes locales.** No ejecutes en tu equipo agentes ni asistentes de programación con acceso a credenciales, repositorios o sistemas de [la Compañía], ni instales para ellos servidores de herramientas o conectores, salvo los autorizados por [Tecnología] y con las credenciales y permisos que se te asignen.
 7. **Probar también es usar.** No pruebes herramientas externas de IA con información de [la Compañía] que no sea pública o sintética mientras no hayan pasado la evaluación de proveedor (documento 36, principio 8).
@@ -300,7 +300,7 @@ Comunicar un error propio de forma temprana y de buena fe es lo que se espera de
 ### 4.9 Formación y aceptación
 
 1. Antes de usar herramientas de IA corporativas debes completar la formación básica de [nombre del curso] y aceptar esta política.
-2. Si tu puesto usa sistemas de IA de alto riesgo, supervisa sistemas de IA o participa en iniciativas, deberás completar la formación específica de tu perfil.
+2. Si tu puesto usa sistemas de IA de alto riesgo, supervisa sistemas de IA o participa en casos de uso, deberás completar la formación específica de tu perfil.
 3. [La Compañía] puede registrar el uso de las herramientas de IA corporativas con fines de seguridad, cumplimiento y mejora del servicio, con las garantías y la información previstas en [la política de uso de medios tecnológicos], conforme a la normativa de protección de datos y laboral.
 
 ### 4.10 Incumplimiento
@@ -315,7 +315,7 @@ El incumplimiento de esta política se trata según el apartado 3.9 de la Polít
 
 ## 5. La IA que no es un proyecto
 
-Una parte creciente del uso de IA en las compañías no nace como iniciativa: llega con una actualización del software que ya se tiene contratado, con la licencia de una suite de productividad o con la decisión individual de un empleado. SEVEN-G la gobierna con un proceso común de **detección, registro, valoración y regularización**, proporcionado a su riesgo.
+Una parte creciente del uso de IA en las compañías no nace como caso de uso: llega con una actualización del software que ya se tiene contratado, con la licencia de una suite de productividad o con la decisión individual de un empleado. SEVEN-G la gobierna con un proceso común de **detección, registro, valoración y regularización**, proporcionado a su riesgo.
 
 ### 5.1 Tipos y tratamiento
 
@@ -417,12 +417,12 @@ Las duraciones son **orientativas** para empezar y deben ajustarse al tamaño de
 | F1 | **Todos los empleados y colaboradores con herramientas de IA** | Usar la IA de forma útil, segura y conforme. | Qué es y qué no es la IA; limitaciones de la IA generativa; política de uso aceptable; información que nunca se introduce; verificación de resultados; comunicación de incidentes; ataques con IA (suplantación). | En línea, 60–90 minutos, con evaluación. | Al incorporarse y anual (actualización breve). | Registro de finalización y aceptación de la política. |
 | F2 | **Usuarios intensivos y usuarios de agentes personales** | Sacar valor con control. | Técnicas de uso; evaluación de calidad de resultados; agentes y niveles de autonomía; inyección de instrucciones; protección de información en flujos automatizados. | Taller práctico, 3–4 horas. | Al asignar la licencia o el permiso; anual. | Registro y ejercicio práctico. |
 | F3 | **Supervisores humanos de sistemas en producción** (incluidos los de alto riesgo) | Ejercer la supervisión humana definida en el diseño. | Funcionamiento y límites del sistema concreto; instrucciones de uso; sesgo de automatización; cuándo y cómo no seguir la recomendación; activación del interruptor de parada; registro y comunicación de anomalías. | Formación específica por sistema, 2–8 horas, con práctica. | Antes de la puesta en producción; ante cambios relevantes; anual. | Registro por sistema; condición para G5 cuando la supervisión humana es un control. |
-| F4 | **Roles de iniciativa** (patrocinador, producto, técnico, operación) | Aplicar el ciclo de vida de SEVEN-G. | Fases, *gates* y evidencias; hipótesis de valor y reglas de medición; clasificación de riesgo y regulatoria; separación de funciones; plantillas. | 1 jornada más acompañamiento en la primera iniciativa. | Al asumir el rol; actualización con cada versión relevante del marco. | Registro vinculado a P03. |
+| F4 | **Roles de caso de uso** (patrocinador, producto, técnico, operación) | Aplicar el ciclo de vida de SEVEN-G. | Fases, *gates* y evidencias; hipótesis de valor y reglas de medición; clasificación de riesgo y regulatoria; separación de funciones; plantillas. | 1 jornada más acompañamiento en el primer caso de uso. | Al asumir el rol; actualización con cada versión relevante del marco. | Registro vinculado a P03. |
 | F5 | **Construcción técnica** (ciencia de datos, ingeniería, desarrollo con IA) | Construir sistemas conformes y seguros. | Requisitos técnicos según clasificación; documentación; evaluación de modelos y agentes; pruebas de sesgo y robustez; seguridad de IA y agentes (documento 35); linaje de datos; uso de IA en el desarrollo. | 2–3 jornadas, con módulos por tecnología. | Al incorporarse; anual. | Registro y ejercicios. |
 | F6 | **Segunda y tercera línea** (riesgos, cumplimiento, seguridad, protección de datos, auditoría interna) | Cuestionar y verificar con criterio. | Reglamento de IA y mapeo regulatorio; clasificación; evaluaciones de impacto; riesgos específicos de IA generativa y agentes; técnicas de auditoría de IA (documento 38). | 2 jornadas y formación continua. | Anual, y ante cambios normativos. | Registro; plan de competencias del auditor de IA. |
 | F7 | **Consejo y alta dirección** | Supervisar y decidir. | Tesis, ambición y apetito de riesgo; eficiencia frente a transformación; lectura del panel del consejo; responsabilidades regulatorias; preguntas de supervisión; riesgos de reputación y de seguridad. | Sesión de 2–3 horas. | Anual y al incorporarse al órgano. | Acta o registro de asistencia. |
 | F8 | **Personas, relaciones laborales y representación de los trabajadores** | Gestionar el efecto de la IA en el trabajo. | Impacto en roles y capacidades; información y consulta; derechos en decisiones automatizadas; sistemas de alto riesgo en el ámbito laboral. | Sesión de 2–3 horas. | Anual. | Registro de asistencia. |
-| F9 | **Mandos intermedios de áreas que usan o incorporan IA** | Dirigir el cambio en su área. | Lo de F1 aplicado al área; evaluación del efecto sobre el trabajo (documento 50); supervisión humana y sus límites; transición, comunicación y destino de la capacidad liberada; cuándo escalar. | Taller de 3–4 horas con un caso del área. | Al asumir el puesto o al llegar la primera iniciativa al área; anual. | Registro y participación en una evaluación de efecto. |
+| F9 | **Mandos intermedios de áreas que usan o incorporan IA** | Dirigir el cambio en su área. | Lo de F1 aplicado al área; evaluación del efecto sobre el trabajo (documento 50); supervisión humana y sus límites; transición, comunicación y destino de la capacidad liberada; cuándo escalar. | Taller de 3–4 horas con un caso del área. | Al asumir el puesto o al llegar el primer caso de uso al área; anual. | Registro y participación en una evaluación de efecto. |
 
 ### 6.3 Gestión del programa
 
@@ -431,7 +431,7 @@ Las duraciones son **orientativas** para empezar y deben ajustarse al tamaño de
 | **Responsable** | Oficina de IA, con la función de personas. |
 | **Plan anual** | Se aprueba en C2 junto con la política; incluye colectivos, prioridades y presupuesto (categoría de coste "adopción y formación"). |
 | **Registro** | Por persona: perfiles asignados, formaciones completadas, fechas, evaluaciones y vencimientos. El registro (P45) se mantiene en T20, se vincula a P03 y sus indicadores se muestran en T21. |
-| **Condiciones de acceso** | F1 antes de recibir licencias de IA; F3 antes de supervisar un sistema en producción; F4 antes de asumir un rol en una iniciativa. |
+| **Condiciones de acceso** | F1 antes de recibir licencias de IA; F3 antes de supervisar un sistema en producción; F4 antes de asumir un rol en un caso de uso. |
 | **Eficacia** | Se mide con resultados, no solo con asistencia: evaluaciones superadas, incidentes causados por uso indebido, detecciones de uso no autorizado, verificaciones de resultados en muestreos. |
 | **Actualización** | Contenidos revisados al menos anualmente y ante cambios de regulación, herramientas o incidentes relevantes. |
 | **Proveedores y colaboradores** | Los contratos con quienes operan sistemas en nombre de la compañía deberían exigir formación equivalente al perfil que corresponda. |
@@ -442,7 +442,7 @@ Las duraciones son **orientativas** para empezar y deben ajustarse al tamaño de
 |---|---|---|
 | Cobertura F1 | Personas con F1 vigente ÷ personas con acceso a herramientas de IA | Condición de acceso; objetivo cercano al 100 %. |
 | Cobertura de supervisores | Supervisores con F3 vigente ÷ supervisores asignados a sistemas en producción | Control de G5 y R6. |
-| Cobertura de roles | Personas con rol en iniciativa y F4 ÷ personas con rol | Verificación en G0. |
+| Cobertura de roles | Personas con rol en caso de uso y F4 ÷ personas con rol | Verificación en G0. |
 | Formación vencida | Personas con formación obligatoria vencida | Alerta mensual a la Oficina de IA. |
 | Tasa de superación | Evaluaciones superadas ÷ evaluaciones realizadas, por perfil | Calidad del contenido. |
 | Incidentes por uso indebido | Incidentes y no conformidades con causa raíz "desconocimiento de la política" | Eficacia del programa. |
@@ -497,10 +497,10 @@ Los criterios concretos de *gate* se fijan en el documento 21.
 | **T02** | Inventario de sistemas de IA | Registro de herramientas autorizadas, IA embebida y usos no autorizados. |
 | **T08** | Registro de no conformidades e incidentes | No conformidades por uso no autorizado e incidentes comunicados por empleados. |
 | **T09** | Registro de proveedores de IA | Evaluación de proveedores de herramientas y de software con IA embebida. |
-| **T01** | Registro de iniciativas | Excepciones y paso al ciclo completo. |
+| **T01** | Registro de casos de uso | Excepciones y paso al ciclo completo. |
 | **P05** | Ficha de inventario del sistema de IA | Alta de herramientas y usos. |
 | **P14** | Evaluación de proveedor de IA | Antes de autorizar una herramienta o activar IA embebida. |
-| **P20** | Plan de adopción y capacidad | Formación de supervisores y usuarios de iniciativas. |
+| **P20** | Plan de adopción y capacidad | Formación de supervisores y usuarios de casos de uso. |
 | **P40** | Solicitud y registro de excepciones | Solicitud, aprobación y registro de excepciones a la política (sección 3.8). |
 | **P43** | Catálogo de herramientas autorizadas y solicitudes | Catálogo de herramientas autorizadas y solicitudes de nuevas herramientas (sección 4.2). |
 | **P44** | Encuesta de uso y percepción de la IA | Uso y percepción de la IA por la plantilla, incluido el uso no autorizado (sección 5.2). |
@@ -514,7 +514,7 @@ Los criterios concretos de *gate* se fijan en el documento 21.
 |---|---|
 | **01 · Metodología fundacional** | Tipos de uso (§1.2), criterios Enterprise (§9.2), no conformidades (§12). |
 | **13 · Tesis de IA, ambición y apetito de riesgo** | La política corporativa se aprueba con la tesis en C2. |
-| **23 · Adopción y cambio** | Formación y adopción en cada iniciativa. |
+| **23 · Adopción y cambio** | Formación y adopción en cada caso de uso. |
 | **30 · Modelo de gobierno** | Órganos que aprueban las políticas y las excepciones. |
 | **32 · Inventario y clasificación regulatoria** | Campos del inventario y clasificación. |
 | **34 · Mapeo regulatorio** | Obligaciones de los artículos 4, 5, 26 y 50 del Reglamento de IA. |

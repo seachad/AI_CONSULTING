@@ -61,10 +61,10 @@ Reglas de cumplimentación:
 |---|---|---|
 | Sociedades incluidas | | |
 | Áreas o unidades incluidas | | |
-| Tipos de uso de IA cubiertos (01 §1.3) | | Iniciativas de IA · IA de terceros integrada en procesos · Uso corporativo de IA de propósito general · Uso no autorizado. |
+| Tipos de uso de IA cubiertos (01 §1.3) | | Casos de uso de IA · IA de terceros integrada en procesos · Uso corporativo de IA de propósito general · Uso no autorizado. |
 | Sociedades, áreas o tipos de uso excluidos | | Con justificación. |
 | Número de sistemas en el inventario dentro del perímetro | | T02, a la fecha de corte. |
-| Número de iniciativas en el registro dentro del perímetro | | T01, a la fecha de corte. |
+| Número de casos de uso en el registro dentro del perímetro | | T01, a la fecha de corte. |
 | Fecha de corte | | |
 
 ---
@@ -74,7 +74,7 @@ Reglas de cumplimentación:
 | Elemento (01 §2) | Aplicado (Sí · Parcial · No) | Alcance o piezas usadas | Justificación de la exclusión o de la aplicación parcial |
 |---|---|---|---|
 | Ciclo corporativo C1–C5 | | | |
-| Ciclo de vida de la iniciativa (fases 0–7 y *gates*) | | | |
+| Ciclo de vida del caso de uso (fases 0–7 y *gates*) | | | |
 | A · Mapa de impacto (esferas y niveles de ambición) | | | |
 | B · Sistema de gobierno (roles, órganos, riesgos, regulación, terceros, no conformidades) | | | |
 | C · Sistema de medición (reglas de valor, indicadores, madurez, índice de transformación) | | | |
@@ -90,7 +90,7 @@ En una declaración integral, el ciclo corporativo, el ciclo de vida, el sistema
 | Campo | Contenido | Guía |
 |---|---|---|
 | Criterios Enterprise aplicados | | Los de 01 §9.2 o los ajustados en C2, con referencia a la aprobación. |
-| Iniciativas Lite · Enterprise | | Número de cada una a la fecha de corte. |
+| Casos de uso Lite · Enterprise | | Número de cada uno a la fecha de corte. |
 | Umbral de inversión Enterprise aprobado en C2 | | |
 | Cambios de intensidad de Enterprise a Lite en el periodo | | Número y motivo. |
 
@@ -102,9 +102,9 @@ En una declaración integral, el ciclo corporativo, el ciclo de vida, el sistema
 | Código | Regla del núcleo | Pregunta del documento 11 | ¿Cumple? (Sí · No) | Evidencia disponible | Resultado de la auditoría para la regla |
 |---|---|---|---|---|---|
 | N-01 | Inventario completo con responsable, clasificación regulatoria e intensidad. | D6.05 | | T02; conciliación del inventario (32 §9). | |
-| N-02 | Registro de iniciativas con la trazabilidad de 01 §6.11. | D2.05 | | T01. | |
-| N-03 | Intensidad determinada en cada iniciativa y revisada en G3 y en cada R6. | — | | T01 (P04, T04). | |
-| N-04 | Todas las iniciativas nuevas recorren el ciclo de vida con sus *gates* registrados. | D2.06 | | T01, T03, P29. | |
+| N-02 | Registro de casos de uso con la trazabilidad de 01 §6.11. | D2.05 | | T01. | |
+| N-03 | Intensidad determinada en cada caso de uso y revisada en G3 y en cada R6. | — | | T01 (P04, T04). | |
+| N-04 | Todos los casos de uso nuevos recorren el ciclo de vida con sus *gates* registrados. | D2.06 | | T01, T03, P29. | |
 | N-05 | G3 decidido siempre por separado. | — | | T01 (decisiones de G3). | |
 | N-06 | Roles y órganos asignados con las incompatibilidades de 01 §8.2. | D1.07 · D1.08 | | Mandatos (documento 30); P03. | |
 | N-07 | Validación dual y evidencia anterior a la decisión. | — | | T01 (verificador y fechas de evidencia). | |

@@ -61,10 +61,10 @@ Completion rules:
 |---|---|---|
 | Companies included | | |
 | Areas or units included | | |
-| Types of AI use covered (01 §1.3) | | AI initiatives · Third-party AI integrated into processes · Corporate use of general-purpose AI · Unauthorised use. |
+| Types of AI use covered (01 §1.3) | | AI use cases · Third-party AI integrated into processes · Corporate use of general-purpose AI · Unauthorised use. |
 | Companies, areas or types of use excluded | | With justification. |
 | Number of systems in the inventory within the perimeter | | T02, as at the cut-off date. |
-| Number of initiatives in the register within the perimeter | | T01, as at the cut-off date. |
+| Number of use cases in the register within the perimeter | | T01, as at the cut-off date. |
 | Cut-off date | | |
 
 ---
@@ -74,14 +74,14 @@ Completion rules:
 | Element (01 §2) | Applied (Yes · Partly · No) | Scope or parts used | Justification for the exclusion or partial application |
 |---|---|---|---|
 | Corporate cycle C1–C5 | | | |
-| Initiative lifecycle (phases 0–7 and *gates*) | | | |
+| Use case lifecycle (phases 0–7 and *gates*) | | | |
 | A · Impact map (spheres and ambition levels) | | | |
 | B · Governance system (roles, bodies, risks, regulation, third parties, nonconformities) | | | |
 | C · Measurement system (value rules, indicators, maturity, transformation index) | | | |
 | D · Tools (templates, checklists, board dashboard, register of recommendations) | | | The reference tools are not mandatory; state what is used instead. |
 | *(illustrative example)* A · Impact map | Partly | Spheres and ambition levels to classify the portfolio | The grades of the enabling spheres will be incorporated in the following year. |
 
-In a full declaration, the corporate cycle, the initiative lifecycle, the governance system and the value measurement rules must appear as applied, because the core (01 §14.1) requires them.
+In a full declaration, the corporate cycle, the use case lifecycle, the governance system and the value measurement rules must appear as applied, because the core (01 §14.1) requires them.
 
 ---
 
@@ -90,7 +90,7 @@ In a full declaration, the corporate cycle, the initiative lifecycle, the govern
 | Field | Content | Guidance |
 |---|---|---|
 | Enterprise criteria applied | | Those in 01 §9.2 or those adjusted in C2, with reference to the approval. |
-| Lite · Enterprise initiatives | | Number of each as at the cut-off date. |
+| Lite · Enterprise use cases | | Number of each as at the cut-off date. |
 | Enterprise investment threshold approved in C2 | | |
 | Changes of intensity from Enterprise to Lite in the period | | Number and reason. |
 
@@ -102,9 +102,9 @@ In a full declaration, the corporate cycle, the initiative lifecycle, the govern
 | Code | Core rule | Question in document 11 | Met? (Yes · No) | Evidence available | Audit result for the rule |
 |---|---|---|---|---|---|
 | N-01 | Complete inventory with owner, regulatory classification and intensity. | D6.05 | | T02; reconciliation of the inventory (32 §9). | |
-| N-02 | Initiative register with the traceability in 01 §6.11. | D2.05 | | T01. | |
-| N-03 | Intensity determined for each initiative and reviewed at G3 and at each R6. | — | | T01 (P04, T04). | |
-| N-04 | All new initiatives go through the lifecycle with their *gates* recorded. | D2.06 | | T01, T03, P29. | |
+| N-02 | Use case register with the traceability in 01 §6.11. | D2.05 | | T01. | |
+| N-03 | Intensity determined for each use case and reviewed at G3 and at each R6. | — | | T01 (P04, T04). | |
+| N-04 | All new use cases go through the lifecycle with their *gates* recorded. | D2.06 | | T01, T03, P29. | |
 | N-05 | G3 always decided separately. | — | | T01 (G3 decisions). | |
 | N-06 | Roles and bodies assigned in line with the incompatibilities in 01 §8.2. | D1.07 · D1.08 | | Mandates (document 30); P03. | |
 | N-07 | Dual validation and evidence prior to the decision. | — | | T01 (verifier and evidence dates). | |

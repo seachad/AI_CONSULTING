@@ -34,7 +34,7 @@ This document sets out:
 
 ### 1.2 What it does not govern
 
-- The governance of the initiative, its *gates* and its value: these are set by document 01.
+- The governance of the use case, its *gates* and its value: these are set by document 01.
 - Corporate use of AI assistants outside projects: document 31.
 - The security of agents in production: document 35.
 - The assessment of AI tool suppliers: document 36 and P14.
@@ -43,10 +43,10 @@ This document sets out:
 
 | Object | What it is | Where it is governed |
 |---|---|---|
-| **The system being built** | The initiative's solution (which may or may not be an AI system). | Lifecycle 0–7, regulatory classification (document 34), P15–P23. |
+| **The system being built** | The use case's solution (which may or may not be an AI system). | Lifecycle 0–7, regulatory classification (document 34), P15–P23. |
 | **The AI tools that help build it** | Assistants, agents and models used by the team. | Inventory (T02) as corporate or team use; policy (document 31); supplier (P14); this document. |
 
-A build tool with the ability to execute actions on repositories, environments or systems is an **agent** and is classified under autonomy levels A0–A3 (document 35). If it acts on production systems or personal data at level A2 or A3, the initiative meets the Enterprise criterion in 01 §9.2.
+A build tool with the ability to execute actions on repositories, environments or systems is an **agent** and is classified under autonomy levels A0–A3 (document 35). If it acts on production systems or personal data at level A2 or A3, the use case meets the Enterprise criterion in 01 §9.2.
 
 ---
 
@@ -60,8 +60,8 @@ A build tool with the ability to execute actions on repositories, environments o
 
 | Aspect | SEVEN-G | SPAD |
 |---|---|---|
-| What it governs | The initiative: value, risk, compliance, decision. | AI-assisted engineering work within the build. |
-| Unit | Initiative (IA-AAAA-NNN) and AI system. | Work topic (*TOPIC*): feature, fix or change. |
+| What it governs | The use case: value, risk, compliance, decision. | AI-assisted engineering work within the build. |
+| Unit | Use case (IA-AAAA-NNN) and AI system. | Work topic (*TOPIC*): feature, fix or change. |
 | Gates | *Gates* G0–G5, R6, G7 with a decision by a body. | Technical verdicts per phase (GO, GO with changes, NO-GO). |
 | Who decides | People and bodies with segregation of duties. | The human orchestrator validates; the AIs produce and review. |
 | Evidence | Verified templates P01–P31. | Artefacts per phase grouped by topic. |
@@ -71,7 +71,7 @@ A build tool with the ability to execute actions on repositories, environments o
 1. SPAD verdicts **do not replace** any *gate* or the AI Auditor's verification.
 2. SPAD artefacts **are inputs** to SEVEN-G evidence; they are not evidence in themselves until they are referenced in the corresponding template with a human author, date, version and verification (01 §7.2).
 3. Some SPAD materials predating decision D09 present SPAD as part of SEVEN-G. That relationship is superseded by the one set out in this document.
-4. SPAD materials include improvement figures (reductions in rework, incidents or lead times) and return expectations. **SEVEN-G neither uses nor endorses them**, because they lack verifiable support; the value of an initiative is measured with the rules in 00 §6.
+4. SPAD materials include improvement figures (reductions in rework, incidents or lead times) and return expectations. **SEVEN-G neither uses nor endorses them**, because they lack verifiable support; the value of a use case is measured with the rules in 00 §6.
 5. The internal certification associated with SPAD is not SEVEN-G evidence and does not exempt from any *gate*.
 6. AECF, an application of SPAD to a specific technology, has the same status as a related methodology.
 
@@ -79,8 +79,8 @@ A build tool with the ability to execute actions on repositories, environments o
 
 | Situation | Use of SPAD | Minimum requirements (section 7) |
 |---|---|---|
-| Enterprise initiative with AI-assisted build | SPAD or another equivalent documented method **should** be used. | They **must** be met. |
-| Lite initiative with AI-assisted build | SPAD **may** be used, in its reduced version (section 4.3). | They **must** be met in their Lite version. |
+| Enterprise use case with AI-assisted build | SPAD or another equivalent documented method **should** be used. | They **must** be met. |
+| Lite use case with AI-assisted build | SPAD **may** be used, in its reduced version (section 4.3). | They **must** be met in their Lite version. |
 | Urgent fix in production (phase 6) | SPAD's urgent fix flow **may** be used. | They **must** be met, with a documented subsequent review. |
 | Modification of legacy code | Prior documentation of the existing code **should** be applied. | They **must** be met. |
 | Throwaway prototype with no real data or production access | Not necessary. | Only 7.6 (data and confidentiality). |
@@ -120,7 +120,7 @@ SPAD requires two contexts to be loaded before any phase. In SEVEN-G those conte
 | Global context | Common rules for artefacts, testing, versions, security and prohibitions. | Document 31 (acceptable use), document 35 (security), the company's technical standards. |
 | Project context | Technology, architecture, business rules, compliance and justified exceptions. | P02 (context and constraints), P11 (regulatory classification), P15 (architecture), P17 (human oversight), P18 (security). |
 | Exceptions to the global context | Must be justified, have their risk assessed and be approved in the plan review. | In addition, they are recorded as a risk in P12 and, if they affect a critical control, require clearance from the AI Risk Owner. |
-| Work topic (*TOPIC*) | Identifier that groups the artefacts. | Must include or reference the initiative code (IA-AAAA-NNN) and be linked from T01 (03 §2, principle 4). |
+| Work topic (*TOPIC*) | Identifier that groups the artefacts. | Must include or reference the use case code (IA-AAAA-NNN) and be linked from T01 (03 §2, principle 4). |
 
 ---
 
@@ -223,7 +223,7 @@ SPAD declares invalid, and requires the discarding and repetition of, any AI res
 
 ## 7. SEVEN-G minimum requirements for AI-generated code
 
-They apply to all code, configuration, queries, infrastructure as code, tests or technical documentation generated wholly or partly with AI that forms part of an initiative's solution, regardless of the engineering method.
+They apply to all code, configuration, queries, infrastructure as code, tests or technical documentation generated wholly or partly with AI that forms part of a use case's solution, regardless of the engineering method.
 
 ### 7.1 Human review
 
@@ -234,7 +234,7 @@ They apply to all code, configuration, queries, infrastructure as code, tests or
 
 ### 7.2 Traceability
 
-- It **must** be possible to identify which parts of the solution were generated with AI, with which tool and in which work topic or initiative (for example, through metadata in the changes or in the delivery report).
+- It **must** be possible to identify which parts of the solution were generated with AI, with which tool and in which work topic or use case (for example, through metadata in the changes or in the delivery report).
 - Design decisions **must** be recorded in P15, not only in conversations with the tool.
 - In Enterprise, the relevant prompts and the accepted outputs of the plan and review phases **should** be retained, in line with the company's retention policy and without unnecessary personal data.
 - The version of each delivery **must** be linked to its rollback plan (P19).
@@ -266,7 +266,7 @@ They apply to all code, configuration, queries, infrastructure as code, tests or
 
 - Personal data, secrets, credentials or confidential information **must not** be entered into tools not approved for that level of information (document 31).
 - Test data **should** be synthetic or anonymised; if personal data are used, the legal basis and measures of P11 and P16 apply.
-- The tool's configuration regarding data retention and use **must** be verified before it is used in the initiative.
+- The tool's configuration regarding data retention and use **must** be verified before it is used in the use case.
 
 ### 7.7 Intensity
 
@@ -305,7 +305,7 @@ The formal criteria will be incorporated into document 21. In the meantime, the 
 
 | Code | Use in this document |
 |---|---|
-| T01 · Initiative register | Linking of work topic artefacts to the initiative. |
+| T01 · Use case register | Linking of work topic artefacts to the use case. |
 | T02 · AI system inventory | Registration of AI build tools. |
 | T03 · *Gate* manager | Verification at G4, G5 and R6. |
 | T06 · Risk matrix and register | Technical risks and exceptions to the global context. |

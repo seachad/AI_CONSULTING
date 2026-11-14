@@ -44,7 +44,7 @@ Completion rules:
 
 | Field | Content | Guidance |
 |---|---|---|
-| Scope of the inventory | | System (SIA-AAAA-NNN) · Initiative (IA-AAAA-NNN) · Company. |
+| Scope of the inventory | | System (SIA-AAAA-NNN) · Use case (IA-AAAA-NNN) · Company. |
 | Autonomy level | | A0 · A1 · A2 · A3. Determines the AG-20 review frequency. |
 | Intensity | | Lite · Enterprise. |
 | Inventory owner | | AI Technical Owner. |

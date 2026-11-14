@@ -20,9 +20,9 @@
 
 ## 1. Purpose and scope
 
-This document develops the ten SEVEN-G value measurement rules (document 00, section 6) and sets out the definitions, formulas and procedures that all initiatives, the portfolio and reports to the board must apply.
+This document develops the ten SEVEN-G value measurement rules (document 00, section 6) and sets out the definitions, formulas and procedures that all use cases, the portfolio and reports to the board must apply.
 
-It applies to every initiative recorded in the initiative register (T01), in all phases, and to every value figure presented to the AI Committee or the board. The indicators derived from these rules are in document 41; the calculation of costs, in document 42; and the benefits realisation process, in document 43.
+It applies to every use case recorded in the use case register (T01), in all phases, and to every value figure presented to the AI Committee or the board. The indicators derived from these rules are in document 41; the calculation of costs, in document 42; and the benefits realisation process, in document 43.
 
 The figures in the examples are **fictitious and illustrative**. They are not market benchmarks.
 
@@ -32,7 +32,7 @@ The figures in the examples are **fictitious and illustrative**. They are not ma
 
 | Principle | What it means |
 |---|---|
-| **Incrementality** | Only the effect that would not have occurred without the initiative counts. What would have happened anyway (trend, seasonality, other initiatives) is not value of the use case. |
+| **Incrementality** | Only the effect that would not have occurred without the use case counts. What would have happened anyway (trend, seasonality, other use cases) is not value of the use case. |
 | **Annual basis** | Efficiencies, return and recurring cost are expressed in euros per year. The build investment and the initial adoption investment, which are incurred once, are presented separately. |
 | **Expected versus realised** | **Expected** value is the hypothesis (phases 2 and 3). **Realised** value is the value measured over a closed period (phases 5, 6 and 7). They are different magnitudes and are never added together. |
 | **Asymmetric prudence** | Costs are charged in full from day one, regardless of their status. Value is only considered validated when it is validated by whoever is responsible for doing so. |
@@ -75,7 +75,7 @@ The numbering is that of document 00, section 6, and is not modified.
 
 | | |
 |---|---|
-| **Rationale** | Releasing hours does not in itself reduce any cost. If people remain on the payroll doing the same work with more slack, the income statement does not change. Adding up released hours as savings is the main source of inflated figures in efficiency initiatives. |
+| **Rationale** | Releasing hours does not in itself reduce any cost. If people remain on the payroll doing the same work with more slack, the income statement does not change. Adding up released hours as savings is the main source of inflated figures in efficiency use cases. |
 | **How it is applied** | Net released hours are valued (formula F4) and reported on a separate line. They only become an **efficiency** when there is a verifiable actual cost reduction (outsourcing not renewed, overtime eliminated, budgeted vacancy not filled) or when they are **explicitly reassigned** to an identified activity, with an owner and a date. Capacity reassigned to an activity that avoids a planned and budgeted cost counts as an efficiency; capacity reassigned to a new activity is reported as reassigned capacity, and its value is only accounted for through the measured result of that activity (section 5.3). |
 | **Correct example** *(illustrative)* | 20,000 cases per year × 15 net minutes saved = 5,000 net released hours; at a fully loaded hourly cost of €32 = €160,000 of released capacity. Destination: 2,000 hours cover outsourcing that is not renewed (contract reduction: €76,000, **materialised efficiency**); 1,000 hours are reassigned to quality review (€32,000, **reassigned capacity**, reported separately); 2,000 hours have no destination (€64,000, **unmaterialised released capacity**, reported separately). Materialisation rate: 2,000 ÷ 5,000 = 40%. |
 | **Incorrect example** | "Savings of €160,000 a year from the released hours." |
@@ -99,8 +99,8 @@ The numbering is that of document 00, section 6, and is not modified.
 
 | | |
 |---|---|
-| **Rationale** | When two initiatives act on the same process or the same customer, each tends to claim the full effect. The portfolio total then exceeds the actual effect. |
-| **How it is applied** | In phase 2, each initiative declares which other use cases it shares a metric, process or population with. The combined effect is measured once and allocated using a declared key (document 43, section 6). The key is approved by management control and recorded in both use cases. |
+| **Rationale** | When two use cases act on the same process or the same customer, each tends to claim the full effect. The portfolio total then exceeds the actual effect. |
+| **How it is applied** | In phase 2, each use case declares which other use cases it shares a metric, process or population with. The combined effect is measured once and allocated using a declared key (document 43, section 6). The key is approved by management control and recorded in both use cases. |
 | **Correct example** *(illustrative)* | Two use cases reduce the cost of the same process. Combined effect measured: €400,000. Effects declared separately: €280,000 and €220,000 (total €500,000). Proportional allocation: 400,000 × 280/500 = **€224,000** and 400,000 × 220/500 = **€176,000**. Total: €400,000. |
 | **Incorrect example** | Each use case reports its figure separately and the portfolio shows €500,000. |
 | **How it is verified** | Use cases with a declared overlap have a recorded allocation key; the sum of the allocated amounts does not exceed the combined effect measured; the AI Office reviews overlaps by process and population when consolidating. |
@@ -129,7 +129,7 @@ The numbering is that of document 00, section 6, and is not modified.
 | **Incorrect example** | "Satisfaction rises by 4 points, which is equivalent to €1M of brand value", with no formula; or "retention improves by 2 points", with no economic translation and no indication that it has not been quantified. |
 | **How it is verified** | Each non-monetary metric in the hypothesis has an amount with a formula or a not-quantified flag with a reason; unit values have a source; each non-quantified value in T01 has a dimension, level, metric and reason. |
 
-**Use case sustained by non-quantified value.** An initiative in production (phases 6 and 7) whose case rests on non-quantified value of medium or high level, with a metric, while its NPV (F7) is negative or is not demonstrated by a realisation plan (document 43 §4.1), is shown as "sustained by non-quantified value". It needs the date of its next R6 recorded in T01 (`ciclo.proxima_revision`), and the board dashboard warns if it is missing or overdue. This way the board sees which use cases are kept for reasons that are not economic and when they will be reviewed again. In phases 3 to 5 it is not flagged: the option value of Transform is governed by its stages, milestones and *gates* (section 8.3, point 5).
+**Use case sustained by non-quantified value.** A use case in production (phases 6 and 7) whose case rests on non-quantified value of medium or high level, with a metric, while its NPV (F7) is negative or is not demonstrated by a realisation plan (document 43 §4.1), is shown as "sustained by non-quantified value". It needs the date of its next R6 recorded in T01 (`ciclo.proxima_revision`), and the board dashboard warns if it is missing or overdue. This way the board sees which use cases are kept for reasons that are not economic and when they will be reviewed again. In phases 3 to 5 it is not flagged: the option value of Transform is governed by its stages, milestones and *gates* (section 8.3, point 5).
 
 ### 3.8 Rule 8 · "No data" is not zero
 
@@ -150,7 +150,7 @@ The numbering is that of document 00, section 6, and is not modified.
 | | |
 |---|---|
 | **Rationale** | The relevant decision is where the next euro yields the most. Aggregate indicators (portfolio ROI, total value) mix excellent use cases with use cases that destroy value, and do not say where to invest. |
-| **How it is applied** | Each proposal for additional investment (new initiative, extension, scaling) calculates the additional net value per euro (formula F3). The portfolio is ranked by that indicator, subject to risk, capacity and ambition balance constraints (document 14). Use cases with negative annual net value are always shown individually. |
+| **How it is applied** | Each proposal for additional investment (new use case, extension, scaling) calculates the additional net value per euro (formula F3). The portfolio is ranked by that indicator, subject to risk, capacity and ambition balance constraints (document 14). Use cases with negative annual net value are always shown individually. |
 | **Correct example** *(illustrative)* | Use case X: current net value €31,000, potential net value €151,000, additional investment €200,000 → (151,000 − 31,000) ÷ 200,000 = **€0.60** of annual net value per euro. Use case Y: additional net value €90,000, additional investment €60,000 → **€1.50**. Y is prioritised. |
 | **Incorrect example** | "The portfolio has an ROI of 85%; it is proposed to increase investment in all use cases", without showing that one use case has an annual net value of −€40,000. |
 | **How it is verified** | Investment proposals to the committee include F3; use cases with negative net value appear individually in the board pack; C3 decisions record the prioritisation order. |
@@ -175,7 +175,7 @@ The numbering is that of document 00, section 6, and is not modified.
 
 | Status | Who may assign it | Minimum evidence requirements | Indicative expiry | Permitted use |
 |---|---|---|---|---|
-| **Validated** | Management control (or the equivalent finance function) or internal or external audit. Never the area that benefits from the figure or the initiative team. | Complete formula; measured baseline; attribution method approved and applied (section 7); data traceable to source systems or to the accounts; closed period; for efficiencies, reflection in the accounts or evidence of the avoided cost; validator's signature with date; evidence linked in T01. | **12 months** from the close of the validated period. It expires earlier if there is a material change: model, process, scope, population, price or volume outside the range of the hypothesis. | All reports and *gates*. The only status that evidences "materialised savings" or "measured return" at G7 (01 §7.6). |
+| **Validated** | Management control (or the equivalent finance function) or internal or external audit. Never the area that benefits from the figure or the use case team. | Complete formula; measured baseline; attribution method approved and applied (section 7); data traceable to source systems or to the accounts; closed period; for efficiencies, reflection in the accounts or evidence of the avoided cost; validator's signature with date; evidence linked in T01. | **12 months** from the close of the validated period. It expires earlier if there is a material change: model, process, scope, population, price or volume outside the range of the hypothesis. | All reports and *gates*. The only status that evidences "materialised savings" or "measured return" at G7 (01 §7.6). |
 | **Declared** | The area responsible for the benefit (business owner in document 43), with the sponsor's agreement. | Formula; source of the units and of the unit value; period; attribution method used; author and date. | **6 months** without being submitted for validation. After that period it is shown as "declared, pending validation" with an alert. | Reports and R6, always identified as such. At G5 and G7 it does not replace validation when the criterion requires validated value. |
 | **Estimated** | The AI Committee, the board or whoever advises them, or an assessment team (for example, the AI Office), when the area does not provide data or when a declared figure is being corroborated. | Formula; explicit hypotheses; source of the parameters; author and date; reason for the estimate. | **6 months** or until the area declares the figure, whichever occurs first. | Reports, always identified as such. It does not evidence compliance with any realised value *gate* criterion. |
 
@@ -186,7 +186,7 @@ Supplementary rules:
 3. **Cost is not discounted by status.** Recurring cost is charged in full even if it has not been validated; if it is unknown, the net value is "no data" (rule 8).
 4. **Downgrading, not deletion.** A validated amount that expires becomes declared until it is revalidated; a declared amount rejected by the validator is corrected or becomes estimated, with a reason. Every status change is an event in T01.
 5. **Recurring value is revalidated every year.** Validating one year does not validate the following years.
-6. The expiry periods are **indicative** and are set by the company in C2 (document 13). They may not be extended for a specific initiative.
+6. The expiry periods are **indicative** and are set by the company in C2 (document 13). They may not be extended for a specific use case.
 
 <!-- grafico: Status cycle of an amount | The status improves with evidence and is downgraded over time or with material changes -->
 ```mermaid
@@ -280,7 +280,7 @@ The attribution method is chosen in phase 2, approved at G2 and not changed with
 | **Randomised control group** | Units (customers, cases, branches) are randomly assigned to a group with AI and a group without AI over the same period. | Whenever it is ethically, legally and operationally possible. Preferred method for return (conversion, retention, price). | Sufficient size to detect the expected effect; recorded assignment; no contamination between groups; duration covering the business cycle. | Validated |
 | **A/B test** | Variant of the above in digital channels or high-volume processes, with continuous splitting of traffic between versions. | Digital interactions, recommendations, content, customer-facing assistants. | Primary metric set in advance; minimum period set in advance; the test is not stopped on seeing a favourable result. | Validated |
 | **Difference-in-differences** | The evolution of a treated group is compared with that of a comparable untreated group, before and after implementation. | Phased roll-outs (regions, branches, business lines) where randomisation is not possible. | Parallel trends verified in the prior period; absence of other changes affecting only one group. | Validated |
-| **Adjusted before-and-after** | The subsequent period is compared with the baseline, correcting for volume, seasonality, mix and prices. | Internal processes with no comparable group; Optimise initiatives with a large and rapid effect. | Baseline covering at least one full cycle; adjustments documented and approved by management control; record of other changes during the period. | Validated if the adjustments are documented and there were no relevant concurrent changes; otherwise, declared |
+| **Adjusted before-and-after** | The subsequent period is compared with the baseline, correcting for volume, seasonality, mix and prices. | Internal processes with no comparable group; Optimise use cases with a large and rapid effect. | Baseline covering at least one full cycle; adjustments documented and approved by management control; record of other changes during the period. | Validated if the adjustments are documented and there were no relevant concurrent changes; otherwise, declared |
 | **Expert estimate** | People with knowledge of the process estimate the effect using a structured procedure. | **Last resort**: when there is no data and no possibility of comparison, or for the initial hypothesis in phase 2. | At least two experts independent of the team; explicit hypotheses; a range, not a point estimate; a plan to replace it with a measurement method. | Declared or estimated. **Never validated** |
 
 Selection criteria, in this order:
@@ -290,16 +290,16 @@ Selection criteria, in this order:
 3. If there is no comparable group, use adjusted before-and-after, with a measured baseline.
 4. Expert estimates are only accepted with a plan and a date for replacing them. In Optimise they cannot evidence G5 or G7; in Augment and Transform they may support the G2 hypothesis, but not realised value.
 
-In **Transform** initiatives, attribution is applied by stage and focuses on the market or customer evidence required at G5 (01 §7.6): usage, conversion, initial revenue or verified operational change.
+In **Transform** use cases, attribution is applied by stage and focuses on the market or customer evidence required at G5 (01 §7.6): usage, conversion, initial revenue or verified operational change.
 
-### 7.2 Cross-unit initiatives and enabling platforms
+### 7.2 Cross-unit use cases and enabling platforms
 
-Some initiatives do not belong to a single business unit. They are **cross-unit** initiatives, such as a tool used by several units (for example, a generative assistant built into the office suite), or **enabling platforms**: shared data, knowledge or decision capabilities used by other use cases. Their value is not measured in the same way as that of a business use case.
+Some use cases do not belong to a single business unit. They are **cross-unit** use cases, such as a tool used by several units (for example, a generative assistant built into the office suite), or **enabling platforms**: shared data, knowledge or decision capabilities used by other use cases. Their value is not measured in the same way as that of a business use case.
 
 | Type | Example *(illustrative)* | How it is recorded in T01 | How it is measured |
 |---|---|---|---|
-| **Enabling platform** | Shared data platform for several AI use cases | One initiative that lists the use cases that rely on it (`alcance.habilita`) | Its value is allocated to the use cases that rely on it (document 10 §4.1, rule 3). For the platform itself, only its cost, its availability and the use cases it serves count. |
-| **Cross-unit** | Generative assistant in the office suite for several units | **A single initiative** with its roll-out by unit (`alcance.reparto`) and amounts by unit (`valores[].area`). No separate initiative is opened for each unit. | By business unit, using the measurement ladder in this section. |
+| **Enabling platform** | Shared data platform for several AI use cases | One use case that lists the use cases that rely on it (`alcance.habilita`) | Its value is allocated to the use cases that rely on it (document 10 §4.1, rule 3). For the platform itself, only its cost, its availability and the use cases it serves count. |
+| **Cross-unit** | Generative assistant in the office suite for several units | **A single use case** with its roll-out by unit (`alcance.reparto`) and amounts by unit (`valores[].area`). No separate use case is opened for each unit. | By business unit, using the measurement ladder in this section. |
 
 **Measurement ladder by unit.** Each rung only counts if the previous one is met.
 
@@ -312,11 +312,11 @@ Some initiatives do not belong to a single business unit. They are **cross-unit*
 
 Rules:
 
-1. **One initiative, several units.** The cross-unit initiative has a corporate sponsor. Each unit has its own business owner of the benefit, who declares the unit's share (document 43 §6.4).
+1. **One use case, several units.** The cross-unit use case has a corporate sponsor. Each unit has its own business owner of the benefit, who declares the unit's share (document 43 §6.4).
 2. **A roll-out that can be measured.** The roll-out is staggered by unit so that it can be measured with difference-in-differences (section 7.1, criterion 2). Another option is to assign licences at random among eligible people. If the tool is rolled out across the whole company at once, only an expert estimate is possible, and it never allows validation.
 3. **Adoption threshold.** G2 sets a minimum percentage of active over assigned licences. In each unit in use that falls below the threshold, the roll-out is reviewed or unused licences are withdrawn. A unit keeps paying for the tool because it uses it, not out of inertia.
 4. **No double counting with each unit's own use cases.** If a unit also has its own use case on the same process, document 43 §6 applies: the generic saving of the cross-unit tool is not claimed again.
-5. **Net value with and without cross-unit initiatives.** In reports to the board, the portfolio's net value is shown with and without cross-unit initiatives and platforms (section 11.1). A large and certain cost therefore neither hides nor inflates the result of the business use cases.
+5. **Net value with and without cross-unit use cases.** In reports to the board, the portfolio's net value is shown with and without cross-unit use cases and platforms (section 11.1). A large and certain cost therefore neither hides nor inflates the result of the business use cases.
 6. **Indirect value is not converted into euros.** Usage culture, maturity or better permissions and data are recorded in the maturity model (document 11) and in sphere 05 Data. The main risk of these tools is showing a person information they could access through inherited or excessive permissions. It goes in the risk matrix (P12) and is reviewed before each roll-out wave.
 
 **Illustrative example** (fictitious data, the same as in the T01 demo register):
@@ -329,16 +329,16 @@ Rules:
 | Shared (no unit) | — | — | — | €260,000 | — |
 | **Total** | | | **14,200** | **€1,160,000** | **€720,000** |
 
-Reading for the board: the initiative's annual net value is 720,000 − 1,160,000 = **−€440,000**. The 14,200 hours declared per month are not savings until they are realised. Commercial is below the 60 % adoption threshold and declares released hours with no destination. Extending the tool to new units is therefore conditional on reviewing Commercial's licences and on the unit declaring how its hours are realised.
+Reading for the board: the use case's annual net value is 720,000 − 1,160,000 = **−€440,000**. The 14,200 hours declared per month are not savings until they are realised. Commercial is below the 60 % adoption threshold and declares released hours with no destination. Extending the tool to new units is therefore conditional on reviewing Commercial's licences and on the unit declaring how its hours are realised.
 
 > **Why it matters.** A cross-unit tool has a large, certain cost that is visible from day one, and a value spread across many people and units. If it is measured like any other use case, one of two things happens: declared hours are added up and the portfolio is inflated, or nothing is measured and the tool keeps being paid for out of inertia. The ladder by unit shows where the tool is used, where it produces value and where licences should be withdrawn. The committee and the board can then decide on extending it with data rather than surveys.
 
-### 7.3 AI initiatives for IT and cyber defence
+### 7.3 AI use cases for IT and cyber defence
 
-Initiatives that use AI to protect and operate the company's own technology —detection and response, application and API security, agent test bench, operations and resilience, and detection of shadow AI (document 35 §9.3)— are treated like the enabling platforms of section 7.2:
+Use cases that use AI to protect and operate the company's own technology —detection and response, application and API security, agent test bench, operations and resilience, and detection of shadow AI (document 35 §9.3)— are treated like the enabling platforms of section 7.2:
 
 1. **They are measured by operational outcome** (presentation rule 11): detection, response and recovery times against the baseline, coverage and effectiveness, with the indicators of document 41 (for example, IND-RIE-08 and IND-OPE-27).
-2. **NPV is not their viability criterion.** The rule in section 8.3 applies to business cases; for these initiatives, G3 checks that the expected operational outcome has a baseline, a target and a deadline, and that the full cost fits within the approved envelope. If they also produce observable economic value (licences or services withdrawn, for example), it is recorded under rules 1 to 9, without viability depending on it.
+2. **NPV is not their viability criterion.** The rule in section 8.3 applies to business cases; for these use cases, G3 checks that the expected operational outcome has a baseline, a target and a deadline, and that the full cost fits within the approved envelope. If they also produce observable economic value (licences or services withdrawn, for example), it is recorded under rules 1 to 9, without viability depending on it.
 3. **They are funded from the enablement envelope** (document 13 §12) and do not compete with business cases for the Optimise or Augment envelopes.
 4. **They are presented separately from the portfolio net value**, like enabling platforms (presentation rule 10): net value is given with and without them.
 5. **Avoided risk is not turned into savings** (error 12 in section 10).
@@ -401,7 +401,7 @@ Agility measures how long the governance system takes to decide and to move into
 
 | Segment | From | To | Purpose |
 |---|---|---|---|
-| **Idea → approval** | Registration of the initiative | G3 decision with a Proceed or Proceed with conditions outcome | Agility in launching a bet. |
+| **Idea → approval** | Registration of the use case | G3 decision with a Proceed or Proceed with conditions outcome | Agility in launching a bet. |
 | **Approval → production** | Favourable G3 decision | Favourable G5 decision | Agility in delivering it. |
 | **Idea → production** | Registration | Favourable G5 decision | Total time to production (03 §3.5). |
 | **Decision time** | Request for a *gate* | Decision | Agility of the decision-making body itself. |
@@ -421,7 +421,7 @@ Initial benchmarks, calculated as the sum of the reference time limits per phase
 | Idea → production | 150 days | 260 days |
 | Decision on a *gate* | 5 working days | 10 working days |
 
-The company approves its benchmarks in C2 and may set a **fast track** for Lite initiatives with Low residual risk (for example, grouping G0–G2 and G4–G5, 01 §7.5). The benchmarks are recalibrated in C5 using the company's own data.
+The company approves its benchmarks in C2 and may set a **fast track** for Lite use cases with Low residual risk (for example, grouping G0–G2 and G4–G5, 01 §7.5). The benchmarks are recalibrated in C5 using the company's own data.
 
 ### 9.3 Reading rules
 
@@ -466,8 +466,8 @@ Presenting to the committee or the board as validated an amount that is not vali
 7. **A comparison is made with the previous period** and relevant variations are explained, including changes in status.
 8. **Each use case presented in detail includes its understandable description** (rule 10). A maximum of three use cases are presented in detail per session, and answers follow the formats of the common specification: "Yes", "Yes, with one condition: …", "Not yet, because … is missing" or "No, because …".
 9. **The composition of value by ambition level** (efficiencies versus return) is shown to feed signals 1 and 2 of the transformation index.
-10. **Cross-unit initiatives, enabling platforms and AI initiatives for IT and cyber defence are shown separately**, with their breakdown by business unit where they have one (cost, adoption, released capacity and realised value) or with their operational outcome, and the portfolio's net value is given with and without them (sections 7.2 and 7.3).
-11. **Three perspectives, side by side and never merged.** Each use case is presented in three columns read together: **economic value** (in euros, with its status: validated, declared or estimated; rules 1 to 9), **operational outcome** (physical indicators from document 41 —cycle time, quality, errors, satisfaction, adoption— with their baseline, target and current value, plus the non-quantified value of section 5.3) and **risk exposure** (main residual risk, open High and Critical risks, open incidents and nonconformities; documents 33 and 37). None is translated into another and they are not combined into a single score: a good operational outcome does not offset an unproven economic value, nor does a high net value offset an untreated risk. In T01, each initiative's operational indicators are recorded in `resultado_operativo[]`, with the indicator code from document 41 when there is one; if there is none, the column says "no indicator", not zero (rule 8).
+10. **Cross-unit use cases, enabling platforms and AI use cases for IT and cyber defence are shown separately**, with their breakdown by business unit where they have one (cost, adoption, released capacity and realised value) or with their operational outcome, and the portfolio's net value is given with and without them (sections 7.2 and 7.3).
+11. **Three perspectives, side by side and never merged.** Each use case is presented in three columns read together: **economic value** (in euros, with its status: validated, declared or estimated; rules 1 to 9), **operational outcome** (physical indicators from document 41 —cycle time, quality, errors, satisfaction, adoption— with their baseline, target and current value, plus the non-quantified value of section 5.3) and **risk exposure** (main residual risk, open High and Critical risks, open incidents and nonconformities; documents 33 and 37). None is translated into another and they are not combined into a single score: a good operational outcome does not offset an unproven economic value, nor does a high net value offset an untreated risk. In T01, each use case's operational indicators are recorded in `resultado_operativo[]`, with the indicator code from document 41 when there is one; if there is none, the column says "no indicator", not zero (rule 8).
 
 > **Why it matters.** Forcing everything into euros pushes people to invent conversions without a formula (the rule 7 mistake) or to ignore what cannot be converted. With three columns, the board sees at once what the use case yields, what changes in operations and what risk it takes on, and decides knowing which part is money and which part is not.
 
@@ -508,11 +508,11 @@ Reading for the board: the portfolio generates a positive annual net value accor
 
 | Code | Name | Use in this document |
 |---|---|---|
-| **T01** | Initiative register | Amounts, statuses, status change events, dates for agility; scope of cross-unit initiatives and platforms, with roll-out, adoption and amounts by unit (section 7.2); non-quantified value with dimension and level (rule 7). |
-| **T11** | Value hypothesis canvas and calculator | Formulas F1–F4 and F7–F9 in phases 2 and 3; attribution method; scenarios (P10 §6.2) and C2 criterion as information. Imports the initiative from T01 and exports its expected values. |
+| **T01** | Use case register | Amounts, statuses, status change events, dates for agility; scope of cross-unit use cases and platforms, with roll-out, adoption and amounts by unit (section 7.2); non-quantified value with dimension and level (rule 7). |
+| **T11** | Value hypothesis canvas and calculator | Formulas F1–F4 and F7–F9 in phases 2 and 3; attribution method; scenarios (P10 §6.2) and C2 criterion as information. Imports the use case from T01 and exports its expected values. |
 | **T12** | Value realisation tracking | Statuses per period, expiries, F5, F6 and F10. |
 | **T13** | Cost calculator per use case | Full recurring cost and initial investment. |
-| **T17** | Board AI dashboard | Presentation with the validated proportion visible; card for cross-unit initiatives and platforms with the portfolio's net value with and without them; NPV (F7) of each use case with its realisation plan (section 8.2) and "Non-quantified value" card. |
+| **T17** | Board AI dashboard | Presentation with the validated proportion visible; card for cross-unit use cases and platforms with the portfolio's net value with and without them; NPV (F7) of each use case with its realisation plan (section 8.2) and "Non-quantified value" card. |
 | **P08** | Value hypothesis canvas | Hypothesis, attribution method and stop criteria. |
 | **P09** | Baseline | Reference measurement. |
 | **P22** | Validation and pilot results | Value measured against the hypothesis at G5. |
@@ -527,7 +527,7 @@ Reading for the board: the portfolio generates a positive annual net value accor
 |---|---|
 | **00 · What SEVEN-G is and how it helps companies** | Source of the ten rules (§6) and of the transformation signals (§5.3). |
 | **01 · Foundational methodology** | Criteria by ambition (§7.6), measurement in the cycle (§11) and decision rules (§7.4). |
-| **03 · Tools and initiative register** | Events, funnel metrics and reference time limits. |
+| **03 · Tools and use case register** | Events, funnel metrics and reference time limits. |
 | **13 · AI thesis and risk appetite** | Horizon, discount rate, expiry periods and agility benchmarks approved in C2. |
 | **14 · Portfolio management** | Prioritisation using additional net value per euro. |
 | **37 · Nonconformities and incidents** | Treatment of breaches of these rules. |
@@ -543,7 +543,7 @@ Reading for the board: the portfolio generates a positive annual net value accor
 | Version | Date | Changes |
 |---|---|---|
 | 0.1 | 16-09-2026 | First version. Develops the ten measurement rules and sets out the amount statuses with owners, evidence and expiry, the official formulas F1–F10, the attribution methods with their maximum status, the single economic criterion based on net benefit (NPV with the C2 horizon and rate; ROI and payback period for information only), the measurement of agility by risk and ambition, the value inflation errors and the rules for presentation to the board. |
-| 0.1 | 18-09-2026 | Adds section 7.2: cross-unit initiatives and enabling platforms, with the measurement ladder by unit (cost, adoption, released capacity and realised value), the adoption threshold and the portfolio's net value with and without them; error 13 and presentation rule 10. |
+| 0.1 | 18-09-2026 | Adds section 7.2: cross-unit use cases and enabling platforms, with the measurement ladder by unit (cost, adoption, released capacity and realised value), the adoption threshold and the portfolio's net value with and without them; error 13 and presentation rule 10. |
 | 0.2 | 28-09-2026 | Non-quantified value is recorded in T01 with dimension, level 0–3, metric and reason, never in euros, and a use case sustained by non-quantified value needs its next R6 dated (rule 7 and section 5.3); the board dashboard calculates the NPV (F7) of each use case with the curve of its realisation plan (section 8.2); section 13 (D135). |
 | 0.3 | 01-10-2026 | Presentation rule 11: three perspectives side by side and never merged —economic value, operational outcome and risk exposure—; operational indicators are recorded in T01 in `resultado_operativo[]` (D150). |
-| 0.4 | 19-10-2026 | Section 7.3: AI initiatives for IT and cyber defence are measured by operational outcome, NPV is not their viability criterion, they are funded from the enablement envelope and presented separately from the net value; presentation rule 10 extended (D159). |
+| 0.4 | 19-10-2026 | Section 7.3: AI use cases for IT and cyber defence are measured by operational outcome, NPV is not their viability criterion, they are funded from the enablement envelope and presented separately from the net value; presentation rule 10 extended (D159). |

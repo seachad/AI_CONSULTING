@@ -1,6 +1,6 @@
 # Risk matrix and register
 
-**Identifies, assesses and monitors the initiative's risks using common scales, inherent and residual levels, a response and acceptance by the competent body.**
+**Identifies, assesses and monitors the use case's risks using common scales, inherent and residual levels, a response and acceptance by the competent body.**
 
 | | |
 |---|---|
@@ -28,7 +28,7 @@
 
 Completion rules:
 
-- The scales and levels are **those of the common specification §5.1 and document 33**. They are not modified per initiative.
+- The scales and levels are **those of the common specification §5.1 and document 33**. They are not modified per use case.
 - Impact is assessed on **five axes** and the **highest** is taken.
 - The level is calculated as **inherent** (without controls) and **residual** (with effective controls). A control only reduces the residual if it exists and works; planned controls are indicated separately.
 - A **Critical** residual risk without approval from the board or its board committee **blocks G3 and G5**.
@@ -40,7 +40,7 @@ Completion rules:
 
 | Field | Content | Guidance |
 |---|---|---|
-| Initiative code | | IA-AAAA-NNN. |
+| Use case code | | IA-AAAA-NNN. |
 | AI systems covered | | Codes from P05. |
 | Regulatory classification | | Taxonomy of 03 §3.3 (P11). |
 | Intensity and ambition level | | |
@@ -57,7 +57,7 @@ Completion rules:
 
 | Value | Name | Indicative reference |
 |---|---|---|
-| 1 | Rare | Less than once in 5 years or < 5 % over the initiative's horizon |
+| 1 | Rare | Less than once in 5 years or < 5 % over the use case's horizon |
 | 2 | Unlikely | Once every 2–5 years or 5–20 % |
 | 3 | Possible | Once every 1–2 years or 20–50 % |
 | 4 | Likely | Several times a year or 50–80 % |
@@ -129,7 +129,7 @@ Responses: **Avoid** (the cause or the activity is eliminated) · **Mitigate** (
 
 ---
 
-## 5. Initiative heat map
+## 5. Use case heat map
 
 In each cell, enter the risk numbers according to their **residual** assessment.
 
@@ -169,7 +169,7 @@ In each cell, enter the risk numbers according to their **residual** assessment.
 
 | Field | Content | Guidance |
 |---|---|---|
-| Risks shared with other initiatives | | Same supplier, same model, same data or same critical function. |
+| Risks shared with other use cases | | Same supplier, same model, same data or same critical function. |
 | Concentration | | If the sum of exposures exceeds the risk appetite, the AI Committee is informed. |
 | Risks to be escalated | | High or Critical risks and concentrated risks. |
 

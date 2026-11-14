@@ -47,7 +47,7 @@ El contenido del paquete que se entrega antes de la sesión está en el document
 | 4 | **Pocos casos, bien contados** | Tres casos en detalle como máximo. El resto está en el panel. |
 | 5 | **Decir lo que no funciona** | Paradas, retiradas, incidentes y valor no materializado se presentan con la misma claridad que los éxitos. |
 | 6 | **Cada pregunta del consejo termina en el registro** | Si una pregunta no se puede responder en la sesión, se convierte en una recomendación o encargo con responsable y fecha (documento 62). |
-| 7 | **Nadie defiende su propio examen** | Quien presenta una iniciativa no valora su cumplimiento; la valoración la hace alguien independiente. |
+| 7 | **Nadie defiende su propio examen** | Quien presenta un caso de uso no valora su cumplimiento; la valoración la hace alguien independiente. |
 
 ---
 
@@ -70,7 +70,7 @@ El contenido del paquete que se entrega antes de la sesión está en el document
 | "Hemos lanzado una PoC" | "Estamos haciendo una prueba acotada de tres meses; en junio decidiremos si sigue o se para" | Una prueba sin fecha de decisión es un coste abierto. |
 | "ROI del 300 %" | "Neto anual de 900.000 €: eficiencias de 1,1 M€ menos coste recurrente de 210.000 €, validado por control de gestión" | El ROI agregado oculta casos con valor negativo y no dice qué está validado. |
 | "Hemos ahorrado 20.000 horas" | "Hemos liberado 20.000 horas; de ellas, 6.000 se han reasignado y ninguna ha reducido todavía el coste" | La capacidad liberada no es ahorro hasta que se materializa. |
-| "Transformación digital con IA" | "Esta iniciativa hace lo mismo con menos coste: es optimización" o "Esta iniciativa crea un servicio que no existía: es transformación" | La palabra se usa para cosas distintas. |
+| "Transformación digital con IA" | "Este caso de uso hace lo mismo con menos coste: es optimización" o "Este caso de uso crea un servicio que no existía: es transformación" | La palabra se usa para cosas distintas. |
 | "IA responsable" | "Antes de producción se ha probado si trata peor a algún colectivo; el resultado es…" | Un principio sin control verificable no informa. |
 | "Alucinaciones" | "Respuestas incorrectas presentadas como ciertas" | Término técnico y coloquial a la vez. |
 | "Inyección de *prompts*" | "Manipulación del sistema mediante instrucciones ocultas en textos o documentos" | Describe el riesgo, no la técnica. |
@@ -114,7 +114,7 @@ Reglas:
 > **Pregunta:** ¿Podemos parar el agente de atención si empieza a fallar?
 > **Respuesta:** Sí. Tiene un interruptor de parada que desvía todas las conversaciones a personas; se probó en el simulacro de mayo y tardó cuatro minutos.
 
-> **Pregunta:** ¿Tienen todas las iniciativas en producción su revisión de continuidad al día?
+> **Pregunta:** ¿Tienen todos los casos de uso en producción su revisión de continuidad al día?
 > **Respuesta:** Sí. Las 14 tienen revisión en los últimos tres meses, verificada por el auditor de IA; el detalle está en el bloque de cartera del panel.
 
 **"Sí, con una condición: …"**
@@ -139,7 +139,7 @@ Reglas:
 > **Respuesta:** No, porque una orden ejecutada en el mercado no se puede revertir y el riesgo residual es Crítico, fuera del apetito aprobado. La alternativa es que recomiende y un operador decida.
 
 > **Pregunta:** ¿Podemos decir que la compañía se está transformando con IA?
-> **Respuesta:** No, porque el 92 % del valor validado procede de eficiencias y ninguna iniciativa de Transformar ha llegado a producción. Somos eficientes, que es un buen resultado, pero no es transformación.
+> **Respuesta:** No, porque el 92 % del valor validado procede de eficiencias y ningún caso de uso de Transformar ha llegado a producción. Somos eficientes, que es un buen resultado, pero no es transformación.
 
 ### 4.3 Estructura de una intervención
 
@@ -187,7 +187,7 @@ Las preguntas de referencia proceden del mapa de esferas (00 §4.1). Cada esfera
 | Esfera | Pregunta de referencia | Preguntas de seguimiento | Evidencia que pedir | Señal de alerta |
 |---|---|---|---|---|
 | **01 · Cliente** | Si un competidor conoce mejor a nuestros clientes porque usa mejor la IA, ¿cuánto tardamos en perder relevancia? | ¿Qué decisiones sobre clientes toma o prepara hoy un sistema? ¿Sabemos si trata peor a algún colectivo? ¿Qué parte de la relación con el cliente pasa por un asistente? | Casos por nivel de ambición en la esfera; retención o conversión medidas con grupo de control; pruebas de equidad; tasas de derivación a personas. | Todo el valor declarado en la esfera es ahorro de atención; no hay ningún caso de retorno medido. |
-| **02 · Producto y servicio** | ¿Usamos la IA para proteger el producto actual o para construir el siguiente? | ¿Hay algún producto o servicio que solo exista gracias a la IA? ¿Compiten por los mismos recursos la protección y la construcción? | Iniciativas de Transformar en la esfera con sus hitos de aprendizaje y límite por etapa; ingresos habilitados por IA. | Ninguna apuesta de Transformar aprobada, o apuestas aprobadas sin criterios de parada. |
+| **02 · Producto y servicio** | ¿Usamos la IA para proteger el producto actual o para construir el siguiente? | ¿Hay algún producto o servicio que solo exista gracias a la IA? ¿Compiten por los mismos recursos la protección y la construcción? | Casos de uso de Transformar en la esfera con sus hitos de aprendizaje y límite por etapa; ingresos habilitados por IA. | Ninguna apuesta de Transformar aprobada, o apuestas aprobadas sin criterios de parada. |
 | **03 · Personas** | ¿La IA sustituye, aumenta o reorganiza el trabajo de las personas? | ¿Qué ocurre con la capacidad liberada? ¿Hemos informado a la representación de los trabajadores cuando corresponde? ¿Qué nuevos roles necesitamos? | Posición aprobada por la dirección; capacidad liberada materializada y reasignada; plan de formación y alfabetización en IA; sistemas que evalúan a empleados y su clasificación. | Horas liberadas presentadas como ahorro; ninguna posición explícita sobre el efecto en el empleo. |
 | **04 · Operaciones** | ¿Qué procesos tienen un retorno demostrable a corto plazo y cuáles requieren un rediseño completo? | ¿Se automatizan tareas o se rediseñan procesos de extremo a extremo? ¿Qué pasa si el sistema se cae? | Línea base y valor validado por proceso; plan de reversión probado; incidentes y tiempo de recuperación. | Muchos pilotos sin fecha de decisión; sin plan de reversión en procesos críticos. |
 
@@ -195,7 +195,7 @@ Las preguntas de referencia proceden del mapa de esferas (00 §4.1). Cada esfera
 
 | Esfera | Pregunta de referencia | Preguntas de seguimiento | Evidencia que pedir | Señal de alerta |
 |---|---|---|---|---|
-| **05 · Datos** | ¿Sabemos qué datos tenemos, quién responde de su calidad y si podemos usarlos legalmente para IA? | ¿Cuántas iniciativas se han parado o retrasado por datos? ¿Qué datos compartimos con proveedores de modelos y en qué condiciones? | Responsables de datos por dominio; motivos de parada por datos insuficientes; base legal documentada; cláusulas de uso de datos en contratos. | "Datos insuficientes" es el motivo de parada más frecuente y no hay iniciativa para resolverlo. |
+| **05 · Datos** | ¿Sabemos qué datos tenemos, quién responde de su calidad y si podemos usarlos legalmente para IA? | ¿Cuántos casos de uso se han parado o retrasado por datos? ¿Qué datos compartimos con proveedores de modelos y en qué condiciones? | Responsables de datos por dominio; motivos de parada por datos insuficientes; base legal documentada; cláusulas de uso de datos en contratos. | "Datos insuficientes" es el motivo de parada más frecuente y no hay caso de uso para resolverlo. |
 | **06 · Conocimiento** | ¿Cuánto conocimiento crítico depende de pocas personas y no está disponible para la organización? | Si mañana se fueran las personas que más saben, ¿qué se perdería? ¿Los asistentes internos responden con fuentes verificables? | Mapa de conocimiento crítico; asistentes con medición de respuestas correctas y fuentes citadas. | Asistentes internos en uso sin medición de la calidad de las respuestas. |
 | **07 · Decisión** | ¿Qué decide la IA sola, qué requiere validación humana y qué no se delega nunca? | ¿Hay sistemas que actúan sin revisión individual? ¿Queda registrado qué recomendó el sistema y qué decidió la persona? | Inventario con nivel de autonomía A0–A3; lista aprobada de decisiones no delegables; registro de acciones de los agentes. | No existe una lista de decisiones no delegables: se está delegando por defecto. |
 
@@ -216,10 +216,10 @@ Señal de alerta: el consejo solo oye hablar de regulación cuando hay una sanci
 | Eje de evaluación | Preguntas | Evidencia que pedir |
 |---|---|---|
 | **Estructura** | ¿Quién tiene la responsabilidad última de la estrategia de IA? ¿Hay una cartera priorizada por valor y riesgo? ¿Recibe el consejo información periódica y comprensible? | Tesis de IA aprobada; comité de IA con mandato; paquete trimestral (documento 60). |
-| **Equilibrio entre velocidad y control** | ¿Hay puertas de decisión con capacidad real de parar? ¿Cuánto se tarda desde la idea hasta la aprobación y hasta producción? ¿Se ha parado alguna iniciativa? | Registro de decisiones de *gate*; métricas de agilidad por nivel de riesgo; motivos de parada. |
+| **Equilibrio entre velocidad y control** | ¿Hay puertas de decisión con capacidad real de parar? ¿Cuánto se tarda desde la idea hasta la aprobación y hasta producción? ¿Se ha parado algún caso de uso? | Registro de decisiones de *gate*; métricas de agilidad por nivel de riesgo; motivos de parada. |
 | **Ecosistema de proveedores** | ¿Dependemos de un solo proveedor de modelos? ¿Decidimos construir, comprar o aliarnos caso a caso? ¿Protegen los contratos nuestros datos y nuestra propiedad intelectual? ¿Entendemos la estructura de costes? | Registro de proveedores con criticidad y estrategia de salida; coste por caso con reparto. |
 
-Señal de alerta: nadie puede decir cuándo se paró la última iniciativa, ni por qué.
+Señal de alerta: nadie puede decir cuándo se paró el último caso de uso, ni por qué.
 
 ---
 
@@ -388,7 +388,7 @@ SEVEN-G prevé que el consejo o su comisión delegada puedan apoyarse en un **co
 ### 10.3 Independencia
 
 - **Declaración de intereses** al inicio del mandato y cada vez que cambie: relaciones con proveedores de tecnología, consultoras y la propia compañía (P41, modelo C).
-- **Incompatibilidad** con la prestación de servicios de implantación en las mismas iniciativas que supervisa (documento 91, sección 5).
+- **Incompatibilidad** con la prestación de servicios de implantación en los mismos casos de uso que supervisa (documento 91, sección 5).
 - **Acceso a la información** a través de la secretaría del consejo y de los canales formales, no mediante relaciones directas con los equipos que eludan la dirección.
 - **Confidencialidad**: la información de la compañía no se usa en ningún otro ámbito.
 
@@ -408,9 +408,9 @@ El Reglamento Europeo de IA incluye obligaciones de alfabetización en IA para e
 | Sumar las horas liberadas como ahorro | Valor inflado que no aparece en la cuenta de resultados. | Informar aparte la capacidad liberada. |
 | Responder "depende" | El consejo no sabe qué decidir. | Usar uno de los cuatro formatos. |
 | Ocultar paradas e incidentes | Pérdida de confianza cuando se conocen. | Presentarlos con lo aprendido. |
-| Llamar transformación a cualquier iniciativa | La compañía cree que se transforma y no toma las decisiones que exigiría hacerlo. | Clasificar con las cinco preguntas. |
+| Llamar transformación a cualquier caso de uso | La compañía cree que se transforma y no toma las decisiones que exigiría hacerlo. | Clasificar con las cinco preguntas. |
 | Terminar la sesión sin decisiones registradas | Lo hablado depende de la memoria de los asistentes. | Registrar decisiones y encargos con código, responsable y fecha. |
-| Que quien presenta una iniciativa valore su cumplimiento | Autoevaluación sin credibilidad. | Valoración independiente en el registro. |
+| Que quien presenta un caso de uso valore su cumplimiento | Autoevaluación sin credibilidad. | Valoración independiente en el registro. |
 | Compararse con el mercado sin fuente | Afirmaciones que no resisten una pregunta. | Compararse con uno mismo en el tiempo o citar fuentes verificables. |
 | Hablar de modelos en lugar de decisiones | El consejo se desconecta. | Traducir con la tabla de la sección 3.2. |
 | Pedir aprobación sin opciones | El consejo no puede ejercer su función. | Incluir al menos dos opciones, una de ellas no hacer o parar. |

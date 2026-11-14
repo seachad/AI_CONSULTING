@@ -54,9 +54,9 @@ Al terminar sabrá encontrar cualquier documento, plantilla o herramienta, busca
 | **P01–P74** | Plantillas. P01–P31 son las evidencias de cada fase; P32–P71, las de compañía, consejo, cumplimiento, terceros, auditoría e implantación; P72–P74, los perfiles NIST y la declaración de aplicabilidad de ISO/IEC 42001. | Bloque H |
 | **T01–T22** | Herramientas. Las que no tienen aplicación propia enlazan al procedimiento con el que se aplican. | documento 03 |
 | **C1–C5** | Etapas del ciclo corporativo: diagnóstico, dirección, cartera, supervisión y revisión. | documento 01 |
-| **Fases 0–7 · G0–G5, R6, G7** | Fases de una iniciativa y sus puertas de decisión. | documento 01 |
+| **Fases 0–7 · G0–G5, R6, G7** | Fases de un caso de uso y sus puertas de decisión. | documento 01 |
 | **G3.05, LV-G3** | Criterio de una puerta y lista de verificación de esa puerta. | documento 21 · documento 22 |
-| **IA-AAAA-NNN** | Identificador de una iniciativa. | documento 03 |
+| **IA-AAAA-NNN** | Identificador de un caso de uso. | documento 03 |
 | **A0–A3 · S1–S4 · N1–N3 · D1–D7** | Autonomía de agentes · severidad de incidentes · exigencia a proveedores · dimensiones de madurez. | documento 02 |
 
 Ante cualquier duda, el glosario (documento 02) manda. Y no hace falta memorizar ninguno: el control **«Buscador de documentos»** de la barra lleva a donde se explica cualquiera de ellos, escribiendo el código o parte del título.

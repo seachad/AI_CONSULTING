@@ -39,7 +39,7 @@ Reglas de cumplimentación:
 
 | Campo | Contenido | Guía |
 |---|---|---|
-| Código de la iniciativa | | IA-AAAA-NNN. |
+| Código del caso de uso | | IA-AAAA-NNN. |
 | Sistemas de IA cubiertos | | Códigos de P05. |
 | Clasificación regulatoria e intensidad | | De P11 y P04. |
 | Nivel de autonomía | | A0 · A1 · A2 · A3. |

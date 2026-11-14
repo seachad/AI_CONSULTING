@@ -37,7 +37,7 @@ Rules:
 
 | Field | Content | Guidance |
 |---|---|---|
-| Initiative code | | IA-AAAA-NNN (T01). |
+| Use case code | | IA-AAAA-NNN (T01). |
 | AI system(s) | | Identifier in the inventory (T02). |
 | Version in production | | Model, instructions and configuration (P16). |
 | Go-live date | | As per P23. |

@@ -75,7 +75,7 @@ La esfera 08 reúne **el marco normativo aplicable a la IA** (regulación genera
 |---|---|---|---|---|
 | **Cumplimiento** | Clasificación de los sistemas según el Reglamento Europeo de IA, obligaciones de transparencia y supervisión humana, protección de datos en decisiones automatizadas y perfilado, y regulación sectorial. | Algunos sistemas clasificados a demanda, cuando un proyecto lo pide. | Todos los sistemas inventariados están clasificados; las evaluaciones exigidas se hacen antes de invertir en la construcción; las no conformidades se corrigen en plazo. | Lo anterior, con indicadores en objetivo dos trimestres y auditoría sin no conformidades mayores abiertas. |
 | **Anticipación** | Vigilancia de la regulación emergente, evaluaciones de impacto antes del despliegue y preparación para auditorías externas. | Se sigue la regulación de forma informal, a través de noticias o de asesores. | Proceso de vigilancia con responsable; cada cambio relevante tiene análisis de impacto en plazo; se hacen simulacros de auditoría. | La compañía adapta sus sistemas antes de que la obligación sea aplicable y lo documenta. |
-| **Liderazgo ético** | Principios propios más allá del mínimo legal, un órgano ético con capacidad real de veto y transparencia pública sobre el uso de la IA. | Principios publicados sin mecanismo para aplicarlos. | Principios aprobados por el consejo, revisión ética de las iniciativas que lo requieren y órgano con capacidad de veto documentada. | Informe público periódico sobre el uso de la IA y decisiones de veto o modificación registradas. |
+| **Liderazgo ético** | Principios propios más allá del mínimo legal, un órgano ético con capacidad real de veto y transparencia pública sobre el uso de la IA. | Principios publicados sin mecanismo para aplicarlos. | Principios aprobados por el consejo, revisión ética de los casos de uso que lo requieren y órgano con capacidad de veto documentada. | Informe público periódico sobre el uso de la IA y decisiones de veto o modificación registradas. |
 
 > **Por qué importa.** Las tres dimensiones responden a tres riesgos distintos. Sin **Cumplimiento**, la compañía incumple hoy. Sin **Anticipación**, incumplirá mañana y tendrá que rehacer sistemas con prisa. Sin **Liderazgo ético**, puede cumplir la ley y aun así perder la confianza de clientes, empleados y sociedad por usos legales pero inaceptables.
 
@@ -90,7 +90,7 @@ La esfera 08 reúne **el marco normativo aplicable a la IA** (regulación genera
 | Vigilancia regulatoria y evaluaciones de impacto. | |
 | Principios éticos, órgano ético y transparencia pública. | |
 
-**Regla de uso en el mapa.** La esfera 08 es la esfera principal de una iniciativa **solo cuando su finalidad es el cumplimiento o la ética** (por ejemplo, un sistema que vigila cambios normativos y los asigna a responsables). **Nunca** se usa para señalar que una iniciativa de otra esfera tiene riesgo regulatorio: eso se registra en su clasificación regulatoria y en su registro de riesgos.
+**Regla de uso en el mapa.** La esfera 08 es la esfera principal de un caso de uso **solo cuando su finalidad es el cumplimiento o la ética** (por ejemplo, un sistema que vigila cambios normativos y los asigna a responsables). **Nunca** se usa para señalar que un caso de uso de otra esfera tiene riesgo regulatorio: eso se registra en su clasificación regulatoria y en su registro de riesgos.
 
 ### Caso ilustrativo
 
@@ -104,7 +104,7 @@ La entidad tiene en producción un modelo que prioriza solicitudes de financiaci
 |---|---|
 | **Cumplimiento** | ¿Están clasificados todos nuestros sistemas de IA? ¿Alguno podría ser una práctica prohibida o de alto riesgo sin que lo sepamos? ¿Quién firma esa clasificación? |
 | **Anticipación** | ¿Qué obligaciones nos serán aplicables en los próximos años y a qué sistemas afectan? ¿Estamos preparados para una auditoría externa de IA? |
-| **Liderazgo ético** | ¿Tenemos principios propios que vayan más allá de la ley? ¿Hay alguien con capacidad real de decir que no a una iniciativa rentable pero inadecuada? |
+| **Liderazgo ético** | ¿Tenemos principios propios que vayan más allá de la ley? ¿Hay alguien con capacidad real de decir que no a un caso de uso rentable pero inadecuado? |
 
 ### Señales de alerta
 
@@ -133,8 +133,8 @@ La esfera 09 es la **meta-esfera**. Reúne la **responsabilidad última sobre la
 
 | Dimensión | Qué evalúa | Ejemplo de grado Básico | Ejemplo de grado Sistemático | Ejemplo de grado Avanzado |
 |---|---|---|---|---|
-| **Estructura** | Quién tiene la responsabilidad última de la estrategia de IA, si hay un marco que la conecte con la estrategia de negocio, si existe una cartera priorizada por impacto y riesgo y si el consejo recibe información periódica y comprensible. | Responsable designado; la cartera es una lista de proyectos. | Tesis de IA y apetito de riesgo aprobados; comité de IA operativo; registro de iniciativas con roles y puertas de decisión; información trimestral al consejo. | Lo anterior, con las recomendaciones del consejo al día y una revisión anual completa de la estrategia. |
-| **Equilibrio entre velocidad y control** | Si la compañía acelera la adopción con el riesgo bajo control, si hay puertas de decisión en el ciclo de vida, cómo mide su madurez y si puede parar una iniciativa que no funciona. | Algunos controles, aplicados de forma desigual. | Puertas de decisión con validación independiente en todas las iniciativas; intensidad de control proporcional al riesgo; plazos de decisión medidos; paradas y retiradas registradas. | Tiempos de decisión dentro de plazo sin aumento de incidencias; calibración anual de plazos y umbrales. |
+| **Estructura** | Quién tiene la responsabilidad última de la estrategia de IA, si hay un marco que la conecte con la estrategia de negocio, si existe una cartera priorizada por impacto y riesgo y si el consejo recibe información periódica y comprensible. | Responsable designado; la cartera es una lista de proyectos. | Tesis de IA y apetito de riesgo aprobados; comité de IA operativo; registro de casos de uso con roles y puertas de decisión; información trimestral al consejo. | Lo anterior, con las recomendaciones del consejo al día y una revisión anual completa de la estrategia. |
+| **Equilibrio entre velocidad y control** | Si la compañía acelera la adopción con el riesgo bajo control, si hay puertas de decisión en el ciclo de vida, cómo mide su madurez y si puede parar un caso de uso que no funciona. | Algunos controles, aplicados de forma desigual. | Puertas de decisión con validación independiente en todos los casos de uso; intensidad de control proporcional al riesgo; plazos de decisión medidos; paradas y retiradas registradas. | Tiempos de decisión dentro de plazo sin aumento de incidencias; calibración anual de plazos y umbrales. |
 | **Ecosistema de proveedores** | Si la compañía depende de un solo proveedor de modelos, si evalúa construir, comprar o aliarse para cada capacidad, si los contratos protegen sus datos y su propiedad intelectual y si entiende la estructura de costes de la IA. | Proveedores conocidos, sin evaluación homogénea. | Registro de proveedores con nivel de exigencia; cláusulas contractuales mínimas; coste de IA conocido por categoría y por caso. | Estrategia de salida probada para los proveedores críticos y concentración dentro del apetito de riesgo. |
 
 > **Por qué importa.** Las tres dimensiones evitan tres fracasos de gobierno distintos. Sin **Estructura**, nadie responde. Sin **Equilibrio entre velocidad y control**, el gobierno o frena todo, y los equipos lo eluden, o no controla nada. Sin gobierno del **Ecosistema de proveedores**, la compañía descubre tarde que depende de un tercero que fija el precio, las condiciones y el uso de sus datos.
@@ -155,7 +155,7 @@ Una de las decisiones más frecuentes de la dimensión Ecosistema es cómo obten
 |---|---|
 | Responsable último, órganos y reparto de roles sobre la IA. | Las decisiones que toman los sistemas de IA en la operación: es la esfera 07. |
 | Tesis de IA, ambición por esfera y apetito de riesgo. | Las obligaciones legales como tales: es la esfera 08. |
-| Cartera de iniciativas, puertas de decisión, paradas y retiradas. | |
+| Cartera de casos de uso, puertas de decisión, paradas y retiradas. | |
 | Información periódica al consejo y seguimiento de sus recomendaciones. | |
 | Proveedores de modelos y de IA: evaluación, contratos, concentración, salida y costes. | |
 
@@ -163,26 +163,26 @@ Una de las decisiones más frecuentes de la dimensión Ecosistema es cómo obten
 
 *Grupo industrial ficticio con varias filiales.*
 
-Cada filial ha lanzado sus propias iniciativas de IA y contratado sus propios proveedores. El consejo pide un informe y descubre que nadie puede darlo: no existe un registro común, no hay un responsable último y el gasto en modelos está repartido en partidas de tecnología de cada filial. La esfera 09 se diagnostica así: **Estructura, Ausente**; **Equilibrio entre velocidad y control, Básico** (dos filiales tienen comités propios); **Ecosistema de proveedores, Ausente**. En el primer trimestre, el grupo designa un responsable de la IA que informa al consejo, crea un comité con capacidad de parar iniciativas, da de alta todas las iniciativas en un registro común y consolida el gasto en modelos. Al revisar el registro, el comité para tres iniciativas duplicadas y descubre que casi todo el gasto en modelos está concentrado en un único proveedor sin estrategia de salida.
+Cada filial ha lanzado sus propios casos de uso de IA y contratado sus propios proveedores. El consejo pide un informe y descubre que nadie puede darlo: no existe un registro común, no hay un responsable último y el gasto en modelos está repartido en partidas de tecnología de cada filial. La esfera 09 se diagnostica así: **Estructura, Ausente**; **Equilibrio entre velocidad y control, Básico** (dos filiales tienen comités propios); **Ecosistema de proveedores, Ausente**. En el primer trimestre, el grupo designa un responsable de la IA que informa al consejo, crea un comité con capacidad de parar casos de uso, da de alta todos los casos de uso en un registro común y consolida el gasto en modelos. Al revisar el registro, el comité para tres casos de uso duplicados y descubre que casi todo el gasto en modelos está concentrado en un único proveedor sin estrategia de salida.
 
 ### Preguntas para el consejo
 
 | Dimensión | Preguntas |
 |---|---|
 | **Estructura** | ¿Quién tiene la responsabilidad última de la estrategia de IA? ¿Hay un marco que la conecte con la estrategia de negocio? ¿Hay una cartera priorizada por impacto y riesgo? ¿Recibimos información periódica y comprensible? |
-| **Equilibrio entre velocidad y control** | ¿Aceleramos la adopción con el riesgo bajo control? ¿Hay puertas de decisión en el ciclo de vida? ¿Cómo medimos nuestra madurez? ¿Podemos parar una iniciativa que no funciona? |
+| **Equilibrio entre velocidad y control** | ¿Aceleramos la adopción con el riesgo bajo control? ¿Hay puertas de decisión en el ciclo de vida? ¿Cómo medimos nuestra madurez? ¿Podemos parar un caso de uso que no funciona? |
 | **Ecosistema de proveedores** | ¿Dependemos de un solo proveedor de modelos? ¿Evaluamos construir, comprar o aliarse para cada capacidad? ¿Protegen los contratos nuestros datos y nuestra propiedad intelectual? ¿Entendemos la estructura de costes de la IA? |
 
 ### Señales de alerta
 
-- Nadie ha parado ni retirado una iniciativa en los últimos doce meses.
-- Iniciativas en producción sin decisión registrada ni revisión periódica vigente.
+- Nadie ha parado ni retirado un caso de uso en los últimos doce meses.
+- Casos de uso en producción sin decisión registrada ni revisión periódica vigente.
 - Tiempos de decisión muy por encima de lo razonable, que empujan a los equipos a eludir el proceso.
 - Un único proveedor concentra la mayor parte del gasto en modelos sin estrategia de salida.
 
 ### Cómo se mide
 
-Los indicadores de referencia son la cobertura del registro de iniciativas y sistemas, la revisión de continuidad vigente, las recomendaciones del consejo cerradas en plazo, el tiempo de decisión en las puertas, el tiempo hasta producción, la capacidad de parar, la concentración en el proveedor principal de modelos, la estrategia de salida y el coste de IA imputado. Sus fórmulas están en [SEVEN-G 10](../../../SEVEN-G/html/es/10_SEVEN-G_Mapa_de_esferas_y_niveles_de_ambicion.html), sección 7. El modelo de gobierno se desarrolla en [SEVEN-G 30 · Modelo de gobierno](../../../SEVEN-G/html/es/30_SEVEN-G_Modelo_de_gobierno.html) y la gestión de proveedores en [SEVEN-G 36 · Terceros y proveedores de IA](../../../SEVEN-G/html/es/36_SEVEN-G_Terceros_y_proveedores_de_IA.html). El registro de iniciativas de SEVEN-G (T01) y el panel de IA para el consejo (T17) son las herramientas que dan soporte a esta esfera.
+Los indicadores de referencia son la cobertura del registro de casos de uso y sistemas, la revisión de continuidad vigente, las recomendaciones del consejo cerradas en plazo, el tiempo de decisión en las puertas, el tiempo hasta producción, la capacidad de parar, la concentración en el proveedor principal de modelos, la estrategia de salida y el coste de IA imputado. Sus fórmulas están en [SEVEN-G 10](../../../SEVEN-G/html/es/10_SEVEN-G_Mapa_de_esferas_y_niveles_de_ambicion.html), sección 7. El modelo de gobierno se desarrolla en [SEVEN-G 30 · Modelo de gobierno](../../../SEVEN-G/html/es/30_SEVEN-G_Modelo_de_gobierno.html) y la gestión de proveedores en [SEVEN-G 36 · Terceros y proveedores de IA](../../../SEVEN-G/html/es/36_SEVEN-G_Terceros_y_proveedores_de_IA.html). El registro de casos de uso de SEVEN-G (T01) y el panel de IA para el consejo (T17) son las herramientas que dan soporte a esta esfera.
 
 ---
 
@@ -198,10 +198,10 @@ En el mapa de la cartera, las esferas 08 y 09 **no ocupan columnas de Optimizar,
 | 08 | Anticipación | Básico | Sistemático | Brecha: no hay proceso de vigilancia regulatoria. |
 | 08 | Liderazgo ético | Básico | Básico | En objetivo para este año. |
 | 09 | Estructura | Sistemático | Sistemático | En objetivo. |
-| 09 | Equilibrio entre velocidad y control | Básico | Sistemático | Brecha: las puertas de decisión no se aplican a todas las iniciativas. |
+| 09 | Equilibrio entre velocidad y control | Básico | Sistemático | Brecha: las puertas de decisión no se aplican a todos los casos de uso. |
 | 09 | Ecosistema de proveedores | Ausente | Básico | Brecha prioritaria: dependencia de un proveedor sin evaluación. |
 
-Las iniciativas cuya esfera principal es 08 o 09 (por ejemplo, una herramienta de inventario de sistemas o de vigilancia regulatoria) tienen su propio nivel de ambición como cualquier otra, pero **ese nivel no califica la esfera**. Su inversión se muestra en una banda aparte, de habilitación de gobierno y cumplimiento, para no mezclarla con la inversión que busca valor.
+Los casos de uso cuya esfera principal es 08 o 09 (por ejemplo, una herramienta de inventario de sistemas o de vigilancia regulatoria) tienen su propio nivel de ambición como cualquier otro, pero **ese nivel no califica la esfera**. Su inversión se muestra en una banda aparte, de habilitación de gobierno y cumplimiento, para no mezclarla con la inversión que busca valor.
 
 > **Por qué importa.** Separar visualmente estas dos esferas permite al consejo ver dos cosas a la vez sin confundirlas: dónde y con qué ambición se apuesta por la IA, y si la compañía tiene los límites y el gobierno necesarios para sostener esas apuestas.
 

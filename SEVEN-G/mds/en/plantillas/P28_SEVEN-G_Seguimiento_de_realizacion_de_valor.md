@@ -1,6 +1,6 @@
 # Value realisation tracking
 
-**Measures, period by period, the value that the initiative in production actually delivers, with the formula and status of each amount, and compares it with the approved hypothesis.**
+**Measures, period by period, the value that the use case in production actually delivers, with the formula and status of each amount, and compares it with the approved hypothesis.**
 
 | | |
 |---|---|
@@ -43,8 +43,8 @@ Applicable measurement rules (00 §6):
 
 | Field | Content | Guidance |
 |---|---|---|
-| Initiative code | | IA-AAAA-NNN (T01). |
-| Initiative name | | |
+| Use case code | | IA-AAAA-NNN (T01). |
+| Use case name | | |
 | Ambition level | | Optimise · Augment · Transform (confirmed in phase 2). |
 | Intensity | | Lite · Enterprise. |
 | Go-live date | | |
@@ -136,7 +136,7 @@ If it is not translated into money with a formula, it is not counted in block 5 
 
 ## 8. Attribution and allocation **(Enterprise)**
 
-| Shared outcome | Other use cases or initiatives that contribute | Declared allocation (%) | Allocation criterion | Approved by |
+| Shared outcome | Other use cases that contribute | Declared allocation (%) | Allocation criterion | Approved by |
 |---|---|---|---|---|
 | | | | | |
 

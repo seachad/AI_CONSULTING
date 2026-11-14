@@ -21,7 +21,7 @@
 
 ## 1. Qué es SPAD
 
-**SPAD resuelve un problema específico: construir software con IA de forma gobernada.** No es un marco de gobierno de la IA de la compañía. Decidir qué iniciativas de IA se hacen, con qué riesgo y cómo se mide su valor es otro problema, a otro nivel, que resuelve SEVEN-G (con SPHERES como capa explicativa). SPAD trata solo de cómo se construye el software, y se puede usar con SEVEN-G o sin él.
+**SPAD resuelve un problema específico: construir software con IA de forma gobernada.** No es un marco de gobierno de la IA de la compañía. Decidir qué casos de uso de IA se hacen, con qué riesgo y cómo se mide su valor es otro problema, a otro nivel, que resuelve SEVEN-G (con SPHERES como capa explicativa). SPAD trata solo de cómo se construye el software, y se puede usar con SEVEN-G o sin él.
 
 **SPAD** (*Structured Prompt-Driven Engineering*, ingeniería estructurada guiada por instrucciones) es el marco de trabajo de Fernando García Varela para **gestionar el desarrollo de software mediante inteligencia artificial** de forma controlada. Convierte la IA de un asistente informal de programación en una herramienta de ingeniería gobernada, cuyo trabajo puede revisarse, reproducirse y auditarse.
 
@@ -310,7 +310,7 @@ SPAD y SEVEN-G resuelven problemas distintos, a niveles distintos. SEVEN-G gobie
 
 | Aspecto | SEVEN-G | SPAD |
 |---|---|---|
-| **Objeto** | La iniciativa de IA completa y la cartera de la compañía. | El desarrollo del software de una solución. |
+| **Objeto** | El caso de uso de IA completa y la cartera de la compañía. | El desarrollo del software de una solución. |
 | **Pregunta** | ¿Merece la pena, con qué riesgo y con qué valor medido? | ¿Está bien construido, probado y documentado? |
 | **Decisiones** | Puertas de decisión tomadas por personas con responsabilidad. | Veredictos técnicos de revisión validados por el orquestador. |
 | **Dónde se aplica** | En todo el ciclo de vida, de la idea a la retirada. | Allí donde se construye software con IA. Si la compañía usa SEVEN-G, sobre todo en sus fases de diseño y de entrega. |
@@ -323,7 +323,7 @@ Reglas de convivencia:
 
 La correspondencia detallada de fases, roles, evidencias y requisitos está en [SEVEN-G 53 · Construcción de soluciones con IA](../../../SEVEN-G/html/es/53_SEVEN-G_Construccion_de_soluciones_con_IA.html).
 
-> **Por qué importa.** Un consejo no necesita saber cómo se revisa un plan de arquitectura, pero sí necesita saber que existe un método que lo hace y que deja evidencias. SPAD es ese método para la construcción; SEVEN-G, si la compañía lo usa, es el que decide si la iniciativa sigue adelante.
+> **Por qué importa.** Un consejo no necesita saber cómo se revisa un plan de arquitectura, pero sí necesita saber que existe un método que lo hace y que deja evidencias. SPAD es ese método para la construcción; SEVEN-G, si la compañía lo usa, es el que decide si el caso de uso sigue adelante.
 
 ---
 

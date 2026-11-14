@@ -54,9 +54,9 @@ By the end you will be able to find any document, template or tool, search for a
 | **P01–P74** | Templates. P01–P31 are the evidence for each phase; P32–P71, those for the company, board, compliance, third parties, audit and implementation; P72–P74, the NIST profiles and the ISO/IEC 42001 statement of applicability. | Block H |
 | **T01–T22** | Tools. Those without their own application link to the procedure with which they are applied. | document 03 |
 | **C1–C5** | Stages of the corporate cycle: diagnosis, direction, portfolio, oversight and review. | document 01 |
-| **Phases 0–7 · G0–G5, R6, G7** | Phases of an initiative and their decision gates. | document 01 |
+| **Phases 0–7 · G0–G5, R6, G7** | Phases of a use case and their decision gates. | document 01 |
 | **G3.05, LV-G3** | A gate criterion and the checklist for that gate. | document 21 · document 22 |
-| **IA-AAAA-NNN** | Identifier of an initiative. | document 03 |
+| **IA-AAAA-NNN** | Identifier of a use case. | document 03 |
 | **A0–A3 · S1–S4 · N1–N3 · D1–D7** | Agent autonomy · incident severity · supplier requirement level · maturity dimensions. | document 02 |
 
 If in doubt, the glossary (document 02) rules. And there is no need to memorise any of them: the **"Document finder"** control in the bar takes you to where any of them is explained, by typing the code or part of the title.

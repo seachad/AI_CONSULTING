@@ -86,7 +86,7 @@ Cada trabajo con SPAD se asocia a un **tema** (*TOPIC*): un identificador corto 
 | Regla | Detalle |
 |---|---|
 | **Formato** | `snake_case`, máximo 20 caracteres, descriptivo. |
-| **Representa** | Una funcionalidad, una corrección, un incidente o una iniciativa. |
+| **Representa** | Una funcionalidad, una corrección, un incidente o un caso de uso. |
 | **Se fija** | En la fase 0, de forma explícita (lo da la persona) o inferida (lo propone la IA y la persona lo confirma). |
 | **Persiste** | Durante todo el trabajo; no cambia a mitad; no se reutiliza para otra funcionalidad. |
 | **Ejemplos válidos** | `user_auth`, `pdf_export`, `payment_gateway`, `cache_mem_leak`. |

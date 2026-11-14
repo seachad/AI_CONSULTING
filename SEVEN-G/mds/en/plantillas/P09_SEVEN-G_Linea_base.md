@@ -38,8 +38,8 @@ Completion rules:
 
 | Field | Content | Guidance |
 |---|---|---|
-| Initiative code | | IA-AAAA-NNN. |
-| Initiative name | | |
+| Use case code | | IA-AAAA-NNN. |
+| Use case name | | |
 | Version of the associated canvas | | Version of P08 to which this baseline corresponds. |
 | Document version | | |
 | Date | | DD-MM-AAAA. |
@@ -127,7 +127,7 @@ Complete if the attribution method in P08 is a control group.
 
 ## 9. Freeze and subsequent changes
 
-After G2, the baseline may only be modified because of a documented material error or a change in the definition of a metric, with the approval of the body that authorised the initiative. Modifying it to favour the result is a nonconformity.
+After G2, the baseline may only be modified because of a documented material error or a change in the definition of a metric, with the approval of the body that authorised the use case. Modifying it to favour the result is a nonconformity.
 
 | Date | Metric | Previous value | New value | Reason | Approved by |
 |---|---|---|---|---|---|

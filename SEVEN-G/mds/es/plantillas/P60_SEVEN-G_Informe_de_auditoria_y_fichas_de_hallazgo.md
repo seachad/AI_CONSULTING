@@ -33,7 +33,7 @@ Reglas de cumplimentación:
 
 - La auditoría se identifica con **AUD-AAAA-NNN** y cada hallazgo con **H-01, H-02…** dentro del informe (38 §9). Toda no conformidad se registra además en T08 con **NC-AAAA-NNN**.
 - Se clasifica por el **efecto más grave** sobre la decisión, las personas o el cumplimiento, y se aplican las reglas de agregación y reincidencia de 38 §8.1 y 21 §10.5.
-- El resultado de la auditoría **no es la decisión del *gate***: el auditor no recomienda si la iniciativa debe continuar por su valor de negocio.
+- El resultado de la auditoría **no es la decisión del *gate***: el auditor no recomienda si el caso de uso debe continuar por su valor de negocio.
 - Toda no conformidad crítica se comunica **antes del informe**, en cuanto se confirma (30, E-5).
 - La recomendación dice **qué** debe corregirse, no cómo diseñarlo en detalle: el auditor no diseña los controles que después audita.
 
@@ -75,7 +75,7 @@ Se registra en P29 y T03 (38 §9.1): resultado de la verificación, criterios en
 | Campo | Contenido | Guía |
 |---|---|---|
 | Objetivo | | |
-| Qué se auditó | | Sistemas, versiones, iniciativas, *gates*, procesos, periodo. |
+| Qué se auditó | | Sistemas, versiones, casos de uso, *gates*, procesos, periodo. |
 | Qué no se auditó | | Y por qué. |
 | Criterios aplicados | | Códigos G*n*.*nn* y R6.*nn* del documento 21, listas LV del documento 22, reglas EV, documentos del marco y normas aplicables (por ejemplo, el Reglamento de IA o el RGPD según la clasificación del sistema). |
 
@@ -118,7 +118,7 @@ Los plazos son de referencia; la compañía puede ajustarlos en C2 sin superar l
 
 Obligatorio en auditorías posteriores de *gates* y en las temáticas con varios sistemas (21 §10.7).
 
-| Elemento (iniciativa, *gate*, sistema o proveedor) | Resultado | Hallazgos |
+| Elemento (caso de uso, *gate*, sistema o proveedor) | Resultado | Hallazgos |
 |---|---|---|
 | | Conforme · Conforme con observaciones · No conforme | |
 
@@ -160,11 +160,11 @@ Campos adicionales de la ficha:
 
 | Campo | Contenido | Guía |
 |---|---|---|
-| Iniciativa, *gate* e iteración | | IA-AAAA-NNN · G*n* · iteración. |
+| Caso de uso, *gate* e iteración | | IA-AAAA-NNN · G*n* · iteración. |
 | Decisión auditada y fecha | | Resultado registrado en P29. |
 | Criterio o regla afectada | | Código G*n*.*nn*, R6.*nn* o regla EV. |
 | ¿Invalida la decisión? | | Sí · No. Todo hallazgo que invalida una decisión de *gate* es, como mínimo, no conformidad mayor (21 §10.5). |
-| Efecto sobre el *gate* (21 §10.6) | | Crítica: *gate* invalidado · Mayor que invalida: la iniciativa vuelve a Pendiente de gate y se verifica de nuevo; si está en producción, el comité decide si mantiene la operación con contención · Menor: la decisión se mantiene. |
+| Efecto sobre el *gate* (21 §10.6) | | Crítica: *gate* invalidado · Mayor que invalida: el caso de uso vuelve a Pendiente de gate y se verifica de nuevo; si está en producción, el comité decide si mantiene la operación con contención · Menor: la decisión se mantiene. |
 | Responsable | | |
 
 ---

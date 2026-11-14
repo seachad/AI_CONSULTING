@@ -374,6 +374,13 @@ blockquote.aviso-legal strong { color: var(--negro); }
 .dz-card-titulo { font: 700 19px/1.2 var(--serif); color: var(--negro); margin: 0 0 6px; }
 .dz-card-texto { font: 400 13.5px/1.4 var(--sans); color: var(--tinta-2); margin: 0 0 12px; flex: 1; }
 .dz-card .dz-item { background: var(--papel); }
+/* documento 00 de cada marco: sus presentaciones en slides (1, 5, 10 y 20 en tarjetas de dos columnas; el curso, de cuatro) */
+@media (min-width: 900px) { .dz-card[data-grupo="slides-curso"] { grid-column: span 4; } .dz-card[data-grupo="slides-otros"] { grid-column: span 3; } }
+.dz-card[data-grupo="slides-curso"] { border-top-color: var(--teal); }
+.dz-card[data-grupo="slides-curso"] .dz-card-rotulo { color: var(--teal); }
+.dz-card[data-grupo="slides-otros"] { border-top-color: var(--oxford); }
+.dz-card[data-grupo="slides-otros"] .dz-card-rotulo { color: var(--oxford); }
+.descargas-zona[id] { scroll-margin-top: 72px; }
 .dz-grupo { font: 700 12px/1.2 var(--sans); letter-spacing: .08em; text-transform: uppercase; color: var(--tinta-2); margin: 8px 0 -2px; padding-top: 10px; border-top: 1px solid var(--regla); }
 .dz-grupo:first-child { margin-top: 0; padding-top: 0; border-top: 0; }
 @media print { .descargas-zona { display: none !important; } }
@@ -467,7 +474,7 @@ h2 .codigo, h3 .codigo { font-weight: 400; }
     <strong>Downloads</strong>
     <button class="btn btn-icono" id="cerrar-descargas" type="button" aria-label="Close panel">✕</button>
   </div>
-  <div class="descargas-lista"><a class="dz-item" href="../../pdf/en/04_SPHERES_Regulacion_y_gobierno_de_la_IA.pdf" target="_blank" rel="noopener"><span class="dz-tipo">PDF</span><b>This document · English</b></a><a class="dz-item" href="../../pdf/es/04_SPHERES_Regulacion_y_gobierno_de_la_IA.pdf" target="_blank" rel="noopener"><span class="dz-tipo">PDF</span><b>Spanish version</b></a><a class="dz-item" href="../es/04_SPHERES_Regulacion_y_gobierno_de_la_IA.html" hreflang="es"><span class="dz-tipo html">HTML</span><b>Spanish version</b></a><a class="dz-item" href="../../../SEVEN-G/herramientas/T01_registro_iniciativas/registro.html" target="_blank" rel="noopener"><span class="dz-tipo tool">T01</span><b>Initiative register</b></a><a class="dz-item" href="../../../SEVEN-G/herramientas/T17_panel_consejo/index.html" target="_blank" rel="noopener"><span class="dz-tipo tool">T17</span><b>Regenerate the board dashboard</b></a></div>
+  <div class="descargas-lista"><a class="dz-item" href="../../pdf/en/04_SPHERES_Regulacion_y_gobierno_de_la_IA.pdf" target="_blank" rel="noopener"><span class="dz-tipo">PDF</span><b>This document · English</b></a><a class="dz-item" href="../../pdf/es/04_SPHERES_Regulacion_y_gobierno_de_la_IA.pdf" target="_blank" rel="noopener"><span class="dz-tipo">PDF</span><b>Spanish version</b></a><a class="dz-item" href="../es/04_SPHERES_Regulacion_y_gobierno_de_la_IA.html" hreflang="es"><span class="dz-tipo html">HTML</span><b>Spanish version</b></a><a class="dz-item" href="../../../SEVEN-G/herramientas/T01_registro_iniciativas/registro.html" target="_blank" rel="noopener"><span class="dz-tipo tool">T01</span><b>Use case register</b></a><a class="dz-item" href="../../../SEVEN-G/herramientas/T17_panel_consejo/index.html" target="_blank" rel="noopener"><span class="dz-tipo tool">T17</span><b>Regenerate the board dashboard</b></a></div>
 </aside>
 
 <div id="top"></div>
@@ -481,7 +488,7 @@ h2 .codigo, h3 .codigo { font-weight: 400; }
     <div class="cifras"><div class="cifra"><b>2</b><span>spheres with their own grades</span></div><div class="cifra"><b>6</b><span>dimensions</span></div><div class="cifra"><b>4</b><span>grades</span></div><div class="cifra"><b>3</b><span>ways of obtaining capabilities</span></div></div>
   </div>
 </header>
-<section class="descargas-zona" aria-label="Downloads and tools"><div class="dz-in"><div class="dz-bloque"><p class="dz-titulo">Downloads</p><div class="dz-enlaces"><a class="dz-item" href="../../pdf/en/04_SPHERES_Regulacion_y_gobierno_de_la_IA.pdf" target="_blank" rel="noopener"><span class="dz-tipo">PDF</span><b>This document · English</b></a><a class="dz-item" href="../../pdf/es/04_SPHERES_Regulacion_y_gobierno_de_la_IA.pdf" target="_blank" rel="noopener"><span class="dz-tipo">PDF</span><b>Spanish version</b></a><a class="dz-item" href="../es/04_SPHERES_Regulacion_y_gobierno_de_la_IA.html" hreflang="es"><span class="dz-tipo html">HTML</span><b>Spanish version</b></a></div></div><div class="dz-bloque"><p class="dz-titulo">Related tools</p><div class="dz-enlaces"><a class="dz-item" href="../../../SEVEN-G/herramientas/T01_registro_iniciativas/registro.html" target="_blank" rel="noopener"><span class="dz-tipo tool">T01</span><b>Initiative register</b></a><a class="dz-item" href="../../../SEVEN-G/herramientas/T17_panel_consejo/index.html" target="_blank" rel="noopener"><span class="dz-tipo tool">T17</span><b>Regenerate the board dashboard</b></a></div></div></div></section>
+<section class="descargas-zona" aria-label="Downloads and tools"><div class="dz-in"><div class="dz-bloque"><p class="dz-titulo">Downloads</p><div class="dz-enlaces"><a class="dz-item" href="../../pdf/en/04_SPHERES_Regulacion_y_gobierno_de_la_IA.pdf" target="_blank" rel="noopener"><span class="dz-tipo">PDF</span><b>This document · English</b></a><a class="dz-item" href="../../pdf/es/04_SPHERES_Regulacion_y_gobierno_de_la_IA.pdf" target="_blank" rel="noopener"><span class="dz-tipo">PDF</span><b>Spanish version</b></a><a class="dz-item" href="../es/04_SPHERES_Regulacion_y_gobierno_de_la_IA.html" hreflang="es"><span class="dz-tipo html">HTML</span><b>Spanish version</b></a></div></div><div class="dz-bloque"><p class="dz-titulo">Related tools</p><div class="dz-enlaces"><a class="dz-item" href="../../../SEVEN-G/herramientas/T01_registro_iniciativas/registro.html" target="_blank" rel="noopener"><span class="dz-tipo tool">T01</span><b>Use case register</b></a><a class="dz-item" href="../../../SEVEN-G/herramientas/T17_panel_consejo/index.html" target="_blank" rel="noopener"><span class="dz-tipo tool">T17</span><b>Regenerate the board dashboard</b></a></div></div></div></section>
 <nav class="indice"><div class="indice-in"><h2>In this document</h2><ol><li><a href="#why-these-two-spheres-are-different"><span>01</span>Why these two spheres are different</a></li><li><a href="#the-four-grades"><span>02</span>The four grades</a></li><li><a href="#sphere-08-regulation-ethics-and-accountability"><span>03</span>Sphere 08 · Regulation, ethics and accountability</a></li><li><a href="#sphere-09-ai-governance"><span>04</span>Sphere 09 · AI governance</a></li><li><a href="#how-08-and-09-are-presented-on-the-map"><span>05</span>How 08 and 09 are presented on the map</a></li><li><a href="#related-documents"><span>06</span>Related documents</a></li><li><a href="#version-control"><span>07</span>Version control</a></li></ol></div></nav>
 <main class="contenido" id="contenido">
 <blockquote class="aviso-legal plegado">
@@ -602,7 +609,7 @@ h2 .codigo, h3 .codigo { font-weight: 400; }
 <td><strong>Ethical leadership</strong></td>
 <td>Own principles beyond the legal minimum, an ethics body with real veto power and public transparency about the use of AI.</td>
 <td>Published principles with no mechanism to apply them.</td>
-<td>Principles approved by the board, ethical review of the initiatives that require it and a body with documented veto power.</td>
+<td>Principles approved by the board, ethical review of the use cases that require it and a body with documented veto power.</td>
 <td>Periodic public report on the use of AI and recorded veto or modification decisions.</td>
 </tr>
 </tbody>
@@ -645,7 +652,7 @@ h2 .codigo, h3 .codigo { font-weight: 400; }
 </tr>
 </tbody>
 </table></div>
-<p><strong>Rule of use on the map.</strong> Sphere 08 is the primary sphere of an initiative <strong>only when its purpose is compliance or ethics</strong> (for example, a system that monitors regulatory changes and assigns them to owners). It is <strong>never</strong> used to indicate that an initiative in another sphere carries regulatory risk: that is recorded in its regulatory classification and in its risk register.</p>
+<p><strong>Rule of use on the map.</strong> Sphere 08 is the primary sphere of a use case <strong>only when its purpose is compliance or ethics</strong> (for example, a system that monitors regulatory changes and assigns them to owners). It is <strong>never</strong> used to indicate that a use case in another sphere carries regulatory risk: that is recorded in its regulatory classification and in its risk register.</p>
 <h3 id="illustrative-case">Illustrative case</h3>
 <p><em>Fictitious financial institution.</em></p>
 <p>The institution has in production a model that prioritises financing applications and an assistant that answers customers. Neither is classified under the applicable AI regulation; the first could significantly affect people and the second interacts with customers without informing them that it is an AI system. Sphere 08 is diagnosed as follows: <strong>Compliance, Basic</strong> (there is a legal analysis of the assistant, but not of the model); <strong>Anticipation, Absent</strong> (nobody monitors which obligations will become applicable); <strong>Ethical leadership, Basic</strong> (there are published principles, but no body applies them). The board sets as a twelve-month target <strong>Systematic</strong> in Compliance and in Anticipation, and <strong>Basic</strong> in Ethical leadership with a body that has real veto power. The first action is to classify all the systems in the inventory, starting with those that affect decisions about people.</p>
@@ -668,7 +675,7 @@ h2 .codigo, h3 .codigo { font-weight: 400; }
 </tr>
 <tr>
 <td><strong>Ethical leadership</strong></td>
-<td>Do we have our own principles that go beyond the law? Is there anyone with real power to say no to an initiative that is profitable but inappropriate?</td>
+<td>Do we have our own principles that go beyond the law? Is there anyone with real power to say no to a use case that is profitable but inappropriate?</td>
 </tr>
 </tbody>
 </table></div>
@@ -705,14 +712,14 @@ h2 .codigo, h3 .codigo { font-weight: 400; }
 <td><strong>Structure</strong></td>
 <td>Who has ultimate accountability for the AI strategy, whether there is a framework that connects it with the business strategy, whether there is a portfolio prioritised by impact and risk and whether the board receives regular and understandable information.</td>
 <td>Designated owner; the portfolio is a list of projects.</td>
-<td>AI thesis and risk appetite approved; AI Committee operational; initiative register with roles and decision gates; quarterly reporting to the board.</td>
+<td>AI thesis and risk appetite approved; AI Committee operational; use case register with roles and decision gates; quarterly reporting to the board.</td>
 <td>All of the above, with the board's recommendations up to date and a complete annual review of the strategy.</td>
 </tr>
 <tr>
 <td><strong>Balance between speed and control</strong></td>
-<td>Whether the company is accelerating adoption with risk under control, whether there are decision gates in the lifecycle, how it measures its maturity and whether it can stop an initiative that is not working.</td>
+<td>Whether the company is accelerating adoption with risk under control, whether there are decision gates in the lifecycle, how it measures its maturity and whether it can stop a use case that is not working.</td>
 <td>Some controls, applied unevenly.</td>
-<td>Decision gates with independent validation in all initiatives; control intensity proportionate to risk; decision time limits measured; stops and retirements recorded.</td>
+<td>Decision gates with independent validation in all use cases; control intensity proportionate to risk; decision time limits measured; stops and retirements recorded.</td>
 <td>Decision times within time limits without an increase in incidents; annual calibration of time limits and thresholds.</td>
 </tr>
 <tr>
@@ -777,7 +784,7 @@ h2 .codigo, h3 .codigo { font-weight: 400; }
 <td>Legal obligations as such: that is sphere 08.</td>
 </tr>
 <tr>
-<td>Initiative portfolio, decision gates, stops and retirements.</td>
+<td>Use case portfolio, decision gates, stops and retirements.</td>
 <td></td>
 </tr>
 <tr>
@@ -792,7 +799,7 @@ h2 .codigo, h3 .codigo { font-weight: 400; }
 </table></div>
 <h3 id="illustrative-case-2">Illustrative case</h3>
 <p><em>Fictitious industrial group with several subsidiaries.</em></p>
-<p>Each subsidiary has launched its own AI initiatives and contracted its own suppliers. The board asks for a report and discovers that nobody can provide it: there is no common register, there is no ultimate owner and spending on models is spread across the technology budget lines of each subsidiary. Sphere 09 is diagnosed as follows: <strong>Structure, Absent</strong>; <strong>Balance between speed and control, Basic</strong> (two subsidiaries have their own committees); <strong>Supplier ecosystem, Absent</strong>. In the first quarter, the group designates an AI owner who reports to the board, creates a committee with the power to stop initiatives, registers all initiatives in a common register and consolidates spending on models. On reviewing the register, the committee stops three duplicated initiatives and discovers that almost all spending on models is concentrated in a single supplier without an exit strategy.</p>
+<p>Each subsidiary has launched its own AI use cases and contracted its own suppliers. The board asks for a report and discovers that nobody can provide it: there is no common register, there is no ultimate owner and spending on models is spread across the technology budget lines of each subsidiary. Sphere 09 is diagnosed as follows: <strong>Structure, Absent</strong>; <strong>Balance between speed and control, Basic</strong> (two subsidiaries have their own committees); <strong>Supplier ecosystem, Absent</strong>. In the first quarter, the group designates an AI owner who reports to the board, creates a committee with the power to stop use cases, registers all use cases in a common register and consolidates spending on models. On reviewing the register, the committee stops three duplicated use cases and discovers that almost all spending on models is concentrated in a single supplier without an exit strategy.</p>
 <h3 id="questions-for-the-board-2">Questions for the board</h3>
 <div class="tabla"><table>
 <thead>
@@ -808,7 +815,7 @@ h2 .codigo, h3 .codigo { font-weight: 400; }
 </tr>
 <tr>
 <td><strong>Balance between speed and control</strong></td>
-<td>Are we accelerating adoption with risk under control? Are there decision gates in the lifecycle? How do we measure our maturity? Can we stop an initiative that is not working?</td>
+<td>Are we accelerating adoption with risk under control? Are there decision gates in the lifecycle? How do we measure our maturity? Can we stop a use case that is not working?</td>
 </tr>
 <tr>
 <td><strong>Supplier ecosystem</strong></td>
@@ -818,13 +825,13 @@ h2 .codigo, h3 .codigo { font-weight: 400; }
 </table></div>
 <h3 id="warning-signs-2">Warning signs</h3>
 <ul>
-<li>Nobody has stopped or retired an initiative in the last twelve months.</li>
-<li>Initiatives in production without a recorded decision or a current periodic review.</li>
+<li>Nobody has stopped or retired a use case in the last twelve months.</li>
+<li>Use cases in production without a recorded decision or a current periodic review.</li>
 <li>Decision times well above what is reasonable, which push teams to bypass the process.</li>
 <li>A single supplier accounts for most of the spending on models without an exit strategy.</li>
 </ul>
 <h3 id="how-it-is-measured-2">How it is measured</h3>
-<p>The reference indicators are coverage of the register of initiatives and systems, current continuity review, board recommendations closed on time, decision time at the gates, time to production, ability to stop, concentration in the main model supplier, exit strategy and allocated AI cost. Their formulas are in <a href="../../../SEVEN-G/html/en/10_SEVEN-G_Mapa_de_esferas_y_niveles_de_ambicion.html">SEVEN-G 10</a>, section 7. The governance model is developed in <a href="../../../SEVEN-G/html/en/30_SEVEN-G_Modelo_de_gobierno.html">SEVEN-G 30 · Governance model</a> and supplier management in <a href="../../../SEVEN-G/html/en/36_SEVEN-G_Terceros_y_proveedores_de_IA.html">SEVEN-G 36 · AI third parties and suppliers</a>. The SEVEN-G initiative register (<a href="../../../SEVEN-G/herramientas/T01_registro_iniciativas/registro.html" title="Tool T01 &#183; Initiative register">T01</a>) and the board AI dashboard (<a href="../../../SEVEN-G/herramientas/T17_panel_consejo/index.html" title="Tool T17 &#183; Board AI dashboard">T17</a>) are the tools that support this sphere.</p>
+<p>The reference indicators are coverage of the register of use cases and systems, current continuity review, board recommendations closed on time, decision time at the gates, time to production, ability to stop, concentration in the main model supplier, exit strategy and allocated AI cost. Their formulas are in <a href="../../../SEVEN-G/html/en/10_SEVEN-G_Mapa_de_esferas_y_niveles_de_ambicion.html">SEVEN-G 10</a>, section 7. The governance model is developed in <a href="../../../SEVEN-G/html/en/30_SEVEN-G_Modelo_de_gobierno.html">SEVEN-G 30 · Governance model</a> and supplier management in <a href="../../../SEVEN-G/html/en/36_SEVEN-G_Terceros_y_proveedores_de_IA.html">SEVEN-G 36 · AI third parties and suppliers</a>. The SEVEN-G use case register (<a href="../../../SEVEN-G/herramientas/T01_registro_iniciativas/registro.html" title="Tool T01 &#183; Initiative register">T01</a>) and the board AI dashboard (<a href="../../../SEVEN-G/herramientas/T17_panel_consejo/index.html" title="Tool T17 &#183; Board AI dashboard">T17</a>) are the tools that support this sphere.</p>
 <hr />
 <h2 id="how-08-and-09-are-presented-on-the-map"><span class="antetitulo">05</span>How 08 and 09 are presented on the map</h2>
 <p>On the portfolio map, spheres 08 and 09 <strong>do not occupy Optimise, Augment and Transform columns</strong>. They are shown in a separate block with the current grade and the target grade of each dimension.</p>
@@ -873,7 +880,7 @@ h2 .codigo, h3 .codigo { font-weight: 400; }
 <td>Balance between speed and control</td>
 <td>Basic</td>
 <td>Systematic</td>
-<td>Gap: decision gates are not applied to all initiatives.</td>
+<td>Gap: decision gates are not applied to all use cases.</td>
 </tr>
 <tr>
 <td>09</td>
@@ -884,7 +891,7 @@ h2 .codigo, h3 .codigo { font-weight: 400; }
 </tr>
 </tbody>
 </table></div>
-<p>Initiatives whose primary sphere is 08 or 09 (for example, a tool for the system inventory or for regulatory monitoring) have their own ambition level like any other, but <strong>that level does not rate the sphere</strong>. Their investment is shown in a separate band, for governance and compliance enablement, so as not to mix it with investment that seeks value.</p>
+<p>Use cases whose primary sphere is 08 or 09 (for example, a tool for the system inventory or for regulatory monitoring) have their own ambition level like any other, but <strong>that level does not rate the sphere</strong>. Their investment is shown in a separate band, for governance and compliance enablement, so as not to mix it with investment that seeks value.</p>
 <blockquote>
 <p><strong>Why it matters.</strong> Visually separating these two spheres allows the board to see two things at once without confusing them: where and with what ambition the company is betting on AI, and whether it has the boundaries and governance needed to sustain those bets.</p>
 </blockquote>
@@ -952,7 +959,7 @@ h2 .codigo, h3 .codigo { font-weight: 400; }
 </table></div>
 <h2 id="external-sources">External sources cited</h2><p class="fuentes-nota">Links to the official or primary source, checked before publication. Always verify the version in force on the date of use.</p><ul class="fuentes-externas"><li><a href="https://eur-lex.europa.eu/eli/reg/2024/1689/oj/eng" target="_blank" rel="noopener">Regulation (EU) 2024/1689 of the European Parliament and of the Council of 13 June 2024 laying down harmonised rules on artificial intelligence (Artificial Intelligence Act)</a><span> · Parlamento Europeo y Consejo de la UE · 13-06-2024</span></li></ul>
 </main>
-<footer class="pie"><div><span>© 2026 Fernando García Varela · SPHERES methodology</span><span>Generated on 19-10-2026</span></div><p class="pie-ia">Content generated and typeset with AI support under the author&#39;s editorial supervision.</p></footer>
+<footer class="pie"><div><span>© 2026 Fernando García Varela · SPHERES methodology</span><span>Generated on 14-11-2026</span></div><p class="pie-ia">Content generated and typeset with AI support under the author&#39;s editorial supervision.</p></footer>
 <script src="../../../SEVEN-G/html/en/codigos.js" defer></script>
 
 <script>

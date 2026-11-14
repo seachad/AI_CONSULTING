@@ -46,7 +46,7 @@ Reglas de cumplimentación:
 |---|---|---|
 | Código de la campaña | | PA-AAAA-NNN. |
 | Tipo de campaña | | Previa a G5 · Periódica · Tras cambio relevante · Tras incidente · Evaluación anual de IA ofensiva · Simulacro de suplantación sintética · Banco de pruebas en la cadena de despliegue (SEG-27). |
-| Sistema e iniciativa | | SIA-AAAA-NNN · IA-AAAA-NNN; *No aplica* en campañas corporativas. |
+| Sistema e caso de uso | | SIA-AAAA-NNN · IA-AAAA-NNN; *No aplica* en campañas corporativas. |
 | Nivel de autonomía | | A0 · A1 · A2 · A3 (P17, P18). |
 | Tecnología y exposición | | Según P18 §2. |
 | Intensidad | | Lite · Enterprise. |
@@ -109,7 +109,7 @@ Cada caso se vincula a una amenaza de P18 §3, a su riesgo tipo (documento 33) y
 | C15 | Suplantación del cliente con IA en canales automatizados **(Enterprise)** | | RT-SEG-09 | SEG-18; segundo factor (35 §9.1) | | | |
 | *(ejemplo ilustrativo)* C02 | Inyección de instrucciones indirecta | Factura en PDF con texto oculto que ordena reenviar el historial del cliente a una dirección externa | RT-GEN-02 | AG-05, AG-12 | Sí (envío externo) | Bloqueado | 20 variantes |
 
-Los riesgos tipo de la tabla son la referencia de 35 §3.1; se ajustan al registro de riesgos de la iniciativa (P12).
+Los riesgos tipo de la tabla son la referencia de 35 §3.1; se ajustan al registro de riesgos del caso de uso (P12).
 
 ---
 

@@ -21,7 +21,7 @@
 
 ## 1. What SPAD is
 
-**SPAD solves one specific problem: building software with AI in a governed way.** It is not a framework for the company's AI governance. Deciding which AI initiatives go ahead, with what risk and how their value is measured is a different problem, at another level, which SEVEN-G solves (with SPHERES as its explanatory layer). SPAD deals only with how the software is built, and it can be used with or without SEVEN-G.
+**SPAD solves one specific problem: building software with AI in a governed way.** It is not a framework for the company's AI governance. Deciding which AI use cases go ahead, with what risk and how their value is measured is a different problem, at another level, which SEVEN-G solves (with SPHERES as its explanatory layer). SPAD deals only with how the software is built, and it can be used with or without SEVEN-G.
 
 **SPAD** (*Structured Prompt-Driven Engineering*) is Fernando García Varela's framework for **managing software development by means of artificial intelligence** in a controlled way. It turns AI from an informal programming assistant into a governed engineering tool whose work can be reviewed, reproduced and audited.
 
@@ -310,7 +310,7 @@ SPAD and SEVEN-G solve different problems, at different levels. SEVEN-G governs 
 
 | Aspect | SEVEN-G | SPAD |
 |---|---|---|
-| **Subject** | The complete AI initiative and the company's portfolio. | The development of a solution's software. |
+| **Subject** | The complete AI use case and the company's portfolio. | The development of a solution's software. |
 | **Question** | Is it worth it, with what risk and with what measured value? | Is it well built, tested and documented? |
 | **Decisions** | Decision gates taken by accountable people. | Technical review verdicts validated by the orchestrator. |
 | **Where it applies** | Throughout the lifecycle, from idea to retirement. | Wherever software is built with AI. If the company uses SEVEN-G, mainly in its design and delivery phases. |
@@ -323,7 +323,7 @@ Rules for working together:
 
 The detailed mapping of phases, roles, evidence and requirements is in [SEVEN-G 53 · Building solutions with AI](../../../SEVEN-G/html/en/53_SEVEN-G_Construccion_de_soluciones_con_IA.html).
 
-> **Why it matters.** A board does not need to know how an architecture plan is reviewed, but it does need to know that there is a method that does so and that leaves evidence. SPAD is that method for the build; SEVEN-G, if the company uses it, is the one that decides whether the initiative goes ahead.
+> **Why it matters.** A board does not need to know how an architecture plan is reviewed, but it does need to know that there is a method that does so and that leaves evidence. SPAD is that method for the build; SEVEN-G, if the company uses it, is the one that decides whether the use case goes ahead.
 
 ---
 

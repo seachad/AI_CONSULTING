@@ -53,14 +53,14 @@ The quality of the session depends on the preparation. It is advisable to start 
 
 | When | What | Who |
 |---|---|---|
-| **Two or three weeks before** | Short interviews with the chair, the chief executive and senior business, people, technology and risk management. Preliminary list of known AI initiatives and systems. | The presenter, with the AI Office if there is one |
-| **Two weeks before** | **First preliminary map**: each known initiative is placed in its primary sphere and at its ambition level (document 01). The approximate grades of spheres 08 and 09 are noted (document 04). The examples per level are chosen. | The presenter |
+| **Two or three weeks before** | Short interviews with the chair, the chief executive and senior business, people, technology and risk management. Preliminary list of known AI use cases and systems. | The presenter, with the AI Office if there is one |
+| **Two weeks before** | **First preliminary map**: each known use case is placed in its primary sphere and at its ambition level (document 01). The approximate grades of spheres 08 and 09 are noted (document 04). The examples per level are chosen. | The presenter |
 | **One week before** | Two-page note for the board: session objective, nine spheres, three levels, the reference questions and the decision that will be requested at the end. | Board secretariat |
 | **The day before** | Timed rehearsal. Each block fits its time or is cut. | The presenter |
 
 ### How to build the preliminary map
 
-1. **Gather the list** of AI initiatives and systems from the interviews, the budgets and the contracts with suppliers. It is common to discover initiatives that management was not aware of.
+1. **Gather the list** of AI use cases and systems from the interviews, the budgets and the contracts with suppliers. It is common to discover use cases that management was not aware of.
 2. **Assign the primary sphere** of each one: the sphere in which its main metric is measured, not the area that sponsors it.
 3. **Assign the ambition level** with the five questions in document 01. In case of doubt, the lower level.
 4. **Diagnose the enablers** with the five quick questions in document 03.
@@ -120,7 +120,7 @@ flowchart LR
 
 **What is presented.** What the EU AI Act requires according to the risk level of each system, data protection in automated decisions and applicable sector regulation, always with the consultation date. The three dimensions: Compliance, Anticipation and Ethical leadership. It is often the topic that concerns the board most.
 
-**What the board is asked.** Do we govern proactively or do we wait for the regulator to force us? Is there anyone with real power to say no to an initiative that is profitable but inappropriate?
+**What the board is asked.** Do we govern proactively or do we wait for the regulator to force us? Is there anyone with real power to say no to a use case that is profitable but inappropriate?
 
 **What to avoid.** Presenting regulation as a catalogue of penalties or treating as settled interpretations that require legal judgement.
 
@@ -146,13 +146,13 @@ Each sphere has a **reference question**, designed to open the conversation, and
 |---|---|---|
 | **01 · Customer** | If a competitor knows our customers better because it uses AI better, how long will it take us to lose relevance? | What part of the customer relationship is already mediated by AI, and who is accountable for its quality? Do we know whether AI improves retention or only reduces the cost of serving? |
 | **02 · Product and service** | Are we using AI to protect the current product or to build the next one? | What part of our revenue comes from products that would not exist without AI? Do we know the AI cost per unit of service? |
-| **03 · People** | Does AI replace, augment or reorganise people's work? | What happens to released capacity? What proportion of initiatives originates from employees themselves? |
+| **03 · People** | Does AI replace, augment or reorganise people's work? | What happens to released capacity? What proportion of use cases originates from employees themselves? |
 | **04 · Operations** | Do we know which processes are candidates for immediate automation and which need a complete redesign? | Are we automating tasks or redesigning processes? What happens if a system supporting a critical operation fails? |
-| **05 · Data** | Do we know what data we have, where it is, who is accountable for its quality and whether we can legally use it for AI? | How many initiatives are delayed for lack of data? Is our data an advantage that is hard to replicate? |
+| **05 · Data** | Do we know what data we have, where it is, who is accountable for its quality and whether we can legally use it for AI? | How many use cases are delayed for lack of data? Is our data an advantage that is hard to replicate? |
 | **06 · Knowledge** | If the people who know the most left tomorrow, what would be lost? | Who verifies the answers from our assistants? Do we learn from what we decide or do we repeat mistakes? |
 | **07 · Decision** | What does AI decide on its own, what requires human validation and what is never delegated? | Can we reconstruct what the system recommended and what the person decided? Who can stop a system that acts? |
 | **08 · Regulation, ethics and accountability** | Do we govern proactively or do we wait for the regulator to force us? | Are all our systems classified? Who signs off that classification? Do we have principles that go beyond the law? |
-| **09 · AI governance** | Does AI have corporate governance with the same formality as finance, risk or compliance? | Who is ultimately accountable? Can we stop an initiative that is not working? Do we depend on a single model supplier? |
+| **09 · AI governance** | Does AI have corporate governance with the same formality as finance, risk or compliance? | Who is ultimately accountable? Can we stop a use case that is not working? Do we depend on a single model supplier? |
 
 > **Why it matters.** The reference questions are deliberately uncomfortable. Their purpose is not to obtain an immediate answer, but for the board to recognise that it does not have one and to commission the work needed to obtain it.
 
@@ -190,7 +190,7 @@ The session ends with a mandate for the first ninety days. The sphere map is the
 
 | Period | Objective | What is done with the map | Outcome for the board |
 |---|---|---|---|
-| **Month 1** | Diagnosis | Complete inventory of initiatives and systems; current map by sphere and level; grades of 08 and 09 with evidence; diagnosis of the enablers. | Map of the current situation with the "no data" items made explicit. |
+| **Month 1** | Diagnosis | Complete inventory of use cases and systems; current map by sphere and level; grades of 08 and 09 with evidence; diagnosis of the enablers. | Map of the current situation with the "no data" items made explicit. |
 | **Month 2** | Risks and opportunities | Main risks and opportunities by sphere, with owner, estimated economic impact and time frame. | Prioritised list of risks and opportunities by sphere. |
 | **Month 3** | Governance structure | Proposal of target ambition by sphere, target grades for 08 and 09, main indicators, bodies, roles and rhythm of reporting to the board. | Ambition by sphere and governance structure for approval. |
 
@@ -230,7 +230,7 @@ The session may be led by management, a director with AI experience or an intern
 | Helps the board ask the right questions, interpret the evidence and follow up on what has been decided. | Lead the AI Office or take decisions that belong to the board or to management. |
 | Translates technical issues into business language. | Use market figures without a source to create urgency. |
 | Points out unsupported figures, undeclared omissions and unnecessary technical jargon. | Recommend suppliers, products or services in which they have an interest. |
-| Declares their interests and relationships with suppliers. | Oversee initiatives in which they or their organisation provide implementation services. |
+| Declares their interests and relationships with suppliers. | Oversee use cases in which they or their organisation provide implementation services. |
 
 The detail of this role, its independence and the board's training in AI are in [SEVEN-G 61 · Board conversation guide](../../../SEVEN-G/html/en/61_SEVEN-G_Guia_de_conversacion_con_el_consejo.html), section 10.
 
@@ -257,7 +257,7 @@ The detail of this role, its independence and the board's training in AI are in 
 | Document | Relationship |
 |---|---|
 | **document 00 · What SPHERES is and how it helps** | Presentation of the map and a complete example of reading it. |
-| **document 01 · Ambition levels** | Classification of initiatives for the preliminary map. |
+| **document 01 · Ambition levels** | Classification of use cases for the preliminary map. |
 | **document 02 · Spheres where value is created** | Examples and questions for blocks 02 and 05. |
 | **document 03 · Enabling spheres** | Quick diagnosis for block 03. |
 | **document 04 · Regulation and AI governance** | Dimensions and grades for blocks 04 and 06. |

@@ -37,7 +37,7 @@ Reglas:
 
 | Campo | Contenido | Guía |
 |---|---|---|
-| Código de la iniciativa | | IA-AAAA-NNN (T01). |
+| Código del caso de uso | | IA-AAAA-NNN (T01). |
 | Sistema(s) de IA | | Identificador en el inventario (T02). |
 | Versión del sistema cubierta por el plan | | Versión de modelo, instrucciones y configuración (P16). |
 | Nivel de autonomía | | A0 · A1 · A2 · A3 (P17). |

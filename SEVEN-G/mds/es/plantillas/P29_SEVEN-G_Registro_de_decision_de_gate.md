@@ -32,7 +32,7 @@ Reglas de decisión (01 §7.4):
 3. **Las evidencias deben existir antes del *gate*.** La documentación elaborada a posteriori para justificar un avance ya producido invalida el *gate* y es una no conformidad mayor.
 4. **Las condiciones tienen plazo y responsable.** Una condición vencida sin cumplir convierte el resultado en Iterar.
 5. **Límite de iteraciones.** Tras dos iteraciones en el mismo *gate*, la decisión se eleva al órgano superior.
-6. **Los criterios de parada se fijan antes** y no se relajan sin aprobación del órgano que autorizó la iniciativa.
+6. **Los criterios de parada se fijan antes** y no se relajan sin aprobación del órgano que autorizó el caso de uso.
 7. **Toda decisión queda registrada** con resultado, motivo, condiciones, decisor y verificador.
 
 ---
@@ -41,8 +41,8 @@ Reglas de decisión (01 §7.4):
 
 | Campo | Contenido | Guía |
 |---|---|---|
-| Código de la iniciativa | | IA-AAAA-NNN (T01). |
-| Nombre de la iniciativa | | |
+| Código del caso de uso | | IA-AAAA-NNN (T01). |
+| Nombre del caso de uso | | |
 | *Gate* | | G0 Autorización · G1 Oportunidad · G2 Hipótesis · G3 Viabilidad · G4 Diseño · G5 Puesta en producción · R6 Revisión de continuidad · G7 Escalado o retirada. |
 | Iteración | | 1, 2, 3… Si es la 3 o posterior, la decisión corresponde al órgano superior (regla 5). |
 | Sesión agrupada (Lite) | | No · G0–G2 · G4–G5. |
@@ -102,7 +102,7 @@ Lista de verificación binaria aplicada: LV-G*n* del documento 22 · versión: _
 
 ## 6. Criterios diferenciados por nivel de ambición
 
-Solo en G2, G3, G5 y G7 (01 §7.6). Se evalúa la columna del nivel de la iniciativa.
+Solo en G2, G3, G5 y G7 (01 §7.6). Se evalúa la columna del nivel del caso de uso.
 
 | *Gate* | Optimizar | Aumentar | Transformar | Estado |
 |---|---|---|---|---|

@@ -60,7 +60,7 @@ Se inventarían **todos los sistemas de IA** de los cuatro tipos de uso de 01 §
 
 | Tipo de uso | Qué se registra | Unidad de registro | Nivel de detalle |
 |---|---|---|---|
-| **Iniciativa de IA** | Cada sistema que forma parte de una iniciativa propia: modelos predictivos, soluciones de IA generativa, agentes, automatizaciones con IA desarrolladas o adaptadas por la compañía. | Un registro por sistema desplegado. Una iniciativa puede tener varios sistemas y un sistema puede servir a varias iniciativas. | Completo. |
+| **Caso de uso de IA** | Cada sistema que forma parte de un caso de uso propio: modelos predictivos, soluciones de IA generativa, agentes, automatizaciones con IA desarrolladas o adaptadas por la compañía. | Un registro por sistema desplegado. Un caso de uso puede tener varios sistemas y un sistema puede servir a varios casos de uso. | Completo. |
 | **IA de terceros integrada en procesos** | Software de un proveedor con funciones de IA que intervienen en decisiones, operaciones o relación con clientes. | Un registro por función de IA con finalidad diferenciada dentro del producto. | Completo. |
 | **Uso corporativo de IA de propósito general** | Asistentes, suites de productividad y herramientas del catálogo autorizado (documento 31). | Un registro por herramienta autorizada; los usos concretos no se registran individualmente salvo que pasen al ciclo completo. | Reducido, con licencias y condiciones. |
 | **Uso no autorizado** | Herramientas detectadas sin aprobación. | Un registro por herramienta y ámbito de detección. | Mínimo, hasta su regularización. |
@@ -95,14 +95,14 @@ Se inventarían **todos los sistemas de IA** de los cuatro tipos de uso de 01 §
 | Código del sistema | Identificador persistente. | Texto | Sí | `SIA-AAAA-NNN` |
 | Nombre | Nombre usado en la compañía. | Texto | Sí | — |
 | Qué es y para qué se usa | Explicación comprensible para quien no es especialista (regla 10 de medición). | Texto largo | Sí | Una o dos frases |
-| Tipo de uso | Tipo de 01 §1.2. | Lista | Sí | Iniciativa de IA · IA de terceros integrada en procesos · Uso corporativo de IA de propósito general · Uso no autorizado |
-| Iniciativas vinculadas | Iniciativas del registro que usan el sistema. | Referencia múltiple | Cond.: tipos iniciativa e IA de terceros integrada | `IA-AAAA-NNN` |
+| Tipo de uso | Tipo de 01 §1.2. | Lista | Sí | Caso de uso de IA · IA de terceros integrada en procesos · Uso corporativo de IA de propósito general · Uso no autorizado |
+| Casos de uso vinculados | Casos de uso del registro que usan el sistema. | Referencia múltiple | Cond.: tipos caso de uso e IA de terceros integrada | `IA-AAAA-NNN` |
 | Área responsable | Unidad que usa el sistema y responde de él. | Lista (catálogo de la compañía) | Sí | — |
 | Sociedad | Sociedad del grupo que lo despliega. | Lista | Cond.: grupos | — |
 | Fecha de alta | Fecha de registro en el inventario. | Fecha | Sí | — |
 | Origen del alta | Cómo llegó al inventario. | Lista | Sí | Fase 0 · Diagnóstico C1 · Compras o renovación · Detección técnica · Comunicación interna · Auditoría · Aviso del proveedor |
-| Responsable del sistema | Persona que responde del uso: el responsable de producto de la iniciativa o, en uso corporativo, el propietario designado del servicio. | Persona | Sí (salvo uso no autorizado: responsable de la regularización) | — |
-| Patrocinador | Patrocinador de IA. | Persona | Cond.: tipos iniciativa e IA de terceros integrada | — |
+| Responsable del sistema | Persona que responde del uso: el responsable de producto del caso de uso o, en uso corporativo, el propietario designado del servicio. | Persona | Sí (salvo uso no autorizado: responsable de la regularización) | — |
+| Patrocinador | Patrocinador de IA. | Persona | Cond.: tipos caso de uso e IA de terceros integrada | — |
 | Responsable técnico | Responsable técnico de IA. | Persona | Cond.: en desarrollo o producción | — |
 | Responsable de operación | Responsable de operación de IA. | Persona | Cond.: en producción | — |
 | Responsable de riesgos | Responsable de riesgos de IA. | Persona | Sí, desde la clasificación provisional | — |
@@ -111,11 +111,11 @@ Se inventarían **todos los sistemas de IA** de los cuatro tipos de uso de 01 §
 
 | Campo | Descripción | Tipo | Obligatorio | Valores |
 |---|---|---|---|---|
-| Estado del sistema | Situación del sistema (distinta del estado de la iniciativa en 03 §3.2). | Lista | Sí | En evaluación · En desarrollo · Piloto · En producción · Suspendido · Retirado · Bloqueado |
+| Estado del sistema | Situación del sistema (distinta del estado del caso de uso en 03 §3.2). | Lista | Sí | En evaluación · En desarrollo · Piloto · En producción · Suspendido · Retirado · Bloqueado |
 | Tecnología | Taxonomía de 03 §3.3. | Lista múltiple | Sí | ML predictivo · IA generativa · Agente · Procesamiento de lenguaje y documentos · Visión · Optimización · IA de terceros embebida · Reglas (no es IA) |
 | Exposición | Taxonomía de 03 §3.3. | Lista | Sí | Interna · Empleados · Clientes de forma indirecta · Clientes o personas externas de forma directa |
-| Esfera principal | Taxonomía de 03 §3.3. | Lista | Cond.: tipos iniciativa e IA de terceros integrada | 01 Cliente … 09 Gobierno de la IA |
-| Intensidad | Lite o Enterprise (01 §9). | Lista | Cond.: tipos iniciativa e IA de terceros integrada | Lite · Enterprise |
+| Esfera principal | Taxonomía de 03 §3.3. | Lista | Cond.: tipos caso de uso e IA de terceros integrada | 01 Cliente … 09 Gobierno de la IA |
+| Intensidad | Lite o Enterprise (01 §9). | Lista | Cond.: tipos caso de uso e IA de terceros integrada | Lite · Enterprise |
 | Autonomía | Nivel de la especificación común (§5.4). | Lista | Sí | A0 Asistencia · A1 Recomendación · A2 Actuación supervisada · A3 Actuación autónoma |
 | Acciones que puede ejecutar | Para A2 y A3. | Lista múltiple | Cond.: A2 o A3 | Lectura · Escritura en sistemas · Comunicaciones externas · Pagos o compromisos económicos · Cambios en sistemas de producción |
 | Decisiones sobre personas | Si el resultado influye de forma significativa en decisiones que afectan a personas. | Sí/No | Sí | — |
@@ -191,7 +191,7 @@ Estados comunes: **Hecho · Pendiente · No aplica**, coherentes con el esquema 
 
 ### 3.7 Campos mínimos por tipo de uso
 
-| Bloque | Iniciativa | IA de terceros integrada | Uso corporativo | Uso no autorizado |
+| Bloque | Caso de uso | IA de terceros integrada | Uso corporativo | Uso no autorizado |
 |---|---|---|---|---|
 | Identificación y responsables | Completo | Completo | Sin patrocinador | Código, nombre, qué es, tipo, área, alta, origen, responsable de la regularización |
 | Descripción técnica y de uso | Completo | Completo | Estado, tecnología, exposición, autonomía, licencias, categoría | Estado, tecnología, autonomía |
@@ -280,7 +280,7 @@ Tras los pasos 1 a 7, el árbol continúa con dos pasos que no cambian la catego
 |---|---|---|---|---|
 | **1** | ¿Es un **sistema de IA** según el artículo 3.1? | Comprobar si es un sistema basado en máquinas que, con algún nivel de autonomía, **infiere** a partir de la información de entrada cómo generar resultados (predicciones, contenidos, recomendaciones o decisiones) que pueden influir en entornos físicos o virtuales. Usar las directrices de la Comisión sobre la definición de sistema de IA. Los sistemas basados exclusivamente en reglas definidas por personas para ejecutar operaciones automáticamente no suelen cumplir la definición. | Descripción del funcionamiento; técnica utilizada; conclusión motivada. | No → **Fuera de ámbito** (tecnología "Reglas (no es IA)"). Dudoso → revisión jurídica. Sí → paso 2. |
 | **2** | ¿Aplica una **exclusión** del artículo 2? | Revisar, entre otras: fines exclusivamente militares, de defensa o de seguridad nacional (2.3); investigación y desarrollo científicos como única finalidad (2.6); actividades de investigación, prueba o desarrollo antes de la introducción en el mercado o puesta en servicio, salvo pruebas en condiciones reales (2.8); licencias libres y de código abierto con las salvedades del artículo 2.12. | Exclusión aplicada y motivo. | Sí → **Fuera de ámbito** (se mantiene en el inventario y se revisa si cambia el uso). No → paso 3. |
-| **3** | ¿Es una **práctica prohibida** del artículo 5? | Contrastar con cada supuesto del artículo 5.1: técnicas subliminales, manipuladoras o engañosas que alteren el comportamiento causando perjuicios; explotación de vulnerabilidades por edad, discapacidad o situación social o económica; puntuación social con trato perjudicial; predicción del riesgo de delinquir basada únicamente en perfiles o rasgos de personalidad; creación o ampliación de bases de datos de reconocimiento facial mediante extracción no selectiva; inferencia de emociones en el lugar de trabajo o en centros educativos, salvo por motivos médicos o de seguridad; categorización biométrica para inferir características sensibles; identificación biométrica remota en tiempo real en espacios públicos con fines policiales fuera de los supuestos permitidos; y la prohibición añadida por el Reglamento (UE) 2026/1744 sobre generación de contenido sexual explícito no consentido o material de abuso sexual infantil (aplicable desde el 2-12-2026). Usar las directrices de la Comisión sobre prácticas prohibidas. | Análisis de cada letra con conclusión. | Sí → **Prohibido**: la iniciativa no pasa de la fase 3; si el sistema está en uso, suspensión inmediata y no conformidad crítica. No → paso 4. |
+| **3** | ¿Es una **práctica prohibida** del artículo 5? | Contrastar con cada supuesto del artículo 5.1: técnicas subliminales, manipuladoras o engañosas que alteren el comportamiento causando perjuicios; explotación de vulnerabilidades por edad, discapacidad o situación social o económica; puntuación social con trato perjudicial; predicción del riesgo de delinquir basada únicamente en perfiles o rasgos de personalidad; creación o ampliación de bases de datos de reconocimiento facial mediante extracción no selectiva; inferencia de emociones en el lugar de trabajo o en centros educativos, salvo por motivos médicos o de seguridad; categorización biométrica para inferir características sensibles; identificación biométrica remota en tiempo real en espacios públicos con fines policiales fuera de los supuestos permitidos; y la prohibición añadida por el Reglamento (UE) 2026/1744 sobre generación de contenido sexual explícito no consentido o material de abuso sexual infantil (aplicable desde el 2-12-2026). Usar las directrices de la Comisión sobre prácticas prohibidas. | Análisis de cada letra con conclusión. | Sí → **Prohibido**: el caso de uso no pasa de la fase 3; si el sistema está en uso, suspensión inmediata y no conformidad crítica. No → paso 4. |
 | **4** | ¿Es de **alto riesgo por el anexo I** (artículo 6.1)? | Dos condiciones acumulativas: el sistema es componente de seguridad de un producto, o es en sí un producto, cubierto por la legislación de armonización del anexo I; y ese producto debe someterse a una evaluación de conformidad de terceros según esa legislación. | Legislación aplicable y procedimiento de evaluación del producto. | Sí → **Alto riesgo** (anexo I; obligaciones desde el 2-8-2028) y paso 7. No → paso 5. |
 | **5** | ¿Su **finalidad prevista** está en el **anexo III** (artículo 6.2)? | Contrastar la finalidad con los ocho ámbitos del anexo III y sus letras. Atención en compañías privadas a: 1 (biometría), 2 (componentes de seguridad de infraestructuras críticas), 3 (educación y formación profesional), 4 (contratación y selección; decisiones sobre condiciones laborales, promoción, extinción, asignación de tareas por comportamiento o rasgos, y seguimiento y evaluación del rendimiento), 5.b (solvencia y calificación crediticia, salvo detección de fraude financiero), 5.c (evaluación de riesgos y fijación de precios en seguros de vida y salud). | Punto y letra del anexo III, o conclusión de que no aplica. | No → paso 7. Sí → paso 6. |
 | **6** | ¿Aplica la **excepción del artículo 6.3**? | El sistema del anexo III no se considera de alto riesgo si no plantea un riesgo importante de daño para la salud, la seguridad o los derechos fundamentales, incluido por no influir sustancialmente en el resultado de la decisión, y cumple al menos una condición: a) tarea de procedimiento limitada; b) mejora del resultado de una actividad humana previamente realizada; c) detección de patrones de decisión o desviaciones sin sustituir ni influir en la valoración humana previa sin la debida revisión humana; d) tarea preparatoria de una evaluación relevante para los casos del anexo III. **Nunca** aplica si el sistema elabora perfiles de personas físicas. Usar las directrices de la Comisión sobre la aplicación del artículo 6 previstas en su apartado 5, cuando estén disponibles en su versión vigente. | Condición aplicada, análisis de influencia en la decisión, confirmación de ausencia de perfiles. Si la compañía es proveedor: evaluación documentada antes de la puesta en servicio y registro (artículos 6.4 y 49.2). | No → **Alto riesgo** (anexo III; obligaciones desde el 2-12-2027) y paso 7. Sí → paso 7 con la excepción documentada. |
@@ -374,7 +374,7 @@ Tras los pasos 1 a 7, el árbol continúa con dos pasos que no cambian la catego
 | 2 | Crear el registro con los campos mínimos del tipo de uso y asignar código `SIA-AAAA-NNN`. | Oficina de IA | 5 días hábiles desde la identificación | Ficha P05 en T02 |
 | 3 | Designar responsable del sistema y responsable de riesgos. | Área y segunda línea | Con el alta | Ficha P05 |
 | 4 | Clasificación provisional (pasos 1–7 del árbol) con T07. | Responsable de riesgos | 10 días hábiles desde el alta | Clasificación provisional en P11 |
-| 5 | Determinar intensidad (P04) y vincular con la iniciativa, si procede. | Patrocinador, verificado | En fase 0 | P04 |
+| 5 | Determinar intensidad (P04) y vincular con el caso de uso, si procede. | Patrocinador, verificado | En fase 0 | P04 |
 | 6 | Si es uso no autorizado: abrir no conformidad y plan de regularización (documento 31 §5). | Oficina de IA | Con el alta | Registro en T08 |
 | 7 | Clasificación definitiva con revisión jurídica y plan de evaluaciones. | Responsable de riesgos | Antes de G3 | P11 definitiva |
 | 8 | Verificación de la ficha. | Auditor de IA (Enterprise) u Oficina de IA (Lite) | En G0 y G3 | Registro de verificación |
@@ -426,7 +426,7 @@ Los objetivos son de referencia para empezar; la compañía los fija en C2 y los
 
 1. **Un sistema en producción sin ficha completa y clasificación definitiva** es una no conformidad mayor; si además es de alto riesgo o prohibido, crítica.
 2. **Las fichas no se rellenan con estimaciones no declaradas.** "Sin dato" se registra como tal.
-3. **Conciliación obligatoria** entre T02 (sistemas) y T01 (iniciativas): toda iniciativa en fases 4–7 debe tener al menos un sistema vinculado, y todo sistema de tipo iniciativa debe tener una iniciativa.
+3. **Conciliación obligatoria** entre T02 (sistemas) y T01 (casos de uso): todo caso de uso en fases 4–7 debe tener al menos un sistema vinculado, y todo sistema de tipo caso de uso debe tener un caso de uso.
 4. **Responsable nominal**, no área genérica.
 5. **Historial conservado**: los cambios no sobrescriben sin registrar el valor anterior.
 
@@ -441,7 +441,7 @@ El inventario solo es fiable si se contrasta con fuentes independientes. La Ofic
 | Registro de aplicaciones y arquitectura empresarial | Aplicaciones con componentes de IA no inventariados. | Tecnología |
 | Contratos, compras y renovaciones | Productos y servicios con funciones de IA; cláusulas sobre IA o uso de datos para entrenamiento. | Compras |
 | Registro de proveedores de IA (T09) y registro de proveedores TIC (DORA, cuando aplique) | Proveedores con servicios de IA sin sistema vinculado. | Segunda línea |
-| Facturación de nube y consumo de APIs de modelos | Consumo de servicios de modelos o de plataformas de IA sin iniciativa asociada. | Finanzas y tecnología |
+| Facturación de nube y consumo de APIs de modelos | Consumo de servicios de modelos o de plataformas de IA sin caso de uso asociado. | Finanzas y tecnología |
 | Repositorios de código y plataformas de datos | Proyectos que usan bibliotecas o servicios de IA, modelos desplegados. | Tecnología |
 | Registro de actividades de tratamiento (RGPD, artículo 30) | Tratamientos que mencionan perfiles, puntuaciones, automatización o IA. | Protección de datos |
 | Registros de navegación, prevención de fuga de datos y gestión de dispositivos | Uso no autorizado (documento 31 §5.2). | Seguridad |
@@ -474,7 +474,7 @@ El resultado de la conciliación alimenta el indicador Q7 y se informa al comit�
 | **P47** | Evaluación de impacto en protección de datos | Evaluación exigida según la sección 6.1. |
 | **P48** | Evaluación de impacto en derechos fundamentales | Evaluación y notificación exigidas según la sección 6.2. |
 | **P42** | Informe trimestral de segunda línea | Informa al comité de IA de la conciliación de la sección 9 y del indicador Q7. |
-| **T01** | Registro de iniciativas | Vinculación sistema–iniciativa y eventos de cambio de clasificación. |
+| **T01** | Registro de casos de uso | Vinculación sistema–caso de uso y eventos de cambio de clasificación. |
 | **T04** | Determinación de intensidad | Usa la clasificación y la autonomía del inventario. |
 | **T09** | Registro de proveedores de IA | Proveedores y modelos de uso general vinculados. |
 | **T17** | Panel de IA para el consejo | Recibe la clasificación y el estado de controles (sección 3.8). |
@@ -487,7 +487,7 @@ El resultado de la conciliación alimenta el indicador Q7 y se informa al comit�
 | Documento | Relación |
 |---|---|
 | **01 · Metodología fundacional** | Tipos de uso (§1.2), fase 0 y fase 3, criterios Enterprise, declaración de aplicación (§14). |
-| **03 · Herramientas y registro de iniciativas** | Taxonomía controlada, modelo de datos y eventos. |
+| **03 · Herramientas y registro de casos de uso** | Taxonomía controlada, modelo de datos y eventos. |
 | **21 · Criterios de *gate* y auditoría** | Criterios de G0 y G3 sobre inventario y clasificación. |
 | **30 · Modelo de gobierno** | Responsabilidades sobre el inventario y la clasificación. |
 | **31 · Política corporativa y uso aceptable** | Uso corporativo, IA embebida y uso no autorizado. |

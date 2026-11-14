@@ -16,7 +16,7 @@
 
 > **Aviso legal y exención de responsabilidad.** SEVEN-G es un marco metodológico de referencia que se ofrece «tal cual» y con fines exclusivamente informativos. No constituye asesoramiento jurídico, regulatorio, financiero ni profesional, ni garantiza el cumplimiento de ninguna norma. Las referencias a regulación general (como el Reglamento Europeo de IA, el RGPD, DORA o NIS2), a normas técnicas y a regulación específica de cada sector o jurisdicción pueden ser incompletas, no aplicar a un caso concreto o quedar desactualizadas por cambios normativos, interpretaciones o criterios de las autoridades posteriores a su fecha de consulta. **Cada organización que use SEVEN-G es la única responsable de identificar la normativa que le aplica, verificar su vigencia y certificar su propio cumplimiento regulatorio**, con el asesoramiento cualificado que corresponda. Esta metodología es una ayuda genérica y gratuita, compartida con la comunidad para que nadie tenga que empezar desde cero; cada persona u organización puede y debe adaptarla a su propio uso. No debe entenderse que sus partes jurídicamente sensibles hayan sido revisadas por una asesoría jurídica: esas revisiones, para cada empresa o sector, son responsabilidad última de la empresa, el consultor o la organización que la use. Aunque se procura mantenerla al día, alguna norma puede haber cambiado sin que se recoja aquí. En la máxima medida permitida por la ley, el autor no asume responsabilidad alguna por los efectos de su aplicación en ninguna organización ni por su aplicabilidad completa. La metodología no otorga certificación de ningún tipo. El autor no asume responsabilidad alguna por el uso que se haga de este contenido ni por las decisiones que se adopten con él. Los datos, cifras, compañías y casos de los ejemplos son ficticios o ilustrativos.
 
-<!-- esencial: siempre | Toda iniciativa se clasifica en una esfera principal y un nivel de ambición con las reglas de la sección 4, y el consejo fija en C2 la ambición por esfera. Las fichas de cada esfera y sus indicadores se consultan cuando se trabaja en esa esfera. -->
+<!-- esencial: siempre | Todo caso de uso se clasifica en una esfera principal y un nivel de ambición con las reglas de la sección 4, y el consejo fija en C2 la ambición por esfera. Las fichas de cada esfera y sus indicadores se consultan cuando se trabaja en esa esfera. -->
 
 ## 1. Objeto y alcance
 
@@ -24,11 +24,11 @@ Este documento desarrolla el **mapa de impacto** de SEVEN-G: nueve esferas en la
 
 - Qué cubre cada esfera, qué preguntas debe hacerse el consejo, qué ejemplos corresponden a cada nivel y qué señales indican que algo no va bien.
 - **Indicadores con fórmula** para cada esfera, de modo que el mapa pueda medirse y no solo describirse.
-- Las **reglas de clasificación** de una iniciativa en el mapa: esfera principal, esfera secundaria y nivel de ambición.
+- Las **reglas de clasificación** de un caso de uso en el mapa: esfera principal, esfera secundaria y nivel de ambición.
 - La **regla específica de las esferas 08 y 09**, que se evalúan con niveles propios y no deben mezclarse con Optimizar, Aumentar y Transformar.
 - El **mapa de calor** de la cartera (herramienta T16) y su uso en el ciclo corporativo (C1 a C5) y en el ciclo de vida (fases 1, 2 y 7).
 
-La clasificación detallada del nivel de ambición de una iniciativa (cinco preguntas y reglas de decisión) está en el documento 12. La fijación de la ambición objetivo por esfera es un resultado de C2 y se documenta con el documento 13.
+La clasificación detallada del nivel de ambición de un caso de uso (cinco preguntas y reglas de decisión) está en el documento 12. La fijación de la ambición objetivo por esfera es un resultado de C2 y se documenta con el documento 13.
 
 Los códigos de indicador de este documento (`IE01.01`…) son provisionales. El documento 41 (Catálogo de indicadores) los consolida con el resto de indicadores del marco.
 
@@ -54,7 +54,7 @@ Un consejo no decide sobre modelos ni sobre plataformas: decide sobre riesgo, op
 
 Principios de uso del mapa:
 
-1. **Las nueve esferas cubren toda la organización.** Si una iniciativa no encaja en ninguna, lo más probable es que su objetivo de negocio no esté claro.
+1. **Las nueve esferas cubren toda la organización.** Si un caso de uso no encaja en ninguna, lo más probable es que su objetivo de negocio no esté claro.
 2. **Las esferas habilitadoras condicionan a las de valor.** Una ambición de Transformar en Cliente o en Producto sin capacidad suficiente en Datos, Conocimiento y Decisión es una señal de riesgo, no de audacia.
 3. **Las esferas 08 y 09 no generan valor por sí mismas**: fijan los límites y el sistema de gobierno. Por eso se evalúan con niveles propios (secciones 6 y 7).
 4. **El mapa se lee en tres tiempos**: situación actual (C1), ambición objetivo (C2) y cartera que la ejecuta (C3).
@@ -78,9 +78,9 @@ Los niveles de ambición **no son una escalera**. No es obligatorio pasar por Op
 
 Reglas generales:
 
-- **Toda iniciativa tiene un único nivel de ambición**, clasificado con las cinco preguntas del documento 12. Si una iniciativa mezcla componentes de distinto nivel, se divide o se clasifica según el componente que justifica la inversión.
+- **Todo caso de uso tiene un único nivel de ambición**, clasificado con las cinco preguntas del documento 12. Si un caso de uso mezcla componentes de distinto nivel, se divide o se clasifica según el componente que justifica la inversión.
 - **La ambición se refiere a lo que cambia en el negocio**, no a la tecnología usada. Un agente de IA generativa puede ser Optimizar; un modelo estadístico clásico puede ser Transformar.
-- **La ambición de una esfera** (en C1 o en C2) se expresa con los niveles de las iniciativas que la componen; no se asigna por opinión.
+- **La ambición de una esfera** (en C1 o en C2) se expresa con los niveles de los casos de uso que la componen; no se asigna por opinión.
 
 ---
 
@@ -88,26 +88,26 @@ Reglas generales:
 
 ### 4.1 Esfera principal y esfera secundaria
 
-Cada iniciativa se registra en el registro de iniciativas (T01) con una **esfera principal** obligatoria y, como máximo, una **esfera secundaria**.
+Cada caso de uso se registra en el registro de casos de uso (T01) con una **esfera principal** obligatoria y, como máximo, una **esfera secundaria**.
 
 | # | Regla |
 |---|---|
 | 1 | La **esfera principal** es aquella en la que se mide la **métrica principal de la hipótesis de valor**. No se decide por la tecnología, por el área que patrocina ni por el proveedor. |
 | 2 | La **esfera secundaria** solo se registra si existe un segundo efecto relevante **medible con un indicador de esa esfera** o un cambio organizativo explícito. No se usa para señalar dependencias genéricas. |
-| 3 | Las esferas **05 Datos, 06 Conocimiento y 07 Decisión** son principales solo cuando el resultado principal es la propia capacidad habilitadora (un catálogo de datos, una base de conocimiento, un sistema de decisión). Que una iniciativa use datos no la sitúa en la esfera 05. |
-| 4 | La esfera **03 Personas** es principal cuando el resultado principal recae sobre el trabajo, las capacidades o la organización. Debería registrarse como secundaria en toda iniciativa de Aumentar o Transformar que cambie roles. |
-| 5 | Las esferas **08 y 09** son principales solo cuando la finalidad de la iniciativa es el cumplimiento o el gobierno (por ejemplo, un sistema de IA para vigilar obligaciones regulatorias o para mantener el inventario). **Nunca** se usan para indicar que una iniciativa tiene riesgo regulatorio: eso se registra en la clasificación regulatoria y en el registro de riesgos. |
+| 3 | Las esferas **05 Datos, 06 Conocimiento y 07 Decisión** son principales solo cuando el resultado principal es la propia capacidad habilitadora (un catálogo de datos, una base de conocimiento, un sistema de decisión). Que un caso de uso use datos no lo sitúa en la esfera 05. |
+| 4 | La esfera **03 Personas** es principal cuando el resultado principal recae sobre el trabajo, las capacidades o la organización. Debería registrarse como secundaria en todo caso de uso de Aumentar o Transformar que cambie roles. |
+| 5 | Las esferas **08 y 09** son principales solo cuando la finalidad del caso de uso es el cumplimiento o el gobierno (por ejemplo, un sistema de IA para vigilar obligaciones regulatorias o para mantener el inventario). **Nunca** se usan para indicar que un caso de uso tiene riesgo regulatorio: eso se registra en la clasificación regulatoria y en el registro de riesgos. |
 | 6 | La inversión y el valor se imputan **solo a la esfera principal** (regla 5 de medición: cada euro se atribuye a un solo caso). La esfera secundaria aparece en el mapa como marca, sin importes. |
 | 7 | Si la métrica principal cambia en G2 o en G7, la esfera principal se revisa y el cambio se registra como evento. |
 
 Casos dudosos frecuentes (ejemplos ilustrativos):
 
-| Iniciativa | Principal | Secundaria | Motivo |
+| Caso de uso | Principal | Secundaria | Motivo |
 |---|---|---|---|
 | Asistente que redacta respuestas a reclamaciones de clientes para el equipo de atención | 04 Operaciones | 01 Cliente, solo si se mide satisfacción o recontacto | La métrica principal es el tiempo de gestión por reclamación. |
 | Recomendador de productos en el canal digital | 01 Cliente | 02 Producto y servicio, si modifica la oferta | La métrica principal es la conversión incremental. |
 | Plataforma común de datos para varios casos de IA | 05 Datos | — | El resultado es la capacidad habilitadora; el valor de los casos que la usan se imputa a esos casos. |
-| Asistente generativo integrado en la suite ofimática para varias unidades de negocio | 03 Personas | 06 Conocimiento, si se mide el acceso a la información | Es una iniciativa transversal: se registra una sola vez y se mide por unidad de negocio (documento 40 §7.2). No es una capacidad habilitadora de las esferas 05 a 07: su resultado recae sobre el trabajo de las personas. |
+| Asistente generativo integrado en la suite ofimática para varias unidades de negocio | 03 Personas | 06 Conocimiento, si se mide el acceso a la información | Es un caso de uso transversal: se registra una sola vez y se mide por unidad de negocio (documento 40 §7.2). No es una capacidad habilitadora de las esferas 05 a 07: su resultado recae sobre el trabajo de las personas. |
 | Copiloto para analistas de riesgos que les permite revisar operaciones más complejas | 03 Personas o 07 Decisión | La otra de las dos | Principal según la métrica: rendimiento de los analistas (03) o calidad de la decisión (07). |
 | Sistema de IA que vigila cambios normativos y los asigna a responsables | 08 Regulación, ética y responsabilidad | — | Su finalidad es la anticipación regulatoria. |
 
@@ -126,10 +126,10 @@ Para no mezclarlas con los tres niveles se aplican estas reglas:
 |---|---|---|
 | 1 | En el mapa de calor, las filas 08 y 09 muestran **grados por dimensión**, nunca columnas Optimizar, Aumentar o Transformar. | Presentar "Transformar en Regulación" como si fuera una apuesta de negocio. |
 | 2 | La ambición objetivo de C2 para 08 y 09 se expresa como **grado objetivo por dimensión** (documento 13). | Fijar como objetivo "Aumentar el gobierno", que no es verificable. |
-| 3 | Una iniciativa con esfera principal 08 o 09 **tiene nivel de ambición** (se clasifica con las cinco preguntas, igual que las demás), pero ese nivel **no se usa** para calificar la esfera. Su aportación se registra además como **dimensión a la que contribuye** (por ejemplo, Anticipación). | Confundir el tipo de apuesta de una herramienta con el grado de gobierno de la compañía. |
-| 4 | La inversión de las iniciativas con esfera principal 08 o 09 se muestra en una **banda separada del mapa de calor** ("habilitación de gobierno y cumplimiento") y se **excluye** de las señales 1, 2 y 7 del índice de transformación (documento 12). | Que invertir en gobierno se lea como "eficiencia" y rebaje el perfil, o que se use para inflar la ambición. |
+| 3 | Un caso de uso con esfera principal 08 o 09 **tiene nivel de ambición** (se clasifica con las cinco preguntas, igual que los demás), pero ese nivel **no se usa** para calificar la esfera. Su aportación se registra además como **dimensión a la que contribuye** (por ejemplo, Anticipación). | Confundir el tipo de apuesta de una herramienta con el grado de gobierno de la compañía. |
+| 4 | La inversión de los casos de uso con esfera principal 08 o 09 se muestra en una **banda separada del mapa de calor** ("habilitación de gobierno y cumplimiento") y se **excluye** de las señales 1, 2 y 7 del índice de transformación (documento 12). | Que invertir en gobierno se lea como "eficiencia" y rebaje el perfil, o que se use para inflar la ambición. |
 | 5 | Los grados de 08 y 09 **no son niveles de madurez**. Sirven de evidencia para las dimensiones D6 (Riesgo, seguridad y cumplimiento) y D1 (Estrategia y gobierno) del documento 11, pero no las sustituyen. | Duplicar o contradecir el diagnóstico de madurez. |
-| 6 | Las esferas 08 y 09 **no pueden ser esfera secundaria** de una iniciativa cuya finalidad no sea el cumplimiento o el gobierno. | Usar la etiqueta 08 como sinónimo de "tiene riesgo regulatorio". |
+| 6 | Las esferas 08 y 09 **no pueden ser esfera secundaria** de un caso de uso cuya finalidad no sea el cumplimiento o el gobierno. | Usar la etiqueta 08 como sinónimo de "tiene riesgo regulatorio". |
 
 Definición común de los grados:
 
@@ -144,7 +144,7 @@ Definición común de los grados:
 
 ## 5. Fichas de las esferas 01 a 07
 
-Cada ficha tiene la misma estructura: qué cubre, preguntas para el consejo, ejemplos por nivel, señales de alerta e indicadores. **Los ejemplos son genéricos e ilustrativos**; no son recomendaciones ni referencias de mercado. Los indicadores se calculan sobre el perímetro que se indique (compañía, unidad o iniciativa) y siguen las reglas de medición del documento 00: todo importe tiene fórmula y estado, y "sin dato" no es cero.
+Cada ficha tiene la misma estructura: qué cubre, preguntas para el consejo, ejemplos por nivel, señales de alerta e indicadores. **Los ejemplos son genéricos e ilustrativos**; no son recomendaciones ni referencias de mercado. Los indicadores se calculan sobre el perímetro que se indique (compañía, unidad o caso de uso) y siguen las reglas de medición del documento 00: todo importe tiene fórmula y estado, y "sin dato" no es cero.
 
 ### 5.1 Esfera 01 · Cliente
 
@@ -207,7 +207,7 @@ Cada ficha tiene la misma estructura: qué cubre, preguntas para el consejo, eje
 - Se anuncian funcionalidades con IA sin medir su uso real.
 - El coste de IA por unidad de servicio no se conoce o crece más rápido que los ingresos del producto.
 - No existe responsable de producto que responda del comportamiento de la IA ante el cliente.
-- Las iniciativas de nuevo producto se evalúan con el mismo plazo de retorno que las de eficiencia y se paran antes de obtener evidencia de mercado.
+- Los casos de uso de nuevo producto se evalúan con el mismo plazo de retorno que los de eficiencia y se paran antes de obtener evidencia de mercado.
 
 **Indicadores**
 
@@ -228,14 +228,14 @@ Cada ficha tiene la misma estructura: qué cubre, preguntas para el consejo, eje
 |---|---|---|
 | **Receptoras** | La IA les cambia herramientas, procesos y expectativas de productividad, sin que lo hayan elegido. | Gestión del cambio, formación y alfabetización en IA; de ello depende la adopción. |
 | **Sujetos** | La IA puede reestructurar, reasignar o eliminar puestos. | Decisión explícita de la dirección y del consejo, diálogo con la representación de los trabajadores cuando proceda, y trato responsable. |
-| **Promotoras** | Quien mejor conoce un proceso puede identificar usos de IA que nadie externo vería. | Un canal para proponer iniciativas que entren en el registro y en la cartera. |
+| **Promotoras** | Quien mejor conoce un proceso puede identificar usos de IA que nadie externo vería. | Un canal para proponer casos de uso que entren en el registro y en la cartera. |
 
 **Preguntas para el consejo**
 
 - ¿La IA sustituye, aumenta o reorganiza el trabajo de las personas? Esa respuesta define la cultura, la marca como empleador y la retención de talento.
 - ¿Qué ocurre con la capacidad liberada: se convierte en menor coste, se reasigna o simplemente desaparece?
 - ¿Tienen las personas que usan o supervisan IA la formación adecuada a su rol?
-- ¿Qué proporción de las iniciativas nace de los propios empleados?
+- ¿Qué proporción de los casos de uso nace de los propios empleados?
 
 **Ejemplos por nivel (ilustrativos)**
 
@@ -250,7 +250,7 @@ Cada ficha tiene la misma estructura: qué cubre, preguntas para el consejo, eje
 - Se informa de horas liberadas sin indicar si se han materializado o reasignado.
 - Se mide el número de licencias asignadas y no el uso efectivo.
 - Las decisiones sobre puestos se toman como consecuencia técnica de un proyecto, sin decisión explícita de la dirección.
-- No existe plan de adopción en iniciativas de Aumentar o Transformar.
+- No existe plan de adopción en casos de uso de Aumentar o Transformar.
 - La rotación de los colectivos afectados crece sin que nadie la analice.
 
 **Indicadores**
@@ -261,8 +261,8 @@ Cada ficha tiene la misma estructura: qué cubre, preguntas para el consejo, eje
 | IE03.02 | Capacidad liberada materializada | Horas liberadas convertidas en menor coste real ÷ horas liberadas medidas × 100 | T12, T20 |
 | IE03.03 | Capacidad liberada reasignada | Horas reasignadas de forma explícita a actividades registradas ÷ horas liberadas medidas × 100 | T20 |
 | IE03.04 | Alfabetización en IA por rol | Personas con formación en IA acreditada y adecuada a su rol ÷ personas que usan, supervisan o deciden sobre IA × 100 | Registro de formación |
-| IE03.05 | Roles rediseñados | Puestos con descripción actualizada por efecto de la IA ÷ puestos afectados por iniciativas de Aumentar o Transformar × 100 | Personas, T20 |
-| IE03.06 | Iniciativas promovidas por empleados | Iniciativas de origen empleado que superan G1 ÷ iniciativas de origen empleado registradas × 100 | T01 (campo de origen) |
+| IE03.05 | Roles rediseñados | Puestos con descripción actualizada por efecto de la IA ÷ puestos afectados por casos de uso de Aumentar o Transformar × 100 | Personas, T20 |
+| IE03.06 | Casos de uso promovidos por empleados | Casos de uso de origen empleado que superan G1 ÷ casos de uso de origen empleado registrados × 100 | T01 (campo de origen) |
 
 ### 5.4 Esfera 04 · Operaciones
 
@@ -308,7 +308,7 @@ Cada ficha tiene la misma estructura: qué cubre, preguntas para el consejo, eje
 **Preguntas para el consejo**
 
 - ¿Sabemos qué datos tenemos, dónde están, quién responde de su calidad y si podemos usarlos legalmente para IA?
-- ¿Cuántas iniciativas se retrasan o se paran por falta de datos?
+- ¿Cuántos casos de uso se retrasan o se paran por falta de datos?
 - ¿Tenemos documentado de dónde vienen los datos con los que decide cada sistema en producción?
 - ¿Nuestros datos son una ventaja que un competidor no puede replicar?
 
@@ -322,7 +322,7 @@ Cada ficha tiene la misma estructura: qué cubre, preguntas para el consejo, eje
 
 **Señales de alerta**
 
-- Iniciativas que llegan a la fase 3 sin haber confirmado el acceso a los datos.
+- Casos de uso que llegan a la fase 3 sin haber confirmado el acceso a los datos.
 - Datos personales usados para entrenar o alimentar sistemas sin base legal documentada.
 - Conjuntos de datos críticos sin responsable identificado.
 - Sistemas en producción sin linaje de datos y modelos.
@@ -335,8 +335,8 @@ Cada ficha tiene la misma estructura: qué cubre, preguntas para el consejo, eje
 | IE05.02 | Calidad de los datos críticos | Conjuntos críticos que cumplen los umbrales de calidad definidos ÷ conjuntos críticos × 100 | Vigilancia de calidad |
 | IE05.03 | Base legal documentada | Conjuntos con datos personales usados en IA con base legal documentada ÷ conjuntos con datos personales usados en IA × 100 | Protección de datos |
 | IE05.04 | Linaje documentado | Sistemas de IA en producción con linaje de datos y modelos verificado (P16) ÷ sistemas de IA en producción × 100 | T02, P16 |
-| IE05.05 | Tiempo de acceso a los datos | Mediana de días entre la solicitud de datos de una iniciativa y su disponibilidad en el entorno autorizado | T01 (eventos) |
-| IE05.06 | Iniciativas bloqueadas por datos | Iniciativas paradas con motivo "Datos insuficientes" o en espera por datos ÷ iniciativas paradas o en espera en el periodo × 100 | T01 |
+| IE05.05 | Tiempo de acceso a los datos | Mediana de días entre la solicitud de datos de un caso de uso y su disponibilidad en el entorno autorizado | T01 (eventos) |
+| IE05.06 | Casos de uso bloqueados por datos | Casos de uso parados con motivo "Datos insuficientes" o en espera por datos ÷ casos de uso parados o en espera en el periodo × 100 | T01 |
 
 ### 5.6 Esfera 06 · Conocimiento
 
@@ -426,7 +426,7 @@ Cada ficha tiene la misma estructura: qué cubre, preguntas para el consejo, eje
 |---|---|---|---|---|
 | **Cumplimiento** | Clasificación de los sistemas según el Reglamento Europeo de IA, obligaciones de transparencia y supervisión, protección de datos en decisiones automatizadas y perfilado, regulación sectorial. | Clasificación y evaluaciones en algunos sistemas, a demanda. | Todos los sistemas inventariados están clasificados; las evaluaciones exigidas se hacen antes de G3; las no conformidades se gestionan con plazos. | Sistemático, con indicadores en objetivo dos trimestres y auditoría sin no conformidades mayores abiertas. |
 | **Anticipación** | Vigilancia de la regulación emergente, evaluaciones de impacto antes del despliegue y preparación para auditorías externas. | Se sigue la regulación de forma informal. | Proceso de vigilancia con responsable; cada cambio relevante tiene análisis de impacto en plazo; simulacros de auditoría. | La compañía adapta sus sistemas antes de que la obligación sea aplicable y lo documenta. |
-| **Liderazgo ético** | Principios propios más allá del mínimo legal, órgano ético con capacidad real de veto y transparencia pública sobre el uso de IA. | Principios publicados sin mecanismo de aplicación. | Principios aprobados por el consejo, revisión ética de las iniciativas que lo requieren y órgano con capacidad de veto documentada. | Informe público periódico sobre el uso de la IA y decisiones de veto o modificación registradas. |
+| **Liderazgo ético** | Principios propios más allá del mínimo legal, órgano ético con capacidad real de veto y transparencia pública sobre el uso de IA. | Principios publicados sin mecanismo de aplicación. | Principios aprobados por el consejo, revisión ética de los casos de uso que lo requieren y órgano con capacidad de veto documentada. | Informe público periódico sobre el uso de la IA y decisiones de veto o modificación registradas. |
 
 ### 6.2 Preguntas para el consejo por dimensión
 
@@ -434,7 +434,7 @@ Cada ficha tiene la misma estructura: qué cubre, preguntas para el consejo, eje
 |---|---|
 | Cumplimiento | ¿Están clasificados todos nuestros sistemas de IA? ¿Alguno podría ser una práctica prohibida o de alto riesgo sin que lo sepamos? ¿Quién firma esa clasificación? |
 | Anticipación | ¿Qué obligaciones nos serán aplicables en los próximos 24 meses y qué sistemas afectan? ¿Estamos preparados para una auditoría externa de IA? |
-| Liderazgo ético | ¿Tenemos principios propios que vayan más allá de la ley? ¿Hay alguien con capacidad real de decir que no a una iniciativa rentable pero inadecuada? |
+| Liderazgo ético | ¿Tenemos principios propios que vayan más allá de la ley? ¿Hay alguien con capacidad real de decir que no a un caso de uso rentable pero inadecuado? |
 
 ### 6.3 Señales de alerta
 
@@ -453,8 +453,8 @@ Cada ficha tiene la misma estructura: qué cubre, preguntas para el consejo, eje
 | IE08.04 | Anticipación | Análisis de cambios regulatorios en plazo | Cambios regulatorios relevantes con análisis de impacto dentro del plazo fijado ÷ cambios regulatorios relevantes identificados × 100 |
 | IE08.05 | Anticipación | Adaptación anticipada | Obligaciones con fecha de aplicación futura con plan de adaptación aprobado ÷ obligaciones con fecha de aplicación en los próximos 24 meses × 100 |
 | IE08.06 | Anticipación | Uso no autorizado regularizado | Casos de uso no autorizado regularizados (autorizados, sustituidos o bloqueados) en plazo ÷ casos detectados × 100 |
-| IE08.07 | Liderazgo ético | Revisión ética aplicada | Iniciativas que requieren revisión ética y la tienen registrada antes de G3 ÷ iniciativas que la requieren × 100 |
-| IE08.08 | Liderazgo ético | Capacidad efectiva de veto | Número de iniciativas modificadas o paradas por decisión del órgano ético en los últimos 12 meses (se informa junto al número revisado) |
+| IE08.07 | Liderazgo ético | Revisión ética aplicada | Casos de uso que requieren revisión ética y la tienen registrada antes de G3 ÷ casos de uso que la requieren × 100 |
+| IE08.08 | Liderazgo ético | Capacidad efectiva de veto | Número de casos de uso modificados o parados por decisión del órgano ético en los últimos 12 meses (se informa junto al número revisado) |
 | IE08.09 | Liderazgo ético | Transparencia pública | Sistemas con exposición directa a personas descritos en la información pública de la compañía ÷ sistemas con exposición directa × 100 |
 
 ---
@@ -469,14 +469,14 @@ Cada ficha tiene la misma estructura: qué cubre, preguntas para el consejo, eje
 
 | Dimensión | Preguntas para el consejo | Básico | Sistemático | Avanzado |
 |---|---|---|---|---|
-| **Estructura** | ¿Quién tiene la responsabilidad última de la estrategia de IA? ¿Hay un marco que la conecte con la estrategia de negocio? ¿Hay una cartera priorizada por impacto y riesgo? ¿Recibe el consejo información periódica y comprensible? | Responsable designado; cartera como lista de proyectos. | Tesis de IA y apetito de riesgo aprobados; comité de IA operativo; registro de iniciativas con roles y *gates*; panel trimestral al consejo. | Sistemático, con registro de recomendaciones al día y revisión anual C5 completada. |
-| **Equilibrio entre velocidad y control** | ¿Aceleramos la adopción con el riesgo bajo control? ¿Hay puertas de decisión en el ciclo de vida? ¿Cómo medimos nuestra madurez? ¿Podemos parar una iniciativa que no funciona? | Algunos controles, aplicados de forma desigual. | *Gates* con validación dual en todas las iniciativas; intensidad Lite o Enterprise determinada; plazos de referencia medidos; paradas y retiradas registradas. | Tiempos de decisión dentro de plazo sin aumento de no conformidades; calibración anual de plazos y umbrales. |
+| **Estructura** | ¿Quién tiene la responsabilidad última de la estrategia de IA? ¿Hay un marco que la conecte con la estrategia de negocio? ¿Hay una cartera priorizada por impacto y riesgo? ¿Recibe el consejo información periódica y comprensible? | Responsable designado; cartera como lista de proyectos. | Tesis de IA y apetito de riesgo aprobados; comité de IA operativo; registro de casos de uso con roles y *gates*; panel trimestral al consejo. | Sistemático, con registro de recomendaciones al día y revisión anual C5 completada. |
+| **Equilibrio entre velocidad y control** | ¿Aceleramos la adopción con el riesgo bajo control? ¿Hay puertas de decisión en el ciclo de vida? ¿Cómo medimos nuestra madurez? ¿Podemos parar un caso de uso que no funciona? | Algunos controles, aplicados de forma desigual. | *Gates* con validación dual en todos los casos de uso; intensidad Lite o Enterprise determinada; plazos de referencia medidos; paradas y retiradas registradas. | Tiempos de decisión dentro de plazo sin aumento de no conformidades; calibración anual de plazos y umbrales. |
 | **Ecosistema de proveedores** | ¿Dependemos de un solo proveedor de modelos? ¿Evaluamos construir, comprar o aliarse para cada capacidad? ¿Protegen los contratos nuestros datos y propiedad intelectual? ¿Entendemos la estructura de costes de la IA? | Proveedores conocidos, sin evaluación homogénea. | Registro de proveedores con nivel de exigencia N1–N3; cláusulas contractuales mínimas; coste por categoría y por caso. | Estrategia de salida probada para proveedores N3 y concentración dentro del apetito de riesgo. |
 
 ### 7.2 Señales de alerta
 
-- Nadie ha parado ni retirado una iniciativa en los últimos 12 meses.
-- Iniciativas en producción sin *gate* registrado o sin revisión de continuidad vigente.
+- Nadie ha parado ni retirado un caso de uso en los últimos 12 meses.
+- Casos de uso en producción sin *gate* registrado o sin revisión de continuidad vigente.
 - Tiempo de decisión de los *gates* muy por encima del plazo de referencia, lo que empuja a los equipos a eludir el proceso.
 - Un único proveedor concentra la mayor parte del gasto en modelos sin estrategia de salida.
 
@@ -484,12 +484,12 @@ Cada ficha tiene la misma estructura: qué cubre, preguntas para el consejo, eje
 
 | Código | Dimensión | Indicador | Fórmula |
 |---|---|---|---|
-| IE09.01 | Estructura | Cobertura del registro | Iniciativas y sistemas de IA activos dados de alta en T01 y T02 con roles asignados sin incompatibilidades ÷ iniciativas y sistemas activos conocidos × 100 |
+| IE09.01 | Estructura | Cobertura del registro | Casos de uso y sistemas de IA activos dados de alta en T01 y T02 con roles asignados sin incompatibilidades ÷ casos de uso y sistemas activos conocidos × 100 |
 | IE09.02 | Estructura | Continuidad vigente | Sistemas en producción con revisión de continuidad (R6) dentro de su periodicidad ÷ sistemas en producción × 100 |
 | IE09.03 | Estructura | Recomendaciones del consejo cerradas en plazo | Recomendaciones cerradas con evidencia dentro del plazo ÷ recomendaciones con vencimiento en el periodo × 100 |
 | IE09.04 | Velocidad y control | Tiempo de decisión de *gate* | Mediana de días entre la solicitud y la decisión del *gate*, por intensidad, frente al plazo de referencia |
 | IE09.05 | Velocidad y control | Tiempo hasta producción | Mediana de días entre el registro y G5, por intensidad y por nivel de ambición |
-| IE09.06 | Velocidad y control | Capacidad de parar | Iniciativas paradas o retiradas con motivo codificado en 12 meses ÷ iniciativas con decisión de *gate* en 12 meses × 100 |
+| IE09.06 | Velocidad y control | Capacidad de parar | Casos de uso parados o retirados con motivo codificado en 12 meses ÷ casos de uso con decisión de *gate* en 12 meses × 100 |
 | IE09.07 | Ecosistema | Concentración en el proveedor principal de modelos | Gasto en el proveedor principal de modelos ÷ gasto total en modelos × 100 |
 | IE09.08 | Ecosistema | Estrategia de salida | Proveedores de nivel N3 con estrategia de salida documentada y probada ÷ proveedores N3 × 100 |
 | IE09.09 | Ecosistema | Coste de IA imputado | Coste de IA imputado a casos con reparto analítico ÷ coste total de IA × 100 |
@@ -498,19 +498,19 @@ Cada ficha tiene la misma estructura: qué cubre, preguntas para el consejo, eje
 
 ## 8. Mapa de calor esferas × niveles (T16)
 
-El mapa de calor es la vista de la cartera sobre el mapa de impacto. Se genera desde el registro de iniciativas (T01) y se muestra en el panel del consejo (T17), en la tarjeta «Dónde está el impacto» de «Cartera y valor» (60 §10.5), que permite también ver las filas por unidad de negocio. La ambición objetivo de C2 por esfera se registra en T01, en la decisión del consejo que aprueba la tesis (62 §10.2), y el panel la toma de ahí; sin ella no marca brechas ni «fuera de tesis».
+El mapa de calor es la vista de la cartera sobre el mapa de impacto. Se genera desde el registro de casos de uso (T01) y se muestra en el panel del consejo (T17), en la tarjeta «Dónde está el impacto» de «Cartera y valor» (60 §10.5), que permite también ver las filas por unidad de negocio. La ambición objetivo de C2 por esfera se registra en T01, en la decisión del consejo que aprueba la tesis (62 §10.2), y el panel la toma de ahí; sin ella no marca brechas ni «fuera de tesis».
 
 ### 8.1 Construcción
 
 | Elemento | Definición |
 |---|---|
-| **Filas** | Esferas 01 a 07. Debajo, en bloque separado, las esferas 08 y 09 con sus dimensiones, y la banda "habilitación de gobierno y cumplimiento" con la inversión de las iniciativas cuya esfera principal es 08 o 09. |
+| **Filas** | Esferas 01 a 07. Debajo, en bloque separado, las esferas 08 y 09 con sus dimensiones, y la banda "habilitación de gobierno y cumplimiento" con la inversión de los casos de uso cuya esfera principal es 08 o 09. |
 | **Columnas** | Optimizar · Aumentar · Transformar. |
-| **Perímetro** | Iniciativas activas (desde G0 superado hasta retirada) y las paradas o retiradas en los últimos 12 meses, que se muestran aparte. |
+| **Perímetro** | Casos de uso activos (desde G0 superado hasta retirada) y los parados o retirados en los últimos 12 meses, que se muestran aparte. |
 | **Nivel usado** | Ambición real si existe; si no, confirmada; si no, propuesta, marcada como tal. |
-| **Contenido de cada celda** | Número de iniciativas (total y en producción) · Inversión y coste recurrente anual · Valor neto anual validado · Ambición objetivo de C2 para la esfera. |
+| **Contenido de cada celda** | Número de casos de uso (total y en producción) · Inversión y coste recurrente anual · Valor neto anual validado · Ambición objetivo de C2 para la esfera. |
 | **Color** | Proporción de la inversión y el coste recurrente de la celda sobre el total de las esferas 01 a 07: **Sin actividad** (0 %) · **Baja** (menos del 5 %) · **Media** (del 5 % al 15 %) · **Alta** (más del 15 %). Umbrales iniciales, a calibrar en C5. |
-| **Marcas** | **Brecha**: en la celda del nivel que coincide con la ambición objetivo de la esfera no hay ninguna iniciativa que haya superado G2. · **Fuera de tesis**: inversión en una esfera declarada no prioritaria en C2 superior al 5 % del total. · **Sin evidencia**: iniciativas con más de 12 meses en producción y sin valor validado. · **Secundaria**: número de iniciativas que tienen la esfera como secundaria (sin importes). |
+| **Marcas** | **Brecha**: en la celda del nivel que coincide con la ambición objetivo de la esfera no hay ningún caso de uso que haya superado G2. · **Fuera de tesis**: inversión en una esfera declarada no prioritaria en C2 superior al 5 % del total. · **Sin evidencia**: casos de uso con más de 12 meses en producción y sin valor validado. · **Secundaria**: número de casos de uso que tienen la esfera como secundaria (sin importes). |
 
 En las filas 08 y 09 cada dimensión muestra su **grado actual** y su **grado objetivo** (Ausente, Básico, Sistemático o Avanzado), calculados con los indicadores de las secciones 6.4 y 7.3 y validados por la oficina de IA.
 
@@ -520,21 +520,21 @@ En las filas 08 y 09 cada dimensión muestra su **grado actual** y su **grado ob
 
 | Esfera | Objetivo C2 | Optimizar | Aumentar | Transformar |
 |---|---|---|---|---|
-| 01 · Cliente | Aumentar | 3 iniciativas · 0,45 · Media | 1 iniciativa · 0,30 · Media | — |
+| 01 · Cliente | Aumentar | 3 casos de uso · 0,45 · Media | 1 caso de uso · 0,30 · Media | — |
 | 02 · Producto y servicio | Transformar | 1 · 0,10 · Baja | — | 1 · 0,30 · Media |
 | 03 · Personas | Aumentar | 2 · 0,40 · Media | 1 · 0,40 · Media | — |
 | 04 · Operaciones | Optimizar | 6 · 1,60 · **Alta** | — | — |
 | 05 · Datos | Aumentar | 1 · 0,35 · Media | **Brecha** | — |
 | 06 · Conocimiento | Aumentar | 1 · 0,10 · Baja | **Brecha** | — |
 | 07 · Decisión | Optimizar | **Brecha** | — | — |
-| Banda de habilitación (08 y 09) | — | 2 iniciativas · 0,25 (fuera del total de 4,00) | — | — |
+| Banda de habilitación (08 y 09) | — | 2 casos de uso · 0,25 (fuera del total de 4,00) | — | — |
 
 | Esfera | Dimensión | Grado actual | Grado objetivo |
 |---|---|---|---|
 | 08 | Cumplimiento · Anticipación · Liderazgo ético | Sistemático · Básico · Básico | Sistemático · Sistemático · Básico |
 | 09 | Estructura · Velocidad y control · Ecosistema | Sistemático · Básico · Ausente | Sistemático · Sistemático · Básico |
 
-Lectura para el consejo: el 75 % de la inversión (3,00 de 4,00) está en Optimizar y el 40 % en Operaciones; la apuesta de Transformar en Producto existe pero es única; Datos y Conocimiento tienen objetivo de Aumentar sin ninguna iniciativa que lo ejecute, lo que debilita las esferas de valor; Decisión no tiene actividad; y el ecosistema de proveedores no está gobernado. El mismo ejemplo se usa para calcular el índice de transformación en el documento 12.
+Lectura para el consejo: el 75 % de la inversión (3,00 de 4,00) está en Optimizar y el 40 % en Operaciones; la apuesta de Transformar en Producto existe pero es única; Datos y Conocimiento tienen objetivo de Aumentar sin ningún caso de uso que lo ejecute, lo que debilita las esferas de valor; Decisión no tiene actividad; y el ecosistema de proveedores no está gobernado. El mismo ejemplo se usa para calcular el índice de transformación en el documento 12.
 
 ---
 
@@ -544,22 +544,22 @@ Lectura para el consejo: el 75 % de la inversión (3,00 de 4,00) está en Optimi
 
 | Etapa | Uso del mapa | Resultado | Documento |
 |---|---|---|---|
-| **C1 · Diagnóstico** | Clasificar las iniciativas y sistemas existentes por esfera y nivel; calcular los indicadores disponibles; asignar grados a 08 y 09; construir el mapa de calor actual. Para cada esfera se registran el **nivel alcanzado** (máximo nivel con al menos una iniciativa en producción y valor medido) y el **nivel en cartera** (máximo nivel con alguna iniciativa que haya superado G2). | Mapa de esferas actual con indicadores y "sin dato" explícitos. | 11, 12 |
+| **C1 · Diagnóstico** | Clasificar los casos de uso y sistemas existentes por esfera y nivel; calcular los indicadores disponibles; asignar grados a 08 y 09; construir el mapa de calor actual. Para cada esfera se registran el **nivel alcanzado** (máximo nivel con al menos un caso de uso en producción y valor medido) y el **nivel en cartera** (máximo nivel con algún caso de uso que haya superado G2). | Mapa de esferas actual con indicadores y "sin dato" explícitos. | 11, 12 |
 | **C2 · Dirección** | Fijar para cada esfera 01–07 la prioridad y la ambición objetivo, y para 08 y 09 el grado objetivo por dimensión, con un indicador principal por esfera elegido entre los de este documento. | Ambición por esfera aprobada por el consejo. | 13 |
-| **C3 · Cartera** | Comparar el mapa de calor con la ambición objetivo; priorizar iniciativas que cierren brechas; limitar la inversión fuera de tesis; comprobar que las esferas habilitadoras soportan la ambición de las esferas de valor. | Cartera priorizada con esfera y nivel por iniciativa. | 14 |
+| **C3 · Cartera** | Comparar el mapa de calor con la ambición objetivo; priorizar casos de uso que cierren brechas; limitar la inversión fuera de tesis; comprobar que las esferas habilitadoras soportan la ambición de las esferas de valor. | Cartera priorizada con esfera y nivel por caso de uso. | 14 |
 | **C4 · Supervisión** | Mapa de calor trimestral en el panel del consejo con marcas de brecha, fuera de tesis y sin evidencia; evolución de los indicadores principales. | Alertas y recomendaciones del consejo. | 60, 62 |
 | **C5 · Revisión** | Comparar el mapa con el del año anterior y con la ambición objetivo; recalibrar umbrales de color y marcas; revisar los indicadores elegidos. | Propuesta de ajuste de la ambición por esfera. | 12, 13 |
 
-### 9.2 Ciclo de vida de la iniciativa
+### 9.2 Ciclo de vida del caso de uso
 
 | Momento | Qué se hace | Quién | Evidencia |
 |---|---|---|---|
-| **Fase 0** | Se indica la esfera prevista en la carta de la iniciativa, para comprobar el encaje con la tesis. | Responsable de producto | P01 |
+| **Fase 0** | Se indica la esfera prevista en la carta del caso de uso, para comprobar el encaje con la tesis. | Responsable de producto | P01 |
 | **Fase 1** | Se proponen **esfera principal, esfera secundaria y nivel de ambición** con las reglas de la sección 4 y las cinco preguntas del documento 12. Se comprueba si la esfera es prioritaria en C2. | Responsable de producto; revisa la oficina de IA | P07, P06 |
 | **Fase 2** | Se confirma la esfera principal con la métrica principal de la hipótesis y se confirma el nivel de ambición. Se elige al menos un indicador de la esfera principal como métrica de la hipótesis o como métrica secundaria. | Verifica la oficina de IA (Lite) o el auditor de IA (Enterprise) | P07, P08 |
 | **Fase 7** | Se registra la **ambición real** con la evidencia y se revisa la esfera si la métrica principal ha cambiado. | Responsable de producto; verifica la oficina de IA o el auditor | P07, P30 |
 
-Una iniciativa en una esfera no prioritaria según C2 **puede** continuar, pero el patrocinador debe justificarlo en G0 y el comité de IA debe conocerlo en C3.
+Un caso de uso en una esfera no prioritaria según C2 **puede** continuar, pero el patrocinador debe justificarlo en G0 y el comité de IA debe conocerlo en C3.
 
 ---
 
@@ -590,7 +590,7 @@ Los **primeros noventa días** concentran C1 a C3 (documento 01, sección 5.3). 
 
 | Código | Nombre | Uso en este documento |
 |---|---|---|
-| **T01** | Registro de iniciativas | Campos de esfera principal y secundaria, nivel de ambición propuesto, confirmado y real, y dimensión de contribución para 08 y 09. |
+| **T01** | Registro de casos de uso | Campos de esfera principal y secundaria, nivel de ambición propuesto, confirmado y real, y dimensión de contribución para 08 y 09. |
 | **T02** | Inventario de sistemas de IA | Base de los indicadores de datos, decisión, cumplimiento y gobierno. |
 | **T05** | Clasificador de ambición | Cinco preguntas del documento 12, integradas con la selección de esfera. |
 | **T12** | Seguimiento de realización de valor | Importes de los indicadores traducidos a dinero. |
@@ -609,9 +609,9 @@ Los **primeros noventa días** concentran C1 a C3 (documento 01, sección 5.3). 
 |---|---|
 | **00 · Qué es SEVEN-G y para qué sirve** | Presentación del mapa de impacto (sección 4.1). |
 | **01 · Metodología fundacional** | Componente A, ciclo corporativo y criterios de *gate* por nivel de ambición. |
-| **03 · Herramientas y registro de iniciativas** | Taxonomía controlada de esferas y niveles; herramientas T05 y T16. |
+| **03 · Herramientas y registro de casos de uso** | Taxonomía controlada de esferas y niveles; herramientas T05 y T16. |
 | **11 · Modelo de madurez** | Las esferas 08 y 09 aportan evidencia a D6 y D1. |
-| **12 · Índice de transformación** | Clasificación de ambición de la iniciativa y señales de compañía. |
+| **12 · Índice de transformación** | Clasificación de ambición del caso de uso y señales de compañía. |
 | **13 · Tesis de IA, ambición y apetito de riesgo** | Ambición objetivo por esfera y grados objetivo de 08 y 09. |
 | **14 · Gestión de cartera** | Uso del mapa de calor para priorizar y equilibrar. |
 | **30 · Modelo de gobierno** y **36 · Terceros y proveedores de IA** | Desarrollo de la esfera 09. |

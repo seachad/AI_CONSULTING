@@ -29,14 +29,14 @@
 | **Gate o momento** | G3 · Viabilidad (determinada e iniciada, G3.09); G4 · Diseño (completada y medidas en el diseño, G4.13); G5 · Puesta en producción (notificada, G5.15); R6 (vigente, R6.08). |
 | **Herramienta** | T07 · Clasificador regulatorio (estado, fecha, enlace y fecha de notificación, 32 §3.5). |
 | **Documento de referencia** | 32 §6.2, 34 §3.10 y §8.2, documento 33 (escalas de riesgo), documento 50 §8 (decisiones sobre personas). |
-| **Lite frente a Enterprise** | Cuando es obligatoria, todo su contenido es obligatorio. Toda iniciativa Enterprise con decisiones sobre personas **debería** aplicar este contenido aunque no esté obligada (34 §3.10); en ese uso voluntario puede omitir la sección 10. |
+| **Lite frente a Enterprise** | Cuando es obligatoria, todo su contenido es obligatorio. Todo caso de uso Enterprise con decisiones sobre personas **debería** aplicar este contenido aunque no esté obligado (34 §3.10); en ese uso voluntario puede omitir la sección 10. |
 
 Reglas de cumplimentación:
 
 - **Una evaluación por sistema de alto riesgo y por uso.** Si el mismo sistema (SIA-AAAA-NNN) se usa en procesos distintos, se describen todos.
 - La evaluación se centra en las **personas y colectivos afectados**, no en la compañía. Se apoya en la información que el proveedor facilita con las instrucciones de uso.
 - **Complementa, sin duplicar,** la evaluación de impacto en protección de datos (P47): lo que ya consta allí se referencia (sección 11).
-- El Reglamento de IA prevé un cuestionario de la Oficina Europea de IA para la notificación: a fecha de consulta, la plantilla de la Oficina Europea de IA está pendiente de confirmar (34 §3.10). Cuando esté disponible, ese es el formato de notificación; **esta plantilla de SEVEN-G no lo sustituye**: sirve para preparar el contenido, integrarlo en el ciclo de la iniciativa y conservar la trazabilidad interna.
+- El Reglamento de IA prevé un cuestionario de la Oficina Europea de IA para la notificación: a fecha de consulta, la plantilla de la Oficina Europea de IA está pendiente de confirmar (34 §3.10). Cuando esté disponible, ese es el formato de notificación; **esta plantilla de SEVEN-G no lo sustituye**: sirve para preparar el contenido, integrarlo en el ciclo del caso de uso y conservar la trazabilidad interna.
 - Uso voluntario: puede apoyarse en ISO/IEC 42005:2025 (32 §6.2).
 
 ---
@@ -45,7 +45,7 @@ Reglas de cumplimentación:
 
 | Campo | Contenido | Guía |
 |---|---|---|
-| Código de la iniciativa | | IA-AAAA-NNN. |
+| Código del caso de uso | | IA-AAAA-NNN. |
 | Código y nombre del sistema | | SIA-AAAA-NNN de P05 (T02). |
 | Proveedor del sistema | | Interno o tercero (P14). |
 | Finalidad prevista | | Copiar de P05 y P11. |

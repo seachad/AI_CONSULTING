@@ -45,7 +45,7 @@ Reglas de cumplimentación:
 
 | Campo | Contenido | Guía |
 |---|---|---|
-| Código de la iniciativa | | IA-AAAA-NNN. |
+| Código del caso de uso | | IA-AAAA-NNN. |
 | Código y nombre del sistema | | SIA-AAAA-NNN de P05 (T02). |
 | Clasificación regulatoria | | De P11 §8. |
 | Apartados del artículo 50 aplicables | | Ninguna · 50.1 · 50.2 · 50.3 · 50.4 (P11 §7; 32 §3.4). |

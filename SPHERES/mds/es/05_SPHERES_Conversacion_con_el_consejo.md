@@ -53,14 +53,14 @@ La calidad de la sesión depende de la preparación. Se recomienda empezar entre
 
 | Cuándo | Qué | Quién |
 |---|---|---|
-| **Dos o tres semanas antes** | Entrevistas breves con la presidencia, la dirección general y las direcciones de negocio, personas, tecnología y riesgos. Lista preliminar de iniciativas y sistemas de IA conocidos. | Quien presenta, con la oficina de IA si existe |
-| **Dos semanas antes** | **Primer mapa preliminar**: cada iniciativa conocida se sitúa en su esfera principal y su nivel de ambición (documento 01). Se anotan los grados aproximados de las esferas 08 y 09 (documento 04). Se eligen los ejemplos por nivel. | Quien presenta |
+| **Dos o tres semanas antes** | Entrevistas breves con la presidencia, la dirección general y las direcciones de negocio, personas, tecnología y riesgos. Lista preliminar de casos de uso y sistemas de IA conocidos. | Quien presenta, con la oficina de IA si existe |
+| **Dos semanas antes** | **Primer mapa preliminar**: cada caso de uso conocido se sitúa en su esfera principal y su nivel de ambición (documento 01). Se anotan los grados aproximados de las esferas 08 y 09 (documento 04). Se eligen los ejemplos por nivel. | Quien presenta |
 | **Una semana antes** | Nota de dos páginas para el consejo: objetivo de la sesión, nueve esferas, tres niveles, las preguntas de referencia y la decisión que se pedirá al final. | Secretaría del consejo |
 | **El día anterior** | Ensayo con tiempos. Cada bloque cabe en su tiempo o se recorta. | Quien presenta |
 
 ### Cómo construir el mapa preliminar
 
-1. **Reunir la lista** de iniciativas y sistemas de IA de las entrevistas, de los presupuestos y de los contratos con proveedores. Es habitual descubrir iniciativas que la dirección no conocía.
+1. **Reunir la lista** de casos de uso y sistemas de IA de las entrevistas, de los presupuestos y de los contratos con proveedores. Es habitual descubrir casos de uso que la dirección no conocía.
 2. **Asignar la esfera principal** de cada una: la esfera en la que se mide su métrica principal, no el área que la patrocina.
 3. **Asignar el nivel de ambición** con las cinco preguntas del documento 01. En caso de duda, el nivel inferior.
 4. **Diagnosticar las habilitadoras** con las cinco preguntas rápidas del documento 03.
@@ -120,7 +120,7 @@ flowchart LR
 
 **Qué se presenta.** Qué exige el Reglamento Europeo de IA según el nivel de riesgo de cada sistema, la protección de datos en decisiones automatizadas y la regulación sectorial aplicable, siempre con la fecha de consulta. Las tres dimensiones: Cumplimiento, Anticipación y Liderazgo ético. Suele ser el tema que más preocupa al consejo.
 
-**Qué se pregunta.** ¿Gobernamos de forma proactiva o esperamos a que el regulador nos obligue? ¿Hay alguien con capacidad real de decir que no a una iniciativa rentable pero inadecuada?
+**Qué se pregunta.** ¿Gobernamos de forma proactiva o esperamos a que el regulador nos obligue? ¿Hay alguien con capacidad real de decir que no a un caso de uso rentable pero inadecuado?
 
 **Qué evitar.** Presentar la regulación como un catálogo de sanciones o dar por cerradas interpretaciones que requieren criterio jurídico.
 
@@ -146,13 +146,13 @@ Cada esfera tiene una **pregunta de referencia**, pensada para abrir la conversa
 |---|---|---|
 | **01 · Cliente** | Si un competidor conoce mejor a nuestros clientes porque usa mejor la IA, ¿cuánto tardamos en perder relevancia? | ¿Qué parte de la relación con el cliente ya está mediada por IA y quién responde de su calidad? ¿Sabemos si la IA mejora la retención o solo reduce el coste de atender? |
 | **02 · Producto y servicio** | ¿Usamos la IA para proteger el producto actual o para construir el siguiente? | ¿Qué parte de los ingresos procede de productos que no existirían sin IA? ¿Conocemos el coste de IA por unidad de servicio? |
-| **03 · Personas** | ¿La IA sustituye, aumenta o reorganiza el trabajo de las personas? | ¿Qué ocurre con la capacidad liberada? ¿Qué proporción de las iniciativas nace de los propios empleados? |
+| **03 · Personas** | ¿La IA sustituye, aumenta o reorganiza el trabajo de las personas? | ¿Qué ocurre con la capacidad liberada? ¿Qué proporción de los casos de uso nace de los propios empleados? |
 | **04 · Operaciones** | ¿Sabemos qué procesos son candidatos a automatización inmediata y cuáles necesitan un rediseño completo? | ¿Automatizamos tareas o rediseñamos procesos? ¿Qué pasa si falla un sistema que soporta una operación crítica? |
-| **05 · Datos** | ¿Sabemos qué datos tenemos, dónde están, quién responde de su calidad y si podemos usarlos legalmente para IA? | ¿Cuántas iniciativas se retrasan por falta de datos? ¿Son nuestros datos una ventaja difícil de replicar? |
+| **05 · Datos** | ¿Sabemos qué datos tenemos, dónde están, quién responde de su calidad y si podemos usarlos legalmente para IA? | ¿Cuántos casos de uso se retrasan por falta de datos? ¿Son nuestros datos una ventaja difícil de replicar? |
 | **06 · Conocimiento** | Si se fueran mañana las personas que más saben, ¿qué se perdería? | ¿Quién verifica las respuestas de nuestros asistentes? ¿Aprendemos de lo que decidimos o repetimos errores? |
 | **07 · Decisión** | ¿Qué decide la IA sola, qué requiere validación humana y qué no se delega nunca? | ¿Podemos reconstruir qué recomendó el sistema y qué decidió la persona? ¿Quién puede parar un sistema que actúa? |
 | **08 · Regulación, ética y responsabilidad** | ¿Gobernamos de forma proactiva o esperamos a que el regulador nos obligue? | ¿Están clasificados todos nuestros sistemas? ¿Quién firma esa clasificación? ¿Tenemos principios que vayan más allá de la ley? |
-| **09 · Gobierno de la IA** | ¿Tiene la IA un gobierno corporativo con la misma formalidad que las finanzas, los riesgos o el cumplimiento? | ¿Quién responde en última instancia? ¿Podemos parar una iniciativa que no funciona? ¿Dependemos de un solo proveedor de modelos? |
+| **09 · Gobierno de la IA** | ¿Tiene la IA un gobierno corporativo con la misma formalidad que las finanzas, los riesgos o el cumplimiento? | ¿Quién responde en última instancia? ¿Podemos parar un caso de uso que no funciona? ¿Dependemos de un solo proveedor de modelos? |
 
 > **Por qué importa.** Las preguntas de referencia son deliberadamente incómodas. Su función no es obtener una respuesta inmediata, sino que el consejo reconozca que no la tiene y encargue el trabajo para obtenerla.
 
@@ -190,7 +190,7 @@ La sesión termina con un mandato para los primeros noventa días. El mapa de es
 
 | Periodo | Objetivo | Qué se hace con el mapa | Resultado para el consejo |
 |---|---|---|---|
-| **Mes 1** | Diagnóstico | Inventario completo de iniciativas y sistemas; mapa actual por esfera y nivel; grados de 08 y 09 con evidencia; diagnóstico de las habilitadoras. | Mapa de la situación actual con los "sin dato" explícitos. |
+| **Mes 1** | Diagnóstico | Inventario completo de casos de uso y sistemas; mapa actual por esfera y nivel; grados de 08 y 09 con evidencia; diagnóstico de las habilitadoras. | Mapa de la situación actual con los "sin dato" explícitos. |
 | **Mes 2** | Riesgos y oportunidades | Principales riesgos y oportunidades por esfera, con responsable, impacto económico estimado y plazo. | Lista priorizada de riesgos y oportunidades por esfera. |
 | **Mes 3** | Estructura de gobierno | Propuesta de ambición objetivo por esfera, grados objetivo de 08 y 09, indicadores principales, órganos, roles y ritmo de información al consejo. | Ambición por esfera y estructura de gobierno para aprobar. |
 
@@ -230,7 +230,7 @@ La sesión puede conducirla la dirección, un consejero con experiencia en IA o 
 | Ayuda al consejo a preguntar bien, interpretar la evidencia y seguir lo decidido. | Dirige la oficina de IA ni toma decisiones que corresponden al consejo o a la dirección. |
 | Traduce a lenguaje de negocio las cuestiones técnicas. | Usa cifras de mercado sin fuente para crear urgencia. |
 | Señala cifras sin respaldo, ausencias no declaradas y tecnicismos innecesarios. | Recomienda proveedores, productos o servicios en los que tenga interés. |
-| Declara sus intereses y relaciones con proveedores. | Supervisa iniciativas en las que él o su organización prestan servicios de implantación. |
+| Declara sus intereses y relaciones con proveedores. | Supervisa casos de uso en las que él o su organización prestan servicios de implantación. |
 
 El detalle de este papel, su independencia y la formación del consejo en IA están en [SEVEN-G 61 · Guía de conversación con el consejo](../../../SEVEN-G/html/es/61_SEVEN-G_Guia_de_conversacion_con_el_consejo.html), sección 10.
 
@@ -257,7 +257,7 @@ El detalle de este papel, su independencia y la formación del consejo en IA est
 | Documento | Relación |
 |---|---|
 | **documento 00 · Qué es SPHERES y para qué sirve** | Presentación del mapa y ejemplo completo de lectura. |
-| **documento 01 · Niveles de ambición** | Clasificación de las iniciativas para el mapa preliminar. |
+| **documento 01 · Niveles de ambición** | Clasificación de los casos de uso para el mapa preliminar. |
 | **documento 02 · Esferas donde se genera valor** | Ejemplos y preguntas de los bloques 02 y 05. |
 | **documento 03 · Esferas habilitadoras** | Diagnóstico rápido para el bloque 03. |
 | **documento 04 · Regulación y gobierno de la IA** | Dimensiones y grados para los bloques 04 y 06. |

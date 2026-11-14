@@ -10,7 +10,7 @@
 | Author | Fernando García Varela |
 | Status | Draft for review. |
 
-> *This document does not constitute legal advice.* The classification must be carried out with qualified legal judgement (01 §13). References consulted in September 2026. The EU AI Act (Regulation (EU) 2024/1689) applies in stages and there are initiatives to amend the timetable for some obligations: verify the timetable and the text in force.
+> *This document does not constitute legal advice.* The classification must be carried out with qualified legal judgement (01 §13). References consulted in September 2026. The EU AI Act (Regulation (EU) 2024/1689) applies in stages and there are proposals to amend the timetable for some obligations: verify the timetable and the text in force.
 
 ---
 
@@ -40,7 +40,7 @@ Completion rules:
 
 | Field | Content | Guidance |
 |---|---|---|
-| Initiative code | | IA-AAAA-NNN. |
+| Use case code | | IA-AAAA-NNN. |
 | System code and name | | From P05. |
 | Intended purpose | | Copy from P05. The classification is valid only for this purpose. |
 | Document version | | |

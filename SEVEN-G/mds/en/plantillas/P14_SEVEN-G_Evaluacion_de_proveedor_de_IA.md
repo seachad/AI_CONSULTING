@@ -18,7 +18,7 @@
 
 | Aspect | Guidance |
 |---|---|
-| **When it is used** | In phase 3, before G3, for each supplier that provides AI models, platforms, data or services to the initiative. It is reviewed before signing or renewing the contract, upon any reassessment trigger (36 §5) and at the frequency set by the requirement level. |
+| **When it is used** | In phase 3, before G3, for each supplier that provides AI models, platforms, data or services to the use case. It is reviewed before signing or renewing the contract, upon any reassessment trigger (36 §5) and at the frequency set by the requirement level. |
 | **Who completes it** | The AI Technical Owner, with procurement and the AI Risk Owner. Information security, data protection and legal counsel are consulted. |
 | **Who verifies it** | Lite: AI Risk Owner; if the AI Risk Owner has prepared the assessment, the AI Office or the AI Auditor verifies it. Enterprise: AI Auditor. |
 | **Who decides** | It is approved with G3, according to the requirement level (36 §4.2): N1, AI Product Owner with procurement clearance · N2, AI Sponsor with risk and data protection clearance · N3, AI Committee with clearance from risk, information security, data protection and legal. |
@@ -40,7 +40,7 @@ Completion rules:
 
 | Field | Content | Guidance |
 |---|---|---|
-| Initiative code | | IA-AAAA-NNN. |
+| Use case code | | IA-AAAA-NNN. |
 | AI systems affected | | Codes from P05. |
 | Supplier–service relationship code | | PRV-AAAA-NNN from the T09 register (P57). |
 | Supplier | | Registered name and country of establishment. |

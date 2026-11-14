@@ -6,7 +6,7 @@ Cuando el sitio se sirve por http y en esta carpeta hay uno de estos ficheros, l
 
 | Fichero | Herramienta | Cómo se obtiene |
 |---|---|---|
-| `T01_registro.json` | T01 · Registro de iniciativas | «Datos» → «Exportar JSON completo» |
+| `T01_registro.json` | T01 · Registro de casos de uso | «Datos» → «Exportar JSON completo» |
 | `T11_calculadora.json` | T11 · Hipótesis de valor y costes (con T13) | «Datos» → «Exportar» |
 | `T14_indice.json` | T14 · Índice de transformación | «Datos» → «Exportar» |
 | `T15_madurez.json` | T15 · Diagnóstico de madurez | «Datos» → «Exportar» |
@@ -21,7 +21,7 @@ When the site is served over http and this folder holds one of these files, the 
 
 | File | Tool | How to obtain it |
 |---|---|---|
-| `T01_registro.json` | T01 · Initiative register | "Data" → "Export full JSON" |
+| `T01_registro.json` | T01 · Use case register | "Data" → "Export full JSON" |
 | `T11_calculadora.json` | T11 · Value hypothesis and costs (with T13) | "Data" → "Export" |
 | `T14_indice.json` | T14 · Transformation index | "Data" → "Export" |
 | `T15_madurez.json` | T15 · Maturity diagnosis | "Data" → "Export" |

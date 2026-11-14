@@ -75,7 +75,7 @@ Sphere 08 brings together **the regulatory framework applicable to AI** (general
 |---|---|---|---|---|
 | **Compliance** | Classification of systems under the EU AI Act, transparency and human oversight obligations, data protection in automated decision-making and profiling, and sector regulation. | Some systems classified on demand, when a project asks for it. | All inventoried systems are classified; the required assessments are carried out before investing in the build; nonconformities are corrected within the time limit. | All of the above, with indicators on target for two quarters and an audit with no open major nonconformities. |
 | **Anticipation** | Monitoring of emerging regulation, impact assessments before deployment and preparation for external audits. | Regulation is followed informally, through the news or advisers. | Monitoring process with an owner; each relevant change has an impact analysis within the time limit; mock audits are carried out. | The company adapts its systems before the obligation becomes applicable and documents this. |
-| **Ethical leadership** | Own principles beyond the legal minimum, an ethics body with real veto power and public transparency about the use of AI. | Published principles with no mechanism to apply them. | Principles approved by the board, ethical review of the initiatives that require it and a body with documented veto power. | Periodic public report on the use of AI and recorded veto or modification decisions. |
+| **Ethical leadership** | Own principles beyond the legal minimum, an ethics body with real veto power and public transparency about the use of AI. | Published principles with no mechanism to apply them. | Principles approved by the board, ethical review of the use cases that require it and a body with documented veto power. | Periodic public report on the use of AI and recorded veto or modification decisions. |
 
 > **Why it matters.** The three dimensions respond to three different risks. Without **Compliance**, the company is in breach today. Without **Anticipation**, it will be in breach tomorrow and will have to rebuild systems in a hurry. Without **Ethical leadership**, it may comply with the law and still lose the trust of customers, employees and society through uses that are legal but unacceptable.
 
@@ -90,7 +90,7 @@ Sphere 08 brings together **the regulatory framework applicable to AI** (general
 | Regulatory monitoring and impact assessments. | |
 | Ethical principles, ethics body and public transparency. | |
 
-**Rule of use on the map.** Sphere 08 is the primary sphere of an initiative **only when its purpose is compliance or ethics** (for example, a system that monitors regulatory changes and assigns them to owners). It is **never** used to indicate that an initiative in another sphere carries regulatory risk: that is recorded in its regulatory classification and in its risk register.
+**Rule of use on the map.** Sphere 08 is the primary sphere of a use case **only when its purpose is compliance or ethics** (for example, a system that monitors regulatory changes and assigns them to owners). It is **never** used to indicate that a use case in another sphere carries regulatory risk: that is recorded in its regulatory classification and in its risk register.
 
 ### Illustrative case
 
@@ -104,7 +104,7 @@ The institution has in production a model that prioritises financing application
 |---|---|
 | **Compliance** | Are all our AI systems classified? Could any of them be a prohibited or high-risk practice without our knowing it? Who signs off that classification? |
 | **Anticipation** | Which obligations will apply to us in the coming years, and which systems do they affect? Are we prepared for an external AI audit? |
-| **Ethical leadership** | Do we have our own principles that go beyond the law? Is there anyone with real power to say no to an initiative that is profitable but inappropriate? |
+| **Ethical leadership** | Do we have our own principles that go beyond the law? Is there anyone with real power to say no to a use case that is profitable but inappropriate? |
 
 ### Warning signs
 
@@ -133,8 +133,8 @@ Sphere 09 is the **meta-sphere**. It brings together **ultimate accountability f
 
 | Dimension | What it assesses | Basic grade example | Systematic grade example | Advanced grade example |
 |---|---|---|---|---|
-| **Structure** | Who has ultimate accountability for the AI strategy, whether there is a framework that connects it with the business strategy, whether there is a portfolio prioritised by impact and risk and whether the board receives regular and understandable information. | Designated owner; the portfolio is a list of projects. | AI thesis and risk appetite approved; AI Committee operational; initiative register with roles and decision gates; quarterly reporting to the board. | All of the above, with the board's recommendations up to date and a complete annual review of the strategy. |
-| **Balance between speed and control** | Whether the company is accelerating adoption with risk under control, whether there are decision gates in the lifecycle, how it measures its maturity and whether it can stop an initiative that is not working. | Some controls, applied unevenly. | Decision gates with independent validation in all initiatives; control intensity proportionate to risk; decision time limits measured; stops and retirements recorded. | Decision times within time limits without an increase in incidents; annual calibration of time limits and thresholds. |
+| **Structure** | Who has ultimate accountability for the AI strategy, whether there is a framework that connects it with the business strategy, whether there is a portfolio prioritised by impact and risk and whether the board receives regular and understandable information. | Designated owner; the portfolio is a list of projects. | AI thesis and risk appetite approved; AI Committee operational; use case register with roles and decision gates; quarterly reporting to the board. | All of the above, with the board's recommendations up to date and a complete annual review of the strategy. |
+| **Balance between speed and control** | Whether the company is accelerating adoption with risk under control, whether there are decision gates in the lifecycle, how it measures its maturity and whether it can stop a use case that is not working. | Some controls, applied unevenly. | Decision gates with independent validation in all use cases; control intensity proportionate to risk; decision time limits measured; stops and retirements recorded. | Decision times within time limits without an increase in incidents; annual calibration of time limits and thresholds. |
 | **Supplier ecosystem** | Whether the company depends on a single model supplier, whether it assesses build, buy or partner for each capability, whether contracts protect its data and intellectual property and whether it understands the cost structure of AI. | Known suppliers, without consistent assessment. | Supplier register with requirement level; minimum contractual clauses; AI cost known by category and by use case. | Tested exit strategy for critical suppliers and concentration within risk appetite. |
 
 > **Why it matters.** The three dimensions prevent three different governance failures. Without **Structure**, nobody is accountable. Without **Balance between speed and control**, governance either holds everything back, and teams bypass it, or controls nothing. Without governance of the **Supplier ecosystem**, the company discovers too late that it depends on a third party that sets the price, the conditions and the use of its data.
@@ -155,7 +155,7 @@ One of the most frequent decisions in the Ecosystem dimension is how to obtain e
 |---|---|
 | Ultimate owner, bodies and allocation of roles for AI. | The decisions that AI systems make in operations: that is sphere 07. |
 | AI thesis, ambition by sphere and risk appetite. | Legal obligations as such: that is sphere 08. |
-| Initiative portfolio, decision gates, stops and retirements. | |
+| Use case portfolio, decision gates, stops and retirements. | |
 | Regular reporting to the board and follow-up of its recommendations. | |
 | Model and AI suppliers: assessment, contracts, concentration, exit and costs. | |
 
@@ -163,26 +163,26 @@ One of the most frequent decisions in the Ecosystem dimension is how to obtain e
 
 *Fictitious industrial group with several subsidiaries.*
 
-Each subsidiary has launched its own AI initiatives and contracted its own suppliers. The board asks for a report and discovers that nobody can provide it: there is no common register, there is no ultimate owner and spending on models is spread across the technology budget lines of each subsidiary. Sphere 09 is diagnosed as follows: **Structure, Absent**; **Balance between speed and control, Basic** (two subsidiaries have their own committees); **Supplier ecosystem, Absent**. In the first quarter, the group designates an AI owner who reports to the board, creates a committee with the power to stop initiatives, registers all initiatives in a common register and consolidates spending on models. On reviewing the register, the committee stops three duplicated initiatives and discovers that almost all spending on models is concentrated in a single supplier without an exit strategy.
+Each subsidiary has launched its own AI use cases and contracted its own suppliers. The board asks for a report and discovers that nobody can provide it: there is no common register, there is no ultimate owner and spending on models is spread across the technology budget lines of each subsidiary. Sphere 09 is diagnosed as follows: **Structure, Absent**; **Balance between speed and control, Basic** (two subsidiaries have their own committees); **Supplier ecosystem, Absent**. In the first quarter, the group designates an AI owner who reports to the board, creates a committee with the power to stop use cases, registers all use cases in a common register and consolidates spending on models. On reviewing the register, the committee stops three duplicated use cases and discovers that almost all spending on models is concentrated in a single supplier without an exit strategy.
 
 ### Questions for the board
 
 | Dimension | Questions |
 |---|---|
 | **Structure** | Who has ultimate accountability for the AI strategy? Is there a framework that connects it with the business strategy? Is there a portfolio prioritised by impact and risk? Do we receive regular and understandable information? |
-| **Balance between speed and control** | Are we accelerating adoption with risk under control? Are there decision gates in the lifecycle? How do we measure our maturity? Can we stop an initiative that is not working? |
+| **Balance between speed and control** | Are we accelerating adoption with risk under control? Are there decision gates in the lifecycle? How do we measure our maturity? Can we stop a use case that is not working? |
 | **Supplier ecosystem** | Do we depend on a single model supplier? Do we assess build, buy or partner for each capability? Do contracts protect our data and intellectual property? Do we understand the cost structure of AI? |
 
 ### Warning signs
 
-- Nobody has stopped or retired an initiative in the last twelve months.
-- Initiatives in production without a recorded decision or a current periodic review.
+- Nobody has stopped or retired a use case in the last twelve months.
+- Use cases in production without a recorded decision or a current periodic review.
 - Decision times well above what is reasonable, which push teams to bypass the process.
 - A single supplier accounts for most of the spending on models without an exit strategy.
 
 ### How it is measured
 
-The reference indicators are coverage of the register of initiatives and systems, current continuity review, board recommendations closed on time, decision time at the gates, time to production, ability to stop, concentration in the main model supplier, exit strategy and allocated AI cost. Their formulas are in [SEVEN-G 10](../../../SEVEN-G/html/en/10_SEVEN-G_Mapa_de_esferas_y_niveles_de_ambicion.html), section 7. The governance model is developed in [SEVEN-G 30 · Governance model](../../../SEVEN-G/html/en/30_SEVEN-G_Modelo_de_gobierno.html) and supplier management in [SEVEN-G 36 · AI third parties and suppliers](../../../SEVEN-G/html/en/36_SEVEN-G_Terceros_y_proveedores_de_IA.html). The SEVEN-G initiative register (T01) and the board AI dashboard (T17) are the tools that support this sphere.
+The reference indicators are coverage of the register of use cases and systems, current continuity review, board recommendations closed on time, decision time at the gates, time to production, ability to stop, concentration in the main model supplier, exit strategy and allocated AI cost. Their formulas are in [SEVEN-G 10](../../../SEVEN-G/html/en/10_SEVEN-G_Mapa_de_esferas_y_niveles_de_ambicion.html), section 7. The governance model is developed in [SEVEN-G 30 · Governance model](../../../SEVEN-G/html/en/30_SEVEN-G_Modelo_de_gobierno.html) and supplier management in [SEVEN-G 36 · AI third parties and suppliers](../../../SEVEN-G/html/en/36_SEVEN-G_Terceros_y_proveedores_de_IA.html). The SEVEN-G use case register (T01) and the board AI dashboard (T17) are the tools that support this sphere.
 
 ---
 
@@ -198,10 +198,10 @@ On the portfolio map, spheres 08 and 09 **do not occupy Optimise, Augment and Tr
 | 08 | Anticipation | Basic | Systematic | Gap: there is no regulatory monitoring process. |
 | 08 | Ethical leadership | Basic | Basic | On target for this year. |
 | 09 | Structure | Systematic | Systematic | On target. |
-| 09 | Balance between speed and control | Basic | Systematic | Gap: decision gates are not applied to all initiatives. |
+| 09 | Balance between speed and control | Basic | Systematic | Gap: decision gates are not applied to all use cases. |
 | 09 | Supplier ecosystem | Absent | Basic | Priority gap: dependence on a supplier without assessment. |
 
-Initiatives whose primary sphere is 08 or 09 (for example, a tool for the system inventory or for regulatory monitoring) have their own ambition level like any other, but **that level does not rate the sphere**. Their investment is shown in a separate band, for governance and compliance enablement, so as not to mix it with investment that seeks value.
+Use cases whose primary sphere is 08 or 09 (for example, a tool for the system inventory or for regulatory monitoring) have their own ambition level like any other, but **that level does not rate the sphere**. Their investment is shown in a separate band, for governance and compliance enablement, so as not to mix it with investment that seeks value.
 
 > **Why it matters.** Visually separating these two spheres allows the board to see two things at once without confusing them: where and with what ambition the company is betting on AI, and whether it has the boundaries and governance needed to sustain those bets.
 

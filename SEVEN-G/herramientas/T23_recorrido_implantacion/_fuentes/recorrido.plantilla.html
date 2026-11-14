@@ -288,7 +288,7 @@ es:{
  cuest:'Cuestionario (96 §2.4)', pregunta:'Pregunta', respuesta:'Respuesta', alimenta:'Alimenta', origen:'Origen',
  sin_resp:'— sin respuesta —', f_t01:'desde T01 (editable)', f_manual:'manual', gen_det:'¿Cuántos sistemas de IA generativa en producción? (para la condición de PP-E en 96 §2.2)', gen_uno:'uno', gen_varios:'más de uno',
  arq_todos:'Los seis arquetipos (96 §2.1)', regla_tit:'Regla de asignación (96 §2.2)',
- t01_local:'Registro T01 en este navegador: «{o}», {n} iniciativas, a fecha {f}.', t01_local_no:'No hay ningún registro T01 en este navegador: abra el registro de iniciativas desde este mismo sitio y vuelva para proponer las respuestas Q01 a Q03.',
+ t01_local:'Registro T01 en este navegador: «{o}», {n} casos de uso, a fecha {f}.', t01_local_no:'No hay ningún registro T01 en este navegador: abra el registro de casos de uso desde este mismo sitio y vuelva para proponer las respuestas Q01 a Q03.',
  t01_proponer:'Proponer respuestas desde el registro T01', ok_t01:'Propuestas Q01 a Q03 desde el registro T01: {c}.', ok_t01_manual:' Se conservan las respuestas manuales de {m}.',
  t01_det:'En uso (fase 6 o 7, sin parar ni retirar): {u}. Pilotos (fases 1 a 5, sin parar): {p}, de IA generativa {g}.',
  t15_local:'Diagnóstico T15 en este navegador: evaluación {id} ({m}) a fecha {f}. Un hito cuyas preguntas del documento 11 están todas en «Sí» se marca «cumplido según T15», salvo que tenga un estado manual (96 §4.3, regla 4).',
@@ -343,7 +343,7 @@ en:{
  cuest:'Questionnaire (96 §2.4)', pregunta:'Question', respuesta:'Answer', alimenta:'Feeds', origen:'Source',
  sin_resp:'— no answer —', f_t01:'from T01 (editable)', f_manual:'manual', gen_det:'How many generative AI systems in production? (for the PP-E condition in 96 §2.2)', gen_uno:'one', gen_varios:'more than one',
  arq_todos:'The six archetypes (96 §2.1)', regla_tit:'Assignment rule (96 §2.2)',
- t01_local:'T01 register in this browser: "{o}", {n} initiatives, as at {f}.', t01_local_no:'There is no T01 register in this browser: open the initiative register from this same site and come back to propose answers Q01 to Q03.',
+ t01_local:'T01 register in this browser: "{o}", {n} use cases, as at {f}.', t01_local_no:'There is no T01 register in this browser: open the use case register from this same site and come back to propose answers Q01 to Q03.',
  t01_proponer:'Propose answers from the T01 register', ok_t01:'Q01 to Q03 proposed from the T01 register: {c}.', ok_t01_manual:' The manual answers to {m} are kept.',
  t01_det:'In use (phase 6 or 7, not stopped or retired): {u}. Pilots (phases 1 to 5, not stopped): {p}, of which generative AI {g}.',
  t15_local:'T15 assessment in this browser: assessment {id} ({m}) as at {f}. A milestone whose document 11 questions are all "Yes" is marked "met according to T15", unless it has a manual status (96 §4.3, rule 4).',
@@ -768,7 +768,7 @@ function irCodigoCargar(l){
 function idiomaSitio(){ try{ const v = localStorage.getItem('seveng-idioma'); return (v==='es'||v==='en') ? v : null; }catch(e){ return null; } }
 function sitioNav(){
   const n = document.getElementById('sitio-nav'); if(!n) return; const en = lang === 'en', l = en ? 'en' : 'es';
-  const e = [[en ? '../../../en/index.html' : '../../../index.html', en ? '⌂ Home' : '⌂ Portada'], ['../../html/'+l+'/entrada/index.html', en ? 'What SEVEN-G is' : 'Qué es SEVEN-G'], ['../../html/'+l+'/index.html', en ? 'Library' : 'Biblioteca'], ['../../html/'+l+'/curso/M00_SEVEN-G_Curso_Guia_del_curso.html', en ? 'Course' : 'Curso'], ['../T01_registro_iniciativas/registro.html', en ? 'Initiative register' : 'Registro de iniciativas'], ['../T17_panel_consejo/index.html', en ? 'Board dashboard' : 'Panel del consejo']];
+  const e = [[en ? '../../../en/index.html' : '../../../index.html', en ? '⌂ Home' : '⌂ Portada'], ['../../html/'+l+'/entrada/index.html', en ? 'What SEVEN-G is' : 'Qué es SEVEN-G'], ['../../html/'+l+'/index.html', en ? 'Library' : 'Biblioteca'], ['../../html/'+l+'/curso/M00_SEVEN-G_Curso_Guia_del_curso.html', en ? 'Course' : 'Curso'], ['../T01_registro_iniciativas/registro.html', en ? 'Use case register' : 'Registro de casos de uso'], ['../T17_panel_consejo/index.html', en ? 'Board dashboard' : 'Panel del consejo']];
   n.setAttribute('aria-label', en ? 'Site' : 'Sitio');
   n.innerHTML = '<a class="sitio-marca" style="color:var(--papel)" href="../../html/'+l+'/entrada/index.html" title="'+(en ? 'SEVEN-G home: what it is and what it is for' : 'Cabecera de SEVEN-G: qué es y para qué sirve')+'">SEVEN-G</a>' + e.map(x => '<a href="'+x[0]+'">'+x[1]+'</a>').join('') + '<span data-ir-codigo style="margin-left:auto"></span>';
   irCodigoCargar(l);

@@ -72,7 +72,7 @@ Un servicio que omite alguna de estas reglas puede inspirarse en SEVEN-G, pero n
 | 2 | **Evidencia antes que opinión** | Las conclusiones se apoyan en evidencias identificables que la compañía puede revisar. |
 | 3 | **Transferencia de capacidad** | El objetivo es que la compañía pueda gobernar su IA sin depender del tercero. |
 | 4 | **Independencia declarada** | Los intereses del tercero (proveedores, productos, otros servicios al cliente) se declaran al inicio. |
-| 5 | **Honestidad sobre los resultados** | Un diagnóstico bajo, una iniciativa parada o un valor no validado se informan igual que los resultados favorables. |
+| 5 | **Honestidad sobre los resultados** | Un diagnóstico bajo, un caso de uso parado o un valor no validado se informan igual que los resultados favorables. |
 | 6 | **Los datos son de la compañía** | Registros, modelos de datos y entregables quedan en poder de la compañía, en formatos que puede mantener. |
 | 7 | **Proporcionalidad** | Intensidad Lite cuando basta; Enterprise cuando lo exigen los criterios (01 §9). |
 
@@ -85,7 +85,7 @@ Un servicio que omite alguna de estas reglas puede inspirarse en SEVEN-G, pero n
 | Modelo | Objetivo | Etapas y fases de SEVEN-G | Resultado para el consejo | Duración orientativa |
 |---|---|---|---|---|
 | **M1 · Diagnóstico** | Conocer la situación real de la IA en la compañía. | C1 | Madurez con evidencia, perfil de transformación, inventario, valor y coste actuales. | 4 a 6 semanas |
-| **M2 · Implantación de 90 días** | Dejar operativo el gobierno básico de la IA. | C1, C2 y C3; fase 0 de las iniciativas prioritarias | Tesis, ambición, apetito de riesgo, cartera y estructura de gobierno aprobados. | 90 días |
+| **M2 · Implantación de 90 días** | Dejar operativo el gobierno básico de la IA. | C1, C2 y C3; fase 0 de los casos de uso prioritarios | Tesis, ambición, apetito de riesgo, cartera y estructura de gobierno aprobados. | 90 días |
 | **M3 · Auditoría independiente** | Opinar sobre si la compañía aplica el marco y si sus controles funcionan. | Verificación de 01 §14, *gates*, registros y no conformidades | Informe con conclusión Conforme, Conforme con observaciones o No conforme. | Según alcance y muestra |
 | **M4 · Asesoramiento al consejo** | Ayudar al consejo a supervisar la IA. | C2, C4 y C5 | Preguntas, revisión del paquete, recomendaciones registradas y valoraciones independientes. | Mandato anual renovable |
 | **M5 · Acompañamiento continuo** | Apoyar a la compañía en la operación del marco. | C3, C4 y ciclo de vida | Cartera gestionada, paquetes trimestrales preparados, métricas del embudo. | Periodo renovable con revisión anual |
@@ -109,9 +109,9 @@ Las duraciones son orientativas y dependen del tamaño de la compañía, del nú
 | | |
 |---|---|
 | **Cuándo** | La compañía ha decidido adoptar SEVEN-G y quiere una primera implantación (01 §5.3; documento 90). |
-| **Alcance** | **Mes 1:** diagnóstico (M1). **Mes 2:** riesgos y oportunidades por esfera con responsable, impacto económico y plazo; propuesta de tesis de IA, ambición y apetito de riesgo. **Mes 3:** estructura de gobierno (órganos, roles, incompatibilidades, umbrales, *gates*, plazos de referencia, métricas y ritmo de reporte); cartera inicial; registro de iniciativas y registro de recomendaciones en funcionamiento; primer paquete para el consejo. |
+| **Alcance** | **Mes 1:** diagnóstico (M1). **Mes 2:** riesgos y oportunidades por esfera con responsable, impacto económico y plazo; propuesta de tesis de IA, ambición y apetito de riesgo. **Mes 3:** estructura de gobierno (órganos, roles, incompatibilidades, umbrales, *gates*, plazos de referencia, métricas y ritmo de reporte); cartera inicial; registro de casos de uso y registro de recomendaciones en funcionamiento; primer paquete para el consejo. |
 | **Fuera de alcance** | Verificación independiente de los *gates* que el propio tercero ayude a preparar; decisiones de los órganos. |
-| **Entregables** | Los de M1 · Propuesta de tesis de IA y apetito de riesgo (T19) · Política corporativa de IA (documento 31) · Modelo de gobierno con asignación de roles · Cartera priorizada · Registro de iniciativas (T01) y de recomendaciones (T18) con datos reales · Plan de regularización de los sistemas existentes (01 §14; P36 §9) · Primer paquete trimestral (documento 60). |
+| **Entregables** | Los de M1 · Propuesta de tesis de IA y apetito de riesgo (T19) · Política corporativa de IA (documento 31) · Modelo de gobierno con asignación de roles · Cartera priorizada · Registro de casos de uso (T01) y de recomendaciones (T18) con datos reales · Plan de regularización de los sistemas existentes (01 §14; P36 §9) · Primer paquete trimestral (documento 60). |
 | **Roles del tercero** | Director de implantación · Especialistas de valor, riesgo y regulación, y tecnología y datos · Apoyo a la oficina de IA · Revisor de calidad. |
 | **Roles de la compañía** | Patrocinador ejecutivo de la implantación · Futura oficina de IA (debe participar desde el primer día) · Comité de IA en constitución · Secretaría del consejo · Control de gestión · Riesgos, cumplimiento, protección de datos y seguridad · Auditoría interna (informada). |
 | **Criterio de calidad** | Al terminar, la compañía puede operar el ciclo sin el tercero: la oficina de IA ha preparado al menos una decisión de *gate* y el primer paquete con apoyo, no por delegación. |
@@ -145,8 +145,8 @@ Las duraciones son orientativas y dependen del tamaño de la compañía, del nú
 | | |
 |---|---|
 | **Cuándo** | La compañía ha implantado el marco y necesita capacidad adicional para operarlo mientras desarrolla la propia. |
-| **Alcance** | Apoyo a la oficina de IA: mantenimiento del registro de iniciativas y del inventario, preparación de evidencias con los equipos, cálculo de métricas del embudo, preparación del paquete trimestral, apoyo metodológico a las revisiones de continuidad y a C5. |
-| **Fuera de alcance** | Verificación de *gates* de iniciativas en las que el tercero participa; decisiones; valoración independiente de recomendaciones cuya ejecución apoya. |
+| **Alcance** | Apoyo a la oficina de IA: mantenimiento del registro de casos de uso y del inventario, preparación de evidencias con los equipos, cálculo de métricas del embudo, preparación del paquete trimestral, apoyo metodológico a las revisiones de continuidad y a C5. |
+| **Fuera de alcance** | Verificación de *gates* de casos de uso en los que el tercero participa; decisiones; valoración independiente de recomendaciones cuya ejecución apoya. |
 | **Entregables** | Registros actualizados · Métricas del embudo mensuales · Borradores de paquete trimestral para revisión de la oficina de IA · Plan de transferencia (P71) con fecha de salida o de reducción del servicio. |
 | **Roles del tercero** | Responsable del servicio · Analistas de cartera y medición. |
 | **Roles de la compañía** | Oficina de IA (responsable del resultado) · Comité de IA · Control de gestión. |
@@ -167,10 +167,10 @@ Las duraciones son orientativas y dependen del tamaño de la compañía, del nú
 | **M1 · Diagnóstico** | — | Compatible | Compatible con cautela: el diagnóstico no puede ser objeto de la auditoría | Compatible | Compatible |
 | **M2 · Implantación** | Compatible | — | **Incompatible** en el ámbito implantado | **Incompatible** si el asesor valora recomendaciones sobre lo implantado | Compatible |
 | **M3 · Auditoría** | Compatible | **Incompatible** para corregir lo auditado en el mismo periodo | — | Compatible con cautela: declarar la relación | **Incompatible** en el ámbito auditado |
-| **M4 · Asesoramiento al consejo** | Compatible | **Incompatible** en las iniciativas que supervisa | **Incompatible** si asesoró las decisiones auditadas | — | **Incompatible** |
+| **M4 · Asesoramiento al consejo** | Compatible | **Incompatible** en los casos de uso que supervisa | **Incompatible** si asesoró las decisiones auditadas | — | **Incompatible** |
 | **M5 · Acompañamiento continuo** | Compatible | Compatible | **Incompatible** en el ámbito acompañado | **Incompatible** | — |
 
-"Ámbito" es el conjunto de iniciativas, sistemas, procesos o registros afectados. Las incompatibilidades se aplican también a entidades del mismo grupo que el tercero y a las personas que cambien de organización.
+"Ámbito" es el conjunto de casos de uso, sistemas, procesos o registros afectados. Las incompatibilidades se aplican también a entidades del mismo grupo que el tercero y a las personas que cambien de organización.
 
 ### 5.3 Periodo de separación
 
@@ -289,7 +289,7 @@ Al terminar cualquier modelo, el tercero entrega: registros y datos en formato a
 | "Implantación en X semanas" sin diagnóstico | El plazo depende del punto de partida. | "Primera implantación de referencia en noventa días, a confirmar tras el diagnóstico." |
 | "Método validado por el autor" o "certificado por el autor" | La licencia no permite sugerir respaldo. | "Basado en SEVEN-G, marco de Fernando García Varela, CC BY 4.0." |
 | "Con SEVEN-G no hará falta auditoría" | El marco exige verificación independiente. | "SEVEN-G facilita la auditoría porque deja las evidencias preparadas." |
-| "SEVEN-G sustituye a ISO/IEC 42001" o "con SEVEN-G ya tiene la certificación" | Son cosas distintas: la norma dice qué debe existir y se certifica; SEVEN-G lo hace funcionar en cada iniciativa y no certifica (D25). | "Los estándares dicen qué debe existir; SEVEN-G es la capa operativa que lo hace funcionar, iniciativa a iniciativa, y deja preparada la evidencia; el crosswalk del documento 34 dice qué cubre y qué no." |
+| "SEVEN-G sustituye a ISO/IEC 42001" o "con SEVEN-G ya tiene la certificación" | Son cosas distintas: la norma dice qué debe existir y se certifica; SEVEN-G lo hace funcionar en cada caso de uso y no certifica (D25). | "Los estándares dicen qué debe existir; SEVEN-G es la capa operativa que lo hace funcionar, caso de uso a caso de uso, y deja preparada la evidencia; el crosswalk del documento 34 dice qué cubre y qué no." |
 
 ---
 
@@ -297,7 +297,7 @@ Al terminar cualquier modelo, el tercero entrega: registros y datos en formato a
 
 | Código | Nombre | Uso en los modelos |
 |---|---|---|
-| T01 | Registro de iniciativas | M2, M5 |
+| T01 | Registro de casos de uso | M2, M5 |
 | T02 | Inventario de sistemas de IA | M1, M2, M3 |
 | T03 | Gestor de *gates* | M2, M3, M5 |
 | T14 | Calculadora del índice de transformación | M1, M4 (C5) |

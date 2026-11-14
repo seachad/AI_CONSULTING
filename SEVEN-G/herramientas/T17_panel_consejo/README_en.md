@@ -8,7 +8,7 @@ Everything the connector generates (full dashboard, mobile dashboard and recomme
 
 ---
 
-Converts the **full JSON** exported by the SEVEN-G **T01** initiative register (schema `esquema_registro.schema.json`, versions `0.1` to `0.8`; 0.8 adds to each assessment maturity through three lenses —technology footprint, impact reach, minimum required and alerts—, which the maturity card shows in the "Maturity through three lenses" table and the mobile dashboard with one line per lens, D120; 0.7 adds to each assessment the summary of the NIST profiles, which the maturity card shows in its own table, D115; 0.4 adds risk fields and 0.5 the index evidence and board decisions, which the connector does not read; 0.6 the `madurez[]` list written by T15, which the connector takes to the optional `madurez` block of the dashboard: the "Company maturity (D1–D7)" card in "Portfolio and value" and a block in the mobile dashboard, D100) into the dashboard JSON (`motor/ESQUEMA.md`) and, using the dashboard engine included in `motor/`, generates:
+Converts the **full JSON** exported by the SEVEN-G **T01** use case register (schema `esquema_registro.schema.json`, versions `0.1` to `0.8`; 0.8 adds to each assessment maturity through three lenses —technology footprint, impact reach, minimum required and alerts—, which the maturity card shows in the "Maturity through three lenses" table and the mobile dashboard with one line per lens, D120; 0.7 adds to each assessment the summary of the NIST profiles, which the maturity card shows in its own table, D115; 0.4 adds risk fields and 0.5 the index evidence and board decisions, which the connector does not read; 0.6 the `madurez[]` list written by T15, which the connector takes to the optional `madurez` block of the dashboard: the "Company maturity (D1–D7)" card in "Portfolio and value" and a block in the mobile dashboard, D100) into the dashboard JSON (`motor/ESQUEMA.md`) and, using the dashboard engine included in `motor/`, generates:
 
 - the **full dashboard** and the **mobile dashboard** (T17), in sync (same data fingerprint);
 - the **dashboard JSON**, to inspect it or save it as a snapshot with `motor/snapshot.py`;
@@ -29,10 +29,10 @@ flowchart LR
   D --> H["motor/snapshot.py<br>snapshot of each session"]
 ```
 
-- **The T01 register is the single data entry point.** Each initiative is entered in T01 like an opportunity in a CRM; the connector adds and estimates nothing.
+- **The T01 register is the single data entry point.** Each use case is entered in T01 like an opportunity in a CRM; the connector adds and estimates nothing.
 - **`config_panel.json` is the general configuration** of the dashboard: traffic-light thresholds of the indicators (`umbrales_kpi`) and lifecycle rules (`ciclo_vida`: funnel stages, exits, day limits per stage and mapping to SEVEN-G phases 0–7). The connector copies it into `meta`; keys starting with `_` are comments.
 - **Everything the dashboard shows comes from the dashboard JSON**; the HTML files are never edited by hand and can be rebuilt at any time from the register.
-- **Why it matters.** The board sees the same data the AI Office manages: an initiative that enters a phase, passes a gate or is stopped in T01 moves through the dashboard funnel with the real date of the event, with no double entry and no hand-written figures.
+- **Why it matters.** The board sees the same data the AI Office manages: a use case that enters a phase, passes a gate or is stopped in T01 moves through the dashboard funnel with the real date of the event, with no double entry and no hand-written figures.
 
 [Versión en español](README.md) · [Connector page](index.html)
 
@@ -87,7 +87,7 @@ The connector does not write `__pycache__` (`sys.dont_write_bytecode`).
 
 ## Demo
 
-`uv run python t01_a_panel.py` with no arguments converts `../T01_registro_iniciativas/datos_demo.json` (fictitious company, people and suppliers) into `ejemplo/salida/` and links the footers to `index.html` and to the T01 register. It is the example dashboard opened from the initiative register (header and “example initiatives” banner) and from the connector page. If the demo data or `config_panel.json` change, it is regenerated. Generated HTML files are never edited by hand.
+`uv run python t01_a_panel.py` with no arguments converts `../T01_registro_iniciativas/datos_demo.json` (fictitious company, people and suppliers) into `ejemplo/salida/` and links the footers to `index.html` and to the T01 register. It is the example dashboard opened from the use case register (header and “example use cases” banner) and from the connector page. If the demo data or `config_panel.json` change, it is regenerated. Generated HTML files are never edited by hand.
 
 ## Gallery of examples by sector (D136)
 
@@ -114,7 +114,7 @@ The status of each case is a funnel stage or an exit, both defined in `config_pa
 | 4 Solution design · 5 Delivery and validation | `En desarrollo` | G3 passed: being designed, built and validated. |
 | 6 Operation and governance · 7 Evolution or retirement | `En uso` | G5 passed: in operation. It is the “won” stage of the funnel. |
 
-A closed initiative (status `parada` or `retirada`, or with `cierre`) moves to the exit defined for the stage it was in:
+A closed use case (status `parada` or `retirada`, or with `cierre`) moves to the exit defined for the stage it was in:
 
 | Closure in T01 | Dashboard exit |
 |---|---|
@@ -122,7 +122,7 @@ A closed initiative (status `parada` or `retirada`, or with `cierre`) moves to t
 | Stopped in phases 2–5 | `Descartado` |
 | Retired (or stopped) in phases 6–7 | `Desenganchado` |
 
-**Lifecycle as in a CRM (`reporte_compania.historial_estados`).** The connector generates one status change each time the initiative enters a stage: registration (registration date), every T01 `entrada_fase` event —including steps back after a pivot or an iteration, which the dashboard flags— and, if it is closed, the closure date. Consecutive entries into the same stage are grouped (phases 0 and 1, 4 and 5, 6 and 7). From that history the dashboard computes the time in each stage (mean, median and deviation of each case), conversion to production, stuck cases against `ciclo_vida.dias_limite`, and entries, won and lost cases per quarter. The last status in the history always matches the status of the case.
+**Lifecycle as in a CRM (`reporte_compania.historial_estados`).** The connector generates one status change each time the use case enters a stage: registration (registration date), every T01 `entrada_fase` event —including steps back after a pivot or an iteration, which the dashboard flags— and, if it is closed, the closure date. Consecutive entries into the same stage are grouped (phases 0 and 1, 4 and 5, 6 and 7). From that history the dashboard computes the time in each stage (mean, median and deviation of each case), conversion to production, stuck cases against `ciclo_vida.dias_limite`, and entries, won and lost cases per quarter. The last status in the history always matches the status of the case.
 
 Original phase and status are kept in `casos[].seveng`.
 
@@ -149,14 +149,14 @@ With T01's `iniciativas[].resultado_operativo` (physical indicators from documen
 | `organizacion`, `compania_principal` | `--organizacion` or `meta.organizacion` | |
 | `consejo_sigla` | `--sigla`; else `meta.panel.consejo_sigla` | Default "consejo asesor". |
 | `navegacion`, `umbrales_kpi`, `ciclo_vida` | `config_panel.json` | General configuration of the dashboard, copied as is (without the `_…` comment keys). `ciclo_vida.fases_seven_g` is used by the connector; the engine ignores it. |
-| `generado`, `ejercicio_valor`, `periodo` | `meta.fecha_referencia` (or `meta.generado`) | Label "Registro de iniciativas T01 · corte dd-mm-yyyy"; quarter derived from the date. `periodo.anterior`: no data. |
+| `generado`, `ejercicio_valor`, `periodo` | `meta.fecha_referencia` (or `meta.generado`) | Label "Registro de casos de uso T01 · corte dd-mm-yyyy"; quarter derived from the date. `periodo.anterior`: no data. |
 | `prefijo_ficheros` | `--prefijo` | |
 | `demo` | `meta.datos_ilustrativos` | |
 | `textos` | Generated by the connector | Legal notice, value notice, footer with authorship, "no data" texts and sector-neutral labels for the efficiency and return lines. |
 | `glosario_extra` | Generated by the connector | SEVEN-G, T01, G3, G5, R6, ambition and the mapping between funnel stages and phases. |
 | `origen` | `version_esquema` and connector version | Own block; not read by the dashboard. |
 
-### `casos[]` (one per initiative)
+### `casos[]` (one per use case)
 
 | Dashboard | T01 source | Note |
 |---|---|---|
@@ -174,7 +174,7 @@ With T01's `iniciativas[].resultado_operativo` (physical indicators from documen
 | `tags.funcion` | `clasificacion.esfera_principal` | "04 Operaciones", etc. |
 | `tags.ambicion` | `ambicion_real`, else `ambicion_confirmada`, else `ambicion_propuesta` | Optimizar · Aumentar · Transformar. |
 | `tags.prioridad` | `panel.prioridad` | Alta · Media · Baja; no data if not provided. |
-| `tags.alcance`, `alcance` | `alcance` (schema 0.3) | Only for cross-unit initiatives (`Transversal`) and platforms (`Plataforma habilitadora`); single-unit initiatives carry neither the tag nor the block. `alcance.unidades` carries, per business unit, the roll-out and adoption from `alcance.reparto` and the cost, realised value (and how much of it is validated) and released capacity from the amounts with that `area` (the most recent per type and line); a row without a unit holds what is shared. For a cross-unit initiative, `unidad` becomes “Varias unidades (transversal)”. |
+| `tags.alcance`, `alcance` | `alcance` (schema 0.3) | Only for cross-unit use cases (`Transversal`) and platforms (`Plataforma habilitadora`); single-unit use cases carry neither the tag nor the block. `alcance.unidades` carries, per business unit, the roll-out and adoption from `alcance.reparto` and the cost, realised value (and how much of it is validated) and released capacity from the amounts with that `area` (the most recent per type and line); a row without a unit holds what is shared. For a cross-unit use case, `unidad` becomes “Varias unidades (transversal)”. |
 | `detalle.tipo` | `clasificacion.tecnologia` (all) | |
 | `detalle.proveedores` | `clasificacion.proveedores` → `proveedores[].nombre` | |
 | `detalle.valor_tipo` | `clasificacion.tipo_valor` | |
@@ -185,7 +185,7 @@ With T01's `iniciativas[].resultado_operativo` (physical indicators from documen
 
 ### `casos[].economia`
 
-Each amount in `valores` becomes an *item* with `importe`, `formula`, `estado`, `fuente` and `fecha`; `atribucion` and `hipotesis` are left empty. If there are several amounts for the same moment and type, the most recent one is used; if they carry a business unit (`area`, schema 0.3), the most recent one per unit, added up with the most prudent status among them and a formula that lists the units. Status: `validado` and `declarado` unchanged; `estimado` → `estimado_cati` (engine legacy key; in T01 the initiative team estimates it, not the advisory board, and the dashboard notice says so).
+Each amount in `valores` becomes an *item* with `importe`, `formula`, `estado`, `fuente` and `fecha`; `atribucion` and `hipotesis` are left empty. If there are several amounts for the same moment and type, the most recent one is used; if they carry a business unit (`area`, schema 0.3), the most recent one per unit, added up with the most prudent status among them and a formula that lists the units. Status: `validado` and `declarado` unchanged; `estimado` → `estimado_cati` (engine legacy key; in T01 the use case team estimates it, not the advisory board, and the dashboard notice says so).
 
 | Dashboard | T01 source | Note |
 |---|---|---|
@@ -200,10 +200,10 @@ Each amount in `valores` becomes an *item* with `importe`, `formula`, `estado`, 
 | `hipotesis_potencial` | Formulas of expected values | |
 | `nota_caso` | T01 phase and status; `riesgo_evitado` and `cumplimiento` amounts | Reported as text: not added to net value (T01 rule). |
 | `moneda` | `meta.moneda` | |
-| `plazo_potencial` | `panel.plazo_potencial` (`YYYY-MM`) | No data if not provided or if the initiative is closed. |
+| `plazo_potencial` | `panel.plazo_potencial` (`YYYY-MM`) | No data if not provided or if the use case is closed. |
 | `clave_reparto` | `alcance.tipo` | Cross-unit: cost by each unit's licences and shared governance without a unit. Platform: its value is allocated to the cases that use it and `comparte_valor_con` carries `alcance.habilita`. Otherwise, no data and `comparte_valor_con` empty. |
 
-For **closed** initiatives (stopped or retired) only construction is kept; their other amounts are quoted in `nota_caso` and not added in the dashboard.
+For **closed** use cases (stopped or retired) only construction is kept; their other amounts are quoted in `nota_caso` and not added in the dashboard.
 
 ### `casos[].reporte_compania`
 
@@ -252,17 +252,17 @@ Empty: T01 does not store dashboard snapshots. At the end of each session, from 
 
 | Log | T01 source | Note |
 |---|---|---|
-| `id`, `texto`, `destinatario` | `recomendaciones[]` | Linked initiatives are appended to the text. |
+| `id`, `texto`, `destinatario` | `recomendaciones[]` | Linked use cases are appended to the text. |
 | `estado` | `estado` | `abierta` → pending · `en_curso` → in progress · `cerrada` → fulfilled · `descartada` → discarded. |
 | Session | `fecha` | One session per distinct date. |
-| Scope | Main sphere of the linked initiatives | "General" if none. |
+| Scope | Main sphere of the linked use cases | "General" if none. |
 | Evidence | `evidencia` | |
-| Link to the dashboard | Inventory, if there are linked initiatives | |
+| Link to the dashboard | Inventory, if there are linked use cases | |
 | Committed date, advisory board assessment | — | No data. |
 
 ## What in T01 does not reach the dashboard
 
-Gate decisions and criteria, conditions, evidence, iterations, holds, deadlines and stalled initiatives, T04 and T05, funnel metrics (conversion, decision time, weighted value, cohorts), risks, non-conformities, suppliers (except their name), systems (except their code in `seveng`) and people (except the names of owners and decision makers). The engine has nowhere to show them. Nor holds: the dashboard counts the time in each stage without deducting them, whereas the T01 analysis does deduct them. Phase, status, intensity, spheres and ambition travel in `casos[].seveng` (`PROPUESTA_MOTOR.md`).
+Gate decisions and criteria, conditions, evidence, iterations, holds, deadlines and stalled use cases, T04 and T05, funnel metrics (conversion, decision time, weighted value, cohorts), risks, non-conformities, suppliers (except their name), systems (except their code in `seveng`) and people (except the names of owners and decision makers). The engine has nowhere to show them. Nor holds: the dashboard counts the time in each stage without deducting them, whereas the T01 analysis does deduct them. Phase, status, intensity, spheres and ambition travel in `casos[].seveng` (`PROPUESTA_MOTOR.md`).
 
 ## Known limitations
 

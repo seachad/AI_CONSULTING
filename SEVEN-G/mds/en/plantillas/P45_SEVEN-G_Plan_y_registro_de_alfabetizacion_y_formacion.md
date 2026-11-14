@@ -14,17 +14,17 @@
 
 > **Legal notice and disclaimer.** SEVEN-G is a reference methodological framework provided "as is" and for information purposes only. It does not constitute legal, regulatory, financial or professional advice, nor does it guarantee compliance with any law or standard. References to general regulation (such as the EU AI Act, the GDPR, DORA or NIS2), to technical standards and to regulation specific to each sector or jurisdiction may be incomplete, may not apply to a particular case or may become out of date as a result of regulatory changes, interpretations or supervisory positions after their consultation date. **Each organisation that uses SEVEN-G is solely responsible for identifying the regulation that applies to it, verifying that it is current and certifying its own regulatory compliance**, with the appropriate qualified advice. This methodology is a generic, free aid shared with the community so that nobody has to start from scratch; each person or organisation can and should adapt it to its own use. It must not be inferred that its legally sensitive parts have been reviewed by legal counsel: those reviews, for each company or sector, are the ultimate responsibility of the company, consultant or organisation that uses it. Although every effort is made to keep it up to date, some regulation may have changed without being reflected here. To the fullest extent permitted by law, the author accepts no responsibility whatsoever for the effects of its application in any organisation or for its full applicability. The methodology does not grant certification of any kind. The author accepts no liability for any use made of this content or for any decisions taken on the basis of it. The data, figures, companies and cases in the examples are fictitious or illustrative.
 
-> **Why it matters.** Without capable people there is no real human oversight, verification of outputs or detection of misuse (31 §6.1). The plan sets who must be trained, in what and when; the record shows that it has happened. Three controls depend on it: no one receives AI licences without F1, no one oversees a system in production without F3 and no one takes up an initiative role without F4 (31 §6.3). Without a record per person, the company cannot show at G5 that the overseers are trained (G5.14) or give the board the actual coverage.
+> **Why it matters.** Without capable people there is no real human oversight, verification of outputs or detection of misuse (31 §6.1). The plan sets who must be trained, in what and when; the record shows that it has happened. Three controls depend on it: no one receives AI licences without F1, no one oversees a system in production without F3 and no one takes up a use case role without F4 (31 §6.3). Without a record per person, the company cannot show at G5 that the overseers are trained (G5.14) or give the board the actual coverage.
 
 ## 1. Instructions for use
 
 | Aspect | Guidance |
 |---|---|
-| **When it is used** | The plan is approved each year in C2 together with the policy (31 §6.3) and reviewed in C5. The record is living: it is updated with each training action, each assignment of a licence, oversight role or initiative role, and each expiry. |
-| **Who completes it** | The AI Office with the people function prepares the plan and maintains the record. The AI Product Owner provides the specific training for each initiative (P20, section 5). |
-| **Who verifies it** | AI Auditor or internal audit, by sampling (document 38); at each *gate*, the verifier checks the training of the people in that initiative. |
+| **When it is used** | The plan is approved each year in C2 together with the policy (31 §6.3) and reviewed in C5. The record is living: it is updated with each training action, each assignment of a licence, oversight role or use case role, and each expiry. |
+| **Who completes it** | The AI Office with the people function prepares the plan and maintains the record. The AI Product Owner provides the specific training for each use case (P20, section 5). |
+| **Who verifies it** | AI Auditor or internal audit, by sampling (document 38); at each *gate*, the verifier checks the training of the people in that use case. |
 | **Who decides or approves** | The annual plan is approved by the AI Committee within the direction approved in C2; the budget, in the *adoption and training* cost category (document 42). |
-| **Stage, *gate* or moment** | C2 (plan), C4 (monitoring in the T21 monitor and in the board dashboard), C5 (review). In the initiative: G0 (F4 of the roles), G5 (F3 of the overseers and user training, G5.14 and G5.19) and R6 (validity). |
+| **Stage, *gate* or moment** | C2 (plan), C4 (monitoring in the T21 monitor and in the board dashboard), C5 (review). In the use case: G0 (F4 of the roles), G5 (F3 of the overseers and user training, G5.14 and G5.19) and R6 (validity). |
 | **Tool** | T20 · Adoption and capacity plan (training record). The indicators are shown in T21 and the record is linked to P03 for the roles (31 §6.3). |
 | **Reference document** | 31 §6; 50 §5; 23 §8; 34 §3.5; 41 (IND-ADO-05, IND-ADO-10); 90 §9. |
 | **Lite versus Enterprise** | The plan and the record are mandatory in both implementation scopes (90 §2.1). In a Lite scope, the fields marked **(Enterprise)** may be omitted; the F3 condition for oversight is not simplified. |
@@ -64,12 +64,12 @@ Regardless of that minimum, **SEVEN-G requires** a programme by profile with a r
 
 ## 4. Profile correspondence
 
-| Profile (31 §6.2) | Profile (50 §5.2) | Initiative audience (23 §8.2) |
+| Profile (31 §6.2) | Profile (50 §5.2) | Use case audience (23 §8.2) |
 |---|---|---|
 | F1 · All employees and collaborators with AI tools | PER-PC · All employees | Affected people in the area |
 | F2 · Power users and users of personal agents | PER-PC · All employees | Users |
 | F3 · Human overseers of systems in production | PER-PD · Users and overseers of a system | Human overseers; users |
-| F4 · Initiative roles | PER-PE · Teams that build and operate | Operations team |
+| F4 · Use case roles | PER-PE · Teams that build and operate | Operations team |
 | F5 · Technical construction | PER-PE · Teams that build and operate | — |
 | F6 · Second and third line | PER-PF · Control and people functions | — |
 | F7 · Board and senior management | PER-PA · Board and senior management | — |
@@ -87,7 +87,7 @@ Middle managers (PER-PB) receive F1 and F9, which applies the content of 50 §5.
 | F1 | | 31 §6.2 | Online, 60–90 minutes, with assessment | On joining and annually | Before receiving AI licences | | | | Completion and acceptance of the policy |
 | F2 | | | Practical workshop, 3–4 hours | When the licence or permission is assigned; annually | — | | | | Record and exercise |
 | F3 | | Per system | 2–8 hours, with practice | Before go-live; upon changes; annually | Before overseeing a system in production | | | | Record per system and practical test |
-| F4 | | | 1 day plus support | On taking up the role | Before taking up an initiative role | | | | Record linked to P03 |
+| F4 | | | 1 day plus support | On taking up the role | Before taking up a use case role | | | | Record linked to P03 |
 | F5 | | | 2–3 days | On joining; annually | — | | | | Record and exercises |
 | F6 | | | 2 days and continuous training | Annually and upon regulatory changes | — | | | | Record; AI Auditor competence plan |
 | F7 | | | 2–3 hour session | Annually and on joining the body | — | | | | Minutes or attendance record |
@@ -97,11 +97,11 @@ Middle managers (PER-PB) receive F1 and F9, which applies the content of 50 §5.
 
 ---
 
-## 6. Initiative-specific training
+## 6. Specific training by use case
 
-Summary of section 5 of P20 for each initiative, in order to consolidate the company's coverage.
+Summary of section 5 of P20 for each use case, in order to consolidate the company's coverage.
 
-| Initiative | System | Audience (23 §8.2) | Emphasis by technology (23 §8.3) | People | Planned date | Completed (Yes · No) |
+| Use case | System | Audience (23 §8.2) | Emphasis by technology (23 §8.3) | People | Planned date | Completed (Yes · No) |
 |---|---|---|---|---|---|---|
 | IA-AAAA-NNN | SIA-AAAA-NNN | | Predictive ML · Generative AI · Agents · Embedded third-party AI | | | |
 
@@ -123,7 +123,7 @@ Summary of section 5 of P20 for each initiative, in order to consolidate the com
 |---|---|---|---|---|---|
 | F1 coverage | People with current F1 ÷ people with access to AI tools | 31 §6.4 | Close to 100 % | | Monthly |
 | Overseer coverage | Overseers with current F3 ÷ overseers assigned to systems in production | 31 §6.4 | 100 % | | Monthly |
-| Role coverage | People with an initiative role and F4 ÷ people with a role | 31 §6.4 | 100 % | | Quarterly |
+| Role coverage | People with a use case role and F4 ÷ people with a role | 31 §6.4 | 100 % | | Quarterly |
 | Expired training | People with expired mandatory training | 31 §6.4 | Monthly alert | | Monthly |
 | Pass rate | Assessments passed ÷ assessments taken, by profile | 31 §6.4 | To be set by the company | | Quarterly |
 | Incidents due to misuse | Incidents and nonconformities with root cause "lack of awareness of the policy" | 31 §6.4; T08 | Trend | | Quarterly |
@@ -163,7 +163,7 @@ Summary of section 5 of P20 for each initiative, in order to consolidate the com
 | Function | Role in SEVEN-G | Name and position | Date | Signature or reference |
 |---|---|---|---|---|
 | Prepares the plan and maintains the record | AI Office and people function | | | |
-| Provides the initiative training | AI Product Owner | | | |
+| Provides the use case training | AI Product Owner | | | |
 | Approves the plan | AI Committee | | | |
 | Verifies | AI Auditor or internal audit | | | |
 

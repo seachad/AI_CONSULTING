@@ -45,7 +45,7 @@ By the end you will be able to distinguish validated, declared and estimated val
 
 ## 4. Exercise
 
-Open the value calculator (T11) with its example case. Note the NPV, the ROI and the payback period. Raise the recurring cost by 50% and see what happens to the NPV. Then open the example board dashboard (T17) and compare the portfolio net value **with and without** the cross-cutting initiative IA-2025-007: why is its net value negative and why might it still make sense to keep it?
+Open the value calculator (T11) with its example case. Note the NPV, the ROI and the payback period. Raise the recurring cost by 50% and see what happens to the NPV. Then open the example board dashboard (T17) and compare the portfolio net value **with and without** the cross-cutting use case IA-2025-007: why is its net value negative and why might it still make sense to keep it?
 
 ---
 
@@ -53,7 +53,7 @@ Open the value calculator (T11) with its example case. Note the NPV, the ROI and
 
 1. A business area states that it saves 4,000 hours a year. What status does that value have?
 2. What three pieces of data are needed before investing in order to measure afterwards?
-3. Can an initiative with a negative NPV pass G3?
+3. Can a use case with a negative NPV pass G3?
 4. Where can you see the difference between what the company declares and what it has validated?
 
 ---

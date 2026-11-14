@@ -374,6 +374,13 @@ blockquote.aviso-legal strong { color: var(--negro); }
 .dz-card-titulo { font: 700 19px/1.2 var(--serif); color: var(--negro); margin: 0 0 6px; }
 .dz-card-texto { font: 400 13.5px/1.4 var(--sans); color: var(--tinta-2); margin: 0 0 12px; flex: 1; }
 .dz-card .dz-item { background: var(--papel); }
+/* documento 00 de cada marco: sus presentaciones en slides (1, 5, 10 y 20 en tarjetas de dos columnas; el curso, de cuatro) */
+@media (min-width: 900px) { .dz-card[data-grupo="slides-curso"] { grid-column: span 4; } .dz-card[data-grupo="slides-otros"] { grid-column: span 3; } }
+.dz-card[data-grupo="slides-curso"] { border-top-color: var(--teal); }
+.dz-card[data-grupo="slides-curso"] .dz-card-rotulo { color: var(--teal); }
+.dz-card[data-grupo="slides-otros"] { border-top-color: var(--oxford); }
+.dz-card[data-grupo="slides-otros"] .dz-card-rotulo { color: var(--oxford); }
+.descargas-zona[id] { scroll-margin-top: 72px; }
 .dz-grupo { font: 700 12px/1.2 var(--sans); letter-spacing: .08em; text-transform: uppercase; color: var(--tinta-2); margin: 8px 0 -2px; padding-top: 10px; border-top: 1px solid var(--regla); }
 .dz-grupo:first-child { margin-top: 0; padding-top: 0; border-top: 0; }
 @media print { .descargas-zona { display: none !important; } }
@@ -467,7 +474,7 @@ h2 .codigo, h3 .codigo { font-weight: 400; }
     <strong>Downloads</strong>
     <button class="btn btn-icono" id="cerrar-descargas" type="button" aria-label="Close panel">✕</button>
   </div>
-  <div class="descargas-lista"><a class="dz-item" href="../../pdf/en/12_SEVEN-G_Indice_de_transformacion.pdf" target="_blank" rel="noopener"><span class="dz-tipo">PDF</span><b>This document · English</b></a><a class="dz-item" href="../../pdf/es/12_SEVEN-G_Indice_de_transformacion.pdf" target="_blank" rel="noopener"><span class="dz-tipo">PDF</span><b>Spanish version</b></a><a class="dz-item" href="../es/12_SEVEN-G_Indice_de_transformacion.html" hreflang="es"><span class="dz-tipo html">HTML</span><b>Spanish version</b></a><a class="dz-item" href="../../herramientas/T01_registro_iniciativas/registro.html" target="_blank" rel="noopener"><span class="dz-tipo tool">T01</span><b>Initiative register</b></a><a class="dz-item" href="../../herramientas/T11_calculadora_valor/calculadora.html" target="_blank" rel="noopener"><span class="dz-tipo tool">T11</span><b>Value hypothesis and cost-per-case calculator</b></a><a class="dz-item" href="../../herramientas/T14_indice_transformacion/indice.html" target="_blank" rel="noopener"><span class="dz-tipo tool">T14</span><b>Transformation index calculator</b></a><a class="dz-item" href="../../herramientas/T17_panel_consejo/index.html" target="_blank" rel="noopener"><span class="dz-tipo tool">T17</span><b>Regenerate the board dashboard</b></a></div>
+  <div class="descargas-lista"><a class="dz-item" href="../../pdf/en/12_SEVEN-G_Indice_de_transformacion.pdf" target="_blank" rel="noopener"><span class="dz-tipo">PDF</span><b>This document · English</b></a><a class="dz-item" href="../../pdf/es/12_SEVEN-G_Indice_de_transformacion.pdf" target="_blank" rel="noopener"><span class="dz-tipo">PDF</span><b>Spanish version</b></a><a class="dz-item" href="../es/12_SEVEN-G_Indice_de_transformacion.html" hreflang="es"><span class="dz-tipo html">HTML</span><b>Spanish version</b></a><a class="dz-item" href="../../herramientas/T01_registro_iniciativas/registro.html" target="_blank" rel="noopener"><span class="dz-tipo tool">T01</span><b>Use case register</b></a><a class="dz-item" href="../../herramientas/T11_calculadora_valor/calculadora.html" target="_blank" rel="noopener"><span class="dz-tipo tool">T11</span><b>Value hypothesis and cost-per-case calculator</b></a><a class="dz-item" href="../../herramientas/T14_indice_transformacion/indice.html" target="_blank" rel="noopener"><span class="dz-tipo tool">T14</span><b>Transformation index calculator</b></a><a class="dz-item" href="../../herramientas/T17_panel_consejo/index.html" target="_blank" rel="noopener"><span class="dz-tipo tool">T17</span><b>Regenerate the board dashboard</b></a></div>
 </aside>
 
 <div id="top"></div>
@@ -476,22 +483,22 @@ h2 .codigo, h3 .codigo { font-weight: 400; }
   <div class="portada-cuerpo">
     <p class="antetitulo">Document 12 &#183; Transformation index</p>
     <h1>Transformation index</h1>
-    <p class="entradilla">How to know, with evidence, whether an initiative and a company are being transformed by AI or are merely becoming more efficient</p>
+    <p class="entradilla">How to know, with evidence, whether a use case and a company are being transformed by AI or are merely becoming more efficient</p>
     <div class="firma"><span><b>Fernando Garc&#237;a Varela</b></span><span>Version 0.2 (working draft)</span><span>28-09-2026</span><span>Draft for review</span></div>
     <div class="cifras"><div class="cifra"><b>5</b><span>classification questions</span></div><div class="cifra"><b>8</b><span>observable signals</span></div><div class="cifra"><b>0–3</b><span>score per signal</span></div><div class="cifra"><b>5</b><span>company profiles</span></div></div>
   </div>
 </header>
-<section class="descargas-zona" aria-label="Downloads and tools"><div class="dz-in"><div class="dz-bloque"><p class="dz-titulo">Downloads</p><div class="dz-enlaces"><a class="dz-item" href="../../pdf/en/12_SEVEN-G_Indice_de_transformacion.pdf" target="_blank" rel="noopener"><span class="dz-tipo">PDF</span><b>This document · English</b></a><a class="dz-item" href="../../pdf/es/12_SEVEN-G_Indice_de_transformacion.pdf" target="_blank" rel="noopener"><span class="dz-tipo">PDF</span><b>Spanish version</b></a><a class="dz-item" href="../es/12_SEVEN-G_Indice_de_transformacion.html" hreflang="es"><span class="dz-tipo html">HTML</span><b>Spanish version</b></a></div></div><div class="dz-bloque"><p class="dz-titulo">Related tools</p><div class="dz-enlaces"><a class="dz-item" href="../../herramientas/T01_registro_iniciativas/registro.html" target="_blank" rel="noopener"><span class="dz-tipo tool">T01</span><b>Initiative register</b></a><a class="dz-item" href="../../herramientas/T11_calculadora_valor/calculadora.html" target="_blank" rel="noopener"><span class="dz-tipo tool">T11</span><b>Value hypothesis and cost-per-case calculator</b></a><a class="dz-item" href="../../herramientas/T14_indice_transformacion/indice.html" target="_blank" rel="noopener"><span class="dz-tipo tool">T14</span><b>Transformation index calculator</b></a><a class="dz-item" href="../../herramientas/T17_panel_consejo/index.html" target="_blank" rel="noopener"><span class="dz-tipo tool">T17</span><b>Regenerate the board dashboard</b></a></div></div></div></section>
-<nav class="indice"><div class="indice-in"><h2>In this document</h2><ol><li><a href="#purpose-and-scope"><span>01</span>Purpose and scope</a></li><li><a href="#principle"><span>02</span>Principle</a></li><li><a href="#ambition-classification-of-an-initiative"><span>03</span>Ambition classification of an initiative</a></li><li><a href="#company-transformation-index"><span>04</span>Company transformation index</a></li><li><a href="#profile-assignment"><span>05</span>Profile assignment</a></li><li><a href="#treatment-of-quot-no-data-quot"><span>06</span>Treatment of &quot;no data&quot;</a></li><li><a href="#frequency-and-owners"><span>07</span>Frequency and owners</a></li><li><a href="#calibration-in-c5"><span>08</span>Calibration in C5</a></li><li><a href="#complete-illustrative-example"><span>09</span>Complete illustrative example</a></li><li><a href="#presentation-to-the-board"><span>10</span>Presentation to the board</a></li><li><a href="#limitations"><span>11</span>Limitations</a></li><li><a href="#associated-tools-and-templates"><span>12</span>Associated tools and templates</a></li><li><a href="#related-documents"><span>13</span>Related documents</a></li><li><a href="#version-control"><span>14</span>Version control</a></li></ol></div></nav>
+<section class="descargas-zona" aria-label="Downloads and tools"><div class="dz-in"><div class="dz-bloque"><p class="dz-titulo">Downloads</p><div class="dz-enlaces"><a class="dz-item" href="../../pdf/en/12_SEVEN-G_Indice_de_transformacion.pdf" target="_blank" rel="noopener"><span class="dz-tipo">PDF</span><b>This document · English</b></a><a class="dz-item" href="../../pdf/es/12_SEVEN-G_Indice_de_transformacion.pdf" target="_blank" rel="noopener"><span class="dz-tipo">PDF</span><b>Spanish version</b></a><a class="dz-item" href="../es/12_SEVEN-G_Indice_de_transformacion.html" hreflang="es"><span class="dz-tipo html">HTML</span><b>Spanish version</b></a></div></div><div class="dz-bloque"><p class="dz-titulo">Related tools</p><div class="dz-enlaces"><a class="dz-item" href="../../herramientas/T01_registro_iniciativas/registro.html" target="_blank" rel="noopener"><span class="dz-tipo tool">T01</span><b>Use case register</b></a><a class="dz-item" href="../../herramientas/T11_calculadora_valor/calculadora.html" target="_blank" rel="noopener"><span class="dz-tipo tool">T11</span><b>Value hypothesis and cost-per-case calculator</b></a><a class="dz-item" href="../../herramientas/T14_indice_transformacion/indice.html" target="_blank" rel="noopener"><span class="dz-tipo tool">T14</span><b>Transformation index calculator</b></a><a class="dz-item" href="../../herramientas/T17_panel_consejo/index.html" target="_blank" rel="noopener"><span class="dz-tipo tool">T17</span><b>Regenerate the board dashboard</b></a></div></div></div></section>
+<nav class="indice"><div class="indice-in"><h2>In this document</h2><ol><li><a href="#purpose-and-scope"><span>01</span>Purpose and scope</a></li><li><a href="#principle"><span>02</span>Principle</a></li><li><a href="#ambition-classification-of-a-use-case"><span>03</span>Ambition classification of a use case</a></li><li><a href="#company-transformation-index"><span>04</span>Company transformation index</a></li><li><a href="#profile-assignment"><span>05</span>Profile assignment</a></li><li><a href="#treatment-of-quot-no-data-quot"><span>06</span>Treatment of &quot;no data&quot;</a></li><li><a href="#frequency-and-owners"><span>07</span>Frequency and owners</a></li><li><a href="#calibration-in-c5"><span>08</span>Calibration in C5</a></li><li><a href="#complete-illustrative-example"><span>09</span>Complete illustrative example</a></li><li><a href="#presentation-to-the-board"><span>10</span>Presentation to the board</a></li><li><a href="#limitations"><span>11</span>Limitations</a></li><li><a href="#associated-tools-and-templates"><span>12</span>Associated tools and templates</a></li><li><a href="#related-documents"><span>13</span>Related documents</a></li><li><a href="#version-control"><span>14</span>Version control</a></li></ol></div></nav>
 <main class="contenido" id="contenido">
 <blockquote class="aviso-legal plegado">
 <p><strong>Legal notice and disclaimer.</strong> SEVEN-G is a reference methodological framework provided &quot;as is&quot; and for information purposes only. It does not constitute legal, regulatory, financial or professional advice, nor does it guarantee compliance with any law or standard. References to general regulation (such as the EU AI Act, the GDPR, DORA or NIS2), to technical standards and to regulation specific to each sector or jurisdiction may be incomplete, may not apply to a particular case or may become out of date as a result of regulatory changes, interpretations or supervisory positions after their consultation date. <strong>Each organisation that uses SEVEN-G is solely responsible for identifying the regulation that applies to it, verifying that it is current and certifying its own regulatory compliance</strong>, with the appropriate qualified advice. This methodology is a generic, free aid shared with the community so that nobody has to start from scratch; each person or organisation can and should adapt it to its own use. It must not be inferred that its legally sensitive parts have been reviewed by legal counsel: those reviews, for each company or sector, are the ultimate responsibility of the company, consultant or organisation that uses it. Although every effort is made to keep it up to date, some regulation may have changed without being reflected here. To the fullest extent permitted by law, the author accepts no responsibility whatsoever for the effects of its application in any organisation or for its full applicability. The methodology does not grant certification of any kind. The author accepts no liability for any use made of this content or for any decisions taken on the basis of it. The data, figures, companies and cases in the examples are fictitious or illustrative.</p>
 </blockquote>
-<aside class="esencial" data-capa="siempre"><div class="es-cab"><span class="es-rotulo">The essentials</span><span class="es-nivel">Always mandatory</span></div><p>Calculation of the company&#39;s transformation index at C1 and at each C5, with the base conditions and the eight signals; &#39;no data&#39; never counts as evidence. The classification of each initiative&#39;s ambition (section 3) always applies.</p><p class="es-pie"><a href="94_SEVEN-G_Matriz_de_obligatoriedad_y_lectura_por_capas.html">Obligation matrix and layered reading (document 94)</a></p></aside>
+<aside class="esencial" data-capa="siempre"><div class="es-cab"><span class="es-rotulo">The essentials</span><span class="es-nivel">Always mandatory</span></div><p>Calculation of the company&#39;s transformation index at C1 and at each C5, with the base conditions and the eight signals; &#39;no data&#39; never counts as evidence. The classification of each use case&#39;s ambition (section 3) always applies.</p><p class="es-pie"><a href="94_SEVEN-G_Matriz_de_obligatoriedad_y_lectura_por_capas.html">Obligation matrix and layered reading (document 94)</a></p></aside>
 <h2 id="purpose-and-scope"><span class="antetitulo">01</span>Purpose and scope</h2>
 <p>This document develops section 5 of <a href="00_SEVEN-G_Que_es_y_para_que_sirve.html" title="Document 00 &#183; What SEVEN-G is and what it is for">document 00</a>. It defines two connected instruments:</p>
 <ol>
-<li><strong>The ambition classification of each initiative</strong> (Optimise, Augment or Transform): five questions, decision rules, treatment of borderline cases, owners and the cycle of proposed, confirmed and actual ambition.</li>
+<li><strong>The ambition classification of each use case</strong> (Optimise, Augment or Transform): five questions, decision rules, treatment of borderline cases, owners and the cycle of proposed, confirmed and actual ambition.</li>
 <li><strong>The company transformation index</strong>: eight signals with formula, data source and a score from 0 to 3; baseline conditions; rules for assigning one of the five profiles; treatment of &quot;no data&quot;; frequency; calibration; a complete example and limitations.</li>
 </ol>
 <p>It applies in phases 1, 2 and 7 of the lifecycle and in stages C1, C4 and C5 of the corporate cycle. The associated tools are the ambition classifier (<a href="../../herramientas/T01_registro_iniciativas/registro.html" title="Tool T05 &#183; Ambition classifier">T05</a>) and the index calculator (<a href="../../herramientas/T14_indice_transformacion/indice.html" title="Tool T14 &#183; Transformation index calculator">T14</a>); the evidence for the classification is documented with template <a href="plantillas/P07_SEVEN-G_Clasificacion_de_esfera_y_ambicion.html" title="Template P07 &#183; Sphere and ambition classification">P07</a>.</p>
@@ -501,7 +508,7 @@ h2 .codigo, h3 .codigo { font-weight: 400; }
 <p>Efficiency and transformation <strong>are not distinguished by technology</strong>, but by <strong>what changes in the business and where the value appears</strong>. A generative AI agent that drafts responses faster is optimisation; a classical statistical model that makes it possible to launch a service with personalised pricing may be transformation.</p>
 <p>The index is not a value judgement. <strong>Efficiency is a legitimate outcome</strong>, and many companies should start with it in order to fund their later bets. What SEVEN-G requires is that the choice be conscious, measured and made by the appropriate person (principle 9 of <a href="01_SEVEN-G_Metodologia_fundacional.html" title="Document 01 &#183; SEVEN-G foundational methodology">document 01</a>). Above all, the index serves to detect one specific situation: <strong>declared transformation that the signals do not confirm</strong>.</p>
 <hr />
-<h2 id="ambition-classification-of-an-initiative"><span class="antetitulo">03</span>Ambition classification of an initiative</h2>
+<h2 id="ambition-classification-of-a-use-case"><span id="ambition-classification-of-an-initiative" class="ancla-antigua"></span><span class="antetitulo">03</span>Ambition classification of a use case</h2>
 <h3 id="3-1-the-five-questions">3.1 The five questions</h3>
 <p>Each question is answered <strong>yes</strong> or <strong>no</strong>, with a brief justification and the available evidence. A yes answer without evidence is treated as <strong>no</strong> for classification purposes.</p>
 <div class="tabla"><table>
@@ -566,7 +573,7 @@ h2 .codigo, h3 .codigo { font-weight: 400; }
 <tr>
 <td><strong>1 · Optimise by default</strong></td>
 <td>IT-P1, IT-P2, IT-P3 and IT-P4 are <strong>no</strong>.</td>
-<td><strong>Optimise</strong>, regardless of how the initiative has been presented.</td>
+<td><strong>Optimise</strong>, regardless of how the use case has been presented.</td>
 </tr>
 <tr>
 <td><strong>2 · New revenue</strong></td>
@@ -596,7 +603,7 @@ h2 .codigo, h3 .codigo { font-weight: 400; }
 <tr>
 <td><strong>7 · Dependency in Optimise</strong></td>
 <td>The result is Optimise and IT-P5 is <strong>no</strong>.</td>
-<td>The level does not change. It is checked whether the initiative supports a critical function (Enterprise criterion in <a href="01_SEVEN-G_Metodologia_fundacional.html" title="Document 01 &#183; SEVEN-G foundational methodology">document 01</a>, section 9.2).</td>
+<td>The level does not change. It is checked whether the use case supports a critical function (Enterprise criterion in <a href="01_SEVEN-G_Metodologia_fundacional.html" title="Document 01 &#183; SEVEN-G foundational methodology">document 01</a>, section 9.2).</td>
 </tr>
 <tr>
 <td><strong>8 · Prudence in case of doubt</strong></td>
@@ -604,9 +611,9 @@ h2 .codigo, h3 .codigo { font-weight: 400; }
 <td>The <strong>lower level</strong> is assigned. Whoever proposes the higher level provides the evidence to resolve the doubt. The doubt <strong>does not lower the controls</strong>: if it affects an Enterprise criterion, Enterprise applies.</td>
 </tr>
 <tr>
-<td><strong>9 · Mixed initiatives</strong></td>
-<td>The initiative has components at different levels.</td>
-<td>It is split into separate initiatives or classified according to the component that accounts for more than half of the investment. Levels are not averaged.</td>
+<td><strong>9 · Mixed use cases</strong></td>
+<td>The use case has components at different levels.</td>
+<td>It is split into separate use cases or classified according to the component that accounts for more than half of the investment. Levels are not averaged.</td>
 </tr>
 <tr>
 <td><strong>10 · Irrelevance of form</strong></td>
@@ -615,7 +622,7 @@ h2 .codigo, h3 .codigo { font-weight: 400; }
 </tr>
 </tbody>
 </table></div>
-<figure class="grafico"><div class="g-titulo">Ambition classification of an initiative</div><div class="g-sub">The rules are applied in order and cross-checked against question 5</div><div class="g-lienzo"><pre class="mermaid">flowchart TD
+<figure class="grafico"><div class="g-titulo">Ambition classification of a use case</div><div class="g-sub">The rules are applied in order and cross-checked against question 5</div><div class="g-lienzo"><pre class="mermaid">flowchart TD
   A["Answers IT-P1 to IT-P5 with evidence"] --> B{"Are IT-P1 to IT-P4 all no?"}
   B -->|"Yes"| O["Optimise"]
   B -->|"No"| C{"Is IT-P4 or IT-P1 yes?"}
@@ -681,9 +688,9 @@ h2 .codigo, h3 .codigo { font-weight: 400; }
 <td>Revenue that did not exist (IT-P4 yes).</td>
 </tr>
 <tr>
-<td>Common data platform for several initiatives</td>
+<td>Common data platform for several use cases</td>
 <td><strong>Optimise</strong> by default</td>
-<td>It is classified by its own effect. It does not inherit the ambition of the initiatives it enables; its contribution is declared as a dependency.</td>
+<td>It is classified by its own effect. It does not inherit the ambition of the use cases it enables; its contribution is declared as a dependency.</td>
 </tr>
 <tr>
 <td>Exploratory pilot of a new service idea</td>
@@ -739,7 +746,7 @@ h2 .codigo, h3 .codigo { font-weight: 400; }
 <tbody>
 <tr>
 <td><strong>Transform</strong></td>
-<td>Validated return attributable to the initiative, or a verified change in the offering or the operating model (IT-P1, IT-P4 or rule 4 confirmed by facts).</td>
+<td>Validated return attributable to the use case, or a verified change in the offering or the operating model (IT-P1, IT-P4 or rule 4 confirmed by facts).</td>
 </tr>
 <tr>
 <td><strong>Augment</strong></td>
@@ -751,7 +758,7 @@ h2 .codigo, h3 .codigo { font-weight: 400; }
 </tr>
 </tbody>
 </table></div>
-<p>If the initiative is <strong>stopped before G5</strong>, no actual ambition is recorded: the confirmed ambition is retained and the stop counts in signal 7.</p>
+<p>If the use case is <strong>stopped before G5</strong>, no actual ambition is recorded: the confirmed ambition is retained and the stop counts in signal 7.</p>
 <h3 id="3-5-who-classifies-confirms-and-reviews">3.5 Who classifies, confirms and reviews</h3>
 <div class="tabla"><table>
 <thead>
@@ -797,11 +804,11 @@ h2 .codigo, h3 .codigo { font-weight: 400; }
 <td>AI Product Owner, with data from <a href="plantillas/P28_SEVEN-G_Seguimiento_de_realizacion_de_valor.html" title="Tool T12 &#183; Value realisation tracking">T12</a></td>
 <td>AI Office (Lite) or AI Auditor (Enterprise)</td>
 <td>G7 body</td>
-<td>Scaling an initiative with an actual ambition of Transform requires board approval.</td>
+<td>Scaling a use case with an actual ambition of Transform requires board approval.</td>
 </tr>
 </tbody>
 </table></div>
-<p>No one verifies or decides on the classification of their own initiative (<a href="01_SEVEN-G_Metodologia_fundacional.html" title="Document 01 &#183; SEVEN-G foundational methodology">document 01</a>, section 7.4).</p>
+<p>No one verifies or decides on the classification of their own use case (<a href="01_SEVEN-G_Metodologia_fundacional.html" title="Document 01 &#183; SEVEN-G foundational methodology">document 01</a>, section 7.4).</p>
 <h3 id="3-6-what-to-do-if-the-actual-ambition-differs-from-the-declared-ambition">3.6 What to do if the actual ambition differs from the declared ambition</h3>
 <div class="tabla"><table>
 <thead>
@@ -824,7 +831,7 @@ h2 .codigo, h3 .codigo { font-weight: 400; }
 </tr>
 <tr>
 <td><strong>Operating as Transform without approval</strong></td>
-<td>If the initiative has already introduced changes typical of Transform without board approval, a <strong>major nonconformity</strong> is raised and regularised within the time limit approved in C2.</td>
+<td>If the use case has already introduced changes typical of Transform without board approval, a <strong>major nonconformity</strong> is raised and regularised within the time limit approved in C2.</td>
 <td>AI Committee.</td>
 </tr>
 <tr>
@@ -840,7 +847,7 @@ h2 .codigo, h3 .codigo { font-weight: 400; }
 </tbody>
 </table></div>
 <p>The difference between confirmed and actual ambition <strong>is not in itself a nonconformity</strong>: bets may not pay off. What is controlled is how often this happens:</p>
-<p><strong>Ambition overstatement rate</strong> = initiatives with actual ambition lower than confirmed ÷ initiatives with recorded actual ambition × 100, over the last 24 months.</p>
+<p><strong>Ambition overstatement rate</strong> = use cases with actual ambition lower than confirmed ÷ use cases with recorded actual ambition × 100, over the last 24 months.</p>
 <div class="tabla"><table>
 <thead>
 <tr>
@@ -854,13 +861,13 @@ h2 .codigo, h3 .codigo { font-weight: 400; }
 <td>Alert to the AI Committee and review of the quality of classification in phase 2.</td>
 </tr>
 <tr>
-<td>50% or more among initiatives confirmed as Transform</td>
+<td>50% or more among use cases confirmed as Transform</td>
 <td>The board is informed and it is taken into account when reading the profile (section 5.3).</td>
 </tr>
 </tbody>
 </table></div>
 <h3 id="3-7-impact-reach-im1-im4">3.7 Impact reach (IM1–IM4)</h3>
-<p>The five questions in section 3.1 also say <strong>what</strong> each initiative <strong>affects</strong>. That reading is summarised in four reach levels, with no new questions, and it is the third lens of maturity (11 §7.6). It applies to initiatives in use and only with verified answers (section 3.4): an answer without evidence counts as &quot;no&quot;.</p>
+<p>The five questions in section 3.1 also say <strong>what</strong> each use case <strong>affects</strong>. That reading is summarised in four reach levels, with no new questions, and it is the third lens of maturity (11 §7.6). It applies to use cases in use and only with verified answers (section 3.4): an answer without evidence counts as &quot;no&quot;.</p>
 <div class="tabla"><table>
 <thead>
 <tr>
@@ -897,9 +904,9 @@ h2 .codigo, h3 .codigo { font-weight: 400; }
 </tr>
 </tbody>
 </table></div>
-<p>The highest level whose condition is met is assigned. At company level, the <strong>distribution</strong> of initiatives in use by level is shown alongside the index profile (section 5): this shows, without a new number, whether AI only improves tasks, whether it already redesigns processes, whether it changes people's work or whether it touches the business model. The typical ambition is indicative: the level is given by the answers, not by the ambition label.</p>
+<p>The highest level whose condition is met is assigned. At company level, the <strong>distribution</strong> of use cases in use by level is shown alongside the index profile (section 5): this shows, without a new number, whether AI only improves tasks, whether it already redesigns processes, whether it changes people's work or whether it touches the business model. The typical ambition is indicative: the level is given by the answers, not by the ambition label.</p>
 <blockquote>
-<p><strong>Why it matters.</strong> &quot;Optimise&quot; and &quot;Transform&quot; are labels that are declared; impact reach comes from what has actually changed. A portfolio with every initiative at IM1 is not transforming the company, even if the thesis says so, and an initiative at IM3 without a people plan is an alert (11 §7.6).</p>
+<p><strong>Why it matters.</strong> &quot;Optimise&quot; and &quot;Transform&quot; are labels that are declared; impact reach comes from what has actually changed. A portfolio with every use case at IM1 is not transforming the company, even if the thesis says so, and a use case at IM3 without a people plan is an alert (11 §7.6).</p>
 </blockquote>
 <hr />
 <h2 id="company-transformation-index"><span class="antetitulo">04</span>Company transformation index</h2>
@@ -942,16 +949,16 @@ h2 .codigo, h3 .codigo { font-weight: 400; }
 </thead>
 <tbody>
 <tr>
-<td><strong>Initiatives included</strong></td>
-<td>All those in the initiative register (<a href="../../herramientas/T01_registro_iniciativas/registro.html" title="Tool T01 &#183; Initiative register">T01</a>) whose primary sphere is 01 to 07. Those with primary sphere 08 or 09 are excluded from signals 1, 2 and 7 and reported separately as investment in governance and compliance enablement (<a href="10_SEVEN-G_Mapa_de_esferas_y_niveles_de_ambicion.html" title="Document 10 &#183; Sphere map and ambition levels">document 10</a>, section 4.2).</td>
+<td><strong>Use cases included</strong></td>
+<td>All those in the use case register (<a href="../../herramientas/T01_registro_iniciativas/registro.html" title="Tool T01 &#183; Initiative register">T01</a>) whose primary sphere is 01 to 07. Those with primary sphere 08 or 09 are excluded from signals 1, 2 and 7 and reported separately as investment in governance and compliance enablement (<a href="10_SEVEN-G_Mapa_de_esferas_y_niveles_de_ambicion.html" title="Document 10 &#183; Sphere map and ambition levels">document 10</a>, section 4.2).</td>
 </tr>
 <tr>
 <td><strong>Corporate use of general-purpose AI</strong></td>
-<td>Its cost counts in signal 1 as <strong>Optimise</strong>, unless it forms part of an initiative with a higher confirmed ambition and an approved adoption plan.</td>
+<td>Its cost counts in signal 1 as <strong>Optimise</strong>, unless it forms part of a use case with a higher confirmed ambition and an approved adoption plan.</td>
 </tr>
 <tr>
 <td><strong>Ambition level used</strong></td>
-<td>Actual if it exists; otherwise, confirmed. Initiatives with only a proposed ambition are counted as <strong>unclassified</strong>.</td>
+<td>Actual if it exists; otherwise, confirmed. Use cases with only a proposed ambition are counted as <strong>unclassified</strong>.</td>
 </tr>
 <tr>
 <td><strong>Window</strong></td>
@@ -982,7 +989,7 @@ h2 .codigo, h3 .codigo { font-weight: 400; }
 <tr id="cod-b1">
 <td><strong>B1</strong></td>
 <td>Governed portfolio</td>
-<td>Active initiatives with phase, recorded <em>gates</em> and confirmed ambition ÷ active initiatives × 100</td>
+<td>Active use cases with phase, recorded <em>gates</em> and confirmed ambition ÷ active use cases × 100</td>
 <td>80% or more</td>
 </tr>
 <tr id="cod-b2">
@@ -994,7 +1001,7 @@ h2 .codigo, h3 .codigo { font-weight: 400; }
 <tr id="cod-b3">
 <td><strong>B3</strong></td>
 <td>Scale in production</td>
-<td>Number of initiatives in spheres 01 to 07 in production</td>
+<td>Number of use cases in spheres 01 to 07 in production</td>
 <td>5 or more (adjustable to the size of the company in C2)</td>
 </tr>
 </tbody>
@@ -1019,11 +1026,11 @@ h2 .codigo, h3 .codigo { font-weight: 400; }
 </tr>
 <tr>
 <td><strong>Source</strong></td>
-<td><a href="../../herramientas/T01_registro_iniciativas/registro.html" title="Tool T01 &#183; Initiative register">T01</a>: ambition level, primary sphere; <a href="plantillas/P28_SEVEN-G_Seguimiento_de_realizacion_de_valor.html" title="Tool T12 &#183; Value realisation tracking">T12</a> and <a href="../../herramientas/T11_calculadora_valor/calculadora.html#/costes" title="Tool T13 &#183; Cost calculator per use case">T13</a>: investment and recurring cost per initiative.</td>
+<td><a href="../../herramientas/T01_registro_iniciativas/registro.html" title="Tool T01 &#183; Initiative register">T01</a>: ambition level, primary sphere; <a href="plantillas/P28_SEVEN-G_Seguimiento_de_realizacion_de_valor.html" title="Tool T12 &#183; Value realisation tracking">T12</a> and <a href="../../herramientas/T11_calculadora_valor/calculadora.html#/costes" title="Tool T13 &#183; Cost calculator per use case">T13</a>: investment and recurring cost per use case.</td>
 </tr>
 <tr>
 <td><strong>0</strong></td>
-<td>There is no registered portfolio, or more than 30% of the cost corresponds to unclassified initiatives.</td>
+<td>There is no registered portfolio, or more than 30% of the cost corresponds to unclassified use cases.</td>
 </tr>
 <tr>
 <td><strong>1</strong></td>
@@ -1070,11 +1077,11 @@ h2 .codigo, h3 .codigo { font-weight: 400; }
 </tr>
 <tr>
 <td><strong>2</strong></td>
-<td>From 10% to 30%, or 30% or more coming from a single initiative.</td>
+<td>From 10% to 30%, or 30% or more coming from a single use case.</td>
 </tr>
 <tr>
 <td><strong>3</strong></td>
-<td>30% or more, coming from at least two initiatives.</td>
+<td>30% or more, coming from at least two use cases.</td>
 </tr>
 </tbody>
 </table></div>
@@ -1132,7 +1139,7 @@ h2 .codigo, h3 .codigo { font-weight: 400; }
 </tr>
 <tr>
 <td><strong>Formula</strong></td>
-<td>IT-S4 = initiatives in production with IT-P2 = yes verified at G5 or G7 ÷ initiatives in production × 100.</td>
+<td>IT-S4 = use cases in production with IT-P2 = yes verified at G5 or G7 ÷ use cases in production × 100.</td>
 </tr>
 <tr>
 <td><strong>Source</strong></td>
@@ -1140,7 +1147,7 @@ h2 .codigo, h3 .codigo { font-weight: 400; }
 </tr>
 <tr>
 <td><strong>0</strong></td>
-<td>There are no initiatives in production, or the verification of IT-P2 is missing in more than 30% of them.</td>
+<td>There are no use cases in production, or the verification of IT-P2 is missing in more than 30% of them.</td>
 </tr>
 <tr>
 <td><strong>1</strong></td>
@@ -1171,7 +1178,7 @@ h2 .codigo, h3 .codigo { font-weight: 400; }
 </tr>
 <tr>
 <td><strong>Formula</strong></td>
-<td>IT-S5 = initiatives in production with IT-P3 = yes verified and human oversight design verified (<a href="plantillas/P17_SEVEN-G_Diseno_de_gobierno_y_supervision_humana.html" title="Template P17 &#183; Governance and human oversight design">P17</a>) ÷ initiatives in production × 100.</td>
+<td>IT-S5 = use cases in production with IT-P3 = yes verified and human oversight design verified (<a href="plantillas/P17_SEVEN-G_Diseno_de_gobierno_y_supervision_humana.html" title="Template P17 &#183; Governance and human oversight design">P17</a>) ÷ use cases in production × 100.</td>
 </tr>
 <tr>
 <td><strong>Source</strong></td>
@@ -1179,7 +1186,7 @@ h2 .codigo, h3 .codigo { font-weight: 400; }
 </tr>
 <tr>
 <td><strong>0</strong></td>
-<td>There are no initiatives in production.</td>
+<td>There are no use cases in production.</td>
 </tr>
 <tr>
 <td><strong>1</strong></td>
@@ -1255,11 +1262,11 @@ h2 .codigo, h3 .codigo { font-weight: 400; }
 </tr>
 <tr>
 <td><strong>Formulas</strong></td>
-<td><strong>Arrival rate</strong> of a group = initiatives that passed G2 in the last 24 months and reached G5 ÷ initiatives in the same group with an outcome (reached G5, were stopped or have been stalled for more than twice the sum of the reference time limits for phases 3 to 5). <strong>Relative conversion</strong> CR = arrival rate for Augment and Transform ÷ arrival rate for Optimise. <strong>Relative time</strong> TR = median days from G2 to G5 in Augment and Transform ÷ the same median in Optimise.</td>
+<td><strong>Arrival rate</strong> of a group = use cases that passed G2 in the last 24 months and reached G5 ÷ use cases in the same group with an outcome (reached G5, were stopped or have been stalled for more than twice the sum of the reference time limits for phases 3 to 5). <strong>Relative conversion</strong> CR = arrival rate for Augment and Transform ÷ arrival rate for Optimise. <strong>Relative time</strong> TR = median days from G2 to G5 in Augment and Transform ÷ the same median in Optimise.</td>
 </tr>
 <tr>
 <td><strong>No basis for comparison</strong></td>
-<td>If there are no Optimise initiatives with an outcome, CR is replaced by the arrival rate for Augment and Transform ÷ 0.6, and TR by the actual median ÷ the sum of the reference time limits for phases 3 to 5 (<a href="03_SEVEN-G_Herramientas_y_registro_de_iniciativas.html" title="Document 03 &#183; SEVEN-G tools and initiative register">document 03</a>, section 3.6).</td>
+<td>If there are no Optimise use cases with an outcome, CR is replaced by the arrival rate for Augment and Transform ÷ 0.6, and TR by the actual median ÷ the sum of the reference time limits for phases 3 to 5 (<a href="03_SEVEN-G_Herramientas_y_registro_de_iniciativas.html" title="Document 03 &#183; SEVEN-G tools and initiative register">document 03</a>, section 3.6).</td>
 </tr>
 <tr>
 <td><strong>Source</strong></td>
@@ -1271,15 +1278,15 @@ h2 .codigo, h3 .codigo { font-weight: 400; }
 </tr>
 <tr>
 <td><strong>1</strong></td>
-<td>No Augment or Transform initiative has passed G2 in the window, or CR is below 0.5.</td>
+<td>No Augment or Transform use case has passed G2 in the window, or CR is below 0.5.</td>
 </tr>
 <tr>
 <td><strong>2</strong></td>
-<td>CR of 0.5 or more without meeting level 3, or fewer than three Augment or Transform initiatives with an outcome.</td>
+<td>CR of 0.5 or more without meeting level 3, or fewer than three Augment or Transform use cases with an outcome.</td>
 </tr>
 <tr>
 <td><strong>3</strong></td>
-<td>CR of 0.8 or more, TR of 2.0 or less and at least three Augment or Transform initiatives with an outcome.</td>
+<td>CR of 0.8 or more, TR of 2.0 or less and at least three Augment or Transform use cases with an outcome.</td>
 </tr>
 </tbody>
 </table></div>
@@ -1347,7 +1354,7 @@ h2 .codigo, h3 .codigo { font-weight: 400; }
 <td>No validated value</td>
 <td>&lt; 10%</td>
 <td>10–30%</td>
-<td>≥ 30% and ≥ 2 initiatives</td>
+<td>≥ 30% and ≥ 2 use cases</td>
 </tr>
 <tr>
 <td>3 · Converted capacity</td>
@@ -1431,7 +1438,7 @@ h2 .codigo, h3 .codigo { font-weight: 400; }
 </tr>
 <tr>
 <td>IT-D2</td>
-<td>Initiatives with a confirmed ambition of Transform account for <strong>10% or more</strong> of the portfolio cost.</td>
+<td>Use cases with a confirmed ambition of Transform account for <strong>10% or more</strong> of the portfolio cost.</td>
 <td><a href="../../herramientas/T01_registro_iniciativas/registro.html" title="Tool T01 &#183; Initiative register">T01</a>, signal 1.</td>
 </tr>
 <tr>
@@ -1466,7 +1473,7 @@ h2 .codigo, h3 .codigo { font-weight: 400; }
 <tr>
 <td>3</td>
 <td><strong>Tactical efficiency</strong></td>
-<td>At least one initiative in production with measured value, in any status</td>
+<td>At least one use case in production with measured value, in any status</td>
 </tr>
 <tr>
 <td>4</td>
@@ -1526,7 +1533,7 @@ h2 .codigo, h3 .codigo { font-weight: 400; }
 </tr>
 <tr>
 <td><strong>Change without oversight</strong></td>
-<td>Initiatives excluded from signal 5 for lack of defined human oversight.</td>
+<td>Use cases excluded from signal 5 for lack of defined human oversight.</td>
 <td>Governance risk: decisions are delegated without control.</td>
 </tr>
 </tbody>
@@ -1635,7 +1642,7 @@ h2 .codigo, h3 .codigo { font-weight: 400; }
 <hr />
 <h2 id="complete-illustrative-example"><span class="antetitulo">09</span>Complete illustrative example</h2>
 <p><em>Fictitious company. All data are illustrative and match the heat map example in <a href="10_SEVEN-G_Mapa_de_esferas_y_niveles_de_ambicion.html" title="Document 10 &#183; Sphere map and ambition levels">document 10</a>, section 8.2.</em></p>
-<p><strong>Context.</strong> Industrial company with €400M in annual revenue. It has 17 active initiatives in spheres 01 to 07 (14 Optimise, 2 Augment and 1 Transform) and 2 initiatives in the enablement band (spheres 08 and 09). Fourteen are in production: the 12 Optimise initiatives that have passed G5 and the 2 Augment initiatives. The Transform initiative (a new service in sphere 02) is in phase 5, with a commercial pilot. The AI thesis approved in C2 sets Transform as the target ambition for Product and service, and the strategic plan describes AI as a &quot;transformation lever&quot;.</p>
+<p><strong>Context.</strong> Industrial company with €400M in annual revenue. It has 17 active use cases in spheres 01 to 07 (14 Optimise, 2 Augment and 1 Transform) and 2 use cases in the enablement band (spheres 08 and 09). Fourteen are in production: the 12 Optimise use cases that have passed G5 and the 2 Augment use cases. The Transform use case (a new service in sphere 02) is in phase 5, with a commercial pilot. The AI thesis approved in C2 sets Transform as the target ambition for Product and service, and the strategic plan describes AI as a &quot;transformation lever&quot;.</p>
 <p><strong>Baseline conditions</strong></p>
 <div class="tabla"><table>
 <thead>
@@ -1648,7 +1655,7 @@ h2 .codigo, h3 .codigo { font-weight: 400; }
 <tbody>
 <tr>
 <td>B1 · Governed portfolio</td>
-<td>15 of 17 active initiatives with phase, <em>gates</em> and confirmed ambition = 88%</td>
+<td>15 of 17 active use cases with phase, <em>gates</em> and confirmed ambition = 88%</td>
 <td>Met (≥ 80%)</td>
 </tr>
 <tr>
@@ -1658,7 +1665,7 @@ h2 .codigo, h3 .codigo { font-weight: 400; }
 </tr>
 <tr>
 <td>B3 · Scale</td>
-<td>14 initiatives in production</td>
+<td>14 use cases in production</td>
 <td>Met (≥ 5)</td>
 </tr>
 </tbody>
@@ -1682,7 +1689,7 @@ h2 .codigo, h3 .codigo { font-weight: 400; }
 </tr>
 <tr>
 <td>2 · Value</td>
-<td>Materialised validated efficiencies €1.80M; validated return €0.16M (0.12 from an Augment initiative in Customer and 0.04 from the Transform pilot)</td>
+<td>Materialised validated efficiencies €1.80M; validated return €0.16M (0.12 from an Augment use case in Customer and 0.04 from the Transform pilot)</td>
 <td>0.16 ÷ 1.96 = 8.2%</td>
 <td><strong>1</strong></td>
 </tr>
@@ -1694,7 +1701,7 @@ h2 .codigo, h3 .codigo { font-weight: 400; }
 </tr>
 <tr>
 <td>4 · Depth</td>
-<td>2 of 14 initiatives in production with IT-P2 verified</td>
+<td>2 of 14 use cases in production with IT-P2 verified</td>
 <td>14.3%</td>
 <td><strong>1</strong></td>
 </tr>
@@ -1755,7 +1762,7 @@ h2 .codigo, h3 .codigo { font-weight: 400; }
 </table></div>
 <p><strong>Step 2 · Cross-check.</strong> IT-D1 (thesis with Transform in sphere 02) and IT-D3 (strategic plan) are met: D = yes. The evidenced profile is not Transformation under way.</p>
 <p><strong>Assigned profile: Declared but unevidenced transformation. Underlying profile: Efficiency at scale.</strong></p>
-<p>Complementary alerts: none of those in section 5.3 is triggered. The overstatement rate cannot yet be calculated for Transform (no initiative with recorded actual ambition).</p>
+<p>Complementary alerts: none of those in section 5.3 is triggered. The overstatement rate cannot yet be calculated for Transform (no use case with recorded actual ambition).</p>
 <p><strong>Message to the board</strong> (<a href="60_SEVEN-G_Paquete_para_el_consejo.html" title="Document 60 &#183; Board pack">document 60</a> format): <em>&quot;Not yet, because evidence of return and of change in processes and roles is missing. The company governs an efficiency portfolio with validated value well, but the declared transformation rests on a single bet at pilot stage. To evidence transformation, the following would be needed as a minimum: validated return of at least €0.20M or enabled revenue of at least €2M; at least three processes redesigned end to end in production; and quarterly review of the bet by the board.&quot;</em></p>
 <hr />
 <h2 id="presentation-to-the-board"><span class="antetitulo">10</span>Presentation to the board</h2>
@@ -1820,8 +1827,8 @@ h2 .codigo, h3 .codigo { font-weight: 400; }
 <td>Quarterly trend reading; signal 8 is a leading indicator.</td>
 </tr>
 <tr>
-<td>With few initiatives, percentages are volatile.</td>
-<td>A single initiative changes a score.</td>
+<td>With few use cases, percentages are volatile.</td>
+<td>A single use case changes a score.</td>
 <td>Condition B3, minimum counts in signals 2 and 7, provisional profile.</td>
 </tr>
 <tr>
@@ -1848,9 +1855,9 @@ h2 .codigo, h3 .codigo { font-weight: 400; }
 </thead>
 <tbody>
 <tr id="cod-t01">
-<td><strong>Initiative register</strong> <span class="codigo">(<a href="../../herramientas/T01_registro_iniciativas/registro.html" title="Tool T01 &#183; Initiative register">T01</a>)</span></td>
+<td><strong>Use case register</strong> <span class="codigo">(<a href="../../herramientas/T01_registro_iniciativas/registro.html" title="Tool T01 &#183; Initiative register">T01</a>)</span></td>
 
-<td>Fields: answers IT-P1–IT-P5 with evidence and verification status; proposed, confirmed and actual ambition with date and reason; primary sphere; <em>gate</em> dates; statuses; stop reasons; origin of the initiative. From schema 0.5: verification of IT-P2 and IT-P3 at a <em>gate</em> with verified human oversight, entire unit redesigned, released, materialised and reassigned capacity, AI-enabled offering in the amounts, and company total revenue and IT-D3.</td>
+<td>Fields: answers IT-P1–IT-P5 with evidence and verification status; proposed, confirmed and actual ambition with date and reason; primary sphere; <em>gate</em> dates; statuses; stop reasons; origin of the use case. From schema 0.5: verification of IT-P2 and IT-P3 at a <em>gate</em> with verified human oversight, entire unit redesigned, released, materialised and reassigned capacity, AI-enabled offering in the amounts, and company total revenue and IT-D3.</td>
 </tr>
 <tr id="cod-t03">
 <td><strong>Gate manager</strong> <span class="codigo">(<a href="../../herramientas/T01_registro_iniciativas/registro.html#/gates" title="Tool T03 &#183; Gate manager">T03</a>)</span></td>
@@ -1870,7 +1877,7 @@ h2 .codigo, h3 .codigo { font-weight: 400; }
 <tr id="cod-t13">
 <td><strong>Cost calculator per use case</strong> <span class="codigo">(<a href="../../herramientas/T11_calculadora_valor/calculadora.html#/costes" title="Tool T13 &#183; Cost calculator per use case">T13</a>)</span></td>
 
-<td>Investment and recurring cost of each initiative (signal 1).</td>
+<td>Investment and recurring cost of each use case (signal 1).</td>
 </tr>
 <tr id="cod-t14">
 <td><strong>Transformation index calculator</strong> <span class="codigo">(<a href="../../herramientas/T14_indice_transformacion/indice.html" title="Tool T14 &#183; Transformation index calculator">T14</a>)</span></td>
@@ -1923,7 +1930,7 @@ h2 .codigo, h3 .codigo { font-weight: 400; }
 <td><em>Gate</em> criteria by ambition level, board approval for Transform, intensity.</td>
 </tr>
 <tr>
-<td><strong><a href="03_SEVEN-G_Herramientas_y_registro_de_iniciativas.html" target="_blank" rel="noopener" title="Document 03 &#183; SEVEN-G tools and initiative register">03 · Tools and initiative register</a></strong></td>
+<td><strong><a href="03_SEVEN-G_Herramientas_y_registro_de_iniciativas.html" target="_blank" rel="noopener" title="Document 03 &#183; SEVEN-G tools and initiative register">03 · Tools and use case register</a></strong></td>
 <td>Fields, events, funnel metrics and reference time limits used in the signals.</td>
 </tr>
 <tr>
@@ -1977,14 +1984,14 @@ h2 .codigo, h3 .codigo { font-weight: 400; }
 </table></div>
 
 </main>
-<footer class="pie"><div><span>© 2026 Fernando García Varela · SEVEN-G methodology</span><span>Generated on 13-11-2026</span></div><p class="pie-ia">Content generated and typeset with AI support under the author&#39;s editorial supervision.</p></footer>
+<footer class="pie"><div><span>© 2026 Fernando García Varela · SEVEN-G methodology</span><span>Generated on 14-11-2026</span></div><p class="pie-ia">Content generated and typeset with AI support under the author&#39;s editorial supervision.</p></footer>
 <script src="codigos.js" defer></script>
 
 <script>
 (function () {
   var raiz = document.documentElement;
   var contenido = document.getElementById('contenido');
-  var navItems = [{"href":"00_SEVEN-G_Que_es_y_para_que_sirve.html","title":"What SEVEN-G is and what it is for","blockCode":"A","blockLabel":"A · Foundations","active":false},{"href":"01_SEVEN-G_Metodologia_fundacional.html","title":"SEVEN-G foundational methodology","blockCode":"A","blockLabel":"A · Foundations","active":false},{"href":"02_SEVEN-G_Glosario_y_convenciones.html","title":"SEVEN-G glossary and conventions","blockCode":"A","blockLabel":"A · Foundations","active":false},{"href":"03_SEVEN-G_Herramientas_y_registro_de_iniciativas.html","title":"SEVEN-G tools and initiative register","blockCode":"A","blockLabel":"A · Foundations","active":false},{"href":"04_SEVEN-G_Origenes_diferencias_y_por_que_es_abierto.html","title":"Where SEVEN-G comes from, how it differs and why it is open","blockCode":"A","blockLabel":"A · Foundations","active":false},{"href":"10_SEVEN-G_Mapa_de_esferas_y_niveles_de_ambicion.html","title":"Sphere map and ambition levels","blockCode":"B","blockLabel":"B · Strategy and portfolio","active":false},{"href":"11_SEVEN-G_Modelo_de_madurez.html","title":"Maturity model","blockCode":"B","blockLabel":"B · Strategy and portfolio","active":false},{"href":"12_SEVEN-G_Indice_de_transformacion.html","title":"Transformation index","blockCode":"B","blockLabel":"B · Strategy and portfolio","active":true},{"href":"13_SEVEN-G_Tesis_de_IA_ambicion_y_apetito_de_riesgo.html","title":"AI thesis, ambition and risk appetite","blockCode":"B","blockLabel":"B · Strategy and portfolio","active":false},{"href":"14_SEVEN-G_Gestion_de_cartera.html","title":"Portfolio management","blockCode":"B","blockLabel":"B · Strategy and portfolio","active":false},{"href":"20_SEVEN-G_Manuales_de_fase.html","title":"Phase manuals","blockCode":"C","blockLabel":"C · Initiative lifecycle","active":false},{"href":"21_SEVEN-G_Criterios_de_gate_y_auditoria.html","title":"Gate and audit criteria","blockCode":"C","blockLabel":"C · Initiative lifecycle","active":false},{"href":"22_SEVEN-G_Listas_de_verificacion_por_gate.html","title":"Checklists by gate","blockCode":"C","blockLabel":"C · Initiative lifecycle","active":false},{"href":"23_SEVEN-G_Adopcion_y_cambio.html","title":"Adoption and change in the initiative","blockCode":"C","blockLabel":"C · Initiative lifecycle","active":false},{"href":"30_SEVEN-G_Modelo_de_gobierno.html","title":"Governance model","blockCode":"D","blockLabel":"D · Governance, risk and compliance","active":false},{"href":"31_SEVEN-G_Politica_corporativa_y_uso_aceptable.html","title":"Corporate AI policy and acceptable use policy","blockCode":"D","blockLabel":"D · Governance, risk and compliance","active":false},{"href":"32_SEVEN-G_Inventario_y_clasificacion_regulatoria.html","title":"AI system inventory and regulatory classification","blockCode":"D","blockLabel":"D · Governance, risk and compliance","active":false},{"href":"33_SEVEN-G_Metodologia_de_riesgos_de_IA.html","title":"AI risk methodology","blockCode":"D","blockLabel":"D · Governance, risk and compliance","active":false},{"href":"34_SEVEN-G_Mapeo_regulatorio.html","title":"Regulatory mapping","blockCode":"D","blockLabel":"D · Governance, risk and compliance","active":false},{"href":"35_SEVEN-G_Seguridad_de_IA_y_agentes.html","title":"AI and agent security","blockCode":"D","blockLabel":"D · Governance, risk and compliance","active":false},{"href":"36_SEVEN-G_Terceros_y_proveedores_de_IA.html","title":"AI third parties and suppliers","blockCode":"D","blockLabel":"D · Governance, risk and compliance","active":false},{"href":"37_SEVEN-G_No_conformidades_e_incidentes.html","title":"Nonconformities, AI incidents and remediation","blockCode":"D","blockLabel":"D · Governance, risk and compliance","active":false},{"href":"38_SEVEN-G_Marco_de_auditoria_de_IA.html","title":"AI audit framework","blockCode":"D","blockLabel":"D · Governance, risk and compliance","active":false},{"href":"40_SEVEN-G_Reglas_de_medicion_del_valor.html","title":"Value measurement rules","blockCode":"E","blockLabel":"E · Measurement and value","active":false},{"href":"41_SEVEN-G_Catalogo_de_indicadores.html","title":"Indicator catalogue","blockCode":"E","blockLabel":"E · Measurement and value","active":false},{"href":"42_SEVEN-G_Costes_de_IA.html","title":"AI costs and allocation per use case","blockCode":"E","blockLabel":"E · Measurement and value","active":false},{"href":"43_SEVEN-G_Realizacion_de_beneficios.html","title":"Benefits realisation","blockCode":"E","blockLabel":"E · Measurement and value","active":false},{"href":"50_SEVEN-G_Personas_y_organizacion.html","title":"People and organisation","blockCode":"F","blockLabel":"F · People, data and operations","active":false},{"href":"51_SEVEN-G_Datos_y_conocimiento.html","title":"Data and knowledge for AI","blockCode":"F","blockLabel":"F · People, data and operations","active":false},{"href":"52_SEVEN-G_Manual_de_operacion_de_IA.html","title":"AI operations manual","blockCode":"F","blockLabel":"F · People, data and operations","active":false},{"href":"53_SEVEN-G_Construccion_de_soluciones_con_IA.html","title":"Building solutions with AI","blockCode":"F","blockLabel":"F · People, data and operations","active":false},{"href":"54_SEVEN-G_Organizacion_de_la_compania_para_la_IA.html","title":"How a company organises itself for AI","blockCode":"F","blockLabel":"F · People, data and operations","active":false},{"href":"60_SEVEN-G_Paquete_para_el_consejo.html","title":"Board pack","blockCode":"G","blockLabel":"G · Board","active":false},{"href":"61_SEVEN-G_Guia_de_conversacion_con_el_consejo.html","title":"Board conversation guide","blockCode":"G","blockLabel":"G · Board","active":false},{"href":"62_SEVEN-G_Registro_de_recomendaciones_y_decisiones.html","title":"Recommendations and decisions register","blockCode":"G","blockLabel":"G · Board","active":false},{"href":"90_SEVEN-G_Guia_de_implantacion.html","title":"SEVEN-G implementation guide","blockCode":"J","blockLabel":"J · Framework adoption","active":false},{"href":"91_SEVEN-G_Guia_para_consultores.html","title":"Guide for consultants and support models","blockCode":"J","blockLabel":"J · Framework adoption","active":false},{"href":"92_SEVEN-G_Casos_de_aplicacion.html","title":"Application cases","blockCode":"J","blockLabel":"J · Framework adoption","active":false},{"href":"93_SEVEN-G_Licencia_uso_y_citacion.html","title":"Licence, use by third parties and citation","blockCode":"J","blockLabel":"J · Framework adoption","active":false},{"href":"94_SEVEN-G_Matriz_de_obligatoriedad_y_lectura_por_capas.html","title":"Obligation matrix and layered reading","blockCode":"J","blockLabel":"J · Framework adoption","active":false},{"href":"95_SEVEN-G_Datos_en_local_e_instalacion_propia.html","title":"Where your data is and how to install SEVEN-G on your own server","blockCode":"J","blockLabel":"J · Framework adoption","active":false},{"href":"96_SEVEN-G_Puntos_de_partida_y_recorrido_de_implantacion.html","title":"Starting points and implementation journey","blockCode":"J","blockLabel":"J · Framework adoption","active":false},{"href":"curso/M00_SEVEN-G_Curso_Guia_del_curso.html","title":"SEVEN-G course · Course guide","blockCode":"K","blockLabel":"K · Course","active":false},{"href":"curso/M01_SEVEN-G_Curso_Navegar_por_el_sitio.html","title":"Module 01 · Finding your way around the site","blockCode":"K","blockLabel":"K · Course","active":false},{"href":"curso/M02_SEVEN-G_Curso_Que_es_y_que_resuelve.html","title":"Module 02 · What SEVEN-G is and what problem it solves","blockCode":"K","blockLabel":"K · Course","active":false},{"href":"curso/M03_SEVEN-G_Curso_Esferas_y_ambicion.html","title":"Module 03 · Spheres and ambition levels","blockCode":"K","blockLabel":"K · Course","active":false},{"href":"curso/M04_SEVEN-G_Curso_Ciclo_de_vida_puertas_y_embudo.html","title":"Module 04 · Lifecycle, gates and funnel","blockCode":"K","blockLabel":"K · Course","active":false},{"href":"curso/M05_SEVEN-G_Curso_Gobierno_y_riesgo.html","title":"Module 05 · Governance and risk","blockCode":"K","blockLabel":"K · Course","active":false},{"href":"curso/M06_SEVEN-G_Curso_Medir_el_valor.html","title":"Module 06 · Measuring value","blockCode":"K","blockLabel":"K · Course","active":false},{"href":"curso/M07_SEVEN-G_Curso_Transformacion_o_eficiencia.html","title":"Module 07 · Transformation or efficiency","blockCode":"K","blockLabel":"K · Course","active":false},{"href":"curso/M08_SEVEN-G_Curso_El_consejo.html","title":"Module 08 · The board","blockCode":"K","blockLabel":"K · Course","active":false},{"href":"curso/M09_SEVEN-G_Curso_Implantar_por_capas.html","title":"Module 09 · Implementing in layers","blockCode":"K","blockLabel":"K · Course","active":false},{"href":"index.html","title":"SEVEN-G Library","blockCode":"A","blockLabel":"A · Foundations","active":false},{"href":"plantillas/P01_SEVEN-G_Carta_de_la_iniciativa.html","title":"Initiative charter","blockCode":"H","blockLabel":"H · Templates","active":false},{"href":"plantillas/P02_SEVEN-G_Declaracion_de_contexto_y_restricciones.html","title":"Context and constraints statement","blockCode":"H","blockLabel":"H · Templates","active":false},{"href":"plantillas/P03_SEVEN-G_Registro_de_asignacion_de_roles.html","title":"Role assignment record","blockCode":"H","blockLabel":"H · Templates","active":false},{"href":"plantillas/P04_SEVEN-G_Determinacion_de_intensidad.html","title":"Intensity determination","blockCode":"H","blockLabel":"H · Templates","active":false},{"href":"plantillas/P05_SEVEN-G_Ficha_de_inventario_del_sistema_de_IA.html","title":"AI system inventory record","blockCode":"H","blockLabel":"H · Templates","active":false},{"href":"plantillas/P06_SEVEN-G_Cartera_de_oportunidades_y_notas_de_filtrado.html","title":"Opportunity portfolio and screening notes","blockCode":"H","blockLabel":"H · Templates","active":false},{"href":"plantillas/P07_SEVEN-G_Clasificacion_de_esfera_y_ambicion.html","title":"Sphere and ambition classification","blockCode":"H","blockLabel":"H · Templates","active":false},{"href":"plantillas/P08_SEVEN-G_Lienzo_de_hipotesis_de_valor.html","title":"Value hypothesis canvas","blockCode":"H","blockLabel":"H · Templates","active":false},{"href":"plantillas/P09_SEVEN-G_Linea_base.html","title":"Baseline","blockCode":"H","blockLabel":"H · Templates","active":false},{"href":"plantillas/P10_SEVEN-G_Evaluacion_de_viabilidad.html","title":"Feasibility assessment","blockCode":"H","blockLabel":"H · Templates","active":false},{"href":"plantillas/P11_SEVEN-G_Clasificacion_regulatoria_y_evaluaciones_de_impacto.html","title":"Regulatory classification and impact assessments","blockCode":"H","blockLabel":"H · Templates","active":false},{"href":"plantillas/P12_SEVEN-G_Matriz_y_registro_de_riesgos.html","title":"Risk matrix and register","blockCode":"H","blockLabel":"H · Templates","active":false},{"href":"plantillas/P13_SEVEN-G_Plan_de_mitigacion_y_contingencia.html","title":"Mitigation and contingency plan","blockCode":"H","blockLabel":"H · Templates","active":false},{"href":"plantillas/P14_SEVEN-G_Evaluacion_de_proveedor_de_IA.html","title":"AI supplier assessment","blockCode":"H","blockLabel":"H · Templates","active":false},{"href":"plantillas/P15_SEVEN-G_Registro_de_arquitectura.html","title":"Architecture record","blockCode":"H","blockLabel":"H · Templates","active":false},{"href":"plantillas/P16_SEVEN-G_Linaje_de_datos_y_modelos.html","title":"Data and model lineage","blockCode":"H","blockLabel":"H · Templates","active":false},{"href":"plantillas/P17_SEVEN-G_Diseno_de_gobierno_y_supervision_humana.html","title":"Governance and human oversight design","blockCode":"H","blockLabel":"H · Templates","active":false},{"href":"plantillas/P18_SEVEN-G_Diseno_de_seguridad.html","title":"Security design (including agents)","blockCode":"H","blockLabel":"H · Templates","active":false},{"href":"plantillas/P19_SEVEN-G_Plan_de_reversion_y_prueba.html","title":"Rollback plan and test","blockCode":"H","blockLabel":"H · Templates","active":false},{"href":"plantillas/P20_SEVEN-G_Plan_de_adopcion_y_capacidad.html","title":"Adoption and capacity plan","blockCode":"H","blockLabel":"H · Templates","active":false},{"href":"plantillas/P21_SEVEN-G_Informe_de_entrega.html","title":"Delivery report","blockCode":"H","blockLabel":"H · Templates","active":false},{"href":"plantillas/P22_SEVEN-G_Resultados_de_validacion_y_del_piloto.html","title":"Validation and pilot results","blockCode":"H","blockLabel":"H · Templates","active":false},{"href":"plantillas/P23_SEVEN-G_Firma_de_puesta_en_produccion.html","title":"Go-live sign-off","blockCode":"H","blockLabel":"H · Templates","active":false},{"href":"plantillas/P24_SEVEN-G_Manual_de_operacion.html","title":"Operations manual","blockCode":"H","blockLabel":"H · Templates","active":false},{"href":"plantillas/P25_SEVEN-G_Configuracion_de_monitorizacion_y_alertas.html","title":"Monitoring and alerting configuration","blockCode":"H","blockLabel":"H · Templates","active":false},{"href":"plantillas/P26_SEVEN-G_Plan_de_respuesta_a_incidentes.html","title":"Incident response plan","blockCode":"H","blockLabel":"H · Templates","active":false},{"href":"plantillas/P27_SEVEN-G_Registro_de_incidentes_y_cambios.html","title":"Incident and change log","blockCode":"H","blockLabel":"H · Templates","active":false},{"href":"plantillas/P28_SEVEN-G_Seguimiento_de_realizacion_de_valor.html","title":"Value realisation tracking","blockCode":"H","blockLabel":"H · Templates","active":false},{"href":"plantillas/P29_SEVEN-G_Registro_de_decision_de_gate.html","title":"*Gate* decision record","blockCode":"H","blockLabel":"H · Templates","active":false},{"href":"plantillas/P30_SEVEN-G_Decision_de_escalado_o_retirada.html","title":"Scale or retire decision","blockCode":"H","blockLabel":"H · Templates","active":false},{"href":"plantillas/P31_SEVEN-G_Ficha_de_caso_de_uso.html","title":"Use case record","blockCode":"H","blockLabel":"H · Templates","active":false},{"href":"plantillas/P32_SEVEN-G_Mandato_de_implantacion.html","title":"SEVEN-G implementation mandate","blockCode":"H","blockLabel":"H · Templates","active":false},{"href":"plantillas/P33_SEVEN-G_Informe_de_diagnostico_C1.html","title":"C1 diagnosis report","blockCode":"H","blockLabel":"H · Templates","active":false},{"href":"plantillas/P34_SEVEN-G_Cuestionario_e_informe_de_madurez.html","title":"Maturity questionnaire and report","blockCode":"H","blockLabel":"H · Templates","active":false},{"href":"plantillas/P35_SEVEN-G_Tesis_de_IA_y_apetito_de_riesgo.html","title":"AI thesis and risk appetite","blockCode":"H","blockLabel":"H · Templates","active":false},{"href":"plantillas/P36_SEVEN-G_Plan_de_cartera_C3.html","title":"C3 portfolio plan","blockCode":"H","blockLabel":"H · Templates","active":false},{"href":"plantillas/P37_SEVEN-G_Revision_anual_C5.html","title":"C5 annual review","blockCode":"H","blockLabel":"H · Templates","active":false},{"href":"plantillas/P38_SEVEN-G_Reglamento_de_los_organos_de_gobierno_de_IA.html","title":"Rules of procedure of the AI governance bodies","blockCode":"H","blockLabel":"H · Templates","active":false},{"href":"plantillas/P39_SEVEN-G_Orden_del_dia_y_acta_de_organo_de_gobierno.html","title":"Agenda and minutes of a governance body","blockCode":"H","blockLabel":"H · Templates","active":false},{"href":"plantillas/P40_SEVEN-G_Solicitud_y_registro_de_excepciones.html","title":"Exception request and register","blockCode":"H","blockLabel":"H · Templates","active":false},{"href":"plantillas/P41_SEVEN-G_Declaraciones_de_independencia_y_conflictos_de_interes.html","title":"Declarations of independence and conflicts of interest","blockCode":"H","blockLabel":"H · Templates","active":false},{"href":"plantillas/P42_SEVEN-G_Informe_trimestral_de_segunda_linea.html","title":"Quarterly second-line report","blockCode":"H","blockLabel":"H · Templates","active":false},{"href":"plantillas/P43_SEVEN-G_Catalogo_de_herramientas_autorizadas_y_solicitudes.html","title":"Catalogue of authorised tools and requests","blockCode":"H","blockLabel":"H · Templates","active":false},{"href":"plantillas/P44_SEVEN-G_Encuesta_de_uso_y_percepcion_de_la_IA.html","title":"AI use and perception survey","blockCode":"H","blockLabel":"H · Templates","active":false},{"href":"plantillas/P45_SEVEN-G_Plan_y_registro_de_alfabetizacion_y_formacion.html","title":"Literacy and training plan and record","blockCode":"H","blockLabel":"H · Templates","active":false},{"href":"plantillas/P46_SEVEN-G_Informacion_a_los_trabajadores_y_a_su_representacion.html","title":"Information to workers and their representatives","blockCode":"H","blockLabel":"H · Templates","active":false},{"href":"plantillas/P47_SEVEN-G_Evaluacion_de_impacto_en_proteccion_de_datos.html","title":"Data protection impact assessment","blockCode":"H","blockLabel":"H · Templates","active":false},{"href":"plantillas/P48_SEVEN-G_Evaluacion_de_impacto_en_derechos_fundamentales.html","title":"Fundamental rights impact assessment","blockCode":"H","blockLabel":"H · Templates","active":false},{"href":"plantillas/P49_SEVEN-G_Avisos_de_transparencia_e_instrucciones_de_uso.html","title":"Transparency notices and instructions for use","blockCode":"H","blockLabel":"H · Templates","active":false},{"href":"plantillas/P50_SEVEN-G_Registro_de_no_conformidades.html","title":"Nonconformity register","blockCode":"H","blockLabel":"H · Templates","active":false},{"href":"plantillas/P51_SEVEN-G_Notificaciones_y_comunicaciones_de_incidentes.html","title":"Incident reports and communications","blockCode":"H","blockLabel":"H · Templates","active":false},{"href":"plantillas/P52_SEVEN-G_Analisis_de_causa_raiz_y_plan_de_accion_correctiva.html","title":"Root cause analysis and corrective action plan","blockCode":"H","blockLabel":"H · Templates","active":false},{"href":"plantillas/P53_SEVEN-G_Plan_e_informe_de_pruebas_adversarias.html","title":"Adversarial testing plan and report","blockCode":"H","blockLabel":"H · Templates","active":false},{"href":"plantillas/P54_SEVEN-G_Inventario_de_identidades_no_humanas_y_componentes.html","title":"Non-human identity and component inventory","blockCode":"H","blockLabel":"H · Templates","active":false},{"href":"plantillas/P55_SEVEN-G_Cuestionario_de_diligencia_debida_a_proveedores_de_IA.html","title":"AI supplier due diligence questionnaire","blockCode":"H","blockLabel":"H · Templates","active":false},{"href":"plantillas/P56_SEVEN-G_Clausulas_contractuales_tipo_de_IA.html","title":"Model AI contractual clauses","blockCode":"H","blockLabel":"H · Templates","active":false},{"href":"plantillas/P57_SEVEN-G_Registro_de_proveedores_y_plan_de_salida.html","title":"Supplier register and exit plan","blockCode":"H","blockLabel":"H · Templates","active":false},{"href":"plantillas/P58_SEVEN-G_Plan_anual_de_auditoria_de_IA.html","title":"Annual AI audit plan","blockCode":"H","blockLabel":"H · Templates","active":false},{"href":"plantillas/P59_SEVEN-G_Papeles_de_auditoria.html","title":"Audit working papers","blockCode":"H","blockLabel":"H · Templates","active":false},{"href":"plantillas/P60_SEVEN-G_Informe_de_auditoria_y_fichas_de_hallazgo.html","title":"Audit report and finding records","blockCode":"H","blockLabel":"H · Templates","active":false},{"href":"plantillas/P61_SEVEN-G_Declaracion_de_aplicacion_de_SEVEN-G.html","title":"SEVEN-G declaration of application","blockCode":"H","blockLabel":"H · Templates","active":false},{"href":"plantillas/P62_SEVEN-G_Plan_de_realizacion_de_beneficios.html","title":"Benefits realisation plan","blockCode":"H","blockLabel":"H · Templates","active":false},{"href":"plantillas/P63_SEVEN-G_Presupuesto_de_consumo_y_conciliacion_de_costes.html","title":"Consumption budget and cost reconciliation","blockCode":"H","blockLabel":"H · Templates","active":false},{"href":"plantillas/P64_SEVEN-G_Ficha_de_conjunto_de_datos_e_inventario_de_fuentes_de_conocimiento.html","title":"Dataset record and knowledge source inventory","blockCode":"H","blockLabel":"H · Templates","active":false},{"href":"plantillas/P65_SEVEN-G_Paquete_de_revision_de_continuidad_R6.html","title":"R6 continuity review package","blockCode":"H","blockLabel":"H · Templates","active":false},{"href":"plantillas/P66_SEVEN-G_Anexos_de_construccion_con_SPAD.html","title":"Build annexes with SPAD","blockCode":"H","blockLabel":"H · Templates","active":false},{"href":"plantillas/P67_SEVEN-G_Paquete_trimestral_para_el_consejo.html","title":"Quarterly board pack","blockCode":"H","blockLabel":"H · Templates","active":false},{"href":"plantillas/P68_SEVEN-G_Nota_previa_y_nota_de_conclusiones_de_la_sesion_del_consejo.html","title":"Pre-session note and note of conclusions for the board session","blockCode":"H","blockLabel":"H · Templates","active":false},{"href":"plantillas/P69_SEVEN-G_Registro_de_decisiones_del_consejo.html","title":"Board decisions register","blockCode":"H","blockLabel":"H · Templates","active":false},{"href":"plantillas/P70_SEVEN-G_Propuesta_y_carta_de_encargo.html","title":"Proposal and engagement letter","blockCode":"H","blockLabel":"H · Templates","active":false},{"href":"plantillas/P71_SEVEN-G_Plan_de_transferencia_y_nota_de_salida.html","title":"Transfer plan and exit note","blockCode":"H","blockLabel":"H · Templates","active":false},{"href":"plantillas/P72_SEVEN-G_Perfil_de_seguridad_de_IA_CSF_y_Cyber_AI_Profile.html","title":"AI security profile (CSF 2.0 / Cyber AI Profile)","blockCode":"H","blockLabel":"H · Templates","active":false},{"href":"plantillas/P73_SEVEN-G_Perfil_de_gobierno_de_IA_NIST_AI_RMF.html","title":"AI governance profile (NIST AI RMF)","blockCode":"H","blockLabel":"H · Templates","active":false},{"href":"plantillas/P74_SEVEN-G_Declaracion_de_aplicabilidad_ISO_IEC_42001.html","title":"ISO/IEC 42001 statement of applicability","blockCode":"H","blockLabel":"H · Templates","active":false}];
+  var navItems = [{"href":"00_SEVEN-G_Que_es_y_para_que_sirve.html","title":"What SEVEN-G is and what it is for","blockCode":"A","blockLabel":"A · Foundations","active":false},{"href":"01_SEVEN-G_Metodologia_fundacional.html","title":"SEVEN-G foundational methodology","blockCode":"A","blockLabel":"A · Foundations","active":false},{"href":"02_SEVEN-G_Glosario_y_convenciones.html","title":"SEVEN-G glossary and conventions","blockCode":"A","blockLabel":"A · Foundations","active":false},{"href":"03_SEVEN-G_Herramientas_y_registro_de_iniciativas.html","title":"SEVEN-G tools and use case register","blockCode":"A","blockLabel":"A · Foundations","active":false},{"href":"04_SEVEN-G_Origenes_diferencias_y_por_que_es_abierto.html","title":"Where SEVEN-G comes from, how it differs and why it is open","blockCode":"A","blockLabel":"A · Foundations","active":false},{"href":"10_SEVEN-G_Mapa_de_esferas_y_niveles_de_ambicion.html","title":"Sphere map and ambition levels","blockCode":"B","blockLabel":"B · Strategy and portfolio","active":false},{"href":"11_SEVEN-G_Modelo_de_madurez.html","title":"Maturity model","blockCode":"B","blockLabel":"B · Strategy and portfolio","active":false},{"href":"12_SEVEN-G_Indice_de_transformacion.html","title":"Transformation index","blockCode":"B","blockLabel":"B · Strategy and portfolio","active":true},{"href":"13_SEVEN-G_Tesis_de_IA_ambicion_y_apetito_de_riesgo.html","title":"AI thesis, ambition and risk appetite","blockCode":"B","blockLabel":"B · Strategy and portfolio","active":false},{"href":"14_SEVEN-G_Gestion_de_cartera.html","title":"Portfolio management","blockCode":"B","blockLabel":"B · Strategy and portfolio","active":false},{"href":"20_SEVEN-G_Manuales_de_fase.html","title":"Phase manuals","blockCode":"C","blockLabel":"C · Use case lifecycle","active":false},{"href":"21_SEVEN-G_Criterios_de_gate_y_auditoria.html","title":"Gate and audit criteria","blockCode":"C","blockLabel":"C · Use case lifecycle","active":false},{"href":"22_SEVEN-G_Listas_de_verificacion_por_gate.html","title":"Checklists by gate","blockCode":"C","blockLabel":"C · Use case lifecycle","active":false},{"href":"23_SEVEN-G_Adopcion_y_cambio.html","title":"Adoption and change in the use case","blockCode":"C","blockLabel":"C · Use case lifecycle","active":false},{"href":"30_SEVEN-G_Modelo_de_gobierno.html","title":"Governance model","blockCode":"D","blockLabel":"D · Governance, risk and compliance","active":false},{"href":"31_SEVEN-G_Politica_corporativa_y_uso_aceptable.html","title":"Corporate AI policy and acceptable use policy","blockCode":"D","blockLabel":"D · Governance, risk and compliance","active":false},{"href":"32_SEVEN-G_Inventario_y_clasificacion_regulatoria.html","title":"AI system inventory and regulatory classification","blockCode":"D","blockLabel":"D · Governance, risk and compliance","active":false},{"href":"33_SEVEN-G_Metodologia_de_riesgos_de_IA.html","title":"AI risk methodology","blockCode":"D","blockLabel":"D · Governance, risk and compliance","active":false},{"href":"34_SEVEN-G_Mapeo_regulatorio.html","title":"Regulatory mapping","blockCode":"D","blockLabel":"D · Governance, risk and compliance","active":false},{"href":"35_SEVEN-G_Seguridad_de_IA_y_agentes.html","title":"AI and agent security","blockCode":"D","blockLabel":"D · Governance, risk and compliance","active":false},{"href":"36_SEVEN-G_Terceros_y_proveedores_de_IA.html","title":"AI third parties and suppliers","blockCode":"D","blockLabel":"D · Governance, risk and compliance","active":false},{"href":"37_SEVEN-G_No_conformidades_e_incidentes.html","title":"Nonconformities, AI incidents and remediation","blockCode":"D","blockLabel":"D · Governance, risk and compliance","active":false},{"href":"38_SEVEN-G_Marco_de_auditoria_de_IA.html","title":"AI audit framework","blockCode":"D","blockLabel":"D · Governance, risk and compliance","active":false},{"href":"40_SEVEN-G_Reglas_de_medicion_del_valor.html","title":"Value measurement rules","blockCode":"E","blockLabel":"E · Measurement and value","active":false},{"href":"41_SEVEN-G_Catalogo_de_indicadores.html","title":"Indicator catalogue","blockCode":"E","blockLabel":"E · Measurement and value","active":false},{"href":"42_SEVEN-G_Costes_de_IA.html","title":"AI costs and allocation per use case","blockCode":"E","blockLabel":"E · Measurement and value","active":false},{"href":"43_SEVEN-G_Realizacion_de_beneficios.html","title":"Benefits realisation","blockCode":"E","blockLabel":"E · Measurement and value","active":false},{"href":"50_SEVEN-G_Personas_y_organizacion.html","title":"People and organisation","blockCode":"F","blockLabel":"F · People, data and operations","active":false},{"href":"51_SEVEN-G_Datos_y_conocimiento.html","title":"Data and knowledge for AI","blockCode":"F","blockLabel":"F · People, data and operations","active":false},{"href":"52_SEVEN-G_Manual_de_operacion_de_IA.html","title":"AI operations manual","blockCode":"F","blockLabel":"F · People, data and operations","active":false},{"href":"53_SEVEN-G_Construccion_de_soluciones_con_IA.html","title":"Building solutions with AI","blockCode":"F","blockLabel":"F · People, data and operations","active":false},{"href":"54_SEVEN-G_Organizacion_de_la_compania_para_la_IA.html","title":"How a company organises itself for AI","blockCode":"F","blockLabel":"F · People, data and operations","active":false},{"href":"60_SEVEN-G_Paquete_para_el_consejo.html","title":"Board pack","blockCode":"G","blockLabel":"G · Board","active":false},{"href":"61_SEVEN-G_Guia_de_conversacion_con_el_consejo.html","title":"Board conversation guide","blockCode":"G","blockLabel":"G · Board","active":false},{"href":"62_SEVEN-G_Registro_de_recomendaciones_y_decisiones.html","title":"Recommendations and decisions register","blockCode":"G","blockLabel":"G · Board","active":false},{"href":"90_SEVEN-G_Guia_de_implantacion.html","title":"SEVEN-G implementation guide","blockCode":"J","blockLabel":"J · Framework adoption","active":false},{"href":"91_SEVEN-G_Guia_para_consultores.html","title":"Guide for consultants and support models","blockCode":"J","blockLabel":"J · Framework adoption","active":false},{"href":"92_SEVEN-G_Casos_de_aplicacion.html","title":"Application cases","blockCode":"J","blockLabel":"J · Framework adoption","active":false},{"href":"93_SEVEN-G_Licencia_uso_y_citacion.html","title":"Licence, use by third parties and citation","blockCode":"J","blockLabel":"J · Framework adoption","active":false},{"href":"94_SEVEN-G_Matriz_de_obligatoriedad_y_lectura_por_capas.html","title":"Obligation matrix and layered reading","blockCode":"J","blockLabel":"J · Framework adoption","active":false},{"href":"95_SEVEN-G_Datos_en_local_e_instalacion_propia.html","title":"Where your data is and how to install SEVEN-G on your own server","blockCode":"J","blockLabel":"J · Framework adoption","active":false},{"href":"96_SEVEN-G_Puntos_de_partida_y_recorrido_de_implantacion.html","title":"Starting points and implementation journey","blockCode":"J","blockLabel":"J · Framework adoption","active":false},{"href":"curso/M00_SEVEN-G_Curso_Guia_del_curso.html","title":"SEVEN-G course · Course guide","blockCode":"K","blockLabel":"K · Course","active":false},{"href":"curso/M01_SEVEN-G_Curso_Navegar_por_el_sitio.html","title":"Module 01 · Finding your way around the site","blockCode":"K","blockLabel":"K · Course","active":false},{"href":"curso/M02_SEVEN-G_Curso_Que_es_y_que_resuelve.html","title":"Module 02 · What SEVEN-G is and what problem it solves","blockCode":"K","blockLabel":"K · Course","active":false},{"href":"curso/M03_SEVEN-G_Curso_Esferas_y_ambicion.html","title":"Module 03 · Spheres and ambition levels","blockCode":"K","blockLabel":"K · Course","active":false},{"href":"curso/M04_SEVEN-G_Curso_Ciclo_de_vida_puertas_y_embudo.html","title":"Module 04 · Lifecycle, gates and funnel","blockCode":"K","blockLabel":"K · Course","active":false},{"href":"curso/M05_SEVEN-G_Curso_Gobierno_y_riesgo.html","title":"Module 05 · Governance and risk","blockCode":"K","blockLabel":"K · Course","active":false},{"href":"curso/M06_SEVEN-G_Curso_Medir_el_valor.html","title":"Module 06 · Measuring value","blockCode":"K","blockLabel":"K · Course","active":false},{"href":"curso/M07_SEVEN-G_Curso_Transformacion_o_eficiencia.html","title":"Module 07 · Transformation or efficiency","blockCode":"K","blockLabel":"K · Course","active":false},{"href":"curso/M08_SEVEN-G_Curso_El_consejo.html","title":"Module 08 · The board","blockCode":"K","blockLabel":"K · Course","active":false},{"href":"curso/M09_SEVEN-G_Curso_Implantar_por_capas.html","title":"Module 09 · Implementing in layers","blockCode":"K","blockLabel":"K · Course","active":false},{"href":"index.html","title":"SEVEN-G Library","blockCode":"A","blockLabel":"A · Foundations","active":false},{"href":"plantillas/P01_SEVEN-G_Carta_de_la_iniciativa.html","title":"Use case charter","blockCode":"H","blockLabel":"H · Templates","active":false},{"href":"plantillas/P02_SEVEN-G_Declaracion_de_contexto_y_restricciones.html","title":"Context and constraints statement","blockCode":"H","blockLabel":"H · Templates","active":false},{"href":"plantillas/P03_SEVEN-G_Registro_de_asignacion_de_roles.html","title":"Role assignment record","blockCode":"H","blockLabel":"H · Templates","active":false},{"href":"plantillas/P04_SEVEN-G_Determinacion_de_intensidad.html","title":"Intensity determination","blockCode":"H","blockLabel":"H · Templates","active":false},{"href":"plantillas/P05_SEVEN-G_Ficha_de_inventario_del_sistema_de_IA.html","title":"AI system inventory record","blockCode":"H","blockLabel":"H · Templates","active":false},{"href":"plantillas/P06_SEVEN-G_Cartera_de_oportunidades_y_notas_de_filtrado.html","title":"Opportunity portfolio and screening notes","blockCode":"H","blockLabel":"H · Templates","active":false},{"href":"plantillas/P07_SEVEN-G_Clasificacion_de_esfera_y_ambicion.html","title":"Sphere and ambition classification","blockCode":"H","blockLabel":"H · Templates","active":false},{"href":"plantillas/P08_SEVEN-G_Lienzo_de_hipotesis_de_valor.html","title":"Value hypothesis canvas","blockCode":"H","blockLabel":"H · Templates","active":false},{"href":"plantillas/P09_SEVEN-G_Linea_base.html","title":"Baseline","blockCode":"H","blockLabel":"H · Templates","active":false},{"href":"plantillas/P10_SEVEN-G_Evaluacion_de_viabilidad.html","title":"Feasibility assessment","blockCode":"H","blockLabel":"H · Templates","active":false},{"href":"plantillas/P11_SEVEN-G_Clasificacion_regulatoria_y_evaluaciones_de_impacto.html","title":"Regulatory classification and impact assessments","blockCode":"H","blockLabel":"H · Templates","active":false},{"href":"plantillas/P12_SEVEN-G_Matriz_y_registro_de_riesgos.html","title":"Risk matrix and register","blockCode":"H","blockLabel":"H · Templates","active":false},{"href":"plantillas/P13_SEVEN-G_Plan_de_mitigacion_y_contingencia.html","title":"Mitigation and contingency plan","blockCode":"H","blockLabel":"H · Templates","active":false},{"href":"plantillas/P14_SEVEN-G_Evaluacion_de_proveedor_de_IA.html","title":"AI supplier assessment","blockCode":"H","blockLabel":"H · Templates","active":false},{"href":"plantillas/P15_SEVEN-G_Registro_de_arquitectura.html","title":"Architecture record","blockCode":"H","blockLabel":"H · Templates","active":false},{"href":"plantillas/P16_SEVEN-G_Linaje_de_datos_y_modelos.html","title":"Data and model lineage","blockCode":"H","blockLabel":"H · Templates","active":false},{"href":"plantillas/P17_SEVEN-G_Diseno_de_gobierno_y_supervision_humana.html","title":"Governance and human oversight design","blockCode":"H","blockLabel":"H · Templates","active":false},{"href":"plantillas/P18_SEVEN-G_Diseno_de_seguridad.html","title":"Security design (including agents)","blockCode":"H","blockLabel":"H · Templates","active":false},{"href":"plantillas/P19_SEVEN-G_Plan_de_reversion_y_prueba.html","title":"Rollback plan and test","blockCode":"H","blockLabel":"H · Templates","active":false},{"href":"plantillas/P20_SEVEN-G_Plan_de_adopcion_y_capacidad.html","title":"Adoption and capacity plan","blockCode":"H","blockLabel":"H · Templates","active":false},{"href":"plantillas/P21_SEVEN-G_Informe_de_entrega.html","title":"Delivery report","blockCode":"H","blockLabel":"H · Templates","active":false},{"href":"plantillas/P22_SEVEN-G_Resultados_de_validacion_y_del_piloto.html","title":"Validation and pilot results","blockCode":"H","blockLabel":"H · Templates","active":false},{"href":"plantillas/P23_SEVEN-G_Firma_de_puesta_en_produccion.html","title":"Go-live sign-off","blockCode":"H","blockLabel":"H · Templates","active":false},{"href":"plantillas/P24_SEVEN-G_Manual_de_operacion.html","title":"Operations manual","blockCode":"H","blockLabel":"H · Templates","active":false},{"href":"plantillas/P25_SEVEN-G_Configuracion_de_monitorizacion_y_alertas.html","title":"Monitoring and alerting configuration","blockCode":"H","blockLabel":"H · Templates","active":false},{"href":"plantillas/P26_SEVEN-G_Plan_de_respuesta_a_incidentes.html","title":"Incident response plan","blockCode":"H","blockLabel":"H · Templates","active":false},{"href":"plantillas/P27_SEVEN-G_Registro_de_incidentes_y_cambios.html","title":"Incident and change log","blockCode":"H","blockLabel":"H · Templates","active":false},{"href":"plantillas/P28_SEVEN-G_Seguimiento_de_realizacion_de_valor.html","title":"Value realisation tracking","blockCode":"H","blockLabel":"H · Templates","active":false},{"href":"plantillas/P29_SEVEN-G_Registro_de_decision_de_gate.html","title":"*Gate* decision record","blockCode":"H","blockLabel":"H · Templates","active":false},{"href":"plantillas/P30_SEVEN-G_Decision_de_escalado_o_retirada.html","title":"Scale or retire decision","blockCode":"H","blockLabel":"H · Templates","active":false},{"href":"plantillas/P31_SEVEN-G_Ficha_de_caso_de_uso.html","title":"Use case record","blockCode":"H","blockLabel":"H · Templates","active":false},{"href":"plantillas/P32_SEVEN-G_Mandato_de_implantacion.html","title":"SEVEN-G implementation mandate","blockCode":"H","blockLabel":"H · Templates","active":false},{"href":"plantillas/P33_SEVEN-G_Informe_de_diagnostico_C1.html","title":"C1 diagnosis report","blockCode":"H","blockLabel":"H · Templates","active":false},{"href":"plantillas/P34_SEVEN-G_Cuestionario_e_informe_de_madurez.html","title":"Maturity questionnaire and report","blockCode":"H","blockLabel":"H · Templates","active":false},{"href":"plantillas/P35_SEVEN-G_Tesis_de_IA_y_apetito_de_riesgo.html","title":"AI thesis and risk appetite","blockCode":"H","blockLabel":"H · Templates","active":false},{"href":"plantillas/P36_SEVEN-G_Plan_de_cartera_C3.html","title":"C3 portfolio plan","blockCode":"H","blockLabel":"H · Templates","active":false},{"href":"plantillas/P37_SEVEN-G_Revision_anual_C5.html","title":"C5 annual review","blockCode":"H","blockLabel":"H · Templates","active":false},{"href":"plantillas/P38_SEVEN-G_Reglamento_de_los_organos_de_gobierno_de_IA.html","title":"Rules of procedure of the AI governance bodies","blockCode":"H","blockLabel":"H · Templates","active":false},{"href":"plantillas/P39_SEVEN-G_Orden_del_dia_y_acta_de_organo_de_gobierno.html","title":"Agenda and minutes of a governance body","blockCode":"H","blockLabel":"H · Templates","active":false},{"href":"plantillas/P40_SEVEN-G_Solicitud_y_registro_de_excepciones.html","title":"Exception request and register","blockCode":"H","blockLabel":"H · Templates","active":false},{"href":"plantillas/P41_SEVEN-G_Declaraciones_de_independencia_y_conflictos_de_interes.html","title":"Declarations of independence and conflicts of interest","blockCode":"H","blockLabel":"H · Templates","active":false},{"href":"plantillas/P42_SEVEN-G_Informe_trimestral_de_segunda_linea.html","title":"Quarterly second-line report","blockCode":"H","blockLabel":"H · Templates","active":false},{"href":"plantillas/P43_SEVEN-G_Catalogo_de_herramientas_autorizadas_y_solicitudes.html","title":"Catalogue of authorised tools and requests","blockCode":"H","blockLabel":"H · Templates","active":false},{"href":"plantillas/P44_SEVEN-G_Encuesta_de_uso_y_percepcion_de_la_IA.html","title":"AI use and perception survey","blockCode":"H","blockLabel":"H · Templates","active":false},{"href":"plantillas/P45_SEVEN-G_Plan_y_registro_de_alfabetizacion_y_formacion.html","title":"Literacy and training plan and record","blockCode":"H","blockLabel":"H · Templates","active":false},{"href":"plantillas/P46_SEVEN-G_Informacion_a_los_trabajadores_y_a_su_representacion.html","title":"Information to workers and their representatives","blockCode":"H","blockLabel":"H · Templates","active":false},{"href":"plantillas/P47_SEVEN-G_Evaluacion_de_impacto_en_proteccion_de_datos.html","title":"Data protection impact assessment","blockCode":"H","blockLabel":"H · Templates","active":false},{"href":"plantillas/P48_SEVEN-G_Evaluacion_de_impacto_en_derechos_fundamentales.html","title":"Fundamental rights impact assessment","blockCode":"H","blockLabel":"H · Templates","active":false},{"href":"plantillas/P49_SEVEN-G_Avisos_de_transparencia_e_instrucciones_de_uso.html","title":"Transparency notices and instructions for use","blockCode":"H","blockLabel":"H · Templates","active":false},{"href":"plantillas/P50_SEVEN-G_Registro_de_no_conformidades.html","title":"Nonconformity register","blockCode":"H","blockLabel":"H · Templates","active":false},{"href":"plantillas/P51_SEVEN-G_Notificaciones_y_comunicaciones_de_incidentes.html","title":"Incident reports and communications","blockCode":"H","blockLabel":"H · Templates","active":false},{"href":"plantillas/P52_SEVEN-G_Analisis_de_causa_raiz_y_plan_de_accion_correctiva.html","title":"Root cause analysis and corrective action plan","blockCode":"H","blockLabel":"H · Templates","active":false},{"href":"plantillas/P53_SEVEN-G_Plan_e_informe_de_pruebas_adversarias.html","title":"Adversarial testing plan and report","blockCode":"H","blockLabel":"H · Templates","active":false},{"href":"plantillas/P54_SEVEN-G_Inventario_de_identidades_no_humanas_y_componentes.html","title":"Non-human identity and component inventory","blockCode":"H","blockLabel":"H · Templates","active":false},{"href":"plantillas/P55_SEVEN-G_Cuestionario_de_diligencia_debida_a_proveedores_de_IA.html","title":"AI supplier due diligence questionnaire","blockCode":"H","blockLabel":"H · Templates","active":false},{"href":"plantillas/P56_SEVEN-G_Clausulas_contractuales_tipo_de_IA.html","title":"Model AI contractual clauses","blockCode":"H","blockLabel":"H · Templates","active":false},{"href":"plantillas/P57_SEVEN-G_Registro_de_proveedores_y_plan_de_salida.html","title":"Supplier register and exit plan","blockCode":"H","blockLabel":"H · Templates","active":false},{"href":"plantillas/P58_SEVEN-G_Plan_anual_de_auditoria_de_IA.html","title":"Annual AI audit plan","blockCode":"H","blockLabel":"H · Templates","active":false},{"href":"plantillas/P59_SEVEN-G_Papeles_de_auditoria.html","title":"Audit working papers","blockCode":"H","blockLabel":"H · Templates","active":false},{"href":"plantillas/P60_SEVEN-G_Informe_de_auditoria_y_fichas_de_hallazgo.html","title":"Audit report and finding records","blockCode":"H","blockLabel":"H · Templates","active":false},{"href":"plantillas/P61_SEVEN-G_Declaracion_de_aplicacion_de_SEVEN-G.html","title":"SEVEN-G declaration of application","blockCode":"H","blockLabel":"H · Templates","active":false},{"href":"plantillas/P62_SEVEN-G_Plan_de_realizacion_de_beneficios.html","title":"Benefits realisation plan","blockCode":"H","blockLabel":"H · Templates","active":false},{"href":"plantillas/P63_SEVEN-G_Presupuesto_de_consumo_y_conciliacion_de_costes.html","title":"Consumption budget and cost reconciliation","blockCode":"H","blockLabel":"H · Templates","active":false},{"href":"plantillas/P64_SEVEN-G_Ficha_de_conjunto_de_datos_e_inventario_de_fuentes_de_conocimiento.html","title":"Dataset record and knowledge source inventory","blockCode":"H","blockLabel":"H · Templates","active":false},{"href":"plantillas/P65_SEVEN-G_Paquete_de_revision_de_continuidad_R6.html","title":"R6 continuity review package","blockCode":"H","blockLabel":"H · Templates","active":false},{"href":"plantillas/P66_SEVEN-G_Anexos_de_construccion_con_SPAD.html","title":"Build annexes with SPAD","blockCode":"H","blockLabel":"H · Templates","active":false},{"href":"plantillas/P67_SEVEN-G_Paquete_trimestral_para_el_consejo.html","title":"Quarterly board pack","blockCode":"H","blockLabel":"H · Templates","active":false},{"href":"plantillas/P68_SEVEN-G_Nota_previa_y_nota_de_conclusiones_de_la_sesion_del_consejo.html","title":"Pre-session note and note of conclusions for the board session","blockCode":"H","blockLabel":"H · Templates","active":false},{"href":"plantillas/P69_SEVEN-G_Registro_de_decisiones_del_consejo.html","title":"Board decisions register","blockCode":"H","blockLabel":"H · Templates","active":false},{"href":"plantillas/P70_SEVEN-G_Propuesta_y_carta_de_encargo.html","title":"Proposal and engagement letter","blockCode":"H","blockLabel":"H · Templates","active":false},{"href":"plantillas/P71_SEVEN-G_Plan_de_transferencia_y_nota_de_salida.html","title":"Transfer plan and exit note","blockCode":"H","blockLabel":"H · Templates","active":false},{"href":"plantillas/P72_SEVEN-G_Perfil_de_seguridad_de_IA_CSF_y_Cyber_AI_Profile.html","title":"AI security profile (CSF 2.0 / Cyber AI Profile)","blockCode":"H","blockLabel":"H · Templates","active":false},{"href":"plantillas/P73_SEVEN-G_Perfil_de_gobierno_de_IA_NIST_AI_RMF.html","title":"AI governance profile (NIST AI RMF)","blockCode":"H","blockLabel":"H · Templates","active":false},{"href":"plantillas/P74_SEVEN-G_Declaracion_de_aplicabilidad_ISO_IEC_42001.html","title":"ISO/IEC 42001 statement of applicability","blockCode":"H","blockLabel":"H · Templates","active":false}];
 
   function norm(s) { return (s || '').normalize('NFD').replace(/[̀-ͯ]/g, '').toLowerCase(); }
   function asArray(v) { return Array.isArray(v) ? v : []; }

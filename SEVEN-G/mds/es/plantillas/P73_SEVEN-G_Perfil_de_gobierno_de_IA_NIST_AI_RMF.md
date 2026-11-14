@@ -27,7 +27,7 @@
 | **Etapa del ciclo corporativo** | C1 y C5 (perfil actual), C2 (perfil objetivo), C4 (seguimiento de las acciones). |
 | **Herramienta** | T15 · Diagnóstico de madurez calcula este perfil en su vista «Perfil AI RMF»: nivel derivado del cuestionario, niveles propios, objetivos, brecha, *tier* equivalente y exportación CSV, y guarda su resumen en el registro T01. Esta plantilla es su equivalente en papel o en Word. |
 | **Documento de referencia** | Documento 34 §5.4 (subcategorías, cobertura en SEVEN-G y preguntas asociadas); documento 11 §2.2 (niveles y equivalencia con los *tiers*) y §7.5 (regla de derivación). |
-| **Lite frente a Enterprise** | En alcance Lite la compañía puede seleccionar solo las subcategorías de GOVERN y las que corresponden a sus iniciativas Enterprise, y dejar las demás fuera del perfil con motivo. |
+| **Lite frente a Enterprise** | En alcance Lite la compañía puede seleccionar solo las subcategorías de GOVERN y las que corresponden a sus casos de uso Enterprise, y dejar las demás fuera del perfil con motivo. |
 
 Reglas de cumplimentación:
 
@@ -126,7 +126,7 @@ Reglas de cumplimentación:
 | MEASURE 4.1 | Propia (D7) | | | | | | |
 | MEASURE 4.2 | D7 · D7.09 | | | | | | |
 | MEASURE 4.3 | D2 · D2.10; D7 · D7.09 | | | | | | |
-| *(ejemplo ilustrativo)* MEASURE 2.11 | Propia (D6) | 2 | Pruebas de sesgo con pares contrafactuales en dos de cinco iniciativas con decisiones sobre personas (P22, 06-2026). | 3 | 1 | 2 | AM-2026-03 |
+| *(ejemplo ilustrativo)* MEASURE 2.11 | Propia (D6) | 2 | Pruebas de sesgo con pares contrafactuales en dos de cinco casos de uso con decisiones sobre personas (P22, 06-2026). | 3 | 1 | 2 | AM-2026-03 |
 
 ## 6. MANAGE · gestionar
 
@@ -190,7 +190,7 @@ Las acciones se incorporan al plan de mejora del informe de madurez (P34 §6.6) 
 | Código | Subcategorías | Acción | Responsable | Plazo | Criterio de cierre |
 |---|---|---|---|---|---|
 | AM-AAAA-NN | | | | | |
-| *(ejemplo ilustrativo)* AM-2026-03 | MEASURE 2.11 | Aplicar pruebas de sesgo con pares contrafactuales a todas las iniciativas con decisiones sobre personas, con umbral en P17. | Responsable de riesgos de IA | 31-12-2026 | Subcategoría en nivel 3 con evidencia verificada en la siguiente evaluación. |
+| *(ejemplo ilustrativo)* AM-2026-03 | MEASURE 2.11 | Aplicar pruebas de sesgo con pares contrafactuales a todos los casos de uso con decisiones sobre personas, con umbral en P17. | Responsable de riesgos de IA | 31-12-2026 | Subcategoría en nivel 3 con evidencia verificada en la siguiente evaluación. |
 
 ---
 

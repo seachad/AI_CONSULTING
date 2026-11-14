@@ -1,6 +1,6 @@
 # Role assignment record
 
-**Designates the people who take on each role in the initiative and demonstrates that segregation of duties and incompatibilities are respected.**
+**Designates the people who take on each role in the use case and demonstrates that segregation of duties and incompatibilities are respected.**
 
 | | |
 |---|---|
@@ -23,7 +23,7 @@
 | **Who verifies it** | Lite: AI Office. Enterprise: AI Auditor. If the AI Office has prepared the record, the AI Auditor verifies it. |
 | **Who decides** | It is approved with G0: sponsor (Lite) · AI Committee (Enterprise). The AI Auditor is designated by the third line, not by the sponsor. |
 | **Gate at which it is reviewed** | G0 · Authorisation. At every *gate* it is checked that the recorded verifier and decision-maker are those in this document. |
-| **Tool** | T01 · Initiative register (*Owners* block of the record). |
+| **Tool** | T01 · Use case register (*Owners* block of the record). |
 | **Lite versus Enterprise** | Lite may omit the fields marked **(Enterprise)**. In Lite the AI Auditor intervenes on a sample basis, but who would do so must be identified. |
 
 Completion rules:
@@ -38,8 +38,8 @@ Completion rules:
 
 | Field | Content | Guidance |
 |---|---|---|
-| Initiative code | | IA-AAAA-NNN. |
-| Initiative name | | |
+| Use case code | | IA-AAAA-NNN. |
+| Use case name | | |
 | Applicable intensity | | Lite · Enterprise (P04). If it changes, this record is reviewed. |
 | Ambition level | | Optimise · Augment · Transform. In Transform the board intervenes at G2 and G7. |
 | Document version | | |
@@ -48,7 +48,7 @@ Completion rules:
 
 ---
 
-## 3. Initiative roles
+## 3. Use case roles
 
 | Role | Function | Person | Position and unit | Planned time commitment | Acceptance date | Substitute **(Enterprise)** |
 |---|---|---|---|---|---|---|
@@ -106,7 +106,7 @@ Reference: 01 §7.5. State the specific person or body that will act at each gat
 | R6 · Continuity | AI Office · AI Auditor | Sponsor · AI Committee | |
 | G7 · Scale or retire | AI Office · AI Auditor | Sponsor · AI Committee | |
 
-For **Transform** initiatives, in addition, the board or its board committee approves at G2 and at G7 when the decision is to scale.
+For **Transform** use cases, in addition, the board or its board committee approves at G2 and at G7 when the decision is to scale.
 
 **Go-live signatories (Enterprise)**
 
@@ -157,7 +157,7 @@ The starting point is 01 §8.4. Any change from the reference matrix must be jus
 | Person | Role | Conflict of interest? | Description | Measure adopted |
 |---|---|---|---|---|
 | | | Yes · No | | |
-| *(illustrative example)* Person C | Risk owner | Yes | Took part in selecting the supplier in another initiative. | Abstains from the P14 clearance; their substitute issues it. |
+| *(illustrative example)* Person C | Risk owner | Yes | Took part in selecting the supplier in another use case. | Abstains from the P14 clearance; their substitute issues it. |
 
 ---
 
@@ -167,7 +167,7 @@ The starting point is 01 §8.4. Any change from the reference matrix must be jus
 |---|---|---|---|---|---|
 | | | | | | |
 
-Each change generates an event in the initiative register (03 §3.3).
+Each change generates an event in the use case register (03 §3.3).
 
 ---
 

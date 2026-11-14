@@ -42,7 +42,7 @@ This template does not constitute legal advice.
 
 | Field | Content | Guidance |
 |---|---|---|
-| Initiative code | | IA-AAAA-NNN (T01). |
+| Use case code | | IA-AAAA-NNN (T01). |
 | AI system(s) | | Identifier in the inventory (T02). |
 | Intensity | | Lite · Enterprise. |
 | Period covered | | From DD-MM-YYYY to DD-MM-YYYY. |

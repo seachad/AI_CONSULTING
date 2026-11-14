@@ -22,7 +22,7 @@
 
 ## 1. Objeto y alcance
 
-La guía de implantación (documento 90) describe **qué** hay que tener y en qué plazo máximo: alcance Lite o Enterprise, requisitos previos, plan de 90 días, regularización de lo existente y hoja de ruta hasta la declaración de aplicación. Pero las compañías no parten del mismo sitio. Una que no tiene ninguna IA en producción y otra que tiene cuarenta modelos predictivos y dos agentes que actúan necesitan **empezar por cosas distintas**, aunque tengan que llegar al mismo lugar. En los arquetipos PP-A y PP-B, muchas de las primeras iniciativas cumplen la elegibilidad de la intensidad Express (01 §9.4), que permite registrarlas y gobernarlas desde el primer día sin un recorrido desproporcionado.
+La guía de implantación (documento 90) describe **qué** hay que tener y en qué plazo máximo: alcance Lite o Enterprise, requisitos previos, plan de 90 días, regularización de lo existente y hoja de ruta hasta la declaración de aplicación. Pero las compañías no parten del mismo sitio. Una que no tiene ninguna IA en producción y otra que tiene cuarenta modelos predictivos y dos agentes que actúan necesitan **empezar por cosas distintas**, aunque tengan que llegar al mismo lugar. En los arquetipos PP-A y PP-B, muchas de los primeros casos de uso cumplen la elegibilidad de la intensidad Express (01 §9.4), que permite registrarlos y gobernarlos desde el primer día sin un recorrido desproporcionado.
 
 Este documento responde a tres preguntas:
 
@@ -45,7 +45,7 @@ La herramienta **T23 · Recorrido de implantación** aplica este documento: hace
 | Código | Arquetipo | Cómo se reconoce | Riesgo típico | Por dónde empieza | Qué puede esperar |
 |---|---|---|---|---|---|
 | **PP-A** | Punto cero | No hay IA propia en producción ni contratada de forma consciente. Suele haber uso no autorizado de asistentes generativos. | Uso no autorizado con datos de la compañía; ideas sin dueño. | Mandato y patrocinador; inventario del uso no autorizado; política de uso aceptable y alfabetización básica; ficha de caso (P01) y registro T01 para las primeras ideas. | Regularización (no hay nada que regularizar); seguridad de agentes y operación, hasta que un caso llegue a la fase 4. |
-| **PP-B** | Usuario de IA de terceros | Asistentes en la suite ofimática, SaaS con IA incluida o IA contratada; no desarrolla. | IA que entra sin pasar por ninguna puerta (54 §5); coste de licencias sin adopción medida. | Inventario de la IA incluida en lo contratado (36 §8, P55); exigencia a proveedores N1–N3 (36, P14); política de uso aceptable; medir el asistente como iniciativa transversal con escalera por unidad (40 §7.2). | Construcción propia (53) y parte del ciclo técnico, hasta que construya algo. |
+| **PP-B** | Usuario de IA de terceros | Asistentes en la suite ofimática, SaaS con IA incluida o IA contratada; no desarrolla. | IA que entra sin pasar por ninguna puerta (54 §5); coste de licencias sin adopción medida. | Inventario de la IA incluida en lo contratado (36 §8, P55); exigencia a proveedores N1–N3 (36, P14); política de uso aceptable; medir el asistente como caso de uso transversal con escalera por unidad (40 §7.2). | Construcción propia (53) y parte del ciclo técnico, hasta que construya algo. |
 | **PP-C** | Automatizador | Automatización con reglas o RPA en producción, con un centro de excelencia o equipo de automatización; poca o ninguna IA que aprenda. | Confundir automatización con IA; paso de bots a agentes (A2/A3) sin los controles del documento 35. | Convertir el centro de excelencia en el embrión de la oficina de IA (30); inventario que separa lo que es IA de lo que no lo es (32); cartera de casos que sustituyen reglas por IA, cada uno con su ficha. | Su disciplina de procesos es un activo: el rediseño del proceso de extremo a extremo (IT-P2) le resulta más fácil. |
 | **PP-D** | IA propia en producción | Modelos propios en producción —predictivos (ML, visión, optimización) o de IA generativa integrada en procesos—, sin agentes que actúan ni las dos cosas a la vez. Suele haber equipo de datos y, a veces, validación de modelos. | Modelos en producción sin revisión de continuidad; un tipo de IA nuevo que entra por fuera del gobierno que ya existe. | Regularización de lo que está en producción (90 §5, revisión equivalente a G7); llevar la validación de modelos existente a G5 y R6; deriva y monitorización (52); inventario con clasificación regulatoria. | Lo propio del tipo de IA que todavía no tiene: con solo ML, fuentes de conocimiento (51; D3.08), evaluación con conjuntos de prueba (D4.08) y sesgo en las respuestas (52 §4.2.7); con solo IA generativa, deriva de datos y validación de modelos predictivos (52). |
 | **PP-E** | Muchos pilotos | Varias pruebas de concepto de IA generativa (orientativamente, tres o más) y ninguna o una en producción. | «Purgatorio de pilotos»: coste sin valor y sin decisión de parar. | Registrar todos los pilotos en T01 en su fase real; G3 como puerta de parada y el embudo para parar o escalar; hipótesis de valor y línea base (40, P08, P09) antes de más presupuesto. | La estructura completa de órganos: primero la decisión sobre la cartera, después el resto. |
@@ -164,17 +164,17 @@ Cada hito indica qué hay que tener, quién lo lidera, con qué plantilla o herr
 | **HI-01** | E1 | Patrocinador en la alta dirección y mandato de implantación con perímetro | Consejo o consejero delegado; patrocinador | P32 | D1.01 | Semana 1 |
 | **HI-02** | E1 | Inventario del uso corporativo y del uso no autorizado de IA | Oficina de IA; seguridad | P05; T01 (T02); T21 | D6.03 | 1 / 1 |
 | **HI-03** | E1 | Política de uso aceptable y alfabetización básica | Oficina de IA; personas | 31; P43; P45 | D1.04; D5.03 | 3 / 3 |
-| **HI-04** | E2 | Ficha de caso y registro de iniciativas con todas las ideas y pilotos en su fase real | Oficina de IA; responsables de producto | P01; T01 | D2.01; D2.03 | 1–3 / 1–3 |
+| **HI-04** | E2 | Ficha de caso y registro de casos de uso con todas las ideas y pilotos en su fase real | Oficina de IA; responsables de producto | P01; T01 | D2.01; D2.03 | 1–3 / 1–3 |
 | **HI-05** | E2 | Inventario completo con clasificación regulatoria, intensidad y responsable, incluida la IA de terceros | Oficina de IA; riesgos; jurídico | P04; P05; P07; 32; 36 §8 | D6.05 | 6 / 9 |
 | **HI-06** | E2 | Diagnóstico C1: madurez verificada, índice de transformación y huella tecnológica | Oficina de IA; evaluador independiente | P33; P34; T15; T14 | D7.08 | 1–2 / 1–2 |
 | **HI-07** | E2 | Tesis, ambición por esfera y apetito de riesgo aprobados por el consejo (C2) | Patrocinador; consejo | P35; 13 | D1.05 | 3 / 3–4 |
 | **HI-08** | E3 | Comité de IA, oficina de IA y comisión delegada constituidos | Comité de dirección; consejo | P38; 30 | D1.07 | 3 / 4 |
-| **HI-09** | E3 | Roles separados en cada iniciativa: responsable de producto, técnico y de operación, responsable de riesgos independiente y auditor de IA (en Enterprise, en todos los *gates*) | Comité de IA | P03; P41; 01 §8 | D1.08 | 3 / 4 |
+| **HI-09** | E3 | Roles separados en cada caso de uso: responsable de producto, técnico y de operación, responsable de riesgos independiente y auditor de IA (en Enterprise, en todos los *gates*) | Comité de IA | P03; P41; 01 §8 | D1.08 | 3 / 4 |
 | **HI-10** | E3 | Responsable de riesgos de IA independiente y registro de riesgos con la escala del documento 33 desde la fase 3 | Comité de IA; riesgos | 33; P12; P13; T06 | D6.04; D6.06 | 6 / 9 |
-| **HI-11** | E3 | Ciclo de vida con *gates* registrados para toda iniciativa nueva | Oficina de IA; decisores de *gate* | 20; 21; 22; P29; T03 | D2.06 | 4 / 6 |
+| **HI-11** | E3 | Ciclo de vida con *gates* registrados para todo caso de uso nuevo | Oficina de IA; decisores de *gate* | 20; 21; 22; P29; T03 | D2.06 | 4 / 6 |
 | **HI-12** | E3 | Regularización de lo que está en producción (revisión equivalente a G7, primero lo de más riesgo) | Responsables de operación; auditor de IA | 90 §5; 14 §11; P30 | D4.07 | 6–12 / 6–12 |
 | **HI-13** | E2 | Decisión de parar o escalar cada piloto, con G3 como puerta de parada y el embudo de T01 | Comité de IA | 21 §6.4; T01 | D2.04; D2.09 | 4 / 6 |
-| **HI-14** | E4 | Reglas de medición del valor, línea base e hipótesis falsable en cada iniciativa desde G2 | Control de gestión; responsables de negocio del beneficio | 40; P08; P09; T11 | D2.08; D7.03; D7.05 | 6 / 9 |
+| **HI-14** | E4 | Reglas de medición del valor, línea base e hipótesis falsable en cada caso de uso desde G2 | Control de gestión; responsables de negocio del beneficio | 40; P08; P09; T11 | D2.08; D7.03; D7.05 | 6 / 9 |
 | **HI-15** | E4 | Informe periódico a la dirección y panel del consejo | Oficina de IA; comisión delegada | 60; P67; T17 | D7.04; D7.06; D1.09 | 3 (dirección) · 6 / 9–12 (consejo) |
 | **HI-16** | E3 | Seguridad de agentes y exigencia a proveedores N1–N3 | Seguridad; compras; riesgos | 35; 36; P14; P18; P55 | D6.08 | Antes de G5 |
 | **HI-17** | E4 | Operación bajo control: manual, monitorización y deriva, reversión probada y R6 vigente | Responsables de operación | 52; P24; P25; P65 | D4.05; D4.06; D4.07 | 9 / 12–15 |
@@ -186,7 +186,7 @@ Cada hito indica qué hay que tener, quién lo lidera, con qué plantilla o herr
 
 ### 4.2 Prioridad de cada hito según el punto de partida
 
-Claves: **1**, arrancar ya (meses 1–2); **2**, en su etapa (meses 3–6); **3**, más adelante (meses 7–18); **C**, convalidar lo que ya existe; **D**, cuando aparezca el disparador (primera iniciativa en esa fase, primer agente, primer proveedor…); **·**, no aplica todavía.
+Claves: **1**, arrancar ya (meses 1–2); **2**, en su etapa (meses 3–6); **3**, más adelante (meses 7–18); **C**, convalidar lo que ya existe; **D**, cuando aparezca el disparador (primer caso de uso en esa fase, primer agente, primer proveedor…); **·**, no aplica todavía.
 
 | Hito | PP-A | PP-B | PP-C | PP-D | PP-E | PP-F |
 |---|---|---|---|---|---|---|
@@ -216,7 +216,7 @@ Claves: **1**, arrancar ya (meses 1–2); **2**, en su etapa (meses 3–6); **3*
 El mes base del documento 90 es el límite; la prioridad solo lo adelanta o lo retrasa dentro de ese límite. Los modificadores ajustan la prioridad así:
 
 - **Q04** en «sí» o «no se sabe» pasa a **1** HI-02 y HI-03.
-- **MP1** y **MP2** pasan a **1** HI-05 y HI-10 (y, con MP2, HI-19 cuando haya una iniciativa que cambie el trabajo de las personas).
+- **MP1** y **MP2** pasan a **1** HI-05 y HI-10 (y, con MP2, HI-19 cuando haya un caso de uso que cambie el trabajo de las personas).
 - **MP4** cambia a **C** los hitos que cubre el gobierno existente, siempre que se documente la correspondencia.
 - **MP5** bloquea todo el recorrido hasta cumplir HI-01.
 
@@ -271,7 +271,7 @@ Una empresa industrial de unos mil empleados no tiene IA en producción. El cues
 
 - **Semana 1.** El consejero delegado asigna la IA a la directora de operaciones y firma el mandato (HI-01). Solo entonces empieza el recorrido.
 - **Meses 1–2.** Inventario del uso no autorizado (HI-02), política de uso aceptable y sesión de alfabetización para ingeniería y compras (HI-03), registro T01 con las siete ideas que circulaban (HI-04) y diagnóstico C1 (HI-06).
-- **Meses 3–6.** Tesis y apetito aprobados por el consejo (HI-07), comité y oficina de IA de una persona a tiempo parcial (HI-08) y ciclo de vida para las dos ideas que pasan G0 (HI-11). El registro de riesgos (HI-10) llega cuando la primera iniciativa entra en la fase 3.
+- **Meses 3–6.** Tesis y apetito aprobados por el consejo (HI-07), comité y oficina de IA de una persona a tiempo parcial (HI-08) y ciclo de vida para las dos ideas que pasan G0 (HI-11). El registro de riesgos (HI-10) llega cuando el primer caso de uso entra en la fase 3.
 
 ### 6.2 Aseguradora, PP-D con rasgo PP-E, MP1, MP2 y MP4
 
@@ -286,7 +286,7 @@ Una aseguradora tiene doce modelos predictivos en producción (tarificación, fr
 Una empresa de servicios profesionales ha desplegado un asistente generativo en la suite ofimática para 1.800 personas y usa tres SaaS con IA incluida. No desarrolla.
 
 - **Meses 1–2.** Inventario de la IA incluida en lo contratado (HI-05, con 36 §8), exigencia N1–N3 a los tres proveedores y al del asistente (HI-16), política de uso aceptable (HI-03) y plan de adopción (HI-19).
-- **Meses 2–6.** El asistente se registra como **una sola iniciativa transversal** y se mide por unidad con la escalera de 40 §7.2: coste completo, adopción, capacidad liberada declarada y valor materializado. Dos unidades por debajo del umbral de adopción revisan el despliegue.
+- **Meses 2–6.** El asistente se registra como **un solo caso de uso transversal** y se mide por unidad con la escalera de 40 §7.2: coste completo, adopción, capacidad liberada declarada y valor materializado. Dos unidades por debajo del umbral de adopción revisan el despliegue.
 - **Más adelante.** Cuando aparezca el primer caso propio, se activan el ciclo técnico y la operación (HI-17, en D).
 
 ---
@@ -308,7 +308,7 @@ Una empresa de servicios profesionales ha desplegado un asistente generativo en 
 | Código | Herramienta o plantilla | Uso en el recorrido |
 |---|---|---|
 | **T23** | Recorrido de implantación | Cuestionario, arquetipo, rasgos y modificadores; recorrido priorizado por etapas y por rol; hitos cumplidos según T15; plan imprimible y CSV. |
-| **T01** | Registro de iniciativas | Propone las respuestas de Q01 a Q03 desde las iniciativas en uso y los pilotos. |
+| **T01** | Registro de casos de uso | Propone las respuestas de Q01 a Q03 desde los casos en uso y los pilotos. |
 | **T15** | Diagnóstico de madurez | Marca los hitos cumplidos cuando sus preguntas están en «Sí»; vista de las tres lentes. |
 | **P32** | Mandato de implantación | HI-01. |
 | **P33** · **P34** | Informe C1 · cuestionario e informe de madurez | HI-06. |
@@ -323,7 +323,7 @@ Una empresa de servicios profesionales ha desplegado un asistente generativo en 
 | **90 · Guía de implantación** | Alcance, requisitos previos, plan de 90 días, regularización y hoja de ruta. |
 | **11 · Modelo de madurez** | Preguntas que acreditan cada hito y lectura en tres lentes. |
 | **12 · Índice de transformación** | Alcance del impacto. |
-| **14 · Gestión de cartera** | Regularización de iniciativas previas al marco (§11). |
+| **14 · Gestión de cartera** | Regularización de casos de uso previos al marco (§11). |
 | **30 · Modelo de gobierno** | Órganos, roles e incompatibilidades; adaptación a organizaciones pequeñas (§11). |
 | **54 · Organización de la compañía para la IA** | De dónde vienen los casos de uso y qué entra sin pasar por la puerta. |
 | **94 · Matriz de obligatoriedad** | Obligatoriedad y disparadores. |

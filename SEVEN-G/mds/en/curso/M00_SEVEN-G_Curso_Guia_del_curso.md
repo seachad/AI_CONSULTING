@@ -33,12 +33,12 @@ It follows one rule: **the course defines no rule of the framework**. Each modul
 | **Objective** | What anyone who finishes the module will be able to do. |
 | **Key ideas** | Three or four ideas, without normative detail. |
 | **Guided tour** | What to open on the site and what to look at on each page. |
-| **Exercise** | A ten-minute practice with the initiative register, the board dashboard or the calculators, always with example data. |
+| **Exercise** | A ten-minute practice with the use case register, the board dashboard or the calculators, always with example data. |
 | **Self-check** | Four questions. The answers are at the end of the module. |
 
 There is no exam, mark or certificate: SEVEN-G has no official certification (document 93, section 7).
 
-**Three slide courses, depending on who you are.** All three explain what SEVEN-G is, the phases and their gates, what is filled in at each phase, how that fills the initiative register's funnel all the way to the board dashboard —with annotated images of the register, the funnel and the dashboard— and two worked examples (one initiative that stops and one that reaches production). Each one then adds what is specific to its audience:
+**Three slide courses, depending on who you are.** All three explain what SEVEN-G is, the phases and their gates, what is filled in at each phase, how that fills the use case register's funnel all the way to the board dashboard —with annotated images of the register, the funnel and the dashboard— and two worked examples (one use case that stops and one that reaches production). Each one then adds what is specific to its audience:
 
 | Course | Who it is for | PowerPoint | PDF |
 |---|---|---|---|
@@ -74,14 +74,14 @@ The presentations may be adapted and delivered with attribution (document 93). T
 | **Senior management and AI Committee** | 01 · 02 · 03 · 04 · 06 · 09 | 2 hours |
 | **AI lead or AI Office** | All, in order | 3 to 4 hours |
 | **Risk, compliance and audit** | 01 · 02 · 04 · 05 · 09 | 2 hours |
-| **Initiative team** | 01 · 02 · 04 · 06 | 1.5 hours |
+| **Use case team** | 01 · 02 · 04 · 06 | 1.5 hours |
 | **Consultant** | All, and then document 91 | 4 hours |
 
 ---
 
 ## 5. Before starting
 
-- Open the **example initiative register** (T01) and the **example board dashboard** (T17) in another tab: almost all the exercises use them. The data is fictitious and never leaves the browser.
+- Open the **example use case register** (T01) and the **example board dashboard** (T17) in another tab: almost all the exercises use them. The data is fictitious and never leaves the browser.
 - Keep the **glossary** (document 02) to hand for terms and codes.
 - If you are going to use the course for internal training, you may adapt it: the licence allows it, crediting the author (document 93).
 

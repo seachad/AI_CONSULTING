@@ -45,7 +45,7 @@ Al terminar sabrá distinguir valor validado, declarado y estimado, calcular el 
 
 ## 4. Ejercicio
 
-Abra la calculadora de valor (T11) con su caso de ejemplo. Anote el VAN, el ROI y el plazo de recuperación. Suba el coste recurrente un 50 % y observe qué ocurre con el VAN. Después abra el panel del consejo de ejemplo (T17) y compare el neto de la cartera **con y sin** la iniciativa transversal IA-2025-007: ¿por qué su neto es negativo y, aun así, puede tener sentido mantenerla?
+Abra la calculadora de valor (T11) con su caso de ejemplo. Anote el VAN, el ROI y el plazo de recuperación. Suba el coste recurrente un 50 % y observe qué ocurre con el VAN. Después abra el panel del consejo de ejemplo (T17) y compare el neto de la cartera **con y sin** el caso de uso transversal IA-2025-007: ¿por qué su neto es negativo y, aun así, puede tener sentido mantenerlo?
 
 ---
 
@@ -53,7 +53,7 @@ Abra la calculadora de valor (T11) con su caso de ejemplo. Anote el VAN, el ROI 
 
 1. Un área afirma que ahorra 4.000 horas al año. ¿En qué estado está ese valor?
 2. ¿Qué tres datos hacen falta antes de invertir para poder medir después?
-3. ¿Puede una iniciativa con VAN negativo superar G3?
+3. ¿Puede un caso de uso con VAN negativo superar G3?
 4. ¿Dónde se ve la diferencia entre lo que la compañía declara y lo que ha validado?
 
 ---

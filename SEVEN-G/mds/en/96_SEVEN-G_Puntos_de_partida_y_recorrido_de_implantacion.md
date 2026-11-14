@@ -22,7 +22,7 @@
 
 ## 1. Purpose and scope
 
-The implementation guide (document 90) describes **what** must be in place and within what maximum time limit: Lite or Enterprise scope, prerequisites, 90-day plan, regularisation of what already exists and roadmap up to the declaration of application. But companies do not start from the same place. One with no AI in production and another with forty predictive models and two agents that act need **to start with different things**, even though they must reach the same destination. In archetypes PP-A and PP-B, many of the first initiatives meet the eligibility for Express intensity (01 §9.4), which makes it possible to register and govern them from day one without a disproportionate path.
+The implementation guide (document 90) describes **what** must be in place and within what maximum time limit: Lite or Enterprise scope, prerequisites, 90-day plan, regularisation of what already exists and roadmap up to the declaration of application. But companies do not start from the same place. One with no AI in production and another with forty predictive models and two agents that act need **to start with different things**, even though they must reach the same destination. In archetypes PP-A and PP-B, many of the first use cases meet the eligibility for Express intensity (01 §9.4), which makes it possible to register and govern them from day one without a disproportionate path.
 
 This document answers three questions:
 
@@ -45,7 +45,7 @@ Tool **T23 · Implementation journey** applies this document: it runs the questi
 | Code | Archetype | How it is recognised | Typical risk | Where it starts | What can wait |
 |---|---|---|---|---|---|
 | **PP-A** | Ground zero | No own AI in production and none knowingly contracted. There is usually unauthorised use of generative assistants. | Unauthorised use with company data; ideas without an owner. | Mandate and sponsor; inventory of unauthorised use; acceptable use policy and basic literacy; use case record (P01) and T01 register for the first ideas. | Regularisation (there is nothing to regularise); agent security and operation, until a case reaches phase 4. |
-| **PP-B** | Third-party AI user | Assistants in the office suite, SaaS with AI included or contracted AI; it does not develop. | AI that comes in without passing through any gate (54 §5); licence costs without measured adoption. | Inventory of the AI included in what is contracted (36 §8, P55); requirements on suppliers N1–N3 (36, P14); acceptable use policy; measuring the assistant as a cross-unit initiative with a ladder by unit (40 §7.2). | In-house building (53) and part of the technical cycle, until it builds something. |
+| **PP-B** | Third-party AI user | Assistants in the office suite, SaaS with AI included or contracted AI; it does not develop. | AI that comes in without passing through any gate (54 §5); licence costs without measured adoption. | Inventory of the AI included in what is contracted (36 §8, P55); requirements on suppliers N1–N3 (36, P14); acceptable use policy; measuring the assistant as a cross-unit use case with a ladder by unit (40 §7.2). | In-house building (53) and part of the technical cycle, until it builds something. |
 | **PP-C** | Automator | Rule-based automation or RPA in production, with a centre of excellence or automation team; little or no AI that learns. | Confusing automation with AI; moving from bots to agents (A2/A3) without the controls of document 35. | Turning the centre of excellence into the seed of the AI Office (30); an inventory that separates what is AI from what is not (32); a portfolio of cases that replace rules with AI, each with its record. | Its process discipline is an asset: redesigning the process end to end (IT-P2) comes more easily to it. |
 | **PP-D** | In-house AI in production | Own models in production —predictive (ML, vision, optimisation) or generative AI integrated into processes—, without agents that act or both at once. There is usually a data team and, sometimes, model validation. | Models in production without a continuity review; a new type of AI coming in outside the existing governance. | Regularisation of what is in production (90 §5, review equivalent to G7); bringing existing model validation into G5 and R6; drift and monitoring (52); inventory with regulatory classification. | What belongs to the type of AI it does not have yet: with ML only, knowledge sources (51; D3.08), evaluation with test sets (D4.08) and bias in responses (52 §4.2.7); with generative AI only, data drift and validation of predictive models (52). |
 | **PP-E** | Many pilots | Several generative AI proofs of concept (as a guide, three or more) and none or one in production. | "Pilot purgatory": cost without value and without a decision to stop. | Registering every pilot in T01 in its real phase; G3 as the stop gate and the funnel to stop or scale; value hypothesis and baseline (40, P08, P09) before more budget. | The full structure of bodies: first the decision on the portfolio, then the rest. |
@@ -164,17 +164,17 @@ Each milestone states what must be in place, who leads it, with which template o
 | **HI-01** | E1 | Sponsor in senior management and implementation mandate with a perimeter | Board or chief executive; sponsor | P32 | D1.01 | Week 1 |
 | **HI-02** | E1 | Inventory of corporate use and of unauthorised use of AI | AI Office; security | P05; T01 (T02); T21 | D6.03 | 1 / 1 |
 | **HI-03** | E1 | Acceptable use policy and basic literacy | AI Office; people function | 31; P43; P45 | D1.04; D5.03 | 3 / 3 |
-| **HI-04** | E2 | Use case record and initiative register with every idea and pilot in its real phase | AI Office; product owners | P01; T01 | D2.01; D2.03 | 1–3 / 1–3 |
+| **HI-04** | E2 | Case record and use case register with every idea and pilot in its real phase | AI Office; product owners | P01; T01 | D2.01; D2.03 | 1–3 / 1–3 |
 | **HI-05** | E2 | Complete inventory with regulatory classification, intensity and owner, including third-party AI | AI Office; risk; legal | P04; P05; P07; 32; 36 §8 | D6.05 | 6 / 9 |
 | **HI-06** | E2 | C1 diagnosis: verified maturity, transformation index and technology footprint | AI Office; independent assessor | P33; P34; T15; T14 | D7.08 | 1–2 / 1–2 |
 | **HI-07** | E2 | Thesis, ambition by sphere and risk appetite approved by the board (C2) | Sponsor; board | P35; 13 | D1.05 | 3 / 3–4 |
 | **HI-08** | E3 | AI Committee, AI Office and board committee set up | Executive committee; board | P38; 30 | D1.07 | 3 / 4 |
-| **HI-09** | E3 | Segregated roles in each initiative: product, technical and operations owners, independent risk owner and AI Auditor (in Enterprise, at every *gate*) | AI Committee | P03; P41; 01 §8 | D1.08 | 3 / 4 |
+| **HI-09** | E3 | Segregated roles in each use case: product, technical and operations owners, independent risk owner and AI Auditor (in Enterprise, at every *gate*) | AI Committee | P03; P41; 01 §8 | D1.08 | 3 / 4 |
 | **HI-10** | E3 | Independent AI Risk Owner and risk register with the scale of document 33 from phase 3 | AI Committee; risk | 33; P12; P13; T06 | D6.04; D6.06 | 6 / 9 |
-| **HI-11** | E3 | Lifecycle with recorded *gates* for every new initiative | AI Office; *gate* decision-makers | 20; 21; 22; P29; T03 | D2.06 | 4 / 6 |
+| **HI-11** | E3 | Lifecycle with recorded *gates* for every new use case | AI Office; *gate* decision-makers | 20; 21; 22; P29; T03 | D2.06 | 4 / 6 |
 | **HI-12** | E3 | Regularisation of what is in production (review equivalent to G7, highest risk first) | Operations owners; AI Auditor | 90 §5; 14 §11; P30 | D4.07 | 6–12 / 6–12 |
 | **HI-13** | E2 | Decision to stop or scale each pilot, with G3 as the stop gate and the T01 funnel | AI Committee | 21 §6.4; T01 | D2.04; D2.09 | 4 / 6 |
-| **HI-14** | E4 | Value measurement rules, baseline and falsifiable hypothesis in each initiative from G2 | Management control; business owners of the benefit | 40; P08; P09; T11 | D2.08; D7.03; D7.05 | 6 / 9 |
+| **HI-14** | E4 | Value measurement rules, baseline and falsifiable hypothesis in each use case from G2 | Management control; business owners of the benefit | 40; P08; P09; T11 | D2.08; D7.03; D7.05 | 6 / 9 |
 | **HI-15** | E4 | Periodic report to management and board dashboard | AI Office; board committee | 60; P67; T17 | D7.04; D7.06; D1.09 | 3 (management) · 6 / 9–12 (board) |
 | **HI-16** | E3 | Agent security and requirements on suppliers N1–N3 | Security; procurement; risk | 35; 36; P14; P18; P55 | D6.08 | Before G5 |
 | **HI-17** | E4 | Operation under control: manual, monitoring and drift, tested rollback and a current R6 | Operations owners | 52; P24; P25; P65 | D4.05; D4.06; D4.07 | 9 / 12–15 |
@@ -186,7 +186,7 @@ Each milestone states what must be in place, who leads it, with which template o
 
 ### 4.2 Priority of each milestone according to the starting point
 
-Keys: **1**, start now (months 1–2); **2**, in its stage (months 3–6); **3**, later (months 7–18); **C**, map and validate what already exists; **D**, when the trigger appears (first initiative in that phase, first agent, first supplier…); **·**, does not apply yet.
+Keys: **1**, start now (months 1–2); **2**, in its stage (months 3–6); **3**, later (months 7–18); **C**, map and validate what already exists; **D**, when the trigger appears (first use case in that phase, first agent, first supplier…); **·**, does not apply yet.
 
 | Milestone | PP-A | PP-B | PP-C | PP-D | PP-E | PP-F |
 |---|---|---|---|---|---|---|
@@ -216,7 +216,7 @@ Keys: **1**, start now (months 1–2); **2**, in its stage (months 3–6); **3**
 The base month in document 90 is the limit; the priority only brings it forward or pushes it back within that limit. The modifiers adjust the priority as follows:
 
 - **Q04** at "yes" or "don't know" moves HI-02 and HI-03 to **1**.
-- **MP1** and **MP2** move HI-05 and HI-10 to **1** (and, with MP2, HI-19 when there is an initiative that changes people's work).
+- **MP1** and **MP2** move HI-05 and HI-10 to **1** (and, with MP2, HI-19 when there is a use case that changes people's work).
 - **MP4** changes to **C** the milestones covered by existing governance, provided that the correspondence is documented.
 - **MP5** blocks the whole journey until HI-01 is met.
 
@@ -271,7 +271,7 @@ An industrial company of about a thousand employees has no AI in production. The
 
 - **Week 1.** The chief executive assigns AI to the chief operating officer and signs the mandate (HI-01). Only then does the journey begin.
 - **Months 1–2.** Inventory of unauthorised use (HI-02), acceptable use policy and a literacy session for engineering and procurement (HI-03), T01 register with the seven ideas in circulation (HI-04) and C1 diagnosis (HI-06).
-- **Months 3–6.** Thesis and appetite approved by the board (HI-07), committee and a one-person part-time AI Office (HI-08) and lifecycle for the two ideas that pass G0 (HI-11). The risk register (HI-10) arrives when the first initiative enters phase 3.
+- **Months 3–6.** Thesis and appetite approved by the board (HI-07), committee and a one-person part-time AI Office (HI-08) and lifecycle for the two ideas that pass G0 (HI-11). The risk register (HI-10) arrives when the first use case enters phase 3.
 
 ### 6.2 Insurer, PP-D with trait PP-E, MP1, MP2 and MP4
 
@@ -286,7 +286,7 @@ An insurer has twelve predictive models in production (pricing, fraud, churn), a
 A professional services company has deployed a generative assistant in the office suite for 1,800 people and uses three SaaS products with AI included. It does not develop.
 
 - **Months 1–2.** Inventory of the AI included in what is contracted (HI-05, with 36 §8), N1–N3 requirements on the three suppliers and on the assistant's supplier (HI-16), acceptable use policy (HI-03) and adoption plan (HI-19).
-- **Months 2–6.** The assistant is registered as **a single cross-unit initiative** and measured by unit with the ladder of 40 §7.2: full cost, adoption, declared released capacity and materialised value. Two units below the adoption threshold review the deployment.
+- **Months 2–6.** The assistant is registered as **a single cross-unit use case** and measured by unit with the ladder of 40 §7.2: full cost, adoption, declared released capacity and materialised value. Two units below the adoption threshold review the deployment.
 - **Later.** When the first in-house case appears, the technical cycle and operation are activated (HI-17, at D).
 
 ---
@@ -308,7 +308,7 @@ A professional services company has deployed a generative assistant in the offic
 | Code | Tool or template | Use in the journey |
 |---|---|---|
 | **T23** | Implementation journey | Questionnaire, archetype, traits and modifiers; journey prioritised by stage and by role; milestones met according to T15; printable plan and CSV. |
-| **T01** | Initiative register | Proposes the answers to Q01 to Q03 from the initiatives in use and the pilots. |
+| **T01** | Use case register | Proposes the answers to Q01 to Q03 from the use cases in use and the pilots. |
 | **T15** | Maturity diagnosis | Marks milestones as met when their questions are at "Yes"; three-lens view. |
 | **P32** | Implementation mandate | HI-01. |
 | **P33** · **P34** | C1 report · maturity questionnaire and report | HI-06. |
@@ -323,7 +323,7 @@ A professional services company has deployed a generative assistant in the offic
 | **90 · Implementation guide** | Scope, prerequisites, 90-day plan, regularisation and roadmap. |
 | **11 · Maturity model** | Questions that substantiate each milestone and three-lens reading. |
 | **12 · Transformation index** | Impact reach. |
-| **14 · Portfolio management** | Regularisation of initiatives that predate the framework (§11). |
+| **14 · Portfolio management** | Regularisation of use cases that predate the framework (§11). |
 | **30 · Governance model** | Bodies, roles and incompatibilities; adaptation to small organisations (§11). |
 | **54 · Organising the company for AI** | Where use cases come from and what comes in without passing through the gate. |
 | **94 · Obligation matrix** | Obligation levels and triggers. |

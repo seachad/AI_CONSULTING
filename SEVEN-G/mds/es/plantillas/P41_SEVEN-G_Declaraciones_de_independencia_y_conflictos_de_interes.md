@@ -25,12 +25,12 @@
 | **Quién la verifica** | La oficina de IA con cumplimiento valora las declaraciones A (30 §12); el responsable de auditoría de IA, las B; la secretaría del consejo o el órgano que encarga el servicio, las C. |
 | **Quién decide o aprueba** | Quien valora decide la medida; si afecta a un consejero, se aplica el régimen de conflictos del consejo (CI-6). |
 | **Etapa o momento** | C2 y C5 (renovación anual de las declaraciones A); en cada *gate* Enterprise el auditor de IA comprueba que constan (30 §12, paso 5). |
-| **Herramienta** | T01 · Registro de iniciativas: conflictos y abstenciones junto a la decisión afectada (30 §13). |
+| **Herramienta** | T01 · Registro de casos de uso: conflictos y abstenciones junto a la decisión afectada (30 §13). |
 | **Documento de referencia** | 30 §5.2 y §12; 38 §3.1; 91 §5; 61 §10.3; P03 §8. |
 
 Reglas de cumplimentación:
 
-- Los conflictos de los **roles de una iniciativa** se declaran en P03 §8; esta plantilla cubre a los **miembros de órganos**, **auditores** y **terceros**, y consolida el registro de la compañía.
+- Los conflictos de los **roles de un caso de uso** se declaran en P03 §8; esta plantilla cubre a los **miembros de órganos**, **auditores** y **terceros**, y consolida el registro de la compañía.
 - Se declara el conflicto **real, potencial o aparente**; la valoración la hace otra persona.
 - Una declaración «sin conflictos» también se firma y registra.
 - Código propuesto: **DCI-AAAA-NNN** (declaración de conflictos e independencia), correlativo por año.
@@ -44,7 +44,7 @@ Reglas de cumplimentación:
 | Código | | DCI-AAAA-NNN. |
 | Modelo | | A Miembro de órgano · B Auditor de IA · C Consultor o asesor externo. |
 | Declarante y cargo u organización | | |
-| Órgano, encargo o servicio | | Órgano del que es miembro; iniciativa, *gate* o auditoría; modelo de servicio M1–M5. |
+| Órgano, encargo o servicio | | Órgano del que es miembro; caso de uso, *gate* o auditoría; modelo de servicio M1–M5. |
 | Periodo que cubre | | Ejercicio o duración del encargo. |
 | Fecha de la declaración | | DD-MM-AAAA. |
 | Motivo | | Alta · Renovación anual · Nuevo encargo · Cambio de situación. |
@@ -57,11 +57,11 @@ Para miembros del consejo, de la comisión delegada, del comité de IA y respons
 
 | # | Pregunta | Sí · No | Detalle |
 |---|---|---|---|
-| A1 | ¿Patrocina o tiene rol de construcción en alguna iniciativa de IA que decida el órgano? (CI-1) | | Códigos IA-AAAA-NNN. |
-| A2 | ¿Depende su retribución variable del valor **declarado** de iniciativas de IA? (CI-2) | | Objetivo y métrica. |
+| A1 | ¿Patrocina o tiene rol de construcción en algún caso de uso de IA que decida el órgano? (CI-1) | | Códigos IA-AAAA-NNN. |
+| A2 | ¿Depende su retribución variable del valor **declarado** de casos de uso de IA? (CI-2) | | Objetivo y métrica. |
 | A3 | ¿Tiene usted o una persona vinculada relación laboral, mercantil, accionarial o de asesoramiento con un proveedor de IA de la compañía o que participe en una evaluación? (CI-3, CI-6) | | Proveedor y tipo de relación. |
 | A4 | ¿Ha participado en los doce meses anteriores en el diseño de controles o en la operación de sistemas que el órgano supervisa? (I-10) | | |
-| A5 | ¿Tiene objetivos de volumen de iniciativas en producción? (CI-5) | | |
+| A5 | ¿Tiene objetivos de volumen de casos de uso en producción? (CI-5) | | |
 | A6 | ¿Existe otra circunstancia que pueda afectar a su imparcialidad en asuntos de IA? | | |
 
 > **Declaración.** [Nombre y apellidos], miembro de [órgano] de [la Compañía], declara que la información anterior es completa y veraz, que se abstendrá en los asuntos en que tenga conflicto y que comunicará a [la secretaría del órgano] cualquier cambio en cuanto se produzca. Fecha y firma.
@@ -74,15 +74,15 @@ Antes de cada encargo, con los niveles de 38 §3.1. La firman también los exper
 
 | # | Requisito | Cumple (Sí · No) | Detalle o salvaguarda |
 |---|---|---|---|
-| B1 | **Organizativa.** Mi función depende funcionalmente de la comisión delegada y no de áreas que patrocinan la iniciativa auditada. | | |
-| B2 | **Individual.** No he tenido rol en la iniciativa ni en el diseño, construcción u operación del sistema. | | |
+| B1 | **Organizativa.** Mi función depende funcionalmente de la comisión delegada y no de áreas que patrocinan el caso de uso auditado. | | |
+| B2 | **Individual.** No he tenido rol en el caso de uso ni en el diseño, construcción u operación del sistema. | | |
 | B3 | **Individual.** No dependo jerárquicamente del patrocinador (I-5). | | |
 | B4 | **Individual.** No he asesorado sobre los controles auditados en los doce meses anteriores (I-10). | | |
 | B5 | **Económica.** No audito soluciones que yo o mi organización hayamos diseñado, implantado o vendido, ni productos de empresas vinculadas (I-11); mi retribución no depende del resultado. | | |
 | B6 | **Rotación.** No he sido auditor principal de este sistema Enterprise durante más de [tres] ejercicios consecutivos. | | Número de ejercicios. |
 | B7 | **Amenazas.** No identifico autorrevisión, interés propio, familiaridad, intimidación ni dependencia del auditado para la evidencia técnica, o indico la salvaguarda aplicada. | | |
 
-> **Declaración.** [Nombre y apellidos], auditor de IA asignado a [encargo o *gate*] de [iniciativa o sistema], declara cumplir los requisitos anteriores y se compromete a comunicar de inmediato al responsable de auditoría de IA cualquier circunstancia que comprometa su independencia. Fecha y firma.
+> **Declaración.** [Nombre y apellidos], auditor de IA asignado a [encargo o *gate*] de [caso de uso o sistema], declara cumplir los requisitos anteriores y se compromete a comunicar de inmediato al responsable de auditoría de IA cualquier circunstancia que comprometa su independencia. Fecha y firma.
 
 ---
 
@@ -93,7 +93,7 @@ Contenido mínimo de 91 §5.5, con las situaciones de 91 §5.4 y 61 §10.3.
 | Campo | Contenido | Guía |
 |---|---|---|
 | Servicio solicitado | | M1 Diagnóstico · M2 Implantación · M3 Auditoría · M4 Asesoramiento al consejo · M5 Acompañamiento continuo. |
-| Ámbito | | Iniciativas, sistemas, procesos o registros afectados. |
+| Ámbito | | Casos de uso, sistemas, procesos o registros afectados. |
 | Servicios prestados a la compañía y a su grupo en los últimos tres años | | Modelo, ámbito y fechas. |
 | Compatibilidad según 91 §5.2 | | Compatible · Compatible con cautela · Incompatible, y periodo de separación (91 §5.3). |
 | Relaciones con proveedores de tecnología o de modelos | | Alianzas, comisiones, reventa. |
@@ -101,7 +101,7 @@ Contenido mínimo de 91 §5.5, con las situaciones de 91 §5.4 y 61 §10.3.
 | Venta de herramientas propias | | |
 | Personas asignadas | | Y si alguna ha trabajado en la compañía o en el ámbito en el periodo de separación. |
 | Relaciones personales o societarias con consejeros o directivos | | |
-| Consejero o asesor con experiencia en IA | | Incompatibilidad con servicios de implantación en las iniciativas que supervisa; acceso a la información por la secretaría del consejo; confidencialidad (61 §10.3). |
+| Consejero o asesor con experiencia en IA | | Incompatibilidad con servicios de implantación en los casos de uso que supervisa; acceso a la información por la secretaría del consejo; confidencialidad (61 §10.3). |
 
 > **Declaración.** [Organización o persona], en relación con [servicio] para [la Compañía], declara que la información anterior es completa, que no concurre ninguna incompatibilidad de 91 §5.2 y que comunicará cualquier cambio al órgano que encarga el servicio. Fecha y firma.
 

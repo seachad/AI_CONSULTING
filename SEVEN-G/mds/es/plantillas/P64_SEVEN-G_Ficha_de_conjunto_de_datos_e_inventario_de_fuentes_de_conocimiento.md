@@ -14,7 +14,7 @@
 
 > **Aviso legal y exención de responsabilidad.** SEVEN-G es un marco metodológico de referencia que se ofrece «tal cual» y con fines exclusivamente informativos. No constituye asesoramiento jurídico, regulatorio, financiero ni profesional, ni garantiza el cumplimiento de ninguna norma. Las referencias a regulación general (como el Reglamento Europeo de IA, el RGPD, DORA o NIS2), a normas técnicas y a regulación específica de cada sector o jurisdicción pueden ser incompletas, no aplicar a un caso concreto o quedar desactualizadas por cambios normativos, interpretaciones o criterios de las autoridades posteriores a su fecha de consulta. **Cada organización que use SEVEN-G es la única responsable de identificar la normativa que le aplica, verificar su vigencia y certificar su propio cumplimiento regulatorio**, con el asesoramiento cualificado que corresponda. Esta metodología es una ayuda genérica y gratuita, compartida con la comunidad para que nadie tenga que empezar desde cero; cada persona u organización puede y debe adaptarla a su propio uso. No debe entenderse que sus partes jurídicamente sensibles hayan sido revisadas por una asesoría jurídica: esas revisiones, para cada empresa o sector, son responsabilidad última de la empresa, el consultor o la organización que la use. Aunque se procura mantenerla al día, alguna norma puede haber cambiado sin que se recoja aquí. En la máxima medida permitida por la ley, el autor no asume responsabilidad alguna por los efectos de su aplicación en ninguna organización ni por su aplicabilidad completa. La metodología no otorga certificación de ningún tipo. El autor no asume responsabilidad alguna por el uso que se haga de este contenido ni por las decisiones que se adopten con él. Los datos, cifras, compañías y casos de los ejemplos son ficticios o ilustrativos.
 
-> **Por qué importa.** Un sistema de IA es tan fiable como los datos con los que aprende y las fuentes de las que responde. Si un conjunto de datos no tiene propietario, base legal ni calidad medida, la iniciativa no puede defenderse ante un auditor o un regulador; si una fuente de conocimiento no tiene responsable ni fecha de revisión, el asistente acabará citando documentos caducados a clientes o empleados. Y si el conocimiento crítico depende de dos personas, su salida paraliza procesos y sistemas. Esta plantilla da a cada activo un responsable y una fecha, y permite medir DAT-02, CNC-01, CNC-06 y CNC-07.
+> **Por qué importa.** Un sistema de IA es tan fiable como los datos con los que aprende y las fuentes de las que responde. Si un conjunto de datos no tiene propietario, base legal ni calidad medida, el caso de uso no puede defenderse ante un auditor o un regulador; si una fuente de conocimiento no tiene responsable ni fecha de revisión, el asistente acabará citando documentos caducados a clientes o empleados. Y si el conocimiento crítico depende de dos personas, su salida paraliza procesos y sistemas. Esta plantilla da a cada activo un responsable y una fecha, y permite medir DAT-02, CNC-01, CNC-06 y CNC-07.
 
 ## 1. Instrucciones de uso
 
@@ -23,7 +23,7 @@
 | **Cuándo se usa** | Fichas de conjunto de datos (secciones 3 a 5): evaluación de la fase 3 con datos reales y ficha completa en la fase 4; se versiona al congelar conjuntos en la fase 5. Inventario de fuentes (secciones 6 y 7): fase 4, antes de conectar cada fuente, y en cada revisión de vigencia. Mapa de dependencia y plan de captura (secciones 8 y 9): en C1 y en C5. |
 | **Quién la rellena** | Fichas: responsable técnico de IA con el propietario y el custodio del dato. Fuentes: responsable de contenido o de conocimiento. Mapa y plan: la oficina de IA coordina con las áreas propietarias de cada dominio, con la función de personas (documento 50). |
 | **Quién la verifica** | Oficina de IA en Lite; auditor de IA en Enterprise. El delegado de protección de datos revisa los campos de datos personales y base legal; el responsable de riesgos valora los riesgos RT-DAT. |
-| **Quién decide o aprueba** | El propietario del dato autoriza el uso para la iniciativa en G3. El *gate* lo decide el órgano de 01 §7.5. El plan de captura lo aprueba el comité de IA en C1. |
+| **Quién decide o aprueba** | El propietario del dato autoriza el uso para el caso de uso en G3. El *gate* lo decide el órgano de 01 §7.5. El plan de captura lo aprueba el comité de IA en C1. |
 | **Etapa, *gate* o momento** | G3 (datos disponibles, calidad y base legal), G4 (linaje y fichas), G5 (conjuntos congelados, fuentes depuradas), R6 (vigencia); C1 y C5 para el mapa de dependencia. |
 | **Herramienta** | Catálogo de datos de la compañía, si existe; atributos del sistema en T02. No hay herramienta propia (51 §15). |
 | **Documento de referencia** | Documento 51 (§4.2, §4.3, §4.5, §8, §10.1–10.6); P16 para el linaje que usa estas fichas. |
@@ -43,7 +43,7 @@ Reglas de cumplimentación:
 
 | Campo | Contenido | Guía |
 |---|---|---|
-| Código de la iniciativa | | IA-AAAA-NNN (T01). No aplica al mapa de dependencia. |
+| Código del caso de uso | | IA-AAAA-NNN (T01). No aplica al mapa de dependencia. |
 | Sistemas de IA | | SIA-AAAA-NNN (T02, P05). |
 | Clasificación regulatoria | | P11. |
 | Intensidad | | Lite · Enterprise. |
@@ -69,7 +69,7 @@ Una ficha por conjunto usado para entrenar, ajustar, validar, probar o alimentar
 | Justificación de cada atributo personal usado como variable **(Enterprise)** | | Minimización (51 §4.4). |
 | Restricciones de uso y confidencialidad | | Contractuales, de licencia, sectoriales o territoriales; clasificación de la información. |
 | Retención | | Plazo y regla de eliminación o anonimización (51 §4.5). |
-| Sistemas que lo usan | | Iniciativas y versiones de modelo; enlace a P16 y T02. |
+| Sistemas que lo usan | | Casos de uso y versiones de modelo; enlace a P16 y T02. |
 | Versión y fecha de congelación | | Obligatoria si se usó para entrenar. |
 | Datos sintéticos | | Sí · No. Si es Sí, conjunto de origen, método y versión de generación; validación de utilidad y de privacidad (DAT-11). Mientras no se demuestre lo contrario, se tratan como datos personales. |
 

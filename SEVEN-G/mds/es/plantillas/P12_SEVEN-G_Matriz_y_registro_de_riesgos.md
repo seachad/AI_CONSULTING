@@ -1,6 +1,6 @@
 # Matriz y registro de riesgos
 
-**Identifica, valora y sigue los riesgos de la iniciativa con escalas comunes, nivel inherente y residual, respuesta y aceptación por el órgano que corresponde.**
+**Identifica, valora y sigue los riesgos del caso de uso con escalas comunes, nivel inherente y residual, respuesta y aceptación por el órgano que corresponde.**
 
 | | |
 |---|---|
@@ -28,7 +28,7 @@
 
 Reglas de cumplimentación:
 
-- Las escalas y los niveles son **los de la especificación común §5.1 y el documento 33**. No se modifican por iniciativa.
+- Las escalas y los niveles son **los de la especificación común §5.1 y el documento 33**. No se modifican por caso de uso.
 - El impacto se valora en **cinco ejes** y se toma el **mayor**.
 - El nivel se calcula **inherente** (sin controles) y **residual** (con controles eficaces). Un control solo reduce el residual si existe y funciona; los controles previstos se indican aparte.
 - Un riesgo residual **Crítico** sin aprobación del consejo o de su comisión delegada **bloquea G3 y G5**.
@@ -40,7 +40,7 @@ Reglas de cumplimentación:
 
 | Campo | Contenido | Guía |
 |---|---|---|
-| Código de la iniciativa | | IA-AAAA-NNN. |
+| Código del caso de uso | | IA-AAAA-NNN. |
 | Sistemas de IA cubiertos | | Códigos de P05. |
 | Clasificación regulatoria | | Taxonomía de 03 §3.3 (P11). |
 | Intensidad y nivel de ambición | | |
@@ -57,7 +57,7 @@ Reglas de cumplimentación:
 
 | Valor | Nombre | Referencia orientativa |
 |---|---|---|
-| 1 | Rara | Menos de una vez en 5 años o < 5 % en el horizonte de la iniciativa |
+| 1 | Rara | Menos de una vez en 5 años o < 5 % en el horizonte del caso de uso |
 | 2 | Improbable | Una vez cada 2–5 años o 5–20 % |
 | 3 | Posible | Una vez cada 1–2 años o 20–50 % |
 | 4 | Probable | Varias veces al año o 50–80 % |
@@ -129,7 +129,7 @@ Respuestas: **Evitar** (se elimina la causa o la actividad) · **Mitigar** (cont
 
 ---
 
-## 5. Matriz de calor de la iniciativa
+## 5. Matriz de calor del caso de uso
 
 Anote en cada celda los números de riesgo según su valoración **residual**.
 
@@ -169,7 +169,7 @@ Anote en cada celda los números de riesgo según su valoración **residual**.
 
 | Campo | Contenido | Guía |
 |---|---|---|
-| Riesgos compartidos con otras iniciativas | | Mismo proveedor, mismo modelo, mismos datos o misma función crítica. |
+| Riesgos compartidos con otros casos de uso | | Mismo proveedor, mismo modelo, mismos datos o misma función crítica. |
 | Concentración | | Si la suma de exposiciones supera el apetito de riesgo, se informa al comité de IA. |
 | Riesgos que deben elevarse | | Riesgos Altos o Críticos y riesgos concentrados. |
 

@@ -16,13 +16,13 @@
 
 > **Legal notice and disclaimer.** SEVEN-G is a reference methodological framework provided "as is" and for information purposes only. It does not constitute legal, regulatory, financial or professional advice, nor does it guarantee compliance with any law or standard. References to general regulation (such as the EU AI Act, the GDPR, DORA or NIS2), to technical standards and to regulation specific to each sector or jurisdiction may be incomplete, may not apply to a particular case or may become out of date as a result of regulatory changes, interpretations or supervisory positions after their consultation date. **Each organisation that uses SEVEN-G is solely responsible for identifying the regulation that applies to it, verifying that it is current and certifying its own regulatory compliance**, with the appropriate qualified advice. This methodology is a generic, free aid shared with the community so that nobody has to start from scratch; each person or organisation can and should adapt it to its own use. It must not be inferred that its legally sensitive parts have been reviewed by legal counsel: those reviews, for each company or sector, are the ultimate responsibility of the company, consultant or organisation that uses it. Although every effort is made to keep it up to date, some regulation may have changed without being reflected here. To the fullest extent permitted by law, the author accepts no responsibility whatsoever for the effects of its application in any organisation or for its full applicability. The methodology does not grant certification of any kind. The author accepts no liability for any use made of this content or for any decisions taken on the basis of it. The data, figures, companies and cases in the examples are fictitious or illustrative.
 
-<!-- esencial: enterprise | Full audit framework —annual plan, work programme, report and follow-up— in Enterprise scope. In Lite scope, the six-monthly sample review of Lite gates is enough, plus the AI Auditor at every gate of Enterprise initiatives. -->
+<!-- esencial: enterprise | Full audit framework —annual plan, work programme, report and follow-up— in Enterprise scope. In Lite scope, the six-monthly sample review of Lite gates is enough, plus the AI Auditor at every gate of Enterprise use cases. -->
 
 ## 1. Purpose and scope
 
 This document defines how artificial intelligence is audited in a company that applies SEVEN-G. Its purpose is to provide **objective assurance** that:
 
-- initiatives comply with the lifecycle, the mandatory evidence and the decision rules;
+- use cases comply with the lifecycle, the mandatory evidence and the decision rules;
 - systems in production remain under control and deliver the declared value with the correct validation status;
 - the framework is implemented in the company and operates effectively;
 - third parties providing AI services meet the requirements;
@@ -61,8 +61,8 @@ It applies to AI Auditors, to the internal audit function and to external audito
 
 | Level | Requirement | How it is checked |
 |---|---|---|
-| **Organisational** | The function that provides AI Auditors reports functionally to the board committee (document 30 §3.5), not to areas that sponsor initiatives. | Internal audit charter; organisation chart. |
-| **Individual** | The auditor has had no role in the initiative or in the design, construction or operation of the system; does not report hierarchically to the sponsor; and has not advised on the audited controls in the previous twelve months (30, incompatibility I-10). | Signed declaration of independence before each engagement (P41, Model B). |
+| **Organisational** | The function that provides AI Auditors reports functionally to the board committee (document 30 §3.5), not to areas that sponsor use cases. | Internal audit charter; organisation chart. |
+| **Individual** | The auditor has had no role in the use case or in the design, construction or operation of the system; does not report hierarchically to the sponsor; and has not advised on the audited controls in the previous twelve months (30, incompatibility I-10). | Signed declaration of independence before each engagement (P41, Model B). |
 | **Financial** | An external auditor does not audit solutions they have designed, implemented or sold, or products of related companies (30, I-11). Remuneration does not depend on the outcome. | Declaration of relationships with suppliers; review of contracts. |
 | **Rotation** | It is recommended that the same lead auditor should not audit the same Enterprise system for more than [three] consecutive years. | Record of assignments in T01. |
 | **Technical experts** | The auditor may rely on experts (data science, offensive security, legal). Experts must meet the same independence requirements with respect to the subject matter audited and work under the direction of the auditor, who is accountable for the conclusion. | Expert's declaration; work programme with their scope. |
@@ -71,8 +71,8 @@ It applies to AI Auditors, to the internal audit function and to external audito
 
 | Threat | Illustrative example | Safeguard |
 |---|---|---|
-| Self-review | The auditor took part in designing the rollback plan. | Replacement of the auditor for that initiative. |
-| Self-interest | Auditor's objectives linked to the number of initiatives in production. | Objectives based on quality and plan coverage. |
+| Self-review | The auditor took part in designing the rollback plan. | Replacement of the auditor for that use case. |
+| Self-interest | Auditor's objectives linked to the number of use cases in production. | Objectives based on quality and plan coverage. |
 | Familiarity | The auditor has been working with the technical team for years. | Rotation; quality review by another auditor. |
 | Intimidation | Pressure from the sponsor to close a *gate* before a certain date. | Escalation to the board committee (30, E-13); protected verification time limits. |
 | Dependence on the auditee for technical evidence | The auditor only has the metrics calculated by the team. | Independent re-performance or direct access to data and logs. |
@@ -103,10 +103,10 @@ If independence is compromised, the auditor reports it before starting or as soo
 
 | Type | Subject matter | When | Who | Criteria | Outcome |
 |---|---|---|---|---|---|
-| ***Gate* audit** | Evidence and results of a phase before the decision. | At all Enterprise *gates*; by sampling in Lite. | AI Auditor assigned to the initiative. | `G<n>.<nn>` criteria in document 21 and `LV-G<n>` checklists in document 22. | Verification outcome provided to the deciding body. |
+| ***Gate* audit** | Evidence and results of a phase before the decision. | At all Enterprise *gates*; by sampling in Lite. | AI Auditor assigned to the use case. | `G<n>.<nn>` criteria in document 21 and `LV-G<n>` checklists in document 22. | Verification outcome provided to the deciding body. |
 | **Continuity audit** | Effective operation of the controls of a system in production over a period, and accuracy of the R6 information. | At Enterprise R6 reviews (at least one in-depth review per year) and according to the plan in Lite. | AI Auditor. | `R6.<nn>` criteria in document 21; operations manual; value hypothesis. | Outcome provided to R6 or bringing G7 forward. |
 | **Framework audit of the company** | Design and effectiveness of AI governance: bodies, inventory, register, policies, risks, measurement, nonconformities. Includes the audit of the declaration of application (section 11). | Annual, in C5; before the first declaration of application. | Internal audit or external auditor. | 01 in full; documents 30, 31, 32, 33, 37 and 40; approved corporate policy. | Report to the board committee and the board. |
-| **Thematic audit** | A risk or control that cuts across several initiatives. | According to the annual plan. | Lead auditor with experts. | Requirements for the theme in the SEVEN-G library and applicable regulation. | Report with a conclusion per theme and findings per system. |
+| **Thematic audit** | A risk or control that cuts across several use cases. | According to the annual plan. | Lead auditor with experts. | Requirements for the theme in the SEVEN-G library and applicable regulation. | Report with a conclusion per theme and findings per system. |
 | **Supplier audit** | Compliance by a third party with the contractual requirements and the N1–N3 requirement level. | N3: at least annually; N2: depending on risk; N1: by exception. | AI Auditor or third-party auditor; may rely on independent reports. | Contract; document 36; P14 assessment. | Report that feeds the supplier reassessment. |
 
 In addition, **follow-up audits** (verification of corrective actions) and **re-audits** (full or partial repetition after a Nonconformant outcome) are carried out, as described in section 10.
@@ -130,12 +130,12 @@ In addition, **follow-up audits** (verification of corrective actions) and **re-
 
 ### 5.1 Audit universe
 
-The audit universe is built from the **AI system inventory** (T02, document 32) and the **initiative register** (T01), and is completed with:
+The audit universe is built from the **AI system inventory** (T02, document 32) and the **use case register** (T01), and is completed with:
 
 | Auditable unit | Source |
 |---|---|
 | Each AI system in development, pilot or production | T02 |
-| Each initiative with *gates* planned for the year | T01 |
+| Each use case with *gates* planned for the year | T01 |
 | Each AI supplier at level N2 or N3 | T09 |
 | The framework processes: corporate cycle, portfolio management, inventory, risks, measurement, nonconformities, policies and literacy | Documents 01, 14, 31, 32, 33, 37, 40 |
 | Cross-cutting themes identified by the second line or through incidents | Risk reports; T08 |
@@ -170,7 +170,7 @@ Each system in the universe is scored using the following factors. The table is 
 
 | Block | Content | Coverage rule |
 |---|---|---|
-| Enterprise *gate* audits | Forecast of *gates* per initiative according to T01. | 100%. |
+| Enterprise *gate* audits | Forecast of *gates* per use case according to T01. | 100%. |
 | Lite *gate* audits | Sample of Lite *gates* in the year. | As per 21 §10.3. |
 | Continuity audits | High-priority systems and the Medium-priority systems due by rotation. | Section 5.2. |
 | Framework audit | Includes the declaration of application. | Annual. |
@@ -347,9 +347,9 @@ The final classification and the process of containment, root cause, corrective 
 **Aggregation rules**
 
 1. Several minor nonconformities on **the same requirement in the same system** which, taken together, affect the decision or the control are classified as a single **major** nonconformity.
-2. The same minor nonconformity repeated in **three or more initiatives** in one year indicates a failure of the framework and is also recorded as a **major nonconformity in the framework audit**.
+2. The same minor nonconformity repeated in **three or more use cases** in one year indicates a failure of the framework and is also recorded as a **major nonconformity in the framework audit**.
 3. A major nonconformity **not corrected on time** is reclassified as critical if the risk it controls is High or Critical.
-4. **Recurrence:** a minor nonconformity that recurs **three times in twelve months** in the same initiative or process is classified as **major** (37 §3.3).
+4. **Recurrence:** a minor nonconformity that recurs **three times in twelve months** in the same use case or process is classified as **major** (37 §3.3).
 
 ### 8.2 Audit outcome
 
@@ -361,7 +361,7 @@ The final classification and the process of containment, root cause, corrective 
 
 In addition to the above, and even if the outcome is Conformant with observations, **Proceed with conditions is not permitted** when the minor nonconformity affects critical controls for security, legal compliance or human oversight (01 §7.3); in that case, the auditor states this expressly.
 
-The audit outcome **is not the *gate* decision**: it is the verification on which the competent body decides. The auditor does not recommend whether the initiative should proceed on the basis of its business value.
+The audit outcome **is not the *gate* decision**: it is the verification on which the competent body decides. The auditor does not recommend whether the use case should proceed on the basis of its business value.
 
 ---
 
@@ -371,7 +371,7 @@ The audit outcome **is not the *gate* decision**: it is the verification on whic
 
 | # | Section | Content |
 |---|---|---|
-| 1 | **Identification** | Audit code (`AUD-AAAA-NNN` is proposed), type, subject matter (system `SIA-AAAA-NNN`, initiative `IA-AAAA-NNN`, supplier or process), period audited, dates, lead auditor, experts, recipients, report version. |
+| 1 | **Identification** | Audit code (`AUD-AAAA-NNN` is proposed), type, subject matter (system `SIA-AAAA-NNN`, use case `IA-AAAA-NNN`, supplier or process), period audited, dates, lead auditor, experts, recipients, report version. |
 | 2 | **Executive summary** | Outcome (Conformant, Conformant with observations, Nonconformant); number of findings by class; three key messages in non-technical language; risks to the company if no action is taken. |
 | 3 | **Objective, scope and criteria** | What was audited and what was not; criteria applied (`G<n>.<nn>` and `R6.<nn>` codes, documents and standards). |
 | 4 | **Limitations** | Information not available, access denied, tests not performed and their effect on the conclusion. |
@@ -429,7 +429,7 @@ Rules:
 1. **Closing is not implementing.** An action implemented without evidence of effectiveness does not close a major or critical nonconformity.
 2. **Overdue actions.** They are escalated as per 30 §8.2 and are included in the quarterly report to the board committee.
 3. **Risk acceptance instead of correction.** This is only possible if the body with sufficient authority (30 §7.2) expressly accepts the residual risk and the breach is not a legal one; the auditor records the acceptance and closes the finding as "risk accepted", not as "corrected".
-4. **Re-audit at *gates*.** After a Nonconformant outcome at a *gate*, the request goes back to the team without a decision and, once the evidence has been corrected, the initiative requests the *gate* again; the new verification counts as an iteration (01 §7.4, rule 5).
+4. **Re-audit at *gates*.** After a Nonconformant outcome at a *gate*, the request goes back to the team without a decision and, once the evidence has been corrected, the use case requests the *gate* again; the new verification counts as an iteration (01 §7.4, rule 5).
 
 ---
 
@@ -448,21 +448,21 @@ A company may declare that it applies SEVEN-G when it meets the fourteen SEVEN-G
 | Core rule (01 §14.1) | Evidence required | Minimum tests | Classification if not met |
 |---|---|---|---|
 | **N-01** Complete inventory with regulatory classification, intensity and owner. | T02; quality indicators (32 §8). | Reconciliation of the inventory with independent sources (32 §9); sample of records (95%/10%: 29) against reality. | Major; critical if there are non-inventoried high-risk systems |
-| **N-02** Initiative register with the traceability in 01 §6.11. | T01. | Sample of initiatives with phase and *gate* events; none with budget consumed before registration. | Major |
-| **N-03** Intensity determined for each initiative and reviewed at G3 and at each R6. | T01 (P04). | Analysis of the entire population: initiatives without intensity; sample of P04 against the eight Enterprise criteria. | Major |
-| **N-04** All new initiatives go through the lifecycle with their *gates* recorded. | T01, T03, P29. | Analysis of the entire population: initiatives registered after adoption without G0 or with skipped phases; sample of *gates* with the tests in section 6.2 (including prior existence). | Major; critical if there are systems in production without G5 |
+| **N-02** Use case register with the traceability in 01 §6.11. | T01. | Sample of use cases with phase and *gate* events; none with budget consumed before registration. | Major |
+| **N-03** Intensity determined for each use case and reviewed at G3 and at each R6. | T01 (P04). | Analysis of the entire population: use cases without intensity; sample of P04 against the eight Enterprise criteria. | Major |
+| **N-04** All new use cases go through the lifecycle with their *gates* recorded. | T01, T03, P29. | Analysis of the entire population: use cases registered after adoption without G0 or with skipped phases; sample of *gates* with the tests in section 6.2 (including prior existence). | Major; critical if there are systems in production without G5 |
 | **N-05** G3 always decided separately. | T01 (G3 decisions). | Analysis of the entire population: G3 decisions taken in the same session as another gate. | Major |
-| **N-06** Roles and bodies assigned in line with the incompatibilities in 01 §8.2. | Mandates (document 30); P03 of the initiatives. | Review of mandates; analysis of all assignments in T01 to detect incompatibilities. | Major |
+| **N-06** Roles and bodies assigned in line with the incompatibilities in 01 §8.2. | Mandates (document 30); P03 of the use cases. | Review of mandates; analysis of all assignments in T01 to detect incompatibilities. | Major |
 | **N-07** Dual validation and evidence prior to the decision. | T01 (verifier, request, evidence and decision dates). | Sample of *gates*: verifier different from the decision-maker and the team; evidence dated before the request (EV.05). | Major; critical if documentation was prepared after the fact |
 | **N-08** No "Yes ◆" criterion accepted as a condition. | T01, T03. | Analysis of all conditions: none on a "Yes ◆" criterion. | Critical |
-| **N-09** Value hypothesis with baseline and stop criteria before feasibility. | P08, P09; T11. | Sample of initiatives in phase 3 or later: falsifiable hypothesis, baseline and stop criterion dated before G2. | Major |
+| **N-09** Value hypothesis with baseline and stop criteria before feasibility. | P08, P09; T11. | Sample of use cases in phase 3 or later: falsifiable hypothesis, baseline and stop criterion dated before G2. | Major |
 | **N-10** Regulatory classification and risk register before design; no Critical risk without board approval. | P11, P12; T06. | Analysis of all Critical residual risks and their approvals; sample of classifications dated before G3. | Critical if a Critical risk lacks approval; major otherwise |
 | **N-11** Tested rollback and current continuity review in production; regularisation of earlier systems within the C2 time limit. | T01; P19; R6 minutes; regularisation list. | Analysis of all R6 dates against the required frequency; sample of R6 reviews and rollback tests; progress of regularisation against the time limit. | Major |
 | **N-12** C1 and C2 completed; thesis, ambition per sphere and risk appetite approved by the board; AI information at least quarterly. | Board minutes; thesis and appetite document (document 13); C1 diagnosis. | Review of minutes and dates; consistency of the thresholds used in the portfolio with those approved. | Critical (cannot be declared) |
 | **N-13** Value measurement rules applied and reporting to the board with the dashboard. | Board dashboard; T12; minutes. | Sample of use cases: formula, validation status, released capacity, single attribution (rules in 00 §6); check that the board receives the dashboard in C4. | Major |
 | **N-14** Nonconformities managed with the process in 01 §12. | T08; reports to the board committee. | Analysis of all nonconformities: classification, containment and plan time limits, closure with effectiveness. | Major |
 
-The regularisation of initiatives predating adoption, within the time limit approved in C2, is part of N-11.
+The regularisation of use cases predating adoption, within the time limit approved in C2, is part of N-11.
 
 ### 11.3 Conclusion and use of the declaration
 
@@ -517,7 +517,7 @@ ISO/IEC 42001:2023 sets out requirements for an AI management system. Its **clau
 | Code | Name | Use in this document |
 |---|---|---|
 | **T02** | AI system inventory | Audit universe and prioritisation. |
-| **T01** | Initiative register | Forecast of *gates*, events, assignment and rotation of auditors. |
+| **T01** | Use case register | Forecast of *gates*, events, assignment and rotation of auditors. |
 | **T03** | *Gate* manager | Verification outcome per criterion and blocking of decisions in the event of Nonconformant. |
 | **T08** | Nonconformity and incident register | Registration and follow-up of nonconformities arising from audits. |
 | **T09** | AI supplier register | Universe and results of supplier audits. |
@@ -542,7 +542,7 @@ ISO/IEC 42001:2023 sets out requirements for an AI management system. Its **clau
 | Document | Relationship |
 |---|---|
 | **01 · Foundational methodology** | Dual validation, decision rules, nonconformities and declaration of application (§14). |
-| **03 · Tools and initiative register** | *Gate* decision times and register data. |
+| **03 · Tools and use case register** | *Gate* decision times and register data. |
 | **21 · *Gate* and audit criteria** | `G<n>.<nn>` and `R6.<nn>` criteria that are verified. |
 | **22 · Checklists by *gate*** | `LV-G<n>` binary controls. |
 | **30 · Governance model** | Independence of the third line, incompatibilities, escalation. |

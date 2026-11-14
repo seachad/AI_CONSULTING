@@ -39,7 +39,7 @@ Completion rules:
 
 | Field | Content | Guidance |
 |---|---|---|
-| Initiative code | | IA-AAAA-NNN. |
+| Use case code | | IA-AAAA-NNN. |
 | Associated P12 version | | The plan corresponds to a specific version of the register. |
 | Document version | | |
 | Date | | DD-MM-AAAA. |

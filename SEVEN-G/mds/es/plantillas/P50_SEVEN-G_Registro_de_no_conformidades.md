@@ -20,7 +20,7 @@
 
 | Aspecto | Indicación |
 |---|---|
-| **Cuándo se usa** | Desde que se detecta una posible no conformidad (37 §3.1): en una verificación de *gate*, una R6, una auditoría, una alerta del registro de iniciativas, una prueba de controles, un incidente o una comunicación de cualquier persona. La ficha sigue abierta hasta el cierre y, en críticas y mayores, hasta la reauditoría. |
+| **Cuándo se usa** | Desde que se detecta una posible no conformidad (37 §3.1): en una verificación de *gate*, una R6, una auditoría, una alerta del registro de casos de uso, una prueba de controles, un incidente o una comunicación de cualquier persona. La ficha sigue abierta hasta el cierre y, en críticas y mayores, hasta la reauditoría. |
 | **Quién la rellena** | La oficina de IA registra y custodia. Quien detecta propone el tipo; el responsable de la acción documenta la contención, la causa raíz y las acciones. |
 | **Quién la verifica** | El auditor de IA confirma el tipo, verifica la eficacia y cierra. En Lite, puede cerrar las menores sobre la verificación documental de la oficina de IA (37 §3.8). |
 | **Quién decide o aprueba** | El plan de acción lo aprueba el comité de IA (críticas), el responsable de riesgos de IA (mayores) o la oficina de IA (menores). Las discrepancias sobre el tipo las resuelve el comité de IA. |
@@ -50,8 +50,8 @@ Reglas de cumplimentación:
 | Fuente de detección | | Verificación de *gate* · R6 · Auditoría interna · Auditoría externa · Alerta del registro · Prueba de controles · Incidente · Uso no autorizado de IA · Comunicación de empleado, cliente, proveedor o supervisor. |
 | Detectada por | | Rol y nombre. |
 | Registrada por | | Oficina de IA; fecha de registro. |
-| Alcance | | Iniciativa (IA-AAAA-NNN), sistema (SIA-AAAA-NNN), proveedor, área o proceso corporativo. |
-| Intensidad de la iniciativa afectada | | Lite · Enterprise · No aplica (proceso corporativo). |
+| Alcance | | Caso de uso (IA-AAAA-NNN), sistema (SIA-AAAA-NNN), proveedor, área o proceso corporativo. |
+| Intensidad del caso de uso afectado | | Lite · Enterprise · No aplica (proceso corporativo). |
 | Responsable de la acción | | Persona nominal, distinta del auditor que cerrará. |
 
 ---
@@ -64,7 +64,7 @@ Reglas de cumplimentación:
 | Criterio o control afectado | | Criterio de *gate* (G*n*.*nn* del documento 21), control SEG o AG del documento 35, cláusula contractual u otro. |
 | Descripción del hallazgo | | Qué se ha observado, con evidencia objetiva. Hechos, no valoraciones. |
 | Evidencias | | Referencia de documentos, registros o capturas conservados. |
-| ¿Invalida un *gate*? | | Sí · No. Si es Sí, la iniciativa vuelve al estado anterior a ese *gate* hasta su corrección (37 §3.4). |
+| ¿Invalida un *gate*? | | Sí · No. Si es Sí, el caso de uso vuelve al estado anterior a ese *gate* hasta su corrección (37 §3.4). |
 | Incidente vinculado | | INC-AAAA-NNN (P27), si lo hay. El tipo de la no conformidad lo determina el requisito incumplido, no la severidad del incidente (37 §6). |
 | Otros vínculos **(Enterprise)** | | Riesgos (IA-AAAA-NNN · R*nn*), decisiones de *gate* (P29), recomendaciones del consejo (REC-AAAA-NNN). |
 
@@ -111,7 +111,7 @@ Obligatoria en críticas y mayores. Opciones de menor a mayor intensidad: restri
 | Causa inmediata | | Qué produjo el hecho. |
 | Causa raíz | | Causa del sistema de gestión sobre la que se puede actuar. «Error humano» no es una causa raíz final. |
 | ¿Cumple las cuatro condiciones de validez? | | Explica todos los hechos · al eliminarla no habría ocurrido o se habría detectado · es accionable · no se limita a señalar a una persona. Sí · No. |
-| ¿Existe el mismo fallo en otros sistemas o iniciativas? | | Sistemas revisados y resultado. |
+| ¿Existe el mismo fallo en otros sistemas o casos de uso? | | Sistemas revisados y resultado. |
 | Referencia de la hoja de trabajo | | P52, versión y fecha. |
 
 ### 6.2 Acciones

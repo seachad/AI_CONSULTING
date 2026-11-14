@@ -16,7 +16,7 @@
 
 > **Aviso legal y exención de responsabilidad.** SEVEN-G es un marco metodológico de referencia que se ofrece «tal cual» y con fines exclusivamente informativos. No constituye asesoramiento jurídico, regulatorio, financiero ni profesional, ni garantiza el cumplimiento de ninguna norma. Las referencias a regulación general (como el Reglamento Europeo de IA, el RGPD, DORA o NIS2), a normas técnicas y a regulación específica de cada sector o jurisdicción pueden ser incompletas, no aplicar a un caso concreto o quedar desactualizadas por cambios normativos, interpretaciones o criterios de las autoridades posteriores a su fecha de consulta. **Cada organización que use SEVEN-G es la única responsable de identificar la normativa que le aplica, verificar su vigencia y certificar su propio cumplimiento regulatorio**, con el asesoramiento cualificado que corresponda. Esta metodología es una ayuda genérica y gratuita, compartida con la comunidad para que nadie tenga que empezar desde cero; cada persona u organización puede y debe adaptarla a su propio uso. No debe entenderse que sus partes jurídicamente sensibles hayan sido revisadas por una asesoría jurídica: esas revisiones, para cada empresa o sector, son responsabilidad última de la empresa, el consultor o la organización que la use. Aunque se procura mantenerla al día, alguna norma puede haber cambiado sin que se recoja aquí. En la máxima medida permitida por la ley, el autor no asume responsabilidad alguna por los efectos de su aplicación en ninguna organización ni por su aplicabilidad completa. La metodología no otorga certificación de ningún tipo. El autor no asume responsabilidad alguna por el uso que se haga de este contenido ni por las decisiones que se adopten con él. Los datos, cifras, compañías y casos de los ejemplos son ficticios o ilustrativos.
 
-<!-- esencial: siempre | Criterios de cada puerta. Una iniciativa Lite aplica los criterios marcados «Sí» o «Simpl.» en la columna Lite; una Enterprise, todos. Nunca se omiten las reglas comunes (sección 3), la evidencia válida (sección 4) ni los criterios «Sí ◆». La firma multinivel (sección 9) y el auditor en cada puerta solo aplican en Enterprise. -->
+<!-- esencial: siempre | Criterios de cada puerta. Un caso de uso Lite aplica los criterios marcados «Sí» o «Simpl.» en la columna Lite; una Enterprise, todos. Nunca se omiten las reglas comunes (sección 3), la evidencia válida (sección 4) ni los criterios «Sí ◆». La firma multinivel (sección 9) y el auditor en cada puerta solo aplican en Enterprise. -->
 
 ## 1. Objeto y alcance
 
@@ -26,7 +26,7 @@ Desarrolla la sección 7 del documento 01 (Metodología fundacional) y no puede 
 
 | Se aplica a | Cómo |
 |---|---|
-| Iniciativas de IA propias | Todos los criterios aplicables según intensidad, ambición y tecnología. |
+| Casos de uso de IA propias | Todos los criterios aplicables según intensidad, ambición y tecnología. |
 | IA de terceros integrada en procesos | Todos los criterios; los marcados [TER] se añaden y los de diseño y construcción se leen como selección, integración, contrato y controles del proveedor. |
 | Uso corporativo de IA de propósito general | Solo si cumple algún criterio Enterprise (01 §9.2); en otro caso se gobierna con inventario, política y controles técnicos. |
 | Sistemas en producción anteriores a la adopción del marco | Revisión equivalente a G7 (01 §14) con los criterios de G7, completados con los criterios marcados ◆ de G4, G5 y R6 que resulten aplicables. |
@@ -74,11 +74,11 @@ Cada criterio se registra en T03 con uno de los cuatro estados del documento 03 
 
 En la intensidad Express (01 §9.4) cada puerta se evalúa con una **lista reducida** que no se decide caso a caso, sino con una regla fija:
 
-1. **Todos los criterios «Sí ◆»** que apliquen al perfil de la iniciativa (seguridad, cumplimiento legal, supervisión humana): N-08 impide tratarlos como condición, así que tampoco pueden desaparecer.
+1. **Todos los criterios «Sí ◆»** que apliquen al perfil del caso de uso (seguridad, cumplimiento legal, supervisión humana): N-08 impide tratarlos como condición, así que tampoco pueden desaparecer.
 2. **Los criterios que sostienen el núcleo** (01 §14.1): G0.01, G0.05, G0.06, G0.07, G0.08 y G0.09 (ficha, roles, incompatibilidades, intensidad, registro y nada de presupuesto antes de decidir); G1.01 y G1.03 (necesidad de negocio y alternativa sin IA); G2.01, G2.03, G2.04, G2.06 y G2.08 (hipótesis falsable con línea base, objetivo, valor con fórmula y criterio de parada); G3.06, G3.11 y G3.13 (criterios de parada vigentes, riesgos valorados y plan para los Altos); G5.09, G5.11, G5.19 y G5.22 (criterio de parada no alcanzado, reversión probada, alfabetización y condiciones cerradas).
 3. **R6 y G7**: los mismos criterios que en Lite.
 
-Los demás criterios figuran en la decisión como *No aplica*, con la justificación «No aplica en intensidad Express (documento 21, sección 2.5)». Los criterios con etiqueta [GEN], [AG] o [TER] siguen la sección 2.3. El catálogo del gestor de *gates* lleva esta lista en su columna Express. En la iniciativa tipo de la línea base del plan de mejora (asistente generativo interno de un proveedor homologado), la lista reducida pasa de 90 a 47 criterios, de los que 27 son «Sí ◆».
+Los demás criterios figuran en la decisión como *No aplica*, con la justificación «No aplica en intensidad Express (documento 21, sección 2.5)». Los criterios con etiqueta [GEN], [AG] o [TER] siguen la sección 2.3. El catálogo del gestor de *gates* lleva esta lista en su columna Express. En el caso de uso tipo de la línea base del plan de mejora (asistente generativo interno de un proveedor homologado), la lista reducida pasa de 90 a 47 criterios, de los que 27 son «Sí ◆».
 
 ---
 
@@ -104,7 +104,7 @@ Se aplican las siete reglas de 01 §7.4, con estas precisiones operativas:
 3. **Anterioridad.** Toda evidencia debe tener fecha anterior a la solicitud del *gate*. Las correcciones pedidas por el verificador generan una nueva versión antes de la decisión.
 4. **Condiciones.** Solo sobre criterios *Condicionable*. Cada condición tiene plazo, responsable, criterio al que se vincula y forma de verificación. Una condición vencida convierte el resultado en **Iterar**.
 5. **Iteraciones.** Tras dos iteraciones en el mismo *gate*, la tercera decisión la toma el órgano superior definido en el documento 30.
-6. **Criterios de parada.** No se relajan sin aprobación del órgano que autorizó la iniciativa, registrada antes de la decisión afectada.
+6. **Criterios de parada.** No se relajan sin aprobación del órgano que autorizó el caso de uso, registrada antes de la decisión afectada.
 7. **Registro.** Toda decisión se documenta en P29 y genera los eventos correspondientes en T01.
 
 ### 3.3 Cumplir los criterios es necesario, no suficiente
@@ -117,7 +117,7 @@ En las intensidades Lite y Express, G0, G1 y G2 pueden resolverse en una sola se
 
 ### 3.5 Decisiones del consejo en Transformar
 
-Las iniciativas de Transformar son siempre Enterprise (01 §9.2) y requieren aprobación expresa del consejo o de su comisión delegada en **G2** (autorización de la apuesta, criterio G2.12) y en **G7** cuando se decide escalar (criterio G7.09). La aprobación se registra en P29 con referencia al acta o al registro de recomendaciones y decisiones (documento 62).
+Los casos de uso de Transformar son siempre Enterprise (01 §9.2) y requieren aprobación expresa del consejo o de su comisión delegada en **G2** (autorización de la apuesta, criterio G2.12) y en **G7** cuando se decide escalar (criterio G7.09). La aprobación se registra en P29 con referencia al acta o al registro de recomendaciones y decisiones (documento 62).
 
 ---
 
@@ -129,13 +129,13 @@ Una evidencia es válida si supera las catorce reglas siguientes. El documento 2
 
 | Código | Regla | Qué se comprueba | Si no se cumple |
 |---|---|---|---|
-| **EV.01** | Identificación | Código de iniciativa, plantilla (P) o registro de origen y título. | Pendiente |
+| **EV.01** | Identificación | Código de caso de uso, plantilla (P) o registro de origen y título. | Pendiente |
 | **EV.02** | Autor | Persona y rol que la elabora. | Pendiente |
 | **EV.03** | Fecha | Fecha de elaboración y de última modificación. | Pendiente |
 | **EV.04** | Versión | Número de versión; la versión verificada es la enlazada en P29. Un cambio posterior exige nueva verificación. | Pendiente |
 | **EV.05** | Anterioridad | Fecha anterior a la solicitud del *gate*, y actividad descrita anterior a la decisión. Documentación elaborada a posteriori para justificar un avance ya producido invalida el *gate* (01 §7.4). | No válida · no conformidad mayor |
 | **EV.06** | Integridad y trazabilidad | Guardada en el repositorio documental con historial de versiones; enlace accesible al verificador y al auditor desde T01 o T03. | Pendiente |
-| **EV.07** | Pertinencia | Se refiere a esta iniciativa, a su alcance y a la versión del sistema. La reutilización de evidencias de otra iniciativa se justifica. | No válida |
+| **EV.07** | Pertinencia | Se refiere a este caso de uso, a su alcance y a la versión del sistema. La reutilización de evidencias de otro caso de uso se justifica. | No válida |
 | **EV.08** | Datos reales | Cuando el criterio exige resultados: fuente, periodo y método reproducibles; importes con fórmula y estado (validado, declarado o estimado). | No válida |
 | **EV.09** | Aprobación y separación | Aprobada por quien corresponde; autor, verificador y decisor son personas distintas. | No válida · no conformidad mayor si hay autoaprobación |
 | **EV.10** | Completitud | Campos obligatorios de la plantilla rellenos o cubiertos por una evidencia referenciada (sección 4.3); en Lite, los no marcados *(Enterprise)*. Los datos ausentes figuran como "sin dato", no como cero. | Pendiente |
@@ -159,7 +159,7 @@ Una evidencia referenciada es válida si cumple las mismas reglas EV.01–EV.14 
 | **Referencia localizable** | Sistema o repositorio de origen, identificador o enlace, versión y fecha, de modo que el verificador y el auditor la encuentren sin pedirla (EV.06). En T01 se registra con origen «referencia» y su sistema de origen. |
 | **Responsable** | Persona y rol que la elaboró o aprobó en su proceso de origen (EV.02). La separación de funciones se comprueba igual (EV.09). |
 | **Cobertura** | El verificador contrasta la evidencia con la plantilla que cubre y anota lo que falta. Lo que falta se completa en un **anexo breve** con solo esos campos, nunca copiando lo que ya está. |
-| **Vigencia y pertinencia** | Se refiere a esta iniciativa, a su alcance y a la versión del sistema (EV.07); si se actualiza en su proceso de origen, se vuelve a verificar (EV.04). |
+| **Vigencia y pertinencia** | Se refiere a este caso de uso, a su alcance y a la versión del sistema (EV.07); si se actualiza en su proceso de origen, se vuelve a verificar (EV.04). |
 
 Equivalencias habituales (orientativas; cada compañía las fija en su implantación, documento 90):
 
@@ -180,7 +180,7 @@ Equivalencias habituales (orientativas; cada compañía las fija en su implantac
 
 Ninguna evidencia se pide dos veces: si un dato ya está en una evidencia referenciada, la plantilla remite a ella y no lo repite.
 
-> **Por qué importa.** Si cada iniciativa obliga a copiar en plantillas propias lo que la compañía ya tiene, SEVEN-G se convierte en un sistema documental paralelo que nadie mantiene y que se desincroniza de los procesos reales. Referenciar convierte el marco en una capa de orquestación y trazabilidad sobre los procesos existentes: el verificador comprueba lo que hay donde está, y la plantilla solo señala lo que falta.
+> **Por qué importa.** Si cada caso de uso obliga a copiar en plantillas propias lo que la compañía ya tiene, SEVEN-G se convierte en un sistema documental paralelo que nadie mantiene y que se desincroniza de los procesos reales. Referenciar convierte el marco en una capa de orquestación y trazabilidad sobre los procesos existentes: el verificador comprueba lo que hay donde está, y la plantilla solo señala lo que falta.
 
 ---
 
@@ -239,7 +239,7 @@ Cada puerta incluye su propósito, quién verifica y decide (01 §7.5), las evid
 
 ### 6.1 G0 · Autorización
 
-**Propósito.** Autorizar formalmente la iniciativa y fijar el marco en el que se desarrollará. Sin G0 aprobado la iniciativa no está autorizada: no puede consumir presupuesto ni acceder a datos de producción.
+**Propósito.** Autorizar formalmente el caso de uso y fijar el marco en el que se desarrollará. Sin G0 aprobado el caso de uso no está autorizado: no puede consumir presupuesto ni acceder a datos de producción.
 
 | | Lite | Enterprise |
 |---|---|---|
@@ -251,13 +251,13 @@ Cada puerta incluye su propósito, quién verifica y decide (01 §7.5), las evid
 | Código | Criterio | Evidencia | Obligatorio | Lite | Enterprise | Optimizar / Aumentar / Transformar (si difiere) |
 |---|---|---|---|---|---|---|
 | G0.01 | La carta define el problema u objetivo de negocio, el alcance, el presupuesto de las fases 1 a 3 y el compromiso firmado del patrocinador. | P01 | Sí | Simpl. | Sí | Transformar: patrocinador de alta dirección. |
-| G0.02 | La iniciativa encaja con la tesis de IA y la cartera aprobadas en C2 y C3, con referencia a la esfera y a la prioridad asignada. | P01 | Condicionable | Sí | Sí | Transformar: figura en la cartera con previsión de decisión del consejo en G2. |
+| G0.02 | El caso de uso encaja con la tesis de IA y la cartera aprobadas en C2 y C3, con referencia a la esfera y a la prioridad asignada. | P01 | Condicionable | Sí | Sí | Transformar: figura en la cartera con previsión de decisión del consejo en G2. |
 | G0.03 | La declaración de contexto recoge las restricciones regulatorias (incluida la sectorial), éticas, de datos, presupuestarias y de plazo. | P02 | Condicionable | Simpl. | Sí | — |
-| G0.04 | El cribado preliminar descarta que la iniciativa persiga una práctica prohibida por la regulación aplicable. | P02 | Sí ◆ | Sí | Sí | — |
+| G0.04 | El cribado preliminar descarta que el caso de uso persiga una práctica prohibida por la regulación aplicable. | P02 | Sí ◆ | Sí | Sí | — |
 | G0.05 | Los roles están asignados con nombre: en Lite, al menos patrocinador, producto, técnico y riesgos (operación, como tarde, en G4); en Enterprise, los seis roles de 01 §8.1. | P03 | Sí | Sí | Sí | — |
 | G0.06 | La asignación respeta las incompatibilidades de 01 §8.2 y el auditor de IA no depende jerárquicamente del patrocinador. | P03 | Sí | Sí | Sí | — |
 | G0.07 | La intensidad está determinada con los ocho criterios Enterprise de 01 §9.2, con respuesta justificada a cada uno. | P04 · T04 | Sí | Sí | Sí | Transformar: siempre Enterprise. |
-| G0.08 | La iniciativa está dada de alta en el registro con código IA-AAAA-NNN y los sistemas previstos figuran en el inventario con tecnología, exposición y proveedor. | P05 · T01 · T02 | Sí | Sí | Sí | — |
+| G0.08 | El caso de uso está dado de alta en el registro con código IA-AAAA-NNN y los sistemas previstos figuran en el inventario con tecnología, exposición y proveedor. | P05 · T01 · T02 | Sí | Sí | Sí | — |
 | G0.09 | No se ha consumido presupuesto de construcción ni se ha accedido a datos de producción antes de la decisión. | P01 · T01 | Sí | Sí | Sí | — |
 | G0.10 | Si se prevé tratar datos personales, la función de protección de datos ha sido informada. | P02 | Condicionable | Rec. | Sí | — |
 
@@ -316,11 +316,11 @@ Cada puerta incluye su propósito, quién verifica y decide (01 §7.5), las evid
 | G2.12 | Transformar: el consejo o su comisión delegada ha aprobado expresamente la apuesta y consta en el registro. | P29 | Sí | — | Sí | Solo Transformar. |
 | G2.13 | La inversión estimada hasta G5 y el neto adicional por euro preliminar están calculados. | P08 · T11 | Condicionable | Simpl. | Sí | Transformar: por etapa. |
 
-**Reglas específicas.** Si la ambición confirmada pasa a Transformar, la intensidad pasa a Enterprise y se aplican G2.11 y G2.12 antes de decidir. Si una iniciativa aprobada como Transformar se reclasifica a un nivel inferior, se informa al consejo.
+**Reglas específicas.** Si la ambición confirmada pasa a Transformar, la intensidad pasa a Enterprise y se aplican G2.11 y G2.12 antes de decidir. Si un caso de uso aprobado como Transformar se reclasifica a un nivel inferior, se informa al consejo.
 
 ### 6.4 G3 · Viabilidad
 
-**Propósito.** Decidir si la iniciativa es viable técnica, económica, regulatoria y organizativamente con un riesgo aceptable. Es la **principal puerta de parada** del ciclo.
+**Propósito.** Decidir si el caso de uso es viable técnica, económica, regulatoria y organizativamente con un riesgo aceptable. Es la **principal puerta de parada** del ciclo.
 
 | | Lite | Enterprise |
 |---|---|---|
@@ -336,7 +336,7 @@ Cada puerta incluye su propósito, quién verifica y decide (01 §7.5), las evid
 | G3.03 | La base legal del tratamiento de datos personales y la minimización están confirmadas por la función de protección de datos. | P11 | Sí ◆ | Sí | Sí | — |
 | G3.04 | Los costes completos están estimados por categoría: construcción, recurrentes (licencias, consumo de modelos, cómputo, operación) y adopción. | P10 · T13 | Sí | Simpl. | Sí | — |
 | G3.05 | El neto esperado es coherente con el apetito de riesgo y el horizonte de retorno fijados en C2, y el plan de realización de beneficios está en borrador con su responsable de negocio del beneficio. | P10 · P08 · P62 | Sí | Sí | Sí | Optimizar: neto anual esperado positivo dentro del horizonte. Aumentar: además, viabilidad de la adopción y del cambio de rol. Transformar: viabilidad de la primera etapa, criterios de parada por etapa y valor de opción documentado. |
-| G3.06 | Los criterios de parada aprobados en G2 siguen vigentes y no se han relajado sin aprobación del órgano que autorizó la iniciativa. | P08 · P29 | Sí | Sí | Sí | — |
+| G3.06 | Los criterios de parada aprobados en G2 siguen vigentes y no se han relajado sin aprobación del órgano que autorizó el caso de uso. | P08 · P29 | Sí | Sí | Sí | — |
 | G3.07 | La clasificación regulatoria está hecha con criterio jurídico cualificado, fechada y firmada, e indica el rol de la compañía (proveedor o responsable del despliegue). | P11 · T07 | Sí ◆ | Sí | Sí | — |
 | G3.08 | No hay ninguna práctica prohibida. Si la hay, el único resultado posible es Parar. | P11 | Sí ◆ | Sí | Sí | — |
 | G3.09 | Está determinado qué evaluaciones de impacto proceden (protección de datos, derechos fundamentales, sectoriales) y las exigibles antes del tratamiento están realizadas o iniciadas con cierre previsto antes de G4. | P11 | Sí ◆ | Sí | Sí | — |
@@ -415,7 +415,7 @@ Cada puerta incluye su propósito, quién verifica y decide (01 §7.5), las evid
 | G5.06 | [AG] Las pruebas demuestran que los límites de actuación y el control de intención bloquean acciones no autorizadas y que el interruptor de parada detiene al agente y revoca sus credenciales. | P22 · P19 · T10 | Sí ◆ | Sí | Sí | — |
 | G5.07 | [AG] El nivel de autonomía autorizado para producción es el probado; cualquier aumento posterior exige volver a G4 y G5. | P18 · P23 | Sí ◆ | Sí | Sí | — |
 | G5.08 | El piloto se ha ejecutado con el método de atribución aprobado y sus resultados alcanzan el umbral de éxito o lo hacen con condiciones aceptadas. | P22 · T11 | Condicionable | Sí | Sí | Optimizar: eficiencia validada frente a la línea base. Aumentar: adopción real y mejora de rendimiento medidas. Transformar: evidencia de mercado o de cliente (uso, conversión, ingresos iniciales o cambio operativo verificado). |
-| G5.09 | No se ha alcanzado ningún criterio de parada o, si se ha alcanzado, el órgano que autorizó la iniciativa ha decidido expresamente continuar. | P22 · P29 | Sí | Sí | Sí | — |
+| G5.09 | No se ha alcanzado ningún criterio de parada o, si se ha alcanzado, el órgano que autorizó el caso de uso ha decidido expresamente continuar. | P22 · P29 | Sí | Sí | Sí | — |
 | G5.10 | Hay plan para materializar o reasignar la capacidad liberada, con responsable y fecha. | P20 | Condicionable | Sí | Sí | Optimizar: materializar. Aumentar: reasignar. Transformar: solo si hay capacidad liberada. |
 | G5.11 | El plan de reversión se ha probado y el tiempo real de reversión cumple el objetivo. | P19 | Sí | Sí | Sí | — |
 | G5.12 | El registro de riesgos está actualizado con los resultados de las pruebas y las aceptaciones del riesgo residual constan al nivel que corresponde (G3.12). | P12 · T06 | Sí ◆ | Sí | Sí | — |
@@ -474,7 +474,7 @@ Cada puerta incluye su propósito, quién verifica y decide (01 §7.5), las evid
 
 ### 6.8 G7 · Escalado o retirada
 
-**Propósito.** Decidir con evidencia si la iniciativa se escala, se itera o se retira.
+**Propósito.** Decidir con evidencia si el caso de uso se escala, se itera o se retira.
 
 | | Lite | Enterprise |
 |---|---|---|
@@ -521,7 +521,7 @@ Esta tabla desarrolla 01 §7.6 y reúne las diferencias que las tablas de la sec
 ### 7.2 Reglas de aplicación
 
 1. **Se aplica el nivel confirmado.** La ambición se propone en G1, se confirma en G2 y se revisa en G7 (00 §5.2). Entre G2 y G7 los criterios se evalúan con el nivel confirmado en G2.
-2. **No se mezclan criterios.** Una iniciativa de Optimizar no puede justificar G3 con valor de opción; a una de Transformar no se le exige neto positivo dentro del horizonte de C2 en G3, pero sí límite de inversión y criterios de parada por etapa.
+2. **No se mezclan criterios.** Un caso de uso de Optimizar no puede justificar G3 con valor de opción; a una de Transformar no se le exige neto positivo dentro del horizonte de C2 en G3, pero sí límite de inversión y criterios de parada por etapa.
 3. **La reclasificación tiene efectos.** Subir a Transformar exige intensidad Enterprise y aprobación del consejo antes de seguir. Bajar de Transformar se informa al consejo y se aplican desde ese momento los criterios del nuevo nivel.
 4. **Las etapas de Transformar se controlan.** Antes de comprometer la inversión de una nueva etapa, el comité de IA debería registrar en P29 que se han alcanzado los hitos de aprendizaje de la anterior y que no se ha llegado a ningún criterio de parada, informando al consejo.
 5. **La capacidad liberada no es ahorro.** En ningún nivel se acepta como valor realizado en G7 la capacidad liberada que no se ha materializado ni reasignado (regla 3 de medición, 00 §6).
@@ -607,7 +607,7 @@ El responsable de operación debería registrar además su aceptación de la ope
 | **Verificación en el *gate*** | Verificador de 01 §7.5 (auditor de IA en Enterprise) | Evidencias y estado de cada criterio antes de la decisión. | Opinión de verificación (10.2) que acompaña a la solicitud. |
 | **Auditoría posterior** | Auditor de IA o tercera línea, según el plan de auditoría (documento 38) | Muestra de *gates*, decisiones, condiciones, registros operativos y retiradas de un periodo. | Informe con resultado por elemento auditado y hallazgos clasificados (10.5). |
 
-El auditor de IA no puede haber participado en el diseño, construcción u operación de la iniciativa ni depender jerárquicamente de su patrocinador (01 §8.1).
+El auditor de IA no puede haber participado en el diseño, construcción u operación del caso de uso ni depender jerárquicamente de su patrocinador (01 §8.1).
 
 ### 10.2 Resultados
 
@@ -617,7 +617,7 @@ El auditor de IA no puede haber participado en el diseño, construcción u opera
 | **Conforme con observaciones** | Carencias que no afectan a criterios *Sí* ni a la validez de las evidencias. La solicitud pasa al decisor con las observaciones, que pueden convertirse en condiciones. | Hallazgos que no invalidan la decisión: observaciones y no conformidades menores. |
 | **No conforme** | Falta alguna evidencia obligatoria o alguna evidencia no es válida. La solicitud vuelve al equipo sin decisión. | Al menos una no conformidad mayor o crítica. |
 
-Una opinión *Conforme* no significa que la iniciativa deba continuar: significa que el órgano puede decidir sobre una base verificada.
+Una opinión *Conforme* no significa que el caso de uso deba continuar: significa que el órgano puede decidir sobre una base verificada.
 
 ### 10.3 Qué se muestrea
 
@@ -631,9 +631,9 @@ Los tamaños son **orientativos**; la compañía los fija en C2 o en su plan de 
 | **Evidencias** | Evidencias enlazadas a los criterios seleccionados. | Reglas EV.01–EV.14 sobre todas las de criterios *Sí ◆*; EV.05 y EV.09 sobre todas. | — |
 | **Condiciones** | Condiciones abiertas y cerradas en el periodo. | Todas las vencidas y muestra de las cerradas. | Al menos el 25 % de las cerradas. |
 | **Registros operativos** | Incidentes, cambios, intervenciones humanas y acciones de agentes de sistemas en producción. | Dirigida a S1, S2 y cambios significativos; aleatoria del resto. | Según el plan de auditoría. |
-| **Paradas y retiradas** | Iniciativas paradas o retiradas en el periodo. | Aleatoria. | Al menos una por trimestre si las hay. |
+| **Paradas y retiradas** | Casos de uso parados o retirados en el periodo. | Aleatoria. | Al menos una por trimestre si las hay. |
 
-**Selección dirigida.** Se priorizan: iniciativas con dos o más iteraciones en un *gate*; condiciones vencidas; plazos de referencia superados; cambios de intensidad de Enterprise a Lite; *No aplica* en criterios ◆; decisiones tomadas el mismo día de la solicitud; riesgos residuales Altos; iniciativas de Transformar; agentes A2 o A3; proveedores N3; sistemas con incidentes en el periodo.
+**Selección dirigida.** Se priorizan: casos de uso con dos o más iteraciones en un *gate*; condiciones vencidas; plazos de referencia superados; cambios de intensidad de Enterprise a Lite; *No aplica* en criterios ◆; decisiones tomadas el mismo día de la solicitud; riesgos residuales Altos; casos de uso de Transformar; agentes A2 o A3; proveedores N3; sistemas con incidentes en el periodo.
 
 ### 10.4 Pruebas de auditoría
 
@@ -664,7 +664,7 @@ Los hallazgos se clasifican con la escala de no conformidades de 01 §12, preced
 1. Se clasifica por el efecto más grave sobre la decisión, las personas o el cumplimiento.
 2. Un incumplimiento de un criterio *Sí ◆* en un sistema en producción es, como mínimo, no conformidad mayor.
 3. Todo hallazgo que invalida una decisión de *gate* es, como mínimo, no conformidad mayor.
-4. Una no conformidad menor que se repite tres veces en doce meses en la misma iniciativa o proceso se eleva a mayor (37 §3.3).
+4. Una no conformidad menor que se repite tres veces en doce meses en el mismo caso de uso o proceso se eleva a mayor (37 §3.3).
 5. La ocultación o alteración deliberada de evidencias es, como mínimo, no conformidad mayor y se informa a la comisión delegada.
 
 ### 10.6 Efectos sobre la decisión y plazos
@@ -672,7 +672,7 @@ Los hallazgos se clasifican con la escala de no conformidades de 01 §12, preced
 | Tipo | Efecto sobre el *gate* | Contención | Plan de acción | Informa a |
 |---|---|---|---|---|
 | **Crítica** | El *gate* queda invalidado. | Inmediata (máximo 48 horas), incluida la parada del sistema si es necesario. | Máximo 10 días. | Comité de IA y comisión delegada. |
-| **Mayor** | Si invalida la decisión, la iniciativa vuelve a *Pendiente de gate* y se verifica de nuevo. Si ya está en producción, el comité decide si mantiene la operación con medidas de contención. | Máximo 10 días. | Máximo 30 días. | Comité de IA. |
+| **Mayor** | Si invalida la decisión, el caso de uso vuelve a *Pendiente de gate* y se verifica de nuevo. Si ya está en producción, el comité decide si mantiene la operación con medidas de contención. | Máximo 10 días. | Máximo 30 días. | Comité de IA. |
 | **Menor** | La decisión se mantiene. | No requerida. | Antes del siguiente *gate* o revisión. | Oficina de IA. |
 
 Los plazos son de referencia y la compañía puede ajustarlos en C2 sin superar los que establezca la regulación aplicable (01 §12). Cada no conformidad se registra con código NC-AAAA-NNN en T08 y se gestiona con el proceso del documento 37.
@@ -691,7 +691,7 @@ Toda decisión de *gate* y toda revisión de continuidad se documenta en P29 y s
 
 | Bloque | Campos | Obligatorio |
 |---|---|---|
-| **Identificación** | Código de iniciativa (IA-AAAA-NNN); puerta; número de iteración; intensidad; nivel de ambición; tecnología; nivel de autonomía; proveedores. | Sí |
+| **Identificación** | Código de caso de uso (IA-AAAA-NNN); puerta; número de iteración; intensidad; nivel de ambición; tecnología; nivel de autonomía; proveedores. | Sí |
 | **Fechas** | Solicitud, verificación y decisión; fecha límite según el plazo de referencia. | Sí |
 | **Evidencias presentadas** | Para cada evidencia: código P, versión, autor, fecha, enlace y resultado de las reglas EV. | Sí |
 | **Estado de los criterios** | Para cada criterio: código, estado (Cumple, No cumple, No aplica o Pendiente), dimensiones R y D, evidencia enlazada, comentario y justificación de *No aplica*. | Sí |
@@ -726,7 +726,7 @@ No se usa puntuación ponderada: los criterios se cumplen o no, con evidencia, y
 | Documento | Relación |
 |---|---|
 | **01 · Metodología fundacional** | Referencia normativa: fases, puertas, reglas de decisión, roles, intensidad y no conformidades. |
-| **03 · Herramientas y registro de iniciativas** | Estados de los criterios, métricas del embudo y herramienta T03. |
+| **03 · Herramientas y registro de casos de uso** | Estados de los criterios, métricas del embudo y herramienta T03. |
 | **20 · Manuales de fase** | Actividades que producen las evidencias evaluadas aquí. |
 | **22 · Listas de verificación por *gate*** | Controles binarios con los mismos códigos, y listas LV-EV y LV-AG. |
 | **30 · Modelo de gobierno** | Órganos superiores, sustituciones y elevación tras dos iteraciones. |

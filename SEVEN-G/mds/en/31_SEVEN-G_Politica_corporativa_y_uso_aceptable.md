@@ -88,7 +88,7 @@ d) is capable of oversight, reversible and auditable.
    - it is integrated into other software or a service;
    - it is used for internal processes, with customers or with third parties;
    - its use is authorised or not.
-3. **Types of use.** For the purposes of this policy, four types of use are distinguished, with the treatment set out in paragraph 3.6: (i) AI initiatives; (ii) third-party AI embedded in processes; (iii) corporate use of general-purpose AI; (iv) unauthorised use.
+3. **Types of use.** For the purposes of this policy, four types of use are distinguished, with the treatment set out in paragraph 3.6: (i) AI use cases; (ii) third-party AI embedded in processes; (iii) corporate use of general-purpose AI; (iv) unauthorised use.
 4. **Exclusions.** [Indicate, where appropriate, justified exclusions, for example research activities without real data in isolated environments, which must nonetheless be recorded.]
 
 ### 3.3 Principles
@@ -105,7 +105,7 @@ d) is capable of oversight, reversible and auditable.
 | 6 | Evolve or retire | Every system in production has a current continuity review. |
 | 7 | Segregation of duties | Whoever builds does not verify or decide on their own work. |
 | 8 | Evidence, not declaration | What is not documented and verified is not considered done. |
-| 9 | A conscious decision on ambition | Every initiative is classified as Optimise, Augment or Transform, and Transform initiatives are approved by the Board. |
+| 9 | A conscious decision on ambition | Every use case is classified as Optimise, Augment or Transform, and Transform use cases are approved by the Board. |
 | 10 | People at the centre of change | The effect of AI on work is assessed; workers' representatives are informed and, where appropriate, consulted; people are trained. |
 
 In addition, [the Company] commits to: **lawfulness** (complying with applicable regulation, in particular Regulation (EU) 2024/1689 and data protection legislation); **human oversight** proportionate to the impact; **transparency** towards people who interact with AI systems or are subject to their outputs; **fairness** (preventing bias and discrimination); **security** against misuse and attacks; and **accountability** (each system has an identified owner).
@@ -123,7 +123,7 @@ In addition, [the Company] commits to: **lawfulness** (complying with applicable
 | **Heads of business areas** | Ensure that the AI systems in their area are inventoried and used in accordance with this policy. |
 | **Employees and collaborators** | Comply with the acceptable use policy and report incidents and misuse. |
 
-The roles of each initiative (sponsor, product, technical, operations, risk and auditor) and their incompatibilities are governed by [the Company's AI governance model, based on SEVEN-G document 30].
+The roles of each use case (sponsor, product, technical, operations, risk and auditor) and their incompatibilities are governed by [the Company's AI governance model, based on SEVEN-G document 30].
 
 ### 3.5 Classification
 
@@ -131,7 +131,7 @@ Every AI system is classified in the inventory with at least:
 
 | Classification | Values | Who determines it | When |
 |---|---|---|---|
-| **Type of use** | AI initiative · Third-party AI embedded in processes · Corporate use of general-purpose AI · Unauthorised use | AI Office | Inventory registration |
+| **Type of use** | AI use case · Third-party AI embedded in processes · Corporate use of general-purpose AI · Unauthorised use | AI Office | Inventory registration |
 | **Regulatory classification** | Prohibited · High risk · Transparency obligations · Minimal risk · Out of scope · Pending classification | AI Risk Owner with legal input | Phase 0 (provisional) and phase 3 (final) |
 | **Intensity** | Lite · Enterprise | Sponsor, verified in accordance with the governance model | Phase 0; review at G3 and R6 |
 | **Ambition level** | Optimise · Augment · Transform | AI Product Owner; confirmed by the *gate* body | Phases 1, 2 and 7 |
@@ -145,12 +145,12 @@ Meeting any one of the following criteria is sufficient to apply **Enterprise** 
 
 | Type of use | Mandatory treatment |
 |---|---|
-| **AI initiatives** | Full lifecycle (phases 0–7) with its *gates*, at the appropriate intensity. Without an approved G0, no budget is spent and no production data is accessed. Without an approved G5, nothing goes into production. |
+| **AI use cases** | Full lifecycle (phases 0–7) with its *gates*, at the appropriate intensity. Without an approved G0, no budget is spent and no production data is accessed. Without an approved G5, nothing goes into production. |
 | **Third-party AI embedded in processes** | Full lifecycle; phases 4 and 5 focus on the selection, integration, contract and controls of the supplier. |
 | **Corporate use of general-purpose AI** | Prior authorisation of the tool, inventory registration, subjection to the acceptable use policy, training and technical controls. It moves to the full cycle if it meets an Enterprise criterion. |
 | **Unauthorised use** | Detection, recording, regularisation (authorise, replace or block) and treatment as a nonconformity, in accordance with section 5 of SEVEN-G document 31. |
 
-Initiatives in production that predate this policy are regularised before [date approved by the Board] by means of a continuity review equivalent to G7.
+Use cases in production that predate this policy are regularised before [date approved by the Board] by means of a continuity review equivalent to G7.
 
 ### 3.7 Red lines
 
@@ -273,14 +273,14 @@ A **personal agent** is an AI tool that acts on your behalf: it reads and sends 
 | **A0 Assistance** (informs, summarises, drafts) | Permitted with authorised tools. |
 | **A1 Recommendation** (proposes an action that you validate and execute) | Permitted with authorised tools. Review each proposal before acting. |
 | **A2 Supervised action** (executes actions within limits and you supervise) | Only with tools expressly authorised for A2 and within the actions permitted in the catalogue. |
-| **A3 Autonomous action** (executes sequences without individual review) | Not permitted for personal agents. Requires an initiative approved through the lifecycle. |
+| **A3 Autonomous action** (executes sequences without individual review) | Not permitted for personal agents. Requires a use case approved through the lifecycle. |
 
 In addition:
 
 1. **Do not share your credentials** with an agent or grant it broader permissions than necessary. Use the delegated authorisation mechanisms enabled by [Technology].
 2. An agent **may not**, without your express validation of each action: send external communications, accept terms, make payments or financial commitments, modify data in production systems or share documents outside [the Company].
 3. You are responsible for what an agent acting on your behalf does. If you detect an unexpected action, deactivate it and report it (paragraph 4.8).
-4. Automations that use AI and affect other employees, customers or shared processes must be registered as an initiative.
+4. Automations that use AI and affect other employees, customers or shared processes must be registered as a use case.
 5. Be wary of instructions contained in emails, documents or web pages processed by the agent: they may attempt to manipulate it (prompt injection).
 6. **Coding assistants and local agents.** Do not run on your device agents or coding assistants with access to the credentials, repositories or systems of [the Company], or install tool servers or connectors for them, except those authorised by [Technology] and with the credentials and permissions assigned to you.
 7. **Testing is also using.** Do not test external AI tools with information of [the Company] that is not public or synthetic until they have passed the supplier assessment (document 36, principle 8).
@@ -300,7 +300,7 @@ Reporting your own error early and in good faith is what is expected of you and 
 ### 4.9 Training and acceptance
 
 1. Before using corporate AI tools, you must complete the basic training [course name] and accept this policy.
-2. If your role uses high-risk AI systems, oversees AI systems or takes part in initiatives, you must complete the specific training for your profile.
+2. If your role uses high-risk AI systems, oversees AI systems or takes part in use cases, you must complete the specific training for your profile.
 3. [The Company] may log the use of corporate AI tools for security, compliance and service improvement purposes, with the safeguards and information provided for in [the policy on the use of technology resources], in accordance with data protection and employment legislation.
 
 ### 4.10 Breach
@@ -315,7 +315,7 @@ Breach of this policy is dealt with in accordance with paragraph 3.9 of the Corp
 
 ## 5. AI that is not a project
 
-A growing share of AI use in companies does not originate as an initiative: it arrives with an update to software already under contract, with the licence for a productivity suite or with an individual employee's decision. SEVEN-G governs it through a common process of **detection, recording, assessment and regularisation**, proportionate to its risk.
+A growing share of AI use in companies does not originate as a use case: it arrives with an update to software already under contract, with the licence for a productivity suite or with an individual employee's decision. SEVEN-G governs it through a common process of **detection, recording, assessment and regularisation**, proportionate to its risk.
 
 ### 5.1 Types and treatment
 
@@ -417,12 +417,12 @@ Durations are **indicative** as a starting point and must be adjusted to the siz
 | F1 | **All employees and collaborators with AI tools** | Use AI in a useful, secure and compliant way. | What AI is and is not; limitations of generative AI; acceptable use policy; information that is never entered; verification of outputs; incident reporting; AI-enabled attacks (impersonation). | Online, 60–90 minutes, with assessment. | On joining and annually (brief update). | Record of completion and acceptance of the policy. |
 | F2 | **Power users and users of personal agents** | Obtain value with control. | Usage techniques; assessment of output quality; agents and autonomy levels; prompt injection; protection of information in automated flows. | Practical workshop, 3–4 hours. | When the licence or permission is assigned; annually. | Record and practical exercise. |
 | F3 | **Human overseers of systems in production** (including high-risk systems) | Exercise the human oversight defined in the design. | Operation and limits of the specific system; instructions for use; automation bias; when and how not to follow the recommendation; activation of the kill switch; recording and reporting of anomalies. | System-specific training, 2–8 hours, with practice. | Before go-live; upon relevant changes; annually. | Record per system; condition for G5 when human oversight is a control. |
-| F4 | **Initiative roles** (sponsor, product, technical, operations) | Apply the SEVEN-G lifecycle. | Phases, *gates* and evidence; value hypothesis and measurement rules; risk and regulatory classification; segregation of duties; templates. | 1 day plus support on the first initiative. | On taking up the role; update with each relevant version of the framework. | Record linked to P03. |
+| F4 | **Use case roles** (sponsor, product, technical, operations) | Apply the SEVEN-G lifecycle. | Phases, *gates* and evidence; value hypothesis and measurement rules; risk and regulatory classification; segregation of duties; templates. | 1 day plus support on the first use case. | On taking up the role; update with each relevant version of the framework. | Record linked to P03. |
 | F5 | **Technical construction** (data science, engineering, AI-assisted development) | Build compliant and secure systems. | Technical requirements according to classification; documentation; evaluation of models and agents; bias and robustness testing; AI and agent security (document 35); data lineage; use of AI in development. | 2–3 days, with technology-specific modules. | On joining; annually. | Record and exercises. |
 | F6 | **Second and third line** (risk, compliance, security, data protection, internal audit) | Challenge and verify with sound judgement. | AI Act and regulatory mapping; classification; impact assessments; specific risks of generative AI and agents; AI audit techniques (document 38). | 2 days and continuous training. | Annually, and upon regulatory changes. | Record; AI Auditor competence plan. |
 | F7 | **Board and senior management** | Oversee and decide. | Thesis, ambition and risk appetite; efficiency versus transformation; reading the board dashboard; regulatory responsibilities; oversight questions; reputational and security risks. | 2–3 hour session. | Annually and on joining the body. | Minutes or attendance record. |
 | F8 | **People, labour relations and workers' representatives** | Manage the effect of AI on work. | Impact on roles and capabilities; information and consultation; rights in automated decisions; high-risk systems in the employment domain. | 2–3 hour session. | Annually. | Attendance record. |
-| F9 | **Middle managers of areas that use or introduce AI** | Lead the change in their area. | F1 content applied to the area; assessment of the effect on work (document 50); human oversight and its limits; transition, communication and destination of released capacity; when to escalate. | 3–4 hour workshop with a case from the area. | On taking up the post or when the first initiative reaches the area; annually. | Record and participation in an effect assessment. |
+| F9 | **Middle managers of areas that use or introduce AI** | Lead the change in their area. | F1 content applied to the area; assessment of the effect on work (document 50); human oversight and its limits; transition, communication and destination of released capacity; when to escalate. | 3–4 hour workshop with a case from the area. | On taking up the post or when the first use case reaches the area; annually. | Record and participation in an effect assessment. |
 
 ### 6.3 Programme management
 
@@ -431,7 +431,7 @@ Durations are **indicative** as a starting point and must be adjusted to the siz
 | **Owner** | AI Office, with the people function. |
 | **Annual plan** | Approved in C2 together with the policy; includes groups, priorities and budget (cost category "adoption and training"). |
 | **Record** | Per person: assigned profiles, completed training, dates, assessments and expiry dates. The record (P45) is maintained in T20, is linked to P03 and its indicators are shown in T21. |
-| **Access conditions** | F1 before receiving AI licences; F3 before overseeing a system in production; F4 before taking up a role in an initiative. |
+| **Access conditions** | F1 before receiving AI licences; F3 before overseeing a system in production; F4 before taking up a role in a use case. |
 | **Effectiveness** | Measured by outcomes, not just attendance: assessments passed, incidents caused by misuse, detections of unauthorised use, verifications of outputs in sampling. |
 | **Updating** | Content reviewed at least annually and upon changes in regulation, tools or relevant incidents. |
 | **Suppliers and collaborators** | Contracts with those who operate systems on behalf of the company should require training equivalent to the corresponding profile. |
@@ -442,7 +442,7 @@ Durations are **indicative** as a starting point and must be adjusted to the siz
 |---|---|---|
 | F1 coverage | People with current F1 ÷ people with access to AI tools | Access condition; target close to 100 %. |
 | Overseer coverage | Overseers with current F3 ÷ overseers assigned to systems in production | Control at G5 and R6. |
-| Role coverage | People with an initiative role and F4 ÷ people with a role | Verification at G0. |
+| Role coverage | People with a use case role and F4 ÷ people with a role | Verification at G0. |
 | Expired training | People with expired mandatory training | Monthly alert to the AI Office. |
 | Pass rate | Assessments passed ÷ assessments taken, by profile | Content quality. |
 | Incidents due to misuse | Incidents and nonconformities with root cause "lack of awareness of the policy" | Programme effectiveness. |
@@ -497,10 +497,10 @@ The specific *gate* criteria are set out in document 21.
 | **T02** | AI system inventory | Registration of authorised tools, embedded AI and unauthorised uses. |
 | **T08** | Nonconformity and incident register | Nonconformities due to unauthorised use and incidents reported by employees. |
 | **T09** | AI supplier register | Assessment of suppliers of tools and of software with embedded AI. |
-| **T01** | Initiative register | Exceptions and move to the full cycle. |
+| **T01** | Use case register | Exceptions and move to the full cycle. |
 | **P05** | AI system inventory record | Registration of tools and uses. |
 | **P14** | AI supplier assessment | Before authorising a tool or enabling embedded AI. |
-| **P20** | Adoption and capacity plan | Training of overseers and users of initiatives. |
+| **P20** | Adoption and capacity plan | Training of overseers and users of use cases. |
 | **P40** | Exception request and register | Request, approval and register of exceptions to the policy (section 3.8). |
 | **P43** | Catalogue of authorised tools and requests | Catalogue of authorised tools and requests for new tools (section 4.2). |
 | **P44** | AI use and perception survey | Staff use and perception of AI, including unauthorised use (section 5.2). |
@@ -514,7 +514,7 @@ The specific *gate* criteria are set out in document 21.
 |---|---|
 | **01 · Foundational methodology** | Types of use (§1.2), Enterprise criteria (§9.2), nonconformities (§12). |
 | **13 · AI thesis, ambition and risk appetite** | The corporate policy is approved together with the thesis in C2. |
-| **23 · Adoption and change** | Training and adoption in each initiative. |
+| **23 · Adoption and change** | Training and adoption in each use case. |
 | **30 · Governance model** | Bodies that approve the policies and exceptions. |
 | **32 · Inventory and regulatory classification** | Inventory fields and classification. |
 | **34 · Regulatory mapping** | Obligations under Articles 4, 5, 26 and 50 of the AI Act. |

@@ -14,7 +14,7 @@
 
 > **Legal notice and disclaimer.** SEVEN-G is a reference methodological framework provided "as is" and for information purposes only. It does not constitute legal, regulatory, financial or professional advice, nor does it guarantee compliance with any law or standard. References to general regulation (such as the EU AI Act, the GDPR, DORA or NIS2), to technical standards and to regulation specific to each sector or jurisdiction may be incomplete, may not apply to a particular case or may become out of date as a result of regulatory changes, interpretations or supervisory positions after their consultation date. **Each organisation that uses SEVEN-G is solely responsible for identifying the regulation that applies to it, verifying that it is current and certifying its own regulatory compliance**, with the appropriate qualified advice. This methodology is a generic, free aid shared with the community so that nobody has to start from scratch; each person or organisation can and should adapt it to its own use. It must not be inferred that its legally sensitive parts have been reviewed by legal counsel: those reviews, for each company or sector, are the ultimate responsibility of the company, consultant or organisation that uses it. Although every effort is made to keep it up to date, some regulation may have changed without being reflected here. To the fullest extent permitted by law, the author accepts no responsibility whatsoever for the effects of its application in any organisation or for its full applicability. The methodology does not grant certification of any kind. The author accepts no liability for any use made of this content or for any decisions taken on the basis of it. The data, figures, companies and cases in the examples are fictitious or illustrative.
 
-> **Why it matters.** The board committee oversees the effectiveness of control over AI, but it can only do so with an overall view that no single initiative provides: risks concentrating on one supplier or model, recurring incidents, overdue nonconformities, exceptions that never end, systems appearing outside the inventory or regulations that change. This report is the second line's contribution to C4 (30 §6.3) and turns that view into specific decisions for the committee.
+> **Why it matters.** The board committee oversees the effectiveness of control over AI, but it can only do so with an overall view that no single use case provides: risks concentrating on one supplier or model, recurring incidents, overdue nonconformities, exceptions that never end, systems appearing outside the inventory or regulations that change. This report is the second line's contribution to C4 (30 §6.3) and turns that view into specific decisions for the committee.
 
 ## 1. Instructions for use
 
@@ -65,7 +65,7 @@ Completion rules:
 
 ### 4.1 Critical and High residual risks
 
-| Risk (initiative · Rnn) | Typical risk | Inherent level | Residual level | Owner | Controls and effectiveness | Accepted by and validity | Next review |
+| Risk (use case · Rnn) | Typical risk | Inherent level | Residual level | Owner | Controls and effectiveness | Accepted by and validity | Next review |
 |---|---|---|---|---|---|---|---|
 | IA-AAAA-NNN · R01 | RT-XXX-NN | | High · Critical | | | | |
 
@@ -124,7 +124,7 @@ Thresholds approved in C2 (33 §11.2).
 
 Quarterly content of 37 §9 and 60 §4.6.
 
-| Code | System and initiative | Severity | Type | Date | Status | Notifications (regime, deadline met) | Lessons and actions |
+| Code | System and use case | Severity | Type | Date | Status | Notifications (regime, deadline met) | Lessons and actions |
 |---|---|---|---|---|---|---|---|
 | INC-AAAA-NNN | | S1 · S2 | | | | | |
 
@@ -194,7 +194,7 @@ Result of the reconciliation in 32 §9, carried out by the AI Office.
 
 Register of mapping changes (34 §10.3).
 
-| Change | Official source and consultation date | Initiatives or systems affected | Step reached (1–8 of 34 §10.3) | Approved by the committee (Yes · No · Not required) | Pending action |
+| Change | Official source and consultation date | Use cases or systems affected | Step reached (1–8 of 34 §10.3) | Approved by the committee (Yes · No · Not required) | Pending action |
 |---|---|---|---|---|---|
 | | | | | | |
 
