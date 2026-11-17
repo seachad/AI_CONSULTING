@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="es" data-theme="salmon">
+<head>
+<!-- Página de un área de actuación en IA de SEVEN-G (D164, D165). Generada por build.ps1 (entrada_datos.ps1) desde build/temas.json, el glosario (documento 02) y el registro de referencias. No editar. -->
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SEVEN-G · El cliente agéntico</title>
+<meta name="description" content="¿Qué pasa cuando su cliente le manda un agente?">
+<link rel="alternate" hreflang="es" href="cliente-agentico.html">
+<link rel="alternate" hreflang="en" href="../../en/areas/cliente-agentico.html">
+<script>try { var t = localStorage.getItem('seveng-tema'); if (t) document.documentElement.setAttribute('data-theme', t); } catch (e) {}</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400;8..60,600;8..60,700;8..60,800&family=Libre+Franklin:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../entrada/entrada.css">
+</head>
+<body class="pag-tema" style="--h: 354">
+
+<header class="barra">
+  <div class="envoltura">
+    <a class="portada" href="../../../../index.html" title="Portada de AI Consulting: SEVEN-G, SPHERES y SPAD">⌂ <span>AI Consulting</span></a>
+    <a class="marca" href="../entrada/index.html" title="Cabecera de SEVEN-G: qué es y para qué sirve"><i></i>SEVEN-G</a>
+    <nav aria-label="Secciones">
+      <a href="../entrada/index.html#areas">Todas las áreas</a>
+      
+      <a href="#conceptos">Conceptos</a>
+      <a href="#donde">Dónde se trata</a>
+      <a href="#fuentes">Fuentes</a>
+      <a href="#slides">Slides</a>
+      <a href="../index.html">Biblioteca</a>
+    </nav>
+    <span class="ir-codigo" data-ir-codigo></span>
+    <label class="tema" title="Tema de todo el sitio"><span class="oculto">Tema</span>
+      <select id="tema" aria-label="Tema">
+        <option value="salmon">Salmón</option>
+        <option value="claro">Salmón claro</option>
+        <option value="noche">Noche</option>
+      </select>
+    </label>
+    <div class="idioma" aria-label="Idioma"><span class="activo">ES</span><a href="../../en/areas/cliente-agentico.html" title="This page in English">EN</a></div>
+  </div>
+</header>
+
+<div class="heroe">
+  <div class="envoltura">
+    <div>
+      <p class="antetitulo">Áreas de actuación en IA · Negocio</p>
+      <h1>El cliente agéntico</h1>
+      <p class="entradilla">¿Qué pasa cuando su cliente le manda un agente?</p>
+
+      <div class="acciones onepager"><a class="boton primario" href="../../../pdf/es/onepagers/SEVEN-G_OnePager_Area_cliente-agentico.pdf?v=943de2d0" target="_blank" rel="noopener" title="El área en una página: tesis, tres ideas, cuatro preguntas para el consejo y qué falla si no se gobierna (PDF)">Léala en una página (OnePager)</a></div>
+    </div>
+  </div>
+</div>
+
+<main data-enlazar-codigos>
+
+<section id="resumen">
+  <div class="envoltura">
+    <p class="kicker">En pocas palabras</p>
+    <h2>De qué trata esta área</h2>
+    <p class="sub tema-resumen">Cuando los clientes actúan a través de agentes personales de IA, llegan a la compañía por cuatro caminos: investigan con un asistente, compran, piden servicio y su agente habla con el de la compañía. En cada recorrido hay que decidir en C2 si se bloquea, se tolera o se atiende al agente por un canal identificado, con identidad verificable, permisos revocables, límites y registro de cada acción. Todo se prueba antes y siempre, con clientes sintéticos y red teaming. El reparto de responsabilidad que se propone sigue al control, y por ahora es una propuesta del sector, no una norma.</p>
+  </div>
+</section>
+
+
+
+<section id="figuras">
+  <div class="envoltura">
+    <p class="kicker">De un vistazo</p>
+    <h2>Los esquemas de esta área</h2>
+<figure class="grafico cliente-agentico-caras">
+<style>
+.cliente-agentico-caras { font-family: var(--sans); }
+.cac { display: grid; gap: 12px; font-size: 14px; line-height: 1.4; color: var(--tinta); }
+.cac-camino { display: grid; grid-template-columns: repeat(4, 1fr); gap: 22px; }
+.cac-cara { position: relative; background: var(--papel-2); border: 1px solid var(--regla); border-top: 4px solid var(--oxford); padding: 8px 10px; display: grid; gap: 3px; align-content: start; }
+.cac-cara:not(:last-child)::after { content: "\2192"; position: absolute; right: -19px; top: 50%; transform: translateY(-50%); font-size: 18px; color: var(--tinta-3); }
+.cac-cara:nth-child(2) { border-top-color: var(--claret); }
+.cac-cara:nth-child(3) { border-top-color: var(--teal); }
+.cac-cara:nth-child(4) { border-top-color: var(--velvet); }
+.cac-cara > b { font-size: 12px; letter-spacing: .06em; text-transform: uppercase; color: var(--tinta-2); }
+.cac-cara > strong { font-size: 14.5px; color: var(--negro); }
+.cac-cara > span { font-size: 13px; color: var(--tinta-2); }
+.cac-base { border: 2px solid var(--negro); padding: 8px 12px; font-size: 13.5px; color: var(--tinta-2); }
+.cac-base strong { color: var(--negro); }
+.cac-cab { font: 700 12px/1.2 var(--sans); letter-spacing: .09em; text-transform: uppercase; color: var(--negro); border-top: 2px solid var(--negro); padding-top: 8px; }
+.cac-resp { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; }
+.cac-resp > div { border-left: 3px solid var(--velvet); padding: 2px 0 2px 10px; font-size: 13px; color: var(--tinta-2); }
+.cac-resp > div > b { display: block; font-size: 14px; color: var(--velvet); margin-bottom: 2px; }
+.cac-nota { font-size: 12.5px; color: var(--tinta-3); }
+@media (max-width: 760px) {
+  .cac-camino, .cac-resp { grid-template-columns: 1fr; gap: 16px; }
+  .cac-cara:not(:last-child)::after { content: "\2193"; right: auto; left: 50%; top: auto; bottom: -19px; transform: translateX(-50%); }
+}
+@media print {
+  .cliente-agentico-caras { break-inside: avoid; }
+  .cac { font-size: 8pt; gap: 6px; }
+  .cac-camino { gap: 14px; }
+  .cac-cara > strong { font-size: 8.5pt; }
+  .cac-cara > span, .cac-resp > div, .cac-base, .cac-nota { font-size: 7.4pt; }
+}
+</style>
+  <div class="g-titulo">Las cuatro caras del cliente agéntico</div>
+  <div class="g-sub">Cuando el cliente actúa a través de un agente personal de IA, llega a la compañía por cuatro caminos, con una base común de pruebas.</div>
+  <div class="cac">
+    <div class="cac-camino">
+      <div class="cac-cara"><b>1 · Investiga</b><strong>Le investiga con un asistente</strong><span>Lo que el asistente sabe y recomienda de la compañía decide si entra en la lista de opciones.</span></div>
+      <div class="cac-cara"><b>2 · Compra</b><strong>Compra con un agente</strong><span>El agente compara y cierra la compra. El recorrido de venta debe poder atenderlo.</span></div>
+      <div class="cac-cara"><b>3 · Pide servicio</b><strong>Reclama y pide concesiones</strong><span>Atención, reclamaciones, devoluciones y bajas. El agente pide siempre, y la compañía paga lo que antes nadie reclamaba.</span></div>
+      <div class="cac-cara"><b>4 · Habla con su agente</b><strong>Canal entre agentes</strong><span>El agente del cliente habla con un agente de la compañía, con identidad, permisos y registro.</span></div>
+    </div>
+    <div class="cac-base"><strong>Base común: probar antes y siempre.</strong> Clientes sintéticos, simulación de usuarios, pruebas de intrusión y <em>red teaming</em> (SEG-27 y P53).</div>
+    <div class="cac-cab">Quién responde de qué: propuesta del sector, no norma</div>
+    <div class="cac-resp">
+      <div><b>El cliente</b>De los permisos y las instrucciones que da a su agente.</div>
+      <div><b>El proveedor del servicio</b>De lo que ocurra fuera de esos permisos.</div>
+      <div><b>El proveedor del agente</b>De lo que ocurra fuera de esas instrucciones.</div>
+      <div><b>Cada uno</b>De las brechas de sus propios sistemas.</div>
+    </div>
+    <div class="cac-nota">La responsabilidad sigue al control. SEVEN-G la recoge como criterio de diseño del canal identificado (SEG-28), no como norma.</div>
+  </div>
+</figure>
+<figure class="grafico cliente-agentico-postura">
+<style>
+.cliente-agentico-postura { font-family: var(--sans); }
+.cap { display: grid; gap: 12px; font-size: 14px; line-height: 1.4; color: var(--tinta); }
+.cap-pista { position: relative; overflow: hidden; height: 6px; background: var(--regla-2); }
+.cap-punto { position: absolute; top: 0; left: 0; width: 100%; height: 6px; display: none; }
+.cap-punto::after { content: ""; position: absolute; right: 0; top: -4px; width: 14px; height: 14px; border-radius: 50%; background: var(--claret); }
+.cap-pasos { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; }
+.cap-paso { background: var(--papel-2); border: 1px solid var(--regla); border-top: 4px solid var(--oxford); padding: 8px 10px; display: grid; gap: 3px; align-content: start; }
+.cap-paso > b { font-size: 12px; letter-spacing: .06em; text-transform: uppercase; color: var(--oxford); }
+.cap-paso > strong { font-size: 14.5px; color: var(--negro); }
+.cap-paso > span { font-size: 13px; color: var(--tinta-2); }
+.cap-cab { font: 700 12px/1.2 var(--sans); letter-spacing: .09em; text-transform: uppercase; color: var(--negro); border-top: 2px solid var(--negro); padding-top: 8px; }
+.cap-sal { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; }
+.cap-op { position: relative; background: var(--papel-2); border: 1px solid var(--regla); border-top: 4px solid var(--velvet); padding: 8px 10px; display: grid; gap: 3px; align-content: start; }
+.cap-op.b { border-top-color: var(--claret); }
+.cap-op.a { border-top-color: var(--teal); }
+.cap-op > strong { font-size: 15px; color: var(--negro); }
+.cap-op > span { font-size: 13px; color: var(--tinta-2); }
+.cap-op::after { content: ""; position: absolute; inset: 0; border: 2px solid var(--resaltado, #ffc35c); opacity: 0; pointer-events: none; }
+.cap-nota { font-size: 12.5px; color: var(--tinta-3); }
+@media (max-width: 760px) { .cap-pasos, .cap-sal { grid-template-columns: 1fr; } .cap-pista { display: none; } }
+@media (prefers-reduced-motion: no-preference) {
+  .cap-punto { display: block; animation: cap-ir 12s linear infinite; }
+  .cap-op::after { animation: cap-turno 12s ease-in-out infinite; }
+  .cap-op.t::after { animation-delay: 4s; }
+  .cap-op.a::after { animation-delay: 8s; }
+}
+@keyframes cap-ir { 0% { transform: translateX(-100%); } 33% { transform: translateX(0); } 100% { transform: translateX(0); } }
+@keyframes cap-turno { 0% { opacity: 0; } 5% { opacity: 1; } 30% { opacity: 1; } 35% { opacity: 0; } 100% { opacity: 0; } }
+@media print {
+  .cliente-agentico-postura { break-inside: avoid; }
+  .cap { font-size: 8pt; gap: 6px; }
+  .cap-punto, .cap-op::after { animation: none !important; display: none; }
+  .cap-pasos, .cap-sal { grid-template-columns: repeat(4, 1fr); gap: 5px; }
+  .cap-sal { grid-template-columns: repeat(3, 1fr); }
+  .cap-paso > strong, .cap-op > strong { font-size: 8.5pt; }
+  .cap-paso > span, .cap-op > span, .cap-nota { font-size: 7.4pt; }
+}
+</style>
+  <div class="g-titulo">Postura ante el agente del cliente, por recorrido</div>
+  <div class="g-sub">En C2 la compañía decide, recorrido a recorrido, si bloquea, tolera o atiende al agente por un canal identificado (documento 13, sección 5.6).</div>
+  <div class="cap">
+    <div class="cap-pista" aria-hidden="true"><div class="cap-punto"></div></div>
+    <div class="cap-pasos">
+      <div class="cap-paso"><b>1</b><strong>Llega un agente</strong><span>Actúa en nombre de un cliente: consulta, compra, pide servicio o una concesión.</span></div>
+      <div class="cap-paso"><b>2</b><strong>Se detecta</strong><span>Por firma y por conducta. Se etiqueta el tráfico para medir su volumen, su ruta y su coste.</span></div>
+      <div class="cap-paso"><b>3</b><strong>Se identifica</strong><span>Qué agente es, quién responde de él y qué permisos le ha dado el cliente.</span></div>
+      <div class="cap-paso"><b>4</b><strong>Se aplica la postura</strong><span>La que la compañía fijó para ese recorrido: venta, servicio, concesiones o bajas.</span></div>
+    </div>
+    <div class="cap-cab">Tres salidas, cada una con su coste</div>
+    <div class="cap-sal">
+      <div class="cap-op b"><strong>Bloquear</strong><span>Se protege el recorrido, pero se pierde el negocio de quien ya delega en su agente.</span></div>
+      <div class="cap-op t"><strong>Tolerar</strong><span>El agente llega a la cola humana: más coste y concesiones que nadie mide.</span></div>
+      <div class="cap-op a"><strong>Atender por un canal identificado</strong><span>Permisos concretos y revocables, límites, registro de cada acción y reglas de concesión aplicadas fuera del modelo (SEG-28).</span></div>
+    </div>
+    <div class="cap-nota">Ninguna postura es gratuita. La decisión se revisa en C5 y se aplica por recorrido, no a toda la compañía a la vez.</div>
+  </div>
+</figure>
+  </div>
+</section>
+
+<section id="slides">
+  <div class="envoltura">
+    <p class="kicker">Presentaciones</p>
+    <h2>Esta área en slides</h2>
+    <p class="sub">El área completa en una slide, o en diez para explicarla en una reunión o en un aula. PowerPoint (editable) y PDF con las notas de cada slide.</p>
+    <div class="slides">
+      <article class="slide-tarjeta" data-clave="1">
+        <p class="slide-n"><b>1</b> slide</p>
+        <h3>El cliente agéntico en 1 slide</h3>
+        <p>Qué pasa cuando su cliente le manda un agente: cuatro caras, postura por recorrido, canal identificado y pruebas.</p>
+        <p class="slide-descargas"><a class="enlace" href="../../../pptx/es/areas/El_cliente_agentico_en_1_slide.pptx?v=54bb74ee" download title="El cliente agéntico en 1 slide · PowerPoint, editable">PowerPoint →</a><a class="enlace" href="../../../pdf/es/areas/El_cliente_agentico_en_1_slide.pdf?v=54bb74ee" target="_blank" rel="noopener" title="El cliente agéntico en 1 slide · PDF con las notas de cada slide">PDF →</a></p>
+      </article>
+      <article class="slide-tarjeta" data-clave="10">
+        <p class="slide-n"><b>10</b> slides</p>
+        <h3>El cliente agéntico en 10 slides</h3>
+        <p>El cliente agéntico, de la decisión a la práctica: caras, postura, canal, responsabilidad, regulación, economía y pruebas.</p>
+        <p class="slide-descargas"><a class="enlace" href="../../../pptx/es/areas/El_cliente_agentico_en_10_slides.pptx?v=7b0a9e95" download title="El cliente agéntico en 10 slides · PowerPoint, editable">PowerPoint →</a><a class="enlace" href="../../../pdf/es/areas/El_cliente_agentico_en_10_slides.pdf?v=7b0a9e95" target="_blank" rel="noopener" title="El cliente agéntico en 10 slides · PDF con las notas de cada slide">PDF →</a></p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section id="conceptos">
+  <div class="envoltura">
+    <p class="kicker">Conceptos</p>
+    <h2>Los conceptos que hacen falta</h2>
+    <p class="sub">Definiciones tomadas del glosario de SEVEN-G (documento 02). Los códigos son enlaces a donde se explica cada uno.</p>
+    <dl class="tema-conceptos">
+      <dt>Cliente agéntico</dt>
+      <dd>Cliente que actúa a través de un agente personal de IA: un asistente que investiga, compra, reclama o contrata en su nombre. Llega a la compañía por cuatro caminos (investiga, compra, pide servicio y su agente habla con el de la compañía) y exige decidir una postura por recorrido.</dd>
+      <dt>Postura ante agentes</dt>
+      <dd>Decisión que la compañía con exposición directa a clientes toma en C2, por recorrido (venta, servicio, concesiones, bajas): bloquear al agente del cliente, tolerarlo o atenderlo por un canal identificado. Es exigible con exposición directa a clientes y no forma parte del núcleo ni de Express.</dd>
+      <dt>Canal entre agentes</dt>
+      <dd>Canal por el que el agente personal de un cliente habla con un agente de la compañía, con identidad verificable, permisos del cliente concretos y revocables, límites, registro de cada acción y etiquetado del tráfico. Es la opción «atender» de la postura ante agentes (SEG-28).</dd>
+      <dt>Conozca a su agente</dt>
+      <dd>Principio por el que la compañía sabe qué agente de un tercero actúa en un canal, quién responde de él y qué puede hacer, antes de aceptar sus acciones. Equivale a <i>Know Your Agent</i>.</dd>
+      <dt>Cliente sintético</dt>
+      <dd>Agente de cliente simulado que se usa para probar un sistema antes y durante su operación: pide concesiones, prueba límites, encadena peticiones y suplanta a otro cliente. Una simulación no sustituye a clientes reales.</dd>
+      <dt>Agente</dt>
+      <dd>Sistema de IA que ejecuta acciones sobre otros sistemas, datos o personas, o las prepara para validación humana, mediante herramientas y permisos (autonomía A1, A2 o A3). Una herramienta de construcción capaz de actuar sobre repositorios, entornos o sistemas también es un agente.</dd>
+      <dt>Pasarela corporativa de IA</dt>
+      <dd>Punto de control común, fuera del modelo, por el que pasa todo el tráfico hacia modelos: filtros de entrada, salida y contexto, prevención de fuga, cuotas, modelos aprobados, registro con identificador de correlación y, para agentes, el punto de decisión de intención, con la misma configuración medida para todos los casos de uso (SEG-26). Falla cerrado en acciones sensibles y degradado en consultas.</dd>
+      <dt class="mas"><a href="../02_SEVEN-G_Glosario_y_convenciones.html">Glosario completo (documento 02) →</a></dt>
+    </dl>
+  </div>
+</section>
+
+<section id="donde">
+  <div class="envoltura">
+    <p class="kicker">En el marco</p>
+    <h2>Dónde se trata</h2>
+    <p class="sub">Documentos, secciones, plantillas, herramientas y ejemplos que desarrollan esta área.</p>
+    <div class="macros">
+      <article class="macro">
+        <ul>
+          <li><a href="../35_SEVEN-G_Seguridad_de_IA_y_agentes.html#9-4-agentes-de-terceros-que-actuan-por-el-cliente" title="Documento: Agentes de terceros que actúan por el cliente"><span class="tipo doc">Documento</span>Agentes de terceros que actúan por el cliente</a></li>
+          <li><a href="../13_SEVEN-G_Tesis_de_IA_ambicion_y_apetito_de_riesgo.html#5-6-postura-ante-agentes-de-clientes-por-recorrido" title="Documento: Postura ante agentes de clientes, por recorrido"><span class="tipo doc">Documento</span>Postura ante agentes de clientes, por recorrido</a></li>
+          <li><a href="../40_SEVEN-G_Reglas_de_medicion_del_valor.html#5-4-exposicion-economica-a-agentes-de-clientes" title="Documento: Exposición económica a agentes de clientes"><span class="tipo doc">Documento</span>Exposición económica a agentes de clientes</a></li>
+          <li><a href="../54_SEVEN-G_Organizacion_de_la_compania_para_la_IA.html#5-1-nueve-fuentes" title="Documento: El agente del cliente, novena fuente de casos de uso"><span class="tipo doc">Documento</span>El agente del cliente, novena fuente de casos de uso</a></li>
+          <li><a href="../52_SEVEN-G_Manual_de_operacion_de_IA.html#trafico-de-agentes-de-clientes" title="Documento: Tráfico de agentes de clientes"><span class="tipo doc">Documento</span>Tráfico de agentes de clientes</a></li>
+          <li><a href="../plantillas/P53_SEVEN-G_Plan_e_informe_de_pruebas_adversarias.html" title="Plantilla: Plan e informe de pruebas adversarias (P53)"><span class="tipo plantilla">Plantilla</span>Plan e informe de pruebas adversarias (P53)</a></li>
+          <li><a href="../../../herramientas/T17_panel_consejo/galeria/index.html#es-cliente-agentico" title="Ejemplo: Galería: el cliente agéntico, compañías y soluciones"><span class="tipo ejemplo">Ejemplo</span>Galería: el cliente agéntico, compañías y soluciones</a></li>
+        </ul>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section id="fuentes">
+  <div class="envoltura">
+    <p class="kicker">Fuentes</p>
+    <h2>Fuentes externas en que se basa</h2>
+    <p class="sub">Fuentes oficiales o primarias que citan los documentos de esta área, comprobadas en el registro de referencias. Verifique siempre la versión vigente en la fecha de uso.</p>
+    <ul class="tema-fuentes">
+      <li><a href="https://eur-lex.europa.eu/eli/dir/2022/2555/oj/spa" target="_blank" rel="noopener">Directiva (UE) 2022/2555 del Parlamento Europeo y del Consejo, de 14 de diciembre de 2022, relativa a las medidas destinadas a garantizar un elevado nivel común de ciberseguridad en toda la Unión (Directiva SRI 2 / NIS2)</a><span> · Parlamento Europeo y Consejo de la UE · 14-12-2022</span></li>
+      <li><a href="https://eur-lex.europa.eu/eli/reg/2016/679/oj/spa" target="_blank" rel="noopener">Reglamento (UE) 2016/679 del Parlamento Europeo y del Consejo, de 27 de abril de 2016, relativo a la protección de las personas físicas en lo que respecta al tratamiento de datos personales y a la libre circulación de estos datos y por el que se deroga la Directiva 95/46/CE (Reglamento general de protección de datos)</a><span> · Parlamento Europeo y Consejo de la UE · 27-04-2016</span></li>
+      <li><a href="https://eur-lex.europa.eu/eli/reg/2022/2554/oj/spa" target="_blank" rel="noopener">Reglamento (UE) 2022/2554 del Parlamento Europeo y del Consejo, de 14 de diciembre de 2022, sobre la resiliencia operativa digital del sector financiero (DORA)</a><span> · Parlamento Europeo y Consejo de la UE · 14-12-2022</span></li>
+      <li><a href="https://eur-lex.europa.eu/eli/reg/2024/1689/oj/spa" target="_blank" rel="noopener">Reglamento (UE) 2024/1689 del Parlamento Europeo y del Consejo, de 13 de junio de 2024, por el que se establecen normas armonizadas en materia de inteligencia artificial (Reglamento de Inteligencia Artificial)</a><span> · Parlamento Europeo y Consejo de la UE · 13-06-2024</span></li>
+      <li><a href="https://eur-lex.europa.eu/eli/reg/2024/2847/oj/spa" target="_blank" rel="noopener">Reglamento (UE) 2024/2847 del Parlamento Europeo y del Consejo, de 23 de octubre de 2024, relativo a los requisitos horizontales de ciberseguridad para los productos con elementos digitales (Reglamento de Ciberresiliencia)</a><span> · Parlamento Europeo y Consejo de la UE · 23-10-2024</span></li>
+      <li><a href="https://eur-lex.europa.eu/eli/reg/2026/1744/oj/spa" target="_blank" rel="noopener">Reglamento (UE) 2026/1744 del Parlamento Europeo y del Consejo, de 8 de julio de 2026, por el que se modifican los Reglamentos (UE) 2024/1689, (UE) 2018/1139 y (UE) 2023/1230 en lo que respecta a la simplificación de la aplicación de normas armonizadas en materia de inteligencia artificial (Ómnibus digital sobre IA)</a><span> · Parlamento Europeo y Consejo de la UE · 08-07-2026</span></li>
+      <li><a href="https://www.boe.es/eli/es/rd/2022/05/03/311/con" target="_blank" rel="noopener">Real Decreto 311/2022, de 3 de mayo, por el que se regula el Esquema Nacional de Seguridad</a><span> · Gobierno de España (Ministerio de Asuntos Económicos y Transformación Digital) · 03-05-2022</span></li>
+      <li><a href="https://www.ccn.cni.es/index.php/es/" target="_blank" rel="noopener">Centro Criptológico Nacional (CCN) / CCN-CERT</a><span> · Centro Criptológico Nacional (adscrito al Centro Nacional de Inteligencia)</span></li>
+      <li><a href="https://genai.owasp.org/resource/agentic-ai-threats-and-mitigations/" target="_blank" rel="noopener">Agentic AI – Threats and Mitigations (IA agéntica: amenazas y mitigaciones), v1.0</a><span> · OWASP GenAI Security Project (Agentic Security Initiative), OWASP Foundation · 17-02-2025</span></li>
+      <li><a href="https://www.ccn-cert.cni.es/es/informes/informes-de-buenas-practicas-bp/7469-ccn-cert-bp-36-buenas-practicas-ia-ofensiva/file.html" target="_blank" rel="noopener">CCN-CERT BP/36 · Guía de buenas prácticas frente al modelo de IA ofensiva</a><span> · Centro Criptológico Nacional (CCN-CERT) · 2026-06</span></li>
+      <li><a href="https://www.eiopa.europa.eu/publications/opinion-artificial-intelligence-governance-and-risk-management_en" target="_blank" rel="noopener">Dictamen de EIOPA sobre gobierno y gestión del riesgo de la inteligencia artificial (EIOPA-BoS-25-360), de 6 de agosto de 2025</a><span> · Autoridad Europea de Seguros y Pensiones de Jubilación (EIOPA) · 06-08-2025</span></li>
+      <li><a href="https://www.nist.gov/publications/artificial-intelligence-risk-management-framework-generative-artificial-intelligence" target="_blank" rel="noopener">Marco de gestión de riesgos de IA: perfil de inteligencia artificial generativa (NIST AI 600-1)</a><span> · National Institute of Standards and Technology (NIST) · 26-07-2024</span></li>
+      <li><a href="https://genai.owasp.org/resource/owasp-top-10-for-agentic-applications-for-2026/" target="_blank" rel="noopener">OWASP Top 10 para aplicaciones agénticas 2026 (OWASP Top 10 for Agentic Applications for 2026)</a><span> · OWASP GenAI Security Project (Agentic Security Initiative), OWASP Foundation · 09-12-2025</span></li>
+      <li><a href="https://genai.owasp.org/resource/owasp-top-10-for-llm-applications-2025/" target="_blank" rel="noopener">OWASP Top 10 para aplicaciones con modelos de lenguaje de gran tamaño, edición 2025 (OWASP Top 10 for LLM Applications 2025)</a><span> · OWASP GenAI Security Project (OWASP Foundation) · 17-11-2024</span></li>
+      <li><a href="https://csrc.nist.gov/pubs/ir/8596/iprd" target="_blank" rel="noopener">Perfil del marco de ciberseguridad para la inteligencia artificial (Cyber AI Profile): perfil comunitario del NIST, NIST IR 8596 (borrador preliminar inicial)</a><span> · National Institute of Standards and Technology (NIST), NCCoE · 16-12-2025</span></li>
+      <li><a href="https://www.iso.org/standard/77304.html" target="_blank" rel="noopener">ISO/IEC 23894:2023 Tecnología de la información — Inteligencia artificial — Orientación sobre la gestión del riesgo</a><span> · ISO/IEC (JTC 1/SC 42) · 06-02-2023</span></li>
+      <li><a href="https://www.iso.org/standard/42001" target="_blank" rel="noopener">ISO/IEC 42001:2023 Tecnología de la información — Inteligencia artificial — Sistema de gestión</a><span> · ISO/IEC (JTC 1/SC 42) · 18-12-2023</span></li>
+      <li><a href="https://sierra.ai/blog/introducing-personal-agent-protocol" target="_blank" rel="noopener">Introducing Personal Agent Protocol (Sierra, 6-10-2026)</a><span> · Sierra · 06-10-2026</span></li>
+      <li><a href="https://doi.org/10.6028/NIST.CSWP.29.spa" target="_blank" rel="noopener">Marco de ciberseguridad del NIST, versión 2.0 (The NIST Cybersecurity Framework (CSF) 2.0), NIST CSWP 29</a><span> · National Institute of Standards and Technology (NIST), Departamento de Comercio de EE. UU. · 26-02-2024</span></li>
+      <li><a href="https://www.nist.gov/publications/artificial-intelligence-risk-management-framework-ai-rmf-10" target="_blank" rel="noopener">Marco de gestión de riesgos de inteligencia artificial del NIST (AI RMF 1.0), NIST AI 100-1</a><span> · National Institute of Standards and Technology (NIST), Departamento de Comercio de EE. UU. · 26-01-2023</span></li>
+      <li><a href="https://atlas.mitre.org/" target="_blank" rel="noopener">MITRE ATLAS (Adversarial Threat Landscape for Artificial-Intelligence Systems), base de conocimiento de tácticas y técnicas adversarias contra sistemas de IA</a><span> · The MITRE Corporation</span></li>
+      <li><a href="https://datatracker.ietf.org/wg/webbotauth/about/" target="_blank" rel="noopener">Web Bot Auth (grupo de trabajo del IETF)</a><span> · Internet Engineering Task Force (IETF) · s. f.</span></li>
+      <li><a href="https://www.bcg.com/publications/2026/reinventing-the-operating-system-of-work-with-ai" target="_blank" rel="noopener">AI-First Enterprise Operations: Reinventing the Operating System of Work</a><span> · Boston Consulting Group · 15-06-2026</span></li>
+      <li><a href="https://arxiv.org/abs/2411.10109" target="_blank" rel="noopener">LLM Agents Grounded in Self-Reports Enable General-Purpose Simulation of Individuals (arXiv:2411.10109)</a><span> · Park et al. (Stanford y otras instituciones) · 15-11-2024</span></li>
+      <li><a href="https://www.hbs.edu/faculty/Pages/item.aspx?num=67197" target="_blank" rel="noopener">The Cybernetic Teammate: A Field Experiment on Generative AI Reshaping Teamwork and Expertise</a><span> · Harvard Business School · 2025-03</span></li>
+      <li><a href="https://www.accenture.com/en/insights/consulting/operating-model-age-of-ai" target="_blank" rel="noopener">When everyone has AI, your operating model will set you apart</a><span> · Accenture · 06-10-2026</span></li>
+      <li><a href="https://www.bain.com/insights/when-your-customer-sends-an-agent/" target="_blank" rel="noopener">When Your Customer Sends an Agent</a><span> · Bain &amp; Company · 10-11-2026</span></li>
+      <li><a href="https://www.allianz.com/en/mediacenter/news/articles/251103-when-the-storm-clears-so-should-the-claim-queue.html" target="_blank" rel="noopener">Allianz: How Agentic AI Is Transforming Insurance Claims Processing (proyecto Nemo)</a><span> · Allianz SE · 03-11-2025</span></li>
+      <li><a href="https://www.bbva.com/en/innovation/bbva-accelerates-its-artificial-intelligence-strategy-with-a-global-area-ai-transformation/" target="_blank" rel="noopener">BBVA Accelerates Its Artificial Intelligence Strategy With A Global Area: AI Transformation</a><span> · BBVA · 28-05-2026</span></li>
+      <li><a href="https://www.linkedin.com/posts/duolingo_below-is-an-all-hands-email-from-our-activity-7322560534824865792-l9vh" target="_blank" rel="noopener">Duolingo: all-hands email from the CEO, «we are going to be AI-first»</a><span> · Duolingo · 2025</span></li>
+      <li><a href="https://www.mckinsey.com/capabilities/people-and-organization/our-insights/the-agentic-organization-contours-of-the-next-paradigm-for-the-ai-era" target="_blank" rel="noopener">McKinsey: The agentic organization: contours of the next paradigm for the AI era</a><span> · McKinsey &amp; Company · 26-09-2025</span></li>
+      <li><a href="https://blogs.microsoft.com/blog/2025/04/23/the-2025-annual-work-trend-index-the-frontier-firm-is-born/" target="_blank" rel="noopener">Microsoft: The 2025 Annual Work Trend Index: The Frontier Firm is born</a><span> · Microsoft · 23-04-2025</span></li>
+      <li><a href="https://investors.modernatx.com/leadership-team" target="_blank" rel="noopener">Moderna: Leadership Team</a><span> · Moderna, Inc.</span></li>
+    </ul>
+  </div>
+</section>
+
+<section id="otros">
+  <div class="envoltura">
+    <p class="kicker">Seguir navegando</p>
+    <h2>Otras áreas</h2>
+    <nav class="macro-indice" aria-label="Otras áreas">
+      <span class="gr">Negocio</span>
+      <a href="estrategia.html">Estrategia e inversión</a>
+      <a href="casos.html">Casos de uso</a>
+      <a href="organizacion.html">Organización y personas</a>
+      <a href="consejo.html">Consejo y dirección</a>
+      <a href="gobierno.html">Gobierno y decisiones</a>
+      <a class="sub" href="valor.html">Valor y medición</a>
+      <a class="sub" href="transformacion.html">Madurez y transformación</a>
+      <span class="gr">Tecnología y control</span>
+      <a href="seguridad.html">Riesgo, seguridad y agentes</a>
+      <a class="sub" href="riesgo.html">Riesgo y regulación</a>
+      <a class="sub" href="normas.html">Normas y estándares</a>
+      <a href="operacion.html">Datos, construcción y operación</a>
+      <span class="gr">Transversal</span>
+      <a href="implantar.html">Implantar el marco</a>
+    </nav>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="envoltura">
+    <details class="aviso"><summary>Aviso legal y exención de responsabilidad</summary><p>SEVEN-G se ofrece «tal cual», con fines informativos: no es asesoramiento jurídico, regulatorio ni financiero y no garantiza el cumplimiento de ninguna norma. Cada organización es la única responsable de identificar la normativa que le aplica, verificar su vigencia y certificar su propio cumplimiento regulatorio. Esta metodología es una ayuda genérica y gratuita, compartida con la comunidad para que nadie tenga que empezar desde cero; cada persona u organización puede y debe adaptarla a su propio uso. No debe entenderse que sus partes jurídicamente sensibles hayan sido revisadas por una asesoría jurídica: esas revisiones, para cada empresa o sector, son responsabilidad última de la empresa, el consultor o la organización que la use. Aunque se procura mantenerla al día, alguna norma puede haber cambiado sin que se recoja aquí. En la máxima medida permitida por la ley, el autor no asume responsabilidad alguna por los efectos de su aplicación en ninguna organización ni por su aplicabilidad completa. La metodología no otorga certificación de ningún tipo. Los datos de los ejemplos son ficticios.</p></details>
+    <details class="aviso"><summary>Versión 0.x, en revisión</summary><p>El marco está en la versión 0.x. Puede usarse, adaptarse y redistribuirse con la licencia del proyecto (CC BY 4.0 y MIT), citando la autoría e indicando los cambios. Se agradecen las opiniones y las propuestas de mejora.</p></details>
+    <p>SEVEN-G es un nombre y una marca de <a href="https://www.linkedin.com/in/fernandogarciavarela/">Fernando García Varela</a>. Contenidos bajo CC BY 4.0; código bajo MIT.</p>
+  </div>
+</footer>
+
+<script src="../codigos.js" defer></script>
+<script>
+(function () {
+  var sel = document.getElementById('tema');
+  if (!sel) return;
+  sel.value = document.documentElement.getAttribute('data-theme') || 'salmon';
+  sel.addEventListener('change', function () {
+    document.documentElement.setAttribute('data-theme', sel.value);
+    try { localStorage.setItem('seveng-tema', sel.value); } catch (e) {}
+  });
+})();
+</script>
+</body>
+</html>

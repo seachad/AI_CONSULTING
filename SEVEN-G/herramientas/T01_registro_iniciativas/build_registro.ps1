@@ -1,0 +1,142 @@
+<#
+  T01 · Registro de casos de uso · construcción de registro.html desde sus fuentes JSON.
+
+  Uso:          pwsh -File SEVEN-G/herramientas/T01_registro_iniciativas/build_registro.ps1 [-Datos <registro.json>] [-Salida <fichero.html>]
+
+  Fuentes:      _fuentes/registro.plantilla.html   aplicación (HTML, CSS y JavaScript) sin datos; es lo único que se edita a mano
+                catalogo_criterios.json            catálogo de criterios de gate del documento 21 (ES/EN), un criterio por línea
+                catalogo_riesgos.json              reglas de aplicabilidad y propuestas de mitigación y contingencia por riesgo tipo (D106);
+                                                   el texto de cada RT se lee del documento 33 §9 (mds/es|en) al generar
+                datos_demo.json                    registro de demostración (ficticio) con el que se abre la herramienta
+  Salida:       registro.html                      un solo fichero, sin servidor ni dependencias. NUNCA se edita a mano.
+
+  Patrón (el mismo del panel del consejo, T17): los datos viven en JSON y el HTML se genera incrustándolos, para que funcione
+  abriendo el fichero desde el disco. Con -Datos se construye un registro que arranca con otro JSON (por ejemplo, el registro
+  exportado por una organización) en lugar de la demostración.
+
+  El script valida que los JSON se pueden leer, que el catálogo tiene códigos únicos y que cada caso de uso, evento y decisión
+  del registro apunta a entidades que existen. No modifica las fuentes.
+#>
+param(
+  [string]$Datos,
+  [string]$Salida
+)
+$ErrorActionPreference = 'Stop'
+$aqui = $PSScriptRoot
+if (-not $Datos)  { $Datos  = Join-Path $aqui 'datos_demo.json' }
+if (-not $Salida) { $Salida = Join-Path $aqui 'registro.html' }
+$plantilla = Join-Path $aqui '_fuentes/registro.plantilla.html'
+$catalogo  = Join-Path $aqui 'catalogo_criterios.json'
+foreach ($f in $plantilla, $catalogo, $Datos) { if (-not (Test-Path $f)) { throw "No se encuentra $f" } }
+
+# JSON compacto sin reinterpretar números ni escapar acentos; "</" se escapa para que no cierre el <script> que lo contiene
+function Compactar([string]$ruta) { return CompactarTexto ([IO.File]::ReadAllText($ruta)) }
+function CompactarTexto([string]$texto) {
+  $doc = [System.Text.Json.JsonDocument]::Parse($texto)
+  $ms = [IO.MemoryStream]::new()
+  $op = [System.Text.Json.JsonWriterOptions]::new()
+  $op.Indented = $false
+  $op.Encoder = [System.Text.Encodings.Web.JavaScriptEncoder]::UnsafeRelaxedJsonEscaping
+  $w = [System.Text.Json.Utf8JsonWriter]::new($ms, $op)
+  $doc.WriteTo($w); $w.Flush()
+  $txt = [Text.Encoding]::UTF8.GetString($ms.ToArray())
+  $w.Dispose(); $ms.Dispose(); $doc.Dispose()
+  return $txt.Replace('</', '<\/')
+}
+
+# ---- comprobaciones de las fuentes
+$cat = Get-Content $catalogo -Raw | ConvertFrom-Json
+$dup = $cat | Group-Object c | Where-Object Count -gt 1
+if ($dup) { throw "catalogo_criterios.json: códigos repetidos: $($dup.Name -join ', ')" }
+$reg = Get-Content $Datos -Raw | ConvertFrom-Json -Depth 64
+foreach ($k in 'version_esquema', 'meta', 'personas', 'iniciativas', 'eventos', 'decisiones_gate', 'condiciones', 'evidencias', 'valores') {
+  if ($null -eq $reg.$k) { throw "$(Split-Path $Datos -Leaf): falta la clave «$k» (no es un registro completo de T01)" }
+}
+$ids = @{}; foreach ($i in $reg.iniciativas) { $ids[$i.id] = $true }
+$codigos = @{}; foreach ($c in $cat) { $codigos[$c.c] = $true }
+$errores = [Collections.Generic.List[string]]::new()
+foreach ($e in $reg.eventos)         { if ($e.iniciativa -and -not $ids[$e.iniciativa]) { $errores.Add("evento $($e.id): caso de uso $($e.iniciativa) inexistente") } }
+foreach ($v in $reg.valores)         { if (-not $ids[$v.iniciativa]) { $errores.Add("valor $($v.id): caso de uso $($v.iniciativa) inexistente") } }
+foreach ($d in $reg.decisiones_gate) {
+  if (-not $ids[$d.iniciativa]) { $errores.Add("decisión $($d.id): caso de uso $($d.iniciativa) inexistente") }
+  foreach ($c in $d.criterios) { if (-not $codigos[$c.codigo]) { $errores.Add("decisión $($d.id): criterio $($c.codigo) no está en el catálogo") } }
+}
+# esquema 0.5: decisiones del consejo (documento 62) y evidencia del índice de transformación
+$recs = @{}; foreach ($r in @($reg.recomendaciones)) { if ($r) { $recs[$r.id] = $true } }
+$pers = @{}; foreach ($p in $reg.personas) { $pers[$p.id] = $true }
+foreach ($d in @($reg.decisiones_consejo)) {
+  if (-not $d) { continue }
+  foreach ($i in @($d.iniciativas)) { if ($i -and -not $ids[$i]) { $errores.Add("decisión del consejo $($d.id): caso de uso $i inexistente") } }
+  foreach ($r in @($d.recomendaciones)) { if ($r -and -not $recs[$r]) { $errores.Add("decisión del consejo $($d.id): recomendación $r inexistente") } }
+}
+foreach ($i in $reg.iniciativas) { foreach ($k in 'itp2', 'itp3') { $v = $i.indice.$k; if ($v -and $v.verificador -and -not $pers[$v.verificador]) { $errores.Add("$($i.id): indice.$k.verificador $($v.verificador) inexistente") } } }
+if ($errores.Count) { throw "Registro incoherente:`n  " + (($errores | Select-Object -First 20) -join "`n  ") }
+
+# ---- catálogo de riesgos tipo para el Excel del caso (D106): las reglas de aplicabilidad y las propuestas de mitigación y contingencia
+# viven en catalogo_riesgos.json; el título, la descripción, las causas, los controles tipo y la fase de cada código RT se leen del
+# documento 33 §9 (ES/EN) para que nunca diverjan del documento. Se exige que los tres tengan exactamente los mismos códigos.
+$catRiesgos = Join-Path $aqui 'catalogo_riesgos.json'
+if (-not (Test-Path $catRiesgos)) { throw "No se encuentra $catRiesgos" }
+$cr = Get-Content $catRiesgos -Raw -Encoding utf8 | ConvertFrom-Json -Depth 16
+function LimpiarMd([string]$s) { return (($s -replace '\*\*', '') -replace '(?<!\w)\*([^*]+)\*(?!\w)', '$1' -replace '`', '').Trim() }
+$doc33 = @{}
+foreach ($lang in 'es', 'en') {
+  $f33 = Join-Path $aqui "..\..\mds\$lang\33_SEVEN-G_Metodologia_de_riesgos_de_IA.md"
+  if (-not (Test-Path $f33)) { throw "No se encuentra $f33" }
+  $filas = @{}
+  foreach ($m in [regex]::Matches([IO.File]::ReadAllText($f33), '(?m)^\| \*\*(RT-[A-Z]{3}-\d{2})\*\* \| \*\*(.+?)\*\* ?(.*?) \| (.*?) \| (.*?) \| (.*?) \|\s*$')) {
+    $filas[$m.Groups[1].Value] = @{ t = (LimpiarMd $m.Groups[2].Value).TrimEnd('.'); d = LimpiarMd $m.Groups[3].Value; ca = LimpiarMd $m.Groups[4].Value; ct = LimpiarMd $m.Groups[5].Value; f = LimpiarMd $m.Groups[6].Value }
+  }
+  if (-not $filas.Count) { throw "documento 33 [$lang]: no se ha encontrado ninguna fila RT-XXX-NN en el catálogo de la sección 9" }
+  $doc33[$lang] = $filas
+}
+$codEs = @($doc33.es.Keys | Sort-Object); $codEn = @($doc33.en.Keys | Sort-Object); $codCat = @($cr.riesgos.c | Sort-Object)
+if (Compare-Object $codEs $codEn) { throw "documento 33: los códigos RT del catálogo no coinciden entre ES y EN: $((Compare-Object $codEs $codEn | ForEach-Object { $_.InputObject }) -join ', ')" }
+if (Compare-Object $codEs $codCat) { throw "catalogo_riesgos.json: sus códigos no coinciden con el documento 33 §9: $((Compare-Object $codEs $codCat | ForEach-Object { "$($_.InputObject) $($_.SideIndicator)" }) -join ', ')" }
+$condValidas = 'tecnologia', 'exposicion', 'autonomia', 'regulatoria', 'ambicion', 'intensidad', 'aprende', 'personas', 'datos_personales', 'terceros'
+foreach ($r in $cr.riesgos) {
+  $ap = $r.aplica
+  if (-not (($ap -is [bool] -and $ap) -or ($ap -is [string] -and $ap -eq 'cartera') -or ($ap -is [array]))) { throw "catalogo_riesgos.json $($r.c): «aplica» debe ser true, 'cartera' o una lista de condiciones" }
+  if ($ap -is [array]) { foreach ($cond in $ap) { foreach ($k in $cond.PSObject.Properties.Name) { if ($k -notin $condValidas) { throw "catalogo_riesgos.json $($r.c): condición desconocida «$k»" } } } }
+  if ($r.tc -notin 'preventivo', 'detectivo', 'correctivo', 'transferencia') { throw "catalogo_riesgos.json $($r.c): tipo de control «$($r.tc)» no válido" }
+  if ($r.red -notin 'probabilidad', 'impacto', 'ambos') { throw "catalogo_riesgos.json $($r.c): «red» debe ser probabilidad, impacto o ambos" }
+  if ($r.act -notin 'patrocinador', 'producto', 'tecnico', 'operacion', 'riesgos', 'auditor') { throw "catalogo_riesgos.json $($r.c): «act» debe ser un rol del caso de uso" }
+  foreach ($l in 'es', 'en') { if (-not $r.mit.$l -or -not $r.cont.$l.dis -or -not $r.cont.$l.acc) { throw "catalogo_riesgos.json $($r.c): faltan la mitigación o la contingencia (dis, acc) en $l" } }
+}
+$catalogoRiesgos = @(foreach ($r in $cr.riesgos) {
+  [ordered]@{ c = $r.c; cat = $r.c.Substring(3, 3); f = $doc33.es[$r.c].f
+    t = [ordered]@{ es = $doc33.es[$r.c].t; en = $doc33.en[$r.c].t }; d = [ordered]@{ es = $doc33.es[$r.c].d; en = $doc33.en[$r.c].d }
+    ca = [ordered]@{ es = $doc33.es[$r.c].ca; en = $doc33.en[$r.c].ca }; ct = [ordered]@{ es = $doc33.es[$r.c].ct; en = $doc33.en[$r.c].ct }
+    aplica = $r.aplica; tc = $r.tc; red = $r.red; act = $r.act; mit = $r.mit; cont = $r.cont }
+})
+$jsonCatalogoRiesgos = CompactarTexto ($catalogoRiesgos | ConvertTo-Json -Depth 8 -Compress)
+
+# ---- construcción
+$html = [IO.File]::ReadAllText($plantilla)
+foreach ($marca in '__CATALOGO_CRITERIOS__', '__DATOS_DEMO__', '__CATALOGO_RIESGOS__') {
+  if (([regex]::Matches($html, [regex]::Escape($marca))).Count -ne 1) { throw "La plantilla debe contener una sola vez la marca $marca" }
+}
+# el registro enlaza al panel del consejo de ejemplo (T17): si el motor cambia de versión, el nombre del fichero cambia con él
+if ($html -match "const PANEL_DEMO = '([^']+)'") {
+  $panelDemo = Join-Path $aqui $Matches[1]
+  if (-not (Test-Path $panelDemo)) { Write-Warning "El panel de ejemplo enlazado no existe: $($Matches[1]). Regenerarlo (uv run python t01_a_panel.py en T17_panel_consejo) o actualizar PANEL_DEMO en la plantilla." }
+} else { throw 'La plantilla no define PANEL_DEMO' }
+$html = $html.Replace('__CATALOGO_CRITERIOS__', (Compactar $catalogo)).Replace('__DATOS_DEMO__', (Compactar $Datos)).Replace('__CATALOGO_RIESGOS__', $jsonCatalogoRiesgos)
+# módulo común de datos locales y conector T01 → panel en JavaScript (D103): se incrustan para que la herramienta siga siendo un solo fichero
+$comun = Join-Path $aqui '..\_comun\datos_locales.js'
+$conector = Join-Path $aqui '..\T17_panel_consejo\t01_a_panel.js'
+$configPanel = Join-Path $aqui '..\T17_panel_consejo\config_panel.json'
+foreach ($f in $comun, $conector, $configPanel) { if (-not (Test-Path $f)) { throw "No se encuentra $f" } }
+foreach ($marca in '__DATOS_LOCALES__', '__CONECTOR_T17__', '__CONFIG_PANEL__') { if (([regex]::Matches($html, $marca)).Count -ne 1) { throw "La plantilla debe contener una sola vez la marca $marca" } }
+$html = $html.Replace('__DATOS_LOCALES__', [IO.File]::ReadAllText($comun)).Replace('__CONECTOR_T17__', [IO.File]::ReadAllText($conector)).Replace('__CONFIG_PANEL__', (Compactar $configPanel))
+# ayuda de la herramienta (D123): módulo común _comun/ayuda.js y textos de _fuentes/ayuda.json (ES/EN), incrustados como el resto
+$ayudaJs = Join-Path $aqui '..\_comun\ayuda.js'; $ayudaJson = Join-Path $aqui '_fuentes\ayuda.json'
+foreach ($f in $ayudaJs, $ayudaJson) { if (-not (Test-Path $f)) { throw "No se encuentra $f" } }
+if (([regex]::Matches($html, '__AYUDA__')).Count -ne 1) { throw 'La plantilla debe contener una sola vez la marca __AYUDA__' }
+$null = [IO.File]::ReadAllText($ayudaJson) | ConvertFrom-Json   # falla aquí si el JSON de ayuda no es válido
+$html = $html.Replace('__AYUDA__', 'const AYUDA_HERR = ' + [IO.File]::ReadAllText($ayudaJson).Trim().Replace('</', '<\/') + ";`n" + [IO.File]::ReadAllText($ayudaJs))
+$html = $html.Replace('<!doctype html>', "<!doctype html>`n<!-- GENERADO por build_registro.ps1 desde _fuentes/registro.plantilla.html, catalogo_criterios.json y $(Split-Path $Datos -Leaf). No editar a mano. -->")
+[IO.File]::WriteAllText($Salida, $html, [Text.UTF8Encoding]::new($false))
+"registro:   $Salida ($([math]::Round((Get-Item $Salida).Length / 1KB)) KB)"
+"datos:      $(Split-Path $Datos -Leaf) · $($reg.iniciativas.Count) casos de uso · $($reg.eventos.Count) eventos · $($reg.decisiones_gate.Count) decisiones de gate · esquema $($reg.version_esquema)"
+"catálogo:   $($cat.Count) criterios · $($catalogoRiesgos.Count) riesgos tipo (documento 33 §9 + catalogo_riesgos.json)"

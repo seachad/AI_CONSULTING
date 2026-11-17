@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="es" data-theme="salmon">
+<head>
+<meta charset="utf-8">
+<script>try { var t = localStorage.getItem('seveng-tema'); if (t) document.documentElement.setAttribute('data-theme', t); } catch (e) {}</script>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>T17 · Regenerar el panel del consejo · SEVEN-G</title>
+<meta name="description" content="Conector que convierte el registro de casos de uso T01 de SEVEN-G en el panel de IA para el Consejo (T17) y el registro de recomendaciones (T18). Demo con datos ficticios.">
+<style>
+  :root { --fondo: #fbe2cd; --tinta: #2f2b28; --acento: #990f3d; --linea: rgba(47, 43, 40, .22); --suave: rgba(255, 255, 255, .45); }
+  /* tema del sitio (seveng-tema): salmón, salmón claro o noche */
+  :root[data-theme="claro"] { --fondo: #fff1e5; --suave: rgba(255, 255, 255, .6); }
+  :root[data-theme="noche"] { --fondo: #262a33; --tinta: #f2e6dc; --acento: #ff7a9e; --linea: rgba(242, 230, 220, .22); --suave: rgba(255, 255, 255, .06); color-scheme: dark;
+    /* colores del «Buscador de documentos» (codigos.js) en noche */
+    --papel: #262a33; --papel-2: #30353f; --tinta-2: #cdbfb3; --regla: #4c525d; --regla-2: #393e48; --claret: #ff7a9e; --oxford: #6ea8ee; --negro: #fff1e5; }
+  .tema select { font: inherit; font-size: 13px; color: var(--tinta); background: var(--suave); border: 1px solid var(--linea); border-radius: 6px; padding: 3px 6px; }
+  .oculto { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+  * { box-sizing: border-box; }
+  html { background: var(--fondo); }
+  body { margin: 0; background: var(--fondo); color: var(--tinta); font-family: -apple-system, "Segoe UI", system-ui, Roboto, "Helvetica Neue", Arial, sans-serif;
+         font-size: 17px; line-height: 1.55; -webkit-font-smoothing: antialiased; }
+  main { max-width: 860px; margin: 0 auto; padding: 32px 16px 56px; }
+  header { display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: 12px; border-bottom: 1px solid var(--linea); padding-bottom: 14px; margin-bottom: 26px; }
+  .marca { font-size: 13px; letter-spacing: .12em; text-transform: uppercase; color: var(--acento); font-weight: 600; }
+  .marca a { color: inherit; text-decoration: none; }
+  .marca a:hover { text-decoration: underline; }
+  .idioma { display: inline-flex; border: 1px solid var(--linea); border-radius: 6px; overflow: hidden; }
+  .idioma button { appearance: none; border: 0; background: transparent; color: var(--tinta); font: inherit; font-size: 13px; letter-spacing: .06em; padding: 4px 12px; cursor: pointer; }
+  .idioma button[aria-pressed="true"] { background: var(--acento); color: #fff; }
+  .idioma button:focus-visible { outline: 2px solid var(--acento); outline-offset: -2px; }
+  h1 { font-size: 30px; line-height: 1.2; margin: 0 0 6px; font-weight: 700; letter-spacing: -.01em; }
+  h1 small { display: block; font-size: 16px; font-weight: 400; color: var(--acento); margin-top: 6px; }
+  h2 { font-size: 20px; margin: 34px 0 10px; font-weight: 700; }
+  p { margin: 0 0 12px; }
+  a { color: var(--acento); text-decoration: underline; text-underline-offset: 2px; }
+  a:hover { text-decoration-thickness: 2px; }
+  .que-es { border-left: 4px solid var(--acento); padding: 10px 14px; margin: 14px 0 18px; background: color-mix(in srgb, var(--acento) 7%, transparent); }
+  .demo { display: inline-block; font-size: 12px; letter-spacing: .08em; text-transform: uppercase; border: 1px solid var(--acento); color: var(--acento); border-radius: 4px; padding: 2px 8px; margin-bottom: 14px; }
+  ul.enlaces { list-style: none; padding: 0; margin: 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 10px; }
+  ul.enlaces li { background: var(--suave); border: 1px solid var(--linea); border-radius: 8px; padding: 12px 14px; }
+  ul.enlaces li a { font-weight: 600; display: block; margin-bottom: 2px; }
+  ul.enlaces li span { font-size: 14px; opacity: .85; }
+  ol { padding-left: 22px; }
+  li { margin-bottom: 4px; }
+  code { font-family: ui-monospace, "Cascadia Mono", Consolas, "Courier New", monospace; font-size: .9em; background: var(--suave); padding: 1px 5px; border-radius: 4px; }
+  pre { background: var(--suave); border: 1px solid var(--linea); border-radius: 8px; padding: 12px 14px; overflow-x: auto; font-size: 14px; }
+  pre code { background: none; padding: 0; }
+  .aviso { border-left: 4px solid var(--acento); padding: 10px 16px; background: var(--suave); border-radius: 0 8px 8px 0; font-size: 15px; }
+  footer { margin-top: 44px; padding-top: 14px; border-top: 1px solid var(--linea); font-size: 14px; opacity: .9; }
+  [hidden] { display: none !important; }
+  @media (max-width: 480px) { body { font-size: 16px; } h1 { font-size: 25px; } main { padding-top: 22px; } }
+</style>
+</head>
+<body>
+<main>
+  <header>
+    <div class="marca"><a id="lnk-portada" href="../../../index.html">⌂ Portada</a> · <a id="lnk-cabecera" href="../../html/es/entrada/index.html">SEVEN-G</a> · Herramientas · T17</div>
+    <span class="ir-codigo" data-ir-codigo></span>
+    <label class="tema"><span class="oculto" id="tema-rot">Tema</span>
+      <select id="tema" aria-labelledby="tema-rot" title="Tema de todo el sitio">
+        <option value="salmon">Salmón</option>
+        <option value="claro">Salmón claro</option>
+        <option value="noche">Noche</option>
+      </select>
+    </label>
+    <div class="idioma" role="group" aria-label="Idioma / Language">
+      <button type="button" id="btn-es" aria-pressed="true" onclick="idioma('es')">ES</button>
+      <button type="button" id="btn-en" aria-pressed="false" onclick="idioma('en')">EN</button>
+    </div>
+  </header>
+
+  <!-- ================================================================ ES -->
+  <section id="es" lang="es" data-enlazar-codigos>
+    <span class="demo">Demo · datos ficticios</span>
+    <h1>T17 · Generador del panel del consejo<small>Convierte el registro de casos de uso T01 en el panel de IA para el Consejo y en el registro de recomendaciones (T18)</small></h1>
+    <p class="que-es"><strong>Qué es T17, en una frase:</strong> es un <strong>generador</strong>, no una aplicación en la que se introducen datos. Los casos de uso se mantienen en el <a href="../T01_registro_iniciativas/registro.html" title="Herramienta T01 · Registro de casos de uso: donde se dan de alta y se actualizan los datos">registro T01</a>; T17 lee ese registro y <strong>genera —o vuelve a generar, cada vez que el registro cambia—</strong> el panel del consejo completo, su versión para el móvil y el registro de recomendaciones. <strong>Si solo quiere ver el resultado</strong>, abra el panel de ejemplo: <a href="ejemplo/salida/t01_Dashboard_Casos_Uso_IA_v8.html" title="Panel completo del consejo, con la cartera ficticia de ejemplo">panel completo</a> · <a href="ejemplo/salida/t01_Dashboard_Movil_IA_v8.html" title="El mismo panel, en formato para el teléfono">panel para el móvil</a>. El resto de esta página explica cómo generarlo con sus propios datos.</p>
+    <p>Este conector toma el <strong>JSON completo</strong> que exporta el <a href="../T01_registro_iniciativas/registro.html">registro de casos de uso T01</a> de SEVEN-G y lo convierte, sin volver a introducir datos, en el <strong>panel de IA para el Consejo</strong> (completo y móvil, sincronizados) y, si el registro trae recomendaciones, en el <strong>registro de recomendaciones</strong>. Los paneles los genera el motor incluido en la carpeta <code>motor/</code> (versión 8, con embudo y ciclo de vida; origen: <em>AI en el Consejo</em>, MIT, mismo autor): no hace falta ningún otro repositorio.</p>
+    <p><strong>El registro es la única entrada de datos</strong>: cada caso de uso se da de alta en T01 como una oportunidad en un CRM y el panel se reconstruye desde su JSON. Las etapas del embudo del panel (Propuesto, Hipótesis de valor, POC, En desarrollo, En uso) y sus salidas (No aprobado, Descartado, Desenganchado) corresponden a las fases 0–7 de SEVEN-G, y el tiempo en cada etapa sale de las fechas de los eventos del registro: nunca se estima. Los umbrales de los indicadores, las etapas y los límites de días se configuran en <code>config_panel.json</code>.</p>
+    <p>Lo que T01 no registra queda «sin dato» y nunca se convierte en cero. La fase, el estado, la intensidad, las esferas y la ambición de SEVEN-G viajan en cada caso (bloque <code>seveng</code>).</p>
+
+    <h2>Panel de ejemplo, generado con los casos de uso ficticios de T01</h2>
+    <ul class="enlaces">
+      <li><a href="ejemplo/salida/t01_Dashboard_Casos_Uso_IA_v8.html">Panel completo</a><span>Cartera y valor, embudo y ciclo de vida, riesgo y cumplimiento, incidentes e inventario.</span></li>
+      <li><a href="ejemplo/salida/t01_Dashboard_Movil_IA_v8.html">Panel móvil</a><span>La misma huella de datos, en formato para el teléfono.</span></li>
+      <li><a href="ejemplo/salida/t01_Registro_Recomendaciones.html">Registro de recomendaciones</a><span>Recomendaciones de T01 con su estado y evidencia (T18).</span></li>
+      <li><a href="ejemplo/salida/t01_dashboard_data.json">JSON del panel</a><span>Datos convertidos al esquema del motor (<code>ESQUEMA.md</code>).</span></li>
+      <li><a href="../T01_registro_iniciativas/registro.html">Registro de casos de uso (T01)</a><span>Los casos de uso de ejemplo de los que sale este panel.</span></li>
+      <li><a href="config_panel.json">Configuración del panel</a><span>Umbrales de los indicadores, etapas del embudo y límites de días.</span></li>
+    </ul>
+    <p style="margin-top:12px;font-size:15px">Compañía, personas y proveedores son ficticios; cualquier parecido con una organización o persona real es casual. Los HTML generados nunca se editan a mano: se regeneran con el conector.</p>
+    <p class="que-es"><strong>Ejemplos de su sector:</strong> la <a href="galeria/index.html">galería de ejemplos por sector</a> tiene el registro T01 y el panel de una compañía ficticia de banca, seguros, industria y sector público, y, para once sectores, hacia dónde se mueven los casos de uso de IA (consolidados, en adopción y emergentes) con fuentes verificadas.</p>
+
+    <h2>Cómo se usa: el panel se regenera solo, sin Python</h2>
+    <p>El panel lleva incrustado el conector en JavaScript (<code>t01_a_panel.js</code>, la misma correspondencia T01 → panel que el generador) y se regenera en el navegador. No hay que instalar ni ejecutar nada:</p>
+    <ol>
+      <li><strong>Con el registro de este navegador.</strong> Trabaje en el <a href="../T01_registro_iniciativas/registro.html">registro T01</a> y pulse «Panel del consejo (con este registro)»: el panel lee el registro guardado en este navegador (mismo sitio) y lo muestra. Mientras el registro sea el de ejemplo, se ve el panel de ejemplo.</li>
+      <li><strong>En la copia del sitio de la compañía</strong> (documento 03 §2.1): deje el JSON exportado por T01 en <code>SEVEN-G/herramientas/datos/T01_registro.json</code>; servido por http, el panel lo lee y lo muestra a toda la compañía. La ruta se configura en <code>config_panel.json</code> (<code>navegacion.datos_t01</code>).</li>
+      <li><strong>Con un fichero.</strong> «Cargar JSON» en el panel admite tanto un <code>dashboard_data.json</code> como el JSON completo de T01, que convierte al vuelo. En T01, «Descargar el JSON del panel» produce el <code>dashboard_data.json</code> con la misma correspondencia.</li>
+      <li>Ajuste <code>config_panel.json</code> (umbrales, etapas y límites de días); la copia de la compañía debe regenerar los paneles de ejemplo (paso opcional siguiente) para que lleven su configuración incrustada.</li>
+    </ol>
+    <p><strong>Opcional, con Python 3.11 y <code>uv</code>:</strong> el generador <code>t01_a_panel.py</code> escribe los paneles como ficheros estáticos (para enviarlos por correo o mensajería, con la vista sin JavaScript y el registro de recomendaciones): <pre><code>uv run python t01_a_panel.py --t01 export_t01.json --salida carpeta</code></pre>Sin argumentos genera este ejemplo en <code>ejemplo/salida/</code>. Sin Python, <code>pwsh -File conector_js.ps1 -T01 registro.json -Salida dashboard_data.json</code> produce el JSON del panel con Edge. Al cierre de cada sesión del consejo, <code>motor/snapshot.py</code> guarda una foto para ver la tendencia.</p>
+
+    <h2>Documentación</h2>
+    <ul class="enlaces">
+      <li><a href="README.md">README (español)</a><span>Uso, tabla de mapeo completa, qué queda sin dato, limitaciones y licencia.</span></li>
+      <li><a href="README_en.md">README (English)</a><span>Usage, full mapping table, what is left without data, limitations and licence.</span></li>
+      <li><a href="../T01_registro_iniciativas/README.md">T01 · Registro de casos de uso</a><span>La herramienta de la que salen los datos, con su esquema y datos de demostración.</span></li>
+      <li><a href="PROPUESTA_MOTOR.md">Propuesta de cambios del motor</a><span>Documento de trabajo para el proyecto de origen del motor del panel.</span></li>
+    </ul>
+
+    <h2>Aviso legal y exención de responsabilidad</h2>
+    <div class="aviso">
+      <p>SEVEN-G y esta herramienta se ofrecen «tal cual» y con fines exclusivamente informativos. No constituyen asesoramiento jurídico, regulatorio, financiero ni profesional, ni garantizan el cumplimiento de ninguna norma. Los criterios, clasificaciones y referencias a regulación general (Reglamento Europeo de IA, RGPD, DORA, NIS2…) o sectorial pueden ser incompletos, no aplicar a un caso concreto o quedar desactualizados por cambios normativos. Cada organización que use la herramienta es la única responsable de identificar la normativa que le aplica, verificar su vigencia y certificar su propio cumplimiento regulatorio, con el asesoramiento cualificado que corresponda. Esta metodología es una ayuda genérica y gratuita, compartida con la comunidad para que nadie tenga que empezar desde cero; cada persona u organización puede y debe adaptarla a su propio uso. No debe entenderse que sus partes jurídicamente sensibles hayan sido revisadas por una asesoría jurídica: esas revisiones, para cada empresa o sector, son responsabilidad última de la empresa, el consultor o la organización que la use. Aunque se procura mantenerla al día, alguna norma puede haber cambiado sin que se recoja aquí. En la máxima medida permitida por la ley, el autor no asume responsabilidad alguna por los efectos de su aplicación en ninguna organización ni por su aplicabilidad completa. La metodología no otorga certificación de ningún tipo. El autor no asume responsabilidad alguna por el uso de la herramienta ni por las decisiones adoptadas con ella. Los datos de demostración son ficticios.</p>
+    </div>
+
+    <footer>
+      © 2026 Fernando García Varela · Metodología SEVEN-G · Código bajo licencia MIT · Contenidos bajo <a href="https://creativecommons.org/licenses/by/4.0/deed.es">CC BY 4.0</a> · Motor del panel incluido en <code>motor/</code>, derivado de <a href="https://github.com/Seachad-TEAM/AI_en_el_consejo">AI en el Consejo</a> (MIT).
+    </footer>
+  </section>
+
+  <!-- ================================================================ EN -->
+  <section id="en" lang="en" hidden data-enlazar-codigos>
+    <span class="demo">Demo · fictitious data</span>
+    <h1>T17 · Board dashboard generator<small>Turns the T01 use case register into the AI dashboard for the board and the recommendations log (T18)</small></h1>
+    <p class="que-es"><strong>What T17 is, in one sentence:</strong> it is a <strong>generator</strong>, not an application where data is entered. Use cases are kept in the <a href="../T01_registro_iniciativas/registro.html" title="Tool T01 · Use case register: where data is entered and updated">T01 register</a>; T17 reads that register and <strong>generates —or regenerates, every time the register changes—</strong> the full board dashboard, its mobile version and the recommendations log. <strong>If you only want to see the result</strong>, open the example dashboard (in Spanish): <a href="ejemplo/salida/t01_Dashboard_Casos_Uso_IA_v8.html" title="Full board dashboard, with the fictitious example portfolio">full dashboard</a> · <a href="ejemplo/salida/t01_Dashboard_Movil_IA_v8.html" title="The same dashboard, laid out for the phone">mobile dashboard</a>. The rest of this page explains how to generate it with your own data.</p>
+    <p>This connector takes the <strong>full JSON</strong> exported by the SEVEN-G <a href="../T01_registro_iniciativas/registro.html">T01 use case register</a> and converts it, without re-entering any data, into the <strong>AI dashboard for the board</strong> (full and mobile, in sync) and, if the register contains recommendations, into the <strong>recommendations log</strong>. The dashboards are generated by the engine included in the <code>motor/</code> folder (version 8, with funnel and lifecycle; origin: <em>AI en el Consejo</em>, MIT, same author): no other repository is needed.</p>
+    <p><strong>The register is the single data entry point</strong>: each use case is entered in T01 like an opportunity in a CRM and the dashboard is rebuilt from its JSON. The dashboard funnel stages (Propuesto, Hipótesis de valor, POC, En desarrollo, En uso) and its exits (No aprobado, Descartado, Desenganchado) map to SEVEN-G phases 0–7, and the time in each stage comes from the dates of the register events: it is never estimated. Indicator thresholds, stages and day limits are configured in <code>config_panel.json</code>.</p>
+    <p>Anything T01 does not record is left as "no data" and is never turned into zero. SEVEN-G phase, status, intensity, spheres and ambition travel with each case (block <code>seveng</code>). Field names and on-screen texts are in Spanish, as in the engine.</p>
+
+    <h2>Example dashboard, generated from the T01 fictitious use cases</h2>
+    <ul class="enlaces">
+      <li><a href="ejemplo/salida/t01_Dashboard_Casos_Uso_IA_v8.html">Full dashboard</a><span>Portfolio and value, funnel and lifecycle, risk and compliance, incidents and inventory.</span></li>
+      <li><a href="ejemplo/salida/t01_Dashboard_Movil_IA_v8.html">Mobile dashboard</a><span>Same data fingerprint, laid out for the phone.</span></li>
+      <li><a href="ejemplo/salida/t01_Registro_Recomendaciones.html">Recommendations log</a><span>T01 recommendations with status and evidence (T18).</span></li>
+      <li><a href="ejemplo/salida/t01_dashboard_data.json">Dashboard JSON</a><span>Data converted to the engine schema (<code>ESQUEMA.md</code>).</span></li>
+      <li><a href="../T01_registro_iniciativas/registro.html">Use case register (T01)</a><span>The example use cases this dashboard comes from.</span></li>
+      <li><a href="config_panel.json">Dashboard configuration</a><span>Indicator thresholds, funnel stages and day limits.</span></li>
+    </ul>
+    <p style="margin-top:12px;font-size:15px">Company, people and suppliers are fictitious; any resemblance to a real organisation or person is coincidental. Generated HTML files are never edited by hand: they are regenerated with the connector.</p>
+    <p class="que-es"><strong>Examples from your sector:</strong> the <a href="galeria/index.html">gallery of examples by sector</a> has the T01 register and the dashboard of a fictitious company in banking, insurance, manufacturing and the public sector and, for eleven sectors, where AI use cases are heading (established, being adopted and emerging) with verified sources.</p>
+
+    <h2>How to use it: the dashboard regenerates itself, without Python</h2>
+    <p>The dashboard embeds the connector in JavaScript (<code>t01_a_panel.js</code>, the same T01 → dashboard mapping as the generator) and regenerates itself in the browser. Nothing to install or run:</p>
+    <ol>
+      <li><strong>With the register in this browser.</strong> Work in the <a href="../T01_registro_iniciativas/registro.html">T01 register</a> and click "Board dashboard (with this register)": the dashboard reads the register saved in this browser (same site) and shows it. While the register is the sample one, the sample dashboard is shown.</li>
+      <li><strong>In the company's copy of the site</strong> (document 03 §2.1): leave the JSON exported by T01 in <code>SEVEN-G/herramientas/datos/T01_registro.json</code>; served over http, the dashboard reads it and shows it to the whole company. The path is configured in <code>config_panel.json</code> (<code>navegacion.datos_t01</code>).</li>
+      <li><strong>With a file.</strong> "Cargar JSON" in the dashboard accepts either a <code>dashboard_data.json</code> or the full T01 JSON, which it converts on the fly. In T01, "Download the dashboard JSON" produces the <code>dashboard_data.json</code> with the same mapping.</li>
+      <li>Adjust <code>config_panel.json</code> (thresholds, stages and day limits); the company copy should regenerate the example dashboards (optional step below) so that they embed its configuration.</li>
+    </ol>
+    <p><strong>Optional, with Python 3.11 and <code>uv</code>:</strong> the <code>t01_a_panel.py</code> generator writes the dashboards as static files (to send them by e-mail or messaging, with the no-JavaScript view and the recommendations log): <pre><code>uv run python t01_a_panel.py --t01 export_t01.json --salida folder</code></pre>With no arguments it builds this example in <code>ejemplo/salida/</code>. Without Python, <code>pwsh -File conector_js.ps1 -T01 register.json -Salida dashboard_data.json</code> produces the dashboard JSON with Edge. At the end of each board session, <code>motor/snapshot.py</code> saves a snapshot to see the trend.</p>
+
+    <h2>Documentation</h2>
+    <ul class="enlaces">
+      <li><a href="README_en.md">README (English)</a><span>Usage, full mapping table, what is left without data, limitations and licence.</span></li>
+      <li><a href="README.md">README (Spanish)</a><span>Uso, tabla de mapeo completa, qué queda sin dato, limitaciones y licencia.</span></li>
+      <li><a href="../T01_registro_iniciativas/README_en.md">T01 · Use case register</a><span>The tool the data come from, with its schema and demo data.</span></li>
+      <li><a href="PROPUESTA_MOTOR.md">Engine change proposal (Spanish)</a><span>Working document for the source project of the dashboard engine.</span></li>
+    </ul>
+
+    <h2>Legal notice and disclaimer</h2>
+    <div class="aviso">
+      <p>SEVEN-G and this tool are provided “as is” and for information purposes only. They do not constitute legal, regulatory, financial or professional advice, nor do they guarantee compliance with any regulation. The criteria, classifications and references to general regulation (EU AI Act, GDPR, DORA, NIS2…) or sector-specific regulation may be incomplete, may not apply to a specific case or may become outdated as a result of regulatory changes. Each organisation that uses the tool is solely responsible for identifying the regulation that applies to it, verifying that it is current and certifying its own regulatory compliance, with the appropriate qualified advice. This methodology is a generic, free aid shared with the community so that nobody has to start from scratch; each person or organisation can and should adapt it to its own use. It must not be inferred that its legally sensitive parts have been reviewed by legal counsel: those reviews, for each company or sector, are the ultimate responsibility of the company, consultant or organisation that uses it. Although every effort is made to keep it up to date, some regulation may have changed without being reflected here. To the fullest extent permitted by law, the author accepts no responsibility whatsoever for the effects of its application in any organisation or for its full applicability. The methodology does not grant certification of any kind. The author accepts no liability whatsoever for the use of the tool or for decisions taken with it. The demo data is fictitious.</p>
+    </div>
+
+    <footer>
+      © 2026 Fernando García Varela · SEVEN-G methodology · Code under the MIT licence · Contents under <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a> · Dashboard engine included in <code>motor/</code>, derived from <a href="https://github.com/Seachad-TEAM/AI_en_el_consejo">AI en el Consejo</a> (MIT).
+    </footer>
+  </section>
+</main>
+
+<script>
+  function idioma(l) {
+    var es = l === 'es';
+    document.getElementById('es').hidden = !es;
+    document.getElementById('en').hidden = es;
+    document.getElementById('btn-es').setAttribute('aria-pressed', es ? 'true' : 'false');
+    document.getElementById('btn-en').setAttribute('aria-pressed', es ? 'false' : 'true');
+    document.documentElement.lang = l;
+    document.title = es ? 'T17 · Regenerar el panel del consejo · SEVEN-G' : 'T17 · Regenerate the board dashboard · SEVEN-G';
+    try { localStorage.setItem('t17_idioma', l); } catch (e) {}
+    var ca = document.getElementById('lnk-cabecera'), po = document.getElementById('lnk-portada');   // D137: vuelta a la cabecera de SEVEN-G y a la portada, en el idioma activo
+    if (ca) { ca.href = '../../html/' + l + '/entrada/index.html'; ca.title = es ? 'Cabecera de SEVEN-G: qué es y para qué sirve' : 'SEVEN-G home: what it is and what it is for'; }
+    if (po) { po.href = es ? '../../../index.html' : '../../../en/index.html'; po.textContent = es ? '⌂ Portada' : '⌂ Home'; po.title = es ? 'Portada de AI Consulting: todas las metodologías' : 'AI Consulting home page: all methodologies'; }
+    var ts = document.getElementById('tema');   // selector de tema en el idioma activo
+    if (ts) { var tx = es ? ['Salmón', 'Salmón claro', 'Noche'] : ['Salmon', 'Light salmon', 'Night'];
+      for (var i = 0; i < 3; i++) ts.options[i].textContent = tx[i];
+      document.getElementById('tema-rot').textContent = es ? 'Tema' : 'Theme'; ts.title = es ? 'Tema de todo el sitio' : 'Theme for the whole site'; }
+    cargaCodigos(l);
+  }
+  // «Ir a código» y códigos citados (D99): índice del sitio en el idioma activo; cada código escrito en esta página enlaza a donde se explica
+  function cargaCodigos(l) {
+    if (window.sevengIrCodigo && window.sevengIrCodigo.lang === l) { window.sevengIrCodigo.iniciar(); return; }
+    var previo = document.getElementById('ir-codigo-js'); if (previo) previo.parentNode.removeChild(previo);
+    var sc = document.createElement('script'); sc.id = 'ir-codigo-js'; sc.src = '../../html/' + l + '/codigos.js'; document.head.appendChild(sc);
+  }
+  // tema: el mismo de todo el sitio (clave seveng-tema); cambiarlo aquí lo cambia en todas las páginas
+  (function () {
+    var sel = document.getElementById('tema'); if (!sel) return;
+    sel.value = document.documentElement.getAttribute('data-theme') || 'salmon';
+    sel.addEventListener('change', function () {
+      document.documentElement.setAttribute('data-theme', sel.value);
+      try { localStorage.setItem('seveng-tema', sel.value); } catch (e) {}
+    });
+  })();
+  (function () {
+    var guardado = null;
+    // D137: «?lang=» del enlace, después el idioma del sitio («seveng-idioma») y, por último, el de esta página o el del navegador
+    var q = new URLSearchParams(location.search).get('lang'), sitio = null;
+    try { guardado = localStorage.getItem('t17_idioma'); sitio = localStorage.getItem('seveng-idioma'); } catch (e) {}
+    var l = (q === 'es' || q === 'en') ? q : (sitio === 'es' || sitio === 'en') ? sitio : guardado;
+    if (l === 'en' || (!l && /^en\b/i.test(navigator.language || ''))) { idioma('en'); } else { cargaCodigos('es'); }
+  })();
+</script>
+</body>
+</html>

@@ -1,0 +1,226 @@
+{
+  "fecha": "2026-10-19",
+  "origen": "Investigación de fuentes primarias para la categoría «Seguridad de la IA» de la galería (D159)",
+  "categorias": [
+    {
+      "id": "guardarrailes",
+      "nombre_es": "Guardarraíles en ejecución y pasarelas de IA",
+      "nombre_en": "Runtime guardrails and AI gateways",
+      "que_es_es": "Puntos de control fuera del modelo que filtran entradas, salidas y contexto, previenen fugas, aplican cuotas y registran el tráfico hacia los modelos.",
+      "que_es_en": "Control points outside the model that filter inputs, outputs and context, prevent leakage, enforce quotas and log traffic to models.",
+      "controles": "SEG-26, SEG-03, SEG-07, AG-05",
+      "entradas": [
+        {
+          "compania": "Amazon Web Services",
+          "solucion": "Amazon Bedrock Guardrails",
+          "que_hace_es": "Salvaguardas configurables que detectan y filtran contenido dañino en texto e imágenes, ocultan información sensible y detectan alucinaciones del modelo.",
+          "que_hace_en": "Configurable safeguards that detect and filter harmful text and image content, redact sensitive information and detect model hallucinations.",
+          "fuente": "MER-SIA-01",
+          "adquisicion_es": "",
+          "adquisicion_en": "",
+          "fuente_adquisicion": ""
+        },
+        {
+          "compania": "Cloudflare",
+          "solucion": "AI Gateway",
+          "que_hace_es": "Da visibilidad y control sobre las aplicaciones de IA: analítica, registro, caché, límites de uso y reintentos con un modelo alternativo.",
+          "que_hace_en": "Gives visibility into and control over AI applications: analytics, logging, caching, rate limiting and retries with a fallback model.",
+          "fuente": "MER-SIA-02",
+          "adquisicion_es": "",
+          "adquisicion_en": "",
+          "fuente_adquisicion": ""
+        },
+        {
+          "compania": "Google Cloud",
+          "solucion": "Model Armor",
+          "que_hace_es": "Revisa las instrucciones y las respuestas de los modelos de lenguaje para bloquear entradas maliciosas, contenido inseguro y fugas de datos sensibles.",
+          "que_hace_en": "Screens the prompts and responses of language models to block malicious input, unsafe content and leaks of sensitive data.",
+          "fuente": "MER-SIA-03",
+          "adquisicion_es": "",
+          "adquisicion_en": "",
+          "fuente_adquisicion": ""
+        },
+        {
+          "compania": "Microsoft",
+          "solucion": "Azure AI Content Safety (con Prompt Shields)",
+          "que_hace_es": "Detecta contenido dañino generado por usuarios y por IA en texto e imágenes; incluye Prompt Shields para detectar ataques de entrada contra un modelo de lenguaje.",
+          "que_hace_en": "Detects harmful user-generated and AI-generated content in text and images; includes Prompt Shields to detect input attacks against a language model.",
+          "fuente": "MER-SIA-04",
+          "adquisicion_es": "",
+          "adquisicion_en": "",
+          "fuente_adquisicion": ""
+        },
+        {
+          "compania": "NVIDIA",
+          "solucion": "NeMo Guardrails",
+          "que_hace_es": "Biblioteca de Python de acceso abierto para añadir comprobaciones de seguridad y de política a aplicaciones de modelos de lenguaje, sobre las instrucciones y las respuestas, sin cambiar el modelo.",
+          "que_hace_en": "Openly available Python library for adding safety and policy checks to language model applications, on prompts and replies, without changing the model.",
+          "fuente": "MER-SIA-05",
+          "adquisicion_es": "",
+          "adquisicion_en": "",
+          "fuente_adquisicion": ""
+        }
+      ]
+    },
+    {
+      "id": "banco",
+      "nombre_es": "Banco de pruebas y equipo rojo",
+      "nombre_en": "Test bench and red teaming",
+      "que_es_es": "Herramientas para someter modelos y agentes a escenarios adversarios de forma repetible, también en cada despliegue.",
+      "que_es_en": "Tools to subject models and agents to adversarial scenarios in a repeatable way, including at every deployment.",
+      "controles": "SEG-27, SEG-11, AG-18",
+      "entradas": [
+        {
+          "compania": "Promptfoo",
+          "solucion": "Promptfoo",
+          "que_hace_es": "Herramienta de código abierto, en línea de órdenes y como biblioteca, para evaluar aplicaciones de modelos de lenguaje y someterlas a pruebas de equipo rojo.",
+          "que_hace_en": "Open-source command-line tool and library to evaluate language model applications and subject them to red-team testing.",
+          "fuente": "MER-SIA-06",
+          "adquisicion_es": "",
+          "adquisicion_en": "",
+          "fuente_adquisicion": ""
+        }
+      ]
+    },
+    {
+      "id": "observabilidad",
+      "nombre_es": "Observabilidad de LLM y trazas",
+      "nombre_en": "LLM observability and tracing",
+      "que_es_es": "Trazas de extremo a extremo de peticiones, llamadas al modelo y pasos de agentes, para investigar y medir.",
+      "que_es_en": "End-to-end traces of requests, model calls and agent steps, to investigate and measure.",
+      "controles": "SEG-12",
+      "entradas": [
+        {
+          "compania": "Arize",
+          "solucion": "Phoenix",
+          "que_hace_es": "Herramienta de código abierto de observabilidad y evaluación de IA que ayuda a trazar, puntuar y mejorar las aplicaciones de IA.",
+          "que_hace_en": "Open-source AI observability and evaluation tool that helps trace, score and improve AI applications.",
+          "fuente": "MER-SIA-07",
+          "adquisicion_es": "",
+          "adquisicion_en": "",
+          "fuente_adquisicion": ""
+        },
+        {
+          "compania": "Datadog",
+          "solucion": "Agent Observability",
+          "que_hace_es": "Ayuda a supervisar, diagnosticar y evaluar aplicaciones basadas en modelos de lenguaje y agentes de IA.",
+          "que_hace_en": "Helps monitor, troubleshoot and evaluate applications built on language models and AI agents.",
+          "fuente": "MER-SIA-08",
+          "adquisicion_es": "",
+          "adquisicion_en": "",
+          "fuente_adquisicion": ""
+        },
+        {
+          "compania": "Langfuse",
+          "solucion": "Langfuse",
+          "que_hace_es": "Plataforma de código abierto que ayuda a los equipos a diagnosticar, medir y mejorar aplicaciones de agentes de IA.",
+          "que_hace_en": "Open-source platform that helps teams troubleshoot, measure and improve AI agent applications.",
+          "fuente": "MER-SIA-09",
+          "adquisicion_es": "",
+          "adquisicion_en": "",
+          "fuente_adquisicion": ""
+        }
+      ]
+    },
+    {
+      "id": "deteccion",
+      "nombre_es": "Detección y respuesta con IA",
+      "nombre_en": "AI-assisted detection and response",
+      "que_es_es": "IA aplicada a la correlación y el triaje de alertas, la caza de amenazas y la respuesta.",
+      "que_es_en": "AI applied to alert correlation and triage, threat hunting and response.",
+      "controles": "SEG-21, SEG-22, SEG-23, SEG-24, SEG-25",
+      "entradas": [
+        {
+          "compania": "CrowdStrike",
+          "solucion": "Charlotte AI",
+          "que_hace_es": "Analista de seguridad basado en agentes de IA que coordina agentes para investigar amenazas y, con aprobación humana, ejecutar acciones de respuesta.",
+          "que_hace_en": "Agentic AI security analyst that coordinates agents to investigate threats and, with human approval, take response actions.",
+          "fuente": "MER-SIA-10",
+          "adquisicion_es": "",
+          "adquisicion_en": "",
+          "fuente_adquisicion": ""
+        },
+        {
+          "compania": "Microsoft",
+          "solucion": "Security Copilot",
+          "que_hace_es": "Solución de seguridad con IA generativa y lenguaje natural que apoya a los equipos de seguridad en respuesta a incidentes, búsqueda de amenazas y gestión de la postura.",
+          "que_hace_en": "Generative AI security solution in natural language that supports security teams in incident response, threat hunting and posture management.",
+          "fuente": "MER-SIA-11",
+          "adquisicion_es": "",
+          "adquisicion_en": "",
+          "fuente_adquisicion": ""
+        }
+      ]
+    },
+    {
+      "id": "appsec",
+      "nombre_es": "Seguridad de aplicaciones e interfaces de programación",
+      "nombre_en": "Application and API security",
+      "que_es_es": "Revisión y protección de código, dependencias e interfaces de programación expuestas.",
+      "que_es_en": "Review and protection of code, dependencies and exposed programming interfaces.",
+      "controles": "SEG-04, SEG-19",
+      "entradas": [
+        {
+          "compania": "Cloudflare",
+          "solucion": "API Shield",
+          "que_hace_es": "Ayuda a descubrir, proteger y vigilar las interfaces de programación, incluidos los puntos de acceso desconocidos, la validación de esquemas y la detección de abusos.",
+          "que_hace_en": "Helps discover, secure and monitor APIs, including unknown endpoints, schema validation and abuse detection.",
+          "fuente": "MER-SIA-12",
+          "adquisicion_es": "",
+          "adquisicion_en": "",
+          "fuente_adquisicion": ""
+        },
+        {
+          "compania": "Snyk",
+          "solucion": "Snyk",
+          "que_hace_es": "Ayuda a detectar, priorizar y corregir fallos de seguridad en el código fuente, las dependencias de código abierto, las imágenes de contenedores y las configuraciones en la nube.",
+          "que_hace_en": "Helps detect, prioritise and fix security flaws in source code, open-source dependencies, container images and cloud configurations.",
+          "fuente": "MER-SIA-13",
+          "adquisicion_es": "",
+          "adquisicion_en": "",
+          "fuente_adquisicion": ""
+        }
+      ]
+    },
+    {
+      "id": "sombra",
+      "nombre_es": "IA en la sombra y prevención de fuga",
+      "nombre_en": "Shadow AI and data loss prevention",
+      "que_es_es": "Descubrimiento del uso de IA no autorizado y control de los datos que salen hacia servicios de IA.",
+      "que_es_en": "Discovery of unauthorised AI use and control of the data that leaves for AI services.",
+      "controles": "SEG-20, SEG-07",
+      "entradas": [
+        {
+          "compania": "Microsoft",
+          "solucion": "Microsoft Purview (gestión de la postura de seguridad de datos para IA)",
+          "que_hace_es": "Ayuda a proteger y gobernar la seguridad y el cumplimiento de los datos en aplicaciones de IA generativa, con descubrimiento del uso de IA, prevención de pérdida de datos y auditoría.",
+          "que_hace_en": "Helps protect and govern data security and compliance in generative AI apps, with discovery of AI use, data loss prevention and auditing.",
+          "fuente": "MER-SIA-14",
+          "adquisicion_es": "",
+          "adquisicion_en": "",
+          "fuente_adquisicion": ""
+        }
+      ]
+    },
+    {
+      "id": "identidad",
+      "nombre_es": "Identidad, agentes y voz sintética",
+      "nombre_en": "Identity, agents and synthetic voice",
+      "que_es_es": "Verificación de personas y de identidades frente a voz y vídeo sintéticos y a agentes que actúan.",
+      "que_es_en": "Verification of people and identities against synthetic voice and video and against agents that act.",
+      "controles": "AG-01, AG-03, SEG-18, RT-SEG-09",
+      "entradas": [
+        {
+          "compania": "Pindrop",
+          "solucion": "Pindrop Pulse (para reuniones)",
+          "que_hace_es": "Comprueba durante reuniones virtuales en directo si los participantes son reales, coinciden con su voz registrada y se conectan desde ubicaciones previstas, con señales de falsificación profunda, de voz y de ubicación.",
+          "que_hace_en": "Checks during live virtual meetings whether participants are real, match their enrolled voice and join from expected locations, using deepfake, voice and location signals.",
+          "fuente": "MER-SIA-15",
+          "adquisicion_es": "",
+          "adquisicion_en": "",
+          "fuente_adquisicion": ""
+        }
+      ]
+    }
+  ]
+}
