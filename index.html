@@ -193,7 +193,31 @@ h2 { font: 600 clamp(26px, 3.2vw, 34px)/1.15 var(--serif); color: var(--negro); 
 .onepagers .onepager b { display: block; font: 700 24px/1.15 var(--serif); margin: 4px 0 4px; }
 .onepagers .onepager span { display: block; font: 400 14px/1.45 var(--sans); color: var(--tinta-2); }
 .areas .area-slides.onepager .tipo { color: var(--claret); }
-.onepagers .onepager em { display: block; margin-top: 9px; font: 700 13px/1.3 var(--sans); font-style: normal; }</style>
+.onepagers .onepager em { display: block; margin-top: 9px; font: 700 13px/1.3 var(--sans); font-style: normal; }/* «¿Qué necesita hoy?» al comienzo de la portada y de los documentos 00 de SPHERES y SPAD (D190): tarjetas por papel, generadas desde caminos.json. Solo pantalla. */
+.caminos-bloque { margin: 22px 0 6px; }
+.caminos-bloque .cam-kicker { margin: 0; font: 800 12px/1.3 var(--sans); letter-spacing: .1em; text-transform: uppercase; color: var(--claret); }
+.caminos-bloque h2 { margin: 4px 0 4px; font: 600 28px/1.15 var(--serif); color: var(--negro); border: 0; padding: 0; }
+.caminos-bloque .cam-sub { margin: 0 0 14px; font: 400 16px/1.5 var(--sans); color: var(--tinta-2); }
+.cam-rutas { display: grid; gap: 14px; grid-template-columns: 1fr; }
+@media (min-width: 620px) { .cam-rutas.n4 { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (min-width: 1000px) { .cam-rutas.n4 { grid-template-columns: repeat(4, minmax(0, 1fr)); } }
+@media (min-width: 900px) { .cam-rutas.n3 { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+.cam { --filo: var(--claret); border-top: 4px solid var(--filo); background: var(--papel-2); padding: 16px 18px 18px; display: flex; flex-direction: column; gap: 9px; min-width: 0; }
+.cam:nth-child(2) { --filo: var(--oxford); } .cam:nth-child(3) { --filo: var(--teal); } .cam:nth-child(4) { --filo: var(--velvet); }
+.cam.software { --filo: var(--oxford); }
+.cam h3 { margin: 0; font: 600 22px/1.15 var(--serif); color: var(--negro); }
+.cam .dur { margin: 0; font: 800 11.5px/1.3 var(--sans); letter-spacing: .07em; text-transform: uppercase; color: var(--filo); }
+.cam .resp { margin: 0; font: 600 15px/1.45 var(--sans); color: var(--negro); }
+.cam ul { margin: 0; padding-left: 18px; font: 400 14.5px/1.5 var(--sans); color: var(--tinta-2); }
+.cam li::marker { color: var(--filo); }
+.cam a { color: var(--negro); }
+.cam .enlaces { margin-top: auto; padding-top: 6px; }
+.cam .enlaces .enlace { font: 700 14.5px/1.3 var(--sans); text-decoration: none; border-bottom: 2px solid var(--filo); padding-bottom: 3px; }
+.cam .enlaces .enlace:hover { color: var(--filo); }
+.cam .solo-movil { display: none; }
+@media (max-width: 760px) { .cam .solo-escritorio { display: none; } .cam .solo-movil { display: inline; } }
+@media print { .caminos-bloque { display: none !important; } }
+</style>
 </head>
 <body>
 <div class="barra" role="navigation" aria-label="Navegación del sitio">
@@ -222,6 +246,59 @@ h2 { font: 600 clamp(26px, 3.2vw, 34px)/1.15 var(--serif); color: var(--negro); 
     <details class="aviso revision" style="margin-top: 18px; margin-bottom: 0;"><summary>Versión 0.x, en revisión</summary>El estado actual de estas metodologías es la versión 0.x. El contenido es operativo y puede usarse, adaptarse y redistribuirse con la licencia del proyecto (CC BY 4.0 para los contenidos y MIT para el código), citando la autoría e indicando los cambios. Los documentos y las herramientas se siguen revisando: se agradecen las opiniones y las propuestas de mejora.</details>
     <details class="aviso" style="margin-top: 12px; margin-bottom: 0;"><summary>Titularidad, marca y reutilización</summary>La propiedad intelectual de SEVEN-G, SPHERES y SPAD pertenece a su autor, <strong>Fernando García Varela</strong>, y <strong>SEVEN-G es un nombre y una marca de Fernando García Varela</strong> (perfil profesional: <a href="https://www.linkedin.com/in/fernandogarciavarela/">linkedin.com/in/fernandogarciavarela</a>). Se ofrecen como marcos de referencia operativos (SEVEN-G en versión 0.1) o en construcción (SPHERES y SPAD), sin que ello constituya una versión comercial cerrada ni un producto liberado para clientes o mercados. Su reutilización y adaptación por cualquier organización, consultora o profesional independiente quedan sujetas a la licencia de contenidos y de código del proyecto (CC BY 4.0 para los contenidos, MIT para el código; documento 93 de SEVEN-G), que exige reconocer la autoría e indicar los cambios; ese uso no transfiere la titularidad ni otorga exclusividad ni derecho de propiedad sobre el marco base ni sobre la marca a ningún cliente, proveedor o tercero, salvo pacto escrito y específico sobre desarrollos propios.</details>
   </header>
+
+  <!-- caminos:inicio (no editar: se genera desde SEVEN-G/build/caminos.json con build.ps1) -->
+<section class="caminos-bloque" id="caminos" aria-labelledby="caminos-t">
+  <p class="cam-kicker">Para quién es</p>
+  <h2 id="caminos-t">¿Qué necesita hoy?</h2>
+  <p class="cam-sub">No hace falta leer todo en orden. Elija el camino que corresponde a su papel.</p>
+    <div class="cam-rutas n4">
+      <article class="cam">
+        <h3>Dirijo o asesoro una compañía</h3>
+        <p class="dur">10 minutos</p>
+        <p class="resp">Entienda qué decide SEVEN-G y qué preguntas hacer a su equipo.</p>
+        <ul>
+          <li><a href="SEVEN-G/pdf/es/onepagers/SEVEN-G_OnePager.pdf?v=b389af84" target="_blank" rel="noopener">SEVEN-G en una página</a></li>
+          <li><a href="SEVEN-G/html/es/entrada/index.html#preguntas">Las seis preguntas del consejo</a></li>
+          <li><a class="solo-escritorio" href="SEVEN-G/herramientas/T17_panel_consejo/ejemplo/salida/t01_Dashboard_Casos_Uso_IA_v8.html">El panel del consejo de ejemplo</a><a class="solo-movil" href="SEVEN-G/herramientas/T17_panel_consejo/ejemplo/salida/t01_Dashboard_Movil_IA_v8.html">El panel del consejo de ejemplo</a></li>
+        </ul>
+        <div class="enlaces"><a class="enlace" href="SEVEN-G/html/es/entrada/index.html#preguntas">Abrir las preguntas →</a></div>
+      </article>
+      <article class="cam">
+        <h3>Voy a gobernar la IA</h3>
+        <p class="dur">En mi compañía o en la de un cliente</p>
+        <p class="resp">Lo mínimo para empezar y el plan del primer ciclo.</p>
+        <ul>
+          <li><a href="SEVEN-G/html/es/entrada/index.html#partida">¿Por dónde empieza su compañía?</a></li>
+          <li><a href="SEVEN-G/html/es/90_SEVEN-G_Guia_de_implantacion.html#plan-de-90-dias">El plan de 90 días</a></li>
+          <li><a href="SEVEN-G/html/es/curso/M00_SEVEN-G_Curso_Guia_del_curso.html">El curso</a></li>
+        </ul>
+        <div class="enlaces"><a class="enlace" href="SEVEN-G/html/es/90_SEVEN-G_Guia_de_implantacion.html#plan-de-90-dias">Ver el plan de 90 días →</a></div>
+      </article>
+      <article class="cam software">
+        <h3>Construyo o compro software con IA</h3>
+        <p class="dur">Otro nivel: construir software con IA</p>
+        <p class="resp">Un método para construir con IA y para exigir a proveedores.</p>
+        <ul>
+          <li><a href="SPAD/html/es/00_SPAD_Que_es_y_para_que_sirve.html">Qué es SPAD</a></li>
+          <li><a href="SPAD/html/es/00_SPAD_Que_es_y_para_que_sirve.html#para-que-le-sirve-a-una-compania">Qué exigir a proveedores e integradores</a></li>
+        </ul>
+        <div class="enlaces"><a class="enlace" href="SPAD/html/es/00_SPAD_Que_es_y_para_que_sirve.html">Abrir SPAD →</a></div>
+      </article>
+      <article class="cam">
+        <h3>Busco un tema concreto</h3>
+        <p class="dur">Consulta</p>
+        <p class="resp">Por áreas, por concepto o por documento.</p>
+        <ul>
+          <li><a href="#areas">Áreas de actuación en IA</a></li>
+          <li><a href="SEVEN-G/html/es/02_SEVEN-G_Glosario_y_convenciones.html">Glosario</a></li>
+          <li><a href="SEVEN-G/html/es/index.html">Biblioteca de SEVEN-G</a></li>
+        </ul>
+        <div class="enlaces"><a class="enlace" href="#areas">Ver las áreas →</a></div>
+      </article>
+    </div>
+</section>
+<!-- caminos:fin -->
 
   <h2 id="onepagers">Léalo en una página</h2>
   <p class="sub">Antes de profundizar, cada marco en un PDF de una página para leer en cinco minutos: la tesis, tres ideas, cuatro preguntas para el consejo y qué falla sin él. Cada área de actuación tiene también el suyo, en su tarjeta.</p>

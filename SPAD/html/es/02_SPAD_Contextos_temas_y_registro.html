@@ -384,6 +384,30 @@ blockquote.aviso-legal strong { color: var(--negro); }
 .dz-grupo { font: 700 12px/1.2 var(--sans); letter-spacing: .08em; text-transform: uppercase; color: var(--tinta-2); margin: 8px 0 -2px; padding-top: 10px; border-top: 1px solid var(--regla); }
 .dz-grupo:first-child { margin-top: 0; padding-top: 0; border-top: 0; }
 @media print { .descargas-zona { display: none !important; } }
+/* «¿Qué necesita hoy?» al comienzo de la portada y de los documentos 00 de SPHERES y SPAD (D190): tarjetas por papel, generadas desde caminos.json. Solo pantalla. */
+.caminos-bloque { max-width: 1120px; margin: 6px auto 30px; padding: 0 16px; }
+.caminos-bloque .cam-kicker { margin: 0; font: 800 12px/1.3 var(--sans); letter-spacing: .1em; text-transform: uppercase; color: var(--claret); }
+.caminos-bloque h2 { margin: 4px 0 4px; font: 600 28px/1.15 var(--serif); color: var(--negro); border: 0; padding: 0; }
+.caminos-bloque .cam-sub { margin: 0 0 14px; font: 400 16px/1.5 var(--sans); color: var(--tinta-2); }
+.cam-rutas { display: grid; gap: 14px; grid-template-columns: 1fr; }
+@media (min-width: 620px) { .cam-rutas.n4 { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (min-width: 1000px) { .cam-rutas.n4 { grid-template-columns: repeat(4, minmax(0, 1fr)); } }
+@media (min-width: 900px) { .cam-rutas.n3 { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+.cam { --filo: var(--claret); border-top: 4px solid var(--filo); background: var(--papel-2); padding: 16px 18px 18px; display: flex; flex-direction: column; gap: 9px; min-width: 0; }
+.cam:nth-child(2) { --filo: var(--oxford); } .cam:nth-child(3) { --filo: var(--teal); } .cam:nth-child(4) { --filo: var(--velvet); }
+.cam.software { --filo: var(--oxford); }
+.cam h3 { margin: 0; font: 600 22px/1.15 var(--serif); color: var(--negro); }
+.cam .dur { margin: 0; font: 800 11.5px/1.3 var(--sans); letter-spacing: .07em; text-transform: uppercase; color: var(--filo); }
+.cam .resp { margin: 0; font: 600 15px/1.45 var(--sans); color: var(--negro); }
+.cam ul { margin: 0; padding-left: 18px; font: 400 14.5px/1.5 var(--sans); color: var(--tinta-2); }
+.cam li::marker { color: var(--filo); }
+.cam a { color: var(--negro); }
+.cam .enlaces { margin-top: auto; padding-top: 6px; }
+.cam .enlaces .enlace { font: 700 14.5px/1.3 var(--sans); text-decoration: none; border-bottom: 2px solid var(--filo); padding-bottom: 3px; }
+.cam .enlaces .enlace:hover { color: var(--filo); }
+.cam .solo-movil { display: none; }
+@media (max-width: 760px) { .cam .solo-escritorio { display: none; } .cam .solo-movil { display: inline; } }
+@media print { .caminos-bloque { display: none !important; } }
 
 /* ---------- Enlaces a fuentes externas (D41) ---------- */
 a.ref-ext { color: inherit; text-decoration: underline; text-decoration-style: dotted; text-decoration-color: var(--oxford); text-underline-offset: 3px; }
@@ -833,7 +857,7 @@ h2 .codigo, h3 .codigo { font-weight: 400; }
 </table></div>
 <h2 id="fuentes-externas">Fuentes externas citadas</h2><p class="fuentes-nota">Enlaces a la fuente oficial o primaria, comprobados antes de publicar. Verifique siempre la versión vigente en la fecha de uso.</p><ul class="fuentes-externas"><li><a href="https://top10.owasp.org/2025/es/" target="_blank" rel="noopener">OWASP Top 10:2025 (riesgos de seguridad de aplicaciones web)</a><span> · OWASP Foundation · 2025</span></li></ul>
 </main>
-<footer class="pie"><div><span>© 2026 Fernando García Varela · Metodolog&#237;a SPAD</span><span>Generado el 16-11-2026</span></div><p class="pie-ia">Contenido generado y maquetado con apoyo de IA bajo supervisi&#243;n editorial del autor.</p></footer>
+<footer class="pie"><div><span>© 2026 Fernando García Varela · Metodolog&#237;a SPAD</span><span>Generado el 18-11-2026</span></div><p class="pie-ia">Contenido generado y maquetado con apoyo de IA bajo supervisi&#243;n editorial del autor.</p></footer>
 <script src="../../../SEVEN-G/html/es/codigos.js" defer></script>
 
 <script>
