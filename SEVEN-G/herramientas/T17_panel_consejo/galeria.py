@@ -48,15 +48,33 @@ SECTORES = [
     ("retail", "Distribución y gran consumo", "Retail and consumer goods"), ("telecomunicaciones", "Telecomunicaciones", "Telecommunications"),
     ("sanidad", "Sanidad", "Healthcare"), ("farmaceutica", "Farmacéutica", "Pharmaceuticals"), ("turismo", "Turismo y hostelería", "Travel and hospitality"),
     # Pymes y despachos profesionales (D161): se muestran aparte, bajo su propio rótulo; para añadir un sector, su ficha en _fuentes/mercado/ y una línea aquí (y en PYMES)
+    # Bloque común (D198): casos que valen para casi cualquier negocio; va el primero del grupo de pymes y los sectores de proximidad no los repiten
+    ("comun", "Casos que sirven a casi cualquier negocio", "Use cases that fit almost any business"),
     ("consultoria", "Consultoría de gestión y estrategia", "Management and strategy consulting"),
     ("integradores_ti", "Integradores y servicios de TI", "IT integrators and services"),
     ("proyectos_ingenieria", "Proyectos de ingeniería, instalaciones y obra", "Engineering, installation and construction projects"),
     ("gestorias", "Gestorías administrativas y laborales", "Administrative and labour gestorías"),
     ("abogados", "Despachos de abogados", "Law firms"),
     ("asesorias_fiscales", "Asesorías fiscales y contables", "Tax and accounting advisory firms"),
+    # Negocios de proximidad y otros sectores de pymes (D198): solo los casos propios del sector; lo común está en «comun»
+    ("gestoras_activos", "Gestoras de activos y asesores financieros", "Asset managers and financial advisers"),
+    ("corredurias_seguros", "Corredurías de seguros", "Insurance brokers"),
+    ("inmobiliaria", "Inmobiliarias y administración de fincas", "Estate agencies and property management"),
+    ("hosteleria", "Restaurantes, bares y cafeterías", "Restaurants, bars and cafés"),
+    ("comercio_proximidad", "Comercio de proximidad y tienda en línea", "Local shops and online stores"),
+    ("clinicas", "Clínicas y salud de proximidad", "Local clinics and health services"),
+    ("educacion", "Educación y formación", "Education and training"),
+    ("marketing", "Marketing, publicidad y comunicación", "Marketing, advertising and communication"),
+    ("oficios_reformas", "Oficios, reformas y servicios a domicilio", "Trades, renovations and home services"),
+    ("talleres", "Talleres e industria pequeña", "Workshops and small manufacturers"),
+    ("transporte_pequeno", "Transporte pequeño y autónomos del transporte", "Small haulage and self-employed carriers"),
+    ("agroalimentario", "Agroalimentario", "Agri-food"),
+    ("tercer_sector", "Asociaciones y tercer sector", "Associations and non-profits"),
 ]
 # sectores que se agrupan bajo «Pymes y despachos profesionales» (opcional: un sector que no esté aquí sigue en el grupo general)
-PYMES = {"consultoria", "integradores_ti", "proyectos_ingenieria", "gestorias", "abogados", "asesorias_fiscales"}
+PYMES = {"comun", "consultoria", "integradores_ti", "proyectos_ingenieria", "gestorias", "abogados", "asesorias_fiscales",
+         "gestoras_activos", "corredurias_seguros", "inmobiliaria", "hosteleria", "comercio_proximidad", "clinicas", "educacion", "marketing",
+         "oficios_reformas", "talleres", "transporte_pequeno", "agroalimentario", "tercer_sector"}
 TEC = {"genai": ("IA generativa", "Generative AI"), "agentica": ("IA agéntica", "Agentic AI"), "ml": ("ML predictivo", "Predictive ML"),
        "rpa_idp": ("RPA e IDP", "RPA and IDP"), "vision": ("Visión artificial", "Computer vision"), "optimizacion": ("Optimización", "Optimisation"),
        "herramienta_sectorial": ("Herramienta del sector", "Sector tool"), "analitica": ("Analítica avanzada", "Advanced analytics")}
@@ -271,7 +289,11 @@ def pagina(resultados, refs):
             intro = ("Casos pensados para empresas sin equipo de sistemas: herramientas baratas o ya incluidas en lo que se usa, con el riesgo profesional (secreto profesional, protección de datos, supervisión humana y Reglamento europeo de IA) a la vista."
                      if lang == "es" else
                      "Cases designed for companies without an IT team: inexpensive tools or ones already included in what is used, with professional risk (professional secrecy, data protection, human oversight and the EU AI Act) in view.")
-            titulo = "Pymes y despachos profesionales" if lang == "es" else "SMEs and professional firms"
+            if os.path.exists(os.path.join(MERCADO, "comun.json")):   # D198: con el bloque común, el grupo se explica en dos pasos
+                intro += (" Empiece por «Casos que sirven a casi cualquier negocio»; después abra su sector, que solo añade lo propio."
+                          if lang == "es" else
+                          " Start with “Use cases that fit almost any business”; then open your sector, which only adds what is specific to it.")
+            titulo = "Pymes, despachos y negocios de proximidad" if lang == "es" else "SMEs, professional firms and local businesses"
             pymes = f'<h3 id="{lang}-pymes">{titulo}</h3><p>{e(intro)}</p>' + pymes
         bloques = general + pymes
         plantilla = plantilla.replace(f"__TARJETAS_{lang.upper()}__", tarjetas).replace(f"__MERCADO_{lang.upper()}__", bloques)
@@ -279,7 +301,7 @@ def pagina(resultados, refs):
         plantilla = plantilla.replace(f"__CLIENTE_AGENTICO_{lang.upper()}__", cliente_agentico(refs, lang))
     n_casos = sum(len(json.load(open(f, encoding="utf-8"))["casos"]) for f in glob.glob(os.path.join(MERCADO, "*.json")))
     n_fuentes = len({f for p in glob.glob(os.path.join(MERCADO, "*.json")) for f in json.load(open(p, encoding="utf-8"))["fuentes"]})
-    n_sect = len(glob.glob(os.path.join(MERCADO, "*.json")))
+    n_sect = len([f for f in glob.glob(os.path.join(MERCADO, "*.json")) if os.path.basename(f) != "comun.json"])   # el bloque común no es un sector (D198)
     plantilla = (plantilla.replace("__N_EJEMPLOS__", str(len(resultados))).replace("__N_SECTORES__", str(n_sect)).replace("__N_CASOS__", str(n_casos))
                  .replace("__N_FUENTES__", str(n_fuentes)).replace("__FECHA__", fecha))
     assert "__" not in plantilla.replace("__proto__", ""), "quedan marcas sin sustituir en la plantilla de la galería"
