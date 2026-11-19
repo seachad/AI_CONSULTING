@@ -1,5 +1,7 @@
-# Auto detect text files and perform LF normalization
-* text=auto
+# Texto siempre con LF, también en la copia de trabajo de Windows (D197).
+# Los generadores escriben LF y verificar_coherencia.ps1 compara byte a byte:
+# con CRLF en la copia, los ficheros generados parecían «sin actualizar».
+* text=auto eol=lf
 
 # OnePagers (D184): ReportLab escribe PDF en ASCII; sin esto, text=auto les cambiaría los finales de línea al sacarlos
 **/onepagers/*.pdf binary
