@@ -758,7 +758,7 @@ function temaSitioInicial(){
 function temaSitioGuardar(v0){
   try{ if(v0 === 'auto'){ localStorage.setItem(LS_TEMA_AUTO, '1'); } else { localStorage.removeItem(LS_TEMA_AUTO); localStorage.setItem(LS_TEMA_SITIO, ({salmon:'salmon', claro:'claro', oscuro:'noche'})[v0] || 'salmon'); } }catch(e){}
 }
-// control «Buscador de documentos» del sitio (D88, D99, D105): carga el índice del idioma activo, SEVEN-G/html/<idioma>/codigos.js
+// control «Búsqueda global» del sitio (D88, D99, D105): carga el índice del idioma activo, SEVEN-G/html/<idioma>/codigos.js
 function irCodigoCargar(l){
   if(window.sevengIrCodigo && window.sevengIrCodigo.lang===l){ window.sevengIrCodigo.iniciar(); return; }
   const previo=document.getElementById('ir-codigo-js'); if(previo) previo.parentNode.removeChild(previo);

@@ -12,7 +12,7 @@
   /* tema del sitio (seveng-tema): salmón, salmón claro o noche */
   :root[data-theme="claro"] { --fondo: #fff1e5; --suave: rgba(255, 255, 255, .6); }
   :root[data-theme="noche"] { --fondo: #262a33; --tinta: #f2e6dc; --acento: #ff7a9e; --linea: rgba(242, 230, 220, .22); --suave: rgba(255, 255, 255, .06); color-scheme: dark;
-    /* colores del «Buscador de documentos» (codigos.js) en noche */
+    /* colores dla «Búsqueda global» (codigos.js) en noche */
     --papel: #262a33; --papel-2: #30353f; --tinta-2: #cdbfb3; --regla: #4c525d; --regla-2: #393e48; --claret: #ff7a9e; --oxford: #6ea8ee; --negro: #fff1e5; }
   .tema select { font: inherit; font-size: 13px; color: var(--tinta); background: var(--suave); border: 1px solid var(--linea); border-radius: 6px; padding: 3px 6px; }
   .oculto { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
@@ -159,7 +159,7 @@
       document.getElementById('tema-rot').textContent = es ? 'Tema' : 'Theme'; ts.title = es ? 'Tema de todo el sitio' : 'Theme for the whole site'; }
     cargaCodigos(l);
   }
-  // «Buscador de documentos» y códigos citados (D99): índice del sitio en el idioma activo
+  // «Búsqueda global» y códigos citados (D99): índice del sitio en el idioma activo
   function cargaCodigos(l) {
     if (window.sevengIrCodigo && window.sevengIrCodigo.lang === l) { window.sevengIrCodigo.iniciar(); return; }
     var previo = document.getElementById('ir-codigo-js'); if (previo) previo.parentNode.removeChild(previo);
