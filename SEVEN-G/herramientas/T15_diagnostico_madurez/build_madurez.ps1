@@ -400,10 +400,10 @@ setTimeout(function(){ try{
   for ($intento = 0; ; $intento++) { $http = [System.Net.HttpListener]::new(); $http.Prefixes.Add("http://localhost:$puerto/"); try { $http.Start(); break } catch { $http.Close(); if ($intento -ge 9) { throw }; $puerto = Get-Random -Minimum 20000 -Maximum 40000 } }
   $sinVentana = if ($IsWindows) { @{ WindowStyle = 'Hidden' } } else { @{} }  # -WindowStyle solo existe en Windows
   $proc = Start-Process -FilePath $edge -ArgumentList '--headless=new', '--disable-gpu', '--no-first-run', "--user-data-dir=$perfil", '--virtual-time-budget=6000', "http://localhost:$puerto/?lang=es" -PassThru @sinVentana
-  $res = $null; $limite = (Get-Date).AddSeconds(45)
+  $res = $null; $tarea = $null; $limite = (Get-Date).AddSeconds(45)
   try {
     while (-not $res -and (Get-Date) -lt $limite) {
-      $tarea = $http.GetContextAsync(); if (-not $tarea.Wait(1000)) { continue }; $ctx = $tarea.Result
+      if (-not $tarea) { $tarea = $http.GetContextAsync() }; if (-not $tarea.Wait(1000)) { continue }; $ctx = $tarea.Result; $tarea = $null   # una sola petición pendiente: si se abandona al agotar la espera, se pierde la página y Edge se queda sin respuesta
       if ($ctx.Request.HttpMethod -eq 'POST') { $res = [IO.StreamReader]::new($ctx.Request.InputStream, [Text.Encoding]::UTF8).ReadToEnd(); $b = [byte[]]@() }
       elseif ($ctx.Request.Url.AbsolutePath -eq '/') { $b = [Text.Encoding]::UTF8.GetBytes($pagina); $ctx.Response.ContentType = 'text/html; charset=utf-8' }
       else { $ctx.Response.StatusCode = 404; $b = [byte[]]@() }

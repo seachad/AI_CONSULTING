@@ -424,3 +424,23 @@ footer p { margin: 8px 0; max-width: 900px; }
 .articulos-otras ul { margin: 8px 0 6px; padding-left: 20px; }
 .articulos-otras li { font: 400 15px/1.5 var(--sans); margin: 3px 0; overflow-wrap: anywhere; }
 .articulos-nota { margin-top: 22px; }
+
+/* Página «Novedades» (D202): lista por semanas, con lo más nuevo primero */
+ul.novedades { list-style: none; margin: 0; padding: 0; }
+ul.novedades li { display: grid; grid-template-columns: 74px 1fr; gap: 4px 16px; padding: 12px 0; border-bottom: 1px solid var(--regla); }
+ul.novedades li:last-child { border-bottom: 0; }
+ul.novedades time { font: 700 12.5px/1.6 var(--sans); letter-spacing: .05em; text-transform: uppercase; color: var(--claret); }
+ul.novedades strong { font: 600 19px/1.25 var(--serif); color: var(--negro); }
+ul.novedades strong a { color: inherit; text-decoration: none; border-bottom: 2px solid var(--claret); }
+ul.novedades strong a:hover, ul.novedades strong a:focus-visible { color: var(--claret); }
+ul.novedades p { margin: 4px 0 0; font: 400 15.5px/1.5 var(--sans); color: var(--tinta-2); }
+.semana-actual { border-top: 4px solid var(--claret); background: var(--papel-2); padding: 4px 20px; }
+details.semana { border: 1px solid var(--regla); border-left: 4px solid var(--oxford); background: var(--papel-2); margin: 10px 0; padding: 0 18px; scroll-margin-top: 90px; }
+details.semana > summary { list-style: none; cursor: pointer; position: relative; padding: 13px 34px 13px 0; display: flex; flex-wrap: wrap; align-items: baseline; gap: 4px 14px; }
+details.semana > summary::-webkit-details-marker { display: none; }
+details.semana > summary::after { content: "+"; position: absolute; right: 0; top: 8px; font: 600 24px/1 var(--sans); color: var(--oxford); }
+details.semana[open] > summary::after { content: "–"; }
+details.semana > summary strong { font: 600 19px/1.25 var(--serif); color: var(--negro); }
+details.semana > summary span { font: 500 13.5px/1.3 var(--sans); color: var(--tinta-2); }
+details.semana[open] > summary { border-bottom: 1px solid var(--regla); }
+@media (max-width: 560px) { ul.novedades li { grid-template-columns: 1fr; } .semana-actual { padding: 4px 14px; } }
