@@ -54,7 +54,33 @@
   tr.grupo th { background: color-mix(in srgb, var(--acento) 10%, transparent); font-size: 13px; }
   .desc { font-size: 13px; opacity: .9; }
   .qa { display: inline-block; width: 15px; height: 15px; line-height: 15px; text-align: center; border-radius: 50%; border: 1px solid currentColor; font-size: 10px; opacity: .7; }
-  sup a.cita { text-decoration: none; font-size: 11px; margin-left: 1px; }
+  /* D201: casos de uso, tendencias y cifras en tarjetas desplegables; al abrir una se cierran las demás del sector */
+  h4.horizonte { margin: 18px 0 8px; font-size: 13px; letter-spacing: .06em; text-transform: uppercase; color: var(--acento); border-bottom: 1px solid var(--linea); padding-bottom: 4px; }
+  .casos { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(280px, 100%), 1fr)); gap: 10px; align-items: stretch; grid-auto-flow: dense; }
+  .casos.previos { margin: 4px 0 6px; }
+  details.caso, details.bloque { background: var(--fondo); border: 1px solid var(--linea); border-left: 4px solid var(--acento); border-radius: 6px; scroll-margin-top: 14px; }
+  details.bloque { border-left-color: var(--tinta); }
+  details.caso > summary, details.bloque > summary { list-style: none; cursor: pointer; position: relative; padding: 10px 30px 10px 12px; height: 100%; display: flex; flex-direction: column; gap: 8px; }
+  details.caso > summary::-webkit-details-marker, details.bloque > summary::-webkit-details-marker { display: none; }
+  details.caso > summary::after, details.bloque > summary::after { content: "+"; position: absolute; right: 10px; top: 6px; font-size: 20px; font-weight: 600; color: var(--acento); }
+  details.caso[open] > summary::after, details.bloque[open] > summary::after { content: "–"; }
+  details.caso > summary strong, details.bloque > summary strong { font-size: 15.5px; line-height: 1.3; }
+  details.caso > summary:hover, details.bloque > summary:hover, details.caso > summary:focus-visible, details.bloque > summary:focus-visible { outline: 2px solid var(--acento); outline-offset: -2px; }
+  details.caso[open], details.bloque[open] { grid-column: 1 / -1; }
+  details.caso[open] > summary, details.bloque[open] > summary { height: auto; border-bottom: 1px solid var(--linea); }
+  .chips { display: flex; flex-wrap: wrap; gap: 5px; margin-top: auto; }
+  .chip { font-size: 11.5px; line-height: 1.3; font-weight: 600; padding: 2px 7px; border-radius: 999px; border: 1px solid var(--linea); background: var(--suave); white-space: nowrap; }
+  .chip.esf { border-color: color-mix(in srgb, var(--acento) 45%, transparent); }
+  .chip.amb { color: #fff; border-color: transparent; }
+  .chip.amb.optimizar { background: #2f6f8f; } .chip.amb.aumentar { background: #2e7d4f; } .chip.amb.transformar { background: #8a3fa0; } .chip.amb.habilitacion { background: #6b6259; }
+  .cuerpo { padding: 10px 14px 12px; font-size: 15px; }
+  .cuerpo ul { margin: 0; padding-left: 20px; }
+  .cuerpo li { margin-bottom: 6px; }
+  .cuerpo dl { display: grid; grid-template-columns: minmax(130px, 210px) 1fr; gap: 6px 14px; margin: 8px 0 0; font-size: 14px; }
+  .cuerpo dt { font-weight: 700; font-size: 12px; letter-spacing: .04em; text-transform: uppercase; opacity: .8; padding-top: 2px; }
+  .cuerpo dd { margin: 0; }
+  .leyenda { font-size: 14.5px; }
+  @media (max-width: 640px) { .cuerpo dl { grid-template-columns: 1fr; gap: 2px 0; } .cuerpo dd { margin-bottom: 8px; } } text-decoration: none; font-size: 11px; margin-left: 1px; }
   ol.fuentes { font-size: 14px; padding-left: 22px; }
   .nota { font-size: 14px; font-style: italic; }
   .aviso { border-left: 4px solid var(--acento); padding: 10px 16px; background: var(--suave); border-radius: 0 8px 8px 0; font-size: 15px; }
@@ -92,8 +118,9 @@
     <ul class="ejemplos">__TARJETAS_ES__</ul>
     <p style="margin-top:12px;font-size:15px">Compañías, personas, proveedores y cifras son ficticios y se han construido para que no se parezcan a ninguna organización real; cualquier parecido es casual. Los casos de uso de cada ejemplo se inspiran en lo que el mercado está adoptando según las fuentes de la sección siguiente.</p>
 
-    <h2>Hacia dónde se mueve cada sector (__N_CASOS__ casos de uso, __N_FUENTES__ fuentes)</h2>
+    <h2 id="es-sectores">Hacia dónde se mueve cada sector (__N_CASOS__ casos de uso, __N_FUENTES__ fuentes)</h2>
     <p>Lectura de estudios, encuestas e informes públicos recientes: solo fuentes primarias u oficiales, todas en el registro de referencias de SEVEN-G y comprobadas. Los casos se agrupan por horizonte: <strong>consolidados</strong> (práctica habitual del sector), <strong>en adopción</strong> (en despliegue en 2025-2026) y <strong>emergentes 2027-2028</strong> (donde las fuentes esperan el siguiente salto de valor). Son una orientación para priorizar con el mapa de esferas (documento 10) y el registro T01, no una recomendación para ninguna compañía concreta.</p>
+    <p class="leyenda"><strong>Cómo se lee.</strong> Abra un sector. Dentro, «Hacia dónde se mueve», «Cifras» y cada caso de uso son tarjetas: al abrir una se cierran las demás. Cada caso lleva tres etiquetas: la <strong>tecnología</strong>, la <strong>esfera</strong> de <a href="../../../../SPHERES/html/es/00_SPHERES_Que_es_y_para_que_sirve.html">SPHERES</a> donde suele dar valor y el <strong>nivel de ambición</strong> (optimizar, aumentar, transformar o habilitación). La esfera y el nivel son orientativos: se deducen de la función y de la palanca del caso, y el mismo caso puede plantearse con más o menos ambición en su compañía. Al abrir la tarjeta verá las técnicas habituales de esa tecnología y las fuentes del caso.</p>
     __MERCADO_ES__
 
     __SEGURIDAD_IA_ES__
@@ -121,8 +148,9 @@
     <ul class="ejemplos">__TARJETAS_EN__</ul>
     <p style="margin-top:12px;font-size:15px">Companies, people, suppliers and figures are fictitious and have been built so as not to resemble any real organisation; any resemblance is coincidental. The use cases in each example draw on what the market is adopting according to the sources in the next section.</p>
 
-    <h2>Where each sector is heading (__N_CASOS__ use cases, __N_FUENTES__ sources)</h2>
+    <h2 id="en-sectores">Where each sector is heading (__N_CASOS__ use cases, __N_FUENTES__ sources)</h2>
     <p>A reading of recent public studies, surveys and reports: primary or official sources only, all in the SEVEN-G reference register and checked. Use cases are grouped by horizon: <strong>established</strong> (common practice in the sector), <strong>being adopted</strong> (rolling out in 2025-2026) and <strong>emerging 2027-2028</strong> (where the sources expect the next jump in value). They are guidance for prioritising with the sphere map (document 10) and the T01 register, not a recommendation for any specific company.</p>
+    <p class="leyenda"><strong>How to read it.</strong> Open a sector. Inside, “Where it is heading”, “Figures” and each use case are cards: opening one closes the others. Each case carries three tags: the <strong>technology</strong>, the <a href="../../../../SPHERES/html/en/00_SPHERES_Que_es_y_para_que_sirve.html">SPHERES</a> <strong>sphere</strong> where it usually creates value and the <strong>ambition level</strong> (optimise, augment, transform or enablement). Sphere and level are indicative: they are derived from the function and the lever of the case, and the same case can be framed with more or less ambition in your company. Opening the card shows the usual techniques for that technology and the sources for the case.</p>
     __MERCADO_EN__
 
     __SEGURIDAD_IA_EN__
@@ -181,6 +209,24 @@
     try { guardado = localStorage.getItem('t17_idioma'); sitio = localStorage.getItem('seveng-idioma'); } catch (e) {}
     var l = (q === 'es' || q === 'en') ? q : (sitio === 'es' || sitio === 'en') ? sitio : guardado;
     if (l === 'en' || (!l && /^en\b/i.test(navigator.language || ''))) { idioma('en'); } else { cargaCodigos('es'); }
+  })();
+  // D201: tarjetas en acordeón (también en navegadores sin <details name>) y apertura de la tarjeta o del sector al que apunta el enlace
+  (function () {
+    var ts = document.querySelectorAll('details.caso, details.bloque');
+    ts.forEach(function (d) { d.addEventListener('toggle', function () {
+      if (!d.open) return;
+      var n = d.getAttribute('name');
+      ts.forEach(function (o) { if (o !== d && o.open && o.getAttribute('name') === n) o.open = false; });
+    }); });
+    function abrir() {
+      var id = decodeURIComponent(location.hash.slice(1)); if (!id) return;
+      var el = document.getElementById(id); if (!el) return;
+      var sec = el.closest('section[lang]');
+      if (sec && sec.hidden) idioma(sec.id);
+      for (var p = el; p; p = p.parentElement) { if (p.tagName === 'DETAILS') p.open = true; }
+      setTimeout(function () { el.scrollIntoView(); }, 60);
+    }
+    abrir(); window.addEventListener('hashchange', abrir);
   })();
 </script>
 </body>

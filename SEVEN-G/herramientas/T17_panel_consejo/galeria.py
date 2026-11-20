@@ -17,6 +17,9 @@
 4. Si existe galeria/_fuentes/cliente_agentico.json, añade el bloque transversal «El cliente agéntico: compañías y soluciones» (D185), con
    la misma estructura y las mismas reglas (ids MER-CAG-NN y protocolos en borrador citados como tales). La función común es bloque_transversal.
 
+5. Cada caso de uso es una tarjeta desplegable con su tecnología, su esfera de SPHERES, su nivel de ambición, las técnicas habituales y sus
+   fuentes; «Hacia dónde se mueve» y «Cifras» son también tarjetas, antes de los casos; al abrir una se cierran las demás del sector (D201).
+
 Nada se escribe a mano en los HTML: se regeneran con
   uv run python galeria.py
 """
@@ -26,6 +29,7 @@ import glob
 import html
 import json
 import os
+import re
 import sys
 import tempfile
 
@@ -83,6 +87,94 @@ PALANCA = {"eficiencia": ("Eficiencia", "Efficiency"), "ingresos": ("Ingresos", 
            "sostenibilidad": ("Sostenibilidad", "Sustainability")}
 HORIZONTE = [("consolidado", "Consolidados", "Established"), ("en_adopcion", "En adopción", "Being adopted"),
              ("emergente_2027_2028", "Emergentes 2027-2028", "Emerging 2027-2028")]
+
+# ---- Etiquetas de cada caso (D201): esfera de SPHERES, nivel de ambición y técnicas habituales de su tecnología.
+# La esfera y el nivel son ORIENTATIVOS: se deducen de la función y de la palanca del caso. Una ficha puede fijarlos con los campos
+# opcionales «esfera» ("01"…"09") y «ambicion» (optimizar · aumentar · transformar · habilitacion), y precisar las técnicas con
+# «tecnicas_es» y «tecnicas_en». Sin esos campos, la ficha sigue valiendo tal como está (D53).
+ESFERAS = {"01": ("Cliente", "Customer"), "02": ("Producto y servicio", "Product and service"), "03": ("Personas", "People"),
+           "04": ("Operaciones", "Operations"), "05": ("Datos", "Data"), "06": ("Conocimiento", "Knowledge"), "07": ("Decisión", "Decision"),
+           "08": ("Regulación, ética y responsabilidad", "Regulation, ethics and accountability"), "09": ("Gobierno de la IA", "AI governance")}
+# reglas en orden: la primera expresión que aparece en la función (en español, en minúsculas) decide la esfera
+REGLAS_ESFERA = [
+    ("08", r"cumplim|regulat|normativ|legal|jur[ií]dic|farmacovigil|blanqueo|protecci[oó]n de datos|privacidad|auditor"),
+    ("03", r"personas|recursos humanos|rr\.? ?hh|talento|formaci[oó]n interna|selecci[oó]n|plantilla|empleados|prevenci[oó]n de riesgos laborales"),
+    ("01", r"comercial|venta|marketing|cliente|atenci[oó]n|posventa|reserva|sala|paciente|ciudadan|captaci[oó]n|tienda|comercio|canal|"
+           r"experiencia|fideliz|hu[eé]sped|alumno|socios|donantes|usuarios|medios|publicidad|comunicaci[oó]n"),
+    ("02", r"i\+d|producto|dise[ñn]o|oferta|descubrimiento|innovaci[oó]n|desarrollo|ensayos|investigaci[oó]n cl[ií]nica|contenido|creativ|"
+           r"programas|docencia|proyecto"),
+    ("05", r"\bdatos\b|\bdato\b|calidad del dato|anal[ií]tica de datos"),
+    ("06", r"conocimiento|documento|investigaci[oó]n|redacci[oó]n|an[aá]lisis|asesoramiento|consultor[ií]a|estudio|informes|biblioteca|"
+           r"t[eé]cnica|expedientes"),
+    ("07", r"riesgo|planificaci[oó]n|finanzas|financier|suscripci[oó]n|precios|tarific|actuarial|direcci[oó]n|previsi[oó]n|tesorer[ií]a|"
+           r"inversi[oó]n|cartera|presupuesto|control de gesti[oó]n|estrategia|cr[eé]dito|evaluaci[oó]n|diagn[oó]stico|triaje"),
+]
+ESFERA_POR_PALANCA = {"cliente": "01", "ingresos": "01", "posicionamiento": "01", "transformacion": "02", "riesgo": "07",
+                      "eficiencia": "04", "sostenibilidad": "04"}
+AMBICION = {
+    "optimizar": ("Optimizar", "Optimise", "hace lo mismo con menos coste, tiempo o errores", "does the same with less cost, time or error"),
+    "aumentar": ("Aumentar", "Augment", "las personas hacen más o mejor de lo que podían sin la IA", "people do more or better than they could without AI"),
+    "transformar": ("Transformar", "Transform", "cambia el producto, el canal o el modelo operativo", "changes the product, the channel or the operating model"),
+    "habilitacion": ("Habilitación", "Enablement", "no da valor directo: hace posible que los demás casos sean seguros y cumplan",
+                     "it gives no direct value: it makes it possible for the other cases to be safe and compliant"),
+}
+AMBICION_POR_PALANCA = {"eficiencia": "optimizar", "riesgo": "optimizar", "sostenibilidad": "optimizar", "cliente": "aumentar",
+                        "ingresos": "aumentar", "posicionamiento": "aumentar", "transformacion": "transformar"}
+TECNICAS = {
+    "ml": ("Modelos que aprenden de datos históricos con resultado conocido. Lo más usado con datos en tablas: árboles potenciados por gradiente (XGBoost, LightGBM), "
+           "bosques aleatorios y regresión logística como línea base explicable. Para anomalías: bosques de aislamiento o autocodificadores. Para series en el tiempo: "
+           "modelos estadísticos o redes recurrentes. Pida siempre la comparación con una línea base sencilla.",
+           "Models that learn from historical data with a known outcome. Most used with tabular data: gradient-boosted trees (XGBoost, LightGBM), random forests and "
+           "logistic regression as an explainable baseline. For anomalies: isolation forests or autoencoders. For time series: statistical models or recurrent networks. "
+           "Always ask for the comparison with a simple baseline."),
+    "genai": ("Modelos de lenguaje grandes. Patrones habituales: respuesta apoyada en documentos propios (RAG), resumen, extracción de datos a un formato fijo y "
+              "clasificación con pocos ejemplos. Se evalúa con un conjunto de pruebas propio y con revisión humana de una muestra.",
+              "Large language models. Usual patterns: answers grounded in the company's own documents (RAG), summarisation, data extraction to a fixed format and "
+              "few-shot classification. It is evaluated with the company's own test set and human review of a sample."),
+    "agentica": ("Un modelo de lenguaje que planifica pasos y llama a herramientas (API, bases de datos, robots de software) con permisos acotados. Puede haber varios agentes "
+                 "coordinados y memoria entre pasos. Las acciones con efecto en dinero, clientes o sistemas piden aprobación humana o límites fijados antes.",
+                 "A language model that plans steps and calls tools (APIs, databases, software robots) with bounded permissions. There may be several coordinated agents "
+                 "and memory between steps. Actions that affect money, customers or systems need human approval or limits set beforehand."),
+    "rpa_idp": ("Robots de software que siguen reglas, más lectura de documentos: reconocimiento óptico de caracteres y modelos que clasifican el documento y extraen sus campos. "
+                "Se añade validación por reglas y una cola de excepciones para lo que el modelo no lee con seguridad.",
+                "Rule-following software robots plus document reading: optical character recognition and models that classify the document and extract its fields. "
+                "Rule-based validation and an exception queue are added for what the model does not read with confidence."),
+    "vision": ("Redes convolucionales y transformadores de visión para clasificar imágenes, detectar objetos o segmentar zonas. Hoy se parte de un modelo ya entrenado y se adapta "
+               "con pocas imágenes propias. La inferencia puede ir en el propio equipo de planta o de campo.",
+               "Convolutional networks and vision transformers to classify images, detect objects or segment areas. Today the starting point is a pre-trained model adapted "
+               "with a few of the company's own images. Inference can run on the plant or field device itself."),
+    "optimizacion": ("Programación lineal y entera mixta, programación por restricciones y metaheurísticas (búsqueda local, algoritmos genéticos). En problemas que se deciden paso "
+                     "a paso, aprendizaje por refuerzo. Suele combinarse con una previsión de ML y con simulación para probar el plan.",
+                     "Linear and mixed-integer programming, constraint programming and metaheuristics (local search, genetic algorithms). For step-by-step decisions, "
+                     "reinforcement learning. It is usually combined with an ML forecast and with simulation to test the plan."),
+    "analitica": ("Estadística y series temporales (ARIMA, suavizado exponencial), segmentación (k-medias), análisis causal y pruebas con grupo de control. "
+                  "Es la base que conviene tener antes de pasar a modelos más complejos.",
+                  "Statistics and time series (ARIMA, exponential smoothing), segmentation (k-means), causal analysis and control-group tests. "
+                  "It is the base worth having before moving on to more complex models."),
+    "herramienta_sectorial": ("Producto del sector que ya trae la IA dentro. La compañía no elige el algoritmo: pregunte al proveedor qué modelo usa, con qué datos se entrenó, "
+                              "qué registra y cómo se mide su acierto, y aplique la evaluación de proveedor (documento 36).",
+                              "A sector product with AI already inside. The company does not choose the algorithm: ask the supplier which model it uses, what data it was trained on, "
+                              "what it logs and how its accuracy is measured, and apply the supplier assessment (document 36)."),
+}
+
+
+def esfera_de(c):
+    """Esfera de SPHERES del caso: la que fije la ficha o, si no, la que se deduce de su función y, en último término, de su palanca."""
+    if c.get("esfera") in ESFERAS:
+        return c["esfera"]
+    f = (c.get("funcion_es") or c.get("funcion") or "").lower()
+    for cod, patron in REGLAS_ESFERA:
+        if re.search(patron, f):
+            return cod
+    return ESFERA_POR_PALANCA.get(c.get("palanca"), "04")
+
+
+def ambicion_de(c, esfera):
+    if c.get("ambicion") in AMBICION:
+        return c["ambicion"]
+    if esfera in ("08", "09"):
+        return "habilitacion"
+    return AMBICION_POR_PALANCA.get(c.get("palanca"), "optimizar")
 
 
 def e(x):
@@ -183,31 +275,56 @@ def mercado(sector, nombre, refs, lang, con_ejemplo):
     numero = {f: f"{lang}-{sector}-f{k}" for k, f in enumerate(fuentes, 1)}
     tend = "".join(f'<li>{e(t[lang])}{citas(t["fuentes"], refs, numero)}</li>' for t in m["tendencias"])
     cif = "".join(f'<li><strong>{e(c["valor"])}</strong> · {e(c[lang])}{citas([c["fuente"]], refs, numero)}</li>' for c in m.get("cifras", []))
-    filas = []
+    # D201: cada caso es una tarjeta desplegable; al abrir una se cierran las demás del sector (mismo «name»), y lo mismo «Hacia dónde
+    # se mueve» y «Cifras», que van antes de los casos
+    k = 0 if es else 1
+    grupo = f"{lang}-{sector}-tarjetas"
+    sph = f"../../../../SPHERES/html/{lang}/"
+    rot = (("Función", "Palanca de valor", "Tecnología y técnicas habituales", "Esfera de SPHERES", "Nivel de ambición", "Dato de las fuentes", "Fuentes de este caso", "orientativa", "orientativo")
+           if es else
+           ("Function", "Value lever", "Technology and usual techniques", "SPHERES sphere", "Ambition level", "Figure from the sources", "Sources for this case", "indicative", "indicative"))
+    bloques = []
     for clave, h_es, h_en in HORIZONTE:
         casos = [c for c in m["casos"] if c["horizonte"] == clave]
         if not casos:
             continue
-        filas.append(f'<tr class="grupo"><th colspan="4">{h_es if es else h_en} · {len(casos)}</th></tr>')
+        tarjetas = []
         for c in casos:
-            filas.append(f'<tr><td><strong>{e(c["nombre_" + lang])}</strong><br><span class="desc">{e(c["descripcion_" + lang])}</span>'
-                         f'{citas(c["fuentes"], refs, numero)}</td><td>{e(TEC[c["tecnologia"]][0 if es else 1])}</td>'
-                         f'<td>{e(PALANCA[c["palanca"]][0 if es else 1])}</td><td>{e(c["funcion_" + lang] if c.get("funcion_" + lang) else c.get("funcion", ""))}</td></tr>')
+            esf = esfera_de(c)
+            amb = ambicion_de(c, esf)
+            tec = c["tecnologia"]
+            tecnicas = c.get("tecnicas_" + lang) or TECNICAS[tec][k]
+            doc_esf = "03_SPHERES_Esferas_habilitadoras.html" if esf in ("08", "09") else "02_SPHERES_Esferas_donde_se_genera_valor.html"
+            funcion = c["funcion_" + lang] if c.get("funcion_" + lang) else c.get("funcion", "")
+            valor = c.get("valor_indicativo") if es else (c.get("valor_indicativo_en") or "")
+            fu = "".join(f'<li>{enlace_fuente(f, refs, lang)} · {e(refs[f]["emisor"])} ({e(refs[f]["fecha"])})</li>' for f in c["fuentes"])
+            tarjetas.append(
+                f'<details class="caso" name="{grupo}" id="{lang}-{e(c["id"])}"><summary><strong>{e(c["nombre_" + lang])}</strong>'
+                f'<span class="chips"><span class="chip">{e(TEC[tec][k])}</span><span class="chip esf">{esf} · {e(ESFERAS[esf][k])}</span>'
+                f'<span class="chip amb {amb}">{e(AMBICION[amb][k])}</span></span></summary>'
+                f'<div class="cuerpo"><p>{e(c["descripcion_" + lang])}{citas(c["fuentes"], refs, numero)}</p><dl>'
+                f'<dt>{rot[0]}</dt><dd>{e(funcion)}</dd>'
+                f'<dt>{rot[1]}</dt><dd>{e(PALANCA[c["palanca"]][k])}</dd>'
+                f'<dt>{rot[2]}</dt><dd><strong>{e(TEC[tec][k])}.</strong> {e(tecnicas)}</dd>'
+                f'<dt>{rot[3]}</dt><dd><a href="{sph}{doc_esf}">{esf} · {e(ESFERAS[esf][k])}</a> ({rot[7]})</dd>'
+                f'<dt>{rot[4]}</dt><dd><a href="{sph}01_SPHERES_Niveles_de_ambicion.html">{e(AMBICION[amb][k])}</a>: {e(AMBICION[amb][2 + k])} ({rot[8]})</dd>'
+                + (f'<dt>{rot[5]}</dt><dd>{e(valor)}</dd>' if valor else "")
+                + (f'<dt>{rot[6]}</dt><dd><ul>{fu}</ul></dd>' if fu else "")
+                + '</dl></div></details>')
+        bloques.append(f'<h4 class="horizonte">{h_es if es else h_en} · {len(casos)}</h4><div class="casos">{"".join(tarjetas)}</div>')
     lista_f = "".join(f'<li id="{numero[f]}">{enlace_fuente(f, refs, lang)} · {e(refs[f]["emisor"])} ({e(refs[f]["fecha"])})</li>' for f in fuentes)
     ej = (f'<p class="nota">{"Ejemplo de registro y panel de este sector: en la galería, arriba." if es else "Register and dashboard example for this sector: in the gallery above."}</p>'
           if con_ejemplo else "")
-    th = ((("Caso de uso", "Qué hace y cuál es el valor típico según las fuentes"), ("Tecnología", "IA generativa, agéntica, ML predictivo, RPA e IDP, visión, optimización, analítica o herramienta propia del sector"),
-           ("Palanca", "Dónde se nota el valor: eficiencia, ingresos, riesgo, cliente, transformación del modelo operativo, posicionamiento o sostenibilidad"),
-           ("Función", "Área de la organización donde se aplica")) if es else
-          (("Use case", "What it does and its typical value according to the sources"), ("Technology", "Generative or agentic AI, predictive ML, RPA and IDP, vision, optimisation, analytics or a sector-specific tool"),
-           ("Lever", "Where the value shows: efficiency, revenue, risk, customer, operating model transformation, positioning or sustainability"),
-           ("Function", "Area of the organisation where it applies")))
-    cab = "".join(f'<th title="{e(t)}">{e(n)} <span class="qa" aria-hidden="true">?</span></th>' for n, t in th)
+    n_t, n_c = len(m["tendencias"]), len(m.get("cifras", []))
+    previos = (f'<details class="bloque" name="{grupo}"><summary><strong>{"Hacia dónde se mueve" if es else "Where it is heading"}</strong>'
+               f'<span class="chips"><span class="chip">{n_t} {"tendencias" if es else "trends"}</span></span></summary><div class="cuerpo"><ul>{tend}</ul></div></details>')
+    if cif:
+        previos += (f'<details class="bloque" name="{grupo}"><summary><strong>{"Cifras" if es else "Figures"}</strong>'
+                    f'<span class="chips"><span class="chip">{n_c} {"cifras con fuente" if es else "sourced figures"}</span></span></summary><div class="cuerpo"><ul>{cif}</ul></div></details>')
     return (f'<details class="sector" id="{lang}-{sector}"><summary>{e(nombre)} <span>{len(m["casos"])} {"casos de uso" if es else "use cases"} · {len(fuentes)} {"fuentes" if es else "sources"}</span></summary>'
-            f'{ej}<h3>{"Hacia dónde se mueve" if es else "Where it is heading"}</h3><ul>{tend}</ul>'
-            + (f'<h3>{"Cifras" if es else "Figures"}</h3><ul>{cif}</ul>' if cif else "")
-            + f'<h3>{"Casos de uso: consolidados, en adopción y emergentes" if es else "Use cases: established, being adopted and emerging"}</h3>'
-            f'<div class="tabla"><table><thead><tr>{cab}</tr></thead><tbody>{"".join(filas)}</tbody></table></div>'
+            f'{ej}<div class="casos previos">{previos}</div>'
+            f'<h3>{"Casos de uso: consolidados, en adopción y emergentes" if es else "Use cases: established, being adopted and emerging"}</h3>'
+            f'{"".join(bloques)}'
             f'<h3>{"Fuentes" if es else "Sources"}</h3><ol class="fuentes">{lista_f}</ol></details>')
 
 

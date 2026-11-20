@@ -95,6 +95,8 @@ El conector no escribe `__pycache__` (`sys.dont_write_bytecode`).
 
 **Seguridad de la IA (D159).** La página de la galería incluye además un bloque transversal con compañías y soluciones por capacidad de seguridad de la IA (guardarraíles y pasarelas, banco de pruebas, observabilidad, detección y respuesta, seguridad de aplicaciones, IA en la sombra, identidad y voz sintética). Se genera desde `galeria/_fuentes/seguridad_ia.json`; cada entrada cita una página oficial dada de alta y verificada en `SEVEN-G/build/referencias/g6_estudios_mercado.json` (ids `MER-SIA-NN`). Es una lectura de mercado, no una recomendación; los documentos de la metodología no nombran compañías.
 
+**Casos en tarjetas (D201).** En la página, cada caso de uso es una tarjeta desplegable con tres etiquetas: tecnología, esfera de SPHERES y nivel de ambición (optimizar, aumentar, transformar o habilitación). Al abrirla muestra la descripción, las técnicas habituales de esa tecnología y las fuentes del caso. «Hacia dónde se mueve» y «Cifras» son también tarjetas, antes de los casos; al abrir una se cierran las demás del sector. La esfera y el nivel son orientativos: `galeria.py` los deduce de la función y de la palanca del caso. Para fijarlos a mano, añada al caso de su ficha (`galeria/_fuentes/mercado/<sector>.json`) los campos opcionales `esfera` ("01" a "09"), `ambicion` (`optimizar`, `aumentar`, `transformar` o `habilitacion`), `tecnicas_es` y `tecnicas_en`, y regenere.
+
 ## Principios del mapeo
 
 1. **«Sin dato» no es cero.** Lo que T01 no registra queda a `null` (o lista vacía) y el panel lo muestra como «sin dato» (documento 03 §2, principio 7).

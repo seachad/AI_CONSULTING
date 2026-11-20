@@ -95,6 +95,8 @@ The connector does not write `__pycache__` (`sys.dont_write_bytecode`).
 
 **AI security (D159).** The gallery page also includes a cross-cutting block with companies and solutions by AI security capability (guardrails and gateways, test bench, observability, detection and response, application security, shadow AI, identity and synthetic voice). It is generated from `galeria/_fuentes/seguridad_ia.json`; each entry cites an official page registered and verified in `SEVEN-G/build/referencias/g6_estudios_mercado.json` (ids `MER-SIA-NN`). It is a market reading, not a recommendation; the methodology documents do not name companies.
 
+**Cases as cards (D201).** On the page, each use case is a collapsible card with three tags: technology, SPHERES sphere and ambition level (optimise, augment, transform or enablement). Opening it shows the description, the usual techniques for that technology and the sources for the case. "Where it is heading" and "Figures" are cards too, before the cases; opening one closes the others in the sector. Sphere and level are indicative: `galeria.py` derives them from the function and the lever of the case. To set them by hand, add to the case in its file (`galeria/_fuentes/mercado/<sector>.json`) the optional fields `esfera` ("01" to "09"), `ambicion` (`optimizar`, `aumentar`, `transformar` or `habilitacion`), `tecnicas_es` and `tecnicas_en`, and regenerate.
+
 ## Mapping principles
 
 1. **"No data" is not zero.** Anything T01 does not record is `null` (or an empty list) and the dashboard shows "sin dato" (document 03 §2, principle 7).
